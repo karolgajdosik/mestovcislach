@@ -1,0 +1,263 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+
+const nacitaj = (subor: string) => {
+  const p = path.join(process.cwd(), 'data', subor);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+};
+const rozpocet = nacitaj('rozpocet-bratislava.json');
+const zmluvy = nacitaj('zmluvy-bratislava.json');
+
+const mil = (n: number) => (n / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: n >= 1e8 ? 0 : 1 }) + ' mil. €';
+const eur = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 0 }) + ' €';
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const datum = (d: string) => new Date(d).toLocaleDateString('sk-SK');
+
+let r: any = null;
+if (rozpocet) {
+  const c = rozpocet.casti;
+  const roky = Object.keys(c.vydavky.roky).sort();
+  const rok = roky[roky.length - 1];
+  const predch = roky[roky.length - 2];
+  const prijmy = c.prijmy.roky[rok]['Spolu'];
+  const vydavky = c.vydavky.roky[rok]['Spolu'];
+  const programy = Object.entries(c.programy.roky[rok] as Record<string, number>).sort((a, b) => b[1] - a[1]);
+  r = {
+    rok, predch, roky, prijmy, vydavky,
+    kapitalove: c.vydavky.roky[rok]['Kapitálové výdavky'],
+    kapitalovePredch: c.vydavky.roky[predch]['Kapitálové výdavky'],
+    hosp: c.hospodarenie.roky[rok]['Bez finančných operácií'],
+    zdroje: Object.values(c).map((x: any) => x.zdroj),
+    graf: JSON.stringify({
+      roky,
+      prijmy: roky.map((y) => c.prijmy.roky[y]['Spolu']),
+      vydavky: roky.map((y) => c.vydavky.roky[y]['Spolu']),
+      druhy: c.prijmy_druh.polozky.map((p: string) => ({ nazov: p, data: roky.map((y) => c.prijmy_druh.roky[y][p]) })),
+      programy: { stitky: programy.map((p) => p[0]), data: programy.map((p) => p[1]) },
+      zmluvy: zmluvy ? { roky: Object.keys(zmluvy.po_rokoch), suma: Object.values(zmluvy.po_rokoch).map((v: any) => v.suma), pocet: Object.values(zmluvy.po_rokoch).map((v: any) => v.pocet) } : null,
+    }),
+  };
+}
+const z = zmluvy?.posledny_rok;
+---
+<Base title="Financie Bratislavy – mestovcislach.sk" description="Rozpočet hlavného mesta Bratislavy podľa záverečného účtu a zmluvy magistrátu.">
+  <section class="hero">
+    <p class="kicker">Bratislava</p>
+    <h1>Financie mesta</h1>
+    <p class="lead">Koľko mesto získa, na čo míňa a s kým uzatvára zmluvy. Údaje hlavného mesta (magistrát), bez rozpočtov mestských častí.</p>
+  </section>
+
+  {!r ? <div class="card"><p>Dáta sa pripravujú.</p></div> : (
+    <div id="financie" data-graf={r.graf}>
+      <section class="kpis">
+        <div class="card kpi">
+          <p class="label">Príjmy {r.rok}</p>
+          <p class="value">{mil(r.prijmy)}</p>
+          <p class="delta">vrátane finančných operácií</p>
+        </div>
+        <div class="card kpi">
+          <p class="label">Výdavky {r.rok}</p>
+          <p class="value">{mil(r.vydavky)}</p>
+          <p class="delta">vrátane finančných operácií</p>
+        </div>
+        <div class="card kpi">
+          <p class="label">Investície (kapitálové výdavky) {r.rok}</p>
+          <p class="value">{mil(r.kapitalove)}</p>
+          <p class="delta">{r.predch}: {mil(r.kapitalovePredch)}</p>
+        </div>
+        <div class="card kpi">
+          <p class="label">Hospodárenie {r.rok}</p>
+          <p class="value">{r.hosp >= 0 ? '+' : '−'}{mil(Math.abs(r.hosp))}</p>
+          <p class="delta">{r.hosp >= 0 ? 'prebytok' : 'schodok'} bez finančných operácií (úvery, fondy)</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Príjmy a výdavky</h2>
+        <div class="chart"><canvas id="g-pv" role="img" aria-label="Príjmy a výdavky mesta podľa rokov"></canvas></div>
+        <p class="zdroj">Skutočnosť podľa záverečného účtu, vrátane finančných operácií.</p>
+      </section>
+
+      <section class="card">
+        <h2>Na čo mesto míňa ({r.rok})</h2>
+        <div class="chart tall"><canvas id="g-programy" role="img" aria-label="Bežné a kapitálové výdavky podľa programov"></canvas></div>
+        <p class="zdroj">Bežné a kapitálové výdavky podľa programov rozpočtu.</p>
+      </section>
+
+      <section class="card">
+        <h2>Odkiaľ má mesto peniaze</h2>
+        <div class="chart"><canvas id="g-druhy" role="img" aria-label="Príjmy mesta podľa druhu"></canvas></div>
+        <p class="zdroj">Daňové príjmy sú najmä podiel na dani z príjmov fyzických osôb a daň z nehnuteľností; granty a transfery zahŕňajú aj eurofondy a peniaze zo štátu.</p>
+      </section>
+
+      <p class="zdroj">
+        Zdroj: Hlavné mesto SR Bratislava, <a href="https://data.bratislava.sk">data.bratislava.sk</a>, záverečný účet
+        ({r.zdroje.map((s: any, i: number) => <>{i > 0 && ', '}<a href={s.url}>{s.nazov.replace(' mesta Bratislava', '').replace(' zo záverečného účtu', '').replace(' podľa záverečného účtu', '')}</a></>)}).
+        Licencia CC BY 4.0.
+      </p>
+
+      {zmluvy && z && (
+        <>
+          <h2 class="sekcia">Zmluvy magistrátu</h2>
+          <section class="card">
+            <h3>Zverejnené zmluvy podľa rokov</h3>
+            <div class="chart"><canvas id="g-zmluvy" role="img" aria-label="Počet a hodnota zverejnených zmlúv podľa rokov"></canvas></div>
+            <p class="zdroj">Spolu {fmt(zmluvy.pocet_spolu)} zmlúv zverejnených od júla 2022. Hodnota je zmluvná suma (pri rámcových zmluvách maximum), nie skutočne vyplatené peniaze.</p>
+          </section>
+
+          <section class="card">
+            <h3>Najväčší dodávatelia za posledných 12 mesiacov</h3>
+            <div class="tabulka-obal">
+              <table>
+                <thead><tr><th>Dodávateľ</th><th class="num">Zmlúv</th><th class="num">Zmluvná hodnota</th></tr></thead>
+                <tbody>
+                  {z.dodavatelia.slice(0, 10).map((d: any) => (
+                    <tr><td>{d.nazov}<span class="ico">IČO {d.ico}</span></td><td class="num">{d.pocet}</td><td class="num">{mil(d.suma)}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="card">
+            <h3>Najväčšie zmluvy za posledných 12 mesiacov</h3>
+            <ul class="zmluvy">
+              {z.najvacsie.slice(0, 10).map((x: any) => (
+                <li>
+                  <div class="zmluva-hlava"><strong>{eur(x.suma)}</strong><span>{datum(x.datum)}</span></div>
+                  <p>{x.dodavatel}{x.dodatok && <span class="stitok">dodatok</span>}</p>
+                  <p class="predmet">{x.predmet}</p>
+                  {x.odkaz && <a href={x.odkaz}>Zmluva na zverejnovanie.bratislava.sk</a>}
+                </li>
+              ))}
+            </ul>
+            <p class="zdroj">
+              Od {datum(z.od)}. Bez zmlúv, kde je dodávateľom samo mesto, a bez fyzických osôb (subjekty bez IČO, spolu {eur(z.suma_bez_ico)}).
+              Zdroj: <a href={zmluvy.zdroj.url}>{zmluvy.zdroj.nazov}</a>, data.bratislava.sk, licencia {zmluvy.zdroj.licencia ?? 'CC BY-NC 4.0'}.
+            </p>
+          </section>
+        </>
+      )}
+    </div>
+  )}
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  const el = document.getElementById('financie');
+  if (el?.dataset.graf) {
+    const g = JSON.parse(el.dataset.graf);
+    const css = getComputedStyle(document.documentElement);
+    const accent = css.getPropertyValue('--accent').trim();
+    const muted = css.getPropertyValue('--muted').trim();
+    const line = css.getPropertyValue('--line').trim();
+    const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    Chart.defaults.color = muted;
+    Chart.defaults.borderColor = line;
+    Chart.defaults.font.family = css.getPropertyValue('--font');
+    const mil = (n: number) => (n / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 0 }) + ' mil. €';
+    const odtiene = tmava ? ['#ff6b80', '#d83a55', '#a92c42', '#7a2433'] : ['#a00d26', '#d3304b', '#ec6a7c', '#f7aab3'];
+
+    new Chart(document.getElementById('g-pv') as HTMLCanvasElement, {
+      type: 'bar',
+      data: {
+        labels: g.roky,
+        datasets: [
+          { label: 'Príjmy', data: g.prijmy, backgroundColor: muted + '99', borderRadius: 3 },
+          { label: 'Výdavky', data: g.vydavky, backgroundColor: accent, borderRadius: 3 },
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${mil(c.parsed.y)}` } } },
+        scales: { x: { grid: { display: false } }, y: { ticks: { callback: (v) => mil(Number(v)) } } },
+      },
+    });
+
+    new Chart(document.getElementById('g-programy') as HTMLCanvasElement, {
+      type: 'bar',
+      data: { labels: g.programy.stitky, datasets: [{ data: g.programy.data, backgroundColor: accent, borderRadius: 4, maxBarThickness: 22 }] },
+      options: {
+        indexAxis: 'y',
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ' ' + mil(c.parsed.x) } } },
+        scales: {
+          x: { ticks: { callback: (v) => mil(Number(v)) } },
+          y: { grid: { display: false }, ticks: { callback: (_, i) => {
+            const t = g.programy.stitky[i as number];
+            const max = window.innerWidth < 600 ? 18 : 40;
+            return t.length > max ? t.slice(0, max - 1).trimEnd() + '…' : t;
+          } } },
+        },
+      },
+    });
+
+    new Chart(document.getElementById('g-druhy') as HTMLCanvasElement, {
+      type: 'bar',
+      data: {
+        labels: g.roky,
+        datasets: g.druhy.map((d: any, i: number) => ({ label: d.nazov, data: d.data, backgroundColor: odtiene[i], borderRadius: 2 })),
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12 } }, tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${mil(c.parsed.y)}` } } },
+        scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, ticks: { callback: (v) => mil(Number(v)) } } },
+      },
+    });
+
+    const zc = document.getElementById('g-zmluvy') as HTMLCanvasElement | null;
+    if (zc && g.zmluvy) {
+      new Chart(zc, {
+        type: 'bar',
+        data: {
+          labels: g.zmluvy.roky,
+          datasets: [{ label: 'Zmluvná hodnota', data: g.zmluvy.suma, backgroundColor: accent, borderRadius: 3 }],
+        },
+        options: {
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: (c) => ` ${mil(c.parsed.y)} · ${g.zmluvy.pocet[c.dataIndex].toLocaleString('sk-SK')} zmlúv` } },
+          },
+          scales: { x: { grid: { display: false } }, y: { ticks: { callback: (v) => mil(Number(v)) } } },
+        },
+      });
+    }
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 24px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  h2 { font-size: 1.1rem; margin: 0 0 16px; }
+  h2.sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 48px 0 0; }
+  h3 { font-size: 1.05rem; margin: 0 0 14px; }
+  section.card { margin-top: 16px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; font-variant-numeric: tabular-nums; }
+  .delta { margin: 0; font-size: 0.85rem; color: var(--muted); }
+  .chart { position: relative; height: 320px; }
+  .chart.tall { height: 380px; }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 9px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .ico { display: block; color: var(--muted); font-size: 0.75rem; }
+  .zmluvy { list-style: none; margin: 0; padding: 0; }
+  .zmluvy li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .zmluvy li:first-child { padding-top: 0; }
+  .zmluva-hlava { display: flex; justify-content: space-between; gap: 12px; }
+  .zmluva-hlava strong { font-variant-numeric: tabular-nums; }
+  .zmluva-hlava span { color: var(--muted); font-size: 0.85rem; }
+  .zmluvy p { margin: 2px 0; }
+  .zmluvy .predmet { color: var(--muted); font-size: 0.88rem; }
+  .zmluvy a { font-size: 0.82rem; color: var(--accent); }
+  .stitok { margin-left: 8px; font-size: 0.7rem; padding: 1px 6px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+</style>

@@ -178,7 +178,14 @@ ICO_MESTA = "603481"  # zmluvy, kde je mesto samo „dodávateľom“ (napr. pr�
 
 def zber_zmluvy() -> None:
     item = polozka(ZMLUVY_ID)
-    data = riadky(item)
+    data, videne = [], set()
+    for r in riadky(item):
+        # Zdroj obsahuje niektoré zmluvy viackrát – rovnaký identifikátor aj odkaz.
+        kluc = ((r.get("IDENTIFIKÁTOR_ZMLUVY") or "").strip(), (r.get("ODKAZ_NA_ZVEREJNENÚ_ZMLUVU") or "").strip())
+        if kluc != ("", "") and kluc in videne:
+            continue
+        videne.add(kluc)
+        data.append(r)
     if len(data) < 1000:
         raise RuntimeError(f"Zmluvy: podozrivo málo záznamov ({len(data)}).")
     teraz = datetime.now(timezone.utc)

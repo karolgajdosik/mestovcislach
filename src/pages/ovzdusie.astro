@@ -1,0 +1,124 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+
+const p = path.join(process.cwd(), 'data', 'ovzdusie-bratislava.json');
+const data = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+const poradie = ['pm25', 'pm10', 'pm10_prekrocenia', 'o3'];
+const vysvetlenie: Record<string, string> = {
+  pm25: 'Jemné prachové častice menšie ako 2,5 mikrometra. Prenikajú hlboko do pľúc; hlavné zdroje sú doprava a vykurovanie.',
+  pm10: 'Prachové častice menšie ako 10 mikrometrov – z dopravy, stavebníctva, vykurovania aj prírodných zdrojov.',
+  pm10_prekrocenia: 'Denný priemer PM10 nesmie prekročiť 50 µg/m³ viac ako 35-krát za rok.',
+  o3: 'Prízemný ozón vzniká v lete zo slnečného žiarenia a emisií. Cieľová hodnota: najviac 25 dní ročne nad limitom.',
+};
+const ukazovatele = data ? poradie.filter((k) => data.ukazovatele[k]).map((k) => {
+  const u = data.ukazovatele[k];
+  const roky = [...new Set(Object.values(u.stanice).flatMap((s: any) => Object.keys(s)))].sort() as string[];
+  const posledny = roky[roky.length - 1];
+  const hodnoty = Object.entries(u.stanice).map(([s, v]: [string, any]) => [s, v[posledny]]).filter(([, v]) => v != null) as [string, number][];
+  const nadLimitom = hodnoty.filter(([, v]) => u.limit != null && v > u.limit).length;
+  return { k, ...u, roky, posledny, hodnoty, nadLimitom, vysvetlenie: vysvetlenie[k] };
+}) : [];
+const fmt = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
+---
+<Base title="Ovzdušie v Bratislave – mestovcislach.sk" description="Kvalita ovzdušia v Bratislave: PM2,5, PM10 a ozón na monitorovacích staniciach v porovnaní s limitmi.">
+  <section class="hero">
+    <p class="kicker">Bratislava</p>
+    <h1>Ovzdušie</h1>
+    <p class="lead">Ročné hodnoty znečistenia na monitorovacích staniciach v Bratislave v porovnaní so zákonnými limitmi.</p>
+  </section>
+
+  {ukazovatele.length === 0 ? <div class="card"><p>Dáta sa pripravujú.</p></div> : (
+    <div id="ovzdusie" data-graf={JSON.stringify(ukazovatele.map((u) => ({ k: u.k, roky: u.roky, limit: u.limit, jednotka: u.jednotka, stanice: u.stanice })))}>
+      <section class="kpis">
+        {ukazovatele.map((u) => (
+          <div class="card kpi">
+            <p class="label">{u.popis} ({u.posledny})</p>
+            <p class="value">{u.nadLimitom === 0 ? 'v limite' : `nad limitom: ${u.nadLimitom}`}</p>
+            <p class="delta">{u.hodnoty.length} {u.hodnoty.length === 1 ? 'stanica' : 'stanice'} · limit {fmt(u.limit)} {u.jednotka}</p>
+          </div>
+        ))}
+      </section>
+
+      {ukazovatele.map((u) => (
+        <section class="card">
+          <h2>{u.popis}</h2>
+          <p class="vysvetlenie">{u.vysvetlenie}</p>
+          <div class="chart"><canvas data-ukazovatel={u.k} role="img" aria-label={u.popis}></canvas></div>
+          <p class="zdroj">
+            Prerušovaná čiara = limit {fmt(u.limit)} {u.jednotka}. Zdroj: <a href={u.zdroj.url}>{u.zdroj.nazov}</a>,
+            data.bratislava.sk{u.zdroj.licencia && `, licencia ${u.zdroj.licencia}`}.
+          </p>
+        </section>
+      ))}
+    </div>
+  )}
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  const el = document.getElementById('ovzdusie');
+  if (el?.dataset.graf) {
+    const css = getComputedStyle(document.documentElement);
+    const muted = css.getPropertyValue('--muted').trim();
+    const line = css.getPropertyValue('--line').trim();
+    const text = css.getPropertyValue('--text').trim();
+    const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    Chart.defaults.color = muted;
+    Chart.defaults.borderColor = line;
+    Chart.defaults.font.family = css.getPropertyValue('--font');
+    // Odlíšiteľné farby pre stanice (nie červená – tá je vyhradená limitu).
+    const farby = tmava ? ['#7cc4ff', '#ffc44d', '#6ee7b7', '#c4a7ff'] : ['#1f6fd1', '#c98a00', '#138a5e', '#7a4fd1'];
+
+    for (const u of JSON.parse(el.dataset.graf)) {
+      const canvas = el.querySelector<HTMLCanvasElement>(`canvas[data-ukazovatel="${u.k}"]`);
+      if (!canvas) continue;
+      const stanice = Object.entries(u.stanice) as [string, Record<string, number>][];
+      new Chart(canvas, {
+        type: 'line',
+        data: {
+          labels: u.roky,
+          datasets: [
+            ...stanice.map(([nazov, hodnoty], i) => ({
+              label: nazov,
+              data: u.roky.map((r: string) => hodnoty[r] ?? null),
+              borderColor: farby[i % farby.length],
+              backgroundColor: farby[i % farby.length],
+              borderWidth: 2, pointRadius: 2.5, tension: 0.2, spanGaps: true,
+            })),
+            {
+              label: 'Limit', data: u.roky.map(() => u.limit),
+              borderColor: text, borderDash: [6, 5], borderWidth: 1.5, pointRadius: 0,
+            },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 12 } },
+            tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${c.parsed.y?.toLocaleString('sk-SK')} ${u.jednotka}` } },
+          },
+          scales: { x: { grid: { display: false } }, y: { beginAtZero: true } },
+        },
+      });
+    }
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 24px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  h2 { font-size: 1.1rem; margin: 0 0 6px; }
+  .vysvetlenie { color: var(--muted); font-size: 0.9rem; margin: 0 0 14px; max-width: 46em; }
+  section.card { margin-top: 16px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 6px 0; }
+  .delta { margin: 0; font-size: 0.85rem; color: var(--muted); }
+  .chart { position: relative; height: 300px; }
+</style>
