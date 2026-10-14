@@ -1,0 +1,47 @@
+name: Zber dát
+
+on:
+  schedule:
+    - cron: "30 2 * * *" # každú noc o 2:30 UTC (4:30 v lete, 3:30 v zime)
+  workflow_dispatch: # ručné spustenie: Actions → Zber dát → Run workflow
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - ".github/workflows/zber-dat.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zber-dat
+  cancel-in-progress: false
+
+jobs:
+  zber:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Obyvateľstvo (DATAcube)
+        run: python scripts/zber_obyvatelstvo.py
+
+      - name: Uložiť zmeny v dátach
+        run: |
+          git config user.name "mestovcislach-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "Žiadne nové dáta."
+          else
+            git commit -m "Dáta: aktualizácia $(date -u +%Y-%m-%d)"
+            git push
+          fi

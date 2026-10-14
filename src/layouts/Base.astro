@@ -1,0 +1,77 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Otvorené dáta o slovenských mestách a obciach – prehľadne a so zdrojmi.' } = Astro.props;
+---
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <a class="logo" href="/">mesto<span>v</span>číslach</a>
+        <nav><a href="/">Bratislava</a></nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <slot />
+    </main>
+    <footer class="wrap foot">
+      <p>
+        mestovcislach.sk zbiera verejne dostupné otvorené dáta. Pri každom údaji je uvedený zdroj.
+        Kód je otvorený na <a href="https://github.com/karolgajdosik/mestovcislach">GitHube</a>.
+      </p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --text: #1b1d21;
+    --muted: #5d636e;
+    --line: #e3e4e0;
+    --accent: #c8102e;
+    --accent-soft: #c8102e1a;
+    --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121417;
+      --card: #1b1e23;
+      --text: #eceef1;
+      --muted: #9aa1ad;
+      --line: #2c3037;
+      --accent: #ff4d63;
+      --accent-soft: #ff4d6326;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 var(--font);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-underline-offset: 3px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  .top { border-bottom: 1px solid var(--line); background: var(--card); }
+  .top .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .logo { font-weight: 800; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.02em; }
+  .logo span { color: var(--accent); }
+  .top nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+  .foot { color: var(--muted); font-size: 0.85rem; padding-top: 48px; padding-bottom: 48px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .zdroj { color: var(--muted); font-size: 0.8rem; margin: 12px 0 0; }
+</style>
