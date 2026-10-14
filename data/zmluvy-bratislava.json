@@ -1,0 +1,317 @@
+{
+ "zdroj": {
+  "id": "dec22cd06721435d81161b9067556c3a",
+  "nazov": "Zmluvy Magistrátu hlavného mesta SR Bratislava zverejnené od júla 2022",
+  "licencia": "CC BY-NC 4.0",
+  "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
+  "upravene": "2026-05-07"
+ },
+ "pocet_spolu": 13060,
+ "po_rokoch": {
+  "2022": {
+   "pocet": 1723,
+   "suma": 150715154.79
+  },
+  "2023": {
+   "pocet": 2781,
+   "suma": 428375012.29
+  },
+  "2024": {
+   "pocet": 3187,
+   "suma": 616765913.44
+  },
+  "2025": {
+   "pocet": 3091,
+   "suma": 274408545.69
+  },
+  "2026": {
+   "pocet": 2278,
+   "suma": 427785395.27
+  }
+ },
+ "posledny_rok": {
+  "od": "2025-10-14",
+  "suma_bez_ico": 72242.76,
+  "dodavatelia": [
+   {
+    "ico": "603481",
+    "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+    "pocet": 1930,
+    "suma": 291605120.93
+   },
+   {
+    "ico": "36302031",
+    "nazov": "ROKO gips, s.r.o.",
+    "pocet": 4,
+    "suma": 42058240.86
+   },
+   {
+    "ico": "35778806",
+    "nazov": "zares, spol. s r.o.",
+    "pocet": 2,
+    "suma": 38499999.98
+   },
+   {
+    "ico": "00681300",
+    "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
+    "pocet": 2,
+    "suma": 35161431.27
+   },
+   {
+    "ico": "44723024",
+    "nazov": "Martiny, s. r. o.",
+    "pocet": 1,
+    "suma": 10455000.0
+   },
+   {
+    "ico": "17317282",
+    "nazov": "STRABAG s.r.o.",
+    "pocet": 8,
+    "suma": 9422275.94
+   },
+   {
+    "ico": "35943653",
+    "nazov": "Pittel + Brausewetter s.r.o.",
+    "pocet": 7,
+    "suma": 8410877.54
+   },
+   {
+    "ico": "50614339",
+    "nazov": "ALDESA CONSTRUCCIONES POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, organizačná zložka",
+    "pocet": 8,
+    "suma": 5744720.05
+   },
+   {
+    "ico": "36416291",
+    "nazov": "XENEX, s.r.o.",
+    "pocet": 1,
+    "suma": 3920010.0
+   },
+   {
+    "ico": "31606458",
+    "nazov": "SAROUTE s.r.o.",
+    "pocet": 1,
+    "suma": 3318016.02
+   },
+   {
+    "ico": "31651518",
+    "nazov": "EUROVIA SK, a.s.",
+    "pocet": 7,
+    "suma": 3034837.19
+   },
+   {
+    "ico": "31595545",
+    "nazov": "KOMUNÁLNA poisťovňa, a.s. Vienna Insurance Group",
+    "pocet": 4,
+    "suma": 2077217.31
+   },
+   {
+    "ico": "36063606",
+    "nazov": "Bratislavský samosprávny kraj",
+    "pocet": 6,
+    "suma": 1778922.09
+   },
+   {
+    "ico": "50778501",
+    "nazov": "ENERGA s.r.o.",
+    "pocet": 3,
+    "suma": 1717535.2
+   },
+   {
+    "ico": "35763418",
+    "nazov": "Mediatex s.r.o.",
+    "pocet": 1,
+    "suma": 1500000.0
+   }
+  ],
+  "utvary": [
+   {
+    "nazov": "Oddelenie hromadnej dopravy",
+    "suma": 492525820.69
+   }
+  ],
+  "najvacsie": [
+   {
+    "datum": "2025-12-11",
+    "dodavatel": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
+    "ico": "00681300",
+    "predmet": "Dodatok č. 5 k Zmluve o zabezpečení služieb v oblasti odpadového hospodárstva č. MAGTS2200236",
+    "suma": 35101431.27,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2500197"
+   },
+   {
+    "datum": "2026-03-05",
+    "dodavatel": "zares, spol. s r.o.",
+    "ico": "35778806",
+    "predmet": "Rámcová zmluva",
+    "suma": 34999999.99,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600029"
+   },
+   {
+    "datum": "2026-02-27",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Zmluva o ZP k Zmluve o spolupráci č. OKVZoSFP0001 s.r.o. - Peris a. s.",
+    "suma": 32569732.0,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/OKVZoSFZ0034"
+   },
+   {
+    "datum": "2026-02-27",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Zmluva o ZP k Zmluve o spolupráci č. OKVZoSFP0001 s.r.o. - Asset real a. s.",
+    "suma": 32569732.0,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/OKVZoSFZ0033"
+   },
+   {
+    "datum": "2026-02-27",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Zmluva o ZP k Zmluve o spolupráci č. OKVZoSFP0001 s.r.o. - PERSET a. s.",
+    "suma": 32569732.0,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/OKVZoSFZ0032"
+   },
+   {
+    "datum": "2026-07-27",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Dodatok č. 1 k Zmluve o POO Trolejbusové trate Patrónka - Riviéra Bulharská Galvaniho",
+    "suma": 21542959.6,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/517/CC00/2026"
+   },
+   {
+    "datum": "2026-03-11",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Zmluva o poskytnutí prostriedkov mechanizmu na podporu obnovy a odolnosti Trolejbusové trate Patrónka - Riviéra a Bulharská - Galvaniho.",
+    "suma": 21114600.0,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/79/CC00/2026"
+   },
+   {
+    "datum": "2026-05-26",
+    "dodavatel": "ROKO gips, s.r.o.",
+    "ico": "36302031",
+    "predmet": "BD Terchovská",
+    "suma": 14019413.62,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600099"
+   },
+   {
+    "datum": "2026-05-26",
+    "dodavatel": "ROKO gips, s.r.o.",
+    "ico": "36302031",
+    "predmet": "BD Terchovská",
+    "suma": 14019413.62,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600099"
+   },
+   {
+    "datum": "2026-05-26",
+    "dodavatel": "ROKO gips, s.r.o.",
+    "ico": "36302031",
+    "predmet": "BD Terchovská",
+    "suma": 14019413.62,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600099"
+   },
+   {
+    "datum": "2026-09-07",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Zmluva o investičnej činnosti č. OKVZoSFP0052 vo vzťahu k projektu „Polyfunkčná stavba TWIN CITY“, ktorý je odlišný od podmienok záväznej časti územného plánu Hlavného mesta Slovenskej republiky Brati",
+    "suma": 12495034.4,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/2485260052"
+   },
+   {
+    "datum": "2026-09-07",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Zmluva o investičnej činnosti č. OKVZoSFP0052 vo vzťahu k projektu „Polyfunkčná stavba TWIN CITY“, ktorý je odlišný od podmienok záväznej časti územného plánu Hlavného mesta Slovenskej republiky Brati",
+    "suma": 12495034.4,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/2485260052"
+   },
+   {
+    "datum": "2026-09-07",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Zmluva o investičnej činnosti č. OKVZoSFP0052 vo vzťahu k projektu „Polyfunkčná stavba TWIN CITY“, ktorý je odlišný od podmienok záväznej časti územného plánu Hlavného mesta Slovenskej republiky Brati",
+    "suma": 12495034.4,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/2485260052"
+   },
+   {
+    "datum": "2026-09-07",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Zmluva o investičnej činnosti č. OKVZoSFP0052 vo vzťahu k projektu „Polyfunkčná stavba TWIN CITY“, ktorý je odlišný od podmienok záväznej časti územného plánu Hlavného mesta Slovenskej republiky Brati",
+    "suma": 12495034.4,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/2485260052"
+   },
+   {
+    "datum": "2026-09-07",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Zmluva o investičnej činnosti č. OKVZoSFP0052 vo vzťahu k projektu „Polyfunkčná stavba TWIN CITY“, ktorý je odlišný od podmienok záväznej časti územného plánu Hlavného mesta Slovenskej republiky Brati",
+    "suma": 12495034.4,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/2485260052"
+   },
+   {
+    "datum": "2026-07-06",
+    "dodavatel": "Martiny, s. r. o.",
+    "ico": "44723024",
+    "predmet": "„Zabezpečenie prevádzkyschopnosti, pravidelná údržba, opravy a modernizácia technologických zariadení a podchodov v správe Hlavného mesta SR Bratislava“",
+    "suma": 10455000.0,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600128"
+   },
+   {
+    "datum": "2026-06-19",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU č. 401202G855",
+    "suma": 8283908.72,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/782/2026"
+   },
+   {
+    "datum": "2025-10-15",
+    "dodavatel": "Pittel + Brausewetter s.r.o.",
+    "ico": "35943653",
+    "predmet": "Jedná sa o zmluvu o Dielo na realizáciu 1.B etapy projektu Živé námestie.",
+    "suma": 7728605.76,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500324"
+   },
+   {
+    "datum": "2026-02-16",
+    "dodavatel": "STRABAG s.r.o.",
+    "ico": "17317282",
+    "predmet": "ZoD ŽIVÉ NÁMESTIE – 1.Etapa (A,B,C), Etapa 1.C",
+    "suma": 7006758.38,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600017"
+   },
+   {
+    "datum": "2026-02-25",
+    "dodavatel": "Hlavné mesto Slovenskej republiky Bratislava",
+    "ico": "603481",
+    "predmet": "Ručiteľské vyhlásenie YIT k ZoS č. MAGBO2400139",
+    "suma": 6070047.5,
+    "utvar": "Oddelenie hromadnej dopravy",
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/OKVZoSFZ0027"
+   }
+  ]
+ },
+ "aktualizovane": "2026-10-14T22:12:11+00:00"
+}
