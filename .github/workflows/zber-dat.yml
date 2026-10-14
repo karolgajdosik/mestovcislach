@@ -7,7 +7,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "scripts/**"
+      - "scripts/zber_obyvatelstvo.py"
       - ".github/workflows/zber-dat.yml"
 
 permissions:
@@ -43,5 +43,5 @@ jobs:
             echo "Žiadne nové dáta."
           else
             git commit -m "Dáta: aktualizácia $(date -u +%Y-%m-%d)"
-            git push
+            git pull --rebase -q && git push
           fi
