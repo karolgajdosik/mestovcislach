@@ -65,6 +65,12 @@ const grafData = mesto
         </div>
       </section>
 
+      <nav class="temy" aria-label="Témy">
+        <a class="card tema" href="/volby"><strong>Voľby</strong><span>Ako volila Bratislava a mestské časti</span></a>
+        <a class="card tema" href="/financie"><strong>Financie</strong><span>Rozpočet mesta a zmluvy magistrátu</span></a>
+        <a class="card tema" href="/ovzdusie"><strong>Ovzdušie</strong><span>Prach a ozón na meracích staniciach</span></a>
+      </nav>
+
       <MapaCasti />
 
       <section class="card" id="grafy" data-graf={grafData}>
@@ -148,5 +154,11 @@ const grafData = mesto
   .chart { position: relative; height: 280px; }
   .chart.tall { height: 480px; }
   .empty { margin-top: 8px; }
+  .temy { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px; }
+  .tema { text-decoration: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s; }
+  .tema:hover { border-color: var(--accent); }
+  .tema strong { font-size: 1.05rem; }
+  .tema strong::after { content: ' →'; color: var(--accent); }
+  .tema span { color: var(--muted); font-size: 0.9rem; }
   .empty p { color: var(--muted); margin: 0; }
 </style>
