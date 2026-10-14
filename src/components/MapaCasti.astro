@@ -1,0 +1,147 @@
+---
+// Mapa mestských častí ofarbená podľa počtu obyvateľov alebo hustoty.
+// Hranice: data/hranice-bratislava.geojson (OSM), obyvatelia: data/obyvatelstvo-bratislava.json.
+import fs from 'node:fs';
+import path from 'node:path';
+import obyv from '../../data/obyvatelstvo-bratislava.json';
+
+const suborHranic = path.join(process.cwd(), 'data', 'hranice-bratislava.geojson');
+const hranice = fs.existsSync(suborHranic) ? JSON.parse(fs.readFileSync(suborHranic, 'utf-8')) : null;
+
+type Uzemie = { kod: string; nazov_kratky: string; roky: Record<string, number> };
+const casti = (obyv.mestske_casti ?? []) as Uzemie[];
+const roky = obyv.mesto ? Object.keys((obyv.mesto as Uzemie).roky).sort() : [];
+const rok = roky[roky.length - 1];
+const predch = roky[roky.length - 2];
+
+let mapa: string | null = null;
+if (hranice && casti.length && rok) {
+  const features = hranice.features
+    .map((f: any) => {
+      const c = casti.find((x) => x.kod.endsWith(f.properties.kod_obce));
+      if (!c) return null;
+      const pocet = c.roky[rok];
+      const rozloha = f.properties.rozloha_km2;
+      return {
+        ...f,
+        properties: {
+          nazov: c.nazov_kratky,
+          pocet,
+          zmena: predch ? pocet - c.roky[predch] : null,
+          rozloha,
+          hustota: Math.round(pocet / rozloha),
+        },
+      };
+    })
+    .filter(Boolean);
+  mapa = JSON.stringify({ type: 'FeatureCollection', features, rok, predch });
+}
+---
+{mapa && (
+  <section class="card" id="mapa-casti" data-mapa={mapa}>
+    <div class="hlavicka">
+      <h2>Mapa mestských častí ({rok})</h2>
+      <div class="prepinac" role="group" aria-label="Zobraziť na mape">
+        <button type="button" data-ukazovatel="pocet" aria-pressed="true">Obyvatelia</button>
+        <button type="button" data-ukazovatel="hustota" aria-pressed="false">Hustota</button>
+      </div>
+    </div>
+    <div id="mapa" role="img" aria-label="Mapa mestských častí Bratislavy"></div>
+    <div class="legenda" id="legenda"></div>
+    <p class="zdroj">
+      Hranice: © <a href="https://www.openstreetmap.org/copyright">prispievatelia OpenStreetMap</a> (ODbL),
+      podklad © <a href="https://carto.com/attributions">CARTO</a>.
+      Obyvatelia: Štatistický úrad SR – DATAcube. Rozloha vypočítaná z hraníc OSM.
+    </p>
+  </section>
+)}
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const el = document.getElementById('mapa-casti');
+  if (el?.dataset.mapa) {
+    const data = JSON.parse(el.dataset.mapa);
+    const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const fmt = (n: number) => n.toLocaleString('sk-SK');
+
+    // Jednofarebná škála (svetlá → tmavá červená), 5 tried.
+    const farby = tmava
+      ? ['#4a1c24', '#7a2433', '#a92c42', '#d83a55', '#ff6b80']
+      : ['#fde4e6', '#f7aab3', '#ec6a7c', '#d3304b', '#a00d26'];
+
+    const mapa = L.map('mapa', { scrollWheelZoom: false, zoomSnap: 0.25 });
+    L.tileLayer(
+      `https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_nolabels/{z}/{x}/{y}{r}.png`,
+      { maxZoom: 16, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO' },
+    ).addTo(mapa);
+
+    let ukazovatel: 'pocet' | 'hustota' = 'pocet';
+    let hranice: number[] = [];
+
+    const triedy = () => {
+      const hodnoty = data.features.map((f: any) => f.properties[ukazovatel]).sort((a: number, b: number) => a - b);
+      // kvantily -> 4 hranice medzi 5 triedami, zaokrúhlené na pekné čísla
+      hranice = [1, 2, 3, 4].map((i) => {
+        const v = hodnoty[Math.floor((i * hodnoty.length) / 5)];
+        const rad = Math.pow(10, Math.max(0, Math.floor(Math.log10(v)) - 1));
+        return Math.round(v / rad) * rad;
+      });
+    };
+    const farba = (v: number) => farby[hranice.filter((h) => v >= h).length];
+
+    const vrstva = L.geoJSON(data, {
+      style: () => ({ weight: 1, color: tmava ? '#121417' : '#ffffff', fillOpacity: 0.8 }),
+      onEachFeature: (f: any, layer) => {
+        const p = f.properties;
+        const zmena = p.zmena === null ? '' :
+          `<br>Zmena oproti ${data.predch}: <b>${p.zmena >= 0 ? '+' : '−'}${fmt(Math.abs(p.zmena))}</b>`;
+        layer.bindPopup(
+          `<strong>${p.nazov}</strong><br>Obyvatelia: <b>${fmt(p.pocet)}</b>${zmena}` +
+          `<br>Rozloha: ${p.rozloha.toLocaleString('sk-SK')} km²<br>Hustota: ${fmt(p.hustota)} obyv./km²`,
+        );
+        layer.bindTooltip(p.nazov, { sticky: true, direction: 'top' });
+        layer.on('mouseover', () => (layer as L.Path).setStyle({ weight: 3 }));
+        layer.on('mouseout', () => (layer as L.Path).setStyle({ weight: 1 }));
+      },
+    }).addTo(mapa);
+    mapa.fitBounds(vrstva.getBounds(), { padding: [8, 8] });
+
+    const legenda = document.getElementById('legenda')!;
+    const prekresli = () => {
+      triedy();
+      vrstva.setStyle((f: any) => ({ fillColor: farba(f.properties[ukazovatel]) }));
+      const jednotka = ukazovatel === 'pocet' ? 'obyvateľov' : 'obyv./km²';
+      const popisy = [`do ${fmt(hranice[0])}`, ...hranice.slice(0, 3).map((h, i) => `${fmt(h)} – ${fmt(hranice[i + 1])}`), `nad ${fmt(hranice[3])}`];
+      legenda.innerHTML =
+        popisy.map((t, i) => `<span><i style="background:${farby[i]}"></i>${t}</span>`).join('') +
+        `<span class="jednotka">${jednotka}</span>`;
+    };
+    prekresli();
+
+    el.querySelectorAll<HTMLButtonElement>('[data-ukazovatel]').forEach((b) =>
+      b.addEventListener('click', () => {
+        ukazovatel = b.dataset.ukazovatel as typeof ukazovatel;
+        el.querySelectorAll('[data-ukazovatel]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        prekresli();
+      }),
+    );
+  }
+</script>
+
+<style>
+  .hlavicka { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .hlavicka h2 { margin: 0; }
+  .prepinac { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .prepinac button {
+    font: inherit; font-size: 0.85rem; border: 0; background: none; color: var(--muted);
+    padding: 6px 12px; border-radius: 999px; cursor: pointer;
+  }
+  .prepinac button[aria-pressed='true'] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  #mapa { height: 420px; border-radius: 10px; overflow: hidden; background: var(--bg); }
+  @media (max-width: 600px) { #mapa { height: 360px; } }
+  .legenda { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; font-size: 0.8rem; color: var(--muted); }
+  .legenda :global(i) { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .legenda :global(.jednotka) { margin-left: auto; }
+</style>

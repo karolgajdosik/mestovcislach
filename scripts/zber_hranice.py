@@ -27,8 +27,8 @@ from shapely.ops import polygonize, unary_union
 
 VYSTUP = Path(__file__).resolve().parent.parent / "data" / "hranice-bratislava.geojson"
 SERVERY = [
-    "https://overpass-api.de/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter",
+    "https://overpass-api.de/api/interpreter",
     "https://overpass.private.coffee/api/interpreter",
 ]
 DOTAZ = """
@@ -47,7 +47,7 @@ def stiahni() -> dict:
     for server in SERVERY:
         for pokus in range(2):
             try:
-                r = requests.post(server, data={"data": DOTAZ}, headers={"User-Agent": UA}, timeout=240)
+                r = requests.post(server, data={"data": DOTAZ}, headers={"User-Agent": UA}, timeout=200)
                 r.raise_for_status()
                 data = r.json()
                 if data.get("elements"):

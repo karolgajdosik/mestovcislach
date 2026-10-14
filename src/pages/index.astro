@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import MapaCasti from '../components/MapaCasti.astro';
 import obyv from '../../data/obyvatelstvo-bratislava.json';
 
 type Uzemie = { kod: string; nazov: string; nazov_kratky: string; roky: Record<string, number> };
@@ -63,6 +64,8 @@ const grafData = mesto
           {castiZoradene[0] && <p class="delta">najväčšia: {castiZoradene[0].nazov}</p>}
         </div>
       </section>
+
+      <MapaCasti />
 
       <section class="card" id="grafy" data-graf={grafData}>
         <h2>Vývoj počtu obyvateľov</h2>
