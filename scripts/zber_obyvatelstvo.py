@@ -66,19 +66,19 @@ def kategorie(obj: dict) -> list[tuple[str, str]]:
 
 
 def stiahni_dimenzie(tabulka: str) -> list[tuple[str, list[tuple[str, str]]]]:
+    """Zoznam dimenzií tabuľky (v poradí, v akom ich chce API) aj s ich prvkami."""
+    kolekcia = ziskaj_json(f"{API}/collection")
+    polozka = next(
+        (it for it in kolekcia["link"]["item"] if f"/dataset/{tabulka}/" in it.get("href", "")),
+        None,
+    )
+    if polozka is None:
+        raise RuntimeError(f"Tabuľka {tabulka} nie je v zozname tabuliek DATAcube.")
+    # Poradie dimenzií je dané cestou v href: /dataset/<tabulka>/<dim1>/<dim2>/...
+    cesta = polozka["href"].split(f"/dataset/{tabulka}/")[1].split("?")[0]
     dims = []
-    for n in range(1, 10):
-        dim_id = f"{tabulka}_dim{n}"
-        try:
-            data = ziskaj_json(f"{API}/dimension/{tabulka}/{dim_id}")
-        except requests.HTTPError:
-            break
-        try:
-            dims.append((dim_id, kategorie(data)))
-        except ValueError:
-            break
-    if not dims:
-        raise RuntimeError(f"Tabuľka {tabulka}: nepodarilo sa načítať dimenzie.")
+    for dim_id in cesta.split("/"):
+        dims.append((dim_id, kategorie(ziskaj_json(f"{API}/dimension/{tabulka}/{dim_id}"))))
     return dims
 
 
@@ -100,6 +100,9 @@ def vyber_kody(dims):
             typ["rok"] = dim_id
         elif len(prvky) == 1:
             kody = [prvky[0][0]]
+        elif any("na konci obdobia" in p.lower() for p in popisy):
+            # Ukazovateľ: stav obyvateľstva k 31. 12. daného roka.
+            kody = [k for k, p in prvky if "na konci obdobia" in p.lower()][:1]
         else:
             spolu = [k for k, p in prvky if p.strip().lower() in SPOLU or k in SPOLU_KODY]
             if not spolu:

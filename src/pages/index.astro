@@ -68,7 +68,8 @@ const grafData = mesto
         <h2>Vývoj počtu obyvateľov</h2>
         <div class="chart"><canvas id="graf-vyvoj" aria-label="Vývoj počtu obyvateľov Bratislavy" role="img"></canvas></div>
         <p class="zdroj">
-          Zdroj: <a href={zdrojUrl}>{obyv.zdroj.nazov}</a>, tabuľka {obyv.zdroj.tabulka}, stav k 31. 12.
+          Zdroj: <a href={zdrojUrl}>{obyv.zdroj.nazov}</a>, tabuľka {obyv.zdroj.tabulka}, trvale bývajúci obyvatelia k 31. 12.
+          {(mesto as any).poznamka && <> ({(mesto as any).poznamka})</>}
           {aktualizovane && <> · Aktualizované {aktualizovane}</>}
         </p>
       </section>
