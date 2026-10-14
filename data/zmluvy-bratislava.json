@@ -6,39 +6,33 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 13060,
+ "pocet_spolu": 11730,
  "po_rokoch": {
   "2022": {
-   "pocet": 1723,
-   "suma": 150715154.79
+   "pocet": 1395,
+   "suma": 147579642.37
   },
   "2023": {
-   "pocet": 2781,
-   "suma": 428375012.29
+   "pocet": 2491,
+   "suma": 251110907.84
   },
   "2024": {
-   "pocet": 3187,
-   "suma": 616765913.44
+   "pocet": 2881,
+   "suma": 434675143.43
   },
   "2025": {
-   "pocet": 3091,
-   "suma": 274408545.69
+   "pocet": 2845,
+   "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2278,
-   "suma": 427785395.27
+   "pocet": 2118,
+   "suma": 337920406.55
   }
  },
  "posledny_rok": {
   "od": "2025-10-14",
   "suma_bez_ico": 72242.76,
   "dodavatelia": [
-   {
-    "ico": "36302031",
-    "nazov": "ROKO gips, s.r.o.",
-    "pocet": 4,
-    "suma": 42058240.86
-   },
    {
     "ico": "35778806",
     "nazov": "zares, spol. s r.o.",
@@ -50,6 +44,12 @@
     "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
     "pocet": 2,
     "suma": 35161431.27
+   },
+   {
+    "ico": "36302031",
+    "nazov": "ROKO gips, s.r.o.",
+    "pocet": 2,
+    "suma": 14019413.62
    },
    {
     "ico": "44723024",
@@ -90,8 +90,8 @@
    {
     "ico": "31651518",
     "nazov": "EUROVIA SK, a.s.",
-    "pocet": 7,
-    "suma": 3034837.19
+    "pocet": 6,
+    "suma": 2850404.58
    },
    {
     "ico": "31595545",
@@ -106,12 +106,6 @@
     "suma": 1778922.09
    },
    {
-    "ico": "50778501",
-    "nazov": "ENERGA s.r.o.",
-    "pocet": 3,
-    "suma": 1717535.2
-   },
-   {
     "ico": "35763418",
     "nazov": "Mediatex s.r.o.",
     "pocet": 1,
@@ -122,6 +116,12 @@
     "nazov": "CSFIT s.r.o.",
     "pocet": 2,
     "suma": 1367809.2
+   },
+   {
+    "ico": "35732881",
+    "nazov": "METRO Bratislava  a.s.",
+    "pocet": 8,
+    "suma": 1204031.04
    }
   ],
   "najvacsie": [
@@ -142,24 +142,6 @@
     "suma": 34999999.99,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600029"
-   },
-   {
-    "datum": "2026-05-26",
-    "dodavatel": "ROKO gips, s.r.o.",
-    "ico": "36302031",
-    "predmet": "BD Terchovská",
-    "suma": 14019413.62,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600099"
-   },
-   {
-    "datum": "2026-05-26",
-    "dodavatel": "ROKO gips, s.r.o.",
-    "ico": "36302031",
-    "predmet": "BD Terchovská",
-    "suma": 14019413.62,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600099"
    },
    {
     "datum": "2026-05-26",
@@ -304,8 +286,26 @@
     "suma": 977415.0,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2600034"
+   },
+   {
+    "datum": "2025-10-31",
+    "dodavatel": "STRABAG s.r.o.",
+    "ico": "17317282",
+    "predmet": "Realizácia projektu Revitalizácia verejného priestoru Dom služieb Dúbravka",
+    "suma": 970724.21,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500320"
+   },
+   {
+    "datum": "2026-05-04",
+    "dodavatel": "Hydrograss-company, s.r.o.",
+    "ico": "50968874",
+    "predmet": "Zmluva o odbornej a komplexnej starostlivosti o plochy zelene na Dúbravsko - Karloveskej radiále",
+    "suma": 969663.71,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600067"
    }
   ]
  },
- "aktualizovane": "2026-10-14T22:14:24+00:00"
+ "aktualizovane": "2026-10-14T22:16:46+00:00"
 }
