@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - "scripts/zber_obyvatelstvo.py"
+      - "scripts/zber_volby.py"
       - ".github/workflows/zber-dat.yml"
 
 permissions:
@@ -34,7 +35,12 @@ jobs:
       - name: Obyvateľstvo (DATAcube)
         run: python scripts/zber_obyvatelstvo.py
 
+      - name: Voľby (ŠÚ SR)
+        if: success() || failure()
+        run: python scripts/zber_volby.py
+
       - name: Uložiť zmeny v dátach
+        if: success() || failure()
         run: |
           git config user.name "mestovcislach-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
