@@ -204,4 +204,8 @@ if __name__ == "__main__":
         sys.exit(main())
     except Exception as e:  # noqa: BLE001
         print(f"CHYBA: {e}", file=sys.stderr)
+        if os.environ.get("GITHUB_ACTIONS"):
+            # Zobrazí chybu priamo v súhrne behu na GitHube.
+            sprava = str(e).replace("%", "%25").replace("\r", "").replace("\n", "%0A")
+            print(f"::error title=Zber obyvateľstva::{type(e).__name__}: {sprava}")
         sys.exit(1)
