@@ -1,0 +1,288 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+
+const nacitaj = (subor: string) => {
+  const p = path.join(process.cwd(), 'data', subor);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+};
+const data = nacitaj('volby-bratislava.json');
+const hranice = nacitaj('hranice-bratislava.geojson');
+
+type Strana = { nazov: string; hlasy: number; podiel: number };
+const volby: any[] = data?.volby ?? [];
+const pct = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' %';
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const datum = (d: string) => new Date(d).toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' });
+const kratke = (n: string) => {
+  const k = n.split(':')[0].trim();
+  return k.length > 26 ? k.slice(0, 25).trimEnd() + '…' : k;
+};
+
+// Pre každé voľby: top strany v BA (podiel aspoň 3 %) a ich výsledok v SR.
+const pripravene = volby.map((v) => {
+  const top: Strana[] = v.mesto.strany.filter((s: Strana) => s.podiel >= 3).slice(0, 9);
+  const srPodla = new Map(v.slovensko.strany.map((s: Strana) => [s.nazov, s.podiel]));
+  const graf = {
+    stitky: top.map((s) => kratke(s.nazov)),
+    plne: top.map((s) => s.nazov),
+    ba: top.map((s) => s.podiel),
+    sr: top.map((s) => srPodla.get(s.nazov) ?? 0),
+  };
+  const mapa = hranice && {
+    type: 'FeatureCollection',
+    features: hranice.features.map((f: any) => {
+      const c = v.mestske_casti.find((x: any) => x.kod_obce === f.properties.kod_obce);
+      return {
+        type: 'Feature',
+        geometry: f.geometry,
+        properties: c && { nazov: c.nazov, ucast: c.ucast, strany: c.strany.slice(0, 3).map((s: Strana) => [kratke(s.nazov), s.podiel]) },
+      };
+    }).filter((f: any) => f.properties),
+  };
+  return { ...v, graf, mapa };
+});
+---
+<Base title="Voľby v Bratislave – mestovcislach.sk" description="Výsledky volieb v Bratislave a jej mestských častiach v porovnaní so Slovenskom.">
+  <section class="hero">
+    <p class="kicker">Bratislava</p>
+    <h1>Voľby</h1>
+    <p class="lead">Ako volili Bratislavčania a ich mestské časti – v porovnaní s celým Slovenskom.</p>
+  </section>
+
+  <aside class="card upozornenie">
+    <strong>Komunálne a župné voľby 24. októbra 2026</strong>
+    <p>Voliť sa bude primátor, starostovia mestských častí, poslanci aj predseda a poslanci kraja. Výsledky za Bratislavu a mestské časti doplníme po ich zverejnení Štatistickým úradom SR.</p>
+  </aside>
+
+  {pripravene.length === 0 ? (
+    <div class="card"><p>Dáta o voľbách sa pripravujú.</p></div>
+  ) : (
+    <>
+      <div class="prepinac volby-tabs" role="tablist" aria-label="Vybrať voľby">
+        {pripravene.map((v, i) => (
+          <button type="button" role="tab" data-volby={v.id} aria-selected={i === 0 ? 'true' : 'false'}>{v.kratky}</button>
+        ))}
+      </div>
+
+      {pripravene.map((v, i) => (
+        <div class="volby" data-volby-panel={v.id} hidden={i !== 0} data-graf={JSON.stringify(v.graf)} data-mapa={v.mapa ? JSON.stringify(v.mapa) : ''}>
+          <p class="meta">{v.nazov} · {datum(v.datum)}</p>
+
+          <section class="kpis">
+            <div class="card kpi">
+              <p class="label">Účasť v Bratislave</p>
+              <p class="value">{pct(v.mesto.ucast)}</p>
+              <p class={v.mesto.ucast >= v.slovensko.ucast ? 'delta up' : 'delta down'}>
+                Slovensko {pct(v.slovensko.ucast)} ({v.mesto.ucast >= v.slovensko.ucast ? '+' : '−'}{pct(Math.abs(v.mesto.ucast - v.slovensko.ucast)).replace(' %', ' p. b.')})
+              </p>
+            </div>
+            <div class="card kpi">
+              <p class="label">Víťaz v Bratislave</p>
+              <p class="value small">{kratke(v.mesto.strany[0].nazov)}</p>
+              <p class="delta">{pct(v.mesto.strany[0].podiel)} · na Slovensku {pct(v.slovensko.strany.find((s: Strana) => s.nazov === v.mesto.strany[0].nazov)?.podiel ?? 0)}</p>
+            </div>
+            <div class="card kpi">
+              <p class="label">Voliči v Bratislave</p>
+              <p class="value">{fmt(v.mesto.zucastneni)}</p>
+              <p class="delta">z {fmt(v.mesto.zapisani)} zapísaných</p>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Výsledky strán: Bratislava a Slovensko</h2>
+            <div class="legenda-graf"><span><i class="ba"></i>Bratislava</span><span><i class="sr"></i>Slovensko</span></div>
+            <div class="chart"><canvas class="graf-strany" role="img" aria-label="Podiel hlasov strán v Bratislave a na Slovensku"></canvas></div>
+            <p class="zdroj">Strany s podielom aspoň 3 % v Bratislave. Zdroj: <a href="https://volby.statistics.sk">Štatistický úrad SR – výsledky volieb</a>.</p>
+          </section>
+
+          {v.mapa && (
+            <section class="card">
+              <h2>Účasť podľa mestských častí</h2>
+              <div class="mapa-volby" role="img" aria-label="Mapa účasti podľa mestských častí"></div>
+              <div class="legenda"></div>
+              <p class="zdroj">Ťuknite na mestskú časť pre tri najúspešnejšie strany. Hranice © prispievatelia OpenStreetMap, podklad © CARTO.</p>
+            </section>
+          )}
+
+          <section class="card">
+            <h2>Mestské časti</h2>
+            <div class="tabulka-obal">
+              <table>
+                <thead><tr><th>Mestská časť</th><th class="num">Účasť</th><th>Víťaz</th><th class="num">Podiel</th></tr></thead>
+                <tbody>
+                  {[...v.mestske_casti].sort((a: any, b: any) => b.ucast - a.ucast).map((c: any) => (
+                    <tr><td>{c.nazov}</td><td class="num">{pct(c.ucast)}</td><td>{kratke(c.strany[0].nazov)}</td><td class="num">{pct(c.strany[0].podiel)}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="zdroj">Zdroj: <a href={v.zdroj}>ŠÚ SR, otvorené dáta (CSV)</a>.</p>
+          </section>
+        </div>
+      ))}
+    </>
+  )}
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const css = getComputedStyle(document.documentElement);
+  const accent = css.getPropertyValue('--accent').trim();
+  const muted = css.getPropertyValue('--muted').trim();
+  const line = css.getPropertyValue('--line').trim();
+  const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const pct = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 }) + ' %';
+  Chart.defaults.color = muted;
+  Chart.defaults.borderColor = line;
+  Chart.defaults.font.family = css.getPropertyValue('--font');
+
+  // Zaužívané skratky strán pre úzke obrazovky (podľa začiatku oficiálneho názvu).
+  const SKRATKY: Record<string, string> = {
+    'Progresívne Slovensko': 'PS',
+    'SMER': 'SMER-SD',
+    'Sloboda a Solidarita': 'SaS',
+    'HLAS': 'HLAS-SD',
+    'OĽANO': 'OĽANO a priatelia',
+    'Kresťanskodemokratické hnutie': 'KDH',
+    'Slovenská národná strana': 'SNS',
+    'REPUBLIKA': 'Republika',
+    'Demokrati': 'Demokrati',
+    'SME RODINA': 'Sme rodina',
+    'Maďarská aliancia': 'Maďarská aliancia',
+  };
+
+  const hotove = new Set<string>();
+
+  function vykresli(panel: HTMLElement) {
+    const id = panel.dataset.volbyPanel!;
+    if (hotove.has(id)) return;
+    hotove.add(id);
+
+    const g = JSON.parse(panel.dataset.graf!);
+    new Chart(panel.querySelector('.graf-strany') as HTMLCanvasElement, {
+      type: 'bar',
+      data: {
+        labels: g.stitky,
+        datasets: [
+          { label: 'Bratislava', data: g.ba, backgroundColor: accent, borderRadius: 3 },
+          { label: 'Slovensko', data: g.sr, backgroundColor: muted + '99', borderRadius: 3 },
+        ],
+      },
+      options: {
+        indexAxis: 'y',
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { title: (it) => g.plne[it[0].dataIndex], label: (c) => ` ${c.dataset.label}: ${pct(c.parsed.x)}` } },
+        },
+        scales: {
+          x: { ticks: { callback: (v) => v + ' %' } },
+          y: {
+            grid: { display: false },
+            ticks: {
+              // Na úzkych obrazovkách skrátiť názvy, aby sa zmestili.
+              callback: (_, i) => {
+                const plne: string = g.plne[i as number];
+                const t = g.stitky[i as number];
+                if (window.innerWidth >= 600) return t;
+                const skratka = Object.entries(SKRATKY).find(([zac]) => plne.startsWith(zac));
+                if (skratka) return skratka[1];
+                const max = 14;
+                return t.length > max ? t.slice(0, max - 1).trimEnd() + '…' : t;
+              },
+            },
+          },
+        },
+      },
+    });
+
+    const mapaEl = panel.querySelector<HTMLElement>('.mapa-volby');
+    if (!mapaEl || !panel.dataset.mapa) return;
+    const data = JSON.parse(panel.dataset.mapa);
+    const farby = tmava
+      ? ['#4a1c24', '#7a2433', '#a92c42', '#d83a55', '#ff6b80']
+      : ['#fde4e6', '#f7aab3', '#ec6a7c', '#d3304b', '#a00d26'];
+    const hodnoty = data.features.map((f: any) => f.properties.ucast).sort((a: number, b: number) => a - b);
+    const min = Math.floor(hodnoty[0]);
+    const max = Math.ceil(hodnoty[hodnoty.length - 1]);
+    const krok = (max - min) / 5;
+    const hranice = [1, 2, 3, 4].map((i) => Math.round(min + i * krok));
+    const farba = (v: number) => farby[hranice.filter((h) => v >= h).length];
+
+    const mapa = L.map(mapaEl, { scrollWheelZoom: false, zoomSnap: 0.25 });
+    L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_nolabels/{z}/{x}/{y}{r}.png`, {
+      maxZoom: 16, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
+    }).addTo(mapa);
+    const vrstva = L.geoJSON(data, {
+      style: (f: any) => ({ weight: 1, color: tmava ? '#121417' : '#ffffff', fillOpacity: 0.85, fillColor: farba(f.properties.ucast) }),
+      onEachFeature: (f: any, layer) => {
+        const p = f.properties;
+        layer.bindPopup(`<strong>${p.nazov}</strong><br>Účasť: <b>${pct(p.ucast)}</b><br>` +
+          p.strany.map(([n, s]: [string, number], i: number) => `${i + 1}. ${n} – ${pct(s)}`).join('<br>'));
+        layer.bindTooltip(p.nazov, { sticky: true, direction: 'top' });
+      },
+    }).addTo(mapa);
+    mapa.fitBounds(vrstva.getBounds(), { padding: [8, 8] });
+
+    const popisy = [`pod ${hranice[0]} %`, ...hranice.slice(0, 3).map((h, i) => `${h} – ${hranice[i + 1]} %`), `nad ${hranice[3]} %`];
+    panel.querySelector('.legenda')!.innerHTML =
+      popisy.map((t, i) => `<span><i style="background:${farby[i]}"></i>${t}</span>`).join('') + '<span class="jednotka">účasť</span>';
+  }
+
+  const panely = document.querySelectorAll<HTMLElement>('[data-volby-panel]');
+  const prvy = [...panely].find((p) => !p.hidden);
+  if (prvy) vykresli(prvy);
+
+  document.querySelectorAll<HTMLButtonElement>('[data-volby]').forEach((b) =>
+    b.addEventListener('click', () => {
+      document.querySelectorAll('[data-volby]').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+      panely.forEach((p) => {
+        p.hidden = p.dataset.volbyPanel !== b.dataset.volby;
+        if (!p.hidden) vykresli(p);
+      });
+    }),
+  );
+</script>
+
+<style>
+  .hero { padding: 40px 0 24px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 40em; margin: 0; }
+  h2 { font-size: 1.1rem; margin: 0 0 16px; }
+  section.card { margin-top: 16px; }
+  .upozornenie { border-left: 4px solid var(--accent); }
+  .upozornenie p { margin: 6px 0 0; color: var(--muted); }
+  .volby-tabs { margin: 24px 0 4px; display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .volby-tabs button { font: inherit; font-size: 0.9rem; border: 0; background: none; color: var(--muted); padding: 7px 14px; border-radius: 999px; cursor: pointer; }
+  .volby-tabs button[aria-selected='true'] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin: 12px 0 0; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 12px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; font-variant-numeric: tabular-nums; }
+  .kpi .value.small { font-size: 1.35rem; line-height: 1.25; padding: 8px 0 4px; }
+  .delta { margin: 0; font-size: 0.9rem; color: var(--muted); }
+  .delta.up { color: #1a7f4b; }
+  .delta.down { color: var(--accent); }
+  .chart { position: relative; height: 380px; }
+  .legenda-graf { display: flex; gap: 16px; font-size: 0.85rem; color: var(--muted); margin: -6px 0 10px; }
+  .legenda-graf i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .legenda-graf .ba { background: var(--accent); }
+  .legenda-graf .sr { background: var(--muted); opacity: 0.6; }
+  .mapa-volby { height: 400px; border-radius: 10px; overflow: hidden; background: var(--bg); }
+  @media (max-width: 600px) { .mapa-volby { height: 340px; } }
+  .legenda { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; font-size: 0.8rem; color: var(--muted); }
+  .legenda :global(i) { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .legenda :global(.jednotka) { margin-left: auto; }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  @media (prefers-color-scheme: dark) { .delta.up { color: #4cc38a; } }
+</style>

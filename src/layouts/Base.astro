@@ -19,7 +19,11 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
     <header class="top">
       <div class="wrap">
         <a class="logo" href="/">mesto<span>v</span>číslach</a>
-        <nav><a href="/">Bratislava</a></nav>
+        <nav>
+          {[['/', 'Prehľad'], ['/volby', 'Voľby']].map(([href, text]) => (
+            <a href={href} aria-current={Astro.url.pathname.replace(/\/$/, '') === href.replace(/\/$/, '') ? 'page' : undefined}>{text}</a>
+          ))}
+        </nav>
       </div>
     </header>
     <main class="wrap">
@@ -70,7 +74,9 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
   .top .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
   .logo { font-weight: 800; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.02em; }
   .logo span { color: var(--accent); }
-  .top nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+  .top nav { display: flex; gap: 18px; }
+  .top nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; padding: 4px 0; border-bottom: 2px solid transparent; }
+  .top nav a[aria-current='page'] { color: var(--text); border-bottom-color: var(--accent); }
   .foot { color: var(--muted); font-size: 0.85rem; padding-top: 48px; padding-bottom: 48px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
   .zdroj { color: var(--muted); font-size: 0.8rem; margin: 12px 0 0; }
