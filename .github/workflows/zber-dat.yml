@@ -9,6 +9,7 @@ on:
     paths:
       - "scripts/zber_obyvatelstvo.py"
       - "scripts/zber_volby.py"
+      - "scripts/zber_data_bratislava.py"
       - ".github/workflows/zber-dat.yml"
 
 permissions:
@@ -38,6 +39,10 @@ jobs:
       - name: Voľby (ŠÚ SR)
         if: success() || failure()
         run: python scripts/zber_volby.py
+
+      - name: Rozpočet, zmluvy, ovzdušie (data.bratislava.sk)
+        if: success() || failure()
+        run: python scripts/zber_data_bratislava.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()
