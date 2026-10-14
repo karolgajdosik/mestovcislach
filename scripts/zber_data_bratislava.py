@@ -173,6 +173,7 @@ def zber_ovzdusie() -> None:
 # --- Zmluvy -----------------------------------------------------------------
 
 ZMLUVY_ID = "dec22cd06721435d81161b9067556c3a"
+ICO_MESTA = "603481"  # zmluvy, kde je mesto samo „dodávateľom“ (napr. príjmové), do rebríčkov nepočítame
 
 
 def zber_zmluvy() -> None:
@@ -185,7 +186,6 @@ def zber_zmluvy() -> None:
 
     po_rokoch: dict[str, dict] = defaultdict(lambda: {"pocet": 0, "suma": 0.0})
     dodavatelia: dict[str, dict] = {}
-    utvary: dict[str, float] = defaultdict(float)
     najvacsie = []
     bez_ico_suma = 0.0
 
@@ -202,9 +202,10 @@ def zber_zmluvy() -> None:
         # Posledných 12 mesiacov. Mená zobrazujeme len pri subjektoch s IČO
         # (fyzické osoby bez IČO nezverejňujeme – GDPR).
         ico = (r.get("IČO_DODÁVATEĽA") or "").strip()
-        utvary[(r.get("NÁZOV_ORGANIZAČNÉHO_ÚTVARU_SAMO") or "Neuvedené").strip()] += suma
         if not ico or not ico.isdigit():
             bez_ico_suma += suma
+            continue
+        if ico == ICO_MESTA:
             continue
         d = dodavatelia.setdefault(ico, {"ico": ico, "nazov": (r.get("NÁZOV_DODÁVATEĽA") or "").strip(), "pocet": 0, "suma": 0.0})
         d["pocet"] += 1
@@ -216,7 +217,7 @@ def zber_zmluvy() -> None:
                 "ico": ico,
                 "predmet": re.sub(r"\s+", " ", (r.get("PREDMET_ZMLUVY") or "")).strip()[:200],
                 "suma": round(suma, 2),
-                "utvar": (r.get("NÁZOV_ORGANIZAČNÉHO_ÚTVARU_SAMO") or "").strip(),
+                "dodatok": str(r.get("DODATOK_K_EXISTUJÚCEJ_ZMLUVE")).lower() == "true",
                 "odkaz": (r.get("ODKAZ_NA_ZVEREJNENÚ_ZMLUVU") or "").strip(),
             })
 
@@ -232,7 +233,6 @@ def zber_zmluvy() -> None:
             "od": pred_rokom.date().isoformat(),
             "suma_bez_ico": round(bez_ico_suma, 2),
             "dodavatelia": top_dod,
-            "utvary": [{"nazov": k, "suma": round(v, 2)} for k, v in sorted(utvary.items(), key=lambda x: -x[1])[:12]],
             "najvacsie": najvacsie[:20],
         },
     }
