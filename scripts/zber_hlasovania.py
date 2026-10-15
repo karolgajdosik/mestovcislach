@@ -24,6 +24,7 @@ ITEM = "4033a9020d18471095b928b81239f80d"
 ZASADNUTIA = "7b0fe912679644c0b6c740eb83107c30"
 ZDROJ = {"nazov": "Hlasovania poslancov a poslankýň Mestského zastupiteľstva od roku 2014", "url": f"https://data.bratislava.sk/datasets/{ITEM}", "licencia": "CC BY 4.0"}
 # Z = za, P = proti, Q = zdržal(a) sa, N = prítomný, nehlasoval, A = neprítomný
+OBDOBIA = {"7": "2014–2018", "8": "2018–2022", "9": "2022–2026"}
 KODY = [("Z", r"^za"), ("P", r"^proti"), ("Q", r"zdrž"), ("A", r"neprít|nepríd|ospraved"), ("N", r"nehlas")]
 
 
@@ -78,8 +79,9 @@ def main() -> int:
     hlasovania: dict[tuple, dict] = {}
     for r in riadky:
         obd = str(r.get("Volebné_obdobie") or "").strip()
-        k = (obd, str(r.get("Zasadnutie") or "").strip(), int(float(r.get("Poradie_hlasovania") or 0)))
-        h = hlasovania.setdefault(k, {"obdobie": obd, "zasadnutie": k[1], "poradie": k[2], "datum": datum(r.get("Dátum")), "cas": str(r.get("Čas") or "")[:5],
+        # „Zasadnutie“ je všeobecný text, poradie sa číslujú v každom zasadnutí od 1 → kľúč musí obsahovať dátum
+        k = (obd, datum(r.get("Dátum")), int(float(r.get("Poradie_hlasovania") or 0)))
+        h = hlasovania.setdefault(k, {"obdobie": obd, "zasadnutie": k[1], "poradie": k[2], "datum": k[1], "cas": str(r.get("Čas") or "")[:5],
                                       "bod": re.sub(r"\s+", " ", str(r.get("Bod") or "")).strip()[:300], "hlasy": {}})
         meno = f"{(r.get('Meno') or '').strip()} {(r.get('Priezvisko') or '').strip()}".strip()
         if meno:
@@ -123,6 +125,7 @@ def main() -> int:
                              "zhoda_s_klubom": pct(st["s_klubom"], st["v_klube"])})
         poslanci.sort(key=lambda p: p["meno"].split()[-1])
         obdobia[obd] = {
+            "nazov": OBDOBIA.get(obd, obd),
             "zasadnuti": len({h["zasadnutie"] for h in hl}), "hlasovani": len(hl), "od": hl[0]["datum"], "do": hl[-1]["datum"],
             "poslanci": poslanci,
             "kluby": sorted([{"klub": k, "clenov": sum(1 for p in poslanci if p["klub"] == k), "jednotnost": round(100 * sum(v) / len(v), 1)}
@@ -134,7 +137,7 @@ def main() -> int:
     hl = sorted((h for h in hlasovania.values() if h["obdobie"] == aktualne), key=lambda h: (h["datum"], h["zasadnutie"], h["poradie"]))
     mena = [p["meno"] for p in obdobia[aktualne]["poslanci"]]
     verejne = {
-        "zdroj": ZDROJ, "obdobie": aktualne, "poslanci": [[p["meno"], p["klub"]] for p in obdobia[aktualne]["poslanci"]],
+        "zdroj": ZDROJ, "obdobie": aktualne, "obdobie_nazov": OBDOBIA.get(aktualne, aktualne), "poslanci": [[p["meno"], p["klub"]] for p in obdobia[aktualne]["poslanci"]],
         "kody": {"Z": "za", "P": "proti", "Q": "zdržal(a) sa", "N": "prítomný, nehlasoval", "A": "neprítomný", "-": "nebol poslancom"},
         # každé hlasovanie: [dátum, zasadnutie, poradie, bod, hlasy v poradí poslancov ako reťazec]
         "hlasovania": [[h["datum"], h["zasadnutie"], h["poradie"], h["bod"], "".join(h["hlasy"].get(m, ("-",))[0] for m in mena)] for h in hl],
