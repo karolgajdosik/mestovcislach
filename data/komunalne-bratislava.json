@@ -1,0 +1,2045 @@
+{
+ "zdroj": {
+  "nazov": "Štatistický úrad SR – výsledky volieb do orgánov samosprávy obcí a samosprávnych krajov",
+  "url": "https://volbysr.sk"
+ },
+ "volby": [
+  {
+   "id": "2022",
+   "datum": "2022-10-29",
+   "nazov": "Komunálne a krajské voľby 2022",
+   "web": "https://volby.statistics.sk/oso/oso2022/sk/",
+   "oso": {
+    "primator": {
+     "ucast": {
+      "zapisani": 407992,
+      "volili": 150477,
+      "ucast_pct": 36.88
+     },
+     "kandidati": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 86981,
+       "podiel": 60.2,
+       "zvoleny": true,
+       "vzdal_sa": false
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 40063,
+       "podiel": 27.73,
+       "zvoleny": false,
+       "vzdal_sa": false
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 6239,
+       "podiel": 4.32,
+       "zvoleny": false,
+       "vzdal_sa": false
+      },
+      {
+       "meno": "RNDr. Andrej Trnovec",
+       "strany": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 3446,
+       "podiel": 2.39,
+       "zvoleny": false,
+       "vzdal_sa": false
+      },
+      {
+       "meno": "Ing. Martin Mlýnek",
+       "strany": "NOVA, Občianska konzervatívna strana, Zmena zdola, Demokratická únia Slovenska, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 3005,
+       "podiel": 2.08,
+       "zvoleny": false,
+       "vzdal_sa": false
+      },
+      {
+       "meno": "PhDr. Martin Jakubec, PhD.",
+       "strany": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 2017,
+       "podiel": 1.4,
+       "zvoleny": false,
+       "vzdal_sa": false
+      },
+      {
+       "meno": "Miroslav Vetrík",
+       "strany": "ŽIVOT - národná strana",
+       "hlasy": 1162,
+       "podiel": 0.8,
+       "zvoleny": false,
+       "vzdal_sa": false
+      },
+      {
+       "meno": "Ing. Peter Poláček",
+       "strany": "Hnutie Občan Národ Spravodlivosť",
+       "hlasy": 942,
+       "podiel": 0.65,
+       "zvoleny": false,
+       "vzdal_sa": false
+      },
+      {
+       "meno": "Mgr. art. Milena Minichová",
+       "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+       "hlasy": 631,
+       "podiel": 0.44,
+       "zvoleny": false,
+       "vzdal_sa": true
+      }
+     ],
+     "mestske_casti": [
+      {
+       "kod": "529401",
+       "nazov": "Devín",
+       "ucast": 55.35,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 66.2
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 26.48
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 2.77
+        }
+       ]
+      },
+      {
+       "kod": "529371",
+       "nazov": "Devínska Nová Ves",
+       "ucast": 39.5,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 63.0
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 23.69
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 5.27
+        }
+       ]
+      },
+      {
+       "kod": "529389",
+       "nazov": "Dúbravka",
+       "ucast": 35.79,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 49.07
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 31.07
+        },
+        {
+         "meno": "RNDr. Andrej Trnovec",
+         "podiel": 9.55
+        }
+       ]
+      },
+      {
+       "kod": "529443",
+       "nazov": "Jarovce",
+       "ucast": 53.33,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 67.54
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 22.42
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 4.78
+        }
+       ]
+      },
+      {
+       "kod": "529397",
+       "nazov": "Karlova Ves",
+       "ucast": 38.14,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 67.04
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 22.63
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 4.63
+        }
+       ]
+      },
+      {
+       "kod": "529419",
+       "nazov": "Lamač",
+       "ucast": 48.14,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 53.5
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 34.41
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 4.16
+        }
+       ]
+      },
+      {
+       "kod": "529346",
+       "nazov": "Nové Mesto",
+       "ucast": 39.02,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 56.52
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 32.55
+        },
+        {
+         "meno": "RNDr. Andrej Trnovec",
+         "podiel": 4.7
+        }
+       ]
+      },
+      {
+       "kod": "529460",
+       "nazov": "Petržalka",
+       "ucast": 32.14,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 58.91
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 27.65
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 5.33
+        }
+       ]
+      },
+      {
+       "kod": "529311",
+       "nazov": "Podunajské Biskupice",
+       "ucast": 36.75,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 51.83
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 32.13
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 4.93
+        }
+       ]
+      },
+      {
+       "kod": "529354",
+       "nazov": "Rača",
+       "ucast": 38.63,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 57.03
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 31.75
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 5.23
+        }
+       ]
+      },
+      {
+       "kod": "529494",
+       "nazov": "Rusovce",
+       "ucast": 55.99,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 61.15
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 29.63
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 3.83
+        }
+       ]
+      },
+      {
+       "kod": "529320",
+       "nazov": "Ružinov",
+       "ucast": 36.66,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 64.57
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 24.86
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 3.65
+        }
+       ]
+      },
+      {
+       "kod": "528595",
+       "nazov": "Staré Mesto",
+       "ucast": 38.08,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 68.26
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 23.29
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 3.04
+        }
+       ]
+      },
+      {
+       "kod": "529362",
+       "nazov": "Vajnory",
+       "ucast": 47.82,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 54.58
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 34.2
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 4.62
+        }
+       ]
+      },
+      {
+       "kod": "529338",
+       "nazov": "Vrakuňa",
+       "ucast": 30.61,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 53.92
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 34.74
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 4.96
+        }
+       ]
+      },
+      {
+       "kod": "529427",
+       "nazov": "Záhorská Bystrica",
+       "ucast": 52.68,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 65.47
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 24.64
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 4.28
+        }
+       ]
+      },
+      {
+       "kod": "529435",
+       "nazov": "Čunovo",
+       "ucast": 62.83,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 65.18
+        },
+        {
+         "meno": "Mgr. Rudolf Kusý",
+         "podiel": 25.49
+        },
+        {
+         "meno": "Miroslav Heredoš",
+         "podiel": 3.06
+        }
+       ]
+      }
+     ],
+     "okrsky_priradene": "388/394"
+    },
+    "mestske_zastupitelstvo": {
+     "poslancov": 45,
+     "obvodov": 17,
+     "mandaty": [
+      {
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "mandaty": 29
+      },
+      {
+       "strany": "nezávislý kandidát",
+       "mandaty": 5
+      },
+      {
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "mandaty": 5
+      },
+      {
+       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+       "mandaty": 3
+      },
+      {
+       "strany": "TÍM RUŽINOV",
+       "mandaty": 2
+      },
+      {
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "mandaty": 1
+      }
+     ],
+     "zvoleni": [
+      {
+       "obvod": "Devín",
+       "meno": "JUDr. Jana Jakubkovič",
+       "strany": "nezávislý kandidát",
+       "hlasy": 401
+      },
+      {
+       "obvod": "Devínska Nová Ves",
+       "meno": "Dárius Krajčír",
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "hlasy": 2973
+      },
+      {
+       "obvod": "Dúbravka",
+       "meno": "Mgr. Zdenka Zaťovičová",
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "hlasy": 6025
+      },
+      {
+       "obvod": "Dúbravka",
+       "meno": "Ing. Juraj Káčer",
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "hlasy": 5248
+      },
+      {
+       "obvod": "Dúbravka",
+       "meno": "Bc. Dávid Dej",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 3002
+      },
+      {
+       "obvod": "Jarovce",
+       "meno": "JUDr. Mgr. Jozef Uhler",
+       "strany": "nezávislý kandidát",
+       "hlasy": 933
+      },
+      {
+       "obvod": "Karlova Ves",
+       "meno": "MUDr. Dana Čahojová",
+       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 6563
+      },
+      {
+       "obvod": "Karlova Ves",
+       "meno": "JUDr. Petra Hudáková",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 3980
+      },
+      {
+       "obvod": "Karlova Ves",
+       "meno": "JUDr. PhDr. Branislav Záhradník",
+       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 3904
+      },
+      {
+       "obvod": "Lamač",
+       "meno": "Igor Polakovič",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 1276
+      },
+      {
+       "obvod": "Nové Mesto",
+       "meno": "Mgr. Matúš Čupka",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 7144
+      },
+      {
+       "obvod": "Nové Mesto",
+       "meno": "Ing. Katarína Augustinič",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 6057
+      },
+      {
+       "obvod": "Nové Mesto",
+       "meno": "Mgr. Martin Vlačiky, PhD.",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 5833
+      },
+      {
+       "obvod": "Nové Mesto",
+       "meno": "Ing. Jakub Mrva",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 5723
+      },
+      {
+       "obvod": "Petržalka",
+       "meno": "Mgr. Michal Sabo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 10567
+      },
+      {
+       "obvod": "Petržalka",
+       "meno": "Ing. Tatiana Kratochvílová",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 10244
+      },
+      {
+       "obvod": "Petržalka",
+       "meno": "Ing. Ján Hrčka",
+       "strany": "nezávislý kandidát",
+       "hlasy": 10034
+      },
+      {
+       "obvod": "Petržalka",
+       "meno": "Mgr. Oskar Dvořák",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 10027
+      },
+      {
+       "obvod": "Petržalka",
+       "meno": "Ing Ján Karman",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 9553
+      },
+      {
+       "obvod": "Petržalka",
+       "meno": "JUDr. Lucia Plaváková, PhD.",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 9256
+      },
+      {
+       "obvod": "Petržalka",
+       "meno": "Jakub Kuruc",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 9193
+      },
+      {
+       "obvod": "Petržalka",
+       "meno": "Mgr. Lenka Jakubčová",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 9069
+      },
+      {
+       "obvod": "Petržalka",
+       "meno": "doc. PhDr. Daniel Klimovský, PhD.",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 8191
+      },
+      {
+       "obvod": "Petržalka",
+       "meno": "Adam Sarlós",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 7890
+      },
+      {
+       "obvod": "Podunajské Biskupice",
+       "meno": "Ing. Roman Lamoš",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 3035
+      },
+      {
+       "obvod": "Podunajské Biskupice",
+       "meno": "PhDr. Alžbeta Ožvaldová",
+       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 1749
+      },
+      {
+       "obvod": "Rača",
+       "meno": "Mgr. Lenka Antalová Plavuchová",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 3460
+      },
+      {
+       "obvod": "Rača",
+       "meno": "Ing. Róbert Pajdlhauser",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 1928
+      },
+      {
+       "obvod": "Rusovce",
+       "meno": "Radovan Jenčík",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1101
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Ing. Martin Chren",
+       "strany": "TÍM RUŽINOV",
+       "hlasy": 12669
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "MUDr. Jakub Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 8100
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Ing. Martin Patoprstý",
+       "strany": "TÍM RUŽINOV",
+       "hlasy": 8093
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Ing. Monika Ďurajková",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 8092
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Mgr. et Mgr. Marek Machata",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 8033
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Ing. arch. Lucia Štasselová",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 7005
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Mgr. Kamil Bodnár",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 6966
+      },
+      {
+       "obvod": "Staré Mesto",
+       "meno": "Ing. Matej Vagač",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 6962
+      },
+      {
+       "obvod": "Staré Mesto",
+       "meno": "Mgr. art. Dana Kleinert",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 6374
+      },
+      {
+       "obvod": "Staré Mesto",
+       "meno": "Mgr. art. Adam Berka",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 5999
+      },
+      {
+       "obvod": "Staré Mesto",
+       "meno": "Mgr. Martin Winkler",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 5774
+      },
+      {
+       "obvod": "Vajnory",
+       "meno": "Ing. Michal Vlček",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1007
+      },
+      {
+       "obvod": "Vrakuňa",
+       "meno": "JUDr. Ing. Martin Kuruc",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 3226
+      },
+      {
+       "obvod": "Vrakuňa",
+       "meno": "Mgr. Miroslav Macko",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 1332
+      },
+      {
+       "obvod": "Záhorská Bystrica",
+       "meno": "Ing. Jozef Krúpa",
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "hlasy": 1692
+      },
+      {
+       "obvod": "Čunovo",
+       "meno": "Gabriela Ferenčáková",
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "hlasy": 633
+      }
+     ]
+    },
+    "starostovia": [
+     {
+      "kod": "529401",
+      "nazov": "Devín",
+      "ucast": {
+       "zapisani": 1541,
+       "volili": 853,
+       "ucast_pct": 55.35
+      },
+      "kandidati": [
+       {
+        "meno": "JUDr. Jana Jakubkovič",
+        "strany": "nezávislý kandidát",
+        "hlasy": 364,
+        "podiel": 43.49,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Bc. Igor Prieložný",
+        "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+        "hlasy": 252,
+        "podiel": 30.11,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Štefan Lőrinc, PhD.",
+        "strany": "nezávislý kandidát",
+        "hlasy": 132,
+        "podiel": 15.77,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Anton Martvoň, PhD.",
+        "strany": "HLAS - sociálna demokracia",
+        "hlasy": 54,
+        "podiel": 6.45,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Rastislav Kunst",
+        "strany": "SME RODINA, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+        "hlasy": 35,
+        "podiel": 4.18,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 7,
+       "mandaty": [
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 7
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529371",
+      "nazov": "Devínska Nová Ves",
+      "ucast": {
+       "zapisani": 14281,
+       "volili": 5641,
+       "ucast_pct": 39.5
+      },
+      "kandidati": [
+       {
+        "meno": "Dárius Krajčír",
+        "strany": "Strana obcí a miest - SOM SLOVENSKO",
+        "hlasy": 4287,
+        "podiel": 79.94,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Ján Žatko",
+        "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SPOLU - občianska demokracia",
+        "hlasy": 1076,
+        "podiel": 20.06,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 12,
+       "mandaty": [
+        {
+         "strany": "Strana obcí a miest - SOM SLOVENSKO",
+         "mandaty": 6
+        },
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "mandaty": 5
+        },
+        {
+         "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SPOLU - občianska demokracia",
+         "mandaty": 1
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529389",
+      "nazov": "Dúbravka",
+      "ucast": {
+       "zapisani": 30999,
+       "volili": 11133,
+       "ucast_pct": 35.91
+      },
+      "kandidati": [
+       {
+        "meno": "RNDr. Martin Zaťovič",
+        "strany": "Strana obcí a miest - SOM SLOVENSKO",
+        "hlasy": 8572,
+        "podiel": 81.04,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Marek Dinuš",
+        "strany": "nezávislý kandidát",
+        "hlasy": 2005,
+        "podiel": 18.96,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 25,
+       "mandaty": [
+        {
+         "strany": "Strana obcí a miest - SOM SLOVENSKO",
+         "mandaty": 23
+        },
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 1
+        },
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "mandaty": 1
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529443",
+      "nazov": "Jarovce",
+      "ucast": {
+       "zapisani": 2149,
+       "volili": 1146,
+       "ucast_pct": 53.33
+      },
+      "kandidati": [
+       {
+        "meno": "JUDr. Mgr. Jozef Uhler",
+        "strany": "nezávislý kandidát",
+        "hlasy": 1009,
+        "podiel": 100.0,
+        "zvoleny": true,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 7,
+       "mandaty": [
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 6
+        },
+        {
+         "strany": "Kresťanskodemokratické hnutie",
+         "mandaty": 1
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529397",
+      "nazov": "Karlova Ves",
+      "ucast": {
+       "zapisani": 30563,
+       "volili": 11699,
+       "ucast_pct": 38.28
+      },
+      "kandidati": [
+       {
+        "meno": "MUDr. Dana Čahojová",
+        "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 9434,
+        "podiel": 85.45,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Branislav Rusnák",
+        "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 822,
+        "podiel": 7.45,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ján Krošlák",
+        "strany": "SME RODINA, ZA ĽUDÍ, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+        "hlasy": 427,
+        "podiel": 3.87,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Ľubica Cintulová",
+        "strany": "Hnutie Občan Národ Spravodlivosť",
+        "hlasy": 357,
+        "podiel": 3.23,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 25,
+       "mandaty": [
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "mandaty": 19
+        },
+        {
+         "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+         "mandaty": 6
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529419",
+      "nazov": "Lamač",
+      "ucast": {
+       "zapisani": 6529,
+       "volili": 3143,
+       "ucast_pct": 48.14
+      },
+      "kandidati": [
+       {
+        "meno": "Igor Polakovič",
+        "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+        "hlasy": 1161,
+        "podiel": 39.34,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Lukáš Baňacký",
+        "strany": "Strana obcí a miest - SOM SLOVENSKO",
+        "hlasy": 886,
+        "podiel": 30.02,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Ing. Radoslav Olekšák",
+        "strany": "HLAS - sociálna demokracia, SMER - sociálna demokracia, Slovenská národná strana",
+        "hlasy": 523,
+        "podiel": 17.72,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Mária Šimončičová",
+        "strany": "nezávislý kandidát",
+        "hlasy": 381,
+        "podiel": 12.91,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 7,
+       "mandaty": [
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "mandaty": 5
+        },
+        {
+         "strany": "Strana obcí a miest - SOM SLOVENSKO",
+         "mandaty": 1
+        },
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 1
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529346",
+      "nazov": "Nové Mesto",
+      "ucast": {
+       "zapisani": 38438,
+       "volili": 14991,
+       "ucast_pct": 39.0
+      },
+      "kandidati": [
+       {
+        "meno": "Mgr. Matúš Čupka",
+        "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+        "hlasy": 7832,
+        "podiel": 55.39,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Zuzana Rattajová",
+        "strany": "nezávislý kandidát",
+        "hlasy": 2803,
+        "podiel": 19.82,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "PhDr. Branislav Filipovič, MBA",
+        "strany": "nezávislý kandidát",
+        "hlasy": 2684,
+        "podiel": 18.98,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Andrej Árva",
+        "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 624,
+        "podiel": 4.41,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mag.(FH) Radúz Dula, PhD.",
+        "strany": "Demokratická strana, ODS - Občianski demokrati Slovenska, ŠANCA, SPOLU - občianska demokracia",
+        "hlasy": 111,
+        "podiel": 0.79,
+        "zvoleny": false,
+        "vzdal_sa": true
+       },
+       {
+        "meno": "Simona Timková",
+        "strany": "Demokrati Slovenska",
+        "hlasy": 85,
+        "podiel": 0.6,
+        "zvoleny": false,
+        "vzdal_sa": true
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 25,
+       "mandaty": [
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "mandaty": 23
+        },
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 1
+        },
+        {
+         "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+         "mandaty": 1
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529460",
+      "nazov": "Petržalka",
+      "ucast": {
+       "zapisani": 97824,
+       "volili": 31529,
+       "ucast_pct": 32.23
+      },
+      "kandidati": [
+       {
+        "meno": "Ing. Ján Hrčka",
+        "strany": "nezávislý kandidát",
+        "hlasy": 23120,
+        "podiel": 77.2,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. arch. Mgr. art. Elena Pätoprstá",
+        "strany": "Zmena zdola, Demokratická únia Slovenska",
+        "hlasy": 4172,
+        "podiel": 13.93,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Martin Kližan",
+        "strany": "nezávislý kandidát",
+        "hlasy": 2657,
+        "podiel": 8.87,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 35,
+       "mandaty": [
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "mandaty": 33
+        },
+        {
+         "strany": "NOVA, Občianska konzervatívna strana, Zmena zdola, Demokratická únia Slovenska, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+         "mandaty": 1
+        },
+        {
+         "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+         "mandaty": 1
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529311",
+      "nazov": "Podunajské Biskupice",
+      "ucast": {
+       "zapisani": 19586,
+       "volili": 7197,
+       "ucast_pct": 36.75
+      },
+      "kandidati": [
+       {
+        "meno": "Ing. Roman Lamoš",
+        "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+        "hlasy": 3090,
+        "podiel": 44.83,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Zoltán Pék",
+        "strany": "Strana obcí a miest - SOM SLOVENSKO, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+        "hlasy": 1502,
+        "podiel": 21.79,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr.art. Martina Frőhlich Činovská, M.A.",
+        "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, DOBRÁ VOĽBA a Umiernení",
+        "hlasy": 644,
+        "podiel": 9.34,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Boris Vereš",
+        "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ",
+        "hlasy": 610,
+        "podiel": 8.85,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Pavol Kubiš",
+        "strany": "Demokratická strana",
+        "hlasy": 459,
+        "podiel": 6.66,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Zoran Kupkovič",
+        "strany": "HLAS - sociálna demokracia",
+        "hlasy": 364,
+        "podiel": 5.28,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Andrej Bojczún",
+        "strany": "nezávislý kandidát",
+        "hlasy": 224,
+        "podiel": 3.25,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 15,
+       "mandaty": [
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "mandaty": 12
+        },
+        {
+         "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+         "mandaty": 1
+        },
+        {
+         "strany": "Demokratická strana",
+         "mandaty": 1
+        },
+        {
+         "strany": "Strana obcí a miest - SOM SLOVENSKO, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+         "mandaty": 1
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529354",
+      "nazov": "Rača",
+      "ucast": {
+       "zapisani": 21896,
+       "volili": 8459,
+       "ucast_pct": 38.63
+      },
+      "kandidati": [
+       {
+        "meno": "Mgr. Michal Drotován",
+        "strany": "nezávislý kandidát",
+        "hlasy": 5603,
+        "podiel": 68.56,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "PhDr. Ján Polakovič",
+        "strany": "nezávislý kandidát",
+        "hlasy": 2113,
+        "podiel": 25.86,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Rudolf Ivičič",
+        "strany": "SRDCE - SLOVENSKÁ NÁRODNÁ JEDNOTA - strana vlastencov",
+        "hlasy": 231,
+        "podiel": 2.83,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Teodor Žitný",
+        "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 225,
+        "podiel": 2.75,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 15,
+       "mandaty": [
+        {
+         "strany": "SPOLU - občianska demokracia, ZA ĽUDÍ, Kresťanskodemokratické hnutie, Demokratická strana",
+         "mandaty": 7
+        },
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 5
+        },
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "mandaty": 3
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529494",
+      "nazov": "Rusovce",
+      "ucast": {
+       "zapisani": 3456,
+       "volili": 1935,
+       "ucast_pct": 55.99
+      },
+      "kandidati": [
+       {
+        "meno": "Radovan Jenčík",
+        "strany": "nezávislý kandidát",
+        "hlasy": 1101,
+        "podiel": 59.97,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "PhDr. Lucia Tuleková Henčelová, PhD.",
+        "strany": "Team Bratislava, Progresívne Slovensko",
+        "hlasy": 735,
+        "podiel": 40.03,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 9,
+       "mandaty": [
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 8
+        },
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko",
+         "mandaty": 1
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529320",
+      "nazov": "Ružinov",
+      "ucast": {
+       "zapisani": 70536,
+       "volili": 25822,
+       "ucast_pct": 36.61
+      },
+      "kandidati": [
+       {
+        "meno": "Ing. Martin Chren",
+        "strany": "TÍM RUŽINOV",
+        "hlasy": 19283,
+        "podiel": 78.14,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Peter Strapák",
+        "strany": "nezávislý kandidát",
+        "hlasy": 2698,
+        "podiel": 10.93,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Jana Jányová",
+        "strany": "SMER - sociálna demokracia, REPUBLIKA, DOMOV národná strana",
+        "hlasy": 1212,
+        "podiel": 4.91,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ivor Švihran",
+        "strany": "nezávislý kandidát",
+        "hlasy": 921,
+        "podiel": 3.73,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Veronika Biksadská",
+        "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 565,
+        "podiel": 2.29,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 25,
+       "mandaty": [
+        {
+         "strany": "TÍM RUŽINOV",
+         "mandaty": 13
+        },
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "mandaty": 11
+        },
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 1
+        }
+       ]
+      }
+     },
+     {
+      "kod": "528595",
+      "nazov": "Staré Mesto",
+      "ucast": {
+       "zapisani": 41432,
+       "volili": 15776,
+       "ucast_pct": 38.08
+      },
+      "kandidati": [
+       {
+        "meno": "Ing. Matej Vagač",
+        "strany": "Team Bratislava, Progresívne Slovensko",
+        "hlasy": 7633,
+        "podiel": 50.31,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. arch. Zuzana Aufrichtová",
+        "strany": "Sloboda a Solidarita, Kresťanskodemokratické hnutie, Občianska konzervatívna strana, NOVA, ZA ĽUDÍ, Zmena zdola, Demokratická únia Slovenska",
+        "hlasy": 3374,
+        "podiel": 22.24,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Radoslav Števčík",
+        "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 2461,
+        "podiel": 16.22,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. arch. Martin Gajdoš",
+        "strany": "SPOLU - občianska demokracia, Demokratická strana, ODS - Občianski demokrati Slovenska, ŠANCA",
+        "hlasy": 699,
+        "podiel": 4.61,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Zuzana Luhová",
+        "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 238,
+        "podiel": 1.57,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Bc. Romana Tabák",
+        "strany": "SME RODINA",
+        "hlasy": 216,
+        "podiel": 1.42,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "RNDr. Andrej Trnovec",
+        "strany": "Slovenská ľudová strana Andreja Hlinku",
+        "hlasy": 206,
+        "podiel": 1.36,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Michal Čambal",
+        "strany": "ŽIVOT - národná strana",
+        "hlasy": 149,
+        "podiel": 0.98,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Jozef Bača, PhD.",
+        "strany": "DOMOV národná strana",
+        "hlasy": 121,
+        "podiel": 0.8,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. art. Milena Minichová",
+        "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+        "hlasy": 76,
+        "podiel": 0.5,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 25,
+       "mandaty": [
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko",
+         "mandaty": 25
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529362",
+      "nazov": "Vajnory",
+      "ucast": {
+       "zapisani": 4881,
+       "volili": 2334,
+       "ucast_pct": 47.82
+      },
+      "kandidati": [
+       {
+        "meno": "Ing. Michal Vlček",
+        "strany": "nezávislý kandidát",
+        "hlasy": 1356,
+        "podiel": 61.11,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Monika Debnárová",
+        "strany": "nezávislý kandidát",
+        "hlasy": 453,
+        "podiel": 20.41,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Juraj Ondruška, PhD.",
+        "strany": "nezávislý kandidát",
+        "hlasy": 410,
+        "podiel": 18.48,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 9,
+       "mandaty": [
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 9
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529338",
+      "nazov": "Vrakuňa",
+      "ucast": {
+       "zapisani": 17417,
+       "volili": 5332,
+       "ucast_pct": 30.61
+      },
+      "kandidati": [
+       {
+        "meno": "JUDr. Ing. Martin Kuruc",
+        "strany": "nezávislý kandidát",
+        "hlasy": 4621,
+        "podiel": 100.0,
+        "zvoleny": true,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 15,
+       "mandaty": [
+        {
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "mandaty": 12
+        },
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 3
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529427",
+      "nazov": "Záhorská Bystrica",
+      "ucast": {
+       "zapisani": 5154,
+       "volili": 2715,
+       "ucast_pct": 52.68
+      },
+      "kandidati": [
+       {
+        "meno": "Ing. Jozef Krúpa",
+        "strany": "Strana obcí a miest - SOM SLOVENSKO",
+        "hlasy": 2117,
+        "podiel": 84.88,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Róbert Martauz",
+        "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 377,
+        "podiel": 15.12,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 9,
+       "mandaty": [
+        {
+         "strany": "Strana obcí a miest - SOM SLOVENSKO",
+         "mandaty": 8
+        },
+        {
+         "strany": "ZA ĽUDÍ",
+         "mandaty": 1
+        }
+       ]
+      }
+     },
+     {
+      "kod": "529435",
+      "nazov": "Čunovo",
+      "ucast": {
+       "zapisani": 1259,
+       "volili": 791,
+       "ucast_pct": 62.83
+      },
+      "kandidati": [
+       {
+        "meno": "Gabriela Ferenčáková",
+        "strany": "Strana obcí a miest - SOM SLOVENSKO",
+        "hlasy": 519,
+        "podiel": 71.1,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Richard Puchala",
+        "strany": "nezávislý kandidát",
+        "hlasy": 149,
+        "podiel": 20.41,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Michaela Forróová",
+        "strany": "nezávislý kandidát",
+        "hlasy": 62,
+        "podiel": 8.49,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 7,
+       "mandaty": [
+        {
+         "strany": "nezávislý kandidát",
+         "mandaty": 7
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "zdroj_oso": "https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip",
+   "osk": {
+    "predseda": {
+     "kraj": {
+      "ucast": {
+       "zapisani": 604207,
+       "volili": 233255,
+       "ucast_pct": 38.61
+      },
+      "kandidati": [
+       {
+        "meno": "Mgr. Juraj Droba, MBA, MA",
+        "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+        "hlasy": 136983,
+        "podiel": 63.61,
+        "zvoleny": true,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. Ján Mažgút",
+        "strany": "SMER - sociálna demokracia, Slovenská národná strana",
+        "hlasy": 28911,
+        "podiel": 13.43,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Ivan Bošňák",
+        "strany": "Demokratická strana, ODS - Občianski demokrati Slovenska, SPOLU - občianska demokracia, ŠANCA",
+        "hlasy": 18445,
+        "podiel": 8.57,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "prof. Ing. Dušan Velič, DrSc.",
+        "strany": "ZA ĽUDÍ, SME RODINA, Kresťanskodemokratické hnutie, Magyar Fórum - Maďarské fórum",
+        "hlasy": 17420,
+        "podiel": 8.09,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "PharmDr. Milan Lopašovský",
+        "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+        "hlasy": 4449,
+        "podiel": 2.07,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Mgr. art. Štefan Zima",
+        "strany": "REPUBLIKA",
+        "hlasy": 3751,
+        "podiel": 1.74,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "Ing. Magdaléna Sulanová",
+        "strany": "Kotlebovci - Ľudová strana Naše Slovensko",
+        "hlasy": 2927,
+        "podiel": 1.36,
+        "zvoleny": false,
+        "vzdal_sa": false
+       },
+       {
+        "meno": "RNDr. Andrej Trnovec",
+        "strany": "Slovenská ľudová strana Andreja Hlinku",
+        "hlasy": 2465,
+        "podiel": 1.14,
+        "zvoleny": false,
+        "vzdal_sa": false
+       }
+      ]
+     },
+     "bratislava": {
+      "ucast": {
+       "zapisani": 407983,
+       "volili": 150223,
+       "ucast_pct": 36.82
+      },
+      "kandidati": [
+       {
+        "meno": "Mgr. Juraj Droba, MBA, MA",
+        "hlasy": 92638,
+        "podiel": 64.81
+       },
+       {
+        "meno": "Mgr. Ján Mažgút",
+        "hlasy": 19255,
+        "podiel": 13.47
+       },
+       {
+        "meno": "Ing. Ivan Bošňák",
+        "hlasy": 12141,
+        "podiel": 8.49
+       },
+       {
+        "meno": "prof. Ing. Dušan Velič, DrSc.",
+        "hlasy": 11321,
+        "podiel": 7.92
+       },
+       {
+        "meno": "PharmDr. Milan Lopašovský",
+        "hlasy": 2653,
+        "podiel": 1.86
+       },
+       {
+        "meno": "Mgr. art. Štefan Zima",
+        "hlasy": 1955,
+        "podiel": 1.37
+       },
+       {
+        "meno": "RNDr. Andrej Trnovec",
+        "hlasy": 1507,
+        "podiel": 1.05
+       },
+       {
+        "meno": "Ing. Magdaléna Sulanová",
+        "hlasy": 1465,
+        "podiel": 1.02
+       }
+      ]
+     }
+    },
+    "poslanci_za_bratislavu": {
+     "poslancov": 35,
+     "mandaty": [
+      {
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "mandaty": 23
+      },
+      {
+       "strany": "nezávislý kandidát",
+       "mandaty": 4
+      },
+      {
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "mandaty": 4
+      },
+      {
+       "strany": "TÍM RUŽINOV",
+       "mandaty": 2
+      },
+      {
+       "strany": "DOBRÁ VOĽBA a Umiernení",
+       "mandaty": 1
+      },
+      {
+       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+       "mandaty": 1
+      }
+     ],
+     "zvoleni": [
+      {
+       "obvod": "Staré Mesto",
+       "meno": "Mgr. Petra Hitková, PhD.",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 5994
+      },
+      {
+       "obvod": "Staré Mesto",
+       "meno": "Ing. Martin Barto, CSc.",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 4965
+      },
+      {
+       "obvod": "Staré Mesto",
+       "meno": "Mgr. Martin Winkler",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 4878
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Ing. Martin Chren",
+       "strany": "TÍM RUŽINOV",
+       "hlasy": 13310
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Monika Ďurajková",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 8926
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Mgr. Ján Buocik",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 8673
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "MUDr. Jakub Vallo",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 8561
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Mgr. et Mgr. Marek Machata",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 7997
+      },
+      {
+       "obvod": "Ružinov",
+       "meno": "Ing. Martin Patoprstý",
+       "strany": "TÍM RUŽINOV",
+       "hlasy": 7657
+      },
+      {
+       "obvod": "Vrakuňa",
+       "meno": "Ing. Zuzana Schwartzová",
+       "strany": "nezávislý kandidát",
+       "hlasy": 2810
+      },
+      {
+       "obvod": "Vrakuňa",
+       "meno": "Ing. Soňa Svoreňová",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1815
+      },
+      {
+       "obvod": "Podunajské Biskupice",
+       "meno": "PhDr. Alžbeta Ožvaldová",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 2765
+      },
+      {
+       "obvod": "Podunajské Biskupice",
+       "meno": "Martin Kuklovský",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 1540
+      },
+      {
+       "obvod": "Nové Mesto",
+       "meno": "Ing. Jakub Mrva",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 6003
+      },
+      {
+       "obvod": "Nové Mesto",
+       "meno": "JUDr. Tomáš Korček, PhD., LL.M.",
+       "strany": "nezávislý kandidát",
+       "hlasy": 4065
+      },
+      {
+       "obvod": "Nové Mesto",
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "DOBRÁ VOĽBA a Umiernení",
+       "hlasy": 4062
+      },
+      {
+       "obvod": "Rača, Vajnory",
+       "meno": "Mgr. Lenka Antalová Plavuchová",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 4037
+      },
+      {
+       "obvod": "Rača, Vajnory",
+       "meno": "Mgr. Peter Pilinský",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 3438
+      },
+      {
+       "obvod": "Karlova Ves",
+       "meno": "MUDr. Dana Čahojová",
+       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 6647
+      },
+      {
+       "obvod": "Karlova Ves",
+       "meno": "Mgr. Simona Petrík",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 3990
+      },
+      {
+       "obvod": "Karlova Ves",
+       "meno": "Ing. Martin Vician",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 3971
+      },
+      {
+       "obvod": "Devín, Devínska Nová Ves",
+       "meno": "Bc. Jozef Tittel",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 3248
+      },
+      {
+       "obvod": "Dúbravka",
+       "meno": "RNDr. Martin Zaťovič",
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "hlasy": 7045
+      },
+      {
+       "obvod": "Dúbravka",
+       "meno": "MUDr. Juraj Štekláč, PhD., MPH",
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "hlasy": 4496
+      },
+      {
+       "obvod": "Dúbravka",
+       "meno": "Tomáš Husár",
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "hlasy": 3244
+      },
+      {
+       "obvod": "Lamač, Záhorská Bystrica",
+       "meno": "Ing. Jozef Krúpa",
+       "strany": "Strana obcí a miest - SOM SLOVENSKO",
+       "hlasy": 2096
+      },
+      {
+       "obvod": "Jarovce, Petržalka, Rusovce, Čunovo",
+       "meno": "Ing. Ján Hrčka",
+       "strany": "nezávislý kandidát",
+       "hlasy": 11792
+      },
+      {
+       "obvod": "Jarovce, Petržalka, Rusovce, Čunovo",
+       "meno": "Ing. Mgr. Peter Cmorej",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 11560
+      },
+      {
+       "obvod": "Jarovce, Petržalka, Rusovce, Čunovo",
+       "meno": "Mgr. Michal Sabo",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 11077
+      },
+      {
+       "obvod": "Jarovce, Petržalka, Rusovce, Čunovo",
+       "meno": "JUDr. Lucia Plaváková, PhD.",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 10257
+      },
+      {
+       "obvod": "Jarovce, Petržalka, Rusovce, Čunovo",
+       "meno": "JUDr. Mgr. Jozef Uhler",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 9789
+      },
+      {
+       "obvod": "Jarovce, Petržalka, Rusovce, Čunovo",
+       "meno": "Mgr. Oskar Dvořák",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 9511
+      },
+      {
+       "obvod": "Jarovce, Petržalka, Rusovce, Čunovo",
+       "meno": "Mgr. Milan Polešenský",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 9403
+      },
+      {
+       "obvod": "Jarovce, Petržalka, Rusovce, Čunovo",
+       "meno": "Ing. Robert Kočkovský",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 8950
+      },
+      {
+       "obvod": "Jarovce, Petržalka, Rusovce, Čunovo",
+       "meno": "Bc. Michal Rakús",
+       "strany": "Sloboda a Solidarita, Progresívne Slovensko, Team Bratislava",
+       "hlasy": 8688
+      }
+     ]
+    }
+   },
+   "zdroj_osk": "https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip",
+   "stav": "vysledky"
+  },
+  {
+   "id": "2026",
+   "datum": "2026-10-24",
+   "nazov": "Komunálne a krajské voľby 2026",
+   "web": "https://volbysr.sk/oso/sk/",
+   "stav": "caka_sa"
+  }
+ ],
+ "aktualizovane": "2026-10-15T13:01:03+00:00"
+}
