@@ -178,6 +178,51 @@ export async function GET() {
   if (csd) {
     temy.csd = { nazov: 'Celoštátne sčítanie dopravy (diaľnice a cesty)', stranka: '/doprava#csd', fakty: { popis: csd.popis, narast_2005_2015: csd.narast_2005_2015, cesty: csd.cesty.slice(0, 16), najvytazenejsie_useky_2015: csd.useky_2015.slice(0, 8) } };
   }
+  const hl = nacitaj('hlasovania-msz.json');
+  if (hl) {
+    temy.hlasovania = {
+      nazov: 'Hlasovania poslancov mestského zastupiteľstva (otvorené dáta 12/2014 – 6/2023)', stranka: '/volby#hlasovania',
+      fakty: {
+        poznamka: 'Otvorené dáta mesta obsahujú hlasovania len do júna 2023; z obdobia 2022–2026 len 12/2022–6/2023. Novšie hlasovania sú len v dokumentoch na zastupitelstvo.bratislava.sk.',
+        ...Object.fromEntries(Object.entries<any>(hl.obdobia).map(([, o]) => [`obdobie ${o.nazov}`, {
+          hlasovani: o.hlasovani, zasadnuti: o.zasadnuti, od: o.od, do: o.do,
+          kluby: o.kluby.map((k: any) => `${k.klub}: ${k.clenov} členov, jednotnosť ${k.jednotnost} %`),
+          poslanci: o.poslanci.map((p: any) => `${p.meno} (${p.klub}): prítomnosť ${p.pritomnost} %, za ${p.za}, proti ${p.proti}, zdržal ${p.zdrzal}, zhoda s väčšinou ${p.zhoda_s_vacsinou} %, s klubom ${p.zhoda_s_klubom} %`),
+        }])),
+      },
+    };
+  }
+  const bez = nacitaj('bezpecnost-bratislava.json');
+  if (bez) {
+    const cist = (t: string) => t.replace(/^\d+\s*-\s*/, '');
+    const udal = (u: any) => u && { spolu: u.spolu, roky: u.roky, druhy: u.druhy.slice(0, 10).map((d: any) => `${cist(d.druh)}: ${d.pocet}`),
+      ulice: u.ulice.slice(0, 10).map((x: any) => `${x.ulica} (${x.mc}): ${x.pocet}`),
+      mestske_casti: Object.fromEntries(Object.entries<any>(u.mestske_casti).map(([m, v]) => [m, v.roky])) };
+    temy.bezpecnost = {
+      nazov: 'Bezpečnosť – evidencia mestskej polície 2017–2022 a podnety občanov', stranka: '/bezpecnost',
+      fakty: { poznamka: 'Mesto zverejnilo údaje mestskej polície len za 2017–2022; trestné činy rieši najmä Policajný zbor SR.',
+        priestupky: udal(bez.priestupky), podozrenia_z_trestnych_cinov: udal(bez.trestne_ciny), ine_zasahy: udal(bez.ostatne),
+        podnety_obcanov: bez.podnety && { spolu: bez.podnety.spolu, roky: bez.podnety.roky, kategorie: bez.podnety.kategorie.slice(0, 10), stavy: bez.podnety.stavy, median_dni: bez.podnety.median_dni_vyriesenia } },
+    };
+  }
+  const fakt = nacitaj('faktury-bratislava.json');
+  if (fakt) {
+    temy.faktury = {
+      nazov: 'Faktúry, objednávky a zmluvy magistrátu a mestských firiem (OLO, Marianum, MIB)', stranka: '/financie#faktury',
+      fakty: Object.fromEntries(fakt.datasety.map((d: any) => [`${d.organizacia} – ${d.typ}`, {
+        roky: Object.fromEntries(Object.entries<any>(d.roky).slice(-5)),
+        najvacsi_dodavatelia_3_roky: d.dodavatelia_posledne_3_roky.slice(0, 8).map((x: any) => `${x.nazov}: ${x.suma} € (${x.pocet}×)`),
+        median_dni_uhrady: d.median_dni_uhrady ?? undefined,
+      }])),
+    };
+  }
+  const vrs = nacitaj('vrstvy-bratislava.json');
+  const klima = nacitaj('klima-bratislava.json');
+  if (klima) {
+    temy.klima = { nazov: 'Klimatický atlas – riziká horúčav a prívalových dažďov (mapa)', stranka: '/mapa#horucavy',
+      fakty: { poznamka: 'Mapa po štvorcoch 200 × 200 m, hodnoty sa porovnávajú v rámci mesta; konkrétne miesto je na mape (vrstvy Klíma a obyvatelia).', vrstvy: Object.values<any>(klima.vrstvy).map((v) => `${v.nazov}: ${v.popis ?? ''}`) } };
+  }
+  const katStav = nacitaj('katalog-stav.json');
   temy.hluk = {
     nazov: 'Hluk – strategické hlukové mapy ÚVZ SR', stranka: '/mapa#hluk',
     fakty: { popis: 'Mapa izofón 55, 60, 65 a 70 dB pre hluk z ciest (Lden celý deň, Lnight noc) a z priemyslu v aglomerácii Bratislava. Konkrétnu ulicu si treba pozrieť na mape webu (vrstva Hluk). Odporúčanie WHO pre hluk z ciest: najviac 53 dB Lden a 45 dB v noci; vyhláška pre obytné územie pri hlavných cestách: 60 dB cez deň, 50 dB v noci.' },
@@ -253,7 +298,13 @@ export async function GET() {
   }
   for (const z of mhd?.zastavky ?? []) miesta.push({ n: z.nazov, k: 'Zastávka MHD', c: mc(z.kod_obce), lat: z.lat, lon: z.lon, linky: z.linky.join(', '), odchody: z.odchody });
   for (const s of bajk?.stanice ?? []) miesta.push({ n: s.nazov, k: 'Stanica BAjk', c: mc(s.kod_obce), lat: s.lat, lon: s.lon });
+  for (const [lat, lon, kat, nazov, det] of nacitaj('vrstvy-bratislava.json', 'public/data')?.body ?? []) {
+    const K: Record<string, string> = { bezbarierove: 'Bezbariérové miesta', fontany: 'Pitné fontány', sportoviska: 'Športoviská', bezdomovci: 'Pomoc ľuďom bez domova', veterina: 'Veterinárne ambulancie a kliniky' };
+    miesta.push({ n: nazov, k: K[kat] ?? kat, c: castPre(lat, lon), lat, lon, typ: det.typ, a: det.a, w: det.w, info: det.info?.join('; ')?.slice(0, 200) });
+  }
   for (const m of miesta) { delete m.f; delete m.id; }
+  // Katalóg dát: názvy tabuliek pre vyhľadávanie asistentom (údaje načíta funkcia z /data/tabulky/<id>.json)
+  const katalog = (katStav?.datasety ?? []).filter((d: any) => d.stav === 'katalog').map((d: any) => ({ id: d.id, n: d.nazov, k: d.kategoria }));
 
-  return new Response(JSON.stringify({ temy, miesta, mestske_casti: [...nazvyMC.values()] }), { headers: { 'Content-Type': 'application/json' } });
+  return new Response(JSON.stringify({ temy, miesta, katalog, mestske_casti: [...nazvyMC.values()] }), { headers: { 'Content-Type': 'application/json' } });
 }
