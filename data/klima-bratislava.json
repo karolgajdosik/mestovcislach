@@ -114,18 +114,18 @@
   },
   "hustota": {
    "nazov": "Hustota obyvateľov (1 km²)",
-   "buniek": 50661,
+   "buniek": 369,
    "min": 0,
-   "max": 17432,
+   "max": 16351,
    "hranice": [
     0,
     0,
-    0,
-    38
+    42,
+    1035
    ],
    "zdroj": "https://data.bratislava.sk/datasets/ffe51d79f7854658bcdb33cc9ae69141"
   }
  },
  "chyby": [],
- "aktualizovane": "2026-10-15T16:53:09+00:00"
+ "aktualizovane": "2026-10-15T16:57:22+00:00"
 }
