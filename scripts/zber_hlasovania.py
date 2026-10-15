@@ -25,6 +25,12 @@ ZASADNUTIA = "7b0fe912679644c0b6c740eb83107c30"
 ZDROJ = {"nazov": "Hlasovania poslancov a poslankýň Mestského zastupiteľstva od roku 2014", "url": f"https://data.bratislava.sk/datasets/{ITEM}", "licencia": "CC BY 4.0"}
 # Z = za, P = proti, Q = zdržal(a) sa, N = prítomný, nehlasoval, A = neprítomný
 OBDOBIA = {"7": "2014–2018", "8": "2018–2022", "9": "2022–2026"}
+# Volebné obdobie podľa dátumu zasadnutia (zdroj označuje aj zasadnutia po voľbách 2022 ako obdobie 8)
+HRANICE = [("2018-11-10", "7"), ("2022-11-01", "8"), ("9999-12-31", "9")]
+
+
+def obdobie_podla_datumu(d: str) -> str:
+    return next(o for hranica, o in HRANICE if d < hranica)
 KODY = [("Z", r"^za"), ("P", r"^proti"), ("Q", r"zdrž"), ("A", r"neprít|nepríd|ospraved"), ("N", r"nehlas")]
 
 
@@ -78,7 +84,7 @@ def main() -> int:
     # hlasovanie = (obdobie, zasadnutie, poradie)
     hlasovania: dict[tuple, dict] = {}
     for r in riadky:
-        obd = str(r.get("Volebné_obdobie") or "").strip()
+        obd = obdobie_podla_datumu(datum(r.get("Dátum")))
         # „Zasadnutie“ je všeobecný text, poradie sa číslujú v každom zasadnutí od 1 → kľúč musí obsahovať dátum
         k = (obd, datum(r.get("Dátum")), int(float(r.get("Poradie_hlasovania") or 0)))
         h = hlasovania.setdefault(k, {"obdobie": obd, "zasadnutie": k[1], "poradie": k[2], "datum": k[1], "cas": str(r.get("Čas") or "")[:5],
@@ -134,7 +140,7 @@ def main() -> int:
         print(f"{obd}: {len(hl)} hlasovaní, {len(poslanci)} poslancov, {obdobia[obd]['zasadnuti']} zasadnutí")
 
     aktualne = max(obdobia, key=lambda o: obdobia[o]["do"])
-    hl = sorted((h for h in hlasovania.values() if h["obdobie"] == aktualne), key=lambda h: (h["datum"], h["zasadnutie"], h["poradie"]))
+    hl = sorted((h for h in hlasovania.values() if h["obdobie"] == aktualne), key=lambda h: (h["datum"], h["poradie"]))
     mena = [p["meno"] for p in obdobia[aktualne]["poslanci"]]
     verejne = {
         "zdroj": ZDROJ, "obdobie": aktualne, "obdobie_nazov": OBDOBIA.get(aktualne, aktualne), "poslanci": [[p["meno"], p["klub"]] for p in obdobia[aktualne]["poslanci"]],
@@ -152,6 +158,16 @@ def main() -> int:
         print(f"::warning title=Zasadnutia::{e}")
     teraz = datetime.now(timezone.utc).isoformat(timespec="seconds")
     zapis_ak_zmena(VEREJNE / "hlasovania-msz.json", {**verejne, "aktualizovane": teraz}, kompaktne=True)
+    # hlasovania aj za ostatné obdobia (načítajú sa po výbere obdobia)
+    for obd in obdobia:
+        if obd == aktualne:
+            continue
+        hl_o = sorted((h for h in hlasovania.values() if h["obdobie"] == obd), key=lambda h: (h["datum"], h["poradie"]))
+        mena_o = [p["meno"] for p in obdobia[obd]["poslanci"]]
+        zapis_ak_zmena(VEREJNE / f"hlasovania-msz-{obd}.json", {"zdroj": ZDROJ, "obdobie": obd, "obdobie_nazov": OBDOBIA.get(obd, obd),
+                                                               "poslanci": [[p["meno"], p["klub"]] for p in obdobia[obd]["poslanci"]], "kody": verejne["kody"],
+                                                               "hlasovania": [[h["datum"], h["zasadnutie"], h["poradie"], h["bod"], "".join(h["hlasy"].get(m, ("-",))[0] for m in mena_o)] for h in hl_o],
+                                                               "aktualizovane": teraz}, kompaktne=True)
     zapis_ak_zmena(DATA / "hlasovania-msz.json", {"zdroj": ZDROJ, "aktualne_obdobie": aktualne, "obdobia": obdobia,
                                                   "zasadnutia": sorted(zasadnutia, key=lambda z: z["datum"], reverse=True)[:40], "aktualizovane": teraz})
     return 0

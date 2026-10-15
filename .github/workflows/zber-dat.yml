@@ -70,7 +70,7 @@ jobs:
         run: |
           git config user.name "mestovcislach-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ public/data/rajonizacia-bratislava.json public/data/obvody-zs-bratislava.geojson public/data/hlasovania-msz.json
+          git add data/ public/data/rajonizacia-bratislava.json public/data/obvody-zs-bratislava.geojson public/data/hlasovania-msz*.json
           if git diff --cached --quiet; then
             echo "Žiadne nové dáta."
           else
