@@ -61,17 +61,32 @@ const vrstvy = [
   ['skoly_ss', 'Stredné a špeciálne školy', 'Školy a sociálne služby', '--m-skoly_ss', false],
   ['skoly_zus', 'Umelecké školy a CVČ', 'Školy a sociálne služby', '--m-skoly_zus', false],
   ['socialne', 'Sociálne služby', 'Školy a sociálne služby', '--m-socialne', false],
+  ['bezbarierove', 'Bezbariérové miesta', 'Mesto pre ľudí', '--m-bezbarierove', false],
+  ['fontany', 'Pitné fontány', 'Mesto pre ľudí', '--m-fontany', false],
+  ['sportoviska', 'Športoviská', 'Mesto pre ľudí', '--m-sportoviska', false],
+  ['bezdomovci', 'Pomoc ľuďom bez domova', 'Mesto pre ľudí', '--m-bezdomovci', false],
+  ['veterina', 'Veterinárne ambulancie', 'Mesto pre ľudí', '--m-veterina', false],
+  ['podnety', 'Podnety občanov (12 mesiacov)', 'Mesto pre ľudí', '--m-podnety', false],
   ['pamiatky', 'Kultúrne pamiatky (register)', 'Kultúra a príroda', '--m-pamiatky', false],
   ['pamiatky_osm', 'Pamiatky s fotkami (OSM)', 'Kultúra a príroda', '--m-pamiatky_osm', false],
   ['muzea', 'Múzeá a galérie', 'Kultúra a príroda', '--m-muzea', false],
   ['kultura', 'Divadlá, kiná a knižnice', 'Kultúra a príroda', '--m-kultura', false],
   ['stromy', 'Chránené stromy', 'Kultúra a príroda', '--m-stromy', false],
+  ['vysadba', 'Vysadené stromy (od 2019)', 'Kultúra a príroda', '--m-vysadba', false],
+  ['starostlivost', 'Ošetrené dreviny', 'Kultúra a príroda', '--m-starostlivost', false],
   ['narodne', 'Chránené územia', 'Kultúra a príroda', '--m-narodne', true],
   ['natura', 'Natura 2000', 'Kultúra a príroda', '--m-natura', false],
   ['hluk_den', 'Hluk z ciest – celý deň', 'Prostredie', '--m-hluk', false],
   ['hluk_noc', 'Hluk z ciest – noc', 'Prostredie', '--m-hluk', false],
   ['hluk_priemysel', 'Hluk z priemyslu', 'Prostredie', '--m-hluk', false],
   ['skladky', 'Čierne skládky 2025', 'Prostredie', '--m-skladky', false],
+  ['k_riziko_horucavy', 'Riziko horúčav', 'Klíma a obyvatelia', '--m-klima', false],
+  ['k_citlivost_horucavy', 'Citlivosť obyvateľov na horúčavy', 'Klíma a obyvatelia', '--m-klima', false],
+  ['k_riziko_zrazky_budovy', 'Riziko prívalových dažďov pre budovy', 'Klíma a obyvatelia', '--m-klima', false],
+  ['k_riziko_doprava', 'Riziko zrážok pre dopravu', 'Klíma a obyvatelia', '--m-klima', false],
+  ['k_riziko_celkove', 'Riziko zmeny klímy celkovo', 'Klíma a obyvatelia', '--m-klima', false],
+  ['k_kupaliska', 'Dostupnosť kúpalísk', 'Klíma a obyvatelia', '--m-klima', false],
+  ['k_hustota', 'Hustota obyvateľov (1 km²)', 'Klíma a obyvatelia', '--m-klima', false],
 ] as const;
 const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
 ---
@@ -98,6 +113,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
             {vrstvy.filter((v) => v[2] === sk).map(([k, nazov, , farba, zap]) => (
               <label><input type="checkbox" value={k} checked={zap} /><i style={`background:var(${farba})`}></i>{nazov}</label>
             ))}
+            {sk === 'Klíma a obyvatelia' && <p class="legenda-klima" hidden><span class="lk-nazov"></span><span class="lk-skala"><i style="--c:#fef3c7"></i><i style="--c:#fcd34d"></i><i style="--c:#f59e0b"></i><i style="--c:#dc2626"></i><i style="--c:#7f1d1d"></i></span><span class="lk-text">nízke → vysoké</span></p>}
             {sk === 'Prostredie' && <p class="legenda-hluk" hidden><span style="--c:#facc15">55</span><span style="--c:#f97316">60</span><span style="--c:#dc2626">65</span><span style="--c:#7e22ce">70+</span> dB</p>}
           </fieldset>
         ))}
@@ -121,7 +137,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   import { osmPodklad } from '../scripts/podklad';
   import { uzavierky, poruchy, popup, type Obmedzenie } from '../scripts/uzavierky';
   import { popupMiesta } from '../scripts/miesto';
-  import { popupPamiatky, popupSkoly, popupSocialne, popupStromy, popupObvodu } from '../scripts/popupy';
+  import { popupPamiatky, popupSkoly, popupSocialne, popupStromy, popupObvodu, popupVrstvy } from '../scripts/popupy';
   import 'leaflet/dist/leaflet.css';
 
   const obal = document.getElementById('mapa-bratislava')!;
@@ -259,6 +275,39 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       onEachFeature: (f: any, l) => l.bindPopup(popupObvodu(f.properties), { maxWidth: 280 }),
     });
   };
+  for (const k of ['bezbarierove', 'fontany', 'sportoviska', 'bezdomovci', 'veterina']) {
+    tvorba[k] = async () => {
+      const d = await json('/data/vrstvy-bratislava.json');
+      return L.layerGroup(d.body.filter((b: any[]) => b[2] === k).map(([lat, lon, , n, det]: any[]) =>
+        bod(lat, lon, k).bindPopup(() => popupVrstvy(n, d.kategorie[k], det), { maxWidth: 280 })));
+    };
+  }
+  for (const k of ['vysadba', 'starostlivost']) {
+    tvorba[k] = async () => {
+      const d = await json('/data/stromy-mesto.json');
+      return L.layerGroup(d.body.filter((b: any[]) => b[2] === k).map(([lat, lon, , n, det]: any[]) =>
+        bod(lat, lon, k, mobil ? 2.5 : 3).bindPopup(() => popupVrstvy(n, d.kategorie[k], det), { maxWidth: 280 })));
+    };
+  }
+  tvorba.podnety = async () => {
+    const d = await json('/data/podnety-bratislava.json');
+    return L.layerGroup(d.body.map(([lat, lon, kat, pod, stav, dat]: any[]) => bod(lat, lon, 'podnety', mobil ? 2.5 : 3)
+      .bindPopup(`<strong>${kat}</strong>${pod ? `<br>${pod}` : ''}<br>stav: ${stav}<br><span style="opacity:.75">nahlásené ${dat.split('-').reverse().join('. ')} · podnety magistrátu</span>`)));
+  };
+  // Mriežky klimatického atlasu a hustoty – vždy len jedna naraz, farba podľa kvintilov
+  const KLIMA_FARBY = ['#fef3c7', '#fcd34d', '#f59e0b', '#dc2626', '#7f1d1d'];
+  const klimaRenderer = L.canvas({ padding: 0.2 });
+  for (const k of ['riziko_horucavy', 'citlivost_horucavy', 'riziko_zrazky_budovy', 'riziko_doprava', 'riziko_celkove', 'kupaliska', 'hustota']) {
+    tvorba[`k_${k}`] = async () => {
+      const d = await json(`/data/klima/${k}.json`);
+      const trieda = (v: number) => d.hranice.filter((h: number) => v > h).length;
+      const lg = obal.querySelector<HTMLElement>('.legenda-klima')!;
+      lg.querySelector('.lk-nazov')!.textContent = d.nazov;
+      return L.layerGroup(d.bunky.map(([s1, w, n, e, v]: number[]) => L.rectangle([[s1, w], [n, e]], {
+        renderer: klimaRenderer, stroke: false, fillColor: KLIMA_FARBY[trieda(v)], fillOpacity: 0.55,
+      }).bindPopup(`<strong>${d.nazov}</strong><br>hodnota ${v.toLocaleString('sk-SK')} (${['veľmi nízka', 'nízka', 'stredná', 'vysoká', 'veľmi vysoká'][trieda(v)]} v rámci mesta)<br><span style="opacity:.75">${d.popis}</span>`)));
+    };
+  }
   const HLUK: Record<string, string> = { 55: '#facc15', 60: '#f97316', 65: '#dc2626', 70: '#7e22ce' };
   const HLUK_VRSTVY: Record<string, string> = { hluk_den: 'cesty_lden', hluk_noc: 'cesty_lnight', hluk_priemysel: 'priemysel_lden' };
   for (const [k, v] of Object.entries(HLUK_VRSTVY)) {
@@ -272,14 +321,14 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   }
 
   const hotove: Record<string, L.Layer> = {};
-  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'scitace', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'obvody', 'hluk_den', 'hluk_noc', 'hluk_priemysel', 'jasle', 'skoly_ms', 'skoly_zs', 'skoly_ss', 'skoly_zus', 'socialne', 'pamiatky', 'pamiatky_osm', 'muzea', 'kultura', 'stromy', 'skladky', 'uzavierky', 'poruchy'];
+  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'scitace', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'k_riziko_horucavy', 'k_citlivost_horucavy', 'k_riziko_zrazky_budovy', 'k_riziko_doprava', 'k_riziko_celkove', 'k_kupaliska', 'k_hustota', 'obvody', 'hluk_den', 'hluk_noc', 'hluk_priemysel', 'jasle', 'skoly_ms', 'skoly_zs', 'skoly_ss', 'skoly_zus', 'socialne', 'bezbarierove', 'fontany', 'sportoviska', 'bezdomovci', 'veterina', 'podnety', 'vysadba', 'starostlivost', 'pamiatky', 'pamiatky_osm', 'muzea', 'kultura', 'stromy', 'skladky', 'uzavierky', 'poruchy'];
   async function prepni(k: string, zapnut: boolean) {
     if (!zapnut) { hotove[k]?.remove(); return; }
     try {
       hotove[k] ??= await tvorba[k]();
       hotove[k].addTo(mapa);
       // plochy dozadu, aby body ostali klikateľné
-      if (['natura', 'narodne', 'hranice', 'obvody'].includes(k)) (hotove[k] as any).bringToBack?.();
+      if (['natura', 'narodne', 'hranice', 'obvody'].includes(k) || k.startsWith('k_')) (hotove[k] as any).bringToBack?.();
     } catch {
       const i = obal.querySelector<HTMLInputElement>(`input[value="${k}"]`);
       if (i) { i.checked = false; i.disabled = true; i.parentElement!.title = 'Údaje sa nepodarilo načítať'; }
@@ -288,17 +337,25 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   obal.querySelectorAll<HTMLInputElement>('input[type=checkbox]').forEach((i) => {
     if (!tvorba[i.value] || (inline[i.value] === null)) { i.disabled = true; return; }
     i.addEventListener('change', () => {
+      // mriežky klímy a hustoty sa navzájom vylučujú
+      if (i.value.startsWith('k_') && i.checked) {
+        obal.querySelectorAll<HTMLInputElement>('input[value^="k_"]').forEach((x) => { if (x !== i && x.checked) { x.checked = false; prepni(x.value, false); } });
+      }
+      obal.querySelector<HTMLElement>('.legenda-klima')!.hidden = ![...obal.querySelectorAll<HTMLInputElement>('input[value^="k_"]')].some((x) => x.checked);
       prepni(i.value, i.checked);
       const hluk = [...obal.querySelectorAll<HTMLInputElement>('input[value^=hluk]')].some((x) => x.checked);
       obal.querySelector<HTMLElement>('.legenda-hluk')!.hidden = !hluk;
     });
   });
   // odkaz /mapa#hluk, #skoly, #pamiatky… zapne zodpovedajúce vrstvy
-  const HASH: Record<string, string[]> = { hluk: ['hluk_den'], skoly: ['skoly_zs', 'obvody'], pamiatky: ['pamiatky'], socialne: ['jasle', 'socialne'] };
+  const HASH: Record<string, string[]> = { hluk: ['hluk_den'], skoly: ['skoly_zs', 'obvody'], pamiatky: ['pamiatky'], socialne: ['jasle', 'socialne'],
+    horucavy: ['k_riziko_horucavy', 'fontany'], klima: ['k_riziko_celkove'], hustota: ['k_hustota'], sport: ['sportoviska'], bezbarierove: ['bezbarierove'],
+    podnety: ['podnety'], stromy: ['vysadba'], fontany: ['fontany'] };
   for (const k of HASH[location.hash.slice(1)] ?? []) {
     const i = obal.querySelector<HTMLInputElement>(`input[value="${k}"]`);
     if (i) i.checked = true;
     if (k.startsWith('hluk')) obal.querySelector<HTMLElement>('.legenda-hluk')!.hidden = false;
+    if (k.startsWith('k_')) obal.querySelector<HTMLElement>('.legenda-klima')!.hidden = false;
   }
   (async () => {
     for (const k of poradie) {
@@ -323,6 +380,8 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
     --m-uzavierky: #d97706; --m-poruchy: #a21caf; --m-scitace: #0f766e; --m-muzea: #9333ea; --m-kultura: #e11d48;
     --m-pamiatky_osm: #ca8a04; --m-jasle: #f472b6; --m-skoly_ms: #fb923c; --m-skoly_zs: #2563eb; --m-skoly_ss: #4338ca;
     --m-skoly_zus: #0891b2; --m-socialne: #9d174d; --m-obvody: #60a5fa; --m-hluk: #f97316;
+    --m-bezbarierove: #2563eb; --m-fontany: #0ea5e9; --m-sportoviska: #16a34a; --m-bezdomovci: #be185d; --m-veterina: #92400e;
+    --m-podnety: #64748b; --m-vysadba: #65a30d; --m-starostlivost: #a3a3a3; --m-klima: #f59e0b;
   }
   @media (prefers-color-scheme: dark) {
     :global(:root) {
@@ -332,6 +391,8 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       --m-uzavierky: #ffc44d; --m-poruchy: #f0abfc; --m-scitace: #5eead4; --m-muzea: #d8b4fe; --m-kultura: #fda4af;
       --m-pamiatky_osm: #fde68a; --m-jasle: #f9a8d4; --m-skoly_ms: #fdba74; --m-skoly_zs: #93c5fd; --m-skoly_ss: #a5b4fc;
       --m-skoly_zus: #67e8f9; --m-socialne: #f9a8d4; --m-obvody: #93c5fd; --m-hluk: #fdba74;
+      --m-bezbarierove: #93c5fd; --m-fontany: #7dd3fc; --m-sportoviska: #86efac; --m-bezdomovci: #f9a8d4; --m-veterina: #fcd34d;
+      --m-podnety: #cbd5e1; --m-vysadba: #bef264; --m-starostlivost: #d4d4d4; --m-klima: #fcd34d;
     }
   }
   .hero { padding: 32px 0 16px; }
@@ -356,7 +417,10 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   label i { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
   .podklad label { display: inline-flex; margin-right: 12px; }
   .legenda-hluk { display: flex; gap: 6px; align-items: center; margin: 4px 0 0; font-size: 0.75rem; color: var(--muted); }
-  .legenda-hluk[hidden] { display: none; }
+  .legenda-hluk[hidden], .legenda-klima[hidden] { display: none; }
+  .legenda-klima { display: flex; flex-direction: column; gap: 3px; margin: 6px 0 0; font-size: 0.75rem; color: var(--muted); }
+  .lk-skala { display: flex; height: 8px; border-radius: 4px; overflow: hidden; }
+  .lk-skala i { flex: 1; background: var(--c); }
   .legenda-hluk span { display: inline-flex; align-items: center; gap: 3px; }
   .legenda-hluk span::before { content: ''; width: 14px; height: 3px; border-radius: 2px; background: var(--c); }
   @media (max-width: 600px) {

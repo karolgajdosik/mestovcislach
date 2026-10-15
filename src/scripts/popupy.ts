@@ -64,3 +64,22 @@ export function popupObvodu(p: any): string {
     `<span class="mf-zdroj">Hranice sú približné – presne platí zoznam adries.</span>`,
   ]);
 }
+
+// Vrstvy z datasetov mesta (bezbariérovosť, fontány, športoviská, pomoc ľuďom bez domova, veterina, stromy, podnety)
+export function popupVrstvy(nazov: string, kategoria: string, d: any = {}): string {
+  return obal([
+    d.f && `<a href="${esc(d.f)}" target="_blank" rel="noopener" class="mf-foto"><img src="${esc(d.f)}" alt="" loading="lazy" onerror="this.parentElement.remove()"></a>`,
+    `<strong class="mf-nazov">${esc(nazov || kategoria)}</strong>`,
+    `<span class="mf-kat">${esc([d.typ || kategoria, d.lat && d.lat !== nazov ? d.lat : ''].filter(Boolean).join(' · '))}</span>`,
+    (d.a || d.ul) && `<span class="mf-adr">${esc(d.a || d.ul)}${d.pribl ? ' (poloha podľa ulice)' : ''}</span>`,
+    d.op && `<span>${esc(d.op)}</span>`,
+    d.pop && `<span class="mf-hod">${esc(d.pop)}</span>`,
+    d.h_text && `<span class="mf-hod">${esc(d.h_text)}</span>`,
+    d.rok && `<span>Vysadený ${esc(d.rok)}${d.proj ? ` · ${esc(d.proj)}` : ''}</span>`,
+    d.vykon?.length > 0 && `<span class="mf-hod">${d.vykon.map(esc).join('<br>')}</span>`,
+    d.info?.length > 0 && `<span class="mf-hod">${d.info.map(esc).join('<br>')}</span>`,
+    d.tel && `<span>Tel. ${esc(d.tel)}</span>`,
+    d.w && `<span class="mf-odkazy">${odkaz(/^https?:/.test(d.w) ? d.w : 'https://' + d.w, 'Web')}</span>`,
+    `<span class="mf-zdroj">data.bratislava.sk</span>`,
+  ]);
+}
