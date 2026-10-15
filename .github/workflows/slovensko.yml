@@ -21,7 +21,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: zber-dat
+  group: zber-slovensko
   cancel-in-progress: false
 
 jobs:

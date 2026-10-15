@@ -17,7 +17,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: zber-dat
+  group: zber-katalog
   cancel-in-progress: false
 
 jobs:
