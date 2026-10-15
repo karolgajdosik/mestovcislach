@@ -10,6 +10,7 @@ on:
     paths:
       - "scripts/zber_katalog.py"
       - "scripts/zber_tabulky.py"
+      - "scripts/katalog_pravidla.py"
       - ".github/workflows/katalog.yml"
 
 permissions:
