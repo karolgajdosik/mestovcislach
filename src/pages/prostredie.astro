@@ -1,0 +1,245 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+
+const p = path.join(process.cwd(), 'data', 'ovzdusie-bratislava.json');
+const data = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+const poradie = ['pm25', 'pm10', 'pm10_prekrocenia', 'o3'];
+const vysvetlenie: Record<string, string> = {
+  pm25: 'Jemné prachové častice menšie ako 2,5 mikrometra. Prenikajú hlboko do pľúc; hlavné zdroje sú doprava a vykurovanie.',
+  pm10: 'Prachové častice menšie ako 10 mikrometrov – z dopravy, stavebníctva, vykurovania aj prírodných zdrojov.',
+  pm10_prekrocenia: 'Denný priemer PM10 nesmie prekročiť 50 µg/m³ viac ako 35-krát za rok.',
+  o3: 'Prízemný ozón vzniká v lete zo slnečného žiarenia a emisií. Cieľová hodnota: najviac 25 dní ročne nad limitom.',
+};
+const ukazovatele = data ? poradie.filter((k) => data.ukazovatele[k]).map((k) => {
+  const u = data.ukazovatele[k];
+  const roky = [...new Set(Object.values(u.stanice).flatMap((s: any) => Object.keys(s)))].sort() as string[];
+  const posledny = roky[roky.length - 1];
+  const hodnoty = Object.entries(u.stanice).map(([s, v]: [string, any]) => [s, v[posledny]]).filter(([, v]) => v != null) as [string, number][];
+  const nadLimitom = hodnoty.filter(([, v]) => u.limit != null && v > u.limit).length;
+  return { k, ...u, roky, posledny, hodnoty, nadLimitom, vysvetlenie: vysvetlenie[k] };
+}) : [];
+const fmt = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
+
+// Odpad, výsadba a čierne skládky
+const pp = path.join(process.cwd(), 'data', 'prostredie-bratislava.json');
+const prostredie = fs.existsSync(pp) ? JSON.parse(fs.readFileSync(pp, 'utf-8')) : null;
+const po = path.join(process.cwd(), 'data', 'obyvatelstvo-bratislava.json');
+const obyv = fs.existsSync(po) ? JSON.parse(fs.readFileSync(po, 'utf-8')) : null;
+const nazvy = new Map<string, string>((obyv?.mestske_casti ?? []).map((c: any) => [c.kod.slice(-6), c.nazov_kratky]));
+const o = prostredie?.odpad;
+const odpadRoky = o ? Object.keys(o.na_obyvatela.roky).sort() : [];
+const odpadRok = odpadRoky[odpadRoky.length - 1];
+const odpadPrvy = odpadRoky[0];
+const grafOdpad = o ? JSON.stringify({ roky: odpadRoky, kg: odpadRoky.map((r) => o.na_obyvatela.roky[r]),
+  recyklacia: odpadRoky.map((r) => o.recyklacia.roky[r] ?? null), skladkovanie: odpadRoky.map((r) => o.skladkovanie.roky[r] ?? null) }) : '';
+const vysadbaRok = prostredie ? Object.keys(prostredie.vysadba.roky).sort().pop() : '';
+const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!] as Record<string, any>)
+  .map(([kod, v]) => ({ nazov: nazvy.get(kod) ?? kod, ...v })).filter((v) => v.stromy + v.kry > 0)
+  .sort((a, b) => b.stromy - a.stromy) : [];
+---
+<Base title="Životné prostredie v Bratislave – mestovcislach.sk" description="Ovzdušie, odpad a recyklácia, výsadba stromov a čierne skládky v Bratislave.">
+  <section class="hero">
+    <p class="kicker">Bratislava</p>
+    <h1>Životné prostredie</h1>
+    <p class="lead">Kvalita ovzdušia, odpad a recyklácia, výsadba stromov a nahlásené čierne skládky.</p>
+  </section>
+
+  <h2 class="sekcia">Ovzdušie</h2>
+
+  {ukazovatele.length === 0 ? <div class="card"><p>Dáta sa pripravujú.</p></div> : (
+    <div id="ovzdusie" data-graf={JSON.stringify(ukazovatele.map((u) => ({ k: u.k, roky: u.roky, limit: u.limit, jednotka: u.jednotka, stanice: u.stanice })))}>
+      <section class="kpis">
+        {ukazovatele.map((u) => (
+          <div class="card kpi">
+            <p class="label">{u.popis} ({u.posledny})</p>
+            <p class="value">{u.nadLimitom === 0 ? 'v limite' : `nad limitom: ${u.nadLimitom}`}</p>
+            <p class="delta">{u.hodnoty.length} {u.hodnoty.length === 1 ? 'stanica' : 'stanice'} · limit {fmt(u.limit)} {u.jednotka}</p>
+          </div>
+        ))}
+      </section>
+
+      {ukazovatele.map((u) => (
+        <section class="card">
+          <h2>{u.popis}</h2>
+          <p class="vysvetlenie">{u.vysvetlenie}</p>
+          <div class="chart"><canvas data-ukazovatel={u.k} role="img" aria-label={u.popis}></canvas></div>
+          <p class="zdroj">
+            Prerušovaná čiara = limit {fmt(u.limit)} {u.jednotka}. Zdroj: <a href={u.zdroj.url}>{u.zdroj.nazov}</a>,
+            data.bratislava.sk{u.zdroj.licencia && `, licencia ${u.zdroj.licencia}`}.
+          </p>
+        </section>
+      ))}
+    </div>
+  )}
+
+  {prostredie && (
+    <div id="prostredie" data-odpad={grafOdpad} data-skladky={JSON.stringify(prostredie.cierne_skladky.body.map((b: any) => [b.lat, b.lon]))}>
+      <h2 class="sekcia">Odpad</h2>
+      <section class="kpis">
+        <div class="card kpi">
+          <p class="label">Komunálny odpad na obyvateľa ({odpadRok})</p>
+          <p class="value">{fmt(o.na_obyvatela.roky[odpadRok])} kg</p>
+          <p class="delta">{odpadPrvy}: {fmt(o.na_obyvatela.roky[odpadPrvy])} kg</p>
+        </div>
+        <div class="card kpi">
+          <p class="label">Recyklácia ({odpadRok})</p>
+          <p class="value">{fmt(o.recyklacia.roky[odpadRok])} %</p>
+          <p class="delta">{odpadPrvy}: {fmt(o.recyklacia.roky[odpadPrvy])} %</p>
+        </div>
+        <div class="card kpi">
+          <p class="label">Skládkovanie ({odpadRok})</p>
+          <p class="value">{fmt(o.skladkovanie.roky[odpadRok])} %</p>
+          <p class="delta">{odpadPrvy}: {fmt(o.skladkovanie.roky[odpadPrvy])} %</p>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Odpad na obyvateľa, recyklácia a skládkovanie</h2>
+        <div class="chart"><canvas id="g-odpad" role="img" aria-label="Komunálny odpad na obyvateľa a miera recyklácie a skládkovania"></canvas></div>
+        <p class="zdroj">Stĺpce: kg komunálneho odpadu na obyvateľa (ľavá os). Čiary: podiel recyklovaného a skládkovaného odpadu (pravá os). Zvyšok odpadu sa v Bratislave prevažne energeticky zhodnocuje v spaľovni. Zdroj: data.bratislava.sk ({Object.values(o).map((x: any, i: number) => <>{i > 0 && ', '}<a href={x.zdroj.url}>{x.popis.toLowerCase()}</a></>)}), licencia CC BY 4.0.</p>
+      </section>
+
+      <h2 class="sekcia">Výsadba stromov ({vysadbaRok})</h2>
+      <section class="card">
+        <div class="tabulka-obal">
+          <table>
+            <thead><tr><th>Mestská časť</th><th class="num">Stromy</th><th class="num">Kry</th></tr></thead>
+            <tbody>
+              {vysadba.map((v: any) => <tr><td>{v.nazov}</td><td class="num">{fmt(v.stromy)}</td><td class="num">{fmt(v.kry)}</td></tr>)}
+              <tr class="spolu"><td>Spolu</td><td class="num">{fmt(vysadba.reduce((a: number, v: any) => a + v.stromy, 0))}</td><td class="num">{fmt(vysadba.reduce((a: number, v: any) => a + v.kry, 0))}</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="zdroj">Výsadba realizovaná hlavným mestom podľa katastrálnych území, bez výsadby mestských častí a súkromných investorov. Zdroj: <a href={prostredie.vysadba.zdroj.url}>{prostredie.vysadba.zdroj.nazov}</a>, data.bratislava.sk, licencia CC BY 4.0.</p>
+      </section>
+
+      <h2 class="sekcia">Čierne skládky ({prostredie.cierne_skladky.rok})</h2>
+      <section class="card">
+        <p class="vysvetlenie">Mestu bolo v roku {prostredie.cierne_skladky.rok} nahlásených <strong>{prostredie.cierne_skladky.body.length}</strong> nelegálnych skládok odpadu na pozemkoch v jeho správe.</p>
+        <div id="mapa-skladky" role="img" aria-label="Mapa nahlásených čiernych skládok"></div>
+        <p class="zdroj">Zdroj: <a href={prostredie.cierne_skladky.zdroj.url}>{prostredie.cierne_skladky.zdroj.nazov}</a>, data.bratislava.sk, licencia CC BY 4.0. Podklad © OpenStreetMap, © CARTO.</p>
+      </section>
+    </div>
+  )}
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  {
+    const pel = document.getElementById('prostredie');
+    if (pel) {
+      const css = getComputedStyle(document.documentElement);
+      const accent = css.getPropertyValue('--accent').trim();
+      const muted = css.getPropertyValue('--muted').trim();
+      const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const g = JSON.parse(pel.dataset.odpad!);
+      new Chart(document.getElementById('g-odpad') as HTMLCanvasElement, {
+        data: {
+          labels: g.roky,
+          datasets: [
+            { type: 'bar', label: 'kg na obyvateľa', data: g.kg, backgroundColor: muted + '66', borderRadius: 3, yAxisID: 'kg', order: 2 },
+            { type: 'line', label: 'Recyklácia %', data: g.recyklacia, borderColor: tmava ? '#6ee7b7' : '#138a5e', backgroundColor: tmava ? '#6ee7b7' : '#138a5e', yAxisID: 'pct', tension: 0.2, order: 1 },
+            { type: 'line', label: 'Skládkovanie %', data: g.skladkovanie, borderColor: accent, backgroundColor: accent, yAxisID: 'pct', tension: 0.2, order: 1 },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: { legend: { position: 'bottom', labels: { boxWidth: 12 } } },
+          scales: {
+            x: { grid: { display: false } },
+            kg: { position: 'left', beginAtZero: true, ticks: { callback: (v) => v + ' kg' } },
+            pct: { position: 'right', beginAtZero: true, max: 40, grid: { display: false }, ticks: { callback: (v) => v + ' %' } },
+          },
+        },
+      });
+
+      const mel = document.getElementById('mapa-skladky');
+      if (mel) {
+        const mapa = L.map(mel, { scrollWheelZoom: false, zoomSnap: 0.25 });
+        L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_all/{z}/{x}/{y}{r}.png`, {
+          maxZoom: 18, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
+        }).addTo(mapa);
+        const body = JSON.parse(pel.dataset.skladky!) as [number, number][];
+        const markery = body.map(([lat, lon]) => L.circleMarker([lat, lon], { radius: 6, weight: 1.5, color: tmava ? '#121417' : '#fff', fillColor: accent, fillOpacity: 0.85 }).addTo(mapa));
+        mapa.fitBounds(L.featureGroup(markery).getBounds(), { padding: [20, 20] });
+      }
+    }
+  }
+
+  const el = document.getElementById('ovzdusie');
+  if (el?.dataset.graf) {
+    const css = getComputedStyle(document.documentElement);
+    const muted = css.getPropertyValue('--muted').trim();
+    const line = css.getPropertyValue('--line').trim();
+    const text = css.getPropertyValue('--text').trim();
+    const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    Chart.defaults.color = muted;
+    Chart.defaults.borderColor = line;
+    Chart.defaults.font.family = css.getPropertyValue('--font');
+    // Odlíšiteľné farby pre stanice (nie červená – tá je vyhradená limitu).
+    const farby = tmava ? ['#7cc4ff', '#ffc44d', '#6ee7b7', '#c4a7ff'] : ['#1f6fd1', '#c98a00', '#138a5e', '#7a4fd1'];
+
+    for (const u of JSON.parse(el.dataset.graf)) {
+      const canvas = el.querySelector<HTMLCanvasElement>(`canvas[data-ukazovatel="${u.k}"]`);
+      if (!canvas) continue;
+      const stanice = Object.entries(u.stanice) as [string, Record<string, number>][];
+      new Chart(canvas, {
+        type: 'line',
+        data: {
+          labels: u.roky,
+          datasets: [
+            ...stanice.map(([nazov, hodnoty], i) => ({
+              label: nazov,
+              data: u.roky.map((r: string) => hodnoty[r] ?? null),
+              borderColor: farby[i % farby.length],
+              backgroundColor: farby[i % farby.length],
+              borderWidth: 2, pointRadius: 2.5, tension: 0.2, spanGaps: true,
+            })),
+            {
+              label: 'Limit', data: u.roky.map(() => u.limit),
+              borderColor: text, borderDash: [6, 5], borderWidth: 1.5, pointRadius: 0,
+            },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 12 } },
+            tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${c.parsed.y?.toLocaleString('sk-SK')} ${u.jednotka}` } },
+          },
+          scales: { x: { grid: { display: false } }, y: { beginAtZero: true } },
+        },
+      });
+    }
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 24px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  h2 { font-size: 1.1rem; margin: 0 0 6px; }
+  .vysvetlenie { color: var(--muted); font-size: 0.9rem; margin: 0 0 14px; max-width: 46em; }
+  section.card { margin-top: 16px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 6px 0; }
+  .delta { margin: 0; font-size: 0.85rem; color: var(--muted); }
+  .chart { position: relative; height: 300px; }
+  h2.sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 40px 0 16px; }
+  #mapa-skladky { height: 400px; border-radius: 10px; overflow: hidden; background: var(--bg); }
+  @media (max-width: 600px) { #mapa-skladky { height: 340px; } }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
+  tr.spolu td { font-weight: 700; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+</style>

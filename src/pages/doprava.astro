@@ -32,6 +32,7 @@ const mapa = mhd && hranice ? JSON.stringify({
   zastavky: mhd.zastavky.map((z: any) => [z.lat, z.lon, z.nazov, z.odchody, z.linky.join(', ')]),
 }) : '';
 const cyklo = nacitaj('cyklo-bratislava.json');
+const bajk = nacitaj('bajk-bratislava.json');
 const km1 = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' km';
 const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) => cest[r]) }) : '';
 ---
@@ -127,6 +128,13 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
           <p class="value">{fmt(Math.round(cyklo.mesto.km_spolu))} km</p>
           <p class="delta">cyklocestičky, spoločné chodníky a cyklopruhy</p>
         </div>
+        {bajk && (
+          <div class="card kpi">
+            <p class="label"><i class="bod" style="background:var(--text);height:8px;width:8px;border-radius:50%"></i>Stanice Slovnaft BAjk</p>
+            <p class="value">{bajk.stanice.length}</p>
+            <p class="delta">zdieľané bicykle</p>
+          </div>
+        )}
         {Object.entries(cyklo.kategorie).map(([k, nazov], i) => (
           <div class="card kpi">
             <p class="label"><i class="bod" style={`background:var(--cyklo-${i})`}></i>{nazov as string}</p>
@@ -137,9 +145,10 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
 
       <section class="card">
         <h3>Mapa cyklotrás</h3>
-        <div id="mapa-cyklo" role="img" aria-label="Mapa cyklistickej infraštruktúry v Bratislave"></div>
+        <div id="mapa-cyklo" role="img" aria-label="Mapa cyklistickej infraštruktúry v Bratislave" data-bajk={bajk ? JSON.stringify(bajk.stanice.map((s: any) => [s.lat, s.lon, s.nazov])) : ''}></div>
         <div class="legenda-cyklo">
           {Object.values(cyklo.kategorie).map((nazov, i) => <span><i style={`background:var(--cyklo-${i})`}></i>{nazov as string}</span>)}
+          {bajk && <span><i class="kruh"></i>Stanica BAjk</span>}
         </div>
       </section>
 
@@ -156,7 +165,7 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
           </table>
         </div>
         <p class="zdroj">
-          Zdroj: © <a href={cyklo.zdroj.url}>prispievatelia OpenStreetMap</a> (ODbL), stav {new Date(cyklo.zdroj.stav_osm).toLocaleDateString('sk-SK')}.
+          {bajk && <>Stanice BAjk: <a href={bajk.zdroj.url}>{bajk.zdroj.nazov}</a>, data.bratislava.sk, CC BY 4.0. </>}Cyklotrasy: © <a href={cyklo.zdroj.url}>prispievatelia OpenStreetMap</a> (ODbL), stav {new Date(cyklo.zdroj.stav_osm).toLocaleDateString('sk-SK')}.
           Nejde o oficiálnu evidenciu mesta – údaje závisia od toho, čo dobrovoľníci zmapovali. Obojsmerné trasy zakreslené dvakrát (po oboch stranách cesty) sa rátajú dvakrát.
         </p>
       </section>
@@ -215,6 +224,13 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
         interactive: false,
       }).addTo(mapa);
       mapa.fitBounds(vrstva.getBounds(), { padding: [8, 8] });
+      if (cykloEl.dataset.bajk) {
+        const text = css.getPropertyValue('--text').trim();
+        for (const [lat, lon, nazov] of JSON.parse(cykloEl.dataset.bajk) as [number, number, string][]) {
+          L.circleMarker([lat, lon], { radius: 4, weight: 1.5, color: text, fillColor: tmava ? '#121417' : '#fff', fillOpacity: 1 })
+            .bindPopup(`<strong>${nazov}</strong><br>Stanica Slovnaft BAjk`).addTo(mapa);
+        }
+      }
     };
     new IntersectionObserver((e, o) => {
       if (e[0].isIntersecting) { o.disconnect(); vykresli(); }
@@ -267,6 +283,7 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
   #mapa-cyklo { height: 460px; border-radius: 10px; overflow: hidden; background: var(--bg); }
   @media (max-width: 600px) { #mapa-cyklo { height: 380px; } }
   .legenda-cyklo { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; font-size: 0.82rem; color: var(--muted); }
+  .legenda-cyklo .kruh { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--text); background: var(--card); vertical-align: -1px; }
   .legenda-cyklo i, .bod { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 6px; vertical-align: 3px; }
   .zastavky { margin: 0; padding-left: 1.4em; }
   .zastavky li { padding: 8px 0; border-bottom: 1px solid var(--line); }

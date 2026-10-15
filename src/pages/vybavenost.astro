@@ -1,0 +1,167 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+
+const nacitaj = (subor: string) => {
+  const p = path.join(process.cwd(), 'data', subor);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+};
+const skoly = nacitaj('skoly-bratislava.json');
+const vyb = nacitaj('vybavenost-bratislava.json');
+const obyv = nacitaj('obyvatelstvo-bratislava.json');
+
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const des = (n: number | null) => (n == null ? '–' : n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }));
+const rok = obyv ? Object.keys(obyv.mesto.roky).sort().pop()! : '';
+const casti = (obyv?.mestske_casti ?? []).map((c: any) => ({ kod: c.kod.slice(-6), nazov: c.nazov_kratky, obyv: c.roky[rok] }))
+  .sort((a: any, b: any) => a.nazov.localeCompare(b.nazov, 'sk'));
+
+const skolyTab = skoly ? casti.map((c: any) => {
+  const zs = skoly.typy.zs.mestske_casti[c.kod] ?? 0;
+  const ms = skoly.typy.ms.mestske_casti[c.kod] ?? 0;
+  return { ...c, zs, ms, msNa10k: c.obyv ? (10000 * ms) / c.obyv : null };
+}) : [];
+const vybTab = vyb ? [...vyb.mestske_casti].sort((a: any, b: any) => (b.lekarne_na_10000 ?? 0) - (a.lekarne_na_10000 ?? 0)) : [];
+const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateString('sk-SK') : '';
+---
+<Base title="Vybavenosť Bratislavy – mestovcislach.sk" description="Školy, škôlky, lekárne, zdravotníctvo a nabíjacie stanice v Bratislave podľa mestských častí.">
+  <section class="hero">
+    <p class="kicker">Bratislava</p>
+    <h1>Vybavenosť</h1>
+    <p class="lead">Školy, škôlky, lekárne, zdravotníctvo a nabíjacie stanice v mestských častiach.</p>
+  </section>
+
+  {skoly && (
+    <>
+      <h2 class="sekcia">Školy a škôlky</h2>
+      <section class="kpis">
+        <div class="card kpi">
+          <p class="label">Základné školy</p>
+          <p class="value">{skoly.typy.zs.spolu}</p>
+          <p class="delta">{Object.entries(skoly.typy.zs.zriadovatel).sort((a: any, b: any) => b[1] - a[1]).map(([k, v]) => `${k} ${v}`).join(' · ')}</p>
+        </div>
+        <div class="card kpi">
+          <p class="label">Materské školy</p>
+          <p class="value">{skoly.typy.ms.spolu}</p>
+          <p class="delta">v zozname mesta pre školský rok 2026</p>
+        </div>
+      </section>
+      <section class="card">
+        <div class="tabulka-obal">
+          <table>
+            <thead><tr><th>Mestská časť</th><th class="num">Základné školy</th><th class="num">Materské školy</th><th class="num">MŠ na 10 000 obyv.</th></tr></thead>
+            <tbody>
+              {skolyTab.map((c: any) => <tr><td>{c.nazov}</td><td class="num">{c.zs}</td><td class="num">{c.ms}</td><td class="num">{des(c.msNa10k)}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <p class="zdroj">
+          Zriaďovateľ odhadnutý podľa názvu školy. Zdroj: <a href={skoly.typy.zs.zdroj.url}>{skoly.typy.zs.zdroj.nazov}</a> a
+          <a href={skoly.typy.ms.zdroj.url}>{skoly.typy.ms.zdroj.nazov}</a>, data.bratislava.sk, licencia CC BY 4.0.
+        </p>
+      </section>
+    </>
+  )}
+
+  {vyb && (
+    <>
+      <h2 class="sekcia">Zdravie a nabíjanie</h2>
+      <section class="kpis">
+        <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-0)"></i>Lekárne</p><p class="value">{fmt(vyb.mesto.lekarne)}</p></div>
+        <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-2)"></i>Nemocnice a polikliniky</p><p class="value">{fmt(vyb.mesto.nemocnice)}</p></div>
+        <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-3)"></i>Nabíjacie stanice</p><p class="value">{fmt(vyb.mesto.nabijanie)}</p><p class="delta">{fmt(vyb.mesto.nabijacie_miesta)} nabíjacích miest</p></div>
+      </section>
+
+      <section class="card" id="vybavenost">
+        <div class="hlavicka">
+          <h3>Mapa</h3>
+          <div class="filtre" role="group" aria-label="Zobraziť na mape">
+            {Object.entries(vyb.kategorie).map(([k, nazov], i) => (
+              <label><input type="checkbox" value={k} checked={k !== 'ambulancie'} /><i style={`background:var(--v-${i})`}></i>{nazov as string}</label>
+            ))}
+          </div>
+        </div>
+        <div id="mapa-vyb" role="img" aria-label="Mapa lekární, zdravotníckych zariadení a nabíjacích staníc"></div>
+        <p class="zdroj">Ťuknite na bod pre názov. Ambulancie sú v OpenStreetMap zmapované len čiastočne, preto sú predvolene skryté.</p>
+      </section>
+
+      <section class="card">
+        <h3>Mestské časti</h3>
+        <div class="tabulka-obal">
+          <table>
+            <thead><tr><th>Mestská časť</th><th class="num">Lekárne</th><th class="num">na 10 000 obyv.</th><th class="num">Nabíjacie stanice</th><th class="num">Nabíjacie miesta</th></tr></thead>
+            <tbody>
+              {vybTab.map((c: any) => <tr><td>{c.nazov}</td><td class="num">{c.lekarne}</td><td class="num">{des(c.lekarne_na_10000)}</td><td class="num">{c.nabijanie}</td><td class="num">{c.nabijacie_miesta}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <p class="zdroj">
+          Zdroj: © <a href={vyb.zdroj.url}>prispievatelia OpenStreetMap</a> (ODbL), stav {stav}. Portál mesta tieto zoznamy nezverejňuje;
+          údaje z OSM nie sú oficiálny register a nemusia byť úplné. Nabíjacie miesta podľa uvedenej kapacity stanice (ak chýba, ráta sa 1).
+        </p>
+      </section>
+    </>
+  )}
+</Base>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const el = document.getElementById('mapa-vyb');
+  if (el) {
+    const css = getComputedStyle(document.documentElement);
+    const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const poradie = ['lekarne', 'ambulancie', 'nemocnice', 'nabijanie'];
+    const farby = poradie.map((_, i) => css.getPropertyValue(`--v-${i}`).trim());
+    const mapa = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.25, preferCanvas: true });
+    L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_all/{z}/{x}/{y}{r}.png`, {
+      maxZoom: 18, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
+    }).addTo(mapa);
+    mapa.setView([48.15, 17.11], 11.5);
+    const vrstvy: Record<string, L.LayerGroup> = Object.fromEntries(poradie.map((k) => [k, L.layerGroup()]));
+
+    fetch('/data/vybavenost-bratislava.json').then((r) => r.json()).then((d) => {
+      for (const [lat, lon, kat, nazov] of d.body as [number, number, string, string][]) {
+        L.circleMarker([lat, lon], {
+          radius: window.innerWidth < 600 ? 4 : 5, weight: 1, color: tmava ? '#121417' : '#ffffff',
+          fillColor: farby[poradie.indexOf(kat)], fillOpacity: 0.9,
+        }).bindPopup(`<strong>${nazov || d.kategorie[kat]}</strong><br>${d.kategorie[kat]}`).addTo(vrstvy[kat]);
+      }
+      document.querySelectorAll<HTMLInputElement>('.filtre input').forEach((i) => {
+        const prepni = () => (i.checked ? vrstvy[i.value].addTo(mapa) : vrstvy[i.value].remove());
+        i.addEventListener('change', prepni);
+        prepni();
+      });
+    });
+  }
+</script>
+
+<style>
+  :global(:root) { --v-0: #138a5e; --v-1: #7a4fd1; --v-2: #c8102e; --v-3: #1f6fd1; }
+  @media (prefers-color-scheme: dark) { :global(:root) { --v-0: #6ee7b7; --v-1: #c4a7ff; --v-2: #ff6b80; --v-3: #7cc4ff; } }
+  .hero { padding: 40px 0 8px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  h2.sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 40px 0 16px; }
+  h3 { font-size: 1.05rem; margin: 0; }
+  section.card { margin-top: 16px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; font-variant-numeric: tabular-nums; }
+  .delta { margin: 0; font-size: 0.85rem; color: var(--muted); }
+  .bod { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+  .hlavicka { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .filtre { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.85rem; color: var(--muted); }
+  .filtre label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+  .filtre i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+  #mapa-vyb { height: 460px; border-radius: 10px; overflow: hidden; background: var(--bg); }
+  @media (max-width: 600px) { #mapa-vyb { height: 380px; } }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+</style>
