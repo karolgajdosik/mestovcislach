@@ -1,6 +1,6 @@
 {
  "zdroj": "https://data.bratislava.sk",
- "pocet": 617,
+ "pocet": 640,
  "datasety": [
   {
    "id": "cd6711958334494685f4e01f4ab3e482",
@@ -173,6 +173,118 @@
        "DOKUMENTY_V_BEZNYCH_METROCH",
        "String",
        "DOKUMENTY_V_BEZNYCH_METROCH"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "89df173edb0d43a1b81bcc064fd5fa5f",
+   "nazov": "Atlas hodnotenia zraniteľnosti a rizík nepriaznivých dôsledkov zmeny klímy",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Citlivosť  obyvateľstva  na  extrémne  horúčavy  (environmentálna)  normalizovan/FeatureServer",
+   "tagy": [
+    "Riziko",
+    "Citlivosť"
+   ],
+   "kategorie": [
+    "/Categories/Životné prostredie"
+   ],
+   "upravene": 1778142315000,
+   "popis": "Citlivosť  obyvateľstva  na  extrémne  horúčavy  (environmentálna), normalizovaná na stupnici 0-1 (Atlas klimatických zmien - str. 19)",
+   "jazyk": "english (united states)",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778142315000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Citlivosť  obyvateľstva  na  extrémne  horúčavy  (environmentálna)  normalizovan/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Citlivosť  obyvateľstva  na  extrémne  horúčavy  (environmentálna)  normalizovan",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 17,
+     "polia": [
+      [
+       "Mestská_časť",
+       "String",
+       "Mestská časť"
+      ],
+      [
+       "Citlivosť__celková_",
+       "String",
+       "Citlivosť (celková)"
+      ],
+      [
+       "Disponibilná_kapacita__celková_",
+       "String",
+       "Disponibilná kapacita (celková)"
+      ],
+      [
+       "Zraniteľnosť__celková_",
+       "String",
+       "Zraniteľnosť (celková)"
+      ],
+      [
+       "Expozícia__celková_",
+       "String",
+       "Expozícia (celková)"
+      ],
+      [
+       "Hrozba__celková_",
+       "String",
+       "Hrozba (celková)"
+      ],
+      [
+       "Riziko__celkové_",
+       "String",
+       "Riziko (celkové)"
+      ],
+      [
+       "Citlivosť__spoločenská_",
+       "String",
+       "Citlivosť (spoločenská)"
+      ],
+      [
+       "Disponibilná_kapacita__spoločen",
+       "String",
+       "Disponibilná kapacita (spoločenská)"
+      ],
+      [
+       "Zraniteľnosť__spoločenská_",
+       "String",
+       "Zraniteľnosť (spoločenská)"
+      ],
+      [
+       "Citlivosť__environmentálna_",
+       "String",
+       "Citlivosť (environmentálna)"
+      ],
+      [
+       "Disponibilná_kapacita__environm",
+       "String",
+       "Disponibilná kapacita (environmentálna)"
+      ],
+      [
+       "Zraniteľnosť__environmentálna_",
+       "String",
+       "Zraniteľnosť (environmentálna)"
       ],
       [
        "ObjectId",
@@ -1394,6 +1506,69 @@
     {
      "id": 0,
      "nazov": "Citlivosť_zrážky_budovy",
+     "druh": "vrstva",
+     "geometria": "esriGeometryPolygon",
+     "pocet": 9570,
+     "polia": [
+      [
+       "FID",
+       "OID",
+       "FID"
+      ],
+      [
+       "hodnota",
+       "Double",
+       "hodnota"
+      ],
+      [
+       "Shape__Area",
+       "Double",
+       "Shape__Area"
+      ],
+      [
+       "Shape__Length",
+       "Double",
+       "Shape__Length"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "81ff5b48389448ec8770be66ac62f788",
+   "nazov": "Citlivosť dopravnej infraštruktúry na zrážky",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Citlivosť_dopr_infr_na_zrážky/FeatureServer",
+   "tagy": [
+    "Secap",
+    "Zmena klímy",
+    "Citlivosť"
+   ],
+   "kategorie": [
+    "/Categories/Územný plán",
+    "/Categories/Životné prostredie"
+   ],
+   "upravene": 1778155918000,
+   "popis": "Klimaticky odolná Bratislava – Pilotné projekty zamerané na dekarbonizáciu, energetickú účinnosť budov a udržateľné hospodárenie s dažďovou vodou v mestskom prostredí.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 4997120,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778155918000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Citlivosť_dopr_infr_na_zrážky/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Citlivosť_dopr_infr_na_zrážky",
      "druh": "vrstva",
      "geometria": "esriGeometryPolygon",
      "pocet": 9570,
@@ -2845,6 +3020,68 @@
        "ObjectId",
        "OID",
        "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "f99f75fbdb794d4a823d368976af8d0c",
+   "nazov": "Disponibilná kapacita budov na zrážky",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Disponibilná_kapacita_budovy_na_zrážky/FeatureServer",
+   "tagy": [
+    "Secap",
+    "Zmena klímy"
+   ],
+   "kategorie": [
+    "/Categories/Územný plán",
+    "/Categories/Životné prostredie"
+   ],
+   "upravene": 1778137624000,
+   "popis": "Klimaticky odolná Bratislava – Pilotné projekty zamerané na dekarbonizáciu, energetickú účinnosť budov a udržateľné hospodárenie s dažďovou vodou v mestskom prostredí.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 4972544,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778137624000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Disponibilná_kapacita_budovy_na_zrážky/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Disponibilná_kapacita__zrážky_budovy",
+     "druh": "vrstva",
+     "geometria": "esriGeometryPolygon",
+     "pocet": 9570,
+     "polia": [
+      [
+       "FID",
+       "OID",
+       "FID"
+      ],
+      [
+       "hodnota",
+       "Double",
+       "hodnota"
+      ],
+      [
+       "Shape__Area",
+       "Double",
+       "Shape__Area"
+      ],
+      [
+       "Shape__Length",
+       "Double",
+       "Shape__Length"
       ]
      ]
     }
@@ -8179,6 +8416,97 @@
    ]
   },
   {
+   "id": "37c53db38ff14679b5d787f06cf1e9f7",
+   "nazov": "Kontaktné miesta Magistrátu hlavného mesta SR Bratislavy",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Kontaktné_miesta_Magistrátu_hlavného_mesta_SR_BA/FeatureServer",
+   "tagy": [
+    "Publikačné minimum"
+   ],
+   "kategorie": [
+    "/Categories/Správa mesta a výstavba"
+   ],
+   "upravene": 1780921572000,
+   "popis": "Kontaktné miesta Magistrátu hlavného mesta SR Bratislavy",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780921572000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Kontaktné_miesta_Magistrátu_hlavného_mesta_SR_BA/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Kontaktné_miesta_Magistrátu_hlavného_mesta_SR_BA",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 7,
+     "polia": [
+      [
+       "Id",
+       "String",
+       "Id"
+      ],
+      [
+       "Name",
+       "String",
+       "Name"
+      ],
+      [
+       "Organization",
+       "String",
+       "Organization"
+      ],
+      [
+       "OrganizationName",
+       "String",
+       "OrganizationName"
+      ],
+      [
+       "AdressId",
+       "String",
+       "AdressId"
+      ],
+      [
+       "FullAddress",
+       "String",
+       "FullAddress"
+      ],
+      [
+       "ServiceUrl",
+       "String",
+       "ServiceUrl"
+      ],
+      [
+       "Email",
+       "String",
+       "Email"
+      ],
+      [
+       "Phone",
+       "String",
+       "Phone"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "49ce2adc138f4c0f9a665bdb89229bb0",
    "nazov": "Linky pomoci pre ľudí v núdzi v Bratislave",
    "typ": "Feature Service",
@@ -8509,6 +8837,118 @@
        "Skupina",
        "String",
        "Skupina"
+      ],
+      [
+       "Deň_v_týždni",
+       "String",
+       "Deň v týždni"
+      ],
+      [
+       "Zemepisná_dĺžka",
+       "String",
+       "Zemepisná dĺžka"
+      ],
+      [
+       "Zemepisná_šírka",
+       "String",
+       "Zemepisná šírka"
+      ],
+      [
+       "Riešené_územie",
+       "String",
+       "Riešené územie"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "18b26b257e0d41169fab6f6ac7d1928c",
+   "nazov": "Mapovanie parku Mudrochova",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Mapovanie pohybu  pohlavia  vekového zlo___/FeatureServer",
+   "tagy": [
+    "Obyvatelia",
+    "Regióny a mestá"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1778141282000,
+   "popis": "Mapovanie pohybu, pohlavia, vekového zloženia, spôsobu pohybu či skupinovosti a aktivít ľudí v rámci parku Mudrochova a priestoru pred OC Račan a MÚ Rača v mestskej časti Bratislava – Rača prebehlo počas piatku, 20. novembra 2020. Mapovanie sa realizovalo za účelom lepšieho porozumenia súčasného fungovania týchto priestorov a slúžilo ako jedno z východísk pre ich plánovanú obnovu.",
+   "jazyk": "english (united states)",
+   "licencia": "CC BY 4.0",
+   "velkost": 229376,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778141282000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Mapovanie pohybu  pohlavia  vekového zlo___/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Mapovanie pohybu  pohlavia  vekového zlo___",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 743,
+     "polia": [
+      [
+       "Dátum",
+       "String",
+       "Dátum"
+      ],
+      [
+       "Čas",
+       "String",
+       "Čas"
+      ],
+      [
+       "Pohlavie",
+       "String",
+       "Pohlavie"
+      ],
+      [
+       "Veková_kategória",
+       "String",
+       "Veková kategória"
+      ],
+      [
+       "Spôsob_pohybu",
+       "String",
+       "Spôsob pohybu"
+      ],
+      [
+       "Aktivita",
+       "String",
+       "Aktivita"
+      ],
+      [
+       "Skupina",
+       "String",
+       "Skupina"
+      ],
+      [
+       "Stanovište",
+       "String",
+       "Stanovište"
+      ],
+      [
+       "Smer_pohybu",
+       "String",
+       "Smer pohybu"
       ],
       [
        "Deň_v_týždni",
@@ -11403,6 +11843,98 @@
    ]
   },
   {
+   "id": "81abdb9566e84d00aaad5ffd953d791a",
+   "nazov": "Objednávky Pohrebníctva mesta Bratislava - MARIANUM",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Nove_objednavky_marianum/FeatureServer",
+   "tagy": [
+    "Hospodárstvo a financie",
+    "Objednávky"
+   ],
+   "kategorie": [
+    "/Categories/Správa mesta a výstavba"
+   ],
+   "upravene": 1778142871000,
+   "popis": "Objednávky Pohrebníctva mesta Bratislava - MARIANUM",
+   "jazyk": "sk",
+   "licencia": "CC BY-NC 4.0",
+   "velkost": 2973696,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778142871000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Nove_objednavky_marianum/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Nove_objednavky_marianum",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 5549,
+     "polia": [
+      [
+       "Číslo_objednávky",
+       "String",
+       "Číslo objednávky"
+      ],
+      [
+       "Číslo_zmluvy",
+       "String",
+       "Číslo zmluvy"
+      ],
+      [
+       "Popis_fakturovaného_plnenia",
+       "String",
+       "Popis fakturovaného plnenia"
+      ],
+      [
+       "Dodávateľ__meno___priezvisko_ob",
+       "String",
+       "Dodávateľ: meno + priezvisko/obchodný názov"
+      ],
+      [
+       "Dodávateľ__adresa_sídlo",
+       "String",
+       "Dodávateľ: adresa/sídlo"
+      ],
+      [
+       "Dodávateľ__IČO",
+       "String",
+       "Dodávateľ: IČO"
+      ],
+      [
+       "Celková_hodnota_objednaného_pln",
+       "String",
+       "Celková hodnota objednaného plnenia"
+      ],
+      [
+       "Za_objednávateľa_podpísal_meno_",
+       "String",
+       "Za objednávateľa podpísal meno + priezvisko"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ],
+      [
+       "Dátum_vyhotovenia_objednávky",
+       "DateOnly",
+       "Dátum vyhotovenia objednávky"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "dcd8662c11954fc1a123285db68d9602",
    "nazov": "Objekty a byty vo vlastníctve Hlavného mesta SR BA nezverené do správy MČ k 31.12.2019",
    "typ": "Feature Service",
@@ -12433,6 +12965,68 @@
    ]
   },
   {
+   "id": "ebd798f317fb4f658e95806fe518eceb",
+   "nazov": "Očakávaný vývoj domového fondu v okresoch BSK v rokoch 2031 - 2051",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Očakávaný_vývoj_domového_fondu_v_okresoch_BSK_v_rokoch_2031_-_2051/FeatureServer",
+   "tagy": [
+    "Prognóza",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Správa mesta a výstavba"
+   ],
+   "upravene": 1778139429000,
+   "popis": "Prognóza vývoja počtu domov v okresoch Bratislavského samosprávneho kraja v prognózovaných rokoch 2031, 2041 a 2051, údaje sú v uvedené v tisícoch domoch",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778139429000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Očakávaný_vývoj_domového_fondu_v_okresoch_BSK_v_rokoch_2031_-_2051/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Očakávaný_vývoj_domového_fondu_v_okresoch_BSK_v_rokoch_2031_-_2051",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 24,
+     "polia": [
+      [
+       "OKRES",
+       "String",
+       "OKRES"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "POCET_DOMOV_V_TIS",
+       "String",
+       "POCET_DOMOV_V_TIS"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "898255074afc4e9996f44a11d234ae5a",
    "nazov": "Parcely vo vlastníctve hlavného mesta SR Bratislavy k 31.12.2019",
    "typ": "Feature Service",
@@ -12717,6 +13311,102 @@
        "ODKAZ_NA_STRANKU_PROJEKTU",
        "String",
        "ODKAZ_NA_STRANKU_PROJEKTU"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1b5814581b4a46cdae60cd02b7695212",
+   "nazov": "Petície podané na Hlavné mesto SR BA",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Peticie/FeatureServer",
+   "tagy": [
+    "Publikačné minimum"
+   ],
+   "kategorie": [
+    "/Categories/Správa mesta a výstavba"
+   ],
+   "upravene": 1778152658000,
+   "popis": "Aktualizované dňa 19.6.2023.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 65536,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778152658000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Peticie/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Peticie",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 75,
+     "polia": [
+      [
+       "IČO_samosprávy",
+       "String",
+       "IČO samosprávy"
+      ],
+      [
+       "Názov_samosprávy",
+       "String",
+       "Názov samosprávy"
+      ],
+      [
+       "ID_petície",
+       "String",
+       "ID petície"
+      ],
+      [
+       "Názov_petície",
+       "String",
+       "Názov petície"
+      ],
+      [
+       "Dátum_doručenia",
+       "Date",
+       "Dátum doručenia"
+      ],
+      [
+       "Popis_petície",
+       "String",
+       "Popis petície"
+      ],
+      [
+       "Stav_vybavenia_petície",
+       "String",
+       "Stav vybavenia petície"
+      ],
+      [
+       "Číslo_registratúrneho_záznamu",
+       "String",
+       "Číslo registratúrneho záznamu"
+      ],
+      [
+       "Dátum_vybavenia",
+       "Date",
+       "Dátum vybavenia"
+      ],
+      [
+       "Dátum_zverejnenia",
+       "Date",
+       "Dátum zverejnenia"
       ],
       [
        "ObjectId",
@@ -20501,6 +21191,77 @@
        "POCET_OBYVATELOV",
        "Integer",
        "POCET_OBYVATELOV"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "a5f1b093ad82432792ff709314a1b2f7",
+   "nazov": "Počet odbavených cestujúcich na letisku M. R. Štefánika v Bratislave podľa druhu dopravy",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet odbavených cestujúcich na letisku M. R. Štefánika v Bratis/FeatureServer",
+   "tagy": [
+    "Doprava"
+   ],
+   "kategorie": [
+    "/Categories/Doprava a komunikácie"
+   ],
+   "upravene": 1778158172000,
+   "popis": "Počet odbavených cestujúcich na letisku M. R. Štefánika v Bratislave podľa druhu dopravy",
+   "jazyk": "english (united states)",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778158172000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet odbavených cestujúcich na letisku M. R. Štefánika v Bratis/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet odbavených cestujúcich na letisku M. R. Štefánika v Bratis",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 15,
+     "polia": [
+      [
+       "Rok",
+       "String",
+       "Rok"
+      ],
+      [
+       "Pravidelná_doprava",
+       "String",
+       "Pravidelná doprava"
+      ],
+      [
+       "Nepravidelná_doprava",
+       "String",
+       "Nepravidelná doprava"
+      ],
+      [
+       "Ostatná_doprava",
+       "String",
+       "Ostatná doprava"
+      ],
+      [
+       "Spolu",
+       "String",
+       "Spolu"
       ],
       [
        "ObjectId",
@@ -38999,6 +39760,137 @@
    ]
   },
   {
+   "id": "2b1fa068316a4b47b25e0f4f6cf7143f",
+   "nazov": "Vekové zloženie migračného salda Bratislavy",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vekové_zloženie_migračného_salda_Bratislavy/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Analytika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1780901770000,
+   "popis": "Analytická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vekové zloženie migračného salda Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 40960,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780901770000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vekové_zloženie_migračného_salda_Bratislavy/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vekové_zloženie_migračného_salda_Bratislavy",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 396,
+     "polia": [
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "VEK",
+       "String",
+       "VEK"
+      ],
+      [
+       "MIGRACNE_SALDO",
+       "Integer",
+       "MIGRACNE_SALDO"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "9c32c295a0bc47098abbac8a580a95de",
+   "nazov": "Vekové zloženie obyvateľov Bratislavy a Slovenska v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vekove_zlozenie_obyvatelov_Bratislavy_a_Slovenska_v_roku_2021_abs/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Analytika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1780903031000,
+   "popis": "Analytická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vekové zloženie obyvateľov Bratislavy a Slovenska v roku 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 57344,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780903031000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vekove_zlozenie_obyvatelov_Bratislavy_a_Slovenska_v_roku_2021_abs/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vekove_zlozenie_obyvatelov_Bratislavy_a_Slovenska_v_roku_2021_abs",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 404,
+     "polia": [
+      [
+       "UZEMIE",
+       "String",
+       "UZEMIE"
+      ],
+      [
+       "POHLAVIE",
+       "String",
+       "POHLAVIE"
+      ],
+      [
+       "VEK",
+       "String",
+       "VEK"
+      ],
+      [
+       "POCET_OBYVATELOV",
+       "Integer",
+       "POCET_OBYVATELOV"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "26d3216ebbc44328a8ca262a13a51e27",
    "nazov": "Vekové zloženie obyvateľov Bratislavy v roku 2021 a v roku 2050 (stredný scenár)",
    "typ": "Feature Service",
@@ -39051,6 +39943,74 @@
        "POCET_OBYVATELOV",
        "Integer",
        "POCET_OBYVATELOV"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c1252c1579444a15998d8046aef696ea",
+   "nazov": "Vekové zloženie obyvateľov v najstaršej a najmladšej mestskej časti BA v roku 2021 (v %)",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vekové_zloženie_obyvateľov_v_najstaršej_a_najmladšej_mestskej_časti_Bratislavy_v_roku_2021/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Analytika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1780908367000,
+   "popis": "Analytická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vekové zloženie obyvateľov v najstaršej a najmladšej mestskej časti Bratislavy v roku 2021 v %.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 57344,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780908367000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vekové_zloženie_obyvateľov_v_najstaršej_a_najmladšej_mestskej_časti_Bratislavy_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vekové_zloženie_obyvateľov_v_najstaršej_a_najmladšej_mestskej_časti_Bratislavy_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 404,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA CAST"
+      ],
+      [
+       "POHLAVIE",
+       "String",
+       "POHLAVIE"
+      ],
+      [
+       "VEK",
+       "String",
+       "VEK"
+      ],
+      [
+       "PODIEL",
+       "String",
+       "PODIEL"
       ],
       [
        "ObjectId",
@@ -39698,6 +40658,69 @@
    ]
   },
   {
+   "id": "8a63421f816548da99e782d220182e16",
+   "nazov": "Vzdelanostná štruktúra žien vo veku 15 a viac rokov v mestských častiach BA (SODB 2021)",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vzdelanostná_štruktúra_žien_vo_veku_15_a_viac_rokov_v_mestských_častiach_BA_SODB_2021/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Analytika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1780904214000,
+   "popis": "Analytická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vzdelanostná štruktúra žien vo veku 15 a viac rokov v mestských častiach Bratislavy podľa Sčítania obyvateľov, domov a bytov 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 40960,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780904214000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vzdelanostná_štruktúra_žien_vo_veku_15_a_viac_rokov_v_mestských_častiach_BA_SODB_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vzdelanostná_štruktúra_žien_vo_veku_15_a_viac_rokov_v_mestských_častiach_BA_SODB_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 108,
+     "polia": [
+      [
+       "VZDELANIE",
+       "String",
+       "VZDELANIE"
+      ],
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "PODIEL",
+       "String",
+       "PODIEL"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "bf5dfe3703de4673b1cf583717194e86",
    "nazov": "Vzdelanostná štruktúra žien vo veku 15 a viac rokov v okresoch Bratislavy (SODB 2021)",
    "typ": "Feature Service",
@@ -39921,6 +40944,69 @@
     {
      "id": 0,
      "nazov": "Vzájomné_migračné_saldo_okresov_Bratislavy_2000_–_2004",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 10,
+     "polia": [
+      [
+       "OKRES_ZISKOVY",
+       "String",
+       "OKRES_ZISKOVY"
+      ],
+      [
+       "OKRES_STRATOVY",
+       "String",
+       "OKRES_STRATOVY"
+      ],
+      [
+       "MIGRACNE_SALDO",
+       "Integer",
+       "MIGRACNE_SALDO"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "e6568f413fcb436094687541abd69220",
+   "nazov": "Vzájomné migračné saldo okresov Bratislavy 2017 – 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vzajomne_migracne_saldo_okresov_Bratislavy_2017_–_2021/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Analytika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1780904156000,
+   "popis": "Analytická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vzájomné migračné saldo okresov Bratislavy 2017 – 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780904156000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vzajomne_migracne_saldo_okresov_Bratislavy_2017_–_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vzajomne_migracne_saldo_okresov_Bratislavy_2017_–_2021",
      "druh": "tabulka",
      "geometria": null,
      "pocet": 10,
@@ -42302,6 +43388,69 @@
    ]
   },
   {
+   "id": "1fc49a8c4a4b488a97b4f7fc4670bee1",
+   "nazov": "Vývoj strednej dĺžky života pri narodení mužov v BA a na SR v období rokov 2000 – 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_strednej_dĺžky_života_pri_narodení_mužov_v_BA_a_na_SR_v_období_rokov_2000_–_2021/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Analytika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1780903304000,
+   "popis": "Analytická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vývoj strednej dĺžky života pri narodení mužov v Bratislave a na Slovensku v období rokov 2000 – 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780903304000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_strednej_dĺžky_života_pri_narodení_mužov_v_BA_a_na_SR_v_období_rokov_2000_–_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vývoj_strednej_dĺžky_života_pri_narodení_mužov_v_BA_a_na_SR_v_období_rokov_2000_–_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 40,
+     "polia": [
+      [
+       "UZEMIE",
+       "String",
+       "UZEMIE"
+      ],
+      [
+       "OBDOBIE",
+       "String",
+       "OBDOBIE"
+      ],
+      [
+       "STREDNA_DLZKA_ZIVOTA",
+       "String",
+       "STREDNA_DLZKA_ZIVOTA"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "59e799f0d0bd4734b38c90dcd15a4d31",
    "nazov": "Vývoj strednej dĺžky života pri narodení mužov v okresoch BA v obdobiach rokov 2000 – 2021",
    "typ": "Feature Service",
@@ -43043,6 +44192,69 @@
    ]
   },
   {
+   "id": "a0ba4646f6094d1081c619e76ebacb86",
+   "nazov": "Vývoj úhrnnej plodnosti žien v okresoch Bratislavy v rokoch 2000 – 2021 ",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_úhrnnej_plodnosti_žien_v_okresoch_Bratislavy_v_rokoch_2000_–_2021_/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Analytika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1780903869000,
+   "popis": "Analytická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vývoj úhrnnej plodnosti žien v okresoch Bratislavy v rokoch 2000 – 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 32768,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780903869000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_úhrnnej_plodnosti_žien_v_okresoch_Bratislavy_v_rokoch_2000_–_2021_/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vývoj_úhrnnej_plodnosti_žien_v_okresoch_Bratislavy_v_rokoch_2000_–_2021_",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 110,
+     "polia": [
+      [
+       "OKRES",
+       "String",
+       "OKRES"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "UHRNNA_PLODNOST",
+       "String",
+       "UHRNNA_PLODNOST"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "83a61076cae54912a9b64f471b38a069",
    "nazov": "Výška mzdy v sektore \"vzdelávanie\" v meste Bratislava",
    "typ": "Feature Service",
@@ -43102,6 +44314,167 @@
        "ObjectId",
        "OID",
        "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c676285f8534424e86495859594f53be",
+   "nazov": "Zameranie verejnej zelene v Bratislave ",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zameranie_zelene_v_Bratislave_test/FeatureServer",
+   "tagy": [
+    "Regióny a mestá",
+    "Zeleň",
+    "Životné prostredie"
+   ],
+   "kategorie": [
+    "/Categories/Životné prostredie"
+   ],
+   "upravene": 1778142450000,
+   "popis": "Zameranie zelene v Bratislave",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 260808704,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Multilayer",
+    "Service",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778142450000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zameranie_zelene_v_Bratislave_test/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "pasport_stromy_all_fin",
+     "druh": "vrstva",
+     "geometria": "esriGeometryPoint",
+     "pocet": 302604,
+     "polia": [
+      [
+       "OBJECTID",
+       "OID",
+       "OBJECTID"
+      ],
+      [
+       "GS_ID",
+       "Integer",
+       "GS_ID"
+      ],
+      [
+       "lokalita",
+       "String",
+       "lokalita"
+      ],
+      [
+       "vyska_7",
+       "Double",
+       "Výška stromu (m)"
+      ],
+      [
+       "NM4",
+       "String",
+       "Názov obce"
+      ],
+      [
+       "NM3",
+       "String",
+       "Názov okresu"
+      ],
+      [
+       "dátum_prebratia_zamerania",
+       "String",
+       "dátum_prebratia_zamerania"
+      ]
+     ]
+    },
+    {
+     "id": 1,
+     "nazov": "papsport_plochy_all_fin",
+     "druh": "vrstva",
+     "geometria": "esriGeometryPolygon",
+     "pocet": 133662,
+     "polia": [
+      [
+       "OBJECTID",
+       "OID",
+       "OBJECTID"
+      ],
+      [
+       "ID",
+       "Double",
+       "ID"
+      ],
+      [
+       "TYP_ID",
+       "Integer",
+       "TYP_ID"
+      ],
+      [
+       "vymera",
+       "Double",
+       "vymera"
+      ],
+      [
+       "SKLON_ID",
+       "Double",
+       "SKLON_ID"
+      ],
+      [
+       "LOKALITA",
+       "String",
+       "LOKALITA"
+      ],
+      [
+       "VYSKA_5",
+       "Double",
+       "VYSKA_5"
+      ],
+      [
+       "VYSKA_2",
+       "Double",
+       "VYSKA_2"
+      ],
+      [
+       "VYSKA_3",
+       "Double",
+       "VYSKA_3"
+      ],
+      [
+       "TYP",
+       "String",
+       "TYP"
+      ],
+      [
+       "NM4",
+       "String",
+       "Názov obce"
+      ],
+      [
+       "NM3",
+       "String",
+       "Názov okresu"
+      ],
+      [
+       "dátum_prebratia_zamerania",
+       "String",
+       "dátum_prebratia_zamerania"
+      ],
+      [
+       "Shape__Area",
+       "Double",
+       "Shape__Area"
+      ],
+      [
+       "Shape__Length",
+       "Double",
+       "Shape__Length"
       ]
      ]
     }
@@ -43808,6 +45181,64 @@
    ]
   },
   {
+   "id": "c69430b02fbb41299af9d94cf37e4fd0",
+   "nazov": "Zmena priemerného veku obyvateľov Bratislavy a Slovenska medzi rokom 2000 a 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zmena_priemerného_veku_obyvateľov_Bratislavy_a_Slovenska_medzi_rokom_2000_a_2021/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Analytika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1780908033000,
+   "popis": "Analytická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Zmena priemerného veku obyvateľov Bratislavy a Slovenska medzi rokom 2000 a 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 24576,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780908033000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zmena_priemerného_veku_obyvateľov_Bratislavy_a_Slovenska_medzi_rokom_2000_a_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Zmena_priemerného_veku_obyvateľov_Bratislavy_a_Slovenska_medzi_rokom_2000_a_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 2,
+     "polia": [
+      [
+       "UZEMIE",
+       "String",
+       "UZEMIE"
+      ],
+      [
+       "ZMENA",
+       "String",
+       "ZMENA"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "970eb74db22b488c8175df085641c822",
    "nazov": "Zmena priemerného veku obyvateľstva okresov Bratislavy medzi rokom 2000 a 2021",
    "typ": "Feature Service",
@@ -43850,6 +45281,64 @@
        "OKRES",
        "String",
        "OKRES"
+      ],
+      [
+       "ZMENA",
+       "String",
+       "ZMENA"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "5341875a8a804866a8186744f002d73d",
+   "nazov": "Zmena priemerného veku v mestských častiach Bratislavy medzi rokom 2000 a 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zmena_priemerného_veku_v_mestských_častiach_Bratislavy_medzi_rokom_2000_a_2021/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Analytika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1780908136000,
+   "popis": "Analytická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Zmena priemerného veku v mestských častiach Bratislavy medzi rokom 2000 a 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780908136000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zmena_priemerného_veku_v_mestských_častiach_Bratislavy_medzi_rokom_2000_a_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Zmena_priemerného_veku_v_mestských_častiach_Bratislavy_medzi_rokom_2000_a_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 17,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
       ],
       [
        "ZMENA",
@@ -44305,6 +45794,65 @@
        "DÁTUM_ZVEREJNENIA",
        "Date",
        "DÁTUM ZVEREJNENIA"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "99015d9060504a97b1e5dd7295eba7c1",
+   "nazov": "Zmluvy o prevode spoluvlastníckeho podielu na pozemku podaných do katastra nehnuteľností",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_zmlúv_o_prevode_spoluvlastníckeho_podielu_na_pozemku_podaných_do_katastra/FeatureServer",
+   "tagy": [
+    "Vláda a verejný sektor",
+    "Regióny a mestá",
+    "OpenData",
+    "Zmluvy"
+   ],
+   "kategorie": [
+    "/Categories/Správa mesta a výstavba"
+   ],
+   "upravene": 1778137026000,
+   "popis": "Počet zmlúv o prevode spoluvlastníckeho podielu na pozemku podaných do katastra nehnuteľností na zápis vlastníckeho práva za obdobie 2004 – 2020",
+   "jazyk": "en-gb",
+   "licencia": "CC BY-NC 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778137026000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_zmlúv_o_prevode_spoluvlastníckeho_podielu_na_pozemku_podaných_do_katastra/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_zmlúv_o_prevode_spoluvlastníckeho_podielu_na_pozemku_podaných_do_katastra",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 17,
+     "polia": [
+      [
+       "Bratislava___katastrálne_územie",
+       "String",
+       "Bratislava - katastrálne územie"
+      ],
+      [
+       "Počet_zmlúv_o_prevode_spoluvlas",
+       "Integer",
+       "Počet zmlúv o prevode spoluvlastníckeho podielu na pozemku podaných do katastra nehnuteľností na zápis vlastníckeho práva"
       ],
       [
        "ObjectId",
@@ -45420,6 +46968,317 @@
        "Poznámka",
        "String",
        "Poznámka"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "49d5049003754b5984721879b842cf24",
+   "nazov": "Zoznam základných umeleckých škôl v roku 2024",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zakladna_umelecka_skola_zoznam_2024/FeatureServer",
+   "tagy": [
+    "Školstvo"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1778143456000,
+   "popis": "Dátový set zobrazuje zoznam verejných a súkromných základných umeleckých škôl v školskom roku 2023/2024 (doplnenie 2024),",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 98304,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778143456000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zakladna_umelecka_skola_zoznam_2024/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Zakladna_umelecka_skola_zoznam_2024",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 101,
+     "polia": [
+      [
+       "EDUID",
+       "String",
+       "EDUID"
+      ],
+      [
+       "Mestská_časť",
+       "String",
+       "Mestská časť"
+      ],
+      [
+       "Kód_školy",
+       "String",
+       "Kód školy"
+      ],
+      [
+       "Druh_školského_zariadenia",
+       "String",
+       "Druh školského zariadenia"
+      ],
+      [
+       "Lokalita",
+       "String",
+       "Lokalita"
+      ],
+      [
+       "Typ_školského_zariadenia",
+       "String",
+       "Typ školského zariadenia"
+      ],
+      [
+       "Typ_02",
+       "String",
+       "Typ 02"
+      ],
+      [
+       "Počet_žiakov",
+       "Integer",
+       "Počet žiakov"
+      ],
+      [
+       "Počet_tried",
+       "Integer",
+       "Počet tried"
+      ],
+      [
+       "Zamestnanci",
+       "Integer",
+       "Zamestnanci"
+      ],
+      [
+       "Web_školy",
+       "String",
+       "Web školy"
+      ],
+      [
+       "čís",
+       "String",
+       "čís"
+      ],
+      [
+       "Názov",
+       "String",
+       "Názov"
+      ],
+      [
+       "Zemeranie",
+       "String",
+       "Zemeranie"
+      ],
+      [
+       "Odbor",
+       "String",
+       "Odbor"
+      ],
+      [
+       "Hudobný_odbor",
+       "String",
+       "Hudobný odbor"
+      ],
+      [
+       "Výtvarný_odbo",
+       "String",
+       "Výtvarný odbo"
+      ],
+      [
+       "Literárno___dramatický_odbor",
+       "String",
+       "Literárno - dramatický odbor"
+      ],
+      [
+       "Tanečný_odbor",
+       "String",
+       "Tanečný odbor"
+      ],
+      [
+       "Audiovizuálny_odbor",
+       "String",
+       "Audiovizuálny odbor"
+      ],
+      [
+       "Gitara",
+       "String",
+       "Gitara"
+      ],
+      [
+       "Klavír",
+       "String",
+       "Klavír"
+      ],
+      [
+       "Husle",
+       "String",
+       "Husle"
+      ],
+      [
+       "Flauta",
+       "String",
+       "Flauta"
+      ],
+      [
+       "Zobcová_flauta",
+       "String",
+       "Zobcová flauta"
+      ],
+      [
+       "Spev",
+       "String",
+       "Spev"
+      ],
+      [
+       "Organ",
+       "String",
+       "Organ"
+      ],
+      [
+       "Hudobná_náuka",
+       "String",
+       "Hudobná náuka"
+      ],
+      [
+       "Harfa",
+       "String",
+       "Harfa"
+      ],
+      [
+       "Bicie",
+       "String",
+       "Bicie"
+      ],
+      [
+       "Keyboard",
+       "String",
+       "Keyboard"
+      ],
+      [
+       "Viola",
+       "String",
+       "Viola"
+      ],
+      [
+       "Violoncelo",
+       "String",
+       "Violoncelo"
+      ],
+      [
+       "Akordeón",
+       "String",
+       "Akordeón"
+      ],
+      [
+       "Klarinet",
+       "String",
+       "Klarinet"
+      ],
+      [
+       "Saxofón",
+       "String",
+       "Saxofón"
+      ],
+      [
+       "Trúbka",
+       "String",
+       "Trúbka"
+      ],
+      [
+       "Pozauna",
+       "String",
+       "Pozauna"
+      ],
+      [
+       "Cimbal",
+       "String",
+       "Cimbal"
+      ],
+      [
+       "Kontrabas",
+       "String",
+       "Kontrabas"
+      ],
+      [
+       "Fujara",
+       "String",
+       "Fujara"
+      ],
+      [
+       "Gajdy",
+       "String",
+       "Gajdy"
+      ],
+      [
+       "Trombón",
+       "String",
+       "Trombón"
+      ],
+      [
+       "Lesný_roh",
+       "String",
+       "Lesný roh"
+      ],
+      [
+       "Gitarka",
+       "String",
+       "Gitarka"
+      ],
+      [
+       "Hoboj",
+       "String",
+       "Hoboj"
+      ],
+      [
+       "Fagot",
+       "String",
+       "Fagot"
+      ],
+      [
+       "Basova_gitara",
+       "String",
+       "Basova gitara"
+      ],
+      [
+       "Elektrická_gitara",
+       "String",
+       "Elektrická gitara"
+      ],
+      [
+       "Heligónka",
+       "String",
+       "Heligónka"
+      ],
+      [
+       "Počítačová_hudba",
+       "String",
+       "Počítačová hudba"
+      ],
+      [
+       "Kompozícia",
+       "String",
+       "Kompozícia"
+      ],
+      [
+       "Píšťalky",
+       "String",
+       "Píšťalky"
       ],
       [
        "ObjectId",
@@ -46985,6 +48844,89 @@
        "F__čerpania",
        "String",
        "% čerpania"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "aa1785e567e742f5bdb05bf0ab1234a5",
+   "nazov": "Čierne skládky v meste Bratislava v roku 2025",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Čierne_skládky_2025__public/FeatureServer",
+   "tagy": [
+    "Regióny a mestá",
+    "Životné prostredie",
+    "Publikačné minimum"
+   ],
+   "kategorie": [
+    "/Categories/Životné prostredie"
+   ],
+   "upravene": 1778151919000,
+   "popis": "Zoznam nahlásených čiernych (nelegálnych) skládok v meste Bratislava v roku 2025",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 40960,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1778151919000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Čierne_skládky_2025__public/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Čierne_skládky_2025__public",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 67,
+     "polia": [
+      [
+       "IČO_samosprávy",
+       "String",
+       "IČO samosprávy"
+      ],
+      [
+       "Názov_samosprávy",
+       "String",
+       "Názov samosprávy"
+      ],
+      [
+       "Číslo_parcely",
+       "String",
+       "Číslo parcely"
+      ],
+      [
+       "Kód_katastrálneho_územia",
+       "String",
+       "Kód katastrálneho územia"
+      ],
+      [
+       "Katastrálne_územie",
+       "String",
+       "Katastrálne územie"
+      ],
+      [
+       "GPS_súradnice_skládky",
+       "String",
+       "GPS súradnice skládky"
+      ],
+      [
+       "Dátum_nahlásenia_hl__mestu",
+       "String",
+       "Dátum nahlásenia hl. mestu"
       ],
       [
        "ObjectId",
@@ -49554,6 +51496,69 @@
    ]
   },
   {
+   "id": "11c8037632414c3ab19ba6a4da1ee4d8",
+   "nazov": "Štruktúra žien podľa najvyššieho dosiahnutého vzdelania a veku na SR podľa SODB 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Štruktúra_žien_podľa_najvyššieho_dosiahnutého_vzdelania_a_veku_na_SR_podľa_SODB_2021/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Analytika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1780905518000,
+   "popis": "Analytická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Štruktúra žien podľa najvyššieho dosiahnutého vzdelania a veku na SR  podľa Sčítania obyvateľov, domov a bytov 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1780905518000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Štruktúra_žien_podľa_najvyššieho_dosiahnutého_vzdelania_a_veku_na_SR_podľa_SODB_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Štruktúra_žien_podľa_najvyššieho_dosiahnutého_vzdelania_a_veku_na_SR_podľa_SODB_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 75,
+     "polia": [
+      [
+       "VZDELANIE",
+       "String",
+       "VZDELANIE"
+      ],
+      [
+       "VEK",
+       "String",
+       "VEK"
+      ],
+      [
+       "PODIEL",
+       "String",
+       "PODIEL"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "2c9911cd62d04cfaaa4dca95ad8f260d",
    "nazov": "Štruktúra žien podľa najvyššieho dosiahnutého vzdelania a veku v BA podľa SODB 2021",
    "typ": "Feature Service",
@@ -49680,5 +51685,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-10-15T16:35:44+00:00"
+ "aktualizovane": "2026-10-15T16:47:34+00:00"
 }

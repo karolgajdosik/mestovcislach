@@ -1,9 +1,9 @@
 {
  "zdroj": "https://data.bratislava.sk",
  "pocty": {
-  "katalog": 542,
+  "katalog": 562,
   "osobitne": 29,
-  "vynechane": 17,
+  "vynechane": 20,
   "na_webe": 29
  },
  "datasety": [
@@ -436,6 +436,16 @@
    "stav": "katalog",
    "kde": "/katalog/66a8df129792447dbaf576a28ccc029a",
    "stlpcov": 10
+  },
+  {
+   "id": "18b26b257e0d41169fab6f6ac7d1928c",
+   "nazov": "Mapovanie parku Mudrochova",
+   "kategoria": "Demografia",
+   "upravene": 1778141282000,
+   "riadkov": 743,
+   "stav": "katalog",
+   "kde": "/katalog/18b26b257e0d41169fab6f6ac7d1928c",
+   "stlpcov": 12
   },
   {
    "id": "e11803110ec446e2a85178536f437328",
@@ -1837,6 +1847,26 @@
    "stlpcov": 3
   },
   {
+   "id": "2b1fa068316a4b47b25e0f4f6cf7143f",
+   "nazov": "Vekové zloženie migračného salda Bratislavy",
+   "kategoria": "Demografia",
+   "upravene": 1780901770000,
+   "riadkov": 396,
+   "stav": "katalog",
+   "kde": "/katalog/2b1fa068316a4b47b25e0f4f6cf7143f",
+   "stlpcov": 3
+  },
+  {
+   "id": "9c32c295a0bc47098abbac8a580a95de",
+   "nazov": "Vekové zloženie obyvateľov Bratislavy a Slovenska v roku 2021",
+   "kategoria": "Demografia",
+   "upravene": 1780903031000,
+   "riadkov": 404,
+   "stav": "katalog",
+   "kde": "/katalog/9c32c295a0bc47098abbac8a580a95de",
+   "stlpcov": 4
+  },
+  {
    "id": "26d3216ebbc44328a8ca262a13a51e27",
    "nazov": "Vekové zloženie obyvateľov Bratislavy v roku 2021 a v roku 2050 (stredný scenár)",
    "kategoria": "Demografia",
@@ -1845,6 +1875,16 @@
    "stav": "katalog",
    "kde": "/katalog/26d3216ebbc44328a8ca262a13a51e27",
    "stlpcov": 3
+  },
+  {
+   "id": "c1252c1579444a15998d8046aef696ea",
+   "nazov": "Vekové zloženie obyvateľov v najstaršej a najmladšej mestskej časti BA v roku 2021 (v %)",
+   "kategoria": "Demografia",
+   "upravene": 1780908367000,
+   "riadkov": 404,
+   "stav": "katalog",
+   "kde": "/katalog/c1252c1579444a15998d8046aef696ea",
+   "stlpcov": 4
   },
   {
    "id": "9ddb4493ef6047898e378431c34d8a02",
@@ -1874,6 +1914,16 @@
    "riadkov": 30,
    "stav": "katalog",
    "kde": "/katalog/089a837e202d470d8d1368726fda42c8",
+   "stlpcov": 3
+  },
+  {
+   "id": "8a63421f816548da99e782d220182e16",
+   "nazov": "Vzdelanostná štruktúra žien vo veku 15 a viac rokov v mestských častiach BA (SODB 2021)",
+   "kategoria": "Demografia",
+   "upravene": 1780904214000,
+   "riadkov": 108,
+   "stav": "katalog",
+   "kde": "/katalog/8a63421f816548da99e782d220182e16",
    "stlpcov": 3
   },
   {
@@ -1917,6 +1967,16 @@
    "stlpcov": 3
   },
   {
+   "id": "e6568f413fcb436094687541abd69220",
+   "nazov": "Vzájomné migračné saldo okresov Bratislavy 2017 – 2021",
+   "kategoria": "Demografia",
+   "upravene": 1780904156000,
+   "riadkov": 10,
+   "stav": "katalog",
+   "kde": "/katalog/e6568f413fcb436094687541abd69220",
+   "stlpcov": 3
+  },
+  {
    "id": "decef23a85be4fa7a1aad34842bedd31",
    "nazov": "Vývoj počtu obyvateľov Bratislavy v rokoch 2000 – 2021 (31.12.)",
    "kategoria": "Demografia",
@@ -1934,6 +1994,16 @@
    "riadkov": 110,
    "stav": "katalog",
    "kde": "/katalog/d6feb08928ec4615b6aa8f1b8b6bc6f6",
+   "stlpcov": 3
+  },
+  {
+   "id": "1fc49a8c4a4b488a97b4f7fc4670bee1",
+   "nazov": "Vývoj strednej dĺžky života pri narodení mužov v BA a na SR v období rokov 2000 – 2021",
+   "kategoria": "Demografia",
+   "upravene": 1780903304000,
+   "riadkov": 40,
+   "stav": "katalog",
+   "kde": "/katalog/1fc49a8c4a4b488a97b4f7fc4670bee1",
    "stlpcov": 3
   },
   {
@@ -1974,6 +2044,16 @@
    "riadkov": 44,
    "stav": "katalog",
    "kde": "/katalog/da8cf606178144d183da98d0fdea5fbc",
+   "stlpcov": 3
+  },
+  {
+   "id": "a0ba4646f6094d1081c619e76ebacb86",
+   "nazov": "Vývoj úhrnnej plodnosti žien v okresoch Bratislavy v rokoch 2000 – 2021 ",
+   "kategoria": "Demografia",
+   "upravene": 1780903869000,
+   "riadkov": 110,
+   "stav": "katalog",
+   "kde": "/katalog/a0ba4646f6094d1081c619e76ebacb86",
    "stlpcov": 3
   },
   {
@@ -2027,6 +2107,16 @@
    "stlpcov": 2
   },
   {
+   "id": "c69430b02fbb41299af9d94cf37e4fd0",
+   "nazov": "Zmena priemerného veku obyvateľov Bratislavy a Slovenska medzi rokom 2000 a 2021",
+   "kategoria": "Demografia",
+   "upravene": 1780908033000,
+   "riadkov": 2,
+   "stav": "katalog",
+   "kde": "/katalog/c69430b02fbb41299af9d94cf37e4fd0",
+   "stlpcov": 2
+  },
+  {
    "id": "970eb74db22b488c8175df085641c822",
    "nazov": "Zmena priemerného veku obyvateľstva okresov Bratislavy medzi rokom 2000 a 2021",
    "kategoria": "Demografia",
@@ -2034,6 +2124,16 @@
    "riadkov": 5,
    "stav": "katalog",
    "kde": "/katalog/970eb74db22b488c8175df085641c822",
+   "stlpcov": 2
+  },
+  {
+   "id": "5341875a8a804866a8186744f002d73d",
+   "nazov": "Zmena priemerného veku v mestských častiach Bratislavy medzi rokom 2000 a 2021",
+   "kategoria": "Demografia",
+   "upravene": 1780908136000,
+   "riadkov": 17,
+   "stav": "katalog",
+   "kde": "/katalog/5341875a8a804866a8186744f002d73d",
    "stlpcov": 2
   },
   {
@@ -2254,6 +2354,16 @@
    "riadkov": 72,
    "stav": "katalog",
    "kde": "/katalog/ee1cedb128cb4023adbe0bdcdbb04b06",
+   "stlpcov": 3
+  },
+  {
+   "id": "11c8037632414c3ab19ba6a4da1ee4d8",
+   "nazov": "Štruktúra žien podľa najvyššieho dosiahnutého vzdelania a veku na SR podľa SODB 2021",
+   "kategoria": "Demografia",
+   "upravene": 1780905518000,
+   "riadkov": 75,
+   "stav": "katalog",
+   "kde": "/katalog/11c8037632414c3ab19ba6a4da1ee4d8",
    "stlpcov": 3
   },
   {
@@ -2481,6 +2591,16 @@
    "stav": "katalog",
    "kde": "/katalog/624e60c6e1554f7cb077a98e758a4867",
    "stlpcov": 3
+  },
+  {
+   "id": "a5f1b093ad82432792ff709314a1b2f7",
+   "nazov": "Počet odbavených cestujúcich na letisku M. R. Štefánika v Bratislave podľa druhu dopravy",
+   "kategoria": "Doprava a komunikácie",
+   "upravene": 1778158172000,
+   "riadkov": 15,
+   "stav": "katalog",
+   "kde": "/katalog/a5f1b093ad82432792ff709314a1b2f7",
+   "stlpcov": 5
   },
   {
    "id": "84ba9f28423e4a52aae97c8cfb7d58e6",
@@ -4001,6 +4121,16 @@
    "stlpcov": 8
   },
   {
+   "id": "37c53db38ff14679b5d787f06cf1e9f7",
+   "nazov": "Kontaktné miesta Magistrátu hlavného mesta SR Bratislavy",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1780921572000,
+   "riadkov": 7,
+   "stav": "katalog",
+   "kde": "/katalog/37c53db38ff14679b5d787f06cf1e9f7",
+   "stlpcov": 8
+  },
+  {
    "id": "8bd7889eaba647d4adcbc1e3516532cf",
    "nazov": "Majetok mesta Bratislava k 31.12.2025",
    "kategoria": "Správa mesta a výstavba",
@@ -4090,6 +4220,16 @@
    "pozn": "Objednávky OLO"
   },
   {
+   "id": "81abdb9566e84d00aaad5ffd953d791a",
+   "nazov": "Objednávky Pohrebníctva mesta Bratislava - MARIANUM",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1778142871000,
+   "riadkov": 5549,
+   "stav": "katalog",
+   "kde": "/katalog/81abdb9566e84d00aaad5ffd953d791a",
+   "stlpcov": 9
+  },
+  {
    "id": "287e27b4174642369028a693db613320",
    "nazov": "Objekty a byty vo vlastníctve Hlavného mesta SR Bratislavy nezverené do správy MČ",
    "kategoria": "Správa mesta a výstavba",
@@ -4130,6 +4270,16 @@
    "stlpcov": 8
   },
   {
+   "id": "ebd798f317fb4f658e95806fe518eceb",
+   "nazov": "Očakávaný vývoj domového fondu v okresoch BSK v rokoch 2031 - 2051",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1778139429000,
+   "riadkov": 24,
+   "stav": "katalog",
+   "kde": "/katalog/ebd798f317fb4f658e95806fe518eceb",
+   "stlpcov": 3
+  },
+  {
    "id": "898255074afc4e9996f44a11d234ae5a",
    "nazov": "Parcely vo vlastníctve hlavného mesta SR Bratislavy k 31.12.2019",
    "kategoria": "Správa mesta a výstavba",
@@ -4137,6 +4287,16 @@
    "riadkov": 41558,
    "stav": "vynechane",
    "dovod": "Staršia verzia evidencie pozemkov (2019) – web používa majetok mesta k 31. 12. 2025."
+  },
+  {
+   "id": "1b5814581b4a46cdae60cd02b7695212",
+   "nazov": "Petície podané na Hlavné mesto SR BA",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1778152658000,
+   "riadkov": 75,
+   "stav": "katalog",
+   "kde": "/katalog/1b5814581b4a46cdae60cd02b7695212",
+   "stlpcov": 10
   },
   {
    "id": "b275ec5f1b3d4c36be1700398e9e9c0b",
@@ -4675,6 +4835,16 @@
    "stav": "na_webe",
    "kde": "/financie",
    "pozn": "Zmluvy magistrátu"
+  },
+  {
+   "id": "99015d9060504a97b1e5dd7295eba7c1",
+   "nazov": "Zmluvy o prevode spoluvlastníckeho podielu na pozemku podaných do katastra nehnuteľností",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1778137026000,
+   "riadkov": 17,
+   "stav": "katalog",
+   "kde": "/katalog/99015d9060504a97b1e5dd7295eba7c1",
+   "stlpcov": 2
   },
   {
    "id": "a5068dd4455b4df292f2c22e614c2484",
@@ -5525,6 +5695,16 @@
    "pozn": "Zoznam MŠ 2026"
   },
   {
+   "id": "49d5049003754b5984721879b842cf24",
+   "nazov": "Zoznam základných umeleckých škôl v roku 2024",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1778143456000,
+   "riadkov": 101,
+   "stav": "katalog",
+   "kde": "/katalog/49d5049003754b5984721879b842cf24",
+   "stlpcov": 53
+  },
+  {
    "id": "f1aeacee4f5d47778cebe21be0cb18dd",
    "nazov": "Zoznam základných škôl v roku 2025",
    "kategoria": "Vzdelávanie a šport",
@@ -5835,6 +6015,15 @@
    "pozn": "Klimatický atlas – citlivosť budov na zrážky"
   },
   {
+   "id": "81ff5b48389448ec8770be66ac62f788",
+   "nazov": "Citlivosť dopravnej infraštruktúry na zrážky",
+   "kategoria": "Územný plán",
+   "upravene": 1778155918000,
+   "riadkov": 9570,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
    "id": "367d0139656e443590295dd3e15fa7f6",
    "nazov": "Citlivosť na zmenu klímy celková",
    "kategoria": "Územný plán",
@@ -5853,6 +6042,15 @@
    "stav": "osobitne",
    "kde": "/mapa",
    "pozn": "Klimatický atlas – citlivosť na horúčavy"
+  },
+  {
+   "id": "f99f75fbdb794d4a823d368976af8d0c",
+   "nazov": "Disponibilná kapacita budov na zrážky",
+   "kategoria": "Územný plán",
+   "upravene": 1778137624000,
+   "riadkov": 9570,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
   },
   {
    "id": "55ce513738754ea6a834cb8fb831fba2",
@@ -5902,6 +6100,16 @@
    "stav": "osobitne",
    "kde": "/mapa",
    "pozn": "Klimatický atlas – riziko zrážok pre budovy"
+  },
+  {
+   "id": "89df173edb0d43a1b81bcc064fd5fa5f",
+   "nazov": "Atlas hodnotenia zraniteľnosti a rizík nepriaznivých dôsledkov zmeny klímy",
+   "kategoria": "Životné prostredie",
+   "upravene": 1778142315000,
+   "riadkov": 17,
+   "stav": "katalog",
+   "kde": "/katalog/89df173edb0d43a1b81bcc064fd5fa5f",
+   "stlpcov": 13
   },
   {
    "id": "95df2faeda284dfdba5dbbcebd2d5cfd",
@@ -6141,6 +6349,15 @@
    "stlpcov": 4
   },
   {
+   "id": "c676285f8534424e86495859594f53be",
+   "nazov": "Zameranie verejnej zelene v Bratislave ",
+   "kategoria": "Životné prostredie",
+   "upravene": 1778142450000,
+   "riadkov": 436266,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
    "id": "226e7387e1254981be3725a6c9330bb4",
    "nazov": "Zoznam pitných fontán v roku 2024",
    "kategoria": "Životné prostredie",
@@ -6159,7 +6376,17 @@
    "stav": "katalog",
    "kde": "/katalog/e84449c950ed461297f2c1bc9eadbc5c",
    "stlpcov": 2
+  },
+  {
+   "id": "aa1785e567e742f5bdb05bf0ab1234a5",
+   "nazov": "Čierne skládky v meste Bratislava v roku 2025",
+   "kategoria": "Životné prostredie",
+   "upravene": 1778151919000,
+   "riadkov": 67,
+   "stav": "katalog",
+   "kde": "/katalog/aa1785e567e742f5bdb05bf0ab1234a5",
+   "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-10-15T16:35:54+00:00"
+ "aktualizovane": "2026-10-15T16:47:48+00:00"
 }

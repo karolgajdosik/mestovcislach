@@ -1737,6 +1737,265 @@
    "median_dni_uhrady": null
   },
   {
+   "organizacia": "Marianum",
+   "typ": "objednávky",
+   "zdroj": "https://data.bratislava.sk/datasets/81abdb9566e84d00aaad5ffd953d791a",
+   "zaznamov": 5549,
+   "vynechane_bez_ico": 2378,
+   "roky": {
+    "2022": {
+     "pocet": 6,
+     "suma": 3315
+    },
+    "2023": {
+     "pocet": 772,
+     "suma": 3914503
+    },
+    "2024": {
+     "pocet": 758,
+     "suma": 6032399
+    },
+    "2025": {
+     "pocet": 1015,
+     "suma": 9772206
+    },
+    "2026": {
+     "pocet": 620,
+     "suma": 5903963
+    }
+   },
+   "dodavatelia_posledne_3_roky": [
+    {
+     "ico": "50635310",
+     "nazov": "K-T-S SLOVAKIA PLUS, s.r.o.",
+     "pocet": 10,
+     "suma": 5238076
+    },
+    {
+     "ico": "40231551",
+     "nazov": "Vladimír Novák",
+     "pocet": 37,
+     "suma": 5026467
+    },
+    {
+     "ico": "45653674",
+     "nazov": "JZPVK - Company, s.r.o.",
+     "pocet": 1,
+     "suma": 1174650
+    },
+    {
+     "ico": "50531212",
+     "nazov": "PROarbor s.r.o.",
+     "pocet": 22,
+     "suma": 906021
+    },
+    {
+     "ico": "31450911",
+     "nazov": "EKORAD spol. s r.o.",
+     "pocet": 20,
+     "suma": 718497
+    },
+    {
+     "ico": "53528654",
+     "nazov": "Up Déjeuner, s.r.o.",
+     "pocet": 3,
+     "suma": 706900
+    },
+    {
+     "ico": "35778806",
+     "nazov": "zares, spol. s r.o.",
+     "pocet": 52,
+     "suma": 653664
+    },
+    {
+     "ico": "37028707",
+     "nazov": "Pavol Martinkovič",
+     "pocet": 13,
+     "suma": 555707
+    },
+    {
+     "ico": "53992288",
+     "nazov": "Storge Sk s.r.o.",
+     "pocet": 24,
+     "suma": 531146
+    },
+    {
+     "ico": "46905308",
+     "nazov": "PKI - Teplotechna Brno spol. s r.o.",
+     "pocet": 10,
+     "suma": 510114
+    },
+    {
+     "ico": "36978302",
+     "nazov": "ŠOMEX-Tibir Šomodi",
+     "pocet": 9,
+     "suma": 403187
+    },
+    {
+     "ico": "46059105",
+     "nazov": "GENESIS POZEMNÉ STAVBY, s.r.o.",
+     "pocet": 8,
+     "suma": 235016
+    },
+    {
+     "ico": "51446995",
+     "nazov": "IHS s.r.o.",
+     "pocet": 9,
+     "suma": 227035
+    },
+    {
+     "ico": "48139726",
+     "nazov": "CERVA Retail Slovensko, s.r.o.",
+     "pocet": 22,
+     "suma": 165379
+    },
+    {
+     "ico": "54656885",
+     "nazov": "Komunálny podnik mesta Bratislavy",
+     "pocet": 12,
+     "suma": 151990
+    },
+    {
+     "ico": "47368322",
+     "nazov": "Technology Solutions Bene Slovakia, s.r.o.",
+     "pocet": 31,
+     "suma": 149051
+    },
+    {
+     "ico": "34302859",
+     "nazov": "Patrik Kopaj - KARS",
+     "pocet": 7,
+     "suma": 137211
+    },
+    {
+     "ico": "44921730",
+     "nazov": "Humania spol. s r.o.",
+     "pocet": 39,
+     "suma": 126849
+    },
+    {
+     "ico": "55049249",
+     "nazov": "DFM Slovakia s.r.o.",
+     "pocet": 10,
+     "suma": 125978
+    },
+    {
+     "ico": "55793282",
+     "nazov": "Mgr. Art. Denis Dvorský",
+     "pocet": 16,
+     "suma": 123468
+    }
+   ],
+   "najvacsie_12_mesiacov": [
+    {
+     "datum": "2026-03-17",
+     "dodavatel": "K-T-S SLOVAKIA PLUS, s.r.o.",
+     "ico": "50635310",
+     "suma": 1286434.86,
+     "popis": "dodávka pohrebných truhiel a pohrebné doplnky na obdobie 03/2026 - 03/2027"
+    },
+    {
+     "datum": "2026-01-30",
+     "dodavatel": "JZPVK - Company, s.r.o.",
+     "ico": "45653674",
+     "suma": 1174650.0,
+     "popis": "dodávka pohrebných truhiel + pohrebné doplnky na obdobie 01-12/2026"
+    },
+    {
+     "datum": "2026-02-10",
+     "dodavatel": "Vladimír Novák",
+     "ico": "40231551",
+     "suma": 354006.3,
+     "popis": "starostlivosť a údržba drevín v objektoch v spáve organizácie MARIANUM na obdobie 12 mesiacov"
+    },
+    {
+     "datum": "2026-04-21",
+     "dodavatel": "PKI-Teplotechna Brno spol. s r.o.",
+     "ico": "46905308",
+     "suma": 250900.0,
+     "popis": "modernizácia kremačnej pece č. 1"
+    },
+    {
+     "datum": "2026-01-08",
+     "dodavatel": "Pavol Martinkovič",
+     "ico": "37028707",
+     "suma": 199425.19,
+     "popis": "Čistenie, údržba, prevádzkovanie a opravy fontán v Bratislave na 12 mesiacov ( január - december 2026 ) - časť 1."
+    },
+    {
+     "datum": "2026-09-22",
+     "dodavatel": "Vladimír Novák",
+     "ico": "40231551",
+     "suma": 157895.1,
+     "popis": "Starostlivosť a údržba drevín v objektoch v správe organizácie MARIANUM na obdobie 10/2026 - 02/2027"
+    },
+    {
+     "datum": "2026-01-08",
+     "dodavatel": "ŠOMEX-Tibir Šomodi",
+     "ico": "36978302",
+     "suma": 151000.95,
+     "popis": "Čistenie, údržba, prevádzkovanie a opravy fontán v Bratislave na 12 mesiacov ( január - december 2026 ) - časť 2."
+    },
+    {
+     "datum": "2026-05-06",
+     "dodavatel": "IHS s.r.o.",
+     "ico": "51446995",
+     "suma": 108613.92,
+     "popis": "Vybudovanie kolumbárií k stavebnej akcii \"Podunajské Biskupice, Komárov - Prístrešok pre kolumbáriá\""
+    },
+    {
+     "datum": "2026-05-08",
+     "dodavatel": "Storge Sk s.r.o.",
+     "ico": "53992288",
+     "suma": 94676.09,
+     "popis": "Dodanie živých rezaných kvetov na obdobie 6 mesiacov"
+    },
+    {
+     "datum": "2026-05-06",
+     "dodavatel": "IHS s.r.o.",
+     "ico": "51446995",
+     "suma": 72498.72,
+     "popis": "Realizácia zákazky \"Podunajské Biskupice, Mramorová 2, BA - kolumbárium\""
+    },
+    {
+     "datum": "2026-03-27",
+     "dodavatel": "GENESIS POZEMNÉ STAVBY, s.r.o.",
+     "ico": "46059105",
+     "suma": 62455.89,
+     "popis": "Slávičie údolie - vytvorenie nových urnavých miest a kolumbária"
+    },
+    {
+     "datum": "2026-04-08",
+     "dodavatel": "akad. soch. Vladimír Višvader - VILLARD",
+     "ico": "13970445",
+     "suma": 55337.7,
+     "popis": "reštaurátorská obnova spolu s vymodelovaním a osadením bronzového krídla - Kačacia fontána, Šafárikovo nám.3, BA"
+    },
+    {
+     "datum": "2026-03-09",
+     "dodavatel": "K-T-S SLOVAKIA PLUS, s.r.o.",
+     "ico": "50635310",
+     "suma": 53438.58,
+     "popis": "dodávka pohrebných truhiel a pohrebné doplnky"
+    },
+    {
+     "datum": "2026-03-13",
+     "dodavatel": "K-T-S SLOVAKIA PLUS, s.r.o.",
+     "ico": "50635310",
+     "suma": 52842.03,
+     "popis": "dodávka pohrebných truhiel a pohrebné doplnky"
+    },
+    {
+     "datum": "2026-02-17",
+     "dodavatel": "K-T-S SLOVAKIA PLUS, s.r.o.",
+     "ico": "50635310",
+     "suma": 52512.39,
+     "popis": "dodávka pohrebných truhiel a pohrebné doplnky"
+    }
+   ],
+   "median_dni_uhrady": null
+  },
+  {
    "organizacia": "Metropolitný inštitút Bratislavy",
    "typ": "faktúry",
    "zdroj": "https://data.bratislava.sk/datasets/8cb2a28c3442479d98918fb2a11d41d8",
@@ -1758,8 +2017,7 @@
   }
  ],
  "chyby": [
-  "Marianum objednávky: nie je v inventári",
   "Marianum zmluvy: Marianum zmluvy: žiadne použiteľné riadky"
  ],
- "aktualizovane": "2026-10-15T16:40:16+00:00"
+ "aktualizovane": "2026-10-15T16:49:11+00:00"
 }
