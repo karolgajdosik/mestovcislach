@@ -1,0 +1,190 @@
+---
+// Kto žije v Bratislave – Sčítanie obyvateľov, domov a bytov 2021 podľa mestských častí.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+
+const p = path.join(process.cwd(), 'data', 'scitanie-bratislava.json');
+const sc = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+
+// Poradie a čitateľné názvy kategórií
+const cist = (t: string) => t.trim()
+  .replace(/ \(.*$/, '').replace(/ v Slovenskej republike$| na Slovensku$/, '')
+  .replace(/^<?(\d+) m2 - (\d+) m2\)$/, '$1 – $2 m²').replace(/^<150 m2 a viac$/, '150 m² a viac').replace(/^menej ako 30 m2\)$/, 'menej ako 30 m²')
+  .replace(/^(\d+) m2 - (\d+) m2\)$/, '$1 – $2 m²')
+  .replace(/^Bez ukončeného vzdelania - osoby vo veku 0-14 rokov$/, 'deti do 14 rokov')
+  .replace(/^Bez školského vzdelania - osoby vo veku 15 rokov a viac$/, 'bez školského vzdelania')
+  .replace(/ - (slobodná|vydatá|rozvedená|vdova)$/, '').replace(/domácnosť$/, '')
+  .replace(/^(\w)/, (c) => c.toUpperCase());
+const PORADIE: Record<string, (string | RegExp)[]> = {
+  vek: ['14 rokov alebo menej', 'Od 15 do 64 rokov', '65 rokov alebo viac'],
+  vzdelanie: ['Základné', 'Stredné bez maturity', 'Stredné s maturitou', 'Vysokoškolské', /Bez školského/, /Nezistené/],
+  domacnosti: [/^1-/, /^2-/, /^3-/, /^4-/, /^5/],
+  byty_izby: [/^1 /, /^2 /, /^3 /, /^4 /, /^5 /, /^6 /, /^7 /, /^8 /, /^9 /, /Nezist/],
+  byty_plocha: [/^menej/, /^<30/, /^<40/, /^<50/, /^<60/, /^<80/, /^<100/, /^120/, /^<150/, /nezist/],
+};
+// Kategórie, ktoré nezapočítavame do podielov (napr. deti pri vzdelaní)
+const VYNECHAT: Record<string, RegExp> = { vzdelanie: /0-14 rokov/, vek: /^Neznáme$/ };
+const TEMY = ['vek', 'vzdelanie', 'ekonomicka_aktivita', 'narodnost', 'jazyk', 'nabozenstvo', 'rodinny_stav', 'domacnosti', 'byty_vlastnictvo', 'byty_izby', 'byty_plocha'];
+const POZNAMKY: Record<string, string> = {
+  vzdelanie: 'Podiel z obyvateľov od 15 rokov.',
+  rodinny_stav: 'Vrátane detí (slobodní).',
+  domacnosti: 'Cenzové domácnosti podľa počtu členov.',
+  ekonomicka_aktivita: 'Ekonomicky aktívni = pracujúci vrátane nezamestnaných hľadajúcich prácu.',
+};
+
+let pripravene: any = null;
+if (sc) {
+  const temy = TEMY.filter((t) => sc.temy[t]).map((t) => {
+    const td = sc.temy[t];
+    let kat: string[] = td.kategorie.filter((k: string) => !VYNECHAT[t]?.test(k));
+    const por = PORADIE[t];
+    if (por) {
+      const idx = (k: string) => { const i = por.findIndex((r) => (typeof r === 'string' ? r === k.trim() : r.test(k))); return i < 0 ? 99 : i; };
+      kat = [...kat].sort((a, b) => idx(a) - idx(b));
+    }
+    const podiely = (d: Record<string, number>) => {
+      const spolu = kat.reduce((a, k) => a + (d[k] ?? 0), 0) || 1;
+      return kat.map((k) => Math.round((1000 * (d[k] ?? 0)) / spolu) / 10);
+    };
+    return {
+      id: t, nazov: td.nazov, poznamka: POZNAMKY[t] ?? '', kategorie: kat.map(cist),
+      mesto: podiely(td.mesto), pocty_mesto: kat.map((k) => td.mesto[k] ?? 0),
+      casti: Object.fromEntries(Object.entries(td.mestske_casti).map(([mc, d]: [string, any]) => [mc, podiely(d)])),
+    };
+  });
+  const casti = Object.keys(sc.temy.vek.mestske_casti).sort((a, b) => a.localeCompare(b, 'sk'));
+  const ukaz = (mc: string | null) => {
+    const g = (t: string) => temy.find((x) => x.id === t)!;
+    const v = (t: string, i: number) => (mc ? g(t).casti[mc][i] : g(t).mesto[i]);
+    const vek = sc.temy.vek; const d = mc ? vek.mestske_casti[mc] : vek.mesto;
+    const obyv = ['14 rokov alebo menej', 'Od 15 do 64 rokov', '65 rokov alebo viac', 'Neznáme'].reduce((a, k) => a + (d[k] ?? 0), 0);
+    const kat = (t: string, r: RegExp) => g(t).kategorie.findIndex((k: string) => r.test(k));
+    return {
+      nazov: mc ?? 'Bratislava', obyvatelia: obyv,
+      deti: v('vek', 0), seniori: v('vek', 2),
+      vs: v('vzdelanie', kat('vzdelanie', /^Vysokoškolské/)),
+      bez_vyznania: v('nabozenstvo', kat('nabozenstvo', /^Bez náboženského/i)),
+      slovenska: v('narodnost', kat('narodnost', /^Slovensk/)),
+      jednoclenne: v('domacnosti', 0),
+      vlastne: v('byty_vlastnictvo', kat('byty_vlastnictvo', /^Vlastný byt/i)) + v('byty_vlastnictvo', kat('byty_vlastnictvo', /vlastnom rodinnom/i)),
+    };
+  };
+  pripravene = { temy, casti, prehlad: [ukaz(null), ...casti.map(ukaz)] };
+}
+const pct = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' %';
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const ba = pripravene?.prehlad[0];
+---
+<Base title="Obyvatelia Bratislavy – sčítanie 2021 – mestovcislach.sk" description="Kto žije v Bratislave a v jej mestských častiach: vek, vzdelanie, národnosť, náboženstvo, domácnosti a byty podľa sčítania 2021.">
+  <section class="hero">
+    <p class="kicker">Bratislava · sčítanie 2021</p>
+    <h1>Obyvatelia</h1>
+    <p class="lead">Kto žije v Bratislave a jej mestských častiach – vek, vzdelanie, národnosť, viera, domácnosti a byty podľa Sčítania obyvateľov, domov a bytov 2021.</p>
+  </section>
+
+  {!pripravene ? <div class="card"><p>Dáta sa pripravujú.</p></div> : (
+    <div id="obyv" data-d={JSON.stringify(pripravene)}>
+      <section class="kpis">
+        <div class="card kpi"><p class="label">Obyvatelia pri sčítaní</p><p class="value">{fmt(ba.obyvatelia)}</p><p class="delta">k 1. 1. 2021</p></div>
+        <div class="card kpi"><p class="label">S vysokoškolským vzdelaním</p><p class="value">{pct(ba.vs)}</p><p class="delta">z obyvateľov od 15 rokov</p></div>
+        <div class="card kpi"><p class="label">Seniori 65+</p><p class="value">{pct(ba.seniori)}</p><p class="delta">deti do 14 rokov {pct(ba.deti)}</p></div>
+        <div class="card kpi"><p class="label">Jednočlenné domácnosti</p><p class="value">{pct(ba.jednoclenne)}</p><p class="delta">z cenzových domácností</p></div>
+      </section>
+
+      <section class="card">
+        <div class="hlavicka">
+          <h2>Porovnanie</h2>
+          <label class="vyber">Mestská časť
+            <select id="obyv-mc">
+              <option value="">celá Bratislava</option>
+              {pripravene.casti.map((c: string) => <option>{c}</option>)}
+            </select>
+          </label>
+        </div>
+        <p class="legenda-obyv"><span><i class="ja"></i><b id="obyv-nazov">Bratislava</b></span><span><i class="ba"></i>priemer Bratislavy</span></p>
+        <div class="temy-mriezka" id="obyv-temy"></div>
+      </section>
+
+      <section class="card">
+        <h2>Mestské časti v číslach</h2>
+        <div class="tabulka-obal">
+          <table>
+            <thead><tr><th>Mestská časť</th><th class="num">Obyvatelia</th><th class="num">Deti 0–14</th><th class="num">Seniori 65+</th><th class="num">VŠ vzdelanie</th><th class="num">Bez vyznania</th><th class="num">Slovenská nár.</th><th class="num">1-členné dom.</th><th class="num">Vlastné byty</th></tr></thead>
+            <tbody>
+              {pripravene.prehlad.map((r: any, i: number) => (
+                <tr class={i === 0 ? 'spolu' : ''}><td>{r.nazov}</td><td class="num">{fmt(r.obyvatelia)}</td><td class="num">{pct(r.deti)}</td><td class="num">{pct(r.seniori)}</td><td class="num">{pct(r.vs)}</td><td class="num">{pct(r.bez_vyznania)}</td><td class="num">{pct(r.slovenska)}</td><td class="num">{pct(r.jednoclenne)}</td><td class="num">{pct(r.vlastne)}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="zdroj">
+          Zdroj: <a href="https://statdata.statistics.sk">Štatistický úrad SR – Sčítanie obyvateľov, domov a bytov 2021 (STATdata)</a>, licencia CC BY 4.0.
+          Údaje sú k rozhodujúcemu okamihu sčítania 1. 1. 2021. Podiely sú zo všetkých osôb, domácností či bytov vrátane kategórie „nezistené“ (pri vzdelaní z obyvateľov od 15 rokov). Mesto = súčet 17 mestských častí.
+        </p>
+      </section>
+    </div>
+  )}
+</Base>
+
+<script>
+  const el = document.getElementById('obyv');
+  if (el?.dataset.d) {
+    const d = JSON.parse(el.dataset.d);
+    const temyEl = document.getElementById('obyv-temy')!;
+    const sel = document.getElementById('obyv-mc') as HTMLSelectElement;
+    const nazovEl = document.getElementById('obyv-nazov')!;
+    const pct = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' %';
+    const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+    const vykresli = () => {
+      const mc = sel.value;
+      nazovEl.textContent = mc || 'Bratislava';
+      temyEl.innerHTML = d.temy.map((t: any) => {
+        const ja = mc ? t.casti[mc] : t.mesto;
+        const max = Math.max(...ja, ...t.mesto, 1);
+        const riadky = t.kategorie.map((k: string, i: number) => {
+          if (ja[i] < 0.05 && t.mesto[i] < 0.05) return '';
+          return `<div class="r"><span class="k">${esc(k)}</span><span class="h">${pct(ja[i])}</span>
+            <div class="p"><i style="width:${(100 * ja[i]) / max}%"></i>${mc ? `<b style="left:${(100 * t.mesto[i]) / max}%" title="Bratislava ${pct(t.mesto[i])}"></b>` : ''}</div></div>`;
+        }).join('');
+        return `<div class="tema"><h3>${esc(t.nazov)}</h3>${riadky}${t.poznamka ? `<p class="pozn">${esc(t.poznamka)}</p>` : ''}</div>`;
+      }).join('');
+    };
+    sel.addEventListener('change', vykresli);
+    vykresli();
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 24px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  h2 { font-size: 1.1rem; margin: 0; }
+  section.card { margin-top: 16px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; font-variant-numeric: tabular-nums; }
+  .delta { margin: 0; font-size: 0.85rem; color: var(--muted); }
+  .hlavicka { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  .vyber { font-size: 0.85rem; color: var(--muted); display: inline-flex; gap: 8px; align-items: center; }
+  select { font: inherit; color: var(--text); background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 5px 8px; }
+  .legenda-obyv { display: flex; gap: 16px; font-size: 0.82rem; color: var(--muted); margin: 0 0 12px; }
+  .legenda-obyv i { display: inline-block; width: 12px; height: 8px; border-radius: 2px; margin-right: 6px; }
+  .legenda-obyv .ja { background: var(--accent); }
+  .legenda-obyv .ba { width: 2px; height: 12px; background: var(--text); vertical-align: -2px; }
+  .temy-mriezka { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px 32px; }
+  .temy-mriezka :global(h3) { font-size: 0.95rem; margin: 0 0 8px; }
+  .temy-mriezka :global(.r) { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; font-size: 0.85rem; margin-bottom: 6px; }
+  .temy-mriezka :global(.h) { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .temy-mriezka :global(.p) { grid-column: 1 / 3; position: relative; height: 7px; background: var(--bg); border-radius: 4px; }
+  .temy-mriezka :global(.p i) { display: block; height: 100%; background: var(--accent); border-radius: 4px; opacity: 0.85; }
+  .temy-mriezka :global(.p b) { position: absolute; top: -3px; width: 2px; height: 13px; background: var(--text); }
+  .temy-mriezka :global(.pozn) { font-size: 0.75rem; color: var(--muted); margin: 6px 0 0; }
+  .tabulka-obal { overflow-x: auto; margin-top: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 0.78rem; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.spolu td { font-weight: 700; }
+</style>

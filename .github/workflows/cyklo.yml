@@ -10,6 +10,7 @@ on:
     paths:
       - "scripts/zber_cyklo.py"
       - "scripts/zber_vybavenost.py"
+      - "scripts/zber_scitanie.py"
       - "scripts/zber_priroda.py"
       - ".github/workflows/cyklo.yml"
 
@@ -40,6 +41,10 @@ jobs:
       - name: Vybavenosť (OpenStreetMap)
         if: success() || failure()
         run: python scripts/zber_vybavenost.py
+
+      - name: Sčítanie 2021 (ŠÚ SR STATdata)
+        if: success() || failure()
+        run: python scripts/zber_scitanie.py
 
       - name: Chránená príroda (EEA)
         if: success() || failure()

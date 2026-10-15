@@ -59,6 +59,19 @@ export async function GET() {
       }),
     };
   }
+  const sc = nacitaj('scitanie-bratislava.json');
+  if (sc) {
+    const podiely = (d: Record<string, number>, kat: string[]) => {
+      const sp = kat.reduce((a, k) => a + (d[k] ?? 0), 0) || 1;
+      return kat.filter((k) => (d[k] ?? 0) > 0).map((k) => `${k.replace(/ \(.*$/, '').trim()} ${Math.round((1000 * (d[k] ?? 0)) / sp) / 10} %`).join('; ');
+    };
+    const temySc: any = {};
+    for (const [t, td] of Object.entries<any>(sc.temy)) {
+      const kat = td.kategorie.filter((k: string) => !/0-14 rokov|^Neznáme$/.test(k));
+      temySc[td.nazov] = { Bratislava: podiely(td.mesto, kat), ...Object.fromEntries(Object.entries<any>(td.mestske_casti).map(([mc, d]) => [mc, podiely(d, kat)])) };
+    }
+    temy.scitanie = { nazov: 'Sčítanie obyvateľov 2021 (k 1. 1. 2021): vek, vzdelanie (z obyvateľov 15+), národnosť, jazyk, viera, rodinný stav, domácnosti, byty', stranka: '/obyvatelia', fakty: temySc };
+  }
   const rozp = nacitaj('rozpocet-bratislava.json');
   const zmluvy = nacitaj('zmluvy-bratislava.json');
   const majetok = nacitaj('majetok-bratislava.json');

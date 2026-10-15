@@ -16,6 +16,7 @@ const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,
 // Témy a kľúčové slová (bez diakritiky, začiatky slov)
 const TEMY: Record<string, RegExp> = {
   obyvatelstvo: /obyvat|populac|demograf|kolko ludi|pocet ludi|narodil|byva/,
+  scitanie: /scitan|vzdelan|vysokoskol|narodnost|nabozen|vyznan|veriac|katolik|ateist|jazyk|domacnost|byt(y|ov)? |bytov|izb|podlahov|dochodc|senior|deti|vekov|starnut|rodinn|slobodn|rozveden|madar|ukrajin|cudzin|nezamestnan|ekonomick/,
   volby: /volb|volil|volic|stran|hlasov|ucast|parlament|europarl|kandid/,
   komunalne: /komunal|primator|starost|zastupitel|poslan|bsk|zup|samospravn|predsed|vallo|droba|24\. ?10|oktobr/,
   rozpocet: /rozpoc|prijm|vydavk|vydav|financ|peniaz|dlh|hospodar|dan /,
@@ -46,13 +47,13 @@ const KATEGORIE: [RegExp, string][] = [
   [/zastav/, 'Zastávka MHD'], [/bajk|zdielan.*bicyk/, 'Stanica BAjk'],
 ];
 const STRANKY: Record<string, string> = {
-  obyvatelstvo: '/', volby: '/volby', komunalne: '/volby#komunalne', rozpocet: '/financie', zmluvy: '/financie', majetok: '/financie', mhd: '/doprava#doprava',
+  obyvatelstvo: '/', scitanie: '/obyvatelia', volby: '/volby', komunalne: '/volby#komunalne', rozpocet: '/financie', zmluvy: '/financie', majetok: '/financie', mhd: '/doprava#doprava',
   nehody: '/doprava', scitace: '/doprava#premavka', cyklo: '/doprava#cyklo', skoly: '/vybavenost', vybavenost: '/vybavenost',
   ovzdusie: '/prostredie#ovzdusie-teraz', prostredie: '/prostredie', priroda: '/prostredie', vystrahy: '/#dnes', dunaj: '/prostredie#dunaj',
   cesty: '/doprava#naozivo', miesta: '/mapa',
 };
 const NAZVY_STRANOK: Record<string, string> = {
-  '/': 'Prehľad', '/volby': 'Voľby', '/volby#komunalne': 'Komunálne voľby', '/financie': 'Financie', '/doprava#doprava': 'Doprava – MHD', '/doprava': 'Doprava',
+  '/': 'Prehľad', '/obyvatelia': 'Obyvatelia', '/volby': 'Voľby', '/volby#komunalne': 'Komunálne voľby', '/financie': 'Financie', '/doprava#doprava': 'Doprava – MHD', '/doprava': 'Doprava',
   '/doprava#premavka': 'Kedy je premávka', '/doprava#cyklo': 'Cyklotrasy', '/vybavenost': 'Vybavenosť', '/prostredie': 'Prostredie',
   '/#dnes': 'Dnes v Bratislave', '/prostredie#dunaj': 'Dunaj', '/doprava#naozivo': 'Uzávierky dnes', '/prostredie#ovzdusie-teraz': 'Ovzdušie teraz', '/mapa': 'Mapa',
 };
@@ -243,6 +244,20 @@ export const onRequestPost = async (ctx: any) => {
   for (const t of temy.slice(0, 4)) {
     if (!data.temy[t]) continue;
     let fakty = data.temy[t].fakty;
+    if (t === 'scitanie') {
+      // Sčítanie je veľké – vyber len témy a mestské časti, na ktoré sa otázka pýta
+      const SC: [RegExp, RegExp][] = [
+        [/vek|senior|deti|starnut|dochodkov/, /^Vekov/], [/vzdelan|vysokoskol|maturit/, /^Najvy/], [/narodnost|madar|ukrajin|cudzin|ces[kc]/, /^Národ/],
+        [/jazyk/, /^Materin/], [/nabozen|vyznan|veriac|katolik|ateist|cirk|evanjel/, /^Nábož/], [/rodinn|slobodn|rozveden|vdov|zenat|vydat/, /^Rodinn/],
+        [/domacnost/, /^Domácn/], [/byt|bytov/, /^Byty podľa formy/], [/izb|miestnost/, /^Byty podľa počtu/], [/podlahov|plocha|m2|velk.*byt/, /^Byty podľa podlah/],
+        [/dochodc|nezamestnan|ekonomick|pracuj|student/, /^Ekonom/],
+      ];
+      const vyber = SC.filter(([r]) => r.test(q)).map(([, n]) => n);
+      const cast = najdiCast(otazka, data.mestske_casti);
+      fakty = Object.fromEntries(Object.entries<any>(fakty)
+        .filter(([nazov]) => !vyber.length || vyber.some((n) => n.test(nazov)))
+        .map(([nazov, mcs]) => [nazov, Object.fromEntries(Object.entries<any>(mcs).filter(([mc]) => mc === 'Bratislava' || (cast ? mc === cast : vyber.length > 0)))]));
+    }
     if (t === 'scitace') {
       const chce = ['cyklisti', 'chodci'].filter((k) => (k === 'cyklisti' ? /cykl|bicyk/ : /chodc|pesi|peso/).test(q));
       const kat = chce.length ? chce : ['auta'];

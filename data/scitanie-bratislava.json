@@ -1,0 +1,2281 @@
+{
+ "rok": 2021,
+ "zdroj": {
+  "nazov": "ŠÚ SR – Sčítanie obyvateľov, domov a bytov 2021 (STATdata)",
+  "url": "https://statdata.statistics.sk",
+  "licencia": "CC BY 4.0"
+ },
+ "temy": {
+  "vek": {
+   "kocka": "om7803rr",
+   "stlpec": "e_age",
+   "kategorie": [
+    "Od 15 do 64 rokov",
+    "65 rokov alebo viac",
+    "14 rokov alebo menej",
+    "Neznáme"
+   ],
+   "mesto": {
+    "Spolu": 475503,
+    "Od 15 do 64 rokov": 311404,
+    "65 rokov alebo viac": 90330,
+    "14 rokov alebo menej": 73769,
+    "Neznáme": 0
+   },
+   "mestske_casti": {
+    "Devín": {
+     "65 rokov alebo viac": 291,
+     "14 rokov alebo menej": 389,
+     "Od 15 do 64 rokov": 1232,
+     "Spolu": 1912,
+     "Neznáme": 0
+    },
+    "Devínska Nová Ves": {
+     "Od 15 do 64 rokov": 12421,
+     "14 rokov alebo menej": 2661,
+     "65 rokov alebo viac": 2071,
+     "Spolu": 17153,
+     "Neznáme": 0
+    },
+    "Dúbravka": {
+     "Od 15 do 64 rokov": 22742,
+     "Spolu": 36206,
+     "65 rokov alebo viac": 7952,
+     "14 rokov alebo menej": 5512,
+     "Neznáme": 0
+    },
+    "Jarovce": {
+     "Spolu": 2706,
+     "14 rokov alebo menej": 628,
+     "65 rokov alebo viac": 377,
+     "Od 15 do 64 rokov": 1701,
+     "Neznáme": 0
+    },
+    "Karlova Ves": {
+     "14 rokov alebo menej": 5047,
+     "65 rokov alebo viac": 5817,
+     "Spolu": 35644,
+     "Od 15 do 64 rokov": 24780,
+     "Neznáme": 0
+    },
+    "Lamač": {
+     "Spolu": 7789,
+     "65 rokov alebo viac": 2092,
+     "14 rokov alebo menej": 1297,
+     "Od 15 do 64 rokov": 4400,
+     "Neznáme": 0
+    },
+    "Nové Mesto": {
+     "14 rokov alebo menej": 7378,
+     "Spolu": 44458,
+     "65 rokov alebo viac": 8243,
+     "Od 15 do 64 rokov": 28837,
+     "Neznáme": 0
+    },
+    "Petržalka": {
+     "Od 15 do 64 rokov": 75161,
+     "Spolu": 114000,
+     "14 rokov alebo menej": 16677,
+     "65 rokov alebo viac": 22162,
+     "Neznáme": 0
+    },
+    "Podunajské Biskupice": {
+     "14 rokov alebo menej": 3527,
+     "Od 15 do 64 rokov": 15361,
+     "Spolu": 23464,
+     "65 rokov alebo viac": 4576,
+     "Neznáme": 0
+    },
+    "Rača": {
+     "14 rokov alebo menej": 4141,
+     "Od 15 do 64 rokov": 16991,
+     "Spolu": 25733,
+     "65 rokov alebo viac": 4601,
+     "Neznáme": 0
+    },
+    "Rusovce": {
+     "Spolu": 4388,
+     "14 rokov alebo menej": 875,
+     "Od 15 do 64 rokov": 2888,
+     "65 rokov alebo viac": 625,
+     "Neznáme": 0
+    },
+    "Ružinov": {
+     "14 rokov alebo menej": 12557,
+     "Spolu": 81004,
+     "Od 15 do 64 rokov": 52283,
+     "65 rokov alebo viac": 16164,
+     "Neznáme": 0
+    },
+    "Staré Mesto": {
+     "Od 15 do 64 rokov": 29171,
+     "14 rokov alebo menej": 6998,
+     "Spolu": 46080,
+     "65 rokov alebo viac": 9911,
+     "Neznáme": 0
+    },
+    "Vajnory": {
+     "Spolu": 6079,
+     "14 rokov alebo menej": 1043,
+     "Od 15 do 64 rokov": 4020,
+     "65 rokov alebo viac": 1016,
+     "Neznáme": 0
+    },
+    "Vrakuňa": {
+     "14 rokov alebo menej": 3126,
+     "Spolu": 20711,
+     "Od 15 do 64 rokov": 14192,
+     "65 rokov alebo viac": 3393,
+     "Neznáme": 0
+    },
+    "Záhorská Bystrica": {
+     "65 rokov alebo viac": 809,
+     "14 rokov alebo menej": 1552,
+     "Od 15 do 64 rokov": 4180,
+     "Spolu": 6541,
+     "Neznáme": 0
+    },
+    "Čunovo": {
+     "65 rokov alebo viac": 230,
+     "Od 15 do 64 rokov": 1044,
+     "Spolu": 1635,
+     "14 rokov alebo menej": 361,
+     "Neznáme": 0
+    }
+   },
+   "nazov": "Vekové skupiny"
+  },
+  "ekonomicka_aktivita": {
+   "kocka": "om7803rr",
+   "stlpec": "e_wstatus",
+   "kategorie": [
+    "Ekonomicky aktívny",
+    "Dieťa/študent",
+    "Dôchodcovia",
+    "Ostatný a nezistený",
+    "Nezamestnaní"
+   ],
+   "mesto": {
+    "Spolu": 475503,
+    "Ekonomicky aktívny": 251033,
+    "Dieťa/študent": 95051,
+    "Dôchodcovia": 82743,
+    "Ostatný a nezistený": 35048,
+    "Nezamestnaní": 11628
+   },
+   "mestske_casti": {
+    "Devín": {
+     "Ostatný a nezistený": 146,
+     "Nezamestnaní": 32,
+     "Dôchodcovia": 247,
+     "Dieťa/študent": 502,
+     "Ekonomicky aktívny": 985,
+     "Spolu": 1912
+    },
+    "Devínska Nová Ves": {
+     "Dôchodcovia": 2101,
+     "Nezamestnaní": 475,
+     "Ostatný a nezistený": 1299,
+     "Dieťa/študent": 3490,
+     "Spolu": 17153,
+     "Ekonomicky aktívny": 9788
+    },
+    "Dúbravka": {
+     "Ostatný a nezistený": 2300,
+     "Dieťa/študent": 7338,
+     "Dôchodcovia": 7171,
+     "Spolu": 36206,
+     "Ekonomicky aktívny": 18448,
+     "Nezamestnaní": 949
+    },
+    "Jarovce": {
+     "Ekonomicky aktívny": 1344,
+     "Spolu": 2706,
+     "Nezamestnaní": 64,
+     "Dieťa/študent": 770,
+     "Ostatný a nezistený": 171,
+     "Dôchodcovia": 357
+    },
+    "Karlova Ves": {
+     "Ostatný a nezistený": 2484,
+     "Dieťa/študent": 7133,
+     "Ekonomicky aktívny": 19734,
+     "Dôchodcovia": 5349,
+     "Spolu": 35644,
+     "Nezamestnaní": 944
+    },
+    "Lamač": {
+     "Ekonomicky aktívny": 3753,
+     "Dieťa/študent": 1674,
+     "Ostatný a nezistený": 432,
+     "Spolu": 7789,
+     "Dôchodcovia": 1792,
+     "Nezamestnaní": 138
+    },
+    "Nové Mesto": {
+     "Nezamestnaní": 993,
+     "Dieťa/študent": 9275,
+     "Ostatný a nezistený": 3487,
+     "Spolu": 44458,
+     "Ekonomicky aktívny": 23380,
+     "Dôchodcovia": 7323
+    },
+    "Petržalka": {
+     "Ostatný a nezistený": 8022,
+     "Spolu": 114000,
+     "Dieťa/študent": 20696,
+     "Dôchodcovia": 20909,
+     "Nezamestnaní": 2900,
+     "Ekonomicky aktívny": 61473
+    },
+    "Podunajské Biskupice": {
+     "Ostatný a nezistený": 1760,
+     "Nezamestnaní": 613,
+     "Spolu": 23464,
+     "Dieťa/študent": 4648,
+     "Dôchodcovia": 4398,
+     "Ekonomicky aktívny": 12045
+    },
+    "Rača": {
+     "Dieťa/študent": 5284,
+     "Nezamestnaní": 694,
+     "Ostatný a nezistený": 2034,
+     "Spolu": 25733,
+     "Dôchodcovia": 4267,
+     "Ekonomicky aktívny": 13454
+    },
+    "Rusovce": {
+     "Dôchodcovia": 587,
+     "Spolu": 4388,
+     "Dieťa/študent": 1148,
+     "Ekonomicky aktívny": 2271,
+     "Nezamestnaní": 99,
+     "Ostatný a nezistený": 283
+    },
+    "Ružinov": {
+     "Ostatný a nezistený": 5949,
+     "Ekonomicky aktívny": 41851,
+     "Spolu": 81004,
+     "Nezamestnaní": 1963,
+     "Dôchodcovia": 14971,
+     "Dieťa/študent": 16270
+    },
+    "Staré Mesto": {
+     "Ekonomicky aktívny": 24162,
+     "Dieťa/študent": 8967,
+     "Dôchodcovia": 8008,
+     "Spolu": 46080,
+     "Ostatný a nezistený": 4055,
+     "Nezamestnaní": 888
+    },
+    "Vajnory": {
+     "Dôchodcovia": 970,
+     "Spolu": 6079,
+     "Ekonomicky aktívny": 3141,
+     "Nezamestnaní": 125,
+     "Ostatný a nezistený": 475,
+     "Dieťa/študent": 1368
+    },
+    "Vrakuňa": {
+     "Nezamestnaní": 593,
+     "Ekonomicky aktívny": 11061,
+     "Ostatný a nezistený": 1595,
+     "Dôchodcovia": 3330,
+     "Dieťa/študent": 4132,
+     "Spolu": 20711
+    },
+    "Záhorská Bystrica": {
+     "Ekonomicky aktívny": 3335,
+     "Ostatný a nezistený": 435,
+     "Dieťa/študent": 1909,
+     "Nezamestnaní": 124,
+     "Dôchodcovia": 738,
+     "Spolu": 6541
+    },
+    "Čunovo": {
+     "Ostatný a nezistený": 121,
+     "Nezamestnaní": 34,
+     "Spolu": 1635,
+     "Dieťa/študent": 447,
+     "Dôchodcovia": 225,
+     "Ekonomicky aktívny": 808
+    }
+   },
+   "nazov": "Ekonomická aktivita"
+  },
+  "vzdelanie": {
+   "kocka": "om7809rr",
+   "stlpec": "e_edu",
+   "kategorie": [
+    "Vysokoškolské",
+    "Stredné s maturitou",
+    "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov",
+    "Stredné bez maturity",
+    "Základné",
+    "Nezistené",
+    "Bez školského vzdelania - osoby vo veku 15 rokov a viac"
+   ],
+   "mesto": {
+    "Spolu": 475503,
+    "Vysokoškolské": 174091,
+    "Stredné s maturitou": 126014,
+    "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 73769,
+    "Stredné bez maturity": 45608,
+    "Základné": 29070,
+    "Nezistené": 26407,
+    "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 544
+   },
+   "mestske_casti": {
+    "Devín": {
+     "Základné": 121,
+     "Stredné bez maturity": 149,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 389,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 2,
+     "Spolu": 1912,
+     "Stredné s maturitou": 451,
+     "Nezistené": 84,
+     "Vysokoškolské": 716
+    },
+    "Devínska Nová Ves": {
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 21,
+     "Vysokoškolské": 5225,
+     "Spolu": 17153,
+     "Základné": 1132,
+     "Nezistené": 892,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 2661,
+     "Stredné s maturitou": 5177,
+     "Stredné bez maturity": 2045
+    },
+    "Dúbravka": {
+     "Základné": 2370,
+     "Spolu": 36206,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 38,
+     "Nezistené": 1666,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 5512,
+     "Stredné s maturitou": 10209,
+     "Stredné bez maturity": 3721,
+     "Vysokoškolské": 12690
+    },
+    "Jarovce": {
+     "Stredné s maturitou": 666,
+     "Stredné bez maturity": 296,
+     "Základné": 208,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 6,
+     "Vysokoškolské": 851,
+     "Spolu": 2706,
+     "Nezistené": 51,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 628
+    },
+    "Karlova Ves": {
+     "Nezistené": 1598,
+     "Základné": 1876,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 5047,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 35,
+     "Vysokoškolské": 15587,
+     "Spolu": 35644,
+     "Stredné bez maturity": 2428,
+     "Stredné s maturitou": 9073
+    },
+    "Lamač": {
+     "Stredné s maturitou": 2109,
+     "Vysokoškolské": 3012,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 17,
+     "Spolu": 7789,
+     "Nezistené": 323,
+     "Základné": 421,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 1297,
+     "Stredné bez maturity": 610
+    },
+    "Nové Mesto": {
+     "Spolu": 44458,
+     "Vysokoškolské": 18622,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 52,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 7378,
+     "Stredné bez maturity": 3110,
+     "Základné": 2380,
+     "Stredné s maturitou": 10090,
+     "Nezistené": 2826
+    },
+    "Petržalka": {
+     "Spolu": 114000,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 16677,
+     "Vysokoškolské": 37212,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 126,
+     "Základné": 7033,
+     "Nezistené": 6040,
+     "Stredné s maturitou": 33261,
+     "Stredné bez maturity": 13651
+    },
+    "Podunajské Biskupice": {
+     "Spolu": 23464,
+     "Stredné bez maturity": 3424,
+     "Stredné s maturitou": 7347,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 63,
+     "Vysokoškolské": 5614,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 3527,
+     "Nezistené": 1390,
+     "Základné": 2099
+    },
+    "Rača": {
+     "Spolu": 25733,
+     "Základné": 1618,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 26,
+     "Stredné s maturitou": 7085,
+     "Stredné bez maturity": 2825,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 4141,
+     "Nezistené": 1664,
+     "Vysokoškolské": 8374
+    },
+    "Rusovce": {
+     "Základné": 381,
+     "Spolu": 4388,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 4,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 875,
+     "Vysokoškolské": 1535,
+     "Nezistené": 119,
+     "Stredné bez maturity": 454,
+     "Stredné s maturitou": 1020
+    },
+    "Ružinov": {
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 76,
+     "Stredné s maturitou": 20518,
+     "Nezistené": 4453,
+     "Spolu": 81004,
+     "Základné": 4724,
+     "Vysokoškolské": 32074,
+     "Stredné bez maturity": 6602,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 12557
+    },
+    "Staré Mesto": {
+     "Stredné s maturitou": 8965,
+     "Spolu": 46080,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 31,
+     "Vysokoškolské": 22446,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 6998,
+     "Základné": 2044,
+     "Nezistené": 3526,
+     "Stredné bez maturity": 2070
+    },
+    "Vajnory": {
+     "Nezistené": 347,
+     "Stredné bez maturity": 789,
+     "Vysokoškolské": 1694,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 6,
+     "Spolu": 6079,
+     "Základné": 414,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 1043,
+     "Stredné s maturitou": 1786
+    },
+    "Vrakuňa": {
+     "Vysokoškolské": 5441,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 35,
+     "Spolu": 20711,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 3126,
+     "Nezistené": 1208,
+     "Stredné bez maturity": 2756,
+     "Stredné s maturitou": 6417,
+     "Základné": 1728
+    },
+    "Záhorská Bystrica": {
+     "Stredné bez maturity": 489,
+     "Stredné s maturitou": 1385,
+     "Spolu": 6541,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 5,
+     "Nezistené": 183,
+     "Vysokoškolské": 2528,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 1552,
+     "Základné": 399
+    },
+    "Čunovo": {
+     "Stredné s maturitou": 455,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 1,
+     "Spolu": 1635,
+     "Stredné bez maturity": 189,
+     "Základné": 122,
+     "Vysokoškolské": 470,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 361,
+     "Nezistené": 37
+    }
+   },
+   "nazov": "Najvyššie dosiahnuté vzdelanie"
+  },
+  "narodnost": {
+   "kocka": "om7806rr",
+   "stlpec": "e_national",
+   "kategorie": [
+    "Slovenská",
+    "Nezistená",
+    "Maďarská",
+    "Iná",
+    "Česká",
+    "Ukrajinská",
+    "Ruská",
+    "Nemecká",
+    "Rusínska",
+    "Poľská",
+    "Rómska"
+   ],
+   "mesto": {
+    "Spolu": 475503,
+    "Slovenská": 405061,
+    "Nezistená": 42498,
+    "Maďarská": 11297,
+    "Iná": 7248,
+    "Česká": 4746,
+    "Ukrajinská": 1424,
+    "Ruská": 1011,
+    "Nemecká": 748,
+    "Rusínska": 735,
+    "Poľská": 520,
+    "Rómska": 215
+   },
+   "mestske_casti": {
+    "Devín": {
+     "Spolu": 1912,
+     "Iná": 31,
+     "Nezistená": 109,
+     "Slovenská": 1696,
+     "Nemecká": 4,
+     "Poľská": 1,
+     "Maďarská": 27,
+     "Ruská": 9,
+     "Ukrajinská": 12,
+     "Rusínska": 2,
+     "Česká": 21,
+     "Rómska": 0
+    },
+    "Devínska Nová Ves": {
+     "Spolu": 17153,
+     "Maďarská": 238,
+     "Slovenská": 15232,
+     "Rusínska": 15,
+     "Rómska": 4,
+     "Ukrajinská": 40,
+     "Nemecká": 37,
+     "Ruská": 25,
+     "Poľská": 24,
+     "Iná": 213,
+     "Česká": 204,
+     "Nezistená": 1121
+    },
+    "Dúbravka": {
+     "Spolu": 36206,
+     "Ruská": 95,
+     "Nezistená": 2604,
+     "Nemecká": 51,
+     "Iná": 345,
+     "Maďarská": 617,
+     "Ukrajinská": 112,
+     "Rusínska": 63,
+     "Slovenská": 31910,
+     "Rómska": 6,
+     "Poľská": 31,
+     "Česká": 372
+    },
+    "Jarovce": {
+     "Spolu": 2706,
+     "Rusínska": 4,
+     "Nezistená": 71,
+     "Rómska": 2,
+     "Nemecká": 9,
+     "Ukrajinská": 3,
+     "Iná": 180,
+     "Maďarská": 129,
+     "Ruská": 4,
+     "Slovenská": 2288,
+     "Česká": 16,
+     "Poľská": 0
+    },
+    "Karlova Ves": {
+     "Spolu": 35644,
+     "Ruská": 99,
+     "Iná": 452,
+     "Nemecká": 51,
+     "Nezistená": 2836,
+     "Poľská": 41,
+     "Maďarská": 596,
+     "Rusínska": 63,
+     "Slovenská": 30951,
+     "Česká": 422,
+     "Ukrajinská": 117,
+     "Rómska": 16
+    },
+    "Lamač": {
+     "Spolu": 7789,
+     "Slovenská": 6920,
+     "Ruská": 10,
+     "Nezistená": 528,
+     "Nemecká": 13,
+     "Rusínska": 10,
+     "Rómska": 1,
+     "Česká": 83,
+     "Ukrajinská": 21,
+     "Iná": 74,
+     "Poľská": 10,
+     "Maďarská": 119
+    },
+    "Nové Mesto": {
+     "Spolu": 44458,
+     "Nemecká": 77,
+     "Maďarská": 767,
+     "Iná": 1086,
+     "Rusínska": 70,
+     "Rómska": 8,
+     "Ukrajinská": 176,
+     "Poľská": 62,
+     "Ruská": 130,
+     "Česká": 451,
+     "Slovenská": 36970,
+     "Nezistená": 4661
+    },
+    "Petržalka": {
+     "Spolu": 114000,
+     "Česká": 1039,
+     "Rusínska": 182,
+     "Iná": 973,
+     "Rómska": 66,
+     "Ruská": 170,
+     "Ukrajinská": 259,
+     "Maďarská": 2650,
+     "Poľská": 116,
+     "Nezistená": 9588,
+     "Nemecká": 87,
+     "Slovenská": 98870
+    },
+    "Podunajské Biskupice": {
+     "Spolu": 23464,
+     "Nezistená": 2232,
+     "Slovenská": 18739,
+     "Iná": 194,
+     "Maďarská": 1927,
+     "Rómska": 25,
+     "Rusínska": 23,
+     "Ukrajinská": 57,
+     "Nemecká": 19,
+     "Ruská": 18,
+     "Česká": 210,
+     "Poľská": 20
+    },
+    "Rača": {
+     "Spolu": 25733,
+     "Iná": 391,
+     "Ukrajinská": 102,
+     "Nemecká": 27,
+     "Ruská": 61,
+     "Rusínska": 40,
+     "Rómska": 8,
+     "Poľská": 18,
+     "Slovenská": 21869,
+     "Nezistená": 2554,
+     "Maďarská": 378,
+     "Česká": 285
+    },
+    "Rusovce": {
+     "Spolu": 4388,
+     "Iná": 56,
+     "Nemecká": 18,
+     "Slovenská": 3797,
+     "Ukrajinská": 9,
+     "Rusínska": 3,
+     "Ruská": 9,
+     "Nezistená": 221,
+     "Maďarská": 238,
+     "Poľská": 3,
+     "Česká": 34,
+     "Rómska": 0
+    },
+    "Ružinov": {
+     "Spolu": 81004,
+     "Iná": 1399,
+     "Poľská": 78,
+     "Ruská": 172,
+     "Rómska": 30,
+     "Ukrajinská": 218,
+     "Nezistená": 7349,
+     "Česká": 753,
+     "Nemecká": 130,
+     "Maďarská": 1758,
+     "Rusínska": 137,
+     "Slovenská": 68980
+    },
+    "Staré Mesto": {
+     "Spolu": 46080,
+     "Ukrajinská": 211,
+     "Iná": 1244,
+     "Nezistená": 5825,
+     "Nemecká": 164,
+     "Maďarská": 941,
+     "Rómska": 25,
+     "Ruská": 165,
+     "Poľská": 67,
+     "Česká": 538,
+     "Rusínska": 70,
+     "Slovenská": 36830
+    },
+    "Vajnory": {
+     "Spolu": 6079,
+     "Rómska": 1,
+     "Poľská": 7,
+     "Nezistená": 374,
+     "Maďarská": 62,
+     "Iná": 190,
+     "Nemecká": 4,
+     "Ruská": 6,
+     "Slovenská": 5368,
+     "Rusínska": 1,
+     "Ukrajinská": 14,
+     "Česká": 52
+    },
+    "Vrakuňa": {
+     "Spolu": 20711,
+     "Iná": 233,
+     "Nemecká": 36,
+     "Maďarská": 746,
+     "Rusínska": 34,
+     "Rómska": 22,
+     "Ukrajinská": 61,
+     "Poľská": 29,
+     "Česká": 176,
+     "Nezistená": 1973,
+     "Ruská": 21,
+     "Slovenská": 17380
+    },
+    "Záhorská Bystrica": {
+     "Spolu": 6541,
+     "Česká": 70,
+     "Nezistená": 427,
+     "Nemecká": 17,
+     "Rusínska": 18,
+     "Poľská": 11,
+     "Iná": 66,
+     "Ruská": 15,
+     "Rómska": 1,
+     "Slovenská": 5862,
+     "Maďarská": 45,
+     "Ukrajinská": 9
+    },
+    "Čunovo": {
+     "Spolu": 1635,
+     "Slovenská": 1399,
+     "Poľská": 2,
+     "Ruská": 2,
+     "Maďarská": 59,
+     "Nemecká": 4,
+     "Ukrajinská": 3,
+     "Iná": 121,
+     "Česká": 20,
+     "Nezistená": 25,
+     "Rómska": 0,
+     "Rusínska": 0
+    }
+   },
+   "nazov": "Národnosť"
+  },
+  "nabozenstvo": {
+   "kocka": "om7805rr",
+   "stlpec": "e_religion",
+   "kategorie": [
+    "bez náboženského vyznania",
+    "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev",
+    "nezistené",
+    "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania",
+    "ostatné",
+    "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev",
+    "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev",
+    "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev"
+   ],
+   "mesto": {
+    "Spolu": 475503,
+    "bez náboženského vyznania": 206945,
+    "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 179053,
+    "nezistené": 44599,
+    "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 19392,
+    "ostatné": 15741,
+    "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 5416,
+    "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 2735,
+    "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 1622
+   },
+   "mestske_casti": {
+    "Devín": {
+     "Spolu": 1912,
+     "ostatné": 60,
+     "bez náboženského vyznania": 966,
+     "nezistené": 129,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 67,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 4,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 649,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 20,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 17
+    },
+    "Devínska Nová Ves": {
+     "Spolu": 17153,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 6899,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 35,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 96,
+     "ostatné": 601,
+     "nezistené": 1395,
+     "bez náboženského vyznania": 7396,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 189,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 542
+    },
+    "Dúbravka": {
+     "Spolu": 36206,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 197,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 454,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 109,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 1504,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 13848,
+     "ostatné": 1108,
+     "bez náboženského vyznania": 16004,
+     "nezistené": 2982
+    },
+    "Jarovce": {
+     "Spolu": 2706,
+     "bez náboženského vyznania": 1047,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 6,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 76,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 8,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 1426,
+     "nezistené": 83,
+     "ostatné": 45,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 15
+    },
+    "Karlova Ves": {
+     "Spolu": 35644,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 1621,
+     "nezistené": 2956,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 246,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 13241,
+     "ostatné": 1276,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 115,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 352,
+     "bez náboženského vyznania": 15837
+    },
+    "Lamač": {
+     "Spolu": 7789,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 3441,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 23,
+     "ostatné": 248,
+     "bez náboženského vyznania": 2933,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 44,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 107,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 407,
+     "nezistené": 586
+    },
+    "Nové Mesto": {
+     "Spolu": 44458,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 170,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 483,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 1995,
+     "nezistené": 4778,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 271,
+     "bez náboženského vyznania": 19668,
+     "ostatné": 1564,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 15529
+    },
+    "Petržalka": {
+     "Spolu": 114000,
+     "nezistené": 10033,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 4279,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1330,
+     "bez náboženského vyznania": 51095,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 526,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 441,
+     "ostatné": 3403,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 42893
+    },
+    "Podunajské Biskupice": {
+     "Spolu": 23464,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 103,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 262,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 132,
+     "nezistené": 2320,
+     "ostatné": 744,
+     "bez náboženského vyznania": 9194,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 9963,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 746
+    },
+    "Rača": {
+     "Spolu": 25733,
+     "nezistené": 2635,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 171,
+     "bez náboženského vyznania": 11017,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 9582,
+     "ostatné": 928,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 305,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 1022,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 73
+    },
+    "Rusovce": {
+     "Spolu": 4388,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 177,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 1860,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 21,
+     "ostatné": 100,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 67,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 18,
+     "bez náboženského vyznania": 1924,
+     "nezistené": 221
+    },
+    "Ružinov": {
+     "Spolu": 81004,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 260,
+     "nezistené": 7595,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 487,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 3570,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1044,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 30220,
+     "ostatné": 2758,
+     "bez náboženského vyznania": 35070
+    },
+    "Staré Mesto": {
+     "Spolu": 46080,
+     "nezistené": 5951,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 15008,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 319,
+     "bez náboženského vyznania": 19948,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 162,
+     "ostatné": 1893,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 2341,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 458
+    },
+    "Vajnory": {
+     "Spolu": 6079,
+     "nezistené": 400,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 2753,
+     "ostatné": 160,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 53,
+     "bez náboženského vyznania": 2514,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 24,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 10,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 165
+    },
+    "Vrakuňa": {
+     "Spolu": 20711,
+     "nezistené": 2064,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 70,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 684,
+     "ostatné": 632,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 204,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 7871,
+     "bez náboženského vyznania": 9059,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 127
+    },
+    "Záhorská Bystrica": {
+     "Spolu": 6541,
+     "bez náboženského vyznania": 2717,
+     "nezistené": 438,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 68,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 2919,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 39,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 16,
+     "ostatné": 180,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 164
+    },
+    "Čunovo": {
+     "Spolu": 1635,
+     "nezistené": 33,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 951,
+     "bez náboženského vyznania": 556,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 8,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 7,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 7,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 32,
+     "ostatné": 41
+    }
+   },
+   "nazov": "Náboženské vyznanie"
+  },
+  "jazyk": {
+   "kocka": "om7804rr",
+   "stlpec": "e_language",
+   "kategorie": [
+    "Slovenský",
+    "Nezistený",
+    "Maďarský",
+    "Iný jazyk",
+    "Český",
+    "Ukrajinský",
+    "Nemecký",
+    "Rusínsky",
+    "Poľský",
+    "Rómsky"
+   ],
+   "mesto": {
+    "Spolu": 475503,
+    "Slovenský": 403043,
+    "Nezistený": 42570,
+    "Maďarský": 11958,
+    "Iný jazyk": 8917,
+    "Český": 5488,
+    "Ukrajinský": 1076,
+    "Nemecký": 906,
+    "Rusínsky": 898,
+    "Poľský": 508,
+    "Rómsky": 139
+   },
+   "mestske_casti": {
+    "Devín": {
+     "Slovenský": 1677,
+     "Rómsky": 0,
+     "Rusínsky": 0,
+     "Český": 27,
+     "Maďarský": 32,
+     "Nezistený": 109,
+     "Spolu": 1912,
+     "Iný jazyk": 51,
+     "Poľský": 1,
+     "Nemecký": 10,
+     "Ukrajinský": 5
+    },
+    "Devínska Nová Ves": {
+     "Ukrajinský": 22,
+     "Nezistený": 1116,
+     "Maďarský": 244,
+     "Poľský": 23,
+     "Spolu": 17153,
+     "Iný jazyk": 284,
+     "Rusínsky": 24,
+     "Slovenský": 15164,
+     "Rómsky": 2,
+     "Český": 225,
+     "Nemecký": 49
+    },
+    "Dúbravka": {
+     "Slovenský": 31487,
+     "Maďarský": 695,
+     "Rusínsky": 85,
+     "Iný jazyk": 494,
+     "Rómsky": 5,
+     "Český": 456,
+     "Nemecký": 44,
+     "Ukrajinský": 71,
+     "Poľský": 34,
+     "Spolu": 36206,
+     "Nezistený": 2835
+    },
+    "Jarovce": {
+     "Iný jazyk": 146,
+     "Rómsky": 4,
+     "Maďarský": 121,
+     "Rusínsky": 3,
+     "Český": 20,
+     "Poľský": 0,
+     "Slovenský": 2325,
+     "Nemecký": 22,
+     "Spolu": 2706,
+     "Ukrajinský": 3,
+     "Nezistený": 62
+    },
+    "Karlova Ves": {
+     "Ukrajinský": 75,
+     "Slovenský": 30741,
+     "Poľský": 41,
+     "Spolu": 35644,
+     "Rómsky": 8,
+     "Iný jazyk": 656,
+     "Český": 497,
+     "Nemecký": 58,
+     "Nezistený": 2836,
+     "Maďarský": 652,
+     "Rusínsky": 80
+    },
+    "Lamač": {
+     "Rómsky": 1,
+     "Ukrajinský": 18,
+     "Slovenský": 6919,
+     "Český": 96,
+     "Maďarský": 115,
+     "Nemecký": 10,
+     "Nezistený": 521,
+     "Poľský": 8,
+     "Rusínsky": 21,
+     "Spolu": 7789,
+     "Iný jazyk": 80
+    },
+    "Nové Mesto": {
+     "Iný jazyk": 1316,
+     "Slovenský": 36730,
+     "Poľský": 64,
+     "Maďarský": 874,
+     "Rusínsky": 78,
+     "Český": 532,
+     "Rómsky": 6,
+     "Nemecký": 76,
+     "Spolu": 44458,
+     "Nezistený": 4650,
+     "Ukrajinský": 132
+    },
+    "Petržalka": {
+     "Iný jazyk": 1292,
+     "Maďarský": 2770,
+     "Rómsky": 49,
+     "Poľský": 116,
+     "Slovenský": 98513,
+     "Nezistený": 9541,
+     "Ukrajinský": 194,
+     "Rusínsky": 225,
+     "Český": 1179,
+     "Spolu": 114000,
+     "Nemecký": 121
+    },
+    "Podunajské Biskupice": {
+     "Nemecký": 29,
+     "Rusínsky": 37,
+     "Rómsky": 17,
+     "Iný jazyk": 246,
+     "Poľský": 22,
+     "Nezistený": 2224,
+     "Maďarský": 1890,
+     "Český": 225,
+     "Spolu": 23464,
+     "Ukrajinský": 55,
+     "Slovenský": 18719
+    },
+    "Rača": {
+     "Iný jazyk": 499,
+     "Český": 323,
+     "Ukrajinský": 92,
+     "Maďarský": 409,
+     "Rusínsky": 44,
+     "Nezistený": 2552,
+     "Rómsky": 8,
+     "Nemecký": 31,
+     "Poľský": 20,
+     "Slovenský": 21755,
+     "Spolu": 25733
+    },
+    "Rusovce": {
+     "Iný jazyk": 73,
+     "Český": 29,
+     "Poľský": 1,
+     "Rómsky": 0,
+     "Nemecký": 32,
+     "Ukrajinský": 7,
+     "Spolu": 4388,
+     "Slovenský": 3806,
+     "Rusínsky": 7,
+     "Maďarský": 216,
+     "Nezistený": 217
+    },
+    "Ružinov": {
+     "Slovenský": 68591,
+     "Český": 917,
+     "Nezistený": 7318,
+     "Maďarský": 1939,
+     "Rómsky": 14,
+     "Rusínsky": 161,
+     "Iný jazyk": 1664,
+     "Spolu": 81004,
+     "Ukrajinský": 171,
+     "Nemecký": 154,
+     "Poľský": 75
+    },
+    "Staré Mesto": {
+     "Rómsky": 11,
+     "Ukrajinský": 152,
+     "Maďarský": 1080,
+     "Český": 622,
+     "Nezistený": 5794,
+     "Rusínsky": 76,
+     "Nemecký": 208,
+     "Slovenský": 36627,
+     "Spolu": 46080,
+     "Poľský": 60,
+     "Iný jazyk": 1450
+    },
+    "Vajnory": {
+     "Ukrajinský": 17,
+     "Rusínsky": 3,
+     "Poľský": 7,
+     "Slovenský": 5351,
+     "Nezistený": 373,
+     "Maďarský": 61,
+     "Český": 58,
+     "Rómsky": 2,
+     "Spolu": 6079,
+     "Nemecký": 5,
+     "Iný jazyk": 202
+    },
+    "Vrakuňa": {
+     "Slovenský": 17374,
+     "Spolu": 20711,
+     "Nezistený": 1973,
+     "Rusínsky": 40,
+     "Český": 193,
+     "Rómsky": 11,
+     "Nemecký": 20,
+     "Poľský": 25,
+     "Maďarský": 740,
+     "Ukrajinský": 57,
+     "Iný jazyk": 278
+    },
+    "Záhorská Bystrica": {
+     "Slovenský": 5852,
+     "Český": 71,
+     "Nezistený": 424,
+     "Nemecký": 17,
+     "Rusínsky": 13,
+     "Spolu": 6541,
+     "Iný jazyk": 97,
+     "Rómsky": 1,
+     "Maďarský": 55,
+     "Ukrajinský": 2,
+     "Poľský": 9
+    },
+    "Čunovo": {
+     "Poľský": 2,
+     "Rusínsky": 1,
+     "Slovenský": 1412,
+     "Český": 18,
+     "Rómsky": 0,
+     "Nezistený": 25,
+     "Ukrajinský": 3,
+     "Iný jazyk": 89,
+     "Nemecký": 20,
+     "Spolu": 1635,
+     "Maďarský": 65
+    }
+   },
+   "nazov": "Materinský jazyk"
+  },
+  "rodinny_stav": {
+   "kocka": "om7808rr",
+   "stlpec": "e_famstat",
+   "kategorie": [
+    "Slobodný - slobodná",
+    "Ženatý - vydatá",
+    "Rozvedený - rozvedená",
+    "Vdovec - vdova",
+    "Nezistený"
+   ],
+   "mesto": {
+    "Spolu": 475503,
+    "Slobodný - slobodná": 210036,
+    "Ženatý - vydatá": 181349,
+    "Rozvedený - rozvedená": 49471,
+    "Vdovec - vdova": 28240,
+    "Nezistený": 6407
+   },
+   "mestske_casti": {
+    "Devín": {
+     "Nezistený": 35,
+     "Rozvedený - rozvedená": 142,
+     "Slobodný - slobodná": 844,
+     "Vdovec - vdova": 109,
+     "Ženatý - vydatá": 782,
+     "Spolu": 1912
+    },
+    "Devínska Nová Ves": {
+     "Slobodný - slobodná": 7609,
+     "Ženatý - vydatá": 6889,
+     "Nezistený": 198,
+     "Vdovec - vdova": 767,
+     "Rozvedený - rozvedená": 1690,
+     "Spolu": 17153
+    },
+    "Dúbravka": {
+     "Rozvedený - rozvedená": 4050,
+     "Slobodný - slobodná": 15798,
+     "Vdovec - vdova": 2461,
+     "Nezistený": 224,
+     "Ženatý - vydatá": 13673,
+     "Spolu": 36206
+    },
+    "Jarovce": {
+     "Slobodný - slobodná": 1215,
+     "Spolu": 2706,
+     "Ženatý - vydatá": 1172,
+     "Rozvedený - rozvedená": 161,
+     "Vdovec - vdova": 144,
+     "Nezistený": 14
+    },
+    "Karlova Ves": {
+     "Vdovec - vdova": 1888,
+     "Rozvedený - rozvedená": 3568,
+     "Slobodný - slobodná": 15620,
+     "Nezistený": 368,
+     "Ženatý - vydatá": 14200,
+     "Spolu": 35644
+    },
+    "Lamač": {
+     "Ženatý - vydatá": 3121,
+     "Vdovec - vdova": 545,
+     "Nezistený": 72,
+     "Rozvedený - rozvedená": 744,
+     "Slobodný - slobodná": 3307,
+     "Spolu": 7789
+    },
+    "Nové Mesto": {
+     "Nezistený": 1012,
+     "Slobodný - slobodná": 19887,
+     "Ženatý - vydatá": 16464,
+     "Rozvedený - rozvedená": 4313,
+     "Spolu": 44458,
+     "Vdovec - vdova": 2782
+    },
+    "Petržalka": {
+     "Spolu": 114000,
+     "Ženatý - vydatá": 44395,
+     "Slobodný - slobodná": 50444,
+     "Nezistený": 729,
+     "Rozvedený - rozvedená": 12436,
+     "Vdovec - vdova": 5996
+    },
+    "Podunajské Biskupice": {
+     "Spolu": 23464,
+     "Nezistený": 222,
+     "Slobodný - slobodná": 10422,
+     "Ženatý - vydatá": 8726,
+     "Rozvedený - rozvedená": 2584,
+     "Vdovec - vdova": 1510
+    },
+    "Rača": {
+     "Slobodný - slobodná": 11326,
+     "Nezistený": 547,
+     "Vdovec - vdova": 1481,
+     "Ženatý - vydatá": 9646,
+     "Rozvedený - rozvedená": 2733,
+     "Spolu": 25733
+    },
+    "Rusovce": {
+     "Vdovec - vdova": 237,
+     "Ženatý - vydatá": 1874,
+     "Nezistený": 25,
+     "Rozvedený - rozvedená": 311,
+     "Spolu": 4388,
+     "Slobodný - slobodná": 1941
+    },
+    "Ružinov": {
+     "Rozvedený - rozvedená": 8610,
+     "Nezistený": 1283,
+     "Ženatý - vydatá": 29610,
+     "Vdovec - vdova": 5737,
+     "Spolu": 81004,
+     "Slobodný - slobodná": 35764
+    },
+    "Staré Mesto": {
+     "Nezistený": 1337,
+     "Slobodný - slobodná": 20135,
+     "Vdovec - vdova": 2771,
+     "Ženatý - vydatá": 17254,
+     "Rozvedený - rozvedená": 4583,
+     "Spolu": 46080
+    },
+    "Vajnory": {
+     "Slobodný - slobodná": 2619,
+     "Vdovec - vdova": 356,
+     "Nezistený": 145,
+     "Ženatý - vydatá": 2442,
+     "Rozvedený - rozvedená": 517,
+     "Spolu": 6079
+    },
+    "Vrakuňa": {
+     "Ženatý - vydatá": 7472,
+     "Rozvedený - rozvedená": 2552,
+     "Vdovec - vdova": 1125,
+     "Nezistený": 136,
+     "Slobodný - slobodná": 9426,
+     "Spolu": 20711
+    },
+    "Záhorská Bystrica": {
+     "Ženatý - vydatá": 2885,
+     "Vdovec - vdova": 249,
+     "Nezistený": 41,
+     "Spolu": 6541,
+     "Rozvedený - rozvedená": 408,
+     "Slobodný - slobodná": 2958
+    },
+    "Čunovo": {
+     "Spolu": 1635,
+     "Vdovec - vdova": 82,
+     "Ženatý - vydatá": 744,
+     "Nezistený": 19,
+     "Rozvedený - rozvedená": 69,
+     "Slobodný - slobodná": 721
+    }
+   },
+   "nazov": "Rodinný stav"
+  },
+  "domacnosti": {
+   "kocka": "om7822rr",
+   "stlpec": "e_poc_clen_cd",
+   "kategorie": [
+    "1-členná domácnosť",
+    "2-členná domácnosť",
+    "3-členná domácnosť",
+    "4-členná domácnosť",
+    "5 a viac členná domácnosť"
+   ],
+   "mesto": {
+    "Spolu": 257939,
+    "1-členná domácnosť": 132654,
+    "2-členná domácnosť": 67090,
+    "3-členná domácnosť": 33906,
+    "4-členná domácnosť": 20395,
+    "5 a viac členná domácnosť": 3894
+   },
+   "mestske_casti": {
+    "Devín": {
+     "Spolu": 994,
+     "2-členná domácnosť": 284,
+     "3-členná domácnosť": 154,
+     "1-členná domácnosť": 378,
+     "5 a viac členná domácnosť": 29,
+     "4-členná domácnosť": 149
+    },
+    "Devínska Nová Ves": {
+     "Spolu": 8152,
+     "2-členná domácnosť": 2261,
+     "3-členná domácnosť": 1367,
+     "5 a viac členná domácnosť": 183,
+     "1-členná domácnosť": 3477,
+     "4-členná domácnosť": 864
+    },
+    "Dúbravka": {
+     "Spolu": 19096,
+     "2-členná domácnosť": 5224,
+     "3-členná domácnosť": 2559,
+     "5 a viac členná domácnosť": 300,
+     "4-členná domácnosť": 1613,
+     "1-členná domácnosť": 9400
+    },
+    "Jarovce": {
+     "Spolu": 1129,
+     "2-členná domácnosť": 304,
+     "4-členná domácnosť": 222,
+     "3-členná domácnosť": 234,
+     "1-členná domácnosť": 316,
+     "5 a viac členná domácnosť": 53
+    },
+    "Karlova Ves": {
+     "Spolu": 18303,
+     "1-členná domácnosť": 8731,
+     "4-členná domácnosť": 1648,
+     "5 a viac členná domácnosť": 333,
+     "3-členná domácnosť": 2692,
+     "2-členná domácnosť": 4899
+    },
+    "Lamač": {
+     "Spolu": 4121,
+     "3-členná domácnosť": 572,
+     "5 a viac členná domácnosť": 96,
+     "4-členná domácnosť": 356,
+     "1-členná domácnosť": 1968,
+     "2-členná domácnosť": 1129
+    },
+    "Nové Mesto": {
+     "Spolu": 28275,
+     "2-členná domácnosť": 6580,
+     "5 a viac členná domácnosť": 365,
+     "4-členná domácnosť": 1956,
+     "1-členná domácnosť": 16187,
+     "3-členná domácnosť": 3187
+    },
+    "Petržalka": {
+     "Spolu": 56693,
+     "2-členná domácnosť": 16166,
+     "5 a viac členná domácnosť": 697,
+     "3-členná domácnosť": 8096,
+     "4-členná domácnosť": 4334,
+     "1-členná domácnosť": 27400
+    },
+    "Podunajské Biskupice": {
+     "Spolu": 12249,
+     "5 a viac členná domácnosť": 192,
+     "2-členná domácnosť": 3422,
+     "3-členná domácnosť": 1784,
+     "4-členná domácnosť": 1033,
+     "1-členná domácnosť": 5818
+    },
+    "Rača": {
+     "Spolu": 13441,
+     "5 a viac členná domácnosť": 229,
+     "3-členná domácnosť": 1877,
+     "4-členná domácnosť": 1159,
+     "2-členná domácnosť": 3379,
+     "1-členná domácnosť": 6797
+    },
+    "Rusovce": {
+     "Spolu": 1877,
+     "2-členná domácnosť": 552,
+     "4-členná domácnosť": 323,
+     "3-členná domácnosť": 358,
+     "5 a viac členná domácnosť": 83,
+     "1-členná domácnosť": 561
+    },
+    "Ružinov": {
+     "Spolu": 49274,
+     "2-členná domácnosť": 12005,
+     "4-členná domácnosť": 3291,
+     "1-členná domácnosť": 27855,
+     "3-členná domácnosť": 5549,
+     "5 a viac členná domácnosť": 574
+    },
+    "Staré Mesto": {
+     "Spolu": 27227,
+     "1-členná domácnosť": 16309,
+     "4-členná domácnosť": 1605,
+     "2-členná domácnosť": 6235,
+     "3-členná domácnosť": 2740,
+     "5 a viac členná domácnosť": 338
+    },
+    "Vajnory": {
+     "Spolu": 3035,
+     "5 a viac členná domácnosť": 69,
+     "3-členná domácnosť": 476,
+     "4-členná domácnosť": 349,
+     "2-členná domácnosť": 740,
+     "1-členná domácnosť": 1401
+    },
+    "Vrakuňa": {
+     "Spolu": 10399,
+     "1-členná domácnosť": 4894,
+     "2-členná domácnosť": 2923,
+     "4-členná domácnosť": 857,
+     "3-členná domácnosť": 1545,
+     "5 a viac členná domácnosť": 180
+    },
+    "Záhorská Bystrica": {
+     "Spolu": 2971,
+     "2-členná domácnosť": 803,
+     "4-členná domácnosť": 502,
+     "3-členná domácnosť": 593,
+     "5 a viac členná domácnosť": 133,
+     "1-členná domácnosť": 940
+    },
+    "Čunovo": {
+     "Spolu": 703,
+     "4-členná domácnosť": 134,
+     "5 a viac členná domácnosť": 40,
+     "2-členná domácnosť": 184,
+     "3-členná domácnosť": 123,
+     "1-členná domácnosť": 222
+    }
+   },
+   "nazov": "Domácnosti podľa počtu členov"
+  },
+  "byty_vlastnictvo": {
+   "kocka": "om7819rr",
+   "stlpec": "e_ownerb",
+   "kategorie": [
+    "vlastný byt v bytovom dome",
+    "byt vo vlastnom rodinnom dome",
+    "iná forma užívania bytu",
+    "nezistený",
+    "obecný byt",
+    "byt v nájme",
+    "služobný a domovnícky byt",
+    "družstevný byt - len stavebné bytové družstvá"
+   ],
+   "mesto": {
+    "Spolu": 248199,
+    "vlastný byt v bytovom dome": 207736,
+    "byt vo vlastnom rodinnom dome": 24213,
+    "iná forma užívania bytu": 8647,
+    "nezistený": 3288,
+    "obecný byt": 1808,
+    "byt v nájme": 1407,
+    "služobný a domovnícky byt": 844,
+    "družstevný byt - len stavebné bytové družstvá": 256
+   },
+   "mestske_casti": {
+    "Devín": {
+     "vlastný byt v bytovom dome": 325,
+     "byt vo vlastnom rodinnom dome": 600,
+     "iná forma užívania bytu": 157,
+     "obecný byt": 7,
+     "služobný a domovnícky byt": 8,
+     "nezistený": 13,
+     "Spolu": 1110,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "byt v nájme": 0
+    },
+    "Devínska Nová Ves": {
+     "vlastný byt v bytovom dome": 5650,
+     "obecný byt": 4,
+     "byt v nájme": 43,
+     "družstevný byt - len stavebné bytové družstvá": 11,
+     "služobný a domovnícky byt": 50,
+     "byt vo vlastnom rodinnom dome": 1417,
+     "iná forma užívania bytu": 481,
+     "nezistený": 21,
+     "Spolu": 7677
+    },
+    "Dúbravka": {
+     "Spolu": 18326,
+     "byt vo vlastnom rodinnom dome": 637,
+     "obecný byt": 9,
+     "vlastný byt v bytovom dome": 17088,
+     "iná forma užívania bytu": 417,
+     "nezistený": 79,
+     "služobný a domovnícky byt": 51,
+     "byt v nájme": 40,
+     "družstevný byt - len stavebné bytové družstvá": 5
+    },
+    "Jarovce": {
+     "byt vo vlastnom rodinnom dome": 784,
+     "obecný byt": 1,
+     "vlastný byt v bytovom dome": 155,
+     "nezistený": 11,
+     "služobný a domovnícky byt": 2,
+     "byt v nájme": 6,
+     "iná forma užívania bytu": 64,
+     "Spolu": 1023,
+     "družstevný byt - len stavebné bytové družstvá": 0
+    },
+    "Karlova Ves": {
+     "byt vo vlastnom rodinnom dome": 858,
+     "služobný a domovnícky byt": 40,
+     "byt v nájme": 111,
+     "obecný byt": 195,
+     "nezistený": 160,
+     "iná forma užívania bytu": 140,
+     "družstevný byt - len stavebné bytové družstvá": 26,
+     "vlastný byt v bytovom dome": 16035,
+     "Spolu": 17565
+    },
+    "Lamač": {
+     "Spolu": 3911,
+     "iná forma užívania bytu": 116,
+     "obecný byt": 18,
+     "byt vo vlastnom rodinnom dome": 768,
+     "nezistený": 23,
+     "služobný a domovnícky byt": 8,
+     "byt v nájme": 53,
+     "družstevný byt - len stavebné bytové družstvá": 1,
+     "vlastný byt v bytovom dome": 2924
+    },
+    "Nové Mesto": {
+     "Spolu": 27325,
+     "služobný a domovnícky byt": 90,
+     "byt vo vlastnom rodinnom dome": 2704,
+     "družstevný byt - len stavebné bytové družstvá": 9,
+     "byt v nájme": 128,
+     "nezistený": 335,
+     "vlastný byt v bytovom dome": 22736,
+     "obecný byt": 304,
+     "iná forma užívania bytu": 1019
+    },
+    "Petržalka": {
+     "Spolu": 52379,
+     "vlastný byt v bytovom dome": 50307,
+     "byt vo vlastnom rodinnom dome": 208,
+     "obecný byt": 492,
+     "služobný a domovnícky byt": 110,
+     "nezistený": 546,
+     "iná forma užívania bytu": 507,
+     "družstevný byt - len stavebné bytové družstvá": 135,
+     "byt v nájme": 74
+    },
+    "Podunajské Biskupice": {
+     "Spolu": 11459,
+     "byt vo vlastnom rodinnom dome": 2307,
+     "obecný byt": 135,
+     "vlastný byt v bytovom dome": 8455,
+     "nezistený": 163,
+     "iná forma užívania bytu": 361,
+     "družstevný byt - len stavebné bytové družstvá": 10,
+     "služobný a domovnícky byt": 24,
+     "byt v nájme": 4
+    },
+    "Rača": {
+     "Spolu": 11543,
+     "nezistený": 188,
+     "vlastný byt v bytovom dome": 9080,
+     "byt vo vlastnom rodinnom dome": 1769,
+     "služobný a domovnícky byt": 27,
+     "obecný byt": 38,
+     "byt v nájme": 46,
+     "družstevný byt - len stavebné bytové družstvá": 5,
+     "iná forma užívania bytu": 390
+    },
+    "Rusovce": {
+     "Spolu": 1693,
+     "iná forma užívania bytu": 101,
+     "nezistený": 22,
+     "byt v nájme": 1,
+     "byt vo vlastnom rodinnom dome": 1196,
+     "vlastný byt v bytovom dome": 300,
+     "služobný a domovnícky byt": 7,
+     "obecný byt": 66,
+     "družstevný byt - len stavebné bytové družstvá": 0
+    },
+    "Ružinov": {
+     "Spolu": 49881,
+     "iná forma užívania bytu": 2168,
+     "nezistený": 940,
+     "byt vo vlastnom rodinnom dome": 3066,
+     "služobný a domovnícky byt": 216,
+     "vlastný byt v bytovom dome": 42777,
+     "byt v nájme": 275,
+     "družstevný byt - len stavebné bytové družstvá": 35,
+     "obecný byt": 404
+    },
+    "Staré Mesto": {
+     "nezistený": 670,
+     "vlastný byt v bytovom dome": 22709,
+     "služobný a domovnícky byt": 153,
+     "byt v nájme": 591,
+     "družstevný byt - len stavebné bytové družstvá": 7,
+     "iná forma užívania bytu": 1965,
+     "obecný byt": 90,
+     "byt vo vlastnom rodinnom dome": 2063,
+     "Spolu": 28248
+    },
+    "Vajnory": {
+     "služobný a domovnícky byt": 12,
+     "byt vo vlastnom rodinnom dome": 1868,
+     "vlastný byt v bytovom dome": 956,
+     "obecný byt": 1,
+     "iná forma užívania bytu": 24,
+     "nezistený": 12,
+     "byt v nájme": 24,
+     "Spolu": 2897,
+     "družstevný byt - len stavebné bytové družstvá": 0
+    },
+    "Vrakuňa": {
+     "byt v nájme": 3,
+     "iná forma užívania bytu": 346,
+     "družstevný byt - len stavebné bytové družstvá": 12,
+     "nezistený": 68,
+     "obecný byt": 42,
+     "služobný a domovnícky byt": 33,
+     "byt vo vlastnom rodinnom dome": 1711,
+     "vlastný byt v bytovom dome": 7212,
+     "Spolu": 9427
+    },
+    "Záhorská Bystrica": {
+     "Spolu": 3148,
+     "služobný a domovnícky byt": 13,
+     "vlastný byt v bytovom dome": 1003,
+     "nezistený": 32,
+     "iná forma užívania bytu": 330,
+     "obecný byt": 2,
+     "byt vo vlastnom rodinnom dome": 1760,
+     "byt v nájme": 8,
+     "družstevný byt - len stavebné bytové družstvá": 0
+    },
+    "Čunovo": {
+     "Spolu": 587,
+     "nezistený": 5,
+     "iná forma užívania bytu": 61,
+     "byt vo vlastnom rodinnom dome": 497,
+     "vlastný byt v bytovom dome": 24,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "obecný byt": 0,
+     "byt v nájme": 0,
+     "služobný a domovnícky byt": 0
+    }
+   },
+   "nazov": "Byty podľa formy vlastníctva"
+  },
+  "byty_izby": {
+   "kocka": "om7818rr",
+   "stlpec": "e_nrooms",
+   "kategorie": [
+    "3 obytné miestnosti",
+    "2 obytné miestnosti",
+    "1 obytná miestnosť",
+    "4 obytné miestnosti",
+    "Nezistené",
+    "5 obytných miestností",
+    "6 obytných miestností",
+    "7 obytných miestností",
+    "9 obytných miestností a viac",
+    "8 obytných miestností"
+   ],
+   "mesto": {
+    "Spolu": 248199,
+    "3 obytné miestnosti": 91389,
+    "2 obytné miestnosti": 56022,
+    "1 obytná miestnosť": 40560,
+    "4 obytné miestnosti": 34760,
+    "Nezistené": 12340,
+    "5 obytných miestností": 8426,
+    "6 obytných miestností": 2955,
+    "7 obytných miestností": 902,
+    "9 obytných miestností a viac": 485,
+    "8 obytných miestností": 360
+   },
+   "mestske_casti": {
+    "Devín": {
+     "Spolu": 1110,
+     "1 obytná miestnosť": 66,
+     "2 obytné miestnosti": 276,
+     "5 obytných miestností": 107,
+     "6 obytných miestností": 46,
+     "4 obytné miestnosti": 234,
+     "Nezistené": 8,
+     "7 obytných miestností": 16,
+     "3 obytné miestnosti": 327,
+     "8 obytných miestností": 11,
+     "9 obytných miestností a viac": 19
+    },
+    "Devínska Nová Ves": {
+     "Spolu": 7677,
+     "9 obytných miestností a viac": 32,
+     "4 obytné miestnosti": 1222,
+     "1 obytná miestnosť": 1144,
+     "8 obytných miestností": 15,
+     "5 obytných miestností": 473,
+     "Nezistené": 199,
+     "2 obytné miestnosti": 1168,
+     "7 obytných miestností": 31,
+     "3 obytné miestnosti": 3238,
+     "6 obytných miestností": 155
+    },
+    "Dúbravka": {
+     "Spolu": 18326,
+     "1 obytná miestnosť": 3426,
+     "2 obytné miestnosti": 3759,
+     "8 obytných miestností": 4,
+     "6 obytných miestností": 111,
+     "3 obytné miestnosti": 6196,
+     "9 obytných miestností a viac": 34,
+     "5 obytných miestností": 407,
+     "Nezistené": 1208,
+     "4 obytné miestnosti": 3156,
+     "7 obytných miestností": 25
+    },
+    "Jarovce": {
+     "Spolu": 1023,
+     "6 obytných miestností": 168,
+     "2 obytné miestnosti": 15,
+     "7 obytných miestností": 84,
+     "5 obytných miestností": 247,
+     "1 obytná miestnosť": 8,
+     "4 obytné miestnosti": 253,
+     "3 obytné miestnosti": 187,
+     "9 obytných miestností a viac": 23,
+     "8 obytných miestností": 27,
+     "Nezistené": 11
+    },
+    "Karlova Ves": {
+     "Spolu": 17565,
+     "8 obytných miestností": 27,
+     "4 obytné miestnosti": 2722,
+     "6 obytných miestností": 199,
+     "1 obytná miestnosť": 2281,
+     "Nezistené": 171,
+     "2 obytné miestnosti": 3191,
+     "9 obytných miestností a viac": 29,
+     "3 obytné miestnosti": 7977,
+     "7 obytných miestností": 59,
+     "5 obytných miestností": 909
+    },
+    "Lamač": {
+     "Spolu": 3911,
+     "Nezistené": 342,
+     "6 obytných miestností": 86,
+     "5 obytných miestností": 173,
+     "4 obytné miestnosti": 342,
+     "1 obytná miestnosť": 783,
+     "2 obytné miestnosti": 802,
+     "9 obytných miestností a viac": 14,
+     "3 obytné miestnosti": 1320,
+     "7 obytných miestností": 37,
+     "8 obytných miestností": 12
+    },
+    "Nové Mesto": {
+     "Spolu": 27325,
+     "4 obytné miestnosti": 2560,
+     "6 obytných miestností": 350,
+     "7 obytných miestností": 143,
+     "1 obytná miestnosť": 4946,
+     "9 obytných miestností a viac": 44,
+     "2 obytné miestnosti": 7313,
+     "Nezistené": 3289,
+     "3 obytné miestnosti": 7528,
+     "8 obytných miestností": 54,
+     "5 obytných miestností": 1098
+    },
+    "Petržalka": {
+     "Spolu": 52379,
+     "5 obytných miestností": 167,
+     "9 obytných miestností a viac": 19,
+     "3 obytné miestnosti": 25537,
+     "4 obytné miestnosti": 8748,
+     "Nezistené": 674,
+     "8 obytných miestností": 6,
+     "7 obytných miestností": 5,
+     "1 obytná miestnosť": 8077,
+     "6 obytných miestností": 47,
+     "2 obytné miestnosti": 9099
+    },
+    "Podunajské Biskupice": {
+     "Spolu": 11459,
+     "6 obytných miestností": 228,
+     "8 obytných miestností": 16,
+     "2 obytné miestnosti": 2340,
+     "1 obytná miestnosť": 1999,
+     "5 obytných miestností": 667,
+     "Nezistené": 87,
+     "7 obytných miestností": 57,
+     "3 obytné miestnosti": 4087,
+     "4 obytné miestnosti": 1954,
+     "9 obytných miestností a viac": 24
+    },
+    "Rača": {
+     "Spolu": 11543,
+     "3 obytné miestnosti": 3565,
+     "9 obytných miestností a viac": 49,
+     "2 obytné miestnosti": 3073,
+     "1 obytná miestnosť": 2062,
+     "4 obytné miestnosti": 1546,
+     "6 obytných miestností": 317,
+     "8 obytných miestností": 33,
+     "5 obytných miestností": 616,
+     "Nezistené": 200,
+     "7 obytných miestností": 82
+    },
+    "Rusovce": {
+     "Spolu": 1693,
+     "4 obytné miestnosti": 395,
+     "5 obytných miestností": 363,
+     "9 obytných miestností a viac": 14,
+     "7 obytných miestností": 26,
+     "8 obytných miestností": 20,
+     "2 obytné miestnosti": 138,
+     "1 obytná miestnosť": 63,
+     "6 obytných miestností": 159,
+     "3 obytné miestnosti": 421,
+     "Nezistené": 94
+    },
+    "Ružinov": {
+     "Spolu": 49881,
+     "2 obytné miestnosti": 15451,
+     "1 obytná miestnosť": 9069,
+     "6 obytných miestností": 222,
+     "3 obytné miestnosti": 17331,
+     "Nezistené": 2542,
+     "4 obytné miestnosti": 4310,
+     "5 obytných miestností": 778,
+     "7 obytných miestností": 71,
+     "8 obytných miestností": 24,
+     "9 obytných miestností a viac": 83
+    },
+    "Staré Mesto": {
+     "Spolu": 28248,
+     "9 obytných miestností a viac": 65,
+     "5 obytných miestností": 1085,
+     "8 obytných miestností": 60,
+     "3 obytné miestnosti": 8330,
+     "2 obytné miestnosti": 7174,
+     "7 obytných miestností": 144,
+     "6 obytných miestností": 412,
+     "Nezistené": 3125,
+     "4 obytné miestnosti": 3831,
+     "1 obytná miestnosť": 4022
+    },
+    "Vajnory": {
+     "Spolu": 2897,
+     "4 obytné miestnosti": 635,
+     "Nezistené": 24,
+     "3 obytné miestnosti": 934,
+     "6 obytných miestností": 76,
+     "8 obytných miestností": 3,
+     "9 obytných miestností a viac": 1,
+     "7 obytných miestností": 11,
+     "5 obytných miestností": 286,
+     "2 obytné miestnosti": 371,
+     "1 obytná miestnosť": 556
+    },
+    "Vrakuňa": {
+     "Spolu": 9427,
+     "4 obytné miestnosti": 1909,
+     "1 obytná miestnosť": 1893,
+     "5 obytných miestností": 394,
+     "7 obytných miestností": 42,
+     "3 obytné miestnosti": 3432,
+     "6 obytných miestností": 124,
+     "Nezistené": 255,
+     "8 obytných miestností": 10,
+     "9 obytných miestností a viac": 10,
+     "2 obytné miestnosti": 1358
+    },
+    "Záhorská Bystrica": {
+     "Spolu": 3148,
+     "5 obytných miestností": 483,
+     "9 obytných miestností a viac": 23,
+     "1 obytná miestnosť": 164,
+     "7 obytných miestností": 51,
+     "2 obytné miestnosti": 480,
+     "4 obytné miestnosti": 759,
+     "3 obytné miestnosti": 891,
+     "6 obytných miestností": 191,
+     "Nezistené": 76,
+     "8 obytných miestností": 30
+    },
+    "Čunovo": {
+     "Spolu": 587,
+     "4 obytné miestnosti": 184,
+     "6 obytných miestností": 64,
+     "Nezistené": 35,
+     "9 obytných miestností a viac": 2,
+     "5 obytných miestností": 173,
+     "8 obytných miestností": 8,
+     "1 obytná miestnosť": 1,
+     "3 obytné miestnosti": 88,
+     "7 obytných miestností": 18,
+     "2 obytné miestnosti": 14
+    }
+   },
+   "nazov": "Byty podľa počtu obytných miestností"
+  },
+  "byty_plocha": {
+   "kocka": "om7820rr",
+   "stlpec": "e_sqmetrs",
+   "kategorie": [
+    "<60 m2 - 80 m2)",
+    "<80 m2 - 100 m2)",
+    "<50 m2 - 60 m2)",
+    "<40 m2 - 50 m2)",
+    "<30 m2 - 40 m2)",
+    "<150 m2 a viac",
+    "menej ako 30 m2)",
+    "<100 m2 - 120 m2)",
+    "nezistená",
+    "120 m2 - 150 m2)"
+   ],
+   "mesto": {
+    "Spolu": 248199,
+    "<60 m2 - 80 m2)": 91777,
+    "<80 m2 - 100 m2)": 33343,
+    "<50 m2 - 60 m2)": 29147,
+    "<40 m2 - 50 m2)": 22658,
+    "<30 m2 - 40 m2)": 21248,
+    "<150 m2 a viac": 12119,
+    "menej ako 30 m2)": 10262,
+    "<100 m2 - 120 m2)": 9886,
+    "nezistená": 9682,
+    "120 m2 - 150 m2)": 8077
+   },
+   "mestske_casti": {
+    "Devín": {
+     "Spolu": 1110,
+     "<50 m2 - 60 m2)": 65,
+     "<30 m2 - 40 m2)": 52,
+     "<40 m2 - 50 m2)": 60,
+     "<100 m2 - 120 m2)": 142,
+     "<150 m2 a viac": 272,
+     "120 m2 - 150 m2)": 92,
+     "<80 m2 - 100 m2)": 199,
+     "menej ako 30 m2)": 91,
+     "nezistená": 17,
+     "<60 m2 - 80 m2)": 120
+    },
+    "Devínska Nová Ves": {
+     "Spolu": 7677,
+     "<40 m2 - 50 m2)": 680,
+     "<30 m2 - 40 m2)": 642,
+     "<80 m2 - 100 m2)": 1040,
+     "<100 m2 - 120 m2)": 249,
+     "nezistená": 102,
+     "<50 m2 - 60 m2)": 361,
+     "<150 m2 a viac": 631,
+     "menej ako 30 m2)": 293,
+     "<60 m2 - 80 m2)": 3418,
+     "120 m2 - 150 m2)": 261
+    },
+    "Dúbravka": {
+     "Spolu": 18326,
+     "<150 m2 a viac": 344,
+     "<40 m2 - 50 m2)": 1320,
+     "<50 m2 - 60 m2)": 2736,
+     "menej ako 30 m2)": 789,
+     "<100 m2 - 120 m2)": 366,
+     "<60 m2 - 80 m2)": 8125,
+     "<80 m2 - 100 m2)": 1258,
+     "120 m2 - 150 m2)": 285,
+     "nezistená": 407,
+     "<30 m2 - 40 m2)": 2696
+    },
+    "Jarovce": {
+     "Spolu": 1023,
+     "<80 m2 - 100 m2)": 146,
+     "<60 m2 - 80 m2)": 82,
+     "<30 m2 - 40 m2)": 18,
+     "<150 m2 a viac": 499,
+     "120 m2 - 150 m2)": 129,
+     "<50 m2 - 60 m2)": 25,
+     "<40 m2 - 50 m2)": 3,
+     "nezistená": 12,
+     "menej ako 30 m2)": 0,
+     "<100 m2 - 120 m2)": 109
+    },
+    "Karlova Ves": {
+     "Spolu": 17565,
+     "<150 m2 a viac": 679,
+     "menej ako 30 m2)": 254,
+     "<50 m2 - 60 m2)": 1378,
+     "120 m2 - 150 m2)": 611,
+     "<40 m2 - 50 m2)": 1444,
+     "<30 m2 - 40 m2)": 1557,
+     "<80 m2 - 100 m2)": 2926,
+     "<60 m2 - 80 m2)": 7902,
+     "nezistená": 187,
+     "<100 m2 - 120 m2)": 627
+    },
+    "Lamač": {
+     "Spolu": 3911,
+     "<80 m2 - 100 m2)": 375,
+     "<60 m2 - 80 m2)": 1487,
+     "<50 m2 - 60 m2)": 388,
+     "120 m2 - 150 m2)": 173,
+     "menej ako 30 m2)": 5,
+     "<150 m2 a viac": 315,
+     "<30 m2 - 40 m2)": 205,
+     "<40 m2 - 50 m2)": 727,
+     "nezistená": 89,
+     "<100 m2 - 120 m2)": 147
+    },
+    "Nové Mesto": {
+     "Spolu": 27325,
+     "<100 m2 - 120 m2)": 1208,
+     "<80 m2 - 100 m2)": 3110,
+     "120 m2 - 150 m2)": 988,
+     "<60 m2 - 80 m2)": 7164,
+     "<150 m2 a viac": 1565,
+     "<50 m2 - 60 m2)": 4200,
+     "<40 m2 - 50 m2)": 2880,
+     "nezistená": 3343,
+     "menej ako 30 m2)": 1264,
+     "<30 m2 - 40 m2)": 1603
+    },
+    "Petržalka": {
+     "Spolu": 52379,
+     "menej ako 30 m2)": 3431,
+     "<30 m2 - 40 m2)": 5356,
+     "<40 m2 - 50 m2)": 3869,
+     "<50 m2 - 60 m2)": 4036,
+     "<60 m2 - 80 m2)": 26661,
+     "<150 m2 a viac": 185,
+     "nezistená": 719,
+     "<80 m2 - 100 m2)": 7561,
+     "<100 m2 - 120 m2)": 383,
+     "120 m2 - 150 m2)": 178
+    },
+    "Podunajské Biskupice": {
+     "Spolu": 11459,
+     "nezistená": 244,
+     "120 m2 - 150 m2)": 500,
+     "<80 m2 - 100 m2)": 1308,
+     "<60 m2 - 80 m2)": 4300,
+     "<50 m2 - 60 m2)": 1044,
+     "<150 m2 a viac": 625,
+     "<40 m2 - 50 m2)": 1037,
+     "<30 m2 - 40 m2)": 1651,
+     "menej ako 30 m2)": 274,
+     "<100 m2 - 120 m2)": 476
+    },
+    "Rača": {
+     "Spolu": 11543,
+     "nezistená": 234,
+     "120 m2 - 150 m2)": 405,
+     "<150 m2 a viac": 1023,
+     "<50 m2 - 60 m2)": 1832,
+     "<30 m2 - 40 m2)": 916,
+     "menej ako 30 m2)": 450,
+     "<60 m2 - 80 m2)": 3746,
+     "<80 m2 - 100 m2)": 1372,
+     "<40 m2 - 50 m2)": 1083,
+     "<100 m2 - 120 m2)": 482
+    },
+    "Rusovce": {
+     "Spolu": 1693,
+     "<80 m2 - 100 m2)": 349,
+     "<150 m2 a viac": 548,
+     "<40 m2 - 50 m2)": 40,
+     "<100 m2 - 120 m2)": 170,
+     "<30 m2 - 40 m2)": 17,
+     "<50 m2 - 60 m2)": 79,
+     "120 m2 - 150 m2)": 239,
+     "nezistená": 75,
+     "<60 m2 - 80 m2)": 167,
+     "menej ako 30 m2)": 9
+    },
+    "Ružinov": {
+     "Spolu": 49881,
+     "<80 m2 - 100 m2)": 6209,
+     "<60 m2 - 80 m2)": 17825,
+     "<50 m2 - 60 m2)": 8257,
+     "<30 m2 - 40 m2)": 3880,
+     "<100 m2 - 120 m2)": 1573,
+     "menej ako 30 m2)": 1844,
+     "<40 m2 - 50 m2)": 6171,
+     "nezistená": 1980,
+     "<150 m2 a viac": 1040,
+     "120 m2 - 150 m2)": 1102
+    },
+    "Staré Mesto": {
+     "Spolu": 28248,
+     "<40 m2 - 50 m2)": 2162,
+     "nezistená": 1664,
+     "<30 m2 - 40 m2)": 1428,
+     "<80 m2 - 100 m2)": 5406,
+     "<60 m2 - 80 m2)": 6070,
+     "menej ako 30 m2)": 998,
+     "<150 m2 a viac": 2269,
+     "120 m2 - 150 m2)": 2021,
+     "<100 m2 - 120 m2)": 2944,
+     "<50 m2 - 60 m2)": 3286
+    },
+    "Vajnory": {
+     "Spolu": 2897,
+     "<50 m2 - 60 m2)": 161,
+     "<60 m2 - 80 m2)": 418,
+     "menej ako 30 m2)": 459,
+     "<100 m2 - 120 m2)": 331,
+     "<40 m2 - 50 m2)": 115,
+     "120 m2 - 150 m2)": 359,
+     "nezistená": 26,
+     "<80 m2 - 100 m2)": 390,
+     "<150 m2 a viac": 514,
+     "<30 m2 - 40 m2)": 124
+    },
+    "Vrakuňa": {
+     "Spolu": 9427,
+     "nezistená": 333,
+     "<40 m2 - 50 m2)": 952,
+     "<30 m2 - 40 m2)": 1040,
+     "<50 m2 - 60 m2)": 1017,
+     "120 m2 - 150 m2)": 265,
+     "<60 m2 - 80 m2)": 3842,
+     "<80 m2 - 100 m2)": 1096,
+     "<100 m2 - 120 m2)": 297,
+     "menej ako 30 m2)": 62,
+     "<150 m2 a viac": 523
+    },
+    "Záhorská Bystrica": {
+     "Spolu": 3148,
+     "<40 m2 - 50 m2)": 111,
+     "<60 m2 - 80 m2)": 423,
+     "<150 m2 a viac": 863,
+     "<100 m2 - 120 m2)": 289,
+     "nezistená": 216,
+     "<30 m2 - 40 m2)": 63,
+     "120 m2 - 150 m2)": 350,
+     "<80 m2 - 100 m2)": 519,
+     "menej ako 30 m2)": 37,
+     "<50 m2 - 60 m2)": 277
+    },
+    "Čunovo": {
+     "Spolu": 587,
+     "<60 m2 - 80 m2)": 27,
+     "menej ako 30 m2)": 2,
+     "nezistená": 34,
+     "120 m2 - 150 m2)": 119,
+     "<100 m2 - 120 m2)": 93,
+     "<30 m2 - 40 m2)": 0,
+     "<80 m2 - 100 m2)": 79,
+     "<150 m2 a viac": 224,
+     "<40 m2 - 50 m2)": 4,
+     "<50 m2 - 60 m2)": 5
+    }
+   },
+   "nazov": "Byty podľa podlahovej plochy"
+  }
+ },
+ "aktualizovane": "2026-10-15T14:35:05+00:00"
+}
