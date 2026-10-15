@@ -1,0 +1,228 @@
+{
+ "zdroj": {
+  "nazov": "OpenStreetMap",
+  "licencia": "ODbL – © prispievatelia OpenStreetMap",
+  "url": "https://www.openstreetmap.org/copyright",
+  "stav_osm": "2026-10-15T04:28:06Z"
+ },
+ "kategorie": {
+  "cyklocesticka": "Cyklocestičky",
+  "spolocna": "Spoločné chodníky pre chodcov a cyklistov",
+  "cyklopruh": "Cyklopruhy a pásy na ceste"
+ },
+ "mesto": {
+  "km": {
+   "cyklocesticka": 149.6,
+   "spolocna": 33.9,
+   "cyklopruh": 36.5
+  },
+  "km_spolu": 220.0
+ },
+ "mestske_casti": [
+  {
+   "kod_obce": "529460",
+   "nazov": "Petržalka",
+   "km": {
+    "cyklocesticka": 36.8,
+    "spolocna": 10.9,
+    "cyklopruh": 2.3
+   },
+   "km_spolu": 50.0,
+   "km_na_km2": 1.75,
+   "m_na_obyvatela": 0.45
+  },
+  {
+   "kod_obce": "529320",
+   "nazov": "Ružinov",
+   "km": {
+    "cyklocesticka": 20.5,
+    "spolocna": 7.5,
+    "cyklopruh": 4.1
+   },
+   "km_spolu": 32.2,
+   "km_na_km2": 0.81,
+   "m_na_obyvatela": 0.38
+  },
+  {
+   "kod_obce": "529346",
+   "nazov": "Nové Mesto",
+   "km": {
+    "cyklocesticka": 13.8,
+    "spolocna": 2.4,
+    "cyklopruh": 5.1
+   },
+   "km_spolu": 21.3,
+   "km_na_km2": 0.57,
+   "m_na_obyvatela": 0.46
+  },
+  {
+   "kod_obce": "529494",
+   "nazov": "Rusovce",
+   "km": {
+    "cyklocesticka": 12.0,
+    "spolocna": 5.1,
+    "cyklopruh": 0
+   },
+   "km_spolu": 17.1,
+   "km_na_km2": 0.67,
+   "m_na_obyvatela": 3.8
+  },
+  {
+   "kod_obce": "528595",
+   "nazov": "Staré Mesto",
+   "km": {
+    "cyklocesticka": 7.9,
+    "spolocna": 1.2,
+    "cyklopruh": 7.6
+   },
+   "km_spolu": 16.7,
+   "km_na_km2": 1.74,
+   "m_na_obyvatela": 0.35
+  },
+  {
+   "kod_obce": "529371",
+   "nazov": "Devínska Nová Ves",
+   "km": {
+    "cyklocesticka": 12.8,
+    "spolocna": 0.6,
+    "cyklopruh": 0
+   },
+   "km_spolu": 13.4,
+   "km_na_km2": 0.55,
+   "m_na_obyvatela": 0.78
+  },
+  {
+   "kod_obce": "529311",
+   "nazov": "Podunajské Biskupice",
+   "km": {
+    "cyklocesticka": 11.0,
+    "spolocna": 0,
+    "cyklopruh": 1.9
+   },
+   "km_spolu": 13.0,
+   "km_na_km2": 0.31,
+   "m_na_obyvatela": 0.56
+  },
+  {
+   "kod_obce": "529435",
+   "nazov": "Čunovo",
+   "km": {
+    "cyklocesticka": 8.5,
+    "spolocna": 1.9,
+    "cyklopruh": 0.3
+   },
+   "km_spolu": 10.7,
+   "km_na_km2": 0.57,
+   "m_na_obyvatela": 5.83
+  },
+  {
+   "kod_obce": "529401",
+   "nazov": "Devín",
+   "km": {
+    "cyklocesticka": 4.0,
+    "spolocna": 0,
+    "cyklopruh": 4.0
+   },
+   "km_spolu": 8.1,
+   "km_na_km2": 0.58,
+   "m_na_obyvatela": 3.72
+  },
+  {
+   "kod_obce": "529397",
+   "nazov": "Karlova Ves",
+   "km": {
+    "cyklocesticka": 5.0,
+    "spolocna": 0.6,
+    "cyklopruh": 2.0
+   },
+   "km_spolu": 7.7,
+   "km_na_km2": 0.7,
+   "m_na_obyvatela": 0.22
+  },
+  {
+   "kod_obce": "529338",
+   "nazov": "Vrakuňa",
+   "km": {
+    "cyklocesticka": 6.4,
+    "spolocna": 0,
+    "cyklopruh": 0.9
+   },
+   "km_spolu": 7.2,
+   "km_na_km2": 0.7,
+   "m_na_obyvatela": 0.36
+  },
+  {
+   "kod_obce": "529443",
+   "nazov": "Jarovce",
+   "km": {
+    "cyklocesticka": 6.9,
+    "spolocna": 0,
+    "cyklopruh": 0
+   },
+   "km_spolu": 6.9,
+   "km_na_km2": 0.32,
+   "m_na_obyvatela": 2.12
+  },
+  {
+   "kod_obce": "529354",
+   "nazov": "Rača",
+   "km": {
+    "cyklocesticka": 1.9,
+    "spolocna": 1.8,
+    "cyklopruh": 2.1
+   },
+   "km_spolu": 5.7,
+   "km_na_km2": 0.24,
+   "m_na_obyvatela": 0.22
+  },
+  {
+   "kod_obce": "529362",
+   "nazov": "Vajnory",
+   "km": {
+    "cyklocesticka": 1.1,
+    "spolocna": 0.0,
+    "cyklopruh": 2.7
+   },
+   "km_spolu": 3.8,
+   "km_na_km2": 0.28,
+   "m_na_obyvatela": 0.63
+  },
+  {
+   "kod_obce": "529389",
+   "nazov": "Dúbravka",
+   "km": {
+    "cyklocesticka": 0.2,
+    "spolocna": 0.9,
+    "cyklopruh": 1.8
+   },
+   "km_spolu": 2.9,
+   "km_na_km2": 0.34,
+   "m_na_obyvatela": 0.08
+  },
+  {
+   "kod_obce": "529419",
+   "nazov": "Lamač",
+   "km": {
+    "cyklocesticka": 0.5,
+    "spolocna": 0.2,
+    "cyklopruh": 1.7
+   },
+   "km_spolu": 2.4,
+   "km_na_km2": 0.37,
+   "m_na_obyvatela": 0.31
+  },
+  {
+   "kod_obce": "529427",
+   "nazov": "Záhorská Bystrica",
+   "km": {
+    "cyklocesticka": 0.3,
+    "spolocna": 0.8,
+    "cyklopruh": 0
+   },
+   "km_spolu": 1.1,
+   "km_na_km2": 0.03,
+   "m_na_obyvatela": 0.13
+  }
+ ],
+ "aktualizovane": "2026-10-15T04:29:14+00:00"
+}
