@@ -12,6 +12,7 @@ on:
       - "scripts/zber_data_bratislava.py"
       - "scripts/zber_doprava.py"
       - "scripts/zber_scitace.py"
+      - "scripts/zber_rajonizacia.py"
       - ".github/workflows/zber-dat.yml"
 
 permissions:
@@ -54,12 +55,16 @@ jobs:
         if: success() || failure()
         run: python scripts/zber_scitace.py
 
+      - name: Spádové obvody škôl (data.bratislava.sk)
+        if: success() || failure()
+        run: python scripts/zber_rajonizacia.py
+
       - name: Uložiť zmeny v dátach
         if: success() || failure()
         run: |
           git config user.name "mestovcislach-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/
+          git add data/ public/data/rajonizacia-bratislava.json
           if git diff --cached --quiet; then
             echo "Žiadne nové dáta."
           else
