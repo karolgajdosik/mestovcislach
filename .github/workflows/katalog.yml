@@ -13,6 +13,8 @@ on:
       - "scripts/katalog_pravidla.py"
       - "scripts/diakritika.py"
       - "scripts/zber_vrstvy.py"
+      - "scripts/zber_faktury.py"
+      - "scripts/zber_bezpecnost.py"
       - ".github/workflows/katalog.yml"
 
 permissions:
@@ -46,6 +48,14 @@ jobs:
       - name: Mapové vrstvy (bezbariérovosť, fontány, športoviská, pomoc, stromy)
         if: success() || failure()
         run: python scripts/zber_vrstvy.py
+
+      - name: Faktúry, objednávky a zmluvy (magistrát, OLO, Marianum, MIB)
+        if: success() || failure()
+        run: python scripts/zber_faktury.py
+
+      - name: Bezpečnosť a podnety občanov
+        if: success() || failure()
+        run: python scripts/zber_bezpecnost.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()
