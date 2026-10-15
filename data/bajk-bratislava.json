@@ -1,0 +1,630 @@
+{
+ "zdroj": {
+  "id": "08643896d1b04f69a084f85c07677507",
+  "nazov": "Slovnaft BAjk - lokalizácia výpožičných staníc zdieľaných bicyklov",
+  "licencia": "CC BY 4.0",
+  "url": "https://data.bratislava.sk/datasets/08643896d1b04f69a084f85c07677507",
+  "upravene": "2026-05-07"
+ },
+ "stanice": [
+  {
+   "nazov": "29. Augusta",
+   "lat": 48.14679,
+   "lon": 17.1222,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Antolská",
+   "lat": 48.09925,
+   "lon": 17.11485,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Avion",
+   "lat": 48.16668,
+   "lon": 17.17982,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "BC Einsteinova",
+   "lat": 48.13221,
+   "lon": 17.11582,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Bajkalská",
+   "lat": 48.15397,
+   "lon": 17.14735,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Bajzova / Prešovská",
+   "lat": 48.15849,
+   "lon": 17.13972,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Barónka",
+   "lat": 48.20842,
+   "lon": 17.15031,
+   "kod_obce": "529354"
+  },
+  {
+   "nazov": "Biely kríž",
+   "lat": 48.18232,
+   "lon": 17.12961,
+   "kod_obce": "529346"
+  },
+  {
+   "nazov": "Blumentál / Americké nám.",
+   "lat": 48.15136,
+   "lon": 17.1189,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Borská",
+   "lat": 48.16214,
+   "lon": 17.04912,
+   "kod_obce": "529397"
+  },
+  {
+   "nazov": "Botanická",
+   "lat": 48.14807,
+   "lon": 17.06601,
+   "kod_obce": "529397"
+  },
+  {
+   "nazov": "Bratská",
+   "lat": 48.11081,
+   "lon": 17.1002,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Budatínska / Šintavská",
+   "lat": 48.10683,
+   "lon": 17.09852,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Buèinová - Miestny úrad Vrakuòa",
+   "lat": 48.14446,
+   "lon": 17.2069,
+   "kod_obce": "529338"
+  },
+  {
+   "nazov": "Béžová",
+   "lat": 48.08933,
+   "lon": 17.12661,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "DXC Technology",
+   "lat": 48.16549,
+   "lon": 17.17702,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Datelinová",
+   "lat": 48.15241,
+   "lon": 17.16034,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Detvianska",
+   "lat": 48.21063,
+   "lon": 17.15679,
+   "kod_obce": "529354"
+  },
+  {
+   "nazov": "Dolnozemská",
+   "lat": 48.11614,
+   "lon": 17.13229,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Dr. Vladimíra Clementisa",
+   "lat": 48.16116,
+   "lon": 17.16527,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Dudvážska",
+   "lat": 48.13788,
+   "lon": 17.21348,
+   "kod_obce": "529338"
+  },
+  {
+   "nazov": "Dulovo námestie",
+   "lat": 48.14996,
+   "lon": 17.13396,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Dunajská",
+   "lat": 48.14551,
+   "lon": 17.11854,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Ekonomická univerzita",
+   "lat": 48.12617,
+   "lon": 17.13137,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "FTVŠ - Nábr. Arm. Gen. Ludvíka Svobodu",
+   "lat": 48.14473,
+   "lon": 17.07877,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Furdekova / Šustekova",
+   "lat": 48.12625,
+   "lon": 17.12361,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "GBC3",
+   "lat": 48.16395,
+   "lon": 17.17668,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "GBC4",
+   "lat": 48.16355,
+   "lon": 17.17815,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Gettingova / Mamateyova",
+   "lat": 48.12416,
+   "lon": 17.12942,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Hlavná stanica",
+   "lat": 48.15788,
+   "lon": 17.10583,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Hodžovo námestie",
+   "lat": 48.14865,
+   "lon": 17.1081,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Holíèska / Šintavská",
+   "lat": 48.10721,
+   "lon": 17.10339,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Hronská",
+   "lat": 48.13565,
+   "lon": 17.20932,
+   "kod_obce": "529311"
+  },
+  {
+   "nazov": "Hurbanovo námestie",
+   "lat": 48.14612,
+   "lon": 17.1074,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Hállova",
+   "lat": 48.12244,
+   "lon": 17.10689,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "IKEA",
+   "lat": 48.16807,
+   "lon": 17.18229,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Jantárová cesta",
+   "lat": 48.127,
+   "lon": 17.11597,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Kamenné námestie",
+   "lat": 48.14461,
+   "lon": 17.11323,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Kapucínska - Župné námestie",
+   "lat": 48.14567,
+   "lon": 17.10596,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Kollárovo námestie",
+   "lat": 48.14935,
+   "lon": 17.1135,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Korytnická Podunajské Biskupice",
+   "lat": 48.13162,
+   "lon": 17.20862,
+   "kod_obce": "529311"
+  },
+  {
+   "nazov": "Križovatka Trnavská / Bajkalská",
+   "lat": 48.16197,
+   "lon": 17.14174,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Lachova / Furdekova - zástavka MHD",
+   "lat": 48.12429,
+   "lon": 17.12006,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Landererova/Dostojevského rad",
+   "lat": 48.14333,
+   "lon": 17.12245,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Legionárska / Krížna",
+   "lat": 48.15571,
+   "lon": 17.12442,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Lietavská",
+   "lat": 48.10042,
+   "lon": 17.10572,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Mierová - miestny úrad Ružinov",
+   "lat": 48.14925,
+   "lon": 17.16404,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Miletièova / Trenèianska",
+   "lat": 48.15113,
+   "lon": 17.13896,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Miletièova / Záhradnícka",
+   "lat": 48.15443,
+   "lon": 17.13446,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Mlynské nivy - východ",
+   "lat": 48.14455,
+   "lon": 17.14223,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Modrý most",
+   "lat": 48.14418,
+   "lon": 17.1996,
+   "kod_obce": "529338"
+  },
+  {
+   "nazov": "Molecova",
+   "lat": 48.15013,
+   "lon": 17.06341,
+   "kod_obce": "529397"
+  },
+  {
+   "nazov": "Most SNP",
+   "lat": 48.13993,
+   "lon": 17.10446,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Mýtna - Slovenský rozhlas",
+   "lat": 48.15322,
+   "lon": 17.11413,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Nobelovo námestie",
+   "lat": 48.12973,
+   "lon": 17.09965,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Námestie SNP",
+   "lat": 48.1456,
+   "lon": 17.11061,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Námestie slobody",
+   "lat": 48.15145,
+   "lon": 17.11185,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Osuského / Hrobákova",
+   "lat": 48.11892,
+   "lon": 17.11543,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Ovsište / námestie",
+   "lat": 48.11995,
+   "lon": 17.1306,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Pekná cesta",
+   "lat": 48.19536,
+   "lon": 17.14332,
+   "kod_obce": "529354"
+  },
+  {
+   "nazov": "Planckova",
+   "lat": 48.12983,
+   "lon": 17.09672,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Pribinova",
+   "lat": 48.14121,
+   "lon": 17.1188,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Prievozská / Bajkalská",
+   "lat": 48.14872,
+   "lon": 17.1473,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Prievozská / Miletièova",
+   "lat": 48.14748,
+   "lon": 17.14158,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Promenáda PKO",
+   "lat": 48.14228,
+   "lon": 17.08475,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Promenáda Riverpark",
+   "lat": 48.14052,
+   "lon": 17.09325,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Prístavná Nivy",
+   "lat": 48.14227,
+   "lon": 17.13451,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Raèianske Mýto",
+   "lat": 48.15799,
+   "lon": 17.11937,
+   "kod_obce": "529346"
+  },
+  {
+   "nazov": "Romanova / Kutlíkova",
+   "lat": 48.11089,
+   "lon": 17.11235,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Romanova ulica",
+   "lat": 48.11749,
+   "lon": 17.11001,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Rustaveliho",
+   "lat": 48.21404,
+   "lon": 17.15733,
+   "kod_obce": "529354"
+  },
+  {
+   "nazov": "Ružinovská - Štrkovec",
+   "lat": 48.1567,
+   "lon": 17.14996,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Ružinovská koniec - zast. Astronomická",
+   "lat": 48.15873,
+   "lon": 17.17654,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Ružinovská/Herlianska",
+   "lat": 48.15733,
+   "lon": 17.15634,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Sabinovská / Drieòová",
+   "lat": 48.16016,
+   "lon": 17.14933,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Sad Janka Krá¾a",
+   "lat": 48.13358,
+   "lon": 17.10863,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Seberíniho",
+   "lat": 48.15369,
+   "lon": 17.17115,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Slovnaft hlavný vchod",
+   "lat": 48.12854,
+   "lon": 17.17651,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Starohájska / Dudova",
+   "lat": 48.11652,
+   "lon": 17.12102,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Starohájska / Osuského",
+   "lat": 48.11964,
+   "lon": 17.11769,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Stavbárska",
+   "lat": 48.13951,
+   "lon": 17.20219,
+   "kod_obce": "529311"
+  },
+  {
+   "nazov": "Súmraèná - Astronomická / Tomášikova",
+   "lat": 48.15819,
+   "lon": 17.16823,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Tomášikova",
+   "lat": 48.16441,
+   "lon": 17.15174,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Tomášikova / Trnavská",
+   "lat": 48.16512,
+   "lon": 17.14936,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Toryská",
+   "lat": 48.13641,
+   "lon": 17.2054,
+   "kod_obce": "529338"
+  },
+  {
+   "nazov": "Trenèianska / Priemyselná",
+   "lat": 48.15352,
+   "lon": 17.14433,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Trnavská cesta / Max. Hella",
+   "lat": 48.16491,
+   "lon": 17.1624,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Trnavské mýto",
+   "lat": 48.15778,
+   "lon": 17.12695,
+   "kod_obce": "529346"
+  },
+  {
+   "nazov": "Trojièné námesite",
+   "lat": 48.12555,
+   "lon": 17.21005,
+   "kod_obce": "529311"
+  },
+  {
+   "nazov": "Ursínyho",
+   "lat": 48.16222,
+   "lon": 17.12516,
+   "kod_obce": "529346"
+  },
+  {
+   "nazov": "VIVO! Junácka",
+   "lat": 48.16757,
+   "lon": 17.14084,
+   "kod_obce": "529346"
+  },
+  {
+   "nazov": "Vajnorská / Jarošova",
+   "lat": 48.16569,
+   "lon": 17.13578,
+   "kod_obce": "529346"
+  },
+  {
+   "nazov": "Vajnorská / Tehelná",
+   "lat": 48.16257,
+   "lon": 17.13211,
+   "kod_obce": "529346"
+  },
+  {
+   "nazov": "Viedenská - pod mostom SNP",
+   "lat": 48.13693,
+   "lon": 17.10509,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Zimný Štadión",
+   "lat": 48.16013,
+   "lon": 17.13474,
+   "kod_obce": "529346"
+  },
+  {
+   "nazov": "Zuzany Chalupovej",
+   "lat": 48.09287,
+   "lon": 17.11853,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Záhradnícka - Justièný palác",
+   "lat": 48.15227,
+   "lon": 17.1218,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Záhradnícka / Karadžièova - križovatka",
+   "lat": 48.15382,
+   "lon": 17.12524,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Záhradnícka / Svätoplukova",
+   "lat": 48.15423,
+   "lon": 17.12905,
+   "kod_obce": "529320"
+  },
+  {
+   "nazov": "Šafárikovo námestie",
+   "lat": 48.14186,
+   "lon": 17.11564,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Šancová/Štefanovièova",
+   "lat": 48.1552,
+   "lon": 17.10838,
+   "kod_obce": "528595"
+  },
+  {
+   "nazov": "Ševèenkova",
+   "lat": 48.12024,
+   "lon": 17.1019,
+   "kod_obce": "529460"
+  },
+  {
+   "nazov": "Šintavská / Jantárova cesta",
+   "lat": 48.10662,
+   "lon": 17.10559,
+   "kod_obce": "529460"
+  }
+ ],
+ "aktualizovane": "2026-10-15T04:47:31+00:00"
+}
