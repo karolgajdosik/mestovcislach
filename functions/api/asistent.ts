@@ -54,6 +54,15 @@ const NAZVY_STRANOK: Record<string, string> = {
 };
 const STOP = new Set(['ktore', 'ktora', 'ktory', 'kde', 'kedy', 'ako', 'aky', 'aka', 'ake', 'kolko', 'bratislava', 'bratislave', 'bratislavy', 'mesto', 'meste', 'najblizsia', 'najblizsie', 'otvorena', 'otvorene', 'otvoreny', 'teraz', 'dnes', 'prosim', 'chcem', 'potrebujem', 'mate', 'viete', 'nejaka', 'nejake', 'nejaky', 'este', 'blizko', 'pri', 'okolo', 'ulica', 'ulici', 'ulicu']);
 
+// Orientačné body, ktoré nie sú v dátach webu (približné súradnice)
+const BODY: [RegExp, string, number, number][] = [
+  [/hlavn\w* namest/, 'Hlavné námestie', 48.1435, 17.1088], [/hviezdoslav/, 'Hviezdoslavovo námestie', 48.1414, 17.1077],
+  [/hrad/, 'Bratislavský hrad', 48.1421, 17.1000], [/eurove/, 'Eurovea', 48.1407, 17.1225], [/\bnivy|\bnivach/, 'Nivy', 48.1460, 17.1290],
+  [/aupark/, 'Aupark', 48.1330, 17.1065], [/avion/, 'Avion', 48.1700, 17.2120], [/\bvivo|polus/, 'Vivo! (Polus)', 48.1680, 17.1390],
+  [/\bcentral/, 'Central', 48.1580, 17.1260], [/prezidentsk/, 'Prezidentský palác', 48.1489, 17.1068],
+  [/hlavn\w* stanic/, 'Hlavná stanica', 48.1586, 17.1066], [/namest\w* snp|nam\.? snp/, 'Námestie SNP', 48.1465, 17.1110],
+];
+
 let podklady: Promise<any> | null = null;
 
 function system(datum: string) {
@@ -64,6 +73,7 @@ Pravidlá:
 - Ak odpoveď v podkladoch nie je, povedz to otvorene a odporuč, kde hľadať (napr. bratislava.sk, web mestskej časti, SHMÚ, DPB – imhd.sk pre spoje).
 - Pri otázke, čo je „teraz otvorené“, vymenuj najviac 6 miest označených TERAZ OTVORENÉ (uveď do kedy) a doplň, koľko ďalších je otvorených. Miesta bez hodín neoznačuj ako otvorené.
 - Pri miestach uveď názov, mestskú časť, adresu a otváracie hodiny, ak sú v podkladoch. Dlhé zoznamy skráť na 6–8 položiek.
+- „Najbližšie“ určuj len podľa údaju „vzdušnou čiarou“. Ak ho podklady nemajú, povedz, že vzdialenosť nevieš určiť, a odporuč mapu webu.
 - Pri premávke a zápchach používaj sčítače áut (nábrežie = Vajanského nábrežie); cyklistov a chodcov len ak sa na ne pýtajú.
 - Pri miestach uveď názov, mestskú časť, adresu a otváracie hodiny, ak sú v podkladoch. Upozorni, že údaje o miestach sú z OpenStreetMap a nemusia byť úplné.
 - Pri číslach uveď rok alebo dátum, ku ktorému platia.
@@ -116,24 +126,42 @@ function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean) {
   const slova = q.replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter((w) => w.length >= 4 && !STOP.has(w)
     && !KATEGORIE.some(([r]) => r.test(w)) && !castiKmene.some((k) => w.startsWith(k)) && !/^(potreb|hlada|najst|najd|chce)/.test(w));
   let vysledok: any[] = [];
+  let bod: any = null;
   if (kategoria) {
     vysledok = data.miesta.filter((m: any) => m.k === kategoria && (!cast || m.c === cast));
     // ak otázka obsahuje aj konkrétny názov (napr. ulicu), uprednostni zhodu
     const skore = (m: any) => slova.filter((w) => norm(`${m.n} ${m.a ?? ''}`).includes(w.slice(0, 5))).length;
-    vysledok.sort((a: any, b: any) => skore(b) - skore(a));
-    if (vysledok.length && skore(vysledok[0]) > 0) vysledok = vysledok.filter((m: any) => skore(m) > 0);
+    const blizko = /\b(pri|blizko|blizk|okolo|najbliz|vedla|nedaleko|kusok|smer)/.test(q);
+    // „pri Hlavnom námestí“, „blízko Auparku“: orientačný bod podľa názvu alebo adresy iného miesta → zoradiť podľa vzdialenosti
+    const sk = (t: string) => slova.filter((w) => norm(t).includes(w.slice(0, 5))).length;
+    const kandidati = slova.length ? data.miesta.filter((m: any) => m.k !== kategoria)
+      .map((m: any) => [Math.max(sk(m.n), m.a ? sk(m.a.replace(/\s*\d.*$/, '')) : 0), m]).filter(([x]: any) => x > 0)
+      .sort((a: any, b: any) => b[0] - a[0] || norm(a[1].n).length - norm(b[1].n).length) : [];
+    const najlepsie = kandidati[0]?.[0] ?? 0;
+    const znamy = BODY.find(([r]) => r.test(q));
+    if (blizko && (znamy || najlepsie >= Math.min(2, slova.length))) {
+      bod = znamy ? { n: znamy[1], c: 'orientačný bod', lat: znamy[2], lon: znamy[3] } : kandidati[0][1];
+      const vzd = (m: any) => Math.round(Math.hypot((m.lat - bod.lat) * 111320, (m.lon - bod.lon) * 74300));
+      vysledok = vysledok.length && cast ? vysledok : data.miesta.filter((m: any) => m.k === kategoria);
+      vysledok = vysledok.map((m: any) => ({ ...m, vzd: vzd(m) })).sort((a: any, b: any) => a.vzd - b.vzd);
+    } else {
+      vysledok.sort((a: any, b: any) => skore(b) - skore(a));
+      if (vysledok.length && skore(vysledok[0]) > 0) vysledok = vysledok.filter((m: any) => skore(m) > 0);
+    }
   } else if (slova.length && ajPodlaNazvu) {
     const skore = (m: any) => slova.filter((w) => norm(m.n).includes(w.slice(0, Math.max(4, w.length - 2)))).length;
     vysledok = data.miesta.map((m: any) => [skore(m), m]).filter(([s]: any) => s > 0)
       .sort((a: any, b: any) => b[0] - a[0]).map(([, m]: any) => m).filter((m: any) => !cast || m.c === cast);
   }
+  const sk2 = (t: string) => slova.some((w) => norm(t).includes(w.slice(0, 5)));
   const sOtv = vysledok.map((m) => ({ ...m, otv: m.h ? otvorene(m.h) : null }));
   if (chceOtvorene) sOtv.sort((a, b) => Number(!!b.otv?.otvorene) - Number(!!a.otv?.otvorene));
   const max = 12;
   return {
     pocet_najdenych: sOtv.length, kategoria, mestska_cast: cast,
+    ...(bod ? { zoradene_podla_vzdialenosti_od: `${bod.a && sk2(bod.a) ? bod.a.replace(/\s*\d.*$/, '') : bod.n} (${bod.c})` } : {}),
     miesta: sOtv.slice(0, max).map((m) => [
-      m.n || m.k, m.k, m.c, m.a && `adresa ${m.a}`,
+      m.n || m.k, m.k, m.c, m.a && `adresa ${m.a}`, m.vzd != null && `vzdušnou čiarou ${m.vzd < 1000 ? m.vzd + ' m' : (m.vzd / 1000).toFixed(1).replace('.', ',') + ' km'}`,
       m.h && `hodiny: ${hodinyText(m.h).join('; ')}`,
       m.h && (m.otv ? (m.otv.otvorene ? `TERAZ OTVORENÉ${m.otv.do ? ' do ' + m.otv.do : ''}` : `teraz zatvorené${m.otv.od ? ', otvára o ' + m.otv.od : ''}`) : ''),
       !m.h && m.k !== 'Zastávka MHD' && m.k !== 'Stanica BAjk' ? 'otváracie hodiny neuvedené' : '',
