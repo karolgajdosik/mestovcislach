@@ -20,6 +20,9 @@ from pathlib import Path
 
 import requests
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from spolocne import adresy_mv, hranice, norm_ulica, zapis_ak_zmena  # noqa: E402
+
 KOREN = Path(__file__).resolve().parent.parent
 UA = "mestovcislach.sk (github.com/karolgajdosik/mestovcislach)"
 ZS = "ef5254fb17344932b787dbbf81c094a5"
@@ -111,7 +114,64 @@ def main() -> int:
         print(f"Uložené: {suhrn}; veľkosť {cesta.stat().st_size // 1024} kB")
     else:
         print("Bez zmeny.")
+    try:
+        obvody(adresy, skoly)
+    except Exception as e:  # noqa: BLE001 – mapa obvodov je doplnok, vyhľadávanie funguje aj bez nej
+        print(f"::warning title=Obvody ZŠ na mape::{type(e).__name__}: {e}")
     return 0
+
+
+def obvody(adresy: dict, skoly: list[dict]) -> None:
+    """Približné územia spádových ZŠ: adresné body (register adries MV SR) → Voronoiove bunky v rámci MČ → zlúčené podľa školy."""
+    from shapely.geometry import MultiPoint, Point, mapping
+    from shapely.ops import unary_union, voronoi_diagram
+    from shapely.strtree import STRtree
+
+    body_mv: dict[tuple, tuple] = {}
+    for a in adresy_mv():
+        body_mv.setdefault((a["mc"], norm_ulica(a["ulica"]), a["sup"], a["ori"].lower()), (a["lon"], a["lat"]))
+        body_mv.setdefault((a["mc"], norm_ulica(a["ulica"]), "", a["ori"].lower()), (a["lon"], a["lat"]))
+        body_mv.setdefault((a["mc"], norm_ulica(a["ulica"]), a["sup"], ""), (a["lon"], a["lat"]))
+    po_mc: dict[str, dict[tuple, int]] = defaultdict(dict)
+    najdene = 0
+    for (mc, ulica, sup, ori), (z, _m) in adresy.items():
+        if z is None:
+            continue
+        u = norm_ulica(ulica)
+        bod = body_mv.get((mc, u, sup, ori.lower())) or body_mv.get((mc, u, "", ori.lower())) or body_mv.get((mc, u, sup, ""))
+        if bod:
+            po_mc[mc][(round(bod[0], 6), round(bod[1], 6))] = z
+            najdene += 1
+    print(f"Obvody: {najdene} z {sum(1 for v in adresy.values() if v[0] is not None)} adries so ZŠ má súradnice")
+    features = []
+    for _, nazov_mc, hranica in hranice():
+        body = po_mc.get(nazov_mc, {})
+        skupiny: dict[int, list] = defaultdict(list)
+        if len({*body.values()}) <= 1:
+            if body:
+                skupiny[next(iter(body.values()))].append(hranica)
+        else:
+            vor = voronoi_diagram(MultiPoint([list(b) for b in body]), envelope=hranica.envelope.buffer(0.01))
+            klud = list(body)
+            strom = STRtree([Point(b) for b in klud])
+            for bunka in vor.geoms:
+                orez = bunka.intersection(hranica)
+                if orez.is_empty:
+                    continue
+                idx = strom.query(bunka, predicate="contains")
+                if len(idx):
+                    skupiny[body[klud[int(idx[0])]]].append(orez)
+        for z, casti in skupiny.items():
+            g = unary_union(casti).simplify(0.00008, preserve_topology=True)
+            sk = skoly[z]
+            gj = json.loads(json.dumps(mapping(g)), parse_float=lambda x: round(float(x), 5))
+            features.append({"type": "Feature", "properties": {"zs": z, "nazov": sk["nazov"], "adresa": sk["adresa"], "web": sk["web"], "mc": nazov_mc}, "geometry": gj})
+    if len(features) < 30:
+        raise RuntimeError(f"Málo obvodov ({len(features)})")
+    vystup = {"type": "FeatureCollection", "features": features, "zdroj": "Rajonizácia ZŠ (data.bratislava.sk) + register adries MV SR; hranice sú približné (podľa najbližších adries)"}
+    cesta = KOREN / "public" / "data" / "obvody-zs-bratislava.geojson"
+    if zapis_ak_zmena(cesta, vystup, kompaktne=True):
+        print(f"Obvody uložené: {len(features)} území, {cesta.stat().st_size // 1024} kB")
 
 
 if __name__ == "__main__":

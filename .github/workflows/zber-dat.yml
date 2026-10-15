@@ -13,6 +13,7 @@ on:
       - "scripts/zber_doprava.py"
       - "scripts/zber_scitace.py"
       - "scripts/zber_rajonizacia.py"
+      - "scripts/spolocne.py"
       - ".github/workflows/zber-dat.yml"
 
 permissions:
@@ -64,7 +65,7 @@ jobs:
         run: |
           git config user.name "mestovcislach-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ public/data/rajonizacia-bratislava.json
+          git add data/ public/data/rajonizacia-bratislava.json public/data/obvody-zs-bratislava.geojson
           if git diff --cached --quiet; then
             echo "Žiadne nové dáta."
           else
