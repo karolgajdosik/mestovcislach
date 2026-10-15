@@ -165,7 +165,7 @@ def main() -> int:
             "zmluv": len(zz), "suma": round(sum(z["s"] for z in zz)), "roky": {r: [roky[r], round(sumy[r])] for r in sorted(roky)},
             "fyzicke_osoby": {"zmluv": fyz[0], "suma": round(fyz[1])},
             "najvacsi_partneri": [{"nazov": v[2], "ico": k if k.isdigit() else None, "zmluv": v[0], "suma": round(v[1])} for k, v in top],
-            "najvacsie_zmluvy": [{k: z[k] for k in ("id", "d", "p", "pr", "s")} for z in sorted((z for z in zz if z["p"]), key=lambda z: -z["s"])[:10]],
+            "najvacsie_zmluvy": [{k: z[k] for k in ("id", "d", "p", "ico", "pr", "s")} for z in sorted((z for z in zz if z["p"]), key=lambda z: -z["s"])[:10]],
         }
         prij = Counter()
         for z in dot:
