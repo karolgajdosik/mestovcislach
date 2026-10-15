@@ -1,21 +1,21 @@
 {
  "zdroj": "https://data.bratislava.sk",
  "pocty": {
-  "katalog": 439,
-  "osobitne": 24,
-  "vynechane": 14,
-  "na_webe": 23
+  "katalog": 497,
+  "osobitne": 29,
+  "vynechane": 17,
+  "na_webe": 27
  },
  "datasety": [
   {
-   "id": "661e8890ae104ce1a2344acbc9d82485",
-   "nazov": "Miera objasnenosti trestných činov (v %)",
+   "id": "9105eb881b214090890b07a8e791aec3",
+   "nazov": "Kamery Mestského kamerového systému mestskej polície podľa typu v Bratislave",
    "kategoria": "Bezpečnosť",
-   "upravene": 1771494930000,
-   "riadkov": 240,
+   "upravene": 1790153102000,
+   "riadkov": 9,
    "stav": "katalog",
-   "kde": "/katalog/661e8890ae104ce1a2344acbc9d82485",
-   "stlpcov": 4
+   "kde": "/katalog/9105eb881b214090890b07a8e791aec3",
+   "stlpcov": 5
   },
   {
    "id": "e8ce982f66564e9ba1065516986839f4",
@@ -75,6 +75,16 @@
    "riadkov": 9,
    "stav": "katalog",
    "kde": "/katalog/3c47fb351b85400a8650f840a522c9d0",
+   "stlpcov": 3
+  },
+  {
+   "id": "a29402998e10446abb87d3251c31d4a5",
+   "nazov": "Počet priestupkov a dopravných priestupkov  na 1 mestského policajta v Bratislave",
+   "kategoria": "Bezpečnosť",
+   "upravene": 1790149529000,
+   "riadkov": 9,
+   "stav": "katalog",
+   "kde": "/katalog/a29402998e10446abb87d3251c31d4a5",
    "stlpcov": 3
   },
   {
@@ -138,6 +148,16 @@
    "stlpcov": 8
   },
   {
+   "id": "0871c1140cc647e080d13c98cb8bf6b3",
+   "nazov": "Počet stíhaných a vyšetrovaných mladých podľa vzdelania",
+   "kategoria": "Bezpečnosť",
+   "upravene": 1771494917000,
+   "riadkov": 155,
+   "stav": "katalog",
+   "kde": "/katalog/0871c1140cc647e080d13c98cb8bf6b3",
+   "stlpcov": 6
+  },
+  {
    "id": "d870c8303165442eb1be3157cc91b0e3",
    "nazov": "Počet stíhaných a vyšetrovaných osôb",
    "kategoria": "Bezpečnosť",
@@ -145,6 +165,36 @@
    "riadkov": 15,
    "stav": "katalog",
    "kde": "/katalog/d870c8303165442eb1be3157cc91b0e3",
+   "stlpcov": 3
+  },
+  {
+   "id": "80379c888397485d80a82c1620daf19f",
+   "nazov": "Počet trestných činov a počet stíhaných a vyšetrovaných mladistvých a maloletých osôb",
+   "kategoria": "Bezpečnosť",
+   "upravene": 1771495075000,
+   "riadkov": 15,
+   "stav": "katalog",
+   "kde": "/katalog/80379c888397485d80a82c1620daf19f",
+   "stlpcov": 6
+  },
+  {
+   "id": "83683bcb885d4a178c46eae5c53c8e1a",
+   "nazov": "Počet trestných činov a stíhané a vyšetrované osoby (alkohol, drogy)",
+   "kategoria": "Bezpečnosť",
+   "upravene": 1771495307000,
+   "riadkov": 15,
+   "stav": "katalog",
+   "kde": "/katalog/83683bcb885d4a178c46eae5c53c8e1a",
+   "stlpcov": 6
+  },
+  {
+   "id": "f3f8467478a24f9e8abe5b000a77df6b",
+   "nazov": "Počet trestných činov spáchaných organizovanou formou",
+   "kategoria": "Bezpečnosť",
+   "upravene": 1771494885000,
+   "riadkov": 15,
+   "stav": "katalog",
+   "kde": "/katalog/f3f8467478a24f9e8abe5b000a77df6b",
    "stlpcov": 3
   },
   {
@@ -166,6 +216,16 @@
    "stav": "katalog",
    "kde": "/katalog/ae77d057365946a48748fbe97f261bf8",
    "stlpcov": 5
+  },
+  {
+   "id": "60f68de246e74e6ea07fbc214ce0ffcf",
+   "nazov": "Počet žiadostí o vydanie cestovného pasu",
+   "kategoria": "Bezpečnosť",
+   "upravene": 1771492837000,
+   "riadkov": 85,
+   "stav": "katalog",
+   "kde": "/katalog/60f68de246e74e6ea07fbc214ce0ffcf",
+   "stlpcov": 3
   },
   {
    "id": "68ac7b9f6bb645a184ba0bd4e6470956",
@@ -218,6 +278,16 @@
    "stlpcov": 7
   },
   {
+   "id": "5038e046bb9541698e6ad82b6104d973",
+   "nazov": "Údaje o stíhaných, vyšetrovaných osobách podľa druhu kriminality v BSK",
+   "kategoria": "Bezpečnosť",
+   "upravene": 1771494935000,
+   "riadkov": 1277,
+   "stav": "katalog",
+   "kde": "/katalog/5038e046bb9541698e6ad82b6104d973",
+   "stlpcov": 7
+  },
+  {
    "id": "bd9b2f662f394f19abe0547e8ab82b40",
    "nazov": "Údaje za kriminalitu mladých podľa jednotlivých druhov",
    "kategoria": "Bezpečnosť",
@@ -228,16 +298,6 @@
    "stlpcov": 16
   },
   {
-   "id": "cfeb3a7ae9a64afaa4c44b3ab1b8c1c5",
-   "nazov": "Štatistický prehľad priestupkov na úseku občianskych preukazov",
-   "kategoria": "Bezpečnosť",
-   "upravene": 1771494861000,
-   "riadkov": 25,
-   "stav": "katalog",
-   "kde": "/katalog/cfeb3a7ae9a64afaa4c44b3ab1b8c1c5",
-   "stlpcov": 7
-  },
-  {
    "id": "513a1371d88c4c39ae1b47b1031231a0",
    "nazov": "Štruktúra vozidiel mestskej polície podľa veku vozidla v Bratislave",
    "kategoria": "Bezpečnosť",
@@ -246,6 +306,16 @@
    "stav": "katalog",
    "kde": "/katalog/513a1371d88c4c39ae1b47b1031231a0",
    "stlpcov": 5
+  },
+  {
+   "id": "b75314b4584f4875a3ce47a74bb67112",
+   "nazov": "Demografia Bratislavy",
+   "kategoria": "Demografia",
+   "upravene": 1771495069000,
+   "riadkov": 510,
+   "stav": "katalog",
+   "kde": "/katalog/b75314b4584f4875a3ce47a74bb67112",
+   "stlpcov": 13
   },
   {
    "id": "ffe51d79f7854658bcdb33cc9ae69141",
@@ -328,6 +398,16 @@
    "stlpcov": 3
   },
   {
+   "id": "eb87270686ca415dbbce239b51e33cfb",
+   "nazov": "Index sociálnej a ekonomickej podpory v Bratislave v rokoch 2022  – 2050",
+   "kategoria": "Demografia",
+   "upravene": 1778046663000,
+   "riadkov": 58,
+   "stav": "katalog",
+   "kde": "/katalog/eb87270686ca415dbbce239b51e33cfb",
+   "stlpcov": 3
+  },
+  {
    "id": "66a8df129792447dbaf576a28ccc029a",
    "nazov": "Mapovanie okolia jazera Rohlík",
    "kategoria": "Demografia",
@@ -336,16 +416,6 @@
    "stav": "katalog",
    "kde": "/katalog/66a8df129792447dbaf576a28ccc029a",
    "stlpcov": 10
-  },
-  {
-   "id": "18b26b257e0d41169fab6f6ac7d1928c",
-   "nazov": "Mapovanie parku Mudrochova",
-   "kategoria": "Demografia",
-   "upravene": 1778141282000,
-   "riadkov": 743,
-   "stav": "katalog",
-   "kde": "/katalog/18b26b257e0d41169fab6f6ac7d1928c",
-   "stlpcov": 12
   },
   {
    "id": "e11803110ec446e2a85178536f437328",
@@ -508,6 +578,16 @@
    "stlpcov": 3
   },
   {
+   "id": "9bf60619525e472caa5b15c794e3ab78",
+   "nazov": "Odchádzka do zamestnania a škôl v mestských častiach Bratislavy v rokoch 2011, 2021 a 2035",
+   "kategoria": "Demografia",
+   "upravene": 1778143471000,
+   "riadkov": 51,
+   "stav": "katalog",
+   "kde": "/katalog/9bf60619525e472caa5b15c794e3ab78",
+   "stlpcov": 4
+  },
+  {
    "id": "aec7071270454f5dbf64804040454e62",
    "nazov": "Okresy s najväčším počtom prisťahovaných do Bratislavy (2000 – 2004)",
    "kategoria": "Demografia",
@@ -617,6 +697,46 @@
    "dovod": "Záznamy o jednotlivých osobách pozitívnych na Covid-19 (pohlavie, mestská časť, dátum) – citlivé zdravotné údaje o jednotlivcoch; nezverejňujeme ani v anonymizovanej podobe."
   },
   {
+   "id": "05d7fd0e6487438fa1843d6cfa1d3fc5",
+   "nazov": "Počet bytov podľa celkovej plochy bytu v základných sídelných jednotkách",
+   "kategoria": "Demografia",
+   "upravene": 1771494769000,
+   "riadkov": 221,
+   "stav": "katalog",
+   "kde": "/katalog/05d7fd0e6487438fa1843d6cfa1d3fc5",
+   "stlpcov": 13
+  },
+  {
+   "id": "167a939e420a4920bcc35f7c45b4e9d7",
+   "nazov": "Počet bytov podľa obytnej plochy bytu v základných sídelných jednotkách",
+   "kategoria": "Demografia",
+   "upravene": 1771494763000,
+   "riadkov": 221,
+   "stav": "katalog",
+   "kde": "/katalog/167a939e420a4920bcc35f7c45b4e9d7",
+   "stlpcov": 13
+  },
+  {
+   "id": "4a8f9d10e4b04e77ac3a316e97d4ebe1",
+   "nazov": "Počet bytov podľa obývanosti v základných sídelných jednotkách",
+   "kategoria": "Demografia",
+   "upravene": 1771494750000,
+   "riadkov": 210,
+   "stav": "katalog",
+   "kde": "/katalog/4a8f9d10e4b04e77ac3a316e97d4ebe1",
+   "stlpcov": 12
+  },
+  {
+   "id": "899203befc3f4515a8a10703a71a7c11",
+   "nazov": "Počet bytov podľa počtu obytných miestností v základných sídelných jednotkách",
+   "kategoria": "Demografia",
+   "upravene": 1771494757000,
+   "riadkov": 221,
+   "stav": "katalog",
+   "kde": "/katalog/899203befc3f4515a8a10703a71a7c11",
+   "stlpcov": 15
+  },
+  {
    "id": "c1fa9b3d1aba464a85cf4eaa04bd3e9e",
    "nazov": "Počet obyvateľov Bratislavy vo vekových skupinách podľa vzdelávania do roku 2050",
    "kategoria": "Demografia",
@@ -627,34 +747,34 @@
    "stlpcov": 3
   },
   {
-   "id": "44975438b830498396bdfd3658574eab",
-   "nazov": "Počet obyvateľov podľa miesta trvalého pobytu alebo obvyklého bydliska v ZSJ",
+   "id": "f140143421034873bf9054d4f305252e",
+   "nazov": "Počet obyvateľov podľa dôvodu prisťahovania do súčasného miesta pobytu v ZSJ",
    "kategoria": "Demografia",
-   "upravene": 1771495163000,
+   "upravene": 1771495007000,
    "riadkov": 213,
    "stav": "katalog",
-   "kde": "/katalog/44975438b830498396bdfd3658574eab",
+   "kde": "/katalog/f140143421034873bf9054d4f305252e",
+   "stlpcov": 16
+  },
+  {
+   "id": "6b756025d4e844f1a23089f066c446b1",
+   "nazov": "Počet obyvateľov podľa materinského jazyka v základných sídelných jednotkách",
+   "kategoria": "Demografia",
+   "upravene": 1771494566000,
+   "riadkov": 213,
+   "stav": "katalog",
+   "kde": "/katalog/6b756025d4e844f1a23089f066c446b1",
+   "stlpcov": 22
+  },
+  {
+   "id": "b18553d437144c50b93189bcae777f59",
+   "nazov": "Počet obyvateľov podľa najvyššieho dosiahnutého vzdelania v ZSJ",
+   "kategoria": "Demografia",
+   "upravene": 1771495013000,
+   "riadkov": 213,
+   "stav": "katalog",
+   "kde": "/katalog/b18553d437144c50b93189bcae777f59",
    "stlpcov": 12
-  },
-  {
-   "id": "f7f2aa0077444096a3a15080aa611e86",
-   "nazov": "Počet obyvateľov podľa najčastejšie používaného jazyka  na verejnosti v ZSJ",
-   "kategoria": "Demografia",
-   "upravene": 1771494989000,
-   "riadkov": 213,
-   "stav": "katalog",
-   "kde": "/katalog/f7f2aa0077444096a3a15080aa611e86",
-   "stlpcov": 23
-  },
-  {
-   "id": "82eaa4774a54409fb783d612c01e126e",
-   "nazov": "Počet obyvateľov podľa najčastejšie používaného jazyka  v domácnosti v ZSJ",
-   "kategoria": "Demografia",
-   "upravene": 1771494995000,
-   "riadkov": 213,
-   "stav": "katalog",
-   "kde": "/katalog/82eaa4774a54409fb783d612c01e126e",
-   "stlpcov": 23
   },
   {
    "id": "631822c9c3104a3c8c66932755849a7c",
@@ -667,16 +787,6 @@
    "stlpcov": 30
   },
   {
-   "id": "f0611c059abd4149ae998cf28eac1dd0",
-   "nazov": "Počet obyvateľov podľa národnosti v základných sídelných jednotkách - anonymizované",
-   "kategoria": "Demografia",
-   "upravene": 1771494553000,
-   "riadkov": 213,
-   "stav": "katalog",
-   "kde": "/katalog/f0611c059abd4149ae998cf28eac1dd0",
-   "stlpcov": 25
-  },
-  {
    "id": "6982f335e01c4c03b2f9617af6b67d86",
    "nazov": "Počet obyvateľov podľa odvetvia ekonomickej činnosti v ZSJ",
    "kategoria": "Demografia",
@@ -687,6 +797,26 @@
    "stlpcov": 60
   },
   {
+   "id": "7a0fda4ad7a04a4ea353faf1d5a679ea",
+   "nazov": "Počet obyvateľov podľa pohlavia v základných sídelných jednotkách - anonymizované",
+   "kategoria": "Demografia",
+   "upravene": 1771494559000,
+   "riadkov": 263,
+   "stav": "katalog",
+   "kde": "/katalog/7a0fda4ad7a04a4ea353faf1d5a679ea",
+   "stlpcov": 11
+  },
+  {
+   "id": "b89326cfd6e54f768f279b89d0e3c16b",
+   "nazov": "Počet obyvateľov podľa postavenia v zamestnaní (súčasného/posledne vykonávaného) v ZSJ",
+   "kategoria": "Demografia",
+   "upravene": 1771495144000,
+   "riadkov": 213,
+   "stav": "katalog",
+   "kde": "/katalog/b89326cfd6e54f768f279b89d0e3c16b",
+   "stlpcov": 16
+  },
+  {
    "id": "8d6eabcbe6624650b151e3034944c98c",
    "nazov": "Počet obyvateľov podľa počítačovej znalosti - práca s internetom v ZSJ",
    "kategoria": "Demografia",
@@ -694,6 +824,16 @@
    "riadkov": 213,
    "stav": "katalog",
    "kde": "/katalog/8d6eabcbe6624650b151e3034944c98c",
+   "stlpcov": 12
+  },
+  {
+   "id": "215c2e3cc25d42f6823bfd8f5488958a",
+   "nazov": "Počet obyvateľov podľa počítačovej znalosti – práca s elektronickou poštou v ZSJ",
+   "kategoria": "Demografia",
+   "upravene": 1771494983000,
+   "riadkov": 213,
+   "stav": "katalog",
+   "kde": "/katalog/215c2e3cc25d42f6823bfd8f5488958a",
    "stlpcov": 12
   },
   {
@@ -707,6 +847,36 @@
    "stlpcov": 12
   },
   {
+   "id": "0c7474e4f4154726b216d36a654775d1",
+   "nazov": "Počet obyvateľov podľa súčasnej ekonomickej aktivity v základných sídelných jednotkách",
+   "kategoria": "Demografia",
+   "upravene": 1771495032000,
+   "riadkov": 212,
+   "stav": "katalog",
+   "kde": "/katalog/0c7474e4f4154726b216d36a654775d1",
+   "stlpcov": 24
+  },
+  {
+   "id": "76b9c97e16b84ef4ad78e3be8cb2fd28",
+   "nazov": "Počet obyvateľov podľa veku v základných sídelných jednotkách - anonymizované",
+   "kategoria": "Demografia",
+   "upravene": 1771494572000,
+   "riadkov": 263,
+   "stav": "katalog",
+   "kde": "/katalog/76b9c97e16b84ef4ad78e3be8cb2fd28",
+   "stlpcov": 60
+  },
+  {
+   "id": "271dd13fa74a4e4088c37fb4c55d7c5b",
+   "nazov": "Počet obyvateľov podľa štátnej príslušnosti v základných sídelných jednotkách",
+   "kategoria": "Demografia",
+   "upravene": 1771495020000,
+   "riadkov": 213,
+   "stav": "katalog",
+   "kde": "/katalog/271dd13fa74a4e4088c37fb4c55d7c5b",
+   "stlpcov": 50
+  },
+  {
    "id": "39354c8e25a44394b6464c1249725271",
    "nazov": "Počet obyvateľov v mestských častiach Bratislavy v roku 2035",
    "kategoria": "Demografia",
@@ -715,16 +885,6 @@
    "stav": "katalog",
    "kde": "/katalog/39354c8e25a44394b6464c1249725271",
    "stlpcov": 2
-  },
-  {
-   "id": "ee14a168b11641639b14675a9ebd2c29",
-   "nazov": "Počet poberateľov príspevku na bývanie",
-   "kategoria": "Demografia",
-   "upravene": 1771495100000,
-   "riadkov": 60,
-   "stav": "katalog",
-   "kde": "/katalog/ee14a168b11641639b14675a9ebd2c29",
-   "stlpcov": 8
   },
   {
    "id": "9f8372b32ef74067a3823bc9f5ed48bc",
@@ -827,16 +987,6 @@
    "stlpcov": 3
   },
   {
-   "id": "85e4fc2a40eb4731b708849ec75c0a3f",
-   "nazov": "Priemerný vek obyvateľstva mestských častí Bratislavy v roku 2000 a 2021",
-   "kategoria": "Demografia",
-   "upravene": 1771500526000,
-   "riadkov": 34,
-   "stav": "katalog",
-   "kde": "/katalog/85e4fc2a40eb4731b708849ec75c0a3f",
-   "stlpcov": 3
-  },
-  {
    "id": "a63e1f6877c44738a0e6dd880262b61b",
    "nazov": "Priemerný vek pri rozvode žien vo veku do 50 rokov v BA a na SR v rokoch 2000 – 2021",
    "kategoria": "Demografia",
@@ -864,6 +1014,16 @@
    "riadkov": 88,
    "stav": "katalog",
    "kde": "/katalog/977fa6c799534d5d949fd1a805d5da9c",
+   "stlpcov": 3
+  },
+  {
+   "id": "89e43a45b12e49ffa078dafa526bc116",
+   "nazov": "Priemerný vek pri sobáši mužov v okresoch Bratislavy v obdobiach rokov 2000 – 2021",
+   "kategoria": "Demografia",
+   "upravene": 1780988151000,
+   "riadkov": 90,
+   "stav": "katalog",
+   "kde": "/katalog/89e43a45b12e49ffa078dafa526bc116",
    "stlpcov": 3
   },
   {
@@ -1347,16 +1507,6 @@
    "stlpcov": 30
   },
   {
-   "id": "f5e6996cadbb4955949e2e61b47311e6",
-   "nazov": "SODB 2011 - Byty podľa obdobia výstavby",
-   "kategoria": "Demografia",
-   "upravene": 1771494792000,
-   "riadkov": 17,
-   "stav": "katalog",
-   "kde": "/katalog/f5e6996cadbb4955949e2e61b47311e6",
-   "stlpcov": 13
-  },
-  {
    "id": "3909f6dc9ab74d26bd0fbc3b0e812347",
    "nazov": "SODB 2011 - Byty podľa obývanosti",
    "kategoria": "Demografia",
@@ -1365,6 +1515,16 @@
    "stav": "katalog",
    "kde": "/katalog/3909f6dc9ab74d26bd0fbc3b0e812347",
    "stlpcov": 8
+  },
+  {
+   "id": "b73091a84fe944cc8b88e557b4512c97",
+   "nazov": "SODB 2011 - Byty podľa typu budovy",
+   "kategoria": "Demografia",
+   "upravene": 1771495320000,
+   "riadkov": 17,
+   "stav": "katalog",
+   "kde": "/katalog/b73091a84fe944cc8b88e557b4512c97",
+   "stlpcov": 9
   },
   {
    "id": "3d9f6c20f6544bd489c039fc09470370",
@@ -1387,14 +1547,14 @@
    "stlpcov": 26
   },
   {
-   "id": "ca9f7e2d0fb84bfbba022756cd7ecf9d",
-   "nazov": "SODB 2011 - Obyvateľstvo podľa postavenia v domácnosti",
+   "id": "11df36d644144e1ea350d5d359b2e499",
+   "nazov": "SODB 2011 - Obyvateľstvo podľa rodinného stavu",
    "kategoria": "Demografia",
-   "upravene": 1771495118000,
-   "riadkov": 22,
+   "upravene": 1771495106000,
+   "riadkov": 5,
    "stav": "katalog",
-   "kde": "/katalog/ca9f7e2d0fb84bfbba022756cd7ecf9d",
-   "stlpcov": 12
+   "kde": "/katalog/11df36d644144e1ea350d5d359b2e499",
+   "stlpcov": 7
   },
   {
    "id": "ef2704518f1d45379da05a0ffa6fcad4",
@@ -1407,14 +1567,44 @@
    "stlpcov": 23
   },
   {
-   "id": "409bc64821fd4f139a6b242aa576a8c6",
-   "nazov": "SODB 2011 - Obyvateľstvo podľa zamestnania",
+   "id": "5cba8e8f411b4faf86dcb5521214385a",
+   "nazov": "SODB 2011 - Obývané byty podľa formy vlastníctva",
    "kategoria": "Demografia",
-   "upravene": 1771495063000,
-   "riadkov": 5,
+   "upravene": 1771494798000,
+   "riadkov": 17,
    "stav": "katalog",
-   "kde": "/katalog/409bc64821fd4f139a6b242aa576a8c6",
+   "kde": "/katalog/5cba8e8f411b4faf86dcb5521214385a",
+   "stlpcov": 9
+  },
+  {
+   "id": "6885594d130948238f335f8f73e83895",
+   "nazov": "SODB 2011 - Obývané byty podľa počtu obytných miestností",
+   "kategoria": "Demografia",
+   "upravene": 1771495326000,
+   "riadkov": 17,
+   "stav": "katalog",
+   "kde": "/katalog/6885594d130948238f335f8f73e83895",
+   "stlpcov": 13
+  },
+  {
+   "id": "680e9bf1df8a4be5bf440e54bf6ef417",
+   "nazov": "SODB 2011 - Obývané byty podľa počtu obyvateľov v byte",
+   "kategoria": "Demografia",
+   "upravene": 1771495332000,
+   "riadkov": 17,
+   "stav": "katalog",
+   "kde": "/katalog/680e9bf1df8a4be5bf440e54bf6ef417",
    "stlpcov": 14
+  },
+  {
+   "id": "7991751189964796bcd551949a14a4ca",
+   "nazov": "SODB 2011 - Obývané byty podľa systému dodávky vody",
+   "kategoria": "Demografia",
+   "upravene": 1771495202000,
+   "riadkov": 17,
+   "stav": "katalog",
+   "kde": "/katalog/7991751189964796bcd551949a14a4ca",
+   "stlpcov": 6
   },
   {
    "id": "56529303f5fb4b3791f5e3dcc5dfee6f",
@@ -1457,14 +1647,44 @@
    "stlpcov": 5
   },
   {
-   "id": "d0807504c1d7468ab1ca27396f2854d0",
-   "nazov": "SODB 2011 - Počet obyvateľov podľa postavenia v zamestnaní",
+   "id": "f90b2171065e4c6f9600d4d04645837b",
+   "nazov": "SODB 2011 - Rodiny podľa typu",
    "kategoria": "Demografia",
-   "upravene": 1771495357000,
-   "riadkov": 5,
+   "upravene": 1771495057000,
+   "riadkov": 22,
    "stav": "katalog",
-   "kde": "/katalog/d0807504c1d7468ab1ca27396f2854d0",
+   "kde": "/katalog/f90b2171065e4c6f9600d4d04645837b",
+   "stlpcov": 6
+  },
+  {
+   "id": "5219ceb7097b43af981364554176774c",
+   "nazov": "SODB 2011 - Rodiny podľa veľkosti základu rodiny",
+   "kategoria": "Demografia",
+   "upravene": 1771495363000,
+   "riadkov": 22,
+   "stav": "katalog",
+   "kde": "/katalog/5219ceb7097b43af981364554176774c",
    "stlpcov": 7
+  },
+  {
+   "id": "5f285aedcabb4e9b8018b207c5ff05ae",
+   "nazov": "SODB 2011 - Súkromné domácnosti podľa právneho užívania bytu",
+   "kategoria": "Demografia",
+   "upravene": 1771494722000,
+   "riadkov": 22,
+   "stav": "katalog",
+   "kde": "/katalog/5f285aedcabb4e9b8018b207c5ff05ae",
+   "stlpcov": 7
+  },
+  {
+   "id": "87118ab82ab847cfbcb32bee21db2326",
+   "nazov": "SODB 2011 - Súkromné domácnosti podľa typu",
+   "kategoria": "Demografia",
+   "upravene": 1771495131000,
+   "riadkov": 22,
+   "stav": "katalog",
+   "kde": "/katalog/87118ab82ab847cfbcb32bee21db2326",
+   "stlpcov": 11
   },
   {
    "id": "c1d6b2ff59b84d6aa6e8229390b8f145",
@@ -1497,26 +1717,6 @@
    "stlpcov": 3
   },
   {
-   "id": "2b1fa068316a4b47b25e0f4f6cf7143f",
-   "nazov": "Vekové zloženie migračného salda Bratislavy",
-   "kategoria": "Demografia",
-   "upravene": 1780901770000,
-   "riadkov": 396,
-   "stav": "katalog",
-   "kde": "/katalog/2b1fa068316a4b47b25e0f4f6cf7143f",
-   "stlpcov": 3
-  },
-  {
-   "id": "9c32c295a0bc47098abbac8a580a95de",
-   "nazov": "Vekové zloženie obyvateľov Bratislavy a Slovenska v roku 2021",
-   "kategoria": "Demografia",
-   "upravene": 1780903031000,
-   "riadkov": 404,
-   "stav": "katalog",
-   "kde": "/katalog/9c32c295a0bc47098abbac8a580a95de",
-   "stlpcov": 4
-  },
-  {
    "id": "26d3216ebbc44328a8ca262a13a51e27",
    "nazov": "Vekové zloženie obyvateľov Bratislavy v roku 2021 a v roku 2050 (stredný scenár)",
    "kategoria": "Demografia",
@@ -1525,16 +1725,6 @@
    "stav": "katalog",
    "kde": "/katalog/26d3216ebbc44328a8ca262a13a51e27",
    "stlpcov": 3
-  },
-  {
-   "id": "c1252c1579444a15998d8046aef696ea",
-   "nazov": "Vekové zloženie obyvateľov v najstaršej a najmladšej mestskej časti BA v roku 2021 (v %)",
-   "kategoria": "Demografia",
-   "upravene": 1780908367000,
-   "riadkov": 404,
-   "stav": "katalog",
-   "kde": "/katalog/c1252c1579444a15998d8046aef696ea",
-   "stlpcov": 4
   },
   {
    "id": "9ddb4493ef6047898e378431c34d8a02",
@@ -1567,13 +1757,13 @@
    "stlpcov": 3
   },
   {
-   "id": "8a63421f816548da99e782d220182e16",
-   "nazov": "Vzdelanostná štruktúra žien vo veku 15 a viac rokov v mestských častiach BA (SODB 2021)",
+   "id": "bf5dfe3703de4673b1cf583717194e86",
+   "nazov": "Vzdelanostná štruktúra žien vo veku 15 a viac rokov v okresoch Bratislavy (SODB 2021)",
    "kategoria": "Demografia",
-   "upravene": 1780904214000,
-   "riadkov": 108,
+   "upravene": 1780907734000,
+   "riadkov": 30,
    "stav": "katalog",
-   "kde": "/katalog/8a63421f816548da99e782d220182e16",
+   "kde": "/katalog/bf5dfe3703de4673b1cf583717194e86",
    "stlpcov": 3
   },
   {
@@ -1587,13 +1777,23 @@
    "stlpcov": 3
   },
   {
-   "id": "e6568f413fcb436094687541abd69220",
-   "nazov": "Vzájomné migračné saldo okresov Bratislavy 2017 – 2021",
+   "id": "fb9838356ea5404cb0bf9d2e2f7600dc",
+   "nazov": "Vzájomné migračné saldo mestských častí Bratislavy 2017 – 2021",
    "kategoria": "Demografia",
-   "upravene": 1780904156000,
+   "upravene": 1780904045000,
+   "riadkov": 170,
+   "stav": "katalog",
+   "kde": "/katalog/fb9838356ea5404cb0bf9d2e2f7600dc",
+   "stlpcov": 3
+  },
+  {
+   "id": "f6efa603ab7446a3b70cb21cb2f6cd1c",
+   "nazov": "Vzájomné migračné saldo okresov Bratislavy 2000 – 2004",
+   "kategoria": "Demografia",
+   "upravene": 1780904105000,
    "riadkov": 10,
    "stav": "katalog",
-   "kde": "/katalog/e6568f413fcb436094687541abd69220",
+   "kde": "/katalog/f6efa603ab7446a3b70cb21cb2f6cd1c",
    "stlpcov": 3
   },
   {
@@ -1614,16 +1814,6 @@
    "riadkov": 110,
    "stav": "katalog",
    "kde": "/katalog/d6feb08928ec4615b6aa8f1b8b6bc6f6",
-   "stlpcov": 3
-  },
-  {
-   "id": "1fc49a8c4a4b488a97b4f7fc4670bee1",
-   "nazov": "Vývoj strednej dĺžky života pri narodení mužov v BA a na SR v období rokov 2000 – 2021",
-   "kategoria": "Demografia",
-   "upravene": 1780903304000,
-   "riadkov": 40,
-   "stav": "katalog",
-   "kde": "/katalog/1fc49a8c4a4b488a97b4f7fc4670bee1",
    "stlpcov": 3
   },
   {
@@ -1667,14 +1857,24 @@
    "stlpcov": 3
   },
   {
-   "id": "a0ba4646f6094d1081c619e76ebacb86",
-   "nazov": "Vývoj úhrnnej plodnosti žien v okresoch Bratislavy v rokoch 2000 – 2021 ",
+   "id": "fa81444a16434daabdc3646ae888e9c4",
+   "nazov": "Zmena dopravného dopytu podľa ÚGD hl. mesta Bratislava a Prognózy (v %)",
    "kategoria": "Demografia",
-   "upravene": 1780903869000,
-   "riadkov": 110,
+   "upravene": 1777978869000,
+   "riadkov": 9,
    "stav": "katalog",
-   "kde": "/katalog/a0ba4646f6094d1081c619e76ebacb86",
-   "stlpcov": 3
+   "kde": "/katalog/fa81444a16434daabdc3646ae888e9c4",
+   "stlpcov": 4
+  },
+  {
+   "id": "b24aab509fb1484dbdcda3028b98495b",
+   "nazov": "Zmena počtu obyvateľov Bratislavy a Slovenska medzi rokmi 2000 a 2021",
+   "kategoria": "Demografia",
+   "upravene": 1780907805000,
+   "riadkov": 2,
+   "stav": "katalog",
+   "kde": "/katalog/b24aab509fb1484dbdcda3028b98495b",
+   "stlpcov": 2
   },
   {
    "id": "accd3a06cdfe4bbebed1b176f34cbd51",
@@ -1707,16 +1907,6 @@
    "stlpcov": 2
   },
   {
-   "id": "c69430b02fbb41299af9d94cf37e4fd0",
-   "nazov": "Zmena priemerného veku obyvateľov Bratislavy a Slovenska medzi rokom 2000 a 2021",
-   "kategoria": "Demografia",
-   "upravene": 1780908033000,
-   "riadkov": 2,
-   "stav": "katalog",
-   "kde": "/katalog/c69430b02fbb41299af9d94cf37e4fd0",
-   "stlpcov": 2
-  },
-  {
    "id": "970eb74db22b488c8175df085641c822",
    "nazov": "Zmena priemerného veku obyvateľstva okresov Bratislavy medzi rokom 2000 a 2021",
    "kategoria": "Demografia",
@@ -1724,16 +1914,6 @@
    "riadkov": 5,
    "stav": "katalog",
    "kde": "/katalog/970eb74db22b488c8175df085641c822",
-   "stlpcov": 2
-  },
-  {
-   "id": "5341875a8a804866a8186744f002d73d",
-   "nazov": "Zmena priemerného veku v mestských častiach Bratislavy medzi rokom 2000 a 2021",
-   "kategoria": "Demografia",
-   "upravene": 1780908136000,
-   "riadkov": 17,
-   "stav": "katalog",
-   "kde": "/katalog/5341875a8a804866a8186744f002d73d",
    "stlpcov": 2
   },
   {
@@ -1907,16 +2087,6 @@
    "stlpcov": 4
   },
   {
-   "id": "f5ed2a1eeb044081a50d17726a13b94e",
-   "nazov": "Štruktúra mužov a žien podľa rodinného stavu a veku v BA a SR podľa SODB 2021 (rozvedení)",
-   "kategoria": "Demografia",
-   "upravene": 1771500886000,
-   "riadkov": 60,
-   "stav": "katalog",
-   "kde": "/katalog/f5ed2a1eeb044081a50d17726a13b94e",
-   "stlpcov": 4
-  },
-  {
    "id": "23c1497dcfa64b1b9bbd346854504c64",
    "nazov": "Štruktúra mužov a žien podľa rodinného stavu a veku v BA a SR podľa SODB 2021 (slobodní)",
    "kategoria": "Demografia",
@@ -1954,16 +2124,6 @@
    "riadkov": 72,
    "stav": "katalog",
    "kde": "/katalog/ee1cedb128cb4023adbe0bdcdbb04b06",
-   "stlpcov": 3
-  },
-  {
-   "id": "11c8037632414c3ab19ba6a4da1ee4d8",
-   "nazov": "Štruktúra žien podľa najvyššieho dosiahnutého vzdelania a veku na SR podľa SODB 2021",
-   "kategoria": "Demografia",
-   "upravene": 1780905518000,
-   "riadkov": 75,
-   "stav": "katalog",
-   "kde": "/katalog/11c8037632414c3ab19ba6a4da1ee4d8",
    "stlpcov": 3
   },
   {
@@ -2017,6 +2177,16 @@
    "stlpcov": 4
   },
   {
+   "id": "bc6f1d93f7d8457b9e4629ad486ae71f",
+   "nazov": "Cyklosčítač na hrádzi Berg v rokoch 2014 - 2020",
+   "kategoria": "Doprava a komunikácie",
+   "upravene": 1778156624000,
+   "riadkov": 0,
+   "stav": "katalog",
+   "kde": "/katalog/bc6f1d93f7d8457b9e4629ad486ae71f",
+   "stlpcov": 1
+  },
+  {
    "id": "0de0dba7371245049be547599542f7ac",
    "nazov": "Cyklosčítač na Viedenskej v rokoch 2014 - 2020",
    "kategoria": "Doprava a komunikácie",
@@ -2034,16 +2204,6 @@
    "riadkov": 577,
    "stav": "katalog",
    "kde": "/katalog/f5b1dc5d33544d01bcc202e39c5fe300",
-   "stlpcov": 9
-  },
-  {
-   "id": "17666d9d24e34040ad91479bece42396",
-   "nazov": "Debarierizácie chodníkov v Bratislave od roku 2020",
-   "kategoria": "Doprava a komunikácie",
-   "upravene": 1771492691000,
-   "riadkov": 703,
-   "stav": "katalog",
-   "kde": "/katalog/17666d9d24e34040ad91479bece42396",
    "stlpcov": 9
   },
   {
@@ -2084,6 +2244,15 @@
    "dovod": "Anglická verzia datasetu „Zoznam zastávok turistických autobusov v roku 2025“ – používame slovenskú."
   },
   {
+   "id": "81c4f202de25401bbcb9d27588545e7f",
+   "nazov": "Odchody električiek linky č. 3 v októbri v rokoch 2017 - 2019",
+   "kategoria": "Doprava a komunikácie",
+   "upravene": 1778156766000,
+   "riadkov": 476380,
+   "stav": "vynechane",
+   "dovod": "Surové GPS záznamy polohy električiek jednej linky v októbri 2017–2019 (476 tisíc riadkov) – jednorazová analytická vzorka bez prínosu pre obyvateľov; aktuálnu MHD máme z cestovných poriadkov."
+  },
+  {
    "id": "06a431d0567c40e485d8cce908292c83",
    "nazov": "Pasport cyklotrás na území hl. mesta SR Bratislavy",
    "kategoria": "Doprava a komunikácie",
@@ -2102,6 +2271,16 @@
    "stav": "na_webe",
    "kde": "/doprava",
    "pozn": "Nehody so zranením"
+  },
+  {
+   "id": "2715f8c285d84182acd5bebae875ed02",
+   "nazov": "Počet dopravných nehôd s usmrtením v cestnej doprave",
+   "kategoria": "Doprava a komunikácie",
+   "upravene": 1778156835000,
+   "riadkov": 35,
+   "stav": "katalog",
+   "kde": "/katalog/2715f8c285d84182acd5bebae875ed02",
+   "stlpcov": 3
   },
   {
    "id": "39d5a295afd24560bacd092e80531401",
@@ -2154,34 +2333,14 @@
    "stlpcov": 4
   },
   {
-   "id": "a5f1b093ad82432792ff709314a1b2f7",
-   "nazov": "Počet odbavených cestujúcich na letisku M. R. Štefánika v Bratislave podľa druhu dopravy",
+   "id": "624e60c6e1554f7cb077a98e758a4867",
+   "nazov": "Počet evidovaných vodičov",
    "kategoria": "Doprava a komunikácie",
-   "upravene": 1778158172000,
-   "riadkov": 15,
+   "upravene": 1778156705000,
+   "riadkov": 50,
    "stav": "katalog",
-   "kde": "/katalog/a5f1b093ad82432792ff709314a1b2f7",
-   "stlpcov": 5
-  },
-  {
-   "id": "84ba9f28423e4a52aae97c8cfb7d58e6",
-   "nazov": "Počet prechádzajúcich chodcov podľa sčítačov za hodinu",
-   "kategoria": "Doprava a komunikácie",
-   "upravene": 1771492980000,
-   "riadkov": 850215,
-   "stav": "na_webe",
-   "kde": "/doprava#premavka",
-   "pozn": "Sčítače chodcov"
-  },
-  {
-   "id": "097b7c8bc4b94560a7e34c9e64139a5e",
-   "nazov": "Počet prejazdov cyklistov podľa sčítačov za hodinu",
-   "kategoria": "Doprava a komunikácie",
-   "upravene": 1771492966000,
-   "riadkov": 850215,
-   "stav": "na_webe",
-   "kde": "/doprava#premavka",
-   "pozn": "Sčítače cyklistov"
+   "kde": "/katalog/624e60c6e1554f7cb077a98e758a4867",
+   "stlpcov": 3
   },
   {
    "id": "7b5628f9234a461e8becfa37665290b3",
@@ -2192,6 +2351,16 @@
    "stav": "na_webe",
    "kde": "/doprava#premavka",
    "pozn": "Sčítače áut"
+  },
+  {
+   "id": "34a7ec013dcd4ba4a1bd6f7051e13a78",
+   "nazov": "Počet prepravených osôb MHD v Bratislave",
+   "kategoria": "Doprava a komunikácie",
+   "upravene": 1785152718000,
+   "riadkov": 28,
+   "stav": "na_webe",
+   "kde": "/doprava",
+   "pozn": "Prepravení cestujúci"
   },
   {
    "id": "08643896d1b04f69a084f85c07677507",
@@ -2284,6 +2453,16 @@
    "stlpcov": 7
   },
   {
+   "id": "1b46ea9bb5734acd949edc32596069e4",
+   "nazov": "Veková skladba dopravných vozidiel MHD v Bratislave - električky",
+   "kategoria": "Doprava a komunikácie",
+   "upravene": 1785154684000,
+   "riadkov": 8,
+   "stav": "katalog",
+   "kde": "/katalog/1b46ea9bb5734acd949edc32596069e4",
+   "stlpcov": 6
+  },
+  {
    "id": "4c5ba3b4dfda4b7d94a7827b09f614a0",
    "nazov": "Veková skladba dopravných vozidiel MHD v Bratislave - trolejbusy",
    "kategoria": "Doprava a komunikácie",
@@ -2329,9 +2508,9 @@
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492766000,
    "riadkov": 5,
-   "stav": "osobitne",
-   "kde": "/mapa",
-   "pozn": "Zastávky turistických autobusov"
+   "stav": "katalog",
+   "kde": "/katalog/542bc25cad7c42e0b91863572f5f59ab",
+   "stlpcov": 3
   },
   {
    "id": "a57ee440b7cd4c3b98745d885c0d7f91",
@@ -2344,23 +2523,13 @@
    "stlpcov": 5
   },
   {
-   "id": "df2dbd1bb63b4d62aa5af6a5782029d6",
-   "nazov": "Celkový počet daňovníkov, ktorí mohli platiť daň z nehnuteľnosti v splátkach za roky 2018-2020",
+   "id": "6a77cfc0659942c4ac1308b8dac1536d",
+   "nazov": "Hrubé domáce výdavky na výskum a vývoj v podnikateľskom sektore vybraných regiónov ",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771495712000,
-   "riadkov": 3,
+   "upravene": 1771500388000,
+   "riadkov": 52,
    "stav": "katalog",
-   "kde": "/katalog/df2dbd1bb63b4d62aa5af6a5782029d6",
-   "stlpcov": 3
-  },
-  {
-   "id": "3ecc866be4f04e79bbe6a50cfbf0a513",
-   "nazov": "Hrubé domáce výdavky na výskum a vývoj vo vybraných regiónoch v rokoch 2013 - 2020 ",
-   "kategoria": "Ekonomika a práca",
-   "upravene": 1771500338000,
-   "riadkov": 44,
-   "stav": "katalog",
-   "kde": "/katalog/3ecc866be4f04e79bbe6a50cfbf0a513",
+   "kde": "/katalog/6a77cfc0659942c4ac1308b8dac1536d",
    "stlpcov": 3
   },
   {
@@ -2374,13 +2543,23 @@
    "stlpcov": 3
   },
   {
-   "id": "684a197165a54e73ad0b1473881f0124",
-   "nazov": "Kapitálové a bežné výdavky na výskum v rokoch 2008 - 2020 (v %)",
+   "id": "5b08d43446334fa589972859f795ddfd",
+   "nazov": "Hrubý domáci produkt na obyvateľa v parite kúpnej sily k priemeru EÚ vo vybraných regiónov",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493423000,
-   "riadkov": 26,
+   "upravene": 1771493438000,
+   "riadkov": 169,
    "stav": "katalog",
-   "kde": "/katalog/684a197165a54e73ad0b1473881f0124",
+   "kde": "/katalog/5b08d43446334fa589972859f795ddfd",
+   "stlpcov": 3
+  },
+  {
+   "id": "e241a42cbb074d01ba7149c48b8a4887",
+   "nazov": "Hrubý domáci produkt v medzinárodnom porovnaní vybraných regiónov v rokoch 2010 - 2020",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493460000,
+   "riadkov": 66,
+   "stav": "katalog",
+   "kde": "/katalog/e241a42cbb074d01ba7149c48b8a4887",
    "stlpcov": 3
   },
   {
@@ -2391,6 +2570,16 @@
    "riadkov": 76,
    "stav": "katalog",
    "kde": "/katalog/da7fba9302414caea83d5c9a7107f081",
+   "stlpcov": 3
+  },
+  {
+   "id": "94747ea9e72b4031b654b478c0442f0f",
+   "nazov": "Medziročný rast priamych zahraničných investícií na Slovensku a v BSK v rokoch 2016 - 2019",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493409000,
+   "riadkov": 8,
+   "stav": "katalog",
+   "kde": "/katalog/94747ea9e72b4031b654b478c0442f0f",
    "stlpcov": 3
   },
   {
@@ -2424,16 +2613,6 @@
    "stlpcov": 3
   },
   {
-   "id": "b5a1ca52c4c44d639350caa0889ecaa0",
-   "nazov": "Podiel jednotlivých odvetví na tržbách v priemysle Bratislavy v rokoch 2008 - 2021",
-   "kategoria": "Ekonomika a práca",
-   "upravene": 1771493308000,
-   "riadkov": 192,
-   "stav": "katalog",
-   "kde": "/katalog/b5a1ca52c4c44d639350caa0889ecaa0",
-   "stlpcov": 3
-  },
-  {
    "id": "73fe2a0ee50e41978b8ace2acf34333c",
    "nazov": "Podiel priamych zahraničných investícií v zahraničí voči priamym zahraničným invest. doma ",
    "kategoria": "Ekonomika a práca",
@@ -2454,16 +2633,6 @@
    "stlpcov": 3
   },
   {
-   "id": "7f2eb58811eb49cab4d0feeb49dac718",
-   "nazov": "Podiel samosprávnych krajov na priamych zahraničných investíciach vo vybraných rokoch",
-   "kategoria": "Ekonomika a práca",
-   "upravene": 1771493294000,
-   "riadkov": 56,
-   "stav": "katalog",
-   "kde": "/katalog/7f2eb58811eb49cab4d0feeb49dac718",
-   "stlpcov": 3
-  },
-  {
    "id": "17b4199cb9d541d8bb6e128033fcc46f",
    "nazov": "Podiel tržieb z predaja do zahraničia v priemysle Bratislavy podľa odvetví v r. 2015-2021",
    "kategoria": "Ekonomika a práca",
@@ -2474,13 +2643,23 @@
    "stlpcov": 3
   },
   {
-   "id": "5fe5a7600ed04bc6afc867006fbde76f",
-   "nazov": "Podiel zamestnanosti v kultúre na celkovej zamestnanosti vybraných regiónoch NUTS2",
+   "id": "8aa802527be14a5dbfcc553cd22b6468",
+   "nazov": "Podiel vybraných hlavných miest na celkovej zamestnanosti v kultúre vo vybraných rokoch",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493275000,
-   "riadkov": 42,
+   "upravene": 1771493282000,
+   "riadkov": 12,
    "stav": "katalog",
-   "kde": "/katalog/5fe5a7600ed04bc6afc867006fbde76f",
+   "kde": "/katalog/8aa802527be14a5dbfcc553cd22b6468",
+   "stlpcov": 3
+  },
+  {
+   "id": "3e0c5442c34941d38e38ea3247d8089f",
+   "nazov": "Podiel zahraničných a medzinárodných podnikov na celkovom počte podľa SK-NACE",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493051000,
+   "riadkov": 57,
+   "stav": "katalog",
+   "kde": "/katalog/3e0c5442c34941d38e38ea3247d8089f",
    "stlpcov": 3
   },
   {
@@ -2494,13 +2673,13 @@
    "stlpcov": 3
   },
   {
-   "id": "f3796c049ad844228157d61a621c383f",
-   "nazov": "Počet absolventov doktorandského štúdia na vysokých školách v BA v rokoch 2015 - 2020",
+   "id": "2e70fcd4a77848eeac2640dc7b04cb7f",
+   "nazov": "Počet aktívnych podnikov v samosprávnych krajoch Slovenska v rokoch 2015 - 2019",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493385000,
-   "riadkov": 60,
+   "upravene": 1771493377000,
+   "riadkov": 40,
    "stav": "katalog",
-   "kde": "/katalog/f3796c049ad844228157d61a621c383f",
+   "kde": "/katalog/2e70fcd4a77848eeac2640dc7b04cb7f",
    "stlpcov": 3
   },
   {
@@ -2512,6 +2691,26 @@
    "stav": "katalog",
    "kde": "/katalog/0e2e825e79d948e6a712c2bbd2876ca7",
    "stlpcov": 23
+  },
+  {
+   "id": "88005cc97c1140349cd73f13a0e039ca",
+   "nazov": "Počet novozaložených podnikov v samosprávnych krajoch Slovenska v rokoch 2015 - 2019",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493371000,
+   "riadkov": 40,
+   "stav": "katalog",
+   "kde": "/katalog/88005cc97c1140349cd73f13a0e039ca",
+   "stlpcov": 3
+  },
+  {
+   "id": "35b7350298114d35bc3986274bf02701",
+   "nazov": "Počet odborných zamestnancov vo vzdelávacích inštitúciách v Bratislave",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771495440000,
+   "riadkov": 270,
+   "stav": "katalog",
+   "kde": "/katalog/35b7350298114d35bc3986274bf02701",
+   "stlpcov": 6
   },
   {
    "id": "322b39a6185b483fa9c6cabe74dc9160",
@@ -2544,13 +2743,73 @@
    "stlpcov": 3
   },
   {
-   "id": "206afccee9874cdda049fd2fad8c6069",
-   "nazov": "Priemerný evidenčný počet zamestnancov v stavebných podnikoch s 20 a viac zamestnancami",
+   "id": "9325cfbba62e4be5a8ea11e7dcedef4f",
+   "nazov": "Počet slovenských spoločností v rankingu Coface Top 500 CEE v rokoch 2014 - 2021",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771494842000,
-   "riadkov": 60,
+   "upravene": 1771493342000,
+   "riadkov": 8,
    "stav": "katalog",
-   "kde": "/katalog/206afccee9874cdda049fd2fad8c6069",
+   "kde": "/katalog/9325cfbba62e4be5a8ea11e7dcedef4f",
+   "stlpcov": 2
+  },
+  {
+   "id": "9563bf8e2cba4d9cb38080e37c344f0a",
+   "nazov": "Počet uchádzačov o zamestnanie (absolventi) podľa počtu mesiacov v evidencii UPS",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771494822000,
+   "riadkov": 35,
+   "stav": "katalog",
+   "kde": "/katalog/9563bf8e2cba4d9cb38080e37c344f0a",
+   "stlpcov": 10
+  },
+  {
+   "id": "ebbcbaf1325044ac8207fbf70fbe1455",
+   "nazov": "Počet uchádzačov o zamestnanie v BA podľa dĺžky trvania evidencie ku koncu daného roka",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493335000,
+   "riadkov": 21,
+   "stav": "katalog",
+   "kde": "/katalog/ebbcbaf1325044ac8207fbf70fbe1455",
+   "stlpcov": 3
+  },
+  {
+   "id": "7963f051892b4243ad1fc6bddf7477b5",
+   "nazov": "Počet zahraničných a medzinárodných podnikov vo vybraných odvetviach SK-NACE ",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493322000,
+   "riadkov": 57,
+   "stav": "katalog",
+   "kde": "/katalog/7963f051892b4243ad1fc6bddf7477b5",
+   "stlpcov": 3
+  },
+  {
+   "id": "13e8f56088b048a4879c55a65e744d33",
+   "nazov": "Počet zamestnancov v stavebníctve v podnikoch s viac ako 20 zamestnancami v r. 2008 - 2021",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493315000,
+   "riadkov": 14,
+   "stav": "katalog",
+   "kde": "/katalog/13e8f56088b048a4879c55a65e744d33",
+   "stlpcov": 2
+  },
+  {
+   "id": "0aa1130738a54da5bac4c3eb4d6c41be",
+   "nazov": "Priemerná nominálna mesačná mzda zamestnanca (v eurách) v stavebných podnikoch s 20 a viac zamestn.",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771492920000,
+   "riadkov": 80,
+   "stav": "katalog",
+   "kde": "/katalog/0aa1130738a54da5bac4c3eb4d6c41be",
+   "stlpcov": 3
+  },
+  {
+   "id": "b29565a1310842a7a45746c0ba47d213",
+   "nazov": "Priemerný evidenčný počet zamestnancov podľa ekonomických činností SK-NACE v Bratislave ",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493261000,
+   "riadkov": 76,
+   "stav": "katalog",
+   "kde": "/katalog/b29565a1310842a7a45746c0ba47d213",
    "stlpcov": 3
   },
   {
@@ -2574,6 +2833,16 @@
    "stlpcov": 3
   },
   {
+   "id": "7302b8aa67f94477be0097f0f816705e",
+   "nazov": "Tržby najvýznamnejších spoločností v priemysle Bratislavy v rokoch 2008 - 2021",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493231000,
+   "riadkov": 42,
+   "stav": "katalog",
+   "kde": "/katalog/7302b8aa67f94477be0097f0f816705e",
+   "stlpcov": 3
+  },
+  {
    "id": "fd001507a5664acba54298704ab8ab8d",
    "nazov": "Tržby v hlavných odvetviach ekonomiky Bratislavy podľa v rokoch 2015 a 2020",
    "kategoria": "Ekonomika a práca",
@@ -2584,13 +2853,23 @@
    "stlpcov": 3
   },
   {
-   "id": "6678d7bfe4b74a279dccfe27f4e88636",
-   "nazov": "Tvorba hrubého fixného kapitálu v Bratislavskom kraji v rokoch 2010 - 2019",
+   "id": "7907ae18e5a84e1fb60ee2a456663372",
+   "nazov": "Tržby z predaja do zahraničia v priemysle Bratislavy podľa odvetví v rokoch 2015 - 2021",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493216000,
-   "riadkov": 100,
+   "upravene": 1771493223000,
+   "riadkov": 94,
    "stav": "katalog",
-   "kde": "/katalog/6678d7bfe4b74a279dccfe27f4e88636",
+   "kde": "/katalog/7907ae18e5a84e1fb60ee2a456663372",
+   "stlpcov": 3
+  },
+  {
+   "id": "f658eff961b949fba66d011f2164734d",
+   "nazov": "Výdavky na výskum v rokoch 2008 - 2020 (mil. EUR)",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493210000,
+   "riadkov": 39,
+   "stav": "katalog",
+   "kde": "/katalog/f658eff961b949fba66d011f2164734d",
    "stlpcov": 3
   },
   {
@@ -2604,13 +2883,23 @@
    "stlpcov": 7
   },
   {
-   "id": "388cffa1b2e548e9b2c44d7b856ed514",
-   "nazov": "Vývoj miery registrovanej nezamestnanosti v okresoch BA a na SR ku koncu rokov 2008 - 2021",
+   "id": "abc9a9309f864a0b812cf281d77b8467",
+   "nazov": "Výkony cestovného ruchu v Bratislave - počet prenocovaní",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493190000,
-   "riadkov": 84,
+   "upravene": 1771495051000,
+   "riadkov": 15,
    "stav": "katalog",
-   "kde": "/katalog/388cffa1b2e548e9b2c44d7b856ed514",
+   "kde": "/katalog/abc9a9309f864a0b812cf281d77b8467",
+   "stlpcov": 7
+  },
+  {
+   "id": "2588720903e7437b8c662becffae07b3",
+   "nazov": "Vývoj celkovej zamestnanosti a zamestnanosti v priemysle v Bratislave v rokoch 2010 - 2021",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493197000,
+   "riadkov": 16,
+   "stav": "katalog",
+   "kde": "/katalog/2588720903e7437b8c662becffae07b3",
    "stlpcov": 3
   },
   {
@@ -2624,6 +2913,26 @@
    "stlpcov": 3
   },
   {
+   "id": "f7b63bb397ff484fa6912ca513f8acd2",
+   "nazov": "Vývoj počtu študentov doktorandského štúdia v BA podľa vysokých škôl v rokoch 2015 - 2021",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493135000,
+   "riadkov": 60,
+   "stav": "katalog",
+   "kde": "/katalog/f7b63bb397ff484fa6912ca513f8acd2",
+   "stlpcov": 3
+  },
+  {
+   "id": "91b279cfe0fe4ca8839a974cb6e2bd6e",
+   "nazov": "Vývoj počtu študentov doktorandského štúdia v Bratislave a na SR v rokoch 2015 - 2021",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493171000,
+   "riadkov": 12,
+   "stav": "katalog",
+   "kde": "/katalog/91b279cfe0fe4ca8839a974cb6e2bd6e",
+   "stlpcov": 3
+  },
+  {
    "id": "818effdcd0004ccb9c4ebdeabce8c13d",
    "nazov": "Vývoj stavebnej produkcie v BA v podnikoch s viac ako 20 zamestnancami",
    "kategoria": "Ekonomika a práca",
@@ -2634,24 +2943,34 @@
    "stlpcov": 3
   },
   {
-   "id": "eb8f31a4911844c0ac5047ef7bbb45c0",
-   "nazov": "Vývoj tržieb vo vybraných kultúrnych a kreatívnych činnostiach v rokoch 2014 - 2020",
+   "id": "ca6e054ece734047b1008b30eade3ed1",
+   "nazov": "Vývoj stavu priamych zahraničných investícii v Bratislavskom samosprávnom kraji ",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493142000,
-   "riadkov": 33,
+   "upravene": 1771493148000,
+   "riadkov": 7,
    "stav": "katalog",
-   "kde": "/katalog/eb8f31a4911844c0ac5047ef7bbb45c0",
+   "kde": "/katalog/ca6e054ece734047b1008b30eade3ed1",
+   "stlpcov": 2
+  },
+  {
+   "id": "66bfad018f07496dba7af52f0dff0222",
+   "nazov": "Vývoj stavu priamych zahraničných investícií v samosprávnych krajoch SR",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493156000,
+   "riadkov": 56,
+   "stav": "katalog",
+   "kde": "/katalog/66bfad018f07496dba7af52f0dff0222",
    "stlpcov": 3
   },
   {
-   "id": "c128f7a039e84356aac9bd2113c12a82",
-   "nazov": "Vývoj tržieb vo vybraných sektoroch služieb v Bratislave v rokoch 2010 - 2020",
+   "id": "d9da4b401ff84d9a89af148e3079bc6e",
+   "nazov": "Vývoj tržieb za ubytovanie v Bratislave v rokoch 2010 - 2021",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493128000,
-   "riadkov": 186,
+   "upravene": 1771493121000,
+   "riadkov": 12,
    "stav": "katalog",
-   "kde": "/katalog/c128f7a039e84356aac9bd2113c12a82",
-   "stlpcov": 3
+   "kde": "/katalog/d9da4b401ff84d9a89af148e3079bc6e",
+   "stlpcov": 2
   },
   {
    "id": "8a75817746af4effa79cf5a491d7feb3",
@@ -2664,14 +2983,34 @@
    "stlpcov": 2
   },
   {
-   "id": "d021befaa3934555a08a5d6d4dd4366d",
-   "nazov": "Vývoj tržieb za vlastné výkony a tovar vo vybraných trhových službách v BA ",
+   "id": "25612c7014b846d9b905441d217433a3",
+   "nazov": "Vývoj tržieb za vlastné výkony a tovar v obchode pohostinstve a ubytovaní v BA",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493029000,
-   "riadkov": 12,
+   "upravene": 1771493105000,
+   "riadkov": 28,
    "stav": "katalog",
-   "kde": "/katalog/d021befaa3934555a08a5d6d4dd4366d",
-   "stlpcov": 2
+   "kde": "/katalog/25612c7014b846d9b905441d217433a3",
+   "stlpcov": 3
+  },
+  {
+   "id": "71b93ae3c83f4042bbacbbe5f12179c7",
+   "nazov": "Vývoj zamestnanosti v obchode, pohostinstve a ubytovaní v Bratislave v rokoch 2015 - 2021",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771492960000,
+   "riadkov": 28,
+   "stav": "katalog",
+   "kde": "/katalog/71b93ae3c83f4042bbacbbe5f12179c7",
+   "stlpcov": 3
+  },
+  {
+   "id": "c57ce72f15bd45688680feb650688434",
+   "nazov": "Vývoj zamestnanosti v spoločnostiach Volkswagen a Slovnaft v rokoch 2010 - 2021",
+   "kategoria": "Ekonomika a práca",
+   "upravene": 1771493057000,
+   "riadkov": 24,
+   "stav": "katalog",
+   "kde": "/katalog/c57ce72f15bd45688680feb650688434",
+   "stlpcov": 3
   },
   {
    "id": "83a61076cae54912a9b64f471b38a069",
@@ -2684,23 +3023,23 @@
    "stlpcov": 4
   },
   {
-   "id": "2add78b3420244448ca63f5ee42dab7d",
-   "nazov": "Zamestnanosť v kultúre v medzinárodnom porovnaní vo vybraných regiónoch NUTS2",
+   "id": "27d01f15c4bd418692d57082ac34496b",
+   "nazov": "Zamestnanci výskumu a vývoja v Bratislavskom samosprávnom kraji v rokoch 2008 - 2020",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493083000,
-   "riadkov": 42,
+   "upravene": 1771500233000,
+   "riadkov": 26,
    "stav": "katalog",
-   "kde": "/katalog/2add78b3420244448ca63f5ee42dab7d",
+   "kde": "/katalog/27d01f15c4bd418692d57082ac34496b",
    "stlpcov": 3
   },
   {
-   "id": "b75a6879cf954ce9bbfdf87bfce7fe6b",
-   "nazov": "Zamestnávanie štátnych príslušníkov tretích krajín s platným povolením na zamestnanie v SR",
+   "id": "edfdda82048e4c04b6f09eeaac9d323f",
+   "nazov": "Zamestnanosť v poznatkovo náročných vysoko-technologických službách vo vybraných regiónoch",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771494804000,
-   "riadkov": 85,
+   "upravene": 1771493063000,
+   "riadkov": 139,
    "stav": "katalog",
-   "kde": "/katalog/b75a6879cf954ce9bbfdf87bfce7fe6b",
+   "kde": "/katalog/edfdda82048e4c04b6f09eeaac9d323f",
    "stlpcov": 3
   },
   {
@@ -2714,13 +3053,13 @@
    "stlpcov": 3
   },
   {
-   "id": "a02cc5667c4f43e6936ce8616d66500b",
-   "nazov": "Štruktúra alokácie priamych zahraničných investícií podľa odvetví na Slovensku",
+   "id": "1ac4359a4d8e4fb2825a7cede8d32f74",
+   "nazov": "Čistý prírastok podnikov v samosprávnych krajoch Slovenska v rokoch 2015 - 2019",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493245000,
-   "riadkov": 36,
+   "upravene": 1771493401000,
+   "riadkov": 40,
    "stav": "katalog",
-   "kde": "/katalog/a02cc5667c4f43e6936ce8616d66500b",
+   "kde": "/katalog/1ac4359a4d8e4fb2825a7cede8d32f74",
    "stlpcov": 3
   },
   {
@@ -2734,14 +3073,24 @@
    "stlpcov": 3
   },
   {
-   "id": "0e009812ea58428cb5f620f65550c1fb",
-   "nazov": "Štruktúra uchádzačov o zamestnanie v Bratislave podľa vzdelania ku koncu sledovaného roka",
+   "id": "87d966e4b15845129ce0cdc94b823f39",
+   "nazov": "Štruktúra uchádzačov o zamestnanie v Bratislave podľa veku vo vybraných rokov",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771493238000,
-   "riadkov": 42,
+   "upravene": 1771493015000,
+   "riadkov": 54,
    "stav": "katalog",
-   "kde": "/katalog/0e009812ea58428cb5f620f65550c1fb",
+   "kde": "/katalog/87d966e4b15845129ce0cdc94b823f39",
    "stlpcov": 3
+  },
+  {
+   "id": "525530000c184373a49bbdbab62468cf",
+   "nazov": "Archívne dokumenty Archívu mesta BA spracované v bežných metroch",
+   "kategoria": "História a kultúra",
+   "upravene": 1788167923000,
+   "riadkov": 8,
+   "stav": "katalog",
+   "kde": "/katalog/525530000c184373a49bbdbab62468cf",
+   "stlpcov": 2
   },
   {
    "id": "24c6c6cb6b10483591bc9b69c3c61dca",
@@ -2749,19 +3098,9 @@
    "kategoria": "História a kultúra",
    "upravene": 1771494897000,
    "riadkov": 552,
-   "stav": "osobitne",
-   "kde": "/mapa",
-   "pozn": "Pamätihodnosti mesta"
-  },
-  {
-   "id": "01d79f8daab34e74a32d3debc04032f3",
-   "nazov": "Dotazníkový prieskum k plánovanej revitalizácii kultúrneho strediska Žarnovická",
-   "kategoria": "História a kultúra",
-   "upravene": 1771494744000,
-   "riadkov": 429,
    "stav": "katalog",
-   "kde": "/katalog/01d79f8daab34e74a32d3debc04032f3",
-   "stlpcov": 54
+   "kde": "/katalog/24c6c6cb6b10483591bc9b69c3c61dca",
+   "stlpcov": 7
   },
   {
    "id": "04f6f301976642848a5bb59fdcfeb9dc",
@@ -2844,6 +3183,16 @@
    "stlpcov": 8
   },
   {
+   "id": "e745d77470e04ea896e134635a4e1e3a",
+   "nazov": "Počet schválených žiadostí v rámci zriaďovanej a nezriaďovanej kultúry BKIS",
+   "kategoria": "História a kultúra",
+   "upravene": 1790601505000,
+   "riadkov": 4,
+   "stav": "katalog",
+   "kde": "/katalog/e745d77470e04ea896e134635a4e1e3a",
+   "stlpcov": 3
+  },
+  {
    "id": "b680cb55f28c4598af16e61911302b02",
    "nazov": "Počet zrealizovaných podujatí BKIS (bez DPOH)",
    "kategoria": "História a kultúra",
@@ -2884,6 +3233,16 @@
    "stlpcov": 6
   },
   {
+   "id": "05deffcecf0047c6b2d6fb620e5ad0dd",
+   "nazov": "Schválená suma Nadáciou mesta Bratislava podľa oblastí",
+   "kategoria": "História a kultúra",
+   "upravene": 1790672088000,
+   "riadkov": 37,
+   "stav": "katalog",
+   "kde": "/katalog/05deffcecf0047c6b2d6fb620e5ad0dd",
+   "stlpcov": 4
+  },
+  {
    "id": "aef40a7e87304b058e80d8cc54ee4803",
    "nazov": "Stav knižničného fondu v Mestskej knižnici v Bratislave",
    "kategoria": "História a kultúra",
@@ -2914,24 +3273,24 @@
    "stlpcov": 2
   },
   {
-   "id": "4617533936224bbd9db6e4236e61bb23",
-   "nazov": "Centrálny register poskytovateľov sociálnych služieb v Bratislavskom kraji",
+   "id": "9aaaf6df96904c44ae3d5effb5d95ff7",
+   "nazov": "Kapacity zariadení pre seniorov v Bratislave v rokoch 2008 – 2021",
    "kategoria": "Sociálne služby",
-   "upravene": 1771495081000,
-   "riadkov": 1082,
+   "upravene": 1778046924000,
+   "riadkov": 43,
    "stav": "katalog",
-   "kde": "/katalog/4617533936224bbd9db6e4236e61bb23",
-   "stlpcov": 15
+   "kde": "/katalog/9aaaf6df96904c44ae3d5effb5d95ff7",
+   "stlpcov": 3
   },
   {
-   "id": "a8ef3fba66c14f9aa6664ee8549dc2f7",
-   "nazov": "Fixpointy (miesto/nádoba na zber injekčných striekačiek) pre ľudí v núdzi v Bratislave",
+   "id": "49ce2adc138f4c0f9a665bdb89229bb0",
+   "nazov": "Linky pomoci pre ľudí v núdzi v Bratislave",
    "kategoria": "Sociálne služby",
-   "upravene": 1771501281000,
-   "riadkov": 13,
+   "upravene": 1771502249000,
+   "riadkov": 5,
    "stav": "katalog",
-   "kde": "/katalog/a8ef3fba66c14f9aa6664ee8549dc2f7",
-   "stlpcov": 6
+   "kde": "/katalog/49ce2adc138f4c0f9a665bdb89229bb0",
+   "stlpcov": 7
   },
   {
    "id": "dcd8662c11954fc1a123285db68d9602",
@@ -2944,24 +3303,24 @@
    "stlpcov": 3
   },
   {
-   "id": "08dc20226a004431956cde916f2ec4b5",
-   "nazov": "Pobytové sociálne služby v Bratislavskom samosprávnom kraji (2021)",
+   "id": "0256739a1ca1416d96a537edda0ac98d",
+   "nazov": "Počet osôb, ktorým bol poskytnutý aktivačný príspevok",
    "kategoria": "Sociálne služby",
-   "upravene": 1778047156000,
-   "riadkov": 11,
+   "upravene": 1771494810000,
+   "riadkov": 905,
    "stav": "katalog",
-   "kde": "/katalog/08dc20226a004431956cde916f2ec4b5",
-   "stlpcov": 3
+   "kde": "/katalog/0256739a1ca1416d96a537edda0ac98d",
+   "stlpcov": 4
   },
   {
-   "id": "796b652508224c11926bc09e205981f6",
-   "nazov": "Počet poberateľov náhradného výživného",
+   "id": "82f235823ddb42fba12dad8e0d305444",
+   "nazov": "Počet poberateľov - ÚPSVaR",
    "kategoria": "Sociálne služby",
-   "upravene": 1771494835000,
-   "riadkov": 20,
+   "upravene": 1771495282000,
+   "riadkov": 970,
    "stav": "katalog",
-   "kde": "/katalog/796b652508224c11926bc09e205981f6",
-   "stlpcov": 6
+   "kde": "/katalog/82f235823ddb42fba12dad8e0d305444",
+   "stlpcov": 4
   },
   {
    "id": "5242099b24bc4bf68ea766ca55162a08",
@@ -3004,6 +3363,16 @@
    "stlpcov": 3
   },
   {
+   "id": "5d2e53cd28b54727a955d08aa9b2cd83",
+   "nazov": "Čerpanie finančných prostriedkov - ÚPSVaR",
+   "kategoria": "Sociálne služby",
+   "upravene": 1771495706000,
+   "riadkov": 480,
+   "stav": "katalog",
+   "kde": "/katalog/5d2e53cd28b54727a955d08aa9b2cd83",
+   "stlpcov": 4
+  },
+  {
    "id": "d525e89540de4add87c50a1fdf587b9c",
    "nazov": "Čerpanie finančných prostriedkov 2 - ÚPSVaR",
    "kategoria": "Sociálne služby",
@@ -3024,24 +3393,14 @@
    "stlpcov": 10
   },
   {
-   "id": "11b7cdd27d9f446ca97c1c2913cc169a",
-   "nazov": "Čerpanie rozpočtu oddelenia sociálnych vecí k 30.06.2019",
-   "kategoria": "Sociálne služby",
-   "upravene": 1771494941000,
-   "riadkov": 34,
-   "stav": "katalog",
-   "kde": "/katalog/11b7cdd27d9f446ca97c1c2913cc169a",
-   "stlpcov": 10
-  },
-  {
-   "id": "ea64d58ebbe745328a7e4ec0d9f2464b",
-   "nazov": "Štruktúra ambulantných sociálnych služieb v BSK (2021)",
-   "kategoria": "Sociálne služby",
-   "upravene": 1778064220000,
-   "riadkov": 23,
-   "stav": "katalog",
-   "kde": "/katalog/ea64d58ebbe745328a7e4ec0d9f2464b",
-   "stlpcov": 3
+   "id": "ccaa77c555054b60937d1c532ac85844",
+   "nazov": "Bezbariérovosť v meste Bratislava",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1771492725000,
+   "riadkov": 161,
+   "stav": "osobitne",
+   "kde": "/mapa",
+   "pozn": "Bezbariérovosť"
   },
   {
    "id": "0cd89fe509b649dc810880504c798b9a",
@@ -3064,13 +3423,13 @@
    "stlpcov": 3
   },
   {
-   "id": "5d3118a2f6164600b2ba82f40c40168f",
-   "nazov": "Detegovaný jazyk prehliadača užívateľov Free Wifi VisitBratislava",
+   "id": "de1851ad86c04c3cb799ef048c05643b",
+   "nazov": "Detegovaný typ operačného systému užívateľov Free Wifi VisitBratislava",
    "kategoria": "Správa mesta a výstavba",
-   "upravene": 1771495677000,
-   "riadkov": 2886,
+   "upravene": 1771495671000,
+   "riadkov": 1787,
    "stav": "katalog",
-   "kde": "/katalog/5d3118a2f6164600b2ba82f40c40168f",
+   "kde": "/katalog/de1851ad86c04c3cb799ef048c05643b",
    "stlpcov": 3
   },
   {
@@ -3122,6 +3481,16 @@
    "dovod": "Surové odpovede dotazníka (Trhovisko Miletičova) s voľným textom respondentov – riziko osobných údajov vo voľných odpovediach."
   },
   {
+   "id": "210b668221014a0f933671228455a4ad",
+   "nazov": "Dĺžka vodovodnej siete BVS",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1788435798000,
+   "riadkov": 6,
+   "stav": "katalog",
+   "kde": "/katalog/210b668221014a0f933671228455a4ad",
+   "stlpcov": 2
+  },
+  {
    "id": "7f719a610a7b401fac526b15d0682534",
    "nazov": "Faktúry Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
@@ -3130,6 +3499,16 @@
    "stav": "osobitne",
    "kde": "/financie#faktury",
    "pozn": "Faktúry magistrátu"
+  },
+  {
+   "id": "8cb2a28c3442479d98918fb2a11d41d8",
+   "nazov": "Faktúry Metropolitného inštitútu Bratislavy",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1771495628000,
+   "riadkov": 225,
+   "stav": "osobitne",
+   "kde": "/financie#faktury",
+   "pozn": "Faktúry MIB"
   },
   {
    "id": "6b2c70340b634aa4b08bb784b9e6bbf8",
@@ -3202,13 +3581,13 @@
    "stlpcov": 3
   },
   {
-   "id": "37c53db38ff14679b5d787f06cf1e9f7",
-   "nazov": "Kontaktné miesta Magistrátu hlavného mesta SR Bratislavy",
+   "id": "ed15579d1a65471187497a534b8de8f4",
+   "nazov": "Komunitné bývanie v Bratislave",
    "kategoria": "Správa mesta a výstavba",
-   "upravene": 1780921572000,
-   "riadkov": 7,
+   "upravene": 1791957501000,
+   "riadkov": 4,
    "stav": "katalog",
-   "kde": "/katalog/37c53db38ff14679b5d787f06cf1e9f7",
+   "kde": "/katalog/ed15579d1a65471187497a534b8de8f4",
    "stlpcov": 8
   },
   {
@@ -3261,14 +3640,24 @@
    "stlpcov": 3
   },
   {
-   "id": "37c358b3bb2e4d99a422e6deb1f9c7c6",
-   "nazov": "Model rastu počtu obyvateľov v obciach BSK v rokoch 1991-2021 a 2021-2051",
+   "id": "503c423345f849f8949b88f28ae3c5dd",
+   "nazov": "Náklady a rast nákladov BVS",
    "kategoria": "Správa mesta a výstavba",
-   "upravene": 1777376333000,
-   "riadkov": 178,
+   "upravene": 1789374371000,
+   "riadkov": 8,
    "stav": "katalog",
-   "kde": "/katalog/37c358b3bb2e4d99a422e6deb1f9c7c6",
-   "stlpcov": 3
+   "kde": "/katalog/503c423345f849f8949b88f28ae3c5dd",
+   "stlpcov": 10
+  },
+  {
+   "id": "e3a9501c0fb64dbf9ff6de81847e3b9a",
+   "nazov": "Objednávky Magistrátu hlavného mesta SR Bratislava od roku 2011",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1778151897000,
+   "riadkov": 65245,
+   "stav": "osobitne",
+   "kde": "/financie#faktury",
+   "pozn": "Objednávky magistrátu"
   },
   {
    "id": "cb90eb5328e0418eaa7db5103a494ee9",
@@ -3279,16 +3668,6 @@
    "stav": "osobitne",
    "kde": "/financie#faktury",
    "pozn": "Objednávky OLO"
-  },
-  {
-   "id": "81abdb9566e84d00aaad5ffd953d791a",
-   "nazov": "Objednávky Pohrebníctva mesta Bratislava - MARIANUM",
-   "kategoria": "Správa mesta a výstavba",
-   "upravene": 1778142871000,
-   "riadkov": 5549,
-   "stav": "katalog",
-   "kde": "/katalog/81abdb9566e84d00aaad5ffd953d791a",
-   "stlpcov": 9
   },
   {
    "id": "287e27b4174642369028a693db613320",
@@ -3311,6 +3690,16 @@
    "stlpcov": 3
   },
   {
+   "id": "f7d0acf6fef34ff3b4d10795a2d3e9d2",
+   "nazov": "Odpadové vody BVS podľa segmentov",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1788786328000,
+   "riadkov": 6,
+   "stav": "katalog",
+   "kde": "/katalog/f7d0acf6fef34ff3b4d10795a2d3e9d2",
+   "stlpcov": 3
+  },
+  {
    "id": "0b7b17040f564283a59a4dcfd09649d2",
    "nazov": "Organizácie Hlavného mesta SR Bratislava",
    "kategoria": "Správa mesta a výstavba",
@@ -3321,16 +3710,6 @@
    "stlpcov": 8
   },
   {
-   "id": "ebd798f317fb4f658e95806fe518eceb",
-   "nazov": "Očakávaný vývoj domového fondu v okresoch BSK v rokoch 2031 - 2051",
-   "kategoria": "Správa mesta a výstavba",
-   "upravene": 1778139429000,
-   "riadkov": 24,
-   "stav": "katalog",
-   "kde": "/katalog/ebd798f317fb4f658e95806fe518eceb",
-   "stlpcov": 3
-  },
-  {
    "id": "898255074afc4e9996f44a11d234ae5a",
    "nazov": "Parcely vo vlastníctve hlavného mesta SR Bratislavy k 31.12.2019",
    "kategoria": "Správa mesta a výstavba",
@@ -3338,16 +3717,6 @@
    "riadkov": 41558,
    "stav": "vynechane",
    "dovod": "Staršia verzia evidencie pozemkov (2019) – web používa majetok mesta k 31. 12. 2025."
-  },
-  {
-   "id": "1b5814581b4a46cdae60cd02b7695212",
-   "nazov": "Petície podané na Hlavné mesto SR BA",
-   "kategoria": "Správa mesta a výstavba",
-   "upravene": 1778152658000,
-   "riadkov": 75,
-   "stav": "katalog",
-   "kde": "/katalog/1b5814581b4a46cdae60cd02b7695212",
-   "stlpcov": 10
   },
   {
    "id": "b275ec5f1b3d4c36be1700398e9e9c0b",
@@ -3400,6 +3769,15 @@
    "stlpcov": 4
   },
   {
+   "id": "b485f86591814eb79337573cfae1cd5a",
+   "nazov": "Pozemky vo vlastníctve hlavného mesta SR Bratislavy k 31.12.2020.",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1771494716000,
+   "riadkov": 43586,
+   "stav": "vynechane",
+   "dovod": "Staršia verzia evidencie pozemkov (2020) – web používa majetok mesta k 31. 12. 2025."
+  },
+  {
    "id": "b61c5a83acdd46e1b2cabbb7c0af2463",
    "nazov": "Počet analýz a vzoriek analyzovaných v laboratóriu BVS podľa rokov",
    "kategoria": "Správa mesta a výstavba",
@@ -3450,14 +3828,24 @@
    "stlpcov": 3
   },
   {
-   "id": "1ce49beed90540f181b9224bfcfe111d",
-   "nazov": "Počet prenesených dát užívateľov Free Wifi VisitBratislava",
+   "id": "bdea151a4cac412ba37a749bc751ebd4",
+   "nazov": "Počet prijatých žiadostí o vydanie cestovného pasu občanom podľa počtu dní",
    "kategoria": "Správa mesta a výstavba",
-   "upravene": 1771495578000,
-   "riadkov": 2320,
+   "upravene": 1771495572000,
+   "riadkov": 55,
    "stav": "katalog",
-   "kde": "/katalog/1ce49beed90540f181b9224bfcfe111d",
-   "stlpcov": 4
+   "kde": "/katalog/bdea151a4cac412ba37a749bc751ebd4",
+   "stlpcov": 6
+  },
+  {
+   "id": "af6b436bcb264f35882c956eec041bf4",
+   "nazov": "Počet prijatých žiadostí o vydanie cestovného pasu občanom podľa veku",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1771495566000,
+   "riadkov": 65,
+   "stav": "katalog",
+   "kde": "/katalog/af6b436bcb264f35882c956eec041bf4",
+   "stlpcov": 8
   },
   {
    "id": "a47a1cfe30894a90b61c945e2a0ddf93",
@@ -3510,14 +3898,13 @@
    "stlpcov": 7
   },
   {
-   "id": "697fb5048590485d905d7af62a359556",
-   "nazov": "Priemerná obsadenosť bytov trvalo bývajúcimi obyvateľmi v Bratislave v rokoch 1980 - 2051",
+   "id": "1607632e1f204b639dc08837b56bde79",
+   "nazov": "Priebežné čerpanie rozpočtu Hlavného mesta SR Bratislavy v roku 2021",
    "kategoria": "Správa mesta a výstavba",
-   "upravene": 1777538800000,
-   "riadkov": 136,
-   "stav": "katalog",
-   "kde": "/katalog/697fb5048590485d905d7af62a359556",
-   "stlpcov": 3
+   "upravene": 1771495523000,
+   "riadkov": 57514,
+   "stav": "vynechane",
+   "dovod": "Mesačné čerpanie rozpočtu len za rok 2021 (57 tisíc riadkov po položkách) – jednorazový rok; rozpočet za všetky roky máme zo záverečných účtov."
   },
   {
    "id": "fed9805037bf4a7ca5a834dbb694a376",
@@ -3527,6 +3914,16 @@
    "riadkov": 136,
    "stav": "katalog",
    "kde": "/katalog/fed9805037bf4a7ca5a834dbb694a376",
+   "stlpcov": 3
+  },
+  {
+   "id": "f20a561a147649dca43d2078814ccf13",
+   "nazov": "Priemerný rozsah zastavaných plôch na trvalo obývaný dom v Bratislave v rokoch 2001 - 2051 (v m²)",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1779111890000,
+   "riadkov": 102,
+   "stav": "katalog",
+   "kde": "/katalog/f20a561a147649dca43d2078814ccf13",
    "stlpcov": 3
   },
   {
@@ -3580,6 +3977,26 @@
    "stlpcov": 3
   },
   {
+   "id": "15a9710974e146c09dc5d05618078917",
+   "nazov": "Rozloženie dĺžky pripojenia užívateľov Free Wifi VisitBratislava",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1771495447000,
+   "riadkov": 610,
+   "stav": "katalog",
+   "kde": "/katalog/15a9710974e146c09dc5d05618078917",
+   "stlpcov": 6
+  },
+  {
+   "id": "d85797a60d184d7d87d5a9358429347a",
+   "nazov": "Rozpočet Bratislavy v roku 2014 - príjmy",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1783583368000,
+   "riadkov": 65,
+   "stav": "katalog",
+   "kde": "/katalog/d85797a60d184d7d87d5a9358429347a",
+   "stlpcov": 8
+  },
+  {
    "id": "c3bfa860e31e4635bc27b0c90ee27285",
    "nazov": "Rozpočet Bratislavy v roku 2014 - výdavky",
    "kategoria": "Správa mesta a výstavba",
@@ -3588,6 +4005,16 @@
    "stav": "katalog",
    "kde": "/katalog/c3bfa860e31e4635bc27b0c90ee27285",
    "stlpcov": 10
+  },
+  {
+   "id": "58582ad336014a6f8f38ba6645d9a860",
+   "nazov": "Rozpočet Bratislavy v roku 2015 - príjmy",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1783583259000,
+   "riadkov": 70,
+   "stav": "katalog",
+   "kde": "/katalog/58582ad336014a6f8f38ba6645d9a860",
+   "stlpcov": 8
   },
   {
    "id": "7d2ffd4582fd44fc830463685b688551",
@@ -3670,16 +4097,6 @@
    "stlpcov": 8
   },
   {
-   "id": "9881069ee68b4a5fa28d7e0cc50bca21",
-   "nazov": "Schválený a upravený rozpočet hlavného mesta SR Bratislavy v roku 2022",
-   "kategoria": "Správa mesta a výstavba",
-   "upravene": 1771495395000,
-   "riadkov": 1858,
-   "stav": "katalog",
-   "kde": "/katalog/9881069ee68b4a5fa28d7e0cc50bca21",
-   "stlpcov": 19
-  },
-  {
    "id": "db088e49a77e4c569e75d5a5a63ca248",
    "nazov": "Spotreba vody na obyvateľa na deň (BVS)",
    "kategoria": "Správa mesta a výstavba",
@@ -3690,14 +4107,54 @@
    "stlpcov": 3
   },
   {
-   "id": "f35793386ac94253ace15fd29617b910",
-   "nazov": "Výsledky verejných obstarávaní rozpočtovými a príspevkovými organizáciami (2018)",
+   "id": "44905e2fbe5145e2850c106db4fac7e7",
+   "nazov": "Vnútorná priestorová štruktúra medzi mestskými časťami Bratislavy v rokoch 2001 - 2051 (v %)",
    "kategoria": "Správa mesta a výstavba",
-   "upravene": 1771508456000,
-   "riadkov": 663,
+   "upravene": 1777537760000,
+   "riadkov": 102,
    "stav": "katalog",
-   "kde": "/katalog/f35793386ac94253ace15fd29617b910",
-   "stlpcov": 14
+   "kde": "/katalog/44905e2fbe5145e2850c106db4fac7e7",
+   "stlpcov": 3
+  },
+  {
+   "id": "8b0e8e7e84b849d0b4a7834b6ca05efb",
+   "nazov": "Výnosy a rast výnosov BVS",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1789373757000,
+   "riadkov": 8,
+   "stav": "katalog",
+   "kde": "/katalog/8b0e8e7e84b849d0b4a7834b6ca05efb",
+   "stlpcov": 8
+  },
+  {
+   "id": "c22eb4b2cc12431389e0c30075c2c864",
+   "nazov": "Výsledky celoplošného testovania v mestských častiach Bratislavy v roku 2021",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1771495026000,
+   "riadkov": 18,
+   "stav": "katalog",
+   "kde": "/katalog/c22eb4b2cc12431389e0c30075c2c864",
+   "stlpcov": 5
+  },
+  {
+   "id": "71c76459d7954119b2d87534350a1dbf",
+   "nazov": "Výsledky rozpočtového hospodárenia mesta Bratislava podľa záverečného účtu",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1784632983000,
+   "riadkov": 8,
+   "stav": "na_webe",
+   "kde": "/financie",
+   "pozn": "Výsledok hospodárenia"
+  },
+  {
+   "id": "b4f13db9930d4e018d9ce351a9bf15f0",
+   "nazov": "Výsledky verejných obstarávaní realizovaných hlavným mestom SR Bratislavou (2018)",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1771495170000,
+   "riadkov": 210,
+   "stav": "katalog",
+   "kde": "/katalog/b4f13db9930d4e018d9ce351a9bf15f0",
+   "stlpcov": 15
   },
   {
    "id": "e82468c1e0b148b1b5935cd93f4c1016",
@@ -3730,6 +4187,16 @@
    "pozn": "Zasadnutia zastupiteľstva"
   },
   {
+   "id": "e5913475e52f4a1389df12b4ca8b7b9e",
+   "nazov": "Zmluvy (stavebné práce) Magistrátu hlavného mesta SR Bratislava do 01.07.2021",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1783583527000,
+   "riadkov": 418,
+   "stav": "katalog",
+   "kde": "/katalog/e5913475e52f4a1389df12b4ca8b7b9e",
+   "stlpcov": 17
+  },
+  {
    "id": "3a6d0c8a990249318b79635cbb64cda7",
    "nazov": "Zmluvy (tovary a služby) Magistrátu hlavného mesta SR Bratislava do 01.07.2021",
    "kategoria": "Správa mesta a výstavba",
@@ -3750,16 +4217,6 @@
    "pozn": "Zmluvy magistrátu"
   },
   {
-   "id": "99015d9060504a97b1e5dd7295eba7c1",
-   "nazov": "Zmluvy o prevode spoluvlastníckeho podielu na pozemku podaných do katastra nehnuteľností",
-   "kategoria": "Správa mesta a výstavba",
-   "upravene": 1778137026000,
-   "riadkov": 17,
-   "stav": "katalog",
-   "kde": "/katalog/99015d9060504a97b1e5dd7295eba7c1",
-   "stlpcov": 2
-  },
-  {
    "id": "a5068dd4455b4df292f2c22e614c2484",
    "nazov": "Zmluvy Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
@@ -3768,6 +4225,16 @@
    "stav": "osobitne",
    "kde": "/financie#faktury",
    "pozn": "Zmluvy OLO"
+  },
+  {
+   "id": "b50effaab6864709b99834ce846c9045",
+   "nazov": "Zmluvy Pohrebníctva mesta Bratislava - MARIANUM",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1778142886000,
+   "riadkov": 7631,
+   "stav": "osobitne",
+   "kde": "/financie#faktury",
+   "pozn": "Zmluvy Marianum"
   },
   {
    "id": "52716173d5cc4d3d931d2ed16495dd6e",
@@ -3788,6 +4255,16 @@
    "stav": "katalog",
    "kde": "/katalog/6e8d37699ec0476b8a0bfe118a2b62f2",
    "stlpcov": 7
+  },
+  {
+   "id": "9428dac0f005497d9bbe1708addf7528",
+   "nazov": "Zoznam členov orgánov samosprávy Magistrátu hlavného mesta SR BA",
+   "kategoria": "Správa mesta a výstavba",
+   "upravene": 1778152209000,
+   "riadkov": 168,
+   "stav": "katalog",
+   "kde": "/katalog/9428dac0f005497d9bbe1708addf7528",
+   "stlpcov": 13
   },
   {
    "id": "f0dbcc58572f405f8bf93d8f5f4fd720",
@@ -3940,6 +4417,16 @@
    "stlpcov": 11
   },
   {
+   "id": "346027a40f62416aba2f5b413d5bb68c",
+   "nazov": "Databáza poskytovateľov celoživotného vzdelávania v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1778143524000,
+   "riadkov": 99,
+   "stav": "katalog",
+   "kde": "/katalog/346027a40f62416aba2f5b413d5bb68c",
+   "stlpcov": 11
+  },
+  {
    "id": "5fa271f3ba004117ac867db8a32d6dec",
    "nazov": "Dotačný program pre rozvoj športu a vzdelávania (financie) v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -3977,6 +4464,16 @@
    "riadkov": 11,
    "stav": "katalog",
    "kde": "/katalog/0a18fec5270f40ac8acf4ea189ff0fe6",
+   "stlpcov": 4
+  },
+  {
+   "id": "5acb8230a6ed44a7b2c0e7f319f8bad4",
+   "nazov": "Kapacita vysokoškolských internátov a jedální v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1787036942000,
+   "riadkov": 8,
+   "stav": "katalog",
+   "kde": "/katalog/5acb8230a6ed44a7b2c0e7f319f8bad4",
    "stlpcov": 4
   },
   {
@@ -4020,6 +4517,16 @@
    "stlpcov": 5
   },
   {
+   "id": "ac15d7e89d214fa4acb3b799538b7f24",
+   "nazov": "Počet detí v materských školách v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1785234478000,
+   "riadkov": 16,
+   "stav": "katalog",
+   "kde": "/katalog/ac15d7e89d214fa4acb3b799538b7f24",
+   "stlpcov": 4
+  },
+  {
    "id": "0b67a7a314ef44d19d38a1b99cfa32ad",
    "nazov": "Počet doktorandov na vysokých školách v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -4027,6 +4534,16 @@
    "riadkov": 32,
    "stav": "katalog",
    "kde": "/katalog/0b67a7a314ef44d19d38a1b99cfa32ad",
+   "stlpcov": 5
+  },
+  {
+   "id": "efd1b87c02e743789a089eee9e8343a2",
+   "nazov": "Počet fakúlt a počet absolventov denného štúdia na vysokých školách v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1771495383000,
+   "riadkov": 610,
+   "stav": "katalog",
+   "kde": "/katalog/efd1b87c02e743789a089eee9e8343a2",
    "stlpcov": 5
   },
   {
@@ -4090,6 +4607,16 @@
    "stlpcov": 3
   },
   {
+   "id": "aa83155810a047de9df4d4c1f184a64d",
+   "nazov": "Počet oddelení školských klubov v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1787659674000,
+   "riadkov": 11,
+   "stav": "katalog",
+   "kde": "/katalog/aa83155810a047de9df4d4c1f184a64d",
+   "stlpcov": 4
+  },
+  {
    "id": "3b6b7b30c03444578b01ee41e2c0fe95",
    "nazov": "Počet pedagogických zamestnancov CVČ v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -4110,14 +4637,14 @@
    "stlpcov": 5
   },
   {
-   "id": "569586b3c9b840ed8a1e67ba2107774e",
-   "nazov": "Počet podujatí a účastníkov príležitostnej záujmovej činnosti CVČ so športovým zameraním",
+   "id": "2c57c1c82d5f4d02b0065d05bd355702",
+   "nazov": "Počet stredných odborných škôl v Bratislave",
    "kategoria": "Vzdelávanie a šport",
-   "upravene": 1771495377000,
-   "riadkov": 350,
+   "upravene": 1786351264000,
+   "riadkov": 11,
    "stav": "katalog",
-   "kde": "/katalog/569586b3c9b840ed8a1e67ba2107774e",
-   "stlpcov": 6
+   "kde": "/katalog/2c57c1c82d5f4d02b0065d05bd355702",
+   "stlpcov": 5
   },
   {
    "id": "553ae544161843c186c74b63c44ff945",
@@ -4250,6 +4777,16 @@
    "stlpcov": 5
   },
   {
+   "id": "a5c0cd3c1305443e810ca425875a3878",
+   "nazov": "Počet zahraničných študentov na vysokých školách v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1787035036000,
+   "riadkov": 32,
+   "stav": "katalog",
+   "kde": "/katalog/a5c0cd3c1305443e810ca425875a3878",
+   "stlpcov": 5
+  },
+  {
    "id": "f60fc295641348438b04b873dc2a62da",
    "nazov": "Počet zapísaných žiakov v školských kluboch (špeciálne školy) v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -4370,6 +4907,36 @@
    "stlpcov": 4
   },
   {
+   "id": "fed9dbf7a11a4471bbe9b89e12e603ef",
+   "nazov": "Počet žiakov v základných školách v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1785397433000,
+   "riadkov": 33,
+   "stav": "katalog",
+   "kde": "/katalog/fed9dbf7a11a4471bbe9b89e12e603ef",
+   "stlpcov": 5
+  },
+  {
+   "id": "92871866e3ba46fb9ab40078e124f73e",
+   "nazov": "Počet žiakov športových tried stredných športových škôl podľa druhu športu",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1771495414000,
+   "riadkov": 1728,
+   "stav": "katalog",
+   "kde": "/katalog/92871866e3ba46fb9ab40078e124f73e",
+   "stlpcov": 6
+  },
+  {
+   "id": "7fe91e633f354199a2bf715124d6e195",
+   "nazov": "Počet žiakov športových tried základných škôl podľa druhu športu",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1771495434000,
+   "riadkov": 3192,
+   "stav": "katalog",
+   "kde": "/katalog/7fe91e633f354199a2bf715124d6e195",
+   "stlpcov": 6
+  },
+  {
    "id": "599424d9447a418eb0e44b148de50c5b",
    "nazov": "Počty žiakov 1. ročníka ZŠ podľa typu zriaďovateľa v rokoch 2000 – 2021",
    "kategoria": "Vzdelávanie a šport",
@@ -4377,6 +4944,16 @@
    "riadkov": 66,
    "stav": "katalog",
    "kde": "/katalog/599424d9447a418eb0e44b148de50c5b",
+   "stlpcov": 3
+  },
+  {
+   "id": "a5cbc1e10f9f4b60bebe5ff47796229a",
+   "nazov": "Prognóza počtu nových materských a základných škôl na Slovensku",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1771495465000,
+   "riadkov": 6,
+   "stav": "katalog",
+   "kde": "/katalog/a5cbc1e10f9f4b60bebe5ff47796229a",
    "stlpcov": 3
   },
   {
@@ -4459,6 +5036,15 @@
    "stlpcov": 58
   },
   {
+   "id": "6908f880c14d40d080a34a28a50c0606",
+   "nazov": "Zoznam materských škôl v roku 2025",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1778143392000,
+   "riadkov": 160,
+   "stav": "vynechane",
+   "dovod": "Staršia verzia (zoznam MŠ 2025) – web používa zoznam MŠ 2026."
+  },
+  {
    "id": "3cca7b5834cd479597db95ac562ba1dd",
    "nazov": "Zoznam materských škôl v roku 2026",
    "kategoria": "Vzdelávanie a šport",
@@ -4469,14 +5055,54 @@
    "pozn": "Zoznam MŠ 2026"
   },
   {
-   "id": "49d5049003754b5984721879b842cf24",
-   "nazov": "Zoznam základných umeleckých škôl v roku 2024",
+   "id": "f1aeacee4f5d47778cebe21be0cb18dd",
+   "nazov": "Zoznam základných škôl v roku 2025",
    "kategoria": "Vzdelávanie a šport",
-   "upravene": 1778143456000,
-   "riadkov": 101,
+   "upravene": 1778143488000,
+   "riadkov": 117,
+   "stav": "na_webe",
+   "kde": "/vybavenost",
+   "pozn": "Zoznam ZŠ"
+  },
+  {
+   "id": "ffc00f304507447d8147c5b86cec4322",
+   "nazov": "Zoznam športovísk na území Bratislavy",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1791187302000,
+   "riadkov": 2215,
+   "stav": "osobitne",
+   "kde": "/mapa",
+   "pozn": "Športoviská"
+  },
+  {
+   "id": "52beb2c0a9b343549a5c372aae2877a3",
+   "nazov": "Školská integrácia detí so špeciálnymi výchovno-vzdelávacími potrebami do materských škôl v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1787041157000,
+   "riadkov": 11,
    "stav": "katalog",
-   "kde": "/katalog/49d5049003754b5984721879b842cf24",
-   "stlpcov": 53
+   "kde": "/katalog/52beb2c0a9b343549a5c372aae2877a3",
+   "stlpcov": 2
+  },
+  {
+   "id": "4060619e9226457cbec6c30a95ae3c36",
+   "nazov": "Školská integrácia žiakov so špeciálnymi výchovno-vzdelávacími potrebami do stredných škôl v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1787049704000,
+   "riadkov": 11,
+   "stav": "katalog",
+   "kde": "/katalog/4060619e9226457cbec6c30a95ae3c36",
+   "stlpcov": 2
+  },
+  {
+   "id": "e4032dee2d1d413f9846fbc3c17cfc59",
+   "nazov": "Školská integrácia žiakov so špeciálnymi výchovno-vzdelávacími potrebami do základných škôl v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1787049168000,
+   "riadkov": 11,
+   "stav": "katalog",
+   "kde": "/katalog/e4032dee2d1d413f9846fbc3c17cfc59",
+   "stlpcov": 2
   },
   {
    "id": "6e6df3ab41b7405f9bb915ac13547fbb",
@@ -4559,6 +5185,16 @@
    "stlpcov": 4
   },
   {
+   "id": "2276b804bcbb4437aa26f8330493385c",
+   "nazov": "Štruktúra učiteľov v základných školách podľa zriaďovateľa v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1785399170000,
+   "riadkov": 33,
+   "stav": "katalog",
+   "kde": "/katalog/2276b804bcbb4437aa26f8330493385c",
+   "stlpcov": 5
+  },
+  {
    "id": "98a2cd027dbc4095bc0272906dc0616f",
    "nazov": "Štruktúra žiakov v gymnáziách a stredných športových školách podľa zriaďovateľa v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -4619,6 +5255,16 @@
    "stlpcov": 3
   },
   {
+   "id": "5bc727ed1be34501a3b49ebc1095c034",
+   "nazov": "Covid-19 - Monitorovací systém pre Bratislavu, Bratislavský samosprávny kraj a Slovensko",
+   "kategoria": "Zdravie",
+   "upravene": 1771495484000,
+   "riadkov": 762,
+   "stav": "katalog",
+   "kde": "/katalog/5bc727ed1be34501a3b49ebc1095c034",
+   "stlpcov": 43
+  },
+  {
    "id": "45f653d43e5c4840a44b7cbaf0161037",
    "nazov": "Ochladzovacie miesta v Bratislave (Ochlaď sa!)",
    "kategoria": "Zdravie",
@@ -4637,6 +5283,16 @@
    "stav": "katalog",
    "kde": "/katalog/72a51faf4a0540d983e3b4ff11b4e383",
    "stlpcov": 3
+  },
+  {
+   "id": "7a59ddfffd764833a097bfa87ea2b75e",
+   "nazov": "Prehľad počtu zaočkovaných ľudí podľa okresu proti vírusu Covid-19 v Bratislave",
+   "kategoria": "Zdravie",
+   "upravene": 1771494873000,
+   "riadkov": 60,
+   "stav": "katalog",
+   "kde": "/katalog/7a59ddfffd764833a097bfa87ea2b75e",
+   "stlpcov": 4
   },
   {
    "id": "59df85c642774664b966f158cf759433",
@@ -4659,6 +5315,16 @@
    "stlpcov": 8
   },
   {
+   "id": "753b41adbfa848799e25294b394ce9f3",
+   "nazov": "Výsledky celoplošného testovania v okresných mestách BSK",
+   "kategoria": "Zdravie",
+   "upravene": 1771494891000,
+   "riadkov": 4,
+   "stav": "katalog",
+   "kde": "/katalog/753b41adbfa848799e25294b394ce9f3",
+   "stlpcov": 4
+  },
+  {
    "id": "e9f87a98d704406c986c29a81fe5cecc",
    "nazov": "Vývoj počtu postelí v ústavnej zdravotnej starostlivosti na 100 000 obyvateľov v krajoch SR  v rokoch 2013 –  2021",
    "kategoria": "Zdravie",
@@ -4666,6 +5332,16 @@
    "riadkov": 72,
    "stav": "katalog",
    "kde": "/katalog/e9f87a98d704406c986c29a81fe5cecc",
+   "stlpcov": 3
+  },
+  {
+   "id": "880cd10f198343c495b6cf524235be2a",
+   "nazov": "Vývoj počtu postelí v ústavnej zdravotnej starostlivosti v krajoch SR v rokoch 2013 – 2021",
+   "kategoria": "Zdravie",
+   "upravene": 1778131000000,
+   "riadkov": 72,
+   "stav": "katalog",
+   "kde": "/katalog/880cd10f198343c495b6cf524235be2a",
    "stlpcov": 3
   },
   {
@@ -4689,15 +5365,6 @@
    "pozn": "Klimatický atlas – citlivosť budov na zrážky"
   },
   {
-   "id": "81ff5b48389448ec8770be66ac62f788",
-   "nazov": "Citlivosť dopravnej infraštruktúry na zrážky",
-   "kategoria": "Územný plán",
-   "upravene": 1778155918000,
-   "riadkov": 9570,
-   "stav": "vynechane",
-   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
-  },
-  {
    "id": "367d0139656e443590295dd3e15fa7f6",
    "nazov": "Citlivosť na zmenu klímy celková",
    "kategoria": "Územný plán",
@@ -4708,13 +5375,14 @@
    "pozn": "Klimatický atlas – citlivosť celková"
   },
   {
-   "id": "f99f75fbdb794d4a823d368976af8d0c",
-   "nazov": "Disponibilná kapacita budov na zrážky",
+   "id": "8eedf533070241b1a22d146f23dba345",
+   "nazov": "Citlivosť obyvateľstva na horúčavy",
    "kategoria": "Územný plán",
-   "upravene": 1778137624000,
+   "upravene": 1778155558000,
    "riadkov": 9570,
-   "stav": "vynechane",
-   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+   "stav": "osobitne",
+   "kde": "/mapa",
+   "pozn": "Klimatický atlas – citlivosť na horúčavy"
   },
   {
    "id": "55ce513738754ea6a834cb8fb831fba2",
@@ -4766,16 +5434,6 @@
    "pozn": "Klimatický atlas – riziko zrážok pre budovy"
   },
   {
-   "id": "89df173edb0d43a1b81bcc064fd5fa5f",
-   "nazov": "Atlas hodnotenia zraniteľnosti a rizík nepriaznivých dôsledkov zmeny klímy",
-   "kategoria": "Životné prostredie",
-   "upravene": 1778142315000,
-   "riadkov": 17,
-   "stav": "katalog",
-   "kde": "/katalog/89df173edb0d43a1b81bcc064fd5fa5f",
-   "stlpcov": 13
-  },
-  {
    "id": "95df2faeda284dfdba5dbbcebd2d5cfd",
    "nazov": "Biologická regulácia komárov v Bratislave - zásahy podľa jednotlivých mestských častí",
    "kategoria": "Životné prostredie",
@@ -4805,6 +5463,24 @@
    "dovod": "Surové odpovede dotazníka (Rohlík) s voľným textom respondentov – riziko osobných údajov vo voľných odpovediach."
   },
   {
+   "id": "e60753111c914b6cbbb3a06e4d1f186f",
+   "nazov": "Dotazníkový prieskum k plánovanej revitalizácii parku Mudrochova a priestoru pred OC Račan",
+   "kategoria": "Životné prostredie",
+   "upravene": 1778142435000,
+   "riadkov": 579,
+   "stav": "vynechane",
+   "dovod": "Surové odpovede dotazníka (Mudrochova) s voľným textom respondentov – riziko osobných údajov vo voľných odpovediach."
+  },
+  {
+   "id": "e96386be34d64047a40e0569747f6373",
+   "nazov": "Dotazníkový prieskum k plánovanej revitalizácii Sadu Janka Kráľa a Tyršovho nábrežia",
+   "kategoria": "Životné prostredie",
+   "upravene": 1778142421000,
+   "riadkov": 1165,
+   "stav": "vynechane",
+   "dovod": "Surové odpovede dotazníka (Sad Janka Kráľa) s voľným textom respondentov – riziko osobných údajov vo voľných odpovediach."
+  },
+  {
    "id": "55577e269bf44d90a61a7ed163ae94c0",
    "nazov": "Medziročné porovnanie počtu monitoringov, zásahov a počtu liahnísk komárov v Bratislave",
    "kategoria": "Životné prostredie",
@@ -4823,6 +5499,16 @@
    "stav": "katalog",
    "kde": "/katalog/e4331354643d4a3d9fec94a21607bc7e",
    "stlpcov": 2
+  },
+  {
+   "id": "561283d458334890810f6c8bd1a186ea",
+   "nazov": "Miera recyklácie komunálnych odpadov v Bratislave",
+   "kategoria": "Životné prostredie",
+   "upravene": 1785142055000,
+   "riadkov": 8,
+   "stav": "na_webe",
+   "kde": "/prostredie",
+   "pozn": "Recyklácia"
   },
   {
    "id": "8afaff7c1d8340929ee23ee65e1bccdc",
@@ -4883,6 +5569,26 @@
    "stav": "na_webe",
    "kde": "/prostredie",
    "pozn": "Ozón"
+  },
+  {
+   "id": "c560d929407e47e59793a78da0fe49bb",
+   "nazov": "Počet prekročení dennej limitnej hodnoty koncentrácie škodlivých látok PM10 v ovzduší v Bratislave",
+   "kategoria": "Životné prostredie",
+   "upravene": 1790247487000,
+   "riadkov": 40,
+   "stav": "na_webe",
+   "kde": "/prostredie",
+   "pozn": "Prekročenia PM10"
+  },
+  {
+   "id": "08b4888537194726bffd6f0f5a55c21e",
+   "nazov": "Priemerná ročná koncentrácia škodlivých látok PM10 v ovzduší v Bratislave",
+   "kategoria": "Životné prostredie",
+   "upravene": 1790246021000,
+   "riadkov": 9,
+   "stav": "na_webe",
+   "kde": "/prostredie",
+   "pozn": "PM10"
   },
   {
    "id": "7146fc000f1544309fbaef06a4a70fa3",
@@ -4965,13 +5671,14 @@
    "stlpcov": 4
   },
   {
-   "id": "c676285f8534424e86495859594f53be",
-   "nazov": "Zameranie verejnej zelene v Bratislave ",
+   "id": "226e7387e1254981be3725a6c9330bb4",
+   "nazov": "Zoznam pitných fontán v roku 2024",
    "kategoria": "Životné prostredie",
-   "upravene": 1778142450000,
-   "riadkov": 436266,
-   "stav": "vynechane",
-   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+   "upravene": 1778135042000,
+   "riadkov": 96,
+   "stav": "osobitne",
+   "kde": "/mapa",
+   "pozn": "Pitné fontány"
   },
   {
    "id": "e84449c950ed461297f2c1bc9eadbc5c",
@@ -4982,17 +5689,7 @@
    "stav": "katalog",
    "kde": "/katalog/e84449c950ed461297f2c1bc9eadbc5c",
    "stlpcov": 2
-  },
-  {
-   "id": "aa1785e567e742f5bdb05bf0ab1234a5",
-   "nazov": "Čierne skládky v meste Bratislava v roku 2025",
-   "kategoria": "Životné prostredie",
-   "upravene": 1778151919000,
-   "riadkov": 67,
-   "stav": "katalog",
-   "kde": "/katalog/aa1785e567e742f5bdb05bf0ab1234a5",
-   "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-10-15T16:29:16+00:00"
+ "aktualizovane": "2026-10-15T16:31:51+00:00"
 }
