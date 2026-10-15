@@ -568,5 +568,1602 @@
    }
   }
  },
- "aktualizovane": "2026-10-15T19:33:57+00:00"
+ "aktualizovane": "2026-10-15T19:43:17+00:00",
+ "mesacne": {
+  "2023-01": {
+   "Bratislava I": {
+    "uoz": 651.0,
+    "disp": 622.0,
+    "pdu": 1.89
+   },
+   "Bratislava II": {
+    "uoz": 2099.0,
+    "disp": 2014.0,
+    "pdu": 2.36
+   },
+   "Bratislava III": {
+    "uoz": 1199.0,
+    "disp": 1152.0,
+    "pdu": 2.21
+   },
+   "Bratislava IV": {
+    "uoz": 1819.0,
+    "disp": 1736.0,
+    "pdu": 2.41
+   },
+   "Bratislava V": {
+    "uoz": 1920.0,
+    "disp": 1793.0,
+    "pdu": 2.25
+   },
+   "Bratislavský kraj": {
+    "uoz": 12429.0,
+    "disp": 11759.0,
+    "pdu": 2.4
+   },
+   "Slovenská republika": {
+    "uoz": 180901.0,
+    "disp": 162622.0,
+    "pdu": 4.44
+   }
+  },
+  "2023-02": {
+   "Bratislava I": {
+    "uoz": 687.0,
+    "disp": 661.0,
+    "pdu": 2.01
+   },
+   "Bratislava II": {
+    "uoz": 2171.0,
+    "disp": 2086.0,
+    "pdu": 2.45
+   },
+   "Bratislava III": {
+    "uoz": 1253.0,
+    "disp": 1207.0,
+    "pdu": 2.32
+   },
+   "Bratislava IV": {
+    "uoz": 1767.0,
+    "disp": 1686.0,
+    "pdu": 2.34
+   },
+   "Bratislava V": {
+    "uoz": 1819.0,
+    "disp": 1708.0,
+    "pdu": 2.15
+   },
+   "Bratislavský kraj": {
+    "uoz": 12316.0,
+    "disp": 11656.0,
+    "pdu": 2.38
+   },
+   "Slovenská republika": {
+    "uoz": 178973.0,
+    "disp": 160926.0,
+    "pdu": 4.4
+   }
+  },
+  "2023-03": {
+   "Bratislava I": {
+    "uoz": 677.0,
+    "disp": 648.0,
+    "pdu": 1.97
+   },
+   "Bratislava II": {
+    "uoz": 2105.0,
+    "disp": 2010.0,
+    "pdu": 2.36
+   },
+   "Bratislava III": {
+    "uoz": 1237.0,
+    "disp": 1179.0,
+    "pdu": 2.26
+   },
+   "Bratislava IV": {
+    "uoz": 1738.0,
+    "disp": 1656.0,
+    "pdu": 2.3
+   },
+   "Bratislava V": {
+    "uoz": 1826.0,
+    "disp": 1709.0,
+    "pdu": 2.15
+   },
+   "Bratislavský kraj": {
+    "uoz": 12028.0,
+    "disp": 11319.0,
+    "pdu": 2.31
+   },
+   "Slovenská republika": {
+    "uoz": 175605.0,
+    "disp": 156903.0,
+    "pdu": 4.29
+   }
+  },
+  "2023-04": {
+   "Bratislava I": {
+    "uoz": 686.0,
+    "disp": 659.0,
+    "pdu": 2.0
+   },
+   "Bratislava II": {
+    "uoz": 2181.0,
+    "disp": 2087.0,
+    "pdu": 2.45
+   },
+   "Bratislava III": {
+    "uoz": 1264.0,
+    "disp": 1208.0,
+    "pdu": 2.32
+   },
+   "Bratislava IV": {
+    "uoz": 1778.0,
+    "disp": 1690.0,
+    "pdu": 2.35
+   },
+   "Bratislava V": {
+    "uoz": 1787.0,
+    "disp": 1668.0,
+    "pdu": 2.11
+   },
+   "Bratislavský kraj": {
+    "uoz": 12012.0,
+    "disp": 11306.0,
+    "pdu": 2.31
+   },
+   "Slovenská republika": {
+    "uoz": 173862.0,
+    "disp": 148957.0,
+    "pdu": 4.08
+   }
+  },
+  "2023-05": {
+   "Bratislava I": {
+    "uoz": 689.0,
+    "disp": 658.0,
+    "pdu": 2.0
+   },
+   "Bratislava II": {
+    "uoz": 2120.0,
+    "disp": 2026.0,
+    "pdu": 2.37
+   },
+   "Bratislava III": {
+    "uoz": 1227.0,
+    "disp": 1177.0,
+    "pdu": 2.26
+   },
+   "Bratislava IV": {
+    "uoz": 1782.0,
+    "disp": 1698.0,
+    "pdu": 2.36
+   },
+   "Bratislava V": {
+    "uoz": 1777.0,
+    "disp": 1663.0,
+    "pdu": 2.1
+   },
+   "Bratislavský kraj": {
+    "uoz": 11868.0,
+    "disp": 11173.0,
+    "pdu": 2.28
+   },
+   "Slovenská republika": {
+    "uoz": 171724.0,
+    "disp": 142277.0,
+    "pdu": 3.9
+   }
+  },
+  "2023-06": {
+   "Bratislava I": {
+    "uoz": 727.0,
+    "disp": 700.0,
+    "pdu": 2.12
+   },
+   "Bratislava II": {
+    "uoz": 2198.0,
+    "disp": 2111.0,
+    "pdu": 2.47
+   },
+   "Bratislava III": {
+    "uoz": 1255.0,
+    "disp": 1211.0,
+    "pdu": 2.32
+   },
+   "Bratislava IV": {
+    "uoz": 1889.0,
+    "disp": 1810.0,
+    "pdu": 2.51
+   },
+   "Bratislava V": {
+    "uoz": 1859.0,
+    "disp": 1759.0,
+    "pdu": 2.23
+   },
+   "Bratislavský kraj": {
+    "uoz": 12339.0,
+    "disp": 11692.0,
+    "pdu": 2.38
+   },
+   "Slovenská republika": {
+    "uoz": 172233.0,
+    "disp": 142943.0,
+    "pdu": 3.92
+   }
+  },
+  "2023-07": {
+   "Bratislava I": {
+    "uoz": 784.0,
+    "disp": 759.0,
+    "pdu": 2.3
+   },
+   "Bratislava II": {
+    "uoz": 2368.0,
+    "disp": 2280.0,
+    "pdu": 2.67
+   },
+   "Bratislava III": {
+    "uoz": 1315.0,
+    "disp": 1269.0,
+    "pdu": 2.43
+   },
+   "Bratislava IV": {
+    "uoz": 2006.0,
+    "disp": 1920.0,
+    "pdu": 2.66
+   },
+   "Bratislava V": {
+    "uoz": 1885.0,
+    "disp": 1788.0,
+    "pdu": 2.27
+   },
+   "Bratislavský kraj": {
+    "uoz": 13030.0,
+    "disp": 12394.0,
+    "pdu": 2.53
+   },
+   "Slovenská republika": {
+    "uoz": 174225.0,
+    "disp": 145368.0,
+    "pdu": 3.98
+   }
+  },
+  "2023-08": {
+   "Bratislava I": {
+    "uoz": 795.0,
+    "disp": 772.0,
+    "pdu": 2.33
+   },
+   "Bratislava II": {
+    "uoz": 2454.0,
+    "disp": 2355.0,
+    "pdu": 2.75
+   },
+   "Bratislava III": {
+    "uoz": 1327.0,
+    "disp": 1286.0,
+    "pdu": 2.46
+   },
+   "Bratislava IV": {
+    "uoz": 2036.0,
+    "disp": 1958.0,
+    "pdu": 2.72
+   },
+   "Bratislava V": {
+    "uoz": 1945.0,
+    "disp": 1847.0,
+    "pdu": 2.35
+   },
+   "Bratislavský kraj": {
+    "uoz": 13286.0,
+    "disp": 12668.0,
+    "pdu": 2.58
+   },
+   "Slovenská republika": {
+    "uoz": 174098.0,
+    "disp": 145823.0,
+    "pdu": 4.0
+   }
+  },
+  "2023-09": {
+   "Bratislava I": {
+    "uoz": 792.0,
+    "disp": 770.0,
+    "pdu": 2.32
+   },
+   "Bratislava II": {
+    "uoz": 2362.0,
+    "disp": 2263.0,
+    "pdu": 2.65
+   },
+   "Bratislava III": {
+    "uoz": 1281.0,
+    "disp": 1242.0,
+    "pdu": 2.37
+   },
+   "Bratislava IV": {
+    "uoz": 1992.0,
+    "disp": 1914.0,
+    "pdu": 2.66
+   },
+   "Bratislava V": {
+    "uoz": 1888.0,
+    "disp": 1793.0,
+    "pdu": 2.28
+   },
+   "Bratislavský kraj": {
+    "uoz": 12967.0,
+    "disp": 12373.0,
+    "pdu": 2.52
+   },
+   "Slovenská republika": {
+    "uoz": 172283.0,
+    "disp": 145296.0,
+    "pdu": 3.98
+   }
+  },
+  "2023-10": {
+   "Bratislava I": {
+    "uoz": 787.0,
+    "disp": 761.0,
+    "pdu": 2.29
+   },
+   "Bratislava II": {
+    "uoz": 2321.0,
+    "disp": 2238.0,
+    "pdu": 2.61
+   },
+   "Bratislava III": {
+    "uoz": 1254.0,
+    "disp": 1212.0,
+    "pdu": 2.32
+   },
+   "Bratislava IV": {
+    "uoz": 1918.0,
+    "disp": 1848.0,
+    "pdu": 2.57
+   },
+   "Bratislava V": {
+    "uoz": 1808.0,
+    "disp": 1721.0,
+    "pdu": 2.19
+   },
+   "Bratislavský kraj": {
+    "uoz": 12569.0,
+    "disp": 12009.0,
+    "pdu": 2.44
+   },
+   "Slovenská republika": {
+    "uoz": 169726.0,
+    "disp": 142171.0,
+    "pdu": 3.9
+   }
+  },
+  "2023-11": {
+   "Bratislava I": {
+    "uoz": 746.0,
+    "disp": 716.0,
+    "pdu": 2.16
+   },
+   "Bratislava II": {
+    "uoz": 2263.0,
+    "disp": 2183.0,
+    "pdu": 2.54
+   },
+   "Bratislava III": {
+    "uoz": 1218.0,
+    "disp": 1171.0,
+    "pdu": 2.24
+   },
+   "Bratislava IV": {
+    "uoz": 1839.0,
+    "disp": 1769.0,
+    "pdu": 2.46
+   },
+   "Bratislava V": {
+    "uoz": 1761.0,
+    "disp": 1674.0,
+    "pdu": 2.13
+   },
+   "Bratislavský kraj": {
+    "uoz": 12190.0,
+    "disp": 11624.0,
+    "pdu": 2.37
+   },
+   "Slovenská republika": {
+    "uoz": 168107.0,
+    "disp": 139915.0,
+    "pdu": 3.84
+   }
+  },
+  "2023-12": {
+   "Bratislava I": {
+    "uoz": 767.0,
+    "disp": 743.0,
+    "pdu": 2.24
+   },
+   "Bratislava II": {
+    "uoz": 2280.0,
+    "disp": 2195.0,
+    "pdu": 2.56
+   },
+   "Bratislava III": {
+    "uoz": 1236.0,
+    "disp": 1190.0,
+    "pdu": 2.26
+   },
+   "Bratislava IV": {
+    "uoz": 1820.0,
+    "disp": 1752.0,
+    "pdu": 2.44
+   },
+   "Bratislava V": {
+    "uoz": 1804.0,
+    "disp": 1724.0,
+    "pdu": 2.2
+   },
+   "Bratislavský kraj": {
+    "uoz": 12380.0,
+    "disp": 11833.0,
+    "pdu": 2.41
+   },
+   "Slovenská republika": {
+    "uoz": 169933.0,
+    "disp": 141434.0,
+    "pdu": 3.88
+   }
+  },
+  "2024-01": {
+   "Bratislava I": {
+    "uoz": 771.0,
+    "disp": 743.0,
+    "pdu": 2.24
+   },
+   "Bratislava II": {
+    "uoz": 2259.0,
+    "disp": 2173.0,
+    "pdu": 2.53
+   },
+   "Bratislava III": {
+    "uoz": 1265.0,
+    "disp": 1222.0,
+    "pdu": 2.32
+   },
+   "Bratislava IV": {
+    "uoz": 1902.0,
+    "disp": 1826.0,
+    "pdu": 2.54
+   },
+   "Bratislava V": {
+    "uoz": 1865.0,
+    "disp": 1789.0,
+    "pdu": 2.28
+   },
+   "Bratislavský kraj": {
+    "uoz": 12584.0,
+    "disp": 12028.0,
+    "pdu": 2.44
+   },
+   "Slovenská republika": {
+    "uoz": 172833.0,
+    "disp": 144608.0,
+    "pdu": 3.97
+   }
+  },
+  "2024-02": {
+   "Bratislava I": {
+    "uoz": 769.0,
+    "disp": 742.0,
+    "pdu": 2.23
+   },
+   "Bratislava II": {
+    "uoz": 2208.0,
+    "disp": 2115.0,
+    "pdu": 2.46
+   },
+   "Bratislava III": {
+    "uoz": 1252.0,
+    "disp": 1208.0,
+    "pdu": 2.29
+   },
+   "Bratislava IV": {
+    "uoz": 1868.0,
+    "disp": 1794.0,
+    "pdu": 2.49
+   },
+   "Bratislava V": {
+    "uoz": 1847.0,
+    "disp": 1774.0,
+    "pdu": 2.27
+   },
+   "Bratislavský kraj": {
+    "uoz": 12342.0,
+    "disp": 11787.0,
+    "pdu": 2.39
+   },
+   "Slovenská republika": {
+    "uoz": 170325.0,
+    "disp": 142643.0,
+    "pdu": 3.92
+   }
+  },
+  "2024-03": {
+   "Bratislava I": {
+    "uoz": 739.0,
+    "disp": 710.0,
+    "pdu": 2.14
+   },
+   "Bratislava II": {
+    "uoz": 2183.0,
+    "disp": 2102.0,
+    "pdu": 2.44
+   },
+   "Bratislava III": {
+    "uoz": 1244.0,
+    "disp": 1199.0,
+    "pdu": 2.27
+   },
+   "Bratislava IV": {
+    "uoz": 1912.0,
+    "disp": 1842.0,
+    "pdu": 2.56
+   },
+   "Bratislava V": {
+    "uoz": 1798.0,
+    "disp": 1720.0,
+    "pdu": 2.2
+   },
+   "Bratislavský kraj": {
+    "uoz": 12126.0,
+    "disp": 11587.0,
+    "pdu": 2.35
+   },
+   "Slovenská republika": {
+    "uoz": 167493.0,
+    "disp": 141043.0,
+    "pdu": 3.88
+   }
+  },
+  "2024-04": {
+   "Bratislava I": {
+    "uoz": 734.0,
+    "disp": 708.0,
+    "pdu": 2.13
+   },
+   "Bratislava II": {
+    "uoz": 2145.0,
+    "disp": 2057.0,
+    "pdu": 2.39
+   },
+   "Bratislava III": {
+    "uoz": 1205.0,
+    "disp": 1159.0,
+    "pdu": 2.19
+   },
+   "Bratislava IV": {
+    "uoz": 1919.0,
+    "disp": 1851.0,
+    "pdu": 2.57
+   },
+   "Bratislava V": {
+    "uoz": 1744.0,
+    "disp": 1671.0,
+    "pdu": 2.14
+   },
+   "Bratislavský kraj": {
+    "uoz": 11919.0,
+    "disp": 11377.0,
+    "pdu": 2.31
+   },
+   "Slovenská republika": {
+    "uoz": 165829.0,
+    "disp": 138952.0,
+    "pdu": 3.82
+   }
+  },
+  "2024-05": {
+   "Bratislava I": {
+    "uoz": 729.0,
+    "disp": 696.0,
+    "pdu": 2.09
+   },
+   "Bratislava II": {
+    "uoz": 2145.0,
+    "disp": 2056.0,
+    "pdu": 2.39
+   },
+   "Bratislava III": {
+    "uoz": 1222.0,
+    "disp": 1163.0,
+    "pdu": 2.2
+   },
+   "Bratislava IV": {
+    "uoz": 1893.0,
+    "disp": 1824.0,
+    "pdu": 2.53
+   },
+   "Bratislava V": {
+    "uoz": 1782.0,
+    "disp": 1698.0,
+    "pdu": 2.18
+   },
+   "Bratislavský kraj": {
+    "uoz": 12088.0,
+    "disp": 11502.0,
+    "pdu": 2.33
+   },
+   "Slovenská republika": {
+    "uoz": 165420.0,
+    "disp": 137397.0,
+    "pdu": 3.78
+   }
+  },
+  "2024-06": {
+   "Bratislava I": {
+    "uoz": 780.0,
+    "disp": 746.0,
+    "pdu": 2.24
+   },
+   "Bratislava II": {
+    "uoz": 2256.0,
+    "disp": 2158.0,
+    "pdu": 2.5
+   },
+   "Bratislava III": {
+    "uoz": 1328.0,
+    "disp": 1271.0,
+    "pdu": 2.4
+   },
+   "Bratislava IV": {
+    "uoz": 2032.0,
+    "disp": 1958.0,
+    "pdu": 2.72
+   },
+   "Bratislava V": {
+    "uoz": 1879.0,
+    "disp": 1795.0,
+    "pdu": 2.3
+   },
+   "Bratislavský kraj": {
+    "uoz": 12745.0,
+    "disp": 12149.0,
+    "pdu": 2.46
+   },
+   "Slovenská republika": {
+    "uoz": 166094.0,
+    "disp": 138173.0,
+    "pdu": 3.8
+   }
+  },
+  "2024-07": {
+   "Bratislava I": {
+    "uoz": 836.0,
+    "disp": 797.0,
+    "pdu": 2.39
+   },
+   "Bratislava II": {
+    "uoz": 2430.0,
+    "disp": 2321.0,
+    "pdu": 2.69
+   },
+   "Bratislava III": {
+    "uoz": 1449.0,
+    "disp": 1395.0,
+    "pdu": 2.63
+   },
+   "Bratislava IV": {
+    "uoz": 2190.0,
+    "disp": 2112.0,
+    "pdu": 2.93
+   },
+   "Bratislava V": {
+    "uoz": 2001.0,
+    "disp": 1922.0,
+    "pdu": 2.47
+   },
+   "Bratislavský kraj": {
+    "uoz": 13645.0,
+    "disp": 13042.0,
+    "pdu": 2.64
+   },
+   "Slovenská republika": {
+    "uoz": 168466.0,
+    "disp": 140950.0,
+    "pdu": 3.88
+   }
+  },
+  "2024-08": {
+   "Bratislava I": {
+    "uoz": 847.0,
+    "disp": 808.0,
+    "pdu": 2.42
+   },
+   "Bratislava II": {
+    "uoz": 2474.0,
+    "disp": 2370.0,
+    "pdu": 2.74
+   },
+   "Bratislava III": {
+    "uoz": 1490.0,
+    "disp": 1437.0,
+    "pdu": 2.71
+   },
+   "Bratislava IV": {
+    "uoz": 2276.0,
+    "disp": 2207.0,
+    "pdu": 3.06
+   },
+   "Bratislava V": {
+    "uoz": 2024.0,
+    "disp": 1960.0,
+    "pdu": 2.52
+   },
+   "Bratislavský kraj": {
+    "uoz": 13928.0,
+    "disp": 13383.0,
+    "pdu": 2.71
+   },
+   "Slovenská republika": {
+    "uoz": 167345.0,
+    "disp": 140457.0,
+    "pdu": 3.87
+   }
+  },
+  "2024-09": {
+   "Bratislava I": {
+    "uoz": 821.0,
+    "disp": 780.0,
+    "pdu": 2.34
+   },
+   "Bratislava II": {
+    "uoz": 2407.0,
+    "disp": 2286.0,
+    "pdu": 2.64
+   },
+   "Bratislava III": {
+    "uoz": 1419.0,
+    "disp": 1361.0,
+    "pdu": 2.56
+   },
+   "Bratislava IV": {
+    "uoz": 2197.0,
+    "disp": 2127.0,
+    "pdu": 2.94
+   },
+   "Bratislava V": {
+    "uoz": 1977.0,
+    "disp": 1888.0,
+    "pdu": 2.43
+   },
+   "Bratislavský kraj": {
+    "uoz": 13579.0,
+    "disp": 12958.0,
+    "pdu": 2.62
+   },
+   "Slovenská republika": {
+    "uoz": 166028.0,
+    "disp": 138900.0,
+    "pdu": 3.83
+   }
+  },
+  "2024-10": {
+   "Bratislava I": {
+    "uoz": 791.0,
+    "disp": 752.0,
+    "pdu": 2.25
+   },
+   "Bratislava II": {
+    "uoz": 2357.0,
+    "disp": 2238.0,
+    "pdu": 2.58
+   },
+   "Bratislava III": {
+    "uoz": 1383.0,
+    "disp": 1326.0,
+    "pdu": 2.5
+   },
+   "Bratislava IV": {
+    "uoz": 2172.0,
+    "disp": 2108.0,
+    "pdu": 2.92
+   },
+   "Bratislava V": {
+    "uoz": 1915.0,
+    "disp": 1822.0,
+    "pdu": 2.35
+   },
+   "Bratislavský kraj": {
+    "uoz": 13225.0,
+    "disp": 12620.0,
+    "pdu": 2.55
+   },
+   "Slovenská republika": {
+    "uoz": 163841.0,
+    "disp": 136727.0,
+    "pdu": 3.77
+   }
+  },
+  "2024-11": {
+   "Bratislava I": {
+    "uoz": 791.0,
+    "disp": 758.0,
+    "pdu": 2.27
+   },
+   "Bratislava II": {
+    "uoz": 2351.0,
+    "disp": 2237.0,
+    "pdu": 2.58
+   },
+   "Bratislava III": {
+    "uoz": 1381.0,
+    "disp": 1318.0,
+    "pdu": 2.48
+   },
+   "Bratislava IV": {
+    "uoz": 2195.0,
+    "disp": 2127.0,
+    "pdu": 2.94
+   },
+   "Bratislava V": {
+    "uoz": 1817.0,
+    "disp": 1721.0,
+    "pdu": 2.22
+   },
+   "Bratislavský kraj": {
+    "uoz": 13049.0,
+    "disp": 12423.0,
+    "pdu": 2.51
+   },
+   "Slovenská republika": {
+    "uoz": 162381.0,
+    "disp": 135414.0,
+    "pdu": 3.73
+   }
+  },
+  "2024-12": {
+   "Bratislava I": {
+    "uoz": 770.0,
+    "disp": 736.0,
+    "pdu": 2.2
+   },
+   "Bratislava II": {
+    "uoz": 2366.0,
+    "disp": 2255.0,
+    "pdu": 2.6
+   },
+   "Bratislava III": {
+    "uoz": 1346.0,
+    "disp": 1295.0,
+    "pdu": 2.43
+   },
+   "Bratislava IV": {
+    "uoz": 2186.0,
+    "disp": 2127.0,
+    "pdu": 2.94
+   },
+   "Bratislava V": {
+    "uoz": 1866.0,
+    "disp": 1777.0,
+    "pdu": 2.29
+   },
+   "Bratislavský kraj": {
+    "uoz": 13173.0,
+    "disp": 12591.0,
+    "pdu": 2.54
+   },
+   "Slovenská republika": {
+    "uoz": 164206.0,
+    "disp": 138302.0,
+    "pdu": 3.81
+   }
+  },
+  "2025-01": {
+   "Bratislava I": {
+    "uoz": 754.0,
+    "disp": 721.0,
+    "pdu": 2.15
+   },
+   "Bratislava II": {
+    "uoz": 2343.0,
+    "disp": 2230.0,
+    "pdu": 2.57
+   },
+   "Bratislava III": {
+    "uoz": 1350.0,
+    "disp": 1299.0,
+    "pdu": 2.43
+   },
+   "Bratislava IV": {
+    "uoz": 2015.0,
+    "disp": 1940.0,
+    "pdu": 2.68
+   },
+   "Bratislava V": {
+    "uoz": 1882.0,
+    "disp": 1791.0,
+    "pdu": 2.31
+   },
+   "Bratislavský kraj": {
+    "uoz": 13111.0,
+    "disp": 12486.0,
+    "pdu": 2.52
+   },
+   "Slovenská republika": {
+    "uoz": 166638.0,
+    "disp": 141985.0,
+    "pdu": 3.92
+   }
+  },
+  "2025-02": {
+   "Bratislava I": {
+    "uoz": 742.0,
+    "disp": 706.0,
+    "pdu": 2.11
+   },
+   "Bratislava II": {
+    "uoz": 2265.0,
+    "disp": 2152.0,
+    "pdu": 2.48
+   },
+   "Bratislava III": {
+    "uoz": 1299.0,
+    "disp": 1253.0,
+    "pdu": 2.34
+   },
+   "Bratislava IV": {
+    "uoz": 2051.0,
+    "disp": 1986.0,
+    "pdu": 2.75
+   },
+   "Bratislava V": {
+    "uoz": 1862.0,
+    "disp": 1779.0,
+    "pdu": 2.3
+   },
+   "Bratislavský kraj": {
+    "uoz": 12864.0,
+    "disp": 12273.0,
+    "pdu": 2.48
+   },
+   "Slovenská republika": {
+    "uoz": 164508.0,
+    "disp": 137453.0,
+    "pdu": 3.79
+   }
+  },
+  "2025-03": {
+   "Bratislava I": {
+    "uoz": 713.0,
+    "disp": 675.0,
+    "pdu": 2.01
+   },
+   "Bratislava II": {
+    "uoz": 2235.0,
+    "disp": 2111.0,
+    "pdu": 2.43
+   },
+   "Bratislava III": {
+    "uoz": 1268.0,
+    "disp": 1214.0,
+    "pdu": 2.27
+   },
+   "Bratislava IV": {
+    "uoz": 2059.0,
+    "disp": 1987.0,
+    "pdu": 2.75
+   },
+   "Bratislava V": {
+    "uoz": 1815.0,
+    "disp": 1728.0,
+    "pdu": 2.23
+   },
+   "Bratislavský kraj": {
+    "uoz": 12632.0,
+    "disp": 11997.0,
+    "pdu": 2.42
+   },
+   "Slovenská republika": {
+    "uoz": 162030.0,
+    "disp": 134829.0,
+    "pdu": 3.72
+   }
+  },
+  "2025-04": {
+   "Bratislava I": {
+    "uoz": 700.0,
+    "disp": 660.0,
+    "pdu": 1.97
+   },
+   "Bratislava II": {
+    "uoz": 2269.0,
+    "disp": 2159.0,
+    "pdu": 2.48
+   },
+   "Bratislava III": {
+    "uoz": 1304.0,
+    "disp": 1255.0,
+    "pdu": 2.34
+   },
+   "Bratislava IV": {
+    "uoz": 2050.0,
+    "disp": 1982.0,
+    "pdu": 2.74
+   },
+   "Bratislava V": {
+    "uoz": 1786.0,
+    "disp": 1703.0,
+    "pdu": 2.2
+   },
+   "Bratislavský kraj": {
+    "uoz": 12565.0,
+    "disp": 11940.0,
+    "pdu": 2.41
+   },
+   "Slovenská republika": {
+    "uoz": 161337.0,
+    "disp": 134511.0,
+    "pdu": 3.71
+   }
+  },
+  "2025-05": {
+   "Bratislava I": {
+    "uoz": 717.0,
+    "disp": 683.0,
+    "pdu": 2.03
+   },
+   "Bratislava II": {
+    "uoz": 2286.0,
+    "disp": 2172.0,
+    "pdu": 2.5
+   },
+   "Bratislava III": {
+    "uoz": 1309.0,
+    "disp": 1254.0,
+    "pdu": 2.34
+   },
+   "Bratislava IV": {
+    "uoz": 2014.0,
+    "disp": 1941.0,
+    "pdu": 2.68
+   },
+   "Bratislava V": {
+    "uoz": 1831.0,
+    "disp": 1740.0,
+    "pdu": 2.25
+   },
+   "Bratislavský kraj": {
+    "uoz": 12633.0,
+    "disp": 11992.0,
+    "pdu": 2.41
+   },
+   "Slovenská republika": {
+    "uoz": 161053.0,
+    "disp": 134453.0,
+    "pdu": 3.71
+   }
+  },
+  "2025-06": {
+   "Bratislava I": {
+    "uoz": 784.0,
+    "disp": 751.0,
+    "pdu": 2.23
+   },
+   "Bratislava II": {
+    "uoz": 2472.0,
+    "disp": 2368.0,
+    "pdu": 2.72
+   },
+   "Bratislava III": {
+    "uoz": 1409.0,
+    "disp": 1359.0,
+    "pdu": 2.53
+   },
+   "Bratislava IV": {
+    "uoz": 2170.0,
+    "disp": 2100.0,
+    "pdu": 2.9
+   },
+   "Bratislava V": {
+    "uoz": 1910.0,
+    "disp": 1839.0,
+    "pdu": 2.38
+   },
+   "Bratislavský kraj": {
+    "uoz": 13365.0,
+    "disp": 12778.0,
+    "pdu": 2.57
+   },
+   "Slovenská republika": {
+    "uoz": 162785.0,
+    "disp": 136826.0,
+    "pdu": 3.78
+   }
+  },
+  "2025-07": {
+   "Bratislava I": {
+    "uoz": 806.0,
+    "disp": 774.0,
+    "pdu": 2.29
+   },
+   "Bratislava II": {
+    "uoz": 2570.0,
+    "disp": 2463.0,
+    "pdu": 2.82
+   },
+   "Bratislava III": {
+    "uoz": 1454.0,
+    "disp": 1407.0,
+    "pdu": 2.62
+   },
+   "Bratislava IV": {
+    "uoz": 2392.0,
+    "disp": 2324.0,
+    "pdu": 3.21
+   },
+   "Bratislava V": {
+    "uoz": 2067.0,
+    "disp": 1993.0,
+    "pdu": 2.58
+   },
+   "Bratislavský kraj": {
+    "uoz": 14300.0,
+    "disp": 13723.0,
+    "pdu": 2.76
+   },
+   "Slovenská republika": {
+    "uoz": 165725.0,
+    "disp": 139766.0,
+    "pdu": 3.86
+   }
+  },
+  "2025-08": {
+   "Bratislava I": {
+    "uoz": 829.0,
+    "disp": 796.0,
+    "pdu": 2.36
+   },
+   "Bratislava II": {
+    "uoz": 2586.0,
+    "disp": 2482.0,
+    "pdu": 2.84
+   },
+   "Bratislava III": {
+    "uoz": 1485.0,
+    "disp": 1434.0,
+    "pdu": 2.66
+   },
+   "Bratislava IV": {
+    "uoz": 2449.0,
+    "disp": 2380.0,
+    "pdu": 3.29
+   },
+   "Bratislava V": {
+    "uoz": 2120.0,
+    "disp": 2047.0,
+    "pdu": 2.65
+   },
+   "Bratislavský kraj": {
+    "uoz": 14506.0,
+    "disp": 13921.0,
+    "pdu": 2.8
+   },
+   "Slovenská republika": {
+    "uoz": 165230.0,
+    "disp": 139105.0,
+    "pdu": 3.85
+   }
+  },
+  "2025-09": {
+   "Bratislava I": {
+    "uoz": 770.0,
+    "disp": 727.0,
+    "pdu": 2.15
+   },
+   "Bratislava II": {
+    "uoz": 2538.0,
+    "disp": 2418.0,
+    "pdu": 2.77
+   },
+   "Bratislava III": {
+    "uoz": 1481.0,
+    "disp": 1420.0,
+    "pdu": 2.64
+   },
+   "Bratislava IV": {
+    "uoz": 2562.0,
+    "disp": 2493.0,
+    "pdu": 3.44
+   },
+   "Bratislava V": {
+    "uoz": 2086.0,
+    "disp": 1996.0,
+    "pdu": 2.58
+   },
+   "Bratislavský kraj": {
+    "uoz": 14518.0,
+    "disp": 13847.0,
+    "pdu": 2.78
+   },
+   "Slovenská republika": {
+    "uoz": 166649.0,
+    "disp": 140376.0,
+    "pdu": 3.88
+   }
+  },
+  "2025-10": {
+   "Bratislava I": {
+    "uoz": 753.0,
+    "disp": 710.0,
+    "pdu": 2.1
+   },
+   "Bratislava II": {
+    "uoz": 2450.0,
+    "disp": 2346.0,
+    "pdu": 2.68
+   },
+   "Bratislava III": {
+    "uoz": 1442.0,
+    "disp": 1392.0,
+    "pdu": 2.58
+   },
+   "Bratislava IV": {
+    "uoz": 2601.0,
+    "disp": 2532.0,
+    "pdu": 3.49
+   },
+   "Bratislava V": {
+    "uoz": 2041.0,
+    "disp": 1961.0,
+    "pdu": 2.53
+   },
+   "Bratislavský kraj": {
+    "uoz": 14248.0,
+    "disp": 13657.0,
+    "pdu": 2.74
+   },
+   "Slovenská republika": {
+    "uoz": 165877.0,
+    "disp": 139715.0,
+    "pdu": 3.87
+   }
+  },
+  "2025-11": {
+   "Bratislava I": {
+    "uoz": 761.0,
+    "disp": 717.0,
+    "pdu": 2.12
+   },
+   "Bratislava II": {
+    "uoz": 2425.0,
+    "disp": 2314.0,
+    "pdu": 2.64
+   },
+   "Bratislava III": {
+    "uoz": 1423.0,
+    "disp": 1368.0,
+    "pdu": 2.53
+   },
+   "Bratislava IV": {
+    "uoz": 2578.0,
+    "disp": 2498.0,
+    "pdu": 3.44
+   },
+   "Bratislava V": {
+    "uoz": 1951.0,
+    "disp": 1855.0,
+    "pdu": 2.4
+   },
+   "Bratislavský kraj": {
+    "uoz": 14051.0,
+    "disp": 13433.0,
+    "pdu": 2.69
+   },
+   "Slovenská republika": {
+    "uoz": 166453.0,
+    "disp": 140269.0,
+    "pdu": 3.88
+   }
+  },
+  "2025-12": {
+   "Bratislava I": {
+    "uoz": 781.0,
+    "disp": 747.0,
+    "pdu": 2.21
+   },
+   "Bratislava II": {
+    "uoz": 2520.0,
+    "disp": 2428.0,
+    "pdu": 2.77
+   },
+   "Bratislava III": {
+    "uoz": 1494.0,
+    "disp": 1448.0,
+    "pdu": 2.68
+   },
+   "Bratislava IV": {
+    "uoz": 2619.0,
+    "disp": 2545.0,
+    "pdu": 3.51
+   },
+   "Bratislava V": {
+    "uoz": 2085.0,
+    "disp": 2012.0,
+    "pdu": 2.61
+   },
+   "Bratislavský kraj": {
+    "uoz": 14659.0,
+    "disp": 14116.0,
+    "pdu": 2.83
+   },
+   "Slovenská republika": {
+    "uoz": 172707.0,
+    "disp": 147628.0,
+    "pdu": 4.09
+   }
+  },
+  "2026-01": {
+   "Bratislava I": {
+    "uoz": 814.0,
+    "disp": 784.0,
+    "pdu": 2.32
+   },
+   "Bratislava II": {
+    "uoz": 2517.0,
+    "disp": 2428.0,
+    "pdu": 2.76
+   },
+   "Bratislava III": {
+    "uoz": 1518.0,
+    "disp": 1474.0,
+    "pdu": 2.73
+   },
+   "Bratislava IV": {
+    "uoz": 2568.0,
+    "disp": 2503.0,
+    "pdu": 3.45
+   },
+   "Bratislava V": {
+    "uoz": 2130.0,
+    "disp": 2061.0,
+    "pdu": 2.67
+   },
+   "Bratislavský kraj": {
+    "uoz": 14938.0,
+    "disp": 14422.0,
+    "pdu": 2.89
+   },
+   "Slovenská republika": {
+    "uoz": 176838.0,
+    "disp": 159521.0,
+    "pdu": 4.42
+   }
+  },
+  "2026-03": {
+   "Bratislava I": {
+    "uoz": 775.0,
+    "disp": 742.0,
+    "pdu": 2.19
+   },
+   "Bratislava II": {
+    "uoz": 2427.0,
+    "disp": 2337.0,
+    "pdu": 2.66
+   },
+   "Bratislava III": {
+    "uoz": 1419.0,
+    "disp": 1371.0,
+    "pdu": 2.53
+   },
+   "Bratislava IV": {
+    "uoz": 2440.0,
+    "disp": 2386.0,
+    "pdu": 3.29
+   },
+   "Bratislava V": {
+    "uoz": 2022.0,
+    "disp": 1951.0,
+    "pdu": 2.53
+   },
+   "Bratislavský kraj": {
+    "uoz": 14101.0,
+    "disp": 13548.0,
+    "pdu": 2.71
+   },
+   "Slovenská republika": {
+    "uoz": 170916.0,
+    "disp": 145385.0,
+    "pdu": 4.03
+   }
+  },
+  "2026-04": {
+   "Bratislava I": {
+    "uoz": 749.0,
+    "disp": 716.0,
+    "pdu": 2.11
+   },
+   "Bratislava II": {
+    "uoz": 2381.0,
+    "disp": 2291.0,
+    "pdu": 2.6
+   },
+   "Bratislava III": {
+    "uoz": 1381.0,
+    "disp": 1327.0,
+    "pdu": 2.45
+   },
+   "Bratislava IV": {
+    "uoz": 2242.0,
+    "disp": 2182.0,
+    "pdu": 3.01
+   },
+   "Bratislava V": {
+    "uoz": 1962.0,
+    "disp": 1892.0,
+    "pdu": 2.46
+   },
+   "Bratislavský kraj": {
+    "uoz": 13631.0,
+    "disp": 13063.0,
+    "pdu": 2.61
+   },
+   "Slovenská republika": {
+    "uoz": 168178.0,
+    "disp": 142802.0,
+    "pdu": 3.96
+   }
+  },
+  "2026-05": {
+   "Bratislava I": {
+    "uoz": 728.0,
+    "disp": 695.0,
+    "pdu": 2.05
+   },
+   "Bratislava II": {
+    "uoz": 2323.0,
+    "disp": 2221.0,
+    "pdu": 2.52
+   },
+   "Bratislava III": {
+    "uoz": 1379.0,
+    "disp": 1315.0,
+    "pdu": 2.43
+   },
+   "Bratislava IV": {
+    "uoz": 2120.0,
+    "disp": 2044.0,
+    "pdu": 2.82
+   },
+   "Bratislava V": {
+    "uoz": 1962.0,
+    "disp": 1874.0,
+    "pdu": 2.44
+   },
+   "Bratislavský kraj": {
+    "uoz": 13333.0,
+    "disp": 12671.0,
+    "pdu": 2.53
+   },
+   "Slovenská republika": {
+    "uoz": 166282.0,
+    "disp": 140940.0,
+    "pdu": 3.91
+   }
+  },
+  "2026-06": {
+   "Bratislava I": {
+    "uoz": 786.0,
+    "disp": 753.0,
+    "pdu": 2.22
+   },
+   "Bratislava II": {
+    "uoz": 2443.0,
+    "disp": 2334.0,
+    "pdu": 2.65
+   },
+   "Bratislava III": {
+    "uoz": 1453.0,
+    "disp": 1388.0,
+    "pdu": 2.56
+   },
+   "Bratislava IV": {
+    "uoz": 2230.0,
+    "disp": 2162.0,
+    "pdu": 2.98
+   },
+   "Bratislava V": {
+    "uoz": 2050.0,
+    "disp": 1965.0,
+    "pdu": 2.56
+   },
+   "Bratislavský kraj": {
+    "uoz": 13963.0,
+    "disp": 13303.0,
+    "pdu": 2.66
+   },
+   "Slovenská republika": {
+    "uoz": 167902.0,
+    "disp": 142868.0,
+    "pdu": 3.97
+   }
+  },
+  "2026-07": {
+   "Bratislava I": {
+    "uoz": 850.0,
+    "disp": 809.0,
+    "pdu": 2.38
+   },
+   "Bratislava II": {
+    "uoz": 2586.0,
+    "disp": 2471.0,
+    "pdu": 2.8
+   },
+   "Bratislava III": {
+    "uoz": 1510.0,
+    "disp": 1455.0,
+    "pdu": 2.68
+   },
+   "Bratislava IV": {
+    "uoz": 2293.0,
+    "disp": 2219.0,
+    "pdu": 3.06
+   },
+   "Bratislava V": {
+    "uoz": 2144.0,
+    "disp": 2062.0,
+    "pdu": 2.68
+   },
+   "Bratislavský kraj": {
+    "uoz": 14640.0,
+    "disp": 13997.0,
+    "pdu": 2.79
+   },
+   "Slovenská republika": {
+    "uoz": 171567.0,
+    "disp": 146346.0,
+    "pdu": 4.07
+   }
+  },
+  "2026-08": {
+   "Slovenská republika": {
+    "uoz": 170121.0,
+    "disp": 145251.0,
+    "pdu": 4.04
+   },
+   "Bratislavský kraj": {
+    "uoz": 14711.0,
+    "disp": 14117.0,
+    "pdu": 2.81
+   },
+   "Bratislava I": {
+    "uoz": 881.0,
+    "disp": 844.0,
+    "pdu": 2.49
+   },
+   "Bratislava II": {
+    "uoz": 2632.0,
+    "disp": 2531.0,
+    "pdu": 2.86
+   },
+   "Bratislava III": {
+    "uoz": 1524.0,
+    "disp": 1472.0,
+    "pdu": 2.71
+   },
+   "Bratislava IV": {
+    "uoz": 2275.0,
+    "disp": 2210.0,
+    "pdu": 3.05
+   },
+   "Bratislava V": {
+    "uoz": 2200.0,
+    "disp": 2129.0,
+    "pdu": 2.77
+   }
+  }
+ },
+ "zdroj_mesacne": {
+  "nazov": "ÚPSVaR – mesačné štatistiky nezamestnanosti (podiel disponibilných uchádzačov o zamestnanie, PDU)",
+  "url": "https://www.upsvr.gov.sk/statistiky/nezamestnanost-mesacne-statistiky.html?page_id=1254"
+ }
 }
