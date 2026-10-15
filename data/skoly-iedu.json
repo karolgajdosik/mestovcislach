@@ -21,8 +21,7 @@
  "mesto": {
   "ms": {
    "skol": 273,
-   "ziakov": 25712,
-   "ziakov_na_ucitela": 1.8
+   "ziakov": 25712
   },
   "zs": {
    "skol": 111,
@@ -36,18 +35,15 @@
   },
   "spec": {
    "skol": 15,
-   "ziakov": 846,
-   "ziakov_na_ucitela": 2.2
+   "ziakov": 846
   },
   "zus": {
    "skol": 99,
-   "ziakov": 19452,
-   "ziakov_na_ucitela": 26.8
+   "ziakov": 19452
   },
   "cvc": {
    "skol": 21,
-   "ziakov": 3664,
-   "ziakov_na_ucitela": 65.4
+   "ziakov": 3664
   }
  },
  "mestske_casti": {
@@ -653,94 +649,163 @@
   ]
  },
  "zaujem_ss": {
-  "skol": 4,
-  "plan": 202,
-  "zaujem1": 43,
+  "skol": 70,
+  "plan": 209,
+  "zaujem1": 3600,
+  "zaujem12": 5877,
   "zapisani": 0,
   "najzaujimavejsie": [
    {
-    "nazov": "Praktická škola, ako organizačná zložka Spojenej školy",
-    "adresa": "Dúbravská cesta 1",
-    "mc": "Karlova Ves",
-    "plan": 19,
-    "zaujem1": 9,
-    "zaujem12": 10,
-    "zapisani": 0,
-    "zaujem_na_miesto": 0.47
-   },
-   {
-    "nazov": "Odborné učilište, ako organizačná zložka Spojenej školy internátnej",
-    "adresa": "Švabinského 7",
-    "mc": "Petržalka",
-    "plan": 98,
-    "zaujem1": 21,
-    "zaujem12": 26,
-    "zapisani": 0,
-    "zaujem_na_miesto": 0.21
-   },
-   {
-    "nazov": "Odborné učilište, ako organizačná zložka Spojenej školy internátnej",
-    "adresa": "Dúbravská cesta 1",
-    "mc": "Karlova Ves",
-    "plan": 70,
-    "zaujem1": 11,
-    "zaujem12": 12,
-    "zapisani": 0,
-    "zaujem_na_miesto": 0.16
-   },
-   {
-    "nazov": "Odborné učilište pre žiakov so sluchovým postihnutím ako organizačná zložka Spojenej školy internátnej",
-    "adresa": "Koceľova 26",
+    "nazov": "Stredná zdravotnícka škola",
+    "adresa": "Záhradnícka 44",
     "mc": "Ružinov",
-    "plan": 15,
-    "zaujem1": 2,
-    "zaujem12": 2,
+    "plan": 0,
+    "zaujem1": 180,
+    "zaujem12": 318,
     "zapisani": 0,
-    "zaujem_na_miesto": 0.13
-   }
-  ],
-  "najmenej": [
-   {
-    "nazov": "Odborné učilište pre žiakov so sluchovým postihnutím ako organizačná zložka Spojenej školy internátnej",
-    "adresa": "Koceľova 26",
-    "mc": "Ružinov",
-    "plan": 15,
-    "zaujem1": 2,
-    "zaujem12": 2,
-    "zapisani": 0,
-    "zaujem_na_miesto": 0.13
+    "zaujem_na_miesto": null
    },
    {
-    "nazov": "Odborné učilište, ako organizačná zložka Spojenej školy internátnej",
-    "adresa": "Dúbravská cesta 1",
-    "mc": "Karlova Ves",
-    "plan": 70,
-    "zaujem1": 11,
-    "zaujem12": 12,
-    "zapisani": 0,
-    "zaujem_na_miesto": 0.16
-   },
-   {
-    "nazov": "Odborné učilište, ako organizačná zložka Spojenej školy internátnej",
-    "adresa": "Švabinského 7",
+    "nazov": "Obchodná akadémia",
+    "adresa": "Dudova 4",
     "mc": "Petržalka",
-    "plan": 98,
-    "zaujem1": 21,
-    "zaujem12": 26,
+    "plan": 0,
+    "zaujem1": 169,
+    "zaujem12": 257,
     "zapisani": 0,
-    "zaujem_na_miesto": 0.21
+    "zaujem_na_miesto": null
    },
    {
-    "nazov": "Praktická škola, ako organizačná zložka Spojenej školy",
-    "adresa": "Dúbravská cesta 1",
-    "mc": "Karlova Ves",
-    "plan": 19,
-    "zaujem1": 9,
-    "zaujem12": 10,
+    "nazov": "Stredná priemyselná škola elektrotechnická",
+    "adresa": "Hálova 16",
+    "mc": "Petržalka",
+    "plan": 0,
+    "zaujem1": 162,
+    "zaujem12": 279,
     "zapisani": 0,
-    "zaujem_na_miesto": 0.47
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Hotelová akadémia",
+    "adresa": "Mikovíniho 1",
+    "mc": "Nové Mesto",
+    "plan": 0,
+    "zaujem1": 141,
+    "zaujem12": 217,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Stredná odborná škola masmediálnych a informačných štúdií",
+    "adresa": "Kadnárova 7",
+    "mc": "Rača",
+    "plan": 0,
+    "zaujem1": 121,
+    "zaujem12": 191,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Stredná priemyselná škola elektrotechnická",
+    "adresa": "Zochova 9",
+    "mc": "Staré Mesto",
+    "plan": 0,
+    "zaujem1": 121,
+    "zaujem12": 221,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Stredná odborná škola kaderníctva a vizážistiky",
+    "adresa": "Svätoplukova 2",
+    "mc": "Ružinov",
+    "plan": 0,
+    "zaujem1": 119,
+    "zaujem12": 184,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Stredná zdravotnícka škola",
+    "adresa": "Strečnianska 20",
+    "mc": "Petržalka",
+    "plan": 0,
+    "zaujem1": 109,
+    "zaujem12": 186,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Stredná priemyselná škola elektrotechnická",
+    "adresa": "Karola Adlera 5",
+    "mc": "Dúbravka",
+    "plan": 0,
+    "zaujem1": 109,
+    "zaujem12": 175,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Gymnázium",
+    "adresa": "Bilíkova 24",
+    "mc": "Dúbravka",
+    "plan": 0,
+    "zaujem1": 102,
+    "zaujem12": 134,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Gymnázium",
+    "adresa": "Metodova 2",
+    "mc": "Ružinov",
+    "plan": 0,
+    "zaujem1": 98,
+    "zaujem12": 168,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Stredná odborná škola beauty služieb",
+    "adresa": "Račianska 105",
+    "mc": "Nové Mesto",
+    "plan": 0,
+    "zaujem1": 93,
+    "zaujem12": 150,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Stredná odborná škola dopravná",
+    "adresa": "Kvačalova 20",
+    "mc": "Ružinov",
+    "plan": 0,
+    "zaujem1": 93,
+    "zaujem12": 140,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Obchodná akadémia",
+    "adresa": "Nevädzová 3",
+    "mc": "Ružinov",
+    "plan": 0,
+    "zaujem1": 90,
+    "zaujem12": 172,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
+   },
+   {
+    "nazov": "Obchodná akadémia",
+    "adresa": "Račianska 107",
+    "mc": "Nové Mesto",
+    "plan": 0,
+    "zaujem1": 86,
+    "zaujem12": 155,
+    "zapisani": 0,
+    "zaujem_na_miesto": null
    }
   ]
  },
- "aktualizovane": "2026-10-15T15:42:43+00:00"
+ "aktualizovane": "2026-10-15T15:46:01+00:00"
 }

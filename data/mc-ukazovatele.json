@@ -1,4 +1,32 @@
 {
+ "index_rozvoja": {
+  "mestske_casti": {
+   "Záhorská Bystrica": 66.24,
+   "Karlova Ves": 65.1,
+   "Devín": 63.94,
+   "Staré Mesto": 63.88,
+   "Rusovce": 62.9,
+   "Lamač": 62.65,
+   "Devínska Nová Ves": 62.24,
+   "Dúbravka": 61.49,
+   "Nové Mesto": 61.46,
+   "Ružinov": 60.81,
+   "Jarovce": 60.72,
+   "Čunovo": 59.0,
+   "Rača": 58.52,
+   "Vrakuňa": 57.89,
+   "Petržalka": 57.62,
+   "Vajnory": 56.16,
+   "Podunajské Biskupice": 55.52
+  },
+  "priemer_kraja": 57.45,
+  "obci_v_kraji": 88,
+  "zdroj": {
+   "nazov": "MIRRI SR – Index regionálneho rozvoja, Bratislavský kraj podľa obcí",
+   "url": "https://data.slovensko.sk/datasety"
+  },
+  "popis": "Súhrnné skóre 0–100 z ukazovateľov ekonomiky, vzdelania, zdravia, bývania, infraštruktúry a životného prostredia; vyššie = rozvinutejšie."
+ },
  "dlh": {
   "roky": {
    "2018": {
@@ -668,5 +696,5 @@
   },
   "popis": "Dlh podľa zákona o rozpočtových pravidlách územnej samosprávy (bez úverov ŠFRB na nájomné byty). Pomer = dlh / bežné príjmy predchádzajúceho roka v %; zákonný limit 60 %. Dlhová služba = splátky istín a úrokov / bežné príjmy; limit 25 %."
  },
- "aktualizovane": "2026-10-15T15:43:06+00:00"
+ "aktualizovane": "2026-10-15T15:46:25+00:00"
 }
