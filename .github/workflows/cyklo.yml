@@ -1,6 +1,6 @@
-name: Cyklotrasy
+name: OpenStreetMap
 
-# Cyklotrasy z OpenStreetMap – raz týždenne, ručne alebo pri zmene skriptu.
+# Cyklotrasy a vybavenosť z OpenStreetMap – raz týždenne, ručne alebo pri zmene skriptov.
 on:
   schedule:
     - cron: "40 3 * * 0" # v nedeľu ráno
@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - "scripts/zber_cyklo.py"
+      - "scripts/zber_vybavenost.py"
       - ".github/workflows/cyklo.yml"
 
 permissions:
@@ -35,7 +36,12 @@ jobs:
       - name: Cyklotrasy (OpenStreetMap)
         run: python scripts/zber_cyklo.py
 
+      - name: Vybavenosť (OpenStreetMap)
+        if: success() || failure()
+        run: python scripts/zber_vybavenost.py
+
       - name: Uložiť zmeny v dátach
+        if: success() || failure()
         run: |
           git config user.name "mestovcislach-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -43,6 +49,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Žiadne nové dáta."
           else
-            git commit -m "Dáta: cyklotrasy $(date -u +%Y-%m-%d)"
+            git commit -m "Dáta: OpenStreetMap $(date -u +%Y-%m-%d)"
             git pull --rebase -q && git push
           fi

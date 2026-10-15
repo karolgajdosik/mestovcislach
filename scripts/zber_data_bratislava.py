@@ -333,9 +333,126 @@ def zber_doprava_statistiky() -> None:
     })
 
 
+# --- Spoločné: mestské časti ------------------------------------------------
+
+def mapa_mc() -> dict[str, str]:
+    """Normalizovaný názov mestskej časti -> kód obce (z dát o obyvateľstve)."""
+    obyv = json.loads((DATA / "obyvatelstvo-bratislava.json").read_text(encoding="utf-8"))
+    return {norm(c["nazov_kratky"]): c["kod"][-6:] for c in obyv["mestske_casti"]}
+
+
+def norm(s: str) -> str:
+    s = (s or "").replace("Bratislava", "").replace("-", " ").replace("–", " ")
+    return re.sub(r"\s+", " ", s).strip().lower()
+
+
+def oprav_kodovanie(s: str) -> str:
+    """Niektoré texty na portáli sú cp1250 prečítané ako latin1 (napr. „Èunovo“)."""
+    try:
+        return s.encode("latin1").decode("cp1250") if re.search(r"[ÈèÒòÌìÝ]", s or "") else s
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        return s
+
+
+def kod_mc(nazov: str, mc: dict[str, str]) -> str | None:
+    n = norm(oprav_kodovanie(nazov))
+    if n in mc:
+        return mc[n]
+    return KU_MC.get(oprav_kodovanie(nazov).strip())
+
+
+# --- Školy a škôlky (oficiálne zoznamy mesta) -------------------------------
+
+def zber_skoly() -> None:
+    mc = mapa_mc()
+    vystup = {"typy": {}}
+    for kluc, item_id, pole_mc, pole_nazov in [
+        ("zs", "f1aeacee4f5d47778cebe21be0cb18dd", "Mestská_časť", "Názov_zriadenia"),
+        ("ms", "3cca7b5834cd479597db95ac562ba1dd", "mestska_cast", "nazov"),
+    ]:
+        item = polozka(item_id)
+        po_mc: dict[str, int] = defaultdict(int)
+        zriadovatel: dict[str, int] = defaultdict(int)
+        nezaradene = []
+        for r in riadky(item):
+            kod = kod_mc(r.get(pole_mc) or "", mc)
+            if not kod:
+                nezaradene.append(r.get(pole_mc))
+                continue
+            po_mc[kod] += 1
+            nazov = (r.get(pole_nazov) or "").lower()
+            zriadovatel["súkromné" if "súkrom" in nazov else "cirkevné" if any(k in nazov for k in ("cirkev", "katolíc", "evanjel", "sv.", "svät")) else "verejné"] += 1
+        if sum(po_mc.values()) < 50:
+            raise RuntimeError(f"Školy {kluc}: podozrivo málo záznamov ({sum(po_mc.values())}), nezaradené: {nezaradene[:5]}")
+        vystup["typy"][kluc] = {"zdroj": zdroj(item), "spolu": sum(po_mc.values()), "zriadovatel": dict(zriadovatel),
+                                "mestske_casti": dict(sorted(po_mc.items())), "nezaradene": len(nezaradene)}
+    uloz("skoly-bratislava.json", vystup)
+
+
+# --- Prostredie: odpad, stromy, čierne skládky ------------------------------
+
+def zber_prostredie() -> None:
+    mc = mapa_mc()
+    odpad = {}
+    for kluc, item_id, pole, popis, jednotka in [
+        ("na_obyvatela", "807a19f89a494ad98710ec1c1bf5a688", "KO_V_KG_NA_OBYVATELA", "Komunálny odpad na obyvateľa", "kg"),
+        ("recyklacia", "561283d458334890810f6c8bd1a186ea", "RECYKLACIA_KO", "Miera recyklácie komunálneho odpadu", "%"),
+        ("skladkovanie", "8afaff7c1d8340929ee23ee65e1bccdc", "SKLADKOVANIE_KO", "Miera skládkovania komunálneho odpadu", "%"),
+    ]:
+        item = polozka(item_id)
+        roky = {str(r["ROK"]).strip(): cislo(r.get(pole)) for r in riadky(item) if cislo(r.get(pole)) is not None}
+        odpad[kluc] = {"popis": popis, "jednotka": jednotka, "zdroj": zdroj(item), "roky": dict(sorted(roky.items()))}
+
+    item = polozka("b000dfd7da3c4b339d1d6033ccdb7c60")
+    stromy: dict[str, dict[str, dict[str, float]]] = defaultdict(lambda: defaultdict(lambda: {"stromy": 0, "kry": 0}))
+    for r in riadky(item):
+        kod = kod_mc(r.get("KATASTRALNE_UZEMIE") or "", mc)
+        rok = str(r.get("ROK")).strip()
+        if kod:
+            stromy[rok][kod]["stromy"] += cislo(r.get("POCET_STROMOV")) or 0
+            stromy[rok][kod]["kry"] += cislo(r.get("POCET_KROV")) or 0
+    vysadba = {"zdroj": zdroj(item), "roky": {rok: dict(sorted(v.items())) for rok, v in sorted(stromy.items())}}
+
+    item = polozka("aa1785e567e742f5bdb05bf0ab1234a5")
+    skladky = []
+    for r in riadky(item):
+        gps = (r.get("GPS_súradnice_skládky") or "").replace(",", " ").split()
+        if len(gps) != 2:
+            continue
+        lon, lat = float(gps[0]), float(gps[1])
+        if lat < lon:  # poistka, keby boli súradnice prehodené
+            lat, lon = lon, lat
+        skladky.append({"lat": round(lat, 5), "lon": round(lon, 5), "kod_obce": kod_mc(r.get("Katastrálne_územie") or "", mc)})
+    if not odpad["na_obyvatela"]["roky"] or not skladky:
+        raise RuntimeError("Prostredie: prázdne dáta.")
+    uloz("prostredie-bratislava.json", {"odpad": odpad, "vysadba": vysadba,
+                                         "cierne_skladky": {"zdroj": zdroj(item), "rok": "2025", "body": skladky}})
+
+
+# --- Zdieľané bicykle Slovnaft BAjk -----------------------------------------
+
+def zber_bajk() -> None:
+    from shapely.geometry import Point, shape
+    hranice = json.loads((DATA / "hranice-bratislava.geojson").read_text(encoding="utf-8"))
+    casti = [(f["properties"]["kod_obce"], shape(f["geometry"])) for f in hranice["features"]]
+    item = polozka("08643896d1b04f69a084f85c07677507")
+    stanice = []
+    for r in riadky(item):
+        lat, lon = cislo(r.get("GPSlat")), cislo(r.get("GPSlon"))
+        if lat is None or lon is None:
+            continue
+        p = Point(lon, lat)
+        kod = next((k for k, g in casti if g.contains(p)), None)
+        stanice.append({"nazov": (r.get("Názov") or "").strip(), "lat": round(lat, 5), "lon": round(lon, 5), "kod_obce": kod})
+    if len(stanice) < 20:
+        raise RuntimeError(f"BAjk: podozrivo málo staníc ({len(stanice)}).")
+    uloz("bajk-bratislava.json", {"zdroj": zdroj(item), "stanice": sorted(stanice, key=lambda x: x["nazov"])})
+
+
 def main() -> int:
     chyby = []
-    for nazov, funkcia in [("rozpočet", zber_rozpocet), ("ovzdušie", zber_ovzdusie), ("zmluvy", zber_zmluvy), ("doprava", zber_doprava_statistiky), ("majetok", zber_majetok)]:
+    for nazov, funkcia in [("rozpočet", zber_rozpocet), ("ovzdušie", zber_ovzdusie), ("zmluvy", zber_zmluvy), ("doprava", zber_doprava_statistiky), ("majetok", zber_majetok),
+                           ("školy", zber_skoly), ("prostredie", zber_prostredie), ("bajk", zber_bajk)]:
         try:
             funkcia()
         except Exception as e:  # noqa: BLE001
