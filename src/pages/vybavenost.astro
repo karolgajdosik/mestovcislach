@@ -8,6 +8,7 @@ const nacitaj = (subor: string) => {
   return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
 };
 const skoly = nacitaj('skoly-bratislava.json');
+const rajon = nacitaj('rajonizacia-bratislava.json');
 const vyb = nacitaj('vybavenost-bratislava.json');
 const obyv = nacitaj('obyvatelstvo-bratislava.json');
 
@@ -61,6 +62,24 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
           <a href={skoly.typy.ms.zdroj.url}>{skoly.typy.ms.zdroj.nazov}</a>, data.bratislava.sk, licencia CC BY 4.0.
         </p>
       </section>
+      {rajon && (
+        <section class="card" id="spadova-skola">
+          <h3>Do ktorej školy a škôlky patrí moja adresa?</h3>
+          <p class="pozn">Spádová (obvodná) základná škola a materská škola podľa rajonizácie mesta. Zadajte ulicu a číslo domu.</p>
+          <form id="rajon-form" class="rajon-form" autocomplete="off">
+            <label class="pole ulica"><span>Ulica</span><input id="rajon-ulica" list="rajon-ulice" placeholder="napr. Romanova" required /></label>
+            <label class="pole cislo"><span>Číslo</span><input id="rajon-cislo" inputmode="text" placeholder="12 alebo 3104/11" /></label>
+            <button type="submit">Hľadať</button>
+            <datalist id="rajon-ulice"></datalist>
+          </form>
+          <div id="rajon-vysledok" aria-live="polite"></div>
+          <p class="zdroj">
+            Spádová škola je tá, ktorá musí prednostne prijať dieťa s trvalým pobytom v obvode; rodič môže zvoliť aj inú školu.
+            Pri materských školách rozhoduje o prijatí riaditeľ. Overte si to na webe školy alebo mestskej časti.
+            {" "}{fmt(rajon.adries)} adries, {rajon.zakladne_skoly} základných škôl. Zdroj: {rajon.zdroj.map((z: any, i: number) => <>{i ? ' a ' : ''}<a href={z.url}>{z.nazov}</a></>)}, data.bratislava.sk, licencia CC BY 4.0.
+          </p>
+        </section>
+      )}
     </>
   )}
 
@@ -110,6 +129,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
   import L from 'leaflet';
   import { osmPodklad } from '../scripts/podklad';
   import { popupMiesta } from '../scripts/miesto';
+  import { najdi, rozdel, zoznamUlic, type Rajonizacia, type Vysledok } from '../scripts/rajon';
   import 'leaflet/dist/leaflet.css';
 
   const el = document.getElementById('mapa-vyb');
@@ -137,6 +157,49 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
       });
     });
   }
+
+  // Spádová škola podľa adresy
+  const form = document.getElementById('rajon-form') as HTMLFormElement | null;
+  if (form) {
+    const ulicaEl = document.getElementById('rajon-ulica') as HTMLInputElement;
+    const cisloEl = document.getElementById('rajon-cislo') as HTMLInputElement;
+    const vysl = document.getElementById('rajon-vysledok')!;
+    let data: Promise<Rajonizacia> | null = null;
+    const nacitaj = () => (data ??= fetch('/data/rajonizacia-bratislava.json').then((r) => r.json()).then((d: Rajonizacia) => {
+      const dl = document.getElementById('rajon-ulice')!;
+      dl.innerHTML = zoznamUlic(d).map((u) => `<option value="${u.replace(/"/g, '&quot;')}">`).join('');
+      return d;
+    }));
+    ulicaEl.addEventListener('focus', nacitaj, { once: true });
+    const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+    const webOdkaz = (w: string) => (w && /^https?:\/\//.test(w) ? ` · <a href="${esc(w)}" target="_blank" rel="noopener">web školy</a>` : '');
+    const karta = (v: Vysledok) => {
+      const zs = v.zs.length
+        ? v.zs.map((s) => /^Školský obvod/.test(s.nazov)
+            ? `<li><b>${esc(s.nazov)}</b> – celá mestská časť je jeden spoločný obvod${s.web && /^https?:\/\//.test(s.web) ? ` · <a href="${esc(s.web)}" target="_blank" rel="noopener">nariadenie o obvodoch</a>` : ''}</li>`
+            : `<li><b>${esc(s.nazov)}</b>${s.adresa ? `, ${esc(s.adresa)}` : ''}${webOdkaz(s.web)}</li>`).join('')
+        : '<li class="tlmene">neuvedená</li>';
+      const ms = v.ms.length ? v.ms.map((s) => `<li><b>${esc(s.nazov)}</b>${s.adresa && !s.nazov.includes(s.adresa) ? `, ${esc(s.adresa)}` : ''}</li>`).join('') : '<li class="tlmene">neuvedená</li>';
+      const pozn = v.cislo && !v.presne ? `<p class="tlmene">Číslo ${esc(v.cislo)} sme na ulici nenašli – zobrazujeme všetky školy pre túto ulicu.</p>`
+        : !v.cislo && (v.zs.length > 1 || v.ms.length > 1) ? '<p class="tlmene">Ulica patrí do viacerých obvodov – zadajte aj číslo domu.</p>' : '';
+      return `<div class="rajon-karta"><p class="adresa">${esc(v.ulica)}${v.cislo ? ' ' + esc(v.cislo) : ''} <span>· ${esc(v.mc)}</span></p>${pozn}
+        <div class="rajon-stlpce"><div><p class="nadpis">Základná škola</p><ul>${zs}</ul></div><div><p class="nadpis">Materská škola</p><ul>${ms}</ul></div></div></div>`;
+    };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      vysl.innerHTML = '<p class="tlmene">Hľadám…</p>';
+      try {
+        const d = await nacitaj();
+        let { ulica, cislo, mc } = rozdel(ulicaEl.value);
+        if (cisloEl.value.trim()) cislo = cisloEl.value.trim().replace(/\s+/g, '');
+        const r = najdi(d, ulica, cislo, mc);
+        vysl.innerHTML = r.length ? r.map(karta).join('')
+          : `<p class="tlmene">Ulicu „${esc(ulica)}“ sme v rajonizácii nenašli. Skúste začiatok názvu, napr. „Hálkova“ namiesto „Hálkova ul.“.</p>`;
+      } catch {
+        vysl.innerHTML = '<p class="tlmene">Údaje sa nepodarilo načítať. Skúste to znova.</p>';
+      }
+    });
+  }
 </script>
 
 <style>
@@ -161,6 +224,21 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
   #mapa-vyb { height: 460px; border-radius: 10px; overflow: hidden; background: var(--bg); }
   @media (max-width: 600px) { #mapa-vyb { height: 380px; } }
   .tabulka-obal { overflow-x: auto; }
+  .pozn { color: var(--muted); font-size: 0.9rem; margin: 6px 0 12px; }
+  .rajon-form { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
+  .pole { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; color: var(--muted); }
+  .pole.ulica { flex: 1 1 220px; }
+  .pole.cislo { flex: 0 1 140px; }
+  .pole input { font: inherit; font-size: 1rem; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); }
+  .rajon-form button { font: inherit; font-weight: 600; padding: 9px 18px; border: 0; border-radius: 8px; background: var(--accent); color: #fff; cursor: pointer; }
+  #rajon-vysledok { margin-top: 14px; display: grid; gap: 10px; }
+  #rajon-vysledok :global(.rajon-karta) { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  #rajon-vysledok :global(.adresa) { font-weight: 700; margin: 0 0 6px; }
+  #rajon-vysledok :global(.adresa span) { color: var(--muted); font-weight: 400; }
+  #rajon-vysledok :global(.rajon-stlpce) { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+  #rajon-vysledok :global(.nadpis) { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 4px; }
+  #rajon-vysledok :global(ul) { margin: 0; padding-left: 18px; font-size: 0.92rem; }
+  #rajon-vysledok :global(.tlmene) { color: var(--muted); font-size: 0.88rem; margin: 0 0 6px; }
   table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
   th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
   th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }

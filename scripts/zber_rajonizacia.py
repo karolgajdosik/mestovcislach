@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -70,7 +71,9 @@ def main() -> int:
     adresy: dict[tuple, list] = {}
 
     def kluc(r: dict) -> tuple:
-        return (t(r.get("Mestská_časť")), t(r.get("Ulica")) or t(r.get("Lokalita")), t(r.get("Súpisné_číslo")), t(r.get("Orientačné_číslo")))
+        # „Bratislava-Petržalka“ (ZŠ) a „Petržalka“ (MŠ) je tá istá mestská časť
+        mc = re.sub(r"^Bratislava\s*-\s*", "", t(r.get("Mestská_časť")))
+        return (mc, t(r.get("Ulica")) or t(r.get("Lokalita")), t(r.get("Súpisné_číslo")), t(r.get("Orientačné_číslo")))
 
     for r in zs:
         sk = (t(r.get("Názov_školského_zariadenia")), t(r.get("Adresa_základnej_školy")))
@@ -78,7 +81,7 @@ def main() -> int:
             continue
         if sk not in idx_skoly:
             idx_skoly[sk] = len(skoly)
-            skoly.append({"nazov": sk[0], "adresa": sk[1], "web": t(r.get("Web_školy")), "typ": t(r.get("Typ_školského_zariadenia"))})
+            skoly.append({"nazov": sk[0], "adresa": "" if "bez udania" in sk[1] else sk[1], "web": t(r.get("Web_školy")), "typ": t(r.get("Typ_školského_zariadenia"))})
         adresy.setdefault(kluc(r), [None, None])[0] = idx_skoly[sk]
     for r in ms:
         sk = (t(r.get("Rajón_materskej_škôlky")), t(r.get("Adresa_materskej_škôlky")))
@@ -92,6 +95,8 @@ def main() -> int:
     # kompaktne: {"MČ": {"Ulica": [[súpisné, orientačné, zš, mš], ...]}}
     ulice: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(list))
     for (mc, ulica, sup, ori), (z, m) in sorted(adresy.items()):
+        if not ulica:  # adresy bez ulice aj lokality sa podľa ulice nájsť nedajú
+            continue
         ulice[mc][ulica].append([sup, ori, z, m])
     verejne = {"zdroj": [zdroj_zs, zdroj_ms], "skolsky_rok": "2025/2026", "zs": skoly, "ms": skolky, "ulice": ulice,
                "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds")}
@@ -100,7 +105,7 @@ def main() -> int:
     stare = json.loads(cesta.read_text(encoding="utf-8")) if cesta.exists() else {}
     if {k: v for k, v in stare.items() if k != "aktualizovane"} != json.loads(json.dumps({k: v for k, v in verejne.items() if k != "aktualizovane"})):
         cesta.write_text(json.dumps(verejne, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-        suhrn = {"zdroj": [zdroj_zs, zdroj_ms], "skolsky_rok": "2025/2026", "adries": len(adresy), "zakladne_skoly": len(skoly), "skolky_rajony": len(skolky),
+        suhrn = {"zdroj": [zdroj_zs, zdroj_ms], "skolsky_rok": "2025/2026", "adries": sum(len(a) for u in ulice.values() for a in u.values()), "zakladne_skoly": len(skoly), "skolky_rajony": len(skolky),
                  "ulic": sum(len(u) for u in ulice.values()), "aktualizovane": verejne["aktualizovane"]}
         (KOREN / "data" / "rajonizacia-bratislava.json").write_text(json.dumps(suhrn, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
         print(f"Uložené: {suhrn}; veľkosť {cesta.stat().st_size // 1024} kB")
