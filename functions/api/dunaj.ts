@@ -69,17 +69,12 @@ export function spracuj(html: string) {
 export const onRequestGet = async (ctx: any) => {
   const cache = (caches as any).default as Cache;
   const kluc = new Request(new URL('/api/dunaj', ctx.request.url).toString());
-  const ladenie = new URL(ctx.request.url).searchParams.has('ladenie');
-  const ulozene = ladenie ? null : await cache.match(kluc);
+  const ulozene = await cache.match(kluc);
   if (ulozene) return ulozene;
   try {
     const r = await fetch(STANICA, { headers: { 'User-Agent': 'mestovcislach.sk (github.com/karolgajdosik/mestovcislach)' } });
     if (!r.ok) throw new Error(`SHMÚ HTTP ${r.status}`);
     const html = await r.text();
-    if (ladenie) {
-      const ser = seria(html, 'base_serie');
-      return new Response(JSON.stringify({ riadok: html.match(/h_datum_cas"\s*>\s*([\d.: ]+?)\s*</)?.[1], posledny: ser[ser.length - 1], offset: offsetBratislava(Date.now()), teraz: Date.now() }));
-    }
     const data = spracuj(html);
     const odpoved = new Response(JSON.stringify(data), {
       headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': `public, max-age=${CACHE_S}` },
