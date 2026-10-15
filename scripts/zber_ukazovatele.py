@@ -131,11 +131,14 @@ def csd() -> dict:
         surove[rok] = {}
         for riadok in t.splitlines():
             c = [x.strip() for x in riadok.split(";")]
-            if len(c) >= 7 and re.match(r"^\d{5}$", c[0]) and re.match(r"^\d+$", c[-1] or "x"):
-                surove[rok][c[0]] = c
+            if len(c) >= 7 and re.match(r"^\d{5}$", c[0]):
+                # stĺpce T, O, M, S = posledné štyri číselné (rok 2015 má na konci poznámku)
+                cisla = [i for i, x in enumerate(c) if re.match(r"^\d+$", x)]
+                if len(cisla) >= 5:
+                    surove[rok][c[0]] = c[: cisla[-1] + 1]
     useky_2015 = []
     for usek, c in surove[2015].items():
-        if len(c) >= 8 and c[2].startswith("Bratislava"):
+        if len(c) >= 7 and c[2].startswith("Bratislava"):
             useky_2015.append({"usek": usek, "cesta": c[1], "okres": c[2], "nakladne": int(c[3] or 0), "osobne": int(c[4] or 0), "motocykle": int(c[5] or 0), "spolu": int(c[6] or 0)})
     if not useky_2015:
         raise RuntimeError("CSD 2015: žiadne bratislavské úseky")
