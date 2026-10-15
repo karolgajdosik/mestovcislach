@@ -79,6 +79,22 @@ const pu = path.join(process.cwd(), 'data', 'mc-ukazovatele.json');
 const index = fs.existsSync(pu) ? JSON.parse(fs.readFileSync(pu, 'utf-8')).index_rozvoja : null;
 const indexMax = index ? Math.max(...Object.values<number>(index.mestske_casti)) : 1;
 const des = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+// Prognózy z Katalógu dát (Bratislava 2050 – tabuľky mesta)
+const tab = (pref: string) => {
+  const dir = path.join(process.cwd(), 'public', 'data', 'tabulky');
+  const f = fs.existsSync(dir) ? fs.readdirSync(dir).find((x) => x.startsWith(pref)) : null;
+  return f ? { ...JSON.parse(fs.readFileSync(path.join(dir, f), 'utf-8')), id: f.replace('.json', '') } : null;
+};
+const progPocet = tab('35e2060c'), progVek = tab('d97203f6'), progStarnutie = tab('a2042a88'), scenare = tab('2bc509db');
+const hodnotaMcRok = (t: any, mc: string, rok: number) => t?.riadky.find((r: any[]) => r[0] === mc && Number(r[1]) === rok)?.[2] ?? null;
+const prognoza = progPocet ? [...new Set<string>(progPocet.riadky.map((r: any[]) => r[0]))].map((mc) => {
+  const a = hodnotaMcRok(progPocet, mc, 2022), b = hodnotaMcRok(progPocet, mc, 2035);
+  return { mc, a, b, zmena: a && b ? (100 * (b - a)) / a : null, vek: hodnotaMcRok(progVek, mc, 2035), vek22: hodnotaMcRok(progVek, mc, 2022), starnutie: hodnotaMcRok(progStarnutie, mc, 2035) };
+}).sort((x, y) => (y.zmena ?? 0) - (x.zmena ?? 0)) : [];
+const SCENARE: Record<string, string> = { 'Velmi vysoky': 'veľmi vysoký', Vysoky: 'vysoký', Stredny: 'stredný', Nizky: 'nízky', 'Nulova migracia': 'nulová migrácia' };
+const grafScenare = scenare ? JSON.stringify(Object.entries([...scenare.riadky].sort((a: any[], b: any[]) => a[1] - b[1]).reduce((acc: any, r: any[]) => {
+  (acc[SCENARE[r[0]] ?? r[0]] ??= []).push([r[1], r[2]]); return acc;
+}, {}))) : '';
 ---
 <Base title="Obyvatelia Bratislavy – sčítanie 2021 – mestovcislach.sk" description="Kto žije v Bratislave a v jej mestských častiach: vek, vzdelanie, národnosť, náboženstvo, domácnosti a byty podľa sčítania 2021.">
   <section class="hero">
@@ -128,6 +144,24 @@ const des = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1,
         </p>
       </section>
 
+      {prognoza.length > 0 && (
+        <section class="card" id="prognoza" data-scenare={grafScenare}>
+          <h2>Prognóza do roku 2035</h2>
+          <p class="pozn-index">
+            Podľa prognózy mesta do roku 2035 najviac porastú {prognoza.slice(0, 3).map((r: any) => `${r.mc} (${r.zmena > 0 ? '+' : ''}${des(r.zmena)} %)`).join(', ')};
+            obyvateľov ubudne najmä v častiach {prognoza.slice(-3).reverse().map((r: any) => `${r.mc} (${des(r.zmena)} %)`).join(', ')}. Prognózy pochádzajú z podkladov stratégie Bratislava 2050.
+          </p>
+          {scenare && <div class="chart nizky-prog"><canvas id="g-scenare" role="img" aria-label="Prognóza počtu obyvateľov Bratislavy podľa scenárov"></canvas></div>}
+          <div class="tabulka-obal">
+            <table>
+              <thead><tr><th>Mestská časť</th><th class="num">2022</th><th class="num">2035</th><th class="num">Zmena</th><th class="num">Priemerný vek 2022 → 2035</th><th class="num">Index starnutia 2035</th></tr></thead>
+              <tbody>{prognoza.map((r: any) => <tr><td>{r.mc}</td><td class="num">{r.a ? fmt(r.a) : '–'}</td><td class="num">{r.b ? fmt(r.b) : '–'}</td><td class="num">{r.zmena != null ? `${r.zmena > 0 ? '+' : ''}${des(r.zmena)} %` : '–'}</td><td class="num">{r.vek22 && r.vek ? `${des(r.vek22)} → ${des(r.vek)}` : '–'}</td><td class="num">{r.starnutie ? des(r.starnutie) : '–'}</td></tr>)}</tbody>
+            </table>
+          </div>
+          <p class="zdroj">Index starnutia = počet ľudí nad 65 rokov na 100 detí do 14 rokov. Zdroj: tabuľky <a href={`/katalog/${progPocet.id}`}>{progPocet.nazov}</a>, <a href={`/katalog/${progVek?.id}`}>priemerný vek</a>, <a href={`/katalog/${progStarnutie?.id}`}>index starnutia</a>{scenare && <>, <a href={`/katalog/${scenare.id}`}>scenáre pre mesto</a></>} (data.bratislava.sk).</p>
+        </section>
+      )}
+
       {index && (
         <section class="card" id="index-rozvoja">
           <h2>Index regionálneho rozvoja</h2>
@@ -145,6 +179,20 @@ const des = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1,
 </Base>
 
 <script>
+  import ChartP from 'chart.js/auto';
+  const pr = document.getElementById('prognoza');
+  if (pr?.dataset.scenare && document.getElementById('g-scenare')) {
+    const sc: [string, [number, number][]][] = JSON.parse(pr.dataset.scenare);
+    const css = getComputedStyle(document.documentElement);
+    const FARBY = ['#7f1d1d', '#c8102e', '#1f6fd1', '#94a3b8', '#a16207'];
+    new ChartP(document.getElementById('g-scenare') as HTMLCanvasElement, {
+      type: 'line',
+      data: { labels: sc[0][1].map((x) => x[0]), datasets: sc.map(([n, body], i) => ({ label: n, data: body.map((x) => x[1]), borderColor: FARBY[i % 5], backgroundColor: FARBY[i % 5], pointRadius: 0, borderWidth: n === 'stredný' ? 3 : 1.5 })) },
+      options: { maintainAspectRatio: false, plugins: { legend: { labels: { color: css.getPropertyValue('--muted').trim() } } },
+        scales: { y: { ticks: { callback: (v) => Number(v).toLocaleString('sk-SK') } } } },
+    });
+  }
+
   const el = document.getElementById('obyv');
   if (el?.dataset.d) {
     const d = JSON.parse(el.dataset.d);
@@ -210,4 +258,5 @@ const des = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1,
   .pruh-obal { background: var(--line); border-radius: 4px; height: 10px; overflow: hidden; }
   .pruh { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
   .index-zoznam .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .nizky-prog { height: 260px; margin-bottom: 12px; }
 </style>
