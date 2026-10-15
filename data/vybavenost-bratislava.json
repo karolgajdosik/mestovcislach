@@ -1,0 +1,228 @@
+{
+ "zdroj": {
+  "nazov": "OpenStreetMap",
+  "licencia": "ODbL – © prispievatelia OpenStreetMap",
+  "url": "https://www.openstreetmap.org/copyright",
+  "stav_osm": "2026-10-15T04:45:21Z"
+ },
+ "kategorie": {
+  "lekarne": "Lekárne",
+  "ambulancie": "Ambulancie a zubári",
+  "nemocnice": "Nemocnice a polikliniky",
+  "nabijanie": "Nabíjacie stanice"
+ },
+ "mesto": {
+  "lekarne": 233,
+  "ambulancie": 327,
+  "nemocnice": 91,
+  "nabijanie": 172,
+  "nabijacie_miesta": 455
+ },
+ "mestske_casti": [
+  {
+   "kod_obce": "529401",
+   "nazov": "Devín",
+   "obyvatelia": 2165,
+   "lekarne": 0,
+   "ambulancie": 0,
+   "nemocnice": 1,
+   "nabijanie": 9,
+   "nabijacie_miesta": 21,
+   "lekarne_na_10000": 0.0,
+   "ambulancie_na_10000": 0.0
+  },
+  {
+   "kod_obce": "529371",
+   "nazov": "Devínska Nová Ves",
+   "obyvatelia": 17128,
+   "lekarne": 5,
+   "ambulancie": 4,
+   "nemocnice": 3,
+   "nabijanie": 8,
+   "nabijacie_miesta": 17,
+   "lekarne_na_10000": 2.9,
+   "ambulancie_na_10000": 2.3
+  },
+  {
+   "kod_obce": "529389",
+   "nazov": "Dúbravka",
+   "obyvatelia": 35300,
+   "lekarne": 9,
+   "ambulancie": 12,
+   "nemocnice": 2,
+   "nabijanie": 11,
+   "nabijacie_miesta": 20,
+   "lekarne_na_10000": 2.5,
+   "ambulancie_na_10000": 3.4
+  },
+  {
+   "kod_obce": "529443",
+   "nazov": "Jarovce",
+   "obyvatelia": 3246,
+   "lekarne": 1,
+   "ambulancie": 3,
+   "nemocnice": 0,
+   "nabijanie": 2,
+   "nabijacie_miesta": 11,
+   "lekarne_na_10000": 3.1,
+   "ambulancie_na_10000": 9.2
+  },
+  {
+   "kod_obce": "529397",
+   "nazov": "Karlova Ves",
+   "obyvatelia": 34746,
+   "lekarne": 14,
+   "ambulancie": 17,
+   "nemocnice": 3,
+   "nabijanie": 8,
+   "nabijacie_miesta": 23,
+   "lekarne_na_10000": 4.0,
+   "ambulancie_na_10000": 4.9
+  },
+  {
+   "kod_obce": "529419",
+   "nazov": "Lamač",
+   "obyvatelia": 7888,
+   "lekarne": 3,
+   "ambulancie": 7,
+   "nemocnice": 2,
+   "nabijanie": 10,
+   "nabijacie_miesta": 23,
+   "lekarne_na_10000": 3.8,
+   "ambulancie_na_10000": 8.9
+  },
+  {
+   "kod_obce": "529346",
+   "nazov": "Nové Mesto",
+   "obyvatelia": 45966,
+   "lekarne": 29,
+   "ambulancie": 28,
+   "nemocnice": 13,
+   "nabijanie": 20,
+   "nabijacie_miesta": 63,
+   "lekarne_na_10000": 6.3,
+   "ambulancie_na_10000": 6.1
+  },
+  {
+   "kod_obce": "529460",
+   "nazov": "Petržalka",
+   "obyvatelia": 112118,
+   "lekarne": 40,
+   "ambulancie": 56,
+   "nemocnice": 17,
+   "nabijanie": 31,
+   "nabijacie_miesta": 71,
+   "lekarne_na_10000": 3.6,
+   "ambulancie_na_10000": 5.0
+  },
+  {
+   "kod_obce": "529311",
+   "nazov": "Podunajské Biskupice",
+   "obyvatelia": 22998,
+   "lekarne": 9,
+   "ambulancie": 5,
+   "nemocnice": 3,
+   "nabijanie": 3,
+   "nabijacie_miesta": 9,
+   "lekarne_na_10000": 3.9,
+   "ambulancie_na_10000": 2.2
+  },
+  {
+   "kod_obce": "529354",
+   "nazov": "Rača",
+   "obyvatelia": 26686,
+   "lekarne": 9,
+   "ambulancie": 7,
+   "nemocnice": 1,
+   "nabijanie": 5,
+   "nabijacie_miesta": 15,
+   "lekarne_na_10000": 3.4,
+   "ambulancie_na_10000": 2.6
+  },
+  {
+   "kod_obce": "529494",
+   "nazov": "Rusovce",
+   "obyvatelia": 4504,
+   "lekarne": 1,
+   "ambulancie": 0,
+   "nemocnice": 0,
+   "nabijanie": 2,
+   "nabijacie_miesta": 8,
+   "lekarne_na_10000": 2.2,
+   "ambulancie_na_10000": 0.0
+  },
+  {
+   "kod_obce": "529320",
+   "nazov": "Ružinov",
+   "obyvatelia": 84233,
+   "lekarne": 61,
+   "ambulancie": 103,
+   "nemocnice": 29,
+   "nabijanie": 35,
+   "nabijacie_miesta": 100,
+   "lekarne_na_10000": 7.2,
+   "ambulancie_na_10000": 12.2
+  },
+  {
+   "kod_obce": "528595",
+   "nazov": "Staré Mesto",
+   "obyvatelia": 47896,
+   "lekarne": 45,
+   "ambulancie": 78,
+   "nemocnice": 15,
+   "nabijanie": 16,
+   "nabijacie_miesta": 45,
+   "lekarne_na_10000": 9.4,
+   "ambulancie_na_10000": 16.3
+  },
+  {
+   "kod_obce": "529362",
+   "nazov": "Vajnory",
+   "obyvatelia": 6011,
+   "lekarne": 3,
+   "ambulancie": 3,
+   "nemocnice": 1,
+   "nabijanie": 5,
+   "nabijacie_miesta": 7,
+   "lekarne_na_10000": 5.0,
+   "ambulancie_na_10000": 5.0
+  },
+  {
+   "kod_obce": "529338",
+   "nazov": "Vrakuňa",
+   "obyvatelia": 20178,
+   "lekarne": 2,
+   "ambulancie": 1,
+   "nemocnice": 0,
+   "nabijanie": 0,
+   "nabijacie_miesta": 0,
+   "lekarne_na_10000": 1.0,
+   "ambulancie_na_10000": 0.5
+  },
+  {
+   "kod_obce": "529427",
+   "nazov": "Záhorská Bystrica",
+   "obyvatelia": 8009,
+   "lekarne": 2,
+   "ambulancie": 3,
+   "nemocnice": 1,
+   "nabijanie": 6,
+   "nabijacie_miesta": 18,
+   "lekarne_na_10000": 2.5,
+   "ambulancie_na_10000": 3.7
+  },
+  {
+   "kod_obce": "529435",
+   "nazov": "Čunovo",
+   "obyvatelia": 1830,
+   "lekarne": 0,
+   "ambulancie": 0,
+   "nemocnice": 0,
+   "nabijanie": 1,
+   "nabijacie_miesta": 4,
+   "lekarne_na_10000": 0.0,
+   "ambulancie_na_10000": 0.0
+  }
+ ],
+ "aktualizovane": "2026-10-15T04:46:35+00:00"
+}
