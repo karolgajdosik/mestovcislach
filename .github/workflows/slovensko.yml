@@ -44,6 +44,8 @@ jobs:
 
       - name: Školy – žiaci, učitelia, záujem o SŠ (MŠVVaM SR)
         if: success() || failure()
+        # servery mapaskol.iedu.sk / svs.edu.sk občas dlhšie odmietajú spojenia – ostanú posledné dáta, beh sa nepovažuje za chybu
+        continue-on-error: true
         run: python scripts/zber_skoly_iedu.py
 
       - name: Sociálne služby (MPSVR SR)
