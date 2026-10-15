@@ -106,16 +106,18 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
   }
   a { color: inherit; text-underline-offset: 3px; }
   .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
-  .top { border-bottom: 1px solid var(--line); background: var(--card); }
+  /* Hlavička a živá lišta ostávajú navrchu aj pri rolovaní (nad mapami Leaflet, ktoré majú z-index do 1000). */
+  html { scroll-padding-top: 108px; }
+  .top { border-bottom: 1px solid var(--line); background: var(--card); position: sticky; top: 0; z-index: 1100; }
   .top .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
   .logo { font-weight: 800; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.02em; }
   .logo span { color: var(--accent); }
   .top nav { display: flex; gap: 18px; overflow-x: auto; scrollbar-width: none; margin-left: 16px; }
   .top nav::-webkit-scrollbar { display: none; }
-  @media (max-width: 480px) { .top nav { gap: 14px; } .top nav a { font-size: 0.88rem; white-space: nowrap; } .logo { font-size: 1.05rem; flex-shrink: 0; } }
+  @media (max-width: 480px) { .top nav { gap: 14px; padding-right: 18px; -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); } .top nav a { font-size: 0.88rem; white-space: nowrap; } .logo { font-size: 1.05rem; flex-shrink: 0; } }
   .top nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; padding: 4px 0; border-bottom: 2px solid transparent; }
   .top nav a[aria-current='page'] { color: var(--text); border-bottom-color: var(--accent); }
-  .zive { background: var(--bg); border-bottom: 1px solid var(--line); font-size: 0.82rem; }
+  .zive { background: var(--bg); border-bottom: 1px solid var(--line); font-size: 0.82rem; position: sticky; top: 56px; z-index: 1099; }
   .zive-obsah { display: flex; align-items: center; gap: 8px; height: 40px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
   .zive-obsah::-webkit-scrollbar { display: none; }
   .zive-titul { color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; }
