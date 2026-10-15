@@ -35,6 +35,7 @@ const ZIVE: Record<string, RegExp> = {
   pocasie: /pocasi|teplot|prs(i|at|alo|ia)|dazd|zrazk|snez|slnk|slnec|vietor|veter|zima|teplo|dazdnik|predpoved|zajtra|vikend|oblec/,
   vystrahy: /vystrah|varovan|burk|hmla|vichric|poladov|nebezpec/,
   dunaj: /dunaj|hladin|povod|rieka|vodny stav/,
+  ovzdusie: /ovzdus|smog|prach|pm10|pm2|dychat|vzduch|ozon|znecist|behat|beh |vonku/,
   cesty: /uzavier|uzavret|rozkop|porucha|poruch|obmedzen|obchadz|cesta|cesty|ulica|ulici|jazd|dnes na/,
 };
 const KATEGORIE: [RegExp, string][] = [
@@ -47,13 +48,13 @@ const KATEGORIE: [RegExp, string][] = [
 const STRANKY: Record<string, string> = {
   obyvatelstvo: '/', volby: '/volby', komunalne: '/volby#komunalne', rozpocet: '/financie', zmluvy: '/financie', majetok: '/financie', mhd: '/doprava#doprava',
   nehody: '/doprava', scitace: '/doprava#premavka', cyklo: '/doprava#cyklo', skoly: '/vybavenost', vybavenost: '/vybavenost',
-  ovzdusie: '/prostredie', prostredie: '/prostredie', priroda: '/prostredie', vystrahy: '/#dnes', dunaj: '/prostredie#dunaj',
+  ovzdusie: '/prostredie#ovzdusie-teraz', prostredie: '/prostredie', priroda: '/prostredie', vystrahy: '/#dnes', dunaj: '/prostredie#dunaj',
   cesty: '/doprava#naozivo', miesta: '/mapa',
 };
 const NAZVY_STRANOK: Record<string, string> = {
   '/': 'Prehľad', '/volby': 'Voľby', '/volby#komunalne': 'Komunálne voľby', '/financie': 'Financie', '/doprava#doprava': 'Doprava – MHD', '/doprava': 'Doprava',
   '/doprava#premavka': 'Kedy je premávka', '/doprava#cyklo': 'Cyklotrasy', '/vybavenost': 'Vybavenosť', '/prostredie': 'Prostredie',
-  '/#dnes': 'Dnes v Bratislave', '/prostredie#dunaj': 'Dunaj', '/doprava#naozivo': 'Uzávierky dnes', '/mapa': 'Mapa',
+  '/#dnes': 'Dnes v Bratislave', '/prostredie#dunaj': 'Dunaj', '/doprava#naozivo': 'Uzávierky dnes', '/prostredie#ovzdusie-teraz': 'Ovzdušie teraz', '/mapa': 'Mapa',
 };
 const STOP = new Set(['ktore', 'ktora', 'ktory', 'kde', 'kedy', 'ako', 'aky', 'aka', 'ake', 'kolko', 'bratislava', 'bratislave', 'bratislavy', 'mesto', 'meste', 'najblizsia', 'najblizsie', 'otvorena', 'otvorene', 'otvoreny', 'teraz', 'dnes', 'prosim', 'chcem', 'potrebujem', 'mate', 'viete', 'nejaka', 'nejake', 'nejaky', 'este', 'blizko', 'pri', 'okolo', 'ulica', 'ulici', 'ulicu']);
 
@@ -91,6 +92,10 @@ async function zive(typ: string, base: string, cast?: string) {
     if (typ === 'vystrahy') {
       const d = await (await fetch(new URL('/api/vystrahy', base))).json();
       return { vystrahy_shmu_pre_bratislavu: d.vystrahy?.length ? d.vystrahy.map((v: any) => `${v.udalost} (${v.stupen}) ${v.od} – ${v.do}: ${v.nadpis}`) : 'žiadne platné výstrahy', inde_na_slovensku: d.inde_na_slovensku };
+    }
+    if (typ === 'ovzdusie') {
+      const d = await (await fetch(new URL('/api/ovzdusie', base))).json();
+      return { kvalita_ovzdusia_teraz_shmu: { legenda: d.legenda, stanice: d.stanice?.map((s: any) => `${s.nazov}: ${s.kategoria?.nazov} (IKO ${s.iko}), meranie ${new Date(s.cas).toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava', hour: '2-digit', minute: '2-digit' })}, µg/m³: ${Object.entries(s.latky).map(([k, v]) => `${k.toUpperCase().replace('PM25', 'PM2,5')} ${v}`).join(', ')}`) } };
     }
     if (typ === 'dunaj') {
       const d = await (await fetch(new URL('/api/dunaj', base))).json();

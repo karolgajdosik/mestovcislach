@@ -69,6 +69,24 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
 
   <h2 class="sekcia">Ovzdušie</h2>
 
+  <section class="card" id="ovzdusie-teraz">
+    <h2>Teraz – index kvality ovzdušia na staniciach SHMÚ</h2>
+    <div class="tabulka-obal">
+      <table class="aq">
+        <thead><tr><th>Stanica</th><th>Kvalita</th><th class="num">IKO</th><th class="num">PM10</th><th class="num">PM2,5</th><th class="num">NO₂</th><th class="num">O₃</th><th class="num">Meranie</th></tr></thead>
+        <tbody id="aq-tab"><tr><td colspan="8" class="aq-nac">Načítavam merania…</td></tr></tbody>
+      </table>
+    </div>
+    <div class="chart nizky"><canvas id="g-aq" role="img" aria-label="Index kvality ovzdušia za posledných 24 hodín"></canvas></div>
+    <p class="zdroj">
+      Koncentrácie v µg/m³ (hodinové). Index kvality ovzdušia (IKO) podľa SHMÚ: <b class="aqk k1">dobrá</b> 0–33, <b class="aqk k2">zhoršená</b> 34–66,
+      <b class="aqk k3">zlá</b> 67–100, <b class="aqk k4">veľmi zlá</b> nad 100; o indexe rozhoduje najhoršia meraná látka.
+      Zdroj: <a href="https://www.shmu.sk/sk/?page=1&id=oko_iko">SHMÚ – index kvality ovzdušia</a>, načítané naživo (obnova každých 10 minút). Údaje sú predbežné, neoverené.
+    </p>
+  </section>
+
+  <h3 class="podnadpis">Ročné priemery a prekročenia limitov</h3>
+
   {ukazovatele.length === 0 ? <div class="card"><p>Dáta sa pripravujú.</p></div> : (
     <div id="ovzdusie" data-graf={JSON.stringify(ukazovatele.map((u) => ({ k: u.k, roky: u.roky, limit: u.limit, jednotka: u.jednotka, stanice: u.stanice })))}>
       <section class="kpis">
@@ -184,6 +202,31 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
   import L from 'leaflet';
   import { osmPodklad } from '../scripts/podklad';
   import 'leaflet/dist/leaflet.css';
+
+  // Ovzdušie teraz – stanice SHMÚ cez /api/ovzdusie
+  {
+    const tab = document.getElementById('aq-tab');
+    if (tab) fetch('/api/ovzdusie').then((r) => (r.ok ? r.json() : Promise.reject())).then((d) => {
+      const cas = (t: number) => new Date(t).toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' });
+      const v = (x: any) => (x == null ? '–' : String(x));
+      tab.innerHTML = d.stanice.map((s: any) => `<tr><td>${s.nazov}</td><td><span class="aqk k${s.kategoria?.stupen ?? 0}">${s.kategoria?.nazov ?? '–'}</span></td>`
+        + `<td class="num">${v(s.iko)}</td><td class="num">${v(s.latky.pm10)}</td><td class="num">${v(s.latky.pm25)}</td><td class="num">${v(s.latky.no2)}</td><td class="num">${v(s.latky.o3)}</td><td class="num">${cas(s.cas)}</td></tr>`).join('');
+      const farby = ['#c8102e', '#1f6fd1', '#138a5e', '#d97706', '#7a4fd1', '#0e7490', '#6b7280'];
+      const css = getComputedStyle(document.documentElement);
+      new Chart(document.getElementById('g-aq') as HTMLCanvasElement, {
+        type: 'line',
+        data: { datasets: d.stanice.map((s: any, i: number) => ({ label: s.nazov, data: s.rad.map(([x, y]: number[]) => ({ x, y })), borderColor: farby[i % farby.length], backgroundColor: farby[i % farby.length], borderWidth: 1.8, pointRadius: 0, tension: 0.3 })) },
+        options: {
+          maintainAspectRatio: false, interaction: { mode: 'nearest', axis: 'x', intersect: false },
+          plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, boxHeight: 2 } }, tooltip: { callbacks: { title: (i) => cas(i[0].parsed.x), label: (c) => ` ${c.dataset.label}: IKO ${c.parsed.y}` } } },
+          scales: {
+            x: { type: 'linear', grid: { display: false }, ticks: { color: css.getPropertyValue('--muted').trim(), stepSize: 3 * 3600e3, maxRotation: 0, callback: (x) => cas(Number(x)) } },
+            y: { beginAtZero: true, suggestedMax: 50, title: { display: true, text: 'IKO' } },
+          },
+        },
+      });
+    }).catch(() => { tab.innerHTML = '<tr><td colspan="8" class="aq-nac">Údaje SHMÚ sú teraz nedostupné.</td></tr>'; });
+  }
 
   // Dunaj – živé údaje SHMÚ cez /api/dunaj
   {
@@ -349,6 +392,17 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
   .kpi .value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 6px 0; }
   .delta { margin: 0; font-size: 0.85rem; color: var(--muted); }
   .chart { position: relative; height: 300px; }
+  .chart.nizky { height: 220px; margin-top: 16px; }
+  .podnadpis { font-size: 1.05rem; margin: 28px 0 0; }
+  .aq-nac { color: var(--muted); }
+  #aq-tab :global(td) { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+  #aq-tab :global(td.num) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  :global(.aqk) { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+  :global(.aqk.k1) { background: #1a7f4b22; color: #1a7f4b; }
+  :global(.aqk.k2) { background: #e6b80033; color: #8a6d00; }
+  :global(.aqk.k3) { background: #f08c0033; color: #a35a00; }
+  :global(.aqk.k4) { background: #d0021b22; color: #d0021b; }
+  @media (prefers-color-scheme: dark) { :global(.aqk.k1) { color: #4cc38a; } :global(.aqk.k2) { color: #ffd54d; } :global(.aqk.k3) { color: #ffb366; } :global(.aqk.k4) { color: #ff6b80; } }
   h2.sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 40px 0 16px; }
   #mapa-skladky { height: 400px; border-radius: 10px; overflow: hidden; background: var(--bg); }
   @media (max-width: 600px) { #mapa-skladky { height: 340px; } }

@@ -10,6 +10,11 @@
       <p class="value">…</p>
       <p class="pozn">načítavam</p>
     </a>
+    <a class="card karta" href="/prostredie#ovzdusie-teraz" id="dnes-ovzdusie">
+      <p class="label">Kvalita ovzdušia</p>
+      <p class="value">…</p>
+      <p class="pozn">načítavam</p>
+    </a>
     <a class="card karta" href="/prostredie#dunaj" id="dnes-dunaj">
       <p class="label">Dunaj v Bratislave</p>
       <p class="value">…</p>
@@ -25,7 +30,7 @@
 </section>
 
 <script>
-  import { vystrahy, dunaj, cesty, stupenDunaja } from '../scripts/zive';
+  import { vystrahy, dunaj, cesty, stupenDunaja, ovzdusie, farbaOvzdusia } from '../scripts/zive';
 
   const karta = (id: string, hodnota: string, pozn: string, trieda = '') => {
     const el = document.getElementById(id);
@@ -52,6 +57,15 @@
     zoz.hidden = false;
   }).catch(() => karta('dnes-vystrahy', '–', 'údaje SHMÚ sú teraz nedostupné'));
 
+  ovzdusie().then((d) => {
+    if (!d.mesto) return karta('dnes-ovzdusie', '–', 'stanice SHMÚ teraz nemerajú');
+    const st = d.stanice ?? [];
+    const zle = st.filter((s: any) => s.kategoria?.stupen > 1);
+    karta('dnes-ovzdusie', d.mesto.kategoria.nazov,
+      zle.length ? `${zle.map((s: any) => `${s.nazov} ${s.kategoria.nazov}`).join(', ')}; ostatné dobrá` : `všetkých ${st.length} staníc SHMÚ: dobrá`,
+      farbaOvzdusia(d.mesto.kategoria.stupen));
+  }).catch(() => karta('dnes-ovzdusie', '–', 'údaje SHMÚ sú teraz nedostupné'));
+
   dunaj().then((d) => {
     const spa = d.spa ?? {};
     const stupen = stupenDunaja(d);
@@ -69,7 +83,7 @@
 <style>
   .dnes { margin-top: 16px; }
   h2 { font-size: 1.1rem; margin: 24px 0 12px; }
-  .karty { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .karty { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
   .karta { text-decoration: none; display: block; border-left: 4px solid var(--line); transition: border-color .15s; }
   .karta:hover { border-color: var(--accent); }
   .karta[data-stav='ok'] { border-left-color: #1a7f4b; }

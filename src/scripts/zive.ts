@@ -50,6 +50,12 @@ export const dunaj = () => zCache('dunaj', async () => {
   // pre lištu netreba celé rady meraní
   return { ...d, merane: undefined, predpoved: undefined };
 });
+export const ovzdusie = () => zCache('ovzdusie', async () => {
+  const d = await json('/api/ovzdusie');
+  return { ...d, stanice: d.stanice?.map((s: any) => ({ ...s, rad: undefined })) };
+});
+export const farbaOvzdusia = (stupen?: number) => (stupen === 1 ? 'ok' : stupen === 2 ? 'yellow' : stupen === 3 ? 'orange' : stupen === 4 ? 'red' : '');
+
 export const cesty = () => zCache('cesty', async () => {
   const [u, p] = await Promise.allSettled([uzavierky(), poruchy()]);
   if (u.status === 'rejected' && p.status === 'rejected') throw new Error('ArcGIS nedostupný');
