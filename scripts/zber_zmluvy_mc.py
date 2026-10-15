@@ -77,6 +77,8 @@ def spracuj_den(d: date, zmluvy: dict) -> int:
             podpis = (p.get("datum") or "")[:10]
             if not podpis or podpis < OD.isoformat() or podpis.startswith("0000"):
                 podpis = (p.get("datum_zverejnene") or "")[:10]
+            if podpis > date.today().isoformat():  # preklep v dátume podpisu (napr. 2028) → dátum zverejnenia
+                podpis = (p.get("datum_zverejnene") or "")[:10]
             if podpis < OD.isoformat():
                 continue
             predmet = text(p.get("predmet", ""))
@@ -104,6 +106,10 @@ def nacitaj() -> tuple[dict, dict]:
     zmluvy = {}
     for f in sorted(ULOZISKO.glob("20*.json")):
         zmluvy.update(json.loads(f.read_text(encoding="utf-8")))
+    # staršie záznamy s dátumom v budúcnosti (preklep v CRZ) – na posledný spracovaný deň
+    for z in zmluvy.values():
+        if stav.get("posledny_den") and z["d"] > stav["posledny_den"]:
+            z["d"] = stav["posledny_den"]
     return stav, zmluvy
 
 
@@ -113,6 +119,9 @@ def uloz(stav: dict, zmluvy: dict) -> None:
         po_rokoch[z["d"][:4]][k] = z
     for rok, zz in po_rokoch.items():
         zapis_ak_zmena(ULOZISKO / f"{rok}.json", dict(sorted(zz.items())), kompaktne=True)
+    for f in ULOZISKO.glob("20*.json"):
+        if f.stem not in po_rokoch:
+            f.unlink()
     (ULOZISKO / "stav.json").write_text(json.dumps(stav, ensure_ascii=False), encoding="utf-8")
 
 
