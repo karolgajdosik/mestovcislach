@@ -15,7 +15,7 @@ const MAX_OTAZKA = 500;
 const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
 // Témy a kľúčové slová (bez diakritiky, začiatky slov)
-const TEMY: Record<string, RegExp> = {
+export const TEMY: Record<string, RegExp> = {
   obyvatelstvo: /obyvat|populac|demograf|kolko ludi|pocet ludi|narodil|byva/,
   scitanie: /scitan|vzdelan|vysokoskol|narodnost|nabozen|vyznan|veriac|katolik|ateist|jazyk|domacnost|byt(y|ov)? |bytov|izb|podlahov|dochodc|senior|deti|vekov|starnut|rodinn|slobodn|rozveden|madar|ukrajin|cudzin|nezamestnan|ekonomick/,
   volby: /volb|volil|volic|stran|hlasov|ucast|parlament|europarl|kandid/,
@@ -33,7 +33,7 @@ const TEMY: Record<string, RegExp> = {
   pamiatky: /pamiat|historick\w* budov|sloh|barok|gotik|secesi/,
   csd: /dialnic|\bd1\b|\bd2\b|\bd4\b|obchvat|intenzit|celostatne scitanie/,
   hluk: /hluk|hlucn|decibel|\bdb\b|ticho|tich\w* ulic/,
-  hlasovania: /hlasoval|hlasovan|dochadzk|ucast\w* poslan|poslan\w* (klub|chod)|klub|ako volil|zastupitel\w* hlas/,
+  hlasovania: /hlasoval|hlasovan|dochadzk|ucast\w* poslan|poslan\w* (klub|chod)|klub|ako volil|zastupitel\w* hlas|chodi\w* na (zastup|zasadn|rokovan)|na zastupitelstv|pritomn|neprit|vynechav|absent|zasadnut/,
   bezpecnost: /priestup|polici|kriminal|trestn|bezpecn|kradez|pokut|vytrznic|podnet|alkohol na verej|parkovan\w* na chodnik/,
   faktury: /faktur|objednavk|\bolo\b|odvoz|marianum|pohrebn|komu mesto plat|dodavatel/,
   klima: /horuc|klima|klimat|privalov|zrazk|prehriat|teplotn\w* ostrov|tepl\w* ostrov/,
@@ -182,7 +182,7 @@ function najdiCast(otazka: string, casti: string[]) {
   return [...casti].sort((a, b) => b.length - a.length).find((c) => q.includes(norm(c)) || q.includes(norm(c).slice(0, -1)));
 }
 
-function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla = '', poloha: { lat: number; lon: number } | null = null) {
+export function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla = '', poloha: { lat: number; lon: number } | null = null) {
   const q = norm(otazka);
   const cast = najdiCast(otazka, data.mestske_casti);
   // doplňujúca otázka („a v Ružinove?“) preberie kategóriu z predošlej otázky
@@ -199,6 +199,20 @@ function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla
   let chybaPolohy = false;
   if (kategoria) {
     vysledok = data.miesta.filter((m: any) => m.k === kategoria && (!cast || m.c === cast));
+    // šport: „tenis v Petržalke“ → len športoviská daného druhu (stolný tenis len ak sa pýta naň)
+    if (kategoria === 'Športoviská') {
+      const SPORT: [RegExp, (t: string) => boolean][] = [
+        [/stoln\w* tenis|ping ?pong/, (t) => t.includes('stolny tenis')], [/tenis/, (t) => t === 'tenis'], [/futbal/, (t) => t.includes('futbal')],
+        [/basket|streetbal|kos(ik|e)/, (t) => t.includes('basket')], [/plazov\w* volejbal|beach/, (t) => t.includes('plazov')], [/volejbal/, (t) => t.includes('volejbal')],
+        [/plav|kupalisk|bazen/, (t) => t.includes('plavan')], [/posilnov|fitnes|fitko/, (t) => t.includes('fitness')], [/workout/, (t) => t.includes('workout')],
+        [/skatepark|skejt/, (t) => t.includes('skatepark')], [/detsk\w* ihrisk|pre deti/, (t) => t.includes('detske')], [/telocvic|hala|haly/, (t) => t.includes('telocvic')],
+        [/hokejbal/, (t) => t.includes('hokejbal')], [/korcul|hokej(?!bal)/, (t) => t.includes('korcul')], [/beh|atletik/, (t) => t.includes('beh')], [/psov|psa|pes/, (t) => t.includes('psov')],
+        [/lezen|boulder/, (t) => t.includes('lezen')], [/pumptrack/, (t) => t.includes('pumptrack')], [/petang/, (t) => t.includes('petang')], [/bedminton|badminton/, (t) => t.includes('bedminton')],
+        [/squash/, (t) => t.includes('squash')], [/padel/, (t) => t.includes('padel')], [/golf/, (t) => t.includes('golf')], [/bowling|kolk/, (t) => t.includes('bowling')],
+      ];
+      const druh = SPORT.find(([r]) => r.test(q));
+      if (druh) vysledok = vysledok.filter((m: any) => druh[1](norm(m.typ ?? '')));
+    }
     // ak otázka obsahuje aj konkrétny názov (napr. ulicu), uprednostni zhodu
     const skore = (m: any) => slova.filter((w) => norm(`${m.n} ${m.a ?? ''}`).includes(w.slice(0, 5))).length;
     const blizko = /\b(pri|blizko|blizk|okolo|najbliz|vedla|nedaleko|kusok|smer)/.test(q);
@@ -250,16 +264,20 @@ function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla
       !m.h && !ZDROJE_MIEST[m.k] ? 'otváracie hodiny neuvedené' : '',
       m.typ && m.typ !== m.k && `${m.typ}`, m.vznik && `vznik ${m.vznik}`, m.sloh && `sloh ${m.sloh}`,
       m.ziaci && `${m.ziaci} žiakov`, m.kapacita && `kapacita ${m.kapacita}`,
-      m.w && `web ${m.w}`, m.linky && `linky ${m.linky}`, m.odchody && `${m.odchody} odchodov za pracovný deň`, m.kap && `nabíjacie miesta ${m.kap}`, m.op && `prevádzkovateľ ${m.op}`,
+      m.info && `${m.info}`, m.w && `web ${m.w}`, m.linky && `linky ${m.linky}`, m.odchody && `${m.odchody} odchodov za pracovný deň`, m.kap && `nabíjacie miesta ${m.kap}`, m.op && `prevádzkovateľ ${m.op}`,
     ].filter(Boolean).join(' | ')),
   };
 }
 
 // Katalóg dát: nájde tabuľky, ktorých názov zodpovedá otázke (aspoň 2 slová alebo jedno dlhé)
 const STOP_KAT = new Set(['bratislava', 'bratislave', 'bratislavy', 'meste', 'mesta', 'mesto', 'kolko', 'aky', 'aka', 'ake', 'ktore', 'ktora', 'ktory', 'roku', 'rokoch', 'podla', 'pocet', 'pocty', 'koľko', 'mestskych', 'castiach', 'casti', 'je', 'bol', 'bola', 'boli']);
+// otázky o budúcnosti → prognózy (inak by vyhrali tabuľky, ktoré len obsahujú rok 2035)
+const SYNONYMA: [RegExp, string[]][] = [
+  [/\brast|\brastl|narast|prirast|pribud|ubud|zmensi|bude\w* (mat|zit|byvat)|v buducn|do roku 20[3-5]\d|v roku 20[3-5]\d|prognoz|predpoved/, ['progn', 'obyva']],
+];
 export function hladajKatalog(otazka: string, katalog: { id: string; n: string; k: string }[]) {
   const skratky = (otazka.match(/\b[A-ZÁ-Ž]{2,5}\b/g) ?? []).map((w) => norm(w));
-  const slova = [...new Set([...norm(otazka).split(/[^a-z0-9]+/).filter((w) => w.length >= 4 && !STOP_KAT.has(w)).map((w) => w.slice(0, Math.min(5, w.length))), ...skratky])];
+  const slova = [...new Set([...norm(otazka).split(/[^a-z0-9]+/).filter((w) => w.length >= 4 && !STOP_KAT.has(w)).map((w) => w.slice(0, Math.min(5, w.length))), ...skratky, ...SYNONYMA.filter(([r]) => r.test(norm(otazka))).flatMap(([, w]) => w)])];
   if (!slova.length) return [];
   return katalog.map((d) => {
     const t = norm(d.n);
