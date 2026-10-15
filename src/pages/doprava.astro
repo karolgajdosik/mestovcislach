@@ -76,7 +76,7 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
         <section class="card">
           <h2>Mapa zastávok</h2>
           <div id="mapa-mhd" role="img" aria-label="Mapa zastávok MHD podľa počtu odchodov"></div>
-          <p class="zdroj">Veľkosť bodu = počet odchodov za deň. Ťuknite na zastávku pre linky. Podklad © OpenStreetMap, © CARTO.</p>
+          <p class="zdroj">Veľkosť bodu = počet odchodov za deň. Ťuknite na zastávku pre linky. Podklad © prispievatelia OpenStreetMap.</p>
         </section>
       )}
 
@@ -176,6 +176,7 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
 <script>
   import Chart from 'chart.js/auto';
   import L from 'leaflet';
+  import { osmPodklad } from '../scripts/podklad';
   import 'leaflet/dist/leaflet.css';
 
   const el = document.getElementById('doprava');
@@ -189,9 +190,7 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
   if (el?.dataset.mapa) {
     const d = JSON.parse(el.dataset.mapa);
     const mapa = L.map('mapa-mhd', { scrollWheelZoom: false, zoomSnap: 0.25, preferCanvas: true });
-    L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_all/{z}/{x}/{y}{r}.png`, {
-      maxZoom: 18, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
-    }).addTo(mapa);
+    osmPodklad().addTo(mapa);
     const hranice = L.geoJSON(d.hranice, { style: { weight: 1, color: muted, fill: false, opacity: 0.6 }, interactive: false }).addTo(mapa);
     mapa.fitBounds(hranice.getBounds(), { padding: [8, 8] });
     const max = Math.max(...d.zastavky.map((z: any[]) => z[3]));
@@ -214,9 +213,7 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
     const poradie = ['cyklocesticka', 'spolocna', 'cyklopruh'];
     const vykresli = async () => {
       const mapa = L.map(cykloEl, { scrollWheelZoom: false, zoomSnap: 0.25 });
-      L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_all/{z}/{x}/{y}{r}.png`, {
-        maxZoom: 18, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
-      }).addTo(mapa);
+      osmPodklad().addTo(mapa);
       mapa.setView([48.15, 17.11], 11.5);
       const geo = await (await fetch('/data/cyklotrasy-bratislava.geojson')).json();
       const vrstva = L.geoJSON(geo, {

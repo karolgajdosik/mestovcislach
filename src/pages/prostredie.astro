@@ -155,7 +155,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
       <section class="card">
         <p class="vysvetlenie">Mestu bolo v roku {prostredie.cierne_skladky.rok} nahlásených <strong>{prostredie.cierne_skladky.body.length}</strong> nelegálnych skládok odpadu na pozemkoch v jeho správe.</p>
         <div id="mapa-skladky" role="img" aria-label="Mapa nahlásených čiernych skládok"></div>
-        <p class="zdroj">Zdroj: <a href={prostredie.cierne_skladky.zdroj.url}>{prostredie.cierne_skladky.zdroj.nazov}</a>, data.bratislava.sk, licencia CC BY 4.0. Podklad © OpenStreetMap, © CARTO.</p>
+        <p class="zdroj">Zdroj: <a href={prostredie.cierne_skladky.zdroj.url}>{prostredie.cierne_skladky.zdroj.nazov}</a>, data.bratislava.sk, licencia CC BY 4.0. Podklad © prispievatelia OpenStreetMap.</p>
       </section>
     </div>
   )}
@@ -164,6 +164,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
 <script>
   import Chart from 'chart.js/auto';
   import L from 'leaflet';
+  import { osmPodklad } from '../scripts/podklad';
   import 'leaflet/dist/leaflet.css';
 
   {
@@ -198,9 +199,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
       const mel = document.getElementById('mapa-skladky');
       if (mel) {
         const mapa = L.map(mel, { scrollWheelZoom: false, zoomSnap: 0.25 });
-        L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_all/{z}/{x}/{y}{r}.png`, {
-          maxZoom: 18, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
-        }).addTo(mapa);
+        osmPodklad().addTo(mapa);
         const body = JSON.parse(pel.dataset.skladky!) as [number, number][];
         const markery = body.map(([lat, lon]) => L.circleMarker([lat, lon], { radius: 6, weight: 1.5, color: tmava ? '#121417' : '#fff', fillColor: accent, fillOpacity: 0.85 }).addTo(mapa));
         mapa.fitBounds(L.featureGroup(markery).getBounds(), { padding: [20, 20] });

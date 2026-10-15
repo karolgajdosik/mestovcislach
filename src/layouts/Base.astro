@@ -82,4 +82,7 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
   .foot { color: var(--muted); font-size: 0.85rem; padding-top: 48px; padding-bottom: 48px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
   .zdroj { color: var(--muted); font-size: 0.8rem; margin: 12px 0 0; }
+  /* Podkladová mapa OSM: tlmená, aby vynikli údaje; v tmavom režime invertovaná. */
+  .podklad-osm { filter: grayscale(1) contrast(0.85) brightness(1.08); }
+  @media (prefers-color-scheme: dark) { .podklad-osm { filter: grayscale(1) invert(1) brightness(0.8) contrast(0.85); } }
 </style>

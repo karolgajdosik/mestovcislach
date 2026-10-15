@@ -108,6 +108,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
 
 <script>
   import L from 'leaflet';
+  import { osmPodklad } from '../scripts/podklad';
   import 'leaflet/dist/leaflet.css';
 
   const el = document.getElementById('mapa-vyb');
@@ -117,9 +118,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
     const poradie = ['lekarne', 'ambulancie', 'nemocnice', 'nabijanie'];
     const farby = poradie.map((_, i) => css.getPropertyValue(`--v-${i}`).trim());
     const mapa = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.25, preferCanvas: true });
-    L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_all/{z}/{x}/{y}{r}.png`, {
-      maxZoom: 18, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
-    }).addTo(mapa);
+    osmPodklad().addTo(mapa);
     mapa.setView([48.15, 17.11], 11.5);
     const vrstvy: Record<string, L.LayerGroup> = Object.fromEntries(poradie.map((k) => [k, L.layerGroup()]));
 

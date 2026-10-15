@@ -50,7 +50,7 @@ if (hranice && casti.length && rok) {
     <div class="legenda" id="legenda"></div>
     <p class="zdroj">
       Hranice: © <a href="https://www.openstreetmap.org/copyright">prispievatelia OpenStreetMap</a> (ODbL),
-      podklad © <a href="https://carto.com/attributions">CARTO</a>.
+      podklad © prispievatelia OpenStreetMap.
       Obyvatelia: Štatistický úrad SR – DATAcube. Rozloha vypočítaná z hraníc OSM.
     </p>
   </section>
@@ -58,6 +58,7 @@ if (hranice && casti.length && rok) {
 
 <script>
   import L from 'leaflet';
+  import { osmPodklad } from '../scripts/podklad';
   import 'leaflet/dist/leaflet.css';
 
   const el = document.getElementById('mapa-casti');
@@ -72,10 +73,7 @@ if (hranice && casti.length && rok) {
       : ['#fde4e6', '#f7aab3', '#ec6a7c', '#d3304b', '#a00d26'];
 
     const mapa = L.map('mapa', { scrollWheelZoom: false, zoomSnap: 0.25 });
-    L.tileLayer(
-      `https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_nolabels/{z}/{x}/{y}{r}.png`,
-      { maxZoom: 16, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO' },
-    ).addTo(mapa);
+    osmPodklad().addTo(mapa);
 
     let ukazovatel: 'pocet' | 'hustota' = 'pocet';
     let hranice: number[] = [];

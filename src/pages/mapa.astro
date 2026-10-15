@@ -82,12 +82,13 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
     <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> (ODbL); zastávky MHD, BAjk a čierne skládky –
     <a href="https://data.bratislava.sk">data.bratislava.sk</a> (CC BY 4.0); chránené územia a Natura 2000 –
     <a href="https://www.eea.europa.eu/en/datahub">EEA</a>; letecká snímka – © <a href="https://www.geoportal.sk">ÚGKK SR</a> (ZBGIS);
-    podkladová mapa © <a href="https://carto.com/attributions">CARTO</a>. Údaje z OSM nie sú oficiálne registre a nemusia byť úplné.
+    podkladová mapa © prispievatelia OpenStreetMap. Údaje z OSM nie sú oficiálne registre a nemusia byť úplné.
   </p>
 </Base>
 
 <script>
   import L from 'leaflet';
+  import { osmPodklad } from '../scripts/podklad';
   import 'leaflet/dist/leaflet.css';
 
   const obal = document.getElementById('mapa-bratislava')!;
@@ -101,9 +102,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
 
   const mapa = L.map('mapa', { zoomSnap: 0.25, preferCanvas: true, scrollWheelZoom: !mobil });
   const podklady: Record<string, L.TileLayer> = {
-    mapa: L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_all/{z}/{x}/{y}{r}.png`, {
-      maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
-    }),
+    mapa: osmPodklad(),
     orto: L.tileLayer.wms('https://zbgisws.skgeodesy.sk/zbgis_ortofoto_wms/service.svc/get', {
       layers: '1', format: 'image/jpeg', maxZoom: 20, attribution: '© ÚGKK SR (ZBGIS), CC BY 4.0',
     }),
