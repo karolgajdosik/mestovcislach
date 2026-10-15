@@ -32,6 +32,7 @@ PRAVNA_FORMA = re.compile(r"s\.\s?r\.\s?o|spol\.|\ba\.\s?s\.|\bk\.\s?s\.|v\.\s?o
                           r"mesto|mestsk\w*|obec|kraj|samosprávny|ministerstvo|úrad|univerzita|ústav|inštitút|nadácia|fond|cirkev|cirkevný|farnosť|zbor|zväz|združenie|spolok|"
                           r"klub|komora|banka|poisťovňa|slovensk\w*|podnik|agentúra|správa|škola|školsk\w*|gymnázium|materská|jasle|centrum|zariadenie|divadlo|"
                           r"múzeum|galéria|knižnica|polícia|hasičský|nemocnica|poliklinika|festival|jednota|akadémia|spoločenstvo|vlastníkov|družstvo|dpb|olo|bvs|zsd|spp)\b", re.I)
+POSKYTOVATEL = re.compile(r"ministerstv|úrad|samosprávny kraj|hlavné mesto|\bfond|nadáci|agentúr|európsk|program|správa|environmentáln|slovenský zväz|olympijsk", re.I)
 KONTAKT = re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+|(\+421|0)\s?\d{3}\s?\d{3}\s?\d{3}")
 
 
@@ -176,11 +177,19 @@ def main() -> int:
             "najvacsi_partneri": [{"nazov": v[2], "ico": k if k.isdigit() else None, "zmluv": v[0], "suma": round(v[1])} for k, v in top],
             "najvacsie_zmluvy": [{k: z[k] for k in ("id", "d", "p", "ico", "pr", "s")} for z in sorted((z for z in zz if z["p"]), key=lambda z: -z["s"])[:10]],
         }
-        prij = Counter()
-        for z in dot:
-            prij[z["p"]] += z["s"]
-        suhrn["dotacie"][mc] = {"zmluv": len(dot), "suma": round(sum(z["s"] for z in dot)),
-                                "prijimatelia": [{"nazov": n, "suma": round(v)} for n, v in prij.most_common(10)]}
+        # smer dotácie podľa partnera: štát, kraj, mesto, fondy a nadácie dotácie poskytujú (MČ prijíma), ostatní ich od MČ dostávajú
+        prijate = [z for z in dot if POSKYTOVATEL.search(z["p"])]
+        dane = [z for z in dot if not POSKYTOVATEL.search(z["p"])]
+        sumy_p: Counter = Counter()
+        for z in dane:
+            sumy_p[z["p"]] += z["s"]
+        sumy_z: Counter = Counter()
+        for z in prijate:
+            sumy_z[z["p"]] += z["s"]
+        suhrn["dotacie"][mc] = {
+            "poskytnute": {"zmluv": len(dane), "suma": round(sum(z["s"] for z in dane)), "prijimatelia": [{"nazov": n, "suma": round(v)} for n, v in sumy_p.most_common(10)]},
+            "prijate": {"zmluv": len(prijate), "suma": round(sum(z["s"] for z in prijate)), "poskytovatelia": [{"nazov": n, "suma": round(v)} for n, v in sumy_z.most_common(8)]},
+        }
         zapis_ak_zmena(VEREJNE / "zmluvy-mc" / f"{bez_diakritiky(mc).lower().replace(' ', '-')}.json",
                        {"mc": mc, "od": OD.isoformat(), "do": stav["posledny_den"], "fyzicke_osoby": suhrn["mestske_casti"][mc]["fyzicke_osoby"],
                         # [id, dátum, partner, IČO, predmet, suma, dotácia]

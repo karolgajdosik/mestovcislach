@@ -323,6 +323,8 @@ export const onRequestPost = async (ctx: any) => {
   const q = norm(otazka);
   const qAj = norm(otazka + ' ' + predosla);
   let temy = Object.keys(TEMY).filter((t) => TEMY[t].test(q));
+  // zmluvy + konkrétna mestská časť → zmluvy mestských častí (CRZ)
+  if ((temy.includes('zmluvy') || /zmluv|dotaci/.test(q)) && !temy.includes('zmluvy_mc') && najdiCast(otazka, data.mestske_casti)) temy.unshift('zmluvy_mc');
   if (!temy.length) temy = Object.keys(TEMY).filter((t) => TEMY[t].test(qAj));
   let ziveTypy = Object.keys(ZIVE).filter((t) => ZIVE[t].test(q));
   if (!temy.length && !ziveTypy.length) ziveTypy = Object.keys(ZIVE).filter((t) => ZIVE[t].test(qAj));
@@ -360,7 +362,7 @@ export const onRequestPost = async (ctx: any) => {
     if (t === 'zmluvy_mc') {
       const c = najdiCast(otazka, data.mestske_casti);
       if (c) fakty = Object.fromEntries(Object.entries<any>(fakty).filter(([k]) => k === 'poznamka' || k === c));
-      else fakty = Object.fromEntries(Object.entries<any>(fakty).map(([k, v]) => [k, typeof v === 'object' ? { zmluv: v.zmluv, hodnota_eur: v.hodnota_eur, dotacie: v.dotacie.split(';')[0] } : v]));
+      else fakty = Object.fromEntries(Object.entries<any>(fakty).map(([k, v]) => [k, typeof v === 'object' ? { zmluv: v.zmluv, hodnota_eur: v.hodnota_eur, dotacie_poskytnute: String(v.dotacie_poskytnute_mestskou_castou).split(';')[0] } : v]));
     }
     if (t === 'scitace') {
       const chce = ['cyklisti', 'chodci'].filter((k) => (k === 'cyklisti' ? /cykl|bicyk/ : /chodc|pesi|peso/).test(q));

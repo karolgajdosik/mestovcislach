@@ -77,7 +77,10 @@ const rpo = nacitaj('rpo-dodavatelia.json')?.dodavatelia ?? {};
 const mcZoznam = zmc ? Object.entries<any>(zmc.mestske_casti).filter(([mc]) => mc !== 'Hlavné mesto').sort((a, b) => b[1].suma - a[1].suma) : [];
 const mcSpolu = mcZoznam.reduce((a: number, [, v]: any) => a + v.zmluv, 0);
 const mcSuma = mcZoznam.reduce((a: number, [, v]: any) => a + v.suma, 0);
-const dotSpolu = zmc ? Object.entries<any>(zmc.dotacie).filter(([mc]) => mc !== 'Hlavné mesto').reduce((a: number, [, v]: any) => a + v.suma, 0) : 0;
+// dotácie: poskytnuté mestskou časťou (kluby, združenia…) a prijaté (od štátu, kraja, mesta, fondov); staršia štruktúra = len súhrn
+const dotP = (mc: string) => zmc?.dotacie[mc]?.poskytnute ?? (zmc?.dotacie[mc]?.prijimatelia ? zmc.dotacie[mc] : null);
+const dotZ = (mc: string) => zmc?.dotacie[mc]?.prijate ?? null;
+const dotSpolu = zmc ? Object.keys(zmc.dotacie).filter((mc) => mc !== 'Hlavné mesto').reduce((a: number, mc: string) => a + (dotP(mc)?.suma ?? 0), 0) : 0;
 const slugMc = (mc: string) => mc.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/ /g, '-');
 // poznámka k dodávateľovi z RPO: právna forma, rok vzniku, zánik; „nová firma“ ak vznikla menej ako rok pred prvou veľkou zmluvou
 const rpoInfo = (ico: string | null, d?: string) => {
@@ -295,13 +298,13 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
           <section class="kpis">
             <div class="card kpi"><p class="label">Zmluvy 17 mestských častí</p><p class="value">{fmt(mcSpolu)}</p><p class="delta">od {datum(zmc.od)} do {datum(zmc.do)}</p></div>
             <div class="card kpi"><p class="label">Ich zmluvná hodnota</p><p class="value">{mil(mcSuma)}</p><p class="delta">súčet súm uvedených v zmluvách</p></div>
-            <div class="card kpi"><p class="label">Dotácie a granty</p><p class="value">{mil(dotSpolu)}</p><p class="delta">zmluvy s dotáciou alebo grantom v predmete</p></div>
+            <div class="card kpi"><p class="label">Dotácie, ktoré mestské časti poskytli</p><p class="value">{mil(dotSpolu)}</p><p class="delta">klubom, združeniam a organizáciám (zmluvy s dotáciou v predmete)</p></div>
           </section>
           <section class="card">
             <h3>Mestské časti podľa hodnoty zmlúv</h3>
             <div class="tabulka-obal"><table>
-              <thead><tr><th>Mestská časť</th><th class="num">Zmlúv</th><th class="num">Hodnota</th><th class="num">Dotácie</th><th class="num">Zmluvy s fyz. osobami</th></tr></thead>
-              <tbody>{mcZoznam.map(([mc, v]: any) => <tr><td><a href={`#mc-${slugMc(mc)}`} data-mc={slugMc(mc)} class="mc-odkaz">{mc}</a></td><td class="num">{fmt(v.zmluv)}</td><td class="num">{mil(v.suma)}</td><td class="num">{zmc.dotacie[mc]?.suma ? mil(zmc.dotacie[mc].suma) : '–'}</td><td class="num">{fmt(v.fyzicke_osoby.zmluv)}</td></tr>)}</tbody>
+              <thead><tr><th>Mestská časť</th><th class="num">Zmlúv</th><th class="num">Hodnota</th><th class="num">Poskytnuté dotácie</th><th class="num">Zmluvy s fyz. osobami</th></tr></thead>
+              <tbody>{mcZoznam.map(([mc, v]: any) => <tr><td><a href={`#mc-${slugMc(mc)}`} data-mc={slugMc(mc)} class="mc-odkaz">{mc}</a></td><td class="num">{fmt(v.zmluv)}</td><td class="num">{mil(v.suma)}</td><td class="num">{dotP(mc)?.suma ? eur(dotP(mc).suma) : '–'}</td><td class="num">{fmt(v.fyzicke_osoby.zmluv)}</td></tr>)}</tbody>
             </table></div>
           </section>
           <section class="card" id="zmluvy-mc-detail">
@@ -314,10 +317,16 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
                     <ol class="dodavatelia">{v.najvacsi_partneri.slice(0, 10).map((x: any) => <li>{x.nazov} <span>{mil(x.suma)} · {fmt(x.zmluv)}×</span>{rpoInfo(x.ico) && <small class="rpo">{rpoInfo(x.ico)}</small>}</li>)}</ol>
                   </div>
                   <div>
-                    <h3>Kto dostal dotácie</h3>
-                    {zmc.dotacie[mc]?.prijimatelia?.length ? (
-                      <ol class="dodavatelia">{zmc.dotacie[mc].prijimatelia.map((x: any) => <li>{x.nazov} <span>{eur(x.suma)}</span></li>)}</ol>
+                    <h3>Komu {mc} dala dotácie</h3>
+                    {dotP(mc)?.prijimatelia?.length ? (
+                      <ol class="dodavatelia">{dotP(mc).prijimatelia.map((x: any) => <li>{x.nazov} <span>{eur(x.suma)}</span></li>)}</ol>
                     ) : <p class="mensie">V CRZ nie sú zmluvy s dotáciou v predmete.</p>}
+                    {dotZ(mc)?.poskytovatelia?.length > 0 && (
+                      <>
+                        <h3>Dotácie, ktoré {mc} dostala</h3>
+                        <ol class="dodavatelia">{dotZ(mc).poskytovatelia.slice(0, 5).map((x: any) => <li>{x.nazov} <span>{eur(x.suma)}</span></li>)}</ol>
+                      </>
+                    )}
                   </div>
                 </div>
                 <h3>Najväčšie zmluvy</h3>
@@ -336,7 +345,7 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
             <p class="zdroj">
               Zdroj: <a href="https://www.crz.gov.sk">Centrálny register zmlúv</a> (denné exporty), údaje o firmách z <a href="https://rpo.statistics.sk">Registra právnických osôb</a> ŠÚ SR.
               Hodnota je suma uvedená v zmluve (pri rámcových a nájomných zmluvách môže byť viacročná, pri mnohých zmluvách je 0 €).
-              Zmluvy s fyzickými osobami (aj živnostníkmi) len započítavame – bez mena a predmetu. Dotácie = zmluvy, ktoré majú v predmete slovo dotácia alebo grant.
+              Zmluvy s fyzickými osobami (aj živnostníkmi) len započítavame – bez mena a predmetu. Dotácie = zmluvy, ktoré majú v predmete slovo dotácia alebo grant; za prijaté považujeme tie od štátu, kraja, hlavného mesta, fondov a nadácií.
             </p>
           </section>
         </>
