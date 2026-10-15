@@ -28,6 +28,8 @@ VRSTVY = {  # kľúč: (prefix ID, názov, pole s hodnotou, popis)
     "riziko_zrazky_budovy": ("61a9db38", "Riziko prívalových zrážok pre budovy", "hodnota", "ohrozenie budov intenzívnymi zrážkami"),
     "citlivost_zrazky_budovy": ("7a8c8bd7", "Citlivosť budov na zrážky", "hodnota", "zraniteľnosť budov pri prívalových dažďoch"),
     "riziko_doprava": ("074fc4b3", "Riziko zrážok pre dopravnú infraštruktúru", "hodnota", "ohrozenie ciest a koľají zrážkami"),
+    "citlivost_doprava": ("81ff5b48", "Citlivosť dopravnej infraštruktúry na zrážky", "hodnota", "zraniteľnosť ciest a koľají pri prívalových dažďoch"),
+    "kapacita_budov_zrazky": ("f99f75fb", "Kapacita budov zvládnuť zrážky", "hodnota", "schopnosť budov a okolia zadržať a odviesť dažďovú vodu (vyššie = lepšie)"),
     "kupaliska": ("7e67f27f", "Dostupnosť kúpalísk", "kupanie_n", "normalizovaná dostupnosť kúpalísk a kúpania (vyššie = lepšia)"),
 }
 HUSTOTA = "ffe51d79"

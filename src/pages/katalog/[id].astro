@@ -26,7 +26,7 @@ const UKAZKA = 60;
     {t.riadky.length.toLocaleString('sk-SK')} riadkov{t.mesacne ? ' (hodinové údaje sčítané po mesiacoch)' : ''} ·
     zdroj <a href={t.zdroj}>data.bratislava.sk</a> · licencia {t.licencia}
     {t.upravene && <> · aktualizované {new Date(t.upravene).toLocaleDateString('sk-SK')}</>}
-    {t.odstranene_stlpce?.length > 0 && <> · bez stĺpcov {t.odstranene_stlpce.join(', ')} (osobné a kontaktné údaje)</>}
+    {t.odstranene_stlpce?.length > 0 && <> · bez stĺpcov {t.odstranene_stlpce.join(", ")} (osobné a kontaktné údaje)</>}{t.vynechane_riadky > 0 && <> · vynechaných {t.vynechane_riadky} riadkov fyzických osôb</>}
   </p>
 
   <div id="tabulka" data-id={id}>

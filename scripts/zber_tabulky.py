@@ -13,7 +13,7 @@ from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
-from katalog_pravidla import (DATASETY_S_KONTAKTMI_ORGANIZACII, MAX_RIADKOV, NA_WEBE, OSOBITNE, STLPCE_KONTAKT, STLPCE_PREC,
+from katalog_pravidla import (DATASETY_S_KONTAKTMI_ORGANIZACII, MAX_RIADKOV, NA_WEBE, OSOBITNE, RIADKY_PREC, STLPCE_KONTAKT, STLPCE_PREC,
                               STLPCE_VZDY_PREC, VYNECHANE)
 from spolocne import DATA, VEREJNE, s, spusti, zapis_ak_zmena
 from diakritika import hodnota as s_diakritikou, nazov_stlpca
@@ -83,6 +83,16 @@ def importuj(p: dict) -> dict:
     polia = [x for x in polia if x[0] not in prec]
     url = f"{p['sluzba']}/{v['id']}"
     riadky = stiahni(url)
+    vynechane_riadky = 0
+    if kid in RIADKY_PREC:
+        stlpec, pravidlo = RIADKY_PREC[kid]
+        povodne = len(riadky)
+        if pravidlo == "ico":
+            riadky = [r for r in riadky if len(re.sub(r"\D", "", str(r.get(stlpec) or ""))) >= 6]
+        else:
+            fo = re.compile(r"^(?:[A-Za-z]{2,5}\.\s*)*[A-ZÁČĎÉÍĽĹŇÓÔŔŠŤÚÝŽ][a-záäčďéíľĺňóôŕšťúýž]+ [A-ZÁČĎÉÍĽĹŇÓÔŔŠŤÚÝŽ][a-záäčďéíľĺňóôŕšťúýž]+(ová)?\s*(,|-|$)")
+            riadky = [r for r in riadky if not fo.match(str(r.get(stlpec) or "").strip())]
+        vynechane_riadky = povodne - len(riadky)
     if kid in MESACNE:
         cas = next(n for n, t, _ in polia if t == "Date" or "čas" in n.lower() or "dátum" in n.lower())
         cisla = [n for n, t, _ in polia if n != cas and t in ("Integer", "SmallInteger", "Double")]
@@ -102,7 +112,7 @@ def importuj(p: dict) -> dict:
         data = [[row[i] for i in plne] for row in data]
     vystup = {"id": p["id"], "nazov": p["nazov"], "popis": p.get("popis"), "kategoria": kategoria(p), "licencia": p.get("licencia") or "CC BY 4.0",
               "zdroj": f"https://data.bratislava.sk/datasets/{p['id']}", "upravene": p.get("upravene"), "mesacne": kid in MESACNE,
-              "odstranene_stlpce": sorted(prec), "stlpce": stlpce, "riadky": data}
+              "odstranene_stlpce": sorted(prec), "vynechane_riadky": vynechane_riadky, "stlpce": stlpce, "riadky": data}
     CIEL.mkdir(parents=True, exist_ok=True)
     zapis_ak_zmena(CIEL / f"{p['id']}.json", vystup, kompaktne=True, ignoruj=("upravene",))
     return {"riadkov": len(data), "stlpcov": len(stlpce)}

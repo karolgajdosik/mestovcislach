@@ -45,6 +45,8 @@ OSOBITNE = {
     "be617c15": ("/mapa", "Klimatický atlas – riziko celkové", "zber_klima.py"), "074fc4b3": ("/mapa", "Klimatický atlas – riziko pre dopravu", "zber_klima.py"),
     "61a9db38": ("/mapa", "Klimatický atlas – riziko zrážok pre budovy", "zber_klima.py"), "7e67f27f": ("/mapa", "Dostupnosť kúpalísk", "zber_klima.py"),
     "ffe51d79": ("/mapa", "Hustota obyvateľov (štvorce 1 km)", "zber_klima.py"),
+    "81ff5b48": ("/mapa", "Klimatický atlas – citlivosť dopravnej infraštruktúry na zrážky", "zber_klima.py"),
+    "f99f75fb": ("/mapa", "Klimatický atlas – kapacita budov na zrážky", "zber_klima.py"),
     # dlhé časové rady – súhrn po mesiacoch
     "bc6f1d93": ("/katalog", "Cyklosčítač Berg (mesačne)", "zber_tabulky.py"), "0de0dba7": ("/katalog", "Cyklosčítač Viedenská (mesačne)", "zber_tabulky.py"),
 }
@@ -61,6 +63,7 @@ VYNECHANE = {
     "14464afe": "Anglická verzia datasetu „Zoznam zastávok turistických autobusov v roku 2025“ – používame slovenskú.",
     "f1daafc7": "Hranice mestských častí – web používa vlastné hranice (rovnaké územie); duplicitné.",
     "55ce5137": "Funkčné plochy územného plánu (Shapefile, veľké polygóny s právnymi kódmi) – na mape by bez výkladu zavádzali; odkazujeme na mestský geoportál.",
+    "c676285f": "Zameranie verejnej zelene – 302 tisíc bodov (jednotlivé stromy a kry) je pre web príliš veľa; na mape ukazujeme výsadbu od 2019 a ošetrované dreviny.",
     # dotazníkové prieskumy – surové odpovede respondentov
     "7e2f4bb0": "Surové odpovede dotazníka (Grössling) s voľným textom respondentov – riziko osobných údajov vo voľných odpovediach; vyhodnotenie zverejňuje mesto pri projekte.",
     "fab84720": "Surové odpovede dotazníka (Krížna) s voľným textom respondentov – riziko osobných údajov vo voľných odpovediach.",
@@ -79,8 +82,19 @@ STLPCE_PREC = {
     "9428dac0": ["Telefónny_kontakt", "Emailový_kontakt"],
     "52716173": ["PSČ", "Mesto", "Ulica", "E_mail", "Telefónne_číslo"],
     "dc4cfc3b": [],
+    # staré zmluvy magistrátu: Meno/Priezvisko/Funkcia = zamestnanec mesta; adresa dodávateľa môže byť bydlisko živnostníka
+    "e5913475": ["Meno", "Priezvisko", "Funkcia", "Ulica", "PSČ", "Miesto"],
+    "3a6d0c8a": ["Meno", "Priezvisko", "Funkcia", "Ulica", "PSČ", "Miesto"],
+    # register sociálnych služieb BSK: mená štatutárov a zodpovedných zástupcov
+    "46175339": ["Meno_a_priezvisko_štatutárneho_", "Meno_a_priezvisko_zodpovedného_"],
+}
+# Riadky, ktoré sa vynechajú (fyzické osoby): dataset -> (stĺpec, pravidlo)
+#   "ico" = vynechať riadky bez IČO;  "pravnicka" = vynechať, ak názov vyzerá ako meno a priezvisko osoby
+RIADKY_PREC = {
+    "e5913475": ("IČO", "ico"), "3a6d0c8a": ("IČO", "ico"),
+    "46175339": ("Poskytovateľ", "pravnicka"),
 }
 # Všeobecný import: tieto názvy stĺpcov sa vyhodia vždy, keď nejde o organizáciu (telefón/e-mail osoby)
-STLPCE_KONTAKT = r"(telef|e_?mail|mobil)"
+STLPCE_KONTAKT = r"(telef|mail|mobil)"
 DATASETY_S_KONTAKTMI_ORGANIZACII = {"49ce2adc", "dc09aeac", "29546b1d", "5242099b", "226e7387"}  # linky pomoci, terénne služby, úradné hodiny – kontakty organizácií
 MAX_RIADKOV = 20000

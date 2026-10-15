@@ -85,6 +85,10 @@ const vrstvy = [
   ['k_riziko_zrazky_budovy', 'Riziko prívalových dažďov pre budovy', 'Klíma a obyvatelia', '--m-klima', false],
   ['k_riziko_doprava', 'Riziko zrážok pre dopravu', 'Klíma a obyvatelia', '--m-klima', false],
   ['k_riziko_celkove', 'Riziko zmeny klímy celkovo', 'Klíma a obyvatelia', '--m-klima', false],
+  ['k_citlivost_celkova', 'Citlivosť na zmenu klímy celkovo', 'Klíma a obyvatelia', '--m-klima', false],
+  ['k_citlivost_zrazky_budovy', 'Citlivosť budov na zrážky', 'Klíma a obyvatelia', '--m-klima', false],
+  ['k_citlivost_doprava', 'Citlivosť dopravy na zrážky', 'Klíma a obyvatelia', '--m-klima', false],
+  ['k_kapacita_budov_zrazky', 'Kapacita budov zvládnuť zrážky', 'Klíma a obyvatelia', '--m-klima', false],
   ['k_kupaliska', 'Dostupnosť kúpalísk', 'Klíma a obyvatelia', '--m-klima', false],
   ['k_hustota', 'Hustota obyvateľov (1 km²)', 'Klíma a obyvatelia', '--m-klima', false],
 ] as const;
@@ -297,7 +301,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   // Mriežky klimatického atlasu a hustoty – vždy len jedna naraz, farba podľa kvintilov
   const KLIMA_FARBY = ['#fef3c7', '#fcd34d', '#f59e0b', '#dc2626', '#7f1d1d'];
   const klimaRenderer = L.canvas({ padding: 0.2 });
-  for (const k of ['riziko_horucavy', 'citlivost_horucavy', 'riziko_zrazky_budovy', 'riziko_doprava', 'riziko_celkove', 'kupaliska', 'hustota']) {
+  for (const k of ['riziko_horucavy', 'citlivost_horucavy', 'riziko_zrazky_budovy', 'riziko_doprava', 'riziko_celkove', 'citlivost_celkova', 'citlivost_zrazky_budovy', 'citlivost_doprava', 'kapacita_budov_zrazky', 'kupaliska', 'hustota']) {
     tvorba[`k_${k}`] = async () => {
       const d = await json(`/data/klima/${k}.json`);
       const trieda = (v: number) => d.hranice.filter((h: number) => v > h).length;
@@ -321,7 +325,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   }
 
   const hotove: Record<string, L.Layer> = {};
-  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'scitace', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'k_riziko_horucavy', 'k_citlivost_horucavy', 'k_riziko_zrazky_budovy', 'k_riziko_doprava', 'k_riziko_celkove', 'k_kupaliska', 'k_hustota', 'obvody', 'hluk_den', 'hluk_noc', 'hluk_priemysel', 'jasle', 'skoly_ms', 'skoly_zs', 'skoly_ss', 'skoly_zus', 'socialne', 'bezbarierove', 'fontany', 'sportoviska', 'bezdomovci', 'veterina', 'podnety', 'vysadba', 'starostlivost', 'pamiatky', 'pamiatky_osm', 'muzea', 'kultura', 'stromy', 'skladky', 'uzavierky', 'poruchy'];
+  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'scitace', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'k_riziko_horucavy', 'k_citlivost_horucavy', 'k_riziko_zrazky_budovy', 'k_riziko_doprava', 'k_riziko_celkove', 'k_citlivost_celkova', 'k_citlivost_zrazky_budovy', 'k_citlivost_doprava', 'k_kapacita_budov_zrazky', 'k_kupaliska', 'k_hustota', 'obvody', 'hluk_den', 'hluk_noc', 'hluk_priemysel', 'jasle', 'skoly_ms', 'skoly_zs', 'skoly_ss', 'skoly_zus', 'socialne', 'bezbarierove', 'fontany', 'sportoviska', 'bezdomovci', 'veterina', 'podnety', 'vysadba', 'starostlivost', 'pamiatky', 'pamiatky_osm', 'muzea', 'kultura', 'stromy', 'skladky', 'uzavierky', 'poruchy'];
   async function prepni(k: string, zapnut: boolean) {
     if (!zapnut) { hotove[k]?.remove(); return; }
     try {
