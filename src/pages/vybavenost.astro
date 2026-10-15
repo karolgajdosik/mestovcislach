@@ -84,7 +84,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
           </div>
         </div>
         <div id="mapa-vyb" role="img" aria-label="Mapa lekární, zdravotníckych zariadení a nabíjacích staníc"></div>
-        <p class="zdroj">Ťuknite na bod pre názov. Ambulancie sú v OpenStreetMap zmapované len čiastočne, preto sú predvolene skryté.</p>
+        <p class="zdroj">Ťuknite na bod pre adresu, otváracie hodiny a web (ak ich OpenStreetMap má). Ambulancie sú v OpenStreetMap zmapované len čiastočne, preto sú predvolene skryté.</p>
       </section>
 
       <section class="card">
@@ -109,6 +109,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
 <script>
   import L from 'leaflet';
   import { osmPodklad } from '../scripts/podklad';
+  import { popupMiesta } from '../scripts/miesto';
   import 'leaflet/dist/leaflet.css';
 
   const el = document.getElementById('mapa-vyb');
@@ -123,11 +124,11 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
     const vrstvy: Record<string, L.LayerGroup> = Object.fromEntries(poradie.map((k) => [k, L.layerGroup()]));
 
     fetch('/data/vybavenost-bratislava.json').then((r) => r.json()).then((d) => {
-      for (const [lat, lon, kat, nazov] of d.body as [number, number, string, string][]) {
+      for (const [lat, lon, kat, nazov, det] of d.body as [number, number, string, string, any][]) {
         L.circleMarker([lat, lon], {
           radius: window.innerWidth < 600 ? 4 : 5, weight: 1, color: tmava ? '#121417' : '#ffffff',
           fillColor: farby[poradie.indexOf(kat)], fillOpacity: 0.9,
-        }).bindPopup(`<strong>${nazov || d.kategorie[kat]}</strong><br>${d.kategorie[kat]}`).addTo(vrstvy[kat]);
+        }).bindPopup(() => popupMiesta(nazov, d.kategorie[kat], det), { maxWidth: 280 }).addTo(vrstvy[kat]);
       }
       document.querySelectorAll<HTMLInputElement>('.filtre input').forEach((i) => {
         const prepni = () => (i.checked ? vrstvy[i.value].addTo(mapa) : vrstvy[i.value].remove());

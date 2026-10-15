@@ -26,6 +26,15 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
         </nav>
       </div>
     </header>
+    <div class="zive" aria-label="Živé údaje o Bratislave">
+      <div class="wrap zive-obsah">
+        <span class="zive-titul"><i></i>Teraz</span>
+        <span class="chip" id="z-pocasie" title="Počasie v Bratislave (Open-Meteo)">…</span>
+        <a class="chip" id="z-vystrahy" href="/#dnes" title="Výstrahy SHMÚ pre Bratislavu">Výstrahy …</a>
+        <a class="chip" id="z-dunaj" href="/prostredie#dunaj" title="Vodný stav Dunaja v Bratislave (SHMÚ)">Dunaj …</a>
+        <a class="chip" id="z-cesty" href="/doprava#naozivo" title="Uzávierky a poruchy na cestách (hlavné mesto)">Cesty …</a>
+      </div>
+    </div>
     <main class="wrap">
       <slot />
     </main>
@@ -33,10 +42,37 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
       <p>
         mestovcislach.sk zbiera verejne dostupné otvorené dáta. Pri každom údaji je uvedený zdroj.
         Kód je otvorený na <a href="https://github.com/karolgajdosik/mestovcislach">GitHube</a>.
+        Živá lišta: počasie <a href="https://open-meteo.com">Open-Meteo</a> (CC BY 4.0), výstrahy a Dunaj <a href="https://www.shmu.sk">SHMÚ</a>, cesty hlavné mesto SR Bratislava.
       </p>
     </footer>
   </body>
 </html>
+
+<script>
+  import { pocasie, vystrahy, dunaj, cesty, stupenDunaja, javVystrahy } from '../scripts/zive';
+  const chip = (id: string, html: string, stav = '') => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = html;
+    if (stav) el.dataset.stav = stav;
+  };
+  const sipka = (t: string) => (t === 'stúpa' ? ' ↑' : t === 'klesá' ? ' ↓' : '');
+  pocasie().then((p) => chip('z-pocasie', `<b>${p.teplota} °C</b> ${p.stav} <small>${p.min}/${p.max} °C</small>`))
+    .catch(() => document.getElementById('z-pocasie')?.remove());
+  vystrahy().then((d) => {
+    const v = d.vystrahy ?? [];
+    if (!v.length) return chip('z-vystrahy', 'Výstrahy: <b>žiadne</b>', 'ok');
+    const naj = v[0];
+    const javy = [...new Set(v.map((x: any) => javVystrahy(x.udalost)))];
+    chip('z-vystrahy', `Výstraha: <b>${javy.join(', ')}</b> · ${naj.stupen}`, naj.farba);
+  }).catch(() => chip('z-vystrahy', 'Výstrahy: –'));
+  dunaj().then((d) => {
+    const s = stupenDunaja(d);
+    chip('z-dunaj', `Dunaj <b>${d.stav} cm</b>${sipka(d.trend)}${s ? ` · ${s}. stupeň` : ''}`, s === 3 ? 'red' : s === 2 ? 'orange' : s === 1 ? 'yellow' : 'ok');
+  }).catch(() => chip('z-dunaj', 'Dunaj: –'));
+  cesty().then((c) => chip('z-cesty', `Cesty: <b>${c.uzavierky}</b> uzávierok${c.uplne ? ` (${c.uplne} úplných)` : ''} · <b>${c.poruchy}</b> porúch`, c.uplne ? 'orange' : ''))
+    .catch(() => chip('z-cesty', 'Cesty: –'));
+</script>
 
 <style is:global>
   :root {
@@ -79,10 +115,37 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
   @media (max-width: 480px) { .top nav { gap: 14px; } .top nav a { font-size: 0.88rem; white-space: nowrap; } .logo { font-size: 1.05rem; flex-shrink: 0; } }
   .top nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; padding: 4px 0; border-bottom: 2px solid transparent; }
   .top nav a[aria-current='page'] { color: var(--text); border-bottom-color: var(--accent); }
+  .zive { background: var(--bg); border-bottom: 1px solid var(--line); font-size: 0.82rem; }
+  .zive-obsah { display: flex; align-items: center; gap: 8px; height: 40px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+  .zive-obsah::-webkit-scrollbar { display: none; }
+  .zive-titul { color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .zive-titul i { width: 7px; height: 7px; border-radius: 50%; background: #1a7f4b; box-shadow: 0 0 0 3px #1a7f4b33; animation: pulz 2s infinite; }
+  @keyframes pulz { 50% { box-shadow: 0 0 0 5px #1a7f4b11; } }
+  @media (prefers-reduced-motion: reduce) { .zive-titul i { animation: none; } }
+  .chip { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--text); text-decoration: none; flex-shrink: 0; }
+  .chip small { color: var(--muted); }
+  a.chip:hover { border-color: var(--accent); }
+  .chip[data-stav]::before { content: ''; width: 7px; height: 7px; border-radius: 50%; margin-right: 2px; background: var(--muted); }
+  .chip[data-stav='ok']::before { background: #1a7f4b; }
+  .chip[data-stav='yellow']::before { background: #e6b800; }
+  .chip[data-stav='orange']::before { background: #f08c00; }
+  .chip[data-stav='red']::before { background: #d0021b; }
   .foot { color: var(--muted); font-size: 0.85rem; padding-top: 48px; padding-bottom: 48px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
   .zdroj { color: var(--muted); font-size: 0.8rem; margin: 12px 0 0; }
   /* Podkladová mapa OSM: tlmená, aby vynikli údaje; v tmavom režime invertovaná. */
+  /* Okno s podrobnosťami o mieste na mape (src/scripts/miesto.ts) */
+  .leaflet-popup-content .mf { display: flex; flex-direction: column; gap: 3px; min-width: 200px; max-width: 260px; font-size: 13px; line-height: 1.4; }
+  .mf-foto { display: block; margin: -2px 0 6px; }
+  .mf-foto img { display: block; width: 100%; height: 150px; object-fit: cover; border-radius: 6px; background: #eee; }
+  .mf-nazov { font-size: 14px; }
+  .mf-kat, .mf-hod, .mf-zdroj { color: #5d636e; }
+  .mf-hod { font-size: 12px; }
+  .mf-zdroj { font-size: 11px; }
+  .mf-otv { font-weight: 600; }
+  .mf-otv.ano { color: #1a7f4b; }
+  .mf-otv.nie { color: #c8102e; }
+  .mf-odkazy { margin-top: 4px; }
   .podklad-osm { filter: grayscale(1) contrast(0.85) brightness(1.08); }
   @media (prefers-color-scheme: dark) { .podklad-osm { filter: grayscale(1) invert(1) brightness(0.8) contrast(0.85); } }
 </style>
