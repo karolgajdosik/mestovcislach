@@ -1,0 +1,48 @@
+name: Cyklotrasy
+
+# Cyklotrasy z OpenStreetMap – raz týždenne, ručne alebo pri zmene skriptu.
+on:
+  schedule:
+    - cron: "40 3 * * 0" # v nedeľu ráno
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/zber_cyklo.py"
+      - ".github/workflows/cyklo.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zber-dat
+  cancel-in-progress: false
+
+jobs:
+  cyklo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Cyklotrasy (OpenStreetMap)
+        run: python scripts/zber_cyklo.py
+
+      - name: Uložiť zmeny v dátach
+        run: |
+          git config user.name "mestovcislach-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ public/data/
+          if git diff --cached --quiet; then
+            echo "Žiadne nové dáta."
+          else
+            git commit -m "Dáta: cyklotrasy $(date -u +%Y-%m-%d)"
+            git pull --rebase -q && git push
+          fi
