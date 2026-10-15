@@ -76,6 +76,7 @@ Pravidlá:
 - Pri otázke, čo je „teraz otvorené“, vymenuj najviac 6 miest označených TERAZ OTVORENÉ (uveď do kedy) a doplň, koľko ďalších je otvorených. Miesta bez hodín neoznačuj ako otvorené.
 - Pri miestach uveď názov, mestskú časť, adresu a otváracie hodiny, ak sú v podkladoch. Dlhé zoznamy skráť na 6–8 položiek.
 - „Najbližšie“ určuj len podľa údaju „vzdušnou čiarou“. Ak ho podklady nemajú, povedz, že vzdialenosť nevieš určiť, a odporuč mapu webu.
+- Ak je v podkladoch „poloha_nie_je_zapnuta“, povedz, nech používateľ ťukne na tlačidlo „Pri mne“ pod oknom asistenta a povolí polohu. Pri „poloha používateľa“ hovor o vzdialenosti „od vás“.
 - Pri premávke a zápchach používaj sčítače áut (nábrežie = Vajanského nábrežie); cyklistov a chodcov len ak sa na ne pýtajú.
 - Pri miestach uveď názov, mestskú časť, adresu a otváracie hodiny, ak sú v podkladoch. Ak odpovedáš z „miesta_z_mapy“, na konci krátko dodaj, že údaje o miestach sú z OpenStreetMap a nemusia byť úplné (pri uzávierkach, MHD ani iných údajoch to nepíš).
 - Pri číslach uveď rok alebo dátum, ku ktorému platia.
@@ -120,7 +121,7 @@ function najdiCast(otazka: string, casti: string[]) {
   return [...casti].sort((a, b) => b.length - a.length).find((c) => q.includes(norm(c)) || q.includes(norm(c).slice(0, -1)));
 }
 
-function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla = '') {
+function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla = '', poloha: { lat: number; lon: number } | null = null) {
   const q = norm(otazka);
   const cast = najdiCast(otazka, data.mestske_casti);
   // doplňujúca otázka („a v Ružinove?“) preberie kategóriu z predošlej otázky
@@ -133,6 +134,8 @@ function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla
     && !KATEGORIE.some(([r]) => r.test(w)) && !castiKmene.some((k) => w.startsWith(k)) && !/^(potreb|hlada|najst|najd|chce)/.test(w));
   let vysledok: any[] = [];
   let bod: any = null;
+  const priMne = /pri mne|okolo mna|blizko mna|ku mne|mojom okoli|mojej blizkosti|nablizku|tu blizko|kde som|v okoli/.test(q);
+  let chybaPolohy = false;
   if (kategoria) {
     vysledok = data.miesta.filter((m: any) => m.k === kategoria && (!cast || m.c === cast));
     // ak otázka obsahuje aj konkrétny názov (napr. ulicu), uprednostni zhodu
@@ -145,8 +148,12 @@ function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla
       .sort((a: any, b: any) => b[0] - a[0] || norm(a[1].n).length - norm(b[1].n).length) : [];
     const najlepsie = kandidati[0]?.[0] ?? 0;
     const znamy = BODY.find(([r]) => r.test(q));
-    if (blizko && (znamy || najlepsie >= Math.min(2, slova.length))) {
-      bod = znamy ? { n: znamy[1], c: 'orientačný bod', lat: znamy[2], lon: znamy[3] } : kandidati[0][1];
+    const maKandidata = kandidati.length > 0 && najlepsie >= Math.min(2, slova.length);
+    const podlaPolohy = !!poloha && (priMne || (/najbliz/.test(q) && !cast && !znamy && !maKandidata));
+    if (!poloha && (priMne || (/najbliz/.test(q) && !cast && !znamy && !maKandidata))) chybaPolohy = true;
+    if (podlaPolohy || (blizko && !priMne && (znamy || maKandidata))) {
+      bod = podlaPolohy ? { n: 'poloha používateľa', c: 'GPS', lat: poloha!.lat, lon: poloha!.lon }
+        : znamy ? { n: znamy[1], c: 'orientačný bod', lat: znamy[2], lon: znamy[3] } : kandidati[0][1];
       const vzd = (m: any) => Math.round(Math.hypot((m.lat - bod.lat) * 111320, (m.lon - bod.lon) * 74300));
       vysledok = vysledok.length && cast ? vysledok : data.miesta.filter((m: any) => m.k === kategoria);
       vysledok = vysledok.map((m: any) => ({ ...m, vzd: vzd(m) })).sort((a: any, b: any) => a.vzd - b.vzd);
@@ -171,6 +178,7 @@ function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla
   const max = chceOtvorene ? 6 : 10;
   return {
     pocet_najdenych: sOtv.length, kategoria, mestska_cast: cast,
+    ...(chybaPolohy ? { poloha_nie_je_zapnuta: true } : {}),
     ...(pocetOtvorenych != null ? { teraz_otvorenych_spolu: pocetOtvorenych, zobrazene_len_otvorene: zoznam !== sOtv } : {}),
     ...(bod ? { zoradene_podla_vzdialenosti_od: `${bod.a && sk2(bod.a) ? bod.a.replace(/\s*\d.*$/, '') : bod.n} (${bod.c})` } : {}),
     miesta: zoznam.slice(0, max).map((m) => [
@@ -201,6 +209,9 @@ export const onRequestPost = async (ctx: any) => {
   try { telo = await request.json(); } catch { return json({ chyba: 'Neplatná požiadavka.' }, 400); }
   const otazka = String(telo.otazka ?? '').trim().slice(0, MAX_OTAZKA);
   if (otazka.length < 3) return json({ chyba: 'Napíšte otázku.' }, 400);
+  const pol = telo.poloha;
+  const poloha = pol && Number.isFinite(+pol.lat) && Number.isFinite(+pol.lon) && +pol.lat > 47.9 && +pol.lat < 48.35 && +pol.lon > 16.8 && +pol.lon < 17.4
+    ? { lat: +pol.lat, lon: +pol.lon } : null;
   const historia = (Array.isArray(telo.historia) ? telo.historia : []).slice(-6)
     .filter((h: any) => (h.rola === 'user' || h.rola === 'assistant') && typeof h.text === 'string')
     .map((h: any) => ({ role: h.rola, content: h.text.slice(0, 1500) }));
@@ -218,7 +229,7 @@ export const onRequestPost = async (ctx: any) => {
   if (!temy.length && !ziveTypy.length) ziveTypy = Object.keys(ZIVE).filter((t) => ZIVE[t].test(qAj));
 
   // Hľadanie miest podľa názvu len ak otázka nie je zjavne o inej téme (alebo sa pýta „kde“)
-  const miesta = hladajMiesta(otazka, data, (!temy.length && !ziveTypy.length) || /\bkde\b|adres/.test(q), predosla);
+  const miesta = hladajMiesta(otazka, data, (!temy.length && !ziveTypy.length) || /\bkde\b|adres/.test(q), predosla, poloha);
   const cast = najdiCast(otazka + ' ' + (temy.length || ziveTypy.length ? '' : predosla), data.mestske_casti);
   const pouziteMiesta = miesta.miesta.length > 0;
   const kontext: any = {};

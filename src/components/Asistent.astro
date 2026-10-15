@@ -18,6 +18,7 @@
     <div class="ai-uvod">
       <p>Dobrý deň! Opýtajte sa na čokoľvek, čo je na webe – miesta na mape, MHD, voľby, rozpočet, ovzdušie, uzávierky, Dunaj či výstrahy.</p>
       <div class="ai-navrhy">
+        <button type="button">Najbližšia otvorená lekáreň pri mne</button>
         <button type="button">Ktorá lekáreň v Petržalke je teraz otvorená?</button>
         <button type="button">Kedy je ráno najväčšia premávka na nábreží?</button>
         <button type="button">Aké uzávierky sú dnes v Ružinove?</button>
@@ -25,13 +26,20 @@
       </div>
     </div>
   </div>
+  <div class="ai-moznosti">
+    <button type="button" id="ai-poloha" aria-pressed="false" title="Použiť vašu polohu pri hľadaní najbližších miest">
+      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+      <span>Pri mne</span>
+    </button>
+    <span class="ai-poloha-stav" id="ai-poloha-stav"></span>
+  </div>
   <form class="ai-vstup" id="ai-form">
     <input id="ai-otazka" type="text" maxlength="500" placeholder="Napíšte otázku…" autocomplete="off" aria-label="Otázka" />
     <button type="submit" aria-label="Odoslať">
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M3 20.5 21 12 3 3.5 3 10l12 2-12 2z"/></svg>
     </button>
   </form>
-  <p class="ai-pozn">AI sa môže mýliť – dôležité údaje si overte v zdroji. Otázky neukladáme.</p>
+  <p class="ai-pozn">AI sa môže mýliť – dôležité údaje si overte v zdroji. Otázky ani polohu neukladáme.</p>
 </section>
 
 <script>
@@ -43,6 +51,37 @@
   const vstup = document.getElementById('ai-otazka') as HTMLInputElement;
   let historia: Sprava[] = [];
   try { historia = JSON.parse(sessionStorage.getItem('ai:historia') ?? '[]'); } catch { /* nevadí */ }
+  // Poloha „Pri mne“: zaokrúhlená na ~100 m, drží sa len počas návštevy (sessionStorage)
+  let poloha: { lat: number; lon: number } | null = null;
+  try { poloha = JSON.parse(sessionStorage.getItem('ai:poloha') ?? 'null'); } catch { /* nevadí */ }
+  const btnPoloha = document.getElementById('ai-poloha')!;
+  const stavPolohy = document.getElementById('ai-poloha-stav')!;
+  const ukazPolohu = () => {
+    btnPoloha.setAttribute('aria-pressed', String(!!poloha));
+    stavPolohy.textContent = poloha ? 'poloha zapnutá – ťuknite znova na vypnutie' : '';
+  };
+  const zistiPolohu = () => new Promise<boolean>((ok) => {
+    if (!('geolocation' in navigator)) { stavPolohy.textContent = 'prehliadač nepodporuje polohu'; return ok(false); }
+    stavPolohy.textContent = 'zisťujem polohu…';
+    navigator.geolocation.getCurrentPosition((p) => {
+      const lat = Math.round(p.coords.latitude * 1000) / 1000, lon = Math.round(p.coords.longitude * 1000) / 1000;
+      if (lat < 47.9 || lat > 48.35 || lon < 16.8 || lon > 17.4) {
+        poloha = null; stavPolohy.textContent = 'ste mimo Bratislavy – poloha sa nepoužije'; return ok(false);
+      }
+      poloha = { lat, lon };
+      try { sessionStorage.setItem('ai:poloha', JSON.stringify(poloha)); } catch { /* nevadí */ }
+      ukazPolohu(); ok(true);
+    }, (e) => {
+      stavPolohy.textContent = e.code === 1 ? 'prístup k polohe ste nepovolili' : 'polohu sa nepodarilo zistiť';
+      ok(false);
+    }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
+  });
+  btnPoloha.addEventListener('click', () => {
+    if (poloha) { poloha = null; try { sessionStorage.removeItem('ai:poloha'); } catch { /* nevadí */ } ukazPolohu(); return; }
+    zistiPolohu();
+  });
+  ukazPolohu();
+
   const uloz = () => { try { sessionStorage.setItem('ai:historia', JSON.stringify(historia.slice(-20))); } catch { /* nevadí */ } };
 
   const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
@@ -85,6 +124,8 @@
   async function posli(otazka: string) {
     otazka = otazka.trim();
     if (!otazka) return;
+    // „pri mne“ bez polohy → najprv požiadať o polohu
+    if (!poloha && /pri mne|okolo mňa|blízko mňa|v mojom okolí/i.test(otazka)) await zistiPolohu();
     const predtym = historia.map(({ rola, text }) => ({ rola, text }));
     const ja: Sprava = { rola: 'user', text: otazka };
     historia.push(ja); pridaj(ja); uloz();
@@ -94,7 +135,7 @@
     caka.innerHTML = '<span></span><span></span><span></span>';
     spravy.append(caka); spravy.scrollTop = spravy.scrollHeight;
     try {
-      const r = await fetch('/api/asistent', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ otazka, historia: predtym, stream: true }) });
+      const r = await fetch('/api/asistent', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ otazka, historia: predtym, stream: true, poloha }) });
       if (!r.ok || !r.body || !(r.headers.get('content-type') ?? '').includes('event-stream')) {
         const d = await r.json().catch(() => ({}));
         caka.remove();
@@ -195,7 +236,10 @@
   .ai-spravy :global(.caka span:nth-child(2)) { animation-delay: .2s; }
   .ai-spravy :global(.caka span:nth-child(3)) { animation-delay: .4s; }
   @keyframes bodka { to { opacity: .25; } }
-  .ai-vstup { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid var(--line); }
+  .ai-moznosti { display: flex; align-items: center; gap: 8px; padding: 8px 12px 0; border-top: 1px solid var(--line); font-size: 0.78rem; color: var(--muted); }
+  .ai-moznosti button { display: inline-flex; align-items: center; gap: 5px; font: inherit; font-size: 0.8rem; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--text); cursor: pointer; }
+  .ai-moznosti button[aria-pressed='true'] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .ai-vstup { display: flex; gap: 8px; padding: 8px 12px 10px; }
   .ai-vstup input { flex: 1; font: inherit; font-size: 16px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); min-width: 0; }
   .ai-vstup button { border: 0; border-radius: 10px; background: var(--accent); color: #fff; padding: 0 14px; cursor: pointer; }
   .ai-pozn { margin: 0; padding: 0 14px 10px; font-size: 0.72rem; color: var(--muted); }
