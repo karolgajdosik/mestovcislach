@@ -3,7 +3,7 @@
   "nazov": "OpenStreetMap",
   "licencia": "ODbL – © prispievatelia OpenStreetMap",
   "url": "https://www.openstreetmap.org/copyright",
-  "stav_osm": "2026-10-15T05:17:20Z"
+  "stav_osm": "2026-05-31T22:37:44Z"
  },
  "kategorie": {
   "lekarne": "Lekárne",
@@ -12,12 +12,12 @@
   "nabijanie": "Nabíjacie stanice"
  },
  "mesto": {
-  "lekarne": 233,
-  "ambulancie": 327,
+  "lekarne": 230,
+  "ambulancie": 318,
   "nemocnice": 91,
-  "nabijanie": 172,
-  "nabijacie_miesta": 455,
-  "pamiatky": 103,
+  "nabijanie": 168,
+  "nabijacie_miesta": 440,
+  "pamiatky": 90,
   "stromy": 30
  },
  "mestske_casti": [
@@ -40,14 +40,14 @@
    "nazov": "Devínska Nová Ves",
    "obyvatelia": 17128,
    "lekarne": 5,
-   "ambulancie": 4,
+   "ambulancie": 3,
    "nemocnice": 3,
    "nabijanie": 8,
    "nabijacie_miesta": 17,
    "pamiatky": 0,
    "stromy": 0,
    "lekarne_na_10000": 2.9,
-   "ambulancie_na_10000": 2.3
+   "ambulancie_na_10000": 1.8
   },
   {
    "kod_obce": "529389",
@@ -67,56 +67,56 @@
    "kod_obce": "529443",
    "nazov": "Jarovce",
    "obyvatelia": 3246,
-   "lekarne": 1,
-   "ambulancie": 3,
+   "lekarne": 0,
+   "ambulancie": 1,
    "nemocnice": 0,
-   "nabijanie": 2,
-   "nabijacie_miesta": 11,
+   "nabijanie": 0,
+   "nabijacie_miesta": 0,
    "pamiatky": 2,
    "stromy": 0,
-   "lekarne_na_10000": 3.1,
-   "ambulancie_na_10000": 9.2
+   "lekarne_na_10000": 0.0,
+   "ambulancie_na_10000": 3.1
   },
   {
    "kod_obce": "529397",
    "nazov": "Karlova Ves",
    "obyvatelia": 34746,
    "lekarne": 14,
-   "ambulancie": 17,
+   "ambulancie": 15,
    "nemocnice": 3,
    "nabijanie": 8,
    "nabijacie_miesta": 23,
    "pamiatky": 3,
    "stromy": 0,
    "lekarne_na_10000": 4.0,
-   "ambulancie_na_10000": 4.9
+   "ambulancie_na_10000": 4.3
   },
   {
    "kod_obce": "529419",
    "nazov": "Lamač",
    "obyvatelia": 7888,
    "lekarne": 3,
-   "ambulancie": 7,
+   "ambulancie": 5,
    "nemocnice": 2,
    "nabijanie": 10,
    "nabijacie_miesta": 23,
    "pamiatky": 0,
    "stromy": 0,
    "lekarne_na_10000": 3.8,
-   "ambulancie_na_10000": 8.9
+   "ambulancie_na_10000": 6.3
   },
   {
    "kod_obce": "529346",
    "nazov": "Nové Mesto",
    "obyvatelia": 45966,
-   "lekarne": 29,
+   "lekarne": 28,
    "ambulancie": 28,
    "nemocnice": 13,
    "nabijanie": 20,
    "nabijacie_miesta": 63,
    "pamiatky": 15,
    "stromy": 0,
-   "lekarne_na_10000": 6.3,
+   "lekarne_na_10000": 6.1,
    "ambulancie_na_10000": 6.1
   },
   {
@@ -124,14 +124,14 @@
    "nazov": "Petržalka",
    "obyvatelia": 112118,
    "lekarne": 40,
-   "ambulancie": 56,
+   "ambulancie": 55,
    "nemocnice": 17,
-   "nabijanie": 31,
-   "nabijacie_miesta": 71,
+   "nabijanie": 30,
+   "nabijacie_miesta": 68,
    "pamiatky": 1,
    "stromy": 0,
    "lekarne_na_10000": 3.6,
-   "ambulancie_na_10000": 5.0
+   "ambulancie_na_10000": 4.9
   },
   {
    "kod_obce": "529311",
@@ -142,7 +142,7 @@
    "nemocnice": 3,
    "nabijanie": 3,
    "nabijacie_miesta": 9,
-   "pamiatky": 4,
+   "pamiatky": 3,
    "stromy": 0,
    "lekarne_na_10000": 3.9,
    "ambulancie_na_10000": 2.2
@@ -180,28 +180,28 @@
    "nazov": "Ružinov",
    "obyvatelia": 84233,
    "lekarne": 61,
-   "ambulancie": 103,
-   "nemocnice": 29,
-   "nabijanie": 35,
-   "nabijacie_miesta": 100,
+   "ambulancie": 104,
+   "nemocnice": 30,
+   "nabijanie": 34,
+   "nabijacie_miesta": 99,
    "pamiatky": 1,
    "stromy": 2,
    "lekarne_na_10000": 7.2,
-   "ambulancie_na_10000": 12.2
+   "ambulancie_na_10000": 12.3
   },
   {
    "kod_obce": "528595",
    "nazov": "Staré Mesto",
    "obyvatelia": 47896,
    "lekarne": 45,
-   "ambulancie": 78,
+   "ambulancie": 76,
    "nemocnice": 15,
    "nabijanie": 16,
    "nabijacie_miesta": 45,
-   "pamiatky": 66,
+   "pamiatky": 54,
    "stromy": 27,
    "lekarne_na_10000": 9.4,
-   "ambulancie_na_10000": 16.3
+   "ambulancie_na_10000": 15.9
   },
   {
    "kod_obce": "529362",
@@ -209,7 +209,7 @@
    "obyvatelia": 6011,
    "lekarne": 3,
    "ambulancie": 3,
-   "nemocnice": 1,
+   "nemocnice": 0,
    "nabijanie": 5,
    "nabijacie_miesta": 7,
    "pamiatky": 0,
@@ -235,14 +235,14 @@
    "kod_obce": "529427",
    "nazov": "Záhorská Bystrica",
    "obyvatelia": 8009,
-   "lekarne": 2,
+   "lekarne": 1,
    "ambulancie": 3,
    "nemocnice": 1,
    "nabijanie": 6,
    "nabijacie_miesta": 18,
    "pamiatky": 7,
    "stromy": 0,
-   "lekarne_na_10000": 2.5,
+   "lekarne_na_10000": 1.2,
    "ambulancie_na_10000": 3.7
   },
   {
@@ -260,5 +260,5 @@
    "ambulancie_na_10000": 0.0
   }
  ],
- "aktualizovane": "2026-10-15T05:19:01+00:00"
+ "aktualizovane": "2026-10-15T05:22:52+00:00"
 }
