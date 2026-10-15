@@ -11,6 +11,7 @@ on:
       - "scripts/zber_volby.py"
       - "scripts/zber_data_bratislava.py"
       - "scripts/zber_doprava.py"
+      - "scripts/zber_scitace.py"
       - ".github/workflows/zber-dat.yml"
 
 permissions:
@@ -48,6 +49,10 @@ jobs:
       - name: MHD z cestovných poriadkov (GTFS)
         if: success() || failure()
         run: python scripts/zber_doprava.py
+
+      - name: Dopravné sčítače (data.bratislava.sk)
+        if: success() || failure()
+        run: python scripts/zber_scitace.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()
