@@ -71,5 +71,6 @@ jobs:
             echo "Žiadne nové dáta."
           else
             git commit -m "Dáta: data.slovensko.sk $(date -u +%Y-%m-%d)"
-            for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 5; done
+            for i in 1 2 3 4 5; do git pull --rebase -X theirs -q && git push && break; sleep $((i * 5)); done
+            git fetch -q origin main && git diff --quiet HEAD origin/main -- data public/data || { echo "::error::Push dát zlyhal"; exit 1; }
           fi
