@@ -26,7 +26,7 @@ const TEMY: Record<string, RegExp> = {
   mhd: /mhd|autobus|elektric|trolejbus|linka|linky|liniek|zastav|spoj|cestovn|cestujuc|dpb|dopravny podnik/,
   nehody: /nehod|havari/,
   scitace: /zapch|premavk|spick|scitac|dopravn|kolko aut|rusn|kolona/,
-  cyklo: /cyklo|bicyk|bajk|kolo /,
+  cyklo: /cyklo|bicyk|bajk(?!al)|kolo /,
   skoly: /skol|skolk|skôlk|materska|zakladna|ziak/,
   vybavenost: /lekarn|lekar|ambulanc|nemocnic|poliklin|zubar|doktor|nabij|elektromob|zdravot/,
   ovzdusie: /ovzdus|smog|prach|pm10|pm2|ozon|znecist/,
@@ -45,7 +45,7 @@ const KATEGORIE: [RegExp, string][] = [
   [/nemocnic|poliklin|pohotovost/, 'Nemocnice a polikliniky'], [/nabij|elektromob/, 'Nabíjacie stanice'],
   [/muze|galer|vystav/, 'Múzeá a galérie'], [/divadl|kino|kina|kniznic|kultur/, 'Divadlá, kiná a knižnice'],
   [/pamiat|hrad|kostol|historic/, 'Kultúrne pamiatky'], [/chranen.*strom|pamatn.*strom/, 'Chránené stromy'],
-  [/zastav/, 'Zastávka MHD'], [/bajk|zdielan.*bicyk/, 'Stanica BAjk'],
+  [/zastav/, 'Zastávka MHD'], [/bajk(?!al)|zdielan.*bicyk/, 'Stanica BAjk'],
 ];
 const STRANKY: Record<string, string> = {
   obyvatelstvo: '/', scitanie: '/obyvatelia', volby: '/volby', komunalne: '/volby#komunalne', rozpocet: '/financie', zmluvy: '/financie', majetok: '/financie', mhd: '/doprava#doprava',
