@@ -63,10 +63,18 @@ const dlhPosl = dlhRok ? ukaz.dlh.roky[dlhRok] : null;
 const dlhMesto = dlhRoky.map((y) => ({ rok: y, ...ukaz.dlh.roky[y]['Hlavné mesto'] }));
 const dlhMc = dlhPosl ? Object.entries<any>(dlhPosl).filter(([k]) => k !== 'Hlavné mesto').map(([mc, v]) => ({ mc, ...v })).sort((a, b) => b.pomer - a.pomer || b.dlh - a.dlh) : [];
 const dlhMcSpolu = dlhMc.reduce((a: number, c: any) => a + c.dlh, 0);
+// Faktúry, objednávky a zmluvy (magistrát a mestské organizácie)
+const fakt = nacitaj('faktury-bratislava.json');
+const fd = (org: string, typ: string) => fakt?.datasety.find((d: any) => d.organizacia === org && d.typ === typ);
+const magF = fd('Magistrát', 'faktúry');
+const magO = fd('Magistrát', 'objednávky');
+const rokTeraz = new Date().getFullYear();
+const poslednyCely = (d: any) => d ? Object.keys(d.roky).filter((r) => Number(r) < rokTeraz).sort().pop() : null;
+const grafFakt = magF ? JSON.stringify({ roky: Object.keys(magF.roky).filter((r) => Number(r) < rokTeraz), sumy: Object.entries<any>(magF.roky).filter(([r]) => Number(r) < rokTeraz).map(([, v]) => v.suma) }) : '';
 const pct = (n: number | null | undefined) => (n == null ? '–' : n.toLocaleString('sk-SK', { maximumFractionDigits: 1 }) + ' %');
 const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) => d.nazov), data: majetok.druhy.map((d: any) => d.vymera_ha) }) : '';
 ---
-<Base title="Financie Bratislavy – mestovcislach.sk" description="Rozpočet hlavného mesta Bratislavy, zmluvy magistrátu, majetok a dlh mesta a mestských častí.">
+<Base title="Financie Bratislavy – mestovcislach.sk" description="Rozpočet hlavného mesta Bratislavy, zmluvy, faktúry a objednávky magistrátu a mestských firiem, majetok a dlh mesta a mestských častí.">
   <section class="hero">
     <p class="kicker">Bratislava</p>
     <h1>Financie mesta</h1>
@@ -207,6 +215,63 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
           </section>
         </>
       )}
+      {fakt && (
+        <>
+          <h2 class="sekcia" id="faktury">Faktúry, objednávky a zmluvy</h2>
+          {magF && (
+            <section class="kpis">
+              <div class="card kpi"><p class="label">Faktúry magistrátu ({poslednyCely(magF)})</p><p class="value">{mil(magF.roky[poslednyCely(magF)!].suma)}</p><p class="delta">{fmt(magF.roky[poslednyCely(magF)!].pocet)} faktúr</p></div>
+              {magF.median_dni_uhrady && <div class="card kpi"><p class="label">Ako rýchlo mesto platí</p><p class="value">{magF.median_dni_uhrady[poslednyCely(magF)!] ?? Object.values<number>(magF.median_dni_uhrady).pop()} dní</p><p class="delta">medián od doručenia faktúry po úhradu</p></div>}
+              {magO && <div class="card kpi"><p class="label">Objednávky magistrátu ({poslednyCely(magO)})</p><p class="value">{mil(magO.roky[poslednyCely(magO)!].suma)}</p><p class="delta">{fmt(magO.roky[poslednyCely(magO)!].pocet)} objednávok</p></div>}
+            </section>
+          )}
+          {magF && (
+            <section class="card" data-fakt={grafFakt} id="fakt-graf">
+              <h3>Faktúry magistrátu podľa rokov</h3>
+              <div class="chart"><canvas id="g-fakt" role="img" aria-label="Suma faktúr magistrátu podľa rokov"></canvas></div>
+            </section>
+          )}
+          <section class="card">
+            <div class="dlh-grid">
+              {[magF, magO].filter(Boolean).map((d: any) => (
+                <div>
+                  <h3>Najväčší dodávatelia – {d.typ} magistrátu (posledné 3 roky)</h3>
+                  <ol class="dodavatelia">{d.dodavatelia_posledne_3_roky.slice(0, 10).map((x: any) => <li>{x.nazov} <span>{mil(x.suma)} · {fmt(x.pocet)}×</span></li>)}</ol>
+                </div>
+              ))}
+            </div>
+          </section>
+          <section class="card">
+            <h3>Mestské organizácie</h3>
+            <div class="tabulka-obal">
+              <table>
+                <thead><tr><th>Organizácia</th><th>Typ</th><th class="num">Rok</th><th class="num">Počet</th><th class="num">Suma</th><th>Najväčší dodávateľ (3 roky)</th></tr></thead>
+                <tbody>
+                  {fakt.datasety.filter((d: any) => d.organizacia !== 'Magistrát').map((d: any) => {
+                    const r = poslednyCely(d);
+                    return <tr><td><a href={d.zdroj}>{d.organizacia}</a></td><td>{d.typ}</td><td class="num">{r}</td><td class="num">{r ? fmt(d.roky[r].pocet) : '–'}</td><td class="num">{r ? mil(d.roky[r].suma) : '–'}</td><td class="mensie">{d.dodavatelia_posledne_3_roky[0]?.nazov ?? '–'}</td></tr>;
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <p class="zdroj">
+              OLO = Odvoz a likvidácia odpadu, Marianum = Pohrebníctvo mesta Bratislavy. Pri zmluvách ide o finančný rámec zmluvy (môže byť viacročný).
+              Vynechané sú položky dodávateľov bez IČO a fyzických osôb. Zdroj: faktúry, objednávky a zmluvy na data.bratislava.sk, licencia CC BY 4.0.
+            </p>
+          </section>
+          {magF?.najvacsie_12_mesiacov?.length > 0 && (
+            <section class="card">
+              <h3>Najväčšie faktúry magistrátu za posledných 12 mesiacov</h3>
+              <ul class="zmluvy">
+                {magF.najvacsie_12_mesiacov.slice(0, 10).map((x: any) => (
+                  <li><div class="zmluva-hlava"><strong>{eur(x.suma)}</strong><span>{datum(x.datum)}</span></div><p>{x.dodavatel}</p>{x.popis && <p class="predmet">{x.popis}</p>}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </>
+      )}
+
       {dlhPosl && (
         <>
           <h2 class="sekcia" id="dlh">Dlh mesta a mestských častí</h2>
@@ -242,6 +307,17 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
 
 <script>
   import Chart from 'chart.js/auto';
+
+  const fg = document.getElementById('fakt-graf');
+  if (fg?.dataset.fakt) {
+    const d = JSON.parse(fg.dataset.fakt);
+    const c = getComputedStyle(document.documentElement);
+    new Chart(document.getElementById('g-fakt') as HTMLCanvasElement, {
+      type: 'bar', data: { labels: d.roky, datasets: [{ data: d.sumy, backgroundColor: c.getPropertyValue('--accent').trim(), borderRadius: 3 }] },
+      options: { maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (x) => ' ' + (x.parsed.y / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 1 }) + ' mil. €' } } },
+        scales: { x: { grid: { display: false } }, y: { ticks: { callback: (v) => (Number(v) / 1e6).toLocaleString('sk-SK') + ' mil.' } } } },
+    });
+  }
 
   const el = document.getElementById('financie');
   if (el?.dataset.graf) {
@@ -380,4 +456,8 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
   .dlh-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
   .pruh { display: inline-block; vertical-align: middle; height: 8px; width: calc(var(--w) * 0.6); min-width: 2px; background: var(--accent); border-radius: 4px; }
   .nowrap { white-space: nowrap; }
+  .dodavatelia { margin: 6px 0 0; padding-left: 22px; font-size: 0.9rem; }
+  .dodavatelia li { margin: 4px 0; }
+  .dodavatelia span { color: var(--muted); font-size: 0.82rem; margin-left: 4px; }
+  .mensie { font-size: 0.82rem; color: var(--muted); }
 </style>

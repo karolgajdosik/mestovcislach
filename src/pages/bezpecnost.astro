@@ -1,0 +1,181 @@
+---
+// Bezpečnosť a poriadok: udalosti mestskej polície 2017–2022 a podnety občanov magistrátu.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+
+const nacitaj = (subor: string) => {
+  const p = path.join(process.cwd(), 'data', subor);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+};
+const b = nacitaj('bezpecnost-bratislava.json');
+const obyv = nacitaj('obyvatelstvo-bratislava.json');
+const fmt = (n: number) => (n ?? 0).toLocaleString('sk-SK');
+const cist = (t: string) => t.replace(/^\d+\s*-\s*/, '').replace(/§\s?\d+[^ ]*\s*/g, '').replace(/\s+/g, ' ').trim().replace(/^./, (c) => c.toUpperCase());
+const pr = b?.priestupky;
+const roky = pr ? Object.keys(pr.roky) : [];
+const rok = roky[roky.length - 1];
+// obyvatelia MČ (posledný rok) pre prepočet na 1000 obyvateľov
+const rokObyv = obyv ? Object.keys(obyv.mesto.roky).sort().pop()! : '';
+const obyvMc = new Map<string, number>((obyv?.mestske_casti ?? []).map((c: any) => [c.nazov_kratky, c.roky[rokObyv]]));
+const mcTab = pr ? Object.entries<any>(pr.mestske_casti).filter(([mc]) => obyvMc.has(mc)).map(([mc, v]) => ({
+  mc, pocet: v.roky[rok] ?? 0, na1000: obyvMc.get(mc) ? ((v.roky[rok] ?? 0) * 1000) / obyvMc.get(mc)! : null, najcastejsie: v.najcastejsie.map(cist),
+})).sort((a, c) => (c.na1000 ?? 0) - (a.na1000 ?? 0)) : [];
+const pod = b?.podnety;
+const pokutyRok = b?.pokuty ? Object.keys(b.pokuty).sort().pop() : null;
+const pokuty = pokutyRok ? Object.entries<any>(b.pokuty[pokutyRok]) : [];
+const graf = pr ? JSON.stringify({ roky, priestupky: roky.map((r) => pr.roky[r]), hodiny: pr.hodiny, dni: pr.dni, dniNazvy: b.dni,
+  podnety: pod ? { roky: Object.keys(pod.roky), pocty: Object.values(pod.roky) } : null }) : '';
+---
+<Base title="Bezpečnosť a poriadok v Bratislave – mestovcislach.sk" description="Priestupky, trestné činy a zásahy mestskej polície v Bratislave podľa mestských častí, ulíc a hodín; podnety občanov magistrátu.">
+  <section class="hero">
+    <p class="kicker">Bratislava</p>
+    <h1>Bezpečnosť a poriadok</h1>
+    <p class="lead">Čo rieši mestská polícia – podľa mestských častí, ulíc, hodín a dní – a s čím sa ľudia obracajú na magistrát.</p>
+  </section>
+
+  {!pr ? <div class="card"><p>Dáta sa pripravujú.</p></div> : (
+    <div id="bezpecnost" data-graf={graf}>
+      <div class="card upozornenie">
+        <p>Mesto zverejnilo evidenciu udalostí mestskej polície za roky <strong>{roky[0]}–{rok}</strong> a podnety občanov do roku <strong>{pod?.posledny_podnet?.slice(0, 4)}</strong>. Novšie údaje ako otvorené dáta nie sú. Ide o evidenciu mestskej polície – trestné činy rieši najmä Policajný zbor SR.</p>
+      </div>
+
+      <section class="kpis">
+        <div class="card kpi"><p class="label">Priestupky ({rok})</p><p class="value">{fmt(pr.roky[rok])}</p><p class="delta">zaevidované mestskou políciou, najmä v doprave</p></div>
+        <div class="card kpi"><p class="label">Podozrenia z trestného činu ({rok})</p><p class="value">{fmt(b.trestne_ciny?.roky[rok])}</p><p class="delta">zistené mestskou políciou</p></div>
+        <div class="card kpi"><p class="label">Iné zásahy ({rok})</p><p class="value">{fmt(b.ostatne?.roky[rok])}</p><p class="delta">zranené osoby, opitosť, túlavé psy a iné</p></div>
+        {pod && <div class="card kpi"><p class="label">Podnety občanov</p><p class="value">{fmt(pod.spolu)}</p><p class="delta">od roku 2017, vyriešených {fmt(pod.stavy['Vyriešený'] ?? 0)}</p></div>}
+      </section>
+
+      <section class="card">
+        <h2>Priestupky podľa rokov</h2>
+        <div class="chart nizky"><canvas id="g-roky" role="img" aria-label="Počet priestupkov podľa rokov"></canvas></div>
+        <div class="dva">
+          {pr.hodiny && <div><h3>Podľa hodiny dňa</h3><div class="chart nizky"><canvas id="g-hodiny" role="img" aria-label="Priestupky podľa hodiny"></canvas></div></div>}
+          <div><h3>Podľa dňa v týždni</h3><div class="chart nizky"><canvas id="g-dni" role="img" aria-label="Priestupky podľa dňa v týždni"></canvas></div></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Mestské časti ({rok})</h2>
+        <div class="tabulka-obal">
+          <table>
+            <thead><tr><th>Mestská časť</th><th class="num">Priestupky</th><th class="num">na 1 000 obyv.</th><th>Najčastejšie</th></tr></thead>
+            <tbody>{mcTab.map((c: any) => <tr><td>{c.mc}</td><td class="num">{fmt(c.pocet)}</td><td class="num">{c.na1000?.toLocaleString('sk-SK', { maximumFractionDigits: 0 })}</td><td class="mensie">{c.najcastejsie.slice(0, 2).join('; ')}</td></tr>)}</tbody>
+          </table>
+        </div>
+        <p class="zdroj">Staré Mesto má najviac priestupkov aj preto, že doň denne prichádzajú desaťtisíce ľudí z celého mesta; prepočet na obyvateľov to nezohľadňuje.</p>
+      </section>
+
+      <section class="dva">
+        <section class="card">
+          <h2>Najčastejšie priestupky</h2>
+          <ol class="zoznam">{pr.druhy.slice(0, 12).map((d: any) => <li>{cist(d.druh)} <span>{fmt(d.pocet)}</span></li>)}</ol>
+        </section>
+        <section class="card">
+          <h2>Ulice s najviac priestupkami</h2>
+          <ol class="zoznam">{pr.ulice.slice(0, 12).map((u: any) => <li>{u.ulica.replace(/ - .*$/, '')} <span>{u.mc} · {fmt(u.pocet)}</span></li>)}</ol>
+        </section>
+      </section>
+
+      <section class="dva">
+        {b.trestne_ciny && (
+          <section class="card">
+            <h2>Podozrenia z trestného činu</h2>
+            <ol class="zoznam">{b.trestne_ciny.druhy.slice(0, 8).map((d: any) => <li>{cist(d.druh)} <span>{fmt(d.pocet)}</span></li>)}</ol>
+            <p class="zdroj">Spolu {fmt(b.trestne_ciny.spolu)} za {roky[0]}–{rok}; najviac na uliciach {b.trestne_ciny.ulice.slice(0, 3).map((u: any) => u.ulica).join(', ')}.</p>
+          </section>
+        )}
+        {b.ostatne && (
+          <section class="card">
+            <h2>Iné zásahy mestskej polície</h2>
+            <ol class="zoznam">{b.ostatne.druhy.slice(0, 8).map((d: any) => <li>{cist(d.druh)} <span>{fmt(d.pocet)}</span></li>)}</ol>
+          </section>
+        )}
+      </section>
+
+      {pokuty.length > 0 && (
+        <section class="card">
+          <h2>Pokuty ({pokutyRok})</h2>
+          <div class="tabulka-obal">
+            <table>
+              <thead><tr><th>Skupina</th><th class="num">Počet</th><th class="num">Spolu €</th></tr></thead>
+              <tbody>{pokuty.slice(0, 12).map(([sk, v]: [string, any]) => <tr><td>{cist(sk)}</td><td class="num">{fmt(v.pocet)}</td><td class="num">{fmt(v.suma)}</td></tr>)}</tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {pod && (
+        <section class="card" id="podnety">
+          <h2>Podnety občanov magistrátu</h2>
+          <div class="dva">
+            <div><div class="chart nizky"><canvas id="g-podnety" role="img" aria-label="Podnety občanov podľa rokov"></canvas></div></div>
+            <div>
+              <h3>Najčastejšie témy</h3>
+              <ol class="zoznam">{pod.kategorie.slice(0, 8).map((k: any) => <li>{k.kategoria} <span>{fmt(k.pocet)}</span></li>)}</ol>
+            </div>
+          </div>
+          <p class="zdroj">
+            Stav: {Object.entries<number>(pod.stavy).map(([k, v]) => `${k.toLowerCase()} ${fmt(v)}`).join(', ')}.
+            {Object.keys(pod.median_dni_vyriesenia ?? {}).length > 0 && <> Medián vybavenia: {Object.entries<number>(pod.median_dni_vyriesenia).map(([r, d]) => `${r}: ${d} dní`).join(', ')}.</>}
+            <a href="/mapa#podnety">Podnety na mape</a>. Nadpisy a texty podnetov nezverejňujeme.
+          </p>
+        </section>
+      )}
+
+      <p class="zdroj">
+        Zdroj: <a href="https://data.bratislava.sk">data.bratislava.sk</a> – evidencia udalostí Mestskej polície hlavného mesta (priestupky, podozrenia z trestných činov, ostatné udalosti, pokuty)
+        a práca s podnetmi magistrátu, licencia CC BY 4.0. Ďalšie údaje mestskej polície (kamery, hovory na linku 159, počet policajtov, rozpočet) sú v <a href="/katalog?q=mestská polícia">Katalógu dát</a>.
+      </p>
+    </div>
+  )}
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+  const el = document.getElementById('bezpecnost');
+  if (el?.dataset.graf) {
+    const g = JSON.parse(el.dataset.graf);
+    const css = getComputedStyle(document.documentElement);
+    const accent = css.getPropertyValue('--accent').trim();
+    Chart.defaults.color = css.getPropertyValue('--muted').trim();
+    Chart.defaults.borderColor = css.getPropertyValue('--line').trim();
+    Chart.defaults.font.family = css.getPropertyValue('--font');
+    const stlpce = (id: string, labels: string[], data: number[]) => new Chart(document.getElementById(id) as HTMLCanvasElement, {
+      type: 'bar', data: { labels, datasets: [{ data, backgroundColor: accent, borderRadius: 3 }] },
+      options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } } } },
+    });
+    stlpce('g-roky', g.roky, g.priestupky);
+    if (g.hodiny) stlpce('g-hodiny', g.hodiny.map((_: number, i: number) => `${i}`), g.hodiny);
+    stlpce('g-dni', g.dniNazvy.map((d: string) => d.slice(0, 2)), g.dni);
+    if (g.podnety && document.getElementById('g-podnety')) stlpce('g-podnety', g.podnety.roky, g.podnety.pocty);
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 8px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 46em; margin: 0; }
+  .upozornenie { border-left: 4px solid var(--accent); margin-top: 20px; }
+  .upozornenie p { margin: 0; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; font-variant-numeric: tabular-nums; }
+  .delta { margin: 0; font-size: 0.82rem; color: var(--muted); }
+  section.card { margin-top: 16px; }
+  h2 { font-size: 1.15rem; margin: 0 0 10px; }
+  h3 { font-size: 0.95rem; margin: 14px 0 6px; color: var(--muted); }
+  .dva { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .chart.nizky { height: 220px; }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-size: 0.8rem; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .mensie { font-size: 0.82rem; color: var(--muted); }
+  .zoznam { margin: 0; padding-left: 22px; font-size: 0.9rem; }
+  .zoznam li { margin: 5px 0; }
+  .zoznam span { color: var(--muted); font-size: 0.82rem; margin-left: 4px; }
+</style>

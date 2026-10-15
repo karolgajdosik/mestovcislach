@@ -28,6 +28,7 @@ from spolocne import url_vrstvy, DATA, VEREJNE, mc_podla_polohy, norm_mc, s, spu
 ITEM = "https://www.arcgis.com/sharing/rest/content/items/{}"
 UDALOSTI = {"priestupky": "2566d894", "trestne_ciny": "22a2a9f6", "ostatne": "45348130"}
 POKUTY, PODNETY = "d3d71db2", "96b70a02"
+ZNAME_STAVY = {"V riešení", "Vyriešený", "Uzavretý", "Neriešený", "Odoslaný", "Prijatý", "Zamietnutý", "Presmerovaný"}
 DNI = ["pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota", "nedeľa"]
 
 
@@ -150,7 +151,8 @@ def main() -> int:
         hranica = (posledny or datetime.now()) - timedelta(days=365)
         for r in data:
             c = cas(r.get("DATUM_PRIDANIA"))
-            kat, stav = t(r.get("KATEGORIA")) or "iné", t(r.get("STATUS")) or t(r.get("STAV_POZIADAVKY")) or "neuvedený"
+            kat = t(r.get("KATEGORIA")) or "iné"
+            stav = next((x for x in (t(r.get("STATUS")), t(r.get("STAV_POZIADAVKY"))) if x in ZNAME_STAVY), "iný")
             if c:
                 po_rokoch[c.year] += 1
             kategorie[kat] += 1

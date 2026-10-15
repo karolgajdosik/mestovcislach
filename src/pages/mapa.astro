@@ -66,7 +66,7 @@ const vrstvy = [
   ['sportoviska', 'Športoviská', 'Mesto pre ľudí', '--m-sportoviska', false],
   ['bezdomovci', 'Pomoc ľuďom bez domova', 'Mesto pre ľudí', '--m-bezdomovci', false],
   ['veterina', 'Veterinárne ambulancie', 'Mesto pre ľudí', '--m-veterina', false],
-  ['podnety', 'Podnety občanov (12 mesiacov)', 'Mesto pre ľudí', '--m-podnety', false],
+  ['podnety', 'Podnety občanov (posledný rok v dátach)', 'Mesto pre ľudí', '--m-podnety', false],
   ['pamiatky', 'Kultúrne pamiatky (register)', 'Kultúra a príroda', '--m-pamiatky', false],
   ['pamiatky_osm', 'Pamiatky s fotkami (OSM)', 'Kultúra a príroda', '--m-pamiatky_osm', false],
   ['muzea', 'Múzeá a galérie', 'Kultúra a príroda', '--m-muzea', false],
@@ -292,7 +292,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   tvorba.podnety = async () => {
     const d = await json('/data/podnety-bratislava.json');
     return L.layerGroup(d.body.map(([lat, lon, kat, pod, stav, dat]: any[]) => bod(lat, lon, 'podnety', mobil ? 2.5 : 3)
-      .bindPopup(`<strong>${kat}</strong>${pod ? `<br>${pod}` : ''}<br>stav: ${stav}<br><span style="opacity:.75">nahlásené ${dat.split('-').reverse().join('. ')} · podnety magistrátu</span>`)));
+      .bindPopup(`<strong>${kat}</strong>${pod ? `<br>${pod}` : ''}<br>stav: ${stav}<br><span style="opacity:.75">nahlásené ${dat.split('-').reverse().join('. ')} · podnety magistrátu (mesto ich zverejnilo len do roku ${d.body.length ? d.body.reduce((a: string, b: any[]) => (b[5] > a ? b[5] : a), '').slice(0, 4) : ''})</span>`)));
   };
   // Mriežky klimatického atlasu a hustoty – vždy len jedna naraz, farba podľa kvintilov
   const KLIMA_FARBY = ['#fef3c7', '#fcd34d', '#f59e0b', '#dc2626', '#7f1d1d'];

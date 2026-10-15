@@ -21,7 +21,7 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
       <div class="wrap">
         <a class="logo" href="/">mesto<span>v</span>číslach</a>
         <nav>
-          {[['/', 'Prehľad'], ['/mapa', 'Mapa'], ['/obyvatelia', 'Obyvatelia'], ['/volby', 'Voľby'], ['/financie', 'Financie'], ['/doprava', 'Doprava'], ['/vybavenost', 'Vybavenosť'], ['/prostredie', 'Prostredie'], ['/katalog', 'Katalóg dát']].map(([href, text]) => (
+          {[['/', 'Prehľad'], ['/mapa', 'Mapa'], ['/obyvatelia', 'Obyvatelia'], ['/volby', 'Voľby'], ['/financie', 'Financie'], ['/doprava', 'Doprava'], ['/vybavenost', 'Vybavenosť'], ['/prostredie', 'Prostredie'], ['/bezpecnost', 'Bezpečnosť'], ['/katalog', 'Katalóg dát']].map(([href, text]) => (
             <a href={href} aria-current={Astro.url.pathname.replace(/\/$/, '') === href.replace(/\/$/, '') || (href === '/katalog' && Astro.url.pathname.startsWith('/katalog/')) ? 'page' : undefined}>{text}</a>
           ))}
         </nav>
