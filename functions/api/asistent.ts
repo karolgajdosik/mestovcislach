@@ -6,6 +6,8 @@ import { otvorene, hodinyText } from '../../src/scripts/miesto';
 import { uzavierky, poruchy } from '../../src/scripts/uzavierky';
 
 const MODELY = ['@cf/google/gemma-4-26b-a4b-it', '@cf/meta/llama-3.3-70b-instruct-fp8-fast'];
+// Gemma 4 inak najprv dlho „premýšľa“ (reasoning) – pre krátke odpovede z podkladov to netreba.
+const PARAMETRE = { max_tokens: 900, max_completion_tokens: 900, temperature: 0.2, chat_template_kwargs: { enable_thinking: false } };
 const LIMIT_ZA_HODINU = 20;
 const MAX_OTAZKA = 500;
 
@@ -240,7 +242,7 @@ export const onRequestPost = async (ctx: any) => {
   const odkazy = [...new Set([...temy, ...ziveTypy, ...(pouziteMiesta ? ['miesta'] : [])].map((t) => STRANKY[t]).filter(Boolean))]
     .slice(0, 4).map((u) => ({ url: u, nazov: NAZVY_STRANOK[u] ?? u }));
   if (telo.ladenie === 'surovy-stream') {
-    const st: ReadableStream = await env.AI.run(MODELY[0], { messages, max_tokens: 300, temperature: 0.2, stream: true });
+    const st: ReadableStream = await env.AI.run(MODELY[0], { messages, ...PARAMETRE, max_tokens: 200, max_completion_tokens: 200, stream: true });
     const t = await new Response(st).text();
     return new Response(t.slice(0, 6000), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   }
@@ -250,7 +252,7 @@ export const onRequestPost = async (ctx: any) => {
   let chyba = '';
   for (const model of MODELY) {
     try {
-      const r: any = await env.AI.run(model, { messages, max_tokens: 900, temperature: 0.2 });
+      const r: any = await env.AI.run(model, { messages, ...PARAMETRE });
       odpoved = (r?.response ?? r?.choices?.[0]?.message?.content ?? '').trim();
       if (odpoved) break;
     } catch (e: any) {
@@ -269,7 +271,7 @@ async function streamuj(ctx: any, messages: any[], odkazy: any[]) {
   let chyba = '';
   for (const model of MODELY) {
     try {
-      zdroj = await ctx.env.AI.run(model, { messages, max_tokens: 900, temperature: 0.2, stream: true });
+      zdroj = await ctx.env.AI.run(model, { messages, ...PARAMETRE, stream: true });
       if (zdroj) break;
     } catch (e: any) {
       chyba = String(e?.message ?? e);
