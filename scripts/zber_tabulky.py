@@ -16,6 +16,7 @@ from datetime import datetime, timezone
 from katalog_pravidla import (DATASETY_S_KONTAKTMI_ORGANIZACII, MAX_RIADKOV, NA_WEBE, OSOBITNE, STLPCE_KONTAKT, STLPCE_PREC,
                               STLPCE_VZDY_PREC, VYNECHANE)
 from spolocne import DATA, VEREJNE, s, spusti, zapis_ak_zmena
+from diakritika import hodnota as s_diakritikou, nazov_stlpca
 import json
 
 CIEL = VEREJNE / "tabulky"
@@ -68,7 +69,8 @@ def stiahni(url: str, krok: int = 2000) -> list[dict]:
 def pekne(alias: str, meno: str) -> str:
     t = (alias or meno or "").replace("___", " – ").replace("__", " ").replace("_", " ").strip()
     t = re.sub(r"^F(\d)", r"\1", t)
-    return t[:1].upper() + t[1:].lower() if t.isupper() else t
+    t = t[:1].upper() + t[1:].lower() if t.isupper() else t
+    return nazov_stlpca(t)
 
 
 def importuj(p: dict) -> dict:
@@ -93,7 +95,7 @@ def importuj(p: dict) -> dict:
         data = [[m] + [sucet[m][n] for n in cisla] for m in sorted(sucet)]
     else:
         stlpce = [{"k": n, "n": pekne(a, n), "t": t} for n, t, a in polia]
-        data = [[hodnota(r.get(n), t) for n, t, _ in polia] for r in riadky]
+        data = [[s_diakritikou(hodnota(r.get(n), t)) for n, t, _ in polia] for r in riadky]
         # prázdne stĺpce preč
         plne = [i for i in range(len(stlpce)) if any(row[i] not in (None, "") for row in data)]
         stlpce = [stlpce[i] for i in plne]
@@ -131,7 +133,7 @@ def main() -> int:
         elif (p["vrstvy"][0].get("pocet") or 0) > MAX_RIADKOV and kid not in MESACNE:
             zaznam |= {"stav": "vynechane", "dovod": f"Príliš veľký na všeobecný import ({p['vrstvy'][0]['pocet']} riadkov) – vyžaduje osobitné spracovanie."}
         else:
-            zaznam |= {"stav": "katalog", "kde": f"/data/{p['id']}"}
+            zaznam |= {"stav": "katalog", "kde": f"/katalog/{p['id']}"}
             na_import.append(p)
         stav.append(zaznam)
 

@@ -1,0 +1,152 @@
+---
+// Detail datasetu z katalógu: popis, automatický graf, tabuľka a stiahnutie v CSV.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+
+export function getStaticPaths() {
+  const p = path.join(process.cwd(), 'data', 'katalog-stav.json');
+  if (!fs.existsSync(p)) return [];
+  const stav = JSON.parse(fs.readFileSync(p, 'utf-8'));
+  return stav.datasety
+    .filter((d: any) => d.stav === 'katalog' && fs.existsSync(path.join(process.cwd(), 'public', 'data', 'tabulky', `${d.id}.json`)))
+    .map((d: any) => ({ params: { id: d.id } }));
+}
+
+const { id } = Astro.params;
+const t = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', 'data', 'tabulky', `${id}.json`), 'utf-8'));
+const fmt = (v: any) => (typeof v === 'number' ? v.toLocaleString('sk-SK', { maximumFractionDigits: 2 }) : v ?? '');
+const UKAZKA = 60;
+---
+<Base title={`${t.nazov} – Katalóg dát – mestovcislach.sk`} description={t.popis || `${t.nazov} – otvorené dáta hlavného mesta Bratislavy s grafom a stiahnutím v CSV.`}>
+  <p class="spat"><a href="/katalog">← Katalóg dát</a> · {t.kategoria}</p>
+  <h1>{t.nazov}</h1>
+  {t.popis && <p class="lead">{t.popis}</p>}
+  <p class="meta">
+    {t.riadky.length.toLocaleString('sk-SK')} riadkov{t.mesacne ? ' (hodinové údaje sčítané po mesiacoch)' : ''} ·
+    zdroj <a href={t.zdroj}>data.bratislava.sk</a> · licencia {t.licencia}
+    {t.upravene && <> · aktualizované {new Date(t.upravene).toLocaleDateString('sk-SK')}</>}
+    {t.odstranene_stlpce?.length > 0 && <> · bez stĺpcov {t.odstranene_stlpce.join(', ')} (osobné a kontaktné údaje)</>}
+  </p>
+
+  <div id="tabulka" data-id={id}>
+    <section class="card graf-obal" hidden>
+      <h2 class="graf-nadpis"></h2>
+      <div class="chart"><canvas id="graf" role="img" aria-label={`Graf: ${t.nazov}`}></canvas></div>
+    </section>
+
+    <section class="card">
+      <div class="hlavicka">
+        <h2>Údaje</h2>
+        <button type="button" id="csv">Stiahnuť CSV</button>
+      </div>
+      <div class="tabulka-obal">
+        <table>
+          <thead><tr>{t.stlpce.map((s: any) => <th class={s.t !== 'String' && s.t !== 'Date' ? 'num' : ''}>{s.n}</th>)}</tr></thead>
+          <tbody id="riadky">
+            {t.riadky.slice(0, UKAZKA).map((r: any[]) => <tr>{r.map((v) => <td class={typeof v === 'number' ? 'num' : ''}>{fmt(v)}</td>)}</tr>)}
+          </tbody>
+        </table>
+      </div>
+      {t.riadky.length > UKAZKA && <p><button type="button" id="vsetky">Zobraziť všetkých {t.riadky.length.toLocaleString('sk-SK')} riadkov</button></p>}
+    </section>
+  </div>
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  const el = document.getElementById('tabulka')!;
+  let data: any = null;
+  const nacitaj = async () => (data ??= await fetch(`/data/tabulky/${el.dataset.id}.json`).then((r) => r.json()));
+  const fmt = (v: any) => (typeof v === 'number' ? v.toLocaleString('sk-SK', { maximumFractionDigits: 2 }) : v ?? '');
+  const esc = (t: any) => String(t ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+  document.getElementById('vsetky')?.addEventListener('click', async (e) => {
+    const d = await nacitaj();
+    document.getElementById('riadky')!.innerHTML = d.riadky.map((r: any[]) => `<tr>${r.map((v) => `<td class="${typeof v === 'number' ? 'num' : ''}">${esc(fmt(v))}</td>`).join('')}</tr>`).join('');
+    (e.target as HTMLElement).parentElement!.remove();
+  });
+
+  document.getElementById('csv')!.addEventListener('click', async () => {
+    const d = await nacitaj();
+    const bunka = (v: any) => (v == null ? '' : /[",;\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
+    const csv = [d.stlpce.map((s: any) => bunka(s.n)).join(';'), ...d.riadky.map((r: any[]) => r.map(bunka).join(';'))].join('\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = `${d.nazov.slice(0, 80).replace(/[^\p{L}\p{N}]+/gu, '-')}.csv`;
+    a.click();
+  });
+
+  // Automatický graf: časový stĺpec (rok, mesiac, obdobie, dátum) + číselné stĺpce, prípadne kategórie (mestská časť, okres…)
+  (async () => {
+    const d = await nacitaj();
+    const n = d.stlpce.length;
+    const hodnoty = (i: number) => d.riadky.map((r: any[]) => r[i]);
+    const ciselne = [...Array(n).keys()].filter((i) => {
+      const v = hodnoty(i).filter((x: any) => x != null && x !== '');
+      return v.length > 0 && v.every((x: any) => typeof x === 'number') && !/^(rok|kód|kod|id|poradov|číslo|psč)/i.test(d.stlpce[i].n);
+    });
+    const casovy = [...Array(n).keys()].find((i) => /^(rok|mesiac|obdobie|dátum|datum)/i.test(d.stlpce[i].n) && new Set(hodnoty(i)).size > 1);
+    const kateg = [...Array(n).keys()].find((i) => i !== casovy && !ciselne.includes(i) && (() => {
+      const s = new Set(hodnoty(i)); return s.size > 1 && s.size <= 30;
+    })());
+    const hodnotove = ciselne.filter((i) => i !== casovy);
+    if (!hodnotove.length || d.riadky.length < 2) return;
+    const css = getComputedStyle(document.documentElement);
+    Chart.defaults.color = css.getPropertyValue('--muted').trim();
+    Chart.defaults.borderColor = css.getPropertyValue('--line').trim();
+    Chart.defaults.font.family = css.getPropertyValue('--font');
+    const FARBY = ['#c8102e', '#1f6fd1', '#138a5e', '#a16207', '#7a4fd1', '#0e7490', '#db2777', '#4d7c0f', '#ea580c', '#57534e'];
+    let cfg: any = null;
+    let nadpis = '';
+    if (casovy != null) {
+      const casy = [...new Set(hodnoty(casovy).map(String))].sort();
+      if (kateg != null) {
+        const v = hodnotove[0];
+        const kat = new Map<string, Map<string, number>>();
+        for (const r of d.riadky) {
+          const k = String(r[kateg]);
+          if (!kat.has(k)) kat.set(k, new Map());
+          kat.get(k)!.set(String(r[casovy]), r[v]);
+        }
+        const top = [...kat.entries()].sort((a, b) => [...b[1].values()].reduce((x, y) => x + (y || 0), 0) - [...a[1].values()].reduce((x, y) => x + (y || 0), 0)).slice(0, 10);
+        nadpis = `${d.stlpce[v].n} podľa: ${d.stlpce[kateg].n}${kat.size > 10 ? ' (10 najväčších)' : ''}`;
+        cfg = { type: 'line', data: { labels: casy, datasets: top.map(([k, m], j) => ({ label: k, data: casy.map((c) => m.get(c) ?? null), borderColor: FARBY[j], backgroundColor: FARBY[j], tension: 0.2, spanGaps: true })) } };
+      } else {
+        const zoz = hodnotove.slice(0, 6);
+        const sucet = (i: number, c: string) => d.riadky.filter((r: any[]) => String(r[casovy]) === c).reduce((a: number, r: any[]) => a + (r[i] ?? 0), 0);
+        nadpis = zoz.map((i) => d.stlpce[i].n).join(', ');
+        cfg = { type: casy.length > 12 ? 'line' : 'bar', data: { labels: casy, datasets: zoz.map((i, j) => ({ label: d.stlpce[i].n, data: casy.map((c) => sucet(i, c)), borderColor: FARBY[j], backgroundColor: FARBY[j], tension: 0.2 })) } };
+      }
+    } else if (kateg != null) {
+      const v = hodnotove[0];
+      const riadky = [...d.riadky].filter((r: any[]) => r[v] != null).sort((a: any[], b: any[]) => b[v] - a[v]).slice(0, 30);
+      nadpis = `${d.stlpce[v].n} podľa: ${d.stlpce[kateg].n}`;
+      cfg = { type: 'bar', data: { labels: riadky.map((r: any[]) => String(r[kateg])), datasets: [{ label: d.stlpce[v].n, data: riadky.map((r: any[]) => r[v]), backgroundColor: FARBY[0] }] }, options: { indexAxis: 'y' } };
+    }
+    if (!cfg) return;
+    cfg.options = { maintainAspectRatio: false, ...(cfg.options ?? {}), plugins: { legend: { display: cfg.data.datasets.length > 1 } } };
+    const obal = document.querySelector<HTMLElement>('.graf-obal')!;
+    obal.hidden = false;
+    obal.querySelector('.graf-nadpis')!.textContent = nadpis;
+    new Chart(document.getElementById('graf') as HTMLCanvasElement, cfg);
+  })();
+</script>
+
+<style>
+  .spat { margin: 28px 0 0; font-size: 0.9rem; color: var(--muted); }
+  h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.15; letter-spacing: -0.02em; margin: 8px 0 10px; }
+  .lead { color: var(--muted); font-size: 1.02rem; max-width: 52em; margin: 0 0 8px; }
+  .meta { color: var(--muted); font-size: 0.85rem; margin: 0 0 18px; }
+  section.card { margin-top: 16px; }
+  h2 { font-size: 1.05rem; margin: 0 0 10px; }
+  .chart { height: 360px; }
+  .hlavicka { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  button { font: inherit; font-size: 0.9rem; padding: 7px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--text); cursor: pointer; }
+  .tabulka-obal { overflow-x: auto; max-height: 70vh; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.78rem; position: sticky; top: 0; background: var(--card); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+</style>

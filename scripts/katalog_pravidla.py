@@ -15,6 +15,7 @@ NA_WEBE = {
     "b000dfd7": ("/prostredie", "Výsadba stromov"),
     "aba12fd2": ("/doprava", "MHD – cestovné poriadky GTFS"), "34a7ec01": ("/doprava", "Prepravení cestujúci"),
     "39d5a295": ("/doprava", "Dopravné nehody"), "b72dc2a2": ("/doprava", "Nehody so zranením"), "7b5628f9": ("/doprava#premavka", "Sčítače áut"),
+    "097b7c8b": ("/doprava#premavka", "Sčítače cyklistov"), "84ba9f28": ("/doprava#premavka", "Sčítače chodcov"),
     "08643896": ("/doprava#cyklo", "Stanice BAjk"),
     "f1aeacee": ("/vybavenost", "Zoznam ZŠ"), "3cca7b58": ("/vybavenost", "Zoznam MŠ 2026"),
     "ef5254fb": ("/vybavenost#spadova-skola", "Spádové obvody ZŠ"), "a6a832dd": ("/vybavenost#spadova-skola", "Spádové obvody MŠ 2026"),
@@ -45,7 +46,7 @@ OSOBITNE = {
     "61a9db38": ("/mapa", "Klimatický atlas – riziko zrážok pre budovy", "zber_klima.py"), "7e67f27f": ("/mapa", "Dostupnosť kúpalísk", "zber_klima.py"),
     "ffe51d79": ("/mapa", "Hustota obyvateľov (štvorce 1 km)", "zber_klima.py"),
     # dlhé časové rady – súhrn po mesiacoch
-    "bc6f1d93": ("/data", "Cyklosčítač Berg (mesačne)", "zber_tabulky.py"), "0de0dba7": ("/data", "Cyklosčítač Viedenská (mesačne)", "zber_tabulky.py"),
+    "bc6f1d93": ("/katalog", "Cyklosčítač Berg (mesačne)", "zber_tabulky.py"), "0de0dba7": ("/katalog", "Cyklosčítač Viedenská (mesačne)", "zber_tabulky.py"),
 }
 
 # Vynechané datasety a dôvod

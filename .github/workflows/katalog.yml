@@ -11,6 +11,7 @@ on:
       - "scripts/zber_katalog.py"
       - "scripts/zber_tabulky.py"
       - "scripts/katalog_pravidla.py"
+      - "scripts/diakritika.py"
       - ".github/workflows/katalog.yml"
 
 permissions:

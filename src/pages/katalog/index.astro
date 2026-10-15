@@ -1,0 +1,132 @@
+---
+// Katalóg dát: všetky datasety portálu data.bratislava.sk a čo s nimi web robí.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+
+const p = path.join(process.cwd(), 'data', 'katalog-stav.json');
+const stav = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+const STAVY: Record<string, [string, string]> = {
+  na_webe: ['Na stránkach webu', 'Spracované v grafoch, mapách alebo vyhľadávaní priamo na stránkach.'],
+  osobitne: ['Osobitné spracovanie', 'Veľké alebo mapové dáta – spracované do súhrnov a mapových vrstiev.'],
+  katalog: ['V katalógu', 'Tabuľka s grafom a stiahnutím v CSV.'],
+  vynechane: ['Vynechané', 'S uvedeným dôvodom.'],
+};
+const datasety: any[] = stav?.datasety ?? [];
+const kategorie = [...new Set(datasety.map((d) => d.kategoria))].sort((a, b) => a.localeCompare(b, 'sk'));
+const fmt = (n: number) => n?.toLocaleString('sk-SK');
+const datum = (ms: number) => (ms ? new Date(ms).toLocaleDateString('sk-SK') : '');
+---
+<Base title="Katalóg dát Bratislavy – mestovcislach.sk" description="Všetky otvorené dáta hlavného mesta Bratislavy na jednom mieste: tabuľky s grafmi, stiahnutie v CSV a čo web s ktorým datasetom robí.">
+  <section class="hero">
+    <p class="kicker">Bratislava · data.bratislava.sk</p>
+    <h1>Katalóg dát</h1>
+    <p class="lead">Všetkých {datasety.length} datasetov, ktoré hlavné mesto zverejňuje na portáli otvorených dát. Pri každom vidíte, kde ho na webe nájdete, alebo prečo sme ho vynechali.</p>
+  </section>
+
+  {!stav ? <div class="card"><p>Katalóg sa pripravuje.</p></div> : (
+    <>
+      <section class="kpis">
+        {Object.entries(STAVY).map(([k, [nazov, popis]]) => (
+          <button class="card kpi filter-stav" data-stav={k} type="button" aria-pressed="false">
+            <p class="label"><i class={`bod ${k}`}></i>{nazov}</p>
+            <p class="value">{stav.pocty[k] ?? 0}</p>
+            <p class="delta">{popis}</p>
+          </button>
+        ))}
+      </section>
+
+      <section class="card">
+        <div class="ovladanie">
+          <input id="hladaj" type="search" placeholder="Hľadať, napr. nezamestnanosť, MHD, plodnosť…" autocomplete="off" />
+          <select id="kategoria"><option value="">všetky témy</option>{kategorie.map((k) => <option>{k}</option>)}</select>
+        </div>
+        <p class="pocet" id="pocet" aria-live="polite"></p>
+        <div id="zoznam">
+          {kategorie.map((k) => (
+            <section class="skupina" data-kategoria={k}>
+              <h2>{k}</h2>
+              <ul>
+                {datasety.filter((d) => d.kategoria === k).map((d) => (
+                  <li data-stav={d.stav} data-hladaj={`${d.nazov} ${d.pozn ?? ''} ${d.dovod ?? ''}`.toLowerCase()}>
+                    <i class={`bod ${d.stav}`} title={STAVY[d.stav]?.[0]}></i>
+                    <div>
+                      {d.kde ? <a href={d.kde}>{d.nazov}</a> : <span>{d.nazov}</span>}
+                      <span class="meta">
+                        {STAVY[d.stav]?.[0]}{d.pozn && d.stav !== 'katalog' ? ` · ${d.pozn}` : ''}{d.riadkov ? ` · ${fmt(d.riadkov)} riadkov` : ''}{d.upravene ? ` · aktualizované ${datum(d.upravene)}` : ''}
+                        · <a href={`https://data.bratislava.sk/datasets/${d.id}`} rel="noopener">zdroj</a>
+                      </span>
+                      {d.dovod && <span class="dovod">{d.dovod}</span>}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+        <p class="zdroj">Zdroj: <a href="https://data.bratislava.sk">data.bratislava.sk</a> (ArcGIS Hub hlavného mesta), väčšinou licencia CC BY 4.0. Zoznam sa obnovuje raz týždenne. Pri všetkých tabuľkách odstraňujeme kontaktné údaje fyzických osôb a interné identifikátory.</p>
+      </section>
+    </>
+  )}
+</Base>
+
+<script>
+  const hladaj = document.getElementById('hladaj') as HTMLInputElement | null;
+  if (hladaj) {
+    const kat = document.getElementById('kategoria') as HTMLSelectElement;
+    const pocet = document.getElementById('pocet')!;
+    const tlacidla = [...document.querySelectorAll<HTMLButtonElement>('.filter-stav')];
+    let stav = '';
+    const norm = (t: string) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const polozky = [...document.querySelectorAll<HTMLLIElement>('#zoznam li')].map((li) => ({ li, t: norm(li.dataset.hladaj!) }));
+    const filtruj = () => {
+      const q = norm(hladaj.value.trim()).split(/\s+/).filter(Boolean);
+      let n = 0;
+      for (const { li, t } of polozky) {
+        const ok = (!stav || li.dataset.stav === stav) && q.every((w) => t.includes(w));
+        li.hidden = !ok;
+        if (ok) n++;
+      }
+      document.querySelectorAll<HTMLElement>('.skupina').forEach((s) => {
+        s.hidden = (kat.value && s.dataset.kategoria !== kat.value) || !s.querySelector('li:not([hidden])');
+      });
+      pocet.textContent = `Zobrazené: ${n}`;
+    };
+    hladaj.addEventListener('input', filtruj);
+    kat.addEventListener('change', filtruj);
+    tlacidla.forEach((b) => b.addEventListener('click', () => {
+      stav = stav === b.dataset.stav ? '' : b.dataset.stav!;
+      tlacidla.forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.stav === stav)));
+      filtruj();
+    }));
+    const q = new URLSearchParams(location.search).get('q');
+    if (q) hladaj.value = q;
+    filtruj();
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 8px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 46em; margin: 0; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 24px 0 16px; }
+  .kpi { text-align: left; font: inherit; color: inherit; cursor: pointer; border: 1px solid var(--line); }
+  .kpi[aria-pressed='true'] { outline: 2px solid var(--accent); }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; display: flex; align-items: center; gap: 6px; }
+  .kpi .value { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; }
+  .delta { margin: 0; font-size: 0.82rem; color: var(--muted); }
+  .bod { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .bod.na_webe { background: #138a5e; } .bod.osobitne { background: #1f6fd1; } .bod.katalog { background: #a16207; } .bod.vynechane { background: #9aa1ad; }
+  .ovladanie { display: flex; gap: 10px; flex-wrap: wrap; }
+  .ovladanie input { flex: 1 1 260px; }
+  .ovladanie input, .ovladanie select { font: inherit; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); }
+  .pocet { color: var(--muted); font-size: 0.85rem; margin: 10px 0 0; }
+  .skupina h2 { font-size: 1.05rem; margin: 22px 0 6px; }
+  .skupina ul { list-style: none; margin: 0; padding: 0; }
+  .skupina li { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .skupina li > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .meta { color: var(--muted); font-size: 0.8rem; }
+  .meta a { color: inherit; }
+  .dovod { font-size: 0.85rem; color: var(--muted); background: var(--bg); border-radius: 6px; padding: 4px 8px; margin-top: 2px; }
+</style>
