@@ -39,6 +39,26 @@ export async function GET() {
       })),
     };
   }
+  const kom = nacitaj('komunalne-bratislava.json');
+  if (kom) {
+    const viz = (k: any[]) => k?.find((x: any) => x.zvoleny);
+    temy.komunalne = {
+      nazov: 'Komunálne a krajské voľby (primátor, starostovia, zastupiteľstvá, BSK)', stranka: '/volby#komunalne',
+      fakty: kom.volby.map((v: any) => v.stav !== 'vysledky' ? {
+        volby: v.nazov, datum: v.datum, stav: 'výsledky ešte nie sú zverejnené – web ich doplní automaticky po zverejnení ŠÚ SR',
+        kandidati_na_primatora: v.kandidati_primator?.map((x: any) => `${x.meno} (${x.strany})`) ?? 'zoznam ešte nie je zverejnený',
+        kandidati_na_predsedu_bsk: v.kandidati_predseda_bsk?.map((x: any) => `${x.meno} (${x.strany})`),
+      } : {
+        volby: v.nazov, datum: v.datum,
+        primator: { ucast_pct: v.oso.primator.ucast.ucast_pct, kandidati: v.oso.primator.kandidati.map((c: any) => `${c.meno} (${c.strany}) ${c.podiel} %${c.zvoleny ? ' – ZVOLENÝ' : ''}`) },
+        primator_podla_mestskych_casti: v.oso.primator.mestske_casti.map((m: any) => `${m.nazov}: účasť ${m.ucast} %, ${m.poradie.slice(0, 2).map((x: any) => `${x.meno} ${x.podiel} %`).join(', ')}`),
+        mestske_zastupitelstvo_mandaty: v.oso.mestske_zastupitelstvo.mandaty.map((m: any) => `${m.strany}: ${m.mandaty}`),
+        starostovia: v.oso.starostovia.map((st: any) => { const z = viz(st.kandidati); return `${st.nazov}: ${z ? `${z.meno} (${z.strany}) ${z.podiel} %` : '–'}, účasť ${st.ucast.ucast_pct} %, kandidátov ${st.kandidati.length}`; }),
+        predseda_bsk: v.osk ? { ucast_kraj_pct: v.osk.predseda.kraj.ucast.ucast_pct, kandidati: v.osk.predseda.kraj.kandidati.slice(0, 6).map((c: any) => `${c.meno} (${c.strany}) ${c.podiel} %${c.zvoleny ? ' – ZVOLENÝ' : ''}`) } : undefined,
+        krajski_poslanci_za_bratislavu: v.osk?.poslanci_za_bratislavu.mandaty.map((m: any) => `${m.strany}: ${m.mandaty}`),
+      }),
+    };
+  }
   const rozp = nacitaj('rozpocet-bratislava.json');
   const zmluvy = nacitaj('zmluvy-bratislava.json');
   const majetok = nacitaj('majetok-bratislava.json');

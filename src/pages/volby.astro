@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../layouts/Base.astro';
+import KomunalneVolby from '../components/KomunalneVolby.astro';
 
 const nacitaj = (subor: string) => {
   const p = path.join(process.cwd(), 'data', subor);
@@ -44,17 +45,16 @@ const pripravene = volby.map((v) => {
   return { ...v, graf, mapa };
 });
 ---
-<Base title="Voľby v Bratislave – mestovcislach.sk" description="Výsledky volieb v Bratislave a jej mestských častiach v porovnaní so Slovenskom.">
+<Base title="Voľby v Bratislave – mestovcislach.sk" description="Komunálne a krajské voľby v Bratislave (primátor, starostovia, BSK) a výsledky parlamentných a európskych volieb po mestských častiach.">
   <section class="hero">
     <p class="kicker">Bratislava</p>
     <h1>Voľby</h1>
-    <p class="lead">Ako volili Bratislavčania a ich mestské časti – v porovnaní s celým Slovenskom.</p>
+    <p class="lead">Komunálne a krajské voľby – primátor, starostovia, poslanci a predseda kraja – a ako volili Bratislavčania v parlamentných a európskych voľbách.</p>
   </section>
 
-  <aside class="card upozornenie">
-    <strong>Komunálne a župné voľby 24. októbra 2026</strong>
-    <p>Voliť sa bude primátor, starostovia mestských častí, poslanci aj predseda a poslanci kraja. Výsledky za Bratislavu a mestské časti doplníme po ich zverejnení Štatistickým úradom SR.</p>
-  </aside>
+  <KomunalneVolby />
+
+  <h2 class="sekcia">Parlamentné a európske voľby</h2>
 
   {pripravene.length === 0 ? (
     <div class="card"><p>Dáta o voľbách sa pripravujú.</p></div>
@@ -255,6 +255,7 @@ const pripravene = volby.map((v) => {
   .lead { color: var(--muted); font-size: 1.1rem; max-width: 40em; margin: 0; }
   h2 { font-size: 1.1rem; margin: 0 0 16px; }
   section.card { margin-top: 16px; }
+  h2.sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 40px 0 0; }
   .upozornenie { border-left: 4px solid var(--accent); }
   .upozornenie p { margin: 6px 0 0; color: var(--muted); }
   .volby-tabs { margin: 24px 0 4px; display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }

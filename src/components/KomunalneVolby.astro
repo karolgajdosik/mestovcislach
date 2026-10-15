@@ -1,0 +1,272 @@
+---
+// Komunálne a krajské voľby v Bratislave (primátor, mestské zastupiteľstvo, starostovia, BSK).
+// Údaje: data/komunalne-bratislava.json (scripts/zber_komunalne.py). Výsledky 2026 sa doplnia automaticky.
+import fs from 'node:fs';
+import path from 'node:path';
+
+const p = path.join(process.cwd(), 'data', 'komunalne-bratislava.json');
+const data = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+const volby: any[] = (data?.volby ?? []).slice().sort((a: any, b: any) => b.id.localeCompare(a.id));
+const pct = (n: number | null | undefined) => (n == null ? '–' : n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' %');
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const datum = (d: string) => new Date(d).toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Skratky častých strán (dlhé koaličné názvy sú inak nečitateľné)
+const SKR: [RegExp, string][] = [
+  [/^Progresívne Slovensko$/, 'PS'], [/^Sloboda a Solidarita$|^SaS$/, 'SaS'], [/^Kresťanskodemokratické hnutie$|^KDH$/, 'KDH'],
+  [/^SMER - sociálna demokracia$|^SMER-SD$/, 'Smer'], [/^HLAS - sociálna demokracia$/, 'Hlas'], [/^Slovenská národná strana$/, 'SNS'],
+  [/^Strana obcí a miest - SOM SLOVENSKO$/, 'SOM Slovensko'], [/^Kotlebovci - Ľudová strana Naše Slovensko$|^ĽS Naše Slovensko$/, 'ĽSNS'],
+  [/^OBYČAJNÍ ĽUDIA/, 'OĽaNO'], [/^Občianska konzervatívna strana$/, 'OKS'], [/^Demokratická únia Slovenska$/, 'DÚ'],
+  [/^SME RODINA$/, 'Sme rodina'], [/^ZA ĽUDÍ$/, 'Za ľudí'], [/^DOBRÁ VOĽBA a Umiernení$/, 'Dobrá voľba'],
+  [/^SZÖVETSÉG/, 'Aliancia'], [/^Hnutie Slovensko$/, 'Hnutie Slovensko'], [/^Demokrati$/, 'Demokrati'], [/^REPUBLIKA$/, 'Republika'],
+  [/^nezávislý kandidát$/, 'nezávislý'],
+];
+const skrat = (strany: string) =>
+  strany.split(', ').map((s) => SKR.find(([r]) => r.test(s.trim()))?.[1] ?? s.trim()).join(', ');
+const vitaz = (k: any[]) => k?.find((x) => x.zvoleny) ?? null;
+---
+{volby.length > 0 && (
+  <div class="kom" id="komunalne">
+    <h2 class="sekcia">Komunálne a krajské voľby</h2>
+    <div class="prepinac kom-tabs" role="tablist" aria-label="Vybrať rok">
+      {volby.map((v, i) => <button type="button" role="tab" data-kom={v.id} aria-selected={i === 0 ? 'true' : 'false'}>{v.id}</button>)}
+    </div>
+
+    {volby.map((v, i) => {
+      const o = v.oso, k = v.osk;
+      const prim = o && vitaz(o.primator.kandidati);
+      const pred = k && vitaz(k.predseda.kraj.kandidati);
+      return (
+        <div class="kom-panel" data-kom-panel={v.id} hidden={i !== 0}>
+          <p class="meta">{v.nazov} · {datum(v.datum)}</p>
+
+          {v.stav !== 'vysledky' && (
+            <aside class="card upozornenie">
+              <strong>Voľby sa konajú v sobotu {datum(v.datum)}</strong>
+              <p>
+                Volí sa primátor Bratislavy a 45 mestských poslancov, starostovia a miestni poslanci všetkých 17 mestských častí,
+                predseda Bratislavského samosprávneho kraja a krajskí poslanci. Výsledky sa tu objavia automaticky – počas volebnej noci
+                a nasledujúcich dní kontrolujeme zdroj Štatistického úradu SR každých 15–20 minút.
+              </p>
+              {v.kandidati_primator?.length > 0 && (
+                <>
+                  <h3>Kandidáti na primátora</h3>
+                  <ul class="kand">{v.kandidati_primator.map((x: any) => <li><strong>{x.meno}</strong> <span>{skrat(x.strany)}</span></li>)}</ul>
+                </>
+              )}
+              {v.kandidati_predseda_bsk?.length > 0 && (
+                <>
+                  <h3>Kandidáti na predsedu BSK</h3>
+                  <ul class="kand">{v.kandidati_predseda_bsk.map((x: any) => <li><strong>{x.meno}</strong> <span>{skrat(x.strany)}</span></li>)}</ul>
+                </>
+              )}
+              <p class="zdroj">Zdroj: <a href={v.web}>Štatistický úrad SR – voľby 2026</a>.</p>
+            </aside>
+          )}
+
+          {o && (
+            <>
+              <section class="kpis">
+                {prim && (
+                  <div class="card kpi">
+                    <p class="label">Primátor Bratislavy</p>
+                    <p class="value small">{prim.meno}</p>
+                    <p class="delta">{pct(prim.podiel)} · {fmt(prim.hlasy)} hlasov</p>
+                  </div>
+                )}
+                <div class="card kpi">
+                  <p class="label">Účasť v Bratislave</p>
+                  <p class="value">{pct(o.primator.ucast.ucast_pct)}</p>
+                  <p class="delta">{fmt(o.primator.ucast.volili)} z {fmt(o.primator.ucast.zapisani)} voličov</p>
+                </div>
+                {pred && (
+                  <div class="card kpi">
+                    <p class="label">Predseda Bratislavského kraja</p>
+                    <p class="value small">{pred.meno}</p>
+                    <p class="delta">{pct(pred.podiel)} v kraji · účasť v kraji {pct(k.predseda.kraj.ucast.ucast_pct)}</p>
+                  </div>
+                )}
+              </section>
+
+              <section class="card">
+                <h3>Primátor Bratislavy</h3>
+                <ol class="stlpce">
+                  {o.primator.kandidati.map((c: any) => (
+                    <li class={c.zvoleny ? 'zvoleny' : ''}>
+                      <div class="riadok"><span class="meno">{c.meno}{c.zvoleny && <em>zvolený</em>}</span><span class="cislo">{pct(c.podiel)}</span></div>
+                      <div class="pruh"><i style={`width:${c.podiel}%`}></i></div>
+                      <div class="strany">{skrat(c.strany)} · {fmt(c.hlasy)} hlasov</div>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+
+              {o.primator.mestske_casti.length > 0 && (
+                <section class="card">
+                  <h3>Voľba primátora podľa mestských častí</h3>
+                  <div class="tabulka-obal">
+                    <table>
+                      <thead><tr><th>Mestská časť</th><th class="num">Účasť</th><th>Prvý</th><th class="num">%</th><th>Druhý</th><th class="num">%</th></tr></thead>
+                      <tbody>
+                        {o.primator.mestske_casti.map((m: any) => (
+                          <tr><td>{m.nazov}</td><td class="num">{pct(m.ucast)}</td><td>{m.poradie[0]?.meno}</td><td class="num">{pct(m.poradie[0]?.podiel)}</td><td>{m.poradie[1]?.meno}</td><td class="num">{pct(m.poradie[1]?.podiel)}</td></tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              )}
+
+              <section class="card">
+                <h3>Mestské zastupiteľstvo – {o.mestske_zastupitelstvo.poslancov} poslancov</h3>
+                <div class="mandaty">
+                  {o.mestske_zastupitelstvo.mandaty.map((m: any, j: number) => (
+                    <div class="mandat" style={`flex:${m.mandaty}`} data-f={j % 6} title={`${m.strany}: ${m.mandaty}`}><span>{m.mandaty}</span></div>
+                  ))}
+                </div>
+                <ul class="mandaty-leg">
+                  {o.mestske_zastupitelstvo.mandaty.map((m: any, j: number) => <li><i data-f={j % 6}></i>{skrat(m.strany)} – <strong>{m.mandaty}</strong></li>)}
+                </ul>
+                <details>
+                  <summary>Zvolení poslanci podľa obvodov</summary>
+                  <div class="tabulka-obal">
+                    <table>
+                      <thead><tr><th>Obvod</th><th>Poslanec</th><th>Kandidoval za</th><th class="num">Hlasy</th></tr></thead>
+                      <tbody>{o.mestske_zastupitelstvo.zvoleni.map((z: any) => <tr><td>{z.obvod}</td><td>{z.meno}</td><td>{skrat(z.strany)}</td><td class="num">{fmt(z.hlasy)}</td></tr>)}</tbody>
+                    </table>
+                  </div>
+                </details>
+              </section>
+
+              <section class="card">
+                <h3>Starostovia mestských častí</h3>
+                <div class="tabulka-obal">
+                  <table>
+                    <thead><tr><th>Mestská časť</th><th>Zvolený starosta</th><th>Kandidoval za</th><th class="num">%</th><th class="num">Účasť</th><th class="num">Kand.</th></tr></thead>
+                    <tbody>
+                      {o.starostovia.map((st: any) => {
+                        const z = vitaz(st.kandidati);
+                        return <tr><td>{st.nazov}</td><td>{z?.meno ?? '–'}</td><td>{z ? skrat(z.strany) : ''}</td><td class="num">{pct(z?.podiel)}</td><td class="num">{pct(st.ucast.ucast_pct)}</td><td class="num">{st.kandidati.length}</td></tr>;
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                <details>
+                  <summary>Všetci kandidáti a zloženie miestnych zastupiteľstiev</summary>
+                  <div class="mc-mriezka">
+                    {o.starostovia.map((st: any) => (
+                      <div class="mc">
+                        <h4>{st.nazov}</h4>
+                        <ol>{st.kandidati.map((c: any) => <li class={c.zvoleny ? 'zvoleny' : ''}>{c.meno} <span>{skrat(c.strany)}</span> <b>{pct(c.podiel)}</b></li>)}</ol>
+                        {st.miestne_zastupitelstvo.poslancov > 0 && (
+                          <p class="mz">Miestne zastupiteľstvo ({st.miestne_zastupitelstvo.poslancov}): {st.miestne_zastupitelstvo.mandaty.map((m: any) => `${skrat(m.strany)} ${m.mandaty}`).join(' · ')}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              </section>
+            </>
+          )}
+
+          {k && (
+            <section class="card">
+              <h3>Predseda Bratislavského samosprávneho kraja</h3>
+              <ol class="stlpce">
+                {k.predseda.kraj.kandidati.map((c: any) => {
+                  const ba = k.predseda.bratislava.kandidati.find((x: any) => x.meno === c.meno);
+                  return (
+                    <li class={c.zvoleny ? 'zvoleny' : ''}>
+                      <div class="riadok"><span class="meno">{c.meno}{c.zvoleny && <em>zvolený</em>}</span><span class="cislo">{pct(c.podiel)}</span></div>
+                      <div class="pruh"><i style={`width:${c.podiel}%`}></i></div>
+                      <div class="strany">{skrat(c.strany)} · v Bratislave {pct(ba?.podiel)}</div>
+                    </li>
+                  );
+                })}
+              </ol>
+              <p class="zdroj">Percentá za celý kraj; účasť v kraji {pct(k.predseda.kraj.ucast.ucast_pct)}, v Bratislave {pct(k.predseda.bratislava.ucast.ucast_pct)}.</p>
+              <details>
+                <summary>Krajskí poslanci zvolení v Bratislave ({k.poslanci_za_bratislavu.poslancov})</summary>
+                <p class="mz">{k.poslanci_za_bratislavu.mandaty.map((m: any) => `${skrat(m.strany)} ${m.mandaty}`).join(' · ')}</p>
+                <div class="tabulka-obal">
+                  <table>
+                    <thead><tr><th>Obvod</th><th>Poslanec</th><th>Kandidoval za</th><th class="num">Hlasy</th></tr></thead>
+                    <tbody>{k.poslanci_za_bratislavu.zvoleni.map((z: any) => <tr><td>{z.obvod}</td><td>{z.meno}</td><td>{skrat(z.strany)}</td><td class="num">{fmt(z.hlasy)}</td></tr>)}</tbody>
+                  </table>
+                </div>
+              </details>
+            </section>
+          )}
+
+          {(o || k) && (
+            <p class="zdroj">
+              Zdroj: <a href={v.web}>Štatistický úrad SR – výsledky volieb do orgánov samosprávy obcí a samosprávnych krajov</a>.
+              Výsledky primátora podľa mestských častí sú spočítané z okrskov. Uvádzame mená kandidátov a strany z kandidátnych listín, nie ďalšie osobné údaje.
+            </p>
+          )}
+        </div>
+      );
+    })}
+  </div>
+)}
+
+<script>
+  const kom = document.getElementById('komunalne');
+  kom?.querySelectorAll<HTMLButtonElement>('[data-kom]').forEach((b) =>
+    b.addEventListener('click', () => {
+      kom.querySelectorAll<HTMLButtonElement>('[data-kom]').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+      kom.querySelectorAll<HTMLElement>('[data-kom-panel]').forEach((p) => (p.hidden = p.dataset.komPanel !== b.dataset.kom));
+    }),
+  );
+</script>
+
+<style>
+  .kom { margin-top: 8px; }
+  h2.sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 32px 0 12px; }
+  h3 { font-size: 1.05rem; margin: 0 0 14px; }
+  h4 { font-size: 0.95rem; margin: 0 0 6px; }
+  .kom-tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .kom-tabs button { font: inherit; font-size: 0.9rem; border: 0; background: none; color: var(--muted); padding: 7px 16px; border-radius: 999px; cursor: pointer; }
+  .kom-tabs button[aria-selected='true'] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin: 12px 0 0; }
+  section.card, aside.card { margin-top: 16px; }
+  .upozornenie { border-left: 4px solid var(--accent); }
+  .upozornenie p { margin: 6px 0 0; color: var(--muted); }
+  .upozornenie h3 { margin: 16px 0 6px; font-size: 0.95rem; }
+  .kand { margin: 0; padding-left: 1.2em; font-size: 0.9rem; }
+  .kand span { color: var(--muted); }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 12px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; font-variant-numeric: tabular-nums; }
+  .kpi .value.small { font-size: 1.3rem; line-height: 1.25; padding: 8px 0 4px; }
+  .delta { margin: 0; font-size: 0.9rem; color: var(--muted); }
+  .stlpce { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .stlpce .riadok { display: flex; justify-content: space-between; gap: 12px; font-size: 0.95rem; }
+  .stlpce .meno { font-weight: 600; }
+  .stlpce em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: #fff; background: var(--accent); border-radius: 999px; padding: 1px 8px; margin-left: 8px; vertical-align: 1px; }
+  .stlpce .cislo { font-variant-numeric: tabular-nums; font-weight: 700; }
+  .pruh { height: 8px; background: var(--bg); border-radius: 4px; margin: 4px 0; overflow: hidden; }
+  .pruh i { display: block; height: 100%; background: var(--muted); opacity: 0.5; border-radius: 4px; }
+  .zvoleny .pruh i { background: var(--accent); opacity: 1; }
+  .stlpce .strany { font-size: 0.8rem; color: var(--muted); }
+  .mandaty { display: flex; height: 34px; border-radius: 8px; overflow: hidden; gap: 2px; }
+  .mandat { display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.85rem; min-width: 18px; }
+  [data-f='0'] { background: #c8102e; } [data-f='1'] { background: #1f6fd1; } [data-f='2'] { background: #138a5e; }
+  [data-f='3'] { background: #d97706; } [data-f='4'] { background: #7a4fd1; } [data-f='5'] { background: #6b7280; }
+  .mandaty-leg { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.85rem; }
+  .mandaty-leg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
+  details { margin-top: 14px; }
+  summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+  .mc-mriezka { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 12px; }
+  .mc { border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+  .mc ol { margin: 0; padding-left: 1.2em; font-size: 0.85rem; }
+  .mc li span { color: var(--muted); }
+  .mc li b { float: right; font-variant-numeric: tabular-nums; }
+  .mc li.zvoleny { font-weight: 700; }
+  .mz { font-size: 0.8rem; color: var(--muted); margin: 8px 0 0; }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+</style>

@@ -17,6 +17,7 @@ const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,
 const TEMY: Record<string, RegExp> = {
   obyvatelstvo: /obyvat|populac|demograf|kolko ludi|pocet ludi|narodil|byva/,
   volby: /volb|volil|volic|stran|hlasov|ucast|parlament|europarl|kandid/,
+  komunalne: /komunal|primator|starost|zastupitel|poslan|bsk|zup|samospravn|predsed|vallo|droba|24\. ?10|oktobr/,
   rozpocet: /rozpoc|prijm|vydavk|vydav|financ|peniaz|dlh|hospodar|dan /,
   zmluvy: /zmluv|dodavatel|obstara|firma|firmy|zakazk/,
   majetok: /majet|pozem|parcel/,
@@ -44,13 +45,13 @@ const KATEGORIE: [RegExp, string][] = [
   [/zastav/, 'Zastávka MHD'], [/bajk|zdielan.*bicyk/, 'Stanica BAjk'],
 ];
 const STRANKY: Record<string, string> = {
-  obyvatelstvo: '/', volby: '/volby', rozpocet: '/financie', zmluvy: '/financie', majetok: '/financie', mhd: '/doprava#doprava',
+  obyvatelstvo: '/', volby: '/volby', komunalne: '/volby#komunalne', rozpocet: '/financie', zmluvy: '/financie', majetok: '/financie', mhd: '/doprava#doprava',
   nehody: '/doprava', scitace: '/doprava#premavka', cyklo: '/doprava#cyklo', skoly: '/vybavenost', vybavenost: '/vybavenost',
   ovzdusie: '/prostredie', prostredie: '/prostredie', priroda: '/prostredie', vystrahy: '/#dnes', dunaj: '/prostredie#dunaj',
   cesty: '/doprava#naozivo', miesta: '/mapa',
 };
 const NAZVY_STRANOK: Record<string, string> = {
-  '/': 'Prehľad', '/volby': 'Voľby', '/financie': 'Financie', '/doprava#doprava': 'Doprava – MHD', '/doprava': 'Doprava',
+  '/': 'Prehľad', '/volby': 'Voľby', '/volby#komunalne': 'Komunálne voľby', '/financie': 'Financie', '/doprava#doprava': 'Doprava – MHD', '/doprava': 'Doprava',
   '/doprava#premavka': 'Kedy je premávka', '/doprava#cyklo': 'Cyklotrasy', '/vybavenost': 'Vybavenosť', '/prostredie': 'Prostredie',
   '/#dnes': 'Dnes v Bratislave', '/prostredie#dunaj': 'Dunaj', '/doprava#naozivo': 'Uzávierky dnes', '/mapa': 'Mapa',
 };
