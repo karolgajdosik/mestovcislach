@@ -14,6 +14,16 @@ const obyv = nacitaj('obyvatelstvo-bratislava.json');
 const mhd = nacitaj('doprava-bratislava.json');
 const bajk = nacitaj('bajk-bratislava.json');
 const prostredie = nacitaj('prostredie-bratislava.json');
+const scit = nacitaj('scitace-bratislava.json');
+// Sčítače zlúčené podľa miesta: [lat, lon, názov, {kategória: priemer za pracovný deň}]
+const scitaceBody = new Map<string, any[]>();
+for (const [kat, v] of Object.entries<any>(scit?.kategorie ?? {})) {
+  for (const s of v.scitace) {
+    const b = scitaceBody.get(s.nazov) ?? [s.lat, s.lon, s.nazov, {}];
+    b[3][kat] = s.pracovny_den_spolu;
+    scitaceBody.set(s.nazov, b);
+  }
+}
 
 const rok = obyv ? Object.keys(obyv.mesto.roky).sort().pop()! : '';
 const mc = new Map<string, any>((obyv?.mestske_casti ?? []).map((c: any) => [c.kod.slice(-6), c]));
@@ -28,12 +38,16 @@ const inline = {
   mhd: mhd?.zastavky.map((z: any) => [z.lat, z.lon, z.nazov, z.odchody]) ?? null,
   bajk: bajk?.stanice.map((s: any) => [s.lat, s.lon, s.nazov]) ?? null,
   skladky: prostredie?.cierne_skladky.body.map((b: any) => [b.lat, b.lon]) ?? null,
+  scitace: scit ? [...scitaceBody.values()] : null,
 };
 
 // Vrstvy: kľúč, názov, skupina, farba (CSS premenná), zdroj, predvolene zapnutá
 const vrstvy = [
   ['hranice', 'Mestské časti', 'Základ', '--m-hranice', true],
+  ['uzavierky', 'Uzávierky a rozkopávky', 'Na cestách dnes', '--m-uzavierky', false],
+  ['poruchy', 'Poruchy vedení', 'Na cestách dnes', '--m-poruchy', false],
   ['mhd', 'Zastávky MHD', 'Doprava', '--m-mhd', false],
+  ['scitace', 'Sčítače dopravy', 'Doprava', '--m-scitace', false],
   ['cyklo', 'Cyklotrasy', 'Doprava', '--m-cyklo', false],
   ['bajk', 'Stanice BAjk', 'Doprava', '--m-bajk', false],
   ['lekarne', 'Lekárne', 'Vybavenosť', '--m-lekarne', false],
@@ -52,7 +66,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   <section class="hero">
     <p class="kicker">Bratislava</p>
     <h1>Mapa</h1>
-    <p class="lead">Všetky mapové údaje na jednom mieste. Vrstvy zapnete v paneli.</p>
+    <p class="lead">Všetky mapové údaje na jednom mieste, vrátane dnešných uzávierok a porúch. Vrstvy zapnete v paneli.</p>
   </section>
 
   <div class="mapa-obal" id="mapa-bratislava" data-inline={JSON.stringify(inline)}>
@@ -79,8 +93,8 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
 
   <p class="zdroj">
     Zdroje: mestské časti, pamiatky, chránené stromy, cyklotrasy, lekárne, zdravotníctvo a nabíjanie © prispievatelia
-    <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> (ODbL); zastávky MHD, BAjk a čierne skládky –
-    <a href="https://data.bratislava.sk">data.bratislava.sk</a> (CC BY 4.0); chránené územia a Natura 2000 –
+    <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> (ODbL); zastávky MHD, BAjk, sčítače a čierne skládky –
+    <a href="https://data.bratislava.sk">data.bratislava.sk</a> (CC BY 4.0); uzávierky a poruchy – živo z evidencie hlavného mesta; chránené územia a Natura 2000 –
     <a href="https://www.eea.europa.eu/en/datahub">EEA</a>; letecká snímka – © Esri, Maxar, Earthstar Geographics;
     podkladová mapa © prispievatelia OpenStreetMap. Údaje z OSM nie sú oficiálne registre a nemusia byť úplné.
   </p>
@@ -89,6 +103,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
 <script>
   import L from 'leaflet';
   import { osmPodklad } from '../scripts/podklad';
+  import { uzavierky, poruchy, popup, type Obmedzenie } from '../scripts/uzavierky';
   import 'leaflet/dist/leaflet.css';
 
   const obal = document.getElementById('mapa-bratislava')!;
@@ -152,10 +167,22 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
     },
     bajk: async () => L.layerGroup(inline.bajk.map(([lat, lon, n]: any[]) => bod(lat, lon, 'bajk').bindPopup(`<strong>${n}</strong><br>Stanica Slovnaft BAjk`))),
     skladky: async () => L.layerGroup(inline.skladky.map(([lat, lon]: any[]) => bod(lat, lon, 'skladky', 6).bindPopup('Čierna skládka nahlásená v roku 2025'))),
+    scitace: async () => {
+      const J: Record<string, string> = { auta: 'áut', cyklisti: 'cyklistov', chodci: 'chodcov' };
+      return L.layerGroup(inline.scitace.map(([lat, lon, n, k]: any[]) => bod(lat, lon, 'scitace', mobil ? 5 : 6).bindPopup(
+        `<strong>Sčítač ${n}</strong><br>${Object.entries(k).map(([kat, v]) => `${fmt(v as number)} ${J[kat]}`).join('<br>')}<br><span style="opacity:.75">priemer za pracovný deň · <a href="/doprava#premavka">kedy je špička</a></span>`)));
+    },
+    uzavierky: async () => obmedzenia(await uzavierky(), 'uzavierky'),
+    poruchy: async () => obmedzenia(await poruchy(), 'poruchy'),
     cyklo: async () => L.geoJSON(await json('/data/cyklotrasy-bratislava.geojson'), { style: { color: farba('cyklo'), weight: 2.5 }, interactive: false }),
     narodne: async () => priroda('narodne'),
     natura: async () => priroda('natura'),
   };
+  function obmedzenia(zoz: Obmedzenie[], k: string) {
+    return L.layerGroup(zoz.map((o) => L.circleMarker([o.lat, o.lon], {
+      radius: o.uzavierka === 'úplná' ? 8 : 6, weight: 1.5, color: okraj, fillColor: farba(k), fillOpacity: o.planovana ? 0.45 : 0.95,
+    }).bindPopup(popup(o))));
+  }
   async function priroda(typ: string) {
     const d = await json('/data/priroda-bratislava.geojson');
     return L.geoJSON({ ...d, features: d.features.filter((f: any) => f.properties.t === typ) }, {
@@ -177,7 +204,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   }
 
   const hotove: Record<string, L.Layer> = {};
-  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'pamiatky', 'stromy', 'skladky'];
+  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'scitace', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'pamiatky', 'stromy', 'skladky', 'uzavierky', 'poruchy'];
   async function prepni(k: string, zapnut: boolean) {
     if (!zapnut) { hotove[k]?.remove(); return; }
     try {
@@ -214,12 +241,14 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
     --m-hranice: #5d636e; --m-mhd: #c8102e; --m-cyklo: #1f6fd1; --m-bajk: #0e7490;
     --m-lekarne: #138a5e; --m-nemocnice: #b91c1c; --m-ambulancie: #7a4fd1; --m-nabijanie: #db2777;
     --m-pamiatky: #a16207; --m-stromy: #4d7c0f; --m-narodne: #16a34a; --m-natura: #65a30d; --m-skladky: #57534e;
+    --m-uzavierky: #d97706; --m-poruchy: #a21caf; --m-scitace: #0f766e;
   }
   @media (prefers-color-scheme: dark) {
     :global(:root) {
       --m-hranice: #9aa1ad; --m-mhd: #ff6b80; --m-cyklo: #7cc4ff; --m-bajk: #67e8f9;
       --m-lekarne: #6ee7b7; --m-nemocnice: #fca5a5; --m-ambulancie: #c4a7ff; --m-nabijanie: #f9a8d4;
       --m-pamiatky: #fcd34d; --m-stromy: #86efac; --m-narodne: #4ade80; --m-natura: #bef264; --m-skladky: #d6d3d1;
+      --m-uzavierky: #ffc44d; --m-poruchy: #f0abfc; --m-scitace: #5eead4;
     }
   }
   .hero { padding: 32px 0 16px; }

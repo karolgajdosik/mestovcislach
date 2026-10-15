@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
@@ -93,6 +94,12 @@ def mesacne(url: str) -> dict[str, dict[str, int]]:
         return {}
 
 
+def smer(text: str | None) -> str:
+    """Upratanie popisu smeru (napr. 'Cyklomost Slobody Pedestrians IN - na Slovensko' -> 'na Slovensko')."""
+    t = re.sub(r"^.*\b(IN|OUT)\s*-\s*", "", (text or "").strip())
+    return "opačný smer" if t.upper().startswith("NIE JE") else t
+
+
 def spracuj(data: list[dict], trend: dict) -> tuple[list[dict], list[str]]:
     # sčítač -> smer -> deň -> hodina -> počet
     hodnoty: dict[str, dict[str, dict[str, dict[int, float]]]] = defaultdict(lambda: {"do": defaultdict(dict), "z": defaultdict(dict)})
@@ -103,7 +110,7 @@ def spracuj(data: list[dict], trend: dict) -> tuple[list[dict], list[str]]:
         n = r["NAZOV"].strip()
         info.setdefault(n, {"nazov": n.split(" - ", 1)[-1].strip(), "id": n.split(" - ")[0].strip("# "),
                             "lat": r["ZEMEPISNA_SIRKA"], "lon": r["ZEMEPISNA_DLZKA"],
-                            "smer_do": (r.get("SMER_DO") or "").strip(), "smer_z": (r.get("SMER_Z") or "").strip()})
+                            "smer_do": smer(r.get("SMER_DO")), "smer_z": smer(r.get("SMER_Z"))})
         hodnoty[n]["do"][den][hod] = r.get("POCET_DO") or 0
         hodnoty[n]["z"][den][hod] = r.get("POCET_Z") or 0
 

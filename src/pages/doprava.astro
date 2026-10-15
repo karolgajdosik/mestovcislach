@@ -35,16 +35,87 @@ const cyklo = nacitaj('cyklo-bratislava.json');
 const bajk = nacitaj('bajk-bratislava.json');
 const km1 = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' km';
 const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) => cest[r]) }) : '';
+const scitace = nacitaj('scitace-bratislava.json');
+const KAT: Record<string, [string, string]> = { auta: ['Autá', 'áut'], cyklisti: ['Cyklisti', 'cyklistov'], chodci: ['Chodci', 'chodcov'] };
+const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk-SK')} – ${new Date(scitace.obdobie.do).toLocaleDateString('sk-SK')}` : '';
 ---
-<Base title="Doprava v Bratislave – mestovcislach.sk" description="MHD v Bratislave: zastávky, odchody a linky podľa cestovných poriadkov a počet prepravených cestujúcich.">
+<Base title="Doprava v Bratislave – mestovcislach.sk" description="Doprava v Bratislave: aktuálne uzávierky a poruchy na cestách, kedy je najviac premávky podľa sčítačov, MHD a cyklotrasy.">
   <section class="hero">
     <p class="kicker">Bratislava</p>
     <h1>Doprava</h1>
-    <p class="lead">Mestská hromadná doprava podľa aktuálnych cestovných poriadkov Dopravného podniku Bratislava.</p>
+    <p class="lead">Aktuálne uzávierky a poruchy na cestách, kedy je najviac premávky, MHD podľa cestovných poriadkov a cyklotrasy.</p>
+    <nav class="kotvy" aria-label="Na tejto stránke">
+      <a href="#naozivo">Uzávierky dnes</a><a href="#premavka">Kedy je premávka</a><a href="#doprava">MHD</a><a href="#cyklo">Cyklotrasy</a>
+    </nav>
   </section>
+
+  <div id="naozivo">
+    <h2 class="sekcia">Uzávierky a poruchy dnes</h2>
+    <section class="kpis">
+      <div class="card kpi"><p class="label"><i class="bod" style="width:10px;height:10px;border-radius:50%;vertical-align:0;background:var(--uz-0)"></i>Úplné uzávierky</p><p class="value" data-pocet="uplne">…</p><p class="delta">cesta je zavretá</p></div>
+      <div class="card kpi"><p class="label"><i class="bod" style="width:10px;height:10px;border-radius:50%;vertical-align:0;background:var(--uz-1)"></i>Čiastočné uzávierky a rozkopávky</p><p class="value" data-pocet="ciastocne">…</p><p class="delta" data-pocet="planovane"></p></div>
+      <div class="card kpi"><p class="label"><i class="bod" style="width:10px;height:10px;border-radius:50%;vertical-align:0;background:var(--uz-2)"></i>Poruchy vedení</p><p class="value" data-pocet="poruchy">…</p><p class="delta">voda, kanalizácia, elektrina, plyn…</p></div>
+    </section>
+    <section class="card">
+      <div class="hlavicka">
+        <h3>Mapa</h3>
+        <label class="vyber">Mestská časť <select id="uz-cast"><option value="">všetky</option></select></label>
+      </div>
+      <div id="mapa-uzavierky" role="img" aria-label="Mapa aktuálnych uzávierok a porúch na cestách"></div>
+      <ul class="uz-zoznam" id="uz-zoznam"><li class="nacitava">Načítavam aktuálne údaje mesta…</li></ul>
+      <p class="zdroj">
+        Údaje sa načítajú priamo z evidencie <a href="https://bratislava.sk">hlavného mesta</a> pri otvorení stránky
+        (<a href="https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Rozkopavky_CSO_view/FeatureServer/0">uzávierky a rozkopávky</a>,
+        <a href="https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/survey123_603d6cb3f848490c818062302c2c43a8_results/FeatureServer/0">poruchy</a>).
+        Zobrazujeme tie, ktoré už začali (alebo začnú do 2 týždňov) a ešte neskončili. Pri poruchách je uvedený plánovaný dátum sprejazdnenia.
+        Mesto eviduje miestne cesty – diaľnice a cesty I. triedy spravuje NDS a SSC.
+      </p>
+    </section>
+  </div>
+
+  {scitace && (
+    <div id="premavka" data-scitace={JSON.stringify(scitace.kategorie)}>
+      <h2 class="sekcia">Kedy je najviac premávky</h2>
+      <p class="uvod">
+        Mesto má na uliciach sčítače, ktoré každú hodinu počítajú prejazdy. Autá merajú len na nábreží a Dunajskej ulici v centre,
+        väčšina sčítačov je na cyklotrasách a mostoch. Priemery sú za posledných {scitace.obdobie.tyzdne} týždňov ({obdobie}).
+      </p>
+      <section class="card">
+        <div class="hlavicka">
+          <div class="taby" role="tablist">
+            {Object.keys(scitace.kategorie).map((k, i) => (
+              <button role="tab" type="button" data-kat={k} aria-selected={i === 0 ? 'true' : 'false'}>{KAT[k]?.[0] ?? k}</button>
+            ))}
+          </div>
+          <label class="vyber">Sčítač <select id="scitac"></select></label>
+        </div>
+        <div class="kpis male">
+          <div><p class="label">Za pracovný deň</p><p class="value" data-s="den"></p><p class="delta" data-s="den-pozn"></p></div>
+          <div><p class="label">Ranná špička</p><p class="value" data-s="rano"></p><p class="delta" data-s="rano-pozn"></p></div>
+          <div><p class="label">Popoludňajšia špička</p><p class="value" data-s="vecer"></p><p class="delta" data-s="vecer-pozn"></p></div>
+        </div>
+        <div class="chart"><canvas id="g-scitac" role="img" aria-label="Priemerný počet prejazdov podľa hodiny dňa"></canvas></div>
+        <div class="trend" hidden>
+          <h3>Dlhodobý vývoj – priemer za deň podľa mesiacov</h3>
+          <div class="chart nizky"><canvas id="g-trend" role="img" aria-label="Priemerný denný počet prejazdov podľa mesiacov"></canvas></div>
+        </div>
+        <div class="tabulka-obal">
+          <table class="klik">
+            <thead><tr><th>Sčítač</th><th class="num">Za pracovný deň</th><th class="num">Ranná špička</th><th class="num">Popoludní</th></tr></thead>
+            <tbody id="scitace-tab"></tbody>
+          </table>
+        </div>
+        <p class="zdroj">
+          Zdroj: {Object.entries(scitace.kategorie).map(([k, v]: [string, any], i) => <>{i > 0 && ', '}<a href={v.zdroj.url}>{v.zdroj.nazov}</a></>)};
+          data.bratislava.sk, licencia CC BY 4.0. Dni s výpadkom sčítača sú vynechané. Mesto môže údaje spätne opraviť (až 2 mesiace).
+        </p>
+      </section>
+    </div>
+  )}
 
   {!mhd ? <div class="card"><p>Dáta sa pripravujú.</p></div> : (
     <div id="doprava" data-mapa={mapa} data-cest={grafCest}>
+      <h2 class="sekcia">MHD</h2>
       <section class="kpis">
         <div class="card kpi">
           <p class="label">Zastávky MHD</p>
@@ -74,7 +145,7 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
 
       {mapa && (
         <section class="card">
-          <h2>Mapa zastávok</h2>
+          <h2>Mapa zastávok MHD</h2>
           <div id="mapa-mhd" role="img" aria-label="Mapa zastávok MHD podľa počtu odchodov"></div>
           <p class="zdroj">Veľkosť bodu = počet odchodov za deň. Ťuknite na zastávku pre linky. Podklad © prispievatelia OpenStreetMap.</p>
         </section>
@@ -177,6 +248,7 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
   import Chart from 'chart.js/auto';
   import L from 'leaflet';
   import { osmPodklad } from '../scripts/podklad';
+  import { uzavierky, poruchy, popup, den, type Obmedzenie } from '../scripts/uzavierky';
   import 'leaflet/dist/leaflet.css';
 
   const el = document.getElementById('doprava');
@@ -234,11 +306,159 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
     }, { rootMargin: '300px' }).observe(cykloEl);
   }
 
+  Chart.defaults.color = muted;
+  Chart.defaults.borderColor = line;
+  Chart.defaults.font.family = css.getPropertyValue('--font');
+  const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+  // ---------- Uzávierky a poruchy (živé dáta mesta) ----------
+  const uzEl = document.getElementById('mapa-uzavierky');
+  if (uzEl) {
+    const farbaUz = [0, 1, 2].map((i) => css.getPropertyValue(`--uz-${i}`).trim());
+    const trieda = (o: Obmedzenie) => (o.typ === 'porucha' ? 2 : o.uzavierka === 'úplná' ? 0 : 1);
+    const mapa = L.map(uzEl, { scrollWheelZoom: false, zoomSnap: 0.25 });
+    osmPodklad().addTo(mapa);
+    mapa.setView([48.15, 17.11], window.innerWidth < 600 ? 10.75 : 11.5);
+    const vrstva = L.featureGroup().addTo(mapa);
+    const zoznam = document.getElementById('uz-zoznam')!;
+    const vyber = document.getElementById('uz-cast') as HTMLSelectElement;
+    const nastav = (k: string, t: string) => { const e = document.querySelector(`[data-pocet="${k}"]`); if (e) e.textContent = t; };
+    Promise.allSettled([uzavierky(), poruchy()]).then(([u, p]) => {
+      const vsetky: Obmedzenie[] = [
+        ...(u.status === 'fulfilled' ? u.value : []),
+        ...(p.status === 'fulfilled' ? p.value : []),
+      ].sort((a, b) => trieda(a) - trieda(b) || (a.do ?? 0) - (b.do ?? 0));
+      if (u.status === 'rejected' && p.status === 'rejected') {
+        zoznam.innerHTML = '<li class="nacitava">Údaje mesta sa teraz nepodarilo načítať. Skúste to neskôr.</li>';
+        ['uplne', 'ciastocne', 'poruchy'].forEach((k) => nastav(k, '–'));
+        return;
+      }
+      const aktivne = vsetky.filter((o) => !o.planovana);
+      nastav('uplne', u.status === 'fulfilled' ? String(aktivne.filter((o) => trieda(o) === 0).length) : '–');
+      nastav('ciastocne', u.status === 'fulfilled' ? String(aktivne.filter((o) => trieda(o) === 1).length) : '–');
+      nastav('poruchy', p.status === 'fulfilled' ? String(aktivne.filter((o) => trieda(o) === 2).length) : '–');
+      const plan = vsetky.filter((o) => o.planovana).length;
+      if (plan) nastav('planovane', `+ ${plan} plánované do 2 týždňov`);
+      const casti = [...new Set(vsetky.map((o) => o.cast).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'sk'));
+      vyber.insertAdjacentHTML('beforeend', casti.map((c) => `<option>${esc(c)}</option>`).join(''));
+      const vykresli = () => {
+        const c = vyber.value;
+        const vyb = vsetky.filter((o) => !c || o.cast === c);
+        vrstva.clearLayers();
+        const body = new Map<Obmedzenie, L.CircleMarker>();
+        for (const o of [...vyb].reverse()) {
+          const t = trieda(o);
+          body.set(o, L.circleMarker([o.lat, o.lon], {
+            radius: t === 0 ? 8 : 6, weight: 1.5, color: tmava ? '#121417' : '#ffffff',
+            fillColor: farbaUz[t], fillOpacity: o.planovana ? 0.45 : 0.95, dashArray: o.planovana ? '2 2' : undefined,
+          }).bindPopup(popup(o)).addTo(vrstva));
+        }
+        if (vyb.length) mapa.fitBounds(vrstva.getBounds(), { padding: [20, 20], maxZoom: 15 });
+        zoznam.innerHTML = vyb.length ? '' : '<li class="nacitava">Žiadne uzávierky ani poruchy.</li>';
+        for (const o of vyb) {
+          const li = document.createElement('li');
+          const t = trieda(o);
+          const kedy = o.typ === 'porucha' ? `sprejazdnenie do ${den(o.do)}` : o.planovana ? `od ${den(o.od)}` : `do ${den(o.do)}`;
+          li.innerHTML = `<i style="background:${farbaUz[t]}"></i><span class="nadpis">${esc(o.nadpis)}</span>`
+            + `<span class="kedy">${o.planovana ? 'plánovaná ' : ''}${kedy}</span>`
+            + `<span class="kde">${esc([o.cast, o.typ === 'porucha' ? o.druh.toLowerCase() : o.vplyv?.length ? 'obmedzuje ' + o.vplyv.join(', ') : ''].filter(Boolean).join(' · '))}</span>`;
+          li.tabIndex = 0;
+          const ukaz = () => { mapa.setView([o.lat, o.lon], 16); body.get(o)?.openPopup(); uzEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+          li.addEventListener('click', ukaz);
+          li.addEventListener('keydown', (e) => { if (e.key === 'Enter') ukaz(); });
+          zoznam.append(li);
+        }
+      };
+      vyber.addEventListener('change', vykresli);
+      vykresli();
+    });
+  }
+
+  // ---------- Sčítače: kedy je najviac premávky ----------
+  const prem = document.getElementById('premavka');
+  if (prem?.dataset.scitace) {
+    const data = JSON.parse(prem.dataset.scitace);
+    const JEDNOTKA: Record<string, string> = { auta: 'áut', cyklisti: 'cyklistov', chodci: 'chodcov' };
+    const modra = css.getPropertyValue('--cyklo-0').trim();
+    const text = css.getPropertyValue('--text').trim();
+    const hodiny = Array.from({ length: 24 }, (_, h) => `${h}:00`);
+    const sel = document.getElementById('scitac') as HTMLSelectElement;
+    const tab = document.getElementById('scitace-tab')!;
+    const trendObal = prem.querySelector<HTMLElement>('.trend')!;
+    let kat = Object.keys(data)[0];
+    const nastav = (k: string, t: string) => { prem.querySelector(`[data-s="${k}"]`)!.textContent = t; };
+    const hod = (h: number) => `${h}:00 – ${h + 1}:00`;
+
+    const graf = new Chart(document.getElementById('g-scitac') as HTMLCanvasElement, {
+      type: 'line', data: { labels: hodiny, datasets: [] },
+      options: {
+        maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { labels: { boxWidth: 14, boxHeight: 2 } }, tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${c.parsed.y == null ? '–' : fmt(c.parsed.y)}` } } },
+        scales: { x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkipPadding: 8 } }, y: { beginAtZero: true, ticks: { callback: (v) => fmt(Number(v)) } } },
+      },
+    });
+    const trend = new Chart(document.getElementById('g-trend') as HTMLCanvasElement, {
+      type: 'bar', data: { labels: [], datasets: [{ data: [], backgroundColor: accent, borderRadius: 2 }] },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ` ${fmt(c.parsed.y)} ${JEDNOTKA[kat]} za deň` } } },
+        scales: { x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkipPadding: 12 } }, y: { beginAtZero: true, ticks: { callback: (v) => fmt(Number(v)) } } },
+      },
+    });
+
+    const ukaz = (i: number) => {
+      const s = data[kat].scitace[i];
+      const j = JEDNOTKA[kat];
+      sel.value = String(i);
+      tab.querySelectorAll('tr').forEach((tr, k) => tr.classList.toggle('vybrany', k === i));
+      nastav('den', fmt(s.pracovny_den_spolu));
+      nastav('den-pozn', `${j} v ${s.smery.length > 1 ? 'oboch smeroch' : 'smere ' + s['smer_' + s.smery[0]]}`);
+      for (const [k, sp] of [['rano', s.spicka_rano], ['vecer', s.spicka_vecer]] as const) {
+        nastav(k, sp?.hodina != null ? hod(sp.hodina) : '–');
+        nastav(`${k}-pozn`, sp?.hodina != null ? `${fmt(sp.pocet)} ${j} za hodinu${sp.smer ? ', smer ' + sp.smer : ''}` : '');
+      }
+      const sady: any[] = s.smery.map((sm: string, k: number) => ({
+        label: `Pracovný deň – smer ${s['smer_' + sm] || sm}`, data: s['pracovny_' + sm],
+        borderColor: k ? modra : accent, backgroundColor: k ? modra : accent, borderWidth: 2.5, pointRadius: 0, tension: 0.3,
+      }));
+      const vikend = hodiny.map((_, h) => s.smery.reduce((a: number | null, sm: string) => (s['vikend_' + sm][h] == null ? a : (a ?? 0) + s['vikend_' + sm][h]), null));
+      sady.push({ label: 'Víkend – oba smery spolu', data: vikend, borderColor: muted, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, tension: 0.3 });
+      if (s.posledny_den) {
+        const pd = s.posledny_den;
+        const sucet = hodiny.map((_, h) => s.smery.reduce((a: number | null, sm: string) => (pd[sm]?.[h] == null ? a : (a ?? 0) + pd[sm][h]), null));
+        const d = new Date(pd.datum).toLocaleDateString('sk-SK', { weekday: 'long', day: 'numeric', month: 'numeric' });
+        sady.push({ label: `${d} – spolu`, data: sucet, borderColor: text, borderDash: [1, 3], borderWidth: 1.5, pointRadius: 0, tension: 0.3, hidden: s.smery.length > 1 });
+      }
+      graf.data.datasets = sady;
+      graf.update();
+      const mes = Object.entries(s.mesacne ?? {}) as [string, number][];
+      trendObal.hidden = mes.length < 3;
+      if (mes.length >= 3) {
+        trend.data.labels = mes.map(([m]) => `${Number(m.slice(5))}/${m.slice(2, 4)}`);
+        trend.data.datasets[0].data = mes.map(([, v]) => v);
+        trend.update();
+      }
+    };
+    const kategoria = (k: string) => {
+      kat = k;
+      prem.querySelectorAll<HTMLButtonElement>('[role=tab]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.kat === k)));
+      const zoz = data[k].scitace;
+      sel.innerHTML = zoz.map((s: any, i: number) => `<option value="${i}">${esc(s.nazov)}</option>`).join('');
+      const sp = (x: any) => (x?.hodina != null ? `${x.hodina}:00` : '–');
+      tab.innerHTML = zoz.map((s: any) => `<tr tabindex="0"><td>${esc(s.nazov)}</td><td class="num">${fmt(s.pracovny_den_spolu)}</td><td class="num">${sp(s.spicka_rano)}</td><td class="num">${sp(s.spicka_vecer)}</td></tr>`).join('');
+      tab.querySelectorAll('tr').forEach((tr, i) => {
+        tr.addEventListener('click', () => ukaz(i));
+        tr.addEventListener('keydown', (e) => { if (e.key === 'Enter') ukaz(i); });
+      });
+      ukaz(0);
+    };
+    prem.querySelectorAll<HTMLButtonElement>('[role=tab]').forEach((b) => b.addEventListener('click', () => kategoria(b.dataset.kat!)));
+    sel.addEventListener('change', () => ukaz(Number(sel.value)));
+    kategoria(kat);
+  }
+
   if (el?.dataset.cest) {
     const g = JSON.parse(el.dataset.cest);
-    Chart.defaults.color = muted;
-    Chart.defaults.borderColor = line;
-    Chart.defaults.font.family = css.getPropertyValue('--font');
     new Chart(document.getElementById('g-cest') as HTMLCanvasElement, {
       type: 'bar',
       data: { labels: g.roky, datasets: [{ data: g.data, backgroundColor: accent, borderRadius: 3 }] },
@@ -282,6 +502,42 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
   .legenda-cyklo { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; font-size: 0.82rem; color: var(--muted); }
   .legenda-cyklo .kruh { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--text); background: var(--card); vertical-align: -1px; }
   .legenda-cyklo i, .bod { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 6px; vertical-align: 3px; }
+  :global(:root) { --uz-0: #c8102e; --uz-1: #d97706; --uz-2: #7a4fd1; }
+  @media (prefers-color-scheme: dark) { :global(:root) { --uz-0: #ff6b80; --uz-1: #ffc44d; --uz-2: #c4a7ff; } }
+  .kotvy { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .kotvy a { font-size: 0.85rem; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; background: var(--card); }
+  .kotvy a:hover { border-color: var(--accent); }
+  #naozivo h2.sekcia { margin-top: 24px; }
+  .uvod { color: var(--muted); max-width: 46em; margin: -4px 0 16px; }
+  .hlavicka { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .hlavicka h3 { margin: 0; }
+  .vyber { font-size: 0.85rem; color: var(--muted); display: inline-flex; gap: 8px; align-items: center; }
+  select { font: inherit; color: var(--text); background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 5px 8px; max-width: 60vw; }
+  #mapa-uzavierky { height: 440px; border-radius: 10px; overflow: hidden; background: var(--bg); }
+  @media (max-width: 600px) { #mapa-uzavierky { height: 360px; } }
+  .uz-zoznam { list-style: none; margin: 12px 0 0; padding: 0; max-height: 360px; overflow-y: auto; border-top: 1px solid var(--line); }
+  .uz-zoznam :global(li) { display: grid; grid-template-columns: 14px 1fr auto; gap: 2px 10px; padding: 9px 4px; border-bottom: 1px solid var(--line); cursor: pointer; font-size: 0.9rem; }
+  .uz-zoznam :global(li:hover), .uz-zoznam :global(li:focus) { background: var(--accent-soft); outline: none; }
+  .uz-zoznam :global(li.nacitava) { display: block; color: var(--muted); cursor: default; }
+  .uz-zoznam :global(i) { width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; }
+  .uz-zoznam :global(.nadpis) { font-weight: 600; }
+  .uz-zoznam :global(.kedy) { color: var(--muted); font-size: 0.82rem; white-space: nowrap; text-align: right; }
+  .uz-zoznam :global(.kde) { grid-column: 2 / 4; color: var(--muted); font-size: 0.82rem; }
+  @media (max-width: 600px) { .uz-zoznam :global(li) { grid-template-columns: 14px 1fr; } .uz-zoznam :global(.kedy) { grid-column: 2; text-align: left; } .uz-zoznam :global(.kde) { grid-column: 2; } }
+  .taby { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; padding: 3px; gap: 2px; }
+  .taby button { font: inherit; font-size: 0.88rem; border: 0; background: none; color: var(--muted); padding: 5px 14px; border-radius: 7px; cursor: pointer; }
+  .taby button[aria-selected='true'] { background: var(--accent); color: #fff; }
+  .kpis.male { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 4px 0 16px; }
+  .kpis.male .value { font-size: 1.45rem; font-weight: 800; margin: 2px 0; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .kpis.male .label { color: var(--muted); font-size: 0.8rem; margin: 0; }
+  .chart.nizky { height: 200px; }
+  .trend { margin-top: 20px; }
+  .trend h3 { font-size: 0.95rem; }
+  table.klik { margin-top: 20px; }
+  table.klik tbody :global(tr) { cursor: pointer; }
+  table.klik tbody :global(tr:hover), table.klik tbody :global(tr.vybrany) { background: var(--accent-soft); }
+  table.klik tbody :global(td) { padding: 8px 6px; border-bottom: 1px solid var(--line); }
+  table.klik tbody :global(td.num) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .zastavky { margin: 0; padding-left: 1.4em; }
   .zastavky li { padding: 8px 0; border-bottom: 1px solid var(--line); }
   .zastavky .meno { font-weight: 600; }
