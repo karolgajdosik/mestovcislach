@@ -1,0 +1,3852 @@
+{
+ "zdroj": {
+  "nazov": "Mestská polícia hlavného mesta SR Bratislavy a magistrát – data.bratislava.sk",
+  "url": "https://data.bratislava.sk",
+  "licencia": "CC BY 4.0"
+ },
+ "dni": [
+  "pondelok",
+  "utorok",
+  "streda",
+  "štvrtok",
+  "piatok",
+  "sobota",
+  "nedeľa"
+ ],
+ "priestupky": {
+  "spolu": 342446,
+  "roky": {
+   "2017": 58605,
+   "2018": 56731,
+   "2019": 54593,
+   "2020": 58539,
+   "2021": 58279,
+   "2022": 55699
+  },
+  "mestske_casti": {
+   "Staré Mesto": {
+    "spolu": 135342,
+    "roky": {
+     "2017": 26045,
+     "2018": 26283,
+     "2019": 23314,
+     "2020": 22147,
+     "2021": 19827,
+     "2022": 17726
+    },
+    "najcastejsie": [
+     "2213 - §25,ods.1,písm.n) státie na vyhrad.parkovisku,pred vjazdom na cestu",
+     "2269 - IP 24a - ZÓNA S DOPRAVNÝM OBMEDZENÍM",
+     "2214 - §25,ods.1,písm.o) státie na plat.parkovisku bez zaplat.poplatku za parkovanie"
+    ]
+   },
+   "Ružinov": {
+    "spolu": 48052,
+    "roky": {
+     "2017": 7076,
+     "2018": 7082,
+     "2019": 9403,
+     "2020": 8955,
+     "2021": 7800,
+     "2022": 7736
+    },
+    "najcastejsie": [
+     "2243 - B3 - ZÁKAZ VJAZDU VŠETKÝCH MOTOROVÝCH VOZIDIEL",
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2263 - B34 - ZÁKAZ ZASTAVENIA"
+    ]
+   },
+   "Nové Mesto": {
+    "spolu": 47002,
+    "roky": {
+     "2017": 7405,
+     "2018": 6261,
+     "2019": 5766,
+     "2020": 7540,
+     "2021": 12282,
+     "2022": 7748
+    },
+    "najcastejsie": [
+     "2214 - §25,ods.1,písm.o) zák.č.8/2009 Z.z. státie na plat.parkovisku bez zaplat.poplatku za parkovanie",
+     "2263 - B34 - ZÁKAZ ZASTAVENIA",
+     "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)"
+    ]
+   },
+   "Petržalka": {
+    "spolu": 45819,
+    "roky": {
+     "2017": 6251,
+     "2018": 5881,
+     "2019": 6739,
+     "2020": 8128,
+     "2021": 8609,
+     "2022": 10211
+    },
+    "najcastejsie": [
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2214 - §25,ods.1,písm.o) zák.č.8/2009 Z.z. státie na plat.parkovisku bez zaplat.poplatku za parkovanie",
+     "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)"
+    ]
+   },
+   "Karlova Ves": {
+    "spolu": 25578,
+    "roky": {
+     "2017": 4687,
+     "2018": 4086,
+     "2019": 3846,
+     "2020": 4549,
+     "2021": 3696,
+     "2022": 4714
+    },
+    "najcastejsie": [
+     "2271 - IP 27a - ZÓNA S PLATENÝM ALEBO REGULOVANÝM STÁTÍM",
+     "2263 - B34 - ZÁKAZ ZASTAVENIA",
+     "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA"
+    ]
+   },
+   "Dúbravka": {
+    "spolu": 14436,
+    "roky": {
+     "2017": 2621,
+     "2018": 2310,
+     "2019": 1986,
+     "2020": 2821,
+     "2021": 2424,
+     "2022": 2274
+    },
+    "najcastejsie": [
+     "2213 - §25,ods.1,písm.n) státie na vyhrad.parkovisku,pred vjazdom na cestu",
+     "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)",
+     "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA"
+    ]
+   },
+   "Rača": {
+    "spolu": 5833,
+    "roky": {
+     "2017": 994,
+     "2018": 908,
+     "2019": 757,
+     "2020": 1174,
+     "2021": 791,
+     "2022": 1209
+    },
+    "najcastejsie": [
+     "9921 - jazda alebo státie motor. vozidlom na lesnom pozemku",
+     "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)",
+     "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA"
+    ]
+   },
+   "Devínska Nová Ves": {
+    "spolu": 3925,
+    "roky": {
+     "2017": 481,
+     "2018": 610,
+     "2019": 436,
+     "2020": 781,
+     "2021": 671,
+     "2022": 946
+    },
+    "najcastejsie": [
+     "2263 - B34 - ZÁKAZ ZASTAVENIA",
+     "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA",
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,"
+    ]
+   },
+   "Podunajské Biskupice": {
+    "spolu": 3762,
+    "roky": {
+     "2017": 664,
+     "2018": 591,
+     "2019": 464,
+     "2020": 509,
+     "2021": 830,
+     "2022": 704
+    },
+    "najcastejsie": [
+     "2213 - §25,ods.1,písm.n) státie na vyhrad.parkovisku,pred vjazdom na cestu",
+     "2213 - §25,ods.1,písm.n) zák.č.8/2009 Z.z. státie na vyhrad.parkovisku,pred vjazdom na cestu",
+     "4029 - VZN MČ Podunajské Biskupice č.2/2003 v znení neskorších VZN o dodržiavaní čistoty a poriadku na území MČ Bratislava-Pod.Biskupice"
+    ]
+   },
+   "Lamač": {
+    "spolu": 3455,
+    "roky": {
+     "2017": 599,
+     "2018": 499,
+     "2019": 457,
+     "2020": 334,
+     "2021": 284,
+     "2022": 1282
+    },
+    "najcastejsie": [
+     "4087 - VZN MČ Lamač č.3/2009 v znení neskorších VZN o dodržiavaní čistoty a poriadku na území MČ Bratislava-Lamač",
+     "2241 - B1 - ZÁK.VJAZDU VŠETKÝCH VOZIDIEL V OBOCH SMEROCH §3 ods.2 pism.b) zák.č.8/2009 Z.z.",
+     "412 - B1 - ZÁK.VJAZDU VŠETKÝCH VOZIDIEL V OBOCH SMEROCH §3 ods.2 písm.b) zák.č.8/2009 Z.z."
+    ]
+   },
+   "Vrakuňa": {
+    "spolu": 2333,
+    "roky": {
+     "2017": 474,
+     "2018": 471,
+     "2019": 418,
+     "2020": 273,
+     "2021": 369,
+     "2022": 328
+    },
+    "najcastejsie": [
+     "2213 - §25,ods.1,písm.n) státie na vyhrad.parkovisku,pred vjazdom na cestu",
+     "2219 - §25,ods.1,písm.u) státie a zast.na in.miestach,kde môže byť ohrozená BaPCP",
+     "2216 - §25,ods.1,písm.q) zák.č.8/2009 Z.z. státie na chodníku"
+    ]
+   },
+   "Záhorská Bystrica": {
+    "spolu": 1985,
+    "roky": {
+     "2017": 159,
+     "2018": 582,
+     "2019": 319,
+     "2020": 338,
+     "2021": 162,
+     "2022": 425
+    },
+    "najcastejsie": [
+     "2241 - B1 - ZÁK.VJAZDU VŠETKÝCH VOZ. V OBOCH SMEROCH",
+     "2255 - B27b - ZÁKAZ ODBOČENIA VĽAVO §3 ods.2 pism.b) zák.č.8/2009 Z.z.",
+     "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA"
+    ]
+   },
+   "Vajnory": {
+    "spolu": 1852,
+    "roky": {
+     "2017": 508,
+     "2018": 469,
+     "2019": 322,
+     "2020": 322,
+     "2021": 151,
+     "2022": 80
+    },
+    "najcastejsie": [
+     "2246 - B6 - ZÁKAZ VJAZDU NÁKLADNÝCH AUTOMOBILOV",
+     "2262 - B33 - ZÁKAZ STÁTIA",
+     "2242 - B2 - ZÁKAZ VJAZDU VŠETKÝCH VOZIDIEL"
+    ]
+   },
+   "Rusovce": {
+    "spolu": 1175,
+    "roky": {
+     "2017": 310,
+     "2018": 304,
+     "2019": 154,
+     "2020": 137,
+     "2021": 107,
+     "2022": 163
+    },
+    "najcastejsie": [
+     "2272 - IP 28a - OBYTNÁ ZÓNA",
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2225 - §59,ods.3 státie v obytnej alebo pešej zóne ..."
+    ]
+   },
+   "Čunovo": {
+    "spolu": 1055,
+    "roky": {
+     "2017": 152,
+     "2018": 287,
+     "2019": 130,
+     "2020": 298,
+     "2021": 144,
+     "2022": 44
+    },
+    "najcastejsie": [
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2218 - §25,ods.1,písm.s) zák.č.8/2009 Z.z. státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2263 - B34 - ZÁKAZ ZASTAVENIA"
+    ]
+   },
+   "Devín": {
+    "spolu": 658,
+    "roky": {
+     "2017": 161,
+     "2018": 67,
+     "2019": 72,
+     "2020": 186,
+     "2021": 81,
+     "2022": 91
+    },
+    "najcastejsie": [
+     "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)",
+     "4058 - VZN MČ Devín č.1/2010 o starostlivosti o verejný poriadok a zeleň na území MČ BA-Devín",
+     "2270 - IP 25a - PEŠIA ZÓNA"
+    ]
+   },
+   "Jarovce": {
+    "spolu": 184,
+    "roky": {
+     "2017": 18,
+     "2018": 40,
+     "2019": 10,
+     "2020": 47,
+     "2021": 51,
+     "2022": 18
+    },
+    "najcastejsie": [
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2218 - §25,ods.1,písm.s) zák.č.8/2009 Z.z. státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2263 - B34 - ZÁKAZ ZASTAVENIA"
+    ]
+   }
+  },
+  "druhy": [
+   {
+    "druh": "2213 - §25,ods.1,písm.n) státie na vyhrad.parkovisku,pred vjazdom na cestu",
+    "pocet": 21942
+   },
+   {
+    "druh": "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)",
+    "pocet": 20529
+   },
+   {
+    "druh": "2263 - B34 - ZÁKAZ ZASTAVENIA",
+    "pocet": 17420
+   },
+   {
+    "druh": "2269 - IP 24a - ZÓNA S DOPRAVNÝM OBMEDZENÍM",
+    "pocet": 15606
+   },
+   {
+    "druh": "2214 - §25,ods.1,písm.o) zák.č.8/2009 Z.z. státie na plat.parkovisku bez zaplat.poplatku za parkovanie",
+    "pocet": 14532
+   },
+   {
+    "druh": "2214 - §25,ods.1,písm.o) státie na plat.parkovisku bez zaplat.poplatku za parkovanie",
+    "pocet": 13044
+   },
+   {
+    "druh": "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+    "pocet": 12763
+   },
+   {
+    "druh": "2270 - IP 25a - PEŠIA ZÓNA",
+    "pocet": 10272
+   },
+   {
+    "druh": "2206 - §25,ods.1,písm.c) státie na priech.pre chodcov al.na priech.pre cyklistov",
+    "pocet": 10202
+   },
+   {
+    "druh": "2243 - B3 - ZÁKAZ VJAZDU VŠETKÝCH MOTOROVÝCH VOZIDIEL",
+    "pocet": 8946
+   },
+   {
+    "druh": "2216 - §25,ods.1,písm.q) zák.č.8/2009 Z.z. státie na chodníku",
+    "pocet": 7916
+   },
+   {
+    "druh": "2213 - §25,ods.1,písm.n) zák.č.8/2009 Z.z. státie na vyhrad.parkovisku,pred vjazdom na cestu",
+    "pocet": 7850
+   },
+   {
+    "druh": "2262 - B33 - ZÁKAZ STÁTIA",
+    "pocet": 7773
+   },
+   {
+    "druh": "2219 - §25,ods.1,písm.u) státie a zast.na in.miestach,kde môže byť ohrozená BaPCP",
+    "pocet": 7013
+   },
+   {
+    "druh": "2273 - IP 17b - PARKOVISKO - PARKOVACIE MIESTA S REGULOVANÝM STÁTÍM",
+    "pocet": 6720
+   },
+   {
+    "druh": "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA",
+    "pocet": 6695
+   },
+   {
+    "druh": "2207 - §25,ods.1,písm.d) státie na križovatke .....",
+    "pocet": 5331
+   },
+   {
+    "druh": "2268 - V13 - ŠIKMÉ ROVNOBEŽNÉ ČIARY",
+    "pocet": 4802
+   },
+   {
+    "druh": "2227 - §137,ods.2,písm.q) vyhrad.park.miesto pre zdrav.postihnutých",
+    "pocet": 4700
+   },
+   {
+    "druh": "2206 - §25,ods.1,písm.c) zák.č.8/2009 Z.z. státie na priech.pre chodcov al.na priech.pre cyklistov",
+    "pocet": 4334
+   }
+  ],
+  "skupiny": [
+   {
+    "skupina": "2200 - bezpečnosť a plynulosť cestnej premávky",
+    "pocet": 255489
+   },
+   {
+    "skupina": "2200 - bezpeč.a plynul.cest.premávky do 31.7.2022",
+    "pocet": 33808
+   },
+   {
+    "skupina": "2122 - BaPCP §22 ods.1,písm.l) od 1.8.2022",
+    "pocet": 17652
+   },
+   {
+    "skupina": "4810 - čistota a ver.poriadok",
+    "pocet": 6691
+   },
+   {
+    "skupina": "4834 - požívanie alk.nápojov na ver.priestr.",
+    "pocet": 4880
+   },
+   {
+    "skupina": "4700 - priestupok proti verejnému poriadku",
+    "pocet": 3478
+   },
+   {
+    "skupina": "4832 - záverečné hodiny-prevádzkové časy a VP",
+    "pocet": 2024
+   },
+   {
+    "skupina": "9801 - VRAK motor.vozidla - porušenie zákona",
+    "pocet": 1923
+   },
+   {
+    "skupina": "9809 - porušenie zákona o lesoch",
+    "pocet": 1754
+   },
+   {
+    "skupina": "4811 - kontajnery a ich stojiská",
+    "pocet": 1732
+   },
+   {
+    "skupina": "9804 - porušenie zákona o ochrane nefajčiarov",
+    "pocet": 1718
+   },
+   {
+    "skupina": "4838 - nepovolené pouličné aktivity",
+    "pocet": 1001
+   }
+  ],
+  "ulice": [
+   {
+    "ulica": "Páričkova - Ružinov",
+    "mc": "Ružinov",
+    "pocet": 6929
+   },
+   {
+    "ulica": "Františkánske námestie",
+    "mc": "Staré Mesto",
+    "pocet": 6567
+   },
+   {
+    "ulica": "Nám.SNP",
+    "mc": "Staré Mesto",
+    "pocet": 6411
+   },
+   {
+    "ulica": "Viedenská cesta",
+    "mc": "Petržalka",
+    "pocet": 4608
+   },
+   {
+    "ulica": "Nábrežie arm. gen. Lud. Svobod",
+    "mc": "Staré Mesto",
+    "pocet": 3876
+   },
+   {
+    "ulica": "Nám.Eugena Suchoňa",
+    "mc": "Staré Mesto",
+    "pocet": 3492
+   },
+   {
+    "ulica": "Antolská",
+    "mc": "Petržalka",
+    "pocet": 3088
+   },
+   {
+    "ulica": "Medená",
+    "mc": "Staré Mesto",
+    "pocet": 2951
+   },
+   {
+    "ulica": "Cesta Mládeže",
+    "mc": "Nové Mesto",
+    "pocet": 2806
+   },
+   {
+    "ulica": "Radlinského",
+    "mc": "Staré Mesto",
+    "pocet": 2790
+   },
+   {
+    "ulica": "Kukučínova",
+    "mc": "Nové Mesto",
+    "pocet": 2726
+   },
+   {
+    "ulica": "Trnavská cesta - MČ N. Mesto",
+    "mc": "Nové Mesto",
+    "pocet": 2621
+   },
+   {
+    "ulica": "Vajnorská",
+    "mc": "Nové Mesto",
+    "pocet": 2615
+   },
+   {
+    "ulica": "Klobučnícka",
+    "mc": "Staré Mesto",
+    "pocet": 2612
+   },
+   {
+    "ulica": "Uršulínska",
+    "mc": "Staré Mesto",
+    "pocet": 2609
+   },
+   {
+    "ulica": "Jesenského",
+    "mc": "Staré Mesto",
+    "pocet": 2516
+   },
+   {
+    "ulica": "Kamzík - Les",
+    "mc": "Nové Mesto",
+    "pocet": 2350
+   },
+   {
+    "ulica": "Žižkova",
+    "mc": "Staré Mesto",
+    "pocet": 2307
+   },
+   {
+    "ulica": "Krasovského",
+    "mc": "Petržalka",
+    "pocet": 2306
+   },
+   {
+    "ulica": "Bajkalská",
+    "mc": "Nové Mesto",
+    "pocet": 2277
+   },
+   {
+    "ulica": "Kalinčiakova",
+    "mc": "Nové Mesto",
+    "pocet": 2262
+   },
+   {
+    "ulica": "Obchodná",
+    "mc": "Staré Mesto",
+    "pocet": 2228
+   },
+   {
+    "ulica": "Ružinovská",
+    "mc": "Ružinov",
+    "pocet": 2080
+   },
+   {
+    "ulica": "Grösslingová",
+    "mc": "Staré Mesto",
+    "pocet": 2037
+   },
+   {
+    "ulica": "Krížna ul. - MČ Staré Mesto",
+    "mc": "Staré Mesto",
+    "pocet": 2030
+   }
+  ],
+  "hodiny": [
+   6504,
+   4305,
+   1950,
+   928,
+   769,
+   1176,
+   2083,
+   8456,
+   25554,
+   39297,
+   35296,
+   26282,
+   26538,
+   29707,
+   24749,
+   13994,
+   12240,
+   11120,
+   7308,
+   14264,
+   18397,
+   14568,
+   9802,
+   7091
+  ],
+  "dni": [
+   54617,
+   57793,
+   58088,
+   55477,
+   50541,
+   33743,
+   32187
+  ]
+ },
+ "trestne_ciny": {
+  "spolu": 238,
+  "roky": {
+   "2017": 29,
+   "2018": 34,
+   "2019": 47,
+   "2020": 40,
+   "2021": 52,
+   "2022": 36
+  },
+  "mestske_casti": {
+   "Staré Mesto": {
+    "spolu": 94,
+    "roky": {
+     "2017": 10,
+     "2018": 3,
+     "2019": 20,
+     "2020": 27,
+     "2021": 23,
+     "2022": 11
+    },
+    "najcastejsie": [
+     "2014 - poškodzovanie cudzej veci",
+     "2001 - ublíženie na zdraví",
+     "2003 - nedovolená výr. a držanie omamných a psychotr. lát"
+    ]
+   },
+   "Petržalka": {
+    "spolu": 46,
+    "roky": {
+     "2017": 7,
+     "2018": 13,
+     "2019": 9,
+     "2020": 5,
+     "2021": 6,
+     "2022": 6
+    },
+    "najcastejsie": [
+     "2014 - poškodzovanie cudzej veci",
+     "2024 - výtržníctvo",
+     "2001 - ublíženie na zdraví"
+    ]
+   },
+   "Ružinov": {
+    "spolu": 32,
+    "roky": {
+     "2017": 1,
+     "2018": 6,
+     "2019": 3,
+     "2020": 5,
+     "2021": 10,
+     "2022": 7
+    },
+    "najcastejsie": [
+     "2014 - poškodzovanie cudzej veci",
+     "2011 - krádež vlámaním",
+     "2025 - týranie zvierat"
+    ]
+   },
+   "Nové Mesto": {
+    "spolu": 26,
+    "roky": {
+     "2017": 6,
+     "2018": 6,
+     "2019": 3,
+     "2020": 1,
+     "2021": 6,
+     "2022": 4
+    },
+    "najcastejsie": [
+     "2001 - ublíženie na zdraví",
+     "2003 - nedovolená výr. a držanie omamných a psychotr. lát",
+     "2012 - neoprávnené používanie cudzieho motorového vozidla"
+    ]
+   },
+   "Karlova Ves": {
+    "spolu": 12,
+    "roky": {
+     "2018": 1,
+     "2019": 3,
+     "2021": 4,
+     "2022": 4
+    },
+    "najcastejsie": [
+     "2024 - výtržníctvo",
+     "2001 - ublíženie na zdraví",
+     "2014 - poškodzovanie cudzej veci"
+    ]
+   },
+   "Vrakuňa": {
+    "spolu": 8,
+    "roky": {
+     "2018": 1,
+     "2019": 6,
+     "2021": 1
+    },
+    "najcastejsie": [
+     "2003 - nedovolená výr. a držanie omamných a psychotr. lát",
+     "2028 - trestný čin proti životnému prostrediu",
+     "2014 - poškodzovanie cudzej veci"
+    ]
+   },
+   "Dúbravka": {
+    "spolu": 6,
+    "roky": {
+     "2017": 4,
+     "2021": 1,
+     "2022": 1
+    },
+    "najcastejsie": [
+     "2014 - poškodzovanie cudzej veci",
+     "2001 - ublíženie na zdraví",
+     "2009 - krádež (páchateľ neznámy)"
+    ]
+   },
+   "Lamač": {
+    "spolu": 4,
+    "roky": {
+     "2018": 1,
+     "2019": 2,
+     "2022": 1
+    },
+    "najcastejsie": [
+     "2022 - falšovanie a pozmeňovanie verejnej listiny ...",
+     "2014 - poškodzovanie cudzej veci",
+     "2023 - opilstvo"
+    ]
+   },
+   "Podunajské Biskupice": {
+    "spolu": 3,
+    "roky": {
+     "2017": 1,
+     "2018": 1,
+     "2020": 1
+    },
+    "najcastejsie": [
+     "2009 - krádež (páchateľ neznámy)",
+     "2015 - \"sprejeri\" poškodzovanie cudzej veci",
+     "2011 - krádež vlámaním"
+    ]
+   },
+   "Devínska Nová Ves": {
+    "spolu": 3,
+    "roky": {
+     "2018": 1,
+     "2020": 1,
+     "2022": 1
+    },
+    "najcastejsie": [
+     "2011 - krádež vlámaním",
+     "2001 - ublíženie na zdraví",
+     "2015 - -sprejeri- poškodzovanie cudzej veci"
+    ]
+   },
+   "Rača": {
+    "spolu": 3,
+    "roky": {
+     "2018": 1,
+     "2019": 1,
+     "2022": 1
+    },
+    "najcastejsie": [
+     "2024 - výtržníctvo",
+     "2001 - ublíženie na zdraví",
+     "2011 - krádež vlámaním"
+    ]
+   },
+   "Čunovo": {
+    "spolu": 1,
+    "roky": {
+     "2021": 1
+    },
+    "najcastejsie": [
+     "2017 - pytliactvo"
+    ]
+   }
+  },
+  "druhy": [
+   {
+    "druh": "2014 - poškodzovanie cudzej veci",
+    "pocet": 44
+   },
+   {
+    "druh": "2001 - ublíženie na zdraví",
+    "pocet": 34
+   },
+   {
+    "druh": "2024 - výtržníctvo",
+    "pocet": 25
+   },
+   {
+    "druh": "2011 - krádež vlámaním",
+    "pocet": 24
+   },
+   {
+    "druh": "2003 - nedovolená výr. a držanie omamných a psychotr. lát",
+    "pocet": 20
+   },
+   {
+    "druh": "2015 - sprejeri poškodzovanie cudzej veci",
+    "pocet": 16
+   },
+   {
+    "druh": "2010 - krádež (páchateľ známy)",
+    "pocet": 13
+   },
+   {
+    "druh": "2009 - krádež (páchateľ neznámy)",
+    "pocet": 10
+   },
+   {
+    "druh": "2018 - útok na VČ",
+    "pocet": 8
+   },
+   {
+    "druh": "2022 - falšovanie a pozmeňovanie verejnej listiny ...",
+    "pocet": 7
+   },
+   {
+    "druh": "2012 - neoprávnené používanie cudzieho motorového vozidla",
+    "pocet": 6
+   },
+   {
+    "druh": "2007 - lúpež",
+    "pocet": 6
+   },
+   {
+    "druh": "2025 - týranie zvierat",
+    "pocet": 5
+   },
+   {
+    "druh": "2015 - -sprejeri- poškodzovanie cudzej veci",
+    "pocet": 5
+   },
+   {
+    "druh": "2023 - opilstvo",
+    "pocet": 4
+   },
+   {
+    "druh": "2028 - trestný čin proti životnému prostrediu",
+    "pocet": 3
+   },
+   {
+    "druh": "2006 - obmedzovanie osobnej slobody",
+    "pocet": 2
+   },
+   {
+    "druh": "2017 - pytliactvo",
+    "pocet": 2
+   },
+   {
+    "druh": "2027 - podnecovanie k národnost., ras. a etn. nenávisti",
+    "pocet": 1
+   },
+   {
+    "druh": "2015 - \"sprejeri\" poškodzovanie cudzej veci",
+    "pocet": 1
+   }
+  ],
+  "skupiny": [
+   {
+    "skupina": "200 - TČ /podozrenie zo spáchania trestného činu",
+    "pocet": 238
+   }
+  ],
+  "ulice": [
+   {
+    "ulica": "Obchodná",
+    "mc": "Staré Mesto",
+    "pocet": 13
+   },
+   {
+    "ulica": "Nám.SNP",
+    "mc": "Staré Mesto",
+    "pocet": 7
+   },
+   {
+    "ulica": "Primaciálne nám.",
+    "mc": "Staré Mesto",
+    "pocet": 6
+   },
+   {
+    "ulica": "Jedlíkova",
+    "mc": "Staré Mesto",
+    "pocet": 5
+   },
+   {
+    "ulica": "Hurbanovo námestie",
+    "mc": "Staré Mesto",
+    "pocet": 5
+   },
+   {
+    "ulica": "Ružinovská",
+    "mc": "Ružinov",
+    "pocet": 4
+   },
+   {
+    "ulica": "Nám.slobody",
+    "mc": "Staré Mesto",
+    "pocet": 4
+   },
+   {
+    "ulica": "Stavbárska",
+    "mc": "Vrakuňa",
+    "pocet": 4
+   },
+   {
+    "ulica": "Michalská",
+    "mc": "Staré Mesto",
+    "pocet": 4
+   },
+   {
+    "ulica": "Most SNP (Nový most)",
+    "mc": "Petržalka",
+    "pocet": 3
+   },
+   {
+    "ulica": "Trnavské mýto",
+    "mc": "Nové Mesto",
+    "pocet": 3
+   },
+   {
+    "ulica": "Einsteinova",
+    "mc": "Petržalka",
+    "pocet": 3
+   },
+   {
+    "ulica": "Račianska - MČ Nové Mesto",
+    "mc": "Nové Mesto",
+    "pocet": 3
+   },
+   {
+    "ulica": "Ventúrska",
+    "mc": "Staré Mesto",
+    "pocet": 3
+   },
+   {
+    "ulica": "Hodonínska - Lamač",
+    "mc": "Lamač",
+    "pocet": 3
+   },
+   {
+    "ulica": "Poštová",
+    "mc": "Staré Mesto",
+    "pocet": 3
+   },
+   {
+    "ulica": "Mikulášska",
+    "mc": "Staré Mesto",
+    "pocet": 3
+   },
+   {
+    "ulica": "Mierová",
+    "mc": "Ružinov",
+    "pocet": 3
+   },
+   {
+    "ulica": "Kopčianska",
+    "mc": "Petržalka",
+    "pocet": 2
+   },
+   {
+    "ulica": "Jašíkova",
+    "mc": "Ružinov",
+    "pocet": 2
+   },
+   {
+    "ulica": "Blagoevova",
+    "mc": "Petržalka",
+    "pocet": 2
+   },
+   {
+    "ulica": "Bradáčova",
+    "mc": "Petržalka",
+    "pocet": 2
+   },
+   {
+    "ulica": "Leknová",
+    "mc": "Vrakuňa",
+    "pocet": 2
+   },
+   {
+    "ulica": "Baštová",
+    "mc": "Staré Mesto",
+    "pocet": 2
+   },
+   {
+    "ulica": "Hálkova",
+    "mc": "Nové Mesto",
+    "pocet": 2
+   }
+  ],
+  "hodiny": [
+   15,
+   15,
+   11,
+   12,
+   14,
+   4,
+   6,
+   6,
+   8,
+   10,
+   8,
+   5,
+   10,
+   10,
+   11,
+   13,
+   11,
+   13,
+   5,
+   6,
+   14,
+   11,
+   13,
+   7
+  ],
+  "dni": [
+   29,
+   34,
+   22,
+   27,
+   35,
+   58,
+   33
+  ]
+ },
+ "ostatne": {
+  "spolu": 3559,
+  "roky": {
+   "2017": 402,
+   "2018": 440,
+   "2019": 519,
+   "2020": 618,
+   "2021": 885,
+   "2022": 695
+  },
+  "mestske_casti": {
+   "Staré Mesto": {
+    "spolu": 718,
+    "roky": {
+     "2017": 64,
+     "2018": 47,
+     "2019": 103,
+     "2020": 119,
+     "2021": 169,
+     "2022": 216
+    },
+    "najcastejsie": [
+     "103 - osoba chorá, v bezvedomí a pod.",
+     "102 - zranená osoba",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Nové Mesto": {
+    "spolu": 713,
+    "roky": {
+     "2017": 82,
+     "2018": 88,
+     "2019": 87,
+     "2020": 106,
+     "2021": 265,
+     "2022": 85
+    },
+    "najcastejsie": [
+     "222 - vozidlo zaregistrované v park. systéme",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok",
+     "122 - pes bez majiteľa"
+    ]
+   },
+   "Petržalka": {
+    "spolu": 642,
+    "roky": {
+     "2017": 68,
+     "2018": 80,
+     "2019": 72,
+     "2020": 126,
+     "2021": 162,
+     "2022": 134
+    },
+    "najcastejsie": [
+     "101 - osoba pod vplyvom alkoholu al.omamných látok",
+     "102 - zranená osoba",
+     "121 - uhynuté zviera"
+    ]
+   },
+   "Ružinov": {
+    "spolu": 560,
+    "roky": {
+     "2017": 65,
+     "2018": 78,
+     "2019": 79,
+     "2020": 89,
+     "2021": 130,
+     "2022": 119
+    },
+    "najcastejsie": [
+     "102 - zranená osoba",
+     "103 - osoba chorá, v bezvedomí a pod.",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Dúbravka": {
+    "spolu": 205,
+    "roky": {
+     "2017": 33,
+     "2018": 43,
+     "2019": 44,
+     "2020": 30,
+     "2021": 32,
+     "2022": 23
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "102 - zranená osoba",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Karlova Ves": {
+    "spolu": 152,
+    "roky": {
+     "2017": 20,
+     "2018": 19,
+     "2019": 35,
+     "2020": 26,
+     "2021": 26,
+     "2022": 26
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "102 - zranená osoba",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Rača": {
+    "spolu": 130,
+    "roky": {
+     "2017": 17,
+     "2018": 17,
+     "2019": 17,
+     "2020": 31,
+     "2021": 27,
+     "2022": 21
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "102 - zranená osoba",
+     "121 - uhynuté zviera"
+    ]
+   },
+   "Podunajské Biskupice": {
+    "spolu": 127,
+    "roky": {
+     "2017": 15,
+     "2018": 15,
+     "2019": 25,
+     "2020": 24,
+     "2021": 23,
+     "2022": 25
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok",
+     "102 - zranená osoba"
+    ]
+   },
+   "Vrakuňa": {
+    "spolu": 92,
+    "roky": {
+     "2017": 11,
+     "2018": 16,
+     "2019": 10,
+     "2020": 19,
+     "2021": 18,
+     "2022": 18
+    },
+    "najcastejsie": [
+     "101 - osoba pod vplyvom alkoholu al.omamných látok",
+     "103 - osoba chorá, v bezvedomí a pod.",
+     "122 - pes bez majiteľa"
+    ]
+   },
+   "Devínska Nová Ves": {
+    "spolu": 67,
+    "roky": {
+     "2017": 8,
+     "2018": 10,
+     "2019": 16,
+     "2020": 14,
+     "2021": 9,
+     "2022": 10
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "121 - uhynuté zviera",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Vajnory": {
+    "spolu": 50,
+    "roky": {
+     "2017": 8,
+     "2018": 16,
+     "2019": 8,
+     "2020": 9,
+     "2021": 4,
+     "2022": 5
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "121 - uhynuté zviera",
+     "102 - zranená osoba"
+    ]
+   },
+   "Lamač": {
+    "spolu": 48,
+    "roky": {
+     "2017": 5,
+     "2018": 6,
+     "2019": 11,
+     "2020": 9,
+     "2021": 11,
+     "2022": 6
+    },
+    "najcastejsie": [
+     "102 - zranená osoba",
+     "122 - pes bez majiteľa",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Devín": {
+    "spolu": 19,
+    "roky": {
+     "2017": 1,
+     "2018": 2,
+     "2019": 7,
+     "2020": 4,
+     "2021": 1,
+     "2022": 4
+    },
+    "najcastejsie": [
+     "121 - uhynuté zviera",
+     "108 - padnutý strom",
+     "122 - pes bez majiteľa"
+    ]
+   },
+   "Záhorská Bystrica": {
+    "spolu": 13,
+    "roky": {
+     "2017": 2,
+     "2019": 2,
+     "2020": 6,
+     "2021": 1,
+     "2022": 2
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "121 - uhynuté zviera",
+     "107 - nájdené alebo odovzdané osobné doklady"
+    ]
+   },
+   "Rusovce": {
+    "spolu": 11,
+    "roky": {
+     "2018": 1,
+     "2019": 1,
+     "2020": 5,
+     "2021": 4
+    },
+    "najcastejsie": [
+     "121 - uhynuté zviera",
+     "102 - zranená osoba",
+     "127 - oznámené PZ"
+    ]
+   },
+   "Čunovo": {
+    "spolu": 7,
+    "roky": {
+     "2017": 1,
+     "2018": 1,
+     "2019": 1,
+     "2020": 1,
+     "2021": 2,
+     "2022": 1
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "102 - zranená osoba",
+     "108 - padnutý strom"
+    ]
+   },
+   "Jarovce": {
+    "spolu": 5,
+    "roky": {
+     "2017": 2,
+     "2018": 1,
+     "2019": 1,
+     "2021": 1
+    },
+    "najcastejsie": [
+     "121 - uhynuté zviera",
+     "123 - zranené zviera",
+     "122 - pes bez majiteľa"
+    ]
+   }
+  },
+  "druhy": [
+   {
+    "druh": "102 - zranená osoba",
+    "pocet": 585
+   },
+   {
+    "druh": "101 - osoba pod vplyvom alkoholu al.omamných látok",
+    "pocet": 532
+   },
+   {
+    "druh": "103 - osoba chorá, v bezvedomí a pod.",
+    "pocet": 516
+   },
+   {
+    "druh": "122 - pes bez majiteľa",
+    "pocet": 422
+   },
+   {
+    "druh": "121 - uhynuté zviera",
+    "pocet": 286
+   },
+   {
+    "druh": "107 - nájdené alebo odovzdané osobné doklady",
+    "pocet": 251
+   },
+   {
+    "druh": "127 - oznámené PZ",
+    "pocet": 228
+   },
+   {
+    "druh": "222 - vozidlo zaregistrované v park. systéme",
+    "pocet": 225
+   },
+   {
+    "druh": "123 - zranené zviera",
+    "pocet": 99
+   },
+   {
+    "druh": "108 - padnutý strom",
+    "pocet": 97
+   },
+   {
+    "druh": "111 - zistenie požiaru",
+    "pocet": 82
+   },
+   {
+    "druh": "112 - padnutý strom, konáre",
+    "pocet": 62
+   },
+   {
+    "druh": "125 - založenie papuče na žiadosť PZ",
+    "pocet": 53
+   },
+   {
+    "druh": "113 - rozliata neznáma tekutina",
+    "pocet": 38
+   },
+   {
+    "druh": "115 - horiace kontajnery, smetné koše",
+    "pocet": 25
+   },
+   {
+    "druh": "116 - horiaca tráva",
+    "pocet": 14
+   },
+   {
+    "druh": "201 - zistená osoba v pátraní pre trestný čin",
+    "pocet": 12
+   },
+   {
+    "druh": "124 - cencúle,sneh zo strechy",
+    "pocet": 9
+   },
+   {
+    "druh": "205 - zistená nezvestná osoba",
+    "pocet": 7
+   },
+   {
+    "druh": "105 - poskytovateľ sociálnej služby pre ľudí bez domova",
+    "pocet": 5
+   }
+  ],
+  "skupiny": [
+   {
+    "skupina": "101 - RZP /privolaná RZP",
+    "pocet": 1267
+   },
+   {
+    "skupina": "103 - Sloboda zvierat /privolaný pracovník Slobody zvierat",
+    "pocet": 807
+   },
+   {
+    "skupina": "101 - ZZS /privolaná ZZS",
+    "pocet": 364
+   },
+   {
+    "skupina": "102 - HaZZ /privolaní hasiči z HaZZ",
+    "pocet": 334
+   },
+   {
+    "skupina": "109 - spolupráca s PZ",
+    "pocet": 283
+   },
+   {
+    "skupina": "107 - osobné doklady /nájdené alebo odovzdané osobné doklady",
+    "pocet": 251
+   },
+   {
+    "skupina": "222 - bez priestupku-vozidlo zaregistrované",
+    "pocet": 225
+   },
+   {
+    "skupina": "201 - pátrania PZ",
+    "pocet": 23
+   },
+   {
+    "skupina": "104 - prevádzka osobitnej telefónnej linky /",
+    "pocet": 5
+   }
+  ],
+  "ulice": [
+   {
+    "ulica": "Obchodná",
+    "mc": "Staré Mesto",
+    "pocet": 104
+   },
+   {
+    "ulica": "Kukučínova",
+    "mc": "Nové Mesto",
+    "pocet": 58
+   },
+   {
+    "ulica": "Saratovská",
+    "mc": "Dúbravka",
+    "pocet": 56
+   },
+   {
+    "ulica": "Nám.SNP",
+    "mc": "Staré Mesto",
+    "pocet": 50
+   },
+   {
+    "ulica": "Račianska - MČ Nové Mesto",
+    "mc": "Nové Mesto",
+    "pocet": 46
+   },
+   {
+    "ulica": "Hálkova",
+    "mc": "Nové Mesto",
+    "pocet": 44
+   },
+   {
+    "ulica": "Vajnorská",
+    "mc": "Nové Mesto",
+    "pocet": 38
+   },
+   {
+    "ulica": "Kamenné námestie",
+    "mc": "Staré Mesto",
+    "pocet": 34
+   },
+   {
+    "ulica": "Kopčianska",
+    "mc": "Petržalka",
+    "pocet": 32
+   },
+   {
+    "ulica": "Ružinovská",
+    "mc": "Ružinov",
+    "pocet": 27
+   },
+   {
+    "ulica": "Trnavské mýto",
+    "mc": "Nové Mesto",
+    "pocet": 26
+   },
+   {
+    "ulica": "Námestie Franza Liszta",
+    "mc": "Staré Mesto",
+    "pocet": 25
+   },
+   {
+    "ulica": "Dolnozemská cesta",
+    "mc": "Petržalka",
+    "pocet": 25
+   },
+   {
+    "ulica": "Michalská",
+    "mc": "Staré Mesto",
+    "pocet": 24
+   },
+   {
+    "ulica": "Cesta Mládeže",
+    "mc": "Nové Mesto",
+    "pocet": 24
+   },
+   {
+    "ulica": "Haanova",
+    "mc": "Petržalka",
+    "pocet": 23
+   },
+   {
+    "ulica": "Ivánska cesta",
+    "mc": "Ružinov",
+    "pocet": 22
+   },
+   {
+    "ulica": "Schneidra Trnavského",
+    "mc": "Dúbravka",
+    "pocet": 22
+   },
+   {
+    "ulica": "Poštová",
+    "mc": "Staré Mesto",
+    "pocet": 22
+   },
+   {
+    "ulica": "Hurbanovo námestie",
+    "mc": "Staré Mesto",
+    "pocet": 21
+   },
+   {
+    "ulica": "Gessayova",
+    "mc": "Petržalka",
+    "pocet": 21
+   },
+   {
+    "ulica": "Nám.Hraničiarov",
+    "mc": "Petržalka",
+    "pocet": 20
+   },
+   {
+    "ulica": "Mierová",
+    "mc": "Ružinov",
+    "pocet": 20
+   },
+   {
+    "ulica": "Miletičova",
+    "mc": "Ružinov",
+    "pocet": 20
+   },
+   {
+    "ulica": "Odbojárov",
+    "mc": "Nové Mesto",
+    "pocet": 20
+   }
+  ],
+  "hodiny": [
+   117,
+   83,
+   59,
+   49,
+   39,
+   47,
+   64,
+   104,
+   199,
+   212,
+   190,
+   185,
+   222,
+   189,
+   211,
+   188,
+   199,
+   195,
+   160,
+   200,
+   194,
+   168,
+   162,
+   120
+  ],
+  "dni": [
+   456,
+   514,
+   496,
+   494,
+   538,
+   521,
+   540
+  ]
+ },
+ "pokuty": {
+  "2020": {
+   "2200 - bezpečnosť a plynulosť cestnej premávky": {
+    "pocet": 366,
+    "suma": 796525
+   },
+   "4810 - čistota a ver.poriadok": {
+    "pocet": 302,
+    "suma": 1780
+   },
+   "4700 - priestupok proti verejnému poriadku": {
+    "pocet": 235,
+    "suma": 4470
+   },
+   "4834 - požívanie alk.nápojov na ver.priestr.": {
+    "pocet": 234,
+    "suma": 11390
+   },
+   "9801 - VRAK motor.vozidla - porušenie zákona": {
+    "pocet": 205,
+    "suma": 0
+   },
+   "9809 - porušenie zákona o lesoch": {
+    "pocet": 167,
+    "suma": 0
+   },
+   "9804 - porušenie zákona o ochrane nefajčiarov": {
+    "pocet": 143,
+    "suma": 2200
+   },
+   "4811 - kontajnery a ich stojiská": {
+    "pocet": 135,
+    "suma": 0
+   },
+   "4838 - nepovolené pouličné aktivity": {
+    "pocet": 96,
+    "suma": 430
+   },
+   "4832 - záverečné hodiny-prevádzkové časy a VP": {
+    "pocet": 95,
+    "suma": 1700
+   },
+   "4836 - obťažovanie osôb": {
+    "pocet": 89,
+    "suma": 90
+   },
+   "9802 - dopravná značka - zmena,zničenie,poškodenie,znečištenie": {
+    "pocet": 83,
+    "suma": 0
+   },
+   "9100 - kontrola TAXI": {
+    "pocet": 69,
+    "suma": 4880
+   },
+   "9811 - ohrozenie verejného zdravia": {
+    "pocet": 59,
+    "suma": 2240
+   },
+   "4814 - znečisťovanie odpadom, nepovolené skládky": {
+    "pocet": 57,
+    "suma": 30
+   },
+   "9901 - porušenie podmienok držania psov": {
+    "pocet": 53,
+    "suma": 345
+   },
+   "9800 - nepovolené skládky - porušenie zákona": {
+    "pocet": 46,
+    "suma": 0
+   },
+   "4833 - exteriérové sedenie": {
+    "pocet": 40,
+    "suma": 700
+   },
+   "9802 - doprav.značka - zmena,zničenie,poškodenie,znečistenie": {
+    "pocet": 40,
+    "suma": 0
+   },
+   "5000 - priestupok proti majetku": {
+    "pocet": 37,
+    "suma": 40
+   },
+   "4815 - VRAK motorového vozidla - porušenie VZN": {
+    "pocet": 31,
+    "suma": 0
+   },
+   "4825 - zákaz vjazdu s bicyklom": {
+    "pocet": 29,
+    "suma": 480
+   },
+   "4816 - stavebné práce mimo vyhrad. času": {
+    "pocet": 28,
+    "suma": 690
+   },
+   "4801 - psi (vodítko,voľný pohyb)": {
+    "pocet": 28,
+    "suma": 100
+   },
+   "4830 - ambulantný predaj": {
+    "pocet": 27,
+    "suma": 460
+   },
+   "4801 - psi (vôdzka,voľný pohyb)": {
+    "pocet": 27,
+    "suma": 150
+   },
+   "9812 - civilná ochrana": {
+    "pocet": 26,
+    "suma": 1890
+   },
+   "4900 - priestupok proti občianskému spolunažívaniu": {
+    "pocet": 23,
+    "suma": 40
+   },
+   "4812 - skladovanie staveb.materiálu bez povolenia na ver.priestr.": {
+    "pocet": 15,
+    "suma": 30
+   },
+   "4828 - zákaz táborenia, zakladanie ohniska": {
+    "pocet": 15,
+    "suma": 20
+   },
+   "4820 - poškodzovanie verejnej zelene": {
+    "pocet": 14,
+    "suma": 30
+   },
+   "4844 - ochrana nefajčiarov": {
+    "pocet": 13,
+    "suma": 90
+   },
+   "4803 - psi (známka,evidencia,poplatky)": {
+    "pocet": 11,
+    "suma": 30
+   },
+   "4802 - psi (zákaz vstupu)": {
+    "pocet": 11,
+    "suma": 40
+   },
+   "4823 - nepovolené pálenie odpadu": {
+    "pocet": 9,
+    "suma": 30
+   },
+   "4813 - užívanie verejného priestranstva bez povolenia": {
+    "pocet": 9,
+    "suma": 40
+   },
+   "2400 - priestupok na úseku ponikania": {
+    "pocet": 9,
+    "suma": 0
+   },
+   "4800 - psi (čistota-výkaly)": {
+    "pocet": 8,
+    "suma": 0
+   },
+   "4817 - nepovolené rozkopávky": {
+    "pocet": 8,
+    "suma": 30
+   },
+   "9899 - stavba bez stavebného povolenia": {
+    "pocet": 8,
+    "suma": 0
+   },
+   "9806 - porušenie ochrany pred zneuž.alkohol.nápojov": {
+    "pocet": 7,
+    "suma": 0
+   },
+   "4839 - hluk(nežiaduci,škodlivý,obťažujúci ... )": {
+    "pocet": 6,
+    "suma": 80
+   },
+   "4821 - státie na zeleni": {
+    "pocet": 4,
+    "suma": 25
+   },
+   "4500 - priestupok na úseku ochrany život.prostredia": {
+    "pocet": 4,
+    "suma": 40
+   },
+   "4841 - zákaz používania pyrotechniky": {
+    "pocet": 2,
+    "suma": 60
+   },
+   "3000 - priestupok na úseku ochrany pred alkoholizmom a in.toxikomán": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "4831 - trhový poriadok": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "4826 - znečisťovanie komunikácie": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "4600 - iné priestupky proti poriadku v správe": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "106 - iné oznámenia a zistenia": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "4835 - zákaz(obmedzenie)predaja alkohol.nápojov": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "2400 - priestupok na úseku podnikania": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "9810 - porušenie zákona o vodách": {
+    "pocet": 1,
+    "suma": 10
+   },
+   "9814 - rúško": {
+    "pocet": 1,
+    "suma": 0
+   }
+  },
+  "2021": {
+   "2200 - bezpečnosť a plynulosť cestnej premávky": {
+    "pocet": 365,
+    "suma": 798925
+   },
+   "4700 - priestupok proti verejnému poriadku": {
+    "pocet": 248,
+    "suma": 5660
+   },
+   "4810 - čistota a ver.poriadok": {
+    "pocet": 236,
+    "suma": 950
+   },
+   "9801 - VRAK motor.vozidla - porušenie zákona": {
+    "pocet": 186,
+    "suma": 0
+   },
+   "4834 - požívanie alk.nápojov na ver.priestr.": {
+    "pocet": 170,
+    "suma": 7750
+   },
+   "9802 - doprav.značka - zmena,zničenie,poškodenie,znečistenie": {
+    "pocet": 126,
+    "suma": 0
+   },
+   "4811 - kontajnery a ich stojiská": {
+    "pocet": 105,
+    "suma": 90
+   },
+   "9901 - porušenie podmienok držania psov": {
+    "pocet": 78,
+    "suma": 650
+   },
+   "9804 - porušenie zákona o ochrane nefajčiarov": {
+    "pocet": 77,
+    "suma": 720
+   },
+   "4814 - znečisťovanie odpadom, nepovolené skládky": {
+    "pocet": 67,
+    "suma": 40
+   },
+   "9809 - porušenie zákona o lesoch": {
+    "pocet": 58,
+    "suma": 0
+   },
+   "4832 - záverečné hodiny-prevádzkové časy a VP": {
+    "pocet": 53,
+    "suma": 910
+   },
+   "4801 - psi (vôdzka,voľný pohyb)": {
+    "pocet": 52,
+    "suma": 290
+   },
+   "4900 - priestupok proti občianskému spolunažívaniu": {
+    "pocet": 44,
+    "suma": 440
+   },
+   "9800 - nepovolené skládky - porušenie zákona": {
+    "pocet": 40,
+    "suma": 0
+   },
+   "4815 - VRAK motorového vozidla - porušenie VZN": {
+    "pocet": 40,
+    "suma": 0
+   },
+   "4838 - nepovolené pouličné aktivity": {
+    "pocet": 36,
+    "suma": 40
+   },
+   "5000 - priestupok proti majetku": {
+    "pocet": 31,
+    "suma": 30
+   },
+   "9814 - rúško": {
+    "pocet": 24,
+    "suma": 880
+   },
+   "4802 - psi (zákaz vstupu)": {
+    "pocet": 23,
+    "suma": 110
+   },
+   "9811 - ohrozenie verejného zdravia": {
+    "pocet": 22,
+    "suma": 190
+   },
+   "4836 - obťažovanie osôb": {
+    "pocet": 17,
+    "suma": 0
+   },
+   "9812 - civilná ochrana": {
+    "pocet": 16,
+    "suma": 1680
+   },
+   "4816 - stavebné práce mimo vyhrad. času": {
+    "pocet": 15,
+    "suma": 210
+   },
+   "4833 - exteriérové sedenie": {
+    "pocet": 15,
+    "suma": 480
+   },
+   "9100 - kontrola TAXI": {
+    "pocet": 14,
+    "suma": 620
+   },
+   "4813 - užívanie verejného priestranstva bez povolenia": {
+    "pocet": 14,
+    "suma": 90
+   },
+   "4500 - priestupok na úseku ochrany život.prostredia": {
+    "pocet": 13,
+    "suma": 40
+   },
+   "4830 - ambulantný predaj": {
+    "pocet": 13,
+    "suma": 100
+   },
+   "4820 - poškodzovanie verejnej zelene": {
+    "pocet": 12,
+    "suma": 20
+   },
+   "4825 - zákaz vjazdu s bicyklom": {
+    "pocet": 10,
+    "suma": 110
+   },
+   "2222 - porušenie § 6a písm.e) zák.č. 8/2009": {
+    "pocet": 10,
+    "suma": 0
+   },
+   "4803 - psi (známka,evidencia,poplatky)": {
+    "pocet": 9,
+    "suma": 100
+   },
+   "4828 - zákaz táborenia, zakladanie ohniska": {
+    "pocet": 9,
+    "suma": 110
+   },
+   "9806 - porušenie ochrany pred zneuž.alkohol.nápojov": {
+    "pocet": 9,
+    "suma": 0
+   },
+   "4844 - ochrana nefajčiarov": {
+    "pocet": 8,
+    "suma": 30
+   },
+   "4840 - rušenie nočného pokoja": {
+    "pocet": 8,
+    "suma": 20
+   },
+   "2202 - BaPCP podľa §22 ods.1,písm.l)": {
+    "pocet": 8,
+    "suma": 330
+   },
+   "4839 - hluk(nežiaduci,škodlivý,obťažujúci ... )": {
+    "pocet": 7,
+    "suma": 20
+   },
+   "4823 - nepovolené pálenie odpadu": {
+    "pocet": 5,
+    "suma": 0
+   },
+   "4817 - nepovolené rozkopávky": {
+    "pocet": 5,
+    "suma": 0
+   },
+   "4800 - psi (čistota-výkaly)": {
+    "pocet": 5,
+    "suma": 40
+   },
+   "9899 - stavba bez stavebného povolenia": {
+    "pocet": 5,
+    "suma": 0
+   },
+   "4600 - iné priestupky proti poriadku v správe": {
+    "pocet": 4,
+    "suma": 20
+   },
+   "4821 - státie na zeleni": {
+    "pocet": 3,
+    "suma": 20
+   },
+   "9803 - znečisťovanie komunikácie - podľa zákona": {
+    "pocet": 3,
+    "suma": 0
+   },
+   "4826 - znečisťovanie komunikácie": {
+    "pocet": 2,
+    "suma": 30
+   },
+   "4812 - skladovanie staveb.materiálu bez povolenia na ver.priestr.": {
+    "pocet": 2,
+    "suma": 20
+   },
+   "9807 - neoznámené zhromaždenie": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "3500 - priestupok na úseku poľnohospodárstva a poľovníctva a ryb.": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "2400 - priestupok na úseku podnikania": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "222 - bez priestupku-vozidlo zaregistrované": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "4831 - trhový poriadok": {
+    "pocet": 1,
+    "suma": 0
+   }
+  },
+  "2022": {
+   "4700 - priestupok proti verejnému poriadku": {
+    "pocet": 265,
+    "suma": 4635
+   },
+   "2200 - bezpeč.a plynul.cest.premávky do 31.7.2022": {
+    "pocet": 212,
+    "suma": 479150
+   },
+   "9801 - VRAK motor.vozidla - porušenie zákona": {
+    "pocet": 151,
+    "suma": 0
+   },
+   "4810 - čistota a ver.poriadok": {
+    "pocet": 149,
+    "suma": 430
+   },
+   "4834 - požívanie alk.nápojov na ver.priestr.": {
+    "pocet": 149,
+    "suma": 3180
+   },
+   "2122 - BaPCP §22 ods.1,písm.l) od 1.8.2022": {
+    "pocet": 124,
+    "suma": 254590
+   },
+   "2123 - BaPCP §22 ods.1,písm.k) od 1.8.2022": {
+    "pocet": 120,
+    "suma": 30030
+   },
+   "9802 - doprav.značka - zmena,zničenie,poškodenie,znečistenie": {
+    "pocet": 101,
+    "suma": 0
+   },
+   "4900 - priestupok proti občianskému spolunažívaniu": {
+    "pocet": 92,
+    "suma": 1245
+   },
+   "4814 - znečisťovanie odpadom, nepovolené skládky": {
+    "pocet": 83,
+    "suma": 0
+   },
+   "4838 - nepovolené pouličné aktivity": {
+    "pocet": 83,
+    "suma": 130
+   },
+   "9901 - porušenie podmienok držania psov": {
+    "pocet": 76,
+    "suma": 330
+   },
+   "4832 - záverečné hodiny-prevádzkové časy a VP": {
+    "pocet": 73,
+    "suma": 380
+   },
+   "4815 - VRAK motorového vozidla - porušenie VZN": {
+    "pocet": 62,
+    "suma": 0
+   },
+   "4811 - kontajnery a ich stojiská": {
+    "pocet": 53,
+    "suma": 20
+   },
+   "9804 - porušenie zákona o ochrane nefajčiarov": {
+    "pocet": 51,
+    "suma": 770
+   },
+   "2124 - BaPCP správne delikty §138": {
+    "pocet": 44,
+    "suma": 0
+   },
+   "2222 - porušenie § 6a písm.e) zák.č. 8/2009": {
+    "pocet": 41,
+    "suma": 50
+   },
+   "9800 - nepovolené skládky - porušenie zákona": {
+    "pocet": 38,
+    "suma": 0
+   },
+   "5000 - priestupok proti majetku": {
+    "pocet": 36,
+    "suma": 300
+   },
+   "2202 - BaPCP §22 odsek,písm.l) do 31.7.2022": {
+    "pocet": 31,
+    "suma": 1710
+   },
+   "4801 - psi (vôdzka,voľný pohyb)": {
+    "pocet": 28,
+    "suma": 170
+   },
+   "4600 - iné priestupky proti poriadku v správe": {
+    "pocet": 26,
+    "suma": 380
+   },
+   "9100 - kontrola TAXI": {
+    "pocet": 26,
+    "suma": 1440
+   },
+   "4836 - obťažovanie osôb": {
+    "pocet": 22,
+    "suma": 65
+   },
+   "4825 - zákaz vjazdu s bicyklom": {
+    "pocet": 19,
+    "suma": 200
+   },
+   "9809 - porušenie zákona o lesoch": {
+    "pocet": 16,
+    "suma": 0
+   },
+   "4840 - rušenie nočného pokoja": {
+    "pocet": 15,
+    "suma": 60
+   },
+   "4816 - stavebné práce mimo vyhrad. času": {
+    "pocet": 11,
+    "suma": 120
+   },
+   "4802 - psi (zákaz vstupu)": {
+    "pocet": 10,
+    "suma": 40
+   },
+   "2201 - BaPCP §22 ods.1,písm.m) do 31.7.2022": {
+    "pocet": 10,
+    "suma": 140
+   },
+   "4803 - psi (známka,evidencia,poplatky)": {
+    "pocet": 10,
+    "suma": 170
+   },
+   "4833 - exteriérové sedenie": {
+    "pocet": 9,
+    "suma": 80
+   },
+   "9811 - ohrozenie verejného zdravia": {
+    "pocet": 8,
+    "suma": 10
+   },
+   "9806 - porušenie ochrany pred zneuž.alkohol.nápojov": {
+    "pocet": 8,
+    "suma": 0
+   },
+   "4820 - poškodzovanie verejnej zelene": {
+    "pocet": 8,
+    "suma": 20
+   },
+   "4500 - priestupok na úseku ochrany život.prostredia": {
+    "pocet": 7,
+    "suma": 0
+   },
+   "4813 - užívanie verejného priestranstva bez povolenia": {
+    "pocet": 6,
+    "suma": 100
+   },
+   "4830 - ambulantný predaj": {
+    "pocet": 5,
+    "suma": 90
+   },
+   "4800 - psi (čistota-výkaly)": {
+    "pocet": 5,
+    "suma": 50
+   },
+   "9899 - stavba bez stavebného povolenia": {
+    "pocet": 5,
+    "suma": 0
+   },
+   "9803 - znečisťovanie komunikácie - podľa zákona": {
+    "pocet": 4,
+    "suma": 0
+   },
+   "4823 - nepovolené pálenie odpadu": {
+    "pocet": 4,
+    "suma": 20
+   },
+   "4839 - hluk(nežiaduci,škodlivý,obťažujúci ... )": {
+    "pocet": 4,
+    "suma": 20
+   },
+   "4812 - skladovanie staveb.materiálu bez povolenia na ver.priestr.": {
+    "pocet": 4,
+    "suma": 30
+   },
+   "4844 - ochrana nefajčiarov": {
+    "pocet": 3,
+    "suma": 90
+   },
+   "4841 - zákaz používania pyrotechniky": {
+    "pocet": 3,
+    "suma": 40
+   },
+   "4831 - trhový poriadok": {
+    "pocet": 3,
+    "suma": 30
+   },
+   "2600 - priestupok na úseku hospodárenia s bytmi a s neb.priestormi": {
+    "pocet": 3,
+    "suma": 20
+   },
+   "4828 - zákaz táborenia, zakladanie ohniska": {
+    "pocet": 3,
+    "suma": 0
+   },
+   "9812 - civilná ochrana": {
+    "pocet": 2,
+    "suma": 20
+   },
+   "2400 - priestupok na úseku podnikania": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "4817 - nepovolené rozkopávky": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "4826 - znečisťovanie komunikácie": {
+    "pocet": 1,
+    "suma": 20
+   },
+   "2100 - priestupky proti poriadku v správe": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "4835 - zákaz(obmedzenie)predaja alkohol.nápojov": {
+    "pocet": 1,
+    "suma": 10
+   },
+   "4818 - plagáty + reklama": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "210 - EVO - LUSTROVANIE": {
+    "pocet": 1,
+    "suma": 0
+   }
+  }
+ },
+ "podnety": {
+  "spolu": 12847,
+  "roky": {
+   "2017": 1119,
+   "2018": 1767,
+   "2019": 2381,
+   "2020": 2671,
+   "2021": 3184,
+   "2022": 1725
+  },
+  "kategorie": [
+   {
+    "kategoria": "Cesty a chodníky",
+    "pocet": 3108
+   },
+   {
+    "kategoria": "Dopravné značenie",
+    "pocet": 2227
+   },
+   {
+    "kategoria": "Zeleň a životné prostredie",
+    "pocet": 2127
+   },
+   {
+    "kategoria": "Hlavné mesto SR Bratislava",
+    "pocet": 1725
+   },
+   {
+    "kategoria": "Verejné služby",
+    "pocet": 1215
+   },
+   {
+    "kategoria": "Automobily",
+    "pocet": 1051
+   },
+   {
+    "kategoria": "Verejný poriadok",
+    "pocet": 736
+   },
+   {
+    "kategoria": "Mestský mobiliár",
+    "pocet": 580
+   },
+   {
+    "kategoria": "iné",
+    "pocet": 64
+   },
+   {
+    "kategoria": "Všetko ostatné",
+    "pocet": 14
+   }
+  ],
+  "stavy": {
+   "V riešení": 5302,
+   "Vyriešený": 4364,
+   "Uzavretý": 866,
+   "Neriešený": 590,
+   "Vajnorská-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 8,
+   "Vajnorská-zvislá značka-vyblednutá": 7,
+   "Staviteľská-zvislá značka-poškodená": 6,
+   "Kadnárova-krík-neostrihaný": 5,
+   "Tomášikova-zvislá značka-vyblednutá": 5,
+   "Vajnorská-cesta-výtlk": 5,
+   "Kopčianska - neporiadok a odpadky vo verejnom priestranstve": 5,
+   "Bajkalská-osvetlenie-nefunkčné": 5,
+   "Rožňavská-reklama-vizuálny smog": 5,
+   "Záhradnícka-chodník-výtlk": 5,
+   "Vajnorská-zvislá značka-poškodená": 4,
+   "Dunajská-chodník-bariérový": 4,
+   "Dunajská-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 4,
+   "Vajnorská-chodník-výtlk": 4,
+   "Bajkalská-zvislá značka-neaktuálna": 4,
+   "Dvojkrížna-zvislá značka-vyblednutá": 4,
+   "Páričkova-osvetlenie-poškodené stĺpy": 3,
+   "Bulharská-cesta-výtlk": 3,
+   "Ivanská cesta-osvetlenie-nefunkčné": 3,
+   "Vietnamská-osvetlenie-nefunkčné": 3,
+   "Kazanská-chodník-znečistený": 3,
+   "Stará Vajnorská-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 3,
+   "Šancová-cesta-výtlk": 3,
+   "Šamorínska-zvislá značka-poškodená": 3,
+   "Košická-priechod pre chodcov-zle viditeľný": 3,
+   "Bajkalská-zvislá značka-poškodená": 3,
+   "Bajkalská-cyklotrasa-neoznačená": 3,
+   "Trnavská cesta-zvislá značka-vyblednutá": 3,
+   "Račianska-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 3,
+   "Mlynské Nivy-osvetlenie-nefunkčné": 3,
+   "Hraničná-osvetlenie-nefunkčné": 3,
+   "Bajkalská-stĺpik-chýbajúci": 3,
+   "Šancová-semafor-nefunkčný": 3,
+   "Mýtna-zvislá značka-poškodená": 3,
+   "Kadnárova-cesta-výtlk": 3,
+   "Záhradnícka-chodník-poškodená dlažba": 3,
+   "Podunajská-zvislá značka-vyblednutá": 3,
+   "Záhradnícka-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 3,
+   "Bojnická-cesta-výtlk": 3,
+   "Dunajská-reklama-vizuálny smog": 2,
+   "Košická-zvislá značka-chýbajúca": 2,
+   "Panónska cesta - poškodená zvislá značka": 2,
+   "Tomášikova-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 2,
+   "Miletičova-zvislá značka-poškodená": 2,
+   "Predstaničné námestie-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 2,
+   "Pražská-chodník-znečistený": 2,
+   "Rybničná-cesta-rozbitá (väčší úsek)": 2,
+   "M. Schneidera Trnavského-zvislá značka-vyblednutá": 2,
+   "Šintavská - poškodená zvislá značka": 2,
+   "Račianska-zvislá značka-poškodená": 2,
+   "Furdekova - vyblednutá zvislá značka": 2,
+   "Galvaniho-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 2,
+   "Hečkova-chodník-chýbajúci": 2,
+   "Vajnorská-parkovanie-problémové": 2,
+   "Stará Vajnorská-zvislá značka-poškodená": 2,
+   "Košická-cesta-znečistená": 2,
+   "29. augusta-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 2,
+   "Vajnorská-Cesty a chodníky-iné": 2,
+   "Tomášikova-zvislá značka-poškodená": 2,
+   "Mudroňova-chodník-poškodená dlažba": 2,
+   "Prievozská-strom-chýbajúci": 2,
+   "Miletičova-zastávka MHD -poškodená": 2,
+   "Záhradnícka-osvetlenie-poškodené stĺpy": 2,
+   "Kopčianska - poškodená zvislá značka": 2,
+   "Galvaniho-zvislá značka-vyblednutá": 2,
+   "Námestie slobody-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 2,
+   "Hradská-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 2,
+   "Trnavská cesta-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 2,
+   "Jeséniova-chodník-znečistený": 2,
+   "Pražská-strom-suchý": 2,
+   "Námestie slobody-neporiadok a odpadky-neodpratané lístie": 2,
+   "Račianska-strom-zlomený konár": 2,
+   "Kazanská-zvislá značka-poškodená": 2,
+   "Bojnická-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 2,
+   "Pribylinská-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 2,
+   "Palisády-chodník-bariérový": 2,
+   "Stará Klenová-chodník-znečistený": 2,
+   "Saratovská-reklama-vizuálny smog": 2,
+   "Vajnorská-cyklotrasa-poškodená": 2,
+   "Záhradnícka-cesta-výtlk": 2,
+   "Šustekova - neporiadok a odpadky vo verejnom priestranstve": 2,
+   "Námestie slobody-kanalizácia-chýbajúci kanalizačný poklop": 2,
+   "Zámocká-chodník-poškodená dlažba": 2,
+   "Špitálska-chodník-rozkopaný": 2,
+   "Šancová-zvislá značka-poškodená": 2,
+   "M. Schneidera Trnavského-priechod pre chodcov-chýbajúci": 2,
+   "Popradská-zvislá značka-poškodená": 2,
+   "Majerníkova-chodník-znečistený": 2,
+   "Dvojkrížna-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 2,
+   "Trnavská cesta-cesta-výtlk": 2,
+   "Staviteľská-zvislá značka-vyblednutá": 2,
+   "Baníkova-zvislá značka-poškodená": 2,
+   "Uzbecká-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 2,
+   "Mlynské Nivy-kanalizácia-poškodený kanalizačný poklop": 2,
+   "Karloveská-osvetlenie-nefunkčné": 2,
+   "Jozefa Hagaru-krík-neostrihaný": 2,
+   "Jeséniova-chodník-poškodená dlažba": 2,
+   "Hviezdoslavovo námestie-osvetlenie-poškodené stĺpy": 2,
+   "Jozefa Hagaru-strom-neorezaný": 2,
+   "Podháj-zvislá značka-vyblednutá": 2,
+   "Galvaniho-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 2,
+   "Miletičova-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 2,
+   "Ružinovská-chodník-chýbajúci": 2,
+   "Karloveská-kôš-poškodený": 2,
+   "Šancová-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 2,
+   "Kazanská-zvislá značka-vyblednutá": 2,
+   "Vajnorská-priechod pre chodcov-zle viditeľný": 2,
+   "Račianska-chodník-bariéra na chodníku": 2,
+   "Račianska-chodník-výtlk": 2,
+   "Zadunajská cesta - nefunkčné osvetlenie": 2,
+   "Bohrova - nefunkčné osvetlenie": 2,
+   "Košická-cesta-výtlk": 2,
+   "Kadnárova-zvislá značka-neaktuálna": 2,
+   "Prievozská-cesta-výtlk": 2,
+   "Pri kríži-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 2,
+   "Záhradnícka-chodník-bariéra na chodníku": 2,
+   "Ivanská cesta-zvislá značka-vyblednutá": 2,
+   "Vajnorská-chodník-znečistený": 2,
+   "Stromová-chodník-výtlk": 2,
+   "Záhradnícka-chodník-rozkopaný": 2,
+   "Mierová-Zeleň a životné prostredie-iné": 2,
+   "Kukučínova-zvislá značka-v rozpore so zákonom": 2,
+   "Tomášikova-priechod pre chodcov-zle viditeľný": 2,
+   "Tomášikova-chodník-znečistený": 2,
+   "Šintavská - vyblednutá zvislá značka": 2,
+   "Šancová-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 2,
+   "Záhradnícka-parkovanie-problémové": 2,
+   "Kadnárova-zvislá značka-poškodená": 2,
+   "Mokráň záhon-Zeleň a životné prostredie-iné": 2,
+   "Hradská-reklama-vizuálny smog": 2,
+   "Miletičova-strom-invazívna rastlina": 2,
+   "Devínska cesta-krík-neostrihaný": 2,
+   "Tupolevova - nepokosená trávnatá plocha": 2,
+   "Špitálska-zvislá značka-vyblednutá": 2,
+   "Rusovská cesta - poškodená zvislá značka": 2,
+   "Pri starom letisku-zvislá značka-poškodená": 2,
+   "Rustaveliho-trávnatá plocha-nepokosená": 2,
+   "Sad Janka Kráľa - suchý strom": 2,
+   "Vazovova-dlhodobo odstavené vozidlá-nezistené EČV a TK a EK": 2,
+   "Vajnorská-priechod pre chodcov-chýbajúci": 2,
+   "Starý most-osvetlenie-nefunkčné": 2,
+   "Slatinská-trávnatá plocha-nepokosená": 2,
+   "Pajštúnska - vyblednutá zvislá značka": 2,
+   "Hany Meličkovej-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 2,
+   "Trnavská cesta-zvislá značka-poškodená": 2,
+   "Košická-zvislá značka-zle otočená": 1,
+   "Imricha Karvaša-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Páričkova-zvislá značka-poškodená": 1,
+   "Páričkova-neporiadok vo verejnom priestranstve": 1,
+   "Páričkova-neporiadok a odpadky-neodpratané lístie": 1,
+   "Azovská-chodník-bariéra na chodníku": 1,
+   "Galvaniho-strom-chýbajúci": 1,
+   "Kukučínova-cesta-rozbitá (väčší úsek)": 1,
+   "Beckovská-osvetlenie-nefunkčné": 1,
+   "Vietnamská-osvetlenie-chýbajúce/nedostatočné": 1,
+   "Na križovatkách-osvetlenie-nefunkčné": 1,
+   "Bojnická-Neporiadok a odpadky-Čierne skládky": 1,
+   "Betliarska - bunker BS13 Stoh": 1,
+   "Ladzianskeho-osvetlenie-nefunkčné": 1,
+   "Mlynské Nivy-cesta-poškodená dlažba": 1,
+   "Holíčska 1-13 - nefunkčné osvetlenie": 1,
+   "Štetinova-osvetlenie-nefunkčné": 1,
+   "Výjazd na Nový most - nadbytočná rúra z odkvapu": 1,
+   "Zvyšok stĺpika v chodníku na Ul. H. Meličkovej 33": 1,
+   "Limbová-zvislá značka-vyblednutá (z. predchádzania)": 1,
+   "Bebravská-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Závadská-osvetlenie-nefunkčné": 1,
+   "Majakovského-osvetlenie-nefunkčné": 1,
+   "Mlynské Nivy-Automobily-rozobraté vozidlo": 1,
+   "Hubeného-stĺpik-chýbajúci": 1,
+   "Hraničná-Verejný poriadok-iné": 1,
+   "Panónska cesta - betóny a staré betónové stĺpy": 1,
+   "Viedenská cesta-stará časž - neporiadok pri parkovisku": 1,
+   "Račianska-cesta-výtlk": 1,
+   "Krasovského - nefunkčné osvetlenie": 1,
+   "Levická-osvetlenie-nefunkčné": 1,
+   "Viedenská cesta - stará časž - chýbajúci chodník": 1,
+   "Hodonínska-zvislá značka-zle otočená": 1,
+   "Klokočova - chýbajúce/nedostatočné osvetlenie": 1,
+   "Revolučná-osvetlenie-nefunkčné": 1,
+   "Nedostatočné osvetlenie ihriska Púpavka": 1,
+   "Nefunkčné osvetlenie na Tománkovej": 1,
+   "Šrobárovo námestie - poškodené stĺpy verejného osvetlenia": 1,
+   "Štefanovičova-priechod pre chodcov-chýbajúci": 1,
+   "Znievska - zafarbené drevené kolíky": 1,
+   "Zlomený konár medzi Hlaváčikovou a Majerníkovou": 1,
+   "Vígľašská - neporiadok a odpadky vo verejnom priestranstve": 1,
+   "Čierna skládka pod Hlaváčikovou 33-35": 1,
+   "Uzbecká-dlhodobo odstavené vozidlá-nezistené EČV a TK a EK": 1,
+   "Poškodená podpera stromu pri Ovsištskom ramene": 1,
+   "Karadžičova-Chýbajúci trávnik": 1,
+   "Bajkalská-chodník-chýbajúci": 1,
+   "Popolná-priechod pre chodcov-chýbajúci": 1,
+   "Kaštieľska-zvislá značka-poškodená": 1,
+   "Kopčianska - cyklotrasa": 1,
+   "Einsteinova - chýbajúci nájazd pre kočíky": 1,
+   "Starý most-Dopravné značenie-iné": 1,
+   "Pionierska-reklama-vylepené plagáty": 1,
+   "Púchovská-reklama-Nelegálna reklama": 1,
+   "Lachova - nefunkčné osvetlenie": 1,
+   "Košická-strom-napadnutý": 1,
+   "Špinavé označenie cyklotrasy v Líščom údolí": 1,
+   "Dva nadbytočné stĺpiky pri zast. Námestie sv. Františka": 1,
+   "Rybničná-krík-neostrihaný": 1,
+   "Košická-chodník-znečistený": 1,
+   "Bory Mall-zvislá značka-poškodená": 1,
+   "Devínska cesta-Zeleň a životné prostredie-neporiadok a odpadky": 1,
+   "Cesta na Kamzík-osvetlenie-nefunkčné": 1,
+   "Palisády-strom-chýbajúci": 1,
+   "Lamačská cesta-zábradlie-zhrdzavené": 1,
+   "Pražská-dopravné zrkadlo-chýbajúce": 1,
+   "Lamačská cesta-zvislá značka-vyblednutá": 1,
+   "Bosákova - stará hrdzavá reklama": 1,
+   "Parková-zvislá značka-vyblednutá": 1,
+   "A. Gwerkovej - suchý strom": 1,
+   "Komárovská-strom-zlomený konár": 1,
+   "Landererova-neporiadok vo verejnom priestranstve": 1,
+   "Odpadky vo dvore na Ul. H. Meličkovej 13": 1,
+   "Cintulova-znečisžovanie-vody": 1,
+   "Palisády-stĺpik-chýbajúci": 1,
+   "Jarovce-strom-zlomený konár": 1,
+   "Fedákova-chodník-výtlk": 1,
+   "Antolská - poškodená zvislá značka": 1,
+   "Ružová dolina-zvislá značka-neaktuálna": 1,
+   "Ružinovská-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Bajkalská-osvetlenie-poškodené stĺpy": 1,
+   "Koľajná-zvislá značka-poškodená": 1,
+   "Rusovská cesta - vyblednutá zvislá značka": 1,
+   "Jiráskova - poškodená značka prechod pre chodcov": 1,
+   "Vajnorská-krík-neostrihaný": 1,
+   "Devínska cesta-cesta-znečistená": 1,
+   "Rybničná-reklama-nelegálna-neaktuálna": 1,
+   "Štefanovičova-spomaľovač-chýbajúci": 1,
+   "Dolnozemská cesta - dlhodobo odstavené Volvo S70 bez EČV": 1,
+   "Mlynské Nivy-priechod pre chodcov-zle viditeľný": 1,
+   "Brnianska-zvislá značka-chýbajúca": 1,
+   "Romanova - poškodený stĺp pred Technopolom": 1,
+   "Záhradnícka-zvislá značka-vyblednutá": 1,
+   "Dolná-detské ihrisko-chýbajúce": 1,
+   "Kopčianska - otočená značka": 1,
+   "Prievozská-riešenie dopravnej situácie-dopravu spomaľujúce": 1,
+   "Nezábudková-chodník-bariéra na chodníku": 1,
+   "Saratovská-trávnatá plocha-vyschnutá": 1,
+   "Gercenova - neorezaný strom": 1,
+   "Holekova-Automobily-iné": 1,
+   "Bosákova - poškodená značka": 1,
+   "Slovnaftská-neporiadok a odpadky-čierne skládky": 1,
+   "Vajnorská-zastávka MHD -znečistená": 1,
+   "Banskobystrická-chodník-znečistený": 1,
+   "Mýtna-strom-zlomený konár": 1,
+   "Saratovská-zvislá značka-zle otočená": 1,
+   "Belehradská-parkovanie-problémové": 1,
+   "Kukučínova-zastávka MHD-chýbajúca": 1,
+   "Svornosti-dlhodobo odstavené vozidlá-vozidlo bez EČV, bez platnej TK a EK": 1,
+   "Vyblednutá značka pri nadjazde na Matejkovej": 1,
+   "Panónska cesta - dlhodobo odstavené vozidlo bez platnej TK a EK": 1,
+   "Kutlíkova - stan ľudí bez domova": 1,
+   "žatevná-osvetlenie-chýbajúce/nedostatočné": 1,
+   "Chýbajúce osvetlenie cyklotrasy pri Vodárenskej záhrade": 1,
+   "Prístavná-osvetlenie-chýbajúce/nedostatočné": 1,
+   "Plynárenská-osvetlenie-nefunkčné": 1,
+   "Reklama na stĺpe na Kempelenovej 3": 1,
+   "Mokráň záhon-osvetlenie-nefunkčné": 1,
+   "Zidiny-osvetlenie-nefunkčné": 1,
+   "žltá - nebezpečný priechod pre chodcov": 1,
+   "Pekná cesta-parkovanie-problémové": 1,
+   "Prístavná-zvislá značka-poškodená": 1,
+   "Jelačičova-zvislá značka-poškodená": 1,
+   "Lamačská cesta-cesta-znečistená": 1,
+   "Strmá cesta-osvetlenie-poškodené stĺpy": 1,
+   "Cesta na Senec-zvislá značka-vyblednutá": 1,
+   "Pavlovova-krík-neostrihaný": 1,
+   "Búdková-chodník-poškodená dlažba": 1,
+   "Pastierska-stavby a budovy-zlý stav budovy": 1,
+   "Odborárske námestie-zvislá značka-vyblednutá": 1,
+   "Bajkalská-stĺpik-poškodený": 1,
+   "Šancová-neporiadok vo verejnom priestranstve": 1,
+   "Agátová-osvetlenie-poškodené stĺpy": 1,
+   "Štúrova-cesta-bariérová": 1,
+   "Záhradnícka-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Jiráskova-Zeleň a životné prostredie-iné": 1,
+   "Čiernohorská-osvetlenie-poškodené stĺpy": 1,
+   "Cesta mládeže-chodník-znečistený": 1,
+   "Púchovská-zvislá značka-poškodená": 1,
+   "Cesta na Kamzík-Mestský mobiliár-iné": 1,
+   "Karadžičova-neporiadok vo verejnom priestranstve-vozík": 1,
+   "Kutuzovova-informačná tabuľa-poškodená": 1,
+   "Rožňavská-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Hubeného-strom-zlomený konár": 1,
+   "Prievozská-neporiadok na verejnom priestranstve": 1,
+   "Čulenova-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Dúbravčická-osvetlenie-nefunkčné": 1,
+   "Kontajner na ceste na Matejkovej 13": 1,
+   "Šancová-zvislá značka-zle otočená": 1,
+   "Jantárová cesta - suchý strom": 1,
+   "Demänovská-cesta-výtlk": 1,
+   "Kadnárova-strom-napadnutý": 1,
+   "Velehradská-osvetlenie-nefunkčné": 1,
+   "Opustené vozidlo na Starých gruntoch 64": 1,
+   "Tomášikova-neporiadok a odpadky-čierne skládky": 1,
+   "Odborárske námestie-kanalizácia-chýbajúci kryt": 1,
+   "Cesta na Senec-kanalizácia-chýbajúci kanalizačný poklop": 1,
+   "Mlynské Nivy-priechod pre chodcov-chýbajúci": 1,
+   "Cesta na Senec-stĺpik-nadbytočný": 1,
+   "Hrušková-cesta-rozbitá (väčší úsek)": 1,
+   "Konáre na zemi pri zastávke Pri podchode": 1,
+   "Račianska-vodorovná značka-neaktuálna": 1,
+   "Krasovského - neporiadok a odpadky": 1,
+   "Cyprichova-zvislá značka-vizuálny smog": 1,
+   "Kaštieľska-zvislá značka-vyblednutá": 1,
+   "Saratovská-zastávka MHD -poškodená": 1,
+   "Šándorová-osvetlenie-nefunkčné": 1,
+   "Lietavská - poškodená zvislá značka": 1,
+   "Roľnícka-reklama-vizuálny smog": 1,
+   "Prievozská-stavby a budovy-opustená budova": 1,
+   "Brnianska-stĺpik-poškodený": 1,
+   "Bajkalská-zvislá značka-zle otočená": 1,
+   "Račianska-kôš-chýbajúci": 1,
+   "Pekná cesta-Cesty a chodníky-iné": 1,
+   "Mišíkova-chodník-výtlk": 1,
+   "Poškodené osvetlenie na Perneckej 1/A": 1,
+   "Sliačska-parkovanie-nevyznačené miesta": 1,
+   "Krížna-vodorovná značka-zle viditeľná": 1,
+   "Sad Janka Kráľa-strom-napadnutý": 1,
+   "Na Slavíne-chodník-výtlk": 1,
+   "Vajnorská-spomaľovač-poškodený": 1,
+   "Miletičova-osvetlenie-poškodené stĺpy": 1,
+   "Domkárska-dlhodobo odstavené vozidlá-vozidlo bez EČV, bez platnej TK a EK": 1,
+   "Bilbordy na Karloveskej pod Novackého": 1,
+   "Gaštanová-osvetlenie-nadbytočný stĺp": 1,
+   "Miletičova-strom-poškodená podpera": 1,
+   "Domkárska-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Miletičova-osvetlenie-nefunkčné": 1,
+   "Mýtna-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Bočná-cesta-rozbitá (väčší úsek)": 1,
+   "Račianska-kôš-poškodený": 1,
+   "Lamačská cesta-osvetlenie-chýbajúce/nedostatočné": 1,
+   "Stará Vajnorská-Zeleň a životné prostredie-iné": 1,
+   "Vyšehradská-dopravné zrkadlo-poškodené": 1,
+   "Drieňová-priechod pre chodcov-zle viditeľný": 1,
+   "Mlynské Nivy-dlhodobo odstavené vozidlá-vozidlo bez EČV, bez platnej TK a EK": 1,
+   "Kubačova-kanalizácia-upchatá": 1,
+   "Beňadická - terasa na Beňadickej ulici 9-19": 1,
+   "Palisády-zvislá značka-poškodená": 1,
+   "Devínska cesta-cyklotrasa-znečistená": 1,
+   "Tehelná-platba za parkovné formou SMS/v hotovosti": 1,
+   "Cyprichova-neporiadok a odpadky-neodpratané lístie": 1,
+   "Pod záhradami-neporiadok a odpadky-neodpratané lístie": 1,
+   "Nábrežie arm. gen. Ludvíka Svobodu-trávnatá plocha-vyschnutá": 1,
+   "Znievska - strom narúša múrik ihriska": 1,
+   "Račianska-zvislá značka-vyblednutá": 1,
+   "Prístavná-osvetlenie-nefunkčné": 1,
+   "Trnavská cesta-Verejné služby-iné": 1,
+   "Bratská - neporiadok a odpadky vo verejnom priestranstve": 1,
+   "Budatínska - nefunkčné osvetlenie": 1,
+   "Neosvetlené schodisko na Kresánkovej 4": 1,
+   "Kukučínova-kanalizácia-chýbajúci kanalizačný poklop": 1,
+   "Podunajská-dlhodobo odstavené vozidlá": 1,
+   "Bulíkova - obmena osvetlenia": 1,
+   "Krásnohorská - od auta nabúraná a vykrivená lampa": 1,
+   "Ševčenkova - nefunkčné osvetlenie": 1,
+   "Ružinovská-zvislá značka-vyblednutá": 1,
+   "Repašského-chodník-bariéra na chodníku": 1,
+   "Trnavská cesta-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Dorastenecká-chodník-rozkopaný": 1,
+   "Družicová-chodník-výtlk": 1,
+   "29. augusta-rozvodné siete-poškodená rozvodná skriňa": 1,
+   "Karpatská-osvetlenie-nefunkčné": 1,
+   "Slovanské nábrežie-vodorovná značka-chýbajúca": 1,
+   "Jozefa Hagaru-zvislá značka-chýbajúca": 1,
+   "žltá - chýbajúca zvislá značka": 1,
+   "Hraničná-zvislá značka-poškodená": 1,
+   "Bojnická-Dopravné značenie-iné": 1,
+   "Kukučínova-parkovanie-problémové": 1,
+   "Poškodená značka v križovatke pred Iuventou": 1,
+   "Ovsištské námestie - nefunkčné osvetlenie": 1,
+   "Limbová-neporiadok-odpadky a kusy betónu na konštrukcii prístrešku MHD": 1,
+   "Račianska-neporiadok a odpadky-neodpratané lístie": 1,
+   "Poškodená značka na Nábreží Ľ. Kadnára": 1,
+   "Mlynská dolina-zvislá značka-vyblednutá (x Brnianska)": 1,
+   "Dunajská-zvislá značka-poškodená": 1,
+   "Lamačská cesta-zvislá značka-vyblednutá (x Mlynská dolina) (hl. cesta)": 1,
+   "Bilbordy na Karloveskej 18": 1,
+   "Janoškova-Verejné služby-iné": 1,
+   "Rožňavská-neporiadok a odpadky-čierne skládky": 1,
+   "Brnianska-zvislá značka-vyblednutá": 1,
+   "Saratovská-chodník-bariérový": 1,
+   "Strečnianska - neostrihaný krík": 1,
+   "Mánesovo námestie - nefunkčné osvetlenie": 1,
+   "Námestie slobody-zvislá značka-neaktuálna": 1,
+   "Jégého-chodník-znečistený": 1,
+   "Hradská-rozvodné siete-poškodená rozvodná skriňa": 1,
+   "Šintavská - poškodené stĺpy verejného osvetlenia": 1,
+   "Pri Šajbách-osvetlenie-nefunkčné": 1,
+   "Kopčianska - znečistená cesta": 1,
+   "Hlavná-krík-neostrihaný": 1,
+   "Repašského-cesta-výtlk": 1,
+   "Tehelná-osvetlenie-poškodené stĺpy": 1,
+   "Karadžičova-chodník-bariéra na chodníku": 1,
+   "Černyševského - odpad pod lávkou": 1,
+   "Ľubovnianska - nefunkčné osvetlenie": 1,
+   "Fedákova 4-6 -osvetlenie-nefunkčné": 1,
+   "Svornosti-zvislá značka-neaktuálna": 1,
+   "Bieloruská-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Pražská-reklama-vizuálny smog": 1,
+   "Betliarska - nefunkčné osvetlenie": 1,
+   "Pozostatok stĺpika v parku Kútiky": 1,
+   "Záhradnícka-zvislá značka-poškodená": 1,
+   "Vyblednutá značka pred cintorínom Slávičie údolie": 1,
+   "Mostová-chodník-poškodená dlažba": 1,
+   "Kaukazská - rozbitá cesta (väčší úsek)": 1,
+   "Dulovo námestie-cesta-odhalené potrubie": 1,
+   "Ondrejský cintorín-Lavička-Nevhodná": 1,
+   "Pri kríži-zle viditelny priechod pre chodcov": 1,
+   "Hrušková-osvetlenie-nefunkčné": 1,
+   "Račianska-Cesty a chodníky-iné": 1,
+   "Tbiliská-priechod pre chodcov-chýbajúci": 1,
+   "Šancová-dlhodobo odstavené vozidlá-vozidlo bez EČV, bez platnej TK a EK": 1,
+   "Romanova - poškodená značka": 1,
+   "Panónska cesta - výtlk": 1,
+   "Kutlíkova - poškodená zvislá značka": 1,
+   "Lietavská - dlhodobo odstavené zahraničné vozidlo": 1,
+   "Cintorín Kozia brána-Lavička-Nevhodná": 1,
+   "Ivanská cesta-reklama-nebezpečná (na spadnutie a pod.)": 1,
+   "Palárikova-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Tomášikova-chodník-bariérový": 1,
+   "Dolnozemská cesta - nebezpečné riešenie križovatky": 1,
+   "Romanova - nevyznačené parkovacie miesta": 1,
+   "Suché mýto-Verejný poriadok-iné": 1,
+   "Galvaniho-reklama-vizuálny smog": 1,
+   "Exnárova-osvetlenie-nefunkčné": 1,
+   "Černicová-strom-neorezaný": 1,
+   "Poškodený nový obrubník na nadjazde cez Karloveskú": 1,
+   "Záhradnícka-kanalizácia-chýbajúci kanalizačný poklop": 1,
+   "Poškodené schody na Tománkovej 5-7": 1,
+   "Farského - neorezané stromy": 1,
+   "Poškodená lampa na Sekulskej 1": 1,
+   "Bojnická-chodník-znečistený": 1,
+   "Lachova - poškodená zvislá značka": 1,
+   "Označenie košov na zastávke Riviéra": 1,
+   "Prokopa Veľkého-strom-zlomený konár": 1,
+   "Mlynské Nivy-Verejný poriadok-zabudnuté stavebné zábrany": 1,
+   "Vrak na Majerníkovej 17": 1,
+   "Pajštúnska - chýbajúca značka": 1,
+   "Dvojkrížna-dlhodobo odstavené vozidlá-nezistené EČV a TK a EK": 1,
+   "Budatínska - neporiadok a odpadky vo verejnom priestranstve": 1,
+   "Panónska cesta - neporiadok a odpadky vo verejnom priestranstve": 1,
+   "Potočná-stĺpik-poškodený": 1,
+   "Plynárenská-dlhodobo odstavené vozidlo s EČV,bez platnej TK a EK": 1,
+   "Cintorínska-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Devínska cesta-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Starhradská - zlomený konár na strome": 1,
+   "Pribinova-neporiadok vo verejnom priestranstve": 1,
+   "Slávičie údolie-osvetlenie-nefunkčné": 1,
+   "Ružová dolina-osvetlenie-nefunkčné": 1,
+   "Slatinská-krík-neostrihaný": 1,
+   "Poškodená cesta pred križovatkou Mlynská dolina-Slávičie údolie": 1,
+   "Stav opravených schodov na Jurigovom námestí 1": 1,
+   "Rozkopaný chodník v križovatke Molecova - L. Sáru": 1,
+   "Pražská-trávnatá plocha-vyjazdené koľaje": 1,
+   "Nobelova-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Znievska - nefunkčné osvetlenie": 1,
+   "Ružinovská-osvetlenie-poškodené stĺpy": 1,
+   "Most Apollo-osvetlenie-nefunkčné": 1,
+   "Most Apollo-zvislá značka-poškodená": 1,
+   "Bajkalská-informačná tabuľa-zle umiestnená": 1,
+   "Vrak zn. Opel na Janotovej": 1,
+   "Vajnorská-stĺpik-nadbytočný": 1,
+   "Kadnárova-parkovanie-problémové": 1,
+   "Kadnárova-vodorovná značka-neaktuálna": 1,
+   "Bulharská-chodník-bariérový": 1,
+   "Mamateyova - nefunkčné osvetlenie": 1,
+   "Detvianska-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Slovinská-zvislá značka-padnutá na zem": 1,
+   "Ivanská cesta-reklama-vizuálny smog": 1,
+   "Bošániho-osvetlenie-nefunkčné": 1,
+   "Hradská-osvetlenie-nefunkčné": 1,
+   "Na Slavíne-chodník-poškodená dlažba": 1,
+   "Plynárenská-zvislá značka-poškodená": 1,
+   "Tbiliská-osvetlenie-chýbajúce/nedostatočné": 1,
+   "Gettingova-Zeleň a životné prostredie-iné": 1,
+   "Čulenova-zvislá značka-poškodená": 1,
+   "Neorezaný strom pri pošte na Karloveskej": 1,
+   "Račianska-semafor-zle nastavený": 1,
+   "Kukučínova-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Znievska - lampa svieti priamo do našich okien": 1,
+   "Kryty na stĺpoch osvetlenia na Karloveskej": 1,
+   "Na hriadkach-reklama-vizuálny smog": 1,
+   "Vajnorská-stĺpik-chýbajúci": 1,
+   "Bojnická-kôš-preplnený": 1,
+   "Karadžičova-Cesta-Poškodená dlažba": 1,
+   "Ružinovská-riešenie dopravnej situácie-nebezpečné": 1,
+   "Pri vinohradoch-priechod pre chodcov-chýbajúci": 1,
+   "Na moste SNP visia odtrhnuté tŕne proti holubom": 1,
+   "Brečtanová-zvislá značka-zle otočená": 1,
+   "Námestie SNP-chodník-neodhrnutý": 1,
+   "Vlárska-zvislá značka-poškodená": 1,
+   "Gorazdova-vandalizmus-graffiti": 1,
+   "Bulharská-cesta-znečistená": 1,
+   "Dopravná-osvetlenie-chýbajúce/nedostatočné": 1,
+   "Cesta na Senec-chodník-znečistený": 1,
+   "Bojnická-Verejný poriadok-iné": 1,
+   "Studená-Semafor-nefunkčné dopytové tlačidlo": 1,
+   "Zlaté piesky-zvislá značka-poškodená": 1,
+   "Zlaté piesky-Dopravné značenie-iné": 1,
+   "Bojnická-lavička-chýbajúca": 1,
+   "Bojnická-Krík-Neostrihaný": 1,
+   "Račianska-Betónový stĺp-Nadbytočný": 1,
+   "Cesta na Berg - nová Viedenská cesta - výtlk": 1,
+   "Brižitská 14-osvetlenie-nefunkčné": 1,
+   "Tomášikova-stĺpik-nadbytočný": 1,
+   "Vlárska-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Tramínová-dlhodobo odstavené vozidlo bez EČV, bez TK a EK": 1,
+   "Vajnorská-zábradlie-poškodené": 1,
+   "Stromová-Cesty a chodníky-iné": 1,
+   "Tupolevova 17 - nefunkčné osvetlenie": 1,
+   "Stará Vajnorská-stĺpik-nadbytočný": 1,
+   "Agátová-cesta-znečistená": 1,
+   "Markova - chýbajúci chodník": 1,
+   "Stará Vajnorská-neporiadok a odpadky-čierne skládky": 1,
+   "Súmračná-osvetlenie-nefunkčné": 1,
+   "Bojnická-kanalizácia-poškodený kanalizačný poklop": 1,
+   "Rozkopaný chodník na nadchode pri Jurigovom nám.": 1,
+   "Páričkova-Chodník-Bariéra na chodnníku": 1,
+   "Homolova-osvetlenie-nefunkčné": 1,
+   "Bočná-spomaľovač-poškodený": 1,
+   "Šancová-pozostatok po stĺpiku": 1,
+   "Školská-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Štefanovičova-chodník-poškodená dlažba": 1,
+   "Štefanovičova-strom-chýbajúci": 1,
+   "Špitálska-kanalizácia-poškodený kanalizačný poklop": 1,
+   "Šancová-chodník-bariéra na chodníku": 1,
+   "Jiskrova-nefunkčné informačné panely": 1,
+   "Miletičova-kôš-chýbajúci": 1,
+   "Budatínska - neodpratané lístie": 1,
+   "Rustaveliho-chodník-poškodená dlažba": 1,
+   "Karadžičova-kôš-chýbajúci": 1,
+   "M. Schneidera Trnavského-vandalizmus-graffiti": 1,
+   "Bajkalská-chodník-znečistený": 1,
+   "Uzbecká-Verejný poriadok-iné": 1,
+   "Stolárska-Cesty a chodníky-iné": 1,
+   "Ondavská-parkovanie-nevyznačené miesta": 1,
+   "Panónska cesta - prepojenie pre autá": 1,
+   "Pekná cesta-zvislá značka-vyblednutá": 1,
+   "Šustekova - hromady odpadkov": 1,
+   "Panónska cesta - poškodená podpera stromu": 1,
+   "Palisády-chodník-poškodená dlažba": 1,
+   "Majerníkova-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Zámocké schody-informačná tabuľa-zle otočená": 1,
+   "Majerníkova-dlhodobo odstavené vozidlá-vozidlo s EČV, s platnou TK a EK": 1,
+   "Vlčie hrdlo-cesta-rozkopaná": 1,
+   "Podunajská-dlhodobo odstavené vozidlá-nezistené EČV a TK a EK": 1,
+   "Vodný vrch-stavby a budovy-zlý stav budovy": 1,
+   "Ivanská cesta-zvislá značka-poškodená": 1,
+   "Ivanská cesta-chodník-poškodená dlažba": 1,
+   "Nadjazd do Vajnor-zvislá značka-poškodená": 1,
+   "Námestie 1. mája-cesta-výtlk": 1,
+   "Dolnozemská cesta - vyblednutá zvislá značka": 1,
+   "Hradská-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Pivoňková-osvetlenie-nefunkčné": 1,
+   "Bratská - riešenie dopravnej situácie": 1,
+   "Šintavská - vizuálny smog na Budatínskej": 1,
+   "Stará Vajnorská-lavička-chýbajúca": 1,
+   "Rusovská cesta - padnutý kábel hneč pri prechode": 1,
+   "Pajštúnska - poškodená zvislá značka": 1,
+   "Radlinského-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Prievozská-osvetlenie-nefunkčné": 1,
+   "Staré grunty-strom-neorezaný": 1,
+   "Pribinova-znečisžovanie-ovzdušia": 1,
+   "Trnavská cesta-riešenie dopravnej situácie-nebezpečné": 1,
+   "Baltská-osvetlenie-nefunkčné": 1,
+   "Mlynarovičova - poškodená zvislá značka": 1,
+   "Radlinského-cesta-výtlk": 1,
+   "Jarošova-zvislá značka-vyblednutá": 1,
+   "Krížna-cesta-poškodená dlažba": 1,
+   "Východná-zvislá značka-chýbajúca": 1,
+   "29. augusta-chodník-výtlk": 1,
+   "Uršulínska-informačná tabuľa-poškodená": 1,
+   "Hraničná-dopravné zrkadlo-zle natočené": 1,
+   "Most Apollo-riešenie dopravnej situácie-nedodržiavanie dopravných predpisov": 1,
+   "Cígeľská-dlhodobo odstavené vozidlá-vozidlo s EČV, s platnou TK a EK": 1,
+   "Vajnorská-zvislá značka-zle otočená": 1,
+   "Vajnorská-Rozvodné siete-poškodená rozvodná skriňa": 1,
+   "Rožňavská-chodník-poškodený(väčší úsek)": 1,
+   "Mickiewiczova-kôš-chýbajúci": 1,
+   "Vazovova-osvetlenie-poškodené stĺpy": 1,
+   "Špitálska-vandalizmus-graffiti": 1,
+   "Námestie SNP-zvislá značka-neaktuálna": 1,
+   "Námestie Ľudovíta Štúra-zastávka MHD -poškodená": 1,
+   "Račianska-chodník-zvlnený": 1,
+   "Račianska-vodorovná a zvislá značka-chýbajúca": 1,
+   "Smolenická - zhrdzavený kryt/poklop na betonovej rúre": 1,
+   "Blagoevova - zlomený konár": 1,
+   "Kadnárova-Automobily-iné": 1,
+   "Pekná cesta-parkovanie-chýbajúce miesta": 1,
+   "žilinská-trávnatá plocha-vyjazdené koľaje": 1,
+   "Hany Meličkovej-chodník-nadbytočné stĺpiky": 1,
+   "Majerníkova-zvislá značka-poškodená": 1,
+   "Majerníkova-stĺpik-nadbytočný": 1,
+   "Mlynské Nivy-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Odbojárov-rozvodné siete-nebezpečný kábel": 1,
+   "Sklenárska-dlhodobo odstavené vozidlá-s EČV, s neplatnou TK a EK": 1,
+   "Ružinovská-priechod pre chodcov-zle viditeľný": 1,
+   "Na kopci-osvetlenie-nefunkčné": 1,
+   "Račianska-trávnatá plocha-vyjazdené koľaje": 1,
+   "Kubačova-zvislá značka-chýbajúca": 1,
+   "Mlynská dolina-semafor-zle nastavený": 1,
+   "Námestie Eugena Suchoňa-trávnatá plocha-poškodená": 1,
+   "Michalská-informačná tabuľa-poškodená": 1,
+   "Kapucínska-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Kapucínska-schody-poškodené": 1,
+   "Palkovičova-dlhodobo odstavené vozidlá-nezistené EČV a TK a EK": 1,
+   "Kulíškova-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Trenčianska-dlhodobo odstavené vozidlá-vozidlo s EČV, s platnou TK a EK": 1,
+   "Líščie údolie-strom-suchý": 1,
+   "Vajnorská-Dopravné značenie-iné": 1,
+   "Bosákova - nadbytočný stĺpik": 1,
+   "Jantárová cesta - chýbajúci chodník": 1,
+   "Sosnová - neporiadok a odpadky/čierne skládky": 1,
+   "žitavská-Zeleň a životné prostredie-iné": 1,
+   "Pluhová-neporiadok a odpadky": 1,
+   "Záhradnícka-kôš-chýbajúci": 1,
+   "Cintorínska-chodník-bariéra na chodníku": 1,
+   "Slovanské nábrežie-vandalizmus-graffiti": 1,
+   "Kazanská-cesta-výtlk": 1,
+   "Dopravná-chodník-poškodená dlažba": 1,
+   "Mýtna-chodník-poškodená dlažba": 1,
+   "Americké námestie-zastávka MHD -znečistená": 1,
+   "Lamačská cesta-cyklotrasa-chýbajúca": 1,
+   "Agátová-neporiadok a odpadky-čierne skládky": 1,
+   "Záhradnícka-zábradlie-poškodené": 1,
+   "Holíčska - nefunkčné osvetlenie": 1,
+   "Zlomený strom nad zastávkou Mokrohájska": 1,
+   "Račianska-cesty a chodníky-výtlk": 1,
+   "Kopčianska - čierna skládka - stavebný a väčší materiál": 1,
+   "Panónska cesta-neporiadok a odpadky-čierne skládky": 1,
+   "Karadžičova-zvislá značka-poškodená": 1,
+   "Nobelova-zvislá značka-vyblednutá": 1,
+   "Nobelova-reklama a dopravné značky": 1,
+   "Jurkovičova-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Dvořákovo nábrežie-cyklostojan-zle umiestnený": 1,
+   "Slávičie údolie-Semafor-Nefunkčný": 1,
+   "Kopčianska - skládka odpadu za Kopčianskou č. 21": 1,
+   "Bajkalská-informačná tabuľa-poškodená": 1,
+   "Rybničná-chodník-chýbajúci": 1,
+   "Krížna-kanalizácia-chýbajúci kanalizačný poklop": 1,
+   "Riazanská-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Slovnaftská-riešenie dopravnej situácie-nedodržiavanie dopravných predpisov": 1,
+   "Košická-chodník-poškodená dlažba": 1,
+   "Košická-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Šancová-stĺpik-poškodený": 1,
+   "Malodunajská-zvislá značka-neaktuálna": 1,
+   "Miletičova-chodník-poškodená dlažba": 1,
+   "Tupolevova - vodorovné značenie pre 2 jazdné pruhy chýba": 1,
+   "Trenčianska-cesta-poškodená dlažba": 1,
+   "Vajnorská-Verejné služby-bleskozvod": 1,
+   "žltá - značka umiestnená v zlej výške": 1,
+   "Trenčianska-dlhodobo odstavené vozidlá-vozidlo s EČV bez TK a EK": 1,
+   "Most Lanfranconi - výtlky na zjazde z dialnice": 1,
+   "Hany Meličkovej-rozvodné siete-poškodená rozvodná skriňa": 1,
+   "Nadjazd do Vajnor-cyklotrasa-poškodená": 1,
+   "Stará Vajnorská-Zeleň a životné prostredie-betónové pozostatky": 1,
+   "Americké námestie-chodník-poškodená dlažba": 1,
+   "Hany Meličkovej-zvislá značka-vyblednutá": 1,
+   "Bojnická-kanalizácia-chýbajúci kanalizačný poklop": 1,
+   "Hubeného-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Kadnárova-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Saratovská-chybajuca informacna tabula": 1,
+   "Záporožská - neostrihaný krík": 1,
+   "Nobelovo námestie - chýbajú \"stĺpiky\" proti vozidlám": 1,
+   "Jelení háj - znečistená cyklotrasa": 1,
+   "Porubského-osvetlenie-nefunkčné": 1,
+   "Stavbárska-zviera-deratizácia": 1,
+   "Osuského - neodpratané lístie": 1,
+   "Umiestnenie svietidiel v novom parku na Karloveskej": 1,
+   "Devínska cesta-cesta-rozbitá (väčší úsek)": 1,
+   "Antolská - nefunkčné osvetlenie": 1,
+   "Tomášikova-kôš-poškodený": 1,
+   "Mlynské Nivy-kanalizácia-upchatá": 1,
+   "Pekná cesta-Zeleň a životné prostredie-iné": 1,
+   "Einsteinova - nadbytočný stĺpik": 1,
+   "Stará Vajnorská-rozvodné siete-nebezpečný kábel": 1,
+   "Kalinčiakova-zvislá značka-poškodená": 1,
+   "Výjazd na Nový most-zvislá značka-chýbajúca": 1,
+   "Bajzova-stavby a budovy-zlý stav budovy": 1,
+   "Mierová-chodník-výtlk": 1,
+   "Námestie M. Benku-stĺpik-chýbajúci": 1,
+   "Rybničná-reklama-virtuálny smog": 1,
+   "Limbová-chodník-bariérový": 1,
+   "Kutlíkova - dlhobobé ukladane smetí priamo na chodníku": 1,
+   "Hodžovo námestie-informačná tabuľa-chýbajúca": 1,
+   "Námestie hraničiarov - znečistená cesta": 1,
+   "Vajnorská-Dopravné značenie-ohnutá značka": 1,
+   "Pekná cesta-chodník-výtlk": 1,
+   "Janíkov dvor - chýbajúca zvislá značka": 1,
+   "Kubačova-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Šancová-Verejný poriadok-iné": 1,
+   "Budatínska - štrk na ceste": 1,
+   "Lamačská cesta-zvislá značka-neaktuálna": 1,
+   "Starohájska - chýbajúci chodník": 1,
+   "Ružinovská-zvislá značka-poškodená": 1,
+   "Pribinova-chodník-bariérový": 1,
+   "Kočánkova - neporiadok a odpadky vo verejnom priestranstve": 1,
+   "Bosákova - poškodená zvislá značka": 1,
+   "Palisády-zvislá značka-chýbajúca": 1,
+   "Cintorínska-cesta-poškodený asfalt": 1,
+   "Karloveská-chodník-rozkopaný": 1,
+   "Röntgenova - napadnuté borovice": 1,
+   "Hrabový chodník-strom-neorezaný": 1,
+   "Cyprichova-krík-neostrihaný": 1,
+   "Staviteľská-Dopravné značenie-iné": 1,
+   "Plickova-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Priekopy-parkovanie-problémové": 1,
+   "Ďumbierska-krík-neostrihaný": 1,
+   "Ružinovská-reklama-vizuálny smog": 1,
+   "Staviteľská-Cesty a chodníky-iné": 1,
+   "Pribylinská-osvetlenie-nefunkčné": 1,
+   "Cesta na Senec-Dopravné značenie-iné": 1,
+   "Podkolibská-potrebné fyzické označenie deliacej čiary": 1,
+   "Príjazdná-cesta-rozbitá": 1,
+   "Betliarska - nevhodne umiestnená reklama (na chodníku a pod.)": 1,
+   "Cesta na Kamzík-strom-suchý": 1,
+   "Einsteinova - rozbité sklo na nadchode": 1,
+   "Prievozská-cyklotrasa-chýbajúca": 1,
+   "Antolská - upchatá kanalizácia": 1,
+   "Kazanská-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Popradská-priechod pre chodcov-zle viditeľný": 1,
+   "Blagoevova - dlhodobo rozpadávajúci sa chodník": 1,
+   "Markova - znečisžovanie vody?": 1,
+   "M. Schneidera Trnavského-semafor-nefunkčný": 1,
+   "Hradská-lavička-chýbajúca": 1,
+   "Šancová-zástavka MHD-znečistená": 1,
+   "Vazovova-stavby a budovy-opustená budova": 1,
+   "Šafárikovo námestie-strom-poškodená podpera": 1,
+   "Segnáre-zastávka MHD -poškodená": 1,
+   "Pekná cesta-spomaľovač-poškodený": 1,
+   "Hečkova-Dopravné značenie-iné": 1,
+   "Dulovo námestie-chodník-bariéra na chodníku": 1,
+   "Spojná-kanalizácia-poškodený kanalizačný poklop": 1,
+   "Dopravná-spomaľovač-chýbajúci": 1,
+   "Palisády-chodník-rozkopaný": 1,
+   "Jantárová cesta - výtlky na ceste": 1,
+   "Klokočova - problémové parkovanie": 1,
+   "Vazovova-parkovanie-problémové": 1,
+   "Pekná cesta-kanalizácia-poškodený kanalizačný poklop": 1,
+   "Americké námestie-vandalizmus-pitie alkoholu na verejnosti": 1,
+   "Dúbravská cesta-chodník-poškodená dlažba": 1,
+   "Trenčianska-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Floriánske námestie-stĺpik-chýbajúci": 1,
+   "Most Lanfranconi-parkovanie-chýbajúca rampa": 1,
+   "Zuzany Chalupovej - diera na chodníku po starej zastávke": 1,
+   "Panónska cesta - chodník je rozbitý plus je tam bariéra": 1,
+   "Trnavské mýto-chodník-chýbajúca obchádzka": 1,
+   "Kadnárova-chodník-znečistený": 1,
+   "Šustekova - neviditeľné čiary priechodu pre chodcov": 1,
+   "Gagarinova-zvislá značka-poškodená": 1,
+   "Kadnárova-Zeleň a životné prostredie-iné": 1,
+   "Ďumbierska-chodník-výtlk": 1,
+   "Kadnárova-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Drieňová-vodorovná značka-zle viditeľná": 1,
+   "Miletičova-kanalizácia-upchatá": 1,
+   "Lachova - veľké množstvo väčších kameňov rozhádzaných po tráve": 1,
+   "žabotova-parkovanie-chýbajúce miesta": 1,
+   "Prídavkova-osvetlenie-nefunkčné": 1,
+   "Cesta na Klanec-dopravné zrkadlo-zle natočené": 1,
+   "Košická-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Mierová-cesta-výtlk": 1,
+   "Račianska-dlhodobo odstavené vozidlá-zahraničné vozidlo": 1,
+   "Hlučínska-reklama-vizuálny smog": 1,
+   "Bazová-Zeleň a životné prostredie-pneumatiky": 1,
+   "Tematínska - neporiadok a odpadky vo verejnom priestranstve": 1,
+   "Jarošova-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Námestie hraničiarov - zle viditeľný priechod pre chodcov": 1,
+   "Stará Vajnorská-reklama-vizuálny smog": 1,
+   "Panónska cesta - neporiadok vo verejnom priestranstve": 1,
+   "Nábělkova-zvislá značka-poškodená": 1,
+   "Záporožská - poodstavované kolobežky": 1,
+   "Staromestská-Poškodené obloženie": 1,
+   "Somolického-parkovanie-nevyznačené miesta": 1,
+   "Ivanská cesta-cesta-výtlk": 1,
+   "Smikova-zvislá značka-poškodená": 1,
+   "Pod záhradami-spomaľovač-nebezpečný": 1,
+   "Karadžičova-chodník-chýbajuci": 1,
+   "Gessayova - nesprávne umiestnená zvislá značka": 1,
+   "Galvániho-zvislá značka-poškodená": 1,
+   "Čapajevova - zle otočený semafor": 1,
+   "Klokočova - skládka odpadu na hrádzi": 1,
+   "Prístavná-semafor-nefunkčný": 1,
+   "Ružinovská-vodorovná značka-chýbajúca": 1,
+   "Šancová-zvislá značka-nebezpečne natočená": 1,
+   "Prístavná-parkovanie-problémové": 1,
+   "Šintavská - znečistená cesta": 1,
+   "Michalská-neporiadok a odpadky vo verejnom priestranstve": 1,
+   "Rusovská cesta - rozhegané zábradlie": 1,
+   "Výjazd na Nový most-Mestský mobiliár-iné": 1,
+   "Svätoplukova-vodorovná značka-zle viditeľná": 1,
+   "Lamačská cesta-reklama-vizuálny smog": 1,
+   "Galvaniho-zvislá značka-poškodená": 1,
+   "Radlinského-chodník-výtlk": 1,
+   "Miletičova-strom-chýbajúci": 1,
+   "Výjazd na Nový most - dlhodobo odstavené vozidlo": 1,
+   "Miletičova-priechod pre chodcov-chýbajúci": 1,
+   "Košická-osvetlenie-nefunkčné": 1,
+   "Cesta na Klanec-zvislá značka-vyblednutá": 1,
+   "Prievozská-chodník-výtlk": 1,
+   "Mickiewiczova-riešenie dopravnej situácie-nebezpečné": 1,
+   "Prievozská-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Párna-osvetlenie-nefunkčné": 1,
+   "Stromová-chodník-bariérový": 1,
+   "Bojnická-chodník-bariérový": 1,
+   "Panónska cesta - chýbajúci priechod pre chodcov": 1,
+   "Bárdošova-chodník-znečistený": 1,
+   "Miletičova-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Dlhé diely I-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Račianska-parkovanie-chýbajúce miesta": 1,
+   "Miletičova-neporiadok a odpadky-neodpratané lístie": 1,
+   "Trebišovská-zvislá značka-vyblednutá": 1,
+   "Miletičova-Cesty a chodníky-iné": 1,
+   "Trenčianska-parkovanie-problémové": 1,
+   "Pílová-riešenie dopravnej situácie-nebezpečné": 1,
+   "Rybničná-neporiadok vo verejnom priestranstve-stĺpiky": 1,
+   "Dažčová voda zvedená na chodník v Mlynskej doline 7": 1,
+   "Hubeného-Verejný poriadok-iné": 1,
+   "Dolná-strom-zlomený konár": 1,
+   "Einsteinova - nesúlad dopravného značenia": 1,
+   "Einsteinova - zle viditeľný priechod pre chodcov": 1,
+   "Holíčska - vykopané kamene pohodené pod strom": 1,
+   "Štúrova-cyklotrasa-poškodená": 1,
+   "železničná-zvislá značka-vyblednutá": 1,
+   "Vrakunská-zvislá značka-vyblednutá": 1,
+   "Gagarinova-zvislá značka-vyblednutá": 1,
+   "Hraničná-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Vajnorská-reklama-nadbytočná konštrukcia": 1,
+   "Vajnorská-Verejný poriadok-iné": 1,
+   "Stará Vajnorská-neodpratané lístie": 1,
+   "Slatinská-dlhodobo odstavené vozidlá-nezistené EČV a TK a EK": 1,
+   "Záhradnícka-Zeleň a životné prostredie-chýbajúca zeleň": 1,
+   "Račianska-informačná tabuľa-poškodená": 1,
+   "Bojnická-osvetlenie-poškodené stĺpy": 1,
+   "Bojnická-rozvodné siete-poškodená rozvodná skriňa": 1,
+   "Strelkova-osvetlenie-chýbajúce/nedostatočné": 1,
+   "Lachova - rozbitá okrúhla hlavica lampy": 1,
+   "29. augusta-chodník-poškodená dlažba": 1,
+   "Osuského - vzdušný rozvod": 1,
+   "Mostová-stĺpik-chýbajúci": 1,
+   "Černyševského - uhynuté zviera": 1,
+   "Anenská-osvetlenie-nefunkčné": 1,
+   "Vtáčikova cesta-cesta-rozbitá (väčší úsek)": 1,
+   "Štúrova-kôš-poškodený": 1,
+   "Jeséniova-cesta-výtlk": 1,
+   "Dolnozemská cesta - neoznačená cyklotrasa": 1,
+   "Račianska-krík-chýbajúci": 1,
+   "Viedenská cesta - stará časž - chýbajúci kanalizačný poklop": 1,
+   "Bajzova-informačná tabuľa-poškodená": 1,
+   "Dolnozemská cesta-zvislá značka-neaktuálna": 1,
+   "Furdekova - 2 suché stromy vedľa zastávky Lachova": 1,
+   "Pajštúnska - reklama na rúre": 1,
+   "Prokopa Veľkého-krík-suchý": 1,
+   "Gettingova - suché stromy": 1,
+   "Námestie slobody-strom-napadnutý": 1,
+   "Štefánikova-chodník-znečistený": 1,
+   "Poľnohospodárska-krík-neostrihaný": 1,
+   "Bajkalská-krík-neostrihaný": 1,
+   "Bagarova 6-strom-neorezaný": 1,
+   "Stolárska-zvislá značka-vyblednutá": 1,
+   "Trnavská cesta-strom-neorezaný": 1,
+   "Tematínska - nelegálna reklama?": 1,
+   "Jiráskova - výtlk": 1,
+   "Výjazd na Nový most - opadáva farba": 1,
+   "Kazanská-neporiadok vo verejnom priestranstve": 1,
+   "Karloveská-strom-chýbajúci": 1,
+   "Budatínska - chýbajúce dopravné zrkadlo": 1,
+   "Koľajná-dlhodobo odstavené vozidlá-vozidlo bez EČV, bez platnej TK a EK": 1,
+   "Príjazdná-kanalizácia-upchatá": 1,
+   "Vrakunská cesta-cesta-rozkopaná": 1,
+   "Cesta mládeže-chodník-bariéra na chodníku": 1,
+   "Balkánska-dlhodobo odstavené vozidlá-vozidlo bez EČV, bez platnej TK a EK": 1,
+   "Lachova - poškodená lavička": 1,
+   "Röntgenova - nepokosená trávnatá plocha": 1,
+   "Vŕbová-strom-suchý": 1,
+   "Trebišovská-chodník-výtlk": 1,
+   "Mlynské Nivy-zvislá značka-zle otočená": 1,
+   "Radlinského-zvislá značka-zle otočená": 1,
+   "Mýtna-strom-chýbajúci": 1,
+   "Zadunajská cesta - nefunkčné osvetlenie č. P128/019": 1,
+   "Miletičova-rozvodné siete-poškodená rozvodná skriňa": 1,
+   "Bohrova - lampa P 128/060 už viac ako rok nesvieti": 1,
+   "Pečnianska - Dvojlampy svietia už len po jednej žiarovke": 1,
+   "Americké námestie-Zeleň a životné prostredie-iné": 1,
+   "Sliačska-kanalizácia-upchatá": 1,
+   "Bojnická-zvislá značka-zle otočená": 1,
+   "Obchodná-chodník-bariéra na chodníku": 1,
+   "Einsteinova - výžah na nadchod ponad Einsteinovu nefunguje": 1,
+   "Jantárová cesta - neporiadok a odpadky vo verejnom priestranstve": 1,
+   "Gelnická-strom-suchý": 1,
+   "Dvojkrížna-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Vajnorská-zviera-uhynuté": 1,
+   "Svätoplukova-cesta-výtlk": 1,
+   "Černyševského - neaktuálna zvislá značka": 1,
+   "Bosákova - neaktuálna zvislá značka": 1,
+   "Vrakunská cesta-reklama-nebezpečná (na spadnutie a pod.)": 1,
+   "Uzbecká-kanalizácia-upchatá": 1,
+   "Opletalova-chodník-poškodená dlažba": 1,
+   "Mlynarovičova-reklama-vizuálny smog": 1,
+   "Segnerova-strom-neorezaný": 1,
+   "Levárska-zvislá značka-vyblednutá": 1,
+   "Gercenova - suchý strom": 1,
+   "Učiteľská-zvislá značka-poškodená": 1,
+   "Devínska cesta, odbočka Komonicová-cesta-znečistená": 1,
+   "Trenčianska-cesta-výtlk": 1,
+   "Jána Jonáša-Dopravné značenie-iné": 1,
+   "Jantárová cesta-znečisžovanie-pôdy": 1,
+   "Námestie slobody-cesta-výtlk": 1,
+   "Levická-kôš-chýbajúci": 1,
+   "Kapucínska-chodník-znečistený": 1,
+   "Detvianska-Mestský mobiliár-iné": 1,
+   "Trenčianska-chodník-chýbajúci": 1,
+   "Račianska-chodník-znečistený": 1,
+   "Trnavská cesta-kôš-poškodený": 1,
+   "Bajzova-Zeleň a životné prostredie-iné": 1,
+   "Vajnorská-chodník-poškodená dlažba": 1,
+   "Thurzova-strom-suchý": 1,
+   "Vrakunská cesta-zvislá značka-vyblednutá": 1,
+   "Šancová-priechod pre chodcov-úzky ostrovček": 1,
+   "žellova-strom-chýbajúci": 1,
+   "Stará Vajnorská-neporiadok a odpadky-pneumatika": 1,
+   "Páričkova-Dopravné značenie-iné": 1,
+   "Šancová-zvislá značka-vyblednutá": 1,
+   "Vajnorská-chodník-bariérový": 1,
+   "Bosákova - rozbitá cesta (väčší úsek)": 1,
+   "Hlučínska-stĺpik-chýbajúci": 1,
+   "Karadžičova-Dopravné značenie-vodorovná značka": 1,
+   "Štefánikova-stavby-poškodený múr": 1,
+   "Panónska cesta - upchatá kanalizácia": 1,
+   "Hálkova-osvetlenie-nefunkčné": 1,
+   "Vazovova-kôš-nevhodne umiestnený": 1,
+   "Jarošova-chodník-bariérový": 1,
+   "Pri Šajbách-chodník-poškodená dlažba": 1,
+   "Dvojkrížna-cesta-rozbitá (väčší úsek)": 1,
+   "Betliarska - poškodený chodník": 1,
+   "Mlynské Nivy-riešenie dopravnej situácie-zákaz zastavenia": 1,
+   "Štúrova-kôš-nevhodne umiestnený": 1,
+   "Karloveská-reklama-vizuálny smog": 1,
+   "Šustekova - rozbitá cesta (väčší úsek)": 1,
+   "Stará Vajnorská-osvetlenie-nefunkčné": 1,
+   "Búdková-chodník-rozkopaný": 1,
+   "Karloveská-strom-neorezaný": 1,
+   "Karloveská-zvislá značka-vyblednutá": 1,
+   "Šancová-kôš-poškodený": 1,
+   "Dúbravčická-chodník-znečistený": 1,
+   "Banšelova-osvetlenie-nefunkčné": 1,
+   "Mlynské Nivy-riešenie dopravnej situácie-dopravu spomaľujúce": 1,
+   "Hviezdoslavovo námestie-fontánka-nefunkčná": 1,
+   "Na pántoch-cesta-nedokončená": 1,
+   "Osuského - zle otočená zvislá značka": 1,
+   "Saratovská-zvislá značka-vyblednutá": 1,
+   "Bajkalská-vodorovná značka-zle viditeľná": 1,
+   "Pod Válkom-cesta-rozbitá (väčší úsek)": 1,
+   "Račianska-rozvodné siete-poškodená rozvodná skriňa": 1,
+   "Hubeného-strom-suchý": 1,
+   "Radlinského/Račianske mýto-posunutie dopravnej značky": 1,
+   "Lachova - stromy, ktoré neprežili výsadbu": 1,
+   "Výjazd na Nový most - neohlásené stavebné úpravy": 1,
+   "Holíčska - vyblednutá zvislá značka": 1,
+   "Račianska-kanalizácia-poškodený kanalizačný poklop": 1,
+   "Levárska-zvislá značka-poškodená": 1,
+   "Kadnárova-strom-invazívna rastlina": 1,
+   "Kapucínska-chodník-poškodená dlažba": 1,
+   "Gessayova - nefunkčné vzdušné vedenie": 1,
+   "Tomášikova-strom-neorezaný": 1,
+   "Pri vinohradoch-semafor-zle nastavený": 1,
+   "Kutlíkova - stavebný odpad pri rekonštrukcii cyklotrasy": 1,
+   "Sibírska-zviera-deratizácia": 1,
+   "Panónska cesta - vyblednutá zvislá značka": 1,
+   "Pri mlyne-cesta-rozbitá (väčší úsek)": 1,
+   "Osuského - neaktuálna dopravná značka": 1,
+   "Tupolevova - reklama na Game Studio": 1,
+   "Staré grunty-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Kohútova-osvetlenie-nefunkčné": 1,
+   "Račianska-stĺpik-chýbajúci": 1,
+   "Predstaničné námestie-riešenie dopravnej situácie-dopravu spomaľujúce": 1,
+   "Hraničná-zvislá značka-vyblednutá": 1,
+   "Pionierska-zvislá značka-poškodená": 1,
+   "Mierová-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Vlčie hrdlo-cyklotrasa-chýbajúca": 1,
+   "Sliačska-Cesty a chodníky-iné": 1,
+   "Úžiny-osvetlenie-poškodené stĺpy": 1,
+   "Ďurgalova-strom-suchý": 1,
+   "Párna-neporiadok a odpadky-čierne skládky": 1,
+   "Starý most-zábradlie-zhrdzavené": 1,
+   "Vajnorská-kanalizácia-upchatá": 1,
+   "Legionárska-semafor-chýbajúci": 1,
+   "Floriánske námestie-riešenie dopravnej situácie-nebezpečné": 1,
+   "Priekopy-zvislá značka-poškodená": 1,
+   "Panónska cesta - rozbitá sklenená fľaša": 1,
+   "Adámiho-strom-zlomený konár": 1,
+   "Karloveská-fontánka-znečistená": 1,
+   "žitavská-trávnatá plocha-nepokosená": 1,
+   "Hlavné námestie-kôš-nevhodne umiestnený": 1,
+   "Karloveská-kosenie kvitnúcich plôch v okolí Karloveskej radiály": 1,
+   "29. augusta-cesta-výtlk": 1,
+   "Prístavný most-cyklotrasa-poškodená": 1,
+   "Špitálska-chodník-poškodená dlažba": 1,
+   "Pod vinicami-osvetlenie-nefunkčné": 1,
+   "Topoľčianska - odpadky vo verejnom priestranstve": 1,
+   "Bodrocká-osvetlenie-poškodené stĺpy": 1,
+   "Karadžičova-kanalizácia-chýbajúci kanalizačný poklop": 1,
+   "Dvojkrížna-trávnatá plocha-nepokosená": 1,
+   "Macharova - bude sad sprístupnený verejnosti?": 1,
+   "Karadžičova-Neporiadok a odpadky": 1,
+   "Pri vinohradoch-verejné služby-zdieľaná mobilita-nevhodné parkov": 1,
+   "Most Lanfranconi-zvislá značka-poškodená": 1,
+   "Jarošova-semafor-nefunkčný": 1,
+   "Popradská-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Kutlíkova - neorezané stromy": 1,
+   "Košická-riešenie dopravnej situácie-nebezpečné": 1,
+   "Beňadická - výtlk": 1,
+   "Podunajská-cesta-výtlk": 1,
+   "Stará Vajnorská-strom-zlomený konár": 1,
+   "Škultétyho-zvislá značka-v rozpore so záknom": 1,
+   "Vlčie hrdlo-prechod pre chodcov-chýbajúci": 1,
+   "Vajnorská-vodorovná značka-chýbajúca": 1,
+   "Jungmannova - riešenie dopravnej situácie": 1,
+   "Janka Alexyho-vodorovná značka-neaktuálna": 1,
+   "Most SNP (býv. Nový most) - výkaly holubov": 1,
+   "Wolkrova - nefunkčné osvetlenie": 1,
+   "Robotnícka-zvislá značka-v rozpore so zákonom": 1,
+   "Karadžičova-cesta-bariérová": 1,
+   "Gagarinova-osvetlenie-nefunkčné": 1,
+   "Saratovská-parkovanie-problémové": 1,
+   "Jiráskova - vystupený kanalizačný poklop": 1,
+   "Krížna-chodník-výtlk": 1,
+   "Drieňová-zvislá značka-vyblednutá": 1,
+   "Karloveská-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Bajkalská-stĺpik-nadbytočný": 1,
+   "Medvečovej-zviera-deratizácia": 1,
+   "Námestie Ľudovíta Štúra-osvetlenie-poškodené stĺpy": 1,
+   "Mlynské Nivy-zvislá značka-poškodená": 1,
+   "Jabloňová - dlhodobo odstavené vozidlo": 1,
+   "Panónska cesta - výtlk na chodníku smerom na zastávku Aupark": 1,
+   "Palisády-vodorovná značka-chýbajúca": 1,
+   "Beňadická - guľa drží len na dobré slovo": 1,
+   "Sliačska-dopravné zrkadlo-chýbajúce": 1,
+   "Sad Janka Kráľa-chodník-výtlk": 1,
+   "Jelačičova-chodník-poškodená dlažba": 1,
+   "Jégého-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "V záhradkách-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Líščie nivy-kôš-nevhodne umiestnený": 1,
+   "Bajkalská-spomaľovač-chýbajúci": 1,
+   "Námestie slobody-chodník-poškodená dlažba": 1,
+   "Údernícka - zaparkované automobily bránia vo výhľade": 1,
+   "Jantárová cesta - nízko vedený elektrický kábel": 1,
+   "Majerníkova-chodník-výtlk": 1,
+   "Uzbecká-cesta-rozbitá (väčší úsek)": 1,
+   "Kopčianska - neorezané stromy": 1,
+   "Miletičova-zvislá značka-zle umiestnená": 1,
+   "Mudrochova-strom-suchý": 1,
+   "Pri vinohradoch-parkovanie-problémové": 1,
+   "Staré grunty-osvetlenie-poškodené stĺpy": 1,
+   "Cyprichova-trávnatá plocha-nepokosená": 1,
+   "Šintavská - poškodená podpera stromu": 1,
+   "Oravská-parkovanie-problémové": 1,
+   "Saratovská-trávnatá plocha-vyjazdené koľaje": 1,
+   "Rovniakova - rozkopané priestranstvo": 1,
+   "Hradská-zvislá značka-neaktuálna": 1,
+   "Legionárska-chodník-poškodená dlažba": 1,
+   "Slovnaftská-Dopravné značenie-iné": 1,
+   "Romanova - výtlk na chodníku": 1,
+   "Karloveská-Priechod pre chodcov-zle viditeľný": 1,
+   "Klokočova - osvetlenie cyklotrasy": 1,
+   "Ilkovičova-chodník-znečistený": 1,
+   "Viedenská cesta-stará časž - nefunkčná \"kotva\" na lanovej dráhe": 1,
+   "Betliarska - voľne prístupný bunker B-S 13": 1,
+   "Panónska cesta - znečistený chodník": 1,
+   "Vajnorská-osvetlenie-nefunkčné": 1,
+   "Viedenská cesta - stará časž-zvislá značka-zle otočená": 1,
+   "Drieňová-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Fedákova-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Koreničova-riešenie dopravnej situácie-nebezpečné": 1,
+   "Vajnorské jazero-osvetlenie-poškodené stĺpy": 1,
+   "Sosnová - neporiadok a odpadky, čierne skládky": 1,
+   "Vajnorská-oplotenie-poškodené": 1,
+   "Imricha Karvaša-chodník-bariéra na chodníku": 1,
+   "Mlynské Nivy-dlhodobo odstavené vozidlá-vozidlo s EČV, s platnou TK a EK": 1,
+   "Príjazdná-osvetlenie-nefunkčné": 1,
+   "Einsteinova - poškodená a prepadnutá dlažba na chodníku": 1,
+   "Pri Habánskom mlyne-cesta-poškodená dlažba": 1,
+   "Račianska-reklama-vizuálny smog": 1,
+   "Laurinská-riešenie dopravnej situácie-nebezpečné": 1,
+   "Romanova - starý topoľ naklonený nad chodníkom": 1,
+   "Stromová-priechod pre chodcov-chýbajúci": 1,
+   "Tyršovo nábrežie - problémové parkovanie": 1,
+   "žehrianska - stará zhrdzavená reklama": 1,
+   "Furdekova - veľmi hlboké koľaje, nevyhovujúci povrch asfaltu": 1,
+   "Bzovícka - odpad po oprave cesty na zastávke Bzovícka": 1,
+   "Baničova-dopravné zrkadlo-chýbajúce": 1,
+   "Šancová-chodník-rozkopaný": 1,
+   "Uzbecká-zvislá značka-vyblednutá": 1,
+   "Jurská-trávnatá plocha-nepokosená": 1,
+   "Starý most-zvislá značka-chýbajúca": 1,
+   "Šancová-informačná tabuľa-poškodená": 1,
+   "Zelinárska-parkovanie-chýbajúce miesta": 1,
+   "Kraskova-osvetlenie-nefunkčné": 1,
+   "Karloveská/Líščie údolie-chodník-rozkopaný": 1,
+   "Klokočova - dopravné značenie na chodníku": 1,
+   "Šintavská - zle otočený poklop na kanalizácii": 1,
+   "Nábrežie arm. gen. Ludvíka Svobodu-zvislá značka-neaktuálna": 1,
+   "Rustaveliho-strom-suchý": 1,
+   "Vrančovičova-riešenie dopravnej situácie-dopravu spomaľujúce": 1,
+   "Račianska-stĺpik-nadbytočný": 1,
+   "Staviteľská-osvetlenie-chýbajúce/nedostatočné": 1,
+   "Budatínska - vyblednutá zvislá značka": 1,
+   "Kolmá - chýbajúci kanalizačný poklop": 1,
+   "Ďumbierska-stavby a budovy-opustená budova": 1,
+   "Hurbanovo námestie-informačná tabuľa-chybná": 1,
+   "Karadžičova-reklama a dopravná značka": 1,
+   "Záhradnícka-dlhodobo odstavené vozidlá-vozidlo s EČV, s platnou TK a EK": 1,
+   "Záhradnícka-strom-suchý": 1,
+   "Staromestská-oplotenie-chýbajúce": 1,
+   "Karadžičova-reklama-nevhodne umiestnená": 1,
+   "Kukučínova-zvislá značka-vyblednutá": 1,
+   "Legionárska-informačná tabuľa-chybná": 1,
+   "Osloboditeľská-dlhodobo odstavené vozidlá-nezistené EČV a TK a EK": 1,
+   "Vajnorská-Mestský mobiliár-zástavka MHD": 1,
+   "Dlhodobo odstavené vozidlo bez platnej TK a EK pri Auparku": 1,
+   "Trnavská cesta-kanalizácia-chýbajúci kanalizačný poklop": 1,
+   "Pri Šajbách-strom-suchý": 1,
+   "Antolská - chýbajúci chodník": 1,
+   "Uršulínska-kôš-nevhodne umiestnený": 1,
+   "M. Schneidera Trnavského-Docasny priechod pre chodcov": 1,
+   "Trnavská cesta-chodník-znečistený": 1,
+   "Račianska-zastávka MHD -poškodená": 1,
+   "Macharova - odpadky vo verejnom priestranstve": 1,
+   "Blatnická-strom-zlomený konár": 1,
+   "Matejkova-Nebezpečná križovatka-retardér/zvýraznenie priechodu": 1,
+   "Špitálska-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Saratovská-zastávka MHD-nefunkčný výžah": 1,
+   "Podzáhradná-osvetlenie-nefunkčné": 1,
+   "Most SNP (býv. Nový most)-vandalizmus-graffiti": 1,
+   "Panónska cesta - upchatý odtokový žľab": 1,
+   "Starohájska - popísaná zvislá značka": 1,
+   "Slovinská-priechod pre chodcov-zle viditeľný": 1,
+   "Slovinská-chodník-výtlk": 1,
+   "Rožňavská-priechod pre chodcov-chýbajúci": 1,
+   "Bosákova - suché stromy": 1,
+   "Cesta na Kamzík-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Šamorínska-chodník-chýbajúci": 1,
+   "Záhradnícka-kôš-poškodený": 1,
+   "Kopčianska - vznikajúce skládky": 1,
+   "Tomášikova-reklama-vizuálny smog": 1,
+   "Mierová-trávnatá plocha-dosadenie trávy po rozkopávke": 1,
+   "Štefanovičova-kôš-chýbajúci": 1,
+   "Kadnárova-osvetlenie-nefunkčné": 1,
+   "Krížna-osvetlenie-poškodené stĺpy": 1,
+   "Námestie M. Benku-Mestský mobiliár-hodiny": 1,
+   "Mokráň záhon-neporiadok a odpadky-čierne skládky": 1,
+   "Devínska cesta-cyklotrasa-chýbajúca": 1,
+   "Mokráň záhon-stavby a budovy-opustená budova": 1,
+   "Námestie slobody-chodník-rozkopaný": 1,
+   "Mlynské Nivy-zdieľaná mobilita-nevhodne zaparkovaný dopravný prostriedok": 1,
+   "Čiernohorská-osvetlenie-nefunkčné": 1,
+   "Botanická-kanalizácia-upchatý a poškodený dažčový odkvap": 1,
+   "Osuského-chodník-poškodená dlažba": 1,
+   "Matejkova-trávnatá plocha-nepokosená": 1,
+   "Dostojevského rad-vandalizmus-graffiti": 1,
+   "Karloveská-poškodené dopravné značenie po nehode": 1,
+   "Odborárska-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Radlinského-zvislá značka-neaktuálna": 1,
+   "Budatínska-zvislá značka-vyblednutá": 1,
+   "Trenčianska-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Račianska-strom-suchý": 1,
+   "Romanova-cyklostojan-chýbajúci": 1,
+   "Bebravská-zvislá značka-vyblednutá": 1,
+   "Dostojevského rad-zvislá značka-vyblednutá": 1,
+   "Tomášikova-osvetlenie-poškodené stĺpy": 1,
+   "Tomášikova-osvetlenie-nefunkčné": 1,
+   "Tomášikova-zvislá značka-chýbajúca": 1,
+   "Limbová-Verejné služby-iné": 1,
+   "Hlavné námestie-strom-zlomený konár": 1,
+   "Stromová-osvetlenie-poškodené stĺpy": 1,
+   "Bajkalská-cyklotrasa-poškodená": 1,
+   "Jantárová cesta-Verejný poriadok-iné": 1,
+   "Pekná cesta-zastávka MHD -poškodená": 1,
+   "Kafendova-strom-suchý": 1,
+   "Kafendova-strom-neorezaný": 1,
+   "M. Schneidera Trnavského-chodník-rozkopaný": 1,
+   "M. Schneidera Trnavského-rozvodné siete-poškodená rozvodná skriňa": 1,
+   "M. Schneidera Trnavského-chodník-výtlk": 1,
+   "Röntgenova-strom-neorezaný": 1,
+   "Partizánska-kanalizácia-upchatá": 1,
+   "Jozefa Hagaru-stĺpik-nadbytočný": 1,
+   "Ivanská cesta-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "žitná-chodník-rozkopaný": 1,
+   "Romanova - chýbajúci cyklostojan": 1,
+   "Krížna-reklama-vizuálny smog": 1,
+   "Hradská-chodník-znečistený": 1,
+   "Popradská-chodník-výtlk": 1,
+   "Kopčianska - neorezaný strom": 1,
+   "Palárikova-zvislá značka-neaktuálna": 1,
+   "Drotárska cesta-strom-zlomený konár": 1,
+   "Viedenská cesta - stará časž - páska cez cyklotrasu": 1,
+   "Vajnorská-Automobily-iné": 1,
+   "Karpatská-riešenie dopravnej situácie": 1,
+   "Riazanská-osvetlenie-poškodené stĺpy": 1,
+   "Vajanského nábrežie-chodník-poškodené obrubníky": 1,
+   "Majerníkova-trávnatá plocha-vyjazdené koľaje": 1,
+   "Karloveská-detské ihrisko-tieniace prvky": 1,
+   "Námestie slobody-parkovanie-nevyznačené miesta": 1,
+   "Korytnická-strom-suchý": 1,
+   "Staromestská-stĺpik-chýbajúci": 1,
+   "Fedákova-zvislá značka-zle otočená": 1,
+   "Nám. l. mája-cyklotrasa-znečistená": 1,
+   "Papračová-trávnatá plocha-nepokosená": 1,
+   "Rovniankova - starý vyhodený televízor": 1,
+   "Výjazd na Nový most - poškodená zvislá značka": 1,
+   "Šancová-kôš-nevhodne umiestnený": 1,
+   "Saratovská-osvetlenie-poškodené stĺpy": 1,
+   "Odborárska-cyklotrasa-poškodená": 1,
+   "Alstrova-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Ružinovská-kanalizácia-poškodený poklop": 1,
+   "Vyšehradská - kolobežky blokujú vjazd do areálu": 1,
+   "Šancová-chodník-chýbajúci": 1,
+   "Karadžičova-fontánka-nefunkčná": 1,
+   "Skalná-trávnatá plocha-neudržiavaná": 1,
+   "Palisády-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Dorastenecká-chodník-znečistený": 1,
+   "Jégého-strom-suchý": 1,
+   "Drieňová-parkovanie-problémové": 1,
+   "Justičná-vodorovná značka-neaktuálna": 1,
+   "Námestie hraničiarov - cesta - opotrebovanost asfaltu": 1,
+   "Pri dvore-Automobily-iné": 1,
+   "Plynárenská-semafor-nefunkčný": 1,
+   "Devínska cesta-osvetlenie-poškodené stĺpy": 1,
+   "Lamačská cesta-cesta-rozkopaná": 1,
+   "Mostová-rozvodné siete-nebezpečný kábel": 1,
+   "Karloveská/Pustá-chodník-otázka": 1,
+   "Šustekova-neporiadok-neporiadok vo verejnom priestranstve": 1,
+   "Cintorínska-zvislá značka-poškodená": 1,
+   "29. augusta-neporiadok a odpadky-čierne skládky": 1,
+   "Limbová-krík-neostrihaný": 1,
+   "Lachova - znečistený chodník": 1,
+   "Dunajská-zeleň a životné prostredie-neporiadok a odpadky": 1,
+   "Trhová-krík-neostrihaný": 1,
+   "Vajnorská-kanalizácia-chýbajúci kanalizačný poklop": 1,
+   "Sad Janka Kráľa-rozvodné siete-poškodená rozvodná skriňa": 1,
+   "Karloveská-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Rusovská cesta - väčšia jama": 1,
+   "Janka Alexyho-cesta-výtlk": 1,
+   "Einsteinova - chýbajúci chodník": 1,
+   "Jégého-Verejné služby-čas kosenia zelene": 1,
+   "Panónska cesta-zábradlie-zhrdzavené": 1,
+   "Vazovova-strom-suchý": 1,
+   "Záhradnícka-zvislá značka-zle otočená": 1,
+   "Bebravská-trávnatá plocha-nepokosená": 1,
+   "Cesta na Senec-oplotenie-chýbajúce": 1,
+   "Bajkalská-zeleň a životné prostredie-náhrada ostrovčeka za zeleň": 1,
+   "Páričkova-riešenie dopravnej situácie-nebezpečné": 1,
+   "Bebravská-strom-poškodená podpera": 1,
+   "Záhradnícka-vodorovná značka-neaktuálna": 1,
+   "Dolnozemská cesta - odstavené Audi": 1,
+   "žarnovická-trávnatá plocha-nepokosená": 1,
+   "Rusovská cesta-zvodidlá-zhrdzavené": 1,
+   "Nobelova-strom-neorezaný": 1,
+   "M. Schneidera Trnavského-stĺpik-poškodený": 1,
+   "Holíčska - vyvalená zvislá dopravná značka": 1,
+   "Markova - nepokosená trávnatá plocha": 1,
+   "Krížna-chodník-rozkopaný": 1,
+   "Starý most-stavby a budovy-zlý stav budovy": 1,
+   "Prievozská-semafor-poškodený": 1,
+   "Rovniankova - nepokosená trávnatá plocha": 1,
+   "Matejkova-strom-neorezaný": 1,
+   "Kukučínova-strom-invazívna rastlina": 1,
+   "Na Slavíne-chodník-bariéra na chodníku": 1,
+   "Košická-Cesty a chodníky-iné": 1,
+   "Záhradnícka-Dopravné značenie-iné": 1,
+   "Karloveská-chodník-poškodená dlažba": 1,
+   "Nobelovo námestie - chýbajúci strom": 1,
+   "Stromová-strom-suchý": 1,
+   "Pod záhradami-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Babuškova-Verejné služby-kamerový systém": 1,
+   "Babuškova-osvetlenie-nevhodné (silné a pod.)": 1,
+   "Vyschnutý starý strom": 1,
+   "Závadská-trávnatá plocha-nepokosená": 1,
+   "Dolnozemská cesta - chýbajúci semafor": 1,
+   "Jozefa Hagaru-chodník-výtlk": 1,
+   "Špitálska-strom-suchý": 1,
+   "Krížna-zvislá značka-chýbajúca": 1,
+   "Tomášikova-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Košická-cesta-chýbajúci kryt hydrantu": 1,
+   "Cyprichova-strom-neorezaný": 1,
+   "Cyprichova-strom-suchý": 1,
+   "Páričkova-chodník-chýbajúci": 1,
+   "Záhradnícka-Zeleň a životné prostredie-iné": 1,
+   "Landererova-cyklotrasa-poškodená": 1,
+   "Na Slavíne-chodník-rozkopaný": 1,
+   "Panónska cesta - rozbitá cesta (väčší úsek)": 1,
+   "Tomášikova-strom-suchý": 1,
+   "Smolenická-schody-poškodené": 1,
+   "žižkova-lavička-poškodená": 1,
+   "29. augusta-priechod pre chodcov-zle viditeľný": 1,
+   "Vajnorská-cesta-rozbitá (väčší úsek)": 1,
+   "Mudroňova-priechod pre chodcov-zle viditeľný": 1,
+   "Trnavská cesta-Automobily-iné": 1,
+   "Panónska cesta - posprejovaná zvislá značka": 1,
+   "Pod Mostom SNP - kontajner denne na očiach": 1,
+   "Drieňová-prechod pre chodcov-zle viditeľný": 1,
+   "Drieňová-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Špitálska-chodník-znečistený": 1,
+   "Špitálska-strom-neorezaný": 1,
+   "Májová - zanedbaný chodník": 1,
+   "Jasovská - vyblednutá zvislá značka": 1,
+   "Pri kríži-chodník-bariéra na chodníku": 1,
+   "Košická-osvetlenie-poškodené stĺpy": 1,
+   "Kazanská-kôš-chýbajúci": 1,
+   "Brnianska-strom-neorezaný": 1,
+   "Cesta na Kamzík-chodník-znečistený": 1,
+   "Pražská-chodník-výtlk": 1,
+   "Stromová-zastávka MHD -poškodená": 1,
+   "Košická-kanalizácia-chýbajúci kanalizačný poklop": 1,
+   "Kadnárova-cyklotrasa-chýbajúca": 1,
+   "Kadnárova-Dopravné značenie-iné": 1,
+   "Čiližská-trávnatá plocha-nepokosená": 1,
+   "Tranovského-parkovanie-problémové": 1,
+   "Pribylinská-Zeleň a životné prostredie-iné": 1,
+   "Kubačova-cesta-výtlk": 1,
+   "Vlčie hrdlo-chodník-chýbajúci": 1,
+   "Antolská - chýbajúci prechod a nájazdy pre kočíky": 1,
+   "Mýtna-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Mýtna-cesta-výtlk": 1,
+   "Hrušková-dlhodobo odstavené vozidlá-vozidlo s EČV, s platnou TK a EK": 1,
+   "Orenburská-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Furdekova-stavby a budovy-opustená budova": 1,
+   "Viedenská cesta - stará časž - pieskovisko namiesto lúky": 1,
+   "Kubačova-chodník-bariérový": 1,
+   "Stará vinárska-chodník-rozkopaný": 1,
+   "Vajnorská-cesta-znečistená": 1,
+   "Pod Rovnicami-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Priama cesta / Priamy chodník-osvetlenie-nefunkčné": 1,
+   "Brnianska-parkovanie-chýbajúce miesta": 1,
+   "Kuklovská-zvislá značka-poškodená": 1,
+   "Bosákova-chodník-znečistený": 1,
+   "Čachtická-dopravné zrkadlo-poškodené": 1,
+   "Záhradnícka-strom-neorezaný": 1,
+   "Betliarska - chýbajúci spomaľovač": 1,
+   "Vajnorská-chodník-bariéra na chodníku": 1,
+   "Šancová-priechod pre chodcov-chýbajúci": 1,
+   "Dúbravská cesta-detské ihrisko-poškodené": 1,
+   "Údernícka - chýbajúce dopravné zrkadlo": 1,
+   "Panónska cesta-dlhodobo odstavené vozidlá-zahraničné vozidlo": 1,
+   "Hlučínska-neporiadok a odpadky-čierne skládky": 1,
+   "Horná-trávnatá plocha-nepokosená": 1,
+   "Jozefa Hagaru-parkovanie-problémové": 1,
+   "Trnavská cesta-reklama-vizuálny smog": 1,
+   "Trnavská cesta-Verejný poriadok-iné": 1,
+   "Cesta na Červený most-cesta-rozbitá (väčší úsek)": 1,
+   "Výjazd na Nový most - poškodený bleskozvod": 1,
+   "Dulovo námestie-betónová zábrana-poškodená": 1,
+   "Uzbecká-zvislá značka-poškodená": 1,
+   "Krajná-chodník-bariérový": 1,
+   "M. Schneidera Trnavského-pokosena lucna luka": 1,
+   "Dvojkrížna-cyklotrasa-neoznačená": 1,
+   "Lieskovská cesta-vodorovná značka-chýbajúca": 1,
+   "Karpatská-chodník-rozkopaný": 1,
+   "Šustekova - diera na cyklotrase": 1,
+   "Rybničná-zvislá značka-poškodená": 1,
+   "župné námestie-chodník-poškodená dlažba": 1,
+   "Tematínska - lúka pre opeľovače": 1,
+   "Jiráskova-priechod pre chodcov-chýbajúci": 1,
+   "Nobelovo námestie - nefunkčné osvetlenie - lampa P080/007": 1,
+   "Bohrova - nefunkčné osvetlenie P128/060": 1,
+   "žabotova-kvetináč-zanedbaný": 1,
+   "Námestie SNP-fontánka-poškodená": 1,
+   "Rybničná-riešenie dopravnej situácie-maximálna rýchlosž": 1,
+   "Pekná cesta-cesta-znečistená": 1,
+   "Kuklovská-zábradlie-chýbajúce": 1,
+   "župné námestie-chodník-bariéra na chodníku": 1,
+   "Pribylinská-stĺpik-nadbytočný": 1,
+   "Stará Vajnorská-osvetlenie-poškodené stĺpy": 1,
+   "Krížna-parkovanie-problémové": 1,
+   "Sad Janka Kráľa - nefunkčná fontána": 1,
+   "Tomášikova-kanalizácia-upchatá": 1,
+   "Krasovského - neporiadok a odpadky vo verejnom priestranstve": 1,
+   "Tomášikova-chodník-výtlk": 1,
+   "Karadžičova-strom-invazívna rastlina": 1,
+   "Mudroňova-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Popradská-stĺp-poškodený": 1,
+   "Tomášikova-priechod pre chodcov-chýbajúci": 1,
+   "Vajnorská-Mestský mobiliár-iné": 1,
+   "Štefánikova-zvislá značka-zle otočená": 1,
+   "Staviteľská-kôš-chýbajúci": 1,
+   "Staré grunty-riešenie dopravnej situácie-dopravu spomaľujúce": 1,
+   "Námestie hraničiarov-stavby a budovy-betónový múr": 1,
+   "Námestie SNP-chodník-bariéra na chodníku": 1,
+   "Karloveská-detské ihrisko-poškodené": 1,
+   "Einsteinova-stĺpik-nadbytočný": 1,
+   "Bajkalská-Verejné služby-iné": 1,
+   "Slovanské nábrežie-Nezabezpecena studna": 1,
+   "Blumentálska-strom-neorezaný": 1,
+   "Majerníkova-kanalizácia-upchatá": 1,
+   "Radlinského-zvislá značka-poškodená": 1,
+   "29. augusta-kôš-poškodený": 1,
+   "Jaskový rad-vodorovná značka-neaktuálna": 1,
+   "Molecova-chodník-poškodený": 1,
+   "Krížna-priechod pre chodcov-zle viditeľný": 1,
+   "Gondova-zábradlie-zhrdzavené": 1,
+   "Kollárovo námestie-lavička-poškodená": 1,
+   "Hradská-zvislá značka-poškodená": 1,
+   "Staromestská-priechod pre chodcov-zle viditeľný": 1,
+   "Pri vinohradoch-cesta-poškodená dlažba": 1,
+   "Bajkalská-priechod pre chodcov-zle viditeľný": 1,
+   "V záhradkách-osvetlenie-poškodené stĺpy": 1,
+   "Záporožská - do podchodu zateká": 1,
+   "Most Apollo-vodorovná značka-zle viditeľná": 1,
+   "Palisády-chodník-znečistený": 1,
+   "Rybničná-Dopravné značenie-pozostatok dopravnej značky": 1,
+   "Stromová-kanalizácia-chýbajúci kanalizačný poklop": 1,
+   "Bratská - pozostatok asi starého pozostatku chodníka": 1,
+   "Studená-chodník-chýbajúci": 1,
+   "Cesta k Rajke-priechod pre chodcov-chýbajúci": 1,
+   "Námestie SNP-lavička-poškodená": 1,
+   "Košická-strom-invazívna rastlina": 1,
+   "Čapajevova - europaleta na tráve": 1,
+   "Černyševského - vyblednutá zvislá značka": 1,
+   "Šamorínska-osvetlenie-poškodené stĺpy": 1,
+   "Vazovova-zvislá značka-poškodená": 1,
+   "Račianska-chodník-poškodená dlažba": 1,
+   "Gettingova-neporiadok a odpadky-čierne skládky": 1,
+   "Námestie slobody-zvislá značka-poškodená": 1,
+   "Stará vinárska-stĺpik-chýbajúci": 1,
+   "Jantárová cesta - nepokosená trávnatá plocha": 1,
+   "Vazovova-zvislá značka-chýbajúca": 1,
+   "Klincová-trávnatá plocha-nepohrabaná": 1,
+   "Lachova-osvetlenie-poškodené stĺpy": 1,
+   "Záhradnícka-Verejné služby-iné": 1,
+   "Pri mlyne-krík-neostrihaný": 1,
+   "Slatinská-strom-suchý": 1,
+   "Krížna-kanalizácia-upchatá": 1,
+   "Trnavská cesta-chodník-výtlk": 1,
+   "župné námestie-strom-neorezaný": 1,
+   "Bosákova-zvislá značka-zle otočená": 1,
+   "Miletičova-strom-neorezaný": 1,
+   "Einsteinova - problémové parkovanie": 1,
+   "Staviteľská-osvetlenie-poškodené stĺpy": 1,
+   "Záhradnícka-zvislá značka-neaktuálna": 1,
+   "Na výslní-strom-suchý": 1,
+   "Hubeného-strom-napadnutý": 1,
+   "Dunajská-strom-neorezaný": 1,
+   "Nábrežie arm. gen. Ludvíka Svobodu-kôš-chýbajúci": 1,
+   "Blagoevova - množstvo potkanov": 1,
+   "Račianske mýto-chodník-bariéra na chodníku": 1,
+   "Galvaniho-reklama-nevhodne umiestnená na trávniku": 1,
+   "Krížna-cesta-výtlk": 1,
+   "Jantárová cesta-zábradlie-poškodené": 1,
+   "Krížna-zvislá značka-vyblednutá": 1,
+   "Karpatská-priechod pre chodcov-zle viditeľný": 1,
+   "Panónska cesta - mreže na žľabe": 1,
+   "Rusovská cesta - upchatá kanalizácia": 1,
+   "Tomášikova-cyklostojan-poškodený": 1,
+   "Bajkalská-Zeleň a životné prostredie-iné": 1,
+   "Americké námestie-tyč-nadbytočná": 1,
+   "Špitálska-zábradlie-poškodené": 1,
+   "Závodná-semafor-zle nastavený": 1,
+   "Šafárikovo námestie-chodník-poškodená dlažba": 1,
+   "Pri vinohradoch-strom-chýbajúca závlaha": 1,
+   "Hubeného-zvislá značka-poškodená": 1,
+   "Hodonínska-cesta-rozbitá (väčší úsek)": 1,
+   "Odborárska-cesta-výtlk": 1,
+   "Bagarova-semafor-zle nastavený": 1,
+   "Brnianska-dlhodobo odstavené vozidlá-nezistené EČV a TK a EK": 1,
+   "Pod záhradami-semafor-zle nastavený": 1,
+   "Gagarinova-cesta-výtlk": 1,
+   "Tyršovo nábrežie - poškodené lavičky": 1,
+   "Sad Janka Kráľa - nenatreté stĺpy osvetlenia v parku": 1,
+   "Neporiadok a odpadky na zastávke ako Ľubovnianska": 1,
+   "Mlynská dolina-Nebezpečný priechod pre chodcov": 1,
+   "Hroboňova-priechod pre chodcov-zle viditeľný": 1,
+   "M. Schneidera Trnavského-zvislá značka-poškodená": 1,
+   "Pekná cesta-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Palkovičova-strom-suchý": 1,
+   "Trnavská cesta-chodník-poškodená dlažba": 1,
+   "Galvaniho-cesta-výtlk": 1,
+   "Sliačska-dlhodobo odstavené vozidlá-vozidlo s EČV, bez platnej TK a EK": 1,
+   "Sliačska nepovolená reklama": 1,
+   "Muchovo námestie - poškodený kanalizačný poklop": 1,
+   "Markova - nefunkčné osvetlenie": 1,
+   "Kysucká-detské ihrisko-potrebná údržba": 1,
+   "Zlaté piesky-neporiadok a odpadky-neporiadok vo verejnom priestranstve": 1,
+   "Karloveská-zastávka MHD -poškodená": 1,
+   "Hybešova-Zeleň a životné prostredie-iné": 1,
+   "Mamateyova - vyblednutá zvislá značka": 1,
+   "Panónska cesta - zle otočená zvislá značka": 1,
+   "Prístavná-Verejný poriadok-iné": 1,
+   "Popradská-chodník-železo": 1,
+   "Bílikova-strom-neorezaný": 1,
+   "Pri kríži-strom-neorezany": 1,
+   "Kutlíkova - konár na vedení medzi lampami": 1,
+   "Košická-trávnatá plocha-nepokosená": 1,
+   "Budatínska - zle viditeľný priechod pre chodcov": 1,
+   "Janotova-parkovanie-nevyznačené miesta": 1,
+   "M. Schneidera Trnavského-osvetlenie-nefunkčné": 1,
+   "Púpavová-čierna stavba v lese": 1,
+   "Hečkova-chodník-poškodená dlažba": 1,
+   "Einsteinova - odtrhnuté svietidlo": 1,
+   "Karloveská-zastávka MHD-poškodená": 1,
+   "Jantárová cesta-cyklotrasa-chýbajúca": 1,
+   "Romanova - vyblednutá zvislá značka": 1,
+   "Dostojevského rad-chodník-poškodený": 1,
+   "Vlčie hrdlo-Trávnatá plocha-nepokosená": 1,
+   "Mlynarovičova - nefunkčné osvetlenie": 1
+  },
+  "mestske_casti": {
+   "Staré Mesto": 2679,
+   "Ružinov": 2548,
+   "neuvedená": 1734,
+   "Petržalka": 1696,
+   "Nové Mesto": 1423,
+   "Rača": 796,
+   "Karlova Ves": 776,
+   "Dúbravka": 427,
+   "Podunajské Biskupice": 201,
+   "Vrakuňa": 188,
+   "Vajnory": 127,
+   "Devínska Nová Ves": 117,
+   "Lamač": 65,
+   "Devín": 37,
+   "Rusovce": 12,
+   "Čunovo": 7,
+   "Záhorská Bystrica": 7,
+   "Jarovce": 7
+  },
+  "median_dni_vyriesenia": {
+   "2017": 980.5,
+   "2018": 646.5,
+   "2019": 189.0,
+   "2020": 35,
+   "2021": 16,
+   "2022": 1
+  },
+  "posledny_podnet": "2022-06-30"
+ },
+ "chyby": [],
+ "aktualizovane": "2026-10-15T16:41:22+00:00"
+}
