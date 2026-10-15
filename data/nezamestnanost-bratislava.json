@@ -568,7 +568,7 @@
    }
   }
  },
- "aktualizovane": "2026-10-15T19:43:17+00:00",
+ "aktualizovane": "2026-10-15T19:50:45+00:00",
  "mesacne": {
   "2023-01": {
    "Bratislava I": {
@@ -1937,6 +1937,43 @@
     "uoz": 176838.0,
     "disp": 159521.0,
     "pdu": 4.42
+   }
+  },
+  "2026-02": {
+   "Bratislava I": {
+    "uoz": 779.0,
+    "disp": 755.0,
+    "pdu": 2.23
+   },
+   "Bratislava II": {
+    "uoz": 2459.0,
+    "disp": 2377.0,
+    "pdu": 2.7
+   },
+   "Bratislava III": {
+    "uoz": 1485.0,
+    "disp": 1442.0,
+    "pdu": 2.67
+   },
+   "Bratislava IV": {
+    "uoz": 2528.0,
+    "disp": 2472.0,
+    "pdu": 3.41
+   },
+   "Bratislava V": {
+    "uoz": 2115.0,
+    "disp": 2053.0,
+    "pdu": 2.66
+   },
+   "Bratislavský kraj": {
+    "uoz": 14603.0,
+    "disp": 14113.0,
+    "pdu": 2.82
+   },
+   "Slovenská republika": {
+    "uoz": 174767.0,
+    "disp": 149998.0,
+    "pdu": 4.16
    }
   },
   "2026-03": {
