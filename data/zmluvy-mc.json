@@ -3682,769 +3682,1319 @@
  },
  "dotacie": {
   "Devín": {
-   "zmluv": 9,
-   "suma": 86225,
-   "prijimatelia": [
-    {
-     "nazov": "Ministerstvo financií SR",
-     "suma": 40000
-    },
-    {
-     "nazov": "Ministerstvo financií",
-     "suma": 40000
-    },
-    {
-     "nazov": "Hlavné mesto SR Bratislava",
-     "suma": 5720
-    },
-    {
-     "nazov": "Nadácia Pontis",
-     "suma": 504
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 0,
+    "suma": 0,
+    "prijimatelia": []
+   },
+   "prijate": {
+    "zmluv": 9,
+    "suma": 86225,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 40000
+     },
+     {
+      "nazov": "Ministerstvo financií",
+      "suma": 40000
+     },
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 5720
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 504
+     }
+    ]
+   }
   },
   "Devínska Nová Ves": {
-   "zmluv": 142,
-   "suma": 1187679,
-   "prijimatelia": [
-    {
-     "nazov": "DNV ŠPORT, spol. s.r.o.",
-     "suma": 275000
-    },
-    {
-     "nazov": "Hlavné mesto SR Bratislava",
-     "suma": 159734
-    },
-    {
-     "nazov": "Devínskonovoveská televízia spol. s r.o.",
-     "suma": 125000
-    },
-    {
-     "nazov": "Hlavné mesto Slovenskej Republiky Bratislava",
-     "suma": 80216
-    },
-    {
-     "nazov": "DSS Senecio, n.o.",
-     "suma": 76454
-    },
-    {
-     "nazov": "Futbalový klub Lokomotíva Devínska Nová Ves",
-     "suma": 73200
-    },
-    {
-     "nazov": "Futbalový klub mládeže Devínska Nová Ves",
-     "suma": 49000
-    },
-    {
-     "nazov": "Stolnotenisový klub Devínska Nová Ves",
-     "suma": 41800
-    },
-    {
-     "nazov": "GoodSports International Slovensko",
-     "suma": 24400
-    },
-    {
-     "nazov": "Šachový klub STRELEC Devínska Nová Ves",
-     "suma": 15600
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 120,
+    "suma": 865416,
+    "prijimatelia": [
+     {
+      "nazov": "DNV ŠPORT, spol. s.r.o.",
+      "suma": 275000
+     },
+     {
+      "nazov": "Devínskonovoveská televízia spol. s r.o.",
+      "suma": 125000
+     },
+     {
+      "nazov": "DSS Senecio, n.o.",
+      "suma": 76454
+     },
+     {
+      "nazov": "Futbalový klub Lokomotíva Devínska Nová Ves",
+      "suma": 73200
+     },
+     {
+      "nazov": "Futbalový klub mládeže Devínska Nová Ves",
+      "suma": 49000
+     },
+     {
+      "nazov": "Stolnotenisový klub Devínska Nová Ves",
+      "suma": 41800
+     },
+     {
+      "nazov": "GoodSports International Slovensko",
+      "suma": 24400
+     },
+     {
+      "nazov": "Šachový klub STRELEC Devínska Nová Ves",
+      "suma": 15600
+     },
+     {
+      "nazov": "Umelci z Istrijskej,o.z.",
+      "suma": 14770
+     },
+     {
+      "nazov": "Klub Workout Academy o.z.",
+      "suma": 14700
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 22,
+    "suma": 322264,
+    "poskytovatelia": [
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 159734
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej Republiky Bratislava",
+      "suma": 80216
+     },
+     {
+      "nazov": "Enviromentálny Fond",
+      "suma": 14850
+     },
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 14850
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 13360
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+      "suma": 13360
+     },
+     {
+      "nazov": "Slovenský zväz telesne postihnutých, Základná organizácia Bratislava",
+      "suma": 12299
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 6000
+     }
+    ]
+   }
   },
   "Dúbravka": {
-   "zmluv": 150,
-   "suma": 709299,
-   "prijimatelia": [
-    {
-     "nazov": "Hlavné mesto SR Bratislava",
-     "suma": 282398
-    },
-    {
-     "nazov": "Ministerstvo financií SR",
-     "suma": 50000
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 37800
-    },
-    {
-     "nazov": "Občianske združenie",
-     "suma": 33540
-    },
-    {
-     "nazov": "Environmentálny fond",
-     "suma": 29700
-    },
-    {
-     "nazov": "Občianske združenie Futbalový klub Dúbravka",
-     "suma": 19500
-    },
-    {
-     "nazov": "Bežecký klub \"Hraj Na Tie Nohy",
-     "suma": 16600
-    },
-    {
-     "nazov": "Fond na podporu umenia",
-     "suma": 15700
-    },
-    {
-     "nazov": "FUTBALOVÝ KLUB POLÍCIE BRATISLAVA",
-     "suma": 14000
-    },
-    {
-     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
-     "suma": 14000
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 119,
+    "suma": 268606,
+    "prijimatelia": [
+     {
+      "nazov": "Občianske združenie",
+      "suma": 33540
+     },
+     {
+      "nazov": "Občianske združenie Futbalový klub Dúbravka",
+      "suma": 19500
+     },
+     {
+      "nazov": "Bežecký klub \"Hraj Na Tie Nohy",
+      "suma": 16600
+     },
+     {
+      "nazov": "FUTBALOVÝ KLUB POLÍCIE BRATISLAVA",
+      "suma": 14000
+     },
+     {
+      "nazov": "FUTBALOVÝ KLUB POLÍCIE BRATISL",
+      "suma": 12600
+     },
+     {
+      "nazov": "Lukostrelecký klub Bratislava",
+      "suma": 11600
+     },
+     {
+      "nazov": "Školský športový klub gymnázium Biliková",
+      "suma": 11000
+     },
+     {
+      "nazov": "Centrum rodiny, n.o.",
+      "suma": 10800
+     },
+     {
+      "nazov": "Športová škola Galaktikos",
+      "suma": 9000
+     },
+     {
+      "nazov": "Občianske združenie ZRPŠ pri ZŠ Pri kríži",
+      "suma": 8100
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 31,
+    "suma": 440694,
+    "poskytovatelia": [
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 282398
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 50000
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 37800
+     },
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 29700
+     },
+     {
+      "nazov": "Fond na podporu umenia",
+      "suma": 15700
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 14000
+     },
+     {
+      "nazov": "Nadácia BVS",
+      "suma": 8756
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 2340
+     }
+    ]
+   }
   },
   "Hlavné mesto": {
-   "zmluv": 656,
-   "suma": 29831651,
-   "prijimatelia": [
-    {
-     "nazov": "Ministerstvo dopravy SR",
-     "suma": 4494450
-    },
-    {
-     "nazov": "Mestská časť Bratislava - Nové Mesto",
-     "suma": 4383848
-    },
-    {
-     "nazov": "Ministerstvo dopravy Slovenskej republiky",
-     "suma": 4353290
-    },
-    {
-     "nazov": "Nadácia mesta Bratislavy",
-     "suma": 3150000
-    },
-    {
-     "nazov": "\"Nadácia mesta Bratislavy\"",
-     "suma": 2450000
-    },
-    {
-     "nazov": "Fond na podporu športu",
-     "suma": 2046353
-    },
-    {
-     "nazov": "Mestská časť Bratislava - Petržalka",
-     "suma": 925301
-    },
-    {
-     "nazov": "Mestská časť Bratislava - Ružinov",
-     "suma": 666333
-    },
-    {
-     "nazov": "Ministerstvo financií SR",
-     "suma": 540000
-    },
-    {
-     "nazov": "DEPAUL SLOVENSKO, nezisková organizácia",
-     "suma": 517651
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 577,
+    "suma": 12123847,
+    "prijimatelia": [
+     {
+      "nazov": "Mestská časť Bratislava - Nové Mesto",
+      "suma": 4383848
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Petržalka",
+      "suma": 925301
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Ružinov",
+      "suma": 666333
+     },
+     {
+      "nazov": "DEPAUL SLOVENSKO, nezisková organizácia",
+      "suma": 517651
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Staré Mesto",
+      "suma": 343913
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Karlova Ves",
+      "suma": 305232
+     },
+     {
+      "nazov": "MKK Grössling s. r. o",
+      "suma": 300000
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Dúbravka",
+      "suma": 282398
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Podunajské Biskupice",
+      "suma": 220461
+     },
+     {
+      "nazov": "Človek v ohrození, n.o.",
+      "suma": 208000
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 79,
+    "suma": 17707803,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo dopravy SR",
+      "suma": 4494450
+     },
+     {
+      "nazov": "Ministerstvo dopravy Slovenskej republiky",
+      "suma": 4353290
+     },
+     {
+      "nazov": "Nadácia mesta Bratislavy",
+      "suma": 3150000
+     },
+     {
+      "nazov": "\"Nadácia mesta Bratislavy\"",
+      "suma": 2450000
+     },
+     {
+      "nazov": "Fond na podporu športu",
+      "suma": 2046353
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 540000
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+      "suma": 274127
+     },
+     {
+      "nazov": "Nadácia Milana Šimečku",
+      "suma": 70500
+     }
+    ]
+   }
   },
   "Jarovce": {
-   "zmluv": 33,
-   "suma": 120168,
-   "prijimatelia": [
-    {
-     "nazov": "Telovýchovná jednota Jarovce",
-     "suma": 57000
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 23018
-    },
-    {
-     "nazov": "Environmentálny fond",
-     "suma": 14850
-    },
-    {
-     "nazov": "Združenie technických a športových činností ZO Bratislava - Jarovce",
-     "suma": 6800
-    },
-    {
-     "nazov": "Dobrovoľný hasičský zbor OZ Jarovce",
-     "suma": 4000
-    },
-    {
-     "nazov": "Choľvátsky kulturny spolok",
-     "suma": 4000
-    },
-    {
-     "nazov": "Chorvátsky kultúrny zväz na Slovensku",
-     "suma": 3000
-    },
-    {
-     "nazov": "Chorvátsky kultúrny spolok",
-     "suma": 2700
-    },
-    {
-     "nazov": "Dobrovoľný hasičský zbor Bratislava - Jarovce",
-     "suma": 2500
-    },
-    {
-     "nazov": "Dobrovoľ'ný hasičský zbor OZ Jarovce",
-     "suma": 2000
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 25,
+    "suma": 82300,
+    "prijimatelia": [
+     {
+      "nazov": "Telovýchovná jednota Jarovce",
+      "suma": 57000
+     },
+     {
+      "nazov": "Združenie technických a športových činností ZO Bratislava - Jarovce",
+      "suma": 6800
+     },
+     {
+      "nazov": "Dobrovoľný hasičský zbor OZ Jarovce",
+      "suma": 4000
+     },
+     {
+      "nazov": "Choľvátsky kulturny spolok",
+      "suma": 4000
+     },
+     {
+      "nazov": "Chorvátsky kultúrny zväz na Slovensku",
+      "suma": 3000
+     },
+     {
+      "nazov": "Chorvátsky kultúrny spolok",
+      "suma": 2700
+     },
+     {
+      "nazov": "Dobrovoľný hasičský zbor Bratislava - Jarovce",
+      "suma": 2500
+     },
+     {
+      "nazov": "Dobrovoľ'ný hasičský zbor OZ Jarovce",
+      "suma": 2000
+     },
+     {
+      "nazov": "Materské centrum Luskáčik",
+      "suma": 300
+     },
+     {
+      "nazov": "VÚB, a.s.",
+      "suma": 0
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 8,
+    "suma": 37868,
+    "poskytovatelia": [
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 23018
+     },
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 14850
+     }
+    ]
+   }
   },
   "Karlova Ves": {
-   "zmluv": 206,
-   "suma": 3092784,
-   "prijimatelia": [
-    {
-     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
-     "suma": 1131222
-    },
-    {
-     "nazov": "Environmentálny fond",
-     "suma": 800000
-    },
-    {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
-     "suma": 587418
-    },
-    {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-     "suma": 126732
-    },
-    {
-     "nazov": "Futbalový klub mládeže Karlova Ves Bratislava",
-     "suma": 54398
-    },
-    {
-     "nazov": "Ministerstvo financií Slovenskej republiky",
-     "suma": 50000
-    },
-    {
-     "nazov": "Ministerstvo financií SR",
-     "suma": 50000
-    },
-    {
-     "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
-     "suma": 30861
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 26000
-    },
-    {
-     "nazov": "Futbalový klub mládeže Karlova Ves Bratislava, o.z.",
-     "suma": 21400
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 154,
+    "suma": 230045,
+    "prijimatelia": [
+     {
+      "nazov": "Futbalový klub mládeže Karlova Ves Bratislava",
+      "suma": 54398
+     },
+     {
+      "nazov": "Futbalový klub mládeže Karlova Ves Bratislava, o.z.",
+      "suma": 21400
+     },
+     {
+      "nazov": "Mládežnícky basketbalový klub KARLOVKA",
+      "suma": 14473
+     },
+     {
+      "nazov": "Kanoistický klub Slávia UK Bratislava",
+      "suma": 11482
+     },
+     {
+      "nazov": "Športový klub polície Bratislava",
+      "suma": 11365
+     },
+     {
+      "nazov": "Klub vodného slalomu Karlova Ves",
+      "suma": 10629
+     },
+     {
+      "nazov": "Vodácky klub Tatran Karlova Ves - Bratislava, o.z.",
+      "suma": 8420
+     },
+     {
+      "nazov": "Rodinné centrum Klbko",
+      "suma": 8380
+     },
+     {
+      "nazov": "Klub vodných športov OCEÁN Bratislava",
+      "suma": 7381
+     },
+     {
+      "nazov": "off season training o.z.",
+      "suma": 6923
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 52,
+    "suma": 2862740,
+    "poskytovatelia": [
+     {
+      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+      "suma": 1131222
+     },
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 800000
+     },
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+      "suma": 587418
+     },
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 126732
+     },
+     {
+      "nazov": "Ministerstvo financií Slovenskej republiky",
+      "suma": 50000
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 50000
+     },
+     {
+      "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+      "suma": 30861
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 26000
+     }
+    ]
+   }
   },
   "Lamač": {
-   "zmluv": 40,
-   "suma": 409550,
-   "prijimatelia": [
-    {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-     "suma": 120078
-    },
-    {
-     "nazov": "Futbalový klub Lamač",
-     "suma": 95000
-    },
-    {
-     "nazov": "Nadácia BVS",
-     "suma": 69687
-    },
-    {
-     "nazov": "Hl.mesto SR Bratislavy",
-     "suma": 62716
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 21000
-    },
-    {
-     "nazov": "Audiovizuálny fond",
-     "suma": 16000
-    },
-    {
-     "nazov": "Intervenčné centrum Domino",
-     "suma": 5600
-    },
-    {
-     "nazov": "Iniciatíva rodičov Lamača o. z.",
-     "suma": 3557
-    },
-    {
-     "nazov": "Rodinné centrum - Obláčik, o. z.",
-     "suma": 3362
-    },
-    {
-     "nazov": "Musica al Cuore Bratislava-Lamač, o.z.",
-     "suma": 2700
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 24,
+    "suma": 180989,
+    "prijimatelia": [
+     {
+      "nazov": "Futbalový klub Lamač",
+      "suma": 95000
+     },
+     {
+      "nazov": "Hl.mesto SR Bratislavy",
+      "suma": 62716
+     },
+     {
+      "nazov": "Intervenčné centrum Domino",
+      "suma": 5600
+     },
+     {
+      "nazov": "Iniciatíva rodičov Lamača o. z.",
+      "suma": 3557
+     },
+     {
+      "nazov": "Rodinné centrum - Obláčik, o. z.",
+      "suma": 3362
+     },
+     {
+      "nazov": "Musica al Cuore Bratislava-Lamač, o.z.",
+      "suma": 2700
+     },
+     {
+      "nazov": "Čarodejník z krajiny, o. z.",
+      "suma": 1804
+     },
+     {
+      "nazov": "Lesné spoločenstvo majiteľov urbáru",
+      "suma": 1650
+     },
+     {
+      "nazov": "Rodinné centrum - Obláčik",
+      "suma": 1500
+     },
+     {
+      "nazov": "GOJU KAI KARATE Bratislava, o.z.",
+      "suma": 1500
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 16,
+    "suma": 228561,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 120078
+     },
+     {
+      "nazov": "Nadácia BVS",
+      "suma": 69687
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 21000
+     },
+     {
+      "nazov": "Audiovizuálny fond",
+      "suma": 16000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 1797
+     },
+     {
+      "nazov": "Bratislavská samosprávny kraj",
+      "suma": 0
+     }
+    ]
+   }
   },
   "Nové Mesto": {
-   "zmluv": 49,
-   "suma": 687482,
-   "prijimatelia": [
-    {
-     "nazov": "Environmentálny fond",
-     "suma": 420092
-    },
-    {
-     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
-     "suma": 170000
-    },
-    {
-     "nazov": "Nadácia BVS",
-     "suma": 20200
-    },
-    {
-     "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
-     "suma": 18140
-    },
-    {
-     "nazov": "Novomestský športový klub 1922 Bratislava",
-     "suma": 12000
-    },
-    {
-     "nazov": "Novomestský športový klub 1922 o.z.",
-     "suma": 7000
-    },
-    {
-     "nazov": "Nadácia Cvernovka",
-     "suma": 5000
-    },
-    {
-     "nazov": "BAJSKLAVA o. z.",
-     "suma": 5000
-    },
-    {
-     "nazov": "Depaul Slovensko, nezisková organizácia",
-     "suma": 4000
-    },
-    {
-     "nazov": "Centrum podagogicko - psychlogického poradenstva a prevencie",
-     "suma": 2500
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 34,
+    "suma": 51600,
+    "prijimatelia": [
+     {
+      "nazov": "Novomestský športový klub 1922 Bratislava",
+      "suma": 12000
+     },
+     {
+      "nazov": "Novomestský športový klub 1922 o.z.",
+      "suma": 7000
+     },
+     {
+      "nazov": "BAJSKLAVA o. z.",
+      "suma": 5000
+     },
+     {
+      "nazov": "Depaul Slovensko, nezisková organizácia",
+      "suma": 4000
+     },
+     {
+      "nazov": "Centrum podagogicko - psychlogického poradenstva a prevencie",
+      "suma": 2500
+     },
+     {
+      "nazov": "Slovenská hokejbalová únia",
+      "suma": 2000
+     },
+     {
+      "nazov": "Bratislavský spolok nepočujúcich 1930",
+      "suma": 2000
+     },
+     {
+      "nazov": "VAGUS o.z.",
+      "suma": 2000
+     },
+     {
+      "nazov": "Bunkre o. z.",
+      "suma": 2000
+     },
+     {
+      "nazov": "CirKusKus, o.z.",
+      "suma": 1500
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 15,
+    "suma": 635882,
+    "poskytovatelia": [
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 420092
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+      "suma": 170000
+     },
+     {
+      "nazov": "Nadácia BVS",
+      "suma": 20200
+     },
+     {
+      "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+      "suma": 18140
+     },
+     {
+      "nazov": "Nadácia Cvernovka",
+      "suma": 5000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 1950
+     },
+     {
+      "nazov": "Slovenský zväz protifašistických bojovníkov, Oblastný výbor Bratislavského kraja",
+      "suma": 500
+     }
+    ]
+   }
   },
   "Petržalka": {
-   "zmluv": 133,
-   "suma": 5499454,
-   "prijimatelia": [
-    {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-     "suma": 1635610
-    },
-    {
-     "nazov": "Ministerstvo investícií, regio",
-     "suma": 1200000
-    },
-    {
-     "nazov": "Športové zariadenia Petržalky, s. r. o.",
-     "suma": 751182
-    },
-    {
-     "nazov": "Ministerstvo investícii, regio",
-     "suma": 435610
-    },
-    {
-     "nazov": "FC Petržalka futbal a.s.",
-     "suma": 161423
-    },
-    {
-     "nazov": "Environmentálny fond",
-     "suma": 122321
-    },
-    {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovens",
-     "suma": 120000
-    },
-    {
-     "nazov": "Ministerstvo financií SR",
-     "suma": 100000
-    },
-    {
-     "nazov": "Ministerstvo financií SR sekcia rozpočtová",
-     "suma": 100000
-    },
-    {
-     "nazov": "Slovenská akademická asociácia pre medzinárodnú spoluprácu, Národná agentúra programu Erasmus+ pre vzdelávanie a odbornú",
-     "suma": 56096
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 108,
+    "suma": 1712597,
+    "prijimatelia": [
+     {
+      "nazov": "Športové zariadenia Petržalky, s. r. o.",
+      "suma": 751182
+     },
+     {
+      "nazov": "FC Petržalka futbal a.s.",
+      "suma": 161423
+     },
+     {
+      "nazov": "Slovenská akademická asociácia pre medzinárodnú spoluprácu",
+      "suma": 55972
+     },
+     {
+      "nazov": "Miestny športový klub Iskra Petržalka",
+      "suma": 54508
+     },
+     {
+      "nazov": "ŠPORTOVÁ ŠKOLA KARATE BRATISLAVA, o.z.",
+      "suma": 45916
+     },
+     {
+      "nazov": "Športový klub polície Bratislava",
+      "suma": 44755
+     },
+     {
+      "nazov": "Klub modernej gymnastiky DANUBIA, o.z.",
+      "suma": 43784
+     },
+     {
+      "nazov": "Slávia Gymnastické centrum Bratislava, o.z.",
+      "suma": 42009
+     },
+     {
+      "nazov": "Klub modernej gymnastiky DANUB",
+      "suma": 40411
+     },
+     {
+      "nazov": "Slávia Gymnastické centrum Bra",
+      "suma": 40381
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 25,
+    "suma": 3786857,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 1635610
+     },
+     {
+      "nazov": "Ministerstvo investícií, regio",
+      "suma": 1200000
+     },
+     {
+      "nazov": "Ministerstvo investícii, regio",
+      "suma": 435610
+     },
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 122321
+     },
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovens",
+      "suma": 120000
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 100000
+     },
+     {
+      "nazov": "Ministerstvo financií SR sekcia rozpočtová",
+      "suma": 100000
+     },
+     {
+      "nazov": "Slovenská akademická asociácia pre medzinárodnú spoluprácu, Národná agentúra programu Erasmus+ pre vzdelávanie a odbornú",
+      "suma": 56096
+     }
+    ]
+   }
   },
   "Podunajské Biskupice": {
-   "zmluv": 47,
-   "suma": 244486,
-   "prijimatelia": [
-    {
-     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
-     "suma": 98235
-    },
-    {
-     "nazov": "Hlavné mesto Slovenskej republ",
-     "suma": 32051
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 16500
-    },
-    {
-     "nazov": "Karate Klub Willo o.z.",
-     "suma": 13000
-    },
-    {
-     "nazov": "Baseballový klub Apollo Bratislava",
-     "suma": 12000
-    },
-    {
-     "nazov": "Občianske združenie SportInsti",
-     "suma": 9000
-    },
-    {
-     "nazov": "Baseballový klub Apollo Bratis",
-     "suma": 8500
-    },
-    {
-     "nazov": "Športový klub Koryo",
-     "suma": 6500
-    },
-    {
-     "nazov": "o.z. Šinter",
-     "suma": 6500
-    },
-    {
-     "nazov": "Občianske združenie SportInstitute",
-     "suma": 5000
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 36,
+    "suma": 89200,
+    "prijimatelia": [
+     {
+      "nazov": "Karate Klub Willo o.z.",
+      "suma": 13000
+     },
+     {
+      "nazov": "Baseballový klub Apollo Bratislava",
+      "suma": 12000
+     },
+     {
+      "nazov": "Občianske združenie SportInsti",
+      "suma": 9000
+     },
+     {
+      "nazov": "Baseballový klub Apollo Bratis",
+      "suma": 8500
+     },
+     {
+      "nazov": "Športový klub Koryo",
+      "suma": 6500
+     },
+     {
+      "nazov": "o.z. Šinter",
+      "suma": 6500
+     },
+     {
+      "nazov": "Občianske združenie SportInstitute",
+      "suma": 5000
+     },
+     {
+      "nazov": "Jumping Joe o.z.",
+      "suma": 5000
+     },
+     {
+      "nazov": "Sportinstitute, o.z.",
+      "suma": 5000
+     },
+     {
+      "nazov": "Bytový podnik Podunajské Bisku",
+      "suma": 5000
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 11,
+    "suma": 155286,
+    "poskytovatelia": [
+     {
+      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+      "suma": 98235
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej republ",
+      "suma": 32051
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 16500
+     },
+     {
+      "nazov": "Nadácia Ekopolis",
+      "suma": 4000
+     },
+     {
+      "nazov": "Ministerstvo kultúry Slovenskej republiky",
+      "suma": 4000
+     },
+     {
+      "nazov": "Slovenský zväz záhradkárov, ZO 2-5 Bratislava - Pod. Biskupice",
+      "suma": 500
+     }
+    ]
+   }
   },
   "Rača": {
-   "zmluv": 207,
-   "suma": 1789630,
-   "prijimatelia": [
-    {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-     "suma": 999999
-    },
-    {
-     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
-     "suma": 202717
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 129270
-    },
-    {
-     "nazov": "Futbalový klub Rača",
-     "suma": 92000
-    },
-    {
-     "nazov": "Ministerstvo kultúry Slovenskej republiky",
-     "suma": 60000
-    },
-    {
-     "nazov": "Klub priateľov futbalu Kengura",
-     "suma": 35300
-    },
-    {
-     "nazov": "Stará Jedáleň, občianske združenie",
-     "suma": 19200
-    },
-    {
-     "nazov": "Klub pozemného hokeja Rača",
-     "suma": 18600
-    },
-    {
-     "nazov": "Račiansky muzeálny spolok",
-     "suma": 17500
-    },
-    {
-     "nazov": "Športový klub karate SEIWA",
-     "suma": 14500
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 171,
+    "suma": 390245,
+    "prijimatelia": [
+     {
+      "nazov": "Futbalový klub Rača",
+      "suma": 92000
+     },
+     {
+      "nazov": "Klub priateľov futbalu Kengura",
+      "suma": 35300
+     },
+     {
+      "nazov": "Stará Jedáleň, občianske združenie",
+      "suma": 19200
+     },
+     {
+      "nazov": "Klub pozemného hokeja Rača",
+      "suma": 18600
+     },
+     {
+      "nazov": "Račiansky muzeálny spolok",
+      "suma": 17500
+     },
+     {
+      "nazov": "Športový klub karate SEIWA",
+      "suma": 14500
+     },
+     {
+      "nazov": "DEPAUL SLOVENSKO, nezisková organizácia",
+      "suma": 14100
+     },
+     {
+      "nazov": "BMX KLUB RAČA",
+      "suma": 14000
+     },
+     {
+      "nazov": "Račiansky vinohradnícky spolok",
+      "suma": 11794
+     },
+     {
+      "nazov": "Združenie na pomoc ľuďom s mentálnym postihnutím v Slovenskej republike, občianske združenie, r.s.p.",
+      "suma": 10900
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 36,
+    "suma": 1399385,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 999999
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+      "suma": 202717
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 129270
+     },
+     {
+      "nazov": "Ministerstvo kultúry Slovenskej republiky",
+      "suma": 60000
+     },
+     {
+      "nazov": "Slovenský zväz invalidov - ZO Rača",
+      "suma": 4300
+     },
+     {
+      "nazov": "Nadácia VÚB",
+      "suma": 2000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 1100
+     }
+    ]
+   }
   },
   "Rusovce": {
-   "zmluv": 40,
-   "suma": 229592,
-   "prijimatelia": [
-    {
-     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
-     "suma": 50000
-    },
-    {
-     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
-     "suma": 50000
-    },
-    {
-     "nazov": "Miestny futbalový klub Rusovce",
-     "suma": 48000
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 45500
-    },
-    {
-     "nazov": "Hlavné mesto SR Bratislava",
-     "suma": 28112
-    },
-    {
-     "nazov": "Jednota dôchodcov Slovenska-Miestna organizácia v Rusovciach",
-     "suma": 2000
-    },
-    {
-     "nazov": "Ministerstvo kultúry Slovenskej republiky",
-     "suma": 1500
-    },
-    {
-     "nazov": "Ministerstvo kultúry SR",
-     "suma": 1500
-    },
-    {
-     "nazov": "Nadácia Pontis",
-     "suma": 1280
-    },
-    {
-     "nazov": "Dobrovoľný hasičský zbor Rusovce",
-     "suma": 800
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 13,
+    "suma": 51700,
+    "prijimatelia": [
+     {
+      "nazov": "Miestny futbalový klub Rusovce",
+      "suma": 48000
+     },
+     {
+      "nazov": "Jednota dôchodcov Slovenska-Miestna organizácia v Rusovciach",
+      "suma": 2000
+     },
+     {
+      "nazov": "Dobrovoľný hasičský zbor Rusovce",
+      "suma": 800
+     },
+     {
+      "nazov": "Materské centrum Kukulienka",
+      "suma": 450
+     },
+     {
+      "nazov": "Materské centrum KUKULIENKA",
+      "suma": 450
+     },
+     {
+      "nazov": "VÚB, a.s.",
+      "suma": 0
+     },
+     {
+      "nazov": "Kresťanská liga pre pomoc mentálne postihnutým na Slovensku",
+      "suma": 0
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 27,
+    "suma": 177892,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 50000
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+      "suma": 50000
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 45500
+     },
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 28112
+     },
+     {
+      "nazov": "Ministerstvo kultúry Slovenskej republiky",
+      "suma": 1500
+     },
+     {
+      "nazov": "Ministerstvo kultúry SR",
+      "suma": 1500
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 1280
+     },
+     {
+      "nazov": "Ministerstvo vnútra Slovenskej republiky",
+      "suma": 0
+     }
+    ]
+   }
   },
   "Ružinov": {
-   "zmluv": 163,
-   "suma": 3745038,
-   "prijimatelia": [
-    {
-     "nazov": "TVR a RE, s.r.o.",
-     "suma": 2220420
-    },
-    {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-     "suma": 396482
-    },
-    {
-     "nazov": "Hlavné mesto SR Bratislava",
-     "suma": 203538
-    },
-    {
-     "nazov": "Ministerstvo financií SR",
-     "suma": 155000
-    },
-    {
-     "nazov": "Ministerstvo financií Slovenskej republiky",
-     "suma": 155000
-    },
-    {
-     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
-     "suma": 142600
-    },
-    {
-     "nazov": "Ministerstvo práce, soc. vecí a rodiny SR",
-     "suma": 22600
-    },
-    {
-     "nazov": "Folklórne združenie KARPATY",
-     "suma": 19100
-    },
-    {
-     "nazov": "Slovenský curlingový zväz",
-     "suma": 18000
-    },
-    {
-     "nazov": "Športový klub LIDO",
-     "suma": 16500
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 135,
+    "suma": 2630890,
+    "prijimatelia": [
+     {
+      "nazov": "TVR a RE, s.r.o.",
+      "suma": 2220420
+     },
+     {
+      "nazov": "Folklórne združenie KARPATY",
+      "suma": 19100
+     },
+     {
+      "nazov": "Slovenský curlingový zväz",
+      "suma": 18000
+     },
+     {
+      "nazov": "Športový klub LIDO",
+      "suma": 16500
+     },
+     {
+      "nazov": "Spoločenstvo detí a mládeže (SDM) Domino",
+      "suma": 16250
+     },
+     {
+      "nazov": "HK RUŽINOV 99 Bratislava, a.s.",
+      "suma": 14900
+     },
+     {
+      "nazov": "HK RUŽINOV ´99 Bratislava, a.s.",
+      "suma": 14500
+     },
+     {
+      "nazov": "Špeciálna základná škola s MŠ, Nevädzová 3",
+      "suma": 13470
+     },
+     {
+      "nazov": "DEPAUL SLOVENSKO, n. o.",
+      "suma": 10730
+     },
+     {
+      "nazov": "DEPAUL SLOVENSKO, nezisková organizácia",
+      "suma": 10262
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 28,
+    "suma": 1114148,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 396482
+     },
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 203538
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 155000
+     },
+     {
+      "nazov": "Ministerstvo financií Slovenskej republiky",
+      "suma": 155000
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 142600
+     },
+     {
+      "nazov": "Ministerstvo práce, soc. vecí a rodiny SR",
+      "suma": 22600
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 10208
+     },
+     {
+      "nazov": "Úrad vlády SR",
+      "suma": 10000
+     }
+    ]
+   }
   },
   "Staré Mesto": {
-   "zmluv": 226,
-   "suma": 4936313,
-   "prijimatelia": [
-    {
-     "nazov": "Ministerstvo práce, sociálnych",
-     "suma": 2301080
-    },
-    {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.",
-     "suma": 1738960
-    },
-    {
-     "nazov": "Ministerstvo kultúry Slovenske",
-     "suma": 205727
-    },
-    {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-     "suma": 103254
-    },
-    {
-     "nazov": "Ministerstvo investícií, regio",
-     "suma": 103254
-    },
-    {
-     "nazov": "Hlavné mesto Slovenskej republ",
-     "suma": 41000
-    },
-    {
-     "nazov": "Nadácia BVS",
-     "suma": 40000
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 30000
-    },
-    {
-     "nazov": "Ministerstvo kultúry Slovenskej republiky",
-     "suma": 29000
-    },
-    {
-     "nazov": "Fond architekta Weinwurma n.f.",
-     "suma": 20000
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 183,
+    "suma": 279977,
+    "prijimatelia": [
+     {
+      "nazov": "Občianske združenie Odyseus",
+      "suma": 13166
+     },
+     {
+      "nazov": "Divadlo bez domova",
+      "suma": 9500
+     },
+     {
+      "nazov": "Literárne informačné centrum",
+      "suma": 9262
+     },
+     {
+      "nazov": "Vagus, občianske združenie",
+      "suma": 7450
+     },
+     {
+      "nazov": "DEPAUL SLOVENSKO, nezisková organizácia",
+      "suma": 7000
+     },
+     {
+      "nazov": "PUNKT o.z.",
+      "suma": 6400
+     },
+     {
+      "nazov": "Klub za starú Bratislavu",
+      "suma": 6380
+     },
+     {
+      "nazov": "Občianske združenie VEĎ",
+      "suma": 6350
+     },
+     {
+      "nazov": "Divadelné združenie GUnaGU",
+      "suma": 5800
+     },
+     {
+      "nazov": "ALBRECHT FORUM, o.z.",
+      "suma": 5700
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 43,
+    "suma": 4656336,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo práce, sociálnych",
+      "suma": 2301080
+     },
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.",
+      "suma": 1738960
+     },
+     {
+      "nazov": "Ministerstvo kultúry Slovenske",
+      "suma": 205727
+     },
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 103254
+     },
+     {
+      "nazov": "Ministerstvo investícií, regio",
+      "suma": 103254
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej republ",
+      "suma": 41000
+     },
+     {
+      "nazov": "Nadácia BVS",
+      "suma": 40000
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 30000
+     }
+    ]
+   }
   },
   "Vajnory": {
-   "zmluv": 8,
-   "suma": 17600,
-   "prijimatelia": [
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 7300
-    },
-    {
-     "nazov": "Ministerstvo financií SR",
-     "suma": 5000
-    },
-    {
-     "nazov": "Ministerstvo financií Slovenskej republiky, Sekcia informatizácie spoločnosti",
-     "suma": 5000
-    },
-    {
-     "nazov": "Nadácia Pontis",
-     "suma": 300
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 0,
+    "suma": 0,
+    "prijimatelia": []
+   },
+   "prijate": {
+    "zmluv": 8,
+    "suma": 17600,
+    "poskytovatelia": [
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 7300
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 5000
+     },
+     {
+      "nazov": "Ministerstvo financií Slovenskej republiky, Sekcia informatizácie spoločnosti",
+      "suma": 5000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 300
+     }
+    ]
+   }
   },
   "Vrakuňa": {
-   "zmluv": 35,
-   "suma": 1323003,
-   "prijimatelia": [
-    {
-     "nazov": "Environmentálny fond",
-     "suma": 807922
-    },
-    {
-     "nazov": "Hlavné mesto SR Bratislava",
-     "suma": 117294
-    },
-    {
-     "nazov": "Športový klub Vrakuňa Bratislava",
-     "suma": 92750
-    },
-    {
-     "nazov": "Športový klub Vrakuňa Bratisla",
-     "suma": 88000
-    },
-    {
-     "nazov": "Hlavné mesto Slovenskej republ",
-     "suma": 52607
-    },
-    {
-     "nazov": "Ministerstvo financií SR",
-     "suma": 50000
-    },
-    {
-     "nazov": "Ministerstvo financií",
-     "suma": 50000
-    },
-    {
-     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
-     "suma": 45400
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 10000
-    },
-    {
-     "nazov": "Občianske združenie Odyseus",
-     "suma": 3400
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 19,
+    "suma": 189050,
+    "prijimatelia": [
+     {
+      "nazov": "Športový klub Vrakuňa Bratislava",
+      "suma": 92750
+     },
+     {
+      "nazov": "Športový klub Vrakuňa Bratisla",
+      "suma": 88000
+     },
+     {
+      "nazov": "Občianske združenie Odyseus",
+      "suma": 3400
+     },
+     {
+      "nazov": "Občianske združenie Pátrač Tin",
+      "suma": 1500
+     },
+     {
+      "nazov": "o.z. ŠINTER",
+      "suma": 1500
+     },
+     {
+      "nazov": "Športový klub Koryo",
+      "suma": 600
+     },
+     {
+      "nazov": "Rímskokatolícka cirkev farnosť Mena Panny Márie",
+      "suma": 500
+     },
+     {
+      "nazov": "P3 projekt s. r. o.",
+      "suma": 500
+     },
+     {
+      "nazov": "Rybársky klub KRAKEN",
+      "suma": 300
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 16,
+    "suma": 1133953,
+    "poskytovatelia": [
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 807922
+     },
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 117294
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej republ",
+      "suma": 52607
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 50000
+     },
+     {
+      "nazov": "Ministerstvo financií",
+      "suma": 50000
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 45400
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 10000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 730
+     }
+    ]
+   }
   },
   "Záhorská Bystrica": {
-   "zmluv": 45,
-   "suma": 443908,
-   "prijimatelia": [
-    {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-     "suma": 251658
-    },
-    {
-     "nazov": "Ministerstvo financií SR",
-     "suma": 35000
-    },
-    {
-     "nazov": "Rímskokatolícka cirkev Farnosť Bratislava - Záhorská Bystrica",
-     "suma": 30000
-    },
-    {
-     "nazov": "Dobrovoľný hasičský zbor",
-     "suma": 25000
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 21500
-    },
-    {
-     "nazov": "Slovenský futbalový zväz",
-     "suma": 11000
-    },
-    {
-     "nazov": "Rímskokatolícka cirkev Farnosť",
-     "suma": 10000
-    },
-    {
-     "nazov": "City Kids, občianske združenie",
-     "suma": 9000
-    },
-    {
-     "nazov": "Občianske združenie City Kids",
-     "suma": 8000
-    },
-    {
-     "nazov": "Spoločenstvo priateľov stolnéh",
-     "suma": 6500
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 33,
+    "suma": 134550,
+    "prijimatelia": [
+     {
+      "nazov": "Rímskokatolícka cirkev Farnosť Bratislava - Záhorská Bystrica",
+      "suma": 30000
+     },
+     {
+      "nazov": "Dobrovoľný hasičský zbor",
+      "suma": 25000
+     },
+     {
+      "nazov": "Slovenský futbalový zväz",
+      "suma": 11000
+     },
+     {
+      "nazov": "Rímskokatolícka cirkev Farnosť",
+      "suma": 10000
+     },
+     {
+      "nazov": "City Kids, občianske združenie",
+      "suma": 9000
+     },
+     {
+      "nazov": "Občianske združenie City Kids",
+      "suma": 8000
+     },
+     {
+      "nazov": "Spoločenstvo priateľov stolnéh",
+      "suma": 6500
+     },
+     {
+      "nazov": "Spoločenstvo priateľov stolného tenisu",
+      "suma": 6000
+     },
+     {
+      "nazov": "Klub dôchodcov",
+      "suma": 6000
+     },
+     {
+      "nazov": "Miestny odbor Matice slovenske",
+      "suma": 5000
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 12,
+    "suma": 309358,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 251658
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 35000
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 21500
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 1200
+     },
+     {
+      "nazov": "Hlavné mesto SR BA odd. pultu centrál. ochrany a informatik",
+      "suma": 0
+     },
+     {
+      "nazov": "Hlavné mesto SR BA",
+      "suma": 0
+     }
+    ]
+   }
   },
   "Čunovo": {
-   "zmluv": 22,
-   "suma": 77999,
-   "prijimatelia": [
-    {
-     "nazov": "Telovýchovná jednota Čunovo",
-     "suma": 40500
-    },
-    {
-     "nazov": "Hlavné mesto SR Bratislava",
-     "suma": 19749
-    },
-    {
-     "nazov": "Bratislavský samosprávny kraj",
-     "suma": 8000
-    },
-    {
-     "nazov": "OZ Chorvátsky kultúrny spolok Čunovo",
-     "suma": 8000
-    },
-    {
-     "nazov": "Športovo strelecký klub magic shot Čunovo",
-     "suma": 1000
-    },
-    {
-     "nazov": "Nadácia Pontis",
-     "suma": 750
-    }
-   ]
+   "poskytnute": {
+    "zmluv": 10,
+    "suma": 49500,
+    "prijimatelia": [
+     {
+      "nazov": "Telovýchovná jednota Čunovo",
+      "suma": 40500
+     },
+     {
+      "nazov": "OZ Chorvátsky kultúrny spolok Čunovo",
+      "suma": 8000
+     },
+     {
+      "nazov": "Športovo strelecký klub magic shot Čunovo",
+      "suma": 1000
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 12,
+    "suma": 28499,
+    "poskytovatelia": [
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 19749
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 8000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 750
+     }
+    ]
+   }
   }
  },
- "aktualizovane": "2026-10-15T19:57:32+00:00"
+ "aktualizovane": "2026-10-15T20:08:56+00:00"
 }
