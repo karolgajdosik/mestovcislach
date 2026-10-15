@@ -3,7 +3,7 @@
   "nazov": "OpenStreetMap",
   "licencia": "ODbL – © prispievatelia OpenStreetMap",
   "url": "https://www.openstreetmap.org/copyright",
-  "stav_osm": "2026-10-15T04:45:21Z"
+  "stav_osm": "2026-10-15T05:17:20Z"
  },
  "kategorie": {
   "lekarne": "Lekárne",
@@ -16,7 +16,9 @@
   "ambulancie": 327,
   "nemocnice": 91,
   "nabijanie": 172,
-  "nabijacie_miesta": 455
+  "nabijacie_miesta": 455,
+  "pamiatky": 103,
+  "stromy": 30
  },
  "mestske_casti": [
   {
@@ -28,6 +30,8 @@
    "nemocnice": 1,
    "nabijanie": 9,
    "nabijacie_miesta": 21,
+   "pamiatky": 0,
+   "stromy": 1,
    "lekarne_na_10000": 0.0,
    "ambulancie_na_10000": 0.0
   },
@@ -40,6 +44,8 @@
    "nemocnice": 3,
    "nabijanie": 8,
    "nabijacie_miesta": 17,
+   "pamiatky": 0,
+   "stromy": 0,
    "lekarne_na_10000": 2.9,
    "ambulancie_na_10000": 2.3
   },
@@ -52,6 +58,8 @@
    "nemocnice": 2,
    "nabijanie": 11,
    "nabijacie_miesta": 20,
+   "pamiatky": 1,
+   "stromy": 0,
    "lekarne_na_10000": 2.5,
    "ambulancie_na_10000": 3.4
   },
@@ -64,6 +72,8 @@
    "nemocnice": 0,
    "nabijanie": 2,
    "nabijacie_miesta": 11,
+   "pamiatky": 2,
+   "stromy": 0,
    "lekarne_na_10000": 3.1,
    "ambulancie_na_10000": 9.2
   },
@@ -76,6 +86,8 @@
    "nemocnice": 3,
    "nabijanie": 8,
    "nabijacie_miesta": 23,
+   "pamiatky": 3,
+   "stromy": 0,
    "lekarne_na_10000": 4.0,
    "ambulancie_na_10000": 4.9
   },
@@ -88,6 +100,8 @@
    "nemocnice": 2,
    "nabijanie": 10,
    "nabijacie_miesta": 23,
+   "pamiatky": 0,
+   "stromy": 0,
    "lekarne_na_10000": 3.8,
    "ambulancie_na_10000": 8.9
   },
@@ -100,6 +114,8 @@
    "nemocnice": 13,
    "nabijanie": 20,
    "nabijacie_miesta": 63,
+   "pamiatky": 15,
+   "stromy": 0,
    "lekarne_na_10000": 6.3,
    "ambulancie_na_10000": 6.1
   },
@@ -112,6 +128,8 @@
    "nemocnice": 17,
    "nabijanie": 31,
    "nabijacie_miesta": 71,
+   "pamiatky": 1,
+   "stromy": 0,
    "lekarne_na_10000": 3.6,
    "ambulancie_na_10000": 5.0
   },
@@ -124,6 +142,8 @@
    "nemocnice": 3,
    "nabijanie": 3,
    "nabijacie_miesta": 9,
+   "pamiatky": 4,
+   "stromy": 0,
    "lekarne_na_10000": 3.9,
    "ambulancie_na_10000": 2.2
   },
@@ -136,6 +156,8 @@
    "nemocnice": 1,
    "nabijanie": 5,
    "nabijacie_miesta": 15,
+   "pamiatky": 0,
+   "stromy": 0,
    "lekarne_na_10000": 3.4,
    "ambulancie_na_10000": 2.6
   },
@@ -148,6 +170,8 @@
    "nemocnice": 0,
    "nabijanie": 2,
    "nabijacie_miesta": 8,
+   "pamiatky": 1,
+   "stromy": 0,
    "lekarne_na_10000": 2.2,
    "ambulancie_na_10000": 0.0
   },
@@ -160,6 +184,8 @@
    "nemocnice": 29,
    "nabijanie": 35,
    "nabijacie_miesta": 100,
+   "pamiatky": 1,
+   "stromy": 2,
    "lekarne_na_10000": 7.2,
    "ambulancie_na_10000": 12.2
   },
@@ -172,6 +198,8 @@
    "nemocnice": 15,
    "nabijanie": 16,
    "nabijacie_miesta": 45,
+   "pamiatky": 66,
+   "stromy": 27,
    "lekarne_na_10000": 9.4,
    "ambulancie_na_10000": 16.3
   },
@@ -184,6 +212,8 @@
    "nemocnice": 1,
    "nabijanie": 5,
    "nabijacie_miesta": 7,
+   "pamiatky": 0,
+   "stromy": 0,
    "lekarne_na_10000": 5.0,
    "ambulancie_na_10000": 5.0
   },
@@ -196,6 +226,8 @@
    "nemocnice": 0,
    "nabijanie": 0,
    "nabijacie_miesta": 0,
+   "pamiatky": 0,
+   "stromy": 0,
    "lekarne_na_10000": 1.0,
    "ambulancie_na_10000": 0.5
   },
@@ -208,6 +240,8 @@
    "nemocnice": 1,
    "nabijanie": 6,
    "nabijacie_miesta": 18,
+   "pamiatky": 7,
+   "stromy": 0,
    "lekarne_na_10000": 2.5,
    "ambulancie_na_10000": 3.7
   },
@@ -220,9 +254,11 @@
    "nemocnice": 0,
    "nabijanie": 1,
    "nabijacie_miesta": 4,
+   "pamiatky": 2,
+   "stromy": 0,
    "lekarne_na_10000": 0.0,
    "ambulancie_na_10000": 0.0
   }
  ],
- "aktualizovane": "2026-10-15T04:46:35+00:00"
+ "aktualizovane": "2026-10-15T05:19:01+00:00"
 }
