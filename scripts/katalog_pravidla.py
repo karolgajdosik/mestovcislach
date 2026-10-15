@@ -40,6 +40,8 @@ OSOBITNE = {
     "9d318577": ("/mapa", "Vysadené stromy od 2019", "zber_vrstvy.py"), "0ce440f8": ("/mapa", "Starostlivosť o dreviny", "zber_vrstvy.py"),
     
     "48b41105": ("/mapa", "Chovné a veterinárne zariadenia", "zber_vrstvy.py"),
+    "45f653d4": ("/mapa#horucavy", "Ochladzovacie miesta (Ochlaď sa!)", "zber_vrstvy.py"), "a8ef3fba": ("/mapa", "Fixpointy na zber injekčných striekačiek", "zber_vrstvy.py"),
+    "17666d9d": ("/mapa", "Debarierizované chodníky", "zber_vrstvy.py"),
     "7a8c8bd7": ("/mapa", "Klimatický atlas – citlivosť budov na zrážky", "zber_klima.py"), "367d0139": ("/mapa", "Klimatický atlas – citlivosť celková", "zber_klima.py"),
     "8eedf533": ("/mapa", "Klimatický atlas – citlivosť na horúčavy", "zber_klima.py"), "575142ec": ("/mapa", "Klimatický atlas – riziko horúčav", "zber_klima.py"),
     "be617c15": ("/mapa", "Klimatický atlas – riziko celkové", "zber_klima.py"), "074fc4b3": ("/mapa", "Klimatický atlas – riziko pre dopravu", "zber_klima.py"),
@@ -82,6 +84,7 @@ STLPCE_PREC = {
     "9428dac0": ["Telefónny_kontakt", "Emailový_kontakt"],
     "52716173": ["PSČ", "Mesto", "Ulica", "E_mail", "Telefónne_číslo"],
     "dc4cfc3b": [],
+    "0b7b1704": ["KONTAKT"],  # kontaktná osoba organizácie
     # staré zmluvy magistrátu: Meno/Priezvisko/Funkcia = zamestnanec mesta; adresa dodávateľa môže byť bydlisko živnostníka
     "e5913475": ["Meno", "Priezvisko", "Funkcia", "Ulica", "PSČ", "Miesto"],
     "3a6d0c8a": ["Meno", "Priezvisko", "Funkcia", "Ulica", "PSČ", "Miesto"],

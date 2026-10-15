@@ -25,7 +25,8 @@ from spolocne import url_vrstvy, DATA, VEREJNE, geokoder, mc_podla_polohy, s, sp
 
 ITEM = "https://www.arcgis.com/sharing/rest/content/items/{}"
 KATEGORIE = {"bezbarierove": "Bezbariérové miesta", "fontany": "Pitné fontány", "sportoviska": "Športoviská",
-             "bezdomovci": "Pomoc ľuďom bez domova", "veterina": "Veterinárne ambulancie a kliniky"}
+             "bezdomovci": "Pomoc ľuďom bez domova", "veterina": "Veterinárne ambulancie a kliniky", "ochladzovanie": "Ochladzovacie miesta (Ochlaď sa!)",
+             "fixpointy": "Fixpointy na zber injekčných striekačiek", "debarierizacie": "Debarierizované chodníky"}
 _jtsk = Transformer.from_crs("EPSG:5514", "EPSG:4326", always_xy=True)
 
 
@@ -186,6 +187,28 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         chyby.append(f"6. Stromy: výsadba od 2019 (bez darcov) a starostlivosť o dreviny (bez referentov a dodávateľov): {e}")
         print(f"CHYBA 6. Stromy: výsadba od 2019 (bez darcov) a starostlivosť o dreviny (bez referentov a dodávateľov): {e}")
+
+    # 7. Ochladzovacie miesta, fixpointy, debarierizované chodníky
+    try:
+        for r in riadky(plne_id("45f653d4")):
+            g = geo(None, t(r.get("ADRESA")))
+            pridaj(g[:2] if g else None, "ochladzovanie", t(r.get("FIRMA")), {"typ": t(r.get("PONUKA"))[:120], "a": t(r.get("ADRESA")), "h_text": t(r.get("HODINY")),
+                                                                            "pop": t(r.get("POPIS"))[:250], "w": t(r.get("WEB")), "pribl": g and g[2] == "ulica"})
+    except Exception as e:  # noqa: BLE001
+        chyby.append(f"ochladzovanie: {e}")
+    try:
+        for r in riadky(plne_id("a8ef3fba")):
+            pridaj(suradnice(r.get("Latitude"), r.get("Longitude")), "fixpointy", t(r.get("Nazov")) or "Fixpoint", {"a": t(r.get("Adresa")), "mc": t(r.get("mestska_cast"))})
+    except Exception as e:  # noqa: BLE001
+        chyby.append(f"fixpointy: {e}")
+    try:
+        for r in riadky(plne_id("17666d9d")):
+            g = geo(r.get("MESTSKA_CAST"), t(r.get("ULICA")))
+            pridaj(g[:2] if g else None, "debarierizacie", t(r.get("ULICA")), {"typ": t(r.get("TYP_PRACE")), "a": t(r.get("LOKALIZACIA"))[:150],
+                                                                            "info": [x for x in (f"opravené {t(r.get('ROK_OPRAVY'))}" if t(r.get("ROK_OPRAVY")) else "", t(r.get("STAV_PRED_OPRAVOU"))[:150]) if x],
+                                                                            "pribl": True})
+    except Exception as e:  # noqa: BLE001
+        chyby.append(f"debarierizácie: {e}")
 
     if len(body) < 300:
         raise RuntimeError(f"Málo bodov ({len(body)}): {dict(statistika)}; chyby {chyby}")

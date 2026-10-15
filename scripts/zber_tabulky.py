@@ -164,6 +164,9 @@ def main() -> int:
                 z |= {"stav": "vynechane", "dovod": f"Chyba pri načítaní zo zdroja: {e}", "kde": None}
             else:
                 z |= r
+    # datasety, ktoré sú len v národnom katalógu (data.slovensko.sk), nie na portáli mesta
+    stav.append({"id": "narodny-katalog-papsport", "nazov": "papsport plochy all fin", "kategoria": "Ostatné", "stav": "vynechane",
+                 "dovod": "Pracovný súbor bez popisu a dokumentácie, uvedený len v národnom katalógu data.slovensko.sk – na portáli mesta nie je."})
     stav.sort(key=lambda z: (z["kategoria"], (z["nazov"] or "").lower()))
     pocty: dict[str, int] = defaultdict(int)
     for z in stav:

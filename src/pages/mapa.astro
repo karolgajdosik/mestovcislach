@@ -66,6 +66,9 @@ const vrstvy = [
   ['sportoviska', 'Športoviská', 'Mesto pre ľudí', '--m-sportoviska', false],
   ['bezdomovci', 'Pomoc ľuďom bez domova', 'Mesto pre ľudí', '--m-bezdomovci', false],
   ['veterina', 'Veterinárne ambulancie', 'Mesto pre ľudí', '--m-veterina', false],
+  ['ochladzovanie', 'Ochladzovacie miesta v lete', 'Mesto pre ľudí', '--m-ochladzovanie', false],
+  ['debarierizacie', 'Debarierizované chodníky', 'Mesto pre ľudí', '--m-debarierizacie', false],
+  ['fixpointy', 'Fixpointy (injekčné striekačky)', 'Mesto pre ľudí', '--m-fixpointy', false],
   ['podnety', 'Podnety občanov (posledný rok v dátach)', 'Mesto pre ľudí', '--m-podnety', false],
   ['pamiatky', 'Kultúrne pamiatky (register)', 'Kultúra a príroda', '--m-pamiatky', false],
   ['pamiatky_osm', 'Pamiatky s fotkami (OSM)', 'Kultúra a príroda', '--m-pamiatky_osm', false],
@@ -279,7 +282,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       onEachFeature: (f: any, l) => l.bindPopup(popupObvodu(f.properties), { maxWidth: 280 }),
     });
   };
-  for (const k of ['bezbarierove', 'fontany', 'sportoviska', 'bezdomovci', 'veterina']) {
+  for (const k of ['bezbarierove', 'fontany', 'sportoviska', 'bezdomovci', 'veterina', 'ochladzovanie', 'debarierizacie', 'fixpointy']) {
     tvorba[k] = async () => {
       const d = await json('/data/vrstvy-bratislava.json');
       return L.layerGroup(d.body.filter((b: any[]) => b[2] === k).map(([lat, lon, , n, det]: any[]) =>
@@ -325,7 +328,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   }
 
   const hotove: Record<string, L.Layer> = {};
-  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'scitace', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'k_riziko_horucavy', 'k_citlivost_horucavy', 'k_riziko_zrazky_budovy', 'k_riziko_doprava', 'k_riziko_celkove', 'k_citlivost_celkova', 'k_citlivost_zrazky_budovy', 'k_citlivost_doprava', 'k_kapacita_budov_zrazky', 'k_kupaliska', 'k_hustota', 'obvody', 'hluk_den', 'hluk_noc', 'hluk_priemysel', 'jasle', 'skoly_ms', 'skoly_zs', 'skoly_ss', 'skoly_zus', 'socialne', 'bezbarierove', 'fontany', 'sportoviska', 'bezdomovci', 'veterina', 'podnety', 'vysadba', 'starostlivost', 'pamiatky', 'pamiatky_osm', 'muzea', 'kultura', 'stromy', 'skladky', 'uzavierky', 'poruchy'];
+  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'scitace', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'k_riziko_horucavy', 'k_citlivost_horucavy', 'k_riziko_zrazky_budovy', 'k_riziko_doprava', 'k_riziko_celkove', 'k_citlivost_celkova', 'k_citlivost_zrazky_budovy', 'k_citlivost_doprava', 'k_kapacita_budov_zrazky', 'k_kupaliska', 'k_hustota', 'obvody', 'hluk_den', 'hluk_noc', 'hluk_priemysel', 'jasle', 'skoly_ms', 'skoly_zs', 'skoly_ss', 'skoly_zus', 'socialne', 'bezbarierove', 'fontany', 'sportoviska', 'bezdomovci', 'veterina', 'ochladzovanie', 'debarierizacie', 'fixpointy', 'podnety', 'vysadba', 'starostlivost', 'pamiatky', 'pamiatky_osm', 'muzea', 'kultura', 'stromy', 'skladky', 'uzavierky', 'poruchy'];
   async function prepni(k: string, zapnut: boolean) {
     if (!zapnut) { hotove[k]?.remove(); return; }
     try {
@@ -353,7 +356,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   });
   // odkaz /mapa#hluk, #skoly, #pamiatky… zapne zodpovedajúce vrstvy
   const HASH: Record<string, string[]> = { hluk: ['hluk_den'], skoly: ['skoly_zs', 'obvody'], pamiatky: ['pamiatky'], socialne: ['jasle', 'socialne'],
-    horucavy: ['k_riziko_horucavy', 'fontany'], klima: ['k_riziko_celkove'], hustota: ['k_hustota'], sport: ['sportoviska'], bezbarierove: ['bezbarierove'],
+    horucavy: ['k_riziko_horucavy', 'fontany', 'ochladzovanie'], klima: ['k_riziko_celkove'], hustota: ['k_hustota'], sport: ['sportoviska'], bezbarierove: ['bezbarierove'],
     podnety: ['podnety'], stromy: ['vysadba'], fontany: ['fontany'] };
   for (const k of HASH[location.hash.slice(1)] ?? []) {
     const i = obal.querySelector<HTMLInputElement>(`input[value="${k}"]`);
@@ -386,6 +389,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
     --m-skoly_zus: #0891b2; --m-socialne: #9d174d; --m-obvody: #60a5fa; --m-hluk: #f97316;
     --m-bezbarierove: #2563eb; --m-fontany: #0ea5e9; --m-sportoviska: #16a34a; --m-bezdomovci: #be185d; --m-veterina: #92400e;
     --m-podnety: #64748b; --m-vysadba: #65a30d; --m-starostlivost: #a3a3a3; --m-klima: #f59e0b;
+    --m-ochladzovanie: #06b6d4; --m-debarierizacie: #1d4ed8; --m-fixpointy: #7c2d12;
   }
   @media (prefers-color-scheme: dark) {
     :global(:root) {
@@ -397,6 +401,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       --m-skoly_zus: #67e8f9; --m-socialne: #f9a8d4; --m-obvody: #93c5fd; --m-hluk: #fdba74;
       --m-bezbarierove: #93c5fd; --m-fontany: #7dd3fc; --m-sportoviska: #86efac; --m-bezdomovci: #f9a8d4; --m-veterina: #fcd34d;
       --m-podnety: #cbd5e1; --m-vysadba: #bef264; --m-starostlivost: #d4d4d4; --m-klima: #fcd34d;
+      --m-ochladzovanie: #67e8f9; --m-debarierizacie: #93c5fd; --m-fixpointy: #fdba74;
     }
   }
   .hero { padding: 32px 0 16px; }

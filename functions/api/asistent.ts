@@ -56,7 +56,7 @@ const KATEGORIE: [RegExp, string][] = [
   [/pamiat|hrad|kostol|historic/, 'Kultúrne pamiatky'], [/chranen.*strom|pamatn.*strom/, 'Chránené stromy'],
   [/jasl|do (troch|3) rokov/, 'Jasle'], [/senior|domov dochodc|dochodcov|opatrova|socialn\w* sluz|noclah|nocluh|utulok|stacionar/, 'Sociálne služby'],
   [/zakladn\w* umel|\bzus\b/, 'Základná umelecká škola'], [/zakladn\w* skol|\bzs\b/, 'Základná škola'], [/materskn?\w* skol|skolk|\bms\b/, 'Materská škola'],
-  [/stredn\w* skol|gymnaz|\bsos\b|\bsps\b|obchodn\w* akadem/, 'Stredná škola'], [/fontan|pitn\w* (voda|fontan)|napit/, 'Pitné fontány'], [/bezbarier|vozick|imobil/, 'Bezbariérové miesta'],
+  [/stredn\w* skol|gymnaz|\bsos\b|\bsps\b|obchodn\w* akadem/, 'Stredná škola'], [/fontan|pitn\w* (voda|fontan)|napit/, 'Pitné fontány'], [/ochlad|klimatiz|schladi|vychlad/, 'Ochladzovacie miesta (Ochlaď sa!)'], [/bezbarier|vozick|imobil/, 'Bezbariérové miesta'],
   [/bez domova|bezdomov|noclah|nocluh/, 'Pomoc ľuďom bez domova'], [/veterin|zverolekar/, 'Veterinárne ambulancie a kliniky'],
   [/sportovis|ihrisk|futbal|tenis|basketbal|volejbal|posilnov|telocvic|plavar|kupalisk|skatepark|workout/, 'Športoviská'],
   [/zastav/, 'Zastávka MHD'], [/bajk(?!al)|zdielan.*bicyk/, 'Stanica BAjk'],

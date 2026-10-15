@@ -299,7 +299,7 @@ export async function GET() {
   for (const z of mhd?.zastavky ?? []) miesta.push({ n: z.nazov, k: 'Zastávka MHD', c: mc(z.kod_obce), lat: z.lat, lon: z.lon, linky: z.linky.join(', '), odchody: z.odchody });
   for (const s of bajk?.stanice ?? []) miesta.push({ n: s.nazov, k: 'Stanica BAjk', c: mc(s.kod_obce), lat: s.lat, lon: s.lon });
   for (const [lat, lon, kat, nazov, det] of nacitaj('vrstvy-bratislava.json', 'public/data')?.body ?? []) {
-    const K: Record<string, string> = { bezbarierove: 'Bezbariérové miesta', fontany: 'Pitné fontány', sportoviska: 'Športoviská', bezdomovci: 'Pomoc ľuďom bez domova', veterina: 'Veterinárne ambulancie a kliniky' };
+    const K: Record<string, string> = { bezbarierove: 'Bezbariérové miesta', fontany: 'Pitné fontány', sportoviska: 'Športoviská', bezdomovci: 'Pomoc ľuďom bez domova', veterina: 'Veterinárne ambulancie a kliniky', ochladzovanie: 'Ochladzovacie miesta (Ochlaď sa!)', fixpointy: 'Fixpointy na zber injekčných striekačiek', debarierizacie: 'Debarierizované chodníky' };
     miesta.push({ n: nazov, k: K[kat] ?? kat, c: castPre(lat, lon), lat, lon, typ: det.typ, a: det.a, w: det.w, info: det.info?.join('; ')?.slice(0, 200) });
   }
   for (const m of miesta) { delete m.f; delete m.id; }
