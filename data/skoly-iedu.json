@@ -1,0 +1,746 @@
+{
+ "zdroj": {
+  "nazov": "MŠVVaM SR – Digitálna mapa škôl",
+  "url": "https://mapaskol.iedu.sk",
+  "licencia": "otvorené dáta (data.slovensko.sk)"
+ },
+ "zdroj_zaujem": {
+  "nazov": "MŠVVaM SR – Naplnenosť škôl a možnosti štúdia",
+  "url": "https://www.svs.edu.sk",
+  "licencia": "otvorené dáta (data.slovensko.sk)"
+ },
+ "typy": {
+  "ms": "Materské školy",
+  "zs": "Základné školy",
+  "ss": "Stredné školy",
+  "spec": "Špeciálne školy",
+  "zus": "Umelecké školy (ZUŠ)",
+  "cvc": "Centrá voľného času"
+ },
+ "rok_rozpoctu": 2024,
+ "mesto": {
+  "ms": {
+   "skol": 273,
+   "ziakov": 25712,
+   "ziakov_na_ucitela": 1.8
+  },
+  "zs": {
+   "skol": 111,
+   "ziakov": 37859,
+   "ziakov_na_ucitela": 10.6
+  },
+  "ss": {
+   "skol": 108,
+   "ziakov": 34580,
+   "ziakov_na_ucitela": 10.0
+  },
+  "spec": {
+   "skol": 15,
+   "ziakov": 846,
+   "ziakov_na_ucitela": 2.2
+  },
+  "zus": {
+   "skol": 99,
+   "ziakov": 19452,
+   "ziakov_na_ucitela": 26.8
+  },
+  "cvc": {
+   "skol": 21,
+   "ziakov": 3664,
+   "ziakov_na_ucitela": 65.4
+  }
+ },
+ "mestske_casti": {
+  "Devín": {
+   "ms": {
+    "skol": 2,
+    "ziakov": 53
+   },
+   "zs": {
+    "skol": 1,
+    "ziakov": 0
+   },
+   "ss": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "zus": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "cvc": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Devínska Nová Ves": {
+   "ss": {
+    "skol": 1,
+    "ziakov": 475
+   },
+   "zs": {
+    "skol": 3,
+    "ziakov": 1474
+   },
+   "ms": {
+    "skol": 6,
+    "ziakov": 605
+   },
+   "zus": {
+    "skol": 3,
+    "ziakov": 512
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "cvc": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Dúbravka": {
+   "ss": {
+    "skol": 7,
+    "ziakov": 2570
+   },
+   "ms": {
+    "skol": 18,
+    "ziakov": 1309
+   },
+   "zus": {
+    "skol": 4,
+    "ziakov": 1342
+   },
+   "zs": {
+    "skol": 8,
+    "ziakov": 3360
+   },
+   "spec": {
+    "skol": 1,
+    "ziakov": 176
+   },
+   "cvc": {
+    "skol": 1,
+    "ziakov": 0
+   }
+  },
+  "Jarovce": {
+   "ms": {
+    "skol": 2,
+    "ziakov": 418
+   },
+   "zus": {
+    "skol": 2,
+    "ziakov": 0
+   },
+   "zs": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "ss": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "cvc": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Karlova Ves": {
+   "ss": {
+    "skol": 15,
+    "ziakov": 2456
+   },
+   "zs": {
+    "skol": 11,
+    "ziakov": 3294
+   },
+   "zus": {
+    "skol": 8,
+    "ziakov": 1827
+   },
+   "ms": {
+    "skol": 17,
+    "ziakov": 1188
+   },
+   "spec": {
+    "skol": 5,
+    "ziakov": 252
+   },
+   "cvc": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Lamač": {
+   "ms": {
+    "skol": 7,
+    "ziakov": 526
+   },
+   "zs": {
+    "skol": 1,
+    "ziakov": 703
+   },
+   "zus": {
+    "skol": 2,
+    "ziakov": 0
+   },
+   "ss": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "cvc": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Nové Mesto": {
+   "ss": {
+    "skol": 9,
+    "ziakov": 2881
+   },
+   "ms": {
+    "skol": 33,
+    "ziakov": 5218
+   },
+   "zs": {
+    "skol": 11,
+    "ziakov": 1627
+   },
+   "zus": {
+    "skol": 7,
+    "ziakov": 878
+   },
+   "spec": {
+    "skol": 4,
+    "ziakov": 302
+   },
+   "cvc": {
+    "skol": 1,
+    "ziakov": 0
+   }
+  },
+  "Petržalka": {
+   "ss": {
+    "skol": 26,
+    "ziakov": 9115
+   },
+   "zs": {
+    "skol": 26,
+    "ziakov": 10224
+   },
+   "zus": {
+    "skol": 14,
+    "ziakov": 4782
+   },
+   "ms": {
+    "skol": 51,
+    "ziakov": 3937
+   },
+   "cvc": {
+    "skol": 6,
+    "ziakov": 2474
+   },
+   "spec": {
+    "skol": 2,
+    "ziakov": 0
+   }
+  },
+  "Podunajské Biskupice": {
+   "ss": {
+    "skol": 8,
+    "ziakov": 1811
+   },
+   "ms": {
+    "skol": 12,
+    "ziakov": 1048
+   },
+   "zs": {
+    "skol": 5,
+    "ziakov": 1666
+   },
+   "zus": {
+    "skol": 2,
+    "ziakov": 0
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "cvc": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Rača": {
+   "ss": {
+    "skol": 5,
+    "ziakov": 1762
+   },
+   "ms": {
+    "skol": 14,
+    "ziakov": 1707
+   },
+   "zs": {
+    "skol": 3,
+    "ziakov": 1550
+   },
+   "zus": {
+    "skol": 2,
+    "ziakov": 504
+   },
+   "cvc": {
+    "skol": 2,
+    "ziakov": 0
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Rusovce": {
+   "ms": {
+    "skol": 3,
+    "ziakov": 584
+   },
+   "zus": {
+    "skol": 3,
+    "ziakov": 539
+   },
+   "cvc": {
+    "skol": 1,
+    "ziakov": 0
+   },
+   "zs": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "ss": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Ružinov": {
+   "ss": {
+    "skol": 23,
+    "ziakov": 8917
+   },
+   "zs": {
+    "skol": 18,
+    "ziakov": 6884
+   },
+   "zus": {
+    "skol": 23,
+    "ziakov": 5802
+   },
+   "ms": {
+    "skol": 47,
+    "ziakov": 3705
+   },
+   "spec": {
+    "skol": 2,
+    "ziakov": 54
+   },
+   "cvc": {
+    "skol": 4,
+    "ziakov": 900
+   }
+  },
+  "Staré Mesto": {
+   "ss": {
+    "skol": 13,
+    "ziakov": 4414
+   },
+   "zs": {
+    "skol": 16,
+    "ziakov": 4168
+   },
+   "ms": {
+    "skol": 47,
+    "ziakov": 3227
+   },
+   "zus": {
+    "skol": 18,
+    "ziakov": 1646
+   },
+   "cvc": {
+    "skol": 5,
+    "ziakov": 104
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Vajnory": {
+   "zs": {
+    "skol": 2,
+    "ziakov": 677
+   },
+   "zus": {
+    "skol": 5,
+    "ziakov": 1411
+   },
+   "ms": {
+    "skol": 2,
+    "ziakov": 233
+   },
+   "ss": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "cvc": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Vrakuňa": {
+   "ms": {
+    "skol": 5,
+    "ziakov": 545
+   },
+   "ss": {
+    "skol": 1,
+    "ziakov": 179
+   },
+   "zs": {
+    "skol": 6,
+    "ziakov": 2232
+   },
+   "zus": {
+    "skol": 2,
+    "ziakov": 209
+   },
+   "cvc": {
+    "skol": 1,
+    "ziakov": 186
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Záhorská Bystrica": {
+   "spec": {
+    "skol": 1,
+    "ziakov": 62
+   },
+   "ms": {
+    "skol": 4,
+    "ziakov": 1261
+   },
+   "zus": {
+    "skol": 4,
+    "ziakov": 0
+   },
+   "zs": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "ss": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "cvc": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  },
+  "Čunovo": {
+   "ms": {
+    "skol": 3,
+    "ziakov": 148
+   },
+   "zs": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "ss": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "spec": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "zus": {
+    "skol": 0,
+    "ziakov": 0
+   },
+   "cvc": {
+    "skol": 0,
+    "ziakov": 0
+   }
+  }
+ },
+ "najvacsie": {
+  "zs": [
+   {
+    "nazov": "ZŠ, Ivana Bukovčana",
+    "mc": "Devínska Nová Ves",
+    "ziaci": 959
+   },
+   {
+    "nazov": "ZŠ, Ostredková",
+    "mc": "Ružinov",
+    "ziaci": 949
+   },
+   {
+    "nazov": "ZŠ, Drieňová",
+    "mc": "Ružinov",
+    "ziaci": 887
+   },
+   {
+    "nazov": "ZŠ, Železničná",
+    "mc": "Vrakuňa",
+    "ziaci": 857
+   },
+   {
+    "nazov": "ZŠ, Turnianska",
+    "mc": "Petržalka",
+    "ziaci": 833
+   },
+   {
+    "nazov": "ZŠ, Tbiliská",
+    "mc": "Rača",
+    "ziaci": 794
+   },
+   {
+    "nazov": "ZŠ, Budatínska",
+    "mc": "Petržalka",
+    "ziaci": 793
+   },
+   {
+    "nazov": "ZŠ, Vazovova",
+    "mc": "Staré Mesto",
+    "ziaci": 770
+   },
+   {
+    "nazov": "ZŠ, Tupolevova",
+    "mc": "Petržalka",
+    "ziaci": 749
+   },
+   {
+    "nazov": "ZŠ, Beňovského",
+    "mc": "Dúbravka",
+    "ziaci": 743
+   }
+  ],
+  "ss": [
+   {
+    "nazov": "Gym., Bilíkova",
+    "mc": "Dúbravka",
+    "ziaci": 1183
+   },
+   {
+    "nazov": "Gym., Metodova",
+    "mc": "Ružinov",
+    "ziaci": 1033
+   },
+   {
+    "nazov": "Súkr. gym., Kremnická",
+    "mc": "Petržalka",
+    "ziaci": 956
+   },
+   {
+    "nazov": "SZŠ, Strečnianska",
+    "mc": "Petržalka",
+    "ziaci": 796
+   },
+   {
+    "nazov": "Gym., Ladislava Sáru",
+    "mc": "Karlova Ves",
+    "ziaci": 740
+   },
+   {
+    "nazov": "Gym., Vazovova",
+    "mc": "Staré Mesto",
+    "ziaci": 724
+   },
+   {
+    "nazov": "Gym., Grösslingová",
+    "mc": "Staré Mesto",
+    "ziaci": 713
+   },
+   {
+    "nazov": "SZŠ, Záhradnícka",
+    "mc": "Ružinov",
+    "ziaci": 642
+   },
+   {
+    "nazov": "SOŠ, Farského",
+    "mc": "Petržalka",
+    "ziaci": 640
+   },
+   {
+    "nazov": "HA, Mikovíniho",
+    "mc": "Nové Mesto",
+    "ziaci": 620
+   }
+  ],
+  "ms": [
+   {
+    "nazov": "ZŠ s MŠ, Hargašova",
+    "mc": "Záhorská Bystrica",
+    "ziaci": 920
+   },
+   {
+    "nazov": "ZŠ s MŠ, Za kasárňou",
+    "mc": "Nové Mesto",
+    "ziaci": 864
+   },
+   {
+    "nazov": "ZŠ s MŠ, Hubeného",
+    "mc": "Rača",
+    "ziaci": 825
+   },
+   {
+    "nazov": "ZŠ s MŠ, Sibírska",
+    "mc": "Nové Mesto",
+    "ziaci": 570
+   },
+   {
+    "nazov": "ZŠ s MŠ, Grösslingová",
+    "mc": "Staré Mesto",
+    "ziaci": 538
+   },
+   {
+    "nazov": "ZŠ s MŠ, Kalinčiakova",
+    "mc": "Nové Mesto",
+    "ziaci": 497
+   },
+   {
+    "nazov": "ZŠ s MŠ, Borodáčova",
+    "mc": "Ružinov",
+    "ziaci": 487
+   },
+   {
+    "nazov": "ZŠ s MŠ, Cádrova",
+    "mc": "Nové Mesto",
+    "ziaci": 440
+   },
+   {
+    "nazov": "ZŠ s MŠ, Vývojová",
+    "mc": "Rusovce",
+    "ziaci": 435
+   },
+   {
+    "nazov": "ZŠ s MŠ Milana Hodžu, Škarniclova",
+    "mc": "Staré Mesto",
+    "ziaci": 421
+   }
+  ]
+ },
+ "zaujem_ss": {
+  "skol": 4,
+  "plan": 202,
+  "zaujem1": 43,
+  "zapisani": 0,
+  "najzaujimavejsie": [
+   {
+    "nazov": "Praktická škola, ako organizačná zložka Spojenej školy",
+    "adresa": "Dúbravská cesta 1",
+    "mc": "Karlova Ves",
+    "plan": 19,
+    "zaujem1": 9,
+    "zaujem12": 10,
+    "zapisani": 0,
+    "zaujem_na_miesto": 0.47
+   },
+   {
+    "nazov": "Odborné učilište, ako organizačná zložka Spojenej školy internátnej",
+    "adresa": "Švabinského 7",
+    "mc": "Petržalka",
+    "plan": 98,
+    "zaujem1": 21,
+    "zaujem12": 26,
+    "zapisani": 0,
+    "zaujem_na_miesto": 0.21
+   },
+   {
+    "nazov": "Odborné učilište, ako organizačná zložka Spojenej školy internátnej",
+    "adresa": "Dúbravská cesta 1",
+    "mc": "Karlova Ves",
+    "plan": 70,
+    "zaujem1": 11,
+    "zaujem12": 12,
+    "zapisani": 0,
+    "zaujem_na_miesto": 0.16
+   },
+   {
+    "nazov": "Odborné učilište pre žiakov so sluchovým postihnutím ako organizačná zložka Spojenej školy internátnej",
+    "adresa": "Koceľova 26",
+    "mc": "Ružinov",
+    "plan": 15,
+    "zaujem1": 2,
+    "zaujem12": 2,
+    "zapisani": 0,
+    "zaujem_na_miesto": 0.13
+   }
+  ],
+  "najmenej": [
+   {
+    "nazov": "Odborné učilište pre žiakov so sluchovým postihnutím ako organizačná zložka Spojenej školy internátnej",
+    "adresa": "Koceľova 26",
+    "mc": "Ružinov",
+    "plan": 15,
+    "zaujem1": 2,
+    "zaujem12": 2,
+    "zapisani": 0,
+    "zaujem_na_miesto": 0.13
+   },
+   {
+    "nazov": "Odborné učilište, ako organizačná zložka Spojenej školy internátnej",
+    "adresa": "Dúbravská cesta 1",
+    "mc": "Karlova Ves",
+    "plan": 70,
+    "zaujem1": 11,
+    "zaujem12": 12,
+    "zapisani": 0,
+    "zaujem_na_miesto": 0.16
+   },
+   {
+    "nazov": "Odborné učilište, ako organizačná zložka Spojenej školy internátnej",
+    "adresa": "Švabinského 7",
+    "mc": "Petržalka",
+    "plan": 98,
+    "zaujem1": 21,
+    "zaujem12": 26,
+    "zapisani": 0,
+    "zaujem_na_miesto": 0.21
+   },
+   {
+    "nazov": "Praktická škola, ako organizačná zložka Spojenej školy",
+    "adresa": "Dúbravská cesta 1",
+    "mc": "Karlova Ves",
+    "plan": 19,
+    "zaujem1": 9,
+    "zaujem12": 10,
+    "zapisani": 0,
+    "zaujem_na_miesto": 0.47
+   }
+  ]
+ },
+ "aktualizovane": "2026-10-15T15:42:43+00:00"
+}

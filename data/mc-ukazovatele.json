@@ -1,0 +1,672 @@
+{
+ "dlh": {
+  "roky": {
+   "2018": {
+    "Staré Mesto": {
+     "dlh": 0,
+     "prijmy": 22823745,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Podunajské Biskupice": {
+     "dlh": 36494,
+     "prijmy": 8411724,
+     "pomer": 0.43,
+     "dlhova_sluzba": 0.5
+    },
+    "Ružinov": {
+     "dlh": 1069420,
+     "prijmy": 34437085,
+     "pomer": 3.11,
+     "dlhova_sluzba": 0.92
+    },
+    "Vrakuňa": {
+     "dlh": 841838,
+     "prijmy": 7575793,
+     "pomer": 11.11,
+     "dlhova_sluzba": 2.99
+    },
+    "Nové Mesto": {
+     "dlh": 0,
+     "prijmy": 18913179,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Rača": {
+     "dlh": 856733,
+     "prijmy": 9437636,
+     "pomer": 9.08,
+     "dlhova_sluzba": 4.75
+    },
+    "Vajnory": {
+     "dlh": 704102,
+     "prijmy": 2935741,
+     "pomer": 23.98,
+     "dlhova_sluzba": 9.66
+    },
+    "Devín": {
+     "dlh": 2839254,
+     "prijmy": 721022,
+     "pomer": 393.78,
+     "dlhova_sluzba": 0.0
+    },
+    "Devínska Nová Ves": {
+     "dlh": 0,
+     "prijmy": 9115133,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Dúbravka": {
+     "dlh": 1627925,
+     "prijmy": 11923653,
+     "pomer": 13.65,
+     "dlhova_sluzba": 0.4
+    },
+    "Karlova Ves": {
+     "dlh": 504401,
+     "prijmy": 12223820,
+     "pomer": 4.13,
+     "dlhova_sluzba": 0.79
+    },
+    "Lamač": {
+     "dlh": 272063,
+     "prijmy": 3313366,
+     "pomer": 8.21,
+     "dlhova_sluzba": 1.46
+    },
+    "Záhorská Bystrica": {
+     "dlh": 750000,
+     "prijmy": 2321814,
+     "pomer": 32.3,
+     "dlhova_sluzba": 0.37
+    },
+    "Čunovo": {
+     "dlh": 0,
+     "prijmy": 661775,
+     "pomer": 0.0,
+     "dlhova_sluzba": 1.18
+    },
+    "Jarovce": {
+     "dlh": 0,
+     "prijmy": 1533246,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Petržalka": {
+     "dlh": 6174937,
+     "prijmy": 34377158,
+     "pomer": 17.96,
+     "dlhova_sluzba": 4.25
+    },
+    "Rusovce": {
+     "dlh": 126717,
+     "prijmy": 2307472,
+     "pomer": 5.49,
+     "dlhova_sluzba": 4.81
+    },
+    "Hlavné mesto": {
+     "dlh": 142311043,
+     "prijmy": 277640972,
+     "pomer": 51.26,
+     "dlhova_sluzba": 2.42
+    }
+   },
+   "2019": {
+    "Staré Mesto": {
+     "dlh": 166,
+     "prijmy": 25530951,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Podunajské Biskupice": {
+     "dlh": 15755,
+     "prijmy": 8933995,
+     "pomer": 0.18,
+     "dlhova_sluzba": 0.47
+    },
+    "Ružinov": {
+     "dlh": 853840,
+     "prijmy": 36236013,
+     "pomer": 2.36,
+     "dlhova_sluzba": 0.86
+    },
+    "Vrakuňa": {
+     "dlh": 731718,
+     "prijmy": 8553474,
+     "pomer": 8.55,
+     "dlhova_sluzba": 2.09
+    },
+    "Nové Mesto": {
+     "dlh": 34,
+     "prijmy": 21094126,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Rača": {
+     "dlh": 1847216,
+     "prijmy": 10534116,
+     "pomer": 17.54,
+     "dlhova_sluzba": 4.35
+    },
+    "Vajnory": {
+     "dlh": 475267,
+     "prijmy": 3168012,
+     "pomer": 15.0,
+     "dlhova_sluzba": 12.49
+    },
+    "Devín": {
+     "dlh": 3537995,
+     "prijmy": 783230,
+     "pomer": 451.72,
+     "dlhova_sluzba": 0.0
+    },
+    "Devínska Nová Ves": {
+     "dlh": 0,
+     "prijmy": 12827125,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Dúbravka": {
+     "dlh": 1534614,
+     "prijmy": 13133124,
+     "pomer": 11.69,
+     "dlhova_sluzba": 1.08
+    },
+    "Karlova Ves": {
+     "dlh": 801200,
+     "prijmy": 13711841,
+     "pomer": 5.84,
+     "dlhova_sluzba": 1.69
+    },
+    "Lamač": {
+     "dlh": 592335,
+     "prijmy": 3670340,
+     "pomer": 16.14,
+     "dlhova_sluzba": 3.31
+    },
+    "Záhorská Bystrica": {
+     "dlh": 709220,
+     "prijmy": 2873151,
+     "pomer": 24.68,
+     "dlhova_sluzba": 2.99
+    },
+    "Čunovo": {
+     "dlh": 0,
+     "prijmy": 711805,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Jarovce": {
+     "dlh": 0,
+     "prijmy": 1820739,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Petržalka": {
+     "dlh": 5194343,
+     "prijmy": 37896037,
+     "pomer": 13.71,
+     "dlhova_sluzba": 4.11
+    },
+    "Rusovce": {
+     "dlh": 110366,
+     "prijmy": 2920753,
+     "pomer": 3.78,
+     "dlhova_sluzba": 3.65
+    },
+    "Hlavné mesto": {
+     "dlh": 137977712,
+     "prijmy": 304278539,
+     "pomer": 45.35,
+     "dlhova_sluzba": 1.96
+    }
+   },
+   "2020": {
+    "Staré Mesto": {
+     "dlh": 3870183,
+     "prijmy": 26927507,
+     "pomer": 14.37,
+     "dlhova_sluzba": 0.2
+    },
+    "Podunajské Biskupice": {
+     "dlh": 0,
+     "prijmy": 10012545,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.24
+    },
+    "Ružinov": {
+     "dlh": 9276145,
+     "prijmy": 39996492,
+     "pomer": 23.19,
+     "dlhova_sluzba": 3.1
+    },
+    "Vrakuňa": {
+     "dlh": 0,
+     "prijmy": 9628480,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Nové Mesto": {
+     "dlh": 394337,
+     "prijmy": 23491151,
+     "pomer": 1.68,
+     "dlhova_sluzba": 0.0
+    },
+    "Rača": {
+     "dlh": 1504292,
+     "prijmy": 11469803,
+     "pomer": 13.12,
+     "dlhova_sluzba": 4.15
+    },
+    "Vajnory": {
+     "dlh": 450403,
+     "prijmy": 3495858,
+     "pomer": 12.88,
+     "dlhova_sluzba": 3.34
+    },
+    "Devín": {
+     "dlh": 3526261,
+     "prijmy": 832973,
+     "pomer": 423.33,
+     "dlhova_sluzba": 0.85
+    },
+    "Devínska Nová Ves": {
+     "dlh": 0,
+     "prijmy": 11477418,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Dúbravka": {
+     "dlh": 1193870,
+     "prijmy": 14795783,
+     "pomer": 8.07,
+     "dlhova_sluzba": 1.0
+    },
+    "Karlova Ves": {
+     "dlh": 1027520,
+     "prijmy": 15035605,
+     "pomer": 6.83,
+     "dlhova_sluzba": 0.98
+    },
+    "Lamač": {
+     "dlh": 592361,
+     "prijmy": 4134430,
+     "pomer": 14.33,
+     "dlhova_sluzba": 2.5
+    },
+    "Záhorská Bystrica": {
+     "dlh": 0,
+     "prijmy": 3550842,
+     "pomer": 0.0,
+     "dlhova_sluzba": 3.3
+    },
+    "Čunovo": {
+     "dlh": 13782,
+     "prijmy": 768377,
+     "pomer": 1.79,
+     "dlhova_sluzba": 0.0
+    },
+    "Jarovce": {
+     "dlh": 0,
+     "prijmy": 1971366,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Petržalka": {
+     "dlh": 4247689,
+     "prijmy": 42162459,
+     "pomer": 10.07,
+     "dlhova_sluzba": 7.19
+    },
+    "Rusovce": {
+     "dlh": 94015,
+     "prijmy": 2953290,
+     "pomer": 3.18,
+     "dlhova_sluzba": 3.83
+    },
+    "Hlavné mesto": {
+     "dlh": 159453705,
+     "prijmy": 328842383,
+     "pomer": 48.49,
+     "dlhova_sluzba": 2.1
+    }
+   },
+   "2021": {
+    "Staré Mesto": {
+     "dlh": 3721516,
+     "prijmy": 30251177,
+     "pomer": 12.3,
+     "dlhova_sluzba": 0.75
+    },
+    "Podunajské Biskupice": {
+     "dlh": 227824,
+     "prijmy": 10497911,
+     "pomer": 2.17,
+     "dlhova_sluzba": 0.05
+    },
+    "Ružinov": {
+     "dlh": 15721895,
+     "prijmy": 46297613,
+     "pomer": 33.96,
+     "dlhova_sluzba": 0.37
+    },
+    "Vrakuňa": {
+     "dlh": 2971518,
+     "prijmy": 709418,
+     "pomer": 418.87,
+     "dlhova_sluzba": 53.61
+    },
+    "Nové Mesto": {
+     "dlh": 355242,
+     "prijmy": 25334554,
+     "pomer": 1.4,
+     "dlhova_sluzba": 0.0
+    },
+    "Rača": {
+     "dlh": 2009316,
+     "prijmy": 13404341,
+     "pomer": 14.99,
+     "dlhova_sluzba": 3.79
+    },
+    "Vajnory": {
+     "dlh": 364687,
+     "prijmy": 3951315,
+     "pomer": 9.23,
+     "dlhova_sluzba": 3.12
+    },
+    "Devín": {
+     "dlh": 3119073,
+     "prijmy": 892352,
+     "pomer": 349.53,
+     "dlhova_sluzba": 1.03
+    },
+    "Devínska Nová Ves": {
+     "dlh": 88,
+     "prijmy": 12236937,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Dúbravka": {
+     "dlh": 1127870,
+     "prijmy": 17259637,
+     "pomer": 6.53,
+     "dlhova_sluzba": 0.92
+    },
+    "Karlova Ves": {
+     "dlh": 933870,
+     "prijmy": 16307500,
+     "pomer": 5.73,
+     "dlhova_sluzba": 0.93
+    },
+    "Lamač": {
+     "dlh": 582283,
+     "prijmy": 5651855,
+     "pomer": 10.3,
+     "dlhova_sluzba": 1.78
+    },
+    "Záhorská Bystrica": {
+     "dlh": 655840,
+     "prijmy": 4394139,
+     "pomer": 14.93,
+     "dlhova_sluzba": 3.07
+    },
+    "Čunovo": {
+     "dlh": 292100,
+     "prijmy": 820583,
+     "pomer": 35.6,
+     "dlhova_sluzba": 2.83
+    },
+    "Jarovce": {
+     "dlh": 29241,
+     "prijmy": 1989949,
+     "pomer": 1.47,
+     "dlhova_sluzba": 0.0
+    },
+    "Petržalka": {
+     "dlh": 5189964,
+     "prijmy": 48234254,
+     "pomer": 10.76,
+     "dlhova_sluzba": 3.76
+    },
+    "Rusovce": {
+     "dlh": 77664,
+     "prijmy": 2971933,
+     "pomer": 2.61,
+     "dlhova_sluzba": 4.25
+    },
+    "Hlavné mesto": {
+     "dlh": 156556372,
+     "prijmy": 347041681,
+     "pomer": 45.11,
+     "dlhova_sluzba": 2.96
+    }
+   },
+   "2022": {
+    "Staré Mesto": {
+     "dlh": 3571516,
+     "prijmy": 29678160,
+     "pomer": 12.03,
+     "dlhova_sluzba": 0.8
+    },
+    "Podunajské Biskupice": {
+     "dlh": 227824,
+     "prijmy": 11581015,
+     "pomer": 1.97,
+     "dlhova_sluzba": 0.0
+    },
+    "Ružinov": {
+     "dlh": 15581895,
+     "prijmy": 46352217,
+     "pomer": 33.62,
+     "dlhova_sluzba": 0.77
+    },
+    "Vrakuňa": {
+     "dlh": 2652619,
+     "prijmy": 11262310,
+     "pomer": 23.55,
+     "dlhova_sluzba": 5.14
+    },
+    "Nové Mesto": {
+     "dlh": 615613,
+     "prijmy": 26189944,
+     "pomer": 2.35,
+     "dlhova_sluzba": 0.0
+    },
+    "Rača": {
+     "dlh": 4276120,
+     "prijmy": 13908330,
+     "pomer": 30.75,
+     "dlhova_sluzba": 4.45
+    },
+    "Vajnory": {
+     "dlh": 278971,
+     "prijmy": 4077909,
+     "pomer": 6.84,
+     "dlhova_sluzba": 6.75
+    },
+    "Devín": {
+     "dlh": 3054209,
+     "prijmy": 974232,
+     "pomer": 313.5,
+     "dlhova_sluzba": 1.03
+    },
+    "Devínska Nová Ves": {
+     "dlh": 2096458,
+     "prijmy": 13447564,
+     "pomer": 15.59,
+     "dlhova_sluzba": 0.01
+    },
+    "Dúbravka": {
+     "dlh": 1061870,
+     "prijmy": 17823485,
+     "pomer": 5.96,
+     "dlhova_sluzba": 0.91
+    },
+    "Karlova Ves": {
+     "dlh": 1912270,
+     "prijmy": 18356018,
+     "pomer": 10.42,
+     "dlhova_sluzba": 0.84
+    },
+    "Lamač": {
+     "dlh": 678461,
+     "prijmy": 5320209,
+     "pomer": 12.75,
+     "dlhova_sluzba": 2.9
+    },
+    "Záhorská Bystrica": {
+     "dlh": 1705840,
+     "prijmy": 4044275,
+     "pomer": 42.18,
+     "dlhova_sluzba": 3.58
+    },
+    "Čunovo": {
+     "dlh": 249003,
+     "prijmy": 931762,
+     "pomer": 26.72,
+     "dlhova_sluzba": 5.09
+    },
+    "Jarovce": {
+     "dlh": 29241,
+     "prijmy": 2217870,
+     "pomer": 1.32,
+     "dlhova_sluzba": 0.0
+    },
+    "Petržalka": {
+     "dlh": 5094089,
+     "prijmy": 53623391,
+     "pomer": 9.5,
+     "dlhova_sluzba": 3.53
+    },
+    "Rusovce": {
+     "dlh": 61312,
+     "prijmy": 3086689,
+     "pomer": 1.99,
+     "dlhova_sluzba": 4.28
+    },
+    "Hlavné mesto": {
+     "dlh": 173659039,
+     "prijmy": 362851566,
+     "pomer": 47.86,
+     "dlhova_sluzba": 2.91
+    }
+   },
+   "2023": {
+    "Staré Mesto": {
+     "dlh": 0,
+     "prijmy": 34216971,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.69
+    },
+    "Podunajské Biskupice": {
+     "dlh": 0,
+     "prijmy": 12743078,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Ružinov": {
+     "dlh": 14478600,
+     "prijmy": 51927820,
+     "pomer": 27.88,
+     "dlhova_sluzba": 2.53
+    },
+    "Vrakuňa": {
+     "dlh": 2100442,
+     "prijmy": 12347545,
+     "pomer": 17.01,
+     "dlhova_sluzba": 4.95
+    },
+    "Nové Mesto": {
+     "dlh": 0,
+     "prijmy": 30237714,
+     "pomer": 0.0,
+     "dlhova_sluzba": 4.47
+    },
+    "Rača": {
+     "dlh": 5393844,
+     "prijmy": 16117502,
+     "pomer": 33.47,
+     "dlhova_sluzba": 4.25
+    },
+    "Vajnory": {
+     "dlh": 1329075,
+     "prijmy": 4474271,
+     "pomer": 29.7,
+     "dlhova_sluzba": 7.87
+    },
+    "Devín": {
+     "dlh": 3037844,
+     "prijmy": 1035977,
+     "pomer": 293.23,
+     "dlhova_sluzba": 0.86
+    },
+    "Devínska Nová Ves": {
+     "dlh": 1718996,
+     "prijmy": 14398421,
+     "pomer": 11.94,
+     "dlhova_sluzba": 2.17
+    },
+    "Dúbravka": {
+     "dlh": 660000,
+     "prijmy": 19175454,
+     "pomer": 3.44,
+     "dlhova_sluzba": 0.96
+    },
+    "Karlova Ves": {
+     "dlh": 1419392,
+     "prijmy": 19161857,
+     "pomer": 7.41,
+     "dlhova_sluzba": 1.42
+    },
+    "Lamač": {
+     "dlh": 1672386,
+     "prijmy": 5387985,
+     "pomer": 31.04,
+     "dlhova_sluzba": 3.41
+    },
+    "Záhorská Bystrica": {
+     "dlh": 1462504,
+     "prijmy": 4681715,
+     "pomer": 31.24,
+     "dlhova_sluzba": 6.81
+    },
+    "Čunovo": {
+     "dlh": 192320,
+     "prijmy": 950710,
+     "pomer": 20.23,
+     "dlhova_sluzba": 5.39
+    },
+    "Jarovce": {
+     "dlh": 0,
+     "prijmy": 2352959,
+     "pomer": 0.0,
+     "dlhova_sluzba": 0.0
+    },
+    "Petržalka": {
+     "dlh": 3154769,
+     "prijmy": 58891560,
+     "pomer": 5.36,
+     "dlhova_sluzba": 2.59
+    },
+    "Rusovce": {
+     "dlh": 994961,
+     "prijmy": 3161830,
+     "pomer": 31.47,
+     "dlhova_sluzba": 4.1
+    },
+    "Hlavné mesto": {
+     "dlh": 199752833,
+     "prijmy": 392951151,
+     "pomer": 50.83,
+     "dlhova_sluzba": 3.09
+    }
+   }
+  },
+  "zdroj": {
+   "nazov": "MF SR – Dlh a dlhová služba miest a obcí SR k ultimu roka",
+   "url": "https://opendata.mfsr.sk"
+  },
+  "popis": "Dlh podľa zákona o rozpočtových pravidlách územnej samosprávy (bez úverov ŠFRB na nájomné byty). Pomer = dlh / bežné príjmy predchádzajúceho roka v %; zákonný limit 60 %. Dlhová služba = splátky istín a úrokov / bežné príjmy; limit 25 %."
+ },
+ "aktualizovane": "2026-10-15T15:43:06+00:00"
+}
