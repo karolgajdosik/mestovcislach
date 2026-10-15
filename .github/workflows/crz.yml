@@ -1,0 +1,56 @@
+name: Zmluvy mestských častí (CRZ)
+
+# Denné exporty Centrálneho registra zmlúv – prvý beh spracuje všetky dni od 2022 (dlho), ďalšie len nové dni.
+on:
+  schedule:
+    - cron: "20 5 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/zber_zmluvy_mc.py"
+      - "scripts/zber_rpo.py"
+      - ".github/workflows/crz.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zber-crz
+  cancel-in-progress: false
+
+jobs:
+  crz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Zmluvy a dotácie mestských častí (CRZ)
+        run: python scripts/zber_zmluvy_mc.py
+
+      - name: Dodávatelia v registri právnických osôb (RPO)
+        if: (success() || failure()) && hashFiles('scripts/zber_rpo.py') != ''
+        run: python scripts/zber_rpo.py
+
+      - name: Uložiť zmeny v dátach
+        if: success() || failure()
+        run: |
+          git config user.name "mestovcislach-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ public/data/
+          if git diff --cached --quiet; then
+            echo "Žiadne nové dáta."
+          else
+            git commit -m "Dáta: zmluvy mestských častí $(date -u +%Y-%m-%d)"
+            for i in 1 2 3 4 5; do git pull --rebase -X theirs -q && git push && break; sleep $((i * 5)); done
+            git fetch -q origin main && git diff --quiet HEAD origin/main -- data public/data || { echo "::error::Push dát zlyhal"; exit 1; }
+          fi
