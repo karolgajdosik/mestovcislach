@@ -18,7 +18,7 @@ from statistics import quantiles
 
 from pyproj import Transformer
 
-from spolocne import DATA, VEREJNE, s, spusti, url_vrstvy, zapis_ak_zmena
+from spolocne import DATA, VEREJNE, mc_podla_polohy, s, spusti, url_vrstvy, zapis_ak_zmena
 
 VRSTVY = {  # kľúč: (prefix ID, názov, pole s hodnotou, popis)
     "riziko_horucavy": ("575142ec", "Riziko horúčav pre obyvateľov", "hodnota", "kombinácia horúčav, citlivosti obyvateľov (vek, hustota) a schopnosti prispôsobiť sa"),
@@ -97,6 +97,7 @@ def main() -> int:
                 continue
             najnovsie[k] = r
         bunky = []
+        najdi_mc = mc_podla_polohy()
         for k, r in najnovsie.items():
             m = re.search(r"N(\d+)E(\d+)", k)
             if not m or not r.get(pocet_pole):
@@ -106,6 +107,8 @@ def main() -> int:
                 n, e = n * 1000, e * 1000
             lon1, lat1 = _3035.transform(e, n)
             lon2, lat2 = _3035.transform(e + 1000, n + 1000)
+            if not najdi_mc((lon1 + lon2) / 2, (lat1 + lat2) / 2):  # dataset pokrýva celé Slovensko – len Bratislava
+                continue
             bunky.append([round(lat1, 5), round(lon1, 5), round(lat2, 5), round(lon2, 5), int(float(r[pocet_pole]))])
         if len(bunky) < 50:
             raise RuntimeError(f"len {len(bunky)} buniek s kódom")
