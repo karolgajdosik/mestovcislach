@@ -1,4 +1,8 @@
-"""Vybavenosť Bratislavy z OpenStreetMap: lekárne, zdravotníctvo, nabíjacie stanice.
+"""Vybavenosť Bratislavy z OpenStreetMap: lekárne, zdravotníctvo, nabíjacie stanice, kultúra.
+
+Pri bodoch pre mapu ukladáme aj podrobnosti z OSM: adresu, otváracie hodiny, web,
+odkaz na Wikipédiu a fotku (Wikimedia Commons – priamo z OSM alebo cez Wikidata P18).
+Telefóny ani e-maily nezverejňujeme.
 
 Výstupy:
   data/vybavenost-bratislava.json            – počty podľa mestských častí
@@ -40,6 +44,8 @@ area["name"="Bratislava"]["boundary"="administrative"]->.ba;
   nwr(area.ba)["healthcare"~"^(doctor|clinic|hospital|dentist)$"];
   nwr(area.ba)["amenity"="charging_station"];
   nwr(area.ba)["heritage"];
+  nwr(area.ba)["tourism"~"^(museum|gallery)$"];
+  nwr(area.ba)["amenity"~"^(theatre|cinema|library|arts_centre)$"];
   node(area.ba)["natural"="tree"]["denotation"="natural_monument"];
   node(area.ba)["natural"="tree"]["protected"="yes"];
   node(area.ba)["natural"="tree"]["protection_title"];
@@ -54,10 +60,17 @@ KATEGORIE = {
 }
 
 
+KULTURA = {"muzea": "Múzeá a galérie", "kultura": "Divadlá, kiná a knižnice"}
+
+
 def kategoria(t: dict) -> str | None:
     a, h = t.get("amenity"), t.get("healthcare")
     if t.get("natural") == "tree":
         return "stromy"
+    if t.get("tourism") in ("museum", "gallery"):
+        return "muzea"
+    if a in ("theatre", "cinema", "library", "arts_centre"):
+        return "kultura"
     if t.get("heritage") and not a and not h:
         return "pamiatky"
     if a == "pharmacy" or h == "pharmacy":
@@ -69,6 +82,78 @@ def kategoria(t: dict) -> str | None:
     if a in ("doctors", "dentist") or h in ("doctor", "dentist"):
         return "ambulancie"
     return None
+
+
+def web(url: str | None) -> str | None:
+    if not url:
+        return None
+    url = url.split(";")[0].strip()
+    if not url.startswith(("http://", "https://")):
+        url = "https://" + url
+    return url if "." in url and " " not in url else None
+
+
+def commons(subor: str | None) -> str | None:
+    """Odkaz na zmenšený obrázok z Wikimedia Commons (šírka 400 px)."""
+    if not subor:
+        return None
+    subor = subor.strip()
+    if subor.startswith("Category:"):
+        return None
+    subor = subor.removeprefix("File:").removeprefix("Súbor:")
+    return "https://commons.wikimedia.org/wiki/Special:FilePath/" + requests.utils.quote(subor.replace(" ", "_")) + "?width=400"
+
+
+def detaily(e: dict, t: dict) -> dict:
+    d: dict = {"id": e["type"][0] + str(e["id"])}
+    ulica = t.get("addr:street") or t.get("addr:place")
+    if ulica:
+        d["a"] = f"{ulica} {t.get('addr:housenumber') or t.get('addr:conscriptionnumber') or ''}".strip()
+    if t.get("opening_hours"):
+        d["h"] = t["opening_hours"][:200]
+    w = web(t.get("website") or t.get("contact:website") or t.get("url"))
+    if w:
+        d["w"] = w
+    if t.get("wikipedia") and ":" in t["wikipedia"]:
+        jazyk, nazov = t["wikipedia"].split(":", 1)
+        d["wp"] = f"https://{jazyk}.wikipedia.org/wiki/" + requests.utils.quote(nazov.replace(" ", "_"))
+    img = t.get("image", "")
+    if t.get("wikimedia_commons", "").startswith("File:"):
+        d["f"] = commons(t["wikimedia_commons"])
+    elif "commons.wikimedia.org" in img and "File:" in img:
+        d["f"] = commons(img.split("File:", 1)[1])
+    if t.get("wikidata"):
+        d["wd"] = t["wikidata"]
+    for k, kl in (("operator", "op"), ("capacity", "kap"), ("description", "pop")):
+        if t.get(k):
+            d[kl] = t[k][:120]
+    return d
+
+
+def fotky_z_wikidata(ids: list[str]) -> dict[str, dict]:
+    """Wikidata: obrázok (P18) a slovenská Wikipédia pre zoznam Q-identifikátorov."""
+    vysledok: dict[str, dict] = {}
+    for i in range(0, len(ids), 50):
+        davka = ids[i:i + 50]
+        try:
+            r = requests.get("https://www.wikidata.org/w/api.php", params={
+                "action": "wbgetentities", "ids": "|".join(davka), "props": "claims|sitelinks", "sitefilter": "skwiki", "format": "json",
+            }, headers={"User-Agent": UA}, timeout=60).json()
+        except Exception as e:  # noqa: BLE001
+            print(f"Wikidata: {e}")
+            continue
+        for q, ent in r.get("entities", {}).items():
+            out = {}
+            p18 = ent.get("claims", {}).get("P18")
+            if p18:
+                out["f"] = commons(p18[0]["mainsnak"].get("datavalue", {}).get("value"))
+            sk = ent.get("sitelinks", {}).get("skwiki")
+            if sk:
+                out["wp"] = "https://sk.wikipedia.org/wiki/" + requests.utils.quote(sk["title"].replace(" ", "_"))
+            if out:
+                vysledok[q] = out
+        time.sleep(1)
+    return vysledok
 
 
 def stiahni() -> dict:
@@ -120,17 +205,35 @@ def main() -> int:
         if not kod:
             continue
         pocty[kod][kat] += 1
-        if kat in ("pamiatky", "stromy"):
-            pamiatky_body.append([round(lat, 5), round(lon, 5), kat, (t.get("name") or t.get("species:sk") or t.get("species") or "").strip()[:70]])
+        det = detaily(e, t)
+        if kat in ("pamiatky", "stromy", "muzea", "kultura"):
+            nazov = (t.get("name:sk") or t.get("name") or t.get("species:sk") or t.get("species") or "").strip()[:70]
+            if kat == "kultura":
+                det["typ"] = {"theatre": "Divadlo", "cinema": "Kino", "library": "Knižnica", "arts_centre": "Kultúrne centrum"}.get(t.get("amenity"), "")
+            elif kat == "muzea":
+                det["typ"] = "Galéria" if t.get("tourism") == "gallery" else "Múzeum"
+            pamiatky_body.append([round(lat, 5), round(lon, 5), kat, nazov, det])
             continue
         if kat == "nabijanie":
             try:
                 nabijacie_body[kod] += int(t.get("capacity", "1"))
             except ValueError:
                 nabijacie_body[kod] += 1
-        body.append([round(lat, 5), round(lon, 5), kat, (t.get("name") or t.get("operator") or "").strip()[:60]])
+        body.append([round(lat, 5), round(lon, 5), kat, (t.get("name") or t.get("operator") or "").strip()[:60], det])
     if len(body) < 200:
         raise RuntimeError(f"Vybavenosť: podozrivo málo prvkov ({len(body)}).")
+
+    # Fotky a Wikipédia z Wikidata (len kultúra, pamiatky a nemocnice – tam má fotka zmysel)
+    vsetky = body + pamiatky_body
+    ids = sorted({b[4]["wd"] for b in vsetky if b[4].get("wd") and b[2] in ("pamiatky", "muzea", "kultura", "nemocnice", "stromy")})
+    wd = fotky_z_wikidata(ids)
+    for b in vsetky:
+        q = b[4].pop("wd", None)
+        if q in wd:
+            for k, v in wd[q].items():
+                b[4].setdefault(k, v)
+    print(f"Wikidata: {len(ids)} položiek, fotka/Wikipédia pre {len(wd)}; "
+          f"fotky spolu {sum(1 for b in vsetky if b[4].get('f'))}, hodiny {sum(1 for b in vsetky if b[4].get('h'))}, web {sum(1 for b in vsetky if b[4].get('w'))}")
 
     po_castiach = []
     for kod, _ in casti:
@@ -148,6 +251,8 @@ def main() -> int:
     mesto["nabijacie_miesta"] = sum(c["nabijacie_miesta"] for c in po_castiach)
     mesto["pamiatky"] = sum(c["pamiatky"] for c in po_castiach)
     mesto["stromy"] = sum(c["stromy"] for c in po_castiach)
+    for k in KULTURA:
+        mesto[k] = sum(pocty[kod].get(k, 0) for kod, _ in casti)
 
     zdroj = {"nazov": "OpenStreetMap", "licencia": "ODbL – © prispievatelia OpenStreetMap",
              "url": "https://www.openstreetmap.org/copyright", "stav_osm": data.get("osm3s", {}).get("timestamp_osm_base")}
@@ -155,7 +260,7 @@ def main() -> int:
     (KOREN / "public" / "data" / "vybavenost-bratislava.json").write_text(
         json.dumps({"kategorie": KATEGORIE, "body": body}, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     (KOREN / "public" / "data" / "pamiatky-bratislava.json").write_text(
-        json.dumps({"kategorie": {"pamiatky": "Kultúrne pamiatky", "stromy": "Chránené stromy"}, "body": pamiatky_body},
+        json.dumps({"kategorie": {"pamiatky": "Kultúrne pamiatky", "stromy": "Chránené stromy", **KULTURA}, "body": pamiatky_body},
                    ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     (DATA / "vybavenost-bratislava.json").write_text(json.dumps({
         "zdroj": zdroj, "kategorie": KATEGORIE, "mesto": mesto, "mestske_casti": po_castiach,
