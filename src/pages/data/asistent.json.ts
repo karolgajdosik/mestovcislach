@@ -91,6 +91,14 @@ export async function GET() {
       },
     };
   }
+  const nez = nacitaj('nezamestnanost-bratislava.json');
+  if (nez) {
+    temy.nezamestnanost = {
+      nazov: 'Nezamestnanosť v okresoch Bratislava I–V (ŠÚ SR, k 31. 12.)', stranka: '/obyvatelia#nezamestnanost',
+      fakty: { okresy_a_mestske_casti: nez.okresy_mc, ...Object.fromEntries(Object.entries<any>(nez.ukazovatele).filter(([k]) => /miera|disponib/i.test(k))
+        .map(([k, v]) => [k, Object.fromEntries(Object.entries<any>(v).map(([u, r]) => [u, Object.fromEntries(Object.entries<any>(r).filter(([y]) => Number(y) >= 2015))]))])) },
+    };
+  }
   const zmc = nacitaj('zmluvy-mc.json');
   if (zmc) {
     temy.zmluvy_mc = {

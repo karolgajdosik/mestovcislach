@@ -15,6 +15,7 @@ on:
       - "scripts/zber_stromy.py"
       - "scripts/zber_hluk.py"
       - "scripts/zber_ukazovatele.py"
+      - "scripts/zber_nezamestnanost.py"
       - ".github/workflows/slovensko.yml"
 
 permissions:
@@ -60,6 +61,10 @@ jobs:
       - name: Index rozvoja, dlh MČ, sčítanie dopravy (MIRRI, MF SR, SSC)
         if: success() || failure()
         run: python scripts/zber_ukazovatele.py
+
+      - name: Nezamestnanosť v okresoch Bratislavy (ŠÚ SR)
+        if: success() || failure()
+        run: python scripts/zber_nezamestnanost.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()

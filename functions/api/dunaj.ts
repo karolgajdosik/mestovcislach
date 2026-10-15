@@ -1,7 +1,11 @@
-// Cloudflare Pages Function: aktuálny vodný stav Dunaja v Bratislave zo SHMÚ.
+// Cloudflare Pages Function: aktuálny vodný stav Dunaja v Bratislave (a Moravy v Devínskej Novej Vsi, ?rieka=morava) zo SHMÚ.
 // SHMÚ nemá API ani CORS, preto stránku stanice spracujeme tu a vrátime malý JSON (cache 10 min).
 
-const STANICA = 'https://www.shmu.sk/sk/?page=1&id=hydro_vod_all&station_id=5140';
+const STANICE: Record<string, { id: string; nazov: string }> = {
+  dunaj: { id: '5140', nazov: 'Bratislava – Dunaj' },
+  morava: { id: '5125', nazov: 'Devínska Nová Ves – Morava' },
+};
+const url = (id: string) => `https://www.shmu.sk/sk/?page=1&id=hydro_vod_all&station_id=${id}`;
 const CACHE_S = 600;
 
 type Bod = [number, number];
@@ -25,7 +29,7 @@ function offsetBratislava(t: number): number {
   return Date.UTC(g('year'), g('month') - 1, g('day'), g('hour'), g('minute')) - Math.floor(t / 60000) * 60000;
 }
 
-export function spracuj(html: string) {
+export function spracuj(html: string, rieka: keyof typeof STANICE = 'dunaj') {
   const text = html.replace(/<script[^]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
   const spa: Record<string, number> = {};
   for (const m of text.matchAll(/Hranica pre (\d)\. stupeň PA:\s*(\d+)\s*cm/g)) spa[m[1]] = Number(m[2]);
@@ -53,7 +57,7 @@ export function spracuj(html: string) {
   // Merané hodnoty stačia po hodinách (menší JSON)
   const hodinove = merane.filter(([t], i) => i === merane.length - 1 || new Date(t).getUTCMinutes() === 0);
   return {
-    stanica: 'Bratislava – Dunaj',
+    stanica: STANICE[rieka].nazov,
     cas: posledny?.[0] ?? null,
     stav: posledny?.[1] ?? (riadok ? Number(riadok[2]) : null),
     teplota: riadok && riadok[3] ? Number(riadok[3].replace(',', '.')) : null,
@@ -62,20 +66,21 @@ export function spracuj(html: string) {
     spa,
     merane: hodinove,
     predpoved,
-    zdroj: { nazov: 'SHMÚ – vodomerná stanica Bratislava (Dunaj)', url: STANICA },
+    zdroj: { nazov: `SHMÚ – vodomerná stanica ${STANICE[rieka].nazov}`, url: url(STANICE[rieka].id) },
   };
 }
 
 export const onRequestGet = async (ctx: any) => {
   const cache = (caches as any).default as Cache;
-  const kluc = new Request(new URL('/api/dunaj', ctx.request.url).toString());
+  const rieka = new URL(ctx.request.url).searchParams.get('rieka') === 'morava' ? 'morava' : 'dunaj';
+  const kluc = new Request(new URL(`/api/dunaj?rieka=${rieka}`, ctx.request.url).toString());
   const ulozene = await cache.match(kluc);
   if (ulozene) return ulozene;
   try {
-    const r = await fetch(STANICA, { headers: { 'User-Agent': 'mestovcislach.sk (github.com/karolgajdosik/mestovcislach)' } });
+    const r = await fetch(url(STANICE[rieka].id), { headers: { 'User-Agent': 'mestovcislach.sk (github.com/karolgajdosik/mestovcislach)' } });
     if (!r.ok) throw new Error(`SHMÚ HTTP ${r.status}`);
     const html = await r.text();
-    const data = spracuj(html);
+    const data = spracuj(html, rieka);
     const odpoved = new Response(JSON.stringify(data), {
       headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': `public, max-age=${CACHE_S}` },
     });

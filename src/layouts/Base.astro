@@ -34,6 +34,7 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
         <a class="chip" id="z-vystrahy" href="/#dnes" title="Výstrahy SHMÚ pre Bratislavu">Výstrahy …</a>
         <a class="chip" id="z-ovzdusie" href="/prostredie#ovzdusie-teraz" title="Index kvality ovzdušia zo staníc SHMÚ v Bratislave">Ovzdušie …</a>
         <a class="chip" id="z-dunaj" href="/prostredie#dunaj" title="Vodný stav Dunaja v Bratislave (SHMÚ)">Dunaj …</a>
+        <a class="chip" id="z-morava" href="/prostredie#morava" title="Vodný stav Moravy v Devínskej Novej Vsi (SHMÚ)" hidden></a>
         <a class="chip" id="z-cesty" href="/doprava#naozivo" title="Uzávierky a poruchy na cestách (hlavné mesto)">Cesty …</a>
       </div>
     </div>
@@ -73,6 +74,14 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
     const s = stupenDunaja(d);
     chip('z-dunaj', `Dunaj <b>${d.stav} cm</b>${sipka(d.trend)}${s ? ` · ${s}. stupeň` : ''}`, s === 3 ? 'red' : s === 2 ? 'orange' : s === 1 ? 'yellow' : 'ok');
   }).catch(() => chip('z-dunaj', 'Dunaj: –'));
+  // Morava sa v lište ukáže len pri povodňovej aktivite
+  fetch('/api/dunaj?rieka=morava').then((r) => (r.ok ? r.json() : Promise.reject())).then((d) => {
+    const s = [3, 2, 1].find((k) => d.spa?.[k] && d.stav >= d.spa[k]);
+    if (!s) return;
+    const e = document.getElementById('z-morava');
+    if (e) e.hidden = false;
+    chip('z-morava', `Morava <b>${d.stav} cm</b>${sipka(d.trend)} · ${s}. stupeň`, s === 3 ? 'red' : s === 2 ? 'orange' : 'yellow');
+  }).catch(() => {});
   ovzdusie().then((d) => {
     if (!d.mesto) return chip('z-ovzdusie', 'Ovzdušie: –');
     chip('z-ovzdusie', `Ovzdušie: <b>${d.mesto.kategoria.nazov}</b>`, farbaOvzdusia(d.mesto.kategoria.stupen));
@@ -82,6 +91,7 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
 </script>
 
 <style is:global>
+  [hidden] { display: none !important; }
   :root {
     --bg: #f7f7f5;
     --card: #ffffff;

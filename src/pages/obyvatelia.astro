@@ -5,6 +5,14 @@ import path from 'node:path';
 import Base from '../layouts/Base.astro';
 
 const p = path.join(process.cwd(), 'data', 'scitanie-bratislava.json');
+// Nezamestnanosť v okresoch Bratislava I–V (ŠÚ SR, k 31. 12.)
+const pn = path.join(process.cwd(), 'data', 'nezamestnanost-bratislava.json');
+const nez = fs.existsSync(pn) ? JSON.parse(fs.readFileSync(pn, 'utf-8')) : null;
+const miera = nez?.ukazovatele?.['Miera evidovanej nezamestnanosti'];
+const uchadzaci = nez && Object.entries<any>(nez.ukazovatele).find(([k]) => /uchádzač/i.test(k) && /disponib/i.test(k))?.[1];
+const nezRoky = miera ? Object.keys(miera['Slovenská republika'] ?? Object.values<any>(miera)[0]).filter((r) => Number(r) >= 2008) : [];
+const nezRok = nezRoky[nezRoky.length - 1];
+const grafNez = miera ? JSON.stringify({ roky: nezRoky, rady: Object.entries<any>(miera).map(([u, v]) => [u.replace('Okres ', ''), nezRoky.map((r) => v[r] ?? null)]) }) : '';
 const sc = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
 
 // Poradie a čitateľné názvy kategórií
@@ -162,6 +170,23 @@ const grafScenare = scenare ? JSON.stringify(Object.entries([...scenare.riadky].
         </section>
       )}
 
+      {miera && nezRok && (
+        <section class="card" id="nezamestnanost" data-graf={grafNez}>
+          <h2>Nezamestnanosť</h2>
+          <p class="pozn-index">
+            Miera evidovanej nezamestnanosti na konci roka {nezRok}: Bratislava I {des(miera['Okres Bratislava I']?.[nezRok])} % až
+            {' '}{Object.entries<any>(miera).filter(([u]) => u.startsWith('Okres')).sort((a, b) => b[1][nezRok] - a[1][nezRok])[0][0].replace('Okres ', '')} {des(Math.max(...Object.entries<any>(miera).filter(([u]) => u.startsWith('Okres')).map(([, v]) => v[nezRok])))} %;
+            celé Slovensko {des(miera['Slovenská republika']?.[nezRok])} %. Úrady práce vedú údaje za okresy, nie za mestské časti.
+          </p>
+          <div class="chart nizky-prog"><canvas id="g-nez" role="img" aria-label="Miera evidovanej nezamestnanosti v okresoch Bratislavy a na Slovensku"></canvas></div>
+          <div class="tabulka-obal"><table>
+            <thead><tr><th>Okres</th><th>Mestské časti</th><th class="num">Miera {nezRok}</th>{uchadzaci && <th class="num">Uchádzači</th>}</tr></thead>
+            <tbody>{Object.entries<any>(miera).map(([u, v]) => <tr><td>{u.replace('Okres ', '')}</td><td class="mensie">{nez.okresy_mc[u] ?? ''}</td><td class="num">{v[nezRok] != null ? des(v[nezRok]) + ' %' : '–'}</td>{uchadzaci && <td class="num">{uchadzaci[u]?.[nezRok] != null ? fmt(uchadzaci[u][nezRok]) : '–'}</td>}</tr>)}</tbody>
+          </table></div>
+          <p class="zdroj">Miera = disponibilní uchádzači o zamestnanie / ekonomicky aktívne obyvateľstvo, k 31. 12. Zdroj: <a href={nez.zdroj.url}>{nez.zdroj.nazov}</a>.</p>
+        </section>
+      )}
+
       {index && (
         <section class="card" id="index-rozvoja">
           <h2>Index regionálneho rozvoja</h2>
@@ -190,6 +215,19 @@ const grafScenare = scenare ? JSON.stringify(Object.entries([...scenare.riadky].
       data: { labels: sc[0][1].map((x) => x[0]), datasets: sc.map(([n, body], i) => ({ label: n, data: body.map((x) => x[1]), borderColor: FARBY[i % 5], backgroundColor: FARBY[i % 5], pointRadius: 0, borderWidth: n === 'stredný' ? 3 : 1.5 })) },
       options: { maintainAspectRatio: false, plugins: { legend: { labels: { color: css.getPropertyValue('--muted').trim() } } },
         scales: { y: { ticks: { callback: (v) => Number(v).toLocaleString('sk-SK') } } } },
+    });
+  }
+
+  const nz = document.getElementById('nezamestnanost');
+  if (nz?.dataset.graf) {
+    const g = JSON.parse(nz.dataset.graf);
+    const FARBY = ['#1f6fd1', '#0ea5e9', '#14b8a6', '#a16207', '#c8102e', '#64748b', '#111827'];
+    new ChartP(document.getElementById('g-nez') as HTMLCanvasElement, {
+      type: 'line',
+      data: { labels: g.roky, datasets: g.rady.map(([n, d]: [string, number[]], i: number) => ({ label: n, data: d, borderColor: FARBY[i % 7], backgroundColor: FARBY[i % 7], pointRadius: 0, borderWidth: /Slovensk/.test(n) ? 3 : 1.5, borderDash: /kraj/.test(n) ? [4, 3] : [] })) },
+      options: { maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+        plugins: { tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${Number(c.parsed.y).toLocaleString('sk-SK')} %` } } },
+        scales: { y: { ticks: { callback: (v) => v + ' %' } } } },
     });
   }
 

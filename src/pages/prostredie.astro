@@ -65,6 +65,16 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
         Vodný stav je výška hladiny od nuly vodočetnej laty, nie hĺbka rieky. Prekročenie hranice neznamená, že stupeň povodňovej aktivity bol vyhlásený.
       </p>
     </section>
+    <section class="card" id="morava">
+      <h2>Morava v Devínskej Novej Vsi</h2>
+      <section class="kpis kpis-vnutri">
+        <div class="kpi"><p class="label">Vodný stav</p><p class="value" data-m="stav">…</p><p class="delta" data-m="cas"></p></div>
+        <div class="kpi"><p class="label">Za posledné 3 hodiny</p><p class="value" data-m="trend">…</p><p class="delta" data-m="zmena"></p></div>
+        <div class="kpi"><p class="label">Do 1. stupňa povodňovej aktivity</p><p class="value" data-m="spa">…</p><p class="delta" data-m="spa-pozn"></p></div>
+      </section>
+      <div class="chart"><canvas id="g-morava" role="img" aria-label="Vodný stav Moravy v Devínskej Novej Vsi"></canvas></div>
+      <p class="zdroj">Zdroj: <a href="https://www.shmu.sk/sk/?page=1&id=hydro_vod_all&station_id=5125">SHMÚ – vodomerná stanica Devínska Nová Ves (Morava)</a>, načítané naživo. Morava ohrozuje najmä Devínsku Novú Ves a Devín pri dlhotrvajúcich dažďoch na Morave a súčasne vysokom Dunaji.</p>
+    </section>
   </div>
 
   <h2 class="sekcia" id="hluk">Hluk</h2>
@@ -239,6 +249,39 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
     }).catch(() => { tab.innerHTML = '<tr><td colspan="8" class="aq-nac">Údaje SHMÚ sú teraz nedostupné.</td></tr>'; });
   }
 
+  // Morava – živé údaje SHMÚ cez /api/dunaj?rieka=morava
+  {
+    const del = document.getElementById('morava');
+    const nastav = (k: string, t: string) => { const e = del?.querySelector(`[data-m="${k}"]`); if (e) e.textContent = t; };
+    if (del) fetch('/api/dunaj?rieka=morava').then((r) => (r.ok ? r.json() : Promise.reject())).then((d) => {
+      const modra = window.matchMedia('(prefers-color-scheme: dark)').matches ? '#7cc4ff' : '#1f6fd1';
+      nastav('stav', `${d.stav} cm`);
+      nastav('cas', `meranie ${new Date(d.cas).toLocaleString('sk-SK', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' })}`);
+      nastav('trend', d.trend);
+      nastav('zmena', `${d.zmena_3h > 0 ? '+' : ''}${d.zmena_3h} cm`);
+      const spa = d.spa ?? {};
+      const stupen = [3, 2, 1].find((s) => spa[s] && d.stav >= spa[s]);
+      nastav('spa', stupen ? `${stupen}. stupeň` : spa[1] ? `${spa[1] - d.stav} cm` : '–');
+      nastav('spa-pozn', Object.entries(spa).map(([s, v]) => `${s}. stupeň ${v} cm`).join(' · '));
+      const body = (a: [number, number][]) => a.map(([x, y]) => ({ x, y }));
+      const vsetky = [...d.merane, ...d.predpoved];
+      new Chart(document.getElementById('g-morava') as HTMLCanvasElement, {
+        type: 'line',
+        data: { datasets: [
+          { label: 'Meraný vodný stav', data: body(d.merane), borderColor: modra, backgroundColor: modra + '22', fill: 'origin', borderWidth: 2, pointRadius: 0, tension: 0.2 },
+          ...(d.predpoved.length ? [{ label: 'Predpoveď SHMÚ', data: body(d.predpoved), borderColor: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(), borderDash: [5, 4], borderWidth: 2, pointRadius: 0, tension: 0.2 }] : []),
+        ] },
+        options: {
+          maintainAspectRatio: false, interaction: { mode: 'nearest', axis: 'x', intersect: false },
+          plugins: { legend: { position: 'bottom', labels: { boxWidth: 14, boxHeight: 2 } },
+            tooltip: { callbacks: { title: (i) => new Date(i[0].parsed.x).toLocaleString('sk-SK', { weekday: 'short', day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' }), label: (c) => ` ${c.dataset.label}: ${c.parsed.y} cm` } } },
+          scales: { x: { type: 'linear', min: vsetky[0]?.[0], max: vsetky[vsetky.length - 1]?.[0], grid: { display: false }, ticks: { maxRotation: 0, autoSkipPadding: 16, callback: (v) => new Date(Number(v)).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric' }) } },
+            y: { ticks: { callback: (v) => v + ' cm' } } },
+        },
+      });
+    }).catch(() => { ['stav', 'trend', 'spa'].forEach((k) => nastav(k, '–')); nastav('cas', 'údaje SHMÚ sú teraz nedostupné'); });
+  }
+
   // Dunaj – živé údaje SHMÚ cez /api/dunaj
   {
     const del = document.getElementById('dunaj');
@@ -391,6 +434,8 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
 </script>
 
 <style>
+  .kpis-vnutri { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 12px 0; }
+  .kpis-vnutri .kpi { padding: 0; }
   .hero { padding: 40px 0 24px; }
   .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
   h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }

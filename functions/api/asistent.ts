@@ -23,6 +23,7 @@ export const TEMY: Record<string, RegExp> = {
   rozpocet: /rozpoc|prijm|vydavk|vydav|financ|peniaz|dlh|zadlz|uver|hospodar|dan /,
   zmluvy: /zmluv|dodavatel|obstara|firma|firmy|zakazk/,
   zmluvy_mc: /zmluv\w* (mestsk\w* cast|mc|petrzal|ruzinov|starom|stare mest|novom mest|nove mest|karlov|dubrav|rac|vrakun|lamac|devin|jarov|rusov|cunov|vajnor|biskupic|zahorsk)|dotaci|grant|komu (mestska cast|mc|petrzalka|ruzinov|obvod)|dodavatel\w* (mestsk|mc)/,
+  nezamestnanost: /nezamestnan|uchadzac\w* o zamestn|urad prace|bez prace/,
   majetok: /majet|pozem|parcel/,
   mhd: /mhd|autobus|elektric|trolejbus|linka|linky|liniek|zastav|spoj|cestovn|cestujuc|dpb|dopravny podnik/,
   nehody: /nehod|havari/,
@@ -46,7 +47,7 @@ export const TEMY: Record<string, RegExp> = {
 const ZIVE: Record<string, RegExp> = {
   pocasie: /pocasi|teplot|prs(i|at|alo|ia)|dazd|zrazk|snez|slnk|slnec|vietor|veter|zima|teplo|dazdnik|predpoved|zajtra|vikend|oblec/,
   vystrahy: /vystrah|varovan|burk|hmla|vichric|poladov|nebezpec/,
-  dunaj: /dunaj|hladin|povod|rieka|vodny stav/,
+  dunaj: /dunaj|morav(?!sk)|hladin|povod|rieka|vodny stav/,
   ovzdusie: /ovzdus|smog|prach|pm10|pm2|dychat|vzduch|ozon|znecist|behat|beh |vonku/,
   cesty: /uzavier|uzavret|rozkop|porucha|poruch|obmedzen|obchadz|cesta|cesty|ulica|ulici|jazd|dnes na/,
 };
@@ -67,14 +68,14 @@ const STRANKY: Record<string, string> = {
   nehody: '/doprava', scitace: '/doprava#premavka', cyklo: '/doprava#cyklo', skoly: '/vybavenost', vybavenost: '/vybavenost',
   ovzdusie: '/prostredie#ovzdusie-teraz', prostredie: '/prostredie', priroda: '/prostredie', vystrahy: '/#dnes', dunaj: '/prostredie#dunaj',
   cesty: '/doprava#naozivo', miesta: '/mapa', spadove: '/vybavenost#spadova-skola',
-  socialne: '/vybavenost#socialne', hlasovania: '/volby#hlasovania', bezpecnost: '/bezpecnost', faktury: '/financie#faktury', zmluvy_mc: '/financie#zmluvy-mc', klima: '/mapa#horucavy', rozvoj: '/obyvatelia#index-rozvoja', pamiatky: '/mapa#pamiatky', csd: '/doprava#csd', hluk: '/mapa#hluk',
+  socialne: '/vybavenost#socialne', hlasovania: '/volby#hlasovania', bezpecnost: '/bezpecnost', faktury: '/financie#faktury', zmluvy_mc: '/financie#zmluvy-mc', nezamestnanost: '/obyvatelia#nezamestnanost', klima: '/mapa#horucavy', rozvoj: '/obyvatelia#index-rozvoja', pamiatky: '/mapa#pamiatky', csd: '/doprava#csd', hluk: '/mapa#hluk',
 };
 const NAZVY_STRANOK: Record<string, string> = {
   '/': 'Prehľad', '/obyvatelia': 'Obyvatelia', '/volby': 'Voľby', '/volby#komunalne': 'Komunálne voľby', '/financie': 'Financie', '/doprava#doprava': 'Doprava – MHD', '/doprava': 'Doprava',
   '/doprava#premavka': 'Kedy je premávka', '/doprava#cyklo': 'Cyklotrasy', '/vybavenost': 'Vybavenosť', '/prostredie': 'Prostredie',
   '/#dnes': 'Dnes v Bratislave', '/prostredie#dunaj': 'Dunaj', '/doprava#naozivo': 'Uzávierky dnes', '/prostredie#ovzdusie-teraz': 'Ovzdušie teraz', '/mapa': 'Mapa',
   '/vybavenost#spadova-skola': 'Spádová škola podľa adresy', '/vybavenost#socialne': 'Jasle a sociálne služby', '/obyvatelia#index-rozvoja': 'Index rozvoja',
-  '/mapa#pamiatky': 'Pamiatky na mape', '/volby#hlasovania': 'Hlasovania poslancov', '/bezpecnost': 'Bezpečnosť', '/financie#faktury': 'Faktúry a objednávky', '/financie#zmluvy-mc': 'Zmluvy mestských častí', '/mapa#horucavy': 'Mapa horúčav', '/doprava#csd': 'Sčítanie dopravy', '/mapa#hluk': 'Hluková mapa',
+  '/mapa#pamiatky': 'Pamiatky na mape', '/volby#hlasovania': 'Hlasovania poslancov', '/bezpecnost': 'Bezpečnosť', '/financie#faktury': 'Faktúry a objednávky', '/financie#zmluvy-mc': 'Zmluvy mestských častí', '/obyvatelia#nezamestnanost': 'Nezamestnanosť', '/mapa#horucavy': 'Mapa horúčav', '/doprava#csd': 'Sčítanie dopravy', '/mapa#hluk': 'Hluková mapa',
 };
 const STOP = new Set(['ktore', 'ktora', 'ktory', 'kde', 'kedy', 'ako', 'aky', 'aka', 'ake', 'kolko', 'bratislava', 'bratislave', 'bratislavy', 'mesto', 'meste', 'najblizsia', 'najblizsie', 'otvorena', 'otvorene', 'otvoreny', 'teraz', 'dnes', 'prosim', 'chcem', 'potrebujem', 'mate', 'viete', 'nejaka', 'nejake', 'nejaky', 'este', 'blizko', 'pri', 'okolo', 'ulica', 'ulici', 'ulicu']);
 
@@ -155,7 +156,9 @@ async function zive(typ: string, base: string, cast?: string) {
     }
     if (typ === 'dunaj') {
       const d = await (await fetch(new URL('/api/dunaj', base))).json();
-      return { dunaj_bratislava: { vodny_stav_cm: d.stav, cas_merania: new Date(d.cas).toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' }), trend: d.trend, teplota_vody_c: d.teplota, hranice_povodnovej_aktivity_cm: d.spa, predpoved_max_48h_cm: Math.max(...(d.predpoved ?? []).map((p: number[]) => p[1])) } };
+      const m = await fetch(new URL('/api/dunaj?rieka=morava', base)).then((r) => r.json()).catch(() => null);
+      const morava = m?.stav != null ? { morava_devinska_nova_ves: { vodny_stav_cm: m.stav, trend: m.trend, hranice_povodnovej_aktivity_cm: m.spa } } : {};
+      return { ...morava, dunaj_bratislava: { vodny_stav_cm: d.stav, cas_merania: new Date(d.cas).toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' }), trend: d.trend, teplota_vody_c: d.teplota, hranice_povodnovej_aktivity_cm: d.spa, predpoved_max_48h_cm: Math.max(...(d.predpoved ?? []).map((p: number[]) => p[1])) } };
     }
     if (typ === 'pocasie') {
       const d = await (await fetch('https://api.open-meteo.com/v1/forecast?latitude=48.1486&longitude=17.1077&current=temperature_2m,weather_code,wind_speed_10m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum&forecast_days=3&timezone=Europe%2FBratislava')).json();
