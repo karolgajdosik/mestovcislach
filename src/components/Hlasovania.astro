@@ -129,7 +129,7 @@ const subor = (obd: string) => (obd === h?.aktualne_obdobie ? '/data/hlasovania-
       const q = norm(vstup.value.trim());
       if (q.length < 3) { vysl.innerHTML = '<p class="tlmene">Napíšte aspoň 3 znaky – zobrazí sa, ako kto hlasoval.</p>'; return; }
       const d = await data(obd);
-      const slova = q.split(/\s+/);
+      const slova = q.split(/\s+/).map((w) => (w.length > 5 ? w.slice(0, Math.max(5, w.length - 2)) : w));
       const najdene = d.hlasovania.filter((x: any[]) => { const t = norm(x[3]); return slova.every((w: string) => t.includes(w)); }).reverse();
       if (!najdene.length) { vysl.innerHTML = `<p class="tlmene">V období ${esc(d.obdobie_nazov)} sa nenašlo žiadne hlasovanie.</p>`; return; }
       vysl.innerHTML = `<p class="tlmene">Nájdené: ${najdene.length}${najdene.length > 30 ? ' (zobrazených 30 najnovších)' : ''}</p>` +

@@ -117,7 +117,7 @@ const graf = pr ? JSON.stringify({ roky, priestupky: roky.map((r) => pr.roky[r])
             </div>
           </div>
           <p class="zdroj">
-            Stav: {Object.entries<number>(pod.stavy).map(([k, v]) => `${k.toLowerCase()} ${fmt(v)}`).join(', ')}.
+            Stav: {Object.entries<number>(pod.stavy).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, v]) => `${k.toLowerCase()} ${fmt(v)}`).join(', ')}.
             {Object.keys(pod.median_dni_vyriesenia ?? {}).length > 0 && <> Medián vybavenia: {Object.entries<number>(pod.median_dni_vyriesenia).map(([r, d]) => `${r}: ${d} dní`).join(', ')}.</>}
             <a href="/mapa#podnety">Podnety na mape</a>. Nadpisy a texty podnetov nezverejňujeme.
           </p>
