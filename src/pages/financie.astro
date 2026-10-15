@@ -71,6 +71,23 @@ const magO = fd('Magistrát', 'objednávky');
 const rokTeraz = new Date().getFullYear();
 const poslednyCely = (d: any) => d ? Object.keys(d.roky).filter((r) => Number(r) < rokTeraz).sort().pop() : null;
 const grafFakt = magF ? JSON.stringify({ roky: Object.keys(magF.roky).filter((r) => Number(r) < rokTeraz), sumy: Object.entries<any>(magF.roky).filter(([r]) => Number(r) < rokTeraz).map(([, v]) => v.suma) }) : '';
+// Zmluvy a dotácie mestských častí (CRZ) + údaje o dodávateľoch z RPO
+const zmc = nacitaj('zmluvy-mc.json');
+const rpo = nacitaj('rpo-dodavatelia.json')?.dodavatelia ?? {};
+const mcZoznam = zmc ? Object.entries<any>(zmc.mestske_casti).filter(([mc]) => mc !== 'Hlavné mesto').sort((a, b) => b[1].suma - a[1].suma) : [];
+const mcSpolu = mcZoznam.reduce((a: number, [, v]: any) => a + v.zmluv, 0);
+const mcSuma = mcZoznam.reduce((a: number, [, v]: any) => a + v.suma, 0);
+const dotSpolu = zmc ? Object.entries<any>(zmc.dotacie).filter(([mc]) => mc !== 'Hlavné mesto').reduce((a: number, [, v]: any) => a + v.suma, 0) : 0;
+const slugMc = (mc: string) => mc.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/ /g, '-');
+// poznámka k dodávateľovi z RPO: právna forma, rok vzniku, zánik; „nová firma“ ak vznikla menej ako rok pred prvou veľkou zmluvou
+const rpoInfo = (ico: string | null, d?: string) => {
+  const r = ico ? rpo[ico.padStart(8, '0')] : null;
+  if (!r || r.nenajdene) return '';
+  const casti = [r.forma?.replace(/^Spoločnosť s ručením obmedzeným$/, 's. r. o.').replace(/^Akciová spoločnosť$/, 'a. s.'), r.vznik && `vznik ${r.vznik.slice(0, 4)}`];
+  if (r.zanik) casti.push(`zanikla ${datum(r.zanik)}`);
+  if (d && r.vznik && (new Date(d).getTime() - new Date(r.vznik).getTime()) / 864e5 < 365) casti.push('vznikla menej ako rok pred zmluvou');
+  return casti.filter(Boolean).join(' · ');
+};
 const pct = (n: number | null | undefined) => (n == null ? '–' : n.toLocaleString('sk-SK', { maximumFractionDigits: 1 }) + ' %');
 const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) => d.nazov), data: majetok.druhy.map((d: any) => d.vymera_ha) }) : '';
 ---
@@ -272,6 +289,59 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
         </>
       )}
 
+      {zmc && mcZoznam.length > 0 && (
+        <>
+          <h2 class="sekcia" id="zmluvy-mc">Zmluvy a dotácie mestských častí</h2>
+          <section class="kpis">
+            <div class="card kpi"><p class="label">Zmluvy 17 mestských častí</p><p class="value">{fmt(mcSpolu)}</p><p class="delta">od {datum(zmc.od)} do {datum(zmc.do)}</p></div>
+            <div class="card kpi"><p class="label">Ich zmluvná hodnota</p><p class="value">{mil(mcSuma)}</p><p class="delta">súčet súm uvedených v zmluvách</p></div>
+            <div class="card kpi"><p class="label">Dotácie a granty</p><p class="value">{mil(dotSpolu)}</p><p class="delta">zmluvy s dotáciou alebo grantom v predmete</p></div>
+          </section>
+          <section class="card">
+            <h3>Mestské časti podľa hodnoty zmlúv</h3>
+            <div class="tabulka-obal"><table>
+              <thead><tr><th>Mestská časť</th><th class="num">Zmlúv</th><th class="num">Hodnota</th><th class="num">Dotácie</th><th class="num">Zmluvy s fyz. osobami</th></tr></thead>
+              <tbody>{mcZoznam.map(([mc, v]: any) => <tr><td><a href={`#mc-${slugMc(mc)}`} data-mc={slugMc(mc)} class="mc-odkaz">{mc}</a></td><td class="num">{fmt(v.zmluv)}</td><td class="num">{mil(v.suma)}</td><td class="num">{zmc.dotacie[mc]?.suma ? mil(zmc.dotacie[mc].suma) : '–'}</td><td class="num">{fmt(v.fyzicke_osoby.zmluv)}</td></tr>)}</tbody>
+            </table></div>
+          </section>
+          <section class="card" id="zmluvy-mc-detail">
+            <label class="mc-vyber">Mestská časť <select id="mc-select">{mcZoznam.map(([mc]: any) => <option value={slugMc(mc)}>{mc}</option>)}</select></label>
+            {mcZoznam.map(([mc, v]: any, i: number) => (
+              <div class="mc-panel" data-mc={slugMc(mc)} id={`mc-${slugMc(mc)}`} hidden={i > 0}>
+                <div class="dlh-grid">
+                  <div>
+                    <h3>Najväčší zmluvní partneri – {mc}</h3>
+                    <ol class="dodavatelia">{v.najvacsi_partneri.slice(0, 10).map((x: any) => <li>{x.nazov} <span>{mil(x.suma)} · {fmt(x.zmluv)}×</span>{rpoInfo(x.ico) && <small class="rpo">{rpoInfo(x.ico)}</small>}</li>)}</ol>
+                  </div>
+                  <div>
+                    <h3>Kto dostal dotácie</h3>
+                    {zmc.dotacie[mc]?.prijimatelia?.length ? (
+                      <ol class="dodavatelia">{zmc.dotacie[mc].prijimatelia.map((x: any) => <li>{x.nazov} <span>{eur(x.suma)}</span></li>)}</ol>
+                    ) : <p class="mensie">V CRZ nie sú zmluvy s dotáciou v predmete.</p>}
+                  </div>
+                </div>
+                <h3>Najväčšie zmluvy</h3>
+                <ul class="zmluvy">
+                  {v.najvacsie_zmluvy.slice(0, 8).map((z: any) => (
+                    <li><div class="zmluva-hlava"><strong>{eur(z.s)}</strong><span>{datum(z.d)}</span></div><p><a href={`https://www.crz.gov.sk/zmluva/${z.id}/`} rel="noopener">{z.p}</a>{rpoInfo(z.ico, z.d) && <small class="rpo"> · {rpoInfo(z.ico, z.d)}</small>}</p>{z.pr && <p class="predmet">{z.pr}</p>}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <div class="mc-hladaj">
+              <label for="mc-q"><strong>Hľadať v zmluvách mestskej časti</strong> (partner, IČO alebo predmet)</label>
+              <input id="mc-q" type="search" placeholder="napr. oprava, Bratislavská vodárenská, 3591…" autocomplete="off" />
+              <ul class="zmluvy" id="mc-vysledky"></ul>
+            </div>
+            <p class="zdroj">
+              Zdroj: <a href="https://www.crz.gov.sk">Centrálny register zmlúv</a> (denné exporty), údaje o firmách z <a href="https://rpo.statistics.sk">Registra právnických osôb</a> ŠÚ SR.
+              Hodnota je suma uvedená v zmluve (pri rámcových a nájomných zmluvách môže byť viacročná, pri mnohých zmluvách je 0 €).
+              Zmluvy s fyzickými osobami (aj živnostníkmi) len započítavame – bez mena a predmetu. Dotácie = zmluvy, ktoré majú v predmete slovo dotácia alebo grant.
+            </p>
+          </section>
+        </>
+      )}
+
       {dlhPosl && (
         <>
           <h2 class="sekcia" id="dlh">Dlh mesta a mestských častí</h2>
@@ -307,6 +377,34 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
 
 <script>
   import Chart from 'chart.js/auto';
+
+  // Zmluvy mestských častí: výber MČ a vyhľadávanie v jej zmluvách (načítanie zoznamu pri prvom hľadaní)
+  const sel = document.getElementById('mc-select') as HTMLSelectElement | null;
+  if (sel) {
+    const panely = [...document.querySelectorAll<HTMLElement>('.mc-panel')];
+    const q = document.getElementById('mc-q') as HTMLInputElement;
+    const out = document.getElementById('mc-vysledky')!;
+    const cache: Record<string, any> = {};
+    const esc = (t: unknown) => String(t ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+    const norm = (t: string) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const ukaz = (mc: string) => { sel.value = mc; panely.forEach((p) => (p.hidden = p.dataset.mc !== mc)); hladaj(); };
+    async function hladaj() {
+      const t = norm(q.value.trim());
+      if (t.length < 3) { out.innerHTML = ''; return; }
+      const mc = sel.value;
+      cache[mc] ??= await fetch(`/data/zmluvy-mc/${mc}.json`).then((r) => r.json()).catch(() => ({ zmluvy: [] }));
+      const slova = t.split(/\s+/);
+      const najdene = cache[mc].zmluvy.filter((z: any[]) => { const x = norm(`${z[2]} ${z[3] ?? ''} ${z[4] ?? ''}`); return slova.every((w) => x.includes(w)); });
+      out.innerHTML = najdene.length
+        ? `<li class="mensie">Nájdených ${najdene.length.toLocaleString('sk-SK')} zmlúv${najdene.length > 30 ? ', zobrazených 30 najnovších' : ''}</li>` + najdene.slice(0, 30).map((z: any[]) =>
+          `<li><div class="zmluva-hlava"><strong>${Number(z[5]).toLocaleString('sk-SK', { maximumFractionDigits: 0 })} €</strong><span>${new Date(z[1]).toLocaleDateString('sk-SK')}</span></div><p><a href="https://www.crz.gov.sk/zmluva/${esc(z[0])}/" rel="noopener">${esc(z[2])}</a>${z[6] ? ' · dotácia' : ''}</p>${z[4] ? `<p class="predmet">${esc(z[4])}</p>` : ''}</li>`).join('')
+        : '<li class="mensie">Nič sa nenašlo.</li>';
+    }
+    sel.addEventListener('change', () => ukaz(sel.value));
+    document.querySelectorAll<HTMLAnchorElement>('.mc-odkaz').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); ukaz(a.dataset.mc!); document.getElementById('zmluvy-mc-detail')!.scrollIntoView({ behavior: 'smooth' }); }));
+    let casovac: number;
+    q.addEventListener('input', () => { clearTimeout(casovac); casovac = window.setTimeout(hladaj, 250); });
+  }
 
   const fg = document.getElementById('fakt-graf');
   if (fg?.dataset.fakt) {
@@ -423,6 +521,13 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
 </script>
 
 <style>
+  .mc-vyber { display: flex; gap: 8px; align-items: center; font-weight: 600; margin-bottom: 12px; }
+  .mc-vyber select, .mc-hladaj input { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card, transparent); color: inherit; }
+  .mc-hladaj { margin-top: 20px; display: grid; gap: 8px; }
+  .mc-hladaj input { width: 100%; box-sizing: border-box; }
+  .rpo { display: block; color: var(--muted); font-size: 0.8rem; }
+  .zmluvy .rpo { display: inline; }
+  [hidden] { display: none !important; }
   .hero { padding: 40px 0 24px; }
   .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
   h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }

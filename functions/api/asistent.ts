@@ -22,6 +22,7 @@ export const TEMY: Record<string, RegExp> = {
   komunalne: /komunal|primator|starost|zastupitel|poslan|bsk|zup|samospravn|predsed|vallo|droba|24\. ?10|oktobr/,
   rozpocet: /rozpoc|prijm|vydavk|vydav|financ|peniaz|dlh|zadlz|uver|hospodar|dan /,
   zmluvy: /zmluv|dodavatel|obstara|firma|firmy|zakazk/,
+  zmluvy_mc: /zmluv\w* (mestsk\w* cast|mc|petrzal|ruzinov|starom|stare mest|novom mest|nove mest|karlov|dubrav|rac|vrakun|lamac|devin|jarov|rusov|cunov|vajnor|biskupic|zahorsk)|dotaci|grant|komu (mestska cast|mc|petrzalka|ruzinov|obvod)|dodavatel\w* (mestsk|mc)/,
   majetok: /majet|pozem|parcel/,
   mhd: /mhd|autobus|elektric|trolejbus|linka|linky|liniek|zastav|spoj|cestovn|cestujuc|dpb|dopravny podnik/,
   nehody: /nehod|havari/,
@@ -66,14 +67,14 @@ const STRANKY: Record<string, string> = {
   nehody: '/doprava', scitace: '/doprava#premavka', cyklo: '/doprava#cyklo', skoly: '/vybavenost', vybavenost: '/vybavenost',
   ovzdusie: '/prostredie#ovzdusie-teraz', prostredie: '/prostredie', priroda: '/prostredie', vystrahy: '/#dnes', dunaj: '/prostredie#dunaj',
   cesty: '/doprava#naozivo', miesta: '/mapa', spadove: '/vybavenost#spadova-skola',
-  socialne: '/vybavenost#socialne', hlasovania: '/volby#hlasovania', bezpecnost: '/bezpecnost', faktury: '/financie#faktury', klima: '/mapa#horucavy', rozvoj: '/obyvatelia#index-rozvoja', pamiatky: '/mapa#pamiatky', csd: '/doprava#csd', hluk: '/mapa#hluk',
+  socialne: '/vybavenost#socialne', hlasovania: '/volby#hlasovania', bezpecnost: '/bezpecnost', faktury: '/financie#faktury', zmluvy_mc: '/financie#zmluvy-mc', klima: '/mapa#horucavy', rozvoj: '/obyvatelia#index-rozvoja', pamiatky: '/mapa#pamiatky', csd: '/doprava#csd', hluk: '/mapa#hluk',
 };
 const NAZVY_STRANOK: Record<string, string> = {
   '/': 'Prehľad', '/obyvatelia': 'Obyvatelia', '/volby': 'Voľby', '/volby#komunalne': 'Komunálne voľby', '/financie': 'Financie', '/doprava#doprava': 'Doprava – MHD', '/doprava': 'Doprava',
   '/doprava#premavka': 'Kedy je premávka', '/doprava#cyklo': 'Cyklotrasy', '/vybavenost': 'Vybavenosť', '/prostredie': 'Prostredie',
   '/#dnes': 'Dnes v Bratislave', '/prostredie#dunaj': 'Dunaj', '/doprava#naozivo': 'Uzávierky dnes', '/prostredie#ovzdusie-teraz': 'Ovzdušie teraz', '/mapa': 'Mapa',
   '/vybavenost#spadova-skola': 'Spádová škola podľa adresy', '/vybavenost#socialne': 'Jasle a sociálne služby', '/obyvatelia#index-rozvoja': 'Index rozvoja',
-  '/mapa#pamiatky': 'Pamiatky na mape', '/volby#hlasovania': 'Hlasovania poslancov', '/bezpecnost': 'Bezpečnosť', '/financie#faktury': 'Faktúry a objednávky', '/mapa#horucavy': 'Mapa horúčav', '/doprava#csd': 'Sčítanie dopravy', '/mapa#hluk': 'Hluková mapa',
+  '/mapa#pamiatky': 'Pamiatky na mape', '/volby#hlasovania': 'Hlasovania poslancov', '/bezpecnost': 'Bezpečnosť', '/financie#faktury': 'Faktúry a objednávky', '/financie#zmluvy-mc': 'Zmluvy mestských častí', '/mapa#horucavy': 'Mapa horúčav', '/doprava#csd': 'Sčítanie dopravy', '/mapa#hluk': 'Hluková mapa',
 };
 const STOP = new Set(['ktore', 'ktora', 'ktory', 'kde', 'kedy', 'ako', 'aky', 'aka', 'ake', 'kolko', 'bratislava', 'bratislave', 'bratislavy', 'mesto', 'meste', 'najblizsia', 'najblizsie', 'otvorena', 'otvorene', 'otvoreny', 'teraz', 'dnes', 'prosim', 'chcem', 'potrebujem', 'mate', 'viete', 'nejaka', 'nejake', 'nejaky', 'este', 'blizko', 'pri', 'okolo', 'ulica', 'ulici', 'ulicu']);
 
@@ -352,6 +353,11 @@ export const onRequestPost = async (ctx: any) => {
         const meno = v.poslanci.filter((r: string) => { const n = norm(r.split(' (')[0]); return slovaQ.some((w) => n.split(' ').some((x) => x.startsWith(w.slice(0, 5)))); });
         return [k, { ...v, poslanci: meno.length ? meno : `(${v.poslanci.length} poslancov – opýtajte sa na konkrétne meno)`, ...(meno.length ? {} : { najnizsia_pritomnost: [...v.poslanci].sort((a: string, b: string) => parseFloat(a.split('prítomnosť ')[1]) - parseFloat(b.split('prítomnosť ')[1])).slice(0, 5) }) }];
       }));
+    }
+    if (t === 'zmluvy_mc') {
+      const c = najdiCast(otazka, data.mestske_casti);
+      if (c) fakty = Object.fromEntries(Object.entries<any>(fakty).filter(([k]) => k === 'poznamka' || k === c));
+      else fakty = Object.fromEntries(Object.entries<any>(fakty).map(([k, v]) => [k, typeof v === 'object' ? { zmluv: v.zmluv, hodnota_eur: v.hodnota_eur, dotacie: v.dotacie.split(';')[0] } : v]));
     }
     if (t === 'scitace') {
       const chce = ['cyklisti', 'chodci'].filter((k) => (k === 'cyklisti' ? /cykl|bicyk/ : /chodc|pesi|peso/).test(q));

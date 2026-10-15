@@ -91,6 +91,22 @@ export async function GET() {
       },
     };
   }
+  const zmc = nacitaj('zmluvy-mc.json');
+  if (zmc) {
+    temy.zmluvy_mc = {
+      nazov: `Zmluvy a dotácie mestských častí (Centrálny register zmlúv, ${zmc.od} – ${zmc.do})`, stranka: '/financie#zmluvy-mc',
+      fakty: {
+        poznamka: 'Hodnota = suma uvedená v zmluvách. Zmluvy s fyzickými osobami sú len započítané, bez mien. Dotácie = zmluvy s dotáciou alebo grantom v predmete.',
+        ...Object.fromEntries(Object.entries<any>(zmc.mestske_casti).map(([mc, v]) => [mc, {
+          zmluv: v.zmluv, hodnota_eur: v.suma, zmluv_s_fyzickymi_osobami: v.fyzicke_osoby.zmluv,
+          po_rokoch: Object.fromEntries(Object.entries<any>(v.roky).map(([r, [n, sm]]) => [r, `${n} zmlúv, ${zaokr(sm)} €`])),
+          najvacsi_partneri: v.najvacsi_partneri.slice(0, 6).map((x: any) => `${x.nazov}${x.ico ? ` (IČO ${x.ico})` : ''}: ${x.zmluv} zmlúv, ${zaokr(x.suma)} €`),
+          najvacsie_zmluvy: v.najvacsie_zmluvy.slice(0, 4).map((z: any) => `${z.d} ${z.p}: ${z.pr ?? ''} – ${zaokr(z.s)} €`),
+          dotacie: zmc.dotacie[mc] ? `${zmc.dotacie[mc].zmluv} zmlúv, ${zaokr(zmc.dotacie[mc].suma)} €; ${zmc.dotacie[mc].prijimatelia.slice(0, 5).map((x: any) => `${x.nazov} ${zaokr(x.suma)} €`).join('; ')}` : 'žiadne',
+        }])),
+      },
+    };
+  }
   if (majetok) {
     temy.majetok = { nazov: 'Majetok mesta', stranka: '/financie', fakty: { spolu: majetok.spolu, druhy: majetok.druhy, spravcovia: majetok.spravcovia.slice(0, 8) } };
   }
