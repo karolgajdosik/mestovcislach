@@ -67,6 +67,17 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
     </section>
   </div>
 
+  <h2 class="sekcia" id="hluk">Hluk</h2>
+  <section class="card">
+    <p class="hluk-text">
+      Strategické hlukové mapy Úradu verejného zdravotníctva SR ukazujú, kde hluk z ciest a priemyslu presahuje 55, 60, 65 a 70 dB.
+      Celodenný ukazovateľ Lden vážene sčítava deň, večer a noc; Lnight je priemer v noci. Pre obytné územie pri hlavných cestách
+      pripúšťa slovenská vyhláška 60 dB cez deň a 50 dB v noci; Svetová zdravotnícka organizácia odporúča pri hluku z ciest najviac 53 dB (Lden) a 45 dB v noci.
+    </p>
+    <p><a class="tlacidlo" href="/mapa#hluk">Zobraziť hlukovú mapu</a></p>
+    <p class="zdroj">Zdroj: Úrad verejného zdravotníctva SR – strategické hlukové mapy aglomerácie Bratislava (INSPIRE, data.slovensko.sk). Izofóny sú zjednodušené pre mapu.</p>
+  </section>
+
   <h2 class="sekcia">Ovzdušie</h2>
 
   <section class="card" id="ovzdusie-teraz">
@@ -412,4 +423,6 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
   th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
   tr.spolu td { font-weight: 700; }
   .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .hluk-text { margin: 0 0 12px; max-width: 52em; }
+  .tlacidlo { display: inline-block; padding: 9px 16px; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; }
 </style>

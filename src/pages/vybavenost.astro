@@ -9,6 +9,14 @@ const nacitaj = (subor: string) => {
 };
 const skoly = nacitaj('skoly-bratislava.json');
 const rajon = nacitaj('rajonizacia-bratislava.json');
+const iedu = nacitaj('skoly-iedu.json');
+const soc = nacitaj('socialne-bratislava.json');
+const pamReg = nacitaj('pamiatky-register.json');
+const zsMc = iedu ? Object.entries<any>(iedu.mestske_casti).map(([mc, t]) => ({ mc, zs: t.zs?.ziakov ?? 0, zsSkol: t.zs?.skol ?? 0, ms: t.ms?.ziakov ?? 0, ss: t.ss?.ziakov ?? 0 }))
+  .sort((a, b) => b.zs - a.zs) : [];
+const socMc = soc ? Object.entries<any>(soc.mestske_casti).map(([mc, k]) => ({ mc, ...k, spolu: Object.values<number>(k).reduce((a, b) => a + b, 0) })).sort((a, b) => b.spolu - a.spolu) : [];
+const jasle = soc?.druhy.find((d: any) => /deti do troch/.test(d.druh));
+const seniori = soc?.druhy.filter((d: any) => /seniorov|opatrovateľskej služby/.test(d.druh));
 const vyb = nacitaj('vybavenost-bratislava.json');
 const obyv = nacitaj('obyvatelstvo-bratislava.json');
 
@@ -26,11 +34,11 @@ const skolyTab = skoly ? casti.map((c: any) => {
 const vybTab = vyb ? [...vyb.mestske_casti].sort((a: any, b: any) => (b.lekarne_na_10000 ?? 0) - (a.lekarne_na_10000 ?? 0)) : [];
 const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateString('sk-SK') : '';
 ---
-<Base title="Vybavenosť Bratislavy – mestovcislach.sk" description="Školy, škôlky, lekárne, zdravotníctvo a nabíjacie stanice v Bratislave podľa mestských častí.">
+<Base title="Vybavenosť Bratislavy – mestovcislach.sk" description="Školy a spádové obvody, jasle, sociálne služby, lekárne, zdravotníctvo a nabíjacie stanice v Bratislave podľa mestských častí.">
   <section class="hero">
     <p class="kicker">Bratislava</p>
     <h1>Vybavenosť</h1>
-    <p class="lead">Školy, škôlky, lekárne, zdravotníctvo a nabíjacie stanice v mestských častiach.</p>
+    <p class="lead">Školy, škôlky a spádové obvody, jasle a sociálne služby, lekárne, zdravotníctvo a nabíjacie stanice v mestských častiach.</p>
   </section>
 
   {skoly && (
@@ -80,6 +88,78 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
           </p>
         </section>
       )}
+      {iedu && (
+        <>
+          <section class="kpis">
+            <div class="card kpi"><p class="label">Žiaci základných škôl</p><p class="value">{fmt(iedu.mesto.zs.ziakov)}</p><p class="delta">{iedu.mesto.zs.skol} škôl vrátane súkromných a cirkevných · {des(iedu.mesto.zs.ziakov_na_ucitela)} žiaka na učiteľa</p></div>
+            <div class="card kpi"><p class="label">Žiaci stredných škôl</p><p class="value">{fmt(iedu.mesto.ss.ziakov)}</p><p class="delta">{iedu.mesto.ss.skol} škôl · {des(iedu.mesto.ss.ziakov_na_ucitela)} žiaka na učiteľa</p></div>
+            <div class="card kpi"><p class="label">Deti v materských školách</p><p class="value">{fmt(iedu.mesto.ms.ziakov)}</p><p class="delta">{iedu.mesto.ms.skol} škôl a elokovaných pracovísk</p></div>
+            <div class="card kpi"><p class="label">Umelecké školy a CVČ</p><p class="value">{fmt(iedu.mesto.zus.ziakov + iedu.mesto.cvc.ziakov)}</p><p class="delta">{iedu.mesto.zus.skol} ZUŠ, {iedu.mesto.cvc.skol} centier voľného času</p></div>
+          </section>
+          <section class="card">
+            <h3>Žiaci podľa mestských častí</h3>
+            <div class="tabulka-obal">
+              <table>
+                <thead><tr><th>Mestská časť</th><th class="num">Žiaci ZŠ</th><th class="num">Základné školy</th><th class="num">Deti v MŠ</th><th class="num">Žiaci SŠ</th></tr></thead>
+                <tbody>{zsMc.map((c: any) => <tr><td>{c.mc}</td><td class="num">{fmt(c.zs)}</td><td class="num">{c.zsSkol}</td><td class="num">{fmt(c.ms)}</td><td class="num">{fmt(c.ss)}</td></tr>)}</tbody>
+              </table>
+            </div>
+            <div class="dva-stlpce">
+              <div>
+                <h3>Najväčšie základné školy</h3>
+                <ol class="zoznam">{iedu.najvacsie.zs.slice(0, 8).map((x: any) => <li>{x.nazov} <span>{x.mc} · {fmt(x.ziaci)} žiakov</span></li>)}</ol>
+              </div>
+              {iedu.zaujem_ss?.najzaujimavejsie?.length > 0 && (
+                <div>
+                  <h3>O ktoré stredné školy je najväčší záujem</h3>
+                  <ol class="zoznam">{iedu.zaujem_ss.najzaujimavejsie.slice(0, 8).map((x: any) => <li>{x.nazov.replace(/,? ako organizačná zložka.*$/, '')} <span>{x.adresa} · {fmt(x.zaujem1)} prihlášok s 1. voľbou</span></li>)}</ol>
+                </div>
+              )}
+            </div>
+            <p class="zdroj">
+              Počty žiakov, pedagógov a rozpočty škôl: <a href={iedu.zdroj.url}>{iedu.zdroj.nazov}</a>; záujem uchádzačov: <a href={iedu.zdroj_zaujem.url}>{iedu.zdroj_zaujem.nazov}</a> (posledné zverejnené prijímacie konanie).
+              Údaje cez <a href="https://data.slovensko.sk">data.slovensko.sk</a>. Všetky školy sú aj na <a href="/mapa">mape</a>.
+            </p>
+          </section>
+        </>
+      )}
+    </>
+  )}
+
+  {soc && (
+    <>
+      <h2 class="sekcia" id="socialne">Jasle a sociálne služby</h2>
+      <section class="kpis">
+        {jasle && <div class="card kpi"><p class="label">Jasle (deti do 3 rokov)</p><p class="value">{jasle.pocet}</p><p class="delta">registrovaných zariadení, spolu {fmt(jasle.kapacita)} miest</p></div>}
+        {seniori?.length > 0 && <div class="card kpi"><p class="label">Zariadenia pre seniorov</p><p class="value">{seniori.reduce((a: number, d: any) => a + d.pocet, 0)}</p><p class="delta">{fmt(seniori.reduce((a: number, d: any) => a + (d.kapacita ?? 0), 0))} miest vrátane opatrovateľských zariadení</p></div>}
+        <div class="card kpi"><p class="label">Sociálne služby spolu</p><p class="value">{soc.sluzieb}</p><p class="delta">s miestom poskytovania v Bratislave</p></div>
+      </section>
+      <section class="card">
+        <div class="dva-stlpce">
+          <div>
+            <h3>Druhy služieb</h3>
+            <div class="tabulka-obal">
+              <table>
+                <thead><tr><th>Služba</th><th class="num">Počet</th><th class="num">Kapacita</th></tr></thead>
+                <tbody>{soc.druhy.slice(0, 14).map((d: any) => <tr><td>{d.druh.charAt(0).toUpperCase() + d.druh.slice(1)}</td><td class="num">{d.pocet}</td><td class="num">{d.kapacita ? fmt(d.kapacita) : '–'}</td></tr>)}</tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <h3>Podľa mestských častí</h3>
+            <div class="tabulka-obal">
+              <table>
+                <thead><tr><th>Mestská časť</th><th class="num">Jasle</th><th class="num">Seniori</th><th class="num">Spolu</th></tr></thead>
+                <tbody>{socMc.map((c: any) => <tr><td>{c.mc}</td><td class="num">{c.deti ?? 0}</td><td class="num">{c.seniori ?? 0}</td><td class="num">{c.spolu}</td></tr>)}</tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <p class="zdroj">
+          Zdroj: <a href={soc.zdroj.url}>{soc.zdroj.nazov}</a> (data.slovensko.sk). Len aktívne služby s adresou v Bratislave; terénne služby bez pevného miesta nie sú započítané.
+          Zverejňujeme len právnické osoby a samosprávu, bez telefónov, e-mailov a mien štatutárov. Jasle a ostatné služby nájdete aj na <a href="/mapa">mape</a>.
+        </p>
+      </section>
     </>
   )}
 
@@ -90,7 +170,8 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
         <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-0)"></i>Lekárne</p><p class="value">{fmt(vyb.mesto.lekarne)}</p></div>
         <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-2)"></i>Nemocnice a polikliniky</p><p class="value">{fmt(vyb.mesto.nemocnice)}</p></div>
         <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-3)"></i>Nabíjacie stanice</p><p class="value">{fmt(vyb.mesto.nabijanie)}</p><p class="delta">{fmt(vyb.mesto.nabijacie_miesta)} nabíjacích miest</p></div>
-        {vyb.mesto.pamiatky != null && <div class="card kpi"><p class="label">Kultúrne pamiatky v OSM</p><p class="value">{fmt(vyb.mesto.pamiatky)}</p><p class="delta">a {fmt(vyb.mesto.stromy)} chránených stromov. Len zlomok – úplný register vedie <a href="https://www.pamiatky.sk">Pamiatkový úrad SR</a>, ktorý ho strojovo nesprístupňuje. <a href="/mapa">Na mape</a></p></div>}
+        {pamReg ? <div class="card kpi"><p class="label">Národné kultúrne pamiatky</p><p class="value">{fmt(pamReg.pamiatok)}</p><p class="delta">{fmt(pamReg.objektov)} pamiatkových objektov podľa registra MK SR, z toho {pamReg.mestske_casti['Staré Mesto']} v Starom Meste. <a href="/mapa#pamiatky">Na mape</a></p></div>
+          : vyb.mesto.pamiatky != null && <div class="card kpi"><p class="label">Kultúrne pamiatky v OSM</p><p class="value">{fmt(vyb.mesto.pamiatky)}</p><p class="delta"><a href="/mapa">Na mape</a></p></div>}
       </section>
 
       <section class="card" id="vybavenost">
@@ -224,6 +305,10 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
   #mapa-vyb { height: 460px; border-radius: 10px; overflow: hidden; background: var(--bg); }
   @media (max-width: 600px) { #mapa-vyb { height: 380px; } }
   .tabulka-obal { overflow-x: auto; }
+  .dva-stlpce { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 18px; }
+  .zoznam { margin: 8px 0 0; padding-left: 20px; font-size: 0.92rem; }
+  .zoznam li { margin: 4px 0; }
+  .zoznam span { display: block; color: var(--muted); font-size: 0.82rem; }
   .pozn { color: var(--muted); font-size: 0.9rem; margin: 6px 0 12px; }
   .rajon-form { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
   .pole { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; color: var(--muted); }

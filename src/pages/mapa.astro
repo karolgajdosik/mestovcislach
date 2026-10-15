@@ -267,7 +267,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       const vrstva = d.vrstvy[v];
       return L.layerGroup(Object.entries<any>(vrstva.ciary).map(([db, ciary]) =>
         L.polyline(ciary, { color: HLUK[db], weight: Number(db) >= 65 ? 2.2 : 1.6, opacity: 0.9 })
-          .bindPopup(`<strong>${db === '70' ? '70 dB a viac' : `${db} dB`}</strong><br>${vrstva.nazov}<br><span style="opacity:.75">izofóna strategickej hlukovej mapy (ÚVZ SR); limit pre obytné územie z ciest 50 dB v noci</span>`)));
+          .bindPopup(`<strong>${db === '70' ? '70 dB a viac' : `${db} dB`}</strong><br>${vrstva.nazov}<br><span style="opacity:.75">izofóna strategickej hlukovej mapy (ÚVZ SR); WHO odporúča pri hluku z ciest najviac 53 dB (Lden) a 45 dB v noci</span>`)));
     };
   }
 
@@ -293,6 +293,13 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       obal.querySelector<HTMLElement>('.legenda-hluk')!.hidden = !hluk;
     });
   });
+  // odkaz /mapa#hluk, #skoly, #pamiatky… zapne zodpovedajúce vrstvy
+  const HASH: Record<string, string[]> = { hluk: ['hluk_den'], skoly: ['skoly_zs', 'obvody'], pamiatky: ['pamiatky'], socialne: ['jasle', 'socialne'] };
+  for (const k of HASH[location.hash.slice(1)] ?? []) {
+    const i = obal.querySelector<HTMLInputElement>(`input[value="${k}"]`);
+    if (i) i.checked = true;
+    if (k.startsWith('hluk')) obal.querySelector<HTMLElement>('.legenda-hluk')!.hidden = false;
+  }
   (async () => {
     for (const k of poradie) {
       const i = obal.querySelector<HTMLInputElement>(`input[value="${k}"]`);
@@ -349,6 +356,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   label i { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
   .podklad label { display: inline-flex; margin-right: 12px; }
   .legenda-hluk { display: flex; gap: 6px; align-items: center; margin: 4px 0 0; font-size: 0.75rem; color: var(--muted); }
+  .legenda-hluk[hidden] { display: none; }
   .legenda-hluk span { display: inline-flex; align-items: center; gap: 3px; }
   .legenda-hluk span::before { content: ''; width: 14px; height: 3px; border-radius: 2px; background: var(--c); }
   @media (max-width: 600px) {

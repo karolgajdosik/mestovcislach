@@ -75,6 +75,10 @@ if (sc) {
 const pct = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' %';
 const fmt = (n: number) => n.toLocaleString('sk-SK');
 const ba = pripravene?.prehlad[0];
+const pu = path.join(process.cwd(), 'data', 'mc-ukazovatele.json');
+const index = fs.existsSync(pu) ? JSON.parse(fs.readFileSync(pu, 'utf-8')).index_rozvoja : null;
+const indexMax = index ? Math.max(...Object.values<number>(index.mestske_casti)) : 1;
+const des = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 ---
 <Base title="Obyvatelia Bratislavy – sčítanie 2021 – mestovcislach.sk" description="Kto žije v Bratislave a v jej mestských častiach: vek, vzdelanie, národnosť, náboženstvo, domácnosti a byty podľa sčítania 2021.">
   <section class="hero">
@@ -123,6 +127,19 @@ const ba = pripravene?.prehlad[0];
           Údaje sú k rozhodujúcemu okamihu sčítania 1. 1. 2021. Podiely sú zo všetkých osôb, domácností či bytov vrátane kategórie „nezistené“ (pri vzdelaní z obyvateľov od 15 rokov). Mesto = súčet 17 mestských častí.
         </p>
       </section>
+
+      {index && (
+        <section class="card" id="index-rozvoja">
+          <h2>Index regionálneho rozvoja</h2>
+          <p class="pozn-index">{index.popis} Priemer všetkých {index.obci_v_kraji} obcí Bratislavského kraja: <b>{des(index.priemer_kraja)}</b>.</p>
+          <ol class="index-zoznam">
+            {Object.entries<number>(index.mestske_casti).map(([mc, v]) => (
+              <li><span class="mc">{mc}</span><span class="pruh-obal"><span class="pruh" style={`width:${(v / indexMax) * 100}%`}></span></span><span class="num">{des(v)}</span></li>
+            ))}
+          </ol>
+          <p class="zdroj">Zdroj: <a href={index.zdroj.url}>{index.zdroj.nazov}</a> (data.slovensko.sk).</p>
+        </section>
+      )}
     </div>
   )}
 </Base>
@@ -187,4 +204,10 @@ const ba = pripravene?.prehlad[0];
   th { color: var(--muted); font-weight: 600; font-size: 0.78rem; }
   .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   tr.spolu td { font-weight: 700; }
+  .pozn-index { color: var(--muted); font-size: 0.9rem; margin: 6px 0 12px; max-width: 52em; }
+  .index-zoznam { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .index-zoznam li { display: grid; grid-template-columns: minmax(130px, 180px) 1fr 48px; gap: 10px; align-items: center; font-size: 0.9rem; }
+  .pruh-obal { background: var(--line); border-radius: 4px; height: 10px; overflow: hidden; }
+  .pruh { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+  .index-zoznam .num { text-align: right; font-variant-numeric: tabular-nums; }
 </style>

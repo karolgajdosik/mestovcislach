@@ -36,6 +36,9 @@ const bajk = nacitaj('bajk-bratislava.json');
 const km1 = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' km';
 const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) => cest[r]) }) : '';
 const scitace = nacitaj('scitace-bratislava.json');
+const csd = nacitaj('csd-bratislava.json');
+const csdCesty = (csd?.cesty ?? []).filter((c: any) => c['2015'] && /^(D|R|I\/|II\/)/.test(c.cesta)).slice(0, 14);
+const csdTis = (v: any) => (v?.priemer ? v.priemer.toLocaleString('sk-SK') : '–');
 const KAT: Record<string, [string, string]> = { auta: ['Autá', 'áut'], cyklisti: ['Cyklisti', 'cyklistov'], chodci: ['Chodci', 'chodcov'] };
 const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk-SK')} – ${new Date(scitace.obdobie.do).toLocaleDateString('sk-SK')}` : '';
 ---
@@ -110,6 +113,22 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
           data.bratislava.sk, licencia CC BY 4.0. Dni s výpadkom sčítača sú vynechané. Mesto môže údaje spätne opraviť (až 2 mesiace).
         </p>
       </section>
+      {csdCesty.length > 0 && (
+        <section class="card" id="csd">
+          <h3>Diaľnice a hlavné cesty – celoštátne sčítanie dopravy</h3>
+          <p class="pozn-csd">
+            Priemerný počet vozidiel za 24 hodín na sčítacích úsekoch v Bratislave.
+            {csd.narast_2005_2015?.percent != null && <> Na úsekoch sčítaných v rokoch 2005 aj 2015 premávka {csd.narast_2005_2015.percent >= 0 ? 'vzrástla' : 'klesla'} o <b>{Math.abs(csd.narast_2005_2015.percent).toLocaleString('sk-SK')} %</b>.</>}
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead><tr><th>Cesta</th><th class="num">2005</th><th class="num">2010</th><th class="num">2015</th><th class="num">Najvyťaženejší úsek 2015</th><th class="num">Nákladné 2015</th></tr></thead>
+              <tbody>{csdCesty.map((c: any) => <tr><td>{c.cesta}</td><td class="num">{csdTis(c['2005'])}</td><td class="num">{csdTis(c['2010'])}</td><td class="num">{csdTis(c['2015'])}</td><td class="num">{c['2015'].max.toLocaleString('sk-SK')}</td><td class="num">{c['2015'].nakladne_podiel != null ? c['2015'].nakladne_podiel.toLocaleString('sk-SK') + ' %' : '–'}</td></tr>)}</tbody>
+            </table>
+          </div>
+          <p class="zdroj">{csd.popis} Zdroj: <a href={csd.zdroj.url}>{csd.zdroj.nazov}</a> (data.slovensko.sk).</p>
+        </section>
+      )}
     </div>
   )}
 
@@ -543,4 +562,5 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
   .zastavky .meno { font-weight: 600; }
   .zastavky .pocet { float: right; font-variant-numeric: tabular-nums; }
   .zastavky .linky { display: block; color: var(--muted); font-size: 0.82rem; }
+  .pozn-csd { color: var(--muted); font-size: 0.9rem; margin: 6px 0 12px; }
 </style>

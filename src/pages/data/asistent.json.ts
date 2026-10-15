@@ -138,6 +138,50 @@ export async function GET() {
       }])),
     };
   }
+  const iedu = nacitaj('skoly-iedu.json');
+  if (iedu) {
+    temy.skoly ??= { nazov: 'Školy a škôlky', stranka: '/vybavenost', fakty: {} };
+    Object.assign(temy.skoly.fakty, {
+      ziaci_a_skoly_mesto: Object.fromEntries(Object.entries<any>(iedu.mesto).map(([t, v]) => [iedu.typy[t], v])),
+      ziaci_podla_mc: Object.fromEntries(Object.entries<any>(iedu.mestske_casti).map(([m, t]) => [m, `ZŠ ${t.zs?.ziakov ?? 0} žiakov (${t.zs?.skol ?? 0} škôl), MŠ ${t.ms?.ziakov ?? 0} detí, SŠ ${t.ss?.ziakov ?? 0} žiakov`])),
+      najvacsie_zs: iedu.najvacsie.zs.map((x: any) => `${x.nazov} (${x.mc}) ${x.ziaci}`),
+      najvacsie_ss: iedu.najvacsie.ss.map((x: any) => `${x.nazov} (${x.mc}) ${x.ziaci}`),
+      najvacsi_zaujem_o_ss: iedu.zaujem_ss.najzaujimavejsie.slice(0, 10).map((x: any) => `${x.nazov.replace(/,? ako organizačná zložka.*$/, '')}, ${x.adresa}: ${x.zaujem1} prihlášok s 1. voľbou`),
+      zdroj_cisel: 'MŠVVaM SR – Digitálna mapa škôl (žiaci, pedagógovia, rozpočet 2024); spádovú školu podľa adresy nájde vyhľadávanie na /vybavenost#spadova-skola',
+    });
+  }
+  const soc = nacitaj('socialne-bratislava.json');
+  if (soc) {
+    temy.socialne = {
+      nazov: 'Jasle a sociálne služby (register MPSVR SR)', stranka: '/vybavenost#socialne',
+      fakty: { sluzieb: soc.sluzieb, druhy: soc.druhy.map((d: any) => `${d.druh}: ${d.pocet}${d.kapacita ? `, kapacita ${d.kapacita}` : ''}`), mestske_casti: soc.mestske_casti, poznamka: 'len aktívne služby s adresou v Bratislave, bez terénnych služieb; konkrétne zariadenia sú v miestach (Jasle, Sociálne služby)' },
+    };
+  }
+  const ukaz = nacitaj('mc-ukazovatele.json');
+  if (ukaz?.dlh) {
+    const roky = Object.keys(ukaz.dlh.roky).sort();
+    temy.rozpocet ??= { nazov: 'Rozpočet mesta', stranka: '/financie', fakty: {} };
+    temy.rozpocet.fakty.dlh = {
+      popis: ukaz.dlh.popis,
+      hlavne_mesto_podla_rokov: Object.fromEntries(roky.map((y) => [y, ukaz.dlh.roky[y]['Hlavné mesto']])),
+      [`mestske_casti_${roky[roky.length - 1]}`]: Object.fromEntries(Object.entries<any>(ukaz.dlh.roky[roky[roky.length - 1]]).filter(([k]) => k !== 'Hlavné mesto').map(([k, v]) => [k, `dlh ${v.dlh} €, ${v.pomer} % príjmov`])),
+    };
+  }
+  if (ukaz?.index_rozvoja) {
+    temy.rozvoj = { nazov: 'Index regionálneho rozvoja mestských častí (MIRRI SR)', stranka: '/obyvatelia#index-rozvoja', fakty: ukaz.index_rozvoja };
+  }
+  const pamReg = nacitaj('pamiatky-register.json');
+  if (pamReg) {
+    temy.pamiatky = { nazov: 'Kultúrne pamiatky – register MK SR', stranka: '/mapa#pamiatky', fakty: { ...pamReg, zdroj: pamReg.zdroj.nazov } };
+  }
+  const csd = nacitaj('csd-bratislava.json');
+  if (csd) {
+    temy.csd = { nazov: 'Celoštátne sčítanie dopravy (diaľnice a cesty)', stranka: '/doprava#csd', fakty: { popis: csd.popis, narast_2005_2015: csd.narast_2005_2015, cesty: csd.cesty.slice(0, 16), najvytazenejsie_useky_2015: csd.useky_2015.slice(0, 8) } };
+  }
+  temy.hluk = {
+    nazov: 'Hluk – strategické hlukové mapy ÚVZ SR', stranka: '/mapa#hluk',
+    fakty: { popis: 'Mapa izofón 55, 60, 65 a 70 dB pre hluk z ciest (Lden celý deň, Lnight noc) a z priemyslu v aglomerácii Bratislava. Konkrétnu ulicu si treba pozrieť na mape webu (vrstva Hluk). Odporúčanie WHO pre hluk z ciest: najviac 53 dB Lden a 45 dB v noci; vyhláška pre obytné územie pri hlavných cestách: 60 dB cez deň, 50 dB v noci.' },
+  };
   const vyb = nacitaj('vybavenost-bratislava.json');
   if (vyb) {
     temy.vybavenost = {
@@ -186,11 +230,26 @@ export async function GET() {
   };
   const castPre = (lat: number, lon: number) => polygony.find(([, mp]) => mp.some((p) => vnutri(lon, lat, p[0]) && !p.slice(1).some((h) => vnutri(lon, lat, h))))?.[0] ?? '';
   const miesta: any[] = [];
+  const oficialne = { pamiatky: nacitaj('pamiatky-register.json', 'public/data'), stromy: nacitaj('stromy-sop.json', 'public/data') };
   for (const subor of ['vybavenost-bratislava.json', 'pamiatky-bratislava.json']) {
     const d = nacitaj(subor, 'public/data');
     for (const [lat, lon, kat, nazov, det] of d?.body ?? []) {
+      if ((oficialne as any)[kat]) continue; // pamiatky a stromy z oficiálnych registrov
       miesta.push({ n: nazov, k: d.kategorie[kat] ?? kat, c: castPre(lat, lon), lat, lon, ...(det ?? {}) });
     }
+  }
+  for (const [lat, lon, nazov, det] of oficialne.pamiatky?.body ?? []) {
+    miesta.push({ n: nazov, k: 'Kultúrne pamiatky', c: det.mc, lat, lon, typ: det.typ, a: det.a, vznik: det.vznik, sloh: det.sloh });
+  }
+  for (const [lat, lon, nazov, det] of oficialne.stromy?.body ?? []) {
+    miesta.push({ n: nazov, k: 'Chránené stromy', c: det.mc, lat, lon, typ: det.druh, a: det.lok });
+  }
+  const TYP_SKOLY: Record<string, string> = { ms: 'Materská škola', zs: 'Základná škola', ss: 'Stredná škola', spec: 'Špeciálna škola', zus: 'Základná umelecká škola', cvc: 'Centrum voľného času' };
+  for (const [lat, lon, t, nazov, det] of nacitaj('skoly-iedu.json', 'public/data')?.body ?? []) {
+    miesta.push({ n: nazov, k: TYP_SKOLY[t], c: castPre(lat, lon), lat, lon, a: det.a, w: det.w, ziaci: det.z });
+  }
+  for (const [lat, lon, kat, nazov, det] of nacitaj('socialne-bratislava.json', 'public/data')?.body ?? []) {
+    miesta.push({ n: nazov, k: kat === 'deti' ? 'Jasle' : 'Sociálne služby', c: det.mc, lat, lon, typ: det.druh, a: det.a, w: det.w, kapacita: det.kap });
   }
   for (const z of mhd?.zastavky ?? []) miesta.push({ n: z.nazov, k: 'Zastávka MHD', c: mc(z.kod_obce), lat: z.lat, lon: z.lon, linky: z.linky.join(', '), odchody: z.odchody });
   for (const s of bajk?.stanice ?? []) miesta.push({ n: s.nazov, k: 'Stanica BAjk', c: mc(s.kod_obce), lat: s.lat, lon: s.lon });

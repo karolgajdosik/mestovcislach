@@ -55,9 +55,18 @@ const majetokCasti = (majetok?.mestske_casti ?? []).map((c: any) => ({
   nazov: nazvyMc.get(c.kod_obce) ?? c.kod_obce,
   podiel: rozlohy.get(c.kod_obce) ? (100 * c.vymera_ha) / (rozlohy.get(c.kod_obce)! * 100) : null,
 }));
+// Dlh hlavného mesta a mestských častí (MF SR)
+const ukaz = nacitaj('mc-ukazovatele.json');
+const dlhRoky = ukaz?.dlh ? Object.keys(ukaz.dlh.roky).sort() : [];
+const dlhRok = dlhRoky[dlhRoky.length - 1];
+const dlhPosl = dlhRok ? ukaz.dlh.roky[dlhRok] : null;
+const dlhMesto = dlhRoky.map((y) => ({ rok: y, ...ukaz.dlh.roky[y]['Hlavné mesto'] }));
+const dlhMc = dlhPosl ? Object.entries<any>(dlhPosl).filter(([k]) => k !== 'Hlavné mesto').map(([mc, v]) => ({ mc, ...v })).sort((a, b) => b.pomer - a.pomer || b.dlh - a.dlh) : [];
+const dlhMcSpolu = dlhMc.reduce((a: number, c: any) => a + c.dlh, 0);
+const pct = (n: number | null | undefined) => (n == null ? '–' : n.toLocaleString('sk-SK', { maximumFractionDigits: 1 }) + ' %');
 const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) => d.nazov), data: majetok.druhy.map((d: any) => d.vymera_ha) }) : '';
 ---
-<Base title="Financie Bratislavy – mestovcislach.sk" description="Rozpočet hlavného mesta Bratislavy podľa záverečného účtu a zmluvy magistrátu.">
+<Base title="Financie Bratislavy – mestovcislach.sk" description="Rozpočet hlavného mesta Bratislavy, zmluvy magistrátu, majetok a dlh mesta a mestských častí.">
   <section class="hero">
     <p class="kicker">Bratislava</p>
     <h1>Financie mesta</h1>
@@ -195,6 +204,35 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
               Od {datum(z.od)}. Bez zmlúv, kde je dodávateľom samo mesto, a bez fyzických osôb (subjekty bez IČO, spolu {eur(z.suma_bez_ico)}).
               Zdroj: <a href={zmluvy.zdroj.url}>{zmluvy.zdroj.nazov}</a>, data.bratislava.sk, licencia {zmluvy.zdroj.licencia ?? 'CC BY-NC 4.0'}.
             </p>
+          </section>
+        </>
+      )}
+      {dlhPosl && (
+        <>
+          <h2 class="sekcia" id="dlh">Dlh mesta a mestských častí</h2>
+          <section class="kpis">
+            <div class="card kpi"><p class="label">Dlh hlavného mesta ({dlhRok})</p><p class="value">{mil(dlhPosl['Hlavné mesto'].dlh)}</p><p class="delta">{pct(dlhPosl['Hlavné mesto'].pomer)} bežných príjmov · zákonný limit 60 %</p></div>
+            <div class="card kpi"><p class="label">Dlh všetkých mestských častí</p><p class="value">{mil(dlhMcSpolu)}</p><p class="delta">{dlhMc.filter((c: any) => c.dlh === 0).length} zo 17 častí bez dlhu</p></div>
+            <div class="card kpi"><p class="label">Dlhová služba mesta</p><p class="value">{pct(dlhPosl['Hlavné mesto'].dlhova_sluzba)}</p><p class="delta">splátky istín a úrokov z bežných príjmov · limit 25 %</p></div>
+          </section>
+          <section class="card">
+            <div class="dlh-grid">
+              <div>
+                <h3>Hlavné mesto podľa rokov</h3>
+                <div class="tabulka-obal"><table>
+                  <thead><tr><th>Rok</th><th class="num">Dlh</th><th class="num">Pomer k príjmom</th></tr></thead>
+                  <tbody>{dlhMesto.map((r: any) => <tr><td>{r.rok}</td><td class="num">{mil(r.dlh)}</td><td class="num">{pct(r.pomer)}</td></tr>)}</tbody>
+                </table></div>
+              </div>
+              <div>
+                <h3>Mestské časti ({dlhRok})</h3>
+                <div class="tabulka-obal"><table>
+                  <thead><tr><th>Mestská časť</th><th class="num">Dlh</th><th>Pomer k príjmom</th></tr></thead>
+                  <tbody>{dlhMc.map((c: any) => <tr><td>{c.mc}</td><td class="num">{c.dlh ? mil(c.dlh) : '0'}</td><td class="nowrap"><span class="pruh" style={`--w:${Math.min(100, (c.pomer / 60) * 100)}%`}></span> {pct(c.pomer)}</td></tr>)}</tbody>
+                </table></div>
+              </div>
+            </div>
+            <p class="zdroj">{ukaz.dlh.popis} Zdroj: <a href={ukaz.dlh.zdroj.url}>{ukaz.dlh.zdroj.nazov}</a> (data.slovensko.sk), z finančných výkazov obcí.</p>
           </section>
         </>
       )}
@@ -339,4 +377,7 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
   .zmluvy .predmet { color: var(--muted); font-size: 0.88rem; }
   .zmluvy a { font-size: 0.82rem; color: var(--accent); }
   .stitok { margin-left: 8px; font-size: 0.7rem; padding: 1px 6px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+  .dlh-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .pruh { display: inline-block; vertical-align: middle; height: 8px; width: calc(var(--w) * 0.6); min-width: 2px; background: var(--accent); border-radius: 4px; }
+  .nowrap { white-space: nowrap; }
 </style>

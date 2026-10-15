@@ -20,14 +20,19 @@ const TEMY: Record<string, RegExp> = {
   scitanie: /scitan|vzdelan|vysokoskol|narodnost|nabozen|vyznan|veriac|katolik|ateist|jazyk|domacnost|byt(y|ov)? |bytov|izb|podlahov|dochodc|senior|deti|vekov|starnut|rodinn|slobodn|rozveden|madar|ukrajin|cudzin|nezamestnan|ekonomick/,
   volby: /volb|volil|volic|stran|hlasov|ucast|parlament|europarl|kandid/,
   komunalne: /komunal|primator|starost|zastupitel|poslan|bsk|zup|samospravn|predsed|vallo|droba|24\. ?10|oktobr/,
-  rozpocet: /rozpoc|prijm|vydavk|vydav|financ|peniaz|dlh|hospodar|dan /,
+  rozpocet: /rozpoc|prijm|vydavk|vydav|financ|peniaz|dlh|zadlz|uver|hospodar|dan /,
   zmluvy: /zmluv|dodavatel|obstara|firma|firmy|zakazk/,
   majetok: /majet|pozem|parcel/,
   mhd: /mhd|autobus|elektric|trolejbus|linka|linky|liniek|zastav|spoj|cestovn|cestujuc|dpb|dopravny podnik/,
   nehody: /nehod|havari/,
   scitace: /zapch|premavk|spick|scitac|dopravn|kolko aut|rusn|kolona/,
   cyklo: /cyklo|bicyk|bajk(?!al)|kolo /,
-  skoly: /skol|skolk|skôlk|materska|zakladna|ziak/,
+  skoly: /skol|skolk|skôlk|materska|zakladna|ziak|gymnaz|prijimack/,
+  socialne: /jasl|senior|domov dochodc|dochodcov|opatrova|socialn|nocluh|noclah|utulok|bezdomov|stacionar|postihnut/,
+  rozvoj: /index|rozvoj|rozvinut|najbohat|kvalit\w* zivota|najlepsie (sa )?byva/,
+  pamiatky: /pamiat|historick\w* budov|sloh|barok|gotik|secesi/,
+  csd: /dialnic|\bd1\b|\bd2\b|\bd4\b|obchvat|intenzit|celostatne scitanie/,
+  hluk: /hluk|hlucn|decibel|\bdb\b|ticho|tich\w* ulic/,
   vybavenost: /lekarn|lekar|ambulanc|nemocnic|poliklin|zubar|doktor|nabij|elektromob|zdravot/,
   ovzdusie: /ovzdus|smog|prach|pm10|pm2|ozon|znecist/,
   prostredie: /odpad|recykl|triedi|vysadb|stromy|strom |skladk|smeti/,
@@ -45,19 +50,23 @@ const KATEGORIE: [RegExp, string][] = [
   [/nemocnic|poliklin|pohotovost/, 'Nemocnice a polikliniky'], [/nabij|elektromob/, 'Nabíjacie stanice'],
   [/muze|galer|vystav/, 'Múzeá a galérie'], [/divadl|kino|kina|kniznic|kultur/, 'Divadlá, kiná a knižnice'],
   [/pamiat|hrad|kostol|historic/, 'Kultúrne pamiatky'], [/chranen.*strom|pamatn.*strom/, 'Chránené stromy'],
-  [/zastav/, 'Zastávka MHD'], [/bajk(?!al)|zdielan.*bicyk/, 'Stanica BAjk'],
+  [/jasl|do (troch|3) rokov/, 'Jasle'], [/senior|domov dochodc|dochodcov|opatrova|socialn\w* sluz|noclah|nocluh|utulok|stacionar/, 'Sociálne služby'],
+  [/zakladn\w* umel|\bzus\b/, 'Základná umelecká škola'], [/zakladn\w* skol|\bzs\b/, 'Základná škola'], [/materskn?\w* skol|skolk|\bms\b/, 'Materská škola'],
+  [/stredn\w* skol|gymnaz|\bsos\b|\bsps\b|obchodn\w* akadem/, 'Stredná škola'], [/zastav/, 'Zastávka MHD'], [/bajk(?!al)|zdielan.*bicyk/, 'Stanica BAjk'],
 ];
 const STRANKY: Record<string, string> = {
   obyvatelstvo: '/', scitanie: '/obyvatelia', volby: '/volby', komunalne: '/volby#komunalne', rozpocet: '/financie', zmluvy: '/financie', majetok: '/financie', mhd: '/doprava#doprava',
   nehody: '/doprava', scitace: '/doprava#premavka', cyklo: '/doprava#cyklo', skoly: '/vybavenost', vybavenost: '/vybavenost',
   ovzdusie: '/prostredie#ovzdusie-teraz', prostredie: '/prostredie', priroda: '/prostredie', vystrahy: '/#dnes', dunaj: '/prostredie#dunaj',
   cesty: '/doprava#naozivo', miesta: '/mapa', spadove: '/vybavenost#spadova-skola',
+  socialne: '/vybavenost#socialne', rozvoj: '/obyvatelia#index-rozvoja', pamiatky: '/mapa#pamiatky', csd: '/doprava#csd', hluk: '/mapa#hluk',
 };
 const NAZVY_STRANOK: Record<string, string> = {
   '/': 'Prehľad', '/obyvatelia': 'Obyvatelia', '/volby': 'Voľby', '/volby#komunalne': 'Komunálne voľby', '/financie': 'Financie', '/doprava#doprava': 'Doprava – MHD', '/doprava': 'Doprava',
   '/doprava#premavka': 'Kedy je premávka', '/doprava#cyklo': 'Cyklotrasy', '/vybavenost': 'Vybavenosť', '/prostredie': 'Prostredie',
   '/#dnes': 'Dnes v Bratislave', '/prostredie#dunaj': 'Dunaj', '/doprava#naozivo': 'Uzávierky dnes', '/prostredie#ovzdusie-teraz': 'Ovzdušie teraz', '/mapa': 'Mapa',
-  '/vybavenost#spadova-skola': 'Spádová škola podľa adresy',
+  '/vybavenost#spadova-skola': 'Spádová škola podľa adresy', '/vybavenost#socialne': 'Jasle a sociálne služby', '/obyvatelia#index-rozvoja': 'Index rozvoja',
+  '/mapa#pamiatky': 'Pamiatky na mape', '/doprava#csd': 'Sčítanie dopravy', '/mapa#hluk': 'Hluková mapa',
 };
 const STOP = new Set(['ktore', 'ktora', 'ktory', 'kde', 'kedy', 'ako', 'aky', 'aka', 'ake', 'kolko', 'bratislava', 'bratislave', 'bratislavy', 'mesto', 'meste', 'najblizsia', 'najblizsie', 'otvorena', 'otvorene', 'otvoreny', 'teraz', 'dnes', 'prosim', 'chcem', 'potrebujem', 'mate', 'viete', 'nejaka', 'nejake', 'nejaky', 'este', 'blizko', 'pri', 'okolo', 'ulica', 'ulici', 'ulicu']);
 
@@ -71,6 +80,14 @@ const BODY: [RegExp, string, number, number][] = [
 ];
 
 let podklady: Promise<any> | null = null;
+// Miesta z oficiálnych registrov (nie z OpenStreetMap) – otváracie hodiny pri nich nie sú
+const ZDROJE_MIEST: Record<string, string> = {
+  'Zastávka MHD': 'cestovné poriadky DPB', 'Stanica BAjk': 'data.bratislava.sk',
+  'Kultúrne pamiatky': 'register pamiatok MK SR', 'Chránené stromy': 'štátny zoznam ŠOP SR',
+  'Jasle': 'register sociálnych služieb MPSVR SR', 'Sociálne služby': 'register sociálnych služieb MPSVR SR',
+  'Materská škola': 'Digitálna mapa škôl MŠVVaM SR', 'Základná škola': 'Digitálna mapa škôl MŠVVaM SR', 'Stredná škola': 'Digitálna mapa škôl MŠVVaM SR',
+  'Špeciálna škola': 'Digitálna mapa škôl MŠVVaM SR', 'Základná umelecká škola': 'Digitálna mapa škôl MŠVVaM SR', 'Centrum voľného času': 'Digitálna mapa škôl MŠVVaM SR',
+};
 let rajony: Promise<Rajonizacia> | null = null;
 
 const SPADOVE = /spadov|rajon|obvodn\w* skol|skolsk\w* obvod|do ktorej (zakladnej |materskej )?(skol|skolk)|kam (patri|chodi|pojde)|ktora (zakladna |materska )?(skola|skolka) (patri|spada|je pre)|zapis/;
@@ -213,14 +230,16 @@ function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla
   return {
     pocet_najdenych: sOtv.length, kategoria, mestska_cast: cast,
     ...(chybaPolohy ? { poloha_nie_je_zapnuta: true } : {}),
-    zdroj: kategoria === 'Zastávka MHD' ? 'cestovné poriadky DPB' : kategoria === 'Stanica BAjk' ? 'data.bratislava.sk' : 'OpenStreetMap',
+    zdroj: ZDROJE_MIEST[kategoria ?? ''] ?? 'OpenStreetMap',
     ...(pocetOtvorenych != null && !bod ? { teraz_otvorenych_spolu: pocetOtvorenych, zobrazene_len_otvorene: zoznam !== sOtv } : {}),
     ...(bod ? { zoradene_podla_vzdialenosti_od: `${bod.a && sk2(bod.a) ? bod.a.replace(/\s*\d.*$/, '') : bod.n} (${bod.c})` } : {}),
     miesta: zoznam.slice(0, max).map((m) => [
       m.n || m.k, m.k, m.c, m.a && `adresa ${m.a}`, m.vzd != null && `vzdušnou čiarou ${m.vzd < 1000 ? m.vzd + ' m' : (m.vzd / 1000).toFixed(1).replace('.', ',') + ' km'}`,
       m.h && `hodiny: ${hodinyText(m.h).join('; ')}`,
       m.h && (m.otv ? (m.otv.otvorene ? `TERAZ OTVORENÉ${m.otv.do ? ' do ' + m.otv.do : ''}` : `teraz zatvorené${m.otv.od ? ', otvára o ' + m.otv.od : ''}`) : ''),
-      !m.h && m.k !== 'Zastávka MHD' && m.k !== 'Stanica BAjk' ? 'otváracie hodiny neuvedené' : '',
+      !m.h && !ZDROJE_MIEST[m.k] ? 'otváracie hodiny neuvedené' : '',
+      m.typ && m.typ !== m.k && `${m.typ}`, m.vznik && `vznik ${m.vznik}`, m.sloh && `sloh ${m.sloh}`,
+      m.ziaci && `${m.ziaci} žiakov`, m.kapacita && `kapacita ${m.kapacita}`,
       m.w && `web ${m.w}`, m.linky && `linky ${m.linky}`, m.odchody && `${m.odchody} odchodov za pracovný deň`, m.kap && `nabíjacie miesta ${m.kap}`, m.op && `prevádzkovateľ ${m.op}`,
     ].filter(Boolean).join(' | ')),
   };
@@ -307,7 +326,7 @@ export const onRequestPost = async (ctx: any) => {
     } catch { rajony = null; }
   }
   if (!Object.keys(kontext).length) {
-    kontext.co_web_obsahuje = Object.values(data.temy).map((t: any) => t.nazov).concat(['živé: výstrahy SHMÚ, Dunaj, uzávierky a poruchy ciest, počasie', 'mapa miest: lekárne, ambulancie, nemocnice, nabíjanie, múzeá, divadlá, kiná, knižnice, pamiatky, zastávky MHD, BAjk']);
+    kontext.co_web_obsahuje = Object.values(data.temy).map((t: any) => t.nazov).concat(['živé: výstrahy SHMÚ, Dunaj, uzávierky a poruchy ciest, počasie', 'mapa miest: lekárne, ambulancie, nemocnice, nabíjanie, školy a škôlky, jasle, sociálne služby, múzeá, divadlá, kiná, knižnice, pamiatky, chránené stromy, zastávky MHD, BAjk', 'spádová škola podľa adresy', 'hluková mapa', 'dlh mesta a mestských častí', 'index rozvoja mestských častí']);
   }
 
   const datum = new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
