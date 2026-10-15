@@ -38,7 +38,7 @@ OSOBITNE = {
     "ccaa77c5": ("/mapa", "Bezbariérovosť", "zber_vrstvy.py"), "226e7387": ("/mapa", "Pitné fontány", "zber_vrstvy.py"),
     "ffc00f30": ("/mapa", "Športoviská", "zber_vrstvy.py"), "5242099b": ("/mapa", "Služby pre ľudí bez domova", "zber_vrstvy.py"),
     "9d318577": ("/mapa", "Vysadené stromy od 2019", "zber_vrstvy.py"), "0ce440f8": ("/mapa", "Starostlivosť o dreviny", "zber_vrstvy.py"),
-    "542bc25c": ("/mapa", "Zastávky turistických autobusov", "zber_vrstvy.py"), "24c6c6cb": ("/mapa", "Pamätihodnosti mesta", "zber_vrstvy.py"),
+    
     "48b41105": ("/mapa", "Chovné a veterinárne zariadenia", "zber_vrstvy.py"),
     "7a8c8bd7": ("/mapa", "Klimatický atlas – citlivosť budov na zrážky", "zber_klima.py"), "367d0139": ("/mapa", "Klimatický atlas – citlivosť celková", "zber_klima.py"),
     "8eedf533": ("/mapa", "Klimatický atlas – citlivosť na horúčavy", "zber_klima.py"), "575142ec": ("/mapa", "Klimatický atlas – riziko horúčav", "zber_klima.py"),

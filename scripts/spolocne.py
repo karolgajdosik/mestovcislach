@@ -121,3 +121,39 @@ def zapis_ak_zmena(cesta: Path, data: dict, kompaktne: bool = False, ignoruj=("a
     text = json.dumps(data, ensure_ascii=False, separators=(",", ":")) if kompaktne else json.dumps(data, ensure_ascii=False, indent=1)
     cesta.write_text(text + "\n", encoding="utf-8")
     return True
+
+
+def geokoder() -> Callable[[str | None, str, str], tuple[float, float, str] | None]:
+    """Geokódovanie podľa registra adries: (mestská časť alebo None, ulica, číslo) → (lat, lon, presnosť).
+    Presnosť „adresa“ = nájdené číslo domu, „ulica“ = stred ulice (priemer adresných bodov)."""
+    adresy = adresy_mv()
+    presne: dict[tuple, tuple] = {}
+    ulice: dict[tuple, list] = {}
+    for a in adresy:
+        u = norm_ulica(a["ulica"])
+        if not u:
+            continue
+        for mc in (a["mc"], None):
+            if a["ori"]:
+                presne.setdefault((mc, u, a["ori"].lower()), (a["lat"], a["lon"]))
+            if a["sup"]:
+                presne.setdefault((mc, u, a["sup"]), (a["lat"], a["lon"]))
+            ulice.setdefault((mc, u), []).append((a["lat"], a["lon"]))
+    stredy = {k: (sum(x for x, _ in v) / len(v), sum(y for _, y in v) / len(v)) for k, v in ulice.items()}
+
+    def najdi(mc: str | None, ulica: str, cislo: str = "") -> tuple[float, float, str] | None:
+        mc = norm_mc(mc or "") if mc else None
+        u = norm_ulica(re.sub(r"\s*\d.*$", "", ulica or "") if not cislo else ulica or "")
+        if not cislo:
+            m = re.search(r"(\d+[a-zA-Z]?)\s*(?:/\s*(\d+[a-zA-Z]?))?\s*$", ulica or "")
+            if m:
+                cislo = m.group(2) or m.group(1)
+        c = (cislo or "").strip().lower().split("/")[-1]
+        for k in ((mc, u, c), (None, u, c)):
+            if c and k in presne:
+                return (*presne[k], "adresa")
+        for k in ((mc, u), (None, u)):
+            if k in stredy:
+                return (*stredy[k], "ulica")
+        return None
+    return najdi

@@ -12,6 +12,7 @@ on:
       - "scripts/zber_tabulky.py"
       - "scripts/katalog_pravidla.py"
       - "scripts/diakritika.py"
+      - "scripts/zber_vrstvy.py"
       - ".github/workflows/katalog.yml"
 
 permissions:
@@ -41,6 +42,10 @@ jobs:
       - name: Tabuľky (data.bratislava.sk)
         if: (success() || failure()) && hashFiles('scripts/zber_tabulky.py') != ''
         run: python scripts/zber_tabulky.py
+
+      - name: Mapové vrstvy (bezbariérovosť, fontány, športoviská, pomoc, stromy)
+        if: success() || failure()
+        run: python scripts/zber_vrstvy.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()
