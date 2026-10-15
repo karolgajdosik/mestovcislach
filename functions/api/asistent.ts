@@ -241,11 +241,6 @@ export const onRequestPost = async (ctx: any) => {
 
   const odkazy = [...new Set([...temy, ...ziveTypy, ...(pouziteMiesta ? ['miesta'] : [])].map((t) => STRANKY[t]).filter(Boolean))]
     .slice(0, 4).map((u) => ({ url: u, nazov: NAZVY_STRANOK[u] ?? u }));
-  if (telo.ladenie === 'surovy-stream') {
-    const st: ReadableStream = await env.AI.run(MODELY[0], { messages, ...PARAMETRE, max_tokens: 200, max_completion_tokens: 200, stream: true });
-    const t = await new Response(st).text();
-    return new Response(t.slice(0, 6000), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
-  }
   if (telo.stream === true) return streamuj(ctx, messages, odkazy);
 
   let odpoved = '';
