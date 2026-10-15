@@ -181,9 +181,11 @@ export async function GET() {
   const hl = nacitaj('hlasovania-msz.json');
   if (hl) {
     temy.hlasovania = {
-      nazov: 'Hlasovania poslancov mestského zastupiteľstva (otvorené dáta 12/2014 – 6/2023)', stranka: '/volby#hlasovania',
+      nazov: hl.obdobia['9']?.z_webu_od ? `Hlasovania poslancov mestského zastupiteľstva (12/2014 – ${hl.obdobia['9'].do.slice(5, 7)}/${hl.obdobia['9'].do.slice(0, 4)})` : 'Hlasovania poslancov mestského zastupiteľstva (otvorené dáta 12/2014 – 6/2023)', stranka: '/volby#hlasovania',
       fakty: {
-        poznamka: 'Otvorené dáta mesta obsahujú hlasovania len do júna 2023; z obdobia 2022–2026 len 12/2022–6/2023. Novšie hlasovania sú len v dokumentoch na zastupitelstvo.bratislava.sk.',
+        poznamka: hl.obdobia['9']?.z_webu_od
+          ? `Do júna 2023 z otvorených dát mesta, od ${hl.obdobia['9'].z_webu_od} z webu zastupitelstvo.bratislava.sk. Údaje obdobia 2022–2026 siahajú do ${hl.obdobia['9'].do}.`
+          : 'Otvorené dáta mesta obsahujú hlasovania len do júna 2023; z obdobia 2022–2026 len 12/2022–6/2023. Novšie hlasovania sú len v dokumentoch na zastupitelstvo.bratislava.sk.',
         ...Object.fromEntries(Object.entries<any>(hl.obdobia).map(([, o]) => [`obdobie ${o.nazov}`, {
           hlasovani: o.hlasovani, zasadnuti: o.zasadnuti, od: o.od, do: o.do,
           kluby: o.kluby.map((k: any) => `${k.klub}: ${k.clenov} členov, jednotnosť ${k.jednotnost} %`),

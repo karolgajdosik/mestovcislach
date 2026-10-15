@@ -16,13 +16,16 @@ from __future__ import annotations
 
 import re
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
+
+from hlasovania_web import hlasovania_z_webu, kluc_mena
 
 from spolocne import DATA, VEREJNE, s, spusti, zapis_ak_zmena
 
 ITEM = "4033a9020d18471095b928b81239f80d"
 ZASADNUTIA = "7b0fe912679644c0b6c740eb83107c30"
-ZDROJ = {"nazov": "Hlasovania poslancov a poslankýň Mestského zastupiteľstva od roku 2014", "url": f"https://data.bratislava.sk/datasets/{ITEM}", "licencia": "CC BY 4.0"}
+ZDROJ = {"nazov": "Hlasovania poslancov a poslankýň Mestského zastupiteľstva od roku 2014", "url": f"https://data.bratislava.sk/datasets/{ITEM}", "licencia": "CC BY 4.0",
+         "web": {"nazov": "Digitálne zastupiteľstvo – zastupitelstvo.bratislava.sk (hlasovania po skončení otvorených dát)", "url": "https://zastupitelstvo.bratislava.sk/zasadnutia/"}}
 # Z = za, P = proti, Q = zdržal(a) sa, N = prítomný, nehlasoval, A = neprítomný
 OBDOBIA = {"7": "2014–2018", "8": "2018–2022", "9": "2022–2026"}
 # Volebné obdobie podľa dátumu zasadnutia (zdroj označuje aj zasadnutia po voľbách 2022 ako obdobie 8)
@@ -93,6 +96,32 @@ def main() -> int:
         if meno:
             h["hlasy"][meno] = (kod(r.get("Hlasovanie")), (r.get("Poslanecký_klub") or "").strip())
 
+    # Otvorené dáta končia júnom 2023 → novšie hlasovania z webu zastupiteľstva (mená sa párujú na otvorené dáta, odtiaľ aj klub)
+    posledne = max((h["datum"] for h in hlasovania.values() if h["obdobie"] == "9"), default="2022-11-01")
+    znami: dict[str, tuple[str, str]] = {}
+    for h in sorted(hlasovania.values(), key=lambda h: h["datum"]):
+        if h["obdobie"] == "9":
+            for m, (_, klub) in h["hlasy"].items():
+                znami[kluc_mena(m)] = (m, klub)
+    web_zasadnutia, z_webu = [], 0
+    try:
+        web, web_zasadnutia = hlasovania_z_webu((date.fromisoformat(posledne) + timedelta(days=1)).isoformat())
+        nesparovani = Counter()
+        for w in web:
+            hlasy = {}
+            for m, v in w["hlasy"].items():
+                meno, klub = znami.get(kluc_mena(m), (m, ""))
+                if kluc_mena(m) not in znami:
+                    nesparovani[m] += 1
+                hlasy[meno] = (v, klub or "neuvedený klub")
+            k = (w["obdobie"], w["datum"], w["poradie"])
+            hlasovania[k] = {"obdobie": w["obdobie"], "zasadnutie": w["datum"], "poradie": w["poradie"], "datum": w["datum"], "cas": "",
+                             "bod": re.sub(r"\s+", " ", w["bod"]).strip()[:300], "hlasy": hlasy}
+            z_webu += 1
+        print(f"Z webu zastupiteľstva: {z_webu} hlasovaní od {posledne}; nespárovaní: {dict(nesparovani)}")
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=Hlasovania z webu::{e}")
+
     obdobia: dict[str, dict] = {}
     for obd in sorted({h["obdobie"] for h in hlasovania.values()}):
         hl = sorted((h for h in hlasovania.values() if h["obdobie"] == obd), key=lambda h: (h["datum"], h["zasadnutie"], h["poradie"]))
@@ -104,7 +133,7 @@ def main() -> int:
             vacsina = postoje.most_common(1)[0][0] if postoje else None
             po_kluboch: dict[str, Counter] = defaultdict(Counter)
             for v, klub in h["hlasy"].values():
-                if v in "ZPQ" and klub:
+                if v in "ZPQ" and klub and klub != "neuvedený klub":
                     po_kluboch[klub][v] += 1
             for klub, c in po_kluboch.items():
                 if sum(c.values()) >= 2:
@@ -134,7 +163,8 @@ def main() -> int:
             "nazov": OBDOBIA.get(obd, obd),
             "zasadnuti": len({h["zasadnutie"] for h in hl}), "hlasovani": len(hl), "od": hl[0]["datum"], "do": hl[-1]["datum"],
             "poslanci": poslanci,
-            "kluby": sorted([{"klub": k, "clenov": sum(1 for p in poslanci if p["klub"] == k), "jednotnost": round(100 * sum(v) / len(v), 1)}
+            "z_webu_od": next((h["datum"] for h in hl if h["datum"] > posledne), None) if obd == "9" and z_webu else None,
+        "kluby": sorted([{"klub": k, "clenov": sum(1 for p in poslanci if p["klub"] == k), "jednotnost": round(100 * sum(v) / len(v), 1)}
                              for k, v in jednotnost.items()], key=lambda k: -k["clenov"]),
         }
         print(f"{obd}: {len(hl)} hlasovaní, {len(poslanci)} poslancov, {obdobia[obd]['zasadnuti']} zasadnutí")
@@ -156,6 +186,10 @@ def main() -> int:
                                    "uznesenia": r.get("Hyperlink_na_prijaté_uznesenia"), "vysledky": r.get("Hyperlink_na_výsledky_hlasovani")})
     except Exception as e:  # noqa: BLE001
         print(f"::warning title=Zasadnutia::{e}")
+    znamych = {z["datum"] for z in zasadnutia}
+    for z in web_zasadnutia:
+        if z["datum"] not in znamych:
+            zasadnutia.append({"cislo": None, "datum": z["datum"], "zapisnica": z["url"], "uznesenia": z["url"], "vysledky": z["url"]})
     teraz = datetime.now(timezone.utc).isoformat(timespec="seconds")
     zapis_ak_zmena(VEREJNE / "hlasovania-msz.json", {**verejne, "aktualizovane": teraz}, kompaktne=True)
     # hlasovania aj za ostatné obdobia (načítajú sa po výbere obdobia)

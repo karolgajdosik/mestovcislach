@@ -15,11 +15,19 @@ const subor = (obd: string) => (obd === h?.aktualne_obdobie ? '/data/hlasovania-
   <section id="hlasovania" data-subory={JSON.stringify(Object.fromEntries(obdobia.map(([o]) => [o, subor(o)])))}>
     <h2 class="sekcia">Ako hlasovali poslanci mestského zastupiteľstva</h2>
     <div class="card upozornenie">
-      <p>
-        <strong>Otvorené dáta mesta obsahujú hlasovania od decembra 2014 do júna 2023.</strong> Z aktuálneho obdobia 2022–2026 sú teda len prvé zasadnutia
-        (december 2022 – jún 2023). Novšie hlasovania mesto zverejňuje len ako dokumenty na
-        <a href="https://zastupitelstvo.bratislava.sk">zastupitelstvo.bratislava.sk</a>, nie ako otvorené dáta.
-      </p>
+      {h.obdobia['9']?.z_webu_od ? (
+        <p>
+          Hlasovania z decembra 2014 až júna 2023 pochádzajú z <a href={h.zdroj.url}>otvorených dát mesta</a>. Novšie hlasovania
+          (od {dat(h.obdobia['9'].z_webu_od)}) mesto ako otvorené dáta nezverejňuje – načítavame ich z webu
+          <a href="https://zastupitelstvo.bratislava.sk/zasadnutia/">Digitálne zastupiteľstvo</a>. Pri nich web neuvádza klub, preto
+          ho preberáme z otvorených dát (poslanci, ktorí nastúpili neskôr, majú „neuvedený klub“).
+        </p>
+      ) : (
+        <p>
+          <strong>Otvorené dáta mesta obsahujú hlasovania od decembra 2014 do júna 2023.</strong> Novšie hlasovania sú na
+          <a href="https://zastupitelstvo.bratislava.sk">zastupitelstvo.bratislava.sk</a>.
+        </p>
+      )}
       {h.zasadnutia?.length > 0 && (
         <details>
           <summary>Posledné zasadnutia – výsledky hlasovaní a zápisnice</summary>
@@ -33,7 +41,7 @@ const subor = (obd: string) => (obd === h?.aktualne_obdobie ? '/data/hlasovania-
     </div>
 
     <div class="taby" role="tablist">
-      {obdobia.map(([o, v], i) => <button type="button" role="tab" data-obd={o} aria-selected={i === 0 ? 'true' : 'false'}>{v.nazov}{o === '9' ? ' (do 6/2023)' : ''}</button>)}
+      {obdobia.map(([o, v], i) => <button type="button" role="tab" data-obd={o} aria-selected={i === 0 ? 'true' : 'false'}>{v.nazov}{o === '9' && !v.z_webu_od ? ' (do 6/2023)' : ''}</button>)}
     </div>
 
     {obdobia.map(([o, v], i) => (

@@ -15,6 +15,7 @@ on:
       - "scripts/zber_rajonizacia.py"
       - "scripts/spolocne.py"
       - "scripts/zber_hlasovania.py"
+      - "scripts/hlasovania_web.py"
       - ".github/workflows/zber-dat.yml"
 
 permissions:
