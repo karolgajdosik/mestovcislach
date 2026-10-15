@@ -196,7 +196,7 @@ def main() -> int:
                                                    "body": stromy, "aktualizovane": teraz}, kompaktne=True)
     sporty = Counter(b[4].get("typ") for b in body if b[2] == "sportoviska")
     zapis_ak_zmena(DATA / "vrstvy-bratislava.json", {"zdroj": zdroj, "pocty": dict(statistika), "sporty": dict(sporty.most_common(25)),
-                                                     "vysadba_po_rokoch": dict(sorted(Counter(b[4].get("rok") for b in stromy if b[2] == "vysadba").items())),
+                                                     "vysadba_po_rokoch": dict(sorted(Counter(str(b[4].get("rok") or "neuvedený") for b in stromy if b[2] == "vysadba").items())),
                                                      "aktualizovane": teraz})
     print("Vrstvy:", dict(statistika))
     return 0
