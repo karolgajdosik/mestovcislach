@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../layouts/Base.astro';
 import KomunalneVolby from '../components/KomunalneVolby.astro';
+import Hlasovania from '../components/Hlasovania.astro';
 
 const nacitaj = (subor: string) => {
   const p = path.join(process.cwd(), 'data', subor);
@@ -53,6 +54,7 @@ const pripravene = volby.map((v) => {
   </section>
 
   <KomunalneVolby />
+  <Hlasovania />
 
   <h2 class="sekcia">Parlamentné a európske voľby</h2>
 

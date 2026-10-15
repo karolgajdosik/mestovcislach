@@ -1,0 +1,177 @@
+---
+// Hlasovania poslancov mestského zastupiteľstva: dochádzka, zhoda s väčšinou a klubom, vyhľadávanie hlasovaní.
+import fs from 'node:fs';
+import path from 'node:path';
+
+const p = path.join(process.cwd(), 'data', 'hlasovania-msz.json');
+const h = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+const obdobia = h ? Object.entries<any>(h.obdobia).sort((a, b) => b[0].localeCompare(a[0])) : [];
+const pct = (n: number | null) => (n == null ? '–' : n.toLocaleString('sk-SK', { maximumFractionDigits: 1 }) + ' %');
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const dat = (d: string) => (d ? d.split('-').reverse().map((x) => x.replace(/^0/, '')).join('. ') : '');
+const subor = (obd: string) => (obd === h?.aktualne_obdobie ? '/data/hlasovania-msz.json' : `/data/hlasovania-msz-${obd}.json`);
+---
+{h && (
+  <section id="hlasovania" data-subory={JSON.stringify(Object.fromEntries(obdobia.map(([o]) => [o, subor(o)])))}>
+    <h2 class="sekcia">Ako hlasovali poslanci mestského zastupiteľstva</h2>
+    <div class="card upozornenie">
+      <p>
+        <strong>Otvorené dáta mesta obsahujú hlasovania od decembra 2014 do júna 2023.</strong> Z aktuálneho obdobia 2022–2026 sú teda len prvé zasadnutia
+        (december 2022 – jún 2023). Novšie hlasovania mesto zverejňuje len ako dokumenty na
+        <a href="https://zastupitelstvo.bratislava.sk">zastupitelstvo.bratislava.sk</a>, nie ako otvorené dáta.
+      </p>
+      {h.zasadnutia?.length > 0 && (
+        <details>
+          <summary>Posledné zasadnutia – výsledky hlasovaní a zápisnice</summary>
+          <ul class="zasadnutia">
+            {h.zasadnutia.slice(0, 12).map((z: any) => (
+              <li>{dat(z.datum)} · {z.vysledky && <a href={z.vysledky.trim()}>hlasovania a uznesenia</a>}{z.zapisnica && <> · <a href={z.zapisnica.trim()}>zápisnica</a></>}</li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </div>
+
+    <div class="taby" role="tablist">
+      {obdobia.map(([o, v], i) => <button type="button" role="tab" data-obd={o} aria-selected={i === 0 ? 'true' : 'false'}>{v.nazov}{o === '9' ? ' (do 6/2023)' : ''}</button>)}
+    </div>
+
+    {obdobia.map(([o, v], i) => (
+      <div class="obdobie" data-obd={o} hidden={i !== 0}>
+        <section class="kpis">
+          <div class="card kpi"><p class="label">Hlasovaní</p><p class="value">{fmt(v.hlasovani)}</p><p class="delta">{v.zasadnuti} zasadnutí, {dat(v.od)} – {dat(v.do)}</p></div>
+          <div class="card kpi"><p class="label">Poslancov</p><p class="value">{v.poslanci.length}</p><p class="delta">vrátane náhradníkov a zástupcov primátora</p></div>
+          <div class="card kpi"><p class="label">Najjednotnejší klub</p><p class="value mensie">{v.kluby[0] && [...v.kluby].filter((k: any) => k.clenov >= 3).sort((a: any, b: any) => b.jednotnost - a.jednotnost)[0]?.klub}</p><p class="delta">podiel hlasov členov rovnako ako väčšina klubu</p></div>
+        </section>
+        <section class="card">
+          <div class="hlavicka">
+            <h3>Poslanci</h3>
+            <input class="filter-poslanci" type="search" placeholder="Hľadať poslanca alebo klub" />
+          </div>
+          <div class="tabulka-obal">
+            <table class="poslanci">
+              <thead><tr>
+                <th data-k="0">Poslanec</th><th data-k="1">Klub</th><th class="num" data-k="2">Prítomnosť</th>
+                <th class="num" data-k="3">Za</th><th class="num" data-k="4">Proti</th><th class="num" data-k="5">Zdržal sa</th>
+                <th class="num" data-k="6">So&nbsp;väčšinou</th><th class="num" data-k="7">S&nbsp;klubom</th>
+              </tr></thead>
+              <tbody>
+                {v.poslanci.map((x: any) => (
+                  <tr data-s={JSON.stringify([x.meno, x.klub, x.pritomnost ?? -1, x.za, x.proti, x.zdrzal, x.zhoda_s_vacsinou ?? -1, x.zhoda_s_klubom ?? -1])}>
+                    <td>{x.meno}</td><td>{x.klub}</td><td class="num">{pct(x.pritomnost)}</td><td class="num">{fmt(x.za)}</td><td class="num">{fmt(x.proti)}</td>
+                    <td class="num">{fmt(x.zdrzal)}</td><td class="num">{pct(x.zhoda_s_vacsinou)}</td><td class="num">{pct(x.zhoda_s_klubom)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="zdroj">
+            Prítomnosť = podiel hlasovaní počas mandátu, pri ktorých bol poslanec prítomný. „So väčšinou“ a „s klubom“ = ako často hlasoval rovnako ako väčšina
+            prítomných, resp. väčšina jeho klubu (z hlasov za, proti a zdržal sa). Kliknutím na hlavičku zoradíte.
+          </p>
+        </section>
+      </div>
+    ))}
+
+    <section class="card">
+      <h3>Hľadať hlasovanie</h3>
+      <div class="hlavicka">
+        <input id="hl-hladaj" type="search" placeholder="napr. rozpočet, parkovanie, električka, Petržalka…" />
+      </div>
+      <div id="hl-vysledky" aria-live="polite"><p class="tlmene">Napíšte aspoň 3 znaky – zobrazí sa, ako kto hlasoval.</p></div>
+      <p class="zdroj">Zdroj: <a href={h.zdroj.url}>{h.zdroj.nazov}</a>, data.bratislava.sk, licencia CC BY 4.0. Zverejňujeme len meno, klub a hlasovanie.</p>
+    </section>
+  </section>
+)}
+
+<script>
+  const sek = document.getElementById('hlasovania');
+  if (sek) {
+    const subory = JSON.parse(sek.dataset.subory!);
+    let obd = sek.querySelector<HTMLButtonElement>('[role=tab][aria-selected=true]')!.dataset.obd!;
+    const cache: Record<string, Promise<any>> = {};
+    const data = (o: string) => (cache[o] ??= fetch(subory[o]).then((r) => r.json()));
+    const esc = (t: string) => String(t ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+    const norm = (t: string) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const vstup = document.getElementById('hl-hladaj') as HTMLInputElement;
+    const vysl = document.getElementById('hl-vysledky')!;
+
+    sek.querySelectorAll<HTMLButtonElement>('[role=tab]').forEach((b) => b.addEventListener('click', () => {
+      obd = b.dataset.obd!;
+      sek.querySelectorAll('[role=tab]').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+      sek.querySelectorAll<HTMLElement>('.obdobie').forEach((d) => (d.hidden = d.dataset.obd !== obd));
+      hladaj();
+    }));
+
+    // zoradenie a filter tabuľky poslancov
+    sek.querySelectorAll<HTMLTableElement>('table.poslanci').forEach((tab) => {
+      let smer = 1, kluc = -1;
+      tab.querySelectorAll<HTMLElement>('th').forEach((th) => th.addEventListener('click', () => {
+        const k = Number(th.dataset.k);
+        smer = k === kluc ? -smer : (k >= 2 ? -1 : 1);
+        kluc = k;
+        const tb = tab.tBodies[0];
+        [...tb.rows].sort((a, b) => {
+          const x = JSON.parse(a.dataset.s!)[k], y = JSON.parse(b.dataset.s!)[k];
+          return (typeof x === 'number' ? x - y : String(x).localeCompare(String(y), 'sk')) * smer;
+        }).forEach((r) => tb.appendChild(r));
+      }));
+      const f = tab.closest('section')!.querySelector<HTMLInputElement>('.filter-poslanci')!;
+      f.addEventListener('input', () => {
+        const q = norm(f.value);
+        [...tab.tBodies[0].rows].forEach((r) => (r.hidden = !norm(r.textContent!).includes(q)));
+      });
+    });
+
+    const NAZVY: Record<string, string> = { Z: 'Za', P: 'Proti', Q: 'Zdržali sa', N: 'Nehlasovali', A: 'Neprítomní' };
+    let casovac: any;
+    async function hladaj() {
+      const q = norm(vstup.value.trim());
+      if (q.length < 3) { vysl.innerHTML = '<p class="tlmene">Napíšte aspoň 3 znaky – zobrazí sa, ako kto hlasoval.</p>'; return; }
+      const d = await data(obd);
+      const slova = q.split(/\s+/);
+      const najdene = d.hlasovania.filter((x: any[]) => { const t = norm(x[3]); return slova.every((w: string) => t.includes(w)); }).reverse();
+      if (!najdene.length) { vysl.innerHTML = `<p class="tlmene">V období ${esc(d.obdobie_nazov)} sa nenašlo žiadne hlasovanie.</p>`; return; }
+      vysl.innerHTML = `<p class="tlmene">Nájdené: ${najdene.length}${najdene.length > 30 ? ' (zobrazených 30 najnovších)' : ''}</p>` +
+        najdene.slice(0, 30).map((x: any[]) => {
+          const skupiny: Record<string, string[]> = {};
+          [...x[4]].forEach((k: string, i: number) => { if (k !== '-') (skupiny[k] ??= []).push(d.poslanci[i][0]); });
+          const pocty = ['Z', 'P', 'Q', 'N', 'A'].map((k) => `<span class="h-${k}">${NAZVY[k]} ${skupiny[k]?.length ?? 0}</span>`).join('');
+          return `<details class="hl"><summary><span class="hl-dat">${esc(x[0].split('-').reverse().join('. '))} · č. ${x[2]}</span> ${esc(x[3])}<span class="hl-pocty">${pocty}</span></summary>
+            ${['Z', 'P', 'Q', 'N', 'A'].filter((k) => skupiny[k]).map((k) => `<p><b>${NAZVY[k]}:</b> ${skupiny[k].map(esc).join(', ')}</p>`).join('')}</details>`;
+        }).join('');
+    }
+    vstup.addEventListener('input', () => { clearTimeout(casovac); casovac = setTimeout(hladaj, 250); });
+  }
+</script>
+
+<style>
+  .upozornenie { border-left: 4px solid var(--accent); }
+  .upozornenie p { margin: 0 0 8px; }
+  .zasadnutia { margin: 8px 0 0; padding-left: 18px; font-size: 0.9rem; }
+  .taby { display: flex; gap: 6px; flex-wrap: wrap; margin: 16px 0 0; }
+  .taby button { font: inherit; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; }
+  .taby button[aria-selected='true'] { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; }
+  .kpi .value.mensie { font-size: 1.15rem; letter-spacing: 0; }
+  .delta { margin: 0; font-size: 0.82rem; color: var(--muted); }
+  section.card { margin-top: 16px; }
+  .hlavicka { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  h3 { margin: 0; font-size: 1.05rem; }
+  input[type='search'] { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); min-width: 240px; flex: 1 1 240px; max-width: 420px; }
+  .tabulka-obal { overflow-x: auto; max-height: 560px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-size: 0.78rem; cursor: pointer; position: sticky; top: 0; background: var(--card); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tlmene { color: var(--muted); font-size: 0.88rem; }
+  #hl-vysledky :global(.hl) { border-bottom: 1px solid var(--line); padding: 8px 0; }
+  #hl-vysledky :global(.hl summary) { cursor: pointer; }
+  #hl-vysledky :global(.hl-dat) { color: var(--muted); font-size: 0.82rem; }
+  #hl-vysledky :global(.hl-pocty) { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; font-size: 0.78rem; }
+  #hl-vysledky :global(.hl-pocty span) { padding: 1px 7px; border-radius: 999px; background: var(--bg); }
+  #hl-vysledky :global(.h-Z) { color: #138a5e; } #hl-vysledky :global(.h-P) { color: #c8102e; }
+  #hl-vysledky :global(.hl p) { margin: 6px 0 0; font-size: 0.85rem; }
+</style>
