@@ -1,6 +1,6 @@
 {
  "zdroj": "https://data.bratislava.sk",
- "pocet": 640,
+ "pocet": 661,
  "datasety": [
   {
    "id": "cd6711958334494685f4e01f4ab3e482",
@@ -51816,6 +51816,1840 @@
        "PODIEL__",
        "String",
        "PODIEL_%"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "17666d9d24e34040ad91479bece42396",
+   "nazov": "Debarierizácie chodníkov v Bratislave od roku 2020",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Debarierizácie_chodníkov_v_Bratislave_od_roku_2020/FeatureServer",
+   "tagy": [
+    "Doprava"
+   ],
+   "kategorie": [
+    "/Categories/Doprava a komunikácie"
+   ],
+   "upravene": 1771492691000,
+   "popis": "Tabuľka zhotovených debarierizácií na chodníkoch v správe SSÚC v Bratislave od roku 2020. Debarierizácie uskutočňovala Sekcia správy a údržby ciest a v roku 2024 niektoré aj Sekcia výstavby. Mapa je aktualizovaná raz ročne a dopĺňajú sa urobené debarierizácie za ďalší rok.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 548864,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771492691000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Debarierizácie_chodníkov_v_Bratislave_od_roku_2020/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Debarierizácie_chodníkov_v_Bratislave_od_roku_2020",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 703,
+     "polia": [
+      [
+       "OBJECTID",
+       "String",
+       "OBJECTID"
+      ],
+      [
+       "ULICA",
+       "String",
+       "ULICA"
+      ],
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "OKRES",
+       "String",
+       "OKRES"
+      ],
+      [
+       "LOKALIZACIA",
+       "String",
+       "LOKALIZACIA"
+      ],
+      [
+       "STAV_PRED_OPRAVOU",
+       "String",
+       "STAV_PRED_OPRAVOU"
+      ],
+      [
+       "STREET_VIEW",
+       "String",
+       "STREET_VIEW"
+      ],
+      [
+       "TYP_PRACE",
+       "String",
+       "TYP_PRACE"
+      ],
+      [
+       "ROK_OPRAVY",
+       "String",
+       "ROK_OPRAVY"
+      ],
+      [
+       "OPRAVU_REALIZOVAL",
+       "String",
+       "OPRAVU_REALIZOVAL"
+      ],
+      [
+       "ObjectId2",
+       "OID",
+       "ObjectId2"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "01d79f8daab34e74a32d3debc04032f3",
+   "nazov": "Dotazníkový prieskum k plánovanej revitalizácii kultúrneho strediska Žarnovická",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Dotazníkový prieskum k plánovanej revitalizácii kultúrneho strediska Žarnovická/FeatureServer",
+   "tagy": [],
+   "kategorie": [
+    "/Categories/História a kultúra"
+   ],
+   "upravene": 1771494744000,
+   "popis": "Dotazníkový prieskum k plánovanej revitalizácii kultúrneho strediska Žarnovická v mestskej časti Bratislava-Rača bol zameraný na získanie informácií o postojoch a názoroch verejnosti na súčasný stav strediska a jeho budúce využitie. Výstupy z dotazníkového prieskumu slúžili najmä ako podklad zadania pre architektonickú súťaž. Dotazník bol rozdelený do dvoch častí. V prvej časti (A) boli otázky zam",
+   "jazyk": "english (united states)",
+   "licencia": "CC BY 4.0",
+   "velkost": 212992,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771494744000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Dotazníkový prieskum k plánovanej revitalizácii kultúrneho strediska Žarnovická/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Dotazníkový prieskum k plánovanej revitalizácii kultúrneho strediska Žarnovická",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 429,
+     "polia": [
+      [
+       "Poradové_číslo",
+       "String",
+       "Poradové číslo"
+      ],
+      [
+       "A1__Navštevujete_kultúrne_stred",
+       "String",
+       "A1. Navštevujete kultúrne stredisko na Žarnovickej?"
+      ],
+      [
+       "A2__V_predchádzajúcej_otázke_st",
+       "String",
+       "A2. V predchádzajúcej otázke ste uviedli, že nenavštevujete kultúrne zariadenie na Žarnovickej, prečo je tomu tak?"
+      ],
+      [
+       "A3__Čo_by_sa_muselo_zmeniť__aby",
+       "String",
+       "A3. Čo by sa muselo zmeniť, aby ste začali navštevovať kultúrne stredisko na Žarnovickej?"
+      ],
+      [
+       "A3a__Priestory_pre_voľné_stretá",
+       "String",
+       "A3a. Priestory pre voľné stretávanie sa komunity"
+      ],
+      [
+       "A3b__Priestory_vhodné_na_poduja",
+       "String",
+       "A3b. Priestory vhodné na podujatia (stretnutia so samosprávou, filmové večery, kultúrne podujatia)"
+      ],
+      [
+       "A3c__Priestory_pre_mládež",
+       "String",
+       "A3c. Priestory pre mládež"
+      ],
+      [
+       "A3d__Priestory_pre_mladé_rodiny",
+       "String",
+       "A3d. Priestory pre mladé rodiny, hru detí"
+      ],
+      [
+       "A3e__Možnosť_prenájmu_priestoro",
+       "String",
+       "A3e. Možnosť prenájmu priestorov pre rôzne typy aktivít"
+      ],
+      [
+       "A3f__Priestory_pre_co_working__",
+       "String",
+       "A3f. Priestory pre co-working, zasadačky"
+      ],
+      [
+       "A3g__Bezbariérový_prístup_pre_r",
+       "String",
+       "A3g. Bezbariérový prístup pre rôzne skupiny"
+      ],
+      [
+       "A3h__Kaviareň_s_občerstvením",
+       "String",
+       "A3h. Kaviareň s občerstvením"
+      ],
+      [
+       "A3i__Priestor_na_podujatia_pred",
+       "String",
+       "A3i. Priestor na podujatia pred strediskom (čítačky, koncerty, tematické večery, kvízy)"
+      ],
+      [
+       "A3j__Pestrejší_program_pre_deti",
+       "String",
+       "A3j. Pestrejší program pre deti"
+      ],
+      [
+       "A3k__Pestrejší_program_pre_dosp",
+       "String",
+       "A3k. Pestrejší program pre dospelých"
+      ],
+      [
+       "A3l__Pestrejší_program_pre_mlád",
+       "String",
+       "A3l. Pestrejší program pre mládež"
+      ],
+      [
+       "A3m__Pestrejší_program_pre_seni",
+       "String",
+       "A3m. Pestrejší program pre seniorov a seniorky"
+      ],
+      [
+       "A3n__Večerné_vzdelávanie_a_kurz",
+       "String",
+       "A3n. Večerné vzdelávanie a kurzy pre dospelých"
+      ],
+      [
+       "A3o__Príjemnejšie_správanie_per",
+       "String",
+       "A3o. Príjemnejšie správanie personálu"
+      ],
+      [
+       "A3p__Dlhšia_otváracia_doba",
+       "String",
+       "A3p. Dlhšia otváracia doba"
+      ],
+      [
+       "A3q__Viac_informácií_o_činnosti",
+       "String",
+       "A3q. Viac informácií o činnosti strediska"
+      ],
+      [
+       "A3r__Neviem",
+       "String",
+       "A3r. Neviem"
+      ],
+      [
+       "A3s__Nezačnem_navštevovať_kultú",
+       "String",
+       "A3s. Nezačnem navštevovať kultúrne stredisko ani po zmenách"
+      ],
+      [
+       "A3t__iné",
+       "String",
+       "A3t. iné"
+      ],
+      [
+       "A4__Kvôli_čomu_kultúrne_stredis",
+       "String",
+       "A4. Kvôli čomu kultúrne stredisko navštevujete?"
+      ],
+      [
+       "A4a__Chodievam_do_knižnice",
+       "String",
+       "A4a. Chodievam do knižnice"
+      ],
+      [
+       "A4b__Navštevujem_Klub_seniorov",
+       "String",
+       "A4b. Navštevujem Klub seniorov"
+      ],
+      [
+       "A4c__Navštevujem_Klub_matiek",
+       "String",
+       "A4c. Navštevujem Klub matiek"
+      ],
+      [
+       "A4d__Navštevujem_krúžky_a_aktiv",
+       "String",
+       "A4d. Navštevujem krúžky a aktivity"
+      ],
+      [
+       "A4e__Sprevádzam_deti___rodinnýc",
+       "String",
+       "A4e. Sprevádzam deti / rodinných príslušníkov, ktorí tam navštevujú aktivity"
+      ],
+      [
+       "A4f__Zúčastňujem_sa_kultúrnych_",
+       "String",
+       "A4f. Zúčastňujem sa kultúrnych programov"
+      ],
+      [
+       "A4g__Zúčastňujem_sa_podujatí_sa",
+       "String",
+       "A4g. Zúčastňujem sa podujatí samosprávy (stretnutia s poslancami, poslankyňami a miestnym úradom, verejné zhromaždenia, voľby)"
+      ],
+      [
+       "A4h__Navštevujem_predajné_trhy",
+       "String",
+       "A4h. Navštevujem predajné trhy"
+      ],
+      [
+       "A4i__Navštevujem_burzu_kníh",
+       "String",
+       "A4i. Navštevujem burzu kníh"
+      ],
+      [
+       "A4j__Iné",
+       "String",
+       "A4j. Iné"
+      ],
+      [
+       "A5__Ako_často_kultúrne_stredisk",
+       "String",
+       "A5. Ako často kultúrne stredisko navštevujete?"
+      ],
+      [
+       "A6__Kedy_do_kultúrneho_stredisk",
+       "String",
+       "A6. Kedy do kultúrneho strediska obvykle chodievate?"
+      ],
+      [
+       "A7__Akým_spôsobom_prichádzate_d",
+       "String",
+       "A7. Akým spôsobom prichádzate do kultúrneho strediska?"
+      ],
+      [
+       "A7a__Pešo",
+       "String",
+       "A7a. Pešo"
+      ],
+      [
+       "A7b__Na_bicykli",
+       "String",
+       "A7b. Na bicykli"
+      ],
+      [
+       "A7c__Na_kolobežke__skateboarde",
+       "String",
+       "A7c. Na kolobežke, skateboarde"
+      ],
+      [
+       "A7d__Pešo_s_detským_kočíkom",
+       "String",
+       "A7d. Pešo s detským kočíkom"
+      ],
+      [
+       "A7e__Pešo_s_podporou__s_barlami",
+       "String",
+       "A7e. Pešo s podporou (s barlami alebo s chodítkom)"
+      ],
+      [
+       "A7f__Na_invalidnom_vozíku",
+       "String",
+       "A7f. Na invalidnom vozíku"
+      ],
+      [
+       "A7g__Sprevádzam_človeka_na_vozí",
+       "String",
+       "A7g. Sprevádzam človeka na vozíku alebo s podporou"
+      ],
+      [
+       "A7h__Mestskou_hromadnou_dopravo",
+       "String",
+       "A7h. Mestskou hromadnou dopravou"
+      ],
+      [
+       "A7i__Autom",
+       "String",
+       "A7i. Autom"
+      ],
+      [
+       "B1__Zamyslite_sa_nad_priestormi",
+       "String",
+       "B1. Zamyslite sa nad priestormi kultúrneho strediska Žarnovická. Nižšie je menovaných niekoľko aspektov budovy a okolitých priestorov. Ako ich hodnotíte?"
+      ],
+      [
+       "B1a__Priestor_knižnice",
+       "String",
+       "B1a. Priestor knižnice"
+      ],
+      [
+       "B1b__Priestor_Klubu_seniorov",
+       "String",
+       "B1b. Priestor Klubu seniorov"
+      ],
+      [
+       "B1c__Priestor_Klubu_matiek",
+       "String",
+       "B1c. Priestor Klubu matiek"
+      ],
+      [
+       "B1d__Priestor_na_záujmové_krúžk",
+       "String",
+       "B1d. Priestor na záujmové krúžky"
+      ],
+      [
+       "B1e__Priestor_veľkého_sálu",
+       "String",
+       "B1e. Priestor veľkého sálu"
+      ],
+      [
+       "B1f__Bezbariérový_prístup",
+       "String",
+       "B1f. Bezbariérový prístup"
+      ],
+      [
+       "B1g__Verejný_priestor_pred_stre",
+       "String",
+       "B1g. Verejný priestor pred strediskom"
+      ],
+      [
+       "B1h__Možnosť_parkovania_autom_p",
+       "String",
+       "B1h. Možnosť parkovania autom pri stredisku"
+      ],
+      [
+       "B1i__Dostupnosť_verejnou_doprav",
+       "String",
+       "B1i. Dostupnosť verejnou dopravou"
+      ],
+      [
+       "B1j__Pešia_dostupnosť",
+       "String",
+       "B1j. Pešia dostupnosť"
+      ],
+      [
+       "B1k__Dostupnosť_bicyklom",
+       "String",
+       "B1k. Dostupnosť bicyklom"
+      ],
+      [
+       "B1l__Možnosť_parkovania_bicyklo",
+       "String",
+       "B1l. Možnosť parkovania bicyklov"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "684a197165a54e73ad0b1473881f0124",
+   "nazov": "Kapitálové a bežné výdavky na výskum v rokoch 2008 - 2020 (v %)",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Kapitálové_a_bežné_výdavky_na_výskum_v_rokoch_2008___2020_(v_)/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493423000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Kapitálové a bežné výdavky na výskum v rokoch 2008 - 2020 (v %).",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493423000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Kapitálové_a_bežné_výdavky_na_výskum_v_rokoch_2008___2020_(v_)/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Kapitálové_a_bežné_výdavky_na_výskum_v_rokoch_2008___2020_(v_)",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 26,
+     "polia": [
+      [
+       "TYP_VYDAVKOV",
+       "String",
+       "TYP_VYDAVKOV"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "VYDAVKY_V_MIL_EUR",
+       "Integer",
+       "VYDAVKY_V_MIL_EUR"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "b5a1ca52c4c44d639350caa0889ecaa0",
+   "nazov": "Podiel jednotlivých odvetví na tržbách v priemysle Bratislavy v rokoch 2008 - 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_jednotlivých_odvetví_na_tržbách_v_priemysle_Bratislavy_v_rokoch_2008___2021/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493308000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Podiel jednotlivých odvetví na tržbách v priemysle Bratislavy v rokoch 2008 - 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 49152,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493308000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_jednotlivých_odvetví_na_tržbách_v_priemysle_Bratislavy_v_rokoch_2008___2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Podiel_jednotlivých_odvetví_na_tržbách_v_priemysle_Bratislavy_v_rokoch_2008___2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 192,
+     "polia": [
+      [
+       "ODVETVIE_PRIEMYSLU",
+       "String",
+       "ODVETVIE_PRIEMYSLU"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "TRZBA_V_MIL_EUR",
+       "String",
+       "TRZBA_V_MIL_EUR"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "7f2eb58811eb49cab4d0feeb49dac718",
+   "nazov": "Podiel samosprávnych krajov na priamych zahraničných investíciach vo vybraných rokoch",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_samosprávnych_krajov_na_priamych_zahraničných_investíciach_vo_vybraných_rokoch/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493294000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Podiel samosprávnych krajov na priamych zahraničných investíciách vo vybraných rokoch.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493294000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_samosprávnych_krajov_na_priamych_zahraničných_investíciach_vo_vybraných_rokoch/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Podiel_samosprávnych_krajov_na_priamych_zahraničných_investíciach_vo_vybraných_rokoch",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 56,
+     "polia": [
+      [
+       "KRAJ",
+       "String",
+       "KRAJ"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "PODIEL_V__",
+       "String",
+       "PODIEL_V_%"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "5fe5a7600ed04bc6afc867006fbde76f",
+   "nazov": "Podiel zamestnanosti v kultúre na celkovej zamestnanosti vybraných regiónoch NUTS2",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_zamestnanosti_v_kultúre_na_celkovej_zamestnanosti_vybraných_regiónoch_NUTS2/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493275000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Podiel zamestnanosti v kultúre na celkovej zamestnanosti vybraných regiónoch NUTS2 v rokoch 2014 - 2020.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493275000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_zamestnanosti_v_kultúre_na_celkovej_zamestnanosti_vybraných_regiónoch_NUTS2/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Podiel_zamestnanosti_v_kultúre_na_celkovej_zamestnanosti_vybraných_regiónoch_NUTS2",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 42,
+     "polia": [
+      [
+       "REGION",
+       "String",
+       "REGION"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "ZAMESTNANOST_V__",
+       "String",
+       "ZAMESTNANOST_V_%"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "f3796c049ad844228157d61a621c383f",
+   "nazov": "Počet absolventov doktorandského štúdia na vysokých školách v BA v rokoch 2015 - 2020",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_absolventov_doktorandského_štúdia_na_vysokých_školách_v_BA_v_rokoch_2015___2020/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493385000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050.    Počet absolventov doktorandského štúdia na vysokých školách v Bratislave v rokoch 2015 - 2020.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493385000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_absolventov_doktorandského_štúdia_na_vysokých_školách_v_BA_v_rokoch_2015___2020/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_absolventov_doktorandského_štúdia_na_vysokých_školách_v_BA_v_rokoch_2015___2020",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 60,
+     "polia": [
+      [
+       "VYSOKA_SKOLA",
+       "String",
+       "VYSOKA_SKOLA"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "POCET_ABSOLVENTOV",
+       "Integer",
+       "POCET_ABSOLVENTOV"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "f0611c059abd4149ae998cf28eac1dd0",
+   "nazov": "Počet obyvateľov podľa národnosti v základných sídelných jednotkách - anonymizované",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa národnosti v základných sídelných jednotkách - anonymizov/FeatureServer",
+   "tagy": [],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1771494553000,
+   "popis": "Počet obyvateľov podľa miesta národnosti v základných sídelných jednotkách v Bratislave zo Sčítania obyvateľov, domov a bytov 2011",
+   "jazyk": "english (united states)",
+   "licencia": "CC BY 4.0",
+   "velkost": 81920,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771494553000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa národnosti v základných sídelných jednotkách - anonymizov/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet obyvateľov podľa národnosti v základných sídelných jednotkách - anonymizov",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 213,
+     "polia": [
+      [
+       "Kraj___kód",
+       "String",
+       "Kraj - kód"
+      ],
+      [
+       "Kraj___názov",
+       "String",
+       "Kraj - názov"
+      ],
+      [
+       "Okres___kód",
+       "String",
+       "Okres - kód"
+      ],
+      [
+       "Okres___názov",
+       "String",
+       "Okres - názov"
+      ],
+      [
+       "Obec___kód",
+       "String",
+       "Obec - kód"
+      ],
+      [
+       "Obec___názov",
+       "String",
+       "Obec - názov"
+      ],
+      [
+       "Základná_sídelná_jednotka___kód",
+       "String",
+       "Základná sídelná jednotka - kód"
+      ],
+      [
+       "Základná_sídelná_jednotka___náz",
+       "String",
+       "Základná sídelná jednotka - názov"
+      ],
+      [
+       "Slovenská",
+       "String",
+       "Slovenská"
+      ],
+      [
+       "Maďarská",
+       "String",
+       "Maďarská"
+      ],
+      [
+       "Rómska",
+       "String",
+       "Rómska"
+      ],
+      [
+       "Rusínska",
+       "String",
+       "Rusínska"
+      ],
+      [
+       "Ukrajinská",
+       "String",
+       "Ukrajinská"
+      ],
+      [
+       "Česká",
+       "String",
+       "Česká"
+      ],
+      [
+       "Nemecká",
+       "String",
+       "Nemecká"
+      ],
+      [
+       "Poľská",
+       "String",
+       "Poľská"
+      ],
+      [
+       "Chorvátska",
+       "String",
+       "Chorvátska"
+      ],
+      [
+       "Srbská",
+       "String",
+       "Srbská"
+      ],
+      [
+       "Ruská",
+       "String",
+       "Ruská"
+      ],
+      [
+       "Židovská",
+       "String",
+       "Židovská"
+      ],
+      [
+       "Moravská",
+       "String",
+       "Moravská"
+      ],
+      [
+       "Bulharská",
+       "String",
+       "Bulharská"
+      ],
+      [
+       "Ostatné",
+       "String",
+       "Ostatné"
+      ],
+      [
+       "Nezistená",
+       "String",
+       "Nezistená"
+      ],
+      [
+       "Spolu",
+       "String",
+       "Spolu"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "796b652508224c11926bc09e205981f6",
+   "nazov": "Počet poberateľov náhradného výživného",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet poberateľov náhradného výživného/FeatureServer",
+   "tagy": [],
+   "kategorie": [
+    "/Categories/Sociálne služby"
+   ],
+   "upravene": 1771494835000,
+   "popis": "Počet poberateľov náhradného výživného podľa bratislavských okresov",
+   "jazyk": "english (united states)",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771494835000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet poberateľov náhradného výživného/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet poberateľov náhradného výživného",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 20,
+     "polia": [
+      [
+       "Okres",
+       "String",
+       "Okres"
+      ],
+      [
+       "Rok",
+       "String",
+       "Rok"
+      ],
+      [
+       "NV___neplatené_výživné",
+       "String",
+       "NV - neplatené výživné"
+      ],
+      [
+       "NV___neplatené_výživné___z_toho",
+       "String",
+       "NV - neplatené výživné - z toho ženy"
+      ],
+      [
+       "NV___sirotský_dôchodok",
+       "String",
+       "NV - sirotský dôchodok"
+      ],
+      [
+       "NV___sirotský_dôchodok___z_toho",
+       "String",
+       "NV - sirotský dôchodok - z toho ženy"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "84ba9f28423e4a52aae97c8cfb7d58e6",
+   "nazov": "Počet prechádzajúcich chodcov podľa sčítačov za hodinu",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/chodci10_01/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Sčítače"
+   ],
+   "kategorie": [
+    "/Categories/Doprava a komunikácie"
+   ],
+   "upravene": 1771492980000,
+   "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
+   "jazyk": "sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 229367808,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771492980000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/chodci10_01/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "chodci10_01",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 850215,
+     "polia": [
+      [
+       "NAZOV",
+       "String",
+       "NAZOV"
+      ],
+      [
+       "ZEMEPISNA_SIRKA",
+       "Double",
+       "ZEMEPISNA_SIRKA"
+      ],
+      [
+       "ZEMEPISNA_DLZKA",
+       "Double",
+       "ZEMEPISNA_DLZKA"
+      ],
+      [
+       "SMER_DO",
+       "String",
+       "SMER_DO"
+      ],
+      [
+       "SMER_Z",
+       "String",
+       "SMER_Z"
+      ],
+      [
+       "DATUM_A_CAS",
+       "String",
+       "DATUM_A_CAS"
+      ],
+      [
+       "POCET_DO",
+       "Integer",
+       "POCET_DO"
+      ],
+      [
+       "POCET_Z",
+       "Integer",
+       "POCET_Z"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "097b7c8bc4b94560a7e34c9e64139a5e",
+   "nazov": "Počet prejazdov cyklistov podľa sčítačov za hodinu",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/cyklisti2_0/FeatureServer",
+   "tagy": [
+    "Doprava",
+    "Sčítače"
+   ],
+   "kategorie": [
+    "/Categories/Doprava a komunikácie"
+   ],
+   "upravene": 1771492966000,
+   "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
+   "jazyk": "sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 228786176,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771492966000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/cyklisti2_0/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "cyklisti2_0",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 850215,
+     "polia": [
+      [
+       "NAZOV",
+       "String",
+       "NAZOV"
+      ],
+      [
+       "ZEMEPISNA_SIRKA",
+       "Double",
+       "ZEMEPISNA_SIRKA"
+      ],
+      [
+       "ZEMEPISNA_DLZKA",
+       "Double",
+       "ZEMEPISNA_DLZKA"
+      ],
+      [
+       "SMER_DO",
+       "String",
+       "SMER_DO"
+      ],
+      [
+       "SMER_Z",
+       "String",
+       "SMER_Z"
+      ],
+      [
+       "DATUM_A_CAS",
+       "String",
+       "DATUM_A_CAS"
+      ],
+      [
+       "POCET_DO",
+       "Integer",
+       "POCET_DO"
+      ],
+      [
+       "POCET_Z",
+       "Integer",
+       "POCET_Z"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "f5e6996cadbb4955949e2e61b47311e6",
+   "nazov": "SODB 2011 - Byty podľa obdobia výstavby",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/SODB 2011 - Byty podľa obdobia výstavby/FeatureServer",
+   "tagy": [],
+   "kategorie": [
+    "/Categories/Demografia"
+   ],
+   "upravene": 1771494792000,
+   "popis": "Byty podľa obdobia výstavby v mestských častiach zo Sčítania obyvateľov, domov a bytov 2011",
+   "jazyk": "english (united states)",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771494792000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/SODB 2011 - Byty podľa obdobia výstavby/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "SODB 2011 - Byty podľa obdobia výstavby",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 17,
+     "polia": [
+      [
+       "Okres",
+       "String",
+       "Okres"
+      ],
+      [
+       "Mestská_časť",
+       "String",
+       "Mestská časť"
+      ],
+      [
+       "Spolu",
+       "String",
+       "Spolu"
+      ],
+      [
+       "Pred_r__1919",
+       "String",
+       "Pred r. 1919"
+      ],
+      [
+       "F1919___1945",
+       "String",
+       "1919 - 1945"
+      ],
+      [
+       "F1946___1960",
+       "String",
+       "1946 - 1960"
+      ],
+      [
+       "F1961___1970",
+       "String",
+       "1961 - 1970"
+      ],
+      [
+       "F1971___1980",
+       "String",
+       "1971 - 1980"
+      ],
+      [
+       "F1981___1990",
+       "String",
+       "1981 - 1990"
+      ],
+      [
+       "F1991___2000",
+       "String",
+       "1991 - 2000"
+      ],
+      [
+       "F2001___2005",
+       "String",
+       "2001 - 2005"
+      ],
+      [
+       "F2006_a_neskôr",
+       "String",
+       "2006 a neskôr"
+      ],
+      [
+       "Nezistené",
+       "String",
+       "Nezistené"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "6678d7bfe4b74a279dccfe27f4e88636",
+   "nazov": "Tvorba hrubého fixného kapitálu v Bratislavskom kraji v rokoch 2010 - 2019",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Tvorba_hrubého_fixného_kapitálu_v_Bratislavskom_kraji_v_rokoch_2010___2019/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493216000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Tvorba hrubého fixného kapitálu v Bratislavskom kraji v rokoch 2010 - 2019.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 40960,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493216000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Tvorba_hrubého_fixného_kapitálu_v_Bratislavskom_kraji_v_rokoch_2010___2019/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Tvorba_hrubého_fixného_kapitálu_v_Bratislavskom_kraji_v_rokoch_2010___2019",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 100,
+     "polia": [
+      [
+       "ODVETVIE",
+       "String",
+       "ODVETVIE"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "FIX_KAPITAL_V_MIL_EUR",
+       "String",
+       "FIX_KAPITAL_V_MIL_EUR"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "388cffa1b2e548e9b2c44d7b856ed514",
+   "nazov": "Vývoj miery registrovanej nezamestnanosti v okresoch BA a na SR ku koncu rokov 2008 - 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_miery_registrovanej_nezamestnanosti_v_okresoch_BA_a_na_SR_ku_koncu_rokov_2008_2021/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493190000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vývoj miery registrovanej nezamestnanosti v okresoch Bratislavy a na Slovensku ku koncu rokov 2008 - 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493190000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_miery_registrovanej_nezamestnanosti_v_okresoch_BA_a_na_SR_ku_koncu_rokov_2008_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vývoj_miery_registrovanej_nezamestnanosti_v_okresoch_BA_a_na_SR_ku_koncu_rokov_2008_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 84,
+     "polia": [
+      [
+       "UZEMIE",
+       "String",
+       "UZEMIE"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "NEZAMESTNANOST_V__",
+       "Double",
+       "NEZAMESTNANOST_V_%"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "eb8f31a4911844c0ac5047ef7bbb45c0",
+   "nazov": "Vývoj tržieb vo vybraných kultúrnych a kreatívnych činnostiach v rokoch 2014 - 2020",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_tržieb_vo_vybraných_kultúrnych_a_kreatívnych_činnostiach_v_rokoch_2014___2020/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493142000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vývoj tržieb vo vybraných kultúrnych a kreatívnych činnostiach v rokoch 2014 - 2020.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 24576,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493142000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_tržieb_vo_vybraných_kultúrnych_a_kreatívnych_činnostiach_v_rokoch_2014___2020/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vývoj_tržieb_vo_vybraných_kultúrnych_a_kreatívnych_činnostiach_v_rokoch_2014___2020",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 33,
+     "polia": [
+      [
+       "CINNOST",
+       "String",
+       "CINNOST"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "TRZBA_V_MIL_EUR",
+       "Double",
+       "TRZBA_V_MIL_EUR"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c128f7a039e84356aac9bd2113c12a82",
+   "nazov": "Vývoj tržieb vo vybraných sektoroch služieb v Bratislave v rokoch 2010 - 2020",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_tržieb_vo_vybraných_sektoroch_služieb_v_Bratislave_v_rokoch_2010___2020/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493128000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vývoj tržieb vo vybraných sektoroch služieb v Bratislave v rokoch 2010 - 2020.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 49152,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493128000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_tržieb_vo_vybraných_sektoroch_služieb_v_Bratislave_v_rokoch_2010___2020/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vývoj_tržieb_vo_vybraných_sektoroch_služieb_v_Bratislave_v_rokoch_2010___2020",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 186,
+     "polia": [
+      [
+       "SEKTOR_SLUZIEB",
+       "String",
+       "SEKTOR_SLUZIEB"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "TRZBA_V_MIL_EUR",
+       "Double",
+       "TRZBA_V_MIL_EUR"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "d021befaa3934555a08a5d6d4dd4366d",
+   "nazov": "Vývoj tržieb za vlastné výkony a tovar vo vybraných trhových službách v BA ",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_tržieb_za_vlastné_výkony_a_tovar_vo_vybraných_trhových_službách_v_BA_/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493029000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Vývoj tržieb za vlastné výkony a tovar vo vybraných trhových službách v Bratislave v rokoch 2010 - 2021.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493029000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Vývoj_tržieb_za_vlastné_výkony_a_tovar_vo_vybraných_trhových_službách_v_BA_/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Vývoj_tržieb_za_vlastné_výkony_a_tovar_vo_vybraných_trhových_službách_v_BA_",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 12,
+     "polia": [
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "TRZBY_V_MIL_EUR",
+       "Double",
+       "TRZBY_V_MIL_EUR"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "2add78b3420244448ca63f5ee42dab7d",
+   "nazov": "Zamestnanosť v kultúre v medzinárodnom porovnaní vo vybraných regiónoch NUTS2",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zamestnanosť_v_kultúre_v_medzinárodnom_porovnaní_vo_vybraných_regiónoch_NUTS2/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493083000,
+   "popis": "Zamestnanosť v kultúre v medzinárodnom porovnaní vo vybraných regiónoch NUTS2 v rokoch 2014 - 2020 (v tis. pracovníkov). Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493083000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zamestnanosť_v_kultúre_v_medzinárodnom_porovnaní_vo_vybraných_regiónoch_NUTS2/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Zamestnanosť_v_kultúre_v_medzinárodnom_porovnaní_vo_vybraných_regiónoch_NUTS2",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 42,
+     "polia": [
+      [
+       "REGION",
+       "String",
+       "REGION"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "POCET_PRACOVNIKOV_V_TIS",
+       "Double",
+       "POCET_PRACOVNIKOV_V_TIS"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "b75a6879cf954ce9bbfdf87bfce7fe6b",
+   "nazov": "Zamestnávanie štátnych príslušníkov tretích krajín s platným povolením na zamestnanie v SR",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zamestnávanie štátnych príslušníkov tretích krajín s platným povolením na zamestnanie n/FeatureServer",
+   "tagy": [],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771494804000,
+   "popis": "Zamestnávanie štátnych príslušníkov tretích krajín s platným povolením na zamestnanie na území SR podľa bratislavských okresov",
+   "jazyk": "english (united states)",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771494804000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Zamestnávanie štátnych príslušníkov tretích krajín s platným povolením na zamestnanie n/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Zamestnávanie štátnych príslušníkov tretích krajín s platným povolením na zamestnanie n",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 85,
+     "polia": [
+      [
+       "Okres",
+       "String",
+       "Okres"
+      ],
+      [
+       "Rok",
+       "String",
+       "Rok"
+      ],
+      [
+       "Počet",
+       "String",
+       "Počet"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "a02cc5667c4f43e6936ce8616d66500b",
+   "nazov": "Štruktúra alokácie priamych zahraničných investícií podľa odvetví na Slovensku",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Štruktúra_alokácie_priamych_zahraničných_investícií_podľa_odvetví_na_Slovensku/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493245000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Štruktúra alokácie priamych zahraničných investícií podľa odvetví na Slovensku vo vybraných rokoch.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493245000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Štruktúra_alokácie_priamych_zahraničných_investícií_podľa_odvetví_na_Slovensku/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Štruktúra_alokácie_priamych_zahraničných_investícií_podľa_odvetví_na_Slovensku",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 36,
+     "polia": [
+      [
+       "ODVETVIE",
+       "String",
+       "ODVETVIE"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "PZI_V_TIS_EUR",
+       "String",
+       "PZI_V_TIS_EUR"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "0e009812ea58428cb5f620f65550c1fb",
+   "nazov": "Štruktúra uchádzačov o zamestnanie v Bratislave podľa vzdelania ku koncu sledovaného roka",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Štruktúra_uchádzačov_o_zamestnanie_v_Bratislave_podľa_vzdelania_ku_koncu_sledovaného_roka/FeatureServer",
+   "tagy": [
+    "OpenData",
+    "Miestna ekonomika",
+    "Bratislava 2050"
+   ],
+   "kategorie": [
+    "/Categories/Ekonomika a práca"
+   ],
+   "upravene": 1771493238000,
+   "popis": "Ekonomická časť dokumentu Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050. Štruktúra uchádzačov o zamestnanie v Bratislave podľa vzdelania ku koncu sledovaného roka.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1771493238000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Štruktúra_uchádzačov_o_zamestnanie_v_Bratislave_podľa_vzdelania_ku_koncu_sledovaného_roka/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Štruktúra_uchádzačov_o_zamestnanie_v_Bratislave_podľa_vzdelania_ku_koncu_sledovaného_roka",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 42,
+     "polia": [
+      [
+       "VZDELANIE",
+       "String",
+       "VZDELANIE"
+      ],
+      [
+       "ROK",
+       "String",
+       "ROK"
+      ],
+      [
+       "POCET_UCHADZACOV",
+       "Integer",
+       "POCET_UCHADZACOV"
       ],
       [
        "ObjectId",

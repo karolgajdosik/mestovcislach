@@ -89,7 +89,20 @@ def detail(p: dict) -> dict:
 
 
 def main() -> int:
+    import json
     polozky = zoznam()
+    # Hub občas niektoré položky nevráti – doplníme tie, ktoré poznáme z minulých behov (ak ešte existujú)
+    stare_cesta = DATA / "katalog-bratislava.json"
+    if stare_cesta.exists():
+        zname = {p["id"] for p in polozky}
+        chybajuce = [p for p in json.loads(stare_cesta.read_text(encoding="utf-8"))["datasety"] if p["id"] not in zname]
+        doplnene = 0
+        for p in {p["id"]: p for p in chybajuce}.values():
+            r = s.get(ITEM.format(p["id"]), params={"f": "json"}, timeout=60)
+            if r.ok and "error" not in r.json():
+                polozky.append({k: p.get(k) for k in ("id", "nazov", "typ", "url", "tagy", "kategorie", "upravene", "popis")})
+                doplnene += 1
+        print(f"Doplnené z minulého inventára: {doplnene} (chýbalo {len(chybajuce)})")
     if len(polozky) < 300:
         raise RuntimeError(f"Katalóg: len {len(polozky)} položiek")
     with ThreadPoolExecutor(8) as ex:
