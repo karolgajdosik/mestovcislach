@@ -60,5 +60,5 @@ jobs:
             echo "Žiadne nové dáta."
           else
             git commit -m "Dáta: OpenStreetMap $(date -u +%Y-%m-%d)"
-            git pull --rebase -q && git push
+            for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 5; done
           fi

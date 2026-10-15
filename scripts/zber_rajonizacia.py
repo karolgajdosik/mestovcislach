@@ -26,7 +26,7 @@ from spolocne import adresy_mv, hranice, norm_ulica, zapis_ak_zmena  # noqa: E40
 KOREN = Path(__file__).resolve().parent.parent
 UA = "mestovcislach.sk (github.com/karolgajdosik/mestovcislach)"
 ZS = "ef5254fb17344932b787dbbf81c094a5"
-MS = "9d734ed003a142a3b4034979e2498a7c"
+MS = "a6a832ddc3c94aa3b8c15b41e5a0365b"  # rajonizácia MŠ 2026 (2025: 9d734ed003a142a3b4034979e2498a7c)
 
 s = requests.Session()
 s.headers["User-Agent"] = UA
@@ -58,6 +58,14 @@ def vsetko(url: str) -> list[dict]:
 t = lambda x: (x or "").strip()  # noqa: E731
 
 
+def g(r: dict, *mena: str) -> str:
+    """Hodnota prvého existujúceho poľa – súbory 2025 a 2026 majú rôzne názvy stĺpcov."""
+    for m in mena:
+        if m in r and r[m] not in (None, ""):
+            return str(r[m]).strip()
+    return ""
+
+
 def main() -> int:
     url_zs, zdroj_zs = sluzba(ZS)
     url_ms, zdroj_ms = sluzba(MS)
@@ -75,8 +83,8 @@ def main() -> int:
 
     def kluc(r: dict) -> tuple:
         # „Bratislava-Petržalka“ (ZŠ) a „Petržalka“ (MŠ) je tá istá mestská časť
-        mc = re.sub(r"^Bratislava\s*-\s*", "", t(r.get("Mestská_časť")))
-        return (mc, t(r.get("Ulica")) or t(r.get("Lokalita")), t(r.get("Súpisné_číslo")), t(r.get("Orientačné_číslo")))
+        mc = re.sub(r"^Bratislava\s*-\s*", "", g(r, "Mestská_časť", "mestska_cast"))
+        return (mc, g(r, "Ulica", "ulica") or g(r, "Lokalita", "lokalita_zaujmu"), g(r, "Súpisné_číslo", "supisne"), g(r, "Orientačné_číslo", "orientacne"))
 
     for r in zs:
         sk = (t(r.get("Názov_školského_zariadenia")), t(r.get("Adresa_základnej_školy")))
@@ -87,7 +95,7 @@ def main() -> int:
             skoly.append({"nazov": sk[0], "adresa": "" if "bez udania" in sk[1] else sk[1], "web": t(r.get("Web_školy")), "typ": t(r.get("Typ_školského_zariadenia"))})
         adresy.setdefault(kluc(r), [None, None])[0] = idx_skoly[sk]
     for r in ms:
-        sk = (t(r.get("Rajón_materskej_škôlky")), t(r.get("Adresa_materskej_škôlky")))
+        sk = (g(r, "Rajón_materskej_škôlky", "rajon"), g(r, "Adresa_materskej_škôlky", "adresa_skolky"))
         if not sk[0] and not sk[1]:
             continue
         if sk not in idx_skolky:
@@ -101,7 +109,7 @@ def main() -> int:
         if not ulica:  # adresy bez ulice aj lokality sa podľa ulice nájsť nedajú
             continue
         ulice[mc][ulica].append([sup, ori, z, m])
-    verejne = {"zdroj": [zdroj_zs, zdroj_ms], "skolsky_rok": "2025/2026", "zs": skoly, "ms": skolky, "ulice": ulice,
+    verejne = {"zdroj": [zdroj_zs, zdroj_ms], "skolsky_rok": "2025/2026", "rok_zs": 2025, "rok_ms": 2026, "zs": skoly, "ms": skolky, "ulice": ulice,
                "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds")}
     (KOREN / "public" / "data").mkdir(parents=True, exist_ok=True)
     cesta = KOREN / "public" / "data" / "rajonizacia-bratislava.json"
