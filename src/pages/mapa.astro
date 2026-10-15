@@ -54,17 +54,28 @@ const vrstvy = [
   ['nemocnice', 'Nemocnice a polikliniky', 'Vybavenosť', '--m-nemocnice', false],
   ['ambulancie', 'Ambulancie (neúplné)', 'Vybavenosť', '--m-ambulancie', false],
   ['nabijanie', 'Nabíjacie stanice', 'Vybavenosť', '--m-nabijanie', false],
-  ['pamiatky', 'Kultúrne pamiatky (neúplné)', 'Kultúra a príroda', '--m-pamiatky', false],
+  ['jasle', 'Jasle (deti do 3 rokov)', 'Školy a sociálne služby', '--m-jasle', false],
+  ['skoly_ms', 'Materské školy', 'Školy a sociálne služby', '--m-skoly_ms', false],
+  ['skoly_zs', 'Základné školy', 'Školy a sociálne služby', '--m-skoly_zs', false],
+  ['obvody', 'Spádové obvody ZŠ', 'Školy a sociálne služby', '--m-obvody', false],
+  ['skoly_ss', 'Stredné a špeciálne školy', 'Školy a sociálne služby', '--m-skoly_ss', false],
+  ['skoly_zus', 'Umelecké školy a CVČ', 'Školy a sociálne služby', '--m-skoly_zus', false],
+  ['socialne', 'Sociálne služby', 'Školy a sociálne služby', '--m-socialne', false],
+  ['pamiatky', 'Kultúrne pamiatky (register)', 'Kultúra a príroda', '--m-pamiatky', false],
+  ['pamiatky_osm', 'Pamiatky s fotkami (OSM)', 'Kultúra a príroda', '--m-pamiatky_osm', false],
   ['muzea', 'Múzeá a galérie', 'Kultúra a príroda', '--m-muzea', false],
   ['kultura', 'Divadlá, kiná a knižnice', 'Kultúra a príroda', '--m-kultura', false],
   ['stromy', 'Chránené stromy', 'Kultúra a príroda', '--m-stromy', false],
   ['narodne', 'Chránené územia', 'Kultúra a príroda', '--m-narodne', true],
   ['natura', 'Natura 2000', 'Kultúra a príroda', '--m-natura', false],
+  ['hluk_den', 'Hluk z ciest – celý deň', 'Prostredie', '--m-hluk', false],
+  ['hluk_noc', 'Hluk z ciest – noc', 'Prostredie', '--m-hluk', false],
+  ['hluk_priemysel', 'Hluk z priemyslu', 'Prostredie', '--m-hluk', false],
   ['skladky', 'Čierne skládky 2025', 'Prostredie', '--m-skladky', false],
 ] as const;
 const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
 ---
-<Base title="Mapa Bratislavy – mestovcislach.sk" description="Interaktívna mapa Bratislavy: mestské časti, MHD, cyklotrasy, lekárne, nabíjanie, pamiatky, chránená príroda a čierne skládky.">
+<Base title="Mapa Bratislavy – mestovcislach.sk" description="Interaktívna mapa Bratislavy: mestské časti, MHD, cyklotrasy, školy a spádové obvody, jasle, sociálne služby, lekárne, pamiatky, hluk, chránená príroda.">
   <section class="hero">
     <p class="kicker">Bratislava</p>
     <h1>Mapa</h1>
@@ -87,6 +98,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
             {vrstvy.filter((v) => v[2] === sk).map(([k, nazov, , farba, zap]) => (
               <label><input type="checkbox" value={k} checked={zap} /><i style={`background:var(${farba})`}></i>{nazov}</label>
             ))}
+            {sk === 'Prostredie' && <p class="legenda-hluk" hidden><span style="--c:#facc15">55</span><span style="--c:#f97316">60</span><span style="--c:#dc2626">65</span><span style="--c:#7e22ce">70+</span> dB</p>}
           </fieldset>
         ))}
       </div>
@@ -94,7 +106,9 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   </div>
 
   <p class="zdroj">
-    Zdroje: mestské časti, pamiatky, múzeá a kultúra, chránené stromy, cyklotrasy, lekárne, zdravotníctvo a nabíjanie © prispievatelia
+    Zdroje: kultúrne pamiatky – register MK SR, polohy podľa registra adries MV SR; školy – Digitálna mapa škôl MŠVVaM SR; spádové obvody – rajonizácia
+    hlavného mesta (hranice približné); sociálne služby a jasle – register MPSVR SR; chránené stromy – ŠOP SR; hluk – strategické hlukové mapy ÚVZ SR
+    (všetko <a href="https://data.slovensko.sk">data.slovensko.sk</a>); mestské časti, múzeá a kultúra, pamiatky s fotkami, cyklotrasy, lekárne, zdravotníctvo a nabíjanie © prispievatelia
     <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> (ODbL); zastávky MHD, BAjk, sčítače a čierne skládky –
     <a href="https://data.bratislava.sk">data.bratislava.sk</a> (CC BY 4.0); uzávierky a poruchy – živo z evidencie hlavného mesta; chránené územia a Natura 2000 –
     <a href="https://www.eea.europa.eu/en/datahub">EEA</a>; letecká snímka – © Esri, Maxar, Earthstar Geographics;
@@ -107,6 +121,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   import { osmPodklad } from '../scripts/podklad';
   import { uzavierky, poruchy, popup, type Obmedzenie } from '../scripts/uzavierky';
   import { popupMiesta } from '../scripts/miesto';
+  import { popupPamiatky, popupSkoly, popupSocialne, popupStromy, popupObvodu } from '../scripts/popupy';
   import 'leaflet/dist/leaflet.css';
 
   const obal = document.getElementById('mapa-bratislava')!;
@@ -200,23 +215,71 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
         bod(lat, lon, k).bindPopup(() => popupMiesta(n, d.kategorie[k], det), { maxWidth: 280 })));
     };
   }
-  for (const k of ['pamiatky', 'stromy', 'muzea', 'kultura']) {
+  for (const k of ['muzea', 'kultura']) {
     tvorba[k] = async () => {
       const d = await json('/data/pamiatky-bratislava.json');
       return L.layerGroup(d.body.filter((b: any[]) => b[2] === k).map(([lat, lon, , n, det]: any[]) =>
         bod(lat, lon, k).bindPopup(() => popupMiesta(n, d.kategorie[k] ?? '', det), { maxWidth: 280 })));
     };
   }
+  tvorba.pamiatky_osm = async () => {
+    const d = await json('/data/pamiatky-bratislava.json');
+    return L.layerGroup(d.body.filter((b: any[]) => b[2] === 'pamiatky').map(([lat, lon, , n, det]: any[]) =>
+      bod(lat, lon, 'pamiatky_osm').bindPopup(() => popupMiesta(n, 'Pamiatka (OpenStreetMap)', det), { maxWidth: 280 })));
+  };
+  // Oficiálny register pamiatok MK SR (poloha podľa registra adries)
+  tvorba.pamiatky = async () => {
+    const d = await json('/data/pamiatky-register.json');
+    return L.layerGroup(d.body.map(([lat, lon, n, det]: any[]) => bod(lat, lon, 'pamiatky').bindPopup(() => popupPamiatky(n, det), { maxWidth: 280 })));
+  };
+  tvorba.stromy = async () => {
+    const d = await json('/data/stromy-sop.json');
+    return L.layerGroup(d.body.map(([lat, lon, n, det]: any[]) => bod(lat, lon, 'stromy').bindPopup(() => popupStromy(n, det), { maxWidth: 280 })));
+  };
+  const SKOLY: Record<string, string[]> = { skoly_ms: ['ms'], skoly_zs: ['zs'], skoly_ss: ['ss', 'spec'], skoly_zus: ['zus', 'cvc'] };
+  for (const [k, typy] of Object.entries(SKOLY)) {
+    tvorba[k] = async () => {
+      const d = await json('/data/skoly-iedu.json');
+      return L.layerGroup(d.body.filter((b: any[]) => typy.includes(b[2])).map(([lat, lon, t, n, det]: any[]) =>
+        bod(lat, lon, k).bindPopup(() => popupSkoly(n, t, det), { maxWidth: 280 })));
+    };
+  }
+  for (const k of ['jasle', 'socialne']) {
+    tvorba[k] = async () => {
+      const d = await json('/data/socialne-bratislava.json');
+      return L.layerGroup(d.body.filter((b: any[]) => (b[2] === 'deti') === (k === 'jasle')).map(([lat, lon, kat, n, det]: any[]) =>
+        bod(lat, lon, k).bindPopup(() => popupSocialne(n, d.kategorie[kat], det), { maxWidth: 280 })));
+    };
+  }
+  tvorba.obvody = async () => {
+    const d = await json('/data/obvody-zs-bratislava.geojson');
+    const PALETA = ['#1f6fd1', '#c8102e', '#138a5e', '#a16207', '#7a4fd1', '#0e7490', '#db2777', '#4d7c0f'];
+    return L.geoJSON(d, {
+      style: (f: any) => ({ color: PALETA[f.properties.zs % PALETA.length], weight: 1, fillColor: PALETA[f.properties.zs % PALETA.length], fillOpacity: 0.18 }),
+      onEachFeature: (f: any, l) => l.bindPopup(popupObvodu(f.properties), { maxWidth: 280 }),
+    });
+  };
+  const HLUK: Record<string, string> = { 55: '#facc15', 60: '#f97316', 65: '#dc2626', 70: '#7e22ce' };
+  const HLUK_VRSTVY: Record<string, string> = { hluk_den: 'cesty_lden', hluk_noc: 'cesty_lnight', hluk_priemysel: 'priemysel_lden' };
+  for (const [k, v] of Object.entries(HLUK_VRSTVY)) {
+    tvorba[k] = async () => {
+      const d = await json('/data/hluk-bratislava.json');
+      const vrstva = d.vrstvy[v];
+      return L.layerGroup(Object.entries<any>(vrstva.ciary).map(([db, ciary]) =>
+        L.polyline(ciary, { color: HLUK[db], weight: Number(db) >= 65 ? 2.2 : 1.6, opacity: 0.9 })
+          .bindPopup(`<strong>${db === '70' ? '70 dB a viac' : `${db} dB`}</strong><br>${vrstva.nazov}<br><span style="opacity:.75">izofóna strategickej hlukovej mapy (ÚVZ SR); limit pre obytné územie z ciest 50 dB v noci</span>`)));
+    };
+  }
 
   const hotove: Record<string, L.Layer> = {};
-  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'scitace', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'pamiatky', 'muzea', 'kultura', 'stromy', 'skladky', 'uzavierky', 'poruchy'];
+  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'scitace', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'obvody', 'hluk_den', 'hluk_noc', 'hluk_priemysel', 'jasle', 'skoly_ms', 'skoly_zs', 'skoly_ss', 'skoly_zus', 'socialne', 'pamiatky', 'pamiatky_osm', 'muzea', 'kultura', 'stromy', 'skladky', 'uzavierky', 'poruchy'];
   async function prepni(k: string, zapnut: boolean) {
     if (!zapnut) { hotove[k]?.remove(); return; }
     try {
       hotove[k] ??= await tvorba[k]();
       hotove[k].addTo(mapa);
       // plochy dozadu, aby body ostali klikateľné
-      if (['natura', 'narodne', 'hranice'].includes(k)) (hotove[k] as any).bringToBack?.();
+      if (['natura', 'narodne', 'hranice', 'obvody'].includes(k)) (hotove[k] as any).bringToBack?.();
     } catch {
       const i = obal.querySelector<HTMLInputElement>(`input[value="${k}"]`);
       if (i) { i.checked = false; i.disabled = true; i.parentElement!.title = 'Údaje sa nepodarilo načítať'; }
@@ -224,7 +287,11 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   }
   obal.querySelectorAll<HTMLInputElement>('input[type=checkbox]').forEach((i) => {
     if (!tvorba[i.value] || (inline[i.value] === null)) { i.disabled = true; return; }
-    i.addEventListener('change', () => prepni(i.value, i.checked));
+    i.addEventListener('change', () => {
+      prepni(i.value, i.checked);
+      const hluk = [...obal.querySelectorAll<HTMLInputElement>('input[value^=hluk]')].some((x) => x.checked);
+      obal.querySelector<HTMLElement>('.legenda-hluk')!.hidden = !hluk;
+    });
   });
   (async () => {
     for (const k of poradie) {
@@ -247,6 +314,8 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
     --m-lekarne: #138a5e; --m-nemocnice: #b91c1c; --m-ambulancie: #7a4fd1; --m-nabijanie: #db2777;
     --m-pamiatky: #a16207; --m-stromy: #4d7c0f; --m-narodne: #16a34a; --m-natura: #65a30d; --m-skladky: #57534e;
     --m-uzavierky: #d97706; --m-poruchy: #a21caf; --m-scitace: #0f766e; --m-muzea: #9333ea; --m-kultura: #e11d48;
+    --m-pamiatky_osm: #ca8a04; --m-jasle: #f472b6; --m-skoly_ms: #fb923c; --m-skoly_zs: #2563eb; --m-skoly_ss: #4338ca;
+    --m-skoly_zus: #0891b2; --m-socialne: #9d174d; --m-obvody: #60a5fa; --m-hluk: #f97316;
   }
   @media (prefers-color-scheme: dark) {
     :global(:root) {
@@ -254,6 +323,8 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       --m-lekarne: #6ee7b7; --m-nemocnice: #fca5a5; --m-ambulancie: #c4a7ff; --m-nabijanie: #f9a8d4;
       --m-pamiatky: #fcd34d; --m-stromy: #86efac; --m-narodne: #4ade80; --m-natura: #bef264; --m-skladky: #d6d3d1;
       --m-uzavierky: #ffc44d; --m-poruchy: #f0abfc; --m-scitace: #5eead4; --m-muzea: #d8b4fe; --m-kultura: #fda4af;
+      --m-pamiatky_osm: #fde68a; --m-jasle: #f9a8d4; --m-skoly_ms: #fdba74; --m-skoly_zs: #93c5fd; --m-skoly_ss: #a5b4fc;
+      --m-skoly_zus: #67e8f9; --m-socialne: #f9a8d4; --m-obvody: #93c5fd; --m-hluk: #fdba74;
     }
   }
   .hero { padding: 32px 0 16px; }
@@ -277,6 +348,9 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   label:has(input:disabled) { opacity: 0.45; cursor: not-allowed; }
   label i { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
   .podklad label { display: inline-flex; margin-right: 12px; }
+  .legenda-hluk { display: flex; gap: 6px; align-items: center; margin: 4px 0 0; font-size: 0.75rem; color: var(--muted); }
+  .legenda-hluk span { display: inline-flex; align-items: center; gap: 3px; }
+  .legenda-hluk span::before { content: ''; width: 14px; height: 3px; border-radius: 2px; background: var(--c); }
   @media (max-width: 600px) {
     #mapa { height: 70vh; }
     .panel { width: auto; left: 10px; right: 10px; top: auto; bottom: 10px; max-height: 55%; }

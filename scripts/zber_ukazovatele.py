@@ -32,7 +32,9 @@ codecs.register_error("cp1250", lambda e: (e.object[e.start:e.end].decode("cp125
 
 
 def dekoduj(b: bytes) -> str:
-    return b.decode("utf-8-sig", errors="cp1250")
+    t = b.decode("utf-8-sig", errors="cp1250")
+    # dvojito kódované znaky (cp1250 bajt → U+0080–U+009F), napr. „ž“ ako U+009E
+    return re.sub(r"[\u0080-\u009f]", lambda m: m.group(0).encode("latin-1").decode("cp1250", "replace"), t)
 
 
 def mc_alebo_mesto(t: str) -> str | None:
@@ -119,34 +121,53 @@ def dlh() -> dict:
 
 
 def csd() -> dict:
-    roky: dict[str, list] = {}
+    """Úseky v okresoch Bratislava I–V podľa CSD 2015; staršie roky sa priradia podľa čísla úseku
+    (súbory 2005 a 2010 majú iné stĺpce a rok 2005 nemá okres)."""
+    surove: dict[int, dict[str, list]] = {}
     for rok, url in URL_CSD.items():
         r = s.get(url, timeout=120)
         r.raise_for_status()
-        useky = []
-        for riadok in dekoduj(r.content).splitlines():
+        t = r.content.decode("cp1250", "replace") if rok < 2015 else dekoduj(r.content)
+        surove[rok] = {}
+        for riadok in t.splitlines():
             c = [x.strip() for x in riadok.split(";")]
-            if len(c) >= 7 and re.match(r"^\d{5}$", c[0]) and c[2].startswith("Bratislava"):
-                try:
-                    useky.append({"usek": c[0], "cesta": c[1], "okres": c[2], "nakladne": int(c[3] or 0), "osobne": int(c[4] or 0), "motocykle": int(c[5] or 0), "spolu": int(c[6] or 0)})
-                except ValueError:
-                    pass
-        roky[str(rok)] = useky
-    cesty = sorted({u["cesta"] for v in roky.values() for u in v}, key=lambda c: (not c.startswith("D"), not c.startswith("R"), c))
+            if len(c) >= 7 and re.match(r"^\d{5}$", c[0]) and re.match(r"^\d+$", c[-1] or "x"):
+                surove[rok][c[0]] = c
+    useky_2015 = []
+    for usek, c in surove[2015].items():
+        if len(c) >= 8 and c[2].startswith("Bratislava"):
+            useky_2015.append({"usek": usek, "cesta": c[1], "okres": c[2], "nakladne": int(c[3] or 0), "osobne": int(c[4] or 0), "motocykle": int(c[5] or 0), "spolu": int(c[6] or 0)})
+    if not useky_2015:
+        raise RuntimeError("CSD 2015: žiadne bratislavské úseky")
+    cesta_useku = {u["usek"]: u["cesta"] for u in useky_2015}
+    roky: dict[str, list] = {"2015": useky_2015}
+    for rok in (2005, 2010):
+        roky[str(rok)] = [{"usek": u, "cesta": cesta_useku[u], "spolu": int(c[-1]), "nakladne": int(c[-4] or 0)}
+                          for u, c in surove[rok].items() if u in cesta_useku and int(c[-1] or 0) > 0]
+
+    def nazov(cesta: str) -> str:
+        if cesta.startswith(("D", "R")):
+            return cesta
+        return {1: "I", 3: "II", 4: "III"}.get(len(cesta), "") + "/" + cesta if len(cesta) != 2 else "I/" + cesta
+
+    cesty = sorted({u["cesta"] for u in useky_2015}, key=lambda c: (not c.startswith("D"), len(c), c))
     prehlad = []
     for cesta in cesty:
-        riadok = {"cesta": cesta}
-        for rok, useky in roky.items():
-            u = [x for x in useky if x["cesta"] == cesta]
+        riadok = {"cesta": nazov(cesta)}
+        for rok in ("2005", "2010", "2015"):
+            u = [x for x in roky[rok] if x["cesta"] == cesta and x["spolu"] > 0]
             if u:
                 riadok[rok] = {"usekov": len(u), "priemer": round(sum(x["spolu"] for x in u) / len(u)), "max": max(x["spolu"] for x in u),
-                               "nakladne_podiel": round(100 * sum(x["nakladne"] for x in u) / max(1, sum(x["spolu"] for x in u)), 1)}
+                               "nakladne_podiel": round(100 * sum(x["nakladne"] for x in u) / max(1, sum(x["spolu"] for x in u)), 1) if any(x["nakladne"] for x in u) else None}
         prehlad.append(riadok)
-    if not roky.get("2015"):
-        raise RuntimeError("CSD 2015: žiadne bratislavské úseky")
-    return {"roky": list(roky), "cesty": prehlad, "useky_2015": sorted(roky["2015"], key=lambda u: -u["spolu"]),
+    # porovnanie rovnakých úsekov 2005 → 2015
+    spolocne_useky = [u for u in useky_2015 if u["spolu"] and any(x["usek"] == u["usek"] for x in roky["2005"])]
+    s05 = {x["usek"]: x["spolu"] for x in roky["2005"]}
+    narast = round(100 * (sum(u["spolu"] for u in spolocne_useky) / max(1, sum(s05[u["usek"]] for u in spolocne_useky)) - 100), 1) if spolocne_useky else None
+    return {"roky": ["2005", "2010", "2015"], "cesty": prehlad, "useky_2015": sorted(useky_2015, key=lambda u: -u["spolu"])[:40],
+            "narast_2005_2015": {"usekov": len(spolocne_useky), "percent": narast},
             "zdroj": {"nazov": "Slovenská správa ciest – celoštátne sčítanie dopravy", "url": "https://www.ssc.sk"},
-            "popis": "Ročný priemer denných intenzít (vozidlá za 24 hodín) na sčítacích úsekoch diaľnic a ciest I. až III. triedy v okresoch Bratislava I–V. Miestne komunikácie mesta sa nesčítavajú."}
+            "popis": "Ročný priemer denných intenzít (vozidlá za 24 hodín) na sčítacích úsekoch diaľnic a ciest I. až III. triedy v okresoch Bratislava I–V. Novšie celoštátne sčítanie (2020, 2025) SSC na webe zatiaľ v rovnakom formáte nezverejnila."}
 
 
 def main() -> int:

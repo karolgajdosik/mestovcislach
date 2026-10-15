@@ -97,7 +97,7 @@ def main() -> int:
         p["skol"] += 1
         p["ziakov"] += int(sk["ziaci"] or 0)
     mesto = {t: {"skol": sum(po_mc[m][t]["skol"] for m in po_mc), "ziakov": sum(po_mc[m][t]["ziakov"] for m in po_mc)} for t in TYPY}
-    for t in TYPY:
+    for t in ("zs", "ss"):  # pri MŠ, ZUŠ a CVČ sa pedagógovia počítajú inak – pomer nedáva zmysel
         ss = [sk for sk in skoly if sk["typ"] == t and sk["ziaci"] and sk["ped"]]
         mesto[t]["ziakov_na_ucitela"] = round(sum(sk["ziaci"] for sk in ss) / sum(sk["ped"] for sk in ss), 1) if ss else None
     najvacsie = {t: [{"nazov": sk["nazov"], "mc": sk["mc"], "ziaci": int(sk["ziaci"])} for sk in sorted((sk for sk in skoly if sk["typ"] == t and sk["ziaci"]), key=lambda sk: -sk["ziaci"])[:10]]
@@ -116,9 +116,11 @@ def main() -> int:
             a["zaujem12"] += int(num(x.get("1.+2. záujem")) or 0)
             a["zapisani"] += int(num(x.get("Zapísaní")) or 0)
         for (nazov, ulica, obec), a in agg.items():
-            if a["plan"] >= 10:
-                zaujem.append({"nazov": nazov, "adresa": ulica, "mc": obec.replace("Bratislava-", ""), **a, "zaujem_na_miesto": round(a["zaujem1"] / a["plan"], 2)})
-        zaujem.sort(key=lambda z: -z["zaujem_na_miesto"])
+            if a["zaujem12"] > 0:
+                zaujem.append({"nazov": nazov, "adresa": ulica, "mc": obec.replace("Bratislava-", ""), **a,
+                               "zaujem_na_miesto": round(a["zaujem1"] / a["plan"], 2) if a["plan"] >= 10 else None})
+        # plán prijatia je pri mnohých školách prázdny – poradie podľa prihlášok s 1. voľbou
+        zaujem.sort(key=lambda z: -z["zaujem1"])
         print(f"Naplnenosť SŠ: {len(svs)} odborov, {len(zaujem)} škôl")
     except Exception as e:  # noqa: BLE001
         print(f"::warning title=Naplnenosť škôl::{e}")
@@ -130,7 +132,7 @@ def main() -> int:
         "mestske_casti": {m: {t: v for t, v in d.items()} for m, d in sorted(po_mc.items())},
         "najvacsie": najvacsie,
         "zaujem_ss": {"skol": len(zaujem), "plan": sum(z["plan"] for z in zaujem), "zaujem1": sum(z["zaujem1"] for z in zaujem),
-                      "zapisani": sum(z["zapisani"] for z in zaujem), "najzaujimavejsie": zaujem[:15], "najmenej": zaujem[-10:][::-1]},
+                      "zaujem12": sum(z["zaujem12"] for z in zaujem), "zapisani": sum(z["zapisani"] for z in zaujem), "najzaujimavejsie": zaujem[:15]},
         "aktualizovane": teraz,
     }
     zapis_ak_zmena(DATA / "skoly-iedu.json", suhrn)
