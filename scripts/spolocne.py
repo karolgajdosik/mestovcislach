@@ -157,3 +157,15 @@ def geokoder() -> Callable[[str | None, str, str], tuple[float, float, str] | No
                 return (*stredy[k], "ulica")
         return None
     return najdi
+
+
+def url_vrstvy(item: str) -> str:
+    """URL prvej vrstvy/tabuľky datasetu data.bratislava.sk – z inventára, inak z metadát položky ArcGIS."""
+    import json as _json
+    cesta = DATA / "katalog-bratislava.json"
+    if cesta.exists():
+        for p in _json.loads(cesta.read_text(encoding="utf-8"))["datasety"]:
+            if p["id"] == item and p.get("sluzba") and p.get("vrstvy"):
+                return f"{p['sluzba']}/{p['vrstvy'][0]['id']}"
+    url = s.get(f"https://www.arcgis.com/sharing/rest/content/items/{item}", params={"f": "json"}, timeout=60).json()["url"].rstrip("/")
+    return url if url[-1].isdigit() else url + "/0"

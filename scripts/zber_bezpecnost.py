@@ -23,7 +23,7 @@ from datetime import date, datetime, timedelta, timezone
 from statistics import median
 
 from diakritika import hodnota as s_diakritikou
-from spolocne import DATA, VEREJNE, mc_podla_polohy, norm_mc, s, spusti, zapis_ak_zmena
+from spolocne import url_vrstvy, DATA, VEREJNE, mc_podla_polohy, norm_mc, s, spusti, zapis_ak_zmena
 
 ITEM = "https://www.arcgis.com/sharing/rest/content/items/{}"
 UDALOSTI = {"priestupky": "2566d894", "trestne_ciny": "22a2a9f6", "ostatne": "45348130"}
@@ -39,8 +39,7 @@ def plne_id(prefix: str) -> str:
 
 
 def riadky(prefix: str) -> list[dict]:
-    url = s.get(ITEM.format(plne_id(prefix)), params={"f": "json"}, timeout=60).json()["url"].rstrip("/")
-    url = url if url[-1].isdigit() else url + "/0"
+    url = url_vrstvy(plne_id(prefix))
     vysl, offset = [], 0
     while True:
         r = s.get(url + "/query", params={"where": "1=1", "outFields": "*", "returnGeometry": "false", "resultOffset": offset,

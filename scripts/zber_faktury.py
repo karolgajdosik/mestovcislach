@@ -18,7 +18,7 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from statistics import median
 
-from spolocne import DATA, s, spusti, zapis_ak_zmena
+from spolocne import url_vrstvy, DATA, s, spusti, zapis_ak_zmena
 
 ITEM = "https://www.arcgis.com/sharing/rest/content/items/{}"
 DATASETY = [  # (prefix ID, organizácia, typ)
@@ -50,8 +50,7 @@ def plne_id(prefix: str) -> str | None:
 
 
 def vrstva(item: str) -> str:
-    url = s.get(ITEM.format(item), params={"f": "json"}, timeout=60).json()["url"].rstrip("/")
-    return url if url[-1].isdigit() else url + "/0"
+    return url_vrstvy(item)
 
 
 def riadky(url: str, polia: list[str]) -> list[dict]:
