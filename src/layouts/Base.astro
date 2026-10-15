@@ -5,6 +5,11 @@ interface Props {
   description?: string;
 }
 const { title, description = 'Otvorené dáta o slovenských mestách a obciach – prehľadne a so zdrojmi.' } = Astro.props;
+// Náhľadový obrázok pri zdieľaní (public/og/<sekcia>.png, generuje scripts/og_obrazky.py)
+const OG = ['mapa', 'obyvatelia', 'volby', 'financie', 'doprava', 'vybavenost', 'prostredie', 'bezpecnost', 'katalog'];
+const sekcia = Astro.url.pathname.split('/').filter(Boolean)[0] ?? '';
+const ogObrazok = new URL(`/og/${OG.includes(sekcia) ? sekcia : 'index'}.png`, Astro.site ?? 'https://mestovcislach.sk');
+const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.sk');
 ---
 <!doctype html>
 <html lang="sk">
@@ -14,7 +19,17 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={adresa} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="mestovčíslach.sk" />
+    <meta property="og:locale" content="sk_SK" />
+    <meta property="og:title" content={title.replace(/ – mestovcislach\.sk$/, '')} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={adresa} />
+    <meta property="og:image" content={ogObrazok} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <header class="top">

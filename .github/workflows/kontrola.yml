@@ -1,0 +1,52 @@
+name: Kontrola webu
+
+# Každé 3 hodiny overí živé zdroje (SHMÚ, MeteoAlarm, uzávierky…) a úspešnosť zberov dát.
+# Pri probléme založí alebo aktualizuje issue „Kontrola webu“ (GitHub pošle e-mail), keď je všetko v poriadku, issue zavrie.
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  actions: read
+
+concurrency:
+  group: kontrola
+  cancel-in-progress: true
+
+jobs:
+  kontrola:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Kontrola zdrojov
+        id: kontrola
+        run: python scripts/kontrola.py problemy.md && echo "ok=1" >> "$GITHUB_OUTPUT" || echo "ok=0" >> "$GITHUB_OUTPUT"
+
+      - name: Issue
+        run: |
+          cislo=$(gh issue list --state open --label kontrola --json number -q '.[0].number')
+          if [ "${{ steps.kontrola.outputs.ok }}" = "1" ]; then
+            [ -n "$cislo" ] && gh issue close "$cislo" --comment "Všetko opäť funguje ($(date -u '+%Y-%m-%d %H:%M') UTC)." || echo "Bez problémov."
+          else
+            telo="$(printf 'Automatická kontrola našla problémy (%s UTC):\n\n%s\n\n[Beh kontroly](%s/%s/actions/runs/%s)' "$(date -u '+%Y-%m-%d %H:%M')" "$(cat problemy.md)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")"
+            if [ -n "$cislo" ]; then
+              # nový komentár len ak sa zoznam problémov zmenil
+              posledny="$(gh issue view "$cislo" --json comments,body -q '(.comments | last | .body) // .body')"
+              if [ "$(echo "$posledny" | grep '^- ' )" != "$(cat problemy.md)" ]; then gh issue comment "$cislo" --body "$telo"; fi
+            else
+              gh label create kontrola --color c8102e --description "Automatická kontrola webu" 2>/dev/null || true
+              gh issue create --title "Kontrola webu: nefunguje zdroj alebo zber dát" --label kontrola --body "$telo"
+            fi
+          fi
