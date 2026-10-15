@@ -85,11 +85,12 @@ def stiahni() -> dict:
                 chyby.append(f"{server}: prázdne")
             except Exception as e:  # noqa: BLE001
                 chyby.append(f"{server}: {type(e).__name__}")
-            time.sleep(10)
+            time.sleep(45)
     raise RuntimeError("Overpass neodpovedal: " + "; ".join(chyby))
 
 
 def main() -> int:
+    time.sleep(20)  # odstup od predchádzajúceho dotazu (cyklotrasy) – Overpass obmedzuje frekvenciu
     data = stiahni()
     hranice = json.loads((DATA / "hranice-bratislava.geojson").read_text(encoding="utf-8"))
     obyv = json.loads((DATA / "obyvatelstvo-bratislava.json").read_text(encoding="utf-8"))

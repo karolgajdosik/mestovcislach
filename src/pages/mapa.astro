@@ -1,0 +1,245 @@
+---
+// Spoločná mapa Bratislavy: všetky geodáta webu ako prepínateľné vrstvy.
+// Menšie vrstvy sú priamo v stránke, väčšie sa načítajú z /data/*.json až po zapnutí.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+
+const nacitaj = (subor: string) => {
+  const p = path.join(process.cwd(), 'data', subor);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+};
+const hranice = nacitaj('hranice-bratislava.geojson');
+const obyv = nacitaj('obyvatelstvo-bratislava.json');
+const mhd = nacitaj('doprava-bratislava.json');
+const bajk = nacitaj('bajk-bratislava.json');
+const prostredie = nacitaj('prostredie-bratislava.json');
+
+const rok = obyv ? Object.keys(obyv.mesto.roky).sort().pop()! : '';
+const mc = new Map<string, any>((obyv?.mestske_casti ?? []).map((c: any) => [c.kod.slice(-6), c]));
+const inline = {
+  hranice: hranice && {
+    type: 'FeatureCollection',
+    features: hranice.features.map((f: any) => {
+      const c = mc.get(f.properties.kod_obce);
+      return { type: 'Feature', geometry: f.geometry, properties: { n: c?.nazov_kratky ?? f.properties.nazov, o: c?.roky[rok], r: f.properties.rozloha_km2 } };
+    }),
+  },
+  mhd: mhd?.zastavky.map((z: any) => [z.lat, z.lon, z.nazov, z.odchody]) ?? null,
+  bajk: bajk?.stanice.map((s: any) => [s.lat, s.lon, s.nazov]) ?? null,
+  skladky: prostredie?.cierne_skladky.body.map((b: any) => [b.lat, b.lon]) ?? null,
+};
+
+// Vrstvy: kľúč, názov, skupina, farba (CSS premenná), zdroj, predvolene zapnutá
+const vrstvy = [
+  ['hranice', 'Mestské časti', 'Základ', '--m-hranice', true],
+  ['mhd', 'Zastávky MHD', 'Doprava', '--m-mhd', false],
+  ['cyklo', 'Cyklotrasy', 'Doprava', '--m-cyklo', false],
+  ['bajk', 'Stanice BAjk', 'Doprava', '--m-bajk', false],
+  ['lekarne', 'Lekárne', 'Vybavenosť', '--m-lekarne', false],
+  ['nemocnice', 'Nemocnice a polikliniky', 'Vybavenosť', '--m-nemocnice', false],
+  ['ambulancie', 'Ambulancie (neúplné)', 'Vybavenosť', '--m-ambulancie', false],
+  ['nabijanie', 'Nabíjacie stanice', 'Vybavenosť', '--m-nabijanie', false],
+  ['pamiatky', 'Kultúrne pamiatky', 'Kultúra a príroda', '--m-pamiatky', false],
+  ['stromy', 'Chránené stromy', 'Kultúra a príroda', '--m-stromy', false],
+  ['narodne', 'Chránené územia', 'Kultúra a príroda', '--m-narodne', true],
+  ['natura', 'Natura 2000', 'Kultúra a príroda', '--m-natura', false],
+  ['skladky', 'Čierne skládky 2025', 'Prostredie', '--m-skladky', false],
+] as const;
+const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
+---
+<Base title="Mapa Bratislavy – mestovcislach.sk" description="Interaktívna mapa Bratislavy: mestské časti, MHD, cyklotrasy, lekárne, nabíjanie, pamiatky, chránená príroda a čierne skládky.">
+  <section class="hero">
+    <p class="kicker">Bratislava</p>
+    <h1>Mapa</h1>
+    <p class="lead">Všetky mapové údaje na jednom mieste. Vrstvy zapnete v paneli.</p>
+  </section>
+
+  <div class="mapa-obal" id="mapa-bratislava" data-inline={JSON.stringify(inline)}>
+    <div id="mapa"></div>
+    <details class="panel" open>
+      <summary>Vrstvy</summary>
+      <div class="panel-obsah">
+        <fieldset class="podklad">
+          <legend>Podklad</legend>
+          <label><input type="radio" name="podklad" value="mapa" checked />Mapa</label>
+          <label><input type="radio" name="podklad" value="orto" />Letecká snímka</label>
+        </fieldset>
+        {skupiny.map((sk) => (
+          <fieldset>
+            <legend>{sk}</legend>
+            {vrstvy.filter((v) => v[2] === sk).map(([k, nazov, , farba, zap]) => (
+              <label><input type="checkbox" value={k} checked={zap} /><i style={`background:var(${farba})`}></i>{nazov}</label>
+            ))}
+          </fieldset>
+        ))}
+      </div>
+    </details>
+  </div>
+
+  <p class="zdroj">
+    Zdroje: mestské časti, pamiatky, chránené stromy, cyklotrasy, lekárne, zdravotníctvo a nabíjanie © prispievatelia
+    <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> (ODbL); zastávky MHD, BAjk a čierne skládky –
+    <a href="https://data.bratislava.sk">data.bratislava.sk</a> (CC BY 4.0); chránené územia a Natura 2000 –
+    <a href="https://www.eea.europa.eu/en/datahub">EEA</a>; letecká snímka – © <a href="https://www.geoportal.sk">ÚGKK SR</a> (ZBGIS);
+    podkladová mapa © <a href="https://carto.com/attributions">CARTO</a>. Údaje z OSM nie sú oficiálne registre a nemusia byť úplné.
+  </p>
+</Base>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const obal = document.getElementById('mapa-bratislava')!;
+  const inline = JSON.parse(obal.dataset.inline!);
+  const css = getComputedStyle(document.documentElement);
+  const farba = (k: string) => css.getPropertyValue(`--m-${k}`).trim();
+  const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const okraj = tmava ? '#121417' : '#ffffff';
+  const fmt = (n: number) => n?.toLocaleString('sk-SK');
+  const mobil = window.innerWidth < 600;
+
+  const mapa = L.map('mapa', { zoomSnap: 0.25, preferCanvas: true, scrollWheelZoom: !mobil });
+  const podklady: Record<string, L.TileLayer> = {
+    mapa: L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_all/{z}/{x}/{y}{r}.png`, {
+      maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
+    }),
+    orto: L.tileLayer.wms('https://zbgisws.skgeodesy.sk/zbgis_ortofoto_wms/service.svc/get', {
+      layers: '1', format: 'image/jpeg', maxZoom: 20, attribution: '© ÚGKK SR (ZBGIS), CC BY 4.0',
+    }),
+  };
+  // Poistka: ak služba nevráti dlaždice pre vrstvu „1“, skúsi „0“; inak voľbu vypne.
+  let chyby = 0;
+  podklady.orto.on('tileerror', () => {
+    chyby += 1;
+    if (chyby === 4 && (podklady.orto as L.TileLayer.WMS).wmsParams.layers === '1') {
+      chyby = 0;
+      (podklady.orto as L.TileLayer.WMS).setParams({ layers: '0' } as any);
+    } else if (chyby === 8) {
+      const r = obal.querySelector<HTMLInputElement>('input[value=orto]')!;
+      r.disabled = true;
+      r.parentElement!.title = 'Letecká snímka ÚGKK je momentálne nedostupná';
+      obal.querySelector<HTMLInputElement>('input[value=mapa]')!.click();
+    }
+  });
+  podklady.mapa.addTo(mapa);
+  mapa.setView([48.155, 17.11], mobil ? 10.75 : 11.5);
+
+  const bod = (lat: number, lon: number, k: string, r = mobil ? 4 : 5) =>
+    L.circleMarker([lat, lon], { radius: r, weight: 1, color: okraj, fillColor: farba(k), fillOpacity: 0.9 });
+  const cache: Record<string, Promise<any>> = {};
+  const json = (url: string) => (cache[url] ??= fetch(url).then((r) => r.json()));
+
+  // Tvorba vrstiev – každá sa vytvorí až pri prvom zapnutí.
+  const tvorba: Record<string, () => Promise<L.Layer>> = {
+    hranice: async () => {
+      const v = L.geoJSON(inline.hranice, {
+        style: { color: farba('hranice'), weight: 1.5, fillOpacity: 0.04, fillColor: farba('hranice') },
+        onEachFeature: (f: any, l) => l.bindPopup(`<strong>${f.properties.n}</strong><br>${fmt(f.properties.o)} obyvateľov<br>${f.properties.r.toLocaleString('sk-SK')} km²`),
+      });
+      mapa.fitBounds(v.getBounds(), { padding: [8, 8] });
+      return v;
+    },
+    mhd: async () => {
+      const max = Math.max(...inline.mhd.map((z: any[]) => z[3]));
+      return L.layerGroup(inline.mhd.map(([lat, lon, n, o]: any[]) =>
+        bod(lat, lon, 'mhd', 2 + 8 * Math.sqrt(o / max)).bindPopup(`<strong>${n}</strong><br>${fmt(o)} odchodov za pracovný deň`)));
+    },
+    bajk: async () => L.layerGroup(inline.bajk.map(([lat, lon, n]: any[]) => bod(lat, lon, 'bajk').bindPopup(`<strong>${n}</strong><br>Stanica Slovnaft BAjk`))),
+    skladky: async () => L.layerGroup(inline.skladky.map(([lat, lon]: any[]) => bod(lat, lon, 'skladky', 6).bindPopup('Čierna skládka nahlásená v roku 2025'))),
+    cyklo: async () => L.geoJSON(await json('/data/cyklotrasy-bratislava.geojson'), { style: { color: farba('cyklo'), weight: 2.5 }, interactive: false }),
+    narodne: async () => priroda('narodne'),
+    natura: async () => priroda('natura'),
+  };
+  async function priroda(typ: string) {
+    const d = await json('/data/priroda-bratislava.geojson');
+    return L.geoJSON({ ...d, features: d.features.filter((f: any) => f.properties.t === typ) }, {
+      style: { color: farba(typ), weight: 1, fillColor: farba(typ), fillOpacity: typ === 'natura' ? 0.15 : 0.25, dashArray: typ === 'natura' ? '4 3' : undefined },
+      onEachFeature: (f: any, l) => l.bindPopup(`<strong>${f.properties.n}</strong><br>${f.properties.k}<br>${f.properties.km2.toLocaleString('sk-SK')} km² v Bratislave`),
+    });
+  }
+  for (const k of ['lekarne', 'nemocnice', 'ambulancie', 'nabijanie']) {
+    tvorba[k] = async () => {
+      const d = await json('/data/vybavenost-bratislava.json');
+      return L.layerGroup(d.body.filter((b: any[]) => b[2] === k).map(([lat, lon, , n]: any[]) => bod(lat, lon, k).bindPopup(`<strong>${n || d.kategorie[k]}</strong><br>${d.kategorie[k]}`)));
+    };
+  }
+  for (const k of ['pamiatky', 'stromy']) {
+    tvorba[k] = async () => {
+      const d = await json('/data/pamiatky-bratislava.json');
+      return L.layerGroup(d.body.filter((b: any[]) => b[2] === k).map(([lat, lon, , n]: any[]) => bod(lat, lon, k).bindPopup(`<strong>${n || d.kategorie[k]}</strong><br>${d.kategorie[k]}`)));
+    };
+  }
+
+  const hotove: Record<string, L.Layer> = {};
+  const poradie = ['natura', 'narodne', 'hranice', 'cyklo', 'mhd', 'bajk', 'lekarne', 'nemocnice', 'ambulancie', 'nabijanie', 'pamiatky', 'stromy', 'skladky'];
+  async function prepni(k: string, zapnut: boolean) {
+    if (!zapnut) { hotove[k]?.remove(); return; }
+    try {
+      hotove[k] ??= await tvorba[k]();
+      hotove[k].addTo(mapa);
+      // plochy dozadu, aby body ostali klikateľné
+      if (['natura', 'narodne', 'hranice'].includes(k)) (hotove[k] as any).bringToBack?.();
+    } catch {
+      const i = obal.querySelector<HTMLInputElement>(`input[value="${k}"]`);
+      if (i) { i.checked = false; i.disabled = true; i.parentElement!.title = 'Údaje sa nepodarilo načítať'; }
+    }
+  }
+  obal.querySelectorAll<HTMLInputElement>('input[type=checkbox]').forEach((i) => {
+    if (!tvorba[i.value] || (inline[i.value] === null)) { i.disabled = true; return; }
+    i.addEventListener('change', () => prepni(i.value, i.checked));
+  });
+  (async () => {
+    for (const k of poradie) {
+      const i = obal.querySelector<HTMLInputElement>(`input[value="${k}"]`);
+      if (i?.checked && !i.disabled) await prepni(k, true);
+    }
+  })();
+  obal.querySelectorAll<HTMLInputElement>('input[name=podklad]').forEach((i) =>
+    i.addEventListener('change', () => {
+      Object.entries(podklady).forEach(([k, l]) => (k === i.value ? l.addTo(mapa) : l.remove()));
+      (podklady[i.value] as any).bringToBack();
+    }),
+  );
+  if (mobil) obal.querySelector('details')!.removeAttribute('open');
+</script>
+
+<style>
+  :global(:root) {
+    --m-hranice: #5d636e; --m-mhd: #c8102e; --m-cyklo: #1f6fd1; --m-bajk: #0e7490;
+    --m-lekarne: #138a5e; --m-nemocnice: #b91c1c; --m-ambulancie: #7a4fd1; --m-nabijanie: #db2777;
+    --m-pamiatky: #a16207; --m-stromy: #4d7c0f; --m-narodne: #16a34a; --m-natura: #65a30d; --m-skladky: #57534e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(:root) {
+      --m-hranice: #9aa1ad; --m-mhd: #ff6b80; --m-cyklo: #7cc4ff; --m-bajk: #67e8f9;
+      --m-lekarne: #6ee7b7; --m-nemocnice: #fca5a5; --m-ambulancie: #c4a7ff; --m-nabijanie: #f9a8d4;
+      --m-pamiatky: #fcd34d; --m-stromy: #86efac; --m-narodne: #4ade80; --m-natura: #bef264; --m-skladky: #d6d3d1;
+    }
+  }
+  .hero { padding: 32px 0 16px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 8px; }
+  .lead { color: var(--muted); font-size: 1.05rem; margin: 0; }
+  .mapa-obal { position: relative; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); }
+  #mapa { height: min(75vh, 720px); min-height: 420px; background: var(--bg); }
+  .panel {
+    position: absolute; top: 10px; right: 10px; z-index: 1000; max-height: calc(100% - 20px); overflow: auto;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 4px 16px #0002;
+    font-size: 0.85rem; width: 230px;
+  }
+  .panel summary { cursor: pointer; padding: 10px 14px; font-weight: 700; list-style: none; }
+  .panel summary::after { content: ' ▾'; color: var(--muted); }
+  .panel[open] summary::after { content: ' ▴'; }
+  .panel-obsah { padding: 0 14px 12px; }
+  fieldset { border: 0; padding: 0; margin: 0 0 10px; }
+  legend { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; padding: 0; }
+  label { display: flex; align-items: center; gap: 8px; padding: 3px 0; cursor: pointer; }
+  label:has(input:disabled) { opacity: 0.45; cursor: not-allowed; }
+  label i { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+  .podklad label { display: inline-flex; margin-right: 12px; }
+  @media (max-width: 600px) {
+    #mapa { height: 70vh; }
+    .panel { width: auto; left: 10px; right: 10px; top: auto; bottom: 10px; max-height: 55%; }
+  }
+</style>

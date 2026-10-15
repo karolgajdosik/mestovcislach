@@ -29,6 +29,9 @@ const po = path.join(process.cwd(), 'data', 'obyvatelstvo-bratislava.json');
 const obyv = fs.existsSync(po) ? JSON.parse(fs.readFileSync(po, 'utf-8')) : null;
 const nazvy = new Map<string, string>((obyv?.mestske_casti ?? []).map((c: any) => [c.kod.slice(-6), c.nazov_kratky]));
 const o = prostredie?.odpad;
+const pr = path.join(process.cwd(), 'data', 'priroda-bratislava.json');
+const priroda = fs.existsSync(pr) ? JSON.parse(fs.readFileSync(pr, 'utf-8')) : null;
+const prirodaCasti = priroda ? priroda.mestske_casti.map((c: any) => ({ ...c, nazov: nazvy.get(c.kod_obce) ?? c.nazov })) : [];
 const odpadRoky = o ? Object.keys(o.na_obyvatela.roky).sort() : [];
 const odpadRok = odpadRoky[odpadRoky.length - 1];
 const odpadPrvy = odpadRoky[0];
@@ -76,6 +79,40 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
 
   {prostredie && (
     <div id="prostredie" data-odpad={grafOdpad} data-skladky={JSON.stringify(prostredie.cierne_skladky.body.map((b: any) => [b.lat, b.lon]))}>
+      {priroda && (
+        <>
+          <h2 class="sekcia">Chránená príroda</h2>
+          <section class="kpis">
+            <div class="card kpi">
+              <p class="label">Chránené územia (národná sústava)</p>
+              <p class="value">{fmt(priroda.mesto.chranene_pct)} %</p>
+              <p class="delta">{fmt(priroda.mesto.chranene_km2)} km² z rozlohy mesta</p>
+            </div>
+            <div class="card kpi">
+              <p class="label">Natura 2000</p>
+              <p class="value">{fmt(priroda.mesto.natura_pct)} %</p>
+              <p class="delta">{fmt(priroda.mesto.natura_km2)} km² – európska sústava</p>
+            </div>
+          </section>
+          <section class="card">
+            <h2>Podiel chránenej prírody v mestských častiach</h2>
+            <div class="tabulka-obal">
+              <table>
+                <thead><tr><th>Mestská časť</th><th class="num">Chránené územia</th><th class="num">Natura 2000</th></tr></thead>
+                <tbody>
+                  {prirodaCasti.map((c: any) => <tr><td>{c.nazov}</td><td class="num">{fmt(c.chranene_pct)} %</td><td class="num">{fmt(c.natura_pct)} %</td></tr>)}
+                </tbody>
+              </table>
+            </div>
+            <p class="zdroj">
+              Najväčšie: {priroda.uzemia.filter((u: any) => u.typ === 'narodne' && u.kategoria !== 'Ochranné pásmo').slice(0, 5).map((u: any) => `${u.nazov} (${fmt(u.km2_v_meste)} km²)`).join(', ')}.
+              Bez ochranných pásiem; územia sa môžu prekrývať (rátané raz). <a href="/mapa">Zobraziť na mape →</a>
+              Zdroj: <a href={priroda.zdroj.url}>{priroda.zdroj.nazov}</a> (údaje SR), kategórie preložené orientačne z IUCN.
+            </p>
+          </section>
+        </>
+      )}
+
       <h2 class="sekcia">Odpad</h2>
       <section class="kpis">
         <div class="card kpi">
