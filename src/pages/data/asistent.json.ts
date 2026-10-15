@@ -46,7 +46,7 @@ export async function GET() {
       nazov: 'Komunálne a krajské voľby (primátor, starostovia, zastupiteľstvá, BSK)', stranka: '/volby#komunalne',
       fakty: kom.volby.map((v: any) => v.stav !== 'vysledky' ? {
         volby: v.nazov, datum: v.datum, stav: 'výsledky ešte nie sú zverejnené – web ich doplní automaticky po zverejnení ŠÚ SR',
-        kandidati_na_primatora: v.kandidati_primator?.map((x: any) => `${x.meno} (${x.strany})`) ?? 'zoznam ešte nie je zverejnený',
+        kandidati_na_primatora: v.kandidati_primator?.map((x: any) => `${x.meno} (${x.strany})`) ?? 'Štatistický úrad SR ho zatiaľ nezverejnil v otvorených dátach (kandidátov poznať z médií a webu mesta)',
         kandidati_na_predsedu_bsk: v.kandidati_predseda_bsk?.map((x: any) => `${x.meno} (${x.strany})`),
       } : {
         volby: v.nazov, datum: v.datum,
