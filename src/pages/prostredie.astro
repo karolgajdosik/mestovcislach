@@ -46,8 +46,26 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
   <section class="hero">
     <p class="kicker">Bratislava</p>
     <h1>Životné prostredie</h1>
-    <p class="lead">Kvalita ovzdušia, odpad a recyklácia, výsadba stromov a nahlásené čierne skládky.</p>
+    <p class="lead">Hladina Dunaja, kvalita ovzdušia, chránená príroda, odpad a recyklácia, výsadba stromov a nahlásené čierne skládky.</p>
   </section>
+
+  <div id="dunaj">
+    <h2 class="sekcia">Dunaj</h2>
+    <section class="kpis">
+      <div class="card kpi"><p class="label">Vodný stav v Bratislave</p><p class="value" data-d="stav">…</p><p class="delta" data-d="cas"></p></div>
+      <div class="card kpi"><p class="label">Za posledné 3 hodiny</p><p class="value" data-d="trend">…</p><p class="delta" data-d="zmena"></p></div>
+      <div class="card kpi"><p class="label">Teplota vody</p><p class="value" data-d="teplota">…</p><p class="delta">meraná na stanici SHMÚ</p></div>
+      <div class="card kpi"><p class="label">Do 1. stupňa povodňovej aktivity</p><p class="value" data-d="spa">…</p><p class="delta" data-d="spa-pozn"></p></div>
+    </section>
+    <section class="card">
+      <h2>Posledných 10 dní a predpoveď na 48 hodín</h2>
+      <div class="chart"><canvas id="g-dunaj" role="img" aria-label="Vodný stav Dunaja v Bratislave a predpoveď"></canvas></div>
+      <p class="zdroj">
+        Zdroj: <a href="https://www.shmu.sk/sk/?page=1&id=hydro_vod_all&station_id=5140">SHMÚ – vodomerná stanica Bratislava (Dunaj)</a>, načítané naživo (obnova každých 10 minút).
+        Vodný stav je výška hladiny od nuly vodočetnej laty, nie hĺbka rieky. Prekročenie hranice neznamená, že stupeň povodňovej aktivity bol vyhlásený.
+      </p>
+    </section>
+  </div>
 
   <h2 class="sekcia">Ovzdušie</h2>
 
@@ -166,6 +184,68 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
   import L from 'leaflet';
   import { osmPodklad } from '../scripts/podklad';
   import 'leaflet/dist/leaflet.css';
+
+  // Dunaj – živé údaje SHMÚ cez /api/dunaj
+  {
+    const del = document.getElementById('dunaj');
+    const nastav = (k: string, t: string) => { const e = del?.querySelector(`[data-d="${k}"]`); if (e) e.textContent = t; };
+    if (del) fetch('/api/dunaj').then((r) => (r.ok ? r.json() : Promise.reject())).then((d) => {
+      const css = getComputedStyle(document.documentElement);
+      const accent = css.getPropertyValue('--accent').trim();
+      const muted = css.getPropertyValue('--muted').trim();
+      const modra = window.matchMedia('(prefers-color-scheme: dark)').matches ? '#7cc4ff' : '#1f6fd1';
+      nastav('stav', `${d.stav} cm`);
+      nastav('cas', `meranie ${new Date(d.cas).toLocaleString('sk-SK', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' })}`);
+      nastav('trend', d.trend);
+      nastav('zmena', `${d.zmena_3h > 0 ? '+' : ''}${d.zmena_3h} cm`);
+      nastav('teplota', d.teplota != null ? `${String(d.teplota).replace('.', ',')} °C` : '–');
+      const spa = d.spa ?? {};
+      const stupen = [3, 2, 1].find((s) => spa[s] && d.stav >= spa[s]);
+      nastav('spa', stupen ? `${stupen}. stupeň` : spa[1] ? `${spa[1] - d.stav} cm` : '–');
+      nastav('spa-pozn', Object.entries(spa).map(([s, v]) => `${s}. stupeň ${v} cm`).join(' · '));
+      const body = (a: [number, number][]) => a.map(([x, y]) => ({ x, y }));
+      const spaFarby: Record<string, string> = { 1: '#e6b800', 2: '#f08c00', 3: '#d0021b' };
+      const vsetky = [...d.merane, ...d.predpoved];
+      const xMin = vsetky[0]?.[0], xMax = vsetky[vsetky.length - 1]?.[0];
+      const max = Math.max(...vsetky.map((b: number[]) => b[1]));
+      new Chart(document.getElementById('g-dunaj') as HTMLCanvasElement, {
+        type: 'line',
+        data: {
+          datasets: [
+            { label: 'Meraný vodný stav', data: body(d.merane), borderColor: modra, backgroundColor: modra + '22', fill: 'origin', borderWidth: 2, pointRadius: 0, tension: 0.2 },
+            { label: 'Predpoveď SHMÚ', data: body(d.predpoved), borderColor: accent, borderDash: [5, 4], borderWidth: 2, pointRadius: 0, tension: 0.2 },
+            // Hranice povodňovej aktivity zobrazíme, len ak je hladina aspoň na 70 % 1. stupňa – inak by graf stlačili.
+            ...Object.entries(spa).filter(([s, v]) => max >= 0.7 * Number(spa[1]) && (s === '1' || max >= 0.85 * Number(v))).map(([s, v]) => ({
+              label: `${s}. stupeň (${v} cm)`, data: [{ x: xMin, y: v }, { x: xMax, y: v }], borderColor: spaFarby[s], borderWidth: 1.5, pointRadius: 0,
+            })),
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          interaction: { mode: 'nearest', axis: 'x', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 14, boxHeight: 2 } },
+            tooltip: {
+              callbacks: {
+                title: (i) => new Date(i[0].parsed.x).toLocaleString('sk-SK', { weekday: 'short', day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' }),
+                label: (c) => ` ${c.dataset.label}: ${c.parsed.y} cm`,
+              },
+            },
+          },
+          scales: {
+            x: {
+              type: 'linear', min: xMin, max: xMax, grid: { display: false },
+              ticks: { color: muted, maxRotation: 0, autoSkipPadding: 16, callback: (v) => new Date(Number(v)).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric' }) },
+            },
+            y: { ticks: { callback: (v) => v + ' cm' } },
+          },
+        },
+      });
+    }).catch(() => {
+      ['stav', 'trend', 'teplota', 'spa'].forEach((k) => nastav(k, '–'));
+      nastav('cas', 'údaje SHMÚ sú teraz nedostupné');
+    });
+  }
 
   {
     const pel = document.getElementById('prostredie');

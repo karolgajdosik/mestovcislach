@@ -1,0 +1,92 @@
+---
+// Živý prehľad „Dnes v Bratislave“: výstrahy SHMÚ, hladina Dunaja, uzávierky a poruchy na cestách.
+// Všetko sa načíta v prehliadači (výstrahy a Dunaj cez /api/* funkcie na Cloudflare, uzávierky priamo z ArcGIS mesta).
+---
+<section class="dnes" id="dnes" aria-live="polite">
+  <h2>Dnes v Bratislave</h2>
+  <div class="karty">
+    <a class="card karta" href="https://www.shmu.sk/sk/?page=987" id="dnes-vystrahy">
+      <p class="label">Výstrahy SHMÚ</p>
+      <p class="value">…</p>
+      <p class="pozn">načítavam</p>
+    </a>
+    <a class="card karta" href="/prostredie#dunaj" id="dnes-dunaj">
+      <p class="label">Dunaj v Bratislave</p>
+      <p class="value">…</p>
+      <p class="pozn">načítavam</p>
+    </a>
+    <a class="card karta" href="/doprava#naozivo" id="dnes-cesty">
+      <p class="label">Uzávierky a poruchy na cestách</p>
+      <p class="value">…</p>
+      <p class="pozn">načítavam</p>
+    </a>
+  </div>
+  <ul class="vystrahy-zoznam" id="dnes-vystrahy-zoznam" hidden></ul>
+</section>
+
+<script>
+  import { uzavierky, poruchy } from '../scripts/uzavierky';
+
+  const karta = (id: string, hodnota: string, pozn: string, trieda = '') => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.querySelector('.value')!.textContent = hodnota;
+    el.querySelector('.pozn')!.textContent = pozn;
+    if (trieda) el.dataset.stav = trieda;
+  };
+  const cas = (iso: string | null) =>
+    iso ? new Date(iso).toLocaleString('sk-SK', { weekday: 'short', day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' }) : '?';
+  const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+  fetch('/api/vystrahy').then((r) => (r.ok ? r.json() : Promise.reject())).then((d) => {
+    const v = d.vystrahy as any[];
+    if (!v.length) {
+      karta('dnes-vystrahy', 'žiadne', d.inde_na_slovensku?.length ? `inde na Slovensku: ${d.inde_na_slovensku.join(', ').toLowerCase()}` : 'na Slovensku bez výstrah', 'ok');
+      return;
+    }
+    const naj = v[0];
+    karta('dnes-vystrahy', v.length === 1 ? naj.stupen : `${v.length} výstrahy`, [...new Set(v.map((x) => x.udalost))].join(', '), naj.farba);
+    const zoz = document.getElementById('dnes-vystrahy-zoznam')!;
+    zoz.innerHTML = v.map((x) => `<li data-stav="${x.farba}"><strong>${esc(x.udalost)}</strong> · ${esc(x.stupen)}
+      <span class="kedy">${cas(x.od)} – ${cas(x.do)}</span>${x.nadpis ? `<span class="popis">${esc(x.nadpis)}</span>` : ''}</li>`).join('');
+    zoz.hidden = false;
+  }).catch(() => karta('dnes-vystrahy', '–', 'údaje SHMÚ sú teraz nedostupné'));
+
+  fetch('/api/dunaj').then((r) => (r.ok ? r.json() : Promise.reject())).then((d) => {
+    const spa = d.spa ?? {};
+    const stupen = [3, 2, 1].find((s) => spa[s] && d.stav >= spa[s]);
+    const do1 = spa[1] ? spa[1] - d.stav : null;
+    karta('dnes-dunaj', `${d.stav} cm`,
+      `hladina ${d.trend}${d.teplota != null ? `, voda ${String(d.teplota).replace('.', ',')} °C` : ''}${stupen ? ` · ${stupen}. stupeň povodňovej aktivity` : do1 != null ? ` · ${do1} cm pod 1. stupňom` : ''}`,
+      stupen === 3 ? 'red' : stupen === 2 ? 'orange' : stupen === 1 ? 'yellow' : 'ok');
+  }).catch(() => karta('dnes-dunaj', '–', 'údaje SHMÚ sú teraz nedostupné'));
+
+  Promise.allSettled([uzavierky(), poruchy()]).then(([u, p]) => {
+    if (u.status === 'rejected' && p.status === 'rejected') return karta('dnes-cesty', '–', 'údaje mesta sú teraz nedostupné');
+    const uz = u.status === 'fulfilled' ? u.value.filter((o) => !o.planovana) : [];
+    const po = p.status === 'fulfilled' ? p.value : [];
+    const uplne = uz.filter((o) => o.uzavierka === 'úplná').length;
+    karta('dnes-cesty', String(uz.length + po.length),
+      `${uz.length} uzávierok${uplne ? ` (${uplne} úplných)` : ''}, ${po.length} porúch vedení`);
+  });
+</script>
+
+<style>
+  .dnes { margin-top: 16px; }
+  h2 { font-size: 1.1rem; margin: 24px 0 12px; }
+  .karty { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .karta { text-decoration: none; display: block; border-left: 4px solid var(--line); transition: border-color .15s; }
+  .karta:hover { border-color: var(--accent); }
+  .karta[data-stav='ok'] { border-left-color: #1a7f4b; }
+  .karta[data-stav='yellow'] { border-left-color: #e6b800; }
+  .karta[data-stav='orange'] { border-left-color: #f08c00; }
+  .karta[data-stav='red'] { border-left-color: #d0021b; }
+  .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .value { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin: 4px 0; font-variant-numeric: tabular-nums; }
+  .pozn { margin: 0; font-size: 0.85rem; color: var(--muted); }
+  .vystrahy-zoznam { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }
+  .vystrahy-zoznam :global(li) { background: var(--card); border: 1px solid var(--line); border-left: 4px solid #e6b800; border-radius: 10px; padding: 10px 14px; font-size: 0.9rem; }
+  .vystrahy-zoznam :global(li[data-stav='orange']) { border-left-color: #f08c00; }
+  .vystrahy-zoznam :global(li[data-stav='red']) { border-left-color: #d0021b; }
+  .vystrahy-zoznam :global(.kedy), .vystrahy-zoznam :global(.popis) { display: block; color: var(--muted); font-size: 0.82rem; }
+</style>
