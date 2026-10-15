@@ -101,15 +101,24 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   const mobil = window.innerWidth < 600;
 
   const mapa = L.map('mapa', { zoomSnap: 0.25, preferCanvas: true, scrollWheelZoom: !mobil });
-  const podklady: Record<string, L.TileLayer> = {
+  const podklady: Record<string, L.Layer> = {
     mapa: osmPodklad(),
-    // Letecká snímka Esri World Imagery (bez kľúča). Ortofoto ÚGKK cez WMS vracalo prázdne dlaždice.
-    orto: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      maxZoom: 19, attribution: 'Snímky © Esri, Maxar, Earthstar Geographics',
-    }),
+    // Letecká snímka Esri World Imagery (bez kľúča) + referenčné vrstvy s cestami a názvami.
+    orto: L.layerGroup(),
   };
+  const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/';
+  mapa.createPane('popisky');
+  const panePopisky = mapa.getPane('popisky')!;
+  panePopisky.style.zIndex = '450';
+  panePopisky.style.pointerEvents = 'none';
+  const snimka = L.tileLayer(`${ESRI}World_Imagery/MapServer/tile/{z}/{y}/{x}`, {
+    maxZoom: 19, attribution: 'Snímky © Esri, Maxar, Earthstar Geographics',
+  }).addTo(podklady.orto as L.LayerGroup);
+  for (const vrstva of ['Reference/World_Transportation', 'Reference/World_Boundaries_and_Places']) {
+    L.tileLayer(`${ESRI}${vrstva}/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 19, pane: 'popisky' }).addTo(podklady.orto as L.LayerGroup);
+  }
   let chyby = 0;
-  podklady.orto.on('tileerror', () => {
+  snimka.on('tileerror', () => {
     chyby += 1;
     if (chyby === 8) {
       const r = obal.querySelector<HTMLInputElement>('input[value=orto]')!;
@@ -194,7 +203,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   obal.querySelectorAll<HTMLInputElement>('input[name=podklad]').forEach((i) =>
     i.addEventListener('change', () => {
       Object.entries(podklady).forEach(([k, l]) => (k === i.value ? l.addTo(mapa) : l.remove()));
-      (podklady[i.value] as any).bringToBack();
+      (podklady[i.value] as any).bringToBack?.();
     }),
   );
   if (mobil) obal.querySelector('details')!.removeAttribute('open');
