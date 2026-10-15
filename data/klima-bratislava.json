@@ -98,6 +98,34 @@
    ],
    "zdroj": "https://data.bratislava.sk/datasets/074fc4b357f8479fa7bfd575479d6f1a"
   },
+  "citlivost_doprava": {
+   "nazov": "Citlivosť dopravnej infraštruktúry na zrážky",
+   "popis": "zraniteľnosť ciest a koľají pri prívalových dažďoch",
+   "buniek": 9570,
+   "min": 0.0,
+   "max": 1.0,
+   "hranice": [
+    0.076,
+    0.076,
+    0.1,
+    0.302
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/81ff5b48389448ec8770be66ac62f788"
+  },
+  "kapacita_budov_zrazky": {
+   "nazov": "Kapacita budov zvládnuť zrážky",
+   "popis": "schopnosť budov a okolia zadržať a odviesť dažďovú vodu (vyššie = lepšie)",
+   "buniek": 9570,
+   "min": 0.0,
+   "max": 1.0,
+   "hranice": [
+    0.36,
+    0.449,
+    0.521,
+    0.567
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/f99f75fbdb794d4a823d368976af8d0c"
+  },
   "kupaliska": {
    "nazov": "Dostupnosť kúpalísk",
    "popis": "normalizovaná dostupnosť kúpalísk a kúpania (vyššie = lepšia)",
@@ -127,5 +155,5 @@
   }
  },
  "chyby": [],
- "aktualizovane": "2026-10-15T16:57:22+00:00"
+ "aktualizovane": "2026-10-15T16:59:41+00:00"
 }

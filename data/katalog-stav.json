@@ -1,9 +1,9 @@
 {
  "zdroj": "https://data.bratislava.sk",
  "pocty": {
-  "katalog": 562,
-  "osobitne": 29,
-  "vynechane": 20,
+  "katalog": 559,
+  "osobitne": 34,
+  "vynechane": 19,
   "na_webe": 29
  },
  "datasety": [
@@ -2452,9 +2452,9 @@
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492691000,
    "riadkov": 703,
-   "stav": "katalog",
-   "kde": "/katalog/17666d9d24e34040ad91479bece42396",
-   "stlpcov": 9
+   "stav": "osobitne",
+   "kde": "/mapa",
+   "pozn": "Debarierizované chodníky"
   },
   {
    "id": "7f5b1dd29c2141489ca842a0c94e98e3",
@@ -3733,6 +3733,13 @@
    "stlpcov": 2
   },
   {
+   "id": "narodny-katalog-papsport",
+   "nazov": "papsport plochy all fin",
+   "kategoria": "Ostatné",
+   "stav": "vynechane",
+   "dovod": "Pracovný súbor bez popisu a dokumentácie, uvedený len v národnom katalógu data.slovensko.sk – na portáli mesta nie je."
+  },
+  {
    "id": "4617533936224bbd9db6e4236e61bb23",
    "nazov": "Centrálny register poskytovateľov sociálnych služieb v Bratislavskom kraji",
    "kategoria": "Sociálne služby",
@@ -3740,7 +3747,7 @@
    "riadkov": 1082,
    "stav": "katalog",
    "kde": "/katalog/4617533936224bbd9db6e4236e61bb23",
-   "stlpcov": 15
+   "stlpcov": 12
   },
   {
    "id": "a8ef3fba66c14f9aa6664ee8549dc2f7",
@@ -3748,9 +3755,9 @@
    "kategoria": "Sociálne služby",
    "upravene": 1771501281000,
    "riadkov": 13,
-   "stav": "katalog",
-   "kde": "/katalog/a8ef3fba66c14f9aa6664ee8549dc2f7",
-   "stlpcov": 6
+   "stav": "osobitne",
+   "kde": "/mapa",
+   "pozn": "Fixpointy na zber injekčných striekačiek"
   },
   {
    "id": "9aaaf6df96904c44ae3d5effb5d95ff7",
@@ -4267,7 +4274,7 @@
    "riadkov": 55,
    "stav": "katalog",
    "kde": "/katalog/0b7b17040f564283a59a4dcfd09649d2",
-   "stlpcov": 8
+   "stlpcov": 6
   },
   {
    "id": "ebd798f317fb4f658e95806fe518eceb",
@@ -4811,20 +4818,20 @@
    "nazov": "Zmluvy (stavebné práce) Magistrátu hlavného mesta SR Bratislava do 01.07.2021",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1783583527000,
-   "riadkov": 418,
+   "riadkov": 416,
    "stav": "katalog",
    "kde": "/katalog/e5913475e52f4a1389df12b4ca8b7b9e",
-   "stlpcov": 17
+   "stlpcov": 11
   },
   {
    "id": "3a6d0c8a990249318b79635cbb64cda7",
    "nazov": "Zmluvy (tovary a služby) Magistrátu hlavného mesta SR Bratislava do 01.07.2021",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1783583515000,
-   "riadkov": 2394,
+   "riadkov": 2363,
    "stav": "katalog",
    "kde": "/katalog/3a6d0c8a990249318b79635cbb64cda7",
-   "stlpcov": 17
+   "stlpcov": 11
   },
   {
    "id": "dec22cd06721435d81161b9067556c3a",
@@ -5920,9 +5927,9 @@
    "kategoria": "Zdravie",
    "upravene": 1785483613000,
    "riadkov": 35,
-   "stav": "katalog",
-   "kde": "/katalog/45f653d43e5c4840a44b7cbaf0161037",
-   "stlpcov": 9
+   "stav": "osobitne",
+   "kde": "/mapa#horucavy",
+   "pozn": "Ochladzovacie miesta (Ochlaď sa!)"
   },
   {
    "id": "72a51faf4a0540d983e3b4ff11b4e383",
@@ -6020,8 +6027,9 @@
    "kategoria": "Územný plán",
    "upravene": 1778155918000,
    "riadkov": 9570,
-   "stav": "vynechane",
-   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+   "stav": "osobitne",
+   "kde": "/mapa",
+   "pozn": "Klimatický atlas – citlivosť dopravnej infraštruktúry na zrážky"
   },
   {
    "id": "367d0139656e443590295dd3e15fa7f6",
@@ -6049,8 +6057,9 @@
    "kategoria": "Územný plán",
    "upravene": 1778137624000,
    "riadkov": 9570,
-   "stav": "vynechane",
-   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+   "stav": "osobitne",
+   "kde": "/mapa",
+   "pozn": "Klimatický atlas – kapacita budov na zrážky"
   },
   {
    "id": "55ce513738754ea6a834cb8fb831fba2",
@@ -6355,7 +6364,7 @@
    "upravene": 1778142450000,
    "riadkov": 436266,
    "stav": "vynechane",
-   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+   "dovod": "Zameranie verejnej zelene – 302 tisíc bodov (jednotlivé stromy a kry) je pre web príliš veľa; na mape ukazujeme výsadbu od 2019 a ošetrované dreviny."
   },
   {
    "id": "226e7387e1254981be3725a6c9330bb4",
@@ -6388,5 +6397,5 @@
    "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-10-15T16:47:48+00:00"
+ "aktualizovane": "2026-10-15T16:58:08+00:00"
 }
