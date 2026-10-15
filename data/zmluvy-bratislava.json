@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11730,
+ "pocet_spolu": 11737,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2118,
-   "suma": 337920406.55
+   "pocet": 2125,
+   "suma": 337923172.89
   }
  },
  "posledny_rok": {
-  "od": "2025-10-14",
+  "od": "2025-10-15",
   "suma_bez_ico": 72242.76,
   "dodavatelia": [
    {
@@ -62,12 +62,6 @@
     "nazov": "STRABAG s.r.o.",
     "pocet": 8,
     "suma": 9422275.94
-   },
-   {
-    "ico": "35943653",
-    "nazov": "Pittel + Brausewetter s.r.o.",
-    "pocet": 7,
-    "suma": 8410877.54
    },
    {
     "ico": "50614339",
@@ -122,6 +116,12 @@
     "nazov": "METRO Bratislava  a.s.",
     "pocet": 8,
     "suma": 1204031.04
+   },
+   {
+    "ico": "47144190",
+    "nazov": "Metrostav Slovakia a. s.",
+    "pocet": 2,
+    "suma": 1055181.15
    }
   ],
   "najvacsie": [
@@ -160,15 +160,6 @@
     "suma": 10455000.0,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600128"
-   },
-   {
-    "datum": "2025-10-15",
-    "dodavatel": "Pittel + Brausewetter s.r.o.",
-    "ico": "35943653",
-    "predmet": "Jedná sa o zmluvu o Dielo na realizáciu 1.B etapy projektu Živé námestie.",
-    "suma": 7728605.76,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500324"
    },
    {
     "datum": "2026-02-16",
@@ -304,8 +295,17 @@
     "suma": 969663.71,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600067"
+   },
+   {
+    "datum": "2026-09-22",
+    "dodavatel": "CITY STONE DESIGN s.r.o.",
+    "ico": "47978929",
+    "predmet": "RD MAGZBR2600207 - Výroba a dodávka bratislavskej dlažby",
+    "suma": 884985.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600207"
    }
   ]
  },
- "aktualizovane": "2026-10-14T22:16:46+00:00"
+ "aktualizovane": "2026-10-15T02:57:00+00:00"
 }
