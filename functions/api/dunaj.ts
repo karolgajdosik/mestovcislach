@@ -74,7 +74,12 @@ export const onRequestGet = async (ctx: any) => {
   try {
     const r = await fetch(STANICA, { headers: { 'User-Agent': 'mestovcislach.sk (github.com/karolgajdosik/mestovcislach)' } });
     if (!r.ok) throw new Error(`SHMÚ HTTP ${r.status}`);
-    const data = spracuj(await r.text());
+    const html = await r.text();
+    if (new URL(ctx.request.url).searchParams.has('ladenie')) {
+      const ser = seria(html, 'base_serie');
+      return new Response(JSON.stringify({ riadok: html.match(/h_datum_cas"\s*>\s*([\d.: ]+?)\s*</)?.[1], posledny: ser[ser.length - 1], offset: offsetBratislava(Date.now()), teraz: Date.now() }));
+    }
+    const data = spracuj(html);
     const odpoved = new Response(JSON.stringify(data), {
       headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': `public, max-age=${CACHE_S}` },
     });
