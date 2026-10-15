@@ -26,6 +26,14 @@ UA = "mestovcislach.sk (github.com/karolgajdosik/mestovcislach)"
 
 s = requests.Session()
 s.headers["User-Agent"] = UA
+# Opakovanie pri prerušenom spojení a dočasných chybách servera (štátne servery občas zhodia spojenie)
+from requests.adapters import HTTPAdapter  # noqa: E402
+from urllib3.util.retry import Retry  # noqa: E402
+
+_opakovanie = HTTPAdapter(max_retries=Retry(total=4, connect=4, read=4, backoff_factor=5, status_forcelist=(502, 503, 504),
+                                            allowed_methods=frozenset({"GET", "HEAD"}), raise_on_status=False))
+s.mount("https://", _opakovanie)
+s.mount("http://", _opakovanie)
 
 # LAU2 kódy mestských častí v registri adries (data.slovensko.sk, „Adresy v obci Bratislava-…“)
 LAU_ADRESY = {
