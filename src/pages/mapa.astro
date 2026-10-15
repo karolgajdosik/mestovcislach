@@ -81,7 +81,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
     Zdroje: mestské časti, pamiatky, chránené stromy, cyklotrasy, lekárne, zdravotníctvo a nabíjanie © prispievatelia
     <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> (ODbL); zastávky MHD, BAjk a čierne skládky –
     <a href="https://data.bratislava.sk">data.bratislava.sk</a> (CC BY 4.0); chránené územia a Natura 2000 –
-    <a href="https://www.eea.europa.eu/en/datahub">EEA</a>; letecká snímka – © <a href="https://www.geoportal.sk">ÚGKK SR</a> (ZBGIS);
+    <a href="https://www.eea.europa.eu/en/datahub">EEA</a>; letecká snímka – © Esri, Maxar, Earthstar Geographics;
     podkladová mapa © prispievatelia OpenStreetMap. Údaje z OSM nie sú oficiálne registre a nemusia byť úplné.
   </p>
 </Base>
@@ -103,21 +103,18 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
   const mapa = L.map('mapa', { zoomSnap: 0.25, preferCanvas: true, scrollWheelZoom: !mobil });
   const podklady: Record<string, L.TileLayer> = {
     mapa: osmPodklad(),
-    orto: L.tileLayer.wms('https://zbgisws.skgeodesy.sk/zbgis_ortofoto_wms/service.svc/get', {
-      layers: '1', format: 'image/jpeg', maxZoom: 20, attribution: '© ÚGKK SR (ZBGIS), CC BY 4.0',
+    // Letecká snímka Esri World Imagery (bez kľúča). Ortofoto ÚGKK cez WMS vracalo prázdne dlaždice.
+    orto: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 19, attribution: 'Snímky © Esri, Maxar, Earthstar Geographics',
     }),
   };
-  // Poistka: ak služba nevráti dlaždice pre vrstvu „1“, skúsi „0“; inak voľbu vypne.
   let chyby = 0;
   podklady.orto.on('tileerror', () => {
     chyby += 1;
-    if (chyby === 4 && (podklady.orto as L.TileLayer.WMS).wmsParams.layers === '1') {
-      chyby = 0;
-      (podklady.orto as L.TileLayer.WMS).setParams({ layers: '0' } as any);
-    } else if (chyby === 8) {
+    if (chyby === 8) {
       const r = obal.querySelector<HTMLInputElement>('input[value=orto]')!;
       r.disabled = true;
-      r.parentElement!.title = 'Letecká snímka ÚGKK je momentálne nedostupná';
+      r.parentElement!.title = 'Letecká snímka je momentálne nedostupná';
       obal.querySelector<HTMLInputElement>('input[value=mapa]')!.click();
     }
   });
