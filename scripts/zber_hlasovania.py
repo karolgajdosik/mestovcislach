@@ -116,7 +116,7 @@ def main() -> int:
                 hlasy[meno] = (v, klub or "neuvedený klub")
             k = (w["obdobie"], w["datum"], w["poradie"])
             hlasovania[k] = {"obdobie": w["obdobie"], "zasadnutie": w["datum"], "poradie": w["poradie"], "datum": w["datum"], "cas": "",
-                             "bod": re.sub(r"\s+", " ", w["bod"]).strip()[:300], "hlasy": hlasy}
+                             "bod": re.sub(r"\s+", " ", w["bod"] + (f" ({w['poznamka']})" if w.get("poznamka") else "")).strip()[:300], "hlasy": hlasy}
             z_webu += 1
         print(f"Z webu zastupiteľstva: {z_webu} hlasovaní od {posledne}; nespárovaní: {dict(nesparovani)}")
     except Exception as e:  # noqa: BLE001

@@ -65,6 +65,7 @@ def parsuj_hlasovania(html: str) -> list[dict]:
         c = re.search(r"Hlasovanie číslo\s*(\d+)", blok)
         if not m or not c:
             continue
+        pozn = re.search(r"<h6><b>Poznámka:</b>\s*([^<]*)</h6>", blok)
         uz = re.search(r'<h6><b>Uznesenie:</b>\s*<a href="([^"]*)">([^<]*)</a>', blok)
         hlasy: dict[str, list] = {}
         casti = re.split(r'<div class="panel-heading"><span class="fa [^"]*"></span>', blok)[1:]
@@ -76,7 +77,7 @@ def parsuj_hlasovania(html: str) -> list[dict]:
                 hlasy[pid] = [kod, meno(nm)]
         bod = re.search(r"/bod-(\d+)/", uz.group(1)) if uz else None
         vysl.append({"id": m.group(1), "cislo": int(c.group(1)), "uznesenie": unescape(uz.group(2)).strip() if uz else None,
-                     "bod": int(bod.group(1)) if bod else None, "hlasy": hlasy})
+                     "bod": int(bod.group(1)) if bod else None, "poznamka": unescape(pozn.group(1)).strip() if pozn else None, "hlasy": hlasy})
     return vysl
 
 
@@ -97,17 +98,19 @@ def zoznam_zasadnuti(vol_obd: str) -> list[tuple[str, str]]:
 def zasadnutie(url: str) -> dict:
     prva = get(url)
     hlasovania: dict[str, dict] = {}
-    for h in parsuj_hlasovania(prva):
-        hlasovania[h["id"]] = h
-    strany = sorted({int(p) for p in re.findall(r'href="' + re.escape(url) + r'\?page=(\d+)"', prva)})
-    for p in range(1, (max(strany) if strany else 0) + 30):
-        nove = [h for h in parsuj_hlasovania(get(f"{url}?page={p}")) if h["id"] not in hlasovania]
-        if not nove:
-            break
-        for h in nove:
-            hlasovania[h["id"]] = h
+    # Karta „Hlasovania“ si pamätá zvolenú kartu v session (PHPSESSID): najprv ?rokovanie_tab_X=2, potom ?page=1, 2…
+    # (?page=N bez predošlého zvolenia karty vracia program, s parametrom karty vždy prvú stranu)
+    tab = re.search(r"rokovanie_tab_(\d+)=", prva)
+    if tab:
+        strana = get(f"{url}?rokovanie_tab_{tab.group(1)}=2")
+        for p in range(1, 40):
+            nove = [h for h in parsuj_hlasovania(strana) if h["id"] not in hlasovania]
+            if not nove:
+                break
+            for h in nove:
+                hlasovania[h["id"]] = h
+            strana = get(f"{url}?page={p}")
     # body programu: názov bodu a hlasovania k nemu
-    tab = re.search(r"rokovanie_tab_(\d+)=4", prva)
     program = get(f"{url}?rokovanie_tab_{tab.group(1)}=4") if tab else prva
     body = sorted({int(b) for b in re.findall(re.escape(url.replace(BASE, "")) + r"bod-(\d+)/", program + prva)}
                   | {h["bod"] for h in hlasovania.values() if h["bod"] is not None})
@@ -122,7 +125,7 @@ def zasadnutie(url: str) -> dict:
                 hlasovania.setdefault(h["id"], h)["bod"] = b
     for h in hlasovania.values():
         h["nazov"] = nazvy.get(h["bod"]) if h["bod"] is not None else "Procedurálne hlasovanie (mimo bodu programu)"
-    return {"url": url, "body": len(body), "hlasovania": sorted(hlasovania.values(), key=lambda h: h["cislo"])}
+    return {"url": url, "verzia": 2, "body": len(body), "hlasovania": sorted(hlasovania.values(), key=lambda h: h["cislo"])}
 
 
 def hlasovania_z_webu(od: str) -> tuple[list[dict], list[dict]]:
@@ -138,7 +141,8 @@ def hlasovania_z_webu(od: str) -> tuple[list[dict], list[dict]]:
             z = cache["zasadnutia"].get(url)
             # zasadnutie sa môže dopĺňať ešte niekoľko týždňov po konaní
             cerstve = (date.fromisoformat(dnes) - date.fromisoformat(d)).days < 30
-            if not z or not z["hlasovania"] or cerstve:
+            neuplne = z and z.get("verzia") != 2  # verzia 2: úplné stránkovanie a poznámky
+            if not z or not z["hlasovania"] or cerstve or neuplne:
                 try:
                     z = zasadnutie(url)
                     print(f"  {d}: {len(z['hlasovania'])} hlasovaní, {z['body']} bodov")
@@ -148,7 +152,7 @@ def hlasovania_z_webu(od: str) -> tuple[list[dict], list[dict]]:
                     if not z:
                         continue
             for h in z["hlasovania"]:
-                vysl.append({"obdobie": obd, "datum": d, "poradie": h["cislo"], "bod": h["nazov"] or "", "uznesenie": h.get("uznesenie"),
+                vysl.append({"obdobie": obd, "datum": d, "poradie": h["cislo"], "bod": h["nazov"] or "", "uznesenie": h.get("uznesenie"), "poznamka": h.get("poznamka"),
                              "hlasy": {m: k for k, m in h["hlasy"].values()}, "url": url})
     cache["aktualizovane"] = datetime.now().isoformat(timespec="seconds")
     CACHE.write_text(json.dumps(cache, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
