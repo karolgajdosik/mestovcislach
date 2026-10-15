@@ -1,0 +1,198 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+
+const nacitaj = (subor: string) => {
+  const p = path.join(process.cwd(), 'data', subor);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+};
+const mhd = nacitaj('doprava-bratislava.json');
+const stat = nacitaj('doprava-statistiky-bratislava.json');
+const hranice = nacitaj('hranice-bratislava.geojson');
+const obyv = nacitaj('obyvatelstvo-bratislava.json');
+
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const datum = (d: string) => new Date(d).toLocaleDateString('sk-SK', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+const plat = (s: string) => s && `${s.slice(6, 8)}. ${s.slice(4, 6)}. ${s.slice(0, 4)}`.replace(/^0/, '').replace(/ 0/, ' ');
+
+// Názvy mestských častí podľa ŠÚ SR (OSM má niektoré odlišné).
+const nazvy = new Map<string, string>((obyv?.mestske_casti ?? []).map((c: any) => [c.kod.slice(-6), c.nazov_kratky]));
+const casti = (mhd?.mestske_casti ?? []).map((c: any) => ({ ...c, nazov: nazvy.get(c.kod_obce) ?? c.nazov }))
+  .sort((a: any, b: any) => b.odchody - a.odchody);
+
+const linkySpolu = mhd ? Object.values(mhd.mesto.linky as Record<string, number>).reduce((a, b) => a + b, 0) : 0;
+const cest = stat?.cestujuci?.rocne as Record<string, number> | undefined;
+const cestRoky = cest ? Object.keys(cest).sort() : [];
+const cestPosl = cestRoky[cestRoky.length - 1];
+const cestPred = cestRoky[cestRoky.length - 2];
+
+const mapa = mhd && hranice ? JSON.stringify({
+  hranice: { type: 'FeatureCollection', features: hranice.features.map((f: any) => ({ type: 'Feature', geometry: f.geometry, properties: {} })) },
+  zastavky: mhd.zastavky.map((z: any) => [z.lat, z.lon, z.nazov, z.odchody, z.linky.join(', ')]),
+}) : '';
+const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) => cest[r]) }) : '';
+---
+<Base title="Doprava v Bratislave – mestovcislach.sk" description="MHD v Bratislave: zastávky, odchody a linky podľa cestovných poriadkov a počet prepravených cestujúcich.">
+  <section class="hero">
+    <p class="kicker">Bratislava</p>
+    <h1>Doprava</h1>
+    <p class="lead">Mestská hromadná doprava podľa aktuálnych cestovných poriadkov Dopravného podniku Bratislava.</p>
+  </section>
+
+  {!mhd ? <div class="card"><p>Dáta sa pripravujú.</p></div> : (
+    <div id="doprava" data-mapa={mapa} data-cest={grafCest}>
+      <section class="kpis">
+        <div class="card kpi">
+          <p class="label">Zastávky MHD</p>
+          <p class="value">{fmt(mhd.mesto.zastavky)}</p>
+          <p class="delta">v Bratislave, nástupištia zlúčené</p>
+        </div>
+        <div class="card kpi">
+          <p class="label">Odchody za pracovný deň</p>
+          <p class="value">{fmt(mhd.mesto.odchody)}</p>
+          <p class="delta">zo všetkých zastávok spolu</p>
+        </div>
+        <div class="card kpi">
+          <p class="label">Linky</p>
+          <p class="value">{linkySpolu}</p>
+          <p class="delta">{Object.entries(mhd.mesto.linky).map(([d, n]) => `${d.toLowerCase()} ${n}`).join(' · ')}</p>
+        </div>
+        {cest && (
+          <div class="card kpi">
+            <p class="label">Cestujúci za rok {cestPosl}</p>
+            <p class="value">{(cest[cestPosl] / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} mil.</p>
+            <p class={cest[cestPosl] >= cest[cestPred] ? 'delta up' : 'delta down'}>
+              {cest[cestPosl] >= cest[cestPred] ? '+' : '−'}{Math.abs(100 * (cest[cestPosl] / cest[cestPred] - 1)).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} % oproti {cestPred}
+            </p>
+          </div>
+        )}
+      </section>
+
+      {mapa && (
+        <section class="card">
+          <h2>Mapa zastávok</h2>
+          <div id="mapa-mhd" role="img" aria-label="Mapa zastávok MHD podľa počtu odchodov"></div>
+          <p class="zdroj">Veľkosť bodu = počet odchodov za deň. Ťuknite na zastávku pre linky. Podklad © OpenStreetMap, © CARTO.</p>
+        </section>
+      )}
+
+      <section class="card">
+        <h2>Mestské časti</h2>
+        <div class="tabulka-obal">
+          <table>
+            <thead><tr><th>Mestská časť</th><th class="num">Zastávky</th><th class="num">Linky</th><th class="num">Odchody za deň</th><th class="num">na 1 000 obyv.</th></tr></thead>
+            <tbody>
+              {casti.map((c: any) => (
+                <tr><td>{c.nazov}</td><td class="num">{c.zastavky}</td><td class="num">{c.linky}</td><td class="num">{fmt(c.odchody)}</td><td class="num">{c.odchody_na_1000 != null ? fmt(Math.round(c.odchody_na_1000)) : '–'}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="zdroj">Zastávka patrí do mestskej časti podľa polohy. Prestupné uzly v centre majú veľa odchodov aj vďaka ľuďom z iných častí mesta.</p>
+      </section>
+
+      <section class="card">
+        <h2>Najvyťaženejšie zastávky</h2>
+        <ol class="zastavky">
+          {mhd.zastavky.slice(0, 10).map((z: any) => (
+            <li><span class="meno">{z.nazov}</span><span class="pocet">{fmt(z.odchody)} odchodov</span><span class="linky">linky {z.linky.join(', ')}</span></li>
+          ))}
+        </ol>
+      </section>
+
+      {cest && (
+        <section class="card">
+          <h2>Prepravení cestujúci podľa rokov</h2>
+          <div class="chart"><canvas id="g-cest" role="img" aria-label="Počet prepravených cestujúcich MHD podľa rokov"></canvas></div>
+          <p class="zdroj">Zdroj: <a href={stat.cestujuci.zdroj.url}>{stat.cestujuci.zdroj.nazov}</a>, data.bratislava.sk, licencia {stat.cestujuci.zdroj.licencia ?? 'CC BY 4.0'}.</p>
+        </section>
+      )}
+
+      <p class="zdroj">
+        Cestovné poriadky: <a href={mhd.zdroj.url}>{mhd.zdroj.nazov}</a> (Dopravný podnik Bratislava, data.bratislava.sk, licencia {mhd.zdroj.licencia}),
+        platné {plat(mhd.platnost.od)} – {plat(mhd.platnost.do)}. Počty sú za {datum(mhd.den)} ako typický pracovný deň.
+      </p>
+    </div>
+  )}
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const el = document.getElementById('doprava');
+  const css = getComputedStyle(document.documentElement);
+  const accent = css.getPropertyValue('--accent').trim();
+  const muted = css.getPropertyValue('--muted').trim();
+  const line = css.getPropertyValue('--line').trim();
+  const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const fmt = (n: number) => n.toLocaleString('sk-SK');
+
+  if (el?.dataset.mapa) {
+    const d = JSON.parse(el.dataset.mapa);
+    const mapa = L.map('mapa-mhd', { scrollWheelZoom: false, zoomSnap: 0.25, preferCanvas: true });
+    L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_all/{z}/{x}/{y}{r}.png`, {
+      maxZoom: 18, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
+    }).addTo(mapa);
+    const hranice = L.geoJSON(d.hranice, { style: { weight: 1, color: muted, fill: false, opacity: 0.6 }, interactive: false }).addTo(mapa);
+    mapa.fitBounds(hranice.getBounds(), { padding: [8, 8] });
+    const max = Math.max(...d.zastavky.map((z: any[]) => z[3]));
+    // od najmenších, aby veľké uzly boli navrchu
+    [...d.zastavky].reverse().forEach(([lat, lon, nazov, odchody, linky]: [number, number, string, number, string]) => {
+      L.circleMarker([lat, lon], {
+        radius: (window.innerWidth < 600 ? 1.5 : 2.5) + (window.innerWidth < 600 ? 6.5 : 11) * Math.sqrt(odchody / max),
+        color: tmava ? '#121417' : '#ffffff', weight: 0.8,
+        fillColor: accent, fillOpacity: 0.75,
+      }).bindPopup(`<strong>${nazov}</strong><br>${fmt(odchody)} odchodov za deň<br><span style="color:${muted}">linky ${linky}</span>`)
+        .bindTooltip(nazov, { direction: 'top' })
+        .addTo(mapa);
+    });
+  }
+
+  if (el?.dataset.cest) {
+    const g = JSON.parse(el.dataset.cest);
+    Chart.defaults.color = muted;
+    Chart.defaults.borderColor = line;
+    Chart.defaults.font.family = css.getPropertyValue('--font');
+    new Chart(document.getElementById('g-cest') as HTMLCanvasElement, {
+      type: 'bar',
+      data: { labels: g.roky, datasets: [{ data: g.data, backgroundColor: accent, borderRadius: 3 }] },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ` ${(c.parsed.y / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} mil. cestujúcich` } } },
+        scales: { x: { grid: { display: false } }, y: { ticks: { callback: (v) => (Number(v) / 1e6).toLocaleString('sk-SK') + ' mil.' } } },
+      },
+    });
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 24px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  h2 { font-size: 1.1rem; margin: 0 0 16px; }
+  section.card { margin-top: 16px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; font-variant-numeric: tabular-nums; }
+  .delta { margin: 0; font-size: 0.85rem; color: var(--muted); }
+  .delta.up { color: #1a7f4b; }
+  .delta.down { color: var(--accent); }
+  @media (prefers-color-scheme: dark) { .delta.up { color: #4cc38a; } }
+  #mapa-mhd { height: 460px; border-radius: 10px; overflow: hidden; background: var(--bg); }
+  @media (max-width: 600px) { #mapa-mhd { height: 380px; } }
+  .chart { position: relative; height: 280px; }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .zastavky { margin: 0; padding-left: 1.4em; }
+  .zastavky li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .zastavky .meno { font-weight: 600; }
+  .zastavky .pocet { float: right; font-variant-numeric: tabular-nums; }
+  .zastavky .linky { display: block; color: var(--muted); font-size: 0.82rem; }
+</style>
