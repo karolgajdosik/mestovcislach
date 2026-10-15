@@ -71,7 +71,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
         <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-0)"></i>Lekárne</p><p class="value">{fmt(vyb.mesto.lekarne)}</p></div>
         <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-2)"></i>Nemocnice a polikliniky</p><p class="value">{fmt(vyb.mesto.nemocnice)}</p></div>
         <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-3)"></i>Nabíjacie stanice</p><p class="value">{fmt(vyb.mesto.nabijanie)}</p><p class="delta">{fmt(vyb.mesto.nabijacie_miesta)} nabíjacích miest</p></div>
-        {vyb.mesto.pamiatky != null && <div class="card kpi"><p class="label">Kultúrne pamiatky v OSM</p><p class="value">{fmt(vyb.mesto.pamiatky)}</p><p class="delta">a {fmt(vyb.mesto.stromy)} chránených stromov · <a href="/mapa">na mape</a></p></div>}
+        {vyb.mesto.pamiatky != null && <div class="card kpi"><p class="label">Kultúrne pamiatky v OSM</p><p class="value">{fmt(vyb.mesto.pamiatky)}</p><p class="delta">a {fmt(vyb.mesto.stromy)} chránených stromov. Len zlomok – úplný register vedie <a href="https://www.pamiatky.sk">Pamiatkový úrad SR</a>, ktorý ho strojovo nesprístupňuje. <a href="/mapa">Na mape</a></p></div>}
       </section>
 
       <section class="card" id="vybavenost">

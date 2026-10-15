@@ -73,7 +73,7 @@ def stiahni() -> dict:
                 chyby.append(f"{server}: prázdne")
             except Exception as e:  # noqa: BLE001
                 chyby.append(f"{server}: {type(e).__name__}")
-            time.sleep(10)
+            time.sleep(45)
     raise RuntimeError("Overpass neodpovedal: " + "; ".join(chyby))
 
 
