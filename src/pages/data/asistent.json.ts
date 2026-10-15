@@ -95,7 +95,9 @@ export async function GET() {
   if (nez) {
     temy.nezamestnanost = {
       nazov: 'Nezamestnanosť v okresoch Bratislava I–V (ŠÚ SR, k 31. 12.)', stranka: '/obyvatelia#nezamestnanost',
-      fakty: { okresy_a_mestske_casti: nez.okresy_mc, ...Object.fromEntries(Object.entries<any>(nez.ukazovatele).filter(([k]) => /miera|disponib/i.test(k))
+      fakty: { okresy_a_mestske_casti: nez.okresy_mc,
+        mesacne_upsvr_pdu_a_pocet_uchadzacov: Object.fromEntries(Object.entries<any>(nez.mesacne ?? {}).slice(-13).map(([k, v]) => [k, Object.fromEntries(Object.entries<any>(v).map(([u, x]) => [u, `PDU ${x.pdu} %, uchádzači ${x.uoz}`]))])),
+        ...Object.fromEntries(Object.entries<any>(nez.ukazovatele).filter(([k]) => /miera|disponib/i.test(k))
         .map(([k, v]) => [k, Object.fromEntries(Object.entries<any>(v).map(([u, r]) => [u, Object.fromEntries(Object.entries<any>(r).filter(([y]) => Number(y) >= 2015))]))])) },
     };
   }
