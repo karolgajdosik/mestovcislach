@@ -19,8 +19,8 @@ HUB = "https://data.bratislava.sk/api/search/v1/collections/dataset/items"
 ITEM = "https://www.arcgis.com/sharing/rest/content/items/{}"
 
 
-def zoznam() -> list[dict]:
-    polozky, url, params = [], HUB, {"limit": 100}
+def prechod(params: dict) -> list[dict]:
+    polozky, url, params = [], HUB, {"limit": 100, **params}
     while url:
         r = s.get(url, params=params, timeout=120)
         r.raise_for_status()
@@ -33,6 +33,22 @@ def zoznam() -> list[dict]:
         url = next((l["href"] for l in j.get("links", []) if l.get("rel") == "next"), None)
         params = None
     return polozky
+
+
+def zoznam() -> list[dict]:
+    """Stránkovanie Hubu nie je stabilné (položky sa medzi stránkami presúvajú) – zlúčime viac prechodov s rôznym triedením."""
+    vsetky: dict[str, dict] = {}
+    for params in ({}, {"sortby": "properties.title"}, {"sortby": "-properties.title"}, {"sortby": "properties.modified"}, {"sortby": "-properties.modified"}):
+        try:
+            p = prechod(params)
+        except Exception as e:  # noqa: BLE001
+            print(f"Prechod {params}: {e}")
+            continue
+        nove = sum(1 for x in p if x["id"] not in vsetky)
+        for x in p:
+            vsetky.setdefault(x["id"], x)
+        print(f"Prechod {params or 'predvolený'}: {len(p)} položiek, {len({x['id'] for x in p})} unikátnych, nových {nove}; spolu {len(vsetky)}")
+    return list(vsetky.values())
 
 
 def detail(p: dict) -> dict:
