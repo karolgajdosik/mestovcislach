@@ -31,6 +31,8 @@ const mapa = mhd && hranice ? JSON.stringify({
   hranice: { type: 'FeatureCollection', features: hranice.features.map((f: any) => ({ type: 'Feature', geometry: f.geometry, properties: {} })) },
   zastavky: mhd.zastavky.map((z: any) => [z.lat, z.lon, z.nazov, z.odchody, z.linky.join(', ')]),
 }) : '';
+const cyklo = nacitaj('cyklo-bratislava.json');
+const km1 = (n: number) => n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' km';
 const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) => cest[r]) }) : '';
 ---
 <Base title="Doprava v Bratislave – mestovcislach.sk" description="MHD v Bratislave: zastávky, odchody a linky podľa cestovných poriadkov a počet prepravených cestujúcich.">
@@ -115,6 +117,51 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
       </p>
     </div>
   )}
+
+  {cyklo && (
+    <div id="cyklo">
+      <h2 class="sekcia">Cyklistická infraštruktúra</h2>
+      <section class="kpis">
+        <div class="card kpi">
+          <p class="label">Spolu v Bratislave</p>
+          <p class="value">{fmt(Math.round(cyklo.mesto.km_spolu))} km</p>
+          <p class="delta">cyklocestičky, spoločné chodníky a cyklopruhy</p>
+        </div>
+        {Object.entries(cyklo.kategorie).map(([k, nazov], i) => (
+          <div class="card kpi">
+            <p class="label"><i class="bod" style={`background:var(--cyklo-${i})`}></i>{nazov as string}</p>
+            <p class="value">{fmt(Math.round(cyklo.mesto.km[k]))} km</p>
+          </div>
+        ))}
+      </section>
+
+      <section class="card">
+        <h3>Mapa cyklotrás</h3>
+        <div id="mapa-cyklo" role="img" aria-label="Mapa cyklistickej infraštruktúry v Bratislave"></div>
+        <div class="legenda-cyklo">
+          {Object.values(cyklo.kategorie).map((nazov, i) => <span><i style={`background:var(--cyklo-${i})`}></i>{nazov as string}</span>)}
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Mestské časti</h3>
+        <div class="tabulka-obal">
+          <table>
+            <thead><tr><th>Mestská časť</th><th class="num">Spolu</th><th class="num">Cyklocestičky</th><th class="num">Cyklopruhy</th><th class="num">km na km²</th></tr></thead>
+            <tbody>
+              {cyklo.mestske_casti.map((c: any) => (
+                <tr><td>{c.nazov}</td><td class="num">{km1(c.km_spolu)}</td><td class="num">{km1(c.km.cyklocesticka)}</td><td class="num">{km1(c.km.cyklopruh)}</td><td class="num">{c.km_na_km2?.toLocaleString('sk-SK', { maximumFractionDigits: 2 })}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="zdroj">
+          Zdroj: © <a href={cyklo.zdroj.url}>prispievatelia OpenStreetMap</a> (ODbL), stav {new Date(cyklo.zdroj.stav_osm).toLocaleDateString('sk-SK')}.
+          Nejde o oficiálnu evidenciu mesta – údaje závisia od toho, čo dobrovoľníci zmapovali. Obojsmerné trasy zakreslené dvakrát (po oboch stranách cesty) sa rátajú dvakrát.
+        </p>
+      </section>
+    </div>
+  )}
 </Base>
 
 <script>
@@ -149,6 +196,29 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
         .bindTooltip(nazov, { direction: 'top' })
         .addTo(mapa);
     });
+  }
+
+  // Cyklotrasy: GeoJSON sa načíta až keď je mapa blízko obrazovky.
+  const cykloEl = document.getElementById('mapa-cyklo');
+  if (cykloEl) {
+    const farby = [0, 1, 2].map((i) => css.getPropertyValue(`--cyklo-${i}`).trim());
+    const poradie = ['cyklocesticka', 'spolocna', 'cyklopruh'];
+    const vykresli = async () => {
+      const mapa = L.map(cykloEl, { scrollWheelZoom: false, zoomSnap: 0.25 });
+      L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tmava ? 'dark' : 'light'}_all/{z}/{x}/{y}{r}.png`, {
+        maxZoom: 18, subdomains: 'abcd', attribution: '© OpenStreetMap, © CARTO',
+      }).addTo(mapa);
+      mapa.setView([48.15, 17.11], 11.5);
+      const geo = await (await fetch('/data/cyklotrasy-bratislava.geojson')).json();
+      const vrstva = L.geoJSON(geo, {
+        style: (f: any) => ({ color: farby[poradie.indexOf(f.properties.k)] || muted, weight: 2.5, opacity: 0.9 }),
+        interactive: false,
+      }).addTo(mapa);
+      mapa.fitBounds(vrstva.getBounds(), { padding: [8, 8] });
+    };
+    new IntersectionObserver((e, o) => {
+      if (e[0].isIntersecting) { o.disconnect(); vykresli(); }
+    }, { rootMargin: '300px' }).observe(cykloEl);
   }
 
   if (el?.dataset.cest) {
@@ -190,6 +260,14 @@ const grafCest = cest ? JSON.stringify({ roky: cestRoky, data: cestRoky.map((r) 
   th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
   th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
   .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  :global(:root) { --cyklo-0: #1f6fd1; --cyklo-1: #138a5e; --cyklo-2: #d97706; }
+  @media (prefers-color-scheme: dark) { :global(:root) { --cyklo-0: #7cc4ff; --cyklo-1: #6ee7b7; --cyklo-2: #ffc44d; } }
+  h2.sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 48px 0 16px; }
+  h3 { font-size: 1.05rem; margin: 0 0 14px; }
+  #mapa-cyklo { height: 460px; border-radius: 10px; overflow: hidden; background: var(--bg); }
+  @media (max-width: 600px) { #mapa-cyklo { height: 380px; } }
+  .legenda-cyklo { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; font-size: 0.82rem; color: var(--muted); }
+  .legenda-cyklo i, .bod { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 6px; vertical-align: 3px; }
   .zastavky { margin: 0; padding-left: 1.4em; }
   .zastavky li { padding: 8px 0; border-bottom: 1px solid var(--line); }
   .zastavky .meno { font-weight: 600; }

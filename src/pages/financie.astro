@@ -41,6 +41,21 @@ if (rozpocet) {
   };
 }
 const z = zmluvy?.posledny_rok;
+
+// Majetok: názvy a rozlohy mestských častí pre podiel pozemkov.
+const majetok = nacitaj('majetok-bratislava.json');
+const hranice = nacitaj('hranice-bratislava.geojson');
+const obyv = nacitaj('obyvatelstvo-bratislava.json');
+const nazvyMc = new Map<string, string>((obyv?.mestske_casti ?? []).map((c: any) => [c.kod.slice(-6), c.nazov_kratky]));
+const rozlohy = new Map<string, number>((hranice?.features ?? []).map((f: any) => [f.properties.kod_obce, f.properties.rozloha_km2]));
+const rozlohaSpolu = [...rozlohy.values()].reduce((a, b) => a + b, 0);
+const podielRozlohy = majetok && rozlohaSpolu ? Math.round(majetok.spolu.vymera_ha / (rozlohaSpolu * 100) * 100) : null;
+const majetokCasti = (majetok?.mestske_casti ?? []).map((c: any) => ({
+  ...c,
+  nazov: nazvyMc.get(c.kod_obce) ?? c.kod_obce,
+  podiel: rozlohy.get(c.kod_obce) ? (100 * c.vymera_ha) / (rozlohy.get(c.kod_obce)! * 100) : null,
+}));
+const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) => d.nazov), data: majetok.druhy.map((d: any) => d.vymera_ha) }) : '';
 ---
 <Base title="Financie Bratislavy – mestovcislach.sk" description="Rozpočet hlavného mesta Bratislavy podľa záverečného účtu a zmluvy magistrátu.">
   <section class="hero">
@@ -50,7 +65,7 @@ const z = zmluvy?.posledny_rok;
   </section>
 
   {!r ? <div class="card"><p>Dáta sa pripravujú.</p></div> : (
-    <div id="financie" data-graf={r.graf}>
+    <div id="financie" data-graf={r.graf} data-poz={grafPoz}>
       <section class="kpis">
         <div class="card kpi">
           <p class="label">Príjmy {r.rok}</p>
@@ -97,6 +112,49 @@ const z = zmluvy?.posledny_rok;
         ({r.zdroje.map((s: any, i: number) => <>{i > 0 && ', '}<a href={s.url}>{s.nazov.replace(' mesta Bratislava', '').replace(' zo záverečného účtu', '').replace(' podľa záverečného účtu', '')}</a></>)}).
         Licencia CC BY 4.0.
       </p>
+
+      {majetok && (
+        <>
+          <h2 class="sekcia">Majetok mesta: pozemky</h2>
+          <section class="kpis">
+            <div class="card kpi">
+              <p class="label">Pozemky vo vlastníctve mesta</p>
+              <p class="value">{fmt(Math.round(majetok.spolu.vymera_ha))} ha</p>
+              <p class="delta">{fmt(majetok.spolu.parcely)} parciel · približne {podielRozlohy} % rozlohy Bratislavy</p>
+            </div>
+            {majetok.sprava.map((s: any) => (
+              <div class="card kpi">
+                <p class="label">{s.nazov === 'zverený' ? 'Zverené do správy' : 'Spravuje priamo mesto'}</p>
+                <p class="value">{fmt(Math.round(s.vymera_ha))} ha</p>
+                <p class="delta">{s.nazov === 'zverený' ? 'mestským častiam a mestským organizáciám' : 'magistrát'} · {fmt(s.parcely)} parciel</p>
+              </div>
+            ))}
+          </section>
+
+          <section class="card">
+            <h3>Druhy pozemkov</h3>
+            <div class="chart"><canvas id="g-druhy-poz" role="img" aria-label="Výmera mestských pozemkov podľa druhu"></canvas></div>
+          </section>
+
+          <section class="card">
+            <h3>Kde mesto vlastní pozemky</h3>
+            <div class="tabulka-obal">
+              <table>
+                <thead><tr><th>Mestská časť</th><th class="num">Parcely</th><th class="num">Výmera</th><th class="num">Podiel z rozlohy MČ</th></tr></thead>
+                <tbody>
+                  {majetokCasti.map((c: any) => (
+                    <tr><td>{c.nazov}</td><td class="num">{fmt(c.parcely)}</td><td class="num">{fmt(Math.round(c.vymera_ha))} ha</td><td class="num">{c.podiel != null ? `${c.podiel.toLocaleString('sk-SK', { maximumFractionDigits: 0 })} %` : '–'}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="zdroj">
+              Stav k 31. 12. 2025. Výmera zahŕňa aj {fmt(majetok.spolu.spoluvlastnictvo)} parciel v spoluvlastníctve (započítané celou výmerou) a parcely registra C aj E,
+              preto je súčet len orientačný. Mestské časti podľa katastrálnych území. Zdroj: <a href={majetok.zdroj.url}>{majetok.zdroj.nazov}</a>, data.bratislava.sk, licencia {majetok.zdroj.licencia ?? 'CC BY 4.0'}.
+            </p>
+          </section>
+        </>
+      )}
 
       {zmluvy && z && (
         <>
@@ -207,6 +265,27 @@ const z = zmluvy?.posledny_rok;
         scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, ticks: { callback: (v) => mil(Number(v)) } } },
       },
     });
+
+    const pc = document.getElementById('g-druhy-poz') as HTMLCanvasElement | null;
+    if (pc && el.dataset.poz) {
+      const p = JSON.parse(el.dataset.poz);
+      new Chart(pc, {
+        type: 'bar',
+        data: { labels: p.stitky, datasets: [{ data: p.data, backgroundColor: accent, borderRadius: 4, maxBarThickness: 20 }] },
+        options: {
+          indexAxis: 'y',
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ` ${Math.round(c.parsed.x).toLocaleString('sk-SK')} ha` } } },
+          scales: {
+            x: { ticks: { callback: (v) => Number(v).toLocaleString('sk-SK') + ' ha' } },
+            y: { grid: { display: false }, ticks: { callback: (_, i) => {
+              const t: string = p.stitky[i as number];
+              return window.innerWidth < 600 ? t.replace(' a nádvoria', '').replace('Trvalé trávne porasty', 'Trávne porasty') : t;
+            } } },
+          },
+        },
+      });
+    }
 
     const zc = document.getElementById('g-zmluvy') as HTMLCanvasElement | null;
     if (zc && g.zmluvy) {
