@@ -1,0 +1,535 @@
+{
+ "zdroj": {
+  "nazov": "Európska environmentálna agentúra (EEA) – NatDA a Natura 2000",
+  "url": "https://www.eea.europa.eu/en/datahub",
+  "licencia": "EEA – voľné použitie s uvedením zdroja"
+ },
+ "mesto": {
+  "km2": 367.5,
+  "chranene_km2": 92.4,
+  "chranene_pct": 25.2,
+  "natura_km2": 83.6,
+  "natura_pct": 22.7,
+  "kategorie": {
+   "Chránená krajinná oblasť": 81.6,
+   "Chránený areál / rezervácia": 29.5,
+   "Prírodná rezervácia (prísna ochrana)": 1.7,
+   "Prírodná pamiatka": 0.3
+  }
+ },
+ "mestske_casti": [
+  {
+   "kod_obce": "529401",
+   "nazov": "Devín",
+   "km2": 13.97,
+   "chranene_km2": 9.94,
+   "chranene_pct": 71.2,
+   "natura_km2": 3.75,
+   "natura_pct": 26.9
+  },
+  {
+   "kod_obce": "529346",
+   "nazov": "Nové Mesto",
+   "km2": 37.48,
+   "chranene_km2": 21.47,
+   "chranene_pct": 57.3,
+   "natura_km2": 0.19,
+   "natura_pct": 0.5
+  },
+  {
+   "kod_obce": "529427",
+   "nazov": "Záhorská Bystrica",
+   "km2": 32.29,
+   "chranene_km2": 13.81,
+   "chranene_pct": 42.8,
+   "natura_km2": 3.23,
+   "natura_pct": 10.0
+  },
+  {
+   "kod_obce": "529354",
+   "nazov": "Rača",
+   "km2": 23.66,
+   "chranene_km2": 9.2,
+   "chranene_pct": 38.9,
+   "natura_km2": 6.44,
+   "natura_pct": 27.2
+  },
+  {
+   "kod_obce": "529311",
+   "nazov": "Podunajské Biskupice",
+   "km2": 42.47,
+   "chranene_km2": 11.51,
+   "chranene_pct": 27.1,
+   "natura_km2": 13.77,
+   "natura_pct": 32.4
+  },
+  {
+   "kod_obce": "529371",
+   "nazov": "Devínska Nová Ves",
+   "km2": 24.2,
+   "chranene_km2": 5.83,
+   "chranene_pct": 24.1,
+   "natura_km2": 7.83,
+   "natura_pct": 32.3
+  },
+  {
+   "kod_obce": "529419",
+   "nazov": "Lamač",
+   "km2": 6.53,
+   "chranene_km2": 1.45,
+   "chranene_pct": 22.3,
+   "natura_km2": 0.0,
+   "natura_pct": 0.0
+  },
+  {
+   "kod_obce": "529397",
+   "nazov": "Karlova Ves",
+   "km2": 11.01,
+   "chranene_km2": 2.33,
+   "chranene_pct": 21.2,
+   "natura_km2": 3.2,
+   "natura_pct": 29.1
+  },
+  {
+   "kod_obce": "529494",
+   "nazov": "Rusovce",
+   "km2": 25.54,
+   "chranene_km2": 5.13,
+   "chranene_pct": 20.1,
+   "natura_km2": 14.0,
+   "natura_pct": 54.8
+  },
+  {
+   "kod_obce": "529389",
+   "nazov": "Dúbravka",
+   "km2": 8.66,
+   "chranene_km2": 1.65,
+   "chranene_pct": 19.0,
+   "natura_km2": 0.46,
+   "natura_pct": 5.3
+  },
+  {
+   "kod_obce": "529460",
+   "nazov": "Petržalka",
+   "km2": 28.64,
+   "chranene_km2": 4.27,
+   "chranene_pct": 14.9,
+   "natura_km2": 6.55,
+   "natura_pct": 22.9
+  },
+  {
+   "kod_obce": "529435",
+   "nazov": "Čunovo",
+   "km2": 18.61,
+   "chranene_km2": 2.5,
+   "chranene_pct": 13.4,
+   "natura_km2": 10.6,
+   "natura_pct": 56.9
+  },
+  {
+   "kod_obce": "529362",
+   "nazov": "Vajnory",
+   "km2": 13.53,
+   "chranene_km2": 1.6,
+   "chranene_pct": 11.8,
+   "natura_km2": 2.11,
+   "natura_pct": 15.6
+  },
+  {
+   "kod_obce": "529443",
+   "nazov": "Jarovce",
+   "km2": 21.34,
+   "chranene_km2": 0.78,
+   "chranene_pct": 3.7,
+   "natura_km2": 9.15,
+   "natura_pct": 42.9
+  },
+  {
+   "kod_obce": "528595",
+   "nazov": "Staré Mesto",
+   "km2": 9.59,
+   "chranene_km2": 0.25,
+   "chranene_pct": 2.6,
+   "natura_km2": 0.0,
+   "natura_pct": 0.0
+  },
+  {
+   "kod_obce": "529320",
+   "nazov": "Ružinov",
+   "km2": 39.71,
+   "chranene_km2": 0.71,
+   "chranene_pct": 1.8,
+   "natura_km2": 2.09,
+   "natura_pct": 5.3
+  },
+  {
+   "kod_obce": "529338",
+   "nazov": "Vrakuňa",
+   "km2": 10.29,
+   "chranene_km2": 0.0,
+   "chranene_pct": 0.0,
+   "natura_km2": 0.21,
+   "natura_pct": 2.0
+  }
+ ],
+ "uzemia": [
+  {
+   "typ": "narodne",
+   "nazov": "Malé Karpaty",
+   "kategoria": "Chránená krajinná oblasť",
+   "km2_v_meste": 61.77,
+   "kod": 12155
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Dunajské luhy",
+   "kategoria": "Chránená krajinná oblasť",
+   "km2_v_meste": 19.81,
+   "kod": 172823
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Ostrovné lúčky",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 6.74,
+   "kod": 148211
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Devínska Kobyla",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 6.52,
+   "kod": 16765
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Vydrica",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 4.74,
+   "kod": 555752253
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Pečniansky les",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 2.95,
+   "kod": 555552477
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Devínske alúvium Moravy",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 2.53,
+   "kod": 172911
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Sihoť",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 2.34,
+   "kod": 555552478
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Vydrica- OP",
+   "kategoria": "Ochranné pásmo",
+   "km2_v_meste": 0.98,
+   "kod": 555752254
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Kopáčsky ostrov",
+   "kategoria": "Prírodná rezervácia (prísna ochrana)",
+   "km2_v_meste": 0.82,
+   "kod": 148210
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Jarovská bažantnica",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.78,
+   "kod": 172935
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Starý háj",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.77,
+   "kod": 196468
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Topoľové hony",
+   "kategoria": "Prírodná rezervácia (prísna ochrana)",
+   "km2_v_meste": 0.63,
+   "kod": 148315
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Gajc",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.63,
+   "kod": 148086
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Soví les",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.42,
+   "kod": 555552470
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Slovanský ostrov",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.34,
+   "kod": 555552467
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Horský park",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.23,
+   "kod": 148392
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Fialková dolina",
+   "kategoria": "Prírodná rezervácia (prísna ochrana)",
+   "km2_v_meste": 0.21,
+   "kod": 148083
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Panský diel",
+   "kategoria": "Prírodná pamiatka",
+   "km2_v_meste": 0.16,
+   "kod": 147715
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Štokeravská vápenka",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.13,
+   "kod": 148300
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Chorvátske rameno",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.1,
+   "kod": 181965
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Starý háj- OP",
+   "kategoria": "Ochranné pásmo",
+   "km2_v_meste": 0.1,
+   "kod": 555770441
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Bajdeľ",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.08,
+   "kod": 148368
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Poľovnícky les",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.08,
+   "kod": 148506
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Hrabiny",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.07,
+   "kod": 172946
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Devínska lesostep",
+   "kategoria": "Prírodná pamiatka",
+   "km2_v_meste": 0.05,
+   "kod": 147625
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Slovanský ostrov- OP",
+   "kategoria": "Ochranné pásmo",
+   "km2_v_meste": 0.03,
+   "kod": 555770440
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Vápenický potok",
+   "kategoria": "Prírodná pamiatka",
+   "km2_v_meste": 0.03,
+   "kod": 555545936
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Rösslerov lom",
+   "kategoria": "Prírodná pamiatka",
+   "km2_v_meste": 0.02,
+   "kod": 147738
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Devínska hradná skala",
+   "kategoria": "Prírodná pamiatka",
+   "km2_v_meste": 0.02,
+   "kod": 147806
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Borovicový lesík",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.01,
+   "kod": 148374
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Lesné diely",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.01,
+   "kod": 172936
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Bôrik",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.01,
+   "kod": 148371
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Zeleň pri vodárni",
+   "kategoria": "Chránený areál / rezervácia",
+   "km2_v_meste": 0.0,
+   "kod": 148532
+  },
+  {
+   "typ": "narodne",
+   "nazov": "Chorvátske rameno- OP",
+   "kategoria": "Ochranné pásmo",
+   "km2_v_meste": 0.0,
+   "kod": 555770439
+  },
+  {
+   "typ": "natura",
+   "nazov": "Dunajské luhy",
+   "kategoria": "Chránené vtáčie územie",
+   "km2_v_meste": 40.1,
+   "kod": "SKCHVU007"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Sysľovské polia",
+   "kategoria": "Chránené vtáčie územie",
+   "km2_v_meste": 17.75,
+   "kod": "SKCHVU029"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Malé Karpaty",
+   "kategoria": "Chránené vtáčie územie",
+   "km2_v_meste": 11.67,
+   "kod": "SKCHVU014"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Bratislavské luhy",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 9.15,
+   "kod": "SKUEV0064"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Biskupické luhy",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 8.39,
+   "kod": "SKUEV0295"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Ostrovné lúčky",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 6.74,
+   "kod": "SKUEV0269"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Devínska Kobyla",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 6.49,
+   "kod": "SKUEV0280"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Záhorské Pomoravie",
+   "kategoria": "Chránené vtáčie územie",
+   "km2_v_meste": 4.18,
+   "kod": "SKCHVU016"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Devínske alúvium Moravy",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 1.56,
+   "kod": "SKUEV0312"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Hrušov",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 0.87,
+   "kod": "SKUEV0270"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Homoľské Karpaty",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 0.58,
+   "kod": "SKUEV0104"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Morava",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 0.43,
+   "kod": "SKUEV0314"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Malý Dunaj",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 0.29,
+   "kod": "SKUEV0822"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Vydrica",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 0.28,
+   "kod": "SKUEV0388"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Štokeravská vápenka",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 0.13,
+   "kod": "SKUEV0502"
+  },
+  {
+   "typ": "natura",
+   "nazov": "Devínska hradná skala",
+   "kategoria": "Územie európskeho významu",
+   "km2_v_meste": 0.04,
+   "kod": "SKUEV0800"
+  }
+ ],
+ "aktualizovane": "2026-10-15T05:08:55+00:00"
+}
