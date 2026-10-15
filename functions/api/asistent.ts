@@ -118,11 +118,14 @@ function najdiCast(otazka: string, casti: string[]) {
   return [...casti].sort((a, b) => b.length - a.length).find((c) => q.includes(norm(c)) || q.includes(norm(c).slice(0, -1)));
 }
 
-function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean) {
+function hladajMiesta(otazka: string, data: any, ajPodlaNazvu: boolean, predosla = '') {
   const q = norm(otazka);
   const cast = najdiCast(otazka, data.mestske_casti);
-  const kategoria = KATEGORIE.find(([r]) => r.test(q))?.[1];
-  const chceOtvorene = /otvoren|teraz|prave|nonstop|v noci|pohotovost/.test(q);
+  // doplňujúca otázka („a v Ružinove?“) preberie kategóriu z predošlej otázky
+  const kategoria = KATEGORIE.find(([r]) => r.test(q))?.[1]
+    ?? (q.split(/\s+/).length <= 6 ? KATEGORIE.find(([r]) => r.test(norm(predosla)))?.[1] : undefined);
+  const chceOtvorenePredtym = q.split(/\s+/).length <= 6 && /otvoren|teraz/.test(norm(predosla));
+  const chceOtvorene = /otvoren|teraz|prave|nonstop|v noci|pohotovost/.test(q) || chceOtvorenePredtym;
   const castiKmene = cast ? norm(cast).split(' ').filter((w) => w.length >= 4).map((w) => w.slice(0, -1)) : [];
   const slova = q.replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter((w) => w.length >= 4 && !STOP.has(w)
     && !KATEGORIE.some(([r]) => r.test(w)) && !castiKmene.some((k) => w.startsWith(k)) && !/^(potreb|hlada|najst|najd|chce)/.test(w));
@@ -206,7 +209,7 @@ export const onRequestPost = async (ctx: any) => {
   if (!temy.length && !ziveTypy.length) ziveTypy = Object.keys(ZIVE).filter((t) => ZIVE[t].test(qAj));
 
   // Hľadanie miest podľa názvu len ak otázka nie je zjavne o inej téme (alebo sa pýta „kde“)
-  const miesta = hladajMiesta(otazka, data, (!temy.length && !ziveTypy.length) || /\bkde\b|adres/.test(q));
+  const miesta = hladajMiesta(otazka, data, (!temy.length && !ziveTypy.length) || /\bkde\b|adres/.test(q), predosla);
   const cast = najdiCast(otazka + ' ' + (temy.length || ziveTypy.length ? '' : predosla), data.mestske_casti);
   const pouziteMiesta = miesta.miesta.length > 0;
   const kontext: any = {};
@@ -236,6 +239,11 @@ export const onRequestPost = async (ctx: any) => {
 
   const odkazy = [...new Set([...temy, ...ziveTypy, ...(pouziteMiesta ? ['miesta'] : [])].map((t) => STRANKY[t]).filter(Boolean))]
     .slice(0, 4).map((u) => ({ url: u, nazov: NAZVY_STRANOK[u] ?? u }));
+  if (telo.ladenie === 'surovy-stream') {
+    const st: ReadableStream = await env.AI.run(MODELY[0], { messages, max_tokens: 300, temperature: 0.2, stream: true });
+    const t = await new Response(st).text();
+    return new Response(t.slice(0, 6000), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  }
   if (telo.stream === true) return streamuj(ctx, messages, odkazy);
 
   let odpoved = '';
