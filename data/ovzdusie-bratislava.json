@@ -148,7 +148,7 @@
    }
   },
   "o3": {
-   "popis": "Počet dní s prekročením cieľovej hodnoty ozónu",
+   "popis": "Počet dní s prekročením cielovej hodnoty ozónu",
    "jednotka": "dní",
    "limit": 25.0,
    "zdroj": {
@@ -188,5 +188,5 @@
    }
   }
  },
- "aktualizovane": "2026-10-14T22:12:09+00:00"
+ "aktualizovane": "2026-10-15T04:28:04+00:00"
 }

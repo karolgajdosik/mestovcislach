@@ -1,0 +1,228 @@
+{
+ "zdroj": {
+  "id": "8bd7889eaba647d4adcbc1e3516532cf",
+  "nazov": "Majetok mesta Bratislava k 31.12.2025",
+  "licencia": "CC BY 4.0",
+  "url": "https://data.bratislava.sk/datasets/8bd7889eaba647d4adcbc1e3516532cf",
+  "upravene": "2026-06-09"
+ },
+ "spolu": {
+  "parcely": 44811,
+  "vymera_ha": 7590.9,
+  "spoluvlastnictvo": 5792
+ },
+ "sprava": [
+  {
+   "nazov": "vlastný",
+   "parcely": 30507,
+   "vymera_ha": 5383.0
+  },
+  {
+   "nazov": "zverený",
+   "parcely": 14304,
+   "vymera_ha": 2208.0
+  }
+ ],
+ "druhy": [
+  {
+   "nazov": "Lesné pozemky",
+   "parcely": 1214,
+   "vymera_ha": 3585.3
+  },
+  {
+   "nazov": "Ostatné plochy",
+   "parcely": 10348,
+   "vymera_ha": 1521.1
+  },
+  {
+   "nazov": "Zastavané plochy a nádvoria",
+   "parcely": 22573,
+   "vymera_ha": 1442.0
+  },
+  {
+   "nazov": "Orná pôda",
+   "parcely": 3986,
+   "vymera_ha": 515.0
+  },
+  {
+   "nazov": "Záhrady",
+   "parcely": 4037,
+   "vymera_ha": 185.4
+  },
+  {
+   "nazov": "Vodné plochy",
+   "parcely": 294,
+   "vymera_ha": 145.3
+  },
+  {
+   "nazov": "Trvalé trávne porasty",
+   "parcely": 1178,
+   "vymera_ha": 136.3
+  },
+  {
+   "nazov": "Vinice",
+   "parcely": 1156,
+   "vymera_ha": 57.3
+  },
+  {
+   "nazov": "Ovocné sady",
+   "parcely": 24,
+   "vymera_ha": 3.1
+  },
+  {
+   "nazov": "Chmeľnice",
+   "parcely": 1,
+   "vymera_ha": 0.1
+  }
+ ],
+ "mestske_casti": [
+  {
+   "kod_obce": "529346",
+   "parcely": 4391,
+   "vymera_ha": 2417.5
+  },
+  {
+   "kod_obce": "529354",
+   "parcely": 3830,
+   "vymera_ha": 1103.8
+  },
+  {
+   "kod_obce": "529460",
+   "parcely": 7120,
+   "vymera_ha": 872.7
+  },
+  {
+   "kod_obce": "529320",
+   "parcely": 8792,
+   "vymera_ha": 661.5
+  },
+  {
+   "kod_obce": "529427",
+   "parcely": 1203,
+   "vymera_ha": 525.2
+  },
+  {
+   "kod_obce": "529397",
+   "parcely": 4254,
+   "vymera_ha": 376.0
+  },
+  {
+   "kod_obce": "528595",
+   "parcely": 4121,
+   "vymera_ha": 297.1
+  },
+  {
+   "kod_obce": "529389",
+   "parcely": 3560,
+   "vymera_ha": 274.0
+  },
+  {
+   "kod_obce": "529311",
+   "parcely": 1432,
+   "vymera_ha": 205.3
+  },
+  {
+   "kod_obce": "529371",
+   "parcely": 928,
+   "vymera_ha": 158.7
+  },
+  {
+   "kod_obce": "529435",
+   "parcely": 444,
+   "vymera_ha": 145.2
+  },
+  {
+   "kod_obce": "529338",
+   "parcely": 1565,
+   "vymera_ha": 135.1
+  },
+  {
+   "kod_obce": "529494",
+   "parcely": 632,
+   "vymera_ha": 106.3
+  },
+  {
+   "kod_obce": "529443",
+   "parcely": 333,
+   "vymera_ha": 98.6
+  },
+  {
+   "kod_obce": "529401",
+   "parcely": 721,
+   "vymera_ha": 91.6
+  },
+  {
+   "kod_obce": "529362",
+   "parcely": 716,
+   "vymera_ha": 62.4
+  },
+  {
+   "kod_obce": "529419",
+   "parcely": 769,
+   "vymera_ha": 59.9
+  }
+ ],
+ "spravcovia": [
+  {
+   "nazov": "Hlavné mesto SR Bratislava",
+   "parcely": 30507,
+   "vymera_ha": 5383.0
+  },
+  {
+   "nazov": "Mestské lesy",
+   "parcely": 254,
+   "vymera_ha": 539.0
+  },
+  {
+   "nazov": "Mestská časť BA - Záhorská Bystrica",
+   "parcely": 887,
+   "vymera_ha": 267.6
+  },
+  {
+   "nazov": "Mestská časť BA - Rača",
+   "parcely": 1165,
+   "vymera_ha": 182.8
+  },
+  {
+   "nazov": "Mestská časť BA - Ružinov",
+   "parcely": 2746,
+   "vymera_ha": 133.9
+  },
+  {
+   "nazov": "Mestská časť BA - Petržalka",
+   "parcely": 1007,
+   "vymera_ha": 117.5
+  },
+  {
+   "nazov": "Mestská časť BA - Nové Mesto",
+   "parcely": 1288,
+   "vymera_ha": 96.6
+  },
+  {
+   "nazov": "STARZ",
+   "parcely": 110,
+   "vymera_ha": 92.5
+  },
+  {
+   "nazov": "Mestská časť BA - Podunajské Biskupice",
+   "parcely": 402,
+   "vymera_ha": 92.3
+  },
+  {
+   "nazov": "Zoologická záhrada",
+   "parcely": 200,
+   "vymera_ha": 82.7
+  },
+  {
+   "nazov": "Mestská časť BA - Jarovce",
+   "parcely": 189,
+   "vymera_ha": 81.1
+  },
+  {
+   "nazov": "Marianum",
+   "parcely": 228,
+   "vymera_ha": 73.4
+  }
+ ],
+ "aktualizovane": "2026-10-15T04:28:16+00:00"
+}
