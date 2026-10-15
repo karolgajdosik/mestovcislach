@@ -145,7 +145,7 @@ OVZDUSIE = {
     "pm25": ("7146fc000f1544309fbaef06a4a70fa3", "PM2_5", "LIMITNA_HODNOTA_PM2_5",
              "Priemerná ročná koncentrácia PM2,5", "µg/m³"),
     "o3": ("6e18d5a0c0fd466dab5bd821a744178a", "POCET_DNI_S_PREKROCENIM", "LIMITNA_HODNOTA_O3",
-           "Počet dní s prekročením cieľovej hodnoty ozónu", "dní"),
+           "Počet dní s prekročením cielovej hodnoty ozónu", "dní"),
 }
 
 
@@ -246,6 +246,62 @@ def zber_zmluvy() -> None:
     uloz("zmluvy-bratislava.json", vystup)
 
 
+# --- Majetok mesta (pozemky) -------------------------------------------------
+
+MAJETOK_ID = "8bd7889eaba647d4adcbc1e3516532cf"
+# Katastrálne územia -> mestské časti (kód obce ŠÚ SR).
+KU_MC = {
+    "Staré Mesto": "528595", "Podunajské Biskupice": "529311", "Ružinov": "529320", "Nivy": "529320",
+    "Trnávka": "529320", "Vrakuňa": "529338", "Nové Mesto": "529346", "Vinohrady": "529346",
+    "Rača": "529354", "Vajnory": "529362", "Devínska Nová Ves": "529371", "Dúbravka": "529389",
+    "Karlova Ves": "529397", "Devín": "529401", "Lamač": "529419", "Záhorská Bystrica": "529427",
+    "Čunovo": "529435", "Jarovce": "529443", "Petržalka": "529460", "Rusovce": "529494",
+}
+
+
+def zber_majetok() -> None:
+    item = polozka(MAJETOK_ID)
+    data = riadky(item)
+    if len(data) < 10000:
+        raise RuntimeError(f"Majetok: podozrivo málo parciel ({len(data)}).")
+
+    def nova():
+        return {"parcely": 0, "vymera_m2": 0.0}
+
+    spolu, druhy, casti, spravcovia, sprava = nova(), defaultdict(nova), defaultdict(nova), defaultdict(nova), defaultdict(nova)
+    spoluvlastnictvo = 0
+    nezaradene = set()
+    for r in data:
+        v = cislo(r.get("výmera__m2_")) or 0.0
+        ku = (r.get("katastrálne_územie") or "").strip()
+        mc = KU_MC.get(ku)
+        if mc is None:
+            nezaradene.add(ku)
+        for ciel in (spolu, druhy[(r.get("druh_pozemku") or "Neuvedené").strip()],
+                     casti[mc or "?"], spravcovia[(r.get("správca") or "Neuvedené").strip()],
+                     sprava[(r.get("správa") or "neuvedené").strip()]):
+            ciel["parcely"] += 1
+            ciel["vymera_m2"] += v
+        if (r.get("správcovský_vzťah") or "").strip() == "Spoluvlastník":
+            spoluvlastnictvo += 1
+    if nezaradene - {""}:
+        raise RuntimeError(f"Majetok: neznáme katastrálne územia {sorted(nezaradene)}")
+
+    def zoznam(d, n=None):
+        x = sorted(({"nazov": k, "parcely": v["parcely"], "vymera_ha": round(v["vymera_m2"] / 1e4, 1)} for k, v in d.items()),
+                   key=lambda i: -i["vymera_ha"])
+        return x[:n] if n else x
+
+    uloz("majetok-bratislava.json", {
+        "zdroj": zdroj(item),
+        "spolu": {"parcely": spolu["parcely"], "vymera_ha": round(spolu["vymera_m2"] / 1e4, 1), "spoluvlastnictvo": spoluvlastnictvo},
+        "sprava": zoznam(sprava),
+        "druhy": zoznam(druhy),
+        "mestske_casti": [{"kod_obce": i["nazov"], "parcely": i["parcely"], "vymera_ha": i["vymera_ha"]} for i in zoznam(casti)],
+        "spravcovia": zoznam(spravcovia, 12),
+    })
+
+
 # --- Doprava: cestujúci MHD a nehody ----------------------------------------
 
 def zber_doprava_statistiky() -> None:
@@ -279,7 +335,7 @@ def zber_doprava_statistiky() -> None:
 
 def main() -> int:
     chyby = []
-    for nazov, funkcia in [("rozpočet", zber_rozpocet), ("ovzdušie", zber_ovzdusie), ("zmluvy", zber_zmluvy), ("doprava", zber_doprava_statistiky)]:
+    for nazov, funkcia in [("rozpočet", zber_rozpocet), ("ovzdušie", zber_ovzdusie), ("zmluvy", zber_zmluvy), ("doprava", zber_doprava_statistiky), ("majetok", zber_majetok)]:
         try:
             funkcia()
         except Exception as e:  # noqa: BLE001
