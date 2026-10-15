@@ -94,15 +94,56 @@
     caka.innerHTML = '<span></span><span></span><span></span>';
     spravy.append(caka); spravy.scrollTop = spravy.scrollHeight;
     try {
-      const r = await fetch('/api/asistent', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ otazka, historia: predtym }) });
-      const d = await r.json().catch(() => ({}));
-      caka.remove();
-      if (!r.ok || !d.odpoved) {
-        pridaj({ rola: 'assistant', text: d.chyba ?? 'Asistent teraz neodpovedá. Skúste to o chvíľu.' });
+      const r = await fetch('/api/asistent', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ otazka, historia: predtym, stream: true }) });
+      if (!r.ok || !r.body || !(r.headers.get('content-type') ?? '').includes('event-stream')) {
+        const d = await r.json().catch(() => ({}));
+        caka.remove();
+        if (!r.ok || !d.odpoved) { pridaj({ rola: 'assistant', text: d.chyba ?? 'Asistent teraz neodpovedá. Skúste to o chvíľu.' }); return; }
+        const s: Sprava = { rola: 'assistant', text: d.odpoved, odkazy: d.odkazy };
+        historia.push(s); pridaj(s); uloz();
         return;
       }
-      const s: Sprava = { rola: 'assistant', text: d.odpoved, odkazy: d.odkazy };
-      historia.push(s); pridaj(s); uloz();
+      // Postupné zobrazovanie odpovede
+      const s: Sprava = { rola: 'assistant', text: '' };
+      let el: HTMLElement | null = null;
+      let naplanovane = false;
+      const vykresli = () => {
+        naplanovane = false;
+        const text = s.text.replace(/<think>[\s\S]*?(<\/think>|$)/g, '').trimStart();
+        if (!text) return;
+        if (!el) { caka.remove(); el = pridaj({ ...s, text }); }
+        else el.innerHTML = format(text) + (s.odkazy?.length ? `<div class="ai-odkazy">${s.odkazy.map((o) => `<a href="${esc(o.url)}">${esc(o.nazov)} →</a>`).join('')}</div>` : '');
+        const dole = spravy.scrollHeight - spravy.scrollTop - spravy.clientHeight < 80;
+        if (dole) spravy.scrollTop = spravy.scrollHeight;
+      };
+      const reader = r.body.getReader();
+      const dec = new TextDecoder();
+      let buf = '';
+      let chyba = '';
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        let i: number;
+        while ((i = buf.indexOf('\n\n')) >= 0) {
+          const udalost = buf.slice(0, i); buf = buf.slice(i + 2);
+          const data = udalost.replace(/^data:\s?/gm, '');
+          if (data === '[DONE]') continue;
+          try {
+            const d = JSON.parse(data);
+            if (d.t) s.text += d.t;
+            if (d.odkazy) s.odkazy = d.odkazy;
+            if (d.chyba) chyba = d.chyba;
+          } catch { /* ignorovať */ }
+          if (!naplanovane) { naplanovane = true; requestAnimationFrame(vykresli); }
+        }
+      }
+      s.text = s.text.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+      caka.remove();
+      if (!s.text) { pridaj({ rola: 'assistant', text: chyba || 'Asistent teraz neodpovedá. Skúste to o chvíľu.' }); return; }
+      if (chyba) s.text += `\n\n(${chyba})`;
+      vykresli();
+      historia.push(s); uloz();
     } catch {
       caka.remove();
       pridaj({ rola: 'assistant', text: 'Nepodarilo sa spojiť so serverom. Skontrolujte pripojenie.' });

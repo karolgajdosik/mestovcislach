@@ -234,6 +234,10 @@ export const onRequestPost = async (ctx: any) => {
     { role: 'user', content: `PODKLADY (JSON):\n${JSON.stringify(kontext).slice(0, 24000)}\n\nOTÁZKA: ${otazka}` },
   ];
 
+  const odkazy = [...new Set([...temy, ...ziveTypy, ...(pouziteMiesta ? ['miesta'] : [])].map((t) => STRANKY[t]).filter(Boolean))]
+    .slice(0, 4).map((u) => ({ url: u, nazov: NAZVY_STRANOK[u] ?? u }));
+  if (telo.stream === true) return streamuj(ctx, messages, odkazy);
+
   let odpoved = '';
   let chyba = '';
   for (const model of MODELY) {
@@ -248,8 +252,56 @@ export const onRequestPost = async (ctx: any) => {
   if (!odpoved) return json({ chyba: 'Asistent teraz neodpovedá. Skúste to o chvíľu.', detail: chyba.slice(0, 200) }, 502);
   // odstráni prípadné „myslenie“ modelu
   odpoved = odpoved.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
-
-  const odkazy = [...new Set([...temy, ...ziveTypy, ...(pouziteMiesta ? ['miesta'] : [])].map((t) => STRANKY[t]).filter(Boolean))]
-    .slice(0, 4).map((u) => ({ url: u, nazov: NAZVY_STRANOK[u] ?? u }));
   return json({ odpoved, odkazy });
 };
+
+// Postupné posielanie odpovede (Server-Sent Events): {t: "kúsok textu"}…, potom {odkazy}, nakoniec [DONE].
+async function streamuj(ctx: any, messages: any[], odkazy: any[]) {
+  let zdroj: ReadableStream | null = null;
+  let chyba = '';
+  for (const model of MODELY) {
+    try {
+      zdroj = await ctx.env.AI.run(model, { messages, max_tokens: 900, temperature: 0.2, stream: true });
+      if (zdroj) break;
+    } catch (e: any) {
+      chyba = String(e?.message ?? e);
+    }
+  }
+  if (!zdroj) return json({ chyba: 'Asistent teraz neodpovedá. Skúste to o chvíľu.', detail: chyba.slice(0, 200) }, 502);
+  const enc = new TextEncoder();
+  const dec = new TextDecoder();
+  const { readable, writable } = new TransformStream();
+  const w = writable.getWriter();
+  const posli = (o: any) => w.write(enc.encode(`data: ${JSON.stringify(o)}\n\n`));
+  ctx.waitUntil((async () => {
+    const reader = zdroj!.getReader();
+    let buf = '';
+    try {
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        let i: number;
+        while ((i = buf.indexOf('\n')) >= 0) {
+          const riadok = buf.slice(0, i).trim();
+          buf = buf.slice(i + 1);
+          if (!riadok.startsWith('data:')) continue;
+          const d = riadok.slice(5).trim();
+          if (!d || d === '[DONE]') continue;
+          try {
+            const j = JSON.parse(d);
+            const t = j.response ?? j.choices?.[0]?.delta?.content ?? '';
+            if (typeof t === 'string' && t) await posli({ t });
+          } catch { /* neúplný riadok – ignorovať */ }
+        }
+      }
+      await posli({ odkazy });
+    } catch {
+      await posli({ chyba: 'Odpoveď sa prerušila.' });
+    } finally {
+      await w.write(enc.encode('data: [DONE]\n\n'));
+      await w.close();
+    }
+  })());
+  return new Response(readable, { headers: { 'Content-Type': 'text/event-stream; charset=utf-8', 'Cache-Control': 'no-store', 'X-Accel-Buffering': 'no' } });
+}
