@@ -166,7 +166,7 @@ def csd() -> dict:
     # porovnanie rovnakých úsekov 2005 → 2015
     spolocne_useky = [u for u in useky_2015 if u["spolu"] and any(x["usek"] == u["usek"] for x in roky["2005"])]
     s05 = {x["usek"]: x["spolu"] for x in roky["2005"]}
-    narast = round(100 * (sum(u["spolu"] for u in spolocne_useky) / max(1, sum(s05[u["usek"]] for u in spolocne_useky)) - 100), 1) if spolocne_useky else None
+    narast = round(100 * sum(u["spolu"] for u in spolocne_useky) / max(1, sum(s05[u["usek"]] for u in spolocne_useky)) - 100, 1) if spolocne_useky else None
     return {"roky": ["2005", "2010", "2015"], "cesty": prehlad, "useky_2015": sorted(useky_2015, key=lambda u: -u["spolu"])[:40],
             "narast_2005_2015": {"usekov": len(spolocne_useky), "percent": narast},
             "zdroj": {"nazov": "Slovenská správa ciest – celoštátne sčítanie dopravy", "url": "https://www.ssc.sk"},
