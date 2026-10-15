@@ -71,17 +71,26 @@ def aktivne_sluzby(z: zipfile.ZipFile) -> tuple[date, set[str]]:
     od = max([den(k["start_date"]) for k in kalendar] + [date.today()]) if kalendar else date.today()
     do = max([den(k["end_date"]) for k in kalendar]) if kalendar else od + timedelta(days=60)
     nazvy_dni = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    # Pre každú stredu zistíme aktívne služby a vyberieme prvú s najčastejšou
+    # kombináciou – tak sa vyhneme sviatkom a dňom s výnimočným poriadkom.
+    stredy: list[tuple[date, frozenset[str]]] = []
     d = od
     while d <= do:
-        # streda bez výnimiek, ktoré by rušili služby (sviatky a pod.)
-        if d.weekday() == 2 and not any(t == "2" for t in vynimky.get(d, {}).values()):
+        if d.weekday() == 2:
             sluzby = {k["service_id"] for k in kalendar
                       if k[nazvy_dni[d.weekday()]] == "1" and den(k["start_date"]) <= d <= den(k["end_date"])}
             sluzby |= {s for s, t in vynimky.get(d, {}).items() if t == "1"}
+            sluzby -= {s for s, t in vynimky.get(d, {}).items() if t == "2"}
             if sluzby:
-                return d, sluzby
+                stredy.append((d, frozenset(sluzby)))
         d += timedelta(days=1)
-    raise RuntimeError("GTFS: nenašiel som vhodný pracovný deň v období platnosti.")
+    if not stredy:
+        raise RuntimeError("GTFS: nenašiel som vhodný pracovný deň v období platnosti.")
+    pocty: dict[frozenset[str], int] = defaultdict(int)
+    for _, s in stredy:
+        pocty[s] += 1
+    typicke = max(pocty, key=lambda s: (pocty[s], len(s)))
+    return next((d, set(s)) for d, s in stredy if s == typicke)
 
 
 def main() -> int:
