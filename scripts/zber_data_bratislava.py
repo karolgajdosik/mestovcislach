@@ -246,9 +246,40 @@ def zber_zmluvy() -> None:
     uloz("zmluvy-bratislava.json", vystup)
 
 
+# --- Doprava: cestujúci MHD a nehody ----------------------------------------
+
+def zber_doprava_statistiky() -> None:
+    cest = polozka("34a7ec013dcd4ba4a1bd6f7051e13a78")
+    kvartaly: dict[str, dict[str, float]] = defaultdict(dict)
+    for r in riadky(cest):
+        q = re.sub(r"\D", "", str(r.get("KVARTAL") or ""))
+        v = cislo(r.get("PREPRAVENE_OSOBY"))
+        if q and v is not None:
+            kvartaly[str(r["ROK"]).strip()][q] = v
+    # Ročný súčet len za roky so všetkými štyrmi štvrťrokmi.
+    rocne = {rok: sum(q.values()) for rok, q in sorted(kvartaly.items()) if len(q) == 4}
+
+    nehody = {}
+    for kluc, item_id in [("vsetky", "39d5a295afd24560bacd092e80531401"), ("so_zranenim", "b72dc2a2559745bdbc29a7a678b7a8e9")]:
+        item = polozka(item_id)
+        po_okresoch: dict[str, dict[str, float]] = defaultdict(dict)
+        for r in riadky(item):
+            v = cislo(r.get("Počet_nehôd"))
+            if v is not None:
+                po_okresoch[str(r["Okres"]).strip()][str(r["Rok"]).strip()] = v
+        nehody[kluc] = {"zdroj": zdroj(item), "okresy": {o: dict(sorted(v.items())) for o, v in sorted(po_okresoch.items())}}
+    if not rocne or not nehody["vsetky"]["okresy"]:
+        raise RuntimeError("Doprava: prázdne dáta.")
+    uloz("doprava-statistiky-bratislava.json", {
+        "cestujuci": {"zdroj": zdroj(cest), "rocne": rocne,
+                      "kvartaly": {r: dict(sorted(q.items())) for r, q in sorted(kvartaly.items())}},
+        "nehody": nehody,
+    })
+
+
 def main() -> int:
     chyby = []
-    for nazov, funkcia in [("rozpočet", zber_rozpocet), ("ovzdušie", zber_ovzdusie), ("zmluvy", zber_zmluvy)]:
+    for nazov, funkcia in [("rozpočet", zber_rozpocet), ("ovzdušie", zber_ovzdusie), ("zmluvy", zber_zmluvy), ("doprava", zber_doprava_statistiky)]:
         try:
             funkcia()
         except Exception as e:  # noqa: BLE001
