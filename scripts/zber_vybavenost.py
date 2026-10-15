@@ -39,6 +39,10 @@ area["name"="Bratislava"]["boundary"="administrative"]->.ba;
   nwr(area.ba)["amenity"~"^(doctors|clinic|hospital|dentist)$"];
   nwr(area.ba)["healthcare"~"^(doctor|clinic|hospital|dentist)$"];
   nwr(area.ba)["amenity"="charging_station"];
+  nwr(area.ba)["heritage"];
+  node(area.ba)["natural"="tree"]["denotation"="natural_monument"];
+  node(area.ba)["natural"="tree"]["protected"="yes"];
+  node(area.ba)["natural"="tree"]["protection_title"];
 );
 out center tags;
 """
@@ -52,6 +56,10 @@ KATEGORIE = {
 
 def kategoria(t: dict) -> str | None:
     a, h = t.get("amenity"), t.get("healthcare")
+    if t.get("natural") == "tree":
+        return "stromy"
+    if t.get("heritage") and not a and not h:
+        return "pamiatky"
     if a == "pharmacy" or h == "pharmacy":
         return "lekarne"
     if a == "charging_station":
@@ -91,6 +99,7 @@ def main() -> int:
     casti = [(f["properties"]["kod_obce"], prep(shape(f["geometry"]))) for f in hranice["features"]]
 
     pocty: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    pamiatky_body = []
     nabijacie_body: dict[str, int] = defaultdict(int)
     body = []
     videne = set()
@@ -110,6 +119,9 @@ def main() -> int:
         if not kod:
             continue
         pocty[kod][kat] += 1
+        if kat in ("pamiatky", "stromy"):
+            pamiatky_body.append([round(lat, 5), round(lon, 5), kat, (t.get("name") or t.get("species:sk") or t.get("species") or "").strip()[:70]])
+            continue
         if kat == "nabijanie":
             try:
                 nabijacie_body[kod] += int(t.get("capacity", "1"))
@@ -126,18 +138,24 @@ def main() -> int:
             "kod_obce": kod, "nazov": nazvy.get(kod, kod), "obyvatelia": o,
             **{k: pocty[kod].get(k, 0) for k in KATEGORIE},
             "nabijacie_miesta": nabijacie_body.get(kod, 0),
+            "pamiatky": pocty[kod].get("pamiatky", 0), "stromy": pocty[kod].get("stromy", 0),
             "lekarne_na_10000": round(10000 * pocty[kod].get("lekarne", 0) / o, 1) if o else None,
             "ambulancie_na_10000": round(10000 * pocty[kod].get("ambulancie", 0) / o, 1) if o else None,
         })
     po_castiach.sort(key=lambda c: c["nazov"])
     mesto = {k: sum(c[k] for c in po_castiach) for k in KATEGORIE}
     mesto["nabijacie_miesta"] = sum(c["nabijacie_miesta"] for c in po_castiach)
+    mesto["pamiatky"] = sum(c["pamiatky"] for c in po_castiach)
+    mesto["stromy"] = sum(c["stromy"] for c in po_castiach)
 
     zdroj = {"nazov": "OpenStreetMap", "licencia": "ODbL – © prispievatelia OpenStreetMap",
              "url": "https://www.openstreetmap.org/copyright", "stav_osm": data.get("osm3s", {}).get("timestamp_osm_base")}
     (KOREN / "public" / "data").mkdir(parents=True, exist_ok=True)
     (KOREN / "public" / "data" / "vybavenost-bratislava.json").write_text(
         json.dumps({"kategorie": KATEGORIE, "body": body}, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    (KOREN / "public" / "data" / "pamiatky-bratislava.json").write_text(
+        json.dumps({"kategorie": {"pamiatky": "Kultúrne pamiatky", "stromy": "Chránené stromy"}, "body": pamiatky_body},
+                   ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     (DATA / "vybavenost-bratislava.json").write_text(json.dumps({
         "zdroj": zdroj, "kategorie": KATEGORIE, "mesto": mesto, "mestske_casti": po_castiach,
         "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
