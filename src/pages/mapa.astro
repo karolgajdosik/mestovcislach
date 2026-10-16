@@ -95,40 +95,77 @@ const vrstvy = [
   ['k_kupaliska', 'Dostupnosť kúpalísk', 'Klíma a obyvatelia', '--m-klima', false],
   ['k_hustota', 'Hustota obyvateľov (1 km²)', 'Klíma a obyvatelia', '--m-klima', false],
 ] as const;
-const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
+// Témy v bočnom paneli: id, názov, krátky popis, farba značky, vrstvy, čo sa zapne pri prvom otvorení
+const TEMY: [string, string, string, string, string[], string[]][] = [
+  ['cesty', 'Na cestách dnes', 'uzávierky, rozkopávky, poruchy', '--m-uzavierky', ['uzavierky', 'poruchy'], ['uzavierky', 'poruchy']],
+  ['doprava', 'Doprava', 'MHD, cyklotrasy, BAjk, nabíjanie', '--m-mhd', ['mhd', 'cyklo', 'bajk', 'scitace', 'nabijanie'], ['mhd']],
+  ['skoly', 'Školy a škôlky', 'ZŠ, MŠ, jasle, spádové obvody', '--m-skoly_zs', ['skoly_zs', 'skoly_ms', 'jasle', 'obvody', 'skoly_ss', 'skoly_zus'], ['skoly_zs', 'skoly_ms']],
+  ['zdravie', 'Zdravie', 'lekárne, nemocnice, ambulancie', '--m-lekarne', ['lekarne', 'nemocnice', 'ambulancie', 'veterina'], ['lekarne']],
+  ['sport', 'Šport a voľný čas', 'ihriská, kurty, fontány', '--m-sportoviska', ['sportoviska', 'fontany', 'ochladzovanie'], ['sportoviska']],
+  ['kultura', 'Kultúra a pamiatky', 'pamiatky, múzeá, divadlá, kiná', '--m-pamiatky', ['pamiatky', 'pamiatky_osm', 'muzea', 'kultura'], ['pamiatky']],
+  ['zelen', 'Príroda a zeleň', 'chránené územia, stromy', '--m-narodne', ['narodne', 'natura', 'stromy', 'vysadba', 'starostlivost'], ['narodne']],
+  ['klima', 'Klíma a obyvatelia', 'horúčavy, prívalové dažde, hustota', '--m-klima', vrstvy.filter((v) => v[0].startsWith('k_')).map((v) => v[0]), ['k_riziko_horucavy']],
+  ['prostredie', 'Hluk a čistota', 'hluk, čierne skládky, podnety', '--m-hluk', ['hluk_den', 'hluk_noc', 'hluk_priemysel', 'skladky', 'podnety'], ['hluk_den']],
+  ['pomoc', 'Prístupnosť a pomoc', 'bezbariérovosť, sociálne služby', '--m-bezbarierove', ['bezbarierove', 'debarierizacie', 'socialne', 'bezdomovci', 'fixpointy'], ['bezbarierove']],
+];
+const vrstva = (k: string) => vrstvy.find((v) => v[0] === k)!;
+const nazvyVrstiev = Object.fromEntries(vrstvy.map((v) => [v[0], v[1]]));
+const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[0]])));
 ---
 <Base title="Mapa Bratislavy – mestovcislach.sk" description="Interaktívna mapa Bratislavy: mestské časti, MHD, cyklotrasy, školy a spádové obvody, jasle, sociálne služby, lekárne, pamiatky, hluk, chránená príroda.">
-  <section class="hero">
-    <p class="kicker">Bratislava</p>
-    <h1>Mapa</h1>
-    <p class="lead">Všetky mapové údaje na jednom mieste, vrátane dnešných uzávierok a porúch. Vrstvy zapnete v paneli, po ťuknutí na bod uvidíte adresu, otváracie hodiny, web a fotku, ak ich OpenStreetMap má.</p>
-  </section>
-
-  <div class="mapa-obal" id="mapa-bratislava" data-inline={JSON.stringify(inline)}>
-    <div id="mapa"></div>
-    <details class="panel" open>
-      <summary>Vrstvy</summary>
-      <div class="panel-obsah">
-        <fieldset class="podklad">
-          <legend>Podklad</legend>
-          <label><input type="radio" name="podklad" value="mapa" checked />Mapa</label>
-          <label><input type="radio" name="podklad" value="orto" />Letecká snímka</label>
-        </fieldset>
-        {skupiny.map((sk) => (
-          <fieldset>
-            <legend>{sk}</legend>
-            {vrstvy.filter((v) => v[2] === sk).map(([k, nazov, , farba, zap]) => (
-              <label><input type="checkbox" value={k} checked={zap} /><i style={`background:var(${farba})`}></i>{nazov}</label>
-            ))}
-            {sk === 'Klíma a obyvatelia' && <p class="legenda-klima" hidden><span class="lk-nazov"></span><span class="lk-skala"><i style="--c:#fef3c7"></i><i style="--c:#fcd34d"></i><i style="--c:#f59e0b"></i><i style="--c:#dc2626"></i><i style="--c:#7f1d1d"></i></span><span class="lk-text">nízke → vysoké</span></p>}
-            {sk === 'Prostredie' && <p class="legenda-hluk" hidden><span style="--c:#facc15">55</span><span style="--c:#f97316">60</span><span style="--c:#dc2626">65</span><span style="--c:#7e22ce">70+</span> dB</p>}
-          </fieldset>
-        ))}
+  <div class="mapa-app" id="mapa-bratislava" data-inline={JSON.stringify(inline)} data-nazvy={JSON.stringify(nazvyVrstiev)}
+    data-temy={JSON.stringify(Object.fromEntries(TEMY.map((t) => [t[0], { n: t[1], v: t[4], p: t[5] }])))} data-tema-vrstvy={JSON.stringify(temaVrstvy)}>
+    <aside class="bocny" id="bocny" data-stav="zbalene" aria-label="Vrstvy a hľadanie na mape">
+      <button type="button" class="uchyt" id="uchyt" aria-label="Rozbaliť alebo zbaliť panel" aria-expanded="false"><span></span></button>
+      <div class="bocny-hlava">
+        <h1>Mapa Bratislavy</h1>
+        <div class="m-hladaj">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 5 5" /></svg>
+          <input id="m-q" type="search" placeholder="Hľadať miesto, mestskú časť alebo vrstvu" autocomplete="off" aria-controls="m-vysledky" />
+          <div class="m-vysledky" id="m-vysledky" hidden></div>
+        </div>
+        <div class="aktivne" id="aktivne" aria-live="polite"></div>
       </div>
-    </details>
+      <div class="bocny-telo">
+        <div class="temy" id="temy">
+          {TEMY.map(([id, nazov, popis, f]) => (
+            <button type="button" class="tema" data-tema={id} style={`--t:var(${f})`}>
+              <span class="tema-nazov">{nazov}</span>
+              <span class="tema-popis">{popis}</span>
+              <span class="tema-pocet" data-pocet></span>
+            </button>
+          ))}
+        </div>
+        {TEMY.map(([id, nazov, popis, f, kluce]) => (
+          <section class="tema-panel" data-tema={id} hidden style={`--t:var(${f})`}>
+            <button type="button" class="spat">Všetky témy</button>
+            <h2>{nazov}</h2>
+            <div class="vrstvy">
+              {kluce.map((k) => (
+                <label class="vrstva"><input type="checkbox" value={k} checked={vrstva(k)[4]} /><i style={`background:var(${vrstva(k)[3]})`}></i><span>{vrstva(k)[1]}</span></label>
+              ))}
+            </div>
+            {id === 'klima' && <p class="pozn">Mriežky sa prekrývajú, preto sa zobrazuje vždy len jedna.</p>}
+            {id === 'cesty' && <p class="pozn">Načítané naživo z evidencie hlavného mesta. Svetlejšie body sú plánované.</p>}
+          </section>
+        ))}
+        <label class="zaklad"><input type="checkbox" value="hranice" checked />Hranice mestských častí</label>
+      </div>
+    </aside>
+    <div class="mapa-plocha">
+      <div id="mapa"></div>
+      <fieldset class="podklad" aria-label="Podklad mapy">
+        <label><input type="radio" name="podklad" value="mapa" checked /><span>Mapa</span></label>
+        <label><input type="radio" name="podklad" value="orto" /><span>Snímka</span></label>
+      </fieldset>
+      <div class="legendy">
+        <p class="legenda-klima" hidden><span class="lk-nazov"></span><span class="lk-skala"><i style="--c:#fef3c7"></i><i style="--c:#fcd34d"></i><i style="--c:#f59e0b"></i><i style="--c:#dc2626"></i><i style="--c:#7f1d1d"></i></span><span class="lk-text">nízke → vysoké</span></p>
+        <p class="legenda-hluk" hidden><span style="--c:#facc15">55</span><span style="--c:#f97316">60</span><span style="--c:#dc2626">65</span><span style="--c:#7e22ce">70+</span> dB</p>
+      </div>
+    </div>
   </div>
 
-  <p class="zdroj">
+  <details class="zdroje"><summary>Zdroje údajov na mape</summary><p class="zdroj">
     Zdroje: kultúrne pamiatky – register MK SR, polohy podľa registra adries MV SR; školy – Digitálna mapa škôl MŠVVaM SR; spádové obvody – rajonizácia
     hlavného mesta (hranice približné); sociálne služby a jasle – register MPSVR SR; chránené stromy – ŠOP SR; hluk – strategické hlukové mapy ÚVZ SR
     (všetko <a href="https://data.slovensko.sk">data.slovensko.sk</a>); mestské časti, múzeá a kultúra, pamiatky s fotkami, cyklotrasy, lekárne, zdravotníctvo a nabíjanie © prispievatelia
@@ -136,7 +173,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
     <a href="https://data.bratislava.sk">data.bratislava.sk</a> (CC BY 4.0); uzávierky a poruchy – živo z evidencie hlavného mesta; chránené územia a Natura 2000 –
     <a href="https://www.eea.europa.eu/en/datahub">EEA</a>; letecká snímka – © Esri, Maxar, Earthstar Geographics;
     podkladová mapa © prispievatelia OpenStreetMap; fotky Wikimedia Commons (autori a licencie po kliknutí na fotku). Údaje z OSM nie sú oficiálne registre a nemusia byť úplné.
-  </p>
+  </p></details>
 </Base>
 
 <script>
@@ -341,32 +378,83 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       if (i) { i.checked = false; i.disabled = true; i.parentElement!.title = 'Údaje sa nepodarilo načítať'; }
     }
   }
-  obal.querySelectorAll<HTMLInputElement>('input[type=checkbox]').forEach((i) => {
-    if (!tvorba[i.value] || (inline[i.value] === null)) { i.disabled = true; return; }
-    i.addEventListener('change', () => {
-      // mriežky klímy a hustoty sa navzájom vylučujú
-      if (i.value.startsWith('k_') && i.checked) {
-        obal.querySelectorAll<HTMLInputElement>('input[value^="k_"]').forEach((x) => { if (x !== i && x.checked) { x.checked = false; prepni(x.value, false); } });
-      }
-      obal.querySelector<HTMLElement>('.legenda-klima')!.hidden = ![...obal.querySelectorAll<HTMLInputElement>('input[value^="k_"]')].some((x) => x.checked);
-      prepni(i.value, i.checked);
-      const hluk = [...obal.querySelectorAll<HTMLInputElement>('input[value^=hluk]')].some((x) => x.checked);
-      obal.querySelector<HTMLElement>('.legenda-hluk')!.hidden = !hluk;
+  // ---------- Bočný panel: témy, zapnuté vrstvy, hľadanie ----------
+  const NAZVY: Record<string, string> = JSON.parse(obal.dataset.nazvy!);
+  const TEMY: Record<string, { n: string; v: string[]; p: string[] }> = JSON.parse(obal.dataset.temy!);
+  const TEMA_VRSTVY: Record<string, string> = JSON.parse(obal.dataset.temaVrstvy!);
+  const bocny = document.getElementById('bocny')!;
+  const uchyt = document.getElementById('uchyt')!;
+  const vstupy = () => [...obal.querySelectorAll<HTMLInputElement>('input[type=checkbox]')];
+  const vstup = (k: string) => obal.querySelector<HTMLInputElement>(`input[type=checkbox][value="${k}"]`);
+  const escH = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+  const rozbal = (ano: boolean) => { bocny.dataset.stav = ano ? 'rozbalene' : 'zbalene'; uchyt.setAttribute('aria-expanded', String(ano)); };
+  uchyt.addEventListener('click', () => rozbal(bocny.dataset.stav !== 'rozbalene'));
+
+  function legendy() {
+    obal.querySelector<HTMLElement>('.legenda-klima')!.hidden = !vstupy().some((x) => x.value.startsWith('k_') && x.checked);
+    obal.querySelector<HTMLElement>('.legenda-hluk')!.hidden = !vstupy().some((x) => x.value.startsWith('hluk') && x.checked);
+  }
+  // štítky zapnutých vrstiev a počty pri témach
+  function prehlad() {
+    const zap = vstupy().filter((x) => x.checked && x.value !== 'hranice');
+    const akt = document.getElementById('aktivne')!;
+    akt.innerHTML = zap.length
+      ? zap.map((x) => `<button type="button" class="stitok" data-k="${x.value}" title="Vypnúť"><i style="background:var(--m-${x.value.startsWith('k_') ? 'klima' : x.value.startsWith('hluk') ? 'hluk' : x.value})"></i>${escH(NAZVY[x.value] ?? x.value)}<span aria-hidden="true">×</span></button>`).join('')
+        + (zap.length > 1 ? '<button type="button" class="stitok vypni-vsetko">Vypnúť všetko</button>' : '')
+      : '<p class="tlmene">Vyberte tému alebo hľadajte miesto.</p>';
+    obal.querySelectorAll<HTMLElement>('.tema').forEach((t) => {
+      const n = TEMY[t.dataset.tema!].v.filter((k) => vstup(k)?.checked).length;
+      t.querySelector('[data-pocet]')!.textContent = n ? String(n) : '';
+      t.classList.toggle('ma-zapnute', n > 0);
     });
+    legendy();
+  }
+  function nastav(k: string, zapnut: boolean) {
+    const i = vstup(k);
+    if (!i || i.disabled || i.checked === zapnut) return;
+    i.checked = zapnut;
+    zmena(i);
+  }
+  function zmena(i: HTMLInputElement) {
+    // mriežky klímy a hustoty sa navzájom vylučujú
+    if (i.value.startsWith('k_') && i.checked) vstupy().forEach((x) => { if (x !== i && x.value.startsWith('k_') && x.checked) { x.checked = false; prepni(x.value, false); } });
+    prepni(i.value, i.checked);
+    prehlad();
+  }
+  vstupy().forEach((i) => {
+    if (!tvorba[i.value] || (inline[i.value] === null)) { i.disabled = true; return; }
+    i.addEventListener('change', () => zmena(i));
   });
-  // odkaz /mapa#hluk, #skoly, #pamiatky… zapne zodpovedajúce vrstvy
+  document.getElementById('aktivne')!.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLElement>('.stitok');
+    if (!b) return;
+    if (b.classList.contains('vypni-vsetko')) vstupy().filter((x) => x.checked && x.value !== 'hranice').forEach((x) => nastav(x.value, false));
+    else nastav(b.dataset.k!, false);
+  });
+
+  // témy: dlaždica otvorí zoznam vrstiev a pri prvom otvorení zapne hlavné vrstvy témy
+  const otvorTemu = (id: string | null, zapnutHlavne = true) => {
+    document.getElementById('temy')!.hidden = !!id;
+    obal.querySelectorAll<HTMLElement>('.tema-panel').forEach((p) => (p.hidden = p.dataset.tema !== id));
+    if (id && zapnutHlavne && !TEMY[id].v.some((k) => vstup(k)?.checked)) TEMY[id].p.forEach((k) => nastav(k, true));
+    if (id) rozbal(true);
+  };
+  obal.querySelectorAll<HTMLElement>('.tema').forEach((t) => t.addEventListener('click', () => otvorTemu(t.dataset.tema!)));
+  obal.querySelectorAll<HTMLElement>('.spat').forEach((b) => b.addEventListener('click', () => otvorTemu(null)));
+
+  // odkaz /mapa#hluk, #skoly, #tema=zdravie… zapne vrstvy a otvorí tému
   const HASH: Record<string, string[]> = { hluk: ['hluk_den'], skoly: ['skoly_zs', 'obvody'], pamiatky: ['pamiatky'], socialne: ['jasle', 'socialne'],
     horucavy: ['k_riziko_horucavy', 'fontany', 'ochladzovanie'], klima: ['k_riziko_celkove'], hustota: ['k_hustota'], sport: ['sportoviska'], bezbarierove: ['bezbarierove'],
     podnety: ['podnety'], stromy: ['vysadba'], fontany: ['fontany'] };
-  for (const k of HASH[location.hash.slice(1)] ?? []) {
-    const i = obal.querySelector<HTMLInputElement>(`input[value="${k}"]`);
-    if (i) i.checked = true;
-    if (k.startsWith('hluk')) obal.querySelector<HTMLElement>('.legenda-hluk')!.hidden = false;
-    if (k.startsWith('k_')) obal.querySelector<HTMLElement>('.legenda-klima')!.hidden = false;
-  }
+  const h = location.hash.slice(1);
+  const zHashu = h.startsWith('tema=') ? TEMY[h.slice(5)]?.p ?? [] : HASH[h] ?? [];
+  zHashu.forEach((k) => { const i = vstup(k); if (i && !i.disabled) i.checked = true; });
+  if (zHashu.length) otvorTemu(h.startsWith('tema=') ? h.slice(5) : TEMA_VRSTVY[zHashu[0]], false);
+  prehlad();
   (async () => {
     for (const k of poradie) {
-      const i = obal.querySelector<HTMLInputElement>(`input[value="${k}"]`);
+      const i = vstup(k);
       if (i?.checked && !i.disabled) await prepni(k, true);
     }
   })();
@@ -376,7 +464,60 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       (podklady[i.value] as any).bringToBack?.();
     }),
   );
-  if (mobil) obal.querySelector('details')!.removeAttribute('open');
+
+  // hľadanie v paneli: vrstvy, mestské časti a miesta (index zdieľaný s vyhľadávaním v hlavičke)
+  const q = document.getElementById('m-q') as HTMLInputElement;
+  const mv = document.getElementById('m-vysledky')!;
+  const normH = (t: string) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  let miesta: Promise<{ n: string; s: string; k: string; lat: number; lon: number; t: string }[]> | null = null;
+  const nacitajMiesta = () => (miesta ??= fetch('/data/hladanie.json').then((r) => r.json()).then((d) => d.polozky
+    .filter((p: any[]) => p[0] === 'Miesta').map((p: any[]) => ({ n: p[1], s: p[2], k: p[4], lat: p[5], lon: p[6], t: normH(`${p[1]} ${p[2]} ${p[4]}`) }))));
+  const zhoda = (text: string, slova: string[]) => slova.every((w) => text.includes(w));
+  let vyber = 0;
+  async function hladajNaMape() {
+    const t = normH(q.value.trim());
+    if (t.length < 2) { mv.hidden = true; return; }
+    const slova = t.split(/\s+/);
+    const vrstvyZ = Object.entries(NAZVY).filter(([k, n]) => k !== 'hranice' && zhoda(normH(`${n} ${TEMY[TEMA_VRSTVY[k]]?.n ?? ''}`), slova)).slice(0, 4);
+    const casti = (inline.hranice?.features ?? []).filter((f: any) => zhoda(normH(f.properties.n), slova)).slice(0, 3);
+    const body = (await nacitajMiesta()).filter((m) => zhoda(m.t, slova))
+      .sort((a, b) => Number(!normH(a.n).startsWith(slova[0])) - Number(!normH(b.n).startsWith(slova[0]))).slice(0, 8);
+    if (normH(q.value.trim()) !== t) return;
+    const r = (attrs: string, nazov: string, popis: string, typ: string) => `<button type="button" class="mv-r" data-typ="${typ}" ${attrs}><span class="mv-n">${escH(nazov)}</span><span class="mv-p">${escH(popis)}</span></button>`;
+    mv.innerHTML = (vrstvyZ.length ? '<p class="mv-sk">Vrstvy</p>' + vrstvyZ.map(([k, n]) => r(`data-k="${k}"`, n, vstup(k)?.checked ? 'zapnutá · ťuknutím vypnete' : TEMY[TEMA_VRSTVY[k]]?.n ?? '', 'vrstva')).join('') : '')
+      + (casti.length ? '<p class="mv-sk">Mestské časti</p>' + casti.map((f: any) => r(`data-mc="${escH(f.properties.n)}"`, f.properties.n, `${fmt(f.properties.o)} obyvateľov`, 'mc')).join('') : '')
+      + (body.length ? '<p class="mv-sk">Miesta</p>' + body.map((m) => r(`data-lat="${m.lat}" data-lon="${m.lon}" data-n="${escH(m.n)}" data-kat="${escH(m.k)}"`, m.n, [m.k, m.s].filter(Boolean).join(' · '), 'miesto')).join('') : '')
+      || '<p class="mv-prazdne">Nič sa nenašlo. Skúste kratší výraz alebo názov ulice.</p>';
+    mv.hidden = false;
+    vyber = 0;
+    oznacVyber();
+  }
+  const riadkyMv = () => [...mv.querySelectorAll<HTMLButtonElement>('.mv-r')];
+  const oznacVyber = () => riadkyMv().forEach((b, i) => b.classList.toggle('vybrany', i === vyber));
+  function zvol(b: HTMLButtonElement) {
+    if (b.dataset.k) { const i = vstup(b.dataset.k)!; nastav(b.dataset.k, !i.checked); }
+    else if (b.dataset.mc) {
+      const f = inline.hranice.features.find((x: any) => x.properties.n === b.dataset.mc);
+      if (f) mapa.fitBounds(L.geoJSON(f).getBounds(), { padding: [20, 20] });
+      if (mobil) rozbal(false);
+    } else if (b.dataset.lat) {
+      location.hash = `miesto&${new URLSearchParams({ lat: b.dataset.lat, lon: b.dataset.lon!, n: b.dataset.n!, k: b.dataset.kat! })}`;
+      if (mobil) rozbal(false);
+    }
+    q.value = '';
+    mv.hidden = true;
+  }
+  let casovacQ: number;
+  q.addEventListener('focus', () => { nacitajMiesta(); if (mobil) rozbal(true); });
+  q.addEventListener('input', () => { clearTimeout(casovacQ); casovacQ = window.setTimeout(hladajNaMape, 80); });
+  q.addEventListener('keydown', (e) => {
+    const r = riadkyMv();
+    if (e.key === 'ArrowDown') { e.preventDefault(); vyber = Math.min(vyber + 1, r.length - 1); oznacVyber(); r[vyber]?.scrollIntoView({ block: 'nearest' }); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); vyber = Math.max(vyber - 1, 0); oznacVyber(); r[vyber]?.scrollIntoView({ block: 'nearest' }); }
+    else if (e.key === 'Enter' && r[vyber]) { e.preventDefault(); zvol(r[vyber]); }
+    else if (e.key === 'Escape') { q.value = ''; mv.hidden = true; }
+  });
+  mv.addEventListener('click', (e) => { const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.mv-r'); if (b) zvol(b); });
 
   // odkaz z vyhľadávania: /mapa#miesto&lat=…&lon=…&n=názov&k=kategória → priblížiť a označiť miesto
   let oznacene: L.Layer | null = null;
@@ -391,7 +532,6 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       .bindPopup(`<div class="mf"><strong class="mf-nazov">${esc(p.get('n') ?? '')}</strong><span class="mf-kat">${esc(p.get('k') ?? '')}</span></div>`);
     mapa.setView([lat, lon], 17);
     setTimeout(() => (oznacene as L.CircleMarker).openPopup(), 300);
-    document.getElementById('mapa')?.scrollIntoView({ block: 'center' });
   };
   setTimeout(zobrazMiesto, 0);
   window.addEventListener('hashchange', zobrazMiesto);
@@ -422,36 +562,110 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
       --m-ochladzovanie: #67e8f9; --m-debarierizacie: #93c5fd; --m-fixpointy: #fdba74;
     }
   }
-  .hero { padding: 32px 0 16px; }
-  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
-  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 8px; }
-  .lead { color: var(--muted); font-size: 1.05rem; margin: 0; }
-  .mapa-obal { position: relative; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); }
-  #mapa { height: min(75vh, 720px); min-height: 420px; background: var(--bg); }
-  .panel {
-    position: absolute; top: 10px; right: 10px; z-index: 1000; max-height: calc(100% - 20px); overflow: auto;
-    background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 4px 16px #0002;
-    font-size: 0.85rem; width: 230px;
+  /* Mapa ako aplikácia: bočný panel + mapa na celú výšku pod hlavičkou a živou lištou (56 + 41 px) */
+  .mapa-app {
+    --vyska: calc(100dvh - 97px);
+    position: relative; display: grid; grid-template-columns: 340px 1fr;
+    width: 100vw; margin-left: calc(50% - 50vw); height: var(--vyska); min-height: 480px;
+    border-bottom: 1px solid var(--line); background: var(--card);
   }
-  .panel summary { cursor: pointer; padding: 10px 14px; font-weight: 700; list-style: none; }
-  .panel summary::after { content: ' ▾'; color: var(--muted); }
-  .panel[open] summary::after { content: ' ▴'; }
-  .panel-obsah { padding: 0 14px 12px; }
-  fieldset { border: 0; padding: 0; margin: 0 0 10px; }
-  legend { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; padding: 0; }
-  label { display: flex; align-items: center; gap: 8px; padding: 3px 0; cursor: pointer; }
-  label:has(input:disabled) { opacity: 0.45; cursor: not-allowed; }
-  label i { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
-  .podklad label { display: inline-flex; margin-right: 12px; }
-  .legenda-hluk { display: flex; gap: 6px; align-items: center; margin: 4px 0 0; font-size: 0.75rem; color: var(--muted); }
-  .legenda-hluk[hidden], .legenda-klima[hidden] { display: none; }
-  .legenda-klima { display: flex; flex-direction: column; gap: 3px; margin: 6px 0 0; font-size: 0.75rem; color: var(--muted); }
+  .mapa-plocha { position: relative; min-width: 0; }
+  #mapa { position: absolute; inset: 0; background: var(--bg); }
+
+  .bocny { display: flex; flex-direction: column; min-height: 0; border-right: 1px solid var(--line); background: var(--card); z-index: 1001; }
+  .uchyt { display: none; }
+  .bocny-hlava { padding: 16px 16px 10px; border-bottom: 1px solid var(--line); }
+  .bocny-hlava h1 { font-size: 1.25rem; letter-spacing: -0.02em; margin: 0 0 12px; }
+  .bocny-telo { flex: 1; overflow-y: auto; padding: 14px 16px 20px; overscroll-behavior: contain; }
+
+  .m-hladaj { position: relative; display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--muted); }
+  .m-hladaj:focus-within { border-color: var(--accent); }
+  .m-hladaj svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; flex-shrink: 0; }
+  .m-hladaj input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; font-size: 0.95rem; }
+  .bocny-hlava { position: relative; }
+  .m-vysledky { position: absolute; left: -1px; right: -1px; top: calc(100% + 6px); cursor: default; z-index: 5; box-shadow: 0 10px 28px #0003; max-height: 60vh; overflow-y: auto; border: 1px solid var(--line); border-radius: 10px; padding: 4px; background: var(--card); }
+  :global(.mv-sk) { margin: 8px 8px 2px; font-size: 0.75rem; font-weight: 600; color: var(--muted); }
+  :global(.mv-r) { display: flex; flex-direction: column; align-items: flex-start; width: 100%; text-align: left; padding: 7px 8px; border: 0; border-radius: 7px; background: none; color: var(--text); font: inherit; cursor: pointer; }
+  :global(.mv-r):hover, :global(.mv-r):global(.vybrany) { background: color-mix(in srgb, var(--accent) 9%, transparent); }
+  :global(.mv-n) { font-weight: 600; font-size: 0.92rem; }
+  :global(.mv-p) { font-size: 0.8rem; color: var(--muted); }
+  :global(.mv-prazdne) { margin: 8px; color: var(--muted); font-size: 0.88rem; }
+
+  .aktivne { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .aktivne :global(.tlmene) { margin: 0; font-size: 0.85rem; color: var(--muted); }
+  :global(.stitok) { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 6px 0 9px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); color: var(--text); font: inherit; font-size: 0.8rem; cursor: pointer; }
+  :global(.stitok i) { width: 9px; height: 9px; border-radius: 50%; }
+  :global(.stitok span) { color: var(--muted); font-size: 1rem; line-height: 1; padding: 0 2px; }
+  :global(.stitok):hover { border-color: var(--muted); }
+  :global(.stitok:hover span) { color: var(--accent); }
+  :global(.vypni-vsetko) { padding: 0 9px; color: var(--muted); border-style: dashed; }
+
+  .temy { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tema {
+    position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; min-height: 76px; padding: 10px 10px 10px 14px;
+    border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); font: inherit; text-align: left; cursor: pointer; overflow: hidden;
+  }
+  .tema::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--t); }
+  .tema:hover { border-color: var(--t); }
+  .tema.ma-zapnute { border-color: var(--t); background: color-mix(in srgb, var(--t) 8%, var(--card)); }
+  .tema-nazov { font-weight: 700; font-size: 0.9rem; line-height: 1.2; }
+  .tema-popis { font-size: 0.76rem; color: var(--muted); line-height: 1.3; }
+  .tema-pocet { position: absolute; top: 8px; right: 8px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--t); color: #fff; font-size: 0.7rem; font-weight: 700; line-height: 18px; text-align: center; }
+  .tema-pocet:empty { display: none; }
+
+  .tema-panel h2 { font-size: 1.1rem; margin: 10px 0 8px; padding-left: 10px; border-left: 4px solid var(--t); }
+  .spat { border: 0; background: none; color: var(--muted); font: inherit; font-size: 0.85rem; padding: 2px 0; cursor: pointer; }
+  .spat::before { content: '‹ '; }
+  .spat:hover { color: var(--text); }
+  .vrstvy { display: flex; flex-direction: column; }
+  .vrstva, .zaklad { display: flex; align-items: center; gap: 10px; padding: 9px 4px; border-bottom: 1px solid var(--line); cursor: pointer; font-size: 0.92rem; }
+  .vrstva:last-child { border-bottom: 0; }
+  .vrstva:has(input:disabled) { opacity: 0.45; cursor: not-allowed; }
+  .vrstva input, .zaklad input { width: 17px; height: 17px; accent-color: var(--accent); margin: 0; }
+  .vrstva i { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+  .pozn { font-size: 0.8rem; color: var(--muted); margin: 10px 4px 0; }
+  .zaklad { margin-top: 16px; border: 0; color: var(--muted); font-size: 0.85rem; }
+
+  .podklad { position: absolute; top: 10px; right: 10px; z-index: 1000; display: flex; margin: 0; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); box-shadow: 0 2px 8px #0002; }
+  .podklad label { cursor: pointer; }
+  .podklad input { position: absolute; opacity: 0; pointer-events: none; }
+  .podklad span { display: block; padding: 5px 10px; border-radius: 7px; font-size: 0.8rem; color: var(--muted); }
+  .podklad input:checked + span { background: var(--text); color: var(--card); }
+  .podklad input:focus-visible + span { outline: 2px solid var(--accent); }
+  .podklad label:has(input:disabled) { opacity: 0.4; cursor: not-allowed; }
+  .legendy { position: absolute; left: 10px; bottom: 24px; z-index: 1000; display: flex; flex-direction: column; gap: 6px; max-width: 260px; }
+  .legendy p { margin: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); box-shadow: 0 2px 8px #0002; }
+  .legenda-hluk { display: flex; gap: 6px; align-items: center; font-size: 0.75rem; color: var(--muted); }
+  .legenda-klima { display: flex; flex-direction: column; gap: 3px; font-size: 0.75rem; color: var(--muted); }
   .lk-skala { display: flex; height: 8px; border-radius: 4px; overflow: hidden; }
   .lk-skala i { flex: 1; background: var(--c); }
   .legenda-hluk span { display: inline-flex; align-items: center; gap: 3px; }
   .legenda-hluk span::before { content: ''; width: 14px; height: 3px; border-radius: 2px; background: var(--c); }
-  @media (max-width: 600px) {
-    #mapa { height: 70vh; }
-    .panel { width: auto; left: 10px; right: 10px; top: auto; bottom: 10px; max-height: 55%; }
+  .zdroje { margin: 16px 0 32px; }
+  .zdroje summary { cursor: pointer; color: var(--muted); font-size: 0.85rem; }
+  :global(.leaflet-top.leaflet-left) { top: 4px; }
+
+  /* Mobil: mapa na celú plochu, panel ako vysúvací list zdola */
+  @media (max-width: 760px) {
+    .mapa-app { display: block; }
+    .mapa-plocha { position: absolute; inset: 0; }
+    /* tlačidlo asistenta nesmie zakryť panel – na mape ide hore pod prepínač podkladu */
+    :global(body:has(.mapa-app) .ai-tlacidlo) { top: 150px; bottom: auto; right: 10px; }
+    .bocny {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 1001; border: 0; border-top: 1px solid var(--line);
+      border-radius: 16px 16px 0 0; box-shadow: 0 -6px 24px #0003; max-height: 78%; transition: max-height 0.25s ease;
+    }
+    .bocny[data-stav='zbalene'] { max-height: 168px; }
+    .bocny[data-stav='zbalene'] .bocny-telo { overflow: hidden; }
+    .uchyt { display: flex; justify-content: center; align-items: center; height: 22px; border: 0; background: none; cursor: pointer; flex-shrink: 0; }
+    .uchyt span { width: 40px; height: 4px; border-radius: 2px; background: var(--line); }
+    .bocny-hlava { padding: 0 14px 8px; }
+    .bocny-hlava h1 { display: none; }
+    .aktivne { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    :global(.stitok) { flex-shrink: 0; }
+    .bocny-telo { padding: 10px 14px 16px; }
+    .legendy { bottom: 180px; }
+    .podklad { top: 10px; right: 10px; }
   }
+  @media (prefers-reduced-motion: reduce) { .bocny { transition: none; } }
 </style>
