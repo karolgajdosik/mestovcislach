@@ -39,7 +39,7 @@ const datum = (ms: number) => (ms ? new Date(ms).toLocaleDateString('sk-SK') : '
       <section class="card">
         <div class="ovladanie">
           <input id="hladaj" type="search" placeholder="Hľadať, napr. nezamestnanosť, MHD, plodnosť…" autocomplete="off" />
-          <select id="kategoria"><option value="">všetky témy</option>{kategorie.map((k) => <option>{k}</option>)}</select>
+          <select id="kategoria" aria-label="Téma datasetu"><option value="">všetky témy</option>{kategorie.map((k) => <option>{k}</option>)}</select>
         </div>
         <p class="pocet" id="pocet" aria-live="polite"></p>
         <div id="zoznam">

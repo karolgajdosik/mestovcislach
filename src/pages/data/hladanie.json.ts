@@ -50,6 +50,7 @@ const SEKCIE: [string, string, string, string][] = [
   ['/bezpecnost', 'Bezpečnosť', 'mestská polícia, priestupky, pokuty', 'polícia priestupok pokuta kriminalita'],
   ['/bezpecnost#podnety', 'Podnety obyvateľov', 'čo ľudia hlásia magistrátu', 'podnet sťažnosť hlásenie'],
   ['/katalog', 'Katalóg dát', 'všetky datasety Bratislavy', 'dáta datasety tabuľky csv'],
+  ['/pristupnost', 'Vyhlásenie o prístupnosti', 'čítačky obrazovky, klávesnica, slabozrakí, WCAG', 'prístupnosť bezbariérový web wcag slabozraký nevidiaci'],
   ['/sukromie', 'Ochrana súkromia', 'cookies, osobné údaje, GDPR, kontakt', 'gdpr súkromie cookies osobné údaje kontakt'],
 ];
 

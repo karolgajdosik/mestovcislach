@@ -23,6 +23,7 @@ export const SLOVNIK: Record<string, [string, string, string, string]> = {
   'Prostredie': ['Environment', 'Umwelt', 'Środowisko', 'Környezet'],
   'Bezpečnosť': ['Safety', 'Sicherheit', 'Bezpieczeństwo', 'Biztonság'],
   'Katalóg dát': ['Data catalogue', 'Datenkatalog', 'Katalog danych', 'Adatkatalógus'],
+  'Preskočiť na obsah': ['Skip to content', 'Zum Inhalt springen', 'Przejdź do treści', 'Ugrás a tartalomra'],
   'Teraz': ['Now', 'Jetzt', 'Teraz', 'Most'],
   'Hľadať': ['Search', 'Suchen', 'Szukaj', 'Keresés'],
   'Jazyk': ['Language', 'Sprache', 'Język', 'Nyelv'],
@@ -208,6 +209,8 @@ export const SLOVNIK: Record<string, [string, string, string, string]> = {
   'Morava naživo': ['Morava live', 'March live', 'Morawa na żywo', 'Morva élőben'],
   'Ovzdušie teraz': ['Air quality now', 'Luftqualität jetzt', 'Jakość powietrza teraz', 'Levegőminőség most'],
   'Hluk': ['Noise', 'Lärm', 'Hałas', 'Zaj'],
+  'Prístupnosť': ['Accessibility', 'Barrierefreiheit', 'Dostępność', 'Akadálymentesség'],
+  'Vyhlásenie o prístupnosti': ['Accessibility statement', 'Erklärung zur Barrierefreiheit', 'Deklaracja dostępności', 'Akadálymentességi nyilatkozat'],
   'Ochrana súkromia': ['Privacy', 'Datenschutz', 'Prywatność', 'Adatvédelem'],
   'Podnety obyvateľov': ['Residents’ reports', 'Bürgermeldungen', 'Zgłoszenia mieszkańców', 'Lakossági bejelentések'],
 };

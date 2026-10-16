@@ -64,7 +64,7 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
         <h3>Mapa</h3>
         <label class="vyber">Mestská časť <select id="uz-cast"><option value="">všetky</option></select></label>
       </div>
-      <div id="mapa-uzavierky" role="img" aria-label="Mapa aktuálnych uzávierok a porúch na cestách"></div>
+      <div id="mapa-uzavierky" role="region" aria-label="Mapa aktuálnych uzávierok a porúch na cestách"></div>
       <ul class="uz-zoznam" id="uz-zoznam"><li class="nacitava">Načítavam aktuálne údaje mesta…</li></ul>
       <p class="zdroj">
         Údaje sa načítajú priamo z evidencie <a href="https://bratislava.sk">hlavného mesta</a> pri otvorení stránky
@@ -165,7 +165,7 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
       {mapa && (
         <section class="card">
           <h2>Mapa zastávok MHD</h2>
-          <div id="mapa-mhd" role="img" aria-label="Mapa zastávok MHD podľa počtu odchodov"></div>
+          <div id="mapa-mhd" role="region" aria-label="Mapa zastávok MHD podľa počtu odchodov"></div>
           <p class="zdroj">Veľkosť bodu = počet odchodov za deň. Ťuknite na zastávku pre linky. Podklad © prispievatelia OpenStreetMap.</p>
         </section>
       )}
@@ -235,7 +235,7 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
 
       <section class="card">
         <h3>Mapa cyklotrás</h3>
-        <div id="mapa-cyklo" role="img" aria-label="Mapa cyklistickej infraštruktúry v Bratislave" data-bajk={bajk ? JSON.stringify(bajk.stanice.map((s: any) => [s.lat, s.lon, s.nazov])) : ''}></div>
+        <div id="mapa-cyklo" role="region" aria-label="Mapa cyklistickej infraštruktúry v Bratislave" data-bajk={bajk ? JSON.stringify(bajk.stanice.map((s: any) => [s.lat, s.lon, s.nazov])) : ''}></div>
         <div class="legenda-cyklo">
           {Object.values(cyklo.kategorie).map((nazov, i) => <span><i style={`background:var(--cyklo-${i})`}></i>{nazov as string}</span>)}
           {bajk && <span><i class="kruh"></i>Stanica BAjk</span>}
@@ -545,7 +545,7 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
   @media (max-width: 600px) { .uz-zoznam :global(li) { grid-template-columns: 14px 1fr; } .uz-zoznam :global(.kedy) { grid-column: 2; text-align: left; } .uz-zoznam :global(.kde) { grid-column: 2; } }
   .taby { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; padding: 3px; gap: 2px; }
   .taby button { font: inherit; font-size: 0.88rem; border: 0; background: none; color: var(--muted); padding: 5px 14px; border-radius: 7px; cursor: pointer; }
-  .taby button[aria-selected='true'] { background: var(--accent); color: #fff; }
+  .taby button[aria-selected='true'] { background: var(--accent); color: var(--na-akcente); }
   .kpis.male { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 4px 0 16px; }
   .kpis.male .value { font-size: 1.45rem; font-weight: 800; margin: 2px 0; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
   .kpis.male .label { color: var(--muted); font-size: 0.8rem; margin: 0; }

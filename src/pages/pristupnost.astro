@@ -1,0 +1,57 @@
+---
+// Vyhlásenie o prístupnosti (dobrovoľné – web nie je webovým sídlom verejnej správy).
+import Base from '../layouts/Base.astro';
+const AKTUALIZOVANE = '16. októbra 2026';
+---
+<Base title="Vyhlásenie o prístupnosti – mestovcislach.sk" description="Ako je web mestovcislach.sk prístupný ľuďom so zdravotným postihnutím, čo ešte nie je prístupné a ako nahlásiť problém.">
+  <section class="hero">
+    <p class="kicker">mestovcislach.sk</p>
+    <h1>Vyhlásenie o prístupnosti</h1>
+    <p class="lead">Chceme, aby údaje o Bratislave mohol používať každý, aj s čítačkou obrazovky, len klávesnicou alebo so zhoršeným zrakom.</p>
+  </section>
+
+  <article class="card text">
+    <h2>Stav súladu</h2>
+    <p>Web je <strong>čiastočne v súlade</strong> s normou WCAG 2.1 na úrovni AA (a s ňou súvisiacou normou EN 301 549). Vyhlásenie je dobrovoľné – mestovcislach.sk nie je webovým sídlom orgánu verejnej moci, na ktoré by sa vzťahovala povinnosť podľa smernice (EÚ) 2016/2102.</p>
+
+    <h2>Čo web ponúka</h2>
+    <ul>
+      <li>tlačidlo <strong>Aa</strong> v hlavičke: svetlý alebo tmavý režim, veľkosť písma od 85 do 160 % a režim <strong>pre slabozrakých</strong> (väčšie písmo, vysoký kontrast, podčiarknuté odkazy, bez animácií);</li>
+      <li>ovládanie celého webu klávesnicou s viditeľným zvýraznením; odkaz „Preskočiť na obsah“ ako prvý prvok stránky; vyhľadávanie klávesom <kbd>/</kbd> alebo <kbd>Ctrl</kbd>+<kbd>K</kbd>;</li>
+      <li>texty a ovládacie prvky spĺňajú požadovaný kontrast farieb v svetlom aj tmavom režime;</li>
+      <li>grafy majú textový popis a mnohé z nich aj tabuľku s rovnakými číslami; každý dataset v Katalógu dát sa dá stiahnuť ako CSV;</li>
+      <li>mapy majú alternatívu bez myši: vyhľadávanie miest na mape a zoznamy a tabuľky na tematických stránkach;</li>
+      <li>web v piatich jazykoch (slovenčina, angličtina, nemčina, poľština, maďarčina) a AI asistent, ktorému sa dá otázka napísať vlastnými slovami.</li>
+    </ul>
+
+    <h2>Čo zatiaľ nie je prístupné</h2>
+    <ul>
+      <li><strong>Mapy:</strong> body na mape sa dajú prejsť klávesnicou, ale pri tisícoch bodov je to nepraktické a čítačka obrazovky nevie mapu popísať. Rovnaké miesta nájdete cez vyhľadávanie a v zoznamoch na stránkach Vybavenosť a Doprava.</li>
+      <li><strong>Grafy:</strong> pri niektorých grafoch chýba tabuľka s presnými hodnotami (hodnoty sa zobrazia pri prechode myšou alebo ťuknutí). Údaje sú vždy dostupné v Katalógu dát.</li>
+      <li><strong>Strojový preklad:</strong> texty v cudzích jazykoch prekladá automat a môžu byť nepresné.</li>
+      <li><strong>Obsah z cudzích zdrojov:</strong> fotky z Wikimedia Commons nemajú textový popis a dokumenty na weboch úradov (napr. zápisnice v PDF) nemáme pod kontrolou.</li>
+    </ul>
+
+    <h2>Ako sme prístupnosť overili</h2>
+    <p>Všetky hlavné stránky (úvod, mapa, obyvatelia, voľby, financie, doprava, vybavenosť, prostredie, bezpečnosť, katalóg dát, detail datasetu a ochrana súkromia) sme {AKTUALIZOVANE} skontrolovali automatickým nástrojom axe-core podľa pravidiel WCAG 2.0 a 2.1 na úrovniach A a AA vo svetlom aj tmavom režime – bez zistenej chyby. Ručne sme overili poradie a viditeľnosť zamerania pri ovládaní klávesnicou. Automatická kontrola nezachytí všetko; nezávislý audit s používateľmi čítačiek obrazovky zatiaľ neprebehol.</p>
+
+    <h2>Nahlásenie problému</h2>
+    <p>Ak narazíte na časť webu, ktorú neviete použiť, napíšte na <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a> – uveďte stránku a čo nefungovalo. Odpovieme do 14 dní a pokúsime sa vám údaje sprístupniť iným spôsobom.</p>
+
+    <p class="zdroj">Vyhlásenie bolo vypracované {AKTUALIZOVANE} na základe vlastného posúdenia.</p>
+  </article>
+</Base>
+
+<style>
+  .hero { padding: 40px 0 16px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  .text { max-width: 46em; margin: 16px 0 40px; }
+  .text h2 { font-size: 1.2rem; margin: 28px 0 8px; }
+  .text h2:first-child { margin-top: 0; }
+  .text p, .text li { line-height: 1.65; }
+  .text ul { padding-left: 1.2em; }
+  .text li { margin: 4px 0; }
+  kbd { font: inherit; font-size: 0.85em; padding: 1px 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); }
+</style>

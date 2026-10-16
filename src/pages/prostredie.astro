@@ -211,7 +211,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
       <h2 class="sekcia">Čierne skládky ({prostredie.cierne_skladky.rok})</h2>
       <section class="card">
         <p class="vysvetlenie">Mestu bolo v roku {prostredie.cierne_skladky.rok} nahlásených <strong>{prostredie.cierne_skladky.body.length}</strong> nelegálnych skládok odpadu na pozemkoch v jeho správe.</p>
-        <div id="mapa-skladky" role="img" aria-label="Mapa nahlásených čiernych skládok"></div>
+        <div id="mapa-skladky" role="region" aria-label="Mapa nahlásených čiernych skládok"></div>
         <p class="zdroj">Zdroj: <a href={prostredie.cierne_skladky.zdroj.url}>{prostredie.cierne_skladky.zdroj.nazov}</a>, data.bratislava.sk, licencia CC BY 4.0. Podklad © prispievatelia OpenStreetMap.</p>
       </section>
     </div>
@@ -454,10 +454,10 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
   #aq-tab :global(td) { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
   #aq-tab :global(td.num) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   :global(.aqk) { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
-  :global(.aqk.k1) { background: #1a7f4b22; color: #1a7f4b; }
-  :global(.aqk.k2) { background: #e6b80033; color: #8a6d00; }
-  :global(.aqk.k3) { background: #f08c0033; color: #a35a00; }
-  :global(.aqk.k4) { background: #d0021b22; color: #d0021b; }
+  :global(.aqk.k1) { background: #1a7f4b22; color: #13633a; }
+  :global(.aqk.k2) { background: #e6b80033; color: #6b5400; }
+  :global(.aqk.k3) { background: #f08c0033; color: #7f4600; }
+  :global(.aqk.k4) { background: #d0021b22; color: #a8001a; }
   :global(:root[data-tema="tmava"] .aqk.k1) { color: #4cc38a; } :global(:root[data-tema="tmava"] .aqk.k2) { color: #ffd54d; } :global(:root[data-tema="tmava"] .aqk.k3) { color: #ffb366; } :global(:root[data-tema="tmava"] .aqk.k4) { color: #ff6b80; }
   h2.sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 40px 0 16px; }
   #mapa-skladky { height: 400px; border-radius: 10px; overflow: hidden; background: var(--bg); }
@@ -469,5 +469,5 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
   tr.spolu td { font-weight: 700; }
   .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .hluk-text { margin: 0 0 12px; max-width: 52em; }
-  .tlacidlo { display: inline-block; padding: 9px 16px; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; }
+  .tlacidlo { display: inline-block; padding: 9px 16px; border-radius: 8px; background: var(--accent); color: var(--na-akcente); font-weight: 600; text-decoration: none; }
 </style>

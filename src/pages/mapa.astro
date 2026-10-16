@@ -403,7 +403,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
     const zap = vstupy().filter((x) => x.checked && x.value !== 'hranice');
     const akt = document.getElementById('aktivne')!;
     akt.innerHTML = zap.length
-      ? zap.map((x) => `<button type="button" class="stitok" data-k="${x.value}" title="Vypnúť"><i style="background:var(--m-${x.value.startsWith('k_') ? 'klima' : x.value.startsWith('hluk') ? 'hluk' : x.value})"></i>${escH(NAZVY[x.value] ?? x.value)}<span aria-hidden="true">×</span></button>`).join('')
+      ? zap.map((x) => `<button type="button" class="stitok" data-k="${x.value}" title="Vypnúť" aria-label="Vypnúť vrstvu ${escH(NAZVY[x.value] ?? x.value)}"><i style="background:var(--m-${x.value.startsWith('k_') ? 'klima' : x.value.startsWith('hluk') ? 'hluk' : x.value})"></i>${escH(NAZVY[x.value] ?? x.value)}<span aria-hidden="true">×</span></button>`).join('')
         + (zap.length > 1 ? '<button type="button" class="stitok vypni-vsetko">Vypnúť všetko</button>' : '')
       : '<p class="tlmene">Vyberte tému alebo hľadajte miesto.</p>';
     obal.querySelectorAll<HTMLElement>('.tema').forEach((t) => {
@@ -581,7 +581,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
   .bocny-telo { flex: 1; overflow-y: auto; padding: 14px 16px 20px; overscroll-behavior: contain; }
 
   .m-hladaj { position: relative; display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--muted); }
-  .m-hladaj:focus-within { border-color: var(--accent); }
+  .m-hladaj:focus-within { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
   .m-hladaj svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; flex-shrink: 0; }
   .m-hladaj input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; font-size: 0.95rem; }
   .bocny-hlava { position: relative; }

@@ -183,7 +183,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
             ))}
           </div>
         </div>
-        <div id="mapa-vyb" role="img" aria-label="Mapa lekární, zdravotníckych zariadení a nabíjacích staníc"></div>
+        <div id="mapa-vyb" role="region" aria-label="Mapa lekární, zdravotníckych zariadení a nabíjacích staníc"></div>
         <p class="zdroj">Ťuknite na bod pre adresu, otváracie hodiny a web (ak ich OpenStreetMap má). Ambulancie sú v OpenStreetMap zmapované len čiastočne, preto sú predvolene skryté.</p>
       </section>
 
@@ -318,7 +318,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
   .pole.ulica { flex: 1 1 220px; }
   .pole.cislo { flex: 0 1 140px; }
   .pole input { font: inherit; font-size: 1rem; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); }
-  .rajon-form button { font: inherit; font-weight: 600; padding: 9px 18px; border: 0; border-radius: 8px; background: var(--accent); color: #fff; cursor: pointer; }
+  .rajon-form button { font: inherit; font-weight: 600; padding: 9px 18px; border: 0; border-radius: 8px; background: var(--accent); color: var(--na-akcente); cursor: pointer; }
   #rajon-vysledok { margin-top: 14px; display: grid; gap: 10px; }
   #rajon-vysledok :global(.rajon-karta) { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
   #rajon-vysledok :global(.adresa) { font-weight: 700; margin: 0 0 6px; }
