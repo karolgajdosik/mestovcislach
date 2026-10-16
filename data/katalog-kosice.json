@@ -5881,7 +5881,7 @@
       ],
       [
        "datum_zverejnenia",
-       "String",
+       "Date",
        "datum_zverejnenia"
       ],
       [
@@ -5896,7 +5896,7 @@
       ],
       [
        "datum_aktualizacie",
-       "String",
+       "Date",
        "datum_aktualizacie"
       ],
       [
@@ -11124,7 +11124,7 @@
      "nazov": "uradna_tabula",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 89,
+     "pocet": 91,
      "polia": [
       [
        "OBJECTID",
@@ -11318,5 +11318,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-10-16T13:32:15+00:00"
+ "aktualizovane": "2026-10-16T14:49:22+00:00"
 }
