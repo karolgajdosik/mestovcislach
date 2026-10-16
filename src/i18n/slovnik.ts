@@ -208,6 +208,7 @@ export const SLOVNIK: Record<string, [string, string, string, string]> = {
   'Morava naživo': ['Morava live', 'March live', 'Morawa na żywo', 'Morva élőben'],
   'Ovzdušie teraz': ['Air quality now', 'Luftqualität jetzt', 'Jakość powietrza teraz', 'Levegőminőség most'],
   'Hluk': ['Noise', 'Lärm', 'Hałas', 'Zaj'],
+  'Ochrana súkromia': ['Privacy', 'Datenschutz', 'Prywatność', 'Adatvédelem'],
   'Podnety obyvateľov': ['Residents’ reports', 'Bürgermeldungen', 'Zgłoszenia mieszkańców', 'Lakossági bejelentések'],
 };
 

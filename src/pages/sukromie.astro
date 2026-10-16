@@ -1,0 +1,73 @@
+---
+// Ochrana súkromia – informácie o spracúvaní osobných údajov (čl. 13 a 14 GDPR).
+import Base from '../layouts/Base.astro';
+const AKTUALIZOVANE = '16. októbra 2026';
+---
+<Base title="Ochrana súkromia – mestovcislach.sk" description="Ako web mestovcislach.sk zaobchádza s údajmi návštevníkov a s osobnými údajmi v zverejnených otvorených dátach.">
+  <section class="hero">
+    <p class="kicker">mestovcislach.sk</p>
+    <h1>Ochrana súkromia</h1>
+    <p class="lead">Web nepoužíva cookies, nesleduje návštevníkov a neukladá ich otázky. Nižšie je presne popísané, kam sa pri návšteve dostanú vaše údaje a prečo zverejňujeme niektoré mená z otvorených dát.</p>
+  </section>
+
+  <article class="card text">
+    <h2>Kto web prevádzkuje</h2>
+    <p>Prevádzkovateľom webu a správcom údajov uvedených nižšie je <strong>mestovcislach.sk</strong>. Kontakt pre všetky otázky vrátane ochrany osobných údajov: <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a>.</p>
+
+    <h2>Čo sa ukladá vo vašom prehliadači</h2>
+    <p>Web nepoužíva cookies ani nástroje na sledovanie či reklamu. Vo vašom prehliadači (localStorage a sessionStorage) sa ukladajú len údaje, ktoré potrebujú funkcie, ktoré ste si sami zapli. Nikam sa neodosielajú a kedykoľvek ich zmažete vymazaním údajov stránky v prehliadači.</p>
+    <ul>
+      <li>zvolený jazyk, režim (svetlý alebo tmavý), veľkosť písma a režim pre slabozrakých;</li>
+      <li>poloha tlačidla AI asistenta, ak ste ho presunuli;</li>
+      <li>uložené preklady textov, aby sa pri ďalšej návšteve nemuseli prekladať znova;</li>
+      <li>počas návštevy (sessionStorage, po zatvorení okna zmizne) rozhovor s asistentom a zaokrúhlená poloha, ak ste použili tlačidlo „Pri mne“.</li>
+    </ul>
+    <p>Na tieto údaje nie je potrebný súhlas, lebo sú nevyhnutné na poskytnutie funkcie, o ktorú ste požiadali.</p>
+
+    <h2>Kto pri návšteve uvidí vašu IP adresu</h2>
+    <p>Pri každej návšteve webu prehliadač kontaktuje servery, z ktorých sa web a jeho časti načítavajú. Tie vidia vašu IP adresu a údaje o prehliadači, ako pri každej webovej stránke. My tieto údaje nezhromažďujeme ani nevyhodnocujeme.</p>
+    <ul>
+      <li><strong>Cloudflare, Inc.</strong> – hosting webu, ochrana pred útokmi, AI asistent a strojový preklad (Workers AI). Cloudflare je certifikovaný podľa rámca EÚ – USA na ochranu osobných údajov (Data Privacy Framework).</li>
+      <li><strong>OpenStreetMap</strong> (OpenStreetMap Foundation, Spojené kráľovstvo) – podkladová mapa.</li>
+      <li><strong>Esri</strong> (USA) – letecká snímka na mape, ak ju zapnete, a evidencia uzávierok a porúch hlavného mesta, ktorú mesto prevádzkuje na platforme ArcGIS.</li>
+      <li><strong>Open-Meteo</strong> (Švajčiarsko) – aktuálne počasie v živej lište.</li>
+      <li><strong>Wikimedia Foundation</strong> (USA) – fotky pamiatok a miest v oknách na mape.</li>
+    </ul>
+    <p>Prenos do tretích krajín sa opiera o rozhodnutia Európskej komisie o primeranosti (Švajčiarsko, Spojené kráľovstvo, Data Privacy Framework pre USA) alebo o štandardné zmluvné doložky týchto poskytovateľov.</p>
+
+    <h2>AI asistent a strojový preklad</h2>
+    <p>Asistent je umelá inteligencia (jazykový model prevádzkovaný v Cloudflare Workers AI). Odpovedá len z údajov tohto webu a môže sa mýliť – dôležité údaje si overte v uvedenom zdroji. Otázky ani odpovede neukladáme. Ak použijete tlačidlo „Pri mne“, poloha sa zaokrúhli na približne 100 metrov a odošle sa len spolu s otázkou. Pri inom jazyku ako slovenčine sa otázka a texty stránok strojovo prekladajú v Cloudflare Workers AI; preklady textov webu (nie vašich otázok) ukladáme do vyrovnávacej pamäte, aby sa neprekladali opakovane.</p>
+    <p>Na ochranu pred zneužitím počítame počet otázok a prekladov z jednej IP adresy za hodinu. Počítadlo zanikne po hodine a nespája sa so žiadnymi ďalšími údajmi.</p>
+
+    <h2>Osobné údaje v zverejnených otvorených dátach</h2>
+    <p>Web preberá otvorené dáta štátu a samospráv. Osobné údaje z nich zverejňujeme len v nevyhnutnom rozsahu a len pri výkone verejnej funkcie, z dôvodu verejného záujmu na kontrole verejnej moci a oprávneného záujmu informovať verejnosť (čl. 6 ods. 1 písm. e) a f) GDPR):</p>
+    <ul>
+      <li>poslanci mestského zastupiteľstva – meno, poslanecký klub a ako hlasovali;</li>
+      <li>kandidáti vo voľbách – meno, strana a výsledok (bez veku, zamestnania a bydliska);</li>
+      <li>zmluvy, faktúry a dotácie – len firmy a inštitúcie; zmluvy s fyzickými osobami a živnostníkmi len započítavame bez mena a predmetu;</li>
+      <li>telefóny, e-maily a adresy osôb, mená zodpovedných osôb, texty podnetov občanov a odpovede z prieskumov nezverejňujeme vôbec.</li>
+    </ul>
+    <p>Ak sa vo zverejnených údajoch nájdete a myslíte si, že tam byť nemáte, napíšte nám – údaj preveríme a opravíme alebo odstránime.</p>
+
+    <h2>Vaše práva</h2>
+    <p>Máte právo požadovať prístup k osobným údajom, ich opravu, vymazanie alebo obmedzenie spracúvania a namietať proti spracúvaniu. Napíšte na <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a>. Ak sa domnievate, že s údajmi zaobchádzame nesprávne, môžete podať návrh na <a href="https://dataprotection.gov.sk">Úrad na ochranu osobných údajov SR</a>, Hraničná 12, 820 07 Bratislava.</p>
+
+    <h2>Zabezpečenie</h2>
+    <p>Web sa načítava len cez šifrované spojenie (HTTPS) a má nastavené pravidlá, ktoré prehliadaču zakazujú spúšťať kód z cudzích zdrojov a vkladať web do iných stránok. Zdrojový kód je verejne na <a href="https://github.com/karolgajdosik/mestovcislach">GitHube</a>.</p>
+
+    <p class="zdroj">Aktualizované {AKTUALIZOVANE}.</p>
+  </article>
+</Base>
+
+<style>
+  .hero { padding: 40px 0 16px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  .text { max-width: 46em; margin: 16px 0 40px; }
+  .text h2 { font-size: 1.2rem; margin: 28px 0 8px; }
+  .text h2:first-child { margin-top: 0; }
+  .text p, .text li { line-height: 1.65; }
+  .text ul { padding-left: 1.2em; }
+  .text li { margin: 4px 0; }
+</style>

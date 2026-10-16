@@ -50,6 +50,7 @@ const SEKCIE: [string, string, string, string][] = [
   ['/bezpecnost', 'Bezpečnosť', 'mestská polícia, priestupky, pokuty', 'polícia priestupok pokuta kriminalita'],
   ['/bezpecnost#podnety', 'Podnety obyvateľov', 'čo ľudia hlásia magistrátu', 'podnet sťažnosť hlásenie'],
   ['/katalog', 'Katalóg dát', 'všetky datasety Bratislavy', 'dáta datasety tabuľky csv'],
+  ['/sukromie', 'Ochrana súkromia', 'cookies, osobné údaje, GDPR, kontakt', 'gdpr súkromie cookies osobné údaje kontakt'],
 ];
 
 // Kategórie miest, ktoré do vyhľadávania nedávame (veľa bodov s rovnakým názvom)
