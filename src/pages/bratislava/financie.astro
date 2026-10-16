@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../../layouts/Base.astro';
+import FirmyMesta from '../../components/FirmyMesta.astro';
 
 const nacitaj = (subor: string) => {
   const p = path.join(process.cwd(), 'data', subor);
@@ -387,6 +388,7 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
               Porovnanie Bratislavy s ostatnými krajskými mestami: <a href="/porovnanie">Porovnanie miest</a>.
             </p>
           </section>
+          <FirmyMesta mesto="bratislava" nadpis="h3" />
         </>
       )}
 

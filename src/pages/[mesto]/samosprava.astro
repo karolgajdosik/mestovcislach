@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../../layouts/Base.astro';
 import Hlasovania from '../../components/Hlasovania.astro';
+import FirmyMesta from '../../components/FirmyMesta.astro';
 import { MESTA, type Mesto } from '../../mesta';
 import { maSamospravu, hospodarenie } from '../../lib/mapa';
 
@@ -87,6 +88,7 @@ const graf = JSON.stringify({ roky, rady: fin.map((x) => ({ typ: x.typ, sumy: ro
           (dlh podľa zákona o rozpočtových pravidlách, bez úverov ŠFRB na nájomné byty). Porovnanie s ostatnými mestami: <a href="/porovnanie">Porovnanie miest</a>.
         </p>
       </section>
+      <FirmyMesta mesto={m.slug} nadpis="h3" />
     </>
   )}
 

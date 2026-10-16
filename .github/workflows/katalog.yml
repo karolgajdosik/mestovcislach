@@ -20,6 +20,7 @@ on:
       - "scripts/zber_mapa_osm.py"
       - "scripts/zber_samosprava_mesta.py"
       - "scripts/zber_hospodarenie.py"
+      - "scripts/zber_firmy_miest.py"
       - ".github/workflows/katalog.yml"
 
 permissions:
@@ -80,6 +81,11 @@ jobs:
         if: success() || failure()
         timeout-minutes: 50
         run: python scripts/zber_hospodarenie.py
+
+      - name: Firmy miest (vlastníctvo z RPO, závierky z RÚZ)
+        if: success() || failure()
+        timeout-minutes: 40
+        run: python scripts/zber_firmy_miest.py
 
       - name: Mapy krajských miest (OpenStreetMap)
         if: success() || failure()
