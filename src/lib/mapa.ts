@@ -33,3 +33,16 @@ export function mapaMesta(slug: string) {
 
 /** Má mesto stránku Samospráva (hlasovania, zmluvy a faktúry z portálu mesta – scripts/zber_samosprava_mesta.py)? */
 export const maSamospravu = (slug: string) => ['samosprava', 'crz'].some((p) => fs.existsSync(path.join(process.cwd(), 'data', 'mesta', `${p}-${slug}.json`)));
+
+/** Hospodárenie mesta (data/mesta/hospodarenie.json, scripts/zber_hospodarenie.py): účtovné závierky z RÚZ a dlh podľa MF SR. */
+export function hospodarenie(slug: string) {
+  const p = path.join(process.cwd(), 'data', 'mesta', 'hospodarenie.json');
+  if (!fs.existsSync(p)) return null;
+  const h = JSON.parse(fs.readFileSync(p, 'utf-8'));
+  const roky: Record<string, any> = h.mesta?.[slug]?.roky ?? {};
+  const dlh = Object.fromEntries(Object.entries<any>(h.dlh ?? {}).filter(([, v]) => v[slug]).map(([r, v]) => [r, v[slug]]));
+  if (!Object.keys(roky).length) return null;
+  const rok = Object.keys(roky).sort().pop()!;
+  const rokDlh = Object.keys(dlh).sort().pop();
+  return { zdroje: h.zdroje, roky, rok, posledny: roky[rok], dlh, rokDlh, dlhPosledny: rokDlh ? dlh[rokDlh] : null };
+}

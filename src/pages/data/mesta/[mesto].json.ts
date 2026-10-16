@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { MESTA } from '../../../mesta';
+import { hospodarenie } from '../../../lib/mapa';
 
 export function getStaticPaths() {
   return MESTA.filter((m) => m.aktivne && !m.plne).map((m) => ({ params: { mesto: m.slug } }));
@@ -56,6 +57,16 @@ export async function GET({ params }: { params: { mesto: string } }) {
       zamery: eia.zamery.filter((z: any) => !z.ukoncene || z.zmena >= hranica).slice(0, 40).map((z: any) => `${z.nazov} (${z.stav}${z.ukoncene ? ', posudzovanie skončené' : ', práve sa posudzuje'}; zmena ${z.zmena}${z.navrhovatel ? `; ${z.navrhovatel}` : ''}) – ${(z.ucel ?? '').slice(0, 160)}`),
     } : undefined,
     porovnanie_krajskych_miest: por.map((p: any) => `${p.nazov}: ${p.obyvatelia} obyv. (${p.zmena10} % za 10 r.), seniori ${p.seniori} %, VŠ ${p.vs} %, PDU ${p.pdu} %, účasť komunálne ${p.ucast_komunalne} %`),
+    hospodarenie_mesta: (() => {
+      const h = hospodarenie(m.slug);
+      if (!h) return undefined;
+      const mm = (n: number) => `${(n / 1e6).toFixed(1).replace('.', ',')} mil. €`;
+      return {
+        poznamka: 'Individuálna účtovná závierka mesta (RÚZ) – výnosy a náklady (akruálne, nie rozpočet), bankové úvery k 31. 12.; dlh a pomer k bežným príjmom podľa MF SR (limit 60 %). Stránka /' + m.slug + '/samosprava#hospodarenie.',
+        po_rokoch: Object.fromEntries(Object.entries<any>(h.roky).slice(-6).map(([r, v]) => [r, `výnosy ${mm(v.vynosy)} (daňové ${mm(v.danove_vynosy)}, transfery ${mm(v.transfery_prijate)}), náklady ${mm(v.naklady)} (mzdy ${mm(v.osobne_naklady)}, služby ${mm(v.sluzby)}, transfery ${mm(v.transfery_dane)}), výsledok ${mm(v.vysledok)}, bankové úvery ${mm(v.bankove_uvery ?? 0)}, majetok ${mm(v.majetok)}`])),
+        dlh_mf_sr: Object.fromEntries(Object.entries<any>(h.dlh).map(([r, v]) => [r, `dlh ${mm(v.dlh)}, pomer k bežným príjmom ${v.pomer} %, dlhová služba ${v.dlhova_sluzba ?? '–'} %`])),
+      };
+    })(),
     samosprava: sam ? {
       stranka: `/${m.slug}/samosprava`,
       poznamka: sam.crz ? `Zmluvy mesta z Centrálneho registra zmlúv od ${crz.od} (bez fyzických osôb; dodatky sú samostatné zmluvy).` : 'Zmluvy, faktúry a objednávky mesta (bez fyzických osôb) a hlasovania poslancov z otvorených dát mesta.',

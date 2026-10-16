@@ -6,7 +6,7 @@ import path from 'node:path';
 import Base from '../../layouts/Base.astro';
 import Hlasovania from '../../components/Hlasovania.astro';
 import { MESTA, type Mesto } from '../../mesta';
-import { maSamospravu } from '../../lib/mapa';
+import { maSamospravu, hospodarenie } from '../../lib/mapa';
 
 export function getStaticPaths() {
   return MESTA.filter((m) => m.aktivne && !m.plne && maSamospravu(m.slug)).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
@@ -30,20 +30,65 @@ const posledny = (x: any) => (x ? Object.keys(x.roky).filter((r) => Number(r) < 
 const mil = (n: number) => (n / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: n >= 1e8 ? 0 : 1 }) + ' mil. €';
 const eur = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 0 }) + ' €';
 const fmt = (n: number) => n.toLocaleString('sk-SK');
+const des = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
 const datum = (s: string) => s.split('-').reverse().map((x) => x.replace(/^0/, '')).join('. ');
 const MNOZNE: Record<string, string> = { zmluvy: 'zmlúv', faktúry: 'faktúr', objednávky: 'objednávok' };
 // graf: posledných 12 celých rokov
 const roky = [...new Set(fin.flatMap((x) => Object.keys(x.roky)))].filter((r) => Number(r) < rokTeraz).sort().slice(-12);
+// hospodárenie (RÚZ, MF SR)
+const h = hospodarenie(m.slug);
+const obyv = (() => { const p = path.join(process.cwd(), 'data', 'mesta', 'porovnanie.json'); return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')).mesta.find((x: any) => x.slug === m.slug)?.obyvatelia : null; })();
+const naObyv = (n: number) => (obyv ? `${Math.round(n / obyv).toLocaleString('sk-SK')} € na obyvateľa` : '');
+const hRoky = h ? Object.keys(h.roky).sort() : [];
+const hGraf = h ? JSON.stringify({ roky: hRoky, vynosy: hRoky.map((r) => h.roky[r].vynosy), naklady: hRoky.map((r) => h.roky[r].naklady),
+  dlh: hRoky.map((r) => h.dlh[r]?.dlh ?? null), uvery: hRoky.map((r) => h.roky[r].bankove_uvery ?? null) }) : '';
+const STRUKTURA_V: [string, string][] = [['danove_vynosy', 'Daňové výnosy (podiel na dani z príjmov, daň z nehnuteľností…)'], ['poplatky', 'Poplatky (odpad a iné)'], ['transfery_prijate', 'Transfery od štátu, EÚ a iných'], ['trzby', 'Tržby za služby a predaj']];
+const STRUKTURA_N: [string, string][] = [['transfery_dane', 'Transfery (školy, dopravný podnik, organizácie mesta, dotácie)'], ['osobne_naklady', 'Mzdy a odvody zamestnancov mesta'], ['sluzby', 'Služby (údržba, opravy, odpad…)'], ['odpisy', 'Odpisy majetku'], ['spotreba', 'Materiál a energie'], ['uroky', 'Úroky']];
 const graf = JSON.stringify({ roky, rady: fin.map((x) => ({ typ: x.typ, sumy: roky.map((r) => x.roky[r]?.suma ?? null) })) });
 ---
 <Base title={`Samospráva – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: zmluvy, faktúry a objednávky mesta, najväčší dodávatelia, dotácie a ako hlasovali poslanci mestského zastupiteľstva.`}>
   <section class="hero">
     <p class="kicker">Samospráva</p>
-    <h1>{d.crz ? 'Zmluvy mesta' : 'Kam idú peniaze a ako sa hlasuje'} <span translate="no">{m.v}</span></h1>
+    <h1>{d.crz ? 'Peniaze a zmluvy mesta' : 'Kam idú peniaze a ako sa hlasuje'} <span translate="no">{m.v}</span></h1>
     {d.crz
-      ? <p class="lead">Zmluvy mesta z <a href={d.portal}>Centrálneho registra zmlúv</a> od roku {crz.od.slice(0, 4)} – s kým mesto uzatvára zmluvy, na koľko a komu dáva dotácie.</p>
+      ? <p class="lead">Hospodárenie a dlh mesta z účtovných závierok a zmluvy z <a href={d.portal}>Centrálneho registra zmlúv</a> od roku {crz.od.slice(0, 4)} – s kým mesto uzatvára zmluvy, na koľko a komu dáva dotácie.</p>
       : <p class="lead">Zmluvy, faktúry a objednávky mesta a hlasovania poslancov z otvorených dát mesta (<a href={d.portal}>{portalNazov}</a>).</p>}
   </section>
+
+  {h && (
+    <>
+      <h2 class="sekcia" id="hospodarenie">Hospodárenie mesta</h2>
+      <section class="kpis">
+        <div class="card kpi"><p class="label">Výnosy {h.rok}</p><p class="value">{mil(h.posledny.vynosy)}</p><p class="delta">{naObyv(h.posledny.vynosy)}</p></div>
+        <div class="card kpi"><p class="label">Náklady {h.rok}</p><p class="value">{mil(h.posledny.naklady)}</p><p class="delta">výsledok hospodárenia {h.posledny.vysledok >= 0 ? '+' : '−'}{mil(Math.abs(h.posledny.vysledok))}</p></div>
+        <div class="card kpi"><p class="label">Bankové úvery k 31. 12. {h.rok}</p><p class="value">{mil(h.posledny.bankove_uvery ?? 0)}</p><p class="delta">{naObyv(h.posledny.bankove_uvery ?? 0)}</p></div>
+        {h.dlhPosledny && <div class="card kpi"><p class="label">Dlh k bežným príjmom ({h.rokDlh})</p><p class="value">{des(h.dlhPosledny.pomer)} %</p><p class="delta">dlh {mil(h.dlhPosledny.dlh)} · zákonný limit 60 %</p></div>}
+      </section>
+      <section class="card" id="hosp-graf" data-graf={hGraf}>
+        <h3>Výnosy, náklady a dlh podľa rokov</h3>
+        <div class="chart"><canvas id="g-hosp" role="img" aria-label="Výnosy, náklady, bankové úvery a dlh mesta podľa rokov"></canvas></div>
+      </section>
+      <section class="card">
+        <div class="mriezka">
+          {[['Odkiaľ má mesto peniaze', STRUKTURA_V, h.posledny.vynosy], ['Na čo ich míňa', STRUKTURA_N, h.posledny.naklady]].map(([nadpis, rady, spolu]: any) => (
+            <div>
+              <h3>{nadpis} ({h.rok})</h3>
+              <ul class="struktura">
+                {rady.filter(([k]: any) => h.posledny[k]).map(([k, n]: any) => (
+                  <li><span>{n}</span><strong>{mil(h.posledny[k])}</strong><i style={`--w:${Math.min(100, (100 * h.posledny[k]) / spolu).toFixed(1)}%`} aria-hidden="true"></i></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p class="zdroj">
+          Zdroj: individuálna účtovná závierka mesta v <a href={h.zdroje.ruz.url}>Registri účtovných závierok</a> (výkaz ziskov a strát a súvaha – akruálne údaje,
+          nie rozpočet; bez mestských firiem, škôl a ďalších organizácií mesta{m.slug === 'kosice' ? ' a bez mestských častí' : ''}) a <a href={h.zdroje.dlh.url}>MF SR – dlh a dlhová služba miest a obcí</a>{' '}
+          (dlh podľa zákona o rozpočtových pravidlách, bez úverov ŠFRB na nájomné byty). Porovnanie s ostatnými mestami: <a href="/porovnanie">Porovnanie miest</a>.
+        </p>
+      </section>
+    </>
+  )}
 
   {fin.length > 0 && (
     <>
@@ -127,6 +172,26 @@ const graf = JSON.stringify({ roky, rady: fin.map((x) => ({ typ: x.typ, sumy: ro
       },
     });
   }
+  const hg = document.getElementById('hosp-graf');
+  if (hg?.dataset.graf) {
+    const g = JSON.parse(hg.dataset.graf);
+    const css = getComputedStyle(document.documentElement);
+    const muted = css.getPropertyValue('--muted').trim();
+    const akc = css.getPropertyValue('--accent').trim();
+    new Chart(document.getElementById('g-hosp') as HTMLCanvasElement, {
+      data: { labels: g.roky, datasets: [
+        { type: 'bar', label: 'výnosy', data: g.vynosy, backgroundColor: '#2f8f5b', borderRadius: 3, order: 2 },
+        { type: 'bar', label: 'náklady', data: g.naklady, backgroundColor: akc, borderRadius: 3, order: 2 },
+        { type: 'line', label: 'bankové úvery', data: g.uvery, borderColor: '#2f6fb3', backgroundColor: '#2f6fb3', borderWidth: 3, tension: 0.2, order: 1 },
+        { type: 'line', label: 'dlh (MF SR)', data: g.dlh, borderColor: '#9a6b00', backgroundColor: '#9a6b00', borderWidth: 3, borderDash: [6, 4], tension: 0.2, spanGaps: false, order: 0 },
+      ] },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: muted } }, tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${((c.parsed.y ?? 0) / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} mil. €` } } },
+        scales: { x: { ticks: { color: muted }, grid: { display: false } }, y: { beginAtZero: true, ticks: { color: muted, callback: (v) => `${Number(v) / 1e6} mil.` } } },
+      },
+    });
+  }
   document.querySelectorAll<HTMLButtonElement>('.taby[aria-label="Typ dokladu"] button').forEach((b) => b.addEventListener('click', () => {
     const t = b.dataset.t;
     b.parentElement!.querySelectorAll('button').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
@@ -163,5 +228,10 @@ const graf = JSON.stringify({ roky, rady: fin.map((x) => ({ typ: x.typ, sumy: ro
   .zmluva-hlava span { color: var(--muted); font-size: 0.85rem; }
   .predmet { color: var(--muted); font-size: 0.85rem; }
   .odkazy { margin: 0; padding-left: 20px; }
+  .struktura { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .struktura li { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; font-size: 0.9rem; }
+  .struktura strong { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .struktura i { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--line); position: relative; overflow: hidden; }
+  .struktura i::after { content: ''; position: absolute; inset: 0 auto 0 0; width: var(--w); background: var(--accent); border-radius: 3px; }
   :global(h2.sekcia) { font-size: 1.5rem; letter-spacing: -0.02em; margin: 32px 0 0; }
 </style>

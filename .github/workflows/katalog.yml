@@ -19,6 +19,7 @@ on:
       - "scripts/zber_mapa_mesta.py"
       - "scripts/zber_mapa_osm.py"
       - "scripts/zber_samosprava_mesta.py"
+      - "scripts/zber_hospodarenie.py"
       - ".github/workflows/katalog.yml"
 
 permissions:
@@ -74,6 +75,11 @@ jobs:
       - name: Samospráva miest – hlasovania poslancov, zmluvy, faktúry, objednávky
         if: success() || failure()
         run: python scripts/zber_samosprava_mesta.py
+
+      - name: Hospodárenie miest (účtovné závierky RÚZ, dlh MF SR)
+        if: success() || failure()
+        timeout-minutes: 30
+        run: python scripts/zber_hospodarenie.py
 
       - name: Mapy krajských miest (OpenStreetMap)
         if: success() || failure()

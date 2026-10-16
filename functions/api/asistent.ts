@@ -469,13 +469,13 @@ async function odpovedMesto(ctx: any, m: any, telo: any, otazka: string, otazkaP
   // samospráva (zmluvy, faktúry, hlasovania) je rozsiahla – posielame ju len pri otázke na ňu, a z nej len potrebnú časť
   const sam = kontext.udaje_mesta?.samosprava;
   if (sam) {
-    const oPeniazoch = /zmluv|faktur|objednav|dodavatel|firm|peniaz|plati|minul|zakazk|tender|obstara/.test(q);
+    const oPeniazoch = /zmluv|faktur|objednav|dodavatel|firm|peniaz|plati|minul|zakazk|tender|obstara|dotaci/.test(q);
     const oHlasovani = /hlasova|poslan|zastupitel|klub|dochadz|pritomn|uznesen|zasadnut/.test(q);
     if (!oPeniazoch && !oHlasovani) delete kontext.udaje_mesta.samosprava;
     else {
       if (!oPeniazoch) delete sam.financie;
       if (!oHlasovani) delete sam.hlasovania;
-      kontext.udaje_mesta = { mesto: kontext.udaje_mesta.mesto, samosprava: sam, porovnanie_krajskych_miest: kontext.udaje_mesta.porovnanie_krajskych_miest };
+      kontext.udaje_mesta = { mesto: kontext.udaje_mesta.mesto, samosprava: sam, hospodarenie_mesta: kontext.udaje_mesta.hospodarenie_mesta, porovnanie_krajskych_miest: kontext.udaje_mesta.porovnanie_krajskych_miest };
     }
   }
   const ziveTypy = Object.keys(ZIVE).filter((t) => t !== 'cesty' && ZIVE[t].test(q));
@@ -502,7 +502,7 @@ async function odpovedMesto(ctx: any, m: any, telo: any, otazka: string, otazkaP
   const messages = [
     { role: 'system', content: system(datum, jazyk, LOKAL[m.slug] ?? m.nazov) + `\n- Otázky sú o meste ${m.nazov}, ak nie je uvedené inak. Pri porovnaní s inými mestami použi „porovnanie_krajskych_miest“.` },
     ...historia,
-    { role: 'user', content: `PODKLADY (JSON):\n${JSON.stringify(kontext).slice(0, 24000)}\n\nOTÁZKA: ${otazkaPovodna}${jazyk !== 'sk' ? `\n(po slovensky: ${otazka})\nODPOVEDZ ${JAZYKY_ODPOVEDE[jazyk]}.` : ''}` },
+    { role: 'user', content: `PODKLADY (JSON):\n${JSON.stringify(kontext).slice(0, 32000)}\n\nOTÁZKA: ${otazkaPovodna}${jazyk !== 'sk' ? `\n(po slovensky: ${otazka})\nODPOVEDZ ${JAZYKY_ODPOVEDE[jazyk]}.` : ''}` },
   ];
   const odkazy = [{ url: `/${m.slug}`, nazov: `${m.nazov} – prehľad` }, { url: '/porovnanie', nazov: 'Porovnanie miest' }];
   if (m.katalog) odkazy.push({ url: `/${m.slug}/katalog`, nazov: 'Katalóg dát mesta' });

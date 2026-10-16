@@ -4,10 +4,21 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../layouts/Base.astro';
 import { MESTA } from '../mesta';
+import { hospodarenie } from '../lib/mapa';
 
 const subor = path.join(process.cwd(), 'data', 'mesta', 'porovnanie.json');
 const por: any[] = fs.existsSync(subor) ? JSON.parse(fs.readFileSync(subor, 'utf-8')).mesta : [];
 for (const p of por) p.byty_1000 = p.byty_10r != null && p.obyvatelia ? (1000 * p.byty_10r) / p.obyvatelia : null;
+// hospodárenie mesta (RÚZ, MF SR) – na obyvateľa; Bratislava a Košice bez mestských častí
+for (const p of por) {
+  const h = hospodarenie(p.slug);
+  p.vynosy_obyv = h && p.obyvatelia ? h.posledny.vynosy / p.obyvatelia : null;
+  p.dane_obyv = h && p.obyvatelia ? h.posledny.danove_vynosy / p.obyvatelia : null;
+  p.uvery_obyv = h && p.obyvatelia ? (h.posledny.bankove_uvery ?? 0) / p.obyvatelia : null;
+  p.pomer_dlhu = h?.dlhPosledny?.pomer ?? null;
+}
+const hRok = hospodarenie('kosice')?.rok;
+const hRokDlh = hospodarenie('kosice')?.rokDlh;
 
 const des = (n: number | null, k = 1) => (n == null ? '–' : n.toLocaleString('sk-SK', { minimumFractionDigits: k, maximumFractionDigits: k }));
 const fmt = (n: number | null) => (n == null ? '–' : Math.round(n).toLocaleString('sk-SK'));
@@ -23,6 +34,10 @@ const UKAZ: [string, string, (n: number | null) => string, string][] = [
   ['ucast_komunalne', 'Účasť v komunálnych voľbách', (n) => `${des(n)} %`, 'voľba primátora 2022'],
   ['byty_1000', 'Nové byty ročne', (n) => des(n), 'dokončené byty na 1 000 obyvateľov, priemer 10 rokov (okres)'],
   ['ceny_kraj', 'Ceny bývania za rok', znam, 'medziročná zmena v kraji'],
+  ['vynosy_obyv', 'Výnosy mesta na obyvateľa', (n) => (n == null ? '–' : `${fmt(n)} €`), `všetky výnosy mesta za rok ${hRok} (účtovná závierka)`],
+  ['dane_obyv', 'Daňové výnosy na obyvateľa', (n) => (n == null ? '–' : `${fmt(n)} €`), `najmä podiel na dani z príjmov a daň z nehnuteľností, ${hRok}`],
+  ['uvery_obyv', 'Bankové úvery na obyvateľa', (n) => (n == null ? '–' : `${fmt(n)} €`), `stav úverov k 31. 12. ${hRok}`],
+  ['pomer_dlhu', 'Dlh k príjmom', (n) => (n == null ? '–' : `${des(n)} %`), `dlh / bežné príjmy ${hRokDlh} (MF SR), zákonný limit 60 %`],
 ];
 const odkaz = (slug: string) => (MESTA.find((m) => m.slug === slug)?.aktivne ? `/${slug}` : null);
 ---
@@ -58,7 +73,7 @@ const odkaz = (slug: string) => (MESTA.find((m) => m.slug === slug)?.aktivne ? `
             </tbody>
           </table>
         </div>
-        <p class="zdroj">Zdroje: ŠÚ SR (DATAcube, sčítanie 2021 – STATdata, index cien sp3801qr, byty st3004rr), ÚPSVaR, volby.statistics.sk. Nezamestnanosť, byty a ceny sú za okres alebo kraj – zahŕňajú aj obce okolo mesta. Bratislava a Košice sú súčtom mestských častí.</p>
+        <p class="zdroj">Zdroje: ŠÚ SR (DATAcube, sčítanie 2021 – STATdata, index cien sp3801qr, byty st3004rr), ÚPSVaR, volby.statistics.sk. Nezamestnanosť, byty a ceny sú za okres alebo kraj – zahŕňajú aj obce okolo mesta. Bratislava a Košice sú súčtom mestských častí; pri hospodárení ide len o mesto (magistrát) bez mestských častí – <a href="https://www.registeruz.sk">Register účtovných závierok</a> a <a href="https://opendata.mfsr.sk">MF SR</a>.</p>
       </section>
     </>
   ) : <p class="card">Údaje sa práve zbierajú.</p>}
