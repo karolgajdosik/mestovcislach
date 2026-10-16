@@ -18,6 +18,9 @@ const podiel = (t: Record<string, number> | undefined, n = 6) => {
   return Object.fromEntries(Object.entries(t).filter(([k]) => k !== 'Spolu').sort((a, b) => b[1] - a[1]).slice(0, n).map(([k, v]) => [k, `${((100 * v) / spolu).toFixed(1)} %`]));
 };
 
+// dlhé koalície skrátime na prvé strany (celý zoznam je na stránke mesta)
+const skrat = (t: string) => { const c = String(t ?? '').split(', '); return c.length > 3 ? `${c.slice(0, 3).join(', ')} a ďalší` : t; };
+
 export async function GET({ params }: { params: { mesto: string } }) {
   const m = MESTA.find((x) => x.slug === params.mesto)!;
   const d = citaj('data', 'mesta', `${m.slug}.json`) ?? {};
@@ -37,8 +40,8 @@ export async function GET({ params }: { params: { mesto: string } }) {
     volby: d.volby ? Object.fromEntries(Object.entries<any>(d.volby).map(([k, v]) => [v.nazov, { ucast: `${v.ucast} % (Slovensko ${v.ucast_sr} %)`, strany: v.strany.slice(0, 8).map((s: any) => `${s.nazov} ${s.podiel} %`) }])) : undefined,
     komunalne_volby: Object.fromEntries(Object.entries<any>(kom).map(([rok, v]) => [rok, {
       ucast: v.ucast ? `${v.ucast.ucast_pct} %` : undefined,
-      primator: v.primator.slice(0, 6).map((k: any) => `${k.meno} (${k.strany.slice(0, 120)}) ${k.podiel} %${k.zvoleny ? ' – zvolený' : ''}`),
-      zastupitelstvo_mandaty: v.zastupitelstvo.mandaty.map((x: any) => `${x.strany.slice(0, 120)}: ${x.mandaty}`),
+      primator: v.primator.slice(0, 6).map((k: any) => `${k.meno} (${skrat(k.strany)}) ${k.podiel} %${k.zvoleny ? ' – zvolený' : ''}`),
+      zastupitelstvo_mandaty: v.zastupitelstvo.mandaty.map((x: any) => `${skrat(x.strany)}: ${x.mandaty}`),
     }])),
     nezamestnanost_pdu: prPosl ? { obdobie: prPosl, ...Object.fromEntries(Object.entries<any>(pr[prPosl]).map(([o, v]) => [o, `PDU ${v.pdu} %, uchádzačov ${v.uoz}`])) } : undefined,
     byty_v_okresoch: d.byty ? Object.fromEntries(Object.entries<any>(d.byty).slice(-10).map(([r, v]) => [r, `dokončené ${v.DOKONC_BYT}, začaté ${v.ZAC_BYT}`])) : undefined,

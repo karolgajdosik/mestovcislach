@@ -467,6 +467,7 @@ async function odpovedMesto(ctx: any, m: any, telo: any, otazka: string, otazkaP
   const kontext: any = {};
   try { kontext.udaje_mesta = await (await env.ASSETS.fetch(new URL(`/data/mesta/${m.slug}.json`, base))).json(); } catch { /* bez podkladov */ }
   const ziveTypy = Object.keys(ZIVE).filter((t) => t !== 'cesty' && ZIVE[t].test(q));
+  if (!ziveTypy.includes('dunaj') && /riek|hladin|povod|vodn\w* stav|hornad|torys|\bhron|\bvah|rajcank|trnavk|nitr[ay]? (rieka|tok)/.test(q)) ziveTypy.push('dunaj');
   for (const t of ziveTypy) {
     try {
       if (t === 'pocasie') {
