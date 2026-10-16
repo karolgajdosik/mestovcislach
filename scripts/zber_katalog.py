@@ -13,9 +13,19 @@ import re
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
-from spolocne import DATA, s, spusti, zapis_ak_zmena
+import json
+import os
 
-HUB = "https://data.bratislava.sk/api/search/v1/collections/dataset/items"
+from spolocne import DATA, KOREN, s, spusti, zapis_ak_zmena
+
+# Mesto: MESTO=kosice python scripts/zber_katalog.py (portál z src/mesta.json); predvolene Bratislava
+MESTO = os.environ.get("MESTO", "bratislava")
+PORTAL, MIN_POLOZIEK = "https://data.bratislava.sk", 300
+if MESTO != "bratislava":
+    _k = next(m for m in json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8")) if m["slug"] == MESTO)["katalog"]
+    PORTAL, MIN_POLOZIEK = _k["portal"], _k.get("min", 20)
+SUBOR = DATA / f"katalog-{MESTO}.json"
+HUB = f"{PORTAL}/api/search/v1/collections/dataset/items"
 ITEM = "https://www.arcgis.com/sharing/rest/content/items/{}"
 
 
@@ -89,10 +99,9 @@ def detail(p: dict) -> dict:
 
 
 def main() -> int:
-    import json
     polozky = zoznam()
     # Hub občas niektoré položky nevráti – doplníme tie, ktoré poznáme z minulých behov (ak ešte existujú)
-    stare_cesta = DATA / "katalog-bratislava.json"
+    stare_cesta = SUBOR
     if stare_cesta.exists():
         zname = {p["id"] for p in polozky}
         chybajuce = [p for p in json.loads(stare_cesta.read_text(encoding="utf-8"))["datasety"] if p["id"] not in zname]
@@ -103,12 +112,12 @@ def main() -> int:
                 polozky.append({k: p.get(k) for k in ("id", "nazov", "typ", "url", "tagy", "kategorie", "upravene", "popis")})
                 doplnene += 1
         print(f"Doplnené z minulého inventára: {doplnene} (chýbalo {len(chybajuce)})")
-    if len(polozky) < 300:
+    if len(polozky) < MIN_POLOZIEK:
         raise RuntimeError(f"Katalóg: len {len(polozky)} položiek")
     with ThreadPoolExecutor(8) as ex:
         polozky = list(ex.map(detail, polozky))
     polozky.sort(key=lambda p: (p.get("nazov") or "").lower())
-    zapis_ak_zmena(DATA / "katalog-bratislava.json", {"zdroj": "https://data.bratislava.sk", "pocet": len(polozky), "datasety": polozky,
+    zapis_ak_zmena(SUBOR, {"zdroj": PORTAL, "pocet": len(polozky), "datasety": polozky,
                                                       "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds")})
     typy: dict[str, int] = {}
     for p in polozky:

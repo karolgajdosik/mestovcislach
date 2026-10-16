@@ -18,6 +18,7 @@ const citaj = (...c: string[]) => {
 const d = citaj('data', 'mesta', `${m.slug}.json`) ?? {};
 const por = citaj('data', 'mesta', 'porovnanie.json')?.mesta ?? [];
 const eia = citaj('public', 'data', 'mesta', `eia-${m.slug}.json`);
+const katalog = (m as any).katalog ? citaj('data', `katalog-stav-${m.slug}.json`) : null;
 
 const fmt = (n: number | null | undefined) => (n == null ? '–' : Math.round(n).toLocaleString('sk-SK'));
 const des = (n: number | null | undefined, k = 1) => (n == null ? '–' : n.toLocaleString('sk-SK', { minimumFractionDigits: k, maximumFractionDigits: k }));
@@ -193,6 +194,14 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
       </>
     ) : <p class="pozn">Zámery z Enviroportálu sa práve zbierajú – pribudnú do jedného dňa.</p>}
   </section>
+
+  {katalog && (
+    <section class="card porovnaj">
+      <h2>Otvorené dáta mesta</h2>
+      <p class="pozn">{m.nazov} zverejňuje {katalog.datasety.length} datasetov na portáli <a href={(m as any).katalog.portal}>{(m as any).katalog.nazov}</a>. {katalog.pocty.katalog ?? 0} tabuliek si môžete pozrieť s grafom a stiahnuť v CSV.</p>
+      <p><a class="tlacidlo" href={`/${m.slug}/katalog`}>Katalóg dát mesta</a></p>
+    </section>
+  )}
 
   <section class="card porovnaj">
     <h2>Ako si <span translate="no">{m.nazov}</span> stojí medzi krajskými mestami</h2>

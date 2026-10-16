@@ -1,4 +1,4 @@
-name: Katalóg Bratislavy
+name: Katalógy miest
 
 # Inventár všetkých datasetov data.bratislava.sk a všeobecný import tabuliek – raz týždenne, ručne alebo pri zmene skriptov.
 on:
@@ -62,6 +62,12 @@ jobs:
         if: success() || failure()
         run: python scripts/zber_klima.py
 
+      - name: Katalóg Košíc (opendata.kosice.sk)
+        if: success() || failure()
+        env:
+          MESTO: kosice
+        run: python scripts/zber_katalog.py && python scripts/zber_tabulky.py
+
       - name: Uložiť zmeny v dátach
         if: success() || failure()
         run: |
@@ -71,7 +77,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Žiadne nové dáta."
           else
-            git commit -m "Dáta: katalóg Bratislavy $(date -u +%Y-%m-%d)"
+            git commit -m "Dáta: katalógy miest $(date -u +%Y-%m-%d)"
             for i in 1 2 3 4 5; do git pull --rebase -X theirs -q && git push && break; sleep $((i * 5)); done
             git fetch -q origin main && git diff --quiet HEAD origin/main -- data public/data || { echo "::error::Push dát zlyhal"; exit 1; }
           fi
