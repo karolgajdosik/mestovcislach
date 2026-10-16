@@ -101,6 +101,37 @@ export async function GET() {
         .map(([k, v]) => [k, Object.fromEntries(Object.entries<any>(v).map(([u, r]) => [u, Object.fromEntries(Object.entries<any>(r).filter(([y]) => Number(y) >= 2015))]))])) },
     };
   }
+  const eia = nacitaj('eia-bratislava.json');
+  if (eia) {
+    const pred = (r: number) => new Date(Date.now() - r * 365 * 864e5).toISOString().slice(0, 10);
+    const zam = eia.zamery.filter((z: any) => !z.ukoncene || z.zmena >= pred(3));
+    const KAT: Record<string, string> = { byvanie: 'bývanie a polyfunkcia', obcianska: 'obchod, kancelárie, služby', doprava: 'doprava', priemysel: 'priemysel a sklady', odpady: 'odpady', energia: 'energetika', voda: 'voda a kanalizácia', plan: 'územný plán alebo koncepcia', ine: 'iné' };
+    const mc: Record<string, number> = {};
+    for (const z of eia.zamery.filter((x: any) => !x.ukoncene)) for (const m of z.mc) mc[m] = (mc[m] ?? 0) + 1;
+    temy.stavby = {
+      nazov: 'Čo sa stavia – zámery v posudzovaní vplyvov na životné prostredie (EIA/SEA, Enviroportál)', stranka: '/vystavba#co-sa-stavia',
+      fakty: {
+        poznamka: 'Zámery väčších stavieb a plánov, ktoré prešli alebo prechádzajú posudzovaním EIA/SEA. Nie je to zoznam všetkých stavieb ani stavebných povolení. K prebiehajúcemu zámeru sa môže vyjadriť verejnosť – lehota a dokumenty sú na Enviroportáli.',
+        prave_sa_posudzuje_spolu: eia.zamery.filter((z: any) => !z.ukoncene).length,
+        prebiehajuce_podla_mestskych_casti: mc,
+        zamery: zam.map((z: any) => ({ nazov: z.nazov, mc: z.mc, kat: KAT[z.kat] ?? z.kat, stav: z.stav, ukoncene: z.ukoncene, zmena: z.zmena, navrhovatel: z.navrhovatel, ucel: (z.ucel ?? '').slice(0, 260), url: `https://www.enviroportal.sk/eia/detail/${z.seo}` })),
+      },
+    };
+  }
+  const byv = nacitaj('byvanie-bratislava.json');
+  if (byv) {
+    const rad = byv.ceny.rad;
+    const roky = Object.keys(byv.vystavba.roky).sort().slice(-10);
+    temy.byvanie = {
+      nazov: 'Bývanie: ceny nehnuteľností (ŠÚ SR, index realizačných cien) a výstavba bytov (ŠÚ SR)', stranka: '/vystavba#ceny',
+      fakty: {
+        poznamka: 'Ceny sú len ako index za Bratislavský kraj (nie €/m², nie za mestské časti). Index rr = rovnaké obdobie minulého roka 100; idx = 1. štvrťrok 2022 = 100. Údaje o výstavbe za rok 2025 sú z nového registra a nemusia byť porovnateľné.',
+        ceny_po_stvrtrokoch: rad.slice(-12).map((r: any) => `${r.obdobie}: BA kraj medziročne ${(r.ba_total_rr - 100).toFixed(1)} % (novostavby ${(r.ba_dw_new_rr - 100).toFixed(1)} %, staršie ${(r.ba_dw_exst_rr - 100).toFixed(1)} %), SR ${(r.sr_total_rr - 100).toFixed(1)} %; od 1. Q 2022 BA +${(r.ba_total_idx - 100).toFixed(1)} %`),
+        byty_bratislava_po_rokoch: Object.fromEntries(roky.map((r) => [r, `dokončené ${byv.vystavba.roky[r].Bratislava.DOKONC_BYT}, začaté ${byv.vystavba.roky[r].Bratislava.ZAC_BYT}, rozostavané k 31.12. ${byv.vystavba.roky[r].Bratislava.ROZOST_BYT_KON}`])),
+        okresy_posledny_rok: Object.fromEntries(Object.entries<any>(byv.vystavba.roky[roky[roky.length - 1]]).filter(([o]) => o !== 'Bratislava').map(([o, v]) => [`${o} (${byv.vystavba.okresy_casti[o]})`, `dokončené ${v.DOKONC_BYT}, začaté ${v.ZAC_BYT}`])),
+      },
+    };
+  }
   const zmc = nacitaj('zmluvy-mc.json');
   if (zmc) {
     temy.zmluvy_mc = {

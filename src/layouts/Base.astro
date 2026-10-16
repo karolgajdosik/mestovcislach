@@ -18,12 +18,13 @@ const MENU: [string, string, string][] = [
   ['/volby', 'Voľby', '<path d="M4 11h16v9H4z"/><path d="M8 11V4h8v7"/><path d="m10 7.6 1.4 1.4L14.2 6"/>'],
   ['/financie', 'Financie', '<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/>'],
   ['/doprava', 'Doprava', '<rect x="5" y="3.5" width="14" height="13.5" rx="3"/><path d="M5 10h14M8 17v3M16 17v3"/><circle cx="8.6" cy="13.4" r=".9"/><circle cx="15.4" cy="13.4" r=".9"/>'],
+  ['/vystavba', 'Výstavba', '<path d="M3 20h18M5 20V9l5-3v14M10 9h9v11M13 12h3M13 15h3M8 2.5v3.5"/><path d="M4 4.5l4-2 9 3"/>'],
   ['/vybavenost', 'Vybavenosť', '<path d="M4 20V8.5L12 4l8 4.5V20"/><path d="M9.5 20v-5h5v5M8 11h2M14 11h2M2.5 20h19"/>'],
   ['/prostredie', 'Prostredie', '<path d="M5 19.5C5 11 10 6 20 4.5 19 14 14 19.5 5.5 19.5Z"/><path d="M5 19.5c2.8-4 6-7 10-9.2"/>'],
   ['/bezpecnost', 'Bezpečnosť', '<path d="M12 3 5 6v5.2c0 4.4 3 8.2 7 9.8 4-1.6 7-5.4 7-9.8V6l-7-3Z"/><path d="m9 12 2 2 4-4.2"/>'],
   ['/katalog', 'Katalóg dát', '<ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>'],
 ];
-const OG = ['mestske-casti', 'mapa', 'obyvatelia', 'volby', 'financie', 'doprava', 'vybavenost', 'prostredie', 'bezpecnost', 'katalog'];
+const OG = ['mestske-casti', 'vystavba', 'mapa', 'obyvatelia', 'volby', 'financie', 'doprava', 'vybavenost', 'prostredie', 'bezpecnost', 'katalog'];
 const sekcia = Astro.url.pathname.split('/').filter(Boolean)[0] ?? '';
 const ogObrazok = new URL(`/og/${OG.includes(sekcia) ? sekcia : 'index'}.png`, Astro.site ?? 'https://mestovcislach.sk');
 const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.sk');
@@ -235,12 +236,13 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
   .hlava-akcie { display: flex; align-items: center; margin-left: auto; flex-shrink: 0; }
   .menu { border-top: 1px solid var(--line); background: var(--card); }
   /* pás menu môže byť širší ako obsah stránky, aby sa všetky sekcie zmestili */
-  .menu .menu-pas, .top .hlava { max-width: 1300px; }
+  .top .hlava { max-width: 1300px; }
+  .menu .menu-pas { max-width: 1380px; }
   .menu-pas { display: flex; gap: 2px; height: 52px; align-items: center; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; scroll-padding: 0 16px; }
   .menu-pas::-webkit-scrollbar { display: none; }
   .menu a {
-    display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; height: 38px; padding: 0 11px 0 9px; border-radius: 19px;
-    color: var(--text); text-decoration: none; font-size: 0.92rem; font-weight: 600; white-space: nowrap; scroll-snap-align: start;
+    display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; height: 38px; padding: 0 9px 0 7px; border-radius: 19px;
+    color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 600; white-space: nowrap; scroll-snap-align: start;
     transition: background 0.15s, color 0.15s;
   }
   .menu a svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--accent); flex-shrink: 0; }

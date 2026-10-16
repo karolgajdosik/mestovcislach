@@ -13,6 +13,11 @@ const nacitaj = (subor: string, verejne = false) => {
 const SEKCIE: [string, string, string, string][] = [
   ['/', 'Prehľad', 'Dnes v Bratislave, obyvatelia, rozcestník', 'úvod domov dnes'],
   ['/#dnes', 'Dnes v Bratislave', 'výstrahy, ovzdušie, Dunaj, uzávierky', 'výstraha búrka počasie dnes'],
+  ['/vystavba', 'Výstavba a bývanie', 'čo sa stavia, ceny bytov, nové byty', 'výstavba stavba developer projekt eia bývanie byty'],
+  ['/vystavba#co-sa-stavia', 'Čo sa stavia', 'zámery v posudzovaní EIA/SEA na mape', 'stavba zámer eia sea developer posudzovanie polyfunkčný rezidencia'],
+  ['/vystavba#ceny', 'Ceny bytov', 'index cien bývania v Bratislavskom kraji', 'cena byt nehnuteľnosť m2 hypotéka drahé'],
+  ['/vystavba#nove-byty', 'Koľko bytov pribúda', 'dokončené a začaté byty podľa okresov', 'nové byty dokončené výstavba bytov'],
+  ['/vystavba#mestske-byty', 'Mestské a nájomné byty', 'byty mesta, komunitné bývanie, príspevok', 'nájom nájomné byty obecné mestské komunitné'],
   ['/mestske-casti', 'Mestské časti', 'profily a porovnanie 17 častí', 'mestská časť štvrť porovnanie profil'],
   ['/mapa', 'Mapa Bratislavy', 'všetky vrstvy na jednej mape', 'mapa vrstvy'],
   ['/mapa#horucavy', 'Mapa horúčav', 'riziko horúčav, fontány, ochladzovacie miesta', 'teplo horúčava klíma leto'],
@@ -98,6 +103,13 @@ export async function GET() {
   const zmc = nacitaj('zmluvy-mc.json');
   for (const [mc, v] of Object.entries<any>(zmc?.mestske_casti ?? {})) for (const p of v.najvacsi_partneri ?? []) if (!firmy.has(p.nazov)) firmy.set(p.nazov, `zmluvy: ${mc === 'Hlavné mesto' ? 'hlavné mesto' : mc}${p.ico ? ` · IČO ${p.ico}` : ''}|/financie#zmluvy-mc`);
   for (const d of nacitaj('faktury-bratislava.json')?.datasety ?? []) for (const p of (d.dodavatelia_posledne_3_roky ?? []).slice(0, 25)) if (!firmy.has(p.nazov)) firmy.set(p.nazov, `${d.typ} – ${d.organizacia}${p.ico ? ` · IČO ${p.ico}` : ''}|/financie#faktury`);
+  // zámery v posudzovaní EIA (prebiehajúce a za posledné 3 roky)
+  const eia = nacitaj('eia.json', true);
+  const hranica = new Date(Date.now() - 3 * 365 * 864e5).toISOString().slice(0, 10);
+  for (const z of eia?.zamery ?? []) {
+    if (z.ukoncene && z.zmena < hranica) continue;
+    polozky.push(['Čo sa stavia', z.nazov, `${z.mc.join(', ') || 'Bratislava'} · ${z.ukoncene ? 'posudzovanie skončené' : 'práve sa posudzuje'}`, `/vystavba?stav=&q=${encodeURIComponent(z.nazov.slice(0, 40))}#co-sa-stavia`, `stavba zámer ${z.navrhovatel ?? ''}`]);
+  }
   for (const [n, v] of firmy) { const [s, u] = v.split('|'); polozky.push(['Firmy a organizácie', n, s, u]); }
 
   return new Response(JSON.stringify({ polozky }), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });

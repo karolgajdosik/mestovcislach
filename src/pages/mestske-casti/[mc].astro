@@ -1,5 +1,7 @@
 ---
 // Profil mestskej časti: všetky údaje webu o jednej časti na jednom mieste, s porovnaním s celým mestom.
+import fs from 'node:fs';
+import path from 'node:path';
 import Base from '../../layouts/Base.astro';
 import { profily, type Profil, type Porovnanie } from '../../lib/profil-mc';
 
@@ -9,6 +11,13 @@ export async function getStaticPaths() {
 }
 const { p, pred, po, vsetky } = Astro.props as { p: Profil; pred: Profil; po: Profil; vsetky: [string, string][] };
 const { mesto } = await profily();
+// Čo sa stavia – zámery v posudzovaní EIA/SEA (public/data/eia.json)
+const eiaSubor = path.join(process.cwd(), 'public', 'data', 'eia.json');
+const eiaVsetky: any[] = fs.existsSync(eiaSubor) ? JSON.parse(fs.readFileSync(eiaSubor, 'utf-8')).zamery : [];
+const eiaMc = eiaVsetky.filter((z) => z.mc.includes(p.mc));
+const eiaAktivne = eiaMc.filter((z) => !z.ukoncene);
+const eiaRok = eiaMc.filter((z) => (z.od ?? z.zmena) >= new Date(Date.now() - 365 * 864e5).toISOString().slice(0, 10));
+const eiaByty = eiaAktivne.filter((z) => z.kat === 'byvanie').length;
 
 const fmt = (n: number | null | undefined) => (n == null ? '–' : Math.round(n).toLocaleString('sk-SK'));
 const des = (n: number | null | undefined, d = 1) => (n == null ? '–' : n.toLocaleString('sk-SK', { minimumFractionDigits: d, maximumFractionDigits: d }));
@@ -164,6 +173,20 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
         {MIESTA.filter(([k]) => p.miesta[k]).map(([k, n, tema]) => <li><a href={`/mapa#tema=${tema}`}><strong>{p.miesta[k]}</strong> {n}</a></li>)}
       </ul>
       <a class="viac" href="/vybavenost#spadova-skola">Spádová škola podľa adresy</a>
+    </section>
+
+    <section class="card" id="stavby">
+      <h2>Čo sa tu stavia</h2>
+      <dl class="cisla">
+        <div><dt>Práve sa posudzuje</dt><dd>{fmt(eiaAktivne.length)}</dd><dd class="pozn">zámerov a plánov (EIA/SEA){eiaByty ? `, z toho ${eiaByty} bývanie` : ''}</dd></div>
+        <div><dt>Nové za posledný rok</dt><dd>{fmt(eiaRok.length)}</dd><dd class="pozn">spolu {fmt(eiaMc.length)} posudzovaní od roku 2000</dd></div>
+      </dl>
+      {eiaAktivne.length > 0 && (
+        <div class="blok"><h3>Najnovšie</h3>
+          <ol class="zoznam">{eiaAktivne.slice(0, 5).map((z) => <li><span translate="no">{z.nazov}</span><span class="num pozn">{z.stav}</span></li>)}</ol>
+        </div>
+      )}
+      <a class="viac" href={`/vystavba?mc=${p.slug}#co-sa-stavia`}>Všetky zámery na mape</a>
     </section>
 
     <section class="card" id="bezpecnost">

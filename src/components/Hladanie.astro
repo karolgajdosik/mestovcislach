@@ -32,6 +32,7 @@
   const SKUPINY: Record<string, { max: number; vaha: number }> = {
     'Stránky': { max: 4, vaha: 1.6 }, 'Mestské časti': { max: 3, vaha: 2 }, 'Miesta': { max: 6, vaha: 1 }, 'Ulice': { max: 4, vaha: 1.1 },
     'Katalóg dát': { max: 5, vaha: 1 }, 'Poslanci': { max: 4, vaha: 1.4 }, 'Firmy a organizácie': { max: 4, vaha: 0.9 },
+    'Čo sa stavia': { max: 4, vaha: 1 },
   };
   const RYCHLE = ['/vybavenost#spadova-skola', '/doprava#naozivo', '/volby#komunalne', '/volby#hlasovania', '/financie#zmluvy-mc', '/mapa'];
 
@@ -64,7 +65,7 @@
   const popis = (p: Polozka) => (p.g === 'Ulice' ? nt(`${p.s}, ${tr('Spádová škola podľa adresy')}`)
     : p.g === 'Miesta' ? nt([tr(p.w), p.s].filter(Boolean).join(', '))
     : ['Poslanci', 'Firmy a organizácie'].includes(p.g) ? nt(p.s) : esc(p.s));
-  const BEZ_PREKLADU = new Set(['Miesta', 'Ulice', 'Poslanci', 'Firmy a organizácie', 'Mestské časti']);
+  const BEZ_PREKLADU = new Set(['Miesta', 'Ulice', 'Poslanci', 'Firmy a organizácie', 'Mestské časti', 'Čo sa stavia']);
 
   // zvýraznenie hľadaných slov bez ohľadu na diakritiku (slovenské písmená sa normalizujú na jeden znak)
   function zvyrazni(text: string, slova: string[]) {

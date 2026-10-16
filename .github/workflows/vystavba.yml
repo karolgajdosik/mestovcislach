@@ -1,0 +1,56 @@
+name: Výstavba a bývanie
+
+# Denne: zámery v posudzovaní EIA/SEA (Enviroportál) a údaje ŠÚ SR o cenách a výstavbe bytov.
+on:
+  schedule:
+    - cron: "40 4 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/zber_eia.py"
+      - "scripts/zber_byvanie.py"
+      - ".github/workflows/vystavba.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zber-vystavba
+  cancel-in-progress: false
+
+jobs:
+  vystavba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Čo sa stavia (EIA/SEA)
+        run: python scripts/zber_eia.py
+
+      - name: Ceny a výstavba bytov (ŠÚ SR)
+        if: success() || failure()
+        run: python scripts/zber_byvanie.py
+
+      - name: Uložiť zmeny v dátach
+        if: success() || failure()
+        run: |
+          git config user.name "mestovcislach-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ public/data/
+          if git diff --cached --quiet; then
+            echo "Žiadne nové dáta."
+          else
+            git commit -m "Dáta: výstavba a bývanie $(date -u +%Y-%m-%d)"
+            for i in 1 2 3 4 5; do git pull --rebase -X theirs -q && git push && break; sleep $((i * 5)); done
+            git fetch -q origin main && git diff --quiet HEAD origin/main -- data public/data || { echo "::error::Push dát zlyhal"; exit 1; }
+          fi

@@ -82,7 +82,7 @@ def main() -> int:
     over("Počasie (Open-Meteo)", "https://api.open-meteo.com/v1/forecast", jcheck(lambda d: None if d.get("current") else "chýba current"),
          params={"latitude": 48.1486, "longitude": 17.1077, "current": "temperature_2m"})
     # zbery dát (dni podľa frekvencie workflowu + rezerva); OpenStreetMap (cyklo.yml) nesledujeme – Overpass býva preťažený
-    zbery({"zber-dat.yml": 3, "crz.yml": 3, "slovensko.yml": 10, "katalog.yml": 10, "volby.yml": 3})
+    zbery({"zber-dat.yml": 3, "crz.yml": 3, "slovensko.yml": 10, "katalog.yml": 10, "volby.yml": 3, "vystavba.yml": 3})
     Path(sys.argv[1] if len(sys.argv) > 1 else "problemy.md").write_text("\n".join(f"- {p}" for p in problemy), encoding="utf-8")
     print(f"Problémov: {len(problemy)}")
     return 1 if problemy else 0

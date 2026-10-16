@@ -1,0 +1,430 @@
+---
+// Výstavba a bývanie: čo sa stavia (posudzovanie EIA/SEA z Enviroportálu) a údaje o bývaní.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import { KATEGORIE_EIA, slug } from '../lib/eia';
+import { byvanie } from '../lib/byvanie';
+
+const subor = path.join(process.cwd(), 'public', 'data', 'eia.json');
+const eia = fs.existsSync(subor) ? JSON.parse(fs.readFileSync(subor, 'utf-8')) : null;
+const zamery: any[] = eia?.zamery ?? [];
+const dnes = new Date();
+const pred = (dni: number) => new Date(dnes.getTime() - dni * 864e5).toISOString().slice(0, 10);
+const aktivne = zamery.filter((z) => !z.ukoncene);
+const nove30 = zamery.filter((z) => (z.od ?? z.zmena) >= pred(30));
+const rok12 = zamery.filter((z) => (z.od ?? z.zmena) >= pred(365));
+const podlaMc = new Map<string, number>();
+for (const z of aktivne) for (const m of z.mc) podlaMc.set(m, (podlaMc.get(m) ?? 0) + 1);
+const najMc = [...podlaMc.entries()].sort((a, b) => b[1] - a[1])[0];
+const mcZoznam = [...new Set(zamery.flatMap((z) => z.mc))].sort((a, b) => a.localeCompare(b, 'sk'));
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const datum = (d?: string) => (d ? new Date(d).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric', year: 'numeric' }) : '');
+const by = await byvanie();
+const znam = (n: number | null) => (n == null ? '–' : `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} %`);
+---
+<Base title="Výstavba a bývanie v Bratislave – mestovcislach.sk" description="Čo sa v Bratislave stavia a plánuje: zámery v posudzovaní EIA/SEA na mape, ceny bytov, nové byty a mestské nájomné byty.">
+  <section class="hero">
+    <p class="kicker">Výstavba a bývanie</p>
+    <h1>Čo sa stavia a za koľko sa býva</h1>
+    <p class="lead">Veľké stavby, nové štvrte, cesty aj územné plány musia prejsť posudzovaním vplyvov na životné prostredie. Tu ich nájdete skôr, než vyrastú – spolu s cenami bytov a tým, koľko bytov v meste naozaj pribúda.</p>
+    <nav class="kotvy" aria-label="Na tejto stránke">
+      <a href="#co-sa-stavia">Čo sa stavia</a>
+      <a href="#ceny">Ceny bytov</a>
+      <a href="#nove-byty">Nové byty</a>
+      <a href="#mestske-byty">Mestské a nájomné byty</a>
+    </nav>
+  </section>
+
+  <section id="co-sa-stavia">
+    <h2 class="sekcia">Čo sa stavia</h2>
+    {zamery.length ? (
+      <>
+        <div class="kpis">
+          <div class="card kpi"><p class="label">Práve sa posudzuje</p><p class="value">{fmt(aktivne.length)}</p><p class="delta">zámerov a plánov v Bratislave</p></div>
+          <div class="card kpi"><p class="label">Nové za 30 dní</p><p class="value">{fmt(nove30.length)}</p><p class="delta">prvý dokument zverejnený od {datum(pred(30))}</p></div>
+          <div class="card kpi"><p class="label">Za posledný rok</p><p class="value">{fmt(rok12.length)}</p><p class="delta">nových posudzovaní</p></div>
+          {najMc && <div class="card kpi"><p class="label">Najviac rozbehnutých</p><p class="value" translate="no">{najMc[0]}</p><p class="delta">{fmt(najMc[1])} prebiehajúcich posudzovaní</p></div>}
+        </div>
+
+        <div class="card eia" id="eia" data-web={eia.web}>
+          <div class="filtre" role="search" aria-label="Filtrovať zámery">
+            <label class="f-hladaj"><span class="sr">Hľadať v zámeroch</span><input type="search" id="eia-q" placeholder="Hľadať: ulica, projekt, investor…" autocomplete="off" /></label>
+            <label><span class="sr">Mestská časť</span>
+              <select id="eia-mc"><option value="">Všetky mestské časti</option>{mcZoznam.map((m) => <option value={slug(m)} translate="no">{m}</option>)}</select>
+            </label>
+            <label><span class="sr">Stav</span>
+              <select id="eia-stav"><option value="aktivne">Práve sa posudzuje</option><option value="">Všetky</option><option value="ukoncene">Ukončené</option></select>
+            </label>
+          </div>
+          <div class="kategorie" role="group" aria-label="Typ zámeru">
+            {Object.entries(KATEGORIE_EIA).map(([k, [n, f]]) => (
+              <button type="button" class="kat" data-kat={k} aria-pressed="false" style={`--f:${f}`}><i aria-hidden="true"></i>{n}</button>
+            ))}
+          </div>
+          <div class="eia-telo">
+            <div id="eia-mapa" role="region" aria-label="Mapa zámerov v posudzovaní"></div>
+            <div class="eia-zoznam">
+              <p class="eia-pocet" id="eia-pocet" aria-live="polite"></p>
+              <ol id="eia-vysledky"></ol>
+              <button type="button" class="viac" id="eia-viac" hidden>Zobraziť ďalšie</button>
+            </div>
+          </div>
+          <p class="zdroj">Zdroj: <a href="https://www.enviroportal.sk/eia">Enviroportál – informačný systém EIA/SEA</a> (MŽP SR, SAŽP), aktualizované denne. Poloha je odhadnutá podľa ulice v názve alebo popise zámeru; ak ju nepoznáme, bod stojí v strede mestskej časti (svetlejší krúžok). Navrhovateľov uvádzame len ak ide o firmu alebo inštitúciu.</p>
+        </div>
+
+        <div class="dva">
+          <div class="card">
+            <h3>Koľko sa posudzuje každý rok</h3>
+            <p class="pozn">Podľa roku zverejnenia prvého dokumentu.</p>
+            <div class="graf"><canvas id="g-eia-roky" aria-label="Počet nových posudzovaní podľa rokov a typu" role="img"></canvas></div>
+          </div>
+          <div class="card">
+            <h3>Kde sa práve posudzuje</h3>
+            <p class="pozn">Prebiehajúce posudzovania podľa mestskej časti.</p>
+            <div class="graf"><canvas id="g-eia-mc" aria-label="Prebiehajúce posudzovania podľa mestských častí" role="img"></canvas></div>
+          </div>
+        </div>
+
+        <details class="card vysvetlenie">
+          <summary>Čo je EIA a ako sa môžem vyjadriť?</summary>
+          <p><strong>EIA</strong> (posudzovanie vplyvov na životné prostredie) musia prejsť väčšie stavby – obytné súbory, cesty, haly, zariadenia na odpad. <strong>SEA</strong> posudzuje plány a koncepcie, napríklad územné plány zón.</p>
+          <p>Postup má niekoľko krokov: <em>zámer</em> alebo <em>oznámenie o zmene</em> → zisťovacie konanie (úrad rozhodne, či treba podrobné hodnotenie) → <em>rozsah hodnotenia</em> a <em>správa o hodnotení</em> → <em>záverečné stanovisko</em>.</p>
+          <p>Ku každému zverejnenému zámeru sa môže vyjadriť ktokoľvek – písomne príslušnému úradu v lehote uvedenej na Enviroportáli (zvyčajne niekoľko týždňov od zverejnenia). Kto sa vyjadrí, stáva sa účastníkom ďalšieho konania. Dokumenty, lehoty a kontakt na úrad nájdete po kliknutí na „Dokumenty na Enviroportáli“.</p>
+        </details>
+      </>
+    ) : (
+      <p class="card">Údaje o posudzovaní sa práve zbierajú.</p>
+    )}
+  </section>
+
+  <section id="ceny">
+    <h2 class="sekcia">Ceny bytov</h2>
+    {by.ceny ? (
+      <>
+        <div class="kpis">
+          <div class="card kpi"><p class="label">Bratislavský kraj za rok</p><p class="value">{znam(by.ceny.ba)}</p><p class="delta">zmena cien bytov a domov, {by.ceny.obdobie}</p></div>
+          <div class="card kpi"><p class="label">Slovensko za rok</p><p class="value">{znam(by.ceny.sr)}</p><p class="delta">rovnaké obdobie</p></div>
+          <div class="card kpi"><p class="label">Od začiatku roka 2022</p><p class="value">{znam(by.ceny.od2022)}</p><p class="delta">v Bratislavskom kraji (Slovensko {znam(by.ceny.od2022sr)})</p></div>
+          {by.ceny.nove != null && <div class="card kpi"><p class="label">Novostavby / staršie za rok</p><p class="value">{znam(by.ceny.nove)} / {znam(by.ceny.starsie)}</p><p class="delta">Bratislavský kraj</p></div>}
+        </div>
+        <div class="card">
+          <h3>Ako rástli ceny bývania</h3>
+          <p class="pozn">Index cien skutočne predaných bytov a domov (1. štvrťrok 2022 = 100). Hodnota 130 znamená, že bývanie je o 30 % drahšie ako začiatkom roka 2022.</p>
+          <div class="graf vysoky"><canvas id="g-ceny" data-ceny={JSON.stringify(by.ceny.rad)} aria-label="Index cien nehnuteľností na bývanie v Bratislavskom kraji a na Slovensku" role="img"></canvas></div>
+          <p class="zdroj">Zdroj: {by.ceny.zdroj}, realizačné (nie ponukové) ceny z katastra. Štatistický úrad ich zverejňuje len za kraj, nie za Bratislavu či mestské časti.</p>
+        </div>
+      </>
+    ) : <p class="card">Údaje o cenách sa pripravujú.</p>}
+  </section>
+
+  <section id="nove-byty">
+    <h2 class="sekcia">Koľko bytov pribúda</h2>
+    {by.vystavba ? (
+      <>
+        <div class="kpis">
+          <div class="card kpi"><p class="label">Dokončené byty {by.vystavba.rok}</p><p class="value">{fmt(by.vystavba.posledny.DOKONC_BYT)}</p><p class="delta">priemer za 10 rokov {fmt(by.vystavba.priemer10)} ročne</p></div>
+          <div class="card kpi"><p class="label">Začaté byty {by.vystavba.rok}</p><p class="value">{fmt(by.vystavba.posledny.ZAC_BYT)}</p><p class="delta">nové stavby, ktoré sa rozbehli</p></div>
+          <div class="card kpi"><p class="label">Rozostavané byty</p><p class="value">{fmt(by.vystavba.posledny.ROZOST_BYT_KON)}</p><p class="delta">k 31. 12. {by.vystavba.rok}</p></div>
+          {by.vystavba.posledny.OBYT_PLOCH && <div class="card kpi"><p class="label">Priemerná obytná plocha</p><p class="value">{by.vystavba.posledny.OBYT_PLOCH.toLocaleString('sk-SK')} m²</p><p class="delta">nového bytu v {by.vystavba.rok}</p></div>}
+        </div>
+        <div class="card">
+          <h3>Dokončené a začaté byty v Bratislave</h3>
+          <p class="pozn">Súčet okresov Bratislava I – V. Od 3. štvrťroka 2025 Štatistický úrad čerpá údaje z nového registra budov a bytov, čísla za rok {by.vystavba.rok} preto nemusia byť porovnateľné s predchádzajúcimi rokmi.</p>
+          <div class="graf vysoky"><canvas id="g-byty" data-byty={JSON.stringify(by.vystavba.rad)} aria-label="Počet dokončených a začatých bytov v Bratislave podľa rokov" role="img"></canvas></div>
+          <div class="tabulka-obal">
+            <table>
+              <thead><tr><th>Okres</th><th class="num">Dokončené {by.vystavba.rok}</th><th class="num">Začaté {by.vystavba.rok}</th><th class="num">Rozostavané</th><th class="num">Dokončené za 10 rokov</th></tr></thead>
+              <tbody>{by.vystavba.okresy.map((o: any) => <tr><td><span translate="no">{o.okres}</span><br /><small>{o.casti}</small></td><td class="num">{fmt(o.dokoncene)}</td><td class="num">{o.zacate == null ? '–' : fmt(o.zacate)}</td><td class="num">{o.rozostavane == null ? '–' : fmt(o.rozostavane)}</td><td class="num">{fmt(o.desatrocie)}</td></tr>)}</tbody>
+            </table>
+          </div>
+          <p class="zdroj">Zdroj: {by.vystavba.zdroj}. Čo sa bude stavať ďalej, ukazujú <a href="/vystavba?kat=byvanie#co-sa-stavia">zámery bývania v posudzovaní EIA</a>.</p>
+        </div>
+      </>
+    ) : <p class="card">Údaje o výstavbe bytov sa pripravujú.</p>}
+  </section>
+
+  <section id="mestske-byty">
+    <h2 class="sekcia">Mestské a nájomné byty</h2>
+    <div class="dva">
+      {by.mestske && (
+        <div class="card">
+          <h3>Byty hlavného mesta</h3>
+          <p class="velke">{fmt(by.mestske.byty)} <small>bytov v {fmt(by.mestske.domy)} domoch</small></p>
+          <p class="pozn">Byty vo vlastníctve hlavného mesta, ktoré nie sú zverené mestským častiam{by.mestske.k && ` (stav k ${by.mestske.k})`}. Najväčšie domy:</p>
+          <ul class="zoznam-domov">{by.mestske.najvacsie.map(([a, n]: [string, number]) => <li><span translate="no">{a}</span><b>{fmt(n)}</b></li>)}</ul>
+          <p class="zdroj">Zdroj: <a href={by.mestske.url}>data.bratislava.sk</a></p>
+        </div>
+      )}
+      {by.komunitne && (
+        <div class="card">
+          <h3>Komunitné bývanie</h3>
+          <p class="pozn">Pozemky, ktoré mesto ponúka na prenájom skupinám budúcich obyvateľov (Baugruppe).</p>
+          <ul class="zoznam-domov">{by.komunitne.map((k: any) => <li><span><span translate="no">{k.ulica}</span><small> · {k.mc}</small></span><b>{typeof k.byty === 'number' ? `${k.byty} bytov` : k.byty ? `${k.byty} byty` : `${fmt(k.vymera)} m²`}</b></li>)}</ul>
+          <p class="zdroj">Zdroj: <a href="https://data.bratislava.sk/datasets/ed15579d1a65471187497a534b8de8f4">data.bratislava.sk</a></p>
+        </div>
+      )}
+      {by.prispevok && (
+        <div class="card">
+          <h3>Príspevok na bývanie</h3>
+          <p class="velke">{fmt(by.prispevok.spolu)} <small>poberateľov v roku {by.prispevok.rok}</small></p>
+          <p class="pozn">Štátny príspevok ľuďom v hmotnej núdzi, ktorí platia náklady na bývanie – podľa okresov Bratislavy.</p>
+          <ul class="zoznam-domov">{by.prispevok.okresy.map(([o, n]: [string, number]) => <li><span translate="no">{o}</span><b>{fmt(n)}</b></li>)}</ul>
+          <p class="zdroj">Zdroj: <a href="https://data.bratislava.sk/datasets/ee14a168b11641639b14675a9ebd2c29">data.bratislava.sk</a> (ÚPSVaR)</p>
+        </div>
+      )}
+    </div>
+    {by.fond && (
+      <div class="card">
+        <h3>Byty v mestských častiach podľa sčítania 2021</h3>
+        <p class="pozn">Obývané byty podľa toho, či v nich ľudia bývajú vo vlastnom alebo v nájme. Bratislava spolu: {fmt(by.fond.spolu)} obývaných bytov, {by.fond.vlastne.toLocaleString('sk-SK', { maximumFractionDigits: 1 })} % vo vlastníctve, len {by.fond.najom.toLocaleString('sk-SK', { maximumFractionDigits: 1 })} % v nájme (z toho {fmt(by.fond.obecne)} obecných bytov). Zvyšok tvoria iné formy užívania a nezistené.</p>
+        <div class="graf vysoky"><canvas id="g-fond" data-fond={JSON.stringify(by.fond.casti)} aria-label="Počet bytov podľa mestských častí" role="img"></canvas></div>
+        <p class="zdroj">Zdroj: {by.fond.zdroj}</p>
+      </div>
+    )}
+  </section>
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+  import L from 'leaflet';
+  import { osmPodklad } from '../scripts/podklad';
+  import 'leaflet/dist/leaflet.css';
+  import { KATEGORIE_EIA, slug } from '../lib/eia';
+
+  const css = getComputedStyle(document.documentElement);
+  const muted = css.getPropertyValue('--muted').trim();
+  const tmava = document.documentElement.dataset.tema === 'tmava';
+  const hx = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+  const fmt = (n: number) => n.toLocaleString('sk-SK');
+  const datum = (d?: string) => (d ? new Date(d).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric', year: 'numeric' }) : '');
+  const farbaKat = (k: string) => (KATEGORIE_EIA[k] ?? KATEGORIE_EIA.ine)[tmava ? 2 : 1];
+
+  // ——— Čo sa stavia ———
+  const obal = document.getElementById('eia');
+  if (obal) {
+    type Z = { id: string; seo: string; nazov: string; stav: string; typ: string; kat: string; ucel: string; navrhovatel: string | null; mc: string[]; od: string | null; zmena: string; ukoncene: boolean; lat?: number; lon?: number; presnost?: string; kroky: string[] };
+    const web = obal.dataset.web!;
+    const q = document.getElementById('eia-q') as HTMLInputElement;
+    const selMc = document.getElementById('eia-mc') as HTMLSelectElement;
+    const selStav = document.getElementById('eia-stav') as HTMLSelectElement;
+    const vysl = document.getElementById('eia-vysledky')!;
+    const pocet = document.getElementById('eia-pocet')!;
+    const viac = document.getElementById('eia-viac') as HTMLButtonElement;
+    const katBtn = [...obal.querySelectorAll<HTMLButtonElement>('.kat')];
+    const par = new URLSearchParams(location.search);
+    if (par.get('mc')) selMc.value = par.get('mc')!;
+    if (par.get('stav') != null) selStav.value = par.get('stav')!;
+    if (par.get('q')) q.value = par.get('q')!;
+    for (const k of (par.get('kat') ?? '').split(',').filter(Boolean)) katBtn.find((b) => b.dataset.kat === k)?.setAttribute('aria-pressed', 'true');
+
+    const mapa = L.map('eia-mapa', { scrollWheelZoom: false, zoomSnap: 0.25 }).setView([48.15, 17.12], 11);
+    osmPodklad().addTo(mapa);
+    const vrstva = L.featureGroup().addTo(mapa);
+    const znacky = new Map<string, L.CircleMarker>();
+    const norm = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    let vsetky: Z[] = [];
+    let filtrovane: Z[] = [];
+    let zobrazene = 0;
+    const NA_STRANU = 20;
+
+    const karta = (z: Z) => `<li class="zamer" data-id="${hx(z.id)}">
+      <div class="z-hlava"><span class="z-kat" style="--f:${farbaKat(z.kat)}">${hx((KATEGORIE_EIA[z.kat] ?? KATEGORIE_EIA.ine)[0])}</span>
+      <span class="z-stav ${z.ukoncene ? 'ukoncene' : 'aktivne'}">${z.ukoncene ? 'ukončené' : 'posudzuje sa'}</span></div>
+      <h3 class="z-nazov">${hx(z.nazov)}</h3>
+      <p class="z-meta"><span translate="no">${hx(z.mc.join(', ') || 'Bratislava')}</span> · ${hx(z.stav)} · zmena ${datum(z.zmena)}${z.od ? ` · od ${datum(z.od)}` : ''}</p>
+      ${z.navrhovatel ? `<p class="z-meta">Navrhovateľ: <span translate="no">${hx(z.navrhovatel)}</span></p>` : ''}
+      ${z.ucel ? `<details class="z-ucel"><summary>Čo sa má postaviť</summary><p>${hx(z.ucel)}</p></details>` : ''}
+      <p class="z-odkazy"><a href="${hx(web + z.seo)}" rel="noopener" target="_blank">Dokumenty na Enviroportáli <span aria-hidden="true">↗</span></a>
+      ${z.lat ? `<button type="button" class="z-mapa" data-id="${hx(z.id)}">Ukázať na mape</button>` : ''}</p></li>`;
+
+    const popup = (z: Z) => `<strong>${hx(z.nazov)}</strong><br>${hx(z.stav)} · ${datum(z.zmena)}<br><a href="${hx(web + z.seo)}" rel="noopener" target="_blank">Enviroportál ↗</a>${z.presnost === 'mc' ? '<br><small>poloha približná (stred mestskej časti)</small>' : ''}`;
+
+    const vykresli = () => {
+      const slova = norm(q.value).split(/\s+/).filter(Boolean);
+      const kat = katBtn.filter((b) => b.getAttribute('aria-pressed') === 'true').map((b) => b.dataset.kat);
+      filtrovane = vsetky.filter((z) =>
+        (!selMc.value || z.mc.some((m) => slug(m) === selMc.value)) &&
+        (!selStav.value || (selStav.value === 'aktivne') !== z.ukoncene) &&
+        (!kat.length || kat.includes(z.kat)) &&
+        slova.every((s) => norm(`${z.nazov} ${z.ucel} ${z.navrhovatel ?? ''} ${z.mc.join(' ')}`).includes(s)));
+      pocet.textContent = filtrovane.length ? `${fmt(filtrovane.length)} ${filtrovane.length === 1 ? 'zámer' : filtrovane.length < 5 ? 'zámery' : 'zámerov'}` : 'Nič sme nenašli. Skúste iný filter.';
+      vysl.innerHTML = '';
+      zobrazene = 0;
+      dalsie();
+      vrstva.clearLayers();
+      znacky.clear();
+      for (const z of filtrovane.filter((x) => x.lat).slice(0, 800)) {
+        const m = L.circleMarker([z.lat!, z.lon!], {
+          radius: z.presnost === 'mc' ? 6 : 7, weight: 1.5, color: tmava ? '#121417' : '#fff',
+          fillColor: farbaKat(z.kat), fillOpacity: z.presnost === 'mc' ? 0.45 : z.ukoncene ? 0.6 : 0.95,
+        }).bindPopup(popup(z), { maxWidth: 280 });
+        m.addTo(vrstva);
+        znacky.set(z.id, m);
+      }
+      if (vrstva.getLayers().length) mapa.fitBounds(vrstva.getBounds(), { padding: [20, 20], maxZoom: 15 });
+      const u = new URL(location.href);
+      for (const [k, v] of [['mc', selMc.value], ['stav', selStav.value === 'aktivne' ? null : selStav.value], ['q', q.value.trim()], ['kat', kat.join(',')]] as const)
+        v ? u.searchParams.set(k, v) : u.searchParams.delete(k);
+      history.replaceState(null, '', u);
+    };
+    const dalsie = () => {
+      vysl.insertAdjacentHTML('beforeend', filtrovane.slice(zobrazene, zobrazene + NA_STRANU).map(karta).join(''));
+      zobrazene += NA_STRANU;
+      viac.hidden = zobrazene >= filtrovane.length;
+    };
+    viac.addEventListener('click', dalsie);
+    vysl.addEventListener('click', (e) => {
+      const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.z-mapa');
+      if (!b) return;
+      const m = znacky.get(b.dataset.id!);
+      if (m) { mapa.setView(m.getLatLng(), 15); m.openPopup(); document.getElementById('eia-mapa')!.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    });
+    let cas: number | undefined;
+    q.addEventListener('input', () => { clearTimeout(cas); cas = window.setTimeout(vykresli, 200); });
+    selMc.addEventListener('change', vykresli);
+    selStav.addEventListener('change', vykresli);
+    katBtn.forEach((b) => b.addEventListener('click', () => { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); vykresli(); }));
+
+    fetch('/data/eia.json').then((r) => r.json()).then((d) => {
+      vsetky = d.zamery;
+      vykresli();
+      // grafy
+      const roky: Record<string, Record<string, number>> = {};
+      for (const z of vsetky) {
+        const r = (z.od ?? z.zmena)?.slice(0, 4);
+        if (!r || r < '2010') continue;
+        (roky[r] ??= {})[z.kat] = (roky[r][z.kat] ?? 0) + 1;
+      }
+      const osX = Object.keys(roky).sort();
+      new Chart(document.getElementById('g-eia-roky') as HTMLCanvasElement, {
+        type: 'bar',
+        data: { labels: osX, datasets: Object.entries(KATEGORIE_EIA).map(([k, [n]]) => ({ label: n, data: osX.map((r) => roky[r][k] ?? 0), backgroundColor: farbaKat(k), stack: 's' })) },
+        options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } } }, scales: { x: { stacked: true, grid: { display: false }, ticks: { color: muted } }, y: { stacked: true, ticks: { color: muted } } } },
+      });
+      const mc: Record<string, number> = {};
+      for (const z of vsetky.filter((x) => !x.ukoncene)) for (const m of z.mc) mc[m] = (mc[m] ?? 0) + 1;
+      const zor = Object.entries(mc).sort((a, b) => b[1] - a[1]);
+      new Chart(document.getElementById('g-eia-mc') as HTMLCanvasElement, {
+        type: 'bar',
+        data: { labels: zor.map(([m]) => m), datasets: [{ label: 'Prebiehajúce posudzovania', data: zor.map(([, n]) => n), backgroundColor: css.getPropertyValue('--accent').trim() }] },
+        options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: muted, precision: 0 } }, y: { grid: { display: false }, ticks: { color: muted } } },
+          onClick: (_e, el) => { if (el[0]) { selMc.value = slug(zor[el[0].index][0]); selStav.value = 'aktivne'; vykresli(); obal.scrollIntoView({ behavior: 'smooth' }); } } },
+      });
+    });
+  }
+
+  // ——— Bývanie ———
+  const ceny = document.getElementById('g-ceny') as HTMLCanvasElement | null;
+  if (ceny) {
+    const rad: [string, number, number, number | null, number | null][] = JSON.parse(ceny.dataset.ceny!);
+    const akc = css.getPropertyValue('--accent').trim();
+    const ciara = (label: string, i: number, farba: string, extra: object = {}) => ({ label, data: rad.map((r) => r[i]), borderColor: farba, backgroundColor: farba, pointRadius: 0, borderWidth: 2, tension: 0.25, ...extra });
+    new Chart(ceny, {
+      type: 'line',
+      data: { labels: rad.map((r) => r[0]), datasets: [
+        ciara('Bratislavský kraj', 1, akc, { borderWidth: 3 }),
+        ciara('Slovensko', 2, muted, { borderDash: [5, 4] }),
+        ciara('BA kraj – novostavby', 3, tmava ? '#7cc4ff' : '#1f6fd1', { borderWidth: 1.5 }),
+        ciara('BA kraj – staršie', 4, tmava ? '#fcd34d' : '#a16207', { borderWidth: 1.5 }),
+      ] },
+      options: { maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${c.parsed.y.toLocaleString('sk-SK', { maximumFractionDigits: 1 })}` } } },
+        scales: { x: { grid: { display: false }, ticks: { color: muted, maxTicksLimit: 10 } }, y: { ticks: { color: muted } } } },
+    });
+  }
+  const byty = document.getElementById('g-byty') as HTMLCanvasElement | null;
+  if (byty) {
+    const rad: [string, number, number | null][] = JSON.parse(byty.dataset.byty!);
+    new Chart(byty, {
+      type: 'bar',
+      data: { labels: rad.map((r) => r[0]), datasets: [
+        { label: 'Dokončené byty', data: rad.map((r) => r[1]), backgroundColor: css.getPropertyValue('--accent').trim() },
+        { label: 'Začaté byty', data: rad.map((r) => r[2]), backgroundColor: tmava ? '#7cc4ff' : '#1f6fd1' },
+      ] },
+      options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } }, scales: { x: { grid: { display: false }, ticks: { color: muted } }, y: { ticks: { color: muted } } } },
+    });
+  }
+  const fond = document.getElementById('g-fond') as HTMLCanvasElement | null;
+  if (fond) {
+    const casti: [string, number, number, number][] = JSON.parse(fond.dataset.fond!);
+    const podiel = (i: number) => casti.map((c) => Math.round((c[1] * c[i]) / 100));
+    new Chart(fond, {
+      type: 'bar',
+      data: { labels: casti.map((c) => c[0]), datasets: [
+        { label: 'Vlastné byty a domy', data: podiel(2), backgroundColor: css.getPropertyValue('--accent').trim(), stack: 's' },
+        { label: 'Nájom (obecné, súkromné, družstevné, služobné)', data: podiel(3), backgroundColor: tmava ? '#7cc4ff' : '#1f6fd1', stack: 's' },
+        { label: 'Iné a nezistené', data: casti.map((c) => c[1] - Math.round((c[1] * c[2]) / 100) - Math.round((c[1] * c[3]) / 100)), backgroundColor: tmava ? '#4b5563' : '#d1d5db', stack: 's' },
+      ] },
+      options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: { mode: 'index', callbacks: { footer: (i) => `Spolu ${fmt(casti[i[0].dataIndex][1])} bytov · vo vlastníctve ${casti[i[0].dataIndex][2].toLocaleString('sk-SK')} %` } } },
+        scales: { x: { stacked: true, grid: { display: false }, ticks: { color: muted, autoSkip: false, maxRotation: 60 } }, y: { stacked: true, ticks: { color: muted } } } },
+    });
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 20px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  .kotvy { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .kotvy a { padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--text); font-size: 0.9rem; background: var(--card); }
+  .kotvy a:hover { border-color: var(--accent); color: var(--accent); }
+  section { scroll-margin-top: calc(var(--vyska-hlavicky) + 12px); }
+  .sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 36px 0 14px; }
+  .card { margin-top: 16px; }
+  .card h3 { font-size: 1.1rem; margin: 0 0 6px; }
+  .pozn { font-size: 0.85rem; color: var(--muted); margin: 0 0 12px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .kpis .card { margin-top: 0; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 6px 0; }
+  .kpi .delta { color: var(--muted); font-size: 0.8rem; margin: 0; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .filtre { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filtre input, .filtre select { font: inherit; font-size: 0.95rem; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); }
+  .f-hladaj { flex: 1 1 260px; display: flex; }
+  .f-hladaj input { flex: 1; min-width: 0; }
+  .kategorie { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+  .kat { font: inherit; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; }
+  .kat i { width: 9px; height: 9px; border-radius: 50%; background: var(--f); }
+  .kat[aria-pressed='true'] { border-color: var(--text); background: var(--text); color: var(--bg); }
+  .eia-telo { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+  #eia-mapa { height: 620px; border-radius: 12px; position: sticky; top: calc(var(--vyska-hlavicky) + 12px); }
+  .eia-zoznam { min-width: 0; }
+  .eia-pocet { margin: 0 0 8px; font-weight: 700; }
+  #eia-vysledky { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  :global(.zamer) { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  :global(.z-hlava) { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  :global(.z-kat) { font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; }
+  :global(.z-kat)::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--f); }
+  :global(.z-stav) { font-size: 0.72rem; padding: 1px 8px; border-radius: 999px; margin-left: auto; }
+  :global(.z-stav.aktivne) { background: var(--accent); color: var(--na-akcente); font-weight: 700; }
+  :global(.z-stav.ukoncene) { background: var(--line); color: var(--muted); }
+  :global(.z-nazov) { font-size: 1rem !important; margin: 6px 0 4px !important; line-height: 1.3; }
+  :global(.z-meta) { font-size: 0.8rem; color: var(--muted); margin: 0 0 2px; }
+  :global(.z-ucel) { font-size: 0.88rem; margin: 6px 0; }
+  :global(.z-ucel summary) { cursor: pointer; color: var(--text); font-weight: 600; font-size: 0.82rem; }
+  :global(.z-ucel p) { margin: 6px 0 0; color: var(--text); }
+  :global(.z-odkazy) { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 8px 0 0; font-size: 0.85rem; }
+  :global(.z-mapa) { font: inherit; font-size: 0.85rem; background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; }
+  .viac { font: inherit; margin-top: 12px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; font-weight: 600; }
+  .viac:hover { border-color: var(--accent); }
+  .dva { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .graf { position: relative; height: 300px; }
+  .graf.vysoky { height: 360px; }
+  .vysvetlenie summary { cursor: pointer; font-weight: 700; }
+  .vysvetlenie p { max-width: 50em; }
+  .velke { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin: 4px 0 8px; }
+  .velke small { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; }
+  .zoznam-domov { list-style: none; padding: 0; margin: 0; }
+  .zoznam-domov li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+  .zoznam-domov small { color: var(--muted); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td small { color: var(--muted); }
+  @media (max-width: 860px) {
+    .eia-telo { grid-template-columns: 1fr; }
+    #eia-mapa { height: 340px; position: relative; top: auto; }
+  }
+</style>
