@@ -9,6 +9,19 @@ interface Props {
 }
 const { title, description = 'Otvorené dáta o slovenských mestách a obciach – prehľadne a so zdrojmi.' } = Astro.props;
 // Náhľadový obrázok pri zdieľaní (public/og/<sekcia>.png, generuje scripts/og_obrazky.py)
+// Hlavné menu: odkaz, názov, ikona (SVG cesty, ťah 1.8)
+const MENU: [string, string, string][] = [
+  ['/', 'Prehľad', '<path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h4.5v-5.5h4V20h4.5V9.5"/>'],
+  ['/mapa', 'Mapa', '<path d="M9 4.5 3.5 6.5v13l5.5-2 6 2 5.5-2v-13l-5.5 2-6-2Z"/><path d="M9 4.5v13M15 6.5v13"/>'],
+  ['/obyvatelia', 'Obyvatelia', '<circle cx="9" cy="8" r="3.3"/><path d="M2.8 20c.6-3.5 3.1-5.4 6.2-5.4s5.6 1.9 6.2 5.4"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.6c2.2.2 3.8 1.8 4.3 4.4"/>'],
+  ['/volby', 'Voľby', '<path d="M4 11h16v9H4z"/><path d="M8 11V4h8v7"/><path d="m10 7.6 1.4 1.4L14.2 6"/>'],
+  ['/financie', 'Financie', '<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/>'],
+  ['/doprava', 'Doprava', '<rect x="5" y="3.5" width="14" height="13.5" rx="3"/><path d="M5 10h14M8 17v3M16 17v3"/><circle cx="8.6" cy="13.4" r=".9"/><circle cx="15.4" cy="13.4" r=".9"/>'],
+  ['/vybavenost', 'Vybavenosť', '<path d="M4 20V8.5L12 4l8 4.5V20"/><path d="M9.5 20v-5h5v5M8 11h2M14 11h2M2.5 20h19"/>'],
+  ['/prostredie', 'Prostredie', '<path d="M5 19.5C5 11 10 6 20 4.5 19 14 14 19.5 5.5 19.5Z"/><path d="M5 19.5c2.8-4 6-7 10-9.2"/>'],
+  ['/bezpecnost', 'Bezpečnosť', '<path d="M12 3 5 6v5.2c0 4.4 3 8.2 7 9.8 4-1.6 7-5.4 7-9.8V6l-7-3Z"/><path d="m9 12 2 2 4-4.2"/>'],
+  ['/katalog', 'Katalóg dát', '<ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>'],
+];
 const OG = ['mapa', 'obyvatelia', 'volby', 'financie', 'doprava', 'vybavenost', 'prostredie', 'bezpecnost', 'katalog'];
 const sekcia = Astro.url.pathname.split('/').filter(Boolean)[0] ?? '';
 const ogObrazok = new URL(`/og/${OG.includes(sekcia) ? sekcia : 'index'}.png`, Astro.site ?? 'https://mestovcislach.sk');
@@ -39,17 +52,27 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
   <body>
     <a class="preskocit" href="#obsah">Preskočiť na obsah</a>
     <header class="top">
-      <div class="wrap">
+      <div class="wrap hlava">
         <a class="logo" href="/" translate="no">mesto<span>v</span>číslach</a>
-        <nav>
-          {[['/mapa', 'Mapa'], ['/obyvatelia', 'Obyvatelia'], ['/volby', 'Voľby'], ['/financie', 'Financie'], ['/doprava', 'Doprava'], ['/vybavenost', 'Vybavenosť'], ['/prostredie', 'Prostredie'], ['/bezpecnost', 'Bezpečnosť'], ['/katalog', 'Katalóg dát']].map(([href, text]) => (
-            <a href={href} aria-current={Astro.url.pathname.replace(/\/$/, '') === href.replace(/\/$/, '') || (href === '/katalog' && Astro.url.pathname.startsWith('/katalog/')) ? 'page' : undefined}>{text}</a>
-          ))}
-        </nav>
         <Hladanie />
-        <Jazyk />
-        <Zobrazenie />
+        <div class="hlava-akcie">
+          <Jazyk />
+          <Zobrazenie />
+        </div>
       </div>
+      <nav class="menu" aria-label="Hlavné menu">
+        <div class="wrap menu-pas">
+          {MENU.map(([href, text, ikona]) => {
+            const aktivne = href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.replace(/\/$/, '') === href || Astro.url.pathname.startsWith(href + '/');
+            return (
+              <a href={href} aria-current={aktivne ? 'page' : undefined}>
+                <svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} />
+                <span>{text}</span>
+              </a>
+            );
+          })}
+        </div>
+      </nav>
     </header>
     <div class="preklad-pruh" id="preklad-pruh" translate="no" hidden><div class="wrap"><span class="pp-text"></span> <button type="button" lang="sk">Slovenská verzia</button></div></div>
     <div class="zive" role="region" aria-label="Živé údaje o Bratislave">
@@ -79,6 +102,8 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
 </html>
 
 <script>
+  document.querySelector('.menu a[aria-current="page"]')?.scrollIntoView({ block: 'nearest', inline: 'center' });
+
   // Prístupnosť: mapy ako pomenované oblasti, posúvateľné tabuľky dostupné z klávesnice (aj pre neskôr pridaný obsah)
   const pristupnost = () => {
     document.querySelectorAll<HTMLElement>('.leaflet-container:not([role="region"])').forEach((m) => {
@@ -200,17 +225,42 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
   .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
   /* Hlavička a živá lišta ostávajú navrchu aj pri rolovaní (nad mapami Leaflet, ktoré majú z-index do 1000). */
   html { scroll-padding-top: 108px; }
-  .top { border-bottom: 1px solid var(--line); background: var(--card); position: sticky; top: 0; z-index: 1100; }
-  .top .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
-  .logo { font-weight: 800; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.02em; }
+  /* Hlavička: riadok s logom, vyhľadávaním a nastaveniami + pás hlavného menu s ikonami */
+  :root { --vyska-hlavicky: 112px; }
+  .top { background: var(--card); position: sticky; top: 0; z-index: 1100; box-shadow: 0 1px 0 var(--line); }
+  .hlava { display: flex; align-items: center; gap: 12px; height: 60px; }
+  .logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; letter-spacing: -0.02em; flex-shrink: 0; color: var(--text); }
   .logo span { color: var(--accent); }
-  .top nav { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; margin-left: 16px; flex: 0 1 auto; min-width: 0; margin-right: auto; }
-  .top nav::-webkit-scrollbar { display: none; }
-  @media (max-width: 1500px) { .top nav { -webkit-mask-image: linear-gradient(to right, #000 88%, transparent); mask-image: linear-gradient(to right, #000 88%, transparent); padding-right: 18px; } }
-  @media (max-width: 480px) { .top nav { gap: 14px; padding-right: 18px; -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); } .top nav a { font-size: 0.88rem; white-space: nowrap; } .logo { font-size: 1.05rem; flex-shrink: 0; } }
-  .top nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; padding: 4px 0; border-bottom: 2px solid transparent; white-space: nowrap; }
-  .top nav a[aria-current='page'] { color: var(--text); border-bottom-color: var(--accent); }
-  .zive { background: var(--bg); border-bottom: 1px solid var(--line); font-size: 0.82rem; position: sticky; top: 56px; z-index: 1099; }
+  .hlava-akcie { display: flex; align-items: center; margin-left: auto; flex-shrink: 0; }
+  .menu { border-top: 1px solid var(--line); background: var(--card); }
+  /* pás menu môže byť širší ako obsah stránky, aby sa všetky sekcie zmestili */
+  .menu .menu-pas, .top .hlava { max-width: 1300px; }
+  .menu-pas { display: flex; gap: 2px; height: 52px; align-items: center; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; scroll-padding: 0 16px; }
+  .menu-pas::-webkit-scrollbar { display: none; }
+  .menu a {
+    display: inline-flex; align-items: center; gap: 7px; flex-shrink: 0; height: 38px; padding: 0 13px 0 11px; border-radius: 19px;
+    color: var(--text); text-decoration: none; font-size: 0.92rem; font-weight: 600; white-space: nowrap; scroll-snap-align: start;
+    transition: background 0.15s, color 0.15s;
+  }
+  .menu a svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--accent); flex-shrink: 0; }
+  .menu a:hover { background: color-mix(in srgb, var(--accent) 9%, transparent); }
+  .menu a[aria-current='page'] { background: var(--text); color: var(--card); }
+  .menu a[aria-current='page'] svg { color: var(--card); }
+  @media (min-width: 1300px) { .menu-pas { justify-content: space-between; } }
+  @media (max-width: 1299px) {
+    /* posúvateľný pás – okraje sa jemne strácajú */
+    .menu-pas { -webkit-mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 28px), transparent); }
+  }
+  @media (max-width: 600px) {
+    :root { --vyska-hlavicky: 104px; }
+    .hlava { height: 56px; gap: 8px; }
+    .logo { font-size: 1.05rem; }
+    .hlava-akcie { margin-left: 0; }
+    .menu-pas { height: 48px; }
+    .menu a { height: 36px; font-size: 0.88rem; padding: 0 12px 0 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .menu a { transition: none; } }
+  .zive { background: var(--bg); border-bottom: 1px solid var(--line); font-size: 0.82rem; position: relative; z-index: 1099; }
   .zive-obsah { display: flex; align-items: center; gap: 8px; height: 40px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
   .zive-obsah::-webkit-scrollbar { display: none; }
   .zive-titul { color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; }

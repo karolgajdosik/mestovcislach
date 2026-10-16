@@ -564,9 +564,9 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
       --m-podnety: #cbd5e1; --m-vysadba: #bef264; --m-starostlivost: #d4d4d4; --m-klima: #fcd34d;
       --m-ochladzovanie: #67e8f9; --m-debarierizacie: #93c5fd; --m-fixpointy: #fdba74;
   }
-  /* Mapa ako aplikácia: bočný panel + mapa na celú výšku pod hlavičkou a živou lištou (56 + 41 px) */
+  /* Mapa ako aplikácia: bočný panel + mapa na celú výšku pod hlavičkou a živou lištou */
   .mapa-app {
-    --vyska: calc(100dvh - 97px);
+    --vyska: calc(100dvh - var(--vyska-hlavicky) - 41px);
     position: relative; display: grid; grid-template-columns: 340px 1fr;
     width: 100vw; margin-left: calc(50% - 50vw); height: var(--vyska); min-height: 480px;
     border-bottom: 1px solid var(--line); background: var(--card);

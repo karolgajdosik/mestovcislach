@@ -4,7 +4,7 @@
 ---
 <button class="hl-tlacidlo" id="hladanie-otvor" type="button" aria-haspopup="dialog" aria-controls="hladanie-dialog" title="Hľadať (/)">
   <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 5 5" /></svg>
-  <span class="hl-text">Hľadať</span>
+  <span class="hl-text">Hľadať ulicu, miesto, dáta…</span>
   <kbd>/</kbd>
 </button>
 
@@ -180,20 +180,23 @@
 </script>
 
 <style is:global>
+  /* tlačidlo vyhľadávania vyzerá ako široké pole v strede hlavičky */
   .hl-tlacidlo {
-    display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: 16px;
-    height: 36px; padding: 0 8px 0 10px; border: 1px solid var(--line); border-radius: 18px;
-    background: var(--bg); color: var(--muted); font: inherit; font-size: 0.9rem; cursor: pointer;
+    display: flex; align-items: center; gap: 10px; flex: 1 1 auto; max-width: 520px; min-width: 0; margin: 0 auto;
+    height: 42px; padding: 0 8px 0 14px; border: 1px solid var(--line); border-radius: 21px;
+    background: var(--bg); color: var(--muted); font: inherit; font-size: 0.95rem; cursor: text; text-align: left;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
-  .hl-tlacidlo:hover { border-color: var(--muted); color: var(--text); }
+  .hl-tlacidlo:hover { border-color: var(--muted); }
   .hl-tlacidlo:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .hl-tlacidlo svg, .hl-pole svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; flex-shrink: 0; }
-  .hl-text { white-space: nowrap; }
+  .hl-text { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .hl-tlacidlo kbd, .hladanie-dialog kbd {
-    font: inherit; font-size: 0.75rem; line-height: 1; padding: 3px 6px; border-radius: 5px;
+    font: inherit; font-size: 0.75rem; line-height: 1; padding: 4px 7px; border-radius: 6px;
     border: 1px solid var(--line); background: var(--card); color: var(--muted);
   }
-  @media (max-width: 1400px) { .hl-text { display: none; } .hl-tlacidlo { width: 36px; padding: 0; justify-content: center; } .hl-tlacidlo kbd { display: none; } }
+  @media (max-width: 760px) { .hl-tlacidlo kbd { display: none; } }
+  @media (max-width: 520px) { .hl-text { display: none; } .hl-tlacidlo { flex: 0 0 40px; width: 40px; height: 40px; padding: 0; justify-content: center; margin: 0 0 0 auto; cursor: pointer; } }
 
   .hladanie-dialog {
     width: min(680px, calc(100vw - 24px)); max-height: min(640px, calc(100dvh - 48px)); margin: 8vh auto auto; padding: 0;

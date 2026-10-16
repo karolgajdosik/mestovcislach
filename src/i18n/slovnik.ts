@@ -25,6 +25,8 @@ export const SLOVNIK: Record<string, [string, string, string, string]> = {
   'Katalóg dát': ['Data catalogue', 'Datenkatalog', 'Katalog danych', 'Adatkatalógus'],
   'Preskočiť na obsah': ['Skip to content', 'Zum Inhalt springen', 'Przejdź do treści', 'Ugrás a tartalomra'],
   'Teraz': ['Now', 'Jetzt', 'Teraz', 'Most'],
+  'Hľadať ulicu, miesto, dáta…': ['Search streets, places, data…', 'Straßen, Orte, Daten suchen…', 'Szukaj ulic, miejsc, danych…', 'Utca, hely, adat keresése…'],
+  'Hlavné menu': ['Main menu', 'Hauptmenü', 'Menu główne', 'Főmenü'],
   'Hľadať': ['Search', 'Suchen', 'Szukaj', 'Keresés'],
   'Jazyk': ['Language', 'Sprache', 'Język', 'Nyelv'],
   'Zobrazenie': ['Display', 'Anzeige', 'Wyświetlanie', 'Megjelenés'],
