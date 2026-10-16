@@ -1,0 +1,107 @@
+---
+// Upozornenia pre krajské mesto (okrem Bratislavy): kanál Atom so stavbami a výstrahami (functions/kanal/[mc].ts).
+import Base from '../../layouts/Base.astro';
+import { MESTA, type Mesto } from '../../mesta';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && !m.plne).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+---
+<Base title={`Upozornenia – ${m.nazov} – mestovcislach.sk`} description={`Odoberajte nové stavebné zámery a výstrahy SHMÚ ${m.v} – bez registrácie a bez zbierania osobných údajov.`}>
+  <section class="hero">
+    <p class="kicker">Upozornenia</p>
+    <h1>Čo je nové <span translate="no">{m.v}</span></h1>
+    <p class="lead">Nové a zmenené stavebné zámery v posudzovaní EIA a výstrahy SHMÚ pre okres{m.okresy.length > 1 ? 'y' : ''} mesta – v jednom kanáli, bez registrácie. Nepotrebujeme váš e-mail ani žiadne iné údaje.</p>
+  </section>
+
+  <div class="rozlozenie" id="upozornenia" data-mesto={m.slug}>
+    <section class="card">
+      <h2>1. Vyberte, čo chcete dostávať</h2>
+      <fieldset class="typy">
+        <legend class="sr">Typy upozornení</legend>
+        <label><input type="checkbox" value="stavby" checked /> <span><strong>Čo sa stavia</strong><small>nové a zmenené zámery v posudzovaní EIA/SEA</small></span></label>
+        <label><input type="checkbox" value="vystrahy" checked /> <span><strong>Výstrahy SHMÚ</strong><small>búrky, vietor, horúčavy, povodne a ďalšie</small></span></label>
+      </fieldset>
+      <h2>2. Pridajte si kanál do čítačky</h2>
+      <div class="adresa">
+        <input id="u-url" type="text" readonly aria-label="Adresa kanála" translate="no" />
+        <button type="button" id="u-kopiruj">Kopírovať</button>
+      </div>
+      <p class="pozn" id="u-stav" aria-live="polite"></p>
+      <p class="pozn">Adresu vložte do ľubovoľnej čítačky noviniek (RSS/Atom) – v mobile, v počítači alebo v e-mailovom programe, ktorý kanály podporuje (napr. Thunderbird či Outlook).</p>
+      <p><a class="tlacidlo" id="u-otvor" href={`/kanal/${m.slug}.xml`}>Otvoriť kanál</a></p>
+    </section>
+    <section class="card">
+      <h2>Čo by ste dostali teraz</h2>
+      <p class="pozn" id="u-pocet"></p>
+      <ol id="u-polozky" class="polozky" tabindex="0" aria-label="Náhľad upozornení"></ol>
+    </section>
+  </div>
+</Base>
+
+<script>
+  const obal = document.getElementById('upozornenia')!;
+  const mesto = obal.dataset.mesto!;
+  const typy = [...obal.querySelectorAll<HTMLInputElement>('.typy input')];
+  const url = document.getElementById('u-url') as HTMLInputElement;
+  const otvor = document.getElementById('u-otvor') as HTMLAnchorElement;
+  const zoznam = document.getElementById('u-polozky')!;
+  const pocet = document.getElementById('u-pocet')!;
+  const hx = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+  async function aktualizuj() {
+    const vybrane = typy.filter((t) => t.checked).map((t) => t.value);
+    const cesta = `/kanal/${mesto}.xml${vybrane.length === typy.length || !vybrane.length ? '' : `?typ=${vybrane.join(',')}`}`;
+    url.value = location.origin + cesta;
+    otvor.href = cesta;
+    if (!vybrane.length) { zoznam.innerHTML = ''; pocet.textContent = 'Vyberte aspoň jeden typ upozornení.'; return; }
+    pocet.textContent = 'Načítavam…';
+    try {
+      const r = await fetch(cesta);
+      if (!r.ok) throw new Error(String(r.status));
+      const xml = new DOMParser().parseFromString(await r.text(), 'application/xml');
+      const polozky = [...xml.querySelectorAll('entry')];
+      pocet.textContent = polozky.length ? `${polozky.length} položiek, najnovšie hore` : 'Momentálne tu nič nie je.';
+      zoznam.innerHTML = polozky.slice(0, 25).map((e) => {
+        const s = (e.querySelector('summary')?.textContent ?? '').slice(0, 180);
+        return `<li><span class="p-hlava"><span class="p-kat">${hx(e.querySelector('category')?.getAttribute('term'))}</span><span>${hx(new Date(e.querySelector('updated')?.textContent ?? '').toLocaleDateString('sk-SK'))}</span></span>
+          <a href="${hx(e.querySelector('link')?.getAttribute('href') ?? '#')}" rel="noopener" translate="no">${hx(e.querySelector('title')?.textContent)}</a><small translate="no">${hx(s)}${s.length >= 180 ? '…' : ''}</small></li>`;
+      }).join('');
+    } catch { pocet.textContent = 'Náhľad sa nepodarilo načítať.'; }
+  }
+  typy.forEach((t) => t.addEventListener('change', aktualizuj));
+  document.getElementById('u-kopiruj')!.addEventListener('click', async () => {
+    const stav = document.getElementById('u-stav')!;
+    try { await navigator.clipboard.writeText(url.value); stav.textContent = 'Adresa je skopírovaná.'; }
+    catch { url.select(); stav.textContent = 'Označili sme adresu – skopírujte ju (Ctrl+C).'; }
+  });
+  aktualizuj();
+</script>
+
+<style>
+  .hero { padding: 40px 0 20px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  .rozlozenie { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+  .rozlozenie > * { min-width: 0; }
+  .card h2 { font-size: 1.15rem; margin: 0 0 12px; }
+  .card h2:not(:first-child) { margin-top: 24px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .typy { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; min-width: 0; }
+  .typy label { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; }
+  .typy input { margin-top: 4px; accent-color: var(--accent); width: 18px; height: 18px; }
+  .typy span { display: flex; flex-direction: column; }
+  .typy small { color: var(--muted); }
+  .adresa { display: flex; gap: 8px; }
+  .adresa input { flex: 1; min-width: 0; font: inherit; font-size: 0.85rem; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); }
+  .adresa button, .tlacidlo { font: inherit; font-weight: 600; padding: 10px 16px; border-radius: 10px; border: 0; background: var(--accent); color: var(--na-akcente); cursor: pointer; text-decoration: none; display: inline-block; }
+  .pozn { color: var(--muted); font-size: 0.85rem; }
+  .polozky { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; max-height: 640px; overflow-y: auto; }
+  :global(.polozky li) { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
+  :global(.polozky a) { font-weight: 600; color: var(--text); }
+  :global(.polozky small) { color: var(--muted); font-size: 0.8rem; }
+  :global(.p-hlava) { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); }
+  :global(.p-kat) { font-weight: 700; color: var(--accent); }
+  @media (max-width: 860px) { .rozlozenie { grid-template-columns: 1fr; } }
+</style>

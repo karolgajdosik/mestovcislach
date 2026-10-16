@@ -199,7 +199,7 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
             <small>{z.stav} · zmena {datum(z.zmena)}{z.mc?.length ? ` · ${z.mc.join(', ')}` : ''}{z.navrhovatel ? ` · ${z.navrhovatel}` : ''}</small>
           </li>
         ))}</ol>
-        <p class="zdroj">Zdroj: Enviroportál MŽP SR – informačný systém EIA/SEA, aktualizované denne. Navrhovateľov uvádzame len pri firmách a inštitúciách.</p>
+        <p class="zdroj">Zdroj: Enviroportál MŽP SR – informačný systém EIA/SEA, aktualizované denne. Navrhovateľov uvádzame len pri firmách a inštitúciách. Nové zámery môžete <a href={`/${m.slug}/upozornenia`}>odoberať ako upozornenia</a>.</p>
       </>
     ) : <p class="pozn">Zámery z Enviroportálu sa práve zbierajú – pribudnú do jedného dňa.</p>}
   </section>

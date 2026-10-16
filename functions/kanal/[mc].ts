@@ -4,6 +4,7 @@
 // a väčšie zmluvy mestskej časti (Centrálny register zmlúv, len právnické osoby).
 // Parameter ?typ=cesty,stavby,zmluvy obmedzí obsah.
 import { uzavierky, poruchy, type Obmedzenie } from '../../src/scripts/uzavierky';
+import MESTA from '../../src/mesta.json';
 
 const CASTI = ['Staré Mesto', 'Ružinov', 'Vrakuňa', 'Podunajské Biskupice', 'Nové Mesto', 'Rača', 'Vajnory', 'Karlova Ves', 'Dúbravka', 'Lamač',
   'Devín', 'Devínska Nová Ves', 'Záhorská Bystrica', 'Petržalka', 'Jarovce', 'Rusovce', 'Čunovo'];
@@ -26,10 +27,13 @@ export const onRequestGet = async (ctx: any) => {
   const { request, env, params } = ctx;
   const kluc = String(params.mc ?? '').replace(/\.(xml|atom|rss)$/, '');
   const mc = CASTI.find((c) => slug(c) === kluc) ?? null;
-  if (!mc && kluc !== 'bratislava') return new Response('Neznáma mestská časť', { status: 404, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  // ostatné krajské mestá: /kanal/kosice.xml – stavby a výstrahy
+  const ine = (MESTA as any[]).find((m) => m.slug === kluc && m.aktivne && !m.plne) ?? null;
+  if (!mc && !ine && kluc !== 'bratislava') return new Response('Neznáma mestská časť alebo mesto', { status: 404, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 
   const url = new URL(request.url);
-  const typy = new Set((url.searchParams.get('typ') ?? 'cesty,stavby,zmluvy').split(',').map((t) => t.trim()));
+  const typy = new Set((url.searchParams.get('typ') ?? 'cesty,stavby,zmluvy,vystrahy').split(',').map((t) => t.trim()));
+  if (ine) { typy.delete('cesty'); typy.delete('zmluvy'); }
   const cache = (caches as any).default;
   const kluCache = new Request(`${url.origin}/kanal/${kluc}.xml?typ=${[...typy].sort().join(',')}`);
   const ulozene = await cache.match(kluCache);
@@ -59,8 +63,23 @@ export const onRequestGet = async (ctx: any) => {
       });
     }
   }
+  if (typy.has('vystrahy')) {
+    try {
+      const v = await (await fetch(new URL(`/api/vystrahy${ine ? `?mesto=${ine.slug}` : ''}`, request.url))).json();
+      for (const w of v.vystrahy ?? []) {
+        polozky.push({
+          id: `vystraha-${slug(w.udalost)}-${w.farba}-${w.od}`,
+          nazov: `Výstraha ${w.stupen}: ${w.udalost}`,
+          text: [w.nadpis, w.od ? `od ${den(w.od)}` : '', w.do ? `do ${den(w.do)}` : '', (w.oblasti ?? []).join(', '), w.pokyny].filter(Boolean).join(' · '),
+          odkaz: 'https://www.shmu.sk/sk/?page=987',
+          cas: iso(w.od ?? Date.now()),
+          kategoria: 'Výstrahy SHMÚ',
+        });
+      }
+    } catch { /* výstrahy nedostupné */ }
+  }
   if (typy.has('stavby')) {
-    const eia = await asset('/data/eia.json');
+    const eia = await asset(ine ? `/data/mesta/eia-${ine.slug}.json` : '/data/eia.json');
     for (const z of eia?.zamery ?? []) {
       if (z.zmena < hranica || (mc && !z.mc.includes(mc))) continue;
       polozky.push({
@@ -92,15 +111,15 @@ export const onRequestGet = async (ctx: any) => {
 
   polozky.sort((a, b) => b.cas.localeCompare(a.cas));
   const vyber = polozky.slice(0, 150);
-  const nazov = `${mc ?? 'Bratislava'} – upozornenia | mestovcislach.sk`;
+  const nazov = `${mc ?? ine?.nazov ?? 'Bratislava'} – upozornenia | mestovcislach.sk`;
   const self = `${WEB}/kanal/${kluc}.xml${url.search}`;
   const xml = `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="sk">
   <title>${x(nazov)}</title>
-  <subtitle>${x(`Uzávierky na cestách, čo sa stavia a väčšie zmluvy – ${mc ?? 'celá Bratislava'}. Otvorené dáta, bez registrácie.`)}</subtitle>
+  <subtitle>${x(ine ? `Čo sa stavia a výstrahy SHMÚ – ${ine.nazov}. Otvorené dáta, bez registrácie.` : `Uzávierky na cestách, čo sa stavia, väčšie zmluvy a výstrahy – ${mc ?? 'celá Bratislava'}. Otvorené dáta, bez registrácie.`)}</subtitle>
   <id>${x(self)}</id>
   <link rel="self" href="${x(self)}"/>
-  <link rel="alternate" href="${WEB}/bratislava/upozornenia"/>
+  <link rel="alternate" href="${WEB}/${ine ? ine.slug : 'bratislava'}/upozornenia"/>
   <updated>${vyber[0]?.cas ?? new Date().toISOString()}</updated>
   <author><name>mestovcislach.sk</name></author>
 ${vyber.map((p) => `  <entry>

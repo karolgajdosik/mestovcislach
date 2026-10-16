@@ -92,7 +92,7 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
 
         <Hladanie />
         <div class="hlava-akcie">
-          {mesto.plne && !spolocna && <a class="zvoncek" href={`/${mesto.slug}/upozornenia`} title="Upozornenia pre vašu mestskú časť" aria-label="Upozornenia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></a>}
+          {!spolocna && <a class="zvoncek" href={`/${mesto.slug}/upozornenia`} title="Upozornenia pre vašu mestskú časť" aria-label="Upozornenia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></a>}
           <Jazyk />
           <Zobrazenie />
         </div>
@@ -137,7 +137,7 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
         Kód je otvorený na <a href="https://github.com/karolgajdosik/mestovcislach">GitHube</a>. Všetky datasety mesta a čo s nimi robíme: <a href="/bratislava/katalog">Katalóg dát</a>.
         Živá lišta: počasie <a href="https://open-meteo.com">Open-Meteo</a> (CC BY 4.0), výstrahy, ovzdušie a Dunaj <a href="https://www.shmu.sk">SHMÚ</a>, cesty hlavné mesto SR Bratislava.
       </p>
-      <p class="foot-odkazy">{mesto.plne && <><a href={`/${mesto.slug}/upozornenia`}>Upozornenia</a> · </>}<a href="/porovnanie">Porovnanie miest</a> · <a href="/sukromie">Ochrana súkromia</a> · <a href="/pristupnost">Prístupnosť</a> · Bez cookies a sledovania · <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a></p>
+      <p class="foot-odkazy">{!spolocna && <><a href={`/${mesto.slug}/upozornenia`}>Upozornenia</a> · </>}<a href="/porovnanie">Porovnanie miest</a> · <a href="/sukromie">Ochrana súkromia</a> · <a href="/pristupnost">Prístupnosť</a> · Bez cookies a sledovania · <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a></p>
     </footer>
     <Asistent mesto={spolocna ? undefined : mesto} />
   </body>
