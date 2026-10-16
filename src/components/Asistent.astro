@@ -1,15 +1,15 @@
 ---
 // Plávajúce okno AI asistenta (odpovedá cez /api/asistent z údajov webu).
 ---
-<button class="ai-tlacidlo" id="ai-otvor" type="button" aria-expanded="false" aria-controls="ai-okno">
+<button class="ai-tlacidlo" id="ai-otvor" type="button" aria-expanded="false" aria-controls="ai-okno" title="AI asistent – tlačidlo môžete potiahnuť kamkoľvek">
   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 2.2 1.1 4.2 3 5.6V21l3.7-2.3c1 .2 2.1.3 3.3.3 5.5 0 10-3.6 10-8s-4.5-8-10-8Zm-4 9.3a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6Zm4 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6Zm4 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6Z"/></svg>
-  <span>Opýtať sa</span>
+  <span>AI asistent</span>
 </button>
 
 <section class="ai-okno" id="ai-okno" role="dialog" aria-label="Asistent mestovcislach.sk" hidden>
   <header>
     <div>
-      <strong>Asistent</strong>
+      <strong>AI asistent</strong>
       <span>odpovedá z údajov tohto webu</span>
     </div>
     <button type="button" class="ai-zavri" id="ai-zavri" aria-label="Zavrieť">×</button>
@@ -117,7 +117,69 @@
     document.body.classList.toggle('ai-otvorene', otvor);
     if (otvor) { vstup.focus(); spravy.scrollTop = spravy.scrollHeight; }
   };
-  tlacidlo.addEventListener('click', () => prepni(okno.hidden));
+  // Tlačidlo sa dá potiahnuť kamkoľvek na stránke; poloha sa pamätá (localStorage, ak je dostupný).
+  // Krátke ťuknutie bez pohybu okno otvorí, potiahnutie nie.
+  const KLUC_POLOHY = 'ai:tlacidlo';
+  let presunute = false;
+  const obmedz = (x: number, y: number) => {
+    const r = tlacidlo.getBoundingClientRect();
+    return [Math.min(Math.max(8, x), innerWidth - r.width - 8), Math.min(Math.max(8, y), innerHeight - r.height - 8)];
+  };
+  const umiestni = (x: number, y: number) => {
+    [x, y] = obmedz(x, y);
+    Object.assign(tlacidlo.style, { left: `${x}px`, top: `${y}px`, right: 'auto', bottom: 'auto' });
+  };
+  try {
+    const ul = JSON.parse(localStorage.getItem(KLUC_POLOHY) ?? 'null');
+    // uložené ako podiel šírky/výšky okna, aby sedelo aj po zmene veľkosti
+    if (ul) requestAnimationFrame(() => umiestni(ul.x * innerWidth, ul.y * innerHeight));
+  } catch { /* nevadí */ }
+  let start: { x: number; y: number; l: number; t: number; id: number } | null = null;
+  tlacidlo.addEventListener('pointerdown', (e) => {
+    const r = tlacidlo.getBoundingClientRect();
+    start = { x: e.clientX, y: e.clientY, l: r.left, t: r.top, id: e.pointerId };
+    presunute = false;
+  });
+  tlacidlo.addEventListener('pointermove', (e) => {
+    if (!start || e.pointerId !== start.id) return;
+    const dx = e.clientX - start.x, dy = e.clientY - start.y;
+    if (!presunute && Math.hypot(dx, dy) < 6) return;
+    if (!presunute) { presunute = true; tlacidlo.setPointerCapture(e.pointerId); tlacidlo.classList.add('tahane'); }
+    umiestni(start.l + dx, start.t + dy);
+  });
+  const koniec = () => {
+    if (!start) return;
+    start = null;
+    tlacidlo.classList.remove('tahane');
+    if (presunute) {
+      const r = tlacidlo.getBoundingClientRect();
+      try { localStorage.setItem(KLUC_POLOHY, JSON.stringify({ x: r.left / innerWidth, y: r.top / innerHeight })); } catch { /* nevadí */ }
+    }
+  };
+  tlacidlo.addEventListener('pointerup', koniec);
+  tlacidlo.addEventListener('pointercancel', koniec);
+  // dvojklik vráti tlačidlo do rohu
+  tlacidlo.addEventListener('dblclick', () => {
+    Object.assign(tlacidlo.style, { left: '', top: '', right: '', bottom: '' });
+    try { localStorage.removeItem(KLUC_POLOHY); } catch { /* nevadí */ }
+  });
+  addEventListener('resize', () => { if (tlacidlo.style.left) { const r = tlacidlo.getBoundingClientRect(); umiestni(r.left, r.top); } });
+
+  // okno sa otvorí pri tlačidle (na širokej obrazovke), na mobile ostáva ako panel zdola
+  // poloha tlačidla sa zisťuje pred otvorením okna (otvorené okno tlačidlo skryje)
+  const umiestniOkno = (t: DOMRect) => {
+    if (innerWidth <= 600 || !tlacidlo.style.left) { Object.assign(okno.style, { left: '', top: '', right: '', bottom: '' }); return; }
+    const w = okno.offsetWidth || 400, h = okno.offsetHeight || 600;
+    const x = Math.min(Math.max(8, t.right - w), innerWidth - w - 8);
+    const y = Math.max(8, t.top + t.height / 2 > innerHeight / 2 ? t.bottom - h : Math.min(t.top, innerHeight - h - 8));
+    Object.assign(okno.style, { left: `${x}px`, top: `${y}px`, right: 'auto', bottom: 'auto' });
+  };
+  tlacidlo.addEventListener('click', (e) => {
+    if (presunute) { e.preventDefault(); presunute = false; return; }
+    const t = tlacidlo.getBoundingClientRect();
+    prepni(okno.hidden);
+    if (!okno.hidden) umiestniOkno(t);
+  });
   document.getElementById('ai-zavri')!.addEventListener('click', () => prepni(false));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !okno.hidden) prepni(false); });
 
@@ -194,7 +256,7 @@
   }
   form.addEventListener('submit', (e) => { e.preventDefault(); posli(vstup.value); });
   // otázka z vyhľadávania v hlavičke
-  window.addEventListener('asistent:otazka', (e) => { const q = String((e as CustomEvent).detail ?? '').trim(); if (okno.hidden) prepni(true); if (q) posli(q); });
+  window.addEventListener('asistent:otazka', (e) => { const q = String((e as CustomEvent).detail ?? '').trim(); if (okno.hidden) { const t = tlacidlo.getBoundingClientRect(); prepni(true); umiestniOkno(t); } if (q) posli(q); });
   okno.querySelectorAll<HTMLButtonElement>('.ai-navrhy button').forEach((b) => b.addEventListener('click', () => posli(b.textContent ?? '')));
 </script>
 
@@ -205,6 +267,8 @@
     box-shadow: 0 6px 20px #0003; cursor: pointer;
   }
   .ai-tlacidlo:hover { filter: brightness(1.08); }
+  .ai-tlacidlo { touch-action: none; user-select: none; -webkit-user-select: none; }
+  .ai-tlacidlo.tahane { cursor: grabbing; box-shadow: 0 12px 32px #0005; transform: scale(1.04); }
   :global(body.ai-otvorene) .ai-tlacidlo { display: none; }
   .ai-okno {
     position: fixed; right: 16px; bottom: 16px; z-index: 1201; width: min(400px, calc(100vw - 32px)); height: min(600px, calc(100dvh - 140px));
