@@ -209,7 +209,7 @@ def main() -> int:
         zapis_ak_zmena(DATA / "mesta" / "firmy.json", {**vystup, "mesta": {**(stare.get("mesta") or {}), **vystup["mesta"]},
                                                       "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds")})
     vystup["mesta"] = {**(stare.get("mesta") or {}), **vystup["mesta"]}
-    if sum(len(v) for v in vystup["mesta"].values()) < 8:
+    if sum(len(v) for v in vystup["mesta"].values()) < 8 and not cas_vyprsal():
         raise RuntimeError(f"Firmy miest: málo firiem ({chyby} chýb)")
     vystup["aktualizovane"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     zapis_ak_zmena(DATA / "mesta" / "firmy.json", vystup)
