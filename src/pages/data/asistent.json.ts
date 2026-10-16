@@ -225,6 +225,18 @@ export async function GET() {
       [`mestske_casti_${roky[roky.length - 1]}`]: Object.fromEntries(Object.entries<any>(ukaz.dlh.roky[roky[roky.length - 1]]).filter(([k]) => k !== 'Hlavné mesto').map(([k, v]) => [k, `dlh ${v.dlh} €, ${v.pomer} % príjmov`])),
     };
   }
+  const hosp = nacitaj('mesta/hospodarenie.json');
+  if (hosp?.mestske_casti) {
+    const mm = (n: number) => `${(n / 1e6).toFixed(2).replace('.', ',')} mil. €`;
+    const riadok = (r: any) => `výnosy ${mm(r.vynosy)} (daňové ${mm(r.danove_vynosy ?? 0)}), náklady ${mm(r.naklady)}, výsledok ${mm(r.vysledok)}, bankové úvery ${mm(r.bankove_uvery ?? 0)}, majetok ${mm(r.majetok ?? 0)}`;
+    temy.rozpocet ??= { nazov: 'Rozpočet mesta', stranka: '/bratislava/financie', fakty: {} };
+    const ba = hosp.mesta?.bratislava?.roky ?? {};
+    temy.rozpocet.fakty.hospodarenie_uctovne_zavierky = {
+      popis: 'Individuálne účtovné závierky z Registra účtovných závierok (akruálne výnosy a náklady, nie rozpočet; bez škôl a organizácií). Stránka /bratislava/financie#hospodarenie.',
+      hlavne_mesto: Object.fromEntries(Object.entries<any>(ba).slice(-5).map(([r, v]) => [r, riadok(v)])),
+      mestske_casti_posledny_rok: Object.fromEntries(Object.entries<any>(hosp.mestske_casti).map(([mc, v]) => { const r = Object.keys(v.roky).sort().pop()!; return [mc, `${r}: ${riadok(v.roky[r])}`]; })),
+    };
+  }
   if (ukaz?.index_rozvoja) {
     temy.rozvoj = { nazov: 'Index regionálneho rozvoja mestských častí (MIRRI SR)', stranka: '/bratislava/obyvatelia#index-rozvoja', fakty: ukaz.index_rozvoja };
   }
