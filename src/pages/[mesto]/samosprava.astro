@@ -1,25 +1,29 @@
 ---
-// Samospráva krajského mesta: zmluvy, faktúry a objednávky + hlasovania poslancov (data/mesta/samosprava-<slug>.json).
+// Samospráva krajského mesta: zmluvy, faktúry a objednávky + hlasovania poslancov z portálu mesta (data/mesta/samosprava-<slug>.json),
+// inak zmluvy z Centrálneho registra zmlúv (data/mesta/crz-<slug>.json, scripts/zber_zmluvy_mesta.py).
 import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../../layouts/Base.astro';
 import Hlasovania from '../../components/Hlasovania.astro';
 import { MESTA, type Mesto } from '../../mesta';
+import { maSamospravu } from '../../lib/mapa';
 
 export function getStaticPaths() {
-  return MESTA.filter((m) => m.aktivne && !m.plne && fs.existsSync(path.join(process.cwd(), 'data', 'mesta', `samosprava-${m.slug}.json`)))
-    .map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+  return MESTA.filter((m) => m.aktivne && !m.plne && maSamospravu(m.slug)).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
 }
 const { m } = Astro.props as { m: Mesto };
-const d = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'mesta', `samosprava-${m.slug}.json`), 'utf-8'));
+const citajM = (s: string) => { const p = path.join(process.cwd(), 'data', 'mesta', s); return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null; };
+const crz = citajM(`crz-${m.slug}.json`);
+const d = citajM(`samosprava-${m.slug}.json`) ?? { portal: crz.zdroj.url, financie: [crz.zmluvy], crz: true };
 const kat = (() => {
   const p = path.join(process.cwd(), 'data', `katalog-stav-${m.slug}.json`);
   return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')).datasety : [];
 })();
 const dotacie = kat.filter((x: any) => x.stav === 'katalog' && /dotáci/i.test(x.nazov)).sort((a: any, b: any) => b.nazov.localeCompare(a.nazov));
-const portalNazov = d.portal.replace(/^https?:\/\//, '');
+const portalNazov = d.portal.replace(/^https?:\/\/(www\.)?/, '');
 
 const fin: any[] = d.financie ?? [];
+const dotPoskytnute: any[] = d.crz ? fin[0]?.dotacie_poskytnute ?? [] : [];
 const typ = (t: string) => fin.find((x) => x.typ === t);
 const rokTeraz = new Date().getFullYear();
 const posledny = (x: any) => (x ? Object.keys(x.roky).filter((r) => Number(r) < rokTeraz).sort().pop() : undefined);
@@ -35,13 +39,15 @@ const graf = JSON.stringify({ roky, rady: fin.map((x) => ({ typ: x.typ, sumy: ro
 <Base title={`Samospráva – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: zmluvy, faktúry a objednávky mesta, najväčší dodávatelia, dotácie a ako hlasovali poslanci mestského zastupiteľstva.`}>
   <section class="hero">
     <p class="kicker">Samospráva</p>
-    <h1>Kam idú peniaze a ako sa hlasuje <span translate="no">{m.v}</span></h1>
-    <p class="lead">Zmluvy, faktúry a objednávky mesta a hlasovania poslancov z otvorených dát mesta (<a href={d.portal}>{portalNazov}</a>).</p>
+    <h1>{d.crz ? 'Zmluvy mesta' : 'Kam idú peniaze a ako sa hlasuje'} <span translate="no">{m.v}</span></h1>
+    {d.crz
+      ? <p class="lead">Zmluvy mesta z <a href={d.portal}>Centrálneho registra zmlúv</a> od roku {crz.od.slice(0, 4)} – s kým mesto uzatvára zmluvy, na koľko a komu dáva dotácie.</p>
+      : <p class="lead">Zmluvy, faktúry a objednávky mesta a hlasovania poslancov z otvorených dát mesta (<a href={d.portal}>{portalNazov}</a>).</p>}
   </section>
 
   {fin.length > 0 && (
     <>
-      <h2 class="sekcia" id="peniaze">Zmluvy, faktúry a objednávky</h2>
+      <h2 class="sekcia" id="peniaze">{d.crz ? 'Zmluvy' : 'Zmluvy, faktúry a objednávky'}</h2>
       <section class="kpis">
         {fin.map((x) => {
           const r = posledny(x);
@@ -51,36 +57,45 @@ const graf = JSON.stringify({ roky, rady: fin.map((x) => ({ typ: x.typ, sumy: ro
       <section class="card" id="fin-graf" data-graf={graf}>
         <h3>Sumy podľa rokov</h3>
         <div class="chart"><canvas id="g-fin" role="img" aria-label="Suma zmlúv, faktúr a objednávok mesta podľa rokov"></canvas></div>
-        <p class="zdroj">Pri zmluvách ide o sumu uvedenú v zmluve (môže byť viacročná, zahŕňa aj príjmové zmluvy, napr. nájmy a predaje). Rok = dátum podpisu zmluvy, prijatia faktúry, vystavenia objednávky.</p>
+        <p class="zdroj">Pri zmluvách ide o sumu uvedenú v zmluve (môže byť viacročná, zahŕňa aj príjmové zmluvy, napr. nájmy a predaje, a zmluvy o prijatí dotácií od štátu). {d.crz ? 'Rok = dátum podpisu zmluvy.' : 'Rok = dátum podpisu zmluvy, prijatia faktúry, vystavenia objednávky.'} Bežiaci rok nie je v grafe.</p>
       </section>
       <section class="card">
         <div class="mriezka">
           {fin.map((x) => (
             <div>
-              <h3>Najväčší partneri – {x.typ} (posledné 3 roky)</h3>
+              <h3>{d.crz ? 'Najväčší zmluvní partneri (posledné 3 roky)' : `Najväčší partneri – ${x.typ} (posledné 3 roky)`}</h3>
               <ol class="dodavatelia" translate="no">{x.dodavatelia_posledne_3_roky.slice(0, 10).map((y: any) => <li>{y.nazov} <span>{mil(y.suma)} · {fmt(y.pocet)}×</span></li>)}</ol>
             </div>
           ))}
         </div>
         <p class="zdroj">
           Fyzické osoby, živnostníkov a zmluvné strany bez IČO alebo bez právnej formy v názve (napr. nájomcov bytov) nezverejňujeme – sú len v súčtoch
-          ({fin.map((x) => `${x.typ} ${fmt(x.skryte_fyzicke_osoby)}`).join(', ')}).
-          Zdroj: {fin.map((x, i) => <>{i > 0 && ', '}<a href={x.zdroj}>{x.typ}</a></>)} – {portalNazov}, licencia CC BY 4.0.
+          ({fin.map((x) => `${x.typ} ${fmt(x.skryte_fyzicke_osoby)}`).join(', ')}).{' '}
+          {d.crz
+            ? <>Zdroj: <a href="https://www.crz.gov.sk">Centrálny register zmlúv</a> (denné exporty), zmluvy, kde je mesto (IČO {crz.ico}) jednou zo strán; dodatky sú samostatné zmluvy.</>
+            : <>Zdroj: {fin.map((x, i) => <>{i > 0 && ', '}<a href={x.zdroj}>{x.typ}</a></>)} – {portalNazov}, licencia CC BY 4.0.</>}
         </p>
       </section>
       <section class="card">
-        <h3>Najväčšie položky za posledných 12 mesiacov</h3>
-        <div class="taby" role="tablist" aria-label="Typ dokladu">
+        <h3>{d.crz ? 'Najväčšie zmluvy za posledných 12 mesiacov' : 'Najväčšie položky za posledných 12 mesiacov'}</h3>
+        {fin.length > 1 && <div class="taby" role="tablist" aria-label="Typ dokladu">
           {fin.map((x, i) => <button type="button" role="tab" data-t={x.typ} aria-selected={i === 0 ? 'true' : 'false'}>{x.typ[0].toUpperCase() + x.typ.slice(1)}</button>)}
-        </div>
+        </div>}
         {fin.map((x, i) => (
           <ul class="zmluvy" data-t={x.typ} hidden={i !== 0}>
             {x.najvacsie_12_mesiacov.slice(0, 10).map((y: any) => (
-              <li><div class="zmluva-hlava"><strong>{eur(y.suma)}</strong><span>{datum(y.datum)}</span></div><p translate="no">{y.dodavatel}</p>{y.popis && <p class="predmet">{y.popis}</p>}</li>
+              <li><div class="zmluva-hlava"><strong>{eur(y.suma)}</strong><span>{datum(y.datum)}</span></div><p translate="no">{y.url ? <a href={y.url} rel="noopener">{y.dodavatel}</a> : y.dodavatel}</p>{y.popis && <p class="predmet">{y.popis}</p>}</li>
             ))}
           </ul>
         ))}
       </section>
+      {dotPoskytnute.length > 0 && (
+        <section class="card">
+          <h3>Komu mesto dalo dotácie (od {crz.od.slice(0, 4)})</h3>
+          <ol class="dodavatelia" translate="no">{dotPoskytnute.slice(0, 12).map((y: any) => <li>{y.nazov} <span>{eur(y.suma)}</span></li>)}</ol>
+          <p class="zdroj">Zmluvy s „dotácia“ alebo „grant“ v názve či predmete, partner nie je štát ani fond. Fyzické osoby nezverejňujeme.</p>
+        </section>
+      )}
       {dotacie.length > 0 && (
         <section class="card">
           <h3>Dotácie z rozpočtu mesta</h3>
@@ -91,7 +106,7 @@ const graf = JSON.stringify({ roky, rady: fin.map((x) => ({ typ: x.typ, sumy: ro
     </>
   )}
 
-  <Hlasovania mesto={m.slug} portal={d.portal} />
+  {!d.crz && <Hlasovania mesto={m.slug} portal={d.portal} />}
 </Base>
 
 <script>

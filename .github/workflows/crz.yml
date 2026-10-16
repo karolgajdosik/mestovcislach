@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - "scripts/zber_zmluvy_mc.py"
+      - "scripts/zber_zmluvy_mesta.py"
       - "scripts/zber_rpo.py"
       - ".github/workflows/crz.yml"
 
@@ -37,6 +38,10 @@ jobs:
       - name: Zmluvy a dotácie mestských častí (CRZ)
         run: python scripts/zber_zmluvy_mc.py
 
+      - name: Zmluvy krajských miest (CRZ)
+        if: success() || failure()
+        run: python scripts/zber_zmluvy_mesta.py
+
       - name: Dodávatelia v registri právnických osôb (RPO)
         if: (success() || failure()) && hashFiles('scripts/zber_rpo.py') != ''
         run: python scripts/zber_rpo.py
@@ -50,7 +55,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Žiadne nové dáta."
           else
-            git commit -m "Dáta: zmluvy mestských častí $(date -u +%Y-%m-%d)"
+            git commit -m "Dáta: zmluvy mestských častí a miest $(date -u +%Y-%m-%d)"
             for i in 1 2 3 4 5; do git pull --rebase -X theirs -q && git push && break; sleep $((i * 5)); done
             git fetch -q origin main && git diff --quiet HEAD origin/main -- data public/data || { echo "::error::Push dát zlyhal"; exit 1; }
           fi
