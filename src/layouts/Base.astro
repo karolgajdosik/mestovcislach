@@ -144,7 +144,16 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
 </html>
 
 <script>
-  document.querySelector('.menu a[aria-current="page"]')?.scrollIntoView({ block: 'nearest', inline: 'center' });
+  // aktívna položka menu do stredu pásu – vpravo od prilepeného výberu mesta (mobil)
+  {
+    const pas = document.querySelector<HTMLElement>('.menu-pas');
+    const akt = pas?.querySelector<HTMLElement>('a[aria-current="page"]');
+    if (pas && akt && pas.scrollWidth > pas.clientWidth) {
+      const vyber = pas.querySelector<HTMLElement>('.mv-pas');
+      const lavo = vyber && getComputedStyle(vyber).position === 'sticky' ? vyber.offsetWidth + 14 : 0;
+      pas.scrollLeft = akt.offsetLeft - pas.offsetLeft - lavo - (pas.clientWidth - lavo - akt.offsetWidth) / 2;
+    }
+  }
 
   // Prístupnosť: mapy ako pomenované oblasti, posúvateľné tabuľky dostupné z klávesnice (aj pre neskôr pridaný obsah)
   const pristupnost = () => {
@@ -305,7 +314,14 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
   .mesto-volba .sipka { width: 15px; height: 15px; stroke: var(--muted); margin-left: -2px; }
   .mv-hlava { margin-left: 12px; }
   .menu a.mv-pas { display: none; margin-right: 6px; }
-  @media (max-width: 760px) { .mv-hlava { display: none; } .menu a.mv-pas { display: inline-flex; } }
+  @media (max-width: 760px) {
+    .mv-hlava { display: none; }
+    /* výber mesta ostáva prilepený vľavo, aj keď sa pás menu posúva */
+    .menu a.mv-pas { display: inline-flex; position: sticky; left: 0; z-index: 2; margin-right: 8px; background: var(--bg);
+      box-shadow: 0 0 0 6px var(--card), -18px 0 0 6px var(--card), 12px 0 10px 2px var(--card); }
+    .menu a.mv-pas:hover { background: var(--bg); }
+    .menu-pas { scroll-padding-left: 140px; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent) !important; mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent) !important; }
+  }
   @media (min-width: 1300px) { .menu-pas { justify-content: space-between; } }
   @media (max-width: 1299px) {
     /* posúvateľný pás – okraje sa jemne strácajú */
@@ -318,6 +334,10 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
     .hlava-akcie { margin-left: 0; }
     .menu-pas { height: 48px; }
     .menu a { height: 36px; font-size: 0.88rem; padding: 0 12px 0 10px; }
+  }
+  @media (max-width: 360px) {
+    .hlava { gap: 6px; }
+    .logo { font-size: 0.95rem; }
   }
   @media (prefers-reduced-motion: reduce) { .menu a { transition: none; } }
   .zive { background: var(--bg); border-bottom: 1px solid var(--line); font-size: 0.82rem; position: relative; z-index: 1099; }
