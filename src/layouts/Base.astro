@@ -12,6 +12,7 @@ const { title, description = 'Otvorené dáta o slovenských mestách a obciach 
 // Hlavné menu: odkaz, názov, ikona (SVG cesty, ťah 1.8)
 const MENU: [string, string, string][] = [
   ['/', 'Prehľad', '<path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h4.5v-5.5h4V20h4.5V9.5"/>'],
+  ['/mestske-casti', 'Mestské časti', '<path d="M4 4.5h7v7H4zM13 4.5h7v4.5h-7zM13 11h7v8.5h-7zM4 13.5h7v6H4z"/>'],
   ['/mapa', 'Mapa', '<path d="M9 4.5 3.5 6.5v13l5.5-2 6 2 5.5-2v-13l-5.5 2-6-2Z"/><path d="M9 4.5v13M15 6.5v13"/>'],
   ['/obyvatelia', 'Obyvatelia', '<circle cx="9" cy="8" r="3.3"/><path d="M2.8 20c.6-3.5 3.1-5.4 6.2-5.4s5.6 1.9 6.2 5.4"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.6c2.2.2 3.8 1.8 4.3 4.4"/>'],
   ['/volby', 'Voľby', '<path d="M4 11h16v9H4z"/><path d="M8 11V4h8v7"/><path d="m10 7.6 1.4 1.4L14.2 6"/>'],
@@ -22,7 +23,7 @@ const MENU: [string, string, string][] = [
   ['/bezpecnost', 'Bezpečnosť', '<path d="M12 3 5 6v5.2c0 4.4 3 8.2 7 9.8 4-1.6 7-5.4 7-9.8V6l-7-3Z"/><path d="m9 12 2 2 4-4.2"/>'],
   ['/katalog', 'Katalóg dát', '<ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>'],
 ];
-const OG = ['mapa', 'obyvatelia', 'volby', 'financie', 'doprava', 'vybavenost', 'prostredie', 'bezpecnost', 'katalog'];
+const OG = ['mestske-casti', 'mapa', 'obyvatelia', 'volby', 'financie', 'doprava', 'vybavenost', 'prostredie', 'bezpecnost', 'katalog'];
 const sekcia = Astro.url.pathname.split('/').filter(Boolean)[0] ?? '';
 const ogObrazok = new URL(`/og/${OG.includes(sekcia) ? sekcia : 'index'}.png`, Astro.site ?? 'https://mestovcislach.sk');
 const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.sk');
@@ -238,7 +239,7 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
   .menu-pas { display: flex; gap: 2px; height: 52px; align-items: center; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; scroll-padding: 0 16px; }
   .menu-pas::-webkit-scrollbar { display: none; }
   .menu a {
-    display: inline-flex; align-items: center; gap: 7px; flex-shrink: 0; height: 38px; padding: 0 13px 0 11px; border-radius: 19px;
+    display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; height: 38px; padding: 0 11px 0 9px; border-radius: 19px;
     color: var(--text); text-decoration: none; font-size: 0.92rem; font-weight: 600; white-space: nowrap; scroll-snap-align: start;
     transition: background 0.15s, color 0.15s;
   }

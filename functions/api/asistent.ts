@@ -414,8 +414,13 @@ export const onRequestPost = async (ctx: any) => {
     { role: 'user', content: `PODKLADY (JSON):\n${JSON.stringify(kontext).slice(0, 24000)}\n\nOTÁZKA: ${otazkaPovodna}${jazyk !== 'sk' ? `\n(po slovensky: ${otazka})\nODPOVEDZ ${JAZYKY_ODPOVEDE[jazyk]}.` : ''}` },
   ];
 
-  const odkazy = [...new Set([...(spadove ? ['spadove'] : []), ...temy, ...ziveTypy, ...(pouziteMiesta ? ['miesta'] : [])].map((t) => STRANKY[t]).filter(Boolean))]
-    .slice(0, 4).map((u) => ({ url: u, nazov: NAZVY_STRANOK[u] ?? u })).concat(katalogove).slice(0, 5);
+  const odkazy: { url: string; nazov: string }[] = [...new Set([...(spadove ? ['spadove'] : []), ...temy, ...ziveTypy, ...(pouziteMiesta ? ['miesta'] : [])].map((t) => STRANKY[t]).filter(Boolean))]
+    .slice(0, 4).map((u) => ({ url: u, nazov: NAZVY_STRANOK[u] ?? u }));
+  // otázka o konkrétnej mestskej časti → odkaz na jej profil ako prvý
+  const castOtazky = najdiCast(otazka, data.mestske_casti);
+  if (castOtazky) odkazy.unshift({ url: `/mestske-casti/${castOtazky.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, '-')}`, nazov: `${castOtazky} – profil` });
+  odkazy.push(...katalogove);
+  odkazy.splice(5);
   if (telo.stream === true) return streamuj(ctx, messages, odkazy);
 
   let odpoved = '';

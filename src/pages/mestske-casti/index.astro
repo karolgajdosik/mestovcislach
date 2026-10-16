@@ -1,0 +1,124 @@
+---
+// Rozcestník 17 mestských častí: karty s hlavnými číslami, mapa a porovnávacia tabuľka.
+import Base from '../../layouts/Base.astro';
+import MapaCasti from '../../components/MapaCasti.astro';
+import { profily } from '../../lib/profil-mc';
+
+const { profily: p, mesto } = await profily();
+const fmt = (n: number | null | undefined) => (n == null ? '–' : Math.round(n).toLocaleString('sk-SK'));
+const des = (n: number | null | undefined, d = 1) => (n == null ? '–' : n.toLocaleString('sk-SK', { minimumFractionDigits: d, maximumFractionDigits: d }));
+const znam = (n: number | null) => (n == null ? '–' : `${n > 0 ? '+' : ''}${des(n)} %`);
+// malý graf vývoja obyvateľov pre kartu
+const sparkline = (roky: [string, number][]) => {
+  const b = roky.filter(([r]) => Number(r) >= 2006);
+  if (b.length < 2) return '';
+  const ys = b.map(([, v]) => v), y0 = Math.min(...ys), y1 = Math.max(...ys) || 1;
+  return b.map(([, v], i) => `${((i / (b.length - 1)) * 100).toFixed(1)},${(28 - ((v - y0) / (y1 - y0 || 1)) * 26).toFixed(1)}`).join(' ');
+};
+const STLPCE: [string, string, (x: any) => number | null, (n: number | null) => string][] = [
+  ['pocet', 'Obyvatelia', (x) => x.obyvatelia.pocet, fmt],
+  ['zmena', 'Zmena za 10 rokov', (x) => x.obyvatelia.zmena10, znam],
+  ['hustota', 'Na km²', (x) => x.obyvatelia.hustota, fmt],
+  ['seniori', 'Seniori 65+', (x) => x.sklad.seniori.hodnota, (n) => `${des(n)} %`],
+  ['vs', 'Vysokoškoláci', (x) => x.sklad.vs.hodnota, (n) => `${des(n)} %`],
+  ['prognoza', 'Prognóza 2035', (x) => x.prognoza.zmena, znam],
+  ['rozvoj', 'Index rozvoja', (x) => x.rozvoj.hodnota, (n) => des(n, 2)],
+  ['dlh', 'Dlh / príjmy', (x) => x.financie.pomer, (n) => `${des(n)} %`],
+  ['priestupky', 'Priestupky na 1 000', (x) => x.bezpecnost.na1000.hodnota, (n) => des(n)],
+];
+---
+<Base title="Mestské časti Bratislavy – mestovcislach.sk" description="Profily všetkých 17 mestských častí Bratislavy: obyvatelia, voľby, peniaze, školy, bezpečnosť, klíma a prognóza s porovnaním.">
+  <section class="hero">
+    <p class="kicker">Bratislava</p>
+    <h1>Mestské časti</h1>
+    <p class="lead">Sedemnásť častí, sedemnásť rôznych miest. Vyberte si svoju a uvidíte všetko, čo o nej hovoria otvorené dáta – a ako sa líši od zvyšku Bratislavy.</p>
+  </section>
+
+  <ul class="karty">
+    {p.map((x) => (
+      <li>
+        <a class="karta card" href={`/mestske-casti/${x.slug}`}>
+          <span class="k-nazov" translate="no">{x.mc}</span>
+          <span class="k-pocet"><strong>{fmt(x.obyvatelia.pocet)}</strong> obyvateľov</span>
+          <svg class="k-graf" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><polyline points={sparkline(x.obyvatelia.roky)} /></svg>
+          <span class="k-fakty">
+            <span>{znam(x.obyvatelia.zmena10)} za 10 rokov</span>
+            <span>{des(x.sklad.seniori.hodnota)} % seniorov</span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <MapaCasti />
+
+  <section class="card" id="porovnanie">
+    <h2>Porovnanie mestských častí</h2>
+    <p class="pozn">Kliknutím na hlavičku stĺpca zoradíte. Bratislava spolu: {fmt(mesto.pocet)} obyvateľov ({mesto.rok}).</p>
+    <div class="tabulka-obal">
+      <table class="porovnanie">
+        <thead><tr><th data-k="0">Mestská časť</th>{STLPCE.map(([, n], i) => <th class="num" data-k={i + 1}>{n}</th>)}</tr></thead>
+        <tbody>
+          {p.map((x) => (
+            <tr data-s={JSON.stringify([x.mc, ...STLPCE.map(([, , f]) => f(x))])}>
+              <td><a href={`/mestske-casti/${x.slug}`} translate="no">{x.mc}</a></td>
+              {STLPCE.map(([, , f, form]) => <td class="num">{form(f(x))}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="zdroj">Obyvatelia ŠÚ SR ({mesto.rok}), sčítanie 2021, prognóza mesta Bratislava 2050, index rozvoja MIRRI SR, dlh MF SR, priestupky mestskej polície (priemer za rok 2017–2022).</p>
+  </section>
+</Base>
+
+<script>
+  const tab = document.querySelector<HTMLTableElement>('table.porovnanie');
+  if (tab) {
+    let kluc = 0, smer = 1;
+    tab.querySelectorAll<HTMLElement>('th').forEach((th) => {
+      th.tabIndex = 0;
+      th.setAttribute('role', 'button');
+      const zorad = () => {
+        const k = Number(th.dataset.k);
+        smer = k === kluc ? -smer : k === 0 ? 1 : -1;
+        kluc = k;
+        tab.querySelectorAll('th').forEach((x) => x.removeAttribute('aria-sort'));
+        th.setAttribute('aria-sort', smer > 0 ? 'ascending' : 'descending');
+        const tb = tab.tBodies[0];
+        [...tb.rows].sort((a, b) => {
+          const x = JSON.parse(a.dataset.s!)[k], y = JSON.parse(b.dataset.s!)[k];
+          if (x == null) return 1; if (y == null) return -1;
+          return (typeof x === 'number' ? x - y : String(x).localeCompare(String(y), 'sk')) * smer;
+        }).forEach((r) => tb.appendChild(r));
+      };
+      th.addEventListener('click', zorad);
+      th.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); zorad(); } });
+    });
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 20px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  .karty { list-style: none; padding: 0; margin: 0 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+  .karta { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 16px; text-decoration: none; color: var(--text); transition: border-color 0.15s, transform 0.15s; }
+  .karta:hover { border-color: var(--accent); transform: translateY(-2px); }
+  @media (prefers-reduced-motion: reduce) { .karta, .karta:hover { transition: none; transform: none; } }
+  .k-nazov { font-weight: 800; font-size: 1.08rem; letter-spacing: -0.01em; }
+  .k-pocet { font-size: 0.85rem; color: var(--muted); }
+  .k-pocet strong { color: var(--text); font-size: 1rem; }
+  .k-graf { width: 100%; height: 32px; margin: 6px 0 2px; }
+  .k-graf polyline { fill: none; stroke: var(--accent); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+  .k-fakty { display: flex; flex-direction: column; font-size: 0.78rem; color: var(--muted); }
+  section.card { margin-top: 16px; }
+  .card h2 { font-size: 1.2rem; margin: 0 0 6px; }
+  .pozn { font-size: 0.85rem; color: var(--muted); margin: 0 0 12px; }
+  .porovnanie th { cursor: pointer; white-space: nowrap; user-select: none; }
+  .porovnanie th[aria-sort='ascending']::after { content: ' ▲'; font-size: 0.7em; }
+  .porovnanie th[aria-sort='descending']::after { content: ' ▼'; font-size: 0.7em; }
+  .porovnanie td.num, .porovnanie th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .zdroj { font-size: 0.8rem; color: var(--muted); margin: 12px 0 0; }
+</style>

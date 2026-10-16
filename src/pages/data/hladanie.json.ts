@@ -13,6 +13,7 @@ const nacitaj = (subor: string, verejne = false) => {
 const SEKCIE: [string, string, string, string][] = [
   ['/', 'Prehľad', 'Dnes v Bratislave, obyvatelia, rozcestník', 'úvod domov dnes'],
   ['/#dnes', 'Dnes v Bratislave', 'výstrahy, ovzdušie, Dunaj, uzávierky', 'výstraha búrka počasie dnes'],
+  ['/mestske-casti', 'Mestské časti', 'profily a porovnanie 17 častí', 'mestská časť štvrť porovnanie profil'],
   ['/mapa', 'Mapa Bratislavy', 'všetky vrstvy na jednej mape', 'mapa vrstvy'],
   ['/mapa#horucavy', 'Mapa horúčav', 'riziko horúčav, fontány, ochladzovacie miesta', 'teplo horúčava klíma leto'],
   ['/mapa#klima', 'Klimatický atlas', 'riziko zmeny klímy, prívalové dažde', 'klíma zrážky dážď'],
@@ -65,7 +66,7 @@ export async function GET() {
   const scit = nacitaj('scitanie-bratislava.json');
   const casti: string[] = scit ? Object.keys(scit.temy?.vek?.mestske_casti ?? {}) : [];
   for (const mc of (casti.length ? casti : ['Staré Mesto', 'Ružinov', 'Vrakuňa', 'Podunajské Biskupice', 'Nové Mesto', 'Rača', 'Vajnory', 'Karlova Ves', 'Dúbravka', 'Lamač', 'Devín', 'Devínska Nová Ves', 'Záhorská Bystrica', 'Petržalka', 'Jarovce', 'Rusovce', 'Čunovo']))
-    polozky.push(['Mestské časti', mc, 'obyvatelia, voľby, zmluvy, mapa', `/obyvatelia?mc=${encodeURIComponent(mc)}#obyv`, 'mestská časť mč']);
+    polozky.push(['Mestské časti', mc, 'profil: ľudia, voľby, peniaze, školy, bezpečnosť', `/mestske-casti/${mc.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, '-')}`, 'mestská časť mč']);
 
   // Katalóg dát
   for (const d of nacitaj('katalog-stav.json')?.datasety ?? []) {
