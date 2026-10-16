@@ -192,6 +192,8 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
   const tmava = document.documentElement.dataset.tema === 'tmava';
   const okraj = tmava ? '#121417' : '#ffffff';
   const fmt = (n: number) => n?.toLocaleString('sk-SK');
+  // texty z dát vkladané do okien na mape vždy ošetríme (ochrana pred vložením HTML z cudzích zdrojov)
+  const hx = (t: unknown) => String(t ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
   const mobil = window.innerWidth < 600;
 
   const mapa = L.map('mapa', { zoomSnap: 0.25, preferCanvas: true, scrollWheelZoom: !mobil });
@@ -234,7 +236,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
     hranice: async () => {
       const v = L.geoJSON(inline.hranice, {
         style: { color: farba('hranice'), weight: 1.5, fillOpacity: 0.04, fillColor: farba('hranice') },
-        onEachFeature: (f: any, l) => l.bindPopup(`<strong>${f.properties.n}</strong><br>${fmt(f.properties.o)} obyvateľov<br>${f.properties.r.toLocaleString('sk-SK')} km²`),
+        onEachFeature: (f: any, l) => l.bindPopup(`<strong>${hx(f.properties.n)}</strong><br>${fmt(f.properties.o)} obyvateľov<br>${f.properties.r.toLocaleString('sk-SK')} km²`),
       });
       if (!location.hash.startsWith('#miesto&')) mapa.fitBounds(v.getBounds(), { padding: [8, 8] });
       return v;
@@ -242,14 +244,14 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
     mhd: async () => {
       const max = Math.max(...inline.mhd.map((z: any[]) => z[3]));
       return L.layerGroup(inline.mhd.map(([lat, lon, n, o]: any[]) =>
-        bod(lat, lon, 'mhd', 2 + 8 * Math.sqrt(o / max)).bindPopup(`<strong>${n}</strong><br>${fmt(o)} odchodov za pracovný deň`)));
+        bod(lat, lon, 'mhd', 2 + 8 * Math.sqrt(o / max)).bindPopup(`<strong>${hx(n)}</strong><br>${fmt(o)} odchodov za pracovný deň`)));
     },
-    bajk: async () => L.layerGroup(inline.bajk.map(([lat, lon, n]: any[]) => bod(lat, lon, 'bajk').bindPopup(`<strong>${n}</strong><br>Stanica Slovnaft BAjk`))),
+    bajk: async () => L.layerGroup(inline.bajk.map(([lat, lon, n]: any[]) => bod(lat, lon, 'bajk').bindPopup(`<strong>${hx(n)}</strong><br>Stanica Slovnaft BAjk`))),
     skladky: async () => L.layerGroup(inline.skladky.map(([lat, lon]: any[]) => bod(lat, lon, 'skladky', 6).bindPopup('Čierna skládka nahlásená v roku 2025'))),
     scitace: async () => {
       const J: Record<string, string> = { auta: 'áut', cyklisti: 'cyklistov', chodci: 'chodcov' };
       return L.layerGroup(inline.scitace.map(([lat, lon, n, k]: any[]) => bod(lat, lon, 'scitace', mobil ? 5 : 6).bindPopup(
-        `<strong>Sčítač ${n}</strong><br>${Object.entries(k).map(([kat, v]) => `${fmt(v as number)} ${J[kat]}`).join('<br>')}<br><span style="opacity:.75">priemer za pracovný deň · <a href="/doprava#premavka">kedy je špička</a></span>`)));
+        `<strong>Sčítač ${hx(n)}</strong><br>${Object.entries(k).map(([kat, v]) => `${fmt(v as number)} ${J[kat]}`).join('<br>')}<br><span style="opacity:.75">priemer za pracovný deň · <a href="/doprava#premavka">kedy je špička</a></span>`)));
     },
     uzavierky: async () => obmedzenia(await uzavierky(), 'uzavierky'),
     poruchy: async () => obmedzenia(await poruchy(), 'poruchy'),
@@ -266,7 +268,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
     const d = await json('/data/priroda-bratislava.geojson');
     return L.geoJSON({ ...d, features: d.features.filter((f: any) => f.properties.t === typ) }, {
       style: { color: farba(typ), weight: 1, fillColor: farba(typ), fillOpacity: typ === 'natura' ? 0.15 : 0.25, dashArray: typ === 'natura' ? '4 3' : undefined },
-      onEachFeature: (f: any, l) => l.bindPopup(`<strong>${f.properties.n}</strong><br>${f.properties.k}<br>${f.properties.km2.toLocaleString('sk-SK')} km² v Bratislave`),
+      onEachFeature: (f: any, l) => l.bindPopup(`<strong>${hx(f.properties.n)}</strong><br>${hx(f.properties.k)}<br>${f.properties.km2.toLocaleString('sk-SK')} km² v Bratislave`),
     });
   }
   for (const k of ['lekarne', 'nemocnice', 'ambulancie', 'nabijanie']) {
@@ -337,7 +339,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
   tvorba.podnety = async () => {
     const d = await json('/data/podnety-bratislava.json');
     return L.layerGroup(d.body.map(([lat, lon, kat, pod, stav, dat]: any[]) => bod(lat, lon, 'podnety', mobil ? 2.5 : 3)
-      .bindPopup(`<strong>${kat}</strong>${pod ? `<br>${pod}` : ''}<br>stav: ${stav}<br><span style="opacity:.75">nahlásené ${dat.split('-').reverse().join('. ')} · podnety magistrátu (mesto ich zverejnilo len do roku ${d.body.length ? d.body.reduce((a: string, b: any[]) => (b[5] > a ? b[5] : a), '').slice(0, 4) : ''})</span>`)));
+      .bindPopup(`<strong>${hx(kat)}</strong>${pod ? `<br>${hx(pod)}` : ''}<br>stav: ${hx(stav)}<br><span style="opacity:.75">nahlásené ${dat.split('-').reverse().join('. ')} · podnety magistrátu (mesto ich zverejnilo len do roku ${d.body.length ? d.body.reduce((a: string, b: any[]) => (b[5] > a ? b[5] : a), '').slice(0, 4) : ''})</span>`)));
   };
   // Mriežky klimatického atlasu a hustoty – vždy len jedna naraz, farba podľa kvintilov
   const KLIMA_FARBY = ['#fef3c7', '#fcd34d', '#f59e0b', '#dc2626', '#7f1d1d'];
@@ -350,7 +352,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
       lg.querySelector('.lk-nazov')!.textContent = d.nazov;
       return L.layerGroup(d.bunky.map(([s1, w, n, e, v]: number[]) => L.rectangle([[s1, w], [n, e]], {
         renderer: klimaRenderer, stroke: false, fillColor: KLIMA_FARBY[trieda(v)], fillOpacity: 0.55,
-      }).bindPopup(`<strong>${d.nazov}</strong><br>hodnota ${v.toLocaleString('sk-SK')} (${['veľmi nízka', 'nízka', 'stredná', 'vysoká', 'veľmi vysoká'][trieda(v)]} v rámci mesta)<br><span style="opacity:.75">${d.popis}</span>`)));
+      }).bindPopup(`<strong>${hx(d.nazov)}</strong><br>hodnota ${v.toLocaleString('sk-SK')} (${['veľmi nízka', 'nízka', 'stredná', 'vysoká', 'veľmi vysoká'][trieda(v)]} v rámci mesta)<br><span style="opacity:.75">${d.popis}</span>`)));
     };
   }
   const HLUK: Record<string, string> = { 55: '#facc15', 60: '#f97316', 65: '#dc2626', 70: '#7e22ce' };
@@ -361,7 +363,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
       const vrstva = d.vrstvy[v];
       return L.layerGroup(Object.entries<any>(vrstva.ciary).map(([db, ciary]) =>
         L.polyline(ciary, { color: HLUK[db], weight: Number(db) >= 65 ? 2.2 : 1.6, opacity: 0.9 })
-          .bindPopup(`<strong>${db === '70' ? '70 dB a viac' : `${db} dB`}</strong><br>${vrstva.nazov}<br><span style="opacity:.75">izofóna strategickej hlukovej mapy (ÚVZ SR); WHO odporúča pri hluku z ciest najviac 53 dB (Lden) a 45 dB v noci</span>`)));
+          .bindPopup(`<strong>${db === '70' ? '70 dB a viac' : `${db} dB`}</strong><br>${hx(vrstva.nazov)}<br><span style="opacity:.75">izofóna strategickej hlukovej mapy (ÚVZ SR); WHO odporúča pri hluku z ciest najviac 53 dB (Lden) a 45 dB v noci</span>`)));
     };
   }
 

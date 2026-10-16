@@ -1,6 +1,12 @@
 // Okná (popupy) pre vrstvy z celoštátnych registrov: pamiatky, školy, sociálne služby, chránené stromy, obvody ZŠ.
 // Používajú rovnaké triedy .mf* ako popupMiesta (štýly v Base.astro).
 
+// Fotka, ktorá sa nenačíta, zmizne (namiesto inline onerror – CSP nepovoľuje inline skripty)
+if (typeof document !== 'undefined') document.addEventListener('error', (e) => {
+  const t = e.target as HTMLElement;
+  if (t instanceof HTMLImageElement && t.closest('.mf-foto')) t.closest('.mf-foto')!.remove();
+}, true);
+
 const esc = (t: unknown) => String(t ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 const fmt = (n: number) => n.toLocaleString('sk-SK');
 const odkaz = (url: string | undefined, text: string) => (url && /^https?:\/\//.test(url) ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(text)}</a>` : '');
@@ -68,7 +74,7 @@ export function popupObvodu(p: any): string {
 // Vrstvy z datasetov mesta (bezbariérovosť, fontány, športoviská, pomoc ľuďom bez domova, veterina, stromy, podnety)
 export function popupVrstvy(nazov: string, kategoria: string, d: any = {}): string {
   return obal([
-    d.f && `<a href="${esc(d.f)}" target="_blank" rel="noopener" class="mf-foto"><img src="${esc(d.f)}" alt="" loading="lazy" onerror="this.parentElement.remove()"></a>`,
+    d.f && `<a href="${esc(d.f)}" target="_blank" rel="noopener" class="mf-foto"><img src="${esc(d.f)}" alt="" loading="lazy"></a>`,
     `<strong class="mf-nazov" translate="no">${esc(nazov || kategoria)}</strong>`,
     `<span class="mf-kat">${esc([d.typ || kategoria, d.lat && d.lat !== nazov ? d.lat : ''].filter(Boolean).join(' · '))}</span>`,
     (d.a || d.ul) && `<span class="mf-adr" translate="no">${esc(d.a || d.ul)}${d.pribl ? ' (poloha podľa ulice)' : ''}</span>`,

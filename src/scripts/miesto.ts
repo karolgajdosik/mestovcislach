@@ -1,3 +1,9 @@
+// Fotka, ktorá sa nenačíta, zmizne (namiesto inline onerror – CSP nepovoľuje inline skripty)
+if (typeof document !== 'undefined') document.addEventListener('error', (e) => {
+  const t = e.target as HTMLElement;
+  if (t instanceof HTMLImageElement && t.closest('.mf-foto')) t.closest('.mf-foto')!.remove();
+}, true);
+
 // Podrobnosti o mieste z OpenStreetMap pre okno na mape: adresa, otváracie hodiny, web, Wikipédia, fotka.
 
 export type Detail = {
@@ -86,7 +92,7 @@ export function otvorene(h: string): { otvorene: boolean; do?: string; od?: stri
 export function popupMiesta(nazov: string, kategoria: string, d: Detail = {}): string {
   const r: string[] = [];
   if (d.f) {
-    r.push(`<a href="${esc(d.f.replace(/\?width=\d+$/, ''))}" target="_blank" rel="noopener" class="mf-foto"><img src="${esc(d.f)}" alt="" loading="lazy" onerror="this.parentElement.remove()"></a>`);
+    r.push(`<a href="${esc(d.f.replace(/\?width=\d+$/, ''))}" target="_blank" rel="noopener" class="mf-foto"><img src="${esc(d.f)}" alt="" loading="lazy"></a>`);
   }
   r.push(`<strong class="mf-nazov" translate="no">${esc(nazov || kategoria)}</strong>`);
   r.push(`<span class="mf-kat">${esc([d.typ || kategoria, d.op && d.op !== nazov ? d.op : ''].filter(Boolean).join(' · '))}</span>`);

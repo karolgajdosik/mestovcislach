@@ -123,8 +123,8 @@ export function popup(o: Obmedzenie): string {
   const riadky = [`<strong>${esc(o.nadpis)}</strong>`];
   if (o.adresa) riadky.push(esc(o.adresa) + (o.cast ? ` · ${esc(o.cast)}` : ''));
   if (o.typ === 'uzavierka') {
-    riadky.push(`${o.planovana ? 'Plánovaná od' : 'Od'} ${den(o.od)} do ${den(o.do)}${o.uzavierka && o.uzavierka !== 'žiadna' ? ` · ${o.uzavierka} uzávierka` : ''}`);
-    if (o.vplyv?.length) riadky.push('Obmedzuje: ' + o.vplyv.join(', '));
+    riadky.push(`${o.planovana ? 'Plánovaná od' : 'Od'} ${den(o.od)} do ${den(o.do)}${o.uzavierka && o.uzavierka !== 'žiadna' ? ` · ${esc(o.uzavierka)} uzávierka` : ''}`);
+    if (o.vplyv?.length) riadky.push('Obmedzuje: ' + esc(o.vplyv.join(', ')));
     if (o.kto) riadky.push('Investor: ' + esc(o.kto));
     if (o.info) riadky.push(`<span style="opacity:.8">${esc(o.info.length > 400 ? o.info.slice(0, 400) + '…' : o.info)}</span>`);
   } else {

@@ -155,12 +155,14 @@
   btn.addEventListener('pointerenter', () => nacitaj(), { once: true });
   document.getElementById('hladanie-zavri')!.addEventListener('click', zavri);
   dialog.addEventListener('click', (e) => { if (e.target === dialog) zavri(); });
+  dialog.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.preventDefault(); zavri(); } });
   let casovac: number;
   vstup.addEventListener('input', () => { clearTimeout(casovac); casovac = window.setTimeout(hladaj, 60); });
   vstup.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown') { e.preventDefault(); oznac(Math.min(vybrany + 1, riadky.length - 1)); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); oznac(Math.max(vybrany - 1, 0)); }
     else if (e.key === 'Enter' && riadky[vybrany]) { e.preventDefault(); prejdi(riadky[vybrany]); }
+    else if (e.key === 'Escape') { e.preventDefault(); zavri(); }
   });
   vysl.addEventListener('click', (e) => {
     const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('.hl-riadok');
