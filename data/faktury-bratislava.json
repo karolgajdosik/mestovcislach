@@ -345,7 +345,7 @@
    "organizacia": "Magistrát",
    "typ": "objednávky",
    "zdroj": "https://data.bratislava.sk/datasets/e3a9501c0fb64dbf9ff6de81847e3b9a",
-   "zaznamov": 65245,
+   "zaznamov": 65264,
    "vynechane_bez_ico": 644,
    "roky": {
     "2011": {
@@ -409,22 +409,22 @@
      "suma": 48507149
     },
     "2026": {
-     "pocet": 3750,
-     "suma": 49561746
+     "pocet": 3769,
+     "suma": 49763414
     }
    },
    "dodavatelia_posledne_3_roky": [
     {
      "ico": "44298170",
      "nazov": "HOCHTIEF SK s.r.o.",
-     "pocet": 301,
-     "suma": 20320147
+     "pocet": 304,
+     "suma": 20339514
     },
     {
      "ico": "35943653",
      "nazov": "Pittel + Brausewetter s.r.o.",
-     "pocet": 316,
-     "suma": 19643205
+     "pocet": 317,
+     "suma": 19643960
     },
     {
      "ico": "17317282",
@@ -465,8 +465,8 @@
     {
      "ico": "51806576",
      "nazov": "RETAN, s. r. o.",
-     "pocet": 1703,
-     "suma": 3303161
+     "pocet": 1705,
+     "suma": 3323553
     },
     {
      "ico": "31606458",
@@ -519,8 +519,8 @@
     {
      "ico": "54302102",
      "nazov": "Technické siete Bratislava, a.s.",
-     "pocet": 44,
-     "suma": 1098097
+     "pocet": 45,
+     "suma": 1110915
     },
     {
      "ico": "31328296",
@@ -2019,5 +2019,5 @@
  "chyby": [
   "Marianum zmluvy: Marianum zmluvy: žiadne použiteľné riadky"
  ],
- "aktualizovane": "2026-10-15T16:49:11+00:00"
+ "aktualizovane": "2026-10-16T11:05:55+00:00"
 }
