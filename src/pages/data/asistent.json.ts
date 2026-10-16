@@ -234,6 +234,8 @@ export async function GET() {
     temy.rozpocet.fakty.hospodarenie_uctovne_zavierky = {
       popis: 'Individuálne účtovné závierky z Registra účtovných závierok (akruálne výnosy a náklady, nie rozpočet; bez škôl a organizácií). Stránka /bratislava/financie#hospodarenie.',
       hlavne_mesto: Object.fromEntries(Object.entries<any>(ba).slice(-5).map(([r, v]) => [r, riadok(v)])),
+      poradie_mc_bankove_uvery: Object.entries<any>(hosp.mestske_casti).map(([mc, v]) => [mc, v.roky[Object.keys(v.roky).sort().pop()!].bankove_uvery ?? 0]).sort((a, b) => b[1] - a[1]).map(([mc, u], i) => `${i + 1}. ${mc} ${mm(u)}`).join('; '),
+      poradie_mc_vynosy: Object.entries<any>(hosp.mestske_casti).map(([mc, v]) => [mc, v.roky[Object.keys(v.roky).sort().pop()!].vynosy]).sort((a, b) => b[1] - a[1]).map(([mc, u], i) => `${i + 1}. ${mc} ${mm(u)}`).join('; '),
       mestske_casti_posledny_rok: Object.fromEntries(Object.entries<any>(hosp.mestske_casti).map(([mc, v]) => { const r = Object.keys(v.roky).sort().pop()!; return [mc, `${r}: ${riadok(v.roky[r])}`]; })),
     };
   }
