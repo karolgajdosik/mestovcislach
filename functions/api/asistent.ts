@@ -8,6 +8,7 @@ import { najdi, norm as normUlice, type Rajonizacia } from '../../src/scripts/ra
 
 import { prelozJeden } from './preklad';
 
+import MESTA from '../../src/mesta.json';
 const JAZYKY_ODPOVEDE: Record<string, string> = { sk: 'po slovensky', en: 'in English (po anglicky)', de: 'auf Deutsch (po nemecky)', pl: 'po polsku (po poľsky)', hu: 'magyarul (po maďarsky)' };
 const MODELY = ['@cf/google/gemma-4-26b-a4b-it', '@cf/meta/llama-3.3-70b-instruct-fp8-fast'];
 // Gemma 4 inak najprv dlho „premýšľa“ (reasoning) – pre krátke odpovede z podkladov to netreba.
@@ -128,8 +129,8 @@ export function spadoveSkoly(otazka: string, d: Rajonizacia) {
   return null;
 }
 
-function system(datum: string, jazyk = 'sk') {
-  return `Si asistent webu mestovcislach.sk – otvorené dáta o Bratislave. Dnes je ${datum}.
+function system(datum: string, jazyk = 'sk', mesto = 'Bratislave') {
+  return `Si asistent webu mestovcislach.sk – otvorené dáta o ${mesto}. Dnes je ${datum}.
 Pravidlá:
 - Odpovedaj ${JAZYKY_ODPOVEDE[jazyk]}, stručne a vecne (najviac asi 8 viet alebo krátky zoznam). Podklady sú po slovensky – názvy ulíc, miest, firiem, strán a mená ľudí nechaj v pôvodnom znení.
 - Používaj LEN údaje v sekcii PODKLADY. Nič si nevymýšľaj – žiadne čísla, adresy, otváracie hodiny ani telefóny, ktoré tam nie sú.
@@ -317,6 +318,9 @@ export const onRequestPost = async (ctx: any) => {
   // Výber tém a miest funguje nad slovenskými kľúčovými slovami – otázku v inom jazyku najprv preložíme do slovenčiny
   let otazka = otazkaPovodna;
   if (jazyk !== 'sk') { try { otazka = await prelozJeden(env, otazkaPovodna, 'sk', jazyk); } catch { /* použije sa pôvodná */ } }
+  // ostatné krajské mestá – podklady z /data/mesta/<slug>.json a živé údaje SHMÚ
+  const mestoK = (MESTA as any[]).find((m) => m.slug === telo.mesto && m.aktivne && !m.plne);
+  if (mestoK) return odpovedMesto(ctx, mestoK, telo, otazka, otazkaPovodna, jazyk);
   const pol = telo.poloha;
   const poloha = pol && Number.isFinite(+pol.lat) && Number.isFinite(+pol.lon) && +pol.lat > 47.9 && +pol.lat < 48.35 && +pol.lon > 16.8 && +pol.lon < 17.4
     ? { lat: +pol.lat, lon: +pol.lon } : null;
@@ -450,6 +454,55 @@ export const onRequestPost = async (ctx: any) => {
   odpoved = odpoved.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
   return json({ odpoved, odkazy });
 };
+
+// Krajské mesto okrem Bratislavy: celé podklady mesta + živé údaje podľa otázky
+const LOKAL: Record<string, string> = { trnava: 'Trnave', nitra: 'Nitre', trencin: 'Trenčíne', zilina: 'Žiline', 'banska-bystrica': 'Banskej Bystrici', presov: 'Prešove', kosice: 'Košiciach' };
+async function odpovedMesto(ctx: any, m: any, telo: any, otazka: string, otazkaPovodna: string, jazyk: string) {
+  const { request, env } = ctx;
+  const base = request.url;
+  const q = norm(otazka);
+  const historia = (Array.isArray(telo.historia) ? telo.historia : []).slice(-6)
+    .filter((h: any) => (h.rola === 'user' || h.rola === 'assistant') && typeof h.text === 'string')
+    .map((h: any) => ({ role: h.rola, content: h.text.slice(0, 1500) }));
+  const kontext: any = {};
+  try { kontext.udaje_mesta = await (await env.ASSETS.fetch(new URL(`/data/mesta/${m.slug}.json`, base))).json(); } catch { /* bez podkladov */ }
+  const ziveTypy = Object.keys(ZIVE).filter((t) => t !== 'cesty' && ZIVE[t].test(q));
+  for (const t of ziveTypy) {
+    try {
+      if (t === 'pocasie') {
+        const d = await (await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${m.stred[0]}&longitude=${m.stred[1]}&current=temperature_2m,weather_code,wind_speed_10m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum&forecast_days=3&timezone=Europe%2FBratislava`)).json();
+        kontext.pocasie_open_meteo = { teraz: d.current, dni: d.daily, kody_pocasia: 'WMO: 0 jasno, 1-3 oblačnosť, 45/48 hmla, 51-57 mrholenie, 61-67 dážď, 71-77 sneh, 80-82 prehánky, 95-99 búrka' };
+      } else if (t === 'vystrahy') {
+        const d = await (await fetch(new URL(`/api/vystrahy?mesto=${m.slug}`, base))).json();
+        kontext.vystrahy_shmu = d.vystrahy?.length ? d.vystrahy.map((v: any) => `${v.udalost} (${v.stupen}) ${v.od} – ${v.do}: ${v.nadpis}`) : 'žiadne platné výstrahy';
+      } else if (t === 'ovzdusie') {
+        const d = await (await fetch(new URL(`/api/ovzdusie?mesto=${m.slug}`, base))).json();
+        kontext.kvalita_ovzdusia_teraz_shmu = { legenda: d.legenda, stanice: d.stanice?.map((s: any) => `${s.nazov}: ${s.kategoria?.nazov} (IKO ${s.iko})`) };
+      } else if (t === 'dunaj' && m.rieka_id) {
+        const d = await (await fetch(new URL(`/api/dunaj?rieka=${m.rieka_id}`, base))).json();
+        kontext.rieka = { stanica: d.stanica, vodny_stav_cm: d.stav, trend: d.trend, hranice_povodnovej_aktivity_cm: d.spa, cas_merania: new Date(d.cas).toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' }) };
+      }
+    } catch { kontext[t] = 'údaje sú teraz nedostupné'; }
+  }
+  kontext.poznamka = `Web má o meste ${m.nazov} údaje z celoštátnych zdrojov (obyvatelia, sčítanie, voľby, nezamestnanosť, byty, ceny, stavebné zámery, ovzdušie, rieky). Nemá rozpočet, MHD, mapu miest ani otváracie hodiny – pri takých otázkach odporuč web mesta.`;
+  const datum = new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  const messages = [
+    { role: 'system', content: system(datum, jazyk, LOKAL[m.slug] ?? m.nazov) + `\n- Otázky sú o meste ${m.nazov}, ak nie je uvedené inak. Pri porovnaní s inými mestami použi „porovnanie_krajskych_miest“.` },
+    ...historia,
+    { role: 'user', content: `PODKLADY (JSON):\n${JSON.stringify(kontext).slice(0, 24000)}\n\nOTÁZKA: ${otazkaPovodna}${jazyk !== 'sk' ? `\n(po slovensky: ${otazka})\nODPOVEDZ ${JAZYKY_ODPOVEDE[jazyk]}.` : ''}` },
+  ];
+  const odkazy = [{ url: `/${m.slug}`, nazov: `${m.nazov} – prehľad` }, { url: '/porovnanie', nazov: 'Porovnanie miest' }];
+  if (m.katalog) odkazy.push({ url: `/${m.slug}/katalog`, nazov: 'Katalóg dát mesta' });
+  if (telo.stream === true) return streamuj(ctx, messages, odkazy);
+  for (const model of MODELY) {
+    try {
+      const r: any = await env.AI.run(model, { messages, ...PARAMETRE });
+      const odpoved = String(r?.response ?? r?.choices?.[0]?.message?.content ?? '').replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+      if (odpoved) return json({ odpoved, odkazy });
+    } catch { /* ďalší model */ }
+  }
+  return json({ chyba: 'Asistent teraz neodpovedá. Skúste to o chvíľu.' }, 502);
+}
 
 // Postupné posielanie odpovede (Server-Sent Events): {t: "kúsok textu"}…, potom {odkazy}, nakoniec [DONE].
 async function streamuj(ctx: any, messages: any[], odkazy: any[]) {

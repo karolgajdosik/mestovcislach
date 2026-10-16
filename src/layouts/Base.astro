@@ -55,7 +55,7 @@ const ogObrazok = new URL(`/og/${OG.includes(sekcia) ? sekcia : 'index'}.png`, A
 const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.sk');
 ---
 <!doctype html>
-<html lang="sk">
+<html lang="sk" data-mesto={mesto.slug}>
   <head>
     <meta charset="utf-8" />
     <!-- režim, písmo a jazyk pred vykreslením (samostatný súbor kvôli CSP bez inline skriptov) -->
@@ -136,7 +136,7 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
       </p>
       <p class="foot-odkazy">{mesto.plne && <><a href={`/${mesto.slug}/upozornenia`}>Upozornenia</a> · </>}<a href="/porovnanie">Porovnanie miest</a> · <a href="/sukromie">Ochrana súkromia</a> · <a href="/pristupnost">Prístupnosť</a> · Bez cookies a sledovania · <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a></p>
     </footer>
-    {(spolocna || mesto.plne) && <Asistent />}
+    <Asistent mesto={spolocna ? undefined : mesto} />
   </body>
 </html>
 
