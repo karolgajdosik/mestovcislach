@@ -56,7 +56,11 @@ export async function GET({ params }: { params: { mesto: string } }) {
       prave_sa_posudzuje: eia.zamery.filter((z: any) => !z.ukoncene).length,
       zamery: eia.zamery.filter((z: any) => !z.ukoncene || z.zmena >= hranica).slice(0, 40).map((z: any) => `${z.nazov} (${z.stav}${z.ukoncene ? ', posudzovanie skončené' : ', práve sa posudzuje'}; zmena ${z.zmena}${z.navrhovatel ? `; ${z.navrhovatel}` : ''}) – ${(z.ucel ?? '').slice(0, 160)}`),
     } : undefined,
-    porovnanie_krajskych_miest: por.map((p: any) => `${p.nazov}: ${p.obyvatelia} obyv. (${p.zmena10} % za 10 r.), seniori ${p.seniori} %, VŠ ${p.vs} %, PDU ${p.pdu} %, účasť komunálne ${p.ucast_komunalne} %`),
+    porovnanie_krajskych_miest: por.map((p: any) => {
+      const h = hospodarenie(p.slug);
+      const hosp = h ? `, výnosy mesta ${Math.round(h.posledny.vynosy / p.obyvatelia)} €/obyv. (${h.rok}), bankové úvery ${Math.round((h.posledny.bankove_uvery ?? 0) / p.obyvatelia)} €/obyv.${h.dlhPosledny ? `, dlh k bežným príjmom ${h.dlhPosledny.pomer} % (${h.rokDlh})` : ''}` : '';
+      return `${p.nazov}: ${p.obyvatelia} obyv. (${p.zmena10} % za 10 r.), seniori ${p.seniori} %, VŠ ${p.vs} %, PDU ${p.pdu} %, účasť komunálne ${p.ucast_komunalne} %${hosp}`;
+    }),
     hospodarenie_mesta: (() => {
       const h = hospodarenie(m.slug);
       if (!h) return undefined;
