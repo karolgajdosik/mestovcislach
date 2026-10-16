@@ -1,4 +1,6 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import Asistent from '../components/Asistent.astro';
 import Hladanie from '../components/Hladanie.astro';
 import Zobrazenie from '../components/Zobrazenie.astro';
@@ -45,6 +47,7 @@ const MENU: [string, string, string][] = spolocna
       [`/${mesto.slug}#volby`, 'Voľby', IKONA['volby']],
       [`/${mesto.slug}#praca`, 'Práca a bývanie', IKONA['financie']],
       [`/${mesto.slug}#stavby`, 'Čo sa stavia', IKONA['vystavba']],
+      ...(fs.existsSync(path.join(process.cwd(), 'public', 'data', 'mesta', `mapa-${mesto.slug}.json`)) ? [[`/${mesto.slug}/mapa`, 'Mapa', IKONA['mapa']] as [string, string, string]] : []),
       ...((mesto as any).katalog ? [[`/${mesto.slug}/katalog`, 'Katalóg dát', IKONA['katalog']] as [string, string, string]] : []),
       ['/porovnanie', 'Porovnanie miest', IKONA['mestske-casti']],
     ];

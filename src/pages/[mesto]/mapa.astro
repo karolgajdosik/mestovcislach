@@ -1,0 +1,152 @@
+---
+// Mapa mesta z vrstiev jeho portálu otvorených dát (public/data/mesta/mapa-<slug>.json, scripts/zber_mapa_mesta.py).
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+import { MESTA, type Mesto } from '../../mesta';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && !m.plne && fs.existsSync(path.join(process.cwd(), 'public', 'data', 'mesta', `mapa-${m.slug}.json`)))
+    .map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const subor = (slug: string) => path.join(process.cwd(), 'public', 'data', 'mesta', `mapa-${slug}.json`);
+const { m } = Astro.props as { m: Mesto };
+const d = JSON.parse(fs.readFileSync(subor(m.slug), 'utf-8'));
+const skupiny = new Map<string, any[]>();
+for (const v of d.vrstvy) skupiny.set(v.skupina, [...(skupiny.get(v.skupina) ?? []), v]);
+const PREDVOLENE = d.vrstvy.find((v: any) => /turistick/i.test(v.nazov))?.id ?? d.vrstvy[0]?.id;
+const pocet = (v: any) => (v.typ === 'body' ? v.body.length : v.ciary.length);
+const kratko = (n: string) => n.replace(/ v zriaďovateľskej pôsobnosti.*$/i, '').replace(/ (v meste |na území |v )?Košic(e|iach|i)?$/i, '').replace(/^Zoznam /, '').replace(/^Komunálne voľby 2026 - volebné okrsky$/, 'Volebné miestnosti (okrsky)').replace(/^./, (c) => c.toUpperCase());
+---
+<Base title={`Mapa – ${m.nazov} – mestovcislach.sk`} description={`Mapa mesta ${m.nazov}: školy, zastávky MHD, ihriská, fontány, kultúra, sociálne služby, volebné miestnosti a ďalšie vrstvy z otvorených dát mesta.`}>
+  <div class="mapa-app" id="mapa-app" data-subor={`/data/mesta/mapa-${m.slug}.json`} data-predvolene={PREDVOLENE} data-stred={JSON.stringify(m.stred)}>
+    <aside class="panel">
+      <h1>Mapa <span translate="no">{m.nazov}</span></h1>
+      <label class="hladaj"><span class="sr">Hľadať na mape</span><input type="search" id="m-q" placeholder="Hľadať: škola, zastávka, ulica…" autocomplete="off" /></label>
+      <ol class="vysledky" id="m-vysledky" hidden></ol>
+      <details class="vrstvy" open>
+        <summary>Vrstvy</summary>
+        {[...skupiny].map(([sk, vs], i) => (
+          <fieldset style={`--f:var(--sk${i})`}>
+            <legend>{sk}</legend>
+            {vs.map((v) => (
+              <label><input type="checkbox" value={v.id} checked={v.id === PREDVOLENE} /> <i aria-hidden="true"></i><span>{kratko(v.nazov)}</span><small>{pocet(v)}</small></label>
+            ))}
+          </fieldset>
+        ))}
+        {d.hranice && <label class="hranice"><input type="checkbox" value="hranice" checked /> <span>Hranice mestských častí</span></label>}
+      </details>
+      <p class="zdroj">Zdroj: <a href={d.zdroj}>{d.zdroj.replace(/^https?:\/\//, '')}</a> – otvorené dáta mesta, aktualizované týždenne. Podklad © prispievatelia OpenStreetMap.</p>
+    </aside>
+    <div class="plocha"><div id="m-mapa" role="region" aria-label={`Mapa mesta ${m.nazov}`}></div></div>
+  </div>
+</Base>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  import { osmPodklad } from '../../scripts/podklad';
+
+  const app = document.getElementById('mapa-app')!;
+  // na mobile zoznam vrstiev zbalený, aby bola mapa hneď viditeľná
+  if (matchMedia('(max-width: 760px)').matches) app.querySelector('details.vrstvy')?.removeAttribute('open');
+  const css = getComputedStyle(document.documentElement);
+  const tmava = document.documentElement.dataset.tema === 'tmava';
+  const hx = (x: unknown) => String(x ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+  const norm = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const mapa = L.map('m-mapa', { zoomSnap: 0.25 }).setView(JSON.parse(app.dataset.stred!), 12.5);
+  osmPodklad().addTo(mapa);
+  const farbaSkupiny = (el: Element) => getComputedStyle(el.closest('fieldset') ?? app).getPropertyValue('--f').trim() || css.getPropertyValue('--accent').trim();
+  const hodnota = (v: string) => (/^https?:\/\//.test(v) ? `<a href="${hx(v)}" rel="noopener" target="_blank">${hx(v.replace(/^https?:\/\/(www\.)?/, '').slice(0, 40))}</a>` : /^[\w.+-]+@[\w-]+\.[\w.]+$/.test(v) ? `<a href="mailto:${hx(v)}">${hx(v)}</a>` : hx(v));
+  const popup = (b: any[], vrstva: string) => `<strong>${hx(b[2])}</strong><br><small>${hx(vrstva)}</small>`
+    + Object.entries<string>(b[3] ?? {}).map(([k, v]) => `<br><b>${hx(k)}:</b> ${hodnota(v)}`).join('');
+
+  fetch(app.dataset.subor!).then((r) => r.json()).then((d) => {
+    const vrstvy = new Map<string, any>(d.vrstvy.map((v: any) => [v.id, v]));
+    const hotove = new Map<string, L.Layer>();
+    const znacky = new Map<string, L.CircleMarker>();
+    const vstup = (id: string) => app.querySelector<HTMLInputElement>(`input[value="${id}"]`);
+    const vytvor = (id: string) => {
+      if (id === 'hranice') {
+        return L.geoJSON(d.hranice, { style: { color: tmava ? '#9aa3ad' : '#59606b', weight: 1.2, fill: false }, onEachFeature: (f: any, l) => l.bindTooltip(f.properties.n, { sticky: true }) });
+      }
+      const v = vrstvy.get(id);
+      const farba = farbaSkupiny(vstup(id)!);
+      if (v.typ === 'ciary') return L.polyline(v.ciary, { color: farba, weight: 2.5, interactive: false });
+      return L.layerGroup(v.body.map((b: any[], i: number) => {
+        const z = L.circleMarker([b[0], b[1]], { radius: 6, weight: 1.5, color: tmava ? '#121417' : '#fff', fillColor: farba, fillOpacity: 0.92 })
+          .bindPopup(() => popup(b, v.nazov), { maxWidth: 300 });
+        znacky.set(`${id}:${i}`, z);
+        return z;
+      }));
+    };
+    const prepni = (id: string, zap: boolean) => {
+      if (!zap) { hotove.get(id)?.remove(); return; }
+      if (!hotove.has(id)) hotove.set(id, vytvor(id));
+      hotove.get(id)!.addTo(mapa);
+      if (id === 'hranice') (hotove.get(id) as any).bringToBack();
+    };
+    const hash = new URLSearchParams(location.hash.slice(1));
+    if (hash.get('vrstva')) app.querySelectorAll<HTMLInputElement>('.vrstvy input').forEach((i) => { if (i.value !== 'hranice') i.checked = i.value === hash.get('vrstva'); });
+    app.querySelectorAll<HTMLInputElement>('.vrstvy input').forEach((i) => {
+      if (i.checked) prepni(i.value, true);
+      i.addEventListener('change', () => prepni(i.value, i.checked));
+    });
+    if (hotove.get('hranice')) mapa.fitBounds((hotove.get('hranice') as L.GeoJSON).getBounds(), { padding: [10, 10] });
+
+    // hľadanie vo všetkých vrstvách
+    const q = document.getElementById('m-q') as HTMLInputElement;
+    const vysl = document.getElementById('m-vysledky')!;
+    const index = d.vrstvy.filter((v: any) => v.typ === 'body').flatMap((v: any) => v.body.map((b: any[], i: number) => ({ id: v.id, i, b, vrstva: v.nazov, t: norm(`${b[2]} ${b[3]?.Adresa ?? ''}`) })));
+    let cas: number | undefined;
+    q.addEventListener('input', () => {
+      clearTimeout(cas);
+      cas = window.setTimeout(() => {
+        const slova = norm(q.value).split(/\s+/).filter((x) => x.length > 1);
+        if (!slova.length) { vysl.hidden = true; vysl.innerHTML = ''; return; }
+        const naj = index.filter((x: any) => slova.every((s) => x.t.includes(s))).slice(0, 12);
+        vysl.hidden = false;
+        vysl.innerHTML = naj.length ? naj.map((x: any, k: number) => `<li><button type="button" data-k="${k}"><strong>${hx(x.b[2])}</strong><small>${hx(x.b[3]?.Adresa ?? '')} · ${hx(x.vrstva)}</small></button></li>`).join('') : '<li class="nic">Nič sme nenašli.</li>';
+        vysl.querySelectorAll<HTMLButtonElement>('button').forEach((btn) => btn.addEventListener('click', () => {
+          const x = naj[Number(btn.dataset.k)];
+          const i = vstup(x.id);
+          if (i && !i.checked) { i.checked = true; prepni(x.id, true); }
+          const z = znacky.get(`${x.id}:${x.i}`);
+          mapa.setView([x.b[0], x.b[1]], 17);
+          z?.openPopup();
+        }));
+      }, 150);
+    });
+  });
+</script>
+
+<style>
+  .mapa-app { display: grid; grid-template-columns: 330px 1fr; gap: 0; height: calc(100dvh - var(--vyska-hlavicky) - 41px); margin: 0 calc(50% - 50vw); width: 100vw; border-top: 1px solid var(--line); }
+  .panel { overflow-y: auto; padding: 16px; border-right: 1px solid var(--line); background: var(--card); --sk0: #c8102e; --sk1: #1f6fd1; --sk2: #a16207; --sk3: #7a4fd1; --sk4: #138a5e; --sk5: #d97706; --sk6: #4d7c0f; --sk7: #0e7490; --sk8: #6b7280; }
+  :global(:root[data-tema='tmava']) .panel { --sk0: #ff6b80; --sk1: #7cc4ff; --sk2: #fcd34d; --sk3: #b79cff; --sk4: #4ade80; --sk5: #fdba74; --sk6: #bef264; --sk7: #67e8f9; --sk8: #9ca3af; }
+  .panel h1 { font-size: 1.3rem; margin: 0 0 12px; letter-spacing: -0.02em; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .hladaj input { width: 100%; font: inherit; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); }
+  .vysledky { list-style: none; padding: 0; margin: 8px 0 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  :global(.vysledky button) { width: 100%; text-align: left; font: inherit; font-size: 0.88rem; padding: 8px 10px; border: 0; border-bottom: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; display: flex; flex-direction: column; }
+  :global(.vysledky button:hover) { background: var(--bg); }
+  :global(.vysledky small) { color: var(--muted); font-size: 0.76rem; }
+  :global(.vysledky .nic) { padding: 8px 10px; color: var(--muted); font-size: 0.88rem; }
+  .vrstvy { margin-top: 14px; }
+  .vrstvy summary { font-weight: 700; cursor: pointer; margin-bottom: 6px; }
+  fieldset { border: 0; padding: 0; margin: 10px 0 0; }
+  legend { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 4px; }
+  .vrstvy label { display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: 7px; padding: 4px 0; font-size: 0.88rem; cursor: pointer; }
+  .vrstvy label.hranice { grid-template-columns: auto 1fr; margin-top: 10px; }
+  .vrstvy i { width: 10px; height: 10px; border-radius: 50%; background: var(--f); }
+  .vrstvy small { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .vrstvy input { accent-color: var(--accent); }
+  .zdroj { font-size: 0.75rem; color: var(--muted); margin-top: 16px; }
+  .plocha { position: relative; }
+  #m-mapa { position: absolute; inset: 0; }
+  @media (max-width: 760px) {
+    .mapa-app { grid-template-columns: 1fr; grid-template-rows: auto 60vh; height: auto; }
+    .panel { border-right: 0; border-bottom: 1px solid var(--line); max-height: none; }
+    .vrstvy:not([open]) { margin-bottom: 0; }
+  }
+</style>
