@@ -4,6 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { maMapu, maSamospravu } from '../../lib/mapa';
+import { maZivot } from '../../lib/temy';
 
 const nacitaj = (subor: string, verejne = false) => {
   const p = path.join(process.cwd(), verejne ? 'public/data' : 'data', subor);
@@ -71,6 +72,7 @@ export async function GET() {
   const mesta = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'mesta.json'), 'utf-8'));
   for (const m of mesta.filter((x: any) => x.aktivne && x.slug !== 'bratislava')) {
     polozky.push(['Stránky', m.nazov, `${m.kraj} – obyvatelia, voľby, práca, bývanie, stavby`, `/${m.slug}`, `mesto krajské ${m.v}`]);
+    if (maZivot(m.slug)) polozky.push(['Stránky', `Život v meste – ${m.nazov}`, 'školy, vlaky, kriminalita, ovzdušie, odpad, kultúra, ceny bytov', `/${m.slug}/zivot`, `školy žiaci vlak doprava kriminalita ovzdušie smog odpad kino cena bytu ${m.v}`]);
     if (maSamospravu(m.slug)) polozky.push(['Stránky', `Samospráva – ${m.nazov}`, 'zmluvy, faktúry, objednávky, hlasovania poslancov', `/${m.slug}/samosprava`, `zmluvy faktúry dodávatelia poslanci hlasovanie zastupiteľstvo ${m.v}`]);
     if (maMapu(m.slug)) polozky.push(['Stránky', `Mapa – ${m.nazov}`, 'lekárne, nemocnice, školy, zastávky, ihriská, úrady', `/${m.slug}/mapa`, `mapa ${m.v} lekáreň nemocnica škola zastávka`]);
   }

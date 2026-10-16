@@ -506,6 +506,7 @@ async function odpovedMesto(ctx: any, m: any, telo: any, otazka: string, otazkaP
   ];
   const odkazy = [{ url: `/${m.slug}`, nazov: `${m.nazov} – prehľad` }, { url: '/porovnanie', nazov: 'Porovnanie miest' }];
   if (m.katalog) odkazy.push({ url: `/${m.slug}/katalog`, nazov: 'Katalóg dát mesta' });
+  if (kontext.udaje_mesta?.zivot_v_meste && /skol|ziak|vlak|zeleznic|doprav|mhd|auto|krimin|trestn|bezpec|ovzdus|smog|prach|odpad|vod[ay]|kin|muze|turist|byt|cyklo/.test(q)) odkazy.unshift({ url: `/${m.slug}/zivot`, nazov: `Život v meste – ${m.nazov}` });
   if (!kontext.udaje_mesta?.samosprava && kontext.udaje_mesta?.hospodarenie_mesta && /dlh|uver|hospodar|rozpoc|vynos|naklad|majet|dan/.test(q)) odkazy.unshift({ url: `/${m.slug}/samosprava#hospodarenie`, nazov: `Hospodárenie – ${m.nazov}` });
   if (kontext.udaje_mesta?.samosprava) odkazy.unshift({ url: kontext.udaje_mesta.samosprava.stranka, nazov: `Samospráva – ${m.nazov}` });
   if (telo.stream === true) return streamuj(ctx, messages, odkazy);

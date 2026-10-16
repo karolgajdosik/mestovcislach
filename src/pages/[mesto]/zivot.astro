@@ -1,0 +1,282 @@
+---
+// Život v meste: školy, doprava, bezpečnosť, životné prostredie (ovzdušie, odpad, voda), kultúra a bývanie.
+// Zdroje: ŠÚ SR DATAcube (scripts/zber_mesta_temy.py), EEA merania ovzdušia (scripts/zber_ovzdusie_eea.py).
+import Base from '../../layouts/Base.astro';
+import { MESTA, type Mesto } from '../../mesta';
+import { kriminalita, maZivot, ovzdusie, posledny, temy, ua, vlaky } from '../../lib/temy';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && !m.plne && maZivot(m.slug)).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const t = temy();
+const ovz = ovzdusie();
+const fmt = (n: number | null | undefined, k = 0) => (n == null ? '–' : n.toLocaleString('sk-SK', { maximumFractionDigits: k, minimumFractionDigits: 0 }));
+const graf = (o: object) => JSON.stringify(o);
+const odRoku = (r: Record<string, number>, od = 2010) => Object.fromEntries(Object.entries(r).filter(([y]) => Number(y) >= od).sort());
+
+// --- Školy (DATAcube: MŠ, ZŠ, gymnáziá; mapa škôl: stredné odborné a zoznam stredných škôl)
+const sk = t?.skoly?.[m.slug] ?? {};
+const skRok = (d: string) => Object.keys(sk[d] ?? {}).sort().pop();
+const ms = sk.ms?.[skRok('ms')!], zs = sk.zs?.[skRok('zs')!], gym = sk.gym?.[skRok('gym')!];
+const mapa = t?.skoly_mapa?.[m.slug];
+const sos = mapa?.typy?.sos;
+const skolyRoky = [...new Set(['ms', 'zs', 'gym'].flatMap((d) => Object.keys(sk[d] ?? {})))].filter((y) => Number(y) >= 2005).sort();
+const grafSkoly = graf({ typ: 'line', labels: skolyRoky, rady: [
+  { n: 'Deti v materských školách', d: skolyRoky.map((y) => sk.ms?.[y]?.ziakov ?? null) },
+  { n: 'Žiaci základných škôl', d: skolyRoky.map((y) => sk.zs?.[y]?.ziakov ?? null) },
+  { n: 'Študenti gymnázií', d: skolyRoky.map((y) => sk.gym?.[y]?.ziakov ?? null) },
+] });
+const naUcitela = (x: any) => (x?.ucitelov ? x.ziakov / x.ucitelov : null);
+const stredne: any[] = mapa?.stredne ?? [];
+
+// --- Doprava (Urban Audit)
+const auta = posledny(ua(m.slug, 'Registrované súkromné osobné autá k 1.1. na 1000 obyvateľov'));
+const cyklo = posledny(ua(m.slug, 'Dĺžka cyklistickej siete'));
+const listok = posledny(ua(m.slug, 'Cena kombinovaného mesačného lístka na všetky druhy verejnej dopravy v centre v okruhu 5-10 km'));
+const taxi = posledny(ua(m.slug, 'Cena za taxi za 5 km v centre mesta počas dňa'));
+const obete = ua(m.slug, 'Zomretí pri dopravných nehodách');
+const obeteNa = posledny(ua(m.slug, 'Zomretí pri dopravných nehodách na 100 000 obyvateľov'));
+const autaRada = odRoku(ua(m.slug, 'Registrované súkromné osobné autá k 1.1. na 1000 obyvateľov'));
+const cykloRada = odRoku(ua(m.slug, 'Dĺžka cyklistickej siete'));
+
+// --- Vlaky (GTFS ŽSR)
+const vl = vlaky();
+const vlM = vl?.mesta?.[m.slug];
+const datumSk = (d: string) => d.split('-').reverse().map((x) => x.replace(/^0/, '')).join('. ');
+const ostatne = MESTA.filter((x) => x.slug !== m.slug).map((x) => ({ x, s: vlM?.spojenia?.[x.slug] ?? null }))
+  .sort((a, b) => (a.s ? 0 : 1) - (b.s ? 0 : 1) || (a.s?.najrychlejsie_min ?? 0) - (b.s?.najrychlejsie_min ?? 0));
+const trvanie = (min: number) => (min >= 60 ? `${Math.floor(min / 60)} h ${String(min % 60).padStart(2, '0')} min` : `${min} min`);
+
+// --- Bezpečnosť (kraj)
+const krim = odRoku(kriminalita(m.kraj), 2005);
+const krimPosl = posledny(krim);
+const krimNasilne = posledny(kriminalita(m.kraj, 'Násilné trestné činy spolu'));
+const krimMajetkove = posledny(kriminalita(m.kraj, 'Majetkové trestné činy spolu'));
+const kraje = [...new Set(MESTA.map((x) => x.kraj))];
+const krimKraje = kraje.map((k) => ({ k, v: posledny(kriminalita(k))?.[1] ?? null })).filter((x) => x.v != null).sort((a, b) => b.v! - a.v!);
+const grafKrim = graf({ typ: 'line', labels: Object.keys(krim), rady: [{ n: `${m.kraj} – trestné činy na 1 000 obyvateľov`, d: Object.values(krim) }] });
+
+// --- Ovzdušie (EEA)
+const oz = ovz?.mesta?.[m.slug] ?? {};
+const ozRoky = [...new Set(Object.values<any>(oz).flatMap((x) => Object.keys(x)))].sort();
+const uplneRoky = ozRoky.filter((y) => !Object.values<any>(oz).some((x) => x[y]?.neuplny));
+const grafOvz = graf({ typ: 'line', labels: uplneRoky, jednotka: 'µg/m³', rady: Object.entries<any>(oz).map(([l, x]) => ({ n: `${l} – ročný priemer`, d: uplneRoky.map((y) => x[y]?.priemer ?? null) })),
+  limity: [{ n: 'Odporúčanie WHO pre PM2,5', v: 5 }, { n: 'Limit EÚ od 2030 pre PM2,5', v: 10 }] });
+const ozPosl = (l: string) => { const x = oz[l]; const r = uplneRoky.filter((y) => x?.[y]).pop(); return r ? [r, x[r]] as [string, any] : null; };
+const pm10 = ozPosl('PM10'), pm25 = ozPosl('PM2,5'), no2 = ozPosl('NO2');
+
+// --- Odpad, voda
+const odpad = odRoku(ua(m.slug, 'Množstvo komunálneho odpadu – kg na osobu'));
+const voda = posledny(ua(m.slug, 'Celková spotreba vody – m3 na osobu'));
+const vodaCena = posledny(ua(m.slug, 'Cena za m3 vody v domácnostiach – Euro'));
+
+// --- Kultúra a cestovný ruch
+const kina = posledny(ua(m.slug, 'Návštevnosť kín za rok'));
+const muzea = posledny(ua(m.slug, 'Návštevníci múzeí za rok'));
+const prenoc = odRoku(ua(m.slug, 'Prenocovania v ubytovacích zariadeniach cestovného ruchu'));
+const prenocZahr = odRoku(ua(m.slug, 'Prenocovania zahraničných návštevníkov v ubytovacích zariadeniach cestovného ruchu'));
+const divadla = posledny(ua(m.slug, 'Počet divadiel'));
+const kniznice = posledny(ua(m.slug, 'Počet verejných knižníc'));
+const bazeny = posledny(ua(m.slug, 'Počet verejných bazénov (vnútorných aj vonkajších, okrem prírodných pláží)'));
+const grafPrenoc = graf({ typ: 'bar', labels: Object.keys(prenoc), rady: [{ n: 'Prenocovania spolu', d: Object.values(prenoc) }, { n: 'z toho zahraniční návštevníci', d: Object.keys(prenoc).map((y) => prenocZahr[y] ?? null) }] });
+
+// --- Bývanie
+const cenaM2 = odRoku(ua(m.slug, 'Priemerná cena za kúpu bytu za m2'));
+const cenaM2Posl = posledny(cenaM2);
+const grafCena = graf({ typ: 'line', labels: Object.keys(cenaM2), jednotka: '€/m²', rady: [{ n: `Priemerná cena bytu za m² – ${m.nazov}`, d: Object.values(cenaM2) }] });
+---
+<Base title={`Život v meste – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: školy a žiaci, doprava, kriminalita, kvalita ovzdušia, odpad, voda, kultúra a ceny bytov – porovnateľné údaje Štatistického úradu a EEA.`}>
+  <section class="hero">
+    <p class="kicker">Život v meste</p>
+    <h1>Školy, doprava, bezpečnosť a prostredie <span translate="no">{m.v}</span></h1>
+    <p class="lead">Rovnaké ukazovatele pre všetky krajské mestá zo Štatistického úradu SR a z meraní ovzdušia – porovnanie nájdete v <a href={`/porovnanie#${m.slug}`}>Porovnaní miest</a>.</p>
+    <nav class="kotvy" aria-label="Časti stránky">
+      <a href="#skoly">Školy</a><a href="#doprava">Doprava</a><a href="#bezpecnost">Bezpečnosť</a><a href="#prostredie">Životné prostredie</a><a href="#kultura">Kultúra</a><a href="#byvanie">Bývanie</a>
+    </nav>
+  </section>
+
+  {(ms || zs) && (
+    <>
+      <h2 class="sekcia" id="skoly">Školy</h2>
+      <section class="kpis">
+        {ms && <div class="card kpi"><p class="label">Materské školy ({skRok('ms')})</p><p class="value">{fmt(ms.skol)}</p><p class="delta">{fmt(ms.ziakov)} detí · {fmt(naUcitela(ms), 1)} detí na učiteľa</p></div>}
+        {zs && <div class="card kpi"><p class="label">Základné školy</p><p class="value">{fmt(zs.skol)}</p><p class="delta">{fmt(zs.ziakov)} žiakov · {fmt(naUcitela(zs), 1)} na učiteľa</p></div>}
+        {gym && <div class="card kpi"><p class="label">Gymnáziá</p><p class="value">{fmt(gym.skol)}</p><p class="delta">{fmt(gym.ziakov)} študentov · {fmt(naUcitela(gym), 1)} na učiteľa</p></div>}
+        {sos && <div class="card kpi"><p class="label">Stredné odborné školy</p><p class="value">{fmt(sos.pocet)}</p><p class="delta">{fmt(sos.ziaci)} žiakov (mapa škôl)</p></div>}
+      </section>
+      <section class="card">
+        <h3>Koľko detí chodí do škôl</h3>
+        <div class="chart"><canvas class="g-auto" data-graf={grafSkoly} role="img" aria-label={`Počet detí v materských školách, žiakov základných škôl a študentov gymnázií ${m.v} podľa rokov`}></canvas></div>
+        <p class="zdroj">Školský rok začínajúci v danom roku, všetci zriaďovatelia (mesto, cirkev, súkromní). Zdroj: ŠÚ SR, DATAcube sv5001rr–sv5003rr.</p>
+      </section>
+      {stredne.length > 0 && (
+        <section class="card">
+          <h3>Stredné školy podľa počtu žiakov</h3>
+          <div class="tabulka-obal"><table>
+            <thead><tr><th>Škola</th><th>Typ</th><th class="num">Žiaci</th><th class="num">Žiakov na pedagóga</th></tr></thead>
+            <tbody>{stredne.slice(0, 15).map((x) => (
+              <tr><td translate="no">{x.web ? <a href={x.web.startsWith('http') ? x.web : `https://${x.web}`} rel="noopener">{x.nazov}</a> : x.nazov}</td><td>{x.typ === 'gym' ? 'gymnázium' : 'odborná'}</td><td class="num">{fmt(x.ziaci)}</td><td class="num">{x.ped ? fmt(x.ziaci / x.ped, 1) : '–'}</td></tr>
+            ))}</tbody>
+          </table></div>
+          <p class="zdroj">Zdroj: <a href="https://mapaskol.iedu.sk">Digitálna mapa škôl</a> MŠVVaM SR (aktuálny školský rok). {stredne.length > 15 ? `Zobrazených 15 z ${stredne.length} škôl.` : ''} Školy nájdete aj na <a href={`/${m.slug}/mapa#vrstva=osm-skoly`}>mape mesta</a>.</p>
+        </section>
+      )}
+    </>
+  )}
+
+  <h2 class="sekcia" id="doprava">Doprava</h2>
+  <section class="kpis">
+    {auta && <div class="card kpi"><p class="label">Osobné autá na 1 000 obyvateľov</p><p class="value">{fmt(auta[1])}</p><p class="delta">súkromné, k 1. 1. {auta[0]}</p></div>}
+    {listok && <div class="card kpi"><p class="label">Mesačný lístok MHD</p><p class="value">{fmt(listok[1], 2)} €</p><p class="delta">{listok[0]}{taxi ? ` · taxi 5 km ${fmt(taxi[1], 2)} €` : ''}</p></div>}
+    {cyklo && <div class="card kpi"><p class="label">Cyklistická sieť</p><p class="value">{fmt(cyklo[1], 1)} km</p><p class="delta">{cyklo[0]}</p></div>}
+    {obeteNa && <div class="card kpi"><p class="label">Obete dopravných nehôd</p><p class="value">{fmt(posledny(obete)?.[1])}</p><p class="delta">{obeteNa[0]} · {fmt(obeteNa[1], 1)} na 100 000 obyvateľov</p></div>}
+  </section>
+  {vlM && (
+    <section class="card" id="vlaky">
+      <h3>Vlaky: {fmt(vlM.odchodov)} odchodov za pracovný deň</h3>
+      <p class="f-uvod">Zo všetkých staníc mesta ({vlM.stanice.join(', ')}){vlM.hlavna ? `, z toho ${fmt(vlM.odchodov_hlavna)} zo stanice ${vlM.hlavna}` : ''}. Dopravcovia: {Object.keys(vlM.dopravcovia).join(', ')}.</p>
+      <div class="tabulka-obal"><table>
+        <thead><tr><th>Priamy vlak do</th><th class="num">Vlakov za deň</th><th class="num">Najrýchlejšie</th><th class="num">Prvý</th><th class="num">Posledný</th></tr></thead>
+        <tbody>{ostatne.map(({ x, s }) => (
+          <tr><td><a href={`/${x.slug}`} translate="no">{x.nazov}</a></td>{s ? <><td class="num">{s.vlakov}</td><td class="num">{trvanie(s.najrychlejsie_min)}</td><td class="num">{s.prvy}</td><td class="num">{s.posledny}</td></> : <td colspan="4" class="tlmene">bez priameho vlaku – s prestupom</td>}</tr>
+        ))}</tbody>
+      </table></div>
+      <p class="zdroj">Streda {datumSk(vl.den)}, všetci dopravcovia. Zdroj: <a href={vl.zdroj.url}>Železnice SR – grafikon vlakovej dopravy (GTFS)</a>, platný {datumSk(vl.platnost[0])} – {datumSk(vl.platnost[1])}. Výluky a meškania nie sú zahrnuté.</p>
+    </section>
+  )}
+  {Object.keys(autaRada).length > 2 && (
+    <section class="card">
+      <h3>Autá a cyklotrasy</h3>
+      <div class="chart"><canvas class="g-auto" data-graf={graf({ typ: 'line', labels: [...new Set([...Object.keys(autaRada), ...Object.keys(cykloRada)])].sort(), dveOsi: true, rady: [{ n: 'Osobné autá na 1 000 obyvateľov', d: [...new Set([...Object.keys(autaRada), ...Object.keys(cykloRada)])].sort().map((y) => autaRada[y] ?? null) }, { n: 'Cyklistická sieť (km)', d: [...new Set([...Object.keys(autaRada), ...Object.keys(cykloRada)])].sort().map((y) => cykloRada[y] ?? null), os2: true }] })} role="img" aria-label="Počet áut na 1 000 obyvateľov a dĺžka cyklistickej siete podľa rokov"></canvas></div>
+      <p class="zdroj">Zdroj: ŠÚ SR – Doprava – mestá (európsky Urban Audit, do3701rr). Údaje sú za územie mesta.</p>
+    </section>
+  )}
+
+  <h2 class="sekcia" id="bezpecnost">Bezpečnosť</h2>
+  {krimPosl ? (
+    <>
+      <section class="kpis">
+        <div class="card kpi"><p class="label">Trestné činy na 1 000 obyvateľov ({krimPosl[0]})</p><p class="value">{fmt(krimPosl[1], 1)}</p><p class="delta">{m.kraj} · {krimKraje.findIndex((x) => x.k === m.kraj) + 1}. najvyššie z 8 krajov</p></div>
+        {krimNasilne && <div class="card kpi"><p class="label">Násilné trestné činy</p><p class="value">{fmt(krimNasilne[1], 1)}</p><p class="delta">na 1 000 obyvateľov kraja</p></div>}
+        {krimMajetkove && <div class="card kpi"><p class="label">Majetkové trestné činy</p><p class="value">{fmt(krimMajetkove[1], 1)}</p><p class="delta">na 1 000 obyvateľov kraja</p></div>}
+      </section>
+      <section class="card">
+        <div class="mriezka">
+          <div>
+            <h3>Vývoj kriminality v kraji</h3>
+            <div class="chart"><canvas class="g-auto" data-graf={grafKrim} role="img" aria-label={`Trestné činy na 1 000 obyvateľov – ${m.kraj} podľa rokov`}></canvas></div>
+          </div>
+          <div>
+            <h3>Kraje v roku {krimPosl[0]}</h3>
+            <ol class="poradie">{krimKraje.map((x) => <li class={x.k === m.kraj ? 'ja' : ''}><span>{x.k}</span><strong>{fmt(x.v, 1)}</strong></li>)}</ol>
+          </div>
+        </div>
+        <p class="zdroj">Polícia SR zverejňuje zistenú trestnú činnosť po krajoch – za samotné mesto štatistika nie je. Zdroj: ŠÚ SR (sk3002rr, sk3003rr), obyvatelia krajov (om7102rr).</p>
+      </section>
+    </>
+  ) : <p class="card">Údaje sa zbierajú.</p>}
+
+  <h2 class="sekcia" id="prostredie">Životné prostredie</h2>
+  <section class="kpis">
+    {pm25 && <div class="card kpi"><p class="label">Jemný prach PM2,5 ({pm25[0]})</p><p class="value">{fmt(pm25[1].priemer, 1)} µg/m³</p><p class="delta">ročný priemer · WHO odporúča najviac 5, EÚ od 2030 limit 10</p></div>}
+    {pm10 && <div class="card kpi"><p class="label">Prach PM10 ({pm10[0]})</p><p class="value">{fmt(pm10[1].priemer, 1)} µg/m³</p><p class="delta">{pm10[1].dni_nad_50 != null ? `${pm10[1].dni_nad_50} dní nad 50 µg/m³ (limit 35 dní)` : 'ročný priemer'}</p></div>}
+    {no2 && <div class="card kpi"><p class="label">Oxid dusičitý NO₂ ({no2[0]})</p><p class="value">{fmt(no2[1].priemer, 1)} µg/m³</p><p class="delta">ročný priemer · limit EÚ 40, od 2030 20</p></div>}
+    {posledny(odpad) && <div class="card kpi"><p class="label">Komunálny odpad ({posledny(odpad)![0]})</p><p class="value">{fmt(posledny(odpad)![1])} kg</p><p class="delta">na obyvateľa za rok</p></div>}
+    {voda && <div class="card kpi"><p class="label">Spotreba vody</p><p class="value">{fmt(voda[1], 1)} m³</p><p class="delta">na osobu za rok {voda[0]}{vodaCena ? ` · ${fmt(vodaCena[1], 2)} €/m³` : ''}</p></div>}
+  </section>
+  {uplneRoky.length > 1 && (
+    <section class="card">
+      <h3>Kvalita ovzdušia podľa rokov</h3>
+      <div class="chart"><canvas class="g-auto" data-graf={grafOvz} role="img" aria-label={`Ročné priemery PM10, PM2,5 a NO2 ${m.v}`}></canvas></div>
+      <p class="zdroj">Priemer staníc SHMÚ v meste (len roky s aspoň 75 % platných hodinových meraní). Zdroj: <a href={ovz.zdroj.url}>Európska environmentálna agentúra</a> – overené a priebežné merania. Aktuálny stav: <a href={`/${m.slug}#teraz`}>Teraz v meste</a>.</p>
+    </section>
+  )}
+
+  <h2 class="sekcia" id="kultura">Kultúra a cestovný ruch</h2>
+  <section class="kpis">
+    {kina && <div class="card kpi"><p class="label">Návštevnosť kín ({kina[0]})</p><p class="value">{fmt(kina[1])}</p><p class="delta">návštev za rok</p></div>}
+    {muzea && <div class="card kpi"><p class="label">Návštevníci múzeí</p><p class="value">{fmt(muzea[1])}</p><p class="delta">{muzea[0]}</p></div>}
+    {posledny(prenoc) && <div class="card kpi"><p class="label">Prenocovania turistov</p><p class="value">{fmt(posledny(prenoc)![1])}</p><p class="delta">{posledny(prenoc)![0]}{posledny(prenocZahr) ? ` · ${Math.round((100 * posledny(prenocZahr)![1]) / posledny(prenoc)![1])} % zahraniční` : ''}</p></div>}
+    {(divadla || kniznice || bazeny) && <div class="card kpi"><p class="label">Divadlá · knižnice · bazény</p><p class="value">{fmt(divadla?.[1])} · {fmt(kniznice?.[1])} · {fmt(bazeny?.[1])}</p><p class="delta">verejné, posledný známy rok</p></div>}
+  </section>
+  {Object.keys(prenoc).length > 2 && (
+    <section class="card">
+      <h3>Prenocovania v ubytovacích zariadeniach</h3>
+      <div class="chart"><canvas class="g-auto" data-graf={grafPrenoc} role="img" aria-label={`Prenocovania turistov ${m.v} podľa rokov`}></canvas></div>
+      <p class="zdroj">Zdroj: ŠÚ SR – Kultúra a cestovný ruch – mestá (ku3701rr).</p>
+    </section>
+  )}
+
+  {cenaM2Posl && (
+    <>
+      <h2 class="sekcia" id="byvanie">Bývanie</h2>
+      <section class="card">
+        <h3>Priemerná cena bytu: {fmt(cenaM2Posl[1])} €/m² ({cenaM2Posl[0]})</h3>
+        <div class="chart"><canvas class="g-auto" data-graf={grafCena} role="img" aria-label={`Priemerná cena bytu za m² ${m.v} podľa rokov`}></canvas></div>
+        <p class="zdroj">Priemerná cena pri kúpe bytu za m² v meste. Zdroj: ŠÚ SR – Životné podmienky – mestá (st3701rr). Výstavbu a index cien v kraji nájdete v časti <a href={`/${m.slug}#praca`}>Práca a bývanie</a>.</p>
+      </section>
+    </>
+  )}
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+  const css = getComputedStyle(document.documentElement);
+  const muted = css.getPropertyValue('--muted').trim();
+  const farby = [css.getPropertyValue('--accent').trim(), '#2f6fb3', '#2f8f5b', '#9a6b00'];
+  document.querySelectorAll<HTMLCanvasElement>('canvas.g-auto').forEach((el) => {
+    const g = JSON.parse(el.dataset.graf!);
+    const fmt = (v: number) => v.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
+    const datasets: any[] = g.rady.map((r: any, i: number) => ({
+      type: g.typ, label: r.n, data: r.d, borderColor: farby[i % 4], backgroundColor: g.typ === 'bar' ? farby[i % 4] : farby[i % 4], borderRadius: 3,
+      tension: 0.25, spanGaps: true, pointRadius: 2, yAxisID: r.os2 ? 'y2' : 'y',
+    }));
+    for (const l of g.limity ?? []) datasets.push({ type: 'line', label: l.n, data: g.labels.map(() => l.v), borderColor: muted, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false });
+    new Chart(el, {
+      data: { labels: g.labels, datasets },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: muted, boxWidth: 14 } }, tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${fmt(c.parsed.y ?? 0)}${g.jednotka ? ` ${g.jednotka}` : ''}` } } },
+        scales: {
+          x: { ticks: { color: muted }, grid: { display: false } },
+          y: { beginAtZero: true, ticks: { color: muted, callback: (v) => fmt(Number(v)) } },
+          ...(g.dveOsi ? { y2: { position: 'right', beginAtZero: true, grid: { display: false }, ticks: { color: muted } } } : {}),
+        },
+      },
+    });
+  });
+</script>
+
+<style>
+  .hero { padding: 40px 0 20px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  .kotvy { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .kotvy a { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--text); font-size: 0.88rem; background: var(--card); }
+  .kotvy a:hover { border-color: var(--accent); }
+  :global(h2.sekcia) { font-size: 1.5rem; letter-spacing: -0.02em; margin: 32px 0 0; scroll-margin-top: calc(var(--vyska-hlavicky, 112px) + 16px); }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; }
+  .delta { margin: 0; font-size: 0.82rem; color: var(--muted); }
+  section.card { margin-top: 16px; }
+  .card h3 { margin: 0 0 10px; font-size: 1.05rem; }
+  .chart { position: relative; height: 300px; }
+  .zdroj { font-size: 0.8rem; color: var(--muted); margin: 12px 0 0; }
+  .mriezka { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 24px; }
+  @media (max-width: 760px) { .mriezka { grid-template-columns: 1fr; } }
+  .poradie { margin: 0; padding-left: 22px; font-size: 0.9rem; }
+  .poradie li { padding: 3px 0; }
+  .poradie li span { display: inline-block; min-width: 60%; }
+  .poradie li strong { font-variant-numeric: tabular-nums; }
+  .poradie li.ja { font-weight: 700; color: var(--accent); }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-size: 0.78rem; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tlmene { color: var(--muted); font-size: 0.85rem; }
+  .f-uvod { color: var(--muted); font-size: 0.9rem; margin: 0 0 10px; }
+</style>

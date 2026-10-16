@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { MESTA } from '../../../mesta';
 import { hospodarenie } from '../../../lib/mapa';
+import { kriminalita, ovzdusie, posledny, temy, ua, vlaky } from '../../../lib/temy';
 
 export function getStaticPaths() {
   return MESTA.filter((m) => m.aktivne && !m.plne).map((m) => ({ params: { mesto: m.slug } }));
@@ -61,6 +62,28 @@ export async function GET({ params }: { params: { mesto: string } }) {
       const hosp = h ? `, výnosy mesta ${Math.round(h.posledny.vynosy / p.obyvatelia)} €/obyv. (${h.rok}), bankové úvery ${Math.round((h.posledny.bankove_uvery ?? 0) / p.obyvatelia)} €/obyv.${h.dlhPosledny ? `, dlh k bežným príjmom ${h.dlhPosledny.pomer} % (${h.rokDlh})` : ''}` : '';
       return `${p.nazov}: ${p.obyvatelia} obyv. (${p.zmena10} % za 10 r.), seniori ${p.seniori} %, VŠ ${p.vs} %, PDU ${p.pdu} %, účasť komunálne ${p.ucast_komunalne} %${hosp}`;
     }),
+    zivot_v_meste: (() => {
+      const t = temy();
+      if (!t) return undefined;
+      const sk = t.skoly?.[m.slug] ?? {};
+      const skPosl = (d: string) => { const r = Object.keys(sk[d] ?? {}).sort().pop(); return r ? `${r}: ${sk[d][r].skol} škôl, ${sk[d][r].ziakov} detí/žiakov, ${sk[d][r].ucitelov} učiteľov` : undefined; };
+      const u = (popis: string) => { const p = posledny(ua(m.slug, popis)); return p ? `${p[1]} (${p[0]})` : undefined; };
+      const oz = ovzdusie()?.mesta?.[m.slug] ?? {};
+      const vl = vlaky()?.mesta?.[m.slug];
+      const krim = posledny(kriminalita(m.kraj));
+      return {
+        stranka: `/${m.slug}/zivot`,
+        skoly: { materske: skPosl('ms'), zakladne: skPosl('zs'), gymnazia: skPosl('gym'), stredne_odborne: t.skoly_mapa?.[m.slug]?.typy?.sos ? `${t.skoly_mapa[m.slug].typy.sos.pocet} škôl, ${t.skoly_mapa[m.slug].typy.sos.ziaci} žiakov` : undefined,
+          najvacsie_stredne_skoly: (t.skoly_mapa?.[m.slug]?.stredne ?? []).slice(0, 8).map((x: any) => `${x.nazov} (${x.ziaci} žiakov)`) },
+        doprava: { auta_na_1000_obyvatelov: u('Registrované súkromné osobné autá k 1.1. na 1000 obyvateľov'), cyklisticka_siet_km: u('Dĺžka cyklistickej siete'),
+          mesacny_listok_mhd_eur: u('Cena kombinovaného mesačného lístka na všetky druhy verejnej dopravy v centre v okruhu 5-10 km'), obete_nehod: u('Zomretí pri dopravných nehodách'),
+          vlaky: vl ? { odchodov_za_pracovny_den: vl.odchodov, stanice: vl.stanice, dopravcovia: Object.keys(vl.dopravcovia), priame_spojenia: Object.fromEntries(Object.entries<any>(vl.spojenia).map(([k, v]) => [k, `${v.vlakov} vlakov, najrýchlejšie ${v.najrychlejsie_min} min, prvý ${v.prvy}, posledný ${v.posledny}`])) } : undefined },
+        kriminalita_kraja_na_1000_obyvatelov: krim ? `${krim[1]} (${krim[0]}, ${m.kraj}; za mesto sa nesleduje)` : undefined,
+        ovzdusie_rocne_priemery_ug_m3: Object.fromEntries(Object.entries<any>(oz).map(([l, x]) => [l, Object.fromEntries(Object.entries<any>(x).filter(([, v]) => !v.neuplny).slice(-5).map(([r, v]) => [r, v.priemer + (v.dni_nad_50 != null ? ` (${v.dni_nad_50} dní nad 50)` : '')]))])),
+        odpad_kg_na_osobu: u('Množstvo komunálneho odpadu – kg na osobu'), voda_m3_na_osobu: u('Celková spotreba vody – m3 na osobu'), cena_vody_eur_m3: u('Cena za m3 vody v domácnostiach – Euro'),
+        cena_bytu_eur_m2: u('Priemerná cena za kúpu bytu za m2'), navstevnost_kin: u('Návštevnosť kín za rok'), navstevnici_muzei: u('Návštevníci múzeí za rok'), prenocovania: u('Prenocovania v ubytovacích zariadeniach cestovného ruchu'),
+      };
+    })(),
     hospodarenie_mesta: (() => {
       const h = hospodarenie(m.slug);
       if (!h) return undefined;

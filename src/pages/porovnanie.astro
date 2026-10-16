@@ -5,6 +5,7 @@ import path from 'node:path';
 import Base from '../layouts/Base.astro';
 import { MESTA } from '../mesta';
 import { hospodarenie } from '../lib/mapa';
+import { kriminalita, ovzdusie, posledny, ua, vlaky } from '../lib/temy';
 
 const subor = path.join(process.cwd(), 'data', 'mesta', 'porovnanie.json');
 const por: any[] = fs.existsSync(subor) ? JSON.parse(fs.readFileSync(subor, 'utf-8')).mesta : [];
@@ -17,6 +18,19 @@ for (const p of por) {
   p.uvery_obyv = h && p.obyvatelia ? (h.posledny.bankove_uvery ?? 0) / p.obyvatelia : null;
   p.pomer_dlhu = h?.dlhPosledny?.pomer ?? null;
 }
+// život v meste – Urban Audit, kriminalita kraja, ovzdušie (EEA), vlaky
+for (const p of por) {
+  const kraj = MESTA.find((m) => m.slug === p.slug)?.kraj ?? '';
+  p.cena_m2 = posledny(ua(p.slug, 'Priemerná cena za kúpu bytu za m2'))?.[1] ?? null;
+  p.odpad = posledny(ua(p.slug, 'Množstvo komunálneho odpadu – kg na osobu'))?.[1] ?? null;
+  p.auta = posledny(ua(p.slug, 'Registrované súkromné osobné autá k 1.1. na 1000 obyvateľov'))?.[1] ?? null;
+  p.krim = posledny(kriminalita(kraj))?.[1] ?? null;
+  const pm = ovzdusie()?.mesta?.[p.slug]?.['PM2,5'] ?? {};
+  const pmRok = Object.keys(pm).filter((y) => !pm[y].neuplny).sort().pop();
+  p.pm25 = pmRok ? pm[pmRok].priemer : null;
+  p.vlaky = vlaky()?.mesta?.[p.slug]?.odchodov ?? null;
+}
+const uaRok = posledny(ua('kosice', 'Priemerná cena za kúpu bytu za m2'))?.[0];
 const hRok = hospodarenie('kosice')?.rok;
 const hRokDlh = hospodarenie('kosice')?.rokDlh;
 
@@ -34,6 +48,12 @@ const UKAZ: [string, string, (n: number | null) => string, string][] = [
   ['ucast_komunalne', 'Účasť v komunálnych voľbách', (n) => `${des(n)} %`, 'voľba primátora 2022'],
   ['byty_1000', 'Nové byty ročne', (n) => des(n), 'dokončené byty na 1 000 obyvateľov, priemer 10 rokov (okres)'],
   ['ceny_kraj', 'Ceny bývania za rok', znam, 'medziročná zmena v kraji'],
+  ['cena_m2', 'Cena bytu za m²', (n) => (n == null ? '–' : `${fmt(n)} €`), `priemerná cena pri kúpe bytu v meste, ${uaRok}`],
+  ['pm25', 'Jemný prach PM2,5', (n) => (n == null ? '–' : `${des(n)} µg/m³`), 'ročný priemer staníc v meste (EEA), WHO odporúča najviac 5'],
+  ['odpad', 'Komunálny odpad', (n) => (n == null ? '–' : `${fmt(n)} kg`), `na obyvateľa za rok, ${uaRok}`],
+  ['auta', 'Autá na 1 000 obyvateľov', (n) => fmt(n), 'súkromné osobné autá registrované v meste'],
+  ['krim', 'Trestné činy (kraj)', (n) => (n == null ? '–' : des(n)), 'na 1 000 obyvateľov kraja – za mestá sa nesleduje'],
+  ['vlaky', 'Odchody vlakov', (n) => fmt(n), 'za pracovný deň zo všetkých staníc mesta'],
   ['vynosy_obyv', 'Výnosy mesta na obyvateľa', (n) => (n == null ? '–' : `${fmt(n)} €`), `všetky výnosy mesta za rok ${hRok} (účtovná závierka)`],
   ['dane_obyv', 'Daňové výnosy na obyvateľa', (n) => (n == null ? '–' : `${fmt(n)} €`), `najmä podiel na dani z príjmov a daň z nehnuteľností, ${hRok}`],
   ['uvery_obyv', 'Bankové úvery na obyvateľa', (n) => (n == null ? '–' : `${fmt(n)} €`), `stav úverov k 31. 12. ${hRok}`],

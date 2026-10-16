@@ -5,6 +5,7 @@ import Zobrazenie from '../components/Zobrazenie.astro';
 import Jazyk from '../components/Jazyk.astro';
 import { MESTA, mestoZCesty, jeSpolocna } from '../mesta';
 import { maMapu, maSamospravu } from '../lib/mapa';
+import { maZivot } from '../lib/temy';
 interface Props {
   title: string;
   description?: string;
@@ -46,10 +47,11 @@ const MENU: [string, string, string][] = spolocna
       [`/${mesto.slug}#volby`, 'Voľby', IKONA['volby']],
       [`/${mesto.slug}#praca`, 'Práca a bývanie', IKONA['vybavenost']],
       [`/${mesto.slug}#stavby`, 'Čo sa stavia', IKONA['vystavba']],
+      ...(maZivot(mesto.slug) ? [[`/${mesto.slug}/zivot`, 'Život v meste', IKONA['bezpecnost']] as [string, string, string]] : []),
       ...(maSamospravu(mesto.slug) ? [[`/${mesto.slug}/samosprava`, 'Samospráva', IKONA['financie']] as [string, string, string]] : []),
       ...(maMapu(mesto.slug) ? [[`/${mesto.slug}/mapa`, 'Mapa', IKONA['mapa']] as [string, string, string]] : []),
       ...((mesto as any).katalog ? [[`/${mesto.slug}/katalog`, 'Katalóg dát', IKONA['katalog']] as [string, string, string]] : []),
-      ['/porovnanie', 'Porovnanie miest', IKONA['mestske-casti']],
+      ['/porovnanie', 'Porovnanie', IKONA['mestske-casti']],
     ];
 const OG = ['mestske-casti', 'vystavba', 'upozornenia', 'mapa', 'obyvatelia', 'volby', 'financie', 'doprava', 'vybavenost', 'prostredie', 'bezpecnost', 'katalog'];
 const casti = Astro.url.pathname.split('/').filter(Boolean);

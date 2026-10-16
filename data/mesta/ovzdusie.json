@@ -1,0 +1,1942 @@
+{
+ "zdroj": {
+  "nazov": "Európska environmentálna agentúra – merania kvality ovzdušia (stanice SHMÚ)",
+  "url": "https://eeadmz1-downloads-webapp.azurewebsites.net/"
+ },
+ "limity": {
+  "PM10": {
+   "eu": 40,
+   "who": 15,
+   "dni_eu": 35
+  },
+  "PM2,5": {
+   "eu": 25,
+   "eu_2030": 10,
+   "who": 5
+  },
+  "NO2": {
+   "eu": 40,
+   "eu_2030": 20,
+   "who": 10
+  }
+ },
+ "mesta": {
+  "bratislava": {
+   "PM10": {
+    "2013": {
+     "priemer": 26.6,
+     "max": 33.8,
+     "stanic": 3,
+     "neuplny": false,
+     "dni_nad_50": 61
+    },
+    "2014": {
+     "priemer": 25.9,
+     "max": 31.1,
+     "stanic": 3,
+     "neuplny": false,
+     "dni_nad_50": 36
+    },
+    "2015": {
+     "priemer": 26.5,
+     "max": 31.7,
+     "stanic": 3,
+     "neuplny": false,
+     "dni_nad_50": 41
+    },
+    "2016": {
+     "priemer": 23.3,
+     "max": 29.0,
+     "stanic": 3,
+     "neuplny": false,
+     "dni_nad_50": 24
+    },
+    "2017": {
+     "priemer": 21.8,
+     "max": 25.3,
+     "stanic": 4,
+     "neuplny": false,
+     "dni_nad_50": 27
+    },
+    "2018": {
+     "priemer": 26.4,
+     "max": 29.2,
+     "stanic": 4,
+     "neuplny": false,
+     "dni_nad_50": 22
+    },
+    "2019": {
+     "priemer": 21.6,
+     "max": 24.2,
+     "stanic": 4,
+     "neuplny": false,
+     "dni_nad_50": 11
+    },
+    "2020": {
+     "priemer": 20.6,
+     "max": 24.6,
+     "stanic": 4,
+     "neuplny": false,
+     "dni_nad_50": 14
+    },
+    "2021": {
+     "priemer": 19.6,
+     "max": 24.4,
+     "stanic": 4,
+     "neuplny": false,
+     "dni_nad_50": 15
+    },
+    "2022": {
+     "priemer": 18.8,
+     "max": 24.0,
+     "stanic": 5,
+     "neuplny": false,
+     "dni_nad_50": 10
+    },
+    "2023": {
+     "priemer": 17.2,
+     "max": 21.0,
+     "stanic": 5,
+     "neuplny": false,
+     "dni_nad_50": 7
+    },
+    "2024": {
+     "priemer": 19.8,
+     "max": 22.4,
+     "stanic": 5,
+     "neuplny": false,
+     "dni_nad_50": 14
+    },
+    "2025": {
+     "priemer": 18.3,
+     "max": 20.3,
+     "stanic": 5,
+     "neuplny": false,
+     "dni_nad_50": 7
+    },
+    "2026": {
+     "priemer": 33.5,
+     "max": 98.5,
+     "stanic": 5,
+     "neuplny": true,
+     "dni_nad_50": 0
+    }
+   },
+   "PM2,5": {
+    "2016": {
+     "priemer": 14.2,
+     "max": 15.0,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 14.8,
+     "max": 15.4,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 17.4,
+     "max": 19.4,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 13.5,
+     "max": 15.4,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 13.5,
+     "max": 14.5,
+     "stanic": 4,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 13.6,
+     "max": 15.1,
+     "stanic": 4,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 12.5,
+     "max": 14.9,
+     "stanic": 5,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 11.1,
+     "max": 12.8,
+     "stanic": 5,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 11.9,
+     "max": 12.7,
+     "stanic": 5,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 11.8,
+     "max": 12.5,
+     "stanic": 5,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 25.7,
+     "max": 83.2,
+     "stanic": 5,
+     "neuplny": true
+    }
+   },
+   "NO2": {
+    "2013": {
+     "priemer": 27.6,
+     "max": 35.1,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2014": {
+     "priemer": 24.0,
+     "max": 36.2,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2015": {
+     "priemer": 30.9,
+     "max": 49.0,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2016": {
+     "priemer": 25.3,
+     "max": 40.3,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 25.7,
+     "max": 39.3,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 25.0,
+     "max": 41.4,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 22.8,
+     "max": 37.2,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 19.1,
+     "max": 32.6,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 19.6,
+     "max": 33.5,
+     "stanic": 3,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 17.4,
+     "max": 31.1,
+     "stanic": 4,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 16.7,
+     "max": 29.7,
+     "stanic": 4,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 15.7,
+     "max": 28.3,
+     "stanic": 4,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 15.8,
+     "max": 28.2,
+     "stanic": 4,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 11.5,
+     "max": 18.2,
+     "stanic": 4,
+     "neuplny": true
+    }
+   }
+  },
+  "trnava": {
+   "PM10": {
+    "2013": {
+     "priemer": 30.9,
+     "max": 30.9,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 33
+    },
+    "2014": {
+     "priemer": 28.7,
+     "max": 28.7,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 32
+    },
+    "2016": {
+     "priemer": 27.0,
+     "max": 27.0,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 16
+    },
+    "2017": {
+     "priemer": 24.4,
+     "max": 24.4,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 31
+    },
+    "2018": {
+     "priemer": 28.9,
+     "max": 28.9,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 27
+    },
+    "2019": {
+     "priemer": 23.9,
+     "max": 23.9,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 16
+    },
+    "2020": {
+     "priemer": 22.0,
+     "max": 22.0,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 6
+    },
+    "2021": {
+     "priemer": 22.3,
+     "max": 22.3,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 7
+    },
+    "2022": {
+     "priemer": 20.6,
+     "max": 20.6,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 5
+    },
+    "2023": {
+     "priemer": 19.3,
+     "max": 19.3,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 3
+    },
+    "2024": {
+     "priemer": 20.8,
+     "max": 20.8,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 6
+    },
+    "2025": {
+     "priemer": 19.8,
+     "max": 19.8,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 11
+    },
+    "2026": {
+     "priemer": 10.5,
+     "max": 10.5,
+     "stanic": 1,
+     "neuplny": true,
+     "dni_nad_50": 0
+    }
+   },
+   "PM2,5": {
+    "2013": {
+     "priemer": 20.4,
+     "max": 20.4,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 16.8,
+     "max": 16.8,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 20.4,
+     "max": 20.4,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 16.2,
+     "max": 16.2,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 16.0,
+     "max": 16.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 15.7,
+     "max": 15.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 13.3,
+     "max": 13.3,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 13.8,
+     "max": 13.8,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 12.9,
+     "max": 12.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 11.3,
+     "max": 11.3,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 10.7,
+     "max": 10.7,
+     "stanic": 1,
+     "neuplny": true
+    }
+   },
+   "NO2": {
+    "2013": {
+     "priemer": 25.7,
+     "max": 25.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2014": {
+     "priemer": 35.6,
+     "max": 35.6,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2016": {
+     "priemer": 37.2,
+     "max": 37.2,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 36.5,
+     "max": 36.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 35.3,
+     "max": 35.3,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 33.8,
+     "max": 33.8,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 26.9,
+     "max": 26.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 27.5,
+     "max": 27.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 28.1,
+     "max": 28.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 27.3,
+     "max": 27.3,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 24.4,
+     "max": 24.4,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 25.3,
+     "max": 25.3,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 6.1,
+     "max": 6.1,
+     "stanic": 1,
+     "neuplny": true
+    }
+   }
+  },
+  "nitra": {
+   "PM10": {
+    "2013": {
+     "priemer": 26.4,
+     "max": 26.4,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 12
+    },
+    "2014": {
+     "priemer": 25.1,
+     "max": 25.4,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 19
+    },
+    "2016": {
+     "priemer": 24.0,
+     "max": 26.1,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 13
+    },
+    "2017": {
+     "priemer": 26.1,
+     "max": 28.3,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 26
+    },
+    "2018": {
+     "priemer": 26.2,
+     "max": 28.3,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 21
+    },
+    "2019": {
+     "priemer": 22.0,
+     "max": 23.5,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 17
+    },
+    "2020": {
+     "priemer": 20.8,
+     "max": 22.0,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 5
+    },
+    "2021": {
+     "priemer": 22.6,
+     "max": 25.2,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 9
+    },
+    "2022": {
+     "priemer": 19.5,
+     "max": 21.9,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 2
+    },
+    "2023": {
+     "priemer": 18.5,
+     "max": 20.8,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 3
+    },
+    "2024": {
+     "priemer": 20.6,
+     "max": 22.9,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 9
+    },
+    "2025": {
+     "priemer": 17.7,
+     "max": 19.1,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 6
+    },
+    "2026": {
+     "priemer": 19.8,
+     "max": 21.7,
+     "stanic": 2,
+     "neuplny": true,
+     "dni_nad_50": 0
+    }
+   },
+   "PM2,5": {
+    "2014": {
+     "priemer": 17.1,
+     "max": 17.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2016": {
+     "priemer": 16.9,
+     "max": 16.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 16.7,
+     "max": 19.0,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 17.3,
+     "max": 18.2,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 15.1,
+     "max": 15.4,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 13.9,
+     "max": 14.8,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 14.9,
+     "max": 15.5,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 11.8,
+     "max": 12.5,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 12.1,
+     "max": 12.2,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 13.8,
+     "max": 14.6,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 11.8,
+     "max": 11.8,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 17.1,
+     "max": 18.1,
+     "stanic": 2,
+     "neuplny": true
+    }
+   },
+   "NO2": {
+    "2014": {
+     "priemer": 24.8,
+     "max": 37.8,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2016": {
+     "priemer": 20.9,
+     "max": 30.6,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 24.6,
+     "max": 35.3,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 22.7,
+     "max": 34.1,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 20.4,
+     "max": 30.6,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 17.1,
+     "max": 25.7,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 17.9,
+     "max": 26.9,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 15.3,
+     "max": 21.7,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 15.8,
+     "max": 21.8,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 16.6,
+     "max": 24.4,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 14.9,
+     "max": 21.3,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 11.3,
+     "max": 14.9,
+     "stanic": 2,
+     "neuplny": true
+    }
+   }
+  },
+  "trencin": {
+   "PM10": {
+    "2014": {
+     "priemer": 34.9,
+     "max": 34.9,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 68
+    },
+    "2016": {
+     "priemer": 29.4,
+     "max": 29.4,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 35
+    },
+    "2017": {
+     "priemer": 29.8,
+     "max": 29.8,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 41
+    },
+    "2018": {
+     "priemer": 29.4,
+     "max": 29.4,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 39
+    },
+    "2019": {
+     "priemer": 24.9,
+     "max": 24.9,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 24
+    },
+    "2020": {
+     "priemer": 23.6,
+     "max": 23.6,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 17
+    },
+    "2021": {
+     "priemer": 27.0,
+     "max": 27.0,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 16
+    },
+    "2022": {
+     "priemer": 22.6,
+     "max": 22.6,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 8
+    },
+    "2023": {
+     "priemer": 18.9,
+     "max": 18.9,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 6
+    },
+    "2024": {
+     "priemer": 21.9,
+     "max": 21.9,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 16
+    },
+    "2025": {
+     "priemer": 21.0,
+     "max": 21.0,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 9
+    },
+    "2026": {
+     "priemer": 27.5,
+     "max": 27.5,
+     "stanic": 1,
+     "neuplny": true,
+     "dni_nad_50": 0
+    }
+   },
+   "PM2,5": {
+    "2014": {
+     "priemer": 23.6,
+     "max": 23.6,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2016": {
+     "priemer": 17.9,
+     "max": 17.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 13.2,
+     "max": 13.2,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 19.7,
+     "max": 19.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 17.7,
+     "max": 17.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 14.6,
+     "max": 14.6,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 14.7,
+     "max": 14.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 13.7,
+     "max": 13.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 11.9,
+     "max": 11.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 13.3,
+     "max": 13.3,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 12.9,
+     "max": 12.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 19.8,
+     "max": 19.8,
+     "stanic": 1,
+     "neuplny": true
+    }
+   },
+   "NO2": {
+    "2014": {
+     "priemer": 19.6,
+     "max": 19.6,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2015": {
+     "priemer": 24.0,
+     "max": 24.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2016": {
+     "priemer": 27.3,
+     "max": 27.3,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 31.1,
+     "max": 31.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 26.7,
+     "max": 26.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 26.6,
+     "max": 26.6,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 22.7,
+     "max": 22.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 23.1,
+     "max": 23.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 25.8,
+     "max": 25.8,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 22.7,
+     "max": 22.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 19.9,
+     "max": 19.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 18.5,
+     "max": 18.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 29.4,
+     "max": 29.4,
+     "stanic": 1,
+     "neuplny": true
+    }
+   }
+  },
+  "zilina": {
+   "PM10": {
+    "2014": {
+     "priemer": 32.9,
+     "max": 32.9,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 51
+    },
+    "2017": {
+     "priemer": 30.0,
+     "max": 30.0,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 45
+    },
+    "2018": {
+     "priemer": 26.9,
+     "max": 26.9,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 33
+    },
+    "2019": {
+     "priemer": 23.3,
+     "max": 23.3,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 21
+    },
+    "2020": {
+     "priemer": 22.7,
+     "max": 22.7,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 15
+    },
+    "2021": {
+     "priemer": 25.4,
+     "max": 25.4,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 24
+    },
+    "2022": {
+     "priemer": 24.5,
+     "max": 24.5,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 17
+    },
+    "2023": {
+     "priemer": 19.6,
+     "max": 19.6,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 14
+    },
+    "2024": {
+     "priemer": 20.8,
+     "max": 20.8,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 17
+    },
+    "2025": {
+     "priemer": 19.9,
+     "max": 19.9,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 9
+    },
+    "2026": {
+     "priemer": 39.4,
+     "max": 39.4,
+     "stanic": 1,
+     "neuplny": true,
+     "dni_nad_50": 0
+    }
+   },
+   "PM2,5": {
+    "2017": {
+     "priemer": 25.9,
+     "max": 25.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 21.7,
+     "max": 21.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 18.4,
+     "max": 18.4,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 16.9,
+     "max": 16.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 19.5,
+     "max": 19.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 17.5,
+     "max": 17.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 14.5,
+     "max": 14.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 15.5,
+     "max": 15.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 15.0,
+     "max": 15.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 30.4,
+     "max": 30.4,
+     "stanic": 1,
+     "neuplny": true
+    }
+   },
+   "NO2": {
+    "2014": {
+     "priemer": 13.9,
+     "max": 13.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2016": {
+     "priemer": 19.9,
+     "max": 19.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 24.8,
+     "max": 24.8,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 25.2,
+     "max": 25.2,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 21.4,
+     "max": 21.4,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 15.5,
+     "max": 15.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 19.4,
+     "max": 19.4,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 20.1,
+     "max": 20.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 18.0,
+     "max": 18.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 17.2,
+     "max": 17.2,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 16.0,
+     "max": 16.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 17.2,
+     "max": 17.2,
+     "stanic": 1,
+     "neuplny": true
+    }
+   }
+  },
+  "banska-bystrica": {
+   "PM10": {
+    "2013": {
+     "priemer": 35.1,
+     "max": 35.1,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 57
+    },
+    "2014": {
+     "priemer": 30.6,
+     "max": 30.6,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 48
+    },
+    "2017": {
+     "priemer": 33.0,
+     "max": 33.0,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 66
+    },
+    "2018": {
+     "priemer": 25.8,
+     "max": 30.4,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 42
+    },
+    "2019": {
+     "priemer": 21.1,
+     "max": 25.8,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 27
+    },
+    "2020": {
+     "priemer": 20.2,
+     "max": 25.0,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 23
+    },
+    "2021": {
+     "priemer": 25.1,
+     "max": 29.8,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 39
+    },
+    "2022": {
+     "priemer": 20.8,
+     "max": 25.7,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 20
+    },
+    "2023": {
+     "priemer": 18.8,
+     "max": 24.0,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 19
+    },
+    "2024": {
+     "priemer": 21.1,
+     "max": 25.6,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 22
+    },
+    "2025": {
+     "priemer": 18.5,
+     "max": 22.8,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 20
+    },
+    "2026": {
+     "priemer": 21.5,
+     "max": 21.6,
+     "stanic": 2,
+     "neuplny": true,
+     "dni_nad_50": 0
+    }
+   },
+   "PM2,5": {
+    "2013": {
+     "priemer": 17.2,
+     "max": 17.2,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2014": {
+     "priemer": 15.5,
+     "max": 15.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 19.6,
+     "max": 23.3,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 17.2,
+     "max": 20.2,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 13.9,
+     "max": 17.6,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 15.1,
+     "max": 15.7,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 16.5,
+     "max": 18.9,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 14.3,
+     "max": 16.5,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 11.9,
+     "max": 13.1,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 12.8,
+     "max": 15.0,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 13.0,
+     "max": 15.7,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 20.2,
+     "max": 20.3,
+     "stanic": 2,
+     "neuplny": true
+    }
+   },
+   "NO2": {
+    "2013": {
+     "priemer": 34.0,
+     "max": 34.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2014": {
+     "priemer": 28.5,
+     "max": 28.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2016": {
+     "priemer": 21.6,
+     "max": 32.8,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 25.4,
+     "max": 37.8,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 22.2,
+     "max": 34.3,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 19.1,
+     "max": 29.3,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 16.0,
+     "max": 23.6,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 17.6,
+     "max": 25.5,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 15.7,
+     "max": 23.6,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 15.1,
+     "max": 22.2,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 15.2,
+     "max": 23.3,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 14.1,
+     "max": 22.5,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 19.9,
+     "max": 37.1,
+     "stanic": 2,
+     "neuplny": true
+    }
+   }
+  },
+  "presov": {
+   "PM10": {
+    "2013": {
+     "priemer": 34.0,
+     "max": 34.0,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 56
+    },
+    "2014": {
+     "priemer": 33.3,
+     "max": 33.3,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 43
+    },
+    "2015": {
+     "priemer": 29.7,
+     "max": 29.7,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 25
+    },
+    "2017": {
+     "priemer": 33.8,
+     "max": 33.8,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 53
+    },
+    "2018": {
+     "priemer": 29.7,
+     "max": 29.7,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 34
+    },
+    "2019": {
+     "priemer": 27.6,
+     "max": 27.6,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 29
+    },
+    "2020": {
+     "priemer": 25.5,
+     "max": 25.5,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 18
+    },
+    "2021": {
+     "priemer": 26.7,
+     "max": 26.7,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 26
+    },
+    "2022": {
+     "priemer": 25.4,
+     "max": 25.4,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 17
+    },
+    "2023": {
+     "priemer": 22.7,
+     "max": 22.7,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 10
+    },
+    "2024": {
+     "priemer": 25.6,
+     "max": 25.6,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 15
+    },
+    "2025": {
+     "priemer": 25.5,
+     "max": 25.5,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 24
+    },
+    "2026": {
+     "priemer": 42.8,
+     "max": 42.8,
+     "stanic": 1,
+     "neuplny": true,
+     "dni_nad_50": 0
+    }
+   },
+   "PM2,5": {
+    "2014": {
+     "priemer": 22.9,
+     "max": 22.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 24.3,
+     "max": 24.3,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 20.1,
+     "max": 20.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 18.2,
+     "max": 18.2,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 16.0,
+     "max": 16.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 18.5,
+     "max": 18.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 17.9,
+     "max": 17.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 16.0,
+     "max": 16.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 17.2,
+     "max": 17.2,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 16.9,
+     "max": 16.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 35.4,
+     "max": 35.4,
+     "stanic": 1,
+     "neuplny": true
+    }
+   },
+   "NO2": {
+    "2013": {
+     "priemer": 35.1,
+     "max": 35.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2014": {
+     "priemer": 46.1,
+     "max": 46.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2016": {
+     "priemer": 36.5,
+     "max": 36.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 38.4,
+     "max": 38.4,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 40.6,
+     "max": 40.6,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 39.0,
+     "max": 39.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 30.8,
+     "max": 30.8,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 33.1,
+     "max": 33.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 32.4,
+     "max": 32.4,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 33.9,
+     "max": 33.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 33.8,
+     "max": 33.8,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 31.2,
+     "max": 31.2,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 18.9,
+     "max": 18.9,
+     "stanic": 1,
+     "neuplny": true
+    }
+   }
+  },
+  "kosice": {
+   "PM10": {
+    "2013": {
+     "priemer": 27.0,
+     "max": 27.0,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 29
+    },
+    "2014": {
+     "priemer": 30.8,
+     "max": 30.8,
+     "stanic": 1,
+     "neuplny": false,
+     "dni_nad_50": 41
+    },
+    "2017": {
+     "priemer": 30.8,
+     "max": 33.4,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 55
+    },
+    "2018": {
+     "priemer": 28.9,
+     "max": 33.2,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 50
+    },
+    "2019": {
+     "priemer": 25.7,
+     "max": 28.8,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 43
+    },
+    "2020": {
+     "priemer": 24.8,
+     "max": 26.2,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 19
+    },
+    "2021": {
+     "priemer": 26.2,
+     "max": 27.9,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 28
+    },
+    "2022": {
+     "priemer": 24.0,
+     "max": 26.3,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 21
+    },
+    "2023": {
+     "priemer": 21.9,
+     "max": 23.6,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 13
+    },
+    "2024": {
+     "priemer": 24.5,
+     "max": 25.9,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 22
+    },
+    "2025": {
+     "priemer": 22.4,
+     "max": 24.0,
+     "stanic": 2,
+     "neuplny": false,
+     "dni_nad_50": 23
+    },
+    "2026": {
+     "priemer": 66.2,
+     "max": 78.5,
+     "stanic": 2,
+     "neuplny": true,
+     "dni_nad_50": 0
+    }
+   },
+   "PM2,5": {
+    "2014": {
+     "priemer": 20.1,
+     "max": 20.8,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2015": {
+     "priemer": 19.0,
+     "max": 19.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 21.3,
+     "max": 23.3,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 17.5,
+     "max": 20.2,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 16.0,
+     "max": 18.4,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 15.5,
+     "max": 16.3,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 18.4,
+     "max": 18.4,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 16.6,
+     "max": 17.1,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 15.3,
+     "max": 15.8,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 15.9,
+     "max": 16.2,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 15.2,
+     "max": 15.3,
+     "stanic": 2,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 67.8,
+     "max": 75.0,
+     "stanic": 2,
+     "neuplny": true
+    }
+   },
+   "NO2": {
+    "2016": {
+     "priemer": 29.0,
+     "max": 29.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2017": {
+     "priemer": 30.9,
+     "max": 30.9,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2018": {
+     "priemer": 28.0,
+     "max": 28.0,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2019": {
+     "priemer": 27.7,
+     "max": 27.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2020": {
+     "priemer": 22.5,
+     "max": 22.5,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2021": {
+     "priemer": 22.1,
+     "max": 22.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2022": {
+     "priemer": 21.6,
+     "max": 21.6,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2023": {
+     "priemer": 21.7,
+     "max": 21.7,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2024": {
+     "priemer": 20.8,
+     "max": 20.8,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2025": {
+     "priemer": 20.1,
+     "max": 20.1,
+     "stanic": 1,
+     "neuplny": false
+    },
+    "2026": {
+     "priemer": 22.9,
+     "max": 22.9,
+     "stanic": 1,
+     "neuplny": true
+    }
+   }
+  }
+ },
+ "aktualizovane": "2026-10-16T19:08:30+00:00"
+}
