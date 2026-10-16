@@ -1,0 +1,660 @@
+{
+ "aktualizovane": "2026-10-16T11:57:02",
+ "obyvatelia": {
+  "roky": {
+   "1993": 85686,
+   "1994": 86373,
+   "1995": 86685,
+   "1996": 86811,
+   "1997": 86923,
+   "1998": 86953,
+   "1999": 86818,
+   "2000": 86679,
+   "2001": 86623,
+   "2002": 85347,
+   "2003": 85278,
+   "2004": 85268,
+   "2005": 85425,
+   "2006": 85477,
+   "2007": 85370,
+   "2008": 85327,
+   "2009": 85252,
+   "2010": 85129,
+   "2011": 81515,
+   "2012": 81382,
+   "2013": 81273,
+   "2014": 81155,
+   "2015": 81114,
+   "2016": 81041,
+   "2017": 80978,
+   "2018": 80810,
+   "2019": 80727,
+   "2020": 80386,
+   "2021": 81940,
+   "2022": 81219,
+   "2023": 80634,
+   "2024": 80257,
+   "2025": 79873
+  },
+  "casti": {}
+ },
+ "scitanie": {
+  "vek": {
+   "Spolu": 82656,
+   "Od 15 do 64 rokov": 54975,
+   "65 rokov alebo viac": 15226,
+   "14 rokov alebo menej": 12455,
+   "Neznáme": 0
+  },
+  "vzdelanie": {
+   "Spolu": 82656,
+   "Stredné s maturitou": 26166,
+   "Vysokoškolské": 22861,
+   "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 12455,
+   "Stredné bez maturity": 12112,
+   "Základné": 5679,
+   "Nezistené": 3242,
+   "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 141
+  },
+  "narodnost": {
+   "Spolu": 82656,
+   "Slovenská": 76346,
+   "Nezistená": 4522,
+   "Česká": 797,
+   "Iná": 490,
+   "Ukrajinská": 122,
+   "Maďarská": 101,
+   "Rómska": 72,
+   "Poľská": 66,
+   "Ruská": 59,
+   "Rusínska": 46,
+   "Nemecká": 35
+  },
+  "nabozenstvo": {
+   "Spolu": 82656,
+   "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 47819,
+   "bez náboženského vyznania": 24034,
+   "nezistené": 5643,
+   "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 2339,
+   "ostatné": 1990,
+   "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 548,
+   "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 175,
+   "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 108
+  }
+ },
+ "volby": {
+  "nrsr2023": {
+   "nazov": "Parlament 2023",
+   "ucast": 72.82,
+   "ucast_sr": 68.51,
+   "strany": [
+    {
+     "nazov": "Progresívne Slovensko",
+     "podiel": 23.95
+    },
+    {
+     "nazov": "SMER - sociálna demokracia",
+     "podiel": 23.07
+    },
+    {
+     "nazov": "HLAS - sociálna demokracia",
+     "podiel": 13.54
+    },
+    {
+     "nazov": "Sloboda a Solidarita",
+     "podiel": 8.48
+    },
+    {
+     "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+     "podiel": 7.15
+    },
+    {
+     "nazov": "Slovenská národná strana",
+     "podiel": 6.34
+    },
+    {
+     "nazov": "Kresťanskodemokratické hnutie",
+     "podiel": 5.67
+    },
+    {
+     "nazov": "REPUBLIKA",
+     "podiel": 4.24
+    },
+    {
+     "nazov": "Demokrati",
+     "podiel": 3.94
+    },
+    {
+     "nazov": "SME RODINA",
+     "podiel": 1.7
+    },
+    {
+     "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+     "podiel": 0.71
+    },
+    {
+     "nazov": "Komunistická strana Slovenska",
+     "podiel": 0.26
+    }
+   ]
+  },
+  "ep2024": {
+   "nazov": "Európsky parlament 2024",
+   "ucast": 41.94,
+   "ucast_sr": 34.38,
+   "strany": [
+    {
+     "nazov": "Progresívne Slovensko",
+     "podiel": 33.33
+    },
+    {
+     "nazov": "SMER - sociálna demokracia",
+     "podiel": 24.47
+    },
+    {
+     "nazov": "REPUBLIKA",
+     "podiel": 11.36
+    },
+    {
+     "nazov": "Kresťanskodemokratické hnutie",
+     "podiel": 6.39
+    },
+    {
+     "nazov": "Demokrati",
+     "podiel": 6.12
+    },
+    {
+     "nazov": "Sloboda a Solidarita",
+     "podiel": 5.92
+    },
+    {
+     "nazov": "HLAS - sociálna demokracia",
+     "podiel": 5.72
+    },
+    {
+     "nazov": "Slovenská národná strana",
+     "podiel": 1.71
+    },
+    {
+     "nazov": "SLOVENSKO, ZA ĽUDÍ",
+     "podiel": 1.52
+    },
+    {
+     "nazov": "ZDRAVÝ ROZUM",
+     "podiel": 1.13
+    },
+    {
+     "nazov": "Kresťanská únia",
+     "podiel": 0.8
+    },
+    {
+     "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+     "podiel": 0.41
+    }
+   ]
+  }
+ },
+ "komunalne": {
+  "2022": {
+   "ucast": {
+    "zapisani": 69091,
+    "volili": 26369,
+    "ucast_pct": 38.17
+   },
+   "primator": [
+    {
+     "meno": "Mgr. Peter Fiabáne",
+     "strany": "nezávislý kandidát",
+     "hlasy": 11654,
+     "podiel": 45.53,
+     "zvoleny": true
+    },
+    {
+     "meno": "Mgr. Ing. Patrik Groma, PhD.",
+     "strany": "HLAS - sociálna demokracia, Kresťanskodemokratické hnutie",
+     "hlasy": 4866,
+     "podiel": 19.01,
+     "zvoleny": false
+    },
+    {
+     "meno": "Mgr. Peter Cibulka",
+     "strany": "nezávislý kandidát",
+     "hlasy": 3970,
+     "podiel": 15.51,
+     "zvoleny": false
+    },
+    {
+     "meno": "Ing. Pavol Slota",
+     "strany": "DOMOV národná strana",
+     "hlasy": 2723,
+     "podiel": 10.64,
+     "zvoleny": false
+    },
+    {
+     "meno": "Mgr. Ján Rzeszoto",
+     "strany": "nezávislý kandidát",
+     "hlasy": 981,
+     "podiel": 3.83,
+     "zvoleny": false
+    },
+    {
+     "meno": "Mgr. PhDr. Silvia Bakkery",
+     "strany": "REPUBLIKA",
+     "hlasy": 668,
+     "podiel": 2.61,
+     "zvoleny": false
+    },
+    {
+     "meno": "MUDr. Štefan Zelník, PhD.",
+     "strany": "ŽIVOT - národná strana",
+     "hlasy": 276,
+     "podiel": 1.08,
+     "zvoleny": false
+    },
+    {
+     "meno": "Daniela Zemanová",
+     "strany": "Hnutie Občan Národ Spravodlivosť",
+     "hlasy": 273,
+     "podiel": 1.07,
+     "zvoleny": false
+    },
+    {
+     "meno": "Timotej Bernhauser",
+     "strany": "nezávislý kandidát",
+     "hlasy": 184,
+     "podiel": 0.72,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 31,
+    "mandaty": [
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 26
+     },
+     {
+      "strany": "SMER - sociálna demokracia",
+      "mandaty": 2
+     },
+     {
+      "strany": "HLAS - sociálna demokracia",
+      "mandaty": 1
+     },
+     {
+      "strany": "Kresťanskodemokratické hnutie",
+      "mandaty": 1
+     },
+     {
+      "strany": "Progresívne Slovensko",
+      "mandaty": 1
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "Mgr. Peter Cibulka",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2255
+     },
+     {
+      "meno": "Mgr. Iveta Martinková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2113
+     },
+     {
+      "meno": "Mgr. Róbert Kašša",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2002
+     },
+     {
+      "meno": "Mgr. Ing. Patrik Groma, PhD.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1993
+     },
+     {
+      "meno": "Mgr. Ján Rzeszoto",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1937
+     },
+     {
+      "meno": "Mgr. Karol Haas",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1602
+     },
+     {
+      "meno": "Mgr. Dominik Hriník",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1554
+     },
+     {
+      "meno": "Ing. Ľubomír Bechný",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1530
+     },
+     {
+      "meno": "Ing. František Talapka",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1480
+     },
+     {
+      "meno": "Ondrej Šoška",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1421
+     },
+     {
+      "meno": "Mgr. et Mgr. Jana Filipová",
+      "strany": "HLAS - sociálna demokracia",
+      "hlasy": 1412
+     },
+     {
+      "meno": "Ing. Ján Pažický",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1359
+     },
+     {
+      "meno": "JUDr. Jozef Augustín, PhD., LL.M.",
+      "strany": "Kresťanskodemokratické hnutie",
+      "hlasy": 1282
+     },
+     {
+      "meno": "PaedDr. Ľudmila Chodelková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1254
+     },
+     {
+      "meno": "Ing. Jozef Juriš, MBA",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1241
+     },
+     {
+      "meno": "Mgr. Vladimír Randa",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1210
+     },
+     {
+      "meno": "Mgr. Branislav Delinčák",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1197
+     },
+     {
+      "meno": "Mgr. Denis Cáder",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1182
+     },
+     {
+      "meno": "Karol Čepec",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1088
+     },
+     {
+      "meno": "Ing. Igor Choma",
+      "strany": "SMER - sociálna demokracia",
+      "hlasy": 1050
+     },
+     {
+      "meno": "Mgr. Anton Trnovec",
+      "strany": "SMER - sociálna demokracia",
+      "hlasy": 1006
+     },
+     {
+      "meno": "Mgr. Zuzana Balogová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 989
+     },
+     {
+      "meno": "MUDr. Peter Durmis",
+      "strany": "nezávislý kandidát",
+      "hlasy": 983
+     },
+     {
+      "meno": "Ing. Martin Kapitulík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 967
+     },
+     {
+      "meno": "Ing. arch. Dušan Maňák",
+      "strany": "nezávislý kandidát",
+      "hlasy": 927
+     },
+     {
+      "meno": "Ing. Ľuboš Plešinger",
+      "strany": "nezávislý kandidát",
+      "hlasy": 846
+     },
+     {
+      "meno": "Mgr. Ing. Soňa Turčányiová",
+      "strany": "Progresívne Slovensko",
+      "hlasy": 833
+     },
+     {
+      "meno": "Mgr. Mgr. Peter Steinhübl",
+      "strany": "nezávislý kandidát",
+      "hlasy": 736
+     },
+     {
+      "meno": "Ing. Ján Ničík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 652
+     },
+     {
+      "meno": "Ing. Peter Čerňan",
+      "strany": "nezávislý kandidát",
+      "hlasy": 607
+     },
+     {
+      "meno": "Ing. Anton Kozlík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 587
+     }
+    ]
+   }
+  }
+ },
+ "praca": {
+  "obdobie": "2026-08",
+  "mesacne": {
+   "2026-08": {
+    "Žilina": {
+     "uoz": 1678.0,
+     "disp": 1558.0,
+     "pdu": 2.92
+    },
+    "Žilinský kraj": {
+     "uoz": 17168.0,
+     "disp": 15552.0,
+     "pdu": 3.4
+    },
+    "Slovenská republika": {
+     "uoz": 170121.0,
+     "disp": 145251.0,
+     "pdu": 4.04
+    }
+   }
+  }
+ },
+ "byty": {
+  "2001": {
+   "ZAC_BYT": 502,
+   "DOKONC_BYT": 245,
+   "ROZOST_BYT_KON": 1432
+  },
+  "2002": {
+   "ZAC_BYT": 301,
+   "DOKONC_BYT": 292,
+   "ROZOST_BYT_KON": 1441
+  },
+  "2003": {
+   "ZAC_BYT": 477,
+   "DOKONC_BYT": 442,
+   "ROZOST_BYT_KON": 1634
+  },
+  "2004": {
+   "ZAC_BYT": 572,
+   "DOKONC_BYT": 457,
+   "ROZOST_BYT_KON": 1833
+  },
+  "2005": {
+   "ZAC_BYT": 806,
+   "DOKONC_BYT": 437,
+   "ROZOST_BYT_KON": 2210
+  },
+  "2006": {
+   "ZAC_BYT": 833,
+   "DOKONC_BYT": 595,
+   "ROZOST_BYT_KON": 2454
+  },
+  "2007": {
+   "ZAC_BYT": 361,
+   "DOKONC_BYT": 480,
+   "ROZOST_BYT_KON": 2345
+  },
+  "2008": {
+   "ZAC_BYT": 804,
+   "DOKONC_BYT": 509,
+   "ROZOST_BYT_KON": 2653
+  },
+  "2009": {
+   "ZAC_BYT": 511,
+   "DOKONC_BYT": 718,
+   "ROZOST_BYT_KON": 2451
+  },
+  "2010": {
+   "ZAC_BYT": 434,
+   "DOKONC_BYT": 529,
+   "ROZOST_BYT_KON": 2356
+  },
+  "2011": {
+   "ZAC_BYT": 483,
+   "DOKONC_BYT": 559,
+   "ROZOST_BYT_KON": 2260
+  },
+  "2012": {
+   "ZAC_BYT": 370,
+   "DOKONC_BYT": 374,
+   "ROZOST_BYT_KON": 2257
+  },
+  "2013": {
+   "ZAC_BYT": 315,
+   "DOKONC_BYT": 347,
+   "ROZOST_BYT_KON": 2225
+  },
+  "2014": {
+   "ZAC_BYT": 504,
+   "DOKONC_BYT": 494,
+   "ROZOST_BYT_KON": 2241
+  },
+  "2015": {
+   "ZAC_BYT": 529,
+   "DOKONC_BYT": 436,
+   "ROZOST_BYT_KON": 2373
+  },
+  "2016": {
+   "ZAC_BYT": 506,
+   "DOKONC_BYT": 468,
+   "ROZOST_BYT_KON": 2296
+  },
+  "2017": {
+   "ZAC_BYT": 899,
+   "DOKONC_BYT": 561,
+   "ROZOST_BYT_KON": 2606
+  },
+  "2018": {
+   "ZAC_BYT": 678,
+   "DOKONC_BYT": 609,
+   "ROZOST_BYT_KON": 2673
+  },
+  "2019": {
+   "ZAC_BYT": 786,
+   "DOKONC_BYT": 533,
+   "ROZOST_BYT_KON": 2926
+  },
+  "2020": {
+   "ZAC_BYT": 647,
+   "DOKONC_BYT": 770,
+   "ROZOST_BYT_KON": 2790
+  },
+  "2021": {
+   "ZAC_BYT": 954,
+   "DOKONC_BYT": 737,
+   "ROZOST_BYT_KON": 3012
+  },
+  "2022": {
+   "ZAC_BYT": 702,
+   "DOKONC_BYT": 785,
+   "ROZOST_BYT_KON": 2895
+  },
+  "2023": {
+   "ZAC_BYT": 520,
+   "DOKONC_BYT": 577,
+   "ROZOST_BYT_KON": 2776
+  },
+  "2024": {
+   "ZAC_BYT": 628,
+   "DOKONC_BYT": 432,
+   "ROZOST_BYT_KON": 2975
+  },
+  "2025": {
+   "ZAC_BYT": 408,
+   "DOKONC_BYT": 626,
+   "ROZOST_BYT_KON": 2727
+  }
+ },
+ "ceny": {
+  "kraj": {
+   "2022-Q2": 9.9,
+   "2022-Q3": 14.7,
+   "2022-Q4": -5.7,
+   "2023-Q1": -2.2,
+   "2023-Q2": -16.3,
+   "2023-Q3": -13.6,
+   "2023-Q4": -2.5,
+   "2024-Q1": 2.3,
+   "2024-Q2": 16.9,
+   "2024-Q3": 21,
+   "2024-Q4": 20.3,
+   "2025-Q1": 15.9,
+   "2025-Q2": 9.1,
+   "2025-Q3": 8.2,
+   "2025-Q4": 9.7,
+   "2026-Q1": 7.1,
+   "2026-Q2": 11
+  },
+  "sr": {
+   "2022-Q1": 14.2,
+   "2022-Q2": 16.6,
+   "2022-Q3": 14.6,
+   "2022-Q4": 9.7,
+   "2023-Q1": 7.5,
+   "2023-Q2": -2.2,
+   "2023-Q3": -4.1,
+   "2023-Q4": -1.4,
+   "2024-Q1": -3,
+   "2024-Q2": 4,
+   "2024-Q3": 6.2,
+   "2024-Q4": 7.9,
+   "2025-Q1": 12.2,
+   "2025-Q2": 11.3,
+   "2025-Q3": 13.4,
+   "2025-Q4": 12.8,
+   "2026-Q1": 14.4,
+   "2026-Q2": 13.6
+  }
+ },
+ "mesto": {
+  "slug": "zilina",
+  "nazov": "Žilina",
+  "kraj": "Žilinský kraj",
+  "okresy": [
+   "Žilina"
+  ]
+ },
+ "zdroje": {
+  "obyvatelia": "ŠÚ SR – DATAcube om7101rr",
+  "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)",
+  "volby": "ŠÚ SR – volby.statistics.sk",
+  "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk",
+  "praca": "ÚPSVaR – mesačná štatistika",
+  "byty": "ŠÚ SR – DATAcube st3004rr",
+  "ceny": "ŠÚ SR – DATAcube sp3801qr"
+ }
+}

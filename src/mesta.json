@@ -1,0 +1,11 @@
+[
+  {"slug": "bratislava", "nazov": "Bratislava", "v": "v Bratislave", "kraj": "Bratislavský kraj", "nuts3": "SK010", "okresy": ["Bratislava I", "Bratislava II", "Bratislava III", "Bratislava IV", "Bratislava V"], "stred": [48.1486, 17.1077], "rieka": "Dunaj", "aktivne": true, "plne": true,
+   "popis": "17 mestských častí, 641 datasetov mesta, živé údaje"},
+  {"slug": "trnava", "nazov": "Trnava", "v": "v Trnave", "kraj": "Trnavský kraj", "nuts3": "SK021", "okresy": ["Trnava"], "stred": [48.3774, 17.5872], "aktivne": true},
+  {"slug": "nitra", "nazov": "Nitra", "v": "v Nitre", "kraj": "Nitriansky kraj", "nuts3": "SK023", "okresy": ["Nitra"], "stred": [48.3069, 18.0864], "rieka": "Nitra", "aktivne": true},
+  {"slug": "trencin", "nazov": "Trenčín", "v": "v Trenčíne", "kraj": "Trenčiansky kraj", "nuts3": "SK022", "okresy": ["Trenčín"], "stred": [48.8945, 18.0444], "rieka": "Váh", "aktivne": true},
+  {"slug": "zilina", "nazov": "Žilina", "v": "v Žiline", "kraj": "Žilinský kraj", "nuts3": "SK031", "okresy": ["Žilina"], "stred": [49.2231, 18.7394], "rieka": "Váh", "aktivne": true},
+  {"slug": "banska-bystrica", "nazov": "Banská Bystrica", "v": "v Banskej Bystrici", "kraj": "Banskobystrický kraj", "nuts3": "SK032", "okresy": ["Banská Bystrica"], "stred": [48.7363, 19.1462], "rieka": "Hron", "aktivne": true},
+  {"slug": "presov", "nazov": "Prešov", "v": "v Prešove", "kraj": "Prešovský kraj", "nuts3": "SK041", "okresy": ["Prešov"], "stred": [48.9984, 21.2339], "rieka": "Torysa", "aktivne": true},
+  {"slug": "kosice", "nazov": "Košice", "v": "v Košiciach", "kraj": "Košický kraj", "nuts3": "SK042", "okresy": ["Košice I", "Košice II", "Košice III", "Košice IV"], "stred": [48.7164, 21.2611], "rieka": "Hornád", "aktivne": true}
+]

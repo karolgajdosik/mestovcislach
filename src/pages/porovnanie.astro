@@ -1,0 +1,142 @@
+---
+// Porovnanie krajských miest – rovnaké ukazovatele z celoštátnych zdrojov (data/mesta/porovnanie.json).
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import { MESTA } from '../mesta';
+
+const subor = path.join(process.cwd(), 'data', 'mesta', 'porovnanie.json');
+const por: any[] = fs.existsSync(subor) ? JSON.parse(fs.readFileSync(subor, 'utf-8')).mesta : [];
+for (const p of por) p.byty_1000 = p.byty_10r != null && p.obyvatelia ? (1000 * p.byty_10r) / p.obyvatelia : null;
+
+const des = (n: number | null, k = 1) => (n == null ? '–' : n.toLocaleString('sk-SK', { minimumFractionDigits: k, maximumFractionDigits: k }));
+const fmt = (n: number | null) => (n == null ? '–' : Math.round(n).toLocaleString('sk-SK'));
+const znam = (n: number | null) => (n == null ? '–' : `${n > 0 ? '+' : n < 0 ? '−' : ''}${des(Math.abs(n))} %`);
+// kľúč, názov, formát, vysvetlivka
+const UKAZ: [string, string, (n: number | null) => string, string][] = [
+  ['obyvatelia', 'Obyvatelia', fmt, 'k 31. 12. posledného roka'],
+  ['zmena10', 'Zmena za 10 rokov', znam, 'počet obyvateľov'],
+  ['seniori', 'Seniori 65+', (n) => `${des(n)} %`, 'sčítanie 2021'],
+  ['deti', 'Deti do 14', (n) => `${des(n)} %`, 'sčítanie 2021'],
+  ['vs', 'Vysokoškoláci', (n) => `${des(n)} %`, 'všetkých obyvateľov, sčítanie 2021'],
+  ['pdu', 'Nezamestnanosť', (n) => `${des(n, 2)} %`, 'PDU v okrese/okresoch mesta'],
+  ['ucast_komunalne', 'Účasť v komunálnych voľbách', (n) => `${des(n)} %`, 'voľba primátora 2022'],
+  ['byty_1000', 'Nové byty ročne', (n) => des(n), 'dokončené byty na 1 000 obyvateľov, priemer 10 rokov (okres)'],
+  ['ceny_kraj', 'Ceny bývania za rok', znam, 'medziročná zmena v kraji'],
+];
+const odkaz = (slug: string) => (MESTA.find((m) => m.slug === slug)?.aktivne ? `/${slug}` : null);
+---
+<Base title="Porovnanie krajských miest – mestovcislach.sk" description="Bratislava, Košice, Prešov, Žilina, Banská Bystrica, Nitra, Trnava a Trenčín vedľa seba: obyvatelia, vek, vzdelanie, nezamestnanosť, voľby, výstavba a ceny bývania.">
+  <section class="hero">
+    <p class="kicker">Porovnanie</p>
+    <h1>Krajské mestá vedľa seba</h1>
+    <p class="lead">Osem krajských miest, rovnaké ukazovatele z rovnakých zdrojov. Vyberte ukazovateľ alebo zoraďte tabuľku kliknutím na stĺpec.</p>
+  </section>
+
+  {por.length ? (
+    <>
+      <section class="card" id="graf">
+        <div class="volba" role="group" aria-label="Ukazovateľ v grafe">
+          {UKAZ.map(([k, n], i) => <button type="button" data-k={k} aria-pressed={i === 0 ? 'true' : 'false'}>{n}</button>)}
+        </div>
+        <p class="pozn" id="vysvetlivka">{UKAZ[0][3]}</p>
+        <div class="graf"><canvas id="g-por" data-por={JSON.stringify(por)} data-ukaz={JSON.stringify(UKAZ.map(([k, n, , v]) => [k, n, v]))} role="img" aria-label="Porovnanie krajských miest podľa vybraného ukazovateľa"></canvas></div>
+      </section>
+
+      <section class="card">
+        <h2>Všetky ukazovatele</h2>
+        <div class="tabulka-obal">
+          <table class="porovnanie">
+            <thead><tr><th data-k="0">Mesto</th>{UKAZ.map(([, n], i) => <th class="num" data-k={i + 1} title={UKAZ[i][3]}>{n}</th>)}</tr></thead>
+            <tbody>
+              {por.map((p) => (
+                <tr id={p.slug}>
+                  <td data-v={p.nazov}>{odkaz(p.slug) ? <a href={odkaz(p.slug)} translate="no">{p.nazov}</a> : <span translate="no">{p.nazov}</span>}</td>
+                  {UKAZ.map(([k, , f]) => <td class="num" data-v={p[k] ?? ''}>{f(p[k])}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="zdroj">Zdroje: ŠÚ SR (DATAcube, sčítanie 2021 – STATdata, index cien sp3801qr, byty st3004rr), ÚPSVaR, volby.statistics.sk. Nezamestnanosť, byty a ceny sú za okres alebo kraj – zahŕňajú aj obce okolo mesta. Bratislava a Košice sú súčtom mestských častí.</p>
+      </section>
+    </>
+  ) : <p class="card">Údaje sa práve zbierajú.</p>}
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+  const el = document.getElementById('g-por') as HTMLCanvasElement | null;
+  if (el) {
+    const por: any[] = JSON.parse(el.dataset.por!);
+    const ukaz: [string, string, string][] = JSON.parse(el.dataset.ukaz!);
+    const css = getComputedStyle(document.documentElement);
+    const akc = css.getPropertyValue('--accent').trim();
+    const muted = css.getPropertyValue('--muted').trim();
+    const ciel = location.hash.slice(1);
+    let graf: Chart | null = null;
+    const kresli = (k: string) => {
+      const zor = por.filter((p) => p[k] != null).sort((a, b) => b[k] - a[k]);
+      const [, nazov, vysv] = ukaz.find((u) => u[0] === k)!;
+      document.getElementById('vysvetlivka')!.textContent = vysv;
+      graf?.destroy();
+      graf = new Chart(el, {
+        type: 'bar',
+        data: { labels: zor.map((p) => p.nazov), datasets: [{ label: nazov, data: zor.map((p) => p[k]), backgroundColor: zor.map((p) => (p.slug === ciel ? akc : muted)), borderRadius: 4 }] },
+        options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ` ${c.parsed.x.toLocaleString('sk-SK')}` } } },
+          scales: { x: { ticks: { color: muted } }, y: { grid: { display: false }, ticks: { color: css.getPropertyValue('--text').trim(), font: { weight: 'bold' } } } } },
+      });
+    };
+    document.querySelectorAll<HTMLButtonElement>('.volba button').forEach((b) => b.addEventListener('click', () => {
+      document.querySelectorAll('.volba button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      kresli(b.dataset.k!);
+    }));
+    kresli(ukaz[0][0]);
+  }
+  // zoradenie tabuľky
+  const tab = document.querySelector<HTMLTableElement>('table.porovnanie');
+  if (tab) {
+    tab.querySelectorAll<HTMLTableCellElement>('th').forEach((th) => {
+      th.tabIndex = 0;
+      const zorad = () => {
+        const i = Number(th.dataset.k);
+        const zost = th.getAttribute('aria-sort') !== 'descending';
+        tab.querySelectorAll('th').forEach((x) => x.removeAttribute('aria-sort'));
+        th.setAttribute('aria-sort', zost ? 'descending' : 'ascending');
+        const riadky = [...tab.tBodies[0].rows];
+        riadky.sort((a, b) => {
+          const va = a.cells[i].dataset.v ?? '', vb = b.cells[i].dataset.v ?? '';
+          const na = Number(va), nb = Number(vb);
+          const r = i === 0 ? va.localeCompare(vb, 'sk') : (va === '' ? -Infinity : na) - (vb === '' ? -Infinity : nb);
+          return zost ? -r : r;
+        });
+        riadky.forEach((r) => tab.tBodies[0].appendChild(r));
+      };
+      th.addEventListener('click', zorad);
+      th.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); zorad(); } });
+    });
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 20px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  section.card { margin-top: 16px; }
+  .card h2 { font-size: 1.2rem; margin: 0 0 8px; }
+  .volba { display: flex; flex-wrap: wrap; gap: 6px; }
+  .volba button { font: inherit; font-size: 0.85rem; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; }
+  .volba button[aria-pressed='true'] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .pozn { font-size: 0.85rem; color: var(--muted); margin: 10px 0; }
+  .graf { position: relative; height: 340px; }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; }
+  .porovnanie th { cursor: pointer; user-select: none; vertical-align: bottom; font-size: 0.85rem; line-height: 1.25; min-width: 5.5em; }
+  .porovnanie th[aria-sort='ascending']::after { content: ' ▲'; font-size: 0.7em; }
+  .porovnanie th[aria-sort='descending']::after { content: ' ▼'; font-size: 0.7em; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.num { white-space: nowrap; }
+  tr:target td { background: var(--accent-soft); }
+  .zdroj { font-size: 0.8rem; color: var(--muted); margin: 12px 0 0; }
+</style>

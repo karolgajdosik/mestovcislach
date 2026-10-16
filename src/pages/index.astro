@@ -2,11 +2,14 @@
 // Úvod: výber mesta. Každé mesto má vlastné stránky pod /<mesto>/.
 import Base from '../layouts/Base.astro';
 import { MESTA } from '../mesta';
-import obyv from '../../data/obyvatelstvo-bratislava.json';
+import fs from 'node:fs';
+import path from 'node:path';
 
-const rokBa = obyv.mesto ? Object.keys((obyv.mesto as any).roky).sort().pop()! : '';
-const pocetBa = rokBa ? (obyv.mesto as any).roky[rokBa] : null;
+const subor = path.join(process.cwd(), 'data', 'mesta', 'porovnanie.json');
+const por: any[] = fs.existsSync(subor) ? JSON.parse(fs.readFileSync(subor, 'utf-8')).mesta : [];
+const udaje = (slug: string) => por.find((p) => p.slug === slug);
 const fmt = (n: number) => n.toLocaleString('sk-SK');
+const znam = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} %`;
 const aktivne = MESTA.filter((m) => m.aktivne);
 const pripravujeme = MESTA.filter((m) => !m.aktivne);
 ---
@@ -20,11 +23,11 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
   <ul class="mesta">
     {aktivne.map((m) => (
       <li>
-        <a class="mesto card aktivne" href={`/${m.slug}`}>
+        <a class={`mesto card aktivne${m.plne ? ' plne' : ''}`} href={`/${m.slug}`}>
           <span class="m-kraj">{m.kraj}</span>
           <span class="m-nazov" translate="no">{m.nazov}</span>
-          {m.slug === 'bratislava' && pocetBa && <span class="m-cislo"><strong>{fmt(pocetBa)}</strong> obyvateľov ({rokBa})</span>}
-          {m.popis && <span class="m-popis">{m.popis}</span>}
+          {udaje(m.slug) && <span class="m-cislo"><strong>{fmt(udaje(m.slug).obyvatelia)}</strong> obyvateľov · {znam(udaje(m.slug).zmena10)} za 10 rokov</span>}
+          <span class="m-popis">{m.popis ?? 'Obyvatelia, voľby, práca, bývanie a stavby z celoštátnych zdrojov'}</span>
           <span class="m-dalej">Otvoriť <span aria-hidden="true">→</span></span>
         </a>
       </li>
@@ -40,9 +43,11 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
     ))}
   </ul>
 
+  <a class="card porovnaj" href="/porovnanie"><strong>Porovnanie krajských miest</strong><span>Obyvatelia, vek, vzdelanie, nezamestnanosť, účasť vo voľbách, výstavba a ceny bývania vedľa seba</span><span class="m-dalej">Porovnať <span aria-hidden="true">→</span></span></a>
+
   <section class="card info">
     <h2>Ako to funguje</h2>
-    <p>Údaje berieme z verejných zdrojov – zo Štatistického úradu, z Centrálneho registra zmlúv, z Enviroportálu, od SHMÚ, z otvorených dát miest a ďalších. Pri každom čísle je uvedený zdroj. Postupne pribúdajú všetky krajské mestá; pri každom uvidíte, ktoré údaje sú pre neho dostupné.</p>
+    <p>Údaje berieme z verejných zdrojov – zo Štatistického úradu, z Centrálneho registra zmlúv, z Enviroportálu, od SHMÚ, z otvorených dát miest a ďalších. Pri každom čísle je uvedený zdroj. Bratislava má najpodrobnejšie údaje vďaka bohatým otvoreným dátam mesta; pri ostatných krajských mestách sú zatiaľ celoštátne zdroje a mestské údaje budú pribúdať.</p>
   </section>
 </Base>
 
@@ -53,7 +58,14 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
   .lead { color: var(--muted); font-size: 1.15rem; max-width: 40em; margin: 0; }
   .mesta { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
   .mesto { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 18px; text-decoration: none; color: var(--text); }
-  .mesto.aktivne { border: 2px solid var(--accent); transition: transform 0.15s; }
+  .mesto.aktivne { transition: transform 0.15s, border-color 0.15s; }
+  .mesto.aktivne:hover { border-color: var(--accent); }
+  .mesto.plne { border: 2px solid var(--accent); }
+  .porovnaj { display: flex; flex-direction: column; gap: 4px; margin-top: 14px; text-decoration: none; color: var(--text); padding: 18px; }
+  .porovnaj strong { font-size: 1.2rem; }
+  .porovnaj span { color: var(--muted); }
+  .porovnaj .m-dalej { color: var(--accent); }
+  .porovnaj:hover { border-color: var(--accent); }
   .mesto.aktivne:hover { transform: translateY(-2px); }
   @media (prefers-reduced-motion: reduce) { .mesto.aktivne, .mesto.aktivne:hover { transition: none; transform: none; } }
   .mesto[aria-disabled='true'] { color: var(--muted); }

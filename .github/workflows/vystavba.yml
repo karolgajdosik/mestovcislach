@@ -1,4 +1,4 @@
-name: Výstavba a bývanie
+name: Výstavba, bývanie a krajské mestá
 
 # Denne: zámery v posudzovaní EIA/SEA (Enviroportál) a údaje ŠÚ SR o cenách a výstavbe bytov.
 on:
@@ -10,6 +10,8 @@ on:
     paths:
       - "scripts/zber_eia.py"
       - "scripts/zber_byvanie.py"
+      - "scripts/zber_mesta.py"
+      - "src/mesta.json"
       - ".github/workflows/vystavba.yml"
 
 permissions:
@@ -22,7 +24,7 @@ concurrency:
 jobs:
   vystavba:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v5
 
@@ -41,6 +43,10 @@ jobs:
         if: success() || failure()
         run: python scripts/zber_byvanie.py
 
+      - name: Krajské mestá (celoštátne zdroje)
+        if: success() || failure()
+        run: python scripts/zber_mesta.py
+
       - name: Uložiť zmeny v dátach
         if: success() || failure()
         run: |
@@ -50,7 +56,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Žiadne nové dáta."
           else
-            git commit -m "Dáta: výstavba a bývanie $(date -u +%Y-%m-%d)"
+            git commit -m "Dáta: výstavba, bývanie a mestá $(date -u +%Y-%m-%d)"
             for i in 1 2 3 4 5; do git pull --rebase -X theirs -q && git push && break; sleep $((i * 5)); done
             git fetch -q origin main && git diff --quiet HEAD origin/main -- data public/data || { echo "::error::Push dát zlyhal"; exit 1; }
           fi

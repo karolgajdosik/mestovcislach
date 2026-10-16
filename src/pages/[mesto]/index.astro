@@ -1,0 +1,280 @@
+---
+// Prehľad krajského mesta z celoštátnych zdrojov (data/mesta/<slug>.json, scripts/zber_mesta.py).
+// Bratislava má vlastné, podrobnejšie stránky v src/pages/bratislava/.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+import { MESTA, type Mesto } from '../../mesta';
+import { KATEGORIE_EIA } from '../../lib/eia';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && !m.plne).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const citaj = (...c: string[]) => {
+  const p = path.join(process.cwd(), ...c);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+};
+const d = citaj('data', 'mesta', `${m.slug}.json`) ?? {};
+const por = citaj('data', 'mesta', 'porovnanie.json')?.mesta ?? [];
+const eia = citaj('public', 'data', 'mesta', `eia-${m.slug}.json`);
+
+const fmt = (n: number | null | undefined) => (n == null ? '–' : Math.round(n).toLocaleString('sk-SK'));
+const des = (n: number | null | undefined, k = 1) => (n == null ? '–' : n.toLocaleString('sk-SK', { minimumFractionDigits: k, maximumFractionDigits: k }));
+const znam = (n: number | null | undefined) => (n == null ? '–' : `${n > 0 ? '+' : n < 0 ? '−' : ''}${des(Math.abs(n))} %`);
+const datum = (x?: string) => (x ? new Date(x).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric', year: 'numeric' }) : '');
+
+// obyvatelia
+const roky: Record<string, number> = d.obyvatelia?.roky ?? {};
+const rokyZ = Object.keys(roky).sort();
+const posl = rokyZ[rokyZ.length - 1];
+const ja = por.find((p: any) => p.slug === m.slug) ?? {};
+const casti = Object.entries<Record<string, number>>(d.obyvatelia?.casti ?? {})
+  .map(([n, r]) => ({ n, v: r[posl], z: r[String(Number(posl) - 10)] ? 100 * (r[posl] / r[String(Number(posl) - 10)] - 1) : null }))
+  .filter((c) => c.v).sort((a, b) => b.v - a.v);
+// poradie medzi krajskými mestami
+const poradie = (k: string, vysoko = true) => {
+  const h = por.filter((p: any) => p[k] != null).sort((a: any, b: any) => (vysoko ? b[k] - a[k] : a[k] - b[k]));
+  const i = h.findIndex((p: any) => p.slug === m.slug);
+  return i < 0 ? '' : `${i + 1}. z ${h.length}`;
+};
+
+// sčítanie
+const sc = d.scitanie ?? {};
+const podiely = (t: Record<string, number> | undefined, n = 6, bez: RegExp = /^Spolu$/) => {
+  if (!t) return [];
+  const spolu = t.Spolu ?? Object.entries(t).filter(([k]) => k !== 'Spolu').reduce((s, [, v]) => s + v, 0);
+  return Object.entries(t).filter(([k]) => !bez.test(k)).sort((a, b) => b[1] - a[1]).slice(0, n).map(([k, v]) => [k.replace(/ \/ .*$/, '').replace(/ v Slovenskej republike.*$/, ''), (100 * v) / spolu] as [string, number]);
+};
+const vek = podiely(sc.vek, 3, /^(Spolu|Neznáme)$/);
+const vzdelanie = podiely(sc.vzdelanie, 6, /^(Spolu|Bez ukončeného vzdelania - osoby vo veku 0-14 rokov)$/);
+const narodnost = podiely(sc.narodnost, 5);
+const nabozenstvo = podiely(sc.nabozenstvo, 5);
+
+// voľby
+const komRoky = Object.keys(d.komunalne ?? {}).sort();
+const kom = komRoky.length ? d.komunalne[komRoky[komRoky.length - 1]] : null;
+const komRok = komRoky[komRoky.length - 1];
+const nrsr = d.volby?.nrsr2023;
+const ep = d.volby?.ep2024;
+
+// práca a bývanie
+const praca = d.praca?.mesacne ?? {};
+const mesiace = Object.keys(praca).sort();
+const pracaPosl = mesiace.length ? praca[mesiace[mesiace.length - 1]] : null;
+const byty = d.byty ?? {};
+const bytyRoky = Object.keys(byty).sort();
+const ceny = d.ceny?.kraj ?? {};
+const cenyQ = Object.keys(ceny).sort();
+const cenyPosl = cenyQ[cenyQ.length - 1];
+
+// čo sa stavia
+const zamery: any[] = eia?.zamery ?? [];
+const aktivne = zamery.filter((z) => !z.ukoncene);
+const zobrazit = [...aktivne, ...zamery.filter((z) => z.ukoncene)].slice(0, 12);
+const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(mm)}/${r}`; };
+---
+<Base title={`${m.nazov} v číslach – mestovcislach.sk`} description={`${m.nazov}: obyvatelia, sčítanie 2021, voľby, nezamestnanosť, výstavba bytov, ceny bývania a stavebné zámery z otvorených dát.`}>
+  <section class="hero">
+    <p class="kicker">{m.kraj}</p>
+    <h1><span translate="no">{m.nazov}</span> v číslach</h1>
+    <p class="lead">Údaje z celoštátnych zdrojov – Štatistického úradu, volieb, úradov práce a Enviroportálu. Podrobnejšie mestské dáta (rozpočet, doprava, mapa) pribudnú podľa toho, čo mesto zverejňuje.</p>
+  </section>
+
+  <div class="kpis">
+    <div class="card kpi"><p class="label">Obyvatelia {posl}</p><p class="value">{fmt(roky[posl])}</p><p class="delta">{znam(ja.zmena10)} za 10 rokov · {poradie('obyvatelia')} krajských miest</p></div>
+    <div class="card kpi"><p class="label">Seniori 65+</p><p class="value">{des(ja.seniori)} %</p><p class="delta">sčítanie 2021 · {poradie('seniori')} najstaršie</p></div>
+    <div class="card kpi"><p class="label">Vysokoškoláci</p><p class="value">{des(ja.vs)} %</p><p class="delta">všetkých obyvateľov · {poradie('vs')} najvzdelanejšie</p></div>
+    <div class="card kpi"><p class="label">Nezamestnanosť (PDU)</p><p class="value">{des(ja.pdu, 2)} %</p><p class="delta">okres{m.okresy.length > 1 ? 'y' : ''} {m.okresy.join(', ')} · {mesiace.length ? mesiac(mesiace[mesiace.length - 1]) : ''}</p></div>
+  </div>
+
+  <section class="card" id="obyvatelia">
+    <h2>Obyvatelia</h2>
+    <p class="pozn">Počet obyvateľov k 31. 12. podľa Štatistického úradu SR.</p>
+    <div class="graf"><canvas id="g-obyv" data-rad={JSON.stringify(rokyZ.filter((r) => Number(r) >= 1996).map((r) => [r, roky[r]]))} role="img" aria-label={`Vývoj počtu obyvateľov – ${m.nazov}`}></canvas></div>
+    {casti.length > 0 && (
+      <>
+        <h3>Mestské časti ({posl})</h3>
+        <div class="tabulka-obal">
+          <table>
+            <thead><tr><th>Mestská časť</th><th class="num">Obyvatelia</th><th class="num">Zmena za 10 rokov</th></tr></thead>
+            <tbody>{casti.map((c) => <tr><td translate="no">{c.n}</td><td class="num">{fmt(c.v)}</td><td class="num">{znam(c.z)}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </>
+    )}
+    <p class="zdroj">Zdroj: ŠÚ SR – DATAcube (om7101rr).</p>
+  </section>
+
+  {Object.keys(sc).length > 0 && (
+    <section class="card" id="scitanie">
+      <h2>Kto tu žije</h2>
+      <p class="pozn">Sčítanie obyvateľov, domov a bytov 2021.</p>
+      <div class="stlpce">
+        {[['Vek', vek], ['Najvyššie vzdelanie', vzdelanie], ['Národnosť', narodnost], ['Náboženstvo', nabozenstvo]].filter(([, v]) => (v as any[]).length).map(([n, v]) => (
+          <div>
+            <h3>{n}</h3>
+            <ul class="pruhy">{(v as [string, number][]).map(([k, p]) => <li><span class="p-n">{k}</span><span class="p-h">{des(p)} %</span><span class="p-p" aria-hidden="true"><i style={`width:${Math.min(100, p)}%`}></i></span></li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <p class="zdroj">Zdroj: ŠÚ SR – Sčítanie obyvateľov, domov a bytov 2021 (STATdata), CC BY 4.0.</p>
+    </section>
+  )}
+
+  <section class="card" id="volby">
+    <h2>Voľby</h2>
+    {kom && (
+      <div class="blok">
+        <h3>Voľba primátora {komRok}</h3>
+        <p class="pozn">Účasť {des(kom.ucast?.ucast_pct)} % · {fmt(kom.ucast?.volili)} voličov{ja.ucast_komunalne != null && ` · ${poradie('ucast_komunalne')} krajských miest podľa účasti`}</p>
+        <ul class="pruhy kandidati">{kom.primator.slice(0, 6).map((k: any) => (
+          <li class={k.zvoleny ? 'zvoleny' : ''}><span class="p-n"><strong translate="no">{k.meno}</strong>{k.zvoleny && <em> zvolený</em>}<small translate="no">{k.strany.length > 90 ? k.strany.slice(0, 88) + '…' : k.strany}</small></span><span class="p-h">{des(k.podiel)} %</span><span class="p-p" aria-hidden="true"><i style={`width:${k.podiel}%`}></i></span></li>
+        ))}</ul>
+        <h3>Mestské zastupiteľstvo – {kom.zastupitelstvo.poslancov} poslancov</h3>
+        <ul class="mandaty">{kom.zastupitelstvo.mandaty.map((x: any) => <li><b>{x.mandaty}</b> <span translate="no">{x.strany.length > 110 ? x.strany.slice(0, 108) + '…' : x.strany}</span></li>)}</ul>
+      </div>
+    )}
+    <div class="dva">
+      {[nrsr, ep].filter(Boolean).map((v: any) => (
+        <div class="blok">
+          <h3>{v.nazov}</h3>
+          <p class="pozn">Účasť {des(v.ucast)} % (Slovensko {des(v.ucast_sr)} %)</p>
+          <ul class="pruhy">{v.strany.slice(0, 6).map((s: any) => <li><span class="p-n" translate="no">{s.nazov}</span><span class="p-h">{des(s.podiel)} %</span><span class="p-p" aria-hidden="true"><i style={`width:${s.podiel * 2}%`}></i></span></li>)}</ul>
+        </div>
+      ))}
+    </div>
+    <p class="zdroj">Zdroj: Štatistický úrad SR – volby.statistics.sk. Pri kandidátoch uvádzame len meno, stranu a hlasy.</p>
+  </section>
+
+  <section class="card" id="praca">
+    <h2>Práca a bývanie</h2>
+    <div class="dva">
+      {pracaPosl && (
+        <div class="blok">
+          <h3>Nezamestnanosť – {mesiac(mesiace[mesiace.length - 1])}</h3>
+          <p class="pozn">Podiel disponibilných uchádzačov o zamestnanie na obyvateľoch v produktívnom veku (PDU). Údaje sú za okres, teda aj s obcami okolo mesta.</p>
+          <ul class="pruhy">{Object.entries<any>(pracaPosl).map(([o, v]) => <li><span class="p-n">{/kraj|republika|Slovensko/i.test(o) ? o : `okres ${o}`}<small>{fmt(v.uoz)} uchádzačov</small></span><span class="p-h">{des(v.pdu, 2)} %</span><span class="p-p" aria-hidden="true"><i style={`width:${Math.min(100, v.pdu * 10)}%`}></i></span></li>)}</ul>
+          <p class="zdroj">Zdroj: ÚPSVaR – mesačná štatistika.</p>
+        </div>
+      )}
+      {cenyPosl && (
+        <div class="blok">
+          <h3>Ceny bývania v kraji</h3>
+          <p class="pozn">Medziročná zmena cien predaných bytov a domov – {m.kraj} ({cenyPosl.replace(/^(\d{4})-Q(\d)$/, '$2. Q $1')}: <strong>{znam(ceny[cenyPosl])}</strong>, Slovensko {znam(d.ceny?.sr?.[cenyPosl])}).</p>
+          <div class="graf maly"><canvas id="g-ceny" data-rad={JSON.stringify(cenyQ.map((q) => [q.replace(/^(\d{4})-Q(\d)$/, '$2Q $1'), ceny[q], d.ceny?.sr?.[q] ?? null]))} role="img" aria-label="Medziročná zmena cien bývania v kraji a na Slovensku"></canvas></div>
+          <p class="zdroj">Zdroj: ŠÚ SR – index realizačných cien nehnuteľností (sp3801qr). Ceny za mesto ani €/m² nie sú v otvorených dátach.</p>
+        </div>
+      )}
+    </div>
+    {bytyRoky.length > 0 && (
+      <div class="blok">
+        <h3>Koľko bytov pribúda</h3>
+        <p class="pozn">Dokončené a začaté byty v okres{m.okresy.length > 1 ? 'och' : 'e'} {m.okresy.join(', ')}. Priemer za 10 rokov: {fmt(ja.byty_10r)} dokončených bytov ročne. Rok 2025 je z nového registra a nemusí byť porovnateľný.</p>
+        <div class="graf"><canvas id="g-byty" data-rad={JSON.stringify(bytyRoky.map((r) => [r, byty[r].DOKONC_BYT ?? null, byty[r].ZAC_BYT ?? null]))} role="img" aria-label="Dokončené a začaté byty podľa rokov"></canvas></div>
+        <p class="zdroj">Zdroj: ŠÚ SR – DATAcube (st3004rr).</p>
+      </div>
+    )}
+  </section>
+
+  <section class="card" id="stavby">
+    <h2>Čo sa stavia</h2>
+    {zamery.length ? (
+      <>
+        <p class="pozn">Väčšie stavby a plány v posudzovaní vplyvov na životné prostredie (EIA/SEA). Práve sa posudzuje <strong>{aktivne.length}</strong> z {zamery.length} zámerov od roku 2000.</p>
+        <ol class="zamery">{zobrazit.map((z) => (
+          <li>
+            <span class="z-hlava"><span class="z-kat" style={`--f:${(KATEGORIE_EIA[z.kat] ?? KATEGORIE_EIA.ine)[1]}`}>{(KATEGORIE_EIA[z.kat] ?? KATEGORIE_EIA.ine)[0]}</span><span class={`z-stav ${z.ukoncene ? 'ukoncene' : 'aktivne'}`}>{z.ukoncene ? 'ukončené' : 'posudzuje sa'}</span></span>
+            <a href={`${eia.web}${z.seo}`} rel="noopener" translate="no">{z.nazov}</a>
+            <small>{z.stav} · zmena {datum(z.zmena)}{z.mc?.length ? ` · ${z.mc.join(', ')}` : ''}{z.navrhovatel ? ` · ${z.navrhovatel}` : ''}</small>
+          </li>
+        ))}</ol>
+        <p class="zdroj">Zdroj: Enviroportál MŽP SR – informačný systém EIA/SEA, aktualizované denne. Navrhovateľov uvádzame len pri firmách a inštitúciách.</p>
+      </>
+    ) : <p class="pozn">Zámery z Enviroportálu sa práve zbierajú – pribudnú do jedného dňa.</p>}
+  </section>
+
+  <section class="card porovnaj">
+    <h2>Ako si <span translate="no">{m.nazov}</span> stojí medzi krajskými mestami</h2>
+    <p><a class="tlacidlo" href={`/porovnanie#${m.slug}`}>Porovnať všetkých 8 krajských miest</a></p>
+  </section>
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+  const css = getComputedStyle(document.documentElement);
+  const muted = css.getPropertyValue('--muted').trim();
+  const akc = css.getPropertyValue('--accent').trim();
+  const modra = document.documentElement.dataset.tema === 'tmava' ? '#7cc4ff' : '#1f6fd1';
+  const fmt = (n: number) => n.toLocaleString('sk-SK');
+  const osi = { x: { grid: { display: false }, ticks: { color: muted, maxRotation: 0, autoSkip: true } }, y: { ticks: { color: muted } } };
+  const obyv = document.getElementById('g-obyv') as HTMLCanvasElement | null;
+  if (obyv) {
+    const rad: [string, number][] = JSON.parse(obyv.dataset.rad!);
+    new Chart(obyv, { type: 'line', data: { labels: rad.map((r) => r[0]), datasets: [{ label: 'Obyvatelia', data: rad.map((r) => r[1]), borderColor: akc, backgroundColor: akc, pointRadius: 0, borderWidth: 2.5, tension: 0.2 }] },
+      options: { maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ` ${fmt(c.parsed.y)} obyvateľov` } } }, scales: osi } });
+  }
+  const ceny = document.getElementById('g-ceny') as HTMLCanvasElement | null;
+  if (ceny) {
+    const rad: [string, number, number | null][] = JSON.parse(ceny.dataset.rad!);
+    new Chart(ceny, { type: 'line', data: { labels: rad.map((r) => r[0]), datasets: [
+      { label: 'Kraj', data: rad.map((r) => r[1]), borderColor: akc, backgroundColor: akc, pointRadius: 0, borderWidth: 2.5, tension: 0.25 },
+      { label: 'Slovensko', data: rad.map((r) => r[2]), borderColor: muted, backgroundColor: muted, pointRadius: 0, borderWidth: 2, borderDash: [5, 4], tension: 0.25 },
+    ] }, options: { maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${c.parsed.y > 0 ? '+' : ''}${c.parsed.y.toLocaleString('sk-SK')} %` } } },
+      scales: { ...osi, y: { ticks: { color: muted, callback: (v) => `${v} %` } } } } });
+  }
+  const byty = document.getElementById('g-byty') as HTMLCanvasElement | null;
+  if (byty) {
+    const rad: [string, number | null, number | null][] = JSON.parse(byty.dataset.rad!);
+    new Chart(byty, { type: 'bar', data: { labels: rad.map((r) => r[0]), datasets: [
+      { label: 'Dokončené byty', data: rad.map((r) => r[1]), backgroundColor: akc },
+      { label: 'Začaté byty', data: rad.map((r) => r[2]), backgroundColor: modra },
+    ] }, options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } }, scales: osi } });
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 20px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 44em; margin: 0; }
+  section { scroll-margin-top: calc(var(--vyska-hlavicky) + 12px); }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 6px 0; }
+  .kpi .delta { color: var(--muted); font-size: 0.8rem; margin: 0; }
+  section.card { margin-top: 16px; }
+  .card h2 { font-size: 1.3rem; margin: 0 0 6px; }
+  .card h3 { font-size: 1rem; margin: 18px 0 6px; }
+  .pozn { font-size: 0.85rem; color: var(--muted); margin: 0 0 10px; max-width: 54em; }
+  .graf { position: relative; height: 280px; }
+  .graf.maly { height: 220px; }
+  .dva { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 8px 28px; }
+  .stlpce { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px 28px; }
+  .pruhy { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .pruhy li { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; font-size: 0.88rem; }
+  .p-n small { display: block; color: var(--muted); font-size: 0.75rem; }
+  .p-n em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--na-akcente); background: var(--accent); padding: 0 6px; border-radius: 999px; margin-left: 6px; }
+  .p-h { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .p-p { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+  .p-p i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+  .kandidati li:not(.zvoleny) .p-p i { background: var(--muted); }
+  .mandaty { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; font-size: 0.88rem; }
+  .mandaty b { display: inline-block; min-width: 2em; }
+  .zamery { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .zamery li { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
+  .zamery a { font-weight: 700; color: var(--text); }
+  .zamery small { color: var(--muted); font-size: 0.8rem; }
+  .z-hlava { display: flex; gap: 6px; align-items: center; }
+  .z-kat { font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; }
+  .z-kat::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--f); }
+  .z-stav { font-size: 0.72rem; padding: 1px 8px; border-radius: 999px; margin-left: auto; }
+  .z-stav.aktivne { background: var(--accent); color: var(--na-akcente); font-weight: 700; }
+  .z-stav.ukoncene { background: var(--line); color: var(--muted); }
+  .tabulka-obal { overflow-x: auto; }
+  table { width: 100%; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .zdroj { font-size: 0.8rem; color: var(--muted); margin: 12px 0 0; }
+  .tlacidlo { display: inline-block; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: var(--na-akcente); font-weight: 700; text-decoration: none; }
+  .porovnaj p { margin: 8px 0 0; }
+</style>

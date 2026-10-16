@@ -66,6 +66,10 @@ const BEZ_MIEST = new Set(['Debarierizované chodníky', 'Fixpointy na zber inje
 
 export async function GET() {
   const polozky: (string | number)[][] = [];
+  // krajské mestá a porovnanie
+  const mesta = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'mesta.json'), 'utf-8'));
+  for (const m of mesta.filter((x: any) => x.aktivne && x.slug !== 'bratislava')) polozky.push(['Stránky', m.nazov, `${m.kraj} – obyvatelia, voľby, práca, bývanie, stavby`, `/${m.slug}`, `mesto krajské ${m.v}`]);
+  polozky.push(['Stránky', 'Porovnanie krajských miest', 'obyvatelia, vek, vzdelanie, nezamestnanosť, voľby, byty, ceny', '/porovnanie', 'porovnanie mestá krajské rebríček']);
   for (const [u, t, s, w] of SEKCIE) polozky.push(['Stránky', t, s, u, w]);
 
   // Mestské časti

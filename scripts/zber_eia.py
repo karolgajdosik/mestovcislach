@@ -23,11 +23,14 @@ import time
 from datetime import date, datetime, timedelta
 from html import unescape
 
-from spolocne import DATA, VEREJNE, adresy_mv, bez_diakritiky, hranice, norm_mc, norm_ulica, s, spusti, zapis_ak_zmena
+from spolocne import DATA, KOREN, VEREJNE, adresy_mv, bez_diakritiky, hranice, norm_mc, norm_ulica, s, spusti, zapis_ak_zmena
 
 API = "https://www.enviroportal.sk/api/eia_projects"
 WEB = "https://www.enviroportal.sk/eia/detail/"
 ULOZISKO = DATA / "eia-bratislava.json"
+# ostatné krajské mestá (src/mesta.json) – samostatné úložisko, poloha = stred mesta
+ULOZISKO_MESTA = DATA / "eia-mesta.json"
+DALSIE_MESTA = [m for m in json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8")) if m["slug"] != "bratislava"]
 NA_STRANU = 100
 
 PRAVNA_FORMA = re.compile(
@@ -63,6 +66,15 @@ def ciste(t: str | None) -> str:
 
 def je_bratislava(z: dict) -> bool:
     return (z.get("okres") or "").startswith("Bratislava") or (z.get("obec") or "").startswith("Bratislava")
+
+
+def ine_mesto(z: dict) -> dict | None:
+    """Zámer v inom krajskom meste – podľa obce („Košice - Juh“, „Žilina“), nie podľa okresu (ten zahŕňa aj obce okolo)."""
+    obec = re.sub(r"\s+", " ", (z.get("obec") or "")).strip()
+    for m in DALSIE_MESTA:
+        if obec == m["nazov"] or obec.startswith(m["nazov"] + " -") or obec.startswith(m["nazov"] + "-"):
+            return m
+    return None
 
 
 def mestske_casti(z: dict) -> list[str]:
@@ -155,9 +167,9 @@ def odvod(z: dict) -> dict:
     return z
 
 
-def zoznam_zmien(od: str | None) -> list[dict]:
-    """Bratislavské položky zoznamu zmenené od dátumu `od` (celý zoznam, ak od=None)."""
-    ba, strana = [], 1
+def zoznam_zmien(od: str | None) -> tuple[list[dict], list[dict]]:
+    """Položky zoznamu zmenené od dátumu `od` (celý zoznam, ak od=None): (Bratislava, ostatné krajské mestá)."""
+    ba, ine, strana = [], [], 1
     while True:
         r = s.get(API, params={"page": strana, "itemsPerPage": NA_STRANU}, headers={"Accept": "application/json"}, timeout=120)
         r.raise_for_status()
@@ -168,6 +180,8 @@ def zoznam_zmien(od: str | None) -> list[dict]:
         for z in polozky:
             if je_bratislava(z):
                 ba.append(z)
+            elif ine_mesto(z):
+                ine.append(z)
         posledna = min((z.get("datumPoslednejZmeny") or "9999")[:10] for z in polozky)
         if od and posledna < od:
             break
@@ -175,8 +189,8 @@ def zoznam_zmien(od: str | None) -> list[dict]:
             break
         strana += 1
         time.sleep(0.4)
-    print(f"Zoznam: {strana} strán, {len(ba)} zámerov v Bratislave")
-    return ba
+    print(f"Zoznam: {strana} strán, {len(ba)} zámerov v Bratislave, {len(ine)} v ostatných krajských mestách")
+    return ba, ine
 
 
 def polohy(zamery: list[dict], stare: dict) -> None:
@@ -216,6 +230,14 @@ def polohy(zamery: list[dict], stare: dict) -> None:
             z["presnost"] = "mc"
 
 
+def verejny(z: dict) -> dict:
+    """Záznam pre web – bez pomocných polí; pri ukončených kratší popis (menší súbor)."""
+    v = {k: x for k, x in z.items() if not k.startswith("_") and k not in ("cinnosti", "ico", "povoluje", "kroky")}
+    if z["ukoncene"] and len(v["ucel"]) > 320:
+        v["ucel"] = v["ucel"][:320].rsplit(" ", 1)[0] + "…"
+    return v
+
+
 def main() -> int:
     stare = {}
     od = None
@@ -224,7 +246,48 @@ def main() -> int:
         stare = {z["id"]: z for z in ulozene["zamery"]}
         # rezerva 3 dni – zoznam sa zoraďuje podľa času poslednej zmeny
         od = (date.fromisoformat(ulozene["posledna_zmena"]) - timedelta(days=3)).isoformat()
-    zmenene = zoznam_zmien(od)
+    stare_m, od_m = {}, None
+    if ULOZISKO_MESTA.exists():
+        ul = json.loads(ULOZISKO_MESTA.read_text(encoding="utf-8"))
+        stare_m = {z["id"]: z for z in ul["zamery"]}
+        od_m = (date.fromisoformat(ul["posledna_zmena"]) - timedelta(days=3)).isoformat()
+    zmenene, zmenene_m = zoznam_zmien(min(od, od_m) if od and od_m else None)
+    if od:
+        zmenene = [z for z in zmenene if (z.get("datumPoslednejZmeny") or "")[:10] >= od]
+    nove_m = dict(stare_m)
+    for i, z in enumerate(zmenene_m):
+        zmena = (z.get("datumPoslednejZmeny") or "")[:10]
+        if z["id"] in stare_m and stare_m[z["id"]]["zmena"] == zmena:
+            continue
+        r = s.get(f"{API}/{z['seoId']}", headers={"Accept": "application/json"}, timeout=120)
+        if r.status_code == 404:
+            continue
+        r.raise_for_status()
+        det = r.json()
+        det = det.get("data", det)
+        m = ine_mesto(det) or ine_mesto(z)
+        if not m:
+            continue
+        zaz = zaznam(det)
+        zaz["mesto"] = m["slug"]
+        obec = re.sub(r"\s+", " ", det.get("obec") or "")
+        zaz["mc"] = [re.sub(r"^.*?-\s*(mestská časť\s*)?", "", obec).strip()] if obec != m["nazov"] and "-" in obec else []
+        zaz["lat"], zaz["lon"], zaz["presnost"] = m["stred"][0], m["stred"][1], "mesto"
+        nove_m[zaz["id"]] = zaz
+        if i % 50 == 0:
+            print(f"  detail (mestá) {i + 1}/{len(zmenene_m)}")
+        time.sleep(0.3)
+    zamery_m = sorted((odvod(z) for z in nove_m.values()), key=lambda z: (z["zmena"], z["id"]), reverse=True)
+    if zamery_m:
+        zapis_ak_zmena(ULOZISKO_MESTA, {"aktualizovane": datetime.now().isoformat(timespec="seconds"),
+                                        "posledna_zmena": max(z["zmena"] for z in zamery_m if z["zmena"]), "zamery": zamery_m}, kompaktne=True)
+        for m in DALSIE_MESTA:
+            vm = [verejny(z) for z in zamery_m if z["mesto"] == m["slug"]]
+            zapis_ak_zmena(VEREJNE / "mesta" / f"eia-{m['slug']}.json", {
+                "aktualizovane": datetime.now().isoformat(timespec="seconds"), "web": WEB, "zamery": vm,
+                "zdroj": {"nazov": "Enviroportál MŽP SR / SAŽP – Informačný systém EIA/SEA", "url": "https://www.enviroportal.sk/eia"}}, kompaktne=True)
+            print(f"EIA {m['nazov']}: {len(vm)} zámerov, aktívnych {sum(not z['ukoncene'] for z in vm)}")
+
     nove = dict(stare)
     for i, z in enumerate(zmenene):
         zmena = (z.get("datumPoslednejZmeny") or "")[:10]
@@ -255,12 +318,7 @@ def main() -> int:
                               "zamery": zamery}, kompaktne=True)
 
     # verejný výstup pre web (bez pomocných polí)
-    verejne = []
-    for z in zamery:
-        v = {k: x for k, x in z.items() if not k.startswith("_") and k not in ("cinnosti", "ico", "povoluje", "kroky")}
-        if z["ukoncene"] and len(v["ucel"]) > 320:  # pri ukončených stačí kratší popis (menší súbor)
-            v["ucel"] = v["ucel"][:320].rsplit(" ", 1)[0] + "…"
-        verejne.append(v)
+    verejne = [verejny(z) for z in zamery]
     zapis_ak_zmena(VEREJNE / "eia.json", {
         "aktualizovane": datetime.now().isoformat(timespec="seconds"),
         "zdroj": {"nazov": "Enviroportál MŽP SR / SAŽP – Informačný systém EIA/SEA", "url": "https://www.enviroportal.sk/eia", "licencia": "verejné informácie podľa zákona 24/2006 Z. z."},
