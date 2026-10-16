@@ -1,6 +1,7 @@
 ---
 import Asistent from '../components/Asistent.astro';
 import Hladanie from '../components/Hladanie.astro';
+import Zobrazenie from '../components/Zobrazenie.astro';
 interface Props {
   title: string;
   description?: string;
@@ -16,6 +17,18 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
 <html lang="sk">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      // Zobrazenie (režim, písmo, slabozrakí) pred vykreslením – bez bliknutia; voľbu mení Zobrazenie.astro
+      (function () {
+        var d = document.documentElement, v = {};
+        try { v = JSON.parse(localStorage.getItem('zobrazenie') || '{}'); } catch (e) {}
+        var tmava = v.tema === 'tmava' || (v.tema !== 'svetla' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        d.setAttribute('data-tema', tmava ? 'tmava' : 'svetla');
+        if (v.slabozraky) d.setAttribute('data-slabozraky', '1');
+        var p = (v.pismo || 100) * (v.slabozraky ? 1.2 : 1);
+        if (p !== 100) d.style.fontSize = p + '%';
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -42,6 +55,7 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
           ))}
         </nav>
         <Hladanie />
+        <Zobrazenie />
       </div>
     </header>
     <div class="zive" aria-label="Živé údaje o Bratislave">
@@ -119,23 +133,37 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
     --accent-soft: #c8102e1a;
     --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #121417;
-      --card: #1b1e23;
-      --text: #eceef1;
-      --muted: #9aa1ad;
-      --line: #2c3037;
-      --accent: #ff4d63;
-      --accent-soft: #ff4d6326;
-    }
+  /* Tmavý režim: data-tema nastavuje skript v <head> podľa voľby používateľa alebo systému */
+  :root[data-tema="tmava"] {
+    color-scheme: dark;
+    --bg: #121417;
+    --card: #1b1e23;
+    --text: #eceef1;
+    --muted: #9aa1ad;
+    --line: #2c3037;
+    --accent: #ff4d63;
+    --accent-soft: #ff4d6326;
   }
+  /* Režim pre slabozrakých: vysoký kontrast, výraznejšie okraje a odkazy, väčšie riadkovanie, bez animácií */
+  :root[data-slabozraky] {
+    --bg: #ffffff; --card: #ffffff; --text: #000000; --muted: #262626; --line: #6b6b6b; --accent: #a3001b; --accent-soft: #a3001b22;
+  }
+  :root[data-slabozraky][data-tema="tmava"] {
+    --bg: #000000; --card: #0a0a0a; --text: #ffffff; --muted: #ececec; --line: #9a9a9a; --accent: #ff8a9a; --accent-soft: #ff8a9a33;
+  }
+  /* biely text na svetlom akcente by bol nečitateľný */
+  :root[data-slabozraky][data-tema="tmava"] .ai-tlacidlo, :root[data-slabozraky][data-tema="tmava"] .ai-vstup button { color: #000 !important; }
+  :root[data-slabozraky] body { line-height: 1.7; letter-spacing: 0.01em; }
+  :root[data-slabozraky] a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+  :root[data-slabozraky] :focus-visible { outline: 3px solid var(--accent) !important; outline-offset: 3px; }
+  :root[data-slabozraky] .card { border-width: 2px; }
+  :root[data-slabozraky] *, :root[data-slabozraky] *::before, :root[data-slabozraky] *::after { animation: none !important; transition: none !important; }
   * { box-sizing: border-box; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font: 16px/1.55 var(--font);
+    font: 1rem/1.55 var(--font);
     -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; text-underline-offset: 3px; }
@@ -184,5 +212,5 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
   .mf-otv.nie { color: #c8102e; }
   .mf-odkazy { margin-top: 4px; }
   .podklad-osm { filter: grayscale(1) contrast(0.85) brightness(1.08); }
-  @media (prefers-color-scheme: dark) { .podklad-osm { filter: grayscale(1) invert(1) brightness(0.8) contrast(0.85); } }
+  :root[data-tema="tmava"] .podklad-osm { filter: grayscale(1) invert(1) brightness(0.8) contrast(0.85); }
 </style>

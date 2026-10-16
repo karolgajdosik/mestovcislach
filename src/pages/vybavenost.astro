@@ -216,7 +216,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
   const el = document.getElementById('mapa-vyb');
   if (el) {
     const css = getComputedStyle(document.documentElement);
-    const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const tmava = document.documentElement.dataset.tema === 'tmava';
     const poradie = ['lekarne', 'ambulancie', 'nemocnice', 'nabijanie'];
     const farby = poradie.map((_, i) => css.getPropertyValue(`--v-${i}`).trim());
     const mapa = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.25, preferCanvas: true });
@@ -288,7 +288,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
 
 <style>
   :global(:root) { --v-0: #138a5e; --v-1: #7a4fd1; --v-2: #c8102e; --v-3: #1f6fd1; }
-  @media (prefers-color-scheme: dark) { :global(:root) { --v-0: #6ee7b7; --v-1: #c4a7ff; --v-2: #ff6b80; --v-3: #7cc4ff; } }
+  :global(:root[data-tema="tmava"]) { --v-0: #6ee7b7; --v-1: #c4a7ff; --v-2: #ff6b80; --v-3: #7cc4ff; }
   .hero { padding: 40px 0 8px; }
   .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
   h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }

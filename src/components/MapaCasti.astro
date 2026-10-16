@@ -64,7 +64,7 @@ if (hranice && casti.length && rok) {
   const el = document.getElementById('mapa-casti');
   if (el?.dataset.mapa) {
     const data = JSON.parse(el.dataset.mapa);
-    const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const tmava = document.documentElement.dataset.tema === 'tmava';
     const fmt = (n: number) => n.toLocaleString('sk-SK');
 
     // Jednofarebná škála (svetlá → tmavá červená), 5 tried.

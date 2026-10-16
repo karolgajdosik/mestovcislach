@@ -188,7 +188,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
   const inline = JSON.parse(obal.dataset.inline!);
   const css = getComputedStyle(document.documentElement);
   const farba = (k: string) => css.getPropertyValue(`--m-${k}`).trim();
-  const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const tmava = document.documentElement.dataset.tema === 'tmava';
   const okraj = tmava ? '#121417' : '#ffffff';
   const fmt = (n: number) => n?.toLocaleString('sk-SK');
   const mobil = window.innerWidth < 600;
@@ -549,8 +549,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
     --m-podnety: #64748b; --m-vysadba: #65a30d; --m-starostlivost: #a3a3a3; --m-klima: #f59e0b;
     --m-ochladzovanie: #06b6d4; --m-debarierizacie: #1d4ed8; --m-fixpointy: #7c2d12;
   }
-  @media (prefers-color-scheme: dark) {
-    :global(:root) {
+  :global(:root[data-tema="tmava"]) {
       --m-hranice: #9aa1ad; --m-mhd: #ff6b80; --m-cyklo: #7cc4ff; --m-bajk: #67e8f9;
       --m-lekarne: #6ee7b7; --m-nemocnice: #fca5a5; --m-ambulancie: #c4a7ff; --m-nabijanie: #f9a8d4;
       --m-pamiatky: #fcd34d; --m-stromy: #86efac; --m-narodne: #4ade80; --m-natura: #bef264; --m-skladky: #d6d3d1;
@@ -560,7 +559,6 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
       --m-bezbarierove: #93c5fd; --m-fontany: #7dd3fc; --m-sportoviska: #86efac; --m-bezdomovci: #f9a8d4; --m-veterina: #fcd34d;
       --m-podnety: #cbd5e1; --m-vysadba: #bef264; --m-starostlivost: #d4d4d4; --m-klima: #fcd34d;
       --m-ochladzovanie: #67e8f9; --m-debarierizacie: #93c5fd; --m-fixpointy: #fdba74;
-    }
   }
   /* Mapa ako aplikácia: bočný panel + mapa na celú výšku pod hlavičkou a živou lištou (56 + 41 px) */
   .mapa-app {

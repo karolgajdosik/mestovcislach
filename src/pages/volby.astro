@@ -138,7 +138,7 @@ const pripravene = volby.map((v) => {
   const accent = css.getPropertyValue('--accent').trim();
   const muted = css.getPropertyValue('--muted').trim();
   const line = css.getPropertyValue('--line').trim();
-  const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const tmava = document.documentElement.dataset.tema === 'tmava';
   const pct = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 }) + ' %';
   Chart.defaults.color = muted;
   Chart.defaults.borderColor = line;
@@ -286,5 +286,5 @@ const pripravene = volby.map((v) => {
   th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
   th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
   .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  @media (prefers-color-scheme: dark) { .delta.up { color: #4cc38a; } }
+  :global(:root[data-tema="tmava"]) .delta.up { color: #4cc38a; }
 </style>

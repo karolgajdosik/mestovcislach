@@ -254,7 +254,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
     const del = document.getElementById('morava');
     const nastav = (k: string, t: string) => { const e = del?.querySelector(`[data-m="${k}"]`); if (e) e.textContent = t; };
     if (del) fetch('/api/dunaj?rieka=morava').then((r) => (r.ok ? r.json() : Promise.reject())).then((d) => {
-      const modra = window.matchMedia('(prefers-color-scheme: dark)').matches ? '#7cc4ff' : '#1f6fd1';
+      const modra = document.documentElement.dataset.tema === 'tmava' ? '#7cc4ff' : '#1f6fd1';
       nastav('stav', `${d.stav} cm`);
       nastav('cas', `meranie ${new Date(d.cas).toLocaleString('sk-SK', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' })}`);
       nastav('trend', d.trend);
@@ -290,7 +290,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
       const css = getComputedStyle(document.documentElement);
       const accent = css.getPropertyValue('--accent').trim();
       const muted = css.getPropertyValue('--muted').trim();
-      const modra = window.matchMedia('(prefers-color-scheme: dark)').matches ? '#7cc4ff' : '#1f6fd1';
+      const modra = document.documentElement.dataset.tema === 'tmava' ? '#7cc4ff' : '#1f6fd1';
       nastav('stav', `${d.stav} cm`);
       nastav('cas', `meranie ${new Date(d.cas).toLocaleString('sk-SK', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' })}`);
       nastav('trend', d.trend);
@@ -350,7 +350,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
       const css = getComputedStyle(document.documentElement);
       const accent = css.getPropertyValue('--accent').trim();
       const muted = css.getPropertyValue('--muted').trim();
-      const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const tmava = document.documentElement.dataset.tema === 'tmava';
       const g = JSON.parse(pel.dataset.odpad!);
       new Chart(document.getElementById('g-odpad') as HTMLCanvasElement, {
         data: {
@@ -390,7 +390,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
     const muted = css.getPropertyValue('--muted').trim();
     const line = css.getPropertyValue('--line').trim();
     const text = css.getPropertyValue('--text').trim();
-    const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const tmava = document.documentElement.dataset.tema === 'tmava';
     Chart.defaults.color = muted;
     Chart.defaults.borderColor = line;
     Chart.defaults.font.family = css.getPropertyValue('--font');
@@ -458,7 +458,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
   :global(.aqk.k2) { background: #e6b80033; color: #8a6d00; }
   :global(.aqk.k3) { background: #f08c0033; color: #a35a00; }
   :global(.aqk.k4) { background: #d0021b22; color: #d0021b; }
-  @media (prefers-color-scheme: dark) { :global(.aqk.k1) { color: #4cc38a; } :global(.aqk.k2) { color: #ffd54d; } :global(.aqk.k3) { color: #ffb366; } :global(.aqk.k4) { color: #ff6b80; } }
+  :global(:root[data-tema="tmava"] .aqk.k1) { color: #4cc38a; } :global(:root[data-tema="tmava"] .aqk.k2) { color: #ffd54d; } :global(:root[data-tema="tmava"] .aqk.k3) { color: #ffb366; } :global(:root[data-tema="tmava"] .aqk.k4) { color: #ff6b80; }
   h2.sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 40px 0 16px; }
   #mapa-skladky { height: 400px; border-radius: 10px; overflow: hidden; background: var(--bg); }
   @media (max-width: 600px) { #mapa-skladky { height: 340px; } }

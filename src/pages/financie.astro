@@ -433,7 +433,7 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
     const accent = css.getPropertyValue('--accent').trim();
     const muted = css.getPropertyValue('--muted').trim();
     const line = css.getPropertyValue('--line').trim();
-    const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const tmava = document.documentElement.dataset.tema === 'tmava';
     Chart.defaults.color = muted;
     Chart.defaults.borderColor = line;
     Chart.defaults.font.family = css.getPropertyValue('--font');

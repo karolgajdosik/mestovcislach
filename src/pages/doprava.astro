@@ -275,7 +275,7 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
   const accent = css.getPropertyValue('--accent').trim();
   const muted = css.getPropertyValue('--muted').trim();
   const line = css.getPropertyValue('--line').trim();
-  const tmava = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const tmava = document.documentElement.dataset.tema === 'tmava';
   const fmt = (n: number) => n.toLocaleString('sk-SK');
 
   if (el?.dataset.mapa) {
@@ -503,7 +503,7 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
   .delta { margin: 0; font-size: 0.85rem; color: var(--muted); }
   .delta.up { color: #1a7f4b; }
   .delta.down { color: var(--accent); }
-  @media (prefers-color-scheme: dark) { .delta.up { color: #4cc38a; } }
+  :global(:root[data-tema="tmava"]) .delta.up { color: #4cc38a; }
   #mapa-mhd { height: 460px; border-radius: 10px; overflow: hidden; background: var(--bg); }
   @media (max-width: 600px) { #mapa-mhd { height: 380px; } }
   .chart { position: relative; height: 280px; }
@@ -513,7 +513,7 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
   th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
   .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   :global(:root) { --cyklo-0: #1f6fd1; --cyklo-1: #138a5e; --cyklo-2: #d97706; }
-  @media (prefers-color-scheme: dark) { :global(:root) { --cyklo-0: #7cc4ff; --cyklo-1: #6ee7b7; --cyklo-2: #ffc44d; } }
+  :global(:root[data-tema="tmava"]) { --cyklo-0: #7cc4ff; --cyklo-1: #6ee7b7; --cyklo-2: #ffc44d; }
   h2.sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 48px 0 16px; }
   h3 { font-size: 1.05rem; margin: 0 0 14px; }
   #mapa-cyklo { height: 460px; border-radius: 10px; overflow: hidden; background: var(--bg); }
@@ -522,7 +522,7 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
   .legenda-cyklo .kruh { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--text); background: var(--card); vertical-align: -1px; }
   .legenda-cyklo i, .bod { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 6px; vertical-align: 3px; }
   :global(:root) { --uz-0: #c8102e; --uz-1: #d97706; --uz-2: #7a4fd1; }
-  @media (prefers-color-scheme: dark) { :global(:root) { --uz-0: #ff6b80; --uz-1: #ffc44d; --uz-2: #c4a7ff; } }
+  :global(:root[data-tema="tmava"]) { --uz-0: #ff6b80; --uz-1: #ffc44d; --uz-2: #c4a7ff; }
   .kotvy { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
   .kotvy a { font-size: 0.85rem; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; background: var(--card); }
   .kotvy a:hover { border-color: var(--accent); }

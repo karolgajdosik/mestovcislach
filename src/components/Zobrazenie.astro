@@ -1,0 +1,134 @@
+---
+// Nastavenie zobrazenia: svetlý/tmavý režim, veľkosť písma a režim pre slabozrakých.
+// Voľba sa ukladá do localStorage („zobrazenie“); použije ju skript v <head> (Base.astro) ešte pred vykreslením.
+---
+<div class="zb-obal">
+  <button type="button" class="zb-tlacidlo" id="zb-otvor" aria-expanded="false" aria-controls="zb-panel" title="Zobrazenie: režim, veľkosť písma, pre slabozrakých">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19 8.5 5h1L15 19M5.2 14h7.6" /><path d="M16 19l2.6-7h.8l2.6 7M16.9 16.6h4.2" /></svg>
+    <span class="zb-skryte">Zobrazenie</span>
+  </button>
+  <div class="zb-panel" id="zb-panel" role="dialog" aria-label="Nastavenie zobrazenia" hidden>
+    <fieldset class="zb-skupina">
+      <legend>Režim</legend>
+      <div class="zb-segment">
+        <label><input type="radio" name="zb-tema" value="auto" /><span>Podľa zariadenia</span></label>
+        <label><input type="radio" name="zb-tema" value="svetla" /><span>Svetlý</span></label>
+        <label><input type="radio" name="zb-tema" value="tmava" /><span>Tmavý</span></label>
+      </div>
+    </fieldset>
+    <div class="zb-skupina">
+      <p class="zb-nadpis" id="zb-pismo-nadpis">Veľkosť písma</p>
+      <div class="zb-pismo" role="group" aria-labelledby="zb-pismo-nadpis">
+        <button type="button" id="zb-mensie" aria-label="Zmenšiť písmo">A<sup>−</sup></button>
+        <output id="zb-hodnota" aria-live="polite">100 %</output>
+        <button type="button" id="zb-vacsie" aria-label="Zväčšiť písmo">A<sup>+</sup></button>
+      </div>
+    </div>
+    <div class="zb-skupina">
+      <button type="button" class="zb-prepinac" id="zb-slabozraky" role="switch" aria-checked="false">
+        <span class="zb-text"><strong>Pre slabozrakých</strong><span>väčšie písmo, vysoký kontrast, podčiarknuté odkazy, bez animácií</span></span>
+        <span class="zb-switch" aria-hidden="true"></span>
+      </button>
+    </div>
+    <button type="button" class="zb-reset" id="zb-reset">Obnoviť pôvodné zobrazenie</button>
+  </div>
+</div>
+
+<script>
+  type Volby = { tema?: 'auto' | 'svetla' | 'tmava'; pismo?: number; slabozraky?: boolean };
+  const KROKY = [85, 100, 112, 125, 140, 160];
+  const d = document.documentElement;
+  const nacitaj = (): Volby => { try { return JSON.parse(localStorage.getItem('zobrazenie') ?? '{}'); } catch { return {}; } };
+  let v = nacitaj();
+  const btn = document.getElementById('zb-otvor')!;
+  const panel = document.getElementById('zb-panel')!;
+  const hodnota = document.getElementById('zb-hodnota')!;
+  const slabo = document.getElementById('zb-slabozraky')!;
+
+  const tmava = () => v.tema === 'tmava' || (v.tema !== 'svetla' && matchMedia('(prefers-color-scheme: dark)').matches);
+  function pouzi(prekreslit: boolean) {
+    const predtym = d.dataset.tema;
+    d.dataset.tema = tmava() ? 'tmava' : 'svetla';
+    if (v.slabozraky) d.dataset.slabozraky = '1'; else delete d.dataset.slabozraky;
+    const pismo = (v.pismo ?? 100) * (v.slabozraky ? 1.2 : 1);
+    d.style.fontSize = pismo === 100 ? '' : `${pismo}%`;
+    try { localStorage.setItem('zobrazenie', JSON.stringify(v)); } catch { /* nevadí – platí aspoň na tejto stránke */ }
+    // ovládacie prvky
+    panel.querySelectorAll<HTMLInputElement>('input[name=zb-tema]').forEach((i) => (i.checked = i.value === (v.tema ?? 'auto')));
+    hodnota.textContent = `${v.pismo ?? 100} %`;
+    (document.getElementById('zb-mensie') as HTMLButtonElement).disabled = (v.pismo ?? 100) <= KROKY[0];
+    (document.getElementById('zb-vacsie') as HTMLButtonElement).disabled = (v.pismo ?? 100) >= KROKY[KROKY.length - 1];
+    slabo.setAttribute('aria-checked', String(!!v.slabozraky));
+    // mapy a grafy si pri zmene veľkosti prepočítajú rozmery
+    dispatchEvent(new Event('resize'));
+    // grafy a mapy majú farby z čias vykreslenia – po zmene režimu sa stránka obnoví (len ak také obsahuje)
+    if (prekreslit && predtym !== d.dataset.tema && document.querySelector('canvas, .leaflet-container')) setTimeout(() => location.reload(), 60);
+  }
+  pouzi(false);
+
+  const otvor = (ano: boolean) => { panel.hidden = !ano; btn.setAttribute('aria-expanded', String(ano)); };
+  btn.addEventListener('click', () => otvor(panel.hidden));
+  document.addEventListener('click', (e) => { if (!panel.hidden && !(e.target as HTMLElement).closest('.zb-obal')) otvor(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { otvor(false); btn.focus(); } });
+  panel.querySelectorAll<HTMLInputElement>('input[name=zb-tema]').forEach((i) => i.addEventListener('change', () => { v.tema = i.value as Volby['tema']; pouzi(true); }));
+  const krok = (smer: number) => {
+    const akt = v.pismo ?? 100;
+    const i = KROKY.findIndex((k) => k >= akt);
+    v.pismo = KROKY[Math.min(Math.max((i < 0 ? KROKY.length - 1 : i) + smer, 0), KROKY.length - 1)];
+    pouzi(false);
+  };
+  document.getElementById('zb-mensie')!.addEventListener('click', () => krok(-1));
+  document.getElementById('zb-vacsie')!.addEventListener('click', () => krok(1));
+  slabo.addEventListener('click', () => { v.slabozraky = !v.slabozraky; pouzi(false); });
+  document.getElementById('zb-reset')!.addEventListener('click', () => { const t = tmava(); v = {}; pouzi(t !== tmava()); });
+  // pri voľbe „podľa zariadenia“ sledujeme zmenu systému
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (!v.tema || v.tema === 'auto') pouzi(true); });
+</script>
+
+<style>
+  .zb-obal { position: relative; flex-shrink: 0; margin-left: 8px; }
+  .zb-tlacidlo {
+    display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0;
+    border: 1px solid var(--line); border-radius: 18px; background: var(--bg); color: var(--muted); cursor: pointer;
+  }
+  .zb-tlacidlo:hover, .zb-tlacidlo[aria-expanded='true'] { border-color: var(--muted); color: var(--text); }
+  .zb-tlacidlo:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .zb-tlacidlo svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .zb-skryte { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .zb-panel {
+    position: absolute; right: 0; top: calc(100% + 10px); z-index: 1300; width: 300px; padding: 14px;
+    background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 16px 40px -8px rgb(0 0 0 / 0.3);
+  }
+  @media (max-width: 600px) { .zb-panel { position: fixed; left: 12px; right: 12px; top: 64px; width: auto; } }
+  .zb-skupina { border: 0; margin: 0 0 14px; padding: 0; }
+  .zb-skupina legend, .zb-nadpis { margin: 0 0 6px; padding: 0; font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+  .zb-segment { display: grid; grid-template-columns: 1.4fr 1fr 1fr; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+  .zb-segment label { cursor: pointer; }
+  .zb-segment input { position: absolute; opacity: 0; pointer-events: none; }
+  .zb-segment span { display: block; padding: 7px 4px; border-radius: 7px; text-align: center; font-size: 0.82rem; color: var(--muted); }
+  .zb-segment input:checked + span { background: var(--text); color: var(--card); font-weight: 600; }
+  .zb-segment input:focus-visible + span { outline: 2px solid var(--accent); }
+  .zb-pismo { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; }
+  .zb-pismo button {
+    height: 40px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text);
+    font: inherit; font-weight: 700; cursor: pointer;
+  }
+  .zb-pismo button:first-child { font-size: 0.85rem; }
+  .zb-pismo button:last-child { font-size: 1.2rem; }
+  .zb-pismo button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .zb-pismo output { min-width: 4.5em; text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .zb-prepinac {
+    display: flex; align-items: center; gap: 12px; width: 100%; padding: 10px 12px; text-align: left;
+    border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); font: inherit; cursor: pointer;
+  }
+  .zb-prepinac[aria-checked='true'] { border-color: var(--accent); }
+  .zb-text { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+  .zb-text span { font-size: 0.78rem; color: var(--muted); }
+  .zb-switch { position: relative; width: 40px; height: 22px; flex-shrink: 0; border-radius: 11px; background: var(--line); transition: background 0.15s; }
+  .zb-switch::after { content: ''; position: absolute; left: 3px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px #0004; transition: transform 0.15s; }
+  .zb-prepinac[aria-checked='true'] .zb-switch { background: var(--accent); }
+  .zb-prepinac[aria-checked='true'] .zb-switch::after { transform: translateX(18px); }
+  .zb-reset { border: 0; background: none; padding: 0; color: var(--muted); font: inherit; font-size: 0.82rem; text-decoration: underline; cursor: pointer; }
+  .zb-reset:hover { color: var(--text); }
+</style>
