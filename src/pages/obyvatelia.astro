@@ -275,6 +275,9 @@ const grafScenare = scenare ? JSON.stringify(Object.entries([...scenare.riadky].
         return `<div class="tema"><h3>${esc(t.nazov)}</h3>${riadky}${t.poznamka ? `<p class="pozn">${esc(t.poznamka)}</p>` : ''}</div>`;
       }).join('');
     };
+    // odkaz z vyhľadávania: /obyvatelia?mc=Petržalka#obyv
+    const mcParam = new URLSearchParams(location.search).get('mc');
+    if (mcParam && [...sel.options].some((o) => o.value === mcParam)) sel.value = mcParam;
     sel.addEventListener('change', vykresli);
     vykresli();
   }

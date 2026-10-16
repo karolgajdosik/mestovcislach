@@ -198,7 +198,7 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
         style: { color: farba('hranice'), weight: 1.5, fillOpacity: 0.04, fillColor: farba('hranice') },
         onEachFeature: (f: any, l) => l.bindPopup(`<strong>${f.properties.n}</strong><br>${fmt(f.properties.o)} obyvateľov<br>${f.properties.r.toLocaleString('sk-SK')} km²`),
       });
-      mapa.fitBounds(v.getBounds(), { padding: [8, 8] });
+      if (!location.hash.startsWith('#miesto&')) mapa.fitBounds(v.getBounds(), { padding: [8, 8] });
       return v;
     },
     mhd: async () => {
@@ -377,6 +377,24 @@ const skupiny = [...new Set(vrstvy.map((v) => v[2]))];
     }),
   );
   if (mobil) obal.querySelector('details')!.removeAttribute('open');
+
+  // odkaz z vyhľadávania: /mapa#miesto&lat=…&lon=…&n=názov&k=kategória → priblížiť a označiť miesto
+  let oznacene: L.Layer | null = null;
+  const zobrazMiesto = () => {
+    if (!location.hash.startsWith('#miesto&')) return;
+    const p = new URLSearchParams(location.hash.slice(8));
+    const lat = Number(p.get('lat')), lon = Number(p.get('lon'));
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+    oznacene?.remove();
+    const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+    oznacene = L.circleMarker([lat, lon], { radius: 11, color: '#fff', weight: 3, fillColor: '#c8102e', fillOpacity: 1 }).addTo(mapa)
+      .bindPopup(`<div class="mf"><strong class="mf-nazov">${esc(p.get('n') ?? '')}</strong><span class="mf-kat">${esc(p.get('k') ?? '')}</span></div>`);
+    mapa.setView([lat, lon], 17);
+    setTimeout(() => (oznacene as L.CircleMarker).openPopup(), 300);
+    document.getElementById('mapa')?.scrollIntoView({ block: 'center' });
+  };
+  setTimeout(zobrazMiesto, 0);
+  window.addEventListener('hashchange', zobrazMiesto);
 </script>
 
 <style>

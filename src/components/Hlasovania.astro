@@ -150,10 +150,23 @@ const subor = (obd: string) => (obd === h?.aktualne_obdobie ? '/data/hlasovania-
         }).join('');
     }
     vstup.addEventListener('input', () => { clearTimeout(casovac); casovac = setTimeout(hladaj, 250); });
+
+    // odkaz z vyhľadávania: /volby?poslanec=Meno#hlasovania → obdobie, kde poslanec pôsobil naposledy, a zvýraznený riadok
+    const meno = new URLSearchParams(location.search).get('poslanec');
+    if (meno) {
+      const riadky = [...sek.querySelectorAll<HTMLTableRowElement>('table.poslanci tbody tr')].filter((r) => JSON.parse(r.dataset.s!)[0] === meno);
+      const posledny = riadky.sort((a, b) => Number(b.closest<HTMLElement>('.obdobie')!.dataset.obd) - Number(a.closest<HTMLElement>('.obdobie')!.dataset.obd))[0];
+      if (posledny) {
+        sek.querySelector<HTMLButtonElement>(`[role=tab][data-obd="${posledny.closest<HTMLElement>('.obdobie')!.dataset.obd}"]`)?.click();
+        posledny.classList.add('zvyrazneny');
+        setTimeout(() => posledny.scrollIntoView({ block: 'center' }), 50);
+      }
+    }
   }
 </script>
 
 <style>
+  tr.zvyrazneny td { background: color-mix(in srgb, var(--accent) 12%, transparent); font-weight: 600; }
   .upozornenie { border-left: 4px solid var(--accent); }
   .upozornenie p { margin: 0 0 8px; }
   .zasadnutia { margin: 8px 0 0; padding-left: 18px; font-size: 0.9rem; }

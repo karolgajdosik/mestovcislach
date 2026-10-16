@@ -193,6 +193,8 @@
     }
   }
   form.addEventListener('submit', (e) => { e.preventDefault(); posli(vstup.value); });
+  // otázka z vyhľadávania v hlavičke
+  window.addEventListener('asistent:otazka', (e) => { const q = String((e as CustomEvent).detail ?? '').trim(); if (okno.hidden) prepni(true); if (q) posli(q); });
   okno.querySelectorAll<HTMLButtonElement>('.ai-navrhy button').forEach((b) => b.addEventListener('click', () => posli(b.textContent ?? '')));
 </script>
 

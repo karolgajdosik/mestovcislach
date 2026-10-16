@@ -252,6 +252,9 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
       return d;
     }));
     ulicaEl.addEventListener('focus', nacitaj, { once: true });
+    // odkaz z vyhľadávania: /vybavenost?ulica=Romanova, Petržalka#spadova-skola
+    const zParam = new URLSearchParams(location.search).get('ulica');
+    if (zParam) { ulicaEl.value = zParam; setTimeout(() => { form.requestSubmit(); cisloEl.focus(); }, 0); }
     const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
     const webOdkaz = (w: string) => (w && /^https?:\/\//.test(w) ? ` · <a href="${esc(w)}" target="_blank" rel="noopener">web školy</a>` : '');
     const karta = (v: Vysledok) => {

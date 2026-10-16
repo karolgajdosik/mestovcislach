@@ -1,5 +1,6 @@
 ---
 import Asistent from '../components/Asistent.astro';
+import Hladanie from '../components/Hladanie.astro';
 interface Props {
   title: string;
   description?: string;
@@ -36,10 +37,11 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
       <div class="wrap">
         <a class="logo" href="/">mesto<span>v</span>číslach</a>
         <nav>
-          {[['/', 'Prehľad'], ['/mapa', 'Mapa'], ['/obyvatelia', 'Obyvatelia'], ['/volby', 'Voľby'], ['/financie', 'Financie'], ['/doprava', 'Doprava'], ['/vybavenost', 'Vybavenosť'], ['/prostredie', 'Prostredie'], ['/bezpecnost', 'Bezpečnosť'], ['/katalog', 'Katalóg dát']].map(([href, text]) => (
+          {[['/mapa', 'Mapa'], ['/obyvatelia', 'Obyvatelia'], ['/volby', 'Voľby'], ['/financie', 'Financie'], ['/doprava', 'Doprava'], ['/vybavenost', 'Vybavenosť'], ['/prostredie', 'Prostredie'], ['/bezpecnost', 'Bezpečnosť'], ['/katalog', 'Katalóg dát']].map(([href, text]) => (
             <a href={href} aria-current={Astro.url.pathname.replace(/\/$/, '') === href.replace(/\/$/, '') || (href === '/katalog' && Astro.url.pathname.startsWith('/katalog/')) ? 'page' : undefined}>{text}</a>
           ))}
         </nav>
+        <Hladanie />
       </div>
     </header>
     <div class="zive" aria-label="Živé údaje o Bratislave">
@@ -144,10 +146,11 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
   .top .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
   .logo { font-weight: 800; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.02em; }
   .logo span { color: var(--accent); }
-  .top nav { display: flex; gap: 18px; overflow-x: auto; scrollbar-width: none; margin-left: 16px; }
+  .top nav { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; margin-left: 16px; flex: 0 1 auto; min-width: 0; margin-right: auto; }
   .top nav::-webkit-scrollbar { display: none; }
+  @media (max-width: 1000px) { .top nav { -webkit-mask-image: linear-gradient(to right, #000 88%, transparent); mask-image: linear-gradient(to right, #000 88%, transparent); padding-right: 18px; } }
   @media (max-width: 480px) { .top nav { gap: 14px; padding-right: 18px; -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); } .top nav a { font-size: 0.88rem; white-space: nowrap; } .logo { font-size: 1.05rem; flex-shrink: 0; } }
-  .top nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; padding: 4px 0; border-bottom: 2px solid transparent; }
+  .top nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; padding: 4px 0; border-bottom: 2px solid transparent; white-space: nowrap; }
   .top nav a[aria-current='page'] { color: var(--text); border-bottom-color: var(--accent); }
   .zive { background: var(--bg); border-bottom: 1px solid var(--line); font-size: 0.82rem; position: sticky; top: 56px; z-index: 1099; }
   .zive-obsah { display: flex; align-items: center; gap: 8px; height: 40px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
