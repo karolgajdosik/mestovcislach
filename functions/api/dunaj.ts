@@ -4,6 +4,12 @@
 const STANICE: Record<string, { id: string; nazov: string }> = {
   dunaj: { id: '5140', nazov: 'Bratislava – Dunaj' },
   morava: { id: '5125', nazov: 'Devínska Nová Ves – Morava' },
+  hornad: { id: '8705', nazov: 'Košice – Hornád' },
+  torysa: { id: '8780', nazov: 'Prešov – Torysa' },
+  hron: { id: '7160', nazov: 'Banská Bystrica – Hron' },
+  rajcanka: { id: '6340', nazov: 'Žilina – Rajčanka' },
+  trnavka: { id: '5230', nazov: 'Bohdanovce nad Trnavou – Trnávka' },
+  nitra: { id: '6730', nazov: 'Nitrianska Streda – Nitra' },
 };
 const url = (id: string) => `https://www.shmu.sk/sk/?page=1&id=hydro_vod_all&station_id=${id}`;
 const CACHE_S = 600;
@@ -72,7 +78,8 @@ export function spracuj(html: string, rieka: keyof typeof STANICE = 'dunaj') {
 
 export const onRequestGet = async (ctx: any) => {
   const cache = (caches as any).default as Cache;
-  const rieka = new URL(ctx.request.url).searchParams.get('rieka') === 'morava' ? 'morava' : 'dunaj';
+  const ziadana = new URL(ctx.request.url).searchParams.get('rieka') ?? 'dunaj';
+  const rieka = (ziadana in STANICE ? ziadana : 'dunaj') as keyof typeof STANICE;
   const kluc = new Request(new URL(`/api/dunaj?rieka=${rieka}`, ctx.request.url).toString());
   const ulozene = await cache.match(kluc);
   if (ulozene) return ulozene;

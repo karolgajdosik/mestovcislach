@@ -19,7 +19,8 @@
   "rieka": "Dunaj",
   "aktivne": true,
   "plne": true,
-  "popis": "17 mestských častí, 641 datasetov mesta, živé údaje"
+  "popis": "17 mestských častí, 641 datasetov mesta, živé údaje",
+  "rieka_id": "dunaj"
  },
  {
   "slug": "trnava",
@@ -34,7 +35,8 @@
    48.3774,
    17.5872
   ],
-  "aktivne": true
+  "aktivne": true,
+  "rieka_id": "trnavka"
  },
  {
   "slug": "nitra",
@@ -50,7 +52,8 @@
    18.0864
   ],
   "rieka": "Nitra",
-  "aktivne": true
+  "aktivne": true,
+  "rieka_id": "nitra"
  },
  {
   "slug": "trencin",
@@ -82,7 +85,8 @@
    18.7394
   ],
   "rieka": "Váh",
-  "aktivne": true
+  "aktivne": true,
+  "rieka_id": "rajcanka"
  },
  {
   "slug": "banska-bystrica",
@@ -98,7 +102,8 @@
    19.1462
   ],
   "rieka": "Hron",
-  "aktivne": true
+  "aktivne": true,
+  "rieka_id": "hron"
  },
  {
   "slug": "presov",
@@ -114,7 +119,8 @@
    21.2339
   ],
   "rieka": "Torysa",
-  "aktivne": true
+  "aktivne": true,
+  "rieka_id": "torysa"
  },
  {
   "slug": "kosice",
@@ -138,6 +144,7 @@
    "portal": "https://opendata.kosice.sk",
    "nazov": "opendata.kosice.sk",
    "min": 40
-  }
+  },
+  "rieka_id": "hornad"
  }
 ]

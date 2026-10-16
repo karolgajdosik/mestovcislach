@@ -1,6 +1,8 @@
 // Cloudflare Pages Function: aktuálna kvalita ovzdušia v Bratislave zo staníc SHMÚ (index kvality ovzdušia IKO).
 // SHMÚ API nemá CORS, preto ho voláme tu a vraciame len bratislavské stanice (cache 10 min).
 
+import MESTA from '../../src/mesta.json';
+
 const API = 'https://www.shmu.sk/api/v1/airquality/';
 const CACHE_S = 600;
 
@@ -15,8 +17,8 @@ export function kategoria(iko: number | null | undefined) {
 
 const LATKY = ['pm10', 'pm25', 'no2', 'o3', 'so2'] as const;
 
-export function spracuj(stanice: any[], iko: any[], teraz = Date.now()) {
-  const ba = new Map<number, any>((stanice ?? []).filter((s) => /^Bratislava/.test(s.station_name)).map((s) => [s.station_id, s]));
+export function spracuj(stanice: any[], iko: any[], teraz = Date.now(), mesto = 'Bratislava') {
+  const ba = new Map<number, any>((stanice ?? []).filter((s) => String(s.station_name ?? '').startsWith(mesto + ',')).map((s) => [s.station_id, s]));
   const vysledok: any[] = [];
   for (const z of iko ?? []) {
     const st = ba.get(z.station_id);
@@ -26,7 +28,7 @@ export function spracuj(stanice: any[], iko: any[], teraz = Date.now()) {
     if (!posl) continue;
     vysledok.push({
       id: st.station_id,
-      nazov: st.station_name.replace(/^Bratislava,\s*/, '').replace('Pod. Biskupice', 'Podunajské Biskupice'),
+      nazov: st.station_name.slice(mesto.length + 1).trim().replace('Pod. Biskupice', 'Podunajské Biskupice'),
       lat: st.gps_lat, lon: st.gps_lon,
       cas: posl.dt_ts * 1000,
       iko: posl.iko_v,
@@ -49,15 +51,17 @@ export function spracuj(stanice: any[], iko: any[], teraz = Date.now()) {
 
 export const onRequestGet = async (ctx: any) => {
   const cache = (caches as any).default as Cache;
-  const kluc = new Request(new URL('/api/ovzdusie', ctx.request.url).toString());
+  const slug = new URL(ctx.request.url).searchParams.get('mesto') ?? 'bratislava';
+  const mesto = (MESTA as any[]).find((m) => m.slug === slug)?.nazov ?? 'Bratislava';
+  const kluc = new Request(new URL(`/api/ovzdusie?mesto=${slug}`, ctx.request.url).toString());
   const ulozene = await cache.match(kluc);
   if (ulozene) return ulozene;
   try {
     const hl = { headers: { 'User-Agent': 'mestovcislach.sk (github.com/karolgajdosik/mestovcislach)' } };
     const [s, i] = await Promise.all([fetch(API + 'getstations', hl), fetch(API + 'getikodata2?history=24', hl)]);
     if (!s.ok || !i.ok) throw new Error(`SHMÚ HTTP ${s.status}/${i.status}`);
-    const data = spracuj(await s.json(), await i.json());
-    if (!data.stanice.length) throw new Error('SHMÚ nevrátil bratislavské stanice');
+    const data = spracuj(await s.json(), await i.json(), Date.now(), mesto);
+    if (!data.stanice.length) throw new Error(`SHMÚ nevrátil stanice pre mesto ${mesto}`);
     const odpoved = new Response(JSON.stringify(data), {
       headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': `public, max-age=${CACHE_S}` },
     });

@@ -89,6 +89,15 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
     <div class="card kpi"><p class="label">Nezamestnanosť (PDU)</p><p class="value">{des(ja.pdu, 2)} %</p><p class="delta">okres{m.okresy.length > 1 ? 'y' : ''} {m.okresy.join(', ')} · {mesiace.length ? mesiac(mesiace[mesiace.length - 1]) : ''}</p></div>
   </div>
 
+  <section class="card" id="teraz" data-mesto={m.slug} data-rieka={(m as any).rieka_id ?? ''}>
+    <h2>Teraz v meste</h2>
+    <div class="teraz">
+      <div class="blok"><h3>Výstrahy SHMÚ</h3><div id="t-vystrahy" aria-live="polite"><p class="pozn">Načítavam…</p></div></div>
+      <div class="blok"><h3>Ovzdušie</h3><ul id="t-ovzdusie" class="stanice"><li class="pozn">Načítavam…</li></ul><p class="zdroj">Index kvality ovzdušia (IKO) zo staníc SHMÚ: dobrá 0–33, zhoršená 34–66, zlá 67–100, veľmi zlá nad 100.</p></div>
+      {(m as any).rieka_id && <div class="blok"><h3>Rieka</h3><div id="t-rieka"><p class="pozn">Načítavam…</p></div></div>}
+    </div>
+  </section>
+
   <section class="card" id="obyvatelia">
     <h2>Obyvatelia</h2>
     <p class="pozn">Počet obyvateľov k 31. 12. podľa Štatistického úradu SR.</p>
@@ -211,6 +220,35 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
 
 <script>
   import Chart from 'chart.js/auto';
+  import { vystrahy, ovzdusie, dunaj, stupenDunaja, farbaOvzdusia } from '../../scripts/zive';
+
+  // Teraz v meste – výstrahy, ovzdušie, rieka (živo zo SHMÚ)
+  {
+    const t = document.getElementById('teraz');
+    if (t) {
+      const mesto = t.dataset.mesto!;
+      const hx = (x: unknown) => String(x ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+      const cas = (ms: number) => new Date(ms).toLocaleString('sk-SK', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' });
+      const vy = document.getElementById('t-vystrahy')!;
+      vystrahy(mesto).then((d) => {
+        const v = d.vystrahy ?? [];
+        vy.innerHTML = v.length
+          ? v.map((x: any) => `<p class="vystraha" data-stav="${hx(x.farba)}"><strong>${hx(x.udalost)}</strong> · ${hx(x.stupen)}<br><small>${x.od ? `od ${cas(Date.parse(x.od))}` : ''}${x.do ? ` do ${cas(Date.parse(x.do))}` : ''}</small></p>`).join('')
+          : '<p><strong>Žiadne platné výstrahy</strong> pre okres' + (mesto === 'kosice' ? 'y mesta' : ' mesta') + '.</p>';
+      }).catch(() => (vy.innerHTML = '<p class="pozn">Výstrahy sú teraz nedostupné.</p>'));
+      const ov = document.getElementById('t-ovzdusie')!;
+      ovzdusie(mesto).then((d) => {
+        ov.innerHTML = (d.stanice ?? []).map((s: any) => `<li><span translate="no">${hx(s.nazov)}</span><span class="iko" data-stav="${farbaOvzdusia(s.kategoria?.stupen)}">${hx(s.kategoria?.nazov ?? '–')} <b>${hx(s.iko ?? '–')}</b></span><small>${cas(s.cas)}</small></li>`).join('') || '<li class="pozn">Žiadne aktuálne merania.</li>';
+      }).catch(() => (ov.innerHTML = '<li class="pozn">Merania SHMÚ sú teraz nedostupné.</li>'));
+      const ri = document.getElementById('t-rieka');
+      if (ri && t.dataset.rieka) dunaj(t.dataset.rieka).then((d) => {
+        const st = stupenDunaja(d);
+        ri.innerHTML = `<p class="velke">${hx(d.stav)} cm <small>${hx(d.trend ?? '')}</small></p><p class="pozn">${hx(d.stanica)} · meranie ${cas(d.cas)}${d.teplota != null ? ` · voda ${hx(d.teplota)} °C` : ''}</p>`
+          + `<p>${st ? `<strong>${st}. stupeň povodňovej aktivity</strong>` : d.spa?.[1] ? `Do 1. stupňa povodňovej aktivity chýba <strong>${d.spa[1] - d.stav} cm</strong>.` : ''}</p>`
+          + `<p class="zdroj"><a href="${hx(d.zdroj?.url)}" rel="noopener">SHMÚ – vodomerná stanica</a></p>`;
+      }).catch(() => (ri.innerHTML = '<p class="pozn">Údaje SHMÚ sú teraz nedostupné.</p>'));
+    }
+  }
   const css = getComputedStyle(document.documentElement);
   const muted = css.getPropertyValue('--muted').trim();
   const akc = css.getPropertyValue('--accent').trim();
@@ -286,4 +324,17 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
   .zdroj { font-size: 0.8rem; color: var(--muted); margin: 12px 0 0; }
   .tlacidlo { display: inline-block; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: var(--na-akcente); font-weight: 700; text-decoration: none; }
   .porovnaj p { margin: 8px 0 0; }
+  .teraz { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px 28px; }
+  .teraz h3 { margin-top: 6px; }
+  .stanice { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  :global(.stanice li) { display: grid; grid-template-columns: 1fr auto; gap: 0 10px; font-size: 0.9rem; }
+  :global(.stanice small) { color: var(--muted); font-size: 0.75rem; }
+  :global(.iko::before), :global(.vystraha::before) { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: var(--muted); }
+  :global([data-stav='ok']::before) { background: #1a7f4b; }
+  :global([data-stav='yellow']::before) { background: #e6b800; }
+  :global([data-stav='orange']::before) { background: #f08c00; }
+  :global([data-stav='red']::before) { background: #d0021b; }
+  :global(.vystraha) { margin: 0 0 8px; }
+  :global(.velke) { font-size: 1.8rem; font-weight: 800; margin: 0; }
+  :global(.velke small) { font-size: 0.9rem; color: var(--muted); font-weight: 500; }
 </style>

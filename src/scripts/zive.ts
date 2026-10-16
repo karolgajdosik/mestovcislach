@@ -33,8 +33,8 @@ const POCASIE: Record<number, string> = {
   80: 'prehánky', 81: 'prehánky', 82: 'silné prehánky', 85: 'snehové prehánky', 86: 'snehové prehánky',
   95: 'búrka', 96: 'búrka s krúpami', 99: 'búrka s krúpami',
 };
-export const pocasie = () => zCache('pocasie', async () => {
-  const d = await json('https://api.open-meteo.com/v1/forecast?latitude=48.1486&longitude=17.1077&current=temperature_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&timezone=Europe%2FBratislava');
+export const pocasie = (stred: [number, number] = [48.1486, 17.1077]) => zCache(`pocasie:${stred.join(',')}`, async () => {
+  const d = await json(`https://api.open-meteo.com/v1/forecast?latitude=${stred[0]}&longitude=${stred[1]}&current=temperature_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&timezone=Europe%2FBratislava`);
   return {
     teplota: Math.round(d.current.temperature_2m),
     stav: POCASIE[d.current.weather_code] ?? '',
@@ -44,14 +44,14 @@ export const pocasie = () => zCache('pocasie', async () => {
   };
 });
 
-export const vystrahy = () => zCache('vystrahy', () => json('/api/vystrahy'));
-export const dunaj = () => zCache('dunaj', async () => {
-  const d = await json('/api/dunaj');
+export const vystrahy = (mesto = 'bratislava') => zCache(`vystrahy:${mesto}`, () => json(`/api/vystrahy${mesto === 'bratislava' ? '' : `?mesto=${mesto}`}`));
+export const dunaj = (rieka = 'dunaj') => zCache(`rieka:${rieka}`, async () => {
+  const d = await json(`/api/dunaj${rieka === 'dunaj' ? '' : `?rieka=${rieka}`}`);
   // pre lištu netreba celé rady meraní
   return { ...d, merane: undefined, predpoved: undefined };
 });
-export const ovzdusie = () => zCache('ovzdusie', async () => {
-  const d = await json('/api/ovzdusie');
+export const ovzdusie = (mesto = 'bratislava') => zCache(`ovzdusie:${mesto}`, async () => {
+  const d = await json(`/api/ovzdusie${mesto === 'bratislava' ? '' : `?mesto=${mesto}`}`);
   return { ...d, stanice: d.stanice?.map((s: any) => ({ ...s, rad: undefined })) };
 });
 export const farbaOvzdusia = (stupen?: number) => (stupen === 1 ? 'ok' : stupen === 2 ? 'yellow' : stupen === 3 ? 'orange' : stupen === 4 ? 'red' : '');

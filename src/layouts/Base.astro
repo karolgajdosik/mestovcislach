@@ -27,7 +27,10 @@ const MENU_MESTA: [string, string, string][] = [
 ];
 const mesto = mestoZCesty(Astro.url.pathname);
 const spolocna = jeSpolocna(Astro.url.pathname.replace(/\/$/, '') || '/');
-const zivaLista = !spolocna && mesto.slug === 'bratislava';
+const zivaLista = !spolocna;
+const ba = mesto.slug === 'bratislava';
+const kotva = (h: string) => (ba ? h : `/${mesto.slug}#teraz`);
+const rieka: any = (mesto as any).rieka_id;
 // Mestá bez vlastných podstránok: menu so skokmi na sekcie prehľadu
 const IKONA = Object.fromEntries(MENU_MESTA.map(([h, , i]) => [h, i]));
 const PIN = '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/>';
@@ -37,6 +40,7 @@ const MENU: [string, string, string][] = spolocna
   ? MENU_MESTA.map(([h, n, i]) => [`/${mesto.slug}${h ? `/${h}` : ''}`, n, i])
   : [
       [`/${mesto.slug}`, 'Prehľad', IKONA['']],
+      [`/${mesto.slug}#teraz`, 'Teraz', IKONA['prostredie']],
       [`/${mesto.slug}#obyvatelia`, 'Obyvatelia', IKONA['obyvatelia']],
       [`/${mesto.slug}#volby`, 'Voľby', IKONA['volby']],
       [`/${mesto.slug}#praca`, 'Práca a bývanie', IKONA['financie']],
@@ -110,15 +114,15 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
       </nav>
     </header>
     <div class="preklad-pruh" id="preklad-pruh" translate="no" hidden><div class="wrap"><span class="pp-text"></span> <button type="button" lang="sk">Slovenská verzia</button></div></div>
-    {zivaLista && <div class="zive" role="region" aria-label="Živé údaje o Bratislave">
+    {zivaLista && <div class="zive" role="region" aria-label={`Živé údaje – ${mesto.nazov}`} data-mesto={mesto.slug} data-stred={JSON.stringify(mesto.stred)} data-rieka={rieka ?? ''}>
       <div class="wrap zive-obsah">
         <span class="zive-titul"><i></i>Teraz</span>
-        <span class="chip" id="z-pocasie" title="Počasie v Bratislave (Open-Meteo)">…</span>
-        <a class="chip" id="z-vystrahy" href="/bratislava#dnes" title="Výstrahy SHMÚ pre Bratislavu">Výstrahy …</a>
-        <a class="chip" id="z-ovzdusie" href="/bratislava/prostredie#ovzdusie-teraz" title="Index kvality ovzdušia zo staníc SHMÚ v Bratislave">Ovzdušie …</a>
-        <a class="chip" id="z-dunaj" href="/bratislava/prostredie#dunaj" title="Vodný stav Dunaja v Bratislave (SHMÚ)">Dunaj …</a>
-        <a class="chip" id="z-morava" href="/bratislava/prostredie#morava" title="Vodný stav Moravy v Devínskej Novej Vsi (SHMÚ)" hidden></a>
-        <a class="chip" id="z-cesty" href="/bratislava/doprava#naozivo" title="Uzávierky a poruchy na cestách (hlavné mesto)">Cesty …</a>
+        <span class="chip" id="z-pocasie" title={`Počasie – ${mesto.nazov} (Open-Meteo)`}>…</span>
+        <a class="chip" id="z-vystrahy" href={ba ? '/bratislava#dnes' : `/${mesto.slug}#teraz`} title="Výstrahy SHMÚ">Výstrahy …</a>
+        <a class="chip" id="z-ovzdusie" href={kotva('/bratislava/prostredie#ovzdusie-teraz')} title="Index kvality ovzdušia zo staníc SHMÚ">Ovzdušie …</a>
+        {rieka && <a class="chip" id="z-dunaj" href={kotva('/bratislava/prostredie#dunaj')} title="Vodný stav (SHMÚ)">{ba ? 'Dunaj' : 'Rieka'} …</a>}
+        {ba && <a class="chip" id="z-morava" href="/bratislava/prostredie#morava" title="Vodný stav Moravy v Devínskej Novej Vsi (SHMÚ)" hidden></a>}
+        {ba && <a class="chip" id="z-cesty" href="/bratislava/doprava#naozivo" title="Uzávierky a poruchy na cestách (hlavné mesto)">Cesty …</a>}
       </div>
     </div>}
     <main class="wrap" id="obsah" tabindex="-1">
@@ -167,34 +171,38 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
     if (stav) el.dataset.stav = stav;
   };
   const sipka = (t: string) => (t === 'stúpa' ? ' ↑' : t === 'klesá' ? ' ↓' : '');
-  // živá lišta je zatiaľ len pre Bratislavu
-  if (document.querySelector('.zive')) {
-    pocasie().then((p) => chip('z-pocasie', `<b>${p.teplota} °C</b> ${p.stav} <small>${p.min}/${p.max} °C</small>`))
+  // živá lišta – údaje mesta podľa atribútov lišty
+  const lista = document.querySelector<HTMLElement>('.zive');
+  if (lista) {
+    const zMesto = lista.dataset.mesto ?? 'bratislava';
+    const zStred = JSON.parse(lista.dataset.stred ?? '[48.1486,17.1077]');
+    const zRieka = lista.dataset.rieka ?? '';
+    pocasie(zStred).then((p) => chip('z-pocasie', `<b>${p.teplota} °C</b> ${p.stav} <small>${p.min}/${p.max} °C</small>`))
       .catch(() => document.getElementById('z-pocasie')?.remove());
-    vystrahy().then((d) => {
+    vystrahy(zMesto).then((d) => {
       const v = d.vystrahy ?? [];
       if (!v.length) return chip('z-vystrahy', 'Výstrahy: <b>žiadne</b>', 'ok');
       const naj = v[0];
       const javy = [...new Set(v.map((x: any) => javVystrahy(x.udalost)))];
       chip('z-vystrahy', `Výstraha: <b>${javy.join(', ')}</b> · ${naj.stupen}`, naj.farba);
     }).catch(() => chip('z-vystrahy', 'Výstrahy: –'));
-    dunaj().then((d) => {
+    if (zRieka) dunaj(zRieka).then((d) => {
       const s = stupenDunaja(d);
-      chip('z-dunaj', `Dunaj <b>${d.stav} cm</b>${sipka(d.trend)}${s ? ` · ${s}. stupeň` : ''}`, s === 3 ? 'red' : s === 2 ? 'orange' : s === 1 ? 'yellow' : 'ok');
-    }).catch(() => chip('z-dunaj', 'Dunaj: –'));
+      chip('z-dunaj', `${zRieka === 'dunaj' ? 'Dunaj' : d.stanica.split('–').pop().trim()} <b>${d.stav} cm</b>${sipka(d.trend)}${s ? ` · ${s}. stupeň` : ''}`, s === 3 ? 'red' : s === 2 ? 'orange' : s === 1 ? 'yellow' : 'ok');
+    }).catch(() => chip('z-dunaj', 'Rieka: –'));
     // Morava sa v lište ukáže len pri povodňovej aktivite
-    fetch('/api/dunaj?rieka=morava').then((r) => (r.ok ? r.json() : Promise.reject())).then((d) => {
+    if (zMesto === 'bratislava') fetch('/api/dunaj?rieka=morava').then((r) => (r.ok ? r.json() : Promise.reject())).then((d) => {
       const s = [3, 2, 1].find((k) => d.spa?.[k] && d.stav >= d.spa[k]);
       if (!s) return;
       const e = document.getElementById('z-morava');
       if (e) e.hidden = false;
       chip('z-morava', `Morava <b>${d.stav} cm</b>${sipka(d.trend)} · ${s}. stupeň`, s === 3 ? 'red' : s === 2 ? 'orange' : 'yellow');
     }).catch(() => {});
-    ovzdusie().then((d) => {
+    ovzdusie(zMesto).then((d) => {
       if (!d.mesto) return chip('z-ovzdusie', 'Ovzdušie: –');
       chip('z-ovzdusie', `Ovzdušie: <b>${d.mesto.kategoria.nazov}</b>`, farbaOvzdusia(d.mesto.kategoria.stupen));
     }).catch(() => chip('z-ovzdusie', 'Ovzdušie: –'));
-    cesty().then((c) => chip('z-cesty', `Cesty: <b>${c.uzavierky}</b> uzávierok${c.uplne ? ` (${c.uplne} úplných)` : ''} · <b>${c.poruchy}</b> porúch`, c.uplne ? 'orange' : ''))
+    if (zMesto === 'bratislava') cesty().then((c) => chip('z-cesty', `Cesty: <b>${c.uzavierky}</b> uzávierok${c.uplne ? ` (${c.uplne} úplných)` : ''} · <b>${c.poruchy}</b> porúch`, c.uplne ? 'orange' : ''))
       .catch(() => chip('z-cesty', 'Cesty: –'));
   }
 </script>
