@@ -5,7 +5,7 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-10-14",
+ "do": "2026-10-15",
  "mestske_casti": {
   "Devín": {
    "zmluv": 550,
@@ -620,8 +620,8 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14568,
-   "suma": 2624658542,
+   "zmluv": 14591,
+   "suma": 2625015976,
    "roky": {
     "2022": [
      2618,
@@ -640,13 +640,13 @@
      334776233
     ],
     "2026": [
-     2410,
-     535363226
+     2433,
+     535720661
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 6380,
-    "suma": 75738181
+    "zmluv": 6393,
+    "suma": 75747389
    },
    "najvacsi_partneri": [
     {
@@ -824,8 +824,8 @@
    ]
   },
   "Jarovce": {
-   "zmluv": 928,
-   "suma": 9759156,
+   "zmluv": 929,
+   "suma": 9759246,
    "roky": {
     "2022": [
      86,
@@ -844,13 +844,13 @@
      1756731
     ],
     "2026": [
-     84,
-     2753601
+     85,
+     2753691
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 701,
-    "suma": 500531
+    "zmluv": 702,
+    "suma": 500621
    },
    "najvacsi_partneri": [
     {
@@ -1028,8 +1028,8 @@
    ]
   },
   "Karlova Ves": {
-   "zmluv": 2457,
-   "suma": 70763338,
+   "zmluv": 2461,
+   "suma": 70767653,
    "roky": {
     "2022": [
      564,
@@ -1048,13 +1048,13 @@
      8212235
     ],
     "2026": [
-     346,
-     20815349
+     350,
+     20819664
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1009,
-    "suma": 3912794
+    "zmluv": 1010,
+    "suma": 3913144
    },
    "najvacsi_partneri": [
     {
@@ -1232,8 +1232,8 @@
    ]
   },
   "Lamač": {
-   "zmluv": 1335,
-   "suma": 34373549,
+   "zmluv": 1336,
+   "suma": 34373571,
    "roky": {
     "2022": [
      493,
@@ -1252,8 +1252,8 @@
      4758500
     ],
     "2026": [
-     161,
-     5825423
+     162,
+     5825446
     ]
    },
    "fyzicke_osoby": {
@@ -1436,8 +1436,8 @@
    ]
   },
   "Nové Mesto": {
-   "zmluv": 1738,
-   "suma": 122788145,
+   "zmluv": 1739,
+   "suma": 122788895,
    "roky": {
     "2022": [
      277,
@@ -1456,8 +1456,8 @@
      10986412
     ],
     "2026": [
-     430,
-     21642119
+     431,
+     21642869
     ]
    },
    "fyzicke_osoby": {
@@ -1640,8 +1640,8 @@
    ]
   },
   "Petržalka": {
-   "zmluv": 5049,
-   "suma": 206980988,
+   "zmluv": 5050,
+   "suma": 207126374,
    "roky": {
     "2022": [
      753,
@@ -1660,8 +1660,8 @@
      66104103
     ],
     "2026": [
-     839,
-     51138066
+     840,
+     51283452
     ]
    },
    "fyzicke_osoby": {
@@ -1844,8 +1844,8 @@
    ]
   },
   "Podunajské Biskupice": {
-   "zmluv": 1787,
-   "suma": 47926221,
+   "zmluv": 1796,
+   "suma": 48526470,
    "roky": {
     "2022": [
      234,
@@ -1864,13 +1864,13 @@
      11397075
     ],
     "2026": [
-     262,
-     14848218
+     271,
+     15448467
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 938,
-    "suma": 1318221
+    "zmluv": 946,
+    "suma": 1318816
    },
    "najvacsi_partneri": [
     {
@@ -1882,8 +1882,8 @@
     {
      "nazov": "Pittel + Brausewetter s.r.o.",
      "ico": "35943653",
-     "zmluv": 5,
-     "suma": 4586468
+     "zmluv": 6,
+     "suma": 5186122
     },
     {
      "nazov": "Metrostav Slovakia a.s.",
@@ -2252,8 +2252,8 @@
    ]
   },
   "Rusovce": {
-   "zmluv": 864,
-   "suma": 35245241,
+   "zmluv": 865,
+   "suma": 35444878,
    "roky": {
     "2022": [
      177,
@@ -2272,13 +2272,13 @@
      4654019
     ],
     "2026": [
-     135,
-     1913782
+     136,
+     2113418
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 423,
-    "suma": 1111654
+    "zmluv": 424,
+    "suma": 1311290
    },
    "najvacsi_partneri": [
     {
@@ -2660,7 +2660,7 @@
    ]
   },
   "Staré Mesto": {
-   "zmluv": 2463,
+   "zmluv": 2464,
    "suma": 113549128,
    "roky": {
     "2022": [
@@ -2680,12 +2680,12 @@
      20943521
     ],
     "2026": [
-     481,
+     482,
      33418145
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1089,
+    "zmluv": 1090,
     "suma": 10353396
    },
    "najvacsi_partneri": [
@@ -3272,8 +3272,8 @@
    ]
   },
   "Záhorská Bystrica": {
-   "zmluv": 868,
-   "suma": 17922257,
+   "zmluv": 872,
+   "suma": 17922259,
    "roky": {
     "2022": [
      143,
@@ -3292,19 +3292,19 @@
      5900080
     ],
     "2026": [
-     158,
-     6399189
+     162,
+     6399191
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 468,
-    "suma": 3835743
+    "zmluv": 470,
+    "suma": 3835745
    },
    "najvacsi_partneri": [
     {
-     "nazov": "VÚB banka Intesa Sanpaolo Group",
+     "nazov": "Všeobecná úverová banka a.s.",
      "ico": "31320155",
-     "zmluv": 10,
+     "zmluv": 11,
      "suma": 3000008
     },
     {
@@ -3476,8 +3476,8 @@
    ]
   },
   "Čunovo": {
-   "zmluv": 286,
-   "suma": 2743743,
+   "zmluv": 288,
+   "suma": 2743855,
    "roky": {
     "2022": [
      52,
@@ -3496,13 +3496,13 @@
      374844
     ],
     "2026": [
-     32,
-     1163613
+     34,
+     1163725
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 131,
-    "suma": 212885
+    "zmluv": 133,
+    "suma": 212997
    },
    "najvacsi_partneri": [
     {
@@ -4032,8 +4032,8 @@
   },
   "Karlova Ves": {
    "poskytnute": {
-    "zmluv": 154,
-    "suma": 230045,
+    "zmluv": 156,
+    "suma": 233010,
     "prijimatelia": [
      {
       "nazov": "Futbalový klub mládeže Karlova Ves Bratislava",
@@ -4049,7 +4049,7 @@
      },
      {
       "nazov": "Kanoistický klub Slávia UK Bratislava",
-      "suma": 11482
+      "suma": 14447
      },
      {
       "nazov": "Športový klub polície Bratislava",
@@ -4996,5 +4996,5 @@
    }
   }
  },
- "aktualizovane": "2026-10-15T20:08:56+00:00"
+ "aktualizovane": "2026-10-16T05:51:27+00:00"
 }
