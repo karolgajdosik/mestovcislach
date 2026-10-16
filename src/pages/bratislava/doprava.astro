@@ -1,7 +1,7 @@
 ---
 import fs from 'node:fs';
 import path from 'node:path';
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
 
 const nacitaj = (subor: string) => {
   const p = path.join(process.cwd(), 'data', subor);
@@ -266,8 +266,8 @@ const obdobie = scitace ? `${new Date(scitace.obdobie.od).toLocaleDateString('sk
 <script>
   import Chart from 'chart.js/auto';
   import L from 'leaflet';
-  import { osmPodklad } from '../scripts/podklad';
-  import { uzavierky, poruchy, popup, den, type Obmedzenie } from '../scripts/uzavierky';
+  import { osmPodklad } from '../../scripts/podklad';
+  import { uzavierky, poruchy, popup, den, type Obmedzenie } from '../../scripts/uzavierky';
   import 'leaflet/dist/leaflet.css';
 
   const el = document.getElementById('doprava');

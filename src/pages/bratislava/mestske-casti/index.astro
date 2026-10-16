@@ -1,8 +1,8 @@
 ---
 // Rozcestník 17 mestských častí: karty s hlavnými číslami, mapa a porovnávacia tabuľka.
-import Base from '../../layouts/Base.astro';
-import MapaCasti from '../../components/MapaCasti.astro';
-import { profily } from '../../lib/profil-mc';
+import Base from '../../../layouts/Base.astro';
+import MapaCasti from '../../../components/MapaCasti.astro';
+import { profily } from '../../../lib/profil-mc';
 
 const { profily: p, mesto } = await profily();
 const fmt = (n: number | null | undefined) => (n == null ? '–' : Math.round(n).toLocaleString('sk-SK'));
@@ -37,7 +37,7 @@ const STLPCE: [string, string, (x: any) => number | null, (n: number | null) => 
   <ul class="karty">
     {p.map((x) => (
       <li>
-        <a class="karta card" href={`/mestske-casti/${x.slug}`}>
+        <a class="karta card" href={`/bratislava/mestske-casti/${x.slug}`}>
           <span class="k-nazov" translate="no">{x.mc}</span>
           <span class="k-pocet"><strong>{fmt(x.obyvatelia.pocet)}</strong> obyvateľov</span>
           <svg class="k-graf" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><polyline points={sparkline(x.obyvatelia.roky)} /></svg>
@@ -61,7 +61,7 @@ const STLPCE: [string, string, (x: any) => number | null, (n: number | null) => 
         <tbody>
           {p.map((x) => (
             <tr data-s={JSON.stringify([x.mc, ...STLPCE.map(([, , f]) => f(x))])}>
-              <td><a href={`/mestske-casti/${x.slug}`} translate="no">{x.mc}</a></td>
+              <td><a href={`/bratislava/mestske-casti/${x.slug}`} translate="no">{x.mc}</a></td>
               {STLPCE.map(([, , f, form]) => <td class="num">{form(f(x))}</td>)}
             </tr>
           ))}

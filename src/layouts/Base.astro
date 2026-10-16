@@ -3,6 +3,7 @@ import Asistent from '../components/Asistent.astro';
 import Hladanie from '../components/Hladanie.astro';
 import Zobrazenie from '../components/Zobrazenie.astro';
 import Jazyk from '../components/Jazyk.astro';
+import { mestoZCesty } from '../mesta';
 interface Props {
   title: string;
   description?: string;
@@ -10,22 +11,25 @@ interface Props {
 const { title, description = 'Otvorené dáta o slovenských mestách a obciach – prehľadne a so zdrojmi.' } = Astro.props;
 // Náhľadový obrázok pri zdieľaní (public/og/<sekcia>.png, generuje scripts/og_obrazky.py)
 // Hlavné menu: odkaz, názov, ikona (SVG cesty, ťah 1.8)
-const MENU: [string, string, string][] = [
-  ['/', 'Prehľad', '<path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h4.5v-5.5h4V20h4.5V9.5"/>'],
-  ['/mestske-casti', 'Mestské časti', '<path d="M4 4.5h7v7H4zM13 4.5h7v4.5h-7zM13 11h7v8.5h-7zM4 13.5h7v6H4z"/>'],
-  ['/mapa', 'Mapa', '<path d="M9 4.5 3.5 6.5v13l5.5-2 6 2 5.5-2v-13l-5.5 2-6-2Z"/><path d="M9 4.5v13M15 6.5v13"/>'],
-  ['/obyvatelia', 'Obyvatelia', '<circle cx="9" cy="8" r="3.3"/><path d="M2.8 20c.6-3.5 3.1-5.4 6.2-5.4s5.6 1.9 6.2 5.4"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.6c2.2.2 3.8 1.8 4.3 4.4"/>'],
-  ['/volby', 'Voľby', '<path d="M4 11h16v9H4z"/><path d="M8 11V4h8v7"/><path d="m10 7.6 1.4 1.4L14.2 6"/>'],
-  ['/financie', 'Financie', '<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/>'],
-  ['/doprava', 'Doprava', '<rect x="5" y="3.5" width="14" height="13.5" rx="3"/><path d="M5 10h14M8 17v3M16 17v3"/><circle cx="8.6" cy="13.4" r=".9"/><circle cx="15.4" cy="13.4" r=".9"/>'],
-  ['/vystavba', 'Výstavba', '<path d="M3 20h18M5 20V9l5-3v14M10 9h9v11M13 12h3M13 15h3M8 2.5v3.5"/><path d="M4 4.5l4-2 9 3"/>'],
-  ['/vybavenost', 'Vybavenosť', '<path d="M4 20V8.5L12 4l8 4.5V20"/><path d="M9.5 20v-5h5v5M8 11h2M14 11h2M2.5 20h19"/>'],
-  ['/prostredie', 'Prostredie', '<path d="M5 19.5C5 11 10 6 20 4.5 19 14 14 19.5 5.5 19.5Z"/><path d="M5 19.5c2.8-4 6-7 10-9.2"/>'],
-  ['/bezpecnost', 'Bezpečnosť', '<path d="M12 3 5 6v5.2c0 4.4 3 8.2 7 9.8 4-1.6 7-5.4 7-9.8V6l-7-3Z"/><path d="m9 12 2 2 4-4.2"/>'],
-  ['/katalog', 'Katalóg dát', '<ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>'],
+const MENU_MESTA: [string, string, string][] = [
+  ['', 'Prehľad', '<path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h4.5v-5.5h4V20h4.5V9.5"/>'],
+  ['mestske-casti', 'Mestské časti', '<path d="M4 4.5h7v7H4zM13 4.5h7v4.5h-7zM13 11h7v8.5h-7zM4 13.5h7v6H4z"/>'],
+  ['mapa', 'Mapa', '<path d="M9 4.5 3.5 6.5v13l5.5-2 6 2 5.5-2v-13l-5.5 2-6-2Z"/><path d="M9 4.5v13M15 6.5v13"/>'],
+  ['obyvatelia', 'Obyvatelia', '<circle cx="9" cy="8" r="3.3"/><path d="M2.8 20c.6-3.5 3.1-5.4 6.2-5.4s5.6 1.9 6.2 5.4"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.6c2.2.2 3.8 1.8 4.3 4.4"/>'],
+  ['volby', 'Voľby', '<path d="M4 11h16v9H4z"/><path d="M8 11V4h8v7"/><path d="m10 7.6 1.4 1.4L14.2 6"/>'],
+  ['financie', 'Financie', '<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/>'],
+  ['doprava', 'Doprava', '<rect x="5" y="3.5" width="14" height="13.5" rx="3"/><path d="M5 10h14M8 17v3M16 17v3"/><circle cx="8.6" cy="13.4" r=".9"/><circle cx="15.4" cy="13.4" r=".9"/>'],
+  ['vystavba', 'Výstavba', '<path d="M3 20h18M5 20V9l5-3v14M10 9h9v11M13 12h3M13 15h3M8 2.5v3.5"/><path d="M4 4.5l4-2 9 3"/>'],
+  ['vybavenost', 'Vybavenosť', '<path d="M4 20V8.5L12 4l8 4.5V20"/><path d="M9.5 20v-5h5v5M8 11h2M14 11h2M2.5 20h19"/>'],
+  ['prostredie', 'Prostredie', '<path d="M5 19.5C5 11 10 6 20 4.5 19 14 14 19.5 5.5 19.5Z"/><path d="M5 19.5c2.8-4 6-7 10-9.2"/>'],
+  ['bezpecnost', 'Bezpečnosť', '<path d="M12 3 5 6v5.2c0 4.4 3 8.2 7 9.8 4-1.6 7-5.4 7-9.8V6l-7-3Z"/><path d="m9 12 2 2 4-4.2"/>'],
+  ['katalog', 'Katalóg dát', '<ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>'],
 ];
+const mesto = mestoZCesty(Astro.url.pathname);
+const MENU: [string, string, string][] = MENU_MESTA.map(([h, n, i]) => [`/${mesto.slug}${h ? `/${h}` : ''}`, n, i]);
 const OG = ['mestske-casti', 'vystavba', 'upozornenia', 'mapa', 'obyvatelia', 'volby', 'financie', 'doprava', 'vybavenost', 'prostredie', 'bezpecnost', 'katalog'];
-const sekcia = Astro.url.pathname.split('/').filter(Boolean)[0] ?? '';
+const casti = Astro.url.pathname.split('/').filter(Boolean);
+const sekcia = (casti[0] === mesto.slug ? casti[1] : casti[0]) ?? '';
 const ogObrazok = new URL(`/og/${OG.includes(sekcia) ? sekcia : 'index'}.png`, Astro.site ?? 'https://mestovcislach.sk');
 const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.sk');
 ---
@@ -56,17 +60,28 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
     <header class="top">
       <div class="wrap hlava">
         <a class="logo" href="/" translate="no">mesto<span>v</span>číslach</a>
+        <a class="mesto-volba mv-hlava" href="/" title="Vybrať iné mesto">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+          <span translate="no">{mesto.nazov}</span>
+          <svg class="sipka" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+        </a>
+
         <Hladanie />
         <div class="hlava-akcie">
-          <a class="zvoncek" href="/upozornenia" title="Upozornenia pre vašu mestskú časť" aria-label="Upozornenia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></a>
+          <a class="zvoncek" href={`/${mesto.slug}/upozornenia`} title="Upozornenia pre vašu mestskú časť" aria-label="Upozornenia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></a>
           <Jazyk />
           <Zobrazenie />
         </div>
       </div>
       <nav class="menu" aria-label="Hlavné menu">
         <div class="wrap menu-pas">
+          <a class="mesto-volba mv-pas" href="/" title="Vybrať iné mesto">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+            <span translate="no">{mesto.nazov}</span>
+            <svg class="sipka" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+          </a>
           {MENU.map(([href, text, ikona]) => {
-            const aktivne = href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.replace(/\/$/, '') === href || Astro.url.pathname.startsWith(href + '/');
+            const aktivne = href === `/${mesto.slug}` ? Astro.url.pathname.replace(/\/$/, '') === href : Astro.url.pathname.replace(/\/$/, '') === href || Astro.url.pathname.startsWith(href + '/');
             return (
               <a href={href} aria-current={aktivne ? 'page' : undefined}>
                 <svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} />
@@ -82,11 +97,11 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
       <div class="wrap zive-obsah">
         <span class="zive-titul"><i></i>Teraz</span>
         <span class="chip" id="z-pocasie" title="Počasie v Bratislave (Open-Meteo)">…</span>
-        <a class="chip" id="z-vystrahy" href="/#dnes" title="Výstrahy SHMÚ pre Bratislavu">Výstrahy …</a>
-        <a class="chip" id="z-ovzdusie" href="/prostredie#ovzdusie-teraz" title="Index kvality ovzdušia zo staníc SHMÚ v Bratislave">Ovzdušie …</a>
-        <a class="chip" id="z-dunaj" href="/prostredie#dunaj" title="Vodný stav Dunaja v Bratislave (SHMÚ)">Dunaj …</a>
-        <a class="chip" id="z-morava" href="/prostredie#morava" title="Vodný stav Moravy v Devínskej Novej Vsi (SHMÚ)" hidden></a>
-        <a class="chip" id="z-cesty" href="/doprava#naozivo" title="Uzávierky a poruchy na cestách (hlavné mesto)">Cesty …</a>
+        <a class="chip" id="z-vystrahy" href="/bratislava#dnes" title="Výstrahy SHMÚ pre Bratislavu">Výstrahy …</a>
+        <a class="chip" id="z-ovzdusie" href="/bratislava/prostredie#ovzdusie-teraz" title="Index kvality ovzdušia zo staníc SHMÚ v Bratislave">Ovzdušie …</a>
+        <a class="chip" id="z-dunaj" href="/bratislava/prostredie#dunaj" title="Vodný stav Dunaja v Bratislave (SHMÚ)">Dunaj …</a>
+        <a class="chip" id="z-morava" href="/bratislava/prostredie#morava" title="Vodný stav Moravy v Devínskej Novej Vsi (SHMÚ)" hidden></a>
+        <a class="chip" id="z-cesty" href="/bratislava/doprava#naozivo" title="Uzávierky a poruchy na cestách (hlavné mesto)">Cesty …</a>
       </div>
     </div>
     <main class="wrap" id="obsah" tabindex="-1">
@@ -95,10 +110,10 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
     <footer class="wrap foot">
       <p>
         mestovcislach.sk zbiera verejne dostupné otvorené dáta. Pri každom údaji je uvedený zdroj.
-        Kód je otvorený na <a href="https://github.com/karolgajdosik/mestovcislach">GitHube</a>. Všetky datasety mesta a čo s nimi robíme: <a href="/katalog">Katalóg dát</a>.
+        Kód je otvorený na <a href="https://github.com/karolgajdosik/mestovcislach">GitHube</a>. Všetky datasety mesta a čo s nimi robíme: <a href="/bratislava/katalog">Katalóg dát</a>.
         Živá lišta: počasie <a href="https://open-meteo.com">Open-Meteo</a> (CC BY 4.0), výstrahy, ovzdušie a Dunaj <a href="https://www.shmu.sk">SHMÚ</a>, cesty hlavné mesto SR Bratislava.
       </p>
-      <p class="foot-odkazy"><a href="/upozornenia">Upozornenia</a> · <a href="/sukromie">Ochrana súkromia</a> · <a href="/pristupnost">Prístupnosť</a> · Bez cookies a sledovania · <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a></p>
+      <p class="foot-odkazy"><a href={`/${mesto.slug}/upozornenia`}>Upozornenia</a> · <a href="/sukromie">Ochrana súkromia</a> · <a href="/pristupnost">Prístupnosť</a> · Bez cookies a sledovania · <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a></p>
     </footer>
     <Asistent />
   </body>
@@ -253,6 +268,13 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
   .menu a:hover { background: color-mix(in srgb, var(--accent) 9%, transparent); }
   .menu a[aria-current='page'] { background: var(--text); color: var(--card); }
   .menu a[aria-current='page'] svg { color: var(--card); }
+  .mesto-volba { display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; height: 36px; padding: 0 10px 0 9px; border: 1.5px solid var(--line); border-radius: 18px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 0.92rem; background: var(--bg); }
+  .mesto-volba:hover { border-color: var(--accent); }
+  .mesto-volba svg { width: 18px; height: 18px; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .mesto-volba .sipka { width: 15px; height: 15px; stroke: var(--muted); margin-left: -2px; }
+  .mv-hlava { margin-left: 12px; }
+  .menu a.mv-pas { display: none; margin-right: 6px; }
+  @media (max-width: 760px) { .mv-hlava { display: none; } .menu a.mv-pas { display: inline-flex; } }
   @media (min-width: 1300px) { .menu-pas { justify-content: space-between; } }
   @media (max-width: 1299px) {
     /* posúvateľný pás – okraje sa jemne strácajú */

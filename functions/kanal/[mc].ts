@@ -53,7 +53,7 @@ export const onRequestGet = async (ctx: any) => {
         id: `cesty-${o.typ}-${o.lat.toFixed(5)}-${o.lon.toFixed(5)}-${o.od ?? ''}`,
         nazov: `${druh}: ${o.adresa || o.nadpis}`,
         text: [o.nadpis, o.druh, o.od ? `od ${den(o.od)}` : '', o.do ? `do ${den(o.do)}` : '', o.vplyv?.length ? `obmedzenie: ${o.vplyv.join(', ')}` : '', o.kto ? `kto: ${o.kto}` : '', mc ? '' : o.cast].filter(Boolean).join(' · '),
-        odkaz: `${WEB}/mapa#miesto&${new URLSearchParams({ lat: String(o.lat), lon: String(o.lon), n: o.adresa || o.nadpis })}`,
+        odkaz: `${WEB}/bratislava/mapa#miesto&${new URLSearchParams({ lat: String(o.lat), lon: String(o.lon), n: o.adresa || o.nadpis })}`,
         cas: iso(o.od ?? Date.now()),
         kategoria: 'Na cestách',
       });
@@ -100,7 +100,7 @@ export const onRequestGet = async (ctx: any) => {
   <subtitle>${x(`Uzávierky na cestách, čo sa stavia a väčšie zmluvy – ${mc ?? 'celá Bratislava'}. Otvorené dáta, bez registrácie.`)}</subtitle>
   <id>${x(self)}</id>
   <link rel="self" href="${x(self)}"/>
-  <link rel="alternate" href="${WEB}/upozornenia"/>
+  <link rel="alternate" href="${WEB}/bratislava/upozornenia"/>
   <updated>${vyber[0]?.cas ?? new Date().toISOString()}</updated>
   <author><name>mestovcislach.sk</name></author>
 ${vyber.map((p) => `  <entry>

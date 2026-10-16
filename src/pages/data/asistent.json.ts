@@ -19,7 +19,7 @@ export async function GET() {
   if (obyv) {
     const rok = Object.keys(obyv.mesto.roky).sort().pop()!;
     temy.obyvatelstvo = {
-      nazov: 'Obyvateľstvo', stranka: '/',
+      nazov: 'Obyvateľstvo', stranka: '/bratislava',
       fakty: {
         zdroj: 'ŠÚ SR, trvale bývajúci obyvatelia k 31. 12.',
         mesto_po_rokoch: posledne(obyv.mesto.roky, 12),
@@ -30,7 +30,7 @@ export async function GET() {
   const volby = nacitaj('volby-bratislava.json');
   if (volby) {
     temy.volby = {
-      nazov: 'Voľby', stranka: '/volby',
+      nazov: 'Voľby', stranka: '/bratislava/volby',
       fakty: volby.volby.map((v: any) => ({
         volby: v.nazov, datum: v.datum,
         bratislava: { ucast_pct: v.mesto.ucast, strany_pct: v.mesto.strany.slice(0, 10).map((s: any) => `${s.nazov} ${s.podiel}`) },
@@ -43,7 +43,7 @@ export async function GET() {
   if (kom) {
     const viz = (k: any[]) => k?.find((x: any) => x.zvoleny);
     temy.komunalne = {
-      nazov: 'Komunálne a krajské voľby (primátor, starostovia, zastupiteľstvá, BSK)', stranka: '/volby#komunalne',
+      nazov: 'Komunálne a krajské voľby (primátor, starostovia, zastupiteľstvá, BSK)', stranka: '/bratislava/volby#komunalne',
       fakty: kom.volby.map((v: any) => v.stav !== 'vysledky' ? {
         volby: v.nazov, datum: v.datum, stav: 'výsledky ešte nie sú zverejnené – web ich doplní automaticky po zverejnení ŠÚ SR',
         kandidati_na_primatora: v.kandidati_primator?.map((x: any) => `${x.meno} (${x.strany})`) ?? 'Štatistický úrad SR ho zatiaľ nezverejnil v otvorených dátach (kandidátov poznať z médií a webu mesta)',
@@ -70,20 +70,20 @@ export async function GET() {
       const kat = td.kategorie.filter((k: string) => !/0-14 rokov|^Neznáme$/.test(k));
       temySc[td.nazov] = { Bratislava: podiely(td.mesto, kat), ...Object.fromEntries(Object.entries<any>(td.mestske_casti).map(([mc, d]) => [mc, podiely(d, kat)])) };
     }
-    temy.scitanie = { nazov: 'Sčítanie obyvateľov 2021 (k 1. 1. 2021): vek, vzdelanie (z obyvateľov 15+), národnosť, jazyk, viera, rodinný stav, domácnosti, byty', stranka: '/obyvatelia', fakty: temySc };
+    temy.scitanie = { nazov: 'Sčítanie obyvateľov 2021 (k 1. 1. 2021): vek, vzdelanie (z obyvateľov 15+), národnosť, jazyk, viera, rodinný stav, domácnosti, byty', stranka: '/bratislava/obyvatelia', fakty: temySc };
   }
   const rozp = nacitaj('rozpocet-bratislava.json');
   const zmluvy = nacitaj('zmluvy-bratislava.json');
   const majetok = nacitaj('majetok-bratislava.json');
   if (rozp) {
     temy.rozpocet = {
-      nazov: 'Rozpočet mesta', stranka: '/financie',
+      nazov: 'Rozpočet mesta', stranka: '/bratislava/financie',
       fakty: { jednotka: 'EUR, skutočnosť', ...Object.fromEntries(Object.entries(rozp.casti).map(([k, c]: [string, any]) => [k, posledne(c.roky, 3)])) },
     };
   }
   if (zmluvy) {
     temy.zmluvy = {
-      nazov: 'Zmluvy magistrátu', stranka: '/financie',
+      nazov: 'Zmluvy magistrátu', stranka: '/bratislava/financie',
       fakty: {
         po_rokoch: zmluvy.po_rokoch,
         najvacsi_dodavatelia_za_posledny_rok: zmluvy.posledny_rok.dodavatelia.slice(0, 10).map((d: any) => `${d.nazov} (IČO ${d.ico}): ${d.pocet} zmlúv, ${zaokr(d.suma)} €`),
@@ -94,7 +94,7 @@ export async function GET() {
   const nez = nacitaj('nezamestnanost-bratislava.json');
   if (nez) {
     temy.nezamestnanost = {
-      nazov: 'Nezamestnanosť v okresoch Bratislava I–V (ŠÚ SR, k 31. 12.)', stranka: '/obyvatelia#nezamestnanost',
+      nazov: 'Nezamestnanosť v okresoch Bratislava I–V (ŠÚ SR, k 31. 12.)', stranka: '/bratislava/obyvatelia#nezamestnanost',
       fakty: { okresy_a_mestske_casti: nez.okresy_mc,
         mesacne_upsvr_pdu_a_pocet_uchadzacov: Object.fromEntries(Object.entries<any>(nez.mesacne ?? {}).slice(-13).map(([k, v]) => [k, Object.fromEntries(Object.entries<any>(v).map(([u, x]) => [u, `PDU ${x.pdu} %, uchádzači ${x.uoz}`]))])),
         ...Object.fromEntries(Object.entries<any>(nez.ukazovatele).filter(([k]) => /miera|disponib/i.test(k))
@@ -109,7 +109,7 @@ export async function GET() {
     const mc: Record<string, number> = {};
     for (const z of eia.zamery.filter((x: any) => !x.ukoncene)) for (const m of z.mc) mc[m] = (mc[m] ?? 0) + 1;
     temy.stavby = {
-      nazov: 'Čo sa stavia – zámery v posudzovaní vplyvov na životné prostredie (EIA/SEA, Enviroportál)', stranka: '/vystavba#co-sa-stavia',
+      nazov: 'Čo sa stavia – zámery v posudzovaní vplyvov na životné prostredie (EIA/SEA, Enviroportál)', stranka: '/bratislava/vystavba#co-sa-stavia',
       fakty: {
         poznamka: 'Zámery väčších stavieb a plánov, ktoré prešli alebo prechádzajú posudzovaním EIA/SEA. Nie je to zoznam všetkých stavieb ani stavebných povolení. K prebiehajúcemu zámeru sa môže vyjadriť verejnosť – lehota a dokumenty sú na Enviroportáli.',
         prave_sa_posudzuje_spolu: eia.zamery.filter((z: any) => !z.ukoncene).length,
@@ -123,7 +123,7 @@ export async function GET() {
     const rad = byv.ceny.rad;
     const roky = Object.keys(byv.vystavba.roky).sort().slice(-10);
     temy.byvanie = {
-      nazov: 'Bývanie: ceny nehnuteľností (ŠÚ SR, index realizačných cien) a výstavba bytov (ŠÚ SR)', stranka: '/vystavba#ceny',
+      nazov: 'Bývanie: ceny nehnuteľností (ŠÚ SR, index realizačných cien) a výstavba bytov (ŠÚ SR)', stranka: '/bratislava/vystavba#ceny',
       fakty: {
         poznamka: 'Ceny sú len ako index za Bratislavský kraj (nie €/m², nie za mestské časti). Index rr = rovnaké obdobie minulého roka 100; idx = 1. štvrťrok 2022 = 100. Údaje o výstavbe za rok 2025 sú z nového registra a nemusia byť porovnateľné.',
         ceny_po_stvrtrokoch: rad.slice(-12).map((r: any) => `${r.obdobie}: BA kraj medziročne ${(r.ba_total_rr - 100).toFixed(1)} % (novostavby ${(r.ba_dw_new_rr - 100).toFixed(1)} %, staršie ${(r.ba_dw_exst_rr - 100).toFixed(1)} %), SR ${(r.sr_total_rr - 100).toFixed(1)} %; od 1. Q 2022 BA +${(r.ba_total_idx - 100).toFixed(1)} %`),
@@ -135,7 +135,7 @@ export async function GET() {
   const zmc = nacitaj('zmluvy-mc.json');
   if (zmc) {
     temy.zmluvy_mc = {
-      nazov: `Zmluvy a dotácie mestských častí (Centrálny register zmlúv, ${zmc.od} – ${zmc.do})`, stranka: '/financie#zmluvy-mc',
+      nazov: `Zmluvy a dotácie mestských častí (Centrálny register zmlúv, ${zmc.od} – ${zmc.do})`, stranka: '/bratislava/financie#zmluvy-mc',
       fakty: {
         poznamka: 'Hodnota = suma uvedená v zmluvách. Zmluvy s fyzickými osobami sú len započítané, bez mien. Dotácie = zmluvy s dotáciou alebo grantom v predmete; poskytnuté = mestská časť ich dala klubom a združeniam, prijaté = dostala ich od štátu, kraja, mesta alebo fondov.',
         ...Object.fromEntries(Object.entries<any>(zmc.mestske_casti).map(([mc, v]) => [mc, {
@@ -150,13 +150,13 @@ export async function GET() {
     };
   }
   if (majetok) {
-    temy.majetok = { nazov: 'Majetok mesta', stranka: '/financie', fakty: { spolu: majetok.spolu, druhy: majetok.druhy, spravcovia: majetok.spravcovia.slice(0, 8) } };
+    temy.majetok = { nazov: 'Majetok mesta', stranka: '/bratislava/financie', fakty: { spolu: majetok.spolu, druhy: majetok.druhy, spravcovia: majetok.spravcovia.slice(0, 8) } };
   }
   const mhd = nacitaj('doprava-bratislava.json');
   const stat = nacitaj('doprava-statistiky-bratislava.json');
   if (mhd) {
     temy.mhd = {
-      nazov: 'MHD', stranka: '/doprava#doprava',
+      nazov: 'MHD', stranka: '/bratislava/doprava#doprava',
       fakty: {
         typicky_pracovny_den: mhd.den, mesto: mhd.mesto,
         mestske_casti: mhd.mestske_casti.map((c: any) => ({ nazov: mc(c.kod_obce), zastavky: c.zastavky, linky: c.linky, odchody_za_den: c.odchody })),
@@ -166,12 +166,12 @@ export async function GET() {
     };
   }
   if (stat?.nehody) {
-    temy.nehody = { nazov: 'Dopravné nehody (historické, okresy)', stranka: '/doprava', fakty: { poznamka: 'aktuálne nehody mesto nezverejňuje', ...stat.nehody.vsetky?.okresy } };
+    temy.nehody = { nazov: 'Dopravné nehody (historické, okresy)', stranka: '/bratislava/doprava', fakty: { poznamka: 'aktuálne nehody mesto nezverejňuje', ...stat.nehody.vsetky?.okresy } };
   }
   const scit = nacitaj('scitace-bratislava.json');
   if (scit) {
     temy.scitace = {
-      nazov: 'Sčítače dopravy – kedy je najviac premávky', stranka: '/doprava#premavka',
+      nazov: 'Sčítače dopravy – kedy je najviac premávky', stranka: '/bratislava/doprava#premavka',
       fakty: {
         obdobie: scit.obdobie, poznamka: 'autá merajú len 4 sčítače v centre; hodina = začiatok hodiny',
         ...Object.fromEntries(Object.entries(scit.kategorie).map(([k, v]: [string, any]) => [k, v.scitace.map((s: any) =>
@@ -183,14 +183,14 @@ export async function GET() {
   const bajk = nacitaj('bajk-bratislava.json');
   if (cyklo) {
     temy.cyklo = {
-      nazov: 'Cyklotrasy a BAjk', stranka: '/doprava#cyklo',
+      nazov: 'Cyklotrasy a BAjk', stranka: '/bratislava/doprava#cyklo',
       fakty: { km_spolu: zaokr(cyklo.mesto.km_spolu), km: cyklo.mesto.km, stanice_bajk: bajk?.stanice.length, mestske_casti_km: cyklo.mestske_casti.map((c: any) => `${c.nazov} ${c.km_spolu.toFixed(1)}`) },
     };
   }
   const skoly = nacitaj('skoly-bratislava.json');
   if (skoly) {
     temy.skoly = {
-      nazov: 'Školy a škôlky', stranka: '/vybavenost',
+      nazov: 'Školy a škôlky', stranka: '/bratislava/vybavenost',
       fakty: Object.fromEntries(Object.entries(skoly.typy).map(([k, t]: [string, any]) => [k === 'zs' ? 'zakladne_skoly' : 'materske_skoly', {
         spolu: t.spolu, zriadovatel: t.zriadovatel, mestske_casti: Object.fromEntries(Object.entries(t.mestske_casti).map(([kod, n]) => [mc(kod), n])),
       }])),
@@ -198,7 +198,7 @@ export async function GET() {
   }
   const iedu = nacitaj('skoly-iedu.json');
   if (iedu) {
-    temy.skoly ??= { nazov: 'Školy a škôlky', stranka: '/vybavenost', fakty: {} };
+    temy.skoly ??= { nazov: 'Školy a škôlky', stranka: '/bratislava/vybavenost', fakty: {} };
     Object.assign(temy.skoly.fakty, {
       ziaci_a_skoly_mesto: Object.fromEntries(Object.entries<any>(iedu.mesto).map(([t, v]) => [iedu.typy[t], v])),
       ziaci_podla_mc: Object.fromEntries(Object.entries<any>(iedu.mestske_casti).map(([m, t]) => [m, `ZŠ ${t.zs?.ziakov ?? 0} žiakov (${t.zs?.skol ?? 0} škôl), MŠ ${t.ms?.ziakov ?? 0} detí, SŠ ${t.ss?.ziakov ?? 0} žiakov`])),
@@ -211,14 +211,14 @@ export async function GET() {
   const soc = nacitaj('socialne-bratislava.json');
   if (soc) {
     temy.socialne = {
-      nazov: 'Jasle a sociálne služby (register MPSVR SR)', stranka: '/vybavenost#socialne',
+      nazov: 'Jasle a sociálne služby (register MPSVR SR)', stranka: '/bratislava/vybavenost#socialne',
       fakty: { sluzieb: soc.sluzieb, druhy: soc.druhy.map((d: any) => `${d.druh}: ${d.pocet}${d.kapacita ? `, kapacita ${d.kapacita}` : ''}`), mestske_casti: soc.mestske_casti, poznamka: 'len aktívne služby s adresou v Bratislave, bez terénnych služieb; konkrétne zariadenia sú v miestach (Jasle, Sociálne služby)' },
     };
   }
   const ukaz = nacitaj('mc-ukazovatele.json');
   if (ukaz?.dlh) {
     const roky = Object.keys(ukaz.dlh.roky).sort();
-    temy.rozpocet ??= { nazov: 'Rozpočet mesta', stranka: '/financie', fakty: {} };
+    temy.rozpocet ??= { nazov: 'Rozpočet mesta', stranka: '/bratislava/financie', fakty: {} };
     temy.rozpocet.fakty.dlh = {
       popis: ukaz.dlh.popis,
       hlavne_mesto_podla_rokov: Object.fromEntries(roky.map((y) => [y, ukaz.dlh.roky[y]['Hlavné mesto']])),
@@ -226,20 +226,20 @@ export async function GET() {
     };
   }
   if (ukaz?.index_rozvoja) {
-    temy.rozvoj = { nazov: 'Index regionálneho rozvoja mestských častí (MIRRI SR)', stranka: '/obyvatelia#index-rozvoja', fakty: ukaz.index_rozvoja };
+    temy.rozvoj = { nazov: 'Index regionálneho rozvoja mestských častí (MIRRI SR)', stranka: '/bratislava/obyvatelia#index-rozvoja', fakty: ukaz.index_rozvoja };
   }
   const pamReg = nacitaj('pamiatky-register.json');
   if (pamReg) {
-    temy.pamiatky = { nazov: 'Kultúrne pamiatky – register MK SR', stranka: '/mapa#pamiatky', fakty: { ...pamReg, zdroj: pamReg.zdroj.nazov } };
+    temy.pamiatky = { nazov: 'Kultúrne pamiatky – register MK SR', stranka: '/bratislava/mapa#pamiatky', fakty: { ...pamReg, zdroj: pamReg.zdroj.nazov } };
   }
   const csd = nacitaj('csd-bratislava.json');
   if (csd) {
-    temy.csd = { nazov: 'Celoštátne sčítanie dopravy (diaľnice a cesty)', stranka: '/doprava#csd', fakty: { popis: csd.popis, narast_2005_2015: csd.narast_2005_2015, cesty: csd.cesty.slice(0, 16), najvytazenejsie_useky_2015: csd.useky_2015.slice(0, 8) } };
+    temy.csd = { nazov: 'Celoštátne sčítanie dopravy (diaľnice a cesty)', stranka: '/bratislava/doprava#csd', fakty: { popis: csd.popis, narast_2005_2015: csd.narast_2005_2015, cesty: csd.cesty.slice(0, 16), najvytazenejsie_useky_2015: csd.useky_2015.slice(0, 8) } };
   }
   const hl = nacitaj('hlasovania-msz.json');
   if (hl) {
     temy.hlasovania = {
-      nazov: hl.obdobia['9']?.z_webu_od ? `Hlasovania poslancov mestského zastupiteľstva (12/2014 – ${hl.obdobia['9'].do.slice(5, 7)}/${hl.obdobia['9'].do.slice(0, 4)})` : 'Hlasovania poslancov mestského zastupiteľstva (otvorené dáta 12/2014 – 6/2023)', stranka: '/volby#hlasovania',
+      nazov: hl.obdobia['9']?.z_webu_od ? `Hlasovania poslancov mestského zastupiteľstva (12/2014 – ${hl.obdobia['9'].do.slice(5, 7)}/${hl.obdobia['9'].do.slice(0, 4)})` : 'Hlasovania poslancov mestského zastupiteľstva (otvorené dáta 12/2014 – 6/2023)', stranka: '/bratislava/volby#hlasovania',
       fakty: {
         poznamka: hl.obdobia['9']?.z_webu_od
           ? `Do júna 2023 z otvorených dát mesta, od ${hl.obdobia['9'].z_webu_od} z webu zastupitelstvo.bratislava.sk. Údaje obdobia 2022–2026 siahajú do ${hl.obdobia['9'].do}.`
@@ -259,7 +259,7 @@ export async function GET() {
       ulice: u.ulice.slice(0, 10).map((x: any) => `${x.ulica} (${x.mc}): ${x.pocet}`),
       mestske_casti: Object.fromEntries(Object.entries<any>(u.mestske_casti).map(([m, v]) => [m, v.roky])) };
     temy.bezpecnost = {
-      nazov: 'Bezpečnosť – evidencia mestskej polície 2017–2022 a podnety občanov', stranka: '/bezpecnost',
+      nazov: 'Bezpečnosť – evidencia mestskej polície 2017–2022 a podnety občanov', stranka: '/bratislava/bezpecnost',
       fakty: { poznamka: 'Mesto zverejnilo údaje mestskej polície len za 2017–2022; trestné činy rieši najmä Policajný zbor SR.',
         priestupky: udal(bez.priestupky), podozrenia_z_trestnych_cinov: udal(bez.trestne_ciny), ine_zasahy: udal(bez.ostatne),
         podnety_obcanov: bez.podnety && { spolu: bez.podnety.spolu, roky: bez.podnety.roky, kategorie: bez.podnety.kategorie.slice(0, 10), stavy: bez.podnety.stavy, median_dni: bez.podnety.median_dni_vyriesenia } },
@@ -268,7 +268,7 @@ export async function GET() {
   const fakt = nacitaj('faktury-bratislava.json');
   if (fakt) {
     temy.faktury = {
-      nazov: 'Faktúry, objednávky a zmluvy magistrátu a mestských firiem (OLO, Marianum, MIB)', stranka: '/financie#faktury',
+      nazov: 'Faktúry, objednávky a zmluvy magistrátu a mestských firiem (OLO, Marianum, MIB)', stranka: '/bratislava/financie#faktury',
       fakty: Object.fromEntries(fakt.datasety.map((d: any) => [`${d.organizacia} – ${d.typ}`, {
         roky: Object.fromEntries(Object.entries<any>(d.roky).slice(-5)),
         najvacsi_dodavatelia_3_roky: d.dodavatelia_posledne_3_roky.slice(0, 8).map((x: any) => `${x.nazov}: ${x.suma} € (${x.pocet}×)`),
@@ -279,25 +279,25 @@ export async function GET() {
   const vrs = nacitaj('vrstvy-bratislava.json');
   const klima = nacitaj('klima-bratislava.json');
   if (klima) {
-    temy.klima = { nazov: 'Klimatický atlas – riziká horúčav a prívalových dažďov (mapa)', stranka: '/mapa#horucavy',
+    temy.klima = { nazov: 'Klimatický atlas – riziká horúčav a prívalových dažďov (mapa)', stranka: '/bratislava/mapa#horucavy',
       fakty: { poznamka: 'Mapa po štvorcoch 200 × 200 m, hodnoty sa porovnávajú v rámci mesta; konkrétne miesto je na mape (vrstvy Klíma a obyvatelia).', vrstvy: Object.values<any>(klima.vrstvy).map((v) => `${v.nazov}: ${v.popis ?? ''}`) } };
   }
   const katStav = nacitaj('katalog-stav.json');
   temy.hluk = {
-    nazov: 'Hluk – strategické hlukové mapy ÚVZ SR', stranka: '/mapa#hluk',
+    nazov: 'Hluk – strategické hlukové mapy ÚVZ SR', stranka: '/bratislava/mapa#hluk',
     fakty: { popis: 'Mapa izofón 55, 60, 65 a 70 dB pre hluk z ciest (Lden celý deň, Lnight noc) a z priemyslu v aglomerácii Bratislava. Konkrétnu ulicu si treba pozrieť na mape webu (vrstva Hluk). Odporúčanie WHO pre hluk z ciest: najviac 53 dB Lden a 45 dB v noci; vyhláška pre obytné územie pri hlavných cestách: 60 dB cez deň, 50 dB v noci.' },
   };
   const vyb = nacitaj('vybavenost-bratislava.json');
   if (vyb) {
     temy.vybavenost = {
-      nazov: 'Lekárne, zdravotníctvo, nabíjanie (počty, OpenStreetMap)', stranka: '/vybavenost',
+      nazov: 'Lekárne, zdravotníctvo, nabíjanie (počty, OpenStreetMap)', stranka: '/bratislava/vybavenost',
       fakty: { mesto: vyb.mesto, mestske_casti: vyb.mestske_casti.map((c: any) => `${c.nazov}: lekárne ${c.lekarne}, nemocnice ${c.nemocnice}, ambulancie ${c.ambulancie}, nabíjacie stanice ${c.nabijanie}`) },
     };
   }
   const ovz = nacitaj('ovzdusie-bratislava.json');
   if (ovz) {
     temy.ovzdusie = {
-      nazov: 'Kvalita ovzdušia (ročné hodnoty)', stranka: '/prostredie',
+      nazov: 'Kvalita ovzdušia (ročné hodnoty)', stranka: '/bratislava/prostredie',
       fakty: Object.fromEntries(Object.entries(ovz.ukazovatele).map(([k, u]: [string, any]) => [k, { popis: u.popis, jednotka: u.jednotka, limit: u.limit, stanice: Object.fromEntries(Object.entries(u.stanice).map(([s, r]: [string, any]) => [s, posledne(r, 4)])) }])),
     };
   }
@@ -305,7 +305,7 @@ export async function GET() {
   if (pr) {
     const rokV = Object.keys(pr.vysadba.roky).sort().pop()!;
     temy.prostredie = {
-      nazov: 'Odpad, výsadba stromov, čierne skládky', stranka: '/prostredie',
+      nazov: 'Odpad, výsadba stromov, čierne skládky', stranka: '/bratislava/prostredie',
       fakty: {
         odpad_kg_na_obyvatela: pr.odpad.na_obyvatela.roky, recyklacia_pct: pr.odpad.recyklacia.roky, skladkovanie_pct: pr.odpad.skladkovanie.roky,
         [`vysadba_${rokV}`]: Object.fromEntries(Object.entries(pr.vysadba.roky[rokV]).map(([k, v]) => [mc(k), v])),
@@ -316,7 +316,7 @@ export async function GET() {
   const prir = nacitaj('priroda-bratislava.json');
   if (prir) {
     temy.priroda = {
-      nazov: 'Chránená príroda', stranka: '/prostredie',
+      nazov: 'Chránená príroda', stranka: '/bratislava/prostredie',
       fakty: { mesto: prir.mesto, mestske_casti: prir.mestske_casti.map((c: any) => `${c.nazov}: chránené ${c.chranene_pct} %, Natura 2000 ${c.natura_pct} %`), najvacsie_uzemia: prir.uzemia.slice(0, 12).map((u: any) => `${u.nazov} (${u.kategoria}) ${u.km2_v_meste} km²`) },
     };
   }

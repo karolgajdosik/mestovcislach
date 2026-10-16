@@ -2,7 +2,7 @@
 // Bezpečnosť a poriadok: udalosti mestskej polície 2017–2022 a podnety občanov magistrátu.
 import fs from 'node:fs';
 import path from 'node:path';
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
 
 const nacitaj = (subor: string) => {
   const p = path.join(process.cwd(), 'data', subor);
@@ -119,14 +119,14 @@ const graf = pr ? JSON.stringify({ roky, priestupky: roky.map((r) => pr.roky[r])
           <p class="zdroj">
             Stav: {Object.entries<number>(pod.stavy).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, v]) => `${k.toLowerCase()} ${fmt(v)}`).join(', ')}.
             {Object.keys(pod.median_dni_vyriesenia ?? {}).length > 0 && <> Medián vybavenia: {Object.entries<number>(pod.median_dni_vyriesenia).map(([r, d]) => `${r}: ${d} dní`).join(', ')}.</>}
-            <a href="/mapa#podnety">Podnety na mape</a>. Nadpisy a texty podnetov nezverejňujeme.
+            <a href="/bratislava/mapa#podnety">Podnety na mape</a>. Nadpisy a texty podnetov nezverejňujeme.
           </p>
         </section>
       )}
 
       <p class="zdroj">
         Zdroj: <a href="https://data.bratislava.sk">data.bratislava.sk</a> – evidencia udalostí Mestskej polície hlavného mesta (priestupky, podozrenia z trestných činov, ostatné udalosti, pokuty)
-        a práca s podnetmi magistrátu, licencia CC BY 4.0. Ďalšie údaje mestskej polície (kamery, hovory na linku 159, počet policajtov, rozpočet) sú v <a href="/katalog?q=mestská polícia">Katalógu dát</a>.
+        a práca s podnetmi magistrátu, licencia CC BY 4.0. Ďalšie údaje mestskej polície (kamery, hovory na linku 159, počet policajtov, rozpočet) sú v <a href="/bratislava/katalog?q=mestská polícia">Katalógu dát</a>.
       </p>
     </div>
   )}

@@ -2,7 +2,7 @@
 // Katalóg dát: všetky datasety portálu data.bratislava.sk a čo s nimi web robí.
 import fs from 'node:fs';
 import path from 'node:path';
-import Base from '../../layouts/Base.astro';
+import Base from '../../../layouts/Base.astro';
 
 const p = path.join(process.cwd(), 'data', 'katalog-stav.json');
 const stav = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;

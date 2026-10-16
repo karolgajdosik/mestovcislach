@@ -2,7 +2,7 @@
 // Kto žije v Bratislave – Sčítanie obyvateľov, domov a bytov 2021 podľa mestských častí.
 import fs from 'node:fs';
 import path from 'node:path';
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
 
 const p = path.join(process.cwd(), 'data', 'scitanie-bratislava.json');
 // Nezamestnanosť v okresoch Bratislava I–V (ŠÚ SR, k 31. 12.)
@@ -174,7 +174,7 @@ const grafScenare = scenare ? JSON.stringify(Object.entries([...scenare.riadky].
               <tbody>{prognoza.map((r: any) => <tr><td>{r.mc}</td><td class="num">{r.a ? fmt(r.a) : '–'}</td><td class="num">{r.b ? fmt(r.b) : '–'}</td><td class="num">{r.zmena != null ? `${r.zmena > 0 ? '+' : ''}${des(r.zmena)} %` : '–'}</td><td class="num">{r.vek22 && r.vek ? `${des(r.vek22)} → ${des(r.vek)}` : '–'}</td><td class="num">{r.starnutie ? des(r.starnutie) : '–'}</td></tr>)}</tbody>
             </table>
           </div>
-          <p class="zdroj">Index starnutia = počet ľudí nad 65 rokov na 100 detí do 14 rokov. Zdroj: tabuľky <a href={`/katalog/${progPocet.id}`}>{progPocet.nazov}</a>, <a href={`/katalog/${progVek?.id}`}>priemerný vek</a>, <a href={`/katalog/${progStarnutie?.id}`}>index starnutia</a>{scenare && <>, <a href={`/katalog/${scenare.id}`}>scenáre pre mesto</a></>} (data.bratislava.sk).</p>
+          <p class="zdroj">Index starnutia = počet ľudí nad 65 rokov na 100 detí do 14 rokov. Zdroj: tabuľky <a href={`/bratislava/katalog/${progPocet.id}`}>{progPocet.nazov}</a>, <a href={`/bratislava/katalog/${progVek?.id}`}>priemerný vek</a>, <a href={`/bratislava/katalog/${progStarnutie?.id}`}>index starnutia</a>{scenare && <>, <a href={`/bratislava/katalog/${scenare.id}`}>scenáre pre mesto</a></>} (data.bratislava.sk).</p>
         </section>
       )}
 

@@ -2,7 +2,7 @@
 // Detail datasetu z katalógu: popis, automatický graf, tabuľka a stiahnutie v CSV.
 import fs from 'node:fs';
 import path from 'node:path';
-import Base from '../../layouts/Base.astro';
+import Base from '../../../layouts/Base.astro';
 
 export function getStaticPaths() {
   const p = path.join(process.cwd(), 'data', 'katalog-stav.json');
@@ -19,7 +19,7 @@ const fmt = (v: any) => (typeof v === 'number' ? v.toLocaleString('sk-SK', { max
 const UKAZKA = 60;
 ---
 <Base title={`${t.nazov} – Katalóg dát – mestovcislach.sk`} description={t.popis || `${t.nazov} – otvorené dáta hlavného mesta Bratislavy s grafom a stiahnutím v CSV.`}>
-  <p class="spat"><a href="/katalog">← Katalóg dát</a> · {t.kategoria}</p>
+  <p class="spat"><a href="/bratislava/katalog">← Katalóg dát</a> · {t.kategoria}</p>
   <h1>{t.nazov}</h1>
   {t.popis && <p class="lead">{t.popis}</p>}
   <p class="meta">

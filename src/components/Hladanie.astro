@@ -34,7 +34,7 @@
     'Katalóg dát': { max: 5, vaha: 1 }, 'Poslanci': { max: 4, vaha: 1.4 }, 'Firmy a organizácie': { max: 4, vaha: 0.9 },
     'Čo sa stavia': { max: 4, vaha: 1 },
   };
-  const RYCHLE = ['/vybavenost#spadova-skola', '/doprava#naozivo', '/volby#komunalne', '/volby#hlasovania', '/financie#zmluvy-mc', '/mapa'];
+  const RYCHLE = ['/bratislava/vybavenost#spadova-skola', '/bratislava/doprava#naozivo', '/bratislava/volby#komunalne', '/bratislava/volby#hlasovania', '/bratislava/financie#zmluvy-mc', '/bratislava/mapa'];
 
   const dialog = document.getElementById('hladanie-dialog') as HTMLDialogElement;
   const vstup = document.getElementById('hladanie-vstup') as HTMLInputElement;
@@ -56,8 +56,8 @@
 
   // odkaz podľa typu položky (pri miestach a uliciach ho skladáme tu – index je menší)
   const odkaz = (p: Polozka) => {
-    if (p.g === 'Miesta') return `/mapa#miesto&${new URLSearchParams({ lat: String(p.lat), lon: String(p.lon), n: p.t, k: p.w })}`;
-    if (p.g === 'Ulice') return `/vybavenost?ulica=${encodeURIComponent(`${p.t}, ${p.s}`)}#spadova-skola`;
+    if (p.g === 'Miesta') return `/bratislava/mapa#miesto&${new URLSearchParams({ lat: String(p.lat), lon: String(p.lon), n: p.t, k: p.w })}`;
+    if (p.g === 'Ulice') return `/bratislava/vybavenost?ulica=${encodeURIComponent(`${p.t}, ${p.s}`)}#spadova-skola`;
     return p.u;
   };
   // popis ako HTML: preložiteľná časť a časť s názvami (translate="no")

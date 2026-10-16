@@ -1,7 +1,7 @@
 ---
 import fs from 'node:fs';
 import path from 'node:path';
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
 
 const nacitaj = (subor: string) => {
   const p = path.join(process.cwd(), 'data', subor);
@@ -118,7 +118,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
             </div>
             <p class="zdroj">
               Počty žiakov, pedagógov a rozpočty škôl: <a href={iedu.zdroj.url}>{iedu.zdroj.nazov}</a>; záujem uchádzačov: <a href={iedu.zdroj_zaujem.url}>{iedu.zdroj_zaujem.nazov}</a> (posledné zverejnené prijímacie konanie).
-              Údaje cez <a href="https://data.slovensko.sk">data.slovensko.sk</a>. Všetky školy sú aj na <a href="/mapa">mape</a>.
+              Údaje cez <a href="https://data.slovensko.sk">data.slovensko.sk</a>. Všetky školy sú aj na <a href="/bratislava/mapa">mape</a>.
             </p>
           </section>
         </>
@@ -157,7 +157,7 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
         </div>
         <p class="zdroj">
           Zdroj: <a href={soc.zdroj.url}>{soc.zdroj.nazov}</a> (data.slovensko.sk). Len aktívne služby s adresou v Bratislave; terénne služby bez pevného miesta nie sú započítané.
-          Zverejňujeme len právnické osoby a samosprávu, bez telefónov, e-mailov a mien štatutárov. Jasle a ostatné služby nájdete aj na <a href="/mapa">mape</a>.
+          Zverejňujeme len právnické osoby a samosprávu, bez telefónov, e-mailov a mien štatutárov. Jasle a ostatné služby nájdete aj na <a href="/bratislava/mapa">mape</a>.
         </p>
       </section>
     </>
@@ -170,8 +170,8 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
         <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-0)"></i>Lekárne</p><p class="value">{fmt(vyb.mesto.lekarne)}</p></div>
         <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-2)"></i>Nemocnice a polikliniky</p><p class="value">{fmt(vyb.mesto.nemocnice)}</p></div>
         <div class="card kpi"><p class="label"><i class="bod" style="background:var(--v-3)"></i>Nabíjacie stanice</p><p class="value">{fmt(vyb.mesto.nabijanie)}</p><p class="delta">{fmt(vyb.mesto.nabijacie_miesta)} nabíjacích miest</p></div>
-        {pamReg ? <div class="card kpi"><p class="label">Národné kultúrne pamiatky</p><p class="value">{fmt(pamReg.pamiatok)}</p><p class="delta">{fmt(pamReg.objektov)} pamiatkových objektov podľa registra MK SR, z toho {pamReg.mestske_casti['Staré Mesto']} v Starom Meste. <a href="/mapa#pamiatky">Na mape</a></p></div>
-          : vyb.mesto.pamiatky != null && <div class="card kpi"><p class="label">Kultúrne pamiatky v OSM</p><p class="value">{fmt(vyb.mesto.pamiatky)}</p><p class="delta"><a href="/mapa">Na mape</a></p></div>}
+        {pamReg ? <div class="card kpi"><p class="label">Národné kultúrne pamiatky</p><p class="value">{fmt(pamReg.pamiatok)}</p><p class="delta">{fmt(pamReg.objektov)} pamiatkových objektov podľa registra MK SR, z toho {pamReg.mestske_casti['Staré Mesto']} v Starom Meste. <a href="/bratislava/mapa#pamiatky">Na mape</a></p></div>
+          : vyb.mesto.pamiatky != null && <div class="card kpi"><p class="label">Kultúrne pamiatky v OSM</p><p class="value">{fmt(vyb.mesto.pamiatky)}</p><p class="delta"><a href="/bratislava/mapa">Na mape</a></p></div>}
       </section>
 
       <section class="card" id="vybavenost">
@@ -208,9 +208,9 @@ const stav = vyb?.zdroj?.stav_osm ? new Date(vyb.zdroj.stav_osm).toLocaleDateStr
 
 <script>
   import L from 'leaflet';
-  import { osmPodklad } from '../scripts/podklad';
-  import { popupMiesta } from '../scripts/miesto';
-  import { najdi, rozdel, zoznamUlic, type Rajonizacia, type Vysledok } from '../scripts/rajon';
+  import { osmPodklad } from '../../scripts/podklad';
+  import { popupMiesta } from '../../scripts/miesto';
+  import { najdi, rozdel, zoznamUlic, type Rajonizacia, type Vysledok } from '../../scripts/rajon';
   import 'leaflet/dist/leaflet.css';
 
   const el = document.getElementById('mapa-vyb');

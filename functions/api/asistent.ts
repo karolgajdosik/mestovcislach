@@ -69,18 +69,18 @@ const KATEGORIE: [RegExp, string][] = [
   [/zastav/, 'Zastávka MHD'], [/bajk(?!al)|zdielan.*bicyk/, 'Stanica BAjk'],
 ];
 const STRANKY: Record<string, string> = {
-  obyvatelstvo: '/', scitanie: '/obyvatelia', volby: '/volby', komunalne: '/volby#komunalne', rozpocet: '/financie', zmluvy: '/financie', majetok: '/financie', mhd: '/doprava#doprava',
-  nehody: '/doprava', scitace: '/doprava#premavka', cyklo: '/doprava#cyklo', skoly: '/vybavenost', vybavenost: '/vybavenost',
-  ovzdusie: '/prostredie#ovzdusie-teraz', prostredie: '/prostredie', priroda: '/prostredie', vystrahy: '/#dnes', dunaj: '/prostredie#dunaj',
-  cesty: '/doprava#naozivo', miesta: '/mapa', spadove: '/vybavenost#spadova-skola',
-  socialne: '/vybavenost#socialne', hlasovania: '/volby#hlasovania', bezpecnost: '/bezpecnost', faktury: '/financie#faktury', zmluvy_mc: '/financie#zmluvy-mc', nezamestnanost: '/obyvatelia#nezamestnanost', stavby: '/vystavba#co-sa-stavia', byvanie: '/vystavba#ceny', klima: '/mapa#horucavy', rozvoj: '/obyvatelia#index-rozvoja', pamiatky: '/mapa#pamiatky', csd: '/doprava#csd', hluk: '/mapa#hluk',
+  obyvatelstvo: '/bratislava', scitanie: '/bratislava/obyvatelia', volby: '/bratislava/volby', komunalne: '/bratislava/volby#komunalne', rozpocet: '/bratislava/financie', zmluvy: '/bratislava/financie', majetok: '/bratislava/financie', mhd: '/bratislava/doprava#doprava',
+  nehody: '/bratislava/doprava', scitace: '/bratislava/doprava#premavka', cyklo: '/bratislava/doprava#cyklo', skoly: '/bratislava/vybavenost', vybavenost: '/bratislava/vybavenost',
+  ovzdusie: '/bratislava/prostredie#ovzdusie-teraz', prostredie: '/bratislava/prostredie', priroda: '/bratislava/prostredie', vystrahy: '/bratislava#dnes', dunaj: '/bratislava/prostredie#dunaj',
+  cesty: '/bratislava/doprava#naozivo', miesta: '/bratislava/mapa', spadove: '/bratislava/vybavenost#spadova-skola',
+  socialne: '/bratislava/vybavenost#socialne', hlasovania: '/bratislava/volby#hlasovania', bezpecnost: '/bratislava/bezpecnost', faktury: '/bratislava/financie#faktury', zmluvy_mc: '/bratislava/financie#zmluvy-mc', nezamestnanost: '/bratislava/obyvatelia#nezamestnanost', stavby: '/bratislava/vystavba#co-sa-stavia', byvanie: '/bratislava/vystavba#ceny', klima: '/bratislava/mapa#horucavy', rozvoj: '/bratislava/obyvatelia#index-rozvoja', pamiatky: '/bratislava/mapa#pamiatky', csd: '/bratislava/doprava#csd', hluk: '/bratislava/mapa#hluk',
 };
 const NAZVY_STRANOK: Record<string, string> = {
-  '/': 'Prehľad', '/obyvatelia': 'Obyvatelia', '/volby': 'Voľby', '/volby#komunalne': 'Komunálne voľby', '/financie': 'Financie', '/doprava#doprava': 'Doprava – MHD', '/doprava': 'Doprava',
-  '/doprava#premavka': 'Kedy je premávka', '/doprava#cyklo': 'Cyklotrasy', '/vybavenost': 'Vybavenosť', '/prostredie': 'Prostredie',
-  '/#dnes': 'Dnes v Bratislave', '/prostredie#dunaj': 'Dunaj', '/doprava#naozivo': 'Uzávierky dnes', '/prostredie#ovzdusie-teraz': 'Ovzdušie teraz', '/mapa': 'Mapa',
-  '/vybavenost#spadova-skola': 'Spádová škola podľa adresy', '/vybavenost#socialne': 'Jasle a sociálne služby', '/obyvatelia#index-rozvoja': 'Index rozvoja',
-  '/mapa#pamiatky': 'Pamiatky na mape', '/volby#hlasovania': 'Hlasovania poslancov', '/bezpecnost': 'Bezpečnosť', '/financie#faktury': 'Faktúry a objednávky', '/financie#zmluvy-mc': 'Zmluvy mestských častí', '/obyvatelia#nezamestnanost': 'Nezamestnanosť', '/vystavba#co-sa-stavia': 'Čo sa stavia', '/vystavba#ceny': 'Bývanie a ceny bytov', '/mapa#horucavy': 'Mapa horúčav', '/doprava#csd': 'Sčítanie dopravy', '/mapa#hluk': 'Hluková mapa',
+  '/bratislava': 'Prehľad', '/bratislava/obyvatelia': 'Obyvatelia', '/bratislava/volby': 'Voľby', '/bratislava/volby#komunalne': 'Komunálne voľby', '/bratislava/financie': 'Financie', '/bratislava/doprava#doprava': 'Doprava – MHD', '/bratislava/doprava': 'Doprava',
+  '/bratislava/doprava#premavka': 'Kedy je premávka', '/bratislava/doprava#cyklo': 'Cyklotrasy', '/bratislava/vybavenost': 'Vybavenosť', '/bratislava/prostredie': 'Prostredie',
+  '/bratislava#dnes': 'Dnes v Bratislave', '/bratislava/prostredie#dunaj': 'Dunaj', '/bratislava/doprava#naozivo': 'Uzávierky dnes', '/bratislava/prostredie#ovzdusie-teraz': 'Ovzdušie teraz', '/bratislava/mapa': 'Mapa',
+  '/bratislava/vybavenost#spadova-skola': 'Spádová škola podľa adresy', '/bratislava/vybavenost#socialne': 'Jasle a sociálne služby', '/bratislava/obyvatelia#index-rozvoja': 'Index rozvoja',
+  '/bratislava/mapa#pamiatky': 'Pamiatky na mape', '/bratislava/volby#hlasovania': 'Hlasovania poslancov', '/bratislava/bezpecnost': 'Bezpečnosť', '/bratislava/financie#faktury': 'Faktúry a objednávky', '/bratislava/financie#zmluvy-mc': 'Zmluvy mestských častí', '/bratislava/obyvatelia#nezamestnanost': 'Nezamestnanosť', '/bratislava/vystavba#co-sa-stavia': 'Čo sa stavia', '/bratislava/vystavba#ceny': 'Bývanie a ceny bytov', '/bratislava/mapa#horucavy': 'Mapa horúčav', '/bratislava/doprava#csd': 'Sčítanie dopravy', '/bratislava/mapa#hluk': 'Hluková mapa',
 };
 const STOP = new Set(['ktore', 'ktora', 'ktory', 'kde', 'kedy', 'ako', 'aky', 'aka', 'ake', 'kolko', 'bratislava', 'bratislave', 'bratislavy', 'mesto', 'meste', 'najblizsia', 'najblizsie', 'otvorena', 'otvorene', 'otvoreny', 'teraz', 'dnes', 'prosim', 'chcem', 'potrebujem', 'mate', 'viete', 'nejaka', 'nejake', 'nejaky', 'este', 'blizko', 'pri', 'okolo', 'ulica', 'ulici', 'ulicu']);
 
@@ -397,7 +397,7 @@ export const onRequestPost = async (ctx: any) => {
       const stlpce = t.stlpce.map((x: any) => x.n);
       const riadky = t.riadky.slice(-120).map((r: any[]) => r.join(' | '));
       kontext[`Tabuľka z katalógu: ${t.nazov}`] = { stlpce: stlpce.join(' | '), riadky: riadky.join('\n').slice(0, 7000), popis: t.popis, riadkov_spolu: t.riadky.length };
-      katalogove.push({ url: `/katalog/${d.id}`, nazov: d.n.length > 40 ? d.n.slice(0, 38) + '…' : d.n });
+      katalogove.push({ url: `/bratislava/katalog/${d.id}`, nazov: d.n.length > 40 ? d.n.slice(0, 38) + '…' : d.n });
     } catch { /* tabuľka nedostupná */ }
   }
   const ziveData = await Promise.all(ziveTypy.map((t) => zive(t, request.url, cast)));
@@ -429,7 +429,7 @@ export const onRequestPost = async (ctx: any) => {
     .slice(0, 4).map((u) => ({ url: u, nazov: NAZVY_STRANOK[u] ?? u }));
   // otázka o konkrétnej mestskej časti → odkaz na jej profil ako prvý
   const castOtazky = najdiCast(otazka, data.mestske_casti);
-  if (castOtazky) odkazy.unshift({ url: `/mestske-casti/${castOtazky.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, '-')}`, nazov: `${castOtazky} – profil` });
+  if (castOtazky) odkazy.unshift({ url: `/bratislava/mestske-casti/${castOtazky.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, '-')}`, nazov: `${castOtazky} – profil` });
   odkazy.push(...katalogove);
   odkazy.splice(5);
   if (telo.stream === true) return streamuj(ctx, messages, odkazy);

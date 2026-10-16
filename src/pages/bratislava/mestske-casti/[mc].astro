@@ -2,8 +2,8 @@
 // Profil mestskej časti: všetky údaje webu o jednej časti na jednom mieste, s porovnaním s celým mestom.
 import fs from 'node:fs';
 import path from 'node:path';
-import Base from '../../layouts/Base.astro';
-import { profily, type Profil, type Porovnanie } from '../../lib/profil-mc';
+import Base from '../../../layouts/Base.astro';
+import { profily, type Profil, type Porovnanie } from '../../../lib/profil-mc';
 
 export async function getStaticPaths() {
   const { profily: p } = await profily();
@@ -66,7 +66,7 @@ const MIESTA: [string, string, string][] = [
 const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpočet a zmluvy, školy, bezpečnosť, klíma a prognóza – všetko o mestskej časti na jednom mieste.`;
 ---
 <Base title={`${p.mc} – mestská časť Bratislavy – mestovcislach.sk`} description={popis}>
-  <nav class="drobky" aria-label="Kde sa nachádzate"><a href="/mestske-casti">Mestské časti</a> <span aria-hidden="true">/</span> <span translate="no">{p.mc}</span></nav>
+  <nav class="drobky" aria-label="Kde sa nachádzate"><a href="/bratislava/mestske-casti">Mestské časti</a> <span aria-hidden="true">/</span> <span translate="no">{p.mc}</span></nav>
   <section class="hero">
     <h1 translate="no">{p.mc}</h1>
     <ul class="zakladne">
@@ -109,7 +109,7 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
         ))}
         <p class="legenda"><span class="l-mc"></span><span translate="no">{p.mc}</span> <span class="l-ba"></span>priemer Bratislavy · sčítanie 2021</p>
       </div>
-      <a class="viac" href={`/obyvatelia?mc=${encodeURIComponent(p.mc)}#obyv`}>Podrobne zo sčítania</a>
+      <a class="viac" href={`/bratislava/obyvatelia?mc=${encodeURIComponent(p.mc)}#obyv`}>Podrobne zo sčítania</a>
     </section>
 
     <section class="card" id="buducnost">
@@ -120,7 +120,7 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
         <div><dt>Index regionálneho rozvoja</dt><dd>{des(p.rozvoj.hodnota, 2)}</dd><dd class="pozn">{z17(p.rozvoj.poradie, 'najvyšší', 'najnižší')} · priemer kraja {des(p.rozvoj.kraj, 2)}</dd></div>
         {p.nezamestnanost && <div><dt>Nezamestnanosť v okrese</dt><dd>{des(p.nezamestnanost.pdu, 2)} %</dd><dd class="pozn">okres {p.nezamestnanost.okres}, {p.nezamestnanost.mesiac?.split('-').reverse().join('/')} · Slovensko {des(p.nezamestnanost.slovensko, 2)} %</dd></div>}
       </dl>
-      <a class="viac" href="/obyvatelia#prognoza">Prognóza a nezamestnanosť</a>
+      <a class="viac" href="/bratislava/obyvatelia#prognoza">Prognóza a nezamestnanosť</a>
     </section>
 
     <section class="card" id="volby">
@@ -140,7 +140,7 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
           <p class="pozn">účasť {des(p.volby.nrsr.ucast)} %{p.volby.ep && ` · eurovoľby 2024: účasť ${des(p.volby.ep.ucast)} %, víťaz ${p.volby.ep.strany[0]?.nazov} ${des(p.volby.ep.strany[0]?.podiel)} %`}</p>
         </div>
       )}
-      <a class="viac" href="/volby#komunalne">Komunálne voľby 2026</a>
+      <a class="viac" href="/bratislava/volby#komunalne">Komunálne voľby 2026</a>
     </section>
 
     <section class="card" id="peniaze">
@@ -158,7 +158,7 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
         <div class="blok"><h3>Komu dala dotácie</h3>
           <ol class="zoznam" translate="no">{p.financie.dotacie.map((x) => <li><span>{x.nazov}</span><span class="num">{mil(x.suma)}</span></li>)}</ol></div>
       )}
-      <a class="viac" href="/financie#zmluvy-mc">Hľadať v zmluvách mestskej časti</a>
+      <a class="viac" href="/bratislava/financie#zmluvy-mc">Hľadať v zmluvách mestskej časti</a>
     </section>
 
     <section class="card" id="sluzby">
@@ -170,9 +170,9 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
         <p class="pozn-text">Sociálne služby: {Object.entries(p.socialne).map(([k, n]) => `${n} ${SOCIALNE[k] ?? k}`).join(', ')}.</p>
       )}
       <ul class="miesta">
-        {MIESTA.filter(([k]) => p.miesta[k]).map(([k, n, tema]) => <li><a href={`/mapa#tema=${tema}`}><strong>{p.miesta[k]}</strong> {n}</a></li>)}
+        {MIESTA.filter(([k]) => p.miesta[k]).map(([k, n, tema]) => <li><a href={`/bratislava/mapa#tema=${tema}`}><strong>{p.miesta[k]}</strong> {n}</a></li>)}
       </ul>
-      <a class="viac" href="/vybavenost#spadova-skola">Spádová škola podľa adresy</a>
+      <a class="viac" href="/bratislava/vybavenost#spadova-skola">Spádová škola podľa adresy</a>
     </section>
 
     <section class="card" id="stavby">
@@ -186,8 +186,8 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
           <ol class="zoznam">{eiaAktivne.slice(0, 5).map((z) => <li><span translate="no">{z.nazov}</span><span class="num pozn">{z.stav}</span></li>)}</ol>
         </div>
       )}
-      <a class="viac" href={`/vystavba?mc=${p.slug}#co-sa-stavia`}>Všetky zámery na mape</a>
-      <a class="viac" href={`/upozornenia?mc=${p.slug}`}>Odoberať upozornenia z tejto časti</a>
+      <a class="viac" href={`/bratislava/vystavba?mc=${p.slug}#co-sa-stavia`}>Všetky zámery na mape</a>
+      <a class="viac" href={`/bratislava/upozornenia?mc=${p.slug}`}>Odoberať upozornenia z tejto časti</a>
     </section>
 
     <section class="card" id="bezpecnost">
@@ -198,7 +198,7 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
         {p.bezpecnost.podnety != null && <div><dt>Podnety obyvateľov magistrátu</dt><dd>{fmt(p.bezpecnost.podnety)}</dd><dd class="pozn">od roku 2017</dd></div>}
       </dl>
       {p.bezpecnost.najcastejsie.length > 0 && <div class="blok"><h3>Najčastejšie priestupky</h3><ol class="zoznam">{p.bezpecnost.najcastejsie.map((x) => <li><span>{x.replace(/^\d+\s*-\s*/, '').replace(/^(§[^ ]*\)\s*|[A-Z]\d+[a-z]?\s*-\s*)/, '').replace(/\s*\(§.*$/, '').replace(/^./, (c) => c.toUpperCase())}</span></li>)}</ol></div>}
-      <a class="viac" href="/bezpecnost">Bezpečnosť v celom meste</a>
+      <a class="viac" href="/bratislava/bezpecnost">Bezpečnosť v celom meste</a>
     </section>
 
     <section class="card" id="klima">
@@ -213,21 +213,21 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
         ))}
         <p class="legenda"><span class="l-mc"></span>priemer štvorcov 200 m v mestskej časti <span class="l-ba"></span>priemer mesta · klimatický atlas mesta</p>
       </div>
-      <a class="viac" href="/mapa#horucavy">Mapa horúčav</a>
+      <a class="viac" href="/bratislava/mapa#horucavy">Mapa horúčav</a>
     </section>
   </div>
 
   <nav class="dalsie" aria-label="Ďalšie mestské časti">
-    <a href={`/mestske-casti/${pred.slug}`} rel="prev"><span>Predchádzajúca</span><strong translate="no">{pred.mc}</strong></a>
-    <a href="/mestske-casti" class="vsetky">Všetky mestské časti</a>
-    <a href={`/mestske-casti/${po.slug}`} rel="next"><span>Ďalšia</span><strong translate="no">{po.mc}</strong></a>
+    <a href={`/bratislava/mestske-casti/${pred.slug}`} rel="prev"><span>Predchádzajúca</span><strong translate="no">{pred.mc}</strong></a>
+    <a href="/bratislava/mestske-casti" class="vsetky">Všetky mestské časti</a>
+    <a href={`/bratislava/mestske-casti/${po.slug}`} rel="next"><span>Ďalšia</span><strong translate="no">{po.mc}</strong></a>
   </nav>
   <p class="zdroj">Zdroje: ŠÚ SR (obyvatelia, sčítanie 2021, voľby, nezamestnanosť ÚPSVaR), MF SR (dlh), Centrálny register zmlúv, MŠVVaM SR (školy), MPSVR SR (sociálne služby), mestská polícia a magistrát (bezpečnosť, podnety, klimatický atlas, prognóza Bratislava 2050), MIRRI SR (index rozvoja), OpenStreetMap a data.bratislava.sk (miesta). Podrobnosti a licencie pri jednotlivých témach na webe.</p>
 </Base>
 
 <script>
   const s = document.getElementById('prepni-mc') as HTMLSelectElement | null;
-  s?.addEventListener('change', () => { location.href = `/mestske-casti/${s.value}`; });
+  s?.addEventListener('change', () => { location.href = `/bratislava/mestske-casti/${s.value}`; });
 </script>
 
 <style>

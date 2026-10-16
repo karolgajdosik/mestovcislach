@@ -98,7 +98,7 @@ if (hranice && casti.length && rok) {
         layer.bindPopup(
           `<strong>${p.nazov}</strong><br>Obyvatelia: <b>${fmt(p.pocet)}</b>${zmena}` +
           `<br>Rozloha: ${p.rozloha.toLocaleString('sk-SK')} km²<br>Hustota: ${fmt(p.hustota)} obyv./km²` +
-          `<br><a href="/mestske-casti/${String(p.nazov).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, '-')}">Profil mestskej časti ›</a>`,
+          `<br><a href="/bratislava/mestske-casti/${String(p.nazov).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, '-')}">Profil mestskej časti ›</a>`,
         );
         layer.bindTooltip(p.nazov, { sticky: true, direction: 'top' });
         layer.on('mouseover', () => (layer as L.Path).setStyle({ weight: 3 }));

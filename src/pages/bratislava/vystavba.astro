@@ -2,9 +2,9 @@
 // Výstavba a bývanie: čo sa stavia (posudzovanie EIA/SEA z Enviroportálu) a údaje o bývaní.
 import fs from 'node:fs';
 import path from 'node:path';
-import Base from '../layouts/Base.astro';
-import { KATEGORIE_EIA, slug } from '../lib/eia';
-import { byvanie } from '../lib/byvanie';
+import Base from '../../layouts/Base.astro';
+import { KATEGORIE_EIA, slug } from '../../lib/eia';
+import { byvanie } from '../../lib/byvanie';
 
 const subor = path.join(process.cwd(), 'public', 'data', 'eia.json');
 const eia = fs.existsSync(subor) ? JSON.parse(fs.readFileSync(subor, 'utf-8')) : null;
@@ -138,7 +138,7 @@ const znam = (n: number | null) => (n == null ? '–' : `${n > 0 ? '+' : n < 0 ?
               <tbody>{by.vystavba.okresy.map((o: any) => <tr><td><span translate="no">{o.okres}</span><br /><small>{o.casti}</small></td><td class="num">{fmt(o.dokoncene)}</td><td class="num">{o.zacate == null ? '–' : fmt(o.zacate)}</td><td class="num">{o.rozostavane == null ? '–' : fmt(o.rozostavane)}</td><td class="num">{fmt(o.desatrocie)}</td></tr>)}</tbody>
             </table>
           </div>
-          <p class="zdroj">Zdroj: {by.vystavba.zdroj}. Čo sa bude stavať ďalej, ukazujú <a href="/vystavba?kat=byvanie#co-sa-stavia">zámery bývania v posudzovaní EIA</a>.</p>
+          <p class="zdroj">Zdroj: {by.vystavba.zdroj}. Čo sa bude stavať ďalej, ukazujú <a href="/bratislava/vystavba?kat=byvanie#co-sa-stavia">zámery bývania v posudzovaní EIA</a>.</p>
         </div>
       </>
     ) : <p class="card">Údaje o výstavbe bytov sa pripravujú.</p>}
@@ -188,9 +188,9 @@ const znam = (n: number | null) => (n == null ? '–' : `${n > 0 ? '+' : n < 0 ?
 <script>
   import Chart from 'chart.js/auto';
   import L from 'leaflet';
-  import { osmPodklad } from '../scripts/podklad';
+  import { osmPodklad } from '../../scripts/podklad';
   import 'leaflet/dist/leaflet.css';
-  import { KATEGORIE_EIA, slug } from '../lib/eia';
+  import { KATEGORIE_EIA, slug } from '../../lib/eia';
 
   const css = getComputedStyle(document.documentElement);
   const muted = css.getPropertyValue('--muted').trim();

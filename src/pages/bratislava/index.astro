@@ -1,0 +1,176 @@
+---
+import Base from '../../layouts/Base.astro';
+import MapaCasti from '../../components/MapaCasti.astro';
+import DnesVBratislave from '../../components/DnesVBratislave.astro';
+import obyv from '../../../data/obyvatelstvo-bratislava.json';
+
+type Uzemie = { kod: string; nazov: string; nazov_kratky: string; roky: Record<string, number> };
+
+const mesto = obyv.mesto as Uzemie | null;
+const casti = (obyv.mestske_casti ?? []) as Uzemie[];
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+
+let roky: string[] = [];
+let posledny = '';
+let aktualne = 0;
+let zmena: number | null = null;
+let castiZoradene: { nazov: string; pocet: number }[] = [];
+
+if (mesto) {
+  roky = Object.keys(mesto.roky).sort();
+  posledny = roky[roky.length - 1];
+  aktualne = mesto.roky[posledny];
+  const predch = roky[roky.length - 2];
+  if (predch) zmena = aktualne - mesto.roky[predch];
+  castiZoradene = casti
+    .map((c) => ({ nazov: c.nazov_kratky, pocet: c.roky[posledny] ?? 0 }))
+    .sort((a, b) => b.pocet - a.pocet);
+}
+
+const aktualizovane = obyv.aktualizovane
+  ? new Date(obyv.aktualizovane).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric', year: 'numeric' })
+  : null;
+const zdrojUrl = 'https://data.statistics.sk/';
+const grafData = mesto
+  ? JSON.stringify({ roky, mesto: roky.map((r) => mesto.roky[r]), casti: castiZoradene })
+  : '';
+---
+<Base title="Bratislava v číslach – mestovcislach.sk">
+  <section class="hero">
+    <p class="kicker">Hlavné mesto SR</p>
+    <h1>Bratislava v číslach</h1>
+    <p class="lead">Otvorené dáta o meste a jeho 17 mestských častiach, na jednom mieste a so zdrojmi.</p>
+  </section>
+
+  {!mesto ? (
+    <div class="card empty">
+      <h2>Dáta sa pripravujú</h2>
+      <p>Údaje o obyvateľstve sa doplnia pri prvom automatickom zbere zo Štatistického úradu SR.</p>
+    </div>
+  ) : (
+    <>
+      <section class="kpis">
+        <div class="card kpi">
+          <p class="label">Počet obyvateľov ({posledny})</p>
+          <p class="value">{fmt(aktualne)}</p>
+          {zmena !== null && (
+            <p class={zmena >= 0 ? 'delta up' : 'delta down'}>
+              {zmena >= 0 ? '+' : '−'}{fmt(Math.abs(zmena))} oproti {roky[roky.length - 2]}
+            </p>
+          )}
+        </div>
+        <div class="card kpi">
+          <p class="label">Mestské časti</p>
+          <p class="value">{casti.length}</p>
+          {castiZoradene[0] && <p class="delta">najväčšia: {castiZoradene[0].nazov}</p>}
+        </div>
+      </section>
+
+      <DnesVBratislave />
+
+      <nav class="temy" aria-label="Témy">
+        <a class="card tema" href="/bratislava/mestske-casti"><strong>Mestské časti</strong><span>Profil každej zo 17 častí: ľudia, voľby, peniaze, školy, bezpečnosť, klíma</span></a>
+        <a class="card tema" href="/bratislava/mapa"><strong>Mapa</strong><span>Školy, fontány, športoviská, pamiatky, hluk, horúčavy a ďalšie vrstvy</span></a>
+        <a class="card tema" href="/bratislava/obyvatelia"><strong>Obyvatelia</strong><span>Sčítanie 2021, prognóza do 2035, index rozvoja</span></a>
+        <a class="card tema" href="/bratislava/volby"><strong>Voľby</strong><span>Výsledky volieb a ako hlasovali poslanci</span></a>
+        <a class="card tema" href="/bratislava/financie"><strong>Financie</strong><span>Rozpočet, zmluvy, faktúry a dlh mesta a mestských častí</span></a>
+        <a class="card tema" href="/bratislava/doprava"><strong>Doprava</strong><span>Uzávierky naživo, premávka, MHD a cyklotrasy</span></a>
+        <a class="card tema" href="/bratislava/vystavba"><strong>Výstavba a bývanie</strong><span>Čo sa stavia na mape, ceny bytov, koľko bytov pribúda</span></a>
+        <a class="card tema" href="/bratislava/vybavenost"><strong>Vybavenosť</strong><span>Školy a spádové obvody, jasle, sociálne služby, lekárne</span></a>
+        <a class="card tema" href="/bratislava/prostredie"><strong>Prostredie</strong><span>Dunaj a ovzdušie naživo, hluk, odpad, stromy</span></a>
+        <a class="card tema" href="/bratislava/bezpecnost"><strong>Bezpečnosť</strong><span>Priestupky, mestská polícia a podnety občanov</span></a>
+        <a class="card tema" href="/bratislava/katalog"><strong>Katalóg dát</strong><span>Všetky datasety mesta s grafom a stiahnutím</span></a>
+      </nav>
+
+      <MapaCasti />
+
+      <section class="card" id="grafy" data-graf={grafData}>
+        <h2>Vývoj počtu obyvateľov</h2>
+        <div class="chart"><canvas id="graf-vyvoj" aria-label="Vývoj počtu obyvateľov Bratislavy" role="img"></canvas></div>
+        <p class="zdroj">
+          Zdroj: <a href={zdrojUrl}>{obyv.zdroj.nazov}</a>, tabuľka {obyv.zdroj.tabulka}, trvale bývajúci obyvatelia k 31. 12.
+          {(mesto as any).poznamka && <> ({(mesto as any).poznamka})</>}
+          {aktualizovane && <> · Aktualizované {aktualizovane}</>}
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Mestské časti ({posledny})</h2>
+        <div class="chart tall"><canvas id="graf-casti" aria-label="Počet obyvateľov podľa mestských častí" role="img"></canvas></div>
+        <p class="zdroj">Zdroj: <a href={zdrojUrl}>{obyv.zdroj.nazov}</a>, tabuľka {obyv.zdroj.tabulka}.</p>
+      </section>
+    </>
+  )}
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  const el = document.getElementById('grafy');
+  const raw = el?.dataset.graf;
+  if (raw) {
+    const d = JSON.parse(raw);
+    const css = getComputedStyle(document.documentElement);
+    const accent = css.getPropertyValue('--accent').trim();
+    const muted = css.getPropertyValue('--muted').trim();
+    const line = css.getPropertyValue('--line').trim();
+    const fmt = (n: number) => n.toLocaleString('sk-SK');
+    Chart.defaults.color = muted;
+    Chart.defaults.borderColor = line;
+    Chart.defaults.font.family = css.getPropertyValue('--font');
+
+    new Chart(document.getElementById('graf-vyvoj') as HTMLCanvasElement, {
+      type: 'line',
+      data: {
+        labels: d.roky,
+        datasets: [{ data: d.mesto, borderColor: accent, backgroundColor: accent, borderWidth: 2.5, pointRadius: 0, pointHoverRadius: 5, tension: 0.25 }],
+      },
+      options: {
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ' ' + fmt(c.parsed.y) + ' obyvateľov' } } },
+        scales: { x: { grid: { display: false } }, y: { ticks: { callback: (v) => fmt(Number(v)) } } },
+      },
+    });
+
+    new Chart(document.getElementById('graf-casti') as HTMLCanvasElement, {
+      type: 'bar',
+      data: {
+        labels: d.casti.map((c: any) => c.nazov),
+        datasets: [{ data: d.casti.map((c: any) => c.pocet), backgroundColor: accent, borderRadius: 4, barThickness: 'flex', maxBarThickness: 18 }],
+      },
+      options: {
+        indexAxis: 'y',
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ' ' + fmt(c.parsed.x) + ' obyvateľov' } } },
+        scales: { x: { ticks: { callback: (v) => fmt(Number(v)) } }, y: { grid: { display: false } } },
+      },
+    });
+  }
+</script>
+
+<style>
+  .hero { padding: 40px 0 24px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 40em; margin: 0; }
+  h2 { font-size: 1.1rem; margin: 0 0 16px; }
+  section.card { margin-top: 16px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; font-variant-numeric: tabular-nums; }
+  .delta { margin: 0; font-size: 0.9rem; color: var(--muted); }
+  .delta.up { color: #1a7f4b; }
+  :global(:root[data-tema="tmava"]) .delta.up { color: #4cc38a; }
+  .delta.down { color: var(--accent); }
+  .chart { position: relative; height: 280px; }
+  .chart.tall { height: 480px; }
+  .empty { margin-top: 8px; }
+  .temy { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px; }
+  .tema { text-decoration: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s; }
+  .tema:hover { border-color: var(--accent); }
+  .tema strong { font-size: 1.05rem; }
+  .tema strong::after { content: ' →'; color: var(--accent); }
+  .tema span { color: var(--muted); font-size: 0.9rem; }
+  .empty p { color: var(--muted); margin: 0; }
+</style>

@@ -66,7 +66,7 @@ export function popupObvodu(p: any): string {
     `<strong class="mf-nazov" translate="no">${esc(p.nazov)}</strong>`,
     `<span class="mf-kat">Spádový obvod základnej školy · ${esc(p.mc)}</span>`,
     p.adresa && `<span class="mf-adr" translate="no">${esc(p.adresa)}</span>`,
-    p.web && `<span class="mf-odkazy">${odkaz(p.web, /\.pdf$/i.test(p.web) ? 'Nariadenie o obvodoch' : 'Web školy')} · <a href="/vybavenost#spadova-skola">Hľadať podľa adresy</a></span>`,
+    p.web && `<span class="mf-odkazy">${odkaz(p.web, /\.pdf$/i.test(p.web) ? 'Nariadenie o obvodoch' : 'Web školy')} · <a href="/bratislava/vybavenost#spadova-skola">Hľadať podľa adresy</a></span>`,
     `<span class="mf-zdroj">Hranice sú približné – presne platí zoznam adries.</span>`,
   ]);
 }

@@ -1,7 +1,7 @@
 ---
 import fs from 'node:fs';
 import path from 'node:path';
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
 
 const p = path.join(process.cwd(), 'data', 'ovzdusie-bratislava.json');
 const data = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
@@ -84,7 +84,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
       Celodenný ukazovateľ Lden vážene sčítava deň, večer a noc; Lnight je priemer v noci. Pre obytné územie pri hlavných cestách
       pripúšťa slovenská vyhláška 60 dB cez deň a 50 dB v noci; Svetová zdravotnícka organizácia odporúča pri hluku z ciest najviac 53 dB (Lden) a 45 dB v noci.
     </p>
-    <p><a class="tlacidlo" href="/mapa#hluk">Zobraziť hlukovú mapu</a></p>
+    <p><a class="tlacidlo" href="/bratislava/mapa#hluk">Zobraziť hlukovú mapu</a></p>
     <p class="zdroj">Zdroj: Úrad verejného zdravotníctva SR – strategické hlukové mapy aglomerácie Bratislava (INSPIRE, data.slovensko.sk). Izofóny sú zjednodušené pre mapu.</p>
   </section>
 
@@ -163,7 +163,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
             </div>
             <p class="zdroj">
               Najväčšie: {priroda.uzemia.filter((u: any) => u.typ === 'narodne' && u.kategoria !== 'Ochranné pásmo').slice(0, 5).map((u: any) => `${u.nazov} (${fmt(u.km2_v_meste)} km²)`).join(', ')}.
-              Bez ochranných pásiem; územia sa môžu prekrývať (rátané raz). <a href="/mapa">Zobraziť na mape →</a>
+              Bez ochranných pásiem; územia sa môžu prekrývať (rátané raz). <a href="/bratislava/mapa">Zobraziť na mape →</a>
               Zdroj: <a href={priroda.zdroj.url}>{priroda.zdroj.nazov}</a> (údaje SR), kategórie preložené orientačne z IUCN.
             </p>
           </section>
@@ -221,7 +221,7 @@ const vysadba = prostredie ? Object.entries(prostredie.vysadba.roky[vysadbaRok!]
 <script>
   import Chart from 'chart.js/auto';
   import L from 'leaflet';
-  import { osmPodklad } from '../scripts/podklad';
+  import { osmPodklad } from '../../scripts/podklad';
   import 'leaflet/dist/leaflet.css';
 
   // Ovzdušie teraz – stanice SHMÚ cez /api/ovzdusie

@@ -143,7 +143,7 @@ def main() -> int:
         elif (p["vrstvy"][0].get("pocet") or 0) > MAX_RIADKOV and kid not in MESACNE:
             zaznam |= {"stav": "vynechane", "dovod": f"Príliš veľký na všeobecný import ({p['vrstvy'][0]['pocet']} riadkov) – vyžaduje osobitné spracovanie."}
         else:
-            zaznam |= {"stav": "katalog", "kde": f"/katalog/{p['id']}"}
+            zaznam |= {"stav": "katalog", "kde": f"/bratislava/katalog/{p['id']}"}
             na_import.append(p)
         stav.append(zaznam)
 
