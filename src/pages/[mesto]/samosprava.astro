@@ -1,0 +1,152 @@
+---
+// Samospráva krajského mesta: zmluvy, faktúry a objednávky + hlasovania poslancov (data/mesta/samosprava-<slug>.json).
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+import Hlasovania from '../../components/Hlasovania.astro';
+import { MESTA, type Mesto } from '../../mesta';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && !m.plne && fs.existsSync(path.join(process.cwd(), 'data', 'mesta', `samosprava-${m.slug}.json`)))
+    .map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const d = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'mesta', `samosprava-${m.slug}.json`), 'utf-8'));
+const kat = (() => {
+  const p = path.join(process.cwd(), 'data', `katalog-stav-${m.slug}.json`);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')).datasety : [];
+})();
+const dotacie = kat.filter((x: any) => x.stav === 'katalog' && /dotáci/i.test(x.nazov)).sort((a: any, b: any) => b.nazov.localeCompare(a.nazov));
+const portalNazov = d.portal.replace(/^https?:\/\//, '');
+
+const fin: any[] = d.financie ?? [];
+const typ = (t: string) => fin.find((x) => x.typ === t);
+const rokTeraz = new Date().getFullYear();
+const posledny = (x: any) => (x ? Object.keys(x.roky).filter((r) => Number(r) < rokTeraz).sort().pop() : undefined);
+const mil = (n: number) => (n / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: n >= 1e8 ? 0 : 1 }) + ' mil. €';
+const eur = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 0 }) + ' €';
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const datum = (s: string) => s.split('-').reverse().map((x) => x.replace(/^0/, '')).join('. ');
+const MNOZNE: Record<string, string> = { zmluvy: 'zmlúv', faktúry: 'faktúr', objednávky: 'objednávok' };
+// graf: posledných 12 celých rokov
+const roky = [...new Set(fin.flatMap((x) => Object.keys(x.roky)))].filter((r) => Number(r) < rokTeraz).sort().slice(-12);
+const graf = JSON.stringify({ roky, rady: fin.map((x) => ({ typ: x.typ, sumy: roky.map((r) => x.roky[r]?.suma ?? null) })) });
+---
+<Base title={`Samospráva – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: zmluvy, faktúry a objednávky mesta, najväčší dodávatelia, dotácie a ako hlasovali poslanci mestského zastupiteľstva.`}>
+  <section class="hero">
+    <p class="kicker">Samospráva</p>
+    <h1>Kam idú peniaze a ako sa hlasuje <span translate="no">{m.v}</span></h1>
+    <p class="lead">Zmluvy, faktúry a objednávky mesta a hlasovania poslancov z otvorených dát mesta (<a href={d.portal}>{portalNazov}</a>).</p>
+  </section>
+
+  {fin.length > 0 && (
+    <>
+      <h2 class="sekcia" id="peniaze">Zmluvy, faktúry a objednávky</h2>
+      <section class="kpis">
+        {fin.map((x) => {
+          const r = posledny(x);
+          return r && <div class="card kpi"><p class="label">{x.typ[0].toUpperCase() + x.typ.slice(1)} ({r})</p><p class="value">{mil(x.roky[r].suma)}</p><p class="delta">{fmt(x.roky[r].pocet)} {MNOZNE[x.typ] ?? ''}</p></div>;
+        })}
+      </section>
+      <section class="card" id="fin-graf" data-graf={graf}>
+        <h3>Sumy podľa rokov</h3>
+        <div class="chart"><canvas id="g-fin" role="img" aria-label="Suma zmlúv, faktúr a objednávok mesta podľa rokov"></canvas></div>
+        <p class="zdroj">Pri zmluvách ide o sumu uvedenú v zmluve (môže byť viacročná, zahŕňa aj príjmové zmluvy, napr. nájmy a predaje). Rok = dátum podpisu zmluvy, prijatia faktúry, vystavenia objednávky.</p>
+      </section>
+      <section class="card">
+        <div class="mriezka">
+          {fin.map((x) => (
+            <div>
+              <h3>Najväčší partneri – {x.typ} (posledné 3 roky)</h3>
+              <ol class="dodavatelia" translate="no">{x.dodavatelia_posledne_3_roky.slice(0, 10).map((y: any) => <li>{y.nazov} <span>{mil(y.suma)} · {fmt(y.pocet)}×</span></li>)}</ol>
+            </div>
+          ))}
+        </div>
+        <p class="zdroj">
+          Fyzické osoby, živnostníkov a zmluvné strany bez IČO alebo bez právnej formy v názve (napr. nájomcov bytov) nezverejňujeme – sú len v súčtoch
+          ({fin.map((x) => `${x.typ} ${fmt(x.skryte_fyzicke_osoby)}`).join(', ')}).
+          Zdroj: {fin.map((x, i) => <>{i > 0 && ', '}<a href={x.zdroj}>{x.typ}</a></>)} – {portalNazov}, licencia CC BY 4.0.
+        </p>
+      </section>
+      <section class="card">
+        <h3>Najväčšie položky za posledných 12 mesiacov</h3>
+        <div class="taby" role="tablist" aria-label="Typ dokladu">
+          {fin.map((x, i) => <button type="button" role="tab" data-t={x.typ} aria-selected={i === 0 ? 'true' : 'false'}>{x.typ[0].toUpperCase() + x.typ.slice(1)}</button>)}
+        </div>
+        {fin.map((x, i) => (
+          <ul class="zmluvy" data-t={x.typ} hidden={i !== 0}>
+            {x.najvacsie_12_mesiacov.slice(0, 10).map((y: any) => (
+              <li><div class="zmluva-hlava"><strong>{eur(y.suma)}</strong><span>{datum(y.datum)}</span></div><p translate="no">{y.dodavatel}</p>{y.popis && <p class="predmet">{y.popis}</p>}</li>
+            ))}
+          </ul>
+        ))}
+      </section>
+      {dotacie.length > 0 && (
+        <section class="card">
+          <h3>Dotácie z rozpočtu mesta</h3>
+          <p>Komu mesto poskytlo dotácie – tabuľky v katalógu dát:</p>
+          <ul class="odkazy">{dotacie.map((x: any) => <li><a href={x.kde}>{x.nazov}</a> <span class="tlmene">({fmt(x.riadkov)} riadkov)</span></li>)}</ul>
+        </section>
+      )}
+    </>
+  )}
+
+  <Hlasovania mesto={m.slug} portal={d.portal} />
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+  const el = document.getElementById('fin-graf');
+  if (el?.dataset.graf) {
+    const g = JSON.parse(el.dataset.graf);
+    const css = getComputedStyle(document.documentElement);
+    const farby = [css.getPropertyValue('--accent').trim(), '#2f6fb3', '#9a6b00'];
+    const muted = css.getPropertyValue('--muted').trim();
+    new Chart(document.getElementById('g-fin') as HTMLCanvasElement, {
+      type: 'bar',
+      data: { labels: g.roky, datasets: g.rady.map((r: any, i: number) => ({ label: r.typ, data: r.sumy, backgroundColor: farby[i % 3], borderRadius: 3 })) },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: muted } }, tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${((c.parsed.y ?? 0) / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} mil. €` } } },
+        scales: { x: { ticks: { color: muted }, grid: { display: false } }, y: { ticks: { color: muted, callback: (v) => `${Number(v) / 1e6} mil.` } } },
+      },
+    });
+  }
+  document.querySelectorAll<HTMLButtonElement>('.taby[aria-label="Typ dokladu"] button').forEach((b) => b.addEventListener('click', () => {
+    const t = b.dataset.t;
+    b.parentElement!.querySelectorAll('button').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+    document.querySelectorAll<HTMLElement>('ul.zmluvy').forEach((u) => (u.hidden = u.dataset.t !== t));
+  }));
+</script>
+
+<style>
+  .hero { padding: 40px 0 20px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+  .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .kpi .value { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; }
+  .delta { margin: 0; font-size: 0.82rem; color: var(--muted); }
+  section.card { margin-top: 16px; }
+  .card h3 { margin: 0 0 10px; font-size: 1.05rem; }
+  .chart { position: relative; height: 320px; }
+  .zdroj { font-size: 0.8rem; color: var(--muted); margin: 12px 0 0; }
+  .tlmene { color: var(--muted); font-size: 0.85rem; }
+  .mriezka { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .mriezka > * { min-width: 0; }
+  .dodavatelia { margin: 0; padding-left: 20px; font-size: 0.9rem; }
+  .dodavatelia li { margin: 4px 0; }
+  .dodavatelia span { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
+  .taby { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 10px; }
+  .taby button { font: inherit; font-size: 0.88rem; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; }
+  .taby button[aria-selected='true'] { background: var(--accent); color: var(--na-akcente); border-color: var(--accent); }
+  .zmluvy { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .zmluvy li { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .zmluvy p { margin: 2px 0 0; }
+  .zmluva-hlava { display: flex; justify-content: space-between; gap: 10px; }
+  .zmluva-hlava span { color: var(--muted); font-size: 0.85rem; }
+  .predmet { color: var(--muted); font-size: 0.85rem; }
+  .odkazy { margin: 0; padding-left: 20px; }
+  :global(h2.sekcia) { font-size: 1.5rem; letter-spacing: -0.02em; margin: 32px 0 0; }
+</style>

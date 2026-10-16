@@ -1,0 +1,2176 @@
+{
+ "mesto": "kosice",
+ "portal": "https://opendata.kosice.sk",
+ "licencia": "CC BY 4.0",
+ "hlasovania": {
+  "aktualne_obdobie": "2022-2026",
+  "obdobia": {
+   "2018-2022": {
+    "nazov": "2018–2022",
+    "zasadnuti": 31,
+    "hlasovani": 2128,
+    "tajnych": 0,
+    "od": "2018-12-09",
+    "do": "2022-09-09",
+    "poslanci": [
+     {
+      "meno": "Iveta Adamčíková",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 88.8,
+      "za": 1565,
+      "proti": 44,
+      "zdrzal": 164,
+      "nehlasoval": 116,
+      "nepritomny": 239,
+      "zhoda_s_vacsinou": 88.6,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Jozef Andrejčák",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 87.6,
+      "za": 1525,
+      "proti": 28,
+      "zdrzal": 203,
+      "nehlasoval": 109,
+      "nepritomny": 263,
+      "zhoda_s_vacsinou": 87.7,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Tibor Bacsó",
+      "klub": "Nezaradení",
+      "hlasovani": 1281,
+      "pritomnost": 51.3,
+      "za": 477,
+      "proti": 15,
+      "zdrzal": 97,
+      "nehlasoval": 68,
+      "nepritomny": 624,
+      "zhoda_s_vacsinou": 81.5,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Martin Balčík",
+      "klub": "Fungujúce Košice",
+      "hlasovani": 2128,
+      "pritomnost": 84.3,
+      "za": 1449,
+      "proti": 41,
+      "zdrzal": 215,
+      "nehlasoval": 88,
+      "nepritomny": 335,
+      "zhoda_s_vacsinou": 90.2,
+      "zhoda_s_klubom": 94.6
+     },
+     {
+      "meno": "Bernard Berberich",
+      "klub": "Fungujúce Košice",
+      "hlasovani": 2128,
+      "pritomnost": 99.8,
+      "za": 1722,
+      "proti": 56,
+      "zdrzal": 278,
+      "nehlasoval": 67,
+      "nepritomny": 5,
+      "zhoda_s_vacsinou": 86.5,
+      "zhoda_s_klubom": 92.2
+     },
+     {
+      "meno": "Erich Blanár",
+      "klub": "Košickí aktivisti a nezávislí",
+      "hlasovani": 2128,
+      "pritomnost": 93.0,
+      "za": 1651,
+      "proti": 43,
+      "zdrzal": 243,
+      "nehlasoval": 43,
+      "nepritomny": 148,
+      "zhoda_s_vacsinou": 88.0,
+      "zhoda_s_klubom": 93.0
+     },
+     {
+      "meno": "Henrich Burdiga",
+      "klub": "Košickí aktivisti a nezávislí",
+      "hlasovani": 715,
+      "pritomnost": 72.4,
+      "za": 382,
+      "proti": 29,
+      "zdrzal": 55,
+      "nehlasoval": 52,
+      "nepritomny": 197,
+      "zhoda_s_vacsinou": 88.4,
+      "zhoda_s_klubom": 92.9
+     },
+     {
+      "meno": "Michal Djordjevič",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 92.2,
+      "za": 1475,
+      "proti": 137,
+      "zdrzal": 205,
+      "nehlasoval": 146,
+      "nepritomny": 165,
+      "zhoda_s_vacsinou": 79.4,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Jaroslav Dvorský",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 66.2,
+      "za": 1146,
+      "proti": 7,
+      "zdrzal": 172,
+      "nehlasoval": 83,
+      "nepritomny": 720,
+      "zhoda_s_vacsinou": 86.3,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Jozef Filipko",
+      "klub": "Pre Košičanov",
+      "hlasovani": 2128,
+      "pritomnost": 95.8,
+      "za": 1602,
+      "proti": 39,
+      "zdrzal": 226,
+      "nehlasoval": 171,
+      "nepritomny": 90,
+      "zhoda_s_vacsinou": 88.8,
+      "zhoda_s_klubom": 91.9
+     },
+     {
+      "meno": "Marcel Gibóda",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 98.7,
+      "za": 1294,
+      "proti": 178,
+      "zdrzal": 253,
+      "nehlasoval": 375,
+      "nepritomny": 28,
+      "zhoda_s_vacsinou": 76.9,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Ľubomír Grega",
+      "klub": "Pre Košičanov",
+      "hlasovani": 2128,
+      "pritomnost": 94.1,
+      "za": 1649,
+      "proti": 52,
+      "zdrzal": 270,
+      "nehlasoval": 31,
+      "nepritomny": 126,
+      "zhoda_s_vacsinou": 85.9,
+      "zhoda_s_klubom": 87.8
+     },
+     {
+      "meno": "Lucia Gurbáľová",
+      "klub": "Fungujúce Košice",
+      "hlasovani": 2128,
+      "pritomnost": 96.2,
+      "za": 1555,
+      "proti": 68,
+      "zdrzal": 339,
+      "nehlasoval": 85,
+      "nepritomny": 81,
+      "zhoda_s_vacsinou": 81.9,
+      "zhoda_s_klubom": 86.1
+     },
+     {
+      "meno": "Jaroslav Hlinka",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 86.4,
+      "za": 1518,
+      "proti": 76,
+      "zdrzal": 203,
+      "nehlasoval": 41,
+      "nepritomny": 290,
+      "zhoda_s_vacsinou": 84.2,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Marián Horenský",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 98.2,
+      "za": 1736,
+      "proti": 74,
+      "zdrzal": 222,
+      "nehlasoval": 58,
+      "nepritomny": 38,
+      "zhoda_s_vacsinou": 86.9,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Peter Huba",
+      "klub": "Fungujúce Košice",
+      "hlasovani": 2128,
+      "pritomnost": 97.1,
+      "za": 1779,
+      "proti": 24,
+      "zdrzal": 232,
+      "nehlasoval": 31,
+      "nepritomny": 62,
+      "zhoda_s_vacsinou": 90.9,
+      "zhoda_s_klubom": 94.1
+     },
+     {
+      "meno": "Miloš Ihnát",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 99.5,
+      "za": 1746,
+      "proti": 116,
+      "zdrzal": 232,
+      "nehlasoval": 23,
+      "nepritomny": 11,
+      "zhoda_s_vacsinou": 83.5,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Lucia Iľaščíková",
+      "klub": "Pre Košičanov",
+      "hlasovani": 2128,
+      "pritomnost": 78.8,
+      "za": 1319,
+      "proti": 69,
+      "zdrzal": 160,
+      "nehlasoval": 129,
+      "nepritomny": 451,
+      "zhoda_s_vacsinou": 85.0,
+      "zhoda_s_klubom": 86.6
+     },
+     {
+      "meno": "Ján Jakubov",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 61.0,
+      "za": 977,
+      "proti": 38,
+      "zdrzal": 176,
+      "nehlasoval": 108,
+      "nepritomny": 829,
+      "zhoda_s_vacsinou": 81.0,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Marek Kandráč",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 77.6,
+      "za": 1299,
+      "proti": 4,
+      "zdrzal": 178,
+      "nehlasoval": 170,
+      "nepritomny": 477,
+      "zhoda_s_vacsinou": 88.0,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Jozef Karabin",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 95.7,
+      "za": 1368,
+      "proti": 210,
+      "zdrzal": 353,
+      "nehlasoval": 105,
+      "nepritomny": 92,
+      "zhoda_s_vacsinou": 70.2,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Dominik Karaffa",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 93.0,
+      "za": 1470,
+      "proti": 154,
+      "zdrzal": 181,
+      "nehlasoval": 175,
+      "nepritomny": 148,
+      "zhoda_s_vacsinou": 82.5,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Viliam Knap",
+      "klub": "Pre Košičanov",
+      "hlasovani": 2128,
+      "pritomnost": 75.7,
+      "za": 1261,
+      "proti": 76,
+      "zdrzal": 166,
+      "nehlasoval": 108,
+      "nepritomny": 517,
+      "zhoda_s_vacsinou": 84.8,
+      "zhoda_s_klubom": 86.8
+     },
+     {
+      "meno": "Lenka Kovačevičová",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 81.2,
+      "za": 1313,
+      "proti": 106,
+      "zdrzal": 109,
+      "nehlasoval": 201,
+      "nepritomny": 399,
+      "zhoda_s_vacsinou": 85.8,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Milan Lesňák",
+      "klub": "Pre Košičanov",
+      "hlasovani": 2128,
+      "pritomnost": 94.2,
+      "za": 1697,
+      "proti": 141,
+      "zdrzal": 113,
+      "nehlasoval": 54,
+      "nepritomny": 123,
+      "zhoda_s_vacsinou": 86.7,
+      "zhoda_s_klubom": 87.7
+     },
+     {
+      "meno": "Peter Liba",
+      "klub": "Fungujúce Košice",
+      "hlasovani": 2128,
+      "pritomnost": 61.8,
+      "za": 1052,
+      "proti": 19,
+      "zdrzal": 163,
+      "nehlasoval": 82,
+      "nepritomny": 812,
+      "zhoda_s_vacsinou": 88.2,
+      "zhoda_s_klubom": 92.1
+     },
+     {
+      "meno": "Zdenko Lipták",
+      "klub": "Košickí aktivisti a nezávislí",
+      "hlasovani": 2128,
+      "pritomnost": 80.8,
+      "za": 1179,
+      "proti": 119,
+      "zdrzal": 281,
+      "nehlasoval": 140,
+      "nepritomny": 409,
+      "zhoda_s_vacsinou": 76.6,
+      "zhoda_s_klubom": 82.2
+     },
+     {
+      "meno": "Ladislav Lörinc",
+      "klub": "Košickí aktivisti a nezávislí",
+      "hlasovani": 2128,
+      "pritomnost": 81.9,
+      "za": 1336,
+      "proti": 178,
+      "zdrzal": 141,
+      "nehlasoval": 87,
+      "nepritomny": 386,
+      "zhoda_s_vacsinou": 81.9,
+      "zhoda_s_klubom": 85.9
+     },
+     {
+      "meno": "Igor Petrovčik",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 71.1,
+      "za": 1169,
+      "proti": 31,
+      "zdrzal": 159,
+      "nehlasoval": 155,
+      "nepritomny": 614,
+      "zhoda_s_vacsinou": 88.4,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Ladislav Rovinský",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 93.1,
+      "za": 1393,
+      "proti": 154,
+      "zdrzal": 268,
+      "nehlasoval": 167,
+      "nepritomny": 146,
+      "zhoda_s_vacsinou": 77.5,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Daniel Rusnák",
+      "klub": "Fungujúce Košice",
+      "hlasovani": 2128,
+      "pritomnost": 75.2,
+      "za": 1266,
+      "proti": 29,
+      "zdrzal": 156,
+      "nehlasoval": 149,
+      "nepritomny": 528,
+      "zhoda_s_vacsinou": 90.6,
+      "zhoda_s_klubom": 94.2
+     },
+     {
+      "meno": "Vladimír Saxa",
+      "klub": "Pre Košičanov",
+      "hlasovani": 2128,
+      "pritomnost": 96.6,
+      "za": 1648,
+      "proti": 68,
+      "zdrzal": 249,
+      "nehlasoval": 91,
+      "nepritomny": 72,
+      "zhoda_s_vacsinou": 88.3,
+      "zhoda_s_klubom": 90.5
+     },
+     {
+      "meno": "Róbert Schwarcz",
+      "klub": "Košickí aktivisti a nezávislí",
+      "hlasovani": 2128,
+      "pritomnost": 86.1,
+      "za": 1537,
+      "proti": 29,
+      "zdrzal": 198,
+      "nehlasoval": 68,
+      "nepritomny": 296,
+      "zhoda_s_vacsinou": 89.9,
+      "zhoda_s_klubom": 93.4
+     },
+     {
+      "meno": "Ján Sekáč",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 47.2,
+      "za": 774,
+      "proti": 10,
+      "zdrzal": 104,
+      "nehlasoval": 117,
+      "nepritomny": 1123,
+      "zhoda_s_vacsinou": 88.3,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Martin Seman",
+      "klub": "Košickí aktivisti a nezávislí",
+      "hlasovani": 2128,
+      "pritomnost": 65.6,
+      "za": 1109,
+      "proti": 17,
+      "zdrzal": 167,
+      "nehlasoval": 103,
+      "nepritomny": 732,
+      "zhoda_s_vacsinou": 89.7,
+      "zhoda_s_klubom": 92.2
+     },
+     {
+      "meno": "Zuzana Slivenská",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 90.1,
+      "za": 1502,
+      "proti": 90,
+      "zdrzal": 189,
+      "nehlasoval": 136,
+      "nepritomny": 211,
+      "zhoda_s_vacsinou": 83.5,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Vladimír Stanko",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 63.2,
+      "za": 841,
+      "proti": 19,
+      "zdrzal": 367,
+      "nehlasoval": 117,
+      "nepritomny": 784,
+      "zhoda_s_vacsinou": 71.7,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Ladislav Strojný",
+      "klub": "Košickí aktivisti a nezávislí",
+      "hlasovani": 2128,
+      "pritomnost": 95.8,
+      "za": 1630,
+      "proti": 95,
+      "zdrzal": 284,
+      "nehlasoval": 29,
+      "nepritomny": 90,
+      "zhoda_s_vacsinou": 83.2,
+      "zhoda_s_klubom": 89.0
+     },
+     {
+      "meno": "Juraj Tobák",
+      "klub": "Košickí aktivisti a nezávislí",
+      "hlasovani": 132,
+      "pritomnost": 32.6,
+      "za": 28,
+      "proti": 5,
+      "zdrzal": 5,
+      "nehlasoval": 5,
+      "nepritomny": 89,
+      "zhoda_s_vacsinou": 81.6,
+      "zhoda_s_klubom": 89.5
+     },
+     {
+      "meno": "František Ténai",
+      "klub": "Fungujúce Košice",
+      "hlasovani": 2128,
+      "pritomnost": 91.7,
+      "za": 1561,
+      "proti": 34,
+      "zdrzal": 313,
+      "nehlasoval": 43,
+      "nepritomny": 177,
+      "zhoda_s_vacsinou": 86.3,
+      "zhoda_s_klubom": 90.3
+     },
+     {
+      "meno": "Marcel Vrchota",
+      "klub": "Fungujúce Košice",
+      "hlasovani": 2128,
+      "pritomnost": 83.3,
+      "za": 1338,
+      "proti": 41,
+      "zdrzal": 244,
+      "nehlasoval": 150,
+      "nepritomny": 355,
+      "zhoda_s_vacsinou": 86.1,
+      "zhoda_s_klubom": 88.5
+     },
+     {
+      "meno": "Marcel Šaňa",
+      "klub": "Pre Košičanov",
+      "hlasovani": 2128,
+      "pritomnost": 97.6,
+      "za": 1805,
+      "proti": 34,
+      "zdrzal": 209,
+      "nehlasoval": 28,
+      "nepritomny": 52,
+      "zhoda_s_vacsinou": 90.8,
+      "zhoda_s_klubom": 90.3
+     },
+     {
+      "meno": "Miroslav Špak",
+      "klub": "Nezaradení",
+      "hlasovani": 2128,
+      "pritomnost": 97.1,
+      "za": 1487,
+      "proti": 164,
+      "zdrzal": 207,
+      "nehlasoval": 208,
+      "nepritomny": 62,
+      "zhoda_s_vacsinou": 78.1,
+      "zhoda_s_klubom": null
+     }
+    ],
+    "kluby": [
+     {
+      "klub": "Fungujúce Košice",
+      "clenov": 8,
+      "jednotnost": 91.1
+     },
+     {
+      "klub": "Košickí aktivisti a nezávislí",
+      "clenov": 8,
+      "jednotnost": 89.2
+     },
+     {
+      "klub": "Pre Košičanov",
+      "clenov": 7,
+      "jednotnost": 88.7
+     }
+    ],
+    "zdroj": "https://opendata.kosice.sk/datasets/6165e208f43a43cc824c2fd585c3c599"
+   },
+   "2022-2026": {
+    "nazov": "2022–2026",
+    "zasadnuti": 37,
+    "hlasovani": 2066,
+    "tajnych": 19,
+    "od": "2022-11-11",
+    "do": "2026-09-17",
+    "poslanci": [
+     {
+      "meno": "Iveta Adamčíková",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 87.9,
+      "za": 1485,
+      "proti": 86,
+      "zdrzal": 128,
+      "nehlasoval": 118,
+      "nepritomny": 249,
+      "zhoda_s_vacsinou": 89.3,
+      "zhoda_s_klubom": 93.2
+     },
+     {
+      "meno": "Jozef Andrejčák",
+      "klub": "Starostovia a nezávislí kandidáti",
+      "hlasovani": 2066,
+      "pritomnost": 83.8,
+      "za": 1475,
+      "proti": 31,
+      "zdrzal": 136,
+      "nehlasoval": 89,
+      "nepritomny": 335,
+      "zhoda_s_vacsinou": 92.4,
+      "zhoda_s_klubom": 95.5
+     },
+     {
+      "meno": "Dominik Babušík",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 89.5,
+      "za": 1568,
+      "proti": 76,
+      "zdrzal": 156,
+      "nehlasoval": 50,
+      "nepritomny": 216,
+      "zhoda_s_vacsinou": 89.3,
+      "zhoda_s_klubom": 94.6
+     },
+     {
+      "meno": "Tibor Bačinský",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 93.0,
+      "za": 1597,
+      "proti": 68,
+      "zdrzal": 170,
+      "nehlasoval": 86,
+      "nepritomny": 145,
+      "zhoda_s_vacsinou": 87.0,
+      "zhoda_s_klubom": 91.2
+     },
+     {
+      "meno": "Bernard Berberich",
+      "klub": "Spolupráca pre Košice",
+      "hlasovani": 2066,
+      "pritomnost": 99.6,
+      "za": 1645,
+      "proti": 76,
+      "zdrzal": 251,
+      "nehlasoval": 86,
+      "nepritomny": 8,
+      "zhoda_s_vacsinou": 82.9,
+      "zhoda_s_klubom": 93.0
+     },
+     {
+      "meno": "Peter Berinšter",
+      "klub": "Spolupráca pre Košice",
+      "hlasovani": 2066,
+      "pritomnost": 84.4,
+      "za": 1397,
+      "proti": 17,
+      "zdrzal": 229,
+      "nehlasoval": 100,
+      "nepritomny": 323,
+      "zhoda_s_vacsinou": 84.7,
+      "zhoda_s_klubom": 93.6
+     },
+     {
+      "meno": "Ľubica Blaškovičová",
+      "klub": "Nezaradení",
+      "hlasovani": 2066,
+      "pritomnost": 90.4,
+      "za": 1541,
+      "proti": 15,
+      "zdrzal": 193,
+      "nehlasoval": 119,
+      "nepritomny": 198,
+      "zhoda_s_vacsinou": 89.1,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Michal Djordjevič",
+      "klub": "Nezaradení",
+      "hlasovani": 2066,
+      "pritomnost": 97.4,
+      "za": 1639,
+      "proti": 78,
+      "zdrzal": 161,
+      "nehlasoval": 134,
+      "nepritomny": 54,
+      "zhoda_s_vacsinou": 86.3,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Marek Fedoročko",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 85.9,
+      "za": 1420,
+      "proti": 136,
+      "zdrzal": 100,
+      "nehlasoval": 119,
+      "nepritomny": 291,
+      "zhoda_s_vacsinou": 87.7,
+      "zhoda_s_klubom": 93.7
+     },
+     {
+      "meno": "Marcel Gibóda",
+      "klub": "Spolupráca pre Košice",
+      "hlasovani": 2066,
+      "pritomnost": 94.6,
+      "za": 1204,
+      "proti": 131,
+      "zdrzal": 257,
+      "nehlasoval": 362,
+      "nepritomny": 112,
+      "zhoda_s_vacsinou": 75.3,
+      "zhoda_s_klubom": 83.4
+     },
+     {
+      "meno": "Lucia Gurbáľová",
+      "klub": "Spolupráca pre Košice",
+      "hlasovani": 2066,
+      "pritomnost": 99.3,
+      "za": 1625,
+      "proti": 80,
+      "zdrzal": 278,
+      "nehlasoval": 69,
+      "nepritomny": 14,
+      "zhoda_s_vacsinou": 81.0,
+      "zhoda_s_klubom": 89.8
+     },
+     {
+      "meno": "Patrik Géci",
+      "klub": "Nezaradení",
+      "hlasovani": 2066,
+      "pritomnost": 96.5,
+      "za": 1563,
+      "proti": 74,
+      "zdrzal": 184,
+      "nehlasoval": 172,
+      "nepritomny": 73,
+      "zhoda_s_vacsinou": 86.1,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Marián Horenský",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 98.2,
+      "za": 1686,
+      "proti": 165,
+      "zdrzal": 107,
+      "nehlasoval": 70,
+      "nepritomny": 38,
+      "zhoda_s_vacsinou": 87.8,
+      "zhoda_s_klubom": 94.8
+     },
+     {
+      "meno": "Miloš Ihnát",
+      "klub": "Nezaradení",
+      "hlasovani": 2066,
+      "pritomnost": 99.7,
+      "za": 1772,
+      "proti": 121,
+      "zdrzal": 132,
+      "nehlasoval": 34,
+      "nepritomny": 7,
+      "zhoda_s_vacsinou": 88.2,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Lucia Iľaščíková",
+      "klub": "Starostovia a nezávislí kandidáti",
+      "hlasovani": 2066,
+      "pritomnost": 77.9,
+      "za": 1240,
+      "proti": 43,
+      "zdrzal": 74,
+      "nehlasoval": 253,
+      "nepritomny": 456,
+      "zhoda_s_vacsinou": 93.6,
+      "zhoda_s_klubom": 95.4
+     },
+     {
+      "meno": "Marek Kandráč",
+      "klub": "Starostovia a nezávislí kandidáti",
+      "hlasovani": 2066,
+      "pritomnost": 73.0,
+      "za": 1247,
+      "proti": 3,
+      "zdrzal": 156,
+      "nehlasoval": 103,
+      "nepritomny": 557,
+      "zhoda_s_vacsinou": 89.9,
+      "zhoda_s_klubom": 93.9
+     },
+     {
+      "meno": "Jozef Karabin",
+      "klub": "Nezaradení",
+      "hlasovani": 2066,
+      "pritomnost": 74.8,
+      "za": 1253,
+      "proti": 55,
+      "zdrzal": 119,
+      "nehlasoval": 118,
+      "nepritomny": 521,
+      "zhoda_s_vacsinou": 88.4,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Dominik Karaffa",
+      "klub": "Nezaradení",
+      "hlasovani": 2066,
+      "pritomnost": 90.7,
+      "za": 1383,
+      "proti": 181,
+      "zdrzal": 135,
+      "nehlasoval": 175,
+      "nepritomny": 192,
+      "zhoda_s_vacsinou": 81.0,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Viliam Knap",
+      "klub": "Starostovia a nezávislí kandidáti",
+      "hlasovani": 2066,
+      "pritomnost": 65.6,
+      "za": 881,
+      "proti": 52,
+      "zdrzal": 57,
+      "nehlasoval": 366,
+      "nepritomny": 710,
+      "zhoda_s_vacsinou": 92.1,
+      "zhoda_s_klubom": 94.3
+     },
+     {
+      "meno": "Lenka Kovačevičová",
+      "klub": "Starostovia a nezávislí kandidáti",
+      "hlasovani": 2066,
+      "pritomnost": 88.5,
+      "za": 1371,
+      "proti": 76,
+      "zdrzal": 109,
+      "nehlasoval": 272,
+      "nepritomny": 238,
+      "zhoda_s_vacsinou": 90.6,
+      "zhoda_s_klubom": 94.9
+     },
+     {
+      "meno": "Michal Krcho",
+      "klub": "Starostovia a nezávislí kandidáti",
+      "hlasovani": 2066,
+      "pritomnost": 97.9,
+      "za": 1558,
+      "proti": 75,
+      "zdrzal": 210,
+      "nehlasoval": 180,
+      "nepritomny": 43,
+      "zhoda_s_vacsinou": 86.3,
+      "zhoda_s_klubom": 90.5
+     },
+     {
+      "meno": "Matej Kundrát",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 84.1,
+      "za": 1404,
+      "proti": 96,
+      "zdrzal": 114,
+      "nehlasoval": 123,
+      "nepritomny": 329,
+      "zhoda_s_vacsinou": 88.2,
+      "zhoda_s_klubom": 94.3
+     },
+     {
+      "meno": "Štefan Lasky",
+      "klub": "Spolupráca pre Košice",
+      "hlasovani": 2066,
+      "pritomnost": 77.9,
+      "za": 1167,
+      "proti": 27,
+      "zdrzal": 134,
+      "nehlasoval": 282,
+      "nepritomny": 456,
+      "zhoda_s_vacsinou": 87.7,
+      "zhoda_s_klubom": 93.3
+     },
+     {
+      "meno": "Ladislav Lörinc",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 92.7,
+      "za": 1478,
+      "proti": 219,
+      "zdrzal": 89,
+      "nehlasoval": 129,
+      "nepritomny": 151,
+      "zhoda_s_vacsinou": 84.4,
+      "zhoda_s_klubom": 91.0
+     },
+     {
+      "meno": "Roman Matoušek",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 99.1,
+      "za": 1654,
+      "proti": 145,
+      "zdrzal": 155,
+      "nehlasoval": 94,
+      "nepritomny": 18,
+      "zhoda_s_vacsinou": 86.0,
+      "zhoda_s_klubom": 93.4
+     },
+     {
+      "meno": "Peter Múdry",
+      "klub": "Spolupráca pre Košice",
+      "hlasovani": 2066,
+      "pritomnost": 94.8,
+      "za": 1604,
+      "proti": 75,
+      "zdrzal": 185,
+      "nehlasoval": 94,
+      "nepritomny": 108,
+      "zhoda_s_vacsinou": 86.2,
+      "zhoda_s_klubom": 94.5
+     },
+     {
+      "meno": "Igor Petrovčik",
+      "klub": "Starostovia a nezávislí kandidáti",
+      "hlasovani": 2066,
+      "pritomnost": 88.6,
+      "za": 1296,
+      "proti": 56,
+      "zdrzal": 113,
+      "nehlasoval": 365,
+      "nepritomny": 236,
+      "zhoda_s_vacsinou": 90.5,
+      "zhoda_s_klubom": 90.9
+     },
+     {
+      "meno": "Vladimír Saxa",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 99.3,
+      "za": 1646,
+      "proti": 147,
+      "zdrzal": 184,
+      "nehlasoval": 74,
+      "nepritomny": 15,
+      "zhoda_s_vacsinou": 85.1,
+      "zhoda_s_klubom": 91.8
+     },
+     {
+      "meno": "Róbert Schwarcz",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 85.6,
+      "za": 1430,
+      "proti": 78,
+      "zdrzal": 149,
+      "nehlasoval": 112,
+      "nepritomny": 297,
+      "zhoda_s_vacsinou": 88.3,
+      "zhoda_s_klubom": 93.1
+     },
+     {
+      "meno": "Ján Sekáč",
+      "klub": "Spolupráca pre Košice",
+      "hlasovani": 2066,
+      "pritomnost": 45.5,
+      "za": 769,
+      "proti": 16,
+      "zdrzal": 105,
+      "nehlasoval": 50,
+      "nepritomny": 1126,
+      "zhoda_s_vacsinou": 86.4,
+      "zhoda_s_klubom": 94.2
+     },
+     {
+      "meno": "Martin Seman",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 50.4,
+      "za": 811,
+      "proti": 69,
+      "zdrzal": 73,
+      "nehlasoval": 88,
+      "nepritomny": 1025,
+      "zhoda_s_vacsinou": 87.4,
+      "zhoda_s_klubom": 92.1
+     },
+     {
+      "meno": "Andrej Sitkár",
+      "klub": "Nezaradení",
+      "hlasovani": 2066,
+      "pritomnost": 61.5,
+      "za": 957,
+      "proti": 20,
+      "zdrzal": 225,
+      "nehlasoval": 68,
+      "nepritomny": 796,
+      "zhoda_s_vacsinou": 80.4,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Zuzana Slivenská",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 82.5,
+      "za": 1426,
+      "proti": 85,
+      "zdrzal": 91,
+      "nehlasoval": 102,
+      "nepritomny": 362,
+      "zhoda_s_vacsinou": 89.9,
+      "zhoda_s_klubom": 93.4
+     },
+     {
+      "meno": "Anna Súkeníková",
+      "klub": "Starostovia a nezávislí kandidáti",
+      "hlasovani": 2066,
+      "pritomnost": 90.1,
+      "za": 1450,
+      "proti": 55,
+      "zdrzal": 140,
+      "nehlasoval": 217,
+      "nepritomny": 204,
+      "zhoda_s_vacsinou": 90.2,
+      "zhoda_s_klubom": 94.2
+     },
+     {
+      "meno": "František Ténai",
+      "klub": "Nezaradení",
+      "hlasovani": 2066,
+      "pritomnost": 88.0,
+      "za": 1441,
+      "proti": 73,
+      "zdrzal": 195,
+      "nehlasoval": 109,
+      "nepritomny": 248,
+      "zhoda_s_vacsinou": 84.6,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Tomáš Vasok",
+      "klub": "Spolupráca pre Košice",
+      "hlasovani": 2066,
+      "pritomnost": 87.8,
+      "za": 1458,
+      "proti": 62,
+      "zdrzal": 208,
+      "nehlasoval": 86,
+      "nepritomny": 252,
+      "zhoda_s_vacsinou": 84.1,
+      "zhoda_s_klubom": 94.4
+     },
+     {
+      "meno": "Marcel Vrchota",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 96.1,
+      "za": 1534,
+      "proti": 65,
+      "zdrzal": 144,
+      "nehlasoval": 242,
+      "nepritomny": 81,
+      "zhoda_s_vacsinou": 88.1,
+      "zhoda_s_klubom": 90.7
+     },
+     {
+      "meno": "Erik Weiss",
+      "klub": "Košický klub",
+      "hlasovani": 2066,
+      "pritomnost": 82.3,
+      "za": 1413,
+      "proti": 124,
+      "zdrzal": 94,
+      "nehlasoval": 70,
+      "nepritomny": 365,
+      "zhoda_s_vacsinou": 88.5,
+      "zhoda_s_klubom": 94.9
+     },
+     {
+      "meno": "Beáta Zemková",
+      "klub": "Nezaradení",
+      "hlasovani": 2066,
+      "pritomnost": 99.8,
+      "za": 1756,
+      "proti": 73,
+      "zdrzal": 179,
+      "nehlasoval": 54,
+      "nepritomny": 4,
+      "zhoda_s_vacsinou": 89.8,
+      "zhoda_s_klubom": null
+     },
+     {
+      "meno": "Marcel Šaňa",
+      "klub": "Spolupráca pre Košice",
+      "hlasovani": 2066,
+      "pritomnost": 84.8,
+      "za": 1490,
+      "proti": 14,
+      "zdrzal": 186,
+      "nehlasoval": 63,
+      "nepritomny": 313,
+      "zhoda_s_vacsinou": 87.5,
+      "zhoda_s_klubom": 94.6
+     },
+     {
+      "meno": "Miroslav Špak",
+      "klub": "Starostovia a nezávislí kandidáti",
+      "hlasovani": 2066,
+      "pritomnost": 91.8,
+      "za": 1418,
+      "proti": 217,
+      "zdrzal": 53,
+      "nehlasoval": 209,
+      "nepritomny": 169,
+      "zhoda_s_vacsinou": 85.0,
+      "zhoda_s_klubom": 85.5
+     }
+    ],
+    "kluby": [
+     {
+      "klub": "Košický klub",
+      "clenov": 14,
+      "jednotnost": 92.7
+     },
+     {
+      "klub": "Starostovia a nezávislí kandidáti",
+      "clenov": 9,
+      "jednotnost": 92.3
+     },
+     {
+      "klub": "Spolupráca pre Košice",
+      "clenov": 9,
+      "jednotnost": 91.9
+     }
+    ],
+    "zdroj": "https://opendata.kosice.sk/datasets/10471bb4ff0f47879af2a861f98e34c5"
+   }
+  },
+  "subory": {
+   "2018-2022": "/data/mesta/hlasovania-kosice-2018-2022.json",
+   "2022-2026": "/data/mesta/hlasovania-kosice-2022-2026.json"
+  }
+ },
+ "financie": [
+  {
+   "typ": "zmluvy",
+   "zdroj": "https://opendata.kosice.sk/datasets/6b66219049674794b462b90512081220",
+   "zaznamov": 46062,
+   "skryte_fyzicke_osoby": 7130,
+   "roky": {
+    "2010": {
+     "pocet": 2,
+     "suma": 758,
+     "fo_pocet": 2,
+     "fo_suma": 758
+    },
+    "2011": {
+     "pocet": 1087,
+     "suma": 49867170,
+     "fo_pocet": 765,
+     "fo_suma": 4430233
+    },
+    "2012": {
+     "pocet": 1220,
+     "suma": 123353450,
+     "fo_pocet": 803,
+     "fo_suma": 22512295
+    },
+    "2013": {
+     "pocet": 899,
+     "suma": 31464101,
+     "fo_pocet": 548,
+     "fo_suma": 13463192
+    },
+    "2014": {
+     "pocet": 720,
+     "suma": 125984637,
+     "fo_pocet": 298,
+     "fo_suma": 2707264
+    },
+    "2015": {
+     "pocet": 752,
+     "suma": 65363668,
+     "fo_pocet": 315,
+     "fo_suma": 6230307
+    },
+    "2016": {
+     "pocet": 686,
+     "suma": 9934940,
+     "fo_pocet": 283,
+     "fo_suma": 2070521
+    },
+    "2017": {
+     "pocet": 870,
+     "suma": 19994195,
+     "fo_pocet": 428,
+     "fo_suma": 7600573
+    },
+    "2018": {
+     "pocet": 884,
+     "suma": 31632139,
+     "fo_pocet": 397,
+     "fo_suma": 2267991
+    },
+    "2019": {
+     "pocet": 651,
+     "suma": 27362910,
+     "fo_pocet": 287,
+     "fo_suma": 1708718
+    },
+    "2020": {
+     "pocet": 739,
+     "suma": 56455877,
+     "fo_pocet": 332,
+     "fo_suma": 10772518
+    },
+    "2021": {
+     "pocet": 804,
+     "suma": 61498365,
+     "fo_pocet": 371,
+     "fo_suma": 7647962
+    },
+    "2022": {
+     "pocet": 1031,
+     "suma": 64532217,
+     "fo_pocet": 431,
+     "fo_suma": 17076116
+    },
+    "2023": {
+     "pocet": 855,
+     "suma": 58621438,
+     "fo_pocet": 347,
+     "fo_suma": 3565882
+    },
+    "2024": {
+     "pocet": 1277,
+     "suma": 107266577,
+     "fo_pocet": 522,
+     "fo_suma": 73487288
+    },
+    "2025": {
+     "pocet": 1263,
+     "suma": 253838476,
+     "fo_pocet": 559,
+     "fo_suma": 80771190
+    },
+    "2026": {
+     "pocet": 964,
+     "suma": 196535192,
+     "fo_pocet": 442,
+     "fo_suma": 94757512
+    }
+   },
+   "dodavatelia_posledne_3_roky": [
+    {
+     "ico": "30416094",
+     "pocet": 4,
+     "suma": 79824841,
+     "nazov": "Ministerstvo dopravy Slovenskej republiky"
+    },
+    {
+     "ico": "50349287",
+     "pocet": 32,
+     "suma": 41544212,
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky"
+    },
+    {
+     "ico": "31320155",
+     "pocet": 4,
+     "suma": 30019742,
+     "nazov": "Všeobecná úverová banka, a.s."
+    },
+    {
+     "ico": "46897992",
+     "pocet": 3,
+     "suma": 17500583,
+     "nazov": "CESTY KOŠICE s.r.o."
+    },
+    {
+     "ico": "31651518",
+     "pocet": 5,
+     "suma": 17181296,
+     "nazov": "EUROVIA SK, a.s."
+    },
+    {
+     "ico": "31651402",
+     "pocet": 9,
+     "suma": 12590854,
+     "nazov": "COLAS Slovakia, a.s."
+    },
+    {
+     "ico": "00151653",
+     "pocet": 2,
+     "suma": 12500000,
+     "nazov": "Slovenská sporiteľňa, a.s."
+    },
+    {
+     "ico": "00681156",
+     "pocet": 10,
+     "suma": 11581584,
+     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky"
+    },
+    {
+     "ico": "44886021",
+     "pocet": 2,
+     "suma": 7788702,
+     "nazov": "DAG SLOVAKIA, a.s."
+    },
+    {
+     "ico": "50673289",
+     "pocet": 10,
+     "suma": 6740869,
+     "nazov": "Box Park, s.r.o."
+    },
+    {
+     "ico": "31684343",
+     "pocet": 3,
+     "suma": 5934601,
+     "nazov": "BETPRES s.r.o."
+    },
+    {
+     "ico": "00585441",
+     "pocet": 3,
+     "suma": 3763900,
+     "nazov": "KOOPERATIVA poisťovňa, a.s. Vienna Insurance Group"
+    },
+    {
+     "ico": "44518684",
+     "pocet": 24,
+     "suma": 3699614,
+     "nazov": "Bytový podnik mesta Košice, s.r.o."
+    },
+    {
+     "ico": "36019208",
+     "pocet": 82,
+     "suma": 2955533,
+     "nazov": "INMEDIA, spol. s r.o."
+    },
+    {
+     "ico": "35919001",
+     "pocet": 5,
+     "suma": 2610375,
+     "nazov": "Národná diaľničná spoločnosť, a.s."
+    },
+    {
+     "ico": "30811384",
+     "pocet": 3,
+     "suma": 1746500,
+     "nazov": "Slovenský tenisový zväz"
+    },
+    {
+     "ico": "31996361",
+     "pocet": 10,
+     "suma": 1746283,
+     "nazov": "Psychosociálne centrum"
+    },
+    {
+     "ico": "36833380",
+     "pocet": 1,
+     "suma": 1555300,
+     "nazov": "M - SILNICE SK s.r.o."
+    },
+    {
+     "ico": "44483767",
+     "pocet": 2,
+     "suma": 1537632,
+     "nazov": "Energetika Slovensko, a. s."
+    },
+    {
+     "ico": "35546841",
+     "pocet": 1,
+     "suma": 1444264,
+     "nazov": "Základná škola Ľudovíta Fullu, Maurerova 21, Košice"
+    }
+   ],
+   "najvacsie_12_mesiacov": [
+    {
+     "datum": "2026-07-12",
+     "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "suma": 10868910.68,
+     "popis": "Zmluva o poskytnutí NFP, kód projektu: 401301G285 - Most č. M5850 na ceste II/547 a lávka, Hlinkova ul., Košice"
+    },
+    {
+     "datum": "2025-11-02",
+     "dodavatel": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "suma": 10000000,
+     "popis": "Dodatok č. 5 k zmluve o revolvingovom úvere č. 366/2020/UZ (2020000876)"
+    },
+    {
+     "datum": "2025-12-09",
+     "dodavatel": "Slovenská sporiteľňa, a.s.",
+     "ico": "00151653",
+     "suma": 10000000,
+     "popis": "Zmluva o úvere č. 1488/CC/25"
+    },
+    {
+     "datum": "2025-12-18",
+     "dodavatel": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "suma": 10000000,
+     "popis": "Zmluva o termínovanom úvere č. 892/2025/UZ"
+    },
+    {
+     "datum": "2025-11-23",
+     "dodavatel": "CESTY KOŠICE s.r.o.",
+     "ico": "46897992",
+     "suma": 5984894.95,
+     "popis": "Dodatok č. 1 k Zmluve o dielo číslo 2025002178 - Rekonštrukcia komunikácií v meste Košice 2025/1"
+    },
+    {
+     "datum": "2026-05-24",
+     "dodavatel": "CESTY KOŠICE s.r.o.",
+     "ico": "46897992",
+     "suma": 5919853.47,
+     "popis": "Dodatok č. 2 k Zmluve o dielo číslo 2025002178 z 15.08.2025 v znení Dodatku č.1 Zo dňa 24.11.2025 -Rekonštrukcia komunikácií v meste Košice 2025/1"
+    },
+    {
+     "datum": "2026-07-19",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 5689334.45,
+     "popis": "ZMLUVA O DIELO - Rekonštrukcia komunikácií v meste Košice 2026/1"
+    },
+    {
+     "datum": "2026-03-12",
+     "dodavatel": "COLAS Slovakia, a.s.",
+     "ico": "31651402",
+     "suma": 5669971.9,
+     "popis": "Rámcová dohoda - Stavebná údržba a opravy pozemných komunikácií 2026/2027"
+    },
+    {
+     "datum": "2026-05-31",
+     "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "suma": 5212272.16,
+     "popis": "Zmluva o poskytnutí NFP č. projektu 401501G440 \"Cyklistický chodník Cvičná skala – Alpinka\""
+    },
+    {
+     "datum": "2026-06-01",
+     "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "suma": 4358472.96,
+     "popis": "Zmluva o poskytnutí NFP reg. č. PSK-SIEA-007-2024-ITI-EFRR/H244 - Zníženie energetickej náročnosti CVČ Domino, Košice"
+    },
+    {
+     "datum": "2026-05-17",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 4185816.63,
+     "popis": "Zmluva o dielo - Cyklistická cestička Cvičná skala - Alpinka"
+    },
+    {
+     "datum": "2026-02-09",
+     "dodavatel": "DAG SLOVAKIA, a.s.",
+     "ico": "44886021",
+     "suma": 3900971.78,
+     "popis": "Dodatok č. 1 k Zmluve o dielo č. 2026000146"
+    },
+    {
+     "datum": "2026-01-18",
+     "dodavatel": "DAG SLOVAKIA, a.s.",
+     "ico": "44886021",
+     "suma": 3887730.21,
+     "popis": "Zmluva o dielo - Rekonštrukcia budovy detských jaslí na zariadenie pre seniorov, Gerlachovská 10, Košice"
+    },
+    {
+     "datum": "2026-06-04",
+     "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+     "ico": "00681156",
+     "suma": 3121000,
+     "popis": "ZMLUVA O POSKYTNUTÍ NFP č. Z401405I326 - vybudovanie centra služieb pre seniorov Gerlachovská 10 Košice"
+    },
+    {
+     "datum": "2026-07-07",
+     "dodavatel": "BETPRES s.r.o.",
+     "ico": "31684343",
+     "suma": 3020637.06,
+     "popis": "Dodatok č.1 k Zmluve o dielo č. 2026000345 zo dňa 16.02.2026 - Rekonštrukcia Hlavnej ulice - prekrytie archeolog. výskumu dolnej brány"
+    }
+   ]
+  },
+  {
+   "typ": "faktúry",
+   "zdroj": "https://opendata.kosice.sk/datasets/f3fae948601148c9a458e375a572c84c",
+   "zaznamov": 89363,
+   "skryte_fyzicke_osoby": 15079,
+   "roky": {
+    "2010": {
+     "pocet": 2,
+     "suma": 120608,
+     "fo_pocet": 2,
+     "fo_suma": 120608
+    },
+    "2011": {
+     "pocet": 5113,
+     "suma": 32112804,
+     "fo_pocet": 1157,
+     "fo_suma": 2697243
+    },
+    "2012": {
+     "pocet": 5534,
+     "suma": 52099338,
+     "fo_pocet": 1261,
+     "fo_suma": 2320672
+    },
+    "2013": {
+     "pocet": 5500,
+     "suma": 76785822,
+     "fo_pocet": 1134,
+     "fo_suma": 2474686
+    },
+    "2014": {
+     "pocet": 5342,
+     "suma": 38408074,
+     "fo_pocet": 1089,
+     "fo_suma": 2021461
+    },
+    "2015": {
+     "pocet": 5418,
+     "suma": 98054292,
+     "fo_pocet": 1045,
+     "fo_suma": 1774093
+    },
+    "2016": {
+     "pocet": 5456,
+     "suma": 39412886,
+     "fo_pocet": 1017,
+     "fo_suma": 2136444
+    },
+    "2017": {
+     "pocet": 5363,
+     "suma": 72635065,
+     "fo_pocet": 1046,
+     "fo_suma": 2000379
+    },
+    "2018": {
+     "pocet": 5561,
+     "suma": 72361327,
+     "fo_pocet": 957,
+     "fo_suma": 2055088
+    },
+    "2019": {
+     "pocet": 5666,
+     "suma": 38925918,
+     "fo_pocet": 1071,
+     "fo_suma": 3095782
+    },
+    "2020": {
+     "pocet": 4908,
+     "suma": 38922625,
+     "fo_pocet": 594,
+     "fo_suma": 2355195
+    },
+    "2021": {
+     "pocet": 5644,
+     "suma": 46229450,
+     "fo_pocet": 672,
+     "fo_suma": 2618109
+    },
+    "2022": {
+     "pocet": 6032,
+     "suma": 54993145,
+     "fo_pocet": 784,
+     "fo_suma": 4338035
+    },
+    "2023": {
+     "pocet": 6394,
+     "suma": 71598542,
+     "fo_pocet": 888,
+     "fo_suma": 3923981
+    },
+    "2024": {
+     "pocet": 6226,
+     "suma": 59374033,
+     "fo_pocet": 886,
+     "fo_suma": 3147862
+    },
+    "2025": {
+     "pocet": 6518,
+     "suma": 67945227,
+     "fo_pocet": 897,
+     "fo_suma": 3347717
+    },
+    "2026": {
+     "pocet": 4673,
+     "suma": 84575846,
+     "fo_pocet": 579,
+     "fo_suma": 2657765
+    }
+   },
+   "dodavatelia_posledne_3_roky": [
+    {
+     "ico": "36205214",
+     "pocet": 503,
+     "suma": 65398534,
+     "nazov": "KOSIT a.s."
+    },
+    {
+     "ico": "31651518",
+     "pocet": 22,
+     "suma": 49193683,
+     "nazov": "EUROVIA SK, a.s."
+    },
+    {
+     "ico": "44518684",
+     "pocet": 2236,
+     "suma": 14485361,
+     "nazov": "Bytový podnik mesta Košice, s.r.o."
+    },
+    {
+     "ico": "31701914",
+     "pocet": 160,
+     "suma": 9340923,
+     "nazov": "Dopravný podnik mesta Košice, akciová spoločnosť"
+    },
+    {
+     "ico": "31651402",
+     "pocet": 63,
+     "suma": 8025996,
+     "nazov": "COLAS Slovakia, a.s."
+    },
+    {
+     "ico": "36570460",
+     "pocet": 343,
+     "suma": 7550832,
+     "nazov": "Východoslovenská vodárenská spoločnosť, a.s."
+    },
+    {
+     "ico": "46897992",
+     "pocet": 5,
+     "suma": 5079099,
+     "nazov": "CESTY KOŠICE s.r.o."
+    },
+    {
+     "ico": "46057196",
+     "pocet": 34,
+     "suma": 3104615,
+     "nazov": "LED SOLAR Service, a. s."
+    },
+    {
+     "ico": "31684343",
+     "pocet": 13,
+     "suma": 2075457,
+     "nazov": "BETPRES s.r.o."
+    },
+    {
+     "ico": "36631124",
+     "pocet": 242,
+     "suma": 1778913,
+     "nazov": "Slovenská pošta, a.s."
+    },
+    {
+     "ico": "31333320",
+     "pocet": 4,
+     "suma": 1538305,
+     "nazov": "Doprastav, a.s."
+    },
+    {
+     "ico": "50673289",
+     "pocet": 30,
+     "suma": 1375316,
+     "nazov": "Box Park, s.r.o."
+    },
+    {
+     "ico": "53684141",
+     "pocet": 81,
+     "suma": 1337926,
+     "nazov": "Yunex, s.r.o."
+    },
+    {
+     "ico": "44483767",
+     "pocet": 1568,
+     "suma": 1334516,
+     "nazov": "Energetika Slovensko, a. s."
+    },
+    {
+     "ico": "35871113",
+     "pocet": 187,
+     "suma": 1221518,
+     "nazov": "EEI s. r. o."
+    },
+    {
+     "ico": "46320610",
+     "pocet": 17,
+     "suma": 1216549,
+     "nazov": "STAV RD s.r.o."
+    },
+    {
+     "ico": "17078202",
+     "pocet": 601,
+     "suma": 1166820,
+     "nazov": "Správa mestskej zelene v Košiciach"
+    },
+    {
+     "ico": "35697270",
+     "pocet": 397,
+     "suma": 1004332,
+     "nazov": "Orange Slovensko, a.s."
+    },
+    {
+     "ico": "36693481",
+     "pocet": 3,
+     "suma": 904455,
+     "nazov": "PROENERGS s.r.o."
+    },
+    {
+     "ico": "45965838",
+     "pocet": 31,
+     "suma": 886427,
+     "nazov": "MP KANAL service s.r.o."
+    }
+   ],
+   "najvacsie_12_mesiacov": [
+    {
+     "datum": "2026-07-14",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 11541445.99,
+     "popis": "Modernizácia električkových tratí MET, 2.etapa"
+    },
+    {
+     "datum": "2026-06-14",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 9476056.75,
+     "popis": "Stavebné práce - MET, 2.etapa 5/2026"
+    },
+    {
+     "datum": "2026-05-12",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 6605462.02,
+     "popis": "Stavebné práce - Modernizácia električkových tratí MET, 2.etapa"
+    },
+    {
+     "datum": "2026-06-11",
+     "dodavatel": "CESTY KOŠICE s.r.o.",
+     "ico": "46897992",
+     "suma": 4812889,
+     "popis": "Rekonštrukcia ciest - Rastislavova, Cintorínska, Za Štadiónom, Americká tr."
+    },
+    {
+     "datum": "2026-04-13",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 3106664.21,
+     "popis": "Modernizácia električkových tratí MET, 2.etapa"
+    },
+    {
+     "datum": "2026-02-17",
+     "dodavatel": "KOSIT a.s.",
+     "ico": "36205214",
+     "suma": 1927236.91,
+     "popis": "Zimná údržba 1/2026"
+    },
+    {
+     "datum": "2026-01-14",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 1918294.54,
+     "popis": "Modernizácia električkových tratí MET, 2.etapa"
+    },
+    {
+     "datum": "2025-12-11",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 1824495.81,
+     "popis": "Stavebné práce - Modernizácia el. tratí MET 2. etapa 11/2025"
+    },
+    {
+     "datum": "2026-02-11",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 1435028.06,
+     "popis": "Stavebné práce - Modernizácia električkových tratí, 2.etapa"
+    },
+    {
+     "datum": "2025-12-18",
+     "dodavatel": "KOSIT a.s.",
+     "ico": "36205214",
+     "suma": 1313560.98,
+     "popis": "Zimná údržba 11/2025"
+    },
+    {
+     "datum": "2025-11-13",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 1058735.67,
+     "popis": "Modernizácia električkových tratí MET, 2.etapa"
+    },
+    {
+     "datum": "2026-03-11",
+     "dodavatel": "KOSIT a.s.",
+     "ico": "36205214",
+     "suma": 989282.73,
+     "popis": "Zimná údržba 2/2026"
+    },
+    {
+     "datum": "2026-01-14",
+     "dodavatel": "KOSIT a.s.",
+     "ico": "36205214",
+     "suma": 860485.39,
+     "popis": "Zimná údržba 12/2025"
+    },
+    {
+     "datum": "2026-09-13",
+     "dodavatel": "Dopravný podnik mesta Košice, akciová spoločnosť",
+     "ico": "31701914",
+     "suma": 644955.94,
+     "popis": "Zámena nehnuteľností"
+    },
+    {
+     "datum": "2025-11-17",
+     "dodavatel": "KOSIT a.s.",
+     "ico": "36205214",
+     "suma": 614228,
+     "popis": "Zber a odvoz KO 10/2025"
+    }
+   ]
+  },
+  {
+   "typ": "objednávky",
+   "zdroj": "https://opendata.kosice.sk/datasets/06d4cb2866c54b43bb1997f7edf86f4d",
+   "zaznamov": 24157,
+   "skryte_fyzicke_osoby": 5204,
+   "roky": {
+    "2011": {
+     "pocet": 991,
+     "suma": 1238004,
+     "fo_pocet": 318,
+     "fo_suma": 232753
+    },
+    "2012": {
+     "pocet": 1381,
+     "suma": 1781399,
+     "fo_pocet": 461,
+     "fo_suma": 268689
+    },
+    "2013": {
+     "pocet": 1269,
+     "suma": 1941805,
+     "fo_pocet": 345,
+     "fo_suma": 254957
+    },
+    "2014": {
+     "pocet": 1144,
+     "suma": 1701127,
+     "fo_pocet": 339,
+     "fo_suma": 236792
+    },
+    "2015": {
+     "pocet": 1206,
+     "suma": 2045665,
+     "fo_pocet": 361,
+     "fo_suma": 261479
+    },
+    "2016": {
+     "pocet": 1352,
+     "suma": 6320249,
+     "fo_pocet": 329,
+     "fo_suma": 291928
+    },
+    "2017": {
+     "pocet": 1460,
+     "suma": 8420598,
+     "fo_pocet": 386,
+     "fo_suma": 330110
+    },
+    "2018": {
+     "pocet": 1548,
+     "suma": 12277402,
+     "fo_pocet": 359,
+     "fo_suma": 338632
+    },
+    "2019": {
+     "pocet": 1683,
+     "suma": 10115751,
+     "fo_pocet": 329,
+     "fo_suma": 367355
+    },
+    "2020": {
+     "pocet": 1482,
+     "suma": 8677863,
+     "fo_pocet": 239,
+     "fo_suma": 254053
+    },
+    "2021": {
+     "pocet": 1876,
+     "suma": 11125801,
+     "fo_pocet": 304,
+     "fo_suma": 381131
+    },
+    "2022": {
+     "pocet": 1853,
+     "suma": 10265542,
+     "fo_pocet": 327,
+     "fo_suma": 569848
+    },
+    "2023": {
+     "pocet": 1699,
+     "suma": 9544855,
+     "fo_pocet": 322,
+     "fo_suma": 937204
+    },
+    "2024": {
+     "pocet": 1714,
+     "suma": 11267323,
+     "fo_pocet": 274,
+     "fo_suma": 584243
+    },
+    "2025": {
+     "pocet": 1980,
+     "suma": 13852552,
+     "fo_pocet": 307,
+     "fo_suma": 532883
+    },
+    "2026": {
+     "pocet": 1519,
+     "suma": 10221396,
+     "fo_pocet": 204,
+     "fo_suma": 416796
+    }
+   },
+   "dodavatelia_posledne_3_roky": [
+    {
+     "ico": "31651402",
+     "pocet": 34,
+     "suma": 9820801,
+     "nazov": "COLAS Slovakia, a.s."
+    },
+    {
+     "ico": "44518684",
+     "pocet": 436,
+     "suma": 6840278,
+     "nazov": "Bytový podnik mesta Košice, s.r.o."
+    },
+    {
+     "ico": "17078202",
+     "pocet": 569,
+     "suma": 1438041,
+     "nazov": "Správa mestskej zelene v Košiciach"
+    },
+    {
+     "ico": "27831345",
+     "pocet": 4,
+     "suma": 1138092,
+     "nazov": "XEVOS Solutions s.r.o."
+    },
+    {
+     "ico": "45965838",
+     "pocet": 16,
+     "suma": 1025197,
+     "nazov": "MP KANAL service s.r.o."
+    },
+    {
+     "ico": "45331324",
+     "pocet": 11,
+     "suma": 390457,
+     "nazov": "EGC, s.r.o."
+    },
+    {
+     "ico": "46789146",
+     "pocet": 6,
+     "suma": 389575,
+     "nazov": "Unique People, s.r.o."
+    },
+    {
+     "ico": "36396222",
+     "pocet": 43,
+     "suma": 345665,
+     "nazov": "AUTOCONT s.r.o."
+    },
+    {
+     "ico": "36202771",
+     "pocet": 12,
+     "suma": 343799,
+     "nazov": "TRIS, spol. s r.o."
+    },
+    {
+     "ico": "31606458",
+     "pocet": 8,
+     "suma": 325218,
+     "nazov": "SAROUTE, s.r.o."
+    },
+    {
+     "ico": "35871113",
+     "pocet": 51,
+     "suma": 305234,
+     "nazov": "EEI s. r. o."
+    },
+    {
+     "ico": "35732431",
+     "pocet": 28,
+     "suma": 296733,
+     "nazov": "DOLIS GOEN, s.r.o."
+    },
+    {
+     "ico": "46057196",
+     "pocet": 4,
+     "suma": 292961,
+     "nazov": "LED SOLAR Service, a. s."
+    },
+    {
+     "ico": "45873895",
+     "pocet": 1,
+     "suma": 261433,
+     "nazov": "IVANSTAV GROUP s.r.o."
+    },
+    {
+     "ico": "31693237",
+     "pocet": 4,
+     "suma": 249790,
+     "nazov": "CAMEO, s.r.o."
+    },
+    {
+     "ico": "50736396",
+     "pocet": 14,
+     "suma": 230748,
+     "nazov": "Grey s.r.o."
+    },
+    {
+     "ico": "50725483",
+     "pocet": 8,
+     "suma": 221288,
+     "nazov": "M + M Košice, s.r.o."
+    },
+    {
+     "ico": "31672981",
+     "pocet": 16,
+     "suma": 211084,
+     "nazov": "Mestské lesy Košice a.s."
+    },
+    {
+     "ico": "48206326",
+     "pocet": 18,
+     "suma": 201292,
+     "nazov": "Ledvák spol. s r.o."
+    },
+    {
+     "ico": "35883022",
+     "pocet": 5,
+     "suma": 190287,
+     "nazov": "COLAS, s.r.o."
+    }
+   ],
+   "najvacsie_12_mesiacov": [
+    {
+     "datum": "2026-08-12",
+     "dodavatel": "COLAS Slovakia, a.s.",
+     "ico": "31651402",
+     "suma": 754070.7,
+     "popis": "Na základe Rámcovej dohody č. 2026000548 si u Vás objednávame - Stavebnú údržbu a opravy pozemných komunikácií v meste Košice do konca Septembra 2026. Fakturácia na základe skutočne vykonaného rozsahu"
+    },
+    {
+     "datum": "2026-07-12",
+     "dodavatel": "COLAS Slovakia, a.s.",
+     "ico": "31651402",
+     "suma": 713216.2,
+     "popis": "Na základe rámcovej dohody č. 2026000548 si u Vás objednávame - Stavebnú údržbu a opravy pozemných komunikácií v meste Košice na mesiac júl a august 2026. Fakturácia na základe skutočne vykonaného roz"
+    },
+    {
+     "datum": "2026-05-11",
+     "dodavatel": "COLAS Slovakia, a.s.",
+     "ico": "31651402",
+     "suma": 618936.7,
+     "popis": "Na základe rámcovej dohody č. 2026000548 si u Vás objednávame - Stavebnú údržbu a opravy pozemných komunikácií v meste Košice na mesiac máj - jún 2026. Fakturácia na základe skutočne vykonaného rozsah"
+    },
+    {
+     "datum": "2025-10-21",
+     "dodavatel": "COLAS Slovakia, a.s.",
+     "ico": "31651402",
+     "suma": 528386.4,
+     "popis": "Na základe rámcovej dohody č. 2024003984 si u Vás objednávame - Stavebnú údržbu a opravy pozemných komunikácií v meste Košice. Fakturácia na základe skutočne vykonaného rozsahu plnenia.Cena uvedená s "
+    },
+    {
+     "datum": "2026-03-19",
+     "dodavatel": "COLAS Slovakia, a.s.",
+     "ico": "31651402",
+     "suma": 506819.8,
+     "popis": "Na základe rámcovej dohody č.2026000548 si u Vás objednávame - Stavebnú údržbu a opravy pozemných komunikácií v meste Košice na mesiac marec - apríl 2026. Fakturácia na základe skutočne vykonaného roz"
+    },
+    {
+     "datum": "2025-10-28",
+     "dodavatel": "IVANSTAV GROUP s.r.o.",
+     "ico": "45873895",
+     "suma": 261432.8,
+     "popis": "V súlade s výsledkom verejného obstarávania na predmet zákazky vyhlásenej podľa §108 zákona č.343/2015 Z.Z s názvom \"Oprava únikových trás v havarijnom stave vo vybraných MŠ\" si u Vás objednávame usku"
+    },
+    {
+     "datum": "2026-05-27",
+     "dodavatel": "COLAS Slovakia, a.s.",
+     "ico": "31651402",
+     "suma": 200222.1,
+     "popis": "Objednávame is u Vás údržbu mostných objektov M388, M10635 a LVJZ02 na základe položiek rámcovej dohody č. 2026000928, účinnej dňa 24.04.2026.Fakturácia na základe skutočne vykonaných prác."
+    },
+    {
+     "datum": "2026-08-04",
+     "dodavatel": "Bytový podnik mesta Košice, s.r.o.",
+     "ico": "44518684",
+     "suma": 171027.8,
+     "popis": "Na základe Rámcovej dohody č. 2026000626 si u Vás objednávame práce stavebnej údržby - dlaždené kryty pozemných komunikácií podľa špecifikácie uvedenej v prílohe. Fakturácia na základe skutočne vykona"
+    },
+    {
+     "datum": "2025-12-07",
+     "dodavatel": "ESA Construction s.r.o.",
+     "ico": "53105311",
+     "suma": 150862.01,
+     "popis": "V súlade s výsledkom verejného obstarávania na predmet zákazky \"Výmena svietidiel vo vybraných MŠ\" si u Vás objednávame uskutočnenie všetkých prác a dodávok v rozsahu výkazu výmer.- celková cena diela"
+    },
+    {
+     "datum": "2025-12-07",
+     "dodavatel": "CAMEO, s.r.o.",
+     "ico": "31693237",
+     "suma": 150526.18,
+     "popis": "V súlade s výsledkom verejného obstarávania na predmet zákazky \"Výmena nášľapných vrstiev vo vybraných ŠZ\" si u Vás objednávame uskutočnenie všetkých prác a dodávok v rozsahu výkazu výmer.- celková ce"
+    },
+    {
+     "datum": "2026-02-22",
+     "dodavatel": "Unique People, s.r.o.",
+     "ico": "46789146",
+     "suma": 146105.4,
+     "popis": "Na základe rámcovej dohody č. 2026000395, čl. II bod 4 si u Vás objednávame prenájom licencií produktov spoločnosti Microsoft podľa priloženého zoznamu na 4 mesiace (Marec - Jún)."
+    },
+    {
+     "datum": "2025-12-07",
+     "dodavatel": "CENAV, s.r.o.",
+     "ico": "44049323",
+     "suma": 143747.27,
+     "popis": "V súlade s výsledkom verejného obstarávania na predmet zákazky \"Stavebné úpravy v časti 2.NP ŠZ Petzvalova 4\" si u Vás objednávame uskutočnenie všetkých prác a dodávok v rozsahu výkazu výmer.- celková"
+    },
+    {
+     "datum": "2026-06-25",
+     "dodavatel": "BETPRES s.r.o.",
+     "ico": "31684343",
+     "suma": 139852.1,
+     "popis": "Objednávame si u Vás stavebné práce na základe priloženého rozpočtu za dodržania špecifikácie a zmluvných podmienok realizácie ktoré tvoria prílohu č. 2. Zaručná doba na dodanie a osadenie odvodňovací"
+    },
+    {
+     "datum": "2025-11-27",
+     "dodavatel": "Eryva s.r.o.",
+     "ico": "55451209",
+     "suma": 136244.82,
+     "popis": "V súlade s výsledkom verejného obstarávania na predmet zákazky \"Výmena strešných plášťov vo vybraných MŠ\" si u Vás objednávame uskutočnenie všetkých prác a dodávok v rozsahu výkazu výmer.- celková cen"
+    },
+    {
+     "datum": "2026-03-17",
+     "dodavatel": "SAROUTE, s.r.o.",
+     "ico": "31606458",
+     "suma": 126856.1,
+     "popis": "Na základe rámcovej dohody č. 2025001485 – čiastková objednávka si u Vás objednávame realizáciu a obnovu vodorovného dopravného značenia na miestnych cestách a cestách II./III. triedy v správe mesta K"
+    }
+   ]
+  }
+ ],
+ "aktualizovane": "2026-10-16T14:58:05+00:00"
+}

@@ -3,17 +3,29 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const p = path.join(process.cwd(), 'data', 'hlasovania-msz.json');
-const h = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+// mesto = iné krajské mesto (data/mesta/samosprava-<slug>.json, scripts/zber_samosprava_mesta.py); bez neho Bratislava
+const { mesto, portal } = Astro.props as { mesto?: string; portal?: string };
+const p = path.join(process.cwd(), 'data', ...(mesto ? ['mesta', `samosprava-${mesto}.json`] : ['hlasovania-msz.json']));
+const surove = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+const h = mesto ? surove?.hlasovania : surove;
 const obdobia = h ? Object.entries<any>(h.obdobia).sort((a, b) => b[0].localeCompare(a[0])) : [];
 const pct = (n: number | null) => (n == null ? '–' : n.toLocaleString('sk-SK', { maximumFractionDigits: 1 }) + ' %');
 const fmt = (n: number) => n.toLocaleString('sk-SK');
 const dat = (d: string) => (d ? d.split('-').reverse().map((x) => x.replace(/^0/, '')).join('. ') : '');
-const subor = (obd: string) => (obd === h?.aktualne_obdobie ? '/data/hlasovania-msz.json' : `/data/hlasovania-msz-${obd}.json`);
+const subor = (obd: string) => (mesto ? h.subory[obd] : obd === h?.aktualne_obdobie ? '/data/hlasovania-msz.json' : `/data/hlasovania-msz-${obd}.json`);
+const zdrojAkt = mesto && h ? h.obdobia[h.aktualne_obdobie].zdroj : h?.zdroj?.url;
 ---
 {h && (
   <section id="hlasovania" data-subory={JSON.stringify(Object.fromEntries(obdobia.map(([o]) => [o, subor(o)])))}>
     <h2 class="sekcia">Ako hlasovali poslanci mestského zastupiteľstva</h2>
+    {mesto ? (
+      <div class="card upozornenie">
+        <p>
+          Hlasovania pochádzajú z <a href={zdrojAkt}>otvorených dát mesta</a> ({portal?.replace(/^https?:\/\//, '')}), mesto ich dopĺňa po zasadnutiach.
+          Tajné hlasovania (voľby osôb) zverejňujeme len v počte – bez hlasov jednotlivých poslancov.
+        </p>
+      </div>
+    ) : (
     <div class="card upozornenie">
       {h.obdobia['9']?.z_webu_od ? (
         <p>
@@ -39,6 +51,7 @@ const subor = (obd: string) => (obd === h?.aktualne_obdobie ? '/data/hlasovania-
         </details>
       )}
     </div>
+    )}
 
     <div class="taby" role="tablist">
       {obdobia.map(([o, v], i) => <button type="button" role="tab" data-obd={o} aria-selected={i === 0 ? 'true' : 'false'}>{v.nazov}{o === '9' && !v.z_webu_od ? ' (do 6/2023)' : ''}</button>)}
@@ -47,7 +60,7 @@ const subor = (obd: string) => (obd === h?.aktualne_obdobie ? '/data/hlasovania-
     {obdobia.map(([o, v], i) => (
       <div class="obdobie" data-obd={o} hidden={i !== 0}>
         <section class="kpis">
-          <div class="card kpi"><p class="label">Hlasovaní</p><p class="value">{fmt(v.hlasovani)}</p><p class="delta">{v.zasadnuti} zasadnutí, {dat(v.od)} – {dat(v.do)}</p></div>
+          <div class="card kpi"><p class="label">Hlasovaní</p><p class="value">{fmt(v.hlasovani)}</p><p class="delta">{v.zasadnuti} zasadnutí, {dat(v.od)} – {dat(v.do)}{v.tajnych ? `, z toho ${fmt(v.tajnych)} tajných` : ''}</p></div>
           <div class="card kpi"><p class="label">Poslancov</p><p class="value">{v.poslanci.length}</p><p class="delta">vrátane náhradníkov a zástupcov primátora</p></div>
           <div class="card kpi"><p class="label">Najjednotnejší klub</p><p class="value mensie">{v.kluby[0] && [...v.kluby].filter((k: any) => k.clenov >= 3).sort((a: any, b: any) => b.jednotnost - a.jednotnost)[0]?.klub}</p><p class="delta">podiel hlasov členov rovnako ako väčšina klubu</p></div>
         </section>
@@ -84,10 +97,10 @@ const subor = (obd: string) => (obd === h?.aktualne_obdobie ? '/data/hlasovania-
     <section class="card">
       <h3>Hľadať hlasovanie</h3>
       <div class="hlavicka">
-        <input id="hl-hladaj" type="search" placeholder="napr. rozpočet, parkovanie, električka, Petržalka…" />
+        <input id="hl-hladaj" type="search" placeholder={mesto ? 'napr. rozpočet, parkovanie, električka, Terasa…' : 'napr. rozpočet, parkovanie, električka, Petržalka…'} />
       </div>
       <div id="hl-vysledky" aria-live="polite"><p class="tlmene">Napíšte aspoň 3 znaky – zobrazí sa, ako kto hlasoval.</p></div>
-      <p class="zdroj">Zdroj: <a href={h.zdroj.url}>{h.zdroj.nazov}</a>, data.bratislava.sk, licencia CC BY 4.0. Zverejňujeme len meno, klub a hlasovanie.</p>
+      <p class="zdroj">Zdroj: {mesto ? <a href={zdrojAkt}>Hlasovanie poslancov mestského zastupiteľstva, {portal?.replace(/^https?:\/\//, '')}</a> : <><a href={h.zdroj.url}>{h.zdroj.nazov}</a>, data.bratislava.sk</>}, licencia CC BY 4.0. Zverejňujeme len meno, klub a hlasovanie.</p>
     </section>
   </section>
 )}
@@ -155,7 +168,7 @@ const subor = (obd: string) => (obd === h?.aktualne_obdobie ? '/data/hlasovania-
     const meno = new URLSearchParams(location.search).get('poslanec');
     if (meno) {
       const riadky = [...sek.querySelectorAll<HTMLTableRowElement>('table.poslanci tbody tr')].filter((r) => JSON.parse(r.dataset.s!)[0] === meno);
-      const posledny = riadky.sort((a, b) => Number(b.closest<HTMLElement>('.obdobie')!.dataset.obd) - Number(a.closest<HTMLElement>('.obdobie')!.dataset.obd))[0];
+      const posledny = riadky.sort((a, b) => b.closest<HTMLElement>('.obdobie')!.dataset.obd!.localeCompare(a.closest<HTMLElement>('.obdobie')!.dataset.obd!, 'en', { numeric: true }))[0];
       if (posledny) {
         sek.querySelector<HTMLButtonElement>(`[role=tab][data-obd="${posledny.closest<HTMLElement>('.obdobie')!.dataset.obd}"]`)?.click();
         posledny.classList.add('zvyrazneny');

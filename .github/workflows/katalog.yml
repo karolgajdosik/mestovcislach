@@ -18,6 +18,7 @@ on:
       - "scripts/zber_klima.py"
       - "scripts/zber_mapa_mesta.py"
       - "scripts/zber_mapa_osm.py"
+      - "scripts/zber_samosprava_mesta.py"
       - ".github/workflows/katalog.yml"
 
 permissions:
@@ -69,6 +70,10 @@ jobs:
         env:
           MESTO: kosice
         run: python scripts/zber_katalog.py && python scripts/zber_tabulky.py && python scripts/zber_mapa_mesta.py
+
+      - name: Samospráva miest – hlasovania poslancov, zmluvy, faktúry, objednávky
+        if: success() || failure()
+        run: python scripts/zber_samosprava_mesta.py
 
       - name: Mapy krajských miest (OpenStreetMap)
         if: success() || failure()

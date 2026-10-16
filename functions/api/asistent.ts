@@ -466,6 +466,18 @@ async function odpovedMesto(ctx: any, m: any, telo: any, otazka: string, otazkaP
     .map((h: any) => ({ role: h.rola, content: h.text.slice(0, 1500) }));
   const kontext: any = {};
   try { kontext.udaje_mesta = await (await env.ASSETS.fetch(new URL(`/data/mesta/${m.slug}.json`, base))).json(); } catch { /* bez podkladov */ }
+  // samospráva (zmluvy, faktúry, hlasovania) je rozsiahla – posielame ju len pri otázke na ňu, a z nej len potrebnú časť
+  const sam = kontext.udaje_mesta?.samosprava;
+  if (sam) {
+    const oPeniazoch = /zmluv|faktur|objednav|dodavatel|firm|peniaz|plati|minul|zakazk|tender|obstara/.test(q);
+    const oHlasovani = /hlasova|poslan|zastupitel|klub|dochadz|pritomn|uznesen|zasadnut/.test(q);
+    if (!oPeniazoch && !oHlasovani) delete kontext.udaje_mesta.samosprava;
+    else {
+      if (!oPeniazoch) delete sam.financie;
+      if (!oHlasovani) delete sam.hlasovania;
+      kontext.udaje_mesta = { mesto: kontext.udaje_mesta.mesto, samosprava: sam, porovnanie_krajskych_miest: kontext.udaje_mesta.porovnanie_krajskych_miest };
+    }
+  }
   const ziveTypy = Object.keys(ZIVE).filter((t) => t !== 'cesty' && ZIVE[t].test(q));
   if (!ziveTypy.includes('dunaj') && /riek|hladin|povod|vodn\w* stav|hornad|torys|\bhron|\bvah|rajcank|trnavk|nitr[ay]? (rieka|tok)/.test(q)) ziveTypy.push('dunaj');
   for (const t of ziveTypy) {
@@ -494,6 +506,7 @@ async function odpovedMesto(ctx: any, m: any, telo: any, otazka: string, otazkaP
   ];
   const odkazy = [{ url: `/${m.slug}`, nazov: `${m.nazov} – prehľad` }, { url: '/porovnanie', nazov: 'Porovnanie miest' }];
   if (m.katalog) odkazy.push({ url: `/${m.slug}/katalog`, nazov: 'Katalóg dát mesta' });
+  if (kontext.udaje_mesta?.samosprava) odkazy.unshift({ url: kontext.udaje_mesta.samosprava.stranka, nazov: `Samospráva – ${m.nazov}` });
   if (telo.stream === true) return streamuj(ctx, messages, odkazy);
   for (const model of MODELY) {
     try {

@@ -30,3 +30,6 @@ export function mapaMesta(slug: string) {
     vrstvy,
   };
 }
+
+/** Má mesto stránku Samospráva (hlasovania, zmluvy a faktúry z portálu mesta – scripts/zber_samosprava_mesta.py)? */
+export const maSamospravu = (slug: string) => fs.existsSync(path.join(process.cwd(), 'data', 'mesta', `samosprava-${slug}.json`));

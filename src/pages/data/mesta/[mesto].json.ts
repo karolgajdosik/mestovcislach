@@ -27,6 +27,9 @@ export async function GET({ params }: { params: { mesto: string } }) {
   const por = citaj('data', 'mesta', 'porovnanie.json')?.mesta ?? [];
   const eia = citaj('public', 'data', 'mesta', `eia-${m.slug}.json`);
   const kat = citaj('data', `katalog-stav-${m.slug}.json`);
+  const sam = citaj('data', 'mesta', `samosprava-${m.slug}.json`);
+  const rokTeraz = new Date().getFullYear();
+  const mil = (n: number) => `${(n / 1e6).toFixed(1).replace('.', ',')} mil. €`;
   const roky = d.obyvatelia?.roky ?? {};
   const kom = d.komunalne ?? {};
   const pr = d.praca?.mesacne ?? {};
@@ -52,6 +55,21 @@ export async function GET({ params }: { params: { mesto: string } }) {
       zamery: eia.zamery.filter((z: any) => !z.ukoncene || z.zmena >= hranica).slice(0, 40).map((z: any) => `${z.nazov} (${z.stav}${z.ukoncene ? ', posudzovanie skončené' : ', práve sa posudzuje'}; zmena ${z.zmena}${z.navrhovatel ? `; ${z.navrhovatel}` : ''}) – ${(z.ucel ?? '').slice(0, 160)}`),
     } : undefined,
     porovnanie_krajskych_miest: por.map((p: any) => `${p.nazov}: ${p.obyvatelia} obyv. (${p.zmena10} % za 10 r.), seniori ${p.seniori} %, VŠ ${p.vs} %, PDU ${p.pdu} %, účasť komunálne ${p.ucast_komunalne} %`),
+    samosprava: sam ? {
+      stranka: `/${m.slug}/samosprava`,
+      poznamka: 'Zmluvy, faktúry a objednávky mesta (bez fyzických osôb) a hlasovania poslancov z otvorených dát mesta.',
+      financie: (sam.financie ?? []).map((f: any) => ({
+        typ: f.typ,
+        po_rokoch: Object.fromEntries(Object.entries<any>(f.roky).filter(([r]) => Number(r) >= rokTeraz - 6).map(([r, v]) => [r, `${v.pocet}× spolu ${mil(v.suma)}`])),
+        najvacsi_partneri_3_roky: f.dodavatelia_posledne_3_roky.slice(0, 8).map((d: any) => `${d.nazov} ${mil(d.suma)} (${d.pocet}×)`),
+        najvacsie_polozky_12_mesiacov: f.najvacsie_12_mesiacov.slice(0, 6).map((x: any) => `${x.datum} ${x.dodavatel} ${mil(x.suma)} – ${x.popis.slice(0, 100)}`),
+      })),
+      hlasovania: sam.hlasovania ? Object.fromEntries(Object.entries<any>(sam.hlasovania.obdobia).map(([o, v]) => [o, {
+        hlasovani: v.hlasovani, zasadnuti: v.zasadnuti, od: v.od, do: v.do,
+        kluby: v.kluby.map((k: any) => `${k.klub}: ${k.clenov} členov, jednotnosť ${k.jednotnost} %`),
+        poslanci: v.poslanci.map((x: any) => `${x.meno} (${x.klub}) prítomnosť ${x.pritomnost} %, so väčšinou ${x.zhoda_s_vacsinou ?? '–'} %`),
+      }])) : undefined,
+    } : undefined,
     katalog_dat_mesta: kat ? kat.datasety.filter((x: any) => x.stav === 'katalog').map((x: any) => `${x.nazov} – /${m.slug}/katalog/${x.id}`) : undefined,
   };
   return new Response(JSON.stringify(fakty), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
