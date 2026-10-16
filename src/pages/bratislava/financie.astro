@@ -55,6 +55,17 @@ const majetokCasti = (majetok?.mestske_casti ?? []).map((c: any) => ({
   nazov: nazvyMc.get(c.kod_obce) ?? c.kod_obce,
   podiel: rozlohy.get(c.kod_obce) ? (100 * c.vymera_ha) / (rozlohy.get(c.kod_obce)! * 100) : null,
 }));
+// Hospodárenie mestských častí a mesta z účtovných závierok (RÚZ, scripts/zber_hospodarenie.py)
+const hosp = (() => { const p = path.join(process.cwd(), 'data', 'mesta', 'hospodarenie.json'); return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null; })();
+const obyvMc = new Map<string, number>((obyv?.mestske_casti ?? []).map((c: any) => [c.nazov_kratky, c.roky[Object.keys(c.roky).sort().pop()!]]));
+const hospRok = hosp?.mestske_casti ? Object.values<any>(hosp.mestske_casti).map((v) => Object.keys(v.roky).sort().pop()!).sort()[0] : null;
+const hospMc = hosp?.mestske_casti && hospRok ? Object.entries<any>(hosp.mestske_casti).filter(([, v]) => v.roky[hospRok]).map(([mc, v]) => {
+  const r = v.roky[hospRok], o = obyvMc.get(mc) ?? null;
+  return { mc, ...r, obyv: o, na_obyv: o ? r.vynosy / o : null, uvery_obyv: o ? (r.bankove_uvery ?? 0) / o : null };
+}).sort((a, b) => b.vynosy - a.vynosy) : [];
+const hospMesto = hosp?.mesta?.bratislava?.roky?.[hospRok ?? ''] ?? null;
+const milM = (n: number) => (Math.abs(n) < 1e6 ? (n / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 2 }) + ' mil. €' : mil(n));
+const hospSpolu = hospMc.reduce((a: number, c: any) => a + c.vynosy, 0);
 // Dlh hlavného mesta a mestských častí (MF SR)
 const ukaz = nacitaj('mc-ukazovatele.json');
 const dlhRoky = ukaz?.dlh ? Object.keys(ukaz.dlh.roky).sort() : [];
@@ -351,6 +362,34 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
         </>
       )}
 
+      {hospMc.length > 0 && hospMesto && (
+        <>
+          <h2 class="sekcia" id="hospodarenie">Hospodárenie mesta a mestských častí ({hospRok})</h2>
+          <section class="kpis">
+            <div class="card kpi"><p class="label">Výnosy hlavného mesta</p><p class="value">{mil(hospMesto.vynosy)}</p><p class="delta">náklady {mil(hospMesto.naklady)} · výsledok {hospMesto.vysledok >= 0 ? '+' : '−'}{mil(Math.abs(hospMesto.vysledok))}</p></div>
+            <div class="card kpi"><p class="label">Výnosy 17 mestských častí</p><p class="value">{mil(hospSpolu)}</p><p class="delta">spolu, z toho daňové {mil(hospMc.reduce((a: number, c: any) => a + (c.danove_vynosy ?? 0), 0))}</p></div>
+            <div class="card kpi"><p class="label">Bankové úvery mesta</p><p class="value">{mil(hospMesto.bankove_uvery ?? 0)}</p><p class="delta">mestské časti spolu {mil(hospMc.reduce((a: number, c: any) => a + (c.bankove_uvery ?? 0), 0))}</p></div>
+          </section>
+          <section class="card">
+            <h3>Mestské časti podľa účtovnej závierky</h3>
+            <div class="tabulka-obal"><table class="hosp">
+              <thead><tr><th>Mestská časť</th><th class="num">Výnosy</th><th class="num">na obyvateľa</th><th class="num">Daňové výnosy</th><th class="num">Náklady</th><th class="num">Výsledok</th><th class="num">Bankové úvery</th><th class="num">Majetok</th></tr></thead>
+              <tbody>
+                {hospMc.map((c: any) => (
+                  <tr><td>{c.mc}</td><td class="num">{milM(c.vynosy)}</td><td class="num">{c.na_obyv ? `${Math.round(c.na_obyv).toLocaleString('sk-SK')} €` : '–'}</td><td class="num">{milM(c.danove_vynosy ?? 0)}</td>
+                    <td class="num">{milM(c.naklady)}</td><td class={`num ${c.vysledok < 0 ? 'zaporne' : ''}`}>{c.vysledok >= 0 ? '+' : '−'}{milM(Math.abs(c.vysledok))}</td><td class="num">{c.bankove_uvery ? milM(c.bankove_uvery) : '0'}</td><td class="num">{milM(c.majetok ?? 0)}</td></tr>
+                ))}
+              </tbody>
+            </table></div>
+            <p class="zdroj">
+              Individuálne účtovné závierky (výkaz ziskov a strát a súvaha) z <a href="https://www.registeruz.sk">Registra účtovných závierok</a> – akruálne údaje, nie rozpočet; bez škôl
+              a organizácií mestských častí. Daňové výnosy mestských častí sú najmä ich podiel na dani z príjmov a dani z nehnuteľností, ktorý im prerozdeľuje hlavné mesto.
+              Porovnanie Bratislavy s ostatnými krajskými mestami: <a href="/porovnanie">Porovnanie miest</a>.
+            </p>
+          </section>
+        </>
+      )}
+
       {dlhPosl && (
         <>
           <h2 class="sekcia" id="dlh">Dlh mesta a mestských častí</h2>
@@ -530,6 +569,8 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
 </script>
 
 <style>
+  td.zaporne { color: #c8102e; }
+  :root[data-tema='tmava'] td.zaporne { color: #ff8a8a; }
   .mc-vyber { display: flex; gap: 8px; align-items: center; font-weight: 600; margin-bottom: 12px; }
   .mc-vyber select, .mc-hladaj input { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card, transparent); color: inherit; }
   .mc-hladaj { margin-top: 20px; display: grid; gap: 8px; }

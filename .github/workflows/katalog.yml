@@ -78,7 +78,7 @@ jobs:
 
       - name: Hospodárenie miest (účtovné závierky RÚZ, dlh MF SR)
         if: success() || failure()
-        timeout-minutes: 30
+        timeout-minutes: 50
         run: python scripts/zber_hospodarenie.py
 
       - name: Mapy krajských miest (OpenStreetMap)

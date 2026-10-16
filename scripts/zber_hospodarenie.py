@@ -25,6 +25,13 @@ RUZ = "https://www.registeruz.sk/cruz-public/api/"
 URL_DLH = "https://opendata.mfsr.sk/opendata/download/dlh-a-dlhova-sluzba-miest-a-obci-sr-k-ultimu-roka/{}"
 MESTA = json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8"))
 OD_ROKU = 2015
+# Mestské časti Bratislavy (IČO overené v RÚZ a CRZ) – sekcia na /bratislava/financie
+MESTSKE_CASTI = {
+    "Staré Mesto": "00603147", "Ružinov": "00603155", "Vrakuňa": "00603295", "Podunajské Biskupice": "00641383", "Nové Mesto": "00603317",
+    "Rača": "00304557", "Vajnory": "00304565", "Karlova Ves": "00603520", "Dúbravka": "00603406", "Lamač": "00603414", "Devín": "00603422",
+    "Devínska Nová Ves": "00603392", "Záhorská Bystrica": "00604887", "Petržalka": "00603201", "Jarovce": "00304603", "Rusovce": "00304611",
+    "Čunovo": "00641243",
+}
 
 # (kľúč, výkaz, tabuľka, číslo riadku, stĺpec) – stĺpce: VZaS [hlavná, podnikateľská, spolu, minulé obdobie],
 # aktíva [brutto, korekcia, netto, netto minulé], pasíva [bežné, minulé]
@@ -143,23 +150,28 @@ def dlh() -> dict[str, dict]:
     return dict(sorted(roky.items()))
 
 
+def roky_jednotky(ico: str) -> dict:
+    roky = {}
+    for rok, z in sorted(zavierky(ico).items()):
+        u = ukazovatele(z)
+        if u.get("naklady") and u.get("vynosy"):
+            roky[rok] = u
+    if not roky:
+        raise RuntimeError("žiadna závierka s výkazmi")
+    return roky
+
+
 def main() -> int:
     stare_subor = DATA / "mesta" / "hospodarenie.json"
     stare = json.loads(stare_subor.read_text(encoding="utf-8")) if stare_subor.exists() else {}
     vystup = {"zdroje": {
         "ruz": {"nazov": "Register účtovných závierok – individuálne účtovné závierky miest", "url": "https://www.registeruz.sk"},
         "dlh": {"nazov": "MF SR – Dlh a dlhová služba miest a obcí SR k ultimu roka", "url": "https://opendata.mfsr.sk"}},
-        "mesta": {}, "dlh": {}}
+        "mesta": {}, "mestske_casti": {}, "dlh": {}}
     chyby = 0
     for m in MESTA:
         try:
-            roky = {}
-            for rok, z in sorted(zavierky(m["ico"]).items()):
-                u = ukazovatele(z)
-                if u.get("naklady") and u.get("vynosy"):
-                    roky[rok] = u
-            if not roky:
-                raise RuntimeError("žiadna závierka s výkazmi")
+            roky = roky_jednotky(m["ico"])
             vystup["mesta"][m["slug"]] = {"roky": roky}
             p = roky[max(roky)]
             print(f"{m['nazov']}: {len(roky)} rokov, {max(roky)}: náklady {p['naklady']:,}, výnosy {p['vynosy']:,}, úvery {p.get('bankove_uvery', 0):,}")
@@ -168,6 +180,16 @@ def main() -> int:
             print(f"::warning title=Hospodárenie {m['nazov']}::{e}")
             if m["slug"] in stare.get("mesta", {}):
                 vystup["mesta"][m["slug"]] = stare["mesta"][m["slug"]]
+    chyby_mc = 0
+    for mc, ico in MESTSKE_CASTI.items():
+        try:
+            vystup["mestske_casti"][mc] = {"ico": ico, "roky": roky_jednotky(ico)}
+        except Exception as e:  # noqa: BLE001
+            chyby_mc += 1
+            print(f"::warning title=Hospodárenie MČ {mc}::{e}")
+            if mc in stare.get("mestske_casti", {}):
+                vystup["mestske_casti"][mc] = stare["mestske_casti"][mc]
+    print(f"Mestské časti: {len(vystup['mestske_casti'])} (chyby {chyby_mc})")
     try:
         vystup["dlh"] = dlh()
     except Exception as e:  # noqa: BLE001
