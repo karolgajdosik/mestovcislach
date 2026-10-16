@@ -1,0 +1,355 @@
+{
+ "mesto": "trnava",
+ "ico": "00313114",
+ "od": "2022-01-01",
+ "do": "2026-10-15",
+ "zdroj": {
+  "nazov": "Centrálny register zmlúv (CRZ)",
+  "url": "https://www.crz.gov.sk"
+ },
+ "zmluvy": {
+  "typ": "zmluvy",
+  "zaznamov": 4500,
+  "skryte_fyzicke_osoby": 1357,
+  "roky": {
+   "2022": {
+    "pocet": 720,
+    "suma": 64507001,
+    "fo_pocet": 197,
+    "fo_suma": 2184666
+   },
+   "2023": {
+    "pocet": 1078,
+    "suma": 108597296,
+    "fo_pocet": 350,
+    "fo_suma": 4033116
+   },
+   "2024": {
+    "pocet": 940,
+    "suma": 49203003,
+    "fo_pocet": 273,
+    "fo_suma": 5024884
+   },
+   "2025": {
+    "pocet": 1028,
+    "suma": 121098135,
+    "fo_pocet": 317,
+    "fo_suma": 3426023
+   },
+   "2026": {
+    "pocet": 734,
+    "suma": 55820791,
+    "fo_pocet": 220,
+    "fo_suma": 1005172
+   }
+  },
+  "dodavatelia_posledne_3_roky": [
+   {
+    "ico": "50349287",
+    "nazov": "Ministerstvo investícií regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "pocet": 50,
+    "suma": 46143265
+   },
+   {
+    "ico": "30416094",
+    "nazov": "Ministerstvo dopravy Slovenskej republiky",
+    "pocet": 21,
+    "suma": 24122480
+   },
+   {
+    "ico": "47144190",
+    "nazov": "Metrostav Slovakia, a. s.",
+    "pocet": 5,
+    "suma": 14461923
+   },
+   {
+    "ico": "46282041",
+    "nazov": "PAMARCH, s.r.o.",
+    "pocet": 4,
+    "suma": 12320716
+   },
+   {
+    "ico": "00681156",
+    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+    "pocet": 18,
+    "suma": 12006334
+   },
+   {
+    "ico": "35920475",
+    "nazov": "DYNAMIK CONSTRUCTION, s.r.o.",
+    "pocet": 3,
+    "suma": 10811486
+   },
+   {
+    "ico": "44101937",
+    "nazov": "CS, s.r.o.",
+    "pocet": 19,
+    "suma": 9994197
+   },
+   {
+    "ico": "31651402",
+    "nazov": "COLAS Slovakia, a.s.",
+    "pocet": 7,
+    "suma": 9019699
+   },
+   {
+    "ico": "53606361",
+    "nazov": "UNITED Real Estate, s. r. o.",
+    "pocet": 5,
+    "suma": 7636500
+   },
+   {
+    "ico": "31450474",
+    "nazov": "VUJE, a.s.",
+    "pocet": 6,
+    "suma": 6055020
+   },
+   {
+    "ico": "31320155",
+    "nazov": "Všeobecná úverová banka, a.s.",
+    "pocet": 5,
+    "suma": 5000000
+   },
+   {
+    "ico": "45887675",
+    "nazov": "Mestské stavby Trnava s.r.o.",
+    "pocet": 8,
+    "suma": 5000000
+   },
+   {
+    "ico": "35686031",
+    "nazov": "United Industries a.s.",
+    "pocet": 4,
+    "suma": 4081720
+   },
+   {
+    "ico": "35954612",
+    "nazov": "Slovanet, a. s.",
+    "pocet": 2,
+    "suma": 3839601
+   },
+   {
+    "ico": "52846059",
+    "nazov": "Fond na podporu športu",
+    "pocet": 4,
+    "suma": 2978203
+   },
+   {
+    "ico": "56661991",
+    "nazov": "AFRY Slovakia s. r. o.",
+    "pocet": 8,
+    "suma": 2633690
+   },
+   {
+    "ico": "47843942",
+    "nazov": "Služby Cífer s.r.o.",
+    "pocet": 1,
+    "suma": 2581617
+   },
+   {
+    "ico": "52774937",
+    "nazov": "playarchitects s.r.o.",
+    "pocet": 12,
+    "suma": 2573244
+   },
+   {
+    "ico": "45318131",
+    "nazov": "A B.K.P.Š, spol. s.r.o.",
+    "pocet": 2,
+    "suma": 2429284
+   },
+   {
+    "ico": "36526185",
+    "nazov": "ViOn a.s.",
+    "pocet": 2,
+    "suma": 2215617
+   }
+  ],
+  "najvacsie_12_mesiacov": [
+   {
+    "datum": "2025-12-29",
+    "dodavatel": "UNITED Real Estate, s. r. o.",
+    "ico": "53606361",
+    "suma": 7136500.0,
+    "popis": "Predaj časti pozemkov k.ú. Trnava, ulica Spartakovská, MZ 775/2025 a 824/2025",
+    "url": "https://www.crz.gov.sk/zmluva/11806151/"
+   },
+   {
+    "datum": "2026-09-29",
+    "dodavatel": "Mestské stavby Trnava s.r.o.",
+    "ico": "45887675",
+    "suma": 5000000.0,
+    "popis": "Kúpna zmluva - Mestské stavby Trnava s. r. o.",
+    "url": "https://www.crz.gov.sk/zmluva/12869013/"
+   },
+   {
+    "datum": "2025-10-27",
+    "dodavatel": "Metrostav Slovakia, a. s.",
+    "ico": "47144190",
+    "suma": 4943677.48,
+    "popis": "Dodatok č.4 - Revitalizácia a obnova národnej kultúrnej pamiatky - meštiansky dom Pracháreň",
+    "url": "https://www.crz.gov.sk/zmluva/11497864/"
+   },
+   {
+    "datum": "2026-06-04",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 3830180.72,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU",
+    "url": "https://www.crz.gov.sk/zmluva/12430665/"
+   },
+   {
+    "datum": "2026-06-04",
+    "dodavatel": "Ministerstvo investícií regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 3830180.72,
+    "popis": "Zmluva o NFP č. Z401000F548_CEZ MIRRI 6162026 - projekt Dátovo-analytická platforma",
+    "url": "https://www.crz.gov.sk/zmluva/12433513/"
+   },
+   {
+    "datum": "2026-07-08",
+    "dodavatel": "PAMARCH, s.r.o.",
+    "ico": "46282041",
+    "suma": 3387847.09,
+    "popis": "Dodatok č.3 - \"Emmerova vila - rekonštrukcia objektu\"",
+    "url": "https://www.crz.gov.sk/zmluva/12575180/"
+   },
+   {
+    "datum": "2026-07-21",
+    "dodavatel": "CS, s.r.o.",
+    "ico": "44101937",
+    "suma": 3104277.57,
+    "popis": "\"Obnova parku Pri kalvárii - prezentácia archeologických nálezov - realizácia\"",
+    "url": "https://www.crz.gov.sk/zmluva/12609888/"
+   },
+   {
+    "datum": "2026-05-21",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2750000.0,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU č. projektu 401501I122",
+    "url": "https://www.crz.gov.sk/zmluva/12380455/"
+   },
+   {
+    "datum": "2026-05-21",
+    "dodavatel": "Ministerstvo investícií regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2750000.0,
+    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku k projektu č.401501I122",
+    "url": "https://www.crz.gov.sk/zmluva/12384320/"
+   },
+   {
+    "datum": "2025-12-09",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2607923.1,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR/F181",
+    "url": "https://www.crz.gov.sk/zmluva/11711232/"
+   },
+   {
+    "datum": "2025-12-09",
+    "dodavatel": "Ministerstvo investícií regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2607923.1,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR/F181",
+    "url": "https://www.crz.gov.sk/zmluva/11726357/"
+   },
+   {
+    "datum": "2025-12-16",
+    "dodavatel": "Služby Cífer s.r.o.",
+    "ico": "47843942",
+    "suma": 2581617.43,
+    "popis": "\"Revitalizácia verejných priestranstiev v rámci obytného súboru Tehelná\"",
+    "url": "https://www.crz.gov.sk/zmluva/11760257/"
+   },
+   {
+    "datum": "2026-09-24",
+    "dodavatel": "CS, s.r.o.",
+    "ico": "44101937",
+    "suma": 2209725.82,
+    "popis": "ZŠ s MŠ A. Kubinu - rekonštrukcia areálu, Trnava",
+    "url": "https://www.crz.gov.sk/zmluva/12845750/"
+   },
+   {
+    "datum": "2025-11-19",
+    "dodavatel": "CED inžinierske staviteľstvo a.s.",
+    "ico": "55207499",
+    "suma": 2027696.88,
+    "popis": "ZŠ s MŠ A. Kubinu - rekonštrukcia areálu, Trnava",
+    "url": "https://www.crz.gov.sk/zmluva/11623930/"
+   },
+   {
+    "datum": "2026-03-11",
+    "dodavatel": "Ministerstvo dopravy SR",
+    "ico": "30416094",
+    "suma": 1723165.3,
+    "popis": "Dodatok č. 2 k zmluve o poskytnutí prostriedkov mechanizmu na podporu obnovy a odolnosti č. 044/02I02-29-V01/2024",
+    "url": "https://www.crz.gov.sk/zmluva/12121603/"
+   }
+  ],
+  "dotacie_poskytnute": [
+   {
+    "nazov": "FC Spartak, a.s.",
+    "suma": 287500
+   },
+   {
+    "nazov": "Atletický klub AŠK Slávia Trnava",
+    "suma": 170100
+   },
+   {
+    "nazov": "Mestská televízia Trnava, s.r.o.",
+    "suma": 158000
+   },
+   {
+    "nazov": "Plavecký klub STU Trnava",
+    "suma": 117000
+   },
+   {
+    "nazov": "Baseballový klub Angels Trnava",
+    "suma": 102800
+   },
+   {
+    "nazov": "Hokejový klub mládeže Gladiators Trnava",
+    "suma": 99000
+   },
+   {
+    "nazov": "Hokejový klub Trnava, občianske združenie",
+    "suma": 95000
+   },
+   {
+    "nazov": "Basketbalový klub AŠK Slávia Trnava",
+    "suma": 80700
+   },
+   {
+    "nazov": "Slovenská akademická asociácia pre medzinárodnú spoluprácu",
+    "suma": 60000
+   },
+   {
+    "nazov": "Futbalový klub Lokomotíva",
+    "suma": 57000
+   },
+   {
+    "nazov": "Centrum bojových športov Trnava",
+    "suma": 57000
+   },
+   {
+    "nazov": "Mužský Basketbalový Klub AŠK Slávia Trnava",
+    "suma": 49000
+   },
+   {
+    "nazov": "Klub gymnastických športov Slávia Trnava",
+    "suma": 48500
+   },
+   {
+    "nazov": "DOMKA - Združenie saleziánskej mládeže, stredisko Trnava",
+    "suma": 47100
+   },
+   {
+    "nazov": "Karate klub Slovšport Trnava, o.z.",
+    "suma": 45600
+   }
+  ],
+  "zdroj": "https://www.crz.gov.sk"
+ },
+ "aktualizovane": "2026-10-16T15:31:53+00:00"
+}

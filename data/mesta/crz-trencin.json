@@ -1,0 +1,355 @@
+{
+ "mesto": "trencin",
+ "ico": "00312037",
+ "od": "2022-01-01",
+ "do": "2026-10-15",
+ "zdroj": {
+  "nazov": "Centrálny register zmlúv (CRZ)",
+  "url": "https://www.crz.gov.sk"
+ },
+ "zmluvy": {
+  "typ": "zmluvy",
+  "zaznamov": 12317,
+  "skryte_fyzicke_osoby": 6766,
+  "roky": {
+   "2022": {
+    "pocet": 1819,
+    "suma": 35424324,
+    "fo_pocet": 1091,
+    "fo_suma": 3342738
+   },
+   "2023": {
+    "pocet": 2746,
+    "suma": 69079156,
+    "fo_pocet": 1449,
+    "fo_suma": 7004888
+   },
+   "2024": {
+    "pocet": 2832,
+    "suma": 159960849,
+    "fo_pocet": 1619,
+    "fo_suma": 5382842
+   },
+   "2025": {
+    "pocet": 2862,
+    "suma": 92444920,
+    "fo_pocet": 1599,
+    "fo_suma": 9669829
+   },
+   "2026": {
+    "pocet": 2058,
+    "suma": 96761767,
+    "fo_pocet": 1008,
+    "fo_suma": 1074211
+   }
+  },
+  "dodavatelia_posledne_3_roky": [
+   {
+    "ico": "50349287",
+    "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "pocet": 56,
+    "suma": 122001819
+   },
+   {
+    "ico": "30416094",
+    "nazov": "Ministerstvo dopravy Slovenskej republiky",
+    "pocet": 14,
+    "suma": 65728282
+   },
+   {
+    "ico": "46715894",
+    "nazov": "Adifex a.s.",
+    "pocet": 18,
+    "suma": 30389161
+   },
+   {
+    "ico": "37920413",
+    "nazov": "Mestské hospodárstvo a správa lesov, m.r.o., Trenčín",
+    "pocet": 66,
+    "suma": 12083738
+   },
+   {
+    "ico": "00151653",
+    "nazov": "Slovenská sporiteľňa, a.s.",
+    "pocet": 3,
+    "suma": 9500000
+   },
+   {
+    "ico": "54345987",
+    "nazov": "Kreatívny inštitút Trenčín,n.o. Anglická verzia názvu je: Creative Institute Trenčín, n.o.",
+    "pocet": 255,
+    "suma": 7339376
+   },
+   {
+    "ico": "00681156",
+    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "pocet": 12,
+    "suma": 7144028
+   },
+   {
+    "ico": "30796491",
+    "nazov": "Environmentálny fond",
+    "pocet": 4,
+    "suma": 6490000
+   },
+   {
+    "ico": "36854140",
+    "nazov": "Československá obchodná banka, a.s.",
+    "pocet": 3,
+    "suma": 6000000
+   },
+   {
+    "ico": "46282041",
+    "nazov": "PAMARCH, s.r.o.",
+    "pocet": 3,
+    "suma": 4936399
+   },
+   {
+    "ico": "34115901",
+    "nazov": "Marius Pedersen, a.s.",
+    "pocet": 7,
+    "suma": 4781570
+   },
+   {
+    "ico": "36302724",
+    "nazov": "Trenčianske vodárne a kanalizácie, a.s.",
+    "pocet": 48,
+    "suma": 4650313
+   },
+   {
+    "ico": "31651402",
+    "nazov": "COLAS Slovakia, a.s.",
+    "pocet": 37,
+    "suma": 4161453
+   },
+   {
+    "ico": "31322000",
+    "nazov": "DOPRAVOPROJEKT, a.s.",
+    "pocet": 1,
+    "suma": 3182072
+   },
+   {
+    "ico": "36460141",
+    "nazov": "O.S.V.O. comp, a.s.",
+    "pocet": 3,
+    "suma": 2891141
+   },
+   {
+    "ico": "17317282",
+    "nazov": "STRABAG s.r.o.",
+    "pocet": 35,
+    "suma": 2776367
+   },
+   {
+    "ico": null,
+    "nazov": "Marius Pedersen, a.s.",
+    "pocet": 1,
+    "suma": 2187842
+   },
+   {
+    "ico": "36833380",
+    "nazov": "M - SILNICE SK s.r.o.",
+    "pocet": 3,
+    "suma": 1583600
+   },
+   {
+    "ico": "52846059",
+    "nazov": "Fond na podporu športu",
+    "pocet": 2,
+    "suma": 1415260
+   },
+   {
+    "ico": "34131710",
+    "nazov": "HEES - GASTROSLUŽBY, spol. s r.o.",
+    "pocet": 8,
+    "suma": 1208717
+   }
+  ],
+  "najvacsie_12_mesiacov": [
+   {
+    "datum": "2026-04-23",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 9911669.66,
+    "popis": "Dodatok č. 1 k Zmluve o poskytnutí nenávratného finančného príspevku kód projektu: 401501DWZ9",
+    "url": "https://www.crz.gov.sk/zmluva/12328326/"
+   },
+   {
+    "datum": "2026-04-24",
+    "dodavatel": "Mestské hospodárstvo a správa lesov, m.r.o., Trenčín",
+    "ico": "37920413",
+    "suma": 9153653.74,
+    "popis": "Protokol o zverení majetku Evid/Maj - 07/2026",
+    "url": "https://www.crz.gov.sk/zmluva/12321655/"
+   },
+   {
+    "datum": "2026-03-09",
+    "dodavatel": "Ministerstvo dopravy SR",
+    "ico": "30416094",
+    "suma": 6945181.53,
+    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku č. Z401203H101 pre projekt \"Podpora rozvoja udržateľnej mobility v mestskej funkčnej oblasti Trenčín\"",
+    "url": "https://www.crz.gov.sk/zmluva/12096879/"
+   },
+   {
+    "datum": "2026-03-09",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "30416094",
+    "suma": 6945181.53,
+    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku č. Z401203H101",
+    "url": "https://www.crz.gov.sk/zmluva/12103192/"
+   },
+   {
+    "datum": "2026-08-04",
+    "dodavatel": "Ministerstvo dopravy SR",
+    "ico": "30416094",
+    "suma": 6735665.25,
+    "popis": "Dodatok č. 2 k zmluve o poskytnutí prostriedkov mechanizmu na podporu obnovy a odolnosti č. 117/02I02-29-V01/2024",
+    "url": "https://www.crz.gov.sk/zmluva/12648237/"
+   },
+   {
+    "datum": "2026-07-06",
+    "dodavatel": "Ministerstvo dopravy Slovenskej republiky",
+    "ico": "30416094",
+    "suma": 6735665.25,
+    "popis": "Dodatok č. 2 k Zmluve o poskytnutí prostriedkov mechanizumu na podporu obnovy a odolnosti č. 117/02I02-29-V01/2024 zo dňa 05.08.2024",
+    "url": "https://www.crz.gov.sk/zmluva/12654763/"
+   },
+   {
+    "datum": "2026-06-25",
+    "dodavatel": "Slovenská sporiteľňa, a.s.",
+    "ico": "00151653",
+    "suma": 6500000.0,
+    "popis": "Zmluva o úvere č. 494/CC/26",
+    "url": "https://www.crz.gov.sk/zmluva/12517616/"
+   },
+   {
+    "datum": "2026-08-07",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 6184967.25,
+    "popis": "Dodatok č. 1 k Zmluve o poskytnutí nenávratného finančného príspevku č. PSK-Z-401501DXA1-007-23",
+    "url": "https://www.crz.gov.sk/zmluva/12677175/"
+   },
+   {
+    "datum": "2026-02-16",
+    "dodavatel": "DOPRAVOPROJEKT, a.s.",
+    "ico": "31322000",
+    "suma": 3182071.5,
+    "popis": "Zmluva o dielo",
+    "url": "https://www.crz.gov.sk/zmluva/11997699/"
+   },
+   {
+    "datum": "2026-01-30",
+    "dodavatel": "Marius Pedersen, a.s.",
+    "ico": "34115901",
+    "suma": 2421647.41,
+    "popis": "Dodatok č. 34 k Zmluve o zabezpečení služieb v oblasti odpadového hospodárstva zo dňa 23.12.2005",
+    "url": "https://www.crz.gov.sk/zmluva/11923788/"
+   },
+   {
+    "datum": "2026-09-02",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2200000.0,
+    "popis": "PROJEKTOVÁ ZMLUVA na realizáciu projektu v rámci programu „Miestny rozvoj založený na kultúre“ spolufinancovaného z Finančného mechanizmu EHP a štátneho rozpočtu Slovenskej republiky",
+    "url": "https://www.crz.gov.sk/zmluva/12766189/"
+   },
+   {
+    "datum": "2026-09-02",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2200000.0,
+    "popis": "Projektová zmluva na realizáciu projektu v rámci programu \"Miestny rozvoj založený na kultúre\" spolufinancovaného z Finančného mechanizmu EHP a štátneho rozpočtu Slovenskej republiky č. 1133/2026",
+    "url": "https://www.crz.gov.sk/zmluva/12794759/"
+   },
+   {
+    "datum": "2026-02-03",
+    "dodavatel": "Ministerstvo práce,sociálnych vecí a rodiny SR",
+    "ico": "00681156",
+    "suma": 1806792.0,
+    "popis": "Zmluva o poskytnutí finančného príspevku na poskytovanie sociálnej služby v zariadeniach pre fyzické osoby, ktoré sú odkázané na pomoc inej fyzickej osoby a pre fyzické osoby, ktoré dovŕšili dôchodkov",
+    "url": "https://www.crz.gov.sk/zmluva/11955246/"
+   },
+   {
+    "datum": "2026-02-05",
+    "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "ico": "00681156",
+    "suma": 1806792.0,
+    "popis": "Zmluva o poskytnutí finančného príspevku na poskytovanie sociálnej služby v zariadeniach podmienených odkázanosťou podľa § 78a ods.1 písm. a) a b) zákona č. 448/2008 Z. z. o sociálnych službách na roz",
+    "url": "https://www.crz.gov.sk/zmluva/11985941/"
+   },
+   {
+    "datum": "2026-04-02",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1568784.13,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU č. projektu 401402H100",
+    "url": "https://www.crz.gov.sk/zmluva/12201779/"
+   }
+  ],
+  "dotacie_poskytnute": [
+   {
+    "nazov": "Kreatívny inštitút Trenčín, n.o.",
+    "suma": 750000
+   },
+   {
+    "nazov": "Kreatívny inštitút Trenčín,n.o. Anglická verzia názvu je: Creative Institute Trenčín, n.o.",
+    "suma": 500000
+   },
+   {
+    "nazov": "Hokejový klub DUKLA Trenčín n.o.",
+    "suma": 320850
+   },
+   {
+    "nazov": "AS TRENČÍN, a.s.",
+    "suma": 217575
+   },
+   {
+    "nazov": "POHODA FESTIVAL, s.r.o.",
+    "suma": 200000
+   },
+   {
+    "nazov": "Mestské divadlo Trenčín",
+    "suma": 195100
+   },
+   {
+    "nazov": "Integrovaná doprava Žilinského kraja, s.r.o.",
+    "suma": 167521
+   },
+   {
+    "nazov": "KOLOMAŽ združenie pre súčasné umenie",
+    "suma": 107300
+   },
+   {
+    "nazov": "Integrovaná doprava Žilinského a Trenčianskeho kraja, s.r.o.",
+    "suma": 107266
+   },
+   {
+    "nazov": "LampART o.z.",
+    "suma": 107220
+   },
+   {
+    "nazov": "Občianske združenie Trenčiansky ÚTULOK",
+    "suma": 100000
+   },
+   {
+    "nazov": "Športový klub 1. FBC TRENČÍN, o.z.",
+    "suma": 85575
+   },
+   {
+    "nazov": "Florbalový klub AS Trenčín",
+    "suma": 68950
+   },
+   {
+    "nazov": "CPR Trenčín o.z.",
+    "suma": 68758
+   },
+   {
+    "nazov": "Basketbalový klub Trenčín",
+    "suma": 55350
+   }
+  ],
+  "zdroj": "https://www.crz.gov.sk"
+ },
+ "aktualizovane": "2026-10-16T15:31:53+00:00"
+}
