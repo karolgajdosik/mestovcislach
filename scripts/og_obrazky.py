@@ -15,6 +15,7 @@ STRANKY = {
     "index": ("Bratislava v číslach", "Obyvatelia, rozpočet, doprava, voľby a živé údaje o meste – prehľadne a so zdrojmi"),
     "mestske-casti": ("Mestské časti", "Profil každej zo 17 častí Bratislavy – ľudia, voľby, peniaze, školy, bezpečnosť a klíma"),
     "vystavba": ("Čo sa stavia a za koľko sa býva", "Zámery v posudzovaní EIA na mape, ceny bytov a nové byty v Bratislave"),
+    "upozornenia": ("Čo je nové vo vašej štvrti", "Uzávierky, nové stavebné zámery a zmluvy mestskej časti – kanál bez registrácie"),
     "mapa": ("Mapa Bratislavy", "Školy, lekárne, fontány, športoviská, pamiatky, hluk, horúčavy a uzávierky na jednej mape"),
     "obyvatelia": ("Kto žije v Bratislave", "Sčítanie 2021 podľa mestských častí, prognóza do roku 2035, nezamestnanosť"),
     "volby": ("Voľby a hlasovania", "Komunálne voľby 2026, výsledky volieb a ako hlasovali poslanci zastupiteľstva"),

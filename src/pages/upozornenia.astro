@@ -1,0 +1,144 @@
+---
+// Upozornenia bez registrácie: kanály Atom pre mestské časti (functions/kanal/[mc].ts).
+import Base from '../layouts/Base.astro';
+
+const CASTI = ['Staré Mesto', 'Ružinov', 'Vrakuňa', 'Podunajské Biskupice', 'Nové Mesto', 'Rača', 'Vajnory', 'Karlova Ves', 'Dúbravka', 'Lamač',
+  'Devín', 'Devínska Nová Ves', 'Záhorská Bystrica', 'Petržalka', 'Jarovce', 'Rusovce', 'Čunovo'].sort((a, b) => a.localeCompare(b, 'sk'));
+const slug = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, '-');
+---
+<Base title="Upozornenia pre vašu mestskú časť – mestovcislach.sk" description="Odoberajte uzávierky na cestách, nové stavebné zámery a väčšie zmluvy vo vašej mestskej časti – bez registrácie a bez zbierania osobných údajov.">
+  <section class="hero">
+    <p class="kicker">Upozornenia</p>
+    <h1>Čo je nové vo vašej štvrti</h1>
+    <p class="lead">Uzávierky na cestách, nové stavebné zámery a väčšie zmluvy vašej mestskej časti – na jednom mieste, bez registrácie. Nepotrebujeme váš e-mail ani žiadne iné údaje.</p>
+  </section>
+
+  <div class="rozlozenie">
+    <section class="card" id="vyber" aria-labelledby="vyber-h">
+      <h2 id="vyber-h">1. Vyberte, čo chcete sledovať</h2>
+      <label class="pole"><span>Mestská časť</span>
+        <select id="u-mc">
+          <option value="bratislava">Celá Bratislava</option>
+          {CASTI.map((c) => <option value={slug(c)} translate="no">{c}</option>)}
+        </select>
+      </label>
+      <fieldset class="typy">
+        <legend>Čo chcete dostávať</legend>
+        <label><input type="checkbox" value="cesty" checked /> <span><strong>Na cestách</strong><small>uzávierky, rozkopávky a poruchy (živo z mesta)</small></span></label>
+        <label><input type="checkbox" value="stavby" checked /> <span><strong>Čo sa stavia</strong><small>nové a zmenené zámery v posudzovaní EIA/SEA</small></span></label>
+        <label id="u-zmluvy-l"><input type="checkbox" value="zmluvy" checked /> <span><strong>Zmluvy mestskej časti</strong><small>nad 10 000 € z Centrálneho registra zmlúv</small></span></label>
+      </fieldset>
+
+      <h2>2. Pridajte si kanál do čítačky</h2>
+      <div class="adresa">
+        <input id="u-url" type="text" readonly aria-label="Adresa kanála" translate="no" />
+        <button type="button" id="u-kopiruj">Kopírovať</button>
+      </div>
+      <p class="pozn" id="u-stav" aria-live="polite"></p>
+      <p class="pozn">Adresu vložte do ľubovoľnej čítačky noviniek (RSS/Atom) – v mobile, v počítači alebo v e-mailovom programe, ktorý kanály podporuje (napr. Thunderbird či Outlook). Čítačka sa sama pozrie na novinky a upozorní vás.</p>
+      <p><a class="tlacidlo" id="u-otvor" href="/kanal/bratislava.xml">Otvoriť kanál</a></p>
+    </section>
+
+    <section class="card" id="nahlad" aria-labelledby="nahlad-h">
+      <h2 id="nahlad-h">Čo by ste dostali teraz</h2>
+      <p class="pozn" id="u-pocet"></p>
+      <ol id="u-polozky" class="polozky" tabindex="0" aria-label="Náhľad upozornení"></ol>
+    </section>
+  </div>
+
+  <section class="card sukromie">
+    <h2>Prečo nie e-mail?</h2>
+    <p>Kanál nevyžaduje žiadne osobné údaje: nevieme, kto ho odoberá, a nemusíme nič uchovávať ani chrániť. Údaje pochádzajú z verejných zdrojov – z dopravných služieb hlavného mesta, z Enviroportálu (MŽP SR) a z Centrálneho registra zmlúv. Mená fyzických osôb v kanáli nie sú.</p>
+  </section>
+</Base>
+
+<script>
+  const mc = document.getElementById('u-mc') as HTMLSelectElement;
+  const typy = [...document.querySelectorAll<HTMLInputElement>('.typy input')];
+  const url = document.getElementById('u-url') as HTMLInputElement;
+  const otvor = document.getElementById('u-otvor') as HTMLAnchorElement;
+  const stav = document.getElementById('u-stav')!;
+  const zoznam = document.getElementById('u-polozky')!;
+  const pocet = document.getElementById('u-pocet')!;
+  const zmluvyL = document.getElementById('u-zmluvy-l')!;
+  const hx = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+
+  const par = new URLSearchParams(location.search);
+  if (par.get('mc') && [...mc.options].some((o) => o.value === par.get('mc'))) mc.value = par.get('mc')!;
+
+  let poziadavka = 0;
+  async function aktualizuj() {
+    const celeMesto = mc.value === 'bratislava';
+    zmluvyL.hidden = celeMesto;
+    const vybrane = typy.filter((t) => t.checked && !(celeMesto && t.value === 'zmluvy')).map((t) => t.value);
+    const vsetky = vybrane.length === (celeMesto ? 2 : 3);
+    const cesta = `/kanal/${mc.value}.xml${vsetky || !vybrane.length ? '' : `?typ=${vybrane.join(',')}`}`;
+    url.value = location.origin + cesta;
+    otvor.href = cesta;
+    const u = new URL(location.href);
+    celeMesto ? u.searchParams.delete('mc') : u.searchParams.set('mc', mc.value);
+    history.replaceState(null, '', u);
+    if (!vybrane.length) { zoznam.innerHTML = ''; pocet.textContent = 'Vyberte aspoň jeden typ upozornení.'; return; }
+    const moja = ++poziadavka;
+    pocet.textContent = 'Načítavam…';
+    try {
+      const r = await fetch(cesta);
+      if (!r.ok) throw new Error(String(r.status));
+      const xml = new DOMParser().parseFromString(await r.text(), 'application/xml');
+      if (moja !== poziadavka) return;
+      const polozky = [...xml.querySelectorAll('entry')];
+      pocet.textContent = polozky.length ? `${polozky.length} položiek, najnovšie hore` : 'Momentálne tu nič nie je.';
+      zoznam.innerHTML = polozky.slice(0, 25).map((e) => {
+        const t = e.querySelector('title')?.textContent ?? '';
+        const k = e.querySelector('category')?.getAttribute('term') ?? '';
+        const d = new Date(e.querySelector('updated')?.textContent ?? '').toLocaleDateString('sk-SK');
+        const s = (e.querySelector('summary')?.textContent ?? '').slice(0, 180);
+        return `<li><span class="p-hlava"><span class="p-kat">${hx(k)}</span><span>${hx(d)}</span></span>
+          <a href="${hx(e.querySelector('link')?.getAttribute('href') ?? '#')}" rel="noopener" translate="no">${hx(t)}</a><small translate="no">${hx(s)}${s.length >= 180 ? '…' : ''}</small></li>`;
+      }).join('');
+    } catch {
+      if (moja === poziadavka) pocet.textContent = 'Náhľad sa nepodarilo načítať.';
+    }
+  }
+  mc.addEventListener('change', aktualizuj);
+  typy.forEach((t) => t.addEventListener('change', aktualizuj));
+  document.getElementById('u-kopiruj')!.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(url.value); stav.textContent = 'Adresa je skopírovaná.'; }
+    catch { url.select(); stav.textContent = 'Označili sme adresu – skopírujte ju (Ctrl+C).'; }
+  });
+  aktualizuj();
+</script>
+
+<style>
+  .hero { padding: 40px 0 20px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+  .rozlozenie { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+  .card h2 { font-size: 1.15rem; margin: 0 0 12px; }
+  .card h2 + * { margin-top: 0; }
+  #vyber h2:not(:first-child) { margin-top: 24px; }
+  .pole { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 0.9rem; }
+  select, .adresa input { font: inherit; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); }
+  .typy { border: 0; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; min-width: 0; }
+  .rozlozenie > * { min-width: 0; }
+  .typy legend { font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; }
+  .typy label { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; }
+  .typy label[hidden] { display: none; }
+  .typy input { margin-top: 4px; accent-color: var(--accent); width: 18px; height: 18px; }
+  .typy span { display: flex; flex-direction: column; }
+  .typy small { color: var(--muted); }
+  .adresa { display: flex; gap: 8px; }
+  .adresa input { flex: 1; min-width: 0; font-size: 0.85rem; }
+  .adresa button, .tlacidlo { font: inherit; font-weight: 600; padding: 10px 16px; border-radius: 10px; border: 0; background: var(--accent); color: var(--na-akcente); cursor: pointer; text-decoration: none; display: inline-block; }
+  .pozn { color: var(--muted); font-size: 0.85rem; }
+  .polozky { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; max-height: 640px; overflow-y: auto; }
+  :global(.polozky li) { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
+  :global(.polozky a) { font-weight: 600; color: var(--text); }
+  :global(.polozky small) { color: var(--muted); font-size: 0.8rem; }
+  :global(.p-hlava) { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); }
+  :global(.p-kat) { font-weight: 700; color: var(--accent); }
+  .sukromie { margin-top: 16px; }
+  .sukromie p { max-width: 50em; margin: 0; }
+  @media (max-width: 860px) { .rozlozenie { grid-template-columns: 1fr; } }
+</style>

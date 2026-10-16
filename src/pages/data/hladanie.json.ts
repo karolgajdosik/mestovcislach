@@ -18,6 +18,7 @@ const SEKCIE: [string, string, string, string][] = [
   ['/vystavba#ceny', 'Ceny bytov', 'index cien bývania v Bratislavskom kraji', 'cena byt nehnuteľnosť m2 hypotéka drahé'],
   ['/vystavba#nove-byty', 'Koľko bytov pribúda', 'dokončené a začaté byty podľa okresov', 'nové byty dokončené výstavba bytov'],
   ['/vystavba#mestske-byty', 'Mestské a nájomné byty', 'byty mesta, komunitné bývanie, príspevok', 'nájom nájomné byty obecné mestské komunitné'],
+  ['/upozornenia', 'Upozornenia', 'uzávierky, stavby a zmluvy vašej mestskej časti (RSS)', 'upozornenie notifikácie odber rss atom kanál novinky'],
   ['/mestske-casti', 'Mestské časti', 'profily a porovnanie 17 častí', 'mestská časť štvrť porovnanie profil'],
   ['/mapa', 'Mapa Bratislavy', 'všetky vrstvy na jednej mape', 'mapa vrstvy'],
   ['/mapa#horucavy', 'Mapa horúčav', 'riziko horúčav, fontány, ochladzovacie miesta', 'teplo horúčava klíma leto'],
