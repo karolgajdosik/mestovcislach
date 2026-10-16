@@ -19,7 +19,9 @@ import time
 from datetime import datetime, timezone
 
 from spolocne import DATA, KOREN, s, spusti, zapis_ak_zmena
-from zber_hospodarenie import ruz, sablona, zavierky
+from zber_hospodarenie import OD_ROKU, ruz, sablona
+
+CASOVY_LIMIT = 30 * 60  # po 30 min uložíme rozpracované a pokračujeme v ďalšom behu
 
 RPO = "https://api.statistics.sk/rpo/v1"
 MESTA = json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8"))
@@ -130,12 +132,35 @@ def ukazovatele_pod(z: dict) -> dict:
     return h
 
 
+def nove_roky(ico: str, videne: set[int]) -> tuple[dict, set[int]]:
+    """Ukazovatele len zo závierok, ktoré sme ešte nespracovali (RÚZ je pomalý – každý dopyt ~1 s)."""
+    ids = ruz("uctovne-jednotky", **{"zmenene-od": "2000-01-01", "ico": ico}).get("id", [])
+    if not ids:
+        return {}, videne
+    uj = ruz("uctovna-jednotka", id=ids[0])
+    roky: dict[str, tuple[str, dict]] = {}
+    for zid in uj.get("idUctovnychZavierok", []):
+        if zid in videne:
+            continue
+        z = ruz("uctovna-zavierka", id=zid)
+        videne.add(zid)
+        rok = (z.get("obdobieDo") or "")[:4]
+        if z.get("konsolidovana") or not (z.get("obdobieDo") or "").endswith("-12") or not rok.isdigit() or int(rok) < OD_ROKU:
+            continue
+        u = ukazovatele_pod(z)
+        if (u.get("vynosy") or u.get("majetok")) and (rok not in roky or (z.get("datumPoslednejUpravy") or "") >= roky[rok][0]):
+            roky[rok] = (z.get("datumPoslednejUpravy") or "", u)
+    return {r: u for r, (_, u) in roky.items()}, videne
+
+
 def main() -> int:
+    start = time.monotonic()
     stare_p = DATA / "mesta" / "firmy.json"
     stare = json.loads(stare_p.read_text(encoding="utf-8")) if stare_p.exists() else {}
     vystup: dict = {"zdroje": {"rpo": {"nazov": "Register právnických osôb (ŠÚ SR)", "url": "https://rpo.statistics.sk"},
                                "ruz": {"nazov": "Register účtovných závierok", "url": "https://www.registeruz.sk"}}, "mesta": {}}
     kand = kandidati()
+    stare_firmy = {f"{slug}:{f['ico']}": f for slug, ff in (stare.get("mesta") or {}).items() for f in ff}
     # overené vlastníctvo si pamätáme 60 dní (RPO sa mení zriedka, beh by inak trval ~20 min)
     dnes = datetime.now(timezone.utc).date()
     overene: dict = {k: v for k, v in (stare.get("overene") or {}).items() if (dnes - datetime.fromisoformat(v["datum"]).date()).days < 60}
@@ -157,16 +182,18 @@ def main() -> int:
                     vl, overenie = "jediný", "výročná správa"
                 if not vl:
                     continue
-                roky = {}
-                for rok, z in sorted(zavierky(ico).items()):
-                    u = ukazovatele_pod(z)
-                    if u.get("vynosy") or u.get("majetok"):
-                        roky[rok] = u
-                firmy.append({"ico": ico, "nazov": oficialny or nazov, "vlastnictvo": vl, "overenie": overenie, "roky": roky})
+                stara = stare_firmy.get(f"{m['slug']}:{ico}", {})
+                roky, videne = dict(stara.get("roky") or {}), set(stara.get("zavierky") or [])
+                if time.monotonic() - start < CASOVY_LIMIT:
+                    nove, videne = nove_roky(ico, videne)
+                    roky.update(nove)
+                firmy.append({"ico": ico, "nazov": oficialny or nazov, "vlastnictvo": vl, "overenie": overenie, "roky": dict(sorted(roky.items())), "zavierky": sorted(videne)})
                 print(f"  {oficialny or nazov} ({ico}) – {vl}, rokov {len(roky)}")
             except Exception as e:  # noqa: BLE001
                 chyby += 1
                 print(f"::warning title=Firmy {m['nazov']} {ico}::{e}")
+        if time.monotonic() - start >= CASOVY_LIMIT:
+            print(f"::notice title=Firmy miest::časový limit – {m['nazov']} sa dokončí v ďalšom behu")
         if not firmy and m["slug"] in stare.get("mesta", {}):
             firmy = stare["mesta"][m["slug"]]
         vystup["mesta"][m["slug"]] = sorted(firmy, key=lambda f: -max([r.get("vynosy", 0) for r in f["roky"].values()] or [0]))
