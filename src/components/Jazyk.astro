@@ -1,0 +1,79 @@
+---
+// Prepínač jazyka v hlavičke. Voľba sa uloží (localStorage „jazyk“) a stránka sa načíta znova v novom jazyku.
+// Odkaz s ?lang=en (de, pl, hu, sk) jazyk nastaví tiež – dá sa tak zdieľať.
+import { JAZYKY } from '../i18n/slovnik';
+---
+<div class="jz-obal" translate="no">
+  <button type="button" class="jz-tlacidlo" id="jz-otvor" aria-haspopup="listbox" aria-expanded="false" aria-controls="jz-zoznam" title="Jazyk / Language">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z" /></svg>
+    <span id="jz-kod">SK</span>
+  </button>
+  <ul class="jz-zoznam" id="jz-zoznam" role="listbox" aria-label="Jazyk / Language" hidden>
+    {JAZYKY.map((j) => (
+      <li role="option" aria-selected="false" data-kod={j.kod} lang={j.kod} tabindex="-1"><span class="jz-skratka">{j.skratka}</span>{j.nazov}</li>
+    ))}
+  </ul>
+</div>
+
+<script>
+  import { spustiPreklad, jazyk, tr } from '../scripts/preklad';
+  const btn = document.getElementById('jz-otvor')!;
+  const zoznam = document.getElementById('jz-zoznam')!;
+  const polozky = [...zoznam.querySelectorAll<HTMLElement>('li')];
+  const akt = jazyk();
+  document.getElementById('jz-kod')!.textContent = akt.toUpperCase();
+  polozky.forEach((p) => p.setAttribute('aria-selected', String(p.dataset.kod === akt)));
+
+  const otvor = (ano: boolean) => {
+    zoznam.hidden = !ano;
+    btn.setAttribute('aria-expanded', String(ano));
+    if (ano) (polozky.find((p) => p.dataset.kod === akt) ?? polozky[0]).focus();
+  };
+  const vyber = (kod: string) => {
+    try { localStorage.setItem('jazyk', kod); } catch { /* nevadí */ }
+    const u = new URL(location.href);
+    if (kod === 'sk') u.searchParams.delete('lang'); else u.searchParams.set('lang', kod);
+    location.href = u.toString();
+  };
+  btn.addEventListener('click', () => otvor(zoznam.hidden));
+  polozky.forEach((p, i) => {
+    p.addEventListener('click', () => vyber(p.dataset.kod!));
+    p.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); vyber(p.dataset.kod!); }
+      else if (e.key === 'ArrowDown') { e.preventDefault(); polozky[Math.min(i + 1, polozky.length - 1)].focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); polozky[Math.max(i - 1, 0)].focus(); }
+      else if (e.key === 'Escape') { otvor(false); btn.focus(); }
+    });
+  });
+  document.addEventListener('click', (e) => { if (!zoznam.hidden && !(e.target as HTMLElement).closest('.jz-obal')) otvor(false); });
+
+  // pruh s upozornením na strojový preklad
+  const pruh = document.getElementById('preklad-pruh');
+  if (pruh && akt !== 'sk') {
+    pruh.hidden = false;
+    pruh.querySelector('.pp-text')!.textContent = tr('Strojový preklad zo slovenčiny – názvy ulíc, miest a údaje ostávajú v origináli.');
+    pruh.querySelector('button')!.addEventListener('click', () => vyber('sk'));
+  }
+  spustiPreklad();
+</script>
+
+<style>
+  .jz-obal { position: relative; flex-shrink: 0; margin-left: 8px; }
+  .jz-tlacidlo {
+    display: flex; align-items: center; gap: 5px; height: 36px; padding: 0 10px 0 8px;
+    border: 1px solid var(--line); border-radius: 18px; background: var(--bg); color: var(--muted);
+    font: inherit; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em; cursor: pointer;
+  }
+  .jz-tlacidlo:hover, .jz-tlacidlo[aria-expanded='true'] { border-color: var(--muted); color: var(--text); }
+  .jz-tlacidlo:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .jz-tlacidlo svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+  .jz-zoznam {
+    position: absolute; right: 0; top: calc(100% + 10px); z-index: 1300; min-width: 190px; margin: 0; padding: 6px; list-style: none;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 16px 40px -8px rgb(0 0 0 / 0.3);
+  }
+  .jz-zoznam li { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; cursor: pointer; font-size: 0.92rem; color: var(--text); }
+  .jz-zoznam li:hover, .jz-zoznam li:focus { background: color-mix(in srgb, var(--accent) 9%, transparent); outline: none; }
+  .jz-zoznam li[aria-selected='true'] { font-weight: 700; }
+  .jz-skratka { width: 26px; font-size: 0.72rem; font-weight: 700; color: var(--muted); }
+  .jz-zoznam li[aria-selected='true'] .jz-skratka { color: var(--accent); }
+</style>

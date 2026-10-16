@@ -6,6 +6,9 @@ import { otvorene, hodinyText } from '../../src/scripts/miesto';
 import { uzavierky, poruchy } from '../../src/scripts/uzavierky';
 import { najdi, norm as normUlice, type Rajonizacia } from '../../src/scripts/rajon';
 
+import { prelozJeden } from './preklad';
+
+const JAZYKY_ODPOVEDE: Record<string, string> = { sk: 'po slovensky', en: 'in English (po anglicky)', de: 'auf Deutsch (po nemecky)', pl: 'po polsku (po poľsky)', hu: 'magyarul (po maďarsky)' };
 const MODELY = ['@cf/google/gemma-4-26b-a4b-it', '@cf/meta/llama-3.3-70b-instruct-fp8-fast'];
 // Gemma 4 inak najprv dlho „premýšľa“ (reasoning) – pre krátke odpovede z podkladov to netreba.
 const PARAMETRE = { max_tokens: 900, max_completion_tokens: 900, temperature: 0.2, chat_template_kwargs: { enable_thinking: false } };
@@ -123,10 +126,10 @@ export function spadoveSkoly(otazka: string, d: Rajonizacia) {
   return null;
 }
 
-function system(datum: string) {
+function system(datum: string, jazyk = 'sk') {
   return `Si asistent webu mestovcislach.sk – otvorené dáta o Bratislave. Dnes je ${datum}.
 Pravidlá:
-- Odpovedaj po slovensky, stručne a vecne (najviac asi 8 viet alebo krátky zoznam).
+- Odpovedaj ${JAZYKY_ODPOVEDE[jazyk]}, stručne a vecne (najviac asi 8 viet alebo krátky zoznam). Podklady sú po slovensky – názvy ulíc, miest, firiem, strán a mená ľudí nechaj v pôvodnom znení.
 - Používaj LEN údaje v sekcii PODKLADY. Nič si nevymýšľaj – žiadne čísla, adresy, otváracie hodiny ani telefóny, ktoré tam nie sú.
 - Ak odpoveď v podkladoch nie je, povedz to otvorene a odporuč, kde hľadať (napr. bratislava.sk, web mestskej časti, SHMÚ, DPB – imhd.sk pre spoje).
 - Pri otázke, čo je „teraz otvorené“, vymenuj najviac 6 miest označených TERAZ OTVORENÉ (uveď do kedy) a doplň, koľko ďalších je otvorených. Miesta bez hodín neoznačuj ako otvorené.
@@ -306,8 +309,12 @@ export const onRequestPost = async (ctx: any) => {
 
   let telo: any;
   try { telo = await request.json(); } catch { return json({ chyba: 'Neplatná požiadavka.' }, 400); }
-  const otazka = String(telo.otazka ?? '').trim().slice(0, MAX_OTAZKA);
-  if (otazka.length < 3) return json({ chyba: 'Napíšte otázku.' }, 400);
+  const otazkaPovodna = String(telo.otazka ?? '').trim().slice(0, MAX_OTAZKA);
+  if (otazkaPovodna.length < 3) return json({ chyba: 'Napíšte otázku.' }, 400);
+  const jazyk = JAZYKY_ODPOVEDE[telo.jazyk] ? String(telo.jazyk) : 'sk';
+  // Výber tém a miest funguje nad slovenskými kľúčovými slovami – otázku v inom jazyku najprv preložíme do slovenčiny
+  let otazka = otazkaPovodna;
+  if (jazyk !== 'sk') { try { otazka = await prelozJeden(env, otazkaPovodna, 'sk', jazyk); } catch { /* použije sa pôvodná */ } }
   const pol = telo.poloha;
   const poloha = pol && Number.isFinite(+pol.lat) && Number.isFinite(+pol.lon) && +pol.lat > 47.9 && +pol.lat < 48.35 && +pol.lon > 16.8 && +pol.lon < 17.4
     ? { lat: +pol.lat, lon: +pol.lon } : null;
@@ -402,9 +409,9 @@ export const onRequestPost = async (ctx: any) => {
 
   const datum = new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
   const messages = [
-    { role: 'system', content: system(datum) },
+    { role: 'system', content: system(datum, jazyk) },
     ...historia,
-    { role: 'user', content: `PODKLADY (JSON):\n${JSON.stringify(kontext).slice(0, 24000)}\n\nOTÁZKA: ${otazka}` },
+    { role: 'user', content: `PODKLADY (JSON):\n${JSON.stringify(kontext).slice(0, 24000)}\n\nOTÁZKA: ${otazkaPovodna}${jazyk !== 'sk' ? `\n(po slovensky: ${otazka})\nODPOVEDZ ${JAZYKY_ODPOVEDE[jazyk]}.` : ''}` },
   ];
 
   const odkazy = [...new Set([...(spadove ? ['spadove'] : []), ...temy, ...ziveTypy, ...(pouziteMiesta ? ['miesta'] : [])].map((t) => STRANKY[t]).filter(Boolean))]

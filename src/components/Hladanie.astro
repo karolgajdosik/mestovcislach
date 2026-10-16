@@ -23,8 +23,12 @@
 
 <script>
   import type MiniSearchT from 'minisearch';
+  import { SLOVNIK } from '../i18n/slovnik';
+  import { tr } from '../scripts/preklad';
+  // preklady názvov sekcií a kategórií ako ďalšie kľúčové slová – hľadať sa dá aj po anglicky, nemecky, poľsky, maďarsky
+  const vsetkyJazyky = (t: string) => (SLOVNIK[t] ?? []).join(' ');
 
-  type Polozka = { id: number; g: string; t: string; s: string; u: string; w: string; lat?: number; lon?: number };
+  type Polozka = { id: number; g: string; t: string; s: string; u: string; w: string; x: string; lat?: number; lon?: number };
   const SKUPINY: Record<string, { max: number; vaha: number }> = {
     'Stránky': { max: 4, vaha: 1.6 }, 'Mestské časti': { max: 3, vaha: 2 }, 'Miesta': { max: 6, vaha: 1 }, 'Ulice': { max: 4, vaha: 1.1 },
     'Katalóg dát': { max: 5, vaha: 1 }, 'Poslanci': { max: 4, vaha: 1.4 }, 'Firmy a organizácie': { max: 4, vaha: 0.9 },
@@ -39,11 +43,11 @@
 
   let index: Promise<{ ms: MiniSearchT<Polozka>; polozky: Polozka[] }> | null = null;
   const nacitaj = () => (index ??= Promise.all([import('minisearch'), fetch('/data/hladanie.json').then((r) => r.json())]).then(([{ default: MiniSearch }, d]) => {
-    const polozky: Polozka[] = d.polozky.map((p: any[], id: number) => ({ id, g: p[0], t: p[1], s: p[2] ?? '', u: p[3] ?? '', w: p[4] ?? '', lat: p[5], lon: p[6] }));
+    const polozky: Polozka[] = d.polozky.map((p: any[], id: number) => ({ id, g: p[0], t: p[1], s: p[2] ?? '', u: p[3] ?? '', w: p[4] ?? '', x: p[0] === 'Stránky' ? vsetkyJazyky(p[1]) : p[0] === 'Miesta' ? vsetkyJazyky(p[4]) : '', lat: p[5], lon: p[6] }));
     const ms = new MiniSearch<Polozka>({
-      fields: ['t', 's', 'w'],
+      fields: ['t', 's', 'w', 'x'],
       processTerm: (t) => { const n = norm(t); return n.length > 1 || /\d/.test(n) ? n : null; },
-      searchOptions: { boost: { t: 3, w: 1.5, s: 0.5 }, prefix: true, fuzzy: (term) => (term.length > 4 ? 0.2 : false) },
+      searchOptions: { boost: { t: 3, w: 1.5, x: 1.5, s: 0.5 }, prefix: true, fuzzy: (term) => (term.length > 4 ? 0.2 : false) },
     });
     ms.addAll(polozky);
     return { ms, polozky };
@@ -55,7 +59,12 @@
     if (p.g === 'Ulice') return `/vybavenost?ulica=${encodeURIComponent(`${p.t}, ${p.s}`)}#spadova-skola`;
     return p.u;
   };
-  const popis = (p: Polozka) => (p.g === 'Ulice' ? `${p.s}, spádová ZŠ a MŠ` : p.g === 'Miesta' ? [p.w, p.s].filter(Boolean).join(', ') : p.s);
+  // popis ako HTML: preložiteľná časť a časť s názvami (translate="no")
+  const nt = (t: string) => `<span translate="no">${esc(t)}</span>`;
+  const popis = (p: Polozka) => (p.g === 'Ulice' ? nt(`${p.s}, ${tr('Spádová škola podľa adresy')}`)
+    : p.g === 'Miesta' ? nt([tr(p.w), p.s].filter(Boolean).join(', '))
+    : ['Poslanci', 'Firmy a organizácie'].includes(p.g) ? nt(p.s) : esc(p.s));
+  const BEZ_PREKLADU = new Set(['Miesta', 'Ulice', 'Poslanci', 'Firmy a organizácie', 'Mestské časti']);
 
   // zvýraznenie hľadaných slov bez ohľadu na diakritiku (slovenské písmená sa normalizujú na jeden znak)
   function zvyrazni(text: string, slova: string[]) {
@@ -106,10 +115,10 @@
         skupiny.set(p.g, sk);
       }
       for (const [g, sk] of [...skupiny].sort((a, b) => b[1].skore - a[1].skore)) {
-        html += `<p class="hl-skupina">${esc(g)}</p>` + sk.p.map((p) => riadok(odkaz(p), zvyrazni(p.t, slova), esc(popis(p)), g, i++)).join('');
+        html += `<p class="hl-skupina">${esc(g)}</p>` + sk.p.map((p) => riadok(odkaz(p), BEZ_PREKLADU.has(g) ? `<span translate="no">${zvyrazni(p.t, slova)}</span>` : zvyrazni(p.t, slova), popis(p), g, i++)).join('');
       }
       if (!najdene.length) html += `<p class="hl-prazdne">Nič sme nenašli. Skúste iné slovo alebo sa opýtajte asistenta.</p>`;
-      html += `<p class="hl-skupina">Asistent</p><a class="hl-riadok hl-ai" role="option" id="hladanie-r${i++}" href="#" data-ai="1"><span class="hl-ikona" aria-hidden="true"></span><span class="hl-obsah"><span class="hl-nazov">Opýtať sa asistenta: „${esc(q)}“</span><span class="hl-popis">odpovie z údajov webu a pridá odkazy</span></span></a>`;
+      html += `<p class="hl-skupina">Asistent</p><a class="hl-riadok hl-ai" role="option" id="hladanie-r${i++}" href="#" data-ai="1"><span class="hl-ikona" aria-hidden="true"></span><span class="hl-obsah"><span class="hl-nazov" translate="no">${esc(tr('AI asistent'))}: „${esc(q)}“</span><span class="hl-popis">odpovie z údajov webu a pridá odkazy</span></span></a>`;
     }
     vysl.innerHTML = html;
     riadky = [...vysl.querySelectorAll<HTMLAnchorElement>('.hl-riadok')];

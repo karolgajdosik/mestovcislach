@@ -181,6 +181,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
   import { osmPodklad } from '../scripts/podklad';
   import { uzavierky, poruchy, popup, type Obmedzenie } from '../scripts/uzavierky';
   import { popupMiesta } from '../scripts/miesto';
+  import { tr } from '../scripts/preklad';
   import { popupPamiatky, popupSkoly, popupSocialne, popupStromy, popupObvodu, popupVrstvy } from '../scripts/popupy';
   import 'leaflet/dist/leaflet.css';
 
@@ -471,22 +472,23 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
   const normH = (t: string) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   let miesta: Promise<{ n: string; s: string; k: string; lat: number; lon: number; t: string }[]> | null = null;
   const nacitajMiesta = () => (miesta ??= fetch('/data/hladanie.json').then((r) => r.json()).then((d) => d.polozky
-    .filter((p: any[]) => p[0] === 'Miesta').map((p: any[]) => ({ n: p[1], s: p[2], k: p[4], lat: p[5], lon: p[6], t: normH(`${p[1]} ${p[2]} ${p[4]}`) }))));
+    .filter((p: any[]) => p[0] === 'Miesta').map((p: any[]) => ({ n: p[1], s: p[2], k: p[4], lat: p[5], lon: p[6], t: normH(`${p[1]} ${p[2]} ${p[4]} ${tr(p[4])}`) }))));
   const zhoda = (text: string, slova: string[]) => slova.every((w) => text.includes(w));
   let vyber = 0;
   async function hladajNaMape() {
     const t = normH(q.value.trim());
     if (t.length < 2) { mv.hidden = true; return; }
     const slova = t.split(/\s+/);
-    const vrstvyZ = Object.entries(NAZVY).filter(([k, n]) => k !== 'hranice' && zhoda(normH(`${n} ${TEMY[TEMA_VRSTVY[k]]?.n ?? ''}`), slova)).slice(0, 4);
+    const vrstvyZ = Object.entries(NAZVY).filter(([k, n]) => k !== 'hranice' && zhoda(normH(`${n} ${TEMY[TEMA_VRSTVY[k]]?.n ?? ''} ${tr(n)} ${tr(TEMY[TEMA_VRSTVY[k]]?.n ?? '')}`), slova)).slice(0, 4);
     const casti = (inline.hranice?.features ?? []).filter((f: any) => zhoda(normH(f.properties.n), slova)).slice(0, 3);
     const body = (await nacitajMiesta()).filter((m) => zhoda(m.t, slova))
       .sort((a, b) => Number(!normH(a.n).startsWith(slova[0])) - Number(!normH(b.n).startsWith(slova[0]))).slice(0, 8);
     if (normH(q.value.trim()) !== t) return;
-    const r = (attrs: string, nazov: string, popis: string, typ: string) => `<button type="button" class="mv-r" data-typ="${typ}" ${attrs}><span class="mv-n">${escH(nazov)}</span><span class="mv-p">${escH(popis)}</span></button>`;
+    // názvy miest a mestských častí sa neprekladajú; kategória sa zobrazí v jazyku stránky
+    const r = (attrs: string, nazov: string, popis: string, typ: string, popisHtml = '') => `<button type="button" class="mv-r" data-typ="${typ}" ${attrs}><span class="mv-n"${typ !== 'vrstva' ? ' translate="no"' : ''}>${escH(nazov)}</span><span class="mv-p">${popisHtml || escH(popis)}</span></button>`;
     mv.innerHTML = (vrstvyZ.length ? '<p class="mv-sk">Vrstvy</p>' + vrstvyZ.map(([k, n]) => r(`data-k="${k}"`, n, vstup(k)?.checked ? 'zapnutá · ťuknutím vypnete' : TEMY[TEMA_VRSTVY[k]]?.n ?? '', 'vrstva')).join('') : '')
       + (casti.length ? '<p class="mv-sk">Mestské časti</p>' + casti.map((f: any) => r(`data-mc="${escH(f.properties.n)}"`, f.properties.n, `${fmt(f.properties.o)} obyvateľov`, 'mc')).join('') : '')
-      + (body.length ? '<p class="mv-sk">Miesta</p>' + body.map((m) => r(`data-lat="${m.lat}" data-lon="${m.lon}" data-n="${escH(m.n)}" data-kat="${escH(m.k)}"`, m.n, [m.k, m.s].filter(Boolean).join(' · '), 'miesto')).join('') : '')
+      + (body.length ? '<p class="mv-sk">Miesta</p>' + body.map((m) => r(`data-lat="${m.lat}" data-lon="${m.lon}" data-n="${escH(m.n)}" data-kat="${escH(m.k)}"`, m.n, '', 'miesto', `<span translate="no">${escH(tr(m.k))}${m.s ? ` · ${escH(m.s)}` : ''}</span>`)).join('') : '')
       || '<p class="mv-prazdne">Nič sa nenašlo. Skúste kratší výraz alebo názov ulice.</p>';
     mv.hidden = false;
     vyber = 0;
@@ -529,7 +531,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
     oznacene?.remove();
     const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
     oznacene = L.circleMarker([lat, lon], { radius: 11, color: '#fff', weight: 3, fillColor: '#c8102e', fillOpacity: 1 }).addTo(mapa)
-      .bindPopup(`<div class="mf"><strong class="mf-nazov">${esc(p.get('n') ?? '')}</strong><span class="mf-kat">${esc(p.get('k') ?? '')}</span></div>`);
+      .bindPopup(`<div class="mf"><strong class="mf-nazov" translate="no">${esc(p.get('n') ?? '')}</strong><span class="mf-kat">${esc(p.get('k') ?? '')}</span></div>`);
     mapa.setView([lat, lon], 17);
     setTimeout(() => (oznacene as L.CircleMarker).openPopup(), 300);
   };

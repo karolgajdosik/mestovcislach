@@ -2,6 +2,7 @@
 import Asistent from '../components/Asistent.astro';
 import Hladanie from '../components/Hladanie.astro';
 import Zobrazenie from '../components/Zobrazenie.astro';
+import Jazyk from '../components/Jazyk.astro';
 interface Props {
   title: string;
   description?: string;
@@ -22,6 +23,14 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
       (function () {
         var d = document.documentElement, v = {};
         try { v = JSON.parse(localStorage.getItem('zobrazenie') || '{}'); } catch (e) {}
+        // jazyk: ?lang=xx v odkaze má prednosť, inak uložená voľba
+        var J = ['sk', 'en', 'de', 'pl', 'hu'], l = null;
+        try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+        if (l && J.indexOf(l) >= 0) { try { localStorage.setItem('jazyk', l); } catch (e) {} }
+        else { try { l = localStorage.getItem('jazyk'); } catch (e) {} }
+        if (!l || J.indexOf(l) < 0) l = 'sk';
+        d.lang = l;
+        if (l !== 'sk') d.className += ' prekladam';
         var tmava = v.tema === 'tmava' || (v.tema !== 'svetla' && window.matchMedia('(prefers-color-scheme: dark)').matches);
         d.setAttribute('data-tema', tmava ? 'tmava' : 'svetla');
         if (v.slabozraky) d.setAttribute('data-slabozraky', '1');
@@ -48,16 +57,18 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
   <body>
     <header class="top">
       <div class="wrap">
-        <a class="logo" href="/">mesto<span>v</span>číslach</a>
+        <a class="logo" href="/" translate="no">mesto<span>v</span>číslach</a>
         <nav>
           {[['/mapa', 'Mapa'], ['/obyvatelia', 'Obyvatelia'], ['/volby', 'Voľby'], ['/financie', 'Financie'], ['/doprava', 'Doprava'], ['/vybavenost', 'Vybavenosť'], ['/prostredie', 'Prostredie'], ['/bezpecnost', 'Bezpečnosť'], ['/katalog', 'Katalóg dát']].map(([href, text]) => (
             <a href={href} aria-current={Astro.url.pathname.replace(/\/$/, '') === href.replace(/\/$/, '') || (href === '/katalog' && Astro.url.pathname.startsWith('/katalog/')) ? 'page' : undefined}>{text}</a>
           ))}
         </nav>
         <Hladanie />
+        <Jazyk />
         <Zobrazenie />
       </div>
     </header>
+    <div class="preklad-pruh" id="preklad-pruh" translate="no" hidden><div class="wrap"><span class="pp-text"></span> <button type="button" lang="sk">Slovenská verzia</button></div></div>
     <div class="zive" aria-label="Živé údaje o Bratislave">
       <div class="wrap zive-obsah">
         <span class="zive-titul"><i></i>Teraz</span>
@@ -123,6 +134,11 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
 
 <style is:global>
   [hidden] { display: none !important; }
+  /* kým beží prvý strojový preklad, obsah je stlmený */
+  html.prekladam main { opacity: 0.35; transition: opacity 0.2s; }
+  .preklad-pruh { background: var(--accent-soft); border-bottom: 1px solid var(--line); font-size: 0.8rem; color: var(--text); }
+  .preklad-pruh .wrap { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; padding-top: 6px; padding-bottom: 6px; }
+  .preklad-pruh button { border: 0; background: none; padding: 0; color: var(--accent); font: inherit; font-weight: 600; text-decoration: underline; cursor: pointer; }
   :root {
     --bg: #f7f7f5;
     --card: #ffffff;
@@ -176,7 +192,7 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
   .logo span { color: var(--accent); }
   .top nav { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; margin-left: 16px; flex: 0 1 auto; min-width: 0; margin-right: auto; }
   .top nav::-webkit-scrollbar { display: none; }
-  @media (max-width: 1000px) { .top nav { -webkit-mask-image: linear-gradient(to right, #000 88%, transparent); mask-image: linear-gradient(to right, #000 88%, transparent); padding-right: 18px; } }
+  @media (max-width: 1500px) { .top nav { -webkit-mask-image: linear-gradient(to right, #000 88%, transparent); mask-image: linear-gradient(to right, #000 88%, transparent); padding-right: 18px; } }
   @media (max-width: 480px) { .top nav { gap: 14px; padding-right: 18px; -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); } .top nav a { font-size: 0.88rem; white-space: nowrap; } .logo { font-size: 1.05rem; flex-shrink: 0; } }
   .top nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; padding: 4px 0; border-bottom: 2px solid transparent; white-space: nowrap; }
   .top nav a[aria-current='page'] { color: var(--text); border-bottom-color: var(--accent); }

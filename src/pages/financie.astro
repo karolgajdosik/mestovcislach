@@ -256,7 +256,7 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
               {[magF, magO].filter(Boolean).map((d: any) => (
                 <div>
                   <h3>Najväčší dodávatelia – {d.typ} magistrátu (posledné 3 roky)</h3>
-                  <ol class="dodavatelia">{d.dodavatelia_posledne_3_roky.slice(0, 10).map((x: any) => <li>{x.nazov} <span>{mil(x.suma)} · {fmt(x.pocet)}×</span></li>)}</ol>
+                  <ol class="dodavatelia" translate="no">{d.dodavatelia_posledne_3_roky.slice(0, 10).map((x: any) => <li>{x.nazov} <span>{mil(x.suma)} · {fmt(x.pocet)}×</span></li>)}</ol>
                 </div>
               ))}
             </div>
@@ -314,17 +314,17 @@ const grafPoz = majetok ? JSON.stringify({ stitky: majetok.druhy.map((d: any) =>
                 <div class="dlh-grid">
                   <div>
                     <h3>Najväčší zmluvní partneri – {mc}</h3>
-                    <ol class="dodavatelia">{v.najvacsi_partneri.slice(0, 10).map((x: any) => <li>{x.nazov} <span>{mil(x.suma)} · {fmt(x.zmluv)}×</span>{rpoInfo(x.ico) && <small class="rpo">{rpoInfo(x.ico)}</small>}</li>)}</ol>
+                    <ol class="dodavatelia" translate="no">{v.najvacsi_partneri.slice(0, 10).map((x: any) => <li>{x.nazov} <span>{mil(x.suma)} · {fmt(x.zmluv)}×</span>{rpoInfo(x.ico) && <small class="rpo">{rpoInfo(x.ico)}</small>}</li>)}</ol>
                   </div>
                   <div>
                     <h3>Komu {mc} dala dotácie</h3>
                     {dotP(mc)?.prijimatelia?.length ? (
-                      <ol class="dodavatelia">{dotP(mc).prijimatelia.map((x: any) => <li>{x.nazov} <span>{eur(x.suma)}</span></li>)}</ol>
+                      <ol class="dodavatelia" translate="no">{dotP(mc).prijimatelia.map((x: any) => <li>{x.nazov} <span>{eur(x.suma)}</span></li>)}</ol>
                     ) : <p class="mensie">V CRZ nie sú zmluvy s dotáciou v predmete.</p>}
                     {dotZ(mc)?.poskytovatelia?.length > 0 && (
                       <>
                         <h3>Dotácie, ktoré {mc} dostala</h3>
-                        <ol class="dodavatelia">{dotZ(mc).poskytovatelia.slice(0, 5).map((x: any) => <li>{x.nazov} <span>{eur(x.suma)}</span></li>)}</ol>
+                        <ol class="dodavatelia" translate="no">{dotZ(mc).poskytovatelia.slice(0, 5).map((x: any) => <li>{x.nazov} <span>{eur(x.suma)}</span></li>)}</ol>
                       </>
                     )}
                   </div>

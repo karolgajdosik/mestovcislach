@@ -88,9 +88,9 @@ export function popupMiesta(nazov: string, kategoria: string, d: Detail = {}): s
   if (d.f) {
     r.push(`<a href="${esc(d.f.replace(/\?width=\d+$/, ''))}" target="_blank" rel="noopener" class="mf-foto"><img src="${esc(d.f)}" alt="" loading="lazy" onerror="this.parentElement.remove()"></a>`);
   }
-  r.push(`<strong class="mf-nazov">${esc(nazov || kategoria)}</strong>`);
+  r.push(`<strong class="mf-nazov" translate="no">${esc(nazov || kategoria)}</strong>`);
   r.push(`<span class="mf-kat">${esc([d.typ || kategoria, d.op && d.op !== nazov ? d.op : ''].filter(Boolean).join(' · '))}</span>`);
-  if (d.a) r.push(`<span class="mf-adr">${esc(d.a)}</span>`);
+  if (d.a) r.push(`<span class="mf-adr" translate="no">${esc(d.a)}</span>`);
   if (d.kap) r.push(`<span>Nabíjacie miesta: ${esc(d.kap)}</span>`);
   if (d.pop) r.push(`<span class="mf-kat">${esc(d.pop)}</span>`);
   if (d.h) {

@@ -103,8 +103,10 @@
     spravy.querySelector('.ai-uvod')?.setAttribute('hidden', '');
     const el = document.createElement('div');
     el.className = `ai-sprava ${s.rola}`;
+    // odpoveď už je v zvolenom jazyku a otázka je text používateľa – neprekladať (odkazy pod ňou áno)
+    el.setAttribute('translate', 'no');
     el.innerHTML = s.rola === 'user' ? `<p>${esc(s.text)}</p>` : format(s.text)
-      + (s.odkazy?.length ? `<div class="ai-odkazy">${s.odkazy.map((o) => `<a href="${esc(o.url)}">${esc(o.nazov)} →</a>`).join('')}</div>` : '');
+      + (s.odkazy?.length ? `<div class="ai-odkazy" translate="yes">${s.odkazy.map((o) => `<a href="${esc(o.url)}">${esc(o.nazov)} →</a>`).join('')}</div>` : '');
     spravy.append(el);
     spravy.scrollTop = spravy.scrollHeight;
     return el;
@@ -197,7 +199,7 @@
     caka.innerHTML = '<span></span><span></span><span></span>';
     spravy.append(caka); spravy.scrollTop = spravy.scrollHeight;
     try {
-      const r = await fetch('/api/asistent', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ otazka, historia: predtym, stream: true, poloha }) });
+      const r = await fetch('/api/asistent', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ otazka, historia: predtym, stream: true, poloha, jazyk: document.documentElement.lang || 'sk' }) });
       if (!r.ok || !r.body || !(r.headers.get('content-type') ?? '').includes('event-stream')) {
         const d = await r.json().catch(() => ({}));
         caka.remove();
@@ -215,7 +217,7 @@
         const text = s.text.replace(/<think>[\s\S]*?(<\/think>|$)/g, '').trimStart();
         if (!text) return;
         if (!el) { caka.remove(); el = pridaj({ ...s, text }); }
-        else el.innerHTML = format(text) + (s.odkazy?.length ? `<div class="ai-odkazy">${s.odkazy.map((o) => `<a href="${esc(o.url)}">${esc(o.nazov)} →</a>`).join('')}</div>` : '');
+        else el.innerHTML = format(text) + (s.odkazy?.length ? `<div class="ai-odkazy" translate="yes">${s.odkazy.map((o) => `<a href="${esc(o.url)}">${esc(o.nazov)} →</a>`).join('')}</div>` : '');
         const dole = spravy.scrollHeight - spravy.scrollTop - spravy.clientHeight < 80;
         if (dole) spravy.scrollTop = spravy.scrollHeight;
       };
