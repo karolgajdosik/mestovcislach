@@ -6,6 +6,7 @@ import path from 'node:path';
 import Base from '../../layouts/Base.astro';
 import { MESTA, type Mesto } from '../../mesta';
 import { KATEGORIE_EIA } from '../../lib/eia';
+import { maMapu } from '../../lib/mapa';
 
 export function getStaticPaths() {
   return MESTA.filter((m) => m.aktivne && !m.plne).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
@@ -79,7 +80,7 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
   <section class="hero">
     <p class="kicker">{m.kraj}</p>
     <h1><span translate="no">{m.nazov}</span> v číslach</h1>
-    <p class="lead">Údaje z celoštátnych zdrojov – Štatistického úradu, volieb, úradov práce a Enviroportálu. Podrobnejšie mestské dáta (rozpočet, doprava, mapa) pribudnú podľa toho, čo mesto zverejňuje.</p>
+    <p class="lead">Údaje z celoštátnych zdrojov – Štatistického úradu, volieb, úradov práce a Enviroportálu. {maMapu(m.slug) ? <> Na <a href={`/${m.slug}/mapa`}>mape mesta</a> nájdete lekárne, školy, zastávky, ihriská či úrady.</> : ''} Podrobnejšie mestské dáta (rozpočet, doprava) pribudnú podľa toho, čo mesto zverejňuje.</p>
   </section>
 
   <div class="kpis">

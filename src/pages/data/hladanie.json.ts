@@ -3,6 +3,7 @@
 // a pri uliciach [skupina, ulica, mestská časť] – odkazy na mapu a spádovú školu skladá prehliadač (menší súbor).
 import fs from 'node:fs';
 import path from 'node:path';
+import { maMapu } from '../../lib/mapa';
 
 const nacitaj = (subor: string, verejne = false) => {
   const p = path.join(process.cwd(), verejne ? 'public/data' : 'data', subor);
@@ -68,7 +69,10 @@ export async function GET() {
   const polozky: (string | number)[][] = [];
   // krajské mestá a porovnanie
   const mesta = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'mesta.json'), 'utf-8'));
-  for (const m of mesta.filter((x: any) => x.aktivne && x.slug !== 'bratislava')) polozky.push(['Stránky', m.nazov, `${m.kraj} – obyvatelia, voľby, práca, bývanie, stavby`, `/${m.slug}`, `mesto krajské ${m.v}`]);
+  for (const m of mesta.filter((x: any) => x.aktivne && x.slug !== 'bratislava')) {
+    polozky.push(['Stránky', m.nazov, `${m.kraj} – obyvatelia, voľby, práca, bývanie, stavby`, `/${m.slug}`, `mesto krajské ${m.v}`]);
+    if (maMapu(m.slug)) polozky.push(['Stránky', `Mapa – ${m.nazov}`, 'lekárne, nemocnice, školy, zastávky, ihriská, úrady', `/${m.slug}/mapa`, `mapa ${m.v} lekáreň nemocnica škola zastávka`]);
+  }
   polozky.push(['Stránky', 'Porovnanie krajských miest', 'obyvatelia, vek, vzdelanie, nezamestnanosť, voľby, byty, ceny', '/porovnanie', 'porovnanie mestá krajské rebríček']);
   for (const [u, t, s, w] of SEKCIE) polozky.push(['Stránky', t, s, u, w]);
 

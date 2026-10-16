@@ -36,7 +36,8 @@
    17.5872
   ],
   "aktivne": true,
-  "rieka_id": "trnavka"
+  "rieka_id": "trnavka",
+  "osm_rel": 2204009
  },
  {
   "slug": "nitra",
@@ -53,7 +54,8 @@
   ],
   "rieka": "Nitra",
   "aktivne": true,
-  "rieka_id": "nitra"
+  "rieka_id": "nitra",
+  "osm_rel": 2210192
  },
  {
   "slug": "trencin",
@@ -69,7 +71,8 @@
    18.0444
   ],
   "rieka": "Váh",
-  "aktivne": true
+  "aktivne": true,
+  "osm_rel": 1799254
  },
  {
   "slug": "zilina",
@@ -86,7 +89,8 @@
   ],
   "rieka": "Váh",
   "aktivne": true,
-  "rieka_id": "rajcanka"
+  "rieka_id": "rajcanka",
+  "osm_rel": 1859537
  },
  {
   "slug": "banska-bystrica",
@@ -103,7 +107,8 @@
   ],
   "rieka": "Hron",
   "aktivne": true,
-  "rieka_id": "hron"
+  "rieka_id": "hron",
+  "osm_rel": 2265296
  },
  {
   "slug": "presov",
@@ -120,7 +125,8 @@
   ],
   "rieka": "Torysa",
   "aktivne": true,
-  "rieka_id": "torysa"
+  "rieka_id": "torysa",
+  "osm_rel": 2320257
  },
  {
   "slug": "kosice",
@@ -145,6 +151,7 @@
    "nazov": "opendata.kosice.sk",
    "min": 40
   },
-  "rieka_id": "hornad"
+  "rieka_id": "hornad",
+  "osm_rel": 1690324
  }
 ]

@@ -12,6 +12,7 @@ export type Mesto = {
   okresy: string[];
   stred: [number, number];
   rieka?: string;
+  osm_rel?: number;
   aktivne: boolean;
   plne?: boolean;
   popis?: string;

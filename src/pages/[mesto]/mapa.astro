@@ -1,25 +1,22 @@
 ---
-// Mapa mesta z vrstiev jeho portálu otvorených dát (public/data/mesta/mapa-<slug>.json, scripts/zber_mapa_mesta.py).
-import fs from 'node:fs';
-import path from 'node:path';
+// Mapa mesta: vrstvy z portálu otvorených dát mesta a z OpenStreetMap (src/lib/mapa.ts).
 import Base from '../../layouts/Base.astro';
 import { MESTA, type Mesto } from '../../mesta';
+import { maMapu, mapaMesta } from '../../lib/mapa';
 
 export function getStaticPaths() {
-  return MESTA.filter((m) => m.aktivne && !m.plne && fs.existsSync(path.join(process.cwd(), 'public', 'data', 'mesta', `mapa-${m.slug}.json`)))
-    .map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+  return MESTA.filter((m) => m.aktivne && !m.plne && maMapu(m.slug)).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
 }
-const subor = (slug: string) => path.join(process.cwd(), 'public', 'data', 'mesta', `mapa-${slug}.json`);
 const { m } = Astro.props as { m: Mesto };
-const d = JSON.parse(fs.readFileSync(subor(m.slug), 'utf-8'));
+const d = mapaMesta(m.slug)!;
 const skupiny = new Map<string, any[]>();
 for (const v of d.vrstvy) skupiny.set(v.skupina, [...(skupiny.get(v.skupina) ?? []), v]);
-const PREDVOLENE = d.vrstvy.find((v: any) => /turistick/i.test(v.nazov))?.id ?? d.vrstvy[0]?.id;
+const PREDVOLENE = (d.vrstvy.find((v: any) => /turistick/i.test(v.nazov)) ?? d.vrstvy.find((v: any) => v.id === 'osm-pamiatky') ?? d.vrstvy[0])?.id;
 const pocet = (v: any) => (v.typ === 'body' ? v.body.length : v.ciary.length);
-const kratko = (n: string) => n.replace(/ v zriaďovateľskej pôsobnosti.*$/i, '').replace(/ (v meste |na území |v )?Košic(e|iach|i)?$/i, '').replace(/^Zoznam /, '').replace(/^Komunálne voľby 2026 - volebné okrsky$/, 'Volebné miestnosti (okrsky)').replace(/^./, (c) => c.toUpperCase());
+const kratko = (n: string) => n.replace(/ v zriaďovateľskej pôsobnosti.*$/i, '').replace(/ (v meste |na území |v )?Košic(e|iach|i|ach)?$/i, '').replace(/^Zoznam /, '').replace(/^Komunálne voľby 2026 - volebné okrsky$/, 'Volebné miestnosti (okrsky)').replace(/^./, (c) => c.toUpperCase());
 ---
-<Base title={`Mapa – ${m.nazov} – mestovcislach.sk`} description={`Mapa mesta ${m.nazov}: školy, zastávky MHD, ihriská, fontány, kultúra, sociálne služby, volebné miestnosti a ďalšie vrstvy z otvorených dát mesta.`}>
-  <div class="mapa-app" id="mapa-app" data-subor={`/data/mesta/mapa-${m.slug}.json`} data-predvolene={PREDVOLENE} data-stred={JSON.stringify(m.stred)}>
+<Base title={`Mapa – ${m.nazov} – mestovcislach.sk`} description={`Mapa mesta ${m.nazov}: lekárne, nemocnice, školy, zastávky MHD, ihriská, kultúra, úrady a ďalšie vrstvy z otvorených dát a OpenStreetMap.`}>
+  <div class="mapa-app" id="mapa-app" data-subor={`/data/mesta/mapa/${m.slug}.json`} data-predvolene={PREDVOLENE} data-stred={JSON.stringify(m.stred)}>
     <aside class="panel">
       <h1>Mapa <span translate="no">{m.nazov}</span></h1>
       <label class="hladaj"><span class="sr">Hľadať na mape</span><input type="search" id="m-q" placeholder="Hľadať: škola, zastávka, ulica…" autocomplete="off" /></label>
@@ -34,9 +31,9 @@ const kratko = (n: string) => n.replace(/ v zriaďovateľskej pôsobnosti.*$/i, 
             ))}
           </fieldset>
         ))}
-        {d.hranice && <label class="hranice"><input type="checkbox" value="hranice" checked /> <span>Hranice mestských častí</span></label>}
+        {d.hranice && <label class="hranice"><input type="checkbox" value="hranice" checked /> <span>{d.hranice_nazov}</span></label>}
       </details>
-      <p class="zdroj">Zdroj: <a href={d.zdroj}>{d.zdroj.replace(/^https?:\/\//, '')}</a> – otvorené dáta mesta, aktualizované týždenne. Podklad © prispievatelia OpenStreetMap.</p>
+      <p class="zdroj">Zdroj: {d.portal && <><a href={d.portal}>{d.portal.replace(/^https?:\/\//, '')}</a> – otvorené dáta mesta{d.osm ? '; ' : ', '}</>}{d.osm && <><a href="https://www.openstreetmap.org/copyright">© prispievatelia OpenStreetMap</a> (ODbL){d.portal ? ' – vrstvy, ktoré mesto nezverejňuje' : ''}, </>}aktualizované týždenne. Podklad © prispievatelia OpenStreetMap.</p>
     </aside>
     <div class="plocha"><div id="m-mapa" role="region" aria-label={`Mapa mesta ${m.nazov}`}></div></div>
   </div>
