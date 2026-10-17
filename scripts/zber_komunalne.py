@@ -247,7 +247,7 @@ def zvoleni(t: dict, tab: str, kluc) -> set:
 def spracovanie(t: dict, obec: str) -> dict | None:
     """Priebežné výsledky: koľko okrskov obce už má výsledok (riadky tab02b) z celkového počtu (tab0d „počet okrskov“)."""
     riadok = next((r for r in t.get("tab0d", []) if kod(r.get("OBEC", "")) == obec), None)
-    stlpec = next((k for k in (riadok or {}) if "okrsk" in k.lower()), None)
+    stlpec = next((k for k in (riadok or {}) if "okrs" in k.lower() and k != "OKRSOK"), None)
     spolu = int(cislo(riadok[stlpec])) if stlpec else 0
     hotove = sum(1 for r in t.get("tab02b", []) if kod(r.get("OBEC", "")) == obec)
     if not spolu:
