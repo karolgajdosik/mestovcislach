@@ -136,15 +136,21 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
 
   <section class="card" id="volby">
     <h2>Voľby</h2>
+    {!d.komunalne?.['2026'] && Date.now() < Date.parse('2026-11-15') && (
+      <p class="priebezne">Komunálne a krajské voľby sú v <strong>sobotu 24. októbra 2026</strong>. Výsledky voľby primátora a mestského zastupiteľstva sa tu objavia automaticky počas volebnej noci – zdroj Štatistického úradu SR kontrolujeme každých 15 minút.</p>
+    )}
     {kom && (
       <div class="blok">
         <h3>Voľba primátora {komRok}</h3>
+        {kom.spracovanie?.priebezne && <p class="priebezne" role="status"><strong>Priebežné výsledky</strong> – spracovaných {fmt(kom.spracovanie.okrsky)} z {fmt(kom.spracovanie.spolu)} okrskov ({des(kom.spracovanie.pct)} %). Obnovuje sa každých 15 minút.</p>}
         <p class="pozn">Účasť {des(kom.ucast?.ucast_pct)} % · {fmt(kom.ucast?.volili)} voličov{ja.ucast_komunalne != null && ` · ${poradie('ucast_komunalne')} krajských miest podľa účasti`}</p>
         <ul class="pruhy kandidati">{kom.primator.slice(0, 6).map((k: any) => (
           <li class={k.zvoleny ? 'zvoleny' : ''}><span class="p-n"><strong translate="no">{k.meno}</strong>{k.zvoleny && <em> zvolený</em>}<small translate="no">{k.strany.length > 90 ? k.strany.slice(0, 88) + '…' : k.strany}</small></span><span class="p-h">{des(k.podiel)} %</span><span class="p-p" aria-hidden="true"><i style={`width:${k.podiel}%`}></i></span></li>
         ))}</ul>
+        {kom.zastupitelstvo.poslancov > 0 && <>
         <h3>Mestské zastupiteľstvo – {kom.zastupitelstvo.poslancov} poslancov</h3>
         <ul class="mandaty">{kom.zastupitelstvo.mandaty.map((x: any) => <li><b>{x.mandaty}</b> <span translate="no">{x.strany.length > 110 ? x.strany.slice(0, 108) + '…' : x.strany}</span></li>)}</ul>
+        </>}
       </div>
     )}
     <div class="dva">
@@ -156,7 +162,7 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
         </div>
       ))}
     </div>
-    <p class="zdroj">Zdroj: Štatistický úrad SR – volby.statistics.sk. Pri kandidátoch uvádzame len meno, stranu a hlasy.</p>
+    <p class="zdroj">Zdroj: Štatistický úrad SR – volby.statistics.sk a volbysr.sk. Pri kandidátoch uvádzame len meno, stranu a hlasy.</p>
   </section>
 
   <section class="card" id="praca">
@@ -295,6 +301,7 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
   section.card { margin-top: 16px; }
   .card h2 { font-size: 1.3rem; margin: 0 0 6px; }
   .card h3 { font-size: 1rem; margin: 18px 0 6px; }
+  .priebezne { border-left: 4px solid var(--accent); background: var(--bg); padding: 8px 12px; border-radius: 6px; margin: 0 0 12px; font-size: 0.92rem; max-width: 54em; }
   .pozn { font-size: 0.85rem; color: var(--muted); margin: 0 0 10px; max-width: 54em; }
   .graf { position: relative; height: 280px; }
   .graf.maly { height: 220px; }

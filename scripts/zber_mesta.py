@@ -233,7 +233,7 @@ def komunalne(stare: dict | None = None) -> dict:
             vysl[slug][rok] = v
     for rok, urls in KOMUNALNE:
         t, _ = zk.stiahni(urls)
-        if not t or not all(t.get(x) for x in ("tab0a", "tab0b", "tab05", "tab08")):
+        if not t or not all(t.get(x) for x in ("tab0a", "tab05")):
             print(f"  komunálne {rok}: výsledky ešte nie sú k dispozícii ({', '.join(sorted(t)) if t else 'balík nedostupný'})")
             continue
         strany = zk.strany_mapa(t)
@@ -246,15 +246,16 @@ def komunalne(stare: dict | None = None) -> dict:
             zvol = {k[1] for k in zk.zvoleni(t, "tab05", lambda r: (zk.kod(r["OBEC"]), zk.kod(r["PC_HL"]))) if k[0] == obec}
             primator = zk.bez_klucov(zk.vysledky_kandidatov(hl, kand, strany, lambda r: zk.kod(r["PC_HL"]), lambda r: True, zvol or None))
             zvol_pos = {(k[1], k[2]) for k in zk.zvoleni(t, "tab08", lambda r: (zk.kod(r["OBEC"]), zk.kod(r.get("VOOBEC", "")), zk.kod(r["PC_HL"]))) if k[0] == obec}
-            kand_msz = {(zk.kod(r["VOOBEC"]), zk.kod(r["PC_HL"])): r for r in t["tab0b"] if zk.kod(r["OBEC"]) == obec}
+            kand_msz = {(zk.kod(r["VOOBEC"]), zk.kod(r["PC_HL"])): r for r in t.get("tab0b", []) if zk.kod(r["OBEC"]) == obec}
             hl_msz: dict[tuple, float] = defaultdict(float)
-            for r in t["tab08"]:
+            for r in t.get("tab08", []):
                 if zk.kod(r["OBEC"]) == obec:
                     hl_msz[(zk.kod(r["VOOBEC"]), zk.kod(r["PC_HL"]))] += cislo(r["P_HL"])
             poslanci = [{"meno": zk.meno(kand_msz[k]), "strany": zk.strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
                         for k in sorted(zvol_pos, key=lambda k: -hl_msz[k]) if k in kand_msz]
             vysl[m["slug"]][rok] = {
                 "ucast": zk.ucast(t["tab02b"], {obec}) if "tab02b" in t else None,
+                "spracovanie": zk.spracovanie(t, obec),
                 "primator": [{"meno": x["meno"], "strany": x["strany"], "hlasy": x["hlasy"], "podiel": x["podiel"], "zvoleny": x["zvoleny"]} for x in primator],
                 "zastupitelstvo": {"poslancov": len(poslanci), "mandaty": zk.mandaty(poslanci), "poslanci": poslanci},
             }

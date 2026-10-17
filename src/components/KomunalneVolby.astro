@@ -34,7 +34,10 @@ const vitaz = (k: any[]) => k?.find((x) => x.zvoleny) ?? null;
 
     {volby.map((v, i) => {
       const o = v.oso, k = v.osk;
-      const prim = o && vitaz(o.primator.kandidati);
+      const sp = v.spracovanie;
+      const priebezne = !!sp?.priebezne;
+      // počas sčítavania ešte nie je nikto zvolený – ukážeme, kto vedie
+      const prim = o && (vitaz(o.primator.kandidati) ?? (priebezne ? o.primator.kandidati[0] : null));
       const pred = k && vitaz(k.predseda.kraj.kandidati);
       return (
         <div class="kom-panel" data-kom-panel={v.id} hidden={i !== 0}>
@@ -64,12 +67,22 @@ const vitaz = (k: any[]) => k?.find((x) => x.zvoleny) ?? null;
             </aside>
           )}
 
+          {priebezne && (
+            <aside class="card upozornenie" role="status">
+              <strong>Priebežné výsledky – spracovaných {fmt(sp.okrsky)} z {fmt(sp.spolu)} okrskov ({pct(sp.pct)})</strong>
+              <p>
+                Čísla sa počas sčítavania menia, obnovujeme ich každých 15 minút. Zvolení kandidáti a rozdelenie mandátov budú
+                známe až po spracovaní všetkých okrskov a vyhlásení výsledkov volebnými komisiami.
+              </p>
+            </aside>
+          )}
+
           {o && (
             <>
               <section class="kpis">
                 {prim && (
                   <div class="card kpi">
-                    <p class="label">Primátor Bratislavy</p>
+                    <p class="label">{prim.zvoleny ? 'Primátor Bratislavy' : 'Vedie vo voľbe primátora'}</p>
                     <p class="value small">{prim.meno}</p>
                     <p class="delta">{pct(prim.podiel)} · {fmt(prim.hlasy)} hlasov</p>
                   </div>
@@ -89,7 +102,7 @@ const vitaz = (k: any[]) => k?.find((x) => x.zvoleny) ?? null;
               </section>
 
               <section class="card">
-                <h3>Primátor Bratislavy</h3>
+                <h3>{priebezne ? 'Voľba primátora – priebežne' : 'Primátor Bratislavy'}</h3>
                 <ol class="stlpce">
                   {o.primator.kandidati.map((c: any) => (
                     <li class={c.zvoleny ? 'zvoleny' : ''}>
@@ -117,7 +130,7 @@ const vitaz = (k: any[]) => k?.find((x) => x.zvoleny) ?? null;
                 </section>
               )}
 
-              <section class="card">
+              <section class="card" hidden={!o.mestske_zastupitelstvo.poslancov}>
                 <h3>Mestské zastupiteľstvo – {o.mestske_zastupitelstvo.poslancov} poslancov</h3>
                 <div class="mandaty">
                   {o.mestske_zastupitelstvo.mandaty.map((m: any, j: number) => (
@@ -142,10 +155,10 @@ const vitaz = (k: any[]) => k?.find((x) => x.zvoleny) ?? null;
                 <h3>Starostovia mestských častí</h3>
                 <div class="tabulka-obal">
                   <table>
-                    <thead><tr><th>Mestská časť</th><th>Zvolený starosta</th><th>Kandidoval za</th><th class="num">%</th><th class="num">Účasť</th><th class="num">Kand.</th></tr></thead>
+                    <thead><tr><th>Mestská časť</th><th>{priebezne ? 'Vedie' : 'Zvolený starosta'}</th><th>Kandidoval za</th><th class="num">%</th><th class="num">Účasť</th><th class="num">Kand.</th></tr></thead>
                     <tbody>
                       {o.starostovia.map((st: any) => {
-                        const z = vitaz(st.kandidati);
+                        const z = vitaz(st.kandidati) ?? (priebezne ? st.kandidati[0] : null);
                         return <tr><td>{st.nazov}</td><td>{z?.meno ?? '–'}</td><td>{z ? skrat(z.strany) : ''}</td><td class="num">{pct(z?.podiel)}</td><td class="num">{pct(st.ucast.ucast_pct)}</td><td class="num">{st.kandidati.length}</td></tr>;
                       })}
                     </tbody>

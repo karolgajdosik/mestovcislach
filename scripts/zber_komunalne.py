@@ -244,6 +244,17 @@ def zvoleni(t: dict, tab: str, kluc) -> set:
     return {kluc(r) for r in t.get(tab, []) + t.get(tab + "_agg", []) if zvoleny_flag(r) == "1" and r.get("PC_HL")}
 
 
+def spracovanie(t: dict, obec: str) -> dict | None:
+    """Priebežné výsledky: koľko okrskov obce už má výsledok (riadky tab02b) z celkového počtu (tab0d „počet okrskov“)."""
+    riadok = next((r for r in t.get("tab0d", []) if kod(r.get("OBEC", "")) == obec), None)
+    stlpec = next((k for k in (riadok or {}) if "okrsk" in k.lower()), None)
+    spolu = int(cislo(riadok[stlpec])) if stlpec else 0
+    hotove = sum(1 for r in t.get("tab02b", []) if kod(r.get("OBEC", "")) == obec)
+    if not spolu:
+        return None
+    return {"okrsky": min(hotove, spolu), "spolu": spolu, "pct": round(100 * min(hotove, spolu) / spolu, 1), "priebezne": hotove < spolu}
+
+
 def mandaty(zvoleni: list[dict]) -> list[dict]:
     pocty: dict[str, int] = defaultdict(int)
     for z in zvoleni:
@@ -408,6 +419,8 @@ def main() -> int:
                 zaznam["osk"] = spracuj_osk(osk, nazvy_mc)
                 zaznam["zdroj_osk"] = url_osk
             zaznam["stav"] = "vysledky" if ma_oso else ("kandidati" if oso and oso.get("tab0a") else "caka_sa")
+            if ma_oso:
+                zaznam["spracovanie"] = spracovanie(oso, MESTO)
             if zaznam["stav"] == "kandidati":
                 # pred voľbami: len zoznamy kandidátov na primátora a predsedu BSK
                 strany_o = strany_mapa(oso)
