@@ -1,0 +1,17 @@
+---
+// Stránka pre neexistujúce adresy. Bez nej Cloudflare Pages vracia úvodnú stránku so stavom 200 („soft 404“ pre vyhľadávače).
+import Base from '../layouts/Base.astro';
+import { MESTA } from '../mesta';
+---
+<Base title="Stránka sa nenašla – mestovcislach.sk" description="Táto adresa na webe mestovcislach.sk neexistuje.">
+  <h1>Stránka sa nenašla</h1>
+  <p class="lead">Adresa neexistuje alebo sa presunula. Skúste vyhľadávanie hore alebo pokračujte na niektoré mesto:</p>
+  <ul class="mesta-404">
+    {MESTA.filter((m: any) => m.aktivne).map((m: any) => <li><a href={`/${m.slug}/`}>{m.nazov}</a></li>)}
+  </ul>
+  <p><a href="/">Úvodná stránka</a> · <a href="/porovnanie/">Porovnanie miest</a></p>
+</Base>
+<style>
+  .mesta-404 { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 0; list-style: none; margin: 16px 0 24px; }
+  .mesta-404 a { font-weight: 600; }
+</style>

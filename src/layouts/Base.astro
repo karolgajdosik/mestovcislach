@@ -74,7 +74,7 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="canonical" href={adresa} />
+    {!Astro.url.pathname.startsWith('/404') && <link rel="canonical" href={adresa} />}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="mestovčíslach.sk" />
     <meta property="og:locale" content="sk_SK" />
