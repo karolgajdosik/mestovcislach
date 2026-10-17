@@ -252,7 +252,7 @@ def komunalne(stare: dict | None = None) -> dict:
                 if zk.kod(r["OBEC"]) == obec:
                     hl_msz[(zk.kod(r["VOOBEC"]), zk.kod(r["PC_HL"]))] += cislo(r["P_HL"])
             poslanci = [{"meno": zk.meno(kand_msz[k]), "strany": zk.strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
-                        for k in sorted(zvol_pos, key=lambda k: -hl_msz[k]) if k in kand_msz]
+                        for k in sorted(zvol_pos, key=lambda k: (-hl_msz[k], k)) if k in kand_msz]
             vysl[m["slug"]][rok] = {
                 "ucast": zk.ucast(t["tab02b"], {obec}) if "tab02b" in t else None,
                 "spracovanie": zk.spracovanie(t, obec),

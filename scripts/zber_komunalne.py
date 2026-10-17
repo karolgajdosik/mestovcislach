@@ -259,7 +259,7 @@ def mandaty(zvoleni: list[dict]) -> list[dict]:
     pocty: dict[str, int] = defaultdict(int)
     for z in zvoleni:
         pocty[z["strany"]] += 1
-    return [{"strany": k, "mandaty": v} for k, v in sorted(pocty.items(), key=lambda x: -x[1])]
+    return [{"strany": k, "mandaty": v} for k, v in sorted(pocty.items(), key=lambda x: (-x[1], x[0]))]
 
 
 def okrsky_mesta_na_mc(ucast_okrsky: list[dict], mc: list[str]) -> dict[tuple, str]:
@@ -333,7 +333,7 @@ def spracuj_oso(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
         if (MESTO, k[0], k[1]) in zvol_pos:
             zvoleni_msz.add(k)
     msz = [{"obvod": nazov_obvodu(k[0]), "meno": meno(kand_msz[k]), "strany": strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
-           for k in sorted(zvoleni_msz, key=lambda k: (nazov_obvodu(k[0]), -hl_msz[k])) if k in kand_msz]
+           for k in sorted(zvoleni_msz, key=lambda k: (nazov_obvodu(k[0]), -hl_msz[k], k)) if k in kand_msz]
 
     # Starostovia a miestne zastupiteľstvá
     starostovia = []
@@ -388,7 +388,7 @@ def spracuj_osk(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
         if kod(r["VOBVOD"]) in ba_obvody:
             nazov_obvodu[kod(r["VOBVOD"])].add(nazvy_mc.get(kod(r["OBEC"]), r["NOBEC"].replace("Bratislava - ", "")))
     poslanci = [{"obvod": ", ".join(sorted(nazov_obvodu.get(k[0], {k[0]}))), "meno": meno(kand_pos[k]), "strany": strany_kandidata(kand_pos[k], strany), "hlasy": int(hl[k])}
-                for k in sorted(zvol, key=lambda k: (k[0], -hl[k])) if k in kand_pos]
+                for k in sorted(zvol, key=lambda k: (k[0], -hl[k], k)) if k in kand_pos]
     return {
         "predseda": {
             "kraj": {"ucast": ucast(t["tab02b"], kraj_obce), "kandidati": bez_klucov(predseda_kraj)},
