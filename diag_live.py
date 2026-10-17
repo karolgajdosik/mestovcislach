@@ -1,7 +1,10 @@
+# DNS TXT záznamy domény (overenie Google/Bing) – len typ záznamu, nie hodnoty tokenov.
 import requests
-s = requests.Session(); s.headers["User-Agent"] = "Mozilla/5.0 (mestovcislach.sk diag)"
-for u in ("https://mestovcislach.sk/", "https://mestovcislach.sk/kosice/"):
-    t = s.get(u, timeout=30).text
-    print(u, "cloudflareinsights beacon:", "cloudflareinsights" in t, "| data-cf-beacon:", "data-cf-beacon" in t)
-r = s.get("https://mestovcislach.pages.dev/", timeout=30); print("pages.dev X-Robots-Tag:", r.headers.get("x-robots-tag"))
-r = s.get("https://mestovcislach.sk/", timeout=30); print("hlavná X-Robots-Tag:", r.headers.get("x-robots-tag"))
+for meno in ("mestovcislach.sk", "www.mestovcislach.sk"):
+    for typ in ("TXT", "CNAME"):
+        r = requests.get("https://cloudflare-dns.com/dns-query", params={"name": meno, "type": typ}, headers={"accept": "application/dns-json"}, timeout=30).json()
+        for a in r.get("Answer", []):
+            d = a["data"].strip('"')
+            druh = "google-site-verification" if "google-site-verification" in d else "bing (ms=)" if d.lower().startswith("ms=") else "spf" if d.startswith("v=spf") else d[:40]
+            print(meno, typ, druh)
+r = requests.get("https://mestovcislach.sk/BingSiteAuth.xml", timeout=30); print("BingSiteAuth.xml", r.status_code)
