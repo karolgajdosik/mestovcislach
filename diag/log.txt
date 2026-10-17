@@ -1,8 +1,4 @@
-robots 200 text/plain; charset=utf-8 Sitemap: https://mestovcislach.sk/sitemap.xml
-sitemap 200 application/xml 667
-úvod ld+json 1 | canonical ['https://mestovcislach.sk/']
-dataset 200 1
-https://mestovcislach.sk/bratislava/doprava 308 /bratislava/doprava/ None
-http://mestovcislach.sk/ 301 https://mestovcislach.sk/ None
-https://www.mestovcislach.sk/ 301 https://mestovcislach.sk/ None
-https://mestovcislach.pages.dev/ 200 None None
+https://mestovcislach.sk/ cloudflareinsights beacon: True | data-cf-beacon: True
+https://mestovcislach.sk/kosice/ cloudflareinsights beacon: True | data-cf-beacon: True
+pages.dev X-Robots-Tag: noindex
+hlavná X-Robots-Tag: None
