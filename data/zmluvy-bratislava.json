@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11759,
+ "pocet_spolu": 11766,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2147,
-   "suma": 339277272.59
+   "pocet": 2154,
+   "suma": 340052036.5
   }
  },
  "posledny_rok": {
-  "od": "2025-10-16",
+  "od": "2025-10-17",
   "suma_bez_ico": 72242.76,
   "dodavatelia": [
    {
@@ -66,8 +66,8 @@
    {
     "ico": "50614339",
     "nazov": "ALDESA CONSTRUCCIONES POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, organizačná zložka",
-    "pocet": 8,
-    "suma": 5744720.05
+    "pocet": 9,
+    "suma": 6518383.96
    },
    {
     "ico": "36416291",
@@ -84,7 +84,7 @@
    {
     "ico": "31651518",
     "nazov": "EUROVIA SK, a.s.",
-    "pocet": 6,
+    "pocet": 7,
     "suma": 2850404.58
    },
    {
@@ -307,5 +307,5 @@
    }
   ]
  },
- "aktualizovane": "2026-10-16T02:56:58+00:00"
+ "aktualizovane": "2026-10-17T02:55:24+00:00"
 }
