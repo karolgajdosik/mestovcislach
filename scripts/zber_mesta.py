@@ -19,6 +19,7 @@ import csv
 import io
 import json
 import re
+import sys
 import zipfile
 from collections import defaultdict
 from datetime import datetime
@@ -219,17 +220,21 @@ def volby() -> dict:
     return vysl
 
 
-KOMUNALNE = [("2022", "https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip"),
-             ("2026", "https://volbysr.sk/oso/files/OSO2026_SK_csv.zip")]
+KOMUNALNE = [("2022", ["https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip"]),
+             ("2026", ["https://volbysr.sk/oso/files/OSO2026_SK_csv.zip", "https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip"])]
 
 
-def komunalne() -> dict:
+def komunalne(stare: dict | None = None) -> dict:
+    """Výsledky primátora a MsZ. Ročník, ktorý sa nepodarí stiahnuť (alebo ešte nemá výsledky), sa prevezme z minulého behu."""
     import zber_komunalne as zk  # pomôcky na čítanie balíka OSO (CSV/XLSX, hlavičky, mená)
     vysl: dict[str, dict] = defaultdict(dict)
-    for rok, url in KOMUNALNE:
-        t, _ = zk.stiahni([url])
-        if not t or "tab0a" not in t:
-            print(f"  komunálne {rok}: balík nie je k dispozícii")
+    for slug, k in (stare or {}).items():
+        for rok, v in (k or {}).items():
+            vysl[slug][rok] = v
+    for rok, urls in KOMUNALNE:
+        t, _ = zk.stiahni(urls)
+        if not t or not all(t.get(x) for x in ("tab0a", "tab0b", "tab05", "tab08")):
+            print(f"  komunálne {rok}: výsledky ešte nie sú k dispozícii ({', '.join(sorted(t)) if t else 'balík nedostupný'})")
             continue
         strany = zk.strany_mapa(t)
         for m in MESTA:
@@ -304,24 +309,30 @@ def ceny() -> dict:
 
 # ---------------- hlavný beh ----------------
 
+# voliteľne len vybrané moduly, napr. `python scripts/zber_mesta.py komunalne` (volebná noc); ostatné sa prevezmú z minulého behu
+LEN = set(sys.argv[1:])
+
 def main() -> int:
     VYSTUP.mkdir(parents=True, exist_ok=True)
     stare = {m["slug"]: json.loads((VYSTUP / f"{m['slug']}.json").read_text(encoding="utf-8")) if (VYSTUP / f"{m['slug']}.json").exists() else {} for m in MESTA}
     vysledky: dict[str, dict] = {}
     chyby = []
-    for nazov, fn in [("obyvatelia", obyvatelia), ("scitanie", scitanie), ("volby", volby), ("komunalne", komunalne),
+    for nazov, fn in [("obyvatelia", obyvatelia), ("scitanie", scitanie), ("volby", volby), ("komunalne", lambda: komunalne({k: v.get("komunalne") for k, v in stare.items()})),
                       ("praca", lambda: praca({k: v.get("praca") for k, v in stare.items()})), ("byty", byty)]:
+        if LEN and nazov not in LEN:
+            continue
         try:
             vysledky[nazov] = fn()
             print(f"OK {nazov}")
         except Exception as e:  # noqa: BLE001
             chyby.append(f"{nazov}: {type(e).__name__}: {e}")
             print(f"::warning title=Mestá – {nazov}::{e}")
-    try:
-        cenovy = ceny()
-    except Exception as e:  # noqa: BLE001
-        cenovy = None
-        chyby.append(f"ceny: {e}")
+    cenovy = None
+    if not LEN or "ceny" in LEN:
+        try:
+            cenovy = ceny()
+        except Exception as e:  # noqa: BLE001
+            chyby.append(f"ceny: {e}")
 
     porovnanie = []
     for m in MESTA:

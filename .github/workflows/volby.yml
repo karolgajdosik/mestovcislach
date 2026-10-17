@@ -10,6 +10,7 @@ on:
     branches: [main]
     paths:
       - "scripts/zber_komunalne.py"
+      - "scripts/zber_mesta.py"
       - ".github/workflows/volby.yml"
 
 permissions:
@@ -32,12 +33,15 @@ jobs:
       - run: pip install -r scripts/requirements.txt
       - name: Komunálne a krajské voľby (ŠÚ SR)
         run: python scripts/zber_komunalne.py
+      - name: Komunálne voľby v ostatných krajských mestách
+        if: success() || failure()
+        run: python scripts/zber_mesta.py komunalne
       - name: Uložiť zmeny v dátach
         if: success() || failure()
         run: |
           git config user.name "mestovcislach-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/komunalne-bratislava.json
+          git add data/komunalne-bratislava.json data/mesta/*.json
           if git diff --cached --quiet; then
             echo "Žiadne nové dáta."
           else
