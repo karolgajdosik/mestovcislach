@@ -858,11 +858,11 @@
          "mandaty": 23
         },
         {
-         "strany": "nezávislý kandidát",
+         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
          "mandaty": 1
         },
         {
-         "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+         "strany": "nezávislý kandidát",
          "mandaty": 1
         }
        ]
@@ -1006,11 +1006,11 @@
          "mandaty": 5
         },
         {
-         "strany": "nezávislý kandidát",
+         "strany": "Strana obcí a miest - SOM SLOVENSKO",
          "mandaty": 1
         },
         {
-         "strany": "Strana obcí a miest - SOM SLOVENSKO",
+         "strany": "nezávislý kandidát",
          "mandaty": 1
         }
        ]
@@ -1082,11 +1082,11 @@
          "mandaty": 23
         },
         {
-         "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+         "strany": "nezávislý kandidát",
          "mandaty": 1
         },
         {
-         "strany": "nezávislý kandidát",
+         "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
          "mandaty": 1
         }
        ]
@@ -1134,11 +1134,11 @@
          "mandaty": 33
         },
         {
-         "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+         "strany": "NOVA, Občianska konzervatívna strana, Zmena zdola, Demokratická únia Slovenska, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
          "mandaty": 1
         },
         {
-         "strany": "NOVA, Občianska konzervatívna strana, Zmena zdola, Demokratická únia Slovenska, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+         "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
          "mandaty": 1
         }
        ]
@@ -1218,15 +1218,15 @@
          "mandaty": 12
         },
         {
-         "strany": "Strana obcí a miest - SOM SLOVENSKO, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
-         "mandaty": 1
-        },
-        {
          "strany": "Demokratická strana",
          "mandaty": 1
         },
         {
          "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+         "mandaty": 1
+        },
+        {
+         "strany": "Strana obcí a miest - SOM SLOVENSKO, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
          "mandaty": 1
         }
        ]
@@ -2041,5 +2041,5 @@
    "stav": "caka_sa"
   }
  ],
- "aktualizovane": "2026-10-16T03:34:05+00:00"
+ "aktualizovane": "2026-10-17T01:44:50+00:00"
 }
