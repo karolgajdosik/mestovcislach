@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../../../layouts/Base.astro';
+import { dataset } from '../../../lib/seo';
 
 export function getStaticPaths() {
   const p = path.join(process.cwd(), 'data', 'katalog-stav.json');
@@ -18,7 +19,8 @@ const t = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', 'data', 
 const fmt = (v: any) => (typeof v === 'number' ? v.toLocaleString('sk-SK', { maximumFractionDigits: 2 }) : v ?? '');
 const UKAZKA = 60;
 ---
-<Base title={`${t.nazov} – Katalóg dát – mestovcislach.sk`} description={t.popis || `${t.nazov} – otvorené dáta hlavného mesta Bratislavy s grafom a stiahnutím v CSV.`}>
+<Base title={`${t.nazov} – Katalóg dát – mestovcislach.sk`} description={t.popis || `${t.nazov} – otvorené dáta hlavného mesta Bratislavy s grafom a stiahnutím v CSV.`}
+  jsonld={dataset(t, { url: `/bratislava/katalog/${id}/`, json: `/data/tabulky/${id}.json`, mesto: 'Bratislava', vydavatel: 'Hlavné mesto SR Bratislava' })}>
   <p class="spat"><a href="/bratislava/katalog">← Katalóg dát</a> · {t.kategoria}</p>
   <h1>{t.nazov}</h1>
   {t.popis && <p class="lead">{t.popis}</p>}

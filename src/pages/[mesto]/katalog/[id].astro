@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../../../layouts/Base.astro';
+import { dataset } from '../../../lib/seo';
 import { MESTA } from '../../../mesta';
 
 export function getStaticPaths() {
@@ -22,7 +23,8 @@ const t = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', 'data', 
 const fmt = (v: any) => (typeof v === 'number' ? v.toLocaleString('sk-SK', { maximumFractionDigits: 2 }) : v ?? '');
 const UKAZKA = 60;
 ---
-<Base title={`${t.nazov} – Katalóg dát – mestovcislach.sk`} description={t.popis || `${t.nazov} – otvorené dáta mesta ${m.nazov} s grafom a stiahnutím v CSV.`}>
+<Base title={`${t.nazov} – Katalóg dát – mestovcislach.sk`} description={t.popis || `${t.nazov} – otvorené dáta mesta ${m.nazov} s grafom a stiahnutím v CSV.`}
+  jsonld={dataset(t, { url: `/${m.slug}/katalog/${id}/`, json: `/data/tabulky-${m.slug}/${id}.json`, mesto: m.nazov, vydavatel: `Mesto ${m.nazov}` })}>
   <p class="spat"><a href={`/${m.slug}/katalog`}>← Katalóg dát</a> · {t.kategoria}</p>
   <h1>{t.nazov}</h1>
   {t.popis && <p class="lead">{t.popis}</p>}

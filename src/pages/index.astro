@@ -1,6 +1,7 @@
 ---
 // Úvod: výber mesta. Každé mesto má vlastné stránky pod /<mesto>/.
 import Base from '../layouts/Base.astro';
+import { webSite } from '../lib/seo';
 import { MESTA } from '../mesta';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -13,7 +14,7 @@ const znam = (n: number) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${Math.abs(n).to
 const aktivne = MESTA.filter((m) => m.aktivne);
 const pripravujeme = MESTA.filter((m) => !m.aktivne);
 ---
-<Base title="mestovčíslach.sk – slovenské mestá v číslach" description="Otvorené dáta o slovenských mestách prehľadne a so zdrojmi: obyvatelia, voľby, peniaze, doprava, výstavba a živé údaje.">
+<Base title="mestovčíslach.sk – slovenské mestá v číslach" description="Otvorené dáta o slovenských mestách prehľadne a so zdrojmi: obyvatelia, voľby, peniaze, doprava, výstavba a živé údaje." jsonld={webSite()}>
   <section class="hero">
     <p class="kicker">Otvorené dáta</p>
     <h1>Slovenské mestá v číslach</h1>

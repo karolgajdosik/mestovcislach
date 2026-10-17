@@ -9,8 +9,13 @@ import { maZivot } from '../lib/temy';
 interface Props {
   title: string;
   description?: string;
+  /** štruktúrované údaje schema.org (JSON-LD) pre vyhľadávače */
+  jsonld?: Record<string, any> | Record<string, any>[];
 }
-const { title, description = 'Otvorené dáta o slovenských mestách a obciach – prehľadne a so zdrojmi.' } = Astro.props;
+const { title: celyTitulok, description = 'Otvorené dáta o slovenských mestách a obciach – prehľadne a so zdrojmi.', jsonld } = Astro.props;
+// vyhľadávače zobrazia ~60 znakov – dlhý prvý diel titulku (napr. názov datasetu) skrátime, prípona ostane
+// pri dlhom titulku vypadne „Katalóg dát“ a pod. (názov sa neskracuje, aby titulky ostali jedinečné)
+const title = celyTitulok.length <= 75 ? celyTitulok : celyTitulok.replace(/ – (Katalóg dát|Život v meste|Samospráva)(?= – [^–]+ – mestovcislach\.sk$| – mestovcislach\.sk$)/, '');
 // Náhľadový obrázok pri zdieľaní (public/og/<sekcia>.png, generuje scripts/og_obrazky.py)
 // Hlavné menu: odkaz, názov, ikona (SVG cesty, ťah 1.8)
 const MENU_MESTA: [string, string, string][] = [
@@ -80,6 +85,10 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    {(Array.isArray(jsonld) ? jsonld : jsonld ? [jsonld] : []).map((j) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', ...j }).replace(/</g, '\\u003c')} />
+    ))}
   </head>
   <body>
     <a class="preskocit" href="#obsah">Preskočiť na obsah</a>
