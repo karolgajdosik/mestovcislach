@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-16T11:57:02",
+ "aktualizovane": "2026-10-17T01:59:44",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -910,65 +910,65 @@
  "komunalne": {
   "2022": {
    "ucast": {
-    "zapisani": 185337,
-    "volili": 55498,
-    "ucast_pct": 29.94
+    "zapisani": 194674,
+    "volili": 60152,
+    "ucast_pct": 30.9
    },
    "primator": [
     {
      "meno": "Ing. Jaroslav Polaček",
      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
-     "hlasy": 18738,
-     "podiel": 36.48,
+     "hlasy": 20561,
+     "podiel": 36.79,
      "zvoleny": true
     },
     {
      "meno": "Ing. Milan Lesňák",
      "strany": "ZA ĽUDÍ",
-     "hlasy": 10854,
-     "podiel": 21.13,
+     "hlasy": 11849,
+     "podiel": 21.2,
      "zvoleny": false
     },
     {
      "meno": "Ing. Miloslav Klíma",
      "strany": "nezávislý kandidát",
-     "hlasy": 9889,
-     "podiel": 19.25,
+     "hlasy": 10655,
+     "podiel": 19.07,
      "zvoleny": false
     },
     {
      "meno": "JUDr. Monika Kováčová",
      "strany": "nezávislý kandidát",
-     "hlasy": 4012,
-     "podiel": 7.81,
+     "hlasy": 4322,
+     "podiel": 7.73,
      "zvoleny": false
     },
     {
      "meno": "Ing. Štefan Lasky",
      "strany": "nezávislý kandidát",
-     "hlasy": 3854,
-     "podiel": 7.5,
+     "hlasy": 4178,
+     "podiel": 7.48,
      "zvoleny": false
     },
     {
      "meno": "MUDr. Viliam Novotný, MPH",
      "strany": "SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska",
-     "hlasy": 2312,
-     "podiel": 4.5,
+     "hlasy": 2453,
+     "podiel": 4.39,
      "zvoleny": false
     },
     {
      "meno": "Ing. Jozef Karabin, MBA",
      "strany": "nezávislý kandidát",
-     "hlasy": 974,
+     "hlasy": 1062,
      "podiel": 1.9,
      "zvoleny": false
     },
     {
      "meno": "RNDr. Ing. Jaroslav Džunko",
      "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
-     "hlasy": 733,
-     "podiel": 1.43,
+     "hlasy": 804,
+     "podiel": 1.44,
      "zvoleny": false
     }
    ],
@@ -1037,7 +1037,7 @@
      {
       "meno": "Mgr. Ing. Miloš Ihnát",
       "strany": "nezávislý kandidát",
-      "hlasy": 2411
+      "hlasy": 2682
      },
      {
       "meno": "Iveta Adamčíková",
@@ -1065,14 +1065,14 @@
       "hlasy": 1893
      },
      {
+      "meno": "Mgr. Zuzana Slivenská",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1866
+     },
+     {
       "meno": "JUDr. Beáta Zemková",
       "strany": "nezávislý kandidát",
       "hlasy": 1817
-     },
-     {
-      "meno": "Mgr. Zuzana Slivenská",
-      "strany": "nezávislý kandidát",
-      "hlasy": 1754
      },
      {
       "meno": "PhDr. Róbert Schwarcz",
@@ -1090,19 +1090,19 @@
       "hlasy": 1605
      },
      {
-      "meno": "Ing. Andrej Sitkár",
-      "strany": "SMER - sociálna demokracia, Slovenská národná strana, ŽIVOT - národná strana, STRANA MODERNÉHO SLOVENSKA (SMS)",
-      "hlasy": 1475
-     },
-     {
       "meno": "Bc. Matej Kundrát",
       "strany": "nezávislý kandidát",
-      "hlasy": 1466
+      "hlasy": 1526
      },
      {
       "meno": "Ing. František Ténai, MBA",
       "strany": "nezávislý kandidát",
-      "hlasy": 1454
+      "hlasy": 1492
+     },
+     {
+      "meno": "Ing. Andrej Sitkár",
+      "strany": "SMER - sociálna demokracia, Slovenská národná strana, ŽIVOT - národná strana, STRANA MODERNÉHO SLOVENSKA (SMS)",
+      "hlasy": 1475
      },
      {
       "meno": "Mgr. Marián Horenský, PhD.",
@@ -1145,14 +1145,19 @@
       "hlasy": 1233
      },
      {
+      "meno": "Mgr. Marcel Gibóda",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1210
+     },
+     {
       "meno": "Michal Djordjevič, MBA",
       "strany": "nezávislý kandidát",
       "hlasy": 1197
      },
      {
-      "meno": "Mgr. Marcel Gibóda",
-      "strany": "nezávislý kandidát",
-      "hlasy": 1052
+      "meno": "doc. Ing. Erik Weiss, PhD.",
+      "strany": "ZA ĽUDÍ",
+      "hlasy": 1072
      },
      {
       "meno": "Mgr. Patrik Géci",
@@ -1170,19 +1175,19 @@
       "hlasy": 982
      },
      {
-      "meno": "doc. Ing. Erik Weiss, PhD.",
-      "strany": "ZA ĽUDÍ",
-      "hlasy": 972
+      "meno": "Miroslav Špak",
+      "strany": "nezávislý kandidát",
+      "hlasy": 948
      },
      {
       "meno": "Mgr. Marek Fedoročko",
       "strany": "nezávislý kandidát",
-      "hlasy": 883
+      "hlasy": 937
      },
      {
-      "meno": "Miroslav Špak",
-      "strany": "nezávislý kandidát",
-      "hlasy": 877
+      "meno": "Mgr. Lucia Gurbáľová",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 724
      },
      {
       "meno": "Ing. Vladimír Saxa",
@@ -1195,9 +1200,9 @@
       "hlasy": 650
      },
      {
-      "meno": "Mgr. Lucia Gurbáľová",
-      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
-      "hlasy": 584
+      "meno": "Ing. Michal Krcho",
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 643
      },
      {
       "meno": "Ing. ING-PAED IGIP Lucia Iľaščíková, PhD.",
@@ -1207,12 +1212,7 @@
      {
       "meno": "Ing. Jozef Karabin, MBA",
       "strany": "nezávislý kandidát",
-      "hlasy": 176
-     },
-     {
-      "meno": "Ing. Michal Krcho",
-      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
-      "hlasy": 111
+      "hlasy": 453
      }
     ]
    }
