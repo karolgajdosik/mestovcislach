@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-17T01:59:44",
+ "aktualizovane": "2026-10-17T02:08:21",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -914,6 +914,7 @@
     "volili": 60152,
     "ucast_pct": 30.9
    },
+   "spracovanie": null,
    "primator": [
     {
      "meno": "Ing. Jaroslav Polaček",

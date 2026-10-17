@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-17T01:46:02",
+ "aktualizovane": "2026-10-17T02:08:21",
  "obyvatelia": {
   "roky": {
    "1993": 84575,
@@ -212,6 +212,7 @@
     "volili": 25135,
     "ucast_pct": 39.79
    },
+   "spracovanie": null,
    "primator": [
     {
      "meno": "MUDr. Ján Nosko",
@@ -302,12 +303,12 @@
       "hlasy": 2004
      },
      {
-      "meno": "Mgr. Matúš Molitoris",
+      "meno": "Ing. Milan Lichý",
       "strany": "nezávislý kandidát",
       "hlasy": 1910
      },
      {
-      "meno": "Ing. Milan Lichý",
+      "meno": "Mgr. Matúš Molitoris",
       "strany": "nezávislý kandidát",
       "hlasy": 1910
      },

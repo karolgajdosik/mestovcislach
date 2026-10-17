@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-16T11:57:02",
+ "aktualizovane": "2026-10-17T02:08:21",
  "obyvatelia": {
   "roky": {
    "1993": 86679,
@@ -201,6 +201,7 @@
     "volili": 26953,
     "ucast_pct": 40.41
    },
+   "spracovanie": null,
    "primator": [
     {
      "meno": "Marek Hattas",
