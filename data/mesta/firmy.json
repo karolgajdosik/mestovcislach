@@ -2076,8 +2076,8 @@
    {
     "ico": "36016411",
     "nazov": "Dopravný podnik mesta Banská Bystrica, a.s.",
-    "vlastnictvo": "jediný",
-    "overenie": "výročná správa",
+    "vlastnictvo": "podiel",
+    "overenie": "výročná správa DPMBB za rok 2020 a SAD Zvolen za rok 2023 (mesto 49 %, SAD Zvolen 51 %)",
     "roky": {
      "2015": {
       "obrat": 1472349,
@@ -2226,7 +2226,8 @@
      6032951,
      6534413,
      7014888
-    ]
+    ],
+    "podiel_pct": 49
    },
    {
     "ico": "31642365",
@@ -3063,7 +3064,7 @@
     "ico": "31701914",
     "nazov": "Dopravný podnik mesta Košice, akciová spoločnosť",
     "vlastnictvo": "jediný",
-    "overenie": "výročná správa",
+    "overenie": "výročná správa DPMK za rok 2025 (jediný akcionár mesto Košice, 100 %)",
     "roky": {
      "2015": {
       "obrat": 12586594,
@@ -3212,7 +3213,8 @@
      6030793,
      6479962,
      7003815
-    ]
+    ],
+    "podiel_pct": 100
    },
    {
     "ico": "44518684",

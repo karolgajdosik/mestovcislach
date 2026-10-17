@@ -33,8 +33,12 @@ MESTA = json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8"))
 KMENE = {"bratislava": r"bratislav", "kosice": r"košic|kosic", "presov": r"prešov|presov", "zilina": r"žilin|zilin", "banska-bystrica": r"bansk\w* bystric|banskobystr",
          "nitra": r"nitr", "trnava": r"trnav", "trencin": r"trenčí|trencin|trenčian"}
 FORMA = re.compile(r"\ba\.\s?s\.|akciov|s\.\s?r\.\s?o|spol\.", re.I)
-# a. s., pri ktorých RPO akcionára neuvádza (akcie na meno) – vlastníctvo mesta podľa výročných správ a webu mesta
-RUCNE = {"kosice": ["31701914"], "banska-bystrica": ["36016411"]}
+# a. s., pri ktorých RPO ani ORSR akcionára neuvádza (akcie na meno) – vlastníctvo mesta overené vo výročných správach (RÚZ), 17. 10. 2026
+RUCNE = {
+    "kosice": {"31701914": {"vl": "jediný", "podiel_pct": 100, "overenie": "výročná správa DPMK za rok 2025 (jediný akcionár mesto Košice, 100 %)"}},
+    "banska-bystrica": {"36016411": {"vl": "podiel", "podiel_pct": 49,
+                                     "overenie": "výročná správa DPMBB za rok 2020 a SAD Zvolen za rok 2023 (mesto 49 %, SAD Zvolen 51 %)"}},
+}
 # ďalší kandidáti, ktorí nemusia byť medzi zmluvnými partnermi (vlastníctvo sa overí v RPO)
 DOPLNKY = {"bratislava": ["00492736", "00681300"]}
 
@@ -185,9 +189,10 @@ def main() -> int:
                 else:
                     vl, oficialny = vlastnik(ico, m)
                     overene[kluc] = {"vl": vl, "nazov": oficialny, "datum": dnes.isoformat()}
-                overenie = "RPO"
-                if not vl and ico in RUCNE.get(m["slug"], []):
-                    vl, overenie = "jediný", "výročná správa"
+                overenie, podiel_pct = "RPO", None
+                if not vl and ico in RUCNE.get(m["slug"], {}):
+                    r_ = RUCNE[m["slug"]][ico]
+                    vl, overenie, podiel_pct = r_["vl"], r_["overenie"], r_["podiel_pct"]
                 if not vl:
                     continue
                 stara = stare_firmy.get(f"{m['slug']}:{ico}", {})
@@ -195,7 +200,7 @@ def main() -> int:
                 if not cas_vyprsal():
                     nove, videne = nove_roky(ico, videne)
                     roky.update(nove)
-                firmy.append({"ico": ico, "nazov": oficialny or nazov, "vlastnictvo": vl, "overenie": overenie, "roky": dict(sorted(roky.items())), "zavierky": sorted(videne)})
+                firmy.append({"ico": ico, "nazov": oficialny or nazov, "vlastnictvo": vl, **({"podiel_pct": podiel_pct} if podiel_pct else {}), "overenie": overenie, "roky": dict(sorted(roky.items())), "zavierky": sorted(videne)})
                 print(f"  {oficialny or nazov} ({ico}) – {vl}, rokov {len(roky)}")
             except Exception as e:  # noqa: BLE001
                 chyby += 1

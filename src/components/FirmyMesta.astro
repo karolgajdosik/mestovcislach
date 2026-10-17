@@ -26,7 +26,7 @@ const Tag = nadpis;
       <tbody>
         {riadky.map((f) => (
           <tr>
-            <td><span translate="no">{f.nazov}</span><small>{f.vlastnictvo === 'jediný' ? '100 % mesto' : 'mesto spoluvlastník'} · IČO {f.ico}</small></td>
+            <td><span translate="no">{f.nazov}</span><small>{f.vlastnictvo === 'jediný' ? '100 % mesto' : f.podiel_pct ? `mesto ${f.podiel_pct} %` : 'mesto spoluvlastník'} · IČO {f.ico}</small></td>
             <td class="num">{f.rok}</td>
             <td class="num">{mil(f.r.vynosy)}{f.zmena != null && <small>{f.zmena >= 0 ? '+' : '−'}{Math.abs(f.zmena).toLocaleString('sk-SK', { maximumFractionDigits: 0 })} % medziročne</small>}</td>
             <td class={`num ${(f.r.vysledok ?? 0) < 0 ? 'zaporne' : ''}`}>{(f.r.vysledok ?? 0) >= 0 ? '+' : '−'}{mil(Math.abs(f.r.vysledok ?? 0))}</td>
@@ -38,8 +38,9 @@ const Tag = nadpis;
       </tbody>
     </table></div>
     <p class="zdroj">
-      Vlastníctvo podľa <a href={d.zdroje.rpo.url}>Registra právnických osôb</a> (akcionár alebo spoločník je mesto{riadky.some((f) => f.overenie !== 'RPO') ? '; pri niektorých akciových spoločnostiach register akcionára neuvádza – podľa výročnej správy' : ''}),
-      hospodárenie z individuálnych účtovných závierok v <a href={d.zdroje.ruz.url}>Registri účtovných závierok</a>. Výnosy firiem zahŕňajú aj platby od mesta (napr. za dopravu či údržbu).
+      Vlastníctvo podľa <a href={d.zdroje.rpo.url}>Registra právnických osôb</a> (akcionár alebo spoločník je mesto).{' '}
+      {riadky.filter((f) => f.overenie !== 'RPO').map((f) => <>Register akcionára {f.nazov} neuvádza – vlastníctvo podľa: {f.overenie}. </>)}
+      Hospodárenie z individuálnych účtovných závierok v <a href={d.zdroje.ruz.url}>Registri účtovných závierok</a>. Výnosy firiem zahŕňajú aj platby od mesta (napr. za dopravu či údržbu).
       Mikro účtovné jednotky so zjednodušenou závierkou tu nie sú.
     </p>
   </section>
