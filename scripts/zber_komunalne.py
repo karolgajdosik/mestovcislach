@@ -110,13 +110,13 @@ def tabulky_z_balika(obsah: bytes) -> dict[str, list[dict]]:
             subory = [f for f in subory if "OBEC" in f[0]]
         elif kluc in ("tab0a", "tab0b") and any("PC_HL" in f[0] and "MENO" in f[0] for f in subory):
             subory = [f for f in subory if "PC_HL" in f[0] and "MENO" in f[0]]
+        # duplicity len medzi variantmi (napr. tab05f a tab05fx s tými istými riadkami); v rámci jedného súboru sa
+        # kľúč môže legitímne opakovať – Košice číslujú okrsky v každej mestskej časti od 1 v rámci toho istého obvodu
         videne, riadky = set(), []
         for f in subory:
-            for r in f:
-                k = tuple(kod(r.get(c, "")) for c in IDENT)
-                if k not in videne:
-                    videne.add(k)
-                    riadky.append(r)
+            kluce = [tuple(kod(r.get(c, "")) for c in IDENT) for r in f]
+            riadky += [r for r, k in zip(f, kluce) if k not in videne]
+            videne |= set(kluce)
         vysledok[kluc] = riadky
     return vysledok
 
