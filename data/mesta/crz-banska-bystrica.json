@@ -2,15 +2,15 @@
  "mesto": "banska-bystrica",
  "ico": "00313271",
  "od": "2022-01-01",
- "do": "2026-10-15",
+ "do": "2026-10-16",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8048,
-  "skryte_fyzicke_osoby": 4052,
+  "zaznamov": 8053,
+  "skryte_fyzicke_osoby": 4054,
   "roky": {
    "2022": {
     "pocet": 1257,
@@ -37,18 +37,18 @@
     "fo_suma": 4197336
    },
    "2026": {
-    "pocet": 1738,
-    "suma": 73116317,
-    "fo_pocet": 977,
-    "fo_suma": 4370599
+    "pocet": 1743,
+    "suma": 78229310,
+    "fo_pocet": 979,
+    "fo_suma": 4371156
    }
   },
   "dodavatelia_posledne_3_roky": [
    {
     "ico": "50349287",
     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "pocet": 37,
-    "suma": 37529135
+    "pocet": 39,
+    "suma": 41082381
    },
    {
     "ico": "36854140",
@@ -159,10 +159,10 @@
     "suma": 3037653
    },
    {
-    "ico": "47764821",
-    "nazov": "P.S. in, a.s.",
-    "pocet": 1,
-    "suma": 2625390
+    "ico": "44886021",
+    "nazov": "DAG SLOVAKIA, a.s.",
+    "pocet": 2,
+    "suma": 3004441
    }
   ],
   "najvacsie_12_mesiacov": [
@@ -189,6 +189,14 @@
     "suma": 3253835.77,
     "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU kód projektu: 401202F964",
     "url": "https://www.crz.gov.sk/zmluva/12927103/"
+   },
+   {
+    "datum": "2026-10-09",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 3253835.77,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU kód projektu: 401202F964",
+    "url": "https://www.crz.gov.sk/zmluva/12948606/"
    },
    {
     "datum": "2025-12-19",
@@ -277,14 +285,6 @@
     "suma": 1746376.32,
     "popis": "Dodatok č.4 k Dohode č. 2024/BB/064 o poskytnutí finančného príspevku",
     "url": "https://www.crz.gov.sk/zmluva/11805975/"
-   },
-   {
-    "datum": "2026-09-30",
-    "dodavatel": "PEMAX PLUS, spol. s r.o.",
-    "ico": "31627421",
-    "suma": 1671940.98,
-    "popis": "Zmluva o dielo č. 2400/2026/ORA na realizáciu stavby",
-    "url": "https://www.crz.gov.sk/zmluva/12882262/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-10-16T15:31:53+00:00"
+ "aktualizovane": "2026-10-17T05:48:35+00:00"
 }
