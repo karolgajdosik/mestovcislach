@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-17T02:11:21",
+ "aktualizovane": "2026-10-17T02:15:26",
  "obyvatelia": {
   "roky": {
    "1993": 57748,
@@ -201,7 +201,12 @@
     "volili": 17096,
     "ucast_pct": 37.0
    },
-   "spracovanie": null,
+   "spracovanie": {
+    "okrsky": 51,
+    "spolu": 51,
+    "pct": 100.0,
+    "priebezne": false
+   },
    "primator": [
     {
      "meno": "Mgr. Richard Rybníček",

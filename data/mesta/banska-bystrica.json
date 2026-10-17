@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-17T02:11:21",
+ "aktualizovane": "2026-10-17T02:15:26",
  "obyvatelia": {
   "roky": {
    "1993": 84575,
@@ -212,7 +212,12 @@
     "volili": 25135,
     "ucast_pct": 39.79
    },
-   "spracovanie": null,
+   "spracovanie": {
+    "okrsky": 77,
+    "spolu": 77,
+    "pct": 100.0,
+    "priebezne": false
+   },
    "primator": [
     {
      "meno": "MUDr. Ján Nosko",

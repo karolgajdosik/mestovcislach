@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-17T02:11:21",
+ "aktualizovane": "2026-10-17T02:15:26",
  "obyvatelia": {
   "roky": {
    "1993": 85686,
@@ -201,7 +201,12 @@
     "volili": 26369,
     "ucast_pct": 38.17
    },
-   "spracovanie": null,
+   "spracovanie": {
+    "okrsky": 79,
+    "spolu": 79,
+    "pct": 100.0,
+    "priebezne": false
+   },
    "primator": [
     {
      "meno": "Mgr. Peter Fiabáne",
