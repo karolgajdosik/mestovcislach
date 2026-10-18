@@ -1,2 +1,4 @@
-https://mestovcislach.sk/neexistuje-xyz 404 ['Stránka sa nenašla – mestovcislach.sk']
-https://mestovcislach.sk/kosice/neexistuje/ 404 ['Stránka sa nenašla – mestovcislach.sk']
+https://mestovcislach.sk/kosice/ mesta-pas: True | bočné menu: True | úzke: False
+https://mestovcislach.sk/bratislava/ mesta-pas: True | bočné menu: True | úzke: False
+https://mestovcislach.sk/ mesta-pas: True | bočné menu: False | úzke: False
+https://mestovcislach.sk/kosice/mapa/ mesta-pas: True | bočné menu: True | úzke: True
