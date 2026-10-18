@@ -7,6 +7,7 @@ import Base from '../../layouts/Base.astro';
 import { MESTA, type Mesto } from '../../mesta';
 import { KATEGORIE_EIA } from '../../lib/eia';
 import { maMapu, maSamospravu } from '../../lib/mapa';
+import MapaVyber from '../../components/MapaVyber.astro';
 import { maZivot } from '../../lib/temy';
 
 export function getStaticPaths() {
@@ -81,8 +82,10 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
   <section class="hero">
     <p class="kicker">{m.kraj}</p>
     <h1><span translate="no">{m.nazov}</span> v číslach</h1>
-    <p class="lead">Údaje z celoštátnych zdrojov – Štatistického úradu, volieb, úradov práce a Enviroportálu. {maMapu(m.slug) ? <> Na <a href={`/${m.slug}/mapa`}>mape mesta</a> nájdete lekárne, školy, zastávky, ihriská či úrady.</> : ''}{maZivot(m.slug) ? <> Školy, vlaky, kriminalitu, ovzdušie a kultúru nájdete v časti <a href={`/${m.slug}/zivot`}>Život v meste</a>.</> : ''}{maSamospravu(m.slug) ? <> Zmluvy, faktúry a hlasovania poslancov sú na stránke <a href={`/${m.slug}/samosprava`}>Samospráva</a>.</> : ''} Podrobnejšie mestské dáta (rozpočet, doprava) pribudnú podľa toho, čo mesto zverejňuje.</p>
+    <p class="lead">Údaje z celoštátnych zdrojov – Štatistického úradu, volieb, úradov práce a Enviroportálu. {maZivot(m.slug) ? <> Školy, vlaky, kriminalitu, ovzdušie a kultúru nájdete v časti <a href={`/${m.slug}/zivot`}>Život v meste</a>.</> : ''}{maSamospravu(m.slug) ? <> Zmluvy, faktúry a hlasovania poslancov sú na stránke <a href={`/${m.slug}/samosprava`}>Samospráva</a>.</> : ''} Podrobnejšie mestské dáta (rozpočet, doprava) pribudnú podľa toho, čo mesto zverejňuje.</p>
   </section>
+
+  {maMapu(m.slug) && <MapaVyber mesto={m.slug} nazov={m.nazov} />}
 
   <div class="kpis">
     <div class="card kpi"><p class="label">Obyvatelia {posl}</p><p class="value">{fmt(roky[posl])}</p><p class="delta">{znam(ja.zmena10)} za 10 rokov · {poradie('obyvatelia')} krajských miest</p></div>

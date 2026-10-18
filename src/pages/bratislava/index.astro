@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import MapaVyber from '../../components/MapaVyber.astro';
 import MapaCasti from '../../components/MapaCasti.astro';
 import DnesVBratislave from '../../components/DnesVBratislave.astro';
 import obyv from '../../../data/obyvatelstvo-bratislava.json';
@@ -65,6 +66,8 @@ const grafData = mesto
           {castiZoradene[0] && <p class="delta">najväčšia: {castiZoradene[0].nazov}</p>}
         </div>
       </section>
+
+      <MapaVyber mesto="bratislava" nazov="Bratislava" />
 
       <DnesVBratislave />
 

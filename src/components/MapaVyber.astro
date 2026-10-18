@@ -1,0 +1,88 @@
+---
+// Karta „Mapa mesta“ na prehľade: náhľad mapy, rýchle odkazy na vrstvy a „Čo je pri mne“.
+import { rychlaMapa } from '../lib/mapaVyber';
+
+const { mesto, nazov } = Astro.props as { mesto: string; nazov: string };
+const r = rychlaMapa(mesto);
+---
+{r && (
+  <section class="card mapa-vyber" aria-labelledby="mv-nadpis">
+    <a class="mv-nahlad" href={r.href} aria-label={`Otvoriť mapu mesta ${nazov}`} tabindex="-1">
+      {r.vyska > 0 && (
+        <svg viewBox={`-6 -6 ${r.sirka + 12} ${r.vyska + 12}`} aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          {r.obrysy.map((d) => <path class="mv-obrys" d={d} />)}
+          {r.body.map(([x, y, f]) => <circle cx={x} cy={y} r="2.6" class={`mv-bod f${f}`} />)}
+        </svg>
+      )}
+      <span class="mv-otvor">Otvoriť mapu →</span>
+    </a>
+    <div class="mv-text">
+      <h2 id="mv-nadpis">Mapa mesta</h2>
+      <p class="mv-uvod">Kde je najbližšia lekáreň, zastávka, škola či ihrisko – vyberte, čo hľadáte:</p>
+      <ul class="mv-volby">
+        {r.polozky.map((x) => (
+          <li><a href={x.href}><i class={`f${x.farba}`} aria-hidden="true"></i>{x.nazov}{x.pocet != null && <small>{x.pocet.toLocaleString('sk-SK')}</small>}</a></li>
+        ))}
+      </ul>
+      <p class="mv-akcie">
+        <a class="mv-primne" href={`${r.href}#pri-mne`}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/><circle cx="12" cy="12" r="7"/></svg>
+          Čo je pri mne
+        </a>
+        <span class="mv-pozn">Poloha zostane len vo vašom prehliadači.</span>
+      </p>
+    </div>
+  </section>
+)}
+
+<style>
+  .mapa-vyber {
+    display: grid; grid-template-columns: minmax(200px, 38%) 1fr; gap: 22px; align-items: stretch; margin: 18px 0;
+    --f0: #138a5e; --f1: #c8102e; --f2: #b45309; --f3: #2563eb; --f4: #7c3aed; --f5: #0e7490; --f6: #db2777; --f7: #4d7c0f;
+  }
+  :global(:root[data-tema='tmava']) .mapa-vyber { --f0: #6ee7b7; --f1: #ff6b80; --f2: #fcd34d; --f3: #93c5fd; --f4: #c4b5fd; --f5: #67e8f9; --f6: #f9a8d4; --f7: #bef264; }
+  .f0 { --c: var(--f0); } .f1 { --c: var(--f1); } .f2 { --c: var(--f2); } .f3 { --c: var(--f3); }
+  .f4 { --c: var(--f4); } .f5 { --c: var(--f5); } .f6 { --c: var(--f6); } .f7 { --c: var(--f7); }
+
+  .mv-nahlad {
+    position: relative; display: flex; align-items: center; justify-content: center; min-height: 190px;
+    border-radius: 12px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; text-decoration: none;
+  }
+  .mv-nahlad svg { width: 100%; height: 100%; max-height: 260px; padding: 10px; }
+  .mv-obrys { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-linejoin: round; opacity: 0.8; }
+  .mv-bod { fill: var(--c); opacity: 0.85; }
+  .mv-otvor {
+    position: absolute; right: 10px; bottom: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+    padding: 5px 12px; font-size: 0.85rem; font-weight: 600; color: var(--text);
+  }
+  .mv-nahlad:hover .mv-otvor { border-color: var(--accent); color: var(--accent); }
+
+  .mv-text h2 { margin: 0 0 4px; }
+  .mv-uvod { margin: 0 0 12px; color: var(--muted); }
+  .mv-volby { list-style: none; padding: 0; margin: 0 0 14px; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+  .mv-volby a {
+    display: flex; align-items: center; gap: 9px; padding: 10px 12px; min-height: 44px; border: 1px solid var(--line); border-radius: 10px;
+    text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.93rem; background: var(--card);
+  }
+  .mv-volby a:hover, .mv-volby a:focus-visible { border-color: var(--c); box-shadow: inset 3px 0 0 var(--c); }
+  .mv-volby a:has(.f0) { --c: var(--f0); } .mv-volby a:has(.f1) { --c: var(--f1); } .mv-volby a:has(.f2) { --c: var(--f2); } .mv-volby a:has(.f3) { --c: var(--f3); }
+  .mv-volby a:has(.f4) { --c: var(--f4); } .mv-volby a:has(.f5) { --c: var(--f5); } .mv-volby a:has(.f6) { --c: var(--f6); } .mv-volby a:has(.f7) { --c: var(--f7); }
+  .mv-volby i { width: 11px; height: 11px; border-radius: 50%; background: var(--c); flex-shrink: 0; }
+  .mv-volby small { margin-left: auto; color: var(--muted); font-weight: 400; font-variant-numeric: tabular-nums; }
+  .mv-akcie { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0; }
+  .mv-primne {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; min-height: 44px; border-radius: 999px;
+    background: var(--accent); color: var(--na-akcente); font-weight: 700; text-decoration: none;
+  }
+  .mv-primne svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+  .mv-primne:hover { filter: brightness(1.08); }
+  .mv-pozn { font-size: 0.82rem; color: var(--muted); }
+
+  @media (max-width: 760px) {
+    .mapa-vyber { grid-template-columns: 1fr; gap: 14px; }
+    .mv-nahlad { min-height: 0; height: 150px; order: 2; }
+    .mv-nahlad svg { max-height: 150px; }
+    .mv-volby { grid-template-columns: 1fr 1fr; }
+    .mv-volby a { padding: 9px 10px; font-size: 0.88rem; }
+  }
+</style>

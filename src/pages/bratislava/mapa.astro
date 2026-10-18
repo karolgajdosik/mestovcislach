@@ -182,6 +182,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
 <script>
   import L from 'leaflet';
   import { osmPodklad } from '../../scripts/podklad';
+  import { priMne } from '../../scripts/primne';
   import { uzavierky, poruchy, popup, type Obmedzenie } from '../../scripts/uzavierky';
   import { popupMiesta } from '../../scripts/miesto';
   import { tr } from '../../scripts/preklad';
@@ -200,6 +201,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
   const mobil = window.innerWidth < 600;
 
   const mapa = L.map('mapa', { zoomSnap: 0.25, preferCanvas: true, scrollWheelZoom: !mobil });
+  priMne(mapa);
   const podklady: Record<string, L.Layer> = {
     mapa: osmPodklad(),
     // Letecká snímka Esri World Imagery (bez kľúča) + referenčné vrstvy s cestami a názvami.
@@ -241,7 +243,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
         style: { color: farba('hranice'), weight: 1.5, fillOpacity: 0.04, fillColor: farba('hranice') },
         onEachFeature: (f: any, l) => l.bindPopup(`<strong>${hx(f.properties.n)}</strong><br>${fmt(f.properties.o)} obyvateľov<br>${f.properties.r.toLocaleString('sk-SK')} km²`),
       });
-      if (!location.hash.startsWith('#miesto&')) mapa.fitBounds(v.getBounds(), { padding: [8, 8] });
+      if (!location.hash.startsWith('#miesto&') && !location.hash.includes('pri-mne')) mapa.fitBounds(v.getBounds(), { padding: [8, 8] });
       return v;
     },
     mhd: async () => {

@@ -43,6 +43,7 @@ const kratko = (n: string) => n.replace(/ v zriaďovateľskej pôsobnosti.*$/i, 
   import L from 'leaflet';
   import 'leaflet/dist/leaflet.css';
   import { osmPodklad } from '../../scripts/podklad';
+  import { priMne } from '../../scripts/primne';
 
   const app = document.getElementById('mapa-app')!;
   // na mobile zoznam vrstiev zbalený, aby bola mapa hneď viditeľná
@@ -90,6 +91,7 @@ const kratko = (n: string) => n.replace(/ v zriaďovateľskej pôsobnosti.*$/i, 
       i.addEventListener('change', () => prepni(i.value, i.checked));
     });
     if (hotove.get('hranice')) mapa.fitBounds((hotove.get('hranice') as L.GeoJSON).getBounds(), { padding: [10, 10] });
+    priMne(mapa);
 
     // hľadanie vo všetkých vrstvách
     const q = document.getElementById('m-q') as HTMLInputElement;
