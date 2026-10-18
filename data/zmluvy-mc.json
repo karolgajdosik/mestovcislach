@@ -5,7 +5,7 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-10-16",
+ "do": "2026-10-17",
  "mestske_casti": {
   "Devín": {
    "zmluv": 550,
@@ -620,7 +620,7 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14597,
+   "zmluv": 14598,
    "suma": 2625790740,
    "roky": {
     "2022": [
@@ -640,12 +640,12 @@
      334776233
     ],
     "2026": [
-     2439,
+     2440,
      536495425
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 6395,
+    "zmluv": 6396,
     "suma": 76521352
    },
    "najvacsi_partneri": [
@@ -4996,5 +4996,5 @@
    }
   }
  },
- "aktualizovane": "2026-10-17T05:48:33+00:00"
+ "aktualizovane": "2026-10-18T05:48:25+00:00"
 }
