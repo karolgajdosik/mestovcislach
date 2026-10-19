@@ -471,5 +471,12 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
   .mf-otv.nie { color: #c8102e; }
   .mf-odkazy { margin-top: 4px; }
   .podklad-osm { filter: grayscale(1) contrast(0.85) brightness(1.08); }
+  /* prepínač podkladu Mapa / Snímka na mapách miest (src/scripts/podklad.ts) */
+  .leaflet-control.podklad-prepinac { display: flex; margin: 10px 10px 0 0; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); box-shadow: 0 2px 8px #0002; }
+  .podklad-prepinac label { cursor: pointer; position: relative; }
+  .podklad-prepinac input { position: absolute; opacity: 0; pointer-events: none; }
+  .podklad-prepinac span { display: block; padding: 5px 10px; border-radius: 7px; font-size: 0.8rem; color: var(--muted); }
+  .podklad-prepinac input:checked + span { background: var(--text); color: var(--card); }
+  .podklad-prepinac input:focus-visible + span { outline: 2px solid var(--accent); }
   :root[data-tema="tmava"] .podklad-osm { filter: grayscale(1) invert(1) brightness(0.8) contrast(0.85); }
 </style>
