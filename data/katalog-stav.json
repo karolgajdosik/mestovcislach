@@ -1,7 +1,7 @@
 {
  "zdroj": "https://data.bratislava.sk",
  "pocty": {
-  "katalog": 559,
+  "katalog": 562,
   "osobitne": 34,
   "vynechane": 19,
   "na_webe": 29
@@ -2607,7 +2607,7 @@
    "nazov": "Počet prechádzajúcich chodcov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492980000,
-   "riadkov": 850743,
+   "riadkov": 852384,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače chodcov"
@@ -2617,7 +2617,7 @@
    "nazov": "Počet prejazdov cyklistov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492966000,
-   "riadkov": 850743,
+   "riadkov": 852384,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače cyklistov"
@@ -2627,7 +2627,7 @@
    "nazov": "Počet prejazdov vozidiel podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492972000,
-   "riadkov": 486501,
+   "riadkov": 487854,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače áut"
@@ -4211,7 +4211,7 @@
    "nazov": "Objednávky Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151897000,
-   "riadkov": 65264,
+   "riadkov": 65305,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky magistrátu"
@@ -4838,7 +4838,7 @@
    "nazov": "Zmluvy Magistrátu hlavného mesta SR Bratislava zverejnené od júla 2022",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151852000,
-   "riadkov": 13095,
+   "riadkov": 13122,
    "stav": "na_webe",
    "kde": "/bratislava/financie",
    "pozn": "Zmluvy magistrátu"
@@ -5052,6 +5052,36 @@
    "stav": "katalog",
    "kde": "/bratislava/katalog/6cbc86b80e0249ff84147898a3431d77",
    "stlpcov": 11
+  },
+  {
+   "id": "ac96675df45f4d7b997efdff5e86a628",
+   "nazov": "Celkový počet detí v materských školách v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792412376000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/ac96675df45f4d7b997efdff5e86a628",
+   "stlpcov": 3
+  },
+  {
+   "id": "968d67b7a5124129992019d4372efbcd",
+   "nazov": "Celkový počet študentov na stredných školách v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792412751000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/968d67b7a5124129992019d4372efbcd",
+   "stlpcov": 3
+  },
+  {
+   "id": "fd3bd5dd82434f4c8b82b31198884341",
+   "nazov": "Celkový počet žiakov na základných školách v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792413558000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/fd3bd5dd82434f4c8b82b31198884341",
+   "stlpcov": 3
   },
   {
    "id": "346027a40f62416aba2f5b413d5bb68c",
@@ -6397,5 +6427,5 @@
    "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-10-16T11:04:10+00:00"
+ "aktualizovane": "2026-10-20T04:54:49+00:00"
 }

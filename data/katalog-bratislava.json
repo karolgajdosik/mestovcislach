@@ -1,6 +1,6 @@
 {
  "zdroj": "https://data.bratislava.sk",
- "pocet": 640,
+ "pocet": 643,
  "datasety": [
   {
    "id": "cd6711958334494685f4e01f4ab3e482",
@@ -996,6 +996,192 @@
        "PO",
        "String",
        "PO"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ac96675df45f4d7b997efdff5e86a628",
+   "nazov": "Celkový počet detí v materských školách v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Celkový_počet_detí_v_materských_školách_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792412376000,
+   "popis": "Prehľad celkového počtu detí v materských školách v Bratislave podľa mestských častí. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792412376000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Celkový_počet_detí_v_materských_školách_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Celkový_počet_detí_v_materských_školách_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "968d67b7a5124129992019d4372efbcd",
+   "nazov": "Celkový počet študentov na stredných školách v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Celkový_počet_študentov_na_stredných_školách_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792412751000,
+   "popis": "Prehľad celkového počtu študentov na stredných školách v Bratislave podľa mestských častí. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792412751000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Celkový_počet_študentov_na_stredných_školách_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Celkový_počet_študentov_na_stredných_školách_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fd3bd5dd82434f4c8b82b31198884341",
+   "nazov": "Celkový počet žiakov na základných školách v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Celkový_počet_žiakov_na_základných_školách_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792413558000,
+   "popis": "Prehľad celkového počtu žiakov na základných školách v Bratislave podľa mestských častí. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792413558000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Celkový_počet_žiakov_na_základných_školách_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Celkový_počet_žiakov_na_základných_školách_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -11621,7 +11807,7 @@
    "popis": "Dataset všetkých objednávok Magistrátu hlavného mesta SR Bratislava od roku 2011. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 51634176,
+   "velkost": 51658752,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -11639,7 +11825,7 @@
      "nazov": "Objednávky_Magistrátu_hlavného_mesta_SR_Bratislava_od_roku_2011",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 65264,
+     "pocet": 65305,
      "polia": [
       [
        "IDENTIFIKÁTOR_OBJEDNÁVKY",
@@ -22383,7 +22569,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 229482496,
+   "velkost": 229892096,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -22403,7 +22589,7 @@
      "nazov": "chodci10_01",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 850743,
+     "pocet": 852384,
      "polia": [
       [
        "NAZOV",
@@ -22470,7 +22656,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 228900864,
+   "velkost": 229318656,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -22490,7 +22676,7 @@
      "nazov": "cyklisti2_0",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 850743,
+     "pocet": 852384,
      "polia": [
       [
        "NAZOV",
@@ -22557,7 +22743,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 115712000,
+   "velkost": 116006912,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -22577,7 +22763,7 @@
      "nazov": "vozidla_00",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 486501,
+     "pocet": 487854,
      "polia": [
       [
        "NAZOV",
@@ -45693,7 +45879,7 @@
    "popis": "Dataset všetkých zmlúv Magistrátu hlavného mesta SR Bratislava zverejnených od júla 2022. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 13131776,
+   "velkost": 13148160,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -45713,7 +45899,7 @@
      "nazov": "Zmluvy_Magistrátu_hlavného_mesta_SR_Bratislava_zverejnené_od_júla_2022",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 13095,
+     "pocet": 13122,
      "polia": [
       [
        "IČO_SAMOSPRÁVY",
@@ -51685,5 +51871,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-10-16T13:28:45+00:00"
+ "aktualizovane": "2026-10-20T04:54:27+00:00"
 }

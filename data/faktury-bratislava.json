@@ -279,13 +279,6 @@
      "popis": "Údržba sústavy VO vrátane odstraňovania hav.stavov za december 2025"
     },
     {
-     "datum": "2025-10-16",
-     "dodavatel": "ALDESA CONSTRUCCIONES POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, organizačná zložka",
-     "ico": "50614339",
-     "suma": 787882.8,
-     "popis": "stavebné práce NOSNÝ SYSTÉM MHD 2. ČASŤ BOSÁKOVA - JANÍKOV DVOR"
-    },
-    {
      "datum": "2026-01-18",
      "dodavatel": "Pittel + Brausewetter s.r.o.",
      "ico": "35943653",
@@ -307,18 +300,25 @@
      "popis": "Nová TT Patrónka-Riviéra 10/2025"
     },
     {
-     "datum": "2025-10-16",
-     "dodavatel": "ENERGA s.r.o.",
-     "ico": "50778501",
-     "suma": 721872.03,
-     "popis": "Nová TT Patrónka-Riviéra 09/2025"
-    },
-    {
      "datum": "2026-01-14",
      "dodavatel": "ENERGA s.r.o.",
      "ico": "50778501",
      "suma": 610597.71,
      "popis": "Všeobecné položky v procese Nová trolejbusová trať Patronka-Riviera"
+    },
+    {
+     "datum": "2025-12-16",
+     "dodavatel": "CSFIT s.r.o.",
+     "ico": "50700308",
+     "suma": 471299.1,
+     "popis": "Server r. 2025, VSAN Ready Node"
+    },
+    {
+     "datum": "2025-11-17",
+     "dodavatel": "Pittel + Brausewetter s.r.o.",
+     "ico": "35943653",
+     "suma": 453601.77,
+     "popis": "Stavebné práce : \"ŽIVÉ NÁMESTIE - 1. Etapa (A,B,C), Etapa 1.B Okolie pamätnika SNP a Poštová ul.\""
     }
    ],
    "median_dni_uhrady": {
@@ -345,7 +345,7 @@
    "organizacia": "Magistrát",
    "typ": "objednávky",
    "zdroj": "https://data.bratislava.sk/datasets/e3a9501c0fb64dbf9ff6de81847e3b9a",
-   "zaznamov": 65264,
+   "zaznamov": 65305,
    "vynechane_bez_ico": 644,
    "roky": {
     "2011": {
@@ -409,8 +409,8 @@
      "suma": 48507149
     },
     "2026": {
-     "pocet": 3769,
-     "suma": 49763414
+     "pocet": 3810,
+     "suma": 49930346
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -423,8 +423,8 @@
     {
      "ico": "35943653",
      "nazov": "Pittel + Brausewetter s.r.o.",
-     "pocet": 317,
-     "suma": 19643960
+     "pocet": 319,
+     "suma": 19681690
     },
     {
      "ico": "17317282",
@@ -465,20 +465,20 @@
     {
      "ico": "51806576",
      "nazov": "RETAN, s. r. o.",
-     "pocet": 1705,
-     "suma": 3323553
+     "pocet": 1714,
+     "suma": 3331881
     },
     {
      "ico": "31606458",
      "nazov": "SAROUTE s.r.o.",
-     "pocet": 87,
-     "suma": 2818962
+     "pocet": 88,
+     "suma": 2829096
     },
     {
      "ico": "44547234",
      "nazov": "Interiér 48 s. r. o.",
-     "pocet": 235,
-     "suma": 2601528
+     "pocet": 236,
+     "suma": 2620951
     },
     {
      "ico": "45917833",
@@ -507,8 +507,8 @@
     {
      "ico": "35693011",
      "nazov": "Mobilita, s.r.o.",
-     "pocet": 178,
-     "suma": 1283244
+     "pocet": 179,
+     "suma": 1294467
     },
     {
      "ico": "36667102",
@@ -2019,5 +2019,5 @@
  "chyby": [
   "Marianum zmluvy: Marianum zmluvy: žiadne použiteľné riadky"
  ],
- "aktualizovane": "2026-10-16T11:05:55+00:00"
+ "aktualizovane": "2026-10-20T04:56:50+00:00"
 }
