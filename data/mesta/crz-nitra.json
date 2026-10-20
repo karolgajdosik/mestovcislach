@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-10-18",
+ "do": "2026-10-19",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 14728,
-  "skryte_fyzicke_osoby": 9531,
+  "zaznamov": 14736,
+  "skryte_fyzicke_osoby": 9536,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,10 +37,10 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3000,
-    "suma": 48381597,
-    "fo_pocet": 2124,
-    "fo_suma": 3317227
+    "pocet": 3008,
+    "suma": 50195132,
+    "fo_pocet": 2129,
+    "fo_suma": 3338321
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -105,6 +105,12 @@
     "suma": 2171768
    },
    {
+    "ico": "36530328",
+    "nazov": "ELLIO, spol. s r.o.",
+    "pocet": 3,
+    "suma": 2013536
+   },
+   {
     "ico": "37966456",
     "nazov": "Správa zariadení sociálnych služieb",
     "pocet": 39,
@@ -157,12 +163,6 @@
     "nazov": "Základná škola Tulipánová",
     "pocet": 7,
     "suma": 1228966
-   },
-   {
-    "ico": "36567761",
-    "nazov": "Nitrianska investičná s.r.o.",
-    "pocet": 15,
-    "suma": 1185140
    }
   ],
   "najvacsie_12_mesiacov": [
@@ -197,6 +197,14 @@
     "suma": 1873029.94,
     "popis": "Zmuva o poskytnutí nenávratného finančného príspevku - Rekonštrukcia a rozšírenie kapacíť MŠ Horné Krškany",
     "url": "https://www.crz.gov.sk/zmluva/12429367/"
+   },
+   {
+    "datum": "2026-10-19",
+    "dodavatel": "ELLIO, spol. s r.o.",
+    "ico": "36530328",
+    "suma": 1787993.68,
+    "popis": "Zmluva o dielo - Kino Lipa - lokálne kultúrne centrum",
+    "url": "https://www.crz.gov.sk/zmluva/12954107/"
    },
    {
     "datum": "2026-02-04",
@@ -277,14 +285,6 @@
     "suma": 1114037.6,
     "popis": "Zmluva o spolupráci - NFP 401405J046 NP Podpora dlhodobej integrácie štátnych príslušníkov tretích krajín na území SR NP Podpora dlhodobej integrácie štátnych príslušníkov tretích krajín na území SR",
     "url": "https://www.crz.gov.sk/zmluva/12800030/"
-   },
-   {
-    "datum": "2026-06-29",
-    "dodavatel": "Slovenská humanitná rada",
-    "ico": "17316014",
-    "suma": 1112995.8,
-    "popis": "Zmluva o konzorciu - Memorandum o partnerskej spolupráci v rámci národného projektu",
-    "url": "https://www.crz.gov.sk/zmluva/12525086/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-10-19T05:53:19+00:00"
+ "aktualizovane": "2026-10-20T05:52:53+00:00"
 }
