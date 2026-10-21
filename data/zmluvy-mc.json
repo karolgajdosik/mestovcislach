@@ -5,7 +5,7 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-10-19",
+ "do": "2026-10-20",
  "mestske_casti": {
   "Devín": {
    "zmluv": 550,
@@ -416,7 +416,7 @@
    ]
   },
   "Dúbravka": {
-   "zmluv": 2454,
+   "zmluv": 2455,
    "suma": 44599476,
    "roky": {
     "2022": [
@@ -436,7 +436,7 @@
      9938981
     ],
     "2026": [
-     355,
+     356,
      15072073
     ]
    },
@@ -620,8 +620,8 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14616,
-   "suma": 2625811427,
+   "zmluv": 14628,
+   "suma": 2625964931,
    "roky": {
     "2022": [
      2618,
@@ -640,13 +640,13 @@
      334776233
     ],
     "2026": [
-     2458,
-     536516111
+     2470,
+     536669615
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 6406,
-    "suma": 76524575
+    "zmluv": 6407,
+    "suma": 76531575
    },
    "najvacsi_partneri": [
     {
@@ -730,8 +730,8 @@
     {
      "nazov": "Pittel + Brausewetter s.r.o.",
      "ico": "35943653",
-     "zmluv": 13,
-     "suma": 40851803
+     "zmluv": 14,
+     "suma": 40900454
     },
     {
      "nazov": "zares, spol. s r.o.",
@@ -1232,8 +1232,8 @@
    ]
   },
   "Lamač": {
-   "zmluv": 1336,
-   "suma": 34373571,
+   "zmluv": 1337,
+   "suma": 34381726,
    "roky": {
     "2022": [
      493,
@@ -1252,13 +1252,13 @@
      4758500
     ],
     "2026": [
-     162,
-     5825446
+     163,
+     5833600
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 681,
-    "suma": 341332
+    "zmluv": 682,
+    "suma": 349487
    },
    "najvacsi_partneri": [
     {
@@ -1436,8 +1436,8 @@
    ]
   },
   "Nové Mesto": {
-   "zmluv": 1744,
-   "suma": 122789414,
+   "zmluv": 1751,
+   "suma": 122790575,
    "roky": {
     "2022": [
      277,
@@ -1456,13 +1456,13 @@
      10986412
     ],
     "2026": [
-     436,
-     21643388
+     443,
+     21644549
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 604,
-    "suma": 4883779
+    "zmluv": 607,
+    "suma": 4884400
    },
    "najvacsi_partneri": [
     {
@@ -1640,8 +1640,8 @@
    ]
   },
   "Petržalka": {
-   "zmluv": 5059,
-   "suma": 207140270,
+   "zmluv": 5061,
+   "suma": 207284998,
    "roky": {
     "2022": [
      753,
@@ -1660,8 +1660,8 @@
      66104103
     ],
     "2026": [
-     849,
-     51297348
+     851,
+     51442077
     ]
    },
    "fyzicke_osoby": {
@@ -1744,8 +1744,8 @@
     {
      "nazov": "Swietelsky-Slovakia spol. s r.o.",
      "ico": "00896225",
-     "zmluv": 14,
-     "suma": 4267455
+     "zmluv": 15,
+     "suma": 4350684
     },
     {
      "nazov": "BeMiCon s.r.o.",
@@ -1844,8 +1844,8 @@
    ]
   },
   "Podunajské Biskupice": {
-   "zmluv": 1810,
-   "suma": 48526840,
+   "zmluv": 1811,
+   "suma": 48631390,
    "roky": {
     "2022": [
      234,
@@ -1864,8 +1864,8 @@
      11397075
     ],
     "2026": [
-     285,
-     15448837
+     286,
+     15553387
     ]
    },
    "fyzicke_osoby": {
@@ -2456,8 +2456,8 @@
    ]
   },
   "Ružinov": {
-   "zmluv": 2665,
-   "suma": 171746256,
+   "zmluv": 2669,
+   "suma": 172299117,
    "roky": {
     "2022": [
      334,
@@ -2476,20 +2476,20 @@
      27813497
     ],
     "2026": [
-     459,
-     65214720
+     463,
+     65767580
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1489,
-    "suma": 2900476
+    "zmluv": 1491,
+    "suma": 2900843
    },
    "najvacsi_partneri": [
     {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
      "ico": "50349287",
-     "zmluv": 33,
-     "suma": 42345657
+     "zmluv": 34,
+     "suma": 42895651
     },
     {
      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
@@ -2660,8 +2660,8 @@
    ]
   },
   "Staré Mesto": {
-   "zmluv": 2467,
-   "suma": 113549343,
+   "zmluv": 2475,
+   "suma": 114220410,
    "roky": {
     "2022": [
      459,
@@ -2680,20 +2680,20 @@
      20943521
     ],
     "2026": [
-     485,
-     33418360
+     493,
+     34089428
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1091,
-    "suma": 10353401
+    "zmluv": 1094,
+    "suma": 10353741
    },
    "najvacsi_partneri": [
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.",
      "ico": "50349287",
-     "zmluv": 42,
-     "suma": 30629650
+     "zmluv": 43,
+     "suma": 31253192
     },
     {
      "nazov": "Pittel+Brausewetter s.r.o.",
@@ -4996,5 +4996,5 @@
    }
   }
  },
- "aktualizovane": "2026-10-20T05:52:51+00:00"
+ "aktualizovane": "2026-10-21T05:52:28+00:00"
 }

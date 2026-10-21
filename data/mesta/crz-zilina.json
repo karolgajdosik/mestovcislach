@@ -2,15 +2,15 @@
  "mesto": "zilina",
  "ico": "00321796",
  "od": "2022-01-01",
- "do": "2026-10-19",
+ "do": "2026-10-20",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8341,
-  "skryte_fyzicke_osoby": 3738,
+  "zaznamov": 8362,
+  "skryte_fyzicke_osoby": 3751,
   "roky": {
    "2022": {
     "pocet": 1084,
@@ -37,10 +37,10 @@
     "fo_suma": 5442968
    },
    "2026": {
-    "pocet": 1649,
-    "suma": 137231686,
-    "fo_pocet": 838,
-    "fo_suma": 4285944
+    "pocet": 1670,
+    "suma": 137591444,
+    "fo_pocet": 851,
+    "fo_suma": 4406659
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -95,8 +95,8 @@
    {
     "ico": "31588506",
     "nazov": "ERPOS, spol. s r.o.",
-    "pocet": 25,
-    "suma": 4040489
+    "pocet": 26,
+    "suma": 4075489
    },
    {
     "ico": "30796491",
@@ -159,10 +159,10 @@
     "suma": 1647966
    },
    {
-    "ico": "45425434",
-    "nazov": "LICITOR development, s.r.o.",
-    "pocet": 4,
-    "suma": 1315790
+    "ico": "46931317",
+    "nazov": "Správa športových zariadení mesta Žilina, s.r.o.",
+    "pocet": 16,
+    "suma": 1325086
    }
   ],
   "najvacsie_12_mesiacov": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-10-20T05:52:53+00:00"
+ "aktualizovane": "2026-10-21T05:52:29+00:00"
 }
