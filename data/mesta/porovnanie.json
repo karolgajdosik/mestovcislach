@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-17T01:59:45",
+ "aktualizovane": "2026-10-21T05:21:51",
  "mesta": [
   {
    "slug": "bratislava",
@@ -11,7 +11,7 @@
    "deti": 15.5,
    "vs": 36.6,
    "vlastne_byty": 93.5,
-   "pdu": 2.82,
+   "pdu": 2.74,
    "ucast_komunalne": 36.88,
    "byty_10r": 2486,
    "ceny_kraj": 16.2
@@ -26,7 +26,7 @@
    "deti": 15.0,
    "vs": 24.5,
    "vlastne_byty": null,
-   "pdu": 2.77,
+   "pdu": 2.64,
    "ucast_komunalne": 41.88,
    "byty_10r": 883,
    "ceny_kraj": 11.9
@@ -41,7 +41,7 @@
    "deti": 14.1,
    "vs": 29.2,
    "vlastne_byty": null,
-   "pdu": 2.65,
+   "pdu": 2.45,
    "ucast_komunalne": 40.41,
    "byty_10r": 806,
    "ceny_kraj": 9.9
@@ -56,7 +56,7 @@
    "deti": 13.7,
    "vs": 26.9,
    "vlastne_byty": null,
-   "pdu": 2.53,
+   "pdu": 2.45,
    "ucast_komunalne": 37.0,
    "byty_10r": 505,
    "ceny_kraj": 11.6
@@ -71,7 +71,7 @@
    "deti": 15.1,
    "vs": 27.7,
    "vlastne_byty": null,
-   "pdu": 2.92,
+   "pdu": 2.94,
    "ucast_komunalne": 38.17,
    "byty_10r": 591,
    "ceny_kraj": 11
@@ -86,7 +86,7 @@
    "deti": 14.1,
    "vs": 29.0,
    "vlastne_byty": 93.6,
-   "pdu": 3.6,
+   "pdu": 3.43,
    "ucast_komunalne": 39.79,
    "byty_10r": 307,
    "ceny_kraj": 12.4
@@ -101,7 +101,7 @@
    "deti": 14.4,
    "vs": 27.0,
    "vlastne_byty": null,
-   "pdu": 3.41,
+   "pdu": 3.18,
    "ucast_komunalne": 42.67,
    "byty_10r": 666,
    "ceny_kraj": 8.9
@@ -116,7 +116,7 @@
    "deti": 14.8,
    "vs": 26.7,
    "vlastne_byty": 92.2,
-   "pdu": 3.13,
+   "pdu": 3.02,
    "ucast_komunalne": 30.9,
    "byty_10r": 580,
    "ceny_kraj": 7.9
