@@ -2,8 +2,8 @@
 // Mapa voľby primátora po mestských častiach: farba = kto vyhral (vedie) v MČ, sýtosť = jeho podiel hlasov.
 // Kreslí sa pri builde ako SVG (bez mapových podkladov), počas volebnej noci sa obnoví s každým novým zberom.
 interface Cast { kod?: string; nazov: string; ucast?: number | null; poradie: { meno: string; podiel: number; strany?: string }[] }
-interface Props { casti: Cast[]; hranice: any; nazovKey: string; kodKey?: string; priebezne?: boolean; mesto: string }
-const { casti, hranice, nazovKey, kodKey, priebezne = false, mesto } = Astro.props as Props;
+interface Props { casti: Cast[]; hranice: any; nazovKey: string; kodKey?: string; priebezne?: boolean; mesto: string; tabulka?: boolean }
+const { casti, hranice, nazovKey, kodKey, priebezne = false, mesto, tabulka = false } = Astro.props as Props;
 
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/^sidlisko\s+/, '').replace(/[^a-z]/g, '');
 const podlaMena = new Map(casti.map((c) => [norm(c.nazov), c]));
@@ -58,6 +58,17 @@ const chyba = prvky.filter((f: any) => !najdi(f)).length;
     </figcaption>
   </figure>
 )}
+{tabulka && casti.length > 0 && (
+  <details class="vm-tab">
+    <summary>Výsledky po mestských častiach ({casti.length})</summary>
+    <div class="tabulka-obal"><table>
+      <thead><tr><th>Mestská časť</th><th class="num">Účasť</th><th>{priebezne ? 'Vedie' : 'Prvý'}</th><th class="num">%</th><th>Druhý</th><th class="num">%</th></tr></thead>
+      <tbody>{casti.map((c) => (
+        <tr><td>{c.nazov}</td><td class="num">{des(c.ucast)} %</td><td translate="no">{c.poradie[0]?.meno}</td><td class="num">{des(c.poradie[0]?.podiel)}</td><td translate="no">{c.poradie[1]?.meno ?? ''}</td><td class="num">{c.poradie[1] ? des(c.poradie[1].podiel) : ''}</td></tr>
+      ))}</tbody>
+    </table></div>
+  </details>
+)}
 
 <style>
   .volby-mapa { margin: 8px 0 18px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(200px, 1fr); gap: 18px; align-items: center;
@@ -73,5 +84,10 @@ const chyba = prvky.filter((f: any) => !najdi(f)).length;
   .vm-legenda small { color: var(--muted); font-weight: 400; }
   .vm-pozn { margin: 0; font-size: 0.82rem; color: var(--muted); }
   @media (max-width: 700px) { .volby-mapa { grid-template-columns: 1fr; } }
+  .vm-tab { margin: 0 0 16px; }
+  .vm-tab summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
+  .vm-tab table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vm-tab th, .vm-tab td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+  .vm-tab .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   @media (prefers-reduced-motion: reduce) { .vm-mc { transition: none; } }
 </style>

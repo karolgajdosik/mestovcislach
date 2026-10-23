@@ -154,7 +154,7 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
           const r = (rok: string, x: any) => ({ rok, ucast: x.ucast?.ucast_pct, kandidati: x.primator, mandaty: x.zastupitelstvo?.mandaty, poslancov: x.zastupitelstvo?.poslancov });
           return <VolbyPorovnanie stary={r(komRoky[komRoky.length - 2], s)} novy={r(komRok, kom)} priebezne={!!kom.spracovanie?.priebezne} />;
         })()}
-        {kom.mestske_casti?.length > 1 && <><h3>Voľba primátora podľa mestských častí</h3><VolbyMapa casti={kom.mestske_casti} hranice={mapaMesta(m.slug)?.hranice} nazovKey="n" priebezne={!!kom.spracovanie?.priebezne} mesto={m.nazov} /></>}
+        {kom.mestske_casti?.length > 1 && <><h3>Voľba primátora podľa mestských častí</h3><VolbyMapa casti={kom.mestske_casti} hranice={mapaMesta(m.slug)?.hranice} nazovKey="n" priebezne={!!kom.spracovanie?.priebezne} mesto={m.nazov} tabulka /></>}
         {kom.zastupitelstvo.poslancov > 0 && <>
         <h3>Mestské zastupiteľstvo – {kom.zastupitelstvo.poslancov} poslancov</h3>
         <ul class="mandaty">{kom.zastupitelstvo.mandaty.map((x: any) => <li><b>{x.mandaty}</b> <span translate="no">{x.strany.length > 110 ? x.strany.slice(0, 108) + '…' : x.strany}</span></li>)}</ul>
