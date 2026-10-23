@@ -1,14 +1,10 @@
-https://volby.statistics.sk/opendata/nrsr/2023/NRSR2023_SK_tab02d.csv 404  text/html; charset=iso-8859-1 239
-https://volbysr.sk/opendata/nrsr/2023/NRSR2023_SK_tab02d.csv 404  text/html 146
-https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip 404  text/html; charset=iso-8859-1 234
-https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip 404  text/html; charset=iso-8859-1 234
-https://volby.statistics.sk/nrsr/nrsr2023/sk/ 404  text/html; charset=iso-8859-1 215
-https://volby.statistics.sk/ 200  text/html; charset=UTF-8 64
-    []
-https://volbysr.sk/ 200  text/html 595
-    []
-https://volbysr.sk/opendata/ 404  text/html 146
-https://volby.statistics.sk/opendata/eup/2024/EP2024_SK_tab02d.csv 404  text/html; charset=iso-8859-1 236
-https://volbysr.sk/nrsr/nrsr2023/sk/ 404  text/html 146
-https://volbysr.sk/oso/oso2022/files/OSO2022_SK_csv.zip 404  text/html 146
-NKOD: ['https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab05fx.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab08f.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02bc.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab03b1.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab0bx.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab03a1.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab05x.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab12c.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab06d.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02bfx.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab07d.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02ac.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab_info.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02aa.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab0ax.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab04x.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab05ex.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02ba.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02bex.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab0dx.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab0c.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab05d.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab07x.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab05f.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab01.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02bf.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab06x.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02be.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab03c2.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab05e.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab12b.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab08ex.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02bx.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab08fx.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02bd.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab02bb.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab08e.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab0dd.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab03d2.csv', 'https://volby.statistics.sk/opendata/oso/2022/OSO2022_SK_tab03d1.csv']
+volby.statistics.sk: 'default webhost.statistics.sk\n/srv/webhost.statistics.sk/html/\n\n'
+https://data.statistics.sk/api/v2/collection?lang=sk ConnectTimeout
+https://slovak.statistics.sk/ 403 5442
+živý /data/mesta/zilina.json: 200 None
+https://mestovcislach.sk/ 200 101 ms 21 kB
+https://mestovcislach.sk/bratislava/ 200 110 ms 108 kB
+https://mestovcislach.sk/kosice/ 200 155 ms 55 kB
+https://mestovcislach.sk/bratislava/volby/ 200 155 ms 337 kB
+https://mestovcislach.sk/sitemap.xml 200 80 ms 80 kB
+asistent: 200 {"odpoved":"Počet obyvateľov mesta Žilina podľa dostupných údajov:\n\n- k 31. 12. 2025: 79 873 obyvateľov\n- k 31. 12. 2024: 80 257 obyvateľov\n- k 31. 12. 2023: 80 634 obyvateľov\n- k 31. 12. 2022: 8
