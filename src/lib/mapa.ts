@@ -16,9 +16,17 @@ export function mapaMesta(slug: string) {
   const portal = citaj(`mapa-${slug}.json`);
   const osm = citaj(`mapa-osm-${slug}.json`);
   if (!portal && !osm) return null;
+  // zastávky z cestovného poriadku (GTFS) majú prednosť pred OSM – presné linky a počet odchodov
+  const pm = path.join(process.cwd(), 'data', 'mesta', `mhd-${slug}.json`);
+  const mhd = fs.existsSync(pm) ? JSON.parse(fs.readFileSync(pm, 'utf-8')) : null;
+  const zastavkyGtfs = mhd && {
+    id: 'mhd-zastavky', nazov: 'Zastávky MHD', skupina: 'Doprava', typ: 'body', zdroj: mhd.zdroj.url,
+    body: mhd.zastavky.map((z: any) => [z.lat, z.lon, z.nazov, { Linky: z.linky.join(', '), 'Odchodov za pracovný deň': String(z.odchody) }]),
+  };
   const vrstvy = [
     ...(portal?.vrstvy ?? []).map((v: any) => ({ ...v, zdroj: portal.zdroj })),
-    ...(osm?.vrstvy ?? []).map((v: any) => ({ ...v, zdroj: OSM })),
+    ...(zastavkyGtfs ? [zastavkyGtfs] : []),
+    ...(osm?.vrstvy ?? []).filter((v: any) => !(zastavkyGtfs && v.id === 'osm-zastavky')).map((v: any) => ({ ...v, zdroj: OSM })),
   ];
   const k = (s: string) => { const i = PORADIE.indexOf(s); return i < 0 ? (s.startsWith('Voľby') ? 99 : 50) : i; };
   vrstvy.sort((a, b) => k(a.skupina) - k(b.skupina)); // stabilné – poradie v skupine zostáva

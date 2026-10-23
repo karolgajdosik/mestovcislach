@@ -11,6 +11,8 @@ let _temy: any, _ovz: any, _vlaky: any;
 export const temy = () => (_temy ??= citaj('temy.json'));
 export const ovzdusie = () => (_ovz ??= citaj('ovzdusie.json'));
 export const vlaky = () => (_vlaky ??= citaj('vlaky.json'));
+/** MHD z cestovného poriadku GTFS (zatiaľ Prešov – data/mesta/mhd-presov.json, scripts/zber_mhd_presov.py). */
+export const mhd = (slug: string) => citaj(`mhd-${slug}.json`);
 
 export type Rada = Record<string, number>;
 /** Ukazovateľ „… – mestá“ (Urban Audit) podľa presného popisu, napr. „Priemerná cena za kúpu bytu za m2“. */

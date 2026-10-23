@@ -3,7 +3,7 @@
 // Zdroje: ŠÚ SR DATAcube (scripts/zber_mesta_temy.py), EEA merania ovzdušia (scripts/zber_ovzdusie_eea.py).
 import Base from '../../layouts/Base.astro';
 import { MESTA, type Mesto } from '../../mesta';
-import { kriminalita, maZivot, ovzdusie, posledny, temy, ua, vlaky } from '../../lib/temy';
+import { kriminalita, maZivot, ovzdusie, posledny, temy, ua, vlaky, mhd } from '../../lib/temy';
 
 export function getStaticPaths() {
   return MESTA.filter((m) => m.aktivne && !m.plne && maZivot(m.slug)).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
@@ -42,6 +42,8 @@ const cykloRada = odRoku(ua(m.slug, 'Dĺžka cyklistickej siete'));
 
 // --- Vlaky (GTFS ŽSR)
 const vl = vlaky();
+const mh = mhd(m.slug);
+const grafMhd = mh && graf({ typ: 'bar', labels: mh.hodiny.map((_: number, h: number) => `${h}:00`), rady: [{ n: 'Odchody zo zastávok za hodinu', d: mh.hodiny }] });
 const vlM = vl?.mesta?.[m.slug];
 const datumSk = (d: string) => d.split('-').reverse().map((x) => x.replace(/^0/, '')).join('. ');
 const ostatne = MESTA.filter((x) => x.slug !== m.slug).map((x) => ({ x, s: vlM?.spojenia?.[x.slug] ?? null }))
@@ -132,6 +134,19 @@ const grafCena = graf({ typ: 'line', labels: Object.keys(cenaM2), jednotka: '€
     {cyklo && <div class="card kpi"><p class="label">Cyklistická sieť</p><p class="value">{fmt(cyklo[1], 1)} km</p><p class="delta">{cyklo[0]}</p></div>}
     {obeteNa && <div class="card kpi"><p class="label">Obete dopravných nehôd</p><p class="value">{fmt(posledny(obete)?.[1])}</p><p class="delta">{obeteNa[0]} · {fmt(obeteNa[1], 1)} na 100 000 obyvateľov</p></div>}
   </section>
+  {mh && (
+    <section class="card" id="mhd">
+      <h3>MHD: {fmt(mh.spolu.spojov)} spojov za pracovný deň</h3>
+      <p class="f-uvod">{fmt(mh.spolu.liniek)} liniek{mh.spolu.trolejbusovych ? ` (z toho ${fmt(mh.spolu.trolejbusovych)} trolejbusových)` : ''}, {fmt(mh.spolu.zastavok)} zastávok a {fmt(mh.spolu.odchodov)} odchodov zo zastávok za deň. Zastávky s linkami sú aj na <a href={`/${m.slug}/mapa`}>mape</a> a pri <a href={`/${m.slug}/adresa`}>vašej adrese</a>.</p>
+      <div class="chart"><canvas class="g-auto" data-graf={grafMhd} role="img" aria-label={`Odchody MHD ${m.v} podľa hodín počas pracovného dňa`}></canvas></div>
+      <h4>Najrušnejšie zastávky</h4>
+      <div class="tabulka-obal"><table>
+        <thead><tr><th>Zastávka</th><th class="num">Odchodov za deň</th><th>Linky</th></tr></thead>
+        <tbody>{mh.zastavky.slice(0, 10).map((z: any) => <tr><td>{z.nazov}</td><td class="num">{fmt(z.odchody)}</td><td>{z.linky.join(', ')}</td></tr>)}</tbody>
+      </table></div>
+      <p class="zdroj">Pracovný deň {datumSk(mh.den)}. Zdroj: <a href={mh.zdroj.url}>Mesto Prešov – cestovný poriadok MHD (GTFS)</a>, Dopravný podnik mesta Prešov, licencia CC BY 4.0.</p>
+    </section>
+  )}
   {vlM && (
     <section class="card" id="vlaky">
       <h3>Vlaky: {fmt(vlM.odchodov)} odchodov za pracovný deň</h3>

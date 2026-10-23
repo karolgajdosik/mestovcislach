@@ -49,7 +49,7 @@ function kategorieMesta(slug: string): Kat[] {
     if (!vs.length) continue;
     // ak má mesto vrstvu z portálu aj z OSM, prednosť má portál (je prvý)
     const v = vs[0];
-    out.push({ id, nazov, mapa: `/${slug}/mapa#vrstva=${v.id}`, body: v.body.map((b: any[]) => [r5(b[0]), r5(b[1]), b[2], b[3]?.Adresa ?? b[3]?.adresa ?? undefined]) });
+    out.push({ id, nazov, mapa: `/${slug}/mapa#vrstva=${v.id}`, body: v.body.map((b: any[]) => [r5(b[0]), r5(b[1]), b[2], b[3]?.Adresa ?? b[3]?.adresa ?? (b[3]?.Linky ? `linky ${b[3].Linky}` : undefined)]) });
   }
   return out;
 }
