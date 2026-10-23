@@ -1,6 +1,9 @@
-  https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip: HTTP 404
-Bratislava: MČ 17, kontrola {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}, voliči sedia v 12/17 | rozdiely voličov: [('Dúbravka', -341), ('Karlova Ves', -413), ('Nové Mesto', -223), ('Petržalka', 344), ('Ružinov', -24)]
-  rozdiely BA: []
-  súčet hlasov primátora po MČ: 133405 (len top 3)
-Košice: MČ 21, kontrola {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}, voliči sedia v 18/21 | rozdiely voličov: [('Myslava', -644), ('Nad jazerom', -236), ('Západ', -1)]
-  súčet hlasov primátora po MČ: 37091 (len top 3)
+https://mestovcislach.sk/vlozit/kosice/zivot?g=g-auta-a-cyklotrasy 200 | data-vlozit: True | base: True
+  X-Frame-Options: None | frame-ancestors: ['frame-ancestors *'] | robots: noindex
+bežná stránka X-Frame-Options: DENY
+https://mestovcislach.sk/vlozit/api/asistent?g=x 404
+https://mestovcislach.sk/vlozit/neexistuje?g=x 404
+https://mestovcislach.sk/kosice/adresa/ 200
+https://mestovcislach.sk/data/mesta/adresa/kosice.json 200
+https://mestovcislach.sk/bratislava/adresa/ 200
+Nominatim: 200 None 1
