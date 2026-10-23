@@ -1,13 +1,6 @@
-https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip 200 Tue, 20 Oct 2026 07:04:46 GMT 173044
-   OSO2026_SK_tab0c.xlsx riadkov 56 | hlavička: ['Kód politickej strany', 'Názov politickej strany', 'Skratka politickej strany']
-   OSO2026_SK_tab0dd.xlsx riadkov 2927 | hlavička: ['Kód kraja', 'Názov kraja', 'Kód územného obvodu', 'Názov územného obvodu', 'Kód okresu', 'Názov okresu', 'Kód obce', 'Názov obce', 'Počet volebných obvodov', 'Počet okrskov', 'Počet volených poslancov', 'Typ volieb']
-   OSO2026_SK_tab0dx.xlsx riadkov 5 | hlavička: ['Kód mesta', 'Názov mesta', 'Počet volebných obvodov', 'Počet okrskov', 'Počet volených poslancov', 'Typ volieb']
-   OSO2026_SK_tab_info.xlsx riadkov 7 | hlavička: ['Zoznam tabuliek']
-https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip 200 Tue, 20 Oct 2026 07:04:05 GMT 134548
-   OSK2026_SK_tab0c.xlsx riadkov 56 | hlavička: ['Kód politickej strany', 'Názov politickej strany', 'Skratka politickej strany']
-   OSK2026_SK_tab0db.xlsx riadkov 99 | hlavička: ['Kód kraja', 'Názov kraja', 'Kód volebného obvodu', 'Názov volebného obvodu', 'Počet volebných okrskov', 'Počet volených poslancov']
-   OSK2026_SK_tab0dc.xlsx riadkov 2929 | hlavička: ['Kód kraja', 'Názov kraja', 'Kód volebného obvodu', 'Názov volebného obvodu', 'Kód obce', 'Názov obce', 'Počet volebných okrskov']
-   OSK2026_SK_tab_info.xlsx riadkov 7 | hlavička: ['Zoznam tabuliek']
-https://volbysr.sk/oso/files/OSO2026_SK_csv.zip 404 None 146
-  https://volbysr.sk/oso/files/OSO2026_SK_csv.zip: HTTP 404
-zber číta tabuľky: ['tab0c', 'tab0d']
+https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip → ('http://web.archive.org/web/20241201215347/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip', '20241201215347', '200')
+   stiahnuté 200 1863667 b'PK'
+https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_xlsx.zip → ('http://web.archive.org/web/20241201210939/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_xlsx.zip', '20241201210939', '200')
+   stiahnuté 200 22042471 b'PK'
+https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip → None
+HOTOVO
