@@ -1,0 +1,3556 @@
+{
+ "zdroj": {
+  "nazov": "Mesto Prešov – GTFS MHD Prešov (Dopravný podnik mesta Prešov), CC BY 4.0",
+  "url": "https://www.arcgis.com/home/item.html?id=f1033ca6c2f4461d9aba285e1c7cb079"
+ },
+ "den": "2026-10-23",
+ "platnost": [
+  "20260901",
+  "20261031"
+ ],
+ "spolu": {
+  "spojov": 1637,
+  "liniek": 55,
+  "zastavok": 262,
+  "odchodov": 24995,
+  "trolejbusovych": 8
+ },
+ "hodiny": [
+  92,
+  87,
+  56,
+  103,
+  289,
+  1705,
+  2001,
+  1987,
+  1334,
+  1283,
+  1245,
+  1244,
+  1275,
+  1774,
+  2007,
+  1928,
+  1757,
+  1485,
+  1314,
+  1196,
+  985,
+  681,
+  657,
+  147
+ ],
+ "linky": [
+  {
+   "linka": "1",
+   "nazov": "",
+   "typ": "trolejbus",
+   "spojov": 121
+  },
+  {
+   "linka": "2",
+   "nazov": "",
+   "typ": "trolejbus",
+   "spojov": 65
+  },
+  {
+   "linka": "4",
+   "nazov": "",
+   "typ": "trolejbus",
+   "spojov": 112
+  },
+  {
+   "linka": "5",
+   "nazov": "",
+   "typ": "trolejbus",
+   "spojov": 54
+  },
+  {
+   "linka": "7",
+   "nazov": "",
+   "typ": "trolejbus",
+   "spojov": 46
+  },
+  {
+   "linka": "8",
+   "nazov": "",
+   "typ": "trolejbus",
+   "spojov": 114
+  },
+  {
+   "linka": "10",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 32
+  },
+  {
+   "linka": "11",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 34
+  },
+  {
+   "linka": "12",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 29
+  },
+  {
+   "linka": "13",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 41
+  },
+  {
+   "linka": "14",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 51
+  },
+  {
+   "linka": "15",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 34
+  },
+  {
+   "linka": "17",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 6
+  },
+  {
+   "linka": "18",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 36
+  },
+  {
+   "linka": "19",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 30
+  },
+  {
+   "linka": "21",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 51
+  },
+  {
+   "linka": "22",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 74
+  },
+  {
+   "linka": "23",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 50
+  },
+  {
+   "linka": "24",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 28
+  },
+  {
+   "linka": "26",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 12
+  },
+  {
+   "linka": "27",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 37
+  },
+  {
+   "linka": "28",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 54
+  },
+  {
+   "linka": "29",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 29
+  },
+  {
+   "linka": "30",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 11
+  },
+  {
+   "linka": "32",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 38
+  },
+  {
+   "linka": "33",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 14
+  },
+  {
+   "linka": "34",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 27
+  },
+  {
+   "linka": "35",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 2
+  },
+  {
+   "linka": "36",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 26
+  },
+  {
+   "linka": "37",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 3
+  },
+  {
+   "linka": "38",
+   "nazov": "",
+   "typ": "trolejbus",
+   "spojov": 112
+  },
+  {
+   "linka": "39",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 48
+  },
+  {
+   "linka": "41",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 34
+  },
+  {
+   "linka": "42",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 14
+  },
+  {
+   "linka": "43",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 3
+  },
+  {
+   "linka": "44",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 15
+  },
+  {
+   "linka": "45",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 55
+  },
+  {
+   "linka": "46",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 28
+  },
+  {
+   "linka": "32A",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 25
+  },
+  {
+   "linka": "5D",
+   "nazov": "",
+   "typ": "trolejbus",
+   "spojov": 9
+  },
+  {
+   "linka": "A",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "C",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "D",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "E",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "F",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "H",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "J",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "K",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "M",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "N1",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 9
+  },
+  {
+   "linka": "N2",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 10
+  },
+  {
+   "linka": "P",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "R",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "S",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 1
+  },
+  {
+   "linka": "T",
+   "nazov": "",
+   "typ": "autobus",
+   "spojov": 2
+  }
+ ],
+ "zastavky": [
+  {
+   "nazov": "Na Hlavnej",
+   "lat": 48.99584,
+   "lon": 21.24193,
+   "odchody": 1056,
+   "linky": [
+    "1",
+    "2",
+    "4",
+    "5",
+    "7",
+    "8",
+    "11",
+    "12",
+    "14",
+    "15",
+    "18",
+    "21",
+    "22",
+    "23",
+    "24",
+    "27",
+    "28",
+    "29",
+    "32",
+    "36",
+    "39",
+    "41",
+    "45",
+    "5D",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Čierny most",
+   "lat": 48.98976,
+   "lon": 21.24677,
+   "odchody": 1055,
+   "linky": [
+    "1",
+    "2",
+    "4",
+    "5",
+    "7",
+    "8",
+    "10",
+    "11",
+    "13",
+    "14",
+    "18",
+    "19",
+    "22",
+    "24",
+    "26",
+    "27",
+    "28",
+    "32",
+    "39",
+    "42",
+    "44",
+    "45",
+    "46",
+    "32A",
+    "5D",
+    "M",
+    "N1",
+    "N2",
+    "R",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Trojica",
+   "lat": 48.99958,
+   "lon": 21.23959,
+   "odchody": 1048,
+   "linky": [
+    "1",
+    "2",
+    "4",
+    "5",
+    "7",
+    "8",
+    "11",
+    "12",
+    "14",
+    "15",
+    "18",
+    "21",
+    "22",
+    "23",
+    "24",
+    "27",
+    "28",
+    "29",
+    "32",
+    "36",
+    "39",
+    "41",
+    "45",
+    "5D",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Železničná stanica",
+   "lat": 48.98364,
+   "lon": 21.2499,
+   "odchody": 791,
+   "linky": [
+    "1",
+    "4",
+    "8",
+    "10",
+    "14",
+    "18",
+    "19",
+    "24",
+    "26",
+    "28",
+    "30",
+    "34",
+    "37",
+    "38",
+    "39",
+    "42",
+    "43",
+    "45",
+    "46",
+    "M",
+    "N1",
+    "N2",
+    "R",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Škára *",
+   "lat": 48.98166,
+   "lon": 21.25609,
+   "odchody": 588,
+   "linky": [
+    "1",
+    "4",
+    "8",
+    "28",
+    "37",
+    "38",
+    "39",
+    "45",
+    "46",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Veľká pošta",
+   "lat": 48.99153,
+   "lon": 21.24534,
+   "odchody": 550,
+   "linky": [
+    "1",
+    "2",
+    "4",
+    "5",
+    "7",
+    "8",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "18",
+    "19",
+    "22",
+    "24",
+    "26",
+    "27",
+    "28",
+    "32",
+    "36",
+    "39",
+    "41",
+    "42",
+    "44",
+    "45",
+    "46",
+    "N2",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Poliklinika",
+   "lat": 49.0005,
+   "lon": 21.23481,
+   "odchody": 513,
+   "linky": [
+    "2",
+    "4",
+    "8",
+    "11",
+    "15",
+    "17",
+    "18",
+    "23",
+    "24",
+    "29",
+    "32",
+    "A",
+    "E",
+    "K",
+    "M",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Divadlo J. Záborského",
+   "lat": 48.99331,
+   "lon": 21.2441,
+   "odchody": 509,
+   "linky": [
+    "1",
+    "2",
+    "4",
+    "5",
+    "7",
+    "8",
+    "11",
+    "12",
+    "14",
+    "15",
+    "18",
+    "22",
+    "24",
+    "26",
+    "27",
+    "28",
+    "29",
+    "32",
+    "36",
+    "39",
+    "41",
+    "44",
+    "45",
+    "46",
+    "5D",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Prostějovská",
+   "lat": 49.02084,
+   "lon": 21.22462,
+   "odchody": 484,
+   "linky": [
+    "4",
+    "8",
+    "12",
+    "17",
+    "29",
+    "34",
+    "38",
+    "39",
+    "43",
+    "E",
+    "N1",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Centrum",
+   "lat": 49.01692,
+   "lon": 21.22335,
+   "odchody": 484,
+   "linky": [
+    "4",
+    "8",
+    "12",
+    "17",
+    "29",
+    "34",
+    "38",
+    "39",
+    "43",
+    "E",
+    "N1",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Lesnícka",
+   "lat": 48.9791,
+   "lon": 21.26386,
+   "odchody": 478,
+   "linky": [
+    "4",
+    "8",
+    "10",
+    "11",
+    "19",
+    "33",
+    "34",
+    "35",
+    "37",
+    "38",
+    "D",
+    "F",
+    "N1",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Pavla Horova",
+   "lat": 48.98377,
+   "lon": 21.26371,
+   "odchody": 478,
+   "linky": [
+    "4",
+    "8",
+    "10",
+    "11",
+    "19",
+    "33",
+    "34",
+    "35",
+    "37",
+    "38",
+    "D",
+    "F",
+    "N1",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Martina Benku",
+   "lat": 48.98712,
+   "lon": 21.26454,
+   "odchody": 478,
+   "linky": [
+    "4",
+    "8",
+    "10",
+    "11",
+    "19",
+    "33",
+    "34",
+    "35",
+    "37",
+    "38",
+    "D",
+    "F",
+    "N1",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "VUKOV",
+   "lat": 49.01136,
+   "lon": 21.22228,
+   "odchody": 461,
+   "linky": [
+    "4",
+    "8",
+    "12",
+    "17",
+    "29",
+    "34",
+    "38",
+    "39",
+    "43",
+    "E",
+    "N1",
+    "N2",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Nám.Kráľ.pokoja",
+   "lat": 49.00683,
+   "lon": 21.22145,
+   "odchody": 440,
+   "linky": [
+    "4",
+    "8",
+    "12",
+    "17",
+    "29",
+    "34",
+    "38",
+    "43",
+    "E",
+    "N1",
+    "N2",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Volgogradská",
+   "lat": 49.00387,
+   "lon": 21.22086,
+   "odchody": 440,
+   "linky": [
+    "4",
+    "8",
+    "12",
+    "17",
+    "29",
+    "34",
+    "38",
+    "43",
+    "E",
+    "N1",
+    "N2",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Jurkovičova",
+   "lat": 48.99415,
+   "lon": 21.26783,
+   "odchody": 407,
+   "linky": [
+    "8",
+    "10",
+    "12",
+    "13",
+    "32",
+    "33",
+    "34",
+    "37",
+    "38",
+    "32A",
+    "C",
+    "E",
+    "J",
+    "N2",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Karpatská",
+   "lat": 48.99671,
+   "lon": 21.26958,
+   "odchody": 407,
+   "linky": [
+    "8",
+    "10",
+    "12",
+    "13",
+    "32",
+    "33",
+    "34",
+    "37",
+    "38",
+    "32A",
+    "C",
+    "E",
+    "J",
+    "N2",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Clementisova",
+   "lat": 49.00168,
+   "lon": 21.2242,
+   "odchody": 374,
+   "linky": [
+    "4",
+    "8",
+    "29",
+    "34",
+    "38",
+    "N1",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Duklianska  *",
+   "lat": 49.00298,
+   "lon": 21.24246,
+   "odchody": 328,
+   "linky": [
+    "1",
+    "7",
+    "12",
+    "17",
+    "21",
+    "27",
+    "28",
+    "41",
+    "43",
+    "A",
+    "E",
+    "K",
+    "M"
+   ]
+  },
+  {
+   "nazov": "Laca Novomeského",
+   "lat": 48.98992,
+   "lon": 21.26715,
+   "odchody": 285,
+   "linky": [
+    "4",
+    "12",
+    "19",
+    "22",
+    "34",
+    "36",
+    "44",
+    "C",
+    "D",
+    "F",
+    "K",
+    "N1",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Rázcestie Kúty  *",
+   "lat": 49.00825,
+   "lon": 21.24997,
+   "odchody": 274,
+   "linky": [
+    "1",
+    "7",
+    "13",
+    "17",
+    "21",
+    "28",
+    "35",
+    "A",
+    "K",
+    "M"
+   ]
+  },
+  {
+   "nazov": "Dopravný podnik  *",
+   "lat": 49.01072,
+   "lon": 21.25765,
+   "odchody": 261,
+   "linky": [
+    "1",
+    "7",
+    "13",
+    "17",
+    "21",
+    "28",
+    "35",
+    "A",
+    "K",
+    "M"
+   ]
+  },
+  {
+   "nazov": "Sídlisko III",
+   "lat": 49.0234,
+   "lon": 21.22861,
+   "odchody": 242,
+   "linky": [
+    "4",
+    "8",
+    "12",
+    "17",
+    "29",
+    "34",
+    "38",
+    "39",
+    "E",
+    "N1",
+    "N2",
+    "S"
+   ]
+  },
+  {
+   "nazov": "Vansovej",
+   "lat": 48.99194,
+   "lon": 21.27121,
+   "odchody": 241,
+   "linky": [
+    "4",
+    "12",
+    "22",
+    "34",
+    "36",
+    "C",
+    "D",
+    "F",
+    "K",
+    "N1",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Sabinovská, futbal aréna",
+   "lat": 49.00611,
+   "lon": 21.23833,
+   "odchody": 234,
+   "linky": [
+    "2",
+    "5",
+    "14",
+    "22",
+    "39",
+    "43",
+    "45",
+    "5D",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Obrancov mieru",
+   "lat": 48.99761,
+   "lon": 21.22818,
+   "odchody": 230,
+   "linky": [
+    "2",
+    "5",
+    "15",
+    "24",
+    "34",
+    "38",
+    "5D",
+    "A",
+    "N1",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Lomnická",
+   "lat": 48.97418,
+   "lon": 21.26194,
+   "odchody": 228,
+   "linky": [
+    "10",
+    "19",
+    "28",
+    "33",
+    "34",
+    "35",
+    "37",
+    "39",
+    "45",
+    "D",
+    "N1",
+    "N2",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Švábska",
+   "lat": 48.9713,
+   "lon": 21.25873,
+   "odchody": 227,
+   "linky": [
+    "10",
+    "19",
+    "28",
+    "33",
+    "34",
+    "35",
+    "37",
+    "39",
+    "45",
+    "C",
+    "D",
+    "N1",
+    "N2",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Rázc. Šidlovec  *",
+   "lat": 49.02093,
+   "lon": 21.23555,
+   "odchody": 213,
+   "linky": [
+    "2",
+    "5",
+    "14",
+    "22",
+    "43",
+    "45",
+    "5D",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Pod Skalkou  *",
+   "lat": 49.01522,
+   "lon": 21.23661,
+   "odchody": 213,
+   "linky": [
+    "2",
+    "5",
+    "14",
+    "22",
+    "43",
+    "45",
+    "5D",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Mičurinova  *",
+   "lat": 49.01146,
+   "lon": 21.23682,
+   "odchody": 213,
+   "linky": [
+    "2",
+    "5",
+    "14",
+    "22",
+    "43",
+    "45",
+    "5D",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Prešovská univerzita",
+   "lat": 48.9901,
+   "lon": 21.23554,
+   "odchody": 208,
+   "linky": [
+    "5",
+    "34",
+    "38",
+    "5D",
+    "N1"
+   ]
+  },
+  {
+   "nazov": "Duchnovičovo nám.",
+   "lat": 48.99357,
+   "lon": 21.23259,
+   "odchody": 208,
+   "linky": [
+    "5",
+    "34",
+    "38",
+    "5D",
+    "N1"
+   ]
+  },
+  {
+   "nazov": "Nový Solivar  *",
+   "lat": 48.97865,
+   "lon": 21.25116,
+   "odchody": 198,
+   "linky": [
+    "10",
+    "14",
+    "19",
+    "24",
+    "26",
+    "30",
+    "34",
+    "37",
+    "39",
+    "42",
+    "M",
+    "N1",
+    "N2",
+    "R"
+   ]
+  },
+  {
+   "nazov": "Škultétyho",
+   "lat": 48.98653,
+   "lon": 21.24166,
+   "odchody": 196,
+   "linky": [
+    "5",
+    "34",
+    "38",
+    "5D",
+    "N1"
+   ]
+  },
+  {
+   "nazov": "Sibírska",
+   "lat": 49.00092,
+   "lon": 21.27221,
+   "odchody": 193,
+   "linky": [
+    "8",
+    "10",
+    "12",
+    "13",
+    "32",
+    "34",
+    "38",
+    "32A",
+    "E",
+    "H",
+    "N2",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Rusínska  *",
+   "lat": 48.99137,
+   "lon": 21.26172,
+   "odchody": 187,
+   "linky": [
+    "11",
+    "13",
+    "22",
+    "32",
+    "35",
+    "44",
+    "32A"
+   ]
+  },
+  {
+   "nazov": "Priemyselné centrum  *",
+   "lat": 48.98238,
+   "lon": 21.2435,
+   "odchody": 187,
+   "linky": [
+    "2",
+    "7",
+    "27",
+    "30",
+    "34",
+    "42",
+    "43",
+    "5D"
+   ]
+  },
+  {
+   "nazov": "Pekárne  *",
+   "lat": 48.97912,
+   "lon": 21.24411,
+   "odchody": 187,
+   "linky": [
+    "2",
+    "7",
+    "27",
+    "30",
+    "34",
+    "42",
+    "43",
+    "5D"
+   ]
+  },
+  {
+   "nazov": "Košická  *",
+   "lat": 48.97218,
+   "lon": 21.25277,
+   "odchody": 186,
+   "linky": [
+    "10",
+    "14",
+    "19",
+    "24",
+    "26",
+    "34",
+    "37",
+    "39",
+    "M",
+    "N1",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Vranovská  *",
+   "lat": 49.02119,
+   "lon": 21.27625,
+   "odchody": 178,
+   "linky": [
+    "1",
+    "21",
+    "37",
+    "A",
+    "E",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Šarišské Lúky  *",
+   "lat": 49.01797,
+   "lon": 21.27175,
+   "odchody": 175,
+   "linky": [
+    "1",
+    "21",
+    "37",
+    "A",
+    "E",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Štúrova  *",
+   "lat": 48.98574,
+   "lon": 21.24291,
+   "odchody": 174,
+   "linky": [
+    "2",
+    "7",
+    "27",
+    "30",
+    "34",
+    "42",
+    "43",
+    "5D"
+   ]
+  },
+  {
+   "nazov": "Solivarská  *",
+   "lat": 48.9774,
+   "lon": 21.26587,
+   "odchody": 160,
+   "linky": [
+    "1",
+    "46",
+    "C",
+    "F",
+    "N1",
+    "P",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Bohúňova  *",
+   "lat": 48.97879,
+   "lon": 21.27123,
+   "odchody": 159,
+   "linky": [
+    "1",
+    "46",
+    "F",
+    "N1",
+    "P",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Múzeum Solivar *",
+   "lat": 48.97948,
+   "lon": 21.27453,
+   "odchody": 158,
+   "linky": [
+    "1",
+    "46",
+    "F",
+    "N1",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Pažica  *",
+   "lat": 49.02333,
+   "lon": 21.28146,
+   "odchody": 157,
+   "linky": [
+    "1",
+    "13",
+    "37",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Levočská",
+   "lat": 49.00075,
+   "lon": 21.22362,
+   "odchody": 157,
+   "linky": [
+    "11",
+    "17",
+    "18",
+    "23",
+    "24",
+    "29",
+    "34",
+    "E"
+   ]
+  },
+  {
+   "nazov": "Pod Šalgovíkom",
+   "lat": 48.99345,
+   "lon": 21.2754,
+   "odchody": 148,
+   "linky": [
+    "4",
+    "12",
+    "22",
+    "34",
+    "36",
+    "C",
+    "D",
+    "F",
+    "K",
+    "N1",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Chalupkova  *",
+   "lat": 48.97051,
+   "lon": 21.25527,
+   "odchody": 133,
+   "linky": [
+    "10",
+    "19",
+    "34",
+    "37",
+    "39",
+    "D",
+    "N1",
+    "N2",
+    "P"
+   ]
+  },
+  {
+   "nazov": "Fakultná nemocnica",
+   "lat": 48.99637,
+   "lon": 21.25262,
+   "odchody": 122,
+   "linky": [
+    "10",
+    "12",
+    "13",
+    "14",
+    "15",
+    "19",
+    "21",
+    "29",
+    "35",
+    "43"
+   ]
+  },
+  {
+   "nazov": "Detská nemocnica",
+   "lat": 48.99846,
+   "lon": 21.25093,
+   "odchody": 119,
+   "linky": [
+    "10",
+    "12",
+    "13",
+    "14",
+    "15",
+    "19",
+    "21",
+    "29",
+    "35",
+    "43"
+   ]
+  },
+  {
+   "nazov": "Námestie mládeže  *",
+   "lat": 48.99549,
+   "lon": 21.22951,
+   "odchody": 112,
+   "linky": [
+    "5",
+    "15",
+    "34",
+    "38",
+    "A",
+    "N1"
+   ]
+  },
+  {
+   "nazov": "HOBBY PARK *",
+   "lat": 48.99134,
+   "lon": 21.25606,
+   "odchody": 102,
+   "linky": [
+    "11",
+    "13",
+    "22",
+    "32",
+    "35",
+    "44",
+    "32A"
+   ]
+  },
+  {
+   "nazov": "Solivar",
+   "lat": 48.97815,
+   "lon": 21.27701,
+   "odchody": 99,
+   "linky": [
+    "1",
+    "11",
+    "19",
+    "44",
+    "N1"
+   ]
+  },
+  {
+   "nazov": "Nižná Šebastová",
+   "lat": 49.02482,
+   "lon": 21.28633,
+   "odchody": 93,
+   "linky": [
+    "1",
+    "13",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Budovateľská",
+   "lat": 48.97678,
+   "lon": 21.24446,
+   "odchody": 91,
+   "linky": [
+    "2",
+    "7",
+    "27",
+    "34",
+    "42",
+    "5D"
+   ]
+  },
+  {
+   "nazov": "Jelšová  *",
+   "lat": 48.96268,
+   "lon": 21.2586,
+   "odchody": 90,
+   "linky": [
+    "28",
+    "33",
+    "35",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Jesenná  *",
+   "lat": 48.96557,
+   "lon": 21.25657,
+   "odchody": 90,
+   "linky": [
+    "28",
+    "33",
+    "35",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Pionierska  *",
+   "lat": 48.96895,
+   "lon": 21.25691,
+   "odchody": 90,
+   "linky": [
+    "28",
+    "33",
+    "35",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Dilongova  *",
+   "lat": 48.99956,
+   "lon": 21.24794,
+   "odchody": 88,
+   "linky": [
+    "10",
+    "12",
+    "15",
+    "19",
+    "27",
+    "29"
+   ]
+  },
+  {
+   "nazov": "Grešova  *",
+   "lat": 48.99317,
+   "lon": 21.24553,
+   "odchody": 87,
+   "linky": [
+    "10",
+    "13",
+    "15",
+    "19",
+    "21",
+    "29",
+    "R"
+   ]
+  },
+  {
+   "nazov": "Mýto  *",
+   "lat": 49.00241,
+   "lon": 21.21449,
+   "odchody": 86,
+   "linky": [
+    "18",
+    "23"
+   ]
+  },
+  {
+   "nazov": "Veterinárna nemocnica  *",
+   "lat": 49.02094,
+   "lon": 21.23183,
+   "odchody": 83,
+   "linky": [
+    "2",
+    "5",
+    "12",
+    "43",
+    "N2",
+    "S"
+   ]
+  },
+  {
+   "nazov": "Kalinčiakova  *",
+   "lat": 49.01213,
+   "lon": 21.27039,
+   "odchody": 82,
+   "linky": [
+    "13",
+    "28",
+    "J"
+   ]
+  },
+  {
+   "nazov": "Nižnianska  *",
+   "lat": 49.01165,
+   "lon": 21.26754,
+   "odchody": 79,
+   "linky": [
+    "13",
+    "28",
+    "J"
+   ]
+  },
+  {
+   "nazov": "Šidlovská  *",
+   "lat": 49.03011,
+   "lon": 21.24061,
+   "odchody": 76,
+   "linky": [
+    "12",
+    "22"
+   ]
+  },
+  {
+   "nazov": "Jánošíkova  *",
+   "lat": 49.0256,
+   "lon": 21.2378,
+   "odchody": 74,
+   "linky": [
+    "12",
+    "22"
+   ]
+  },
+  {
+   "nazov": "Dúbrava  *",
+   "lat": 49.0249,
+   "lon": 21.23213,
+   "odchody": 68,
+   "linky": [
+    "5",
+    "14",
+    "45",
+    "5D"
+   ]
+  },
+  {
+   "nazov": "Okružná  *",
+   "lat": 48.99341,
+   "lon": 21.24006,
+   "odchody": 64,
+   "linky": [
+    "23",
+    "29",
+    "32",
+    "32A",
+    "K",
+    "M"
+   ]
+  },
+  {
+   "nazov": "Floriánova  *",
+   "lat": 48.99678,
+   "lon": 21.23653,
+   "odchody": 64,
+   "linky": [
+    "23",
+    "29",
+    "32",
+    "K",
+    "M"
+   ]
+  },
+  {
+   "nazov": "Pivovar  *",
+   "lat": 49.04339,
+   "lon": 21.20905,
+   "odchody": 64,
+   "linky": [
+    "14",
+    "45",
+    "S"
+   ]
+  },
+  {
+   "nazov": "Varoš  *",
+   "lat": 49.03956,
+   "lon": 21.19103,
+   "odchody": 60,
+   "linky": [
+    "23",
+    "45",
+    "S"
+   ]
+  },
+  {
+   "nazov": "Sládkovičova  *",
+   "lat": 48.9975,
+   "lon": 21.2484,
+   "odchody": 60,
+   "linky": [
+    "10",
+    "15",
+    "19",
+    "29"
+   ]
+  },
+  {
+   "nazov": "Moyzesova  *",
+   "lat": 48.99522,
+   "lon": 21.25018,
+   "odchody": 60,
+   "linky": [
+    "10",
+    "15",
+    "19",
+    "29"
+   ]
+  },
+  {
+   "nazov": "SOŠ lesnícka  *",
+   "lat": 48.99281,
+   "lon": 21.22899,
+   "odchody": 60,
+   "linky": [
+    "12",
+    "15",
+    "24",
+    "43"
+   ]
+  },
+  {
+   "nazov": "Kollárova  *",
+   "lat": 48.9923,
+   "lon": 21.2246,
+   "odchody": 60,
+   "linky": [
+    "12",
+    "15",
+    "24",
+    "43"
+   ]
+  },
+  {
+   "nazov": "Sázavského  *",
+   "lat": 48.99433,
+   "lon": 21.22348,
+   "odchody": 60,
+   "linky": [
+    "12",
+    "15",
+    "24",
+    "43"
+   ]
+  },
+  {
+   "nazov": "Staničná  *",
+   "lat": 49.04199,
+   "lon": 21.20396,
+   "odchody": 60,
+   "linky": [
+    "14",
+    "45",
+    "S"
+   ]
+  },
+  {
+   "nazov": "Pod Táborom  *",
+   "lat": 48.99171,
+   "lon": 21.25202,
+   "odchody": 57,
+   "linky": [
+    "12",
+    "36",
+    "E",
+    "K"
+   ]
+  },
+  {
+   "nazov": "Nižné lúky  *",
+   "lat": 48.99309,
+   "lon": 21.25863,
+   "odchody": 56,
+   "linky": [
+    "12",
+    "36",
+    "K"
+   ]
+  },
+  {
+   "nazov": "Nám.sv.Jakuba  *",
+   "lat": 49.03914,
+   "lon": 21.19396,
+   "odchody": 56,
+   "linky": [
+    "45",
+    "S"
+   ]
+  },
+  {
+   "nazov": "Medulienka   *",
+   "lat": 49.03919,
+   "lon": 21.19947,
+   "odchody": 56,
+   "linky": [
+    "45",
+    "S"
+   ]
+  },
+  {
+   "nazov": "Ľubochnianska  *",
+   "lat": 49.01712,
+   "lon": 21.26615,
+   "odchody": 56,
+   "linky": [
+    "7",
+    "17",
+    "28",
+    "33",
+    "35"
+   ]
+  },
+  {
+   "nazov": "Vyšné lúky  *",
+   "lat": 48.99311,
+   "lon": 21.26525,
+   "odchody": 55,
+   "linky": [
+    "12",
+    "36",
+    "K"
+   ]
+  },
+  {
+   "nazov": "Strojnícka  *",
+   "lat": 49.02015,
+   "lon": 21.26592,
+   "odchody": 54,
+   "linky": [
+    "7",
+    "17",
+    "28",
+    "33",
+    "35"
+   ]
+  },
+  {
+   "nazov": "Družstevná  *",
+   "lat": 49.02294,
+   "lon": 21.26647,
+   "odchody": 54,
+   "linky": [
+    "7",
+    "17",
+    "28",
+    "33",
+    "35"
+   ]
+  },
+  {
+   "nazov": "Nová  *",
+   "lat": 49.02582,
+   "lon": 21.27942,
+   "odchody": 51,
+   "linky": [
+    "21",
+    "E",
+    "H",
+    "J"
+   ]
+  },
+  {
+   "nazov": "Hruny  *",
+   "lat": 48.99505,
+   "lon": 21.28287,
+   "odchody": 51,
+   "linky": [
+    "22",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Šľachtiteľská stanica  *",
+   "lat": 49.01241,
+   "lon": 21.18569,
+   "odchody": 50,
+   "linky": [
+    "23"
+   ]
+  },
+  {
+   "nazov": "Nákupné stredisko  *",
+   "lat": 49.00978,
+   "lon": 21.18219,
+   "odchody": 50,
+   "linky": [
+    "23"
+   ]
+  },
+  {
+   "nazov": "OcÚ Malý Šariš  *",
+   "lat": 49.00801,
+   "lon": 21.17936,
+   "odchody": 50,
+   "linky": [
+    "23"
+   ]
+  },
+  {
+   "nazov": "Rázc. Malý Šariš  *",
+   "lat": 49.00519,
+   "lon": 21.18052,
+   "odchody": 50,
+   "linky": [
+    "23"
+   ]
+  },
+  {
+   "nazov": "Telekča  *",
+   "lat": 49.00174,
+   "lon": 21.19159,
+   "odchody": 50,
+   "linky": [
+    "23"
+   ]
+  },
+  {
+   "nazov": "Rázc.Cemjata  *",
+   "lat": 48.99855,
+   "lon": 21.20429,
+   "odchody": 50,
+   "linky": [
+    "23"
+   ]
+  },
+  {
+   "nazov": "Fintická  *",
+   "lat": 49.02849,
+   "lon": 21.27986,
+   "odchody": 50,
+   "linky": [
+    "21",
+    "E",
+    "H",
+    "J"
+   ]
+  },
+  {
+   "nazov": "Nám. J.Kolarčíka  *",
+   "lat": 49.05165,
+   "lon": 21.28665,
+   "odchody": 49,
+   "linky": [
+    "21",
+    "E"
+   ]
+  },
+  {
+   "nazov": "Červený mostík  *",
+   "lat": 49.04901,
+   "lon": 21.28502,
+   "odchody": 49,
+   "linky": [
+    "21",
+    "E"
+   ]
+  },
+  {
+   "nazov": "Gribľovec  *",
+   "lat": 49.04027,
+   "lon": 21.28349,
+   "odchody": 49,
+   "linky": [
+    "21",
+    "E"
+   ]
+  },
+  {
+   "nazov": "Za traťou  *",
+   "lat": 49.03702,
+   "lon": 21.28212,
+   "odchody": 49,
+   "linky": [
+    "21",
+    "E"
+   ]
+  },
+  {
+   "nazov": "Išľa  *",
+   "lat": 49.03191,
+   "lon": 21.2804,
+   "odchody": 49,
+   "linky": [
+    "21",
+    "E"
+   ]
+  },
+  {
+   "nazov": "Pri lipe  *",
+   "lat": 49.05815,
+   "lon": 21.28227,
+   "odchody": 48,
+   "linky": [
+    "21"
+   ]
+  },
+  {
+   "nazov": "V kopci  *",
+   "lat": 49.05513,
+   "lon": 21.28317,
+   "odchody": 48,
+   "linky": [
+    "21"
+   ]
+  },
+  {
+   "nazov": "Kysucká  *",
+   "lat": 48.98446,
+   "lon": 21.27291,
+   "odchody": 48,
+   "linky": [
+    "19",
+    "44",
+    "C",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Odborárska  *",
+   "lat": 48.99685,
+   "lon": 21.22203,
+   "odchody": 47,
+   "linky": [
+    "12",
+    "15",
+    "24",
+    "43"
+   ]
+  },
+  {
+   "nazov": "Jazdecká  *",
+   "lat": 49.00912,
+   "lon": 21.23323,
+   "odchody": 46,
+   "linky": [
+    "39"
+   ]
+  },
+  {
+   "nazov": "Bardejovská  *",
+   "lat": 49.01789,
+   "lon": 21.27554,
+   "odchody": 45,
+   "linky": [
+    "13",
+    "28"
+   ]
+  },
+  {
+   "nazov": "Domašská  *",
+   "lat": 49.01494,
+   "lon": 21.27122,
+   "odchody": 45,
+   "linky": [
+    "13",
+    "28"
+   ]
+  },
+  {
+   "nazov": "Lesík delostrelcov  *",
+   "lat": 48.99242,
+   "lon": 21.24958,
+   "odchody": 45,
+   "linky": [
+    "12",
+    "35",
+    "36",
+    "E",
+    "K"
+   ]
+  },
+  {
+   "nazov": "Kukučínova  *",
+   "lat": 48.98139,
+   "lon": 21.27428,
+   "odchody": 45,
+   "linky": [
+    "19",
+    "44"
+   ]
+  },
+  {
+   "nazov": "Delňa",
+   "lat": 48.96064,
+   "lon": 21.2602,
+   "odchody": 45,
+   "linky": [
+    "28",
+    "33",
+    "35",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Mukačevská  *",
+   "lat": 49.01117,
+   "lon": 21.22536,
+   "odchody": 45,
+   "linky": [
+    "39"
+   ]
+  },
+  {
+   "nazov": "Marka Čulena  *",
+   "lat": 48.99958,
+   "lon": 21.22059,
+   "odchody": 42,
+   "linky": [
+    "12",
+    "23",
+    "24",
+    "43"
+   ]
+  },
+  {
+   "nazov": "Bajkalská",
+   "lat": 49.02363,
+   "lon": 21.22987,
+   "odchody": 40,
+   "linky": [
+    "2",
+    "5",
+    "12",
+    "43"
+   ]
+  },
+  {
+   "nazov": "Zimný štadión  *",
+   "lat": 48.98767,
+   "lon": 21.22939,
+   "odchody": 40,
+   "linky": [
+    "15",
+    "43",
+    "A",
+    "P",
+    "R"
+   ]
+  },
+  {
+   "nazov": "Ľubotice  *",
+   "lat": 49.0117,
+   "lon": 21.27357,
+   "odchody": 39,
+   "linky": [
+    "13",
+    "28"
+   ]
+  },
+  {
+   "nazov": "Šalgovická  *",
+   "lat": 49.01204,
+   "lon": 21.27945,
+   "odchody": 39,
+   "linky": [
+    "13",
+    "28"
+   ]
+  },
+  {
+   "nazov": "Korabinského  *",
+   "lat": 49.01313,
+   "lon": 21.28083,
+   "odchody": 39,
+   "linky": [
+    "13",
+    "28"
+   ]
+  },
+  {
+   "nazov": "Jána Kostru  *",
+   "lat": 49.01345,
+   "lon": 21.27672,
+   "odchody": 39,
+   "linky": [
+    "13",
+    "28"
+   ]
+  },
+  {
+   "nazov": "Strážnická  *",
+   "lat": 49.01762,
+   "lon": 21.27741,
+   "odchody": 39,
+   "linky": [
+    "13",
+    "28"
+   ]
+  },
+  {
+   "nazov": "Petrovianska  *",
+   "lat": 48.95716,
+   "lon": 21.25719,
+   "odchody": 39,
+   "linky": [
+    "14",
+    "26",
+    "C"
+   ]
+  },
+  {
+   "nazov": "Šalgovík  *",
+   "lat": 48.99649,
+   "lon": 21.28754,
+   "odchody": 38,
+   "linky": [
+    "22",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Pod Kamennou baňou  *",
+   "lat": 48.98349,
+   "lon": 21.2334,
+   "odchody": 36,
+   "linky": [
+    "27",
+    "43",
+    "P",
+    "R"
+   ]
+  },
+  {
+   "nazov": "Rázc. Cemjata  *",
+   "lat": 48.99855,
+   "lon": 21.20428,
+   "odchody": 36,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "Vydumanec  *",
+   "lat": 48.99277,
+   "lon": 21.19797,
+   "odchody": 36,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "Kvašná voda  *",
+   "lat": 48.99012,
+   "lon": 21.19176,
+   "odchody": 36,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "Zabíjaná  *",
+   "lat": 48.98991,
+   "lon": 21.17954,
+   "odchody": 36,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "Školské lesy  *",
+   "lat": 48.98749,
+   "lon": 21.17623,
+   "odchody": 36,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "Hôrka  *",
+   "lat": 48.98328,
+   "lon": 21.21767,
+   "odchody": 35,
+   "linky": [
+    "15",
+    "A"
+   ]
+  },
+  {
+   "nazov": "Záhradkárska osada  *",
+   "lat": 48.98569,
+   "lon": 21.22111,
+   "odchody": 35,
+   "linky": [
+    "15",
+    "A"
+   ]
+  },
+  {
+   "nazov": "Horárska  *",
+   "lat": 48.98614,
+   "lon": 21.22611,
+   "odchody": 35,
+   "linky": [
+    "15",
+    "A"
+   ]
+  },
+  {
+   "nazov": "Jahodová  *",
+   "lat": 49.03208,
+   "lon": 21.24273,
+   "odchody": 35,
+   "linky": [
+    "12",
+    "22"
+   ]
+  },
+  {
+   "nazov": "Šidlovec  *",
+   "lat": 49.03288,
+   "lon": 21.24813,
+   "odchody": 35,
+   "linky": [
+    "12",
+    "22"
+   ]
+  },
+  {
+   "nazov": "Stavbárska  *",
+   "lat": 49.03306,
+   "lon": 21.24179,
+   "odchody": 35,
+   "linky": [
+    "12",
+    "22"
+   ]
+  },
+  {
+   "nazov": "Logistické centrum  *",
+   "lat": 48.95104,
+   "lon": 21.26225,
+   "odchody": 34,
+   "linky": [
+    "14",
+    "C",
+    "D"
+   ]
+  },
+  {
+   "nazov": "K Surdoku  *",
+   "lat": 49.00865,
+   "lon": 21.24822,
+   "odchody": 34,
+   "linky": [
+    "41"
+   ]
+  },
+  {
+   "nazov": "Pod Šibeňou  *",
+   "lat": 49.01069,
+   "lon": 21.24742,
+   "odchody": 34,
+   "linky": [
+    "41"
+   ]
+  },
+  {
+   "nazov": "Koryto  *",
+   "lat": 49.01457,
+   "lon": 21.24795,
+   "odchody": 34,
+   "linky": [
+    "41"
+   ]
+  },
+  {
+   "nazov": "Rybníčky  *",
+   "lat": 49.01946,
+   "lon": 21.25034,
+   "odchody": 34,
+   "linky": [
+    "41"
+   ]
+  },
+  {
+   "nazov": "Kúty  *",
+   "lat": 49.02244,
+   "lon": 21.25252,
+   "odchody": 34,
+   "linky": [
+    "41"
+   ]
+  },
+  {
+   "nazov": "Za Kútami  *",
+   "lat": 49.02565,
+   "lon": 21.2532,
+   "odchody": 34,
+   "linky": [
+    "41"
+   ]
+  },
+  {
+   "nazov": "Plachty  *",
+   "lat": 49.02697,
+   "lon": 21.25782,
+   "odchody": 34,
+   "linky": [
+    "41"
+   ]
+  },
+  {
+   "nazov": "Pred Surdokom  *",
+   "lat": 49.03092,
+   "lon": 21.2558,
+   "odchody": 34,
+   "linky": [
+    "41"
+   ]
+  },
+  {
+   "nazov": "Rázcestie Rúrky  *",
+   "lat": 49.00329,
+   "lon": 21.21632,
+   "odchody": 33,
+   "linky": [
+    "11"
+   ]
+  },
+  {
+   "nazov": "Jána Bereša  *",
+   "lat": 49.00505,
+   "lon": 21.21471,
+   "odchody": 33,
+   "linky": [
+    "11"
+   ]
+  },
+  {
+   "nazov": "Slávičia   *",
+   "lat": 48.9862,
+   "lon": 21.22731,
+   "odchody": 32,
+   "linky": [
+    "27",
+    "A"
+   ]
+  },
+  {
+   "nazov": "Sordok  *",
+   "lat": 49.04432,
+   "lon": 21.21657,
+   "odchody": 32,
+   "linky": [
+    "14",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Kozí rožok  *",
+   "lat": 49.04782,
+   "lon": 21.22415,
+   "odchody": 32,
+   "linky": [
+    "14",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Husí hrb  *",
+   "lat": 49.05328,
+   "lon": 21.23221,
+   "odchody": 32,
+   "linky": [
+    "14",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Pri kostole  *",
+   "lat": 49.05675,
+   "lon": 21.23261,
+   "odchody": 32,
+   "linky": [
+    "14",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Medzi jarkami  *",
+   "lat": 49.05826,
+   "lon": 21.23041,
+   "odchody": 32,
+   "linky": [
+    "14",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Stará škola  *",
+   "lat": 49.06123,
+   "lon": 21.22811,
+   "odchody": 32,
+   "linky": [
+    "14",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Šafárikova, cintorín  *",
+   "lat": 49.0043,
+   "lon": 21.2464,
+   "odchody": 32,
+   "linky": [
+    "12",
+    "27",
+    "43"
+   ]
+  },
+  {
+   "nazov": "Rázcestie Kanaš  *",
+   "lat": 49.0434,
+   "lon": 21.21088,
+   "odchody": 31,
+   "linky": [
+    "14",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Ku Brezinám  *",
+   "lat": 48.98716,
+   "lon": 21.2249,
+   "odchody": 31,
+   "linky": [
+    "27"
+   ]
+  },
+  {
+   "nazov": "Súľovská  *",
+   "lat": 48.98846,
+   "lon": 21.22168,
+   "odchody": 31,
+   "linky": [
+    "27"
+   ]
+  },
+  {
+   "nazov": "Gener. Ambruša *",
+   "lat": 49.02126,
+   "lon": 21.28818,
+   "odchody": 30,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Herlianska  *",
+   "lat": 49.01929,
+   "lon": 21.29344,
+   "odchody": 30,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Briežky  *",
+   "lat": 49.01956,
+   "lon": 21.31298,
+   "odchody": 30,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Kamence  *",
+   "lat": 49.01747,
+   "lon": 21.31704,
+   "odchody": 30,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Rázc. V. Šebastová *",
+   "lat": 49.01681,
+   "lon": 21.32041,
+   "odchody": 30,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Veľký Šariš",
+   "lat": 49.04173,
+   "lon": 21.18918,
+   "odchody": 30,
+   "linky": [
+    "23",
+    "45",
+    "S"
+   ]
+  },
+  {
+   "nazov": "OcÚ Teriakovce  *",
+   "lat": 48.9906,
+   "lon": 21.3088,
+   "odchody": 30,
+   "linky": [
+    "22",
+    "F",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Na Kruhu  *",
+   "lat": 48.99083,
+   "lon": 21.30448,
+   "odchody": 30,
+   "linky": [
+    "22",
+    "F",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Vodárenská  *",
+   "lat": 49.0024,
+   "lon": 21.24914,
+   "odchody": 30,
+   "linky": [
+    "27"
+   ]
+  },
+  {
+   "nazov": "Rázc. Teriakovce  *",
+   "lat": 48.99107,
+   "lon": 21.30192,
+   "odchody": 29,
+   "linky": [
+    "22",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Šalgovia  *",
+   "lat": 48.99155,
+   "lon": 21.29198,
+   "odchody": 29,
+   "linky": [
+    "22",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Labutia  *",
+   "lat": 48.99215,
+   "lon": 21.28853,
+   "odchody": 29,
+   "linky": [
+    "22",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Vajanského  *",
+   "lat": 49.00164,
+   "lon": 21.24275,
+   "odchody": 29,
+   "linky": [
+    "12",
+    "27",
+    "E"
+   ]
+  },
+  {
+   "nazov": "Rázc. Záborské  *",
+   "lat": 48.94705,
+   "lon": 21.2879,
+   "odchody": 28,
+   "linky": [
+    "14",
+    "C",
+    "D"
+   ]
+  },
+  {
+   "nazov": "Záborské-stred  *",
+   "lat": 48.94484,
+   "lon": 21.28936,
+   "odchody": 28,
+   "linky": [
+    "14",
+    "C",
+    "D"
+   ]
+  },
+  {
+   "nazov": "Sekčovská  *",
+   "lat": 48.99403,
+   "lon": 21.27887,
+   "odchody": 28,
+   "linky": [
+    "22",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Kúpeľná  *",
+   "lat": 48.99198,
+   "lon": 21.23721,
+   "odchody": 28,
+   "linky": [
+    "12",
+    "R"
+   ]
+  },
+  {
+   "nazov": "Lemešianska  *",
+   "lat": 48.95559,
+   "lon": 21.24073,
+   "odchody": 28,
+   "linky": [
+    "24",
+    "M"
+   ]
+  },
+  {
+   "nazov": "Priecestie  *",
+   "lat": 48.9574,
+   "lon": 21.2411,
+   "odchody": 28,
+   "linky": [
+    "24",
+    "M"
+   ]
+  },
+  {
+   "nazov": "Čistička  *",
+   "lat": 48.96499,
+   "lon": 21.24697,
+   "odchody": 28,
+   "linky": [
+    "24",
+    "M"
+   ]
+  },
+  {
+   "nazov": "Gemor  *",
+   "lat": 48.96729,
+   "lon": 21.24986,
+   "odchody": 28,
+   "linky": [
+    "24",
+    "M"
+   ]
+  },
+  {
+   "nazov": "ZVL  *",
+   "lat": 48.9686,
+   "lon": 21.2514,
+   "odchody": 28,
+   "linky": [
+    "24",
+    "M"
+   ]
+  },
+  {
+   "nazov": "Soľnobanská.  *",
+   "lat": 48.98209,
+   "lon": 21.27973,
+   "odchody": 28,
+   "linky": [
+    "46"
+   ]
+  },
+  {
+   "nazov": "Záhradky  *",
+   "lat": 48.98133,
+   "lon": 21.28873,
+   "odchody": 28,
+   "linky": [
+    "46"
+   ]
+  },
+  {
+   "nazov": "Pri zámočku  *",
+   "lat": 48.9778,
+   "lon": 21.31916,
+   "odchody": 28,
+   "linky": [
+    "46"
+   ]
+  },
+  {
+   "nazov": "Na Záhumní  *",
+   "lat": 48.97781,
+   "lon": 21.32417,
+   "odchody": 28,
+   "linky": [
+    "46"
+   ]
+  },
+  {
+   "nazov": "Hulica  *",
+   "lat": 48.97928,
+   "lon": 21.32774,
+   "odchody": 28,
+   "linky": [
+    "46"
+   ]
+  },
+  {
+   "nazov": "Malý Šariš",
+   "lat": 49.01486,
+   "lon": 21.18652,
+   "odchody": 27,
+   "linky": [
+    "23"
+   ]
+  },
+  {
+   "nazov": "Šariš park *",
+   "lat": 49.04093,
+   "lon": 21.21315,
+   "odchody": 27,
+   "linky": [
+    "14"
+   ]
+  },
+  {
+   "nazov": "Pavlovičovo nám.  *",
+   "lat": 48.99019,
+   "lon": 21.24087,
+   "odchody": 27,
+   "linky": [
+    "12"
+   ]
+  },
+  {
+   "nazov": "Jilemnického  *",
+   "lat": 48.97631,
+   "lon": 21.24573,
+   "odchody": 27,
+   "linky": [
+    "30",
+    "34",
+    "42",
+    "R"
+   ]
+  },
+  {
+   "nazov": "Šebastovská  *",
+   "lat": 49.01992,
+   "lon": 21.27683,
+   "odchody": 26,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "OcÚ Vyšná Šebastová *",
+   "lat": 49.01473,
+   "lon": 21.32619,
+   "odchody": 26,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Pod Maglovcom  *",
+   "lat": 49.01193,
+   "lon": 21.33147,
+   "odchody": 26,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Športový areál *",
+   "lat": 49.01089,
+   "lon": 21.33376,
+   "odchody": 26,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Vyšná Šebastová  *",
+   "lat": 49.00851,
+   "lon": 21.33757,
+   "odchody": 26,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Nižný koniec  *",
+   "lat": 49.00512,
+   "lon": 21.34494,
+   "odchody": 26,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Centrál  *",
+   "lat": 48.99803,
+   "lon": 21.22693,
+   "odchody": 26,
+   "linky": [
+    "15",
+    "23"
+   ]
+  },
+  {
+   "nazov": "Širpo",
+   "lat": 49.02509,
+   "lon": 21.26711,
+   "odchody": 25,
+   "linky": [
+    "7",
+    "17",
+    "28",
+    "33",
+    "35"
+   ]
+  },
+  {
+   "nazov": "Fintice",
+   "lat": 49.06,
+   "lon": 21.28195,
+   "odchody": 24,
+   "linky": [
+    "21"
+   ]
+  },
+  {
+   "nazov": "Valkovská  *",
+   "lat": 48.97535,
+   "lon": 21.27748,
+   "odchody": 24,
+   "linky": [
+    "11",
+    "44"
+   ]
+  },
+  {
+   "nazov": "Cemjata  *",
+   "lat": 48.98361,
+   "lon": 21.17511,
+   "odchody": 24,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "Futbal Tatran aréna  *",
+   "lat": 49.00623,
+   "lon": 21.2371,
+   "odchody": 24,
+   "linky": [
+    "39"
+   ]
+  },
+  {
+   "nazov": "Pod Kalváriou  *",
+   "lat": 48.99096,
+   "lon": 21.22968,
+   "odchody": 23,
+   "linky": [
+    "15",
+    "43",
+    "A",
+    "P",
+    "R"
+   ]
+  },
+  {
+   "nazov": "Kamenná  *",
+   "lat": 48.99648,
+   "lon": 21.28469,
+   "odchody": 23,
+   "linky": [
+    "22"
+   ]
+  },
+  {
+   "nazov": "Gbolovky *",
+   "lat": 49.01994,
+   "lon": 21.32202,
+   "odchody": 20,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Kapanoš  *",
+   "lat": 49.02305,
+   "lon": 21.32849,
+   "odchody": 20,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Severná - kostol *",
+   "lat": 49.02487,
+   "lon": 21.33301,
+   "odchody": 20,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Vlčie doly  *",
+   "lat": 48.96256,
+   "lon": 21.285,
+   "odchody": 20,
+   "linky": [
+    "11",
+    "44"
+   ]
+  },
+  {
+   "nazov": "Dulova Ves - kostol *",
+   "lat": 48.95565,
+   "lon": 21.30051,
+   "odchody": 20,
+   "linky": [
+    "11",
+    "44"
+   ]
+  },
+  {
+   "nazov": "Za Kalváriou",
+   "lat": 48.98128,
+   "lon": 21.21724,
+   "odchody": 18,
+   "linky": [
+    "15",
+    "A"
+   ]
+  },
+  {
+   "nazov": "Októbrová  *",
+   "lat": 48.99708,
+   "lon": 21.22295,
+   "odchody": 17,
+   "linky": [
+    "15",
+    "23"
+   ]
+  },
+  {
+   "nazov": "Na Rúrkach",
+   "lat": 49.00775,
+   "lon": 21.21162,
+   "odchody": 17,
+   "linky": [
+    "11",
+    "23"
+   ]
+  },
+  {
+   "nazov": "Surdok",
+   "lat": 49.03444,
+   "lon": 21.25821,
+   "odchody": 17,
+   "linky": [
+    "41"
+   ]
+  },
+  {
+   "nazov": "Suvorovova  *",
+   "lat": 48.97633,
+   "lon": 21.26604,
+   "odchody": 16,
+   "linky": [
+    "11"
+   ]
+  },
+  {
+   "nazov": "Cintorín Solivar *",
+   "lat": 48.97433,
+   "lon": 21.26911,
+   "odchody": 16,
+   "linky": [
+    "11"
+   ]
+  },
+  {
+   "nazov": "Na brehu  *",
+   "lat": 48.9732,
+   "lon": 21.27415,
+   "odchody": 16,
+   "linky": [
+    "11"
+   ]
+  },
+  {
+   "nazov": "Pod Hrádkom  *",
+   "lat": 48.97205,
+   "lon": 21.27815,
+   "odchody": 16,
+   "linky": [
+    "11"
+   ]
+  },
+  {
+   "nazov": "Kanaš-Stráže",
+   "lat": 49.06586,
+   "lon": 21.23026,
+   "odchody": 16,
+   "linky": [
+    "14",
+    "45"
+   ]
+  },
+  {
+   "nazov": "Terchovská",
+   "lat": 48.98869,
+   "lon": 21.21565,
+   "odchody": 16,
+   "linky": [
+    "27"
+   ]
+  },
+  {
+   "nazov": "Ostrovček  *",
+   "lat": 48.99367,
+   "lon": 21.23031,
+   "odchody": 15,
+   "linky": [
+    "15",
+    "A",
+    "P",
+    "R"
+   ]
+  },
+  {
+   "nazov": "Teriakovce",
+   "lat": 48.98993,
+   "lon": 21.31177,
+   "odchody": 15,
+   "linky": [
+    "22",
+    "F",
+    "T"
+   ]
+  },
+  {
+   "nazov": "Malá stanica *",
+   "lat": 48.99502,
+   "lon": 21.23365,
+   "odchody": 15,
+   "linky": [
+    "12",
+    "R"
+   ]
+  },
+  {
+   "nazov": "Hviezdna",
+   "lat": 49.00252,
+   "lon": 21.25233,
+   "odchody": 15,
+   "linky": [
+    "27"
+   ]
+  },
+  {
+   "nazov": "Záborské",
+   "lat": 48.94243,
+   "lon": 21.2878,
+   "odchody": 14,
+   "linky": [
+    "14",
+    "C",
+    "D"
+   ]
+  },
+  {
+   "nazov": "Plzenská *",
+   "lat": 48.9912,
+   "lon": 21.2487,
+   "odchody": 14,
+   "linky": [
+    "36"
+   ]
+  },
+  {
+   "nazov": "Haniska",
+   "lat": 48.95329,
+   "lon": 21.24123,
+   "odchody": 14,
+   "linky": [
+    "24",
+    "M"
+   ]
+  },
+  {
+   "nazov": "Ruská Nová Ves",
+   "lat": 48.97811,
+   "lon": 21.33347,
+   "odchody": 14,
+   "linky": [
+    "46"
+   ]
+  },
+  {
+   "nazov": "Pod Wilec.hôrkou  *",
+   "lat": 48.97186,
+   "lon": 21.24378,
+   "odchody": 14,
+   "linky": [
+    "42"
+   ]
+  },
+  {
+   "nazov": "Wilecova hôrka  *",
+   "lat": 48.96808,
+   "lon": 21.24417,
+   "odchody": 14,
+   "linky": [
+    "42"
+   ]
+  },
+  {
+   "nazov": "Kamenná baňa  *",
+   "lat": 48.96312,
+   "lon": 21.23973,
+   "odchody": 14,
+   "linky": [
+    "42"
+   ]
+  },
+  {
+   "nazov": "Podhradík",
+   "lat": 49.00357,
+   "lon": 21.34877,
+   "odchody": 13,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Eperia",
+   "lat": 48.99007,
+   "lon": 21.26319,
+   "odchody": 13,
+   "linky": [
+    "11",
+    "44"
+   ]
+  },
+  {
+   "nazov": "Gym.sv.Moniky  *",
+   "lat": 48.99515,
+   "lon": 21.23526,
+   "odchody": 13,
+   "linky": [
+    "12"
+   ]
+  },
+  {
+   "nazov": "Čertov kameň  *",
+   "lat": 48.97988,
+   "lon": 21.17392,
+   "odchody": 12,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "Chatky  *",
+   "lat": 48.97648,
+   "lon": 21.17146,
+   "odchody": 12,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "OcÚ Bzenov  *",
+   "lat": 48.94814,
+   "lon": 21.16513,
+   "odchody": 12,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "Rázcestie Janov  *",
+   "lat": 48.94704,
+   "lon": 21.16902,
+   "odchody": 12,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "Kpt. Nálepku  *",
+   "lat": 48.99262,
+   "lon": 21.24686,
+   "odchody": 11,
+   "linky": [
+    "13",
+    "14",
+    "22",
+    "24",
+    "26",
+    "36",
+    "42",
+    "43",
+    "44",
+    "46"
+   ]
+  },
+  {
+   "nazov": "Pod nadjazdom  *",
+   "lat": 49.01264,
+   "lon": 21.26696,
+   "odchody": 11,
+   "linky": [
+    "33",
+    "37",
+    "N2"
+   ]
+  },
+  {
+   "nazov": "Severná",
+   "lat": 49.02418,
+   "lon": 21.33678,
+   "odchody": 10,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Zlatobanská  *",
+   "lat": 48.97025,
+   "lon": 21.27885,
+   "odchody": 10,
+   "linky": [
+    "11",
+    "44"
+   ]
+  },
+  {
+   "nazov": "Dulova Ves",
+   "lat": 48.9521,
+   "lon": 21.30618,
+   "odchody": 10,
+   "linky": [
+    "11",
+    "44"
+   ]
+  },
+  {
+   "nazov": "Dúbravská  *",
+   "lat": 49.03108,
+   "lon": 21.23572,
+   "odchody": 8,
+   "linky": [
+    "12"
+   ]
+  },
+  {
+   "nazov": "Pri kaplnke  *",
+   "lat": 49.02868,
+   "lon": 21.23487,
+   "odchody": 8,
+   "linky": [
+    "12"
+   ]
+  },
+  {
+   "nazov": "Dúbrava. *",
+   "lat": 49.02499,
+   "lon": 21.23235,
+   "odchody": 8,
+   "linky": [
+    "12"
+   ]
+  },
+  {
+   "nazov": "Garrett",
+   "lat": 48.95603,
+   "lon": 21.26804,
+   "odchody": 8,
+   "linky": [
+    "14"
+   ]
+  },
+  {
+   "nazov": "Petöfiho pamätník  *",
+   "lat": 48.97427,
+   "lon": 21.24195,
+   "odchody": 7,
+   "linky": [
+    "42"
+   ]
+  },
+  {
+   "nazov": "Borkút",
+   "lat": 48.95866,
+   "lon": 21.23621,
+   "odchody": 7,
+   "linky": [
+    "42"
+   ]
+  },
+  {
+   "nazov": "SPINEA-Záturecká",
+   "lat": 48.95358,
+   "lon": 21.25005,
+   "odchody": 6,
+   "linky": [
+    "26"
+   ]
+  },
+  {
+   "nazov": "Bzenov",
+   "lat": 48.95515,
+   "lon": 21.1713,
+   "odchody": 6,
+   "linky": [
+    "18"
+   ]
+  },
+  {
+   "nazov": "Tulčícka  *",
+   "lat": 49.03397,
+   "lon": 21.1944,
+   "odchody": 4,
+   "linky": [
+    "23"
+   ]
+  },
+  {
+   "nazov": "ZŠ Ľubotice",
+   "lat": 49.01773,
+   "lon": 21.27927,
+   "odchody": 4,
+   "linky": [
+    "13",
+    "A",
+    "H",
+    "J"
+   ]
+  },
+  {
+   "nazov": "Andreja Sládkoviča *",
+   "lat": 49.04438,
+   "lon": 21.2026,
+   "odchody": 4,
+   "linky": [
+    "14"
+   ]
+  },
+  {
+   "nazov": "ZŠ V.Šariš",
+   "lat": 49.04165,
+   "lon": 21.20084,
+   "odchody": 4,
+   "linky": [
+    "14"
+   ]
+  },
+  {
+   "nazov": "Potočná",
+   "lat": 49.02795,
+   "lon": 21.27845,
+   "odchody": 2,
+   "linky": [
+    "H",
+    "J"
+   ]
+  },
+  {
+   "nazov": "Vodná",
+   "lat": 49.03138,
+   "lon": 21.27985,
+   "odchody": 2,
+   "linky": [
+    "H",
+    "J"
+   ]
+  },
+  {
+   "nazov": "Limbová  *",
+   "lat": 49.02213,
+   "lon": 21.28602,
+   "odchody": 2,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Slávik *",
+   "lat": 49.0196,
+   "lon": 21.28476,
+   "odchody": 2,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Slanská  *",
+   "lat": 49.02102,
+   "lon": 21.27952,
+   "odchody": 2,
+   "linky": [
+    "13"
+   ]
+  },
+  {
+   "nazov": "Priečne  *",
+   "lat": 48.98939,
+   "lon": 21.30258,
+   "odchody": 1,
+   "linky": [
+    "F"
+   ]
+  },
+  {
+   "nazov": "Soľnobanská  *",
+   "lat": 48.9821,
+   "lon": 21.27962,
+   "odchody": 1,
+   "linky": [
+    "F"
+   ]
+  },
+  {
+   "nazov": "Hinrichs",
+   "lat": 49.00929,
+   "lon": 21.2679,
+   "odchody": 1,
+   "linky": [
+    "37"
+   ]
+  },
+  {
+   "nazov": "ZŠ Prostějovská",
+   "lat": 49.01551,
+   "lon": 21.22408,
+   "odchody": 0,
+   "linky": [
+    "P"
+   ]
+  },
+  {
+   "nazov": "Garáž",
+   "lat": 49.01335,
+   "lon": 21.26115,
+   "odchody": 0,
+   "linky": [
+    "1"
+   ]
+  }
+ ],
+ "aktualizovane": "2026-10-23T08:33:18+00:00"
+}

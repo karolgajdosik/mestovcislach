@@ -1,15 +1,4 @@
-položka: GTFS – MHD Prešov CSV Collection mestopresov_gis_admin 1792378457000 <p>CC BY 4.0</p> 1977805 None
-https://www.arcgis.com/sharing/rest/content/items/f1033ca6c2f4461d9aba285e1c7cb079/data 200 application/zip 1977805 b'PK'
-  súbory: [('agency.txt', 245), ('stops.txt', 26503), ('routes.txt', 1574), ('trips.txt', 535557), ('stop_times.txt', 7230757), ('calendar.txt', 420), ('calendar_dates.txt', 1255), ('shapes.txt', 4161728), ('feed_info.txt', 232)]
-  agency.txt 1 [{'agency_id': 'DPMP', 'agency_name': 'Dopravný podnik mesta Prešov, akciová spoločnosť', 'agency_url': 'http://www.dpmp.sk', 'agency_timezone': 'Europe/Bratislava', 'agency_lang': 'sk', 'agency_phone': '+421/51/747 02 11', 'agency_fare_url': '', 'agency_email': 'dpmp@dpmp.sk'}]
-  feed_info.txt 1 [{'feed_publisher_name': 'R&G PLUS Sp. z o.o.', 'feed_publisher_url': 'http://www.rg.com.pl', 'feed_lang': 'sk', 'feed_start_date': '20260901', 'feed_end_date': '20261031', 'feed_version': '1382_1384', 'feed_contact_email': 'municom@rg.com.pl', 'feed_contact_url': ''}]
-  calendar.txt 8 [{'service_id': '1382_NE', 'monday': '0', 'tuesday': '0', 'wednesday': '0', 'thursday': '0', 'friday': '0', 'saturday': '0', 'sunday': '0', 'start_date': '20260901', 'end_date': '20261031'}, {'service_id': '1382_PD', 'monday': '0', 'tuesday': '0', 'wednesday': '0', 'thursday': '0', 'friday': '0', 'saturday': '0', 'sunday': '0', 'start_date': '20260901', 'end_date': '20261031'}]
-  routes.txt 55 riadkov
-  stops.txt 509 riadkov
-  trips.txt 9882 riadkov
-  calendar_dates 61 20260901 20261031
-https://gtfs.sk/ 200 text/html; charset=utf-8 5468 b'<!'
-  odkazy: ['https://github.com/gtfs-sk']
-https://www.dpmp.sk/ 200 text/html; charset=UTF-8 38853 b'<!'
-  odkazy: []
+Deň 20261023: 1637 spojov, 55 liniek, 262 zastávok; najviac odchodov: Na Hlavnej 1056
+  kód 0
+spolu {'spojov': 1637, 'liniek': 55, 'zastavok': 262, 'odchodov': 24995, 'trolejbusovych': 8} deň 2026-10-23 platnosť ['20260901', '20261031']
 HOTOVO
