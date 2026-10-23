@@ -1,0 +1,50 @@
+name: E-mailové upozornenia
+
+on:
+  schedule:
+    - cron: "15 4 * * *"  # ráno 5:15 / 6:15 SEČ/SELČ – po dennom zbere zmlúv a zámerov
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/odber_email.py"
+      - ".github/workflows/odber.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: odber-email
+  cancel-in-progress: false
+
+jobs:
+  odber:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+      - run: pip install -r scripts/requirements.txt
+      - name: Nastavenie (zoznamy a šablóna v Breve)
+        run: python scripts/odber_email.py nastavenie
+      - name: Ranný súhrn
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: python scripts/odber_email.py rozosli
+      - name: Uložiť stav
+        if: success() || failure()
+        run: |
+          git config user.name "mestovcislach-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/odber-brevo.json data/odber-stav.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Bez zmeny."
+          else
+            git commit -m "Dáta: e-mailové upozornenia $(date -u +%Y-%m-%dT%H:%M)"
+            for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 10; done
+          fi

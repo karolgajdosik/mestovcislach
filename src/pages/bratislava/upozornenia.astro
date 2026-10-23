@@ -1,6 +1,7 @@
 ---
 // Upozornenia bez registrácie: kanály Atom pre mestské časti (functions/kanal/[mc].ts).
 import Base from '../../layouts/Base.astro';
+import OdberEmail from '../../components/OdberEmail.astro';
 
 const CASTI = ['Staré Mesto', 'Ružinov', 'Vrakuňa', 'Podunajské Biskupice', 'Nové Mesto', 'Rača', 'Vajnory', 'Karlova Ves', 'Dúbravka', 'Lamač',
   'Devín', 'Devínska Nová Ves', 'Záhorská Bystrica', 'Petržalka', 'Jarovce', 'Rusovce', 'Čunovo'].sort((a, b) => a.localeCompare(b, 'sk'));
@@ -10,7 +11,7 @@ const slug = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCa
   <section class="hero">
     <p class="kicker">Upozornenia</p>
     <h1>Čo je nové vo vašej štvrti</h1>
-    <p class="lead">Uzávierky na cestách, nové stavebné zámery a väčšie zmluvy vašej mestskej časti – na jednom mieste, bez registrácie. Nepotrebujeme váš e-mail ani žiadne iné údaje.</p>
+    <p class="lead">Uzávierky na cestách, nové stavebné zámery a väčšie zmluvy vašej mestskej časti – na jednom mieste, bez registrácie a bez osobných údajov.</p>
   </section>
 
   <div class="rozlozenie">
@@ -46,9 +47,11 @@ const slug = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCa
     </section>
   </div>
 
+  <OdberEmail vyberId="u-mc" popis="Nové stavebné zámery, väčšie zmluvy a výstrahy SHMÚ pre mestskú časť vybranú hore (alebo celú Bratislavu)." />
+
   <section class="card sukromie">
-    <h2>Prečo nie e-mail?</h2>
-    <p>Kanál nevyžaduje žiadne osobné údaje: nevieme, kto ho odoberá, a nemusíme nič uchovávať ani chrániť. Údaje pochádzajú z verejných zdrojov – z dopravných služieb hlavného mesta, z Enviroportálu (MŽP SR) a z Centrálneho registra zmlúv. Mená fyzických osôb v kanáli nie sú.</p>
+    <h2>Kanál alebo e-mail?</h2>
+    <p>Kanál nevyžaduje žiadne osobné údaje: nevieme, kto ho odoberá, a nemusíme nič uchovávať ani chrániť. E-mailový súhrn potrebuje vašu adresu – spracúva ju len služba Brevo s vaším súhlasom a odhlásiť sa dá kedykoľvek. Údaje pochádzajú z verejných zdrojov – z dopravných služieb hlavného mesta, z Enviroportálu (MŽP SR) a z Centrálneho registra zmlúv. Mená fyzických osôb v upozorneniach nie sú.</p>
   </section>
 </Base>
 

@@ -1,0 +1,70 @@
+---
+// Prihlásenie na ranný e-mailový súhrn (functions/api/odber.ts → Brevo, double opt-in).
+// Zobrazí sa, až keď existuje public/data/odber-brevo.json (scripts/odber_email.py nastavenie).
+import fs from 'node:fs';
+import path from 'node:path';
+const { kanal, vyberId, popis } = Astro.props as { kanal?: string; vyberId?: string; popis: string };
+const zapnute = fs.existsSync(path.join(process.cwd(), 'public', 'data', 'odber-brevo.json'));
+---
+{zapnute && (
+  <section class="card odber" aria-labelledby="odber-h">
+    <h2 id="odber-h">Alebo e-mailom</h2>
+    <p>{popis} Súhrn chodí ráno, len keď je niečo nové.</p>
+    <form class="odber-form" data-kanal={kanal ?? ''} data-vyber={vyberId ?? ''} novalidate>
+      <label for="odber-email">E-mailová adresa</label>
+      <div class="odber-riadok">
+        <input id="odber-email" name="email" type="email" required autocomplete="email" inputmode="email" />
+        <button type="submit">Prihlásiť</button>
+      </div>
+      <label class="odber-pasca" aria-hidden="true">Web <input name="web" tabindex="-1" autocomplete="off" /></label>
+      <label class="odber-suhlas"><input name="suhlas" type="checkbox" required />
+        <span>Súhlasím so zasielaním upozornení na túto adresu. Adresu spracúva služba Brevo (EÚ) len na tento účel; odhlásiť sa dá jedným klikom v každom e-maile. <a href="/sukromie#email">Viac o ochrane súkromia</a>.</span></label>
+      <p class="odber-stav" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+)}
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.odber-form').forEach((f) => {
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const stav = f.querySelector('.odber-stav')!;
+      const vyber = f.dataset.vyber ? (document.getElementById(f.dataset.vyber) as HTMLSelectElement | null) : null;
+      const kanal = vyber?.value || f.dataset.kanal;
+      const data = new FormData(f);
+      const email = String(data.get('email') ?? '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { stav.textContent = 'Skontrolujte, prosím, e-mailovú adresu.'; return; }
+      if (!data.get('suhlas')) { stav.textContent = 'Potvrďte, prosím, súhlas so zasielaním.'; return; }
+      const btn = f.querySelector('button')!;
+      btn.disabled = true;
+      stav.textContent = 'Odosielam…';
+      try {
+        const r = await fetch('/api/odber', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, kanal, suhlas: true, web: data.get('web') || '' }) });
+        const o = await r.json();
+        stav.textContent = o.sprava;
+        if (r.ok) f.reset();
+      } catch {
+        stav.textContent = 'Prihlásenie sa teraz nepodarilo, skúste to, prosím, neskôr.';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .odber { margin-top: 16px; }
+  .odber h2 { margin-top: 0; }
+  .odber-form label[for] { display: block; font-weight: 700; margin: 10px 0 6px; }
+  .odber-riadok { display: flex; gap: 8px; flex-wrap: wrap; }
+  .odber-riadok input { flex: 1 1 240px; min-width: 0; height: 44px; padding: 0 12px; border: 1.5px solid var(--line); border-radius: 10px; font: inherit; background: var(--bg); color: var(--text); }
+  .odber-riadok input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .odber-riadok button { height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: var(--accent); color: var(--na-akcente); font: inherit; font-weight: 700; cursor: pointer; }
+  .odber-riadok button:disabled { opacity: 0.6; cursor: wait; }
+  .odber-suhlas { display: flex; gap: 10px; align-items: flex-start; margin-top: 12px; font-size: 0.85rem; color: var(--muted); }
+  .odber-suhlas input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); flex-shrink: 0; }
+  .odber-pasca { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .odber-stav { margin: 10px 0 0; font-weight: 600; }
+  .odber-stav:empty { display: none; }
+</style>

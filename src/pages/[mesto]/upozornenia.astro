@@ -1,6 +1,7 @@
 ---
 // Upozornenia pre krajské mesto (okrem Bratislavy): kanál Atom so stavbami a výstrahami (functions/kanal/[mc].ts).
 import Base from '../../layouts/Base.astro';
+import OdberEmail from '../../components/OdberEmail.astro';
 import { MESTA, type Mesto } from '../../mesta';
 
 export function getStaticPaths() {
@@ -12,7 +13,7 @@ const { m } = Astro.props as { m: Mesto };
   <section class="hero">
     <p class="kicker">Upozornenia</p>
     <h1>Čo je nové <span translate="no">{m.v}</span></h1>
-    <p class="lead">Nové a zmenené stavebné zámery v posudzovaní EIA a výstrahy SHMÚ pre okres{m.okresy.length > 1 ? 'y' : ''} mesta – v jednom kanáli, bez registrácie. Nepotrebujeme váš e-mail ani žiadne iné údaje.</p>
+    <p class="lead">Nové a zmenené stavebné zámery v posudzovaní EIA a výstrahy SHMÚ pre okres{m.okresy.length > 1 ? 'y' : ''} mesta – v jednom kanáli bez registrácie a bez osobných údajov.</p>
   </section>
 
   <div class="rozlozenie" id="upozornenia" data-mesto={m.slug}>
@@ -38,6 +39,7 @@ const { m } = Astro.props as { m: Mesto };
       <ol id="u-polozky" class="polozky" tabindex="0" aria-label="Náhľad upozornení"></ol>
     </section>
   </div>
+  <OdberEmail kanal={m.slug} popis={`Nové stavebné zámery a výstrahy SHMÚ ${m.v}.`} />
 </Base>
 
 <script>
