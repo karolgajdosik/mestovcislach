@@ -1,9 +1,19 @@
   https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip: HTTP 404
-zdroj: https://web.archive.org/web/20241201215347id_/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip
-Bratislava: MČ 17, kontrola {'okrskov': 394, 'priradenych': 388, 'hlasy_nad_volicov': 0}, voliči sedia v 12/17 MČ
-  rozdiely oproti doterajšiemu výpočtu: []
-  počty vyhraných MČ (bez mien): [17] | podiely víťazov: [66, 63, 49, 68, 67, 54, 57, 59, 52, 57, 61, 65, 68, 55, 54, 65, 65]
-  názvy MČ: ['Devín', 'Devínska Nová Ves', 'Dúbravka', 'Jarovce', 'Karlova Ves', 'Lamač', 'Nové Mesto', 'Petržalka', 'Podunajské Biskupice', 'Rača', 'Rusovce', 'Ružinov', 'Staré Mesto', 'Vajnory', 'Vrakuňa', 'Záhorská Bystrica', 'Čunovo']
-Košice: MČ 16, kontrola {'okrskov': 198, 'priradenych': 194, 'hlasy_nad_volicov': 8}, voliči sedia v 13/16 MČ
-  počty vyhraných MČ (bez mien): [14, 2] | podiely víťazov: [39, 34, 36, 40, 34, 88, 34, 32, 45, 39, 35, 34, 34, 37, 32, 41]
-  názvy MČ: ['Barca', 'Dargovských hrdinov', 'Juh', 'Košická Nová Ves', 'Krásna', 'Luník IX', 'Myslava', 'Nad jazerom', 'Sever', 'Staré Mesto', 'Sídlisko KVP', 'Sídlisko Ťahanovce', 'Vyšné Opátske', 'Západ', 'Šaca', 'Ťahanovce']
+MČ v tab0d: 22
+okrskov MČ spolu: 198 | okrskov mesta: 198
+okrsky po MČ: {'Kavečany': 1, 'Ťahanovce': 2, 'Sever': 18, 'Staré Mesto': 19, 'Lorinčík': 1, 'Pereš': 2, 'Myslava': 2, 'Západ': 31, 'Dargovských hrdinov': 24, 'Košická Nová Ves': 2, 'Barca': 3, 'Šebastovce': 1, 'Krásna': 4, 'Nad jazerom': 23, 'Juh': 20, 'Šaca': 3, 'Poľov': 1, 'Sídlisko Ťahanovce': 17, 'Sídlisko KVP': 18, 'Džungľa': 1, 'Vyšné Opátske': 3, 'Luník IX': 2}
+stĺpce tab02b: ['OBEC', 'VOOBEC', 'OKRSOK', 'P_ZAP', 'P_ZUC', 'UCAST', 'P_OO', 'P_OO_PCT', 'P_HL_ZAS', 'P_HL_STA']
+zap+zuc {'jedno': 194, 'žiadne': 4}
+okrsok+zap+zuc {'jedno': 194, 'žiadne': 4}
+Džungľa [('1', '1', 537, 156)] v meste: [('1', '1')]
+Kavečany [('1', '1', 1100, 650)] v meste: [('1', '1')]
+Ťahanovce [('1', '1', 977, 229), ('2', '1', 820, 303)] v meste: [('2', '1'), ('2', '2')]
+Lorinčík [('1', '1', 789, 500)] v meste: [('6', '1')]
+Luník IX [('1', '1', 2617, 341), ('2', '1', 2308, 452)] v meste: [('4', '1'), ('4', '2')]
+Myslava [('1', '1', 1279, 644), ('2', '1', 891, 511)] v meste: [('6', '2')]
+Pereš [('1', '1', 892, 466), ('2', '1', 858, 471)] v meste: [('6', '1'), ('6', '2')]
+Poľov [('1', '1', 949, 712)] v meste: [('5', '1')]
+Košická Nová Ves [('1', '1', 1146, 589), ('2', '1', 1285, 523)] v meste: [('14', '1'), ('14', '2')]
+Šebastovce [('1', '1', 622, 391)] v meste: [('5', '1')]
+blokov tab05 mesta: 187 | unikátnych kľúčov: 187
+poradie tab02b vs tab05 blokov rovnaké: False
