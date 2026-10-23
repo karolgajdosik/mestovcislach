@@ -1,4 +1,8 @@
-Deň 20261023: 1637 spojov, 55 liniek, 262 zastávok; najviac odchodov: Na Hlavnej 1056
-  kód 0
-spolu {'spojov': 1637, 'liniek': 55, 'zastavok': 262, 'odchodov': 24995, 'trolejbusovych': 8} deň 2026-10-23 platnosť ['20260901', '20261031']
+https://mestovcislach.sk/presov/zivot/ 200 id="mhd" True
+https://mestovcislach.sk/kosice/ 200 volby-mapa True
+https://mestovcislach.sk/bratislava/volby/ 200 volby-mapa True
+https://mestovcislach.sk/data/mesta/mapa/presov.json 200 mhd-zastavky True
+https://mestovcislach.sk/presov/adresa/ 200 ad-form True
+https://mestovcislach.sk/bratislava/ 200 Moja adresa True
+https://mestovcislach.sk/sukromie/ 200 Nominatim True
 HOTOVO
