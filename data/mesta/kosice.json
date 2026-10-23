@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-21T05:21:51",
+ "aktualizovane": "2026-10-23T08:00:19",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -920,6 +920,476 @@
     "pct": 100.0,
     "priebezne": false
    },
+   "mestske_casti": [
+    {
+     "kod": "599093",
+     "nazov": "Barca",
+     "ucast": 47.06,
+     "volili": 1443,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 342,
+       "podiel": 37.54
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 200,
+       "podiel": 21.95
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 182,
+       "podiel": 19.98
+      }
+     ]
+    },
+    {
+     "kod": "598682",
+     "nazov": "Dargovských hrdinov",
+     "ucast": 25.27,
+     "volili": 5466,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 1737,
+       "podiel": 34.16
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1073,
+       "podiel": 21.1
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1055,
+       "podiel": 20.75
+      }
+     ]
+    },
+    {
+     "kod": "599824",
+     "nazov": "Juh",
+     "ucast": 29.49,
+     "volili": 5487,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 1836,
+       "podiel": 36.26
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1062,
+       "podiel": 20.98
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1023,
+       "podiel": 20.21
+      }
+     ]
+    },
+    {
+     "kod": "598119",
+     "nazov": "Kavečany",
+     "ucast": 59.09,
+     "volili": 650,
+     "poradie": [
+      {
+       "meno": "RNDr. Ing. Jaroslav Džunko",
+       "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+       "hlasy": 9,
+       "podiel": 100.0
+      }
+     ]
+    },
+    {
+     "kod": "599018",
+     "nazov": "Košická Nová Ves",
+     "ucast": 45.74,
+     "volili": 1112,
+     "poradie": [
+      {
+       "meno": "RNDr. Ing. Jaroslav Džunko",
+       "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+       "hlasy": 7,
+       "podiel": 100.0
+      }
+     ]
+    },
+    {
+     "kod": "599794",
+     "nazov": "Krásna",
+     "ucast": 40.31,
+     "volili": 1870,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 592,
+       "podiel": 33.98
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 459,
+       "podiel": 26.35
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 315,
+       "podiel": 18.08
+      }
+     ]
+    },
+    {
+     "kod": "598194",
+     "nazov": "Lorinčík",
+     "ucast": 63.37,
+     "volili": 500,
+     "poradie": [
+      {
+       "meno": "Ing. Jozef Karabin, MBA",
+       "strany": "nezávislý kandidát",
+       "hlasy": 11,
+       "podiel": 78.57
+      },
+      {
+       "meno": "RNDr. Ing. Jaroslav Džunko",
+       "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+       "hlasy": 3,
+       "podiel": 21.43
+      }
+     ]
+    },
+    {
+     "kod": "599972",
+     "nazov": "Luník IX",
+     "ucast": 16.1,
+     "volili": 793,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 496,
+       "podiel": 88.41
+      },
+      {
+       "meno": "Ing. Jozef Karabin, MBA",
+       "strany": "nezávislý kandidát",
+       "hlasy": 18,
+       "podiel": 3.21
+      },
+      {
+       "meno": "JUDr. Monika Kováčová",
+       "strany": "nezávislý kandidát",
+       "hlasy": 18,
+       "podiel": 3.21
+      }
+     ]
+    },
+    {
+     "kod": "598216",
+     "nazov": "Myslava",
+     "ucast": 57.35,
+     "volili": 511,
+     "poradie": [
+      {
+       "meno": "RNDr. Ing. Jaroslav Džunko",
+       "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+       "hlasy": 3,
+       "podiel": 100.0
+      }
+     ]
+    },
+    {
+     "kod": "599816",
+     "nazov": "Nad jazerom",
+     "ucast": 30.53,
+     "volili": 5714,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 1735,
+       "podiel": 32.7
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1130,
+       "podiel": 21.3
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1087,
+       "podiel": 20.49
+      }
+     ]
+    },
+    {
+     "kod": "598208",
+     "nazov": "Pereš",
+     "ucast": 53.54,
+     "volili": 937,
+     "poradie": [
+      {
+       "meno": "Ing. Jozef Karabin, MBA",
+       "strany": "nezávislý kandidát",
+       "hlasy": 18,
+       "podiel": 52.94
+      },
+      {
+       "meno": "RNDr. Ing. Jaroslav Džunko",
+       "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+       "hlasy": 16,
+       "podiel": 47.06
+      }
+     ]
+    },
+    {
+     "kod": "599859",
+     "nazov": "Poľov",
+     "ucast": 75.03,
+     "volili": 712,
+     "poradie": [
+      {
+       "meno": "RNDr. Ing. Jaroslav Džunko",
+       "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+       "hlasy": 7,
+       "podiel": 100.0
+      }
+     ]
+    },
+    {
+     "kod": "598151",
+     "nazov": "Sever",
+     "ucast": 30.81,
+     "volili": 5137,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 2048,
+       "podiel": 44.56
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 956,
+       "podiel": 20.8
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 756,
+       "podiel": 16.45
+      }
+     ]
+    },
+    {
+     "kod": "598186",
+     "nazov": "Staré Mesto",
+     "ucast": 31.97,
+     "volili": 5748,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 2157,
+       "podiel": 39.18
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1155,
+       "podiel": 20.98
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1088,
+       "podiel": 19.76
+      }
+     ]
+    },
+    {
+     "kod": "599883",
+     "nazov": "Sídlisko KVP",
+     "ucast": 31.28,
+     "volili": 5890,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 1906,
+       "podiel": 34.9
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1204,
+       "podiel": 22.05
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 968,
+       "podiel": 17.73
+      }
+     ]
+    },
+    {
+     "kod": "599875",
+     "nazov": "Sídlisko Ťahanovce",
+     "ucast": 27.37,
+     "volili": 4847,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 1393,
+       "podiel": 34.2
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 838,
+       "podiel": 20.57
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 789,
+       "podiel": 19.37
+      }
+     ]
+    },
+    {
+     "kod": "599913",
+     "nazov": "Vyšné Opátske",
+     "ucast": 47.94,
+     "volili": 1025,
+     "poradie": [
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 92,
+       "podiel": 31.62
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 78,
+       "podiel": 26.8
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 67,
+       "podiel": 23.02
+      }
+     ]
+    },
+    {
+     "kod": "598224",
+     "nazov": "Západ",
+     "ucast": 27.06,
+     "volili": 8718,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 3018,
+       "podiel": 36.33
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1666,
+       "podiel": 20.05
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1517,
+       "podiel": 18.26
+      }
+     ]
+    },
+    {
+     "kod": "599841",
+     "nazov": "Šaca",
+     "ucast": 35.51,
+     "volili": 1639,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 428,
+       "podiel": 32.2
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 279,
+       "podiel": 20.99
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 208,
+       "podiel": 15.65
+      }
+     ]
+    },
+    {
+     "kod": "599786",
+     "nazov": "Šebastovce",
+     "ucast": 62.86,
+     "volili": 391,
+     "poradie": [
+      {
+       "meno": "Ing. Jozef Karabin, MBA",
+       "strany": "nezávislý kandidát",
+       "hlasy": 23,
+       "podiel": 54.76
+      },
+      {
+       "meno": "RNDr. Ing. Jaroslav Džunko",
+       "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+       "hlasy": 19,
+       "podiel": 45.24
+      }
+     ]
+    },
+    {
+     "kod": "598127",
+     "nazov": "Ťahanovce",
+     "ucast": 29.6,
+     "volili": 532,
+     "poradie": [
+      {
+       "meno": "RNDr. Ing. Jaroslav Džunko",
+       "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+       "hlasy": 4,
+       "podiel": 100.0
+      }
+     ]
+    }
+   ],
    "primator": [
     {
      "meno": "Ing. Jaroslav Polaček",

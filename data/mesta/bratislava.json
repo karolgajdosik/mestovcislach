@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-21T05:21:51",
+ "aktualizovane": "2026-10-23T08:00:19",
  "obyvatelia": {
   "roky": {
    "1993": 448785,
@@ -814,6 +814,450 @@
     "pct": 100.0,
     "priebezne": false
    },
+   "mestske_casti": [
+    {
+     "kod": "529401",
+     "nazov": "Devín",
+     "ucast": 55.35,
+     "volili": 853,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 525,
+       "podiel": 66.2
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 210,
+       "podiel": 26.48
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 22,
+       "podiel": 2.77
+      }
+     ]
+    },
+    {
+     "kod": "529371",
+     "nazov": "Devínska Nová Ves",
+     "ucast": 39.5,
+     "volili": 5641,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 3383,
+       "podiel": 63.0
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 1272,
+       "podiel": 23.69
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 283,
+       "podiel": 5.27
+      }
+     ]
+    },
+    {
+     "kod": "529389",
+     "nazov": "Dúbravka",
+     "ucast": 35.79,
+     "volili": 10792,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 5041,
+       "podiel": 49.07
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 3192,
+       "podiel": 31.07
+      },
+      {
+       "meno": "RNDr. Andrej Trnovec",
+       "strany": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 981,
+       "podiel": 9.55
+      }
+     ]
+    },
+    {
+     "kod": "529443",
+     "nazov": "Jarovce",
+     "ucast": 53.33,
+     "volili": 1146,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 720,
+       "podiel": 67.54
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 239,
+       "podiel": 22.42
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 51,
+       "podiel": 4.78
+      }
+     ]
+    },
+    {
+     "kod": "529397",
+     "nazov": "Karlova Ves",
+     "ucast": 38.14,
+     "volili": 11286,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 7334,
+       "podiel": 67.04
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 2476,
+       "podiel": 22.63
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 506,
+       "podiel": 4.63
+      }
+     ]
+    },
+    {
+     "kod": "529419",
+     "nazov": "Lamač",
+     "ucast": 48.14,
+     "volili": 3143,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 1606,
+       "podiel": 53.5
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 1033,
+       "podiel": 34.41
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 125,
+       "podiel": 4.16
+      }
+     ]
+    },
+    {
+     "kod": "529346",
+     "nazov": "Nové Mesto",
+     "ucast": 39.02,
+     "volili": 14768,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 8071,
+       "podiel": 56.52
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 4649,
+       "podiel": 32.55
+      },
+      {
+       "meno": "RNDr. Andrej Trnovec",
+       "strany": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 671,
+       "podiel": 4.7
+      }
+     ]
+    },
+    {
+     "kod": "529460",
+     "nazov": "Petržalka",
+     "ucast": 32.29,
+     "volili": 31873,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 18101,
+       "podiel": 58.91
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 8405,
+       "podiel": 27.35
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 1623,
+       "podiel": 5.28
+      }
+     ]
+    },
+    {
+     "kod": "529311",
+     "nazov": "Podunajské Biskupice",
+     "ucast": 36.75,
+     "volili": 7197,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 3521,
+       "podiel": 51.83
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 2183,
+       "podiel": 32.13
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 335,
+       "podiel": 4.93
+      }
+     ]
+    },
+    {
+     "kod": "529354",
+     "nazov": "Rača",
+     "ucast": 38.63,
+     "volili": 8459,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 4610,
+       "podiel": 57.03
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 2567,
+       "podiel": 31.75
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 423,
+       "podiel": 5.23
+      }
+     ]
+    },
+    {
+     "kod": "529494",
+     "nazov": "Rusovce",
+     "ucast": 55.99,
+     "volili": 1935,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 1102,
+       "podiel": 61.15
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 534,
+       "podiel": 29.63
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 69,
+       "podiel": 3.83
+      }
+     ]
+    },
+    {
+     "kod": "529320",
+     "nazov": "Ružinov",
+     "ucast": 36.57,
+     "volili": 25798,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 16059,
+       "podiel": 64.59
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 6197,
+       "podiel": 24.93
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 902,
+       "podiel": 3.63
+      }
+     ]
+    },
+    {
+     "kod": "528595",
+     "nazov": "Staré Mesto",
+     "ucast": 38.08,
+     "volili": 15776,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 10540,
+       "podiel": 68.26
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 3597,
+       "podiel": 23.29
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 469,
+       "podiel": 3.04
+      }
+     ]
+    },
+    {
+     "kod": "529362",
+     "nazov": "Vajnory",
+     "ucast": 47.82,
+     "volili": 2334,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 1157,
+       "podiel": 54.58
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 725,
+       "podiel": 34.2
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 98,
+       "podiel": 4.62
+      }
+     ]
+    },
+    {
+     "kod": "529338",
+     "nazov": "Vrakuňa",
+     "ucast": 30.61,
+     "volili": 5332,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 2707,
+       "podiel": 53.92
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 1744,
+       "podiel": 34.74
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 249,
+       "podiel": 4.96
+      }
+     ]
+    },
+    {
+     "kod": "529427",
+     "nazov": "Záhorská Bystrica",
+     "ucast": 52.68,
+     "volili": 2715,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 1682,
+       "podiel": 65.47
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 633,
+       "podiel": 24.64
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 110,
+       "podiel": 4.28
+      }
+     ]
+    },
+    {
+     "kod": "529435",
+     "nazov": "Čunovo",
+     "ucast": 62.83,
+     "volili": 791,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
+       "hlasy": 468,
+       "podiel": 65.18
+      },
+      {
+       "meno": "Mgr. Rudolf Kusý",
+       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+       "hlasy": 183,
+       "podiel": 25.49
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+       "hlasy": 22,
+       "podiel": 3.06
+      }
+     ]
+    }
+   ],
    "primator": [
     {
      "meno": "Ing. arch. Matúš Vallo",
