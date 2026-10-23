@@ -10,6 +10,8 @@
   if (!l || J.indexOf(l) < 0) l = 'sk';
   d.lang = l;
   if (l !== 'sk') d.className += ' prekladam';
+  // graf vložený na iný web (/vlozit/…, functions/vlozit) – bez hlavičky, menu a pätičky
+  if (d.getAttribute('data-vlozit')) d.className += ' vlozene';
   var tmava = v.tema === 'tmava' || (v.tema !== 'svetla' && window.matchMedia('(prefers-color-scheme: dark)').matches);
   d.setAttribute('data-tema', tmava ? 'tmava' : 'svetla');
   if (v.slabozraky) d.setAttribute('data-slabozraky', '1');
