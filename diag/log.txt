@@ -1,2 +1,16 @@
-zilina ['/_astro/mapa.astro_astro_type_script_index_0_lang.C4ak-vIO.js'] True
-kosice ['/_astro/mapa.astro_astro_type_script_index_0_lang.C4ak-vIO.js'] True
+https://data.statistics.sk/api/v2/dataset/om7101rr/SK010/2024/U/val ConnectTimeout HTTPSConnectionPool(host='data.statistics.sk', port=443): Max retries exceeded with url: /api/v2/dataset/om7101rr/SK010/
+https://volby.statistics.sk/opendata/ 404 text/html; charset=iso-8859-1 207 None
+https://volbysr.sk/oso/sk/ 200 text/html 26882 Tue, 20 Oct 2026 07:04:49 GMT
+https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip 200 application/zip 173044 Tue, 20 Oct 2026 07:04:46 GMT
+
+== zber_obyvatelstvo.py: návratový kód 1
+::error title=Zber obyvateľstva::ConnectTimeout: HTTPSConnectionPool(host='data.statistics.sk', port=443): Max retries exceeded with url: /api/v2/collection?lang=sk (Caused by ConnectTimeoutError(<HTTPSConnection(host='data.statistics.sk', port=443) at 0x79aa44187620>, 'Connection to data.statistics
+CHYBA: HTTPSConnectionPool(host='data.statistics.sk', port=443): Max retries exceeded with url: /api/v2/collection?lang=sk (Caused by ConnectTimeoutError(<HTTPSConnection(host='data.statistics.sk', port=443) at 0x79aa44187620>, 'Connection to data.statistics.sk timed out. (connect timeout=60)'))
+
+== zber_volby.py: návratový kód 1
+::error title=Zber volieb::HTTPError: 404 Client Error: Not Found for url: https://volby.statistics.sk/opendata/nrsr/2023/NRSR2023_SK_tab02d.csv
+CHYBA: 404 Client Error: Not Found for url: https://volby.statistics.sk/opendata/nrsr/2023/NRSR2023_SK_tab02d.csv
+
+== zber_byvanie.py: návratový kód 1
+::error title=Zber bývanie::ConnectTimeout: HTTPSConnectionPool(host='data.statistics.sk', port=443): Max retries exceeded with url: /api/v2/dataset/sp3801qr/SK0,SK010/all/all/all/all?lang=sk (Caused by ConnectTimeoutError(<HTTPSConnection(host='data.statistics.sk', port=443) at 0x7dd2c9878190>, 'Co
+CHYBA: HTTPSConnectionPool(host='data.statistics.sk', port=443): Max retries exceeded with url: /api/v2/dataset/sp3801qr/SK0,SK010/all/all/all/all?lang=sk (Caused by ConnectTimeoutError(<HTTPSConnection(host='data.statistics.sk', port=443) at 0x7dd2c9878190>, 'Connection to data.statistics.sk timed 
