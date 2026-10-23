@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import FotoMesta from '../../components/FotoMesta.astro';
 import MapaCasti from '../../components/MapaCasti.astro';
 import DnesVBratislave from '../../components/DnesVBratislave.astro';
 import obyv from '../../../data/obyvatelstvo-bratislava.json';
@@ -36,9 +37,11 @@ const grafData = mesto
   : '';
 ---
 <Base title="Bratislava v číslach – mestovcislach.sk" description="Bratislava v otvorených dátach: obyvatelia mestských častí, doprava a MHD, rozpočet a zmluvy, výstavba, voľby, ovzdušie a živé údaje – prehľadne a so zdrojmi.">
-  <section class="hero">
+  <FotoMesta slug="bratislava" nazov="Bratislava">
     <p class="kicker">Hlavné mesto SR</p>
     <h1>Bratislava v číslach</h1>
+  </FotoMesta>
+  <section class="hero hero-pod">
     <p class="lead">Otvorené dáta o meste a jeho 17 mestských častiach, na jednom mieste a so zdrojmi.</p>
   </section>
 
@@ -151,6 +154,7 @@ const grafData = mesto
 
 <style>
   .hero { padding: 40px 0 24px; }
+  .hero.hero-pod { padding: 0 0 18px; }
   .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
   h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
   .lead { color: var(--muted); font-size: 1.1rem; max-width: 40em; margin: 0; }

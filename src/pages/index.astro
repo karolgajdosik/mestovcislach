@@ -3,6 +3,7 @@
 import Base from '../layouts/Base.astro';
 import { webSite } from '../lib/seo';
 import { MESTA } from '../mesta';
+import { foto } from '../lib/fotky';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -25,6 +26,7 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
     {aktivne.map((m) => (
       <li>
         <a class={`mesto card aktivne${m.plne ? ' plne' : ''}`} href={`/${m.slug}`}>
+          {foto(m.slug) && <img class="m-foto" src={foto(m.slug)!.src} srcset={foto(m.slug)!.srcset} sizes="(max-width: 600px) 100vw, 300px" alt="" loading="lazy" decoding="async" width="800" height="450" />}
           <span class="m-kraj">{m.kraj}</span>
           <span class="m-nazov" translate="no">{m.nazov}</span>
           {udaje(m.slug) && <span class="m-cislo"><strong>{fmt(udaje(m.slug).obyvatelia)}</strong> obyvateľov · {znam(udaje(m.slug).zmena10)} za 10 rokov</span>}
@@ -50,6 +52,8 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
     <h2>Ako to funguje</h2>
     <p>Údaje berieme z verejných zdrojov – zo Štatistického úradu, z Centrálneho registra zmlúv, z Enviroportálu, od SHMÚ, z otvorených dát miest a ďalších. Pri každom čísle je uvedený zdroj. Bratislava má najpodrobnejšie údaje vďaka bohatým otvoreným dátam mesta; pri ostatných krajských mestách sú zatiaľ celoštátne zdroje a mestské údaje budú pribúdať.</p>
   </section>
+
+  <p class="kredity">Fotografie miest: Wikimedia Commons – {aktivne.map((m, i) => { const f = foto(m.slug); return f && <>{i ? '; ' : ''}<span translate="no">{m.nazov}</span>: <a href={f.zdroj} rel="noopener">{f.autor}</a> ({f.licenciaUrl ? <a href={f.licenciaUrl} rel="noopener license">{f.licencia}</a> : f.licencia})</>; })}.</p>
 </Base>
 
 <style>
@@ -58,7 +62,12 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
   h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); line-height: 1.05; letter-spacing: -0.035em; margin: 8px 0 12px; }
   .lead { color: var(--muted); font-size: 1.15rem; max-width: 40em; margin: 0; }
   .mesta { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
-  .mesto { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 18px; text-decoration: none; color: var(--text); }
+  .mesto { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 18px; text-decoration: none; color: var(--text); overflow: hidden; }
+  .m-foto { display: block; width: calc(100% + 36px); height: auto; max-width: none; margin: -18px -18px 10px; aspect-ratio: 16 / 9; object-fit: cover; background: var(--line); transition: transform 0.3s; }
+  .mesto.aktivne:hover .m-foto { transform: scale(1.03); }
+  .kredity { margin: 18px 0 0; font-size: 0.75rem; color: var(--muted); }
+  .kredity a { color: inherit; }
+  @media (prefers-reduced-motion: reduce) { .m-foto { transition: none; } }
   .mesto.aktivne { transition: transform 0.15s, border-color 0.15s; }
   .mesto.aktivne:hover { border-color: var(--accent); }
   .mesto.plne { border: 2px solid var(--accent); }

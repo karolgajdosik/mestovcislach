@@ -8,6 +8,7 @@ import { MESTA, type Mesto } from '../../mesta';
 import { KATEGORIE_EIA } from '../../lib/eia';
 import { maMapu, maSamospravu, mapaMesta } from '../../lib/mapa';
 import VolbyMapa from '../../components/VolbyMapa.astro';
+import FotoMesta from '../../components/FotoMesta.astro';
 import VolbyPorovnanie from '../../components/VolbyPorovnanie.astro';
 import { maZivot } from '../../lib/temy';
 
@@ -80,9 +81,11 @@ const zobrazit = [...aktivne, ...zamery.filter((z) => z.ukoncene)].slice(0, 12);
 const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(mm)}/${r}`; };
 ---
 <Base title={`${m.nazov} v číslach – mestovcislach.sk`} description={`${m.nazov}: obyvatelia, sčítanie 2021, voľby, nezamestnanosť, výstavba bytov, ceny bývania a stavebné zámery z otvorených dát.`}>
-  <section class="hero">
+  <FotoMesta slug={m.slug} nazov={m.nazov}>
     <p class="kicker">{m.kraj}</p>
     <h1><span translate="no">{m.nazov}</span> v číslach</h1>
+  </FotoMesta>
+  <section class="hero hero-pod">
     <p class="lead">Údaje z celoštátnych zdrojov – Štatistického úradu, volieb, úradov práce a Enviroportálu. {maMapu(m.slug) ? <> Na <a href={`/${m.slug}/mapa`}>mape mesta</a> nájdete lekárne, školy, zastávky, ihriská či úrady.</> : ''}{maZivot(m.slug) ? <> Školy, vlaky, kriminalitu, ovzdušie a kultúru nájdete v časti <a href={`/${m.slug}/zivot`}>Život v meste</a>.</> : ''}{maSamospravu(m.slug) ? <> Zmluvy, faktúry a hlasovania poslancov sú na stránke <a href={`/${m.slug}/samosprava`}>Samospráva</a>.</> : ''} Podrobnejšie mestské dáta (rozpočet, doprava) pribudnú podľa toho, čo mesto zverejňuje.</p>
   </section>
 
@@ -298,6 +301,7 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
 
 <style>
   .hero { padding: 40px 0 20px; }
+  .hero.hero-pod { padding: 0 0 18px; }
   .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
   h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
   .lead { color: var(--muted); font-size: 1.1rem; max-width: 44em; margin: 0; }
