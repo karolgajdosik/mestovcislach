@@ -1,3 +1,5 @@
-nitra 9 [('Nitra - Statue of John Paul II.jpg', 'CC BY-SA 4.0', '6000x4000'), ('Nitriansky hrad 1.jpg', 'CC BY-SA 4.0', '5622x2846'), ('Nitriansky hrad 1a.jpg', 'CC BY-SA 4.0', '5532x2892'), ('Nitriansky hrad 1b.jpg', 'CC BY-SA 4.0', '5101x3136'), ('Nitriansky hrad.jpg', 'CC BY-SA 3.0', '2977x2074'), ('Nitra - Castle 05.jpg', 'CC BY-SA 3.0', '3450x2300'), ('Nitra - Castle 01.jpg', 'CC BY-SA 3.0', '3555x2369'), ('Nitra - Castle 04.JPG', 'CC BY-SA 3.0', '3888x2592'), ('Nitra - Castle 06.JPG', 'CC BY-SA 3.0', '3888x2592')]
-presov 9 [('Konkatedrála sv. Mikuláša. Prešov 26 Slovakia 8.jpg', 'CC BY 4.0', '3086x1588'), ('Konkatedrála sv. Mikuláša. Prešov 26 Slovakia 4.jpg', 'CC BY 4.0', '2687x1553'), ('Konkatedrála sv. Mikuláša. Prešov 26 Slovakia 7.jpg', 'CC BY 4.0', '2782x1483'), ('Panorama Prešov 21 Slovakia.jpg', 'CC BY-SA 4.0', '3734x2710'), ('Panorama Prešov 21 Slovakia 1.jpg', 'CC BY-SA 4.0', '4288x2285'), ('Panorama, Prešov 22 Slovakia 6.jpg', 'CC BY-SA 4.0', '3648x2052'), ('Panorama, Prešov 22 Slovakia.jpg', 'CC BY-SA 4.0', '3429x1929'), ('Panorama Prešov 26 Slovakia 4.jpg', 'CC BY 4.0', '5437x3624'), ('Panorama Prešov 26 Slovakia 1.jpg', 'CC BY 4.0', '5391x3594')]
-HOTOVO
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 3, in <module>
+    k1 = json.load(open("diag/foto/kandidati.json")); k2 = json.load(open("diag/foto/kandidati2.json"))
+                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'diag/foto/kandidati.json'
