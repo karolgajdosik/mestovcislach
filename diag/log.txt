@@ -1,10 +1,13 @@
-volby.statistics.sk: 'default webhost.statistics.sk\n/srv/webhost.statistics.sk/html/\n\n'
-https://data.statistics.sk/api/v2/collection?lang=sk ConnectTimeout
-https://slovak.statistics.sk/ 403 5442
-živý /data/mesta/zilina.json: 200 None
-https://mestovcislach.sk/ 200 101 ms 21 kB
-https://mestovcislach.sk/bratislava/ 200 110 ms 108 kB
-https://mestovcislach.sk/kosice/ 200 155 ms 55 kB
-https://mestovcislach.sk/bratislava/volby/ 200 155 ms 337 kB
-https://mestovcislach.sk/sitemap.xml 200 80 ms 80 kB
-asistent: 200 {"odpoved":"Počet obyvateľov mesta Žilina podľa dostupných údajov:\n\n- k 31. 12. 2025: 79 873 obyvateľov\n- k 31. 12. 2024: 80 257 obyvateľov\n- k 31. 12. 2023: 80 634 obyvateľov\n- k 31. 12. 2022: 8
+https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip 200 Tue, 20 Oct 2026 07:04:46 GMT 173044
+   OSO2026_SK_tab0c.xlsx riadkov 56 | hlavička: ['Kód politickej strany', 'Názov politickej strany', 'Skratka politickej strany']
+   OSO2026_SK_tab0dd.xlsx riadkov 2927 | hlavička: ['Kód kraja', 'Názov kraja', 'Kód územného obvodu', 'Názov územného obvodu', 'Kód okresu', 'Názov okresu', 'Kód obce', 'Názov obce', 'Počet volebných obvodov', 'Počet okrskov', 'Počet volených poslancov', 'Typ volieb']
+   OSO2026_SK_tab0dx.xlsx riadkov 5 | hlavička: ['Kód mesta', 'Názov mesta', 'Počet volebných obvodov', 'Počet okrskov', 'Počet volených poslancov', 'Typ volieb']
+   OSO2026_SK_tab_info.xlsx riadkov 7 | hlavička: ['Zoznam tabuliek']
+https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip 200 Tue, 20 Oct 2026 07:04:05 GMT 134548
+   OSK2026_SK_tab0c.xlsx riadkov 56 | hlavička: ['Kód politickej strany', 'Názov politickej strany', 'Skratka politickej strany']
+   OSK2026_SK_tab0db.xlsx riadkov 99 | hlavička: ['Kód kraja', 'Názov kraja', 'Kód volebného obvodu', 'Názov volebného obvodu', 'Počet volebných okrskov', 'Počet volených poslancov']
+   OSK2026_SK_tab0dc.xlsx riadkov 2929 | hlavička: ['Kód kraja', 'Názov kraja', 'Kód volebného obvodu', 'Názov volebného obvodu', 'Kód obce', 'Názov obce', 'Počet volebných okrskov']
+   OSK2026_SK_tab_info.xlsx riadkov 7 | hlavička: ['Zoznam tabuliek']
+https://volbysr.sk/oso/files/OSO2026_SK_csv.zip 404 None 146
+  https://volbysr.sk/oso/files/OSO2026_SK_csv.zip: HTTP 404
+zber číta tabuľky: ['tab0c', 'tab0d']
