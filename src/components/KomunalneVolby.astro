@@ -3,6 +3,9 @@
 // Údaje: data/komunalne-bratislava.json (scripts/zber_komunalne.py). Výsledky 2026 sa doplnia automaticky.
 import fs from 'node:fs';
 import path from 'node:path';
+import VolbyMapa from './VolbyMapa.astro';
+const ph = path.join(process.cwd(), 'data', 'hranice-bratislava.geojson');
+const hraniceBA = fs.existsSync(ph) ? JSON.parse(fs.readFileSync(ph, 'utf-8')) : null;
 
 const p = path.join(process.cwd(), 'data', 'komunalne-bratislava.json');
 const data = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
@@ -117,6 +120,7 @@ const vitaz = (k: any[]) => k?.find((x) => x.zvoleny) ?? null;
               {o.primator.mestske_casti.length > 0 && (
                 <section class="card">
                   <h3>Voľba primátora podľa mestských častí</h3>
+                  <VolbyMapa casti={o.primator.mestske_casti} hranice={hraniceBA} nazovKey="nazov" kodKey="kod_obce" priebezne={priebezne} mesto="Bratislava" />
                   <div class="tabulka-obal">
                     <table>
                       <thead><tr><th>Mestská časť</th><th class="num">Účasť</th><th>Prvý</th><th class="num">%</th><th>Druhý</th><th class="num">%</th></tr></thead>

@@ -34,7 +34,8 @@ UA = "mestovcislach.sk (github.com/karolgajdosik/mestovcislach)"
 MESTO = "582000"
 VOLBY = [
     {"id": "2022", "datum": "2022-10-29", "nazov": "Komunálne a krajské voľby 2022",
-     "oso": ["https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip"],
+     # archív volby.statistics.sk je od 23. 10. 2026 nedostupný – záloha z Internet Archive (kópia z 1. 12. 2024)
+     "oso": ["https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip", "https://web.archive.org/web/20241201215347id_/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip"],
      "osk": ["https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip"],
      "web": "https://volby.statistics.sk/oso/oso2022/sk/"},
     {"id": "2026", "datum": "2026-10-24", "nazov": "Komunálne a krajské voľby 2026",
@@ -286,6 +287,84 @@ def okrsky_mesta_na_mc(ucast_okrsky: list[dict], mc: list[str]) -> dict[tuple, s
     return mapa
 
 
+def primator_po_mc(t: dict[str, list[dict]], mesto: str, predpona: str, strany: dict[str, str]) -> tuple[list[dict], dict]:
+    """Voľba primátora podľa mestských častí (Bratislava, Košice). Tabuľky mesta majú okrsky len ako (obvod, okrsok);
+    v Košiciach sa číslo okrsku v obvode opakuje (každá MČ čísluje od 1), preto okrsky rozlišujeme aj poradím výskytu.
+    Okrsok mesta → MČ podľa zhody počtu zapísaných a zúčastnených voličov s tabuľkou MČ.
+    Vráti (zoznam MČ, kontrola), kontrola = počty priradených okrskov a okrskov, kde hlasy prevyšujú voličov."""
+    uzemie = t.get("tab0d", [])
+    mc = {kod(r["OBEC"]): r["NOBEC"].split(" - ", 1)[1].strip() for r in uzemie
+          if kod(r["OBEC"]) != mesto and (r.get("NOBEC") or "").startswith(predpona + " - ")}
+    ucast_rows = t.get("tab02b", [])
+    podla_cisel: dict[tuple, set[str]] = defaultdict(set)
+    for r in ucast_rows:
+        if kod(r["OBEC"]) in mc:
+            podla_cisel[(int(cislo(r["P_ZAP"])), int(cislo(r["P_ZUC"])))].add(kod(r["OBEC"]))
+    # okrsky mesta s poradím výskytu kľúča
+    vyskyt: dict[tuple, int] = defaultdict(int)
+    okrsky: dict[tuple, dict] = {}
+    for r in ucast_rows:
+        if kod(r["OBEC"]) != mesto:
+            continue
+        k = (kod(r.get("VOOBEC", "")), kod(r["OKRSOK"]))
+        okrsky[(*k, vyskyt[k])] = r
+        vyskyt[k] += 1
+    na_mc: dict[tuple, str] = {}
+    nejasne: dict[tuple, set[str]] = {}
+    podla_zap: dict[int, set[str]] = defaultdict(set)
+    for r in ucast_rows:
+        if kod(r["OBEC"]) in mc:
+            podla_zap[int(cislo(r["P_ZAP"]))].add(kod(r["OBEC"]))
+    for k3, r in okrsky.items():
+        # najprv zapísaní + zúčastnení, inak len zapísaní (zúčastnení sa v tabuľke mesta a MČ niekedy líšia o pár voličov)
+        kand = podla_cisel.get((int(cislo(r["P_ZAP"])), int(cislo(r["P_ZUC"]))), set()) or podla_zap.get(int(cislo(r["P_ZAP"])), set())
+        if len(kand) == 1:
+            na_mc[k3] = next(iter(kand))
+        elif kand:
+            nejasne[k3] = kand
+    for k3, kand in nejasne.items():
+        v_obvode = [m for kk, m in na_mc.items() if kk[0] == k3[0] and m in kand]
+        na_mc[k3] = max(sorted(kand), key=v_obvode.count) if v_obvode else sorted(kand)[0]
+    # hlasy primátora po okrskoch: riadky jedného okrsku idú za sebou, nový blok s rovnakým kľúčom = ďalší výskyt
+    hlasy: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    v_okrsku: dict[tuple, float] = defaultdict(float)
+    vyskyt = defaultdict(int)
+    predch = None
+    videne_pc: set[str] = set()
+    for r in t.get("tab05", []):
+        if kod(r["OBEC"]) != mesto:
+            predch = None
+            continue
+        k = (kod(r.get("VOOBEC", "")), kod(r["OKRSOK"]))
+        pc_ = kod(r["PC_HL"])
+        # nový okrsok: zmena kľúča, alebo ten istý kľúč a kandidát sa opakuje (dva okrsky s rovnakým číslom v jednom bloku)
+        if k != predch or pc_ in videne_pc:
+            vyskyt[k] += 1
+            predch = k
+            videne_pc = set()
+        videne_pc.add(pc_)
+        k3 = (*k, vyskyt[k] - 1)
+        m = na_mc.get(k3)
+        v_okrsku[k3] += cislo(r["P_HL"])
+        if m:
+            hlasy[m][kod(r["PC_HL"])] += cislo(r["P_HL"])
+    kand_prim = {kod(r["PC_HL"]): r for r in t.get("tab0a", []) if kod(r["OBEC"]) == mesto}
+    vysl = []
+    for m, nazov in mc.items():
+        h = hlasy.get(m)
+        if not h or not sum(h.values()):
+            continue
+        spolu = sum(h.values())
+        u = ucast([r for k3, r in okrsky.items() if na_mc.get(k3) == m], {mesto})
+        por = sorted(h.items(), key=lambda kv: -kv[1])
+        vysl.append({"kod": m, "nazov": nazov, "ucast": u["ucast_pct"], "volili": u["volili"],
+                     "poradie": [{"meno": meno(kand_prim[pc]), "strany": strany_kandidata(kand_prim[pc], strany), "hlasy": int(v), "podiel": round(100 * v / spolu, 2)}
+                                 for pc, v in por[:3] if pc in kand_prim]})
+    vysl.sort(key=lambda x: x["nazov"])
+    nad = sum(1 for k3, v in v_okrsku.items() if k3 in okrsky and v > cislo(okrsky[k3]["P_ZUC"]))
+    return vysl, {"okrskov": len(okrsky), "priradenych": len(na_mc), "hlasy_nad_volicov": nad}
+
+
 def spracuj_oso(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
     strany = strany_mapa(t)
     uzemie = t["tab0d"]
@@ -430,6 +509,9 @@ def main() -> int:
                     strany_k = strany_mapa(osk)
                     zaznam["kandidati_predseda_bsk"] = [{"meno": meno(r), "strany": strany_kandidata(r, strany_k)}
                                                         for r in sorted(osk["tab0a"], key=lambda r: int(cislo(r["PC_HL"]))) if kod(r.get("KRAJ", "")) == "1" and not vzdal_sa(r)]
+            if ma_oso and not ma_osk and stare_volby.get(v["id"], {}).get("osk"):
+                zaznam["osk"] = stare_volby[v["id"]]["osk"]  # krajské voľby: zdroj nedostupný, ponechať uložené
+                zaznam["zdroj_osk"] = stare_volby[v["id"]].get("zdroj_osk")
             if not ma_oso and v["id"] in stare_volby and stare_volby[v["id"]].get("stav") == "vysledky":
                 zaznam = stare_volby[v["id"]]  # výsledky už máme, server dočasne nedostupný
             if zaznam.get("oso"):

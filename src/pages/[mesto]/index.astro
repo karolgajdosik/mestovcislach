@@ -6,7 +6,8 @@ import path from 'node:path';
 import Base from '../../layouts/Base.astro';
 import { MESTA, type Mesto } from '../../mesta';
 import { KATEGORIE_EIA } from '../../lib/eia';
-import { maMapu, maSamospravu } from '../../lib/mapa';
+import { maMapu, maSamospravu, mapaMesta } from '../../lib/mapa';
+import VolbyMapa from '../../components/VolbyMapa.astro';
 import { maZivot } from '../../lib/temy';
 
 export function getStaticPaths() {
@@ -147,6 +148,7 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
         <ul class="pruhy kandidati">{kom.primator.slice(0, 6).map((k: any) => (
           <li class={k.zvoleny ? 'zvoleny' : ''}><span class="p-n"><strong translate="no">{k.meno}</strong>{k.zvoleny && <em> zvolený</em>}<small translate="no">{k.strany.length > 90 ? k.strany.slice(0, 88) + '…' : k.strany}</small></span><span class="p-h">{des(k.podiel)} %</span><span class="p-p" aria-hidden="true"><i style={`width:${k.podiel}%`}></i></span></li>
         ))}</ul>
+        {kom.mestske_casti?.length > 1 && <><h3>Voľba primátora podľa mestských častí</h3><VolbyMapa casti={kom.mestske_casti} hranice={mapaMesta(m.slug)?.hranice} nazovKey="n" priebezne={!!kom.spracovanie?.priebezne} mesto={m.nazov} /></>}
         {kom.zastupitelstvo.poslancov > 0 && <>
         <h3>Mestské zastupiteľstvo – {kom.zastupitelstvo.poslancov} poslancov</h3>
         <ul class="mandaty">{kom.zastupitelstvo.mandaty.map((x: any) => <li><b>{x.mandaty}</b> <span translate="no">{x.strany.length > 110 ? x.strany.slice(0, 108) + '…' : x.strany}</span></li>)}</ul>

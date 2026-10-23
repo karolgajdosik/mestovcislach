@@ -220,7 +220,7 @@ def volby() -> dict:
     return vysl
 
 
-KOMUNALNE = [("2022", ["https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip"]),
+KOMUNALNE = [("2022", ["https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip", "https://web.archive.org/web/20241201215347id_/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip"]),
              ("2026", ["https://volbysr.sk/oso/files/OSO2026_SK_csv.zip", "https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip"])]
 
 
@@ -253,9 +253,14 @@ def komunalne(stare: dict | None = None) -> dict:
                     hl_msz[(zk.kod(r["VOOBEC"]), zk.kod(r["PC_HL"]))] += cislo(r["P_HL"])
             poslanci = [{"meno": zk.meno(kand_msz[k]), "strany": zk.strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
                         for k in sorted(zvol_pos, key=lambda k: (-hl_msz[k], k)) if k in kand_msz]
+            # primátor po mestských častiach (Bratislava, Košice) – pre mapu víťazov
+            mc_vysl, kontrola = zk.primator_po_mc(t, obec, m["nazov"], strany)
+            if mc_vysl:
+                print(f"  {m['nazov']} {rok}: primátor v {len(mc_vysl)} MČ, okrsky {kontrola}")
             vysl[m["slug"]][rok] = {
                 "ucast": zk.ucast(t["tab02b"], {obec}) if "tab02b" in t else None,
                 "spracovanie": zk.spracovanie(t, obec),
+                **({"mestske_casti": mc_vysl} if mc_vysl else {}),
                 "primator": [{"meno": x["meno"], "strany": x["strany"], "hlasy": x["hlasy"], "podiel": x["podiel"], "zvoleny": x["zvoleny"]} for x in primator],
                 "zastupitelstvo": {"poslancov": len(poslanci), "mandaty": zk.mandaty(poslanci), "poslanci": poslanci},
             }

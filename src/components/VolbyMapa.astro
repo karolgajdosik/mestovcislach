@@ -1,0 +1,77 @@
+---
+// Mapa voľby primátora po mestských častiach: farba = kto vyhral (vedie) v MČ, sýtosť = jeho podiel hlasov.
+// Kreslí sa pri builde ako SVG (bez mapových podkladov), počas volebnej noci sa obnoví s každým novým zberom.
+interface Cast { kod?: string; nazov: string; ucast?: number | null; poradie: { meno: string; podiel: number; strany?: string }[] }
+interface Props { casti: Cast[]; hranice: any; nazovKey: string; kodKey?: string; priebezne?: boolean; mesto: string }
+const { casti, hranice, nazovKey, kodKey, priebezne = false, mesto } = Astro.props as Props;
+
+const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/^sidlisko\s+/, '').replace(/[^a-z]/g, '');
+const podlaMena = new Map(casti.map((c) => [norm(c.nazov), c]));
+const podlaKodu = new Map(casti.filter((c) => c.kod).map((c) => [String(c.kod), c]));
+// MČ k hranici: podľa kódu obce, ak ho hranice majú, inak podľa názvu
+const najdi = (f: any) => (kodKey && podlaKodu.get(String(f.properties?.[kodKey]))) || podlaMena.get(norm(f.properties?.[nazovKey] ?? ''));
+const prvky = (hranice?.features ?? []).filter((f: any) => ['Polygon', 'MultiPolygon'].includes(f.geometry?.type));
+
+// projekcia
+const kruhy = (g: any): number[][][] => (g.type === 'Polygon' ? g.coordinates : g.coordinates.flat());
+const vsetky = prvky.flatMap((f: any) => kruhy(f.geometry).flat());
+const lon = vsetky.map((p: number[]) => p[0]), lat = vsetky.map((p: number[]) => p[1]);
+const [x0, x1, y0, y1] = [Math.min(...lon), Math.max(...lon), Math.min(...lat), Math.max(...lat)];
+const k = Math.cos(((y0 + y1) / 2) * (Math.PI / 180));
+const SIRKA = 560;
+const m = SIRKA / ((x1 - x0) * k || 1);
+const VYSKA = Math.round((y1 - y0) * m);
+const bod = (p: number[]) => `${((p[0] - x0) * k * m).toFixed(1)},${((y1 - p[1]) * m).toFixed(1)}`;
+const cesta = (g: any) => kruhy(g).map((r) => 'M' + r.map(bod).join('L') + 'Z').join('');
+
+// farby víťazov: poradie podľa počtu vyhraných MČ
+const vitazi = new Map<string, number>();
+for (const c of casti) if (c.poradie[0]) vitazi.set(c.poradie[0].meno, (vitazi.get(c.poradie[0].meno) ?? 0) + 1);
+const poradieVitazov = [...vitazi.entries()].sort((a, b) => b[1] - a[1]).map(([meno]) => meno);
+const farba = (meno: string) => `var(--vm${Math.min(poradieVitazov.indexOf(meno), 5)})`;
+const sytost = (p: number) => Math.max(0.35, Math.min(1, 0.35 + ((p - 30) / 50) * 0.65)).toFixed(2);
+const des = (n: number | null | undefined) => (n == null ? '–' : n.toLocaleString('sk-SK', { maximumFractionDigits: 1 }));
+const sloveso = priebezne ? 'vedie' : 'vyhral(a)';
+const chyba = prvky.filter((f: any) => !najdi(f)).length;
+---
+{prvky.length > 0 && poradieVitazov.length > 0 && (
+  <figure class="volby-mapa">
+    <svg viewBox={`-4 -4 ${SIRKA + 8} ${VYSKA + 8}`} role="img" aria-label={`Mapa: kto ${sloveso} vo voľbe primátora v jednotlivých mestských častiach – ${mesto}. Podrobnosti sú v tabuľke.`}>
+      {prvky.map((f: any) => {
+        const n = f.properties?.[nazovKey] ?? '';
+        const c = najdi(f);
+        const v = c?.poradie[0];
+        return (
+          <path d={cesta(f.geometry)} class={v ? 'vm-mc' : 'vm-mc vm-bez'} style={v ? `--f:${farba(v.meno)};--o:${sytost(v.podiel)}` : undefined}>
+            <title>{v ? `${c?.nazov ?? n}: ${sloveso} ${v.meno} (${des(v.podiel)} %)${c?.poradie[1] ? `, druhý ${c.poradie[1].meno} (${des(c.poradie[1].podiel)} %)` : ''}${c?.ucast != null ? `, účasť ${des(c.ucast)} %` : ''}` : `${n}: bez údajov`}</title>
+          </path>
+        );
+      })}
+    </svg>
+    <figcaption>
+      <ul class="vm-legenda">
+        {poradieVitazov.map((meno) => (
+          <li><i style={`--f:${farba(meno)}`}></i><span translate="no">{meno}</span> <small>{vitazi.get(meno)} {vitazi.get(meno) === 1 ? 'mestská časť' : (vitazi.get(meno)! < 5 ? 'mestské časti' : 'mestských častí')}</small></li>
+        ))}
+      </ul>
+      <p class="vm-pozn">Farba ukazuje, kto {sloveso} v mestskej časti, sýtosť jeho podiel hlasov. Podrobnosti po prejdení myšou na mestskú časť{priebezne ? ' – priebežné výsledky' : ''}.{chyba > 0 ? ` (${chyba} bez údajov)` : ''}</p>
+    </figcaption>
+  </figure>
+)}
+
+<style>
+  .volby-mapa { margin: 8px 0 18px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(200px, 1fr); gap: 18px; align-items: center;
+    --vm0: #c8102e; --vm1: #1f6fd1; --vm2: #0e7a55; --vm3: #b45309; --vm4: #7c3aed; --vm5: #6b7280; }
+  :global(:root[data-tema='tmava']) .volby-mapa { --vm0: #ff6b80; --vm1: #7cc4ff; --vm2: #6ee7b7; --vm3: #fcd34d; --vm4: #c4b5fd; --vm5: #9ca3af; }
+  .volby-mapa svg { width: 100%; height: auto; max-height: 460px; }
+  .vm-mc { fill: var(--f); fill-opacity: var(--o); stroke: var(--card); stroke-width: 1.2; stroke-linejoin: round; transition: fill-opacity 0.15s; }
+  .vm-mc:hover { fill-opacity: 1; stroke: var(--text); stroke-width: 1.6; }
+  .vm-bez { fill: var(--line); fill-opacity: 0.5; }
+  .vm-legenda { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .vm-legenda li { display: flex; align-items: baseline; gap: 8px; font-weight: 600; }
+  .vm-legenda i { width: 14px; height: 14px; border-radius: 4px; background: var(--f); flex-shrink: 0; align-self: center; }
+  .vm-legenda small { color: var(--muted); font-weight: 400; }
+  .vm-pozn { margin: 0; font-size: 0.82rem; color: var(--muted); }
+  @media (max-width: 700px) { .volby-mapa { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .vm-mc { transition: none; } }
+</style>
