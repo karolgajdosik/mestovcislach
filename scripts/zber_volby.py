@@ -127,7 +127,18 @@ def spracuj(v: dict) -> dict:
 
 
 def main() -> int:
-    vysledky = [spracuj(v) for v in VOLBY]
+    # Výsledky ukončených volieb sa nemenia: ak je zdroj nedostupný (archív volby.statistics.sk od 10/2026 vracia 404),
+    # ponecháme uložené a skončíme len s upozornením, aby denná chyba nezakrývala skutočné problémy.
+    stare = {x["id"]: x for x in json.loads(VYSTUP.read_text(encoding="utf-8")).get("volby", [])} if VYSTUP.exists() else {}
+    vysledky = []
+    for v in VOLBY:
+        try:
+            vysledky.append(spracuj(v))
+        except Exception as e:  # noqa: BLE001
+            if v["id"] not in stare:
+                raise
+            print(f"::warning title=Voľby {v['id']}::zdroj nedostupný ({type(e).__name__}: {str(e)[:150]}), ponechávam uložené výsledky")
+            vysledky.append(stare[v["id"]])
     novy = {
         "zdroj": {"nazov": "Štatistický úrad SR – výsledky volieb", "url": "https://volby.statistics.sk"},
         "volby": vysledky,
