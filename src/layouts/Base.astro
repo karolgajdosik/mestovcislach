@@ -22,6 +22,7 @@ const MENU_MESTA: [string, string, string][] = [
   ['', 'Prehľad', '<path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h4.5v-5.5h4V20h4.5V9.5"/>'],
   ['mestske-casti', 'Mestské časti', '<path d="M4 4.5h7v7H4zM13 4.5h7v4.5h-7zM13 11h7v8.5h-7zM4 13.5h7v6H4z"/>'],
   ['mapa', 'Mapa', '<path d="M9 4.5 3.5 6.5v13l5.5-2 6 2 5.5-2v-13l-5.5 2-6-2Z"/><path d="M9 4.5v13M15 6.5v13"/>'],
+  ['adresa', 'Moja adresa', '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><path d="M9.3 10.4 12 8l2.7 2.4V13H9.3Z"/>'],
   ['obyvatelia', 'Obyvatelia', '<circle cx="9" cy="8" r="3.3"/><path d="M2.8 20c.6-3.5 3.1-5.4 6.2-5.4s5.6 1.9 6.2 5.4"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.6c2.2.2 3.8 1.8 4.3 4.4"/>'],
   ['volby', 'Voľby', '<path d="M4 11h16v9H4z"/><path d="M8 11V4h8v7"/><path d="m10 7.6 1.4 1.4L14.2 6"/>'],
   ['financie', 'Financie', '<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/>'],
@@ -55,6 +56,7 @@ const MENU: [string, string, string][] = spolocna
       ...(maZivot(mesto.slug) ? [[`/${mesto.slug}/zivot`, 'Život v meste', IKONA['bezpecnost']] as [string, string, string]] : []),
       ...(maSamospravu(mesto.slug) ? [[`/${mesto.slug}/samosprava`, 'Samospráva', IKONA['financie']] as [string, string, string]] : []),
       ...(maMapu(mesto.slug) ? [[`/${mesto.slug}/mapa`, 'Mapa', IKONA['mapa']] as [string, string, string]] : []),
+      [`/${mesto.slug}/adresa`, 'Moja adresa', IKONA['adresa']],
       ...((mesto as any).katalog ? [[`/${mesto.slug}/katalog`, 'Katalóg dát', IKONA['katalog']] as [string, string, string]] : []),
       ['/porovnanie', 'Porovnanie', IKONA['mestske-casti']],
     ];

@@ -1,0 +1,185 @@
+---
+// „Moja adresa“: po zadaní adresy (alebo polohy) ukáže najbližšie lekárne, zastávky, školy…, mestskú časť,
+// spádovú ZŠ a zvolených zástupcov (Bratislava), stavebné zámery v MČ a najbližšiu stanicu merania ovzdušia.
+// Adresa sa vyhľadá cez Nominatim (OpenStreetMap); ostatné sa počíta v prehliadači z verejných dát webu.
+const { mesto } = Astro.props as { mesto: { slug: string; nazov: string; v?: string } };
+---
+<section class="adresa" id="adresa" data-slug={mesto.slug} data-mesto={mesto.nazov}>
+  <form class="ad-form" id="ad-form" role="search">
+    <label for="ad-q">Ulica a číslo domu</label>
+    <div class="ad-riadok">
+      <input id="ad-q" type="search" required autocomplete="street-address" placeholder={mesto.slug === 'bratislava' ? 'napr. Námestie SNP 1' : 'napr. Hlavná 10'} />
+      <button type="submit" class="ad-hladaj">Hľadať</button>
+      <button type="button" class="ad-primne" id="ad-primne">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="7"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/></svg>
+        Pri mne
+      </button>
+    </div>
+    <p class="ad-pozn">Adresu vyhľadá služba Nominatim (OpenStreetMap). Polohu ani adresu neukladáme, všetko ostatné sa počíta vo vašom prehliadači.</p>
+  </form>
+  <div id="ad-stav" class="ad-stav" role="status" aria-live="polite"></div>
+  <div id="ad-vyber" class="ad-vyber" hidden></div>
+  <div id="ad-vysledok" class="ad-vysledok" hidden></div>
+</section>
+
+<script>
+  type Bod = [number, number, string, string?];
+  const obal = document.getElementById('adresa')!;
+  const slug = obal.dataset.slug!, nazovMesta = obal.dataset.mesto!;
+  const stav = document.getElementById('ad-stav')!, vyber = document.getElementById('ad-vyber')!, vysl = document.getElementById('ad-vysledok')!;
+  const hx = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+  let dataP: Promise<any> | null = null;
+  const data = () => (dataP ??= fetch(`/data/mesta/adresa/${slug}.json`).then((r) => r.json()));
+
+  const vzdialenost = (a: number, b: number, c: number, d: number) => {
+    const R = 6371000, r = Math.PI / 180;
+    const x = Math.sin(((c - a) * r) / 2) ** 2 + Math.cos(a * r) * Math.cos(c * r) * Math.sin(((d - b) * r) / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(x));
+  };
+  const km = (m: number) => (m < 950 ? `${Math.round(m / 10) * 10} m` : `${(m / 1000).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} km`);
+  // chôdza: vzdušná čiara × 1,3 pri 4,8 km/h
+  const pesi = (m: number) => { const min = Math.max(1, Math.round((m * 1.3) / 80)); return min > 45 ? '' : ` · ${min} min pešo`; };
+
+  const vPolygone = (lon: number, lat: number, g: any): boolean => {
+    const vKruhu = (k: number[][]) => { let v = false; for (let i = 0, j = k.length - 1; i < k.length; j = i++) { const [xi, yi] = k[i], [xj, yj] = k[j]; if ((yi > lat) !== (yj > lat) && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) v = !v; } return v; };
+    const poly = (p: number[][][]) => vKruhu(p[0]) && !p.slice(1).some(vKruhu);
+    return g.type === 'Polygon' ? poly(g.coordinates) : g.type === 'MultiPolygon' ? g.coordinates.some(poly) : false;
+  };
+
+  async function vyhodnot(lat: number, lon: number, popis: string) {
+    vyber.hidden = true;
+    stav.textContent = 'Počítam…';
+    const d = await data();
+    const najblizsie = (body: Bod[], n = 2) => body.map((b) => ({ b, m: vzdialenost(lat, lon, b[0], b[1]) })).sort((x, y) => x.m - y.m).slice(0, n);
+    const daleko = najblizsie(d.kategorie.flatMap((k: any) => k.body), 1)[0]?.m > 15000;
+    let html = `<p class="ad-miesto"><strong>${hx(popis)}</strong></p>`;
+    if (daleko) html += `<p class="ad-upoz">Toto miesto je ďaleko od mesta ${hx(nazovMesta)} – výsledky nemusia dávať zmysel.</p>`;
+
+    // mestská časť a zástupcovia
+    const mc = d.mestske_casti?.find((x: any) => vPolygone(lon, lat, x.g))?.n;
+    const bloky: string[] = [];
+    if (mc) {
+      let b = `<h3>Mestská časť</h3><p class="ad-velke">${hx(mc)}</p>`;
+      const z = d.zastupcovia?.mc?.[mc];
+      if (z) {
+        b += `<p class="ad-mala">Zvolení vo voľbách ${hx(d.zastupcovia.rok)}${d.zastupcovia.priebezne ? ' (priebežne)' : ''}:</p><ul class="ad-ludia">`;
+        if (z.starosta) b += `<li><span>Starosta/-ka</span> <strong translate="no">${hx(z.starosta.meno)}</strong> <small>${hx(z.starosta.strany)}</small></li>`;
+        b += z.poslanci.map((p: any) => `<li><span>Mestský poslanec/-kyňa</span> <strong translate="no">${hx(p.meno)}</strong> <small>${hx(p.strany)}</small></li>`).join('');
+        b += `</ul><p class="ad-mala"><a href="/bratislava/volby">Výsledky volieb</a> · <a href="/bratislava/mestske-casti">Profil mestskej časti</a></p>`;
+      }
+      bloky.push(b);
+    }
+    // spádová ZŠ (Bratislava)
+    if (d.obvody_zs) {
+      try {
+        const g = await fetch(d.obvody_zs).then((r) => r.json());
+        const f = g.features.find((x: any) => vPolygone(lon, lat, x.geometry));
+        bloky.push(`<h3>Spádová základná škola</h3>` + (f
+          ? `<p class="ad-velke">${hx(f.properties.nazov)}</p><p class="ad-mala">${hx(f.properties.adresa ?? '')}${f.properties.web ? ` · <a href="${hx(f.properties.web)}" rel="noopener">web školy</a>` : ''}</p><p class="ad-mala">Podľa rajonizácie mestskej časti; pri zápise si obvod overte na stránke mestskej časti.</p>`
+          : `<p class="ad-mala">Pre toto miesto sme spádový obvod nenašli.</p>`));
+      } catch { /* bez spádových obvodov */ }
+    }
+    // stavebné zámery v MČ (Bratislava)
+    const eia = mc && d.eia_mc?.[mc];
+    if (eia?.length) {
+      bloky.push(`<h3>Práve sa posudzuje v MČ</h3><p class="ad-velke">${eia.length} ${eia.length === 1 ? 'zámer' : eia.length < 5 ? 'zámery' : 'zámerov'}</p><ul class="ad-zoznam">`
+        + eia.slice(0, 4).map((z: any) => `<li>${hx(z.nazov)} <small>${hx(z.stav)}</small></li>`).join('') + `</ul><p class="ad-mala"><a href="/bratislava/vystavba">Všetky zámery na mape</a></p>`);
+    }
+    // ovzdušie – najbližšia stanica SHMÚ
+    bloky.push('<div id="ad-ovz"><h3>Ovzdušie teraz</h3><p class="ad-mala">Načítavam…</p></div>');
+
+    html += `<div class="ad-mriezka">` + d.kategorie.map((k: any) => {
+      const n = najblizsie(k.body);
+      if (!n.length) return '';
+      return `<div class="ad-karta"><h3>${hx(k.nazov)}</h3>` + n.map(({ b, m }, i) => `<p class="${i ? 'ad-druhy' : 'ad-prvy'}"><strong>${hx(b[2] || k.nazov)}</strong>${b[3] ? `<small>${hx(b[3])}</small>` : ''}<span>${km(m)}${pesi(m)}</span></p>`).join('')
+        + `<a class="ad-mapa" href="${hx(k.mapa)}">Na mape</a></div>`;
+    }).join('') + `</div>`;
+    if (bloky.length) html += `<div class="ad-mriezka ad-info">${bloky.map((b) => `<div class="ad-karta">${b}</div>`).join('')}</div>`;
+    vysl.innerHTML = html;
+    vysl.hidden = false;
+    stav.textContent = '';
+    vysl.querySelector('.ad-miesto')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    fetch(`/api/ovzdusie?mesto=${slug}`).then((r) => (r.ok ? r.json() : Promise.reject())).then((o) => {
+      const s = (o.stanice ?? []).filter((x: any) => x.lat && x.lon).map((x: any) => ({ x, m: vzdialenost(lat, lon, x.lat, x.lon) })).sort((a: any, b: any) => a.m - b.m)[0];
+      const el = document.getElementById('ad-ovz');
+      if (!el) return;
+      el.innerHTML = s ? `<h3>Ovzdušie teraz</h3><p class="ad-velke">${s.x.iko != null ? `IKO ${hx(s.x.iko)}` : '–'} <small>${hx(s.x.kategoria ?? '')}</small></p><p class="ad-mala">Stanica ${hx(s.x.nazov)} (${km(s.m)} od vás), SHMÚ.</p>` : '<h3>Ovzdušie teraz</h3><p class="ad-mala">Údaje SHMÚ sú teraz nedostupné.</p>';
+    }).catch(() => { const el = document.getElementById('ad-ovz'); if (el) el.innerHTML = '<h3>Ovzdušie teraz</h3><p class="ad-mala">Údaje SHMÚ sú teraz nedostupné.</p>'; });
+  }
+
+  document.getElementById('ad-form')!.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const q = (document.getElementById('ad-q') as HTMLInputElement).value.trim();
+    if (!q) return;
+    stav.textContent = 'Hľadám adresu…';
+    vysl.hidden = true;
+    try {
+      const d = await data();
+      const [la, lo] = d.stred;
+      const u = new URL('https://nominatim.openstreetmap.org/search');
+      Object.entries({ q: `${q}, ${nazovMesta}`, format: 'jsonv2', countrycodes: 'sk', limit: '5', 'accept-language': 'sk',
+        viewbox: `${lo - 0.3},${la + 0.2},${lo + 0.3},${la - 0.2}`, bounded: '1' }).forEach(([k, v]) => u.searchParams.set(k, v));
+      const r = await fetch(u).then((x) => (x.ok ? x.json() : Promise.reject(new Error(String(x.status)))));
+      if (!r.length) { stav.textContent = 'Adresu sme nenašli. Skúste ju napísať inak, napríklad aj s číslom domu.'; return; }
+      const popis = (x: any) => x.display_name.split(', ').filter((s: string) => !/^(Slovensko|okres |.*kraj$|\d{3} ?\d{2})/.test(s)).slice(0, 4).join(', ');
+      if (r.length > 1) {
+        vyber.innerHTML = '<p>Našli sme viac miest – vyberte:</p>' + r.map((x: any, i: number) => `<button type="button" data-i="${i}">${hx(popis(x))}</button>`).join('');
+        vyber.hidden = false;
+        vyber.querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.addEventListener('click', () => { const x = r[Number(b.dataset.i)]; vyhodnot(Number(x.lat), Number(x.lon), popis(x)); }));
+      }
+      vyhodnot(Number(r[0].lat), Number(r[0].lon), popis(r[0]));
+      if (r.length > 1) vyber.hidden = false;
+    } catch {
+      stav.textContent = 'Vyhľadávanie adries je teraz nedostupné. Skúste neskôr alebo tlačidlo „Pri mne“.';
+    }
+  });
+
+  document.getElementById('ad-primne')!.addEventListener('click', () => {
+    if (!('geolocation' in navigator)) { stav.textContent = 'Prehliadač nepodporuje zistenie polohy.'; return; }
+    stav.textContent = 'Zisťujem polohu…';
+    navigator.geolocation.getCurrentPosition(
+      (p) => vyhodnot(p.coords.latitude, p.coords.longitude, 'Vaša poloha'),
+      (e) => { stav.textContent = e.code === e.PERMISSION_DENIED ? 'Poloha nie je povolená – povoľte ju v prehliadači alebo zadajte adresu.' : 'Polohu sa nepodarilo zistiť.'; },
+      { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 },
+    );
+  });
+</script>
+
+<style>
+  .adresa { margin: 8px 0 32px; }
+  .ad-form { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  .ad-form label { display: block; font-weight: 700; margin-bottom: 8px; }
+  .ad-riadok { display: flex; gap: 8px; flex-wrap: wrap; }
+  .ad-riadok input { flex: 1 1 260px; min-width: 0; height: 46px; padding: 0 14px; border: 1.5px solid var(--line); border-radius: 10px; font: inherit; background: var(--bg); color: var(--text); }
+  .ad-riadok input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .ad-hladaj, .ad-primne { height: 46px; padding: 0 18px; border-radius: 10px; font: inherit; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
+  .ad-hladaj { background: var(--accent); color: var(--na-akcente); border: 0; }
+  .ad-primne { background: var(--card); color: var(--text); border: 1.5px solid var(--line); }
+  .ad-primne:hover { border-color: var(--accent); }
+  .ad-primne svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+  .ad-pozn { margin: 10px 0 0; font-size: 0.82rem; color: var(--muted); }
+  .ad-stav { margin: 12px 0; color: var(--muted); }
+  .ad-stav:empty { display: none; }
+  .ad-vyber { margin: 12px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .ad-vyber p { margin: 0 6px 0 0; font-size: 0.9rem; color: var(--muted); }
+  .ad-vyber button { border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 0.85rem; cursor: pointer; }
+  .ad-vyber button:hover { border-color: var(--accent); }
+  .ad-vysledok :global(.ad-miesto) { font-size: 1.15rem; margin: 18px 0 10px; scroll-margin-top: calc(var(--vyska-hlavicky) + 16px); }
+  .ad-vysledok :global(.ad-upoz) { color: var(--accent); }
+  .ad-vysledok :global(.ad-mriezka) { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; margin-bottom: 12px; }
+  .ad-vysledok :global(.ad-karta) { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+  .ad-vysledok :global(.ad-karta h3) { margin: 0; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .ad-vysledok :global(.ad-karta p) { margin: 0; }
+  .ad-vysledok :global(.ad-prvy strong), .ad-vysledok :global(.ad-velke) { font-weight: 700; font-size: 1.02rem; }
+  .ad-vysledok :global(.ad-prvy), .ad-vysledok :global(.ad-druhy) { display: flex; flex-direction: column; }
+  .ad-vysledok :global(.ad-prvy span) { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+  .ad-vysledok :global(.ad-druhy) { font-size: 0.85rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 6px; }
+  .ad-vysledok :global(.ad-druhy strong) { font-weight: 600; color: var(--text); }
+  .ad-vysledok :global(.ad-karta small) { color: var(--muted); font-size: 0.82rem; }
+  .ad-vysledok :global(.ad-mapa) { margin-top: auto; font-size: 0.85rem; font-weight: 600; }
+  .ad-vysledok :global(.ad-mala) { font-size: 0.85rem; color: var(--muted); }
+  .ad-vysledok :global(.ad-ludia), .ad-vysledok :global(.ad-zoznam) { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 0.9rem; }
+  .ad-vysledok :global(.ad-ludia span) { display: block; font-size: 0.75rem; color: var(--muted); }
+  .ad-vysledok :global(.ad-ludia small) { display: block; color: var(--muted); }
+  .ad-vysledok :global(.ad-info .ad-karta) { background: var(--bg); }
+</style>

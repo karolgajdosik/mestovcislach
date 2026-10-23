@@ -1,0 +1,26 @@
+---
+// Moja adresa – ostatné krajské mestá (Bratislava má vlastnú stránku /bratislava/adresa).
+import Base from '../../layouts/Base.astro';
+import MojaAdresa from '../../components/MojaAdresa.astro';
+import { MESTA, type Mesto } from '../../mesta';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && !m.plne).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+---
+<Base title={`Moja adresa – ${m.nazov} – mestovcislach.sk`} description={`Zadajte adresu v meste ${m.nazov} a uvidíte najbližšiu lekáreň, zastávku MHD, škôlku, školu, poštu či ihrisko, mestskú časť a ovzdušie v okolí.`}>
+  <section class="hero">
+    <p class="kicker" translate="no">{m.nazov}</p>
+    <h1>Moja adresa</h1>
+    <p class="lead">Čo je najbližšie pri vás: lekáreň, zastávka, škôlka, škola, pošta či ihrisko{m.slug === 'kosice' ? ', v ktorej mestskej časti bývate' : ''} a aké je ovzdušie v okolí.</p>
+  </section>
+  <MojaAdresa mesto={m} />
+</Base>
+
+<style>
+  .hero { padding: 40px 0 20px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+</style>

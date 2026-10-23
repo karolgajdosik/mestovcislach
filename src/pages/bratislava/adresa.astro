@@ -1,0 +1,22 @@
+---
+// Moja adresa – Bratislava: aj spádová ZŠ, starosta a mestskí poslanci za mestskú časť a stavebné zámery.
+import Base from '../../layouts/Base.astro';
+import MojaAdresa from '../../components/MojaAdresa.astro';
+import { MESTA } from '../../mesta';
+const m = MESTA.find((x) => x.slug === 'bratislava')!;
+---
+<Base title="Moja adresa – Bratislava – mestovcislach.sk" description="Zadajte adresu v Bratislave a uvidíte spádovú základnú školu, najbližšiu lekáreň, zastávku MHD a škôlku, svojho starostu a mestských poslancov, stavebné zámery v mestskej časti a ovzdušie v okolí.">
+  <section class="hero">
+    <p class="kicker">Bratislava</p>
+    <h1>Moja adresa</h1>
+    <p class="lead">Spádová základná škola, najbližšia lekáreň, zastávka a škôlka, vaši zvolení zástupcovia, čo sa stavia v mestskej časti a aké je ovzdušie v okolí.</p>
+  </section>
+  <MojaAdresa mesto={m} />
+</Base>
+
+<style>
+  .hero { padding: 40px 0 20px; }
+  .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+</style>
