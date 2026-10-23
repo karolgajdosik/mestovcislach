@@ -1,8 +1,11 @@
-import subprocess, shutil, json
-subprocess.run("pip install -q shapely pyarrow", shell=True)
-subprocess.run("git fetch -q --depth=1 origin main && git checkout origin/main -- data scripts src/mesta.json", shell=True, check=True)
-p = subprocess.run(["python", "scripts/zber_mhd_presov.py"], capture_output=True, text=True, timeout=900)
-print(p.stdout[-1500:], p.stderr[-1500:], "kód", p.returncode)
-shutil.copy("data/mesta/mhd-presov.json", "diag/mhd-presov.json")
-d = json.load(open("data/mesta/mhd-presov.json")); print("spolu", d["spolu"], "deň", d["den"], "platnosť", d["platnost"])
+import requests, time
+s = requests.Session(); s.headers["User-Agent"] = "Mozilla/5.0 (mestovcislach.sk diag)"
+for i in range(40):
+    if 'id="mhd"' in s.get("https://mestovcislach.sk/presov/zivot/", timeout=30).text: break
+    time.sleep(15)
+testy = [("https://mestovcislach.sk/presov/zivot/", 'id="mhd"'), ("https://mestovcislach.sk/kosice/", 'volby-mapa'), ("https://mestovcislach.sk/bratislava/volby/", 'volby-mapa'),
+         ("https://mestovcislach.sk/data/mesta/mapa/presov.json", 'mhd-zastavky'), ("https://mestovcislach.sk/presov/adresa/", 'ad-form'),
+         ("https://mestovcislach.sk/bratislava/", 'Moja adresa'), ("https://mestovcislach.sk/sukromie/", 'Nominatim')]
+for u, hľadaj in testy:
+    r = s.get(u, timeout=30); print(u, r.status_code, hľadaj, hľadaj in r.text)
 print("HOTOVO")
