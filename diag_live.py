@@ -1,22 +1,37 @@
-# Overenie primátora po MČ (2022, kópia z Internet Archive). Mená kandidátov nevypisujeme – len počty, podiely a zhodu.
-import subprocess, sys, json, shutil
+import subprocess, sys, shutil
+from collections import Counter, defaultdict
 subprocess.run("pip install -q shapely pyarrow", shell=True)
 subprocess.run("git fetch -q --depth=1 origin main && git checkout origin/main -- data scripts src/mesta.json", shell=True, check=True)
 shutil.copy("test/zber_komunalne.py", "scripts/zber_komunalne.py"); shutil.copy("test/zber_mesta.py", "scripts/zber_mesta.py")
 sys.path.insert(0, "scripts")
 import zber_komunalne as zk, zber_mesta as zm
-t, u = zk.stiahni(zm.KOMUNALNE[0][1]); print("zdroj:", u)
-strany = zk.strany_mapa(t)
-for mesto, kod_, nazov in (("bratislava", "582000", "Bratislava"), ("kosice", "599981", "Košice")):
-    v, k = zk.primator_po_mc(t, kod_, nazov, strany)
-    mc_ucast = {kk: zk.ucast(t["tab02b"], {kk}) for kk in {x["kod"] for x in v}}
-    zhoda_volici = sum(1 for x in v if x["volili"] == mc_ucast[x["kod"]]["volili"])
-    print(f"{nazov}: MČ {len(v)}, kontrola {k}, voliči sedia v {zhoda_volici}/{len(v)} MČ")
-    if mesto == "bratislava":
-        ref = {x["kod"]: x for x in json.load(open("data/komunalne-bratislava.json"))["volby"][0]["oso"]["primator"]["mestske_casti"]}
-        rozdiel = [(x["nazov"], x["poradie"][0]["podiel"], ref[x["kod"]]["poradie"][0]["podiel"]) for x in v if abs(x["poradie"][0]["podiel"] - ref[x["kod"]]["poradie"][0]["podiel"]) > 0.05 or x["poradie"][0]["meno"] != ref[x["kod"]]["poradie"][0]["meno"]]
-        print("  rozdiely oproti doterajšiemu výpočtu:", rozdiel)
-    vitazi = {}
-    for x in v: vitazi[x["poradie"][0]["meno"]] = vitazi.get(x["poradie"][0]["meno"], 0) + 1
-    print("  počty vyhraných MČ (bez mien):", sorted(vitazi.values(), reverse=True), "| podiely víťazov:", [round(x["poradie"][0]["podiel"]) for x in v])
-    print("  názvy MČ:", [x["nazov"] for x in v])
+t, u = zk.stiahni(zm.KOMUNALNE[0][1])
+KE = "599981"
+mc = {zk.kod(r["OBEC"]): r["NOBEC"] for r in t["tab0d"] if (r.get("NOBEC") or "").startswith("Košice - ")}
+print("MČ v tab0d:", len(mc))
+riadky_mc = [r for r in t["tab02b"] if zk.kod(r["OBEC"]) in mc]
+riadky_ke = [r for r in t["tab02b"] if zk.kod(r["OBEC"]) == KE]
+print("okrskov MČ spolu:", len(riadky_mc), "| okrskov mesta:", len(riadky_ke))
+print("okrsky po MČ:", {mc[k].split(' - ')[1]: v for k, v in Counter(zk.kod(r["OBEC"]) for r in riadky_mc).items()})
+print("stĺpce tab02b:", list(riadky_ke[0].keys()))
+# zhoda podľa (zap, zuc) vs (okrsok, zap, zuc)
+a = Counter((int(zk.cislo(r["P_ZAP"])), int(zk.cislo(r["P_ZUC"]))) for r in riadky_mc)
+b = Counter((zk.kod(r["OKRSOK"]), int(zk.cislo(r["P_ZAP"])), int(zk.cislo(r["P_ZUC"]))) for r in riadky_mc)
+for nazov, kl, cnt in (("zap+zuc", lambda r: (int(zk.cislo(r["P_ZAP"])), int(zk.cislo(r["P_ZUC"]))), a),
+                       ("okrsok+zap+zuc", lambda r: (zk.kod(r["OKRSOK"]), int(zk.cislo(r["P_ZAP"])), int(zk.cislo(r["P_ZUC"]))), b)):
+    st = Counter("jedno" if cnt.get(kl(r), 0) == 1 else "viac" if cnt.get(kl(r), 0) > 1 else "žiadne" for r in riadky_ke)
+    print(nazov, dict(st))
+# okrsky malých MČ: ich počty voličov existujú v meste?
+for kk, n in mc.items():
+    rr = [r for r in riadky_mc if zk.kod(r["OBEC"]) == kk]
+    if len(rr) <= 2:
+        print(n.split(" - ")[1], [(zk.kod(r["OKRSOK"]), zk.kod(r.get("VOOBEC","")), int(zk.cislo(r["P_ZAP"])), int(zk.cislo(r["P_ZUC"]))) for r in rr],
+              "v meste:", [(zk.kod(x["VOOBEC"]), zk.kod(x["OKRSOK"])) for x in riadky_ke if (int(zk.cislo(x["P_ZAP"])), int(zk.cislo(x["P_ZUC"]))) in {(int(zk.cislo(r["P_ZAP"])), int(zk.cislo(r["P_ZUC"]))) for r in rr}])
+# poradie riadkov tab05 mesta: bloky po okrskoch súvislé?
+bloky = []; pred = None
+for r in t["tab05"]:
+    if zk.kod(r["OBEC"]) != KE: continue
+    k = (zk.kod(r["VOOBEC"]), zk.kod(r["OKRSOK"]))
+    if k != pred: bloky.append(k); pred = k
+print("blokov tab05 mesta:", len(bloky), "| unikátnych kľúčov:", len(set(bloky)))
+print("poradie tab02b vs tab05 blokov rovnaké:", [(zk.kod(r["VOOBEC"]), zk.kod(r["OKRSOK"])) for r in riadky_ke] == bloky)
