@@ -1,6 +1,9 @@
-https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip → ('http://web.archive.org/web/20241201215347/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip', '20241201215347', '200')
-   stiahnuté 200 1863667 b'PK'
-https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_xlsx.zip → ('http://web.archive.org/web/20241201210939/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_xlsx.zip', '20241201210939', '200')
-   stiahnuté 200 22042471 b'PK'
-https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip → None
-HOTOVO
+  https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip: HTTP 404
+zdroj: https://web.archive.org/web/20241201215347id_/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip
+Bratislava: MČ 17, kontrola {'okrskov': 394, 'priradenych': 388, 'hlasy_nad_volicov': 0}, voliči sedia v 12/17 MČ
+  rozdiely oproti doterajšiemu výpočtu: []
+  počty vyhraných MČ (bez mien): [17] | podiely víťazov: [66, 63, 49, 68, 67, 54, 57, 59, 52, 57, 61, 65, 68, 55, 54, 65, 65]
+  názvy MČ: ['Devín', 'Devínska Nová Ves', 'Dúbravka', 'Jarovce', 'Karlova Ves', 'Lamač', 'Nové Mesto', 'Petržalka', 'Podunajské Biskupice', 'Rača', 'Rusovce', 'Ružinov', 'Staré Mesto', 'Vajnory', 'Vrakuňa', 'Záhorská Bystrica', 'Čunovo']
+Košice: MČ 16, kontrola {'okrskov': 198, 'priradenych': 194, 'hlasy_nad_volicov': 8}, voliči sedia v 13/16 MČ
+  počty vyhraných MČ (bez mien): [14, 2] | podiely víťazov: [39, 34, 36, 40, 34, 88, 34, 32, 45, 39, 35, 34, 34, 37, 32, 41]
+  názvy MČ: ['Barca', 'Dargovských hrdinov', 'Juh', 'Košická Nová Ves', 'Krásna', 'Luník IX', 'Myslava', 'Nad jazerom', 'Sever', 'Staré Mesto', 'Sídlisko KVP', 'Sídlisko Ťahanovce', 'Vyšné Opátske', 'Západ', 'Šaca', 'Ťahanovce']
