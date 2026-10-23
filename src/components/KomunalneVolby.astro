@@ -4,6 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import VolbyMapa from './VolbyMapa.astro';
+import VolbyPorovnanie from './VolbyPorovnanie.astro';
 const ph = path.join(process.cwd(), 'data', 'hranice-bratislava.geojson');
 const hraniceBA = fs.existsSync(ph) ? JSON.parse(fs.readFileSync(ph, 'utf-8')) : null;
 
@@ -116,6 +117,14 @@ const vitaz = (k: any[]) => k?.find((x) => x.zvoleny) ?? null;
                   ))}
                 </ol>
               </section>
+              {(() => {
+                // porovnanie s predchádzajúcimi voľbami (2022 → 2026)
+                const pred = volby.find((x: any) => x.id < v.id && x.oso);
+                if (!pred) return null;
+                const r = (x: any) => ({ rok: x.id, ucast: x.oso.primator.ucast?.ucast_pct, kandidati: x.oso.primator.kandidati,
+                  mandaty: x.oso.mestske_zastupitelstvo?.mandaty, poslancov: x.oso.mestske_zastupitelstvo?.poslancov });
+                return <section class="card"><VolbyPorovnanie stary={r(pred)} novy={r(v)} priebezne={priebezne} /></section>;
+              })()}
 
               {o.primator.mestske_casti.length > 0 && (
                 <section class="card">

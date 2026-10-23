@@ -1,0 +1,70 @@
+---
+// Porovnanie komunálnych volieb s predchádzajúcimi (2022 → 2026): účasť, či primátor obhájil, zmena mandátov.
+// Zobrazí sa samo, keď sú výsledky oboch ročníkov; počas sčítavania len účasť a kto vedie.
+interface Kand { meno: string; strany?: string; podiel?: number; zvoleny?: boolean }
+interface Rocnik { rok: string; ucast?: number | null; kandidati: Kand[]; mandaty?: { strany: string; mandaty: number }[]; poslancov?: number }
+interface Props { stary: Rocnik; novy: Rocnik; priebezne?: boolean; funkcia?: string }
+const { stary, novy, priebezne = false, funkcia = 'primátor' } = Astro.props as Props;
+
+// meno bez titulov, aby sa ten istý človek spoznal aj pri inom zápise titulu
+const bezTitulov = (m: string) => m.split(/[\s,]+/).filter((s) => s && !s.includes('.')).join(' ').toLowerCase();
+const vitaz = (r: Rocnik) => r.kandidati.find((k) => k.zvoleny) ?? null;
+const starV = vitaz(stary);
+const novV = vitaz(novy) ?? (priebezne ? novy.kandidati[0] : null);
+const obhajil = starV && novV ? bezTitulov(starV.meno) === bezTitulov(novV.meno) : null;
+const kandidovalZnova = starV ? novy.kandidati.some((k) => bezTitulov(k.meno) === bezTitulov(starV.meno)) : false;
+const zmenaUcasti = stary.ucast != null && novy.ucast != null ? novy.ucast - stary.ucast : null;
+const des = (n: number, d = 1) => n.toLocaleString('sk-SK', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+// mandáty: strany (koalície) zo zoznamu oboch ročníkov
+const mand = new Map<string, [number, number]>();
+if (!priebezne && (novy.poslancov ?? 0) > 0) {
+  for (const x of stary.mandaty ?? []) mand.set(x.strany, [x.mandaty, 0]);
+  for (const x of novy.mandaty ?? []) mand.set(x.strany, [mand.get(x.strany)?.[0] ?? 0, x.mandaty]);
+}
+const riadky = [...mand.entries()].sort((a, b) => b[1][1] - a[1][1] || b[1][0] - a[1][0]);
+const kratko = (s: string) => (s.length > 70 ? s.slice(0, 68) + '…' : s);
+---
+<section class="vp" aria-label={`Porovnanie s voľbami ${stary.rok}`}>
+  <h3>Oproti voľbám {stary.rok}</h3>
+  <ul class="vp-fakty">
+    {zmenaUcasti != null && (
+      <li><strong>Účasť {des(novy.ucast!)} %</strong> – {Math.abs(zmenaUcasti) < 0.05 ? 'rovnako ako' : `o ${des(Math.abs(zmenaUcasti))} p. b. ${zmenaUcasti > 0 ? 'viac' : 'menej'} ako`} v roku {stary.rok} ({des(stary.ucast!)} %){priebezne ? ' – priebežne' : ''}.</li>
+    )}
+    {starV && novV && (
+      <li translate="no">
+        {obhajil
+          ? (priebezne ? <>Vedie <strong>{novV.meno}</strong>, ktorý(-á) funkciu z roku {stary.rok} obhajuje.</> : <><strong>{novV.meno}</strong> obhájil(a) funkciu, ktorú získal(a) v roku {stary.rok}.</>)
+          : (priebezne ? <>Vedie <strong>{novV.meno}</strong>. Doterajší(-ia) {funkcia} {starV.meno} {kandidovalZnova ? 'je zatiaľ na nižšom mieste' : 'nekandidoval(a)'}.</>
+                       : <>Nový(-á) {funkcia}: <strong>{novV.meno}</strong>. Doterajší(-ia) {starV.meno} {kandidovalZnova ? 'funkciu neobhájil(a)' : 'nekandidoval(a)'}.</>)}
+      </li>
+    )}
+  </ul>
+  {riadky.length > 0 && (
+    <div class="tabulka-obal">
+      <table class="vp-tab">
+        <caption class="sr">Mandáty v zastupiteľstve {stary.rok} a {novy.rok}</caption>
+        <thead><tr><th>Strana alebo koalícia</th><th class="num">{stary.rok}</th><th class="num">{novy.rok}</th><th class="num">Zmena</th></tr></thead>
+        <tbody>
+          {riadky.map(([s, [a, b]]) => (
+            <tr><td translate="no">{kratko(s)}</td><td class="num">{a || '–'}</td><td class="num">{b || '–'}</td>
+              <td class={`num ${b > a ? 'plus' : b < a ? 'minus' : ''}`}>{b === a ? '0' : `${b > a ? '+' : '−'}${Math.abs(b - a)}`}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</section>
+
+<style>
+  .vp { margin: 14px 0 6px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
+  .vp h3 { margin: 0 0 8px; font-size: 1rem; }
+  .vp-fakty { margin: 0 0 6px; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+  .vp-tab { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 8px; }
+  .vp-tab th, .vp-tab td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+  .vp-tab .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .vp-tab .plus { color: #15803d; font-weight: 700; }
+  .vp-tab .minus { color: var(--accent); font-weight: 700; }
+  :global(:root[data-tema='tmava']) .vp-tab .plus { color: #4ade80; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
