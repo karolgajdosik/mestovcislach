@@ -1,5 +1,9 @@
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 11, in <module>
-    open(f"diag/foto/full-{m}.jpg", "wb").write(s.get(ii["thumburl"], timeout=120).content)
-    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'diag/foto/full-bratislava.jpg'
+bratislava CC BY 3.0 | Marc Ryckaert (MJJR) | 2576 kB
+kosice CC BY 2.5 | Maros M r a z (Maros) | 3016 kB
+zilina CC BY-SA 4.0 | Fry72 (Karel Frydrýšek) | 1168 kB
+banska-bystrica CC BY-SA 4.0 | Milan Bališin | 2233 kB
+trnava CC0 | Kiwiev | 1383 kB
+trencin CC BY-SA 4.0 | Scotch Mist | 1756 kB
+nitra CC BY-SA 3.0 | Xmetov | 3164 kB
+presov CC BY-SA 4.0 | Ing.Mgr.Jozef Kotulič | 2695 kB
+HOTOVO
