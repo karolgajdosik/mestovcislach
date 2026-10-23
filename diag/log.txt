@@ -1,5 +1,6 @@
-bratislava noviniek za 7 dní: 1 {'Čo sa stavia': 1} | HTML 1819 znakov, odhlásenie: True
-ruzinov noviniek za 7 dní: 1 {'Zmluvy': 1} | HTML 1695 znakov, odhlásenie: True
-kosice noviniek za 7 dní: 2 {'Čo sa stavia': 2} | HTML 2438 znakov, odhlásenie: True
-zilina noviniek za 7 dní: 1 {'Výstrahy SHMÚ': 1} | HTML 1715 znakov, odhlásenie: True
+https://mestovcislach.sk/kosice/upozornenia/ formulár: True
+https://mestovcislach.sk/bratislava/upozornenia/ formulár: True
+https://mestovcislach.sk/odber-potvrdeny/ formulár: False
+neplatná adresa: 400 {'ok': False, 'sprava': 'Skontrolujte, prosím, e-mailovú adresu.'}
+neznámy kanál: 400 {'ok': False, 'sprava': 'Neznámy kanál upozornení.'}
 HOTOVO
