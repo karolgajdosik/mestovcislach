@@ -11,6 +11,7 @@ on:
       - "scripts/zber_mesta_temy.py"
       - "scripts/zber_ovzdusie_eea.py"
       - "scripts/zber_vlaky.py"
+      - "scripts/zber_mhd_presov.py"
       - "scripts/zber_firmy_miest.py"
       - ".github/workflows/mesta-temy.yml"
 
@@ -46,6 +47,10 @@ jobs:
       - name: Vlaky (GTFS ŽSR)
         if: success() || failure()
         run: python scripts/zber_vlaky.py
+
+      - name: MHD Prešov (GTFS DPMP)
+        if: success() || failure()
+        run: python scripts/zber_mhd_presov.py
 
       - name: Firmy miest (vlastníctvo z RPO, závierky z RÚZ)
         if: success() || failure()
