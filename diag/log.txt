@@ -1,5 +1,5 @@
 Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 3, in <module>
-    k1 = json.load(open("diag/foto/kandidati.json")); k2 = json.load(open("diag/foto/kandidati2.json"))
-                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'diag/foto/kandidati.json'
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 11, in <module>
+    open(f"diag/foto/full-{m}.jpg", "wb").write(s.get(ii["thumburl"], timeout=120).content)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'diag/foto/full-bratislava.jpg'
