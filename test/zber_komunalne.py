@@ -311,8 +311,13 @@ def primator_po_mc(t: dict[str, list[dict]], mesto: str, predpona: str, strany: 
         vyskyt[k] += 1
     na_mc: dict[tuple, str] = {}
     nejasne: dict[tuple, set[str]] = {}
+    podla_zap: dict[int, set[str]] = defaultdict(set)
+    for r in ucast_rows:
+        if kod(r["OBEC"]) in mc:
+            podla_zap[int(cislo(r["P_ZAP"]))].add(kod(r["OBEC"]))
     for k3, r in okrsky.items():
-        kand = podla_cisel.get((int(cislo(r["P_ZAP"])), int(cislo(r["P_ZUC"]))), set())
+        # najprv zapísaní + zúčastnení, inak len zapísaní (zúčastnení sa v tabuľke mesta a MČ niekedy líšia o pár voličov)
+        kand = podla_cisel.get((int(cislo(r["P_ZAP"])), int(cislo(r["P_ZUC"]))), set()) or podla_zap.get(int(cislo(r["P_ZAP"])), set())
         if len(kand) == 1:
             na_mc[k3] = next(iter(kand))
         elif kand:
@@ -325,14 +330,19 @@ def primator_po_mc(t: dict[str, list[dict]], mesto: str, predpona: str, strany: 
     v_okrsku: dict[tuple, float] = defaultdict(float)
     vyskyt = defaultdict(int)
     predch = None
+    videne_pc: set[str] = set()
     for r in t.get("tab05", []):
         if kod(r["OBEC"]) != mesto:
             predch = None
             continue
         k = (kod(r.get("VOOBEC", "")), kod(r["OKRSOK"]))
-        if k != predch:
+        pc_ = kod(r["PC_HL"])
+        # nový okrsok: zmena kľúča, alebo ten istý kľúč a kandidát sa opakuje (dva okrsky s rovnakým číslom v jednom bloku)
+        if k != predch or pc_ in videne_pc:
             vyskyt[k] += 1
             predch = k
+            videne_pc = set()
+        videne_pc.add(pc_)
         k3 = (*k, vyskyt[k] - 1)
         m = na_mc.get(k3)
         v_okrsku[k3] += cislo(r["P_HL"])
