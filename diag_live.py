@@ -1,14 +1,22 @@
-# Opakovanie zlyhaných zberov (ŠÚ SR) – len chybové riadky a súhrn, bez osobných údajov.
-import subprocess, requests
-subprocess.run("pip install -q shapely pyarrow", shell=True)
-subprocess.run("git fetch -q --depth=1 origin main && git checkout origin/main -- data scripts src/mesta.json public/data", shell=True)
-for u in ("https://data.statistics.sk/api/v2/dataset/om7101rr/SK010/2024/U/val", "https://volby.statistics.sk/opendata/", "https://volbysr.sk/oso/sk/", "https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip"):
+# Kam sa presunuli otvorené dáta volieb ŠÚ SR? Len stavové kódy a odkazy.
+import requests, re
+s = requests.Session(); s.headers["User-Agent"] = "Mozilla/5.0 (mestovcislach.sk diag)"
+def g(u):
     try:
-        r = requests.get(u, timeout=60, headers={"User-Agent": "mestovcislach.sk diag"}); print(u, r.status_code, r.headers.get("content-type"), len(r.content), r.headers.get("Last-Modified"))
-    except Exception as e: print(u, type(e).__name__, str(e)[:120])
-for skript in ("zber_obyvatelstvo.py", "zber_volby.py", "zber_byvanie.py"):
-    p = subprocess.run(["python", f"scripts/{skript}"], capture_output=True, text=True, timeout=1500)
-    vystup = (p.stdout + p.stderr).splitlines()
-    chyby = [l for l in vystup if any(x in l for x in ("Error", "error", "CHYBA", "Traceback", "::warning", "::error", "HTTP", "Exception"))]
-    print(f"\n== {skript}: návratový kód {p.returncode}")
-    print("\n".join(l[:300] for l in (chyby[-15:] or vystup[-5:])))
+        r = s.get(u, timeout=40, allow_redirects=True); return r
+    except Exception as e: print(u, type(e).__name__); return None
+for u in ["https://volby.statistics.sk/opendata/nrsr/2023/NRSR2023_SK_tab02d.csv", "https://volbysr.sk/opendata/nrsr/2023/NRSR2023_SK_tab02d.csv",
+          "https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip", "https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip",
+          "https://volby.statistics.sk/nrsr/nrsr2023/sk/", "https://volby.statistics.sk/", "https://volbysr.sk/", "https://volbysr.sk/opendata/",
+          "https://volby.statistics.sk/opendata/eup/2024/EP2024_SK_tab02d.csv", "https://volbysr.sk/nrsr/nrsr2023/sk/", "https://volbysr.sk/oso/oso2022/files/OSO2022_SK_csv.zip"]:
+    r = g(u)
+    if r is not None:
+        print(u, r.status_code, r.url if r.url != u else "", r.headers.get("content-type"), len(r.content))
+        if "html" in (r.headers.get("content-type") or "") and r.status_code == 200 and u.endswith("/"):
+            print("   ", sorted(set(h for h in re.findall(r'href="([^"]+)"', r.text) if "statistics" not in h or "volby" in h))[:50])
+q = ('PREFIX dcat:<http://www.w3.org/ns/dcat#> PREFIX dct:<http://purl.org/dc/terms/> SELECT DISTINCT ?url WHERE { ?d dcat:downloadURL ?url . '
+     'FILTER(CONTAINS(LCASE(STR(?url)),"nrsr2023") || CONTAINS(LCASE(STR(?url)),"oso2022") || CONTAINS(LCASE(STR(?url)),"ep2024")) } LIMIT 40')
+try:
+    r = s.get("https://data.slovensko.sk/api/sparql", params={"query": q}, headers={"Accept": "application/sparql-results+json"}, timeout=90).json()
+    print("NKOD:", [b["url"]["value"] for b in r["results"]["bindings"]])
+except Exception as e: print("NKOD", e)
