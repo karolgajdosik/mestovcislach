@@ -1,6 +1,7 @@
 import requests, json, re, html, os
 s = requests.Session(); s.headers["User-Agent"] = "mestovcislach.sk (github.com/karolgajdosik/mestovcislach; info@mestovcislach.sk)"
 VYBER = {"bratislava": "File:Bratislava Panorama R01.jpg", "kosice": "File:Main Street, Košice, Slovakia 1.jpg", "zilina": "File:Mariánské námestie, Žilina, okres Žilina, Žilinský kraj, Slovensko 02.jpg", "banska-bystrica": "File:Banská Bystrica - Námestie SNP 004.jpg", "trnava": "File:Square of the Holy Trinity (Trojičné námestie), Trnava, Slovakia.JPG", "trencin": "File:Trenčín Castle 58.jpg", "nitra": "File:Nitriansky hrad.jpg", "presov": "File:Panorama, Prešov 22 Slovakia 6.jpg"}
+os.makedirs("diag/foto", exist_ok=True)
 kredity = {}
 for m, k in VYBER.items():
     d = s.get("https://commons.wikimedia.org/w/api.php", params={"action": "query", "format": "json", "titles": k, "prop": "imageinfo",
