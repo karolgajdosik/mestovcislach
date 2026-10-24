@@ -85,6 +85,7 @@ export async function GET() {
   for (const m of mesta.filter((x: any) => x.aktivne)) {
     polozky.push(['Stránky', `Čo je nové – ${m.nazov}`, 'nové stavby, zmluvy mesta, zasadnutia zastupiteľstva, RSS', `/${m.slug}/novinky`, `novinky nové rss kanál správy ${m.v}`]);
     if (m.slug !== 'bratislava') polozky.push(['Stránky', `Komunálne voľby 2026 – ${m.nazov}`, 'výsledky voľby primátora a zastupiteľstva naživo, porovnanie s 2022', `/${m.slug}/volby`, `voľby výsledky primátor komunálne 2026 ${m.nazov.toLowerCase()} ${m.v}`]);
+    polozky.push(['Stránky', `Kalendár – ${m.nazov}`, 'zápis do ZŠ, prihlášky do MŠ a SŠ, daňové priznanie, zasadnutia – do telefónu', `/${m.slug}/kalendar`, `kalendár termíny zápis škola škôlka prihláška daňové priznanie zasadnutie ics ${m.v}`]);
     polozky.push(['Stránky', `Mestské zastupiteľstvo – ${m.nazov}`, 'poslanci, strany, kto obhájil mandát', `/${m.slug}/zastupitelstvo`, `poslanci zastupiteľstvo primátor zvolení strany kluby ${m.v}`]);
     polozky.push(['Stránky', `Školy – ${m.nazov}`, 'základné, materské a stredné školy, žiaci, záujem o SŠ', `/${m.slug}/skoly`, `škola škôlka gymnázium stredná prijímačky žiaci učitelia ${m.v}`]);
     if (m.slug === 'bratislava' || m.slug === 'kosice' || castiOsm[m.slug]) polozky.push(['Stránky', `Ktorá štvrť je pre mňa – ${m.nazov}`, 'porovnanie štvrtí podľa toho, čo potrebujete blízko', `/${m.slug}/stvrte`, `štvrť sídlisko kde bývať presťahovať mestská časť porovnanie ${m.v}`]);

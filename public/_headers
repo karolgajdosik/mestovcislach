@@ -21,3 +21,6 @@ https://:version.:project.pages.dev/*
   Cache-Control: no-cache
 /manifest.webmanifest
   Content-Type: application/manifest+json
+/*/kalendar.ics
+  Content-Type: text/calendar; charset=utf-8
+  Cache-Control: public, max-age=3600

@@ -1,0 +1,84 @@
+---
+// Kalendár mesta: termíny pre obyvateľov a zasadnutia zastupiteľstva, odber do telefónu (ICS) – src/lib/kalendar.ts
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import { MESTA, type Mesto } from '../../mesta';
+import { kalendar } from '../../lib/kalendar';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const u = kalendar(m.slug);
+const dnes = new Date().toISOString().slice(0, 10);
+const buduce = u.filter((x) => (x.do ?? x.od) >= dnes);
+const minule = u.filter((x) => (x.do ?? x.od) < dnes && x.typ !== 'termin').reverse();
+const datum = (d: string, rok = true) => new Date(d).toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', ...(rok ? { year: 'numeric' } : {}) });
+const kedy = (x: (typeof u)[number]) => (x.do ? `${datum(x.od, false)} – ${datum(x.do)}` : datum(x.od));
+const ics = `https://mestovcislach.sk/${m.slug}/kalendar.ics`;
+const webcal = ics.replace(/^https/, 'webcal');
+const google = `https://calendar.google.com/calendar/render?cid=${encodeURIComponent(webcal)}`;
+const TYP: Record<string, string> = { termin: 'Termín', zastupitelstvo: 'Zastupiteľstvo', volby: 'Voľby' };
+---
+<Base title={`Kalendár ${m.v} – termíny a zastupiteľstvo do telefónu – mestovcislach.sk`} description={`${m.nazov}: zápis do ZŠ, prihlášky do MŠ a na SŠ, daňové priznanie, zasadnutia zastupiteľstva a voľby – ako kalendár, ktorý si pridáte do telefónu a sám sa aktualizuje.`}>
+  <section class="hero">
+    <p class="kicker">Kalendár</p>
+    <h1>Termíny <span translate="no">{m.v}</span> do vášho kalendára</h1>
+    <p class="lead">Zápis do školy, prihlášky do škôlky, daňové priznanie, zasadnutia zastupiteľstva a voľby. Pridajte si kalendár do telefónu – pred dôležitým termínom vám pripomenie deň vopred a nové udalosti pribudnú samy.</p>
+  </section>
+
+  <section class="card ka-odber">
+    <h2>Pridať do kalendára</h2>
+    <div class="ka-tlacidla">
+      <a class="ka-hl" href={webcal}>Odoberať v telefóne (iPhone, Outlook)</a>
+      <a href={google} rel="noopener">Google Kalendár</a>
+      <a href={`/${m.slug}/kalendar.ics`} download={`kalendar-${m.slug}.ics`}>Stiahnuť súbor .ics</a>
+    </div>
+    <details class="ka-navod">
+      <summary>Ako na to</summary>
+      <ul>
+        <li><strong>iPhone:</strong> ťuknite na „Odoberať v telefóne“ a potvrďte <em>Odoberať</em>. Kalendár sa zobrazí v aplikácii Kalendár.</li>
+        <li><strong>Android (Google Kalendár):</strong> ťuknite na „Google Kalendár“ a potvrďte pridanie – v telefóne sa objaví po synchronizácii.</li>
+        <li><strong>Iná aplikácia:</strong> pridajte kalendár z adresy <code>{ics}</code> (voľba „odoberať“ alebo „pridať z URL“).</li>
+      </ul>
+      <p class="pozn">Odber nevyžaduje registráciu ani e-mail; nič o vás neukladáme.</p>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>Najbližšie termíny</h2>
+    {buduce.length ? (
+      <ol class="ka-zoznam">{buduce.map((x) => (
+        <li class={`ka-${x.typ}`}><span class="ka-kedy">{kedy(x)}</span><div><span class="ka-typ">{TYP[x.typ]}</span><strong><a href={x.odkaz}>{x.nazov}</a></strong><p>{x.popis}</p></div></li>
+      ))}</ol>
+    ) : <p>Zatiaľ žiadne.</p>}
+    <p class="pozn">Termíny zápisov a prihlášok sú celoštátne; presné dni určuje škola, škôlka alebo mesto. Termíny zasadnutí zastupiteľstva po voľbách pribudnú, keď ich mesto zverejní.</p>
+  </section>
+
+  {minule.length > 0 && (
+    <section class="card">
+      <h2>Za posledný rok</h2>
+      <ol class="ka-zoznam ka-minule">{minule.map((x) => (
+        <li><span class="ka-kedy">{kedy(x)}</span><div><span class="ka-typ">{TYP[x.typ]}</span><strong><a href={x.odkaz}>{x.nazov}</a></strong>{x.popis && <p>{x.popis}</p>}</div></li>
+      ))}</ol>
+    </section>
+  )}
+</Base>
+
+<style>
+  .ka-tlacidla { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ka-tlacidla a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--line); color: var(--text); font-weight: 700; text-decoration: none; }
+  .ka-tlacidla a:hover { border-color: var(--accent); }
+  .ka-tlacidla .ka-hl { background: var(--accent); border-color: var(--accent); color: var(--na-akcente, #fff); }
+  .ka-navod { margin-top: 12px; }
+  .ka-navod summary { cursor: pointer; font-weight: 600; }
+  .ka-navod code { word-break: break-all; }
+  .ka-zoznam { list-style: none; margin: 0; padding: 0; }
+  .ka-zoznam li { display: grid; grid-template-columns: 11em 1fr; gap: 4px 16px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .ka-kedy { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .ka-typ { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); font-weight: 700; }
+  .ka-zoznam p { margin: 4px 0 0; color: var(--muted); font-size: 0.9rem; }
+  .ka-minule p { font-size: 0.85rem; }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+  @media (max-width: 600px) { .ka-zoznam li { grid-template-columns: 1fr; } }
+</style>
