@@ -3,6 +3,7 @@
 // Bratislava má vlastné, podrobnejšie stránky v src/pages/bratislava/.
 import fs from 'node:fs';
 import path from 'node:path';
+import { castiMesta } from '../../lib/casti-mesta';
 import Base from '../../layouts/Base.astro';
 import { MESTA, type Mesto } from '../../mesta';
 import { KATEGORIE_EIA } from '../../lib/eia';
@@ -79,6 +80,8 @@ const zamery: any[] = eia?.zamery ?? [];
 const aktivne = zamery.filter((z) => !z.ukoncene);
 const zobrazit = [...aktivne, ...zamery.filter((z) => z.ukoncene)].slice(0, 12);
 const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(mm)}/${r}`; };
+const profilyMc = !m.plne && !!castiMesta(m.slug);
+const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 ---
 <Base title={`${m.nazov} v číslach – mestovcislach.sk`} description={`${m.nazov}: obyvatelia, sčítanie 2021, voľby, nezamestnanosť, výstavba bytov, ceny bývania a stavebné zámery z otvorených dát.`}>
   <FotoMesta slug={m.slug} nazov={m.nazov}>
@@ -115,9 +118,10 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
         <div class="tabulka-obal">
           <table>
             <thead><tr><th>Mestská časť</th><th class="num">Obyvatelia</th><th class="num">Zmena za 10 rokov</th></tr></thead>
-            <tbody>{casti.map((c) => <tr><td translate="no">{c.n}</td><td class="num">{fmt(c.v)}</td><td class="num">{znam(c.z)}</td></tr>)}</tbody>
+            <tbody>{casti.map((c) => <tr><td translate="no">{profilyMc ? <a href={`/${m.slug}/mestske-casti/${mcSlug(c.n)}`}>{c.n}</a> : c.n}</td><td class="num">{fmt(c.v)}</td><td class="num">{znam(c.z)}</td></tr>)}</tbody>
           </table>
         </div>
+        {profilyMc && <p><a href={`/${m.slug}/mestske-casti`}>Profily mestských častí – vek, vzdelanie, voľby, dostupnosť a mapa →</a></p>}
       </>
     )}
     <p class="zdroj">Zdroj: ŠÚ SR – DATAcube (om7101rr).</p>

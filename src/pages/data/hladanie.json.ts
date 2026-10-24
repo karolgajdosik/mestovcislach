@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { maMapu, maSamospravu } from '../../lib/mapa';
 import { maZivot } from '../../lib/temy';
+import { castiMesta } from '../../lib/casti-mesta';
 
 const nacitaj = (subor: string, verejne = false) => {
   const p = path.join(process.cwd(), verejne ? 'public/data' : 'data', subor);
@@ -86,6 +87,11 @@ export async function GET() {
     polozky.push(['Stránky', `Mestské zastupiteľstvo – ${m.nazov}`, 'poslanci, strany, kto obhájil mandát', `/${m.slug}/zastupitelstvo`, `poslanci zastupiteľstvo primátor zvolení strany kluby ${m.v}`]);
     polozky.push(['Stránky', `Školy – ${m.nazov}`, 'základné, materské a stredné školy, žiaci, záujem o SŠ', `/${m.slug}/skoly`, `škola škôlka gymnázium stredná prijímačky žiaci učitelia ${m.v}`]);
     if (m.slug === 'bratislava' || m.slug === 'kosice' || castiOsm[m.slug]) polozky.push(['Stránky', `Ktorá štvrť je pre mňa – ${m.nazov}`, 'porovnanie štvrtí podľa toho, čo potrebujete blízko', `/${m.slug}/stvrte`, `štvrť sídlisko kde bývať presťahovať mestská časť porovnanie ${m.v}`]);
+    const cm = m.slug !== 'bratislava' ? castiMesta(m.slug) : null;
+    if (cm) {
+      polozky.push(['Stránky', `Mestské časti – ${m.nazov}`, `${cm.pocet} častí: obyvatelia, vek, voľby, dostupnosť, mapa`, `/${m.slug}/mestske-casti`, `mestská časť mč sídlisko profil ${m.v}`]);
+      for (const c of cm.casti) polozky.push(['Mestské časti', `${c.n} (${m.nazov})`, 'profil: ľudia, voľby, dostupnosť služieb', `/${m.slug}/mestske-casti/${c.slug}`, `mestská časť mč ${m.nazov.toLowerCase()}`]);
+    }
     polozky.push(['Stránky', `Kam idú moje dane – ${m.nazov}`, 'kalkulačka: koľko z daní dostane mesto a na čo ich míňa', `/${m.slug}/dane`, `dane daň z nehnuteľnosti poplatok odpad rozpočet kalkulačka ${m.v}`]);
     polozky.push(['Stránky', `Kvíz: Poznáš svoje mesto? – ${m.nazov}`, '10 otázok z dát o meste', `/${m.slug}/kviz`, `kvíz test otázky hra ${m.v}`]);
   }

@@ -46,6 +46,7 @@ const NOVE: [string, string, string, boolean][] = [
   ['novinky', 'Čo je nové', '<path d="M5 4.5h11.5a2 2 0 0 1 2 2V19a1.5 1.5 0 0 0 3 0V9.5h-3"/><path d="M5 4.5V19a1.5 1.5 0 0 0 1.5 1.5h14.5M8.5 8.5h6M8.5 12h6M8.5 15.5h4"/>', true],
   ['zastupitelstvo', 'Zastupiteľstvo', '<path d="M3 20.5h18M4.5 9.5h15M12 3.5l8 4.5H4z"/><path d="M6.5 9.5v8.5M10 9.5v8.5M14 9.5v8.5M17.5 9.5v8.5"/>', true],
   ['skoly', 'Školy', '<path d="m2.5 9 9.5-4.5L21.5 9 12 13.5z"/><path d="M6.5 11v5c1.5 1.6 3.4 2.4 5.5 2.4s4-.8 5.5-2.4v-5M21.5 9v5.5"/>', maSubor('data', 'mesta', 'skoly.json')],
+  ['mestske-casti', 'Mestské časti', '<path d="M4 4.5h7v7H4zM13 4.5h7v4.5h-7zM13 11h7v8.5h-7zM4 13.5h7v6H4z"/>', !mesto.plne && mesto.slug === 'kosice'], // profily častí (src/lib/casti-mesta.ts)
   ['stvrte', 'Ktorá štvrť', '<path d="M3 20.5V11l5-3.5 5 3.5v9.5M13 20.5V7.5l4-3 4 3v13M2 20.5h20"/><path d="M6.5 14h3M15.5 11h3M15.5 14.5h3"/>', mesto.slug === 'bratislava' || mesto.slug === 'kosice' || castiOsm.includes(mesto.slug)],
   ['dane', 'Kam idú dane', '<circle cx="12" cy="12" r="8.5"/><path d="M15 8.6a4 4 0 1 0 0 6.8M7 10.8h6M7 13.2h6"/>', true],
   ['kviz', 'Kvíz', '<circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.6M12 16.8v.2"/>', true],

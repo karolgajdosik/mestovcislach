@@ -1,0 +1,186 @@
+---
+// Profil mestskej časti (Košice): obyvatelia a ich vývoj, kto tu býva (sčítanie 2021), voľby, dostupnosť služieb – s porovnaním s mestom.
+import Base from '../../../layouts/Base.astro';
+import '../../../styles/stranka.css';
+import { MESTA, type Mesto } from '../../../mesta';
+import { castiMesta, type ProfilCasti, type Ukazovatel } from '../../../lib/casti-mesta';
+import { skrat } from '../../../lib/zastupitelstvo';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && !m.plne).flatMap((m) => {
+    const c = castiMesta(m.slug);
+    if (!c) return [];
+    const abc = c.casti.slice().sort((a, b) => a.n.localeCompare(b.n, 'sk'));
+    return abc.map((p, i) => ({ params: { mesto: m.slug, mc: p.slug }, props: { m, p, n: c.pocet, mesto: c.mesto, pred: abc[(i + abc.length - 1) % abc.length], po: abc[(i + 1) % abc.length], vsetky: abc.map((x) => [x.slug, x.n]) } }));
+  });
+}
+const { m, p, n, mesto, pred, po, vsetky } = Astro.props as { m: Mesto; p: ProfilCasti; n: number; mesto: Record<string, number | null>; pred: ProfilCasti; po: ProfilCasti; vsetky: [string, string][] };
+const fmt = (x: number | null | undefined) => (x == null ? '–' : Math.round(x).toLocaleString('sk-SK'));
+const des = (x: number | null | undefined) => (x == null ? '–' : x.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }));
+const znam = (x: number | null | undefined) => (x == null ? '–' : `${x > 0 ? '+' : x < 0 ? '−' : ''}${des(Math.abs(x))} %`);
+const kr = (s: string) => { const q = skrat(s).split(' + '); return q.length > 3 ? `${q.slice(0, 3).join(' + ')} a ďalší` : q.join(' + '); };
+const meno = (s: string) => s.split(/[\s,]+/).filter((x) => x && !x.includes('.') && !/^(PhD|MBA|LL|MPH)$/i.test(x)).join(' ');
+const por = (u: Ukazovatel, vys: string, niz: string) => (u.poradie == null ? '' : u.poradie === 1 ? vys : u.poradie === n ? niz : `${u.poradie}. z ${n}`);
+const minut = (mm: number | null) => (mm == null ? null : Math.max(1, Math.round((mm * 1.3) / 80)));
+
+// čím sa časť odlišuje – krátke zhrnutie
+const SKLAD: [keyof ProfilCasti['sklad'], string, string, string][] = [
+  ['seniori', 'seniorov (65+)', 'najviac seniorov', 'najmenej seniorov'],
+  ['deti', 'detí do 14 rokov', 'najviac detí', 'najmenej detí'],
+  ['vs', 'vysokoškolsky vzdelaných', 'najviac vysokoškolákov', 'najmenej vysokoškolákov'],
+  ['vlastne', 'bytov vo vlastníctve', 'najviac vlastného bývania', 'najmenej vlastného bývania'],
+  ['najom', 'nájomných a obecných bytov', 'najviac nájomného bývania', 'najmenej nájomného bývania'],
+];
+const skratka: string[] = [];
+if (p.zmena10.poradie === 1) skratka.push(`najrýchlejšie rastúca časť – ${znam(p.zmena10.hodnota)} obyvateľov za 10 rokov`);
+if (p.zmena10.poradie === n) skratka.push(`najviac ubúdajúca časť – ${znam(p.zmena10.hodnota)} obyvateľov za 10 rokov`);
+if (p.hustota.poradie === 1) skratka.push(`najhustejšie obývaná časť – ${fmt(p.hustota.hodnota)} obyvateľov na km²`);
+for (const [k, popis, vys, niz] of SKLAD) {
+  const u = p.sklad[k];
+  if (u.poradie === 1) skratka.push(`${vys} v meste – ${des(u.hodnota)} % ${popis} (mesto ${des(u.mesto)} %)`);
+  else if (u.poradie === n) skratka.push(`${niz} v meste – ${des(u.hodnota)} % ${popis} (mesto ${des(u.mesto)} %)`);
+}
+const kom = p.komunalne.at(-1);
+if (kom?.ucastPor === 1) skratka.push(`najvyššia účasť v komunálnych voľbách ${kom.rok} – ${des(kom.ucast)} %`);
+if (kom?.ucastPor === n) skratka.push(`najnižšia účasť v komunálnych voľbách ${kom.rok} – ${des(kom.ucast)} %`);
+const blizko = p.dostupnost.filter((d) => d.poradie === 1).map((d) => d.nazov.toLowerCase());
+if (blizko.length) skratka.push(`najbližšie v meste: ${blizko.join(', ')}`);
+
+// graf obyvateľov
+const graf = (() => {
+  if (p.rady.length < 2) return null;
+  const xs = p.rady.map(([r]) => Number(r)), ys = p.rady.map(([, v]) => v);
+  const [x0, x1] = [Math.min(...xs), Math.max(...xs)], [y0, y1] = [Math.min(...ys) * 0.97, Math.max(...ys) * 1.02];
+  const W = 600, H = 150;
+  const b = (x: number, y: number) => `${(((x - x0) / (x1 - x0)) * W).toFixed(1)},${(H - ((y - y0) / (y1 - y0)) * H).toFixed(1)}`;
+  const ciara = p.rady.map(([r, v]) => b(Number(r), v)).join(' ');
+  return { W, H, ciara, plocha: `0,${H} ${ciara} ${W},${H}`, od: x0, do: x1, min: Math.min(...ys), max: Math.max(...ys) };
+})();
+const maSklad = SKLAD.some(([k]) => p.sklad[k].hodnota != null);
+const nr = p.volby.nrsr2023, ep = p.volby.ep2024;
+const popisStr = `${p.n} (${m.nazov}): ${fmt(p.pocet)} obyvateľov, vývoj, vek a vzdelanie, voľby a dostupnosť služieb – porovnanie s celým mestom.`;
+---
+<Base title={`${p.n} (${m.nazov}) – mestská časť v číslach – mestovcislach.sk`} description={popisStr}>
+  <nav class="drobky" aria-label="Kde sa nachádzate"><a href={`/${m.slug}/mestske-casti`}>Mestské časti</a> <span aria-hidden="true">/</span> <span translate="no">{p.n}</span></nav>
+  <section class="hero">
+    <p class="kicker">Mestská časť · <span translate="no">{m.nazov}</span></p>
+    <h1 translate="no">{p.n}</h1>
+    <ul class="zakladne">
+      <li><strong>{fmt(p.pocet)}</strong> obyvateľov ({p.rok})</li>
+      {p.km2 != null && <li><strong>{des(p.km2)}</strong> km²</li>}
+      {p.hustota.hodnota != null && <li><strong>{fmt(p.hustota.hodnota)}</strong> obyvateľov na km²</li>}
+      {p.zmena10.hodnota != null && <li><strong>{znam(p.zmena10.hodnota)}</strong> obyvateľov za 10 rokov <span class="pozn">(mesto {znam(p.zmena10.mesto)})</span></li>}
+    </ul>
+    {skratka.length > 0 && (
+      <div class="skratka"><h2>Čím sa odlišuje</h2><ul>{skratka.map((s) => <li>{s}</li>)}</ul></div>
+    )}
+  </section>
+
+  {graf && (
+    <section class="card">
+      <h2>Počet obyvateľov {graf.od} – {graf.do}</h2>
+      <svg class="graf" viewBox={`0 0 ${graf.W} ${graf.H}`} preserveAspectRatio="none" role="img" aria-label={`Počet obyvateľov od ${graf.od} do ${graf.do}: najmenej ${fmt(graf.min)}, najviac ${fmt(graf.max)}, naposledy ${fmt(p.pocet)}.`}>
+        <polygon points={graf.plocha} class="plocha" /><polyline points={graf.ciara} class="ciara" vector-effect="non-scaling-stroke" />
+      </svg>
+      <p class="graf-os"><span>{graf.od}: {fmt(p.rady[0][1])}</span><span>{graf.do}: {fmt(p.pocet)}</span></p>
+      <p class="pozn">Rok 2021 je ovplyvnený sčítaním obyvateľov (spresnenie trvalých pobytov).</p>
+    </section>
+  )}
+
+  {maSklad && (
+    <section class="card">
+      <h2>Kto tu býva</h2>
+      <ul class="sklad">{SKLAD.filter(([k]) => p.sklad[k].hodnota != null).map(([k, popis]) => {
+        const u = p.sklad[k];
+        const max = Math.max(u.hodnota ?? 0, u.mesto ?? 0, 1);
+        return (
+          <li>
+            <span class="sk-n">{popis.charAt(0).toUpperCase() + popis.slice(1)}<small>{por(u, `najviac z ${n} častí`, `najmenej z ${n} častí`)}</small></span>
+            <span class="sk-h"><b>{des(u.hodnota)} %</b><small>mesto {des(u.mesto)} %</small></span>
+            <span class="sk-p" aria-hidden="true"><i style={`width:${(100 * (u.hodnota ?? 0)) / max}%`}></i><em style={`left:${(100 * (u.mesto ?? 0)) / max}%`}></em></span>
+          </li>
+        );
+      })}</ul>
+      {p.narodnost.length > 1 && <p class="pozn">Národnosť (sčítanie 2021): {p.narodnost.map((x) => `${x.nazov.toLowerCase()} ${des(x.podiel)} %`).join(' · ')}</p>}
+      <p class="pozn">Zdroj: Sčítanie obyvateľov, domov a bytov 2021 (ŠÚ SR). Čiarka v páse ukazuje hodnotu celého mesta.</p>
+    </section>
+  )}
+
+  {(kom || nr || ep) && (
+    <section class="card">
+      <h2>Ako sa tu volí</h2>
+      <div class="dva">
+        {kom && (
+          <div>
+            <h3>Primátor {kom.rok}</h3>
+            <p class="pozn">Účasť {des(kom.ucast)} %{kom.ucastPor ? ` (${kom.ucastPor}. z ${n})` : ''}</p>
+            <ul class="vol">{kom.poradie.map((k, i) => <li class={i === 0 ? 'prvy' : ''}><span translate="no">{meno(k.meno)}<small>{kr(k.strany)}</small></span><b>{des(k.podiel)} %</b><i aria-hidden="true" style={`width:${k.podiel}%`}></i></li>)}</ul>
+            <p class="pozn"><a href={`/${m.slug}/volby`}>Komunálne voľby 2026 {m.v} →</a></p>
+          </div>
+        )}
+        {nr && (
+          <div>
+            <h3>{nr.nazov}</h3>
+            <p class="pozn">Účasť {des(nr.ucast)} %{nr.ucastPor ? ` (${nr.ucastPor}. z ${n})` : ''}{ep ? ` · eurovoľby 2024: ${des(ep.ucast)} %` : ''}</p>
+            <ul class="vol">{nr.strany.map((s, i) => <li class={i === 0 ? 'prvy' : ''}><span translate="no">{kr(s.nazov)}</span><b>{des(s.podiel)} %</b><i aria-hidden="true" style={`width:${Math.min(100, s.podiel * 2.5)}%`}></i></li>)}</ul>
+          </div>
+        )}
+      </div>
+      <p class="pozn">Zdroj: ŠÚ SR – volby.statistics.sk. Pri kandidátoch uvádzame len meno, stranu a podiel hlasov.</p>
+    </section>
+  )}
+
+  {p.dostupnost.some((d) => d.m != null) && (
+    <section class="card">
+      <h2>Čo je tu blízko</h2>
+      <ul class="dost">{p.dostupnost.filter((d) => d.m != null).map((d) => (
+        <li><span>{d.nazov}</span><b>{minut(d.m)} min</b><small>{d.pocet > 0 ? `${d.pocet} v časti` : 'žiadne v časti'} · {d.poradie}. z {n}</small></li>
+      ))}</ul>
+      <p class="pozn">Priemerný čas chôdze k najbližšiemu miestu z obývaných miest časti (mriežka 250 m, vzdušná vzdialenosť × 1,3). Porovnajte časti podľa toho, čo potrebujete, v <a href={`/${m.slug}/stvrte`}>Ktorá štvrť je pre mňa</a> alebo si overte <a href={`/${m.slug}/adresa`}>konkrétnu adresu</a>.</p>
+    </section>
+  )}
+
+  <nav class="card dalsie" aria-label="Ďalšie mestské časti">
+    <p class="krok"><a href={`/${m.slug}/mestske-casti/${pred.slug}`} translate="no">← {pred.n}</a><a href={`/${m.slug}/mestske-casti/${po.slug}`} translate="no">{po.n} →</a></p>
+    <ul>{vsetky.map(([s, x]) => <li>{s === p.slug ? <strong translate="no" aria-current="page">{x}</strong> : <a href={`/${m.slug}/mestske-casti/${s}`} translate="no">{x}</a>}</li>)}</ul>
+  </nav>
+</Base>
+
+<style>
+  .drobky { margin-top: 20px; font-size: 0.88rem; color: var(--muted); }
+  .hero { padding-top: 12px; }
+  .zakladne { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; color: var(--muted); }
+  .zakladne strong { color: var(--text); font-size: 1.15rem; }
+  .skratka { margin-top: 18px; padding: 14px 18px; border-radius: 14px; background: color-mix(in srgb, var(--accent) 8%, var(--card)); border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line)); }
+  .skratka h2 { margin: 0 0 6px; font-size: 1rem; }
+  .skratka ul { margin: 0; padding-left: 1.2em; }
+  .skratka li { margin: 3px 0; }
+  .graf { width: 100%; height: 150px; display: block; }
+  .graf .plocha { fill: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .graf .ciara { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+  .graf-os { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--muted); margin: 6px 0 0; font-variant-numeric: tabular-nums; }
+  .sklad { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .sklad li { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .sk-n small, .sk-h small { display: block; color: var(--muted); font-size: 0.78rem; font-weight: 400; }
+  .sk-h { text-align: right; font-variant-numeric: tabular-nums; }
+  .sk-p { grid-column: 1 / -1; position: relative; height: 10px; border-radius: 5px; background: color-mix(in srgb, var(--muted) 14%, transparent); }
+  .sk-p i { display: block; height: 100%; border-radius: 5px; background: var(--accent); }
+  .sk-p em { position: absolute; top: -3px; bottom: -3px; width: 2px; margin-left: -1px; background: var(--text); }
+  .dva { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 24px; }
+  .dva h3 { margin-top: 4px; }
+  .vol { list-style: none; margin: 8px 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .vol li { display: grid; grid-template-columns: 1fr auto; gap: 3px 10px; font-size: 0.92rem; }
+  .vol small { display: block; color: var(--muted); font-size: 0.78rem; }
+  .vol b { font-variant-numeric: tabular-nums; }
+  .vol i { grid-column: 1 / -1; display: block; height: 6px; border-radius: 3px; background: color-mix(in srgb, var(--muted) 50%, transparent); }
+  .vol li.prvy i { background: var(--accent); }
+  .dost { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+  .dost li { padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; }
+  .dost span { font-size: 0.88rem; color: var(--muted); }
+  .dost b { font-size: 1.4rem; font-variant-numeric: tabular-nums; }
+  .dost small { font-size: 0.78rem; color: var(--muted); }
+  .dalsie { margin-top: 20px; }
+  .krok { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 12px; font-weight: 600; }
+  .dalsie ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.9rem; }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+</style>

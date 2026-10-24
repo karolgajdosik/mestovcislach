@@ -1,0 +1,152 @@
+---
+// Prehľad mestských častí (Košice; Bratislava má vlastnú stránku /bratislava/mestske-casti): mapa podľa zvoleného ukazovateľa a tabuľka.
+import Base from '../../../layouts/Base.astro';
+import '../../../styles/stranka.css';
+import { MESTA, type Mesto } from '../../../mesta';
+import { castiMesta, type CastiMesta } from '../../../lib/casti-mesta';
+import { stvrte } from '../../../lib/stvrte';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && !m.plne).map((m) => ({ m, c: castiMesta(m.slug) })).filter((x) => x.c)
+    .map(({ m, c }) => ({ params: { mesto: m.slug }, props: { m, c } }));
+}
+const { m, c } = Astro.props as { m: Mesto; c: CastiMesta };
+const geo = stvrte(m.slug)?.geo ?? {};
+const fmt = (n: number | null | undefined) => (n == null ? '–' : Math.round(n).toLocaleString('sk-SK'));
+const des = (n: number | null | undefined) => (n == null ? '–' : n.toLocaleString('sk-SK', { minimumFractionDigits: 1, maximumFractionDigits: 1 }));
+const znam = (n: number | null | undefined) => (n == null ? '–' : `${n > 0 ? '+' : n < 0 ? '−' : ''}${des(Math.abs(n))} %`);
+const komRok = c.casti[0]?.komunalne.at(-1)?.rok;
+const maSc = c.casti.some((x) => x.sklad.seniori.hodnota != null);
+const maNr = c.casti.some((x) => x.volby.nrsr2023);
+// ukazovatele pre mapu a tabuľku: [id, názov, hodnota, formát]
+const UKAZ: [string, string, (x: (typeof c.casti)[number]) => number | null, (n: number | null) => string][] = [
+  ['pocet', 'Obyvatelia', (x) => x.pocet, fmt],
+  ['zmena10', 'Zmena za 10 rokov', (x) => x.zmena10.hodnota, znam],
+  ['hustota', 'Obyvateľov na km²', (x) => x.hustota.hodnota, fmt],
+  ...(maSc ? [
+    ['seniori', 'Seniori 65+ (%)', (x: any) => x.sklad.seniori.hodnota, des],
+    ['deti', 'Deti do 14 r. (%)', (x: any) => x.sklad.deti.hodnota, des],
+    ['vs', 'Vysokoškoláci (%)', (x: any) => x.sklad.vs.hodnota, des],
+  ] as any : []),
+  ...(komRok ? [['kom', `Účasť – komunálne ${komRok} (%)`, (x: any) => x.komunalne.at(-1)?.ucast ?? null, des]] as any : []),
+  ...(maNr ? [['nrsr', 'Účasť – parlament 2023 (%)', (x: any) => x.volby.nrsr2023?.ucast ?? null, des]] as any : []),
+];
+const hodnoty = Object.fromEntries(c.casti.map((x) => [x.n, Object.fromEntries(UKAZ.map(([id, , f]) => [id, f(x)]))]));
+// mapa: jednoduchá projekcia do SVG (rovnaká ako na stránke štvrtí)
+const kruhy = (g: any): number[][][] => (g.type === 'Polygon' ? g.coordinates : g.type === 'MultiPolygon' ? g.coordinates.flat() : []);
+const vsetky = Object.values(geo).flatMap((g: any) => kruhy(g).flat());
+const [x0, x1, y0, y1] = vsetky.length ? [Math.min(...vsetky.map((p) => p[0])), Math.max(...vsetky.map((p) => p[0])), Math.min(...vsetky.map((p) => p[1])), Math.max(...vsetky.map((p) => p[1]))] : [0, 1, 0, 1];
+const kx = Math.cos(((y0 + y1) / 2) * (Math.PI / 180));
+const SIRKA = 600, mier = SIRKA / ((x1 - x0) * kx || 1), VYSKA = Math.round((y1 - y0) * mier);
+const bod = (p: number[]) => `${((p[0] - x0) * kx * mier).toFixed(1)},${((y1 - p[1]) * mier).toFixed(1)}`;
+const cesta = (g: any) => kruhy(g).map((r) => { const n = Math.max(1, Math.floor(r.length / 150)); return 'M' + r.filter((_, i) => i % n === 0).map(bod).join('L') + 'Z'; }).join('');
+const odkaz = (x: { slug: string }) => `/${m.slug}/mestske-casti/${x.slug}`;
+const najv = c.casti[0], najm = c.casti.at(-1)!;
+const rast = c.casti.filter((x) => x.zmena10.hodnota != null).sort((a, b) => b.zmena10.hodnota! - a.zmena10.hodnota!);
+---
+<Base title={`Mestské časti ${m.nazov} – ${c.pocet} častí v číslach – mestovcislach.sk`} description={`${c.pocet} mestských častí ${m.v}: obyvatelia, vývoj, vek, vzdelanie, voľby a dostupnosť služieb – profil každej časti na jednom mieste.`}>
+  <section class="hero">
+    <p class="kicker">Mestské časti</p>
+    <h1>{c.pocet} mestských častí <span translate="no">{m.v}</span></h1>
+    <p class="lead">Ako sa líšia časti mesta – koľko v nich žije ľudí, ako sa menia, kto v nich býva, ako volia a čo majú blízko. Kliknite na časť v mape alebo v tabuľke a otvorí sa jej profil.</p>
+  </section>
+
+  <div class="kpis">
+    <div class="card kpi"><p class="label">Najväčšia</p><p class="value" translate="no">{najv.n}</p><p class="delta">{fmt(najv.pocet)} obyvateľov</p></div>
+    <div class="card kpi"><p class="label">Najmenšia</p><p class="value" translate="no">{najm.n}</p><p class="delta">{fmt(najm.pocet)} obyvateľov</p></div>
+    {rast[0] && <div class="card kpi"><p class="label">Najrýchlejšie rastie</p><p class="value" translate="no">{rast[0].n}</p><p class="delta">{znam(rast[0].zmena10.hodnota)} za 10 rokov</p></div>}
+    {rast.at(-1) && <div class="card kpi"><p class="label">Najviac ubúda</p><p class="value" translate="no">{rast.at(-1)!.n}</p><p class="delta">{znam(rast.at(-1)!.zmena10.hodnota)} za 10 rokov</p></div>}
+  </div>
+
+  {vsetky.length > 0 && (
+    <section class="card" id="mc-mapa-karta" data-h={JSON.stringify(hodnoty)}>
+      <div class="mc-hlava">
+        <h2>Mapa</h2>
+        <label class="mc-vyber">Zafarbiť podľa
+          <select id="mc-ukaz">{UKAZ.map(([id, n]) => <option value={id}>{n}</option>)}</select>
+        </label>
+      </div>
+      <svg class="mc-mapa" id="mc-mapa" viewBox={`-4 -4 ${SIRKA + 8} ${VYSKA + 8}`} role="group" aria-label={`Mapa mestských častí ${m.v} – tmavšia farba znamená vyššiu hodnotu zvoleného ukazovateľa. Hodnoty sú aj v tabuľke nižšie.`}>
+        {c.casti.filter((x) => geo[x.n]).map((x) => <a href={odkaz(x)} aria-label={x.n}><path d={cesta(geo[x.n])} data-n={x.n}><title>{x.n}</title></path></a>)}
+      </svg>
+      <p class="mc-legenda" aria-hidden="true"><span id="mc-min"></span><i></i><span id="mc-max"></span></p>
+    </section>
+  )}
+
+  <section class="card">
+    <h2>Všetky časti</h2>
+    <div class="tabulka-obal">
+      <table class="mc-tab" id="mc-tab">
+        <thead><tr><th scope="col"><button type="button" data-s="n">Časť</button></th>{UKAZ.map(([id, n]) => <th scope="col" class="c"><button type="button" data-s={id}>{n}</button></th>)}</tr></thead>
+        <tbody>{c.casti.map((x) => (
+          <tr data-n={x.n}><th scope="row"><a href={odkaz(x)} translate="no">{x.n}</a></th>{UKAZ.map(([id, , f, form]) => <td class="c" data-v={f(x) ?? ''}>{form(f(x))}</td>)}</tr>
+        ))}</tbody>
+      </table>
+    </div>
+    <p class="pozn">Kliknutím na hlavičku stĺpca zoradíte. Obyvatelia k 31. 12. {c.casti[0]?.rok}. Rozloha z hraníc mestských častí, {des(c.mesto.km2)} km² spolu.</p>
+  </section>
+  <p class="pozn">Zdroje: ŠÚ SR – DATAcube (počet obyvateľov), Sčítanie obyvateľov, domov a bytov 2021, volby.statistics.sk; hranice mestských častí z mapy mesta. Pozrite aj <a href={`/${m.slug}/stvrte`}>Ktorá štvrť je pre mňa</a> a <a href={`/${m.slug}/volby`}>voľby {m.v}</a>.</p>
+</Base>
+
+<script>
+  const karta = document.getElementById('mc-mapa-karta');
+  const sel = document.getElementById('mc-ukaz') as HTMLSelectElement | null;
+  if (karta && sel) {
+    const H: Record<string, Record<string, number | null>> = JSON.parse(karta.dataset.h!);
+    const f = (v: number) => v.toLocaleString('sk-SK', { maximumFractionDigits: Math.abs(v) < 100 ? 1 : 0 });
+    const obnov = () => {
+      const k = sel.value;
+      const v = Object.values(H).map((x) => x[k]).filter((x): x is number => x != null);
+      const [a, b] = [Math.min(...v), Math.max(...v)];
+      document.querySelectorAll<SVGPathElement>('#mc-mapa path').forEach((p) => {
+        const x = H[p.dataset.n!]?.[k];
+        p.style.setProperty('--o', x == null ? '0.05' : (0.1 + 0.85 * (b > a ? (x - a) / (b - a) : 1)).toFixed(2));
+        p.querySelector('title')!.textContent = `${p.dataset.n}: ${x == null ? '–' : f(x)}`;
+      });
+      document.getElementById('mc-min')!.textContent = f(a);
+      document.getElementById('mc-max')!.textContent = f(b);
+    };
+    sel.addEventListener('change', obnov);
+    obnov();
+  }
+  // zoradenie tabuľky
+  const tab = document.getElementById('mc-tab') as HTMLTableElement;
+  let posl = '', smer = -1;
+  tab.querySelectorAll<HTMLButtonElement>('thead button').forEach((b, i) => b.addEventListener('click', () => {
+    const s = b.dataset.s!;
+    smer = posl === s ? -smer : s === 'n' ? 1 : -1; posl = s;
+    const riadky = [...tab.tBodies[0].rows];
+    riadky.sort((x, y) => {
+      if (s === 'n') return smer * x.dataset.n!.localeCompare(y.dataset.n!, 'sk');
+      const a = x.cells[i].dataset.v, c = y.cells[i].dataset.v;
+      if (!a) return 1; if (!c) return -1;
+      return smer * (Number(a) - Number(c));
+    });
+    tab.tBodies[0].append(...riadky);
+    tab.querySelectorAll('th[aria-sort]').forEach((t) => t.removeAttribute('aria-sort'));
+    b.parentElement!.setAttribute('aria-sort', smer > 0 ? 'ascending' : 'descending');
+  }));
+</script>
+
+<style>
+  .kpis .value { font-size: 1.45rem; }
+  @media (max-width: 600px) { .kpis { grid-template-columns: 1fr 1fr; gap: 8px; } .kpis .kpi { padding: 12px 14px; } .kpis .value { font-size: 1.1rem; } }
+  .mc-hlava { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+  .mc-vyber { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--muted); }
+  .mc-vyber select { height: 38px; padding: 0 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); font: inherit; }
+  .mc-mapa { width: 100%; height: auto; max-height: 560px; display: block; margin-top: 8px; }
+  .mc-mapa path { fill: var(--accent); fill-opacity: var(--o, 0.1); stroke: var(--card); stroke-width: 1.2; stroke-linejoin: round; transition: fill-opacity 0.4s; }
+  .mc-mapa a:hover path, .mc-mapa a:focus path { stroke: var(--text); stroke-width: 2.5; }
+  .mc-legenda { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); margin: 8px 0 0; font-variant-numeric: tabular-nums; }
+  .mc-legenda i { width: 120px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 12%, var(--card)), var(--accent)); }
+  .mc-tab { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .mc-tab th, .mc-tab td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+  .mc-tab .c { text-align: right; font-variant-numeric: tabular-nums; }
+  .mc-tab thead th { vertical-align: bottom; }
+  .mc-tab thead button { background: none; border: 0; padding: 0; font: inherit; font-weight: 700; color: var(--text); cursor: pointer; white-space: normal; text-align: inherit; min-width: 5em; }
+  .mc-tab th[aria-sort='ascending'] button::after { content: ' ▲'; font-size: 0.7em; }
+  .mc-tab th[aria-sort='descending'] button::after { content: ' ▼'; font-size: 0.7em; }
+  .mc-tab tbody th { font-weight: 600; }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .mc-mapa path { transition: none; } }
+</style>
