@@ -1,7 +1,15 @@
-import os, subprocess, shutil
-os.makedirs("diag", exist_ok=True); os.makedirs("data/mesta", exist_ok=True)
-subprocess.run(["pip","install","-q","-r","scripts/requirements.txt"])
-r=subprocess.run(["python","scripts/zber_casti_osm.py"],capture_output=True,text=True)
-print(r.stdout[-3000:]); print(r.stderr[-3000:])
-if os.path.exists("data/mesta/casti-osm.json"): shutil.copy("data/mesta/casti-osm.json","diag/casti-osm.json")
+import requests, time, re
+UA={"User-Agent":"mestovcislach.sk diag"}
+B="https://mestovcislach.sk"
+for i in range(30):
+    h=requests.get(B+"/?v=%d"%time.time(),headers=UA,timeout=30).text
+    if "VolebnaNoc" in h or 'class="vn"' in h or "vn-mesta" in h: break
+    time.sleep(20)
+print("úvod – upútavka:", "vn-mesta" in h)
+for u in ["/trnava/stvrte","/presov/stvrte","/bratislava/stvrte","/porovnanie","/kosice/kviz"]:
+    r=requests.get(B+u,headers=UA,timeout=30); og=re.search(r'og:image" content="([^"]+)',r.text)
+    print(u, r.status_code, "mapa:" , "st-mapa" in r.text, "og:", og and og.group(1))
+# odber: len neplatné vstupy, žiadna skutočná adresa
+for telo in [{"email":"neplatna-adresa","kanal":"kosice","suhlas":True},{"email":"","kanal":"x","suhlas":False},{"web":"robot"}]:
+    r=requests.post(B+"/api/odber",json=telo,headers=UA,timeout=30); print("odber", list(telo), r.status_code, r.text[:80])
 print("HOTOVO")
