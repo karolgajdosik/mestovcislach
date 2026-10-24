@@ -1,4 +1,29 @@
-22569
-[('0', 'Všetky'), ('297313', '2022 - 2026'), ('212569', '2018 - 2022'), ('143961', '2014 - 2018'), ('193118', '2010 - 2014'), ('193117', '2006 - 2010'), ('193116', '2002 - 2006'), ('193115', '1998 - 2002'), ('197918', '1994 - 1998'), ('197919', '1990 - 1994')]
-['        <select class="form-control fld widthx" name="volObd"onchange="var h=this.value; var z=\'\'; var f=\'volObd\'; var p=h.substr(0,1); if (', 'li><li><a href="https://zastupitelstvo.bratislava.sk/zasadnutia/?organTab=1&amp;volObd=297313">Mestská rada</a></li><li><a href="https://zastupitelstvo.bratislava.sk/', 'zasadnutia/?organTab=2&amp;volObd=297313">Komisie</a></li>\r', 'a class="page-link" href="https://zastupitelstvo.bratislava.sk/zasadnutia/?&amp;volObd=297313&amp;page=1" aria-label="Stránka 2">2</a></li><li class="page-item"><a cl', 'k page-link---next" href="https://zastupitelstvo.bratislava.sk/zasadnutia/?&amp;volObd=297313&amp;page=1" aria-label="Nasledujuca-strana"><span aria-hidden="true">&ra']
+== https://opendata.kosice.sk/api/search/v1/collections/dataset/items?q=hlasovania&limit=20 200
+   10471bb4ff0f47879af2a861f98e34c5 | Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2022 - 2026
+   6165e208f43a43cc824c2fd585c3c599 | Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2018 - 2022
+== https://opendata.kosice.sk/api/v3/datasets?q=hlasovania&page[size]=20 200
+   72825bdaa2de46cdbfc4974339c8f4b1_0 | Hlasovania členov a členiek Mestského zastupiteľstva od roku 2022
+   4033a9020d18471095b928b81239f80d_0 | Hlasovania poslancov a poslankýň Mestského zastupiteľstva od roku 2014
+   ba7ca689104843dca36da509ca8e9eef_0 | Hlasovania poslancov
+   be9a164438d14b88bc210f4b4c903c28 | Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2018 - 2022
+   78ec1862e5da484ab370905beb670b87_63 | Výsledky volieb prezidenta Slovenskej republiky v roku 2009 (obe kolá) v obciach Slovenska
+   5bf19ba1de454451b386f49633190a9d_23 | Výsledky volieb prezidenta Slovenskej republiky v roku 2019 (obe kolá) v obciach Slovenska
+   cb859f67d3be4a9999f66cd286abf880_62 | Výsledky volieb prezidenta Slovenskej republiky v roku 2014 (obe kolá) v obciach Slovenska
+   8ea941324a61479283ed8eabc9bc5871_21 | Výsledky volieb prezidenta Slovenskej republiky v roku 2024 (obe kolá) v obciach Slovenska
+   1f786568e31e443bbefb2f7441c18ecc_45 | Výsledky volieb do Národnej rady Slovenskej republiky (NR SR) v roku 2006 v obciach Slovenska
+   5b1742c77a7844fa94ee532565aa0301_9 | Výsledky volieb do Národnej rady Slovenskej republiky (NR SR) v roku 2016 v obciach Slovenska
+   4c630a8edb2343fd8304524a8f84224f_41 | Výsledky volieb do Európskeho parlamentu (EP) v roku 2024 v obciach Slovenska
+   5b5832d853374bc988e87f04e443866c_42 | Výsledky volieb do Európskeho parlamentu (EP) v roku 2019 v obciach Slovenska
+   781ac522c17d43b2bdd32724b0199fcd_44 | Výsledky volieb do Európskeho parlamentu (EP) v roku 2014 v obciach Slovenska
+   10471bb4ff0f47879af2a861f98e34c5_0 | Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2022 - 2026
+   ff2cc469006e43c19481f7d943bc61b9_48 | Výsledky volieb do Národnej rady Slovenskej republiky (NR SR) v roku 2002 v obciach Slovenska
+   a068a1063470400482a43b54446095be_11 | Výsledky volieb do Národnej rady Slovenskej republiky (NR SR) v roku 2010 v obciach Slovenska
+   e83b417f2bbd4cef8573ed0617c68ab9_10 | Výsledky volieb do Národnej rady Slovenskej republiky (NR SR) v roku 2012 v obciach Slovenska
+   1c183dca76aa4126885c219c533052c1_8 | Výsledky volieb do Národnej rady Slovenskej republiky (NR SR) v roku 2020 v obciach Slovenska
+   93ac7da0cc67427ab6c2cce0fb74f390_7 | Výsledky volieb do Národnej rady Slovenskej republiky (NR SR) v roku 2023 v obciach Slovenska
+   787de6613c7748db8848e176b9a2643c_57 | Výsledky volieb do Európskeho parlamentu (EP) v roku 2004 v obciach Slovenska
+ITEM Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2022 - 2026 KEpublisher qrtO0RIRViAdEN4F
+  S be9a164438d14b88bc210f4b4c903c28 | Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2018 - 2022 | Dashboard
+  S 6165e208f43a43cc824c2fd585c3c599 | Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2018 - 2022 | Feature Service
+  S 10471bb4ff0f47879af2a861f98e34c5 | Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2022 - 2026 | Feature Service
 HOTOVO
