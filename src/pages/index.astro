@@ -26,7 +26,7 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
     {aktivne.map((m) => (
       <li>
         <a class={`mesto card aktivne${m.plne ? ' plne' : ''}`} href={`/${m.slug}`}>
-          {foto(m.slug) && <img class="m-foto" src={foto(m.slug)!.src} srcset={foto(m.slug)!.srcset} sizes="(max-width: 600px) 100vw, 300px" alt="" loading="lazy" decoding="async" width="800" height="450" />}
+          {foto(m.slug) && <span class="m-foto-obal"><img class="m-foto" src={foto(m.slug)!.src} srcset={foto(m.slug)!.srcset} sizes="(max-width: 600px) 100vw, 300px" alt="" loading="lazy" decoding="async" width="800" height="450" /></span>}
           <span class="m-kraj">{m.kraj}</span>
           <span class="m-nazov" translate="no">{m.nazov}</span>
           {udaje(m.slug) && <span class="m-cislo"><strong>{fmt(udaje(m.slug).obyvatelia)}</strong> obyvateľov · {znam(udaje(m.slug).zmena10)} za 10 rokov</span>}
@@ -53,7 +53,7 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
     <p>Údaje berieme z verejných zdrojov – zo Štatistického úradu, z Centrálneho registra zmlúv, z Enviroportálu, od SHMÚ, z otvorených dát miest a ďalších. Pri každom čísle je uvedený zdroj. Bratislava má najpodrobnejšie údaje vďaka bohatým otvoreným dátam mesta; pri ostatných krajských mestách sú zatiaľ celoštátne zdroje a mestské údaje budú pribúdať.</p>
   </section>
 
-  <p class="kredity">Fotografie miest: Wikimedia Commons – {aktivne.map((m, i) => { const f = foto(m.slug); return f && <>{i ? '; ' : ''}<span translate="no">{m.nazov}</span>: <a href={f.zdroj} rel="noopener">{f.autor}</a> ({f.licenciaUrl ? <a href={f.licenciaUrl} rel="noopener license">{f.licencia}</a> : f.licencia})</>; })}.</p>
+  <p class="kredity">Fotografie miest (farebne upravené): Wikimedia Commons – {aktivne.map((m, i) => { const f = foto(m.slug); return f && <>{i ? '; ' : ''}<span translate="no">{m.nazov}</span>: <a href={f.zdroj} rel="noopener">{f.autor}</a> ({f.licenciaUrl ? <a href={f.licenciaUrl} rel="noopener license">{f.licencia}</a> : f.licencia})</>; })}.</p>
 </Base>
 
 <style>
@@ -63,11 +63,15 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
   .lead { color: var(--muted); font-size: 1.15rem; max-width: 40em; margin: 0; }
   .mesta { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
   .mesto { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 18px; text-decoration: none; color: var(--text); overflow: hidden; }
-  .m-foto { display: block; width: calc(100% + 36px); height: auto; max-width: none; margin: -18px -18px 10px; aspect-ratio: 16 / 9; object-fit: cover; background: var(--line); transition: transform 0.3s; }
-  .mesto.aktivne:hover .m-foto { transform: scale(1.03); }
+  .m-foto-obal { position: relative; display: block; width: calc(100% + 36px); margin: -18px -18px 10px; aspect-ratio: 16 / 9; overflow: hidden; background: var(--line); isolation: isolate; }
+  .m-foto-obal::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(19, 33, 63, 0.45), rgba(179, 18, 46, 0.25)); mix-blend-mode: multiply; transition: opacity 0.3s; }
+  .m-foto { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; filter: saturate(0.65) contrast(1.18) brightness(1.02); transition: transform 0.3s, filter 0.3s; }
+  /* pri prejdení myšou fotka ožije – skutočné farby */
+  .mesto.aktivne:hover .m-foto { transform: scale(1.03); filter: none; }
+  .mesto.aktivne:hover .m-foto-obal::after { opacity: 0; }
   .kredity { margin: 18px 0 0; font-size: 0.75rem; color: var(--muted); }
   .kredity a { color: inherit; }
-  @media (prefers-reduced-motion: reduce) { .m-foto { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .m-foto, .m-foto-obal::after { transition: none; } }
   .mesto.aktivne { transition: transform 0.15s, border-color 0.15s; }
   .mesto.aktivne:hover { border-color: var(--accent); }
   .mesto.plne { border: 2px solid var(--accent); }
