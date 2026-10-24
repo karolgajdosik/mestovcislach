@@ -1,0 +1,2058 @@
+{
+ "aktualizovane": "2026-10-24T12:34:17",
+ "obyvatelia": {
+  "roky": {
+   "1996": 241606,
+   "1997": 242170,
+   "1998": 241941,
+   "1999": 241874,
+   "2000": 242080,
+   "2001": 241991,
+   "2002": 235509,
+   "2003": 235281,
+   "2004": 235006,
+   "2005": 234871,
+   "2006": 234596,
+   "2007": 234237,
+   "2008": 233659,
+   "2009": 233880,
+   "2010": 233886,
+   "2011": 240688,
+   "2012": 240164,
+   "2013": 239797,
+   "2014": 239464,
+   "2015": 239200,
+   "2016": 239141,
+   "2017": 239095,
+   "2018": 238757,
+   "2019": 238593,
+   "2020": 238138,
+   "2021": 227458,
+   "2022": 226212,
+   "2023": 225044,
+   "2024": 223678,
+   "2025": 222286
+  },
+  "casti": {
+   "Barca": {
+    "1996": 2620,
+    "1997": 2623,
+    "1998": 2675,
+    "1999": 2715,
+    "2000": 2722,
+    "2001": 2706,
+    "2002": 3080,
+    "2003": 3113,
+    "2004": 3175,
+    "2005": 3233,
+    "2006": 3275,
+    "2007": 3281,
+    "2008": 3304,
+    "2009": 3308,
+    "2010": 3367,
+    "2011": 3380,
+    "2012": 3409,
+    "2013": 3445,
+    "2014": 3481,
+    "2015": 3502,
+    "2016": 3584,
+    "2017": 3626,
+    "2018": 3677,
+    "2019": 3756,
+    "2020": 3734,
+    "2021": 3676,
+    "2022": 3710,
+    "2023": 3710,
+    "2024": 3656,
+    "2025": 3623
+   },
+   "Dargovských hrdinov": {
+    "1996": 30119,
+    "1997": 30057,
+    "1998": 29961,
+    "1999": 29765,
+    "2000": 29775,
+    "2001": 29642,
+    "2002": 28197,
+    "2003": 28041,
+    "2004": 27937,
+    "2005": 27844,
+    "2006": 27667,
+    "2007": 27431,
+    "2008": 27232,
+    "2009": 27077,
+    "2010": 26955,
+    "2011": 27424,
+    "2012": 27166,
+    "2013": 26955,
+    "2014": 26741,
+    "2015": 26563,
+    "2016": 26319,
+    "2017": 26169,
+    "2018": 26004,
+    "2019": 25804,
+    "2020": 25578,
+    "2021": 24993,
+    "2022": 24673,
+    "2023": 24397,
+    "2024": 24158,
+    "2025": 23822
+   },
+   "Džungľa": {
+    "1996": 379,
+    "1997": 366,
+    "1998": 359,
+    "1999": 360,
+    "2000": 356,
+    "2001": 346,
+    "2002": 448,
+    "2003": 474,
+    "2004": 484,
+    "2005": 498,
+    "2006": 523,
+    "2007": 530,
+    "2008": 547,
+    "2009": 564,
+    "2010": 591,
+    "2011": 668,
+    "2012": 659,
+    "2013": 671,
+    "2014": 676,
+    "2015": 679,
+    "2016": 677,
+    "2017": 697,
+    "2018": 703,
+    "2019": 721,
+    "2020": 745,
+    "2021": 759,
+    "2022": 765,
+    "2023": 767,
+    "2024": 769,
+    "2025": 797
+   },
+   "Juh": {
+    "1996": 25845,
+    "1997": 25615,
+    "1998": 25373,
+    "1999": 25019,
+    "2000": 24898,
+    "2001": 24729,
+    "2002": 23406,
+    "2003": 23220,
+    "2004": 22902,
+    "2005": 22717,
+    "2006": 22494,
+    "2007": 22355,
+    "2008": 22252,
+    "2009": 22171,
+    "2010": 22094,
+    "2011": 23461,
+    "2012": 23293,
+    "2013": 23180,
+    "2014": 23100,
+    "2015": 22972,
+    "2016": 23070,
+    "2017": 23030,
+    "2018": 22863,
+    "2019": 22693,
+    "2020": 22572,
+    "2021": 21085,
+    "2022": 20904,
+    "2023": 20724,
+    "2024": 20599,
+    "2025": 20442
+   },
+   "Kavečany": {
+    "1996": 922,
+    "1997": 918,
+    "1998": 916,
+    "1999": 925,
+    "2000": 937,
+    "2001": 951,
+    "2002": 1026,
+    "2003": 1071,
+    "2004": 1089,
+    "2005": 1101,
+    "2006": 1093,
+    "2007": 1116,
+    "2008": 1139,
+    "2009": 1155,
+    "2010": 1168,
+    "2011": 1192,
+    "2012": 1217,
+    "2013": 1254,
+    "2014": 1262,
+    "2015": 1289,
+    "2016": 1287,
+    "2017": 1310,
+    "2018": 1337,
+    "2019": 1348,
+    "2020": 1377,
+    "2021": 1336,
+    "2022": 1361,
+    "2023": 1361,
+    "2024": 1355,
+    "2025": 1388
+   },
+   "Košická Nová Ves": {
+    "1996": 1950,
+    "1997": 1959,
+    "1998": 1970,
+    "1999": 1983,
+    "2000": 2034,
+    "2001": 2073,
+    "2002": 2346,
+    "2003": 2384,
+    "2004": 2412,
+    "2005": 2447,
+    "2006": 2485,
+    "2007": 2522,
+    "2008": 2582,
+    "2009": 2605,
+    "2010": 2647,
+    "2011": 2580,
+    "2012": 2612,
+    "2013": 2637,
+    "2014": 2673,
+    "2015": 2663,
+    "2016": 2660,
+    "2017": 2691,
+    "2018": 2806,
+    "2019": 2883,
+    "2020": 2957,
+    "2021": 2931,
+    "2022": 3050,
+    "2023": 3154,
+    "2024": 3178,
+    "2025": 3142
+   },
+   "Krásna": {
+    "1996": 3136,
+    "1997": 3160,
+    "1998": 3201,
+    "1999": 3241,
+    "2000": 3259,
+    "2001": 3284,
+    "2002": 3470,
+    "2003": 3552,
+    "2004": 3593,
+    "2005": 3615,
+    "2006": 3696,
+    "2007": 3754,
+    "2008": 3849,
+    "2009": 3959,
+    "2010": 4083,
+    "2011": 4501,
+    "2012": 4625,
+    "2013": 4739,
+    "2014": 4874,
+    "2015": 5051,
+    "2016": 5213,
+    "2017": 5401,
+    "2018": 5627,
+    "2019": 5884,
+    "2020": 6101,
+    "2021": 6010,
+    "2022": 6107,
+    "2023": 6179,
+    "2024": 6282,
+    "2025": 6396
+   },
+   "Lorinčík": {
+    "1996": 323,
+    "1997": 324,
+    "1998": 324,
+    "1999": 337,
+    "2000": 339,
+    "2001": 336,
+    "2002": 355,
+    "2003": 365,
+    "2004": 378,
+    "2005": 381,
+    "2006": 393,
+    "2007": 396,
+    "2008": 405,
+    "2009": 401,
+    "2010": 411,
+    "2011": 468,
+    "2012": 500,
+    "2013": 543,
+    "2014": 579,
+    "2015": 636,
+    "2016": 654,
+    "2017": 718,
+    "2018": 770,
+    "2019": 811,
+    "2020": 888,
+    "2021": 992,
+    "2022": 1097,
+    "2023": 1155,
+    "2024": 1203,
+    "2025": 1290
+   },
+   "Luník IX": {
+    "1996": 3027,
+    "1997": 3071,
+    "1998": 3346,
+    "1999": 3881,
+    "2000": 4238,
+    "2001": 4577,
+    "2002": 4682,
+    "2003": 4942,
+    "2004": 5150,
+    "2005": 5368,
+    "2006": 5572,
+    "2007": 5718,
+    "2008": 5905,
+    "2009": 6070,
+    "2010": 6228,
+    "2011": 6094,
+    "2012": 6163,
+    "2013": 6193,
+    "2014": 6235,
+    "2015": 6304,
+    "2016": 6347,
+    "2017": 6411,
+    "2018": 6499,
+    "2019": 6596,
+    "2020": 6689,
+    "2021": 7086,
+    "2022": 7129,
+    "2023": 7146,
+    "2024": 7185,
+    "2025": 7236
+   },
+   "Myslava": {
+    "1996": 1640,
+    "1997": 1654,
+    "1998": 1651,
+    "1999": 1659,
+    "2000": 1685,
+    "2001": 1706,
+    "2002": 1688,
+    "2003": 1729,
+    "2004": 1788,
+    "2005": 1836,
+    "2006": 1865,
+    "2007": 1904,
+    "2008": 1962,
+    "2009": 2032,
+    "2010": 2037,
+    "2011": 2019,
+    "2012": 2023,
+    "2013": 2016,
+    "2014": 2070,
+    "2015": 2120,
+    "2016": 2180,
+    "2017": 2257,
+    "2018": 2399,
+    "2019": 2475,
+    "2020": 2540,
+    "2021": 2615,
+    "2022": 2671,
+    "2023": 2683,
+    "2024": 2681,
+    "2025": 2687
+   },
+   "Nad jazerom": {
+    "1996": 26936,
+    "1997": 26839,
+    "1998": 26680,
+    "1999": 26419,
+    "2000": 26224,
+    "2001": 26049,
+    "2002": 24875,
+    "2003": 24798,
+    "2004": 24774,
+    "2005": 24676,
+    "2006": 24654,
+    "2007": 24552,
+    "2008": 24422,
+    "2009": 24426,
+    "2010": 24441,
+    "2011": 25679,
+    "2012": 25619,
+    "2013": 25447,
+    "2014": 25335,
+    "2015": 25213,
+    "2016": 24957,
+    "2017": 24803,
+    "2018": 24613,
+    "2019": 24443,
+    "2020": 24215,
+    "2021": 22376,
+    "2022": 22112,
+    "2023": 21998,
+    "2024": 21721,
+    "2025": 21391
+   },
+   "Pereš": {
+    "1996": 745,
+    "1997": 784,
+    "1998": 821,
+    "1999": 851,
+    "2000": 913,
+    "2001": 999,
+    "2002": 1095,
+    "2003": 1109,
+    "2004": 1145,
+    "2005": 1175,
+    "2006": 1227,
+    "2007": 1281,
+    "2008": 1361,
+    "2009": 1406,
+    "2010": 1511,
+    "2011": 1547,
+    "2012": 1594,
+    "2013": 1665,
+    "2014": 1754,
+    "2015": 1838,
+    "2016": 1884,
+    "2017": 1939,
+    "2018": 2010,
+    "2019": 2061,
+    "2020": 2087,
+    "2021": 2112,
+    "2022": 2143,
+    "2023": 2168,
+    "2024": 2205,
+    "2025": 2226
+   },
+   "Poľov": {
+    "1996": 1016,
+    "1997": 1010,
+    "1998": 1039,
+    "1999": 1049,
+    "2000": 1060,
+    "2001": 1058,
+    "2002": 1084,
+    "2003": 1088,
+    "2004": 1093,
+    "2005": 1100,
+    "2006": 1099,
+    "2007": 1077,
+    "2008": 1097,
+    "2009": 1088,
+    "2010": 1105,
+    "2011": 1109,
+    "2012": 1116,
+    "2013": 1127,
+    "2014": 1136,
+    "2015": 1152,
+    "2016": 1190,
+    "2017": 1198,
+    "2018": 1206,
+    "2019": 1219,
+    "2020": 1217,
+    "2021": 1172,
+    "2022": 1186,
+    "2023": 1193,
+    "2024": 1188,
+    "2025": 1196
+   },
+   "Sever": {
+    "1996": 22145,
+    "1997": 22004,
+    "1998": 21873,
+    "1999": 21680,
+    "2000": 21538,
+    "2001": 21499,
+    "2002": 20184,
+    "2003": 20138,
+    "2004": 19967,
+    "2005": 19885,
+    "2006": 19773,
+    "2007": 19824,
+    "2008": 19718,
+    "2009": 19652,
+    "2010": 19599,
+    "2011": 20348,
+    "2012": 20265,
+    "2013": 20303,
+    "2014": 20230,
+    "2015": 20143,
+    "2016": 20110,
+    "2017": 20281,
+    "2018": 20124,
+    "2019": 20151,
+    "2020": 20152,
+    "2021": 18969,
+    "2022": 18690,
+    "2023": 18424,
+    "2024": 18237,
+    "2025": 18073
+   },
+   "Staré Mesto": {
+    "1996": 23631,
+    "1997": 23365,
+    "1998": 23068,
+    "1999": 22822,
+    "2000": 22632,
+    "2001": 22456,
+    "2002": 21846,
+    "2003": 21719,
+    "2004": 21451,
+    "2005": 21234,
+    "2006": 20809,
+    "2007": 20622,
+    "2008": 20396,
+    "2009": 20424,
+    "2010": 20341,
+    "2011": 20598,
+    "2012": 20483,
+    "2013": 20391,
+    "2014": 20407,
+    "2015": 20379,
+    "2016": 20790,
+    "2017": 20751,
+    "2018": 20698,
+    "2019": 20796,
+    "2020": 20861,
+    "2021": 20050,
+    "2022": 20066,
+    "2023": 20137,
+    "2024": 20236,
+    "2025": 20200
+   },
+   "Sídlisko KVP": {
+    "1996": 27241,
+    "1997": 27090,
+    "1998": 26952,
+    "1999": 26894,
+    "2000": 26830,
+    "2001": 26656,
+    "2002": 25619,
+    "2003": 25484,
+    "2004": 25523,
+    "2005": 25431,
+    "2006": 25381,
+    "2007": 25294,
+    "2008": 25037,
+    "2009": 24944,
+    "2010": 24726,
+    "2011": 25223,
+    "2012": 25052,
+    "2013": 24858,
+    "2014": 24582,
+    "2015": 24314,
+    "2016": 24069,
+    "2017": 23864,
+    "2018": 23603,
+    "2019": 23490,
+    "2020": 23253,
+    "2021": 22025,
+    "2022": 21839,
+    "2023": 21675,
+    "2024": 21471,
+    "2025": 21356
+   },
+   "Sídlisko Ťahanovce": {
+    "1996": 18234,
+    "1997": 19496,
+    "1998": 20001,
+    "1999": 20572,
+    "2000": 21040,
+    "2001": 21309,
+    "2002": 22983,
+    "2003": 23160,
+    "2004": 23345,
+    "2005": 23524,
+    "2006": 23751,
+    "2007": 23482,
+    "2008": 23454,
+    "2009": 23424,
+    "2010": 23349,
+    "2011": 23264,
+    "2012": 23149,
+    "2013": 23047,
+    "2014": 22809,
+    "2015": 22735,
+    "2016": 22576,
+    "2017": 22340,
+    "2018": 22129,
+    "2019": 21936,
+    "2020": 21748,
+    "2021": 20556,
+    "2022": 20339,
+    "2023": 20081,
+    "2024": 19826,
+    "2025": 19596
+   },
+   "Vyšné Opátske": {
+    "1996": 1324,
+    "1997": 1321,
+    "1998": 1327,
+    "1999": 1347,
+    "2000": 1364,
+    "2001": 1392,
+    "2002": 1523,
+    "2003": 1546,
+    "2004": 1572,
+    "2005": 1567,
+    "2006": 1583,
+    "2007": 1599,
+    "2008": 1608,
+    "2009": 1604,
+    "2010": 1634,
+    "2011": 1692,
+    "2012": 1791,
+    "2013": 1940,
+    "2014": 2237,
+    "2015": 2358,
+    "2016": 2431,
+    "2017": 2480,
+    "2018": 2584,
+    "2019": 2623,
+    "2020": 2687,
+    "2021": 2671,
+    "2022": 2734,
+    "2023": 2760,
+    "2024": 2779,
+    "2025": 2871
+   },
+   "Západ": {
+    "1996": 43803,
+    "1997": 43498,
+    "1998": 43319,
+    "1999": 43144,
+    "2000": 42935,
+    "2001": 42866,
+    "2002": 40335,
+    "2003": 39986,
+    "2004": 39847,
+    "2005": 39869,
+    "2006": 39691,
+    "2007": 39509,
+    "2008": 39352,
+    "2009": 39442,
+    "2010": 39410,
+    "2011": 40695,
+    "2012": 40615,
+    "2013": 40567,
+    "2014": 40419,
+    "2015": 40325,
+    "2016": 40092,
+    "2017": 39978,
+    "2018": 39848,
+    "2019": 39657,
+    "2020": 39409,
+    "2021": 37331,
+    "2022": 36984,
+    "2023": 36621,
+    "2024": 36275,
+    "2025": 35899
+   },
+   "Šaca": {
+    "1996": 4490,
+    "1997": 4570,
+    "1998": 4591,
+    "1999": 4665,
+    "2000": 4748,
+    "2001": 4806,
+    "2002": 4853,
+    "2003": 4921,
+    "2004": 5010,
+    "2005": 5096,
+    "2006": 5204,
+    "2007": 5297,
+    "2008": 5329,
+    "2009": 5380,
+    "2010": 5407,
+    "2011": 5676,
+    "2012": 5698,
+    "2013": 5693,
+    "2014": 5704,
+    "2015": 5728,
+    "2016": 5809,
+    "2017": 5890,
+    "2018": 5961,
+    "2019": 5969,
+    "2020": 6032,
+    "2021": 5701,
+    "2022": 5690,
+    "2023": 5744,
+    "2024": 5706,
+    "2025": 5679
+   },
+   "Šebastovce": {
+    "1996": 538,
+    "1997": 525,
+    "1998": 519,
+    "1999": 539,
+    "2000": 546,
+    "2001": 552,
+    "2002": 606,
+    "2003": 612,
+    "2004": 618,
+    "2005": 612,
+    "2006": 615,
+    "2007": 619,
+    "2008": 620,
+    "2009": 631,
+    "2010": 645,
+    "2011": 663,
+    "2012": 668,
+    "2013": 670,
+    "2014": 702,
+    "2015": 724,
+    "2016": 732,
+    "2017": 732,
+    "2018": 745,
+    "2019": 745,
+    "2020": 758,
+    "2021": 778,
+    "2022": 775,
+    "2023": 772,
+    "2024": 788,
+    "2025": 787
+   },
+   "Ťahanovce": {
+    "1996": 1542,
+    "1997": 1921,
+    "1998": 1975,
+    "1999": 2007,
+    "2000": 2007,
+    "2001": 1999,
+    "2002": 1808,
+    "2003": 1829,
+    "2004": 1753,
+    "2005": 1662,
+    "2006": 1746,
+    "2007": 2074,
+    "2008": 2088,
+    "2009": 2117,
+    "2010": 2137,
+    "2011": 2407,
+    "2012": 2447,
+    "2013": 2456,
+    "2014": 2458,
+    "2015": 2512,
+    "2016": 2510,
+    "2017": 2529,
+    "2018": 2551,
+    "2019": 2532,
+    "2020": 2538,
+    "2021": 2234,
+    "2022": 2187,
+    "2023": 2195,
+    "2024": 2180,
+    "2025": 2189
+   }
+  }
+ },
+ "scitanie": {
+  "vek": {
+   "Spolu": 229040,
+   "Od 15 do 64 rokov": 152194,
+   "65 rokov alebo viac": 42910,
+   "14 rokov alebo menej": 33936,
+   "Neznáme": 0
+  },
+  "vzdelanie": {
+   "Spolu": 229040,
+   "Stredné s maturitou": 70537,
+   "Vysokoškolské": 61071,
+   "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 33936,
+   "Stredné bez maturity": 27686,
+   "Základné": 18595,
+   "Nezistené": 16797,
+   "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 418
+  },
+  "narodnost": {
+   "Spolu": 229040,
+   "Slovenská": 191775,
+   "Nezistená": 22097,
+   "Maďarská": 5636,
+   "Rómska": 4152,
+   "Iná": 1438,
+   "Česká": 1364,
+   "Rusínska": 1211,
+   "Ukrajinská": 882,
+   "Ruská": 176,
+   "Nemecká": 170,
+   "Poľská": 139
+  },
+  "nabozenstvo": {
+   "Spolu": 229040,
+   "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 101870,
+   "bez náboženského vyznania": 64935,
+   "nezistené": 26110,
+   "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 15186,
+   "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 7510,
+   "ostatné": 5946,
+   "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 4504,
+   "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 2979
+  },
+  "byty_vlastnictvo": {
+   "Spolu": 96926,
+   "vlastný byt v bytovom dome": 77195,
+   "byt vo vlastnom rodinnom dome": 12154,
+   "družstevný byt - len stavebné bytové družstvá": 2766,
+   "iná forma užívania bytu": 1604,
+   "byt v nájme": 1346,
+   "obecný byt": 944,
+   "nezistený": 733,
+   "služobný a domovnícky byt": 184
+  }
+ },
+ "volby": {
+  "nrsr2023": {
+   "nazov": "Parlament 2023",
+   "ucast": 63.77,
+   "ucast_sr": 68.51,
+   "strany": [
+    {
+     "nazov": "Progresívne Slovensko",
+     "podiel": 23.92
+    },
+    {
+     "nazov": "SMER - sociálna demokracia",
+     "podiel": 17.92
+    },
+    {
+     "nazov": "HLAS - sociálna demokracia",
+     "podiel": 13.28
+    },
+    {
+     "nazov": "Sloboda a Solidarita",
+     "podiel": 9.52
+    },
+    {
+     "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+     "podiel": 9.22
+    },
+    {
+     "nazov": "Kresťanskodemokratické hnutie",
+     "podiel": 7.31
+    },
+    {
+     "nazov": "Slovenská národná strana",
+     "podiel": 4.48
+    },
+    {
+     "nazov": "Demokrati",
+     "podiel": 4.3
+    },
+    {
+     "nazov": "REPUBLIKA",
+     "podiel": 4.14
+    },
+    {
+     "nazov": "SME RODINA",
+     "podiel": 2.6
+    },
+    {
+     "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+     "podiel": 1.24
+    },
+    {
+     "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+     "podiel": 0.65
+    }
+   ]
+  },
+  "ep2024": {
+   "nazov": "Európsky parlament 2024",
+   "ucast": 34.04,
+   "ucast_sr": 34.38,
+   "strany": [
+    {
+     "nazov": "Progresívne Slovensko",
+     "podiel": 36.53
+    },
+    {
+     "nazov": "SMER - sociálna demokracia",
+     "podiel": 19.6
+    },
+    {
+     "nazov": "REPUBLIKA",
+     "podiel": 10.09
+    },
+    {
+     "nazov": "Kresťanskodemokratické hnutie",
+     "podiel": 7.33
+    },
+    {
+     "nazov": "Sloboda a Solidarita",
+     "podiel": 6.67
+    },
+    {
+     "nazov": "Demokrati",
+     "podiel": 6.19
+    },
+    {
+     "nazov": "HLAS - sociálna demokracia",
+     "podiel": 5.98
+    },
+    {
+     "nazov": "SLOVENSKO, ZA ĽUDÍ",
+     "podiel": 2.09
+    },
+    {
+     "nazov": "Slovenská národná strana",
+     "podiel": 1.27
+    },
+    {
+     "nazov": "Magyar Szövetség - Maďarská aliancia",
+     "podiel": 1.25
+    },
+    {
+     "nazov": "ZDRAVÝ ROZUM",
+     "podiel": 0.95
+    },
+    {
+     "nazov": "Kresťanská únia",
+     "podiel": 0.66
+    }
+   ]
+  }
+ },
+ "komunalne": {
+  "2022": {
+   "ucast": {
+    "zapisani": 194674,
+    "volili": 60152,
+    "ucast_pct": 30.9
+   },
+   "spracovanie": {
+    "okrsky": 198,
+    "spolu": 198,
+    "pct": 100.0,
+    "priebezne": false
+   },
+   "mestske_casti": [
+    {
+     "kod": "599093",
+     "nazov": "Barca",
+     "ucast": 47.06,
+     "volili": 1443,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 533,
+       "podiel": 39.31
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 271,
+       "podiel": 19.99
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 266,
+       "podiel": 19.62
+      }
+     ]
+    },
+    {
+     "kod": "598682",
+     "nazov": "Dargovských hrdinov",
+     "ucast": 25.27,
+     "volili": 5466,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 1737,
+       "podiel": 34.16
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1073,
+       "podiel": 21.1
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1055,
+       "podiel": 20.75
+      }
+     ]
+    },
+    {
+     "kod": "599891",
+     "nazov": "Džungľa",
+     "ucast": 29.05,
+     "volili": 156,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 41,
+       "podiel": 32.03
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 28,
+       "podiel": 21.88
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 21,
+       "podiel": 16.41
+      }
+     ]
+    },
+    {
+     "kod": "599824",
+     "nazov": "Juh",
+     "ucast": 29.49,
+     "volili": 5487,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 1836,
+       "podiel": 36.26
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1062,
+       "podiel": 20.98
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1023,
+       "podiel": 20.21
+      }
+     ]
+    },
+    {
+     "kod": "598119",
+     "nazov": "Kavečany",
+     "ucast": 59.09,
+     "volili": 650,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 309,
+       "podiel": 53.28
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 111,
+       "podiel": 19.14
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 57,
+       "podiel": 9.83
+      }
+     ]
+    },
+    {
+     "kod": "599018",
+     "nazov": "Košická Nová Ves",
+     "ucast": 45.74,
+     "volili": 1112,
+     "poradie": [
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 549,
+       "podiel": 52.49
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 252,
+       "podiel": 24.09
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 127,
+       "podiel": 12.14
+      }
+     ]
+    },
+    {
+     "kod": "599794",
+     "nazov": "Krásna",
+     "ucast": 40.31,
+     "volili": 1870,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 592,
+       "podiel": 33.98
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 459,
+       "podiel": 26.35
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 315,
+       "podiel": 18.08
+      }
+     ]
+    },
+    {
+     "kod": "598194",
+     "nazov": "Lorinčík",
+     "ucast": 63.37,
+     "volili": 500,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 163,
+       "podiel": 35.67
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 122,
+       "podiel": 26.7
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 83,
+       "podiel": 18.16
+      }
+     ]
+    },
+    {
+     "kod": "599972",
+     "nazov": "Luník IX",
+     "ucast": 16.1,
+     "volili": 793,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 496,
+       "podiel": 88.41
+      },
+      {
+       "meno": "Ing. Jozef Karabin, MBA",
+       "strany": "nezávislý kandidát",
+       "hlasy": 18,
+       "podiel": 3.21
+      },
+      {
+       "meno": "JUDr. Monika Kováčová",
+       "strany": "nezávislý kandidát",
+       "hlasy": 18,
+       "podiel": 3.21
+      }
+     ]
+    },
+    {
+     "kod": "598216",
+     "nazov": "Myslava",
+     "ucast": 57.35,
+     "volili": 511,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 191,
+       "podiel": 40.13
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 94,
+       "podiel": 19.75
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 69,
+       "podiel": 14.5
+      }
+     ]
+    },
+    {
+     "kod": "599816",
+     "nazov": "Nad jazerom",
+     "ucast": 30.53,
+     "volili": 5714,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 1735,
+       "podiel": 32.7
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1130,
+       "podiel": 21.3
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1087,
+       "podiel": 20.49
+      }
+     ]
+    },
+    {
+     "kod": "598208",
+     "nazov": "Pereš",
+     "ucast": 53.54,
+     "volili": 937,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 254,
+       "podiel": 29.71
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 249,
+       "podiel": 29.12
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 161,
+       "podiel": 18.83
+      }
+     ]
+    },
+    {
+     "kod": "599859",
+     "nazov": "Poľov",
+     "ucast": 75.03,
+     "volili": 712,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 286,
+       "podiel": 44.83
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 97,
+       "podiel": 15.2
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 91,
+       "podiel": 14.26
+      }
+     ]
+    },
+    {
+     "kod": "598151",
+     "nazov": "Sever",
+     "ucast": 30.81,
+     "volili": 5137,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 2189,
+       "podiel": 44.61
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1034,
+       "podiel": 21.07
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 800,
+       "podiel": 16.3
+      }
+     ]
+    },
+    {
+     "kod": "598186",
+     "nazov": "Staré Mesto",
+     "ucast": 31.97,
+     "volili": 5748,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 2157,
+       "podiel": 39.18
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1155,
+       "podiel": 20.98
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1088,
+       "podiel": 19.76
+      }
+     ]
+    },
+    {
+     "kod": "599883",
+     "nazov": "Sídlisko KVP",
+     "ucast": 31.28,
+     "volili": 5890,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 1906,
+       "podiel": 34.9
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1204,
+       "podiel": 22.05
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 968,
+       "podiel": 17.73
+      }
+     ]
+    },
+    {
+     "kod": "599875",
+     "nazov": "Sídlisko Ťahanovce",
+     "ucast": 27.37,
+     "volili": 4847,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 1588,
+       "podiel": 34.63
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 940,
+       "podiel": 20.5
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 884,
+       "podiel": 19.28
+      }
+     ]
+    },
+    {
+     "kod": "599913",
+     "nazov": "Vyšné Opátske",
+     "ucast": 47.94,
+     "volili": 1025,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 309,
+       "podiel": 33.05
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 236,
+       "podiel": 25.24
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 233,
+       "podiel": 24.92
+      }
+     ]
+    },
+    {
+     "kod": "598224",
+     "nazov": "Západ",
+     "ucast": 27.06,
+     "volili": 8718,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 3018,
+       "podiel": 36.33
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 1666,
+       "podiel": 20.05
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1517,
+       "podiel": 18.26
+      }
+     ]
+    },
+    {
+     "kod": "599841",
+     "nazov": "Šaca",
+     "ucast": 35.51,
+     "volili": 1639,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 428,
+       "podiel": 32.2
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 279,
+       "podiel": 20.99
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 208,
+       "podiel": 15.65
+      }
+     ]
+    },
+    {
+     "kod": "599786",
+     "nazov": "Šebastovce",
+     "ucast": 62.86,
+     "volili": 391,
+     "poradie": [
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 111,
+       "podiel": 33.43
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 99,
+       "podiel": 29.82
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 44,
+       "podiel": 13.25
+      }
+     ]
+    },
+    {
+     "kod": "598127",
+     "nazov": "Ťahanovce",
+     "ucast": 29.6,
+     "volili": 532,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+       "hlasy": 211,
+       "podiel": 44.99
+      },
+      {
+       "meno": "Ing. Milan Lesňák",
+       "strany": "ZA ĽUDÍ",
+       "hlasy": 94,
+       "podiel": 20.04
+      },
+      {
+       "meno": "Ing. Miloslav Klíma",
+       "strany": "nezávislý kandidát",
+       "hlasy": 68,
+       "podiel": 14.5
+      }
+     ]
+    }
+   ],
+   "primator": [
+    {
+     "meno": "Ing. Jaroslav Polaček",
+     "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+     "hlasy": 20561,
+     "podiel": 36.79,
+     "zvoleny": true
+    },
+    {
+     "meno": "Ing. Milan Lesňák",
+     "strany": "ZA ĽUDÍ",
+     "hlasy": 11849,
+     "podiel": 21.2,
+     "zvoleny": false
+    },
+    {
+     "meno": "Ing. Miloslav Klíma",
+     "strany": "nezávislý kandidát",
+     "hlasy": 10655,
+     "podiel": 19.07,
+     "zvoleny": false
+    },
+    {
+     "meno": "JUDr. Monika Kováčová",
+     "strany": "nezávislý kandidát",
+     "hlasy": 4322,
+     "podiel": 7.73,
+     "zvoleny": false
+    },
+    {
+     "meno": "Ing. Štefan Lasky",
+     "strany": "nezávislý kandidát",
+     "hlasy": 4178,
+     "podiel": 7.48,
+     "zvoleny": false
+    },
+    {
+     "meno": "MUDr. Viliam Novotný, MPH",
+     "strany": "SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska",
+     "hlasy": 2453,
+     "podiel": 4.39,
+     "zvoleny": false
+    },
+    {
+     "meno": "Ing. Jozef Karabin, MBA",
+     "strany": "nezávislý kandidát",
+     "hlasy": 1062,
+     "podiel": 1.9,
+     "zvoleny": false
+    },
+    {
+     "meno": "RNDr. Ing. Jaroslav Džunko",
+     "strany": "STRANA MODERNÉHO SLOVENSKA (SMS)",
+     "hlasy": 804,
+     "podiel": 1.44,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 41,
+    "mandaty": [
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 21
+     },
+     {
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "mandaty": 8
+     },
+     {
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "mandaty": 6
+     },
+     {
+      "strany": "ZA ĽUDÍ",
+      "mandaty": 2
+     },
+     {
+      "strany": "HLAS - sociálna demokracia",
+      "mandaty": 1
+     },
+     {
+      "strany": "Progresívne Slovensko",
+      "mandaty": 1
+     },
+     {
+      "strany": "SMER - sociálna demokracia, Slovenská národná strana, ŽIVOT - národná strana, STRANA MODERNÉHO SLOVENSKA (SMS)",
+      "mandaty": 1
+     },
+     {
+      "strany": "SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska",
+      "mandaty": 1
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "Mgr. Ladislav Lörinc",
+      "strany": "nezávislý kandidát",
+      "hlasy": 4256
+     },
+     {
+      "meno": "Mgr. Jozef Andrejčák",
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 3353
+     },
+     {
+      "meno": "Ing. Mgr. Lenka Kovačevičová",
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 3271
+     },
+     {
+      "meno": "Mgr. Marcel Vrchota",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 2896
+     },
+     {
+      "meno": "PhDr. Dominik Babušík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2735
+     },
+     {
+      "meno": "Mgr. Ing. Miloš Ihnát",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2682
+     },
+     {
+      "meno": "Iveta Adamčíková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2404
+     },
+     {
+      "meno": "Mgr. Martin Seman",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1974
+     },
+     {
+      "meno": "Ing. Igor Petrovčik",
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 1931
+     },
+     {
+      "meno": "Mgr. Dominik Karaffa",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 1927
+     },
+     {
+      "meno": "Ing. Roman Matoušek",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1893
+     },
+     {
+      "meno": "Mgr. Zuzana Slivenská",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1866
+     },
+     {
+      "meno": "JUDr. Beáta Zemková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1817
+     },
+     {
+      "meno": "PhDr. Róbert Schwarcz",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1636
+     },
+     {
+      "meno": "Mgr. Peter Berinšter",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 1631
+     },
+     {
+      "meno": "Ing. Anna Súkeníková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1605
+     },
+     {
+      "meno": "Bc. Matej Kundrát",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1526
+     },
+     {
+      "meno": "Ing. František Ténai, MBA",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1492
+     },
+     {
+      "meno": "Ing. Andrej Sitkár",
+      "strany": "SMER - sociálna demokracia, Slovenská národná strana, ŽIVOT - národná strana, STRANA MODERNÉHO SLOVENSKA (SMS)",
+      "hlasy": 1475
+     },
+     {
+      "meno": "Mgr. Marián Horenský, PhD.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1433
+     },
+     {
+      "meno": "Mgr. Bernard Berberich",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 1374
+     },
+     {
+      "meno": "Ing. Tibor Bačinský",
+      "strany": "Progresívne Slovensko",
+      "hlasy": 1366
+     },
+     {
+      "meno": "Mgr. art. Ľubica Blaškovičová",
+      "strany": "ZA ĽUDÍ",
+      "hlasy": 1361
+     },
+     {
+      "meno": "Ing. Štefan Lasky",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1329
+     },
+     {
+      "meno": "Ing. Marek Kandráč",
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 1307
+     },
+     {
+      "meno": "Tomáš Vasok",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 1275
+     },
+     {
+      "meno": "doc. PhDr. Viliam Knap, PhD., MHA, MPH",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1233
+     },
+     {
+      "meno": "Mgr. Marcel Gibóda",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1210
+     },
+     {
+      "meno": "Michal Djordjevič, MBA",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1197
+     },
+     {
+      "meno": "doc. Ing. Erik Weiss, PhD.",
+      "strany": "ZA ĽUDÍ",
+      "hlasy": 1072
+     },
+     {
+      "meno": "Mgr. Patrik Géci",
+      "strany": "HLAS - sociálna demokracia",
+      "hlasy": 1011
+     },
+     {
+      "meno": "Mgr. Peter Múdry",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 1003
+     },
+     {
+      "meno": "MUDr. Ján Sekáč",
+      "strany": "SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska",
+      "hlasy": 982
+     },
+     {
+      "meno": "Miroslav Špak",
+      "strany": "nezávislý kandidát",
+      "hlasy": 948
+     },
+     {
+      "meno": "Mgr. Marek Fedoročko",
+      "strany": "nezávislý kandidát",
+      "hlasy": 937
+     },
+     {
+      "meno": "Mgr. Lucia Gurbáľová",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 724
+     },
+     {
+      "meno": "Ing. Vladimír Saxa",
+      "strany": "nezávislý kandidát",
+      "hlasy": 705
+     },
+     {
+      "meno": "PhDr. Marcel Šaňa",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 650
+     },
+     {
+      "meno": "Ing. Michal Krcho",
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 643
+     },
+     {
+      "meno": "Ing. ING-PAED IGIP Lucia Iľaščíková, PhD.",
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 544
+     },
+     {
+      "meno": "Ing. Jozef Karabin, MBA",
+      "strany": "nezávislý kandidát",
+      "hlasy": 453
+     }
+    ]
+   }
+  }
+ },
+ "praca": {
+  "obdobie": "2026-09",
+  "mesacne": {
+   "2026-08": {
+    "Košice I": {
+     "uoz": 1513.0,
+     "disp": 1427.0,
+     "pdu": 3.27
+    },
+    "Košice II": {
+     "uoz": 1859.0,
+     "disp": 1677.0,
+     "pdu": 3.18
+    },
+    "Košice III": {
+     "uoz": 529.0,
+     "disp": 497.0,
+     "pdu": 2.88
+    },
+    "Košice IV": {
+     "uoz": 1183.0,
+     "disp": 1109.0,
+     "pdu": 3.02
+    },
+    "Košický kraj": {
+     "uoz": 31313.0,
+     "disp": 24878.0,
+     "pdu": 4.81
+    },
+    "Slovenská republika": {
+     "uoz": 170121.0,
+     "disp": 145251.0,
+     "pdu": 4.04
+    }
+   },
+   "2026-09": {
+    "Košice I": {
+     "uoz": 1445.0,
+     "disp": 1350.0,
+     "pdu": 3.1
+    },
+    "Košice II": {
+     "uoz": 1804.0,
+     "disp": 1619.0,
+     "pdu": 3.08
+    },
+    "Košice III": {
+     "uoz": 515.0,
+     "disp": 479.0,
+     "pdu": 2.78
+    },
+    "Košice IV": {
+     "uoz": 1171.0,
+     "disp": 1090.0,
+     "pdu": 2.97
+    },
+    "Košický kraj": {
+     "uoz": 31476.0,
+     "disp": 25072.0,
+     "pdu": 4.85
+    },
+    "Slovenská republika": {
+     "uoz": 170008.0,
+     "disp": 144789.0,
+     "pdu": 4.02
+    }
+   }
+  }
+ },
+ "byty": {
+  "2001": {
+   "ZAC_BYT": 116,
+   "DOKONC_BYT": 189,
+   "ROZOST_BYT_KON": 835
+  },
+  "2002": {
+   "ZAC_BYT": 309,
+   "DOKONC_BYT": 277,
+   "ROZOST_BYT_KON": 867
+  },
+  "2003": {
+   "ZAC_BYT": 484,
+   "DOKONC_BYT": 204,
+   "ROZOST_BYT_KON": 1231
+  },
+  "2004": {
+   "ZAC_BYT": 241,
+   "DOKONC_BYT": 185,
+   "ROZOST_BYT_KON": 1437
+  },
+  "2005": {
+   "ZAC_BYT": 397,
+   "DOKONC_BYT": 204,
+   "ROZOST_BYT_KON": 1630
+  },
+  "2006": {
+   "ZAC_BYT": 231,
+   "DOKONC_BYT": 257,
+   "ROZOST_BYT_KON": 1604
+  },
+  "2007": {
+   "ZAC_BYT": 309,
+   "DOKONC_BYT": 287,
+   "ROZOST_BYT_KON": 1639
+  },
+  "2008": {
+   "ZAC_BYT": 813,
+   "DOKONC_BYT": 469,
+   "ROZOST_BYT_KON": 1924
+  },
+  "2009": {
+   "ZAC_BYT": 244,
+   "DOKONC_BYT": 250,
+   "ROZOST_BYT_KON": 1820
+  },
+  "2010": {
+   "ZAC_BYT": 524,
+   "DOKONC_BYT": 202,
+   "ROZOST_BYT_KON": 2154
+  },
+  "2011": {
+   "ZAC_BYT": 459,
+   "DOKONC_BYT": 490,
+   "ROZOST_BYT_KON": 2069
+  },
+  "2012": {
+   "ZAC_BYT": 407,
+   "DOKONC_BYT": 351,
+   "ROZOST_BYT_KON": 2138
+  },
+  "2013": {
+   "ZAC_BYT": 345,
+   "DOKONC_BYT": 626,
+   "ROZOST_BYT_KON": 1831
+  },
+  "2014": {
+   "ZAC_BYT": 616,
+   "DOKONC_BYT": 410,
+   "ROZOST_BYT_KON": 2038
+  },
+  "2015": {
+   "ZAC_BYT": 667,
+   "DOKONC_BYT": 550,
+   "ROZOST_BYT_KON": 2158
+  },
+  "2016": {
+   "ZAC_BYT": 771,
+   "DOKONC_BYT": 346,
+   "ROZOST_BYT_KON": 2589
+  },
+  "2017": {
+   "ZAC_BYT": 683,
+   "DOKONC_BYT": 687,
+   "ROZOST_BYT_KON": 2585
+  },
+  "2018": {
+   "ZAC_BYT": 620,
+   "DOKONC_BYT": 478,
+   "ROZOST_BYT_KON": 2725
+  },
+  "2019": {
+   "ZAC_BYT": 568,
+   "DOKONC_BYT": 659,
+   "ROZOST_BYT_KON": 2604
+  },
+  "2020": {
+   "ZAC_BYT": 579,
+   "DOKONC_BYT": 889,
+   "ROZOST_BYT_KON": 2289
+  },
+  "2021": {
+   "ZAC_BYT": 298,
+   "DOKONC_BYT": 581,
+   "ROZOST_BYT_KON": 2036
+  },
+  "2022": {
+   "ZAC_BYT": 394,
+   "DOKONC_BYT": 612,
+   "ROZOST_BYT_KON": 1818
+  },
+  "2023": {
+   "ZAC_BYT": 344,
+   "DOKONC_BYT": 611,
+   "ROZOST_BYT_KON": 1551
+  },
+  "2024": {
+   "ZAC_BYT": 323,
+   "DOKONC_BYT": 384,
+   "ROZOST_BYT_KON": 1493
+  },
+  "2025": {
+   "ZAC_BYT": 317,
+   "DOKONC_BYT": 132,
+   "ROZOST_BYT_KON": 1678
+  }
+ },
+ "ceny": {
+  "kraj": {
+   "2022-Q2": 23,
+   "2022-Q3": 17.2,
+   "2022-Q4": 11,
+   "2023-Q1": 3.5,
+   "2023-Q2": -6.4,
+   "2023-Q3": -6.7,
+   "2023-Q4": -2.1,
+   "2024-Q1": 1.4,
+   "2024-Q2": 7.1,
+   "2024-Q3": 8.6,
+   "2024-Q4": 10.5,
+   "2025-Q1": 8.4,
+   "2025-Q2": 12.1,
+   "2025-Q3": 12.3,
+   "2025-Q4": 7.4,
+   "2026-Q1": 11,
+   "2026-Q2": 7.9
+  },
+  "sr": {
+   "2022-Q1": 14.2,
+   "2022-Q2": 16.6,
+   "2022-Q3": 14.6,
+   "2022-Q4": 9.7,
+   "2023-Q1": 7.5,
+   "2023-Q2": -2.2,
+   "2023-Q3": -4.1,
+   "2023-Q4": -1.4,
+   "2024-Q1": -3,
+   "2024-Q2": 4,
+   "2024-Q3": 6.2,
+   "2024-Q4": 7.9,
+   "2025-Q1": 12.2,
+   "2025-Q2": 11.3,
+   "2025-Q3": 13.4,
+   "2025-Q4": 12.8,
+   "2026-Q1": 14.4,
+   "2026-Q2": 13.6
+  }
+ },
+ "mesto": {
+  "slug": "kosice",
+  "nazov": "Košice",
+  "kraj": "Košický kraj",
+  "okresy": [
+   "Košice I",
+   "Košice II",
+   "Košice III",
+   "Košice IV"
+  ]
+ },
+ "zdroje": {
+  "obyvatelia": "ŠÚ SR – DATAcube om7101rr",
+  "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)",
+  "volby": "ŠÚ SR – volby.statistics.sk",
+  "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk",
+  "praca": "ÚPSVaR – mesačná štatistika",
+  "byty": "ŠÚ SR – DATAcube st3004rr",
+  "ceny": "ŠÚ SR – DATAcube sp3801qr"
+ }
+}
