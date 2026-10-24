@@ -330,29 +330,42 @@ def primator_po_mc(t: dict[str, list[dict]], mesto: str, predpona: str, strany: 
     for k3, kand in nejasne.items():
         v_obvode = [m for kk, m in na_mc.items() if kk[0] == k3[0] and m in kand]
         na_mc[k3] = max(sorted(kand), key=v_obvode.count) if v_obvode else sorted(kand)[0]
-    # hlasy primátora po okrskoch: riadky jedného okrsku idú za sebou, nový blok s rovnakým kľúčom = ďalší výskyt
-    hlasy: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    # hlasy primátora po okrskoch. Pri opakovanom čísle okrsku (Košice: každá MČ čísluje od 1) sú riadky v tab05 rovnakého
+    # kľúča premiešané a poradie nezodpovedá okrskom. Okrsok riadku preto určíme z podielu: P_HL / (P_HL_PCT / 100) =
+    # počet platných hlasov pre starostu v okrsku (P_HL_STA v tab02b) – ten sa medzi okrskami s rovnakým číslom líši.
+    def sta(r: dict) -> float:
+        return cislo(r.get("P_HL_STA") or r.get("počet platných hlasovacích lístkov odovzdaných pre voľby starostu") or 0)
+    po_okrsku: dict[tuple, dict[str, float]] = defaultdict(lambda: defaultdict(float))
     v_okrsku: dict[tuple, float] = defaultdict(float)
-    vyskyt = defaultdict(int)
-    predch = None
-    videne_pc: set[str] = set()
+    hlasy: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    ciele_k: dict[tuple, list[tuple]] = defaultdict(list)
+    for k3 in okrsky:
+        ciele_k[k3[:2]].append(k3)
+    poradie_kand: dict[tuple, int] = defaultdict(int)
     for r in t.get("tab05", []):
         if kod(r["OBEC"]) != mesto:
-            predch = None
             continue
         k = (kod(r.get("VOOBEC", "")), kod(r["OKRSOK"]))
-        pc_ = kod(r["PC_HL"])
-        # nový okrsok: zmena kľúča, alebo ten istý kľúč a kandidát sa opakuje (dva okrsky s rovnakým číslom v jednom bloku)
-        if k != predch or pc_ in videne_pc:
-            vyskyt[k] += 1
-            predch = k
-            videne_pc = set()
-        videne_pc.add(pc_)
-        k3 = (*k, vyskyt[k] - 1)
+        pc_, n = kod(r["PC_HL"]), cislo(r["P_HL"])
+        ciele = ciele_k.get(k) or [(*k, 0)]
+        if len(ciele) == 1:
+            k3 = ciele[0]
+        else:
+            pct = cislo(r.get("P_HL_PCT", ""))
+            if n > 0 and pct > 0 and all(sta(okrsky[c]) for c in ciele):
+                odhad = n * 100 / pct
+                k3 = min(ciele, key=lambda c: abs(sta(okrsky[c]) - odhad))
+            else:  # 0 hlasov alebo chýba podiel – na súčtoch nezáleží, poradie výskytu
+                i = poradie_kand[(*k, pc_)] % len(ciele)
+                k3 = sorted(ciele)[i]
+        poradie_kand[(*k, pc_)] += 1
+        po_okrsku[k3][pc_] += n
+    for k3, v in po_okrsku.items():
+        v_okrsku[k3] = sum(v.values())
         m = na_mc.get(k3)
-        v_okrsku[k3] += cislo(r["P_HL"])
         if m:
-            hlasy[m][kod(r["PC_HL"])] += cislo(r["P_HL"])
+            for pc_, n in v.items():
+                hlasy[m][pc_] += n
     kand_prim = {kod(r["PC_HL"]): r for r in t.get("tab0a", []) if kod(r["OBEC"]) == mesto}
     vysl = []
     for m, nazov in mc.items():

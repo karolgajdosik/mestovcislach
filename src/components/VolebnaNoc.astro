@@ -9,7 +9,7 @@ const teraz = new Date();
 const zobraz = teraz >= new Date('2026-10-17') && teraz < new Date('2026-11-21');
 const mesta = MESTA.filter((m) => m.aktivne).map((m) => {
   const o = obdobia(m.slug).find((x) => x.rok === '2026');
-  return { m, o, odkaz: m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${m.slug}#volby` };
+  return { m, o, odkaz: m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${m.slug}/volby` };
 });
 const vysledky = mesta.some((x) => x.o?.primator);
 const vsetkyKonecne = mesta.every((x) => x.o && !x.o.priebezne);

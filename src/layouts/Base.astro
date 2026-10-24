@@ -68,7 +68,7 @@ const MENU: [string, string, string][] = spolocna
       [`/${mesto.slug}`, 'Prehľad', IKONA['']],
       [`/${mesto.slug}#teraz`, 'Teraz', IKONA['prostredie']],
       [`/${mesto.slug}#obyvatelia`, 'Obyvatelia', IKONA['obyvatelia']],
-      [`/${mesto.slug}#volby`, 'Voľby', IKONA['volby']],
+      [`/${mesto.slug}/volby`, 'Voľby', IKONA['volby']],
       [`/${mesto.slug}#praca`, 'Práca a bývanie', IKONA['vybavenost']],
       [`/${mesto.slug}#stavby`, 'Čo sa stavia', IKONA['vystavba']],
       ...(maZivot(mesto.slug) ? [[`/${mesto.slug}/zivot`, 'Život v meste', IKONA['bezpecnost']] as [string, string, string]] : []),
@@ -83,7 +83,7 @@ const OG = ['mestske-casti', 'vystavba', 'upozornenia', 'mapa', 'obyvatelia', 'v
 const casti = Astro.url.pathname.split('/').filter(Boolean);
 const sekcia = (casti[0] === mesto.slug ? casti[1] : casti[0]) ?? '';
 // stránky mesta bez vlastného obrázka sekcie: fotka mesta (public/og/mesto-<slug>.jpg z fotiek Wikimedia Commons)
-const ogMesta = !spolocna && NOVE.some((x) => x[0] === sekcia) && maSubor('public', 'og', `${sekcia}-${mesto.slug}.png`) ? `/og/${sekcia}-${mesto.slug}.png` : null;
+const ogMesta = !spolocna && sekcia && maSubor('public', 'og', `${sekcia}-${mesto.slug}.png`) ? `/og/${sekcia}-${mesto.slug}.png` : null;
 const ogObrazok = new URL(ogMesta ?? (OG.includes(sekcia) ? `/og/${sekcia}.png` : !spolocna ? `/og/mesto-${mesto.slug}.jpg` : '/og/index.png'), Astro.site ?? 'https://mestovcislach.sk');
 const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.sk');
 // na stránkach s mapou (vlastný ľavý panel) je bočné menu len pás ikon

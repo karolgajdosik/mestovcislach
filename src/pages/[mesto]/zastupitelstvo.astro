@@ -33,7 +33,7 @@ const odisli = pred ? pred.mandaty.filter((y) => !teraz.mandaty.some((x) => x.st
 const fmt = (n: number) => n.toLocaleString('sk-SK');
 const des = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
 const maObvody = poslanci.some((p) => p.obvod);
-const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${m.slug}#volby`;
+const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${m.slug}/volby`;
 ---
 <Base title={`Mestské zastupiteľstvo ${obdobie} – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: kto sedí v mestskom zastupiteľstve ${obdobie}, zloženie podľa strán, kto mandát obhájil a kto je nový.`}>
   <section class="hero">

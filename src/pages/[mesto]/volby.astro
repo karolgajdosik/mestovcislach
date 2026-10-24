@@ -1,0 +1,131 @@
+---
+// Voľby v krajskom meste (okrem Bratislavy, ktorá má /bratislava/volby): komunálne voľby 2026 naživo – primátor,
+// porovnanie s 2022, mapa podľa mestských častí, zastupiteľstvo – a parlamentné a eurovoľby.
+// Počas volebnej noci sa web zostavuje s každým zberom (volby.yml) a stránka sa sama obnovuje.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import VolbyMapa from '../../components/VolbyMapa.astro';
+import VolbyPorovnanie from '../../components/VolbyPorovnanie.astro';
+import { MESTA, type Mesto } from '../../mesta';
+import { mapaMesta } from '../../lib/mapa';
+import { skrat } from '../../lib/zastupitelstvo';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && !m.plne).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const p = path.join(process.cwd(), 'data', 'mesta', `${m.slug}.json`);
+const d = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : {};
+const komRoky = Object.keys(d.komunalne ?? {}).sort();
+const komRok = komRoky.at(-1);
+const kom = komRok ? d.komunalne[komRok] : null;
+const nove = komRok === '2026';
+const priebezne = !!kom?.spracovanie?.priebezne;
+const fmt = (n: number) => (n ?? 0).toLocaleString('sk-SK');
+const des = (n: number, k = 1) => (n == null ? '–' : n.toLocaleString('sk-SK', { minimumFractionDigits: k, maximumFractionDigits: k }));
+const vitaz = kom?.primator?.find((k: any) => k.zvoleny) ?? (priebezne ? kom?.primator?.[0] : null);
+const stav = !nove ? 'pred' : priebezne ? 'priebezne' : 'konecne';
+const titul = `Komunálne voľby 2026 ${m.nazov} – ${stav === 'konecne' ? 'výsledky' : 'výsledky naživo'}`;
+const popis = stav === 'konecne' && vitaz
+  ? `${m.nazov}: primátorom(-kou) je ${vitaz.meno} (${des(vitaz.podiel)} %). Výsledky komunálnych volieb 2026, účasť, porovnanie s 2022 a nové mestské zastupiteľstvo.`
+  : `${m.nazov}: výsledky komunálnych volieb 2026 naživo – kto vedie vo voľbe primátora, účasť, porovnanie s 2022 a nové zastupiteľstvo.`;
+const r = (rok: string, x: any) => ({ rok, ucast: x.ucast?.ucast_pct, kandidati: x.primator, mandaty: x.zastupitelstvo?.mandaty, poslancov: x.zastupitelstvo?.poslancov });
+const nrsr = d.volby?.nrsr2023, ep = d.volby?.ep2024;
+const kr = (s: string) => { const q = skrat(s).split(' + '); return q.length > 3 ? `${q.slice(0, 3).join(' + ')} a ďalší` : q.join(' + '); };
+---
+<Base title={`${titul} – mestovcislach.sk`} description={popis}>
+  <section class="hero">
+    <p class="kicker">Voľby</p>
+    <h1>{titul.replace(` ${m.nazov}`, '')} <span translate="no">{m.v}</span></h1>
+    <p class="lead">Voľba primátora a mestského zastupiteľstva {m.v} – výsledky zo Štatistického úradu SR, účasť, porovnanie s voľbami 2022{kom?.mestske_casti?.length > 1 ? ' a mapa podľa mestských častí' : ''}.</p>
+  </section>
+
+  <div class="vb-stav" id="vb-stav" data-stav={stav} role="status">
+    {stav === 'pred' && <p><span class="vb-bod" aria-hidden="true"></span><strong>Voľby sú v sobotu 24. októbra 2026 (7:00 – 20:00).</strong> Výsledky sa tu objavia počas volebnej noci – Štatistický úrad kontrolujeme každých 15 minút a stránka sa sama obnoví. Zatiaľ ukazujeme výsledky z roku {komRok}.</p>}
+    {stav === 'priebezne' && <p><span class="vb-bod" aria-hidden="true"></span><strong>Priebežné výsledky – spracovaných {fmt(kom.spracovanie.okrsky)} z {fmt(kom.spracovanie.spolu)} okrskov ({des(kom.spracovanie.pct)} %).</strong> Stránka sa sama obnovuje.</p>}
+    {stav === 'konecne' && <p><strong>Konečné výsledky</strong> – spracované všetky okrsky.</p>}
+  </div>
+
+  {kom && (
+    <section class="card">
+      <h2>Voľba primátora {komRok}</h2>
+      {vitaz && <p class="vb-vitaz">{stav === 'priebezne' ? 'Vedie' : komRok === '2026' ? 'Primátorom(-kou) je' : 'Primátorom(-kou) sa stal(a)'} <strong translate="no">{vitaz.meno}</strong> <span>({kr(vitaz.strany)}, {des(vitaz.podiel)} %)</span></p>}
+      <p class="pozn">Účasť {des(kom.ucast?.ucast_pct)} % · {fmt(kom.ucast?.volili)} z {fmt(kom.ucast?.zapisani)} voličov</p>
+      <ul class="vb-kand">{kom.primator.slice(0, 8).map((k: any) => (
+        <li class={k.zvoleny ? 'zvoleny' : ''}>
+          <span class="vb-n"><strong translate="no">{k.meno}</strong>{k.zvoleny && <em> zvolený(-á)</em>}<small translate="no">{kr(k.strany)}</small></span>
+          <span class="vb-h">{des(k.podiel)} %<small>{fmt(k.hlasy)} hlasov</small></span>
+          <span class="vb-p" aria-hidden="true"><i style={`width:${k.podiel}%`}></i></span>
+        </li>
+      ))}</ul>
+      {komRoky.length > 1 && <VolbyPorovnanie stary={r(komRoky.at(-2)!, d.komunalne[komRoky.at(-2)!])} novy={r(komRok!, kom)} priebezne={priebezne} />}
+    </section>
+  )}
+
+  {kom?.mestske_casti?.length > 1 && (
+    <section class="card">
+      <h2>Voľba primátora podľa mestských častí</h2>
+      <VolbyMapa casti={kom.mestske_casti} hranice={mapaMesta(m.slug)?.hranice} nazovKey="n" priebezne={priebezne} mesto={m.nazov} tabulka />
+    </section>
+  )}
+
+  {kom?.zastupitelstvo?.poslancov > 0 && (
+    <section class="card">
+      <h2>Mestské zastupiteľstvo {komRok} – {kom.zastupitelstvo.poslancov} poslancov</h2>
+      <ul class="vb-mandaty">{kom.zastupitelstvo.mandaty.slice().sort((a: any, b: any) => b.mandaty - a.mandaty).map((x: any) => <li><b>{x.mandaty}</b> <span translate="no" title={x.strany}>{kr(x.strany)}</span></li>)}</ul>
+      <p><a href={`/${m.slug}/zastupitelstvo`}>Všetci zvolení poslanci, kto mandát obhájil a kto je nový →</a></p>
+    </section>
+  )}
+
+  {(nrsr || ep) && (
+    <section class="card">
+      <h2>Predchádzajúce voľby {m.v}</h2>
+      <div class="vb-dva">
+        {[nrsr, ep].filter(Boolean).map((v: any) => (
+          <div>
+            <h3>{v.nazov}</h3>
+            <p class="pozn">Účasť {des(v.ucast)} % (Slovensko {des(v.ucast_sr)} %)</p>
+            <ul class="vb-kand vb-male">{v.strany.slice(0, 6).map((s: any) => <li><span class="vb-n" translate="no">{kr(s.nazov)}</span><span class="vb-h">{des(s.podiel)} %</span><span class="vb-p" aria-hidden="true"><i style={`width:${Math.min(100, s.podiel * 2.5)}%`}></i></span></li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+  <p class="pozn">Zdroj: Štatistický úrad SR – <a href="https://volbysr.sk/oso/sk/">volbysr.sk</a>. Pri kandidátoch uvádzame len meno, stranu a hlasy. Ďalšie mestá: {MESTA.filter((x) => x.aktivne && x.slug !== m.slug).map((x, i) => <>{i ? ' · ' : ''}<a href={x.plne ? `/${x.slug}/volby` : `/${x.slug}/volby`} translate="no">{x.nazov}</a></>)}</p>
+</Base>
+
+<script>
+  // volebná noc: kým nie sú konečné výsledky, stránka sa obnoví každých 5 minút (len ak je karta viditeľná)
+  const s = document.getElementById('vb-stav')?.dataset.stav;
+  const n = Date.now();
+  if (s !== 'konecne' && n > Date.parse('2026-10-24T19:55:00+02:00') && n < Date.parse('2026-10-27T00:00:00+01:00')) {
+    setInterval(() => { if (document.visibilityState === 'visible') location.reload(); }, 5 * 60 * 1000);
+  }
+</script>
+
+<style>
+  .vb-stav p { margin: 0 0 4px; padding: 12px 16px; border-radius: 12px; background: color-mix(in srgb, var(--accent) 9%, var(--card)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+  .vb-stav[data-stav='konecne'] p { background: color-mix(in srgb, #16a34a 10%, var(--card)); border-color: color-mix(in srgb, #16a34a 35%, var(--line)); }
+  .vb-bod { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); margin-right: 8px; animation: pulz 1.8s infinite; vertical-align: middle; }
+  @keyframes pulz { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); } 70% { box-shadow: 0 0 0 9px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+  .vb-vitaz { font-size: 1.15rem; margin: 0 0 4px; }
+  .vb-vitaz span { color: var(--muted); font-size: 0.95rem; }
+  .vb-kand { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .vb-kand li { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .vb-n small { display: block; color: var(--muted); font-size: 0.8rem; }
+  .vb-n em { color: #15803d; font-style: normal; font-weight: 700; font-size: 0.85rem; }
+  :global(:root[data-tema='tmava']) .vb-n em { color: #4ade80; }
+  .vb-h { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .vb-h small { display: block; color: var(--muted); font-weight: 400; font-size: 0.78rem; }
+  .vb-p { grid-column: 1 / -1; height: 8px; border-radius: 4px; background: color-mix(in srgb, var(--muted) 14%, transparent); overflow: hidden; }
+  .vb-p i { display: block; height: 100%; background: color-mix(in srgb, var(--muted) 55%, transparent); border-radius: 4px; }
+  .vb-kand li.zvoleny .vb-p i, .vb-kand li:first-child .vb-p i { background: var(--accent); }
+  .vb-male li { font-size: 0.9rem; }
+  .vb-mandaty { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .vb-mandaty b { display: inline-block; min-width: 2em; font-variant-numeric: tabular-nums; }
+  .vb-dva { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .pozn { font-size: 0.85rem; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .vb-bod { animation: none; } }
+</style>

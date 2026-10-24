@@ -77,6 +77,7 @@ def obrazok(nazov: str, podtitul: str) -> Image.Image:
 
 # nové podstránky každého mesta: public/og/<sekcia>-<mesto>.png (lokál „v Košiciach“ zo src/mesta.json)
 SEKCIE_MIEST = {
+    "volby": ("Komunálne voľby 2026 {v}", "Výsledky voľby primátora a mestského zastupiteľstva naživo, účasť a porovnanie s rokom 2022"),
     "kviz": ("Poznáš svoje mesto? {nazov}", "Kvíz z otvorených dát – 10 náhodných otázok o obyvateľoch, voľbách, doprave, bývaní a peniazoch mesta"),
     "zastupitelstvo": ("Mestské zastupiteľstvo {v}", "Kto sedí v zastupiteľstve, zloženie podľa strán a kto mandát obhájil"),
     "skoly": ("Školy {v}", "Všetky škôlky, základné a stredné školy – žiaci, učitelia, rozpočet a záujem o stredné školy"),
