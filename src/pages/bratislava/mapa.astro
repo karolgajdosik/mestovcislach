@@ -119,7 +119,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
   <div class="mapa-app" id="mapa-bratislava" data-inline={JSON.stringify(inline)} data-nazvy={JSON.stringify(nazvyVrstiev)}
     data-temy={JSON.stringify(Object.fromEntries(TEMY.map((t) => [t[0], { n: t[1], v: t[4], p: t[5] }])))} data-tema-vrstvy={JSON.stringify(temaVrstvy)}>
     <aside class="bocny" id="bocny" data-stav="zbalene" aria-label="Vrstvy a hľadanie na mape">
-      <button type="button" class="uchyt" id="uchyt" aria-label="Rozbaliť alebo zbaliť panel" aria-expanded="false"><span></span></button>
+      <button type="button" class="uchyt" id="uchyt" aria-expanded="false" aria-controls="bocny-telo"><span class="u-pruh" aria-hidden="true"></span><span class="u-text">Vrstvy a témy</span></button>
       <div class="bocny-hlava">
         <h1>Mapa Bratislavy</h1>
         <div class="m-hladaj">
@@ -129,7 +129,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
         </div>
         <div class="aktivne" id="aktivne" aria-live="polite"></div>
       </div>
-      <div class="bocny-telo">
+      <div class="bocny-telo" id="bocny-telo">
         <div class="temy" id="temy">
           {TEMY.map(([id, nazov, popis, f]) => (
             <button type="button" class="tema" data-tema={id} style={`--t:var(${f})`}>
@@ -198,6 +198,7 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
   // texty z dát vkladané do okien na mape vždy ošetríme (ochrana pred vložením HTML z cudzích zdrojov)
   const hx = (t: unknown) => String(t ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
   const mobil = window.innerWidth < 600;
+  const plachta = matchMedia('(max-width: 760px)').matches; // panel ako vysúvací list zdola
 
   const mapa = L.map('mapa', { zoomSnap: 0.25, preferCanvas: true, scrollWheelZoom: !mobil });
   const podklady: Record<string, L.Layer> = {
@@ -407,7 +408,21 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
   const vstup = (k: string) => obal.querySelector<HTMLInputElement>(`input[type=checkbox][value="${k}"]`);
   const escH = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
-  const rozbal = (ano: boolean) => { bocny.dataset.stav = ano ? 'rozbalene' : 'zbalene'; uchyt.setAttribute('aria-expanded', String(ano)); };
+  const rozbal = (ano: boolean) => {
+    bocny.dataset.stav = ano ? 'rozbalene' : 'zbalene'; uchyt.setAttribute('aria-expanded', String(ano));
+    uchyt.querySelector('.u-text')!.textContent = ano ? 'Skryť vrstvy' : 'Vrstvy a témy';
+  };
+  // mobil a tablet: mapa presne medzi hlavičkou a dolnou lištou (výška hlavičky sa líši podľa zariadenia)
+  const vyskaMapy = () => {
+    if (!matchMedia('(max-width: 1099px)').matches) { obal.style.height = ''; return; }
+    const hore = obal.getBoundingClientRect().top + scrollY;
+    const dole = document.querySelector('.dolna-lista')?.getBoundingClientRect().height ?? 0;
+    obal.style.height = Math.max(420, Math.round(innerHeight - hore - dole)) + 'px';
+    mapa.invalidateSize();
+  };
+  vyskaMapy();
+  addEventListener('resize', vyskaMapy);
+  addEventListener('load', vyskaMapy);
   uchyt.addEventListener('click', () => rozbal(bocny.dataset.stav !== 'rozbalene'));
 
   function legendy() {
@@ -519,16 +534,16 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
     else if (b.dataset.mc) {
       const f = inline.hranice.features.find((x: any) => x.properties.n === b.dataset.mc);
       if (f) mapa.fitBounds(L.geoJSON(f).getBounds(), { padding: [20, 20] });
-      if (mobil) rozbal(false);
+      if (plachta) rozbal(false);
     } else if (b.dataset.lat) {
       location.hash = `miesto&${new URLSearchParams({ lat: b.dataset.lat, lon: b.dataset.lon!, n: b.dataset.n!, k: b.dataset.kat! })}`;
-      if (mobil) rozbal(false);
+      if (plachta) rozbal(false);
     }
     q.value = '';
     mv.hidden = true;
   }
   let casovacQ: number;
-  q.addEventListener('focus', () => { nacitajMiesta(); if (mobil) rozbal(true); });
+  q.addEventListener('focus', () => { nacitajMiesta(); if (plachta) rozbal(true); });
   q.addEventListener('input', () => { clearTimeout(casovacQ); casovacQ = window.setTimeout(hladajNaMape, 80); });
   q.addEventListener('keydown', (e) => {
     const r = riadkyMv();
@@ -673,16 +688,19 @@ const temaVrstvy = Object.fromEntries(TEMY.flatMap((t) => t[4].map((k) => [k, t[
       position: absolute; left: 0; right: 0; bottom: 0; z-index: 1001; border: 0; border-top: 1px solid var(--line);
       border-radius: 16px 16px 0 0; box-shadow: 0 -6px 24px #0003; max-height: 78%; transition: max-height 0.25s ease;
     }
-    .bocny[data-stav='zbalene'] { max-height: 168px; }
-    .bocny[data-stav='zbalene'] .bocny-telo { overflow: hidden; }
-    .uchyt { display: flex; justify-content: center; align-items: center; height: 22px; border: 0; background: none; cursor: pointer; flex-shrink: 0; }
-    .uchyt span { width: 40px; height: 4px; border-radius: 2px; background: var(--line); }
+    /* zbalený list: len úchyt, hľadanie a zapnuté vrstvy – žiadne useknuté karty */
+    .bocny[data-stav='zbalene'] .bocny-telo { display: none; }
+    .uchyt { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; padding: 7px 0 8px; border: 0; background: none; cursor: pointer; flex-shrink: 0; color: var(--text); font: inherit; font-size: 0.85rem; font-weight: 700; }
+    .u-pruh { width: 40px; height: 4px; border-radius: 2px; background: var(--muted); opacity: 0.5; }
+    .u-text { display: inline-flex; align-items: center; gap: 6px; }
+    .u-text::after { content: ''; width: 7px; height: 7px; border: solid currentColor; border-width: 2px 2px 0 0; transform: translateY(2px) rotate(-45deg); }
+    .bocny[data-stav='rozbalene'] .u-text::after { transform: translateY(-2px) rotate(135deg); }
     .bocny-hlava { padding: 0 14px 8px; }
     .bocny-hlava h1 { display: none; }
     .aktivne { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
     :global(.stitok) { flex-shrink: 0; }
     .bocny-telo { padding: 10px 14px 16px; }
-    .legendy { bottom: 180px; }
+    .legendy { bottom: 150px; }
     .podklad { top: 10px; right: 10px; }
   }
   @media (prefers-reduced-motion: reduce) { .bocny { transition: none; } }
