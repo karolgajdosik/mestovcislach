@@ -1,0 +1,170 @@
+---
+// „Kde by som chcel bývať“: dve krajské mestá vedľa seba – ukazovatele zo src/lib/ukazovatele.ts, výber v prehliadači
+// (adresa ?a=…&b=…), skóre podľa toho, čo je pre obyvateľa lepšie, a obrázok na zdieľanie (canvas).
+import Base from '../layouts/Base.astro';
+import '../styles/stranka.css';
+import { MESTA } from '../mesta';
+import { ukazovatele } from '../lib/ukazovatele';
+
+const mesta = MESTA.filter((m) => m.aktivne).map((m) => ({ slug: m.slug, nazov: m.nazov }));
+const u = ukazovatele();
+const temy = [...new Set(u.map((x) => x.tema))];
+---
+<Base title="Porovnaj dve mestá – kde by som chcel bývať – mestovcislach.sk" description="Vyberte dve krajské mestá a porovnajte ich vedľa seba: obyvatelia, vzdelanie, nezamestnanosť, ceny bytov, MHD, cyklotrasy, voda, odpad a ďalšie – so zdrojmi.">
+  <section class="hero">
+    <p class="kicker">Porovnanie</p>
+    <h1>Kde by som chcel bývať?</h1>
+    <p class="lead">Vyberte dve krajské mestá a porovnajte ich vedľa seba. Zelenou označujeme mesto, ktoré je na tom pre obyvateľov lepšie – pri ukazovateľoch, kde „lepšie“ nemá zmysel (napríklad vek), len porovnávame.</p>
+  </section>
+
+  <div class="pj" id="porovnaj" data-u={JSON.stringify(u)} data-mesta={JSON.stringify(mesta)}>
+    <section class="card pj-vyber">
+      <label>Prvé mesto<select id="pj-a">{mesta.map((m) => <option value={m.slug}>{m.nazov}</option>)}</select></label>
+      <button type="button" id="pj-vymen" class="pj-vymen" aria-label="Vymeniť mestá"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg></button>
+      <label>Druhé mesto<select id="pj-b">{mesta.map((m, i) => <option value={m.slug} selected={i === 7}>{m.nazov}</option>)}</select></label>
+    </section>
+
+    <section class="card pj-skore" id="pj-skore" aria-live="polite"></section>
+
+    {temy.map((t) => (
+      <section class="card">
+        <h2>{t}</h2>
+        <div class="pj-riadky" data-tema={t}></div>
+      </section>
+    ))}
+
+    <section class="card pj-zdielaj">
+      <h2>Zdieľať porovnanie</h2>
+      <canvas id="pj-canvas" width="1200" height="630" aria-label="Obrázok s porovnaním na zdieľanie"></canvas>
+      <div class="pj-tl">
+        <button type="button" id="pj-share">Zdieľať</button>
+        <button type="button" id="pj-stiahni">Stiahnuť obrázok</button>
+        <button type="button" id="pj-odkaz">Kopírovať odkaz</button>
+      </div>
+      <p class="pozn" id="pj-stav" role="status"></p>
+    </section>
+  </div>
+  <p class="pozn">Zdroje: Štatistický úrad SR (DATAcube, Sčítanie 2021, Urban Audit), ÚPSVaR. Pri každom riadku je rok údaja. Všetkých 8 miest naraz: <a href="/porovnanie">Porovnanie krajských miest</a>.</p>
+</Base>
+
+<script>
+  type U = { id: string; nazov: string; tema: string; jednotka: string; des: number; lepsie: 'viac' | 'menej' | null; hodnoty: Record<string, number>; rok: string; zdroj: string };
+  const obal = document.getElementById('porovnaj')!;
+  const UK: U[] = JSON.parse(obal.dataset.u!);
+  const MESTA: { slug: string; nazov: string }[] = JSON.parse(obal.dataset.mesta!);
+  const selA = document.getElementById('pj-a') as HTMLSelectElement, selB = document.getElementById('pj-b') as HTMLSelectElement;
+  const nazov = (s: string) => MESTA.find((m) => m.slug === s)?.nazov ?? s;
+  const f = (u: U, v?: number) => (v == null ? '–' : `${v.toLocaleString('sk-SK', { minimumFractionDigits: u.des, maximumFractionDigits: u.des })}${u.jednotka}`);
+  const hx = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  let posledne: { a: string; b: string; sa: number; sb: number; rozdiely: { u: U; lepsi: string }[] } | null = null;
+
+  // počiatočné mestá: z adresy, inak naposledy otvorené mesto a Bratislava/Košice
+  const q = new URLSearchParams(location.search);
+  let posl = '';
+  try { posl = JSON.parse(localStorage.getItem('mesto-posledne') || 'null')?.slug ?? ''; } catch { /* */ }
+  const platne = (s: string | null) => !!s && MESTA.some((m) => m.slug === s);
+  selA.value = platne(q.get('a')) ? q.get('a')! : platne(posl) ? posl : 'bratislava';
+  selB.value = platne(q.get('b')) ? q.get('b')! : selA.value === 'kosice' ? 'bratislava' : 'kosice';
+
+  function vykresli() {
+    const a = selA.value, b = selB.value;
+    history.replaceState(null, '', `?a=${a}&b=${b}`);
+    let sa = 0, sb = 0;
+    const rozdiely: { u: U; lepsi: string; rel: number }[] = [];
+    document.querySelectorAll<HTMLElement>('.pj-riadky').forEach((el) => {
+      el.innerHTML = `<div class="pj-riadok pj-hl" aria-hidden="true"><span></span><b>${hx(nazov(a))}</b><b>${hx(nazov(b))}</b></div>` + UK.filter((u) => u.tema === el.dataset.tema).map((u) => {
+        const va = u.hodnoty[a], vb = u.hodnoty[b];
+        const max = Math.max(Math.abs(va ?? 0), Math.abs(vb ?? 0)) || 1;
+        let lepsi = '';
+        if (u.lepsie && va != null && vb != null && va !== vb) {
+          lepsi = (u.lepsie === 'viac') === (va > vb) ? a : b;
+          if (lepsi === a) sa++; else sb++;
+          rozdiely.push({ u, lepsi, rel: Math.abs(va - vb) / max });
+        }
+        const zaporne = (va ?? 0) < 0 || (vb ?? 0) < 0; // pri zmenách so záporom pruhy nedávajú zmysel
+        const s = (v: number | undefined, kto: string) => `<div class="pj-h${lepsi === kto ? ' lepsi' : ''}"><b>${f(u, v)}</b>${zaporne ? '' : `<i style="--w:${v == null ? 0 : (Math.abs(v) / max) * 100}%"></i>`}</div>`;
+        return `<div class="pj-riadok"><p class="pj-n">${hx(u.nazov)}<small>${hx(u.zdroj)}${u.rok ? `, ${u.rok}` : ''}</small></p>${s(va, a)}${s(vb, b)}</div>`;
+      }).join('');
+    });
+    document.querySelectorAll<HTMLElement>('.pj-riadky').forEach((el) => el.setAttribute('aria-label', `${nazov(a)} a ${nazov(b)}`));
+    rozdiely.sort((x, y) => y.rel - x.rel);
+    posledne = { a, b, sa, sb, rozdiely };
+    const vyhra = sa === sb ? 'Remíza' : `${nazov(sa > sb ? a : b)} vedie`;
+    document.getElementById('pj-skore')!.innerHTML = `<div class="pj-sk"><span>${hx(nazov(a))}</span><b>${sa} : ${sb}</b><span>${hx(nazov(b))}</span></div>
+      <p>${vyhra} v počte ukazovateľov, kde je mesto pre obyvateľov na tom lepšie. Najväčšie rozdiely: ${rozdiely.slice(0, 3).map((r) => `${hx(r.u.nazov.toLowerCase())} (${hx(nazov(r.lepsi))})`).join(', ')}.</p>
+      <p class="pozn">Skóre je len orientačné – každý má iné priority. Hlavičky stĺpcov: vľavo ${hx(nazov(a))}, vpravo ${hx(nazov(b))}.</p>`;
+    obrazok();
+  }
+
+  function obrazok() {
+    const c = document.getElementById('pj-canvas') as HTMLCanvasElement;
+    const g = c.getContext('2d')!;
+    if (!posledne) return;
+    const { a, b, sa, sb, rozdiely } = posledne;
+    const grd = g.createLinearGradient(0, 0, 1200, 630); grd.addColorStop(0, '#1b1d21'); grd.addColorStop(1, '#3a0d16');
+    g.fillStyle = grd; g.fillRect(0, 0, 1200, 630);
+    g.fillStyle = '#ff8ca0'; g.font = '700 30px system-ui, sans-serif'; g.fillText('KDE BY SOM CHCEL BÝVAŤ?', 70, 90);
+    g.fillStyle = '#fff'; g.font = '800 68px system-ui, sans-serif';
+    g.fillText(nazov(a), 70, 200);
+    g.textAlign = 'right'; g.fillText(nazov(b), 1130, 200); g.textAlign = 'left';
+    g.font = '800 120px system-ui, sans-serif'; g.textAlign = 'center'; g.fillText(`${sa} : ${sb}`, 600, 330); g.textAlign = 'left';
+    g.font = '400 30px system-ui, sans-serif'; g.fillStyle = '#dfe2ea';
+    rozdiely.slice(0, 3).forEach((r, i) => {
+      const t = `${r.u.nazov}: ${f(r.u, r.u.hodnoty[a])} vs. ${f(r.u, r.u.hodnoty[b])}`;
+      g.fillText(t.length > 64 ? t.slice(0, 63) + '…' : t, 70, 430 + i * 46);
+    });
+    g.fillStyle = '#ff8ca0'; g.font = '600 28px system-ui, sans-serif'; g.fillText('mestovcislach.sk/porovnaj', 70, 590);
+  }
+
+  const stav = document.getElementById('pj-stav')!;
+  const blob = () => new Promise<Blob>((r) => (document.getElementById('pj-canvas') as HTMLCanvasElement).toBlob((b) => r(b!), 'image/png'));
+  document.getElementById('pj-share')!.addEventListener('click', async () => {
+    const subor = new File([await blob()], `porovnanie-${selA.value}-${selB.value}.png`, { type: 'image/png' });
+    const text = `${nazov(selA.value)} vs. ${nazov(selB.value)} – porovnanie na mestovcislach.sk`;
+    try {
+      if (navigator.canShare?.({ files: [subor] })) await navigator.share({ files: [subor], text, url: location.href });
+      else if (navigator.share) await navigator.share({ text, url: location.href });
+      else { await navigator.clipboard.writeText(location.href); stav.textContent = 'Odkaz je skopírovaný.'; }
+    } catch { /* zrušené */ }
+  });
+  document.getElementById('pj-stiahni')!.addEventListener('click', async () => {
+    const a = document.createElement('a'); a.href = URL.createObjectURL(await blob()); a.download = `porovnanie-${selA.value}-${selB.value}.png`; a.click();
+  });
+  document.getElementById('pj-odkaz')!.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(location.href); stav.textContent = 'Odkaz je skopírovaný.'; } catch { stav.textContent = location.href; }
+  });
+  document.getElementById('pj-vymen')!.addEventListener('click', () => { const x = selA.value; selA.value = selB.value; selB.value = x; vykresli(); });
+  selA.addEventListener('change', vykresli); selB.addEventListener('change', vykresli);
+  vykresli();
+</script>
+
+<style>
+  .pj-vyber { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: end; }
+  .pj-vyber label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 0.9rem; }
+  .pj-vyber select { height: 46px; padding: 0 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font: inherit; font-size: 1.05rem; font-weight: 700; }
+  .pj-vymen { width: 46px; height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; display: grid; place-items: center; }
+  .pj-vymen svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .pj-skore :global(.pj-sk) { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; font-size: 1.3rem; font-weight: 800; }
+  .pj-skore :global(.pj-sk span:last-child) { text-align: right; }
+  .pj-skore :global(.pj-sk b) { font-size: 2.4rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .pj-skore :global(p) { margin: 8px 0 0; }
+  .pj-riadky :global(.pj-riadok) { display: grid; grid-template-columns: minmax(0, 1.3fr) 1fr 1fr; gap: 6px 14px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+  .pj-riadky :global(.pj-n) { margin: 0; font-weight: 600; }
+  .pj-riadky :global(.pj-hl) { border-top: 0; padding-top: 0; font-size: 0.85rem; color: var(--muted); }
+  .pj-riadky :global(.pj-n small) { display: block; font-weight: 400; color: var(--muted); font-size: 0.75rem; }
+  .pj-riadky :global(.pj-h b) { font-variant-numeric: tabular-nums; }
+  .pj-riadky :global(.pj-h i) { display: block; height: 8px; margin-top: 4px; border-radius: 4px; background: linear-gradient(90deg, color-mix(in srgb, var(--muted) 55%, transparent) var(--w), color-mix(in srgb, var(--muted) 12%, transparent) var(--w)); }
+  .pj-riadky :global(.pj-h.lepsi b) { color: #15803d; }
+  .pj-riadky :global(.pj-h.lepsi b::after) { content: ' ✓'; }
+  .pj-riadky :global(.pj-h.lepsi i) { background: linear-gradient(90deg, #16a34a var(--w), color-mix(in srgb, var(--muted) 12%, transparent) var(--w)); }
+  :global(:root[data-tema='tmava']) .pj-riadky :global(.pj-h.lepsi b) { color: #4ade80; }
+  #pj-canvas { width: 100%; height: auto; border-radius: 12px; display: block; }
+  .pj-tl { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .pj-tl button { min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-weight: 700; cursor: pointer; }
+  .pj-tl button:first-child { background: var(--accent); border-color: var(--accent); color: var(--na-akcente, #fff); }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+  @media (max-width: 600px) {
+    .pj-vyber { grid-template-columns: 1fr; } .pj-vymen { justify-self: center; transform: rotate(90deg); }
+    .pj-riadky :global(.pj-riadok) { grid-template-columns: 1fr 1fr; } .pj-riadky :global(.pj-n) { grid-column: 1 / -1; } .pj-riadky :global(.pj-hl span) { display: none; }
+  }
+</style>

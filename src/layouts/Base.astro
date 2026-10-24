@@ -65,7 +65,7 @@ const rieka: any = (mesto as any).rieka_id;
 const IKONA = Object.fromEntries(MENU_MESTA.map(([h, , i]) => [h, i]));
 const PIN = '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/>';
 const MENU: [string, string, string][] = spolocna
-  ? [...MESTA.filter((x) => x.aktivne).map((x) => [`/${x.slug}`, x.nazov, PIN] as [string, string, string]), ['/porovnanie', 'Porovnanie miest', IKONA['katalog']]]
+  ? [...MESTA.filter((x) => x.aktivne).map((x) => [`/${x.slug}`, x.nazov, PIN] as [string, string, string]), ['/porovnanie', 'Porovnanie miest', IKONA['katalog']], ['/porovnaj', 'Porovnaj dve mestá', IKONA['mestske-casti']]]
   : mesto.plne
   ? [...MENU_MESTA.slice(0, -1).map(([h, n, i]) => [`/${mesto.slug}${h ? `/${h}` : ''}`, n, i] as [string, string, string]), ...NOVE_MENU, [`/${mesto.slug}/katalog`, 'Katalóg dát', MENU_MESTA.at(-1)![2]]]
   : [

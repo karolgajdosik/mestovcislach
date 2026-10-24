@@ -103,6 +103,7 @@ export async function GET() {
     polozky.push(['Stránky', `Kam idú moje dane – ${m.nazov}`, 'kalkulačka: koľko z daní dostane mesto a na čo ich míňa', `/${m.slug}/dane`, `dane daň z nehnuteľnosti poplatok odpad rozpočet kalkulačka ${m.v}`]);
     polozky.push(['Stránky', `Kvíz: Poznáš svoje mesto? – ${m.nazov}`, '10 otázok z dát o meste', `/${m.slug}/kviz`, `kvíz test otázky hra ${m.v}`]);
   }
+  polozky.push(['Stránky', 'Porovnaj dve mestá – kde by som chcel bývať', 'dve mestá vedľa seba, skóre a obrázok na zdieľanie', '/porovnaj', 'porovnaj porovnanie dve mestá kde bývať súboj vs']);
   polozky.push(['Stránky', 'Porovnanie krajských miest', 'obyvatelia, vek, vzdelanie, nezamestnanosť, voľby, byty, ceny', '/porovnanie', 'porovnanie mestá krajské rebríček']);
   for (const [u, t, s, w] of SEKCIE) polozky.push(['Stránky', t, s, u, w]);
 
