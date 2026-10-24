@@ -1,12 +1,4 @@
-BA rc 0 Zmluvy s právnickými osobami za 3 roky: 2287
-zmluvy-bratislava.json: bez zmeny
- 
-KE rc 0 Hlasovania 2018-2022: 2128 hlasovaní (0 tajných vynechaných), 43 poslancov
-Hlasovania 2022-2026: 2066 hlasovaní (19 tajných vynechaných), 41 poslancov
-zmluvy: 46062 záznamov, skryté (fyzické osoby / bez IČO) 7130
-faktúry: 89363 záznamov, skryté (fyzické osoby / bez IČO) 15079
-objednávky: 24157 záznamov, skryté (fyzické osoby / bez IČO) 5204
- 
-bratislava.json 2287 IČO 787
-kosice.json 2127 IČO 762
+dodávateľov 6322 s Bratislavou 787 s Košicami 762
+menu skupiny: True True
+volby stránka: 200
 HOTOVO
