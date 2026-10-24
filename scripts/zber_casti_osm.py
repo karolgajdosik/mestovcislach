@@ -38,7 +38,7 @@ def voronoi_casti(m: dict, hr) -> list[dict]:
     from shapely.geometry import MultiPoint, Point
     from shapely.ops import voronoi_diagram
     area = 3600000000 + m["osm_rel"]
-    j = overpass(f'[out:json][timeout:120];area({area})->.a;(node(area.a)[place~"^(suburb|quarter|neighbourhood)$"][name];);out tags;')
+    j = overpass(f'[out:json][timeout:120];area({area})->.a;(node(area.a)[place~"^(suburb|quarter|neighbourhood|village|hamlet)$"][name];);out;')
     body = {}
     for e in j.get("elements", []):
         n = e["tags"]["name"].strip()
