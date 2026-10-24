@@ -66,16 +66,19 @@ def main() -> int:
     zaujem: dict = defaultdict(lambda: {"plan": 0, "z1": 0, "z12": 0, "zap": 0, "odbory": 0})
     try:
         for x in citaj(URL_SVS):
-            e = (x.get("EDUID") or "").strip()
-            if not e:
+            # spojenie s digitálnou mapou škôl: kód školy (KODSKO), inak EDUID
+            kody = [k for k in ((x.get("KODSKO") or "").strip(), (x.get("EDUID") or "").strip()) if k]
+            if not kody:
                 continue
-            a = zaujem[e]
+            a = zaujem[kody[0]]
+            for k in kody[1:]:
+                zaujem[k] = a
             a["plan"] += int(num(x.get("Celkový plán")) or 0)
             a["z1"] += int(num(x.get("1. záujem")) or 0)
             a["z12"] += int(num(x.get("1.+2. záujem")) or 0)
             a["zap"] += int(num(x.get("Zapísaní")) or 0)
             a["odbory"] += 1
-        print(f"Naplnenosť SŠ: {len(zaujem)} škôl")
+        print(f"Naplnenosť SŠ: {len(set(map(id, zaujem.values())))} škôl")
     except Exception as e:  # noqa: BLE001
         print(f"::warning title=Naplnenosť škôl::{e}")
 
@@ -87,7 +90,7 @@ def main() -> int:
             if not patri(o, nazov):
                 continue
             t = typ(x["Názov"])
-            if t not in TYPY:
+            if t not in TYPY or re.match(r"EP\b|Elok", x["Názov"].strip()):  # elokované pracoviská sú súčasťou inej školy
                 continue
             z, ped = num(x.get("Počet žiakov")), num(x.get("Počet ped.zam."))
             roz = num(x.get(kluc_rozpoctu)) if kluc_rozpoctu else None
@@ -104,7 +107,7 @@ def main() -> int:
                 "g": [round(lat, 5), round(lon, 5)] if lat and lon else None,
                 "id": (x.get("EDUID") or "").strip(),
             }
-            zj = zaujem.get(sk["id"])
+            zj = zaujem.get((x.get("Kód školy") or "").strip()) or zaujem.get(sk["id"])
             if t == "ss" and zj and zj["z12"] > 0:
                 sk.update({"plan": zj["plan"], "z1": zj["z1"], "z12": zj["z12"], "zap": zj["zap"], "odb": zj["odbory"],
                            "nm": round(zj["z1"] / zj["plan"], 2) if zj["plan"] >= 10 else None})
@@ -119,6 +122,7 @@ def main() -> int:
             suhrn[t] = {"skol": len(ss), "ziakov": sum(x.get("z", 0) for x in ss),
                         "ziakov_na_ucitela": round(sum(x["z"] for x in pom) / sum(x["ped"] for x in pom), 1) if pom and t in ("zs", "ss") else None}
         vystup[m["slug"]] = {"suhrn": suhrn, "skoly": skoly}
+        print(f"{nazov}: SŠ so záujmom {sum(1 for x in skoly if 'z1' in x)}/{suhrn['ss']['skol']}")
         print(f"{nazov}: {len(skoly)} škôl – " + ", ".join(f"{t} {v['skol']}" for t, v in suhrn.items()))
 
     zapis_ak_zmena(DATA / "mesta" / "skoly.json", {
