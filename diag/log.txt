@@ -1,8 +1,10 @@
-presov/odchody 200
-/bratislava/odchody/ 200 34676
-/data/odchody/bratislava.json 200 53724
-/data/odchody/bratislava/hodzovo-nam.json 200 15635
-/data/odchody/presov/trojica.json 200 28174
-/og/odchody-bratislava.png 200 50793
-hľadanie zastávok: 846
+rc 0 čas 12
+  dosah: 586 zastávok, 17159 spojení, deň 2026-11-04
+  bratislava: 586 zastávok, 90 liniek, 8 služieb, 673661 odchodov, platnosť 2026-10-31–2026-12-31
+  dosah: 260 zastávok, 1715 spojení, deň 2026-09-02
+  presov: 260 zastávok, 55 liniek, 8 služieb, 153518 odchodov, platnosť 2026-09-01–2026-10-31
+
+
+presov.json 73306
+bratislava.json 361308
 HOTOVO
