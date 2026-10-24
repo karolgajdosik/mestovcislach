@@ -1,25 +1,6 @@
-/manifest.webmanifest ERR HTTP Error 403: Forbidden
-/sw.js ERR HTTP Error 403: Forbidden
-/offline/ ERR HTTP Error 403: Forbidden
-/icon-512.png ERR HTTP Error 403: Forbidden
-/apple-touch-icon.png ERR HTTP Error 403: Forbidden
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 9, in <module>
-    h=urllib.request.urlopen("https://mestovcislach.sk/",timeout=30).read().decode()
-      ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.14/urllib/request.py", line 187, in urlopen
-    return opener.open(url, data, timeout)
-           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.14/urllib/request.py", line 493, in open
-    response = meth(req, response)
-  File "/usr/lib/python3.14/urllib/request.py", line 602, in http_response
-    response = self.parent.error(
-        'http', request, response, code, msg, hdrs)
-  File "/usr/lib/python3.14/urllib/request.py", line 531, in error
-    return self._call_chain(*args)
-           ~~~~~~~~~~~~~~~~^^^^^^^
-  File "/usr/lib/python3.14/urllib/request.py", line 464, in _call_chain
-    result = func(*args)
-  File "/usr/lib/python3.14/urllib/request.py", line 611, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 403: Forbidden
+/manifest.webmanifest 200 application/manifest+json public, max-age=0, must-revalidate 760
+/sw.js 200 application/javascript max-age=14400 2398
+/offline/ 200 text/html; charset=utf-8 public, max-age=0, must-revalidate 31458
+/icon-512.png 200 image/png public, max-age=14400, must-revalidate 2728
+/apple-touch-icon.png 200 image/png public, max-age=14400, must-revalidate 494
+manifest link: True sw reg: False
