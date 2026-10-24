@@ -1,0 +1,165 @@
+[
+ {
+  "slug": "bratislava",
+  "nazov": "Bratislava",
+  "v": "v Bratislave",
+  "kraj": "Bratislavský kraj",
+  "nuts3": "SK010",
+  "okresy": [
+   "Bratislava I",
+   "Bratislava II",
+   "Bratislava III",
+   "Bratislava IV",
+   "Bratislava V"
+  ],
+  "stred": [
+   48.1486,
+   17.1077
+  ],
+  "rieka": "Dunaj",
+  "aktivne": true,
+  "plne": true,
+  "popis": "17 mestských častí, 641 datasetov mesta, živé údaje",
+  "rieka_id": "dunaj",
+  "ico": "00603481"
+ },
+ {
+  "slug": "trnava",
+  "nazov": "Trnava",
+  "v": "v Trnave",
+  "kraj": "Trnavský kraj",
+  "nuts3": "SK021",
+  "okresy": [
+   "Trnava"
+  ],
+  "stred": [
+   48.3774,
+   17.5872
+  ],
+  "aktivne": true,
+  "rieka_id": "trnavka",
+  "osm_rel": 2204009,
+  "ico": "00313114"
+ },
+ {
+  "slug": "nitra",
+  "nazov": "Nitra",
+  "v": "v Nitre",
+  "kraj": "Nitriansky kraj",
+  "nuts3": "SK023",
+  "okresy": [
+   "Nitra"
+  ],
+  "stred": [
+   48.3069,
+   18.0864
+  ],
+  "rieka": "Nitra",
+  "aktivne": true,
+  "rieka_id": "nitra",
+  "osm_rel": 2210192,
+  "ico": "00308307"
+ },
+ {
+  "slug": "trencin",
+  "nazov": "Trenčín",
+  "v": "v Trenčíne",
+  "kraj": "Trenčiansky kraj",
+  "nuts3": "SK022",
+  "okresy": [
+   "Trenčín"
+  ],
+  "stred": [
+   48.8945,
+   18.0444
+  ],
+  "rieka": "Váh",
+  "aktivne": true,
+  "osm_rel": 1799254,
+  "ico": "00312037"
+ },
+ {
+  "slug": "zilina",
+  "nazov": "Žilina",
+  "v": "v Žiline",
+  "kraj": "Žilinský kraj",
+  "nuts3": "SK031",
+  "okresy": [
+   "Žilina"
+  ],
+  "stred": [
+   49.2231,
+   18.7394
+  ],
+  "rieka": "Váh",
+  "aktivne": true,
+  "rieka_id": "rajcanka",
+  "osm_rel": 1859537,
+  "ico": "00321796"
+ },
+ {
+  "slug": "banska-bystrica",
+  "nazov": "Banská Bystrica",
+  "v": "v Banskej Bystrici",
+  "kraj": "Banskobystrický kraj",
+  "nuts3": "SK032",
+  "okresy": [
+   "Banská Bystrica"
+  ],
+  "stred": [
+   48.7363,
+   19.1462
+  ],
+  "rieka": "Hron",
+  "aktivne": true,
+  "rieka_id": "hron",
+  "osm_rel": 2265296,
+  "ico": "00313271"
+ },
+ {
+  "slug": "presov",
+  "nazov": "Prešov",
+  "v": "v Prešove",
+  "kraj": "Prešovský kraj",
+  "nuts3": "SK041",
+  "okresy": [
+   "Prešov"
+  ],
+  "stred": [
+   48.9984,
+   21.2339
+  ],
+  "rieka": "Torysa",
+  "aktivne": true,
+  "rieka_id": "torysa",
+  "osm_rel": 2320257,
+  "ico": "00327646"
+ },
+ {
+  "slug": "kosice",
+  "nazov": "Košice",
+  "v": "v Košiciach",
+  "kraj": "Košický kraj",
+  "nuts3": "SK042",
+  "okresy": [
+   "Košice I",
+   "Košice II",
+   "Košice III",
+   "Košice IV"
+  ],
+  "stred": [
+   48.7164,
+   21.2611
+  ],
+  "rieka": "Hornád",
+  "aktivne": true,
+  "katalog": {
+   "portal": "https://opendata.kosice.sk",
+   "nazov": "opendata.kosice.sk",
+   "min": 40
+  },
+  "rieka_id": "hornad",
+  "osm_rel": 1690324,
+  "ico": "00691135"
+ }
+]
