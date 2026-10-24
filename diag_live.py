@@ -1,15 +1,10 @@
-import requests, zipfile, io, re
-H={"User-Agent":"Mozilla/5.0 (mestovcislach diag)"}
-for u in ["https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip","https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip","https://volbysr.sk/oso/files/OSO2026_SK_csv.zip"]:
-    try:
-        r=requests.get(u,headers=H,timeout=120)
-        print(u.split('/')[-1], r.status_code, r.headers.get("last-modified"), len(r.content))
-        if r.ok and r.content[:2]==b"PK":
-            print("  ", sorted(zipfile.ZipFile(io.BytesIO(r.content)).namelist()))
-    except Exception as e: print(u, "ERR", e)
-for u in ["https://volbysr.sk/oso/sk/","https://volbysr.sk/"]:
-    try:
-        r=requests.get(u,headers=H,timeout=60); t=re.sub(r"<[^>]+>"," ",r.text)
-        print(u, r.status_code, len(r.text), re.findall(r"[Ss]pracovan[^.]{0,80}", t)[:3], re.findall(r"\d{1,3}[,.]\d{1,2}\s?%", t)[:5])
-    except Exception as e: print(u,"ERR",e)
+import subprocess, sys, os, shutil, json
+subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
+code = "import sys; sys.path.insert(0,'scripts'); import zber_data_bratislava as z; z.zber_zmluvy()"
+r = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, timeout=1200); print("BA rc", r.returncode, r.stdout[-500:], r.stderr[-800:])
+r = subprocess.run([sys.executable, "scripts/zber_samosprava_mesta.py"], capture_output=True, text=True, timeout=1200); print("KE rc", r.returncode, r.stdout[-500:], r.stderr[-800:])
+os.makedirs("diag/ine", exist_ok=True)
+for f in os.listdir("data/zmluvy-ine"):
+    shutil.copy(f"data/zmluvy-ine/{f}", f"diag/ine/{f}")
+    d = json.load(open(f"data/zmluvy-ine/{f}")); print(f, len(d["zmluvy"]), "IČO", len({z['ico'] for z in d['zmluvy']}))
 print("HOTOVO")

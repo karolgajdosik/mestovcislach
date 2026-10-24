@@ -1,6 +1,8 @@
 """Náhľadové obrázky (Open Graph, 1200 × 630) pre zdieľanie stránok na sociálnych sieťach a v aplikáciách.
 
 Spúšťa sa ručne pri zmene stránok: python scripts/og_obrazky.py → public/og/<stránka>.png
+Voľby 2026: python scripts/og_obrazky.py volby → public/og/volby-<mesto>.png s víťazom (primátorom) a účasťou,
+hneď ako sú v dátach výsledky (volá ho workflow volby.yml po každom zbere; „volby --treba“ len zistí, či je čo kresliť).
 Potrebuje Pillow a písmo Inter (inak DejaVu Sans).
 """
 
@@ -84,6 +86,8 @@ SEKCIE_MIEST = {
     "stvrte": ("Ktorá štvrť je pre mňa {v}", "Porovnajte štvrte podľa toho, čo potrebujete mať blízko – MHD, lekáreň, škola, škôlka"),
     "dane": ("Kam idú moje dane {v}", "Kalkulačka: koľko z vašich daní dostane mesto a na čo ich míňa"),
     "odchody": ("Odchody MHD {v}", "Kedy ide najbližšia električka, trolejbus či autobus – podľa cestovného poriadku, aj zo zastávok pri vás"),
+    "pribeh": ("{nazov} za 10 rokov v číslach", "Obyvatelia, nové byty, ceny bytov, autá, školy a voľby – krátky príbeh na ťukanie"),
+    "dosah": ("Kam sa dostanem MHD {v}", "Mapa: kam sa dostanete mestskou dopravou zo zastávky za 15, 30, 45 a 60 minút – aj s prestupmi"),
     "mestske-casti": ("Mestské časti {v}", "Obyvatelia, vek, voľby a dostupnosť služieb v každej mestskej časti"),
     "novinky": ("Čo je nové {v}", "Nové stavby, väčšie zmluvy mesta a zasadnutia zastupiteľstva – aj ako RSS"),
 }
@@ -110,6 +114,97 @@ def kviz_obrazok(nazov: str, podtitul: str) -> Image.Image:
     return im
 
 
+# ---------- voľby 2026: obrázky s víťazom ----------
+import re  # noqa: E402
+
+SKRATKY = [
+    (r"^Progresívne Slovensko$", "PS"), (r"^Sloboda a Solidarita$|^SaS$", "SaS"), (r"^Kresťanskodemokratické hnutie$|^KDH$", "KDH"),
+    (r"^SMER - (sociálna demokracia|slovenská sociálna demokracia)$|^SMER-SD$", "Smer"), (r"^HLAS - sociálna demokracia$", "Hlas"),
+    (r"^Slovenská národná strana$", "SNS"), (r"^Strana obcí a miest - SOM SLOVENSKO$", "SOM Slovensko"), (r"^OBYČAJNÍ ĽUDIA", "OĽaNO"),
+    (r"^Občianska konzervatívna strana$", "OKS"), (r"^SME RODINA$", "Sme rodina"), (r"^ZA ĽUDÍ$", "Za ľudí"),
+    (r"^DOBRÁ VOĽBA a Umiernení$", "Dobrá voľba"), (r"^SZÖVETSÉG", "Aliancia"), (r"^Hnutie Slovensko$", "Hnutie Slovensko"),
+    (r"^Demokrati$", "Demokrati"), (r"^REPUBLIKA$", "Republika"), (r"^nezávislý kandidát$", "nezávislý kandidát"),
+]
+
+
+def skrat(strany: str) -> str:
+    s = [next((k for r, k in SKRATKY if re.search(r, x.strip())), x.strip()) for x in (strany or "").split(", ") if x.strip()]
+    return " + ".join(s[:3]) + (" a ďalší" if len(s) > 3 else "")
+
+
+def bez_titulov(m: str) -> str:
+    return " ".join(x for x in re.split(r"[\s,]+", m or "") if x and "." not in x and not re.fullmatch(r"PhD|MBA|LL|MPH|DiS|CSc|ArtD", x, re.I))
+
+
+def vysledky_2026() -> dict[str, dict]:
+    """slug → {primator: [...], ucast, priebezne, pct} pre mestá, kde už sú výsledky 2026."""
+    import json
+    koren = VYSTUP.parent.parent
+    out = {}
+    ba = koren / "data" / "komunalne-bratislava.json"
+    if ba.exists():
+        v = next((x for x in json.loads(ba.read_text(encoding="utf-8")).get("volby", []) if x.get("id") == "2026"), None)
+        p = ((v or {}).get("oso") or {}).get("primator") or {}
+        if p.get("kandidati"):
+            sp = v.get("spracovanie") or {}
+            out["bratislava"] = {"primator": p["kandidati"], "ucast": (p.get("ucast") or {}).get("ucast_pct"), "priebezne": bool(sp.get("priebezne")), "pct": sp.get("pct")}
+    for m in json.loads((koren / "src" / "mesta.json").read_text(encoding="utf-8")):
+        if not m.get("aktivne") or m["slug"] == "bratislava":
+            continue
+        f = koren / "data" / "mesta" / f"{m['slug']}.json"
+        k = (json.loads(f.read_text(encoding="utf-8")).get("komunalne") or {}).get("2026") if f.exists() else None
+        if k and k.get("primator"):
+            sp = k.get("spracovanie") or {}
+            out[m["slug"]] = {"primator": k["primator"], "ucast": (k.get("ucast") or {}).get("ucast_pct"), "priebezne": bool(sp.get("priebezne")), "pct": sp.get("pct")}
+    return out
+
+
+def volby_obrazok(nazov_mesta: str, v: dict) -> Image.Image:
+    kand = sorted(v["primator"], key=lambda k: -(k.get("podiel") or 0))
+    vitaz = next((k for k in kand if k.get("zvoleny")), kand[0])
+    priebezne = v["priebezne"] or not any(k.get("zvoleny") for k in kand)
+    im = Image.new("RGB", (1200, 630), (20, 22, 27))
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, 1200, 12], fill=CERVENA)
+    f = lambda r, s: pismo(r, s)  # noqa: E731
+    d.text((80, 60), f"KOMUNÁLNE VOĽBY 2026 · {nazov_mesta.upper()}", font=f("Bold", 30), fill=(255, 140, 160))
+    d.text((80, 112), "Priebežne vedie" if priebezne else "Zvolený primátor / zvolená primátorka", font=f("SemiBold", 40), fill=(220, 224, 235))
+    meno = bez_titulov(vitaz["meno"])
+    velkost = 84
+    while d.textlength(meno, font=f("ExtraBold", velkost)) > 1040 and velkost > 50:
+        velkost -= 4
+    d.text((80, 168), meno, font=f("ExtraBold", velkost), fill="white")
+    d.text((80, 168 + velkost + 18), skrat(vitaz.get("strany", ""))[:70], font=f("Regular", 32), fill=(200, 204, 214))
+    # pruhy: prví traja kandidáti
+    y = 360
+    for k in kand[:3]:
+        p = k.get("podiel") or 0
+        d.text((80, y), bez_titulov(k["meno"])[:34], font=f("SemiBold", 28), fill="white")
+        d.text((1120, y), f"{p:.1f} %".replace(".", ","), font=f("Bold", 28), fill="white", anchor="ra")
+        d.rounded_rectangle([80, y + 40, 1120, y + 52], radius=6, fill=(55, 58, 66))
+        d.rounded_rectangle([80, y + 40, 80 + max(12, int(1040 * p / 100)), y + 52], radius=6, fill=CERVENA if k is vitaz else (140, 146, 160))
+        y += 66
+    pozn = []
+    if v.get("ucast") is not None:
+        pozn.append(f"účasť {v['ucast']:.1f} %".replace(".", ","))
+    if priebezne and v.get("pct") is not None:
+        pozn.append(f"spracovaných {v['pct']:.0f} % okrskov")
+    d.text((80, 570), " · ".join(pozn + ["mestovcislach.sk"]), font=f("SemiBold", 26), fill=(255, 140, 160))
+    return im
+
+
+def volby(len_zistit: bool = False) -> int:
+    import json
+    vys = vysledky_2026()
+    if len_zistit:
+        return 0 if vys else 1
+    mesta = {m["slug"]: m["nazov"] for m in json.loads((VYSTUP.parent.parent / "src" / "mesta.json").read_text(encoding="utf-8"))}
+    for slug, v in vys.items():
+        volby_obrazok(mesta[slug], v).save(VYSTUP / f"volby-{slug}.png", optimize=True)
+        print(f"volby-{slug}.png")
+    return 0
+
+
 def main() -> None:
     import json
     VYSTUP.mkdir(parents=True, exist_ok=True)
@@ -119,7 +214,7 @@ def main() -> None:
     mesta = [m for m in json.loads((VYSTUP.parent.parent / "src" / "mesta.json").read_text(encoding="utf-8")) if m.get("aktivne")]
     for m in mesta:
         for kluc, (nazov, podtitul) in SEKCIE_MIEST.items():
-            if kluc == "odchody" and not (VYSTUP.parent.parent / "data" / "odchody" / f"{m['slug']}.json").exists():
+            if kluc in ("odchody", "dosah") and not (VYSTUP.parent.parent / "data" / kluc / f"{m['slug']}.json").exists():
                 continue
             if kluc == "mestske-casti" and m["slug"] != "kosice":  # profily častí len pre Košice (BA má vlastné)
                 continue
@@ -129,4 +224,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    import sys
+    if sys.argv[1:2] == ["volby"]:
+        sys.exit(volby(len_zistit=sys.argv[2:3] == ["--treba"]))
     main()

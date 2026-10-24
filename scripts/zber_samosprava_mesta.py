@@ -15,6 +15,7 @@ Výstupy:
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from collections import Counter, defaultdict
@@ -178,7 +179,7 @@ def financie(cfg: dict) -> list[dict]:
         data = vsetko(vrstva(item), ["dodavatel_ICO", "dodavatel_nazov", "predmet", pole_datum, pole_suma, "mena"])
         po_rokoch: dict[int, dict] = defaultdict(lambda: {"pocet": 0, "suma": 0.0, "fo_pocet": 0, "fo_suma": 0.0})
         dodavatelia: dict[str, dict] = defaultdict(lambda: {"pocet": 0, "suma": 0.0})
-        polozky, skryte = [], 0
+        polozky, skryte, jednotlive = [], 0, []
         for r in data:
             d, suma = den(r.get(pole_datum)), r.get(pole_suma)
             if not d or not isinstance(suma, (int, float)) or (r.get("mena") or "EUR") != "EUR" or not (2005 <= d.year <= dnes.year):
@@ -200,6 +201,10 @@ def financie(cfg: dict) -> list[dict]:
                 dod["nazov"] = nazov
                 dod["pocet"] += 1
                 dod["suma"] += suma
+            if typ == "zmluvy" and d >= dnes - timedelta(days=3 * 365):
+                popis = cisty(r.get("predmet"))[:200]
+                jednotlive.append({"id": hashlib.sha1(f"{ico}|{d}|{suma}|{popis}".encode()).hexdigest()[:16], "d": d.isoformat(), "s": round(suma, 2),
+                                   "p": nazov[:120], "ico": ico, "pr": popis, "url": f"{cfg['portal']}/datasets/{item}"})
             if d >= dnes - timedelta(days=365):
                 polozky.append({"datum": d.isoformat(), "dodavatel": nazov, "ico": ico, "suma": round(suma, 2), "popis": cisty(r.get("predmet"))[:200]})
         if not po_rokoch:
@@ -210,6 +215,7 @@ def financie(cfg: dict) -> list[dict]:
             "dodavatelia_posledne_3_roky": sorted(({"ico": k, **{x: (round(y) if x == "suma" else y) for x, y in v.items()}} for k, v in dodavatelia.items()),
                                                   key=lambda x: -x["suma"])[:20],
             "najvacsie_12_mesiacov": sorted(polozky, key=lambda x: -x["suma"])[:15],
+            **({"_jednotlive": sorted(jednotlive, key=lambda z: (z["d"], z["id"]))} if typ == "zmluvy" else {}),
         })
         print(f"{typ}: {len(data)} záznamov, skryté (fyzické osoby / bez IČO) {skryte}")
     return vysl
@@ -228,6 +234,13 @@ def main() -> int:
                 stare = DATA / "mesta" / f"samosprava-{slug}.json"
                 if stare.exists():  # ponecháme posledné dobré údaje
                     vystup[k] = json.loads(stare.read_text(encoding="utf-8")).get(k)
+        # jednotlivé zmluvy s právnickými osobami (3 roky) zvlášť – pre „Sledovať dodávateľa“
+        for fin in vystup.get("financie") or []:
+            jedn = fin.pop("_jednotlive", None)
+            if jedn:
+                for z in jedn:
+                    z["m"] = slug
+                zapis_ak_zmena(DATA / "zmluvy-ine" / f"{slug}.json", {"zdroj": f"{cfg['portal']} – zmluvy mesta", "licencia": "CC BY 4.0", "zmluvy": jedn}, kompaktne=True)
         if vystup.get("hlasovania") or vystup.get("financie"):
             zapis_ak_zmena(DATA / "mesta" / f"samosprava-{slug}.json", {**vystup, "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds")})
     if len(chyby) >= 2 * len(MESTA):

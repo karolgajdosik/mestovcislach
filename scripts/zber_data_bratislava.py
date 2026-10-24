@@ -228,6 +228,30 @@ def zber_zmluvy() -> None:
                 "odkaz": (r.get("ODKAZ_NA_ZVEREJNENÚ_ZMLUVU") or "").strip(),
             })
 
+    # Jednotlivé zmluvy s právnickými osobami za 3 roky – pre „Sledovať dodávateľa“ (src/lib/dodavatelia.ts, odber_email.py)
+    from zber_zmluvy_mc import PRAVNA_FORMA
+    hranica3 = teraz - timedelta(days=3 * 365)
+    jednotlive = []
+    for r in data:
+        ico = (r.get("IČO_DODÁVATEĽA") or "").strip()
+        nazov = (r.get("NÁZOV_DODÁVATEĽA") or "").strip()
+        if not r.get("DÁTUM_ZVEREJNENIA") or not ico.isdigit() or ico == ICO_MESTA or not PRAVNA_FORMA.search(nazov):
+            continue
+        zv = datetime.fromtimestamp(r["DÁTUM_ZVEREJNENIA"] / 1000, timezone.utc)
+        if zv < hranica3:
+            continue
+        odkaz = (r.get("ODKAZ_NA_ZVEREJNENÚ_ZMLUVU") or "").strip()
+        jednotlive.append({"id": (r.get("IDENTIFIKÁTOR_ZMLUVY") or odkaz or "").strip()[:80], "d": zv.date().isoformat(), "m": "bratislava",
+                           "s": round(cislo(r.get("CELKOVÁ_SUMA_V_EUR")) or 0.0, 2), "p": nazov[:120], "ico": ico.zfill(8),
+                           "pr": re.sub(r"\s+", " ", (r.get("PREDMET_ZMLUVY") or "")).strip()[:200], "url": odkaz})
+    jednotlive.sort(key=lambda z: (z["d"], z["id"]))
+    (DATA / "zmluvy-ine").mkdir(exist_ok=True)
+    zapis_ine = json.dumps({"zdroj": zdroj(item)["nazov"], "licencia": "CC BY-NC 4.0", "zmluvy": jednotlive}, ensure_ascii=False, separators=(",", ":"))
+    subor_ine = DATA / "zmluvy-ine" / "bratislava.json"
+    if not subor_ine.exists() or subor_ine.read_text(encoding="utf-8").strip() != zapis_ine:
+        subor_ine.write_text(zapis_ine + "\n", encoding="utf-8")
+    print(f"Zmluvy s právnickými osobami za 3 roky: {len(jednotlive)}")
+
     najvacsie.sort(key=lambda z: -z["suma"])
     top_dod = sorted(dodavatelia.values(), key=lambda d: -d["suma"])[:15]
     for d in top_dod:
