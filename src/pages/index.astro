@@ -5,6 +5,7 @@ import { webSite } from '../lib/seo';
 import { MESTA } from '../mesta';
 import { foto } from '../lib/fotky';
 import VolebnaNoc from '../components/VolebnaNoc.astro';
+import MojPrehlad from '../components/MojPrehlad.astro';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -23,6 +24,7 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
     <p class="lead">Obyvatelia, voľby, rozpočet, zmluvy, doprava, výstavba aj živé údaje – prehľadne, so zdrojmi a bez registrácie. Vyberte si mesto.</p>
   </section>
 
+  <MojPrehlad />
   <VolebnaNoc />
 
   <ul class="mesta">

@@ -1,0 +1,126 @@
+---
+// „Môj prehľad“ na úvodnej stránke: pre naposledy otvorené (alebo zvolené) mesto počasie, výstrahy, ovzdušie, rieka,
+// odchody z obľúbených zastávok, najbližší termín a novinky. Všetko sa skladá v prehliadači, nič sa neukladá na server.
+import fs from 'node:fs';
+import path from 'node:path';
+import { MESTA } from '../mesta';
+
+const mesta = MESTA.filter((m) => m.aktivne).map((m) => ({
+  slug: m.slug, nazov: m.nazov, stred: (m as any).stred, rieka: (m as any).rieka_id ?? '',
+  odchody: fs.existsSync(path.join(process.cwd(), 'data', 'odchody', `${m.slug}.json`)),
+}));
+---
+<section class="mp card" id="moj-prehlad" data-mesta={JSON.stringify(mesta)} hidden aria-labelledby="mp-nadpis">
+  <div class="mp-hlava">
+    <h2 id="mp-nadpis">Môj prehľad</h2>
+    <label class="mp-vyber"><span class="sr">Moje mesto</span>
+      <select id="mp-mesto">{mesta.map((m) => <option value={m.slug}>{m.nazov}</option>)}</select>
+    </label>
+  </div>
+  <ul class="mp-teraz" aria-label="Teraz v meste">
+    <li id="mp-pocasie">Počasie: …</li>
+    <li id="mp-vystrahy">Výstrahy: …</li>
+    <li id="mp-ovzdusie">Ovzdušie: …</li>
+    <li id="mp-rieka" hidden></li>
+  </ul>
+  <div class="mp-mriezka">
+    <div class="mp-blok od" id="mp-odchody" hidden></div>
+    <div class="mp-blok" id="mp-terminy" hidden></div>
+    <div class="mp-blok" id="mp-novinky" hidden></div>
+  </div>
+  <p class="mp-odkazy" id="mp-odkazy"></p>
+  <p class="mp-pozn">Prehľad si pamätá len váš prehliadač (naposledy otvorené mesto a obľúbené zastávky).</p>
+</section>
+
+<script>
+  import { pocasie, vystrahy, dunaj, ovzdusie, javVystrahy, stupenDunaja, farbaOvzdusia } from '../scripts/zive';
+  import { nacitajIndex, nacitajZastavku, dalsie, zoznam, hx } from '../scripts/odchody';
+  import '../styles/odchody.css';
+  const sek = document.getElementById('moj-prehlad');
+  if (sek) {
+    type M = { slug: string; nazov: string; stred: [number, number]; rieka: string; odchody: boolean };
+    const MESTA: M[] = JSON.parse(sek.dataset.mesta!);
+    const sel = document.getElementById('mp-mesto') as HTMLSelectElement;
+    const ulozene = (): string | null => { try { return JSON.parse(localStorage.getItem('mesto-posledne') || 'null')?.slug ?? null; } catch { return null; } };
+    const set = (id: string, html: string, stav = '') => { const e = document.getElementById(id); if (e) { e.innerHTML = html; e.dataset.stav = stav; } };
+    const datum = (d: string) => new Date(d).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric' });
+
+    async function zobraz(slug: string) {
+      const m = MESTA.find((x) => x.slug === slug);
+      if (!m) return;
+      sel.value = slug;
+      sek.hidden = false;
+      set('mp-pocasie', 'Počasie: …'); set('mp-vystrahy', 'Výstrahy: …'); set('mp-ovzdusie', 'Ovzdušie: …');
+      pocasie(m.stred).then((p) => set('mp-pocasie', `<b>${p.teplota} °C</b> ${hx(p.stav)} <small>${p.min}/${p.max} °C</small>`)).catch(() => set('mp-pocasie', 'Počasie: –'));
+      vystrahy(m.slug).then((d) => {
+        const v = d.vystrahy ?? [];
+        if (!v.length) return set('mp-vystrahy', 'Výstrahy: <b>žiadne</b>', 'ok');
+        set('mp-vystrahy', `Výstraha: <b>${hx([...new Set(v.map((x: any) => javVystrahy(x.udalost)))].join(', '))}</b> · ${hx(v[0].stupen)}`, v[0].farba);
+      }).catch(() => set('mp-vystrahy', 'Výstrahy: –'));
+      ovzdusie(m.slug).then((d) => d.mesto ? set('mp-ovzdusie', `Ovzdušie: <b>${hx(d.mesto.kategoria.nazov)}</b>`, farbaOvzdusia(d.mesto.kategoria.stupen)) : set('mp-ovzdusie', 'Ovzdušie: –')).catch(() => set('mp-ovzdusie', 'Ovzdušie: –'));
+      const r = document.getElementById('mp-rieka')!;
+      r.hidden = !m.rieka;
+      if (m.rieka) dunaj(m.rieka).then((d) => { const s = stupenDunaja(d); set('mp-rieka', `${m.rieka === 'dunaj' ? 'Dunaj' : hx(d.stanica.split('–').pop().trim())} <b>${d.stav} cm</b>${s ? ` · ${s}. stupeň` : ''}`, s === 3 ? 'red' : s === 2 ? 'orange' : s === 1 ? 'yellow' : 'ok'); }).catch(() => { r.hidden = true; });
+
+      // odchody z obľúbených zastávok
+      const od = document.getElementById('mp-odchody')!;
+      od.hidden = !m.odchody;
+      if (m.odchody) {
+        let obl: string[] = [];
+        try { obl = JSON.parse(localStorage.getItem(`odchody-oblubene-${m.slug}`) || '[]'); } catch { /* */ }
+        if (!obl.length) od.innerHTML = `<h3>Odchody MHD</h3><p class="mp-mala">Pridajte si obľúbenú zastávku hviezdičkou na stránke <a href="/${m.slug}/odchody">Odchody MHD</a> a jej najbližšie spoje uvidíte tu.</p>`;
+        else nacitajIndex(m.slug).then(async (ix) => {
+          const bloky = await Promise.all(obl.slice(0, 2).map(async (id) => {
+            const z = ix.zastavky.find((x) => x.id === id);
+            if (!z) return '';
+            return `<h4><a href="/${m.slug}/odchody#${encodeURIComponent(id)}">${hx(z.n)}</a></h4>${zoznam(ix, dalsie(ix, await nacitajZastavku(m.slug, id), 4))}`;
+          }));
+          od.innerHTML = `<h3>Odchody MHD</h3>${bloky.join('')}`;
+        }).catch(() => { od.innerHTML = '<h3>Odchody MHD</h3><p class="mp-mala">Cestovný poriadok sa nepodarilo načítať.</p>'; });
+      }
+      // termíny a novinky
+      fetch(`/data/novinky/${m.slug}.json`).then((x) => x.json()).then((d) => {
+        const t = document.getElementById('mp-terminy')!, n = document.getElementById('mp-novinky')!;
+        t.hidden = !d.terminy.length;
+        t.innerHTML = `<h3>Najbližšie termíny</h3><ul>${d.terminy.map((x: any) => `<li><b>${datum(x.od)}${x.do ? ` – ${datum(x.do)}` : ''}</b> <a href="${hx(x.odkaz)}">${hx(x.nazov)}</a></li>`).join('')}</ul><p class="mp-mala"><a href="/${m.slug}/kalendar">Kalendár do telefónu</a></p>`;
+        n.hidden = !d.novinky.length;
+        n.innerHTML = `<h3>Čo je nové</h3><ul>${d.novinky.map((x: any) => `<li><small>${datum(x.datum)} · ${hx(x.typ)}</small> <a href="${hx(x.odkaz)}">${hx(x.nazov)}</a></li>`).join('')}</ul><p class="mp-mala"><a href="/${m.slug}/novinky">Všetky novinky</a></p>`;
+      }).catch(() => {});
+      document.getElementById('mp-odkazy')!.innerHTML = [[`/${m.slug}`, `Prehľad ${hx(m.nazov)}`], [`/${m.slug}/adresa`, 'Pri mne'], ...(m.odchody ? [[`/${m.slug}/odchody`, 'Odchody MHD'], [`/${m.slug}/dosah`, 'Kam sa dostanem']] : []), [`/${m.slug}/kviz`, 'Kvíz']]
+        .map(([u, t]) => `<a href="${u}">${t}</a>`).join('');
+    }
+
+    sel.addEventListener('change', () => {
+      const m = MESTA.find((x) => x.slug === sel.value)!;
+      try { localStorage.setItem('mesto-posledne', JSON.stringify({ slug: m.slug, nazov: m.nazov })); } catch { /* */ }
+      zobraz(m.slug);
+    });
+    const s = ulozene();
+    if (s) zobraz(s);
+  }
+</script>
+
+<style>
+  .mp { margin: 0 0 24px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .mp-hlava { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .mp-hlava h2 { margin: 0; font-size: 1.3rem; }
+  .mp-vyber select { height: 40px; padding: 0 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); font: inherit; font-weight: 600; }
+  .mp-teraz { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .mp-teraz li { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); font-size: 0.88rem; }
+  .mp-teraz li[data-stav='ok'] { border-color: color-mix(in srgb, #16a34a 45%, var(--line)); }
+  .mp-teraz li[data-stav='yellow'] { border-color: #eab308; background: color-mix(in srgb, #eab308 12%, var(--bg)); }
+  .mp-teraz li[data-stav='orange'] { border-color: #f97316; background: color-mix(in srgb, #f97316 12%, var(--bg)); }
+  .mp-teraz li[data-stav='red'] { border-color: #dc2626; background: color-mix(in srgb, #dc2626 12%, var(--bg)); }
+  .mp-teraz small { color: var(--muted); }
+  .mp-mriezka { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px 20px; margin-top: 12px; }
+  .mp-blok :global(h3) { margin: 6px 0 6px; font-size: 1rem; }
+  .mp-blok :global(h4) { margin: 10px 0 2px; font-size: 0.92rem; }
+  .mp-blok :global(ul) { list-style: none; margin: 0; padding: 0; }
+  .mp-blok :global(li) { padding: 6px 0; border-top: 1px solid var(--line); font-size: 0.9rem; }
+  .mp-blok :global(li small) { display: block; color: var(--muted); }
+  .mp :global(.mp-mala) { font-size: 0.82rem; color: var(--muted); margin: 6px 0 0; }
+  .mp-odkazy { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; }
+  .mp-odkazy :global(a) { padding: 6px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.88rem; }
+  .mp-pozn { font-size: 0.75rem; color: var(--muted); margin: 10px 0 0; }
+</style>
