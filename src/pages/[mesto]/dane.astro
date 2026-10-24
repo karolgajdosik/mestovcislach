@@ -1,0 +1,149 @@
+---
+// „Kam idú moje dane“: kalkulačka, koľko z daní a poplatkov domácnosti dostane mesto a na čo ho mesto míňa.
+// Podiel obcí na dani z príjmov FO: 53 % (zákon č. 564/2004 Z. z., § 2, v znení od 1. 1. 2026).
+// Štruktúra nákladov: účtovná závierka mesta (RÚZ, data/mesta/hospodarenie.json); Bratislava: výdavky podľa programov
+// zo záverečného účtu (data/rozpocet-bratislava.json, data.bratislava.sk).
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import { MESTA, type Mesto } from '../../mesta';
+import { hospodarenie } from '../../lib/mapa';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && hospodarenie(m.slug)).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const PODIEL_OBCI = 53.0, PODIEL_VUC = 28.6;
+const citaj = (...p: string[]) => { const f = path.join(process.cwd(), ...p); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf-8')) : null; };
+const h = hospodarenie(m.slug)!;
+const por = citaj('data', 'mesta', 'porovnanie.json')?.mesta ?? [];
+const obyv = por.find((x: any) => x.slug === m.slug)?.obyvatelia ?? null;
+
+// na čo mesto míňa: Bratislava podľa programov, ostatné podľa druhu nákladov
+const NAKLADY: [string, string, string][] = [
+  ['transfery_dane', 'Školy, dopravný podnik a organizácie mesta', 'príspevky a transfery – najmä školám, škôlkam, MHD a mestským organizáciám, dotácie'],
+  ['osobne_naklady', 'Zamestnanci mesta', 'mzdy a odvody na úrade, mestská polícia a pod.'],
+  ['sluzby', 'Služby', 'údržba ciest a zelene, odvoz odpadu, opravy, energie budov'],
+  ['odpisy', 'Opotrebenie majetku', 'odpisy budov, ciest a techniky – peniaze na budúce obnovy'],
+  ['spotreba', 'Materiál a energie', ''],
+  ['uroky', 'Úroky z úverov', ''],
+];
+const roz = m.slug === 'bratislava' ? citaj('data', 'rozpocet-bratislava.json')?.casti?.programy : null;
+const rokProg = roz ? Object.keys(roz.roky).sort().pop()! : null;
+const casti: { n: string; p: string; podiel: number; suma: number }[] = roz
+  ? Object.entries<number>(roz.roky[rokProg!]).map(([n, suma]) => ({ n, p: '', suma, podiel: 0 }))
+  : NAKLADY.filter(([k]) => h.posledny[k] > 0).map(([k, n, p]) => ({ n, p, suma: h.posledny[k], podiel: 0 }));
+const spolu = casti.reduce((a, x) => a + x.suma, 0);
+casti.forEach((x) => (x.podiel = x.suma / spolu));
+casti.sort((a, b) => b.podiel - a.podiel);
+const rokCasti = roz ? rokProg : h.rok;
+
+// daňové výnosy na obyvateľa – porovnanie miest
+const porovnanie = MESTA.filter((x) => x.aktivne).map((x) => {
+  const hx = hospodarenie(x.slug); const o = por.find((y: any) => y.slug === x.slug)?.obyvatelia;
+  return hx && o && hx.posledny.danove_vynosy ? { slug: x.slug, nazov: x.nazov, rok: hx.rok, na: hx.posledny.danove_vynosy / o } : null;
+}).filter(Boolean).sort((a: any, b: any) => b.na - a.na) as { slug: string; nazov: string; rok: string; na: number }[];
+const eur = (n: number) => Math.round(n).toLocaleString('sk-SK') + ' €';
+const dvojmesto = m.slug === 'bratislava' || m.slug === 'kosice';
+---
+<Base title={`Kam idú moje dane – ${m.nazov} – mestovcislach.sk`} description={`Kalkulačka: koľko z vašich daní a poplatkov dostane ${m.nazov} a na čo mesto peniaze míňa.`}>
+  <section class="hero">
+    <p class="kicker">Samospráva</p>
+    <h1>Kam idú moje dane <span translate="no">{m.v}</span></h1>
+    <p class="lead">Zadajte, koľko platíte, a uvidíte, aká časť pripadne mestu a na čo ju mesto podľa svojich účtov míňa.</p>
+  </section>
+
+  <section class="card dn" id="dane" data-casti={JSON.stringify(casti.map((x) => [x.n, x.podiel]))} data-obce={PODIEL_OBCI}>
+    <h2>Vaše dane a poplatky</h2>
+    <form class="dn-form">
+      <label>Daň z príjmu mesačne <small>na výplatnej páske „preddavok na daň“</small>
+        <span class="dn-pole"><input type="number" id="dn-dpfo" min="0" step="1" value="150" inputmode="numeric" /> €</span></label>
+      <label>Daň z nehnuteľnosti ročne <small>byt, dom, pozemok</small>
+        <span class="dn-pole"><input type="number" id="dn-nehn" min="0" step="1" value="60" inputmode="numeric" /> €</span></label>
+      <label>Poplatok za odpad ročne <small>za domácnosť</small>
+        <span class="dn-pole"><input type="number" id="dn-odpad" min="0" step="1" value="45" inputmode="numeric" /> €</span></label>
+    </form>
+
+    <div class="dn-vysledok" aria-live="polite">
+      <p class="dn-velke">Mestu z toho pripadne približne <strong id="dn-mesto">–</strong> ročne</p>
+      <ul class="dn-rozpis">
+        <li><span>Podiel obcí na vašej dani z príjmu ({PODIEL_OBCI.toLocaleString('sk-SK')} %)</span><b id="dn-r1">–</b></li>
+        <li><span>Daň z nehnuteľnosti (celá){dvojmesto ? ' – delí sa medzi mesto a mestskú časť' : ''}</span><b id="dn-r2">–</b></li>
+        <li><span>Poplatok za odpad (celý, len na odpad)</span><b id="dn-r3">–</b></li>
+      </ul>
+
+      <h3>Na čo to mesto míňa</h3>
+      <ul class="dn-casti" id="dn-casti">
+        {casti.map((x) => (
+          <li><span><strong>{x.n}</strong>{x.p && <small>{x.p}</small>}</span><b data-podiel={x.podiel}>–</b><i style={`--w:${(100 * x.podiel / casti[0].podiel).toFixed(1)}%`} aria-hidden="true"></i></li>
+        ))}
+      </ul>
+      <p class="pozn">{roz
+        ? `Podľa výdavkov hlavného mesta na programy v roku ${rokCasti} (záverečný účet, data.bratislava.sk). Bez mestských častí, ktoré majú vlastné rozpočty.`
+        : `Podľa nákladov mesta v roku ${rokCasti} z účtovnej závierky (Register účtovných závierok).${dvojmesto ? ' Len mesto, bez mestských častí.' : ''} Investície (nové cesty, budovy) sa v nákladoch prejavia postupne cez odpisy.`}</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Ako to funguje</h2>
+    <ul class="dn-body">
+      <li><strong>Daň z príjmu</strong> nejde priamo mestu, kde bývate. Štát z nej {PODIEL_OBCI.toLocaleString('sk-SK')} % rozdelí všetkým obciam a {PODIEL_VUC.toLocaleString('sk-SK')} % samosprávnym krajom – podľa počtu obyvateľov s trvalým pobytom a ďalších kritérií. Preto je dôležité mať trvalý pobyt tam, kde naozaj žijete.</li>
+      <li><strong>Daň z nehnuteľnosti, za psa a poplatok za odpad</strong> idú celé mestu{dvojmesto ? ' (v Bratislave a Košiciach sa delia medzi mesto a mestské časti podľa štatútu)' : ''}.</li>
+      <li>Kalkulačka ukazuje <strong>približný</strong> rozpočet vašich peňazí – mesto ich nevedie oddelene, ide o podiel na jeho celkových nákladoch.</li>
+    </ul>
+  </section>
+
+  {porovnanie.length > 1 && (
+    <section class="card">
+      <h2>Daňové výnosy miest na obyvateľa</h2>
+      <ol class="dn-porov">
+        {porovnanie.map((x) => (
+          <li class={x.slug === m.slug ? 'tu' : undefined}><a href={`/${x.slug}/dane`} translate="no">{x.nazov}</a><b>{eur(x.na)}</b><i style={`--w:${(100 * x.na / porovnanie[0].na).toFixed(1)}%`} aria-hidden="true"></i></li>
+        ))}
+      </ol>
+      <p class="pozn">Daňové výnosy mesta (podiel na dani z príjmov, daň z nehnuteľností a ďalšie miestne dane) podľa účtovnej závierky za rok {porovnanie[0].rok}, delené počtom obyvateľov. Bratislava a Košice bez mestských častí.</p>
+    </section>
+  )}
+  <p class="pozn">Zdroje: <a href="https://static.slov-lex.sk/static/SK/ZZ/2004/564/20260501.html">zákon č. 564/2004 Z. z. o rozpočtovom určení výnosu dane z príjmov</a>; {h.zdroje?.ruz?.nazov ?? 'Register účtovných závierok'}{roz ? '; Bratislava – záverečný účet (data.bratislava.sk)' : ''}. Podrobnejšie čísla: <a href={m.slug === 'bratislava' ? '/bratislava/financie' : `/${m.slug}/samosprava`}>{m.slug === 'bratislava' ? 'Financie' : 'Samospráva'}</a>.</p>
+</Base>
+
+<script>
+  const obal = document.getElementById('dane')!;
+  const obce = Number(obal.dataset.obce) / 100;
+  const eur = (n: number) => Math.round(n).toLocaleString('sk-SK') + ' €';
+  const v = (id: string) => Math.max(0, Number((document.getElementById(id) as HTMLInputElement).value) || 0);
+  const pocitaj = () => {
+    const r1 = v('dn-dpfo') * 12 * obce, r2 = v('dn-nehn'), r3 = v('dn-odpad');
+    const spolu = r1 + r2 + r3;
+    document.getElementById('dn-r1')!.textContent = eur(r1);
+    document.getElementById('dn-r2')!.textContent = eur(r2);
+    document.getElementById('dn-r3')!.textContent = eur(r3);
+    document.getElementById('dn-mesto')!.textContent = eur(spolu);
+    // odpad je účelový – rozdeľujeme len dane
+    document.querySelectorAll<HTMLElement>('#dn-casti b').forEach((b) => (b.textContent = eur((r1 + r2) * Number(b.dataset.podiel))));
+  };
+  obal.querySelectorAll('input').forEach((i) => i.addEventListener('input', pocitaj));
+  pocitaj();
+</script>
+
+<style>
+  .dn-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 8px 0 18px; }
+  .dn-form label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 0.92rem; }
+  .dn-form small { font-weight: 400; color: var(--muted); font-size: 0.78rem; }
+  .dn-pole { display: flex; align-items: center; gap: 6px; font-weight: 600; }
+  .dn-pole input { width: 100%; height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); font: inherit; font-size: 1.1rem; }
+  .dn-velke { font-size: 1.1rem; margin: 0 0 8px; }
+  .dn-velke strong { font-size: 1.6rem; color: var(--accent); }
+  .dn-rozpis, .dn-casti, .dn-porov { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .dn-rozpis li { display: flex; justify-content: space-between; gap: 12px; font-size: 0.92rem; padding: 4px 0; border-bottom: 1px dashed var(--line); }
+  .dn-casti li, .dn-porov li { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 10px; border-radius: 8px; overflow: hidden; }
+  .dn-casti li > :not(i), .dn-porov li > :not(i) { position: relative; z-index: 1; }
+  .dn-casti i, .dn-porov i { position: absolute; inset: 0 auto 0 0; width: var(--w); background: color-mix(in srgb, var(--accent) 11%, transparent); z-index: 0; }
+  .dn-casti li > span, .dn-porov li > a { flex: 1; min-width: 0; }
+  .dn-casti small { display: block; color: var(--muted); font-size: 0.78rem; }
+  .dn-casti b, .dn-porov b { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .dn-porov li.tu { outline: 2px solid var(--accent); }
+  .dn-body li { margin-bottom: 8px; }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+</style>

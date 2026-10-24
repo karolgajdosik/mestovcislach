@@ -1,4 +1,6 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import Asistent from '../components/Asistent.astro';
 import Hladanie from '../components/Hladanie.astro';
 import Zobrazenie from '../components/Zobrazenie.astro';
@@ -36,6 +38,18 @@ const MENU_MESTA: [string, string, string][] = [
   ['katalog', 'Katalóg dát', '<ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>'],
 ];
 const mesto = mestoZCesty(Astro.url.pathname);
+// Nové podstránky pre všetky mestá (src/pages/[mesto]/…): zobrazia sa, len ak má mesto potrebné dáta
+const maSubor = (...p: string[]) => fs.existsSync(path.join(process.cwd(), ...p));
+const castiOsm = (() => { try { return Object.keys(JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'mesta', 'casti-osm.json'), 'utf-8')).mesta); } catch { return []; } })();
+const NOVE: [string, string, string, boolean][] = [
+  ['novinky', 'Čo je nové', '<path d="M5 4.5h11.5a2 2 0 0 1 2 2V19a1.5 1.5 0 0 0 3 0V9.5h-3"/><path d="M5 4.5V19a1.5 1.5 0 0 0 1.5 1.5h14.5M8.5 8.5h6M8.5 12h6M8.5 15.5h4"/>', true],
+  ['zastupitelstvo', 'Zastupiteľstvo', '<path d="M3 20.5h18M4.5 9.5h15M12 3.5l8 4.5H4z"/><path d="M6.5 9.5v8.5M10 9.5v8.5M14 9.5v8.5M17.5 9.5v8.5"/>', true],
+  ['skoly', 'Školy', '<path d="m2.5 9 9.5-4.5L21.5 9 12 13.5z"/><path d="M6.5 11v5c1.5 1.6 3.4 2.4 5.5 2.4s4-.8 5.5-2.4v-5M21.5 9v5.5"/>', maSubor('data', 'mesta', 'skoly.json')],
+  ['stvrte', 'Ktorá štvrť', '<path d="M3 20.5V11l5-3.5 5 3.5v9.5M13 20.5V7.5l4-3 4 3v13M2 20.5h20"/><path d="M6.5 14h3M15.5 11h3M15.5 14.5h3"/>', mesto.slug === 'bratislava' || mesto.slug === 'kosice' || castiOsm.includes(mesto.slug)],
+  ['dane', 'Kam idú dane', '<circle cx="12" cy="12" r="8.5"/><path d="M15 8.6a4 4 0 1 0 0 6.8M7 10.8h6M7 13.2h6"/>', true],
+  ['kviz', 'Kvíz', '<circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.6M12 16.8v.2"/>', true],
+];
+const NOVE_MENU = NOVE.filter((x) => x[3]).map(([h, n, i]) => [`/${mesto.slug}/${h}`, n, i] as [string, string, string]);
 const spolocna = jeSpolocna(Astro.url.pathname.replace(/\/$/, '') || '/');
 const zivaLista = !spolocna;
 const ba = mesto.slug === 'bratislava';
@@ -47,7 +61,7 @@ const PIN = '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5
 const MENU: [string, string, string][] = spolocna
   ? [...MESTA.filter((x) => x.aktivne).map((x) => [`/${x.slug}`, x.nazov, PIN] as [string, string, string]), ['/porovnanie', 'Porovnanie miest', IKONA['katalog']]]
   : mesto.plne
-  ? MENU_MESTA.map(([h, n, i]) => [`/${mesto.slug}${h ? `/${h}` : ''}`, n, i])
+  ? [...MENU_MESTA.slice(0, -1).map(([h, n, i]) => [`/${mesto.slug}${h ? `/${h}` : ''}`, n, i] as [string, string, string]), ...NOVE_MENU, [`/${mesto.slug}/katalog`, 'Katalóg dát', MENU_MESTA.at(-1)![2]]]
   : [
       [`/${mesto.slug}`, 'Prehľad', IKONA['']],
       [`/${mesto.slug}#teraz`, 'Teraz', IKONA['prostredie']],
@@ -60,6 +74,7 @@ const MENU: [string, string, string][] = spolocna
       ...(maMapu(mesto.slug) ? [[`/${mesto.slug}/mapa`, 'Mapa', IKONA['mapa']] as [string, string, string]] : []),
       [`/${mesto.slug}/adresa`, 'Moja adresa', IKONA['adresa']],
       ...((mesto as any).katalog ? [[`/${mesto.slug}/katalog`, 'Katalóg dát', IKONA['katalog']] as [string, string, string]] : []),
+      ...NOVE_MENU,
       ['/porovnanie', 'Porovnanie', IKONA['mestske-casti']],
     ];
 const OG = ['mestske-casti', 'vystavba', 'upozornenia', 'mapa', 'obyvatelia', 'volby', 'financie', 'doprava', 'vybavenost', 'prostredie', 'bezpecnost', 'katalog'];

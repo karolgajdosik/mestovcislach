@@ -1,0 +1,118 @@
+---
+// Kvíz „Poznáš svoje mesto?“ – 10 otázok z dát webu (src/lib/kviz.ts). Nič sa neukladá ani neodosiela.
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import { MESTA, type Mesto } from '../../mesta';
+import { kviz } from '../../lib/kviz';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne).map((m) => ({ m, o: kviz(m.slug) })).filter((x) => x.o.length >= 5).map(({ m, o }) => ({ params: { mesto: m.slug }, props: { m, o } }));
+}
+const { m, o } = Astro.props as { m: Mesto; o: ReturnType<typeof kviz> };
+---
+<Base title={`Poznáš svoje mesto? Kvíz – ${m.nazov} – mestovcislach.sk`} description={`${o.length} otázok o meste ${m.nazov} z otvorených dát: obyvatelia, voľby, školy, peniaze mesta. Koľko trafíte?`}>
+  <section class="hero">
+    <p class="kicker">Kvíz</p>
+    <h1>Poznáš svoje mesto? <span translate="no">{m.nazov}</span></h1>
+    <p class="lead">{o.length} otázok z otvorených dát – obyvatelia, voľby, školy a peniaze mesta. Odpovede sa nikam neposielajú.</p>
+  </section>
+
+  <section class="card kv" id="kviz" data-o={JSON.stringify(o)} data-mesto={m.nazov} data-slug={m.slug}>
+    <p class="kv-stav" id="kv-stav"></p>
+    <h2 id="kv-otazka" tabindex="-1"></h2>
+    <div class="kv-moznosti" id="kv-moznosti" role="group" aria-labelledby="kv-otazka"></div>
+    <p class="kv-vysv" id="kv-vysv" aria-live="polite" hidden></p>
+    <button type="button" class="kv-dalej" id="kv-dalej" hidden>Ďalšia otázka</button>
+    <div class="kv-koniec" id="kv-koniec" hidden>
+      <p class="kv-skore" id="kv-skore"></p>
+      <p id="kv-hodnotenie"></p>
+      <div class="kv-akcie">
+        <button type="button" id="kv-zdielat">Zdieľať výsledok</button>
+        <button type="button" id="kv-znova" class="kv-sek">Skúsiť znova</button>
+      </div>
+      <p class="kv-dalsie">Iné mesto: {MESTA.filter((x) => x.aktivne && x.slug !== m.slug).map((x, i) => <>{i ? ' · ' : ''}<a href={`/${x.slug}/kviz`} translate="no">{x.nazov}</a></>)}</p>
+    </div>
+  </section>
+  <p class="pozn">Otázky vychádzajú z údajov Štatistického úradu SR, ÚPSVaR, výsledkov volieb, Digitálnej mapy škôl (MŠVVaM SR) a účtovných závierok miest. Viac čísel nájdete na <a href={`/${m.slug}`}>prehľade mesta</a>.</p>
+</Base>
+
+<script>
+  type O = { q: string; moznosti: string[]; spravna: number; vysvetlenie: string };
+  const obal = document.getElementById('kviz')!;
+  const O: O[] = JSON.parse(obal.dataset.o!);
+  const mesto = obal.dataset.mesto!;
+  const $ = (id: string) => document.getElementById(id)!;
+  let i = 0, body = 0;
+  function ukaz() {
+    const o = O[i];
+    $('kv-stav').textContent = `Otázka ${i + 1} z ${O.length} · správne ${body}`;
+    $('kv-otazka').textContent = o.q;
+    $('kv-vysv').hidden = true; $('kv-dalej').hidden = true;
+    const mz = $('kv-moznosti');
+    mz.innerHTML = '';
+    o.moznosti.forEach((t, k) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = t; b.className = 'kv-moznost';
+      b.addEventListener('click', () => odpovedz(k));
+      mz.append(b);
+    });
+    if (i) $('kv-otazka').focus();
+  }
+  function odpovedz(k: number) {
+    const o = O[i];
+    const tl = [...$('kv-moznosti').querySelectorAll<HTMLButtonElement>('button')];
+    tl.forEach((b, j) => { b.disabled = true; if (j === o.spravna) b.classList.add('ok'); else if (j === k) b.classList.add('zle'); });
+    if (k === o.spravna) body++;
+    $('kv-vysv').innerHTML = `<strong>${k === o.spravna ? 'Správne.' : 'Nesprávne.'}</strong> `;
+    $('kv-vysv').append(o.vysvetlenie);
+    $('kv-vysv').hidden = false;
+    $('kv-stav').textContent = `Otázka ${i + 1} z ${O.length} · správne ${body}`;
+    const b = $('kv-dalej') as HTMLButtonElement;
+    b.textContent = i + 1 < O.length ? 'Ďalšia otázka' : 'Zobraziť výsledok';
+    b.hidden = false; b.focus();
+  }
+  $('kv-dalej').addEventListener('click', () => { i++; if (i < O.length) ukaz(); else koniec(); });
+  function koniec() {
+    ['kv-stav', 'kv-otazka', 'kv-moznosti', 'kv-vysv', 'kv-dalej'].forEach((id) => ($(id).hidden = true));
+    $('kv-koniec').hidden = false;
+    $('kv-skore').textContent = `${body} / ${O.length}`;
+    const p = body / O.length;
+    $('kv-hodnotenie').textContent = p >= 0.9 ? `Výborne – ${mesto} poznáte naozaj dobre.` : p >= 0.6 ? 'Slušný výsledok. Niektoré čísla prekvapia aj miestnych.' : p >= 0.3 ? 'Mesto ešte trochu skrýva tajomstvá – pozrite si prehľad.' : 'Nevadí – na to tu je tento web.';
+    $('kv-zdielat').focus();
+  }
+  $('kv-zdielat').addEventListener('click', async () => {
+    const text = `Poznám ${mesto} na ${body}/${O.length}. Skús aj ty:`;
+    const url = location.origin + location.pathname;
+    try {
+      if (navigator.share) await navigator.share({ title: 'Poznáš svoje mesto?', text, url });
+      else { await navigator.clipboard.writeText(`${text} ${url}`); $('kv-zdielat').textContent = 'Skopírované ✓'; }
+    } catch { /* zrušené */ }
+  });
+  $('kv-znova').addEventListener('click', () => {
+    i = 0; body = 0;
+    ['kv-stav', 'kv-otazka', 'kv-moznosti'].forEach((id) => ($(id).hidden = false));
+    $('kv-koniec').hidden = true; $('kv-zdielat').textContent = 'Zdieľať výsledok';
+    ukaz();
+  });
+  ukaz();
+</script>
+
+<style>
+  .kv { max-width: 720px; }
+  .kv-stav { margin: 0 0 6px; color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  .kv h2 { font-size: 1.3rem; line-height: 1.3; margin: 0 0 14px; outline: none; }
+  .kv-moznosti { display: grid; gap: 8px; }
+  .kv-moznosti :global(.kv-moznost) { text-align: left; min-height: 48px; padding: 10px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; }
+  .kv-moznosti :global(.kv-moznost:hover:not(:disabled)) { border-color: var(--accent); }
+  .kv-moznosti :global(.kv-moznost:disabled) { cursor: default; opacity: 0.7; }
+  .kv-moznosti :global(.ok) { border-color: #15803d !important; background: color-mix(in srgb, #15803d 12%, var(--bg)); opacity: 1 !important; }
+  .kv-moznosti :global(.ok)::after { content: ' ✓'; color: #15803d; }
+  .kv-moznosti :global(.zle) { border-color: var(--accent) !important; background: color-mix(in srgb, var(--accent) 10%, var(--bg)); opacity: 1 !important; }
+  .kv-vysv { margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; background: var(--bg); font-size: 0.92rem; }
+  .kv-dalej, .kv-akcie button { margin-top: 14px; height: 44px; padding: 0 18px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accent); color: var(--na-akcente); font: inherit; font-weight: 700; cursor: pointer; }
+  .kv-akcie { display: flex; gap: 8px; flex-wrap: wrap; }
+  .kv-akcie .kv-sek { background: var(--card); color: var(--text); border-color: var(--line); }
+  .kv-skore { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
+  .kv-dalsie { font-size: 0.88rem; color: var(--muted); margin-top: 18px; }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+</style>

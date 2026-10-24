@@ -1,0 +1,94 @@
+---
+// „Ktorá štvrť je pre mňa“: poradie mestských častí podľa toho, čo je pre človeka dôležité (váhy si nastaví sám).
+// Výpočet vzdialeností pri builde (src/lib/stvrte.ts), poradie v prehliadači.
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import { MESTA, type Mesto } from '../../mesta';
+import { stvrte } from '../../lib/stvrte';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne).map((m) => ({ m, s: stvrte(m.slug) })).filter((x) => x.s).map(({ m, s }) => ({ params: { mesto: m.slug }, props: { m, s } }));
+}
+const { m, s } = Astro.props as { m: Mesto; s: NonNullable<ReturnType<typeof stvrte>> };
+// predvolené váhy: MHD a každodenné veci viac
+const PREDVOLENE: Record<string, number> = { zastavky: 3, lekarne: 2, zs: 2, ms: 2, posty: 1, nemocnice: 1, ihriska: 1, sport: 1 };
+const KRATKO: Record<string, string> = { lekarne: 'Lekáreň', zastavky: 'Zastávka MHD', ms: 'Materská škola', zs: 'Základná škola', nemocnice: 'Nemocnica / poliklinika', ihriska: 'Detské ihrisko', posty: 'Pošta', urady: 'Úrad', policia: 'Polícia', nabijanie: 'Nabíjanie áut', sport: 'Šport a ihriská', fontany: 'Pitná fontána' };
+const data = { kat: s.kat.map((k) => k.id), casti: s.casti.map((c) => ({ n: c.n, d: c.d, p: c.pocet })) };
+const odkazAdresa = `/${m.slug}/adresa`;
+---
+<Base title={`Ktorá štvrť je pre mňa – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: porovnajte ${s.druh} podľa toho, čo potrebujete mať blízko – MHD, lekáreň, škola, škôlka, ihrisko.`}>
+  <section class="hero">
+    <p class="kicker">Bývanie</p>
+    <h1>Ktorá štvrť je pre mňa <span translate="no">{m.v}</span></h1>
+    <p class="lead">Nastavte, čo potrebujete mať blízko, a {s.druh} sa zoradia podľa toho, ako ďaleko to tam priemerne máte pešo.</p>
+  </section>
+
+  <div class="st" id="stvrte" data-d={JSON.stringify(data)}>
+    <section class="card st-vahy">
+      <h2>Čo je pre vás dôležité</h2>
+      <div class="st-mriezka">
+        {s.kat.map((k) => (
+          <label class="st-vaha">
+            <span>{KRATKO[k.id] ?? k.nazov}</span>
+            <select data-k={k.id} aria-label={`Dôležitosť: ${KRATKO[k.id] ?? k.nazov}`}>
+              {[['0', 'nezáleží'], ['1', 'trochu'], ['2', 'dôležité'], ['3', 'veľmi']].map(([v, t]) => <option value={v} selected={String(PREDVOLENE[k.id] ?? 0) === v}>{t}</option>)}
+            </select>
+          </label>
+        ))}
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Poradie</h2>
+      <ol class="st-poradie" id="st-poradie" aria-live="polite"></ol>
+      <p class="pozn">Pre každú časť počítame na mriežke bodov po 250 m priemernú vzdušnú vzdialenosť k najbližšiemu miestu danej kategórie
+        a prepočítame ju na chôdzu (× 1,3 pri 4,8 km/h). Rátajú sa len obývané miesta – do 700 m od zastávky MHD –, aby lesy a polia nezhoršovali veľké časti.
+        Skóre 100 = najlepšia časť podľa vašich váh. Konkrétnu adresu si overte v <a href={odkazAdresa}>Moja adresa</a>.</p>
+      <p class="pozn">Zdroje: miesta z mapy mesta (portál otvorených dát mesta, OpenStreetMap, rezortné dáta), {s.druh}: {s.zdroj}{s.zdroj === 'OpenStreetMap' ? ' (© prispievatelia OpenStreetMap, ODbL). Hranice štvrtí z OpenStreetMap nemusia presne zodpovedať zaužívaným hraniciam sídlisk a niektoré zahŕňajú aj priemyselné zóny alebo okrajové časti' : ''}.</p>
+    </section>
+  </div>
+</Base>
+
+<script>
+  const obal = document.getElementById('stvrte')!;
+  const D: { kat: string[]; casti: { n: string; d: Record<string, number | null>; p: Record<string, number> }[] } = JSON.parse(obal.dataset.d!);
+  const NAZVY: Record<string, string> = Object.fromEntries([...obal.querySelectorAll<HTMLSelectElement>('select')].map((s) => [s.dataset.k!, s.closest('label')!.querySelector('span')!.textContent!]));
+  const min = (m: number) => Math.max(1, Math.round((m * 1.3) / 80));
+  const hx = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const vahy = () => Object.fromEntries([...obal.querySelectorAll<HTMLSelectElement>('select')].map((s) => [s.dataset.k!, Number(s.value)]));
+  function obnov() {
+    const w = vahy();
+    const aktivne = D.kat.filter((k) => w[k] > 0);
+    // normalizácia: najbližšia časť = 1, najvzdialenejšia = 0 (pre každú kategóriu zvlášť)
+    const rozsah = Object.fromEntries(aktivne.map((k) => { const v = D.casti.map((c) => c.d[k]).filter((x): x is number => x != null); return [k, [Math.min(...v), Math.max(...v)]]; }));
+    const sk = D.casti.map((c) => {
+      let s = 0, sw = 0;
+      for (const k of aktivne) { const d = c.d[k]; if (d == null) continue; const [a, b] = rozsah[k]; s += w[k] * (b > a ? (b - d) / (b - a) : 1); sw += w[k]; }
+      return { c, s: sw ? s / sw : 0 };
+    }).sort((a, b) => b.s - a.s);
+    const top = sk[0]?.s || 1;
+    const hlavne = aktivne.slice().sort((a, b) => w[b] - w[a]).slice(0, 4);
+    document.getElementById('st-poradie')!.innerHTML = sk.map(({ c, s }, i) => `
+      <li><div class="st-hlava"><span class="st-poz">${i + 1}.</span><strong>${hx(c.n)}</strong><b>${aktivne.length ? Math.round((100 * s) / top) : '–'}</b></div>
+        <i class="st-pas" style="--w:${aktivne.length ? ((100 * s) / top).toFixed(1) : 0}%"></i>
+        <p class="st-detaily">${hlavne.map((k) => c.d[k] != null ? `<span>${hx(NAZVY[k])}: <b>${min(c.d[k]!)} min</b></span>` : '').join('')}</p></li>`).join('');
+  }
+  obal.querySelectorAll('select').forEach((s) => s.addEventListener('change', obnov));
+  obnov();
+</script>
+
+<style>
+  .st-mriezka { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px 14px; }
+  .st-vaha { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 0.92rem; font-weight: 600; }
+  .st-vaha select { height: 36px; padding: 0 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); font: inherit; font-weight: 500; }
+  .st-poradie { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .st-poradie :global(li) { padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .st-poradie :global(.st-hlava) { display: flex; align-items: baseline; gap: 8px; }
+  .st-poradie :global(.st-poz) { color: var(--muted); width: 2em; font-variant-numeric: tabular-nums; }
+  .st-poradie :global(.st-hlava strong) { flex: 1; }
+  .st-poradie :global(.st-hlava b) { font-variant-numeric: tabular-nums; }
+  .st-poradie :global(.st-pas) { display: block; height: 6px; margin: 6px 0 6px 2.5em; border-radius: 3px; background: linear-gradient(90deg, var(--accent) var(--w), var(--line) var(--w)); }
+  .st-poradie :global(.st-detaily) { margin: 0 0 0 2.5em; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.82rem; color: var(--muted); }
+  .st-poradie :global(.st-detaily b) { color: var(--text); }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+</style>

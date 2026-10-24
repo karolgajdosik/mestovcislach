@@ -78,6 +78,16 @@ export async function GET() {
     if (maSamospravu(m.slug)) polozky.push(['Stránky', `Samospráva – ${m.nazov}`, 'zmluvy, faktúry, objednávky, hlasovania poslancov', `/${m.slug}/samosprava`, `zmluvy faktúry dodávatelia poslanci hlasovanie zastupiteľstvo ${m.v}`]);
     if (maMapu(m.slug)) polozky.push(['Stránky', `Mapa – ${m.nazov}`, 'lekárne, nemocnice, školy, zastávky, ihriská, úrady', `/${m.slug}/mapa`, `mapa ${m.v} lekáreň nemocnica škola zastávka`]);
   }
+  // nové podstránky pre všetky mestá (vrátane Bratislavy)
+  const castiOsm = nacitaj('mesta/casti-osm.json')?.mesta ?? {};
+  for (const m of mesta.filter((x: any) => x.aktivne)) {
+    polozky.push(['Stránky', `Čo je nové – ${m.nazov}`, 'nové stavby, zmluvy mesta, zasadnutia zastupiteľstva, RSS', `/${m.slug}/novinky`, `novinky nové rss kanál správy ${m.v}`]);
+    polozky.push(['Stránky', `Mestské zastupiteľstvo – ${m.nazov}`, 'poslanci, strany, kto obhájil mandát', `/${m.slug}/zastupitelstvo`, `poslanci zastupiteľstvo primátor zvolení strany kluby ${m.v}`]);
+    polozky.push(['Stránky', `Školy – ${m.nazov}`, 'základné, materské a stredné školy, žiaci, záujem o SŠ', `/${m.slug}/skoly`, `škola škôlka gymnázium stredná prijímačky žiaci učitelia ${m.v}`]);
+    if (m.slug === 'bratislava' || m.slug === 'kosice' || castiOsm[m.slug]) polozky.push(['Stránky', `Ktorá štvrť je pre mňa – ${m.nazov}`, 'porovnanie štvrtí podľa toho, čo potrebujete blízko', `/${m.slug}/stvrte`, `štvrť sídlisko kde bývať presťahovať mestská časť porovnanie ${m.v}`]);
+    polozky.push(['Stránky', `Kam idú moje dane – ${m.nazov}`, 'kalkulačka: koľko z daní dostane mesto a na čo ich míňa', `/${m.slug}/dane`, `dane daň z nehnuteľnosti poplatok odpad rozpočet kalkulačka ${m.v}`]);
+    polozky.push(['Stránky', `Kvíz: Poznáš svoje mesto? – ${m.nazov}`, '10 otázok z dát o meste', `/${m.slug}/kviz`, `kvíz test otázky hra ${m.v}`]);
+  }
   polozky.push(['Stránky', 'Porovnanie krajských miest', 'obyvatelia, vek, vzdelanie, nezamestnanosť, voľby, byty, ceny', '/porovnanie', 'porovnanie mestá krajské rebríček']);
   for (const [u, t, s, w] of SEKCIE) polozky.push(['Stránky', t, s, u, w]);
 

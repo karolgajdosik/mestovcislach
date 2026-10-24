@@ -1,0 +1,165 @@
+---
+// Mestské zastupiteľstvo podľa posledných komunálnych volieb: primátor, zloženie podľa strán, zoznam poslancov
+// (len meno, strana, hlasy a obvod) a porovnanie s predchádzajúcim obdobím. Po zbere volieb 2026 sa obnoví samo.
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import { MESTA, type Mesto } from '../../mesta';
+import { obdobia, bezTitulov, skrat } from '../../lib/zastupitelstvo';
+import { maSamospravu } from '../../lib/mapa';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && obdobia(m.slug).length).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const vsetky = obdobia(m.slug);
+// počas sčítavania ukážeme zatiaľ platné zastupiteľstvo a priebežný stav nových volieb
+const scitava = vsetky[0]?.priebezne ? vsetky[0] : null;
+const teraz = vsetky.find((o) => !o.priebezne)!;
+const pred = vsetky.find((o) => !o.priebezne && o.rok < teraz.rok) ?? null;
+const obdobie = `${teraz.rok}–${Number(teraz.rok) + 4}`;
+
+const predMena = new Set((pred?.poslanci ?? []).map((p) => bezTitulov(p.meno)));
+const poslanci = teraz.poslanci.map((p) => ({ ...p, obhajil: pred ? predMena.has(bezTitulov(p.meno)) : null }))
+  .sort((a, b) => (a.obvod ?? '').localeCompare(b.obvod ?? '', 'sk') || (b.hlasy ?? 0) - (a.hlasy ?? 0));
+const obhajili = poslanci.filter((p) => p.obhajil).length;
+const primObhajil = pred?.primator && teraz.primator ? bezTitulov(pred.primator.meno) === bezTitulov(teraz.primator.meno) : null;
+
+const FARBY = ['#c8102e', '#1f6fd1', '#0e7a55', '#b45309', '#7c3aed', '#0891b2', '#be185d', '#4d7c0f', '#6b7280'];
+const mandaty = teraz.mandaty.slice().sort((a, b) => b.mandaty - a.mandaty).map((x, i) => {
+  const predM = pred?.mandaty.find((y) => y.strany === x.strany)?.mandaty ?? (pred ? 0 : null);
+  return { ...x, kratko: skrat(x.strany), farba: FARBY[Math.min(i, FARBY.length - 1)], zmena: predM == null ? null : x.mandaty - predM };
+});
+const odisli = pred ? pred.mandaty.filter((y) => !teraz.mandaty.some((x) => x.strany === y.strany)) : [];
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const des = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
+const maObvody = poslanci.some((p) => p.obvod);
+const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${m.slug}#volby`;
+---
+<Base title={`Mestské zastupiteľstvo ${obdobie} – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: kto sedí v mestskom zastupiteľstve ${obdobie}, zloženie podľa strán, kto mandát obhájil a kto je nový.`}>
+  <section class="hero">
+    <p class="kicker">Samospráva</p>
+    <h1>Mestské zastupiteľstvo <span translate="no">{m.v}</span> {obdobie}</h1>
+    <p class="lead">Kto rozhoduje o meste: primátor a {teraz.poslancov} poslancov zvolených v komunálnych voľbách {teraz.rok}.
+      {pred ? ` Porovnanie s obdobím ${pred.rok}–${teraz.rok} ukazuje, kto mandát obhájil a kto je v zastupiteľstve nový.` : ''}</p>
+  </section>
+
+  {scitava && (
+    <aside class="card upozornenie" role="status">
+      <strong>Voľby {scitava.rok}: sčítavajú sa hlasy ({scitava.primator ? <>vedie <span translate="no">{scitava.primator.meno}</span></> : 'priebežne'})</strong>
+      <p>Kým nie sú výsledky konečné, ukazujeme doterajšie zastupiteľstvo. Nové sa tu zobrazí automaticky. <a href={volbyOdkaz}>Priebežné výsledky volieb</a></p>
+    </aside>
+  )}
+  {!scitava && Number(teraz.rok) < 2026 && (
+    <aside class="card upozornenie">
+      <strong>Komunálne voľby 2026 práve prebehli</strong>
+      <p>Hneď ako budú výsledky spracované, nahradí túto stránku nové zastupiteľstvo 2026–2030 aj s porovnaním, kto mandát obhájil. <a href={volbyOdkaz}>Výsledky volieb</a></p>
+    </aside>
+  )}
+
+  <section class="kpis">
+    {teraz.primator && (
+      <div class="card kpi">
+        <p class="label">Primátor(ka)</p>
+        <p class="value zs-meno" translate="no">{teraz.primator.meno}</p>
+        <p class="delta">{skrat(teraz.primator.strany)}{teraz.primator.podiel != null ? ` · ${des(teraz.primator.podiel)} % hlasov` : ''}{primObhajil === true ? ' · funkciu obhájil(a)' : primObhajil === false ? ' · nový(-á) vo funkcii' : ''}</p>
+      </div>
+    )}
+    <div class="card kpi"><p class="label">Poslancov</p><p class="value">{teraz.poslancov}</p><p class="delta">{maObvody ? `${new Set(poslanci.map((p) => p.obvod)).size} volebných obvodov` : 'mestské zastupiteľstvo'}</p></div>
+    {pred && <div class="card kpi"><p class="label">Mandát obhájili</p><p class="value">{obhajili}</p><p class="delta">noví v zastupiteľstve: {poslanci.length - obhajili}</p></div>}
+    {teraz.ucast != null && <div class="card kpi"><p class="label">Účasť vo voľbách {teraz.rok}</p><p class="value">{des(teraz.ucast)} %</p><p class="delta">{pred?.ucast != null ? `v roku ${pred.rok}: ${des(pred.ucast)} %` : 'voľba primátora'}</p></div>}
+  </section>
+
+  <section class="card">
+    <h2>Zloženie podľa strán a koalícií</h2>
+    <div class="zs-pas" role="img" aria-label={`Rozdelenie ${teraz.poslancov} mandátov: ${mandaty.map((x) => `${x.kratko} ${x.mandaty}`).join(', ')}`}>
+      {mandaty.map((x) => <i style={`flex:${x.mandaty};background:${x.farba}`} title={`${x.kratko}: ${x.mandaty}`}></i>)}
+    </div>
+    <div class="tabulka-obal">
+      <table class="zs-tab">
+        <thead><tr><th>Strana alebo koalícia</th><th class="num">Mandáty</th>{pred && <th class="num">Oproti {pred.rok}</th>}</tr></thead>
+        <tbody>
+          {mandaty.map((x) => (
+            <tr><td><i class="zs-bod" style={`background:${x.farba}`}></i><span translate="no" title={x.strany}>{x.kratko}</span></td><td class="num">{x.mandaty}</td>
+              {pred && <td class={`num ${x.zmena! > 0 ? 'plus' : x.zmena! < 0 ? 'minus' : ''}`}>{x.zmena === 0 ? '0' : `${x.zmena! > 0 ? '+' : '−'}${Math.abs(x.zmena!)}`}</td>}</tr>
+          ))}
+          {odisli.map((y) => <tr class="zs-odisli"><td><i class="zs-bod"></i><span translate="no" title={y.strany}>{skrat(y.strany)}</span></td><td class="num">0</td><td class="num minus">−{y.mandaty}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+    <p class="pozn">„Nezávislí“ sú kandidáti bez strany – v zastupiteľstve nehlasujú ako jeden klub. Kluby poslancov vznikajú až po voľbách.</p>
+  </section>
+
+  <section class="card">
+    <h2>Poslanci {obdobie}</h2>
+    <div class="zs-filter" role="group" aria-label="Filter poslancov">
+      <input type="search" id="zs-q" placeholder="Hľadať meno, stranu alebo obvod" aria-label="Hľadať poslanca" />
+      {pred && (
+        <select id="zs-stav" aria-label="Zobraziť">
+          <option value="">Všetci</option><option value="ano">Obhájili mandát</option><option value="nie">Noví</option>
+        </select>
+      )}
+    </div>
+    <div class="tabulka-obal">
+      <table class="zs-tab" id="zs-zoznam">
+        <thead><tr><th>Meno</th><th>Strana</th>{maObvody && <th>Obvod</th>}<th class="num">Hlasy</th>{pred && <th>Oproti {pred.rok}</th>}</tr></thead>
+        <tbody>
+          {poslanci.map((p) => (
+            <tr data-hladaj={`${p.meno} ${skrat(p.strany)} ${p.strany} ${p.obvod ?? ''}`.toLowerCase()} data-stav={p.obhajil ? 'ano' : 'nie'}>
+              <td translate="no">{p.meno}</td><td translate="no" title={p.strany}>{skrat(p.strany)}</td>{maObvody && <td>{p.obvod}</td>}
+              <td class="num">{p.hlasy != null ? fmt(p.hlasy) : '–'}</td>
+              {pred && <td>{p.obhajil ? <span class="zs-stitok">obhájil(a)</span> : <span class="zs-stitok zs-novy">nový(-á)</span>}</td>}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="pozn" id="zs-pocet" aria-live="polite"></p>
+    <p class="pozn">Zdroj: Štatistický úrad SR – výsledky komunálnych volieb {teraz.rok}. Uvádzame len meno, stranu, počet hlasov a obvod.
+      {pred && <> „Obhájil(a)“ = rovnaké meno (bez titulov) bolo zvolené aj v roku {pred.rok}.</>}</p>
+  </section>
+
+  <section class="card">
+    <h2>Ako budú hlasovať</h2>
+    <p>Ustanovujúce zasadnutie nového zastupiteľstva býva do konca roka. Hlasovania poslancov {pred ? `z obdobia ${pred.rok}–${teraz.rok}` : 'z doterajšieho obdobia'} nájdete
+      {maSamospravu(m.slug) || m.slug === 'bratislava' ? <> na stránke <a href={m.slug === 'bratislava' ? '/bratislava/volby#hlasovania' : `/${m.slug}/samosprava#hlasovania`}>{m.slug === 'bratislava' ? 'Voľby a hlasovania' : 'Samospráva'}</a></> : ' na webe mesta'};
+      hlasovania nového zastupiteľstva pribudnú, keď ich mesto zverejní.</p>
+  </section>
+</Base>
+
+<script>
+  const q = document.getElementById('zs-q') as HTMLInputElement | null;
+  const stav = document.getElementById('zs-stav') as HTMLSelectElement | null;
+  const pocet = document.getElementById('zs-pocet')!;
+  const riadky = [...document.querySelectorAll<HTMLTableRowElement>('#zs-zoznam tbody tr')];
+  const filtruj = () => {
+    const t = (q?.value ?? '').trim().toLowerCase(), s = stav?.value ?? '';
+    let n = 0;
+    for (const r of riadky) { const ok = (!t || r.dataset.hladaj!.includes(t)) && (!s || r.dataset.stav === s); r.hidden = !ok; if (ok) n++; }
+    pocet.textContent = t || s ? `Zobrazených ${n} z ${riadky.length} poslancov.` : '';
+  };
+  q?.addEventListener('input', filtruj);
+  stav?.addEventListener('change', filtruj);
+</script>
+
+<style>
+  .zs-meno { font-size: 1.35rem !important; line-height: 1.2; }
+  .zs-pas { display: flex; gap: 2px; height: 26px; border-radius: 8px; overflow: hidden; margin: 6px 0 14px; }
+  .zs-pas i { display: block; min-width: 4px; }
+  .zs-tab { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .zs-tab th, .zs-tab td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .zs-tab .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .zs-tab .plus { color: #15803d; font-weight: 700; }
+  .zs-tab .minus { color: var(--accent); font-weight: 700; }
+  :global(:root[data-tema='tmava']) .zs-tab .plus { color: #4ade80; }
+  .zs-bod { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; background: var(--line); }
+  .zs-odisli td { color: var(--muted); }
+  .zs-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .zs-filter input, .zs-filter select { height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); font: inherit; }
+  .zs-filter input { flex: 1 1 220px; }
+  .zs-stitok { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; background: color-mix(in srgb, var(--muted) 15%, transparent); white-space: nowrap; }
+  .zs-novy { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+  .tabulka-obal { overflow-x: auto; }
+  .upozornenie { border-left: 4px solid var(--accent); }
+  .upozornenie p { margin: 6px 0 0; }
+</style>

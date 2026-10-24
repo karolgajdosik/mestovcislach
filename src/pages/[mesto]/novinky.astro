@@ -1,0 +1,84 @@
+---
+// Čo je nové v meste: zoznam noviniek z dát webu (src/lib/novinky.ts) + RSS (/<mesto>/novinky.xml) a odkaz na upozornenia.
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import { MESTA, type Mesto } from '../../mesta';
+import { novinky, TYPY_NOVINIEK } from '../../lib/novinky';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const vsetky = novinky(m.slug).slice(0, 80);
+const typy = (Object.keys(TYPY_NOVINIEK) as (keyof typeof TYPY_NOVINIEK)[]).filter((t) => vsetky.some((x) => x.typ === t));
+const datum = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' });
+const mesiac = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('sk-SK', { month: 'long', year: 'numeric' });
+const skupiny: [string, typeof vsetky][] = [];
+for (const x of vsetky) { const k = mesiac(x.datum); const s = skupiny.at(-1); if (s && s[0] === k) s[1].push(x); else skupiny.push([k, [x]]); }
+const externy = (u: string) => /^https?:/.test(u);
+---
+<Base title={`Čo je nové – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: nové stavebné zámery, väčšie zmluvy mesta a zasadnutia zastupiteľstva na jednom mieste. Aj ako RSS.`}>
+  <section class="hero">
+    <p class="kicker">Novinky</p>
+    <h1>Čo je nové <span translate="no">{m.v}</span></h1>
+    <p class="lead">Nové stavebné zámery, väčšie zmluvy mesta a zasadnutia zastupiteľstva za posledné pol roka – z otvorených dát, ktoré web priebežne zbiera.</p>
+    <p class="nv-odber">
+      <a class="nv-tl" href={`/${m.slug}/novinky.xml`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19a1 1 0 1 0 0-.01M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/></svg>RSS kanál</a>
+      <a class="nv-tl" href={`/${m.slug}/upozornenia`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>Upozornenia e-mailom</a>
+    </p>
+  </section>
+
+  {typy.length > 1 && (
+    <div class="nv-filter" role="group" aria-label="Zobraziť">
+      <button type="button" aria-pressed="true" data-typ="">Všetko ({vsetky.length})</button>
+      {typy.map((t) => <button type="button" aria-pressed="false" data-typ={t}>{TYPY_NOVINIEK[t]} ({vsetky.filter((x) => x.typ === t).length})</button>)}
+    </div>
+  )}
+
+  {vsetky.length === 0 && <p class="card">Za posledné mesiace sme nenašli nič nové.</p>}
+  {skupiny.map(([nazov, polozky]) => (
+    <section class="nv-mesiac" data-skupina>
+      <h2>{nazov}</h2>
+      <ul class="nv-zoznam">
+        {polozky.map((x) => (
+          <li class={`card nv-${x.typ}`} data-typ={x.typ}>
+            <p class="nv-meta"><span class="nv-typ">{TYPY_NOVINIEK[x.typ]}</span> · <time datetime={x.datum}>{datum(x.datum)}</time></p>
+            <h3><a href={x.odkaz} rel={externy(x.odkaz) ? 'noopener' : undefined}>{x.nazov}</a></h3>
+            {x.text && <p class="nv-text">{x.text}</p>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+  <p class="pozn">Zdroje: Enviroportál (EIA/SEA), Centrálny register zmlúv a portály otvorených dát miest, záznamy hlasovaní zastupiteľstiev, Štatistický úrad SR. Zmluvy s fyzickými osobami neuvádzame.</p>
+</Base>
+
+<script>
+  const tl = [...document.querySelectorAll<HTMLButtonElement>('.nv-filter button')];
+  tl.forEach((b) => b.addEventListener('click', () => {
+    tl.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    const t = b.dataset.typ;
+    document.querySelectorAll<HTMLElement>('.nv-zoznam li').forEach((li) => (li.hidden = !!t && li.dataset.typ !== t));
+    document.querySelectorAll<HTMLElement>('[data-skupina]').forEach((s) => (s.hidden = !s.querySelector('li:not([hidden])')));
+  }));
+</script>
+
+<style>
+  .nv-odber { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0 0; }
+  .nv-tl { display: inline-flex; align-items: center; gap: 6px; height: 38px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+  .nv-tl:hover { border-color: var(--accent); }
+  .nv-tl svg { width: 18px; height: 18px; fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .nv-filter { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 4px; }
+  .nv-filter button { font: inherit; font-size: 0.88rem; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; }
+  .nv-filter button[aria-pressed='true'] { background: var(--text); color: var(--card); border-color: var(--text); }
+  .nv-mesiac h2 { font-size: 1rem; text-transform: capitalize; color: var(--muted); margin: 26px 0 8px; }
+  .nv-zoznam { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .nv-zoznam li { padding: 14px 16px; border-left: 4px solid var(--t, var(--line)); }
+  .nv-stavby { --t: #f59e0b; } .nv-zmluvy { --t: #1f6fd1; } .nv-zastupitelstvo { --t: #7c3aed; } .nv-volby { --t: var(--accent); }
+  .nv-meta { margin: 0 0 4px; font-size: 0.8rem; color: var(--muted); }
+  .nv-typ { font-weight: 700; color: var(--text); }
+  .nv-zoznam h3 { margin: 0; font-size: 1rem; line-height: 1.35; }
+  .nv-zoznam h3 a { color: var(--text); }
+  .nv-text { margin: 6px 0 0; font-size: 0.88rem; color: var(--muted); }
+  .pozn { font-size: 0.82rem; color: var(--muted); margin-top: 20px; }
+</style>

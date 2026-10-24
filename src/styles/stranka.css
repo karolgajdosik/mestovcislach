@@ -1,0 +1,14 @@
+/* Spoločné základy obsahových stránok (hlavička stránky, ukazovatele, karty) pre nové podstránky miest. */
+.hero { padding: 40px 0 20px; }
+.kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
+.hero h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 12px; }
+.lead { color: var(--muted); font-size: 1.1rem; max-width: 42em; margin: 0; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+.kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
+.kpi .value { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; }
+.kpi .delta { margin: 0; font-size: 0.82rem; color: var(--muted); }
+main section.card, main aside.card { margin-top: 16px; }
+main .card h2 { margin: 0 0 10px; font-size: 1.3rem; letter-spacing: -0.01em; }
+main .card h3 { margin: 16px 0 10px; font-size: 1.05rem; }
+.tabulka-obal { overflow-x: auto; }
+@media (max-width: 600px) { .hero { padding: 24px 0 12px; } .kpi .value { font-size: 1.7rem; } }

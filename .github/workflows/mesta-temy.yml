@@ -52,6 +52,14 @@ jobs:
         if: success() || failure()
         run: python scripts/zber_mhd_presov.py
 
+      - name: Časti miest (OSM) pre „Ktorá štvrť je pre mňa“
+        if: success() || failure()
+        run: python scripts/zber_casti_osm.py
+
+      - name: Školy v mestách (Digitálna mapa škôl, naplnenosť SŠ)
+        if: success() || failure()
+        run: python scripts/zber_skoly_mesta.py
+
       - name: Firmy miest (vlastníctvo z RPO, závierky z RÚZ)
         if: success() || failure()
         timeout-minutes: 45

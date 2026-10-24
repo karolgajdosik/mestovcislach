@@ -1,0 +1,139 @@
+---
+// Školy v meste: materské, základné, stredné, špeciálne a umelecké školy z Digitálnej mapy škôl (MŠVVaM SR)
+// a záujem o stredné školy z prijímacieho konania. Údaje o školách ako inštitúciách – žiadne osobné údaje.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import { MESTA, type Mesto } from '../../mesta';
+
+const p = path.join(process.cwd(), 'data', 'mesta', 'skoly.json');
+const D = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+export function getStaticPaths() {
+  const p = path.join(process.cwd(), 'data', 'mesta', 'skoly.json');
+  const D = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+  return MESTA.filter((m) => m.aktivne && D?.mesta?.[m.slug]?.skoly?.length).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const { suhrn, skoly } = D.mesta[m.slug] as { suhrn: Record<string, any>; skoly: any[] };
+const TYPY: Record<string, string> = D.typy;
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const des = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
+const ss = skoly.filter((x) => x.t === 'ss' && x.z1 != null);
+const z1 = ss.reduce((a, x) => a + (x.z1 ?? 0), 0);
+// plán prijatia školy často nevypĺňajú – poradie podľa počtu prihlášok s 1. voľbou
+const zaujem = ss.slice().sort((a, b) => b.z1 - a.z1).slice(0, 12);
+const maMC = skoly.some((x) => x.mc);
+const rzZS = (() => { const v = skoly.filter((x) => x.t === 'zs' && x.rz).map((x) => x.rz).sort((a, b) => a - b); return v.length ? v[Math.floor(v.length / 2)] : null; })();
+---
+<Base title={`Školy – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: všetky materské, základné a stredné školy – počet žiakov, žiakov na učiteľa, rozpočet na žiaka a o ktoré stredné školy je najväčší záujem.`}>
+  <section class="hero">
+    <p class="kicker">Život v meste</p>
+    <h1>Školy <span translate="no">{m.v}</span></h1>
+    <p class="lead">{fmt(skoly.length)} škôl a škôlok v meste: koľko majú žiakov, koľko žiakov pripadá na učiteľa, aký majú rozpočet
+      a o ktoré stredné školy sa uchádzači hlásia najviac.</p>
+  </section>
+
+  <section class="kpis">
+    <div class="card kpi"><p class="label">Základné školy</p><p class="value">{suhrn.zs.skol}</p><p class="delta">{fmt(suhrn.zs.ziakov)} žiakov{suhrn.zs.ziakov_na_ucitela ? ` · ${des(suhrn.zs.ziakov_na_ucitela)} na učiteľa` : ''}</p></div>
+    <div class="card kpi"><p class="label">Materské školy</p><p class="value">{suhrn.ms.skol}</p><p class="delta">{fmt(suhrn.ms.ziakov)} detí</p></div>
+    <div class="card kpi"><p class="label">Stredné školy</p><p class="value">{suhrn.ss.skol}</p><p class="delta">{fmt(suhrn.ss.ziakov)} žiakov{suhrn.ss.ziakov_na_ucitela ? ` · ${des(suhrn.ss.ziakov_na_ucitela)} na učiteľa` : ''}</p></div>
+    {z1 > 0 && <div class="card kpi"><p class="label">Prihlášky na SŠ v meste</p><p class="value">{fmt(z1)}</p><p class="delta">uchádzačov si dalo školu v meste ako 1. voľbu</p></div>}
+  </section>
+
+  {zaujem.length > 0 && (
+    <section class="card">
+      <h2>O ktoré stredné školy je najväčší záujem</h2>
+      <p class="pozn">Počet uchádzačov, ktorí školu uviedli v prihláške ako 1. voľbu (posledné prijímacie konanie). Väčšie školy s viacerými odbormi majú prirodzene viac prihlášok.</p>
+      <ol class="sk-zaujem">
+        {zaujem.map((x) => (
+          <li><span><strong>{x.n}</strong>{x.mc && <small> · {x.mc}</small>}<small> · {x.odb} {x.odb === 1 ? 'odbor' : x.odb < 5 ? 'odbory' : 'odborov'} · s 2. voľbou {fmt(x.z12)}</small></span>
+            <b>{fmt(x.z1)}</b><i style={`--w:${Math.min(100, (100 * x.z1) / zaujem[0].z1).toFixed(1)}%`} aria-hidden="true"></i></li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  <section class="card">
+    <h2>Všetky školy</h2>
+    <div class="sk-filter" role="group" aria-label="Filter škôl">
+      <input type="search" id="sk-q" placeholder={maMC ? 'Hľadať školu, ulicu alebo mestskú časť' : 'Hľadať školu alebo ulicu'} aria-label="Hľadať školu" />
+      <select id="sk-typ" aria-label="Typ školy">
+        <option value="">Všetky typy</option>
+        {Object.entries(TYPY).filter(([t]) => suhrn[t]?.skol).map(([t, n]) => <option value={t} selected={t === 'zs'}>{n} ({suhrn[t].skol})</option>)}
+      </select>
+      <select id="sk-tried" aria-label="Zoradiť">
+        <option value="n">Zoradiť podľa názvu</option><option value="z">Najviac žiakov</option><option value="uc">Najmenej žiakov na učiteľa</option><option value="rz">Najvyšší rozpočet na žiaka</option><option value="z1">Najviac prihlášok (SŠ)</option>
+      </select>
+    </div>
+    <div class="tabulka-obal">
+      <table class="sk-tab" id="sk-tab">
+        <thead><tr><th>Škola</th>{maMC && <th>Mestská časť</th>}<th class="num">Žiaci</th><th class="num">Na učiteľa</th><th class="num">Rozpočet na žiaka</th><th class="num">Prihlášky (1. voľba)</th></tr></thead>
+        <tbody>
+          {skoly.map((x) => (
+            <tr data-t={x.t} data-n={x.n.toLowerCase()} data-h={`${x.n} ${x.a ?? ''} ${x.mc ?? ''}`.toLowerCase()} data-z={x.z ?? 0} data-uc={x.uc ?? ''} data-rz={x.rz ?? ''} data-z1={x.z1 ?? ''} hidden={x.t !== 'zs'}>
+              <td><strong>{x.w ? <a href={x.w} rel="noopener nofollow">{x.n}</a> : x.n}</strong><small>{TYPY[x.t]}{x.a ? ` · ${x.a}` : ''}{x.jaz ? ` · ${x.jaz}` : ''}</small></td>
+              {maMC && <td>{x.mc ?? ''}</td>}
+              <td class="num">{x.z ? fmt(x.z) : '–'}</td>
+              <td class="num">{x.uc ? des(x.uc) : '–'}</td>
+              <td class="num">{x.rz ? `${fmt(x.rz)} €` : '–'}</td>
+              <td class="num">{x.z1 != null ? fmt(x.z1) : '–'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="pozn" id="sk-pocet" aria-live="polite"></p>
+    <p class="pozn">„Na učiteľa“ = žiaci na jedného pedagogického zamestnanca (len ZŠ a SŠ). „Rozpočet na žiaka“ = rozpočet školy v roku {D.rok_rozpoctu} delený počtom žiakov{rzZS ? ` – pri základných školách je medián ${fmt(rzZS)} €` : ''}; malé a špecializované školy ho majú prirodzene vyšší.</p>
+  </section>
+
+  <section class="card">
+    <h2>Prečo tu nie sú výsledky testov</h2>
+    <p>Výsledky Testovania 9 a maturít po jednotlivých školách ministerstvo nezverejňuje ako otvorené dáta – školy ich často uvádzajú vo svojich výročných správach.
+      Keď ich štát zverejní, doplníme ich sem.</p>
+    <p class="pozn">Zdroje: <a href={D.zdroj.url}>{D.zdroj.nazov}</a>, <a href={D.zdroj_zaujem.url}>{D.zdroj_zaujem.nazov}</a> (otvorené dáta, data.slovensko.sk).
+      Elokované pracoviská sú započítané pod svojou školou.</p>
+  </section>
+</Base>
+
+<script>
+  const tab = document.getElementById('sk-tab')!;
+  const tbody = tab.querySelector('tbody')!;
+  const q = document.getElementById('sk-q') as HTMLInputElement, typ = document.getElementById('sk-typ') as HTMLSelectElement, tried = document.getElementById('sk-tried') as HTMLSelectElement;
+  const pocet = document.getElementById('sk-pocet')!;
+  const riadky = [...tbody.querySelectorAll<HTMLTableRowElement>('tr')];
+  const obnov = () => {
+    const t = q.value.trim().toLowerCase(), ty = typ.value, k = tried.value;
+    let n = 0;
+    for (const r of riadky) { const ok = (!ty || r.dataset.t === ty) && (!t || r.dataset.h!.includes(t)); r.hidden = !ok; if (ok) n++; }
+    const hod = (r: HTMLTableRowElement) => (r.dataset[k] === '' ? null : Number(r.dataset[k]));
+    const zor = riadky.slice().sort((a, b) => {
+      if (k === 'n') return a.dataset.n!.localeCompare(b.dataset.n!, 'sk');
+      const x = hod(a), y = hod(b);
+      if (x == null || y == null) return x == null ? (y == null ? 0 : 1) : -1;
+      return k === 'uc' ? x - y : y - x;
+    });
+    tbody.append(...zor);
+    pocet.textContent = `Zobrazených ${n} škôl.`;
+  };
+  [q, typ, tried].forEach((e) => e.addEventListener(e === q ? 'input' : 'change', obnov));
+  obnov();
+</script>
+
+<style>
+  .sk-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .sk-filter input, .sk-filter select { height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); font: inherit; }
+  .sk-filter input { flex: 1 1 220px; }
+  .sk-tab { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .sk-tab th, .sk-tab td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .sk-tab td small { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
+  .sk-tab .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .sk-zaujem { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .sk-zaujem li { position: relative; display: flex; justify-content: space-between; gap: 12px; padding: 8px 10px; border-radius: 8px; overflow: hidden; }
+  .sk-zaujem li > :not(i) { position: relative; z-index: 1; }
+  .sk-zaujem i { position: absolute; inset: 0 auto 0 0; width: var(--w); background: color-mix(in srgb, var(--accent) 11%, transparent); z-index: 0; }
+  .sk-zaujem small { color: var(--muted); }
+  .sk-zaujem b { white-space: nowrap; }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+  .tabulka-obal { overflow-x: auto; }
+</style>
