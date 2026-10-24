@@ -24,7 +24,8 @@
   "zilina": 25,
   "banska-bystrica": 26,
   "presov": 27,
-  "kosice": 28
+  "kosice": 28,
+  "dodavatel": 29
  },
  "nazvy": {
   "bratislava": "Bratislava",
@@ -51,7 +52,8 @@
   "zilina": "Žilina",
   "banska-bystrica": "Banská Bystrica",
   "presov": "Prešov",
-  "kosice": "Košice"
+  "kosice": "Košice",
+  "dodavatel": "Sledovanie dodávateľov"
  },
  "sablona": 1
 }
