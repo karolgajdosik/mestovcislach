@@ -238,11 +238,22 @@ def nove_zmluvy(od_id: int) -> tuple[list[dict], int]:
     return out, naj
 
 
+def nove_zmluvy_ine(od: str) -> tuple[list[dict], str]:
+    """Bratislava a Košice (data/zmluvy-ine): zmluvy so zverejnením/podpisom po dátume od; vráti aj najnovší dátum."""
+    out, naj = [], od
+    for f in sorted((DATA / "zmluvy-ine").glob("*.json")):
+        for z in json.loads(f.read_text(encoding="utf-8")).get("zmluvy", []):
+            naj = max(naj, z["d"])
+            if z["d"] > od and z.get("ico") and z.get("p"):
+                out.append(z)
+    return out, naj
+
+
 def email_dodavatel(zmluvy: list[dict], odhlasit: str) -> str:
     h = html.escape
     eur = lambda n: f"{round(n or 0):,} €".replace(",", " ")  # noqa: E731
     riadky = "".join(
-        f'<div style="border-top:1px solid #e2e2de;padding:10px 0"><a href="https://www.crz.gov.sk/zmluva/{h(z["id"])}/" style="color:#1d1d1f;font-weight:700;text-decoration:none">{h(z["p"])}</a>'
+        f'<div style="border-top:1px solid #e2e2de;padding:10px 0"><a href="{h(z.get("url") or f"https://www.crz.gov.sk/zmluva/{z['id']}/")}" style="color:#1d1d1f;font-weight:700;text-decoration:none">{h(z["p"])}</a>'
         f'<p style="margin:4px 0 0;color:#5f6368;font-size:14px;line-height:1.5">{h(NAZVY_MIEST.get(z["m"], z["m"]))} · {h(z["d"])} · {eur(z["s"]) if z["s"] else "suma neuvedená"}<br>{h((z.get("pr") or "")[:250])}</p></div>'
         for z in zmluvy[:30])
     return f"""<!doctype html><html lang="sk"><body style="margin:0;background:#f6f6f4;font-family:Arial,Helvetica,sans-serif;color:#1d1d1f">
@@ -250,7 +261,7 @@ def email_dodavatel(zmluvy: list[dict], odhlasit: str) -> str:
 <p style="font-size:20px;font-weight:800;margin:0 0 16px">mesto<span style="color:#c8102e">v</span>číslach.sk</p>
 <div style="background:#fff;border:1px solid #e2e2de;border-radius:12px;padding:20px">
 <h1 style="font-size:21px;margin:0 0 4px">Nové zmluvy sledovaných firiem</h1>
-<p style="color:#5f6368;margin:0 0 8px">{len(zmluvy)} {'nová zmluva' if len(zmluvy) == 1 else 'nové zmluvy' if len(zmluvy) < 5 else 'nových zmlúv'} s mestami (Centrálny register zmlúv)</p>
+<p style="color:#5f6368;margin:0 0 8px">{len(zmluvy)} {'nová zmluva' if len(zmluvy) == 1 else 'nové zmluvy' if len(zmluvy) < 5 else 'nových zmlúv'} s mestami (Centrálny register zmlúv, otvorené dáta Bratislavy a Košíc)</p>
 {riadky}
 <p style="margin:22px 0 0"><a href="{WEB}/dodavatelia" style="color:#c8102e;font-weight:700">Sledovať ďalšiu firmu</a></p>
 </div>
@@ -261,7 +272,14 @@ def email_dodavatel(zmluvy: list[dict], odhlasit: str) -> str:
 
 def dodavatelia(b: Brevo, lid: int, odberatelov: int, stav: dict) -> int:
     od_id = int(stav.get("dodavatel_posledne_id", 0) or 0)
+    od_den = stav.get("dodavatel_posledny_den_ine", "")
     zmluvy, naj = nove_zmluvy(od_id)
+    ine, naj_den = nove_zmluvy_ine(od_den or "9999")
+    if od_den:
+        zmluvy += ine
+    else:  # prvý beh pre BA/KE: len zapamätať najnovší dátum
+        _, naj_den = nove_zmluvy_ine("")
+    stav["dodavatel_posledny_den_ine"] = naj_den
     if not od_id:  # prvý beh: len zapamätať, kde sme, nič neposielať
         stav["dodavatel_posledne_id"] = str(naj)
         return 0

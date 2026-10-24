@@ -11,6 +11,7 @@ import { MESTA } from '../mesta';
 
 const zapnute = fs.existsSync(path.join(process.cwd(), 'public', 'data', 'odber-brevo.json'));
 const pocet = dodavatelia().size;
+const ine = ['bratislava', 'kosice'].filter((s) => fs.existsSync(path.join(process.cwd(), 'data', 'zmluvy-ine', `${s}.json`)));
 const mesta = Object.fromEntries(MESTA.map((m) => [m.slug, m.nazov]));
 ---
 <Base title="Sledovať dodávateľa miest – zmluvy firiem s mestami – mestovcislach.sk" description={`Nájdite firmu podľa názvu alebo IČO a pozrite si jej zmluvy s mestami ${mestaCrz().join(', ')}. Pri novej zmluve vám pošleme e-mail.`}>
@@ -25,7 +26,7 @@ const mesta = Object.fromEntries(MESTA.map((m) => [m.slug, m.nazov]));
       <label for="dd-q" class="dd-label">Názov firmy alebo IČO</label>
       <input id="dd-q" type="search" autocomplete="off" placeholder="napr. Technické služby alebo 36123456" aria-controls="dd-navrhy" />
       <ul class="dd-navrhy" id="dd-navrhy" aria-label="Nájdené firmy"></ul>
-      <p class="pozn">{pocet.toLocaleString('sk-SK')} firiem a organizácií so zmluvami s mestami {mestaCrz().join(', ')} od roku 2022 (Centrálny register zmlúv). Bratislava a Košice zverejňujú zmluvy vo vlastných systémoch – pribudnú neskôr.</p>
+      <p class="pozn">{pocet.toLocaleString('sk-SK')} firiem a organizácií so zmluvami s mestami {mestaCrz().join(', ')} od roku 2022 (Centrálny register zmlúv){ine.length ? `; ${ine.map((s) => s === 'bratislava' ? 'Bratislava – zmluvy magistrátu (data.bratislava.sk, CC BY-NC 4.0)' : 'Košice – portál otvorených dát mesta').join(', ')} za posledné 3 roky` : ''}.{ine.length < 2 ? ' Bratislava a Košice zverejňujú zmluvy vo vlastných systémoch – pribudnú pri najbližšom zbere.' : ''}</p>
     </section>
 
     <section class="card dd-detail" id="dd-detail" hidden aria-live="polite"></section>
@@ -79,7 +80,7 @@ const mesta = Object.fromEntries(MESTA.map((m) => [m.slug, m.nazov]));
         <ul class="dd-kpi"><li><b>${d.pocet}</b><span>zmlúv od 2022</span></li><li><b>${eur(d.suma)}</b><span>spolu</span></li><li><b>${datum(d.posledna)}</b><span>posledná zmluva</span></li></ul>
         <p>${Object.entries(d.mesta).sort((a: any, b: any) => b[1] - a[1]).map(([m, n]) => `${hx(MESTA[m] ?? m)}: ${n}`).join(' · ')}</p>
         <div class="tabulka-obal"><table class="dd-tab"><caption class="sr">Posledné zmluvy</caption><thead><tr><th scope="col">Dátum</th><th scope="col">Mesto</th><th scope="col">Predmet</th><th scope="col" class="c">Suma</th></tr></thead>
-        <tbody>${d.zmluvy.map((z: any) => `<tr><td>${datum(z.d)}</td><td>${hx(MESTA[z.m] ?? z.m)}</td><td><a href="https://www.crz.gov.sk/zmluva/${hx(z.id)}/" rel="noopener">${hx(z.pr || 'zmluva')}</a></td><td class="c">${z.s ? eur(z.s) : '–'}</td></tr>`).join('')}</tbody></table></div>
+        <tbody>${d.zmluvy.map((z: any) => `<tr><td>${datum(z.d)}</td><td>${hx(MESTA[z.m] ?? z.m)}</td><td>${z.url ? `<a href="${hx(z.url)}" rel="noopener">` : '<span>'}${hx(z.pr || 'zmluva')}${z.url ? '</a>' : '</span>'}</td><td class="c">${z.s ? eur(z.s) : '–'}</td></tr>`).join('')}</tbody></table></div>
         ${d.pocet > d.zmluvy.length ? `<p class="pozn">Zobrazených posledných ${d.zmluvy.length} zmlúv.</p>` : ''}`;
       const o = document.getElementById('dd-odber');
       if (o) { o.hidden = false; o.querySelector('h2')!.textContent = `Posielať mi nové zmluvy: ${d.nazov}`; }
