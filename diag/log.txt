@@ -1,13 +1,9 @@
-rc 1
-
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_mesta.py", line 28, in <module>
-    from spolocne import DATA, KOREN, s, spusti, zapis_ak_zmena
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 19, in <module>
-    from shapely.geometry import Point, shape
-ModuleNotFoundError: No module named 'shapely'
+rc 0
+::warning title=Mestá – scitanie::404 Client Error: Not Found for url: https://volby.test-env.sk/public/api/dc/opendata/cube/dataset/om7803rr/download?type=CSV&lang=SK
+::warning title=Mestá – volby::404 Client Error: Not Found for url: https://volby.statistics.sk/opendata/nrsr/2023/NRSR2023_SK_tab02d.csv
 
 kosice 0 častí; []
  obyv. názvy: ['Barca', 'Dargovských hrdinov', 'Džungľa', 'Juh', 'Kavečany', 'Košická Nová Ves', 'Krásna', 'Lorinčík', 'Luník IX', 'Myslava', 'Nad jazerom', 'Pereš', 'Poľov', 'Sever', 'Staré Mesto', 'Sídlisko KVP', 'Sídlisko Ťahanovce', 'Vyšné Opátske', 'Západ', 'Šaca', 'Šebastovce', 'Ťahanovce']
 bratislava 0 častí; []
  obyv. názvy: ['Devín', 'Devínska Nová Ves', 'Dúbravka', 'Jarovce', 'Karlova Ves', 'Lamač', 'Nové Mesto', 'Petržalka', 'Podunajské Biskupice', 'Rača', 'Rusovce', 'Ružinov', 'Staré Mesto', 'Vajnory', 'Vrakuňa', 'Záhorská Bystrica', 'Čunovo']
+HOTOVO
