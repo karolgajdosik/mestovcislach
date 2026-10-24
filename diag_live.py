@@ -1,9 +1,13 @@
-import subprocess, sys, os, shutil, json
-subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
-r = subprocess.run([sys.executable, "scripts/zber_odchody.py"], capture_output=True, text=True, timeout=1500)
-print("rc", r.returncode); print(r.stdout[-3000:]); print(r.stderr[-2000:])
-os.makedirs("diag/odchody", exist_ok=True)
-for f in os.listdir("data/odchody"):
-    shutil.copy(f"data/odchody/{f}", f"diag/odchody/{f}")
-    print(f, os.path.getsize(f"data/odchody/{f}"))
+import requests, time, shutil
+shutil.rmtree("diag/ke", ignore_errors=True); shutil.rmtree("diag/odchody", ignore_errors=True)
+H={"User-Agent":"Mozilla/5.0 (mestovcislach diag)"}
+for i in range(30):
+    r=requests.get("https://mestovcislach.sk/presov/odchody/",headers=H,timeout=30)
+    if r.status_code==200: break
+    time.sleep(30)
+print("presov/odchody", r.status_code)
+for u in ["/bratislava/odchody/","/data/odchody/bratislava.json","/data/odchody/bratislava/hodzovo-nam.json","/data/odchody/presov/trojica.json","/og/odchody-bratislava.png"]:
+    r=requests.get("https://mestovcislach.sk"+u,headers=H,timeout=30); print(u, r.status_code, len(r.content))
+h=requests.get("https://mestovcislach.sk/data/hladanie.json",headers=H,timeout=30).text
+print("hľadanie zastávok:", h.count("Zastávky MHD"))
 print("HOTOVO")
