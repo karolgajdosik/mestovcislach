@@ -1,25 +1,10 @@
   Bratislava 2026: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
   Košice 2026: primátor v 21 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}
   komunálne 2026: 8 miest
-bratislava primátor zhoda: True | účasť {'zapisani': 407992, 'volili': 150477, 'ucast_pct': 36.88} {'zapisani': 407992, 'volili': 150477, 'ucast_pct': 36.88} | poslancov 45 45 | mená poslancov zhoda: True | mandáty zhoda: False | MČ 17 17 | spracovanie {'okrsky': 394, 'spolu': 394, 'pct': 100.0, 'priebezne': False}
-trnava primátor zhoda: True | účasť {'zapisani': 52921, 'volili': 22161, 'ucast_pct': 41.88} {'zapisani': 52921, 'volili': 22161, 'ucast_pct': 41.88} | poslancov 31 31 | mená poslancov zhoda: True | mandáty zhoda: True | MČ 0 0 | spracovanie {'okrsky': 46, 'spolu': 46, 'pct': 100.0, 'priebezne': False}
-nitra primátor zhoda: True | účasť {'zapisani': 66697, 'volili': 26953, 'ucast_pct': 40.41} {'zapisani': 66697, 'volili': 26953, 'ucast_pct': 40.41} | poslancov 31 31 | mená poslancov zhoda: True | mandáty zhoda: True | MČ 0 0 | spracovanie {'okrsky': 71, 'spolu': 71, 'pct': 100.0, 'priebezne': False}
-trencin primátor zhoda: True | účasť {'zapisani': 46201, 'volili': 17096, 'ucast_pct': 37.0} {'zapisani': 46201, 'volili': 17096, 'ucast_pct': 37.0} | poslancov 25 25 | mená poslancov zhoda: True | mandáty zhoda: True | MČ 0 0 | spracovanie {'okrsky': 51, 'spolu': 51, 'pct': 100.0, 'priebezne': False}
-zilina primátor zhoda: True | účasť {'zapisani': 69091, 'volili': 26369, 'ucast_pct': 38.17} {'zapisani': 69091, 'volili': 26369, 'ucast_pct': 38.17} | poslancov 31 31 | mená poslancov zhoda: True | mandáty zhoda: True | MČ 0 0 | spracovanie {'okrsky': 79, 'spolu': 79, 'pct': 100.0, 'priebezne': False}
-banska-bystrica primátor zhoda: True | účasť {'zapisani': 63163, 'volili': 25135, 'ucast_pct': 39.79} {'zapisani': 63163, 'volili': 25135, 'ucast_pct': 39.79} | poslancov 31 31 | mená poslancov zhoda: True | mandáty zhoda: True | MČ 0 0 | spracovanie {'okrsky': 77, 'spolu': 77, 'pct': 100.0, 'priebezne': False}
-presov primátor zhoda: True | účasť {'zapisani': 70029, 'volili': 29878, 'ucast_pct': 42.67} {'zapisani': 70029, 'volili': 29878, 'ucast_pct': 42.67} | poslancov 31 31 | mená poslancov zhoda: True | mandáty zhoda: False | MČ 0 0 | spracovanie {'okrsky': 66, 'spolu': 66, 'pct': 100.0, 'priebezne': False}
-kosice primátor zhoda: True | účasť {'zapisani': 194674, 'volili': 60152, 'ucast_pct': 30.9} {'zapisani': 194674, 'volili': 60152, 'ucast_pct': 30.9} | poslancov 41 41 | mená poslancov zhoda: True | mandáty zhoda: False | MČ 21 21 | spracovanie {'okrsky': 198, 'spolu': 198, 'pct': 100.0, 'priebezne': False}
-Komunálne a krajské voľby 2022:
-  https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip: HTTP 404
-  https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip: HTTP 404
-  primátor: 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
-  predseda BSK: 63.61 %, poslanci za BA 35
-  stav: vysledky
-Komunálne a krajské voľby 2026:
-  https://volbysr.sk/osk/files/OSK2026_SK_csv.zip: HTTP 404
-  primátor: 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
-  stav: vysledky
-Uložené.
- 
-BA stav vysledky | primátor zhoda True | MsZ 45 45 | obvody zhoda True | starostovia 17 | MČ 17
+bratislava len XLSX: {'SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny': 1}
+bratislava len CSV: {'SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.': 1}
+presov len XLSX: {'HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny': 4}
+presov len CSV: {'HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.': 4}
+kosice len XLSX: {'Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny, Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA': 8}
+kosice len CSV: {'Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA': 8}
 HOTOVO
