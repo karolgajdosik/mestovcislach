@@ -330,29 +330,49 @@ def primator_po_mc(t: dict[str, list[dict]], mesto: str, predpona: str, strany: 
     for k3, kand in nejasne.items():
         v_obvode = [m for kk, m in na_mc.items() if kk[0] == k3[0] and m in kand]
         na_mc[k3] = max(sorted(kand), key=v_obvode.count) if v_obvode else sorted(kand)[0]
-    # hlasy primátora po okrskoch: riadky jedného okrsku idú za sebou, nový blok s rovnakým kľúčom = ďalší výskyt
+    # hlasy primátora po okrskoch. Pri opakovanom čísle okrsku (Košice) sú riadky v tab05 zoradené podľa kandidáta –
+    # i-ty riadok toho istého kandidáta s tým istým kľúčom patrí i-temu okrsku s týmto kľúčom. Poradie okrskov potom
+    # overíme súčtom platných hlasov pre starostu (P_HL_STA) a pri nezhode okrsky priradíme podľa súčtu.
     hlasy: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
     v_okrsku: dict[tuple, float] = defaultdict(float)
-    vyskyt = defaultdict(int)
-    predch = None
-    videne_pc: set[str] = set()
+    po_okrsku: dict[tuple, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    poradie_kand: dict[tuple, int] = defaultdict(int)
     for r in t.get("tab05", []):
         if kod(r["OBEC"]) != mesto:
-            predch = None
             continue
         k = (kod(r.get("VOOBEC", "")), kod(r["OKRSOK"]))
         pc_ = kod(r["PC_HL"])
-        # nový okrsok: zmena kľúča, alebo ten istý kľúč a kandidát sa opakuje (dva okrsky s rovnakým číslom v jednom bloku)
-        if k != predch or pc_ in videne_pc:
-            vyskyt[k] += 1
-            predch = k
-            videne_pc = set()
-        videne_pc.add(pc_)
-        k3 = (*k, vyskyt[k] - 1)
+        i = poradie_kand[(*k, pc_)]
+        poradie_kand[(*k, pc_)] += 1
+        po_okrsku[(*k, i)][pc_] += cislo(r["P_HL"])
+    platne = {k3: int(cislo(r.get("P_HL_STA", ""))) for k3, r in okrsky.items() if r.get("P_HL_STA") not in (None, "")}
+    if platne:
+        for k in {k3[:2] for k3 in po_okrsku}:
+            bloky = sorted(k3 for k3 in po_okrsku if k3[:2] == k)
+            ciele = sorted(k3 for k3 in okrsky if k3[:2] == k)
+            if len(bloky) < 2 or len(bloky) != len(ciele):
+                continue
+            sumy = {b: round(sum(po_okrsku[b].values())) for b in bloky}
+            if all(sumy[b] == platne.get(c) for b, c in zip(bloky, ciele)):
+                continue
+            # poradie nesedí – priradiť blok okrsku s rovnakým počtom platných hlasov
+            volne, nove = list(ciele), {}
+            for b in bloky:
+                c = next((c for c in volne if platne.get(c) == sumy[b]), None)
+                if c is None:
+                    nove = {}
+                    break
+                volne.remove(c)
+                nove[c] = po_okrsku[b]
+            if nove:
+                for c, v in nove.items():
+                    po_okrsku[c] = v
+    for k3, v in po_okrsku.items():
+        v_okrsku[k3] = sum(v.values())
         m = na_mc.get(k3)
-        v_okrsku[k3] += cislo(r["P_HL"])
         if m:
-            hlasy[m][kod(r["PC_HL"])] += cislo(r["P_HL"])
+            for pc_, n in v.items():
+                hlasy[m][pc_] += n
     kand_prim = {kod(r["PC_HL"]): r for r in t.get("tab0a", []) if kod(r["OBEC"]) == mesto}
     vysl = []
     for m, nazov in mc.items():
