@@ -137,7 +137,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
       <nav class="mesta-pas" aria-label="Mestá">
         <div class="mp-obsah">
           {MESTA.filter((x) => x.aktivne).map((x) => (
-            <a href={`/${x.slug}`} aria-current={!spolocna && x.slug === mesto.slug ? 'true' : undefined} translate="no">{x.nazov}</a>
+            <a href={`/${x.slug}`} aria-current={!spolocna && x.slug === mesto.slug ? 'true' : undefined} translate="no">{x.nazov.includes(' ') ? <><span class="mp-dlhe">{x.nazov}</span><span class="mp-kratke" aria-hidden="true">{x.nazov.replace(/^(\S)\S*\s/, '$1. ')}</span></> : x.nazov}</a>
           ))}
           <span class="mp-oddel" aria-hidden="true"></span>
           <a href="/porovnanie" aria-current={Astro.url.pathname.startsWith('/porovnanie') ? 'page' : undefined}>Porovnanie miest</a>
@@ -458,8 +458,23 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
   /* ---------- Mobil a tablet: dolná lišta a celoobrazovkové menu ---------- */
   .dolna-lista, .menu-plne:not([open]) { display: none; }
   @media (max-width: 1099px) {
-    :root { --vyska-hlavicky: 124px; } /* hlavička 60 px + dolná lišta 64 px – pre výšku máp a posun pri skoku na sekciu */
+    :root { --vyska-hlavicky: 200px; } /* hlavička 60 px + mestá 76 px + dolná lišta 64 px – pre výšku máp */
+    html { scroll-padding-top: 146px; }
     .top .menu { display: none; }
+    /* všetkých 8 miest stále na očiach: mriežka 4 × 2 pod logom */
+    .top .mesta-pas { display: block; border-top: 1px solid var(--line); background: var(--card); }
+    .mp-obsah { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 6px 12px 8px; max-width: 760px; margin: 0 auto; }
+    .mesta-pas a { display: flex; align-items: center; justify-content: center; height: 30px; padding: 0 4px; border-radius: 15px; text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.82rem; white-space: nowrap; overflow: hidden; background: var(--bg); border: 1px solid var(--line); }
+    .mesta-pas a[aria-current] { background: var(--text); color: var(--card); border-color: var(--text); }
+    .mesta-pas .mp-oddel, .mesta-pas a[href='/porovnanie'] { display: none; }
+  }
+  .mp-kratke { display: none; }
+  @media (max-width: 599px) {
+    .mesta-pas a { position: relative; }
+    .mp-kratke { display: inline; }
+    .mp-dlhe { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  }
+  @media (max-width: 1099px) {
     body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
     .dolna-lista {
       display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1150; height: calc(64px + env(safe-area-inset-bottom));
