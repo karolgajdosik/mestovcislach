@@ -1,8 +1,8 @@
-rc 0
-  bratislava: 586 zastávok, 90 liniek, 8 služieb, 673661 odchodov, platnosť 2026-10-31–2026-12-31
-  presov: 260 zastávok, 55 liniek, 8 služieb, 153518 odchodov, platnosť 2026-09-01–2026-10-31
-
-
-presov.json 752811
-bratislava.json 2130405
+presov/odchody 200
+/bratislava/odchody/ 200 34676
+/data/odchody/bratislava.json 200 53724
+/data/odchody/bratislava/hodzovo-nam.json 200 15635
+/data/odchody/presov/trojica.json 200 28174
+/og/odchody-bratislava.png 200 50793
+hľadanie zastávok: 846
 HOTOVO
