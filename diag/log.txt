@@ -1,10 +1,4 @@
-  Bratislava 2026: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
-  Košice 2026: primátor v 21 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}
-  komunálne 2026: 8 miest
-bratislava len XLSX: {}
-bratislava len CSV: {}
-presov len XLSX: {}
-presov len CSV: {}
-kosice len XLSX: {}
-kosice len CSV: {}
+22569
+[('0', 'Všetky'), ('297313', '2022 - 2026'), ('212569', '2018 - 2022'), ('143961', '2014 - 2018'), ('193118', '2010 - 2014'), ('193117', '2006 - 2010'), ('193116', '2002 - 2006'), ('193115', '1998 - 2002'), ('197918', '1994 - 1998'), ('197919', '1990 - 1994')]
+['        <select class="form-control fld widthx" name="volObd"onchange="var h=this.value; var z=\'\'; var f=\'volObd\'; var p=h.substr(0,1); if (', 'li><li><a href="https://zastupitelstvo.bratislava.sk/zasadnutia/?organTab=1&amp;volObd=297313">Mestská rada</a></li><li><a href="https://zastupitelstvo.bratislava.sk/', 'zasadnutia/?organTab=2&amp;volObd=297313">Komisie</a></li>\r', 'a class="page-link" href="https://zastupitelstvo.bratislava.sk/zasadnutia/?&amp;volObd=297313&amp;page=1" aria-label="Stránka 2">2</a></li><li class="page-item"><a cl', 'k page-link---next" href="https://zastupitelstvo.bratislava.sk/zasadnutia/?&amp;volObd=297313&amp;page=1" aria-label="Nasledujuca-strana"><span aria-hidden="true">&ra']
 HOTOVO
