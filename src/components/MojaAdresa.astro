@@ -164,7 +164,7 @@ const { mesto } = Astro.props as { mesto: { slug: string; nazov: string; v?: str
   .ad-vyber p { margin: 0 6px 0 0; font-size: 0.9rem; color: var(--muted); }
   .ad-vyber button { border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 0.85rem; cursor: pointer; }
   .ad-vyber button:hover { border-color: var(--accent); }
-  .ad-vysledok :global(.ad-miesto) { font-size: 1.15rem; margin: 18px 0 10px; scroll-margin-top: calc(var(--vyska-hlavicky) + 16px); }
+  .ad-vysledok :global(.ad-miesto) { font-size: 1.15rem; margin: 18px 0 10px; scroll-margin-top: var(--skok-okraj, calc(var(--vyska-hlavicky) + 16px)); }
   .ad-vysledok :global(.ad-upoz) { color: var(--accent); }
   .ad-vysledok :global(.ad-mriezka) { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; margin-bottom: 12px; }
   .ad-vysledok :global(.ad-karta) { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }

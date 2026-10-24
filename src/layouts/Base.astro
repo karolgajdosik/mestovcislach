@@ -191,7 +191,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     <nav class="dolna-lista" aria-label="Rýchla navigácia">
       {(spolocna
         ? [['/', 'Mestá', PIN], ['/porovnanie', 'Porovnanie', IKONA['mestske-casti']]]
-        : [[`/${mesto.slug}`, 'Prehľad', IKONA['']], ...(maMapu(mesto.slug) || mesto.plne ? [[`/${mesto.slug}/mapa`, 'Mapa', IKONA['mapa']]] : []), [`/${mesto.slug}/adresa`, 'Pri mne', IKONA['adresa']]]
+        : [[`/${mesto.slug}#${ba ? 'dnes' : 'teraz'}`, 'Teraz', IKONA['prostredie']], ...(maMapu(mesto.slug) || mesto.plne ? [[`/${mesto.slug}/mapa`, 'Mapa', IKONA['mapa']]] : []), [`/${mesto.slug}/adresa`, 'Pri mne', IKONA['adresa']]]
       ).map(([href, text, ikona]) => {
         const akt = href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.replace(/\/$/, '') === href;
         return <a href={href} aria-current={akt ? 'page' : undefined}><svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} /><span>{text}</span></a>;
@@ -282,6 +282,12 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
   let a11yCasovac = 0;
   const a11yNeskor = () => { clearTimeout(a11yCasovac); a11yCasovac = window.setTimeout(pristupnost, 200); };
   addEventListener('load', pristupnost);
+  // skok na sekciu (#teraz z dolnej lišty): grafy a obrázky nad ňou sa dokreslia neskôr, preto po načítaní dorovnať
+  addEventListener('load', () => {
+    const h = decodeURIComponent(location.hash.slice(1));
+    const ciel = h && document.getElementById(h);
+    if (ciel) setTimeout(() => ciel.scrollIntoView({ block: 'start' }), 150);
+  });
   addEventListener('resize', a11yNeskor);
   // prepínače (napr. ročník volieb) odkryjú skryté tabuľky – po kliknutí skontrolovať znova
   document.addEventListener('click', a11yNeskor);
@@ -459,7 +465,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
   .dolna-lista, .menu-plne:not([open]) { display: none; }
   @media (max-width: 1099px) {
     :root { --vyska-hlavicky: 200px; } /* hlavička 60 px + mestá 76 px + dolná lišta 64 px – pre výšku máp */
-    html { scroll-padding-top: 146px; }
+    html { scroll-padding-top: 146px; --skok-okraj: 0px; } /* hlavička 135 px; sekcie s vlastným scroll-margin by inak skočili príliš nízko */
     .top .menu { display: none; }
     /* všetkých 8 miest stále na očiach: mriežka 4 × 2 pod logom */
     .top .mesta-pas { display: block; border-top: 1px solid var(--line); background: var(--card); }

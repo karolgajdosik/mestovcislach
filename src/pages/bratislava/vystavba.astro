@@ -369,7 +369,7 @@ const znam = (n: number | null) => (n == null ? '–' : `${n > 0 ? '+' : n < 0 ?
   .kotvy { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
   .kotvy a { padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--text); font-size: 0.9rem; background: var(--card); }
   .kotvy a:hover { border-color: var(--accent); color: var(--accent); }
-  section { scroll-margin-top: calc(var(--vyska-hlavicky) + 12px); }
+  section { scroll-margin-top: var(--skok-okraj, calc(var(--vyska-hlavicky) + 12px)); }
   .sekcia { font-size: 1.5rem; letter-spacing: -0.02em; margin: 36px 0 14px; }
   .card { margin-top: 16px; }
   .card h3 { font-size: 1.1rem; margin: 0 0 6px; }

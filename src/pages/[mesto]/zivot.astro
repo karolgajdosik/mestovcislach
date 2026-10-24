@@ -271,7 +271,7 @@ const grafCena = graf({ typ: 'line', labels: Object.keys(cenaM2), jednotka: '€
   .kotvy { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
   .kotvy a { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--text); font-size: 0.88rem; background: var(--card); }
   .kotvy a:hover { border-color: var(--accent); }
-  :global(h2.sekcia) { font-size: 1.5rem; letter-spacing: -0.02em; margin: 32px 0 0; scroll-margin-top: calc(var(--vyska-hlavicky, 112px) + 16px); }
+  :global(h2.sekcia) { font-size: 1.5rem; letter-spacing: -0.02em; margin: 32px 0 0; scroll-margin-top: var(--skok-okraj, calc(var(--vyska-hlavicky, 112px) + 16px)); }
   .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
   .kpi .label { color: var(--muted); font-size: 0.85rem; margin: 0; }
   .kpi .value { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.03em; margin: 4px 0; }
