@@ -1662,14 +1662,7 @@
      }
     ]
    },
-   "zdroj_oso": "https://web.archive.org/web/20241201215347id_/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip",
-   "stav": "vysledky",
-   "spracovanie": {
-    "okrsky": 394,
-    "spolu": 394,
-    "pct": 100.0,
-    "priebezne": false
-   },
+   "zdroj_oso": "https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip",
    "osk": {
     "predseda": {
      "kraj": {
@@ -2037,7 +2030,14 @@
      ]
     }
    },
-   "zdroj_osk": "https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip"
+   "zdroj_osk": "https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip",
+   "stav": "vysledky",
+   "spracovanie": {
+    "okrsky": 394,
+    "spolu": 394,
+    "pct": 100.0,
+    "priebezne": false
+   }
   },
   {
    "id": "2026",
@@ -2047,5 +2047,5 @@
    "stav": "caka_sa"
   }
  ],
- "aktualizovane": "2026-10-23T08:00:14+00:00"
+ "aktualizovane": "2026-10-24T18:15:42+00:00"
 }
