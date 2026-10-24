@@ -90,12 +90,15 @@ def mesto(slug_mesta: str, polozka: str, nazov: str, url: str) -> dict:
             continue
         po_spoji[x["trip_id"]].append((int(x["stop_sequence"]), x["stop_id"], t, x.get("pickup_type", "0") or "0"))
 
+    def cisty(n: str) -> str:  # „Bardejovská  *“ (zastávka na znamenie) → „Bardejovská“
+        return re.sub(r"\s*\*+$", "", re.sub(r"\s+", " ", n)).strip()
+
     def nazov_zast(sid: str) -> str:
         z_ = stops.get(sid, {})
         par = z_.get("parent_station")
         if par and par in stops:
-            return stops[par]["stop_name"].strip()
-        return z_.get("stop_name", sid).strip()
+            return cisty(stops[par]["stop_name"])
+        return cisty(z_.get("stop_name", sid))
 
     linky: list[list[str]] = []
     linky_idx: dict[str, int] = {}
@@ -120,7 +123,7 @@ def mesto(slug_mesta: str, polozka: str, nazov: str, url: str) -> dict:
         ro = routes.get(tr["route_id"], {})
         meno = (ro.get("route_short_name") or ro.get("route_long_name") or "?").strip()
         li = idx(linky, linky_idx, tr["route_id"], [meno, TYP.get(ro.get("route_type", ""), "autobus"), (ro.get("route_color") or "").strip(), (ro.get("route_text_color") or "").strip()])
-        smer = (tr.get("trip_headsign") or "").strip() or nazov_zast(zast[-1][1])
+        smer = cisty(tr.get("trip_headsign") or "") or nazov_zast(zast[-1][1])
         hi = idx(smery, smery_idx, smer, smer)
         si = idx(sluzby, sluzby_idx, tr["service_id"], tr["service_id"])
         for _, sid, t, pick in zast[:-1]:  # posledná zastávka spoja = len príchod
