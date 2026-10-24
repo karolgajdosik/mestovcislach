@@ -1,0 +1,5000 @@
+{
+ "zdroj": {
+  "nazov": "Centrálny register zmlúv (CRZ) – denné exporty",
+  "url": "https://www.crz.gov.sk",
+  "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
+ },
+ "od": "2022-01-01",
+ "do": "2026-10-23",
+ "mestske_casti": {
+  "Devín": {
+   "zmluv": 551,
+   "suma": 1750183,
+   "roky": {
+    "2022": [
+     63,
+     46262
+    ],
+    "2023": [
+     129,
+     845771
+    ],
+    "2024": [
+     128,
+     130428
+    ],
+    "2025": [
+     146,
+     598785
+    ],
+    "2026": [
+     85,
+     128937
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 354,
+    "suma": 138695
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 2,
+     "suma": 312000
+    },
+    {
+     "nazov": "EKOSTAV - ROVINKA spol. s r.o.",
+     "ico": "35903988",
+     "zmluv": 2,
+     "suma": 200528
+    },
+    {
+     "nazov": "Svidgas, s.r.o.",
+     "ico": "36464261",
+     "zmluv": 1,
+     "suma": 190429
+    },
+    {
+     "nazov": "Hlavné mesto SR Bratislava",
+     "ico": "00603481",
+     "zmluv": 8,
+     "suma": 183050
+    },
+    {
+     "nazov": "Heat in, s.r.o.",
+     "ico": "45573581",
+     "zmluv": 1,
+     "suma": 143979
+    },
+    {
+     "nazov": "MVM CEEnergy Slovakia s.r.o.",
+     "ico": "50060872",
+     "zmluv": 3,
+     "suma": 90099
+    },
+    {
+     "nazov": "Slovenská katolícka charita",
+     "ico": "00179132",
+     "zmluv": 2,
+     "suma": 90000
+    },
+    {
+     "nazov": "Ministerstvo financií SR",
+     "ico": "00151742",
+     "zmluv": 2,
+     "suma": 80000
+    },
+    {
+     "nazov": "TSM SLOVAKIA s.r.o.",
+     "ico": "45331294",
+     "zmluv": 1,
+     "suma": 73554
+    },
+    {
+     "nazov": "Ministerstvo vnútra SR (Prezídium HaZZ)",
+     "ico": "00151866",
+     "zmluv": 13,
+     "suma": 70159
+    },
+    {
+     "nazov": "PEVA Service s. r. o.",
+     "ico": "53561261",
+     "zmluv": 1,
+     "suma": 29763
+    },
+    {
+     "nazov": "Inštitút priestorového plánova",
+     "ico": "36064645",
+     "zmluv": 2,
+     "suma": 25000
+    },
+    {
+     "nazov": "DADON, s.r.o.",
+     "ico": "45643679",
+     "zmluv": 2,
+     "suma": 19000
+    },
+    {
+     "nazov": "CSAKOM spol. s r.o.",
+     "ico": "31107818",
+     "zmluv": 2,
+     "suma": 17141
+    },
+    {
+     "nazov": "SPO - Ba s.r.o.",
+     "ico": "47995947",
+     "zmluv": 1,
+     "suma": 11880
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "11738083",
+     "d": "2025-12-08",
+     "p": "Svidgas, s.r.o.",
+     "ico": "36464261",
+     "pr": "Zmluva o dielo - Viacúčelový športový dvorec",
+     "s": 190428.54
+    },
+    {
+     "id": "8433284",
+     "d": "2023-10-10",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "Zmluva o poskytnutí NFP - FAST CARE",
+     "s": 156000.0
+    },
+    {
+     "id": "8548910",
+     "d": "2023-10-10",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU IROP-Z302091DNF5-91-108",
+     "s": 156000.0
+    },
+    {
+     "id": "11125867",
+     "d": "2025-07-28",
+     "p": "Heat in, s.r.o.",
+     "ico": "45573581",
+     "pr": "Zmluva o dielo",
+     "s": 143978.81
+    },
+    {
+     "id": "8100337",
+     "d": "2023-05-19",
+     "p": "Hlavné mesto SR Bratislava",
+     "ico": "00603481",
+     "pr": "Memorandum o rozdeleni nenávratného finančného prispevku",
+     "s": 124800.0
+    },
+    {
+     "id": "8719541",
+     "d": "2023-12-15",
+     "p": "EKOSTAV - ROVINKA spol. s r.o.",
+     "ico": "35903988",
+     "pr": "Dodatok - Zmluva o Dielo - Oprava priestorov DK Devín",
+     "s": 106396.94
+    },
+    {
+     "id": "8538138",
+     "d": "2023-11-02",
+     "p": "EKOSTAV - ROVINKA spol. s r.o.",
+     "ico": "35903988",
+     "pr": "Zmluva o Dielo - Oprava priestorov DK Devín",
+     "s": 94131.48
+    },
+    {
+     "id": "7808474",
+     "d": "2023-04-28",
+     "p": "MVM CEEnergy Slovakia s.r.o.",
+     "ico": "50060872",
+     "pr": "Kúpna zmluva",
+     "s": 90098.51
+    },
+    {
+     "id": "10444704",
+     "d": "2025-02-13",
+     "p": "Slovenská katolícka charita",
+     "ico": "00179132",
+     "pr": "Darovacia zmluva",
+     "s": 90000.0
+    },
+    {
+     "id": "11772906",
+     "d": "2025-12-18",
+     "p": "TSM SLOVAKIA s.r.o.",
+     "ico": "45331294",
+     "pr": "Kúpna zmluva - vozidlo s nadstavbami",
+     "s": 73554.0
+    }
+   ]
+  },
+  "Devínska Nová Ves": {
+   "zmluv": 1406,
+   "suma": 64478981,
+   "roky": {
+    "2022": [
+     250,
+     10280618
+    ],
+    "2023": [
+     281,
+     13628756
+    ],
+    "2024": [
+     328,
+     14675318
+    ],
+    "2025": [
+     337,
+     19516095
+    ],
+    "2026": [
+     210,
+     6378194
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 501,
+    "suma": 979530
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 15,
+     "suma": 13642556
+    },
+    {
+     "nazov": "Železnice Slovenskej republiky",
+     "ico": "31364501",
+     "zmluv": 17,
+     "suma": 9303486
+    },
+    {
+     "nazov": "Úsporné Drevodomy s.r.o.",
+     "ico": "47883995",
+     "zmluv": 6,
+     "suma": 7247847
+    },
+    {
+     "nazov": "MBM-GROUP a.s.",
+     "ico": "36740519",
+     "zmluv": 37,
+     "suma": 6110125
+    },
+    {
+     "nazov": "Všeobecná úverová banka a.s.",
+     "ico": "31320155",
+     "zmluv": 6,
+     "suma": 5477021
+    },
+    {
+     "nazov": "Slovenská sporiteľňa, a.s.",
+     "ico": "00151653",
+     "zmluv": 4,
+     "suma": 3670000
+    },
+    {
+     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+     "ico": "00681156",
+     "zmluv": 11,
+     "suma": 3502112
+    },
+    {
+     "nazov": "DSS Senecio, n.o.",
+     "ico": "36077518",
+     "zmluv": 14,
+     "suma": 2980126
+    },
+    {
+     "nazov": "DNV ŠPORT, spol. s.r.o.",
+     "ico": "35919264",
+     "zmluv": 11,
+     "suma": 2106000
+    },
+    {
+     "nazov": "AB enertex, spol. s r.o.",
+     "ico": "35806290",
+     "zmluv": 8,
+     "suma": 1856073
+    },
+    {
+     "nazov": "VIREA s. r. o.",
+     "ico": "47797541",
+     "zmluv": 3,
+     "suma": 850419
+    },
+    {
+     "nazov": "Hlavné mesto Slovenskej Republiky Bratislava",
+     "ico": "00603481",
+     "zmluv": 18,
+     "suma": 615707
+    },
+    {
+     "nazov": "MBD - STEEL, s. r. o.",
+     "ico": "52016153",
+     "zmluv": 1,
+     "suma": 532438
+    },
+    {
+     "nazov": "Devínskonovoveská televízia spol. s r.o.",
+     "ico": "35769980",
+     "zmluv": 4,
+     "suma": 510000
+    },
+    {
+     "nazov": "UNIKONT SLOVAKIA, spol. s r.o.",
+     "ico": "35786078",
+     "zmluv": 7,
+     "suma": 469930
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "11147227",
+     "d": "2025-08-04",
+     "p": "Všeobecná úverová banka a.s.",
+     "ico": "31320155",
+     "pr": "Zmluva o termínovanom úvere",
+     "s": 5000000.0
+    },
+    {
+     "id": "11218481",
+     "d": "2025-08-25",
+     "p": "Úsporné Drevodomy s.r.o.",
+     "ico": "47883995",
+     "pr": "Zmluva o dielo - Nová telocvičňa v areáli ZŠ I Bukovčana 3",
+     "s": 4710110.6
+    },
+    {
+     "id": "6981713",
+     "d": "2022-10-07",
+     "p": "Úsporné Drevodomy s.r.o.",
+     "ico": "47883995",
+     "pr": "Dodatok k zmluve o dielo",
+     "s": 2479551.13
+    },
+    {
+     "id": "7555690",
+     "d": "2023-02-17",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 1 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BHZ4-74-73 zo dňa 22.12.2021",
+     "s": 2398078.2
+    },
+    {
+     "id": "7569030",
+     "d": "2023-02-17",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "Dodatok k zmluve o poskytnutí nenávratného finanč. príspevku",
+     "s": 2398078.2
+    },
+    {
+     "id": "9287205",
+     "d": "2024-05-17",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 2 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BHZ4-74-73 zo dňa 22.12.2021",
+     "s": 2382944.33
+    },
+    {
+     "id": "9291269",
+     "d": "2024-05-17",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "Dodatok k zmluve o poskytnutí nenávratného finanč. príspevku",
+     "s": 2382944.33
+    },
+    {
+     "id": "6855886",
+     "d": "2022-09-08",
+     "p": "Slovenská sporiteľňa, a.s.",
+     "ico": "00151653",
+     "pr": "Zmluva o úvere",
+     "s": 1910000.0
+    },
+    {
+     "id": "7902679",
+     "d": "2023-05-23",
+     "p": "Železnice Slovenskej republiky",
+     "ico": "31364501",
+     "pr": "KÚPNA ZMLUVA",
+     "s": 1588320.0
+    },
+    {
+     "id": "7904541",
+     "d": "2023-05-23",
+     "p": "Železnice Slovenskej republiky",
+     "ico": "31364501",
+     "pr": "Kúpna zmluva - predaj pozemku",
+     "s": 1588320.0
+    }
+   ]
+  },
+  "Dúbravka": {
+   "zmluv": 2466,
+   "suma": 44705784,
+   "roky": {
+    "2022": [
+     443,
+     3865288
+    ],
+    "2023": [
+     562,
+     10605186
+    ],
+    "2024": [
+     552,
+     5117948
+    ],
+    "2025": [
+     542,
+     9938981
+    ],
+    "2026": [
+     367,
+     15178381
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 1040,
+    "suma": 3346750
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Pittel a Brausewetter, s.r.o.",
+     "ico": "35943653",
+     "zmluv": 6,
+     "suma": 10297750
+    },
+    {
+     "nazov": "Všeobecná úverová banka, a.s.;",
+     "ico": "31320155",
+     "zmluv": 5,
+     "suma": 5000300
+    },
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 6,
+     "suma": 4097427
+    },
+    {
+     "nazov": "EURO-ŠTUKONZ a.s.",
+     "ico": "35972297",
+     "zmluv": 5,
+     "suma": 3624843
+    },
+    {
+     "nazov": "SIPSTAV s.r.o., r.s.p.",
+     "ico": "50226851",
+     "zmluv": 3,
+     "suma": 3099894
+    },
+    {
+     "nazov": "Hlavné mesto SR Bratislava",
+     "ico": "00603481",
+     "zmluv": 44,
+     "suma": 1874163
+    },
+    {
+     "nazov": "Fond na podporu športu",
+     "ico": "52846059",
+     "zmluv": 7,
+     "suma": 1626852
+    },
+    {
+     "nazov": "PARA INVEST s.r.o.",
+     "ico": "44424418",
+     "zmluv": 7,
+     "suma": 997500
+    },
+    {
+     "nazov": "Nova Facility s. r. o.",
+     "ico": "51445484",
+     "zmluv": 2,
+     "suma": 977723
+    },
+    {
+     "nazov": "RONDO, spol.s.r.o.",
+     "ico": "31334172",
+     "zmluv": 5,
+     "suma": 669775
+    },
+    {
+     "nazov": "AK builders, s.r.o.",
+     "ico": "51773082",
+     "zmluv": 11,
+     "suma": 600225
+    },
+    {
+     "nazov": "FCC Slovensko, s.r.o.",
+     "ico": "31318762",
+     "zmluv": 9,
+     "suma": 585133
+    },
+    {
+     "nazov": "RV STAV, s.r.o.",
+     "ico": "46163379",
+     "zmluv": 1,
+     "suma": 433326
+    },
+    {
+     "nazov": "Intersystem EU s.r.o.",
+     "ico": "46186123",
+     "zmluv": 7,
+     "suma": 407820
+    },
+    {
+     "nazov": "SWM Group a.s.",
+     "ico": "45316953",
+     "zmluv": 2,
+     "suma": 403599
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "12167564",
+     "d": "2026-03-23",
+     "p": "Pittel a Brausewetter, s.r.o.",
+     "ico": "35943653",
+     "pr": "Opravy a rekonštrukcie komunikácií, chodníkov a spevnených plôch v spr",
+     "s": 4469672.3
+    },
+    {
+     "id": "10751453",
+     "d": "2025-04-30",
+     "p": "Všeobecná úverová banka, a.s.; skrátený názov: VÚB, a.s.",
+     "ico": "31320155",
+     "pr": "Čerpanie úveru",
+     "s": 3500000.0
+    },
+    {
+     "id": "7723591",
+     "d": "2023-03-27",
+     "p": "Pittel a Brausewetter, s.r.o.",
+     "ico": "35943653",
+     "pr": "Opravy a rekonštrukcíe komunikácií, chodníkov a spevnených ploch v spr",
+     "s": 3341199.12
+    },
+    {
+     "id": "11982960",
+     "d": "2026-02-11",
+     "p": "SIPSTAV s.r.o., r.s.p.",
+     "ico": "50226851",
+     "pr": "Realizácia stavby - Kpt. Jána Rašu",
+     "s": 3099893.88
+    },
+    {
+     "id": "8025418",
+     "d": "2023-06-19",
+     "p": "Ministerstvo investícií, regio",
+     "ico": "50349287",
+     "pr": "Riešenie migračných vyzviev v mestskej časti Bratislava-Dúbravka",
+     "s": 1466400.0
+    },
+    {
+     "id": "8117228",
+     "d": "2023-06-19",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU č. IROP-Z302091CWB2-91-108",
+     "s": 1466400.0
+    },
+    {
+     "id": "12563607",
+     "d": "2026-06-23",
+     "p": "EURO-ŠTUKONZ a.s.",
+     "ico": "35972297",
+     "pr": "Dodatok č. 3_Zmluva o dielo č. 93/2025",
+     "s": 1116385.84
+    },
+    {
+     "id": "12110510",
+     "d": "2026-03-11",
+     "p": "EURO-ŠTUKONZ a.s.",
+     "ico": "35972297",
+     "pr": "Rozšírenie kapacít ZŠ Beňovského dodatok č. 2",
+     "s": 1096532.79
+    },
+    {
+     "id": "10482671",
+     "d": "2025-02-20",
+     "p": "EURO-ŠTUKONZ a.s.",
+     "ico": "35972297",
+     "pr": "Rozšírenie kapacít ZŠ Beňovského",
+     "s": 1080111.29
+    },
+    {
+     "id": "9296685",
+     "d": "2024-05-27",
+     "p": "Všeobecná úverová banka, a.s.;",
+     "ico": "31320155",
+     "pr": "poskytnutie úveru pre MČ",
+     "s": 1000000.0
+    }
+   ]
+  },
+  "Hlavné mesto": {
+   "zmluv": 14632,
+   "suma": 2631232205,
+   "roky": {
+    "2022": [
+     2618,
+     420296795
+    ],
+    "2023": [
+     2841,
+     657458204
+    ],
+    "2024": [
+     3322,
+     676764085
+    ],
+    "2025": [
+     3377,
+     334776233
+    ],
+    "2026": [
+     2474,
+     541936890
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 6407,
+    "suma": 76531575
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo dopravy SR",
+     "ico": "30416094",
+     "zmluv": 101,
+     "suma": 473991146
+    },
+    {
+     "nazov": "Dopravný podnik Bratislava, akciová spoločnosť",
+     "ico": "00492736",
+     "zmluv": 101,
+     "suma": 154253249
+    },
+    {
+     "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
+     "ico": "00681300",
+     "zmluv": 38,
+     "suma": 140908551
+    },
+    {
+     "nazov": "Československá obchodná banka, a.s.",
+     "ico": "36854140",
+     "zmluv": 32,
+     "suma": 135000050
+    },
+    {
+     "nazov": "STRABAG s.r.o.",
+     "ico": "17317282",
+     "zmluv": 14,
+     "suma": 132448629
+    },
+    {
+     "nazov": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "zmluv": 8,
+     "suma": 100584380
+    },
+    {
+     "nazov": "Asset Real a.s.",
+     "ico": "36745022",
+     "zmluv": 3,
+     "suma": 97709196
+    },
+    {
+     "nazov": "Dopravný podnik Bratislava a.s., Olejkárska ulica č. 1, 814 52 Bratislava 1, IČO: 00492736",
+     "ico": null,
+     "zmluv": 1,
+     "suma": 77100000
+    },
+    {
+     "nazov": "PERSET a.s.",
+     "ico": "48239089",
+     "zmluv": 2,
+     "suma": 65139464
+    },
+    {
+     "nazov": "National Development Fund II., a.s.",
+     "ico": "47759224",
+     "zmluv": 6,
+     "suma": 65014000
+    },
+    {
+     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+     "ico": "00681156",
+     "zmluv": 30,
+     "suma": 57644771
+    },
+    {
+     "nazov": "MBM-GROUP, a.s.",
+     "ico": "36740519",
+     "zmluv": 6,
+     "suma": 56738684
+    },
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 50,
+     "suma": 45268869
+    },
+    {
+     "nazov": "Pittel + Brausewetter s.r.o.",
+     "ico": "35943653",
+     "zmluv": 14,
+     "suma": 40900454
+    },
+    {
+     "nazov": "zares, spol. s r.o.",
+     "ico": "35778806",
+     "zmluv": 5,
+     "suma": 38500000
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "12752996",
+     "d": "2026-09-02",
+     "p": "STRABAG s.r.o.",
+     "ico": "17317282",
+     "pr": "Modernizácia električkových tratí – Ružinovská radiála 2026",
+     "s": 119023706.69
+    },
+    {
+     "id": "7576187",
+     "d": "2023-03-02",
+     "p": "Ministerstvo dopravy SR",
+     "ico": "30416094",
+     "pr": "Zmluva o PNFP pre projekt \"Nová električková trať v Petržalke, 2. časť Bosákova ulica – Janíkov Dvor\" (311031CHH3)",
+     "s": 81750021.16
+    },
+    {
+     "id": "7371706",
+     "d": "2023-01-11",
+     "p": "Dopravný podnik Bratislava, akciová spoločnosť",
+     "ico": "00492736",
+     "pr": "OHD/2023/Dodatok č. 14 - Rámcová zmluva o službách DPB",
+     "s": 77100000.0
+    },
+    {
+     "id": "6638794",
+     "d": "2022-06-28",
+     "p": "Dopravný podnik Bratislava a.s., Olejkárska ulica č. 1, 814 52 Bratislava 1, IČO: 00492736",
+     "ico": "",
+     "pr": "DODATOK č. 13 K RÁMCOVEJ ZMLUVE O SLUŽBÁCH VO VEREJNOM ZÁUJME A ZABEZPEČENÍ MESTSKEJ HROMADNEJ DOPRAVY OSÔB V HLAVNOM MESTE SLOVENSKEJ REPUBLIKY BRATISLAVE NA ROKY 2014 – 2023",
+     "s": 77100000.0
+    },
+    {
+     "id": "6652117",
+     "d": "2022-06-28",
+     "p": "Dopravný podnik Bratislava, akciová spoločnosť",
+     "ico": "00492736",
+     "pr": "DODATOK č. 13 K RÁMCOVEJ ZMLUVE O SLUŽBÁCH VO VEREJNOM ZÁUJME A ZABEZPEČENÍ MESTSKEJ HROMADNEJ DOPRAVY OSÔB V HLAVNOM MESTE SLOVENSKEJ REPUBLIKY BRATISLAVA NA ROKY 2014-2023",
+     "s": 77100000.0
+    },
+    {
+     "id": "9432132",
+     "d": "2024-06-21",
+     "p": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "pr": "Zmluva o financovaní č. 40/ZF/2024",
+     "s": 70500000.0
+    },
+    {
+     "id": "8746151",
+     "d": "2023-12-19",
+     "p": "Ministerstvo dopravy SR",
+     "ico": "30416094",
+     "pr": "Dodatok č. 1 k Zmluve o NFP pre projekt \"Modernizácia električkových tratí - Dúbravsko - Karloveská radiála\" (397/AE21/2020) 311031Z323",
+     "s": 63683924.92
+    },
+    {
+     "id": "8847645",
+     "d": "2023-12-19",
+     "p": "Ministerstvo dopravy Slovenskej republiky",
+     "ico": "30416094",
+     "pr": "Dodatok č. 1 k Zmluve o NFP pre projekt \"Modernizácia električkových tratí - Dúbravsko - Karloveská radiála\" - 311031Z323",
+     "s": 63683924.0
+    },
+    {
+     "id": "10055035",
+     "d": "2024-11-20",
+     "p": "Ministerstvo dopravy SR",
+     "ico": "30416094",
+     "pr": "Zmluva o PNFP pre projekt \"Nová električková trať v Petržalke, 2. časť Bosákova ulica – Janíkov Dvor II. fáza\"",
+     "s": 63553018.5
+    },
+    {
+     "id": "10061516",
+     "d": "2024-11-20",
+     "p": "Ministerstvo dopravy Slovenskej republiky",
+     "ico": "30416094",
+     "pr": "Zmluva o PNFP pre projekt \"Nová električková trať v Petržalke, 2. časť Bosákova ulica – Janíkov Dvor II. fáza\"",
+     "s": 63553018.5
+    }
+   ]
+  },
+  "Jarovce": {
+   "zmluv": 930,
+   "suma": 9790246,
+   "roky": {
+    "2022": [
+     86,
+     4033072
+    ],
+    "2023": [
+     455,
+     355910
+    ],
+    "2024": [
+     187,
+     859842
+    ],
+    "2025": [
+     116,
+     1756731
+    ],
+    "2026": [
+     86,
+     2784691
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 702,
+    "suma": 500621
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 5,
+     "suma": 4145141
+    },
+    {
+     "nazov": "Slovenská sporiteľňa, a. s.",
+     "ico": "00151653",
+     "zmluv": 9,
+     "suma": 2280000
+    },
+    {
+     "nazov": "STAVOMAL Slovakia, spol. s r.o.",
+     "ico": "36231371",
+     "zmluv": 6,
+     "suma": 1543024
+    },
+    {
+     "nazov": "CS, s.r.o.",
+     "ico": "44101937",
+     "zmluv": 7,
+     "suma": 620481
+    },
+    {
+     "nazov": "Fond na podporu športu",
+     "ico": "52846059",
+     "zmluv": 1,
+     "suma": 103869
+    },
+    {
+     "nazov": "Koratex a.s.",
+     "ico": "31332277",
+     "zmluv": 1,
+     "suma": 93829
+    },
+    {
+     "nazov": "Doprastav, a.s.",
+     "ico": "31333320",
+     "zmluv": 1,
+     "suma": 79939
+    },
+    {
+     "nazov": "Telovýchovná jednota Jarovce",
+     "ico": "42181861",
+     "zmluv": 11,
+     "suma": 57885
+    },
+    {
+     "nazov": "Mária Némethová a spol.",
+     "ico": null,
+     "zmluv": 3,
+     "suma": 53430
+    },
+    {
+     "nazov": "ProGrafit s.r.o.",
+     "ico": "48038687",
+     "zmluv": 3,
+     "suma": 50883
+    },
+    {
+     "nazov": "Veríme v Zábavu, s.r.o.",
+     "ico": "46167745",
+     "zmluv": 1,
+     "suma": 40902
+    },
+    {
+     "nazov": "Slovenská republika zastúpená Ministerstvom vnútra Slovenskej republiky",
+     "ico": "00151866",
+     "zmluv": 5,
+     "suma": 39864
+    },
+    {
+     "nazov": "AMV Slovakia s.r.o.",
+     "ico": "00616931",
+     "zmluv": 1,
+     "suma": 31733
+    },
+    {
+     "nazov": "DREVOKOM SLOVAKIA s.r.o.",
+     "ico": "47136201",
+     "zmluv": 1,
+     "suma": 23080
+    },
+    {
+     "nazov": "Bratislavský samosprávny kraj",
+     "ico": "36063606",
+     "zmluv": 7,
+     "suma": 23018
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "12001742",
+     "d": "2026-02-16",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU č. projektu 401402G694",
+     "s": 2200000.0
+    },
+    {
+     "id": "7093253",
+     "d": "2022-11-04",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302021CFA5-221-94",
+     "s": 1559592.94
+    },
+    {
+     "id": "7105801",
+     "d": "2022-11-10",
+     "p": "STAVOMAL Slovakia, spol. s r.o.",
+     "ico": "36231371",
+     "pr": "DODATOK č. 1 ku zmluve o dielo č. 15/2022",
+     "s": 1444198.6
+    },
+    {
+     "id": "11598624",
+     "d": "2025-11-14",
+     "p": "Slovenská sporiteľňa, a. s.",
+     "ico": "00151653",
+     "pr": "Zmluva o úvere č. 1369/CC/25",
+     "s": 800000.0
+    },
+    {
+     "id": "6643234",
+     "d": "2022-06-30",
+     "p": "Slovenská sporiteľňa, a. s.",
+     "ico": "00151653",
+     "pr": "ZmIuva o úvere č.571/CC/22",
+     "s": 800000.0
+    },
+    {
+     "id": "10109691",
+     "d": "2024-12-02",
+     "p": "Slovenská sporiteľňa, a. s.",
+     "ico": "00151653",
+     "pr": "Zmluva o úvere č. 899/CC/24",
+     "s": 680000.0
+    },
+    {
+     "id": "10515946",
+     "d": "2025-02-28",
+     "p": "CS, s.r.o.",
+     "ico": "44101937",
+     "pr": "Zmluva o dielo",
+     "s": 577674.21
+    },
+    {
+     "id": "12596336",
+     "d": "2026-07-20",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR /I412",
+     "s": 281548.51
+    },
+    {
+     "id": "12742001",
+     "d": "2026-09-01",
+     "p": "Fond na podporu športu",
+     "ico": "52846059",
+     "pr": "Zmluva o príspevku na projekt podpory športu č. Z-2025/001-140",
+     "s": 103868.64
+    },
+    {
+     "id": "8959931",
+     "d": "2024-02-16",
+     "p": "STAVOMAL Slovakia, spol. s r.o.",
+     "ico": "36231371",
+     "pr": "Dodatok č. 6 k Zmluve o dielo č. 15/2022",
+     "s": 98825.46
+    }
+   ]
+  },
+  "Karlova Ves": {
+   "zmluv": 2467,
+   "suma": 72515595,
+   "roky": {
+    "2022": [
+     564,
+     17502018
+    ],
+    "2023": [
+     558,
+     16830425
+    ],
+    "2024": [
+     494,
+     7403311
+    ],
+    "2025": [
+     495,
+     8212235
+    ],
+    "2026": [
+     356,
+     22567605
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 1013,
+    "suma": 3916104
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 10,
+     "suma": 7033957
+    },
+    {
+     "nazov": "Environmentálny fond",
+     "ico": "30796491",
+     "zmluv": 11,
+     "suma": 7025210
+    },
+    {
+     "nazov": "SOAR sk, a.s.",
+     "ico": "50442201",
+     "zmluv": 20,
+     "suma": 5964283
+    },
+    {
+     "nazov": "VÚB, a.s.",
+     "ico": "31320155",
+     "zmluv": 7,
+     "suma": 5046700
+    },
+    {
+     "nazov": "Slovenská inovačná a energetická agentúra",
+     "ico": null,
+     "zmluv": 2,
+     "suma": 3809121
+    },
+    {
+     "nazov": "EURO-ŠTUKONZ a. s.",
+     "ico": "35972297",
+     "zmluv": 2,
+     "suma": 3454499
+    },
+    {
+     "nazov": "BORMED, s.r.o.",
+     "ico": "44366655",
+     "zmluv": 2,
+     "suma": 2880000
+    },
+    {
+     "nazov": "Pittel + Brausewetter s.r.o.",
+     "ico": "35943653",
+     "zmluv": 8,
+     "suma": 2037156
+    },
+    {
+     "nazov": "AK builders, s.r.o.",
+     "ico": "51773082",
+     "zmluv": 10,
+     "suma": 1999997
+    },
+    {
+     "nazov": "BeMiCon s.r.o",
+     "ico": "50522272",
+     "zmluv": 3,
+     "suma": 1905982
+    },
+    {
+     "nazov": "SOAR sk, a.s.",
+     "ico": null,
+     "zmluv": 7,
+     "suma": 1796808
+    },
+    {
+     "nazov": "Úrad práce sociálnych vecí a rodiny",
+     "ico": "30794536",
+     "zmluv": 3,
+     "suma": 1554248
+    },
+    {
+     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+     "ico": "603481",
+     "zmluv": 24,
+     "suma": 1381423
+    },
+    {
+     "nazov": "Mládežnícky basketbalový klub KARLOVKA",
+     "ico": "30847435",
+     "zmluv": 12,
+     "suma": 1246420
+    },
+    {
+     "nazov": "ESCO Integra, s.r.o.",
+     "ico": "35796944",
+     "zmluv": 3,
+     "suma": 1179960
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "6905953",
+     "d": "2022-09-19",
+     "p": "SOAR sk, a.s.",
+     "ico": "50442201",
+     "pr": "Dodatok č. 2 k Rámcovej dohode č. KV-2/2020 tj k Rámcovej dohode pod č. zmluvy 55/2021 na MiU v BA-Karlovej Vsi na ZŠ A. Dubčeka",
+     "s": 2276192.48
+    },
+    {
+     "id": "11844047",
+     "d": "2026-01-13",
+     "p": "Slovenská inovačná a energetická agentúra",
+     "ico": "",
+     "pr": "Zmluva o poskytnutí NFP na realizáciu projektu Obnova budovy ZŠ Karloveská 61 z hľadiska zníženia energetickej náročnosti prevádzky",
+     "s": 2199775.54
+    },
+    {
+     "id": "11842791",
+     "d": "2026-01-12",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR/C960",
+     "s": 2199775.54
+    },
+    {
+     "id": "12761229",
+     "d": "2026-09-04",
+     "p": "VÚB, a.s.",
+     "ico": "31320155",
+     "pr": "Dodatok k zmluve o termín. úvere č. 424/2025/UZ",
+     "s": 1862100.0
+    },
+    {
+     "id": "10990402",
+     "d": "2025-06-25",
+     "p": "VÚB, a.s.",
+     "ico": "31320155",
+     "pr": "Poskytnutie peňažných prostriedkov",
+     "s": 1862100.0
+    },
+    {
+     "id": "12974211",
+     "d": "2026-10-22",
+     "p": "EURO-ŠTUKONZ a. s.",
+     "ico": "35972297",
+     "pr": "Obnova budovy ZŠ Karloveská 61 z hľadiska zníženia energetickej náročnosti prevádzky školy.",
+     "s": 1744801.32
+    },
+    {
+     "id": "12383277",
+     "d": "2026-05-20",
+     "p": "EURO-ŠTUKONZ a. s.",
+     "ico": "35972297",
+     "pr": "Obnova budovy ZŠ Karloveská 61 z hľadiska zníženia energetickej náročnosti prevádzky školy",
+     "s": 1709697.55
+    },
+    {
+     "id": "7937332",
+     "d": "2023-06-01",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+     "ico": "50349287",
+     "pr": "Poskytnutie nenávratného finančného príspevku na realizáciu EÚ-projektu „Riešenie migračných výziev v mestskej časti Bratislava-Karlova Ves“ s kódom 302091CVW7 v rámci Výzvy IROP-PO9-SC91-2023-108",
+     "s": 1692600.0
+    },
+    {
+     "id": "12658458",
+     "d": "2026-08-05",
+     "p": "Slovenská inovačná a energetická agentúra",
+     "ico": "",
+     "pr": "Dodatok č.1 k Zmluve o poskytnutí NFP na realizáciu projektu Obnova budovy ZŠ Karloveská 61 z hľadiska zníženia energetickej náročnosti prevádzky",
+     "s": 1609345.76
+    },
+    {
+     "id": "6431986",
+     "d": "2022-05-10",
+     "p": "BORMED, s.r.o.",
+     "ico": "44366655",
+     "pr": "Nájomná zmluva",
+     "s": 1440000.0
+    }
+   ]
+  },
+  "Lamač": {
+   "zmluv": 1339,
+   "suma": 34398090,
+   "roky": {
+    "2022": [
+     493,
+     3514814
+    ],
+    "2023": [
+     301,
+     15606500
+    ],
+    "2024": [
+     169,
+     4668312
+    ],
+    "2025": [
+     211,
+     4758500
+    ],
+    "2026": [
+     165,
+     5849965
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 683,
+    "suma": 365851
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 12,
+     "suma": 15168526
+    },
+    {
+     "nazov": "Adifex, a.s.",
+     "ico": "46715894",
+     "zmluv": 7,
+     "suma": 8603026
+    },
+    {
+     "nazov": "Slovenská sporiteľňa, a. s.",
+     "ico": "00151653",
+     "zmluv": 8,
+     "suma": 3001200
+    },
+    {
+     "nazov": "Slovenská inovačná a energetická agentúra",
+     "ico": "00002801",
+     "zmluv": 1,
+     "suma": 2329362
+    },
+    {
+     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+     "ico": "00603481",
+     "zmluv": 19,
+     "suma": 584306
+    },
+    {
+     "nazov": "Ministerstvo životného prostredia SR",
+     "ico": "42181810",
+     "zmluv": 2,
+     "suma": 494872
+    },
+    {
+     "nazov": "DUVYSTAV s.r.o.",
+     "ico": "35786639",
+     "zmluv": 11,
+     "suma": 393267
+    },
+    {
+     "nazov": "Finance Corporation a.s.",
+     "ico": "51860481",
+     "zmluv": 8,
+     "suma": 355024
+    },
+    {
+     "nazov": "Virtus s.r.o.",
+     "ico": "35719664",
+     "zmluv": 3,
+     "suma": 287394
+    },
+    {
+     "nazov": "PRO EXTERIÉR s.r.o.",
+     "ico": "52157164",
+     "zmluv": 4,
+     "suma": 265636
+    },
+    {
+     "nazov": "DOKARO výrobné družstvo",
+     "ico": "00586781",
+     "zmluv": 3,
+     "suma": 236983
+    },
+    {
+     "nazov": "METRO Cash&Carry SR s. r. o.",
+     "ico": "45952671",
+     "zmluv": 3,
+     "suma": 196500
+    },
+    {
+     "nazov": "HANES Slovakia, s.r.o.",
+     "ico": "36249297",
+     "zmluv": 1,
+     "suma": 191757
+    },
+    {
+     "nazov": "TORVEL s.r.o.",
+     "ico": "45867666",
+     "zmluv": 7,
+     "suma": 126886
+    },
+    {
+     "nazov": "Futbalový klub Lamač",
+     "ico": "31783619",
+     "zmluv": 5,
+     "suma": 95000
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "8011673",
+     "d": "2023-06-21",
+     "p": "Adifex, a.s.",
+     "ico": "46715894",
+     "pr": "Dodatok č. 5 k Zmluve o dielo",
+     "s": 4517986.8
+    },
+    {
+     "id": "7870045",
+     "d": "2023-05-17",
+     "p": "Adifex, a.s.",
+     "ico": "46715894",
+     "pr": "Dodatok č. 4 k Zmluve o dielo",
+     "s": 4073050.72
+    },
+    {
+     "id": "8378814",
+     "d": "2023-09-29",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č.1 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BFM5-74-73 zo dňa 10.02.2022",
+     "s": 3631577.92
+    },
+    {
+     "id": "9338718",
+     "d": "2024-05-30",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 2 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BFM5-74-73 zo dňa 10.02.2022",
+     "s": 3618283.16
+    },
+    {
+     "id": "6215036",
+     "d": "2022-02-10",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU",
+     "s": 2999999.15
+    },
+    {
+     "id": "12586158",
+     "d": "2026-07-15",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR /C272",
+     "s": 2329361.78
+    },
+    {
+     "id": "12588247",
+     "d": "2026-07-15",
+     "p": "Slovenská inovačná a energetická agentúra",
+     "ico": "00002801",
+     "pr": "Zmluva o poskytnutí nenávratného finančného príspevku reg. č. PSK-SIEA-007-2024-ITI-EFRR/C272",
+     "s": 2329361.78
+    },
+    {
+     "id": "11274344",
+     "d": "2025-09-05",
+     "p": "Slovenská sporiteľňa, a. s.",
+     "ico": "00151653",
+     "pr": "Zmluva o úvere č. 1080/CC/25",
+     "s": 1000000.0
+    },
+    {
+     "id": "7815441",
+     "d": "2023-05-02",
+     "p": "Slovenská sporiteľňa, a. s.",
+     "ico": "00151653",
+     "pr": "Zmluva o úvere č. 407/CC/23",
+     "s": 1000000.0
+    },
+    {
+     "id": "7815443",
+     "d": "2023-05-02",
+     "p": "Slovenská sporiteľňa, a. s.",
+     "ico": "00151653",
+     "pr": "Zmluva o úvere č. 403/CC/23",
+     "s": 1000000.0
+    }
+   ]
+  },
+  "Nové Mesto": {
+   "zmluv": 1761,
+   "suma": 122807587,
+   "roky": {
+    "2022": [
+     277,
+     28972399
+    ],
+    "2023": [
+     237,
+     36621598
+    ],
+    "2024": [
+     402,
+     24565617
+    ],
+    "2025": [
+     392,
+     10986412
+    ],
+    "2026": [
+     453,
+     21661561
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 613,
+    "suma": 4888227
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 29,
+     "suma": 34383553
+    },
+    {
+     "nazov": "DAG SLOVAKIA a.s.",
+     "ico": "44886021",
+     "zmluv": 10,
+     "suma": 11729558
+    },
+    {
+     "nazov": "Slovenská sporiteľňa, a.s.",
+     "ico": "00151653",
+     "zmluv": 11,
+     "suma": 10000000
+    },
+    {
+     "nazov": "Skanska SK a.s.",
+     "ico": "31611788",
+     "zmluv": 4,
+     "suma": 8023206
+    },
+    {
+     "nazov": "Lakeside 3, s.r.o.",
+     "ico": "50343564",
+     "zmluv": 2,
+     "suma": 4005120
+    },
+    {
+     "nazov": "MBM - GROUP a. s.",
+     "ico": "36740519",
+     "zmluv": 5,
+     "suma": 3954255
+    },
+    {
+     "nazov": "ICT ISTROCONTI, a. s.",
+     "ico": "00685321",
+     "zmluv": 3,
+     "suma": 3843013
+    },
+    {
+     "nazov": "Základná škola s materskou školou Odborárska",
+     "ico": "31785204",
+     "zmluv": 17,
+     "suma": 3117162
+    },
+    {
+     "nazov": "GENESIS POZEMNÉ STAVBY s.r.o.",
+     "ico": "46059105",
+     "zmluv": 11,
+     "suma": 2774037
+    },
+    {
+     "nazov": "littlefinger s.r.o.",
+     "ico": "44768575",
+     "zmluv": 3,
+     "suma": 2423446
+    },
+    {
+     "nazov": "EH bau, s. r. o.",
+     "ico": "53342674",
+     "zmluv": 1,
+     "suma": 2333959
+    },
+    {
+     "nazov": "Pittel Brausewetter s.r.o.",
+     "ico": "35943653",
+     "zmluv": 6,
+     "suma": 1440785
+    },
+    {
+     "nazov": "Facep s.r.o.",
+     "ico": "52303209",
+     "zmluv": 4,
+     "suma": 1351157
+    },
+    {
+     "nazov": "Trnavské Mýto, a.s.",
+     "ico": "36283461",
+     "zmluv": 3,
+     "suma": 1245000
+    },
+    {
+     "nazov": "Základná škola s materskou školou, Riazanská 75, Bratislava",
+     "ico": "31768873",
+     "zmluv": 16,
+     "suma": 1184493
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "6876495",
+     "d": "2022-09-14",
+     "p": "Slovenská sporiteľňa a. s.",
+     "ico": "00151653",
+     "pr": "Zmluva o úvere č. 659/CC/22, č. ÚEZ 217/2022",
+     "s": 7500000.0
+    },
+    {
+     "id": "8637857",
+     "d": "2023-11-28",
+     "p": "Skanska SK a.s.",
+     "ico": "31611788",
+     "pr": "DODATOK č. 2 k Zmluve o dielo ÚEZ č. 261/2022",
+     "s": 4080983.2
+    },
+    {
+     "id": "12628184",
+     "d": "2026-07-27",
+     "p": "Lakeside 3, s.r.o.",
+     "ico": "50343564",
+     "pr": "Zmluva o investičnej činnosti vo vzťahu k projektu \"Lakeside Park 03\"",
+     "s": 3705119.5
+    },
+    {
+     "id": "6973266",
+     "d": "2022-10-10",
+     "p": "Skanska SK a.s.",
+     "ico": "31611788",
+     "pr": "Zmluva o dielo ÚEZ č. 261/2022 (Rekonštrukcia, nadstavba a prístavba objektu jedálne pri ZŠ s MŠ Cádrova – rozšírenie kapacít tried ZŠ)",
+     "s": 3616868.22
+    },
+    {
+     "id": "9075659",
+     "d": "2024-03-20",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 2 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BSY7-74-73 zo dňa 29.07.2022",
+     "s": 2997027.26
+    },
+    {
+     "id": "9080988",
+     "d": "2024-03-20",
+     "p": "Ministerstvo investícii region",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 2 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č",
+     "s": 2997027.26
+    },
+    {
+     "id": "8705353",
+     "d": "2023-12-13",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 1 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BSY7-74-73 zo dňa 29.07.2022",
+     "s": 2997027.26
+    },
+    {
+     "id": "8709816",
+     "d": "2023-12-13",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 1 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BSY7-74-73 zo dňa 29.07.2022",
+     "s": 2997027.26
+    },
+    {
+     "id": "10400097",
+     "d": "2025-02-05",
+     "p": "Základná škola s materskou školou Odborárska",
+     "ico": "31785204",
+     "pr": "bezodplatné užívanie stavby",
+     "s": 2943728.43
+    },
+    {
+     "id": "7985650",
+     "d": "2023-06-14",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "Zmluva o poskytnutí nenávratného finančného príspevku č. IROP-Z302091CWM2-91-108, č. ÚEZ: 84/2023",
+     "s": 2901600.0
+    }
+   ]
+  },
+  "Petržalka": {
+   "zmluv": 5075,
+   "suma": 210038570,
+   "roky": {
+    "2022": [
+     753,
+     18700346
+    ],
+    "2023": [
+     900,
+     29577632
+    ],
+    "2024": [
+     1235,
+     41460841
+    ],
+    "2025": [
+     1322,
+     66104103
+    ],
+    "2026": [
+     865,
+     54195648
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 2462,
+    "suma": 7426204
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 90,
+     "suma": 31517509
+    },
+    {
+     "nazov": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "zmluv": 4,
+     "suma": 21058009
+    },
+    {
+     "nazov": "GENESIS POZEMNÉ STAVBY, s.r.o.",
+     "ico": "46059105",
+     "zmluv": 31,
+     "suma": 12801944
+    },
+    {
+     "nazov": "THERMKLIMA, s.r.o.",
+     "ico": "50958615",
+     "zmluv": 16,
+     "suma": 9938838
+    },
+    {
+     "nazov": "EURO-ŠTUKONZ a.s.",
+     "ico": "35972297",
+     "zmluv": 11,
+     "suma": 8330660
+    },
+    {
+     "nazov": "Štátny fond rozvoja bývania",
+     "ico": "31749542",
+     "zmluv": 4,
+     "suma": 7651042
+    },
+    {
+     "nazov": "Fond na podporu športu",
+     "ico": "52846059",
+     "zmluv": 10,
+     "suma": 6096003
+    },
+    {
+     "nazov": "Lesy Slovenskej republiky, štátny podnik",
+     "ico": "36038351",
+     "zmluv": 4,
+     "suma": 6065380
+    },
+    {
+     "nazov": "Petržalská výstavba, spol. s r. o.",
+     "ico": "55367763",
+     "zmluv": 55,
+     "suma": 5879208
+    },
+    {
+     "nazov": "DAG SLOVAKIA, a.s.",
+     "ico": "44886021",
+     "zmluv": 3,
+     "suma": 5572213
+    },
+    {
+     "nazov": "BBAU s.r.o.",
+     "ico": "51085097",
+     "zmluv": 4,
+     "suma": 5310108
+    },
+    {
+     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+     "ico": "00681156",
+     "zmluv": 22,
+     "suma": 4879560
+    },
+    {
+     "nazov": "Swietelsky-Slovakia spol. s r.o.",
+     "ico": "00896225",
+     "zmluv": 15,
+     "suma": 4350684
+    },
+    {
+     "nazov": "BeMiCon s.r.o.",
+     "ico": "50522272",
+     "zmluv": 6,
+     "suma": 3453240
+    },
+    {
+     "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+     "ico": "00164381",
+     "zmluv": 14,
+     "suma": 3247009
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "11656326",
+     "d": "2025-11-20",
+     "p": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "pr": "Zmluva o termínovanom úveru č. 890/2025/UZ",
+     "s": 20000000.0
+    },
+    {
+     "id": "12477996",
+     "d": "2026-06-16",
+     "p": "EURO-ŠTUKONZ a.s.",
+     "ico": "35972297",
+     "pr": "Zníženie energetickej náročnosti budovy ZŠ Gessayova 2, BA",
+     "s": 3479545.84
+    },
+    {
+     "id": "7966320",
+     "d": "2023-06-08",
+     "p": "Ministerstvo investícii, regio",
+     "ico": "50349287",
+     "pr": "Riešenie migračných výziev v dôsledku vojenskej agresie voči Ukrajine",
+     "s": 3450200.0
+    },
+    {
+     "id": "8017660",
+     "d": "2023-06-08",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU č. IROP-Z302091CWY2-91-108",
+     "s": 3450200.0
+    },
+    {
+     "id": "12434352",
+     "d": "2026-06-05",
+     "p": "Lesy Slovenskej republiky, štátny podnik",
+     "ico": "36038351",
+     "pr": "Predaj a kúpa pozemkov, zriadenie predkupného práva a záložného práva",
+     "s": 3032690.0
+    },
+    {
+     "id": "12439253",
+     "d": "2026-06-05",
+     "p": "LESY Slovenskej republiky, štátny podnik organizačná zložka OZ Karpaty",
+     "ico": "36038351",
+     "pr": "Kúpna zmluva, dojednanie zriadenia predkupného práva ako vecného práva k pozemkom a dojednanie zriadenia záložného práva k pozemkom",
+     "s": 3032690.0
+    },
+    {
+     "id": "11740965",
+     "d": "2025-12-15",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-002-2023-DV-EFRR/D432",
+     "s": 2463501.9
+    },
+    {
+     "id": "11793092",
+     "d": "2025-12-15",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovens",
+     "ico": "50349287",
+     "pr": "Zmluva o poskytnutí nenávratného finančného príspevku",
+     "s": 2463501.9
+    },
+    {
+     "id": "11201363",
+     "d": "2025-08-20",
+     "p": "MBM – GROUP a.s.",
+     "ico": "",
+     "pr": "Záväzok predávajúceho dodávať kupujúcemu asfaltové zmesi",
+     "s": 2460000.0
+    },
+    {
+     "id": "9066280",
+     "d": "2024-03-15",
+     "p": "GENESIS POZEMNÉ STAVBY, s.r.o.",
+     "ico": "46059105",
+     "pr": "Sanácia stavebných porúch, obnova plavárne - ZŠ Pankúchova 4",
+     "s": 2304466.55
+    }
+   ]
+  },
+  "Podunajské Biskupice": {
+   "zmluv": 1822,
+   "suma": 48632215,
+   "roky": {
+    "2022": [
+     234,
+     3670915
+    ],
+    "2023": [
+     455,
+     4107111
+    ],
+    "2024": [
+     455,
+     13902902
+    ],
+    "2025": [
+     381,
+     11397075
+    ],
+    "2026": [
+     297,
+     15554212
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 970,
+    "suma": 1320011
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 23,
+     "suma": 15257230
+    },
+    {
+     "nazov": "Pittel + Brausewetter s.r.o.",
+     "ico": "35943653",
+     "zmluv": 6,
+     "suma": 5186122
+    },
+    {
+     "nazov": "Metrostav Slovakia a.s.",
+     "ico": "47144190",
+     "zmluv": 1,
+     "suma": 3944636
+    },
+    {
+     "nazov": "RAVOZA s.r.o.",
+     "ico": "50310810",
+     "zmluv": 4,
+     "suma": 3617407
+    },
+    {
+     "nazov": "Skymat s. r. o.",
+     "ico": "54972116",
+     "zmluv": 4,
+     "suma": 3360016
+    },
+    {
+     "nazov": "Ground SK, s.r.o.",
+     "ico": "52659054",
+     "zmluv": 4,
+     "suma": 1021200
+    },
+    {
+     "nazov": "COMBIN BANSKÁ ŠTIAVNICA, s.r.o.",
+     "ico": "31631134",
+     "zmluv": 2,
+     "suma": 987250
+    },
+    {
+     "nazov": "Alsa-vision, s.r.o.",
+     "ico": "52626431",
+     "zmluv": 1,
+     "suma": 981551
+    },
+    {
+     "nazov": "Hviezdna 1 s.r.o.",
+     "ico": "50530143",
+     "zmluv": 3,
+     "suma": 839232
+    },
+    {
+     "nazov": "Ministerstvo životného prostredia Slovenskej repub",
+     "ico": "42181810",
+     "zmluv": 2,
+     "suma": 702270
+    },
+    {
+     "nazov": "KOSEC plus s.r.o.",
+     "ico": "46375007",
+     "zmluv": 8,
+     "suma": 700920
+    },
+    {
+     "nazov": "Úrad vlády Slovenskej republiky - ÚPVS",
+     "ico": "00151513",
+     "zmluv": 3,
+     "suma": 666979
+    },
+    {
+     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+     "ico": "00603481",
+     "zmluv": 15,
+     "suma": 577473
+    },
+    {
+     "nazov": "DEXT, s.r.o.",
+     "ico": "47011858",
+     "zmluv": 5,
+     "suma": 533416
+    },
+    {
+     "nazov": "Všeobecná úverová banka, a.s.; skrátený názov: VÚB, a.s.",
+     "ico": "31320155",
+     "zmluv": 7,
+     "suma": 400000
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "11207684",
+     "d": "2025-08-20",
+     "p": "Metrostav Slovakia a.s.",
+     "ico": "47144190",
+     "pr": "\"Zníženie energetickej náročnosti budovy ZŠ Bieloruská",
+     "s": 3944636.29
+    },
+    {
+     "id": "12489903",
+     "d": "2026-06-15",
+     "p": "Pittel + Brausewetter s.r.o.",
+     "ico": "35943653",
+     "pr": "Zníženie energetickej náročnosti budovy - ZŠ Bieloruská",
+     "s": 3940588.88
+    },
+    {
+     "id": "9525372",
+     "d": "2024-07-18",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-002-2023-DV-EFRR /FPB9",
+     "s": 3845989.17
+    },
+    {
+     "id": "9525284",
+     "d": "2024-07-18",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-002-2023-DV-EFRR /FJM4",
+     "s": 1491691.33
+    },
+    {
+     "id": "12573086",
+     "d": "2026-07-10",
+     "p": "Skymat s. r. o.",
+     "ico": "54972116",
+     "pr": "Zníženie energetickej náročnosti ZŠ s materskou školou Vetvárska",
+     "s": 1478399.61
+    },
+    {
+     "id": "9924619",
+     "d": "2024-10-21",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-002-2023-DV-EFRR/A108",
+     "s": 985652.07
+    },
+    {
+     "id": "9924835",
+     "d": "2024-10-21",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-002-2023-DV-EFRR/A498",
+     "s": 985652.07
+    },
+    {
+     "id": "12662915",
+     "d": "2026-08-05",
+     "p": "Skymat s. r. o.",
+     "ico": "54972116",
+     "pr": "Zníženie energetickej náročnosti MŠ ul. Estónska 7",
+     "s": 984501.02
+    },
+    {
+     "id": "12658653",
+     "d": "2026-08-04",
+     "p": "Alsa-vision, s.r.o.",
+     "ico": "52626431",
+     "pr": "Zníženie energetickej náročnosti MŠ ul. Estónska 3",
+     "s": 981550.89
+    },
+    {
+     "id": "11944642",
+     "d": "2026-02-03",
+     "p": "RAVOZA s.r.o.",
+     "ico": "50310810",
+     "pr": "Obnova MŠ Estónska 5207/3, BA",
+     "s": 948789.85
+    }
+   ]
+  },
+  "Rača": {
+   "zmluv": 3232,
+   "suma": 54101651,
+   "roky": {
+    "2022": [
+     568,
+     8460499
+    ],
+    "2023": [
+     689,
+     18943616
+    ],
+    "2024": [
+     624,
+     5362359
+    ],
+    "2025": [
+     675,
+     11753305
+    ],
+    "2026": [
+     676,
+     9581872
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 1425,
+    "suma": 2277915
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 19,
+     "suma": 15495582
+    },
+    {
+     "nazov": "KAMI PROFIT, s.r.o.",
+     "ico": "35943301",
+     "zmluv": 22,
+     "suma": 6777557
+    },
+    {
+     "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+     "ico": "00164381",
+     "zmluv": 8,
+     "suma": 6117206
+    },
+    {
+     "nazov": "Všeobecná úverová banka, a. s.",
+     "ico": "31320155",
+     "zmluv": 4,
+     "suma": 3000000
+    },
+    {
+     "nazov": "Fond na podporu športu",
+     "ico": "52846059",
+     "zmluv": 4,
+     "suma": 2303727
+    },
+    {
+     "nazov": "Slovenská sporiteľňa, a.s.",
+     "ico": "00151653",
+     "zmluv": 11,
+     "suma": 1515628
+    },
+    {
+     "nazov": "Swietelsky-Slovakia spol. s r.o.",
+     "ico": "00896225",
+     "zmluv": 13,
+     "suma": 1474877
+    },
+    {
+     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+     "ico": "00603481",
+     "zmluv": 41,
+     "suma": 964991
+    },
+    {
+     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+     "ico": "00681156",
+     "zmluv": 9,
+     "suma": 915588
+    },
+    {
+     "nazov": "SIPSTAV s.r.o., r.s.p.",
+     "ico": "50226851",
+     "zmluv": 4,
+     "suma": 804241
+    },
+    {
+     "nazov": "AA PLUS SLOVAKIA, s.r.o",
+     "ico": "43848435",
+     "zmluv": 8,
+     "suma": 732393
+    },
+    {
+     "nazov": "BBAU s.r.o.",
+     "ico": "51085097",
+     "zmluv": 4,
+     "suma": 684983
+    },
+    {
+     "nazov": "THERMKLIMA, s.r.o.",
+     "ico": "50958615",
+     "zmluv": 3,
+     "suma": 402676
+    },
+    {
+     "nazov": "CORTEC s.r.o.",
+     "ico": "45584168",
+     "zmluv": 5,
+     "suma": 350043
+    },
+    {
+     "nazov": "PARA INVEST s.r.o.",
+     "ico": "44424418",
+     "zmluv": 2,
+     "suma": 339550
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "11077946",
+     "d": "2025-07-16",
+     "p": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "pr": "Zmluva o termínovanom úvere č. 507/2025/UZ",
+     "s": 3000000.0
+    },
+    {
+     "id": "7723303",
+     "d": "2023-04-04",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 2 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BFU2-74-73 zo dňa 22.12.2021",
+     "s": 2999993.77
+    },
+    {
+     "id": "7113050",
+     "d": "2022-11-10",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 1 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BFU2-74-73 zo dňa 22.12.2021",
+     "s": 2999993.77
+    },
+    {
+     "id": "11932765",
+     "d": "2026-01-30",
+     "p": "KAMI PROFIT, s.r.o.",
+     "ico": "35943301",
+     "pr": "ZMLUVA O DIELO č. 25/2026",
+     "s": 2629740.68
+    },
+    {
+     "id": "7790191",
+     "d": "2023-04-20",
+     "p": "KAMI PROFIT, s. r. o.",
+     "ico": "35943301",
+     "pr": "ZMLUVA O DIELO č. 137/2023",
+     "s": 2174408.57
+    },
+    {
+     "id": "8272705",
+     "d": "2023-08-23",
+     "p": "Ministerstvo školstva, vedy, výskumu a športu SR",
+     "ico": "00164381",
+     "pr": "Zmluva o poskytnutí prostriedkov mechanizmu na podporu obnovy a odolnosti",
+     "s": 1530143.57
+    },
+    {
+     "id": "8280424",
+     "d": "2023-08-23",
+     "p": "Ministerstvo školstva, vedy, výskumu a športu Slovenskej republiky",
+     "ico": "00164381",
+     "pr": "ZMLUVA O POSKYTNUTÍ PROSTRIEDKOV MECHANIZMU NA PODPORU OBNOVY A ODOLNOSTI",
+     "s": 1530143.57
+    },
+    {
+     "id": "10789463",
+     "d": "2025-05-07",
+     "p": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+     "ico": "00164381",
+     "pr": "Dodatok č. 3 k Zmluve č. /0048/2023 o poskytnutí prostriedkov mechanizmu na podporu obnovy a odolnosti",
+     "s": 1528459.45
+    },
+    {
+     "id": "10793167",
+     "d": "2025-05-07",
+     "p": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+     "ico": "00164381",
+     "pr": "Dodatok č. 3 k Zmluve č. /0048/2023 o poskytnutí prostriedkov mechanizmu na podporu obnovy a odolnosti",
+     "s": 1528459.45
+    },
+    {
+     "id": "7545389",
+     "d": "2023-02-23",
+     "p": "Slovenská sporiteľňa, a. s.",
+     "ico": "00151653",
+     "pr": "Zmluva o úvere č. 126/CC/23",
+     "s": 1500000.0
+    }
+   ]
+  },
+  "Rusovce": {
+   "zmluv": 865,
+   "suma": 35444878,
+   "roky": {
+    "2022": [
+     177,
+     8188163
+    ],
+    "2023": [
+     149,
+     9850053
+    ],
+    "2024": [
+     186,
+     10639225
+    ],
+    "2025": [
+     217,
+     4654019
+    ],
+    "2026": [
+     136,
+     2113418
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 424,
+    "suma": 1311290
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 20,
+     "suma": 15041072
+    },
+    {
+     "nazov": "PS STAVBY, s.r.o.",
+     "ico": "35873612",
+     "zmluv": 4,
+     "suma": 6678665
+    },
+    {
+     "nazov": "Slovenska sporitelňa,odbor účtovníctva.",
+     "ico": "00151653",
+     "zmluv": 13,
+     "suma": 4394000
+    },
+    {
+     "nazov": "BBAU s.r.o.",
+     "ico": "51085097",
+     "zmluv": 5,
+     "suma": 2695478
+    },
+    {
+     "nazov": "CS, s.r.o.",
+     "ico": "44101937",
+     "zmluv": 8,
+     "suma": 1558573
+    },
+    {
+     "nazov": "COLAS Slovakia, a. s.",
+     "ico": "31651402",
+     "zmluv": 5,
+     "suma": 1027883
+    },
+    {
+     "nazov": "Ministerstvo dopravy SR",
+     "ico": "30416094",
+     "zmluv": 2,
+     "suma": 600525
+    },
+    {
+     "nazov": "EXTREME SPORT FABRIK s. r. o.",
+     "ico": "46999710",
+     "zmluv": 2,
+     "suma": 317126
+    },
+    {
+     "nazov": "KEMA SK, s. r. o.",
+     "ico": "31350658",
+     "zmluv": 1,
+     "suma": 198191
+    },
+    {
+     "nazov": "Hlavné mesto SR Bratislava",
+     "ico": "00603481",
+     "zmluv": 14,
+     "suma": 172801
+    },
+    {
+     "nazov": "Eduplant s.r.o.",
+     "ico": "47548240",
+     "zmluv": 1,
+     "suma": 147521
+    },
+    {
+     "nazov": "Ardsystém, s.r.o.",
+     "ico": "36397563",
+     "zmluv": 1,
+     "suma": 115248
+    },
+    {
+     "nazov": "MASTERWORK, s. r. o.",
+     "ico": "50204751",
+     "zmluv": 1,
+     "suma": 114148
+    },
+    {
+     "nazov": "Vychodil architects, s. r. o.",
+     "ico": "45925739",
+     "zmluv": 1,
+     "suma": 110429
+    },
+    {
+     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+     "ico": "00681156",
+     "zmluv": 2,
+     "suma": 100000
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "10567089",
+     "d": "2025-03-17",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+     "ico": "50349287",
+     "pr": "Dodatok č 5 k Zmluve o poskytnutí nenávratného finančného príspevku DOT_001/2025",
+     "s": 2320389.69
+    },
+    {
+     "id": "10000092",
+     "d": "2024-11-06",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 4 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BGC5-74-73 zo dňa 22.12.2021",
+     "s": 2320389.69
+    },
+    {
+     "id": "10000530",
+     "d": "2024-11-06",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "Dodatok č. 4 k Zmluve o poskytnutí nenávratného finančného príspevku č. IROP-Z-302071BGC5-74-73 z o dňa 22. 12. 2021",
+     "s": 2320389.69
+    },
+    {
+     "id": "9458513",
+     "d": "2024-06-28",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "Dodatok č. 3 k Zmluve o poskytnutí nenávratného finančného príspevku č. IROP-Z-302071BGC5-74-73 zo dňa 22. 12. 2021",
+     "s": 2320389.69
+    },
+    {
+     "id": "7157854",
+     "d": "2022-11-25",
+     "p": "PS STAVBY, s.r.o.",
+     "ico": "35873612",
+     "pr": "Dodatok č. 3 k Zmluve o dielo č. DOD/003/2022",
+     "s": 2259689.78
+    },
+    {
+     "id": "7059130",
+     "d": "2022-10-28",
+     "p": "PS STAVBY, s.r.o.",
+     "ico": "35873612",
+     "pr": "Dodatok č. 2 k Zmluve o dielo č. DOD/003/2022",
+     "s": 2209487.6
+    },
+    {
+     "id": "7059131",
+     "d": "2022-10-28",
+     "p": "PS STAVBY, s.r.o.",
+     "ico": "35873612",
+     "pr": "Dodatok č. 2 k Zmluve o dielo č. DOD/003/2022",
+     "s": 2209487.6
+    },
+    {
+     "id": "7382853",
+     "d": "2023-01-13",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+     "ico": "50349287",
+     "pr": "Dodatok č. 1 k Zmluve o poskytnutí nenávratného finančného príspevku č. IROP-Z-302071BGC5-74-73 zo dňa 22. 12. 2021",
+     "s": 2072091.01
+    },
+    {
+     "id": "7384776",
+     "d": "2023-01-13",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 1 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BGC5-74-73 zo dňa 22.12.2021",
+     "s": 2072091.01
+    },
+    {
+     "id": "10217118",
+     "d": "2024-12-20",
+     "p": "Slovenská sporiteľňa, a.",
+     "ico": "00151653",
+     "pr": "Dodatok č. 1333/CC/23-D1 k Zmluve o úvere č. 1333/CC/23",
+     "s": 1457000.0
+    }
+   ]
+  },
+  "Ružinov": {
+   "zmluv": 2671,
+   "suma": 172849311,
+   "roky": {
+    "2022": [
+     334,
+     20342116
+    ],
+    "2023": [
+     661,
+     28754927
+    ],
+    "2024": [
+     476,
+     29620997
+    ],
+    "2025": [
+     735,
+     27813497
+    ],
+    "2026": [
+     465,
+     66317774
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 1492,
+    "suma": 2901043
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 35,
+     "suma": 43445644
+    },
+    {
+     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+     "ico": "00681156",
+     "zmluv": 16,
+     "suma": 24744488
+    },
+    {
+     "nazov": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "zmluv": 7,
+     "suma": 19200000
+    },
+    {
+     "nazov": "STRABAG s.r.o.",
+     "ico": "17317282",
+     "zmluv": 2,
+     "suma": 15000000
+    },
+    {
+     "nazov": "MBM-GROUP, a.s.",
+     "ico": "36740519",
+     "zmluv": 6,
+     "suma": 6048109
+    },
+    {
+     "nazov": "XENEX, s.r.o.",
+     "ico": "36416291",
+     "zmluv": 2,
+     "suma": 5817768
+    },
+    {
+     "nazov": "DAG SLOVAKIA, a.s.",
+     "ico": "44886021",
+     "zmluv": 2,
+     "suma": 4969007
+    },
+    {
+     "nazov": "Verejnoprospešné služby Ružinov, p.o.",
+     "ico": "53375891",
+     "zmluv": 6,
+     "suma": 3735925
+    },
+    {
+     "nazov": "DÚHA, a.s.",
+     "ico": "31690360",
+     "zmluv": 3,
+     "suma": 3285782
+    },
+    {
+     "nazov": "EU-GROUP a.s.",
+     "ico": "45470651",
+     "zmluv": 16,
+     "suma": 3231020
+    },
+    {
+     "nazov": "MIPE Invest, s.r.o.",
+     "ico": "36837075",
+     "zmluv": 3,
+     "suma": 2926000
+    },
+    {
+     "nazov": "TVR a RE, s.r.o.",
+     "ico": "35728213",
+     "zmluv": 9,
+     "suma": 2593357
+    },
+    {
+     "nazov": "Veríme v zábavu, s. r. o.",
+     "ico": "46167145",
+     "zmluv": 19,
+     "suma": 2229229
+    },
+    {
+     "nazov": "ŠPORTREAL INVEST. s.r.o",
+     "ico": "36753581",
+     "zmluv": 1,
+     "suma": 2015466
+    },
+    {
+     "nazov": "Ovocné sady s. r. o.",
+     "ico": "52313182",
+     "zmluv": 2,
+     "suma": 1900000
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "12023006",
+     "d": "2026-02-19",
+     "p": "STRABAG s.r.o.",
+     "ico": "17317282",
+     "pr": "Rámcová dohoda - rekonštrukcia ciest",
+     "s": 10000000.0
+    },
+    {
+     "id": "12085538",
+     "d": "2026-03-03",
+     "p": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "pr": "Zmluva o revolvingovom úvere č. 49/2026/UZ",
+     "s": 5000000.0
+    },
+    {
+     "id": "12023008",
+     "d": "2026-02-19",
+     "p": "STRABAG s.r.o.",
+     "ico": "17317282",
+     "pr": "Rámcová dohoda - rekonštrukcia komunikácií",
+     "s": 5000000.0
+    },
+    {
+     "id": "7934851",
+     "d": "2023-06-01",
+     "p": "Ministerstvo investícií, regio",
+     "ico": "50349287",
+     "pr": "Zmluva o poskytnutí nenávratného finančného príspevku IROP-Z302091CVY6",
+     "s": 4578600.0
+    },
+    {
+     "id": "8005856",
+     "d": "2023-06-01",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU",
+     "s": 4578600.0
+    },
+    {
+     "id": "12083337",
+     "d": "2026-03-03",
+     "p": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "pr": "Zmluva o termínovanom úvere č. 45/2026/UZ",
+     "s": 4000000.0
+    },
+    {
+     "id": "10691179",
+     "d": "2025-04-14",
+     "p": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "pr": "Zmluva o termínovanom úvere č. 133/2025/UZ",
+     "s": 3500000.0
+    },
+    {
+     "id": "10691181",
+     "d": "2025-04-14",
+     "p": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "pr": "Zmluva o termínovanom úvere č. 138/2025/UZ",
+     "s": 3500000.0
+    },
+    {
+     "id": "12031238",
+     "d": "2026-02-24",
+     "p": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+     "ico": "00681156",
+     "pr": "Zmluva o poskytnutí finančného príspevku na poskytovanie sociálnej služby v zariadeniach podmienených odkázanosťou podľa § 78a ods. 1 písm. a) a b) zákona č. 448/2008 Z.z. o sociálnych službách na rozpočtový rok 2026",
+     "s": 3142944.0
+    },
+    {
+     "id": "12033578",
+     "d": "2026-02-24",
+     "p": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+     "ico": "00681156",
+     "pr": "Zmluva o poskytnutí FP na poskytovanie sociálnej služby",
+     "s": 3142944.0
+    }
+   ]
+  },
+  "Staré Mesto": {
+   "zmluv": 2482,
+   "suma": 115102591,
+   "roky": {
+    "2022": [
+     459,
+     19844314
+    ],
+    "2023": [
+     422,
+     22923692
+    ],
+    "2024": [
+     540,
+     16419456
+    ],
+    "2025": [
+     561,
+     20943521
+    ],
+    "2026": [
+     500,
+     34971608
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 1095,
+    "suma": 10357399
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.",
+     "ico": "50349287",
+     "zmluv": 43,
+     "suma": 31253192
+    },
+    {
+     "nazov": "Pittel+Brausewetter s.r.o.",
+     "ico": "35943653",
+     "zmluv": 7,
+     "suma": 15518215
+    },
+    {
+     "nazov": "Divadlo Nová scéna",
+     "ico": "00164861",
+     "zmluv": 4,
+     "suma": 7320000
+    },
+    {
+     "nazov": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "zmluv": 25,
+     "suma": 6600010
+    },
+    {
+     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+     "ico": "00681156",
+     "zmluv": 11,
+     "suma": 6242812
+    },
+    {
+     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+     "ico": "00603481",
+     "zmluv": 70,
+     "suma": 4648556
+    },
+    {
+     "nazov": "ROKO gips, s.r.o.",
+     "ico": "36302031",
+     "zmluv": 11,
+     "suma": 4309332
+    },
+    {
+     "nazov": "PARA INVEST s.r.o.",
+     "ico": "44424418",
+     "zmluv": 10,
+     "suma": 2702844
+    },
+    {
+     "nazov": "GENESIS POZEMNÉ STAVBY,s.r.o.",
+     "ico": "46059105",
+     "zmluv": 14,
+     "suma": 2163451
+    },
+    {
+     "nazov": "Slovenská inovačná a energetická agentúra",
+     "ico": "00002801",
+     "zmluv": 1,
+     "suma": 2050068
+    },
+    {
+     "nazov": "FLEXIMONT SK, s.r.o.",
+     "ico": "48042315",
+     "zmluv": 5,
+     "suma": 1401675
+    },
+    {
+     "nazov": "PROMA ENERGY, s.r.o.",
+     "ico": "50326350",
+     "zmluv": 2,
+     "suma": 1104172
+    },
+    {
+     "nazov": "CBRE Global Workplace Solutions s.r.o.",
+     "ico": "44018649",
+     "zmluv": 3,
+     "suma": 951765
+    },
+    {
+     "nazov": "ZARES s.r.o.",
+     "ico": "35778806",
+     "zmluv": 10,
+     "suma": 951136
+    },
+    {
+     "nazov": "EURO-ŠTUKONZ a.s.",
+     "ico": "35972297",
+     "zmluv": 1,
+     "suma": 877679
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "11286140",
+     "d": "2025-09-09",
+     "p": "Všeobecná úverová banka, a.s.",
+     "ico": "31320155",
+     "pr": "Zmluva o financovaní",
+     "s": 6600000.0
+    },
+    {
+     "id": "12574027",
+     "d": "2026-07-08",
+     "p": "Pittel+Brausewetter s.r.o.",
+     "ico": "35943653",
+     "pr": "Rámcová zmluva",
+     "s": 5114187.17
+    },
+    {
+     "id": "12127199",
+     "d": "2026-03-18",
+     "p": "Pittel+Brausewetter s.r.o.",
+     "ico": "35943653",
+     "pr": "Dodatok č. 1",
+     "s": 3835000.08
+    },
+    {
+     "id": "7236383",
+     "d": "2022-12-14",
+     "p": "Divadlo Nová Scéna",
+     "ico": "00164861",
+     "pr": "Kúpna zmluva",
+     "s": 3660000.0
+    },
+    {
+     "id": "7287621",
+     "d": "2022-12-14",
+     "p": "Divadlo Nová scéna",
+     "ico": "00164861",
+     "pr": "Zmluva č. 628/2022 o prevode vlastníctva nebytového priestoru",
+     "s": 3660000.0
+    },
+    {
+     "id": "11019016",
+     "d": "2025-06-20",
+     "p": "Pittel+Brausewetter s.r.o.",
+     "ico": "35943653",
+     "pr": "Rámcová zmluva",
+     "s": 3334786.17
+    },
+    {
+     "id": "7960927",
+     "d": "2023-06-01",
+     "p": "Ministerstvo investícií, regio",
+     "ico": "50349287",
+     "pr": "zmluva o poskytnutí nenávatného finančného príspevku",
+     "s": 3153800.0
+    },
+    {
+     "id": "8017415",
+     "d": "2023-06-01",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU č. IROP-Z302091CVW6-91-108",
+     "s": 3153800.0
+    },
+    {
+     "id": "7163400",
+     "d": "2022-11-28",
+     "p": "Pittel+Brausewetter s.r.o.",
+     "ico": "35943653",
+     "pr": "Rámcová dohoda",
+     "s": 3040340.0
+    },
+    {
+     "id": "9681035",
+     "d": "2024-08-28",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č.2 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BFR9-74-73 zo dňa 20.12.2021",
+     "s": 2830769.84
+    }
+   ]
+  },
+  "Vajnory": {
+   "zmluv": 685,
+   "suma": 23587035,
+   "roky": {
+    "2022": [
+     115,
+     3986964
+    ],
+    "2023": [
+     121,
+     6497257
+    ],
+    "2024": [
+     109,
+     7034552
+    ],
+    "2025": [
+     171,
+     2552282
+    ],
+    "2026": [
+     169,
+     3515981
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 230,
+    "suma": 147246
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 16,
+     "suma": 13059431
+    },
+    {
+     "nazov": "Slovenská sporiteľňa, a.s.",
+     "ico": "00151653",
+     "zmluv": 11,
+     "suma": 2750000
+    },
+    {
+     "nazov": "P.S. in, a.s.",
+     "ico": "47764821",
+     "zmluv": 6,
+     "suma": 1326257
+    },
+    {
+     "nazov": "THERMKLIMA, s.r.o.",
+     "ico": "50958615",
+     "zmluv": 2,
+     "suma": 1320059
+    },
+    {
+     "nazov": "Pittel + Brausewetter s.r.o.",
+     "ico": "35943653",
+     "zmluv": 2,
+     "suma": 750000
+    },
+    {
+     "nazov": "MIDAFI s. r. o.",
+     "ico": "56508158",
+     "zmluv": 6,
+     "suma": 523133
+    },
+    {
+     "nazov": "Ministerstvo kultúry Slovenskej republiky",
+     "ico": "00165182",
+     "zmluv": 3,
+     "suma": 521718
+    },
+    {
+     "nazov": "Slovenská inovačná a energetická agentúra",
+     "ico": "00002801",
+     "zmluv": 4,
+     "suma": 504893
+    },
+    {
+     "nazov": "Základná škola Kataríny Brúderovej, Osloboditeľská 1, Bratislava",
+     "ico": "42447402",
+     "zmluv": 3,
+     "suma": 418360
+    },
+    {
+     "nazov": "A - gips, s. r. o.",
+     "ico": "46208933",
+     "zmluv": 1,
+     "suma": 255806
+    },
+    {
+     "nazov": "4GROUP electric s.r.o.",
+     "ico": "54731950",
+     "zmluv": 1,
+     "suma": 252959
+    },
+    {
+     "nazov": "Poľnohospodárske družstvo Vajnory",
+     "ico": "00190284",
+     "zmluv": 4,
+     "suma": 135344
+    },
+    {
+     "nazov": "EKONOS DVA s.r.o.",
+     "ico": "44664109",
+     "zmluv": 4,
+     "suma": 112156
+    },
+    {
+     "nazov": "Rumitt s. r. o.",
+     "ico": "46242619",
+     "zmluv": 1,
+     "suma": 88140
+    },
+    {
+     "nazov": "ARCH-I-BALD, s.r.o",
+     "ico": "35843039",
+     "zmluv": 2,
+     "suma": 81000
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "8227812",
+     "d": "2023-08-22",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 1 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BHY3-74-73",
+     "s": 2564650.53
+    },
+    {
+     "id": "8894205",
+     "d": "2024-02-01",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 2 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BHY3-74-73 zo dňa 22.12.2021",
+     "s": 2500169.75
+    },
+    {
+     "id": "8975619",
+     "d": "2024-02-26",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 3 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302071BHY3-74-73",
+     "s": 2482770.88
+    },
+    {
+     "id": "7796102",
+     "d": "2023-04-24",
+     "p": "THERMKLIMA, s.r.o.",
+     "ico": "50958615",
+     "pr": "Vybudovanie zariadenia pre seniorov",
+     "s": 1320059.14
+    },
+    {
+     "id": "7101810",
+     "d": "2022-11-04",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "Poskytnutie NFP - Zariadenie seniorov",
+     "s": 1050234.71
+    },
+    {
+     "id": "7075745",
+     "d": "2022-11-02",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "Zmluva o poskytnutí nenávratného finančného príspevku č. IROP-Z-302021BRW1-211-78",
+     "s": 1050234.71
+    },
+    {
+     "id": "8825357",
+     "d": "2024-01-12",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "Poskytnutie NFP, dod.2, Zariadenie pre seniorov",
+     "s": 1008644.0
+    },
+    {
+     "id": "11648643",
+     "d": "2025-11-25",
+     "p": "Slovenská sporiteľňa, a.s.",
+     "ico": "00151653",
+     "pr": "Poskytnutie úveru",
+     "s": 1000000.0
+    },
+    {
+     "id": "7306797",
+     "d": "2022-12-22",
+     "p": "Slovenská sporiteľňa, a.s.",
+     "ico": "00151653",
+     "pr": "Poskytnutie úveru",
+     "s": 800000.0
+    },
+    {
+     "id": "12609984",
+     "d": "2026-07-21",
+     "p": "Pittel + Brausewetter s.r.o.",
+     "ico": "35943653",
+     "pr": "Zmluva na opravy a rekonštrukcie komunkácií, chodnííkov a spevnených plôch MČ",
+     "s": 750000.0
+    }
+   ]
+  },
+  "Vrakuňa": {
+   "zmluv": 1118,
+   "suma": 26926659,
+   "roky": {
+    "2022": [
+     153,
+     3606724
+    ],
+    "2023": [
+     263,
+     4272687
+    ],
+    "2024": [
+     276,
+     7284328
+    ],
+    "2025": [
+     265,
+     6223199
+    ],
+    "2026": [
+     161,
+     5539720
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 459,
+    "suma": 613948
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Edu Vrakuňa s.r.o.",
+     "ico": "56354363",
+     "zmluv": 2,
+     "suma": 3000000
+    },
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 10,
+     "suma": 2750807
+    },
+    {
+     "nazov": "littlefinger, s.r.o.",
+     "ico": "44768575",
+     "zmluv": 10,
+     "suma": 2530827
+    },
+    {
+     "nazov": "SWM Group a.s.",
+     "ico": "45316953",
+     "zmluv": 12,
+     "suma": 1934658
+    },
+    {
+     "nazov": "M&M INVESTMENTS s. r. o.",
+     "ico": "52108376",
+     "zmluv": 4,
+     "suma": 1315379
+    },
+    {
+     "nazov": "MYROX s.r.o.",
+     "ico": "51194783",
+     "zmluv": 7,
+     "suma": 1174005
+    },
+    {
+     "nazov": "R+S Service, s.r.o.",
+     "ico": "44364261",
+     "zmluv": 5,
+     "suma": 1027584
+    },
+    {
+     "nazov": "PARA INVEST s.r.o.",
+     "ico": "44424418",
+     "zmluv": 7,
+     "suma": 943973
+    },
+    {
+     "nazov": "TESAR - DACH s.r.o.",
+     "ico": "45595151",
+     "zmluv": 3,
+     "suma": 837097
+    },
+    {
+     "nazov": "Environmentálny fond",
+     "ico": "30796491",
+     "zmluv": 9,
+     "suma": 807922
+    },
+    {
+     "nazov": "Hlavné mesto SR Bratislava",
+     "ico": "00603481",
+     "zmluv": 26,
+     "suma": 600955
+    },
+    {
+     "nazov": "EKOM PLUS, s.r.o.",
+     "ico": "36236403",
+     "zmluv": 2,
+     "suma": 588150
+    },
+    {
+     "nazov": "Pohas Group, s.r.o.",
+     "ico": "48333280",
+     "zmluv": 19,
+     "suma": 474698
+    },
+    {
+     "nazov": "SPORT NITRA s.r.o",
+     "ico": "36782041",
+     "zmluv": 2,
+     "suma": 398247
+    },
+    {
+     "nazov": "Veríme v zábavu, s.r.o.",
+     "ico": "46167145",
+     "zmluv": 8,
+     "suma": 393379
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "9625014",
+     "d": "2024-08-14",
+     "p": "Edu Vrakuňa s.r.o.",
+     "ico": "56354363",
+     "pr": "Kúpna zmluva so zriadením vecného bremena - Vážska 34, Bratislava",
+     "s": 3000000.0
+    },
+    {
+     "id": "8028485",
+     "d": "2023-06-13",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU č. IROP-Z302091CVV3-91-108",
+     "s": 1003600.0
+    },
+    {
+     "id": "12707484",
+     "d": "2026-08-20",
+     "p": "littlefinger, s.r.o.",
+     "ico": "44768575",
+     "pr": "Práce na obnove rekonštrukcií, parkovísk, chodníkov, komunikácií atd.",
+     "s": 972734.85
+    },
+    {
+     "id": "9007545",
+     "d": "2024-03-05",
+     "p": "littlefinger, s.r.o.",
+     "ico": "44768575",
+     "pr": "Rámcová dohoda",
+     "s": 838317.6
+    },
+    {
+     "id": "7308878",
+     "d": "2022-12-23",
+     "p": "M&M Investments s.r.o.",
+     "ico": "52108376",
+     "pr": "Stravovanie dôchodcov rok 2022",
+     "s": 564134.0
+    },
+    {
+     "id": "6448910",
+     "d": "2022-05-09",
+     "p": "M&M Investments s.r.o.",
+     "ico": "52108376",
+     "pr": "Dodatok č.1 k Zmluve o poskytovaní služby na prípravu a dodanie stravy",
+     "s": 513244.8
+    },
+    {
+     "id": "10680212",
+     "d": "2025-04-07",
+     "p": "SWM Group a.s.",
+     "ico": "45316953",
+     "pr": "Dodatok č. 1 k Rámcovej dohode EČ MČ:293/2023",
+     "s": 472160.2
+    },
+    {
+     "id": "8266853",
+     "d": "2023-09-04",
+     "p": "SWM Group a.s.",
+     "ico": "45316953",
+     "pr": "Údržba trávnatých plôch a krov",
+     "s": 466038.36
+    },
+    {
+     "id": "10707589",
+     "d": "2025-01-27",
+     "p": "SWM Group a.s.",
+     "ico": "45316953",
+     "pr": "Dodatok č. 1 k Rámcovej dohode EČ MČ: 328/2023",
+     "s": 429303.44
+    },
+    {
+     "id": "8484483",
+     "d": "2023-10-24",
+     "p": "SWM Group a.s.",
+     "ico": "45316953",
+     "pr": "Zimná údržba komunikácií",
+     "s": 420255.54
+    }
+   ]
+  },
+  "Záhorská Bystrica": {
+   "zmluv": 874,
+   "suma": 17922259,
+   "roky": {
+    "2022": [
+     143,
+     2081111
+    ],
+    "2023": [
+     181,
+     2574097
+    ],
+    "2024": [
+     197,
+     967779
+    ],
+    "2025": [
+     189,
+     5900080
+    ],
+    "2026": [
+     164,
+     6399191
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 470,
+    "suma": 3835745
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Všeobecná úverová banka a.s.",
+     "ico": "31320155",
+     "zmluv": 11,
+     "suma": 3000008
+    },
+    {
+     "nazov": "Bratislavský samosprávny kraj",
+     "ico": "36063606",
+     "zmluv": 11,
+     "suma": 2863680
+    },
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 6,
+     "suma": 2132501
+    },
+    {
+     "nazov": "Wertika s.r.o.",
+     "ico": "35843080",
+     "zmluv": 2,
+     "suma": 1603012
+    },
+    {
+     "nazov": "Pod vŕškami 3, s.r.o.",
+     "ico": "56092377",
+     "zmluv": 3,
+     "suma": 507756
+    },
+    {
+     "nazov": "FM - Reality, s.r.o.",
+     "ico": "51881667",
+     "zmluv": 2,
+     "suma": 456590
+    },
+    {
+     "nazov": "Comfing s.r.o.",
+     "ico": "35681918",
+     "zmluv": 4,
+     "suma": 399751
+    },
+    {
+     "nazov": "R+S Service, s.r.o.",
+     "ico": "44364261",
+     "zmluv": 1,
+     "suma": 368972
+    },
+    {
+     "nazov": "DOMOV Slovakia, a.s.",
+     "ico": "35777761",
+     "zmluv": 1,
+     "suma": 311400
+    },
+    {
+     "nazov": "Bratislavská vodárenská spoločnosť, a.s.",
+     "ico": "35850370",
+     "zmluv": 11,
+     "suma": 287333
+    },
+    {
+     "nazov": "PANTOGRAPH s.r.o.",
+     "ico": "47229667",
+     "zmluv": 2,
+     "suma": 277536
+    },
+    {
+     "nazov": "Športfinal s.r.o.",
+     "ico": "44149671",
+     "zmluv": 2,
+     "suma": 235805
+    },
+    {
+     "nazov": "LEONTECH s.r.o.",
+     "ico": "47973871",
+     "zmluv": 6,
+     "suma": 195822
+    },
+    {
+     "nazov": "Hlavné mesto SR BA",
+     "ico": "00603481",
+     "zmluv": 15,
+     "suma": 179000
+    },
+    {
+     "nazov": "KEMA SK s.r.o.",
+     "ico": null,
+     "zmluv": 1,
+     "suma": 156734
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "11919017",
+     "d": "2026-01-28",
+     "p": "Bratislavský samosprávny kraj",
+     "ico": "36063606",
+     "pr": "Zmluva o združení",
+     "s": 2839179.67
+    },
+    {
+     "id": "11217414",
+     "d": "2025-08-25",
+     "p": "Wertika s.r.o.",
+     "ico": "35843080",
+     "pr": "Kúpa budovy Detské denné centrum_Agroprevádzka Zelený dvor s prísl.",
+     "s": 1603012.5
+    },
+    {
+     "id": "11151989",
+     "d": "2025-08-04",
+     "p": "VÚB banka Intesa Sanpaolo Group",
+     "ico": "31320155",
+     "pr": "Poskytnutie úveru",
+     "s": 1500000.0
+    },
+    {
+     "id": "11220962",
+     "d": "2025-08-04",
+     "p": "VÚB banka Intesa Sanpaolo Group",
+     "ico": "31320155",
+     "pr": "Úverová zmluva",
+     "s": 1500000.0
+    },
+    {
+     "id": "6962981",
+     "d": "2022-10-05",
+     "p": "FM - Reality, s.r.o.",
+     "ico": "51881667",
+     "pr": "pozemok k.u. ZB",
+     "s": 455090.0
+    },
+    {
+     "id": "9682880",
+     "d": "2024-08-26",
+     "p": "Pod vŕškami 3, s.r.o.",
+     "ico": "56092377",
+     "pr": "kúpa pozemku v k.ú. ZB",
+     "s": 448184.0
+    },
+    {
+     "id": "12532962",
+     "d": "2026-07-30",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR /G043",
+     "s": 382721.69
+    },
+    {
+     "id": "12538093",
+     "d": "2026-06-30",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+     "ico": "50349287",
+     "pr": "Zmluva o poskyt.NFP_PSK-SIEA-007-2024-ITI-EFRR/G043",
+     "s": 382721.69
+    },
+    {
+     "id": "8234836",
+     "d": "2023-06-07",
+     "p": "Ministerstvo investícií, regio",
+     "ico": "50349287",
+     "pr": "Riešenie migračných výziev MČ BA - ZB",
+     "s": 371800.0
+    },
+    {
+     "id": "8327663",
+     "d": "2023-06-07",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU č. IROP-Z302091CWN4-91-108",
+     "s": 371800.0
+    }
+   ]
+  },
+  "Čunovo": {
+   "zmluv": 289,
+   "suma": 2743855,
+   "roky": {
+    "2022": [
+     52,
+     155267
+    ],
+    "2023": [
+     90,
+     701595
+    ],
+    "2024": [
+     61,
+     348424
+    ],
+    "2025": [
+     51,
+     374844
+    ],
+    "2026": [
+     35,
+     1163725
+    ]
+   },
+   "fyzicke_osoby": {
+    "zmluv": 134,
+    "suma": 212997
+   },
+   "najvacsi_partneri": [
+    {
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "zmluv": 5,
+     "suma": 1499265
+    },
+    {
+     "nazov": "MBM-group, a.s.",
+     "ico": "36740519",
+     "zmluv": 3,
+     "suma": 318939
+    },
+    {
+     "nazov": "Hlavné mesto SR Bratislava",
+     "ico": "00603481",
+     "zmluv": 13,
+     "suma": 179729
+    },
+    {
+     "nazov": "PINO, s.r.o.",
+     "ico": "44013141",
+     "zmluv": 6,
+     "suma": 161096
+    },
+    {
+     "nazov": "Čunovo Development, s.r.o.",
+     "ico": "47235284",
+     "zmluv": 2,
+     "suma": 110835
+    },
+    {
+     "nazov": "MEMO s.r.o.",
+     "ico": "52009319",
+     "zmluv": 1,
+     "suma": 53940
+    },
+    {
+     "nazov": "Telovýchovná jednota Čunovo",
+     "ico": "00688932",
+     "zmluv": 6,
+     "suma": 42500
+    },
+    {
+     "nazov": "Slovenská republika zastúpená Ministerstvom vnútra Slovenskej republiky",
+     "ico": "00151866",
+     "zmluv": 5,
+     "suma": 39864
+    },
+    {
+     "nazov": "EUROPEAN ENTERPRISE, s.r.o.",
+     "ico": "45967920",
+     "zmluv": 1,
+     "suma": 36490
+    },
+    {
+     "nazov": "PPARCHSTUDIO s.r.o.",
+     "ico": "56205431",
+     "zmluv": 1,
+     "suma": 25100
+    },
+    {
+     "nazov": "SOLID plus s.r.o.",
+     "ico": "46439692",
+     "zmluv": 1,
+     "suma": 22838
+    },
+    {
+     "nazov": "OZ Chorvátsky kultúrny spolok Čunovo",
+     "ico": "42132941",
+     "zmluv": 7,
+     "suma": 9320
+    },
+    {
+     "nazov": "Bratislavský samosprávny kraj",
+     "ico": "36063606",
+     "zmluv": 8,
+     "suma": 8000
+    },
+    {
+     "nazov": "PROMT AUDIT, s.r.o.",
+     "ico": "36252158",
+     "zmluv": 3,
+     "suma": 5250
+    },
+    {
+     "nazov": "ZD Corporation s.r.o.",
+     "ico": "53008316",
+     "zmluv": 1,
+     "suma": 3211
+    }
+   ],
+   "najvacsie_zmluvy": [
+    {
+     "id": "12615364",
+     "d": "2026-07-23",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR/I138",
+     "s": 939427.2
+    },
+    {
+     "id": "7598013",
+     "d": "2023-03-07",
+     "p": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "ico": "50349287",
+     "pr": "DODATOK Č. 1 k ZMLUVE O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU Č. IROP-Z-302021M878-221-10 zo dňa 10.09.2018",
+     "s": 481837.54
+    },
+    {
+     "id": "12713393",
+     "d": "2026-08-21",
+     "p": "PINO, s.r.o.",
+     "ico": "44013141",
+     "pr": "Zmluva o zabezpečení a poskytovaní stravovania",
+     "s": 161095.53
+    },
+    {
+     "id": "11341318",
+     "d": "2025-09-19",
+     "p": "MBM-group, a.s.",
+     "ico": "36740519",
+     "pr": "Dodatok č. 1 k ZoD č. 952/2025-27",
+     "s": 144009.79
+    },
+    {
+     "id": "11191905",
+     "d": "2025-08-15",
+     "p": "MBM-group, a.s.",
+     "ico": "36740519",
+     "pr": "Zmluva o dielo",
+     "s": 122836.8
+    },
+    {
+     "id": "9501088",
+     "d": "2024-07-11",
+     "p": "Čunovo Development, s.r.o.",
+     "ico": "47235284",
+     "pr": "Kúpna zmluva- prípojky",
+     "s": 110835.38
+    },
+    {
+     "id": "10044138",
+     "d": "2024-10-31",
+     "p": "Hlavné mesto SR Bratislava",
+     "ico": "00603481",
+     "pr": "Zmluva o rozdelení ednorazovej kompenzácie na počet žiakov poskytnutá mestským častiam",
+     "s": 108000.0
+    },
+    {
+     "id": "9742472",
+     "d": "2024-09-10",
+     "p": "MEMO s.r.o.",
+     "ico": "52009319",
+     "pr": "Dodatok č.1 k Zmluva o dielo č. 654/20219-44",
+     "s": 53940.0
+    },
+    {
+     "id": "11497101",
+     "d": "2025-10-23",
+     "p": "MBM-group, a.s.",
+     "ico": "36740519",
+     "pr": "Zmluva o dielo-rekonštrukcia komunikácie Ražná ulica",
+     "s": 52092.09
+    },
+    {
+     "id": "6679202",
+     "d": "2022-05-31",
+     "p": "Slovenská republika - Ministerstvo vnútra Slovenskej republiky",
+     "ico": "00151866",
+     "pr": "Darovacia zmluva č.p.: KRHZ-BA-VO-134-004/2022",
+     "s": 39863.6
+    }
+   ]
+  }
+ },
+ "dotacie": {
+  "Devín": {
+   "poskytnute": {
+    "zmluv": 0,
+    "suma": 0,
+    "prijimatelia": []
+   },
+   "prijate": {
+    "zmluv": 9,
+    "suma": 86225,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 40000
+     },
+     {
+      "nazov": "Ministerstvo financií",
+      "suma": 40000
+     },
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 5720
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 504
+     }
+    ]
+   }
+  },
+  "Devínska Nová Ves": {
+   "poskytnute": {
+    "zmluv": 120,
+    "suma": 865416,
+    "prijimatelia": [
+     {
+      "nazov": "DNV ŠPORT, spol. s.r.o.",
+      "suma": 275000
+     },
+     {
+      "nazov": "Devínskonovoveská televízia spol. s r.o.",
+      "suma": 125000
+     },
+     {
+      "nazov": "DSS Senecio, n.o.",
+      "suma": 76454
+     },
+     {
+      "nazov": "Futbalový klub Lokomotíva Devínska Nová Ves",
+      "suma": 73200
+     },
+     {
+      "nazov": "Futbalový klub mládeže Devínska Nová Ves",
+      "suma": 49000
+     },
+     {
+      "nazov": "Stolnotenisový klub Devínska Nová Ves",
+      "suma": 41800
+     },
+     {
+      "nazov": "GoodSports International Slovensko",
+      "suma": 24400
+     },
+     {
+      "nazov": "Šachový klub STRELEC Devínska Nová Ves",
+      "suma": 15600
+     },
+     {
+      "nazov": "Umelci z Istrijskej,o.z.",
+      "suma": 14770
+     },
+     {
+      "nazov": "Klub Workout Academy o.z.",
+      "suma": 14700
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 22,
+    "suma": 322264,
+    "poskytovatelia": [
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 159734
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej Republiky Bratislava",
+      "suma": 80216
+     },
+     {
+      "nazov": "Enviromentálny Fond",
+      "suma": 14850
+     },
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 14850
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 13360
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+      "suma": 13360
+     },
+     {
+      "nazov": "Slovenský zväz telesne postihnutých, Základná organizácia Bratislava",
+      "suma": 12299
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 6000
+     }
+    ]
+   }
+  },
+  "Dúbravka": {
+   "poskytnute": {
+    "zmluv": 119,
+    "suma": 268606,
+    "prijimatelia": [
+     {
+      "nazov": "Občianske združenie",
+      "suma": 33540
+     },
+     {
+      "nazov": "Občianske združenie Futbalový klub Dúbravka",
+      "suma": 19500
+     },
+     {
+      "nazov": "Bežecký klub \"Hraj Na Tie Nohy",
+      "suma": 16600
+     },
+     {
+      "nazov": "FUTBALOVÝ KLUB POLÍCIE BRATISLAVA",
+      "suma": 14000
+     },
+     {
+      "nazov": "FUTBALOVÝ KLUB POLÍCIE BRATISL",
+      "suma": 12600
+     },
+     {
+      "nazov": "Lukostrelecký klub Bratislava",
+      "suma": 11600
+     },
+     {
+      "nazov": "Školský športový klub gymnázium Biliková",
+      "suma": 11000
+     },
+     {
+      "nazov": "Centrum rodiny, n.o.",
+      "suma": 10800
+     },
+     {
+      "nazov": "Športová škola Galaktikos",
+      "suma": 9000
+     },
+     {
+      "nazov": "Občianske združenie ZRPŠ pri ZŠ Pri kríži",
+      "suma": 8100
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 31,
+    "suma": 440694,
+    "poskytovatelia": [
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 282398
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 50000
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 37800
+     },
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 29700
+     },
+     {
+      "nazov": "Fond na podporu umenia",
+      "suma": 15700
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 14000
+     },
+     {
+      "nazov": "Nadácia BVS",
+      "suma": 8756
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 2340
+     }
+    ]
+   }
+  },
+  "Hlavné mesto": {
+   "poskytnute": {
+    "zmluv": 577,
+    "suma": 12123847,
+    "prijimatelia": [
+     {
+      "nazov": "Mestská časť Bratislava - Nové Mesto",
+      "suma": 4383848
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Petržalka",
+      "suma": 925301
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Ružinov",
+      "suma": 666333
+     },
+     {
+      "nazov": "DEPAUL SLOVENSKO, nezisková organizácia",
+      "suma": 517651
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Staré Mesto",
+      "suma": 343913
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Karlova Ves",
+      "suma": 305232
+     },
+     {
+      "nazov": "MKK Grössling s. r. o",
+      "suma": 300000
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Dúbravka",
+      "suma": 282398
+     },
+     {
+      "nazov": "Mestská časť Bratislava - Podunajské Biskupice",
+      "suma": 220461
+     },
+     {
+      "nazov": "Človek v ohrození, n.o.",
+      "suma": 208000
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 79,
+    "suma": 17707803,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo dopravy SR",
+      "suma": 4494450
+     },
+     {
+      "nazov": "Ministerstvo dopravy Slovenskej republiky",
+      "suma": 4353290
+     },
+     {
+      "nazov": "Nadácia mesta Bratislavy",
+      "suma": 3150000
+     },
+     {
+      "nazov": "\"Nadácia mesta Bratislavy\"",
+      "suma": 2450000
+     },
+     {
+      "nazov": "Fond na podporu športu",
+      "suma": 2046353
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 540000
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+      "suma": 274127
+     },
+     {
+      "nazov": "Nadácia Milana Šimečku",
+      "suma": 70500
+     }
+    ]
+   }
+  },
+  "Jarovce": {
+   "poskytnute": {
+    "zmluv": 25,
+    "suma": 82300,
+    "prijimatelia": [
+     {
+      "nazov": "Telovýchovná jednota Jarovce",
+      "suma": 57000
+     },
+     {
+      "nazov": "Združenie technických a športových činností ZO Bratislava - Jarovce",
+      "suma": 6800
+     },
+     {
+      "nazov": "Dobrovoľný hasičský zbor OZ Jarovce",
+      "suma": 4000
+     },
+     {
+      "nazov": "Choľvátsky kulturny spolok",
+      "suma": 4000
+     },
+     {
+      "nazov": "Chorvátsky kultúrny zväz na Slovensku",
+      "suma": 3000
+     },
+     {
+      "nazov": "Chorvátsky kultúrny spolok",
+      "suma": 2700
+     },
+     {
+      "nazov": "Dobrovoľný hasičský zbor Bratislava - Jarovce",
+      "suma": 2500
+     },
+     {
+      "nazov": "Dobrovoľ'ný hasičský zbor OZ Jarovce",
+      "suma": 2000
+     },
+     {
+      "nazov": "Materské centrum Luskáčik",
+      "suma": 300
+     },
+     {
+      "nazov": "VÚB, a.s.",
+      "suma": 0
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 8,
+    "suma": 37868,
+    "poskytovatelia": [
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 23018
+     },
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 14850
+     }
+    ]
+   }
+  },
+  "Karlova Ves": {
+   "poskytnute": {
+    "zmluv": 156,
+    "suma": 233010,
+    "prijimatelia": [
+     {
+      "nazov": "Futbalový klub mládeže Karlova Ves Bratislava",
+      "suma": 54398
+     },
+     {
+      "nazov": "Futbalový klub mládeže Karlova Ves Bratislava, o.z.",
+      "suma": 21400
+     },
+     {
+      "nazov": "Mládežnícky basketbalový klub KARLOVKA",
+      "suma": 14473
+     },
+     {
+      "nazov": "Kanoistický klub Slávia UK Bratislava",
+      "suma": 14447
+     },
+     {
+      "nazov": "Športový klub polície Bratislava",
+      "suma": 11365
+     },
+     {
+      "nazov": "Klub vodného slalomu Karlova Ves",
+      "suma": 10629
+     },
+     {
+      "nazov": "Vodácky klub Tatran Karlova Ves - Bratislava, o.z.",
+      "suma": 8420
+     },
+     {
+      "nazov": "Rodinné centrum Klbko",
+      "suma": 8380
+     },
+     {
+      "nazov": "Klub vodných športov OCEÁN Bratislava",
+      "suma": 7381
+     },
+     {
+      "nazov": "off season training o.z.",
+      "suma": 6923
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 52,
+    "suma": 2862740,
+    "poskytovatelia": [
+     {
+      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+      "suma": 1131222
+     },
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 800000
+     },
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+      "suma": 587418
+     },
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 126732
+     },
+     {
+      "nazov": "Ministerstvo financií Slovenskej republiky",
+      "suma": 50000
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 50000
+     },
+     {
+      "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+      "suma": 30861
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 26000
+     }
+    ]
+   }
+  },
+  "Lamač": {
+   "poskytnute": {
+    "zmluv": 24,
+    "suma": 180989,
+    "prijimatelia": [
+     {
+      "nazov": "Futbalový klub Lamač",
+      "suma": 95000
+     },
+     {
+      "nazov": "Hl.mesto SR Bratislavy",
+      "suma": 62716
+     },
+     {
+      "nazov": "Intervenčné centrum Domino",
+      "suma": 5600
+     },
+     {
+      "nazov": "Iniciatíva rodičov Lamača o. z.",
+      "suma": 3557
+     },
+     {
+      "nazov": "Rodinné centrum - Obláčik, o. z.",
+      "suma": 3362
+     },
+     {
+      "nazov": "Musica al Cuore Bratislava-Lamač, o.z.",
+      "suma": 2700
+     },
+     {
+      "nazov": "Čarodejník z krajiny, o. z.",
+      "suma": 1804
+     },
+     {
+      "nazov": "Lesné spoločenstvo majiteľov urbáru",
+      "suma": 1650
+     },
+     {
+      "nazov": "Rodinné centrum - Obláčik",
+      "suma": 1500
+     },
+     {
+      "nazov": "GOJU KAI KARATE Bratislava, o.z.",
+      "suma": 1500
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 16,
+    "suma": 228561,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 120078
+     },
+     {
+      "nazov": "Nadácia BVS",
+      "suma": 69687
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 21000
+     },
+     {
+      "nazov": "Audiovizuálny fond",
+      "suma": 16000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 1797
+     },
+     {
+      "nazov": "Bratislavská samosprávny kraj",
+      "suma": 0
+     }
+    ]
+   }
+  },
+  "Nové Mesto": {
+   "poskytnute": {
+    "zmluv": 37,
+    "suma": 56100,
+    "prijimatelia": [
+     {
+      "nazov": "Novomestský športový klub 1922 Bratislava",
+      "suma": 12000
+     },
+     {
+      "nazov": "Novomestský športový klub 1922 o.z.",
+      "suma": 7000
+     },
+     {
+      "nazov": "BAJSKLAVA o. z.",
+      "suma": 5000
+     },
+     {
+      "nazov": "Depaul Slovensko, nezisková organizácia",
+      "suma": 4000
+     },
+     {
+      "nazov": "Centrum podagogicko - psychlogického poradenstva a prevencie",
+      "suma": 2500
+     },
+     {
+      "nazov": "Slovenská hokejbalová únia",
+      "suma": 2000
+     },
+     {
+      "nazov": "Bratislavský spolok nepočujúcich 1930",
+      "suma": 2000
+     },
+     {
+      "nazov": "VAGUS o.z.",
+      "suma": 2000
+     },
+     {
+      "nazov": "Bunkre o. z.",
+      "suma": 2000
+     },
+     {
+      "nazov": "Spolok PAMODAJ",
+      "suma": 1500
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 15,
+    "suma": 635882,
+    "poskytovatelia": [
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 420092
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+      "suma": 170000
+     },
+     {
+      "nazov": "Nadácia BVS",
+      "suma": 20200
+     },
+     {
+      "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+      "suma": 18140
+     },
+     {
+      "nazov": "Nadácia Cvernovka",
+      "suma": 5000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 1950
+     },
+     {
+      "nazov": "Slovenský zväz protifašistických bojovníkov, Oblastný výbor Bratislavského kraja",
+      "suma": 500
+     }
+    ]
+   }
+  },
+  "Petržalka": {
+   "poskytnute": {
+    "zmluv": 108,
+    "suma": 1712597,
+    "prijimatelia": [
+     {
+      "nazov": "Športové zariadenia Petržalky, s. r. o.",
+      "suma": 751182
+     },
+     {
+      "nazov": "FC Petržalka futbal a.s.",
+      "suma": 161423
+     },
+     {
+      "nazov": "Slovenská akademická asociácia pre medzinárodnú spoluprácu",
+      "suma": 55972
+     },
+     {
+      "nazov": "Miestny športový klub Iskra Petržalka",
+      "suma": 54508
+     },
+     {
+      "nazov": "ŠPORTOVÁ ŠKOLA KARATE BRATISLAVA, o.z.",
+      "suma": 45916
+     },
+     {
+      "nazov": "Športový klub polície Bratislava",
+      "suma": 44755
+     },
+     {
+      "nazov": "Klub modernej gymnastiky DANUBIA, o.z.",
+      "suma": 43784
+     },
+     {
+      "nazov": "Slávia Gymnastické centrum Bratislava, o.z.",
+      "suma": 42009
+     },
+     {
+      "nazov": "Klub modernej gymnastiky DANUB",
+      "suma": 40411
+     },
+     {
+      "nazov": "Slávia Gymnastické centrum Bra",
+      "suma": 40381
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 25,
+    "suma": 3786857,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 1635610
+     },
+     {
+      "nazov": "Ministerstvo investícií, regio",
+      "suma": 1200000
+     },
+     {
+      "nazov": "Ministerstvo investícii, regio",
+      "suma": 435610
+     },
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 122321
+     },
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovens",
+      "suma": 120000
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 100000
+     },
+     {
+      "nazov": "Ministerstvo financií SR sekcia rozpočtová",
+      "suma": 100000
+     },
+     {
+      "nazov": "Slovenská akademická asociácia pre medzinárodnú spoluprácu, Národná agentúra programu Erasmus+ pre vzdelávanie a odbornú",
+      "suma": 56096
+     }
+    ]
+   }
+  },
+  "Podunajské Biskupice": {
+   "poskytnute": {
+    "zmluv": 36,
+    "suma": 89200,
+    "prijimatelia": [
+     {
+      "nazov": "Karate Klub Willo o.z.",
+      "suma": 13000
+     },
+     {
+      "nazov": "Baseballový klub Apollo Bratislava",
+      "suma": 12000
+     },
+     {
+      "nazov": "Občianske združenie SportInsti",
+      "suma": 9000
+     },
+     {
+      "nazov": "Baseballový klub Apollo Bratis",
+      "suma": 8500
+     },
+     {
+      "nazov": "Športový klub Koryo",
+      "suma": 6500
+     },
+     {
+      "nazov": "o.z. Šinter",
+      "suma": 6500
+     },
+     {
+      "nazov": "Občianske združenie SportInstitute",
+      "suma": 5000
+     },
+     {
+      "nazov": "Jumping Joe o.z.",
+      "suma": 5000
+     },
+     {
+      "nazov": "Sportinstitute, o.z.",
+      "suma": 5000
+     },
+     {
+      "nazov": "Bytový podnik Podunajské Bisku",
+      "suma": 5000
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 11,
+    "suma": 155286,
+    "poskytovatelia": [
+     {
+      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+      "suma": 98235
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej republ",
+      "suma": 32051
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 16500
+     },
+     {
+      "nazov": "Nadácia Ekopolis",
+      "suma": 4000
+     },
+     {
+      "nazov": "Ministerstvo kultúry Slovenskej republiky",
+      "suma": 4000
+     },
+     {
+      "nazov": "Slovenský zväz záhradkárov, ZO 2-5 Bratislava - Pod. Biskupice",
+      "suma": 500
+     }
+    ]
+   }
+  },
+  "Rača": {
+   "poskytnute": {
+    "zmluv": 171,
+    "suma": 390245,
+    "prijimatelia": [
+     {
+      "nazov": "Futbalový klub Rača",
+      "suma": 92000
+     },
+     {
+      "nazov": "Klub priateľov futbalu Kengura",
+      "suma": 35300
+     },
+     {
+      "nazov": "Stará Jedáleň, občianske združenie",
+      "suma": 19200
+     },
+     {
+      "nazov": "Klub pozemného hokeja Rača",
+      "suma": 18600
+     },
+     {
+      "nazov": "Račiansky muzeálny spolok",
+      "suma": 17500
+     },
+     {
+      "nazov": "Športový klub karate SEIWA",
+      "suma": 14500
+     },
+     {
+      "nazov": "DEPAUL SLOVENSKO, nezisková organizácia",
+      "suma": 14100
+     },
+     {
+      "nazov": "BMX KLUB RAČA",
+      "suma": 14000
+     },
+     {
+      "nazov": "Račiansky vinohradnícky spolok",
+      "suma": 11794
+     },
+     {
+      "nazov": "Združenie na pomoc ľuďom s mentálnym postihnutím v Slovenskej republike, občianske združenie, r.s.p.",
+      "suma": 10900
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 36,
+    "suma": 1399385,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 999999
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+      "suma": 202717
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 129270
+     },
+     {
+      "nazov": "Ministerstvo kultúry Slovenskej republiky",
+      "suma": 60000
+     },
+     {
+      "nazov": "Slovenský zväz invalidov - ZO Rača",
+      "suma": 4300
+     },
+     {
+      "nazov": "Nadácia VÚB",
+      "suma": 2000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 1100
+     }
+    ]
+   }
+  },
+  "Rusovce": {
+   "poskytnute": {
+    "zmluv": 13,
+    "suma": 51700,
+    "prijimatelia": [
+     {
+      "nazov": "Miestny futbalový klub Rusovce",
+      "suma": 48000
+     },
+     {
+      "nazov": "Jednota dôchodcov Slovenska-Miestna organizácia v Rusovciach",
+      "suma": 2000
+     },
+     {
+      "nazov": "Dobrovoľný hasičský zbor Rusovce",
+      "suma": 800
+     },
+     {
+      "nazov": "Materské centrum Kukulienka",
+      "suma": 450
+     },
+     {
+      "nazov": "Materské centrum KUKULIENKA",
+      "suma": 450
+     },
+     {
+      "nazov": "VÚB, a.s.",
+      "suma": 0
+     },
+     {
+      "nazov": "Kresťanská liga pre pomoc mentálne postihnutým na Slovensku",
+      "suma": 0
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 27,
+    "suma": 177892,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 50000
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+      "suma": 50000
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 45500
+     },
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 28112
+     },
+     {
+      "nazov": "Ministerstvo kultúry Slovenskej republiky",
+      "suma": 1500
+     },
+     {
+      "nazov": "Ministerstvo kultúry SR",
+      "suma": 1500
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 1280
+     },
+     {
+      "nazov": "Ministerstvo vnútra Slovenskej republiky",
+      "suma": 0
+     }
+    ]
+   }
+  },
+  "Ružinov": {
+   "poskytnute": {
+    "zmluv": 135,
+    "suma": 2630890,
+    "prijimatelia": [
+     {
+      "nazov": "TVR a RE, s.r.o.",
+      "suma": 2220420
+     },
+     {
+      "nazov": "Folklórne združenie KARPATY",
+      "suma": 19100
+     },
+     {
+      "nazov": "Slovenský curlingový zväz",
+      "suma": 18000
+     },
+     {
+      "nazov": "Športový klub LIDO",
+      "suma": 16500
+     },
+     {
+      "nazov": "Spoločenstvo detí a mládeže (SDM) Domino",
+      "suma": 16250
+     },
+     {
+      "nazov": "HK RUŽINOV 99 Bratislava, a.s.",
+      "suma": 14900
+     },
+     {
+      "nazov": "HK RUŽINOV ´99 Bratislava, a.s.",
+      "suma": 14500
+     },
+     {
+      "nazov": "Špeciálna základná škola s MŠ, Nevädzová 3",
+      "suma": 13470
+     },
+     {
+      "nazov": "DEPAUL SLOVENSKO, n. o.",
+      "suma": 10730
+     },
+     {
+      "nazov": "DEPAUL SLOVENSKO, nezisková organizácia",
+      "suma": 10262
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 28,
+    "suma": 1114148,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 396482
+     },
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 203538
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 155000
+     },
+     {
+      "nazov": "Ministerstvo financií Slovenskej republiky",
+      "suma": 155000
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 142600
+     },
+     {
+      "nazov": "Ministerstvo práce, soc. vecí a rodiny SR",
+      "suma": 22600
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 10208
+     },
+     {
+      "nazov": "Úrad vlády SR",
+      "suma": 10000
+     }
+    ]
+   }
+  },
+  "Staré Mesto": {
+   "poskytnute": {
+    "zmluv": 183,
+    "suma": 279977,
+    "prijimatelia": [
+     {
+      "nazov": "Občianske združenie Odyseus",
+      "suma": 13166
+     },
+     {
+      "nazov": "Divadlo bez domova",
+      "suma": 9500
+     },
+     {
+      "nazov": "Literárne informačné centrum",
+      "suma": 9262
+     },
+     {
+      "nazov": "Vagus, občianske združenie",
+      "suma": 7450
+     },
+     {
+      "nazov": "DEPAUL SLOVENSKO, nezisková organizácia",
+      "suma": 7000
+     },
+     {
+      "nazov": "PUNKT o.z.",
+      "suma": 6400
+     },
+     {
+      "nazov": "Klub za starú Bratislavu",
+      "suma": 6380
+     },
+     {
+      "nazov": "Občianske združenie VEĎ",
+      "suma": 6350
+     },
+     {
+      "nazov": "Divadelné združenie GUnaGU",
+      "suma": 5800
+     },
+     {
+      "nazov": "ALBRECHT FORUM, o.z.",
+      "suma": 5700
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 43,
+    "suma": 4656336,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo práce, sociálnych",
+      "suma": 2301080
+     },
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.",
+      "suma": 1738960
+     },
+     {
+      "nazov": "Ministerstvo kultúry Slovenske",
+      "suma": 205727
+     },
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 103254
+     },
+     {
+      "nazov": "Ministerstvo investícií, regio",
+      "suma": 103254
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej republ",
+      "suma": 41000
+     },
+     {
+      "nazov": "Nadácia BVS",
+      "suma": 40000
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 30000
+     }
+    ]
+   }
+  },
+  "Vajnory": {
+   "poskytnute": {
+    "zmluv": 0,
+    "suma": 0,
+    "prijimatelia": []
+   },
+   "prijate": {
+    "zmluv": 8,
+    "suma": 17600,
+    "poskytovatelia": [
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 7300
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 5000
+     },
+     {
+      "nazov": "Ministerstvo financií Slovenskej republiky, Sekcia informatizácie spoločnosti",
+      "suma": 5000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 300
+     }
+    ]
+   }
+  },
+  "Vrakuňa": {
+   "poskytnute": {
+    "zmluv": 19,
+    "suma": 189050,
+    "prijimatelia": [
+     {
+      "nazov": "Športový klub Vrakuňa Bratislava",
+      "suma": 92750
+     },
+     {
+      "nazov": "Športový klub Vrakuňa Bratisla",
+      "suma": 88000
+     },
+     {
+      "nazov": "Občianske združenie Odyseus",
+      "suma": 3400
+     },
+     {
+      "nazov": "Občianske združenie Pátrač Tin",
+      "suma": 1500
+     },
+     {
+      "nazov": "o.z. ŠINTER",
+      "suma": 1500
+     },
+     {
+      "nazov": "Športový klub Koryo",
+      "suma": 600
+     },
+     {
+      "nazov": "Rímskokatolícka cirkev farnosť Mena Panny Márie",
+      "suma": 500
+     },
+     {
+      "nazov": "P3 projekt s. r. o.",
+      "suma": 500
+     },
+     {
+      "nazov": "Rybársky klub KRAKEN",
+      "suma": 300
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 16,
+    "suma": 1133953,
+    "poskytovatelia": [
+     {
+      "nazov": "Environmentálny fond",
+      "suma": 807922
+     },
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 117294
+     },
+     {
+      "nazov": "Hlavné mesto Slovenskej republ",
+      "suma": 52607
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 50000
+     },
+     {
+      "nazov": "Ministerstvo financií",
+      "suma": 50000
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 45400
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 10000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 730
+     }
+    ]
+   }
+  },
+  "Záhorská Bystrica": {
+   "poskytnute": {
+    "zmluv": 33,
+    "suma": 134550,
+    "prijimatelia": [
+     {
+      "nazov": "Rímskokatolícka cirkev Farnosť Bratislava - Záhorská Bystrica",
+      "suma": 30000
+     },
+     {
+      "nazov": "Dobrovoľný hasičský zbor",
+      "suma": 25000
+     },
+     {
+      "nazov": "Slovenský futbalový zväz",
+      "suma": 11000
+     },
+     {
+      "nazov": "Rímskokatolícka cirkev Farnosť",
+      "suma": 10000
+     },
+     {
+      "nazov": "City Kids, občianske združenie",
+      "suma": 9000
+     },
+     {
+      "nazov": "Občianske združenie City Kids",
+      "suma": 8000
+     },
+     {
+      "nazov": "Spoločenstvo priateľov stolnéh",
+      "suma": 6500
+     },
+     {
+      "nazov": "Spoločenstvo priateľov stolného tenisu",
+      "suma": 6000
+     },
+     {
+      "nazov": "Klub dôchodcov",
+      "suma": 6000
+     },
+     {
+      "nazov": "Miestny odbor Matice slovenske",
+      "suma": 5000
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 12,
+    "suma": 309358,
+    "poskytovatelia": [
+     {
+      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+      "suma": 251658
+     },
+     {
+      "nazov": "Ministerstvo financií SR",
+      "suma": 35000
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 21500
+     },
+     {
+      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+      "suma": 1200
+     },
+     {
+      "nazov": "Hlavné mesto SR BA odd. pultu centrál. ochrany a informatik",
+      "suma": 0
+     },
+     {
+      "nazov": "Hlavné mesto SR BA",
+      "suma": 0
+     }
+    ]
+   }
+  },
+  "Čunovo": {
+   "poskytnute": {
+    "zmluv": 10,
+    "suma": 49500,
+    "prijimatelia": [
+     {
+      "nazov": "Telovýchovná jednota Čunovo",
+      "suma": 40500
+     },
+     {
+      "nazov": "OZ Chorvátsky kultúrny spolok Čunovo",
+      "suma": 8000
+     },
+     {
+      "nazov": "Športovo strelecký klub magic shot Čunovo",
+      "suma": 1000
+     }
+    ]
+   },
+   "prijate": {
+    "zmluv": 12,
+    "suma": 28499,
+    "poskytovatelia": [
+     {
+      "nazov": "Hlavné mesto SR Bratislava",
+      "suma": 19749
+     },
+     {
+      "nazov": "Bratislavský samosprávny kraj",
+      "suma": 8000
+     },
+     {
+      "nazov": "Nadácia Pontis",
+      "suma": 750
+     }
+    ]
+   }
+  }
+ },
+ "aktualizovane": "2026-10-24T05:51:53+00:00"
+}

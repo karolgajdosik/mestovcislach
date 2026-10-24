@@ -1,0 +1,355 @@
+{
+ "mesto": "zilina",
+ "ico": "00321796",
+ "od": "2022-01-01",
+ "do": "2026-10-20",
+ "zdroj": {
+  "nazov": "Centrálny register zmlúv (CRZ)",
+  "url": "https://www.crz.gov.sk"
+ },
+ "zmluvy": {
+  "typ": "zmluvy",
+  "zaznamov": 8362,
+  "skryte_fyzicke_osoby": 3751,
+  "roky": {
+   "2022": {
+    "pocet": 1084,
+    "suma": 36001681,
+    "fo_pocet": 374,
+    "fo_suma": 2030410
+   },
+   "2023": {
+    "pocet": 1292,
+    "suma": 54526014,
+    "fo_pocet": 431,
+    "fo_suma": 2234118
+   },
+   "2024": {
+    "pocet": 1820,
+    "suma": 68218311,
+    "fo_pocet": 773,
+    "fo_suma": 3220591
+   },
+   "2025": {
+    "pocet": 2496,
+    "suma": 73423437,
+    "fo_pocet": 1322,
+    "fo_suma": 5442968
+   },
+   "2026": {
+    "pocet": 1670,
+    "suma": 137591444,
+    "fo_pocet": 851,
+    "fo_suma": 4406659
+   }
+  },
+  "dodavatelia_posledne_3_roky": [
+   {
+    "ico": "36400491",
+    "nazov": "T + T, a.s.",
+    "pocet": 10,
+    "suma": 79680084
+   },
+   {
+    "ico": "50349287",
+    "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "pocet": 52,
+    "suma": 53418886
+   },
+   {
+    "ico": "00682420",
+    "nazov": "Slovenská záručná a rozvojová banka, a.s.",
+    "pocet": 3,
+    "suma": 15000000
+   },
+   {
+    "ico": "53946600",
+    "nazov": "Technické služby mesta Žilina, s.r.o.",
+    "pocet": 27,
+    "suma": 14580232
+   },
+   {
+    "ico": "31320155",
+    "nazov": "Všeobecná úverová banka, a.s.",
+    "pocet": 7,
+    "suma": 13870000
+   },
+   {
+    "ico": "53106563",
+    "nazov": "PROFI-GARDEN, s.r.o.",
+    "pocet": 3,
+    "suma": 9209198
+   },
+   {
+    "ico": "46282041",
+    "nazov": "PAMARCH, s.r.o.",
+    "pocet": 2,
+    "suma": 5040514
+   },
+   {
+    "ico": "00681156",
+    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "pocet": 12,
+    "suma": 4395409
+   },
+   {
+    "ico": "31588506",
+    "nazov": "ERPOS, spol. s r.o.",
+    "pocet": 26,
+    "suma": 4075489
+   },
+   {
+    "ico": "30796491",
+    "nazov": "Environmentálny fond",
+    "pocet": 12,
+    "suma": 3292415
+   },
+   {
+    "ico": "31612989",
+    "nazov": "CORA GEO, s. r. o.",
+    "pocet": 4,
+    "suma": 2992890
+   },
+   {
+    "ico": null,
+    "nazov": "Úrad práce, sociálnych vecí a rodiny Žilina",
+    "pocet": 7,
+    "suma": 2642847
+   },
+   {
+    "ico": "50724592",
+    "nazov": "Občianske združenie BRIOSO",
+    "pocet": 4,
+    "suma": 2482465
+   },
+   {
+    "ico": "30794536",
+    "nazov": "Úrad práce, sociálnych vecí a rodiny Žilina",
+    "pocet": 7,
+    "suma": 2433844
+   },
+   {
+    "ico": "42181810",
+    "nazov": "Ministerstvo životného prostredia SR",
+    "pocet": 2,
+    "suma": 2343449
+   },
+   {
+    "ico": "50131711",
+    "nazov": "G&E Trading, a.s.",
+    "pocet": 4,
+    "suma": 2283277
+   },
+   {
+    "ico": "36373869",
+    "nazov": "HALAČ, s.r.o.",
+    "pocet": 4,
+    "suma": 1928500
+   },
+   {
+    "ico": "48282235",
+    "nazov": "FEROSTA a spol., s.r.o.",
+    "pocet": 3,
+    "suma": 1725808
+   },
+   {
+    "ico": "55695523",
+    "nazov": "Ján Supuka s.r.o.",
+    "pocet": 1,
+    "suma": 1647966
+   },
+   {
+    "ico": "46931317",
+    "nazov": "Správa športových zariadení mesta Žilina, s.r.o.",
+    "pocet": 16,
+    "suma": 1325086
+   }
+  ],
+  "najvacsie_12_mesiacov": [
+   {
+    "datum": "2026-07-24",
+    "dodavatel": "T + T, a.s.",
+    "ico": "36400491",
+    "suma": 54882166.51,
+    "popis": "Rámcová Dohoda o poskytovaní služieb v odpadovom hospodárstve č. 659/2026",
+    "url": "https://www.crz.gov.sk/zmluva/12623564/"
+   },
+   {
+    "datum": "2026-03-23",
+    "dodavatel": "Slovenská záručná a rozvojová banka, a.s.",
+    "ico": "00682420",
+    "suma": 15000000.0,
+    "popis": "Úverová zmluva č. 165/2026 (379102-2026) - financovanie investičných akcií Mesta Žilina",
+    "url": "https://www.crz.gov.sk/zmluva/12143581/"
+   },
+   {
+    "datum": "2026-07-24",
+    "dodavatel": "T + T, a.s.",
+    "ico": "36400491",
+    "suma": 8974910.38,
+    "popis": "Dielčia zmluva o poskytovaní služieb v odpadovom hospodárstve č. 660/2026 - poskytovanie služieb v rámci Zabezpečenia zberu a odvozu zmesového komunálneho odpadu",
+    "url": "https://www.crz.gov.sk/zmluva/12622658/"
+   },
+   {
+    "datum": "2026-05-05",
+    "dodavatel": "Technické služby mesta Žilina, s.r.o.",
+    "ico": "53946600",
+    "suma": 5904000.02,
+    "popis": "Rámcová zmluva o poskytovaní služieb č. 403/2026 - údržba trávnatých plôch zelene",
+    "url": "https://www.crz.gov.sk/zmluva/12325307/"
+   },
+   {
+    "datum": "2025-11-27",
+    "dodavatel": "T + T, a.s.",
+    "ico": "36400491",
+    "suma": 5607768.65,
+    "popis": "Dielčia zmluva o poskytovaní služieb v odpadovom hospodárstve č. 1128/2025 - poskytovanie služieb v rámci Zabezpečenia zberu a odvozu zmesového komunálneho odpadu",
+    "url": "https://www.crz.gov.sk/zmluva/11669050/"
+   },
+   {
+    "datum": "2026-06-10",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 4528743.44,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU",
+    "url": "https://www.crz.gov.sk/zmluva/12453562/"
+   },
+   {
+    "datum": "2026-06-10",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 4528743.44,
+    "popis": "Zmluva o poskytnutí nenávratného fin.príspevku č. 468/2026 (MIRRI: 656/2025)",
+    "url": "https://www.crz.gov.sk/zmluva/12461101/"
+   },
+   {
+    "datum": "2025-11-06",
+    "dodavatel": "Technické služby mesta Žilina, s.r.o.",
+    "ico": "53946600",
+    "suma": 2893048.93,
+    "popis": "Rámcová zmluva o poskytovaní služieb č. 1120/2025 - služby v oblasti údržby a čistoty verejných priestranstiev v meste",
+    "url": "https://www.crz.gov.sk/zmluva/11652826/"
+   },
+   {
+    "datum": "2026-06-30",
+    "dodavatel": "CORA GEO, s. r. o.",
+    "ico": "31612989",
+    "suma": 2782998.0,
+    "popis": "Zmluva o poskytovaní služieb č. 501/2026 (1/2026) - údržba a udelenie súhlasu na odplatné a časovo obmedzené právo používať počítačový program - softvér",
+    "url": "https://www.crz.gov.sk/zmluva/12531744/"
+   },
+   {
+    "datum": "2026-02-11",
+    "dodavatel": "T+T, a.s.",
+    "ico": "36400491",
+    "suma": 2204351.78,
+    "popis": "Dodatok č. 7 k Rámcovej dohode o poskytovaní služieb v odpadovom hospodárstve č. 539/2021",
+    "url": "https://www.crz.gov.sk/zmluva/11976979/"
+   },
+   {
+    "datum": "2026-08-18",
+    "dodavatel": "Technické služby mesta Žilina, s.r.o.",
+    "ico": "53946600",
+    "suma": 2129147.84,
+    "popis": "Zmluva o poskytovaní služieb č. 785/2026 - ,,Orezy krov v meste Žilina“",
+    "url": "https://www.crz.gov.sk/zmluva/12697030/"
+   },
+   {
+    "datum": "2026-01-29",
+    "dodavatel": "T + T, a.s.",
+    "ico": "36400491",
+    "suma": 2012493.92,
+    "popis": "Dodatok č. 7 k Rámcovej dohode o poskytovaní služieb v odpadovom hospodárstve č. 539/2021",
+    "url": "https://www.crz.gov.sk/zmluva/11919726/"
+   },
+   {
+    "datum": "2025-12-18",
+    "dodavatel": "Všeobecná úverová banka, a.s.",
+    "ico": "31320155",
+    "suma": 1870000.0,
+    "popis": "Dodatok č. 2 k Zmluve o termínovanom úvere č. 769/2024 (637/2024/UZ) -navýšenie úveru",
+    "url": "https://www.crz.gov.sk/zmluva/11785706/"
+   },
+   {
+    "datum": "2026-07-27",
+    "dodavatel": "Ministerstvo životného prostredia SR",
+    "ico": "42181810",
+    "suma": 1727887.55,
+    "popis": "Zmluva o poskytnutí NFP č. 1015/2026 (MZP-PSK-401202H955)",
+    "url": "https://www.crz.gov.sk/zmluva/12935592/"
+   },
+   {
+    "datum": "2026-04-29",
+    "dodavatel": "Technické služby mesta Žilina, s.r.o.",
+    "ico": "53946600",
+    "suma": 1437931.5,
+    "popis": "Rámcová zmluva o poskytovaní služieb č. 373/2026 - zimná údržba miestnych ciest a ich príslušenstva",
+    "url": "https://www.crz.gov.sk/zmluva/12294038/"
+   }
+  ],
+  "dotacie_poskytnute": [
+   {
+    "nazov": "Integrovaná doprava Žilinského kraja, s.r.o.",
+    "suma": 477227
+   },
+   {
+    "nazov": "Integrovaná doprava Žilinského a Trenčianskeho kraja, s.r.o.",
+    "suma": 221154
+   },
+   {
+    "nazov": "Academic Žilinská univerzita v Žiline",
+    "suma": 212412
+   },
+   {
+    "nazov": "MŠK Žilina, a.s.",
+    "suma": 165471
+   },
+   {
+    "nazov": "VLCI ŽILINA - mládež, s.r.o.",
+    "suma": 164836
+   },
+   {
+    "nazov": "VLCI ŽILINA, a.s.",
+    "suma": 113000
+   },
+   {
+    "nazov": "Akadémia MŠK Žilina",
+    "suma": 100000
+   },
+   {
+    "nazov": "VA UNIZA ŽILINA, o. z.",
+    "suma": 90241
+   },
+   {
+    "nazov": "Klub plaveckých športov Nereus Žilina, o.z.",
+    "suma": 79022
+   },
+   {
+    "nazov": "Slávia Žilinská univerzita",
+    "suma": 74726
+   },
+   {
+    "nazov": "ŠK JUVENTA Žilina, o.z.",
+    "suma": 71431
+   },
+   {
+    "nazov": "Karate klub Žilina, o.z.",
+    "suma": 70837
+   },
+   {
+    "nazov": "Telovýchovná jednota JEDNOTA Bánová",
+    "suma": 65960
+   },
+   {
+    "nazov": "Krajské centrum nepočujúcich ANEPS Žilina",
+    "suma": 56910
+   },
+   {
+    "nazov": "ECODICO, družstvo",
+    "suma": 55330
+   }
+  ],
+  "zdroj": "https://www.crz.gov.sk"
+ },
+ "aktualizovane": "2026-10-21T05:52:29+00:00"
+}

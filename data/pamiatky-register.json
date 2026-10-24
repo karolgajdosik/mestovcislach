@@ -1,0 +1,73 @@
+{
+ "zdroj": {
+  "nazov": "Ministerstvo kultúry SR – Register nehnuteľných národných kultúrnych pamiatok (Bratislavský kraj)",
+  "url": "https://data.slovensko.sk/datasety",
+  "licencia": "otvorené dáta (data.slovensko.sk)"
+ },
+ "pamiatok": 783,
+ "objektov": 1456,
+ "s_polohou": 686,
+ "mestske_casti": {
+  "Staré Mesto": 652,
+  "Nové Mesto": 21,
+  "Devín": 17,
+  "Karlova Ves": 16,
+  "Ružinov": 13,
+  "Petržalka": 11,
+  "Záhorská Bystrica": 10,
+  "Devínska Nová Ves": 9,
+  "Podunajské Biskupice": 7,
+  "Rača": 6,
+  "Rusovce": 6,
+  "Dúbravka": 5,
+  "Vajnory": 3,
+  "Lamač": 3,
+  "Čunovo": 2,
+  "Jarovce": 2
+ },
+ "slohy": {
+  "eklektizmus": 168,
+  "klasicizmus": 57,
+  "barok neskorý": 55,
+  "renesancia": 50,
+  "funkcionalizmus": 47,
+  "barok": 45,
+  "secesia": 41,
+  "novorenesancia": 40,
+  "novobarok": 29,
+  "novoklasicizmus": 24,
+  "historizmus": 23,
+  "moderna": 19
+ },
+ "storocia": {
+  "1. storočie": 1,
+  "2. storočie": 1,
+  "12. storočie": 1,
+  "13. storočie": 20,
+  "14. storočie": 26,
+  "15. storočie": 24,
+  "16. storočie": 16,
+  "17. storočie": 46,
+  "18. storočie": 95,
+  "19. storočie": 209,
+  "20. storočie": 330
+ },
+ "typy": {
+  "Dom bytový": 219,
+  "Dom meštiansky": 121,
+  "Vila so záhradou": 37,
+  "Kostol": 20,
+  "Vila a záhrada": 19,
+  "Palác mestský": 17,
+  "Dom bytový so záhradou": 15,
+  "Budova administratívna": 14,
+  "Škola": 13,
+  "Dom ľudový": 11,
+  "Banka": 10,
+  "Tabuľa pamätná": 9,
+  "Vila": 8,
+  "Pomník": 7,
+  "Domy bytové": 6
+ },
+ "aktualizovane": "2026-10-15T15:42:32+00:00"
+}

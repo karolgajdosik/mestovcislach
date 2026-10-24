@@ -1,0 +1,4451 @@
+{
+ "zdroje": {
+  "rpo": {
+   "nazov": "Register právnických osôb (ŠÚ SR)",
+   "url": "https://rpo.statistics.sk"
+  },
+  "ruz": {
+   "nazov": "Register účtovných závierok",
+   "url": "https://www.registeruz.sk"
+  }
+ },
+ "mesta": {
+  "bratislava": [
+   {
+    "ico": "00681300",
+    "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 25449749,
+      "vynosy": 26605199,
+      "naklady": 20725474,
+      "osobne_naklady": 7779303,
+      "odpisy": 4390306,
+      "vysledok": 4345226,
+      "majetok": 57295673,
+      "vlastne_imanie": 41097341,
+      "zavazky": 16051459,
+      "bankove_uvery": 9330006
+     },
+     "2016": {
+      "obrat": 26122516,
+      "vynosy": 27627967,
+      "naklady": 20202426,
+      "osobne_naklady": 8279771,
+      "odpisy": 3846201,
+      "vysledok": 4623308,
+      "majetok": 56209406,
+      "vlastne_imanie": 41809946,
+      "zavazky": 14258905,
+      "bankove_uvery": 6655196
+     },
+     "2017": {
+      "obrat": 27538311,
+      "vynosy": 28999024,
+      "naklady": 25599709,
+      "osobne_naklady": 9916667,
+      "odpisy": 3850248,
+      "vysledok": 2633841,
+      "majetok": 51362674,
+      "vlastne_imanie": 40282810,
+      "zavazky": 11067558,
+      "bankove_uvery": 5324800
+     },
+     "2018": {
+      "obrat": 27436052,
+      "vynosy": 28437426,
+      "naklady": 28767023,
+      "osobne_naklady": 10899337,
+      "odpisy": 3893343,
+      "vysledok": -351962,
+      "majetok": 53110867,
+      "vlastne_imanie": 37560391,
+      "zavazky": 14083477,
+      "bankove_uvery": 3993600
+     },
+     "2019": {
+      "obrat": 25727238,
+      "vynosy": 27267390,
+      "naklady": 26407669,
+      "osobne_naklady": 11723755,
+      "odpisy": 2971576,
+      "vysledok": 630230,
+      "majetok": 48702004,
+      "vlastne_imanie": 38190621,
+      "zavazky": 9275825,
+      "bankove_uvery": 2662400
+     },
+     "2020": {
+      "obrat": 27553370,
+      "vynosy": 28526100,
+      "naklady": 26008508,
+      "osobne_naklady": 13708005,
+      "odpisy": 3007167,
+      "vysledok": 1959452,
+      "majetok": 50093977,
+      "vlastne_imanie": 39582866,
+      "zavazky": 9507286,
+      "bankove_uvery": 1331200
+     },
+     "2021": {
+      "obrat": 30633025,
+      "vynosy": 32745732,
+      "naklady": 29091952,
+      "osobne_naklady": 14632002,
+      "odpisy": 2961085,
+      "vysledok": 2860158,
+      "majetok": 49768797,
+      "vlastne_imanie": 40679517,
+      "zavazky": 8305857,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 36156236,
+      "vynosy": 38812386,
+      "naklady": 36699575,
+      "osobne_naklady": 18643270,
+      "odpisy": 3423590,
+      "vysledok": 1615383,
+      "majetok": 56540887,
+      "vlastne_imanie": 40294901,
+      "zavazky": 15648555,
+      "bankove_uvery": 10156
+     },
+     "2023": {
+      "obrat": 46076211,
+      "vynosy": 48772639,
+      "naklady": 43521993,
+      "osobne_naklady": 20749131,
+      "odpisy": 3775804,
+      "vysledok": 4024823,
+      "majetok": 60058481,
+      "vlastne_imanie": 42365879,
+      "zavazky": 13593982,
+      "bankove_uvery": 1009937
+     },
+     "2024": {
+      "obrat": 47257997,
+      "vynosy": 50244104,
+      "naklady": 40291471,
+      "osobne_naklady": 21241623,
+      "odpisy": 4191165,
+      "vysledok": 7395749,
+      "majetok": 63894370,
+      "vlastne_imanie": 49761629,
+      "zavazky": 10631073,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 44497217,
+      "vynosy": 48093884,
+      "naklady": 43855598,
+      "osobne_naklady": 23805400,
+      "odpisy": 4217461,
+      "vysledok": 3301491,
+      "majetok": 64272783,
+      "vlastne_imanie": 53063119,
+      "zavazky": 8281281,
+      "bankove_uvery": 5406
+     }
+    },
+    "zavierky": [
+     1956120,
+     2277304,
+     2744467,
+     3301482,
+     3661580,
+     3962040,
+     4315457,
+     4796856,
+     5085433,
+     5545169,
+     5943148,
+     6373388,
+     6584047,
+     6833453
+    ]
+   },
+   {
+    "ico": "54302102",
+    "nazov": "Technické siete Bratislava, a.s.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2022": {
+      "obrat": 72621,
+      "vynosy": 72620,
+      "naklady": 345406,
+      "osobne_naklady": 217011,
+      "odpisy": 6390,
+      "vysledok": -273036,
+      "majetok": 369026,
+      "vlastne_imanie": 54464,
+      "zavazky": 314414,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 2617798,
+      "vynosy": 2644586,
+      "naklady": 2390737,
+      "osobne_naklady": 998668,
+      "odpisy": 47591,
+      "vysledok": 190860,
+      "majetok": 4818880,
+      "vlastne_imanie": 245324,
+      "zavazky": 3319422,
+      "bankove_uvery": 2732810
+     },
+     "2024": {
+      "obrat": 7565287,
+      "vynosy": 7640531,
+      "naklady": 7217493,
+      "osobne_naklady": 1841515,
+      "odpisy": 657846,
+      "vysledok": 262443,
+      "majetok": 12629888,
+      "vlastne_imanie": 435062,
+      "zavazky": 12162671,
+      "bankove_uvery": 8862954
+     },
+     "2025": {
+      "obrat": 8528598,
+      "vynosy": 8615748,
+      "naklady": 8052033,
+      "osobne_naklady": 2220129,
+      "odpisy": 1887271,
+      "vysledok": 217967,
+      "majetok": 27161314,
+      "vlastne_imanie": 12883751,
+      "zavazky": 14277563,
+      "bankove_uvery": 12107012
+     }
+    },
+    "zavierky": [
+     5461288,
+     5877788,
+     6271766,
+     6699735
+    ]
+   },
+   {
+    "ico": "00492736",
+    "nazov": "Dopravný podnik Bratislava, akciová spoločnosť",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {},
+    "zavierky": [
+     1887213,
+     2365606,
+     2405782,
+     2896365,
+     3272840,
+     3603605,
+     4145177,
+     4484027,
+     4837974,
+     5209579,
+     5720633,
+     6155660,
+     6551057,
+     6845828
+    ]
+   }
+  ],
+  "trnava": [
+   {
+    "ico": "36277215",
+    "nazov": "STEFE Trnava, s. r. o.",
+    "vlastnictvo": "podiel",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 10402004,
+      "vynosy": 10435464,
+      "naklady": 9686426,
+      "osobne_naklady": 1642378,
+      "odpisy": 189789,
+      "vysledok": 601133,
+      "majetok": 7945478,
+      "vlastne_imanie": 5803119,
+      "zavazky": 2142359,
+      "bankove_uvery": 0
+     },
+     "2016": {
+      "obrat": 10388121,
+      "vynosy": 10425431,
+      "naklady": 9667790,
+      "osobne_naklady": 1647313,
+      "odpisy": 196959,
+      "vysledok": 571084,
+      "majetok": 8033303,
+      "vlastne_imanie": 5803127,
+      "zavazky": 2230176,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 10133220,
+      "vynosy": 10197795,
+      "naklady": 9460405,
+      "osobne_naklady": 1748017,
+      "odpisy": 208829,
+      "vysledok": 569631,
+      "majetok": 8019433,
+      "vlastne_imanie": 5795802,
+      "zavazky": 2223631,
+      "bankove_uvery": 500
+     },
+     "2018": {
+      "obrat": 10454490,
+      "vynosy": 10536898,
+      "naklady": 9864718,
+      "osobne_naklady": 1752272,
+      "odpisy": 244512,
+      "vysledok": 542525,
+      "majetok": 7945100,
+      "vlastne_imanie": 5797178,
+      "zavazky": 2138744,
+      "bankove_uvery": 311413
+     },
+     "2019": {
+      "obrat": 11126788,
+      "vynosy": 11416234,
+      "naklady": 10628841,
+      "osobne_naklady": 1847790,
+      "odpisy": 278261,
+      "vysledok": 595575,
+      "majetok": 8281577,
+      "vlastne_imanie": 4877354,
+      "zavazky": 3396300,
+      "bankove_uvery": 1524036
+     },
+     "2020": {
+      "obrat": 11058773,
+      "vynosy": 11146023,
+      "naklady": 10333897,
+      "osobne_naklady": 1949523,
+      "odpisy": 340752,
+      "vysledok": 606724,
+      "majetok": 10040720,
+      "vlastne_imanie": 4918282,
+      "zavazky": 5115769,
+      "bankove_uvery": 2930015
+     },
+     "2021": {
+      "obrat": 10336823,
+      "vynosy": 10432534,
+      "naklady": 9608276,
+      "osobne_naklady": 2015723,
+      "odpisy": 385726,
+      "vysledok": 608072,
+      "majetok": 10119576,
+      "vlastne_imanie": 4949966,
+      "zavazky": 5126421,
+      "bankove_uvery": 2813053
+     },
+     "2022": {
+      "obrat": 10465551,
+      "vynosy": 10667646,
+      "naklady": 9806815,
+      "osobne_naklady": 2100413,
+      "odpisy": 455771,
+      "vysledok": 629235,
+      "majetok": 11127932,
+      "vlastne_imanie": 5001532,
+      "zavazky": 6086148,
+      "bankove_uvery": 3659675
+     },
+     "2023": {
+      "obrat": 11023443,
+      "vynosy": 11108709,
+      "naklady": 10123330,
+      "osobne_naklady": 2267503,
+      "odpisy": 452123,
+      "vysledok": 729756,
+      "majetok": 11537169,
+      "vlastne_imanie": 5112536,
+      "zavazky": 6386390,
+      "bankove_uvery": 3649055
+     },
+     "2024": {
+      "obrat": 11905032,
+      "vynosy": 12348984,
+      "naklady": 11411633,
+      "osobne_naklady": 2528625,
+      "odpisy": 500119,
+      "vysledok": 675747,
+      "majetok": 13723958,
+      "vlastne_imanie": 5058527,
+      "zavazky": 7003055,
+      "bankove_uvery": 3982729
+     },
+     "2025": {
+      "obrat": 12608175,
+      "vynosy": 12803157,
+      "naklady": 11948973,
+      "osobne_naklady": 2467492,
+      "odpisy": 581119,
+      "vysledok": 592836,
+      "majetok": 15921736,
+      "vlastne_imanie": 4975616,
+      "zavazky": 8044663,
+      "bankove_uvery": 4118438
+     }
+    },
+    "zavierky": [
+     1903694,
+     2384812,
+     2789823,
+     2910244,
+     3206392,
+     3542386,
+     3927474,
+     4253066,
+     4629665,
+     5098525,
+     5478809,
+     5849058,
+     6367767,
+     6761118
+    ]
+   },
+   {
+    "ico": "31449697",
+    "nazov": "FCC Trnava, s.r.o.",
+    "vlastnictvo": "podiel",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 0,
+      "vynosy": 5775560,
+      "naklady": 4675852,
+      "osobne_naklady": 1947981,
+      "odpisy": 439593,
+      "vysledok": 852037,
+      "majetok": 2522757,
+      "vlastne_imanie": 1675053,
+      "zavazky": 847704,
+      "bankove_uvery": 75000
+     },
+     "2016": {
+      "obrat": 0,
+      "vynosy": 6579952,
+      "naklady": 4838183,
+      "osobne_naklady": 1962051,
+      "odpisy": 442853,
+      "vysledok": 1349561,
+      "majetok": 2982124,
+      "vlastne_imanie": 1934614,
+      "zavazky": 1047510,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 7311980,
+      "vynosy": 7357216,
+      "naklady": 5354361,
+      "osobne_naklady": 2128920,
+      "odpisy": 492414,
+      "vysledok": 1580852,
+      "majetok": 2964749,
+      "vlastne_imanie": 2165466,
+      "zavazky": 799283,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 7680384,
+      "vynosy": 7715844,
+      "naklady": 5406891,
+      "osobne_naklady": 2300149,
+      "odpisy": 501338,
+      "vysledok": 1816169,
+      "majetok": 3581639,
+      "vlastne_imanie": 2401635,
+      "zavazky": 1180004,
+      "bankove_uvery": 281250
+     },
+     "2019": {
+      "obrat": 7689490,
+      "vynosy": 7756475,
+      "naklady": 6105033,
+      "osobne_naklady": 2432768,
+      "odpisy": 548717,
+      "vysledok": 1288517,
+      "majetok": 3796981,
+      "vlastne_imanie": 1874152,
+      "zavazky": 1922829,
+      "bankove_uvery": 206250
+     },
+     "2020": {
+      "obrat": 7434814,
+      "vynosy": 7692110,
+      "naklady": 6080542,
+      "osobne_naklady": 2455390,
+      "odpisy": 611425,
+      "vysledok": 1260727,
+      "majetok": 4215082,
+      "vlastne_imanie": 2494879,
+      "zavazky": 1720203,
+      "bankove_uvery": 131250
+     },
+     "2021": {
+      "obrat": 8550845,
+      "vynosy": 8798953,
+      "naklady": 6392045,
+      "osobne_naklady": 2487335,
+      "odpisy": 652022,
+      "vysledok": 1893043,
+      "majetok": 4906152,
+      "vlastne_imanie": 3127922,
+      "zavazky": 1778230,
+      "bankove_uvery": 56250
+     },
+     "2022": {
+      "obrat": 8647224,
+      "vynosy": 8768556,
+      "naklady": 6936781,
+      "osobne_naklady": 2690314,
+      "odpisy": 667729,
+      "vysledok": 1420338,
+      "majetok": 5619229,
+      "vlastne_imanie": 3148260,
+      "zavazky": 2470969,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 8639268,
+      "vynosy": 8706404,
+      "naklady": 7335389,
+      "osobne_naklady": 2888316,
+      "odpisy": 747469,
+      "vysledok": 1013892,
+      "majetok": 10256119,
+      "vlastne_imanie": 4162152,
+      "zavazky": 6093967,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 9594787,
+      "vynosy": 9649612,
+      "naklady": 8509135,
+      "osobne_naklady": 3302959,
+      "odpisy": 858440,
+      "vysledok": 793521,
+      "majetok": 11523608,
+      "vlastne_imanie": 4955673,
+      "zavazky": 6567935,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 10342057,
+      "vynosy": 10538581,
+      "naklady": 9037152,
+      "osobne_naklady": 3070124,
+      "odpisy": 952831,
+      "vysledok": 1067181,
+      "majetok": 12227665,
+      "vlastne_imanie": 6022854,
+      "zavazky": 6204811,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     1945277,
+     2326499,
+     2723325,
+     3175836,
+     3536558,
+     3919026,
+     4286063,
+     4641014,
+     5061452,
+     5485755,
+     5896698,
+     6330540,
+     6770324
+    ]
+   },
+   {
+    "ico": "36219681",
+    "nazov": "Mestská televízia Trnava, s.r.o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 77318,
+      "vynosy": 212961,
+      "naklady": 219044,
+      "osobne_naklady": 105190,
+      "odpisy": 29824,
+      "vysledok": -7311,
+      "majetok": 109185,
+      "vlastne_imanie": 43294,
+      "zavazky": 26347,
+      "bankove_uvery": 0
+     },
+     "2016": {
+      "obrat": 69394,
+      "vynosy": 207266,
+      "naklady": 223288,
+      "osobne_naklady": 103451,
+      "odpisy": 21749,
+      "vysledok": -17240,
+      "majetok": 76889,
+      "vlastne_imanie": 26054,
+      "zavazky": 22181,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 83628,
+      "vynosy": 220027,
+      "naklady": 224505,
+      "osobne_naklady": 110802,
+      "odpisy": 18516,
+      "vysledok": -5678,
+      "majetok": 76141,
+      "vlastne_imanie": 20378,
+      "zavazky": 28111,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 106303,
+      "vynosy": 246910,
+      "naklady": 235277,
+      "osobne_naklady": 132860,
+      "odpisy": 24961,
+      "vysledok": 9649,
+      "majetok": 81931,
+      "vlastne_imanie": 30027,
+      "zavazky": 25859,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 87145,
+      "vynosy": 222322,
+      "naklady": 213426,
+      "osobne_naklady": 133829,
+      "odpisy": 15899,
+      "vysledok": 5908,
+      "majetok": 74053,
+      "vlastne_imanie": 35934,
+      "zavazky": 20247,
+      "bankove_uvery": 0
+     },
+     "2020": {
+      "obrat": 66655,
+      "vynosy": 176878,
+      "naklady": 180976,
+      "osobne_naklady": 113695,
+      "odpisy": 8276,
+      "vysledok": -4357,
+      "majetok": 65135,
+      "vlastne_imanie": 31578,
+      "zavazky": 22075,
+      "bankove_uvery": 0
+     },
+     "2021": {
+      "obrat": 62869,
+      "vynosy": 198663,
+      "naklady": 197291,
+      "osobne_naklady": 132383,
+      "odpisy": 7654,
+      "vysledok": 957,
+      "majetok": 64866,
+      "vlastne_imanie": 32536,
+      "zavazky": 26642,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 67198,
+      "vynosy": 202293,
+      "naklady": 212127,
+      "osobne_naklady": 113282,
+      "odpisy": 7376,
+      "vysledok": -10095,
+      "majetok": 49447,
+      "vlastne_imanie": 22441,
+      "zavazky": 26409,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 78286,
+      "vynosy": 233884,
+      "naklady": 215076,
+      "osobne_naklady": 117530,
+      "odpisy": 2841,
+      "vysledok": 17274,
+      "majetok": 66360,
+      "vlastne_imanie": 39715,
+      "zavazky": 26645,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 85273,
+      "vynosy": 240275,
+      "naklady": 251166,
+      "osobne_naklady": 151768,
+      "odpisy": 1585,
+      "vysledok": -12136,
+      "majetok": 58816,
+      "vlastne_imanie": 27578,
+      "zavazky": 31238,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 73440,
+      "vynosy": 243440,
+      "naklady": 235641,
+      "osobne_naklady": 142093,
+      "odpisy": 1841,
+      "vysledok": 6575,
+      "majetok": 68032,
+      "vlastne_imanie": 34153,
+      "zavazky": 33879,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     1946626,
+     2306285,
+     2752986,
+     3089104,
+     3438012,
+     3905787,
+     4225367,
+     5173111,
+     5174099,
+     5541783,
+     5937515,
+     6393135,
+     6869370
+    ]
+   },
+   {
+    "ico": "45887675",
+    "nazov": "Mestské stavby Trnava s. r. o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 0,
+      "vynosy": 0,
+      "naklady": 17210,
+      "osobne_naklady": 0,
+      "odpisy": 0,
+      "vysledok": 17795,
+      "majetok": 3074327,
+      "vlastne_imanie": 3042942,
+      "zavazky": 31385,
+      "bankove_uvery": 0
+     },
+     "2016": {
+      "obrat": 0,
+      "vynosy": 0,
+      "naklady": 16539,
+      "osobne_naklady": 0,
+      "odpisy": 0,
+      "vysledok": 18135,
+      "majetok": 3099154,
+      "vlastne_imanie": 3061077,
+      "zavazky": 38077,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 0,
+      "vynosy": 0,
+      "naklady": 20923,
+      "osobne_naklady": 0,
+      "odpisy": 0,
+      "vysledok": 14901,
+      "majetok": 3128891,
+      "vlastne_imanie": 3075978,
+      "zavazky": 52913,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 0,
+      "vynosy": 0,
+      "naklady": 33606,
+      "osobne_naklady": 0,
+      "odpisy": 0,
+      "vysledok": 4961,
+      "majetok": 3133978,
+      "vlastne_imanie": 3080939,
+      "zavazky": 53039,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 0,
+      "vynosy": 0,
+      "naklady": 41720,
+      "osobne_naklady": 0,
+      "odpisy": 0,
+      "vysledok": -1702,
+      "majetok": 3129855,
+      "vlastne_imanie": 3079237,
+      "zavazky": 50618,
+      "bankove_uvery": 0
+     },
+     "2020": {
+      "obrat": 0,
+      "vynosy": 0,
+      "naklady": 1604984,
+      "osobne_naklady": 0,
+      "odpisy": 0,
+      "vysledok": -1564907,
+      "majetok": 1565237,
+      "vlastne_imanie": 1514330,
+      "zavazky": 50907,
+      "bankove_uvery": 0
+     },
+     "2021": {
+      "obrat": 0,
+      "vynosy": 0,
+      "naklady": 41690,
+      "osobne_naklady": 0,
+      "odpisy": 0,
+      "vysledok": -1650,
+      "majetok": 1563284,
+      "vlastne_imanie": 1512680,
+      "zavazky": 50604,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 0,
+      "vynosy": 0,
+      "naklady": 839822,
+      "osobne_naklady": 0,
+      "odpisy": 0,
+      "vysledok": -825859,
+      "majetok": 689421,
+      "vlastne_imanie": 686821,
+      "zavazky": 2600,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 0,
+      "vynosy": 0,
+      "naklady": 699572,
+      "osobne_naklady": 0,
+      "odpisy": 253,
+      "vysledok": -687294,
+      "majetok": 1706204,
+      "vlastne_imanie": 1698447,
+      "zavazky": 7757,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 61139,
+      "vynosy": 61139,
+      "naklady": 26451,
+      "osobne_naklady": 0,
+      "odpisy": 3039,
+      "vysledok": 27035,
+      "majetok": 1742229,
+      "vlastne_imanie": 1725482,
+      "zavazky": 16747,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 62015,
+      "vynosy": 62015,
+      "naklady": 34100,
+      "osobne_naklady": 0,
+      "odpisy": 3039,
+      "vysledok": 24951,
+      "majetok": 1760153,
+      "vlastne_imanie": 1750433,
+      "zavazky": 9720,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     1971377,
+     2438616,
+     2874527,
+     3131967,
+     3569284,
+     3988131,
+     4350921,
+     4753459,
+     5094941,
+     5488315,
+     5768825,
+     6346899,
+     6818816
+    ]
+   }
+  ],
+  "nitra": [
+   {
+    "ico": "31436200",
+    "nazov": "Nitrianske komunálne služby, s.r.o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 4015160,
+      "vynosy": 4051111,
+      "naklady": 3966063,
+      "osobne_naklady": 1219001,
+      "odpisy": 536920,
+      "vysledok": 64351,
+      "majetok": 4045664,
+      "vlastne_imanie": 3417364,
+      "zavazky": 473869,
+      "bankove_uvery": 0
+     },
+     "2016": {
+      "obrat": 4265313,
+      "vynosy": 4418956,
+      "naklady": 4341810,
+      "osobne_naklady": 1430517,
+      "odpisy": 571269,
+      "vysledok": 56100,
+      "majetok": 4205283,
+      "vlastne_imanie": 3409113,
+      "zavazky": 432940,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 4431461,
+      "vynosy": 4709657,
+      "naklady": 4628835,
+      "osobne_naklady": 1652075,
+      "odpisy": 635450,
+      "vysledok": 58617,
+      "majetok": 4356252,
+      "vlastne_imanie": 3461631,
+      "zavazky": 573362,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 4563927,
+      "vynosy": 4912759,
+      "naklady": 4852947,
+      "osobne_naklady": 1911059,
+      "odpisy": 771742,
+      "vysledok": 30988,
+      "majetok": 4406012,
+      "vlastne_imanie": 3484001,
+      "zavazky": 656026,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 4819626,
+      "vynosy": 5101078,
+      "naklady": 5066882,
+      "osobne_naklady": 2029239,
+      "odpisy": 775480,
+      "vysledok": 19971,
+      "majetok": 4614937,
+      "vlastne_imanie": 3472984,
+      "zavazky": 940303,
+      "bankove_uvery": 11817
+     },
+     "2020": {
+      "obrat": 5477743,
+      "vynosy": 5809746,
+      "naklady": 5738739,
+      "osobne_naklady": 2331076,
+      "odpisy": 788907,
+      "vysledok": 45495,
+      "majetok": 5251250,
+      "vlastne_imanie": 3508508,
+      "zavazky": 1600897,
+      "bankove_uvery": 326663
+     },
+     "2021": {
+      "obrat": 6383682,
+      "vynosy": 6762735,
+      "naklady": 6511731,
+      "osobne_naklady": 2610393,
+      "odpisy": 822224,
+      "vysledok": 189419,
+      "majetok": 5139363,
+      "vlastne_imanie": 3687928,
+      "zavazky": 1364475,
+      "bankove_uvery": 246659
+     },
+     "2022": {
+      "obrat": 7078385,
+      "vynosy": 7401915,
+      "naklady": 7229845,
+      "osobne_naklady": 2734915,
+      "odpisy": 841127,
+      "vysledok": 123862,
+      "majetok": 5243593,
+      "vlastne_imanie": 3801790,
+      "zavazky": 1407968,
+      "bankove_uvery": 199720
+     },
+     "2023": {
+      "obrat": 7750323,
+      "vynosy": 8222535,
+      "naklady": 8143703,
+      "osobne_naklady": 3350147,
+      "odpisy": 862847,
+      "vysledok": 43745,
+      "majetok": 5308675,
+      "vlastne_imanie": 3835535,
+      "zavazky": 1459828,
+      "bankove_uvery": 86651
+     },
+     "2024": {
+      "obrat": 8522498,
+      "vynosy": 8948225,
+      "naklady": 8639285,
+      "osobne_naklady": 3735614,
+      "odpisy": 869413,
+      "vysledok": 228698,
+      "majetok": 5708623,
+      "vlastne_imanie": 4051233,
+      "zavazky": 1646469,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 9379741,
+      "vynosy": 9810669,
+      "naklady": 9608983,
+      "osobne_naklady": 4263247,
+      "odpisy": 957102,
+      "vysledok": 130627,
+      "majetok": 6485733,
+      "vlastne_imanie": 4153162,
+      "zavazky": 1893757,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     2052782,
+     2388185,
+     2772862,
+     3165075,
+     3565724,
+     3954307,
+     4317033,
+     4687861,
+     5024408,
+     5509223,
+     5846456,
+     6321915,
+     6777496
+    ]
+   },
+   {
+    "ico": "36567761",
+    "nazov": "Nitrianska investičná, s.r.o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 4948493,
+      "vynosy": 4973494,
+      "naklady": 4970891,
+      "osobne_naklady": 32776,
+      "odpisy": 1109,
+      "vysledok": 1609,
+      "majetok": 2475033,
+      "vlastne_imanie": 2470037,
+      "zavazky": 4996,
+      "bankove_uvery": 0
+     },
+     "2016": {
+      "obrat": 1389750,
+      "vynosy": 1516898,
+      "naklady": 1507212,
+      "osobne_naklady": 40604,
+      "odpisy": 6601,
+      "vysledok": 6831,
+      "majetok": 2497796,
+      "vlastne_imanie": 2476868,
+      "zavazky": 20928,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 1253380,
+      "vynosy": 1354897,
+      "naklady": 1279178,
+      "osobne_naklady": 40102,
+      "odpisy": 6601,
+      "vysledok": 63368,
+      "majetok": 3685173,
+      "vlastne_imanie": 2540236,
+      "zavazky": 232744,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 2110683,
+      "vynosy": 2178532,
+      "naklady": 2067397,
+      "osobne_naklady": 40524,
+      "odpisy": 74346,
+      "vysledok": 72233,
+      "majetok": 11898854,
+      "vlastne_imanie": 2612469,
+      "zavazky": 4524004,
+      "bankove_uvery": 3721227
+     },
+     "2019": {
+      "obrat": 817285,
+      "vynosy": 1566494,
+      "naklady": 1377631,
+      "osobne_naklady": 52968,
+      "odpisy": 417687,
+      "vysledok": 110825,
+      "majetok": 10932471,
+      "vlastne_imanie": 2723294,
+      "zavazky": 3599433,
+      "bankove_uvery": 3399880
+     },
+     "2020": {
+      "obrat": 561338,
+      "vynosy": 791881,
+      "naklady": 633382,
+      "osobne_naklady": 32934,
+      "odpisy": 431453,
+      "vysledok": 84643,
+      "majetok": 10548074,
+      "vlastne_imanie": 2807937,
+      "zavazky": 3360936,
+      "bankove_uvery": 3179720
+     },
+     "2021": {
+      "obrat": 1448294,
+      "vynosy": 1992689,
+      "naklady": 1539030,
+      "osobne_naklady": 31475,
+      "odpisy": 431901,
+      "vysledok": 328876,
+      "majetok": 10357003,
+      "vlastne_imanie": 3136813,
+      "zavazky": 3071533,
+      "bankove_uvery": 2765840
+     },
+     "2022": {
+      "obrat": 998909,
+      "vynosy": 1606939,
+      "naklady": 1587703,
+      "osobne_naklady": 54854,
+      "odpisy": 431941,
+      "vysledok": -12117,
+      "majetok": 9948311,
+      "vlastne_imanie": 3124696,
+      "zavazky": 2897602,
+      "bankove_uvery": 2351960
+     },
+     "2023": {
+      "obrat": 188707,
+      "vynosy": 1251543,
+      "naklady": 966932,
+      "osobne_naklady": 110238,
+      "odpisy": 434778,
+      "vysledok": 205878,
+      "majetok": 10107722,
+      "vlastne_imanie": 3330574,
+      "zavazky": 1997560,
+      "bankove_uvery": 1938080
+     },
+     "2024": {
+      "obrat": 241175,
+      "vynosy": 1119675,
+      "naklady": 1033829,
+      "osobne_naklady": 128535,
+      "odpisy": 448885,
+      "vysledok": 50544,
+      "majetok": 9989570,
+      "vlastne_imanie": 3881118,
+      "zavazky": 1552165,
+      "bankove_uvery": 1524200
+     },
+     "2025": {
+      "obrat": 356269,
+      "vynosy": 1230851,
+      "naklady": 974801,
+      "osobne_naklady": 118095,
+      "odpisy": 451936,
+      "vysledok": 188372,
+      "majetok": 9551163,
+      "vlastne_imanie": 4069490,
+      "zavazky": 1170213,
+      "bankove_uvery": 1110320
+     }
+    },
+    "zavierky": [
+     1944788,
+     2300383,
+     2742225,
+     3148245,
+     3546880,
+     4002155,
+     4356747,
+     4678602,
+     5036781,
+     5432669,
+     6001235,
+     6353597,
+     6818271
+    ]
+   },
+   {
+    "ico": "31447929",
+    "nazov": "Službyt Nitra, s.r.o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 1710005,
+      "vynosy": 2191896,
+      "naklady": 2181298,
+      "osobne_naklady": 1540583,
+      "odpisy": 63535,
+      "vysledok": 20090,
+      "majetok": 6977614,
+      "vlastne_imanie": 3889770,
+      "zavazky": 3087844,
+      "bankove_uvery": 0
+     },
+     "2016": {
+      "obrat": 1865369,
+      "vynosy": 2438248,
+      "naklady": 2431104,
+      "osobne_naklady": 1776111,
+      "odpisy": 87096,
+      "vysledok": 23660,
+      "majetok": 6972769,
+      "vlastne_imanie": 3894345,
+      "zavazky": 3078424,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 1850108,
+      "vynosy": 2383038,
+      "naklady": 2363704,
+      "osobne_naklady": 1705579,
+      "odpisy": 87187,
+      "vysledok": 19466,
+      "majetok": 5411922,
+      "vlastne_imanie": 3891334,
+      "zavazky": 1520588,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 2057334,
+      "vynosy": 2621737,
+      "naklady": 2577870,
+      "osobne_naklady": 1778460,
+      "odpisy": 97006,
+      "vysledok": 27156,
+      "majetok": 5198431,
+      "vlastne_imanie": 3899996,
+      "zavazky": 1298435,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 2180000,
+      "vynosy": 2760929,
+      "naklady": 2723076,
+      "osobne_naklady": 1779809,
+      "odpisy": 78884,
+      "vysledok": 23914,
+      "majetok": 5306391,
+      "vlastne_imanie": 3898113,
+      "zavazky": 1408278,
+      "bankove_uvery": 0
+     },
+     "2020": {
+      "obrat": 1963787,
+      "vynosy": 2541412,
+      "naklady": 2523760,
+      "osobne_naklady": 1836824,
+      "odpisy": 89962,
+      "vysledok": 13882,
+      "majetok": 5213228,
+      "vlastne_imanie": 3889277,
+      "zavazky": 1323951,
+      "bankove_uvery": 0
+     },
+     "2021": {
+      "obrat": 2246143,
+      "vynosy": 2859071,
+      "naklady": 2839304,
+      "osobne_naklady": 1958784,
+      "odpisy": 91045,
+      "vysledok": 12569,
+      "majetok": 5836904,
+      "vlastne_imanie": 3888658,
+      "zavazky": 1948246,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 2545370,
+      "vynosy": 3216300,
+      "naklady": 3204431,
+      "osobne_naklady": 2091774,
+      "odpisy": 80750,
+      "vysledok": 12525,
+      "majetok": 6675016,
+      "vlastne_imanie": 3889243,
+      "zavazky": 2785773,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 2378680,
+      "vynosy": 3113909,
+      "naklady": 3116636,
+      "osobne_naklady": 2249846,
+      "odpisy": 70829,
+      "vysledok": 9924,
+      "majetok": 8493109,
+      "vlastne_imanie": 3887268,
+      "zavazky": 4605841,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 2500999,
+      "vynosy": 3279586,
+      "naklady": 3314769,
+      "osobne_naklady": 2467367,
+      "odpisy": 68807,
+      "vysledok": 14334,
+      "majetok": 7612657,
+      "vlastne_imanie": 3892174,
+      "zavazky": 3720483,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 2794868,
+      "vynosy": 3631771,
+      "naklady": 3662059,
+      "osobne_naklady": 2637418,
+      "odpisy": 72022,
+      "vysledok": 19352,
+      "majetok": 7484931,
+      "vlastne_imanie": 3897909,
+      "zavazky": 3587022,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     1871079,
+     2336652,
+     2775337,
+     2905267,
+     3167094,
+     3566324,
+     3946122,
+     4275869,
+     4626867,
+     5093252,
+     5484707,
+     5838323,
+     6308418,
+     6787162
+    ]
+   }
+  ],
+  "trencin": [
+   {
+    "ico": "51110369",
+    "nazov": "Integrovaná doprava Žilinského a Trenčianskeho kraja, s. r. o.",
+    "vlastnictvo": "podiel",
+    "overenie": "RPO",
+    "roky": {
+     "2017": {
+      "obrat": 0,
+      "vynosy": 16186,
+      "naklady": 16420,
+      "osobne_naklady": 7134,
+      "odpisy": 0,
+      "vysledok": -281,
+      "majetok": 68622,
+      "vlastne_imanie": 49719,
+      "zavazky": 18903,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 0,
+      "vynosy": 106670,
+      "naklady": 106847,
+      "osobne_naklady": 78873,
+      "odpisy": 0,
+      "vysledok": -312,
+      "majetok": 60031,
+      "vlastne_imanie": 49407,
+      "zavazky": 10624,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 0,
+      "vynosy": 157944,
+      "naklady": 158700,
+      "osobne_naklady": 122307,
+      "odpisy": 0,
+      "vysledok": -1054,
+      "majetok": 83502,
+      "vlastne_imanie": 48353,
+      "zavazky": 35149,
+      "bankove_uvery": 0
+     },
+     "2020": {
+      "obrat": 0,
+      "vynosy": 221469,
+      "naklady": 221564,
+      "osobne_naklady": 153655,
+      "odpisy": 5200,
+      "vysledok": -148,
+      "majetok": 282234,
+      "vlastne_imanie": 48206,
+      "zavazky": 180204,
+      "bankove_uvery": 0
+     },
+     "2021": {
+      "obrat": 45902,
+      "vynosy": 392624,
+      "naklady": 385704,
+      "osobne_naklady": 195078,
+      "odpisy": 12480,
+      "vysledok": 5434,
+      "majetok": 118207,
+      "vlastne_imanie": 53640,
+      "zavazky": 32347,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 29074,
+      "vynosy": 444525,
+      "naklady": 420852,
+      "osobne_naklady": 259247,
+      "odpisy": 12764,
+      "vysledok": 17504,
+      "majetok": 119444,
+      "vlastne_imanie": 71144,
+      "zavazky": 28844,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 157754,
+      "vynosy": 551736,
+      "naklady": 541392,
+      "osobne_naklady": 331505,
+      "odpisy": 15888,
+      "vysledok": 4217,
+      "majetok": 120054,
+      "vlastne_imanie": 74361,
+      "zavazky": 38717,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 216083,
+      "vynosy": 686949,
+      "naklady": 609410,
+      "osobne_naklady": 388519,
+      "odpisy": 16926,
+      "vysledok": 60819,
+      "majetok": 184573,
+      "vlastne_imanie": 135180,
+      "zavazky": 49393,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 316652,
+      "vynosy": 1056223,
+      "naklady": 850507,
+      "osobne_naklady": 545886,
+      "odpisy": 33749,
+      "vysledok": 160076,
+      "majetok": 746486,
+      "vlastne_imanie": 345256,
+      "zavazky": 70348,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     3525014,
+     3991041,
+     4307250,
+     4749506,
+     5288391,
+     5338841,
+     5800765,
+     6223169,
+     6969035
+    ]
+   }
+  ],
+  "zilina": [
+   {
+    "ico": "36007099",
+    "nazov": "Dopravný podnik mesta Žiliny s.r.o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 4130152,
+      "vynosy": 9391729,
+      "naklady": 9185333,
+      "osobne_naklady": 4460842,
+      "odpisy": 1396884,
+      "vysledok": -99002,
+      "majetok": 12373310,
+      "vlastne_imanie": 3470765,
+      "zavazky": 8355526,
+      "bankove_uvery": 6187756
+     },
+     "2016": {
+      "obrat": 3877469,
+      "vynosy": 9201962,
+      "naklady": 9157039,
+      "osobne_naklady": 4594423,
+      "odpisy": 1294872,
+      "vysledok": -218258,
+      "majetok": 11732979,
+      "vlastne_imanie": 3370637,
+      "zavazky": 7538846,
+      "bankove_uvery": 5380591
+     },
+     "2017": {
+      "obrat": 3615793,
+      "vynosy": 9854193,
+      "naklady": 9579057,
+      "osobne_naklady": 4884723,
+      "odpisy": 1285362,
+      "vysledok": 48273,
+      "majetok": 18061401,
+      "vlastne_imanie": 3658063,
+      "zavazky": 7874702,
+      "bankove_uvery": 4570929
+     },
+     "2018": {
+      "obrat": 3315916,
+      "vynosy": 11115549,
+      "naklady": 10887247,
+      "osobne_naklady": 5107019,
+      "odpisy": 2449309,
+      "vysledok": 34942,
+      "majetok": 29658799,
+      "vlastne_imanie": 3692673,
+      "zavazky": 7002289,
+      "bankove_uvery": 3759557
+     },
+     "2019": {
+      "obrat": 3289660,
+      "vynosy": 13667484,
+      "naklady": 13124254,
+      "osobne_naklady": 5798025,
+      "odpisy": 3574154,
+      "vysledok": 80628,
+      "majetok": 31108800,
+      "vlastne_imanie": 3773301,
+      "zavazky": 4676305,
+      "bankove_uvery": 2950161
+     },
+     "2020": {
+      "obrat": 2380127,
+      "vynosy": 13250060,
+      "naklady": 13459447,
+      "osobne_naklady": 5922563,
+      "odpisy": 3720165,
+      "vysledok": -359065,
+      "majetok": 28332282,
+      "vlastne_imanie": 3071619,
+      "zavazky": 4145950,
+      "bankove_uvery": 2140764
+     },
+     "2021": {
+      "obrat": 2577177,
+      "vynosy": 14655220,
+      "naklady": 15166201,
+      "osobne_naklady": 6072613,
+      "odpisy": 3815850,
+      "vysledok": -530908,
+      "majetok": 22697589,
+      "vlastne_imanie": 2555088,
+      "zavazky": 2243516,
+      "bankove_uvery": 787721
+     },
+     "2022": {
+      "obrat": 2995379,
+      "vynosy": 13962764,
+      "naklady": 14087412,
+      "osobne_naklady": 6714115,
+      "odpisy": 3702018,
+      "vysledok": -183083,
+      "majetok": 19366772,
+      "vlastne_imanie": 2372005,
+      "zavazky": 1632227,
+      "bankove_uvery": 179144
+     },
+     "2023": {
+      "obrat": 3424084,
+      "vynosy": 14579685,
+      "naklady": 14461449,
+      "osobne_naklady": 7544717,
+      "odpisy": 3338206,
+      "vysledok": 15835,
+      "majetok": 20721744,
+      "vlastne_imanie": 2387840,
+      "zavazky": 1594253,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 3881908,
+      "vynosy": 15860998,
+      "naklady": 15817948,
+      "osobne_naklady": 8483940,
+      "odpisy": 3289957,
+      "vysledok": -56032,
+      "majetok": 32649525,
+      "vlastne_imanie": 2331808,
+      "zavazky": 9732067,
+      "bankove_uvery": 881512
+     },
+     "2025": {
+      "obrat": 4111961,
+      "vynosy": 16442344,
+      "naklady": 16482453,
+      "osobne_naklady": 8921542,
+      "odpisy": 3181067,
+      "vysledok": -140763,
+      "majetok": 44335864,
+      "vlastne_imanie": 2191046,
+      "zavazky": 7858641,
+      "bankove_uvery": 4814409
+     }
+    },
+    "zavierky": [
+     1957467,
+     2365605,
+     2380069,
+     2394843,
+     2731996,
+     3152227,
+     3186867,
+     3507065,
+     3513081,
+     3843251,
+     4057397,
+     4253428,
+     4310659,
+     4320726,
+     4670664,
+     5174158,
+     5600125,
+     5604710,
+     5877887,
+     6314545,
+     6806501
+    ]
+   },
+   {
+    "ico": "46931317",
+    "nazov": "Správa športových zariadení mesta Žilina, s.r.o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 469931,
+      "vynosy": 790130,
+      "naklady": 730786,
+      "osobne_naklady": 400497,
+      "odpisy": 1214,
+      "vysledok": 44539,
+      "majetok": 185488,
+      "vlastne_imanie": 132219,
+      "zavazky": 53144,
+      "bankove_uvery": 0
+     },
+     "2016": {
+      "obrat": 389568,
+      "vynosy": 671379,
+      "naklady": 682350,
+      "osobne_naklady": 378868,
+      "odpisy": 1909,
+      "vysledok": -16214,
+      "majetok": 168993,
+      "vlastne_imanie": 114669,
+      "zavazky": 54324,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 377553,
+      "vynosy": 759734,
+      "naklady": 727455,
+      "osobne_naklady": 397167,
+      "odpisy": 5182,
+      "vysledok": 26761,
+      "majetok": 1520153,
+      "vlastne_imanie": 141431,
+      "zavazky": 1139609,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 503011,
+      "vynosy": 906476,
+      "naklady": 901957,
+      "osobne_naklady": 467646,
+      "odpisy": 41925,
+      "vysledok": -384,
+      "majetok": 1652649,
+      "vlastne_imanie": 129286,
+      "zavazky": 938107,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 530135,
+      "vynosy": 1005711,
+      "naklady": 1000580,
+      "osobne_naklady": 555863,
+      "odpisy": 54801,
+      "vysledok": 346,
+      "majetok": 1625412,
+      "vlastne_imanie": 129632,
+      "zavazky": 840298,
+      "bankove_uvery": 0
+     },
+     "2020": {
+      "obrat": 271925,
+      "vynosy": 1038497,
+      "naklady": 994207,
+      "osobne_naklady": 536034,
+      "odpisy": 61991,
+      "vysledok": 33313,
+      "majetok": 1881201,
+      "vlastne_imanie": 162945,
+      "zavazky": 726454,
+      "bankove_uvery": 6
+     },
+     "2021": {
+      "obrat": 329527,
+      "vynosy": 1164572,
+      "naklady": 1117010,
+      "osobne_naklady": 601912,
+      "odpisy": 69433,
+      "vysledok": 35828,
+      "majetok": 1802729,
+      "vlastne_imanie": 198773,
+      "zavazky": 626075,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 953199,
+      "vynosy": 1796564,
+      "naklady": 1738312,
+      "osobne_naklady": 1019366,
+      "odpisy": 107957,
+      "vysledok": 38460,
+      "majetok": 1925296,
+      "vlastne_imanie": 237233,
+      "zavazky": 637988,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 1254065,
+      "vynosy": 2060174,
+      "naklady": 1972308,
+      "osobne_naklady": 1084502,
+      "odpisy": 121048,
+      "vysledok": 57987,
+      "majetok": 1952904,
+      "vlastne_imanie": 295219,
+      "zavazky": 567650,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 1260937,
+      "vynosy": 3026567,
+      "naklady": 2956984,
+      "osobne_naklady": 1135537,
+      "odpisy": 136316,
+      "vysledok": 42633,
+      "majetok": 3594555,
+      "vlastne_imanie": 337852,
+      "zavazky": 1962592,
+      "bankove_uvery": 117053
+     },
+     "2025": {
+      "obrat": 1240739,
+      "vynosy": 3158952,
+      "naklady": 3045617,
+      "osobne_naklady": 1225562,
+      "odpisy": 158216,
+      "vysledok": 67346,
+      "majetok": 3629662,
+      "vlastne_imanie": 405198,
+      "zavazky": 1889568,
+      "bankove_uvery": 214307
+     }
+    },
+    "zavierky": [
+     1874284,
+     2275334,
+     2680600,
+     3122472,
+     3548724,
+     3853635,
+     4171845,
+     4777460,
+     5181716,
+     5614947,
+     6056014,
+     6480812,
+     6832767
+    ]
+   },
+   {
+    "ico": "53946600",
+    "nazov": "Technické služby mesta Žilina, s.r.o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2023": {
+      "obrat": 1172023,
+      "vynosy": 1178750,
+      "naklady": 967282,
+      "osobne_naklady": 638350,
+      "odpisy": 50162,
+      "vysledok": 158765,
+      "majetok": 609087,
+      "vlastne_imanie": 262668,
+      "zavazky": 314419,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 2094433,
+      "vynosy": 2128960,
+      "naklady": 1931701,
+      "osobne_naklady": 1156309,
+      "odpisy": 191192,
+      "vysledok": 129132,
+      "majetok": 1302754,
+      "vlastne_imanie": 381799,
+      "zavazky": 867331,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 2340097,
+      "vynosy": 2365061,
+      "naklady": 2318242,
+      "osobne_naklady": 1445173,
+      "odpisy": 226885,
+      "vysledok": 10821,
+      "majetok": 1211731,
+      "vlastne_imanie": 392620,
+      "zavazky": 776271,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     5021430,
+     5567308,
+     5959101,
+     6454477,
+     6818738
+    ]
+   },
+   {
+    "ico": "51110369",
+    "nazov": "Integrovaná doprava Žilinského a Trenčianskeho kraja, s. r. o.",
+    "vlastnictvo": "podiel",
+    "overenie": "RPO",
+    "roky": {
+     "2017": {
+      "obrat": 0,
+      "vynosy": 16186,
+      "naklady": 16420,
+      "osobne_naklady": 7134,
+      "odpisy": 0,
+      "vysledok": -281,
+      "majetok": 68622,
+      "vlastne_imanie": 49719,
+      "zavazky": 18903,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 0,
+      "vynosy": 106670,
+      "naklady": 106847,
+      "osobne_naklady": 78873,
+      "odpisy": 0,
+      "vysledok": -312,
+      "majetok": 60031,
+      "vlastne_imanie": 49407,
+      "zavazky": 10624,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 0,
+      "vynosy": 157944,
+      "naklady": 158700,
+      "osobne_naklady": 122307,
+      "odpisy": 0,
+      "vysledok": -1054,
+      "majetok": 83502,
+      "vlastne_imanie": 48353,
+      "zavazky": 35149,
+      "bankove_uvery": 0
+     },
+     "2020": {
+      "obrat": 0,
+      "vynosy": 221469,
+      "naklady": 221564,
+      "osobne_naklady": 153655,
+      "odpisy": 5200,
+      "vysledok": -148,
+      "majetok": 282234,
+      "vlastne_imanie": 48206,
+      "zavazky": 180204,
+      "bankove_uvery": 0
+     },
+     "2021": {
+      "obrat": 45902,
+      "vynosy": 392624,
+      "naklady": 385704,
+      "osobne_naklady": 195078,
+      "odpisy": 12480,
+      "vysledok": 5434,
+      "majetok": 118207,
+      "vlastne_imanie": 53640,
+      "zavazky": 32347,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 29074,
+      "vynosy": 444525,
+      "naklady": 420852,
+      "osobne_naklady": 259247,
+      "odpisy": 12764,
+      "vysledok": 17504,
+      "majetok": 119444,
+      "vlastne_imanie": 71144,
+      "zavazky": 28844,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 157754,
+      "vynosy": 551736,
+      "naklady": 541392,
+      "osobne_naklady": 331505,
+      "odpisy": 15888,
+      "vysledok": 4217,
+      "majetok": 120054,
+      "vlastne_imanie": 74361,
+      "zavazky": 38717,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 216083,
+      "vynosy": 686949,
+      "naklady": 609410,
+      "osobne_naklady": 388519,
+      "odpisy": 16926,
+      "vysledok": 60819,
+      "majetok": 184573,
+      "vlastne_imanie": 135180,
+      "zavazky": 49393,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 316652,
+      "vynosy": 1056223,
+      "naklady": 850507,
+      "osobne_naklady": 545886,
+      "odpisy": 33749,
+      "vysledok": 160076,
+      "majetok": 746486,
+      "vlastne_imanie": 345256,
+      "zavazky": 70348,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     3525014,
+     3991041,
+     4307250,
+     4749506,
+     5288391,
+     5338841,
+     5800765,
+     6223169,
+     6969035
+    ]
+   },
+   {
+    "ico": "54232813",
+    "nazov": "Mestský sociálny podnik Žilina, s. r. o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2022": {
+      "obrat": 33864,
+      "vynosy": 125212,
+      "naklady": 99127,
+      "osobne_naklady": 90027,
+      "odpisy": 0,
+      "vysledok": 26027,
+      "majetok": 50291,
+      "vlastne_imanie": 30769,
+      "zavazky": 19522,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 94020,
+      "vynosy": 209872,
+      "naklady": 208712,
+      "osobne_naklady": 197123,
+      "odpisy": 0,
+      "vysledok": 1016,
+      "majetok": 63480,
+      "vlastne_imanie": 31786,
+      "zavazky": 31694,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 142519,
+      "vynosy": 299424,
+      "naklady": 296699,
+      "osobne_naklady": 277620,
+      "odpisy": 0,
+      "vysledok": 2537,
+      "majetok": 71981,
+      "vlastne_imanie": 34323,
+      "zavazky": 37658,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 191107,
+      "vynosy": 418948,
+      "naklady": 409667,
+      "osobne_naklady": 382302,
+      "odpisy": 0,
+      "vysledok": 9076,
+      "majetok": 91641,
+      "vlastne_imanie": 43399,
+      "zavazky": 48242,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     5189773,
+     5586540,
+     5868853,
+     6314709,
+     6806261
+    ]
+   },
+   {
+    "ico": "36416754",
+    "nazov": "Žilina Invest, s.r.o.",
+    "vlastnictvo": "podiel",
+    "overenie": "RPO",
+    "roky": {},
+    "zavierky": [
+     1892476,
+     2382957,
+     2932081,
+     3282875,
+     3282886,
+     3716945,
+     3813443,
+     3814796,
+     4104439,
+     4210656,
+     4744644,
+     5072553,
+     5542556,
+     5877719,
+     6375180,
+     6847728
+    ]
+   },
+   {
+    "ico": "55834191",
+    "nazov": "Energetická spoločnosť mesta Žilina, s. r. o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {},
+    "zavierky": [
+     5809435,
+     6223168,
+     6609882,
+     6775869
+    ]
+   }
+  ],
+  "banska-bystrica": [
+   {
+    "ico": "36016411",
+    "nazov": "Dopravný podnik mesta Banská Bystrica, a.s.",
+    "vlastnictvo": "podiel",
+    "overenie": "výročná správa DPMBB za rok 2020 a SAD Zvolen za rok 2023 (mesto 49 %, SAD Zvolen 51 %)",
+    "roky": {
+     "2015": {
+      "obrat": 1472349,
+      "vynosy": 4363023,
+      "naklady": 4322156,
+      "osobne_naklady": 1746752,
+      "odpisy": 1588767,
+      "vysledok": 23328,
+      "majetok": 6599735,
+      "vlastne_imanie": 1096961,
+      "zavazky": 1529333,
+      "bankove_uvery": 875098
+     },
+     "2016": {
+      "obrat": 1521884,
+      "vynosy": 4646740,
+      "naklady": 4731981,
+      "osobne_naklady": 1839701,
+      "odpisy": 1976606,
+      "vysledok": -108345,
+      "majetok": 4538444,
+      "vlastne_imanie": 988616,
+      "zavazky": 1185867,
+      "bankove_uvery": 612006
+     },
+     "2017": {
+      "obrat": 1522913,
+      "vynosy": 4084375,
+      "naklady": 4115468,
+      "osobne_naklady": 1931250,
+      "odpisy": 1202548,
+      "vysledok": -47612,
+      "majetok": 3543596,
+      "vlastne_imanie": 941004,
+      "zavazky": 1211236,
+      "bankove_uvery": 714080
+     },
+     "2018": {
+      "obrat": 1857606,
+      "vynosy": 3875466,
+      "naklady": 3763033,
+      "osobne_naklady": 2078276,
+      "odpisy": 497061,
+      "vysledok": 80105,
+      "majetok": 4194174,
+      "vlastne_imanie": 1021109,
+      "zavazky": 2130366,
+      "bankove_uvery": 482915
+     },
+     "2019": {
+      "obrat": 1891401,
+      "vynosy": 4078477,
+      "naklady": 4096821,
+      "osobne_naklady": 2067228,
+      "odpisy": 599255,
+      "vysledok": -42388,
+      "majetok": 4031444,
+      "vlastne_imanie": 978721,
+      "zavazky": 2324513,
+      "bankove_uvery": 1130875
+     },
+     "2020": {
+      "obrat": 1490364,
+      "vynosy": 4143657,
+      "naklady": 4033493,
+      "osobne_naklady": 2132062,
+      "odpisy": 647012,
+      "vysledok": 24336,
+      "majetok": 3608492,
+      "vlastne_imanie": 1003057,
+      "zavazky": 2208055,
+      "bankove_uvery": 1229856
+     },
+     "2021": {
+      "obrat": 1573225,
+      "vynosy": 4735619,
+      "naklady": 4356527,
+      "osobne_naklady": 2498896,
+      "odpisy": 569277,
+      "vysledok": 314843,
+      "majetok": 3201152,
+      "vlastne_imanie": 1317901,
+      "zavazky": 1761065,
+      "bankove_uvery": 1082700
+     },
+     "2022": {
+      "obrat": 1781022,
+      "vynosy": 5292949,
+      "naklady": 5105547,
+      "osobne_naklady": 2694924,
+      "odpisy": 310891,
+      "vysledok": 117580,
+      "majetok": 3395660,
+      "vlastne_imanie": 1435481,
+      "zavazky": 1862906,
+      "bankove_uvery": 933840
+     },
+     "2023": {
+      "obrat": 2040387,
+      "vynosy": 5444892,
+      "naklady": 4995661,
+      "osobne_naklady": 2948732,
+      "odpisy": 311426,
+      "vysledok": 336706,
+      "majetok": 3900942,
+      "vlastne_imanie": 1772186,
+      "zavazky": 2056389,
+      "bankove_uvery": 604798
+     },
+     "2024": {
+      "obrat": 1997898,
+      "vynosy": 5835444,
+      "naklady": 5369687,
+      "osobne_naklady": 3108297,
+      "odpisy": 310892,
+      "vysledok": 346733,
+      "majetok": 3286212,
+      "vlastne_imanie": 2118919,
+      "zavazky": 1119845,
+      "bankove_uvery": 425877
+     },
+     "2025": {
+      "obrat": 2094486,
+      "vynosy": 6678921,
+      "naklady": 5838726,
+      "osobne_naklady": 3444739,
+      "odpisy": 293616,
+      "vysledok": 628658,
+      "majetok": 3869864,
+      "vlastne_imanie": 2712897,
+      "zavazky": 1120487,
+      "bankove_uvery": 247967
+     }
+    },
+    "zavierky": [
+     2195574,
+     2369618,
+     2925048,
+     3324539,
+     3574771,
+     4087530,
+     4405651,
+     4887480,
+     5225577,
+     5648414,
+     6032951,
+     6534413,
+     7014888
+    ],
+    "podiel_pct": 49
+   },
+   {
+    "ico": "31642365",
+    "nazov": "Mestské lesy Banská Bystrica s.r.o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 1219958,
+      "vynosy": 1332191,
+      "naklady": 1306070,
+      "osobne_naklady": 405817,
+      "odpisy": 60770,
+      "vysledok": 18776,
+      "majetok": 1532752,
+      "vlastne_imanie": 309630,
+      "zavazky": 584991,
+      "bankove_uvery": 0
+     },
+     "2016": {
+      "obrat": 1283980,
+      "vynosy": 1364845,
+      "naklady": 1339220,
+      "osobne_naklady": 415926,
+      "odpisy": 53549,
+      "vysledok": 18102,
+      "majetok": 1923150,
+      "vlastne_imanie": 309894,
+      "zavazky": 636790,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 1272061,
+      "vynosy": 1416760,
+      "naklady": 1389895,
+      "osobne_naklady": 425734,
+      "odpisy": 58829,
+      "vysledok": 19993,
+      "majetok": 1877779,
+      "vlastne_imanie": 312690,
+      "zavazky": 636184,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 1369347,
+      "vynosy": 1507063,
+      "naklady": 1468571,
+      "osobne_naklady": 466732,
+      "odpisy": 80072,
+      "vysledok": 26839,
+      "majetok": 1978521,
+      "vlastne_imanie": 320535,
+      "zavazky": 634908,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 1468573,
+      "vynosy": 1692880,
+      "naklady": 1656227,
+      "osobne_naklady": 492195,
+      "odpisy": 87827,
+      "vysledok": 29887,
+      "majetok": 2004826,
+      "vlastne_imanie": 324925,
+      "zavazky": 723189,
+      "bankove_uvery": 0
+     },
+     "2020": {
+      "obrat": 1288141,
+      "vynosy": 1585175,
+      "naklady": 1554878,
+      "osobne_naklady": 476263,
+      "odpisy": 95278,
+      "vysledok": 29275,
+      "majetok": 2079858,
+      "vlastne_imanie": 354200,
+      "zavazky": 686284,
+      "bankove_uvery": 0
+     },
+     "2021": {
+      "obrat": 1635645,
+      "vynosy": 2065194,
+      "naklady": 1881868,
+      "osobne_naklady": 589980,
+      "odpisy": 103045,
+      "vysledok": 143792,
+      "majetok": 2134259,
+      "vlastne_imanie": 470181,
+      "zavazky": 751463,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 2110582,
+      "vynosy": 2382707,
+      "naklady": 2061784,
+      "osobne_naklady": 678770,
+      "odpisy": 102208,
+      "vysledok": 254613,
+      "majetok": 2291854,
+      "vlastne_imanie": 664192,
+      "zavazky": 801988,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 2323814,
+      "vynosy": 2572476,
+      "naklady": 2301129,
+      "osobne_naklady": 728691,
+      "odpisy": 101264,
+      "vysledok": 212656,
+      "majetok": 2225288,
+      "vlastne_imanie": 729965,
+      "zavazky": 755148,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 1888804,
+      "vynosy": 2349755,
+      "naklady": 2265723,
+      "osobne_naklady": 711656,
+      "odpisy": 101392,
+      "vysledok": 64166,
+      "majetok": 2076704,
+      "vlastne_imanie": 668108,
+      "zavazky": 753921,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 1819651,
+      "vynosy": 2105259,
+      "naklady": 2047643,
+      "osobne_naklady": 625902,
+      "odpisy": 104591,
+      "vysledok": 47550,
+      "majetok": 2558780,
+      "vlastne_imanie": 712700,
+      "zavazky": 750641,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     1822569,
+     2278475,
+     2680503,
+     3123064,
+     3475794,
+     3847422,
+     4210244,
+     4587793,
+     4968724,
+     5387126,
+     5801547,
+     6222835,
+     6716751
+    ]
+   },
+   {
+    "ico": "31609465",
+    "nazov": "BIC Banská Bystrica, s.r.o.",
+    "vlastnictvo": "podiel",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 78950,
+      "vynosy": 95166,
+      "naklady": 78292,
+      "osobne_naklady": 23771,
+      "odpisy": 7332,
+      "vysledok": 12328,
+      "majetok": 244038,
+      "vlastne_imanie": 107337,
+      "zavazky": 136413,
+      "bankove_uvery": 0
+     },
+     "2016": {
+      "obrat": 82970,
+      "vynosy": 84253,
+      "naklady": 63912,
+      "osobne_naklady": 13750,
+      "odpisy": 8112,
+      "vysledok": 15492,
+      "majetok": 241102,
+      "vlastne_imanie": 122829,
+      "zavazky": 116033,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 91028,
+      "vynosy": 92721,
+      "naklady": 68977,
+      "osobne_naklady": 18691,
+      "odpisy": 8112,
+      "vysledok": 18392,
+      "majetok": 245035,
+      "vlastne_imanie": 141221,
+      "zavazky": 102274,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 100450,
+      "vynosy": 100450,
+      "naklady": 80291,
+      "osobne_naklady": 26086,
+      "odpisy": 9528,
+      "vysledok": 15495,
+      "majetok": 287923,
+      "vlastne_imanie": 156716,
+      "zavazky": 130334,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 141112,
+      "vynosy": 141112,
+      "naklady": 130994,
+      "osobne_naklady": 52232,
+      "odpisy": 15009,
+      "vysledok": 7080,
+      "majetok": 282207,
+      "vlastne_imanie": 163796,
+      "zavazky": 118236,
+      "bankove_uvery": 0
+     },
+     "2020": {
+      "obrat": 116806,
+      "vynosy": 116806,
+      "naklady": 109910,
+      "osobne_naklady": 41276,
+      "odpisy": 14260,
+      "vysledok": 4738,
+      "majetok": 291387,
+      "vlastne_imanie": 168534,
+      "zavazky": 122711,
+      "bankove_uvery": 0
+     },
+     "2021": {
+      "obrat": 116007,
+      "vynosy": 116007,
+      "naklady": 109669,
+      "osobne_naklady": 40340,
+      "odpisy": 14260,
+      "vysledok": 4544,
+      "majetok": 271491,
+      "vlastne_imanie": 173078,
+      "zavazky": 98061,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 116112,
+      "vynosy": 116112,
+      "naklady": 99663,
+      "osobne_naklady": 12379,
+      "odpisy": 12843,
+      "vysledok": 12583,
+      "majetok": 248059,
+      "vlastne_imanie": 185648,
+      "zavazky": 61398,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 152054,
+      "vynosy": 151621,
+      "naklady": 125326,
+      "osobne_naklady": 15820,
+      "odpisy": 5775,
+      "vysledok": 20626,
+      "majetok": 264303,
+      "vlastne_imanie": 206026,
+      "zavazky": 57982,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 119769,
+      "vynosy": 119769,
+      "naklady": 102861,
+      "osobne_naklady": 13030,
+      "odpisy": 5851,
+      "vysledok": 12976,
+      "majetok": 372055,
+      "vlastne_imanie": 219015,
+      "zavazky": 152977,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 126790,
+      "vynosy": 126790,
+      "naklady": 102142,
+      "osobne_naklady": 18063,
+      "odpisy": 8752,
+      "vysledok": 19159,
+      "majetok": 432994,
+      "vlastne_imanie": 238174,
+      "zavazky": 194820,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     1898738,
+     2309252,
+     2711435,
+     3116610,
+     3502007,
+     3967248,
+     4278266,
+     4692402,
+     5069871,
+     5516069,
+     5861747,
+     6354450,
+     6790957
+    ]
+   }
+  ],
+  "presov": [
+   {
+    "ico": "31718922",
+    "nazov": "Dopravný podnik mesta Prešov, akciová spoločnosť",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 4371493,
+      "vynosy": 9705006,
+      "naklady": 9634859,
+      "osobne_naklady": 4887123,
+      "odpisy": 1651059,
+      "vysledok": 20869,
+      "majetok": 13442654,
+      "vlastne_imanie": 7859262,
+      "zavazky": 3932759,
+      "bankove_uvery": 819798
+     },
+     "2017": {
+      "obrat": 4230988,
+      "vynosy": 11188963,
+      "naklady": 11039844,
+      "osobne_naklady": 5474638,
+      "odpisy": 2286034,
+      "vysledok": 28623,
+      "majetok": 18619049,
+      "vlastne_imanie": 7903904,
+      "zavazky": 2844698,
+      "bankove_uvery": 1400496
+     },
+     "2018": {
+      "obrat": 4190895,
+      "vynosy": 11997825,
+      "naklady": 11881041,
+      "osobne_naklady": 5938826,
+      "odpisy": 2287324,
+      "vysledok": 33147,
+      "majetok": 17509917,
+      "vlastne_imanie": 7937051,
+      "zavazky": 2606001,
+      "bankove_uvery": 1022604
+     },
+     "2019": {
+      "obrat": 4104480,
+      "vynosy": 12560814,
+      "naklady": 12461949,
+      "osobne_naklady": 6555918,
+      "odpisy": 2016929,
+      "vysledok": 28467,
+      "majetok": 16446763,
+      "vlastne_imanie": 7965519,
+      "zavazky": 2664226,
+      "bankove_uvery": 729320
+     },
+     "2020": {
+      "obrat": 2912373,
+      "vynosy": 11749385,
+      "naklady": 11598986,
+      "osobne_naklady": 6224861,
+      "odpisy": 1985660,
+      "vysledok": 47706,
+      "majetok": 19792065,
+      "vlastne_imanie": 8013225,
+      "zavazky": 2192832,
+      "bankove_uvery": 554360
+     },
+     "2021": {
+      "obrat": 2671140,
+      "vynosy": 12186082,
+      "naklady": 12103850,
+      "osobne_naklady": 6502171,
+      "odpisy": 2170889,
+      "vysledok": 53627,
+      "majetok": 20461633,
+      "vlastne_imanie": 8066852,
+      "zavazky": 2429456,
+      "bankove_uvery": 379400
+     },
+     "2022": {
+      "obrat": 3781599,
+      "vynosy": 13816020,
+      "naklady": 13780959,
+      "osobne_naklady": 6948459,
+      "odpisy": 2356069,
+      "vysledok": 6673,
+      "majetok": 19535900,
+      "vlastne_imanie": 8073525,
+      "zavazky": 2269945,
+      "bankove_uvery": 204440
+     },
+     "2023": {
+      "obrat": 4155157,
+      "vynosy": 14411426,
+      "naklady": 14355401,
+      "osobne_naklady": 7670806,
+      "odpisy": 2334266,
+      "vysledok": 62419,
+      "majetok": 23957108,
+      "vlastne_imanie": 8135944,
+      "zavazky": 4944248,
+      "bankove_uvery": 29480
+     },
+     "2024": {
+      "obrat": 3684201,
+      "vynosy": 16101217,
+      "naklady": 16095267,
+      "osobne_naklady": 9203226,
+      "odpisy": 2343338,
+      "vysledok": -106094,
+      "majetok": 24895609,
+      "vlastne_imanie": 8029850,
+      "zavazky": 2260716,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 4669150,
+      "vynosy": 17680732,
+      "naklady": 17634487,
+      "osobne_naklady": 9962233,
+      "odpisy": 2608836,
+      "vysledok": -43901,
+      "majetok": 23322020,
+      "vlastne_imanie": 7985949,
+      "zavazky": 2602535,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     1887543,
+     2344594,
+     2571796,
+     2777611,
+     2809944,
+     3227923,
+     3535500,
+     3910974,
+     4327978,
+     4646902,
+     5074863,
+     5495259,
+     5842471,
+     6347136,
+     6818551
+    ]
+   },
+   {
+    "ico": "31718914",
+    "nazov": "Technické služby mesta Prešov, a.s.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 4763989,
+      "vynosy": 4857133,
+      "naklady": 4825736,
+      "osobne_naklady": 1623664,
+      "odpisy": 161867,
+      "vysledok": 16668,
+      "majetok": 2640170,
+      "vlastne_imanie": 534241,
+      "zavazky": 860938,
+      "bankove_uvery": 41620
+     },
+     "2016": {
+      "obrat": 4558394,
+      "vynosy": 4734129,
+      "naklady": 4693332,
+      "osobne_naklady": 1739417,
+      "odpisy": 170386,
+      "vysledok": 35922,
+      "majetok": 2536578,
+      "vlastne_imanie": 572784,
+      "zavazky": 607858,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 4325935,
+      "vynosy": 4515515,
+      "naklady": 4456557,
+      "osobne_naklady": 2004200,
+      "odpisy": 195982,
+      "vysledok": 34520,
+      "majetok": 3449435,
+      "vlastne_imanie": 594513,
+      "zavazky": 579917,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 5283205,
+      "vynosy": 5291735,
+      "naklady": 5172477,
+      "osobne_naklady": 2162793,
+      "odpisy": 301861,
+      "vysledok": 54344,
+      "majetok": 6407553,
+      "vlastne_imanie": 645685,
+      "zavazky": 3661674,
+      "bankove_uvery": 2357000
+     },
+     "2019": {
+      "obrat": 5467864,
+      "vynosy": 5497162,
+      "naklady": 5408510,
+      "osobne_naklady": 2404304,
+      "odpisy": 477489,
+      "vysledok": 28583,
+      "majetok": 6631141,
+      "vlastne_imanie": 680361,
+      "zavazky": 4092115,
+      "bankove_uvery": 2149040
+     },
+     "2020": {
+      "obrat": 5122370,
+      "vynosy": 5113852,
+      "naklady": 5024945,
+      "osobne_naklady": 2216590,
+      "odpisy": 607160,
+      "vysledok": 75460,
+      "majetok": 5757976,
+      "vlastne_imanie": 740639,
+      "zavazky": 3309121,
+      "bankove_uvery": 1941080
+     },
+     "2021": {
+      "obrat": 5757522,
+      "vynosy": 5746290,
+      "naklady": 5670861,
+      "osobne_naklady": 2511833,
+      "odpisy": 678940,
+      "vysledok": 9906,
+      "majetok": 5693852,
+      "vlastne_imanie": 750545,
+      "zavazky": 3380834,
+      "bankove_uvery": 1733120
+     },
+     "2022": {
+      "obrat": 5775198,
+      "vynosy": 5787809,
+      "naklady": 5709994,
+      "osobne_naklady": 2664960,
+      "odpisy": 702572,
+      "vysledok": 18434,
+      "majetok": 5404544,
+      "vlastne_imanie": 768980,
+      "zavazky": 3191175,
+      "bankove_uvery": 1525160
+     },
+     "2023": {
+      "obrat": 7053737,
+      "vynosy": 7056037,
+      "naklady": 6786255,
+      "osobne_naklady": 2925232,
+      "odpisy": 719809,
+      "vysledok": 129920,
+      "majetok": 5135109,
+      "vlastne_imanie": 898900,
+      "zavazky": 3077919,
+      "bankove_uvery": 1317200
+     },
+     "2024": {
+      "obrat": 8972189,
+      "vynosy": 8981368,
+      "naklady": 8850896,
+      "osobne_naklady": 4285851,
+      "odpisy": 881602,
+      "vysledok": 43074,
+      "majetok": 6740767,
+      "vlastne_imanie": 842183,
+      "zavazky": 4769469,
+      "bankove_uvery": 1109240
+     },
+     "2025": {
+      "obrat": 10161332,
+      "vynosy": 10206109,
+      "naklady": 9995557,
+      "osobne_naklady": 4859479,
+      "odpisy": 857488,
+      "vysledok": 44068,
+      "majetok": 6274726,
+      "vlastne_imanie": 886252,
+      "zavazky": 4264916,
+      "bankove_uvery": 901280
+     }
+    },
+    "zavierky": [
+     1961461,
+     2342508,
+     2603893,
+     2735605,
+     2779483,
+     2793593,
+     3008267,
+     3210191,
+     3402828,
+     3581426,
+     3745514,
+     3931100,
+     4137730,
+     4308691,
+     4433987,
+     4675198,
+     5071097,
+     5479710,
+     5540166,
+     5869616,
+     6427114,
+     7013782
+    ]
+   },
+   {
+    "ico": "31722814",
+    "nazov": "PREŠOV REAL, s.r.o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 0,
+      "vynosy": 1212647,
+      "naklady": 1165103,
+      "osobne_naklady": 562625,
+      "odpisy": 4149,
+      "vysledok": 25293,
+      "majetok": 1322474,
+      "vlastne_imanie": 266207,
+      "zavazky": 1029089,
+      "bankove_uvery": 0
+     },
+     "2016": {
+      "obrat": 0,
+      "vynosy": 2388420,
+      "naklady": 2297657,
+      "osobne_naklady": 713991,
+      "odpisy": 4149,
+      "vysledok": 57486,
+      "majetok": 1606337,
+      "vlastne_imanie": 188270,
+      "zavazky": 1372083,
+      "bankove_uvery": 0
+     },
+     "2017": {
+      "obrat": 0,
+      "vynosy": 2849145,
+      "naklady": 2731256,
+      "osobne_naklady": 701917,
+      "odpisy": 6609,
+      "vysledok": 72483,
+      "majetok": 2244621,
+      "vlastne_imanie": 332009,
+      "zavazky": 1884973,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 0,
+      "vynosy": 3062602,
+      "naklady": 2981187,
+      "osobne_naklady": 724381,
+      "odpisy": 4171,
+      "vysledok": 56360,
+      "majetok": 2656464,
+      "vlastne_imanie": 390347,
+      "zavazky": 2217326,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 3591874,
+      "vynosy": 3877098,
+      "naklady": 3867713,
+      "osobne_naklady": 758386,
+      "odpisy": 6208,
+      "vysledok": -60073,
+      "majetok": 1989485,
+      "vlastne_imanie": 108156,
+      "zavazky": 1852244,
+      "bankove_uvery": 0
+     },
+     "2020": {
+      "obrat": 3406712,
+      "vynosy": 3553127,
+      "naklady": 3450083,
+      "osobne_naklady": 655904,
+      "odpisy": 10435,
+      "vysledok": 64996,
+      "majetok": 2094110,
+      "vlastne_imanie": 21347,
+      "zavazky": 1932476,
+      "bankove_uvery": 0
+     },
+     "2021": {
+      "obrat": 3162608,
+      "vynosy": 3536936,
+      "naklady": 3411679,
+      "osobne_naklady": 707394,
+      "odpisy": 7641,
+      "vysledok": 80795,
+      "majetok": 769584,
+      "vlastne_imanie": 89202,
+      "zavazky": 422014,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 3497541,
+      "vynosy": 3936629,
+      "naklady": 4064050,
+      "osobne_naklady": 996221,
+      "odpisy": 20863,
+      "vysledok": -133015,
+      "majetok": 872305,
+      "vlastne_imanie": -70814,
+      "zavazky": 763004,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 3401625,
+      "vynosy": 4346845,
+      "naklady": 4210404,
+      "osobne_naklady": 1102518,
+      "odpisy": 37179,
+      "vysledok": 97044,
+      "majetok": 937773,
+      "vlastne_imanie": 26231,
+      "zavazky": 867908,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 4165504,
+      "vynosy": 4680985,
+      "naklady": 4630018,
+      "osobne_naklady": 1257191,
+      "odpisy": 37906,
+      "vysledok": 22539,
+      "majetok": 1030474,
+      "vlastne_imanie": 5342,
+      "zavazky": 801452,
+      "bankove_uvery": 14108
+     },
+     "2025": {
+      "obrat": 4476507,
+      "vynosy": 4880060,
+      "naklady": 4850846,
+      "osobne_naklady": 1284860,
+      "odpisy": 49973,
+      "vysledok": 11147,
+      "majetok": 1177288,
+      "vlastne_imanie": 4489,
+      "zavazky": 1000932,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     1963162,
+     2390944,
+     2391250,
+     2808697,
+     3218368,
+     3609649,
+     3720505,
+     3889953,
+     4094885,
+     4094888,
+     4492872,
+     4875324,
+     5226391,
+     5638303,
+     5944219,
+     6403652,
+     6888749
+    ]
+   },
+   {
+    "ico": "55472672",
+    "nazov": "Mestský podnik služieb Prešov, s. r. o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2023": {
+      "obrat": 0,
+      "vynosy": 23419,
+      "naklady": 13601,
+      "osobne_naklady": 2323,
+      "odpisy": 0,
+      "vysledok": 9806,
+      "majetok": 63057,
+      "vlastne_imanie": 59806,
+      "zavazky": 3251,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 0,
+      "vynosy": 624043,
+      "naklady": 542312,
+      "osobne_naklady": 281323,
+      "odpisy": 2096,
+      "vysledok": 80988,
+      "majetok": 233217,
+      "vlastne_imanie": 140793,
+      "zavazky": 92424,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 2510098,
+      "vynosy": 2711091,
+      "naklady": 2672083,
+      "osobne_naklady": 791402,
+      "odpisy": 2753,
+      "vysledok": 33535,
+      "majetok": 1267319,
+      "vlastne_imanie": 174328,
+      "zavazky": 1092991,
+      "bankove_uvery": 454259
+     }
+    },
+    "zavierky": [
+     5877810,
+     6400508,
+     6806108
+    ]
+   }
+  ],
+  "kosice": [
+   {
+    "ico": "31701914",
+    "nazov": "Dopravný podnik mesta Košice, akciová spoločnosť",
+    "vlastnictvo": "jediný",
+    "overenie": "výročná správa DPMK za rok 2025 (jediný akcionár mesto Košice, 100 %)",
+    "roky": {
+     "2015": {
+      "obrat": 12586594,
+      "vynosy": 33790746,
+      "naklady": 34321210,
+      "osobne_naklady": 15397600,
+      "odpisy": 6475421,
+      "vysledok": -2373891,
+      "majetok": 97459295,
+      "vlastne_imanie": -553950,
+      "zavazky": 43669332,
+      "bankove_uvery": 33940397
+     },
+     "2016": {
+      "obrat": 13243437,
+      "vynosy": 34914008,
+      "naklady": 34962888,
+      "osobne_naklady": 15820283,
+      "odpisy": 7177784,
+      "vysledok": -1815075,
+      "majetok": 98247009,
+      "vlastne_imanie": 5610869,
+      "zavazky": 40886868,
+      "bankove_uvery": 31522310
+     },
+     "2017": {
+      "obrat": 13544832,
+      "vynosy": 37544633,
+      "naklady": 37197721,
+      "osobne_naklady": 16365672,
+      "odpisy": 7586674,
+      "vysledok": -900706,
+      "majetok": 118531902,
+      "vlastne_imanie": 4710163,
+      "zavazky": 40300178,
+      "bankove_uvery": 29280626
+     },
+     "2018": {
+      "obrat": 14333177,
+      "vynosy": 42211922,
+      "naklady": 42493455,
+      "osobne_naklady": 18391858,
+      "odpisy": 7771557,
+      "vysledok": -141114,
+      "majetok": 110908853,
+      "vlastne_imanie": 4569049,
+      "zavazky": 34793649,
+      "bankove_uvery": 24930962
+     },
+     "2019": {
+      "obrat": 15571965,
+      "vynosy": 42208885,
+      "naklady": 41748084,
+      "osobne_naklady": 19894813,
+      "odpisy": 7604470,
+      "vysledok": -270109,
+      "majetok": 103053043,
+      "vlastne_imanie": 4298940,
+      "zavazky": 30312928,
+      "bankove_uvery": 20757801
+     },
+     "2020": {
+      "obrat": 11819241,
+      "vynosy": 41741531,
+      "naklady": 41395675,
+      "osobne_naklady": 21406040,
+      "odpisy": 7498103,
+      "vysledok": -133216,
+      "majetok": 98073841,
+      "vlastne_imanie": 4165724,
+      "zavazky": 29311601,
+      "bankove_uvery": 19768163
+     },
+     "2021": {
+      "obrat": 11011417,
+      "vynosy": 44677991,
+      "naklady": 44118055,
+      "osobne_naklady": 22406647,
+      "odpisy": 7595480,
+      "vysledok": 73480,
+      "majetok": 142391301,
+      "vlastne_imanie": 4239204,
+      "zavazky": 29832100,
+      "bankove_uvery": 20235436
+     },
+     "2022": {
+      "obrat": 13717116,
+      "vynosy": 48201017,
+      "naklady": 48065309,
+      "osobne_naklady": 23573861,
+      "odpisy": 8386243,
+      "vysledok": -276413,
+      "majetok": 136091697,
+      "vlastne_imanie": 3962791,
+      "zavazky": 32560897,
+      "bankove_uvery": 23042583
+     },
+     "2023": {
+      "obrat": 15151614,
+      "vynosy": 51230890,
+      "naklady": 50190492,
+      "osobne_naklady": 25408980,
+      "odpisy": 8675506,
+      "vysledok": 84722,
+      "majetok": 130779693,
+      "vlastne_imanie": 4047513,
+      "zavazky": 30636163,
+      "bankove_uvery": 21104115
+     },
+     "2024": {
+      "obrat": 16068200,
+      "vynosy": 51772424,
+      "naklady": 51407520,
+      "osobne_naklady": 29283538,
+      "odpisy": 6242231,
+      "vysledok": -828421,
+      "majetok": 158379730,
+      "vlastne_imanie": 7096143,
+      "zavazky": 46454453,
+      "bankove_uvery": 24578923
+     },
+     "2025": {
+      "obrat": 17090856,
+      "vynosy": 56154591,
+      "naklady": 55057450,
+      "osobne_naklady": 31912930,
+      "odpisy": 5637407,
+      "vysledok": -103085,
+      "majetok": 197625705,
+      "vlastne_imanie": 6993058,
+      "zavazky": 43454955,
+      "bankove_uvery": 23418291
+     }
+    },
+    "zavierky": [
+     2174772,
+     2546474,
+     2935181,
+     3276083,
+     3686231,
+     3983706,
+     4328020,
+     4809847,
+     5199931,
+     5620720,
+     6030793,
+     6479962,
+     7003815
+    ],
+    "podiel_pct": 100
+   },
+   {
+    "ico": "44518684",
+    "nazov": "Bytový podnik mesta Košice, s.r.o.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 7334509,
+      "vynosy": 7480813,
+      "naklady": 7389661,
+      "osobne_naklady": 2464812,
+      "odpisy": 917273,
+      "vysledok": 11849,
+      "majetok": 11059116,
+      "vlastne_imanie": 3521128,
+      "zavazky": 4395666,
+      "bankove_uvery": 2028286
+     },
+     "2016": {
+      "obrat": 7573458,
+      "vynosy": 7707454,
+      "naklady": 7608024,
+      "osobne_naklady": 2480655,
+      "odpisy": 915993,
+      "vysledok": 16603,
+      "majetok": 10049925,
+      "vlastne_imanie": 3537731,
+      "zavazky": 4105869,
+      "bankove_uvery": 1810571
+     },
+     "2017": {
+      "obrat": 7960715,
+      "vynosy": 8651996,
+      "naklady": 8498069,
+      "osobne_naklady": 2699129,
+      "odpisy": 915481,
+      "vysledok": 39031,
+      "majetok": 9069404,
+      "vlastne_imanie": 3444525,
+      "zavazky": 3954876,
+      "bankove_uvery": 1589518
+     },
+     "2018": {
+      "obrat": 7897058,
+      "vynosy": 8635537,
+      "naklady": 8546599,
+      "osobne_naklady": 2705534,
+      "odpisy": 919873,
+      "vysledok": 12369,
+      "majetok": 7856250,
+      "vlastne_imanie": 3456894,
+      "zavazky": 3464454,
+      "bankove_uvery": 1366211
+     },
+     "2019": {
+      "obrat": 7612533,
+      "vynosy": 8021920,
+      "naklady": 7825500,
+      "osobne_naklady": 2981667,
+      "odpisy": 167961,
+      "vysledok": 127925,
+      "majetok": 7642746,
+      "vlastne_imanie": 3584819,
+      "zavazky": 3148913,
+      "bankove_uvery": 1149863
+     },
+     "2020": {
+      "obrat": 7657218,
+      "vynosy": 8141270,
+      "naklady": 8492101,
+      "osobne_naklady": 3369321,
+      "odpisy": 176631,
+      "vysledok": -382577,
+      "majetok": 7600548,
+      "vlastne_imanie": 3202242,
+      "zavazky": 3469250,
+      "bankove_uvery": 1079862
+     },
+     "2021": {
+      "obrat": 7080532,
+      "vynosy": 7576202,
+      "naklady": 7954134,
+      "osobne_naklady": 3429644,
+      "odpisy": 185201,
+      "vysledok": -389128,
+      "majetok": 6996167,
+      "vlastne_imanie": 2813115,
+      "zavazky": 3262233,
+      "bankove_uvery": 1215815
+     },
+     "2022": {
+      "obrat": 8371080,
+      "vynosy": 9199471,
+      "naklady": 9120279,
+      "osobne_naklady": 3453805,
+      "odpisy": 183838,
+      "vysledok": 48641,
+      "majetok": 6892442,
+      "vlastne_imanie": 2861756,
+      "zavazky": 3144931,
+      "bankove_uvery": 743993
+     },
+     "2023": {
+      "obrat": 8936813,
+      "vynosy": 9356400,
+      "naklady": 9541686,
+      "osobne_naklady": 3502905,
+      "odpisy": 231742,
+      "vysledok": -273255,
+      "majetok": 6313217,
+      "vlastne_imanie": 2588501,
+      "zavazky": 2909372,
+      "bankove_uvery": 1237035
+     },
+     "2024": {
+      "obrat": 9351643,
+      "vynosy": 9706718,
+      "naklady": 10119279,
+      "osobne_naklady": 4053812,
+      "odpisy": 199315,
+      "vysledok": -530064,
+      "majetok": 7467240,
+      "vlastne_imanie": 2286948,
+      "zavazky": 4368634,
+      "bankove_uvery": 1445608
+     },
+     "2025": {
+      "obrat": 10503381,
+      "vynosy": 10874106,
+      "naklady": 11408792,
+      "osobne_naklady": 4549596,
+      "odpisy": 233074,
+      "vysledok": -637693,
+      "majetok": 7222987,
+      "vlastne_imanie": 1738155,
+      "zavazky": 4604102,
+      "bankove_uvery": 1639342
+     }
+    },
+    "zavierky": [
+     1877139,
+     2333246,
+     2793661,
+     3179783,
+     3562826,
+     3847127,
+     4343279,
+     4742352,
+     5090782,
+     5159192,
+     5523874,
+     5872043,
+     6350300,
+     6826643,
+     6871748
+    ]
+   },
+   {
+    "ico": "31672981",
+    "nazov": "Mestské lesy Košice a.s.",
+    "vlastnictvo": "jediný",
+    "overenie": "RPO",
+    "roky": {
+     "2015": {
+      "obrat": 4971600,
+      "vynosy": 5024898,
+      "naklady": 4879382,
+      "osobne_naklady": 1275733,
+      "odpisy": 398815,
+      "vysledok": 130530,
+      "majetok": 5033100,
+      "vlastne_imanie": 3612228,
+      "zavazky": 810219,
+      "bankove_uvery": 33193
+     },
+     "2016": {
+      "obrat": 4893184,
+      "vynosy": 5163766,
+      "naklady": 4998331,
+      "osobne_naklady": 1354747,
+      "odpisy": 451201,
+      "vysledok": 124331,
+      "majetok": 5177186,
+      "vlastne_imanie": 3666029,
+      "zavazky": 865533,
+      "bankove_uvery": 13277
+     },
+     "2017": {
+      "obrat": 5211572,
+      "vynosy": 5410334,
+      "naklady": 5009695,
+      "osobne_naklady": 1354034,
+      "odpisy": 411133,
+      "vysledok": 309469,
+      "majetok": 5609935,
+      "vlastne_imanie": 3881167,
+      "zavazky": 1148191,
+      "bankove_uvery": 0
+     },
+     "2018": {
+      "obrat": 5641475,
+      "vynosy": 5984037,
+      "naklady": 5501147,
+      "osobne_naklady": 1529568,
+      "odpisy": 444805,
+      "vysledok": 366927,
+      "majetok": 5568461,
+      "vlastne_imanie": 4128625,
+      "zavazky": 879297,
+      "bankove_uvery": 0
+     },
+     "2019": {
+      "obrat": 5563554,
+      "vynosy": 5978509,
+      "naklady": 5435779,
+      "osobne_naklady": 1530849,
+      "odpisy": 523280,
+      "vysledok": 430781,
+      "majetok": 5982915,
+      "vlastne_imanie": 4362479,
+      "zavazky": 1120444,
+      "bankove_uvery": 0
+     },
+     "2020": {
+      "obrat": 4815363,
+      "vynosy": 5056566,
+      "naklady": 4697739,
+      "osobne_naklady": 1453049,
+      "odpisy": 510843,
+      "vysledok": 270716,
+      "majetok": 6017380,
+      "vlastne_imanie": 4382414,
+      "zavazky": 1195386,
+      "bankove_uvery": 0
+     },
+     "2021": {
+      "obrat": 5665393,
+      "vynosy": 6082749,
+      "naklady": 5452662,
+      "osobne_naklady": 1582034,
+      "odpisy": 521533,
+      "vysledok": 485980,
+      "majetok": 6387676,
+      "vlastne_imanie": 4647678,
+      "zavazky": 1316597,
+      "bankove_uvery": 0
+     },
+     "2022": {
+      "obrat": 7443393,
+      "vynosy": 7722789,
+      "naklady": 6038732,
+      "osobne_naklady": 1719933,
+      "odpisy": 473799,
+      "vysledok": 1316300,
+      "majetok": 7436157,
+      "vlastne_imanie": 5677998,
+      "zavazky": 1361704,
+      "bankove_uvery": 0
+     },
+     "2023": {
+      "obrat": 7532234,
+      "vynosy": 7990823,
+      "naklady": 7022657,
+      "osobne_naklady": 1987898,
+      "odpisy": 433005,
+      "vysledok": 710312,
+      "majetok": 7134625,
+      "vlastne_imanie": 5472010,
+      "zavazky": 1322799,
+      "bankove_uvery": 0
+     },
+     "2024": {
+      "obrat": 6685407,
+      "vynosy": 7177899,
+      "naklady": 7049796,
+      "osobne_naklady": 2207161,
+      "odpisy": 510576,
+      "vysledok": 96149,
+      "majetok": 6772751,
+      "vlastne_imanie": 5257847,
+      "zavazky": 1235648,
+      "bankove_uvery": 0
+     },
+     "2025": {
+      "obrat": 6507953,
+      "vynosy": 6674023,
+      "naklady": 6488113,
+      "osobne_naklady": 2142981,
+      "odpisy": 522315,
+      "vysledok": 115833,
+      "majetok": 6804116,
+      "vlastne_imanie": 5277531,
+      "zavazky": 1318283,
+      "bankove_uvery": 0
+     }
+    },
+    "zavierky": [
+     1876735,
+     2327642,
+     2775806,
+     3176113,
+     3541394,
+     3887198,
+     4306101,
+     4685287,
+     5097930,
+     5506483,
+     5887176,
+     6374344,
+     6837080
+    ]
+   }
+  ]
+ },
+ "overene": {
+  "bratislava:35850370": {
+   "vl": null,
+   "nazov": "Bratislavská vodárenská spoločnosť, a.s.",
+   "datum": "2026-10-16"
+  },
+  "bratislava:36696439": {
+   "vl": null,
+   "nazov": "TERMOSTAV Bratislava, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "bratislava:54302102": {
+   "vl": "jediný",
+   "nazov": "Technické siete Bratislava, a.s.",
+   "datum": "2026-10-16"
+  },
+  "trnava:31416195": {
+   "vl": null,
+   "nazov": "AGROSTAV Trnava, a. s.",
+   "datum": "2026-10-16"
+  },
+  "trnava:31449697": {
+   "vl": "podiel",
+   "nazov": "FCC Trnava, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:34108513": {
+   "vl": null,
+   "nazov": "ŽOS Trnava, a.s.",
+   "datum": "2026-10-16"
+  },
+  "trnava:34114696": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "trnava:35782803": {
+   "vl": null,
+   "nazov": "Lycos Malt s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:35874805": {
+   "vl": null,
+   "nazov": "CTPark Trnava III, spol. s r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:36219681": {
+   "vl": "jediný",
+   "nazov": "Mestská televízia Trnava, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:36234915": {
+   "vl": null,
+   "nazov": "Trial Trnava, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:36246034": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "trnava:36249840": {
+   "vl": null,
+   "nazov": "ARRIVA Trnava, a.s.",
+   "datum": "2026-10-16"
+  },
+  "trnava:36252484": {
+   "vl": null,
+   "nazov": "Trnavská vodárenská spoločnosť, a.s. (skrátený názov: TAVOS, a.s.)",
+   "datum": "2026-10-16"
+  },
+  "trnava:36277215": {
+   "vl": "podiel",
+   "nazov": "STEFE Trnava, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:36680397": {
+   "vl": null,
+   "nazov": "TC EMPIRE Trnava a.s.",
+   "datum": "2026-10-16"
+  },
+  "trnava:45887675": {
+   "vl": "jediný",
+   "nazov": "Mestské stavby Trnava s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:46384677": {
+   "vl": null,
+   "nazov": "Aqua Wellness Trnava, spol. s r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:50383469": {
+   "vl": null,
+   "nazov": "Trnavská produkčná s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:50790455": {
+   "vl": null,
+   "nazov": "Trnavan, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:51831139": {
+   "vl": null,
+   "nazov": "Terra Trnavia, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:52346994": {
+   "vl": null,
+   "nazov": "CTPark Trnava II, spol. s r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:52646564": {
+   "vl": null,
+   "nazov": "Trnavská cestná spoločnosť s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:52819612": {
+   "vl": null,
+   "nazov": "Trnavská káva s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:53098587": {
+   "vl": null,
+   "nazov": "Caffé Trieste Trnava, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:53510712": {
+   "vl": null,
+   "nazov": "City Sushi Trnava s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:54484171": {
+   "vl": null,
+   "nazov": "SN SK MAX Trnava s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trnava:56421427": {
+   "vl": null,
+   "nazov": "HK Trnava, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:00365677": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "nitra:31411631": {
+   "vl": null,
+   "nazov": "AGROCONS NITRA a.s.",
+   "datum": "2026-10-16"
+  },
+  "nitra:31423019": {
+   "vl": null,
+   "nazov": "FRANCE-TECH Nitra s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:31436200": {
+   "vl": "jediný",
+   "nazov": "Nitrianske komunálne služby, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "bratislava:00492736": {
+   "vl": "jediný",
+   "nazov": "Dopravný podnik Bratislava, akciová spoločnosť",
+   "datum": "2026-10-16"
+  },
+  "bratislava:00681300": {
+   "vl": "jediný",
+   "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
+   "datum": "2026-10-16"
+  },
+  "bratislava:35732881": {
+   "vl": null,
+   "nazov": "METRO Bratislava a.s.",
+   "datum": "2026-10-16"
+  },
+  "nitra:31440690": {
+   "vl": null,
+   "nazov": "AUTOCENTRUM NITRA, spol. s r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:31447929": {
+   "vl": "jediný",
+   "nazov": "Službyt Nitra, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:35960736": {
+   "vl": null,
+   "nazov": "Regionálna správa a údržba ciest Nitra a.s.",
+   "datum": "2026-10-16"
+  },
+  "nitra:35971037": {
+   "vl": null,
+   "nazov": "VBC NITRA, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:36525804": {
+   "vl": null,
+   "nazov": "STAVEX Nitra, spol. s r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:36530506": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "nitra:36537136": {
+   "vl": null,
+   "nazov": "H a S Nitra, spol. s r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:36545082": {
+   "vl": null,
+   "nazov": "ARRIVA NITRA a.s.",
+   "datum": "2026-10-16"
+  },
+  "nitra:36550604": {
+   "vl": null,
+   "nazov": "Nitrianska teplárenská spoločnosť, a.s. (v skratke NTS, a.s.)",
+   "datum": "2026-10-16"
+  },
+  "nitra:36560804": {
+   "vl": null,
+   "nazov": "PP INVEST NITRA s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:36561690": {
+   "vl": null,
+   "nazov": "Nitra Invest, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:36562475": {
+   "vl": null,
+   "nazov": "DREKON NITRA s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:36562882": {
+   "vl": null,
+   "nazov": "KARDIOCENTRUM NITRA s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:36567761": {
+   "vl": "jediný",
+   "nazov": "Nitrianska investičná, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:42427312": {
+   "vl": null,
+   "nazov": "Združená lesná spoločnosť, pozem. spol., Nitra - p.č.Dražovce",
+   "datum": "2026-10-16"
+  },
+  "nitra:44958960": {
+   "vl": null,
+   "nazov": "Nitra Blue Wings, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:45287627": {
+   "vl": null,
+   "nazov": "Krematórium Nitra, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:45641973": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "nitra:45651973": {
+   "vl": null,
+   "nazov": "Zelené mesto s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:45675228": {
+   "vl": null,
+   "nazov": "Gastrogal - Nitra, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:46470310": {
+   "vl": null,
+   "nazov": "VONA Nitra s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:46673318": {
+   "vl": null,
+   "nazov": "Nová Nitra I, a. s.",
+   "datum": "2026-10-16"
+  },
+  "nitra:47057025": {
+   "vl": null,
+   "nazov": "KP Mont Nitra, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:47240768": {
+   "vl": null,
+   "nazov": "BAUMANN Nitra s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:47255374": {
+   "vl": null,
+   "nazov": "Gestamp Nitra, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:48178802": {
+   "vl": null,
+   "nazov": "HK Nitra, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:48310972": {
+   "vl": null,
+   "nazov": "Nitrakvet s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:50266004": {
+   "vl": null,
+   "nazov": "PANORÁMA Nitra s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:50914235": {
+   "vl": null,
+   "nazov": "Catering Service Nitra s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:51749858": {
+   "vl": null,
+   "nazov": "ArcelorMittal Gonvarri Nitra, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:52165159": {
+   "vl": null,
+   "nazov": "SIMI - Nitra s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:52576396": {
+   "vl": null,
+   "nazov": "GOC Nitra Development s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:52748561": {
+   "vl": null,
+   "nazov": "Catering Servis Nitra s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:52959511": {
+   "vl": null,
+   "nazov": "CESTY Nitra, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:53214676": {
+   "vl": null,
+   "nazov": "Mega Kebap Nitra s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:53918665": {
+   "vl": null,
+   "nazov": "BT Nitra s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:54733537": {
+   "vl": null,
+   "nazov": "WILSON Nitra s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:55345557": {
+   "vl": null,
+   "nazov": "BESICO NITRA, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:55375278": {
+   "vl": null,
+   "nazov": "IMPA Nitra, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:55420401": {
+   "vl": null,
+   "nazov": "BYTEX Nitra s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:56152655": {
+   "vl": null,
+   "nazov": "MONSTAV NITRA SK s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:56640838": {
+   "vl": null,
+   "nazov": "BaMaKo Nitra s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:56660511": {
+   "vl": null,
+   "nazov": "OPIDUM NITRA s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:56864094": {
+   "vl": null,
+   "nazov": "FC Nitra a. s.",
+   "datum": "2026-10-16"
+  },
+  "trencin:34129316": {
+   "vl": null,
+   "nazov": "Kúpele Trenčianske Teplice, a.s.",
+   "datum": "2026-10-16"
+  },
+  "trencin:35702656": {
+   "vl": null,
+   "nazov": "TOP Car Trenčín s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:36302724": {
+   "vl": null,
+   "nazov": "Trenčianske vodárne a kanalizácie, a.s. skratka obchodného mena: TVK a.s. Trenčín",
+   "datum": "2026-10-16"
+  },
+  "trencin:36304352": {
+   "vl": null,
+   "nazov": "BOSKOP Poľnonákup Trenčín, a.s.",
+   "datum": "2026-10-16"
+  },
+  "trencin:36308994": {
+   "vl": null,
+   "nazov": "PRVÝ TRENČIANSKY AUTOSERVIS s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:36315323": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "trencin:36323977": {
+   "vl": null,
+   "nazov": "Slovenská autobusová doprava Trenčín, akciová spoločnosť skrátene: SAD Trenčín, a.s.",
+   "datum": "2026-10-16"
+  },
+  "trencin:36329509": {
+   "vl": null,
+   "nazov": "AS TRENČÍN, a.s.",
+   "datum": "2026-10-16"
+  },
+  "trencin:36351156": {
+   "vl": null,
+   "nazov": "Letecké opravovne Trenčín, a.s.",
+   "datum": "2026-10-16"
+  },
+  "trencin:36357685": {
+   "vl": null,
+   "nazov": "Tespra Trenčín s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:36838641": {
+   "vl": null,
+   "nazov": "ELPROMONT Trenčín, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:45403066": {
+   "vl": null,
+   "nazov": "MAP GEO Trenčín s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:45656771": {
+   "vl": null,
+   "nazov": "Martin Vlnka, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:46444254": {
+   "vl": null,
+   "nazov": "Top okno Trenčín s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:46857508": {
+   "vl": null,
+   "nazov": "GRAND - HOTEL Trenčín, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:47593175": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "trencin:51110369": {
+   "vl": "podiel",
+   "nazov": "Integrovaná doprava Žilinského a Trenčianskeho kraja, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:51641216": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "trencin:51967871": {
+   "vl": null,
+   "nazov": "LogTN 91106, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:54182425": {
+   "vl": null,
+   "nazov": "PLK JUH Trenčín s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:54441111": {
+   "vl": null,
+   "nazov": "Pro-ateliér Trenčín, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:55618057": {
+   "vl": null,
+   "nazov": "Poke House Trenčín s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "trencin:56276702": {
+   "vl": null,
+   "nazov": "Dolné mesto, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:00303922": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "zilina:00416169": {
+   "vl": null,
+   "nazov": "Slovenský Červený kríž, územný spolok Žilina",
+   "datum": "2026-10-16"
+  },
+  "zilina:30224802": {
+   "vl": null,
+   "nazov": "DEXTRADE Žilina, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:31579787": {
+   "vl": null,
+   "nazov": "MGM Žilina s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:31590250": {
+   "vl": null,
+   "nazov": "Žilinské komunikácie, akciová spoločnosť",
+   "datum": "2026-10-16"
+  },
+  "zilina:31600042": {
+   "vl": null,
+   "nazov": "LEMONT - SLOVAKIA ŽILINA, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:31600115": {
+   "vl": null,
+   "nazov": "IMPA Žilina, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:31609864": {
+   "vl": null,
+   "nazov": "ŠAK - ŠPORTOVÝ AUTOCLUB ŽILINA, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:31625746": {
+   "vl": null,
+   "nazov": "DISPOLAB, Žilina s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:35729023": {
+   "vl": null,
+   "nazov": "REMING CONSULT a.s.",
+   "datum": "2026-10-16"
+  },
+  "zilina:36007099": {
+   "vl": "jediný",
+   "nazov": "Dopravný podnik mesta Žiliny s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:36387193": {
+   "vl": null,
+   "nazov": "VLCI ŽILINA, a. s.",
+   "datum": "2026-10-16"
+  },
+  "zilina:36403032": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "zilina:36410900": {
+   "vl": null,
+   "nazov": "MIS Žilina, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:36416754": {
+   "vl": "podiel",
+   "nazov": "Žilina Invest, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:36419320": {
+   "vl": null,
+   "nazov": "MŠK Žilina, a.s.",
+   "datum": "2026-10-16"
+  },
+  "zilina:36432121": {
+   "vl": null,
+   "nazov": "VETERINÁRNA KLINIKA ŽILINA, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:36442151": {
+   "vl": null,
+   "nazov": "Stredoslovenská distribučná, a.s.",
+   "datum": "2026-10-16"
+  },
+  "zilina:46348891": {
+   "vl": null,
+   "nazov": "Ranč pri Žiline, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:46417311": {
+   "vl": null,
+   "nazov": "Euro MAX Žilina, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:46931317": {
+   "vl": "jediný",
+   "nazov": "Správa športových zariadení mesta Žilina, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:47258403": {
+   "vl": null,
+   "nazov": "SK8 Žilina, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:47655071": {
+   "vl": null,
+   "nazov": "VLCI ŽILINA - mládež, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:47864729": {
+   "vl": null,
+   "nazov": "GEOMER Žilina, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:47877359": {
+   "vl": null,
+   "nazov": "VISTO ŽILINA s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:50634518": {
+   "vl": null,
+   "nazov": "Zberné suroviny Žilina a.s.",
+   "datum": "2026-10-16"
+  },
+  "zilina:51110369": {
+   "vl": "podiel",
+   "nazov": "Integrovaná doprava Žilinského a Trenčianskeho kraja, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:52768988": {
+   "vl": null,
+   "nazov": "INVEST 32 - EUROTERRACE Žilina s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:52913015": {
+   "vl": null,
+   "nazov": "LUPIZA, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:53946600": {
+   "vl": "jediný",
+   "nazov": "Technické služby mesta Žilina, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:54232813": {
+   "vl": "jediný",
+   "nazov": "Mestský sociálny podnik Žilina, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:55834191": {
+   "vl": "jediný",
+   "nazov": "Energetická spoločnosť mesta Žilina, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "zilina:56585853": {
+   "vl": null,
+   "nazov": "FT Vending Žilina s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:31609465": {
+   "vl": "podiel",
+   "nazov": "BIC Banská Bystrica, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:31642365": {
+   "vl": "jediný",
+   "nazov": "Mestské lesy Banská Bystrica s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:36016411": {
+   "vl": null,
+   "nazov": "Dopravný podnik mesta Banská Bystrica, a.s.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:36018741": {
+   "vl": null,
+   "nazov": "I.K.M. REALITY - STAVING Banská Bystrica, a.s.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:36024473": {
+   "vl": null,
+   "nazov": "STEFE Banská Bystrica, a.s.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:36638722": {
+   "vl": null,
+   "nazov": "HC ´05 BANSKÁ BYSTRICA, a.s.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:36648701": {
+   "vl": null,
+   "nazov": "1. Súkromné Banskobystrické gymnázium s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:36733768": {
+   "vl": null,
+   "nazov": "DUODENT Banská Bystrica, spol. s r.o.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:36836567": {
+   "vl": null,
+   "nazov": "Banskobystrická regionálna správa ciest, a.s.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:46232371": {
+   "vl": null,
+   "nazov": "Marathon Banska Bystrica s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:50570978": {
+   "vl": null,
+   "nazov": "INVEST 66 - STORIA Banská Bystrica a. s.",
+   "datum": "2026-10-16"
+  },
+  "banska-bystrica:54676711": {
+   "vl": null,
+   "nazov": "MFK Dukla Banská Bystrica a.s.",
+   "datum": "2026-10-16"
+  },
+  "presov:00697591": {
+   "vl": null,
+   "nazov": "PROCONT, spol. s r.o. Prešov",
+   "datum": "2026-10-16"
+  },
+  "presov:17147387": {
+   "vl": null,
+   "nazov": "UNISTAV, s.r.o., Prešov",
+   "datum": "2026-10-16"
+  },
+  "presov:31681115": {
+   "vl": null,
+   "nazov": "TRANS - MONT, s.r.o. Prešov",
+   "datum": "2026-10-16"
+  },
+  "presov:31688560": {
+   "vl": null,
+   "nazov": "Progres GEO, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:31693113": {
+   "vl": null,
+   "nazov": "SAD Prešov SK, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:31718523": {
+   "vl": null,
+   "nazov": "SPRAVBYTKOMFORT, a.s. Prešov",
+   "datum": "2026-10-16"
+  },
+  "presov:31718914": {
+   "vl": "jediný",
+   "nazov": "Technické služby mesta Prešov, a.s.",
+   "datum": "2026-10-16"
+  },
+  "presov:31718922": {
+   "vl": "jediný",
+   "nazov": "Dopravný podnik mesta Prešov, akciová spoločnosť",
+   "datum": "2026-10-16"
+  },
+  "presov:31719473": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "presov:31722814": {
+   "vl": "jediný",
+   "nazov": "PREŠOV REAL, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:31723730": {
+   "vl": null,
+   "nazov": "VICTORIA PREŠOV, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:36394076": {
+   "vl": null,
+   "nazov": "AGROTEAM PREŠOV s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:36458236": {
+   "vl": null,
+   "nazov": "Hedin Automotive Prešov s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "presov:36463001": {
+   "vl": null,
+   "nazov": "PO-STAV, spol. s r.o. Prešov",
+   "datum": "2026-10-16"
+  },
+  "presov:36469149": {
+   "vl": null,
+   "nazov": "IL Prešov, spol. s r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:36475807": {
+   "vl": null,
+   "nazov": "TATRAN Prešov, spol. s r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:36490164": {
+   "vl": null,
+   "nazov": "DOZORING Prešov, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:36503975": {
+   "vl": null,
+   "nazov": "FC TATRAN Prešov, a. s.",
+   "datum": "2026-10-16"
+  },
+  "presov:36515388": {
+   "vl": null,
+   "nazov": "UNIZDRAV Prešov, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:36731765": {
+   "vl": null,
+   "nazov": "OC PREŠOV, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:36813796": {
+   "vl": null,
+   "nazov": "HC 21 PREŠOV s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:43882951": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "presov:44289367": {
+   "vl": null,
+   "nazov": "BED Prešov, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:44325100": {
+   "vl": null,
+   "nazov": "MAGISTER - Prešov, spol. s r. o.",
+   "datum": "2026-10-16"
+  },
+  "presov:53559347": {
+   "vl": null,
+   "nazov": "Presov Hockey a.s.",
+   "datum": "2026-10-16"
+  },
+  "presov:55403204": {
+   "vl": null,
+   "nazov": "Stavoprojekt Prešov s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "presov:55472572": {
+   "vl": null,
+   "nazov": "",
+   "datum": "2026-10-16"
+  },
+  "presov:55472672": {
+   "vl": "jediný",
+   "nazov": "Mestský podnik služieb Prešov, s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "presov:56649061": {
+   "vl": null,
+   "nazov": "Rezidencia Slávia Prešov s. r. o.",
+   "datum": "2026-10-16"
+  },
+  "kosice:31672981": {
+   "vl": "jediný",
+   "nazov": "Mestské lesy Košice a.s.",
+   "datum": "2026-10-16"
+  },
+  "kosice:31701914": {
+   "vl": null,
+   "nazov": "Dopravný podnik mesta Košice, akciová spoločnosť",
+   "datum": "2026-10-16"
+  },
+  "kosice:44518684": {
+   "vl": "jediný",
+   "nazov": "Bytový podnik mesta Košice, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "kosice:46897992": {
+   "vl": null,
+   "nazov": "CESTY KOŠICE s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "kosice:50725483": {
+   "vl": null,
+   "nazov": "M + M Košice, s.r.o.",
+   "datum": "2026-10-16"
+  },
+  "nitra:56472960": {
+   "vl": null,
+   "nazov": "Best Mega kebab Nitra s. r. o.",
+   "datum": "2026-10-19"
+  },
+  "zilina:55876463": {
+   "vl": null,
+   "nazov": "Kreativ gang Žilina s. r. o.",
+   "datum": "2026-10-19"
+  }
+ },
+ "aktualizovane": "2026-10-19T04:16:09+00:00"
+}

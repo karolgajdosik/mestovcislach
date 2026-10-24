@@ -1,0 +1,349 @@
+{
+ "jednotka": "EUR",
+ "casti": {
+  "prijmy": {
+   "zdroj": {
+    "id": "bed5ccdbd73c412fbdd52889176faa73",
+    "nazov": "Klasifikácia príjmov mesta Bratislava podľa záverečného účtu",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/bed5ccdbd73c412fbdd52889176faa73",
+    "upravene": "2026-07-21"
+   },
+   "polozky": [
+    "Bežné príjmy",
+    "Kapitálové príjmy",
+    "Príjmové finančné operácie",
+    "Spolu"
+   ],
+   "roky": {
+    "2018": {
+     "Bežné príjmy": 304278539.0,
+     "Kapitálové príjmy": 3592760.0,
+     "Príjmové finančné operácie": 31563074.0,
+     "Spolu": 339434373.0
+    },
+    "2019": {
+     "Bežné príjmy": 328842383.0,
+     "Kapitálové príjmy": 1059688.0,
+     "Príjmové finančné operácie": 38820266.0,
+     "Spolu": 368722337.0
+    },
+    "2020": {
+     "Bežné príjmy": 347041681.0,
+     "Kapitálové príjmy": 57222059.0,
+     "Príjmové finančné operácie": 45910094.0,
+     "Spolu": 450173834.0
+    },
+    "2021": {
+     "Bežné príjmy": 362851566.0,
+     "Kapitálové príjmy": 15895212.0,
+     "Príjmové finančné operácie": 47771905.0,
+     "Spolu": 426518683.0
+    },
+    "2022": {
+     "Bežné príjmy": 392951151.0,
+     "Kapitálové príjmy": 8505697.0,
+     "Príjmové finančné operácie": 55867635.0,
+     "Spolu": 457324483.0
+    },
+    "2023": {
+     "Bežné príjmy": 468470491.0,
+     "Kapitálové príjmy": 26570655.0,
+     "Príjmové finančné operácie": 70540797.0,
+     "Spolu": 565581943.0
+    },
+    "2024": {
+     "Bežné príjmy": 505743392.0,
+     "Kapitálové príjmy": 24299784.0,
+     "Príjmové finančné operácie": 81561092.0,
+     "Spolu": 611604268.0
+    },
+    "2025": {
+     "Bežné príjmy": 570291190.0,
+     "Kapitálové príjmy": 39765433.0,
+     "Príjmové finančné operácie": 53341111.0,
+     "Spolu": 663397734.0
+    }
+   }
+  },
+  "prijmy_druh": {
+   "zdroj": {
+    "id": "e5a125565cf646d79c2e4ac583321033",
+    "nazov": "Príjmy mesta Bratislava podľa ekonomickej klasifikácie zo záverečného účtu",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/e5a125565cf646d79c2e4ac583321033",
+    "upravene": "2026-07-21"
+   },
+   "polozky": [
+    "Daňové príjmy",
+    "Nedaňové a kapitálové príjmy",
+    "Granty a transfery",
+    "Príjmové finančné operácie"
+   ],
+   "roky": {
+    "2018": {
+     "Daňové príjmy": 218559818.0,
+     "Nedaňové a kapitálové príjmy": 28281305.0,
+     "Granty a transfery": 61030177.0,
+     "Príjmové finančné operácie": 31563074.0
+    },
+    "2019": {
+     "Daňové príjmy": 237811120.0,
+     "Nedaňové a kapitálové príjmy": 33183201.0,
+     "Granty a transfery": 58907750.0,
+     "Príjmové finančné operácie": 38820266.0
+    },
+    "2020": {
+     "Daňové príjmy": 248908509.0,
+     "Nedaňové a kapitálové príjmy": 30730800.0,
+     "Granty a transfery": 124624431.0,
+     "Príjmové finančné operácie": 45910094.0
+    },
+    "2021": {
+     "Daňové príjmy": 257418031.0,
+     "Nedaňové a kapitálové príjmy": 31249011.0,
+     "Granty a transfery": 90079736.0,
+     "Príjmové finančné operácie": 47771905.0
+    },
+    "2022": {
+     "Daňové príjmy": 276961523.0,
+     "Nedaňové a kapitálové príjmy": 37571726.0,
+     "Granty a transfery": 86923599.0,
+     "Príjmové finančné operácie": 55867635.0
+    },
+    "2023": {
+     "Daňové príjmy": 308033301.0,
+     "Nedaňové a kapitálové príjmy": 38138407.0,
+     "Granty a transfery": 122298783.0,
+     "Príjmové finančné operácie": 71202883.0
+    },
+    "2024": {
+     "Daňové príjmy": 331542582.0,
+     "Nedaňové a kapitálové príjmy": 52503562.0,
+     "Granty a transfery": 145997032.0,
+     "Príjmové finančné operácie": 81752685.0
+    },
+    "2025": {
+     "Daňové príjmy": 333975518.0,
+     "Nedaňové a kapitálové príjmy": 53893267.0,
+     "Granty a transfery": 222187839.0,
+     "Príjmové finančné operácie": 53444437.0
+    }
+   }
+  },
+  "vydavky": {
+   "zdroj": {
+    "id": "e59ddd92918b480196ed6c215a965269",
+    "nazov": "Klasifikácia výdavkov mesta Bratislava podľa záverečného účtu",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/e59ddd92918b480196ed6c215a965269",
+    "upravene": "2026-07-21"
+   },
+   "polozky": [
+    "Bežné výdavky",
+    "Kapitálové výdavky",
+    "Výdavkové finančné operácie",
+    "Spolu"
+   ],
+   "roky": {
+    "2018": {
+     "Bežné výdavky": 273668303.0,
+     "Kapitálové výdavky": 28749457.0,
+     "Výdavkové finančné operácie": 5000000.0,
+     "Spolu": 307417760.0
+    },
+    "2019": {
+     "Bežné výdavky": 299808142.0,
+     "Kapitálové výdavky": 41539215.0,
+     "Výdavkové finančné operácie": 4339971.0,
+     "Spolu": 345687328.0
+    },
+    "2020": {
+     "Bežné výdavky": 339153584.0,
+     "Kapitálové výdavky": 59131119.0,
+     "Výdavkové finančné operácie": 6833333.0,
+     "Spolu": 405118036.0
+    },
+    "2021": {
+     "Bežné výdavky": 365550557.0,
+     "Kapitálové výdavky": 20517946.0,
+     "Výdavkové finančné operácie": 11272333.0,
+     "Spolu": 397340836.0
+    },
+    "2022": {
+     "Bežné výdavky": 383772956.0,
+     "Kapitálové výdavky": 41698887.0,
+     "Výdavkové finančné operácie": 9224833.0,
+     "Spolu": 434696676.0
+    },
+    "2023": {
+     "Bežné výdavky": 452178509.0,
+     "Kapitálové výdavky": 75956205.0,
+     "Výdavkové finančné operácie": 7897333.0,
+     "Spolu": 536032048.0
+    },
+    "2024": {
+     "Bežné výdavky": 478605205.0,
+     "Kapitálové výdavky": 97883678.0,
+     "Výdavkové finančné operácie": 10554667.0,
+     "Spolu": 587043550.0
+    },
+    "2025": {
+     "Bežné výdavky": 548738469.0,
+     "Kapitálové výdavky": 74477003.0,
+     "Výdavkové finančné operácie": 14852651.0,
+     "Spolu": 638068123.0
+    }
+   }
+  },
+  "programy": {
+   "zdroj": {
+    "id": "0cd89fe509b649dc810880504c798b9a",
+    "nazov": "Bežné a kapitálové výdavky mesta Bratislava podľa programovej štruktúry zo záverečného účtu",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/0cd89fe509b649dc810880504c798b9a",
+    "upravene": "2026-07-21"
+   },
+   "polozky": [
+    "Mobilita a verejná doprava",
+    "Verejná infraštruktúra",
+    "Poriadok a bezpečnosť",
+    "Kultúra, šport a cestovný ruch",
+    "Vzdelávanie a voľný čas",
+    "Sociálna pomoc a služby",
+    "Efektívna a transparentná samospráva",
+    "Správa majetku"
+   ],
+   "roky": {
+    "2018": {
+     "Mobilita a verejná doprava": 74507145.0,
+     "Verejná infraštruktúra": 44085319.0,
+     "Poriadok a bezpečnosť": 40159903.0,
+     "Kultúra, šport a cestovný ruch": 26522856.0,
+     "Vzdelávanie a voľný čas": 69801474.0,
+     "Sociálna pomoc a služby": 14598300.0,
+     "Efektívna a transparentná samospráva": 24789531.0,
+     "Správa majetku": 7953233.0
+    },
+    "2019": {
+     "Mobilita a verejná doprava": 92217491.0,
+     "Verejná infraštruktúra": 55442649.0,
+     "Poriadok a bezpečnosť": 39560121.0,
+     "Kultúra, šport a cestovný ruch": 21642101.0,
+     "Vzdelávanie a voľný čas": 80907667.0,
+     "Sociálna pomoc a služby": 17669626.0,
+     "Efektívna a transparentná samospráva": 26292733.0,
+     "Správa majetku": 7614969.0
+    },
+    "2020": {
+     "Mobilita a verejná doprava": 102889578.0,
+     "Verejná infraštruktúra": 78260358.0,
+     "Poriadok a bezpečnosť": 41581968.0,
+     "Kultúra, šport a cestovný ruch": 23952053.0,
+     "Vzdelávanie a voľný čas": 91301360.0,
+     "Sociálna pomoc a služby": 20838048.0,
+     "Efektívna a transparentná samospráva": 31739833.0,
+     "Správa majetku": 7721506.0
+    },
+    "2021": {
+     "Mobilita a verejná doprava": 102961054.0,
+     "Verejná infraštruktúra": 44771148.0,
+     "Poriadok a bezpečnosť": 43925294.0,
+     "Kultúra, šport a cestovný ruch": 23786374.0,
+     "Vzdelávanie a voľný čas": 98702229.0,
+     "Sociálna pomoc a služby": 22691103.0,
+     "Efektívna a transparentná samospráva": 41688316.0,
+     "Správa majetku": 7542985.0
+    },
+    "2022": {
+     "Mobilita a verejná doprava": 90496863.0,
+     "Verejná infraštruktúra": 51600789.0,
+     "Poriadok a bezpečnosť": 55458803.0,
+     "Kultúra, šport a cestovný ruch": 28161349.0,
+     "Vzdelávanie a voľný čas": 112933460.0,
+     "Sociálna pomoc a služby": 25208110.0,
+     "Efektívna a transparentná samospráva": 47080730.0,
+     "Správa majetku": 14531739.0
+    },
+    "2023": {
+     "Mobilita a verejná doprava": 114606730.0,
+     "Verejná infraštruktúra": 76352541.0,
+     "Poriadok a bezpečnosť": 56140387.0,
+     "Kultúra, šport a cestovný ruch": 40643445.0,
+     "Vzdelávanie a voľný čas": 133391364.0,
+     "Sociálna pomoc a služby": 27365380.0,
+     "Efektívna a transparentná samospráva": 57157676.0,
+     "Správa majetku": 22477190.0
+    },
+    "2024": {
+     "Mobilita a verejná doprava": 113441147.0,
+     "Verejná infraštruktúra": 92297168.0,
+     "Poriadok a bezpečnosť": 61164793.0,
+     "Kultúra, šport a cestovný ruch": 40640673.0,
+     "Vzdelávanie a voľný čas": 154644153.0,
+     "Sociálna pomoc a služby": 31406134.0,
+     "Efektívna a transparentná samospráva": 61170322.0,
+     "Správa majetku": 21724493.0
+    },
+    "2025": {
+     "Mobilita a verejná doprava": 120400620.0,
+     "Verejná infraštruktúra": 84868670.0,
+     "Poriadok a bezpečnosť": 61645878.0,
+     "Kultúra, šport a cestovný ruch": 45045382.0,
+     "Vzdelávanie a voľný čas": 202247646.0,
+     "Sociálna pomoc a služby": 34194597.0,
+     "Efektívna a transparentná samospráva": 60022208.0,
+     "Správa majetku": 14790470.0
+    }
+   }
+  },
+  "hospodarenie": {
+   "zdroj": {
+    "id": "71c76459d7954119b2d87534350a1dbf",
+    "nazov": "Výsledky rozpočtového hospodárenia mesta Bratislava podľa záverečného účtu",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/71c76459d7954119b2d87534350a1dbf",
+    "upravene": "2026-07-21"
+   },
+   "polozky": [
+    "Bez finančných operácií",
+    "S finančnými operáciami"
+   ],
+   "roky": {
+    "2018": {
+     "Bez finančných operácií": 5453539.0,
+     "S finančnými operáciami": 32016612.0
+    },
+    "2019": {
+     "Bez finančných operácií": -11445286.0,
+     "S finančnými operáciami": 23035009.0
+    },
+    "2020": {
+     "Bez finančných operácií": 5979037.0,
+     "S finančnými operáciami": 45055797.0
+    },
+    "2021": {
+     "Bez finančných operácií": -7321725.0,
+     "S finančnými operáciami": 29177847.0
+    },
+    "2022": {
+     "Bez finančných operácií": -24014994.0,
+     "S finančnými operáciami": 22627808.0
+    },
+    "2023": {
+     "Bez finančných operácií": -33093568.0,
+     "S finančnými operáciami": 29549895.0
+    },
+    "2024": {
+     "Bez finančných operácií": -46445707.0,
+     "S finančnými operáciami": 24560718.0
+    },
+    "2025": {
+     "Bez finančných operácií": -13158484.0,
+     "S finančnými operáciami": 25329612.0
+    }
+   }
+  }
+ },
+ "aktualizovane": "2026-10-14T22:12:09+00:00"
+}

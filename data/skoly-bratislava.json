@@ -1,0 +1,73 @@
+{
+ "typy": {
+  "zs": {
+   "zdroj": {
+    "id": "f1aeacee4f5d47778cebe21be0cb18dd",
+    "nazov": "Zoznam základných škôl v roku 2025",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/f1aeacee4f5d47778cebe21be0cb18dd",
+    "upravene": "2026-05-07"
+   },
+   "spolu": 117,
+   "zriadovatel": {
+    "súkromné": 23,
+    "cirkevné": 8,
+    "verejné": 86
+   },
+   "mestske_casti": {
+    "528595": 17,
+    "529311": 6,
+    "529320": 18,
+    "529338": 3,
+    "529346": 18,
+    "529354": 4,
+    "529362": 2,
+    "529371": 3,
+    "529389": 6,
+    "529397": 11,
+    "529401": 1,
+    "529419": 2,
+    "529427": 1,
+    "529443": 1,
+    "529460": 23,
+    "529494": 1
+   },
+   "nezaradene": 0
+  },
+  "ms": {
+   "zdroj": {
+    "id": "3cca7b5834cd479597db95ac562ba1dd",
+    "nazov": "Zoznam materských škôl v roku 2026",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/3cca7b5834cd479597db95ac562ba1dd",
+    "upravene": "2026-06-18"
+   },
+   "spolu": 159,
+   "zriadovatel": {
+    "verejné": 158,
+    "súkromné": 1
+   },
+   "mestske_casti": {
+    "528595": 23,
+    "529311": 8,
+    "529320": 29,
+    "529338": 5,
+    "529346": 15,
+    "529354": 10,
+    "529362": 1,
+    "529371": 5,
+    "529389": 13,
+    "529397": 11,
+    "529401": 2,
+    "529419": 3,
+    "529427": 1,
+    "529435": 1,
+    "529443": 2,
+    "529460": 29,
+    "529494": 1
+   },
+   "nezaradene": 0
+  }
+ },
+ "aktualizovane": "2026-10-15T04:47:29+00:00"
+}

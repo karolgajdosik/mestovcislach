@@ -1,0 +1,355 @@
+{
+ "mesto": "presov",
+ "ico": "00327646",
+ "od": "2022-01-01",
+ "do": "2026-10-20",
+ "zdroj": {
+  "nazov": "Centrálny register zmlúv (CRZ)",
+  "url": "https://www.crz.gov.sk"
+ },
+ "zmluvy": {
+  "typ": "zmluvy",
+  "zaznamov": 6189,
+  "skryte_fyzicke_osoby": 1563,
+  "roky": {
+   "2022": {
+    "pocet": 1140,
+    "suma": 78887132,
+    "fo_pocet": 254,
+    "fo_suma": 10747686
+   },
+   "2023": {
+    "pocet": 1232,
+    "suma": 56221322,
+    "fo_pocet": 336,
+    "fo_suma": 1376737
+   },
+   "2024": {
+    "pocet": 1375,
+    "suma": 75235020,
+    "fo_pocet": 340,
+    "fo_suma": 4459295
+   },
+   "2025": {
+    "pocet": 1405,
+    "suma": 187699606,
+    "fo_pocet": 344,
+    "fo_suma": 8470220
+   },
+   "2026": {
+    "pocet": 1037,
+    "suma": 70432020,
+    "fo_pocet": 289,
+    "fo_suma": 1780665
+   }
+  },
+  "dodavatelia_posledne_3_roky": [
+   {
+    "ico": "50349287",
+    "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "pocet": 80,
+    "suma": 61857142
+   },
+   {
+    "ico": "36205214",
+    "nazov": "KOSIT a.s.",
+    "pocet": 4,
+    "suma": 43383945
+   },
+   {
+    "ico": "31718914",
+    "nazov": "Technické služby mesta Prešov, a.s.",
+    "pocet": 75,
+    "suma": 26529874
+   },
+   {
+    "ico": "50494970",
+    "nazov": "FUTBAL TATRAN ARÉNA, s.r.o.",
+    "pocet": 38,
+    "suma": 20976120
+   },
+   {
+    "ico": "00681156",
+    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+    "pocet": 24,
+    "suma": 17573219
+   },
+   {
+    "ico": "31320155",
+    "nazov": "Všeobecná úverová banka, a.s.",
+    "pocet": 5,
+    "suma": 16000050
+   },
+   {
+    "ico": "36854140",
+    "nazov": "Československá obchodná banka, a.s.",
+    "pocet": 26,
+    "suma": 12015000
+   },
+   {
+    "ico": "55472672",
+    "nazov": "Mestský podnik služieb Prešov, s. r. o.",
+    "pocet": 48,
+    "suma": 10509740
+   },
+   {
+    "ico": "31651518",
+    "nazov": "EUROVIA SK, a.s.",
+    "pocet": 11,
+    "suma": 6669203
+   },
+   {
+    "ico": "00155764",
+    "nazov": "PEhAES, a.s.",
+    "pocet": 5,
+    "suma": 5773460
+   },
+   {
+    "ico": "30416094",
+    "nazov": "Ministerstvo dopravy SR",
+    "pocet": 15,
+    "suma": 5141686
+   },
+   {
+    "ico": "37870475",
+    "nazov": "Prešovský samosprávny kraj",
+    "pocet": 31,
+    "suma": 4579418
+   },
+   {
+    "ico": "57517801",
+    "nazov": "Materská škola, Hviezdoslavova 10, Prešov",
+    "pocet": 4,
+    "suma": 4260280
+   },
+   {
+    "ico": null,
+    "nazov": "Úrad práce, sociálnych vecí a rodiny Prešov",
+    "pocet": 3,
+    "suma": 4181005
+   },
+   {
+    "ico": "36449717",
+    "nazov": "EKO SVIP, s.r.o.",
+    "pocet": 5,
+    "suma": 3724444
+   },
+   {
+    "ico": "35867523",
+    "nazov": "VSE Solutions s.r.o.",
+    "pocet": 1,
+    "suma": 3414464
+   },
+   {
+    "ico": "00164381",
+    "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+    "pocet": 4,
+    "suma": 3258945
+   },
+   {
+    "ico": "36469149",
+    "nazov": "IL Prešov, spol. s r.o.",
+    "pocet": 6,
+    "suma": 3072265
+   },
+   {
+    "ico": "52846059",
+    "nazov": "Fond na podporu športu",
+    "pocet": 4,
+    "suma": 2994163
+   },
+   {
+    "ico": "30794560",
+    "nazov": "Úrad práce sociálnych vecí a rodiny Prešov",
+    "pocet": 3,
+    "suma": 2873237
+   }
+  ],
+  "najvacsie_12_mesiacov": [
+   {
+    "datum": "2025-11-28",
+    "dodavatel": "Všeobecná úverová banka, a.s.",
+    "ico": "31320155",
+    "suma": 8000000.0,
+    "popis": "Zmluva o termínovanom úvere č. 891/2025/UZ",
+    "url": "https://www.crz.gov.sk/zmluva/11667050/"
+   },
+   {
+    "datum": "2026-01-21",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 3858640.6,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU",
+    "url": "https://www.crz.gov.sk/zmluva/11883476/"
+   },
+   {
+    "datum": "2026-01-21",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 3858640.6,
+    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku",
+    "url": "https://www.crz.gov.sk/zmluva/11893076/"
+   },
+   {
+    "datum": "2026-05-14",
+    "dodavatel": "VSE Solutions s.r.o.",
+    "ico": "35867523",
+    "suma": 3414463.89,
+    "popis": "Zmluva o dielo na zavádzanie IoT SMART riešení v meste Prešov 0014/VSE Solutions/2026",
+    "url": "https://www.crz.gov.sk/zmluva/12360264/"
+   },
+   {
+    "datum": "2026-01-28",
+    "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "ico": "00681156",
+    "suma": 2975628.0,
+    "popis": "Zmluva o poskytnutí finančného príspevku na poskytovanie sociálnej služby v zariadeniach podmienených odkázanosťou podľa § 78a ods. 1 písm. a) a b) zákona č. 448/2008 Z.z. o sociálnych službách na roz",
+    "url": "https://www.crz.gov.sk/zmluva/11929950/"
+   },
+   {
+    "datum": "2026-01-30",
+    "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+    "ico": "00681156",
+    "suma": 2975628.0,
+    "popis": "Zmluva o poskytnutí finančného príspevku na poskytovanie sociálnej služby v zariadeniach pre fyzické osoby, ktoré sú odkázané na pomoc inej fyzickej osoby a pre fyzické osoby, ktoré dovŕšili dôchodkov",
+    "url": "https://www.crz.gov.sk/zmluva/11961459/"
+   },
+   {
+    "datum": "2025-11-06",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2810811.44,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR /F457",
+    "url": "https://www.crz.gov.sk/zmluva/11594727/"
+   },
+   {
+    "datum": "2025-11-06",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2810811.44,
+    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku reg. č. PSK-SIEA-007-2024-ITI-EFRR/F457",
+    "url": "https://www.crz.gov.sk/zmluva/11613515/"
+   },
+   {
+    "datum": "2026-08-19",
+    "dodavatel": "Ministerstvo dopravy SR",
+    "ico": "30416094",
+    "suma": 2255043.83,
+    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku pre projekt „Integrovaná doprava – MHD, SAD, zastávka ul. Levočská\"-401203I191",
+    "url": "https://www.crz.gov.sk/zmluva/12721553/"
+   },
+   {
+    "datum": "2026-08-28",
+    "dodavatel": "Materská škola, Hviezdoslavova 10, Prešov",
+    "ico": "57517801",
+    "suma": 2130139.8,
+    "popis": "Zmluva o prevode správy č. 1/2026",
+    "url": "https://www.crz.gov.sk/zmluva/12738933/"
+   },
+   {
+    "datum": "2026-08-28",
+    "dodavatel": "Materská škola, Hviezdoslavova 10, Prešov",
+    "ico": "57517801",
+    "suma": 2130139.8,
+    "popis": "Zmluva o prevode správy č. 1",
+    "url": "https://www.crz.gov.sk/zmluva/12740662/"
+   },
+   {
+    "datum": "2026-07-02",
+    "dodavatel": "EKO SVIP, s.r.o.",
+    "ico": "36449717",
+    "suma": 2115600.0,
+    "popis": "Zmluva o dielo na zrealizovanie zákazky: \"Zníženie energetickej náročnosti objektu MŠ Jurkovičová 17, Prešov\"",
+    "url": "https://www.crz.gov.sk/zmluva/12548445/"
+   },
+   {
+    "datum": "2025-12-19",
+    "dodavatel": "Mestský podnik služieb Prešov, s. r. o.",
+    "ico": "55472672",
+    "suma": 2108482.79,
+    "popis": "Dodatok č. 2 k Zmluve o dielo na zhotovenie staby: \"Materská škola na Hviezdoslavovej ul. v Prešove\"",
+    "url": "https://www.crz.gov.sk/zmluva/11793602/"
+   },
+   {
+    "datum": "2025-11-27",
+    "dodavatel": "Všeobecná úverová banka",
+    "ico": "31320155",
+    "suma": 2000000.0,
+    "popis": "Dodatok č. 1 k zmluve o kontokorentnom úvere č. 84/2025/UZ",
+    "url": "https://www.crz.gov.sk/zmluva/11662608/"
+   },
+   {
+    "datum": "2025-12-03",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1911751.92,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR/F453",
+    "url": "https://www.crz.gov.sk/zmluva/11690058/"
+   }
+  ],
+  "dotacie_poskytnute": [
+   {
+    "nazov": "FUTBAL TATRAN ARÉNA, s.r.o.",
+    "suma": 21786120
+   },
+   {
+    "nazov": "Presov Hockey a.s.",
+    "suma": 980000
+   },
+   {
+    "nazov": "HC Prešov n.o.",
+    "suma": 356320
+   },
+   {
+    "nazov": "PREŠOV REAL, s.r.o.",
+    "suma": 295000
+   },
+   {
+    "nazov": "Základná škola Važecká",
+    "suma": 248178
+   },
+   {
+    "nazov": "FC TATRAN Prešov, a.s.",
+    "suma": 150791
+   },
+   {
+    "nazov": "TATRAN Prešov, spol. s r.o.",
+    "suma": 92700
+   },
+   {
+    "nazov": "Školský športový klub pri Strednej lesníckej škole v Prešove",
+    "suma": 86618
+   },
+   {
+    "nazov": "Hokejová akadémia Slávia Prešov",
+    "suma": 83445
+   },
+   {
+    "nazov": "Krasokorčuliarsky klub /KRASO Prešov/",
+    "suma": 71089
+   },
+   {
+    "nazov": "Volejbalový klub VK Mirad PU Prešov",
+    "suma": 70637
+   },
+   {
+    "nazov": "Rímskokatolícka farnosť sv. Mikuláša, Prešov",
+    "suma": 66015
+   },
+   {
+    "nazov": "Športový klub mládeže - Akademik Prešov",
+    "suma": 62958
+   },
+   {
+    "nazov": "SKATING SPORTS Prešov, o.z.",
+    "suma": 59298
+   },
+   {
+    "nazov": "Školský klub ELBA Prešov",
+    "suma": 53340
+   }
+  ],
+  "zdroj": "https://www.crz.gov.sk"
+ },
+ "aktualizovane": "2026-10-21T05:52:29+00:00"
+}

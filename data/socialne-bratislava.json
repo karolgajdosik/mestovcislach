@@ -1,0 +1,251 @@
+{
+ "zdroj": {
+  "nazov": "MPSVR SR – Centrálny register poskytovateľov sociálnych služieb",
+  "url": "https://data.slovensko.sk/datasety",
+  "licencia": "otvorené dáta (data.slovensko.sk)"
+ },
+ "kategorie": {
+  "deti": "Jasle a starostlivosť o deti do 3 rokov",
+  "seniori": "Seniori a opatrovanie",
+  "postihnutie": "Zdravotné postihnutie",
+  "krizova": "Krízová pomoc a bývanie",
+  "ostatne": "Poradenstvo a ostatné"
+ },
+ "sluzieb": 252,
+ "vynechane_fyzicke_osoby": 34,
+ "skupiny": {
+  "deti": 37,
+  "krizova": 29,
+  "ostatne": 71,
+  "postihnutie": 73,
+  "seniori": 42
+ },
+ "druhy": [
+  {
+   "druh": "zariadenie starostlivosti o deti do troch rokov veku dieťaťa",
+   "pocet": 37,
+   "kapacita": 754
+  },
+  {
+   "druh": "denné centrum",
+   "pocet": 36,
+   "kapacita": 1600
+  },
+  {
+   "druh": "domov sociálnych služieb",
+   "pocet": 34,
+   "kapacita": 600
+  },
+  {
+   "druh": "zariadenie pre seniorov",
+   "pocet": 23,
+   "kapacita": 1805
+  },
+  {
+   "druh": "špecializované zariadenie",
+   "pocet": 18,
+   "kapacita": 375
+  },
+  {
+   "druh": "zariadenie opatrovateľskej služby",
+   "pocet": 14,
+   "kapacita": 268
+  },
+  {
+   "druh": "rehabilitačné stredisko",
+   "pocet": 12,
+   "kapacita": 156
+  },
+  {
+   "druh": "sociálne poradenstvo - základné",
+   "pocet": 11,
+   "kapacita": null
+  },
+  {
+   "druh": "sociálne poradenstvo - špecializované",
+   "pocet": 9,
+   "kapacita": null
+  },
+  {
+   "druh": "zariadenie podporovaného bývania",
+   "pocet": 9,
+   "kapacita": 58
+  },
+  {
+   "druh": "jedáleň",
+   "pocet": 8,
+   "kapacita": 405
+  },
+  {
+   "druh": "útulok",
+   "pocet": 5,
+   "kapacita": 145
+  },
+  {
+   "druh": "požičiavanie pomôcok",
+   "pocet": 5,
+   "kapacita": null
+  },
+  {
+   "druh": "denný stacionár",
+   "pocet": 5,
+   "kapacita": 69
+  },
+  {
+   "druh": "stredisko osobnej hygieny",
+   "pocet": 3,
+   "kapacita": 70
+  },
+  {
+   "druh": "nocľaháreň",
+   "pocet": 3,
+   "kapacita": 325
+  },
+  {
+   "druh": "zariadenie núdzového bývania",
+   "pocet": 3,
+   "kapacita": 53
+  },
+  {
+   "druh": "služba včasnej intervencie",
+   "pocet": 3,
+   "kapacita": 32
+  },
+  {
+   "druh": "nízkoprahové denné centrum",
+   "pocet": 2,
+   "kapacita": 86
+  },
+  {
+   "druh": "integračné centrum",
+   "pocet": 2,
+   "kapacita": 26
+  },
+  {
+   "druh": "sociálna rehabilitácia",
+   "pocet": 2,
+   "kapacita": null
+  },
+  {
+   "druh": "sprostredkovanie osobnej asistencie",
+   "pocet": 2,
+   "kapacita": null
+  },
+  {
+   "druh": "nízkoprahová sociálna služba pre deti a rodinu",
+   "pocet": 1,
+   "kapacita": 15
+  },
+  {
+   "druh": "práčovňa",
+   "pocet": 1,
+   "kapacita": null
+  },
+  {
+   "druh": "krízová pomoc poskytovaná telekomunikačnými technológiami",
+   "pocet": 1,
+   "kapacita": null
+  },
+  {
+   "druh": "domov na polceste",
+   "pocet": 1,
+   "kapacita": 12
+  },
+  {
+   "druh": "pomoc pri zabezpečení opatrovníckych práv a povinností",
+   "pocet": 1,
+   "kapacita": null
+  },
+  {
+   "druh": "sprievodcovská služba a predčitateľská služba",
+   "pocet": 1,
+   "kapacita": null
+  }
+ ],
+ "mestske_casti": {
+  "Devínska Nová Ves": {
+   "deti": 1,
+   "krizova": 1,
+   "postihnutie": 2,
+   "seniori": 1
+  },
+  "Dúbravka": {
+   "deti": 1,
+   "krizova": 2,
+   "ostatne": 4,
+   "postihnutie": 12,
+   "seniori": 8
+  },
+  "Karlova Ves": {
+   "deti": 2,
+   "krizova": 1,
+   "ostatne": 8,
+   "postihnutie": 16
+  },
+  "Lamač": {
+   "postihnutie": 3,
+   "seniori": 1
+  },
+  "Nové Mesto": {
+   "deti": 2,
+   "krizova": 5,
+   "ostatne": 12,
+   "postihnutie": 11,
+   "seniori": 5
+  },
+  "Petržalka": {
+   "deti": 6,
+   "krizova": 6,
+   "ostatne": 14,
+   "postihnutie": 12,
+   "seniori": 5
+  },
+  "Podunajské Biskupice": {
+   "deti": 1,
+   "ostatne": 3,
+   "postihnutie": 1,
+   "seniori": 2
+  },
+  "Rača": {
+   "deti": 1,
+   "ostatne": 4,
+   "postihnutie": 5,
+   "seniori": 3
+  },
+  "Rusovce": {
+   "deti": 1,
+   "ostatne": 1
+  },
+  "Ružinov": {
+   "deti": 11,
+   "krizova": 7,
+   "ostatne": 13,
+   "postihnutie": 6,
+   "seniori": 6
+  },
+  "Staré Mesto": {
+   "deti": 7,
+   "krizova": 3,
+   "ostatne": 10,
+   "postihnutie": 4,
+   "seniori": 8
+  },
+  "Vajnory": {
+   "ostatne": 1
+  },
+  "Vrakuňa": {
+   "deti": 1,
+   "krizova": 4,
+   "ostatne": 1
+  },
+  "Záhorská Bystrica": {
+   "deti": 2,
+   "postihnutie": 1,
+   "seniori": 3
+  },
+  "Čunovo": {
+   "deti": 1
+  }
+ },
+ "aktualizovane": "2026-10-15T15:42:56+00:00"
+}

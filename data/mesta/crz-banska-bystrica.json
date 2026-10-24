@@ -1,0 +1,355 @@
+{
+ "mesto": "banska-bystrica",
+ "ico": "00313271",
+ "od": "2022-01-01",
+ "do": "2026-10-20",
+ "zdroj": {
+  "nazov": "Centrálny register zmlúv (CRZ)",
+  "url": "https://www.crz.gov.sk"
+ },
+ "zmluvy": {
+  "typ": "zmluvy",
+  "zaznamov": 8060,
+  "skryte_fyzicke_osoby": 4060,
+  "roky": {
+   "2022": {
+    "pocet": 1257,
+    "suma": 38311852,
+    "fo_pocet": 562,
+    "fo_suma": 5784470
+   },
+   "2023": {
+    "pocet": 1584,
+    "suma": 141951205,
+    "fo_pocet": 749,
+    "fo_suma": 44791890
+   },
+   "2024": {
+    "pocet": 1491,
+    "suma": 71779095,
+    "fo_pocet": 757,
+    "fo_suma": 4615936
+   },
+   "2025": {
+    "pocet": 1978,
+    "suma": 123650200,
+    "fo_pocet": 1007,
+    "fo_suma": 4197336
+   },
+   "2026": {
+    "pocet": 1750,
+    "suma": 78241142,
+    "fo_pocet": 985,
+    "fo_suma": 4382988
+   }
+  },
+  "dodavatelia_posledne_3_roky": [
+   {
+    "ico": "50349287",
+    "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "pocet": 39,
+    "suma": 41082381
+   },
+   {
+    "ico": "36854140",
+    "nazov": "Československá obchodná banka, a. s.",
+    "pocet": 46,
+    "suma": 19008372
+   },
+   {
+    "ico": "30416094",
+    "nazov": "Ministerstvo dopravy, výstavby a regionálneho rozvoja SR",
+    "pocet": 17,
+    "suma": 14583776
+   },
+   {
+    "ico": "35815256",
+    "nazov": "Slovenský plynárenský priemysel, a.s.",
+    "pocet": 7,
+    "suma": 13937762
+   },
+   {
+    "ico": "00681156",
+    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+    "pocet": 16,
+    "suma": 13717448
+   },
+   {
+    "ico": "36039225",
+    "nazov": "MBB a.s.",
+    "pocet": 62,
+    "suma": 12935978
+   },
+   {
+    "ico": "00002801",
+    "nazov": "Slovenská inovačná a energetická agentúra",
+    "pocet": 6,
+    "suma": 11266641
+   },
+   {
+    "ico": "34115901",
+    "nazov": "Marius Pedersen, a.s.",
+    "pocet": 6,
+    "suma": 10822001
+   },
+   {
+    "ico": null,
+    "nazov": "Československá obchodná banka, a. s.",
+    "pocet": 2,
+    "suma": 8193272
+   },
+   {
+    "ico": "36780979",
+    "nazov": "PERLA GASTRO, s.r.o",
+    "pocet": 4,
+    "suma": 8080048
+   },
+   {
+    "ico": "53112938",
+    "nazov": "YUCON, s.r.o.",
+    "pocet": 6,
+    "suma": 7857882
+   },
+   {
+    "ico": "30794536",
+    "nazov": "Ústredie práce, sociálnych vecí a rodiny, Úrad práce, sociálnych vecí a rodiny Banská Bystrica",
+    "pocet": 75,
+    "suma": 6573148
+   },
+   {
+    "ico": "36054666",
+    "nazov": "Slovenská autobusová doprava Zvolen, akciová spoločnosť",
+    "pocet": 2,
+    "suma": 6117538
+   },
+   {
+    "ico": "36016411",
+    "nazov": "Dopravný podnik mesta Banská Bystrica, a.s.",
+    "pocet": 3,
+    "suma": 5375426
+   },
+   {
+    "ico": "31602363",
+    "nazov": "Špeciálne cestné práce SLOVKOREKT, spol. s r.o.",
+    "pocet": 9,
+    "suma": 4923836
+   },
+   {
+    "ico": "42181810",
+    "nazov": "Ministerstvo životného prostredia Slovenskej republiky",
+    "pocet": 3,
+    "suma": 3945028
+   },
+   {
+    "ico": "31627421",
+    "nazov": "PEMAX PLUS, spol. s r.o.",
+    "pocet": 11,
+    "suma": 3475807
+   },
+   {
+    "ico": "31631134",
+    "nazov": "Combin Banská Štiavnica s.r.o.",
+    "pocet": 2,
+    "suma": 3355666
+   },
+   {
+    "ico": "31651402",
+    "nazov": "COLAS Slovakia, a.s.",
+    "pocet": 4,
+    "suma": 3037653
+   },
+   {
+    "ico": "44886021",
+    "nazov": "DAG SLOVAKIA, a.s.",
+    "pocet": 2,
+    "suma": 3004441
+   }
+  ],
+  "najvacsie_12_mesiacov": [
+   {
+    "datum": "2025-12-19",
+    "dodavatel": "Československá obchodná banka, a. s.",
+    "ico": "36854140",
+    "suma": 10000000.0,
+    "popis": "Zmluva o účelovom úvere č. 1089/25/08720",
+    "url": "https://www.crz.gov.sk/zmluva/11786242/"
+   },
+   {
+    "datum": "2025-11-06",
+    "dodavatel": "Slovenská inovačná a energetická agentúra",
+    "ico": "00002801",
+    "suma": 3296029.09,
+    "popis": "Dodatok č. 1 k Zmluve o poskytnutí nenávratného finančného príspevku č. PSK-SIEA-002-2023-DV-EFRR/FDX7",
+    "url": "https://www.crz.gov.sk/zmluva/11593054/"
+   },
+   {
+    "datum": "2026-10-09",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 3253835.77,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU kód projektu: 401202F964",
+    "url": "https://www.crz.gov.sk/zmluva/12927103/"
+   },
+   {
+    "datum": "2026-10-09",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 3253835.77,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU kód projektu: 401202F964",
+    "url": "https://www.crz.gov.sk/zmluva/12948606/"
+   },
+   {
+    "datum": "2025-12-19",
+    "dodavatel": "Československá obchodná banka, a. s.",
+    "ico": "36854140",
+    "suma": 3000000.0,
+    "popis": "Zmluva o účelovom úvere č. 1090/25/08720",
+    "url": "https://www.crz.gov.sk/zmluva/11786244/"
+   },
+   {
+    "datum": "2026-03-02",
+    "dodavatel": "Marius Pedersen, a.s.",
+    "ico": "34115901",
+    "suma": 2753900.0,
+    "popis": "Dodatok č. 13 k zmluve č. 1733/PS-OU/2019",
+    "url": "https://www.crz.gov.sk/zmluva/12051572/"
+   },
+   {
+    "datum": "2026-03-02",
+    "dodavatel": "Marius Pedersen, a.s.",
+    "ico": "34115901",
+    "suma": 2753900.0,
+    "popis": "Dodatok č. 13 k zmluve č. 1733/PS-OU/2019",
+    "url": "https://www.crz.gov.sk/zmluva/12052317/"
+   },
+   {
+    "datum": "2026-08-19",
+    "dodavatel": "P.S. in, a.s.",
+    "ico": "47764821",
+    "suma": 2625390.14,
+    "popis": "Zmluva o dielo č. 1594/2026/ORA na realizáciu stavby",
+    "url": "https://www.crz.gov.sk/zmluva/12705208/"
+   },
+   {
+    "datum": "2026-02-04",
+    "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "ico": "00681156",
+    "suma": 2347524.0,
+    "popis": "Zmluva o poskytnutí finančného príspevku na poskytovanie sociálnej služby v zariadeniach podmienených odkázanosťou podľa § 78a ods.1 písm. a) a b) zákona č. 448/2008 Z. z. o sociálnych službách na roz",
+    "url": "https://www.crz.gov.sk/zmluva/11974782/"
+   },
+   {
+    "datum": "2026-02-04",
+    "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky",
+    "ico": "00681156",
+    "suma": 2347524.0,
+    "popis": "Zmluva o poskytnutí finančného príspevku č. 1515/2026-M_ODFSS",
+    "url": "https://www.crz.gov.sk/zmluva/12074412/"
+   },
+   {
+    "datum": "2026-06-04",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2337569.02,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR /C451",
+    "url": "https://www.crz.gov.sk/zmluva/12429979/"
+   },
+   {
+    "datum": "2026-06-04",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2337569.02,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR /C451",
+    "url": "https://www.crz.gov.sk/zmluva/12433510/"
+   },
+   {
+    "datum": "2025-12-19",
+    "dodavatel": "PERLA GASTRO, s.r.o",
+    "ico": "36780979",
+    "suma": 1988627.5,
+    "popis": "Dodatok č. 2 k Rámcovej zmluve o poskytovaní stravovacích služieb č. 1438/2024/OSV-SDS",
+    "url": "https://www.crz.gov.sk/zmluva/11917608/"
+   },
+   {
+    "datum": "2026-06-12",
+    "dodavatel": "Ústredie práce, sociálnych vecí a rodiny, Úrad práce, sociálnych vecí a rodiny Banská Bystrica",
+    "ico": "30794536",
+    "suma": 1811925.7,
+    "popis": "Dodatok č.5 k Dohode č. 2024/BB/064 o poskytnutí finančného príspevku",
+    "url": "https://www.crz.gov.sk/zmluva/12521856/"
+   },
+   {
+    "datum": "2025-12-18",
+    "dodavatel": "Ústredie práce, sociálnych vecí a rodiny, Úrad práce, sociálnych vecí a rodiny Banská Bystrica",
+    "ico": "30794536",
+    "suma": 1746376.32,
+    "popis": "Dodatok č.4 k Dohode č. 2024/BB/064 o poskytnutí finančného príspevku",
+    "url": "https://www.crz.gov.sk/zmluva/11805975/"
+   }
+  ],
+  "dotacie_poskytnute": [
+   {
+    "nazov": "MBB a.s.",
+    "suma": 10660000
+   },
+   {
+    "nazov": "MBB a. s.",
+    "suma": 1600000
+   },
+   {
+    "nazov": "Barani - Hokejová škola Michala Handzuša, o.z.",
+    "suma": 523919
+   },
+   {
+    "nazov": "Slovenská akademická asociácia pre medzinárodnú spoluprácu",
+    "suma": 255920
+   },
+   {
+    "nazov": "Spoločenstvo Rudlová-Sásová",
+    "suma": 159788
+   },
+   {
+    "nazov": "MFK Dukla Banská Bystrica a.s.",
+    "suma": 68800
+   },
+   {
+    "nazov": "JUPIE Banská Bystrica, občianske združenie",
+    "suma": 44070
+   },
+   {
+    "nazov": "Podlavice - Skubín, o.z.",
+    "suma": 44034
+   },
+   {
+    "nazov": "Dobrovoľná požiarna ochrana Slovenskej republiky",
+    "suma": 31200
+   },
+   {
+    "nazov": "Športový klub Univerzita Mateja Bela",
+    "suma": 29410
+   },
+   {
+    "nazov": "Centrum dobrovoľníctva, n.o.",
+    "suma": 16500
+   },
+   {
+    "nazov": "Športový klub RAJA",
+    "suma": 16090
+   },
+   {
+    "nazov": "Školský volejbalový klub TATRAN Banská Bystrica, o. z.",
+    "suma": 15690
+   },
+   {
+    "nazov": "Telovýchovná jednota ŠK Sokol Jakub",
+    "suma": 14250
+   },
+   {
+    "nazov": "HJC PROsport, s.r.o.",
+    "suma": 13960
+   }
+  ],
+  "zdroj": "https://www.crz.gov.sk"
+ },
+ "aktualizovane": "2026-10-21T05:52:29+00:00"
+}

@@ -1,0 +1,4566 @@
+{
+ "zdroj": {
+  "nazov": "Štatistický úrad SR – výsledky volieb",
+  "url": "https://volby.statistics.sk"
+ },
+ "volby": [
+  {
+   "id": "nrsr2023",
+   "nazov": "Voľby do Národnej rady SR 2023",
+   "kratky": "Parlament 2023",
+   "datum": "2023-09-30",
+   "zdroj": "https://volby.statistics.sk/opendata/nrsr/2023/NRSR2023_SK_tab03e.csv",
+   "mesto": {
+    "zapisani": 376815,
+    "zucastneni": 279301,
+    "ucast": 74.12,
+    "strany": [
+     {
+      "nazov": "Progresívne Slovensko",
+      "hlasy": 93835,
+      "podiel": 33.95
+     },
+     {
+      "nazov": "SMER - sociálna demokracia",
+      "hlasy": 48341,
+      "podiel": 17.49
+     },
+     {
+      "nazov": "Sloboda a Solidarita",
+      "hlasy": 38091,
+      "podiel": 13.78
+     },
+     {
+      "nazov": "HLAS - sociálna demokracia",
+      "hlasy": 25893,
+      "podiel": 9.37
+     },
+     {
+      "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+      "hlasy": 14834,
+      "podiel": 5.37
+     },
+     {
+      "nazov": "Kresťanskodemokratické hnutie",
+      "hlasy": 13553,
+      "podiel": 4.9
+     },
+     {
+      "nazov": "Demokrati",
+      "hlasy": 12684,
+      "podiel": 4.59
+     },
+     {
+      "nazov": "Slovenská národná strana",
+      "hlasy": 11337,
+      "podiel": 4.1
+     },
+     {
+      "nazov": "REPUBLIKA",
+      "hlasy": 7352,
+      "podiel": 2.66
+     },
+     {
+      "nazov": "SME RODINA",
+      "hlasy": 4131,
+      "podiel": 1.49
+     },
+     {
+      "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+      "hlasy": 1462,
+      "podiel": 0.53
+     },
+     {
+      "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+      "hlasy": 1412,
+      "podiel": 0.51
+     },
+     {
+      "nazov": "Modrí, Most - Híd",
+      "hlasy": 930,
+      "podiel": 0.34
+     },
+     {
+      "nazov": "Pirátska strana - Slovensko",
+      "hlasy": 710,
+      "podiel": 0.26
+     },
+     {
+      "nazov": "Komunistická strana Slovenska",
+      "hlasy": 413,
+      "podiel": 0.15
+     },
+     {
+      "nazov": "MySlovensko",
+      "hlasy": 254,
+      "podiel": 0.09
+     },
+     {
+      "nazov": "KARMA",
+      "hlasy": 210,
+      "podiel": 0.08
+     },
+     {
+      "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+      "hlasy": 199,
+      "podiel": 0.07
+     },
+     {
+      "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+      "hlasy": 196,
+      "podiel": 0.07
+     },
+     {
+      "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+      "hlasy": 142,
+      "podiel": 0.05
+     },
+     {
+      "nazov": "SPRAVODLIVOSŤ",
+      "hlasy": 124,
+      "podiel": 0.04
+     },
+     {
+      "nazov": "PRINCÍP",
+      "hlasy": 74,
+      "podiel": 0.03
+     },
+     {
+      "nazov": "Vlastenecký blok",
+      "hlasy": 65,
+      "podiel": 0.02
+     },
+     {
+      "nazov": "Slovenské Hnutie Obrody",
+      "hlasy": 63,
+      "podiel": 0.02
+     },
+     {
+      "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+      "hlasy": 51,
+      "podiel": 0.02
+     }
+    ]
+   },
+   "slovensko": {
+    "zapisani": 4388872,
+    "zucastneni": 3007123,
+    "ucast": 68.51,
+    "strany": [
+     {
+      "nazov": "SMER - sociálna demokracia",
+      "hlasy": 681017,
+      "podiel": 22.95
+     },
+     {
+      "nazov": "Progresívne Slovensko",
+      "hlasy": 533136,
+      "podiel": 17.96
+     },
+     {
+      "nazov": "HLAS - sociálna demokracia",
+      "hlasy": 436415,
+      "podiel": 14.7
+     },
+     {
+      "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+      "hlasy": 264137,
+      "podiel": 8.9
+     },
+     {
+      "nazov": "Kresťanskodemokratické hnutie",
+      "hlasy": 202515,
+      "podiel": 6.82
+     },
+     {
+      "nazov": "Sloboda a Solidarita",
+      "hlasy": 187645,
+      "podiel": 6.32
+     },
+     {
+      "nazov": "Slovenská národná strana",
+      "hlasy": 166995,
+      "podiel": 5.63
+     },
+     {
+      "nazov": "REPUBLIKA",
+      "hlasy": 141099,
+      "podiel": 4.75
+     },
+     {
+      "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+      "hlasy": 130183,
+      "podiel": 4.39
+     },
+     {
+      "nazov": "Demokrati",
+      "hlasy": 87006,
+      "podiel": 2.93
+     },
+     {
+      "nazov": "SME RODINA",
+      "hlasy": 65673,
+      "podiel": 2.21
+     },
+     {
+      "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+      "hlasy": 25003,
+      "podiel": 0.84
+     },
+     {
+      "nazov": "Komunistická strana Slovenska",
+      "hlasy": 9867,
+      "podiel": 0.33
+     },
+     {
+      "nazov": "Pirátska strana - Slovensko",
+      "hlasy": 9358,
+      "podiel": 0.32
+     },
+     {
+      "nazov": "Modrí, Most - Híd",
+      "hlasy": 7935,
+      "podiel": 0.27
+     },
+     {
+      "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+      "hlasy": 3486,
+      "podiel": 0.12
+     },
+     {
+      "nazov": "MySlovensko",
+      "hlasy": 2786,
+      "podiel": 0.09
+     },
+     {
+      "nazov": "KARMA",
+      "hlasy": 2407,
+      "podiel": 0.08
+     },
+     {
+      "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+      "hlasy": 2401,
+      "podiel": 0.08
+     },
+     {
+      "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+      "hlasy": 2315,
+      "podiel": 0.08
+     },
+     {
+      "nazov": "PRINCÍP",
+      "hlasy": 1817,
+      "podiel": 0.06
+     },
+     {
+      "nazov": "SPRAVODLIVOSŤ",
+      "hlasy": 1335,
+      "podiel": 0.04
+     },
+     {
+      "nazov": "Slovenské Hnutie Obrody",
+      "hlasy": 1332,
+      "podiel": 0.04
+     },
+     {
+      "nazov": "Vlastenecký blok",
+      "hlasy": 1262,
+      "podiel": 0.04
+     },
+     {
+      "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+      "hlasy": 771,
+      "podiel": 0.03
+     }
+    ]
+   },
+   "mestske_casti": [
+    {
+     "kod_obce": "529401",
+     "nazov": "Devín",
+     "zapisani": 1490,
+     "zucastneni": 1151,
+     "ucast": 77.25,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 432,
+       "podiel": 37.83
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 163,
+       "podiel": 14.27
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 146,
+       "podiel": 12.78
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 104,
+       "podiel": 9.11
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 64,
+       "podiel": 5.6
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 63,
+       "podiel": 5.52
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 62,
+       "podiel": 5.43
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 42,
+       "podiel": 3.68
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 17,
+       "podiel": 1.49
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 15,
+       "podiel": 1.31
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 10,
+       "podiel": 0.88
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 7,
+       "podiel": 0.61
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 6,
+       "podiel": 0.53
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 3,
+       "podiel": 0.26
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 2,
+       "podiel": 0.18
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 2,
+       "podiel": 0.18
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 2,
+       "podiel": 0.18
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 1,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 1,
+       "podiel": 0.09
+      }
+     ]
+    },
+    {
+     "kod_obce": "529371",
+     "nazov": "Devínska Nová Ves",
+     "zapisani": 13571,
+     "zucastneni": 9974,
+     "ucast": 73.49,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 3073,
+       "podiel": 31.08
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 1735,
+       "podiel": 17.55
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 1319,
+       "podiel": 13.34
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 981,
+       "podiel": 9.92
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 542,
+       "podiel": 5.48
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 489,
+       "podiel": 4.95
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 475,
+       "podiel": 4.8
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 462,
+       "podiel": 4.67
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 376,
+       "podiel": 3.8
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 227,
+       "podiel": 2.3
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 68,
+       "podiel": 0.69
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 25,
+       "podiel": 0.25
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 22,
+       "podiel": 0.22
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 18,
+       "podiel": 0.18
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 16,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 14,
+       "podiel": 0.14
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 11,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 7,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 6,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 5,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 5,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 4,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 3,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 2,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 1,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "529389",
+     "nazov": "Dúbravka",
+     "zapisani": 28613,
+     "zucastneni": 20905,
+     "ucast": 73.06,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 6592,
+       "podiel": 31.8
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 3867,
+       "podiel": 18.66
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 2607,
+       "podiel": 12.58
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 2246,
+       "podiel": 10.84
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 1066,
+       "podiel": 5.14
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 1045,
+       "podiel": 5.04
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 1044,
+       "podiel": 5.04
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 897,
+       "podiel": 4.33
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 584,
+       "podiel": 2.82
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 345,
+       "podiel": 1.66
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 99,
+       "podiel": 0.48
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 65,
+       "podiel": 0.31
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 61,
+       "podiel": 0.29
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 58,
+       "podiel": 0.28
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 37,
+       "podiel": 0.18
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 22,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 19,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 16,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 12,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 11,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 9,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 9,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 8,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 6,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 4,
+       "podiel": 0.02
+      }
+     ]
+    },
+    {
+     "kod_obce": "529443",
+     "nazov": "Jarovce",
+     "zapisani": 2379,
+     "zucastneni": 1935,
+     "ucast": 81.34,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 610,
+       "podiel": 31.84
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 308,
+       "podiel": 16.08
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 289,
+       "podiel": 15.08
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 157,
+       "podiel": 8.19
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 148,
+       "podiel": 7.72
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 127,
+       "podiel": 6.63
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 85,
+       "podiel": 4.44
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 76,
+       "podiel": 3.97
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 40,
+       "podiel": 2.09
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 34,
+       "podiel": 1.77
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 16,
+       "podiel": 0.84
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 7,
+       "podiel": 0.37
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 6,
+       "podiel": 0.31
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 4,
+       "podiel": 0.21
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 2,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 2,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 1,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 1,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 1,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 1,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 1,
+       "podiel": 0.05
+      }
+     ]
+    },
+    {
+     "kod_obce": "529397",
+     "nazov": "Karlova Ves",
+     "zapisani": 27497,
+     "zucastneni": 20897,
+     "ucast": 76.0,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 7447,
+       "podiel": 35.99
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 3379,
+       "podiel": 16.33
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 3064,
+       "podiel": 14.81
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 1781,
+       "podiel": 8.61
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 1103,
+       "podiel": 5.33
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 949,
+       "podiel": 4.59
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 892,
+       "podiel": 4.31
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 816,
+       "podiel": 3.94
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 499,
+       "podiel": 2.41
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 304,
+       "podiel": 1.47
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 133,
+       "podiel": 0.64
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 78,
+       "podiel": 0.38
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 70,
+       "podiel": 0.34
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 59,
+       "podiel": 0.29
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 29,
+       "podiel": 0.14
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 23,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 15,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 15,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 13,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 6,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 6,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 4,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 4,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 3,
+       "podiel": 0.01
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 2,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "529419",
+     "nazov": "Lamač",
+     "zapisani": 6154,
+     "zucastneni": 4815,
+     "ucast": 78.24,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 1459,
+       "podiel": 30.81
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 863,
+       "podiel": 18.23
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 596,
+       "podiel": 12.59
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 480,
+       "podiel": 10.14
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 327,
+       "podiel": 6.91
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 265,
+       "podiel": 5.6
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 259,
+       "podiel": 5.47
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 216,
+       "podiel": 4.56
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 129,
+       "podiel": 2.72
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 53,
+       "podiel": 1.12
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 25,
+       "podiel": 0.53
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 13,
+       "podiel": 0.27
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 13,
+       "podiel": 0.27
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 10,
+       "podiel": 0.21
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 8,
+       "podiel": 0.17
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 7,
+       "podiel": 0.15
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 4,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 3,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 2,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 1,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 1,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 1,
+       "podiel": 0.02
+      }
+     ]
+    },
+    {
+     "kod_obce": "529346",
+     "nazov": "Nové Mesto",
+     "zapisani": 33916,
+     "zucastneni": 26250,
+     "ucast": 77.4,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 9890,
+       "podiel": 37.96
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 4042,
+       "podiel": 15.51
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 4034,
+       "podiel": 15.48
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 2176,
+       "podiel": 8.35
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 1194,
+       "podiel": 4.58
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 1184,
+       "podiel": 4.54
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 1175,
+       "podiel": 4.51
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 1004,
+       "podiel": 3.85
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 565,
+       "podiel": 2.17
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 282,
+       "podiel": 1.08
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 119,
+       "podiel": 0.46
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 106,
+       "podiel": 0.41
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 89,
+       "podiel": 0.34
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 39,
+       "podiel": 0.15
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 35,
+       "podiel": 0.13
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 32,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 20,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 16,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 13,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 12,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 9,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 9,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 5,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 4,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 2,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "529460",
+     "nazov": "Petržalka",
+     "zapisani": 91295,
+     "zucastneni": 65388,
+     "ucast": 71.62,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 19647,
+       "podiel": 30.47
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 12399,
+       "podiel": 19.23
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 8099,
+       "podiel": 12.56
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 6783,
+       "podiel": 10.52
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 3846,
+       "podiel": 5.96
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 3116,
+       "podiel": 4.83
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 2944,
+       "podiel": 4.57
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 2892,
+       "podiel": 4.48
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 2020,
+       "podiel": 3.13
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 1175,
+       "podiel": 1.82
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 377,
+       "podiel": 0.58
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 338,
+       "podiel": 0.52
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 199,
+       "podiel": 0.31
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 192,
+       "podiel": 0.3
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 116,
+       "podiel": 0.18
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 64,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 63,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 62,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 38,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 35,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 24,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 20,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 17,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 14,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 9,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "529311",
+     "nazov": "Podunajské Biskupice",
+     "zapisani": 18464,
+     "zucastneni": 13018,
+     "ucast": 70.5,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 3489,
+       "podiel": 27.07
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 2700,
+       "podiel": 20.95
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 1478,
+       "podiel": 11.47
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 1452,
+       "podiel": 11.27
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 942,
+       "podiel": 7.31
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 535,
+       "podiel": 4.15
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 517,
+       "podiel": 4.01
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 477,
+       "podiel": 3.7
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 400,
+       "podiel": 3.1
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 303,
+       "podiel": 2.35
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 277,
+       "podiel": 2.15
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 81,
+       "podiel": 0.63
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 72,
+       "podiel": 0.56
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 50,
+       "podiel": 0.39
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 22,
+       "podiel": 0.17
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 21,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 15,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 13,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 9,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 9,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 6,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 6,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 6,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 4,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 4,
+       "podiel": 0.03
+      }
+     ]
+    },
+    {
+     "kod_obce": "529354",
+     "nazov": "Rača",
+     "zapisani": 19944,
+     "zucastneni": 14461,
+     "ucast": 72.51,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 4600,
+       "podiel": 32.12
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 2750,
+       "podiel": 19.2
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 1801,
+       "podiel": 12.58
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 1472,
+       "podiel": 10.28
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 800,
+       "podiel": 5.59
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 683,
+       "podiel": 4.77
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 673,
+       "podiel": 4.7
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 647,
+       "podiel": 4.52
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 392,
+       "podiel": 2.74
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 196,
+       "podiel": 1.37
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 96,
+       "podiel": 0.67
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 43,
+       "podiel": 0.3
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 32,
+       "podiel": 0.22
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 28,
+       "podiel": 0.2
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 23,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 17,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 15,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 10,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 10,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 8,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 7,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 6,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 4,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 4,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 3,
+       "podiel": 0.02
+      }
+     ]
+    },
+    {
+     "kod_obce": "529494",
+     "nazov": "Rusovce",
+     "zapisani": 3438,
+     "zucastneni": 2658,
+     "ucast": 77.31,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 918,
+       "podiel": 34.93
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 392,
+       "podiel": 14.92
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 384,
+       "podiel": 14.61
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 248,
+       "podiel": 9.44
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 175,
+       "podiel": 6.66
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 145,
+       "podiel": 5.52
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 106,
+       "podiel": 4.03
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 91,
+       "podiel": 3.46
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 60,
+       "podiel": 2.28
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 42,
+       "podiel": 1.6
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 23,
+       "podiel": 0.88
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 14,
+       "podiel": 0.53
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 11,
+       "podiel": 0.42
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 5,
+       "podiel": 0.19
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 3,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 3,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 2,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 2,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 1,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 1,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 1,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 1,
+       "podiel": 0.04
+      }
+     ]
+    },
+    {
+     "kod_obce": "529320",
+     "nazov": "Ružinov",
+     "zapisani": 65511,
+     "zucastneni": 49252,
+     "ucast": 75.18,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 17952,
+       "podiel": 36.89
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 7943,
+       "podiel": 16.32
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 7251,
+       "podiel": 14.9
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 4072,
+       "podiel": 8.37
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 2402,
+       "podiel": 4.94
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 2365,
+       "podiel": 4.86
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 2145,
+       "podiel": 4.41
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 1909,
+       "podiel": 3.92
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 1164,
+       "podiel": 2.39
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 532,
+       "podiel": 1.09
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 220,
+       "podiel": 0.45
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 183,
+       "podiel": 0.38
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 167,
+       "podiel": 0.34
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 102,
+       "podiel": 0.21
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 55,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 32,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 32,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 29,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 29,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 27,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 23,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 9,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 9,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 6,
+       "podiel": 0.01
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 5,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "528595",
+     "nazov": "Staré Mesto",
+     "zapisani": 37237,
+     "zucastneni": 28568,
+     "ucast": 76.72,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 11804,
+       "podiel": 41.59
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 4297,
+       "podiel": 15.14
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 4184,
+       "podiel": 14.74
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 1913,
+       "podiel": 6.74
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 1548,
+       "podiel": 5.45
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 1261,
+       "podiel": 4.44
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 1172,
+       "podiel": 4.13
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 877,
+       "podiel": 3.09
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 494,
+       "podiel": 1.74
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 306,
+       "podiel": 1.08
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 147,
+       "podiel": 0.52
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 107,
+       "podiel": 0.38
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 99,
+       "podiel": 0.35
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 49,
+       "podiel": 0.17
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 23,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 22,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 16,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 14,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 12,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 11,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 10,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 6,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 5,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 3,
+       "podiel": 0.01
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 1,
+       "podiel": 0.0
+      }
+     ]
+    },
+    {
+     "kod_obce": "529362",
+     "nazov": "Vajnory",
+     "zapisani": 4532,
+     "zucastneni": 3435,
+     "ucast": 75.79,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 976,
+       "podiel": 28.74
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 635,
+       "podiel": 18.7
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 415,
+       "podiel": 12.22
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 349,
+       "podiel": 10.28
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 214,
+       "podiel": 6.3
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 188,
+       "podiel": 5.54
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 186,
+       "podiel": 5.48
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 183,
+       "podiel": 5.39
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 109,
+       "podiel": 3.21
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 48,
+       "podiel": 1.41
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 28,
+       "podiel": 0.82
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 16,
+       "podiel": 0.47
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 14,
+       "podiel": 0.41
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 12,
+       "podiel": 0.35
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 6,
+       "podiel": 0.18
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 4,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 3,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 3,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 2,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 2,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 1,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 1,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 1,
+       "podiel": 0.03
+      }
+     ]
+    },
+    {
+     "kod_obce": "529338",
+     "nazov": "Vrakuňa",
+     "zapisani": 16160,
+     "zucastneni": 11101,
+     "ucast": 68.69,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 3069,
+       "podiel": 27.92
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 2258,
+       "podiel": 20.54
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 1382,
+       "podiel": 12.57
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 1246,
+       "podiel": 11.33
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 845,
+       "podiel": 7.69
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 446,
+       "podiel": 4.06
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 422,
+       "podiel": 3.84
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 394,
+       "podiel": 3.58
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 379,
+       "podiel": 3.45
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 221,
+       "podiel": 2.01
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 96,
+       "podiel": 0.87
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 65,
+       "podiel": 0.59
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 38,
+       "podiel": 0.35
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 38,
+       "podiel": 0.35
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 18,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 18,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 13,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 12,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 11,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 5,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 5,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 4,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "Slovenské Hnutie Obrody",
+       "hlasy": 3,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 3,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 2,
+       "podiel": 0.02
+      }
+     ]
+    },
+    {
+     "kod_obce": "529427",
+     "nazov": "Záhorská Bystrica",
+     "zapisani": 5259,
+     "zucastneni": 4355,
+     "ucast": 82.81,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 1524,
+       "podiel": 35.34
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 729,
+       "podiel": 16.91
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 608,
+       "podiel": 14.1
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 343,
+       "podiel": 7.95
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 248,
+       "podiel": 5.75
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 227,
+       "podiel": 5.26
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 220,
+       "podiel": 5.1
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 193,
+       "podiel": 4.48
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 99,
+       "podiel": 2.3
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 54,
+       "podiel": 1.25
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 24,
+       "podiel": 0.56
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 14,
+       "podiel": 0.32
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 10,
+       "podiel": 0.23
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 8,
+       "podiel": 0.19
+      },
+      {
+       "nazov": "SPRAVODLIVOSŤ",
+       "hlasy": 2,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 2,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "KARMA",
+       "hlasy": 2,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "PRINCÍP",
+       "hlasy": 1,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 1,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 1,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 1,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 1,
+       "podiel": 0.02
+      }
+     ]
+    },
+    {
+     "kod_obce": "529435",
+     "nazov": "Čunovo",
+     "zapisani": 1355,
+     "zucastneni": 1138,
+     "ucast": 83.99,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 353,
+       "podiel": 31.29
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 167,
+       "podiel": 14.8
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 148,
+       "podiel": 13.12
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "hlasy": 140,
+       "podiel": 12.41
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 90,
+       "podiel": 7.98
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 67,
+       "podiel": 5.94
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 55,
+       "podiel": 4.88
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 41,
+       "podiel": 3.63
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 25,
+       "podiel": 2.22
+      },
+      {
+       "nazov": "SME RODINA",
+       "hlasy": 20,
+       "podiel": 1.77
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 6,
+       "podiel": 0.53
+      },
+      {
+       "nazov": "Maďarské fórum, Občianski demokrati Slovenska, Za regióny, Rómska koalícia, Demokratická strana",
+       "hlasy": 5,
+       "podiel": 0.44
+      },
+      {
+       "nazov": "Pirátska strana - Slovensko",
+       "hlasy": 3,
+       "podiel": 0.27
+      },
+      {
+       "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+       "hlasy": 2,
+       "podiel": 0.18
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 1,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 1,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "Vlastenecký blok",
+       "hlasy": 1,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "Modrí, Most - Híd",
+       "hlasy": 1,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 1,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 1,
+       "podiel": 0.09
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ep2024",
+   "nazov": "Voľby do Európskeho parlamentu 2024",
+   "kratky": "Európsky parlament 2024",
+   "datum": "2024-06-08",
+   "zdroj": "https://volby.statistics.sk/opendata/eup/2024/EP2024_SK_tab03e.csv",
+   "mesto": {
+    "zapisani": 382749,
+    "zucastneni": 178532,
+    "ucast": 46.64,
+    "strany": [
+     {
+      "nazov": "Progresívne Slovensko",
+      "hlasy": 83466,
+      "podiel": 47.35
+     },
+     {
+      "nazov": "SMER - sociálna demokracia",
+      "hlasy": 30515,
+      "podiel": 17.31
+     },
+     {
+      "nazov": "Sloboda a Solidarita",
+      "hlasy": 14839,
+      "podiel": 8.42
+     },
+     {
+      "nazov": "REPUBLIKA",
+      "hlasy": 13244,
+      "podiel": 7.51
+     },
+     {
+      "nazov": "Demokrati",
+      "hlasy": 10014,
+      "podiel": 5.68
+     },
+     {
+      "nazov": "Kresťanskodemokratické hnutie",
+      "hlasy": 9684,
+      "podiel": 5.49
+     },
+     {
+      "nazov": "HLAS - sociálna demokracia",
+      "hlasy": 6130,
+      "podiel": 3.48
+     },
+     {
+      "nazov": "SLOVENSKO, ZA ĽUDÍ",
+      "hlasy": 2071,
+      "podiel": 1.17
+     },
+     {
+      "nazov": "Slovenská národná strana",
+      "hlasy": 1752,
+      "podiel": 0.99
+     },
+     {
+      "nazov": "ZDRAVÝ ROZUM",
+      "hlasy": 1675,
+      "podiel": 0.95
+     },
+     {
+      "nazov": "Magyar Szövetség - Maďarská aliancia",
+      "hlasy": 727,
+      "podiel": 0.41
+     },
+     {
+      "nazov": "Kresťanská únia",
+      "hlasy": 679,
+      "podiel": 0.39
+     },
+     {
+      "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+      "hlasy": 392,
+      "podiel": 0.22
+     },
+     {
+      "nazov": "Volt Slovensko",
+      "hlasy": 240,
+      "podiel": 0.14
+     },
+     {
+      "nazov": "Slovenský PATRIOT",
+      "hlasy": 197,
+      "podiel": 0.11
+     },
+     {
+      "nazov": "Socialisti.sk",
+      "hlasy": 191,
+      "podiel": 0.11
+     },
+     {
+      "nazov": "Komunistická strana Slovenska",
+      "hlasy": 105,
+      "podiel": 0.06
+     },
+     {
+      "nazov": "Spájame Občanov Slovenska - SOSK",
+      "hlasy": 97,
+      "podiel": 0.06
+     },
+     {
+      "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+      "hlasy": 92,
+      "podiel": 0.05
+     },
+     {
+      "nazov": "MySlovensko",
+      "hlasy": 85,
+      "podiel": 0.05
+     },
+     {
+      "nazov": "Slovenská ľudová strana Andreja Hlinku",
+      "hlasy": 34,
+      "podiel": 0.02
+     },
+     {
+      "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+      "hlasy": 25,
+      "podiel": 0.01
+     },
+     {
+      "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+      "hlasy": 14,
+      "podiel": 0.01
+     }
+    ]
+   },
+   "slovensko": {
+    "zapisani": 4377093,
+    "zucastneni": 1505176,
+    "ucast": 34.38,
+    "strany": [
+     {
+      "nazov": "Progresívne Slovensko",
+      "hlasy": 410844,
+      "podiel": 27.82
+     },
+     {
+      "nazov": "SMER - sociálna demokracia",
+      "hlasy": 365794,
+      "podiel": 24.77
+     },
+     {
+      "nazov": "REPUBLIKA",
+      "hlasy": 185137,
+      "podiel": 12.53
+     },
+     {
+      "nazov": "HLAS - sociálna demokracia",
+      "hlasy": 106076,
+      "podiel": 7.18
+     },
+     {
+      "nazov": "Kresťanskodemokratické hnutie",
+      "hlasy": 105602,
+      "podiel": 7.15
+     },
+     {
+      "nazov": "Sloboda a Solidarita",
+      "hlasy": 72703,
+      "podiel": 4.92
+     },
+     {
+      "nazov": "Demokrati",
+      "hlasy": 69204,
+      "podiel": 4.69
+     },
+     {
+      "nazov": "Magyar Szövetség - Maďarská aliancia",
+      "hlasy": 57350,
+      "podiel": 3.88
+     },
+     {
+      "nazov": "SLOVENSKO, ZA ĽUDÍ",
+      "hlasy": 29385,
+      "podiel": 1.99
+     },
+     {
+      "nazov": "Slovenská národná strana",
+      "hlasy": 28102,
+      "podiel": 1.9
+     },
+     {
+      "nazov": "ZDRAVÝ ROZUM",
+      "hlasy": 13867,
+      "podiel": 0.94
+     },
+     {
+      "nazov": "Kresťanská únia",
+      "hlasy": 9313,
+      "podiel": 0.63
+     },
+     {
+      "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+      "hlasy": 7103,
+      "podiel": 0.48
+     },
+     {
+      "nazov": "Slovenský PATRIOT",
+      "hlasy": 5412,
+      "podiel": 0.37
+     },
+     {
+      "nazov": "Komunistická strana Slovenska",
+      "hlasy": 2232,
+      "podiel": 0.15
+     },
+     {
+      "nazov": "Volt Slovensko",
+      "hlasy": 1923,
+      "podiel": 0.13
+     },
+     {
+      "nazov": "Socialisti.sk",
+      "hlasy": 1800,
+      "podiel": 0.12
+     },
+     {
+      "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+      "hlasy": 1274,
+      "podiel": 0.09
+     },
+     {
+      "nazov": "MySlovensko",
+      "hlasy": 1214,
+      "podiel": 0.08
+     },
+     {
+      "nazov": "Spájame Občanov Slovenska - SOSK",
+      "hlasy": 1143,
+      "podiel": 0.08
+     },
+     {
+      "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+      "hlasy": 588,
+      "podiel": 0.04
+     },
+     {
+      "nazov": "Slovenská ľudová strana Andreja Hlinku",
+      "hlasy": 486,
+      "podiel": 0.03
+     },
+     {
+      "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+      "hlasy": 416,
+      "podiel": 0.03
+     }
+    ]
+   },
+   "mestske_casti": [
+    {
+     "kod_obce": "529401",
+     "nazov": "Devín",
+     "zapisani": 1509,
+     "zucastneni": 816,
+     "ucast": 54.08,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 414,
+       "podiel": 51.17
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 109,
+       "podiel": 13.47
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 68,
+       "podiel": 8.41
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 62,
+       "podiel": 7.66
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 46,
+       "podiel": 5.69
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 44,
+       "podiel": 5.44
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 29,
+       "podiel": 3.58
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 15,
+       "podiel": 1.85
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 8,
+       "podiel": 0.99
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 8,
+       "podiel": 0.99
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 3,
+       "podiel": 0.37
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 1,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 1,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 1,
+       "podiel": 0.12
+      }
+     ]
+    },
+    {
+     "kod_obce": "529371",
+     "nazov": "Devínska Nová Ves",
+     "zapisani": 13764,
+     "zucastneni": 6099,
+     "ucast": 44.31,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 2702,
+       "podiel": 44.88
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 1024,
+       "podiel": 17.01
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 592,
+       "podiel": 9.83
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 507,
+       "podiel": 8.42
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 353,
+       "podiel": 5.86
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 315,
+       "podiel": 5.23
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 235,
+       "podiel": 3.9
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 80,
+       "podiel": 1.33
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 76,
+       "podiel": 1.26
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 70,
+       "podiel": 1.16
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 17,
+       "podiel": 0.28
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 16,
+       "podiel": 0.27
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 9,
+       "podiel": 0.15
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 5,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 5,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 5,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 3,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 2,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 2,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 2,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 1,
+       "podiel": 0.02
+      }
+     ]
+    },
+    {
+     "kod_obce": "529389",
+     "nazov": "Dúbravka",
+     "zapisani": 29042,
+     "zucastneni": 13436,
+     "ucast": 46.26,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 5774,
+       "podiel": 43.64
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 2562,
+       "podiel": 19.37
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 1072,
+       "podiel": 8.1
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 1049,
+       "podiel": 7.93
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 817,
+       "podiel": 6.18
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 784,
+       "podiel": 5.93
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 517,
+       "podiel": 3.91
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 162,
+       "podiel": 1.22
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 144,
+       "podiel": 1.09
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 142,
+       "podiel": 1.07
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 41,
+       "podiel": 0.31
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 35,
+       "podiel": 0.26
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 29,
+       "podiel": 0.22
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 21,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 17,
+       "podiel": 0.13
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 16,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 15,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 12,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 7,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 5,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 5,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 2,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 2,
+       "podiel": 0.02
+      }
+     ]
+    },
+    {
+     "kod_obce": "529443",
+     "nazov": "Jarovce",
+     "zapisani": 2317,
+     "zucastneni": 1237,
+     "ucast": 53.39,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 598,
+       "podiel": 48.98
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 165,
+       "podiel": 13.51
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 123,
+       "podiel": 10.07
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 117,
+       "podiel": 9.58
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 58,
+       "podiel": 4.75
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 57,
+       "podiel": 4.67
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 42,
+       "podiel": 3.44
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 19,
+       "podiel": 1.56
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 12,
+       "podiel": 0.98
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 9,
+       "podiel": 0.74
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 6,
+       "podiel": 0.49
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 4,
+       "podiel": 0.33
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 3,
+       "podiel": 0.25
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 3,
+       "podiel": 0.25
+      },
+      {
+       "nazov": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 2,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 2,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 1,
+       "podiel": 0.08
+      }
+     ]
+    },
+    {
+     "kod_obce": "529397",
+     "nazov": "Karlova Ves",
+     "zapisani": 29594,
+     "zucastneni": 13689,
+     "ucast": 46.26,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 6560,
+       "podiel": 48.56
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 2192,
+       "podiel": 16.23
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 1177,
+       "podiel": 8.71
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 952,
+       "podiel": 7.05
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 849,
+       "podiel": 6.29
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 742,
+       "podiel": 5.49
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 442,
+       "podiel": 3.27
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 166,
+       "podiel": 1.23
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 126,
+       "podiel": 0.93
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 116,
+       "podiel": 0.86
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 54,
+       "podiel": 0.4
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 41,
+       "podiel": 0.3
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 22,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 18,
+       "podiel": 0.13
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 17,
+       "podiel": 0.13
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 11,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 8,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 4,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 4,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 2,
+       "podiel": 0.01
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 2,
+       "podiel": 0.01
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 2,
+       "podiel": 0.01
+      },
+      {
+       "nazov": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 1,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "529419",
+     "nazov": "Lamač",
+     "zapisani": 6239,
+     "zucastneni": 3335,
+     "ucast": 53.45,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 1412,
+       "podiel": 42.98
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 602,
+       "podiel": 18.33
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 318,
+       "podiel": 9.68
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 257,
+       "podiel": 7.82
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 238,
+       "podiel": 7.25
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 208,
+       "podiel": 6.33
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 117,
+       "podiel": 3.56
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 34,
+       "podiel": 1.04
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 28,
+       "podiel": 0.85
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 22,
+       "podiel": 0.67
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 17,
+       "podiel": 0.52
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 8,
+       "podiel": 0.24
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 5,
+       "podiel": 0.15
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 5,
+       "podiel": 0.15
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 3,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 3,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 3,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 3,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 2,
+       "podiel": 0.06
+      }
+     ]
+    },
+    {
+     "kod_obce": "529346",
+     "nazov": "Nové Mesto",
+     "zapisani": 34441,
+     "zucastneni": 17472,
+     "ucast": 50.73,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 9022,
+       "podiel": 52.27
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 2643,
+       "podiel": 15.31
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 1492,
+       "podiel": 8.64
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 1095,
+       "podiel": 6.34
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 924,
+       "podiel": 5.35
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 846,
+       "podiel": 4.9
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 540,
+       "podiel": 3.13
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 178,
+       "podiel": 1.03
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 149,
+       "podiel": 0.86
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 139,
+       "podiel": 0.81
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 55,
+       "podiel": 0.32
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 48,
+       "podiel": 0.28
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 30,
+       "podiel": 0.17
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 30,
+       "podiel": 0.17
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 18,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 12,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 12,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 10,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 9,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 4,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 3,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 2,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "529460",
+     "nazov": "Petržalka",
+     "zapisani": 90460,
+     "zucastneni": 39941,
+     "ucast": 44.15,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 17271,
+       "podiel": 43.69
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 7613,
+       "podiel": 19.26
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 3514,
+       "podiel": 8.89
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 3134,
+       "podiel": 7.93
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 2270,
+       "podiel": 5.74
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 2171,
+       "podiel": 5.49
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 1596,
+       "podiel": 4.04
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 523,
+       "podiel": 1.32
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 408,
+       "podiel": 1.03
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 360,
+       "podiel": 0.91
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 184,
+       "podiel": 0.47
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 139,
+       "podiel": 0.35
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 109,
+       "podiel": 0.28
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 46,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 40,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 34,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 34,
+       "podiel": 0.09
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 28,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 26,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 18,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 7,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 5,
+       "podiel": 0.01
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 2,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "529311",
+     "nazov": "Podunajské Biskupice",
+     "zapisani": 18603,
+     "zucastneni": 7396,
+     "ucast": 39.76,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 2927,
+       "podiel": 40.38
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 1595,
+       "podiel": 22.0
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 661,
+       "podiel": 9.12
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 561,
+       "podiel": 7.74
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 375,
+       "podiel": 5.17
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 341,
+       "podiel": 4.7
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 290,
+       "podiel": 4.0
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 151,
+       "podiel": 2.08
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 133,
+       "podiel": 1.83
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 69,
+       "podiel": 0.95
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 66,
+       "podiel": 0.91
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 23,
+       "podiel": 0.32
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 11,
+       "podiel": 0.15
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 10,
+       "podiel": 0.14
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 9,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 8,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 7,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 4,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 4,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 3,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 1,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "529354",
+     "nazov": "Rača",
+     "zapisani": 20799,
+     "zucastneni": 9430,
+     "ucast": 45.34,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 4135,
+       "podiel": 44.52
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 1781,
+       "podiel": 19.18
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 737,
+       "podiel": 7.94
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 704,
+       "podiel": 7.58
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 606,
+       "podiel": 6.53
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 504,
+       "podiel": 5.43
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 348,
+       "podiel": 3.75
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 118,
+       "podiel": 1.27
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 103,
+       "podiel": 1.11
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 94,
+       "podiel": 1.01
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 43,
+       "podiel": 0.46
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 25,
+       "podiel": 0.27
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 25,
+       "podiel": 0.27
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 18,
+       "podiel": 0.19
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 13,
+       "podiel": 0.14
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 10,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 6,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 5,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 4,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 3,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 2,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 2,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 1,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "529494",
+     "nazov": "Rusovce",
+     "zapisani": 3403,
+     "zucastneni": 1725,
+     "ucast": 50.69,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 850,
+       "podiel": 49.85
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 279,
+       "podiel": 16.36
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 177,
+       "podiel": 10.38
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 114,
+       "podiel": 6.69
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 82,
+       "podiel": 4.81
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 70,
+       "podiel": 4.11
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 53,
+       "podiel": 3.11
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 23,
+       "podiel": 1.35
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 21,
+       "podiel": 1.23
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 12,
+       "podiel": 0.7
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 6,
+       "podiel": 0.35
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 5,
+       "podiel": 0.29
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 3,
+       "podiel": 0.18
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 3,
+       "podiel": 0.18
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 2,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 2,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 1,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 1,
+       "podiel": 0.06
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 1,
+       "podiel": 0.06
+      }
+     ]
+    },
+    {
+     "kod_obce": "529320",
+     "nazov": "Ružinov",
+     "zapisani": 66301,
+     "zucastneni": 31974,
+     "ucast": 48.23,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 15894,
+       "podiel": 50.21
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 5028,
+       "podiel": 15.89
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 2842,
+       "podiel": 8.98
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 2117,
+       "podiel": 6.69
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 1728,
+       "podiel": 5.46
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 1697,
+       "podiel": 5.36
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 941,
+       "podiel": 2.97
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 353,
+       "podiel": 1.12
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 304,
+       "podiel": 0.96
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 274,
+       "podiel": 0.87
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 127,
+       "podiel": 0.4
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 98,
+       "podiel": 0.31
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 64,
+       "podiel": 0.2
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 39,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 36,
+       "podiel": 0.11
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 33,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 26,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 13,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 12,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 10,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 7,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 6,
+       "podiel": 0.02
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 3,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "528595",
+     "nazov": "Staré Mesto",
+     "zapisani": 38529,
+     "zucastneni": 20047,
+     "ucast": 52.03,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 10624,
+       "podiel": 53.8
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 2736,
+       "podiel": 13.85
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 1698,
+       "podiel": 8.6
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 1136,
+       "podiel": 5.75
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 1073,
+       "podiel": 5.43
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 1060,
+       "podiel": 5.37
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 539,
+       "podiel": 2.73
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 208,
+       "podiel": 1.05
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 182,
+       "podiel": 0.92
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 149,
+       "podiel": 0.75
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 106,
+       "podiel": 0.54
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 74,
+       "podiel": 0.37
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 38,
+       "podiel": 0.19
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 34,
+       "podiel": 0.17
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 32,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 20,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 15,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 8,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 8,
+       "podiel": 0.04
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 6,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 1,
+       "podiel": 0.01
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 1,
+       "podiel": 0.01
+      }
+     ]
+    },
+    {
+     "kod_obce": "529362",
+     "nazov": "Vajnory",
+     "zapisani": 4576,
+     "zucastneni": 2101,
+     "ucast": 45.91,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 939,
+       "podiel": 45.21
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 424,
+       "podiel": 20.41
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 158,
+       "podiel": 7.61
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 133,
+       "podiel": 6.4
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 133,
+       "podiel": 6.4
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 119,
+       "podiel": 5.73
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 67,
+       "podiel": 3.23
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 28,
+       "podiel": 1.35
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 22,
+       "podiel": 1.06
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 21,
+       "podiel": 1.01
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 7,
+       "podiel": 0.34
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 5,
+       "podiel": 0.24
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 5,
+       "podiel": 0.24
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 4,
+       "podiel": 0.19
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 3,
+       "podiel": 0.14
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 3,
+       "podiel": 0.14
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 3,
+       "podiel": 0.14
+      },
+      {
+       "nazov": "SDKÚ - DS - Slovenská demokratická a kresťanská únia - Demokratická strana",
+       "hlasy": 1,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "SPOLOČNE OBČANIA SLOVENSKA",
+       "hlasy": 1,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 1,
+       "podiel": 0.05
+      }
+     ]
+    },
+    {
+     "kod_obce": "529338",
+     "nazov": "Vrakuňa",
+     "zapisani": 16294,
+     "zucastneni": 6169,
+     "ucast": 37.86,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 2515,
+       "podiel": 41.47
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 1276,
+       "podiel": 21.04
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 588,
+       "podiel": 9.7
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 508,
+       "podiel": 8.38
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 319,
+       "podiel": 5.26
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 277,
+       "podiel": 4.57
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 248,
+       "podiel": 4.09
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 93,
+       "podiel": 1.53
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 56,
+       "podiel": 0.92
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 54,
+       "podiel": 0.89
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 47,
+       "podiel": 0.78
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 25,
+       "podiel": 0.41
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 20,
+       "podiel": 0.33
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 10,
+       "podiel": 0.16
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 7,
+       "podiel": 0.12
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 5,
+       "podiel": 0.08
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 4,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 4,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 4,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 3,
+       "podiel": 0.05
+      },
+      {
+       "nazov": "Slovenská ľudová strana Andreja Hlinku",
+       "hlasy": 1,
+       "podiel": 0.02
+      }
+     ]
+    },
+    {
+     "kod_obce": "529427",
+     "nazov": "Záhorská Bystrica",
+     "zapisani": 5495,
+     "zucastneni": 2946,
+     "ucast": 53.61,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 1506,
+       "podiel": 51.75
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 391,
+       "podiel": 13.44
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 292,
+       "podiel": 10.03
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 176,
+       "podiel": 6.05
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 173,
+       "podiel": 5.95
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 138,
+       "podiel": 4.74
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 110,
+       "podiel": 3.78
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 40,
+       "podiel": 1.37
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 30,
+       "podiel": 1.03
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 23,
+       "podiel": 0.79
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 9,
+       "podiel": 0.31
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 7,
+       "podiel": 0.24
+      },
+      {
+       "nazov": "Socialisti.sk",
+       "hlasy": 3,
+       "podiel": 0.1
+      },
+      {
+       "nazov": "Slovenský PATRIOT",
+       "hlasy": 2,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "MySlovensko",
+       "hlasy": 2,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 2,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 2,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 2,
+       "podiel": 0.07
+      },
+      {
+       "nazov": "Spájame Občanov Slovenska - SOSK",
+       "hlasy": 1,
+       "podiel": 0.03
+      },
+      {
+       "nazov": "Komunistická strana Slovenska",
+       "hlasy": 1,
+       "podiel": 0.03
+      }
+     ]
+    },
+    {
+     "kod_obce": "529435",
+     "nazov": "Čunovo",
+     "zapisani": 1383,
+     "zucastneni": 719,
+     "ucast": 51.99,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "hlasy": 323,
+       "podiel": 45.56
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "hlasy": 95,
+       "podiel": 13.4
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "hlasy": 84,
+       "podiel": 11.85
+      },
+      {
+       "nazov": "Demokrati",
+       "hlasy": 74,
+       "podiel": 10.44
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "hlasy": 41,
+       "podiel": 5.78
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "hlasy": 34,
+       "podiel": 4.8
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "hlasy": 16,
+       "podiel": 2.26
+      },
+      {
+       "nazov": "SLOVENSKO, ZA ĽUDÍ",
+       "hlasy": 15,
+       "podiel": 2.12
+      },
+      {
+       "nazov": "Kresťanská únia",
+       "hlasy": 8,
+       "podiel": 1.13
+      },
+      {
+       "nazov": "ZDRAVÝ ROZUM",
+       "hlasy": 7,
+       "podiel": 0.99
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "hlasy": 6,
+       "podiel": 0.85
+      },
+      {
+       "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+       "hlasy": 3,
+       "podiel": 0.42
+      },
+      {
+       "nazov": "Magyar Szövetség - Maďarská aliancia",
+       "hlasy": 1,
+       "podiel": 0.14
+      },
+      {
+       "nazov": "SRDCE vlastenci a dôchodcovia - SLOVENSKÁ NÁRODNÁ JEDNOTA",
+       "hlasy": 1,
+       "podiel": 0.14
+      },
+      {
+       "nazov": "Volt Slovensko",
+       "hlasy": 1,
+       "podiel": 0.14
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "aktualizovane": "2026-10-14T22:01:50+00:00"
+}

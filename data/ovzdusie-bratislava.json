@@ -1,0 +1,192 @@
+{
+ "ukazovatele": {
+  "pm10": {
+   "popis": "Priemerná ročná koncentrácia PM10",
+   "jednotka": "µg/m³",
+   "limit": 40.0,
+   "zdroj": {
+    "id": "08b4888537194726bffd6f0f5a55c21e",
+    "nazov": "Priemerná ročná koncentrácia škodlivých látok PM10 v ovzduší v Bratislave",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/08b4888537194726bffd6f0f5a55c21e",
+    "upravene": "2026-09-24"
+   },
+   "stanice": {
+    "Kamenné námestie": {
+     "2017": 19.0,
+     "2018": 26.0,
+     "2019": 22.0,
+     "2020": 18.0,
+     "2021": 18.0,
+     "2022": 19.0,
+     "2023": 17.0,
+     "2024": 19.0,
+     "2025": 18.0
+    }
+   }
+  },
+  "pm10_prekrocenia": {
+   "popis": "Počet dní s prekročením denného limitu PM10",
+   "jednotka": "dní",
+   "limit": 35.0,
+   "zdroj": {
+    "id": "c560d929407e47e59793a78da0fe49bb",
+    "nazov": "Počet prekročení dennej limitnej hodnoty koncentrácie škodlivých látok PM10 v ovzduší v Bratislave",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/c560d929407e47e59793a78da0fe49bb",
+    "upravene": "2026-09-24"
+   },
+   "stanice": {
+    "Jeséniova": {
+     "2015": 12.0,
+     "2016": 9.0,
+     "2017": 25.0,
+     "2018": 20.0,
+     "2019": 9.0,
+     "2020": 4.0,
+     "2021": 2.0,
+     "2022": 0.0,
+     "2023": 0.0,
+     "2024": 7.0,
+     "2025": 4.0
+    },
+    "Kamenné námestie": {
+     "2018": 19.0,
+     "2019": 8.0,
+     "2020": 5.0,
+     "2021": 5.0,
+     "2022": 3.0,
+     "2023": 0.0,
+     "2024": 6.0,
+     "2025": 4.0
+    },
+    "Mamateyova": {
+     "2016": 7.0,
+     "2017": 25.0,
+     "2018": 20.0,
+     "2019": 9.0,
+     "2020": 4.0,
+     "2021": 5.0,
+     "2022": 1.0,
+     "2023": 0.0,
+     "2024": 3.0,
+     "2025": 3.0
+    },
+    "Trnavské mýto": {
+     "2015": 40.0,
+     "2016": 23.0,
+     "2017": 24.0,
+     "2018": 19.0,
+     "2019": 11.0,
+     "2020": 14.0,
+     "2021": 16.0,
+     "2022": 9.0,
+     "2023": 7.0,
+     "2024": 12.0,
+     "2025": 6.0
+    }
+   }
+  },
+  "pm25": {
+   "popis": "Priemerná ročná koncentrácia PM2,5",
+   "jednotka": "µg/m³",
+   "limit": 20.0,
+   "zdroj": {
+    "id": "7146fc000f1544309fbaef06a4a70fa3",
+    "nazov": "Priemerná ročná koncentrácia škodlivých látok PM2.5 v ovzduší v Bratislave",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/7146fc000f1544309fbaef06a4a70fa3",
+    "upravene": "2026-09-24"
+   },
+   "stanice": {
+    "Jeséniova": {
+     "2015": 16.0,
+     "2016": 13.0,
+     "2017": 14.0,
+     "2018": 16.0,
+     "2019": 12.0,
+     "2020": 12.0,
+     "2021": 13.0,
+     "2022": 11.0,
+     "2023": 11.0,
+     "2024": 12.0,
+     "2025": 11.0
+    },
+    "Kamenné námestie": {
+     "2017": 11.0,
+     "2018": 19.0,
+     "2019": 15.0,
+     "2020": 14.0,
+     "2021": 13.0,
+     "2022": 12.0,
+     "2023": 11.0,
+     "2024": 12.0,
+     "2025": 13.0
+    },
+    "Mamateyova": {
+     "2015": 22.0,
+     "2016": 15.0,
+     "2017": 15.0,
+     "2018": 17.0,
+     "2019": 13.0,
+     "2020": 13.0,
+     "2021": 14.0,
+     "2022": 11.0,
+     "2023": 10.0,
+     "2024": 12.0,
+     "2025": 12.0
+    },
+    "Trnavské mýto": {
+     "2019": 18.0,
+     "2020": 15.0,
+     "2021": 15.0,
+     "2022": 15.0,
+     "2023": 13.0,
+     "2024": 13.0,
+     "2025": 13.0
+    }
+   }
+  },
+  "o3": {
+   "popis": "Počet dní s prekročením cielovej hodnoty ozónu",
+   "jednotka": "dní",
+   "limit": 25.0,
+   "zdroj": {
+    "id": "6e18d5a0c0fd466dab5bd821a744178a",
+    "nazov": "Počet dní s prekročením cieľovej hodnoty koncentrácie škodlivých látok O3 v ovzduší v Bratislave",
+    "licencia": "CC BY 4.0",
+    "url": "https://data.bratislava.sk/datasets/6e18d5a0c0fd466dab5bd821a744178a",
+    "upravene": "2026-09-24"
+   },
+   "stanice": {
+    "Jeséniova": {
+     "2015": 60.0,
+     "2016": 11.0,
+     "2017": 38.0,
+     "2018": 54.0,
+     "2019": 40.0,
+     "2020": 17.0,
+     "2021": 23.0,
+     "2022": 37.0,
+     "2023": 23.0,
+     "2024": 26.0,
+     "2025": 33.0
+    },
+    "Mamateyova": {
+     "2015": 38.0,
+     "2016": 6.0,
+     "2017": 22.0,
+     "2018": 33.0,
+     "2019": 32.0,
+     "2020": 12.0,
+     "2021": 15.0,
+     "2022": 25.0,
+     "2023": 18.0,
+     "2024": 18.0,
+     "2025": 11.0
+    }
+   }
+  }
+ },
+ "aktualizovane": "2026-10-15T04:28:04+00:00"
+}

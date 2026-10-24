@@ -1,0 +1,20 @@
+{
+ "zdroj": [
+  {
+   "nazov": "Rajonizácia základných škôl podľa registra adries v roku 2025",
+   "url": "https://data.bratislava.sk/datasets/ef5254fb17344932b787dbbf81c094a5",
+   "licencia": "CC BY 4.0"
+  },
+  {
+   "nazov": "Rajonizácia predprimárneho vzdelávania podľa registra adries v roku 2026",
+   "url": "https://data.bratislava.sk/datasets/a6a832ddc3c94aa3b8c15b41e5a0365b",
+   "licencia": "CC BY 4.0"
+  }
+ ],
+ "skolsky_rok": "2025/2026",
+ "adries": 42887,
+ "zakladne_skoly": 50,
+ "skolky_rajony": 126,
+ "ulic": 1928,
+ "aktualizovane": "2026-10-15T16:30:23+00:00"
+}

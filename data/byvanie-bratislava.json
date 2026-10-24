@@ -1,0 +1,1451 @@
+{
+ "aktualizovane": "2026-10-16T06:33:56",
+ "ceny": {
+  "zdroj": {
+   "nazov": "ŠÚ SR – Indexy realizačných cien nehnuteľností na bývanie, regionálne (sp3801qr)",
+   "url": "https://datacube.statistics.sk",
+   "licencia": "CC BY 4.0"
+  },
+  "rad": [
+   {
+    "obdobie": "2022-Q2",
+    "sr_total_rr": 116.6,
+    "sr_total_qq": 105.5,
+    "sr_dw_new_rr": 123.1,
+    "sr_dw_new_qq": 104.7,
+    "sr_dw_exst_rr": 112.7,
+    "sr_dw_exst_qq": 106.0,
+    "ba_total_rr": 113.5,
+    "ba_total_qq": 102.4,
+    "ba_dw_new_rr": 125.0,
+    "ba_dw_new_qq": 105.6,
+    "ba_dw_exst_rr": 106.0,
+    "ba_dw_exst_qq": 100.0,
+    "ba_total_idx": 102.4,
+    "sr_total_idx": 105.5,
+    "ba_dw_new_idx": 105.6,
+    "ba_dw_exst_idx": 100.0
+   },
+   {
+    "obdobie": "2022-Q3",
+    "sr_total_rr": 114.6,
+    "sr_total_qq": 102.8,
+    "sr_dw_new_rr": 114.6,
+    "sr_dw_new_qq": 100.7,
+    "sr_dw_exst_rr": 114.5,
+    "sr_dw_exst_qq": 104.3,
+    "ba_total_rr": 111.8,
+    "ba_total_qq": 104.1,
+    "ba_dw_new_rr": 112.4,
+    "ba_dw_new_qq": 99.0,
+    "ba_dw_exst_rr": 111.4,
+    "ba_dw_exst_qq": 108.0,
+    "ba_total_idx": 106.6,
+    "sr_total_idx": 108.45,
+    "ba_dw_new_idx": 104.54,
+    "ba_dw_exst_idx": 108.0
+   },
+   {
+    "obdobie": "2022-Q4",
+    "sr_total_rr": 109.7,
+    "sr_total_qq": 99.2,
+    "sr_dw_new_rr": 111.7,
+    "sr_dw_new_qq": 101.5,
+    "sr_dw_exst_rr": 108.5,
+    "sr_dw_exst_qq": 97.7,
+    "ba_total_rr": 111.4,
+    "ba_total_qq": 102.4,
+    "ba_dw_new_rr": 115.3,
+    "ba_dw_new_qq": 104.0,
+    "ba_dw_exst_rr": 108.8,
+    "ba_dw_exst_qq": 101.4,
+    "ba_total_idx": 109.16,
+    "sr_total_idx": 107.59,
+    "ba_dw_new_idx": 108.73,
+    "ba_dw_exst_idx": 109.51
+   },
+   {
+    "obdobie": "2023-Q1",
+    "sr_total_rr": 107.5,
+    "sr_total_qq": 99.9,
+    "sr_dw_new_rr": 104.0,
+    "sr_dw_new_qq": 97.2,
+    "sr_dw_exst_rr": 108.8,
+    "sr_dw_exst_qq": 100.7,
+    "ba_total_rr": 108.4,
+    "ba_total_qq": 99.3,
+    "ba_dw_new_rr": 103.1,
+    "ba_dw_new_qq": 94.9,
+    "ba_dw_exst_rr": 110.7,
+    "ba_dw_exst_qq": 101.1,
+    "ba_total_idx": 108.39,
+    "sr_total_idx": 107.48,
+    "ba_dw_new_idx": 103.18,
+    "ba_dw_exst_idx": 110.72
+   },
+   {
+    "obdobie": "2023-Q2",
+    "sr_total_rr": 97.8,
+    "sr_total_qq": 96.0,
+    "sr_dw_new_rr": 96.0,
+    "sr_dw_new_qq": 96.7,
+    "sr_dw_exst_rr": 98.4,
+    "sr_dw_exst_qq": 95.8,
+    "ba_total_rr": 99.9,
+    "ba_total_qq": 94.4,
+    "ba_dw_new_rr": 93.4,
+    "ba_dw_new_qq": 95.7,
+    "ba_dw_exst_rr": 103.9,
+    "ba_dw_exst_qq": 93.9,
+    "ba_total_idx": 102.32,
+    "sr_total_idx": 103.18,
+    "ba_dw_new_idx": 98.74,
+    "ba_dw_exst_idx": 103.96
+   },
+   {
+    "obdobie": "2023-Q3",
+    "sr_total_rr": 95.9,
+    "sr_total_qq": 100.8,
+    "sr_dw_new_rr": 95.0,
+    "sr_dw_new_qq": 99.7,
+    "sr_dw_exst_rr": 95.5,
+    "sr_dw_exst_qq": 101.2,
+    "ba_total_rr": 97.5,
+    "ba_total_qq": 101.5,
+    "ba_dw_new_rr": 92.4,
+    "ba_dw_new_qq": 97.8,
+    "ba_dw_exst_rr": 99.0,
+    "ba_dw_exst_qq": 103.0,
+    "ba_total_idx": 103.86,
+    "sr_total_idx": 104.01,
+    "ba_dw_new_idx": 96.57,
+    "ba_dw_exst_idx": 107.08
+   },
+   {
+    "obdobie": "2023-Q4",
+    "sr_total_rr": 98.6,
+    "sr_total_qq": 101.9,
+    "sr_dw_new_rr": 95.6,
+    "sr_dw_new_qq": 102.1,
+    "sr_dw_exst_rr": 99.6,
+    "sr_dw_exst_qq": 101.9,
+    "ba_total_rr": 97.5,
+    "ba_total_qq": 102.5,
+    "ba_dw_new_rr": 94.3,
+    "ba_dw_new_qq": 106.1,
+    "ba_dw_exst_rr": 98.8,
+    "ba_dw_exst_qq": 101.1,
+    "ba_total_idx": 106.45,
+    "sr_total_idx": 105.98,
+    "ba_dw_new_idx": 102.46,
+    "ba_dw_exst_idx": 108.26
+   },
+   {
+    "obdobie": "2024-Q1",
+    "sr_total_rr": 97.0,
+    "sr_total_qq": 98.3,
+    "sr_dw_new_rr": 96.2,
+    "sr_dw_new_qq": 97.8,
+    "sr_dw_exst_rr": 97.2,
+    "sr_dw_exst_qq": 98.4,
+    "ba_total_rr": 91.8,
+    "ba_total_qq": 93.5,
+    "ba_dw_new_rr": 90.7,
+    "ba_dw_new_qq": 91.3,
+    "ba_dw_exst_rr": 91.8,
+    "ba_dw_exst_qq": 94.0,
+    "ba_total_idx": 99.53,
+    "sr_total_idx": 104.18,
+    "ba_dw_new_idx": 93.55,
+    "ba_dw_exst_idx": 101.76
+   },
+   {
+    "obdobie": "2024-Q2",
+    "sr_total_rr": 104.0,
+    "sr_total_qq": 103.0,
+    "sr_dw_new_rr": 103.0,
+    "sr_dw_new_qq": 103.5,
+    "sr_dw_exst_rr": 104.4,
+    "sr_dw_exst_qq": 102.9,
+    "ba_total_rr": 100.6,
+    "ba_total_qq": 103.4,
+    "ba_dw_new_rr": 99.4,
+    "ba_dw_new_qq": 104.8,
+    "ba_dw_exst_rr": 100.9,
+    "ba_dw_exst_qq": 103.1,
+    "ba_total_idx": 102.92,
+    "sr_total_idx": 107.3,
+    "ba_dw_new_idx": 98.04,
+    "ba_dw_exst_idx": 104.92
+   },
+   {
+    "obdobie": "2024-Q3",
+    "sr_total_rr": 106.2,
+    "sr_total_qq": 102.9,
+    "sr_dw_new_rr": 104.1,
+    "sr_dw_new_qq": 100.8,
+    "sr_dw_exst_rr": 106.6,
+    "sr_dw_exst_qq": 103.3,
+    "ba_total_rr": 106.0,
+    "ba_total_qq": 107.0,
+    "ba_dw_new_rr": 105.0,
+    "ba_dw_new_qq": 103.4,
+    "ba_dw_exst_rr": 105.5,
+    "ba_dw_exst_qq": 107.7,
+    "ba_total_idx": 110.12,
+    "sr_total_idx": 110.42,
+    "ba_dw_new_idx": 101.37,
+    "ba_dw_exst_idx": 113.0
+   },
+   {
+    "obdobie": "2024-Q4",
+    "sr_total_rr": 107.9,
+    "sr_total_qq": 103.6,
+    "sr_dw_new_rr": 105.7,
+    "sr_dw_new_qq": 103.6,
+    "sr_dw_exst_rr": 108.4,
+    "sr_dw_exst_qq": 103.7,
+    "ba_total_rr": 107.6,
+    "ba_total_qq": 104.0,
+    "ba_dw_new_rr": 102.4,
+    "ba_dw_new_qq": 103.5,
+    "ba_dw_exst_rr": 108.7,
+    "ba_dw_exst_qq": 104.1,
+    "ba_total_idx": 114.53,
+    "sr_total_idx": 114.39,
+    "ba_dw_new_idx": 104.92,
+    "ba_dw_exst_idx": 117.63
+   },
+   {
+    "obdobie": "2025-Q1",
+    "sr_total_rr": 112.2,
+    "sr_total_qq": 102.1,
+    "sr_dw_new_rr": 111.2,
+    "sr_dw_new_qq": 102.8,
+    "sr_dw_exst_rr": 112.4,
+    "sr_dw_exst_qq": 102.0,
+    "ba_total_rr": 115.5,
+    "ba_total_qq": 100.4,
+    "ba_dw_new_rr": 115.9,
+    "ba_dw_new_qq": 103.3,
+    "ba_dw_exst_rr": 115.3,
+    "ba_dw_exst_qq": 99.7,
+    "ba_total_idx": 114.99,
+    "sr_total_idx": 116.79,
+    "ba_dw_new_idx": 108.38,
+    "ba_dw_exst_idx": 117.28
+   },
+   {
+    "obdobie": "2025-Q2",
+    "sr_total_rr": 111.3,
+    "sr_total_qq": 102.2,
+    "sr_dw_new_rr": 110.5,
+    "sr_dw_new_qq": 102.9,
+    "sr_dw_exst_rr": 111.4,
+    "sr_dw_exst_qq": 102.0,
+    "ba_total_rr": 114.3,
+    "ba_total_qq": 102.3,
+    "ba_dw_new_rr": 115.3,
+    "ba_dw_new_qq": 104.2,
+    "ba_dw_exst_rr": 114.0,
+    "ba_dw_exst_qq": 101.9,
+    "ba_total_idx": 117.63,
+    "sr_total_idx": 119.36,
+    "ba_dw_new_idx": 112.93,
+    "ba_dw_exst_idx": 119.51
+   },
+   {
+    "obdobie": "2025-Q3",
+    "sr_total_rr": 113.4,
+    "sr_total_qq": 104.9,
+    "sr_dw_new_rr": 111.8,
+    "sr_dw_new_qq": 101.9,
+    "sr_dw_exst_rr": 113.7,
+    "sr_dw_exst_qq": 105.5,
+    "ba_total_rr": 113.8,
+    "ba_total_qq": 106.6,
+    "ba_dw_new_rr": 112.7,
+    "ba_dw_new_qq": 101.1,
+    "ba_dw_exst_rr": 114.1,
+    "ba_dw_exst_qq": 107.8,
+    "ba_total_idx": 125.39,
+    "sr_total_idx": 125.21,
+    "ba_dw_new_idx": 114.18,
+    "ba_dw_exst_idx": 128.83
+   },
+   {
+    "obdobie": "2025-Q4",
+    "sr_total_rr": 112.8,
+    "sr_total_qq": 103.1,
+    "sr_dw_new_rr": 109.8,
+    "sr_dw_new_qq": 101.7,
+    "sr_dw_exst_rr": 113.4,
+    "sr_dw_exst_qq": 103.3,
+    "ba_total_rr": 113.8,
+    "ba_total_qq": 104.0,
+    "ba_dw_new_rr": 109.5,
+    "ba_dw_new_qq": 100.5,
+    "ba_dw_exst_rr": 114.7,
+    "ba_dw_exst_qq": 104.7,
+    "ba_total_idx": 130.41,
+    "sr_total_idx": 129.09,
+    "ba_dw_new_idx": 114.75,
+    "ba_dw_exst_idx": 134.88
+   },
+   {
+    "obdobie": "2026-Q1",
+    "sr_total_rr": 114.4,
+    "sr_total_qq": 103.6,
+    "sr_dw_new_rr": 110.8,
+    "sr_dw_new_qq": 103.8,
+    "sr_dw_exst_rr": 115.2,
+    "sr_dw_exst_qq": 103.6,
+    "ba_total_rr": 119.5,
+    "ba_total_qq": 105.5,
+    "ba_dw_new_rr": 113.1,
+    "ba_dw_new_qq": 106.8,
+    "ba_dw_exst_rr": 120.9,
+    "ba_dw_exst_qq": 105.1,
+    "ba_total_idx": 137.58,
+    "sr_total_idx": 133.74,
+    "ba_dw_new_idx": 122.55,
+    "ba_dw_exst_idx": 141.76
+   },
+   {
+    "obdobie": "2026-Q2",
+    "sr_total_rr": 113.6,
+    "sr_total_qq": 101.4,
+    "sr_dw_new_rr": 110.0,
+    "sr_dw_new_qq": 102.1,
+    "sr_dw_exst_rr": 114.3,
+    "sr_dw_exst_qq": 101.3,
+    "ba_total_rr": 116.2,
+    "ba_total_qq": 99.5,
+    "ba_dw_new_rr": 112.4,
+    "ba_dw_new_qq": 103.6,
+    "ba_dw_exst_rr": 116.6,
+    "ba_dw_exst_qq": 98.2,
+    "ba_total_idx": 136.89,
+    "sr_total_idx": 135.61,
+    "ba_dw_new_idx": 126.96,
+    "ba_dw_exst_idx": 139.21
+   }
+  ]
+ },
+ "vystavba": {
+  "zdroj": {
+   "nazov": "ŠÚ SR – Byty, vybrané ukazovatele (st3004rr)",
+   "url": "https://datacube.statistics.sk",
+   "licencia": "CC BY 4.0"
+  },
+  "okresy_casti": {
+   "Bratislava I": "Staré Mesto",
+   "Bratislava II": "Ružinov, Vrakuňa, Podunajské Biskupice",
+   "Bratislava III": "Nové Mesto, Rača, Vajnory",
+   "Bratislava IV": "Karlova Ves, Dúbravka, Lamač, Devín, Devínska Nová Ves, Záhorská Bystrica",
+   "Bratislava V": "Petržalka, Jarovce, Rusovce, Čunovo"
+  },
+  "roky": {
+   "2001": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 559,
+     "ZAC_BYT": 185,
+     "DOKONC_BYT": 216,
+     "ROZOST_BYT_KON": 528,
+     "OBYT_PLOCH": 94
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 1226,
+     "ZAC_BYT": 309,
+     "DOKONC_BYT": 335,
+     "ROZOST_BYT_KON": 1200,
+     "OBYT_PLOCH": 82
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1021,
+     "ZAC_BYT": 138,
+     "DOKONC_BYT": 238,
+     "ROZOST_BYT_KON": 921,
+     "OBYT_PLOCH": 68
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1275,
+     "ZAC_BYT": 237,
+     "DOKONC_BYT": 441,
+     "ROZOST_BYT_KON": 1071,
+     "OBYT_PLOCH": 57
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 386,
+     "ZAC_BYT": 384,
+     "DOKONC_BYT": 132,
+     "ROZOST_BYT_KON": 638,
+     "OBYT_PLOCH": 77
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 4467,
+     "ZAC_BYT": 1253,
+     "DOKONC_BYT": 1362,
+     "ROZOST_BYT_KON": 4358,
+     "OBYT_PLOCH": 72.9
+    }
+   },
+   "2002": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 528,
+     "ZAC_BYT": 173,
+     "DOKONC_BYT": 274,
+     "ROZOST_BYT_KON": 427,
+     "OBYT_PLOCH": 86
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 1171,
+     "ZAC_BYT": 1071,
+     "DOKONC_BYT": 826,
+     "ROZOST_BYT_KON": 1416,
+     "OBYT_PLOCH": 70
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 921,
+     "ZAC_BYT": 128,
+     "DOKONC_BYT": 272,
+     "ROZOST_BYT_KON": 777,
+     "OBYT_PLOCH": 62
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1071,
+     "ZAC_BYT": 551,
+     "DOKONC_BYT": 409,
+     "ROZOST_BYT_KON": 1213,
+     "OBYT_PLOCH": 69
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 638,
+     "ZAC_BYT": 256,
+     "DOKONC_BYT": 267,
+     "ROZOST_BYT_KON": 627,
+     "OBYT_PLOCH": 55
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 4329,
+     "ZAC_BYT": 2179,
+     "DOKONC_BYT": 2048,
+     "ROZOST_BYT_KON": 4460,
+     "OBYT_PLOCH": 68.9
+    }
+   },
+   "2003": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 426,
+     "ZAC_BYT": 100,
+     "DOKONC_BYT": 131,
+     "ROZOST_BYT_KON": 395,
+     "OBYT_PLOCH": 127
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 1416,
+     "ZAC_BYT": 678,
+     "DOKONC_BYT": 658,
+     "ROZOST_BYT_KON": 1436,
+     "OBYT_PLOCH": 59
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 777,
+     "ZAC_BYT": 327,
+     "DOKONC_BYT": 112,
+     "ROZOST_BYT_KON": 992,
+     "OBYT_PLOCH": 102
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1213,
+     "ZAC_BYT": 439,
+     "DOKONC_BYT": 156,
+     "ROZOST_BYT_KON": 1496,
+     "OBYT_PLOCH": 82
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 627,
+     "ZAC_BYT": 382,
+     "DOKONC_BYT": 227,
+     "ROZOST_BYT_KON": 782,
+     "OBYT_PLOCH": 68
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 4459,
+     "ZAC_BYT": 1926,
+     "DOKONC_BYT": 1284,
+     "ROZOST_BYT_KON": 5101,
+     "OBYT_PLOCH": 74.1
+    }
+   },
+   "2004": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 395,
+     "ZAC_BYT": 128,
+     "DOKONC_BYT": 178,
+     "ROZOST_BYT_KON": 345,
+     "OBYT_PLOCH": 98
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 1436,
+     "ZAC_BYT": 1064,
+     "DOKONC_BYT": 443,
+     "ROZOST_BYT_KON": 2057,
+     "OBYT_PLOCH": 76
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 992,
+     "ZAC_BYT": 292,
+     "DOKONC_BYT": 272,
+     "ROZOST_BYT_KON": 1012,
+     "OBYT_PLOCH": 72
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1494,
+     "ZAC_BYT": 956,
+     "DOKONC_BYT": 645,
+     "ROZOST_BYT_KON": 1805,
+     "OBYT_PLOCH": 73
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 782,
+     "ZAC_BYT": 393,
+     "DOKONC_BYT": 449,
+     "ROZOST_BYT_KON": 726,
+     "OBYT_PLOCH": 75
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 5099,
+     "ZAC_BYT": 2833,
+     "DOKONC_BYT": 1987,
+     "ROZOST_BYT_KON": 5945,
+     "OBYT_PLOCH": 76.2
+    }
+   },
+   "2005": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 345,
+     "ZAC_BYT": 165,
+     "DOKONC_BYT": 208,
+     "ROZOST_BYT_KON": 302,
+     "OBYT_PLOCH": 96
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 2057,
+     "ZAC_BYT": 1692,
+     "DOKONC_BYT": 1556,
+     "ROZOST_BYT_KON": 2193,
+     "OBYT_PLOCH": 62
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1012,
+     "ZAC_BYT": 1411,
+     "DOKONC_BYT": 473,
+     "ROZOST_BYT_KON": 1950,
+     "OBYT_PLOCH": 60
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1805,
+     "ZAC_BYT": 1080,
+     "DOKONC_BYT": 698,
+     "ROZOST_BYT_KON": 2187,
+     "OBYT_PLOCH": 63
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 726,
+     "ZAC_BYT": 974,
+     "DOKONC_BYT": 276,
+     "ROZOST_BYT_KON": 1424,
+     "OBYT_PLOCH": 83
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 5945,
+     "ZAC_BYT": 5322,
+     "DOKONC_BYT": 3211,
+     "ROZOST_BYT_KON": 8056,
+     "OBYT_PLOCH": 65.9
+    }
+   },
+   "2006": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 42,
+     "ZAC_BYT": 440,
+     "DOKONC_BYT": 120,
+     "ROZOST_BYT_KON": 362,
+     "OBYT_PLOCH": 97
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 2193,
+     "ZAC_BYT": 1774,
+     "DOKONC_BYT": 925,
+     "ROZOST_BYT_KON": 3042,
+     "OBYT_PLOCH": 65
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1950,
+     "ZAC_BYT": 1543,
+     "DOKONC_BYT": 288,
+     "ROZOST_BYT_KON": 3205,
+     "OBYT_PLOCH": 84
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 2188,
+     "ZAC_BYT": 382,
+     "DOKONC_BYT": 801,
+     "ROZOST_BYT_KON": 1769,
+     "OBYT_PLOCH": 66
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 1424,
+     "ZAC_BYT": 617,
+     "DOKONC_BYT": 387,
+     "ROZOST_BYT_KON": 1654,
+     "OBYT_PLOCH": 74
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 7797,
+     "ZAC_BYT": 4756,
+     "DOKONC_BYT": 2521,
+     "ROZOST_BYT_KON": 10032,
+     "OBYT_PLOCH": 70.4
+    }
+   },
+   "2007": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 362,
+     "ZAC_BYT": 127,
+     "DOKONC_BYT": 145,
+     "ROZOST_BYT_KON": 344,
+     "OBYT_PLOCH": 65
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 3149,
+     "ZAC_BYT": 1133,
+     "DOKONC_BYT": 1004,
+     "ROZOST_BYT_KON": 3278,
+     "OBYT_PLOCH": 65
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 3205,
+     "ZAC_BYT": 696,
+     "DOKONC_BYT": 1461,
+     "ROZOST_BYT_KON": 2440,
+     "OBYT_PLOCH": 67
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1769,
+     "ZAC_BYT": 556,
+     "DOKONC_BYT": 937,
+     "ROZOST_BYT_KON": 1388,
+     "OBYT_PLOCH": 60
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 1654,
+     "ZAC_BYT": 149,
+     "DOKONC_BYT": 445,
+     "ROZOST_BYT_KON": 1358,
+     "OBYT_PLOCH": 72
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 10139,
+     "ZAC_BYT": 2661,
+     "DOKONC_BYT": 3992,
+     "ROZOST_BYT_KON": 8808,
+     "OBYT_PLOCH": 65.3
+    }
+   },
+   "2008": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 344,
+     "ZAC_BYT": 196,
+     "DOKONC_BYT": 156,
+     "ROZOST_BYT_KON": 384,
+     "OBYT_PLOCH": 96
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 3278,
+     "ZAC_BYT": 1363,
+     "DOKONC_BYT": 1240,
+     "ROZOST_BYT_KON": 3401,
+     "OBYT_PLOCH": 64
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 2449,
+     "ZAC_BYT": 1466,
+     "DOKONC_BYT": 551,
+     "ROZOST_BYT_KON": 3364,
+     "OBYT_PLOCH": 75
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1497,
+     "ZAC_BYT": 1580,
+     "DOKONC_BYT": 667,
+     "ROZOST_BYT_KON": 2410,
+     "OBYT_PLOCH": 64
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 1358,
+     "ZAC_BYT": 461,
+     "DOKONC_BYT": 399,
+     "ROZOST_BYT_KON": 1420,
+     "OBYT_PLOCH": 65
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 8926,
+     "ZAC_BYT": 5066,
+     "DOKONC_BYT": 3013,
+     "ROZOST_BYT_KON": 10979,
+     "OBYT_PLOCH": 67.8
+    }
+   },
+   "2009": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 384,
+     "ZAC_BYT": 355,
+     "DOKONC_BYT": 262,
+     "ROZOST_BYT_KON": 477,
+     "OBYT_PLOCH": 107
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 3401,
+     "ZAC_BYT": 376,
+     "DOKONC_BYT": 1273,
+     "ROZOST_BYT_KON": 2504,
+     "OBYT_PLOCH": 61
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 3364,
+     "ZAC_BYT": 163,
+     "DOKONC_BYT": 1168,
+     "ROZOST_BYT_KON": 2359,
+     "OBYT_PLOCH": 75
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 2427,
+     "ZAC_BYT": 693,
+     "DOKONC_BYT": 822,
+     "ROZOST_BYT_KON": 2298,
+     "OBYT_PLOCH": 66
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 1420,
+     "ZAC_BYT": 424,
+     "DOKONC_BYT": 216,
+     "ROZOST_BYT_KON": 1628,
+     "OBYT_PLOCH": 80
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 10996,
+     "ZAC_BYT": 2011,
+     "DOKONC_BYT": 3741,
+     "ROZOST_BYT_KON": 9266,
+     "OBYT_PLOCH": 70.8
+    }
+   },
+   "2010": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 477,
+     "ZAC_BYT": 230,
+     "DOKONC_BYT": 366,
+     "ROZOST_BYT_KON": 341,
+     "OBYT_PLOCH": 108
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 2504,
+     "ZAC_BYT": 840,
+     "DOKONC_BYT": 762,
+     "ROZOST_BYT_KON": 2582,
+     "OBYT_PLOCH": 59
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 2359,
+     "ZAC_BYT": 269,
+     "DOKONC_BYT": 746,
+     "ROZOST_BYT_KON": 1882,
+     "OBYT_PLOCH": 67
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 2298,
+     "ZAC_BYT": 638,
+     "DOKONC_BYT": 1189,
+     "ROZOST_BYT_KON": 1747,
+     "OBYT_PLOCH": 62
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 1628,
+     "ZAC_BYT": 652,
+     "DOKONC_BYT": 179,
+     "ROZOST_BYT_KON": 2101,
+     "OBYT_PLOCH": 66
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 9266,
+     "ZAC_BYT": 2629,
+     "DOKONC_BYT": 3242,
+     "ROZOST_BYT_KON": 8653,
+     "OBYT_PLOCH": 67.9
+    }
+   },
+   "2011": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 341,
+     "ZAC_BYT": 32,
+     "DOKONC_BYT": 103,
+     "ROZOST_BYT_KON": 270,
+     "OBYT_PLOCH": 76
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 2611,
+     "ZAC_BYT": 194,
+     "DOKONC_BYT": 1038,
+     "ROZOST_BYT_KON": 1767,
+     "OBYT_PLOCH": 60
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 2493,
+     "ZAC_BYT": 153,
+     "DOKONC_BYT": 286,
+     "ROZOST_BYT_KON": 2360,
+     "OBYT_PLOCH": 87
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1747,
+     "ZAC_BYT": 154,
+     "DOKONC_BYT": 254,
+     "ROZOST_BYT_KON": 1647,
+     "OBYT_PLOCH": 67
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 2101,
+     "ZAC_BYT": 180,
+     "DOKONC_BYT": 87,
+     "ROZOST_BYT_KON": 2194,
+     "OBYT_PLOCH": 100
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 9293,
+     "ZAC_BYT": 713,
+     "DOKONC_BYT": 1768,
+     "ROZOST_BYT_KON": 8238,
+     "OBYT_PLOCH": 68.3
+    }
+   },
+   "2012": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 270,
+     "ZAC_BYT": 32,
+     "DOKONC_BYT": 120,
+     "ROZOST_BYT_KON": 182,
+     "OBYT_PLOCH": 67
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 1799,
+     "ZAC_BYT": 336,
+     "DOKONC_BYT": 327,
+     "ROZOST_BYT_KON": 1808,
+     "OBYT_PLOCH": 65
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 2313,
+     "ZAC_BYT": 226,
+     "DOKONC_BYT": 1491,
+     "ROZOST_BYT_KON": 1048,
+     "OBYT_PLOCH": 51
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1647,
+     "ZAC_BYT": 306,
+     "DOKONC_BYT": 485,
+     "ROZOST_BYT_KON": 1468,
+     "OBYT_PLOCH": 65
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 2194,
+     "ZAC_BYT": 287,
+     "DOKONC_BYT": 493,
+     "ROZOST_BYT_KON": 1988,
+     "OBYT_PLOCH": 63
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 8223,
+     "ZAC_BYT": 1187,
+     "DOKONC_BYT": 2916,
+     "ROZOST_BYT_KON": 6494,
+     "OBYT_PLOCH": 57.6
+    }
+   },
+   "2013": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 32,
+     "ZAC_BYT": 615,
+     "DOKONC_BYT": 86,
+     "ROZOST_BYT_KON": 561,
+     "OBYT_PLOCH": 86
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 1848,
+     "ZAC_BYT": 199,
+     "DOKONC_BYT": 157,
+     "ROZOST_BYT_KON": 1890,
+     "OBYT_PLOCH": 79
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1043,
+     "ZAC_BYT": 1136,
+     "DOKONC_BYT": 274,
+     "ROZOST_BYT_KON": 1905,
+     "OBYT_PLOCH": 68
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1453,
+     "ZAC_BYT": 89,
+     "DOKONC_BYT": 455,
+     "ROZOST_BYT_KON": 1087,
+     "OBYT_PLOCH": 60
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 1989,
+     "ZAC_BYT": 180,
+     "DOKONC_BYT": 597,
+     "ROZOST_BYT_KON": 1572,
+     "OBYT_PLOCH": 69
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 6365,
+     "ZAC_BYT": 2219,
+     "DOKONC_BYT": 1569,
+     "ROZOST_BYT_KON": 7015,
+     "OBYT_PLOCH": 68.1
+    }
+   },
+   "2014": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 550,
+     "ZAC_BYT": 238,
+     "DOKONC_BYT": 147,
+     "ROZOST_BYT_KON": 641,
+     "OBYT_PLOCH": 76
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 1890,
+     "ZAC_BYT": 334,
+     "DOKONC_BYT": 354,
+     "ROZOST_BYT_KON": 1870,
+     "OBYT_PLOCH": 66
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1905,
+     "ZAC_BYT": 527,
+     "DOKONC_BYT": 536,
+     "ROZOST_BYT_KON": 1896,
+     "OBYT_PLOCH": 82
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1087,
+     "ZAC_BYT": 602,
+     "DOKONC_BYT": 320,
+     "ROZOST_BYT_KON": 1369,
+     "OBYT_PLOCH": 49
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 1572,
+     "ZAC_BYT": 428,
+     "DOKONC_BYT": 329,
+     "ROZOST_BYT_KON": 1671,
+     "OBYT_PLOCH": 97
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 7004,
+     "ZAC_BYT": 2129,
+     "DOKONC_BYT": 1686,
+     "ROZOST_BYT_KON": 7447,
+     "OBYT_PLOCH": 74.8
+    }
+   },
+   "2015": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 641,
+     "ZAC_BYT": 191,
+     "DOKONC_BYT": 748,
+     "ROZOST_BYT_KON": 84,
+     "OBYT_PLOCH": 61
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 1913,
+     "ZAC_BYT": 449,
+     "DOKONC_BYT": 834,
+     "ROZOST_BYT_KON": 1528,
+     "OBYT_PLOCH": 57
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1896,
+     "ZAC_BYT": 929,
+     "DOKONC_BYT": 338,
+     "ROZOST_BYT_KON": 2487,
+     "OBYT_PLOCH": 58
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1697,
+     "ZAC_BYT": 418,
+     "DOKONC_BYT": 309,
+     "ROZOST_BYT_KON": 1806,
+     "OBYT_PLOCH": 68
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 1671,
+     "ZAC_BYT": 2746,
+     "DOKONC_BYT": 165,
+     "ROZOST_BYT_KON": 4252,
+     "OBYT_PLOCH": 83
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 7818,
+     "ZAC_BYT": 4733,
+     "DOKONC_BYT": 2394,
+     "ROZOST_BYT_KON": 10157,
+     "OBYT_PLOCH": 61.6
+    }
+   },
+   "2016": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 84,
+     "ZAC_BYT": 863,
+     "DOKONC_BYT": 87,
+     "ROZOST_BYT_KON": 860,
+     "OBYT_PLOCH": 83
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 2058,
+     "ZAC_BYT": 197,
+     "DOKONC_BYT": 293,
+     "ROZOST_BYT_KON": 1962,
+     "OBYT_PLOCH": 73
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 2487,
+     "ZAC_BYT": 1268,
+     "DOKONC_BYT": 513,
+     "ROZOST_BYT_KON": 3242,
+     "OBYT_PLOCH": 53
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1731,
+     "ZAC_BYT": 1025,
+     "DOKONC_BYT": 643,
+     "ROZOST_BYT_KON": 2113,
+     "OBYT_PLOCH": 59
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 4252,
+     "ZAC_BYT": 626,
+     "DOKONC_BYT": 416,
+     "ROZOST_BYT_KON": 4462,
+     "OBYT_PLOCH": 61
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 10612,
+     "ZAC_BYT": 3979,
+     "DOKONC_BYT": 1952,
+     "ROZOST_BYT_KON": 12639,
+     "OBYT_PLOCH": 61.0
+    }
+   },
+   "2017": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 1285,
+     "ZAC_BYT": 49,
+     "DOKONC_BYT": 350,
+     "ROZOST_BYT_KON": 984,
+     "OBYT_PLOCH": 66
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 1963,
+     "ZAC_BYT": 700,
+     "DOKONC_BYT": 417,
+     "ROZOST_BYT_KON": 2246,
+     "OBYT_PLOCH": 51
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 3228,
+     "ZAC_BYT": 108,
+     "DOKONC_BYT": 676,
+     "ROZOST_BYT_KON": 2660,
+     "OBYT_PLOCH": 52
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 2198,
+     "ZAC_BYT": 441,
+     "DOKONC_BYT": 411,
+     "ROZOST_BYT_KON": 2228,
+     "OBYT_PLOCH": 60
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 4462,
+     "ZAC_BYT": 617,
+     "DOKONC_BYT": 940,
+     "ROZOST_BYT_KON": 4139,
+     "OBYT_PLOCH": 46
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 13136,
+     "ZAC_BYT": 1915,
+     "DOKONC_BYT": 2794,
+     "ROZOST_BYT_KON": 12257,
+     "OBYT_PLOCH": 52.8
+    }
+   },
+   "2018": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 984,
+     "ZAC_BYT": 51,
+     "DOKONC_BYT": 143,
+     "ROZOST_BYT_KON": 892,
+     "OBYT_PLOCH": 62
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 2294,
+     "ZAC_BYT": 520,
+     "DOKONC_BYT": 440,
+     "ROZOST_BYT_KON": 2374,
+     "OBYT_PLOCH": 61
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 2735,
+     "ZAC_BYT": 314,
+     "DOKONC_BYT": 1025,
+     "ROZOST_BYT_KON": 2024,
+     "OBYT_PLOCH": 59
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 2224,
+     "ZAC_BYT": 539,
+     "DOKONC_BYT": 611,
+     "ROZOST_BYT_KON": 2152,
+     "OBYT_PLOCH": 56
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 4139,
+     "ZAC_BYT": 292,
+     "DOKONC_BYT": 552,
+     "ROZOST_BYT_KON": 3879,
+     "OBYT_PLOCH": 56
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 12376,
+     "ZAC_BYT": 1716,
+     "DOKONC_BYT": 2771,
+     "ROZOST_BYT_KON": 11321,
+     "OBYT_PLOCH": 58.2
+    }
+   },
+   "2019": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 892,
+     "ZAC_BYT": 88,
+     "DOKONC_BYT": 82,
+     "ROZOST_BYT_KON": 898,
+     "OBYT_PLOCH": 81
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 2374,
+     "ZAC_BYT": 1652,
+     "DOKONC_BYT": 829,
+     "ROZOST_BYT_KON": 3197,
+     "OBYT_PLOCH": 65
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 2027,
+     "ZAC_BYT": 635,
+     "DOKONC_BYT": 709,
+     "ROZOST_BYT_KON": 1953,
+     "OBYT_PLOCH": 44
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 2151,
+     "ZAC_BYT": 415,
+     "DOKONC_BYT": 958,
+     "ROZOST_BYT_KON": 1608,
+     "OBYT_PLOCH": 49
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 3879,
+     "ZAC_BYT": 413,
+     "DOKONC_BYT": 260,
+     "ROZOST_BYT_KON": 4032,
+     "OBYT_PLOCH": 59
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 11323,
+     "ZAC_BYT": 3203,
+     "DOKONC_BYT": 2838,
+     "ROZOST_BYT_KON": 11688,
+     "OBYT_PLOCH": 54.3
+    }
+   },
+   "2020": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 898,
+     "ZAC_BYT": 53,
+     "DOKONC_BYT": 59,
+     "ROZOST_BYT_KON": 892,
+     "OBYT_PLOCH": 73
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 3197,
+     "ZAC_BYT": 313,
+     "DOKONC_BYT": 447,
+     "ROZOST_BYT_KON": 3063,
+     "OBYT_PLOCH": 65
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1950,
+     "ZAC_BYT": 125,
+     "DOKONC_BYT": 273,
+     "ROZOST_BYT_KON": 1802,
+     "OBYT_PLOCH": 70
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1612,
+     "ZAC_BYT": 938,
+     "DOKONC_BYT": 662,
+     "ROZOST_BYT_KON": 1888,
+     "OBYT_PLOCH": 50
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 4034,
+     "ZAC_BYT": 88,
+     "DOKONC_BYT": 1352,
+     "ROZOST_BYT_KON": 2770,
+     "OBYT_PLOCH": 57
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 11691,
+     "ZAC_BYT": 1517,
+     "DOKONC_BYT": 2793,
+     "ROZOST_BYT_KON": 10415,
+     "OBYT_PLOCH": 58.2
+    }
+   },
+   "2021": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 892,
+     "ZAC_BYT": 63,
+     "DOKONC_BYT": 53,
+     "ROZOST_BYT_KON": 902,
+     "OBYT_PLOCH": 71
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 3063,
+     "ZAC_BYT": 538,
+     "DOKONC_BYT": 362,
+     "ROZOST_BYT_KON": 3239,
+     "OBYT_PLOCH": 64
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1818,
+     "ZAC_BYT": 262,
+     "DOKONC_BYT": 287,
+     "ROZOST_BYT_KON": 1793,
+     "OBYT_PLOCH": 57
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1884,
+     "ZAC_BYT": 1014,
+     "DOKONC_BYT": 819,
+     "ROZOST_BYT_KON": 2079,
+     "OBYT_PLOCH": 56
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 2770,
+     "ZAC_BYT": 412,
+     "DOKONC_BYT": 389,
+     "ROZOST_BYT_KON": 2793,
+     "OBYT_PLOCH": 55
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 10427,
+     "ZAC_BYT": 2289,
+     "DOKONC_BYT": 1910,
+     "ROZOST_BYT_KON": 10806,
+     "OBYT_PLOCH": 57.9
+    }
+   },
+   "2022": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 902,
+     "ZAC_BYT": 62,
+     "DOKONC_BYT": 53,
+     "ROZOST_BYT_KON": 911,
+     "OBYT_PLOCH": 66
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 3239,
+     "ZAC_BYT": 615,
+     "DOKONC_BYT": 1306,
+     "ROZOST_BYT_KON": 2548,
+     "OBYT_PLOCH": 48
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1795,
+     "ZAC_BYT": 256,
+     "DOKONC_BYT": 171,
+     "ROZOST_BYT_KON": 1880,
+     "OBYT_PLOCH": 66
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 2191,
+     "ZAC_BYT": 214,
+     "DOKONC_BYT": 184,
+     "ROZOST_BYT_KON": 2221,
+     "OBYT_PLOCH": 75
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 2793,
+     "ZAC_BYT": 389,
+     "DOKONC_BYT": 250,
+     "ROZOST_BYT_KON": 2932,
+     "OBYT_PLOCH": 65
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 10920,
+     "ZAC_BYT": 1536,
+     "DOKONC_BYT": 1964,
+     "ROZOST_BYT_KON": 10492,
+     "OBYT_PLOCH": 54.7
+    }
+   },
+   "2023": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 911,
+     "ZAC_BYT": 53,
+     "DOKONC_BYT": 98,
+     "ROZOST_BYT_KON": 866,
+     "OBYT_PLOCH": 49
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 2548,
+     "ZAC_BYT": 896,
+     "DOKONC_BYT": 596,
+     "ROZOST_BYT_KON": 2848,
+     "OBYT_PLOCH": 51
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1882,
+     "ZAC_BYT": 152,
+     "DOKONC_BYT": 612,
+     "ROZOST_BYT_KON": 1422,
+     "OBYT_PLOCH": 54
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 2228,
+     "ZAC_BYT": 357,
+     "DOKONC_BYT": 927,
+     "ROZOST_BYT_KON": 1658,
+     "OBYT_PLOCH": 56
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 2932,
+     "ZAC_BYT": 1634,
+     "DOKONC_BYT": 1142,
+     "ROZOST_BYT_KON": 3424,
+     "OBYT_PLOCH": 50
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 10501,
+     "ZAC_BYT": 3092,
+     "DOKONC_BYT": 3375,
+     "ROZOST_BYT_KON": 10218,
+     "OBYT_PLOCH": 52.5
+    }
+   },
+   "2024": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 866,
+     "ZAC_BYT": 54,
+     "DOKONC_BYT": 262,
+     "ROZOST_BYT_KON": 658,
+     "OBYT_PLOCH": 60
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 2842,
+     "ZAC_BYT": 409,
+     "DOKONC_BYT": 645,
+     "ROZOST_BYT_KON": 2606,
+     "OBYT_PLOCH": 47
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1422,
+     "ZAC_BYT": 115,
+     "DOKONC_BYT": 355,
+     "ROZOST_BYT_KON": 1182,
+     "OBYT_PLOCH": 64
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 1962,
+     "ZAC_BYT": 777,
+     "DOKONC_BYT": 547,
+     "ROZOST_BYT_KON": 2192,
+     "OBYT_PLOCH": 54
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 3429,
+     "ZAC_BYT": 31,
+     "DOKONC_BYT": 258,
+     "ROZOST_BYT_KON": 3202,
+     "OBYT_PLOCH": 60
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 10521,
+     "ZAC_BYT": 1386,
+     "DOKONC_BYT": 2067,
+     "ROZOST_BYT_KON": 9840,
+     "OBYT_PLOCH": 55.0
+    }
+   },
+   "2025": {
+    "Bratislava I": {
+     "ROZOST_BYT_ZAC": 658,
+     "ZAC_BYT": 531,
+     "DOKONC_BYT": 30,
+     "ROZOST_BYT_KON": 1159,
+     "OBYT_PLOCH": 89
+    },
+    "Bratislava II": {
+     "ROZOST_BYT_ZAC": 2586,
+     "ZAC_BYT": 578,
+     "DOKONC_BYT": 313,
+     "ROZOST_BYT_KON": 2851,
+     "OBYT_PLOCH": 63
+    },
+    "Bratislava III": {
+     "ROZOST_BYT_ZAC": 1182,
+     "ZAC_BYT": 36,
+     "DOKONC_BYT": 111,
+     "ROZOST_BYT_KON": 1107,
+     "OBYT_PLOCH": 78
+    },
+    "Bratislava IV": {
+     "ROZOST_BYT_ZAC": 2192,
+     "ZAC_BYT": 854,
+     "DOKONC_BYT": 122,
+     "ROZOST_BYT_KON": 2924,
+     "OBYT_PLOCH": 62
+    },
+    "Bratislava V": {
+     "ROZOST_BYT_ZAC": 3202,
+     "ZAC_BYT": 38,
+     "DOKONC_BYT": 166,
+     "ROZOST_BYT_KON": 3074,
+     "OBYT_PLOCH": 61
+    },
+    "Bratislava": {
+     "ROZOST_BYT_ZAC": 9820,
+     "ZAC_BYT": 2037,
+     "DOKONC_BYT": 742,
+     "ROZOST_BYT_KON": 11115,
+     "OBYT_PLOCH": 65.7
+    }
+   }
+  }
+ }
+}

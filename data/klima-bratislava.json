@@ -1,0 +1,159 @@
+{
+ "vrstvy": {
+  "riziko_horucavy": {
+   "nazov": "Riziko horúčav pre obyvateľov",
+   "popis": "kombinácia horúčav, citlivosti obyvateľov (vek, hustota) a schopnosti prispôsobiť sa",
+   "buniek": 9570,
+   "min": 0.0,
+   "max": 1.0,
+   "hranice": [
+    0.164,
+    0.306,
+    0.381,
+    0.453
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/575142ecd12c444ca94b97811b7404fc"
+  },
+  "citlivost_horucavy": {
+   "nazov": "Citlivosť obyvateľov na horúčavy",
+   "popis": "podiel citlivých skupín obyvateľov (deti, seniori) a hustota",
+   "buniek": 9570,
+   "min": 0.0,
+   "max": 1.0,
+   "hranice": [
+    0.0,
+    0.094,
+    0.196,
+    0.257
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/8eedf533070241b1a22d146f23dba345"
+  },
+  "riziko_celkove": {
+   "nazov": "Riziko zmeny klímy – celkové",
+   "popis": "priemer rizík horúčav, zrážok pre budovy a dopravnú infraštruktúru",
+   "buniek": 9570,
+   "min": 0.05,
+   "max": 0.912,
+   "hranice": [
+    0.199,
+    0.301,
+    0.358,
+    0.445
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/be617c153f4a4aec8b8120d1f2f7d9d1"
+  },
+  "citlivost_celkova": {
+   "nazov": "Citlivosť na zmenu klímy – celková",
+   "popis": "priemer citlivosti na horúčavy, zrážky a dopravnú infraštruktúru",
+   "buniek": 9570,
+   "min": 0.0,
+   "max": 0.92,
+   "hranice": [
+    0.05,
+    0.105,
+    0.129,
+    0.283
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/367d0139656e443590295dd3e15fa7f6"
+  },
+  "riziko_zrazky_budovy": {
+   "nazov": "Riziko prívalových zrážok pre budovy",
+   "popis": "ohrozenie budov intenzívnymi zrážkami",
+   "buniek": 9570,
+   "min": 0.0,
+   "max": 1.0,
+   "hranice": [
+    0.192,
+    0.274,
+    0.342,
+    0.437
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/61a9db38e1d340da950f765d5e736a64"
+  },
+  "citlivost_zrazky_budovy": {
+   "nazov": "Citlivosť budov na zrážky",
+   "popis": "zraniteľnosť budov pri prívalových dažďoch",
+   "buniek": 9570,
+   "min": 0.0,
+   "max": 1.0,
+   "hranice": [
+    0.075,
+    0.075,
+    0.1,
+    0.3
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/7a8c8bd7d2e547048c41ccb7dfaf6707"
+  },
+  "riziko_doprava": {
+   "nazov": "Riziko zrážok pre dopravnú infraštruktúru",
+   "popis": "ohrozenie ciest a koľají zrážkami",
+   "buniek": 9570,
+   "min": 0.0,
+   "max": 1.0,
+   "hranice": [
+    0.218,
+    0.314,
+    0.382,
+    0.463
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/074fc4b357f8479fa7bfd575479d6f1a"
+  },
+  "citlivost_doprava": {
+   "nazov": "Citlivosť dopravnej infraštruktúry na zrážky",
+   "popis": "zraniteľnosť ciest a koľají pri prívalových dažďoch",
+   "buniek": 9570,
+   "min": 0.0,
+   "max": 1.0,
+   "hranice": [
+    0.076,
+    0.076,
+    0.1,
+    0.302
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/81ff5b48389448ec8770be66ac62f788"
+  },
+  "kapacita_budov_zrazky": {
+   "nazov": "Kapacita budov zvládnuť zrážky",
+   "popis": "schopnosť budov a okolia zadržať a odviesť dažďovú vodu (vyššie = lepšie)",
+   "buniek": 9570,
+   "min": 0.0,
+   "max": 1.0,
+   "hranice": [
+    0.36,
+    0.449,
+    0.521,
+    0.567
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/f99f75fbdb794d4a823d368976af8d0c"
+  },
+  "kupaliska": {
+   "nazov": "Dostupnosť kúpalísk",
+   "popis": "normalizovaná dostupnosť kúpalísk a kúpania (vyššie = lepšia)",
+   "buniek": 9572,
+   "min": 0.0,
+   "max": 1.0,
+   "hranice": [
+    0.2,
+    0.5,
+    0.7,
+    0.8
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/7e67f27f1623472f9264ab1288955ed0"
+  },
+  "hustota": {
+   "nazov": "Hustota obyvateľov (1 km²)",
+   "buniek": 369,
+   "min": 0,
+   "max": 16351,
+   "hranice": [
+    0,
+    0,
+    42,
+    1035
+   ],
+   "zdroj": "https://data.bratislava.sk/datasets/ffe51d79f7854658bcdb33cc9ae69141"
+  }
+ },
+ "chyby": [],
+ "aktualizovane": "2026-10-15T16:59:41+00:00"
+}

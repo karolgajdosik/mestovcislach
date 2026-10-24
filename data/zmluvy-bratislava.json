@@ -1,0 +1,311 @@
+{
+ "zdroj": {
+  "id": "dec22cd06721435d81161b9067556c3a",
+  "nazov": "Zmluvy Magistrátu hlavného mesta SR Bratislava zverejnené od júla 2022",
+  "licencia": "CC BY-NC 4.0",
+  "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
+  "upravene": "2026-05-07"
+ },
+ "pocet_spolu": 11820,
+ "po_rokoch": {
+  "2022": {
+   "pocet": 1395,
+   "suma": 147579642.37
+  },
+  "2023": {
+   "pocet": 2491,
+   "suma": 251110907.84
+  },
+  "2024": {
+   "pocet": 2881,
+   "suma": 434675143.43
+  },
+  "2025": {
+   "pocet": 2845,
+   "suma": 272587537.89
+  },
+  "2026": {
+   "pocet": 2208,
+   "suma": 345638738.64
+  }
+ },
+ "posledny_rok": {
+  "od": "2025-10-24",
+  "suma_bez_ico": 68800.73,
+  "dodavatelia": [
+   {
+    "ico": "35778806",
+    "nazov": "zares, spol. s r.o.",
+    "pocet": 2,
+    "suma": 38499999.98
+   },
+   {
+    "ico": "00681300",
+    "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
+    "pocet": 2,
+    "suma": 35161431.27
+   },
+   {
+    "ico": "36302031",
+    "nazov": "ROKO gips, s.r.o.",
+    "pocet": 2,
+    "suma": 14019413.62
+   },
+   {
+    "ico": "44723024",
+    "nazov": "Martiny, s. r. o.",
+    "pocet": 1,
+    "suma": 10455000.0
+   },
+   {
+    "ico": "17317282",
+    "nazov": "STRABAG s.r.o.",
+    "pocet": 8,
+    "suma": 9422275.94
+   },
+   {
+    "ico": "50614339",
+    "nazov": "ALDESA CONSTRUCCIONES POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, organizačná zložka",
+    "pocet": 9,
+    "suma": 6518383.96
+   },
+   {
+    "ico": "36416291",
+    "nazov": "XENEX, s.r.o.",
+    "pocet": 1,
+    "suma": 3920010.0
+   },
+   {
+    "ico": "31606458",
+    "nazov": "SAROUTE s.r.o.",
+    "pocet": 1,
+    "suma": 3318016.02
+   },
+   {
+    "ico": "31651518",
+    "nazov": "EUROVIA SK, a.s.",
+    "pocet": 7,
+    "suma": 2850404.58
+   },
+   {
+    "ico": "31595545",
+    "nazov": "KOMUNÁLNA poisťovňa, a.s. Vienna Insurance Group",
+    "pocet": 4,
+    "suma": 2077217.31
+   },
+   {
+    "ico": "36063606",
+    "nazov": "Bratislavský samosprávny kraj",
+    "pocet": 6,
+    "suma": 1778922.09
+   },
+   {
+    "ico": "35763418",
+    "nazov": "Mediatex s.r.o.",
+    "pocet": 1,
+    "suma": 1500000.0
+   },
+   {
+    "ico": "50700308",
+    "nazov": "CSFIT s.r.o.",
+    "pocet": 2,
+    "suma": 1367809.2
+   },
+   {
+    "ico": "35732881",
+    "nazov": "METRO Bratislava  a.s.",
+    "pocet": 8,
+    "suma": 1204031.04
+   },
+   {
+    "ico": "47144190",
+    "nazov": "Metrostav Slovakia a. s.",
+    "pocet": 2,
+    "suma": 1055181.15
+   }
+  ],
+  "najvacsie": [
+   {
+    "datum": "2025-12-11",
+    "dodavatel": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
+    "ico": "00681300",
+    "predmet": "Dodatok č. 5 k Zmluve o zabezpečení služieb v oblasti odpadového hospodárstva č. MAGTS2200236",
+    "suma": 35101431.27,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2500197"
+   },
+   {
+    "datum": "2026-03-05",
+    "dodavatel": "zares, spol. s r.o.",
+    "ico": "35778806",
+    "predmet": "Rámcová zmluva",
+    "suma": 34999999.99,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600029"
+   },
+   {
+    "datum": "2026-05-26",
+    "dodavatel": "ROKO gips, s.r.o.",
+    "ico": "36302031",
+    "predmet": "BD Terchovská",
+    "suma": 14019413.62,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600099"
+   },
+   {
+    "datum": "2026-07-06",
+    "dodavatel": "Martiny, s. r. o.",
+    "ico": "44723024",
+    "predmet": "„Zabezpečenie prevádzkyschopnosti, pravidelná údržba, opravy a modernizácia technologických zariadení a podchodov v správe Hlavného mesta SR Bratislava“",
+    "suma": 10455000.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600128"
+   },
+   {
+    "datum": "2026-02-16",
+    "dodavatel": "STRABAG s.r.o.",
+    "ico": "17317282",
+    "predmet": "ZoD ŽIVÉ NÁMESTIE – 1.Etapa (A,B,C), Etapa 1.C",
+    "suma": 7006758.38,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600017"
+   },
+   {
+    "datum": "2026-09-17",
+    "dodavatel": "XENEX, s.r.o.",
+    "ico": "36416291",
+    "predmet": "Zmluva o dielo so zhotoviteľom stavby \"Rekonštrukcia ubytovne Fortuna\" pre zákazku VO - „ Rekonštrukcia ubytovne Fortuna – stavebné práce“",
+    "suma": 3920010.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600206"
+   },
+   {
+    "datum": "2026-07-10",
+    "dodavatel": "zares, spol. s r.o.",
+    "ico": "35778806",
+    "predmet": "Rámcová dohoda o poskytovaní služieb zakladania a údržby záhonov a služieb s tým spojených - MAGZBR2600116",
+    "suma": 3499999.99,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600116"
+   },
+   {
+    "datum": "2026-01-14",
+    "dodavatel": "SAROUTE s.r.o.",
+    "ico": "31606458",
+    "predmet": "Táto Dohoda sa uzatvára ako výsledok použitia postupu zadávania podlimitnej zákazky v súlade s § 110 zákona 343/2015 Z. z. o verejnom obstarávaní a o zmene a doplnení niektorých zákonov (ďalej len „ZV",
+    "suma": 3318016.02,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500394"
+   },
+   {
+    "datum": "2026-02-19",
+    "dodavatel": "Bratislavský samosprávny kraj",
+    "ico": "36063606",
+    "predmet": "Zmluva o spoločnom riešení a financovaní stavby spoločných vyvolaných investícií stavby „Elektrovod – Komunikácia a inžinierske siete I. ETAPA“, na ktorej základe sa združia finančné prostriedky a zab",
+    "suma": 1778922.09,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500385"
+   },
+   {
+    "datum": "2025-12-11",
+    "dodavatel": "KOMUNÁLNA poisťovňa, a.s. Vienna Insurance Group",
+    "ico": "31595545",
+    "predmet": "Poistná zmluva č. 4419017890, Komunálna poisťovňa, a.s. Vienna Insurance Group, na dobu 72 mesiacov, Nosný systém MHD 2. časť Bosákova – Janíkov dvor Bratislava",
+    "suma": 1500315.12,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500403"
+   },
+   {
+    "datum": "2026-06-05",
+    "dodavatel": "Mediatex s.r.o.",
+    "ico": "35763418",
+    "predmet": "Zmluva na službu platby parkovného formou SMS",
+    "suma": 1500000.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600113"
+   },
+   {
+    "datum": "2025-12-08",
+    "dodavatel": "ALDESA CONSTRUCCIONES POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, organizačná zložka",
+    "ico": "50614339",
+    "predmet": "Dodatok č.34 k ZoD NSMHD2-valorizácia 3Q/2025",
+    "suma": 1394234.02,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2500201"
+   },
+   {
+    "datum": "2025-11-21",
+    "dodavatel": "ALDESA CONSTRUCCIONES POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, organizačná zložka",
+    "ico": "50614339",
+    "predmet": "Dodatok č.33 k ZoD NSMHD2- Predĺženie lehoty výstavby",
+    "suma": 1345763.12,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2500182"
+   },
+   {
+    "datum": "2025-11-17",
+    "dodavatel": "CSFIT s.r.o.",
+    "ico": "50700308",
+    "predmet": "Rámocvá dohoda o dodávke komponentov serverovej infraštruktúry a príslušných licencií",
+    "suma": 1180615.5,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500367"
+   },
+   {
+    "datum": "2026-02-16",
+    "dodavatel": "EUROVIA SK, a.s.",
+    "ico": "31651518",
+    "predmet": "Revitalizácia parku Uzbecká",
+    "suma": 1167024.39,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500406"
+   },
+   {
+    "datum": "2026-05-18",
+    "dodavatel": "Metrostav Slovakia a. s.",
+    "ico": "47144190",
+    "predmet": "Realizácia stavby 1B - Rekonštrukcia komunikácií na Medenej a Kúpeľnej ulici",
+    "suma": 1055181.15,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600121"
+   },
+   {
+    "datum": "2026-05-20",
+    "dodavatel": "Športový klub IAMES Bratislava",
+    "ico": "00688967",
+    "predmet": "Dodatok č. 2 k RD MAGZBR2500097-Oprava zvarov na Moste SNP M177",
+    "suma": 977415.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2600034"
+   },
+   {
+    "datum": "2025-10-31",
+    "dodavatel": "STRABAG s.r.o.",
+    "ico": "17317282",
+    "predmet": "Realizácia projektu Revitalizácia verejného priestoru Dom služieb Dúbravka",
+    "suma": 970724.21,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500320"
+   },
+   {
+    "datum": "2026-05-04",
+    "dodavatel": "Hydrograss-company, s.r.o.",
+    "ico": "50968874",
+    "predmet": "Zmluva o odbornej a komplexnej starostlivosti o plochy zelene na Dúbravsko - Karloveskej radiále",
+    "suma": 969663.71,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600067"
+   },
+   {
+    "datum": "2026-09-22",
+    "dodavatel": "CITY STONE DESIGN s.r.o.",
+    "ico": "47978929",
+    "predmet": "RD MAGZBR2600207 - Výroba a dodávka bratislavskej dlažby",
+    "suma": 884985.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600207"
+   }
+  ]
+ },
+ "aktualizovane": "2026-10-24T02:58:05+00:00"
+}

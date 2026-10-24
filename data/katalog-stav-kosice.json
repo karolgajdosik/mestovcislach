@@ -1,0 +1,849 @@
+{
+ "zdroj": "https://opendata.kosice.sk",
+ "pocty": {
+  "vynechane": 51,
+  "katalog": 38
+ },
+ "datasety": [
+  {
+   "id": "efcc829e69cd40abb5dd62462cc4601e",
+   "nazov": "Cyklosčítače Košice - prašnosť",
+   "kategoria": "Bezpečnosť, zdravie",
+   "upravene": 1764683916000,
+   "riadkov": 383027,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (383027 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "6323640be4234b479f760435a2654c78",
+   "nazov": "Mestská polícia Košice",
+   "kategoria": "Bezpečnosť, zdravie",
+   "upravene": 1785754587000,
+   "riadkov": 22,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "e76f6884693342a49c5aab9abce6d595",
+   "nazov": "Priestupky na území mesta Košice - 2018",
+   "kategoria": "Bezpečnosť, zdravie",
+   "upravene": 1785754362000,
+   "riadkov": 29615,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (29615 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "dd621b2b6525463b81c36f6ee4e6a52d",
+   "nazov": "Priestupky na území mesta Košice - 2019",
+   "kategoria": "Bezpečnosť, zdravie",
+   "upravene": 1785754334000,
+   "riadkov": 25879,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (25879 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "47a835a3e4124ea1831ed1c12ab5470e",
+   "nazov": "Priestupky na území mesta Košice - 2020",
+   "kategoria": "Bezpečnosť, zdravie",
+   "upravene": 1785754301000,
+   "riadkov": 22463,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (22463 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "ddec8152705143ffbcf2780b5aa0aa0e",
+   "nazov": "Priestupky na území mesta Košice - 2021",
+   "kategoria": "Bezpečnosť, zdravie",
+   "upravene": 1785754273000,
+   "riadkov": 25545,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (25545 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "a15b9a1f108d464a8c09973692e2463c",
+   "nazov": "Priestupky na území mesta Košice - 2022",
+   "kategoria": "Bezpečnosť, zdravie",
+   "upravene": 1785754234000,
+   "riadkov": 37862,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (37862 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "fea1e1d438784870ac7aa52f4aa0224f",
+   "nazov": "Priestupky na území mesta Košice - 2023",
+   "kategoria": "Bezpečnosť, zdravie",
+   "upravene": 1785754205000,
+   "riadkov": 39975,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (39975 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "e313ef471a4f48f790a26ff71bbc6007",
+   "nazov": "Priestupky na území mesta Košice - 2024",
+   "kategoria": "Bezpečnosť, zdravie",
+   "upravene": 1785754175000,
+   "riadkov": 53551,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (53551 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "250c22bc41d54df7a7e07493701384b8",
+   "nazov": "Priestupky na území mesta Košice - 2025",
+   "kategoria": "Bezpečnosť, zdravie",
+   "upravene": 1785754115000,
+   "riadkov": 29723,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (29723 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "7f39a1a0f1a045dfbf184f608d08a54f",
+   "nazov": "Turistické ciele v Košiciach",
+   "kategoria": "Cestovný ruch",
+   "upravene": 1730367021000,
+   "riadkov": 175,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "2c560bd229914d2ea566f611ff8fa389",
+   "nazov": "SODB 2021 - priemerné počty obyvateľov - byty, domy",
+   "kategoria": "Demografia",
+   "upravene": 1760523717000,
+   "riadkov": 17243,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "ba941d7bc56a462684a261d4f35ce17d",
+   "nazov": "Cestovný poriadok MHD",
+   "kategoria": "Doprava, parkovanie",
+   "upravene": 1764751313000,
+   "riadkov": null,
+   "stav": "vynechane",
+   "dovod": "Typ „CSV Collection“ bez tabuľkovej služby – nedá sa načítať automaticky."
+  },
+  {
+   "id": "22d05a4a057143499bc3325597377940",
+   "nazov": "Cyklistická infraštruktúra",
+   "kategoria": "Doprava, parkovanie",
+   "upravene": 1733142184000,
+   "riadkov": 660,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "57c9a4efed134f94bd29657b5a118bc0",
+   "nazov": "Cyklosčítače Košice - pohyb",
+   "kategoria": "Doprava, parkovanie",
+   "upravene": 1764684099000,
+   "riadkov": 179962,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "027eaebb18144e8c9eecbf04a8ff4093",
+   "nazov": "Zastávky MHD",
+   "kategoria": "Doprava, parkovanie",
+   "upravene": 1764751494000,
+   "riadkov": 789,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "c391763d5e964fcf8fdfab5d0f78bc72",
+   "nazov": "Zoznam ulíc",
+   "kategoria": "Infraštruktúra",
+   "upravene": 1790144419000,
+   "riadkov": 958,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/c391763d5e964fcf8fdfab5d0f78bc72",
+   "stlpcov": 7
+  },
+  {
+   "id": "34a04ba612bb47af9e1442fd6ce1cf2d",
+   "nazov": "Kultúrne inštitúcie",
+   "kategoria": "Kultúra",
+   "upravene": 1711610591000,
+   "riadkov": 137,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "211ea6395d9e4fa880a2eb58ad8bf55c",
+   "nazov": "Umelecké diela v exteriéri Košíc",
+   "kategoria": "Kultúra",
+   "upravene": 1764598364000,
+   "riadkov": 429,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "3d46429c163244a4aaac4a654e692167",
+   "nazov": "Administratívne hranice",
+   "kategoria": "Ostatné",
+   "upravene": 1760516199000,
+   "riadkov": 55,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "12aa132c31c447a2b3ded177ab5a271c",
+   "nazov": "Adresné body",
+   "kategoria": "Ostatné",
+   "upravene": 1760515566000,
+   "riadkov": 40460,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "599eb4b7aa5f4773beefe1c577360b67",
+   "nazov": "Dotácie z rozpočtu mesta Košice - 2023",
+   "kategoria": "Ostatné",
+   "upravene": 1786518640000,
+   "riadkov": 250,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/599eb4b7aa5f4773beefe1c577360b67",
+   "stlpcov": 24
+  },
+  {
+   "id": "19bbccd15de844ab818291605cdaadba",
+   "nazov": "Dotácie z rozpočtu mesta Košice - 2024",
+   "kategoria": "Ostatné",
+   "upravene": 1786518667000,
+   "riadkov": 166,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/19bbccd15de844ab818291605cdaadba",
+   "stlpcov": 24
+  },
+  {
+   "id": "bc9687a359444ca4a9e4222b39a38982",
+   "nazov": "Dotácie z rozpočtu mesta Košice - 2025",
+   "kategoria": "Ostatné",
+   "upravene": 1786518700000,
+   "riadkov": 242,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/bc9687a359444ca4a9e4222b39a38982",
+   "stlpcov": 24
+  },
+  {
+   "id": "7284816f927e464082c0fdadec9b9333",
+   "nazov": "Dotácie z rozpočtu mesta Košice - 2026",
+   "kategoria": "Ostatné",
+   "upravene": 1788264235000,
+   "riadkov": 282,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/7284816f927e464082c0fdadec9b9333",
+   "stlpcov": 24
+  },
+  {
+   "id": "5d92585171ae4390ad98d0d73130b552",
+   "nazov": "Elektronické služby mesta Košice",
+   "kategoria": "Ostatné",
+   "upravene": 1764831686000,
+   "riadkov": 132,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/5d92585171ae4390ad98d0d73130b552",
+   "stlpcov": 8
+  },
+  {
+   "id": "ba744610f1454534ae82a01041507c4f",
+   "nazov": "Kancelária prvého kontaktu - Magistrát mesta Košice",
+   "kategoria": "Ostatné",
+   "upravene": 1764853971000,
+   "riadkov": 50,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/ba744610f1454534ae82a01041507c4f",
+   "stlpcov": 13
+  },
+  {
+   "id": "13d091b46ddd4a31a5256a7697d8a977",
+   "nazov": "Kancelária prvého kontaktu - počet vybavených občanov",
+   "kategoria": "Ostatné",
+   "upravene": 1764596910000,
+   "riadkov": 29,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/13d091b46ddd4a31a5256a7697d8a977",
+   "stlpcov": 11
+  },
+  {
+   "id": "e88d914c920b44d99255e28011f112d0",
+   "nazov": "Komisie Mestského zastupiteľstva v Košiciach",
+   "kategoria": "Ostatné",
+   "upravene": 1764685488000,
+   "riadkov": 558,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/e88d914c920b44d99255e28011f112d0",
+   "stlpcov": 14
+  },
+  {
+   "id": "85b4440eaf1041f8b654fd4d72ee8032",
+   "nazov": "Licencie Creative Commons",
+   "kategoria": "Ostatné",
+   "upravene": 1764750743000,
+   "riadkov": 6,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/85b4440eaf1041f8b654fd4d72ee8032",
+   "stlpcov": 6
+  },
+  {
+   "id": "e14621b3e8ff40ebbddf065abfd20442",
+   "nazov": "Mestská rada v Košiciach",
+   "kategoria": "Ostatné",
+   "upravene": 1764598906000,
+   "riadkov": 53,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/e14621b3e8ff40ebbddf065abfd20442",
+   "stlpcov": 14
+  },
+  {
+   "id": "0514d9e4151b420a855f4837c7a282ef",
+   "nazov": "Mestské podniky",
+   "kategoria": "Ostatné",
+   "upravene": 1764751164000,
+   "riadkov": 20,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/0514d9e4151b420a855f4837c7a282ef",
+   "stlpcov": 17
+  },
+  {
+   "id": "37cb4912369c422083fd206450de5a71",
+   "nazov": "Mestské časti",
+   "kategoria": "Ostatné",
+   "upravene": 1761900539000,
+   "riadkov": 22,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "90efeec604a74e9aa4574f3757c9ad59",
+   "nazov": "Prieskumy - otázky a odpovede",
+   "kategoria": "Ostatné",
+   "upravene": 1760516656000,
+   "riadkov": 1347,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/90efeec604a74e9aa4574f3757c9ad59",
+   "stlpcov": 5
+  },
+  {
+   "id": "88b218a789ad4bc291cffc1470b23633",
+   "nazov": "Rozvrh rozmiestnenia velkokapacitných kontajnerov 2025",
+   "kategoria": "Ostatné",
+   "upravene": 1785754437000,
+   "riadkov": 227,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/88b218a789ad4bc291cffc1470b23633",
+   "stlpcov": 6
+  },
+  {
+   "id": "5340daabbaa741a987cc208bee0c799b",
+   "nazov": "Rozvrh rozmiestnenia veľkokapacitných kontajnerov 2024",
+   "kategoria": "Ostatné",
+   "upravene": 1785754406000,
+   "riadkov": 148,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/5340daabbaa741a987cc208bee0c799b",
+   "stlpcov": 4
+  },
+  {
+   "id": "f72240a1397f4321a95c0e12919cf88a",
+   "nazov": "Rozvrh rozmiestnenia veľkokapacitných kontajnerov 2026",
+   "kategoria": "Ostatné",
+   "upravene": 1785754465000,
+   "riadkov": 235,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/f72240a1397f4321a95c0e12919cf88a",
+   "stlpcov": 6
+  },
+  {
+   "id": "9980ed41b73047f2838d0844c855cd30",
+   "nazov": "Strategické dokumenty mesta Košice",
+   "kategoria": "Ostatné",
+   "upravene": 1763123502000,
+   "riadkov": 63,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/9980ed41b73047f2838d0844c855cd30",
+   "stlpcov": 11
+  },
+  {
+   "id": "6165e208f43a43cc824c2fd585c3c599",
+   "nazov": "Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2018 - 2022",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1764685357000,
+   "riadkov": 87248,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (87248 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "10471bb4ff0f47879af2a861f98e34c5",
+   "nazov": "Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2022 - 2026",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1762417768000,
+   "riadkov": 85485,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (85485 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "33fc61f8fd924ff6b5795f091ff6a551",
+   "nazov": "Komunálne voľby 2026 - volebné obvody",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1790146163000,
+   "riadkov": 23,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/33fc61f8fd924ff6b5795f091ff6a551",
+   "stlpcov": 9
+  },
+  {
+   "id": "fe4e137b91a3463592c391479923cf0a",
+   "nazov": "Komunálne voľby 2026 - volebné okrsky",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1790148109000,
+   "riadkov": 1173,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "45082ed67c8e48b284f5b8d76f4e460b",
+   "nazov": "Komunálne voľby 2026 - zoznam zaregistrovaných kandidátov na poslancov do Mestského zastupiteľstva v Košiciach",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1790149935000,
+   "riadkov": 274,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/45082ed67c8e48b284f5b8d76f4e460b",
+   "stlpcov": 11
+  },
+  {
+   "id": "c7fb0cafb20c409da52971502f544974",
+   "nazov": "Komunálne voľby 2026 - zoznam zaregistrovaných kandidátov na primátora mesta Košice",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1790149400000,
+   "riadkov": 8,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/c7fb0cafb20c409da52971502f544974",
+   "stlpcov": 10
+  },
+  {
+   "id": "9f56d6b2f1e743f4bd5d3eea6f45df7e",
+   "nazov": "Poslanci mestského zastupiteľstva - volebné obdobie 2010 - 2014",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1764684819000,
+   "riadkov": 51,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/9f56d6b2f1e743f4bd5d3eea6f45df7e",
+   "stlpcov": 15
+  },
+  {
+   "id": "2a785f5c4dd14601a2ac284d56e83014",
+   "nazov": "Poslanci mestského zastupiteľstva - volebné obdobie 2014 - 2018",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1764684962000,
+   "riadkov": 44,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/2a785f5c4dd14601a2ac284d56e83014",
+   "stlpcov": 15
+  },
+  {
+   "id": "9dcf05e343c6481599fe96d03183777a",
+   "nazov": "Poslanci mestského zastupiteľstva - volebné obdobie 2018 - 2022",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1764685091000,
+   "riadkov": 43,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/9dcf05e343c6481599fe96d03183777a",
+   "stlpcov": 15
+  },
+  {
+   "id": "76717095010543fb9f28320ea010f1cd",
+   "nazov": "Poslanci mestského zastupiteľstva - volebné obdobie 2022 - 2026",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1764685220000,
+   "riadkov": 41,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/76717095010543fb9f28320ea010f1cd",
+   "stlpcov": 21
+  },
+  {
+   "id": "93a7751a8aa4437d8a366f093f98c8a3",
+   "nazov": "Úradná tabuľa Mesta Košice",
+   "kategoria": "Politika, voľby, orgány",
+   "upravene": 1764750909000,
+   "riadkov": 94,
+   "stav": "vynechane",
+   "dovod": "Názvy dokumentov na úradnej tabuli môžu obsahovať mená fyzických osôb (napr. doručovanie písomností) – nezverejňujeme."
+  },
+  {
+   "id": "4a4ea753ff1a4ea8949bb9c93c1e1034",
+   "nazov": "Prieskum - Návštevnosť Košíc 2020",
+   "kategoria": "Prieskum",
+   "upravene": 1760516076000,
+   "riadkov": 268,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/4a4ea753ff1a4ea8949bb9c93c1e1034",
+   "stlpcov": 12
+  },
+  {
+   "id": "23ea6a21a1d648169722b37c21aa25f0",
+   "nazov": "Prieskum - Pandémia Košice 2021",
+   "kategoria": "Prieskum",
+   "upravene": 1760516356000,
+   "riadkov": 503,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/23ea6a21a1d648169722b37c21aa25f0",
+   "stlpcov": 25
+  },
+  {
+   "id": "c4bd9bea786d4431a2001873db5dacff",
+   "nazov": "Prieskum - Turizmus Košice 2020",
+   "kategoria": "Prieskum",
+   "upravene": 1754379159000,
+   "riadkov": 1205,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/c4bd9bea786d4431a2001873db5dacff",
+   "stlpcov": 60
+  },
+  {
+   "id": "d0869cf2b5784d91a1d4593ce2060ca4",
+   "nazov": "Prieskum - záujem o otvorené dáta",
+   "kategoria": "Prieskum",
+   "upravene": 1764683456000,
+   "riadkov": 99,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/d0869cf2b5784d91a1d4593ce2060ca4",
+   "stlpcov": 19
+  },
+  {
+   "id": "0d183f57990b499ea38837bf0cb4c689",
+   "nazov": "Detské ihriská",
+   "kategoria": "Priestorové údaje",
+   "upravene": 1785754702000,
+   "riadkov": 257,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "878fbcfcef7b4b408018c3ae91d4e854",
+   "nazov": "Pošty v Košiciach",
+   "kategoria": "Priestorové údaje",
+   "upravene": 1764578477000,
+   "riadkov": 22,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "f039c1fbdc6940ae8cf9cb22466fb7a9",
+   "nazov": "Výbehy pre psov v Košiciach",
+   "kategoria": "Priestorové údaje",
+   "upravene": 1764681146000,
+   "riadkov": 37,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "7142a21799bf46309adf4c52e510a0de",
+   "nazov": "Workoutové ihriská v Košiciach",
+   "kategoria": "Priestorové údaje",
+   "upravene": 1785754668000,
+   "riadkov": 29,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "53b6c55f625f463bbfc467760132c4f2",
+   "nazov": "Zoznam verejne dostupných GIS aplikacií mesta Košice",
+   "kategoria": "Priestorové údaje",
+   "upravene": 1764593206000,
+   "riadkov": 33,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/53b6c55f625f463bbfc467760132c4f2",
+   "stlpcov": 4
+  },
+  {
+   "id": "230ac1b997aa4784a6f5ddc3acbaf0a2",
+   "nazov": "Lokálny katalóg otvorených údajov mesta Košice",
+   "kategoria": "Samospráva",
+   "upravene": 1732866509000,
+   "riadkov": 89,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/230ac1b997aa4784a6f5ddc3acbaf0a2",
+   "stlpcov": 20
+  },
+  {
+   "id": "cf615272b9124fb69b35be94879f70b8",
+   "nazov": "Zoznam katastrálnych území v Košiciach",
+   "kategoria": "Samospráva",
+   "upravene": 1764683691000,
+   "riadkov": 29,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/cf615272b9124fb69b35be94879f70b8",
+   "stlpcov": 5
+  },
+  {
+   "id": "e110dd1d5cc84473b524ed260a3b7f65",
+   "nazov": "Zoznam poskytovateľov sociálnych služieb v meste Košice",
+   "kategoria": "Sociálna oblasť",
+   "upravene": 1764597083000,
+   "riadkov": 94,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "2eea6c11a29841519d8e4df49e0b7067",
+   "nazov": "Zoznam sociálnych ubytovní v meste Košice",
+   "kategoria": "Sociálna oblasť",
+   "upravene": 1764597177000,
+   "riadkov": 23,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "3cd52773323a48be8f94ee112584eadf",
+   "nazov": "Centrá voľného času v zriaďovateľskej pôsobnosti Mesta Košice",
+   "kategoria": "Vzdelávanie, veda, výskum",
+   "upravene": 1763987830000,
+   "riadkov": 26,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "33996928ef65447c858b22ee0ac1dad3",
+   "nazov": "Jazykové školy v zriaďovateľskej pôsobnosti Mesta Košice",
+   "kategoria": "Vzdelávanie, veda, výskum",
+   "upravene": 1786083887000,
+   "riadkov": 7,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "4126eae056644c40a7e48cf5d999fad4",
+   "nazov": "Materské školy v zriaďovateľskej pôsobnosti Mesta Košice a mestských častí",
+   "kategoria": "Vzdelávanie, veda, výskum",
+   "upravene": 1786081361000,
+   "riadkov": 67,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "52248c5a80b5437bbcbea3d955c77e78",
+   "nazov": "Spádové oblasti materských škôl",
+   "kategoria": "Vzdelávanie, veda, výskum",
+   "upravene": 1764596385000,
+   "riadkov": 866,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/52248c5a80b5437bbcbea3d955c77e78",
+   "stlpcov": 8
+  },
+  {
+   "id": "73405066f5ac4461b8527936cc0af108",
+   "nazov": "Stredné školy",
+   "kategoria": "Vzdelávanie, veda, výskum",
+   "upravene": 1764599336000,
+   "riadkov": 52,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "56abff005de345a39b79be36df409c25",
+   "nazov": "Základné umelecké školy v zriaďovateľskej pôsobnosti Mesta Košice",
+   "kategoria": "Vzdelávanie, veda, výskum",
+   "upravene": 1786083680000,
+   "riadkov": 19,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "75100f5ad049405c845396db6ae7c070",
+   "nazov": "Základné školy v zriaďovateľskej pôsobnosti Mesta Košice",
+   "kategoria": "Vzdelávanie, veda, výskum",
+   "upravene": 1786081398000,
+   "riadkov": 35,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "25267dab3e8a46d6b1fc24d365a28b95",
+   "nazov": "Školské obvody",
+   "kategoria": "Vzdelávanie, veda, výskum",
+   "upravene": 1764597708000,
+   "riadkov": 778,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/25267dab3e8a46d6b1fc24d365a28b95",
+   "stlpcov": 7
+  },
+  {
+   "id": "f3fae948601148c9a458e375a572c84c",
+   "nazov": "Dodávateľské faktúry mesta Košice",
+   "kategoria": "Zmluvy, faktúry, objednávky",
+   "upravene": 1792461741000,
+   "riadkov": 89363,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (89363 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "06d4cb2866c54b43bb1997f7edf86f4d",
+   "nazov": "Objednávky mesta Košice",
+   "kategoria": "Zmluvy, faktúry, objednávky",
+   "upravene": 1792461750000,
+   "riadkov": 24157,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (24157 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "6b66219049674794b462b90512081220",
+   "nazov": "Zmluvy mesta Košice",
+   "kategoria": "Zmluvy, faktúry, objednávky",
+   "upravene": 1792461759000,
+   "riadkov": 46062,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (46062 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "9961c8a9cd8e461d8bee1414833746b9",
+   "nazov": "Sčítač MyBikeCounter Košice",
+   "kategoria": "Šport",
+   "upravene": 1764749820000,
+   "riadkov": 9574,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/9961c8a9cd8e461d8bee1414833746b9",
+   "stlpcov": 5
+  },
+  {
+   "id": "22017a3f022d4c1db8ce1d2630e4016f",
+   "nazov": "Chránené stromy na území Košíc",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1764770059000,
+   "riadkov": 35,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "fd2d30bc0ffe4059886f5cf33d884e3a",
+   "nazov": "Chránené územia prírody v Košiciach",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1764770740000,
+   "riadkov": 5,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/fd2d30bc0ffe4059886f5cf33d884e3a",
+   "stlpcov": 7
+  },
+  {
+   "id": "ffbac53e80994b3d8d24db2fbf0d0d90",
+   "nazov": "Cirkulárna mapa Košice",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1734612768000,
+   "riadkov": 293,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "a7ea72860908466d9198887c5d05fed4",
+   "nazov": "Fontány v meste Košice",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1764598166000,
+   "riadkov": 57,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "41f5bd67fe28450cb4ab20d025505510",
+   "nazov": "Hodnotenie zraniteľnosti mesta Košice - expozícia územia extrémnym teplotám",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1764773561000,
+   "riadkov": 711,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "4bafc664fe7b4166b954672ca33b36c3",
+   "nazov": "Hodnotenie zraniteľnosti mesta Košice - expozícia územia povrchovým záplavám",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1764773505000,
+   "riadkov": 711,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "17177ff70690455089ff50278a640fce",
+   "nazov": "Hodnotenie zraniteľnosti mesta Košice - povrchové záplavy",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1764773616000,
+   "riadkov": 711,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "ccf49577f2554636bafb2bd4b4154401",
+   "nazov": "Hodnotenie zraniteľnosti mesta Košice - vlny horúčav",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1764773690000,
+   "riadkov": 711,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "fe706bd590aa49a6bb7abd0a96f4b17f",
+   "nazov": "Kvalita ovzdušia v meste Košice v rokoch 2010 - 2024",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1760523989000,
+   "riadkov": 149,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "d3d9f8860c6d4155b620c7ee9d431652",
+   "nazov": "Meteostanice na vybraných ZŠ mesta Košice",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1769602512000,
+   "riadkov": 679067,
+   "stav": "vynechane",
+   "dovod": "Príliš veľký na všeobecný import (679067 riadkov) – vyžaduje osobitné spracovanie."
+  },
+  {
+   "id": "975951e6113543768e960c96bbc75f3b",
+   "nazov": "Reklamné plochy na území mesta Košice",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1764681974000,
+   "riadkov": 2970,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  },
+  {
+   "id": "a449ba1b833d495db0e7cf2dbe340f3c",
+   "nazov": "SECAP - inventúra emisií",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1734614594000,
+   "riadkov": 68,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/a449ba1b833d495db0e7cf2dbe340f3c",
+   "stlpcov": 10
+  },
+  {
+   "id": "72fdc6dc7a7c498a885409c26c913185",
+   "nazov": "SECAP - priebežný monitorovací rok 2020",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1734614711000,
+   "riadkov": 55,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/72fdc6dc7a7c498a885409c26c913185",
+   "stlpcov": 11
+  },
+  {
+   "id": "73436738b703420f8f49878e30da4cf4",
+   "nazov": "Výmery typov pozemkov",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1764768672000,
+   "riadkov": 12,
+   "stav": "katalog",
+   "kde": "/kosice/katalog/73436738b703420f8f49878e30da4cf4",
+   "stlpcov": 18
+  },
+  {
+   "id": "faa76ada96724d54a060e9fa3f254ece",
+   "nazov": "Zberné dvory Košice",
+   "kategoria": "Životné prostredie a klíma",
+   "upravene": 1785754531000,
+   "riadkov": 6,
+   "stav": "vynechane",
+   "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
+  }
+ ],
+ "aktualizovane": "2026-10-20T04:59:09+00:00"
+}

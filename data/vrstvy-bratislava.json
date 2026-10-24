@@ -1,0 +1,63 @@
+{
+ "zdroj": {
+  "nazov": "Hlavné mesto SR Bratislava – data.bratislava.sk",
+  "url": "https://data.bratislava.sk",
+  "licencia": "CC BY 4.0"
+ },
+ "pocty": {
+  "bezbarierove": 161,
+  "fontany_bez_polohy": 18,
+  "fontany": 78,
+  "sportoviska": 2071,
+  "sportoviska_bez_polohy": 144,
+  "bezdomovci": 36,
+  "veterina": 36,
+  "vysadba": 6651,
+  "starostlivost": 5707,
+  "starostlivost_bez_polohy": 61,
+  "ochladzovanie": 34,
+  "ochladzovanie_bez_polohy": 1,
+  "fixpointy": 13,
+  "debarierizacie": 668,
+  "debarierizacie_bez_polohy": 35
+ },
+ "sporty": {
+  "detské ihriská": 661,
+  "telocvične a haly": 221,
+  "multišport": 220,
+  "workout": 176,
+  "futbal": 102,
+  "basketbal, streetball": 89,
+  "tenis": 74,
+  "atletika, beh": 64,
+  "stolný tenis": 61,
+  "fitness centrá, posilňovne": 49,
+  "dopravné ihriská": 42,
+  "hokejbal": 40,
+  "plávanie": 39,
+  "plážový volejbal": 34,
+  "turistika, voľný čas, beh v prírode": 28,
+  "petang": 27,
+  "výbehy pre psov, cvičiská": 13,
+  "pumptrack": 11,
+  "lezenie, bouldering": 11,
+  "volejbal": 11,
+  "jazdectvo": 10,
+  "streľba": 10,
+  "skatepark": 10,
+  "gymnastika a iné pohybové aktivity": 8,
+  "bowling, kolky": 7
+ },
+ "vysadba_po_rokoch": {
+  "2019": 558,
+  "2020": 1415,
+  "2021": 1850,
+  "2022": 1171,
+  "2023": 523,
+  "2024": 261,
+  "2025": 330,
+  "2026": 540,
+  "neuvedený": 3
+ },
+ "aktualizovane": "2026-10-15T16:58:31+00:00"
+}

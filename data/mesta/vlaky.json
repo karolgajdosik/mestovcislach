@@ -1,0 +1,327 @@
+{
+ "zdroj": {
+  "nazov": "Železnice SR – grafikon vlakovej dopravy (GTFS), Národný katalóg otvorených dát",
+  "url": "https://data.slovensko.sk/datasety/ebeeedf1-aca2-451a-bdc0-35d536714888"
+ },
+ "den": "2026-10-28",
+ "platnost": [
+  "2025-12-14",
+  "2026-12-12"
+ ],
+ "vlakov_v_den": 2011,
+ "mesta": {
+  "bratislava": {
+   "stanice": [
+    "Bratislava hl.st.",
+    "Bratislava predm.",
+    "Bratislava-Lamač",
+    "Bratislava-N.Mesto",
+    "Bratislava-Petržalka",
+    "Bratislava-Rača",
+    "Bratislava-Vajnory",
+    "Bratislava-Vinohrady",
+    "Bratislava-Vrakuňa",
+    "Bratislava-Železná studienka"
+   ],
+   "hlavna": "Bratislava hl.st.",
+   "odchodov": 749,
+   "odchodov_hlavna": 150,
+   "dopravcovia": {
+    "Železničná spoločnosť Slovensko": 617,
+    "Leo Express Slovensko s.r.o.": 124,
+    "RegioJet": 6,
+    "Leo Express s.r.o.": 2
+   },
+   "spojenia": {
+    "trnava": {
+     "vlakov": 66,
+     "najrychlejsie_min": 31,
+     "prvy": "4:16",
+     "posledny": "23:34"
+    },
+    "trencin": {
+     "vlakov": 38,
+     "najrychlejsie_min": 77,
+     "prvy": "4:16",
+     "posledny": "22:50"
+    },
+    "zilina": {
+     "vlakov": 26,
+     "najrychlejsie_min": 124,
+     "prvy": "4:16",
+     "posledny": "22:50"
+    },
+    "kosice": {
+     "vlakov": 16,
+     "najrychlejsie_min": 310,
+     "prvy": "4:16",
+     "posledny": "22:50"
+    },
+    "banska-bystrica": {
+     "vlakov": 7,
+     "najrychlejsie_min": 214,
+     "prvy": "5:52",
+     "posledny": "17:52"
+    }
+   }
+  },
+  "trnava": {
+   "stanice": [
+    "Trnava",
+    "Trnava predm."
+   ],
+   "hlavna": "Trnava",
+   "odchodov": 199,
+   "odchodov_hlavna": 167,
+   "dopravcovia": {
+    "Železničná spoločnosť Slovensko": 197,
+    "RegioJet": 2
+   },
+   "spojenia": {
+    "bratislava": {
+     "vlakov": 67,
+     "najrychlejsie_min": 26,
+     "prvy": "4:07",
+     "posledny": "4:59"
+    },
+    "trencin": {
+     "vlakov": 38,
+     "najrychlejsie_min": 44,
+     "prvy": "4:49",
+     "posledny": "23:33"
+    },
+    "zilina": {
+     "vlakov": 26,
+     "najrychlejsie_min": 91,
+     "prvy": "4:49",
+     "posledny": "23:33"
+    },
+    "kosice": {
+     "vlakov": 16,
+     "najrychlejsie_min": 277,
+     "prvy": "4:49",
+     "posledny": "23:33"
+    },
+    "nitra": {
+     "vlakov": 18,
+     "najrychlejsie_min": 62,
+     "prvy": "5:06",
+     "posledny": "22:06"
+    }
+   }
+  },
+  "nitra": {
+   "stanice": [
+    "Nitra",
+    "Nitra zast."
+   ],
+   "hlavna": "Nitra",
+   "odchodov": 96,
+   "odchodov_hlavna": 49,
+   "dopravcovia": {
+    "Železničná spoločnosť Slovensko": 96
+   },
+   "spojenia": {
+    "trnava": {
+     "vlakov": 19,
+     "najrychlejsie_min": 60,
+     "prvy": "3:51",
+     "posledny": "21:51"
+    }
+   }
+  },
+  "trencin": {
+   "stanice": [
+    "Trenčín",
+    "Trenčín predm.",
+    "Trenčín-Opatová",
+    "Trenčín-Zlatovce"
+   ],
+   "hlavna": "Trenčín",
+   "odchodov": 224,
+   "odchodov_hlavna": 131,
+   "dopravcovia": {
+    "Železničná spoločnosť Slovensko": 222,
+    "RegioJet": 2
+   },
+   "spojenia": {
+    "trnava": {
+     "vlakov": 38,
+     "najrychlejsie_min": 45,
+     "prvy": "3:37",
+     "posledny": "4:03"
+    },
+    "bratislava": {
+     "vlakov": 38,
+     "najrychlejsie_min": 73,
+     "prvy": "3:37",
+     "posledny": "4:03"
+    },
+    "zilina": {
+     "vlakov": 45,
+     "najrychlejsie_min": 43,
+     "prvy": "4:48",
+     "posledny": "0:29"
+    },
+    "kosice": {
+     "vlakov": 16,
+     "najrychlejsie_min": 229,
+     "prvy": "5:36",
+     "posledny": "0:29"
+    }
+   }
+  },
+  "zilina": {
+   "stanice": [
+    "Žilina",
+    "Žilina-Solinky",
+    "Žilina-zariečie"
+   ],
+   "hlavna": "Žilina",
+   "odchodov": 250,
+   "odchodov_hlavna": 166,
+   "dopravcovia": {
+    "Železničná spoločnosť Slovensko": 240,
+    "RegioJet": 7,
+    "Leo Express s.r.o.": 3
+   },
+   "spojenia": {
+    "kosice": {
+     "vlakov": 23,
+     "najrychlejsie_min": 183,
+     "prvy": "4:19",
+     "posledny": "4:31"
+    },
+    "trencin": {
+     "vlakov": 45,
+     "najrychlejsie_min": 41,
+     "prvy": "4:47",
+     "posledny": "3:04"
+    },
+    "trnava": {
+     "vlakov": 26,
+     "najrychlejsie_min": 91,
+     "prvy": "5:32",
+     "posledny": "3:04"
+    },
+    "bratislava": {
+     "vlakov": 26,
+     "najrychlejsie_min": 119,
+     "prvy": "5:32",
+     "posledny": "3:04"
+    },
+    "banska-bystrica": {
+     "vlakov": 9,
+     "najrychlejsie_min": 91,
+     "prvy": "5:35",
+     "posledny": "20:50"
+    },
+    "presov": {
+     "vlakov": 2,
+     "najrychlejsie_min": 180,
+     "prvy": "15:56",
+     "posledny": "0:41"
+    }
+   }
+  },
+  "banska-bystrica": {
+   "stanice": [
+    "Banská Bystrica",
+    "Banská Bystrica mesto"
+   ],
+   "hlavna": "Banská Bystrica",
+   "odchodov": 117,
+   "odchodov_hlavna": 56,
+   "dopravcovia": {
+    "Železničná spoločnosť Slovensko": 117
+   },
+   "spojenia": {
+    "bratislava": {
+     "vlakov": 8,
+     "najrychlejsie_min": 210,
+     "prvy": "4:27",
+     "posledny": "18:31"
+    },
+    "zilina": {
+     "vlakov": 9,
+     "najrychlejsie_min": 85,
+     "prvy": "5:33",
+     "posledny": "20:36"
+    }
+   }
+  },
+  "presov": {
+   "stanice": [
+    "Prešov",
+    "Prešov mesto"
+   ],
+   "hlavna": "Prešov",
+   "odchodov": 117,
+   "odchodov_hlavna": 78,
+   "dopravcovia": {
+    "Železničná spoločnosť Slovensko": 116,
+    "Leo Express s.r.o.": 1
+   },
+   "spojenia": {
+    "zilina": {
+     "vlakov": 1,
+     "najrychlejsie_min": 206,
+     "prvy": "20:49",
+     "posledny": "20:49"
+    },
+    "kosice": {
+     "vlakov": 34,
+     "najrychlejsie_min": 36,
+     "prvy": "4:12",
+     "posledny": "22:36"
+    }
+   }
+  },
+  "kosice": {
+   "stanice": [
+    "Košice",
+    "Košice predmestie"
+   ],
+   "hlavna": "Košice",
+   "odchodov": 205,
+   "odchodov_hlavna": 134,
+   "dopravcovia": {
+    "Železničná spoločnosť Slovensko": 201,
+    "RegioJet": 4
+   },
+   "spojenia": {
+    "zilina": {
+     "vlakov": 23,
+     "najrychlejsie_min": 177,
+     "prvy": "3:50",
+     "posledny": "23:45"
+    },
+    "trencin": {
+     "vlakov": 16,
+     "najrychlejsie_min": 220,
+     "prvy": "4:07",
+     "posledny": "23:45"
+    },
+    "trnava": {
+     "vlakov": 16,
+     "najrychlejsie_min": 270,
+     "prvy": "4:07",
+     "posledny": "23:45"
+    },
+    "bratislava": {
+     "vlakov": 16,
+     "najrychlejsie_min": 298,
+     "prvy": "4:07",
+     "posledny": "23:45"
+    },
+    "presov": {
+     "vlakov": 34,
+     "najrychlejsie_min": 31,
+     "prvy": "4:43",
+     "posledny": "22:58"
+    }
+   }
+  }
+ },
+ "aktualizovane": "2026-10-16T19:28:28+00:00"
+}

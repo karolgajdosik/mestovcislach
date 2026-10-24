@@ -1,0 +1,606 @@
+{
+ "roky": [
+  "2005",
+  "2010",
+  "2015"
+ ],
+ "cesty": [
+  {
+   "cesta": "D1",
+   "2005": {
+    "usekov": 6,
+    "priemer": 69947,
+    "max": 96867,
+    "nakladne_podiel": 12.6
+   },
+   "2010": {
+    "usekov": 7,
+    "priemer": 77742,
+    "max": 100882,
+    "nakladne_podiel": 16.6
+   },
+   "2015": {
+    "usekov": 7,
+    "priemer": 74438,
+    "max": 93344,
+    "nakladne_podiel": 17.4
+   }
+  },
+  {
+   "cesta": "D2",
+   "2005": {
+    "usekov": 5,
+    "priemer": 26338,
+    "max": 50821,
+    "nakladne_podiel": 29.7
+   },
+   "2010": {
+    "usekov": 6,
+    "priemer": 44166,
+    "max": 88089,
+    "nakladne_podiel": 24.2
+   },
+   "2015": {
+    "usekov": 6,
+    "priemer": 45869,
+    "max": 82646,
+    "nakladne_podiel": 23.2
+   }
+  },
+  {
+   "cesta": "D4",
+   "2005": {
+    "usekov": 1,
+    "priemer": 4531,
+    "max": 4531,
+    "nakladne_podiel": 6.9
+   },
+   "2010": {
+    "usekov": 1,
+    "priemer": 12909,
+    "max": 12909,
+    "nakladne_podiel": 25.9
+   },
+   "2015": {
+    "usekov": 2,
+    "priemer": 11818,
+    "max": 17798,
+    "nakladne_podiel": 23.0
+   }
+  },
+  {
+   "cesta": "I/2",
+   "2005": {
+    "usekov": 11,
+    "priemer": 28727,
+    "max": 60676,
+    "nakladne_podiel": 11.7
+   },
+   "2010": {
+    "usekov": 6,
+    "priemer": 28730,
+    "max": 56152,
+    "nakladne_podiel": null
+   },
+   "2015": {
+    "usekov": 11,
+    "priemer": 28450,
+    "max": 59121,
+    "nakladne_podiel": 6.6
+   }
+  },
+  {
+   "cesta": "I/61",
+   "2005": {
+    "usekov": 10,
+    "priemer": 35219,
+    "max": 59717,
+    "nakladne_podiel": 4.7
+   },
+   "2010": {
+    "usekov": 6,
+    "priemer": 45544,
+    "max": 59362,
+    "nakladne_podiel": 1.6
+   },
+   "2015": {
+    "usekov": 10,
+    "priemer": 30653,
+    "max": 48720,
+    "nakladne_podiel": 8.2
+   }
+  },
+  {
+   "cesta": "I/63",
+   "2005": {
+    "usekov": 3,
+    "priemer": 34274,
+    "max": 42326,
+    "nakladne_podiel": 12.0
+   },
+   "2010": {
+    "usekov": 2,
+    "priemer": 41706,
+    "max": 53646,
+    "nakladne_podiel": null
+   },
+   "2015": {
+    "usekov": 3,
+    "priemer": 38061,
+    "max": 44493,
+    "nakladne_podiel": 9.5
+   }
+  },
+  {
+   "cesta": "II/502",
+   "2005": {
+    "usekov": 4,
+    "priemer": 24140,
+    "max": 31661,
+    "nakladne_podiel": 7.9
+   },
+   "2010": {
+    "usekov": 3,
+    "priemer": 31164,
+    "max": 38435,
+    "nakladne_podiel": null
+   },
+   "2015": {
+    "usekov": 4,
+    "priemer": 19785,
+    "max": 27518,
+    "nakladne_podiel": 7.7
+   }
+  },
+  {
+   "cesta": "II/505",
+   "2005": {
+    "usekov": 2,
+    "priemer": 6982,
+    "max": 10697,
+    "nakladne_podiel": 25.1
+   },
+   "2010": {
+    "usekov": 2,
+    "priemer": 17733,
+    "max": 21521,
+    "nakladne_podiel": null
+   },
+   "2015": {
+    "usekov": 2,
+    "priemer": 13560,
+    "max": 18803,
+    "nakladne_podiel": 11.3
+   }
+  },
+  {
+   "cesta": "II/572",
+   "2005": {
+    "usekov": 9,
+    "priemer": 27992,
+    "max": 50007,
+    "nakladne_podiel": 6.0
+   },
+   "2010": {
+    "usekov": 7,
+    "priemer": 38997,
+    "max": 56152,
+    "nakladne_podiel": null
+   },
+   "2015": {
+    "usekov": 9,
+    "priemer": 24575,
+    "max": 36300,
+    "nakladne_podiel": 7.6
+   }
+  },
+  {
+   "cesta": "III/1020",
+   "2005": {
+    "usekov": 1,
+    "priemer": 2588,
+    "max": 2588,
+    "nakladne_podiel": 12.6
+   },
+   "2015": {
+    "usekov": 1,
+    "priemer": 5279,
+    "max": 5279,
+    "nakladne_podiel": 8.4
+   }
+  },
+  {
+   "cesta": "III/1091",
+   "2005": {
+    "usekov": 1,
+    "priemer": 8606,
+    "max": 8606,
+    "nakladne_podiel": 10.5
+   },
+   "2010": {
+    "usekov": 1,
+    "priemer": 10538,
+    "max": 10538,
+    "nakladne_podiel": null
+   },
+   "2015": {
+    "usekov": 1,
+    "priemer": 11790,
+    "max": 11790,
+    "nakladne_podiel": 7.0
+   }
+  }
+ ],
+ "useky_2015": [
+  {
+   "usek": "87022",
+   "cesta": "D1",
+   "okres": "Bratislava II",
+   "nakladne": 12762,
+   "osobne": 80058,
+   "motocykle": 524,
+   "spolu": 93344
+  },
+  {
+   "usek": "87023",
+   "cesta": "D1",
+   "okres": "Bratislava II",
+   "nakladne": 15505,
+   "osobne": 74886,
+   "motocykle": 210,
+   "spolu": 90601
+  },
+  {
+   "usek": "87021",
+   "cesta": "D1",
+   "okres": "Bratislava II",
+   "nakladne": 16483,
+   "osobne": 66179,
+   "motocykle": 297,
+   "spolu": 82959
+  },
+  {
+   "usek": "87015",
+   "cesta": "D2",
+   "okres": "Bratislava V",
+   "nakladne": 11913,
+   "osobne": 70519,
+   "motocykle": 214,
+   "spolu": 82646
+  },
+  {
+   "usek": "87025",
+   "cesta": "D1",
+   "okres": "Bratislava II",
+   "nakladne": 16005,
+   "osobne": 56406,
+   "motocykle": 86,
+   "spolu": 72497
+  },
+  {
+   "usek": "87024",
+   "cesta": "D1",
+   "okres": "Bratislava II",
+   "nakladne": 14386,
+   "osobne": 53068,
+   "motocykle": 122,
+   "spolu": 67576
+  },
+  {
+   "usek": "87028",
+   "cesta": "D1",
+   "okres": "Bratislava II",
+   "nakladne": 5319,
+   "osobne": 54785,
+   "motocykle": 42,
+   "spolu": 60146
+  },
+  {
+   "usek": "84861",
+   "cesta": "2",
+   "okres": "Bratislava V",
+   "nakladne": 3273,
+   "osobne": 55545,
+   "motocykle": 303,
+   "spolu": 59121
+  },
+  {
+   "usek": "87011",
+   "cesta": "D2",
+   "okres": "Bratislava IV",
+   "nakladne": 9916,
+   "osobne": 46846,
+   "motocykle": 100,
+   "spolu": 56862
+  },
+  {
+   "usek": "84871",
+   "cesta": "2",
+   "okres": "Bratislava V",
+   "nakladne": 3100,
+   "osobne": 50692,
+   "motocykle": 184,
+   "spolu": 53976
+  },
+  {
+   "usek": "87026",
+   "cesta": "D1",
+   "okres": "Bratislava V",
+   "nakladne": 10152,
+   "osobne": 43468,
+   "motocykle": 321,
+   "spolu": 53941
+  },
+  {
+   "usek": "87012",
+   "cesta": "D2",
+   "okres": "Bratislava IV",
+   "nakladne": 9846,
+   "osobne": 42728,
+   "motocykle": 90,
+   "spolu": 52664
+  },
+  {
+   "usek": "85451",
+   "cesta": "61",
+   "okres": "Bratislava II",
+   "nakladne": 3420,
+   "osobne": 45141,
+   "motocykle": 159,
+   "spolu": 48720
+  },
+  {
+   "usek": "84161",
+   "cesta": "61",
+   "okres": "Bratislava II",
+   "nakladne": 2900,
+   "osobne": 44078,
+   "motocykle": 197,
+   "spolu": 47175
+  },
+  {
+   "usek": "84881",
+   "cesta": "61",
+   "okres": "Bratislava II",
+   "nakladne": 3290,
+   "osobne": 41387,
+   "motocykle": 194,
+   "spolu": 44871
+  },
+  {
+   "usek": "81455",
+   "cesta": "63",
+   "okres": "Bratislava II",
+   "nakladne": 5440,
+   "osobne": 38796,
+   "motocykle": 257,
+   "spolu": 44493
+  },
+  {
+   "usek": "81583",
+   "cesta": "2",
+   "okres": "Bratislava V",
+   "nakladne": 2608,
+   "osobne": 40917,
+   "motocykle": 253,
+   "spolu": 43778
+  },
+  {
+   "usek": "80121",
+   "cesta": "2",
+   "okres": "Bratislava I",
+   "nakladne": 3718,
+   "osobne": 38473,
+   "motocykle": 307,
+   "spolu": 42498
+  },
+  {
+   "usek": "81452",
+   "cesta": "63",
+   "okres": "Bratislava II",
+   "nakladne": 2840,
+   "osobne": 38980,
+   "motocykle": 237,
+   "spolu": 42057
+  },
+  {
+   "usek": "87017",
+   "cesta": "D2",
+   "okres": "Bratislava IV",
+   "nakladne": 9453,
+   "osobne": 28146,
+   "motocykle": 59,
+   "spolu": 37658
+  },
+  {
+   "usek": "81582",
+   "cesta": "572",
+   "okres": "Bratislava I",
+   "nakladne": 2801,
+   "osobne": 33385,
+   "motocykle": 114,
+   "spolu": 36300
+  },
+  {
+   "usek": "84163",
+   "cesta": "61",
+   "okres": "Bratislava II",
+   "nakladne": 2691,
+   "osobne": 33204,
+   "motocykle": 175,
+   "spolu": 36070
+  },
+  {
+   "usek": "80133",
+   "cesta": "572",
+   "okres": "Bratislava I",
+   "nakladne": 2915,
+   "osobne": 31984,
+   "motocykle": 152,
+   "spolu": 35051
+  },
+  {
+   "usek": "80132",
+   "cesta": "572",
+   "okres": "Bratislava II",
+   "nakladne": 2464,
+   "osobne": 32314,
+   "motocykle": 127,
+   "spolu": 34905
+  },
+  {
+   "usek": "80122",
+   "cesta": "572",
+   "okres": "Bratislava I",
+   "nakladne": 2265,
+   "osobne": 31553,
+   "motocykle": 320,
+   "spolu": 34138
+  },
+  {
+   "usek": "87013",
+   "cesta": "D2",
+   "okres": "Bratislava V",
+   "nakladne": 15037,
+   "osobne": 17263,
+   "motocykle": 36,
+   "spolu": 32336
+  },
+  {
+   "usek": "80131",
+   "cesta": "61",
+   "okres": "Bratislava III",
+   "nakladne": 3096,
+   "osobne": 27545,
+   "motocykle": 211,
+   "spolu": 30852
+  },
+  {
+   "usek": "80144",
+   "cesta": "61",
+   "okres": "Bratislava II",
+   "nakladne": 4456,
+   "osobne": 25837,
+   "motocykle": 201,
+   "spolu": 30494
+  },
+  {
+   "usek": "80135",
+   "cesta": "572",
+   "okres": "Bratislava III",
+   "nakladne": 2269,
+   "osobne": 26139,
+   "motocykle": 135,
+   "spolu": 28543
+  },
+  {
+   "usek": "81457",
+   "cesta": "63",
+   "okres": "Bratislava II",
+   "nakladne": 2576,
+   "osobne": 24891,
+   "motocykle": 166,
+   "spolu": 27633
+  },
+  {
+   "usek": "81002",
+   "cesta": "502",
+   "okres": "Bratislava III",
+   "nakladne": 1802,
+   "osobne": 25605,
+   "motocykle": 111,
+   "spolu": 27518
+  },
+  {
+   "usek": "80138",
+   "cesta": "61",
+   "okres": "Bratislava II",
+   "nakladne": 2429,
+   "osobne": 21068,
+   "motocykle": 225,
+   "spolu": 23722
+  },
+  {
+   "usek": "84162",
+   "cesta": "61",
+   "okres": "Bratislava II",
+   "nakladne": 2065,
+   "osobne": 20825,
+   "motocykle": 129,
+   "spolu": 23019
+  },
+  {
+   "usek": "84081",
+   "cesta": "2",
+   "okres": "Bratislava IV",
+   "nakladne": 1279,
+   "osobne": 18399,
+   "motocykle": 108,
+   "spolu": 19786
+  },
+  {
+   "usek": "84112",
+   "cesta": "2",
+   "okres": "Bratislava V",
+   "nakladne": 1210,
+   "osobne": 18237,
+   "motocykle": 77,
+   "spolu": 19524
+  },
+  {
+   "usek": "85381",
+   "cesta": "505",
+   "okres": "Bratislava IV",
+   "nakladne": 2082,
+   "osobne": 16662,
+   "motocykle": 59,
+   "spolu": 18803
+  },
+  {
+   "usek": "81581",
+   "cesta": "2",
+   "okres": "Bratislava IV",
+   "nakladne": 1401,
+   "osobne": 17157,
+   "motocykle": 77,
+   "spolu": 18635
+  },
+  {
+   "usek": "87019",
+   "cesta": "D4",
+   "okres": "Bratislava V",
+   "nakladne": 3975,
+   "osobne": 13794,
+   "motocykle": 29,
+   "spolu": 17798
+  },
+  {
+   "usek": "81005",
+   "cesta": "502",
+   "okres": "Bratislava III",
+   "nakladne": 1146,
+   "osobne": 16060,
+   "motocykle": 131,
+   "spolu": 17337
+  },
+  {
+   "usek": "81001",
+   "cesta": "502",
+   "okres": "Bratislava III",
+   "nakladne": 1736,
+   "osobne": 15164,
+   "motocykle": 288,
+   "spolu": 17188
+  }
+ ],
+ "narast_2005_2015": {
+  "usekov": 53,
+  "percent": 5.0
+ },
+ "zdroj": {
+  "nazov": "Slovenská správa ciest – celoštátne sčítanie dopravy",
+  "url": "https://www.ssc.sk"
+ },
+ "popis": "Ročný priemer denných intenzít (vozidlá za 24 hodín) na sčítacích úsekoch diaľnic a ciest I. až III. triedy v okresoch Bratislava I–V. Novšie celoštátne sčítanie (2020, 2025) SSC na webe zatiaľ v rovnakom formáte nezverejnila.",
+ "aktualizovane": "2026-10-15T15:53:34+00:00"
+}

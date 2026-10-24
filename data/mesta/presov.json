@@ -1,0 +1,712 @@
+{
+ "aktualizovane": "2026-10-21T05:21:51",
+ "obyvatelia": {
+  "roky": {
+   "1993": 90963,
+   "1994": 92013,
+   "1995": 92687,
+   "1996": 93147,
+   "1997": 93461,
+   "1998": 93790,
+   "1999": 93977,
+   "2000": 94058,
+   "2001": 93973,
+   "2002": 92486,
+   "2003": 92147,
+   "2004": 91767,
+   "2005": 91621,
+   "2006": 91650,
+   "2007": 91498,
+   "2008": 91273,
+   "2009": 91193,
+   "2010": 90835,
+   "2011": 91638,
+   "2012": 91352,
+   "2013": 90923,
+   "2014": 90187,
+   "2015": 89959,
+   "2016": 89618,
+   "2017": 89138,
+   "2018": 88680,
+   "2019": 88464,
+   "2020": 87886,
+   "2021": 83897,
+   "2022": 82927,
+   "2023": 82286,
+   "2024": 81702,
+   "2025": 81223
+  },
+  "casti": {}
+ },
+ "scitanie": {
+  "vek": {
+   "Spolu": 84824,
+   "Od 15 do 64 rokov": 57106,
+   "65 rokov alebo viac": 15502,
+   "14 rokov alebo menej": 12216,
+   "Neznáme": 0
+  },
+  "vzdelanie": {
+   "Spolu": 84824,
+   "Stredné s maturitou": 26531,
+   "Vysokoškolské": 22873,
+   "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 12216,
+   "Stredné bez maturity": 12093,
+   "Základné": 6142,
+   "Nezistené": 4808,
+   "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 161
+  },
+  "narodnost": {
+   "Spolu": 84824,
+   "Slovenská": 75247,
+   "Nezistená": 6025,
+   "Rusínska": 1013,
+   "Ukrajinská": 576,
+   "Iná": 498,
+   "Česká": 467,
+   "Rómska": 460,
+   "Poľská": 232,
+   "Maďarská": 170,
+   "Ruská": 80,
+   "Nemecká": 56
+  },
+  "nabozenstvo": {
+   "Spolu": 84824,
+   "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 46449,
+   "bez náboženského vyznania": 16613,
+   "nezistené": 7449,
+   "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 7346,
+   "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 3608,
+   "ostatné": 1931,
+   "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 1305,
+   "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 123
+  }
+ },
+ "volby": {
+  "nrsr2023": {
+   "nazov": "Parlament 2023",
+   "ucast": 67.9,
+   "ucast_sr": 68.51,
+   "strany": [
+    {
+     "nazov": "Progresívne Slovensko",
+     "podiel": 19.59
+    },
+    {
+     "nazov": "SMER - sociálna demokracia",
+     "podiel": 18.21
+    },
+    {
+     "nazov": "HLAS - sociálna demokracia",
+     "podiel": 15.18
+    },
+    {
+     "nazov": "Kresťanskodemokratické hnutie",
+     "podiel": 13.11
+    },
+    {
+     "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+     "podiel": 8.58
+    },
+    {
+     "nazov": "Sloboda a Solidarita",
+     "podiel": 6.67
+    },
+    {
+     "nazov": "Slovenská národná strana",
+     "podiel": 5.42
+    },
+    {
+     "nazov": "Demokrati",
+     "podiel": 4.56
+    },
+    {
+     "nazov": "REPUBLIKA",
+     "podiel": 4.05
+    },
+    {
+     "nazov": "SME RODINA",
+     "podiel": 2.81
+    },
+    {
+     "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+     "podiel": 0.57
+    },
+    {
+     "nazov": "Pirátska strana - Slovensko",
+     "podiel": 0.28
+    }
+   ]
+  },
+  "ep2024": {
+   "nazov": "Európsky parlament 2024",
+   "ucast": 37.61,
+   "ucast_sr": 34.38,
+   "strany": [
+    {
+     "nazov": "Progresívne Slovensko",
+     "podiel": 30.05
+    },
+    {
+     "nazov": "SMER - sociálna demokracia",
+     "podiel": 21.44
+    },
+    {
+     "nazov": "Kresťanskodemokratické hnutie",
+     "podiel": 14.75
+    },
+    {
+     "nazov": "REPUBLIKA",
+     "podiel": 9.84
+    },
+    {
+     "nazov": "HLAS - sociálna demokracia",
+     "podiel": 7.13
+    },
+    {
+     "nazov": "Demokrati",
+     "podiel": 5.94
+    },
+    {
+     "nazov": "Sloboda a Solidarita",
+     "podiel": 4.68
+    },
+    {
+     "nazov": "SLOVENSKO, ZA ĽUDÍ",
+     "podiel": 1.95
+    },
+    {
+     "nazov": "Slovenská národná strana",
+     "podiel": 1.25
+    },
+    {
+     "nazov": "ZDRAVÝ ROZUM",
+     "podiel": 1.04
+    },
+    {
+     "nazov": "Kresťanská únia",
+     "podiel": 0.76
+    },
+    {
+     "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+     "podiel": 0.28
+    }
+   ]
+  }
+ },
+ "komunalne": {
+  "2022": {
+   "ucast": {
+    "zapisani": 70029,
+    "volili": 29878,
+    "ucast_pct": 42.67
+   },
+   "spracovanie": {
+    "okrsky": 66,
+    "spolu": 66,
+    "pct": 100.0,
+    "priebezne": false
+   },
+   "primator": [
+    {
+     "meno": "Ing. František Oľha",
+     "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
+     "hlasy": 10934,
+     "podiel": 37.26,
+     "zvoleny": true
+    },
+    {
+     "meno": "JUDr. Pavel Hagyari, PhD., MBA",
+     "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, SME RODINA",
+     "hlasy": 6853,
+     "podiel": 23.35,
+     "zvoleny": false
+    },
+    {
+     "meno": "Mgr. Ľuboš Micheľ",
+     "strany": "HLAS - sociálna demokracia",
+     "hlasy": 3419,
+     "podiel": 11.65,
+     "zvoleny": false
+    },
+    {
+     "meno": "Ing. Artúr Benes",
+     "strany": "nezávislý kandidát",
+     "hlasy": 3290,
+     "podiel": 11.21,
+     "zvoleny": false
+    },
+    {
+     "meno": "RNDr. Zuzana Bednárová, PhD.",
+     "strany": "Kresťanskodemokratické hnutie",
+     "hlasy": 1655,
+     "podiel": 5.64,
+     "zvoleny": false
+    },
+    {
+     "meno": "Mgr. Ján Andrejko, PhD.",
+     "strany": "nezávislý kandidát",
+     "hlasy": 1461,
+     "podiel": 4.98,
+     "zvoleny": false
+    },
+    {
+     "meno": "JUDr. Martin Eštočák",
+     "strany": "nezávislý kandidát",
+     "hlasy": 546,
+     "podiel": 1.86,
+     "zvoleny": false
+    },
+    {
+     "meno": "Mgr. Marek Kurta",
+     "strany": "REPUBLIKA",
+     "hlasy": 360,
+     "podiel": 1.23,
+     "zvoleny": false
+    },
+    {
+     "meno": "Mgr. Ján Štovka",
+     "strany": "nezávislý kandidát",
+     "hlasy": 292,
+     "podiel": 1.0,
+     "zvoleny": false
+    },
+    {
+     "meno": "Mgr. Renáta Bobáková",
+     "strany": "Hnutie Občan Národ Spravodlivosť",
+     "hlasy": 211,
+     "podiel": 0.72,
+     "zvoleny": false
+    },
+    {
+     "meno": "JUDr. Patrik Benčík",
+     "strany": "nezávislý kandidát",
+     "hlasy": 210,
+     "podiel": 0.72,
+     "zvoleny": false
+    },
+    {
+     "meno": "Jozef Kubica",
+     "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+     "hlasy": 113,
+     "podiel": 0.39,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 31,
+    "mandaty": [
+     {
+      "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
+      "mandaty": 8
+     },
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 8
+     },
+     {
+      "strany": "Kresťanskodemokratické hnutie",
+      "mandaty": 5
+     },
+     {
+      "strany": "HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+      "mandaty": 4
+     },
+     {
+      "strany": "SMER - sociálna demokracia",
+      "mandaty": 3
+     },
+     {
+      "strany": "OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "mandaty": 2
+     },
+     {
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "mandaty": 1
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "Ing. František Oľha",
+      "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
+      "hlasy": 1839
+     },
+     {
+      "meno": "Mgr. Peter Krajňák",
+      "strany": "HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+      "hlasy": 1577
+     },
+     {
+      "meno": "JUDr. Martin Eštočák",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1433
+     },
+     {
+      "meno": "PaedDr. Slávka Čorejová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1394
+     },
+     {
+      "meno": "Mgr. Ing. Svetlana Pavlovičová, MBA",
+      "strany": "SMER - sociálna demokracia",
+      "hlasy": 1367
+     },
+     {
+      "meno": "Ing. Juraj Hudáč",
+      "strany": "SMER - sociálna demokracia",
+      "hlasy": 1240
+     },
+     {
+      "meno": "MUDr. Ján Ahlers, MPH, MBA",
+      "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
+      "hlasy": 1187
+     },
+     {
+      "meno": "JUDr. Vladimír Feľbaba",
+      "strany": "OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 1179
+     },
+     {
+      "meno": "PhDr. Janette Langová, MBA",
+      "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
+      "hlasy": 1111
+     },
+     {
+      "meno": "Mgr. Ľuboš Micheľ",
+      "strany": "HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+      "hlasy": 1091
+     },
+     {
+      "meno": "Lukáš Anderko",
+      "strany": "OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
+      "hlasy": 1089
+     },
+     {
+      "meno": "doc. PhDr. Štefánia Andraščíková, PhD., MPH",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1081
+     },
+     {
+      "meno": "Stanislav Šesták",
+      "strany": "HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+      "hlasy": 1042
+     },
+     {
+      "meno": "Peter Šulík",
+      "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
+      "hlasy": 994
+     },
+     {
+      "meno": "MUDr. Lukáš Záhradník",
+      "strany": "nezávislý kandidát",
+      "hlasy": 988
+     },
+     {
+      "meno": "PhDr. Rudolf Dupkala, PhD.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 988
+     },
+     {
+      "meno": "PhDr. Marián Damankoš, PhD.",
+      "strany": "Kresťanskodemokratické hnutie",
+      "hlasy": 973
+     },
+     {
+      "meno": "Rudolf Voit",
+      "strany": "nezávislý kandidát",
+      "hlasy": 942
+     },
+     {
+      "meno": "Ing. Richard Drutarovský",
+      "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
+      "hlasy": 895
+     },
+     {
+      "meno": "Ing. Rastislav Mochnacký",
+      "strany": "Kresťanskodemokratické hnutie",
+      "hlasy": 875
+     },
+     {
+      "meno": "Mgr. Pavol Neupauer",
+      "strany": "Kresťanskodemokratické hnutie",
+      "hlasy": 855
+     },
+     {
+      "meno": "Mgr. Eva Lipková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 831
+     },
+     {
+      "meno": "JUDr. Pavel Hagyari, PhD., MBA",
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 823
+     },
+     {
+      "meno": "PhDr. Martin Ďurišin, PhD.",
+      "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
+      "hlasy": 810
+     },
+     {
+      "meno": "MUDr. Daniela Mrouahová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 792
+     },
+     {
+      "meno": "Ing. Renáta Fedorčíková",
+      "strany": "Kresťanskodemokratické hnutie",
+      "hlasy": 739
+     },
+     {
+      "meno": "Richard Dubovický, MBA",
+      "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
+      "hlasy": 697
+     },
+     {
+      "meno": "Zuzana Tkáčová",
+      "strany": "Kresťanskodemokratické hnutie",
+      "hlasy": 689
+     },
+     {
+      "meno": "Mgr. Jaroslava Kutajová",
+      "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
+      "hlasy": 671
+     },
+     {
+      "meno": "MUDr. Peter Bandura, PhD.",
+      "strany": "SMER - sociálna demokracia",
+      "hlasy": 655
+     },
+     {
+      "meno": "Mgr. Emil Chlapeček",
+      "strany": "HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
+      "hlasy": 617
+     }
+    ]
+   }
+  }
+ },
+ "praca": {
+  "obdobie": "2026-09",
+  "mesacne": {
+   "2026-08": {
+    "Prešov": {
+     "uoz": 1991.0,
+     "disp": 1803.0,
+     "pdu": 3.41
+    },
+    "Prešovský kraj": {
+     "uoz": 39289.0,
+     "disp": 31982.0,
+     "pdu": 6.02
+    },
+    "Slovenská republika": {
+     "uoz": 170121.0,
+     "disp": 145251.0,
+     "pdu": 4.04
+    }
+   },
+   "2026-09": {
+    "Prešov": {
+     "uoz": 1878.0,
+     "disp": 1677.0,
+     "pdu": 3.18
+    },
+    "Prešovský kraj": {
+     "uoz": 39306.0,
+     "disp": 31923.0,
+     "pdu": 6.0
+    },
+    "Slovenská republika": {
+     "uoz": 170008.0,
+     "disp": 144789.0,
+     "pdu": 4.02
+    }
+   }
+  }
+ },
+ "byty": {
+  "2001": {
+   "ZAC_BYT": 332,
+   "DOKONC_BYT": 410,
+   "ROZOST_BYT_KON": 1388
+  },
+  "2002": {
+   "ZAC_BYT": 288,
+   "DOKONC_BYT": 230,
+   "ROZOST_BYT_KON": 1446
+  },
+  "2003": {
+   "ZAC_BYT": 401,
+   "DOKONC_BYT": 431,
+   "ROZOST_BYT_KON": 1490
+  },
+  "2004": {
+   "ZAC_BYT": 408,
+   "DOKONC_BYT": 344,
+   "ROZOST_BYT_KON": 1471
+  },
+  "2005": {
+   "ZAC_BYT": 300,
+   "DOKONC_BYT": 399,
+   "ROZOST_BYT_KON": 1363
+  },
+  "2006": {
+   "ZAC_BYT": 305,
+   "DOKONC_BYT": 301,
+   "ROZOST_BYT_KON": 1368
+  },
+  "2007": {
+   "ZAC_BYT": 379,
+   "DOKONC_BYT": 487,
+   "ROZOST_BYT_KON": 1239
+  },
+  "2008": {
+   "ZAC_BYT": 829,
+   "DOKONC_BYT": 244,
+   "ROZOST_BYT_KON": 1816
+  },
+  "2009": {
+   "ZAC_BYT": 527,
+   "DOKONC_BYT": 289,
+   "ROZOST_BYT_KON": 2047
+  },
+  "2010": {
+   "ZAC_BYT": 383,
+   "DOKONC_BYT": 412,
+   "ROZOST_BYT_KON": 2018
+  },
+  "2011": {
+   "ZAC_BYT": 370,
+   "DOKONC_BYT": 466,
+   "ROZOST_BYT_KON": 1922
+  },
+  "2012": {
+   "ZAC_BYT": 383,
+   "DOKONC_BYT": 383,
+   "ROZOST_BYT_KON": 1911
+  },
+  "2013": {
+   "ZAC_BYT": 382,
+   "DOKONC_BYT": 503,
+   "ROZOST_BYT_KON": 1783
+  },
+  "2014": {
+   "ZAC_BYT": 435,
+   "DOKONC_BYT": 473,
+   "ROZOST_BYT_KON": 1745
+  },
+  "2015": {
+   "ZAC_BYT": 620,
+   "DOKONC_BYT": 541,
+   "ROZOST_BYT_KON": 1825
+  },
+  "2016": {
+   "ZAC_BYT": 640,
+   "DOKONC_BYT": 565,
+   "ROZOST_BYT_KON": 1886
+  },
+  "2017": {
+   "ZAC_BYT": 770,
+   "DOKONC_BYT": 567,
+   "ROZOST_BYT_KON": 2087
+  },
+  "2018": {
+   "ZAC_BYT": 728,
+   "DOKONC_BYT": 675,
+   "ROZOST_BYT_KON": 2157
+  },
+  "2019": {
+   "ZAC_BYT": 782,
+   "DOKONC_BYT": 607,
+   "ROZOST_BYT_KON": 2336
+  },
+  "2020": {
+   "ZAC_BYT": 900,
+   "DOKONC_BYT": 784,
+   "ROZOST_BYT_KON": 2514
+  },
+  "2021": {
+   "ZAC_BYT": 787,
+   "DOKONC_BYT": 866,
+   "ROZOST_BYT_KON": 2439
+  },
+  "2022": {
+   "ZAC_BYT": 808,
+   "DOKONC_BYT": 916,
+   "ROZOST_BYT_KON": 2348
+  },
+  "2023": {
+   "ZAC_BYT": 1247,
+   "DOKONC_BYT": 557,
+   "ROZOST_BYT_KON": 3031
+  },
+  "2024": {
+   "ZAC_BYT": 585,
+   "DOKONC_BYT": 580,
+   "ROZOST_BYT_KON": 3031
+  },
+  "2025": {
+   "ZAC_BYT": 504,
+   "DOKONC_BYT": 464,
+   "ROZOST_BYT_KON": 3061
+  }
+ },
+ "ceny": {
+  "kraj": {
+   "2022-Q2": 23.3,
+   "2022-Q3": 23.9,
+   "2022-Q4": 15.5,
+   "2023-Q1": 6.7,
+   "2023-Q2": 6.4,
+   "2023-Q3": -2,
+   "2023-Q4": -2,
+   "2024-Q1": -5,
+   "2024-Q2": -4.7,
+   "2024-Q3": 2.1,
+   "2024-Q4": 6.4,
+   "2025-Q1": 13.1,
+   "2025-Q2": 16,
+   "2025-Q3": 14.8,
+   "2025-Q4": 12.2,
+   "2026-Q1": 12.9,
+   "2026-Q2": 8.9
+  },
+  "sr": {
+   "2022-Q1": 14.2,
+   "2022-Q2": 16.6,
+   "2022-Q3": 14.6,
+   "2022-Q4": 9.7,
+   "2023-Q1": 7.5,
+   "2023-Q2": -2.2,
+   "2023-Q3": -4.1,
+   "2023-Q4": -1.4,
+   "2024-Q1": -3,
+   "2024-Q2": 4,
+   "2024-Q3": 6.2,
+   "2024-Q4": 7.9,
+   "2025-Q1": 12.2,
+   "2025-Q2": 11.3,
+   "2025-Q3": 13.4,
+   "2025-Q4": 12.8,
+   "2026-Q1": 14.4,
+   "2026-Q2": 13.6
+  }
+ },
+ "mesto": {
+  "slug": "presov",
+  "nazov": "Prešov",
+  "kraj": "Prešovský kraj",
+  "okresy": [
+   "Prešov"
+  ]
+ },
+ "zdroje": {
+  "obyvatelia": "ŠÚ SR – DATAcube om7101rr",
+  "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)",
+  "volby": "ŠÚ SR – volby.statistics.sk",
+  "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk",
+  "praca": "ÚPSVaR – mesačná štatistika",
+  "byty": "ŠÚ SR – DATAcube st3004rr",
+  "ceny": "ŠÚ SR – DATAcube sp3801qr"
+ }
+}

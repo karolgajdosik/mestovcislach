@@ -1,0 +1,355 @@
+{
+ "mesto": "nitra",
+ "ico": "00308307",
+ "od": "2022-01-01",
+ "do": "2026-10-20",
+ "zdroj": {
+  "nazov": "Centrálny register zmlúv (CRZ)",
+  "url": "https://www.crz.gov.sk"
+ },
+ "zmluvy": {
+  "typ": "zmluvy",
+  "zaznamov": 14749,
+  "skryte_fyzicke_osoby": 9544,
+  "roky": {
+   "2022": {
+    "pocet": 2416,
+    "suma": 36751644,
+    "fo_pocet": 1474,
+    "fo_suma": 2468979
+   },
+   "2023": {
+    "pocet": 3438,
+    "suma": 72595725,
+    "fo_pocet": 2314,
+    "fo_suma": 3333662
+   },
+   "2024": {
+    "pocet": 2901,
+    "suma": 40068610,
+    "fo_pocet": 1818,
+    "fo_suma": 7712071
+   },
+   "2025": {
+    "pocet": 2973,
+    "suma": 54317670,
+    "fo_pocet": 1801,
+    "fo_suma": 4260935
+   },
+   "2026": {
+    "pocet": 3021,
+    "suma": 50276698,
+    "fo_pocet": 2137,
+    "fo_suma": 3388571
+   }
+  },
+  "dodavatelia_posledne_3_roky": [
+   {
+    "ico": "50349287",
+    "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+    "pocet": 45,
+    "suma": 29911014
+   },
+   {
+    "ico": "00681156",
+    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "pocet": 24,
+    "suma": 7952163
+   },
+   {
+    "ico": "47240768",
+    "nazov": "BAUMANN Nitra s. r. o.",
+    "pocet": 27,
+    "suma": 6931638
+   },
+   {
+    "ico": "57013454",
+    "nazov": "Spojená materská škola, Benkova 17, Nitra",
+    "pocet": 6,
+    "suma": 4799260
+   },
+   {
+    "ico": "57013420",
+    "nazov": "Spojená materská škola, Dobšinského 2885/8, Nitra",
+    "pocet": 5,
+    "suma": 3783897
+   },
+   {
+    "ico": "57013471",
+    "nazov": "Spojená materská škola, Nábrežie mládeže 7, Nitra",
+    "pocet": 7,
+    "suma": 3147718
+   },
+   {
+    "ico": "57013501",
+    "nazov": "Spojená materská škola, Štiavnická 1, Nitra",
+    "pocet": 4,
+    "suma": 2560731
+   },
+   {
+    "ico": "30416094",
+    "nazov": "Ministerstvo dopravy Slovenskej republiky",
+    "pocet": 6,
+    "suma": 2540510
+   },
+   {
+    "ico": "57013527",
+    "nazov": "Spojená materská škola, Dolnočermánska 57, Nitra",
+    "pocet": 3,
+    "suma": 2360081
+   },
+   {
+    "ico": "36547522",
+    "nazov": "PP INVEST s. r. o.",
+    "pocet": 6,
+    "suma": 2171768
+   },
+   {
+    "ico": "36530328",
+    "nazov": "ELLIO, spol. s r.o.",
+    "pocet": 3,
+    "suma": 2013536
+   },
+   {
+    "ico": "37966456",
+    "nazov": "Správa zariadení sociálnych služieb",
+    "pocet": 39,
+    "suma": 1976945
+   },
+   {
+    "ico": "57012644",
+    "nazov": "Spojená materská škola, Alexyho 26, Nitra",
+    "pocet": 10,
+    "suma": 1823997
+   },
+   {
+    "ico": "00164381",
+    "nazov": "Ministerstvo školstva, vedy, výskumu a športu Slovenskej republiky",
+    "pocet": 9,
+    "suma": 1731642
+   },
+   {
+    "ico": "35613998",
+    "nazov": "ARS STUDIO - Štúdio umenia, občianske združenie",
+    "pocet": 12,
+    "suma": 1658157
+   },
+   {
+    "ico": "00002801",
+    "nazov": "Slovenská inovačná energetická agentúra",
+    "pocet": 3,
+    "suma": 1403789
+   },
+   {
+    "ico": "57012610",
+    "nazov": "Spojená materská škola, Piaristická 12, Nitra",
+    "pocet": 10,
+    "suma": 1361900
+   },
+   {
+    "ico": "46795642",
+    "nazov": "BYTSERVIS SENICA s.r.o.",
+    "pocet": 3,
+    "suma": 1318114
+   },
+   {
+    "ico": "57012547",
+    "nazov": "Spojená materská škola, Párovská 36, Nitra",
+    "pocet": 5,
+    "suma": 1309939
+   },
+   {
+    "ico": "37865609",
+    "nazov": "Základná škola Tulipánová",
+    "pocet": 7,
+    "suma": 1228966
+   }
+  ],
+  "najvacsie_12_mesiacov": [
+   {
+    "datum": "2026-07-10",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 2060335.14,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU kód projektu: 401501I282",
+    "url": "https://www.crz.gov.sk/zmluva/12576383/"
+   },
+   {
+    "datum": "2026-04-13",
+    "dodavatel": "BAUMANN Nitra s. r. o.",
+    "ico": "47240768",
+    "suma": 1968000.0,
+    "popis": "Zmluva o dielo - Rekonštrukcia a rozšírenie kapacít MŠ Horné Krškany",
+    "url": "https://www.crz.gov.sk/zmluva/12232050/"
+   },
+   {
+    "datum": "2026-05-26",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1873029.94,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR /H706",
+    "url": "https://www.crz.gov.sk/zmluva/12390695/"
+   },
+   {
+    "datum": "2026-05-26",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+    "ico": "50349287",
+    "suma": 1873029.94,
+    "popis": "Zmuva o poskytnutí nenávratného finančného príspevku - Rekonštrukcia a rozšírenie kapacíť MŠ Horné Krškany",
+    "url": "https://www.crz.gov.sk/zmluva/12429367/"
+   },
+   {
+    "datum": "2026-10-19",
+    "dodavatel": "ELLIO, spol. s r.o.",
+    "ico": "36530328",
+    "suma": 1787993.68,
+    "popis": "Zmluva o dielo - Kino Lipa - lokálne kultúrne centrum",
+    "url": "https://www.crz.gov.sk/zmluva/12954107/"
+   },
+   {
+    "datum": "2026-02-04",
+    "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "ico": "00681156",
+    "suma": 1602420.0,
+    "popis": "Zmluva o poskytnutí finančného príspevku na poskytovanie sociálnej služby v zariadeniach podmienených odkázanosťou podľa § 78a ods.1 písm. a) a b) zákona č. 448/2008 Z. z. o sociálnych službách na roz",
+    "url": "https://www.crz.gov.sk/zmluva/11976858/"
+   },
+   {
+    "datum": "2026-02-13",
+    "dodavatel": "Správa zariadení sociálnych služieb",
+    "ico": "37966456",
+    "suma": 1602420.0,
+    "popis": "Zmluva o poskytnutí finančného príspevku na poskytovanie soc. služby v zariadeniach pre FO, ktoré sú odkázané na pomoc inej FO a pre FO, ktoré dovŕšili dôchodkový vek",
+    "url": "https://www.crz.gov.sk/zmluva/12025193/"
+   },
+   {
+    "datum": "2026-08-13",
+    "dodavatel": "PP INVEST s. r. o.",
+    "ico": "36547522",
+    "suma": 1596422.41,
+    "popis": "Zmluva o dielo - Revitalizácia verejných priestranstiev pri CVČ DOMINO",
+    "url": "https://www.crz.gov.sk/zmluva/12686408/"
+   },
+   {
+    "datum": "2025-11-27",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1438173.43,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU kód projektu: 401202B701",
+    "url": "https://www.crz.gov.sk/zmluva/11665849/"
+   },
+   {
+    "datum": "2025-11-27",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+    "ico": "50349287",
+    "suma": 1438173.43,
+    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku - Revitalizácia lokálnych území s prvkami modrej a zelenej infraštruktúry",
+    "url": "https://www.crz.gov.sk/zmluva/11742768/"
+   },
+   {
+    "datum": "2026-09-01",
+    "dodavatel": "BAUMANN Nitra s. r. o.",
+    "ico": "47240768",
+    "suma": 1280973.62,
+    "popis": "Zmluva o dielo - Reorganizácia ulice Hollého",
+    "url": "https://www.crz.gov.sk/zmluva/12745805/"
+   },
+   {
+    "datum": "2026-06-08",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1241200.0,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU",
+    "url": "https://www.crz.gov.sk/zmluva/12441884/"
+   },
+   {
+    "datum": "2026-06-08",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+    "ico": "50349287",
+    "suma": 1241200.0,
+    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku - Medzisektorové inovačné partnerstvo Nitra",
+    "url": "https://www.crz.gov.sk/zmluva/12445830/"
+   },
+   {
+    "datum": "2026-09-09",
+    "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "ico": "00681156",
+    "suma": 1114037.6,
+    "popis": "ZMLUVA O SPOLUPRÁCI",
+    "url": "https://www.crz.gov.sk/zmluva/12784592/"
+   },
+   {
+    "datum": "2026-09-09",
+    "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "ico": "00681156",
+    "suma": 1114037.6,
+    "popis": "Zmluva o spolupráci - NFP 401405J046 NP Podpora dlhodobej integrácie štátnych príslušníkov tretích krajín na území SR NP Podpora dlhodobej integrácie štátnych príslušníkov tretích krajín na území SR",
+    "url": "https://www.crz.gov.sk/zmluva/12800030/"
+   }
+  ],
+  "dotacie_poskytnute": [
+   {
+    "nazov": "HK Nitra, s.r.o.",
+    "suma": 1238066
+   },
+   {
+    "nazov": "Telovýchovná jednota AC Nitra",
+    "suma": 463738
+   },
+   {
+    "nazov": "Futbalový klub Nitra",
+    "suma": 452483
+   },
+   {
+    "nazov": "Službyt Nitra, s.r.o",
+    "suma": 350000
+   },
+   {
+    "nazov": "Čermánsky futbalový klub Nitra",
+    "suma": 341738
+   },
+   {
+    "nazov": "Športový klub pri ŠOG - oddiel atletický",
+    "suma": 253914
+   },
+   {
+    "nazov": "Združenie športových klubov UKF Nitra",
+    "suma": 176228
+   },
+   {
+    "nazov": "Telovýchovná jednota Stavbár PS",
+    "suma": 156664
+   },
+   {
+    "nazov": "Športová akadémia Skalka s.r.o.",
+    "suma": 127008
+   },
+   {
+    "nazov": "HBK Nitrianski Rytieri, o. z.",
+    "suma": 123785
+   },
+   {
+    "nazov": "ŠK - Karate Farmex o.z.",
+    "suma": 105474
+   },
+   {
+    "nazov": "Basketbalový klub mládeže JUNIOR UKF Nitra",
+    "suma": 102366
+   },
+   {
+    "nazov": "Športový klub karate Kachi Nitra o.z.",
+    "suma": 72777
+   },
+   {
+    "nazov": "Zápasnícky klub Corgoň Nitra",
+    "suma": 63423
+   },
+   {
+    "nazov": "Slovenská poľnohospodárska univerzita v Nitre",
+    "suma": 46556
+   }
+  ],
+  "zdroj": "https://www.crz.gov.sk"
+ },
+ "aktualizovane": "2026-10-21T05:52:29+00:00"
+}

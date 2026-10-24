@@ -1,0 +1,2344 @@
+{
+ "zdroj": {
+  "nazov": "Mestská polícia hlavného mesta SR Bratislavy a magistrát – data.bratislava.sk",
+  "url": "https://data.bratislava.sk",
+  "licencia": "CC BY 4.0"
+ },
+ "dni": [
+  "pondelok",
+  "utorok",
+  "streda",
+  "štvrtok",
+  "piatok",
+  "sobota",
+  "nedeľa"
+ ],
+ "priestupky": {
+  "spolu": 342446,
+  "roky": {
+   "2017": 58605,
+   "2018": 56731,
+   "2019": 54593,
+   "2020": 58539,
+   "2021": 58279,
+   "2022": 55699
+  },
+  "mestske_casti": {
+   "Staré Mesto": {
+    "spolu": 135342,
+    "roky": {
+     "2017": 26045,
+     "2018": 26283,
+     "2019": 23314,
+     "2020": 22147,
+     "2021": 19827,
+     "2022": 17726
+    },
+    "najcastejsie": [
+     "2213 - §25,ods.1,písm.n) státie na vyhrad.parkovisku,pred vjazdom na cestu",
+     "2269 - IP 24a - ZÓNA S DOPRAVNÝM OBMEDZENÍM",
+     "2214 - §25,ods.1,písm.o) státie na plat.parkovisku bez zaplat.poplatku za parkovanie"
+    ]
+   },
+   "Ružinov": {
+    "spolu": 48052,
+    "roky": {
+     "2017": 7076,
+     "2018": 7082,
+     "2019": 9403,
+     "2020": 8955,
+     "2021": 7800,
+     "2022": 7736
+    },
+    "najcastejsie": [
+     "2243 - B3 - ZÁKAZ VJAZDU VŠETKÝCH MOTOROVÝCH VOZIDIEL",
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2263 - B34 - ZÁKAZ ZASTAVENIA"
+    ]
+   },
+   "Nové Mesto": {
+    "spolu": 47002,
+    "roky": {
+     "2017": 7405,
+     "2018": 6261,
+     "2019": 5766,
+     "2020": 7540,
+     "2021": 12282,
+     "2022": 7748
+    },
+    "najcastejsie": [
+     "2214 - §25,ods.1,písm.o) zák.č.8/2009 Z.z. státie na plat.parkovisku bez zaplat.poplatku za parkovanie",
+     "2263 - B34 - ZÁKAZ ZASTAVENIA",
+     "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)"
+    ]
+   },
+   "Petržalka": {
+    "spolu": 45819,
+    "roky": {
+     "2017": 6251,
+     "2018": 5881,
+     "2019": 6739,
+     "2020": 8128,
+     "2021": 8609,
+     "2022": 10211
+    },
+    "najcastejsie": [
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2214 - §25,ods.1,písm.o) zák.č.8/2009 Z.z. státie na plat.parkovisku bez zaplat.poplatku za parkovanie",
+     "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)"
+    ]
+   },
+   "Karlova Ves": {
+    "spolu": 25578,
+    "roky": {
+     "2017": 4687,
+     "2018": 4086,
+     "2019": 3846,
+     "2020": 4549,
+     "2021": 3696,
+     "2022": 4714
+    },
+    "najcastejsie": [
+     "2271 - IP 27a - ZÓNA S PLATENÝM ALEBO REGULOVANÝM STÁTÍM",
+     "2263 - B34 - ZÁKAZ ZASTAVENIA",
+     "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA"
+    ]
+   },
+   "Dúbravka": {
+    "spolu": 14436,
+    "roky": {
+     "2017": 2621,
+     "2018": 2310,
+     "2019": 1986,
+     "2020": 2821,
+     "2021": 2424,
+     "2022": 2274
+    },
+    "najcastejsie": [
+     "2213 - §25,ods.1,písm.n) státie na vyhrad.parkovisku,pred vjazdom na cestu",
+     "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)",
+     "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA"
+    ]
+   },
+   "Rača": {
+    "spolu": 5833,
+    "roky": {
+     "2017": 994,
+     "2018": 908,
+     "2019": 757,
+     "2020": 1174,
+     "2021": 791,
+     "2022": 1209
+    },
+    "najcastejsie": [
+     "9921 - jazda alebo státie motor. vozidlom na lesnom pozemku",
+     "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)",
+     "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA"
+    ]
+   },
+   "Devínska Nová Ves": {
+    "spolu": 3925,
+    "roky": {
+     "2017": 481,
+     "2018": 610,
+     "2019": 436,
+     "2020": 781,
+     "2021": 671,
+     "2022": 946
+    },
+    "najcastejsie": [
+     "2263 - B34 - ZÁKAZ ZASTAVENIA",
+     "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA",
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,"
+    ]
+   },
+   "Podunajské Biskupice": {
+    "spolu": 3762,
+    "roky": {
+     "2017": 664,
+     "2018": 591,
+     "2019": 464,
+     "2020": 509,
+     "2021": 830,
+     "2022": 704
+    },
+    "najcastejsie": [
+     "2213 - §25,ods.1,písm.n) státie na vyhrad.parkovisku,pred vjazdom na cestu",
+     "2213 - §25,ods.1,písm.n) zák.č.8/2009 Z.z. státie na vyhrad.parkovisku,pred vjazdom na cestu",
+     "4029 - VZN MČ Podunajské Biskupice č.2/2003 v znení neskorších VZN o dodržiavaní čistoty a poriadku na území MČ Bratislava-Pod.Biskupice"
+    ]
+   },
+   "Lamač": {
+    "spolu": 3455,
+    "roky": {
+     "2017": 599,
+     "2018": 499,
+     "2019": 457,
+     "2020": 334,
+     "2021": 284,
+     "2022": 1282
+    },
+    "najcastejsie": [
+     "4087 - VZN MČ Lamač č.3/2009 v znení neskorších VZN o dodržiavaní čistoty a poriadku na území MČ Bratislava-Lamač",
+     "2241 - B1 - ZÁK.VJAZDU VŠETKÝCH VOZIDIEL V OBOCH SMEROCH §3 ods.2 pism.b) zák.č.8/2009 Z.z.",
+     "412 - B1 - ZÁK.VJAZDU VŠETKÝCH VOZIDIEL V OBOCH SMEROCH §3 ods.2 písm.b) zák.č.8/2009 Z.z."
+    ]
+   },
+   "Vrakuňa": {
+    "spolu": 2333,
+    "roky": {
+     "2017": 474,
+     "2018": 471,
+     "2019": 418,
+     "2020": 273,
+     "2021": 369,
+     "2022": 328
+    },
+    "najcastejsie": [
+     "2213 - §25,ods.1,písm.n) státie na vyhrad.parkovisku,pred vjazdom na cestu",
+     "2219 - §25,ods.1,písm.u) státie a zast.na in.miestach,kde môže byť ohrozená BaPCP",
+     "2216 - §25,ods.1,písm.q) zák.č.8/2009 Z.z. státie na chodníku"
+    ]
+   },
+   "Záhorská Bystrica": {
+    "spolu": 1985,
+    "roky": {
+     "2017": 159,
+     "2018": 582,
+     "2019": 319,
+     "2020": 338,
+     "2021": 162,
+     "2022": 425
+    },
+    "najcastejsie": [
+     "2241 - B1 - ZÁK.VJAZDU VŠETKÝCH VOZ. V OBOCH SMEROCH",
+     "2255 - B27b - ZÁKAZ ODBOČENIA VĽAVO §3 ods.2 pism.b) zák.č.8/2009 Z.z.",
+     "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA"
+    ]
+   },
+   "Vajnory": {
+    "spolu": 1852,
+    "roky": {
+     "2017": 508,
+     "2018": 469,
+     "2019": 322,
+     "2020": 322,
+     "2021": 151,
+     "2022": 80
+    },
+    "najcastejsie": [
+     "2246 - B6 - ZÁKAZ VJAZDU NÁKLADNÝCH AUTOMOBILOV",
+     "2262 - B33 - ZÁKAZ STÁTIA",
+     "2242 - B2 - ZÁKAZ VJAZDU VŠETKÝCH VOZIDIEL"
+    ]
+   },
+   "Rusovce": {
+    "spolu": 1175,
+    "roky": {
+     "2017": 310,
+     "2018": 304,
+     "2019": 154,
+     "2020": 137,
+     "2021": 107,
+     "2022": 163
+    },
+    "najcastejsie": [
+     "2272 - IP 28a - OBYTNÁ ZÓNA",
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2225 - §59,ods.3 státie v obytnej alebo pešej zóne ..."
+    ]
+   },
+   "Čunovo": {
+    "spolu": 1055,
+    "roky": {
+     "2017": 152,
+     "2018": 287,
+     "2019": 130,
+     "2020": 298,
+     "2021": 144,
+     "2022": 44
+    },
+    "najcastejsie": [
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2218 - §25,ods.1,písm.s) zák.č.8/2009 Z.z. státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2263 - B34 - ZÁKAZ ZASTAVENIA"
+    ]
+   },
+   "Devín": {
+    "spolu": 658,
+    "roky": {
+     "2017": 161,
+     "2018": 67,
+     "2019": 72,
+     "2020": 186,
+     "2021": 81,
+     "2022": 91
+    },
+    "najcastejsie": [
+     "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)",
+     "4058 - VZN MČ Devín č.1/2010 o starostlivosti o verejný poriadok a zeleň na území MČ BA-Devín",
+     "2270 - IP 25a - PEŠIA ZÓNA"
+    ]
+   },
+   "Jarovce": {
+    "spolu": 184,
+    "roky": {
+     "2017": 18,
+     "2018": 40,
+     "2019": 10,
+     "2020": 47,
+     "2021": 51,
+     "2022": 18
+    },
+    "najcastejsie": [
+     "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2218 - §25,ods.1,písm.s) zák.č.8/2009 Z.z. státie na zeleni, ostrovčekoch a deliacich pásoch,",
+     "2263 - B34 - ZÁKAZ ZASTAVENIA"
+    ]
+   }
+  },
+  "druhy": [
+   {
+    "druh": "2213 - §25,ods.1,písm.n) státie na vyhrad.parkovisku,pred vjazdom na cestu",
+    "pocet": 21942
+   },
+   {
+    "druh": "2216 - §25,ods.1,písm.q) státie na chodníku (§52 ods.2 - voľná šír.1,5 m)",
+    "pocet": 20529
+   },
+   {
+    "druh": "2263 - B34 - ZÁKAZ ZASTAVENIA",
+    "pocet": 17420
+   },
+   {
+    "druh": "2269 - IP 24a - ZÓNA S DOPRAVNÝM OBMEDZENÍM",
+    "pocet": 15606
+   },
+   {
+    "druh": "2214 - §25,ods.1,písm.o) zák.č.8/2009 Z.z. státie na plat.parkovisku bez zaplat.poplatku za parkovanie",
+    "pocet": 14532
+   },
+   {
+    "druh": "2214 - §25,ods.1,písm.o) státie na plat.parkovisku bez zaplat.poplatku za parkovanie",
+    "pocet": 13044
+   },
+   {
+    "druh": "2218 - §25,ods.1,písm.s) státie na zeleni, ostrovčekoch a deliacich pásoch,",
+    "pocet": 12763
+   },
+   {
+    "druh": "2270 - IP 25a - PEŠIA ZÓNA",
+    "pocet": 10272
+   },
+   {
+    "druh": "2206 - §25,ods.1,písm.c) státie na priech.pre chodcov al.na priech.pre cyklistov",
+    "pocet": 10202
+   },
+   {
+    "druh": "2243 - B3 - ZÁKAZ VJAZDU VŠETKÝCH MOTOROVÝCH VOZIDIEL",
+    "pocet": 8946
+   },
+   {
+    "druh": "2216 - §25,ods.1,písm.q) zák.č.8/2009 Z.z. státie na chodníku",
+    "pocet": 7916
+   },
+   {
+    "druh": "2213 - §25,ods.1,písm.n) zák.č.8/2009 Z.z. státie na vyhrad.parkovisku,pred vjazdom na cestu",
+    "pocet": 7850
+   },
+   {
+    "druh": "2262 - B33 - ZÁKAZ STÁTIA",
+    "pocet": 7773
+   },
+   {
+    "druh": "2219 - §25,ods.1,písm.u) státie a zast.na in.miestach,kde môže byť ohrozená BaPCP",
+    "pocet": 7013
+   },
+   {
+    "druh": "2273 - IP 17b - PARKOVISKO - PARKOVACIE MIESTA S REGULOVANÝM STÁTÍM",
+    "pocet": 6720
+   },
+   {
+    "druh": "2267 - V12b - ŽLTÁ SÚVISLÁ ČIARA",
+    "pocet": 6695
+   },
+   {
+    "druh": "2207 - §25,ods.1,písm.d) státie na križovatke .....",
+    "pocet": 5331
+   },
+   {
+    "druh": "2268 - V13 - ŠIKMÉ ROVNOBEŽNÉ ČIARY",
+    "pocet": 4802
+   },
+   {
+    "druh": "2227 - §137,ods.2,písm.q) vyhrad.park.miesto pre zdrav.postihnutých",
+    "pocet": 4700
+   },
+   {
+    "druh": "2206 - §25,ods.1,písm.c) zák.č.8/2009 Z.z. státie na priech.pre chodcov al.na priech.pre cyklistov",
+    "pocet": 4334
+   }
+  ],
+  "skupiny": [
+   {
+    "skupina": "2200 - bezpečnosť a plynulosť cestnej premávky",
+    "pocet": 255489
+   },
+   {
+    "skupina": "2200 - bezpeč.a plynul.cest.premávky do 31.7.2022",
+    "pocet": 33808
+   },
+   {
+    "skupina": "2122 - BaPCP §22 ods.1,písm.l) od 1.8.2022",
+    "pocet": 17652
+   },
+   {
+    "skupina": "4810 - čistota a ver.poriadok",
+    "pocet": 6691
+   },
+   {
+    "skupina": "4834 - požívanie alk.nápojov na ver.priestr.",
+    "pocet": 4880
+   },
+   {
+    "skupina": "4700 - priestupok proti verejnému poriadku",
+    "pocet": 3478
+   },
+   {
+    "skupina": "4832 - záverečné hodiny-prevádzkové časy a VP",
+    "pocet": 2024
+   },
+   {
+    "skupina": "9801 - VRAK motor.vozidla - porušenie zákona",
+    "pocet": 1923
+   },
+   {
+    "skupina": "9809 - porušenie zákona o lesoch",
+    "pocet": 1754
+   },
+   {
+    "skupina": "4811 - kontajnery a ich stojiská",
+    "pocet": 1732
+   },
+   {
+    "skupina": "9804 - porušenie zákona o ochrane nefajčiarov",
+    "pocet": 1718
+   },
+   {
+    "skupina": "4838 - nepovolené pouličné aktivity",
+    "pocet": 1001
+   }
+  ],
+  "ulice": [
+   {
+    "ulica": "Páričkova - Ružinov",
+    "mc": "Ružinov",
+    "pocet": 6929
+   },
+   {
+    "ulica": "Františkánske námestie",
+    "mc": "Staré Mesto",
+    "pocet": 6567
+   },
+   {
+    "ulica": "Nám.SNP",
+    "mc": "Staré Mesto",
+    "pocet": 6411
+   },
+   {
+    "ulica": "Viedenská cesta",
+    "mc": "Petržalka",
+    "pocet": 4608
+   },
+   {
+    "ulica": "Nábrežie arm. gen. Lud. Svobod",
+    "mc": "Staré Mesto",
+    "pocet": 3876
+   },
+   {
+    "ulica": "Nám.Eugena Suchoňa",
+    "mc": "Staré Mesto",
+    "pocet": 3492
+   },
+   {
+    "ulica": "Antolská",
+    "mc": "Petržalka",
+    "pocet": 3088
+   },
+   {
+    "ulica": "Medená",
+    "mc": "Staré Mesto",
+    "pocet": 2951
+   },
+   {
+    "ulica": "Cesta Mládeže",
+    "mc": "Nové Mesto",
+    "pocet": 2806
+   },
+   {
+    "ulica": "Radlinského",
+    "mc": "Staré Mesto",
+    "pocet": 2790
+   },
+   {
+    "ulica": "Kukučínova",
+    "mc": "Nové Mesto",
+    "pocet": 2726
+   },
+   {
+    "ulica": "Trnavská cesta - MČ N. Mesto",
+    "mc": "Nové Mesto",
+    "pocet": 2621
+   },
+   {
+    "ulica": "Vajnorská",
+    "mc": "Nové Mesto",
+    "pocet": 2615
+   },
+   {
+    "ulica": "Klobučnícka",
+    "mc": "Staré Mesto",
+    "pocet": 2612
+   },
+   {
+    "ulica": "Uršulínska",
+    "mc": "Staré Mesto",
+    "pocet": 2609
+   },
+   {
+    "ulica": "Jesenského",
+    "mc": "Staré Mesto",
+    "pocet": 2516
+   },
+   {
+    "ulica": "Kamzík - Les",
+    "mc": "Nové Mesto",
+    "pocet": 2350
+   },
+   {
+    "ulica": "Žižkova",
+    "mc": "Staré Mesto",
+    "pocet": 2307
+   },
+   {
+    "ulica": "Krasovského",
+    "mc": "Petržalka",
+    "pocet": 2306
+   },
+   {
+    "ulica": "Bajkalská",
+    "mc": "Nové Mesto",
+    "pocet": 2277
+   },
+   {
+    "ulica": "Kalinčiakova",
+    "mc": "Nové Mesto",
+    "pocet": 2262
+   },
+   {
+    "ulica": "Obchodná",
+    "mc": "Staré Mesto",
+    "pocet": 2228
+   },
+   {
+    "ulica": "Ružinovská",
+    "mc": "Ružinov",
+    "pocet": 2080
+   },
+   {
+    "ulica": "Grösslingová",
+    "mc": "Staré Mesto",
+    "pocet": 2037
+   },
+   {
+    "ulica": "Krížna ul. - MČ Staré Mesto",
+    "mc": "Staré Mesto",
+    "pocet": 2030
+   }
+  ],
+  "hodiny": [
+   6504,
+   4305,
+   1950,
+   928,
+   769,
+   1176,
+   2083,
+   8456,
+   25554,
+   39297,
+   35296,
+   26282,
+   26538,
+   29707,
+   24749,
+   13994,
+   12240,
+   11120,
+   7308,
+   14264,
+   18397,
+   14568,
+   9802,
+   7091
+  ],
+  "dni": [
+   54617,
+   57793,
+   58088,
+   55477,
+   50541,
+   33743,
+   32187
+  ]
+ },
+ "trestne_ciny": {
+  "spolu": 238,
+  "roky": {
+   "2017": 29,
+   "2018": 34,
+   "2019": 47,
+   "2020": 40,
+   "2021": 52,
+   "2022": 36
+  },
+  "mestske_casti": {
+   "Staré Mesto": {
+    "spolu": 94,
+    "roky": {
+     "2017": 10,
+     "2018": 3,
+     "2019": 20,
+     "2020": 27,
+     "2021": 23,
+     "2022": 11
+    },
+    "najcastejsie": [
+     "2014 - poškodzovanie cudzej veci",
+     "2001 - ublíženie na zdraví",
+     "2003 - nedovolená výr. a držanie omamných a psychotr. lát"
+    ]
+   },
+   "Petržalka": {
+    "spolu": 46,
+    "roky": {
+     "2017": 7,
+     "2018": 13,
+     "2019": 9,
+     "2020": 5,
+     "2021": 6,
+     "2022": 6
+    },
+    "najcastejsie": [
+     "2014 - poškodzovanie cudzej veci",
+     "2024 - výtržníctvo",
+     "2001 - ublíženie na zdraví"
+    ]
+   },
+   "Ružinov": {
+    "spolu": 32,
+    "roky": {
+     "2017": 1,
+     "2018": 6,
+     "2019": 3,
+     "2020": 5,
+     "2021": 10,
+     "2022": 7
+    },
+    "najcastejsie": [
+     "2014 - poškodzovanie cudzej veci",
+     "2011 - krádež vlámaním",
+     "2025 - týranie zvierat"
+    ]
+   },
+   "Nové Mesto": {
+    "spolu": 26,
+    "roky": {
+     "2017": 6,
+     "2018": 6,
+     "2019": 3,
+     "2020": 1,
+     "2021": 6,
+     "2022": 4
+    },
+    "najcastejsie": [
+     "2001 - ublíženie na zdraví",
+     "2003 - nedovolená výr. a držanie omamných a psychotr. lát",
+     "2012 - neoprávnené používanie cudzieho motorového vozidla"
+    ]
+   },
+   "Karlova Ves": {
+    "spolu": 12,
+    "roky": {
+     "2018": 1,
+     "2019": 3,
+     "2021": 4,
+     "2022": 4
+    },
+    "najcastejsie": [
+     "2024 - výtržníctvo",
+     "2001 - ublíženie na zdraví",
+     "2014 - poškodzovanie cudzej veci"
+    ]
+   },
+   "Vrakuňa": {
+    "spolu": 8,
+    "roky": {
+     "2018": 1,
+     "2019": 6,
+     "2021": 1
+    },
+    "najcastejsie": [
+     "2003 - nedovolená výr. a držanie omamných a psychotr. lát",
+     "2028 - trestný čin proti životnému prostrediu",
+     "2014 - poškodzovanie cudzej veci"
+    ]
+   },
+   "Dúbravka": {
+    "spolu": 6,
+    "roky": {
+     "2017": 4,
+     "2021": 1,
+     "2022": 1
+    },
+    "najcastejsie": [
+     "2014 - poškodzovanie cudzej veci",
+     "2001 - ublíženie na zdraví",
+     "2009 - krádež (páchateľ neznámy)"
+    ]
+   },
+   "Lamač": {
+    "spolu": 4,
+    "roky": {
+     "2018": 1,
+     "2019": 2,
+     "2022": 1
+    },
+    "najcastejsie": [
+     "2022 - falšovanie a pozmeňovanie verejnej listiny ...",
+     "2014 - poškodzovanie cudzej veci",
+     "2023 - opilstvo"
+    ]
+   },
+   "Podunajské Biskupice": {
+    "spolu": 3,
+    "roky": {
+     "2017": 1,
+     "2018": 1,
+     "2020": 1
+    },
+    "najcastejsie": [
+     "2009 - krádež (páchateľ neznámy)",
+     "2015 - \"sprejeri\" poškodzovanie cudzej veci",
+     "2011 - krádež vlámaním"
+    ]
+   },
+   "Devínska Nová Ves": {
+    "spolu": 3,
+    "roky": {
+     "2018": 1,
+     "2020": 1,
+     "2022": 1
+    },
+    "najcastejsie": [
+     "2011 - krádež vlámaním",
+     "2001 - ublíženie na zdraví",
+     "2015 - -sprejeri- poškodzovanie cudzej veci"
+    ]
+   },
+   "Rača": {
+    "spolu": 3,
+    "roky": {
+     "2018": 1,
+     "2019": 1,
+     "2022": 1
+    },
+    "najcastejsie": [
+     "2024 - výtržníctvo",
+     "2001 - ublíženie na zdraví",
+     "2011 - krádež vlámaním"
+    ]
+   },
+   "Čunovo": {
+    "spolu": 1,
+    "roky": {
+     "2021": 1
+    },
+    "najcastejsie": [
+     "2017 - pytliactvo"
+    ]
+   }
+  },
+  "druhy": [
+   {
+    "druh": "2014 - poškodzovanie cudzej veci",
+    "pocet": 44
+   },
+   {
+    "druh": "2001 - ublíženie na zdraví",
+    "pocet": 34
+   },
+   {
+    "druh": "2024 - výtržníctvo",
+    "pocet": 25
+   },
+   {
+    "druh": "2011 - krádež vlámaním",
+    "pocet": 24
+   },
+   {
+    "druh": "2003 - nedovolená výr. a držanie omamných a psychotr. lát",
+    "pocet": 20
+   },
+   {
+    "druh": "2015 - sprejeri poškodzovanie cudzej veci",
+    "pocet": 16
+   },
+   {
+    "druh": "2010 - krádež (páchateľ známy)",
+    "pocet": 13
+   },
+   {
+    "druh": "2009 - krádež (páchateľ neznámy)",
+    "pocet": 10
+   },
+   {
+    "druh": "2018 - útok na VČ",
+    "pocet": 8
+   },
+   {
+    "druh": "2022 - falšovanie a pozmeňovanie verejnej listiny ...",
+    "pocet": 7
+   },
+   {
+    "druh": "2012 - neoprávnené používanie cudzieho motorového vozidla",
+    "pocet": 6
+   },
+   {
+    "druh": "2007 - lúpež",
+    "pocet": 6
+   },
+   {
+    "druh": "2025 - týranie zvierat",
+    "pocet": 5
+   },
+   {
+    "druh": "2015 - -sprejeri- poškodzovanie cudzej veci",
+    "pocet": 5
+   },
+   {
+    "druh": "2023 - opilstvo",
+    "pocet": 4
+   },
+   {
+    "druh": "2028 - trestný čin proti životnému prostrediu",
+    "pocet": 3
+   },
+   {
+    "druh": "2006 - obmedzovanie osobnej slobody",
+    "pocet": 2
+   },
+   {
+    "druh": "2017 - pytliactvo",
+    "pocet": 2
+   },
+   {
+    "druh": "2027 - podnecovanie k národnost., ras. a etn. nenávisti",
+    "pocet": 1
+   },
+   {
+    "druh": "2015 - \"sprejeri\" poškodzovanie cudzej veci",
+    "pocet": 1
+   }
+  ],
+  "skupiny": [
+   {
+    "skupina": "200 - TČ /podozrenie zo spáchania trestného činu",
+    "pocet": 238
+   }
+  ],
+  "ulice": [
+   {
+    "ulica": "Obchodná",
+    "mc": "Staré Mesto",
+    "pocet": 13
+   },
+   {
+    "ulica": "Nám.SNP",
+    "mc": "Staré Mesto",
+    "pocet": 7
+   },
+   {
+    "ulica": "Primaciálne nám.",
+    "mc": "Staré Mesto",
+    "pocet": 6
+   },
+   {
+    "ulica": "Jedlíkova",
+    "mc": "Staré Mesto",
+    "pocet": 5
+   },
+   {
+    "ulica": "Hurbanovo námestie",
+    "mc": "Staré Mesto",
+    "pocet": 5
+   },
+   {
+    "ulica": "Ružinovská",
+    "mc": "Ružinov",
+    "pocet": 4
+   },
+   {
+    "ulica": "Nám.slobody",
+    "mc": "Staré Mesto",
+    "pocet": 4
+   },
+   {
+    "ulica": "Stavbárska",
+    "mc": "Vrakuňa",
+    "pocet": 4
+   },
+   {
+    "ulica": "Michalská",
+    "mc": "Staré Mesto",
+    "pocet": 4
+   },
+   {
+    "ulica": "Most SNP (Nový most)",
+    "mc": "Petržalka",
+    "pocet": 3
+   },
+   {
+    "ulica": "Trnavské mýto",
+    "mc": "Nové Mesto",
+    "pocet": 3
+   },
+   {
+    "ulica": "Einsteinova",
+    "mc": "Petržalka",
+    "pocet": 3
+   },
+   {
+    "ulica": "Račianska - MČ Nové Mesto",
+    "mc": "Nové Mesto",
+    "pocet": 3
+   },
+   {
+    "ulica": "Ventúrska",
+    "mc": "Staré Mesto",
+    "pocet": 3
+   },
+   {
+    "ulica": "Hodonínska - Lamač",
+    "mc": "Lamač",
+    "pocet": 3
+   },
+   {
+    "ulica": "Poštová",
+    "mc": "Staré Mesto",
+    "pocet": 3
+   },
+   {
+    "ulica": "Mikulášska",
+    "mc": "Staré Mesto",
+    "pocet": 3
+   },
+   {
+    "ulica": "Mierová",
+    "mc": "Ružinov",
+    "pocet": 3
+   },
+   {
+    "ulica": "Kopčianska",
+    "mc": "Petržalka",
+    "pocet": 2
+   },
+   {
+    "ulica": "Jašíkova",
+    "mc": "Ružinov",
+    "pocet": 2
+   },
+   {
+    "ulica": "Blagoevova",
+    "mc": "Petržalka",
+    "pocet": 2
+   },
+   {
+    "ulica": "Bradáčova",
+    "mc": "Petržalka",
+    "pocet": 2
+   },
+   {
+    "ulica": "Leknová",
+    "mc": "Vrakuňa",
+    "pocet": 2
+   },
+   {
+    "ulica": "Baštová",
+    "mc": "Staré Mesto",
+    "pocet": 2
+   },
+   {
+    "ulica": "Hálkova",
+    "mc": "Nové Mesto",
+    "pocet": 2
+   }
+  ],
+  "hodiny": [
+   15,
+   15,
+   11,
+   12,
+   14,
+   4,
+   6,
+   6,
+   8,
+   10,
+   8,
+   5,
+   10,
+   10,
+   11,
+   13,
+   11,
+   13,
+   5,
+   6,
+   14,
+   11,
+   13,
+   7
+  ],
+  "dni": [
+   29,
+   34,
+   22,
+   27,
+   35,
+   58,
+   33
+  ]
+ },
+ "ostatne": {
+  "spolu": 3559,
+  "roky": {
+   "2017": 402,
+   "2018": 440,
+   "2019": 519,
+   "2020": 618,
+   "2021": 885,
+   "2022": 695
+  },
+  "mestske_casti": {
+   "Staré Mesto": {
+    "spolu": 718,
+    "roky": {
+     "2017": 64,
+     "2018": 47,
+     "2019": 103,
+     "2020": 119,
+     "2021": 169,
+     "2022": 216
+    },
+    "najcastejsie": [
+     "103 - osoba chorá, v bezvedomí a pod.",
+     "102 - zranená osoba",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Nové Mesto": {
+    "spolu": 713,
+    "roky": {
+     "2017": 82,
+     "2018": 88,
+     "2019": 87,
+     "2020": 106,
+     "2021": 265,
+     "2022": 85
+    },
+    "najcastejsie": [
+     "222 - vozidlo zaregistrované v park. systéme",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok",
+     "122 - pes bez majiteľa"
+    ]
+   },
+   "Petržalka": {
+    "spolu": 642,
+    "roky": {
+     "2017": 68,
+     "2018": 80,
+     "2019": 72,
+     "2020": 126,
+     "2021": 162,
+     "2022": 134
+    },
+    "najcastejsie": [
+     "101 - osoba pod vplyvom alkoholu al.omamných látok",
+     "102 - zranená osoba",
+     "121 - uhynuté zviera"
+    ]
+   },
+   "Ružinov": {
+    "spolu": 560,
+    "roky": {
+     "2017": 65,
+     "2018": 78,
+     "2019": 79,
+     "2020": 89,
+     "2021": 130,
+     "2022": 119
+    },
+    "najcastejsie": [
+     "102 - zranená osoba",
+     "103 - osoba chorá, v bezvedomí a pod.",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Dúbravka": {
+    "spolu": 205,
+    "roky": {
+     "2017": 33,
+     "2018": 43,
+     "2019": 44,
+     "2020": 30,
+     "2021": 32,
+     "2022": 23
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "102 - zranená osoba",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Karlova Ves": {
+    "spolu": 152,
+    "roky": {
+     "2017": 20,
+     "2018": 19,
+     "2019": 35,
+     "2020": 26,
+     "2021": 26,
+     "2022": 26
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "102 - zranená osoba",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Rača": {
+    "spolu": 130,
+    "roky": {
+     "2017": 17,
+     "2018": 17,
+     "2019": 17,
+     "2020": 31,
+     "2021": 27,
+     "2022": 21
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "102 - zranená osoba",
+     "121 - uhynuté zviera"
+    ]
+   },
+   "Podunajské Biskupice": {
+    "spolu": 127,
+    "roky": {
+     "2017": 15,
+     "2018": 15,
+     "2019": 25,
+     "2020": 24,
+     "2021": 23,
+     "2022": 25
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok",
+     "102 - zranená osoba"
+    ]
+   },
+   "Vrakuňa": {
+    "spolu": 92,
+    "roky": {
+     "2017": 11,
+     "2018": 16,
+     "2019": 10,
+     "2020": 19,
+     "2021": 18,
+     "2022": 18
+    },
+    "najcastejsie": [
+     "101 - osoba pod vplyvom alkoholu al.omamných látok",
+     "103 - osoba chorá, v bezvedomí a pod.",
+     "122 - pes bez majiteľa"
+    ]
+   },
+   "Devínska Nová Ves": {
+    "spolu": 67,
+    "roky": {
+     "2017": 8,
+     "2018": 10,
+     "2019": 16,
+     "2020": 14,
+     "2021": 9,
+     "2022": 10
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "121 - uhynuté zviera",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Vajnory": {
+    "spolu": 50,
+    "roky": {
+     "2017": 8,
+     "2018": 16,
+     "2019": 8,
+     "2020": 9,
+     "2021": 4,
+     "2022": 5
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "121 - uhynuté zviera",
+     "102 - zranená osoba"
+    ]
+   },
+   "Lamač": {
+    "spolu": 48,
+    "roky": {
+     "2017": 5,
+     "2018": 6,
+     "2019": 11,
+     "2020": 9,
+     "2021": 11,
+     "2022": 6
+    },
+    "najcastejsie": [
+     "102 - zranená osoba",
+     "122 - pes bez majiteľa",
+     "101 - osoba pod vplyvom alkoholu al.omamných látok"
+    ]
+   },
+   "Devín": {
+    "spolu": 19,
+    "roky": {
+     "2017": 1,
+     "2018": 2,
+     "2019": 7,
+     "2020": 4,
+     "2021": 1,
+     "2022": 4
+    },
+    "najcastejsie": [
+     "121 - uhynuté zviera",
+     "108 - padnutý strom",
+     "122 - pes bez majiteľa"
+    ]
+   },
+   "Záhorská Bystrica": {
+    "spolu": 13,
+    "roky": {
+     "2017": 2,
+     "2019": 2,
+     "2020": 6,
+     "2021": 1,
+     "2022": 2
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "121 - uhynuté zviera",
+     "107 - nájdené alebo odovzdané osobné doklady"
+    ]
+   },
+   "Rusovce": {
+    "spolu": 11,
+    "roky": {
+     "2018": 1,
+     "2019": 1,
+     "2020": 5,
+     "2021": 4
+    },
+    "najcastejsie": [
+     "121 - uhynuté zviera",
+     "102 - zranená osoba",
+     "127 - oznámené PZ"
+    ]
+   },
+   "Čunovo": {
+    "spolu": 7,
+    "roky": {
+     "2017": 1,
+     "2018": 1,
+     "2019": 1,
+     "2020": 1,
+     "2021": 2,
+     "2022": 1
+    },
+    "najcastejsie": [
+     "122 - pes bez majiteľa",
+     "102 - zranená osoba",
+     "108 - padnutý strom"
+    ]
+   },
+   "Jarovce": {
+    "spolu": 5,
+    "roky": {
+     "2017": 2,
+     "2018": 1,
+     "2019": 1,
+     "2021": 1
+    },
+    "najcastejsie": [
+     "121 - uhynuté zviera",
+     "123 - zranené zviera",
+     "122 - pes bez majiteľa"
+    ]
+   }
+  },
+  "druhy": [
+   {
+    "druh": "102 - zranená osoba",
+    "pocet": 585
+   },
+   {
+    "druh": "101 - osoba pod vplyvom alkoholu al.omamných látok",
+    "pocet": 532
+   },
+   {
+    "druh": "103 - osoba chorá, v bezvedomí a pod.",
+    "pocet": 516
+   },
+   {
+    "druh": "122 - pes bez majiteľa",
+    "pocet": 422
+   },
+   {
+    "druh": "121 - uhynuté zviera",
+    "pocet": 286
+   },
+   {
+    "druh": "107 - nájdené alebo odovzdané osobné doklady",
+    "pocet": 251
+   },
+   {
+    "druh": "127 - oznámené PZ",
+    "pocet": 228
+   },
+   {
+    "druh": "222 - vozidlo zaregistrované v park. systéme",
+    "pocet": 225
+   },
+   {
+    "druh": "123 - zranené zviera",
+    "pocet": 99
+   },
+   {
+    "druh": "108 - padnutý strom",
+    "pocet": 97
+   },
+   {
+    "druh": "111 - zistenie požiaru",
+    "pocet": 82
+   },
+   {
+    "druh": "112 - padnutý strom, konáre",
+    "pocet": 62
+   },
+   {
+    "druh": "125 - založenie papuče na žiadosť PZ",
+    "pocet": 53
+   },
+   {
+    "druh": "113 - rozliata neznáma tekutina",
+    "pocet": 38
+   },
+   {
+    "druh": "115 - horiace kontajnery, smetné koše",
+    "pocet": 25
+   },
+   {
+    "druh": "116 - horiaca tráva",
+    "pocet": 14
+   },
+   {
+    "druh": "201 - zistená osoba v pátraní pre trestný čin",
+    "pocet": 12
+   },
+   {
+    "druh": "124 - cencúle,sneh zo strechy",
+    "pocet": 9
+   },
+   {
+    "druh": "205 - zistená nezvestná osoba",
+    "pocet": 7
+   },
+   {
+    "druh": "105 - poskytovateľ sociálnej služby pre ľudí bez domova",
+    "pocet": 5
+   }
+  ],
+  "skupiny": [
+   {
+    "skupina": "101 - RZP /privolaná RZP",
+    "pocet": 1267
+   },
+   {
+    "skupina": "103 - Sloboda zvierat /privolaný pracovník Slobody zvierat",
+    "pocet": 807
+   },
+   {
+    "skupina": "101 - ZZS /privolaná ZZS",
+    "pocet": 364
+   },
+   {
+    "skupina": "102 - HaZZ /privolaní hasiči z HaZZ",
+    "pocet": 334
+   },
+   {
+    "skupina": "109 - spolupráca s PZ",
+    "pocet": 283
+   },
+   {
+    "skupina": "107 - osobné doklady /nájdené alebo odovzdané osobné doklady",
+    "pocet": 251
+   },
+   {
+    "skupina": "222 - bez priestupku-vozidlo zaregistrované",
+    "pocet": 225
+   },
+   {
+    "skupina": "201 - pátrania PZ",
+    "pocet": 23
+   },
+   {
+    "skupina": "104 - prevádzka osobitnej telefónnej linky /",
+    "pocet": 5
+   }
+  ],
+  "ulice": [
+   {
+    "ulica": "Obchodná",
+    "mc": "Staré Mesto",
+    "pocet": 104
+   },
+   {
+    "ulica": "Kukučínova",
+    "mc": "Nové Mesto",
+    "pocet": 58
+   },
+   {
+    "ulica": "Saratovská",
+    "mc": "Dúbravka",
+    "pocet": 56
+   },
+   {
+    "ulica": "Nám.SNP",
+    "mc": "Staré Mesto",
+    "pocet": 50
+   },
+   {
+    "ulica": "Račianska - MČ Nové Mesto",
+    "mc": "Nové Mesto",
+    "pocet": 46
+   },
+   {
+    "ulica": "Hálkova",
+    "mc": "Nové Mesto",
+    "pocet": 44
+   },
+   {
+    "ulica": "Vajnorská",
+    "mc": "Nové Mesto",
+    "pocet": 38
+   },
+   {
+    "ulica": "Kamenné námestie",
+    "mc": "Staré Mesto",
+    "pocet": 34
+   },
+   {
+    "ulica": "Kopčianska",
+    "mc": "Petržalka",
+    "pocet": 32
+   },
+   {
+    "ulica": "Ružinovská",
+    "mc": "Ružinov",
+    "pocet": 27
+   },
+   {
+    "ulica": "Trnavské mýto",
+    "mc": "Nové Mesto",
+    "pocet": 26
+   },
+   {
+    "ulica": "Námestie Franza Liszta",
+    "mc": "Staré Mesto",
+    "pocet": 25
+   },
+   {
+    "ulica": "Dolnozemská cesta",
+    "mc": "Petržalka",
+    "pocet": 25
+   },
+   {
+    "ulica": "Michalská",
+    "mc": "Staré Mesto",
+    "pocet": 24
+   },
+   {
+    "ulica": "Cesta Mládeže",
+    "mc": "Nové Mesto",
+    "pocet": 24
+   },
+   {
+    "ulica": "Haanova",
+    "mc": "Petržalka",
+    "pocet": 23
+   },
+   {
+    "ulica": "Ivánska cesta",
+    "mc": "Ružinov",
+    "pocet": 22
+   },
+   {
+    "ulica": "Schneidra Trnavského",
+    "mc": "Dúbravka",
+    "pocet": 22
+   },
+   {
+    "ulica": "Poštová",
+    "mc": "Staré Mesto",
+    "pocet": 22
+   },
+   {
+    "ulica": "Hurbanovo námestie",
+    "mc": "Staré Mesto",
+    "pocet": 21
+   },
+   {
+    "ulica": "Gessayova",
+    "mc": "Petržalka",
+    "pocet": 21
+   },
+   {
+    "ulica": "Nám.Hraničiarov",
+    "mc": "Petržalka",
+    "pocet": 20
+   },
+   {
+    "ulica": "Mierová",
+    "mc": "Ružinov",
+    "pocet": 20
+   },
+   {
+    "ulica": "Miletičova",
+    "mc": "Ružinov",
+    "pocet": 20
+   },
+   {
+    "ulica": "Odbojárov",
+    "mc": "Nové Mesto",
+    "pocet": 20
+   }
+  ],
+  "hodiny": [
+   117,
+   83,
+   59,
+   49,
+   39,
+   47,
+   64,
+   104,
+   199,
+   212,
+   190,
+   185,
+   222,
+   189,
+   211,
+   188,
+   199,
+   195,
+   160,
+   200,
+   194,
+   168,
+   162,
+   120
+  ],
+  "dni": [
+   456,
+   514,
+   496,
+   494,
+   538,
+   521,
+   540
+  ]
+ },
+ "pokuty": {
+  "2020": {
+   "2200 - bezpečnosť a plynulosť cestnej premávky": {
+    "pocet": 366,
+    "suma": 796525
+   },
+   "4810 - čistota a ver.poriadok": {
+    "pocet": 302,
+    "suma": 1780
+   },
+   "4700 - priestupok proti verejnému poriadku": {
+    "pocet": 235,
+    "suma": 4470
+   },
+   "4834 - požívanie alk.nápojov na ver.priestr.": {
+    "pocet": 234,
+    "suma": 11390
+   },
+   "9801 - VRAK motor.vozidla - porušenie zákona": {
+    "pocet": 205,
+    "suma": 0
+   },
+   "9809 - porušenie zákona o lesoch": {
+    "pocet": 167,
+    "suma": 0
+   },
+   "9804 - porušenie zákona o ochrane nefajčiarov": {
+    "pocet": 143,
+    "suma": 2200
+   },
+   "4811 - kontajnery a ich stojiská": {
+    "pocet": 135,
+    "suma": 0
+   },
+   "4838 - nepovolené pouličné aktivity": {
+    "pocet": 96,
+    "suma": 430
+   },
+   "4832 - záverečné hodiny-prevádzkové časy a VP": {
+    "pocet": 95,
+    "suma": 1700
+   },
+   "4836 - obťažovanie osôb": {
+    "pocet": 89,
+    "suma": 90
+   },
+   "9802 - dopravná značka - zmena,zničenie,poškodenie,znečištenie": {
+    "pocet": 83,
+    "suma": 0
+   },
+   "9100 - kontrola TAXI": {
+    "pocet": 69,
+    "suma": 4880
+   },
+   "9811 - ohrozenie verejného zdravia": {
+    "pocet": 59,
+    "suma": 2240
+   },
+   "4814 - znečisťovanie odpadom, nepovolené skládky": {
+    "pocet": 57,
+    "suma": 30
+   },
+   "9901 - porušenie podmienok držania psov": {
+    "pocet": 53,
+    "suma": 345
+   },
+   "9800 - nepovolené skládky - porušenie zákona": {
+    "pocet": 46,
+    "suma": 0
+   },
+   "4833 - exteriérové sedenie": {
+    "pocet": 40,
+    "suma": 700
+   },
+   "9802 - doprav.značka - zmena,zničenie,poškodenie,znečistenie": {
+    "pocet": 40,
+    "suma": 0
+   },
+   "5000 - priestupok proti majetku": {
+    "pocet": 37,
+    "suma": 40
+   },
+   "4815 - VRAK motorového vozidla - porušenie VZN": {
+    "pocet": 31,
+    "suma": 0
+   },
+   "4825 - zákaz vjazdu s bicyklom": {
+    "pocet": 29,
+    "suma": 480
+   },
+   "4816 - stavebné práce mimo vyhrad. času": {
+    "pocet": 28,
+    "suma": 690
+   },
+   "4801 - psi (vodítko,voľný pohyb)": {
+    "pocet": 28,
+    "suma": 100
+   },
+   "4830 - ambulantný predaj": {
+    "pocet": 27,
+    "suma": 460
+   },
+   "4801 - psi (vôdzka,voľný pohyb)": {
+    "pocet": 27,
+    "suma": 150
+   },
+   "9812 - civilná ochrana": {
+    "pocet": 26,
+    "suma": 1890
+   },
+   "4900 - priestupok proti občianskému spolunažívaniu": {
+    "pocet": 23,
+    "suma": 40
+   },
+   "4812 - skladovanie staveb.materiálu bez povolenia na ver.priestr.": {
+    "pocet": 15,
+    "suma": 30
+   },
+   "4828 - zákaz táborenia, zakladanie ohniska": {
+    "pocet": 15,
+    "suma": 20
+   },
+   "4820 - poškodzovanie verejnej zelene": {
+    "pocet": 14,
+    "suma": 30
+   },
+   "4844 - ochrana nefajčiarov": {
+    "pocet": 13,
+    "suma": 90
+   },
+   "4803 - psi (známka,evidencia,poplatky)": {
+    "pocet": 11,
+    "suma": 30
+   },
+   "4802 - psi (zákaz vstupu)": {
+    "pocet": 11,
+    "suma": 40
+   },
+   "4823 - nepovolené pálenie odpadu": {
+    "pocet": 9,
+    "suma": 30
+   },
+   "4813 - užívanie verejného priestranstva bez povolenia": {
+    "pocet": 9,
+    "suma": 40
+   },
+   "2400 - priestupok na úseku ponikania": {
+    "pocet": 9,
+    "suma": 0
+   },
+   "4800 - psi (čistota-výkaly)": {
+    "pocet": 8,
+    "suma": 0
+   },
+   "4817 - nepovolené rozkopávky": {
+    "pocet": 8,
+    "suma": 30
+   },
+   "9899 - stavba bez stavebného povolenia": {
+    "pocet": 8,
+    "suma": 0
+   },
+   "9806 - porušenie ochrany pred zneuž.alkohol.nápojov": {
+    "pocet": 7,
+    "suma": 0
+   },
+   "4839 - hluk(nežiaduci,škodlivý,obťažujúci ... )": {
+    "pocet": 6,
+    "suma": 80
+   },
+   "4821 - státie na zeleni": {
+    "pocet": 4,
+    "suma": 25
+   },
+   "4500 - priestupok na úseku ochrany život.prostredia": {
+    "pocet": 4,
+    "suma": 40
+   },
+   "4841 - zákaz používania pyrotechniky": {
+    "pocet": 2,
+    "suma": 60
+   },
+   "3000 - priestupok na úseku ochrany pred alkoholizmom a in.toxikomán": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "4831 - trhový poriadok": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "4826 - znečisťovanie komunikácie": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "4600 - iné priestupky proti poriadku v správe": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "106 - iné oznámenia a zistenia": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "4835 - zákaz(obmedzenie)predaja alkohol.nápojov": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "2400 - priestupok na úseku podnikania": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "9810 - porušenie zákona o vodách": {
+    "pocet": 1,
+    "suma": 10
+   },
+   "9814 - rúško": {
+    "pocet": 1,
+    "suma": 0
+   }
+  },
+  "2021": {
+   "2200 - bezpečnosť a plynulosť cestnej premávky": {
+    "pocet": 365,
+    "suma": 798925
+   },
+   "4700 - priestupok proti verejnému poriadku": {
+    "pocet": 248,
+    "suma": 5660
+   },
+   "4810 - čistota a ver.poriadok": {
+    "pocet": 236,
+    "suma": 950
+   },
+   "9801 - VRAK motor.vozidla - porušenie zákona": {
+    "pocet": 186,
+    "suma": 0
+   },
+   "4834 - požívanie alk.nápojov na ver.priestr.": {
+    "pocet": 170,
+    "suma": 7750
+   },
+   "9802 - doprav.značka - zmena,zničenie,poškodenie,znečistenie": {
+    "pocet": 126,
+    "suma": 0
+   },
+   "4811 - kontajnery a ich stojiská": {
+    "pocet": 105,
+    "suma": 90
+   },
+   "9901 - porušenie podmienok držania psov": {
+    "pocet": 78,
+    "suma": 650
+   },
+   "9804 - porušenie zákona o ochrane nefajčiarov": {
+    "pocet": 77,
+    "suma": 720
+   },
+   "4814 - znečisťovanie odpadom, nepovolené skládky": {
+    "pocet": 67,
+    "suma": 40
+   },
+   "9809 - porušenie zákona o lesoch": {
+    "pocet": 58,
+    "suma": 0
+   },
+   "4832 - záverečné hodiny-prevádzkové časy a VP": {
+    "pocet": 53,
+    "suma": 910
+   },
+   "4801 - psi (vôdzka,voľný pohyb)": {
+    "pocet": 52,
+    "suma": 290
+   },
+   "4900 - priestupok proti občianskému spolunažívaniu": {
+    "pocet": 44,
+    "suma": 440
+   },
+   "9800 - nepovolené skládky - porušenie zákona": {
+    "pocet": 40,
+    "suma": 0
+   },
+   "4815 - VRAK motorového vozidla - porušenie VZN": {
+    "pocet": 40,
+    "suma": 0
+   },
+   "4838 - nepovolené pouličné aktivity": {
+    "pocet": 36,
+    "suma": 40
+   },
+   "5000 - priestupok proti majetku": {
+    "pocet": 31,
+    "suma": 30
+   },
+   "9814 - rúško": {
+    "pocet": 24,
+    "suma": 880
+   },
+   "4802 - psi (zákaz vstupu)": {
+    "pocet": 23,
+    "suma": 110
+   },
+   "9811 - ohrozenie verejného zdravia": {
+    "pocet": 22,
+    "suma": 190
+   },
+   "4836 - obťažovanie osôb": {
+    "pocet": 17,
+    "suma": 0
+   },
+   "9812 - civilná ochrana": {
+    "pocet": 16,
+    "suma": 1680
+   },
+   "4816 - stavebné práce mimo vyhrad. času": {
+    "pocet": 15,
+    "suma": 210
+   },
+   "4833 - exteriérové sedenie": {
+    "pocet": 15,
+    "suma": 480
+   },
+   "9100 - kontrola TAXI": {
+    "pocet": 14,
+    "suma": 620
+   },
+   "4813 - užívanie verejného priestranstva bez povolenia": {
+    "pocet": 14,
+    "suma": 90
+   },
+   "4500 - priestupok na úseku ochrany život.prostredia": {
+    "pocet": 13,
+    "suma": 40
+   },
+   "4830 - ambulantný predaj": {
+    "pocet": 13,
+    "suma": 100
+   },
+   "4820 - poškodzovanie verejnej zelene": {
+    "pocet": 12,
+    "suma": 20
+   },
+   "4825 - zákaz vjazdu s bicyklom": {
+    "pocet": 10,
+    "suma": 110
+   },
+   "2222 - porušenie § 6a písm.e) zák.č. 8/2009": {
+    "pocet": 10,
+    "suma": 0
+   },
+   "4803 - psi (známka,evidencia,poplatky)": {
+    "pocet": 9,
+    "suma": 100
+   },
+   "4828 - zákaz táborenia, zakladanie ohniska": {
+    "pocet": 9,
+    "suma": 110
+   },
+   "9806 - porušenie ochrany pred zneuž.alkohol.nápojov": {
+    "pocet": 9,
+    "suma": 0
+   },
+   "4844 - ochrana nefajčiarov": {
+    "pocet": 8,
+    "suma": 30
+   },
+   "4840 - rušenie nočného pokoja": {
+    "pocet": 8,
+    "suma": 20
+   },
+   "2202 - BaPCP podľa §22 ods.1,písm.l)": {
+    "pocet": 8,
+    "suma": 330
+   },
+   "4839 - hluk(nežiaduci,škodlivý,obťažujúci ... )": {
+    "pocet": 7,
+    "suma": 20
+   },
+   "4823 - nepovolené pálenie odpadu": {
+    "pocet": 5,
+    "suma": 0
+   },
+   "4817 - nepovolené rozkopávky": {
+    "pocet": 5,
+    "suma": 0
+   },
+   "4800 - psi (čistota-výkaly)": {
+    "pocet": 5,
+    "suma": 40
+   },
+   "9899 - stavba bez stavebného povolenia": {
+    "pocet": 5,
+    "suma": 0
+   },
+   "4600 - iné priestupky proti poriadku v správe": {
+    "pocet": 4,
+    "suma": 20
+   },
+   "4821 - státie na zeleni": {
+    "pocet": 3,
+    "suma": 20
+   },
+   "9803 - znečisťovanie komunikácie - podľa zákona": {
+    "pocet": 3,
+    "suma": 0
+   },
+   "4826 - znečisťovanie komunikácie": {
+    "pocet": 2,
+    "suma": 30
+   },
+   "4812 - skladovanie staveb.materiálu bez povolenia na ver.priestr.": {
+    "pocet": 2,
+    "suma": 20
+   },
+   "9807 - neoznámené zhromaždenie": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "3500 - priestupok na úseku poľnohospodárstva a poľovníctva a ryb.": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "2400 - priestupok na úseku podnikania": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "222 - bez priestupku-vozidlo zaregistrované": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "4831 - trhový poriadok": {
+    "pocet": 1,
+    "suma": 0
+   }
+  },
+  "2022": {
+   "4700 - priestupok proti verejnému poriadku": {
+    "pocet": 265,
+    "suma": 4635
+   },
+   "2200 - bezpeč.a plynul.cest.premávky do 31.7.2022": {
+    "pocet": 212,
+    "suma": 479150
+   },
+   "9801 - VRAK motor.vozidla - porušenie zákona": {
+    "pocet": 151,
+    "suma": 0
+   },
+   "4810 - čistota a ver.poriadok": {
+    "pocet": 149,
+    "suma": 430
+   },
+   "4834 - požívanie alk.nápojov na ver.priestr.": {
+    "pocet": 149,
+    "suma": 3180
+   },
+   "2122 - BaPCP §22 ods.1,písm.l) od 1.8.2022": {
+    "pocet": 124,
+    "suma": 254590
+   },
+   "2123 - BaPCP §22 ods.1,písm.k) od 1.8.2022": {
+    "pocet": 120,
+    "suma": 30030
+   },
+   "9802 - doprav.značka - zmena,zničenie,poškodenie,znečistenie": {
+    "pocet": 101,
+    "suma": 0
+   },
+   "4900 - priestupok proti občianskému spolunažívaniu": {
+    "pocet": 92,
+    "suma": 1245
+   },
+   "4814 - znečisťovanie odpadom, nepovolené skládky": {
+    "pocet": 83,
+    "suma": 0
+   },
+   "4838 - nepovolené pouličné aktivity": {
+    "pocet": 83,
+    "suma": 130
+   },
+   "9901 - porušenie podmienok držania psov": {
+    "pocet": 76,
+    "suma": 330
+   },
+   "4832 - záverečné hodiny-prevádzkové časy a VP": {
+    "pocet": 73,
+    "suma": 380
+   },
+   "4815 - VRAK motorového vozidla - porušenie VZN": {
+    "pocet": 62,
+    "suma": 0
+   },
+   "4811 - kontajnery a ich stojiská": {
+    "pocet": 53,
+    "suma": 20
+   },
+   "9804 - porušenie zákona o ochrane nefajčiarov": {
+    "pocet": 51,
+    "suma": 770
+   },
+   "2124 - BaPCP správne delikty §138": {
+    "pocet": 44,
+    "suma": 0
+   },
+   "2222 - porušenie § 6a písm.e) zák.č. 8/2009": {
+    "pocet": 41,
+    "suma": 50
+   },
+   "9800 - nepovolené skládky - porušenie zákona": {
+    "pocet": 38,
+    "suma": 0
+   },
+   "5000 - priestupok proti majetku": {
+    "pocet": 36,
+    "suma": 300
+   },
+   "2202 - BaPCP §22 odsek,písm.l) do 31.7.2022": {
+    "pocet": 31,
+    "suma": 1710
+   },
+   "4801 - psi (vôdzka,voľný pohyb)": {
+    "pocet": 28,
+    "suma": 170
+   },
+   "4600 - iné priestupky proti poriadku v správe": {
+    "pocet": 26,
+    "suma": 380
+   },
+   "9100 - kontrola TAXI": {
+    "pocet": 26,
+    "suma": 1440
+   },
+   "4836 - obťažovanie osôb": {
+    "pocet": 22,
+    "suma": 65
+   },
+   "4825 - zákaz vjazdu s bicyklom": {
+    "pocet": 19,
+    "suma": 200
+   },
+   "9809 - porušenie zákona o lesoch": {
+    "pocet": 16,
+    "suma": 0
+   },
+   "4840 - rušenie nočného pokoja": {
+    "pocet": 15,
+    "suma": 60
+   },
+   "4816 - stavebné práce mimo vyhrad. času": {
+    "pocet": 11,
+    "suma": 120
+   },
+   "4802 - psi (zákaz vstupu)": {
+    "pocet": 10,
+    "suma": 40
+   },
+   "2201 - BaPCP §22 ods.1,písm.m) do 31.7.2022": {
+    "pocet": 10,
+    "suma": 140
+   },
+   "4803 - psi (známka,evidencia,poplatky)": {
+    "pocet": 10,
+    "suma": 170
+   },
+   "4833 - exteriérové sedenie": {
+    "pocet": 9,
+    "suma": 80
+   },
+   "9811 - ohrozenie verejného zdravia": {
+    "pocet": 8,
+    "suma": 10
+   },
+   "9806 - porušenie ochrany pred zneuž.alkohol.nápojov": {
+    "pocet": 8,
+    "suma": 0
+   },
+   "4820 - poškodzovanie verejnej zelene": {
+    "pocet": 8,
+    "suma": 20
+   },
+   "4500 - priestupok na úseku ochrany život.prostredia": {
+    "pocet": 7,
+    "suma": 0
+   },
+   "4813 - užívanie verejného priestranstva bez povolenia": {
+    "pocet": 6,
+    "suma": 100
+   },
+   "4830 - ambulantný predaj": {
+    "pocet": 5,
+    "suma": 90
+   },
+   "4800 - psi (čistota-výkaly)": {
+    "pocet": 5,
+    "suma": 50
+   },
+   "9899 - stavba bez stavebného povolenia": {
+    "pocet": 5,
+    "suma": 0
+   },
+   "9803 - znečisťovanie komunikácie - podľa zákona": {
+    "pocet": 4,
+    "suma": 0
+   },
+   "4823 - nepovolené pálenie odpadu": {
+    "pocet": 4,
+    "suma": 20
+   },
+   "4839 - hluk(nežiaduci,škodlivý,obťažujúci ... )": {
+    "pocet": 4,
+    "suma": 20
+   },
+   "4812 - skladovanie staveb.materiálu bez povolenia na ver.priestr.": {
+    "pocet": 4,
+    "suma": 30
+   },
+   "4844 - ochrana nefajčiarov": {
+    "pocet": 3,
+    "suma": 90
+   },
+   "4841 - zákaz používania pyrotechniky": {
+    "pocet": 3,
+    "suma": 40
+   },
+   "4831 - trhový poriadok": {
+    "pocet": 3,
+    "suma": 30
+   },
+   "2600 - priestupok na úseku hospodárenia s bytmi a s neb.priestormi": {
+    "pocet": 3,
+    "suma": 20
+   },
+   "4828 - zákaz táborenia, zakladanie ohniska": {
+    "pocet": 3,
+    "suma": 0
+   },
+   "9812 - civilná ochrana": {
+    "pocet": 2,
+    "suma": 20
+   },
+   "2400 - priestupok na úseku podnikania": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "4817 - nepovolené rozkopávky": {
+    "pocet": 2,
+    "suma": 0
+   },
+   "4826 - znečisťovanie komunikácie": {
+    "pocet": 1,
+    "suma": 20
+   },
+   "2100 - priestupky proti poriadku v správe": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "4835 - zákaz(obmedzenie)predaja alkohol.nápojov": {
+    "pocet": 1,
+    "suma": 10
+   },
+   "4818 - plagáty + reklama": {
+    "pocet": 1,
+    "suma": 0
+   },
+   "210 - EVO - LUSTROVANIE": {
+    "pocet": 1,
+    "suma": 0
+   }
+  }
+ },
+ "podnety": {
+  "spolu": 12847,
+  "roky": {
+   "2017": 1119,
+   "2018": 1767,
+   "2019": 2381,
+   "2020": 2671,
+   "2021": 3184,
+   "2022": 1725
+  },
+  "kategorie": [
+   {
+    "kategoria": "Cesty a chodníky",
+    "pocet": 3108
+   },
+   {
+    "kategoria": "Dopravné značenie",
+    "pocet": 2227
+   },
+   {
+    "kategoria": "Zeleň a životné prostredie",
+    "pocet": 2127
+   },
+   {
+    "kategoria": "Hlavné mesto SR Bratislava",
+    "pocet": 1725
+   },
+   {
+    "kategoria": "Verejné služby",
+    "pocet": 1215
+   },
+   {
+    "kategoria": "Automobily",
+    "pocet": 1051
+   },
+   {
+    "kategoria": "Verejný poriadok",
+    "pocet": 736
+   },
+   {
+    "kategoria": "Mestský mobiliár",
+    "pocet": 580
+   },
+   {
+    "kategoria": "iné",
+    "pocet": 64
+   },
+   {
+    "kategoria": "Všetko ostatné",
+    "pocet": 14
+   }
+  ],
+  "stavy": {
+   "V riešení": 5302,
+   "Vyriešený": 4364,
+   "iný": 1725,
+   "Uzavretý": 866,
+   "Neriešený": 590
+  },
+  "mestske_casti": {
+   "Staré Mesto": 2679,
+   "Ružinov": 2548,
+   "neuvedená": 1734,
+   "Petržalka": 1696,
+   "Nové Mesto": 1423,
+   "Rača": 796,
+   "Karlova Ves": 776,
+   "Dúbravka": 427,
+   "Podunajské Biskupice": 201,
+   "Vrakuňa": 188,
+   "Vajnory": 127,
+   "Devínska Nová Ves": 117,
+   "Lamač": 65,
+   "Devín": 37,
+   "Rusovce": 12,
+   "Čunovo": 7,
+   "Záhorská Bystrica": 7,
+   "Jarovce": 7
+  },
+  "median_dni_vyriesenia": {
+   "2017": 980.5,
+   "2018": 646.5,
+   "2019": 189.0,
+   "2020": 35,
+   "2021": 16,
+   "2022": 1
+  },
+  "posledny_podnet": "2022-06-30"
+ },
+ "chyby": [],
+ "aktualizovane": "2026-10-15T16:52:55+00:00"
+}
