@@ -23,7 +23,7 @@ from pathlib import Path
 import requests
 
 BASE = "https://zastupitelstvo.bratislava.sk"
-VOL_OBDOBIA = {"297313": "9"}  # 2022–2026 (ďalšie obdobie sa doplní po voľbách)
+VOL_OBDOBIA = {"297313": "9"}  # 2022–2026; novšie obdobia (2026–2030 = „10“) sa nájdu samy – vol_obdobia()
 CACHE = Path(__file__).resolve().parent.parent / "data" / "hlasovania-web.json"
 SKUPINY = [("Z", r"Hlasovali za"), ("P", r"Hlasovali proti"), ("Q", r"Zdržali"), ("N", r"Nehlasovali"), ("A", r"Neprítomn")]
 TITULY = re.compile(r"^(et|[A-Za-z]{1,6}\.|[A-Za-z]+\.[A-Za-z.]*)$")
@@ -81,6 +81,18 @@ def parsuj_hlasovania(html: str) -> list[dict]:
     return vysl
 
 
+def vol_obdobia() -> dict[str, str]:
+    """Volebné obdobia z výberu na webe (napr. „2026 - 2030“) → naše číslo obdobia (2022–2026 = 9, 2026–2030 = 10…)."""
+    obd = dict(VOL_OBDOBIA)
+    try:
+        for idw, od in re.findall(r'<option[^>]*value="(\d+)"[^>]*>\s*(\d{4})\s*[-–]\s*\d{4}', get(f"{BASE}/zasadnutia/")):
+            if int(od) >= 2022 and (int(od) - 2022) % 4 == 0:
+                obd.setdefault(idw, str(9 + (int(od) - 2022) // 4))
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=Obdobia zastupiteľstva::{e}")
+    return obd
+
+
 def zoznam_zasadnuti(vol_obd: str) -> list[tuple[str, str]]:
     najdene: dict[str, str] = {}
     for strana in range(0, 15):
@@ -133,7 +145,7 @@ def hlasovania_z_webu(od: str) -> tuple[list[dict], list[dict]]:
     cache = json.loads(CACHE.read_text(encoding="utf-8")) if CACHE.exists() else {"zasadnutia": {}}
     dnes = date.today().isoformat()
     vysl, zasadnutia = [], []
-    for vol_obd, obd in VOL_OBDOBIA.items():
+    for vol_obd, obd in vol_obdobia().items():
         for d, url in zoznam_zasadnuti(vol_obd):
             zasadnutia.append({"datum": d, "url": url, "obdobie": obd})
             if d < od or d > dnes:
