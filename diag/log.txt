@@ -1,15 +1,15 @@
-  Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
-  Košice 2022: primátor v 22 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 7}
-  komunálne 2022: 8 miest
-CSV kosice 22 min pomer 0.56 max 1.77
-    [('Barca', 0.67), ('Dargovských ', 0.71), ('Džungľa', 1.77), ('Juh', 0.71), ('Kavečany', 0.59), ('Košická Nová', 0.67), ('Krásna', 0.73), ('Lorinčík', 0.7), ('Luník IX', 0.67), ('Myslava', 0.79), ('Nad jazerom', 0.69), ('Pereš', 0.7), ('Poľov', 0.62), ('Sever', 0.77), ('Staré Mesto', 0.77), ('Sídlisko KVP', 0.69), ('Sídlisko Ťah', 0.7), ('Vyšné Opátsk', 0.93), ('Západ', 0.71), ('Šaca', 0.56), ('Šebastovce', 1.01), ('Ťahanovce', 0.74)]
-CSV bratislava 17 min pomer 0.84 max 0.93
-    [('Devín', 0.89), ('Devínska Nov', 0.88), ('Dúbravka', 0.85), ('Jarovce', 0.88), ('Karlova Ves', 0.91), ('Lamač', 0.88), ('Nové Mesto', 0.91), ('Petržalka', 0.88), ('Podunajské B', 0.84), ('Rača', 0.9), ('Rusovce', 0.88), ('Ružinov', 0.9), ('Staré Mesto', 0.93), ('Vajnory', 0.85), ('Vrakuňa', 0.88), ('Záhorská Bys', 0.89), ('Čunovo', 0.85)]
-  Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
-  Košice 2022: primátor v 22 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 6}
-  komunálne 2022: 8 miest
-XLSX kosice 22 min pomer 0.42 max 2.42
-    [('Barca', 0.76), ('Dargovských ', 0.71), ('Džungľa', 2.42), ('Juh', 0.71), ('Kavečany', 0.42), ('Košická Nová', 0.88), ('Krásna', 0.73), ('Lorinčík', 0.84), ('Luník IX', 0.67), ('Myslava', 0.55), ('Nad jazerom', 0.69), ('Pereš', 0.79), ('Poľov', 0.67), ('Sever', 0.77), ('Staré Mesto', 0.77), ('Sídlisko KVP', 0.69), ('Sídlisko Ťah', 0.7), ('Vyšné Opátsk', 0.71), ('Západ', 0.71), ('Šaca', 0.56), ('Šebastovce', 0.58), ('Ťahanovce', 0.74)]
-XLSX bratislava 17 min pomer 0.84 max 0.93
-    [('Devín', 0.89), ('Devínska Nov', 0.88), ('Dúbravka', 0.85), ('Jarovce', 0.88), ('Karlova Ves', 0.91), ('Lamač', 0.88), ('Nové Mesto', 0.91), ('Petržalka', 0.88), ('Podunajské B', 0.84), ('Rača', 0.9), ('Rusovce', 0.88), ('Ružinov', 0.9), ('Staré Mesto', 0.93), ('Vajnory', 0.85), ('Vrakuňa', 0.88), ('Záhorská Bys', 0.89), ('Čunovo', 0.85)]
+K ('1', '1') STA [315, 580, 128] riadkov 24 kand: ['1', '1', '1', '2', '2', '2', '3', '3', '3', '4', '4', '4', '5', '5', '5', '6', '6', '6', '7', '7', '7', '8', '8', '8']
+   hlasy: [4, 9, 0, 0, 14, 2, 28, 44, 57, 11, 31, 7, 20, 28, 25, 111, 21, 78, 16, 21, 5, 41, 309, 141]
+K ('2', '1') STA [196, 281] riadkov 16 kand: ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8']
+   hlasy: [2, 4, 8, 9, 56, 25, 12, 24, 24, 13, 54, 31, 14, 5, 100, 96]
+K ('2', '2') STA [273, 251] riadkov 16 kand: ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8']
+   hlasy: [2, 2, 5, 5, 43, 46, 25, 27, 13, 23, 41, 63, 11, 8, 99, 111]
+K ('5', '1') STA [449, 638, 332] riadkov 24 kand: ['1', '1', '1', '2', '2', '2', '3', '3', '3', '4', '4', '4', '5', '5', '5', '6', '6', '6', '7', '7', '7', '8', '8', '8']
+   hlasy: [4, 7, 19, 23, 1, 14, 44, 71, 91, 39, 35, 42, 15, 23, 64, 97, 84, 111, 19, 17, 23, 99, 286, 191]
+K ('6', '1') STA [550, 421, 457] riadkov 24 kand: ['1', '1', '1', '2', '2', '2', '3', '3', '3', '4', '4', '4', '5', '5', '5', '6', '6', '6', '7', '7', '7', '8', '8', '8']
+   hlasy: [7, 10, 3, 11, 0, 0, 83, 129, 107, 14, 31, 40, 42, 40, 31, 164, 122, 76, 20, 15, 16, 163, 137, 167]
+K ('6', '2') STA [476, 434] riadkov 16 kand: ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8']
+   hlasy: [3, 6, 18, 41, 120, 69, 33, 30, 40, 30, 94, 85, 15, 18, 191, 117]
+spolu STA mesto 55884 tab05 súčet 55884
+kľúče len v tab05: [] len v tab02b: []
 HOTOVO
