@@ -233,11 +233,16 @@ def bez_klucov(zoznam: list[dict]) -> list[dict]:
     return [{k: v for k, v in x.items() if not k.startswith("_")} for x in zoznam]
 
 
+def nazov_strany(n: str) -> str:
+    """XLSX uvádza dvojjazyčné názvy („SZÖVETSÉG … | ALIANCIA …“), CSV len prvú časť – zjednotíme, aby sa ročníky dali porovnať."""
+    return re.split(r"\s+\|\s+", (n or "").strip())[0].strip()
+
+
 def strany_mapa(t: dict) -> dict[str, str]:
     for r in t.get("tab0c", []):
         if r.get("SNPS") and r.get("NPS"):
-            SKRATKY[r["SNPS"].strip()] = r["NPS"].strip()
-    return {kod(r.get("PS", "")): (r.get("NPS") or r.get("NSTR") or "").strip() for r in t.get("tab0c", [])}
+            SKRATKY[r["SNPS"].strip()] = nazov_strany(r["NPS"])
+    return {kod(r.get("PS", "")): nazov_strany(r.get("NPS") or r.get("NSTR") or "") for r in t.get("tab0c", [])}
 
 
 def zvoleni(t: dict, tab: str, kluc) -> set:
