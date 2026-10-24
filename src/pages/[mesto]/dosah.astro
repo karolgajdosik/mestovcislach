@@ -1,0 +1,161 @@
+---
+// Kam sa dostanem MHD za 15 / 30 / 45 / 60 minút zo zvolenej zastávky (pracovný deň ráno, podľa cestovného poriadku).
+// Výpočet: scripts/zber_odchody.py (Connection Scan, priemer cez 4 časy odchodu 8:00 – 8:22, prestupy pešo do 400 m).
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import { MESTA, type Mesto } from '../../mesta';
+import { odchody } from '../../lib/odchody';
+
+export function getStaticPaths() {
+  const ma = (slug: string) => fs.existsSync(path.join(process.cwd(), 'data', 'dosah', `${slug}.json`)) && !!odchody(slug);
+  return MESTA.filter((m) => m.aktivne && ma(m.slug)).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const d = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'dosah', `${m.slug}.json`), 'utf-8'));
+const den = new Date(d.den).toLocaleDateString('sk-SK', { weekday: 'long', day: 'numeric', month: 'numeric', year: 'numeric' });
+const predvolena = m.slug === 'bratislava' ? 'hodzovo-nam' : 'na-hlavnej';
+const PASMA = [[15, '#15803d', 'do 15 min'], [30, '#ca8a04', '15 – 30 min'], [45, '#ea580c', '30 – 45 min'], [60, '#b91c1c', '45 – 60 min']];
+---
+<Base title={`Kam sa dostanem MHD ${m.v} – dosah za 15, 30 a 45 minút – mestovcislach.sk`} description={`${m.nazov}: mapa, kam sa dostanete mestskou dopravou zo zvolenej zastávky za 15, 30, 45 a 60 minút – podľa cestovného poriadku, s prestupmi.`}>
+  <section class="hero">
+    <p class="kicker">Doprava</p>
+    <h1>Kam sa dostanem MHD <span translate="no">{m.v}</span></h1>
+    <p class="lead">Vyberte zastávku a mapa ukáže, kam sa z nej dostanete mestskou dopravou za 15, 30, 45 a 60 minút – aj s prestupmi. Hodí sa pri hľadaní bytu, škôlky či práce.</p>
+  </section>
+
+  <div class="ds" id="dosah" data-slug={m.slug} data-predvolena={predvolena} data-stred={JSON.stringify((m as any).stred)}>
+    <section class="card ds-ovl">
+      <div class="ds-riadok">
+        <label class="sr" for="ds-q">Zastávka, odkiaľ cestujete</label>
+        <input id="ds-q" type="search" autocomplete="off" placeholder="Odkiaľ: názov zastávky" aria-controls="ds-navrhy" />
+        <button type="button" class="ds-primne" id="ds-primne">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="7"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/></svg>
+          Pri mne
+        </button>
+      </div>
+      <ul class="ds-navrhy" id="ds-navrhy" aria-label="Nájdené zastávky"></ul>
+      <p class="ds-stav" id="ds-stav" role="status" aria-live="polite"></p>
+      <ul class="ds-legenda" id="ds-legenda">
+        {PASMA.map(([min, farba, popis]) => <li data-min={min}><i style={`background:${farba}`}></i><span>{popis}</span><b>–</b></li>)}
+      </ul>
+    </section>
+    <div class="ds-mapa" id="ds-mapa" role="region" aria-label="Mapa dosahu MHD"></div>
+    <p class="pozn">Kliknite na zastávku v mape – stane sa novým východiskom. Zoznam časov k jednotlivým zastávkam je nižšie.</p>
+    <section class="card">
+      <h2 id="ds-zoznam-nadpis">Časy k zastávkam</h2>
+      <div class="ds-zoznam" id="ds-zoznam"></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>Ako počítame</h2>
+    <ul class="ds-info">
+      <li>Podľa cestovného poriadku pre bežný pracovný deň ({den}) s odchodom medzi 8:00 a 8:22 – čas je priemer zo štyroch odchodov, takže zahŕňa aj čakanie na spoj.</li>
+      <li>Rátajú sa prestupy medzi linkami aj pešie presuny medzi zastávkami do 400 m. Chôdzu k prvej zastávke a od poslednej si pripočítajte.</li>
+      <li>Meškania, výluky a obmedzenia nezohľadňujeme. Večer a cez víkend premáva menej spojov, časy budú dlhšie.</li>
+    </ul>
+    <p class="pozn">Zdroj: cestovné poriadky MHD vo formáte GTFS ({m.slug === 'bratislava' ? 'Dopravný podnik Bratislava, data.bratislava.sk' : 'Dopravný podnik mesta Prešov, mesto Prešov'}), CC BY 4.0. Mapa © prispievatelia OpenStreetMap. Pozrite aj <a href={`/${m.slug}/odchody`}>najbližšie odchody zo zastávky</a>.</p>
+  </section>
+</Base>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  import { osmPodklad } from '../../scripts/podklad';
+  import { nacitajIndex, vzdialenost, hx } from '../../scripts/odchody';
+
+  const app = document.getElementById('dosah')!;
+  const slug = app.dataset.slug!;
+  const PASMA: [number, string][] = [[15, '#15803d'], [30, '#ca8a04'], [45, '#ea580c'], [60, '#b91c1c']];
+  const farba = (min: number) => PASMA.find(([p]) => min <= p)?.[1] ?? '#999';
+  const mapa = L.map('ds-mapa', { zoomSnap: 0.25 }).setView(JSON.parse(app.dataset.stred!), 12);
+  osmPodklad().addTo(mapa);
+  const vrstva = L.layerGroup().addTo(mapa);
+  const stav = document.getElementById('ds-stav')!, q = document.getElementById('ds-q') as HTMLInputElement, navrhy = document.getElementById('ds-navrhy')!;
+  const bez = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+  Promise.all([nacitajIndex(slug), fetch(`/data/dosah/${slug}.json`).then((r) => r.json())]).then(([ix, ds]) => {
+    const poz = new Map<string, number>(ds.ids.map((id: string, i: number) => [id, i]));
+    const zast = ds.ids.map((id: string) => ix.zastavky.find((z) => z.id === id)!);
+
+    function zobraz(id: string, posunut = true) {
+      const o = poz.get(id);
+      if (o == null) return;
+      const riadok: string = ds.r[o];
+      vrstva.clearLayers();
+      const casy = zast.map((z: any, i: number) => ({ z, min: riadok[i] === '~' ? null : riadok.charCodeAt(i) - 48 }));
+      // plochy (kruhy 350 m – chôdza ~5 min) od najdlhšieho času, aby kratšie boli navrchu
+      const dosiahnute = casy.filter((c: any) => c.min != null).sort((a: any, b: any) => b.min - a.min);
+      for (const c of dosiahnute) L.circle([c.z.lat, c.z.lon], { radius: 350, stroke: false, fillColor: farba(c.min), fillOpacity: 0.16, interactive: false }).addTo(vrstva);
+      for (const c of dosiahnute) {
+        L.circleMarker([c.z.lat, c.z.lon], { radius: c.z.id === id ? 9 : 5, weight: c.z.id === id ? 3 : 1, color: '#fff', fillColor: c.z.id === id ? '#111' : farba(c.min), fillOpacity: 0.95 })
+          .bindTooltip(`${hx(c.z.n)} – ${c.z.id === id ? 'východisko' : `${c.min} min`}`)
+          .on('click', () => zobraz(c.z.id))
+          .addTo(vrstva);
+      }
+      const start = zast[o];
+      const pocty = PASMA.map(([p], k) => casy.filter((c: any) => c.min != null && c.min <= p && (k === 0 || c.min > PASMA[k - 1][0])).length);
+      document.querySelectorAll<HTMLElement>('#ds-legenda li').forEach((li, k) => { li.querySelector('b')!.textContent = `${pocty[k]} zast.`; });
+      stav.innerHTML = `Z <strong>${hx(start.n)}</strong> sa za 30 minút dostanete na <strong>${pocty[0] + pocty[1]}</strong> z ${zast.length} zastávok.`;
+      document.getElementById('ds-zoznam-nadpis')!.textContent = `Časy zo zastávky ${start.n}`;
+      const zoznam = casy.filter((c: any) => c.z.id !== id).sort((a: any, b: any) => (a.min ?? 999) - (b.min ?? 999) || a.z.n.localeCompare(b.z.n, 'sk'));
+      document.getElementById('ds-zoznam')!.innerHTML = PASMA.map(([p, f], k) => {
+        const x = zoznam.filter((c: any) => c.min != null && c.min <= p && (k === 0 || c.min > PASMA[k - 1][0]));
+        return x.length ? `<h3><i style="background:${f}"></i>${k ? `${PASMA[k - 1][0]} – ${p}` : `do ${p}`} min</h3><p>${x.map((c: any) => `<button type="button" data-id="${hx(c.z.id)}">${hx(c.z.n)} <b>${c.min}</b></button>`).join('')}</p>` : '';
+      }).join('') + (zoznam.some((c: any) => c.min == null) ? `<p class="pozn">Viac ako hodinu: ${zoznam.filter((c: any) => c.min == null).length} zastávok.</p>` : '');
+      history.replaceState(null, '', `#${id}`);
+      if (posunut) {
+        const b = L.latLngBounds(dosiahnute.filter((c: any) => c.min <= 30).map((c: any) => [c.z.lat, c.z.lon] as [number, number]));
+        if (b.isValid()) mapa.fitBounds(b, { padding: [20, 20], maxZoom: 14 });
+      }
+      q.value = '';
+      navrhy.innerHTML = '';
+    }
+
+    q.addEventListener('input', () => {
+      const t = bez(q.value.trim());
+      if (t.length < 2) { navrhy.innerHTML = ''; return; }
+      const z = ix.zastavky.filter((x) => bez(x.n).includes(t)).sort((a, b) => Number(!bez(a.n).startsWith(t)) - Number(!bez(b.n).startsWith(t)) || a.n.localeCompare(b.n, 'sk')).slice(0, 8);
+      navrhy.innerHTML = z.length ? z.map((x) => `<li><button type="button" data-id="${hx(x.id)}">${hx(x.n)}</button></li>`).join('') : '<li class="pozn">Takú zastávku sme nenašli.</li>';
+    });
+    q.addEventListener('keydown', (e) => { if (e.key === 'Enter') { const b = navrhy.querySelector<HTMLButtonElement>('button[data-id]'); if (b) { e.preventDefault(); zobraz(b.dataset.id!); } } });
+    app.addEventListener('click', (e) => { const b = (e.target as Element).closest<HTMLButtonElement>('button[data-id]'); if (b) { zobraz(b.dataset.id!); document.getElementById('ds-mapa')!.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); } });
+    document.getElementById('ds-primne')!.addEventListener('click', () => {
+      if (!navigator.geolocation) { stav.textContent = 'Prehliadač neposkytuje polohu.'; return; }
+      stav.textContent = 'Zisťujem polohu…';
+      navigator.geolocation.getCurrentPosition((p) => {
+        const n = zast.map((z: any) => ({ z, m: vzdialenost(p.coords.latitude, p.coords.longitude, z.lat, z.lon) })).sort((a: any, b: any) => a.m - b.m)[0];
+        if (!n || n.m > 20000) { stav.textContent = 'Ste ďaleko od mesta – vyberte zastávku podľa názvu.'; return; }
+        zobraz(n.z.id);
+      }, () => { stav.textContent = 'Polohu sa nepodarilo zistiť – vyberte zastávku podľa názvu.'; }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
+    });
+    const h = decodeURIComponent(location.hash.slice(1));
+    zobraz(poz.has(h) ? h : poz.has(app.dataset.predvolena!) ? app.dataset.predvolena! : ds.ids[0]);
+  }).catch(() => { stav.textContent = 'Údaje sa nepodarilo načítať.'; });
+</script>
+
+<style>
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .ds-riadok { display: flex; gap: 8px; flex-wrap: wrap; }
+  .ds-riadok input { flex: 1 1 220px; min-width: 0; height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font: inherit; font-size: 1rem; }
+  .ds-primne { display: inline-flex; align-items: center; gap: 6px; height: 46px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-weight: 700; cursor: pointer; }
+  .ds-primne svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+  .ds-navrhy { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .ds :global(.ds-navrhy button), .ds :global(.ds-zoznam button) { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-size: 0.88rem; cursor: pointer; }
+  .ds :global(.ds-navrhy button:hover), .ds :global(.ds-zoznam button:hover) { border-color: var(--accent); }
+  .ds-stav { margin: 10px 0 0; }
+  .ds-stav:empty { display: none; }
+  .ds-legenda { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.88rem; }
+  .ds-legenda li { display: flex; align-items: center; gap: 6px; }
+  .ds-legenda i, .ds :global(.ds-zoznam h3 i) { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
+  .ds-legenda b { color: var(--muted); font-weight: 600; }
+  .ds-mapa { height: min(70vh, 620px); margin-top: 16px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); z-index: 0; }
+  .ds :global(.ds-zoznam h3) { display: flex; align-items: center; gap: 8px; font-size: 1rem; margin: 14px 0 6px; }
+  .ds :global(.ds-zoznam p) { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+  .ds :global(.ds-zoznam button b) { margin-left: 4px; font-variant-numeric: tabular-nums; }
+  .ds-info { margin: 0; padding-left: 1.2em; }
+  .ds-info li { margin: 4px 0; }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+</style>

@@ -44,6 +44,7 @@ const maSubor = (...p: string[]) => fs.existsSync(path.join(process.cwd(), ...p)
 const castiOsm = (() => { try { return Object.keys(JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'mesta', 'casti-osm.json'), 'utf-8')).mesta); } catch { return []; } })();
 const NOVE: [string, string, string, boolean][] = [
   ['odchody', 'Odchody MHD', '<rect x="5" y="3.5" width="14" height="14" rx="3"/><path d="M5 11h14M8.5 14.5h.01M15.5 14.5h.01M8 17.5 6.5 20.5M16 17.5l1.5 3"/>', maSubor('data', 'odchody', `${mesto.slug}.json`)],
+  ['dosah', 'Kam sa dostanem', '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/>', maSubor('data', 'dosah', `${mesto.slug}.json`)],
   ['novinky', 'Čo je nové', '<path d="M5 4.5h11.5a2 2 0 0 1 2 2V19a1.5 1.5 0 0 0 3 0V9.5h-3"/><path d="M5 4.5V19a1.5 1.5 0 0 0 1.5 1.5h14.5M8.5 8.5h6M8.5 12h6M8.5 15.5h4"/>', true],
   ['zastupitelstvo', 'Zastupiteľstvo', '<path d="M3 20.5h18M4.5 9.5h15M12 3.5l8 4.5H4z"/><path d="M6.5 9.5v8.5M10 9.5v8.5M14 9.5v8.5M17.5 9.5v8.5"/>', true],
   ['skoly', 'Školy', '<path d="m2.5 9 9.5-4.5L21.5 9 12 13.5z"/><path d="M6.5 11v5c1.5 1.6 3.4 2.4 5.5 2.4s4-.8 5.5-2.4v-5M21.5 9v5.5"/>', maSubor('data', 'mesta', 'skoly.json')],

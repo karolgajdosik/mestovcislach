@@ -84,6 +84,7 @@ SEKCIE_MIEST = {
     "stvrte": ("Ktorá štvrť je pre mňa {v}", "Porovnajte štvrte podľa toho, čo potrebujete mať blízko – MHD, lekáreň, škola, škôlka"),
     "dane": ("Kam idú moje dane {v}", "Kalkulačka: koľko z vašich daní dostane mesto a na čo ich míňa"),
     "odchody": ("Odchody MHD {v}", "Kedy ide najbližšia električka, trolejbus či autobus – podľa cestovného poriadku, aj zo zastávok pri vás"),
+    "dosah": ("Kam sa dostanem MHD {v}", "Mapa: kam sa dostanete mestskou dopravou zo zastávky za 15, 30, 45 a 60 minút – aj s prestupmi"),
     "mestske-casti": ("Mestské časti {v}", "Obyvatelia, vek, voľby a dostupnosť služieb v každej mestskej časti"),
     "novinky": ("Čo je nové {v}", "Nové stavby, väčšie zmluvy mesta a zasadnutia zastupiteľstva – aj ako RSS"),
 }
@@ -119,7 +120,7 @@ def main() -> None:
     mesta = [m for m in json.loads((VYSTUP.parent.parent / "src" / "mesta.json").read_text(encoding="utf-8")) if m.get("aktivne")]
     for m in mesta:
         for kluc, (nazov, podtitul) in SEKCIE_MIEST.items():
-            if kluc == "odchody" and not (VYSTUP.parent.parent / "data" / "odchody" / f"{m['slug']}.json").exists():
+            if kluc in ("odchody", "dosah") and not (VYSTUP.parent.parent / "data" / kluc / f"{m['slug']}.json").exists():
                 continue
             if kluc == "mestske-casti" and m["slug"] != "kosice":  # profily častí len pre Košice (BA má vlastné)
                 continue

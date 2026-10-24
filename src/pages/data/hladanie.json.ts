@@ -91,6 +91,7 @@ export async function GET() {
     const od = odchody(m.slug);
     if (od) {
       polozky.push(['Stránky', `Odchody MHD – ${m.nazov}`, 'najbližšie spoje zo zastávky, zastávky pri mne', `/${m.slug}/odchody`, `mhd odchody cestovný poriadok električka trolejbus autobus spoj zastávka ${m.v}`]);
+      if (fs.existsSync(path.join(process.cwd(), 'data', 'dosah', `${m.slug}.json`))) polozky.push(['Stránky', `Kam sa dostanem MHD – ${m.nazov}`, 'mapa dosahu za 15, 30, 45 a 60 minút zo zastávky', `/${m.slug}/dosah`, `dosah izochróna dojazd mhd za 30 minút kam sa dostanem byt práca ${m.v}`]);
       for (const z of od.zastavky) polozky.push(['Zastávky MHD', z.n, `odchody · ${m.nazov}`, `/${m.slug}/odchody#${z.id}`, 'zastávka mhd odchody']);
     }
     const cm = m.slug !== 'bratislava' ? castiMesta(m.slug) : null;
