@@ -25,7 +25,7 @@ VYBER = {
     "zilina": ('rel(area.a)[boundary=administrative][admin_level=11];', "časti mesta"),
     "banska-bystrica": ('rel(area.a)[boundary=administrative][admin_level=11];', "časti mesta"),
     "trencin": ('rel(area.a)[boundary=administrative][admin_level=11];', "časti mesta"),
-    "presov": ('rel(area.a)[boundary=administrative][admin_level~"^(10|11)$"];', "časti mesta"),
+    # Prešov a Trnava majú v OSM len okrajové časti alebo číslované obvody – výsledok by bol zavádzajúci
     "nitra": ('rel(area.a)[boundary=cadastral];', "katastrálne územia"),
 }
 
@@ -58,16 +58,18 @@ def main() -> int:
             print(f"::warning title=Časti {m['nazov']}::{e}")
             continue
         hr = next((polygon(x) for x in mesto.get("elements", []) if x.get("type") == "relation"), None)
+        hr = hr.buffer(0) if hr is not None else None
         casti = []
         for r in j.get("elements", []):
             n = (r.get("tags") or {}).get("name", "").strip()
             g = polygon(r)
-            if n == m["nazov"] and (r.get("tags") or {}).get("admin_level") == "11":
-                n = "Centrum"  # časť mesta s rovnakým názvom ako mesto
+            if n == m["nazov"]:
+                # časť s rovnakým názvom ako mesto: stred mesta (časti) alebo hlavné katastrálne územie
+                n = "Centrum" if (r.get("tags") or {}).get("admin_level") == "11" else f"k. ú. {n}"
             if not n or g is None or n == m["nazov"] or n.startswith(m["nazov"] + " "):
                 continue  # celé mesto alebo číslované obvody („Prešov 3“) nie sú štvrte
-            if hr is not None and g.intersection(hr).area < 0.5 * g.area:
-                continue  # časť mimo mesta
+            if hr is not None and hr.area > 0 and not hr.buffer(0.003).contains(g.representative_point()):
+                continue  # časť susednej obce
             if any(c["n"] == n for c in casti):
                 continue
             gj = mapping(g if isinstance(g, MultiPolygon) or g.geom_type == "Polygon" else g.buffer(0))
