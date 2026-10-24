@@ -1,7 +1,10 @@
-import subprocess, shutil, os, json
-subprocess.run(["pip","install","-q","-r","scripts/requirements.txt"])
-r=subprocess.run(["python","scripts/zber_mesta.py","komunalne"],capture_output=True,text=True); print(r.stdout[-1500:]); print(r.stderr[-800:])
-os.makedirs("diag",exist_ok=True); shutil.copy("data/mesta/kosice.json","diag/kosice.json")
-d=json.load(open("data/mesta/kosice.json"))["komunalne"]["2022"]["mestske_casti"]
-print([(c["nazov"][:10], len(c["poradie"]), c["poradie"][0]["podiel"]) for c in d])
+import requests, time, re
+U={"User-Agent":"diag"}
+for i in range(30):
+    r=requests.get("https://mestovcislach.sk/kosice/volby?v=%d"%time.time(),headers=U,timeout=30)
+    if r.status_code==200 and "vb-stav" in r.text: break
+    time.sleep(20)
+print("kosice/volby", r.status_code, re.search(r"<title>([^<]*)",r.text).group(1))
+s=requests.get("https://mestovcislach.sk/sitemap.xml",headers=U,timeout=30).text
+print("sitemap volby:", len(re.findall(r"/[a-z-]+/volby<",s)))
 print("HOTOVO")
