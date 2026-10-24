@@ -1,19 +1,8 @@
-https://volbysr.sk/oso/sk/ 200 27298
-  odkazy: ['../../osk/sk', '../css/idsk-frontend-2.9.0.min.css', '../css/jquery-ui.min.css', '../css/jquery.dataTables.min.css', '../css/oso-osk-button-color.css', '../en/index.html', '../files/MetodickyPokynNaSpracovanieVysledkovHlasovania2026.pdf', '../files/ZZ_2014_180_20260601.pdf', '../files/ZZ_2026_145_20260624.pdf', '../img/favicon.png', '../sk/index.html', 'cookies.html', 'https://idsk2.gov.sk/', 'https://slovak.statistics.sk/', 'https://slovak.statistics.sk/wps/portal/ext/home/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziA809LZycDB0NLPyCXA08QxwD3IO8TAwNTEz1wwkpiAJKG-AAjgZA_VFgJc7ujh4m5j4GBhY-7qYGno4eoUGWgcbGBo7GUAV4zCjIjTDIdFRUBADse0bP/dz/d5/L2dBISEvZ0FBIS9nQSEh/', 'https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci', 'index.html', 'kontakty.html', 'politicke_strany.html', 'subory_na_stiahnutie.html', 'suhrnne_vysledky.html', 'uzemne_clenenie.html', 'vyhlasenie_o_pristupnosti.html', 'vysledky_obce.html']
-https://volbysr.sk/osk/sk/ 200 26059
-  odkazy: ['../../oso/sk', '../css/idsk-frontend-2.9.0.min.css', '../css/jquery-ui.min.css', '../css/jquery.dataTables.min.css', '../css/oso-osk-button-color.css', '../en/index.html', '../files/MetodickyPokynNaSpracovanieVysledkovHlasovania2026.pdf', '../files/ZZ_2014_180_20260601.pdf', '../files/ZZ_2026_145_20260624.pdf', '../img/favicon.png', '../sk/index.html', 'cookies.html', 'https://idsk2.gov.sk/', 'https://slovak.statistics.sk/', 'https://slovak.statistics.sk/wps/portal/ext/home/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziA809LZycDB0NLPyCXA08QxwD3IO8TAwNTEz1wwkpiAJKG-AAjgZA_VFgJc7ujh4m5j4GBhY-7qYGno4eoUGWgcbGBo7GUAV4zCjIjTDIdFRUBADse0bP/dz/d5/L2dBISEvZ0FBIS9nQSEh/', 'https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci', 'index.html', 'kontakty.html', 'politicke_strany.html', 'subory_na_stiahnutie.html', 'suhrnne_vysledky.html', 'uzemne_clenenie.html', 'volby_predsedu.html', 'volby_zastupitelstva.html', 'vyhlasenie_o_pristupnosti.html']
-https://volbysr.sk/oso/sk/data.html 404 146
-  odkazy: []
-https://volbysr.sk/oso/sk/vysledky.html 404 146
-  odkazy: []
-  info: ('Zoznam tabuliek', None)
-  info: (None, None)
-  info: ('Názov súboru', 'Názov tabuľky')
-  info: ('OSK2026_SK_tab_info', 'Zoznam tabuliek a vysvetliviek')
-  info: ('OSK2026_SK_tab0c', 'Zoznam politických strán')
-  info: ('OSK2026_SK_tab0db', 'Územné členenie za volebné obvody')
-  info: ('Vysvetlivky',)
-  info: (None,)
-  info: ('obec – obec, mesto alebo mestská časť',)
-  info: ('volebný obvod – v prípade voľby predsedu je volebným obvodom celý samosprávny kraj, v prípade voľby poslancov je samosprávny kraj rozdelený na niekoľko volebných obvodov; volebným obvodom v územnom členení sa myslí volebný obvod pre voľby poslancov',)
+OSO2026_SK_xlsx.zip 200 Sat, 24 Oct 2026 16:48:03 GMT 173085
+   ['OSO2026_SK_tab0c.xlsx', 'OSO2026_SK_tab0dd.xlsx', 'OSO2026_SK_tab0dx.xlsx', 'OSO2026_SK_tab_info.xlsx']
+OSK2026_SK_xlsx.zip 200 Sat, 24 Oct 2026 19:17:04 GMT 134566
+   ['OSK2026_SK_tab0c.xlsx', 'OSK2026_SK_tab0db.xlsx', 'OSK2026_SK_tab0dc.xlsx', 'OSK2026_SK_tab_info.xlsx']
+OSO2026_SK_csv.zip 404 None 146
+https://volbysr.sk/oso/sk/ 200 27696 ['spracovania a na spracovanie vÃ½sledkov hlasovania\n      \t   \n  \t\t   \n    \t\t\n      \t\t \n  ', 'spracovania a na spracovanie vÃ½sledkov hlasovania vo voÄ¾bÃ¡ch do orgÃ¡nov samosprÃ¡vy o', 'spracovania a na spracovanie vÃ½sledkov hlasovania (PDF&nbsp;415,1&nbsp;kB)\n      \t\t\t\t \n '] []
+https://volbysr.sk/ 200 595 [] []
 HOTOVO
