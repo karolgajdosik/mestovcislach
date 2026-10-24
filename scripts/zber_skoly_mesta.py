@@ -90,6 +90,8 @@ def main() -> int:
             if not patri(o, nazov):
                 continue
             t = typ(x["Názov"])
+            if t == "ms" and re.search(r"\bZŠ|Základná", x["Názov"]):
+                t = "zs"  # „ZŠ s MŠ“ je základná škola (s materskou školou)
             if t not in TYPY or re.match(r"EP\b|Elok", x["Názov"].strip()):  # elokované pracoviská sú súčasťou inej školy
                 continue
             z, ped = num(x.get("Počet žiakov")), num(x.get("Počet ped.zam."))
