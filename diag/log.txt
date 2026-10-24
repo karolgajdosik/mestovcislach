@@ -1,2 +1,8 @@
-{'title': 'Cestovný poriadok MHD', 'modified': 1764751313000, 'snippet': 'Cestovný poriadok mestskej hromadnej dopravy ako export dát z dopravného systému DPMK, a.s.', 'licenseInfo': "<a href='https://creativecommons.org/licenses/by/4.0/' rel='nofollow ugc'>Creative Commons Attribution 4.0 International License</a>"}
+rc 0
+  bratislava: 586 zastávok, 90 liniek, 8 služieb, 673661 odchodov, platnosť 2026-10-31–2026-12-31
+  presov: 260 zastávok, 55 liniek, 8 služieb, 153518 odchodov, platnosť 2026-09-01–2026-10-31
+
+
+presov.json 753381
+bratislava.json 2130405
 HOTOVO
