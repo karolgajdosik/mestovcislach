@@ -1,0 +1,141 @@
+---
+// Sledovať dodávateľa miest: vyhľadanie firmy (názov alebo IČO), jej zmluvy s mestami z CRZ a prihlásenie na e-mail,
+// keď s ňou niektoré z miest uzavrie novú zmluvu (functions/api/odber.ts kanál „dodavatel“, scripts/odber_email.py).
+// Len právnické osoby s IČO – zmluvy s fyzickými osobami sa nezverejňujú ani neposielajú.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import '../styles/stranka.css';
+import { mestaCrz, dodavatelia } from '../lib/dodavatelia';
+import { MESTA } from '../mesta';
+
+const zapnute = fs.existsSync(path.join(process.cwd(), 'public', 'data', 'odber-brevo.json'));
+const pocet = dodavatelia().size;
+const mesta = Object.fromEntries(MESTA.map((m) => [m.slug, m.nazov]));
+---
+<Base title="Sledovať dodávateľa miest – zmluvy firiem s mestami – mestovcislach.sk" description={`Nájdite firmu podľa názvu alebo IČO a pozrite si jej zmluvy s mestami ${mestaCrz().join(', ')}. Pri novej zmluve vám pošleme e-mail.`}>
+  <section class="hero">
+    <p class="kicker">Kontrola samosprávy</p>
+    <h1>Sledovať dodávateľa miest</h1>
+    <p class="lead">Ktoré firmy majú zmluvy s mestami a na koľko? Nájdite firmu podľa názvu alebo IČO – a ak chcete, pošleme vám e-mail vždy, keď s ňou niektoré mesto uzavrie novú zmluvu.</p>
+  </section>
+
+  <div class="dd" id="dodavatelia" data-mesta={JSON.stringify(mesta)}>
+    <section class="card">
+      <label for="dd-q" class="dd-label">Názov firmy alebo IČO</label>
+      <input id="dd-q" type="search" autocomplete="off" placeholder="napr. Technické služby alebo 36123456" aria-controls="dd-navrhy" />
+      <ul class="dd-navrhy" id="dd-navrhy" aria-label="Nájdené firmy"></ul>
+      <p class="pozn">{pocet.toLocaleString('sk-SK')} firiem a organizácií so zmluvami s mestami {mestaCrz().join(', ')} od roku 2022 (Centrálny register zmlúv). Bratislava a Košice zverejňujú zmluvy vo vlastných systémoch – pribudnú neskôr.</p>
+    </section>
+
+    <section class="card dd-detail" id="dd-detail" hidden aria-live="polite"></section>
+
+    {zapnute && (
+      <section class="card dd-odber" id="dd-odber" hidden>
+        <h2>Posielať mi nové zmluvy tejto firmy</h2>
+        <form id="dd-form" novalidate>
+          <label for="dd-email">E-mailová adresa</label>
+          <div class="dd-riadok"><input id="dd-email" type="email" required autocomplete="email" inputmode="email" /><button type="submit">Sledovať</button></div>
+          <label class="dd-pasca" aria-hidden="true">Web <input name="web" tabindex="-1" autocomplete="off" /></label>
+          <label class="dd-suhlas"><input id="dd-suhlas" type="checkbox" required /><span>Súhlasím so zasielaním upozornení na túto adresu. Adresu a zoznam sledovaných IČO spracúva služba Brevo (EÚ) len na tento účel; odhlásiť sa dá jedným klikom v každom e-maile. <a href="/sukromie#email">Viac o ochrane súkromia</a>.</span></label>
+          <p class="dd-stav" id="dd-stav" role="status" aria-live="polite"></p>
+        </form>
+        <p class="pozn">Sledovať môžete viac firiem – každú ďalšiu potvrdíte e-mailom. Upozornenie chodí ráno, len keď je nová zmluva.</p>
+      </section>
+    )}
+  </div>
+</Base>
+
+<script>
+  const obal = document.getElementById('dodavatelia')!;
+  const MESTA: Record<string, string> = JSON.parse(obal.dataset.mesta!);
+  type I = [string, string, number, number, string, string[]];
+  const q = document.getElementById('dd-q') as HTMLInputElement, navrhy = document.getElementById('dd-navrhy')!, det = document.getElementById('dd-detail')!;
+  const hx = (t: unknown) => String(t ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+  const eur = (n: number) => `${Math.round(n).toLocaleString('sk-SK')} €`;
+  const bez = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const datum = (d: string) => new Date(d).toLocaleDateString('sk-SK');
+  let index: I[] = [], vybrane = '';
+  const nacitaj = fetch('/data/dodavatelia.json').then((r) => r.json()).then((x: I[]) => { index = x; return x; });
+
+  function hladaj() {
+    const t = bez(q.value.trim()), cislo = t.replace(/\s/g, '');
+    if (t.length < 2) { navrhy.innerHTML = ''; return; }
+    const z = /^\d{3,8}$/.test(cislo) ? index.filter((x) => x[0].includes(cislo)) : index.filter((x) => bez(x[1]).includes(t));
+    navrhy.innerHTML = z.length ? z.slice(0, 10).map((x) => `<li><button type="button" data-ico="${x[0]}"><strong>${hx(x[1])}</strong><small>IČO ${x[0]} · ${x[2]} ${x[2] === 1 ? 'zmluva' : x[2] < 5 ? 'zmluvy' : 'zmlúv'} · ${eur(x[3])} · ${x[5].map((m) => hx(MESTA[m] ?? m)).join(', ')}</small></button></li>`).join('')
+      : '<li class="pozn">Nič sme nenašli. Hľadajú sa len firmy a organizácie, ktoré majú zmluvu s niektorým z miest.</li>';
+  }
+
+  async function ukaz(ico: string) {
+    vybrane = ico;
+    navrhy.innerHTML = '';
+    history.replaceState(null, '', `#${ico}`);
+    det.hidden = false;
+    det.innerHTML = '<p>Načítavam…</p>';
+    try {
+      const d = await fetch(`/data/dodavatelia/${ico}.json`).then((r) => { if (!r.ok) throw 0; return r.json(); });
+      det.innerHTML = `<h2>${hx(d.nazov)}</h2>
+        <p class="dd-meta">IČO ${hx(d.ico)} · <a href="https://www.finstat.sk/${hx(d.ico)}" rel="noopener">FinStat</a> · <a href="https://www.orsr.sk/hladaj_ico.asp?ICO=${hx(d.ico)}&SID=0" rel="noopener">Obchodný register</a></p>
+        <ul class="dd-kpi"><li><b>${d.pocet}</b><span>zmlúv od 2022</span></li><li><b>${eur(d.suma)}</b><span>spolu</span></li><li><b>${datum(d.posledna)}</b><span>posledná zmluva</span></li></ul>
+        <p>${Object.entries(d.mesta).sort((a: any, b: any) => b[1] - a[1]).map(([m, n]) => `${hx(MESTA[m] ?? m)}: ${n}`).join(' · ')}</p>
+        <div class="tabulka-obal"><table class="dd-tab"><caption class="sr">Posledné zmluvy</caption><thead><tr><th scope="col">Dátum</th><th scope="col">Mesto</th><th scope="col">Predmet</th><th scope="col" class="c">Suma</th></tr></thead>
+        <tbody>${d.zmluvy.map((z: any) => `<tr><td>${datum(z.d)}</td><td>${hx(MESTA[z.m] ?? z.m)}</td><td><a href="https://www.crz.gov.sk/zmluva/${hx(z.id)}/" rel="noopener">${hx(z.pr || 'zmluva')}</a></td><td class="c">${z.s ? eur(z.s) : '–'}</td></tr>`).join('')}</tbody></table></div>
+        ${d.pocet > d.zmluvy.length ? `<p class="pozn">Zobrazených posledných ${d.zmluvy.length} zmlúv.</p>` : ''}`;
+      const o = document.getElementById('dd-odber');
+      if (o) { o.hidden = false; o.querySelector('h2')!.textContent = `Posielať mi nové zmluvy: ${d.nazov}`; }
+    } catch { det.innerHTML = '<p>Údaje sa nepodarilo načítať.</p>'; }
+  }
+
+  nacitaj.then(() => {
+    q.addEventListener('input', hladaj);
+    const h = location.hash.slice(1);
+    if (/^\d{8}$/.test(h) && index.some((x) => x[0] === h)) ukaz(h);
+  });
+  navrhy.addEventListener('click', (e) => { const b = (e.target as Element).closest<HTMLButtonElement>('button[data-ico]'); if (b) ukaz(b.dataset.ico!); });
+
+  const form = document.getElementById('dd-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const stav = document.getElementById('dd-stav')!;
+    const email = (document.getElementById('dd-email') as HTMLInputElement).value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { stav.textContent = 'Skontrolujte, prosím, e-mailovú adresu.'; return; }
+    if (!(document.getElementById('dd-suhlas') as HTMLInputElement).checked) { stav.textContent = 'Potvrďte, prosím, súhlas so zasielaním.'; return; }
+    const btn = form.querySelector('button')!; btn.disabled = true; stav.textContent = 'Odosielam…';
+    try {
+      const r = await fetch('/api/odber', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, kanal: 'dodavatel', ico: vybrane, suhlas: true, web: (form.querySelector('[name=web]') as HTMLInputElement).value }) });
+      const o = await r.json();
+      stav.textContent = o.sprava;
+      if (r.ok) form.reset();
+    } catch { stav.textContent = 'Prihlásenie sa teraz nepodarilo, skúste to, prosím, neskôr.'; }
+    finally { btn.disabled = false; }
+  });
+</script>
+
+<style>
+  :global(.sr) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .dd-label { display: block; font-weight: 700; margin-bottom: 6px; }
+  #dd-q { width: 100%; height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font: inherit; font-size: 1.05rem; }
+  .dd-navrhy { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .dd-navrhy :global(button) { width: 100%; text-align: left; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; cursor: pointer; }
+  .dd-navrhy :global(button:hover), .dd-navrhy :global(button:focus-visible) { border-color: var(--accent); }
+  .dd-navrhy :global(small) { display: block; color: var(--muted); font-size: 0.8rem; margin-top: 2px; }
+  .dd-detail :global(h2) { margin-top: 0; }
+  .dd-detail :global(.dd-meta) { color: var(--muted); font-size: 0.88rem; }
+  .dd-detail :global(.dd-kpi) { list-style: none; margin: 12px 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+  .dd-detail :global(.dd-kpi b) { display: block; font-size: 1.4rem; font-variant-numeric: tabular-nums; }
+  .dd-detail :global(.dd-kpi span) { color: var(--muted); font-size: 0.82rem; }
+  .dd-detail :global(.dd-tab) { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .dd-detail :global(.dd-tab th), .dd-detail :global(.dd-tab td) { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .dd-detail :global(.dd-tab td:first-child) { white-space: nowrap; }
+  .dd-detail :global(.c) { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .dd-riadok { display: flex; gap: 8px; flex-wrap: wrap; }
+  .dd-riadok input { flex: 1 1 240px; min-width: 0; height: 44px; padding: 0 12px; border: 1.5px solid var(--line); border-radius: 10px; font: inherit; background: var(--bg); color: var(--text); }
+  .dd-riadok button { height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: var(--accent); color: var(--na-akcente); font: inherit; font-weight: 700; cursor: pointer; }
+  .dd-odber label[for] { display: block; font-weight: 700; margin: 6px 0; }
+  .dd-suhlas { display: flex; gap: 10px; align-items: flex-start; margin-top: 12px; font-size: 0.85rem; color: var(--muted); }
+  .dd-suhlas input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); flex-shrink: 0; }
+  .dd-pasca { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .dd-stav { font-weight: 600; } .dd-stav:empty { display: none; }
+  .pozn { font-size: 0.82rem; color: var(--muted); }
+</style>

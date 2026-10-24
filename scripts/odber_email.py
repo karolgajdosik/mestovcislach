@@ -7,7 +7,10 @@ sú len v Breve, nikdy v tomto repozitári. Každý kanál upozornení (/kanal/<
                                              → public/data/odber-brevo.json (len čísla zoznamov a šablóny, nič tajné)
   python scripts/odber_email.py rozosli     – ráno pošle každému zoznamu s odberateľmi súhrn noviniek z kanála
                                              (stavby, zmluvy, výstrahy) od posledného rozoslania; ak nič nové, nepošle nič.
-                                             Stav (len časy) v data/odber-stav.json.
+                                             Sledovanie dodávateľov (zoznam „dodavatel“, atribút ICO): každému odberateľovi
+                                             zvlášť (transakčný e-mail) nové zmluvy sledovaných firiem s mestami z CRZ
+                                             (data/zmluvy-mesta), s odkazom na odhlásenie (functions/api/odhlasit.ts).
+                                             Stav (len časy a posledné ID zmluvy) v data/odber-stav.json.
 
 Potrebuje premennú BREVO_API_KEY (GitHub secret). Bez nej skončí bez chyby.
 GDPR: nevypisovať e-mailové adresy ani mená odberateľov do logov.
@@ -15,6 +18,8 @@ GDPR: nevypisovať e-mailové adresy ani mená odberateľov do logov.
 
 from __future__ import annotations
 
+import hashlib
+import hmac
 import html
 import json
 import os
@@ -51,6 +56,7 @@ def kanaly() -> dict[str, str]:
     k = {"bratislava": "Bratislava"}
     k.update({slug(c): f"Bratislava – {c}" for c in CASTI})
     k.update({m["slug"]: m["nazov"] for m in MESTA if m.get("aktivne") and not m.get("plne")})
+    k["dodavatel"] = "Sledovanie dodávateľov"
     return k
 
 
@@ -81,7 +87,7 @@ POTVRDENIE = """<!doctype html><html lang="sk"><body style="margin:0;background:
 <p style="font-size:20px;font-weight:800;margin:0 0 20px">mesto<span style="color:#c8102e">v</span>číslach.sk</p>
 <div style="background:#fff;border:1px solid #e2e2de;border-radius:12px;padding:22px">
 <h1 style="font-size:20px;margin:0 0 12px">Potvrďte odber upozornení</h1>
-<p style="line-height:1.55;margin:0 0 18px">Niekto (pravdepodobne vy) zadal túto adresu na webe mestovcislach.sk, aby dostával ranný súhrn noviniek – nové stavebné zámery, väčšie zmluvy a výstrahy SHMÚ. Odber začne až po potvrdení.</p>
+<p style="line-height:1.55;margin:0 0 18px">Niekto (pravdepodobne vy) zadal túto adresu na webe mestovcislach.sk, aby dostával upozornenia – ranný súhrn noviniek (stavebné zámery, väčšie zmluvy, výstrahy SHMÚ) alebo nové zmluvy sledovanej firmy s mestami. Odber začne až po potvrdení.</p>
 <p style="margin:0 0 18px"><a href="{{ doubleoptin }}" style="display:inline-block;background:#c8102e;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px">Potvrdiť odber</a></p>
 <p style="line-height:1.55;margin:0;color:#5f6368;font-size:13px">Ak ste o odber nežiadali, e-mail ignorujte – bez potvrdenia vám nič posielať nebudeme. Odhlásiť sa dá kedykoľvek jedným klikom v každom e-maile.</p>
 </div>
@@ -102,6 +108,11 @@ def nastavenie(b: Brevo) -> int:
             print(f"  nový zoznam: {meno}")
         mapa["zoznamy"][k] = zoznamy[meno]
         mapa["nazvy"][k] = nazov
+    atributy = {a["name"] for a in (b("GET", "/contacts/attributes").get("attributes") or [])}
+    for atr in ("KANAL", "ICO"):
+        if atr not in atributy:
+            b("POST", f"/contacts/attributes/normal/{atr}", json={"type": "text"})
+            print(f"  nový atribút: {atr}")
     sablony = b("GET", "/smtp/templates", params={"limit": 1000}).get("templates") or []
     s = next((t for t in sablony if t["name"] == SABLONA), None)
     telo = {"templateName": SABLONA, "subject": "Potvrďte odber upozornení z mestovcislach.sk", "htmlContent": POTVRDENIE,
@@ -168,6 +179,8 @@ def rozosli(b: Brevo) -> int:
     pocty = {z["id"]: z.get("uniqueSubscribers", z.get("totalSubscribers", 0)) for z in b.vsetko("/contacts/lists", "lists")}
     poslane = 0
     for kluc, lid in mapa["zoznamy"].items():
+        if kluc == "dodavatel":
+            continue
         odberatelov = pocty.get(lid, 0)
         # prvý súhrn pre nový kanál: novinky za posledný deň
         od = datetime.fromisoformat(stav[kluc]) if kluc in stav else teraz - timedelta(days=1)
@@ -191,9 +204,98 @@ def rozosli(b: Brevo) -> int:
         stav[kluc] = teraz.isoformat(timespec="seconds")
         poslane += odberatelov
         print(f"  {nazov}: {len(nove)} noviniek → {odberatelov} odberateľov")
+    if "dodavatel" in mapa["zoznamy"]:
+        try:
+            poslane += dodavatelia(b, mapa["zoznamy"]["dodavatel"], pocty.get(mapa["zoznamy"]["dodavatel"], 0), stav)
+        except Exception as e:  # noqa: BLE001
+            print(f"::warning title=Odber dodávateľov::{type(e).__name__}: {e}")
     STAV.write_text(json.dumps(dict(sorted(stav.items())), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"Rozoslané e-mailov: {poslane}")
     return 0
+
+
+# ---------- sledovanie dodávateľov ----------
+NAZVY_MIEST = {m["slug"]: m["nazov"] for m in MESTA}
+
+
+def token(email: str, kluc: str) -> str:
+    """Podpis odkazu na odhlásenie (overuje functions/api/odhlasit.ts rovnakým kľúčom)."""
+    return hmac.new(kluc.encode(), f"odhlasit:{email.strip().lower()}".encode(), hashlib.sha256).hexdigest()
+
+
+def nove_zmluvy(od_id: int) -> tuple[list[dict], int]:
+    """Zmluvy s IČO (len právnické osoby) s ID väčším ako od_id; vráti aj najväčšie ID."""
+    out, naj = [], od_id
+    for f in sorted((DATA / "zmluvy-mesta").glob("20*.json")):
+        for z in json.loads(f.read_text(encoding="utf-8")).values():
+            try:
+                i = int(z["id"])
+            except (TypeError, ValueError):
+                continue
+            naj = max(naj, i)
+            if i > od_id and z.get("ico") and z.get("p"):
+                out.append(z)
+    return out, naj
+
+
+def email_dodavatel(zmluvy: list[dict], odhlasit: str) -> str:
+    h = html.escape
+    eur = lambda n: f"{round(n or 0):,} €".replace(",", " ")  # noqa: E731
+    riadky = "".join(
+        f'<div style="border-top:1px solid #e2e2de;padding:10px 0"><a href="https://www.crz.gov.sk/zmluva/{h(z["id"])}/" style="color:#1d1d1f;font-weight:700;text-decoration:none">{h(z["p"])}</a>'
+        f'<p style="margin:4px 0 0;color:#5f6368;font-size:14px;line-height:1.5">{h(NAZVY_MIEST.get(z["m"], z["m"]))} · {h(z["d"])} · {eur(z["s"]) if z["s"] else "suma neuvedená"}<br>{h((z.get("pr") or "")[:250])}</p></div>'
+        for z in zmluvy[:30])
+    return f"""<!doctype html><html lang="sk"><body style="margin:0;background:#f6f6f4;font-family:Arial,Helvetica,sans-serif;color:#1d1d1f">
+<div style="max-width:620px;margin:0 auto;padding:24px 18px">
+<p style="font-size:20px;font-weight:800;margin:0 0 16px">mesto<span style="color:#c8102e">v</span>číslach.sk</p>
+<div style="background:#fff;border:1px solid #e2e2de;border-radius:12px;padding:20px">
+<h1 style="font-size:21px;margin:0 0 4px">Nové zmluvy sledovaných firiem</h1>
+<p style="color:#5f6368;margin:0 0 8px">{len(zmluvy)} {'nová zmluva' if len(zmluvy) == 1 else 'nové zmluvy' if len(zmluvy) < 5 else 'nových zmlúv'} s mestami (Centrálny register zmlúv)</p>
+{riadky}
+<p style="margin:22px 0 0"><a href="{WEB}/dodavatelia" style="color:#c8102e;font-weight:700">Sledovať ďalšiu firmu</a></p>
+</div>
+<p style="color:#5f6368;font-size:12px;line-height:1.5;margin:16px 4px 0">Tento e-mail dostávate, lebo ste si na mestovcislach.sk zapli sledovanie dodávateľov.<br>
+<a href="{h(odhlasit)}" style="color:#5f6368">Odhlásiť sa zo sledovania</a> · <a href="{WEB}/sukromie" style="color:#5f6368">Ochrana súkromia</a></p>
+</div></body></html>"""
+
+
+def dodavatelia(b: Brevo, lid: int, odberatelov: int, stav: dict) -> int:
+    od_id = int(stav.get("dodavatel_posledne_id", 0) or 0)
+    zmluvy, naj = nove_zmluvy(od_id)
+    if not od_id:  # prvý beh: len zapamätať, kde sme, nič neposielať
+        stav["dodavatel_posledne_id"] = str(naj)
+        return 0
+    if not zmluvy or not odberatelov:
+        stav["dodavatel_posledne_id"] = str(naj)
+        return 0
+    po_ico: dict[str, list[dict]] = {}
+    for z in zmluvy:
+        po_ico.setdefault(z["ico"], []).append(z)
+    kluc = os.environ["BREVO_API_KEY"].strip()
+    poslane, offset = 0, 0
+    while True:
+        d = b("GET", f"/contacts/lists/{lid}/contacts", params={"limit": 500, "offset": offset})
+        kontakty = d.get("contacts") or []
+        for k in kontakty:
+            if k.get("emailBlacklisted"):
+                continue
+            ico = [i for i in str((k.get("attributes") or {}).get("ICO", "")).split(",") if re.fullmatch(r"\d{8}", i)]
+            moje = sorted((z for i in ico for z in po_ico.get(i, [])), key=lambda z: z["d"], reverse=True)
+            if not moje:
+                continue
+            adresa = k["email"]  # nikdy nevypisovať
+            odkaz = f"{WEB}/api/odhlasit?e={requests.utils.quote(adresa)}&t={token(adresa, kluc)}"
+            b("POST", "/smtp/email", json={
+                "sender": ODOSIELATEL, "replyTo": {"email": ODPOVED}, "to": [{"email": adresa}],
+                "subject": f"Nové zmluvy: {moje[0]['p'][:60]}" + (f" a ďalšie ({len(moje)})" if len(moje) > 1 else ""),
+                "htmlContent": email_dodavatel(moje, odkaz), "tags": ["dodavatel"]})
+            poslane += 1
+        if len(kontakty) < 500:
+            break
+        offset += 500
+    stav["dodavatel_posledne_id"] = str(naj)
+    print(f"  Sledovanie dodávateľov: {len(zmluvy)} nových zmlúv, odoslaných e-mailov: {poslane}")
+    return poslane
 
 
 def main() -> int:

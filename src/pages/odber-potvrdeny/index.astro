@@ -13,7 +13,8 @@ import Base from '../../layouts/Base.astro';
 <script>
   const k = new URLSearchParams(location.search).get('k');
   const a = document.getElementById('spat') as HTMLAnchorElement;
-  if (k && /^[a-z-]+$/.test(k)) a.href = ['trnava', 'nitra', 'trencin', 'zilina', 'banska-bystrica', 'presov', 'kosice'].includes(k) ? `/${k}/upozornenia` : '/bratislava/upozornenia';
+  if (k === 'dodavatel') a.href = '/dodavatelia';
+  else if (k && /^[a-z-]+$/.test(k)) a.href = ['trnava', 'nitra', 'trencin', 'zilina', 'banska-bystrica', 'presov', 'kosice'].includes(k) ? `/${k}/upozornenia` : '/bratislava/upozornenia';
 </script>
 <style>
   .hero { padding: 40px 0 20px; }

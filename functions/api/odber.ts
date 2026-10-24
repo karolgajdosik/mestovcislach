@@ -1,4 +1,4 @@
-// Prihlásenie na e-mailové upozornenia: POST { email, kanal, suhlas, web (pasca na roboty) }.
+// Prihlásenie na e-mailové upozornenia: POST { email, kanal, suhlas, web (pasca na roboty) }; pri kanáli „dodavatel“ aj ico.
 // Adresa ide rovno do Brevo s dvojitým potvrdením (double opt-in) – my ju nikde neukladáme ani nelogujeme.
 // Zoznamy a šablónu vytvára scripts/odber_email.py nastavenie → /data/odber-brevo.json.
 const EMAIL = /^[^\s@<>()[\]\\,;:"]{1,64}@[^\s@<>()[\]\\,;:"]{1,190}\.[a-z]{2,24}$/i;
@@ -17,13 +17,30 @@ export const onRequestPost = async ({ request, env }: any) => {
   const kanal = String(d.kanal ?? '');
   const zoznam = mapa?.zoznamy?.[kanal];
   if (!zoznam || !mapa.sablona) return odpoved(400, 'Neznámy kanál upozornení.');
+  // sledovanie dodávateľa: IČO musí byť medzi dodávateľmi miest; k už sledovaným IČO sa pridá (uloží sa až po potvrdení)
+  const atributy: Record<string, string> = { KANAL: kanal };
+  if (kanal === 'dodavatel') {
+    const ico = String(d.ico ?? '');
+    if (!/^\d{8}$/.test(ico)) return odpoved(400, 'Vyberte firmu zo zoznamu.');
+    const znamy = await env.ASSETS.fetch(new URL(`/data/dodavatelia/${ico}.json`, request.url));
+    if (!znamy.ok) return odpoved(400, 'Túto firmu nepoznáme.');
+    let doteraz: string[] = [];
+    const k = await fetch(`https://api.brevo.com/v3/contacts/${encodeURIComponent(email)}`, { headers: { 'api-key': env.BREVO_API_KEY, accept: 'application/json' } });
+    if (k.ok) {
+      const c: any = await k.json().catch(() => ({}));
+      if ((c.listIds ?? []).includes(zoznam)) doteraz = String(c.attributes?.ICO ?? '').split(',').filter((x: string) => /^\d{8}$/.test(x));
+    }
+    // rovnaká odpoveď ako pri novom odbere – nech sa nedá zistiť, čo kto sleduje
+    if (doteraz.includes(ico)) return odpoved(200, 'Poslali sme vám e-mail – odber začne po kliknutí na „Potvrdiť odber“.');
+    atributy.ICO = [...doteraz, ico].slice(-25).join(',');
+  }
   const r = await fetch('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', {
     method: 'POST',
     headers: { 'api-key': env.BREVO_API_KEY, 'content-type': 'application/json', accept: 'application/json' },
     body: JSON.stringify({
       email, includeListIds: [zoznam], templateId: mapa.sablona,
       redirectionUrl: `https://mestovcislach.sk/odber-potvrdeny/?k=${encodeURIComponent(kanal)}`,
-      attributes: { KANAL: kanal },
+      attributes: atributy,
     }),
   });
   if (r.ok) return odpoved(200, 'Poslali sme vám e-mail – odber začne po kliknutí na „Potvrdiť odber“.');
