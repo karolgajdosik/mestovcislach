@@ -187,12 +187,53 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
       <p class="foot-odkazy">{!spolocna && <><a href={`/${mesto.slug}/upozornenia`}>Upozornenia</a> · </>}<a href="/porovnanie">Porovnanie miest</a> · <a href="/sukromie">Ochrana súkromia</a> · <a href="/pristupnost">Prístupnosť</a> · Bez cookies a sledovania · <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a></p>
     </footer>
     <Asistent mesto={spolocna ? undefined : mesto} />
+    {/* Mobil a tablet (do 1099 px): dolná lišta + celoobrazovkové menu namiesto posúvacieho pásu */}
+    <nav class="dolna-lista" aria-label="Rýchla navigácia">
+      {(spolocna
+        ? [['/', 'Mestá', PIN], ['/porovnanie', 'Porovnanie', IKONA['mestske-casti']]]
+        : [[`/${mesto.slug}`, 'Prehľad', IKONA['']], ...(maMapu(mesto.slug) || mesto.plne ? [[`/${mesto.slug}/mapa`, 'Mapa', IKONA['mapa']]] : []), [`/${mesto.slug}/adresa`, 'Pri mne', IKONA['adresa']]]
+      ).map(([href, text, ikona]) => {
+        const akt = href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.replace(/\/$/, '') === href;
+        return <a href={href} aria-current={akt ? 'page' : undefined}><svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} /><span>{text}</span></a>;
+      })}
+      <button type="button" class="dl-asistent" aria-label="AI asistent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v10H9l-5 4v-14Z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg><span>Asistent</span></button>
+      <button type="button" class="dl-menu" aria-haspopup="dialog" aria-controls="menu-plne"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
+    </nav>
+    <dialog class="menu-plne" id="menu-plne" aria-label="Menu">
+      <div class="mp-hlava">
+        <strong translate="no">{spolocna ? 'mestovčíslach.sk' : mesto.nazov}</strong>
+        <button type="button" class="mp-zavriet" aria-label="Zavrieť menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      {!spolocna && (
+        <ul class="mp-sekcie">
+          {MENU.filter(([href]) => href !== '/porovnanie').map(([href, text, ikona]) => {
+            const akt = href === `/${mesto.slug}` ? Astro.url.pathname.replace(/\/$/, '') === href : Astro.url.pathname.replace(/\/$/, '') === href || Astro.url.pathname.startsWith(href + '/');
+            return <li><a href={href} aria-current={akt ? 'page' : undefined} class={href.endsWith('/mapa') ? 'menu-mapa' : undefined}><svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} /><span>{text}</span></a></li>;
+          })}
+        </ul>
+      )}
+      <p class="mp-nadpis">{spolocna ? 'Vyberte mesto' : 'Iné mesto'}</p>
+      <ul class="mp-mesta">
+        {MESTA.filter((x) => x.aktivne).map((x) => <li><a href={`/${x.slug}`} aria-current={!spolocna && x.slug === mesto.slug ? 'true' : undefined} translate="no">{x.nazov}</a></li>)}
+      </ul>
+      <p class="mp-dalsie"><a href="/porovnanie">Porovnanie miest</a>{!spolocna && <> · <a href={`/${mesto.slug}/upozornenia`}>Upozornenia</a></>} · <a href="/sukromie">Ochrana súkromia</a></p>
+    </dialog>
   </body>
 </html>
 
 <script>
   import { grafyNaVlozenie } from '../scripts/vlozit';
   grafyNaVlozenie();
+
+  // dolná lišta na mobile: celoobrazovkové menu a otvorenie asistenta
+  {
+    const menu = document.getElementById('menu-plne') as HTMLDialogElement | null;
+    document.querySelector('.dl-menu')?.addEventListener('click', () => menu?.showModal());
+    menu?.querySelector('.mp-zavriet')?.addEventListener('click', () => menu.close());
+    menu?.addEventListener('click', (e) => { if (e.target === menu) menu.close(); });
+    menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.close()));
+    document.querySelector('.dl-asistent')?.addEventListener('click', () => (document.getElementById('ai-otvor') as HTMLButtonElement | null)?.click());
+  }
 
   // bočné menu (široké obrazovky): pri skokoch na sekcie prehľadu (#teraz, #volby…) zvýrazní sekciu, ktorá je práve na obrazovke
   {
@@ -242,6 +283,8 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
   const a11yNeskor = () => { clearTimeout(a11yCasovac); a11yCasovac = window.setTimeout(pristupnost, 200); };
   addEventListener('load', pristupnost);
   addEventListener('resize', a11yNeskor);
+  // prepínače (napr. ročník volieb) odkryjú skryté tabuľky – po kliknutí skontrolovať znova
+  document.addEventListener('click', a11yNeskor);
   new MutationObserver(a11yNeskor).observe(document.body, { childList: true, subtree: true });
 
   import { pocasie, vystrahy, dunaj, cesty, stupenDunaja, javVystrahy, ovzdusie, farbaOvzdusia } from '../scripts/zive';
@@ -412,6 +455,56 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     .logo { font-size: 0.95rem; }
   }
   @media (prefers-reduced-motion: reduce) { .menu a { transition: none; } }
+  /* ---------- Mobil a tablet: dolná lišta a celoobrazovkové menu ---------- */
+  .dolna-lista, .menu-plne:not([open]) { display: none; }
+  @media (max-width: 1099px) {
+    :root { --vyska-hlavicky: 124px; } /* hlavička 60 px + dolná lišta 64 px – pre výšku máp a posun pri skoku na sekciu */
+    .top .menu { display: none; }
+    body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+    .dolna-lista {
+      display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1150; height: calc(64px + env(safe-area-inset-bottom));
+      padding: 0 4px env(safe-area-inset-bottom); background: var(--card); border-top: 1px solid var(--line); box-shadow: 0 -4px 16px #0000000f;
+    }
+    .dolna-lista a, .dolna-lista button {
+      flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+      border: 0; background: none; color: var(--muted); font: inherit; font-size: 0.7rem; font-weight: 600; text-decoration: none; cursor: pointer; padding: 6px 2px;
+    }
+    .dolna-lista svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .dolna-lista span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+    .dolna-lista [aria-current] { color: var(--accent); }
+    .dolna-lista [aria-current] svg { stroke-width: 2.2; }
+    /* asistent je v dolnej lište – plávajúce tlačidlo netreba */
+    .ai-tlacidlo { display: none !important; }
+    /* živé údaje: zalomené do riadkov namiesto posúvania */
+    .zive-obsah { flex-wrap: wrap; height: auto; padding-top: 6px; padding-bottom: 6px; row-gap: 6px; overflow: visible; }
+    .mv-hlava { display: none; }
+
+    .menu-plne[open] {
+      display: flex; flex-direction: column; position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0;
+      padding: 0 16px calc(24px + env(safe-area-inset-bottom)); border: 0; background: var(--bg); color: var(--text); overflow-y: auto; z-index: 1300;
+    }
+    .menu-plne::backdrop { background: #0006; }
+    .mp-hlava { display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--bg); padding: 14px 0 10px; z-index: 1; }
+    .mp-hlava strong { font-size: 1.35rem; letter-spacing: -0.02em; }
+    .mp-zavriet { width: 44px; height: 44px; border-radius: 22px; border: 1px solid var(--line); background: var(--card); color: var(--text); display: grid; place-items: center; cursor: pointer; }
+    .mp-zavriet svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+    .mp-sekcie { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mp-sekcie a { display: flex; align-items: center; gap: 10px; min-height: 54px; padding: 10px 12px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+    .mp-sekcie svg { width: 22px; height: 22px; flex-shrink: 0; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .mp-sekcie a.menu-mapa { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--card)); }
+    .mp-sekcie a[aria-current] { background: var(--text); color: var(--card); border-color: var(--text); }
+    .mp-sekcie a[aria-current] svg { stroke: var(--card); }
+    .mp-nadpis { margin: 22px 0 8px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .mp-mesta { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .mp-mesta a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 22px; border: 1px solid var(--line); background: var(--card); color: var(--text); text-decoration: none; font-weight: 600; }
+    .mp-mesta a[aria-current] { background: var(--text); color: var(--card); border-color: var(--text); }
+    .mp-dalsie { margin: 22px 0 0; font-size: 0.9rem; color: var(--muted); }
+    .mp-dalsie a { color: inherit; }
+  }
+  @media (max-width: 360px) { .mp-sekcie { grid-template-columns: 1fr; } }
+  html.vlozene .dolna-lista { display: none !important; }
+  html.vlozene body { padding-bottom: 0 !important; }
+
   /* ---------- Grafy na vloženie (src/scripts/vlozit.ts, functions/vlozit) ---------- */
   .vlozit-tl { display: flex; align-items: center; gap: 5px; width: fit-content; margin: 10px 0 0 auto; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--muted); font: inherit; font-size: 0.78rem; font-weight: 600; cursor: pointer; }
   .vlozit-tl:hover { color: var(--accent); border-color: var(--accent); }
