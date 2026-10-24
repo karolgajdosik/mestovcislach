@@ -1,6 +1,13 @@
-/manifest.webmanifest 200 application/manifest+json public, max-age=0, must-revalidate 760
-/sw.js 200 application/javascript max-age=14400 2398
-/offline/ 200 text/html; charset=utf-8 public, max-age=0, must-revalidate 31458
-/icon-512.png 200 image/png public, max-age=14400, must-revalidate 2728
-/apple-touch-icon.png 200 image/png public, max-age=14400, must-revalidate 494
-manifest link: True sw reg: False
+rc 1
+
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_mesta.py", line 28, in <module>
+    from spolocne import DATA, KOREN, s, spusti, zapis_ak_zmena
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 19, in <module>
+    from shapely.geometry import Point, shape
+ModuleNotFoundError: No module named 'shapely'
+
+kosice 0 častí; []
+ obyv. názvy: ['Barca', 'Dargovských hrdinov', 'Džungľa', 'Juh', 'Kavečany', 'Košická Nová Ves', 'Krásna', 'Lorinčík', 'Luník IX', 'Myslava', 'Nad jazerom', 'Pereš', 'Poľov', 'Sever', 'Staré Mesto', 'Sídlisko KVP', 'Sídlisko Ťahanovce', 'Vyšné Opátske', 'Západ', 'Šaca', 'Šebastovce', 'Ťahanovce']
+bratislava 0 častí; []
+ obyv. názvy: ['Devín', 'Devínska Nová Ves', 'Dúbravka', 'Jarovce', 'Karlova Ves', 'Lamač', 'Nové Mesto', 'Petržalka', 'Podunajské Biskupice', 'Rača', 'Rusovce', 'Ružinov', 'Staré Mesto', 'Vajnory', 'Vrakuňa', 'Záhorská Bystrica', 'Čunovo']
