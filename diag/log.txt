@@ -1,10 +1,19 @@
-rc 0 čas 12
-  dosah: 586 zastávok, 17159 spojení, deň 2026-11-04
-  bratislava: 586 zastávok, 90 liniek, 8 služieb, 673661 odchodov, platnosť 2026-10-31–2026-12-31
-  dosah: 260 zastávok, 1715 spojení, deň 2026-09-02
-  presov: 260 zastávok, 55 liniek, 8 služieb, 153518 odchodov, platnosť 2026-09-01–2026-10-31
-
-
-presov.json 73306
-bratislava.json 361308
+== bratislava 200 22569
+['24102024', '26022026', '26092024', '27032025', '27062024', '28052026', '29052025', '30042026']
+== trnava 200 69609
+ odkazy: ['https://www.trnava.sk/stranka/mestske-zastupitelstvo', 'https://www.trnava.sk/zasadnutia/msz']
+   https://www.trnava.sk/zasadnutia/msz ['zastupiteľstva mesta Trnava 10. 11. 2026', 'zastupiteľstva mesta Trnava 22. 9. 2026', 'zastupiteľstva mesta Trnava 20. 7. 2026', 'zastupiteľstva mesta Trnava 23. 6. 2026', 'zastupiteľstva mesta Trnava 28. 4. 2026', 'zastupiteľstva mesta Trnava 10. 2. 2026']
+== nitra 200 424353
+ odkazy: ['https://nitra.sk/kalendar-zasadnuti-organov-mesta/', 'https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-mestskeho-zastupitelstva-v-nitre-pre-financovanie-spravu-majetku-a-podnikatelsku-cinnost/', 'https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-mestskeho-zastupitelstva-v-nitre-pre-mestsku-mobilitu/', 'https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-mestskeho-zastupitelstva-v-nitre-pre-skolstvo-mladez-a-vzdelavanie/', 'https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-mestskeho-zastupitelstva-v-nitre-pre-sport/', 'https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-mestskeho-zastupitelstva-v-nitre-pre-uzemne-planovanie-architekturu-verejny-priestor-a-investicnu-cinnost/', 'https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-na-ochranu-verejneho-zaujmu-pri-vykone-funkcii-verejnych-funkcionarov/', 'https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-na-presetrenie-staznosti-proti-cinnosti-poslanca-mestskeho-zastupitelstva-primatora-mesta-a-hlavneho-kontrolora/', 'https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-pre-kulturu-kreativny-priemysel-a-cestovny-ruch/', 'https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-pre-socialne-veci-a-bytove-otazky/', 'https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-pre-zivotne-prostredie-verejny-poriadok-a-komunalne-cinnosti/', 'https://nitra.sk/mestske-zastupitelstvo/']
+== trencin 200 172268
+ odkazy: ['https://trencin.sk/samosprava/komisie-msz/', 'https://trencin.sk/samosprava/mestske-zastupitelstvo/']
+== zilina 200 154519
+ odkazy: ['https://zilina.sk/mesto-zilina/sprava-mesta/volene-organy/poslanci/komisie/', 'https://zilina.sk/mesto-zilina/sprava-mesta/volene-organy/poslanci/mestske-zastupitelstvo/']
+== banska-bystrica 200 159726
+ odkazy: ['https://www.banskabystrica.sk/samosprava/mestske-zastupitelstvo/', 'https://www.banskabystrica.sk/samosprava/zasadnutia/']
+== presov 200 10922
+ odkazy: []
+== kosice 200 101154
+ odkazy: ['https://www.kosice.sk/clanok/komunalne-volby-2026-zoznam-zaregistrovanych-kandidatov-pre-volby-poslancov-mestskeho-zastupitelstva', 'https://www.kosice.sk/mesto/samosprava/mestske-zastupitelstvo']
+   https://www.kosice.sk/clanok/komunalne-volby-2026-zoznam-zaregistrovanych-kandidatov-pre-volby-poslancov-mestskeho-zastupitelstva ['cov mestského zastupiteľstva 10.09.2026']
 HOTOVO
