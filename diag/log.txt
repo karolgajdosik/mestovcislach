@@ -1,8 +1,12 @@
-OSO2026_SK_xlsx.zip 200 Sat, 24 Oct 2026 16:48:03 GMT 173085
-   ['OSO2026_SK_tab0c.xlsx', 'OSO2026_SK_tab0dd.xlsx', 'OSO2026_SK_tab0dx.xlsx', 'OSO2026_SK_tab_info.xlsx']
-OSK2026_SK_xlsx.zip 200 Sat, 24 Oct 2026 16:37:36 GMT 134566
-   ['OSK2026_SK_tab0c.xlsx', 'OSK2026_SK_tab0db.xlsx', 'OSK2026_SK_tab0dc.xlsx', 'OSK2026_SK_tab_info.xlsx']
-OSO2026_SK_csv.zip 404 None 146
-https://volbysr.sk/oso/sk/ 200 27696 ['spracovania a na spracovanie vÃ½sledkov hlasovania\n      \t   \n  \t\t   \n    \t\t\n      \t\t \n  ', 'spracovania a na spracovanie vÃ½sledkov hlasovania vo voÄ¾bÃ¡ch do orgÃ¡nov samosprÃ¡vy o', 'spracovania a na spracovanie vÃ½sledkov hlasovania (PDF&nbsp;415,1&nbsp;kB)\n      \t\t\t\t \n '] []
-https://volbysr.sk/ 200 595 [] []
+BA rc 0 Zmluvy s právnickými osobami za 3 roky: 2287
+zmluvy-bratislava.json: bez zmeny
+ 
+KE rc 0 Hlasovania 2018-2022: 2128 hlasovaní (0 tajných vynechaných), 43 poslancov
+Hlasovania 2022-2026: 2066 hlasovaní (19 tajných vynechaných), 41 poslancov
+zmluvy: 46062 záznamov, skryté (fyzické osoby / bez IČO) 7130
+faktúry: 89363 záznamov, skryté (fyzické osoby / bez IČO) 15079
+objednávky: 24157 záznamov, skryté (fyzické osoby / bez IČO) 5204
+ 
+bratislava.json 2287 IČO 787
+kosice.json 2127 IČO 762
 HOTOVO
