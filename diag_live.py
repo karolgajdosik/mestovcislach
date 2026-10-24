@@ -1,4 +1,5 @@
-import subprocess, shutil, os, json
+import subprocess, shutil, os, json, sys
+subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
 r = subprocess.run(["python", "scripts/zber_mesta.py", "scitanie", "volby"], capture_output=True, text=True, timeout=3000)
 print("rc", r.returncode); print("\n".join(l for l in r.stdout.splitlines() if l.startswith(("  ", "OK", "::"))))
 print(r.stderr[-1500:])
@@ -9,3 +10,4 @@ for s in ("kosice", "bratislava"):
     c = d.get("casti", {})
     print(s, len(c), "častí;", sorted(c)[:30])
     print(" obyv. názvy:", sorted(d["obyvatelia"]["casti"])[:30])
+print("HOTOVO")
