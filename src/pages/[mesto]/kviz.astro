@@ -12,15 +12,16 @@ export function getStaticPaths() {
 }
 const { m, o } = Astro.props as { m: Mesto; o: ReturnType<typeof kviz> };
 const ine = MESTA.filter((x) => x.aktivne && x.slug !== m.slug);
+const KOLO = Math.min(10, o.length); // otázok v jednej hre
 ---
-<Base title={`Poznáš svoje mesto? Kvíz – ${m.nazov} – mestovcislach.sk`} description={`${o.length} otázok o meste ${m.nazov} z otvorených dát: obyvatelia, voľby, školy, peniaze mesta. Koľko trafíte?`}>
-  <div class="kv" id="kviz" data-o={JSON.stringify(o)} data-mesto={m.nazov} data-slug={m.slug}>
+<Base title={`Poznáš svoje mesto? Kvíz – ${m.nazov} – mestovcislach.sk`} description={`Kvíz o meste ${m.nazov}: ${KOLO} náhodných otázok zo zásobníka ${o.length} – obyvatelia, voľby, školy, doprava, bývanie, peniaze mesta. Koľko trafíte?`}>
+  <div class="kv" id="kviz" data-o={JSON.stringify(o)} data-kolo={KOLO} data-mesto={m.nazov} data-slug={m.slug}>
 
     <!-- úvod -->
     <section class="kv-uvod" id="kv-uvod">
       <p class="kicker">Kvíz</p>
       <h1>Poznáš svoje mesto?<span translate="no">{m.nazov}</span></h1>
-      <p class="lead">{o.length} otázok z otvorených dát – obyvatelia, voľby, školy a peniaze mesta. Pri každej odpovedi uvidíte graf, ako to naozaj je.</p>
+      <p class="lead">{KOLO} náhodných otázok z otvorených dát – v zásobníku ich je {o.length}, takže každá hra je iná. Pri každej odpovedi uvidíte graf, ako to naozaj je.</p>
       <ul class="kv-temy">{[...new Set(o.map((x) => x.tema))].map((t) => <li>{t}</li>)}</ul>
       <button type="button" class="kv-start" id="kv-start">Začať kvíz <span aria-hidden="true">→</span></button>
       <p class="kv-rekord" id="kv-rekord" hidden></p>
@@ -29,7 +30,7 @@ const ine = MESTA.filter((x) => x.aktivne && x.slug !== m.slug);
     <!-- otázka -->
     <section class="kv-hra" id="kv-hra" hidden aria-labelledby="kv-otazka">
       <div class="kv-lista">
-        <ol class="kv-pruh" id="kv-pruh" aria-hidden="true">{o.map(() => <li></li>)}</ol>
+        <ol class="kv-pruh" id="kv-pruh" aria-hidden="true">{Array.from({ length: KOLO }, () => <li></li>)}</ol>
         <p class="kv-stav"><span id="kv-cislo"></span><span id="kv-seria" class="kv-seria" hidden></span></p>
       </div>
       <div class="kv-karta" id="kv-karta">
@@ -53,7 +54,7 @@ const ine = MESTA.filter((x) => x.aktivne && x.slug !== m.slug);
           <circle cx="60" cy="60" r="52" class="kv-kruh-pod" />
           <circle cx="60" cy="60" r="52" class="kv-kruh-hod" id="kv-kruh" />
         </svg>
-        <div class="kv-skore"><strong id="kv-body"></strong><span>z {o.length}</span></div>
+        <div class="kv-skore"><strong id="kv-body"></strong><span>z {KOLO}</span></div>
       </div>
       <p class="kv-odznak" id="kv-odznak"></p>
       <h2 id="kv-titul" tabindex="-1"></h2>
@@ -61,7 +62,7 @@ const ine = MESTA.filter((x) => x.aktivne && x.slug !== m.slug);
       <div class="kv-akcie">
         <button type="button" id="kv-zdielat">Zdieľať výsledok</button>
         <button type="button" id="kv-obrazok" class="kv-sek">Stiahnuť obrázok</button>
-        <button type="button" id="kv-znova" class="kv-sek">Hrať znova</button>
+        <button type="button" id="kv-znova" class="kv-sek">Nová hra – iné otázky</button>
       </div>
       <div class="kv-mriezka">
         <section class="card">
@@ -88,21 +89,44 @@ const ine = MESTA.filter((x) => x.aktivne && x.slug !== m.slug);
   type Graf =
     | { typ: 'stlpce'; nadpis: string; jednotka?: string; des?: number; polozky: { n: string; v: number; ja?: boolean }[] }
     | { typ: 'ciara'; nadpis: string; roky: string[]; hodnoty: number[]; pozn?: string };
-  type O = { q: string; moznosti: string[]; spravna: number; vysvetlenie: string; tema: string; graf?: Graf };
+  type O = { id: string; q: string; moznosti: string[]; spravna: number; vysvetlenie: string; tema: string; graf?: Graf };
   const obal = document.getElementById('kviz')!;
-  const O: O[] = JSON.parse(obal.dataset.o!);
+  const ZASOB: O[] = JSON.parse(obal.dataset.o!);
+  const KOLO = Number(obal.dataset.kolo);
+  let O: O[] = [];
   const mesto = obal.dataset.mesto!, slug = obal.dataset.slug!;
   const $ = (id: string) => document.getElementById(id)!;
   const hx = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
   const pokoj = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const KLUC = `kviz-rekord-${slug}`;
+  const KLUC = `kviz-rekord-${slug}`, KLUC_V = `kviz-videne-${slug}`;
+  const videne = (): Set<string> => { try { return new Set(JSON.parse(localStorage.getItem(KLUC_V) || '[]')); } catch { return new Set(); } };
+  const ulozVidene = (s: Set<string>) => { try { localStorage.setItem(KLUC_V, JSON.stringify([...s])); } catch { /* bez úložiska */ } };
+  const miesaj = <T,>(a: T[]) => { const b = a.slice(); for (let k = b.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [b[k], b[j]] = [b[j], b[k]]; } return b; };
+  /** nové kolo: náhodne, prednostne nevidené otázky, najviac 3 z jednej témy; odpovede v náhodnom poradí */
+  function noveKolo() {
+    let v = videne();
+    if (ZASOB.filter((q) => !v.has(q.id)).length < KOLO) v = new Set(); // všetko videné – začať odznova
+    const kand = [...miesaj(ZASOB.filter((q) => !v.has(q.id))), ...miesaj(ZASOB.filter((q) => v.has(q.id)))];
+    const vyber: O[] = [], temy = new Map<string, number>();
+    for (const limit of [3, 99]) for (const q of kand) {
+      if (vyber.length >= KOLO) break;
+      if (vyber.includes(q) || (temy.get(q.tema) ?? 0) >= limit) continue;
+      vyber.push(q); temy.set(q.tema, (temy.get(q.tema) ?? 0) + 1);
+    }
+    vyber.forEach((q) => v.add(q.id));
+    ulozVidene(v);
+    O = miesaj(vyber).map((q) => {
+      const por = miesaj(q.moznosti.map((_, k) => k));
+      return { ...q, moznosti: por.map((k) => q.moznosti[k]), spravna: por.indexOf(q.spravna) };
+    });
+  }
   const citajRekord = () => { try { return Number(localStorage.getItem(KLUC)) || 0; } catch { return 0; } };
   const ulozRekord = (n: number) => { try { localStorage.setItem(KLUC, String(n)); } catch { /* bez úložiska */ } };
   const PISMENA = ['A', 'B', 'C', 'D'];
   let i = 0, odpovede: number[] = [], seria = 0, cakam = false;
 
   const rekord = citajRekord();
-  if (rekord) { $('kv-rekord').textContent = `Váš doterajší najlepší výsledok: ${rekord} z ${O.length}`; $('kv-rekord').hidden = false; }
+  if (rekord) { $('kv-rekord').textContent = `Váš doterajší najlepší výsledok: ${rekord} z ${KOLO}`; $('kv-rekord').hidden = false; }
 
   // ---------- grafy ----------
   const cislo = (v: number, d = 1) => v.toLocaleString('sk-SK', { maximumFractionDigits: d, minimumFractionDigits: v % 1 && d ? 1 : 0 });
@@ -197,7 +221,7 @@ const ine = MESTA.filter((x) => x.aktivne && x.slug !== m.slug);
   });
   $('kv-start').addEventListener('click', () => {
     $('kv-uvod').hidden = true; $('kv-hra').hidden = false;
-    i = 0; odpovede = []; seria = 0; ukaz(); $('kv-otazka').focus({ preventScroll: true });
+    noveKolo(); i = 0; odpovede = []; seria = 0; ukaz(); $('kv-otazka').focus({ preventScroll: true });
   });
 
   // ---------- výsledok ----------
@@ -243,7 +267,7 @@ const ine = MESTA.filter((x) => x.aktivne && x.slug !== m.slug);
   }
   $('kv-znova').addEventListener('click', () => {
     $('kv-koniec').hidden = true; $('kv-hra').hidden = false;
-    i = 0; odpovede = []; seria = 0; $('kv-seria').hidden = true; ukaz(); $('kv-otazka').focus({ preventScroll: true });
+    noveKolo(); i = 0; odpovede = []; seria = 0; $('kv-seria').hidden = true; ukaz(); $('kv-otazka').focus({ preventScroll: true });
     $('kv-hra').scrollIntoView({ behavior: pokoj ? 'auto' : 'smooth', block: 'start' });
   });
 
