@@ -206,7 +206,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     <nav class="dolna-lista" aria-label="Rýchla navigácia">
       {(spolocna
         ? [['/', 'Mestá', PIN], ['/porovnanie', 'Porovnanie', IKONA['mestske-casti']]]
-        : [[`/${mesto.slug}#${ba ? 'dnes' : 'teraz'}`, 'Teraz', IKONA['prostredie']], ...(maMapu(mesto.slug) || mesto.plne ? [[`/${mesto.slug}/mapa`, 'Mapa', IKONA['mapa']]] : []), [`/${mesto.slug}/adresa`, 'Pri mne', IKONA['adresa']]]
+        : [[`/${mesto.slug}/kviz`, 'Kvíz', NOVE.find((x) => x[0] === 'kviz')![2]], ...(maMapu(mesto.slug) || mesto.plne ? [[`/${mesto.slug}/mapa`, 'Mapa', IKONA['mapa']]] : []), [`/${mesto.slug}/adresa`, 'Pri mne', IKONA['adresa']]]
       ).map(([href, text, ikona]) => {
         const akt = href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.replace(/\/$/, '') === href;
         return <a href={href} aria-current={akt ? 'page' : undefined}><svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} /><span>{text}</span></a>;

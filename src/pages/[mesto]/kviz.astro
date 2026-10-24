@@ -1,5 +1,7 @@
 ---
-// Kvíz „Poznáš svoje mesto?“ – 10 otázok z dát webu (src/lib/kviz.ts). Nič sa neukladá ani neodosiela.
+// Kvíz „Poznáš svoje mesto?“ – 10 otázok z dát webu (src/lib/kviz.ts) s grafom pri každej odpovedi,
+// výsledkom podľa tém, prehľadom odpovedí a obrázkom na zdieľanie. Nič sa neodosiela; najlepší výsledok
+// si pamätá len prehliadač (localStorage).
 import Base from '../../layouts/Base.astro';
 import '../../styles/stranka.css';
 import { MESTA, type Mesto } from '../../mesta';
@@ -9,110 +11,388 @@ export function getStaticPaths() {
   return MESTA.filter((m) => m.aktivne).map((m) => ({ m, o: kviz(m.slug) })).filter((x) => x.o.length >= 5).map(({ m, o }) => ({ params: { mesto: m.slug }, props: { m, o } }));
 }
 const { m, o } = Astro.props as { m: Mesto; o: ReturnType<typeof kviz> };
+const ine = MESTA.filter((x) => x.aktivne && x.slug !== m.slug);
 ---
 <Base title={`Poznáš svoje mesto? Kvíz – ${m.nazov} – mestovcislach.sk`} description={`${o.length} otázok o meste ${m.nazov} z otvorených dát: obyvatelia, voľby, školy, peniaze mesta. Koľko trafíte?`}>
-  <section class="hero">
-    <p class="kicker">Kvíz</p>
-    <h1>Poznáš svoje mesto? <span translate="no">{m.nazov}</span></h1>
-    <p class="lead">{o.length} otázok z otvorených dát – obyvatelia, voľby, školy a peniaze mesta. Odpovede sa nikam neposielajú.</p>
-  </section>
+  <div class="kv" id="kviz" data-o={JSON.stringify(o)} data-mesto={m.nazov} data-slug={m.slug}>
 
-  <section class="card kv" id="kviz" data-o={JSON.stringify(o)} data-mesto={m.nazov} data-slug={m.slug}>
-    <p class="kv-stav" id="kv-stav"></p>
-    <h2 id="kv-otazka" tabindex="-1"></h2>
-    <div class="kv-moznosti" id="kv-moznosti" role="group" aria-labelledby="kv-otazka"></div>
-    <p class="kv-vysv" id="kv-vysv" aria-live="polite" hidden></p>
-    <button type="button" class="kv-dalej" id="kv-dalej" hidden>Ďalšia otázka</button>
-    <div class="kv-koniec" id="kv-koniec" hidden>
-      <p class="kv-skore" id="kv-skore"></p>
-      <p id="kv-hodnotenie"></p>
+    <!-- úvod -->
+    <section class="kv-uvod" id="kv-uvod">
+      <p class="kicker">Kvíz</p>
+      <h1>Poznáš svoje mesto?<span translate="no">{m.nazov}</span></h1>
+      <p class="lead">{o.length} otázok z otvorených dát – obyvatelia, voľby, školy a peniaze mesta. Pri každej odpovedi uvidíte graf, ako to naozaj je.</p>
+      <ul class="kv-temy">{[...new Set(o.map((x) => x.tema))].map((t) => <li>{t}</li>)}</ul>
+      <button type="button" class="kv-start" id="kv-start">Začať kvíz <span aria-hidden="true">→</span></button>
+      <p class="kv-rekord" id="kv-rekord" hidden></p>
+    </section>
+
+    <!-- otázka -->
+    <section class="kv-hra" id="kv-hra" hidden aria-labelledby="kv-otazka">
+      <div class="kv-lista">
+        <ol class="kv-pruh" id="kv-pruh" aria-hidden="true">{o.map(() => <li></li>)}</ol>
+        <p class="kv-stav"><span id="kv-cislo"></span><span id="kv-seria" class="kv-seria" hidden></span></p>
+      </div>
+      <div class="kv-karta" id="kv-karta">
+        <p class="kv-tema" id="kv-tema"></p>
+        <h2 id="kv-otazka" tabindex="-1"></h2>
+        <div class="kv-moznosti" id="kv-moznosti" role="group" aria-labelledby="kv-otazka"></div>
+        <div class="kv-odpoved" id="kv-odpoved" hidden>
+          <p class="kv-verdikt" id="kv-verdikt" role="status"></p>
+          <p class="kv-vysv" id="kv-vysv"></p>
+          <figure class="kv-graf" id="kv-graf" hidden><figcaption id="kv-graf-nadpis"></figcaption><div id="kv-graf-telo"></div></figure>
+          <button type="button" class="kv-dalej" id="kv-dalej"></button>
+        </div>
+      </div>
+      <p class="kv-tip">Tip: odpovedať môžete aj klávesmi 1–4.</p>
+    </section>
+
+    <!-- výsledok -->
+    <section class="kv-koniec" id="kv-koniec" hidden aria-labelledby="kv-titul">
+      <div class="kv-vysledok">
+        <svg class="kv-kruh" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="52" class="kv-kruh-pod" />
+          <circle cx="60" cy="60" r="52" class="kv-kruh-hod" id="kv-kruh" />
+        </svg>
+        <div class="kv-skore"><strong id="kv-body"></strong><span>z {o.length}</span></div>
+      </div>
+      <p class="kv-odznak" id="kv-odznak"></p>
+      <h2 id="kv-titul" tabindex="-1"></h2>
+      <p class="kv-hodnotenie" id="kv-hodnotenie"></p>
       <div class="kv-akcie">
         <button type="button" id="kv-zdielat">Zdieľať výsledok</button>
-        <button type="button" id="kv-znova" class="kv-sek">Skúsiť znova</button>
+        <button type="button" id="kv-obrazok" class="kv-sek">Stiahnuť obrázok</button>
+        <button type="button" id="kv-znova" class="kv-sek">Hrať znova</button>
       </div>
-      <p class="kv-dalsie">Iné mesto: {MESTA.filter((x) => x.aktivne && x.slug !== m.slug).map((x, i) => <>{i ? ' · ' : ''}<a href={`/${x.slug}/kviz`} translate="no">{x.nazov}</a></>)}</p>
-    </div>
-  </section>
-  <p class="pozn">Otázky vychádzajú z údajov Štatistického úradu SR, ÚPSVaR, výsledkov volieb, Digitálnej mapy škôl (MŠVVaM SR) a účtovných závierok miest. Viac čísel nájdete na <a href={`/${m.slug}`}>prehľade mesta</a>.</p>
+      <div class="kv-mriezka">
+        <section class="card">
+          <h3>Podľa tém</h3>
+          <ul class="kv-tem-vys" id="kv-tem-vys"></ul>
+        </section>
+        <section class="card">
+          <h3>Vaše odpovede</h3>
+          <ol class="kv-prehlad" id="kv-prehlad"></ol>
+        </section>
+      </div>
+      <section class="card kv-ine">
+        <h3>Poznáte aj iné mestá?</h3>
+        <p>{ine.map((x) => <a href={`/${x.slug}/kviz`} translate="no">{x.nazov}</a>)}</p>
+      </section>
+    </section>
+    <canvas id="kv-platno" width="1080" height="1080" hidden></canvas>
+    <div class="kv-konfety" id="kv-konfety" aria-hidden="true"></div>
+  </div>
+  <p class="pozn">Otázky vychádzajú z údajov Štatistického úradu SR, ÚPSVaR, výsledkov volieb, Digitálnej mapy škôl (MŠVVaM SR) a účtovných závierok miest. Odpovede sa nikam neposielajú. Viac čísel nájdete na <a href={`/${m.slug}`}>prehľade mesta</a>.</p>
 </Base>
 
 <script>
-  type O = { q: string; moznosti: string[]; spravna: number; vysvetlenie: string };
+  type Graf =
+    | { typ: 'stlpce'; nadpis: string; jednotka?: string; des?: number; polozky: { n: string; v: number; ja?: boolean }[] }
+    | { typ: 'ciara'; nadpis: string; roky: string[]; hodnoty: number[]; pozn?: string };
+  type O = { q: string; moznosti: string[]; spravna: number; vysvetlenie: string; tema: string; graf?: Graf };
   const obal = document.getElementById('kviz')!;
   const O: O[] = JSON.parse(obal.dataset.o!);
-  const mesto = obal.dataset.mesto!;
+  const mesto = obal.dataset.mesto!, slug = obal.dataset.slug!;
   const $ = (id: string) => document.getElementById(id)!;
-  let i = 0, body = 0;
+  const hx = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const pokoj = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const KLUC = `kviz-rekord-${slug}`;
+  const citajRekord = () => { try { return Number(localStorage.getItem(KLUC)) || 0; } catch { return 0; } };
+  const ulozRekord = (n: number) => { try { localStorage.setItem(KLUC, String(n)); } catch { /* bez úložiska */ } };
+  const PISMENA = ['A', 'B', 'C', 'D'];
+  let i = 0, odpovede: number[] = [], seria = 0, cakam = false;
+
+  const rekord = citajRekord();
+  if (rekord) { $('kv-rekord').textContent = `Váš doterajší najlepší výsledok: ${rekord} z ${O.length}`; $('kv-rekord').hidden = false; }
+
+  // ---------- grafy ----------
+  const cislo = (v: number, d = 1) => v.toLocaleString('sk-SK', { maximumFractionDigits: d, minimumFractionDigits: v % 1 && d ? 1 : 0 });
+  function kresli(g: Graf) {
+    $('kv-graf-nadpis').textContent = g.nadpis;
+    const telo = $('kv-graf-telo');
+    if (g.typ === 'stlpce') {
+      const max = Math.max(...g.polozky.map((p) => p.v));
+      telo.innerHTML = `<ul class="kv-stlpce">${g.polozky.map((p) => `<li class="${p.ja ? 'ja' : ''}"><span class="kv-s-n">${hx(p.n)}</span><span class="kv-s-p"><i style="--w:${((100 * p.v) / max).toFixed(1)}%"></i></span><b>${cislo(p.v, g.des ?? 1)}${g.jednotka ?? ''}</b></li>`).join('')}</ul>`;
+    } else {
+      const W = 600, H = 200, P = 6, min = Math.min(...g.hodnoty), max = Math.max(...g.hodnoty), rozp = max - min || 1;
+      const x = (k: number) => P + (k * (W - 2 * P)) / (g.hodnoty.length - 1);
+      const y = (v: number) => H - 24 - ((v - min) / rozp) * (H - 48);
+      const body = g.hodnoty.map((v, k) => `${x(k).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+      const posl = g.hodnoty.length - 1;
+      telo.innerHTML = `<svg class="kv-ciara" viewBox="0 0 ${W} ${H}" role="img" aria-label="${hx(g.nadpis)}: z ${cislo(g.hodnoty[0], 0)} na ${cislo(g.hodnoty[posl], 0)}">
+        <polygon class="kv-plocha" points="${x(0)},${H - 24} ${body} ${x(posl)},${H - 24}"/>
+        <polyline class="kv-cesta" points="${body}" pathLength="1"/>
+        <circle cx="${x(0)}" cy="${y(g.hodnoty[0])}" r="5"/><circle class="ja" cx="${x(posl)}" cy="${y(g.hodnoty[posl])}" r="6"/>
+        <text x="${x(0)}" y="${H - 6}">${g.roky[0]}</text><text x="${x(posl)}" y="${H - 6}" text-anchor="end">${g.roky[posl]}</text>
+        <text x="${x(0) + 8}" y="${y(g.hodnoty[0]) + (y(g.hodnoty[0]) < H / 2 ? 24 : -10)}" class="kv-hod">${cislo(g.hodnoty[0], 0)}</text>
+        <text x="${x(posl) - 10}" y="${y(g.hodnoty[posl]) - 12}" text-anchor="end" class="kv-hod">${cislo(g.hodnoty[posl], 0)}</text></svg>`
+        + (g.pozn ? `<p class="kv-gpozn">${hx(g.pozn)}</p>` : '');
+    }
+    $('kv-graf').hidden = false;
+    // animácia: šírky stĺpcov a čiara sa „nakreslia“ až po zobrazení
+    requestAnimationFrame(() => requestAnimationFrame(() => $('kv-graf').classList.add('ukaz')));
+  }
+
+  // ---------- priebeh ----------
+  function pruh() {
+    [...$('kv-pruh').children].forEach((li, k) => {
+      li.className = k < odpovede.length ? (odpovede[k] === O[k].spravna ? 'ok' : 'zle') : k === i ? 'teraz' : '';
+    });
+  }
   function ukaz() {
     const o = O[i];
-    $('kv-stav').textContent = `Otázka ${i + 1} z ${O.length} · správne ${body}`;
+    cakam = true;
+    $('kv-cislo').textContent = `Otázka ${i + 1} z ${O.length}`;
+    $('kv-tema').textContent = o.tema;
     $('kv-otazka').textContent = o.q;
-    $('kv-vysv').hidden = true; $('kv-dalej').hidden = true;
+    $('kv-odpoved').hidden = true;
+    $('kv-graf').hidden = true; $('kv-graf').classList.remove('ukaz');
     const mz = $('kv-moznosti');
     mz.innerHTML = '';
     o.moznosti.forEach((t, k) => {
       const b = document.createElement('button');
-      b.type = 'button'; b.textContent = t; b.className = 'kv-moznost';
+      b.type = 'button'; b.className = 'kv-moznost';
+      b.innerHTML = `<span class="kv-pism" aria-hidden="true">${PISMENA[k]}</span><span>${hx(t)}</span>`;
       b.addEventListener('click', () => odpovedz(k));
       mz.append(b);
     });
-    if (i) $('kv-otazka').focus();
+    pruh();
+    const k = $('kv-karta');
+    if (!pokoj) { k.classList.remove('vstup'); void k.offsetWidth; k.classList.add('vstup'); }
+    if (i) $('kv-otazka').focus({ preventScroll: true });
+    if (i) $('kv-hra').scrollIntoView({ behavior: pokoj ? 'auto' : 'smooth', block: 'start' });
   }
   function odpovedz(k: number) {
+    if (!cakam) return;
+    cakam = false;
     const o = O[i];
-    const tl = [...$('kv-moznosti').querySelectorAll<HTMLButtonElement>('button')];
-    tl.forEach((b, j) => { b.disabled = true; if (j === o.spravna) b.classList.add('ok'); else if (j === k) b.classList.add('zle'); });
-    if (k === o.spravna) body++;
-    $('kv-vysv').innerHTML = `<strong>${k === o.spravna ? 'Správne.' : 'Nesprávne.'}</strong> `;
-    $('kv-vysv').append(o.vysvetlenie);
-    $('kv-vysv').hidden = false;
-    $('kv-stav').textContent = `Otázka ${i + 1} z ${O.length} · správne ${body}`;
-    const b = $('kv-dalej') as HTMLButtonElement;
-    b.textContent = i + 1 < O.length ? 'Ďalšia otázka' : 'Zobraziť výsledok';
-    b.hidden = false; b.focus();
+    const dobre = k === o.spravna;
+    odpovede.push(k);
+    seria = dobre ? seria + 1 : 0;
+    [...$('kv-moznosti').querySelectorAll<HTMLButtonElement>('button')].forEach((b, j) => {
+      b.disabled = true;
+      if (j === o.spravna) b.classList.add('ok');
+      else if (j === k) b.classList.add('zle');
+      else b.classList.add('tlm');
+    });
+    $('kv-verdikt').className = `kv-verdikt ${dobre ? 'ok' : 'zle'}`;
+    $('kv-verdikt').textContent = dobre ? (seria >= 3 ? `Správne! Už ${seria} za sebou.` : 'Správne!') : `Nie celkom – správne je: ${o.moznosti[o.spravna]}`;
+    $('kv-vysv').textContent = o.vysvetlenie;
+    $('kv-seria').hidden = seria < 2;
+    $('kv-seria').textContent = `séria ${seria}`;
+    if (o.graf) kresli(o.graf);
+    const b = $('kv-dalej');
+    b.textContent = i + 1 < O.length ? 'Ďalšia otázka →' : 'Zobraziť výsledok →';
+    $('kv-odpoved').hidden = false;
+    pruh();
+    b.focus({ preventScroll: true });
+    // odpoveď a graf posunúť do zorného poľa (na mobile sú pod možnosťami)
+    const r = $('kv-odpoved').getBoundingClientRect();
+    if (r.top > innerHeight * 0.55) $('kv-odpoved').scrollIntoView({ behavior: pokoj ? 'auto' : 'smooth', block: 'start' });
   }
   $('kv-dalej').addEventListener('click', () => { i++; if (i < O.length) ukaz(); else koniec(); });
+  document.addEventListener('keydown', (e) => {
+    if ($('kv-hra').hidden || e.ctrlKey || e.metaKey || e.altKey) return;
+    const k = '1234'.indexOf(e.key) >= 0 ? '1234'.indexOf(e.key) : 'abcd'.indexOf(e.key.toLowerCase());
+    if (cakam && k >= 0 && k < O[i].moznosti.length) { e.preventDefault(); odpovedz(k); }
+  });
+  $('kv-start').addEventListener('click', () => {
+    $('kv-uvod').hidden = true; $('kv-hra').hidden = false;
+    i = 0; odpovede = []; seria = 0; ukaz(); $('kv-otazka').focus({ preventScroll: true });
+  });
+
+  // ---------- výsledok ----------
+  const titul = (p: number) => p >= 0.9 ? ['🏆', 'Mestský expert'] : p >= 0.7 ? ['🥈', 'Znalec mesta'] : p >= 0.5 ? ['🧭', 'Dobrý sused'] : p >= 0.3 ? ['🗺️', 'Objaviteľ'] : ['🌱', 'Nováčik'];
   function koniec() {
-    ['kv-stav', 'kv-otazka', 'kv-moznosti', 'kv-vysv', 'kv-dalej'].forEach((id) => ($(id).hidden = true));
-    $('kv-koniec').hidden = false;
-    $('kv-skore').textContent = `${body} / ${O.length}`;
+    const body = odpovede.filter((k, j) => k === O[j].spravna).length;
     const p = body / O.length;
-    $('kv-hodnotenie').textContent = p >= 0.9 ? `Výborne – ${mesto} poznáte naozaj dobre.` : p >= 0.6 ? 'Slušný výsledok. Niektoré čísla prekvapia aj miestnych.' : p >= 0.3 ? 'Mesto ešte trochu skrýva tajomstvá – pozrite si prehľad.' : 'Nevadí – na to tu je tento web.';
-    $('kv-zdielat').focus();
+    $('kv-hra').hidden = true; $('kv-koniec').hidden = false;
+    const [ikona, nazov] = titul(p);
+    $('kv-body').textContent = String(body);
+    $('kv-odznak').textContent = ikona;
+    $('kv-titul').textContent = nazov;
+    const stary = citajRekord();
+    $('kv-hodnotenie').textContent = (p >= 0.9 ? `${mesto} poznáte naozaj výborne.` : p >= 0.6 ? 'Slušný výsledok – niektoré čísla prekvapia aj miestnych.' : p >= 0.3 ? 'Mesto ešte skrýva pár prekvapení – pozrite si prehľad.' : 'Nevadí – na to je tento web.')
+      + (body > stary && stary ? ` Nový osobný rekord (predtým ${stary}).` : stary && body <= stary ? ` Váš najlepší výsledok: ${stary}.` : '');
+    if (body > stary) ulozRekord(body);
+    // kruh
+    const kruh = $('kv-kruh') as unknown as SVGCircleElement;
+    const obvod = 2 * Math.PI * 52;
+    kruh.style.strokeDasharray = `${obvod}`;
+    kruh.style.strokeDashoffset = `${obvod}`;
+    kruh.style.stroke = p >= 0.7 ? '#16a34a' : p >= 0.4 ? '#f59e0b' : 'var(--accent)';
+    requestAnimationFrame(() => requestAnimationFrame(() => (kruh.style.strokeDashoffset = `${obvod * (1 - p)}`)));
+    // témy
+    const temy = new Map<string, [number, number]>();
+    O.forEach((o, j) => { const t = temy.get(o.tema) ?? [0, 0]; t[1]++; if (odpovede[j] === o.spravna) t[0]++; temy.set(o.tema, t); });
+    $('kv-tem-vys').innerHTML = [...temy].map(([t, [d, n]]) => `<li><span>${hx(t)}</span><span class="kv-s-p"><i style="--w:${((100 * d) / n).toFixed(0)}%"></i></span><b>${d}/${n}</b></li>`).join('');
+    // prehľad odpovedí
+    $('kv-prehlad').innerHTML = O.map((o, j) => {
+      const dobre = odpovede[j] === o.spravna;
+      return `<li class="${dobre ? 'ok' : 'zle'}"><span class="kv-zn" aria-label="${dobre ? 'správne' : 'nesprávne'}">${dobre ? '✓' : '✗'}</span><span><strong>${hx(o.q)}</strong><small>${dobre ? '' : `Vaša odpoveď: ${hx(o.moznosti[odpovede[j]])} · `}Správne: ${hx(o.moznosti[o.spravna])}</small></span></li>`;
+    }).join('');
+    $('kv-koniec').classList.remove('ukaz'); requestAnimationFrame(() => requestAnimationFrame(() => $('kv-koniec').classList.add('ukaz')));
+    $('kv-titul').focus({ preventScroll: true });
+    $('kv-koniec').scrollIntoView({ behavior: pokoj ? 'auto' : 'smooth', block: 'start' });
+    if (p >= 0.7 && !pokoj) konfety();
   }
+  function konfety() {
+    const k = $('kv-konfety');
+    const farby = ['#c8102e', '#f59e0b', '#16a34a', '#1f6fd1', '#7c3aed'];
+    k.innerHTML = Array.from({ length: 70 }, (_, j) => `<i style="left:${Math.random() * 100}%;background:${farby[j % farby.length]};animation-delay:${(Math.random() * 0.6).toFixed(2)}s;animation-duration:${(1.8 + Math.random() * 1.4).toFixed(2)}s;transform:rotate(${Math.random() * 360}deg)"></i>`).join('');
+    setTimeout(() => (k.innerHTML = ''), 3800);
+  }
+  $('kv-znova').addEventListener('click', () => {
+    $('kv-koniec').hidden = true; $('kv-hra').hidden = false;
+    i = 0; odpovede = []; seria = 0; $('kv-seria').hidden = true; ukaz(); $('kv-otazka').focus({ preventScroll: true });
+    $('kv-hra').scrollIntoView({ behavior: pokoj ? 'auto' : 'smooth', block: 'start' });
+  });
+
+  // ---------- obrázok na zdieľanie ----------
+  function obrazok(): Promise<Blob | null> {
+    const c = $('kv-platno') as HTMLCanvasElement;
+    const x = c.getContext('2d')!;
+    const body = odpovede.filter((k, j) => k === O[j].spravna).length, p = body / O.length;
+    const g = x.createLinearGradient(0, 0, 1080, 1080);
+    g.addColorStop(0, '#13213f'); g.addColorStop(1, '#5b1022');
+    x.fillStyle = g; x.fillRect(0, 0, 1080, 1080);
+    x.fillStyle = 'rgba(255,255,255,.75)'; x.font = '600 40px Inter, system-ui, sans-serif'; x.textAlign = 'center';
+    x.fillText('Poznáš svoje mesto?', 540, 150);
+    x.fillStyle = '#fff'; x.font = '800 84px Inter, system-ui, sans-serif';
+    x.fillText(mesto, 540, 250);
+    x.lineWidth = 34; x.lineCap = 'round';
+    x.strokeStyle = 'rgba(255,255,255,.15)'; x.beginPath(); x.arc(540, 560, 190, 0, Math.PI * 2); x.stroke();
+    x.strokeStyle = p >= 0.7 ? '#4ade80' : p >= 0.4 ? '#fbbf24' : '#ff6b80';
+    x.beginPath(); x.arc(540, 560, 190, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * Math.max(p, 0.001)); x.stroke();
+    x.fillStyle = '#fff'; x.font = '800 150px Inter, system-ui, sans-serif'; x.fillText(String(body), 540, 600);
+    x.font = '600 44px Inter, system-ui, sans-serif'; x.fillStyle = 'rgba(255,255,255,.75)'; x.fillText(`z ${O.length}`, 540, 660);
+    x.fillStyle = '#fff'; x.font = '700 56px Inter, system-ui, sans-serif'; x.fillText(titul(p)[1], 540, 860);
+    // pásik odpovedí
+    const w = 60, sp = 12, sx = 540 - (O.length * (w + sp) - sp) / 2;
+    O.forEach((o, j) => { x.fillStyle = odpovede[j] === o.spravna ? '#4ade80' : '#ff6b80'; x.beginPath(); x.roundRect(sx + j * (w + sp), 900, w, 14, 7); x.fill(); });
+    x.fillStyle = 'rgba(255,255,255,.8)'; x.font = '600 38px Inter, system-ui, sans-serif'; x.fillText('mestovcislach.sk', 540, 1010);
+    return new Promise((ok) => c.toBlob((b) => ok(b), 'image/png'));
+  }
+  $('kv-obrazok').addEventListener('click', async () => {
+    const b = await obrazok(); if (!b) return;
+    const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = `kviz-${slug}.png`; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  });
   $('kv-zdielat').addEventListener('click', async () => {
+    const body = odpovede.filter((k, j) => k === O[j].spravna).length;
     const text = `Poznám ${mesto} na ${body}/${O.length}. Skús aj ty:`;
     const url = location.origin + location.pathname;
     try {
-      if (navigator.share) await navigator.share({ title: 'Poznáš svoje mesto?', text, url });
-      else { await navigator.clipboard.writeText(`${text} ${url}`); $('kv-zdielat').textContent = 'Skopírované ✓'; }
-    } catch { /* zrušené */ }
+      const b = await obrazok();
+      const subor = b ? new File([b], `kviz-${slug}.png`, { type: 'image/png' }) : null;
+      if (subor && navigator.canShare?.({ files: [subor] })) await navigator.share({ title: 'Poznáš svoje mesto?', text: `${text} ${url}`, files: [subor] });
+      else if (navigator.share) await navigator.share({ title: 'Poznáš svoje mesto?', text, url });
+      else { await navigator.clipboard.writeText(`${text} ${url}`); $('kv-zdielat').textContent = 'Odkaz skopírovaný ✓'; }
+    } catch { /* zdieľanie zrušené */ }
   });
-  $('kv-znova').addEventListener('click', () => {
-    i = 0; body = 0;
-    ['kv-stav', 'kv-otazka', 'kv-moznosti'].forEach((id) => ($(id).hidden = false));
-    $('kv-koniec').hidden = true; $('kv-zdielat').textContent = 'Zdieľať výsledok';
-    ukaz();
-  });
-  ukaz();
 </script>
 
 <style>
-  .kv { max-width: 720px; }
-  .kv-stav { margin: 0 0 6px; color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
-  .kv h2 { font-size: 1.3rem; line-height: 1.3; margin: 0 0 14px; outline: none; }
-  .kv-moznosti { display: grid; gap: 8px; }
-  .kv-moznosti :global(.kv-moznost) { text-align: left; min-height: 48px; padding: 10px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; }
-  .kv-moznosti :global(.kv-moznost:hover:not(:disabled)) { border-color: var(--accent); }
-  .kv-moznosti :global(.kv-moznost:disabled) { cursor: default; opacity: 0.7; }
-  .kv-moznosti :global(.ok) { border-color: #15803d !important; background: color-mix(in srgb, #15803d 12%, var(--bg)); opacity: 1 !important; }
-  .kv-moznosti :global(.ok)::after { content: ' ✓'; color: #15803d; }
-  .kv-moznosti :global(.zle) { border-color: var(--accent) !important; background: color-mix(in srgb, var(--accent) 10%, var(--bg)); opacity: 1 !important; }
-  .kv-vysv { margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; background: var(--bg); font-size: 0.92rem; }
-  .kv-dalej, .kv-akcie button { margin-top: 14px; height: 44px; padding: 0 18px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accent); color: var(--na-akcente); font: inherit; font-weight: 700; cursor: pointer; }
-  .kv-akcie { display: flex; gap: 8px; flex-wrap: wrap; }
-  .kv-akcie .kv-sek { background: var(--card); color: var(--text); border-color: var(--line); }
-  .kv-skore { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
-  .kv-dalsie { font-size: 0.88rem; color: var(--muted); margin-top: 18px; }
-  .pozn { font-size: 0.82rem; color: var(--muted); }
+  .kv { position: relative; max-width: 760px; }
+  .kv-uvod { padding: 40px 0 16px; }
+  .kv-uvod h1 { font-size: clamp(2rem, 6vw, 3.1rem); line-height: 1.05; letter-spacing: -0.03em; margin: 8px 0 14px; }
+  .kv-uvod h1 span { display: block; background: linear-gradient(90deg, var(--accent), #f59e0b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .kv-temy { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 18px 0 22px; }
+  .kv-temy li { padding: 4px 11px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 9%, var(--card)); border: 1px solid var(--line); font-size: 0.82rem; font-weight: 600; }
+  .kv-start, .kv-dalej, .kv-akcie button { height: 50px; padding: 0 24px; border-radius: 14px; border: 1px solid var(--accent); background: var(--accent); color: var(--na-akcente); font: inherit; font-size: 1.02rem; font-weight: 700; cursor: pointer; box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 30%, transparent); transition: transform 0.12s; }
+  .kv-start:hover, .kv-dalej:hover { transform: translateY(-1px); }
+  .kv-rekord { color: var(--muted); font-size: 0.9rem; margin-top: 12px; }
+
+  .kv-hra { padding-top: 24px; scroll-margin-top: calc(var(--vyska-hlavicky) + 8px); }
+  .kv-lista { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+  .kv-pruh { list-style: none; display: flex; gap: 5px; margin: 0; padding: 0; }
+  .kv-pruh li { flex: 1; height: 8px; border-radius: 4px; background: var(--line); transition: background 0.25s; }
+  .kv-pruh li.teraz { background: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+  .kv-pruh li.ok { background: #16a34a; }
+  .kv-pruh li.zle { background: var(--accent); }
+  .kv-stav { display: flex; justify-content: space-between; margin: 0; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+  .kv-seria { color: #b45309; }
+  .kv-seria::before { content: '🔥 '; }
+  .kv-karta { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: 0 10px 30px #0000000d; }
+  .kv-karta.vstup { animation: vstup 0.35s ease; }
+  @keyframes vstup { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .kv-tema { display: inline-block; margin: 0 0 8px; padding: 3px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .kv-karta h2 { font-size: clamp(1.25rem, 3.5vw, 1.55rem); line-height: 1.3; margin: 0 0 16px; outline: none; }
+  .kv-moznosti { display: grid; gap: 10px; }
+  @media (min-width: 640px) { .kv-moznosti { grid-template-columns: 1fr 1fr; } }
+  .kv-moznosti :global(.kv-moznost) { display: flex; align-items: center; gap: 12px; text-align: left; min-height: 58px; padding: 10px 14px; border: 1.5px solid var(--line); border-radius: 14px; background: var(--bg); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; transition: border-color 0.15s, transform 0.12s, background 0.2s; }
+  .kv-moznosti :global(.kv-moznost:hover:not(:disabled)) { border-color: var(--accent); transform: translateY(-1px); }
+  .kv-moznosti :global(.kv-pism) { flex-shrink: 0; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: var(--card); border: 1px solid var(--line); font-size: 0.85rem; font-weight: 800; color: var(--muted); }
+  .kv-moznosti :global(.kv-moznost:disabled) { cursor: default; }
+  .kv-moznosti :global(.tlm) { opacity: 0.5; }
+  .kv-moznosti :global(.ok) { border-color: #16a34a; background: color-mix(in srgb, #16a34a 13%, var(--bg)); }
+  .kv-moznosti :global(.ok .kv-pism) { background: #16a34a; color: #fff; border-color: #16a34a; }
+  .kv-moznosti :global(.zle) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 11%, var(--bg)); }
+  .kv-moznosti :global(.zle .kv-pism) { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .kv-moznosti :global(.zle) { animation: trasenie 0.35s; }
+  @keyframes trasenie { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+  .kv-odpoved { margin-top: 18px; animation: vstup 0.3s ease; scroll-margin-top: calc(var(--vyska-hlavicky) - 40px); }
+  .kv-verdikt { margin: 0 0 6px; font-weight: 800; font-size: 1.05rem; }
+  .kv-verdikt.ok { color: #15803d; }
+  .kv-verdikt.zle { color: var(--accent); }
+  :global(:root[data-tema='tmava']) .kv-verdikt.ok { color: #4ade80; }
+  .kv-vysv { margin: 0 0 14px; color: var(--muted); }
+  .kv-graf { margin: 0 0 16px; padding: 14px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); }
+  .kv-graf figcaption { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 10px; }
+  .kv-graf :global(.kv-stlpce), .kv-tem-vys { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+  .kv-graf :global(.kv-stlpce li), .kv-tem-vys :global(li) { display: grid; grid-template-columns: minmax(90px, 34%) 1fr auto; align-items: center; gap: 10px; font-size: 0.85rem; }
+  .kv-graf :global(.kv-s-n) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .kv-graf :global(.kv-s-p), .kv-tem-vys :global(.kv-s-p) { height: 12px; border-radius: 6px; background: color-mix(in srgb, var(--muted) 14%, transparent); overflow: hidden; }
+  .kv-graf :global(.kv-s-p i), .kv-tem-vys :global(.kv-s-p i) { display: block; height: 100%; width: 0; border-radius: 6px; background: color-mix(in srgb, var(--muted) 55%, transparent); transition: width 0.7s cubic-bezier(.2,.8,.2,1); }
+  .kv-graf:global(.ukaz) :global(.kv-s-p i), :global(.kv-koniec.ukaz) .kv-tem-vys :global(.kv-s-p i) { width: var(--w); }
+  .kv-graf :global(li.ja) { font-weight: 800; }
+  .kv-graf :global(li.ja .kv-s-p i), .kv-tem-vys :global(.kv-s-p i) { background: var(--accent); }
+  .kv-graf :global(b) { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .kv-graf :global(.kv-ciara) { width: 100%; height: auto; overflow: visible; }
+  .kv-graf :global(.kv-plocha) { fill: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .kv-graf :global(.kv-cesta) { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s ease; }
+  .kv-graf:global(.ukaz) :global(.kv-cesta) { stroke-dashoffset: 0; }
+  .kv-graf :global(circle) { fill: var(--muted); }
+  .kv-graf :global(circle.ja) { fill: var(--accent); }
+  .kv-graf :global(text) { fill: var(--muted); font-size: 13px; }
+  .kv-graf :global(text.kv-hod) { fill: var(--text); font-weight: 700; font-size: 15px; }
+  .kv-graf :global(.kv-gpozn) { margin: 8px 0 0; font-size: 0.78rem; color: var(--muted); }
+  .kv-dalej { width: 100%; }
+  .kv-tip { color: var(--muted); font-size: 0.8rem; margin-top: 10px; }
+  @media (hover: none) { .kv-tip { display: none; } }
+
+  .kv-koniec { padding-top: 28px; text-align: center; scroll-margin-top: calc(var(--vyska-hlavicky) + 8px); }
+  .kv-vysledok { position: relative; width: 190px; height: 190px; margin: 0 auto; }
+  .kv-kruh { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .kv-kruh circle { fill: none; stroke-width: 11; stroke-linecap: round; }
+  .kv-kruh-pod { stroke: var(--line); }
+  .kv-kruh-hod { transition: stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1); }
+  .kv-skore { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .kv-skore strong { font-size: 3.4rem; line-height: 1; letter-spacing: -0.04em; }
+  .kv-skore span { color: var(--muted); font-weight: 600; }
+  .kv-odznak { font-size: 2.2rem; margin: 10px 0 0; }
+  .kv-koniec h2 { font-size: 1.7rem; margin: 2px 0 6px; outline: none; }
+  .kv-hodnotenie { color: var(--muted); max-width: 32em; margin: 0 auto; }
+  .kv-akcie { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 18px 0 8px; }
+  .kv-akcie .kv-sek { background: var(--card); color: var(--text); border-color: var(--line); box-shadow: none; }
+  .kv-mriezka { display: grid; gap: 14px; text-align: left; }
+  @media (min-width: 760px) { .kv-mriezka { grid-template-columns: 1fr 1.4fr; align-items: start; } }
+  .kv-tem-vys :global(li) { grid-template-columns: minmax(80px, 38%) 1fr auto; font-weight: 600; }
+  .kv-prehlad { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .kv-prehlad :global(li) { display: flex; gap: 10px; font-size: 0.88rem; }
+  .kv-prehlad :global(.kv-zn) { flex-shrink: 0; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; color: #fff; font-weight: 800; font-size: 0.8rem; background: #16a34a; }
+  .kv-prehlad :global(li.zle .kv-zn) { background: var(--accent); }
+  .kv-prehlad :global(small) { display: block; color: var(--muted); margin-top: 2px; }
+  .kv-ine { text-align: left; }
+  .kv-ine p { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+  .kv-ine a { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+  .kv-ine a:hover { border-color: var(--accent); }
+  .kv-konfety { position: fixed; inset: 0; pointer-events: none; z-index: 1400; overflow: hidden; }
+  .kv-konfety :global(i) { position: absolute; top: -12px; width: 9px; height: 14px; border-radius: 2px; animation: pad linear forwards; }
+  @keyframes pad { to { top: 105%; transform: translateX(40px) rotate(540deg); } }
+  .pozn { font-size: 0.82rem; color: var(--muted); margin-top: 24px; }
+  @media (prefers-reduced-motion: reduce) {
+    .kv-karta.vstup, .kv-odpoved, .kv-moznosti :global(.zle) { animation: none; }
+    .kv-graf :global(.kv-s-p i), .kv-tem-vys :global(.kv-s-p i), .kv-graf :global(.kv-cesta), .kv-kruh-hod { transition: none; }
+  }
+  @media (max-width: 600px) { .kv-karta { padding: 16px; border-radius: 16px; } .kv-uvod { padding-top: 24px; } .kv-moznosti :global(.kv-moznost) { min-height: 50px; padding: 8px 12px; } .kv-moznosti { gap: 8px; } }
 </style>
