@@ -2,9 +2,12 @@
 // „Moja adresa“: po zadaní adresy (alebo polohy) ukáže najbližšie lekárne, zastávky, školy…, mestskú časť,
 // spádovú ZŠ a zvolených zástupcov (Bratislava), stavebné zámery v MČ a najbližšiu stanicu merania ovzdušia.
 // Adresa sa vyhľadá cez Nominatim (OpenStreetMap); ostatné sa počíta v prehliadači z verejných dát webu.
+import { MESTA } from '../mesta';
 const { mesto } = Astro.props as { mesto: { slug: string; nazov: string; v?: string } };
+// stredy všetkých miest – keď adresa leží inde, ponúkne sa správne mesto
+const vsetky = MESTA.filter((m) => m.aktivne).map((m) => [m.slug, m.nazov, (m as any).stred]);
 ---
-<section class="adresa" id="adresa" data-slug={mesto.slug} data-mesto={mesto.nazov}>
+<section class="adresa" id="adresa" data-slug={mesto.slug} data-mesto={mesto.nazov} data-mesta={JSON.stringify(vsetky)}>
   <form class="ad-form" id="ad-form" role="search">
     <label for="ad-q">Ulica a číslo domu</label>
     <div class="ad-riadok">
@@ -116,12 +119,33 @@ const { mesto } = Astro.props as { mesto: { slug: string; nazov: string; v?: str
     try {
       const d = await data();
       const [la, lo] = d.stred;
-      const u = new URL('https://nominatim.openstreetmap.org/search');
-      Object.entries({ q: `${q}, ${nazovMesta}`, format: 'jsonv2', countrycodes: 'sk', limit: '5', 'accept-language': 'sk',
-        viewbox: `${lo - 0.3},${la + 0.2},${lo + 0.3},${la - 0.2}`, bounded: '1' }).forEach(([k, v]) => u.searchParams.set(k, v));
-      const r = await fetch(u).then((x) => (x.ok ? x.json() : Promise.reject(new Error(String(x.status)))));
-      if (!r.length) { stav.textContent = 'Adresu sme nenašli. Skúste ju napísať inak, napríklad aj s číslom domu.'; return; }
       const popis = (x: any) => x.display_name.split(', ').filter((s: string) => !/^(Slovensko|okres |.*kraj$|\d{3} ?\d{2})/.test(s)).slice(0, 4).join(', ');
+      const pauza = () => new Promise((ok) => setTimeout(ok, 1100)); // Nominatim: najviac 1 dopyt za sekundu
+      const hladaj = async (par: Record<string, string>) => {
+        const u = new URL('https://nominatim.openstreetmap.org/search');
+        Object.entries({ format: 'jsonv2', countrycodes: 'sk', limit: '5', 'accept-language': 'sk', ...par }).forEach(([k, v]) => u.searchParams.set(k, v));
+        return fetch(u).then((x) => (x.ok ? x.json() : Promise.reject(new Error(String(x.status)))));
+      };
+      const box = { viewbox: `${lo - 0.3},${la + 0.2},${lo + 0.3},${la - 0.2}`, bounded: '1' };
+      // „Hlavná, 10“ → „Hlavná 10“ (Nominatim čiarku pred číslom nečaká)
+      const qn = q.replace(/\s*,\s*(\d+[a-zA-Z]?(\/\d+[a-zA-Z]?)?)\s*$/, ' $1').replace(/\s+/g, ' ');
+      let r: any[] = await hladaj({ ...box, q: `${qn}, ${nazovMesta}` });
+      // bez názvu mesta – napr. mestská časť, ktorá je v OSM vedená ako samostatná obec
+      if (!r.length) { stav.textContent = 'Hľadám ďalej…'; await pauza(); r = await hladaj({ ...box, q: qn }); }
+      if (!r.length) {
+        // adresa môže byť mimo mesta – hľadať na celom Slovensku a poradiť
+        await pauza();
+        const s: any[] = await hladaj({ q: qn, limit: '1' });
+        if (!s.length) { stav.textContent = 'Adresu sme nenašli. Skúste ju napísať inak, napríklad „Hlavná 10“ alebo názov obce a číslo domu.'; return; }
+        const [sl, so] = [Number(s[0].lat), Number(s[0].lon)];
+        const mesta: [string, string, [number, number]][] = JSON.parse(obal.dataset.mesta ?? '[]');
+        const blizke = mesta.map(([sg, n, st]) => ({ sg, n, m: st ? vzdialenost(sl, so, st[0], st[1]) : Infinity })).sort((a, b) => a.m - b.m)[0];
+        const ine = blizke && blizke.m < 15000 && blizke.sg !== slug;
+        stav.innerHTML = `Adresa <strong>${hx(popis(s[0]))}</strong> je mimo mesta ${hx(nazovMesta)}. `
+          + (ine ? `Patrí k mestu ${hx(blizke.n)} – <a href="/${blizke.sg}/adresa#q=${encodeURIComponent(qn)}">hľadať v meste ${hx(blizke.n)}</a>.`
+                 : `Údaje o okolí máme pre 8 krajských miest – mesto vyberte hore.`);
+        return;
+      }
       if (r.length > 1) {
         vyber.innerHTML = '<p>Našli sme viac miest – vyberte:</p>' + r.map((x: any, i: number) => `<button type="button" data-i="${i}">${hx(popis(x))}</button>`).join('');
         vyber.hidden = false;
@@ -133,6 +157,13 @@ const { mesto } = Astro.props as { mesto: { slug: string; nazov: string; v?: str
       stav.textContent = 'Vyhľadávanie adries je teraz nedostupné. Skúste neskôr alebo tlačidlo „Pri mne“.';
     }
   });
+
+  // prechod z iného mesta s adresou v #q= (časť za # sa na server neposiela)
+  if (location.hash.startsWith('#q=')) {
+    (document.getElementById('ad-q') as HTMLInputElement).value = decodeURIComponent(location.hash.slice(3));
+    history.replaceState(null, '', location.pathname);
+    (document.getElementById('ad-form') as HTMLFormElement).requestSubmit();
+  }
 
   document.getElementById('ad-primne')!.addEventListener('click', () => {
     if (!('geolocation' in navigator)) { stav.textContent = 'Prehliadač nepodporuje zistenie polohy.'; return; }
