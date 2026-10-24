@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-24T23:25:43",
+ "aktualizovane": "2026-10-24T23:34:29",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -1799,14 +1799,14 @@
   },
   "2026": {
    "ucast": {
-    "zapisani": 165686,
-    "volili": 59812,
-    "ucast_pct": 36.09
+    "zapisani": 175169,
+    "volili": 64275,
+    "ucast_pct": 36.69
    },
    "spracovanie": {
     "okrsky": null,
     "spolu": null,
-    "pct": 86.84,
+    "pct": 92.1,
     "priebezne": true,
     "zdroj": "volbysr.sk (priebežne)"
    },
@@ -1814,57 +1814,57 @@
     {
      "meno": "Ladislav Lörinc",
      "strany": "Košická strana",
-     "hlasy": 22850,
-     "podiel": 39.91,
+     "hlasy": 24660,
+     "podiel": 40.06,
      "zvoleny": false
     },
     {
      "meno": "Jaroslav Polaček",
      "strany": "KDH, SaS, Magyar Szövetség - Maďarská aliancia, SRK, NOVA, DS-ODS",
-     "hlasy": 12244,
-     "podiel": 21.38,
+     "hlasy": 13234,
+     "podiel": 21.5,
      "zvoleny": false
     },
     {
      "meno": "Martin Mudrák",
      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
-     "hlasy": 10636,
+     "hlasy": 11434,
      "podiel": 18.57,
      "zvoleny": false
     },
     {
      "meno": "Lenka Kovačevičová",
      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, PRAVDA",
-     "hlasy": 7153,
-     "podiel": 12.49,
+     "hlasy": 7561,
+     "podiel": 12.28,
      "zvoleny": false
     },
     {
      "meno": "Alexander Riabov",
      "strany": "NEKA",
-     "hlasy": 2742,
-     "podiel": 4.78,
+     "hlasy": 2901,
+     "podiel": 4.71,
      "zvoleny": false
     },
     {
      "meno": "Ladislav Lörincz",
      "strany": "Jednota Slovanov",
-     "hlasy": 1164,
-     "podiel": 2.03,
+     "hlasy": 1259,
+     "podiel": 2.04,
      "zvoleny": false
     },
     {
      "meno": "Miroslav Sabol",
      "strany": "NEKA",
-     "hlasy": 317,
+     "hlasy": 343,
      "podiel": 0.55,
      "zvoleny": false
     },
     {
      "meno": "Alexander Székely",
      "strany": "Slovenské Hnutie Obrody",
-     "hlasy": 146,
-     "podiel": 0.25,
+     "hlasy": 161,
+     "podiel": 0.26,
      "zvoleny": false
     }
    ],
