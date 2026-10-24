@@ -1,49 +1,15 @@
-KE 599981
-tab02b stĺpce: ['OBEC', 'VOOBEC', 'OKRSOK', 'P_ZAP', 'P_ZUC', 'UCAST', 'P_OO', 'P_OO_PCT', 'P_HL_ZAS', 'P_HL_STA']
-tab02b okrskov: 198
-  U 1 1 888 338 {'P_ZAP': '888', 'P_ZUC': '338', 'P_OO': '336', 'P_OO_PCT': '99,40', 'P_HL_ZAS': '286', 'P_HL_STA': '315'}
-  U 1 1 1100 650 {'P_ZAP': '1100', 'P_ZUC': '650', 'P_OO': '650', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '567', 'P_HL_STA': '580'}
-  U 1 1 537 156 {'P_ZAP': '537', 'P_ZUC': '156', 'P_OO': '154', 'P_OO_PCT': '98,71', 'P_HL_ZAS': '109', 'P_HL_STA': '128'}
-  U 1 2 1091 235 {'P_ZAP': '1091', 'P_ZUC': '235', 'P_OO': '234', 'P_OO_PCT': '99,57', 'P_HL_ZAS': '228', 'P_HL_STA': '213'}
-  U 1 3 945 302 {'P_ZAP': '945', 'P_ZUC': '302', 'P_OO': '302', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '278', 'P_HL_STA': '288'}
-  U 1 4 975 334 {'P_ZAP': '975', 'P_ZUC': '334', 'P_OO': '334', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '304', 'P_HL_STA': '314'}
-  U 1 5 957 364 {'P_ZAP': '957', 'P_ZUC': '364', 'P_OO': '364', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '337', 'P_HL_STA': '356'}
-  U 1 6 820 239 {'P_ZAP': '820', 'P_ZUC': '239', 'P_OO': '239', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '224', 'P_HL_STA': '229'}
-  U 1 7 812 255 {'P_ZAP': '812', 'P_ZUC': '255', 'P_OO': '255', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '231', 'P_HL_STA': '238'}
-  U 1 8 653 213 {'P_ZAP': '653', 'P_ZUC': '213', 'P_OO': '213', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '195', 'P_HL_STA': '206'}
-  U 1 9 1776 357 {'P_ZAP': '1776', 'P_ZUC': '357', 'P_OO': '357', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '336', 'P_HL_STA': '344'}
-  U 1 10 843 275 {'P_ZAP': '843', 'P_ZUC': '275', 'P_OO': '275', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '255', 'P_HL_STA': '263'}
-tab05 stĺpce: ['OBEC', 'VOOBEC', 'OKRSOK', 'PC_HL', 'P_HL', 'P_HL_PCT', 'KANDIDAT']
-tab05 riadkov: 1584
-  H 1 1 1 4
-  H 1 1 1 9
-  H 1 1 1 0
-  H 1 1 2 0
-  H 1 1 2 14
-  H 1 1 2 2
-  H 1 1 3 28
-  H 1 1 3 44
-  H 1 1 3 57
-  H 1 1 4 11
-  H 1 1 4 31
-  H 1 1 4 7
-  H 1 1 5 20
-  H 1 1 5 28
-  H 1 1 5 25
-  H 1 1 6 111
-  H 1 1 6 21
-  H 1 1 6 78
-  H 1 1 7 16
-  H 1 1 7 21
-  H 1 1 7 5
-  H 1 1 8 41
-  H 1 1 8 309
-  H 1 1 8 141
-  H 1 2 1 3
-  H 1 2 2 0
-  H 1 2 3 36
-  H 1 2 4 30
-  H 1 2 5 13
-  H 1 2 6 47
-MČ okrskov: 0
+  Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
+  Košice 2022: primátor v 22 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 7}
+  komunálne 2022: 8 miest
+CSV kosice 22 min pomer 0.56 max 1.77
+    [('Barca', 0.67), ('Dargovských ', 0.71), ('Džungľa', 1.77), ('Juh', 0.71), ('Kavečany', 0.59), ('Košická Nová', 0.67), ('Krásna', 0.73), ('Lorinčík', 0.7), ('Luník IX', 0.67), ('Myslava', 0.79), ('Nad jazerom', 0.69), ('Pereš', 0.7), ('Poľov', 0.62), ('Sever', 0.77), ('Staré Mesto', 0.77), ('Sídlisko KVP', 0.69), ('Sídlisko Ťah', 0.7), ('Vyšné Opátsk', 0.93), ('Západ', 0.71), ('Šaca', 0.56), ('Šebastovce', 1.01), ('Ťahanovce', 0.74)]
+CSV bratislava 17 min pomer 0.84 max 0.93
+    [('Devín', 0.89), ('Devínska Nov', 0.88), ('Dúbravka', 0.85), ('Jarovce', 0.88), ('Karlova Ves', 0.91), ('Lamač', 0.88), ('Nové Mesto', 0.91), ('Petržalka', 0.88), ('Podunajské B', 0.84), ('Rača', 0.9), ('Rusovce', 0.88), ('Ružinov', 0.9), ('Staré Mesto', 0.93), ('Vajnory', 0.85), ('Vrakuňa', 0.88), ('Záhorská Bys', 0.89), ('Čunovo', 0.85)]
+  Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
+  Košice 2022: primátor v 22 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 6}
+  komunálne 2022: 8 miest
+XLSX kosice 22 min pomer 0.42 max 2.42
+    [('Barca', 0.76), ('Dargovských ', 0.71), ('Džungľa', 2.42), ('Juh', 0.71), ('Kavečany', 0.42), ('Košická Nová', 0.88), ('Krásna', 0.73), ('Lorinčík', 0.84), ('Luník IX', 0.67), ('Myslava', 0.55), ('Nad jazerom', 0.69), ('Pereš', 0.79), ('Poľov', 0.67), ('Sever', 0.77), ('Staré Mesto', 0.77), ('Sídlisko KVP', 0.69), ('Sídlisko Ťah', 0.7), ('Vyšné Opátsk', 0.71), ('Západ', 0.71), ('Šaca', 0.56), ('Šebastovce', 0.58), ('Ťahanovce', 0.74)]
+XLSX bratislava 17 min pomer 0.84 max 0.93
+    [('Devín', 0.89), ('Devínska Nov', 0.88), ('Dúbravka', 0.85), ('Jarovce', 0.88), ('Karlova Ves', 0.91), ('Lamač', 0.88), ('Nové Mesto', 0.91), ('Petržalka', 0.88), ('Podunajské B', 0.84), ('Rača', 0.9), ('Rusovce', 0.88), ('Ružinov', 0.9), ('Staré Mesto', 0.93), ('Vajnory', 0.85), ('Vrakuňa', 0.88), ('Záhorská Bys', 0.89), ('Čunovo', 0.85)]
 HOTOVO
