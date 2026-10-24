@@ -1,35 +1,25 @@
-== 2026 OSO 200 173044
-  subory: ['OSO2026_SK_tab0c.xlsx', 'OSO2026_SK_tab0dd.xlsx', 'OSO2026_SK_tab0dx.xlsx', 'OSO2026_SK_tab_info.xlsx']
-   tab0c 53 ['NPS', 'PS', 'SNPS']
-   tab0d 2926 ['KRAJ', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'názov okresu', 'názov územného obvodu', 'počet okrskov', 'počet volebných obvodov', 'počet volených poslancov', 'typ volieb']
-== 2026 OSK 200 134548
-  subory: ['OSK2026_SK_tab0c.xlsx', 'OSK2026_SK_tab0db.xlsx', 'OSK2026_SK_tab0dc.xlsx', 'OSK2026_SK_tab_info.xlsx']
-   tab0c 53 ['NPS', 'PS', 'SNPS']
-   tab0d 2926 ['KRAJ', 'NKRAJ', 'NOBEC', 'NVOBVOD', 'OBEC', 'VOBVOD', 'počet volebných okrskov']
-== 2022 OSO xlsx 200 22042471
-  subory: ['OSO2022_SK_tab01.xlsx', 'OSO2022_SK_tab02aa.xlsx', 'OSO2022_SK_tab02ab.xlsx', 'OSO2022_SK_tab02ac.xlsx', 'OSO2022_SK_tab02ad.xlsx', 'OSO2022_SK_tab02ax.xlsx', 'OSO2022_SK_tab02ba.xlsx', 'OSO2022_SK_tab02bb.xlsx', 'OSO2022_SK_tab02bc.xlsx', 'OSO2022_SK_tab02bd.xlsx', 'OSO2022_SK_tab02be.xlsx', 'OSO2022_SK_tab02bex.xlsx', 'OSO2022_SK_tab02bf.xlsx', 'OSO2022_SK_tab02bfx.xlsx', 'OSO2022_SK_tab02bx.xlsx', 'OSO2022_SK_tab03a1.xlsx', 'OSO2022_SK_tab03a2.xlsx', 'OSO2022_SK_tab03b1.xlsx', 'OSO2022_SK_tab03b2.xlsx', 'OSO2022_SK_tab03c1.xlsx', 'OSO2022_SK_tab03c2.xlsx', 'OSO2022_SK_tab03d1.xlsx', 'OSO2022_SK_tab03d2.xlsx', 'OSO2022_SK_tab04d.xlsx', 'OSO2022_SK_tab04x.xlsx', 'OSO2022_SK_tab05d.xlsx', 'OSO2022_SK_tab05e.xlsx', 'OSO2022_SK_tab05ex.xlsx', 'OSO2022_SK_tab05f.xlsx', 'OSO2022_SK_tab05fx.xlsx', 'OSO2022_SK_tab05x.xlsx', 'OSO2022_SK_tab06d.xlsx', 'OSO2022_SK_tab06x.xlsx', 'OSO2022_SK_tab07d.xlsx', 'OSO2022_SK_tab07x.xlsx', 'OSO2022_SK_tab08e.xlsx', 'OSO2022_SK_tab08ex.xlsx', 'OSO2022_SK_tab08f.xlsx', 'OSO2022_SK_tab08fx.xlsx', 'OSO2022_SK_tab0ad.xlsx', 'OSO2022_SK_tab0ax.xlsx', 'OSO2022_SK_tab0bd.xlsx', 'OSO2022_SK_tab0bx.xlsx', 'OSO2022_SK_tab0c.xlsx', 'OSO2022_SK_tab0dd.xlsx', 'OSO2022_SK_tab0dx.xlsx', 'OSO2022_SK_tab12b.xlsx', 'OSO2022_SK_tab12c.xlsx', 'OSO2022_SK_tab_info.xlsx']
-   tab02a 2928 ['KRAJ', 'NKRAJ', 'počet obcí, v ktorých bol zvolený starosta', 'počet obcí, v ktorých bolo zvolené zastupiteľstvo', 'počet obcí, v ktorých sa konali voľby', 'počet volených poslancov', 'počet zvolených poslancov']
-   tab02b 6594 ['KRAJ', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'OKRSOK', 'P_OO', 'P_ZAP', 'P_ZUC', 'VOOBEC', 'názov okresu', 'názov územného obvodu', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu', 'účasť voličov v %']
-   tab02b_agg 6556 ['KRAJ', 'NKRAJ', 'P_OO', 'P_ZAP', 'P_ZUC', 'podiel odovzdaných obálok v %', 'počet obcí, v ktorých sa konali voľby', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu', 'účasť voličov v %']
-   tab03b1 242 ['KRAJ', 'NKRAJ', 'PS_TEXT', 'podiel starostov v %', 'počet starostov']
-   tab03b2 364 ['KRAJ', 'NKRAJ', 'PS_TEXT', 'podiel poslancov v %', 'počet poslancov']
-   tab03c1 522 ['KRAJ', 'NKRAJ', 'OBVOD', 'PS_TEXT', 'názov územného obvodu', 'podiel starostov v %', 'počet starostov']
-   tab03c2 992 ['KRAJ', 'NKRAJ', 'OBVOD', 'PS_TEXT', 'názov územného obvodu', 'podiel poslancov v %', 'počet poslancov']
-   tab03d1 632 ['KRAJ', 'NKRAJ', 'OBVOD', 'OKRES', 'PS_TEXT', 'názov okresu', 'názov územného obvodu', 'podiel starostov v %', 'počet starostov']
-   tab03d2 1247 ['KRAJ', 'NKRAJ', 'OBVOD', 'OKRES', 'PS_TEXT', 'názov okresu', 'názov územného obvodu', 'podiel poslancov v %', 'počet poslancov']
-   tab04d 2904 ['KRAJ', 'MENO', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'PRIEZVISKO', 'PS_TEXT', 'názov okresu', 'názov územného obvodu']
-   tab04x 2 ['MENO', 'NOBEC', 'OBEC', 'PRIEZVISKO', 'PS_TEXT']
-   tab05 25592 ['KRAJ', 'MENO', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'OKRSOK', 'PC_HL', 'POZNAMKA', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT', 'VOOBEC', 'názov okresu', 'názov územného obvodu']
-   tab05_agg 16011 ['KRAJ', 'MENO', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'PC_HL', 'POZNAMKA', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT', 'názov okresu', 'názov územného obvodu']
-   tab06 20548 ['KRAJ', 'MENO', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'VOOBEC', 'názov okresu', 'názov územného obvodu']
-   tab07d 7880 ['KRAJ', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'PS_TEXT', 'názov okresu', 'názov územného obvodu', 'podiel poslancov v %', 'počet poslancov']
-   tab07x 14 ['NOBEC', 'OBEC', 'PS_TEXT', 'podiel poslancov v %', 'počet poslancov']
-   tab08 121660 ['KANDIDAT', 'KRAJ', 'MENO', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'OKRSOK', 'PC_HL', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT', 'VOOBEC', 'názov okresu', 'názov územného obvodu']
-   tab08_agg 42064 ['KANDIDAT', 'KRAJ', 'MENO', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'PC_HL', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT', 'VOOBEC', 'názov okresu', 'názov územného obvodu']
-   tab0a 6767 ['KRAJ', 'MENO', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'PC_HL', 'POZNAMKA', 'PRIEZVISKO', 'PS_TEXT', 'TITUL', 'názov okresu', 'názov územného obvodu', 'vek', 'zamestnanie']
-   tab0b 42216 ['KRAJ', 'MENO', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'PC_HL', 'POZNAMKA', 'PRIEZVISKO', 'PS_TEXT', 'TITUL', 'VOOBEC', 'názov okresu', 'názov územného obvodu', 'vek', 'zamestnanie']
-   tab0c 55 ['NPS', 'PS', 'SNPS']
-   tab0d 2926 ['KRAJ', 'NKRAJ', 'NOBEC', 'OBEC', 'OBVOD', 'OKRES', 'názov okresu', 'názov územného obvodu', 'počet okrskov', 'počet volebných obvodov', 'počet volených poslancov', 'typ volieb']
-   tab12b 8 ['KRAJ', 'NKRAJ', 'podiel poslancov v % – muži', 'podiel poslancov v % – ženy', 'podiel starostov v % – muži', 'podiel starostov v % – ženy', 'počet poslancov – muži', 'počet poslancov – ženy', 'počet starostov – muži', 'počet starostov – ženy']
-   tab12c 49 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'podiel poslancov v % – muži', 'podiel poslancov v % – ženy', 'podiel starostov v % – muži', 'podiel starostov v % – ženy', 'počet poslancov – muži', 'počet poslancov – ženy', 'počet starostov – muži', 'počet starostov – ženy']
+  Bratislava 2026: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
+  Košice 2026: primátor v 21 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}
+  komunálne 2026: 8 miest
+bratislava primátor zhoda: True | účasť {'zapisani': 407992, 'volili': 150477, 'ucast_pct': 36.88} {'zapisani': 407992, 'volili': 150477, 'ucast_pct': 36.88} | poslancov 45 45 | mená poslancov zhoda: True | mandáty zhoda: False | MČ 17 17 | spracovanie {'okrsky': 394, 'spolu': 394, 'pct': 100.0, 'priebezne': False}
+trnava primátor zhoda: True | účasť {'zapisani': 52921, 'volili': 22161, 'ucast_pct': 41.88} {'zapisani': 52921, 'volili': 22161, 'ucast_pct': 41.88} | poslancov 31 31 | mená poslancov zhoda: True | mandáty zhoda: True | MČ 0 0 | spracovanie {'okrsky': 46, 'spolu': 46, 'pct': 100.0, 'priebezne': False}
+nitra primátor zhoda: True | účasť {'zapisani': 66697, 'volili': 26953, 'ucast_pct': 40.41} {'zapisani': 66697, 'volili': 26953, 'ucast_pct': 40.41} | poslancov 31 31 | mená poslancov zhoda: True | mandáty zhoda: True | MČ 0 0 | spracovanie {'okrsky': 71, 'spolu': 71, 'pct': 100.0, 'priebezne': False}
+trencin primátor zhoda: True | účasť {'zapisani': 46201, 'volili': 17096, 'ucast_pct': 37.0} {'zapisani': 46201, 'volili': 17096, 'ucast_pct': 37.0} | poslancov 25 25 | mená poslancov zhoda: True | mandáty zhoda: True | MČ 0 0 | spracovanie {'okrsky': 51, 'spolu': 51, 'pct': 100.0, 'priebezne': False}
+zilina primátor zhoda: True | účasť {'zapisani': 69091, 'volili': 26369, 'ucast_pct': 38.17} {'zapisani': 69091, 'volili': 26369, 'ucast_pct': 38.17} | poslancov 31 31 | mená poslancov zhoda: True | mandáty zhoda: True | MČ 0 0 | spracovanie {'okrsky': 79, 'spolu': 79, 'pct': 100.0, 'priebezne': False}
+banska-bystrica primátor zhoda: True | účasť {'zapisani': 63163, 'volili': 25135, 'ucast_pct': 39.79} {'zapisani': 63163, 'volili': 25135, 'ucast_pct': 39.79} | poslancov 31 31 | mená poslancov zhoda: True | mandáty zhoda: True | MČ 0 0 | spracovanie {'okrsky': 77, 'spolu': 77, 'pct': 100.0, 'priebezne': False}
+presov primátor zhoda: True | účasť {'zapisani': 70029, 'volili': 29878, 'ucast_pct': 42.67} {'zapisani': 70029, 'volili': 29878, 'ucast_pct': 42.67} | poslancov 31 31 | mená poslancov zhoda: True | mandáty zhoda: False | MČ 0 0 | spracovanie {'okrsky': 66, 'spolu': 66, 'pct': 100.0, 'priebezne': False}
+kosice primátor zhoda: True | účasť {'zapisani': 194674, 'volili': 60152, 'ucast_pct': 30.9} {'zapisani': 194674, 'volili': 60152, 'ucast_pct': 30.9} | poslancov 41 41 | mená poslancov zhoda: True | mandáty zhoda: False | MČ 21 21 | spracovanie {'okrsky': 198, 'spolu': 198, 'pct': 100.0, 'priebezne': False}
+Komunálne a krajské voľby 2022:
+  https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip: HTTP 404
+  https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip: HTTP 404
+  primátor: 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
+  predseda BSK: 63.61 %, poslanci za BA 35
+  stav: vysledky
+Komunálne a krajské voľby 2026:
+  https://volbysr.sk/osk/files/OSK2026_SK_csv.zip: HTTP 404
+  primátor: 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
+  stav: vysledky
+Uložené.
+ 
+BA stav vysledky | primátor zhoda True | MsZ 45 45 | obvody zhoda True | starostovia 17 | MČ 17
 HOTOVO
