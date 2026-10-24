@@ -1,2 +1,49 @@
-rozcestník: True pokračovať: True
+KE 599981
+tab02b stĺpce: ['OBEC', 'VOOBEC', 'OKRSOK', 'P_ZAP', 'P_ZUC', 'UCAST', 'P_OO', 'P_OO_PCT', 'P_HL_ZAS', 'P_HL_STA']
+tab02b okrskov: 198
+  U 1 1 888 338 {'P_ZAP': '888', 'P_ZUC': '338', 'P_OO': '336', 'P_OO_PCT': '99,40', 'P_HL_ZAS': '286', 'P_HL_STA': '315'}
+  U 1 1 1100 650 {'P_ZAP': '1100', 'P_ZUC': '650', 'P_OO': '650', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '567', 'P_HL_STA': '580'}
+  U 1 1 537 156 {'P_ZAP': '537', 'P_ZUC': '156', 'P_OO': '154', 'P_OO_PCT': '98,71', 'P_HL_ZAS': '109', 'P_HL_STA': '128'}
+  U 1 2 1091 235 {'P_ZAP': '1091', 'P_ZUC': '235', 'P_OO': '234', 'P_OO_PCT': '99,57', 'P_HL_ZAS': '228', 'P_HL_STA': '213'}
+  U 1 3 945 302 {'P_ZAP': '945', 'P_ZUC': '302', 'P_OO': '302', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '278', 'P_HL_STA': '288'}
+  U 1 4 975 334 {'P_ZAP': '975', 'P_ZUC': '334', 'P_OO': '334', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '304', 'P_HL_STA': '314'}
+  U 1 5 957 364 {'P_ZAP': '957', 'P_ZUC': '364', 'P_OO': '364', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '337', 'P_HL_STA': '356'}
+  U 1 6 820 239 {'P_ZAP': '820', 'P_ZUC': '239', 'P_OO': '239', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '224', 'P_HL_STA': '229'}
+  U 1 7 812 255 {'P_ZAP': '812', 'P_ZUC': '255', 'P_OO': '255', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '231', 'P_HL_STA': '238'}
+  U 1 8 653 213 {'P_ZAP': '653', 'P_ZUC': '213', 'P_OO': '213', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '195', 'P_HL_STA': '206'}
+  U 1 9 1776 357 {'P_ZAP': '1776', 'P_ZUC': '357', 'P_OO': '357', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '336', 'P_HL_STA': '344'}
+  U 1 10 843 275 {'P_ZAP': '843', 'P_ZUC': '275', 'P_OO': '275', 'P_OO_PCT': '100,00', 'P_HL_ZAS': '255', 'P_HL_STA': '263'}
+tab05 stĺpce: ['OBEC', 'VOOBEC', 'OKRSOK', 'PC_HL', 'P_HL', 'P_HL_PCT', 'KANDIDAT']
+tab05 riadkov: 1584
+  H 1 1 1 4
+  H 1 1 1 9
+  H 1 1 1 0
+  H 1 1 2 0
+  H 1 1 2 14
+  H 1 1 2 2
+  H 1 1 3 28
+  H 1 1 3 44
+  H 1 1 3 57
+  H 1 1 4 11
+  H 1 1 4 31
+  H 1 1 4 7
+  H 1 1 5 20
+  H 1 1 5 28
+  H 1 1 5 25
+  H 1 1 6 111
+  H 1 1 6 21
+  H 1 1 6 78
+  H 1 1 7 16
+  H 1 1 7 21
+  H 1 1 7 5
+  H 1 1 8 41
+  H 1 1 8 309
+  H 1 1 8 141
+  H 1 2 1 3
+  H 1 2 2 0
+  H 1 2 3 36
+  H 1 2 4 30
+  H 1 2 5 13
+  H 1 2 6 47
+MČ okrskov: 0
 HOTOVO
