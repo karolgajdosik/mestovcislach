@@ -1,13 +1,15 @@
-import requests, re
-H={"User-Agent":"Mozilla/5.0"}
-h=requests.get("https://zastupitelstvo.bratislava.sk/zasadnutia/",headers=H,timeout=60).text
-d=sorted(set(re.findall(r'zasadnutie-(\d{8})', h)))
-print("BA zasadnutia na 1. strane:", [x[4:]+'-'+x[2:4]+'-'+x[:2] for x in d][-12:])
-# ďalšie typy (komisie?) – len počet odkazov s budúcim dátumom
-print("text 'pripravované':", 'priprav' in h.lower(), len(h))
-for u in ["https://www.kosice.sk/clanok/harmonogram-zasadnuti-mestskeho-zastupitelstva","https://www.kosice.sk/mesto/samosprava/mestske-zastupitelstvo","https://www.trnava.sk/sk/clanok/harmonogram-zasadnuti","https://www.zilina.sk/mestske-zastupitelstvo/","https://www.presov.sk/harmonogram-zasadnuti-mz.html"]:
-    try:
-        r=requests.get(u,headers=H,timeout=40); t=r.text
-        print(u, r.status_code, len(t), re.findall(r'\d{1,2}\.\s?\d{1,2}\.\s?2026', t)[:12])
-    except Exception as e: print(u,"ERR",type(e).__name__)
+import requests, time
+H={"User-Agent":"Mozilla/5.0 (mestovcislach diag)"}
+W="https://mestovcislach.sk"
+for i in range(40):
+    r=requests.get(W+"/dodavatelia/",headers=H,timeout=30)
+    if r.status_code==200 and requests.get(W+"/data/odber-brevo.json",headers=H,timeout=30).json().get("zoznamy",{}).get("dodavatel"): break
+    time.sleep(30)
+for u in ["/bratislava/dosah/","/presov/dosah/","/kosice/kalendar/","/kosice/kalendar.ics","/porovnaj/","/suboj/","/dodavatelia/","/nitra/pribeh/","/data/novinky/kosice.json","/data/dodavatelia.json","/data/dodavatelia/31718914.json","/bratislava/dane/"]:
+    r=requests.get(W+u,headers=H,timeout=30); print(u, r.status_code, r.headers.get("content-type"), len(r.content))
+print("úvod má Môj prehľad:", "moj-prehlad" in requests.get(W+"/",headers=H,timeout=30).text)
+r=requests.get(W+"/api/suboj?den=2026-10-24",headers=H,timeout=30); print("api/suboj GET", r.status_code)
+r=requests.get(W+"/api/odhlasit?e=x%40y.sk&t="+"0"*64,headers=H,timeout=30); print("api/odhlasit zlý podpis", r.status_code)
+r=requests.post(W+"/api/odber",json={"email":"test@example.invalid","kanal":"dodavatel","ico":"123","suhlas":True},headers=H,timeout=30); print("api/odber zlé IČO", r.status_code, r.json().get("sprava"))
+r=requests.post(W+"/api/odber",json={"email":"x","kanal":"dodavatel","ico":"31718914","suhlas":True,"web":"bot"},headers=H,timeout=30); print("api/odber pasca", r.status_code)
 print("HOTOVO")
