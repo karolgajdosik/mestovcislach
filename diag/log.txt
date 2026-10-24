@@ -1,31 +1,52 @@
-== https://volbysr.sk 200 https://volbysr.sk/ text/html 595
-  linky: []
-  text:  
-== https://volbysr.sk/oso/sk/ 200 https://volbysr.sk/oso/sk/ text/html 26882
-  linky: ['../../osk/sk', '../en/index.html', '../files/MetodickyPokynNaSpracovanieVysledkovHlasovania2026.pdf', '../files/ZZ_2014_180_20260601.pdf', '../files/ZZ_2026_145_20260624.pdf', '../js/absolute.js', '../js/functions.js', '../js/idsk-frontend-2.9.0.min.js', '../js/jquery-1.12.3.min.js', '../js/jquery-ui.min.js', '../js/jquery.dataTables.min.js', '../js/slovak-sort.js', '../js/slovak.js', '../sk/index.html', 'cookies.html', 'https://idsk2.gov.sk/', 'https://jissu.statistics.sk/ui/sv/base/sv/sv-vseobecna/KS_350846_OSOOSK?lang=sk', 'https://slovak.statistics.sk/', 'https://slovak.statistics.sk/wps/portal/ext/home/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziA809LZycDB0NLPyCXA08QxwD3IO8TAwNTEz1wwkpiAJKG-AAjgZA_VFgJc7ujh4m5j4GBhY-7qYGno4eoUGWgcbGBo7GUAV4zCjIjTDIdFRUBADse0bP/dz/d5/L2dBISEvZ0FBIS9nQSEh/', 'https://www.googletagmanager.com/gtag/js?id=UA-48203852-1', 'https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci', 'index.html', 'kontakty.html', 'politicke_strany.html', 'subory_na_stiahnutie.html', 'uzemne_clenenie.html', 'vyhlasenie_o_pristupnosti.html']
-== https://volbysr.sk/oso/ 200 https://volbysr.sk/oso/ text/html 598
-  linky: []
-  text:  
-== https://www.volbysr.sk/ 200 https://www.volbysr.sk/ text/html 595
-  linky: []
-  text:  
-== https://volbysr.sk/oso/files/OSO2026_SK_csv.zip 404 https://volbysr.sk/oso/files/OSO2026_SK_csv.zip text/html 146
-  linky: []
-  text:  404 Not Found 404 Not Found nginx 
-== https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip 200 https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip application/zip 173044
-  linky: []
-== https://volbysr.sk/osk/files/OSK2026_SK_csv.zip 404 https://volbysr.sk/osk/files/OSK2026_SK_csv.zip text/html 146
-  linky: []
-  text:  404 Not Found 404 Not Found nginx 
-== https://volbysr.sk/sk/ 200 https://volbysr.sk/sk/ text/html 21807
-  linky: ['../en/index.html', '../js/functions.js', '../js/idsk-frontend-2.9.0.min.js', '../js/jquery-1.12.3.min.js', '../js/jquery-ui.min.js', '../osk/sk/index.html', '../oso/sk/index.html', '../sk/index.html', 'cookies.html', 'https://idsk2.gov.sk', 'https://slovak.statistics.sk/', 'https://slovak.statistics.sk/wps/portal/ext/home/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziA809LZycDB0NLPyCXA08QxwD3IO8TAwNTEz1wwkpiAJKG-AAjgZA_VFgJc7ujh4m5j4GBhY-7qYGno4eoUGWgcbGBo7GUAV4zCjIjTDIdFRUBADse0bP/dz/d5/L2dBISEvZ0FBIS9nQSEh/', 'https://volby.statistics.sk', 'https://www.googletagmanager.com/gtag/js?id=UA-48203852-1', 'https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci', 'index.html', 'kontakty.html', 'vyhlasenie_o_pristupnosti.html']
-== https://volbysr.sk/oso/sk/data.html 404 https://volbysr.sk/oso/sk/data.html text/html 146
-  linky: []
-  text:  404 Not Found 404 Not Found nginx 
-== https://volbysr.sk/oso/sk/download.html 404 https://volbysr.sk/oso/sk/download.html text/html 146
-  linky: []
-  text:  404 Not Found 404 Not Found nginx 
-== https://volbysr.sk/sk/data.html 404 https://volbysr.sk/sk/data.html text/html 146
-  linky: []
-  text:  404 Not Found 404 Not Found nginx 
+== https://volbysr.sk/oso/sk/subory_na_stiahnutie.html
+   ['../files/OSO2026_SK_ods.zip', '../files/OSO2026_SK_xlsx.zip']
+   enÃ© V prÃ­pade, Å¾e zdieÄ¾ate svoje Ãºdaje, uistite sa, Å¾e sa nachÃ¡dzate na zabezpeÄenej webovej strÃ¡nke verejnej sprÃ¡vy Slovenskej republiky. ZabezpeÄenÃ¡ strÃ¡nka vÅ¾dy zaÄÃ­na https:// a obsahuje nÃ¡zov domÃ©ny webovÃ©ho sÃ­dla. VoÄ¾by do orgÃ¡nov samosprÃ¡vy obcÃ­ 2026 Menu PrejsÅ¥ na voÄ¾by do OSK VÅ¡eobecnÃ© informÃ¡cie Zoznam politickÃ½ch strÃ¡n ÃzemnÃ© Älenenie SÃºbory na stiahnutie PrejsÅ¥ na voÄ¾by do OSK Domov SÃºbory na stiahnutie SÃºbory na stiahnutie SÃºbory vo formÃ¡te XLSX (zdroj Å Ã SR, ZIP&nbsp;â&nbsp;169,0&nbsp;kB) StiahnuÅ¥ XLSX SÃºbory vo formÃ¡te ODS (zdroj Å Ã SR, ZIP&nbsp;â&nbsp;112,9&nbsp;kB) StiahnuÅ¥ ODS Zoznam sÃºborov na stiahnutie NÃ¡zov tabuÄ¾ky NezoradenÃ½ stÄºpec - pouÅ¾ije vzostupnÃ© zoradenie. NÃ¡zov sÃºboru NezoradenÃ½ stÄºpec - pouÅ¾ije vzostupnÃ© zoradenie. XLSX ODS $(document).ready(function() { downloadTab('pred') }); Hore DotaznÃ­k spokojnosti DotaznÃ­k spokojnosti Kontakty VyhlÃ¡senie o prÃ­stupnosti Cookies ObsahovÃ½ sprÃ¡vca a technickÃ½ prevÃ¡dzkovateÄ¾ VytvorenÃ© v sÃºlade s JednotnÃ½m dizajn manuÃ¡lom elektronickÃ½ch sluÅ¾ieb . PrevÃ¡dzkovateÄ¾om sluÅ¾by je Å tatistickÃ½ Ãºrad SR. PoslednÃ¡ aktualizÃ¡cia strÃ¡nky: window.GOVUKFrontend.initAll() var cookieBanner = document.querySelector('.idsk-cookie-banner') var cookieBannerAccepted = document.querySelector('.js-cookie-banner-accepted') var cookieBannerRejected = document.querySelector('.js-cookie-banner-rejected') var cookieMessage = document.querySelector('.idsk-cookie-banner__message') var acceptButton = document.querySelector('.js-cookies-button-accept') var rejectButton = document.querySelector('.js-cookies-button-reject') var acceptedButtonHide = document.querySelector('.js-cookies-button-accepted-hide') var rejectedButtonHide = document.querySelector('.js-cookies-button-rejected-hide') if(cookieBanner){ cookieBanner.hidden = (localStorage.getItem('acceptedCookieBanner') === 'true') acceptButton.addEventListener('click', function (event) { cookieM
+== https://volbysr.sk/osk/sk/subory_na_stiahnutie.html
+   ['../files/OSK2026_SK_ods.zip', '../files/OSK2026_SK_xlsx.zip']
+   zpeÄenÃ© V prÃ­pade, Å¾e zdieÄ¾ate svoje Ãºdaje, uistite sa, Å¾e sa nachÃ¡dzate na zabezpeÄenej webovej strÃ¡nke verejnej sprÃ¡vy Slovenskej republiky. ZabezpeÄenÃ¡ strÃ¡nka vÅ¾dy zaÄÃ­na https:// a obsahuje nÃ¡zov domÃ©ny webovÃ©ho sÃ­dla. VoÄ¾by do orgÃ¡nov samosprÃ¡vnych krajov 2026 Menu PrejsÅ¥ na voÄ¾by do OSO VÅ¡eobecnÃ© informÃ¡cie Zoznam politickÃ½ch strÃ¡n ÃzemnÃ© Älenenie SÃºbory na stiahnutie PrejsÅ¥ na voÄ¾by do OSO Domov SÃºbory na stiahnutie SÃºbory na stiahnutie SÃºbory vo formÃ¡te XLSX (zdroj Å Ã SR, ZIP&nbsp;â&nbsp;131,4&nbsp;kB) StiahnuÅ¥ XLSX SÃºbory vo formÃ¡te ODS (zdroj Å Ã SR, ZIP&nbsp;â&nbsp;88,9&nbsp;kB) StiahnuÅ¥ ODS Zoznam sÃºborov na stiahnutie NÃ¡zov tabuÄ¾ky NÃ¡zov sÃºboru XLSX ODS $(document).ready(function() { downloadTab('pred') }); Hore DotaznÃ­k spokojnosti DotaznÃ­k spokojnosti Kontakty VyhlÃ¡senie o prÃ­stupnosti Cookies ObsahovÃ½ sprÃ¡vca a technickÃ½ prevÃ¡dzkovateÄ¾ VytvorenÃ© v sÃºlade s JednotnÃ½m dizajn manuÃ¡lom elektronickÃ½ch sluÅ¾ieb . PrevÃ¡dzkovateÄ¾om sluÅ¾by je Å tatistickÃ½ Ãºrad SR. PoslednÃ¡ aktualizÃ¡cia strÃ¡nky: window.GOVUKFrontend.initAll() var cookieBanner = document.querySelector('.idsk-cookie-banner') var cookieBannerAccepted = document.querySelector('.js-cookie-banner-accepted') var cookieBannerRejected = document.querySelector('.js-cookie-banner-rejected') var cookieMessage = document.querySelector('.idsk-cookie-banner__message') var acceptButton = document.querySelector('.js-cookies-button-accept') var rejectButton = document.querySelector('.js-cookies-button-reject') var acceptedButtonHide = document.querySelector('.js-cookies-button-accepted-hide') var rejectedButtonHide = document.querySelector('.js-cookies-button-rejected-hide') if(cookieBanner){ cookieBanner.hidden = (localStorage.getItem('acceptedCookieBanner') === 'true') acceptButton.addEventListener('click', function (event) { cookieMessage.hidden = true cookieBannerAccepted.hidden = false localStorage.setItem('googleAnalytics', 't
+== https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip 200 173044
+   OSO2026_SK_tab0c.xlsx 56 ['Zoznam politických s', 'None', 'None']
+   OSO2026_SK_tab0dd.xlsx 2927 ['Územné členenie', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']
+   OSO2026_SK_tab0dx.xlsx 5 ['Územné členenie za m', 'None', 'None', 'None', 'None', 'None']
+   OSO2026_SK_tab_info.xlsx 7 ['Zoznam tabuliek', 'None']
+== https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip 200 134548
+   OSK2026_SK_tab0c.xlsx 56 ['Zoznam politických s', 'None', 'None']
+   OSK2026_SK_tab0db.xlsx 99 ['Územné členenie za v', 'None', 'None', 'None', 'None', 'None']
+   OSK2026_SK_tab0dc.xlsx 2929 ['Územné členenie za o', 'None', 'None', 'None', 'None', 'None', 'None']
+   OSK2026_SK_tab_info.xlsx 7 ['Zoznam tabuliek', 'None']
+== ['python', 'scripts/zber_komunalne.py'] 0
+Komunálne a krajské voľby 2022:
+  https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip: HTTP 404
+  https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip: HTTP 404
+  primátor: Ing. arch. Matúš Vallo 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
+  predseda BSK: Mgr. Juraj Droba, MBA, MA 63.61 %, poslanci za BA 35
+  stav: vysledky
+Komunálne a krajské voľby 2026:
+  https://volbysr.sk/oso/files/OSO2026_SK_csv.zip: HTTP 404
+  https://volbysr.sk/osk/files/OSK2026_SK_csv.zip: HTTP 404
+  stav: caka_sa
+Bez zmeny.
+
+
+== ['python', 'scripts/zber_mesta.py', 'komunalne'] 0
+  https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip: HTTP 404
+  Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
+  Košice 2022: primátor v 21 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}
+  komunálne 2022: 8 miest
+  https://volbysr.sk/oso/files/OSO2026_SK_csv.zip: HTTP 404
+  komunálne 2026: výsledky ešte nie sú k dispozícii (tab0c, tab0d)
+OK komunalne
+{'slug': 'bratislava', 'nazov': 'Bratislava', 'obyvatelia': 480902, 'rok': '2025', 'zmena10': 13.7, 'seniori': 19.0, 'deti': 15.5, 'vs': 36.6, 'vlastne_byty': 93.5, 'pdu': 2.74, 'ucast_komunalne': 36.88, 'byty_10r': 2486, 'ceny_kraj': 16.2}
+{'slug': 'trnava', 'nazov': 'Trnava', 'obyvatelia': 63184, 'rok': '2025', 'zmena10': -3.7, 'seniori': 18.9, 'deti': 15.0, 'vs': 24.5, 'vlastne_byty': None, 'pdu': 2.64, 'ucast_komunalne': 41.88, 'byty_10r': 883, 'ceny_kraj': 11.9}
+{'slug': 'nitra', 'nazov': 'Nitra', 'obyvatelia': 75301, 'rok': '2025', 'zmena10': -3.1, 'seniori': 19.9, 'deti': 14.1, 'vs': 29.2, 'vlastne_byty': None, 'pdu': 2.45, 'ucast_komunalne': 40.41, 'byty_10r': 806, 'ceny_kraj': 9.9}
+{'slug': 'trencin', 'nazov': 'Trenčín', 'obyvatelia': 54104, 'rok': '2025', 'zmena10': -2.9, 'seniori': 21.4, 'deti': 13.7, 'vs': 26.9, 'vlastne_byty': None, 'pdu': 2.45, 'ucast_komunalne': 37.0, 'byty_10r': 505, 'ceny_kraj': 11.6}
+{'slug': 'zilina', 'nazov': 'Žilina', 'obyvatelia': 79873, 'rok': '2025', 'zmena10': -1.5, 'seniori': 18.4, 'deti': 15.1, 'vs': 27.7, 'vlastne_byty': None, 'pdu': 2.94, 'ucast_komunalne': 38.17, 'byty_10r': 591, 'ceny_kraj': 11}
+{'slug': 'banska-bystrica', 'nazov': 'Banská Bystrica', 'obyvatelia': 73054, 'rok': '2025', 'zmena10': -7.2, 'seniori': 19.9, 'deti': 14.1, 'vs': 29.0, 'vlastne_byty': 93.6, 'pdu': 3.43, 'ucast_komunalne': 39.79, 'byty_10r': 307, 'ceny_kraj': 12.4}
+{'slug': 'presov', 'nazov': 'Prešov', 'obyvatelia': 81223, 'rok': '2025', 'zmena10': -9.7, 'seniori': 18.3, 'deti': 14.4, 'vs': 27.0, 'vlastne_byty': None, 'pdu': 3.18, 'ucast_komunalne': 42.67, 'byty_10r': 666, 'ceny_kraj': 8.9}
+{'slug': 'kosice', 'nazov': 'Košice', 'obyvatelia': 222286, 'rok': '2025', 'zmena10': -7.1, 'seniori': 18.7, 'deti': 14.8, 'vs': 26.7, 'vlastne_byty': 92.2, 'pdu': 3.02, 'ucast_komunalne': 30.9, 'byty_10r': 580, 'ceny_kraj': 7.9}
+
+
+BA volby: [('2022', 'vysledky', True, {'okrsky': 394, 'spolu': 394, 'pct': 100.0, 'priebezne': False}), ('2026', 'caka_sa', False, None)]
+kosice {'2022': ({'okrsky': 198, 'spolu': 198, 'pct': 100.0, 'priebezne': False}, True)}
+trencin {'2022': ({'okrsky': 51, 'spolu': 51, 'pct': 100.0, 'priebezne': False}, True)}
 HOTOVO
