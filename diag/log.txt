@@ -1,13 +1,8 @@
-trnava 0 [] []
-trnava 2 ['cadastral'] ['Modranka', 'Trnava']
-nitra 4 ['11'] ['Šindolka', 'Východný Zobor', 'Západný Zobor', 'Stredný Zobor']
-nitra 11 ['cadastral'] ['Chrenová', 'Dolné Krškany', 'Dražovce', 'Horné Krškany', 'Kynek', 'Mikov dvor', 'Mlynárce', 'Nitra', 'Párovské Háje', 'Veľké Janíkovce', 'Zobor']
-trencin 9 ['11'] ['Juh', 'Belá', 'Biskupice', 'Zámostie', 'Brezina', 'Sihote', 'Pod Sokolice', 'Centrum', 'Dlhé hony']
-trencin 10 ['cadastral'] ['Hanzlíková', 'Istebník', 'Kubrica', 'Kubrá', 'Opatová', 'Orechové', 'Trenčianske Biskupice', 'Trenčín', 'Zlatovce', 'Záblatie']
-zilina 23 ['11'] ['Vlčince', 'Západ', 'Sever I', 'Sever II', 'Hájik', 'Závodie', 'Žilinská Lehota', 'Zástranie', 'Zádubnie', 'Vranie', 'Trnové', 'Strážov', 'Považský Chlmec', 'Mojšova Lúčka', 'Budatín', 'Brodno', 'Bánová', 'Bytčica', 'Rosinky', 'Solinky', 'Bôrik', 'Staré mesto', 'Hliny']
-zilina 14 ['cadastral'] ['Brodno', 'Budatín', 'Bytčica', 'Bánová', 'Mojšova Lúčka', 'Považský Chlmec', 'Strážov', 'Trnové', 'Vranie', 'Zádubnie', 'Zástranie', 'Závodie', 'Žilina', 'Žilinská Lehota']
-banska-bystrica 19 ['11'] ['Iliaš', 'Rakytovce', 'Kremnička', 'Kráľová', 'Radvaň', 'Podlavice', 'Skubín', 'Uhlisko', 'Rudlová', 'Sásová', 'Jakub', 'Kostiviarska', 'Senica', 'Uľanka', 'Šalková', 'Fončorda', 'Majer', 'Banská Bystrica', 'Pršianska Terasa']
-banska-bystrica 9 ['cadastral'] ['Banská Bystrica', 'Kostiviarska', 'Kremnička', 'Podlavice', 'Radvaň', 'Senica', 'Sásová', 'Uľanka', 'Šalková']
-presov 14 ['10', '11'] ['Vydumanec', 'Cemjata', 'Prešov', 'Nižná Šebastová', 'Šalgovík', 'Solivar', 'Kyslá Voda', 'Prešov 2', 'Prešov 5', 'Prešov 4', 'Prešov 1', 'Prešov 3', 'Prešov 7', 'Prešov 6']
-presov 4 ['cadastral'] ['Nižná Šebastová', 'Prešov', 'Solivar', 'Šalgovík']
+Nitra: 10 častí (katastrálne územia)
+Trenčín: 9 častí (časti mesta)
+Žilina: 23 častí (časti mesta)
+Banská Bystrica: 0 častí (časti mesta)
+Prešov: 7 častí (časti mesta)
+
+
 HOTOVO
