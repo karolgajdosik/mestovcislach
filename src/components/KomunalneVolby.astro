@@ -73,7 +73,7 @@ const vitaz = (k: any[]) => k?.find((x) => x.zvoleny) ?? null;
 
           {priebezne && (
             <aside class="card upozornenie" role="status">
-              <strong>Priebežné výsledky – spracovaných {fmt(sp.okrsky)} z {fmt(sp.spolu)} okrskov ({pct(sp.pct)})</strong>
+              <strong>Priebežné výsledky – {sp.okrsky != null ? `spracovaných ${fmt(sp.okrsky)} z ${fmt(sp.spolu)} okrskov (${pct(sp.pct)})` : `spracovaných ${pct(sp.pct)} okrskov`}</strong>
               <p>
                 Čísla sa počas sčítavania menia, obnovujeme ich každých 15 minút. Zvolení kandidáti a rozdelenie mandátov budú
                 známe až po spracovaní všetkých okrskov a vyhlásení výsledkov volebnými komisiami.

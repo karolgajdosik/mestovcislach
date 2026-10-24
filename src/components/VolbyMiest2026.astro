@@ -9,7 +9,7 @@ const riadky = MESTA.filter((m) => m.aktivne).map((m) => {
   const n = o.find((x) => x.rok === '2026'), s = o.find((x) => x.rok === '2022');
   if (!n || !s) return null;
   const predMena = new Set(s.poslanci.map((p) => bezTitulov(p.meno)));
-  const obhajili = n.priebezne ? null : n.poslanci.filter((p) => predMena.has(bezTitulov(p.meno))).length;
+  const obhajili = n.priebezne || !n.poslancov ? null : n.poslanci.filter((p) => predMena.has(bezTitulov(p.meno))).length;
   const primObhajil = n.primator && s.primator ? bezTitulov(n.primator.meno) === bezTitulov(s.primator.meno) : null;
   const naj = n.mandaty.slice().sort((a, b) => b.mandaty - a.mandaty)[0];
   return { m, n, s, obhajili, primObhajil, naj, zmenaUcasti: n.ucast != null && s.ucast != null ? n.ucast - s.ucast : null };

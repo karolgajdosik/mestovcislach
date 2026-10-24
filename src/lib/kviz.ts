@@ -147,7 +147,7 @@ export function kviz(slug: string): Otazka[] {
     { typ: 'stlpce', nadpis: 'Nezamestnanosť', jednotka: ' %', des: 2, polozky: Object.entries<any>(pr).map(([n, v]) => ({ n, v: v.pdu, ...(n === C ? { ja: true } : {}) })) });
 
   // ---------- Voľby ----------
-  const ob = obdobia(slug).find((o) => !o.priebezne);
+  const ob = obdobia(slug).find((o) => !o.priebezne && o.poslancov > 0);
   if (ob) {
     const kom = slug === 'bratislava' ? citaj('data', 'komunalne-bratislava.json')?.volby?.find((v: any) => v.id === ob.rok)?.oso?.primator?.kandidati : dm.komunalne?.[ob.rok]?.primator;
     const kand = (kom ?? []).slice().sort((a: any, b: any) => b.hlasy - a.hlasy);

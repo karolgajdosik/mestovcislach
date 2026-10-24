@@ -532,6 +532,16 @@ def main() -> int:
                 zaznam["zdroj_osk"] = stare_volby[v["id"]].get("zdroj_osk")
             if not ma_oso and v["id"] in stare_volby and stare_volby[v["id"]].get("stav") == "vysledky":
                 zaznam = stare_volby[v["id"]]  # výsledky už máme, server dočasne nedostupný
+            elif not ma_oso and v["id"] == "2026":
+                # počas sčítavania: priebežný primátor z JSON stránky ŠÚ SR (balík XLSX príde až s konečnými výsledkami)
+                import volby_priebezne as vp
+                d = vp.mesto("bratislava")
+                if d:
+                    zaznam["stav"] = "vysledky"
+                    zaznam["spracovanie"] = d["spracovanie"]
+                    zaznam["oso"] = {"primator": {"ucast": d["ucast"], "kandidati": d["primator"], "mestske_casti": [], "okrsky_priradene": 0},
+                                     "mestske_zastupitelstvo": {"poslancov": 0, "mandaty": [], "zvoleni": []}, "starostovia": []}
+                    zaznam["zdroj_oso"] = "https://volbysr.sk/oso/sk/vysledky_obce.html"
             if zaznam.get("oso"):
                 p = zaznam["oso"]["primator"]
                 vit = next((k for k in p["kandidati"] if k["zvoleny"]), p["kandidati"][0] if p["kandidati"] else None)

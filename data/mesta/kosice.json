@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-24T12:34:17",
+ "aktualizovane": "2026-10-24T23:25:43",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -1795,6 +1795,83 @@
       "hlasy": 453
      }
     ]
+   }
+  },
+  "2026": {
+   "ucast": {
+    "zapisani": 165686,
+    "volili": 59812,
+    "ucast_pct": 36.09
+   },
+   "spracovanie": {
+    "okrsky": null,
+    "spolu": null,
+    "pct": 86.84,
+    "priebezne": true,
+    "zdroj": "volbysr.sk (priebežne)"
+   },
+   "primator": [
+    {
+     "meno": "Ladislav Lörinc",
+     "strany": "Košická strana",
+     "hlasy": 22850,
+     "podiel": 39.91,
+     "zvoleny": false
+    },
+    {
+     "meno": "Jaroslav Polaček",
+     "strany": "KDH, SaS, Magyar Szövetség - Maďarská aliancia, SRK, NOVA, DS-ODS",
+     "hlasy": 12244,
+     "podiel": 21.38,
+     "zvoleny": false
+    },
+    {
+     "meno": "Martin Mudrák",
+     "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+     "hlasy": 10636,
+     "podiel": 18.57,
+     "zvoleny": false
+    },
+    {
+     "meno": "Lenka Kovačevičová",
+     "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, PRAVDA",
+     "hlasy": 7153,
+     "podiel": 12.49,
+     "zvoleny": false
+    },
+    {
+     "meno": "Alexander Riabov",
+     "strany": "NEKA",
+     "hlasy": 2742,
+     "podiel": 4.78,
+     "zvoleny": false
+    },
+    {
+     "meno": "Ladislav Lörincz",
+     "strany": "Jednota Slovanov",
+     "hlasy": 1164,
+     "podiel": 2.03,
+     "zvoleny": false
+    },
+    {
+     "meno": "Miroslav Sabol",
+     "strany": "NEKA",
+     "hlasy": 317,
+     "podiel": 0.55,
+     "zvoleny": false
+    },
+    {
+     "meno": "Alexander Székely",
+     "strany": "Slovenské Hnutie Obrody",
+     "hlasy": 146,
+     "podiel": 0.25,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 0,
+    "mandaty": [],
+    "poslanci": []
    }
   }
  },

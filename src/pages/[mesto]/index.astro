@@ -151,7 +151,7 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     {kom && (
       <div class="blok">
         <h3>Voľba primátora {komRok}</h3>
-        {kom.spracovanie?.priebezne && <p class="priebezne" role="status"><strong>Priebežné výsledky</strong> – spracovaných {fmt(kom.spracovanie.okrsky)} z {fmt(kom.spracovanie.spolu)} okrskov ({des(kom.spracovanie.pct)} %). Obnovuje sa každých 15 minút.</p>}
+        {kom.spracovanie?.priebezne && <p class="priebezne" role="status"><strong>Priebežné výsledky</strong> – {kom.spracovanie.okrsky != null ? `spracovaných ${fmt(kom.spracovanie.okrsky)} z ${fmt(kom.spracovanie.spolu)} okrskov (${des(kom.spracovanie.pct)} %)` : `spracovaných ${des(kom.spracovanie.pct)} % okrskov`}. Obnovuje sa každých 15 minút.</p>}
         <p class="pozn">Účasť {des(kom.ucast?.ucast_pct)} % · {fmt(kom.ucast?.volili)} voličov{ja.ucast_komunalne != null && ` · ${poradie('ucast_komunalne')} krajských miest podľa účasti`}</p>
         <ul class="pruhy kandidati">{kom.primator.slice(0, 6).map((k: any) => (
           <li class={k.zvoleny ? 'zvoleny' : ''}><span class="p-n"><strong translate="no">{k.meno}</strong>{k.zvoleny && <em> zvolený</em>}<small translate="no">{k.strany.length > 90 ? k.strany.slice(0, 88) + '…' : k.strany}</small></span><span class="p-h">{des(k.podiel)} %</span><span class="p-p" aria-hidden="true"><i style={`width:${k.podiel}%`}></i></span></li>

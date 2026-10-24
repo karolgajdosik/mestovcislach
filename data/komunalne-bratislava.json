@@ -1663,13 +1663,6 @@
     ]
    },
    "zdroj_oso": "https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip",
-   "stav": "vysledky",
-   "spracovanie": {
-    "okrsky": 394,
-    "spolu": 394,
-    "pct": 100.0,
-    "priebezne": false
-   },
    "osk": {
     "predseda": {
      "kraj": {
@@ -2037,15 +2030,91 @@
      ]
     }
    },
-   "zdroj_osk": "https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip"
+   "zdroj_osk": "https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip",
+   "stav": "vysledky",
+   "spracovanie": {
+    "okrsky": 394,
+    "spolu": 394,
+    "pct": 100.0,
+    "priebezne": false
+   }
   },
   {
    "id": "2026",
    "datum": "2026-10-24",
    "nazov": "Komunálne a krajské voľby 2026",
    "web": "https://volbysr.sk/oso/sk/",
-   "stav": "caka_sa"
+   "stav": "vysledky",
+   "spracovanie": {
+    "okrsky": null,
+    "spolu": null,
+    "pct": 30.92,
+    "priebezne": true,
+    "zdroj": "volbysr.sk (priebežne)"
+   },
+   "oso": {
+    "primator": {
+     "ucast": {
+      "zapisani": 119700,
+      "volili": 55411,
+      "ucast_pct": 46.29
+     },
+     "kandidati": [
+      {
+       "meno": "Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
+       "hlasy": 33327,
+       "podiel": 62.73,
+       "zvoleny": false
+      },
+      {
+       "meno": "Jozef Ráž",
+       "strany": "NEKA",
+       "hlasy": 18070,
+       "podiel": 34.01,
+       "zvoleny": false
+      },
+      {
+       "meno": "Zuzana Šubová",
+       "strany": "Piráti",
+       "hlasy": 961,
+       "podiel": 1.8,
+       "zvoleny": false
+      },
+      {
+       "meno": "Ľubomír Geci",
+       "strany": "MySlovensko",
+       "hlasy": 426,
+       "podiel": 0.8,
+       "zvoleny": false
+      },
+      {
+       "meno": "Martin Winkler",
+       "strany": "Dunaj",
+       "hlasy": 250,
+       "podiel": 0.47,
+       "zvoleny": false
+      },
+      {
+       "meno": "Miroslav Heredoš",
+       "strany": "VLASTENCI SK",
+       "hlasy": 93,
+       "podiel": 0.17,
+       "zvoleny": false
+      }
+     ],
+     "mestske_casti": [],
+     "okrsky_priradene": 0
+    },
+    "mestske_zastupitelstvo": {
+     "poslancov": 0,
+     "mandaty": [],
+     "zvoleni": []
+    },
+    "starostovia": []
+   },
+   "zdroj_oso": "https://volbysr.sk/oso/sk/vysledky_obce.html"
   }
  ],
- "aktualizovane": "2026-10-24T22:40:56+00:00"
+ "aktualizovane": "2026-10-24T23:25:36+00:00"
 }

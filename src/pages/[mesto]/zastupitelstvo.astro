@@ -13,9 +13,11 @@ export function getStaticPaths() {
 const { m } = Astro.props as { m: Mesto };
 const vsetky = obdobia(m.slug);
 // počas sčítavania ukážeme zatiaľ platné zastupiteľstvo a priebežný stav nových volieb
-const scitava = vsetky[0]?.priebezne ? vsetky[0] : null;
-const teraz = vsetky.find((o) => !o.priebezne)!;
-const pred = vsetky.find((o) => !o.priebezne && o.rok < teraz.rok) ?? null;
+// (nové zastupiteľstvo ešte nemusí byť spracované, aj keď primátor už je známy – vtedy poslancov 0)
+const hotove = (o: (typeof vsetky)[number]) => !o.priebezne && o.poslancov > 0;
+const scitava = vsetky[0] && !hotove(vsetky[0]) ? vsetky[0] : null;
+const teraz = vsetky.find(hotove)!;
+const pred = vsetky.find((o) => hotove(o) && o.rok < teraz.rok) ?? null;
 const obdobie = `${teraz.rok}–${Number(teraz.rok) + 4}`;
 
 const predMena = new Set((pred?.poslanci ?? []).map((p) => bezTitulov(p.meno)));
@@ -45,7 +47,7 @@ const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/$
 
   {scitava && (
     <aside class="card upozornenie" role="status">
-      <strong>Voľby {scitava.rok}: sčítavajú sa hlasy ({scitava.primator ? <>vedie <span translate="no">{scitava.primator.meno}</span></> : 'priebežne'})</strong>
+      <strong>Voľby {scitava.rok}: {scitava.priebezne ? 'sčítavajú sa hlasy' : 'poslanci sa ešte spracúvajú'} ({scitava.primator ? <>{scitava.priebezne ? 'vedie' : 'primátor(ka)'} <span translate="no">{scitava.primator.meno}</span></> : 'priebežne'})</strong>
       <p>Kým nie sú výsledky konečné, ukazujeme doterajšie zastupiteľstvo. Nové sa tu zobrazí automaticky. <a href={volbyOdkaz}>Priebežné výsledky volieb</a></p>
     </aside>
   )}

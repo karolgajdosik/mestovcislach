@@ -45,7 +45,7 @@ const kr = (s: string) => { const q = skrat(s).split(' + '); return q.length > 3
 
   <div class="vb-stav" id="vb-stav" data-stav={stav} role="status">
     {stav === 'pred' && <p><span class="vb-bod" aria-hidden="true"></span><strong>Voľby sú v sobotu 24. októbra 2026 (7:00 – 20:00).</strong> Výsledky sa tu objavia počas volebnej noci – Štatistický úrad kontrolujeme každých 15 minút a stránka sa sama obnoví. Zatiaľ ukazujeme výsledky z roku {komRok}.</p>}
-    {stav === 'priebezne' && <p><span class="vb-bod" aria-hidden="true"></span><strong>Priebežné výsledky – spracovaných {fmt(kom.spracovanie.okrsky)} z {fmt(kom.spracovanie.spolu)} okrskov ({des(kom.spracovanie.pct)} %).</strong> Stránka sa sama obnovuje.</p>}
+    {stav === 'priebezne' && <p><span class="vb-bod" aria-hidden="true"></span><strong>Priebežné výsledky – {kom.spracovanie.okrsky != null ? `spracovaných ${fmt(kom.spracovanie.okrsky)} z ${fmt(kom.spracovanie.spolu)} okrskov (${des(kom.spracovanie.pct)} %)` : `spracovaných ${des(kom.spracovanie.pct)} % okrskov`}.</strong> Stránka sa sama obnovuje.</p>}
     {stav === 'konecne' && <p><strong>Konečné výsledky</strong> – spracované všetky okrsky.</p>}
   </div>
 
