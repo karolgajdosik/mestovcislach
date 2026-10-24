@@ -1,20 +1,12 @@
-== https://mapaskol.iedu.sk/data-set.aspx 16554 riadkov
-HLAVICKA: ['Kód školy', 'EDUID', 'Názov', 'Ulica', 'Obec', 'Web stránka', 'Vyuč.jaz.', 'Počet žiakov', 'Počet žiakov dual. vzd.', 'Poč.ž.zo soc.znev.prost', 'Počet ped.zam.', 'Počet odb.zam.', 'Počet neped.zam.', 'Rozpočet v 2024', 'Príspevok zo ŠR', 'Dary', 'Počet štud.odborov', 'GPS1', 'GPS2']
-PRIKLAD (len stlpce bez osob): ['000014478', '100001570', 'Liečeb.-vých.sanatórium - Čakany', 'Čakany 7', '93040 Čakany', 'lvszscakany.edupage.org', 'Nesleduje sa', '20', '0', '0', '8,0', '2,0', '15,5', '1\xa0108\xa0690 €', '966\xa0489 €', '0 €', 'údaj nedostupný', '48,115340', '17,361315']
-== https://www.svs.edu.sk/data-set.aspx 3293 riadkov
-HLAVICKA: ['Kód ŠVS', 'KODSKO', 'EDUID', 'Kód kraja', 'Kraj', 'Kód okresu', 'Okres', 'Kód zriaďovateľa', 'Zriaďovateľ', 'Kód druhu školy', 'Druh školy', 'Kód typu školy', 'Typ školy', 'Skrátený názov školy', 'Názov školy', 'Ulica', 'Obec', 'PSČ', 'Kód odvetvia', 'Odvetvie', 'Kód stupňa vzdelania', 'Stupeň vzdelania', 'Kód odboru', 'Odbor', 'Kód jazyka', 'Jazyk', 'Dĺžka štúdia', 'Talentový odbor', 'Schválený', 'Celkový plán', 'Plán štátny', 'Duálne vzdelávanie', 'Plán duálneho vzdelávania', '1. záujem', '1.+2. záujem', '1. záujem talentové skúšky', '1.+2. záujem talentové skúšky', 'Zapísaní', 'Predmet 1', 'Predmet 2', 'Predmet 3', 'Predmet 4']
-PRIKLAD (len stlpce bez osob): ['611001', '000605751', '100000645', '1', 'Bratislavský kraj', '04', 'Bratislava IV', '1', 'Regionálny úrad škol. správy', '1', 'Gymnázium', '10', 'Gymnázium', 'Gymnázium', 'Gymnázium', 'Bilíkova 24', 'Bratislava-Dúbravka', '844 19', '79', 'Úplné stredné vzdelanie na gymnáziu', 'J', 'úplné stredné všeobecné vzdelanie s matu', '7902J', 'gymnázium', '200', 'slovenský', '4', 'N', 'N', '0', '0', 'N', '0', '102', '134', '0', '0', '0', 'SJL', 'MAT']
-== https://opendata.mfsr.sk/opendata/download/vysledky-hospodarenia-obci-a-miest-sr/6 200 925510 application/octet-stream
-HAROK 202312 2945
-   ['DataCentrum']
-   ['Výsledky hospodárenia obcí k 3']
-   ['Dátum: 16.2.2024']
-   ['Kód okresu', 'Názov okresu', 'Kód obce', 'IČO obce', 'Názov obce', 'Príjmy a príjmové FO spolu', 'v tom', 'Výdavky a výdavkové FO spolu', 'v tom:', 'Celkový prebytok / schodok', 'Vylúčenie FO\nv tom']
-   ['daňové príjmy', 'z toho', 'nedaňové príjmy', 'granty a transfery', 'v tom', 'príjmové finančné operácie', 'z toho', 'bežné výdavky', 'kapitálové výdavky', 'výdavkové finančné operácie', 'v tom:']
-   ['daň z príjmov FO', 'daň z motorových vozidiel (u V', 'bežné', 'kapitálové', 'prostriedky z rozpočtu EÚ', 'zo splátok tuz. úverov, pôžiči', 'zo splátok zahr. úverov, pôžič', 'z predaja majetk. účasti (FO)', 'zostat. prostr. z predch. roko', 'prevod prostr. z peňaž. fondov', 'prijaté úvery (FO)', 'úvery a účasť na majetku (FO)', 'splácanie istiny', 'vylúčenie príjmových FO', 'vylúčenie výdavkových FO']
-   ['101', 'Bratislava I', '528595', '00603147', 'Bratislava - Staré Mesto', '55609014.26', '19139373.18', '9830562', '0', '6105610.62', '22205026.36', '19724690.99', '2480335.37', '0', '8159004.1', '0', '0', '0', '1195035.64', '6893218.38', '0', '50336130.47', '40123943.88', '8021921.35', '2190265.24', '2040265.24', '150000', '5272883.79', '8159004.1', '2190265.24']
-   ['102', 'Bratislava II', '529311', '00641383', 'Bratislava - Podunajské Biskup', '18055279.05', '7577982.99', '5251391', '0', '2146691.89', '7118533.16', '6859281.98', '259251.18', '0', '1212071.01', '0', '0', '0', '445276.88', '723000', '0', '15869491.25', '14918376.92', '910633.73', '40480.6', '40480.6', '0', '2185787.8', '1212071.01', '40480.6']
-  TN: ['309', 'Trenčín', '505838', '00311405', 'Adamovské Kochanovce', '535693.39', '413147.19', '359647.33', '0', '46977', '69148.72', '62748.72', '6400', '0', '6420.48', '0', '0', '0', '5816.46', '0', '0', '450436.94', '431148.93', '19288.01', '0', '0', '0', '85256.45', '6420.48', '0', '78835.97', '4331.81', '3772.1', '0', '0', '0', '0', '0', '79395.68', '533604.72']
-== https://opendata.mfsr.sk/opendata/download/vysledky-hospodarenia-obci-a-miest-sr/7 200 1402325 text/html; charset=utf-8
-https://opendata.mfsr.sk/opendata/download/vysledky-hospodarenia-obci-a-miest-sr/7 CHYBA File is not a zip file
+Naplnenosť SŠ: 874 škôl
+Bratislava: 606 škôl – ms 273, zs 111, ss 108, spec 15, zus 99
+Trnava: 95 škôl – ms 49, zs 6, ss 25, spec 3, zus 12
+Nitra: 104 škôl – ms 41, zs 22, ss 24, spec 6, zus 11
+Trenčín: 77 škôl – ms 30, zs 13, ss 15, spec 0, zus 19
+Žilina: 118 škôl – ms 51, zs 17, ss 25, spec 3, zus 22
+Banská Bystrica: 99 škôl – ms 50, zs 15, ss 21, spec 3, zus 10
+Prešov: 141 škôl – ms 46, zs 25, ss 38, spec 5, zus 27
+Košice: 280 škôl – ms 121, zs 58, ss 66, spec 10, zus 25
+
+
 HOTOVO
