@@ -83,6 +83,8 @@ SEKCIE_MIEST = {
     "skoly": ("Školy {v}", "Všetky škôlky, základné a stredné školy – žiaci, učitelia, rozpočet a záujem o stredné školy"),
     "stvrte": ("Ktorá štvrť je pre mňa {v}", "Porovnajte štvrte podľa toho, čo potrebujete mať blízko – MHD, lekáreň, škola, škôlka"),
     "dane": ("Kam idú moje dane {v}", "Kalkulačka: koľko z vašich daní dostane mesto a na čo ich míňa"),
+    "odchody": ("Odchody MHD {v}", "Kedy ide najbližšia električka, trolejbus či autobus – podľa cestovného poriadku, aj zo zastávok pri vás"),
+    "mestske-casti": ("Mestské časti {v}", "Obyvatelia, vek, voľby a dostupnosť služieb v každej mestskej časti"),
     "novinky": ("Čo je nové {v}", "Nové stavby, väčšie zmluvy mesta a zasadnutia zastupiteľstva – aj ako RSS"),
 }
 
@@ -117,6 +119,10 @@ def main() -> None:
     mesta = [m for m in json.loads((VYSTUP.parent.parent / "src" / "mesta.json").read_text(encoding="utf-8")) if m.get("aktivne")]
     for m in mesta:
         for kluc, (nazov, podtitul) in SEKCIE_MIEST.items():
+            if kluc == "odchody" and not (VYSTUP.parent.parent / "data" / "odchody" / f"{m['slug']}.json").exists():
+                continue
+            if kluc == "mestske-casti" and m["slug"] != "kosice":  # profily častí len pre Košice (BA má vlastné)
+                continue
             n = nazov.format(nazov=m["nazov"], v=m["v"])
             (kviz_obrazok if kluc == "kviz" else obrazok)(n, podtitul).save(VYSTUP / f"{kluc}-{m['slug']}.png", optimize=True)
         print(f"{m['nazov']}: {len(SEKCIE_MIEST)} obrázkov")

@@ -167,6 +167,7 @@ def mesto(slug_mesta: str, polozka: str, nazov: str, url: str) -> dict:
         if kand:
             naj = Counter(v for _, v in kand).most_common(1)[0][0]
             typicke[str(w + 1)] = next(d for d, v in kand if v == naj).strftime("%Y%m%d")
+    dos = dosah(zastavky, po_spoji, trips, vsetky_dni, typicke, nazov_zast)
     pocet = sum(len(c.split(",")) for v in out_odch.values() for *_, c in v)
     if len(zastavky) < 50 or pocet < 5000:
         raise RuntimeError(f"podozrivo málo dát: {len(zastavky)} zastávok, {pocet} odchodov")
@@ -176,7 +177,81 @@ def mesto(slug_mesta: str, polozka: str, nazov: str, url: str) -> dict:
                   "upravene": datetime.fromtimestamp(meta["modified"] / 1000, timezone.utc).date().isoformat() if meta.get("modified") else None},
         "platnost": [od.isoformat(), do.isoformat()],
         "linky": linky, "smery": smery, "zastavky": zastavky, "kalendar": kalendar, "typicke": typicke, "odchody": out_odch,
-    }
+    }, dos
+
+
+# --- dosah MHD: kam sa dostanem zo zastávky za 15 / 30 / 45 / 60 minút (pracovný deň ráno) ---
+STARTY = [8 * 60, 8 * 60 + 7, 8 * 60 + 15, 8 * 60 + 22]  # priemer cez viac časov odchodu, aby nerozhodla náhoda čakania
+HORIZONT = 60
+PESO_MAX = 400  # m – prestup pešo medzi blízkymi zastávkami
+
+
+def dosah(zastavky, po_spoji, trips, vsetky_dni, typicke, nazov_zast) -> dict:
+    """Connection Scan: najskorší príchod na každú zastávku pri odchode z každej zastávky. Výstup: pre každú
+    zastávku reťazec minút (znak chr(48 + min), „~“ = viac ako hodina), poradie ako v zoznam zastávok."""
+    from math import asin, ceil, cos, radians, sin, sqrt
+    den_ = datetime.strptime(typicke.get("3") or next(iter(typicke.values())), "%Y%m%d").date()
+    aktivne = vsetky_dni.get(den_, frozenset())
+    idx = {z["n"]: i for i, z in enumerate(zastavky)}
+    n = len(zastavky)
+    od, do = min(STARTY), max(STARTY) + HORIZONT
+    conns = []  # (odchod, príchod, z, do, spoj)
+    for ti, (tid, zast) in enumerate(po_spoji.items()):
+        if trips[tid]["service_id"] not in aktivne:
+            continue
+        body_ = [(idx.get(nazov_zast(sid)), cas(t)) for _, sid, t, _ in zast]
+        for (a, ta), (b, tb) in zip(body_, body_[1:]):
+            if a is None or b is None or a == b or ta < od or ta > do:
+                continue
+            conns.append((ta, tb, a, b, ti))
+    conns.sort()
+
+    def vzd(p, q):
+        la1, lo1, la2, lo2 = map(radians, (p["lat"], p["lon"], q["lat"], q["lon"]))
+        return 2 * 6371000 * asin(sqrt(sin((la2 - la1) / 2) ** 2 + cos(la1) * cos(la2) * sin((lo2 - lo1) / 2) ** 2))
+
+    pesi = [[] for _ in range(n)]
+    for i in range(n):
+        for j in range(i + 1, n):
+            if abs(zastavky[i]["lat"] - zastavky[j]["lat"]) > 0.005:
+                continue
+            m = vzd(zastavky[i], zastavky[j])
+            if m <= PESO_MAX:
+                w = max(1, ceil(m * 1.3 / 80))
+                pesi[i].append((j, w))
+                pesi[j].append((i, w))
+    INF = 10 ** 9
+    riadky = []
+    for o in range(n):
+        sucet = [0] * n
+        pocet = [0] * n
+        for t0 in STARTY:
+            e = [INF] * n
+            e[o] = t0
+            for j, w in pesi[o]:
+                e[j] = min(e[j], t0 + w)
+            v_spoji: set[int] = set()
+            koniec = t0 + HORIZONT
+            for ta, tb, a, b, ti in conns:
+                if ta < t0:
+                    continue
+                if ta > koniec:
+                    break
+                if ti in v_spoji or e[a] <= ta:
+                    v_spoji.add(ti)
+                    if tb < e[b]:
+                        e[b] = tb
+                        for j, w in pesi[b]:
+                            if tb + w < e[j]:
+                                e[j] = tb + w
+            for i in range(n):
+                if e[i] - t0 <= HORIZONT:
+                    sucet[i] += e[i] - t0
+                    pocet[i] += 1
+        # zastávka sa počíta, ak je dosiahnuteľná aspoň pri polovici časov odchodu
+        riadky.append("".join(chr(48 + round(sucet[i] / pocet[i])) if pocet[i] * 2 >= len(STARTY) else "~" for i in range(n)))
+    print(f"  dosah: {n} zastávok, {len(conns)} spojení, deň {den_}")
+    return {"den": den_.isoformat(), "starty": STARTY, "horizont": HORIZONT, "ids": [z["id"] for z in zastavky], "r": riadky}
 
 
 def main() -> int:
@@ -184,8 +259,9 @@ def main() -> int:
     chyby = 0
     for slug_mesta, (polozka, nazov, url) in ZDROJE.items():
         try:
-            d = mesto(slug_mesta, polozka, nazov, url)
+            d, dos = mesto(slug_mesta, polozka, nazov, url)
             zapis_ak_zmena(VYSTUP / f"{slug_mesta}.json", d, kompaktne=True)
+            zapis_ak_zmena(DATA / "dosah" / f"{slug_mesta}.json", dos, kompaktne=True)
         except Exception as e:  # noqa: BLE001 – ostatné mestá pokračujú, uložené dáta ostávajú
             chyby += 1
             print(f"::warning title=Odchody MHD – {slug_mesta}::{type(e).__name__}: {e}")
