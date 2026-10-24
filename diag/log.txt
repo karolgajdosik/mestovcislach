@@ -1,17 +1,25 @@
-function fillBoxes function fillBoxes(data, code) { if (data.C11.trim() == '' && (data.C17 == 1 || data.C17 == 2)) { $('#value-1').html('-'); $('#value-2').html('-'); $('#value-3').html('-'); $('#value-4').html('-'); if (code != 582000 && code != 599981) { $('#no-mayor').removeClass("hide"); } //$('#no-mayor').removeClass("hide"); } else { $('#value-1').html(data.C11); $('#value-2').html(data.C12); $('#value-3').html(data.C13); $('#value-4').html(data.C14.toString().replace('.', ',') + ' %'); }; $('#value-5').html(data.C09); $('#value-6').html(data.C06.toString().replace('.', ',') + ' %'); $('#value-7').html(data.C04); $('#value-8').html(data.C05); $('#value-9').html(data.C07); $('#value-10').html(data.C10); $('#value-11').html(data.C15); if (data.C16.trim() != '' ) { $('#value-12').html(data.C16); } } function fillSummaryBoxes() { var lang = getLanguage(); $.getJSON('../json/tab01.json', function(data){ if (data.length > 0) { var d = data[0]; if (lang == 'SK') { $('#value-1').html(d.C01); } else { $('#value-1').html(d.C02); }; $('#value-2').html(d.C03); $('#value-3').html(d.C04); $('#value-4').html(d.C05); if (d.C06 != "") { $('#value-5').html(d.C06); } if (d.C07 != "") { $('#value-6').html(d.C07); } if (d.C08 != " %") { $('#value-7').html(d.C08); } if (d.C09 != "") { $('#value-8').html(d.C09); } if (d.C10 != " %") { $('#value-9').html(d.C10); } } }); } function showCommuneResults(code, etype) { $.getJSON('../json/graph01/'+code+'.json', function(data){ switch (data[0].C17) { case 0: $('.message .govuk-warning-text').addClass("hide"); $('#no-elections').removeClass("hide"); clearReport(); $(
-
-function createTab05 function createTab05(code = null) { var lang = getLanguage(); var url = (code == null) ? "../json/empty.json" : "../json/tab05/"+ code +".json"; var langURL = (lang == "SK") ? "../js/slovak.json" : "../js/english.json"; var col = (lang == "SK") ? "C07" : "C08"; var namesType = $.fn.dataTable.absoluteOrderNumber( [ { value: '', position: 'bottom' } ] ); $('#tab05').DataTable( { "ajax": { "url": url, "dataSrc": "" }, dom: 't', paging: false, destroy: true, language: { url: langURL }, "aaSorting": [], columnDefs: [ { className: 'idsk-table__cell', targets: [ 1,2,3,6 ]}, { className: 'idsk-table__cell idsk-table__cell--numeric', targets: [0, 4, 5]}, { type: 'slovak-sort', targets: [1, 2, 3]}, { type: 'numeric-whitespace-delimiter', targets: [4]}, { targets: [6], type: namesType} ], responsive: true, "columns": [ { "data": "C01"}, { "data": "C02"}, { "data": "C03"}, { "data": "C04"}, { "data": "C05"}, { "data": "C06"}, { "data": col} ] }); } function createTab06(cat, code = null) { var lang = getLanguage(); var url = (code == null) ? "../json/empty.json" : "../json/tab06e"+cat+"/"+ code +".json"; var langURL = (lang == "SK") ? "../js/slovak.json" : "../js/english.json"; if (code != null) { $('input[name="tab06-radios"]').attr("disabled", false); }; $('#tab06').DataTable( { "ajax": { "url": url, "dataSrc": "" }, dom: 't', paging: false, destroy: true, language: { url: langURL }, "aaSorting": [], columnDefs: [ { className: 'idsk-table__cell', targets: [ 2,3,4 ]}, { className: 'idsk-table__cell idsk-table__cell--numeric', targets: [0,1,5]}, { type: 'slovak-sort', targets: [2,3,4]},
-
-json/graph01/500011.json 200 [{"C01":"Nitra","C02":"Nitra","C03":"0,00","C04":"","C05":"","C06":"","C07":"","C08":"","C09":"","C10":"","C11":"","C12":"","C13":"","C14":"","C15":"","C16":"","C17":1}]
-json/tab05/500011.json 404 
-json/tab05.json 404 
-json/graph01/582000.json 200 [{"C01":"Bratislava","C02":"Bratislava","C03":"30,92","C04":"119 700","C05":"55 411","C06":"46,29","C07":"55 265","C08":"99,73","C09":"53 127","C10":"50 235","C11":" ","C12":"","C13":"","C14":"","C15":"45","C16":"","C17":1}]
-json/tab05/582000.json 200 [{"C01":"5","C02":"Mat\u00fa\u0161","C03":"Vallo","C04":"Team Bratislava, Progres\u00edvne Slovensko, SaS, Demokrati","C05":"33 327","C06":"62,73","C07":"","C08":""},{"C01":"3","C02":"Jozef","C03":"R\u00e1\u017e","C04":"NEKA","C05":"18 070","C06":"34,01","C07":"","C08":""},{"C01":"4","C02":"Zuzana","C03":"\u0160ubov\u00e1","C04":"Pir\u00e1ti","C05":"961","C06":"1,80","C07":"","C08":""},{"C01":"1","C02":"\u013dubom\u00edr","C03":"Geci","C04":"MySlovensko","C05":"426","C06":"0,80","C07":"","C08":""},{"C01":"6","C02":"Martin","C03":"Winkler","C04":"Dunaj","C05":"250","C06":"0,47","C07":"X","C08":"X"},{"C01":"2","C02":"Miroslav","C03":"Heredo\u0161","C04":"VLASTENCI SK","C05":"93","C06":"0,17","
-json/tab05.json 404 
-json/graph01/599981.json 200 [{"C01":"Ko\u0161ice","C02":"Ko\u0161ice","C03":"86,84","C04":"165 686","C05":"59 812","C06":"36,09","C07":"59 737","C08":"99,87","C09":"57 252","C10":"55 363","C11":" ","C12":"","C13":"","C14":"","C15":"51","C16":"","C17":1}]
-json/tab05/599981.json 200 [{"C01":"2","C02":"Ladislav","C03":"L\u00f6rinc","C04":"Ko\u0161ick\u00e1 strana","C05":"22 850","C06":"39,91","C07":"","C08":""},{"C01":"5","C02":"Jaroslav","C03":"Pola\u010dek","C04":"KDH, SaS, Magyar Sz\u00f6vets\u00e9g - Ma\u010farsk\u00e1 aliancia, SRK, NOVA, DS-ODS","C05":"12 244","C06":"21,38","C07":"","C08":""},{"C01":"4","C02":"Martin","C03":"Mudr\u00e1k","C04":"Progres\u00edvne Slovensko, Demokrati, ZA \u013dUD\u00cd","C05":"10 636","C06":"18,57","C07":"","C08":""},{"C01":"1","C02":"Lenka","C03":"Kova\u010devi\u010dov\u00e1","C04":"T\u00cdM KO\u0160ICE, STAROSTOVIA A NEZ\u00c1VISL\u00cd KANDID\u00c1TI, PRAVDA","C05":"7 153","C06":"12,49","C07":"","C08":""},{"C01":"6","C02":"Alexand
-json/tab05.json 404 
-json/graph01/524140.json 200 [{"C01":"Pre\u0161ov","C02":"Pre\u0161ov","C03":"0,00","C04":"","C05":"","C06":"","C07":"","C08":"","C09":"","C10":"","C11":"","C12":"","C13":"","C14":"","C15":"","C16":"","C17":1}]
-json/tab05/524140.json 404 
-json/tab05.json 404 
+bratislava {'okrsky': None, 'spolu': None, 'pct': 30.92, 'priebezne': True, 'zdroj': 'volbysr.sk (priebežne)'} [('Matúš Vallo', 62.73, False), ('Jozef Ráž', 34.01, False)]
+trnava None None
+trencin None None
+nitra None None
+zilina None None
+banska-bystrica None None
+presov None None
+kosice {'okrsky': None, 'spolu': None, 'pct': 86.84, 'priebezne': True, 'zdroj': 'volbysr.sk (priebežne)'} [('Ladislav Lörinc', 39.91, False), ('Jaroslav Polaček', 21.38, False)]
+ 
+BA 0 Komunálne a krajské voľby 2022:
+  primátor: Ing. arch. Matúš Vallo 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
+  predseda BSK: Mgr. Juraj Droba, MBA, MA 63.61 %, poslanci za BA 35
+  stav: vysledky
+Komunálne a krajské voľby 2026:
+  https://volbysr.sk/oso/files/OSO2026_SK_csv.zip: HTTP 404
+  https://volbysr.sk/osk/files/OSK2026_SK_csv.zip: HTTP 404
+  primátor: Matúš Vallo 62.73 %, účasť 46.29 %, MČ v rozdelení 0/17, okrsky 0, MsZ 0, starostovia 0
+  stav: vysledky
+Uložené.
+ 
+MESTA 0   https://volbysr.sk/oso/files/OSO2026_SK_csv.zip: HTTP 404
+  komunálne 2026: balík ešte nemá výsledky (tab0c, tab0d)
+  Bratislava 2026: priebežne 30.92 %, Matúš Vallo 62.73 %
+  Košice 2026: priebežne 86.84 %, Ladislav Lörinc 39.91 % 
 HOTOVO

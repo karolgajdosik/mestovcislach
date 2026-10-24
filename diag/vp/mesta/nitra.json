@@ -1,0 +1,658 @@
+{
+ "aktualizovane": "2026-10-21T05:21:51",
+ "obyvatelia": {
+  "roky": {
+   "1993": 86679,
+   "1994": 87127,
+   "1995": 87357,
+   "1996": 87569,
+   "1997": 87555,
+   "1998": 87548,
+   "1999": 87591,
+   "2000": 87575,
+   "2001": 87653,
+   "2002": 86958,
+   "2003": 86138,
+   "2004": 85742,
+   "2005": 85172,
+   "2006": 84800,
+   "2007": 84444,
+   "2008": 84070,
+   "2009": 83692,
+   "2010": 83444,
+   "2011": 78875,
+   "2012": 78607,
+   "2013": 78351,
+   "2014": 78033,
+   "2015": 77670,
+   "2016": 77374,
+   "2017": 77048,
+   "2018": 76655,
+   "2019": 76533,
+   "2020": 76028,
+   "2021": 77610,
+   "2022": 76951,
+   "2023": 76499,
+   "2024": 75945,
+   "2025": 75301
+  },
+  "casti": {}
+ },
+ "scitanie": {
+  "vek": {
+   "Spolu": 78489,
+   "Od 15 do 64 rokov": 51813,
+   "65 rokov alebo viac": 15608,
+   "14 rokov alebo menej": 11068,
+   "Neznáme": 0
+  },
+  "vzdelanie": {
+   "Spolu": 78489,
+   "Stredné s maturitou": 22965,
+   "Vysokoškolské": 22942,
+   "Stredné bez maturity": 11437,
+   "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 11068,
+   "Základné": 6279,
+   "Nezistené": 3651,
+   "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 147
+  },
+  "narodnost": {
+   "Spolu": 78489,
+   "Slovenská": 71162,
+   "Nezistená": 5115,
+   "Maďarská": 793,
+   "Iná": 563,
+   "Česká": 453,
+   "Poľská": 96,
+   "Ukrajinská": 84,
+   "Ruská": 76,
+   "Rómska": 74,
+   "Nemecká": 37,
+   "Rusínska": 36
+  },
+  "nabozenstvo": {
+   "Spolu": 78489,
+   "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 43511,
+   "bez náboženského vyznania": 23332,
+   "nezistené": 6694,
+   "ostatné": 2024,
+   "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 2006,
+   "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 566,
+   "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 195,
+   "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 161
+  }
+ },
+ "volby": {
+  "nrsr2023": {
+   "nazov": "Parlament 2023",
+   "ucast": 71.73,
+   "ucast_sr": 68.51,
+   "strany": [
+    {
+     "nazov": "SMER - sociálna demokracia",
+     "podiel": 25.46
+    },
+    {
+     "nazov": "Progresívne Slovensko",
+     "podiel": 22.19
+    },
+    {
+     "nazov": "HLAS - sociálna demokracia",
+     "podiel": 15.55
+    },
+    {
+     "nazov": "Sloboda a Solidarita",
+     "podiel": 8.29
+    },
+    {
+     "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+     "podiel": 6.32
+    },
+    {
+     "nazov": "Kresťanskodemokratické hnutie",
+     "podiel": 5.26
+    },
+    {
+     "nazov": "Slovenská národná strana",
+     "podiel": 5.03
+    },
+    {
+     "nazov": "REPUBLIKA",
+     "podiel": 4.37
+    },
+    {
+     "nazov": "Demokrati",
+     "podiel": 3.57
+    },
+    {
+     "nazov": "SME RODINA",
+     "podiel": 1.77
+    },
+    {
+     "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+     "podiel": 0.71
+    },
+    {
+     "nazov": "SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók. | ALIANCIA - Maďari. Národnosti. Regióny",
+     "podiel": 0.29
+    }
+   ]
+  },
+  "ep2024": {
+   "nazov": "Európsky parlament 2024",
+   "ucast": 37.82,
+   "ucast_sr": 34.38,
+   "strany": [
+    {
+     "nazov": "Progresívne Slovensko",
+     "podiel": 32.82
+    },
+    {
+     "nazov": "SMER - sociálna demokracia",
+     "podiel": 25.68
+    },
+    {
+     "nazov": "REPUBLIKA",
+     "podiel": 11.49
+    },
+    {
+     "nazov": "HLAS - sociálna demokracia",
+     "podiel": 7.26
+    },
+    {
+     "nazov": "Kresťanskodemokratické hnutie",
+     "podiel": 5.96
+    },
+    {
+     "nazov": "Sloboda a Solidarita",
+     "podiel": 5.82
+    },
+    {
+     "nazov": "Demokrati",
+     "podiel": 5.25
+    },
+    {
+     "nazov": "Slovenská národná strana",
+     "podiel": 1.36
+    },
+    {
+     "nazov": "SLOVENSKO, ZA ĽUDÍ",
+     "podiel": 1.36
+    },
+    {
+     "nazov": "ZDRAVÝ ROZUM",
+     "podiel": 0.95
+    },
+    {
+     "nazov": "Kresťanská únia",
+     "podiel": 0.7
+    },
+    {
+     "nazov": "Kotlebovci - Ľudová strana Naše Slovensko",
+     "podiel": 0.42
+    }
+   ]
+  }
+ },
+ "komunalne": {
+  "2022": {
+   "ucast": {
+    "zapisani": 66697,
+    "volili": 26953,
+    "ucast_pct": 40.41
+   },
+   "spracovanie": {
+    "okrsky": 71,
+    "spolu": 71,
+    "pct": 100.0,
+    "priebezne": false
+   },
+   "primator": [
+    {
+     "meno": "Marek Hattas",
+     "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+     "hlasy": 8175,
+     "podiel": 30.81,
+     "zvoleny": true
+    },
+    {
+     "meno": "JUDr. Igor Kršiak",
+     "strany": "HLAS - sociálna demokracia, SME RODINA, DOBRÁ VOĽBA a Umiernení, Demokrati Slovenska",
+     "hlasy": 7220,
+     "podiel": 27.21,
+     "zvoleny": false
+    },
+    {
+     "meno": "Ing. Štefan Štefek",
+     "strany": "nezávislý kandidát",
+     "hlasy": 5299,
+     "podiel": 19.97,
+     "zvoleny": false
+    },
+    {
+     "meno": "Pavol Obertáš",
+     "strany": "nezávislý kandidát",
+     "hlasy": 4640,
+     "podiel": 17.49,
+     "zvoleny": false
+    },
+    {
+     "meno": "Erik Blaško",
+     "strany": "NÁRODNÁ KOALÍCIA / NEZÁVISLÍ KANDIDÁTI",
+     "hlasy": 603,
+     "podiel": 2.27,
+     "zvoleny": false
+    },
+    {
+     "meno": "JUDr. Dalimír Solčanský, PhD.",
+     "strany": "REPUBLIKA",
+     "hlasy": 597,
+     "podiel": 2.25,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 31,
+    "mandaty": [
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 16
+     },
+     {
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+      "mandaty": 9
+     },
+     {
+      "strany": "HLAS - sociálna demokracia, SME RODINA, DOBRÁ VOĽBA a Umiernení, Demokrati Slovenska",
+      "mandaty": 4
+     },
+     {
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, ŠANCA, SPOLU - občianska demokracia, ODS - Občianski demokrati Slovenska, Demokratická strana, Občianska konzervatívna strana, ZA ĽUDÍ",
+      "mandaty": 2
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "Pavol Obertáš",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2844
+     },
+     {
+      "meno": "Ing. Peter Košťál, PhD.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2362
+     },
+     {
+      "meno": "Ing. Štefan Štefek",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2205
+     },
+     {
+      "meno": "JUDr. Igor Kršiak",
+      "strany": "HLAS - sociálna demokracia, SME RODINA, DOBRÁ VOĽBA a Umiernení, Demokrati Slovenska",
+      "hlasy": 1916
+     },
+     {
+      "meno": "Mgr. Petra Ajdariová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1867
+     },
+     {
+      "meno": "Ing. Peter Oremus, PhD.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1728
+     },
+     {
+      "meno": "Ing. Miloš Dovičovič",
+      "strany": "HLAS - sociálna demokracia, SME RODINA, DOBRÁ VOĽBA a Umiernení, Demokrati Slovenska",
+      "hlasy": 1252
+     },
+     {
+      "meno": "František Hollý",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1217
+     },
+     {
+      "meno": "RNDr. Marta Rácová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1182
+     },
+     {
+      "meno": "Mgr. Miloslav Špoták",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+      "hlasy": 1058
+     },
+     {
+      "meno": "Ing. arch. et Ing. Peter Mezei",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+      "hlasy": 1053
+     },
+     {
+      "meno": "Ing. Erik Král",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+      "hlasy": 1052
+     },
+     {
+      "meno": "Ing. Andrej Sitkey",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1051
+     },
+     {
+      "meno": "Ing. Martin Horváth",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+      "hlasy": 1049
+     },
+     {
+      "meno": "Ing. Miloslav Hatala",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, ŠANCA, SPOLU - občianska demokracia, ODS - Občianski demokrati Slovenska, Demokratická strana, Občianska konzervatívna strana, ZA ĽUDÍ",
+      "hlasy": 1041
+     },
+     {
+      "meno": "Ing. Roman Ágh, MBA",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+      "hlasy": 1007
+     },
+     {
+      "meno": "Mgr. Ján Greššo",
+      "strany": "HLAS - sociálna demokracia, SME RODINA, DOBRÁ VOĽBA a Umiernení, Demokrati Slovenska",
+      "hlasy": 974
+     },
+     {
+      "meno": "Ladislav Turba",
+      "strany": "nezávislý kandidát",
+      "hlasy": 972
+     },
+     {
+      "meno": "Denisa Branikovičová",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+      "hlasy": 944
+     },
+     {
+      "meno": "PhDr. Ján Vančo, PhD.",
+      "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, ŠANCA, SPOLU - občianska demokracia, ODS - Občianski demokrati Slovenska, Demokratická strana, Občianska konzervatívna strana, ZA ĽUDÍ",
+      "hlasy": 918
+     },
+     {
+      "meno": "Mgr. Igor Mesároš",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+      "hlasy": 917
+     },
+     {
+      "meno": "Bc. Martina Dubaiová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 891
+     },
+     {
+      "meno": "prof. PhDr. Martina Mojtová, PhD.",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+      "hlasy": 888
+     },
+     {
+      "meno": "Ing. Ľubomír Moravčík",
+      "strany": "HLAS - sociálna demokracia, SME RODINA, DOBRÁ VOĽBA a Umiernení, Demokrati Slovenska",
+      "hlasy": 853
+     },
+     {
+      "meno": "Ing. Jarmila Králová, PhD.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 775
+     },
+     {
+      "meno": "MUDr. Adriana Filipová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 753
+     },
+     {
+      "meno": "Ing. Edita Vnučková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 695
+     },
+     {
+      "meno": "doc. PhDr. Katarína Welnitzová, PhD.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 659
+     },
+     {
+      "meno": "Ing. Miroslav Gut",
+      "strany": "nezávislý kandidát",
+      "hlasy": 626
+     },
+     {
+      "meno": "MVDr. Róbert Rathouský",
+      "strany": "nezávislý kandidát",
+      "hlasy": 610
+     },
+     {
+      "meno": "Ing. Regina Víteková",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
+      "hlasy": 447
+     }
+    ]
+   }
+  }
+ },
+ "praca": {
+  "obdobie": "2026-09",
+  "mesacne": {
+   "2026-08": {
+    "Nitra": {
+     "uoz": 1420.0,
+     "disp": 1330.0,
+     "pdu": 2.65
+    },
+    "Nitriansky kraj": {
+     "uoz": 16112.0,
+     "disp": 14492.0,
+     "pdu": 3.29
+    },
+    "Slovenská republika": {
+     "uoz": 170121.0,
+     "disp": 145251.0,
+     "pdu": 4.04
+    }
+   },
+   "2026-09": {
+    "Nitra": {
+     "uoz": 1332.0,
+     "disp": 1228.0,
+     "pdu": 2.45
+    },
+    "Nitriansky kraj": {
+     "uoz": 15810.0,
+     "disp": 14094.0,
+     "pdu": 3.2
+    },
+    "Slovenská republika": {
+     "uoz": 170008.0,
+     "disp": 144789.0,
+     "pdu": 4.02
+    }
+   }
+  }
+ },
+ "byty": {
+  "2001": {
+   "ZAC_BYT": 392,
+   "DOKONC_BYT": 277,
+   "ROZOST_BYT_KON": 1158
+  },
+  "2002": {
+   "ZAC_BYT": 293,
+   "DOKONC_BYT": 286,
+   "ROZOST_BYT_KON": 1165
+  },
+  "2003": {
+   "ZAC_BYT": 546,
+   "DOKONC_BYT": 564,
+   "ROZOST_BYT_KON": 1110
+  },
+  "2004": {
+   "ZAC_BYT": 609,
+   "DOKONC_BYT": 481,
+   "ROZOST_BYT_KON": 1196
+  },
+  "2005": {
+   "ZAC_BYT": 388,
+   "DOKONC_BYT": 352,
+   "ROZOST_BYT_KON": 1295
+  },
+  "2006": {
+   "ZAC_BYT": 551,
+   "DOKONC_BYT": 440,
+   "ROZOST_BYT_KON": 1414
+  },
+  "2007": {
+   "ZAC_BYT": 603,
+   "DOKONC_BYT": 412,
+   "ROZOST_BYT_KON": 1588
+  },
+  "2008": {
+   "ZAC_BYT": 1281,
+   "DOKONC_BYT": 667,
+   "ROZOST_BYT_KON": 2178
+  },
+  "2009": {
+   "ZAC_BYT": 640,
+   "DOKONC_BYT": 663,
+   "ROZOST_BYT_KON": 2079
+  },
+  "2010": {
+   "ZAC_BYT": 501,
+   "DOKONC_BYT": 585,
+   "ROZOST_BYT_KON": 1982
+  },
+  "2011": {
+   "ZAC_BYT": 466,
+   "DOKONC_BYT": 476,
+   "ROZOST_BYT_KON": 1980
+  },
+  "2012": {
+   "ZAC_BYT": 563,
+   "DOKONC_BYT": 514,
+   "ROZOST_BYT_KON": 2020
+  },
+  "2013": {
+   "ZAC_BYT": 491,
+   "DOKONC_BYT": 526,
+   "ROZOST_BYT_KON": 1966
+  },
+  "2014": {
+   "ZAC_BYT": 466,
+   "DOKONC_BYT": 644,
+   "ROZOST_BYT_KON": 1768
+  },
+  "2015": {
+   "ZAC_BYT": 658,
+   "DOKONC_BYT": 546,
+   "ROZOST_BYT_KON": 1889
+  },
+  "2016": {
+   "ZAC_BYT": 643,
+   "DOKONC_BYT": 493,
+   "ROZOST_BYT_KON": 1569
+  },
+  "2017": {
+   "ZAC_BYT": 771,
+   "DOKONC_BYT": 657,
+   "ROZOST_BYT_KON": 1683
+  },
+  "2018": {
+   "ZAC_BYT": 1713,
+   "DOKONC_BYT": 920,
+   "ROZOST_BYT_KON": 2481
+  },
+  "2019": {
+   "ZAC_BYT": 1079,
+   "DOKONC_BYT": 860,
+   "ROZOST_BYT_KON": 2668
+  },
+  "2020": {
+   "ZAC_BYT": 830,
+   "DOKONC_BYT": 929,
+   "ROZOST_BYT_KON": 2535
+  },
+  "2021": {
+   "ZAC_BYT": 836,
+   "DOKONC_BYT": 1223,
+   "ROZOST_BYT_KON": 2142
+  },
+  "2022": {
+   "ZAC_BYT": 1190,
+   "DOKONC_BYT": 1132,
+   "ROZOST_BYT_KON": 2214
+  },
+  "2023": {
+   "ZAC_BYT": 1087,
+   "DOKONC_BYT": 794,
+   "ROZOST_BYT_KON": 2507
+  },
+  "2024": {
+   "ZAC_BYT": 339,
+   "DOKONC_BYT": 504,
+   "ROZOST_BYT_KON": 2320
+  },
+  "2025": {
+   "ZAC_BYT": 500,
+   "DOKONC_BYT": 663,
+   "ROZOST_BYT_KON": 2157
+  }
+ },
+ "ceny": {
+  "kraj": {
+   "2022-Q2": 4,
+   "2022-Q3": 11.6,
+   "2022-Q4": 2.9,
+   "2023-Q1": 6.7,
+   "2023-Q2": -7.8,
+   "2023-Q3": -4.4,
+   "2023-Q4": 4.6,
+   "2024-Q1": -2.5,
+   "2024-Q2": 4.5,
+   "2024-Q3": -5.9,
+   "2024-Q4": 5.3,
+   "2025-Q1": 18.5,
+   "2025-Q2": 12.8,
+   "2025-Q3": 22.3,
+   "2025-Q4": 11.1,
+   "2026-Q1": 9.5,
+   "2026-Q2": 9.9
+  },
+  "sr": {
+   "2022-Q1": 14.2,
+   "2022-Q2": 16.6,
+   "2022-Q3": 14.6,
+   "2022-Q4": 9.7,
+   "2023-Q1": 7.5,
+   "2023-Q2": -2.2,
+   "2023-Q3": -4.1,
+   "2023-Q4": -1.4,
+   "2024-Q1": -3,
+   "2024-Q2": 4,
+   "2024-Q3": 6.2,
+   "2024-Q4": 7.9,
+   "2025-Q1": 12.2,
+   "2025-Q2": 11.3,
+   "2025-Q3": 13.4,
+   "2025-Q4": 12.8,
+   "2026-Q1": 14.4,
+   "2026-Q2": 13.6
+  }
+ },
+ "mesto": {
+  "slug": "nitra",
+  "nazov": "Nitra",
+  "kraj": "Nitriansky kraj",
+  "okresy": [
+   "Nitra"
+  ]
+ },
+ "zdroje": {
+  "obyvatelia": "ŠÚ SR – DATAcube om7101rr",
+  "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)",
+  "volby": "ŠÚ SR – volby.statistics.sk",
+  "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk",
+  "praca": "ÚPSVaR – mesačná štatistika",
+  "byty": "ŠÚ SR – DATAcube st3004rr",
+  "ceny": "ŠÚ SR – DATAcube sp3801qr"
+ }
+}
