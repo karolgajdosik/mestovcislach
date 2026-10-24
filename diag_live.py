@@ -3,7 +3,7 @@ os.makedirs("diag", exist_ok=True)
 out=[]
 for i in range(30):
     h=urllib.request.urlopen(urllib.request.Request("https://mestovcislach.sk/kosice/?v=%d"%time.time(),headers={"User-Agent":"diag"})).read().decode()
-    if "dolna-lista" in h: out.append("dolna-lista: ano, menu-plne: %s" % ("menu-plne" in h)); break
+    if "mp-kratke" in h: out.append("mesta v hlavicke: ano, menu-plne: %s" % ("menu-plne" in h)); break
     time.sleep(20)
 else: out.append("dolna-lista: zatial nie")
 out.append("HOTOVO")
