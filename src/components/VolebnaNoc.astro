@@ -16,7 +16,7 @@ const vsetkyKonecne = mesta.every((x) => x.o && !x.o.priebezne);
 const kratke = (meno: string) => meno.split(/[\s,]+/).filter((s) => s && !s.includes('.') && !/^(PhD|MBA|LL|MPH)$/i.test(s)).join(' ');
 ---
 {zobraz && (
-  <section class="vn" aria-labelledby="vn-nadpis" data-datum={DATUM}>
+  <section class="vn" id="volby-2026-uvod" aria-labelledby="vn-nadpis" data-datum={DATUM}>
     <div class="vn-hlava">
       <span class="vn-bod" aria-hidden="true"></span>
       <h2 id="vn-nadpis">{vysledky ? (vsetkyKonecne ? 'Výsledky komunálnych volieb 2026' : 'Komunálne voľby 2026 – priebežné výsledky') : 'Komunálne voľby 2026'}</h2>

@@ -1,0 +1,157 @@
+---
+// Rozcestník pre stránky bez zvoleného mesta (úvod, porovnanie…): v mobilnom menu aj v ľavom paneli na počítači.
+// Hľadanie, „Pokračovať: <naposledy otvorené mesto>“ (len v prehliadači – localStorage), mestá s fotkou,
+// nástroje pre každé mesto (kvíz, štvrte, dane…), aktuálne témy a odkazy.
+import fs from 'node:fs';
+import path from 'node:path';
+import { MESTA } from '../mesta';
+import { foto } from '../lib/fotky';
+
+interface Props { rezim: 'menu' | 'bocne'; nastroje: [string, string, string][] }
+const { rezim, nastroje } = Astro.props as Props;
+const p = path.join(process.cwd(), 'data', 'mesta', 'porovnanie.json');
+const por: any[] = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')).mesta : [];
+const mesta = MESTA.filter((m) => m.aktivne);
+const teraz = new Date();
+const volby = teraz >= new Date('2026-10-17') && teraz < new Date('2026-11-21');
+const IK = {
+  porovnanie: '<path d="M4 4.5h7v7H4zM13 4.5h7v4.5h-7zM13 11h7v8.5h-7zM4 13.5h7v6H4z"/>',
+  volby: '<path d="M4 11h16v9H4z"/><path d="M8 11V4h8v7"/><path d="m10 7.6 1.4 1.4L14.2 6"/>',
+  zvoncek: '<path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
+  hladat: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/>',
+};
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+---
+<div class={`rz rz-${rezim}`} data-rz>
+  {rezim === 'menu' && (
+    <button type="button" class="rz-hladaj" data-rz-hladaj>
+      <svg viewBox="0 0 24 24" aria-hidden="true" set:html={IK.hladat} /><span>Hľadať ulicu, miesto, dáta…</span>
+    </button>
+  )}
+
+  <a class="rz-pokracuj" data-rz-pokracuj href="/" hidden>
+    <span class="rz-p-popis">Pokračovať</span>
+    <strong data-rz-pokracuj-nazov></strong>
+    <span aria-hidden="true" class="rz-sipka">→</span>
+  </a>
+
+  {rezim === 'menu' && (
+    <>
+      <p class="rz-nadpis" id={`rz-mesta-${rezim}`}>Vyberte mesto</p>
+      <ul class="rz-mesta" aria-labelledby={`rz-mesta-${rezim}`}>
+        {mesta.map((m) => {
+          const f = foto(m.slug);
+          const o = por.find((x) => x.slug === m.slug)?.obyvatelia;
+          return (
+            <li><a href={`/${m.slug}`}>
+              {f && <img src={f.src.replace('-800.', '-480.')} alt="" loading="lazy" decoding="async" width="480" height="270" />}
+              <span class="rz-m-text"><strong translate="no">{m.nazov}</strong>{o && <small>{fmt(o)} obyv.</small>}</span>
+            </a></li>
+          );
+        })}
+      </ul>
+    </>
+  )}
+
+  <p class="rz-nadpis" id={`rz-nastroje-${rezim}`}>Pre každé mesto</p>
+  <ul class="rz-nastroje" aria-labelledby={`rz-nastroje-${rezim}`}>
+    {nastroje.map(([cesta, nazov, ikona]) => (
+      <li><a href={`#rz-vyber-${rezim}`} data-rz-cesta={cesta} data-rz-nazov={nazov}>
+        <svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} /><span>{nazov}</span>
+      </a></li>
+    ))}
+  </ul>
+  <div class="rz-vyber" id={`rz-vyber-${rezim}`} data-rz-vyber hidden tabindex="-1">
+    <p class="rz-v-nadpis" data-rz-vyber-nadpis></p>
+    <ul>{mesta.map((m) => <li><a href={`/${m.slug}`} data-rz-slug={m.slug} translate="no">{m.nazov}</a></li>)}</ul>
+  </div>
+
+  <p class="rz-nadpis" id={`rz-akt-${rezim}`}>Aktuálne</p>
+  <ul class="rz-nastroje rz-aktualne" aria-labelledby={`rz-akt-${rezim}`}>
+    {volby && <li><a href="/#volby-2026-uvod" class="rz-zvyrazni"><svg viewBox="0 0 24 24" aria-hidden="true" set:html={IK.volby} /><span>Komunálne voľby 2026</span></a></li>}
+    <li><a href="/porovnanie"><svg viewBox="0 0 24 24" aria-hidden="true" set:html={IK.porovnanie} /><span>Porovnanie miest</span></a></li>
+  </ul>
+
+  <p class="rz-odkazy">
+    <a href="/bratislava/upozornenia" data-rz-upozornenia>Upozornenia e-mailom</a> · <a href="/pristupnost">Prístupnosť</a> · <a href="/sukromie">Ochrana súkromia</a> · <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a>
+  </p>
+</div>
+
+<script>
+  // naposledy otvorené mesto (zapisuje Base.astro na stránkach mesta) – len v tomto prehliadači
+  let posledne: { slug: string; nazov: string } | null = null;
+  try { posledne = JSON.parse(localStorage.getItem('mesto-posledne') || 'null'); } catch { /* bez úložiska */ }
+  document.querySelectorAll<HTMLElement>('[data-rz]').forEach((rz) => {
+    const pok = rz.querySelector<HTMLAnchorElement>('[data-rz-pokracuj]')!;
+    if (posledne?.slug) {
+      pok.href = `/${posledne.slug}`;
+      pok.querySelector('[data-rz-pokracuj-nazov]')!.textContent = posledne.nazov;
+      pok.hidden = false;
+      const u = rz.querySelector<HTMLAnchorElement>('[data-rz-upozornenia]'); if (u) u.href = `/${posledne.slug}/upozornenia`;
+    }
+    const vyber = rz.querySelector<HTMLElement>('[data-rz-vyber]')!;
+    rz.querySelectorAll<HTMLAnchorElement>('[data-rz-cesta]').forEach((a) => {
+      if (posledne?.slug) a.href = `/${posledne.slug}/${a.dataset.rzCesta}`;
+      a.addEventListener('click', (e) => {
+        if (posledne?.slug) return; // ide priamo do naposledy otvoreného mesta
+        e.preventDefault();
+        e.stopPropagation(); // menu sa nezatvára – najprv výber mesta
+        vyber.querySelector('[data-rz-vyber-nadpis]')!.textContent = `${a.dataset.rzNazov} – vyberte mesto`;
+        vyber.querySelectorAll<HTMLAnchorElement>('[data-rz-slug]').forEach((m) => (m.href = `/${m.dataset.rzSlug}/${a.dataset.rzCesta}`));
+        vyber.hidden = false;
+        vyber.focus({ preventScroll: true });
+        vyber.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      });
+    });
+    rz.querySelector('[data-rz-hladaj]')?.addEventListener('click', () => {
+      (rz.closest('dialog') as HTMLDialogElement | null)?.close();
+      (document.getElementById('hladanie-otvor') as HTMLButtonElement | null)?.click();
+    });
+  });
+</script>
+
+<style>
+  .rz { display: flex; flex-direction: column; }
+  .rz svg { width: 22px; height: 22px; flex-shrink: 0; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .rz-hladaj { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--muted); font: inherit; font-size: 0.95rem; text-align: left; cursor: pointer; margin-bottom: 12px; }
+  .rz-hladaj svg { stroke: var(--muted); }
+  .rz-pokracuj { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-radius: 12px; background: var(--text); color: var(--card); text-decoration: none; margin-bottom: 4px; }
+  .rz-pokracuj[hidden] { display: none; }
+  .rz-p-popis { font-size: 0.85rem; opacity: 0.75; }
+  .rz-pokracuj strong { flex: 1; font-size: 1.05rem; }
+  .rz-sipka { font-size: 1.2rem; }
+  .rz-nadpis { margin: 18px 0 8px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .rz-mesta { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .rz-mesta a { display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--card); color: var(--text); text-decoration: none; }
+  .rz-mesta img { width: 100%; height: 72px; object-fit: cover; display: block; filter: saturate(0.65) contrast(1.18) brightness(1.02); }
+  .rz-m-text { display: flex; flex-direction: column; padding: 7px 10px 9px; }
+  .rz-m-text strong { font-size: 0.95rem; line-height: 1.2; }
+  .rz-m-text small { color: var(--muted); font-size: 0.75rem; }
+  .rz-nastroje { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .rz-nastroje a { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 8px 12px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.92rem; line-height: 1.25; }
+  .rz-nastroje a:hover { border-color: var(--accent); }
+  .rz-aktualne a.rz-zvyrazni { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--card)); color: var(--accent); }
+  .rz-vyber { margin-top: 10px; padding: 12px; border-radius: 12px; border: 1.5px solid var(--accent); background: var(--card); outline: none; }
+  .rz-vyber[hidden] { display: none; }
+  .rz-v-nadpis { margin: 0 0 8px; font-weight: 700; font-size: 0.9rem; }
+  .rz-vyber ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .rz-vyber a { display: inline-flex; align-items: center; min-height: 38px; padding: 0 12px; border-radius: 19px; border: 1px solid var(--line); background: var(--bg); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.88rem; }
+  .rz-vyber a:hover { border-color: var(--accent); }
+  .rz-odkazy { margin: 20px 0 0; font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
+  .rz-odkazy a { color: inherit; }
+  /* ľavý panel na počítači: jeden stĺpec, menšie dlaždice */
+  .rz-bocne { padding: 22px 0 24px; }
+  .rz-bocne .rz-nadpis:first-of-type { margin-top: 6px; }
+  .rz-bocne .rz-nastroje { grid-template-columns: 1fr; gap: 2px; }
+  .rz-bocne .rz-nastroje a { min-height: 40px; padding: 6px 12px; border: 0; background: none; border-radius: 10px; font-size: 0.93rem; }
+  .rz-bocne .rz-nastroje a:hover { background: color-mix(in srgb, var(--accent) 9%, transparent); }
+  .rz-bocne .rz-aktualne a.rz-zvyrazni { background: color-mix(in srgb, var(--accent) 9%, transparent); }
+  .rz-bocne .rz-nadpis { margin-left: 12px; }
+  .rz-bocne .rz-odkazy { margin-left: 12px; font-size: 0.8rem; }
+  .rz-bocne .rz-vyber { margin: 6px 0 0; }
+  /* odkazy dole a výber mesta nesmú prevziať štýl položiek bočného menu */
+  .rz-bocne .rz-odkazy a, .rz-bocne .rz-vyber a { display: inline; min-height: 0; padding: 0; border-radius: 0; font-weight: 400; background: none; }
+  .rz-bocne .rz-vyber a { display: inline-flex; min-height: 34px; padding: 0 10px; border-radius: 17px; font-weight: 600; background: var(--bg); }
+  .rz-bocne .rz-pokracuj { display: flex; padding: 10px 12px; color: var(--card); background: var(--text); }
+  .rz-bocne .rz-pokracuj[hidden] { display: none; }
+</style>

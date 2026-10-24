@@ -9,6 +9,7 @@ import { MESTA, mestoZCesty, jeSpolocna } from '../mesta';
 import { maMapu, maSamospravu } from '../lib/mapa';
 import { maZivot } from '../lib/temy';
 import FotoPas from '../components/FotoPas.astro';
+import Rozcestnik from '../components/Rozcestnik.astro';
 import { fotoPreStranku } from '../lib/fotky';
 interface Props {
   title: string;
@@ -49,6 +50,7 @@ const NOVE: [string, string, string, boolean][] = [
   ['dane', 'Kam idú dane', '<circle cx="12" cy="12" r="8.5"/><path d="M15 8.6a4 4 0 1 0 0 6.8M7 10.8h6M7 13.2h6"/>', true],
   ['kviz', 'Kvíz', '<circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.6M12 16.8v.2"/>', true],
 ];
+const NASTROJE: [string, string, string][] = ['kviz', 'stvrte', 'dane', 'skoly', 'zastupitelstvo', 'novinky'].map((k) => { const x = NOVE.find((n) => n[0] === k)!; return [k, k === 'stvrte' ? 'Ktorá štvrť je pre mňa' : k === 'dane' ? 'Kam idú moje dane' : x[1], x[2]]; });
 const NOVE_MENU = NOVE.filter((x) => x[3]).map(([h, n, i]) => [`/${mesto.slug}/${h}`, n, i] as [string, string, string]);
 const spolocna = jeSpolocna(Astro.url.pathname.replace(/\/$/, '') || '/');
 const zivaLista = !spolocna;
@@ -114,7 +116,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
       <script is:inline type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', ...j }).replace(/</g, '\\u003c')} />
     ))}
   </head>
-  <body>
+  <body data-mesto={spolocna ? undefined : mesto.slug} data-mesto-nazov={spolocna ? undefined : mesto.nazov}>
     <a class="preskocit" href="#obsah">Preskočiť na obsah</a>
     <header class="top">
       <div class="wrap hlava">
@@ -172,7 +174,8 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
         {ba && <a class="chip" id="z-cesty" href="/bratislava/doprava#naozivo" title="Uzávierky a poruchy na cestách (hlavné mesto)">Cesty …</a>}
       </div>
     </div>}
-    <div class={`telo${spolocna ? ' bez-bocneho' : ''}${uzkeBocne ? ' uzke' : ''}`}>
+    <div class={`telo${uzkeBocne ? ' uzke' : ''}`}>
+      {spolocna && <aside class="bocne" aria-label="Rozcestník"><Rozcestnik rezim="bocne" nastroje={NASTROJE} /></aside>}
       {!spolocna && (
         <nav class="bocne" aria-label={`Sekcie – ${mesto.nazov}`}>
           <p class="bocne-mesto" translate="no">{mesto.nazov}</p>
@@ -228,11 +231,15 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
           })}
         </ul>
       )}
-      <p class="mp-nadpis">{spolocna ? 'Vyberte mesto' : 'Iné mesto'}</p>
-      <ul class="mp-mesta">
-        {MESTA.filter((x) => x.aktivne).map((x) => <li><a href={`/${x.slug}`} aria-current={!spolocna && x.slug === mesto.slug ? 'true' : undefined} translate="no">{x.nazov}</a></li>)}
-      </ul>
-      <p class="mp-dalsie"><a href="/porovnanie">Porovnanie miest</a>{!spolocna && <> · <a href={`/${mesto.slug}/upozornenia`}>Upozornenia</a></>} · <a href="/sukromie">Ochrana súkromia</a></p>
+      {spolocna ? <Rozcestnik rezim="menu" nastroje={NASTROJE} /> : (
+        <>
+          <p class="mp-nadpis">Iné mesto</p>
+          <ul class="mp-mesta">
+            {MESTA.filter((x) => x.aktivne).map((x) => <li><a href={`/${x.slug}`} aria-current={x.slug === mesto.slug ? 'true' : undefined} translate="no">{x.nazov}</a></li>)}
+          </ul>
+          <p class="mp-dalsie"><a href="/porovnanie">Porovnanie miest</a> · <a href={`/${mesto.slug}/upozornenia`}>Upozornenia</a> · <a href="/sukromie">Ochrana súkromia</a></p>
+        </>
+      )}
     </dialog>
   </body>
 </html>
@@ -247,7 +254,11 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     document.querySelector('.dl-menu')?.addEventListener('click', () => menu?.showModal());
     menu?.querySelector('.mp-zavriet')?.addEventListener('click', () => menu.close());
     menu?.addEventListener('click', (e) => { if (e.target === menu) menu.close(); });
-    menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.close()));
+    // odkazy zatvoria menu (okrem dlaždíc rozcestníka, ktoré najprv ukážu výber mesta – href „#…“)
+    menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => { if (!a.getAttribute('href')?.startsWith('#')) menu.close(); }));
+    // naposledy otvorené mesto pre rozcestník (len v tomto prehliadači)
+    const tm = document.body.dataset.mesto;
+    if (tm) { try { localStorage.setItem('mesto-posledne', JSON.stringify({ slug: tm, nazov: document.body.dataset.mestoNazov })); } catch { /* bez úložiska */ } }
     document.querySelector('.dl-asistent')?.addEventListener('click', () => (document.getElementById('ai-otvor') as HTMLButtonElement | null)?.click());
   }
 
