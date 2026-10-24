@@ -1,8 +1,18 @@
-OSO2026_SK_xlsx.zip 200 Sat, 24 Oct 2026 16:48:03 GMT 173085
-   ['OSO2026_SK_tab0c.xlsx', 'OSO2026_SK_tab0dd.xlsx', 'OSO2026_SK_tab0dx.xlsx', 'OSO2026_SK_tab_info.xlsx']
-OSK2026_SK_xlsx.zip 200 Sat, 24 Oct 2026 19:17:04 GMT 134566
-   ['OSK2026_SK_tab0c.xlsx', 'OSK2026_SK_tab0db.xlsx', 'OSK2026_SK_tab0dc.xlsx', 'OSK2026_SK_tab_info.xlsx']
-OSO2026_SK_csv.zip 404 None 146
-https://volbysr.sk/oso/sk/ 200 27696 ['spracovania a na spracovanie vÃ½sledkov hlasovania\n      \t   \n  \t\t   \n    \t\t\n      \t\t \n  ', 'spracovania a na spracovanie vÃ½sledkov hlasovania vo voÄ¾bÃ¡ch do orgÃ¡nov samosprÃ¡vy o', 'spracovania a na spracovanie vÃ½sledkov hlasovania (PDF&nbsp;415,1&nbsp;kB)\n      \t\t\t\t \n '] []
-https://volbysr.sk/ 200 595 [] []
+skripty: ['../js/idsk-frontend-2.9.0.min.js', '../js/jquery-1.12.3.min.js', '../js/jquery-ui.min.js', '../js/jquery.dataTables.min.js', '../js/slovak-sort.js', '../js/slovak.js', '../js/absolute.js', '../js/functions.js', 'https://www.googletagmanager.com/gtag/js?id=G-0MXC9HHCJJ']
+odkazy html: ['../en/index.html', '../sk/index.html', 'cookies.html', 'index.html', 'kontakty.html', 'politicke_strany.html', 'subory_na_stiahnutie.html', 'suhrnne_vysledky.html', 'uzemne_clenenie.html', 'vyhlasenie_o_pristupnosti.html', 'vysledky_obce.html']
+inline url: ../select/graph01.json
+inline url: data-district
+inline url: data-district
+inline url: ../json/dateSK.json
+JS ../js/slovak-sort.js 454 []
+JS ../js/slovak.js 904 []
+JS ../js/absolute.js 5077 []
+JS ../js/functions.js 42663 ['../geojson/0.geo.json', '../js/english.json', '../js/slovak.json', '../json/empty.json', '../json/map00b.json', '../json/map01b.json', '../json/tab01.json', '../json/tab02ax.json', '../json/tab02bx.json', '../json/tab04x.json', '../json/tab0c.json', '../json/tab0dx.json', '.geo.json', '.json', '/kraje.json']
+JS https://www.googletagmanager.com/gtag/js?id=G-0MXC9HHCJJ 556240 ['__tcfapiLocator', 'capi', 'conversion_api', 'enablejsapi=1', 'enablejsapi=1&origin=', 'https://www.youtube.com/iframe_api', 'iframe_api', 'noapi', 'player_api']
+https://volbysr.sk/oso/sk/vysledky_obce.html 200 35601
+https://volbysr.sk/oso/sk/obce.html 404 146
+https://volbysr.sk/oso/sk/vysledky_hlasovania.html 404 146
+https://volbysr.sk/oso/sk/suhrnne_vysledky.html 200 29573
+https://volbysr.sk/oso/data/ 404 146
+https://volbysr.sk/oso/files/ 403 146
 HOTOVO
