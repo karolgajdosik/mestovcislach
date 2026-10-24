@@ -33,6 +33,7 @@ const popis = stav === 'konecne' && vitaz
   : `${m.nazov}: výsledky komunálnych volieb 2026 naživo – kto vedie vo voľbe primátora, účasť, porovnanie s 2022 a nové zastupiteľstvo.`;
 const r = (rok: string, x: any) => ({ rok, ucast: x.ucast?.ucast_pct, kandidati: x.primator, mandaty: x.zastupitelstvo?.mandaty, poslancov: x.zastupitelstvo?.poslancov });
 const nrsr = d.volby?.nrsr2023, ep = d.volby?.ep2024;
+const obrazok = nove && fs.existsSync(path.join(process.cwd(), 'public', 'og', `volby-${m.slug}.png`)) && kom?.primator?.length ? `/og/volby-${m.slug}.png` : null;
 const kr = (s: string) => { const q = skrat(s).split(' + '); return q.length > 3 ? `${q.slice(0, 3).join(' + ')} a ďalší` : q.join(' + '); };
 ---
 <Base title={`${titul} – mestovcislach.sk`} description={popis}>
@@ -60,6 +61,7 @@ const kr = (s: string) => { const q = skrat(s).split(' + '); return q.length > 3
           <span class="vb-p" aria-hidden="true"><i style={`width:${k.podiel}%`}></i></span>
         </li>
       ))}</ul>
+      {obrazok && <p class="vb-obr"><a href={obrazok} download={`volby-2026-${m.slug}.png`}>Stiahnuť obrázok s výsledkom na zdieľanie</a> · <button type="button" id="vb-share" data-obr={obrazok}>Zdieľať</button></p>}
       {komRoky.length > 1 && <VolbyPorovnanie stary={r(komRoky.at(-2)!, d.komunalne[komRoky.at(-2)!])} novy={r(komRok!, kom)} priebezne={priebezne} />}
     </section>
   )}
@@ -97,6 +99,17 @@ const kr = (s: string) => { const q = skrat(s).split(' + '); return q.length > 3
 </Base>
 
 <script>
+  // zdieľanie obrázka s výsledkom (ak je)
+  document.getElementById('vb-share')?.addEventListener('click', async (e) => {
+    const u = (e.currentTarget as HTMLElement).dataset.obr!;
+    try {
+      const b = await fetch(u).then((r) => r.blob());
+      const f = new File([b], u.split('/').pop()!, { type: 'image/png' });
+      if (navigator.canShare?.({ files: [f] })) await navigator.share({ files: [f], text: document.title, url: location.href });
+      else if (navigator.share) await navigator.share({ text: document.title, url: location.href });
+      else await navigator.clipboard.writeText(location.href);
+    } catch { /* zrušené */ }
+  });
   // volebná noc: kým nie sú konečné výsledky, stránka sa obnoví každých 5 minút (len ak je karta viditeľná)
   const s = document.getElementById('vb-stav')?.dataset.stav;
   const n = Date.now();
@@ -127,5 +140,7 @@ const kr = (s: string) => { const q = skrat(s).split(' + '); return q.length > 3
   .vb-mandaty b { display: inline-block; min-width: 2em; font-variant-numeric: tabular-nums; }
   .vb-dva { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
   .pozn { font-size: 0.85rem; color: var(--muted); }
+  .vb-obr { margin: 12px 0 0; font-weight: 600; }
+  .vb-obr button { border: 0; background: none; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; cursor: pointer; }
   @media (prefers-reduced-motion: reduce) { .vb-bod { animation: none; } }
 </style>

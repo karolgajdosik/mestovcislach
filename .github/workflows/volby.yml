@@ -11,6 +11,7 @@ on:
     paths:
       - "scripts/zber_komunalne.py"
       - "scripts/zber_mesta.py"
+      - "scripts/og_obrazky.py"
       - ".github/workflows/volby.yml"
 
 permissions:
@@ -36,12 +37,19 @@ jobs:
       - name: Komunálne voľby v ostatných krajských mestách
         if: success() || failure()
         run: python scripts/zber_mesta.py komunalne
+      - name: Obrázky s víťazmi na zdieľanie (len keď sú výsledky)
+        if: success() || failure()
+        run: |
+          if python scripts/og_obrazky.py volby --treba; then
+            sudo apt-get install -y -qq fonts-inter > /dev/null 2>&1 || true
+            python scripts/og_obrazky.py volby
+          fi
       - name: Uložiť zmeny v dátach
         if: success() || failure()
         run: |
           git config user.name "mestovcislach-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/komunalne-bratislava.json data/mesta/*.json
+          git add data/komunalne-bratislava.json data/mesta/*.json public/og/volby-*.png
           if git diff --cached --quiet; then
             echo "Žiadne nové dáta."
           else
