@@ -262,7 +262,20 @@ def komunalne(stare: dict | None = None) -> dict:
     for rok, urls in KOMUNALNE:
         t, _ = zk.stiahni(urls)
         if not t or not all(t.get(x) for x in ("tab0a", "tab05")):
-            print(f"  komunálne {rok}: výsledky ešte nie sú k dispozícii ({', '.join(sorted(t)) if t else 'balík nedostupný'})")
+            print(f"  komunálne {rok}: balík ešte nemá výsledky ({', '.join(sorted(t)) if t else 'balík nedostupný'})")
+            if rok == "2026":  # počas sčítavania: priebežné výsledky z JSON stránky ŠÚ SR
+                import volby_priebezne as vp
+                for m in MESTA:
+                    if m["slug"] not in vp.KODY or (vysl[m["slug"]].get(rok) or {}).get("spracovanie", {}).get("priebezne") is False and not (vysl[m["slug"]][rok]["spracovanie"].get("zdroj")):
+                        continue  # konečné výsledky z balíka už máme
+                    try:
+                        d = vp.mesto(m["slug"])
+                    except Exception as e:  # noqa: BLE001
+                        print(f"::warning title=Priebežné výsledky {m['nazov']}::{e}")
+                        continue
+                    if d:
+                        vysl[m["slug"]][rok] = d
+                        print(f"  {m['nazov']} {rok}: priebežne {d['spracovanie']['pct']} %, {d['primator'][0]['meno']} {d['primator'][0]['podiel']} %")
             continue
         strany = zk.strany_mapa(t)
         for m in MESTA:

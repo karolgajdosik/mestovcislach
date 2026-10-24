@@ -1,10 +1,10 @@
-import requests, re
-H={"User-Agent":"Mozilla/5.0 (mestovcislach diag)"}
-B="https://volbysr.sk/oso/"
-js=re.sub(r"\s+"," ",requests.get(B+"js/functions.js",headers=H,timeout=60).text)
-for f in ["function fillBoxes","function createTab05"]:
-    i=js.find(f); print(f, js[i:i+1600]); print()
-for c in ["500011","582000","599981","524140"]:
-    for p in [f"json/graph01/{c}.json", f"json/tab05/{c}.json", f"json/tab05.json"]:
-        r=requests.get(B+p,headers=H,timeout=60); print(p, r.status_code, r.text[:700] if r.ok else "")
+import subprocess, sys, os, shutil
+subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
+r=subprocess.run([sys.executable, "scripts/volby_priebezne.py"], capture_output=True, text=True); print(r.stdout, r.stderr[-1500:])
+r=subprocess.run([sys.executable, "scripts/zber_komunalne.py"], capture_output=True, text=True); print("BA", r.returncode, r.stdout[-1200:], r.stderr[-1500:])
+r=subprocess.run([sys.executable, "scripts/zber_mesta.py", "komunalne"], capture_output=True, text=True); print("MESTA", r.returncode, "\n".join(l for l in r.stdout.splitlines() if "2026" in l or "::" in l), r.stderr[-1500:])
+os.makedirs("diag/vp/mesta", exist_ok=True)
+shutil.copy("data/komunalne-bratislava.json","diag/vp/komunalne-bratislava.json")
+for f in os.listdir("data/mesta"):
+    if f.endswith(".json") and not f.startswith(("crz","samosprava","casti","mhd","temy","skoly","firmy","hospodarenie","ovzdusie","vlaky")): shutil.copy(f"data/mesta/{f}", f"diag/vp/mesta/{f}")
 print("HOTOVO")
