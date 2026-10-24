@@ -15,6 +15,14 @@ const PREDVOLENE: Record<string, number> = { zastavky: 3, lekarne: 2, zs: 2, ms:
 const KRATKO: Record<string, string> = { lekarne: 'Lekáreň', zastavky: 'Zastávka MHD', ms: 'Materská škola', zs: 'Základná škola', nemocnice: 'Nemocnica / poliklinika', ihriska: 'Detské ihrisko', posty: 'Pošta', urady: 'Úrad', policia: 'Polícia', nabijanie: 'Nabíjanie áut', sport: 'Šport a ihriská', fontany: 'Pitná fontána' };
 const data = { kat: s.kat.map((k) => k.id), casti: s.casti.map((c) => ({ n: c.n, d: c.d, p: c.pocet })) };
 const odkazAdresa = `/${m.slug}/adresa`;
+// mapa štvrtí: jednoduchá projekcia do SVG, body zriedené na ~150 na obrys
+const kruhy = (g: any): number[][][] => (g.type === 'Polygon' ? g.coordinates : g.type === 'MultiPolygon' ? g.coordinates.flat() : []);
+const vsetky = Object.values(s.geo).flatMap((g: any) => kruhy(g).flat());
+const [x0, x1, y0, y1] = [Math.min(...vsetky.map((p) => p[0])), Math.max(...vsetky.map((p) => p[0])), Math.min(...vsetky.map((p) => p[1])), Math.max(...vsetky.map((p) => p[1]))];
+const kx = Math.cos(((y0 + y1) / 2) * (Math.PI / 180));
+const SIRKA = 600, mier = SIRKA / ((x1 - x0) * kx || 1), VYSKA = Math.round((y1 - y0) * mier);
+const bod = (p: number[]) => `${((p[0] - x0) * kx * mier).toFixed(1)},${((y1 - p[1]) * mier).toFixed(1)}`;
+const cesta = (g: any) => kruhy(g).map((r) => { const n = Math.max(1, Math.floor(r.length / 150)); return 'M' + r.filter((_, i) => i % n === 0).map(bod).join('L') + 'Z'; }).join('');
 ---
 <Base title={`Ktorá štvrť je pre mňa – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: porovnajte ${s.druh} podľa toho, čo potrebujete mať blízko – MHD, lekáreň, škola, škôlka, ihrisko.`}>
   <section class="hero">
@@ -36,6 +44,15 @@ const odkazAdresa = `/${m.slug}/adresa`;
           </label>
         ))}
       </div>
+    </section>
+
+    <section class="card st-mapa-karta">
+      <h2>Mapa</h2>
+      <svg class="st-mapa" id="st-mapa" viewBox={`-4 -4 ${SIRKA + 8} ${VYSKA + 8}`} role="img" aria-label={`Mapa: ${s.druh} zafarbené podľa skóre – tmavšia farba znamená lepšie skóre. Poradie je v zozname nižšie.`}>
+        {Object.entries(s.geo).map(([n, g]) => <path d={cesta(g)} data-n={n}><title>{n}</title></path>)}
+      </svg>
+      <p class="st-legenda" aria-hidden="true"><span>horšie</span><i></i><span>lepšie</span></p>
+      {s.priblizne && <p class="pozn">Hranice štvrtí sú približné – každé miesto sme priradili k najbližšiemu stredu štvrte podľa OpenStreetMap.</p>}
     </section>
 
     <section class="card">
@@ -68,12 +85,28 @@ const odkazAdresa = `/${m.slug}/adresa`;
     }).sort((a, b) => b.s - a.s);
     const top = sk[0]?.s || 1;
     const hlavne = aktivne.slice().sort((a, b) => w[b] - w[a]).slice(0, 4);
+    // mapa: sýtosť podľa skóre
+    const skore = new Map(sk.map(({ c, s }, i) => [c.n, { p: aktivne.length ? s / top : 0, i: i + 1 }]));
+    document.querySelectorAll<SVGPathElement>('#st-mapa path').forEach((p) => {
+      const x = skore.get(p.dataset.n!);
+      p.style.setProperty('--o', String(x ? (0.12 + 0.83 * x.p ** 1.6).toFixed(2) : 0.05));
+      p.querySelector('title')!.textContent = x ? `${x.i}. ${p.dataset.n} – skóre ${Math.round(100 * x.p)}` : p.dataset.n!;
+    });
     document.getElementById('st-poradie')!.innerHTML = sk.map(({ c, s }, i) => `
-      <li><div class="st-hlava"><span class="st-poz">${i + 1}.</span><strong>${hx(c.n)}</strong><b>${aktivne.length ? Math.round((100 * s) / top) : '–'}</b></div>
+      <li data-n="${hx(c.n)}"><div class="st-hlava"><span class="st-poz">${i + 1}.</span><strong>${hx(c.n)}</strong><b>${aktivne.length ? Math.round((100 * s) / top) : '–'}</b></div>
         <i class="st-pas" style="--w:${aktivne.length ? ((100 * s) / top).toFixed(1) : 0}%"></i>
         <p class="st-detaily">${hlavne.map((k) => c.d[k] != null ? `<span>${hx(NAZVY[k])}: <b>${min(c.d[k]!)} min</b></span>` : '').join('')}</p></li>`).join('');
   }
   obal.querySelectorAll('select').forEach((s) => s.addEventListener('change', obnov));
+  // klik na štvrť v mape → zvýrazniť v poradí
+  document.getElementById('st-mapa')!.addEventListener('click', (e) => {
+    const n = (e.target as Element).closest('path')?.getAttribute('data-n');
+    const li = n && [...document.querySelectorAll<HTMLElement>('#st-poradie li')].find((l) => l.dataset.n === n);
+    if (!li) return;
+    document.querySelectorAll('#st-poradie li.vybrata').forEach((l) => l.classList.remove('vybrata'));
+    li.classList.add('vybrata');
+    li.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+  });
   obnov();
 </script>
 
@@ -91,4 +124,12 @@ const odkazAdresa = `/${m.slug}/adresa`;
   .st-poradie :global(.st-detaily) { margin: 0 0 0 2.5em; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.82rem; color: var(--muted); }
   .st-poradie :global(.st-detaily b) { color: var(--text); }
   .pozn { font-size: 0.82rem; color: var(--muted); }
+  .st-mapa { width: 100%; height: auto; max-height: 520px; display: block; }
+  .st-mapa path { fill: var(--accent); fill-opacity: var(--o, 0.1); stroke: var(--card); stroke-width: 1.2; stroke-linejoin: round; cursor: pointer; transition: fill-opacity 0.4s; }
+  .st-mapa path:hover { stroke: var(--text); stroke-width: 2; }
+  .st-legenda { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); margin: 8px 0 0; }
+  .st-legenda i { width: 120px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 12%, var(--card)), var(--accent)); }
+  .st-poradie :global(li.vybrata) { background: color-mix(in srgb, var(--accent) 8%, transparent); border-radius: 8px; }
+  @media (min-width: 1000px) { .st { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; align-items: start; } .st-vahy { grid-column: 1 / -1; } .st-mapa-karta { position: sticky; top: calc(var(--vyska-hlavicky) + 12px); } }
+  @media (prefers-reduced-motion: reduce) { .st-mapa path { transition: none; } }
 </style>

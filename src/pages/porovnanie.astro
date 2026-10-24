@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../layouts/Base.astro';
 import { MESTA } from '../mesta';
+import VolbyMiest2026 from '../components/VolbyMiest2026.astro';
 import { hospodarenie } from '../lib/mapa';
 import { kriminalita, ovzdusie, posledny, ua, vlaky } from '../lib/temy';
 
@@ -97,6 +98,7 @@ const odkaz = (slug: string) => (MESTA.find((m) => m.slug === slug)?.aktivne ? `
       </section>
     </>
   ) : <p class="card">Údaje sa práve zbierajú.</p>}
+  <VolbyMiest2026 />
 </Base>
 
 <script>

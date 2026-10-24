@@ -75,11 +75,50 @@ def obrazok(nazov: str, podtitul: str) -> Image.Image:
     return im
 
 
+# nové podstránky každého mesta: public/og/<sekcia>-<mesto>.png (lokál „v Košiciach“ zo src/mesta.json)
+SEKCIE_MIEST = {
+    "kviz": ("Poznáš svoje mesto? {nazov}", "Kvíz z otvorených dát – 10 náhodných otázok o obyvateľoch, voľbách, doprave, bývaní a peniazoch mesta"),
+    "zastupitelstvo": ("Mestské zastupiteľstvo {v}", "Kto sedí v zastupiteľstve, zloženie podľa strán a kto mandát obhájil"),
+    "skoly": ("Školy {v}", "Všetky škôlky, základné a stredné školy – žiaci, učitelia, rozpočet a záujem o stredné školy"),
+    "stvrte": ("Ktorá štvrť je pre mňa {v}", "Porovnajte štvrte podľa toho, čo potrebujete mať blízko – MHD, lekáreň, škola, škôlka"),
+    "dane": ("Kam idú moje dane {v}", "Kalkulačka: koľko z vašich daní dostane mesto a na čo ich míňa"),
+    "novinky": ("Čo je nové {v}", "Nové stavby, väčšie zmluvy mesta a zasadnutia zastupiteľstva – aj ako RSS"),
+}
+
+
+def kviz_obrazok(nazov: str, podtitul: str) -> Image.Image:
+    """Tmavší variant pre kvíz (rovnaký štýl ako obrázok výsledku na zdieľanie)."""
+    im = Image.new("RGB", (1200, 630), (19, 33, 63))
+    d = ImageDraw.Draw(im)
+    for x in range(1200):  # jemný prechod do vínovej
+        k = x / 1200
+        d.line([(x, 0), (x, 630)], fill=(int(19 + (91 - 19) * k), int(33 + (16 - 33) * k), int(63 + (34 - 63) * k)))
+    d.text((80, 70), "?", font=pismo("Black", 150), fill=(255, 107, 128))
+    f_nadpis = pismo("ExtraBold", 80)
+    y = 250
+    for r in zalom(d, nazov, f_nadpis, 1040)[:2]:
+        d.text((80, y), r, font=f_nadpis, fill="white")
+        y += 94
+    y += 10
+    for r in zalom(d, podtitul, pismo("Regular", 34), 1040)[:3]:
+        d.text((80, y), r, font=pismo("Regular", 34), fill=(220, 224, 235))
+        y += 46
+    d.text((80, 560), "mestovcislach.sk · kvíz", font=pismo("SemiBold", 28), fill=(255, 140, 160))
+    return im
+
+
 def main() -> None:
+    import json
     VYSTUP.mkdir(parents=True, exist_ok=True)
     for kluc, (nazov, podtitul) in STRANKY.items():
         obrazok(nazov, podtitul).save(VYSTUP / f"{kluc}.png", optimize=True)
         print(VYSTUP / f"{kluc}.png")
+    mesta = [m for m in json.loads((VYSTUP.parent.parent / "src" / "mesta.json").read_text(encoding="utf-8")) if m.get("aktivne")]
+    for m in mesta:
+        for kluc, (nazov, podtitul) in SEKCIE_MIEST.items():
+            n = nazov.format(nazov=m["nazov"], v=m["v"])
+            (kviz_obrazok if kluc == "kviz" else obrazok)(n, podtitul).save(VYSTUP / f"{kluc}-{m['slug']}.png", optimize=True)
+        print(f"{m['nazov']}: {len(SEKCIE_MIEST)} obrázkov")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,61 @@
+---
+// Porovnanie komunálnych volieb 2022 → 2026 vo všetkých krajských mestách (stránka /porovnanie).
+// Zobrazí sa, keď je aspoň v jednom meste výsledok 2026; počas sčítavania s označením „priebežne“.
+import { MESTA } from '../mesta';
+import { obdobia, bezTitulov, skrat } from '../lib/zastupitelstvo';
+
+const riadky = MESTA.filter((m) => m.aktivne).map((m) => {
+  const o = obdobia(m.slug);
+  const n = o.find((x) => x.rok === '2026'), s = o.find((x) => x.rok === '2022');
+  if (!n || !s) return null;
+  const predMena = new Set(s.poslanci.map((p) => bezTitulov(p.meno)));
+  const obhajili = n.priebezne ? null : n.poslanci.filter((p) => predMena.has(bezTitulov(p.meno))).length;
+  const primObhajil = n.primator && s.primator ? bezTitulov(n.primator.meno) === bezTitulov(s.primator.meno) : null;
+  const naj = n.mandaty.slice().sort((a, b) => b.mandaty - a.mandaty)[0];
+  return { m, n, s, obhajili, primObhajil, naj, zmenaUcasti: n.ucast != null && s.ucast != null ? n.ucast - s.ucast : null };
+}).filter(Boolean) as any[];
+const des = (x: number, d = 1) => x.toLocaleString('sk-SK', { minimumFractionDigits: d, maximumFractionDigits: d });
+const priebezne = riadky.some((r) => r.n.priebezne);
+const maxZ = Math.max(1, ...riadky.map((r) => Math.abs(r.zmenaUcasti ?? 0)));
+const kr = (s: string) => { const p = skrat(s).split(' + '); return p.length > 3 ? `${p.slice(0, 3).join(' + ')} a ďalší` : p.join(' + '); };
+---
+{riadky.length > 0 && (
+  <section class="card vm26" id="volby-2026">
+    <h2>Komunálne voľby 2026 oproti 2022{priebezne ? ' – priebežne' : ''}</h2>
+    <p class="pozn">Primátori, účasť a obmena zastupiteľstiev vo všetkých krajských mestách. {priebezne ? 'Kde sa ešte sčítava, ukazujeme, kto vedie.' : ''}</p>
+    <div class="tabulka-obal">
+      <table class="vm26-tab">
+        <thead><tr><th>Mesto</th><th>Primátor(ka) 2026</th><th class="num">Účasť</th><th>Zmena účasti</th><th>Najviac mandátov</th><th class="num">Poslanci, ktorí obhájili</th></tr></thead>
+        <tbody>
+          {riadky.map((r) => (
+            <tr>
+              <td><a href={`/${r.m.slug}/zastupitelstvo`} translate="no">{r.m.nazov}</a></td>
+              <td translate="no">{r.n.primator ? <>{r.n.priebezne ? 'vedie ' : ''}<strong>{r.n.primator.meno}</strong><small>{r.primObhajil === true ? (r.n.priebezne ? 'obhajuje funkciu' : 'obhájil(a) funkciu') : r.primObhajil === false ? (r.n.priebezne ? `doterajší(-ia): ${r.s.primator.meno}` : 'nový(-á) primátor(ka)') : ''}</small></> : '–'}</td>
+              <td class="num">{r.n.ucast != null ? `${des(r.n.ucast)} %` : '–'}</td>
+              <td>{r.zmenaUcasti != null ? (
+                <span class="vm26-z"><i class={r.zmenaUcasti >= 0 ? 'plus' : 'minus'} style={`--w:${(50 * Math.abs(r.zmenaUcasti)) / maxZ}%`}></i><b>{r.zmenaUcasti >= 0 ? '+' : '−'}{des(Math.abs(r.zmenaUcasti))} p. b.</b></span>
+              ) : '–'}</td>
+              <td translate="no">{r.naj && !r.n.priebezne ? `${kr(r.naj.strany)} (${r.naj.mandaty})` : '–'}</td>
+              <td class="num">{r.obhajili != null ? `${r.obhajili} z ${r.n.poslancov}` : '–'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="zdroj">Zdroj: Štatistický úrad SR (volbysr.sk). „Obhájili“ = rovnaké meno bez titulov zvolené aj v roku 2022. Podrobnosti pri každom meste na stránke Zastupiteľstvo.</p>
+  </section>
+)}
+
+<style>
+  .vm26 { margin-top: 16px; }
+  .vm26-tab { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .vm26-tab th, .vm26-tab td { padding: 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .vm26-tab .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .vm26-tab small { display: block; color: var(--muted); font-size: 0.78rem; }
+  .vm26-z { display: flex; align-items: center; gap: 8px; min-width: 150px; }
+  .vm26-z i { display: block; height: 10px; width: var(--w); min-width: 3px; border-radius: 5px; }
+  .vm26-z i.plus { background: #16a34a; } .vm26-z i.minus { background: var(--accent); }
+  .vm26-z b { font-weight: 600; white-space: nowrap; font-size: 0.85rem; }
+  .tabulka-obal { overflow-x: auto; }
+  .pozn, .zdroj { font-size: 0.82rem; color: var(--muted); }
+</style>

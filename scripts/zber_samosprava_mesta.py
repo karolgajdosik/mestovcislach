@@ -1,7 +1,7 @@
 """Samospráva krajského mesta z jeho portálu otvorených dát: hlasovania poslancov a zmluvy, faktúry, objednávky.
 
 Zatiaľ Košice (opendata.kosice.sk, CC BY 4.0). Spúšťa sa týždenne v katalog.yml.
-Po komunálnych voľbách 2026 doplniť nové obdobie do MESTA (keď mesto zverejní dataset).
+Nové volebné obdobie (2026–2030) sa nájde samo, keď ho mesto zverejní na portáli (datasety_hlasovani).
 
 GDPR:
   - hlasovania: len meno, poslanecký klub a hlas (verejná funkcia); tituly, tajné hlasovania a ručné hlasy neukladáme,
@@ -32,6 +32,22 @@ MESTA = {
                      ("objednávky", "06d4cb2866c54b43bb1997f7edf86f4d", "datum_vystavenia", "suma_objednavky")],
     },
 }
+def datasety_hlasovani(cfg: dict) -> list[tuple[str, str]]:
+    """Známe datasety hlasovaní + nové volebné obdobia, ak ich mesto medzitým zverejnilo (vyhľadávanie na portáli)."""
+    zoznam = list(cfg["hlasovania"])
+    try:
+        r = s.get(f"{cfg['portal']}/api/search/v1/collections/dataset/items", params={"q": "hlasovanie poslancov", "limit": 50}, timeout=60)
+        for f in r.json().get("features", []):
+            m = re.search(r"Hlasovanie poslancov mestského zastupiteľstva.*?(\d{4})\s*-\s*(\d{4})", (f.get("properties") or {}).get("title", ""))
+            nazov = m and f"{m.group(1)}-{m.group(2)}"
+            if nazov and int(m.group(1)) >= 2026 and all(n != nazov for n, _ in zoznam):
+                zoznam.append((nazov, str(f["id"]).split("_")[0]))
+                print(f"Nové volebné obdobie hlasovaní: {nazov}")
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=Hľadanie datasetov hlasovaní::{e}")
+    return zoznam
+
+
 KODY = {"ZA": "Z", "PROTI": "P", "ZDRŽAL SA": "Q", "NEHLASOVAL": "N", "NEPRÍTOMNÝ": "A"}
 BEZ_KLUBU = re.compile(r"nezaraden", re.I)
 PRAVNA_FORMA = re.compile(r"s\.\s?r\.\s?o|spol\.|a\.\s?s\.|k\.\s?s\.|v\.\s?o\.\s?s|n\.\s?o\.|o\.\s?z\.|z\.\s?p\.\s?o|š\.\s?p\.|\bp\.\s?o\.|gmbh|ltd|inc\.|"
@@ -77,7 +93,7 @@ def cisty(t) -> str:
 
 def hlasovania(cfg: dict, slug: str) -> dict:
     obdobia, subory = {}, {}
-    for nazov, item in cfg["hlasovania"]:
+    for nazov, item in datasety_hlasovani(cfg):
         url = vrstva(item)
         mena_poli = [f["name"] for f in s.get(url, params={"f": "json"}, timeout=60).json().get("fields", [])]
         klub_pole = "poslanec_klub" if "poslanec_klub" in mena_poli else "poslanecky_klub"

@@ -8,7 +8,7 @@ const { mesto, portal } = Astro.props as { mesto?: string; portal?: string };
 const p = path.join(process.cwd(), 'data', ...(mesto ? ['mesta', `samosprava-${mesto}.json`] : ['hlasovania-msz.json']));
 const surove = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
 const h = mesto ? surove?.hlasovania : surove;
-const obdobia = h ? Object.entries<any>(h.obdobia).sort((a, b) => b[0].localeCompare(a[0])) : [];
+const obdobia = h ? Object.entries<any>(h.obdobia).sort((a, b) => b[0].localeCompare(a[0], 'en', { numeric: true })) : [];
 const pct = (n: number | null) => (n == null ? '–' : n.toLocaleString('sk-SK', { maximumFractionDigits: 1 }) + ' %');
 const fmt = (n: number) => n.toLocaleString('sk-SK');
 const dat = (d: string) => (d ? d.split('-').reverse().map((x) => x.replace(/^0/, '')).join('. ') : '');

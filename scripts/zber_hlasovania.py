@@ -27,9 +27,9 @@ ZASADNUTIA = "7b0fe912679644c0b6c740eb83107c30"
 ZDROJ = {"nazov": "Hlasovania poslancov a poslankýň Mestského zastupiteľstva od roku 2014", "url": f"https://data.bratislava.sk/datasets/{ITEM}", "licencia": "CC BY 4.0",
          "web": {"nazov": "Digitálne zastupiteľstvo – zastupitelstvo.bratislava.sk (hlasovania po skončení otvorených dát)", "url": "https://zastupitelstvo.bratislava.sk/zasadnutia/"}}
 # Z = za, P = proti, Q = zdržal(a) sa, N = prítomný, nehlasoval, A = neprítomný
-OBDOBIA = {"7": "2014–2018", "8": "2018–2022", "9": "2022–2026"}
+OBDOBIA = {"7": "2014–2018", "8": "2018–2022", "9": "2022–2026", "10": "2026–2030"}
 # Volebné obdobie podľa dátumu zasadnutia (zdroj označuje aj zasadnutia po voľbách 2022 ako obdobie 8)
-HRANICE = [("2018-11-10", "7"), ("2022-11-01", "8"), ("9999-12-31", "9")]
+HRANICE = [("2018-11-10", "7"), ("2022-11-01", "8"), ("2026-11-01", "9"), ("9999-12-31", "10")]
 
 
 def obdobie_podla_datumu(d: str) -> str:

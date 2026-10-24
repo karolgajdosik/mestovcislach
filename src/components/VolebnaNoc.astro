@@ -1,0 +1,68 @@
+---
+// Upútavka na komunálne voľby 2026 na úvodnej stránke (zobrazí sa len okolo volieb).
+// Počas volebnej noci sa web zostavuje s každým zberom (volby.yml každých 15 min), takže stav je priebežný.
+import { MESTA } from '../mesta';
+import { obdobia } from '../lib/zastupitelstvo';
+
+const DATUM = '2026-10-24';
+const teraz = new Date();
+const zobraz = teraz >= new Date('2026-10-17') && teraz < new Date('2026-11-21');
+const mesta = MESTA.filter((m) => m.aktivne).map((m) => {
+  const o = obdobia(m.slug).find((x) => x.rok === '2026');
+  return { m, o, odkaz: m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${m.slug}#volby` };
+});
+const vysledky = mesta.some((x) => x.o?.primator);
+const vsetkyKonecne = mesta.every((x) => x.o && !x.o.priebezne);
+const kratke = (meno: string) => meno.split(/[\s,]+/).filter((s) => s && !s.includes('.') && !/^(PhD|MBA|LL|MPH)$/i.test(s)).join(' ');
+---
+{zobraz && (
+  <section class="vn" aria-labelledby="vn-nadpis" data-datum={DATUM}>
+    <div class="vn-hlava">
+      <span class="vn-bod" aria-hidden="true"></span>
+      <h2 id="vn-nadpis">{vysledky ? (vsetkyKonecne ? 'Výsledky komunálnych volieb 2026' : 'Komunálne voľby 2026 – priebežné výsledky') : 'Komunálne voľby 2026'}</h2>
+    </div>
+    {!vysledky && (
+      <p class="vn-text" id="vn-text">Dnes, v sobotu 24. októbra, sa volí od 7:00 do 20:00. Po zatvorení miestností tu budú pribúdať výsledky – kto vedie v boji o primátora, mapa podľa mestských častí a nové zastupiteľstvo.</p>
+    )}
+    {vysledky && !vsetkyKonecne && <p class="vn-text">Hlasy sa ešte sčítavajú – údaje sa obnovujú každých 15 minút.</p>}
+    <ul class="vn-mesta">
+      {mesta.map(({ m, o, odkaz }) => (
+        <li><a href={odkaz}>
+          <strong translate="no">{m.nazov}</strong>
+          {o?.primator
+            ? <span translate="no">{o.priebezne ? 'vedie' : 'primátor(ka)'} {kratke(o.primator.meno)}{o.primator.podiel != null ? ` · ${o.primator.podiel.toLocaleString('sk-SK', { maximumFractionDigits: 1 })} %` : ''}</span>
+            : <span>výsledky a kandidáti</span>}
+        </a></li>
+      ))}
+    </ul>
+    {vsetkyKonecne && <p class="vn-dalej"><a href="/porovnanie#volby-2026">Porovnanie volieb 2022 a 2026 vo všetkých mestách →</a></p>}
+  </section>
+)}
+
+<script>
+  // pred 20:00 v deň volieb „dnes sa volí“, potom „sčítavajú sa hlasy“ (ak ešte nie sú výsledky)
+  const t = document.getElementById('vn-text');
+  const sek = document.querySelector<HTMLElement>('.vn');
+  if (t && sek) {
+    const d = sek.dataset.datum!;
+    const koniec = new Date(`${d}T20:00:00+02:00`), den = new Date(`${d}T00:00:00+02:00`);
+    const n = new Date();
+    if (n < den) t.textContent = 'V sobotu 24. októbra sa volia primátori, starostovia a poslanci miest aj krajov. Výsledky tu budú pribúdať počas volebnej noci.';
+    else if (n >= koniec) t.textContent = 'Volebné miestnosti sú zatvorené, sčítavajú sa hlasy. Prvé výsledky sa tu objavia hneď, ako ich Štatistický úrad zverejní – stránka sa obnovuje každých 15 minút.';
+  }
+</script>
+
+<style>
+  .vn { margin: 0 0 24px; padding: 18px 20px; border-radius: 16px; background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 12%, var(--card)), var(--card)); border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); }
+  .vn-hlava { display: flex; align-items: center; gap: 10px; }
+  .vn h2 { margin: 0; font-size: 1.25rem; letter-spacing: -0.01em; }
+  .vn-bod { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); animation: pulz 1.8s infinite; flex-shrink: 0; }
+  @keyframes pulz { 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+  .vn-text { margin: 8px 0 12px; color: var(--muted); max-width: 52em; }
+  .vn-mesta { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; }
+  .vn-mesta a { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); color: var(--text); text-decoration: none; height: 100%; }
+  .vn-mesta a:hover { border-color: var(--accent); }
+  .vn-mesta span { font-size: 0.82rem; color: var(--muted); }
+  .vn-dalej { margin: 12px 0 0; font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) { .vn-bod { animation: none; } }
+</style>

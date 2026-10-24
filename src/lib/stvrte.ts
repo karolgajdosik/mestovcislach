@@ -7,9 +7,9 @@ import { mapaMesta } from './mapa';
 type Ring = number[][];
 type Poly = Ring[];
 export type Stvrt = { n: string; km2: number; body: number; d: Record<string, number | null>; pocet: Record<string, number> };
-export type StvrteMesta = { druh: string; zdroj: string; kat: { id: string; nazov: string }[]; casti: Stvrt[] };
+export type StvrteMesta = { druh: string; zdroj: string; priblizne?: boolean; kat: { id: string; nazov: string }[]; casti: Stvrt[]; geo: Record<string, any> };
 
-function casti(slug: string): { druh: string; zdroj: string; casti: { n: string; g: any }[] } | null {
+function casti(slug: string): { druh: string; zdroj: string; priblizne?: boolean; casti: { n: string; g: any }[] } | null {
   if (slug === 'bratislava') {
     const h = citaj('data', 'hranice-bratislava.geojson');
     return h ? { druh: 'mestské časti', zdroj: 'hranice mestských častí', casti: h.features.map((f: any) => ({ n: f.properties.nazov, g: f.geometry })) } : null;
@@ -18,7 +18,7 @@ function casti(slug: string): { druh: string; zdroj: string; casti: { n: string;
   const mc = h?.features?.filter((f: any) => ['Polygon', 'MultiPolygon'].includes(f.geometry?.type)) ?? [];
   if (mc.length > 1) return { druh: 'mestské časti', zdroj: 'hranice mestských častí', casti: mc.map((f: any) => ({ n: f.properties.n ?? f.properties.nazov, g: f.geometry })) };
   const o = citaj('data', 'mesta', 'casti-osm.json')?.mesta?.[slug];
-  return o ? { druh: o.druh, zdroj: 'OpenStreetMap', casti: o.casti } : null;
+  return o ? { druh: o.druh, zdroj: 'OpenStreetMap', priblizne: !!o.priblizne, casti: o.casti } : null;
 }
 
 const polygony = (g: any): Poly[] => (g.type === 'Polygon' ? [g.coordinates] : g.type === 'MultiPolygon' ? g.coordinates : []);
@@ -71,5 +71,7 @@ export function stvrte(slug: string): StvrteMesta | null {
     out.push({ n: cast.n, km2: Math.round((spolu * KROK * KROK) / 1e5) / 10, body: mriezka.length, d, pocet });
   }
   if (out.length < 3) return null;
-  return { druh: c.druh, zdroj: c.zdroj, kat: kat.map((k) => ({ id: k.id, nazov: k.nazov })), casti: out.sort((a, b) => a.n.localeCompare(b.n, 'sk')) };
+  // geometria pre mapu na stránke (zjednodušená)
+  const geo = Object.fromEntries(c.casti.filter((x) => out.some((o) => o.n === x.n)).map((x) => [x.n, x.g]));
+  return { druh: c.druh, zdroj: c.zdroj, priblizne: c.priblizne, kat: kat.map((k) => ({ id: k.id, nazov: k.nazov })), casti: out.sort((a, b) => a.n.localeCompare(b.n, 'sk')), geo };
 }

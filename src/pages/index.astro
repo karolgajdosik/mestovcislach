@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import { webSite } from '../lib/seo';
 import { MESTA } from '../mesta';
 import { foto } from '../lib/fotky';
+import VolebnaNoc from '../components/VolebnaNoc.astro';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -21,6 +22,8 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
     <h1>Slovenské mestá v číslach</h1>
     <p class="lead">Obyvatelia, voľby, rozpočet, zmluvy, doprava, výstavba aj živé údaje – prehľadne, so zdrojmi a bez registrácie. Vyberte si mesto.</p>
   </section>
+
+  <VolebnaNoc />
 
   <ul class="mesta">
     {aktivne.map((m) => (
