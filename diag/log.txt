@@ -1,9 +1,10 @@
-Trnava: 11 štvrtí (približné hranice z bodov OSM)
-Nitra: 11 častí (katastrálne územia)
-Trenčín: 9 častí (časti mesta)
-Žilina: 23 častí (časti mesta)
-Banská Bystrica: 19 častí (časti mesta)
-Prešov: 54 štvrtí (približné hranice z bodov OSM)
-
-
+úvod – upútavka: True
+/trnava/stvrte 200 mapa: True og: https://mestovcislach.sk/og/stvrte-trnava.png
+/presov/stvrte 200 mapa: True og: https://mestovcislach.sk/og/stvrte-presov.png
+/bratislava/stvrte 200 mapa: True og: https://mestovcislach.sk/og/stvrte-bratislava.png
+/porovnanie 200 mapa: False og: https://mestovcislach.sk/og/index.png
+/kosice/kviz 200 mapa: False og: https://mestovcislach.sk/og/kviz-kosice.png
+odber ['email', 'kanal', 'suhlas'] 400 {"ok":false,"sprava":"Skontrolujte, prosím, e-mailovú adresu."}
+odber ['email', 'kanal', 'suhlas'] 400 {"ok":false,"sprava":"Skontrolujte, prosím, e-mailovú adresu."}
+odber ['web'] 200 {"ok":true,"sprava":"Skontrolujte si e-mail."}
 HOTOVO
