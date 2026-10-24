@@ -1,15 +1,16 @@
-import requests, zipfile, io, re
+import requests, re
 H={"User-Agent":"Mozilla/5.0 (mestovcislach diag)"}
-for u in ["https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip","https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip","https://volbysr.sk/oso/files/OSO2026_SK_csv.zip"]:
-    try:
-        r=requests.get(u,headers=H,timeout=120)
-        print(u.split('/')[-1], r.status_code, r.headers.get("last-modified"), len(r.content))
-        if r.ok and r.content[:2]==b"PK":
-            print("  ", sorted(zipfile.ZipFile(io.BytesIO(r.content)).namelist()))
-    except Exception as e: print(u, "ERR", e)
-for u in ["https://volbysr.sk/oso/sk/","https://volbysr.sk/"]:
-    try:
-        r=requests.get(u,headers=H,timeout=60); t=re.sub(r"<[^>]+>"," ",r.text)
-        print(u, r.status_code, len(r.text), re.findall(r"[Ss]pracovan[^.]{0,80}", t)[:3], re.findall(r"\d{1,3}[,.]\d{1,2}\s?%", t)[:5])
-    except Exception as e: print(u,"ERR",e)
+B="https://volbysr.sk/oso/sk/"
+h=requests.get(B,headers=H,timeout=60); h.encoding="utf-8"; t=h.text
+print("skripty:", re.findall(r'<script[^>]*src="([^"]+)"', t))
+print("odkazy html:", sorted(set(re.findall(r'href="([^"#]+\.html)"', t))))
+inline=re.findall(r'<script[^>]*>(.*?)</script>', t, re.S)
+for s in inline:
+    for m in re.findall(r'["\']([^"\']*(?:json|data|files|api)[^"\']*)["\']', s): print("inline url:", m[:150])
+for src in re.findall(r'<script[^>]*src="([^"]+)"', t):
+    if 'jquery' in src or 'idsk' in src: continue
+    u=requests.compat.urljoin(B,src); js=requests.get(u,headers=H,timeout=60).text
+    print("JS", src, len(js), sorted(set(re.findall(r'["\']([^"\'\s]*(?:\.json|/data/|/files/|api)[^"\'\s]*)["\']', js)))[:30])
+for p in ["https://volbysr.sk/oso/sk/vysledky_obce.html","https://volbysr.sk/oso/sk/obce.html","https://volbysr.sk/oso/sk/vysledky_hlasovania.html","https://volbysr.sk/oso/sk/suhrnne_vysledky.html","https://volbysr.sk/oso/data/","https://volbysr.sk/oso/files/"]:
+    r=requests.get(p,headers=H,timeout=30); print(p, r.status_code, len(r.text))
 print("HOTOVO")
