@@ -1,0 +1,226 @@
+---
+// Najbližšie odchody MHD zo zastávky podľa cestovného poriadku (GTFS). Hľadanie zastávky, zastávky pri mne (poloha
+// sa spracuje len v prehliadači), obľúbené zastávky v localStorage. Údaje: src/pages/data/odchody/, scripts/zber_odchody.py
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import '../../styles/odchody.css';
+import { MESTA, type Mesto } from '../../mesta';
+import { odchody } from '../../lib/odchody';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne && odchody(m.slug)).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const d = odchody(m.slug)!;
+const datum = (s: string) => new Date(s).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric', year: 'numeric' });
+const dopravca = m.slug === 'bratislava' ? 'Dopravný podnik Bratislava' : 'Dopravný podnik mesta Prešov';
+---
+<Base title={`Odchody MHD ${m.v} – najbližšie spoje zo zastávky – mestovcislach.sk`} description={`${m.nazov}: kedy ide najbližšia električka, trolejbus či autobus. ${d.zastavky.length} zastávok, odchody podľa cestovného poriadku ${dopravca}, zastávky pri vás a obľúbené zastávky.`}>
+  <section class="hero">
+    <p class="kicker">Doprava</p>
+    <h1>Odchody MHD <span translate="no">{m.v}</span></h1>
+    <p class="lead">Kedy vám to ide – najbližšie spoje zo zastávky podľa cestovného poriadku. Nájdite zastávku podľa názvu alebo zobrazte tie najbližšie pri vás.</p>
+  </section>
+
+  <div class="od" id="odchody" data-slug={m.slug}>
+    <section class="card od-hladaj">
+      <div class="od-riadok">
+        <label class="sr" for="od-q">Názov zastávky</label>
+        <input id="od-q" type="search" autocomplete="off" placeholder={m.slug === 'bratislava' ? 'Zastávka, napr. Hodžovo nám.' : 'Zastávka, napr. Masarykova'} aria-describedby="od-q-pozn" aria-controls="od-navrhy" />
+        <button type="button" class="od-primne" id="od-primne">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="7"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/></svg>
+          Pri mne
+        </button>
+      </div>
+      <p class="od-pozn" id="od-q-pozn">Polohu používame len vo vašom prehliadači a nikam ju neposielame.</p>
+      <ul class="od-navrhy" id="od-navrhy" aria-label="Nájdené zastávky"></ul>
+      <p id="od-stav" class="od-stav" role="status" aria-live="polite"></p>
+    </section>
+
+    <div id="od-upoz" class="od-upoz" hidden></div>
+    <section id="od-oblubene-obal" hidden>
+      <h2 class="od-nadpis">Obľúbené zastávky</h2>
+      <div class="od-karty" id="od-oblubene"></div>
+    </section>
+    <section id="od-vysledky-obal" hidden>
+      <h2 class="od-nadpis" id="od-vysledky-nadpis">Zastávky</h2>
+      <div class="od-karty" id="od-vysledky"></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>Dobré vedieť</h2>
+    <ul class="od-info">
+      <li>Časy sú <strong>podľa cestovného poriadku</strong> – meškania, výluky a obchádzky nezohľadňujeme. Aktuálne obmedzenia hlási dopravca.</li>
+      <li>Zastávka zahŕňa všetky jej nástupištia – smer spoja je uvedený pri každom odchode.</li>
+      <li>Hviezdičkou si zastávku pridáte medzi obľúbené – uloží sa len vo vašom prehliadači a pri ďalšej návšteve ju uvidíte hneď.</li>
+      <li>Cestovný poriadok platí {datum(d.platnost[0])} – {datum(d.platnost[1])}; obnovujeme ho denne.</li>
+    </ul>
+    <p class="pozn">Zdroj: <a href={d.zdroj.url}>{d.zdroj.nazov}</a>, licencia {d.zdroj.licencia}. Najbližšie lekárne, školy a ďalšie miesta pri vašej adrese nájdete v <a href={`/${m.slug}/adresa`}>Moja adresa</a>.</p>
+  </section>
+</Base>
+
+<script>
+  import { nacitajIndex, nacitajZastavku, dalsie, zoznam, znacka, vzdialenost, hx, type Index } from '../../scripts/odchody';
+  const obal = document.getElementById('odchody')!;
+  const slug = obal.dataset.slug!;
+  const KLUC = `odchody-oblubene-${slug}`;
+  const q = document.getElementById('od-q') as HTMLInputElement;
+  const navrhy = document.getElementById('od-navrhy')!, stav = document.getElementById('od-stav')!;
+  const citajObl = (): string[] => { try { return JSON.parse(localStorage.getItem(KLUC) || '[]'); } catch { return []; } };
+  const zapisObl = (x: string[]) => { try { localStorage.setItem(KLUC, JSON.stringify(x)); } catch { /* bez úložiska */ } };
+  const bez = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  let ix: Index;
+  let vysledky: { id: string; m?: number }[] = [];
+  const rozbalene = new Set<string>();
+
+  async function karta(id: string, m?: number) {
+    const z = ix.zastavky.find((x) => x.id === id);
+    if (!z) return '';
+    let telo = '<p class="od-nic">Načítavam…</p>';
+    let nahr = false;
+    try {
+      const zd = await nacitajZastavku(slug, id);
+      const o = dalsie(ix, zd, rozbalene.has(id) ? 30 : 8);
+      nahr = o.some((x) => x.nahradny);
+      telo = zoznam(ix, o) + (rozbalene.has(id) ? '' : `<button type="button" class="od-viac" data-viac="${hx(id)}">Ďalšie odchody</button>`);
+    } catch { telo = '<p class="od-nic">Odchody sa nepodarilo načítať.</p>'; }
+    if (nahr) zobrazUpoz();
+    const obl = citajObl().includes(id);
+    return `<article class="od-karta card" id="z-${hx(id)}">
+      <div class="od-hlava"><h3><a href="#${hx(id)}">${hx(z.n)}</a>${m != null ? `<small>${m < 950 ? `${Math.round(m / 10) * 10} m` : `${(m / 1000).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} km`}</small>` : ''}</h3>
+        <button type="button" class="od-hviezda" data-obl="${hx(id)}" aria-pressed="${obl}" aria-label="${obl ? 'Odobrať z obľúbených' : 'Pridať medzi obľúbené'}: ${hx(z.n)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></button></div>
+      <p class="od-linky">${poradieLiniek(z.l).map((l) => znacka(ix, l)).join('')}</p>
+      ${telo}</article>`;
+  }
+
+  // električky, trolejbusy, autobusy; nočné na koniec; čísla číselne
+  const DRUH: Record<string, number> = { električka: 0, trolejbus: 1, autobus: 2 };
+  const poradieLiniek = (l: number[]) => l.slice().sort((a, b) => {
+    const [na, da] = ix.linky[a], [nb, db] = ix.linky[b];
+    const noc = (n: string) => Number(/^N/i.test(n));
+    return noc(na) - noc(nb) || (DRUH[da] ?? 3) - (DRUH[db] ?? 3) || na.localeCompare(nb, 'sk', { numeric: true });
+  });
+
+  let upozZobrazene = false;
+  function zobrazUpoz() {
+    if (upozZobrazene) return;
+    upozZobrazene = true;
+    const el = document.getElementById('od-upoz')!;
+    const [od, doo] = ix.platnost.map((s) => new Date(s).toLocaleDateString('sk-SK'));
+    el.innerHTML = `<p>Dopravca zverejnil cestovný poriadok platný od ${od} do ${doo}. Pre dni mimo tohto obdobia ukazujeme bežné spoje pre rovnaký deň v týždni – skutočný poriadok sa môže líšiť.</p>`;
+    el.hidden = false;
+  }
+
+  async function vykresli() {
+    // po prekreslení vrátiť fokus na rovnaké tlačidlo (klávesnica, čítačky obrazovky)
+    const a = document.activeElement as HTMLElement | null;
+    const fokus = a?.dataset.obl ? `[data-obl="${CSS.escape(a.dataset.obl)}"]` : null;
+    await vykresliKarty();
+    if (fokus) document.querySelector<HTMLElement>(fokus)?.focus();
+  }
+  async function vykresliKarty() {
+    const obl = citajObl();
+    const oblObal = document.getElementById('od-oblubene-obal')!;
+    oblObal.hidden = !obl.length;
+    if (obl.length) document.getElementById('od-oblubene')!.innerHTML = (await Promise.all(obl.map((id) => karta(id)))).join('');
+    const vObal = document.getElementById('od-vysledky-obal')!;
+    const v = vysledky.filter((x) => !obl.includes(x.id));
+    vObal.hidden = !v.length;
+    if (v.length) document.getElementById('od-vysledky')!.innerHTML = (await Promise.all(v.map((x) => karta(x.id, x.m)))).join('');
+  }
+
+  function navrhni() {
+    const t = bez(q.value.trim());
+    if (t.length < 2) { navrhy.innerHTML = ''; return; }
+    const zhody = ix.zastavky.filter((z) => bez(z.n).includes(t)).sort((a, b) => Number(!bez(a.n).startsWith(t)) - Number(!bez(b.n).startsWith(t)) || a.n.localeCompare(b.n, 'sk')).slice(0, 8);
+    navrhy.innerHTML = zhody.length
+      ? zhody.map((z) => `<li><button type="button" data-id="${hx(z.id)}">${hx(z.n)}</button></li>`).join('')
+      : '<li class="od-nic">Takú zastávku sme nenašli.</li>';
+  }
+
+  async function vyber(id: string) {
+    vysledky = [{ id }];
+    navrhy.innerHTML = '';
+    document.getElementById('od-vysledky-nadpis')!.textContent = 'Zastávka';
+    history.replaceState(null, '', `#${id}`);
+    await vykresli();
+    document.getElementById(`z-${id}`)?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  nacitajIndex(slug).then(async (x) => {
+    ix = x;
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (h && ix.zastavky.some((z) => z.id === h)) await vyber(h);
+    else await vykresli();
+    q.addEventListener('input', navrhni);
+    addEventListener('hashchange', () => { const id = decodeURIComponent(location.hash.slice(1)); if (ix.zastavky.some((z) => z.id === id)) vyber(id); });
+    q.addEventListener('keydown', (e) => { if (e.key === 'Enter') { const b = navrhy.querySelector<HTMLButtonElement>('button[data-id]'); if (b) { e.preventDefault(); vyber(b.dataset.id!); } } });
+    // obnovenie každých 30 s, keď je stránka viditeľná
+    setInterval(() => { if (document.visibilityState === 'visible') vykresli(); }, 30000);
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') vykresli(); });
+  }).catch(() => { stav.textContent = 'Cestovný poriadok sa nepodarilo načítať. Skúste to znova neskôr.'; });
+
+  navrhy.addEventListener('click', (e) => { const b = (e.target as Element).closest<HTMLButtonElement>('button[data-id]'); if (b) vyber(b.dataset.id!); });
+  obal.addEventListener('click', (e) => {
+    const t = e.target as Element;
+    const h = t.closest<HTMLButtonElement>('[data-obl]');
+    if (h) {
+      const id = h.dataset.obl!, o = citajObl();
+      zapisObl(o.includes(id) ? o.filter((x) => x !== id) : [...o, id]);
+      if (!vysledky.some((x) => x.id === id)) vysledky.unshift({ id });
+      vykresli();
+      return;
+    }
+    const v = t.closest<HTMLButtonElement>('[data-viac]');
+    if (v) { rozbalene.add(v.dataset.viac!); vykresli(); }
+  });
+
+  document.getElementById('od-primne')!.addEventListener('click', () => {
+    if (!navigator.geolocation) { stav.textContent = 'Prehliadač neposkytuje polohu.'; return; }
+    stav.textContent = 'Zisťujem polohu…';
+    navigator.geolocation.getCurrentPosition(async (p) => {
+      const { latitude: la, longitude: lo } = p.coords;
+      const n = ix.zastavky.map((z) => ({ id: z.id, m: vzdialenost(la, lo, z.lat, z.lon) })).sort((a, b) => a.m - b.m);
+      if (n[0].m > 20000) { stav.textContent = 'Ste ďaleko od mesta – zastávky hľadajte podľa názvu.'; return; }
+      vysledky = n.slice(0, 4);
+      stav.textContent = '';
+      document.getElementById('od-vysledky-nadpis')!.textContent = 'Zastávky pri vás';
+      history.replaceState(null, '', location.pathname);
+      await vykresli();
+      document.getElementById('od-vysledky-obal')!.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    }, () => { stav.textContent = 'Polohu sa nepodarilo zistiť – povoľte ju v prehliadači alebo hľadajte podľa názvu.'; }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
+  });
+</script>
+
+<style>
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .od-riadok { display: flex; gap: 8px; flex-wrap: wrap; }
+  .od-riadok input { flex: 1 1 220px; min-width: 0; height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font: inherit; font-size: 1rem; }
+  .od-primne { display: inline-flex; align-items: center; gap: 6px; height: 46px; padding: 0 16px; border-radius: 12px; border: 0; background: var(--accent); color: var(--na-akcente, #fff); font: inherit; font-weight: 700; cursor: pointer; }
+  .od-primne svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+  .od-pozn, .pozn { font-size: 0.82rem; color: var(--muted); }
+  .od-pozn { margin: 8px 0 0; }
+  .od-navrhy { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .od-navrhy :global(button) { padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; cursor: pointer; }
+  .od-navrhy :global(button:hover), .od-navrhy :global(button:focus-visible) { border-color: var(--accent); }
+  .od-stav:empty { display: none; }
+  .od-upoz { margin-top: 16px; }
+  .od-upoz :global(p) { margin: 0; padding: 12px 16px; border-radius: 12px; background: color-mix(in srgb, #f59e0b 12%, var(--card)); border: 1px solid color-mix(in srgb, #f59e0b 40%, var(--line)); font-size: 0.9rem; }
+  .od-nadpis { font-size: 1.2rem; margin: 24px 0 0; }
+  .od-karty { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; align-items: start; }
+  .od-karty :global(.od-karta) { margin-top: 12px; scroll-margin-top: calc(var(--vyska-hlavicky, 120px) + 12px); }
+  .od-karty :global(.od-hlava) { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .od-karty :global(.od-hlava h3) { margin: 0; font-size: 1.15rem; }
+  .od-karty :global(.od-hlava h3 a) { color: var(--text); text-decoration: none; }
+  .od-karty :global(.od-hlava small) { display: block; font-weight: 400; font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+  .od-karty :global(.od-hviezda) { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--muted); cursor: pointer; display: grid; place-items: center; }
+  .od-karty :global(.od-hviezda svg) { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+  .od-karty :global(.od-hviezda[aria-pressed='true']) { color: #d97706; }
+  .od-karty :global(.od-hviezda[aria-pressed='true'] svg) { fill: currentColor; }
+  .od-karty :global(.od-linky) { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 10px; }
+  .od :global(.od-viac) { margin-top: 8px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-size: 0.88rem; cursor: pointer; width: 100%; }
+  .od-info { margin: 0; padding-left: 1.2em; }
+  .od-info li { margin: 4px 0; }
+  @media (max-width: 600px) { .od-karty { grid-template-columns: 1fr; } }
+</style>

@@ -6,6 +6,7 @@ import path from 'node:path';
 import { maMapu, maSamospravu } from '../../lib/mapa';
 import { maZivot } from '../../lib/temy';
 import { castiMesta } from '../../lib/casti-mesta';
+import { odchody } from '../../lib/odchody';
 
 const nacitaj = (subor: string, verejne = false) => {
   const p = path.join(process.cwd(), verejne ? 'public/data' : 'data', subor);
@@ -87,6 +88,11 @@ export async function GET() {
     polozky.push(['Stránky', `Mestské zastupiteľstvo – ${m.nazov}`, 'poslanci, strany, kto obhájil mandát', `/${m.slug}/zastupitelstvo`, `poslanci zastupiteľstvo primátor zvolení strany kluby ${m.v}`]);
     polozky.push(['Stránky', `Školy – ${m.nazov}`, 'základné, materské a stredné školy, žiaci, záujem o SŠ', `/${m.slug}/skoly`, `škola škôlka gymnázium stredná prijímačky žiaci učitelia ${m.v}`]);
     if (m.slug === 'bratislava' || m.slug === 'kosice' || castiOsm[m.slug]) polozky.push(['Stránky', `Ktorá štvrť je pre mňa – ${m.nazov}`, 'porovnanie štvrtí podľa toho, čo potrebujete blízko', `/${m.slug}/stvrte`, `štvrť sídlisko kde bývať presťahovať mestská časť porovnanie ${m.v}`]);
+    const od = odchody(m.slug);
+    if (od) {
+      polozky.push(['Stránky', `Odchody MHD – ${m.nazov}`, 'najbližšie spoje zo zastávky, zastávky pri mne', `/${m.slug}/odchody`, `mhd odchody cestovný poriadok električka trolejbus autobus spoj zastávka ${m.v}`]);
+      for (const z of od.zastavky) polozky.push(['Zastávky MHD', z.n, `odchody · ${m.nazov}`, `/${m.slug}/odchody#${z.id}`, 'zastávka mhd odchody']);
+    }
     const cm = m.slug !== 'bratislava' ? castiMesta(m.slug) : null;
     if (cm) {
       polozky.push(['Stránky', `Mestské časti – ${m.nazov}`, `${cm.pocet} častí: obyvatelia, vek, voľby, dostupnosť, mapa`, `/${m.slug}/mestske-casti`, `mestská časť mč sídlisko profil ${m.v}`]);

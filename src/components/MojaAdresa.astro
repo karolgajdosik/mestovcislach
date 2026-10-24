@@ -3,11 +3,13 @@
 // spádovú ZŠ a zvolených zástupcov (Bratislava), stavebné zámery v MČ a najbližšiu stanicu merania ovzdušia.
 // Adresa sa vyhľadá cez Nominatim (OpenStreetMap); ostatné sa počíta v prehliadači z verejných dát webu.
 import { MESTA } from '../mesta';
+import { maOdchody } from '../lib/odchody';
+import '../styles/odchody.css';
 const { mesto } = Astro.props as { mesto: { slug: string; nazov: string; v?: string } };
 // stredy všetkých miest – keď adresa leží inde, ponúkne sa správne mesto
 const vsetky = MESTA.filter((m) => m.aktivne).map((m) => [m.slug, m.nazov, (m as any).stred]);
 ---
-<section class="adresa" id="adresa" data-slug={mesto.slug} data-mesto={mesto.nazov} data-mesta={JSON.stringify(vsetky)}>
+<section class="adresa" id="adresa" data-slug={mesto.slug} data-odchody={maOdchody(mesto.slug) ? '1' : undefined} data-mesto={mesto.nazov} data-mesta={JSON.stringify(vsetky)}>
   <form class="ad-form" id="ad-form" role="search">
     <label for="ad-q">Ulica a číslo domu</label>
     <div class="ad-riadok">
@@ -26,6 +28,7 @@ const vsetky = MESTA.filter((m) => m.aktivne).map((m) => [m.slug, m.nazov, (m as
 </section>
 
 <script>
+  import { nacitajIndex, nacitajZastavku, dalsie, zoznam, vzdialenost as vzd } from '../scripts/odchody';
   type Bod = [number, number, string, string?];
   const obal = document.getElementById('adresa')!;
   const slug = obal.dataset.slug!, nazovMesta = obal.dataset.mesto!;
@@ -88,6 +91,8 @@ const vsetky = MESTA.filter((m) => m.aktivne).map((m) => [m.slug, m.nazov, (m as
       bloky.push(`<h3>Práve sa posudzuje v MČ</h3><p class="ad-velke">${eia.length} ${eia.length === 1 ? 'zámer' : eia.length < 5 ? 'zámery' : 'zámerov'}</p><ul class="ad-zoznam">`
         + eia.slice(0, 4).map((z: any) => `<li>${hx(z.nazov)} <small>${hx(z.stav)}</small></li>`).join('') + `</ul><p class="ad-mala"><a href="/bratislava/vystavba">Všetky zámery na mape</a></p>`);
     }
+    // najbližšie odchody MHD (Bratislava, Prešov – cestovné poriadky GTFS)
+    if (obal.dataset.odchody) bloky.unshift('<div id="ad-mhd" class="od"><h3>Najbližšie odchody MHD</h3><p class="ad-mala">Načítavam…</p></div>');
     // ovzdušie – najbližšia stanica SHMÚ
     bloky.push('<div id="ad-ovz"><h3>Ovzdušie teraz</h3><p class="ad-mala">Načítavam…</p></div>');
 
@@ -102,6 +107,15 @@ const vsetky = MESTA.filter((m) => m.aktivne).map((m) => [m.slug, m.nazov, (m as
     vysl.hidden = false;
     stav.textContent = '';
     vysl.querySelector('.ad-miesto')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    if (obal.dataset.odchody) nacitajIndex(slug).then(async (ix) => {
+      const el = document.getElementById('ad-mhd');
+      const z = ix.zastavky.map((x) => ({ x, m: vzd(lat, lon, x.lat, x.lon) })).sort((a, b) => a.m - b.m)[0];
+      if (!el) return;
+      if (!z || z.m > 1500) { el.innerHTML = '<h3>Najbližšie odchody MHD</h3><p class="ad-mala">V okolí 1,5 km nie je zastávka MHD.</p>'; return; }
+      const o = dalsie(ix, await nacitajZastavku(slug, z.x.id), 5);
+      el.innerHTML = `<h3>Najbližšie odchody MHD</h3><p class="ad-velke">${hx(z.x.n)}</p><p class="ad-mala">${km(z.m)}${pesi(z.m)}</p>${zoznam(ix, o)}`
+        + `<p class="ad-mala">${o.some((x) => x.nahradny) ? 'Podľa bežného poriadku pre tento deň v týždni. ' : 'Podľa cestovného poriadku. '}<a href="/${slug}/odchody#${encodeURIComponent(z.x.id)}">Všetky odchody a ďalšie zastávky</a></p>`;
+    }).catch(() => { const el = document.getElementById('ad-mhd'); if (el) el.innerHTML = '<h3>Najbližšie odchody MHD</h3><p class="ad-mala">Cestovný poriadok sa nepodarilo načítať.</p>'; });
     fetch(`/api/ovzdusie?mesto=${slug}`).then((r) => (r.ok ? r.json() : Promise.reject())).then((o) => {
       const s = (o.stanice ?? []).filter((x: any) => x.lat && x.lon).map((x: any) => ({ x, m: vzdialenost(lat, lon, x.lat, x.lon) })).sort((a: any, b: any) => a.m - b.m)[0];
       const el = document.getElementById('ad-ovz');

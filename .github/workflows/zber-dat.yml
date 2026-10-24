@@ -11,6 +11,7 @@ on:
       - "scripts/zber_volby.py"
       - "scripts/zber_data_bratislava.py"
       - "scripts/zber_doprava.py"
+      - "scripts/zber_odchody.py"
       - "scripts/zber_scitace.py"
       - "scripts/zber_rajonizacia.py"
       - "scripts/spolocne.py"
@@ -53,6 +54,10 @@ jobs:
       - name: MHD z cestovných poriadkov (GTFS)
         if: success() || failure()
         run: python scripts/zber_doprava.py
+
+      - name: Odchody MHD zo zastávok (GTFS Bratislava, Prešov)
+        if: success() || failure()
+        run: python scripts/zber_odchody.py
 
       - name: Dopravné sčítače (data.bratislava.sk)
         if: success() || failure()

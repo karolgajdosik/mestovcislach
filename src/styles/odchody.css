@@ -1,0 +1,8 @@
+/* Zoznam odchodov MHD (stránka Odchody MHD aj Moja adresa) – obsah sa vkladá skriptom, preto globálne štýly. */
+.od .linka { display: inline-grid; place-items: center; min-width: 2.2em; height: 1.6em; padding: 0 5px; border-radius: 6px; background: var(--lb); color: var(--lf); font-weight: 800; font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+.od .od-zoznam { list-style: none; margin: 0; padding: 0; }
+.od .od-zoznam li { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); }
+.od .od-smer { min-width: 0; overflow-wrap: anywhere; }
+.od .od-cas { text-align: right; font-variant-numeric: tabular-nums; }
+.od .od-cas small { display: block; color: var(--muted); font-size: 0.75rem; }
+.od .od-nic { color: var(--muted); font-size: 0.9rem; }
