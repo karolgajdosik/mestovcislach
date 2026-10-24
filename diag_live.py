@@ -1,9 +1,11 @@
-import requests
-H={"User-Agent":"Mozilla/5.0"}
-for c in ["nrsr/2023/NRSR2023_SK","eup/2024/EP2024_SK"]:
-    for t in ["tab02d","tab03e","tab01"]:
-        u=f"https://web.archive.org/web/2025id_/https://volby.statistics.sk/opendata/{c}_{t}.csv"
-        try:
-            r=requests.get(u,headers=H,timeout=120); print(u, r.status_code, len(r.content), r.content[:80])
-        except Exception as e: print(u,"ERR",e)
+import requests, time, re
+H={"User-Agent":"Mozilla/5.0 (mestovcislach diag)"}
+for i in range(30):
+    r=requests.get("https://mestovcislach.sk/kosice/mestske-casti/",headers=H,timeout=30)
+    if r.status_code==200: break
+    time.sleep(30)
+print("prehľad", r.status_code, "22 mestských" in r.text)
+for u in ["/kosice/mestske-casti/juh/","/kosice/mestske-casti/lunik-ix/","/kosice/","/data/hladanie.json","/sukromie/"]:
+    r=requests.get("https://mestovcislach.sk"+u,headers=H,timeout=30)
+    print(u, r.status_code, len(r.text), ("mestske-casti/juh" in r.text) if u in ("/kosice/","/data/hladanie.json") else "", ("service worker" in r.text) if u=="/sukromie/" else "")
 print("HOTOVO")
