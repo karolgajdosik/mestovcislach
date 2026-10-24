@@ -3,5 +3,6 @@ User-agent: *
 Allow: /
 # API (asistent, živé údaje) nie sú stránky na indexovanie
 Disallow: /api/
+Disallow: /offline/
 
 Sitemap: https://mestovcislach.sk/sitemap.xml

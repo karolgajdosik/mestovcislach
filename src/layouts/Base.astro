@@ -100,6 +100,9 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="mestovčíslach" />
     {!Astro.url.pathname.startsWith('/404') && <link rel="canonical" href={adresa} />}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="mestovčíslach.sk" />
@@ -247,6 +250,11 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
 <script>
   import { grafyNaVlozenie } from '../scripts/vlozit';
   grafyNaVlozenie();
+
+  // inštalácia ako aplikácia a stránky aj bez internetu (public/sw.js) – nie v náhľade a vo vloženom grafe
+  if ('serviceWorker' in navigator && location.hostname === 'mestovcislach.sk' && !document.documentElement.hasAttribute('data-vlozit')) {
+    addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+  }
 
   // dolná lišta na mobile: celoobrazovkové menu a otvorenie asistenta
   {

@@ -1,0 +1,13 @@
+---
+// Zobrazí sa, keď je zariadenie bez internetu a stránka ešte nie je uložená (public/sw.js).
+import Base from '../layouts/Base.astro';
+import '../styles/stranka.css';
+---
+<Base title="Ste offline – mestovcislach.sk" description="Stránka nie je dostupná bez internetu.">
+  <section class="hero">
+    <p class="kicker">Bez pripojenia</p>
+    <h1>Ste offline</h1>
+    <p class="lead">Táto stránka ešte nie je uložená v zariadení. Stránky, ktoré ste už otvorili, fungujú aj bez internetu – skúste sa vrátiť, alebo počkajte na pripojenie.</p>
+    <p><a href="/">Úvod</a></p>
+  </section>
+</Base>
