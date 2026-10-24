@@ -1,7 +1,13 @@
-import os, subprocess, shutil
-os.makedirs("diag", exist_ok=True); os.makedirs("data/mesta", exist_ok=True)
-subprocess.run(["pip","install","-q","-r","scripts/requirements.txt"])
-r=subprocess.run(["python","scripts/zber_skoly_mesta.py"],capture_output=True,text=True)
-print(r.stdout[-4000:]); print(r.stderr[-3000:])
-if os.path.exists("data/mesta/skoly.json"): shutil.copy("data/mesta/skoly.json","diag/skoly.json")
+import time, urllib.request
+UA={"User-Agent":"mestovcislach.sk diag"}
+def get(u):
+    try:
+        r=urllib.request.urlopen(urllib.request.Request(u+("&" if "?" in u else "?")+"v=%d"%time.time(),headers=UA),timeout=30); return r.status, r.read().decode()
+    except Exception as e: return getattr(e,"code",0), ""
+for i in range(30):
+    s,h=get("https://mestovcislach.sk/zilina/stvrte")
+    if s==200: break
+    time.sleep(20)
+for u in ["/zilina/stvrte","/bratislava/stvrte","/kosice/skoly","/trencin/zastupitelstvo","/bratislava/dane","/presov/novinky","/presov/novinky.xml","/nitra/kviz","/data/hladanie.json"]:
+    s,h=get("https://mestovcislach.sk"+u); print(u, s, len(h))
 print("HOTOVO")
