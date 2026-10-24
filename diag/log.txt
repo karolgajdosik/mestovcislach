@@ -1,10 +1,7 @@
-https://statdata.statistics.sk/public/api/dc/opendata/cube/dataset/om7803rr/download?type=CSV&lang=SK 301 https://volby.test-env.sk/public/api/dc/opendata/cube/dataset/om7803rr/download?type=CSV&lang=SK text/html 162
-https://data.statistics.sk/api/v2/collection?lang=sk ERR HTTPSConnectionPool(host='data.statistics.sk', port=443): Max retries exceeded with url: /api/v2/collection?lang=sk (Caused by ConnectTimeoutError(<HTTPSConnection(host='data.statistics.sk', port=443) at 0x70119fcd2850>, 'Connection to data.statistics.sk timed out. (connect timeout=60)'))
-https://volby.statistics.sk/opendata/nrsr/2023/NRSR2023_SK_tab02d.csv 404 None text/html; charset=iso-8859-1 239
-https://volby.statistics.sk/nrsr/nrsr2023/ 404 None text/html; charset=iso-8859-1 212
-https://volbysr.sk/ 200 None text/html 595
-[]
-https://volbysr.sk/nrsr2023/ 404 None text/html 146
-https://volby.statistics.sk/ 200 None text/html; charset=UTF-8 64
-[]
+https://web.archive.org/web/2025id_/https://volby.statistics.sk/opendata/nrsr/2023/NRSR2023_SK_tab02d.csv 404 4678 b'<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <title>Wayback Machine</title>\n   '
+https://web.archive.org/web/2025id_/https://volby.statistics.sk/opendata/nrsr/2023/NRSR2023_SK_tab03e.csv 404 4678 b'<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <title>Wayback Machine</title>\n   '
+https://web.archive.org/web/2025id_/https://volby.statistics.sk/opendata/nrsr/2023/NRSR2023_SK_tab01.csv 200 405 b'Po\xc4\x8det volebn\xc3\xbdch okrskov,Po\xc4\x8det potvrden\xc3\xbdch okrskov\xc3\xbdch z\xc3\xa1pisn\xc3\xadc,Podiel potv'
+https://web.archive.org/web/2025id_/https://volby.statistics.sk/opendata/eup/2024/EP2024_SK_tab02d.csv 404 4673 b'<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <title>Wayback Machine</title>\n   '
+https://web.archive.org/web/2025id_/https://volby.statistics.sk/opendata/eup/2024/EP2024_SK_tab03e.csv 404 4673 b'<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <title>Wayback Machine</title>\n   '
+https://web.archive.org/web/2025id_/https://volby.statistics.sk/opendata/eup/2024/EP2024_SK_tab01.csv 404 4672 b'<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <title>Wayback Machine</title>\n   '
 HOTOVO
