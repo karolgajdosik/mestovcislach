@@ -52,6 +52,7 @@ const NOVE: [string, string, string, boolean][] = [
   ['mestske-casti', 'Mestské časti', '<path d="M4 4.5h7v7H4zM13 4.5h7v4.5h-7zM13 11h7v8.5h-7zM4 13.5h7v6H4z"/>', !mesto.plne && mesto.slug === 'kosice'], // profily častí (src/lib/casti-mesta.ts)
   ['stvrte', 'Ktorá štvrť', '<path d="M3 20.5V11l5-3.5 5 3.5v9.5M13 20.5V7.5l4-3 4 3v13M2 20.5h20"/><path d="M6.5 14h3M15.5 11h3M15.5 14.5h3"/>', mesto.slug === 'bratislava' || mesto.slug === 'kosice' || castiOsm.includes(mesto.slug)],
   ['dane', 'Kam idú dane', '<circle cx="12" cy="12" r="8.5"/><path d="M15 8.6a4 4 0 1 0 0 6.8M7 10.8h6M7 13.2h6"/>', true],
+  ['pribeh', '10 rokov v číslach', '<path d="M4 20V10M9.5 20V4M15 20v-7M20.5 20V8"/>', true],
   ['kviz', 'Kvíz', '<circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.6M12 16.8v.2"/>', true],
 ];
 const NASTROJE: [string, string, string][] = ['kviz', 'stvrte', 'dane', 'skoly', 'zastupitelstvo', 'novinky'].map((k) => { const x = NOVE.find((n) => n[0] === k)!; return [k, k === 'stvrte' ? 'Ktorá štvrť je pre mňa' : k === 'dane' ? 'Kam idú moje dane' : x[1], x[2]]; });

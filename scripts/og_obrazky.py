@@ -84,6 +84,7 @@ SEKCIE_MIEST = {
     "stvrte": ("Ktorá štvrť je pre mňa {v}", "Porovnajte štvrte podľa toho, čo potrebujete mať blízko – MHD, lekáreň, škola, škôlka"),
     "dane": ("Kam idú moje dane {v}", "Kalkulačka: koľko z vašich daní dostane mesto a na čo ich míňa"),
     "odchody": ("Odchody MHD {v}", "Kedy ide najbližšia električka, trolejbus či autobus – podľa cestovného poriadku, aj zo zastávok pri vás"),
+    "pribeh": ("{nazov} za 10 rokov v číslach", "Obyvatelia, nové byty, ceny bytov, autá, školy a voľby – krátky príbeh na ťukanie"),
     "dosah": ("Kam sa dostanem MHD {v}", "Mapa: kam sa dostanete mestskou dopravou zo zastávky za 15, 30, 45 a 60 minút – aj s prestupmi"),
     "mestske-casti": ("Mestské časti {v}", "Obyvatelia, vek, voľby a dostupnosť služieb v každej mestskej časti"),
     "novinky": ("Čo je nové {v}", "Nové stavby, väčšie zmluvy mesta a zasadnutia zastupiteľstva – aj ako RSS"),

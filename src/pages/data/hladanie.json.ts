@@ -101,6 +101,7 @@ export async function GET() {
       for (const c of cm.casti) polozky.push(['Mestské časti', `${c.n} (${m.nazov})`, 'profil: ľudia, voľby, dostupnosť služieb', `/${m.slug}/mestske-casti/${c.slug}`, `mestská časť mč ${m.nazov.toLowerCase()}`]);
     }
     polozky.push(['Stránky', `Kam idú moje dane – ${m.nazov}`, 'kalkulačka: koľko z daní dostane mesto a na čo ich míňa', `/${m.slug}/dane`, `dane daň z nehnuteľnosti poplatok odpad rozpočet kalkulačka ${m.v}`]);
+    polozky.push(['Stránky', `${m.nazov} za 10 rokov v číslach`, 'krátky príbeh: obyvatelia, byty, ceny, autá, školy, voľby', `/${m.slug}/pribeh`, `príbeh story 10 rokov vývoj vtedy a teraz zmena ${m.v}`]);
     polozky.push(['Stránky', `Kvíz: Poznáš svoje mesto? – ${m.nazov}`, '10 otázok z dát o meste', `/${m.slug}/kviz`, `kvíz test otázky hra ${m.v}`]);
   }
   polozky.push(['Stránky', 'Porovnaj dve mestá – kde by som chcel bývať', 'dve mestá vedľa seba, skóre a obrázok na zdieľanie', '/porovnaj', 'porovnaj porovnanie dve mestá kde bývať súboj vs']);

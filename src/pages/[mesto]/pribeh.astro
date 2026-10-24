@@ -1,0 +1,184 @@
+---
+// „Desať rokov mesta v číslach“: krátky príbeh na ťukanie (ako story) – vtedy a teraz z dát webu.
+// Snímky sa skladajú pri builde (data/mesta/<mesto>.json, temy.json – Urban Audit, školy), chýbajúce údaje sa vynechajú.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../../layouts/Base.astro';
+import { MESTA, type Mesto } from '../../mesta';
+import { foto } from '../../lib/fotky';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: Mesto };
+const citaj = (...p: string[]) => { const f = path.join(process.cwd(), ...p); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf-8')) : null; };
+const d = citaj('data', 'mesta', `${m.slug}.json`) ?? {};
+const temy = citaj('data', 'mesta', 'temy.json');
+const tis = (n: number) => Math.round(n).toLocaleString('sk-SK');
+const des = (n: number, k = 1) => n.toLocaleString('sk-SK', { minimumFractionDigits: k, maximumFractionDigits: k });
+const zmena = (a: number, b: number) => { const z = (100 * (b - a)) / a; return `${z > 0 ? '+' : z < 0 ? '−' : ''}${des(Math.abs(z))} %`; };
+type Snimka = { kicker: string; velke: string; text: string; stlpce?: [string, number][]; farba: string };
+const S: Snimka[] = [];
+const FARBY = ['#c8102e', '#1d4ed8', '#047857', '#7c3aed', '#b45309', '#0e7490', '#be185d', '#4d7c0f'];
+const farba = () => FARBY[S.length % FARBY.length];
+
+// obyvatelia
+const roky = d.obyvatelia?.roky ?? {};
+const posl = Object.keys(roky).sort().pop();
+const pred = posl ? String(Number(posl) - 10) : null;
+const od = pred && roky[pred] ? pred : null;
+if (posl && od) S.push({ kicker: `Obyvatelia ${od} → ${posl}`, velke: `${tis(roky[od])} → ${tis(roky[posl])}`, text: `${m.nazov} má o ${tis(Math.abs(roky[posl] - roky[od]))} obyvateľov ${roky[posl] >= roky[od] ? 'viac' : 'menej'} ako pred desiatimi rokmi (${zmena(roky[od], roky[posl])}).${roky['2021'] && roky['2020'] && Math.abs(roky['2021'] / roky['2020'] - 1) > 0.012 ? ' Časť poklesu je spresnenie zo sčítania 2021.' : ''}`, stlpce: Object.keys(roky).sort().filter((r) => r >= od).map((r) => [r.slice(2), roky[r]]), farba: farba() });
+
+// byty
+const byty = d.byty ?? {};
+const rb = Object.keys(byty).sort().filter((r) => byty[r]?.DOKONC_BYT != null).slice(-10);
+if (rb.length >= 5) {
+  const sum = rb.reduce((a, r) => a + byty[r].DOKONC_BYT, 0);
+  S.push({ kicker: `Nové byty ${rb[0]} – ${rb.at(-1)}`, velke: tis(sum), text: `Toľko bytov sa dokončilo za ${rb.length} rokov v ${(m as any).okresy?.length > 1 ? 'okresoch' : 'okrese'} mesta – v priemere ${tis(sum / rb.length)} ročne.`, stlpce: rb.map((r) => [r.slice(2), byty[r].DOKONC_BYT]), farba: farba() });
+}
+
+// Urban Audit – séria s vývojom
+const UA = temy?.mestske;
+const ua = (popis: string) => {
+  const k = Object.entries<string>(UA?.popisy ?? {}).find(([, p]) => p === popis)?.[0];
+  const rad = k ? UA.mesta?.[m.slug]?.[k] : null;
+  if (!rad) return null;
+  const r = Object.keys(rad).sort();
+  const z = r.find((x) => Number(x) >= Number(r.at(-1)) - 10) ?? r[0];
+  return { od: z, do: r.at(-1)!, a: rad[z], b: rad[r.at(-1)!], rad: r.filter((x) => x >= z).map((x) => [x.slice(2), rad[x]] as [string, number]) };
+};
+const cena = ua('Priemerná cena za kúpu bytu za m2');
+if (cena && cena.od !== cena.do) S.push({ kicker: `Cena bytu za m² ${cena.od} → ${cena.do}`, velke: `${tis(cena.a)} € → ${tis(cena.b)} €`, text: `Štvorcový meter bytu ${m.v} podražel o ${zmena(cena.a, cena.b).replace('+', '')}. Byt so 60 m² tak stojí o ${tis((cena.b - cena.a) * 60)} € ${cena.b >= cena.a ? 'viac' : 'menej'}.`, stlpce: cena.rad, farba: farba() });
+const auta = ua('Registrované súkromné osobné autá k 1.1. na 1000 obyvateľov');
+if (auta && auta.od !== auta.do) S.push({ kicker: `Autá na 1000 obyvateľov ${auta.od} → ${auta.do}`, velke: `${tis(auta.a)} → ${tis(auta.b)}`, text: `Na každých 1000 obyvateľov pripadá ${tis(auta.b)} osobných áut (${zmena(auta.a, auta.b)}).`, stlpce: auta.rad, farba: farba() });
+const cyklo = ua('Dĺžka cyklistickej siete');
+if (cyklo && cyklo.od !== cyklo.do && cyklo.b !== cyklo.a) S.push({ kicker: `Cyklotrasy ${cyklo.od} → ${cyklo.do}`, velke: `${des(cyklo.a, 0)} km → ${des(cyklo.b, 0)} km`, text: `Dĺžka siete cyklotrás ${cyklo.b > cyklo.a ? 'narástla' : 'sa zmenila'} o ${des(Math.abs(cyklo.b - cyklo.a), 0)} km.`, stlpce: cyklo.rad, farba: farba() });
+const odpad = ua('Množstvo komunálneho odpadu – kg na osobu');
+if (odpad && odpad.od !== odpad.do) S.push({ kicker: `Odpad na obyvateľa ${odpad.od} → ${odpad.do}`, velke: `${tis(odpad.a)} kg → ${tis(odpad.b)} kg`, text: `Každý obyvateľ vyprodukuje ročne ${tis(odpad.b)} kg komunálneho odpadu (${zmena(odpad.a, odpad.b)}).`, stlpce: odpad.rad, farba: farba() });
+
+// školy
+const zs = temy?.skoly?.[m.slug]?.zs;
+if (zs) {
+  const r = Object.keys(zs).sort(), b = r.at(-1)!, a = r.find((x) => Number(x) >= Number(b) - 10) ?? r[0];
+  if (zs[a]?.ziakov && zs[b]?.ziakov) S.push({ kicker: `Žiaci základných škôl ${a} → ${b}`, velke: `${tis(zs[a].ziakov)} → ${tis(zs[b].ziakov)}`, text: `Do základných škôl chodí ${zs[b].ziakov >= zs[a].ziakov ? 'o ' + tis(zs[b].ziakov - zs[a].ziakov) + ' detí viac' : 'o ' + tis(zs[a].ziakov - zs[b].ziakov) + ' detí menej'} ako pred desiatimi rokmi; škôl je ${zs[b].skol}.`, stlpce: r.filter((x) => x >= a).map((x) => [x.slice(2), zs[x].ziakov]), farba: farba() });
+}
+
+// voľby
+const kom = d.komunalne ?? {};
+const kr = Object.keys(kom).sort();
+const uc = kr.map((r) => [r, kom[r]?.ucast?.ucast_pct]).filter(([, v]) => v != null) as [string, number][];
+if (uc.length) S.push({ kicker: `Komunálne voľby ${uc.map(([r]) => r).join(' a ')}`, velke: uc.map(([, v]) => `${des(v)} %`).join(' → '), text: uc.length > 1 ? `Účasť vo voľbách do mesta ${uc.at(-1)![1] >= uc[0][1] ? 'stúpla' : 'klesla'}.` : `Toľko voličov prišlo voliť primátora a poslancov. Tento rok sa volilo 24. októbra.`, farba: farba() });
+
+const f = foto(m.slug);
+const ogPopis = `${m.nazov} za 10 rokov v číslach: obyvatelia, nové byty, ceny bytov, autá, školy a voľby – krátky príbeh na ťukanie.`;
+---
+<Base title={`${m.nazov} za 10 rokov v číslach – mestovcislach.sk`} description={ogPopis}>
+  <section class="pr" id="pribeh" aria-roledescription="príbeh" aria-label={`${m.nazov} za 10 rokov v číslach`}>
+    <div class="pr-pasy" aria-hidden="true">{[0, ...S.map((_, i) => i + 1), S.length + 1].map(() => <span><i></i></span>)}</div>
+    <div class="pr-snimky">
+      <article class="pr-snimka pr-uvod" style={f ? `--foto:url(${f.src})` : ''} aria-roledescription="snímka">
+        <p class="pr-kicker">mestovčíslach.sk</p>
+        <h1><span translate="no">{m.nazov}</span> za 10 rokov v číslach</h1>
+        <p>{S.length} vecí, ktoré sa zmenili. Ťuknite vpravo pre ďalšiu, vľavo pre predošlú.</p>
+      </article>
+      {S.map((s) => {
+        const max = Math.max(...(s.stlpce ?? []).map(([, v]) => v), 1), min = Math.min(...(s.stlpce ?? []).map(([, v]) => v));
+        const zaklad = min > max * 0.6 ? min * 0.9 : 0;
+        return (
+          <article class="pr-snimka" style={`--f:${s.farba}`} aria-roledescription="snímka" hidden>
+            <p class="pr-kicker">{s.kicker}</p>
+            <p class="pr-velke">{s.velke}</p>
+            <p class="pr-text">{s.text}</p>
+            {s.stlpce && s.stlpce.length > 2 && (
+              <div class="pr-graf" aria-hidden="true">{s.stlpce.map(([r, v]) => <span style={`--v:${(100 * (v - zaklad)) / (max - zaklad)}%`}><i></i><small>{r}</small></span>)}</div>
+            )}
+          </article>
+        );
+      })}
+      <article class="pr-snimka pr-koniec" aria-roledescription="snímka" hidden>
+        <p class="pr-kicker">Čo ďalej</p>
+        <p class="pr-velke">Poznáte svoje mesto?</p>
+        <div class="pr-dalej">
+          <button type="button" id="pr-share">Zdieľať príbeh</button>
+          <a href={`/${m.slug}/kviz`}>Zahrať si kvíz</a>
+          <a href={`/porovnaj?a=${m.slug}`}>Porovnať s iným mestom</a>
+          <a href={`/${m.slug}`}>Všetky čísla {m.v}</a>
+          <button type="button" id="pr-znova">Pozrieť znova</button>
+        </div>
+      </article>
+    </div>
+    <button type="button" class="pr-nav pr-spat" aria-label="Predošlá snímka"></button>
+    <button type="button" class="pr-nav pr-dalsia" aria-label="Ďalšia snímka"></button>
+    <p class="pr-poc" aria-live="polite" id="pr-poc"></p>
+  </section>
+  <p class="pozn">Zdroje: Štatistický úrad SR – DATAcube (obyvatelia, byty, školy), Urban Audit (ceny bytov, autá, cyklotrasy, odpad), voľby. Údaje o bytoch sú za okres(y) mesta. Rok údaja je pri každej snímke.</p>
+</Base>
+
+<script>
+  const pr = document.getElementById('pribeh')!;
+  const snimky = [...pr.querySelectorAll<HTMLElement>('.pr-snimka')];
+  const pasy = [...pr.querySelectorAll<HTMLElement>('.pr-pasy span')];
+  const poc = document.getElementById('pr-poc')!;
+  const pokojne = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const TRVANIE = 6500;
+  let i = 0, t: number | undefined, start = 0, zastavene = false, zostava = TRVANIE;
+  function ukaz(n: number) {
+    i = Math.max(0, Math.min(snimky.length - 1, n));
+    snimky.forEach((s, k) => (s.hidden = k !== i));
+    pasy.forEach((p, k) => { p.dataset.stav = k < i ? 'hotovo' : k === i ? 'teraz' : ''; p.style.setProperty('--t', `${TRVANIE}ms`); });
+    poc.textContent = `Snímka ${i + 1} z ${snimky.length}`;
+    zostava = TRVANIE;
+    spusti();
+  }
+  function spusti() {
+    clearTimeout(t);
+    if (pokojne || zastavene || i === snimky.length - 1) { pr.classList.toggle('stoji', true); return; }
+    pr.classList.remove('stoji');
+    start = Date.now();
+    t = window.setTimeout(() => ukaz(i + 1), zostava);
+  }
+  pr.querySelector('.pr-dalsia')!.addEventListener('click', () => ukaz(i + 1));
+  pr.querySelector('.pr-spat')!.addEventListener('click', () => ukaz(i - 1));
+  addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') ukaz(i + 1); if (e.key === 'ArrowLeft') ukaz(i - 1); if (e.key === ' ' && e.target === document.body) { e.preventDefault(); zastavene = !zastavene; if (zastavene) { clearTimeout(t); zostava -= Date.now() - start; pr.classList.add('stoji'); } else spusti(); } });
+  // podržanie prstu = pauza
+  pr.addEventListener('pointerdown', () => { clearTimeout(t); zostava -= Date.now() - start; pr.classList.add('stoji'); });
+  pr.addEventListener('pointerup', () => { if (!zastavene) spusti(); });
+  document.getElementById('pr-znova')!.addEventListener('click', () => ukaz(0));
+  document.getElementById('pr-share')!.addEventListener('click', async () => {
+    const text = `${document.title.split(' – ')[0]}`;
+    try { if (navigator.share) await navigator.share({ text, url: location.href }); else { await navigator.clipboard.writeText(location.href); (document.getElementById('pr-share') as HTMLButtonElement).textContent = 'Odkaz skopírovaný'; } } catch { /* zrušené */ }
+  });
+  ukaz(0);
+</script>
+
+<style>
+  .pr { position: relative; max-width: 460px; margin: 24px auto 12px; aspect-ratio: 9 / 15; max-height: calc(100dvh - var(--vyska-hlavicky, 120px) - 90px); min-height: 520px; border-radius: 22px; overflow: hidden; background: #111; color: #fff; user-select: none; }
+  .pr-pasy { position: absolute; top: 10px; left: 12px; right: 12px; display: flex; gap: 4px; z-index: 3; }
+  .pr-pasy span { flex: 1; height: 3px; border-radius: 2px; background: #ffffff55; overflow: hidden; }
+  .pr-pasy i { display: block; height: 100%; width: 0; background: #fff; }
+  .pr-pasy span[data-stav='hotovo'] i { width: 100%; }
+  .pr-pasy span[data-stav='teraz'] i { animation: pas var(--t) linear forwards; }
+  .pr.stoji .pr-pasy span[data-stav='teraz'] i { animation-play-state: paused; }
+  @keyframes pas { to { width: 100%; } }
+  .pr-snimky, .pr-snimka { position: absolute; inset: 0; }
+  .pr-snimka { padding: 54px 26px 28px; display: flex; flex-direction: column; justify-content: center; gap: 12px; background: radial-gradient(120% 80% at 0% 0%, color-mix(in srgb, var(--f, #c8102e) 85%, #fff 0%), #101114 75%); }
+  .pr-uvod { background: linear-gradient(180deg, #0008, #000c), var(--foto, none) center / cover, #111; justify-content: flex-end; }
+  .pr-uvod h1 { font-size: 2.3rem; line-height: 1.05; letter-spacing: -0.03em; margin: 0; }
+  .pr-kicker { margin: 0; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
+  .pr-velke { margin: 0; font-size: clamp(2rem, 9vw, 2.9rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .pr-text { margin: 0; font-size: 1.08rem; line-height: 1.45; opacity: 0.95; }
+  .pr-graf { display: flex; align-items: flex-end; gap: 4px; height: 120px; margin-top: 10px; }
+  .pr-graf span { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; }
+  .pr-graf i { display: block; width: 100%; height: var(--v); min-height: 3px; border-radius: 4px 4px 0 0; background: #ffffffd9; }
+  .pr:not(.stoji) .pr-snimka:not([hidden]) .pr-graf i { animation: rast 0.8s ease-out; transform-origin: bottom; }
+  @keyframes rast { from { transform: scaleY(0); } }
+  .pr-graf small { font-size: 0.62rem; opacity: 0.8; }
+  .pr-nav { position: absolute; top: 40px; bottom: 0; width: 35%; border: 0; background: transparent; cursor: pointer; z-index: 2; }
+  .pr-spat { left: 0; } .pr-dalsia { right: 0; width: 65%; }
+  .pr-dalej { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; position: relative; z-index: 4; }
+  .pr-dalej a, .pr-dalej button { display: flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 12px; background: #ffffff1f; border: 1px solid #ffffff40; color: #fff; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
+  .pr-dalej button:first-child { background: #fff; color: #111; }
+  .pr-poc { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .pozn { font-size: 0.82rem; color: var(--muted); text-align: center; max-width: 460px; margin: 0 auto; }
+  @media (prefers-reduced-motion: reduce) { .pr-pasy span[data-stav='teraz'] i { animation: none; width: 100%; } .pr-graf i { animation: none !important; } }
+</style>
