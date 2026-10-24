@@ -38,6 +38,10 @@ const spolu = casti.reduce((a, x) => a + x.suma, 0);
 casti.forEach((x) => (x.podiel = x.suma / spolu));
 casti.sort((a, b) => b.podiel - a.podiel);
 const rokCasti = roz ? rokProg : h.rok;
+// „Rozpočet podľa mňa“: kategórie, o ktorých sa dá rozhodovať (bez odpisov a úrokov), prepočítané na 100 %
+const simCasti = casti.filter((x) => !/Opotrebenie|Úroky/.test(x.n));
+const simSpolu = simCasti.reduce((a, x) => a + x.podiel, 0);
+const sim = simCasti.map((x) => ({ n: x.n, p: x.p, real: Math.round((1000 * x.podiel) / simSpolu) / 10 }));
 
 // daňové výnosy na obyvateľa – porovnanie miest
 const porovnanie = MESTA.filter((x) => x.aktivne).map((x) => {
@@ -85,6 +89,24 @@ const dvojmesto = m.slug === 'bratislava' || m.slug === 'kosice';
     </div>
   </section>
 
+  <section class="card rp" id="rozpocet-podla-mna" data-sim={JSON.stringify(sim)} data-mesto={m.nazov}>
+    <h2>Rozpočet podľa mňa</h2>
+    <p>Ako by ste rozdelili 100 € z {roz ? 'výdavkov mesta' : 'bežných nákladov mesta'} vy? Posúvajte jazdcami – súčet sa priebežne prepočíta na 100 % a uvidíte, kde sa líšite od skutočnosti{roz ? ` (záverečný účet ${rokProg})` : ` (účtovná závierka ${h.rok})`}.</p>
+    <ul class="rp-zoznam">
+      {sim.map((x, i) => (
+        <li>
+          <label for={`rp-${i}`}><span>{x.n}</span>{x.p && <small>{x.p}</small>}</label>
+          <input type="range" id={`rp-${i}`} min="0" max="60" step="1" value={Math.round(x.real)} data-i={i} />
+          <span class="rp-hod"><b data-vy={i}>{Math.round(x.real)} €</b><small>mesto {x.real.toLocaleString('sk-SK', { maximumFractionDigits: 1 })} €</small></span>
+          <i class="rp-pas" aria-hidden="true"><em data-pas={i}></em><s style={`left:${Math.min(100, x.real / 0.6)}%`}></s></i>
+        </li>
+      ))}
+    </ul>
+    <p class="rp-suhrn" id="rp-suhrn" aria-live="polite"></p>
+    <div class="rp-tl"><button type="button" id="rp-reset">Vrátiť na skutočnosť</button><button type="button" id="rp-share">Zdieľať moje rozdelenie</button></div>
+    <p class="pozn">Čiarka v páse ukazuje skutočné rozdelenie. {roz ? 'Podľa programov rozpočtu hlavného mesta.' : 'Mesto účtuje náklady podľa druhu (nie podľa oblastí), preto sú kategórie takéto; „školy, dopravný podnik a organizácie mesta“ sú príspevky, z ktorých fungujú školy, MHD a mestské organizácie.'} Odpisy a úroky sme vynechali – o tých sa rozhodnúť nedá.</p>
+  </section>
+
   <section class="card">
     <h2>Ako to funguje</h2>
     <ul class="dn-body">
@@ -125,9 +147,58 @@ const dvojmesto = m.slug === 'bratislava' || m.slug === 'kosice';
   };
   obal.querySelectorAll('input').forEach((i) => i.addEventListener('input', pocitaj));
   pocitaj();
+
+  // Rozpočet podľa mňa
+  const rp = document.getElementById('rozpocet-podla-mna');
+  if (rp) {
+    const SIM: { n: string; real: number }[] = JSON.parse(rp.dataset.sim!);
+    const jazdce = [...rp.querySelectorAll<HTMLInputElement>('input[type=range]')];
+    const prepocet = () => {
+      const h = jazdce.map((j) => Number(j.value));
+      const s = h.reduce((a, x) => a + x, 0) || 1;
+      const vy = h.map((x) => (100 * x) / s);
+      vy.forEach((x, i) => {
+        rp.querySelector<HTMLElement>(`[data-vy="${i}"]`)!.textContent = `${Math.round(x)} €`;
+        rp.querySelector<HTMLElement>(`[data-pas="${i}"]`)!.style.width = `${Math.min(100, x / 0.6)}%`;
+        jazdce[i].setAttribute('aria-valuetext', `${Math.round(x)} € z 100`);
+      });
+      const roz = vy.map((x, i) => ({ n: SIM[i].n, d: x - SIM[i].real })).sort((a, b) => Math.abs(b.d) - Math.abs(a.d));
+      const zmena = roz.filter((x) => Math.abs(x.d) >= 2);
+      document.getElementById('rp-suhrn')!.innerHTML = zmena.length
+        ? [['Pridali by ste', (x: { d: number }) => x.d > 0], ['Ubrali by ste', (x: { d: number }) => x.d < 0]].map(([nad, f]: any) => { const z = zmena.filter(f); return z.length ? `<strong>${nad}:</strong> ${z.map((x) => `${x.n} (${x.d > 0 ? '+' : '−'}${Math.abs(Math.round(x.d))} €)`).join(', ')}.` : ''; }).filter(Boolean).join(' ')
+        : 'Vaše rozdelenie je takmer rovnaké ako skutočné.';
+      return vy;
+    };
+    jazdce.forEach((j) => j.addEventListener('input', prepocet));
+    document.getElementById('rp-reset')!.addEventListener('click', () => { jazdce.forEach((j, i) => (j.value = String(Math.round(SIM[i].real)))); prepocet(); });
+    document.getElementById('rp-share')!.addEventListener('click', async () => {
+      const vy = prepocet();
+      const text = `Takto by som rozdelil(a) 100 € z rozpočtu – ${rp.dataset.mesto}:\n` + SIM.map((x, i) => `${x.n}: ${Math.round(vy[i])} € (mesto ${Math.round(x.real)} €)`).join('\n');
+      try {
+        if (navigator.share) await navigator.share({ text, url: location.href.split('#')[0] + '#rozpocet-podla-mna' });
+        else { await navigator.clipboard.writeText(text + '\n' + location.href); document.getElementById('rp-suhrn')!.insertAdjacentHTML('beforeend', ' <em>Skopírované do schránky.</em>'); }
+      } catch { /* zrušené */ }
+    });
+    prepocet();
+  }
 </script>
 
 <style>
+  .rp-zoznam { list-style: none; margin: 12px 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .rp-zoznam li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(120px, 1.2fr) auto; gap: 4px 14px; align-items: center; }
+  .rp-zoznam label span { font-weight: 600; }
+  .rp-zoznam label small { display: block; color: var(--muted); font-size: 0.75rem; }
+  .rp-zoznam input[type=range] { width: 100%; accent-color: var(--accent); min-height: 32px; }
+  .rp-hod { text-align: right; font-variant-numeric: tabular-nums; min-width: 5.5em; }
+  .rp-hod small { display: block; color: var(--muted); font-size: 0.75rem; }
+  .rp-pas { grid-column: 1 / -1; position: relative; height: 8px; border-radius: 4px; background: color-mix(in srgb, var(--muted) 14%, transparent); }
+  .rp-pas em { display: block; height: 100%; border-radius: 4px; background: var(--accent); }
+  .rp-pas s { position: absolute; top: -3px; bottom: -3px; width: 2px; margin-left: -1px; background: var(--text); }
+  .rp-suhrn { min-height: 1.5em; }
+  .rp-tl { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rp-tl button { min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-weight: 700; cursor: pointer; }
+  .rp-tl button:last-child { background: var(--accent); border-color: var(--accent); color: var(--na-akcente, #fff); }
+  @media (max-width: 600px) { .rp-zoznam li { grid-template-columns: 1fr auto; } .rp-zoznam input[type=range] { grid-column: 1 / -1; grid-row: 2; } }
   .dn-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 8px 0 18px; }
   .dn-form label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 0.92rem; }
   .dn-form small { font-weight: 400; color: var(--muted); font-size: 0.78rem; }
