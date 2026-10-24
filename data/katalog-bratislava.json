@@ -1,6 +1,6 @@
 {
  "zdroj": "https://data.bratislava.sk",
- "pocet": 643,
+ "pocet": 673,
  "datasety": [
   {
    "id": "cd6711958334494685f4e01f4ab3e482",
@@ -1473,17 +1473,17 @@
    "kategorie": [
     "/Categories/Doprava a komunikácie"
    ],
-   "upravene": 1791000024000,
+   "upravene": 1792641635000,
    "popis": "Cestovné poriadky MHD vo formáte GTFS",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 6306480,
+   "velkost": 6233121,
    "typove_slova": [
     "CSV Collection",
     "Metadata",
     "zip"
    ],
-   "upravene_ms": 1791000024000
+   "upravene_ms": 1792641635000
   },
   {
    "id": "4a8eab30e596432486f494649840c694",
@@ -1542,6 +1542,192 @@
        "SPOLU",
        "String",
        "SPOLU"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "140289ebf7664b8093b4a303a11a8578",
+   "nazov": "Charakter zariadení materských škôl - štátni vs. súkromní a cirkevní zriaďovatelia v Bratislave",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Charakter_zariadení_materských_škôl_-_štátni_vs._súkromní_a_cirkevní_zriaďovatelia_v_BA/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792480333000,
+   "popis": "Štruktúra materských škôl podľa charakteru objektu (areál, vstavané, budova) aj s podrobnejším rozdelením na základe zriaďovateľa (štátne, súkromné + cirkevné) v Bratislave. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792480333000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Charakter_zariadení_materských_škôl_-_štátni_vs._súkromní_a_cirkevní_zriaďovatelia_v_BA/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Charakter_zariadení_materských_škôl_-_štátni_vs._súkromní_a_cirkevní_zriaďovatelia_v_BA",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 9,
+     "polia": [
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "CHARAKTER",
+       "String",
+       "CHARAKTER"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bf304fc534824947bad158771596062b",
+   "nazov": "Charakter zariadení stredných škôl - štátni vs. súkromní a cirkevní zriaďovatelia v Bratislave",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Charakter_zariadení_stredných_škôl_-_štátni_vs._súkromní_a_cirkevní_zriaďovatelia_v_BA/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792481026000,
+   "popis": "Štruktúra stredných škôl podľa charakteru objektu (areál, vstavané, budova) aj s podrobnejším rozdelením na základe zriaďovateľa (štátne, súkromné + cirkevné) v Bratislave v roku 2021. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792481026000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Charakter_zariadení_stredných_škôl_-_štátni_vs._súkromní_a_cirkevní_zriaďovatelia_v_BA/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Charakter_zariadení_stredných_škôl_-_štátni_vs._súkromní_a_cirkevní_zriaďovatelia_v_BA",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 9,
+     "polia": [
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "CHARAKTER",
+       "String",
+       "CHARAKTER"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "821c498081ce41fcb9e87fb8bb0d7b70",
+   "nazov": "Charakter zariadení základných škôl - štátni vs. súkromní a cirkevní zriaďovatelia v Bratislave",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Charakter_zariadení_základných_škôl_-_štátni_vs._súkromní_a_cirkevní_zriaďovatelia_v_BA/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792481755000,
+   "popis": "Štruktúra základných škôl podľa charakteru objektu (areál, vstavané, budova) aj s podrobnejším rozdelením na základe zriaďovateľa (štátne, súkromné + cirkevné) v Bratislave v roku 2021. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792481755000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Charakter_zariadení_základných_škôl_-_štátni_vs._súkromní_a_cirkevní_zriaďovatelia_v_BA/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Charakter_zariadení_základných_škôl_-_štátni_vs._súkromní_a_cirkevní_zriaďovatelia_v_BA",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 9,
+     "polia": [
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "CHARAKTER",
+       "String",
+       "CHARAKTER"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -6844,7 +7030,7 @@
    "popis": "Faktúry Odvozu a likvidácie odpadu Bratislava (OLO)",
    "jazyk": "sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 10100736,
+   "velkost": 10133504,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -6864,7 +7050,7 @@
      "nazov": "olo_fakt2",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 27706,
+     "pocet": 27811,
      "polia": [
       [
        "Číslo_faktúry",
@@ -6921,7 +7107,7 @@
    "popis": "Faktúry Pohrebníctva mesta Bratislava - MARIANUM",
    "jazyk": "sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 8478720,
+   "velkost": 8503296,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -6941,7 +7127,7 @@
      "nazov": "Nove_faktury_marianum3",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 16829,
+     "pocet": 16855,
      "polia": [
       [
        "Interné_číslo_faktúry",
@@ -8052,6 +8238,130 @@
    ]
   },
   {
+   "id": "8bdd3b3a849240dbb19ca309b0eb6be4",
+   "nazov": "Kapacita materských škôl v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Kapacita_materských_škôl_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792482059000,
+   "popis": "Prehľad celkovej kapacity materských škôl v Bratislave podľa mestských častí v roku 2021. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792482059000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Kapacita_materských_škôl_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Kapacita_materských_škôl_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cb2256a435f24178b2cca29be684d5c9",
+   "nazov": "Kapacita stredných škôl v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Kapacita_stredných_škôl_v_Bratislave/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792482324000,
+   "popis": "Prehľad celkovej kapacity stredných škôl v Bratislave podľa mestských častí v roku 2021. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792482324000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Kapacita_stredných_škôl_v_Bratislave/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Kapacita_stredných_škôl_v_Bratislave",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "5acb8230a6ed44a7b2c0e7f319f8bad4",
    "nazov": "Kapacita vysokoškolských internátov a jedální v Bratislave",
    "typ": "Feature Service",
@@ -8107,6 +8417,68 @@
        "MIESTA_PRI_STOLOCH",
        "String",
        "MIESTA_PRI_STOLOCH"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "a312b68160ee49bcbf7958f65e3beea2",
+   "nazov": "Kapacita základných škôl v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Kapacita_základných_škôl_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792482561000,
+   "popis": "Prehľad celkovej kapacity základných škôl v Bratislave podľa mestských častí. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792482561000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Kapacita_základných_škôl_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Kapacita_základných_škôl_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -11807,7 +12179,7 @@
    "popis": "Dataset všetkých objednávok Magistrátu hlavného mesta SR Bratislava od roku 2011. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 51658752,
+   "velkost": 51732480,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -11825,7 +12197,7 @@
      "nazov": "Objednávky_Magistrátu_hlavného_mesta_SR_Bratislava_od_roku_2011",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 65305,
+     "pocet": 65411,
      "polia": [
       [
        "IDENTIFIKÁTOR_OBJEDNÁVKY",
@@ -11947,7 +12319,7 @@
    "popis": "Objednávky Odvozu a likvidácie odpadu Bratislava (OLO)",
    "jazyk": "sk-sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 6553600,
+   "velkost": 6561792,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -11967,7 +12339,7 @@
      "nazov": "Objednávky_Odvozu_a_likvidácie_odpadu_Bratislava_(OLO)",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 12366,
+     "pocet": 12390,
      "polia": [
       [
        "Číslo_objednávky",
@@ -12044,7 +12416,7 @@
    "popis": "Objednávky Pohrebníctva mesta Bratislava - MARIANUM",
    "jazyk": "sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 2973696,
+   "velkost": 2981888,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -12064,7 +12436,7 @@
      "nazov": "Nove_objednavky_marianum",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 5549,
+     "pocet": 5564,
      "polia": [
       [
        "Číslo_objednávky",
@@ -13666,6 +14038,68 @@
    ]
   },
   {
+   "id": "50a00634179a4b1985a821a14407e8bb",
+   "nazov": "Podiel detí v materských školách v Bratislave dochádzajúcich z mimobratislavských okresov v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_detí_v_materských_školách_v_Bratislave_dochádzajúcich_z_mimobratislavských_okresov/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792668789000,
+   "popis": "Percentuálny podiel detí v materských školách v jednotlivých mestských častiach Bratislavy, ktoré do materských škôl dochádzajú z mimobratislavských okresov. Môže ísť o dochádzajúce deti alebo deti bez trvalých pobytov v Bratislave. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792668789000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_detí_v_materských_školách_v_Bratislave_dochádzajúcich_z_mimobratislavských_okresov/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Podiel_detí_v_materských_školách_v_Bratislave_dochádzajúcich_z_mimobratislavských_okresov",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 17,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "PERCENTO_DOCHADZAJUCICH",
+       "String",
+       "PERCENTO_DOCHADZAJUCICH"
+      ],
+      [
+       "PERCENT_",
+       "BigInteger",
+       "PERCENT"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "b5a1ca52c4c44d639350caa0889ecaa0",
    "nazov": "Podiel jednotlivých odvetví na tržbách v priemysle Bratislavy v rokoch 2008 - 2021",
    "typ": "Feature Service",
@@ -13718,6 +14152,68 @@
        "TRZBA_V_MIL_EUR",
        "String",
        "TRZBA_V_MIL_EUR"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "e685f918ed024ae689897da4c2ccc259",
+   "nazov": "Podiel materských škôl podľa zriaďovateľa v Bratislave za obdobie 2010 – 2022",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_materských_skôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792669803000,
+   "popis": "Vývoj percentuálneho podielu materských skôl v Bratislave podľa ich zriaďovateľa (štátne, súkromné, cirkevné) za 13-ročné obdobie (2010 – 2022). Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792669803000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_materských_skôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Podiel_materských_skôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 39,
+     "polia": [
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "PERCENT_",
+       "BigInteger",
+       "PERCENT"
       ],
       [
        "ObjectId",
@@ -14516,6 +15012,68 @@
    ]
   },
   {
+   "id": "d34be50f64524c62be9d257f2b8d5e19",
+   "nazov": "Podiel stredných škôl podľa zriaďovateľa v Bratislave za obdobie 2010 – 2022",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_stredných_škôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792670007000,
+   "popis": "Vývoj percentuálneho podielu stredných skôl v Bratislave podľa ich zriaďovateľa (štátne, súkromné, cirkevné) za 13-ročné obdobie (2010 – 2022). Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792670007000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_stredných_škôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Podiel_stredných_škôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 39,
+     "polia": [
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "PERCENT_",
+       "Integer",
+       "PERCENT"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "17b4199cb9d541d8bb6e128033fcc46f",
    "nazov": "Podiel tržieb z predaja do zahraničia v priemysle Bratislavy podľa odvetví v r. 2015-2021",
    "typ": "Feature Service",
@@ -14976,6 +15534,68 @@
    ]
   },
   {
+   "id": "7e15b51a9a1b492080fc658a576cb705",
+   "nazov": "Podiel základných škôl podľa zriaďovateľa v Bratislave za obdobie 2010 – 2022",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_základných_škôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792670280000,
+   "popis": "Vývoj percentuálneho podielu základných skôl v Bratislave podľa ich zriaďovateľa (štátne, súkromné, cirkevné) za 13-ročné obdobie (2010 – 2022). Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792670280000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_základných_škôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Podiel_základných_škôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 39,
+     "polia": [
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "PERCENT_",
+       "BigInteger",
+       "PERCENT"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "cda7a8f3c44e47a0b5bdfb0a49e036ff",
    "nazov": "Podiel zásobovania pitnou vodou BVS podľa segmentov",
    "typ": "Feature Service",
@@ -15032,6 +15652,68 @@
        "INI_PREVADZKOVATELIA_ALEBO_VLASTNICI_VEREJNEHO_VODOVODU",
        "String",
        "INI_PREVADZKOVATELIA_ALEBO_VLASTNICI_VEREJNEHO_VODOVODU"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "be9d5bbe89234bb18cb1e2ef9e9fb9ed",
+   "nazov": "Podiel žiakov v základných školách v Bratislave dochádzajúcich z mimobratislavských okresov v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_žiakov_v_základných_školách_v_Bratislave_dochádzajúcich_z_mimobratislavských_okr/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792670544000,
+   "popis": "Percentuálny podiel žiakov v základných školách v jednotlivých mestských častiach Bratislavy, ktoré do základných škôl dochádzajú z mimobratislavských okresov. Môže ísť o dochádzajúcich žiakov alebo žiakov bez trvalých pobytov v Bratislave. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792670544000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_žiakov_v_základných_školách_v_Bratislave_dochádzajúcich_z_mimobratislavských_okr/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Podiel_žiakov_v_základných_školách_v_Bratislave_dochádzajúcich_z_mimobratislavských_okr",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 17,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "PERCENTO_DOCHADZAJUCICH",
+       "String",
+       "PERCENTO_DOCHADZAJUCICH"
+      ],
+      [
+       "PERCENT_",
+       "BigInteger",
+       "PERCENT"
       ],
       [
        "ObjectId",
@@ -16249,6 +16931,192 @@
    ]
   },
   {
+   "id": "dd0ac1c15c244c60b35eea88634553b3",
+   "nazov": "Počet detí a dospievajúcich a zariadení pre ďalšie vzdelávanie podľa typu zriaďovateľa v Bratislave",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_detí_a_dospievajúcich_a_zariadení_pre_ďalšie_vzdelávanie_podľa_typu_zriaďovateľa/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792483069000,
+   "popis": "Prehľad počtu detí a dospievajúcich a počtu zariadení pre ďalšie vzdelávanie (centrá voľného času, jazykové školy, základné umelecké školy) v Bratislave podľa typu zriadovateľa v roku 2021. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792483069000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_detí_a_dospievajúcich_a_zariadení_pre_ďalšie_vzdelávanie_podľa_typu_zriaďovateľa/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_detí_a_dospievajúcich_a_zariadení_pre_ďalšie_vzdelávanie_podľa_typu_zriaďovateľa",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 18,
+     "polia": [
+      [
+       "VZDELAVACIE_ZARIADENIE",
+       "String",
+       "VZDELAVACIE_ZARIADENIE"
+      ],
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "629aae1ae9ce45bc8e521735736ed01e",
+   "nazov": "Počet detí a dospievajúcich a špeciálnych škôl a školských zariadení podľa typu zriaďovateľa v Bratislave",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_detí_a_dospievajúcich_a_špeciálnych_škôl_a_školských_zariadení_podľa_typu_zria/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792482869000,
+   "popis": "Prehľad počtu detí a dospievajúcich a počtu špeciálnych škôl a školských zariadení (materských, základných a stredných) v Bratislave podľa typu zriadovateľa v Bratislave v roku 2021. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792482869000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_detí_a_dospievajúcich_a_špeciálnych_škôl_a_školských_zariadení_podľa_typu_zria/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_detí_a_dospievajúcich_a_špeciálnych_škôl_a_školských_zariadení_podľa_typu_zria",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 18,
+     "polia": [
+      [
+       "SKOLSKE_ZARIADENIE",
+       "String",
+       "SKOLSKE_ZARIADENIE"
+      ],
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "598bde8c62b34300a6959e961271ad24",
+   "nazov": "Počet detí a materských škôl podľa typu zriaďovateľa v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_detí_a_materských_škôl_podľa_typu_zriaďovateľa_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792485092000,
+   "popis": "Porovnanie počtu detí a počtu materských skôl v Bratislave podľa typu zriadovateľa materských škôl. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792485092000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_detí_a_materských_škôl_podľa_typu_zriaďovateľa_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_detí_a_materských_škôl_podľa_typu_zriaďovateľa_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 6,
+     "polia": [
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "DETI_MS",
+       "String",
+       "DETI_MS"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "ac15d7e89d214fa4acb3b799538b7f24",
    "nazov": "Počet detí v materských školách v Bratislave",
    "typ": "Feature Service",
@@ -16304,6 +17172,68 @@
        "SUKROMNE",
        "String",
        "SUKROMNE"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "90893b909be44eb48ff7adb3128ee787",
+   "nazov": "Počet detí žiakov a študentov v školách v Bratislave za obdobie 2010 – 2022",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_detí_žiakov_a_študentov_v_školách_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792485602000,
+   "popis": "Vývoj počtu detí, žiakov a študentov v školách (MŠ, ZŠ, SŠ) v Bratislave za 13-ročné obdobie (2010 – 2022). Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792485602000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_detí_žiakov_a_študentov_v_školách_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_detí_žiakov_a_študentov_v_školách_v_Bratislave_za_obdobie_2010_–_2022",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 39,
+     "polia": [
+      [
+       "DRUH_SKOLY",
+       "String",
+       "DRUH_SKOLY"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -16432,6 +17362,258 @@
        "LIMITNA_HODNOTA_O3",
        "Integer",
        "LIMITNA_HODNOTA_O3"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "27af84172ee643cba55d1a3e95eaae68",
+   "nazov": "Počet dochádzajúcich detí do materských škôl v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_dochádzajúcich_detí_do_materských_škôl_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Dochádzka"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792486320000,
+   "popis": "Dochádzkové toky do materských škôl v rámci a medzi mestskými časťami Bratislavy a obcami mimo Bratislavy. Podiel detí dochádzajúcich z ostatných obcí Slovenska pravdepodobne indikuje aj určitý počet neprehlásených trvalých pobytov. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 49152,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792486320000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_dochádzajúcich_detí_do_materských_škôl_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_dochádzajúcich_detí_do_materských_škôl_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 357,
+     "polia": [
+      [
+       "ODKIAL",
+       "String",
+       "ODKIAL"
+      ],
+      [
+       "KAM",
+       "String",
+       "KAM"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c83e89386f934fdd9da39462514cc823",
+   "nazov": "Počet dochádzajúcich študentov na stredné školy v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_dochádzajúcich_študentov_na_stredné_školy_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Dochádzka"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792486619000,
+   "popis": "Dochádzkové toky na stredné školy v rámci a medzi mestskými časťami Bratislavy a obcami mimo Bratislavy. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 40960,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792486619000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_dochádzajúcich_študentov_na_stredné_školy_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_dochádzajúcich_študentov_na_stredné_školy_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 300,
+     "polia": [
+      [
+       "ODKIAL",
+       "String",
+       "ODKIAL"
+      ],
+      [
+       "KAM",
+       "String",
+       "KAM"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "3c8cb71485494b7bb629195deb7456b4",
+   "nazov": "Počet dochádzajúcich študentov na stredné školy v Bratislave z obcí zo zázemia v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_dochádzajúcich_študentov_na_stredné_školy_v_Bratislave_z_obcí_zo_zázemia_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Dochádzka"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792486993000,
+   "popis": "Prehľad obcí zo zázemia Bratislavy s najvyšším počtom dochádzajúcich študentov na stredné školy v Bratislave. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792486993000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_dochádzajúcich_študentov_na_stredné_školy_v_Bratislave_z_obcí_zo_zázemia_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_dochádzajúcich_študentov_na_stredné_školy_v_Bratislave_z_obcí_zo_zázemia_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 17,
+     "polia": [
+      [
+       "OBEC",
+       "String",
+       "OBEC"
+      ],
+      [
+       "DOCHADZAJUCI_STUDENTI",
+       "String",
+       "DOCHADZAJUCI_STUDENTI"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c56bb45c161543f5afe4691491c3c515",
+   "nazov": "Počet dochádzajúcich žiakov do základných škôl v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_dochádzajúcich_žiakov_do_základných_škôl_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Dochádzka"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792487270000,
+   "popis": "Dochádzakové toky do základných škôl v rámci a medzi mestskými časťami Bratislavy a obcami mimo Bratislavy. Podiel žiakov dochádzajúcich z ostatných obcí Slovenska pravdepodobne indikuje aj určitý počet neprehlásených trvalých pobytov. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 49152,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792487270000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_dochádzajúcich_žiakov_do_základných_škôl_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_dochádzajúcich_žiakov_do_základných_škôl_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 357,
+     "polia": [
+      [
+       "ODKIAL",
+       "String",
+       "ODKIAL"
+      ],
+      [
+       "KAM",
+       "String",
+       "KAM"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -17030,6 +18212,68 @@
        "TROLEJBUSY",
        "String",
        "TROLEJBUSY"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "769de0334ab04d11ae333940581f92cc",
+   "nazov": "Počet dospievajúcich a stredných škôl podľa typu zriaďovateľa v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_dospievajúcich_a_stredných_škôl_podľa_typu_zriaďovateľa_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792663816000,
+   "popis": "Porovnanie počtu dospievajúcich a počtu stredných skôl v Bratislave podľa typu zriadovateľa stredných škôl. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792663816000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_dospievajúcich_a_stredných_škôl_podľa_typu_zriaďovateľa_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_dospievajúcich_a_stredných_škôl_podľa_typu_zriaďovateľa_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 24,
+     "polia": [
+      [
+       "DRUH_SS",
+       "String",
+       "DRUH_SS"
+      ],
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -22569,7 +23813,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 229892096,
+   "velkost": 230359040,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -22589,7 +23833,7 @@
      "nazov": "chodci10_01",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 852384,
+     "pocet": 855118,
      "polia": [
       [
        "NAZOV",
@@ -22656,7 +23900,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 229318656,
+   "velkost": 229785600,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -22676,7 +23920,7 @@
      "nazov": "cyklisti2_0",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 852384,
+     "pocet": 855118,
      "polia": [
       [
        "NAZOV",
@@ -22743,7 +23987,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 116006912,
+   "velkost": 116383744,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -22763,7 +24007,7 @@
      "nazov": "vozidla_00",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 487854,
+     "pocet": 490108,
      "polia": [
       [
        "NAZOV",
@@ -24713,6 +25957,192 @@
    ]
   },
   {
+   "id": "9e065873e00b4b75989dbee034f9f4b3",
+   "nazov": "Počet trvalých pobytov detí v mestských častiach a lokalizácie ich materských skôl v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_trvalých_pobytov_detí_v_mestských_častiach_a_lokalizácie_ich_materských_skôl_v_BA/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792667053000,
+   "popis": "Dataset obsahuje informáciu o počte detí v jednotlivých mestských častiach Bratislavy, ktoré navštevujú materskú školu v mestskej časti svojho trvalého pobytu a ktoré do materskej školy dochádzajú do inej mestskej časti Bratislavy, ako je mestská časť ich trvalého pobytu. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792667053000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_trvalých_pobytov_detí_v_mestských_častiach_a_lokalizácie_ich_materských_skôl_v_BA/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_trvalých_pobytov_detí_v_mestských_častiach_a_lokalizácie_ich_materských_skôl_v_BA",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "LOKALIZACIA_MS",
+       "String",
+       "LOKALIZACIA_MS"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "7be9b61ccc6a4783ba00e0346fe250ab",
+   "nazov": "Počet trvalých pobytov študentov v Bratislave a mimo Bratislavy podľa druhu strednej školy v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_trvalých_pobytov_študentov_v_Bratislave_a_mimo_Bratislavy_podľa_druhu_strednej_školy/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792667408000,
+   "popis": "Porovnanie počtu študentov stredných škôl podľa miesta trvalého pobytu v Bratislave a mimo Bratislavy na základe typu školy- gymnázium, konzervatórium, stredná odborná škola. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792667408000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_trvalých_pobytov_študentov_v_Bratislave_a_mimo_Bratislavy_podľa_druhu_strednej_školy/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_trvalých_pobytov_študentov_v_Bratislave_a_mimo_Bratislavy_podľa_druhu_strednej_školy",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 6,
+     "polia": [
+      [
+       "DRUH_SS",
+       "String",
+       "DRUH_SS"
+      ],
+      [
+       "TRVALY_POBYT",
+       "String",
+       "TRVALY_POBYT"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "47475d0b07a145b3b9b18d4c7b252ed1",
+   "nazov": "Počet trvalých pobytov žiakov v mestských častiach a lokalizácie ich základných škôl v Bratislave",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_trvalých_pobytov_žiakov_v_mestských_častiach_a_lokalizácie_ich_základných_škôl_v_BA/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792667751000,
+   "popis": "Dataset obsahuje informáciu o počte žiakov v jednotlivých mestských častiach Bratislavy, ktorí navštevujú základnú školu v mestskej časti svojho trvalého pobytu a ktorí do základnej školy dochádzajú do inej mestskej časti Bratislavy, ako je mestská časť ich trvalého pobytu.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792667751000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_trvalých_pobytov_žiakov_v_mestských_častiach_a_lokalizácie_ich_základných_škôl_v_BA/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_trvalých_pobytov_žiakov_v_mestských_častiach_a_lokalizácie_ich_základných_škôl_v_BA",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "LOKALIZACIA_ZS",
+       "String",
+       "LOKALIZACIA_ZS"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "9563bf8e2cba4d9cb38080e37c344f0a",
    "nazov": "Počet uchádzačov o zamestnanie (absolventi) podľa počtu mesiacov v evidencii UPS",
    "typ": "Feature Service",
@@ -26120,6 +27550,68 @@
    ]
   },
   {
+   "id": "0e812aad360a41fe85a6f7d135c5c34b",
+   "nazov": "Počet základných a stredných škôl v Bratislave podľa ich veľkosti v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_základných_a_stredných_škôl_v_Bratislave_podľa_ich_veľkosti_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792668213000,
+   "popis": "Počet základných a stredných škôl v Bratislave, rozdelené podľa veľkostných kategórií na základe počtu žiakov/ študentov. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792668213000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_základných_a_stredných_škôl_v_Bratislave_podľa_ich_veľkosti_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_základných_a_stredných_škôl_v_Bratislave_podľa_ich_veľkosti_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 10,
+     "polia": [
+      [
+       "VELKOST_SKOLY",
+       "String",
+       "VELKOST_SKOLY"
+      ],
+      [
+       "DRUH_SKOLY",
+       "String",
+       "DRUH_SKOLY"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "11bd2d2a2742405ea4d215b2686dffdd",
    "nazov": "Počet základných umeleckých škôl v Bratislave",
    "typ": "Feature Service",
@@ -26333,6 +27825,68 @@
    ]
   },
   {
+   "id": "3cdf1aea69e348c08dfa4755a35c4a7f",
+   "nazov": "Počet škôl v Bratislave za obdobie 2010 – 2022",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_škôl_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792664263000,
+   "popis": "Vývoj počtu materských, základných a stredných škôl v Bratislave za 13-ročné obdobie (2010 – 2022). Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792664263000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_škôl_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_škôl_v_Bratislave_za_obdobie_2010_–_2022",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 39,
+     "polia": [
+      [
+       "DRUH_SKOLY",
+       "String",
+       "DRUH_SKOLY"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "e420cc478e1646729c57030340d89b84",
    "nazov": "Počet študentov na jednotlivých vysokých školách v Bratislave",
    "typ": "Feature Service",
@@ -26393,6 +27947,68 @@
        "SPOLU",
        "String",
        "SPOLU"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "154e089138154ed7a8f1ebe3407e94d9",
+   "nazov": "Počet študentov na stredných školách v Bratislave podľa druhu strednej školy v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_študentov_na_stredných_školách_v_Bratislave_podľa_druhu_strednej_školy_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792664538000,
+   "popis": "Absolútne počty študentov na stredných školách v Bratislave podľa druhu strednej školy - gymnázium, konzervatórium, stredná odborná škola. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792664538000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_študentov_na_stredných_školách_v_Bratislave_podľa_druhu_strednej_školy_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_študentov_na_stredných_školách_v_Bratislave_podľa_druhu_strednej_školy_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 3,
+     "polia": [
+      [
+       "DRUH_SS",
+       "String",
+       "DRUH_SS"
+      ],
+      [
+       "POCET_STUDENTOV",
+       "String",
+       "POCET_STUDENTOV"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -26525,6 +28141,68 @@
        "Počet_žiadostí",
        "String",
        "Počet žiadostí"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "40ff8512b8d64bd5a54df74969e27d00",
+   "nazov": "Počet žiakov a základných škôl podľa typu zriaďovateľa v Bratislave v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_žiakov_a_základných_škôl_podľa_typu_zriaďovateľa_v_Bratislave_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792668458000,
+   "popis": "Porovnanie počtu žiakov a počtu základných skôl v Bratislave podľa typu zriadovateľa základných škôl. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792668458000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_žiakov_a_základných_škôl_podľa_typu_zriaďovateľa_v_Bratislave_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_žiakov_a_základných_škôl_podľa_typu_zriaďovateľa_v_Bratislave_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 10,
+     "polia": [
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "ZIACI_ZS",
+       "String",
+       "ZIACI_ZS"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -31349,6 +33027,198 @@
        "UHRNNA_PLODNOST",
        "String",
        "UHRNNA_PLODNOST"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "e626d141abd74aaaa4ccc7453ddd90e5",
+   "nazov": "Prognózovaný vývoj účelových jednotiek materských škôl v Bratislave do roku 2050",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prognózovaný_vývoj_účelových_jednotiek_materských_škôl_v_Bratislave_do_roku_2050/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Bratislava 2050",
+    "Prognóza"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792670933000,
+   "popis": "Prognózovaný vývoj účelových jednotiek materských škôl, tzn. koľko detí vo veku 3 až 5 rokov pripadá na 1 000 obyvateľov danej územnej jednotky (v tomto prípade pre celú Bratislavu), pre rôzne demografické scenáre do roku 2050. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 32768,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792670933000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prognózovaný_vývoj_účelových_jednotiek_materských_škôl_v_Bratislave_do_roku_2050/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Prognózovaný_vývoj_účelových_jednotiek_materských_škôl_v_Bratislave_do_roku_2050",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 145,
+     "polia": [
+      [
+       "SCENAR",
+       "String",
+       "SCENAR"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "BigInteger",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "082accef36f8475c9afe20dc8ca10498",
+   "nazov": "Prognózovaný vývoj účelových jednotiek stredných škôl v Bratislave do roku 2050",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prognózovaný_vývoj_účelových_jednotiek_stredných_škôl_v_Bratislave_do_roku_2050/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Bratislava 2050",
+    "Prognóza"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792672503000,
+   "popis": "Prognózovaný vývoj účelových jednotiek stredných škôl, tzn. koľko dospievajúcich vo veku 15 až 19 rokov pripadá na 1 000 obyvateľov danej územnej jednotky (v tomto prípade pre celú Bratislavu), pre rôzne demografické scenáre do roku 2050. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 32768,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792672503000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prognózovaný_vývoj_účelových_jednotiek_stredných_škôl_v_Bratislave_do_roku_2050/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Prognózovaný_vývoj_účelových_jednotiek_stredných_škôl_v_Bratislave_do_roku_2050",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 145,
+     "polia": [
+      [
+       "SCENAR",
+       "String",
+       "SCENAR"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "BigInteger",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "9f4bf1386c98497e840a521d863b24ce",
+   "nazov": "Prognózovaný vývoj účelových jednotiek základných škôl v Bratislave do roku 2050",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prognózovaný_vývoj_účelových_jednotiek_základných_škôl_v_Bratislave_do_roku_2050/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Bratislava 2050",
+    "Prognóza"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1792672452000,
+   "popis": "Prognózovaný vývoj účelových jednotiek základných škôl, tzn. koľko detí vo veku 6 až 14 rokov pripadá na 1 000 obyvateľov danej územnej jednotky (v tomto prípade pre celú Bratislavu), pre rôzne demografické scenáre do roku 2050. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 32768,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1792672452000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prognózovaný_vývoj_účelových_jednotiek_základných_škôl_v_Bratislave_do_roku_2050/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Prognózovaný_vývoj_účelových_jednotiek_základných_škôl_v_Bratislave_do_roku_2050",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 145,
+     "polia": [
+      [
+       "SCENAR",
+       "String",
+       "SCENAR"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "BigInteger",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -37889,7 +39759,7 @@
      "nazov": "orezy_a_vyruby_2022_OTMZ",
      "druh": "vrstva",
      "geometria": "esriGeometryPoint",
-     "pocet": 5768,
+     "pocet": 5780,
      "polia": [
       [
        "OBJECTID",
@@ -44522,7 +46392,7 @@
    "popis": "Zameranie zelene v Bratislave",
    "jazyk": "sk-sk",
    "licencia": "CC BY 4.0",
-   "velkost": 260808704,
+   "velkost": 260849664,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -45879,7 +47749,7 @@
    "popis": "Dataset všetkých zmlúv Magistrátu hlavného mesta SR Bratislava zverejnených od júla 2022. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 13148160,
+   "velkost": 13189120,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -45899,7 +47769,7 @@
      "nazov": "Zmluvy_Magistrátu_hlavného_mesta_SR_Bratislava_zverejnené_od_júla_2022",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 13122,
+     "pocet": 13162,
      "polia": [
       [
        "IČO_SAMOSPRÁVY",
@@ -46065,7 +47935,7 @@
    "popis": "Zmluvy Odvozu a likvidácie odpadu Bratislava (OLO)",
    "jazyk": "sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 811008,
+   "velkost": 827392,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -46085,7 +47955,7 @@
      "nazov": "ccc",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 1909,
+     "pocet": 1914,
      "polia": [
       [
        "Číslo_zmluvy",
@@ -51871,5 +53741,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-10-20T04:54:27+00:00"
+ "aktualizovane": "2026-10-24T10:28:59+00:00"
 }

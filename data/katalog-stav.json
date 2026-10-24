@@ -1,7 +1,7 @@
 {
  "zdroj": "https://data.bratislava.sk",
  "pocty": {
-  "katalog": 562,
+  "katalog": 592,
   "osobitne": 34,
   "vynechane": 19,
   "na_webe": 29
@@ -2400,7 +2400,7 @@
    "id": "aba12fd2cbac4843bc7406151bc66106",
    "nazov": "Cestovné poriadky MHD vo formáte GTFS",
    "kategoria": "Doprava a komunikácie",
-   "upravene": 1791000024000,
+   "upravene": 1792641635000,
    "riadkov": null,
    "stav": "na_webe",
    "kde": "/bratislava/doprava",
@@ -2607,7 +2607,7 @@
    "nazov": "Počet prechádzajúcich chodcov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492980000,
-   "riadkov": 852384,
+   "riadkov": 855118,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače chodcov"
@@ -2617,7 +2617,7 @@
    "nazov": "Počet prejazdov cyklistov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492966000,
-   "riadkov": 852384,
+   "riadkov": 855118,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače cyklistov"
@@ -2627,7 +2627,7 @@
    "nazov": "Počet prejazdov vozidiel podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492972000,
-   "riadkov": 487854,
+   "riadkov": 490108,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače áut"
@@ -4052,7 +4052,7 @@
    "nazov": "Faktúry Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778137107000,
-   "riadkov": 27706,
+   "riadkov": 27811,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry OLO"
@@ -4062,7 +4062,7 @@
    "nazov": "Faktúry Pohrebníctva mesta Bratislava - MARIANUM",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778142878000,
-   "riadkov": 16829,
+   "riadkov": 16855,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry Marianum"
@@ -4211,7 +4211,7 @@
    "nazov": "Objednávky Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151897000,
-   "riadkov": 65305,
+   "riadkov": 65411,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky magistrátu"
@@ -4221,7 +4221,7 @@
    "nazov": "Objednávky Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778136568000,
-   "riadkov": 12366,
+   "riadkov": 12390,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky OLO"
@@ -4231,7 +4231,7 @@
    "nazov": "Objednávky Pohrebníctva mesta Bratislava - MARIANUM",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778142871000,
-   "riadkov": 5549,
+   "riadkov": 5564,
    "stav": "katalog",
    "kde": "/bratislava/katalog/81abdb9566e84d00aaad5ffd953d791a",
    "stlpcov": 9
@@ -4838,7 +4838,7 @@
    "nazov": "Zmluvy Magistrátu hlavného mesta SR Bratislava zverejnené od júla 2022",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151852000,
-   "riadkov": 13122,
+   "riadkov": 13162,
    "stav": "na_webe",
    "kde": "/bratislava/financie",
    "pozn": "Zmluvy magistrátu"
@@ -4858,7 +4858,7 @@
    "nazov": "Zmluvy Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778136780000,
-   "riadkov": 1909,
+   "riadkov": 1914,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Zmluvy OLO"
@@ -5084,6 +5084,36 @@
    "stlpcov": 3
   },
   {
+   "id": "140289ebf7664b8093b4a303a11a8578",
+   "nazov": "Charakter zariadení materských škôl - štátni vs. súkromní a cirkevní zriaďovatelia v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792480333000,
+   "riadkov": 9,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/140289ebf7664b8093b4a303a11a8578",
+   "stlpcov": 3
+  },
+  {
+   "id": "bf304fc534824947bad158771596062b",
+   "nazov": "Charakter zariadení stredných škôl - štátni vs. súkromní a cirkevní zriaďovatelia v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792481026000,
+   "riadkov": 9,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/bf304fc534824947bad158771596062b",
+   "stlpcov": 3
+  },
+  {
+   "id": "821c498081ce41fcb9e87fb8bb0d7b70",
+   "nazov": "Charakter zariadení základných škôl - štátni vs. súkromní a cirkevní zriaďovatelia v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792481755000,
+   "riadkov": 9,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/821c498081ce41fcb9e87fb8bb0d7b70",
+   "stlpcov": 3
+  },
+  {
    "id": "346027a40f62416aba2f5b413d5bb68c",
    "nazov": "Databáza poskytovateľov celoživotného vzdelávania v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5134,6 +5164,26 @@
    "stlpcov": 4
   },
   {
+   "id": "8bdd3b3a849240dbb19ca309b0eb6be4",
+   "nazov": "Kapacita materských škôl v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792482059000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/8bdd3b3a849240dbb19ca309b0eb6be4",
+   "stlpcov": 3
+  },
+  {
+   "id": "cb2256a435f24178b2cca29be684d5c9",
+   "nazov": "Kapacita stredných škôl v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792482324000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/cb2256a435f24178b2cca29be684d5c9",
+   "stlpcov": 3
+  },
+  {
    "id": "5acb8230a6ed44a7b2c0e7f319f8bad4",
    "nazov": "Kapacita vysokoškolských internátov a jedální v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5142,6 +5192,16 @@
    "stav": "katalog",
    "kde": "/bratislava/katalog/5acb8230a6ed44a7b2c0e7f319f8bad4",
    "stlpcov": 4
+  },
+  {
+   "id": "a312b68160ee49bcbf7958f65e3beea2",
+   "nazov": "Kapacita základných škôl v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792482561000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/a312b68160ee49bcbf7958f65e3beea2",
+   "stlpcov": 3
   },
   {
    "id": "36990e021dd74d86866fedc43498ecf1",
@@ -5164,6 +5224,56 @@
    "stlpcov": 4
   },
   {
+   "id": "50a00634179a4b1985a821a14407e8bb",
+   "nazov": "Podiel detí v materských školách v Bratislave dochádzajúcich z mimobratislavských okresov v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792668789000,
+   "riadkov": 17,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/50a00634179a4b1985a821a14407e8bb",
+   "stlpcov": 2
+  },
+  {
+   "id": "e685f918ed024ae689897da4c2ccc259",
+   "nazov": "Podiel materských škôl podľa zriaďovateľa v Bratislave za obdobie 2010 – 2022",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792669803000,
+   "riadkov": 39,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/e685f918ed024ae689897da4c2ccc259",
+   "stlpcov": 2
+  },
+  {
+   "id": "d34be50f64524c62be9d257f2b8d5e19",
+   "nazov": "Podiel stredných škôl podľa zriaďovateľa v Bratislave za obdobie 2010 – 2022",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792670007000,
+   "riadkov": 39,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/d34be50f64524c62be9d257f2b8d5e19",
+   "stlpcov": 3
+  },
+  {
+   "id": "7e15b51a9a1b492080fc658a576cb705",
+   "nazov": "Podiel základných škôl podľa zriaďovateľa v Bratislave za obdobie 2010 – 2022",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792670280000,
+   "riadkov": 39,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/7e15b51a9a1b492080fc658a576cb705",
+   "stlpcov": 2
+  },
+  {
+   "id": "be9d5bbe89234bb18cb1e2ef9e9fb9ed",
+   "nazov": "Podiel žiakov v základných školách v Bratislave dochádzajúcich z mimobratislavských okresov v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792670544000,
+   "riadkov": 17,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/be9d5bbe89234bb18cb1e2ef9e9fb9ed",
+   "stlpcov": 3
+  },
+  {
    "id": "adf0f132eb6b484dba5d7e5614250199",
    "nazov": "Počet absolventov I. a II. stupňa štúdia na vysokých školách v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5184,6 +5294,36 @@
    "stlpcov": 5
   },
   {
+   "id": "dd0ac1c15c244c60b35eea88634553b3",
+   "nazov": "Počet detí a dospievajúcich a zariadení pre ďalšie vzdelávanie podľa typu zriaďovateľa v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792483069000,
+   "riadkov": 18,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/dd0ac1c15c244c60b35eea88634553b3",
+   "stlpcov": 3
+  },
+  {
+   "id": "629aae1ae9ce45bc8e521735736ed01e",
+   "nazov": "Počet detí a dospievajúcich a špeciálnych škôl a školských zariadení podľa typu zriaďovateľa v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792482869000,
+   "riadkov": 18,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/629aae1ae9ce45bc8e521735736ed01e",
+   "stlpcov": 3
+  },
+  {
+   "id": "598bde8c62b34300a6959e961271ad24",
+   "nazov": "Počet detí a materských škôl podľa typu zriaďovateľa v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792485092000,
+   "riadkov": 6,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/598bde8c62b34300a6959e961271ad24",
+   "stlpcov": 3
+  },
+  {
    "id": "ac15d7e89d214fa4acb3b799538b7f24",
    "nazov": "Počet detí v materských školách v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5194,6 +5334,56 @@
    "stlpcov": 4
   },
   {
+   "id": "90893b909be44eb48ff7adb3128ee787",
+   "nazov": "Počet detí žiakov a študentov v školách v Bratislave za obdobie 2010 – 2022",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792485602000,
+   "riadkov": 39,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/90893b909be44eb48ff7adb3128ee787",
+   "stlpcov": 3
+  },
+  {
+   "id": "27af84172ee643cba55d1a3e95eaae68",
+   "nazov": "Počet dochádzajúcich detí do materských škôl v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792486320000,
+   "riadkov": 357,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/27af84172ee643cba55d1a3e95eaae68",
+   "stlpcov": 3
+  },
+  {
+   "id": "c83e89386f934fdd9da39462514cc823",
+   "nazov": "Počet dochádzajúcich študentov na stredné školy v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792486619000,
+   "riadkov": 300,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/c83e89386f934fdd9da39462514cc823",
+   "stlpcov": 3
+  },
+  {
+   "id": "3c8cb71485494b7bb629195deb7456b4",
+   "nazov": "Počet dochádzajúcich študentov na stredné školy v Bratislave z obcí zo zázemia v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792486993000,
+   "riadkov": 17,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/3c8cb71485494b7bb629195deb7456b4",
+   "stlpcov": 3
+  },
+  {
+   "id": "c56bb45c161543f5afe4691491c3c515",
+   "nazov": "Počet dochádzajúcich žiakov do základných škôl v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792487270000,
+   "riadkov": 357,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/c56bb45c161543f5afe4691491c3c515",
+   "stlpcov": 3
+  },
+  {
    "id": "0b67a7a314ef44d19d38a1b99cfa32ad",
    "nazov": "Počet doktorandov na vysokých školách v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5202,6 +5392,16 @@
    "stav": "katalog",
    "kde": "/bratislava/katalog/0b67a7a314ef44d19d38a1b99cfa32ad",
    "stlpcov": 5
+  },
+  {
+   "id": "769de0334ab04d11ae333940581f92cc",
+   "nazov": "Počet dospievajúcich a stredných škôl podľa typu zriaďovateľa v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792663816000,
+   "riadkov": 24,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/769de0334ab04d11ae333940581f92cc",
+   "stlpcov": 3
   },
   {
    "id": "efd1b87c02e743789a089eee9e8343a2",
@@ -5374,6 +5574,36 @@
    "stlpcov": 6
   },
   {
+   "id": "9e065873e00b4b75989dbee034f9f4b3",
+   "nazov": "Počet trvalých pobytov detí v mestských častiach a lokalizácie ich materských skôl v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792667053000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/9e065873e00b4b75989dbee034f9f4b3",
+   "stlpcov": 3
+  },
+  {
+   "id": "7be9b61ccc6a4783ba00e0346fe250ab",
+   "nazov": "Počet trvalých pobytov študentov v Bratislave a mimo Bratislavy podľa druhu strednej školy v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792667408000,
+   "riadkov": 6,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/7be9b61ccc6a4783ba00e0346fe250ab",
+   "stlpcov": 3
+  },
+  {
+   "id": "47475d0b07a145b3b9b18d4c7b252ed1",
+   "nazov": "Počet trvalých pobytov žiakov v mestských častiach a lokalizácie ich základných škôl v Bratislave",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792667751000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/47475d0b07a145b3b9b18d4c7b252ed1",
+   "stlpcov": 3
+  },
+  {
    "id": "acc5578129af4102af5329e40a112c29",
    "nazov": "Počet učební v základných umeleckých školách v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5484,6 +5714,16 @@
    "stlpcov": 4
   },
   {
+   "id": "0e812aad360a41fe85a6f7d135c5c34b",
+   "nazov": "Počet základných a stredných škôl v Bratislave podľa ich veľkosti v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792668213000,
+   "riadkov": 10,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/0e812aad360a41fe85a6f7d135c5c34b",
+   "stlpcov": 3
+  },
+  {
    "id": "11bd2d2a2742405ea4d215b2686dffdd",
    "nazov": "Počet základných umeleckých škôl v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5514,6 +5754,16 @@
    "stlpcov": 5
   },
   {
+   "id": "3cdf1aea69e348c08dfa4755a35c4a7f",
+   "nazov": "Počet škôl v Bratislave za obdobie 2010 – 2022",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792664263000,
+   "riadkov": 39,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/3cdf1aea69e348c08dfa4755a35c4a7f",
+   "stlpcov": 3
+  },
+  {
    "id": "e420cc478e1646729c57030340d89b84",
    "nazov": "Počet študentov na jednotlivých vysokých školách v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5524,6 +5774,16 @@
    "stlpcov": 5
   },
   {
+   "id": "154e089138154ed7a8f1ebe3407e94d9",
+   "nazov": "Počet študentov na stredných školách v Bratislave podľa druhu strednej školy v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792664538000,
+   "riadkov": 3,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/154e089138154ed7a8f1ebe3407e94d9",
+   "stlpcov": 3
+  },
+  {
    "id": "58e49bfe0b664097b05ef91f52a7f74f",
    "nazov": "Počet študentov na vysokých školách v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5532,6 +5792,16 @@
    "stav": "katalog",
    "kde": "/bratislava/katalog/58e49bfe0b664097b05ef91f52a7f74f",
    "stlpcov": 5
+  },
+  {
+   "id": "40ff8512b8d64bd5a54df74969e27d00",
+   "nazov": "Počet žiakov a základných škôl podľa typu zriaďovateľa v Bratislave v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792668458000,
+   "riadkov": 10,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/40ff8512b8d64bd5a54df74969e27d00",
+   "stlpcov": 3
   },
   {
    "id": "d5fe56b5e4f844818fe7e9ca0fb5d8df",
@@ -5642,6 +5912,36 @@
    "stav": "katalog",
    "kde": "/bratislava/katalog/c9f5bd737ab9455ab9136ec919127f2c",
    "stlpcov": 6
+  },
+  {
+   "id": "e626d141abd74aaaa4ccc7453ddd90e5",
+   "nazov": "Prognózovaný vývoj účelových jednotiek materských škôl v Bratislave do roku 2050",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792670933000,
+   "riadkov": 145,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/e626d141abd74aaaa4ccc7453ddd90e5",
+   "stlpcov": 2
+  },
+  {
+   "id": "082accef36f8475c9afe20dc8ca10498",
+   "nazov": "Prognózovaný vývoj účelových jednotiek stredných škôl v Bratislave do roku 2050",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792672503000,
+   "riadkov": 145,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/082accef36f8475c9afe20dc8ca10498",
+   "stlpcov": 2
+  },
+  {
+   "id": "9f4bf1386c98497e840a521d863b24ce",
+   "nazov": "Prognózovaný vývoj účelových jednotiek základných škôl v Bratislave do roku 2050",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1792672452000,
+   "riadkov": 145,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/9f4bf1386c98497e840a521d863b24ce",
+   "stlpcov": 2
   },
   {
    "id": "9d734ed003a142a3b4034979e2498a7c",
@@ -6342,7 +6642,7 @@
    "nazov": "Starostlivosť o dreviny v Bratislave",
    "kategoria": "Životné prostredie",
    "upravene": 1778750501000,
-   "riadkov": 5768,
+   "riadkov": 5780,
    "stav": "osobitne",
    "kde": "/bratislava/mapa",
    "pozn": "Starostlivosť o dreviny"
@@ -6427,5 +6727,5 @@
    "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-10-20T04:54:49+00:00"
+ "aktualizovane": "2026-10-24T10:29:11+00:00"
 }
