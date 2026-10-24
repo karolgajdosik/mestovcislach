@@ -1,10 +1,31 @@
-/zilina/stvrte 404 0
-/bratislava/stvrte 200 42416
-/kosice/skoly 200 204816
-/trencin/zastupitelstvo 200 40522
-/bratislava/dane 200 38353
-/presov/novinky 200 34769
-/presov/novinky.xml 200 4880
-/nitra/kviz 200 104944
-/data/hladanie.json 200 930943
+== https://volbysr.sk 200 https://volbysr.sk/ text/html 595
+  linky: []
+  text:  
+== https://volbysr.sk/oso/sk/ 200 https://volbysr.sk/oso/sk/ text/html 26882
+  linky: ['../../osk/sk', '../en/index.html', '../files/MetodickyPokynNaSpracovanieVysledkovHlasovania2026.pdf', '../files/ZZ_2014_180_20260601.pdf', '../files/ZZ_2026_145_20260624.pdf', '../js/absolute.js', '../js/functions.js', '../js/idsk-frontend-2.9.0.min.js', '../js/jquery-1.12.3.min.js', '../js/jquery-ui.min.js', '../js/jquery.dataTables.min.js', '../js/slovak-sort.js', '../js/slovak.js', '../sk/index.html', 'cookies.html', 'https://idsk2.gov.sk/', 'https://jissu.statistics.sk/ui/sv/base/sv/sv-vseobecna/KS_350846_OSOOSK?lang=sk', 'https://slovak.statistics.sk/', 'https://slovak.statistics.sk/wps/portal/ext/home/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziA809LZycDB0NLPyCXA08QxwD3IO8TAwNTEz1wwkpiAJKG-AAjgZA_VFgJc7ujh4m5j4GBhY-7qYGno4eoUGWgcbGBo7GUAV4zCjIjTDIdFRUBADse0bP/dz/d5/L2dBISEvZ0FBIS9nQSEh/', 'https://www.googletagmanager.com/gtag/js?id=UA-48203852-1', 'https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci', 'index.html', 'kontakty.html', 'politicke_strany.html', 'subory_na_stiahnutie.html', 'uzemne_clenenie.html', 'vyhlasenie_o_pristupnosti.html']
+== https://volbysr.sk/oso/ 200 https://volbysr.sk/oso/ text/html 598
+  linky: []
+  text:  
+== https://www.volbysr.sk/ 200 https://www.volbysr.sk/ text/html 595
+  linky: []
+  text:  
+== https://volbysr.sk/oso/files/OSO2026_SK_csv.zip 404 https://volbysr.sk/oso/files/OSO2026_SK_csv.zip text/html 146
+  linky: []
+  text:  404 Not Found 404 Not Found nginx 
+== https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip 200 https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip application/zip 173044
+  linky: []
+== https://volbysr.sk/osk/files/OSK2026_SK_csv.zip 404 https://volbysr.sk/osk/files/OSK2026_SK_csv.zip text/html 146
+  linky: []
+  text:  404 Not Found 404 Not Found nginx 
+== https://volbysr.sk/sk/ 200 https://volbysr.sk/sk/ text/html 21807
+  linky: ['../en/index.html', '../js/functions.js', '../js/idsk-frontend-2.9.0.min.js', '../js/jquery-1.12.3.min.js', '../js/jquery-ui.min.js', '../osk/sk/index.html', '../oso/sk/index.html', '../sk/index.html', 'cookies.html', 'https://idsk2.gov.sk', 'https://slovak.statistics.sk/', 'https://slovak.statistics.sk/wps/portal/ext/home/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziA809LZycDB0NLPyCXA08QxwD3IO8TAwNTEz1wwkpiAJKG-AAjgZA_VFgJc7ujh4m5j4GBhY-7qYGno4eoUGWgcbGBo7GUAV4zCjIjTDIdFRUBADse0bP/dz/d5/L2dBISEvZ0FBIS9nQSEh/', 'https://volby.statistics.sk', 'https://www.googletagmanager.com/gtag/js?id=UA-48203852-1', 'https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci', 'index.html', 'kontakty.html', 'vyhlasenie_o_pristupnosti.html']
+== https://volbysr.sk/oso/sk/data.html 404 https://volbysr.sk/oso/sk/data.html text/html 146
+  linky: []
+  text:  404 Not Found 404 Not Found nginx 
+== https://volbysr.sk/oso/sk/download.html 404 https://volbysr.sk/oso/sk/download.html text/html 146
+  linky: []
+  text:  404 Not Found 404 Not Found nginx 
+== https://volbysr.sk/sk/data.html 404 https://volbysr.sk/sk/data.html text/html 146
+  linky: []
+  text:  404 Not Found 404 Not Found nginx 
 HOTOVO
