@@ -10,6 +10,7 @@ Licencia: © prispievatelia OpenStreetMap (ODbL).
 from __future__ import annotations
 
 import json
+import re
 import time
 from datetime import datetime, timezone
 
@@ -42,7 +43,11 @@ def voronoi_casti(m: dict, hr) -> list[dict]:
     body = {}
     for e in j.get("elements", []):
         n = e["tags"]["name"].strip()
-        if n and n != m["nazov"] and not n.startswith(m["nazov"] + " ") and n not in body and hr.contains(Point(e["lon"], e["lat"])):
+        if n == m["nazov"]:
+            n = "Centrum"  # bod s názvom mesta = jeho stred
+        if re.search(r"priemysel|ctpark|zóna|kolóni|rezidenci|logisti", n, re.I):
+            continue  # priemyselné zóny, záhradkárske kolónie a developerské projekty nie sú štvrte na bývanie
+        if n and not n.startswith(m["nazov"] + " ") and n not in body and hr.contains(Point(e["lon"], e["lat"])):
             body[n] = (e["lon"], e["lat"])
     if len(body) < 5:
         return []
