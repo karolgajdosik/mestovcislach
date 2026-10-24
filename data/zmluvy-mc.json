@@ -5,11 +5,11 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-10-20",
+ "do": "2026-10-23",
  "mestske_casti": {
   "Devín": {
-   "zmluv": 550,
-   "suma": 1750143,
+   "zmluv": 551,
+   "suma": 1750183,
    "roky": {
     "2022": [
      63,
@@ -28,13 +28,13 @@
      598785
     ],
     "2026": [
-     84,
-     128897
+     85,
+     128937
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 353,
-    "suma": 138655
+    "zmluv": 354,
+    "suma": 138695
    },
    "najvacsi_partneri": [
     {
@@ -212,8 +212,8 @@
    ]
   },
   "Devínska Nová Ves": {
-   "zmluv": 1404,
-   "suma": 64478831,
+   "zmluv": 1406,
+   "suma": 64478981,
    "roky": {
     "2022": [
      250,
@@ -232,8 +232,8 @@
      19516095
     ],
     "2026": [
-     208,
-     6378044
+     210,
+     6378194
     ]
    },
    "fyzicke_osoby": {
@@ -416,8 +416,8 @@
    ]
   },
   "Dúbravka": {
-   "zmluv": 2455,
-   "suma": 44599476,
+   "zmluv": 2466,
+   "suma": 44705784,
    "roky": {
     "2022": [
      443,
@@ -436,13 +436,13 @@
      9938981
     ],
     "2026": [
-     356,
-     15072073
+     367,
+     15178381
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1036,
-    "suma": 3344270
+    "zmluv": 1040,
+    "suma": 3346750
    },
    "najvacsi_partneri": [
     {
@@ -620,8 +620,8 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14628,
-   "suma": 2625964931,
+   "zmluv": 14632,
+   "suma": 2631232205,
    "roky": {
     "2022": [
      2618,
@@ -640,8 +640,8 @@
      334776233
     ],
     "2026": [
-     2470,
-     536669615
+     2474,
+     541936890
     ]
    },
    "fyzicke_osoby": {
@@ -824,8 +824,8 @@
    ]
   },
   "Jarovce": {
-   "zmluv": 929,
-   "suma": 9759246,
+   "zmluv": 930,
+   "suma": 9790246,
    "roky": {
     "2022": [
      86,
@@ -844,8 +844,8 @@
      1756731
     ],
     "2026": [
-     85,
-     2753691
+     86,
+     2784691
     ]
    },
    "fyzicke_osoby": {
@@ -908,6 +908,12 @@
      "suma": 53430
     },
     {
+     "nazov": "ProGrafit s.r.o.",
+     "ico": "48038687",
+     "zmluv": 3,
+     "suma": 50883
+    },
+    {
      "nazov": "Veríme v Zábavu, s.r.o.",
      "ico": "46167745",
      "zmluv": 1,
@@ -936,12 +942,6 @@
      "ico": "36063606",
      "zmluv": 7,
      "suma": 23018
-    },
-    {
-     "nazov": "ProGrafit s.r.o.",
-     "ico": "48038687",
-     "zmluv": 2,
-     "suma": 19883
     }
    ],
    "najvacsie_zmluvy": [
@@ -1028,8 +1028,8 @@
    ]
   },
   "Karlova Ves": {
-   "zmluv": 2465,
-   "suma": 70770793,
+   "zmluv": 2467,
+   "suma": 72515595,
    "roky": {
     "2022": [
      564,
@@ -1048,8 +1048,8 @@
      8212235
     ],
     "2026": [
-     354,
-     20822804
+     356,
+     22567605
     ]
    },
    "fyzicke_osoby": {
@@ -1088,6 +1088,12 @@
      "suma": 3809121
     },
     {
+     "nazov": "EURO-ŠTUKONZ a. s.",
+     "ico": "35972297",
+     "zmluv": 2,
+     "suma": 3454499
+    },
+    {
      "nazov": "BORMED, s.r.o.",
      "ico": "44366655",
      "zmluv": 2,
@@ -1116,12 +1122,6 @@
      "ico": null,
      "zmluv": 7,
      "suma": 1796808
-    },
-    {
-     "nazov": "EURO-ŠTUKONZ a. s.",
-     "ico": "35972297",
-     "zmluv": 1,
-     "suma": 1709698
     },
     {
      "nazov": "Úrad práce sociálnych vecí a rodiny",
@@ -1190,6 +1190,14 @@
      "s": 1862100.0
     },
     {
+     "id": "12974211",
+     "d": "2026-10-22",
+     "p": "EURO-ŠTUKONZ a. s.",
+     "ico": "35972297",
+     "pr": "Obnova budovy ZŠ Karloveská 61 z hľadiska zníženia energetickej náročnosti prevádzky školy.",
+     "s": 1744801.32
+    },
+    {
      "id": "12383277",
      "d": "2026-05-20",
      "p": "EURO-ŠTUKONZ a. s.",
@@ -1220,20 +1228,12 @@
      "ico": "44366655",
      "pr": "Nájomná zmluva",
      "s": 1440000.0
-    },
-    {
-     "id": "6438172",
-     "d": "2022-05-10",
-     "p": "BORMED, s.r.o.",
-     "ico": "44366655",
-     "pr": "Nájomná zmluva",
-     "s": 1440000.0
     }
    ]
   },
   "Lamač": {
-   "zmluv": 1337,
-   "suma": 34381726,
+   "zmluv": 1339,
+   "suma": 34398090,
    "roky": {
     "2022": [
      493,
@@ -1252,13 +1252,13 @@
      4758500
     ],
     "2026": [
-     163,
-     5833600
+     165,
+     5849965
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 682,
-    "suma": 349487
+    "zmluv": 683,
+    "suma": 365851
    },
    "najvacsi_partneri": [
     {
@@ -1436,8 +1436,8 @@
    ]
   },
   "Nové Mesto": {
-   "zmluv": 1751,
-   "suma": 122790575,
+   "zmluv": 1761,
+   "suma": 122807587,
    "roky": {
     "2022": [
      277,
@@ -1456,13 +1456,13 @@
      10986412
     ],
     "2026": [
-     443,
-     21644549
+     453,
+     21661561
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 607,
-    "suma": 4884400
+    "zmluv": 613,
+    "suma": 4888227
    },
    "najvacsi_partneri": [
     {
@@ -1640,8 +1640,8 @@
    ]
   },
   "Petržalka": {
-   "zmluv": 5061,
-   "suma": 207284998,
+   "zmluv": 5075,
+   "suma": 210038570,
    "roky": {
     "2022": [
      753,
@@ -1660,13 +1660,13 @@
      66104103
     ],
     "2026": [
-     851,
-     51442077
+     865,
+     54195648
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 2459,
-    "suma": 7425437
+    "zmluv": 2462,
+    "suma": 7426204
    },
    "najvacsi_partneri": [
     {
@@ -1844,8 +1844,8 @@
    ]
   },
   "Podunajské Biskupice": {
-   "zmluv": 1811,
-   "suma": 48631390,
+   "zmluv": 1822,
+   "suma": 48632215,
    "roky": {
     "2022": [
      234,
@@ -1864,13 +1864,13 @@
      11397075
     ],
     "2026": [
-     286,
-     15553387
+     297,
+     15554212
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 959,
-    "suma": 1319186
+    "zmluv": 970,
+    "suma": 1320011
    },
    "najvacsi_partneri": [
     {
@@ -2048,8 +2048,8 @@
    ]
   },
   "Rača": {
-   "zmluv": 3228,
-   "suma": 54091912,
+   "zmluv": 3232,
+   "suma": 54101651,
    "roky": {
     "2022": [
      568,
@@ -2068,13 +2068,13 @@
      11753305
     ],
     "2026": [
-     672,
-     9572133
+     676,
+     9581872
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1424,
-    "suma": 2277805
+    "zmluv": 1425,
+    "suma": 2277915
    },
    "najvacsi_partneri": [
     {
@@ -2456,8 +2456,8 @@
    ]
   },
   "Ružinov": {
-   "zmluv": 2669,
-   "suma": 172299117,
+   "zmluv": 2671,
+   "suma": 172849311,
    "roky": {
     "2022": [
      334,
@@ -2476,20 +2476,20 @@
      27813497
     ],
     "2026": [
-     463,
-     65767580
+     465,
+     66317774
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1491,
-    "suma": 2900843
+    "zmluv": 1492,
+    "suma": 2901043
    },
    "najvacsi_partneri": [
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
      "ico": "50349287",
-     "zmluv": 34,
-     "suma": 42895651
+     "zmluv": 35,
+     "suma": 43445644
     },
     {
      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
@@ -2660,8 +2660,8 @@
    ]
   },
   "Staré Mesto": {
-   "zmluv": 2475,
-   "suma": 114220410,
+   "zmluv": 2482,
+   "suma": 115102591,
    "roky": {
     "2022": [
      459,
@@ -2680,13 +2680,13 @@
      20943521
     ],
     "2026": [
-     493,
-     34089428
+     500,
+     34971608
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1094,
-    "suma": 10353741
+    "zmluv": 1095,
+    "suma": 10357399
    },
    "najvacsi_partneri": [
     {
@@ -2722,7 +2722,7 @@
     {
      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
      "ico": "00603481",
-     "zmluv": 67,
+     "zmluv": 70,
      "suma": 4648556
     },
     {
@@ -2774,10 +2774,10 @@
      "suma": 951136
     },
     {
-     "nazov": "STAVOJ, s. r. o.",
-     "ico": "45344302",
-     "zmluv": 4,
-     "suma": 811899
+     "nazov": "EURO-ŠTUKONZ a.s.",
+     "ico": "35972297",
+     "zmluv": 1,
+     "suma": 877679
     }
    ],
    "najvacsie_zmluvy": [
@@ -2864,8 +2864,8 @@
    ]
   },
   "Vajnory": {
-   "zmluv": 684,
-   "suma": 22918285,
+   "zmluv": 685,
+   "suma": 23587035,
    "roky": {
     "2022": [
      115,
@@ -2884,8 +2884,8 @@
      2552282
     ],
     "2026": [
-     168,
-     2847231
+     169,
+     3515981
     ]
    },
    "fyzicke_osoby": {
@@ -2896,8 +2896,8 @@
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
      "ico": "50349287",
-     "zmluv": 15,
-     "suma": 12390681
+     "zmluv": 16,
+     "suma": 13059431
     },
     {
      "nazov": "Slovenská sporiteľňa, a.s.",
@@ -3068,7 +3068,7 @@
    ]
   },
   "Vrakuňa": {
-   "zmluv": 1117,
+   "zmluv": 1118,
    "suma": 26926659,
    "roky": {
     "2022": [
@@ -3088,7 +3088,7 @@
      6223199
     ],
     "2026": [
-     160,
+     161,
      5539720
     ]
    },
@@ -3476,7 +3476,7 @@
    ]
   },
   "Čunovo": {
-   "zmluv": 288,
+   "zmluv": 289,
    "suma": 2743855,
    "roky": {
     "2022": [
@@ -3496,12 +3496,12 @@
      374844
     ],
     "2026": [
-     34,
+     35,
      1163725
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 133,
+    "zmluv": 134,
     "suma": 212997
    },
    "najvacsi_partneri": [
@@ -4196,8 +4196,8 @@
   },
   "Nové Mesto": {
    "poskytnute": {
-    "zmluv": 34,
-    "suma": 51600,
+    "zmluv": 37,
+    "suma": 56100,
     "prijimatelia": [
      {
       "nazov": "Novomestský športový klub 1922 Bratislava",
@@ -4236,7 +4236,7 @@
       "suma": 2000
      },
      {
-      "nazov": "CirKusKus, o.z.",
+      "nazov": "Spolok PAMODAJ",
       "suma": 1500
      }
     ]
@@ -4996,5 +4996,5 @@
    }
   }
  },
- "aktualizovane": "2026-10-21T05:52:28+00:00"
+ "aktualizovane": "2026-10-24T05:51:53+00:00"
 }
