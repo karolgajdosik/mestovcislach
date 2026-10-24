@@ -1,7 +1,11 @@
-import requests
-H={"User-Agent":"Mozilla/5.0 (mestovcislach diag)"}
-for u in ["/manifest.webmanifest","/sw.js","/offline/","/icon-512.png","/apple-touch-icon.png"]:
-    r=requests.get("https://mestovcislach.sk"+u,headers=H,timeout=30)
-    print(u, r.status_code, r.headers.get("content-type"), r.headers.get("cache-control"), len(r.content))
-h=requests.get("https://mestovcislach.sk/",headers=H,timeout=30).text
-print("manifest link:", 'rel="manifest"' in h, "sw reg:", "serviceWorker" in h)
+import subprocess, shutil, os, json
+r = subprocess.run(["python", "scripts/zber_mesta.py", "scitanie", "volby"], capture_output=True, text=True, timeout=3000)
+print("rc", r.returncode); print("\n".join(l for l in r.stdout.splitlines() if l.startswith(("  ", "OK", "::"))))
+print(r.stderr[-1500:])
+os.makedirs("diag", exist_ok=True)
+for s in ("kosice", "bratislava"):
+    shutil.copy(f"data/mesta/{s}.json", f"diag/{s}.json")
+    d = json.load(open(f"data/mesta/{s}.json"))
+    c = d.get("casti", {})
+    print(s, len(c), "častí;", sorted(c)[:30])
+    print(" obyv. názvy:", sorted(d["obyvatelia"]["casti"])[:30])

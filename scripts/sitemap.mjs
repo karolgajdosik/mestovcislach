@@ -10,7 +10,7 @@ const stranky = [];
 (function prejdi(dir) {
   for (const f of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, f.name);
-    if (f.isDirectory()) { if (!['_astro', 'data', 'og'].includes(f.name)) prejdi(p); }
+    if (f.isDirectory()) { if (!['_astro', 'data', 'og', 'offline', 'odber-potvrdeny'].includes(f.name)) prejdi(p); }
     else if (f.name === 'index.html') stranky.push('/' + path.relative(DIST, path.dirname(p)).split(path.sep).filter(Boolean).map(encodeURIComponent).join('/'));
   }
 })(DIST);

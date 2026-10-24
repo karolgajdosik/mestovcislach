@@ -136,6 +136,14 @@ def obyvatelia() -> dict:
     return vysl
 
 
+# údaje za mestské časti (Bratislava, Košice – mesto je v zdrojoch len ako súčet častí); zapíšu sa do kľúča „casti“
+CASTI: dict[str, dict] = defaultdict(lambda: defaultdict(dict))
+
+
+def nazov_casti(n: str) -> str:
+    return re.sub(r"^.*?-\s*(mestská časť\s*)?", "", norm(n))
+
+
 SCITANIE = {
     "vek": ("om7803rr", "e_age"),
     "vzdelanie": ("om7809rr", "e_edu"),
@@ -169,6 +177,13 @@ def scitanie() -> dict:
                     pass
             if sucet:
                 vysl[m["slug"]][tema] = {k: round(v) for k, v in sorted(sucet.items(), key=lambda kv: -kv[1])}
+            if not presne:
+                po_c: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+                for x in riadky:
+                    if patri(x["e_nuts15"], m["nazov"]) and not any(ma_spolu[c] and x[c].strip() != "Spolu" for c in ostatne):
+                        po_c[nazov_casti(x["e_nuts15"])][x[stlpec].strip()] += cislo(x["hodnota"])
+                for c, v in po_c.items():
+                    CASTI[m["slug"]].setdefault(c, {}).setdefault("scitanie", {})[tema] = {k: round(h) for k, h in sorted(v.items(), key=lambda kv: -kv[1])}
         print(f"  sčítanie {tema}: {sum(1 for v in vysl.values() if tema in v)} miest")
     return vysl
 
@@ -212,6 +227,19 @@ def volby() -> dict:
                 if h["Kód obce"] in obce:
                     strany[h["Názov politického subjektu"].strip()] += cislo(h["Počet platných hlasov"])
             spolu = sum(strany.values()) or 1
+            if not presne:
+                for u in ucast:
+                    if u["Kód obce"] not in obce:
+                        continue
+                    st: dict[str, float] = defaultdict(float)
+                    for h in hlasy:
+                        if h["Kód obce"] == u["Kód obce"]:
+                            st[h["Názov politického subjektu"].strip()] += cislo(h["Počet platných hlasov"])
+                    sp = sum(st.values()) or 1
+                    z = cislo(u["Počet zapísaných voličov"])
+                    CASTI[m["slug"]].setdefault(nazov_casti(u["Názov obce"]), {}).setdefault("volby", {})[vid] = {
+                        "ucast": round(100 * cislo(u["Počet zúčastnených voličov"]) / z, 2) if z else None,
+                        "strany": [{"nazov": n, "podiel": round(100 * h / sp, 2)} for n, h in sorted(st.items(), key=lambda x: -x[1]) if h > 0][:6]}
             vysl[m["slug"]][vid] = {
                 "nazov": nazov, "ucast": round(100 * zuc / zap, 2) if zap else None, "ucast_sr": cislo(sr.get("Účasť voličov v %")),
                 "strany": [{"nazov": n, "podiel": round(100 * h / spolu, 2)} for n, h in sorted(strany.items(), key=lambda x: -x[1]) if h > 0][:12],
@@ -348,6 +376,11 @@ def main() -> int:
                 d[modul] = v[m["slug"]]
         if cenovy is not None:
             d["ceny"] = {"kraj": cenovy.get(m["nuts3"], {}), "sr": cenovy.get("SK0", {})}
+        if CASTI.get(m["slug"]):
+            casti = {c: dict(v) for c, v in (d.get("casti") or {}).items()}
+            for c, v in CASTI[m["slug"]].items():
+                casti.setdefault(c, {}).update(v)
+            d["casti"] = dict(sorted(casti.items()))
         d["mesto"] = {k: m[k] for k in ("slug", "nazov", "kraj", "okresy")}
         d["zdroje"] = {
             "obyvatelia": "ŠÚ SR – DATAcube om7101rr", "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)", "volby": "ŠÚ SR – volby.statistics.sk",
