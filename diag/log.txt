@@ -1,20 +1,10 @@
-Naplnenosť SŠ: 874 škôl
-Bratislava: SŠ so záujmom 64/101
-Bratislava: 460 škôl – ms 182, zs 132, ss 101, spec 15, zus 30
-Trnava: SŠ so záujmom 15/25
-Trnava: 72 škôl – ms 16, zs 23, ss 25, spec 3, zus 5
-Nitra: SŠ so záujmom 17/20
-Nitra: 90 škôl – ms 30, zs 30, ss 20, spec 4, zus 6
-Trenčín: SŠ so záujmom 11/15
-Trenčín: 60 škôl – ms 26, zs 14, ss 15, spec 0, zus 5
-Žilina: SŠ so záujmom 19/25
-Žilina: 89 škôl – ms 27, zs 29, ss 25, spec 3, zus 5
-Banská Bystrica: SŠ so záujmom 15/19
-Banská Bystrica: 84 škôl – ms 43, zs 19, ss 19, spec 3, zus 0
-Prešov: SŠ so záujmom 28/36
-Prešov: 113 škôl – ms 36, zs 29, ss 36, spec 5, zus 7
-Košice: SŠ so záujmom 41/57
-Košice: 246 škôl – ms 99, zs 72, ss 57, spec 9, zus 9
-
-
+/zilina/stvrte 200 45357
+/bratislava/stvrte 200 42407
+/kosice/skoly 200 204808
+/trencin/zastupitelstvo 200 40514
+/bratislava/dane 200 38344
+/presov/novinky 200 34761
+/presov/novinky.xml 200 4880
+/nitra/kviz 200 32751
+/data/hladanie.json 200 931245
 HOTOVO
