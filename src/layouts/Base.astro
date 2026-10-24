@@ -57,6 +57,21 @@ const NOVE: [string, string, string, boolean][] = [
 ];
 const NASTROJE: [string, string, string][] = ['kviz', 'stvrte', 'dane', 'skoly', 'zastupitelstvo', 'novinky'].map((k) => { const x = NOVE.find((n) => n[0] === k)!; return [k, k === 'stvrte' ? 'Ktorá štvrť je pre mňa' : k === 'dane' ? 'Kam idú moje dane' : x[1], x[2]]; });
 const NOVE_MENU = NOVE.filter((x) => x[3]).map(([h, n, i]) => [`/${mesto.slug}/${h}`, n, i] as [string, string, string]);
+// Skupiny v bočnom a mobilnom menu mesta (položky v poradí MENU, skupina podľa poslednej časti adresy)
+const SKUPINY: [string, string[]][] = [
+  ['', ['', '#teraz', 'mapa', 'adresa']],
+  ['Ľudia a život', ['obyvatelia', '#obyvatelia', 'mestske-casti', '#praca', 'zivot', 'vybavenost', 'prostredie', 'bezpecnost', 'skoly', 'stvrte', 'pribeh']],
+  ['Doprava', ['doprava', 'odchody', 'dosah']],
+  ['Samospráva', ['volby', 'zastupitelstvo', 'samosprava', 'financie', 'dane', '#stavby', 'vystavba', 'novinky', 'kalendar', 'katalog']],
+  ['Hry', ['kviz']],
+];
+const kluc = (href: string) => href.replace(`/${mesto.slug}`, '').replace(/^\//, '');
+const skupinyMenu = (pol: [string, string, string][]) => {
+  const out = SKUPINY.map(([n, k]) => ({ n, pol: pol.filter(([h]) => k.includes(kluc(h))) }));
+  const zvysok = pol.filter(([h]) => !SKUPINY.some(([, k]) => k.includes(kluc(h))));
+  if (zvysok.length) out.push({ n: 'Ďalšie', pol: zvysok });
+  return out.filter((s) => s.pol.length);
+};
 const spolocna = jeSpolocna(Astro.url.pathname.replace(/\/$/, '') || '/');
 const zivaLista = !spolocna;
 const ba = mesto.slug === 'bratislava';
@@ -187,17 +202,20 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
       {!spolocna && (
         <nav class="bocne" aria-label={`Sekcie – ${mesto.nazov}`}>
           <p class="bocne-mesto" translate="no">{mesto.nazov}</p>
-          <ul>
-            {MENU.filter(([href]) => href !== '/porovnanie').map(([href, text, ikona]) => {
-              const aktivne = href === `/${mesto.slug}` ? Astro.url.pathname.replace(/\/$/, '') === href : Astro.url.pathname.replace(/\/$/, '') === href || Astro.url.pathname.startsWith(href + '/');
-              return (
-                <li><a href={href} aria-current={aktivne ? 'page' : undefined} class={href.endsWith('/mapa') ? 'menu-mapa' : undefined} title={uzkeBocne ? text : undefined}>
-                  <svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} />
-                  <span>{text}</span>
-                </a></li>
-              );
-            })}
-          </ul>
+          {skupinyMenu(MENU.filter(([href]) => href !== '/porovnanie')).map((s) => (<>
+            {s.n && <p class="bocne-skupina">{s.n}</p>}
+            <ul>
+              {s.pol.map(([href, text, ikona]) => {
+                const aktivne = href === `/${mesto.slug}` ? Astro.url.pathname.replace(/\/$/, '') === href : Astro.url.pathname.replace(/\/$/, '') === href || Astro.url.pathname.startsWith(href + '/');
+                return (
+                  <li><a href={href} aria-current={aktivne ? 'page' : undefined} class={href.endsWith('/mapa') ? 'menu-mapa' : undefined} title={uzkeBocne ? text : undefined}>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} />
+                    <span>{text}</span>
+                  </a></li>
+                );
+              })}
+            </ul>
+          </>))}
         </nav>
       )}
       <main class="wrap" id="obsah" tabindex="-1">
@@ -232,12 +250,15 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
         <button type="button" class="mp-zavriet" aria-label="Zavrieť menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
       </div>
       {!spolocna && (
-        <ul class="mp-sekcie">
-          {MENU.filter(([href]) => href !== '/porovnanie').map(([href, text, ikona]) => {
-            const akt = href === `/${mesto.slug}` ? Astro.url.pathname.replace(/\/$/, '') === href : Astro.url.pathname.replace(/\/$/, '') === href || Astro.url.pathname.startsWith(href + '/');
-            return <li><a href={href} aria-current={akt ? 'page' : undefined} class={href.endsWith('/mapa') ? 'menu-mapa' : undefined}><svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} /><span>{text}</span></a></li>;
-          })}
-        </ul>
+        skupinyMenu(MENU.filter(([href]) => href !== '/porovnanie')).map((s) => (<>
+          {s.n && <p class="mp-nadpis">{s.n}</p>}
+          <ul class="mp-sekcie">
+            {s.pol.map(([href, text, ikona]) => {
+              const akt = href === `/${mesto.slug}` ? Astro.url.pathname.replace(/\/$/, '') === href : Astro.url.pathname.replace(/\/$/, '') === href || Astro.url.pathname.startsWith(href + '/');
+              return <li><a href={href} aria-current={akt ? 'page' : undefined} class={href.endsWith('/mapa') ? 'menu-mapa' : undefined}><svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} /><span>{text}</span></a></li>;
+            })}
+          </ul>
+        </>))
       )}
       {spolocna ? <Rozcestnik rezim="menu" nastroje={NASTROJE} /> : (
         <>
@@ -611,6 +632,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     .bocne { display: block; position: sticky; top: var(--vyska-hlavicky); align-self: start; max-height: calc(100dvh - var(--vyska-hlavicky)); overflow-y: auto; padding: 22px 0 24px; scrollbar-width: thin; }
     .bocne-mesto { margin: 0 0 8px 12px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
     .bocne ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .bocne-skupina { margin: 16px 0 4px 12px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
     .bocne a { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 6px 12px; border-radius: 10px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.93rem; }
     .bocne a svg { width: 19px; height: 19px; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
     .bocne a:hover { background: color-mix(in srgb, var(--accent) 9%, transparent); }
@@ -623,6 +645,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     .telo.uzke { grid-template-columns: 60px minmax(0, 1fr); gap: 0; max-width: none; padding: 0; }
     .telo.uzke > main.wrap { max-width: none; }
     .telo.uzke .bocne { padding: 12px 8px; border-right: 1px solid var(--line); background: var(--card); }
+    .telo.uzke .bocne-skupina { height: 1px; margin: 8px 6px; background: var(--line); font-size: 0; overflow: hidden; }
     .telo.uzke .bocne-mesto, .telo.uzke .bocne a span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     .telo.uzke .bocne a { justify-content: center; padding: 0; width: 44px; min-height: 44px; }
     .telo.uzke .mapa-app { width: 100%; margin-left: 0; margin-right: 0; }
