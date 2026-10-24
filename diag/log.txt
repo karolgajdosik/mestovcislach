@@ -1,18 +1,2 @@
-/bratislava/dosah/ 200 text/html; charset=utf-8 36981
-/presov/dosah/ 200 text/html; charset=utf-8 34260
-/kosice/kalendar/ 200 text/html; charset=utf-8 41787
-/kosice/kalendar.ics 200 text/calendar; charset=utf-8 11344
-/porovnaj/ 200 text/html; charset=utf-8 48845
-/suboj/ 200 text/html; charset=utf-8 45396
-/dodavatelia/ 200 text/html; charset=utf-8 36990
-/nitra/pribeh/ 200 text/html; charset=utf-8 44210
-/data/novinky/kosice.json 200 application/json 1045
-/data/dodavatelia.json 200 application/json 385362
-/data/dodavatelia/31718914.json 200 application/json 6469
-/bratislava/dane/ 200 text/html; charset=utf-8 48108
-úvod má Môj prehľad: True
-api/suboj GET 503
-api/odhlasit zlý podpis 400
-api/odber zlé IČO 400 Vyberte firmu zo zoznamu.
-api/odber pasca 200
+api/suboj 200 {"ok":true,"pocty":{}}
 HOTOVO
