@@ -249,7 +249,7 @@ def volby() -> dict:
 
 
 KOMUNALNE = [("2022", ["https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip", "https://web.archive.org/web/20241201215347id_/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip"]),
-             ("2026", ["https://volbysr.sk/oso/files/OSO2026_SK_csv.zip", "https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip"])]
+             ("2026", ["https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip", "https://volbysr.sk/oso/files/OSO2026_SK_csv.zip"])]
 
 
 def komunalne(stare: dict | None = None) -> dict:

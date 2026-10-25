@@ -39,8 +39,8 @@ VOLBY = [
      "osk": ["https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip"],
      "web": "https://volby.statistics.sk/oso/oso2022/sk/"},
     {"id": "2026", "datum": "2026-10-24", "nazov": "Komunálne a krajské voľby 2026",
-     "oso": ["https://volbysr.sk/oso/files/OSO2026_SK_csv.zip", "https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip"],
-     "osk": ["https://volbysr.sk/osk/files/OSK2026_SK_csv.zip", "https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip"],
+     "oso": ["https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip", "https://volbysr.sk/oso/files/OSO2026_SK_csv.zip"],
+     "osk": ["https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip", "https://volbysr.sk/osk/files/OSK2026_SK_csv.zip"],
      "web": "https://volbysr.sk/oso/sk/"},
 ]
 
@@ -64,8 +64,13 @@ IDENT = ("KRAJ", "VOBVOD", "OBEC", "VOOBEC", "OKRSOK", "PC_HL", "PS")
 
 
 def normalizuj_kluc(nazov: str) -> str:
-    """tab05f/tab05fx → tab05, tab0ad/tab0ax → tab0a, tab02bf/tab02bfx → tab02b, tab0dd/tab0dx/tab0dc → tab0d."""
+    """tab05f/tab05fx → tab05, tab0ad/tab0ax → tab0a, tab02bf/tab02bfx (2026: tab02f/tab02fx) → tab02b, tab0dd/tab0dx/tab0dc → tab0d."""
     n = nazov.lower()
+    # 2026 (XLSX): účasť po okrskoch je tab02f/tab02fx (v 2022 tab02b); tab02b–e sú súhrny za obvody, okresy, obce
+    if n.startswith("tab02f"):
+        return "tab02b"
+    if re.fullmatch(r"tab02[b-e]x?", n):
+        return n + "_suhrn"
     for zaklad in ("tab0a", "tab0b", "tab0c", "tab0d", "tab02a", "tab02b", "tab05", "tab06", "tab08", "tab09"):
         if n.startswith(zaklad):
             return zaklad
@@ -446,6 +451,14 @@ def spracuj_oso(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
             "kandidati": bez_klucov(v), "miestne_zastupitelstvo": {"poslancov": len(zvol), "mandaty": mandaty(zvol)},
         })
     starostovia.sort(key=lambda x: x["nazov"])
+    # ak párovanie okrskov podľa voličov nepokrylo všetky MČ (2026: 15/17), použiť metódu z primator_po_mc
+    # (párovanie cez platné hlasy pre voľbu starostu) – rovnaká štruktúra (kod, nazov, ucast, poradie)
+    if len(prim_mc) < len(mc):
+        alt, kontrola = primator_po_mc(t, MESTO, "Bratislava", strany)
+        if len(alt) > len(prim_mc) and not kontrola.get("hlasy_nad_volicov"):
+            prim_mc = [{"kod": x["kod"], "nazov": nazvy_mc.get(x["kod"], x["nazov"]), "ucast": x["ucast"],
+                        "poradie": [{"meno": p["meno"], "podiel": p["podiel"]} for p in x["poradie"]]} for x in alt]
+            print(f"  MČ podľa platných hlasov: {len(prim_mc)}, okrsky {kontrola}")
 
     return {
         "primator": {"ucast": ucast(ucast_okrsky, {MESTO}), "kandidati": bez_klucov(primator), "mestske_casti": prim_mc,
@@ -453,6 +466,15 @@ def spracuj_oso(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
         "mestske_zastupitelstvo": {"poslancov": len(msz), "obvodov": len(obvod_casti), "mandaty": mandaty(msz), "zvoleni": msz},
         "starostovia": starostovia,
     }
+
+
+def _tab_ucast(t: dict[str, list[dict]]) -> list[dict]:
+    """Účasť po okrskoch alebo obciach: 2022 tab02b; 2026 OSO tab02f(x) → tab02b, OSK tab02d (okrsky) / tab02c (obce)."""
+    for k in ("tab02b", "tab02d_suhrn", "tab02c_suhrn"):
+        r = [x for x in t.get(k, []) if x.get("OBEC") and x.get("P_ZAP")]
+        if r:
+            return r
+    return []
 
 
 def spracuj_osk(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
@@ -463,20 +485,28 @@ def spracuj_osk(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
     ba_obvody = {kod(r["VOBVOD"]) for r in uzemie if kod(r["OBEC"]) in ba_obce}
     kand = [r for r in t["tab0a"] if kod(r["KRAJ"]) == "1"]
     pc = lambda r: kod(r["PC_HL"])  # noqa: E731
-    zvol_pred = {kod(r["PC_HL"]) for r in t.get("tab06", []) + t.get("tab06_agg", [])
+    vsetky06 = t.get("tab06", []) + t.get("tab06_agg", [])
+    zvol_pred = {kod(r["PC_HL"]) for r in vsetky06
                  if zvoleny_flag(r) == "1" and r.get("PC_HL") and (not r.get("KRAJ") or kod(r["KRAJ"]) == "1") and (not r.get("OBEC") or kod(r["OBEC"]) in kraj_obce)}
-    predseda_kraj = vysledky_kandidatov(t["tab06"], kand, strany, pc, lambda r: kod(r["OBEC"]) in kraj_obce, zvol_pred)
-    predseda_ba = vysledky_kandidatov(t["tab06"], kand, strany, pc, lambda r: kod(r["OBEC"]) in ba_obce)
+    # hlasy za predsedu: riadky s obcou (2026 je v tab06 aj súhrn za kraj bez obce – ten nesčítavame)
+    hl06 = [r for r in t.get("tab06", []) if r.get("OBEC")]
+    predseda_kraj = vysledky_kandidatov(hl06, kand, strany, pc, lambda r: kod(r["OBEC"]) in kraj_obce, zvol_pred)
+    predseda_ba = vysledky_kandidatov(hl06, kand, strany, pc, lambda r: kod(r["OBEC"]) in ba_obce)
     obec_obvod = {kod(r["OBEC"]): kod(r["VOBVOD"]) for r in uzemie}
     kand_pos = {(kod(r["VOBVOD"]), kod(r["PC_HL"])): r for r in t["tab0b"] if kod(r["VOBVOD"]) in ba_obvody}
+    # hlasy poslancov: súhrn za volebný obvod, ak je; inak súčet za obce alebo okrsky (nikdy viac úrovní naraz)
+    riadky09 = t.get("tab09", []) + t.get("tab09_agg", [])
+    uroven = lambda r: "okrsok" if r.get("OKRSOK") else "obec" if r.get("OBEC") else "obvod"  # noqa: E731
+    urovne = {uroven(r) for r in riadky09 if r.get("P_HL")}
+    pouzi = next((u for u in ("obvod", "obec", "okrsok") if u in urovne), None)
     hl: dict[tuple, float] = defaultdict(float)
     zvol: set[tuple] = set()
-    for r in t["tab09"] + t.get("tab09_agg", []):
+    for r in riadky09:
         vo = kod(r["VOBVOD"]) if r.get("VOBVOD") else obec_obvod.get(kod(r.get("OBEC", "")))
         if vo not in ba_obvody or not r.get("PC_HL"):
             continue
         k = (vo, kod(r["PC_HL"]))
-        if "OKRSOK" in r:
+        if uroven(r) == pouzi and r.get("P_HL"):
             hl[k] += cislo(r["P_HL"])
         if zvoleny_flag(r) == "1":
             zvol.add(k)
@@ -486,10 +516,11 @@ def spracuj_osk(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
             nazov_obvodu[kod(r["VOBVOD"])].add(nazvy_mc.get(kod(r["OBEC"]), r["NOBEC"].replace("Bratislava - ", "")))
     poslanci = [{"obvod": ", ".join(sorted(nazov_obvodu.get(k[0], {k[0]}))), "meno": meno(kand_pos[k]), "strany": strany_kandidata(kand_pos[k], strany), "hlasy": int(hl[k])}
                 for k in sorted(zvol, key=lambda k: (k[0], -hl[k], k)) if k in kand_pos]
+    u = _tab_ucast(t)
     return {
         "predseda": {
-            "kraj": {"ucast": ucast(t["tab02b"], kraj_obce), "kandidati": bez_klucov(predseda_kraj)},
-            "bratislava": {"ucast": ucast(t["tab02b"], ba_obce), "kandidati": [{"meno": x["meno"], "hlasy": x["hlasy"], "podiel": x["podiel"]} for x in predseda_ba]},
+            "kraj": {"ucast": ucast(u, kraj_obce), "kandidati": bez_klucov(predseda_kraj)},
+            "bratislava": {"ucast": ucast(u, ba_obce), "kandidati": [{"meno": x["meno"], "hlasy": x["hlasy"], "podiel": x["podiel"]} for x in predseda_ba]},
         },
         "poslanci_za_bratislavu": {"poslancov": len(poslanci), "mandaty": mandaty(poslanci), "zvoleni": poslanci},
     }
