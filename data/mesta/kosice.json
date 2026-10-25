@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T02:05:44",
+ "aktualizovane": "2026-10-25T02:47:37",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -1799,71 +1799,71 @@
   },
   "2026": {
    "ucast": {
-    "zapisani": 192159,
-    "volili": 71295,
-    "ucast_pct": 37.1
+    "zapisani": 192941,
+    "volili": 71607,
+    "ucast_pct": 37.11
    },
    "spracovanie": {
     "okrsky": null,
     "spolu": null,
-    "pct": 99.47,
-    "priebezne": true,
+    "pct": 100.0,
+    "priebezne": false,
     "zdroj": "volbysr.sk (priebežne)"
    },
    "primator": [
     {
      "meno": "Ladislav Lörinc",
      "strany": "Košická strana",
-     "hlasy": 27244,
+     "hlasy": 27364,
      "podiel": 39.89,
-     "zvoleny": false
+     "zvoleny": true
     },
     {
      "meno": "Jaroslav Polaček",
      "strany": "KDH, SaS, Magyar Szövetség - Maďarská aliancia, SRK, NOVA, DS-ODS",
-     "hlasy": 14701,
+     "hlasy": 14766,
      "podiel": 21.52,
      "zvoleny": false
     },
     {
      "meno": "Martin Mudrák",
      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
-     "hlasy": 12745,
-     "podiel": 18.66,
+     "hlasy": 12816,
+     "podiel": 18.68,
      "zvoleny": false
     },
     {
      "meno": "Lenka Kovačevičová",
      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, PRAVDA",
-     "hlasy": 8484,
-     "podiel": 12.42,
+     "hlasy": 8513,
+     "podiel": 12.41,
      "zvoleny": false
     },
     {
      "meno": "Alexander Riabov",
      "strany": "NEKA",
-     "hlasy": 3165,
+     "hlasy": 3177,
      "podiel": 4.63,
      "zvoleny": false
     },
     {
      "meno": "Ladislav Lörincz",
      "strany": "Jednota Slovanov",
-     "hlasy": 1392,
+     "hlasy": 1397,
      "podiel": 2.03,
      "zvoleny": false
     },
     {
      "meno": "Miroslav Sabol",
      "strany": "NEKA",
-     "hlasy": 377,
+     "hlasy": 378,
      "podiel": 0.55,
      "zvoleny": false
     },
     {
      "meno": "Alexander Székely",
      "strany": "Slovenské Hnutie Obrody",
-     "hlasy": 179,
+     "hlasy": 181,
      "podiel": 0.26,
      "zvoleny": false
     }
