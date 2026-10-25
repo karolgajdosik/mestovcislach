@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-21T05:21:51",
+ "aktualizovane": "2026-10-25T02:47:37",
  "obyvatelia": {
   "roky": {
    "1993": 85686,
@@ -453,6 +453,83 @@
       "hlasy": 587
      }
     ]
+   }
+  },
+  "2026": {
+   "ucast": {
+    "zapisani": 68612,
+    "volili": 29494,
+    "ucast_pct": 42.98
+   },
+   "spracovanie": {
+    "okrsky": null,
+    "spolu": null,
+    "pct": 100.0,
+    "priebezne": false,
+    "zdroj": "volbysr.sk (priebežne)"
+   },
+   "primator": [
+    {
+     "meno": "Peter Fiabáne",
+     "strany": "NEKA",
+     "hlasy": 11854,
+     "podiel": 41.22,
+     "zvoleny": true
+    },
+    {
+     "meno": "Rastislav Johanes",
+     "strany": "NEKA",
+     "hlasy": 8203,
+     "podiel": 28.52,
+     "zvoleny": false
+    },
+    {
+     "meno": "Peter Cibulka",
+     "strany": "NEKA",
+     "hlasy": 6348,
+     "podiel": 22.07,
+     "zvoleny": false
+    },
+    {
+     "meno": "Miroslav Sokol",
+     "strany": "NEKA",
+     "hlasy": 921,
+     "podiel": 3.2,
+     "zvoleny": false
+    },
+    {
+     "meno": "Michal Milo",
+     "strany": "REPUBLIKA",
+     "hlasy": 834,
+     "podiel": 2.9,
+     "zvoleny": false
+    },
+    {
+     "meno": "Anton Kozlík",
+     "strany": "NEKA",
+     "hlasy": 439,
+     "podiel": 1.52,
+     "zvoleny": false
+    },
+    {
+     "meno": "Ivan Magát",
+     "strany": "NEKA",
+     "hlasy": 116,
+     "podiel": 0.4,
+     "zvoleny": false
+    },
+    {
+     "meno": "Bohumil Kostolný",
+     "strany": "NEKA",
+     "hlasy": 39,
+     "podiel": 0.13,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 0,
+    "mandaty": [],
+    "poslanci": []
    }
   }
  },

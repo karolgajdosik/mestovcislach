@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-21T05:21:51",
+ "aktualizovane": "2026-10-25T03:19:11",
  "obyvatelia": {
   "roky": {
    "1993": 71624,
@@ -424,6 +424,69 @@
       "hlasy": 322
      }
     ]
+   }
+  },
+  "2026": {
+   "ucast": {
+    "zapisani": 54190,
+    "volili": 22740,
+    "ucast_pct": 41.96
+   },
+   "spracovanie": {
+    "okrsky": null,
+    "spolu": null,
+    "pct": 100.0,
+    "priebezne": false,
+    "zdroj": "volbysr.sk (priebežne)"
+   },
+   "primator": [
+    {
+     "meno": "Eva Nemčovská",
+     "strany": "NEKA",
+     "hlasy": 13411,
+     "podiel": 60.47,
+     "zvoleny": true
+    },
+    {
+     "meno": "Branislav Baroš",
+     "strany": "TPK, KDH",
+     "hlasy": 6848,
+     "podiel": 30.87,
+     "zvoleny": false
+    },
+    {
+     "meno": "Martin Pullmann",
+     "strany": "SMER - SD, HLAS - sociálna demokracia, SNS, REPUBLIKA",
+     "hlasy": 826,
+     "podiel": 3.72,
+     "zvoleny": false
+    },
+    {
+     "meno": "Andrea Čajková",
+     "strany": "NEKA",
+     "hlasy": 744,
+     "podiel": 3.35,
+     "zvoleny": false
+    },
+    {
+     "meno": "Jozef Obselka",
+     "strany": "NEKA",
+     "hlasy": 267,
+     "podiel": 1.2,
+     "zvoleny": false
+    },
+    {
+     "meno": "Ľubica Horváthová",
+     "strany": "Demokrati",
+     "hlasy": 81,
+     "podiel": 0.36,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 0,
+    "mandaty": [],
+    "poslanci": []
    }
   }
  },

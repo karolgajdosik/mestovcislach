@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-21T05:21:51",
+ "aktualizovane": "2026-10-25T00:56:15",
  "obyvatelia": {
   "roky": {
    "1993": 57748,
@@ -370,6 +370,55 @@
       "hlasy": 993
      }
     ]
+   }
+  },
+  "2026": {
+   "ucast": {
+    "zapisani": 46507,
+    "volili": 18446,
+    "ucast_pct": 39.66
+   },
+   "spracovanie": {
+    "okrsky": null,
+    "spolu": null,
+    "pct": 100.0,
+    "priebezne": false,
+    "zdroj": "volbysr.sk (priebežne)"
+   },
+   "primator": [
+    {
+     "meno": "Ján Forgáč",
+     "strany": "NEKA",
+     "hlasy": 12413,
+     "podiel": 69.17,
+     "zvoleny": true
+    },
+    {
+     "meno": "Miloš Mičega",
+     "strany": "NEKA",
+     "hlasy": 4203,
+     "podiel": 23.42,
+     "zvoleny": false
+    },
+    {
+     "meno": "Danica Birošová",
+     "strany": "NEKA",
+     "hlasy": 873,
+     "podiel": 4.86,
+     "zvoleny": false
+    },
+    {
+     "meno": "Michal Bratranec",
+     "strany": "NEKA",
+     "hlasy": 455,
+     "podiel": 2.53,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 0,
+    "mandaty": [],
+    "poslanci": []
    }
   }
  },

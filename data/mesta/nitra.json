@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-21T05:21:51",
+ "aktualizovane": "2026-10-25T03:55:13",
  "obyvatelia": {
   "roky": {
    "1993": 86679,
@@ -428,6 +428,55 @@
       "hlasy": 447
      }
     ]
+   }
+  },
+  "2026": {
+   "ucast": {
+    "zapisani": 66075,
+    "volili": 27101,
+    "ucast_pct": 41.01
+   },
+   "spracovanie": {
+    "okrsky": null,
+    "spolu": null,
+    "pct": 100.0,
+    "priebezne": false,
+    "zdroj": "volbysr.sk (priebežne)"
+   },
+   "primator": [
+    {
+     "meno": "Marek Hattas",
+     "strany": "Tím Kraj Nitra, Progresívne Slovensko, KDH, SaS, Demokrati, SLOVENSKO, OKS",
+     "hlasy": 13459,
+     "podiel": 50.66,
+     "zvoleny": true
+    },
+    {
+     "meno": "Igor Kršiak",
+     "strany": "NEKA",
+     "hlasy": 10379,
+     "podiel": 39.07,
+     "zvoleny": false
+    },
+    {
+     "meno": "Marek Illéš",
+     "strany": "SMER - SD, HLAS - sociálna demokracia, SME RODINA",
+     "hlasy": 1685,
+     "podiel": 6.34,
+     "zvoleny": false
+    },
+    {
+     "meno": "Zuzana Uhríková",
+     "strany": "REPUBLIKA, SNS",
+     "hlasy": 1041,
+     "podiel": 3.91,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 0,
+    "mandaty": [],
+    "poslanci": []
    }
   }
  },

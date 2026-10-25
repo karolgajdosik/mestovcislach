@@ -1,7 +1,6 @@
-import requests, zipfile, io
-H={"User-Agent":"Mozilla/5.0 (mestovcislach diag)"}
-for u in ["https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip","https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip"]:
-    r=requests.get(u,headers=H,timeout=120); print(u.split('/')[-1], r.headers.get("last-modified"), sorted(zipfile.ZipFile(io.BytesIO(r.content)).namelist()))
-for p in ["oso/json/tab06e1/500011.json","oso/json/tab07/500011.json","oso/json/tab07/582000.json","oso/json/dateSK.json","osk/json/dateSK.json"]:
-    r=requests.get("https://volbysr.sk/"+p,headers=H,timeout=60); print(p, r.status_code, r.text[:200] if r.ok else "")
+import subprocess, sys
+subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
+for cmd in [["scripts/zber_komunalne.py"], ["scripts/zber_mesta.py","komunalne"]]:
+    r=subprocess.run([sys.executable]+cmd, capture_output=True, text=True, timeout=1500)
+    print("==", cmd, r.returncode); print(r.stdout[-2500:]); print(r.stderr[-3000:])
 print("HOTOVO")
