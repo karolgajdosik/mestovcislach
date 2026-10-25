@@ -2111,10 +2111,574 @@
      "mandaty": [],
      "zvoleni": []
     },
-    "starostovia": []
+    "starostovia": [
+     {
+      "kod": "529401",
+      "nazov": "Devín",
+      "ucast": {
+       "zapisani": 1617,
+       "volili": 1042,
+       "ucast_pct": 64.44
+      },
+      "kandidati": [
+       {
+        "meno": "Martin Galát",
+        "strany": "NEKA",
+        "hlasy": 554,
+        "podiel": 57.82,
+        "zvoleny": true
+       },
+       {
+        "meno": "Pavol Maruščák",
+        "strany": "NEKA",
+        "hlasy": 230,
+        "podiel": 24.0,
+        "zvoleny": false
+       },
+       {
+        "meno": "Igor Prieložný",
+        "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
+        "hlasy": 174,
+        "podiel": 18.16,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529371",
+      "nazov": "Devínska Nová Ves",
+      "ucast": {
+       "zapisani": 14956,
+       "volili": 7382,
+       "ucast_pct": 49.35
+      },
+      "kandidati": [
+       {
+        "meno": "Dárius Krajčír",
+        "strany": "SOM SLOVENSKO",
+        "hlasy": 5307,
+        "podiel": 77.09,
+        "zvoleny": true
+       },
+       {
+        "meno": "Ľuboš Krajčír",
+        "strany": "NEKA",
+        "hlasy": 1370,
+        "podiel": 19.9,
+        "zvoleny": false
+       },
+       {
+        "meno": "Denis Ružovič",
+        "strany": "SV",
+        "hlasy": 207,
+        "podiel": 3.0,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529389",
+      "nazov": "Dúbravka",
+      "ucast": {
+       "zapisani": 30485,
+       "volili": 13754,
+       "ucast_pct": 45.11
+      },
+      "kandidati": [
+       {
+        "meno": "Martin Zaťovič",
+        "strany": "SOM SLOVENSKO",
+        "hlasy": 11195,
+        "podiel": 100.0,
+        "zvoleny": true
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529443",
+      "nazov": "Jarovce",
+      "ucast": {
+       "zapisani": 2472,
+       "volili": 1608,
+       "ucast_pct": 65.04
+      },
+      "kandidati": [
+       {
+        "meno": "Jozef Uhler",
+        "strany": "NEKA",
+        "hlasy": 1433,
+        "podiel": 100.0,
+        "zvoleny": true
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529397",
+      "nazov": "Karlova Ves",
+      "ucast": {
+       "zapisani": 30343,
+       "volili": 15306,
+       "ucast_pct": 50.44
+      },
+      "kandidati": [
+       {
+        "meno": "Martin Vician",
+        "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
+        "hlasy": 7523,
+        "podiel": 52.15,
+        "zvoleny": true
+       },
+       {
+        "meno": "Branislav Záhradník",
+        "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 6900,
+        "podiel": 47.84,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529419",
+      "nazov": "Lamač",
+      "ucast": {
+       "zapisani": 7183,
+       "volili": 3640,
+       "ucast_pct": 50.67
+      },
+      "kandidati": [
+       {
+        "meno": "Igor Polakovič",
+        "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
+        "hlasy": 2071,
+        "podiel": 59.34,
+        "zvoleny": true
+       },
+       {
+        "meno": "Mária Šimončičová",
+        "strany": "NEKA",
+        "hlasy": 1419,
+        "podiel": 40.65,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529346",
+      "nazov": "Nové Mesto",
+      "ucast": {
+       "zapisani": 40643,
+       "volili": 19403,
+       "ucast_pct": 47.74
+      },
+      "kandidati": [
+       {
+        "meno": "Matúš Čupka",
+        "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
+        "hlasy": 10059,
+        "podiel": 54.93,
+        "zvoleny": true
+       },
+       {
+        "meno": "Rudolf Kusý",
+        "strany": "NEKA",
+        "hlasy": 7411,
+        "podiel": 40.47,
+        "zvoleny": false
+       },
+       {
+        "meno": "Mária Martaus",
+        "strany": "Piráti",
+        "hlasy": 431,
+        "podiel": 2.35,
+        "zvoleny": false
+       },
+       {
+        "meno": "Tomáš Čajda",
+        "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 411,
+        "podiel": 2.24,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529460",
+      "nazov": "Petržalka",
+      "ucast": {
+       "zapisani": 94606,
+       "volili": 43896,
+       "ucast_pct": 46.39
+      },
+      "kandidati": [
+       {
+        "meno": "Ján Hrčka",
+        "strany": "KRAJINA",
+        "hlasy": 22665,
+        "podiel": 54.36,
+        "zvoleny": true
+       },
+       {
+        "meno": "Daniel Klimovský",
+        "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
+        "hlasy": 14330,
+        "podiel": 34.37,
+        "zvoleny": false
+       },
+       {
+        "meno": "Juraj Mravec",
+        "strany": "NEKA",
+        "hlasy": 4693,
+        "podiel": 11.25,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529311",
+      "nazov": "Podunajské Biskupice",
+      "ucast": {
+       "zapisani": 19411,
+       "volili": 8767,
+       "ucast_pct": 45.16
+      },
+      "kandidati": [
+       {
+        "meno": "Roman Lamoš",
+        "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
+        "hlasy": 4799,
+        "podiel": 60.35,
+        "zvoleny": true
+       },
+       {
+        "meno": "Martina Frőhlich Činovská",
+        "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, KDH, NOVA, Magyar Szövetség - Maďarská aliancia",
+        "hlasy": 1831,
+        "podiel": 23.02,
+        "zvoleny": false
+       },
+       {
+        "meno": "Ladislav Méry",
+        "strany": "Dunaj",
+        "hlasy": 1321,
+        "podiel": 16.61,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529354",
+      "nazov": "Rača",
+      "ucast": {
+       "zapisani": 21969,
+       "volili": 10593,
+       "ucast_pct": 48.21
+      },
+      "kandidati": [
+       {
+        "meno": "Michal Drotován",
+        "strany": "NEKA",
+        "hlasy": 6629,
+        "podiel": 66.13,
+        "zvoleny": true
+       },
+       {
+        "meno": "Ján Polakovič",
+        "strany": "Spoločný Cieľ",
+        "hlasy": 3394,
+        "podiel": 33.86,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529494",
+      "nazov": "Rusovce",
+      "ucast": {
+       "zapisani": 3487,
+       "volili": 2118,
+       "ucast_pct": 60.73
+      },
+      "kandidati": [
+       {
+        "meno": "Radovan Jenčík",
+        "strany": "NEKA",
+        "hlasy": 1628,
+        "podiel": 100.0,
+        "zvoleny": true
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529320",
+      "nazov": "Ružinov",
+      "ucast": {
+       "zapisani": 74700,
+       "volili": 34717,
+       "ucast_pct": 46.47
+      },
+      "kandidati": [
+       {
+        "meno": "Martin Chren",
+        "strany": "TÍM RUŽINOV",
+        "hlasy": 26843,
+        "podiel": 82.37,
+        "zvoleny": true
+       },
+       {
+        "meno": "Peter Strapák",
+        "strany": "NEKA",
+        "hlasy": 4079,
+        "podiel": 12.51,
+        "zvoleny": false
+       },
+       {
+        "meno": "Ivor Švihran",
+        "strany": "NEKA",
+        "hlasy": 1665,
+        "podiel": 5.1,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "528595",
+      "nazov": "Staré Mesto",
+      "ucast": {
+       "zapisani": 43235,
+       "volili": 19901,
+       "ucast_pct": 46.02
+      },
+      "kandidati": [
+       {
+        "meno": "Matej Vagač",
+        "strany": "Progresívne Slovensko, Team Bratislava, SaS, Demokrati",
+        "hlasy": 11588,
+        "podiel": 62.18,
+        "zvoleny": true
+       },
+       {
+        "meno": "Zuzana Aufrichtová",
+        "strany": "KRAJINA, KDH, Konzervatívci, NOVA",
+        "hlasy": 3692,
+        "podiel": 19.81,
+        "zvoleny": false
+       },
+       {
+        "meno": "Miroslav Vetrík",
+        "strany": "SMER - SD, HLAS - sociálna demokracia, SNS, ŽIVOT",
+        "hlasy": 1949,
+        "podiel": 10.45,
+        "zvoleny": false
+       },
+       {
+        "meno": "Petra Hitková",
+        "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+        "hlasy": 1407,
+        "podiel": 7.54,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529362",
+      "nazov": "Vajnory",
+      "ucast": {
+       "zapisani": 5213,
+       "volili": 2581,
+       "ucast_pct": 49.51
+      },
+      "kandidati": [
+       {
+        "meno": "Michal Vlček",
+        "strany": "NEKA",
+        "hlasy": 1337,
+        "podiel": 54.46,
+        "zvoleny": true
+       },
+       {
+        "meno": "Juraj Ondruška",
+        "strany": "NEKA",
+        "hlasy": 645,
+        "podiel": 26.27,
+        "zvoleny": false
+       },
+       {
+        "meno": "Juraj Zeman",
+        "strany": "NEKA",
+        "hlasy": 473,
+        "podiel": 19.26,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529338",
+      "nazov": "Vrakuňa",
+      "ucast": {
+       "zapisani": 16798,
+       "volili": 7369,
+       "ucast_pct": 43.86
+      },
+      "kandidati": [
+       {
+        "meno": "Martin Kuruc",
+        "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
+        "hlasy": 5817,
+        "podiel": 85.33,
+        "zvoleny": true
+       },
+       {
+        "meno": "Dušan Burdy",
+        "strany": "PRAVDA",
+        "hlasy": 626,
+        "podiel": 9.18,
+        "zvoleny": false
+       },
+       {
+        "meno": "Katarína Lukáčová",
+        "strany": "DS-ODS",
+        "hlasy": 374,
+        "podiel": 5.48,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529427",
+      "nazov": "Záhorská Bystrica",
+      "ucast": {
+       "zapisani": 6311,
+       "volili": 3521,
+       "ucast_pct": 55.79
+      },
+      "kandidati": [
+       {
+        "meno": "Jozef Krúpa",
+        "strany": "SOM SLOVENSKO",
+        "hlasy": 2805,
+        "podiel": 100.0,
+        "zvoleny": true
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     },
+     {
+      "kod": "529435",
+      "nazov": "Čunovo",
+      "ucast": {
+       "zapisani": 1417,
+       "volili": 1003,
+       "ucast_pct": 70.78
+      },
+      "kandidati": [
+       {
+        "meno": "Gabriela Ferenčáková",
+        "strany": "SOM SLOVENSKO",
+        "hlasy": 410,
+        "podiel": 42.05,
+        "zvoleny": true
+       },
+       {
+        "meno": "Marián Krist",
+        "strany": "NEKA",
+        "hlasy": 327,
+        "podiel": 33.53,
+        "zvoleny": false
+       },
+       {
+        "meno": "Marek Kausich",
+        "strany": "NEKA",
+        "hlasy": 166,
+        "podiel": 17.02,
+        "zvoleny": false
+       },
+       {
+        "meno": "Ivan Boška",
+        "strany": "NEKA",
+        "hlasy": 36,
+        "podiel": 3.69,
+        "zvoleny": false
+       },
+       {
+        "meno": "Michal Šimunek",
+        "strany": "NEKA",
+        "hlasy": 36,
+        "podiel": 3.69,
+        "zvoleny": false
+       }
+      ],
+      "miestne_zastupitelstvo": {
+       "poslancov": 0,
+       "mandaty": []
+      }
+     }
+    ]
    },
    "zdroj_oso": "https://volbysr.sk/oso/sk/vysledky_obce.html"
   }
  ],
- "aktualizovane": "2026-10-25T05:13:54+00:00"
+ "aktualizovane": "2026-10-25T05:20:42+00:00"
 }
