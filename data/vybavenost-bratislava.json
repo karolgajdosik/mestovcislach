@@ -3,7 +3,7 @@
   "nazov": "OpenStreetMap",
   "licencia": "ODbL – © prispievatelia OpenStreetMap",
   "url": "https://www.openstreetmap.org/copyright",
-  "stav_osm": "2026-10-18T04:11:27Z"
+  "stav_osm": "2026-10-25T04:22:34Z"
  },
  "kategorie": {
   "lekarne": "Lekárne",
@@ -13,10 +13,10 @@
  },
  "mesto": {
   "lekarne": 233,
-  "ambulancie": 327,
-  "nemocnice": 91,
-  "nabijanie": 172,
-  "nabijacie_miesta": 455,
+  "ambulancie": 330,
+  "nemocnice": 92,
+  "nabijanie": 180,
+  "nabijacie_miesta": 500,
   "pamiatky": 101,
   "stromy": 30,
   "muzea": 98,
@@ -72,8 +72,8 @@
    "lekarne": 1,
    "ambulancie": 3,
    "nemocnice": 0,
-   "nabijanie": 2,
-   "nabijacie_miesta": 11,
+   "nabijanie": 4,
+   "nabijacie_miesta": 22,
    "pamiatky": 2,
    "stromy": 0,
    "lekarne_na_10000": 3.1,
@@ -84,28 +84,28 @@
    "nazov": "Karlova Ves",
    "obyvatelia": 34746,
    "lekarne": 14,
-   "ambulancie": 17,
+   "ambulancie": 18,
    "nemocnice": 3,
    "nabijanie": 8,
    "nabijacie_miesta": 23,
    "pamiatky": 3,
    "stromy": 0,
    "lekarne_na_10000": 4.0,
-   "ambulancie_na_10000": 4.9
+   "ambulancie_na_10000": 5.2
   },
   {
    "kod_obce": "529419",
    "nazov": "Lamač",
    "obyvatelia": 7888,
    "lekarne": 3,
-   "ambulancie": 7,
+   "ambulancie": 9,
    "nemocnice": 2,
-   "nabijanie": 10,
-   "nabijacie_miesta": 23,
+   "nabijanie": 11,
+   "nabijacie_miesta": 30,
    "pamiatky": 0,
    "stromy": 0,
    "lekarne_na_10000": 3.8,
-   "ambulancie_na_10000": 8.9
+   "ambulancie_na_10000": 11.4
   },
   {
    "kod_obce": "529346",
@@ -113,7 +113,7 @@
    "obyvatelia": 45966,
    "lekarne": 29,
    "ambulancie": 28,
-   "nemocnice": 13,
+   "nemocnice": 14,
    "nabijanie": 20,
    "nabijacie_miesta": 63,
    "pamiatky": 14,
@@ -182,28 +182,28 @@
    "nazov": "Ružinov",
    "obyvatelia": 84233,
    "lekarne": 61,
-   "ambulancie": 103,
+   "ambulancie": 104,
    "nemocnice": 29,
-   "nabijanie": 35,
-   "nabijacie_miesta": 100,
+   "nabijanie": 39,
+   "nabijacie_miesta": 123,
    "pamiatky": 1,
    "stromy": 2,
    "lekarne_na_10000": 7.2,
-   "ambulancie_na_10000": 12.2
+   "ambulancie_na_10000": 12.3
   },
   {
    "kod_obce": "528595",
    "nazov": "Staré Mesto",
    "obyvatelia": 47896,
    "lekarne": 45,
-   "ambulancie": 78,
+   "ambulancie": 77,
    "nemocnice": 15,
-   "nabijanie": 16,
-   "nabijacie_miesta": 45,
+   "nabijanie": 17,
+   "nabijacie_miesta": 49,
    "pamiatky": 65,
    "stromy": 27,
    "lekarne_na_10000": 9.4,
-   "ambulancie_na_10000": 16.3
+   "ambulancie_na_10000": 16.1
   },
   {
    "kod_obce": "529362",
@@ -262,5 +262,5 @@
    "ambulancie_na_10000": 0.0
   }
  ],
- "aktualizovane": "2026-10-18T04:12:43+00:00"
+ "aktualizovane": "2026-10-25T04:24:23+00:00"
 }
