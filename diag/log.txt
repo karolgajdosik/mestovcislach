@@ -1,8 +1,28 @@
-OSO2026_SK_xlsx.zip Sun, 25 Oct 2026 11:52:01 GMT ['OSO2026_SK_tab01.xlsx', 'OSO2026_SK_tab02a.xlsx', 'OSO2026_SK_tab02b.xlsx', 'OSO2026_SK_tab02c.xlsx', 'OSO2026_SK_tab02d.xlsx', 'OSO2026_SK_tab02e.xlsx', 'OSO2026_SK_tab02ex.xlsx', 'OSO2026_SK_tab02f.xlsx', 'OSO2026_SK_tab02fx.xlsx', 'OSO2026_SK_tab02x.xlsx', 'OSO2026_SK_tab03a1.xlsx', 'OSO2026_SK_tab03a2.xlsx', 'OSO2026_SK_tab03b1.xlsx', 'OSO2026_SK_tab03b2.xlsx', 'OSO2026_SK_tab03c1.xlsx', 'OSO2026_SK_tab03c2.xlsx', 'OSO2026_SK_tab03d1.xlsx', 'OSO2026_SK_tab03d2.xlsx', 'OSO2026_SK_tab04d.xlsx', 'OSO2026_SK_tab04x.xlsx', 'OSO2026_SK_tab05d.xlsx', 'OSO2026_SK_tab05e.xlsx', 'OSO2026_SK_tab05ex.xlsx', 'OSO2026_SK_tab05f.xlsx', 'OSO2026_SK_tab05fx.xlsx', 'OSO2026_SK_tab05x.xlsx', 'OSO2026_SK_tab06d.xlsx', 'OSO2026_SK_tab06x.xlsx', 'OSO2026_SK_tab07d.xlsx', 'OSO2026_SK_tab07x.xlsx', 'OSO2026_SK_tab08e.xlsx', 'OSO2026_SK_tab08ex.xlsx', 'OSO2026_SK_tab08f.xlsx', 'OSO2026_SK_tab08fx.xlsx', 'OSO2026_SK_tab0ad.xlsx', 'OSO2026_SK_tab0ax.xlsx', 'OSO2026_SK_tab0bd.xlsx', 'OSO2026_SK_tab0bx.xlsx', 'OSO2026_SK_tab0c.xlsx', 'OSO2026_SK_tab0dd.xlsx', 'OSO2026_SK_tab0dx.xlsx', 'OSO2026_SK_tab12b.xlsx', 'OSO2026_SK_tab12c.xlsx', 'OSO2026_SK_tab_info.xlsx']
-OSK2026_SK_xlsx.zip Sun, 25 Oct 2026 11:05:56 GMT ['OSK2026_SK_tab01.xlsx', 'OSK2026_SK_tab02a.xlsx', 'OSK2026_SK_tab02b.xlsx', 'OSK2026_SK_tab02c.xlsx', 'OSK2026_SK_tab02d.xlsx', 'OSK2026_SK_tab03a.xlsx', 'OSK2026_SK_tab03b.xlsx', 'OSK2026_SK_tab04a.xlsx', 'OSK2026_SK_tab04b.xlsx', 'OSK2026_SK_tab06a.xlsx', 'OSK2026_SK_tab06b.xlsx', 'OSK2026_SK_tab06c.xlsx', 'OSK2026_SK_tab06d.xlsx', 'OSK2026_SK_tab09b.xlsx', 'OSK2026_SK_tab09c.xlsx', 'OSK2026_SK_tab09d.xlsx', 'OSK2026_SK_tab0a.xlsx', 'OSK2026_SK_tab0b.xlsx', 'OSK2026_SK_tab0c.xlsx', 'OSK2026_SK_tab0db.xlsx', 'OSK2026_SK_tab0dc.xlsx', 'OSK2026_SK_tab0e1.xlsx', 'OSK2026_SK_tab0e2.xlsx', 'OSK2026_SK_tab12.xlsx', 'OSK2026_SK_tab15.xlsx', 'OSK2026_SK_tab_info.xlsx']
-oso/json/tab06e1/500011.json 200 [{"C01":"2","C02":"Miroslav","C03":"Gut","C04":"NEKA","C05":"1","C06":"611"},{"C01":"1","C02":"Erik","C03":"Ducho\u0148","C04":"NEKA","C05":"1","C06":"481"},{"C01":"26","C02":"J\u00e1n","C03":"Van\u01
-oso/json/tab07/500011.json 200 [{"C01":"NEKA","C02":"7","C03":"22,58"},{"C01":"Demokrati, SLOVENSKO, KDH, OKS, Progres\u00edvne Slovensko, SaS, T\u00edm Kraj Nitra","C02":"24","C03":"77,41"}]
-oso/json/tab07/582000.json 200 [{"C01":"NEKA","C02":"1","C03":"2,22"},{"C01":"KRAJINA","C02":"1","C03":"2,22"},{"C01":"SOM SLOVENSKO","C02":"6","C03":"13,33"},{"C01":"STAROSTOVIA A NEZ\u00c1VISL\u00cd KANDID\u00c1TI","C02":"1","C03
-oso/json/dateSK.json 200 ["25.10.2026 12:53 SE\u010c"]
-osk/json/dateSK.json 200 ["25.10.2026 12:07 SE\u010c"]
+== ['scripts/zber_komunalne.py'] 1
+Komunálne a krajské voľby 2022:
+  primátor: Ing. arch. Matúš Vallo 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
+  predseda BSK: Mgr. Juraj Droba, MBA, MA 63.61 %, poslanci za BA 35
+  stav: vysledky
+Komunálne a krajské voľby 2026:
+Bez zmeny.
+::error title=Zber komunálnych volieb::RuntimeError: 2026: KeyError: 'OBEC'
+
+CHYBA: 2026: KeyError: 'OBEC'
+
+== ['scripts/zber_mesta.py', 'komunalne'] 0
+  Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
+  Košice 2022: primátor v 22 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}
+  komunálne 2022: 8 miest
+  komunálne 2026: 8 miest
+OK komunalne
+{'slug': 'bratislava', 'nazov': 'Bratislava', 'obyvatelia': 480902, 'rok': '2025', 'zmena10': 13.7, 'seniori': 19.0, 'deti': 15.5, 'vs': 36.6, 'vlastne_byty': 93.5, 'pdu': 2.74, 'ucast_komunalne': 47.37, 'byty_10r': 2486, 'ceny_kraj': 16.2}
+{'slug': 'trnava', 'nazov': 'Trnava', 'obyvatelia': 63184, 'rok': '2025', 'zmena10': -3.7, 'seniori': 18.9, 'deti': 15.0, 'vs': 24.5, 'vlastne_byty': None, 'pdu': 2.64, 'ucast_komunalne': 41.96, 'byty_10r': 883, 'ceny_kraj': 11.9}
+{'slug': 'nitra', 'nazov': 'Nitra', 'obyvatelia': 75301, 'rok': '2025', 'zmena10': -3.1, 'seniori': 19.9, 'deti': 14.1, 'vs': 29.2, 'vlastne_byty': None, 'pdu': 2.45, 'ucast_komunalne': 41.01, 'byty_10r': 806, 'ceny_kraj': 9.9}
+{'slug': 'trencin', 'nazov': 'Trenčín', 'obyvatelia': 54104, 'rok': '2025', 'zmena10': -2.9, 'seniori': 21.4, 'deti': 13.7, 'vs': 26.9, 'vlastne_byty': None, 'pdu': 2.45, 'ucast_komunalne': 39.66, 'byty_10r': 505, 'ceny_kraj': 11.6}
+{'slug': 'zilina', 'nazov': 'Žilina', 'obyvatelia': 79873, 'rok': '2025', 'zmena10': -1.5, 'seniori': 18.4, 'deti': 15.1, 'vs': 27.7, 'vlastne_byty': None, 'pdu': 2.94, 'ucast_komunalne': 42.98, 'byty_10r': 591, 'ceny_kraj': 11}
+{'slug': 'banska-bystrica', 'nazov': 'Banská Bystrica', 'obyvatelia': 73054, 'rok': '2025', 'zmena10': -7.2, 'seniori': 19.9, 'deti': 14.1, 'vs': 29.0, 'vlastne_byty': 93.6, 'pdu': 3.43, 'ucast_komunalne': 44.47, 'byty_10r': 307, 'ceny_kraj': 12.4}
+{'slug': 'presov', 'nazov': 'Prešov', 'obyvatelia': 81223, 'rok': '2025', 'zmena10': -9.7, 'seniori': 18.3, 'deti': 14.4, 'vs': 27.0, 'vlastne_byty': None, 'pdu': 3.18, 'ucast_komunalne': 44.19, 'byty_10r': 666, 'ceny_kraj': 8.9}
+{'slug': 'kosice', 'nazov': 'Košice', 'obyvatelia': 222286, 'rok': '2025', 'zmena10': -7.1, 'seniori': 18.7, 'deti': 14.8, 'vs': 26.7, 'vlastne_byty': 92.2, 'pdu': 3.02, 'ucast_komunalne': 37.11, 'byty_10r': 580, 'ceny_kraj': 7.9}
+
+
 HOTOVO
