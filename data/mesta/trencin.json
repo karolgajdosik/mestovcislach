@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T00:56:15",
+ "aktualizovane": "2026-10-25T18:33:47",
  "obyvatelia": {
   "roky": {
    "1993": 57748,
@@ -379,46 +379,180 @@
     "ucast_pct": 39.66
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 52,
+    "spolu": 52,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
    "primator": [
     {
-     "meno": "Ján Forgáč",
-     "strany": "NEKA",
+     "meno": "Mgr. Ján Forgáč",
+     "strany": "nezávislý kandidát",
      "hlasy": 12413,
-     "podiel": 69.17,
+     "podiel": 69.18,
      "zvoleny": true
     },
     {
-     "meno": "Miloš Mičega",
-     "strany": "NEKA",
+     "meno": "Ing. MBA Miloš Mičega, LL.M.",
+     "strany": "nezávislý kandidát",
      "hlasy": 4203,
      "podiel": 23.42,
      "zvoleny": false
     },
     {
-     "meno": "Danica Birošová",
-     "strany": "NEKA",
+     "meno": "JUDr. Danica Birošová",
+     "strany": "nezávislý kandidát",
      "hlasy": 873,
-     "podiel": 4.86,
+     "podiel": 4.87,
      "zvoleny": false
     },
     {
      "meno": "Michal Bratranec",
-     "strany": "NEKA",
+     "strany": "nezávislý kandidát",
      "hlasy": 455,
-     "podiel": 2.53,
+     "podiel": 2.54,
      "zvoleny": false
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 25,
+    "mandaty": [
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 18
+     },
+     {
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, KDH - Kresťanskodemokratické hnutie, Demokrati, Občianska konzervatívna strana, Hnutie SLOVENSKO",
+      "mandaty": 7
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "B.S.B.A. Patrik Žák",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2286
+     },
+     {
+      "meno": "Ing. Ladislav Matejka",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, KDH - Kresťanskodemokratické hnutie, Demokrati, Občianska konzervatívna strana, Hnutie SLOVENSKO",
+      "hlasy": 2029
+     },
+     {
+      "meno": "Ing. Richard Ščepko",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, KDH - Kresťanskodemokratické hnutie, Demokrati, Občianska konzervatívna strana, Hnutie SLOVENSKO",
+      "hlasy": 1724
+     },
+     {
+      "meno": "Mgr. Miloslav Baco",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1660
+     },
+     {
+      "meno": "Mgr. Martina Gabrhelová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1632
+     },
+     {
+      "meno": "Ing. MBA Tomáš Vaňo",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1599
+     },
+     {
+      "meno": "Bc. Dominik Gabriel",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1543
+     },
+     {
+      "meno": "Peter Hošták, PhD.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1503
+     },
+     {
+      "meno": "Jakub Halgoš",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1493
+     },
+     {
+      "meno": "Ing. Veronika Hlucháňová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1493
+     },
+     {
+      "meno": "Mgr. DiS. art. Zuzana Mišáková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1435
+     },
+     {
+      "meno": "Martin Barčák",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1433
+     },
+     {
+      "meno": "B.A. Róbert Švehla",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1382
+     },
+     {
+      "meno": "Mgr. Jozef Bakoš",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, KDH - Kresťanskodemokratické hnutie, Demokrati, Občianska konzervatívna strana, Hnutie SLOVENSKO",
+      "hlasy": 1360
+     },
+     {
+      "meno": "Ing. MBA Miloš Mičega, LL.M.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1342
+     },
+     {
+      "meno": "Mgr. Ľubomír Bobák",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1325
+     },
+     {
+      "meno": "JUDr. Jana Štefáneková",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, KDH - Kresťanskodemokratické hnutie, Demokrati, Občianska konzervatívna strana, Hnutie SLOVENSKO",
+      "hlasy": 1305
+     },
+     {
+      "meno": "Mgr. Ing. LL.M. Juraj Štilicha",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, KDH - Kresťanskodemokratické hnutie, Demokrati, Občianska konzervatívna strana, Hnutie SLOVENSKO",
+      "hlasy": 1270
+     },
+     {
+      "meno": "JUDr. Martin Smolka",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1260
+     },
+     {
+      "meno": "Mgr. Martin Petrík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1236
+     },
+     {
+      "meno": "Mgr. Kamil Bystrický",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1215
+     },
+     {
+      "meno": "Ing. Róbert Hartmann",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1175
+     },
+     {
+      "meno": "PhDr. Michaela Kobzová",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, KDH - Kresťanskodemokratické hnutie, Demokrati, Občianska konzervatívna strana, Hnutie SLOVENSKO",
+      "hlasy": 1169
+     },
+     {
+      "meno": "Ing. Drahoslav Bočák",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1163
+     },
+     {
+      "meno": "Mgr. Ján Fabičovic",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, KDH - Kresťanskodemokratické hnutie, Demokrati, Občianska konzervatívna strana, Hnutie SLOVENSKO",
+      "hlasy": 1158
+     }
+    ]
    }
   }
  },

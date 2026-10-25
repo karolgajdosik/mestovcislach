@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T02:47:37",
+ "aktualizovane": "2026-10-25T18:33:47",
  "obyvatelia": {
   "roky": {
    "1993": 85686,
@@ -459,77 +459,241 @@
    "ucast": {
     "zapisani": 68612,
     "volili": 29494,
-    "ucast_pct": 42.98
+    "ucast_pct": 42.99
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 80,
+    "spolu": 80,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
    "primator": [
     {
-     "meno": "Peter Fiabáne",
-     "strany": "NEKA",
+     "meno": "Mgr. Peter Fiabáne",
+     "strany": "nezávislý kandidát",
      "hlasy": 11854,
-     "podiel": 41.22,
+     "podiel": 41.23,
      "zvoleny": true
     },
     {
-     "meno": "Rastislav Johanes",
-     "strany": "NEKA",
+     "meno": "MUDr. PhD. Rastislav Johanes, MBA",
+     "strany": "nezávislý kandidát",
      "hlasy": 8203,
-     "podiel": 28.52,
+     "podiel": 28.53,
      "zvoleny": false
     },
     {
-     "meno": "Peter Cibulka",
-     "strany": "NEKA",
+     "meno": "Mgr. Peter Cibulka",
+     "strany": "nezávislý kandidát",
      "hlasy": 6348,
-     "podiel": 22.07,
+     "podiel": 22.08,
      "zvoleny": false
     },
     {
-     "meno": "Miroslav Sokol",
-     "strany": "NEKA",
+     "meno": "Ing. Miroslav Sokol",
+     "strany": "nezávislý kandidát",
      "hlasy": 921,
      "podiel": 3.2,
      "zvoleny": false
     },
     {
-     "meno": "Michal Milo",
+     "meno": "JUDr. PaedDr. LL.M. Michal Milo",
      "strany": "REPUBLIKA",
      "hlasy": 834,
      "podiel": 2.9,
      "zvoleny": false
     },
     {
-     "meno": "Anton Kozlík",
-     "strany": "NEKA",
+     "meno": "Ing. Anton Kozlík",
+     "strany": "nezávislý kandidát",
      "hlasy": 439,
-     "podiel": 1.52,
+     "podiel": 1.53,
      "zvoleny": false
     },
     {
-     "meno": "Ivan Magát",
-     "strany": "NEKA",
+     "meno": "Mgr. Ivan Magát",
+     "strany": "nezávislý kandidát",
      "hlasy": 116,
      "podiel": 0.4,
      "zvoleny": false
     },
     {
-     "meno": "Bohumil Kostolný",
-     "strany": "NEKA",
+     "meno": "Bc. Bohumil Kostolný",
+     "strany": "nezávislý kandidát",
      "hlasy": 39,
-     "podiel": 0.13,
+     "podiel": 0.14,
      "zvoleny": false
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 31,
+    "mandaty": [
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 23
+     },
+     {
+      "strany": "Progresívne Slovensko, Demokrati, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita",
+      "mandaty": 8
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "Mgr. Iveta Martinková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2631
+     },
+     {
+      "meno": "Mgr. Peter Cibulka",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2430
+     },
+     {
+      "meno": "Mgr. Róbert Kašša",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2169
+     },
+     {
+      "meno": "Mgr. Karol Haas",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2118
+     },
+     {
+      "meno": "Ing. František Talapka",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1908
+     },
+     {
+      "meno": "Mgr. Dominik Hriník",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1892
+     },
+     {
+      "meno": "Mgr. Ján Rzeszoto",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1866
+     },
+     {
+      "meno": "JUDr. PhD. Jozef Augustín, LL.M.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1692
+     },
+     {
+      "meno": "Ing. Ľubomír Bechný",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1682
+     },
+     {
+      "meno": "Ondrej Šoška",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1678
+     },
+     {
+      "meno": "Barbora Birová",
+      "strany": "Progresívne Slovensko, Demokrati, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita",
+      "hlasy": 1630
+     },
+     {
+      "meno": "Ing. Miroslav Sokol",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1506
+     },
+     {
+      "meno": "JUDr. Matúš Brath",
+      "strany": "Progresívne Slovensko, Demokrati, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita",
+      "hlasy": 1475
+     },
+     {
+      "meno": "Ing. Jozef Juriš",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1462
+     },
+     {
+      "meno": "Ing. Martin Bolo",
+      "strany": "Progresívne Slovensko, Demokrati, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita",
+      "hlasy": 1446
+     },
+     {
+      "meno": "Mgr. Jakub Kubík",
+      "strany": "Progresívne Slovensko, Demokrati, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita",
+      "hlasy": 1414
+     },
+     {
+      "meno": "Ing. PhD. Iveta Čorejová",
+      "strany": "Progresívne Slovensko, Demokrati, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita",
+      "hlasy": 1394
+     },
+     {
+      "meno": "MUDr. PhD. MBA. Rastislav Johanes",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1359
+     },
+     {
+      "meno": "Mgr. Ing. Soňa Turčányiová",
+      "strany": "Progresívne Slovensko, Demokrati, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita",
+      "hlasy": 1341
+     },
+     {
+      "meno": "Ing. Peter Čerňan",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1262
+     },
+     {
+      "meno": "PaedDr. Ľudmila Chodelková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1244
+     },
+     {
+      "meno": "Karol Čepec",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1225
+     },
+     {
+      "meno": "Ing. Karol Dobosz",
+      "strany": "Progresívne Slovensko, Demokrati, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita",
+      "hlasy": 1174
+     },
+     {
+      "meno": "Mgr. Michal Švajda",
+      "strany": "Progresívne Slovensko, Demokrati, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita",
+      "hlasy": 1143
+     },
+     {
+      "meno": "MUDr. MBA Jana Paučinová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1033
+     },
+     {
+      "meno": "Mgr. Denis Cáder",
+      "strany": "nezávislý kandidát",
+      "hlasy": 931
+     },
+     {
+      "meno": "Bc. Miroslav Knapec",
+      "strany": "nezávislý kandidát",
+      "hlasy": 922
+     },
+     {
+      "meno": "Ing. Ján Pažický",
+      "strany": "nezávislý kandidát",
+      "hlasy": 912
+     },
+     {
+      "meno": "JUDr. Roman Jantošík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 890
+     },
+     {
+      "meno": "Mgr. Branislav Delinčák",
+      "strany": "nezávislý kandidát",
+      "hlasy": 821
+     },
+     {
+      "meno": "Mgr. Renáta Chmeliarová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 680
+     }
+    ]
    }
   }
  },

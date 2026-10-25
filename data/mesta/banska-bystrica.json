@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T00:13:01",
+ "aktualizovane": "2026-10-25T18:33:47",
  "obyvatelia": {
   "roky": {
    "1993": 84575,
@@ -449,63 +449,235 @@
    "ucast": {
     "zapisani": 62170,
     "volili": 27653,
-    "ucast_pct": 44.47
+    "ucast_pct": 44.48
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 79,
+    "spolu": 79,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
    "primator": [
     {
-     "meno": "Ján Nosko",
-     "strany": "NEKA",
+     "meno": "MUDr. Ján Nosko",
+     "strany": "nezávislý kandidát",
      "hlasy": 12629,
-     "podiel": 46.78,
+     "podiel": 46.79,
      "zvoleny": true
     },
     {
-     "meno": "Diana Javorčíková",
-     "strany": "Progresívne Slovensko, SaS, Demokrati, SLOVENSKO, OKS",
+     "meno": "Mgr. Diana Javorčíková",
+     "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
      "hlasy": 11591,
      "podiel": 42.94,
      "zvoleny": false
     },
     {
-     "meno": "Matúš Molitoris",
-     "strany": "NEKA",
+     "meno": "Mgr. Matúš Molitoris",
+     "strany": "nezávislý kandidát",
      "hlasy": 1875,
-     "podiel": 6.94,
+     "podiel": 6.95,
      "zvoleny": false
     },
     {
-     "meno": "Marian Kotleba",
-     "strany": "ĽS Naše Slovensko",
+     "meno": "Ing. Mgr. Marian Kotleba",
+     "strany": "Kotlebovci - Ľudová strana Naše Slovensko",
      "hlasy": 769,
-     "podiel": 2.84,
+     "podiel": 2.85,
      "zvoleny": false
     },
     {
-     "meno": "Tomáš Sobota",
-     "strany": "NEKA",
+     "meno": "Ing. arch. Tomáš Sobota",
+     "strany": "nezávislý kandidát",
      "hlasy": 102,
-     "podiel": 0.37,
+     "podiel": 0.38,
      "zvoleny": false
     },
     {
      "meno": "Ondrej Vereš",
-     "strany": "SV",
+     "strany": "STRANA VIDIEKA",
      "hlasy": 25,
      "podiel": 0.09,
      "zvoleny": false
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 31,
+    "mandaty": [
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 15
+     },
+     {
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "mandaty": 14
+     },
+     {
+      "strany": "HLAS - sociálna demokracia",
+      "mandaty": 1
+     },
+     {
+      "strany": "KDH - Kresťanskodemokratické hnutie",
+      "mandaty": 1
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "Ing. Martin Majling",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2537
+     },
+     {
+      "meno": "Mgr. Diana Javorčíková",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2430
+     },
+     {
+      "meno": "Ing. Milan Lichý",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2237
+     },
+     {
+      "meno": "Mgr. Matúš Molitoris",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2216
+     },
+     {
+      "meno": "Ing. arch. Tomáš Sobota",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2172
+     },
+     {
+      "meno": "Ing. arch. Hana Kasová",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2082
+     },
+     {
+      "meno": "Mgr. Jakub Gajdošík",
+      "strany": "HLAS - sociálna demokracia",
+      "hlasy": 1994
+     },
+     {
+      "meno": "Ing. Vladimír Ivan",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1865
+     },
+     {
+      "meno": "Csilla Droppová",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1862
+     },
+     {
+      "meno": "Ing. Mgr. Peter Brozman",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1740
+     },
+     {
+      "meno": "Mgr. Marián Michael Mackovič",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1725
+     },
+     {
+      "meno": "Marián Lunter",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1713
+     },
+     {
+      "meno": "Ing. Ľuboš Vrbický",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1709
+     },
+     {
+      "meno": "Ivana Figuli",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1685
+     },
+     {
+      "meno": "Mgr. MBA Ružena Maťašeje",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1675
+     },
+     {
+      "meno": "Ing. Pavol Puskeiler",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1646
+     },
+     {
+      "meno": "Mgr. Ing. Pavol Katreniak",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1639
+     },
+     {
+      "meno": "Ing. MBA Miriam Lapuníková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1625
+     },
+     {
+      "meno": "Magdaléna Kováč Mergová",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1617
+     },
+     {
+      "meno": "Martin Hanes",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1615
+     },
+     {
+      "meno": "Ing. Martin Turčan",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1601
+     },
+     {
+      "meno": "Miroslav Lupták",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1527
+     },
+     {
+      "meno": "Mgr. Patrik Trnka",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1296
+     },
+     {
+      "meno": "Mgr. Marek Ondráš",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1206
+     },
+     {
+      "meno": "Roman Miškár",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1071
+     },
+     {
+      "meno": "Ing. Igor Kašper",
+      "strany": "nezávislý kandidát",
+      "hlasy": 914
+     },
+     {
+      "meno": "Mgr. Jana Žiarová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 873
+     },
+     {
+      "meno": "Mgr. PhD. Silvia Cochová",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 855
+     },
+     {
+      "meno": "Milan Smädo",
+      "strany": "nezávislý kandidát",
+      "hlasy": 815
+     },
+     {
+      "meno": "Marek Odaloš",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 650
+     },
+     {
+      "meno": "MUDr. Jozef Baláž",
+      "strany": "KDH - Kresťanskodemokratické hnutie",
+      "hlasy": 645
+     }
+    ]
    }
   }
  },

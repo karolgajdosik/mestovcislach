@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T03:55:13",
+ "aktualizovane": "2026-10-25T18:33:47",
  "obyvatelia": {
   "roky": {
    "1993": 86679,
@@ -434,49 +434,213 @@
    "ucast": {
     "zapisani": 66075,
     "volili": 27101,
-    "ucast_pct": 41.01
+    "ucast_pct": 41.02
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 74,
+    "spolu": 74,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
    "primator": [
     {
      "meno": "Marek Hattas",
-     "strany": "Tím Kraj Nitra, Progresívne Slovensko, KDH, SaS, Demokrati, SLOVENSKO, OKS",
+     "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
      "hlasy": 13459,
-     "podiel": 50.66,
+     "podiel": 50.67,
      "zvoleny": true
     },
     {
-     "meno": "Igor Kršiak",
-     "strany": "NEKA",
+     "meno": "JUDr. Igor Kršiak",
+     "strany": "nezávislý kandidát",
      "hlasy": 10379,
      "podiel": 39.07,
      "zvoleny": false
     },
     {
-     "meno": "Marek Illéš",
-     "strany": "SMER - SD, HLAS - sociálna demokracia, SME RODINA",
+     "meno": "Ing. PhD. Marek Illéš",
+     "strany": "SMER - sociálna demokracia, HLAS - sociálna demokracia, SME RODINA",
      "hlasy": 1685,
      "podiel": 6.34,
      "zvoleny": false
     },
     {
-     "meno": "Zuzana Uhríková",
-     "strany": "REPUBLIKA, SNS",
+     "meno": "Ing. Zuzana Uhríková",
+     "strany": "REPUBLIKA, Slovenská národná strana",
      "hlasy": 1041,
-     "podiel": 3.91,
+     "podiel": 3.92,
      "zvoleny": false
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 31,
+    "mandaty": [
+     {
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "mandaty": 24
+     },
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 7
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "Pavol Obertáš",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2585
+     },
+     {
+      "meno": "Ing. PhD. Peter Košťál",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2433
+     },
+     {
+      "meno": "MUDr. PhD. Jana Ďurková",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2403
+     },
+     {
+      "meno": "PhDr. PhD. Anna Laurinec Šmehilová",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2324
+     },
+     {
+      "meno": "JUDr. Igor Kršiak",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2280
+     },
+     {
+      "meno": "Mgr. Henrich Varga",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2196
+     },
+     {
+      "meno": "Mgr. Petra Ajdariová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2171
+     },
+     {
+      "meno": "Mgr. Daniel Balko",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2165
+     },
+     {
+      "meno": "Mgr. Lukáš Čelinák",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2139
+     },
+     {
+      "meno": "Ing. Martin Horváth",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1942
+     },
+     {
+      "meno": "PhDr. PhD. Ján Vančo",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1898
+     },
+     {
+      "meno": "Ing. Ing. arch. Peter Mezei",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1826
+     },
+     {
+      "meno": "Ing. MBA Roman Ágh",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1767
+     },
+     {
+      "meno": "Mgr. Dušan Káčer",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1715
+     },
+     {
+      "meno": "Mgr. Pavol Zámečník",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1708
+     },
+     {
+      "meno": "Mgr. art. Veronika Gabčíková",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1708
+     },
+     {
+      "meno": "Ing. Peter Bakay",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1671
+     },
+     {
+      "meno": "Denisa Branikovičová",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1641
+     },
+     {
+      "meno": "Ing. Miloslav Hatala",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1618
+     },
+     {
+      "meno": "Ing. Marek Fúska",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1593
+     },
+     {
+      "meno": "prof. PhDr. PhD. Martina Mojtová",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1553
+     },
+     {
+      "meno": "PhDr. PhD. Katarína Kompasová",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1420
+     },
+     {
+      "meno": "Mgr. PhD. Kristián Čechmánek",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1291
+     },
+     {
+      "meno": "Ing. Ľubomír Moravčík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1087
+     },
+     {
+      "meno": "JUDr. LL.M. Ladislav Mášik, MBA",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1079
+     },
+     {
+      "meno": "Mgr. Ferdinand Vítek",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1040
+     },
+     {
+      "meno": "Ing. PhD. Jakub Neupauer",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 928
+     },
+     {
+      "meno": "Ing. PhD. Róbert Ambra",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 913
+     },
+     {
+      "meno": "Ing. Regina Víteková",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 853
+     },
+     {
+      "meno": "Ing. Miroslav Gut",
+      "strany": "nezávislý kandidát",
+      "hlasy": 611
+     },
+     {
+      "meno": "Mgr. Erik Duchoň",
+      "strany": "nezávislý kandidát",
+      "hlasy": 481
+     }
+    ]
    }
   }
  },

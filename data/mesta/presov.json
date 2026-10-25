@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T02:05:44",
+ "aktualizovane": "2026-10-25T18:33:47",
  "obyvatelia": {
   "roky": {
    "1993": 90963,
@@ -491,60 +491,232 @@
     "ucast_pct": 44.19
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 66,
+    "spolu": 66,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
    "primator": [
     {
-     "meno": "František Oľha",
-     "strany": "Progresívne Slovensko, Demokrati, DS-ODS",
+     "meno": "Ing. František Oľha",
+     "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
      "hlasy": 12125,
      "podiel": 40.69,
      "zvoleny": true
     },
     {
-     "meno": "Pavel Hagyari",
-     "strany": "NEKA",
+     "meno": "JUDr. PhD. Pavel Hagyari, MBA",
+     "strany": "nezávislý kandidát",
      "hlasy": 7187,
      "podiel": 24.12,
      "zvoleny": false
     },
     {
-     "meno": "Rastislav Mochnacký",
-     "strany": "KDH, SLOVENSKO, SaS, Konzervatívci, ZA ĽUDÍ, NOVA",
+     "meno": "Ing. Rastislav Mochnacký",
+     "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
      "hlasy": 3964,
      "podiel": 13.3,
      "zvoleny": false
     },
     {
-     "meno": "Artúr Benes",
-     "strany": "NEKA",
+     "meno": "Ing. Artúr Benes",
+     "strany": "nezávislý kandidát",
      "hlasy": 2545,
      "podiel": 8.54,
      "zvoleny": false
     },
     {
-     "meno": "Martin Eštočák",
-     "strany": "NEKA",
+     "meno": "JUDr. Martin Eštočák",
+     "strany": "nezávislý kandidát",
      "hlasy": 2027,
      "podiel": 6.8,
      "zvoleny": false
     },
     {
-     "meno": "Svetlana Pavlovičová",
-     "strany": "SMER - SD, SNS, SME RODINA, Bratia Slovenska",
+     "meno": "PhDr. Ing. MBA Svetlana Pavlovičová",
+     "strany": "SMER - sociálna demokracia, Slovenská národná strana, SME RODINA, Bratia Slovenska",
      "hlasy": 1948,
-     "podiel": 6.53,
+     "podiel": 6.54,
      "zvoleny": false
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 31,
+    "mandaty": [
+     {
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "mandaty": 12
+     },
+     {
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "mandaty": 9
+     },
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 9
+     },
+     {
+      "strany": "Občianska konzervatívna strana",
+      "mandaty": 1
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "JUDr. Martin Eštočák",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2647
+     },
+     {
+      "meno": "PaedDr. Slávka Čorejová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2116
+     },
+     {
+      "meno": "Peter Šulík",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 2081
+     },
+     {
+      "meno": "Lukáš Anderko",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1872
+     },
+     {
+      "meno": "Ing. Michal Michňák",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1789
+     },
+     {
+      "meno": "Mgr. Peter Krajňák",
+      "strany": "Občianska konzervatívna strana",
+      "hlasy": 1746
+     },
+     {
+      "meno": "Bc. MBA Richard Dubovický",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1715
+     },
+     {
+      "meno": "MUDr. MPH Ján Ahlers, MBA",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1706
+     },
+     {
+      "meno": "Zuzana Tkáčová",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1629
+     },
+     {
+      "meno": "Ing. Marián Ličák",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1553
+     },
+     {
+      "meno": "Ing. Rastislav Mochnacký",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1509
+     },
+     {
+      "meno": "doc. PhDr. PhD. Štefánia Andraščíková, MPH",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1491
+     },
+     {
+      "meno": "Mgr. Lukáš Belej",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1480
+     },
+     {
+      "meno": "PhDr. PhD. Martin Ďurišin",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1478
+     },
+     {
+      "meno": "Ing. František Oľha",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1412
+     },
+     {
+      "meno": "Mgr. Jana Lukošíková",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1411
+     },
+     {
+      "meno": "MDDr. Peter Uličný",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1384
+     },
+     {
+      "meno": "MUDr. Daniela Mrouahová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1359
+     },
+     {
+      "meno": "PhDr. MBA Janette Langová",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1336
+     },
+     {
+      "meno": "JUDr. Mgr. Vladimír Feľbaba",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1227
+     },
+     {
+      "meno": "Ing. PhD. Denis Tirpák, MSc., MBA",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1095
+     },
+     {
+      "meno": "Mgr. Stanislav Lukáč",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1073
+     },
+     {
+      "meno": "Mgr. Pavol Neupauer",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1053
+     },
+     {
+      "meno": "JUDr. PhD. Pavel Hagyari, MBA",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1015
+     },
+     {
+      "meno": "Mgr. PhD. Katarína Burgrová",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 948
+     },
+     {
+      "meno": "Ing. PhD. Renáta Fedorčíková",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 936
+     },
+     {
+      "meno": "Mgr. Jaroslava Kutajová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 894
+     },
+     {
+      "meno": "Rudolf Voit",
+      "strany": "nezávislý kandidát",
+      "hlasy": 867
+     },
+     {
+      "meno": "Ing. Artúr Benes",
+      "strany": "nezávislý kandidát",
+      "hlasy": 852
+     },
+     {
+      "meno": "Ing. Róbert Staško",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 658
+     },
+     {
+      "meno": "Ing. Lenka Kohániová",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 607
+     }
+    ]
    }
   }
  },

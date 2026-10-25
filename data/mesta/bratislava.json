@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T04:21:22",
+ "aktualizovane": "2026-10-25T18:33:47",
  "obyvatelia": {
   "roky": {
    "1993": 448785,
@@ -1587,30 +1587,473 @@
     "ucast_pct": 47.37
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 388,
+    "spolu": 388,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
+   "mestske_casti": [
+    {
+     "kod": "529401",
+     "nazov": "Devín",
+     "ucast": 64.44,
+     "volili": 1042,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 599,
+       "podiel": 59.9
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 369,
+       "podiel": 36.9
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 25,
+       "podiel": 2.5
+      }
+     ]
+    },
+    {
+     "kod": "529371",
+     "nazov": "Devínska Nová Ves",
+     "ucast": 49.36,
+     "volili": 7382,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 4103,
+       "podiel": 58.32
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 2647,
+       "podiel": 37.63
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 154,
+       "podiel": 2.19
+      }
+     ]
+    },
+    {
+     "kod": "529389",
+     "nazov": "Dúbravka",
+     "ucast": 45.04,
+     "volili": 13286,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 8193,
+       "podiel": 63.95
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 4300,
+       "podiel": 33.56
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 186,
+       "podiel": 1.45
+      }
+     ]
+    },
+    {
+     "kod": "529443",
+     "nazov": "Jarovce",
+     "ucast": 65.05,
+     "volili": 1608,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 1056,
+       "podiel": 68.79
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 444,
+       "podiel": 28.93
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 22,
+       "podiel": 1.43
+      }
+     ]
+    },
+    {
+     "kod": "529397",
+     "nazov": "Karlova Ves",
+     "ucast": 50.51,
+     "volili": 15861,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 9865,
+       "podiel": 64.18
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 5046,
+       "podiel": 32.83
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 273,
+       "podiel": 1.78
+      }
+     ]
+    },
+    {
+     "kod": "529419",
+     "nazov": "Lamač",
+     "ucast": 50.68,
+     "volili": 3640,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 2076,
+       "podiel": 59.16
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 1347,
+       "podiel": 38.39
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 54,
+       "podiel": 1.54
+      }
+     ]
+    },
+    {
+     "kod": "529346",
+     "nazov": "Nové Mesto",
+     "ucast": 47.7,
+     "volili": 18792,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 12535,
+       "podiel": 68.69
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 5170,
+       "podiel": 28.33
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 296,
+       "podiel": 1.62
+      }
+     ]
+    },
+    {
+     "kod": "529460",
+     "nazov": "Petržalka",
+     "ucast": 46.37,
+     "volili": 43434,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 24764,
+       "podiel": 59.34
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 15231,
+       "podiel": 36.5
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 978,
+       "podiel": 2.34
+      }
+     ]
+    },
+    {
+     "kod": "529311",
+     "nazov": "Podunajské Biskupice",
+     "ucast": 45.17,
+     "volili": 8767,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 4503,
+       "podiel": 54.33
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 3256,
+       "podiel": 39.29
+      },
+      {
+       "meno": "Mgr. Martin Winkler",
+       "strany": "Dunaj",
+       "hlasy": 293,
+       "podiel": 3.54
+      }
+     ]
+    },
+    {
+     "kod": "529354",
+     "nazov": "Rača",
+     "ucast": 48.18,
+     "volili": 10585,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 6352,
+       "podiel": 62.61
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 3500,
+       "podiel": 34.5
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 161,
+       "podiel": 1.59
+      }
+     ]
+    },
+    {
+     "kod": "529494",
+     "nazov": "Rusovce",
+     "ucast": 60.74,
+     "volili": 2118,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 1293,
+       "podiel": 64.78
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 628,
+       "podiel": 31.46
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 38,
+       "podiel": 1.9
+      }
+     ]
+    },
+    {
+     "kod": "529320",
+     "nazov": "Ružinov",
+     "ucast": 46.48,
+     "volili": 35184,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 23906,
+       "podiel": 70.03
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 9250,
+       "podiel": 27.1
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 622,
+       "podiel": 1.82
+      }
+     ]
+    },
+    {
+     "kod": "528595",
+     "nazov": "Staré Mesto",
+     "ucast": 45.91,
+     "volili": 19345,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 13464,
+       "podiel": 71.86
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 4864,
+       "podiel": 25.96
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 232,
+       "podiel": 1.24
+      }
+     ]
+    },
+    {
+     "kod": "529362",
+     "nazov": "Vajnory",
+     "ucast": 49.51,
+     "volili": 2581,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 1482,
+       "podiel": 61.49
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 869,
+       "podiel": 36.06
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 34,
+       "podiel": 1.41
+      }
+     ]
+    },
+    {
+     "kod": "529338",
+     "nazov": "Vrakuňa",
+     "ucast": 43.87,
+     "volili": 7369,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 4046,
+       "podiel": 58.21
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 2642,
+       "podiel": 38.01
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 132,
+       "podiel": 1.9
+      }
+     ]
+    },
+    {
+     "kod": "529427",
+     "nazov": "Záhorská Bystrica",
+     "ucast": 55.79,
+     "volili": 3521,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 2416,
+       "podiel": 70.58
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 918,
+       "podiel": 26.82
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 47,
+       "podiel": 1.37
+      }
+     ]
+    },
+    {
+     "kod": "529435",
+     "nazov": "Čunovo",
+     "ucast": 70.78,
+     "volili": 1003,
+     "poradie": [
+      {
+       "meno": "Ing. arch. Matúš Vallo",
+       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+       "hlasy": 580,
+       "podiel": 65.39
+      },
+      {
+       "meno": "JUDr. Ing. Jozef Ráž",
+       "strany": "nezávislý kandidát",
+       "hlasy": 278,
+       "podiel": 31.34
+      },
+      {
+       "meno": "Ing. Zuzana Šubová",
+       "strany": "Pirátska strana - Slovensko",
+       "hlasy": 15,
+       "podiel": 1.69
+      }
+     ]
+    }
+   ],
    "primator": [
     {
-     "meno": "Matúš Vallo",
-     "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
+     "meno": "Ing. arch. Matúš Vallo",
+     "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
      "hlasy": 121846,
-     "podiel": 64.36,
+     "podiel": 64.37,
      "zvoleny": true
     },
     {
-     "meno": "Jozef Ráž",
-     "strany": "NEKA",
+     "meno": "JUDr. Ing. Jozef Ráž",
+     "strany": "nezávislý kandidát",
      "hlasy": 61183,
      "podiel": 32.32,
      "zvoleny": false
     },
     {
-     "meno": "Zuzana Šubová",
-     "strany": "Piráti",
+     "meno": "Ing. Zuzana Šubová",
+     "strany": "Pirátska strana - Slovensko",
      "hlasy": 3451,
      "podiel": 1.82,
      "zvoleny": false
@@ -1623,7 +2066,7 @@
      "zvoleny": false
     },
     {
-     "meno": "Martin Winkler",
+     "meno": "Mgr. Martin Winkler",
      "strany": "Dunaj",
      "hlasy": 1031,
      "podiel": 0.54,
@@ -1631,16 +2074,267 @@
     },
     {
      "meno": "Miroslav Heredoš",
-     "strany": "VLASTENCI SK",
+     "strany": "Vlastenecký blok",
      "hlasy": 281,
-     "podiel": 0.14,
+     "podiel": 0.15,
      "zvoleny": false
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 45,
+    "mandaty": [
+     {
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "mandaty": 34
+     },
+     {
+      "strany": "SOM SLOVENSKO - Strana obcí a miest",
+      "mandaty": 6
+     },
+     {
+      "strany": "TÍM RUŽINOV",
+      "mandaty": 2
+     },
+     {
+      "strany": "KRAJINA",
+      "mandaty": 1
+     },
+     {
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "mandaty": 1
+     },
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 1
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "Ing. Martin Chren",
+      "strany": "TÍM RUŽINOV",
+      "hlasy": 17849
+     },
+     {
+      "meno": "doc. PhDr. PhD. Daniel Klimovský",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 16609
+     },
+     {
+      "meno": "MUDr. Jakub Vallo",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 15516
+     },
+     {
+      "meno": "Mgr. MA. Jakub Goda",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 15297
+     },
+     {
+      "meno": "Ján Bučan",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 15020
+     },
+     {
+      "meno": "Ing. Monika Ďurajková",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 14830
+     },
+     {
+      "meno": "Ing. Tatiana Kratochvílová",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 14271
+     },
+     {
+      "meno": "Ing. Ján Hrčka",
+      "strany": "KRAJINA",
+      "hlasy": 14222
+     },
+     {
+      "meno": "Mgr. Ing. PhD. Michal Páleník",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 14180
+     },
+     {
+      "meno": "Mgr. Martina Goffová",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 13794
+     },
+     {
+      "meno": "Matúš Krčmárik",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 13775
+     },
+     {
+      "meno": "Ing. arch. Lucia Štasselová",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 13572
+     },
+     {
+      "meno": "Ing. Miroslav Žiak",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 13554
+     },
+     {
+      "meno": "Ing. Martin Patoprstý",
+      "strany": "TÍM RUŽINOV",
+      "hlasy": 13354
+     },
+     {
+      "meno": "Mgr. David Púchovský",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 12735
+     },
+     {
+      "meno": "Mgr. Pavol Škápik",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 12600
+     },
+     {
+      "meno": "Adam Sarlós",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 11754
+     },
+     {
+      "meno": "Bc. Michal Rakús",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 11633
+     },
+     {
+      "meno": "Alojz Hlina",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 11172
+     },
+     {
+      "meno": "Mgr. Zdenka Zaťovičová",
+      "strany": "SOM SLOVENSKO - Strana obcí a miest",
+      "hlasy": 9777
+     },
+     {
+      "meno": "Ing. Matej Vagač",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 9604
+     },
+     {
+      "meno": "Mgr. Matúš Čupka",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 9466
+     },
+     {
+      "meno": "Mgr. Michal Kiča",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 9433
+     },
+     {
+      "meno": "Ing. Katarína Augustinič",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 9354
+     },
+     {
+      "meno": "Ing. Juraj Káčer",
+      "strany": "SOM SLOVENSKO - Strana obcí a miest",
+      "hlasy": 9260
+     },
+     {
+      "meno": "Ing. Jakub Mrva",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 9231
+     },
+     {
+      "meno": "Igor Polakovič",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 8688
+     },
+     {
+      "meno": "Mgr. Erik Illéš",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 8656
+     },
+     {
+      "meno": "Ing. CSc. Martin Barto",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 8490
+     },
+     {
+      "meno": "Ing. Jozef Krúpa",
+      "strany": "SOM SLOVENSKO - Strana obcí a miest",
+      "hlasy": 7999
+     },
+     {
+      "meno": "Ing. Pavol Troiak",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 7832
+     },
+     {
+      "meno": "Ing. Martin Vician",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 7021
+     },
+     {
+      "meno": "Ing. arch. Boris Schultz",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 6317
+     },
+     {
+      "meno": "Mgr. Peter Král",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 6163
+     },
+     {
+      "meno": "PhDr. PhD. Štefan Maceják",
+      "strany": "SOM SLOVENSKO - Strana obcí a miest",
+      "hlasy": 5907
+     },
+     {
+      "meno": "Dárius Krajčír",
+      "strany": "SOM SLOVENSKO - Strana obcí a miest",
+      "hlasy": 5291
+     },
+     {
+      "meno": "Mgr. Lenka Antalová Plavuchová",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 5088
+     },
+     {
+      "meno": "Ing. Michal Feik",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 4577
+     },
+     {
+      "meno": "Ing. Michal Vlček",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 4310
+     },
+     {
+      "meno": "Ing. Roman Lamoš",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 4304
+     },
+     {
+      "meno": "JUDr. Ing. Martin Kuruc",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 4247
+     },
+     {
+      "meno": "Peter Dilik",
+      "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
+      "hlasy": 2621
+     },
+     {
+      "meno": "JUDr. Mgr. Jozef Uhler",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2614
+     },
+     {
+      "meno": "JUDr. Jana Jakubkovič",
+      "strany": "SOM SLOVENSKO - Strana obcí a miest",
+      "hlasy": 2494
+     },
+     {
+      "meno": "Ing. Zuzana Schwartzová",
+      "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 2033
+     }
+    ]
    }
   }
  },

@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T03:19:11",
+ "aktualizovane": "2026-10-25T18:33:47",
  "obyvatelia": {
   "roky": {
    "1993": 71624,
@@ -433,60 +433,208 @@
     "ucast_pct": 41.96
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 47,
+    "spolu": 47,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
    "primator": [
     {
-     "meno": "Eva Nemčovská",
-     "strany": "NEKA",
+     "meno": "PhDr. PhD. Eva Nemčovská, MPH",
+     "strany": "nezávislý kandidát",
      "hlasy": 13411,
      "podiel": 60.47,
      "zvoleny": true
     },
     {
-     "meno": "Branislav Baroš",
-     "strany": "TPK, KDH",
+     "meno": "Ing. Branislav Baroš",
+     "strany": "Trnava pre každého, KDH - Kresťanskodemokratické hnutie",
      "hlasy": 6848,
-     "podiel": 30.87,
+     "podiel": 30.88,
      "zvoleny": false
     },
     {
-     "meno": "Martin Pullmann",
-     "strany": "SMER - SD, HLAS - sociálna demokracia, SNS, REPUBLIKA",
+     "meno": "Ing. Martin Pullmann",
+     "strany": "SMER - sociálna demokracia, HLAS - sociálna demokracia, Slovenská národná strana, REPUBLIKA",
      "hlasy": 826,
      "podiel": 3.72,
      "zvoleny": false
     },
     {
-     "meno": "Andrea Čajková",
-     "strany": "NEKA",
+     "meno": "doc. PhDr. PhD. Andrea Čajková",
+     "strany": "nezávislý kandidát",
      "hlasy": 744,
      "podiel": 3.35,
      "zvoleny": false
     },
     {
-     "meno": "Jozef Obselka",
-     "strany": "NEKA",
+     "meno": "Ing. Jozef Obselka",
+     "strany": "nezávislý kandidát",
      "hlasy": 267,
      "podiel": 1.2,
      "zvoleny": false
     },
     {
-     "meno": "Ľubica Horváthová",
+     "meno": "Mgr. Ľubica Horváthová",
      "strany": "Demokrati",
      "hlasy": 81,
-     "podiel": 0.36,
+     "podiel": 0.37,
      "zvoleny": false
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 27,
+    "mandaty": [
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 24
+     },
+     {
+      "strany": "Trnava pre každého, KDH - Kresťanskodemokratické hnutie",
+      "mandaty": 2
+     },
+     {
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO",
+      "mandaty": 1
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "RNDr. Gabriela Cabanová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1669
+     },
+     {
+      "meno": "Mgr. Marek Neštický",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1663
+     },
+     {
+      "meno": "Ing. Vladimír Ekhardt",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1648
+     },
+     {
+      "meno": "PhDr. PhD. Eva Nemčovská, MPH",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1564
+     },
+     {
+      "meno": "DiS. Juraj Baďura",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1492
+     },
+     {
+      "meno": "PhDr. PhD. Katarína Ďurková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1472
+     },
+     {
+      "meno": "MUDr. Branislav Kramár",
+      "strany": "Trnava pre každého, KDH - Kresťanskodemokratické hnutie",
+      "hlasy": 1462
+     },
+     {
+      "meno": "Mgr. Tibor Pekarčík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1460
+     },
+     {
+      "meno": "Mgr. Matej Lančarič",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1454
+     },
+     {
+      "meno": "Ing. Pavol Hluchý",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1419
+     },
+     {
+      "meno": "Mgr. Ivan Kopčík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1394
+     },
+     {
+      "meno": "Mgr. Marcel Krajčo",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1359
+     },
+     {
+      "meno": "Mgr. PhD. Martin Uhlík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1285
+     },
+     {
+      "meno": "Ing. Richard Sládek",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1274
+     },
+     {
+      "meno": "MUDr. Milan Sokolovský",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1273
+     },
+     {
+      "meno": "PhDr. Šimon Štefunko",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1229
+     },
+     {
+      "meno": "Lukáš Bednár, MBA, MSc.",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1178
+     },
+     {
+      "meno": "Mgr. Tatiana Vavrová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1115
+     },
+     {
+      "meno": "doc. Mgr.  PhD. Andrej Brník",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1110
+     },
+     {
+      "meno": "Mgr. PhD. Ina Mruškovičová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1092
+     },
+     {
+      "meno": "Ing. Jozef Šúst",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1089
+     },
+     {
+      "meno": "Mgr. Ľubica Horváthová",
+      "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO",
+      "hlasy": 1075
+     },
+     {
+      "meno": "doc. Dr. Phil. Erik Hrnčiarik",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1014
+     },
+     {
+      "meno": "Mgr. Rastislav Mráz",
+      "strany": "Trnava pre každého, KDH - Kresťanskodemokratické hnutie",
+      "hlasy": 1012
+     },
+     {
+      "meno": "Mgr. Matej Cagala",
+      "strany": "nezávislý kandidát",
+      "hlasy": 978
+     },
+     {
+      "meno": "Ing. Andrea Svatá",
+      "strany": "nezávislý kandidát",
+      "hlasy": 714
+     },
+     {
+      "meno": "Mgr. Peter Karol",
+      "strany": "nezávislý kandidát",
+      "hlasy": 351
+     }
+    ]
    }
   }
  },

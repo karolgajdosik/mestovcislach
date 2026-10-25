@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T02:47:37",
+ "aktualizovane": "2026-10-25T18:33:47",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -1804,44 +1804,617 @@
     "ucast_pct": 37.11
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 190,
+    "spolu": 190,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
+   "mestske_casti": [
+    {
+     "kod": "599093",
+     "nazov": "Barca",
+     "ucast": 48.37,
+     "volili": 1494,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 460,
+       "podiel": 31.9
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 357,
+       "podiel": 24.76
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 285,
+       "podiel": 19.76
+      }
+     ]
+    },
+    {
+     "kod": "598682",
+     "nazov": "Dargovských hrdinov",
+     "ucast": 31.14,
+     "volili": 6874,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 2489,
+       "podiel": 37.76
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1432,
+       "podiel": 21.73
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1292,
+       "podiel": 19.6
+      }
+     ]
+    },
+    {
+     "kod": "599891",
+     "nazov": "Džungľa",
+     "ucast": 47.99,
+     "volili": 275,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 66,
+       "podiel": 30.99
+      },
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 56,
+       "podiel": 26.29
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 48,
+       "podiel": 22.54
+      }
+     ]
+    },
+    {
+     "kod": "599824",
+     "nazov": "Juh",
+     "ucast": 35.06,
+     "volili": 6156,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 2203,
+       "podiel": 37.41
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1382,
+       "podiel": 23.47
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1197,
+       "podiel": 20.33
+      }
+     ]
+    },
+    {
+     "kod": "598119",
+     "nazov": "Kavečany",
+     "ucast": 48.68,
+     "volili": 553,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 176,
+       "podiel": 34.24
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 127,
+       "podiel": 24.71
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 102,
+       "podiel": 19.84
+      }
+     ]
+    },
+    {
+     "kod": "599018",
+     "nazov": "Košická Nová Ves",
+     "ucast": 43.36,
+     "volili": 597,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 205,
+       "podiel": 35.65
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 139,
+       "podiel": 24.17
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 128,
+       "podiel": 22.26
+      }
+     ]
+    },
+    {
+     "kod": "599794",
+     "nazov": "Krásna",
+     "ucast": 47.82,
+     "volili": 2394,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 813,
+       "podiel": 35.13
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 486,
+       "podiel": 21.0
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 485,
+       "podiel": 20.96
+      }
+     ]
+    },
+    {
+     "kod": "598194",
+     "nazov": "Lorinčík",
+     "ucast": 63.75,
+     "volili": 633,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 243,
+       "podiel": 39.38
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 160,
+       "podiel": 25.93
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 124,
+       "podiel": 20.1
+      }
+     ]
+    },
+    {
+     "kod": "599972",
+     "nazov": "Luník IX",
+     "ucast": 14.16,
+     "volili": 717,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 526,
+       "podiel": 94.77
+      },
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 12,
+       "podiel": 2.16
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 6,
+       "podiel": 1.08
+      }
+     ]
+    },
+    {
+     "kod": "598216",
+     "nazov": "Myslava",
+     "ucast": 56.29,
+     "volili": 1257,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 543,
+       "podiel": 45.75
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 272,
+       "podiel": 22.91
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 170,
+       "podiel": 14.32
+      }
+     ]
+    },
+    {
+     "kod": "599816",
+     "nazov": "Nad jazerom",
+     "ucast": 34.77,
+     "volili": 6613,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 1955,
+       "podiel": 30.78
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 1925,
+       "podiel": 30.31
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1022,
+       "podiel": 16.09
+      }
+     ]
+    },
+    {
+     "kod": "598208",
+     "nazov": "Pereš",
+     "ucast": 58.14,
+     "volili": 1079,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 390,
+       "podiel": 38.39
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 249,
+       "podiel": 24.51
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 197,
+       "podiel": 19.39
+      }
+     ]
+    },
+    {
+     "kod": "599859",
+     "nazov": "Poľov",
+     "ucast": 72.12,
+     "volili": 701,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 238,
+       "podiel": 35.95
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 198,
+       "podiel": 29.91
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 99,
+       "podiel": 14.95
+      }
+     ]
+    },
+    {
+     "kod": "598151",
+     "nazov": "Sever",
+     "ucast": 39.14,
+     "volili": 6349,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 2174,
+       "podiel": 35.41
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1614,
+       "podiel": 26.29
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1464,
+       "podiel": 23.85
+      }
+     ]
+    },
+    {
+     "kod": "598186",
+     "nazov": "Staré Mesto",
+     "ucast": 37.79,
+     "volili": 6584,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 2186,
+       "podiel": 34.28
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1729,
+       "podiel": 27.11
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1458,
+       "podiel": 22.86
+      }
+     ]
+    },
+    {
+     "kod": "599883",
+     "nazov": "Sídlisko KVP",
+     "ucast": 40.53,
+     "volili": 7484,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 4663,
+       "podiel": 64.07
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1006,
+       "podiel": 13.82
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 754,
+       "podiel": 10.36
+      }
+     ]
+    },
+    {
+     "kod": "599875",
+     "nazov": "Sídlisko Ťahanovce",
+     "ucast": 34.88,
+     "volili": 5915,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 2503,
+       "podiel": 44.03
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1042,
+       "podiel": 18.33
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1024,
+       "podiel": 18.01
+      }
+     ]
+    },
+    {
+     "kod": "599913",
+     "nazov": "Vyšné Opátske",
+     "ucast": 51.99,
+     "volili": 1213,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 438,
+       "podiel": 36.87
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 296,
+       "podiel": 24.92
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 232,
+       "podiel": 19.53
+      }
+     ]
+    },
+    {
+     "kod": "598224",
+     "nazov": "Západ",
+     "ucast": 34.73,
+     "volili": 10895,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 4338,
+       "podiel": 41.21
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 2169,
+       "podiel": 20.61
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 2091,
+       "podiel": 19.87
+      }
+     ]
+    },
+    {
+     "kod": "599841",
+     "nazov": "Šaca",
+     "ucast": 38.33,
+     "volili": 1810,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 594,
+       "podiel": 36.99
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 377,
+       "podiel": 23.47
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 341,
+       "podiel": 21.23
+      }
+     ]
+    },
+    {
+     "kod": "599786",
+     "nazov": "Šebastovce",
+     "ucast": 48.15,
+     "volili": 312,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 92,
+       "podiel": 31.4
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 80,
+       "podiel": 27.3
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 64,
+       "podiel": 21.84
+      }
+     ]
+    },
+    {
+     "kod": "598127",
+     "nazov": "Ťahanovce",
+     "ucast": 43.84,
+     "volili": 794,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 298,
+       "podiel": 42.03
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 205,
+       "podiel": 28.91
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 111,
+       "podiel": 15.66
+      }
+     ]
+    }
+   ],
    "primator": [
     {
-     "meno": "Ladislav Lörinc",
+     "meno": "Mgr. MPA Ladislav Lörinc",
      "strany": "Košická strana",
      "hlasy": 27364,
      "podiel": 39.89,
      "zvoleny": true
     },
     {
-     "meno": "Jaroslav Polaček",
-     "strany": "KDH, SaS, Magyar Szövetség - Maďarská aliancia, SRK, NOVA, DS-ODS",
+     "meno": "Ing. Jaroslav Polaček",
+     "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
      "hlasy": 14766,
-     "podiel": 21.52,
+     "podiel": 21.53,
      "zvoleny": false
     },
     {
-     "meno": "Martin Mudrák",
+     "meno": "Mgr. Martin Mudrák",
      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
      "hlasy": 12816,
      "podiel": 18.68,
      "zvoleny": false
     },
     {
-     "meno": "Lenka Kovačevičová",
-     "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, PRAVDA",
+     "meno": "Ing. Mgr. Lenka Kovačevičová",
+     "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
      "hlasy": 8513,
      "podiel": 12.41,
      "zvoleny": false
     },
     {
-     "meno": "Alexander Riabov",
-     "strany": "NEKA",
+     "meno": "Mgr. Ing. Alexander Riabov",
+     "strany": "nezávislý kandidát",
      "hlasy": 3177,
      "podiel": 4.63,
      "zvoleny": false
@@ -1850,12 +2423,12 @@
      "meno": "Ladislav Lörincz",
      "strany": "Jednota Slovanov",
      "hlasy": 1397,
-     "podiel": 2.03,
+     "podiel": 2.04,
      "zvoleny": false
     },
     {
      "meno": "Miroslav Sabol",
-     "strany": "NEKA",
+     "strany": "nezávislý kandidát",
      "hlasy": 378,
      "podiel": 0.55,
      "zvoleny": false
@@ -1869,9 +2442,294 @@
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 51,
+    "mandaty": [
+     {
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "mandaty": 14
+     },
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 13
+     },
+     {
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "mandaty": 8
+     },
+     {
+      "strany": "Košická strana",
+      "mandaty": 7
+     },
+     {
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "mandaty": 7
+     },
+     {
+      "strany": "Občianska konzervatívna strana",
+      "mandaty": 1
+     },
+     {
+      "strany": "SME RODINA",
+      "mandaty": 1
+     }
+    ],
+    "poslanci": [
+     {
+      "meno": "PhDr. Dominik Babušík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 3535
+     },
+     {
+      "meno": "Mgr. PhD. Jozef Andrejčák",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 3402
+     },
+     {
+      "meno": "Ing. Roman Matoušek",
+      "strany": "Košická strana",
+      "hlasy": 3380
+     },
+     {
+      "meno": "JUDr. Ing. MJur. Marián Porvažník",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 3082
+     },
+     {
+      "meno": "Iveta Adamčíková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2855
+     },
+     {
+      "meno": "Mgr. Marcel Vrchota",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 2815
+     },
+     {
+      "meno": "JUDr. Ing. Miloš Ihnát",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2772
+     },
+     {
+      "meno": "Bc. Mgr. Igor Holéczy",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 2704
+     },
+     {
+      "meno": "Ing. Tibor Bačinský",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 2582
+     },
+     {
+      "meno": "JUDr. Ing. PhD. Peter Huba",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 2497
+     },
+     {
+      "meno": "Mgr. Dominik Karaffa",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2478
+     },
+     {
+      "meno": "MUDr. MPH Viliam Novotný",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 2418
+     },
+     {
+      "meno": "Ing. Mgr. Lenka Kovačevičová",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 2388
+     },
+     {
+      "meno": "Ing. Anna Súkeníková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2321
+     },
+     {
+      "meno": "Mgr. Martin Mudrák",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 2226
+     },
+     {
+      "meno": "Mgr. Patrícia Helfenová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2054
+     },
+     {
+      "meno": "PhDr. Róbert Schwarcz",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1953
+     },
+     {
+      "meno": "Adam Ogurčák",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1938
+     },
+     {
+      "meno": "Ing. MBA Peter Čech",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1918
+     },
+     {
+      "meno": "Peter Berinšter",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1917
+     },
+     {
+      "meno": "Mgr. Matej Kundrát",
+      "strany": "Košická strana",
+      "hlasy": 1895
+     },
+     {
+      "meno": "Mgr. Marek Fedoročko",
+      "strany": "Košická strana",
+      "hlasy": 1809
+     },
+     {
+      "meno": "Mgr. PhD. Marián Horenský",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1725
+     },
+     {
+      "meno": "Mgr. Bernard Berberich",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1681
+     },
+     {
+      "meno": "Mgr. Miroslav Špak",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1672
+     },
+     {
+      "meno": "Ing. Karel Hirman",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1670
+     },
+     {
+      "meno": "Mgr. Zuzana Slivenská",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1622
+     },
+     {
+      "meno": "Ing. Erich Blanár",
+      "strany": "Košická strana",
+      "hlasy": 1597
+     },
+     {
+      "meno": "Ing. Matej Kepič",
+      "strany": "Košická strana",
+      "hlasy": 1593
+     },
+     {
+      "meno": "Marián Koszoru",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1556
+     },
+     {
+      "meno": "JUDr. Stanislava Majerová",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1512
+     },
+     {
+      "meno": "doc. PhDr. PhD. Viliam Knap, MHA, MPH",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1509
+     },
+     {
+      "meno": "Ing. Rastislav Amrich",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1469
+     },
+     {
+      "meno": "Mgr. Martin Seman",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1456
+     },
+     {
+      "meno": "Ing. Igor Petrovčik",
+      "strany": "SME RODINA",
+      "hlasy": 1379
+     },
+     {
+      "meno": "Ing. Marek Kandrač",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 1325
+     },
+     {
+      "meno": "Mgr. Igor Kupec",
+      "strany": "Košická strana",
+      "hlasy": 1324
+     },
+     {
+      "meno": "Ing. PhD. Vladimír Jeleň",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1324
+     },
+     {
+      "meno": "Ing. MBA František Ténai",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1320
+     },
+     {
+      "meno": "Ing. Vladimír Saxa",
+      "strany": "Košická strana",
+      "hlasy": 1314
+     },
+     {
+      "meno": "Mgr. Lenka Bikárová",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1295
+     },
+     {
+      "meno": "Peter Šafranko",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1239
+     },
+     {
+      "meno": "Bc. Dalibor Eštočák",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1226
+     },
+     {
+      "meno": "Ing. František Klik",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 977
+     },
+     {
+      "meno": "Mgr. MBA Lukáš Kunca",
+      "strany": "Občianska konzervatívna strana",
+      "hlasy": 971
+     },
+     {
+      "meno": "Ing. Gabriel Krištof",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 858
+     },
+     {
+      "meno": "PhDr. Marcel Šaňa",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 720
+     },
+     {
+      "meno": "Mgr. Peter Kasterko",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 661
+     },
+     {
+      "meno": "Ing. PhD. Štefan Kender",
+      "strany": "nezávislý kandidát",
+      "hlasy": 641
+     },
+     {
+      "meno": "Ing. PhD. ING-PAED IGIP Lucia Iľaščíková",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 600
+     },
+     {
+      "meno": "JUDr. Martin Balčík",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 476
+     }
+    ]
    }
   }
  },
