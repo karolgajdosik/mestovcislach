@@ -1,13 +1,8 @@
-import requests, time
+import requests, zipfile, io
 H={"User-Agent":"Mozilla/5.0 (mestovcislach diag)"}
 W="https://mestovcislach.sk"
-for i in range(30):
-    t=requests.get(W+"/bratislava/volby/",headers=H,timeout=30).text
-    if "Vagač" in t: break
-    time.sleep(30)
-print("BA starostovia:", "Vagač" in t, "Chren" in t)
-for s in ["trnava","trencin","nitra","zilina","banska-bystrica","presov","kosice"]:
-    t=requests.get(f"{W}/{s}/volby/",headers=H,timeout=30).text
-    print(s, "Konečné" in t or "zvolený" in t, "Priebežné" in t)
-r=requests.get(W+"/og/volby-trnava.png",headers=H,timeout=30); print("og trnava", r.status_code, len(r.content))
+r=requests.get("https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip",headers=H,timeout=120)
+print("balík", r.headers.get("last-modified"), sorted(zipfile.ZipFile(io.BytesIO(r.content)).namelist()))
+for u in ["/","/porovnanie/","/bratislava/volby/","/bratislava/zastupitelstvo/"]+[f"/{s}/volby/" for s in ["trnava","nitra","trencin","zilina","banska-bystrica","presov","kosice"]]+[f"/{s}/zastupitelstvo/" for s in ["kosice","nitra"]]:
+    t=requests.get(W+u,headers=H,timeout=30); print(u, t.status_code, "Priebežné" in t.text, "100 %" in t.text or "Konečné" in t.text)
 print("HOTOVO")
