@@ -1,8 +1,10 @@
-import subprocess, sys, requests, zipfile, io
-subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
+import requests, time, re
 H={"User-Agent":"Mozilla/5.0 (mestovcislach diag)"}
-for u in ["https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip","https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip"]:
-    r=requests.get(u,headers=H,timeout=120); print(u.split('/')[-1], r.status_code, r.headers.get("last-modified"), len(r.content))
-    if r.ok: print("  ", sorted(zipfile.ZipFile(io.BytesIO(r.content)).namelist()))
-r=subprocess.run([sys.executable, "scripts/zber_komunalne.py"], capture_output=True, text=True, timeout=1500); print("BA rc", r.returncode, r.stdout[-2500:], r.stderr[-2500:])
+for i in range(30):
+    t=requests.get("https://mestovcislach.sk/bratislava/volby/",headers=H,timeout=30).text
+    if "64,4" in t or "64,36" in t: break
+    time.sleep(30)
+print("BA 64,4 %:", "64,4" in t)
+h=requests.get("https://mestovcislach.sk/",headers=H,timeout=30).text
+print("úvod:", re.sub(r"<[^>]+>"," ",h[h.find('volby-2026-uvod'):h.find('volby-2026-uvod')+3000]).split()[:80])
 print("HOTOVO")
