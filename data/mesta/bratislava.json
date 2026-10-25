@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-24T23:59:16",
+ "aktualizovane": "2026-10-25T00:13:01",
  "obyvatelia": {
   "roky": {
    "1993": 448785,
@@ -1582,14 +1582,14 @@
   },
   "2026": {
    "ucast": {
-    "zapisani": 223851,
-    "volili": 103659,
-    "ucast_pct": 46.3
+    "zapisani": 277873,
+    "volili": 129760,
+    "ucast_pct": 46.69
    },
    "spracovanie": {
     "okrsky": null,
     "spolu": null,
-    "pct": 55.41,
+    "pct": 68.55,
     "priebezne": true,
     "zdroj": "volbysr.sk (priebežne)"
    },
@@ -1597,42 +1597,42 @@
     {
      "meno": "Matúš Vallo",
      "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
-     "hlasy": 62987,
-     "podiel": 63.23,
+     "hlasy": 80037,
+     "podiel": 64.1,
      "zvoleny": false
     },
     {
      "meno": "Jozef Ráž",
      "strany": "NEKA",
-     "hlasy": 33173,
-     "podiel": 33.3,
+     "hlasy": 40657,
+     "podiel": 32.56,
      "zvoleny": false
     },
     {
      "meno": "Zuzana Šubová",
      "strany": "Piráti",
-     "hlasy": 1862,
-     "podiel": 1.86,
+     "hlasy": 2283,
+     "podiel": 1.82,
      "zvoleny": false
     },
     {
      "meno": "Ľubomír Geci",
      "strany": "MySlovensko",
-     "hlasy": 776,
-     "podiel": 0.77,
+     "hlasy": 948,
+     "podiel": 0.75,
      "zvoleny": false
     },
     {
      "meno": "Martin Winkler",
      "strany": "Dunaj",
-     "hlasy": 659,
-     "podiel": 0.66,
+     "hlasy": 744,
+     "podiel": 0.59,
      "zvoleny": false
     },
     {
      "meno": "Miroslav Heredoš",
      "strany": "VLASTENCI SK",
-     "hlasy": 146,
+     "hlasy": 183,
      "podiel": 0.14,
      "zvoleny": false
     }

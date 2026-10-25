@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-21T05:21:51",
+ "aktualizovane": "2026-10-25T00:13:01",
  "obyvatelia": {
   "roky": {
    "1993": 84575,
@@ -443,6 +443,69 @@
       "hlasy": 502
      }
     ]
+   }
+  },
+  "2026": {
+   "ucast": {
+    "zapisani": 62170,
+    "volili": 27653,
+    "ucast_pct": 44.47
+   },
+   "spracovanie": {
+    "okrsky": null,
+    "spolu": null,
+    "pct": 100.0,
+    "priebezne": false,
+    "zdroj": "volbysr.sk (priebežne)"
+   },
+   "primator": [
+    {
+     "meno": "Ján Nosko",
+     "strany": "NEKA",
+     "hlasy": 12629,
+     "podiel": 46.78,
+     "zvoleny": true
+    },
+    {
+     "meno": "Diana Javorčíková",
+     "strany": "Progresívne Slovensko, SaS, Demokrati, SLOVENSKO, OKS",
+     "hlasy": 11591,
+     "podiel": 42.94,
+     "zvoleny": false
+    },
+    {
+     "meno": "Matúš Molitoris",
+     "strany": "NEKA",
+     "hlasy": 1875,
+     "podiel": 6.94,
+     "zvoleny": false
+    },
+    {
+     "meno": "Marian Kotleba",
+     "strany": "ĽS Naše Slovensko",
+     "hlasy": 769,
+     "podiel": 2.84,
+     "zvoleny": false
+    },
+    {
+     "meno": "Tomáš Sobota",
+     "strany": "NEKA",
+     "hlasy": 102,
+     "podiel": 0.37,
+     "zvoleny": false
+    },
+    {
+     "meno": "Ondrej Vereš",
+     "strany": "SV",
+     "hlasy": 25,
+     "podiel": 0.09,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 0,
+    "mandaty": [],
+    "poslanci": []
    }
   }
  },
