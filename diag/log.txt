@@ -1,23 +1,23 @@
-tabuľky: {'tab01': 1, 'tab02a': 8, 'tab02b_suhrn': 49, 'tab02c_suhrn': 79, 'tab02d_suhrn': 2921, 'tab02e_suhrn': 3357, 'tab02ex_suhrn': 25, 'tab02b_agg': 0, 'tab02b': 6602, 'tab02x': 2, 'tab03b1': 226, 'tab03b2': 334, 'tab03c1': 485, 'tab03c2': 860, 'tab03d1': 577, 'tab03d2': 1088, 'tab04d': 2912, 'tab04x': 2, 'tab05_agg': 14967, 'tab05': 22858, 'tab06': 20356, 'tab07d': 7390, 'tab07x': 13, 'tab08_agg': 40082, 'tab08': 114499, 'tab0a': 6561, 'tab0b': 40184, 'tab0c': 53, 'tab0d': 2926, 'tab12b': 8, 'tab12c': 49}
-tab05_agg stĺpce: ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT', 'POZNAMKA']
-tab02b stĺpce: ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
-BA primátor [('Ing. arch. Matúš Vallo', 64.37, True), ('JUDr. Ing. Jozef Ráž', 32.32, False)] MČ 15 okrsky 358/388 MsZ 45 starostovia 17
-mandáty [{'strany': 'Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati', 'mandaty': 34}, {'strany': 'SOM SLOVENSKO - Strana obcí a miest', 'mandaty': 6}, {'strany': 'TÍM RUŽINOV', 'mandaty': 2}, {'strany': 'KRAJINA', 'mandaty': 1}]
-MČ pomer: [('Devínska Nová Ves', 50.83, 58.52), ('Dúbravka', 46.34, 64.58), ('Jarovce', 66.06, 65.4), ('Karlova Ves', 50.44, 63.87), ('Lamač', 50.24, 62.05)]
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 15, in <module>
+    try: zk.spracuj_osk(osk, {})
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_komunalne.py", line 473, in spracuj_osk
+    predseda_kraj = vysledky_kandidatov(t["tab06"], kand, strany, pc, lambda r: kod(r["OBEC"]) in kraj_obce, zvol_pred)
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_komunalne.py", line 215, in vysledky_kandidatov
+    if not filtr(r):
+           ~~~~~^^^
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_komunalne.py", line 473, in <lambda>
+    predseda_kraj = vysledky_kandidatov(t["tab06"], kand, strany, pc, lambda r: kod(r["OBEC"]) in kraj_obce, zvol_pred)
+                                                                                    ~^^^^^^^^
+KeyError: 'OBEC'
+tab0d príklad: [('500011', 'Nitra'), ('511668', 'Nitra nad Ipľom')]
+MESTA nazvy: ['Bratislava', 'Trnava', 'Nitra', 'Trenčín', 'Žilina', 'Banská Bystrica', 'Prešov', 'Košice']
+norm: ['Bratislava - Staré Mesto', 'Bratislava - Podunajské Biskupice', 'Bratislava - Ružinov']
   Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
   Košice 2022: primátor v 22 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}
   komunálne 2022: 8 miest
-  komunálne 2026: 8 miest 
-nitra {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'} poslancov 0 [('Marek Hattas', 50.66, True), ('Igor Kršiak', 39.07, False)] MČ 0
-kosice {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'} poslancov 0 [('Ladislav Lörinc', 39.89, True), ('Jaroslav Polaček', 21.52, False)] MČ 0
-presov {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'} poslancov 0 [('František Oľha', 40.69, True), ('Pavel Hagyari', 24.12, False)] MČ 0
-BA rc 1 Komunálne a krajské voľby 2022:
-  primátor: Ing. arch. Matúš Vallo 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
-  predseda BSK: Mgr. Juraj Droba, MBA, MA 63.61 %, poslanci za BA 35
-  stav: vysledky
-Komunálne a krajské voľby 2026:
-Bez zmeny.
-::error title=Zber komunálnych volieb::RuntimeError: 2026: KeyError: 'OBEC'
- CHYBA: 2026: KeyError: 'OBEC'
-
+  komunálne 2026: 0 miest
+{'bratislava': (['2022'], None), 'trnava': (['2022'], None), 'nitra': (['2022'], None), 'trencin': (['2022'], None), 'zilina': (['2022'], None), 'banska-bystrica': (['2022'], None), 'presov': (['2022'], None), 'kosice': (['2022'], None)}
+OSK tabuľky: {'tab01': 1, 'tab02a': 8, 'tab02b_suhrn': 96, 'tab02c_suhrn': 2926, 'tab02d_suhrn': 6029, 'tab03b': 44, 'tab04a': 427, 'tab04b': 2463, 'tab06': 22591, 'tab09': 109239, 'tab0a': 56, 'tab0b': 2472, 'tab0c': 53, 'tab0d': 2926, 'tab0e1': 8, 'tab0e2': 8, 'tab12': 8, 'tab15': 8}
 HOTOVO
