@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T00:16:47",
+ "aktualizovane": "2026-10-25T00:56:15",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -1799,14 +1799,14 @@
   },
   "2026": {
    "ucast": {
-    "zapisani": 180727,
-    "volili": 66756,
-    "ucast_pct": 36.93
+    "zapisani": 189363,
+    "volili": 70248,
+    "ucast_pct": 37.09
    },
    "spracovanie": {
     "okrsky": null,
     "spolu": null,
-    "pct": 94.73,
+    "pct": 98.42,
     "priebezne": true,
     "zdroj": "volbysr.sk (priebežne)"
    },
@@ -1814,57 +1814,57 @@
     {
      "meno": "Ladislav Lörinc",
      "strany": "Košická strana",
-     "hlasy": 25577,
-     "podiel": 39.98,
+     "hlasy": 26849,
+     "podiel": 39.9,
      "zvoleny": false
     },
     {
      "meno": "Jaroslav Polaček",
      "strany": "KDH, SaS, Magyar Szövetség - Maďarská aliancia, SRK, NOVA, DS-ODS",
-     "hlasy": 13750,
-     "podiel": 21.49,
+     "hlasy": 14440,
+     "podiel": 21.46,
      "zvoleny": false
     },
     {
      "meno": "Martin Mudrák",
      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
-     "hlasy": 11958,
-     "podiel": 18.69,
+     "hlasy": 12544,
+     "podiel": 18.64,
      "zvoleny": false
     },
     {
      "meno": "Lenka Kovačevičová",
      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, PRAVDA",
-     "hlasy": 7879,
-     "podiel": 12.31,
+     "hlasy": 8399,
+     "podiel": 12.48,
      "zvoleny": false
     },
     {
      "meno": "Alexander Riabov",
      "strany": "NEKA",
-     "hlasy": 2980,
-     "podiel": 4.65,
+     "hlasy": 3126,
+     "podiel": 4.64,
      "zvoleny": false
     },
     {
      "meno": "Ladislav Lörincz",
      "strany": "Jednota Slovanov",
-     "hlasy": 1296,
-     "podiel": 2.02,
+     "hlasy": 1370,
+     "podiel": 2.03,
      "zvoleny": false
     },
     {
      "meno": "Miroslav Sabol",
      "strany": "NEKA",
-     "hlasy": 355,
+     "hlasy": 375,
      "podiel": 0.55,
      "zvoleny": false
     },
     {
      "meno": "Alexander Székely",
      "strany": "Slovenské Hnutie Obrody",
-     "hlasy": 164,
-     "podiel": 0.25,
+     "hlasy": 177,
+     "podiel": 0.26,
      "zvoleny": false
     }
    ],
