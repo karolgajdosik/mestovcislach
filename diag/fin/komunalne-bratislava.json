@@ -2103,112 +2103,131 @@
      ],
      "mestske_casti": [
       {
-       "kod": "529371",
-       "nazov": "Devínska Nová Ves",
-       "ucast": 50.83,
+       "kod": "529401",
+       "nazov": "Devín",
+       "ucast": 64.44,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 58.52
+         "podiel": 59.9
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 37.54
+         "podiel": 36.9
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 2.23
+         "podiel": 2.5
+        }
+       ]
+      },
+      {
+       "kod": "529371",
+       "nazov": "Devínska Nová Ves",
+       "ucast": 49.36,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 58.32
+        },
+        {
+         "meno": "JUDr. Ing. Jozef Ráž",
+         "podiel": 37.63
+        },
+        {
+         "meno": "Ing. Zuzana Šubová",
+         "podiel": 2.19
         }
        ]
       },
       {
        "kod": "529389",
        "nazov": "Dúbravka",
-       "ucast": 46.34,
+       "ucast": 45.04,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 64.58
+         "podiel": 63.95
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 32.9
+         "podiel": 33.56
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 1.49
+         "podiel": 1.45
         }
        ]
       },
       {
        "kod": "529443",
        "nazov": "Jarovce",
-       "ucast": 66.06,
+       "ucast": 65.05,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 65.4
+         "podiel": 68.79
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 32.17
+         "podiel": 28.93
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 0.97
+         "podiel": 1.43
         }
        ]
       },
       {
        "kod": "529397",
        "nazov": "Karlova Ves",
-       "ucast": 50.44,
+       "ucast": 50.51,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 63.87
+         "podiel": 64.18
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 33.13
+         "podiel": 32.83
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 1.79
+         "podiel": 1.78
         }
        ]
       },
       {
        "kod": "529419",
        "nazov": "Lamač",
-       "ucast": 50.24,
+       "ucast": 50.68,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 62.05
+         "podiel": 59.16
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 35.2
+         "podiel": 38.39
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 1.53
+         "podiel": 1.54
         }
        ]
       },
       {
        "kod": "529346",
        "nazov": "Nové Mesto",
-       "ucast": 47.78,
+       "ucast": 47.7,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 68.68
+         "podiel": 68.69
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 28.34
+         "podiel": 28.33
         },
         {
          "meno": "Ing. Zuzana Šubová",
@@ -2219,7 +2238,7 @@
       {
        "kod": "529460",
        "nazov": "Petržalka",
-       "ucast": 46.85,
+       "ucast": 46.37,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
@@ -2227,11 +2246,11 @@
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 36.49
+         "podiel": 36.5
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 2.35
+         "podiel": 2.34
         }
        ]
       },
@@ -2257,38 +2276,38 @@
       {
        "kod": "529354",
        "nazov": "Rača",
-       "ucast": 46.3,
+       "ucast": 48.18,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 62.25
+         "podiel": 62.61
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 35.0
+         "podiel": 34.5
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 1.35
+         "podiel": 1.59
         }
        ]
       },
       {
        "kod": "529494",
        "nazov": "Rusovce",
-       "ucast": 63.56,
+       "ucast": 60.74,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 66.57
+         "podiel": 64.78
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 30.07
+         "podiel": 31.46
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 1.92
+         "podiel": 1.9
         }
        ]
       },
@@ -2299,15 +2318,15 @@
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 70.09
+         "podiel": 70.03
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 27.04
+         "podiel": 27.1
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 1.81
+         "podiel": 1.82
         }
        ]
       },
@@ -2333,19 +2352,19 @@
       {
        "kod": "529362",
        "nazov": "Vajnory",
-       "ucast": 51.49,
+       "ucast": 49.51,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 60.29
+         "podiel": 61.49
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 36.88
+         "podiel": 36.06
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 2.07
+         "podiel": 1.41
         }
        ]
       },
@@ -2371,19 +2390,38 @@
       {
        "kod": "529427",
        "nazov": "Záhorská Bystrica",
-       "ucast": 52.37,
+       "ucast": 55.79,
        "poradie": [
         {
          "meno": "Ing. arch. Matúš Vallo",
-         "podiel": 63.88
+         "podiel": 70.58
         },
         {
          "meno": "JUDr. Ing. Jozef Ráž",
-         "podiel": 33.85
+         "podiel": 26.82
         },
         {
          "meno": "Ing. Zuzana Šubová",
-         "podiel": 1.24
+         "podiel": 1.37
+        }
+       ]
+      },
+      {
+       "kod": "529435",
+       "nazov": "Čunovo",
+       "ucast": 70.78,
+       "poradie": [
+        {
+         "meno": "Ing. arch. Matúš Vallo",
+         "podiel": 65.39
+        },
+        {
+         "meno": "JUDr. Ing. Jozef Ráž",
+         "podiel": 31.34
+        },
+        {
+         "meno": "Ing. Zuzana Šubová",
+         "podiel": 1.69
         }
        ]
       }
@@ -3822,5 +3860,5 @@
    }
   }
  ],
- "aktualizovane": "2026-10-25T18:29:42+00:00"
+ "aktualizovane": "2026-10-25T18:31:17+00:00"
 }

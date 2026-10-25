@@ -3,12 +3,13 @@ BA rc 0 Komunálne a krajské voľby 2022:
   predseda BSK: Mgr. Juraj Droba, MBA, MA 63.61 %, poslanci za BA 35
   stav: vysledky
 Komunálne a krajské voľby 2026:
-  primátor: Ing. arch. Matúš Vallo 64.37 %, účasť 47.37 %, MČ v rozdelení 15/17, okrsky 358/388, MsZ 45, starostovia 17
+  MČ podľa platných hlasov: 17, okrsky {'okrskov': 388, 'priradenych': 386, 'hlasy_nad_volicov': 0}
+  primátor: Ing. arch. Matúš Vallo 64.37 %, účasť 47.37 %, MČ v rozdelení 17/17, okrsky 358/388, MsZ 45, starostovia 17
   predseda BSK: Mgr. MBA Juraj Droba, MA 70.97 %, poslanci za BA 36
   stav: vysledky
 Uložené.
  
-MČ: [('Devínska Nová Ves', 50.83), ('Dúbravka', 46.34), ('Jarovce', 66.06), ('Karlova Ves', 50.44)]
+MČ: [('Devín', 64.44), ('Devínska Nová Ves', 49.36), ('Dúbravka', 45.04), ('Jarovce', 65.05)]
 BSK: [('Mgr. MBA Juraj Droba, MA', 70.97, True), ('Mgr. MBA Rastislav Gajarský', 11.54, False)] {'zapisani': 623410, 'volili': 290145, 'ucast_pct': 46.54} poslanci BA 36
 starostovia: 17 [('Devín', 7), ('Devínska Nová Ves', 12), ('Dúbravka', 25), ('Jarovce', 7)]
 HOTOVO
