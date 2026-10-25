@@ -542,7 +542,7 @@ def main() -> int:
                     zaznam["stav"] = "vysledky"
                     zaznam["spracovanie"] = d["spracovanie"]
                     zaznam["oso"] = {"primator": {"ucast": d["ucast"], "kandidati": d["primator"], "mestske_casti": [], "okrsky_priradene": 0},
-                                     "mestske_zastupitelstvo": {"poslancov": 0, "mandaty": [], "zvoleni": []}, "starostovia": []}
+                                     "mestske_zastupitelstvo": {"poslancov": 0, "mandaty": [], "zvoleni": []}, "starostovia": vp.starostovia_ba()}
                     zaznam["zdroj_oso"] = "https://volbysr.sk/oso/sk/vysledky_obce.html"
             if zaznam.get("oso"):
                 p = zaznam["oso"]["primator"]
