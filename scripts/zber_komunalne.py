@@ -64,8 +64,13 @@ IDENT = ("KRAJ", "VOBVOD", "OBEC", "VOOBEC", "OKRSOK", "PC_HL", "PS")
 
 
 def normalizuj_kluc(nazov: str) -> str:
-    """tab05f/tab05fx → tab05, tab0ad/tab0ax → tab0a, tab02bf/tab02bfx → tab02b, tab0dd/tab0dx/tab0dc → tab0d."""
+    """tab05f/tab05fx → tab05, tab0ad/tab0ax → tab0a, tab02bf/tab02bfx (2026: tab02f/tab02fx) → tab02b, tab0dd/tab0dx/tab0dc → tab0d."""
     n = nazov.lower()
+    # 2026 (XLSX): účasť po okrskoch je tab02f/tab02fx (v 2022 tab02b); tab02b–e sú súhrny za obvody, okresy, obce
+    if n.startswith("tab02f"):
+        return "tab02b"
+    if re.fullmatch(r"tab02[b-e]x?", n):
+        return n + "_suhrn"
     for zaklad in ("tab0a", "tab0b", "tab0c", "tab0d", "tab02a", "tab02b", "tab05", "tab06", "tab08", "tab09"):
         if n.startswith(zaklad):
             return zaklad
