@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T00:13:01",
+ "aktualizovane": "2026-10-25T00:16:47",
  "obyvatelia": {
   "roky": {
    "1993": 448785,
@@ -1582,14 +1582,14 @@
   },
   "2026": {
    "ucast": {
-    "zapisani": 277873,
-    "volili": 129760,
-    "ucast_pct": 46.69
+    "zapisani": 166155,
+    "volili": 75886,
+    "ucast_pct": 45.67
    },
    "spracovanie": {
     "okrsky": null,
     "spolu": null,
-    "pct": 68.55,
+    "pct": 41.75,
     "priebezne": true,
     "zdroj": "volbysr.sk (priebežne)"
    },
@@ -1597,42 +1597,42 @@
     {
      "meno": "Matúš Vallo",
      "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
-     "hlasy": 80037,
-     "podiel": 64.1,
+     "hlasy": 46092,
+     "podiel": 63.22,
      "zvoleny": false
     },
     {
      "meno": "Jozef Ráž",
      "strany": "NEKA",
-     "hlasy": 40657,
-     "podiel": 32.56,
+     "hlasy": 24508,
+     "podiel": 33.61,
      "zvoleny": false
     },
     {
      "meno": "Zuzana Šubová",
      "strany": "Piráti",
-     "hlasy": 2283,
-     "podiel": 1.82,
+     "hlasy": 1311,
+     "podiel": 1.79,
      "zvoleny": false
     },
     {
      "meno": "Ľubomír Geci",
      "strany": "MySlovensko",
-     "hlasy": 948,
-     "podiel": 0.75,
+     "hlasy": 576,
+     "podiel": 0.79,
      "zvoleny": false
     },
     {
      "meno": "Martin Winkler",
      "strany": "Dunaj",
-     "hlasy": 744,
-     "podiel": 0.59,
+     "hlasy": 310,
+     "podiel": 0.42,
      "zvoleny": false
     },
     {
      "meno": "Miroslav Heredoš",
      "strany": "VLASTENCI SK",
-     "hlasy": 183,
+     "hlasy": 105,
      "podiel": 0.14,
      "zvoleny": false
     }
@@ -1911,5 +1911,1061 @@
   "praca": "ÚPSVaR – mesačná štatistika",
   "byty": "ŠÚ SR – DATAcube st3004rr",
   "ceny": "ŠÚ SR – DATAcube sp3801qr"
+ },
+ "casti": {
+  "Devín": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 77.25,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 37.83
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 14.27
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 12.78
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 9.11
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.6
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 5.52
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 54.08,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 51.17
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 13.47
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 8.41
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 7.66
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.69
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 5.44
+      }
+     ]
+    }
+   }
+  },
+  "Devínska Nová Ves": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 73.49,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 31.08
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 17.55
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 13.34
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 9.92
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 5.48
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "podiel": 4.95
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 44.31,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 44.88
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 17.01
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 9.83
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 8.42
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.86
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.23
+      }
+     ]
+    }
+   }
+  },
+  "Dúbravka": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 73.06,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 31.8
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 18.66
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 12.58
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 10.84
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.14
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.04
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 46.26,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 43.64
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 19.37
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 8.1
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 7.93
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 6.18
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.93
+      }
+     ]
+    }
+   }
+  },
+  "Jarovce": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 81.34,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 31.84
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 16.08
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 15.08
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 8.19
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 7.72
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 6.63
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 53.39,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 48.98
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 13.51
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 10.07
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 9.58
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.75
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 4.67
+      }
+     ]
+    }
+   }
+  },
+  "Karlova Ves": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 76.0,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 35.99
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 16.33
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 14.81
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 8.61
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.33
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 4.59
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 46.26,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 48.56
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 16.23
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 8.71
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 7.05
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 6.29
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.49
+      }
+     ]
+    }
+   }
+  },
+  "Lamač": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 78.24,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 30.81
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 18.23
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 12.59
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 10.14
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 6.91
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 5.6
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 53.45,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 42.98
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 18.33
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 9.68
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 7.82
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 7.25
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 6.33
+      }
+     ]
+    }
+   }
+  },
+  "Nové Mesto": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 77.4,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 37.96
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 15.51
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 15.48
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 8.35
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 4.58
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.54
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 50.73,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 52.27
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 15.31
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 8.64
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 6.34
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.35
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.9
+      }
+     ]
+    }
+   }
+  },
+  "Petržalka": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 71.62,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 30.47
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 19.23
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 12.56
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 10.52
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 5.96
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.83
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 44.15,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 43.69
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 19.26
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 8.89
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 7.93
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.74
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.49
+      }
+     ]
+    }
+   }
+  },
+  "Podunajské Biskupice": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 70.5,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 27.07
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 20.95
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 11.47
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 11.27
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 7.31
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.15
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 39.76,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 40.38
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 22.0
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 9.12
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 7.74
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.17
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.7
+      }
+     ]
+    }
+   }
+  },
+  "Rača": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 72.51,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 32.12
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 19.2
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 12.58
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 10.28
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 5.59
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.77
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 45.34,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 44.52
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 19.18
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 7.94
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 7.58
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 6.53
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.43
+      }
+     ]
+    }
+   }
+  },
+  "Rusovce": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 77.31,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 34.93
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 14.92
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 14.61
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 9.44
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 6.66
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.52
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 50.69,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 49.85
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 16.36
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 10.38
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 6.69
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 4.81
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.11
+      }
+     ]
+    }
+   }
+  },
+  "Ružinov": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 75.18,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 36.89
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 16.32
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 14.9
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 8.37
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.94
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 4.86
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 48.23,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 50.21
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 15.89
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 8.98
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 6.69
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.46
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.36
+      }
+     ]
+    }
+   }
+  },
+  "Staré Mesto": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 76.72,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 41.59
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 15.14
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 14.74
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 6.74
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.45
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 4.44
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 52.03,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 53.8
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 13.85
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 8.6
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.75
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 5.43
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.37
+      }
+     ]
+    }
+   }
+  },
+  "Vajnory": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 75.79,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 28.74
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 18.7
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 12.22
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 10.28
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 6.3
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.54
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 45.91,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 45.21
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 20.41
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 7.61
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 6.4
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 6.4
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.73
+      }
+     ]
+    }
+   }
+  },
+  "Vrakuňa": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 68.69,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 27.92
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 20.54
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 12.57
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 11.33
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 7.69
+      },
+      {
+       "nazov": "Slovenská národná strana",
+       "podiel": 4.06
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 37.86,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 41.47
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 21.04
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 9.7
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 8.38
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.26
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.57
+      }
+     ]
+    }
+   }
+  },
+  "Záhorská Bystrica": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 82.81,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 35.34
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 16.91
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 14.1
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 7.95
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.75
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 5.26
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 53.61,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 51.75
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 13.44
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 10.03
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 6.05
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 5.95
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.74
+      }
+     ]
+    }
+   }
+  },
+  "Čunovo": {
+   "volby": {
+    "nrsr2023": {
+     "ucast": 83.99,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 31.29
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 14.8
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 13.12
+      },
+      {
+       "nazov": "OĽANO A PRIATELIA: OBYČAJNÍ ĽUDIA (OĽANO), NEZÁVISLÍ KANDIDÁTI (NEKA), NOVA, SLOBODNÍ A ZODPOVEDNÍ, PAČIVALE ROMA, MAGYAR SZÍVEK a Kresťanská únia a ZA ĽUDÍ",
+       "podiel": 12.41
+      },
+      {
+       "nazov": "HLAS - sociálna demokracia",
+       "podiel": 7.98
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 5.94
+      }
+     ]
+    },
+    "ep2024": {
+     "ucast": 51.99,
+     "strany": [
+      {
+       "nazov": "Progresívne Slovensko",
+       "podiel": 45.56
+      },
+      {
+       "nazov": "SMER - sociálna demokracia",
+       "podiel": 13.4
+      },
+      {
+       "nazov": "Sloboda a Solidarita",
+       "podiel": 11.85
+      },
+      {
+       "nazov": "Demokrati",
+       "podiel": 10.44
+      },
+      {
+       "nazov": "REPUBLIKA",
+       "podiel": 5.78
+      },
+      {
+       "nazov": "Kresťanskodemokratické hnutie",
+       "podiel": 4.8
+      }
+     ]
+    }
+   }
+  }
  }
 }
