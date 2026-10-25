@@ -1662,7 +1662,7 @@
      }
     ]
    },
-   "zdroj_oso": "https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip",
+   "zdroj_oso": "https://web.archive.org/web/20241201215347id_/https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip",
    "osk": {
     "predseda": {
      "kraj": {
@@ -2680,5 +2680,5 @@
    "zdroj_oso": "https://volbysr.sk/oso/sk/vysledky_obce.html"
   }
  ],
- "aktualizovane": "2026-10-25T05:20:42+00:00"
+ "aktualizovane": "2026-10-25T07:08:28+00:00"
 }
