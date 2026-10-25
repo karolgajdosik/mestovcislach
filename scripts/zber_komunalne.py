@@ -530,7 +530,9 @@ def main() -> int:
             if ma_oso and not ma_osk and stare_volby.get(v["id"], {}).get("osk"):
                 zaznam["osk"] = stare_volby[v["id"]]["osk"]  # krajské voľby: zdroj nedostupný, ponechať uložené
                 zaznam["zdroj_osk"] = stare_volby[v["id"]].get("zdroj_osk")
-            if not ma_oso and v["id"] in stare_volby and stare_volby[v["id"]].get("stav") == "vysledky":
+            stare_konecne = v["id"] in stare_volby and stare_volby[v["id"]].get("stav") == "vysledky" \
+                and not (stare_volby[v["id"]].get("spracovanie") or {}).get("zdroj")  # priebežné z JSON nie sú konečné
+            if not ma_oso and stare_konecne:
                 zaznam = stare_volby[v["id"]]  # výsledky už máme, server dočasne nedostupný
             elif not ma_oso and v["id"] == "2026":
                 # počas sčítavania: priebežný primátor z JSON stránky ŠÚ SR (balík XLSX príde až s konečnými výsledkami)
