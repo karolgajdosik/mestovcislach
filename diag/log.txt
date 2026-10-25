@@ -1,46 +1,23 @@
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 11, in <module>
-    zk.spracuj_oso(t, nm)
-    ~~~~~~~~~~~~~~^^^^^^^
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_komunalne.py", line 394, in spracuj_oso
-    okrsok_mc = okrsky_mesta_na_mc(ucast_okrsky, mc)
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_komunalne.py", line 276, in okrsky_mesta_na_mc
-    if kod(r["OBEC"]) in mc:
-           ~^^^^^^^^
-KeyError: 'OBEC'
-tabuľky: {'tab01': 1, 'tab02a': 8, 'tab02b': 49, 'tab02c': 79, 'tab02d': 2921, 'tab02e': 3357, 'tab02ex': 25, 'tab02f_agg': 0, 'tab02f': 6024, 'tab02fx_agg': 0, 'tab02fx': 578, 'tab02x': 2, 'tab03b1': 226, 'tab03b2': 334, 'tab03c1': 485, 'tab03c2': 860, 'tab03d1': 577, 'tab03d2': 1088, 'tab04d': 2912, 'tab04x': 2, 'tab05_agg': 14967, 'tab05': 22858, 'tab06': 20356, 'tab07d': 7390, 'tab07x': 13, 'tab08_agg': 40082, 'tab08': 114499, 'tab0a': 6561, 'tab0b': 40184, 'tab0c': 53, 'tab0d': 2926, 'tab12b': 8, 'tab12c': 49}
-tab01 ['počet obcí, v ktorých sa konali voľby', 'počet potvrdených miestnych zápisníc', 'podiel potvrdených miestnych zápisníc v %', 'počet obcí, v ktorých bolo zvolené zastupiteľstvo', 'počet obcí, v ktorých bol zvolený starosta', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
-tab02a ['KRAJ', 'NKRAJ', 'počet obcí, v ktorých sa konali voľby', 'počet obcí, v ktorých bolo zvolené zastupiteľstvo', 'počet obcí, v ktorých bol zvolený starosta', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
-tab02b ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'počet obcí, v ktorých sa konali voľby', 'počet obcí, v ktorých bolo zvolené zastupiteľstvo', 'počet obcí, v ktorých bol zvolený starosta', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %']
-tab02c ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'počet obcí, v ktorých sa konali voľby', 'počet obcí, v ktorých bolo zvolené zastupiteľstvo', 'počet obcí, v ktorých bol zvolený starosta', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %']
-tab02d ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'počet okrskov', 'zvolený starosta', 'politický subjekt zvoleného starostu', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP']
-tab02e ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'počet okrskov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO']
-tab02ex ['OBEC', 'NOBEC', 'VOOBEC', 'počet okrskov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
-tab02f ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO']
-tab02fx ['OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
-tab02x ['OBEC', 'NOBEC', 'počet okrskov', 'zvolený primátor', 'politický subjekt zvoleného primátora', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
-tab03b1 ['KRAJ', 'NKRAJ', 'PS_TEXT', 'počet starostov', 'podiel starostov v %']
-tab03b2 ['KRAJ', 'NKRAJ', 'PS_TEXT', 'počet poslancov', 'podiel poslancov v %']
-tab03c1 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'PS_TEXT', 'počet starostov', 'podiel starostov v %']
-tab03c2 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'PS_TEXT', 'počet poslancov', 'podiel poslancov v %']
-tab03d1 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'PS_TEXT', 'počet starostov', 'podiel starostov v %']
-tab03d2 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'PS_TEXT', 'počet poslancov', 'podiel poslancov v %']
-tab04d ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'MENO', 'PRIEZVISKO', 'PS_TEXT']
-tab04x ['OBEC', 'NOBEC', 'MENO', 'PRIEZVISKO', 'PS_TEXT']
-tab05 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT']
-tab05_agg ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT']
-tab06 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL']
-tab07d ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'PS_TEXT', 'počet poslancov', 'podiel poslancov v %']
-tab07x ['OBEC', 'NOBEC', 'PS_TEXT', 'počet poslancov', 'podiel poslancov v %']
-tab08 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT']
-tab08_agg ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL']
-tab0a ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'TITUL', 'vek', 'zamestnanie']
-tab0b ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'TITUL', 'vek']
-tab0c ['PS', 'NPS', 'SNPS']
-tab0d ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'počet volebných obvodov', 'počet okrskov', 'počet volených poslancov', 'typ volieb']
-tab12b ['KRAJ', 'NKRAJ', 'počet starostov – muži', 'počet starostov – ženy', 'podiel starostov v % – muži', 'podiel starostov v % – ženy', 'počet poslancov – muži', 'počet poslancov – ženy', 'podiel poslancov v % – muži', 'podiel poslancov v % – ženy']
-tab12c ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'počet starostov – muži', 'počet starostov – ženy', 'podiel starostov v % – muži', 'podiel starostov v % – ženy', 'počet poslancov – muži', 'počet poslancov – ženy', 'podiel poslancov v % – muži', 'podiel poslancov v % – ženy']
-nitra 2026 v repe: {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'} 0
-nitra 2026 po zbere: {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'} 0 [('Marek Hattas', 50.66), ('Igor Kršiak', 39.07)]
-KE MČ: 0 {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'}
+tabuľky: {'tab01': 1, 'tab02a': 8, 'tab02b_suhrn': 49, 'tab02c_suhrn': 79, 'tab02d_suhrn': 2921, 'tab02e_suhrn': 3357, 'tab02ex_suhrn': 25, 'tab02b_agg': 0, 'tab02b': 6602, 'tab02x': 2, 'tab03b1': 226, 'tab03b2': 334, 'tab03c1': 485, 'tab03c2': 860, 'tab03d1': 577, 'tab03d2': 1088, 'tab04d': 2912, 'tab04x': 2, 'tab05_agg': 14967, 'tab05': 22858, 'tab06': 20356, 'tab07d': 7390, 'tab07x': 13, 'tab08_agg': 40082, 'tab08': 114499, 'tab0a': 6561, 'tab0b': 40184, 'tab0c': 53, 'tab0d': 2926, 'tab12b': 8, 'tab12c': 49}
+tab05_agg stĺpce: ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT', 'POZNAMKA']
+tab02b stĺpce: ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
+BA primátor [('Ing. arch. Matúš Vallo', 64.37, True), ('JUDr. Ing. Jozef Ráž', 32.32, False)] MČ 15 okrsky 358/388 MsZ 45 starostovia 17
+mandáty [{'strany': 'Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati', 'mandaty': 34}, {'strany': 'SOM SLOVENSKO - Strana obcí a miest', 'mandaty': 6}, {'strany': 'TÍM RUŽINOV', 'mandaty': 2}, {'strany': 'KRAJINA', 'mandaty': 1}]
+MČ pomer: [('Devínska Nová Ves', 50.83, 58.52), ('Dúbravka', 46.34, 64.58), ('Jarovce', 66.06, 65.4), ('Karlova Ves', 50.44, 63.87), ('Lamač', 50.24, 62.05)]
+  Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
+  Košice 2022: primátor v 22 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}
+  komunálne 2022: 8 miest
+  komunálne 2026: 8 miest 
+nitra {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'} poslancov 0 [('Marek Hattas', 50.66, True), ('Igor Kršiak', 39.07, False)] MČ 0
+kosice {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'} poslancov 0 [('Ladislav Lörinc', 39.89, True), ('Jaroslav Polaček', 21.52, False)] MČ 0
+presov {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'} poslancov 0 [('František Oľha', 40.69, True), ('Pavel Hagyari', 24.12, False)] MČ 0
+BA rc 1 Komunálne a krajské voľby 2022:
+  primátor: Ing. arch. Matúš Vallo 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
+  predseda BSK: Mgr. Juraj Droba, MBA, MA 63.61 %, poslanci za BA 35
+  stav: vysledky
+Komunálne a krajské voľby 2026:
+Bez zmeny.
+::error title=Zber komunálnych volieb::RuntimeError: 2026: KeyError: 'OBEC'
+ CHYBA: 2026: KeyError: 'OBEC'
+
 HOTOVO
