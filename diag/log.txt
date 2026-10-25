@@ -1,23 +1,12 @@
 Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 15, in <module>
-    try: zk.spracuj_osk(osk, {})
-         ~~~~~~~~~~~~~~^^^^^^^^^
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_komunalne.py", line 473, in spracuj_osk
-    predseda_kraj = vysledky_kandidatov(t["tab06"], kand, strany, pc, lambda r: kod(r["OBEC"]) in kraj_obce, zvol_pred)
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_komunalne.py", line 215, in vysledky_kandidatov
-    if not filtr(r):
-           ~~~~~^^^
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_komunalne.py", line 473, in <lambda>
-    predseda_kraj = vysledky_kandidatov(t["tab06"], kand, strany, pc, lambda r: kod(r["OBEC"]) in kraj_obce, zvol_pred)
-                                                                                    ~^^^^^^^^
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 11, in <module>
+    kand = [r for r in t["tab0a"] if zk.kod(r["OBEC"]) == obec]; print("kand", len(kand))
+                                            ~^^^^^^^^
 KeyError: 'OBEC'
-tab0d príklad: [('500011', 'Nitra'), ('511668', 'Nitra nad Ipľom')]
-MESTA nazvy: ['Bratislava', 'Trnava', 'Nitra', 'Trenčín', 'Žilina', 'Banská Bystrica', 'Prešov', 'Košice']
-norm: ['Bratislava - Staré Mesto', 'Bratislava - Podunajské Biskupice', 'Bratislava - Ružinov']
-  Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
-  Košice 2022: primátor v 22 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}
-  komunálne 2022: 8 miest
-  komunálne 2026: 0 miest
-{'bratislava': (['2022'], None), 'trnava': (['2022'], None), 'nitra': (['2022'], None), 'trencin': (['2022'], None), 'zilina': (['2022'], None), 'banska-bystrica': (['2022'], None), 'presov': (['2022'], None), 'kosice': (['2022'], None)}
-OSK tabuľky: {'tab01': 1, 'tab02a': 8, 'tab02b_suhrn': 96, 'tab02c_suhrn': 2926, 'tab02d_suhrn': 6029, 'tab03b': 44, 'tab04a': 427, 'tab04b': 2463, 'tab06': 22591, 'tab09': 109239, 'tab0a': 56, 'tab0b': 2472, 'tab0c': 53, 'tab0d': 2926, 'tab0e1': 8, 'tab0e2': 8, 'tab12': 8, 'tab15': 8}
-HOTOVO
+má True
+obec None
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 22, in <module>
+    print("tab05_agg príklad:", {k: v for k, v in t["tab05_agg"][0].items() if k in ("OBEC","PC_HL","P_HL","POZNAMKA")})
+                                                  ~^^^^^^^^^^^^^
+KeyError: 'tab05_agg'
