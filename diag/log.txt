@@ -1,15 +1,8 @@
-balík Sat, 24 Oct 2026 16:48:03 GMT ['OSO2026_SK_tab0c.xlsx', 'OSO2026_SK_tab0dd.xlsx', 'OSO2026_SK_tab0dx.xlsx', 'OSO2026_SK_tab_info.xlsx']
-/ 200 False True
-/porovnanie/ 200 False True
-/bratislava/volby/ 200 False True
-/bratislava/zastupitelstvo/ 200 True True
-/trnava/volby/ 200 False True
-/nitra/volby/ 200 False True
-/trencin/volby/ 200 False True
-/zilina/volby/ 200 False True
-/banska-bystrica/volby/ 200 False True
-/presov/volby/ 200 False True
-/kosice/volby/ 200 False True
-/kosice/zastupitelstvo/ 200 True True
-/nitra/zastupitelstvo/ 200 True True
+OSO2026_SK_xlsx.zip Sun, 25 Oct 2026 11:52:01 GMT ['OSO2026_SK_tab01.xlsx', 'OSO2026_SK_tab02a.xlsx', 'OSO2026_SK_tab02b.xlsx', 'OSO2026_SK_tab02c.xlsx', 'OSO2026_SK_tab02d.xlsx', 'OSO2026_SK_tab02e.xlsx', 'OSO2026_SK_tab02ex.xlsx', 'OSO2026_SK_tab02f.xlsx', 'OSO2026_SK_tab02fx.xlsx', 'OSO2026_SK_tab02x.xlsx', 'OSO2026_SK_tab03a1.xlsx', 'OSO2026_SK_tab03a2.xlsx', 'OSO2026_SK_tab03b1.xlsx', 'OSO2026_SK_tab03b2.xlsx', 'OSO2026_SK_tab03c1.xlsx', 'OSO2026_SK_tab03c2.xlsx', 'OSO2026_SK_tab03d1.xlsx', 'OSO2026_SK_tab03d2.xlsx', 'OSO2026_SK_tab04d.xlsx', 'OSO2026_SK_tab04x.xlsx', 'OSO2026_SK_tab05d.xlsx', 'OSO2026_SK_tab05e.xlsx', 'OSO2026_SK_tab05ex.xlsx', 'OSO2026_SK_tab05f.xlsx', 'OSO2026_SK_tab05fx.xlsx', 'OSO2026_SK_tab05x.xlsx', 'OSO2026_SK_tab06d.xlsx', 'OSO2026_SK_tab06x.xlsx', 'OSO2026_SK_tab07d.xlsx', 'OSO2026_SK_tab07x.xlsx', 'OSO2026_SK_tab08e.xlsx', 'OSO2026_SK_tab08ex.xlsx', 'OSO2026_SK_tab08f.xlsx', 'OSO2026_SK_tab08fx.xlsx', 'OSO2026_SK_tab0ad.xlsx', 'OSO2026_SK_tab0ax.xlsx', 'OSO2026_SK_tab0bd.xlsx', 'OSO2026_SK_tab0bx.xlsx', 'OSO2026_SK_tab0c.xlsx', 'OSO2026_SK_tab0dd.xlsx', 'OSO2026_SK_tab0dx.xlsx', 'OSO2026_SK_tab12b.xlsx', 'OSO2026_SK_tab12c.xlsx', 'OSO2026_SK_tab_info.xlsx']
+OSK2026_SK_xlsx.zip Sun, 25 Oct 2026 11:05:56 GMT ['OSK2026_SK_tab01.xlsx', 'OSK2026_SK_tab02a.xlsx', 'OSK2026_SK_tab02b.xlsx', 'OSK2026_SK_tab02c.xlsx', 'OSK2026_SK_tab02d.xlsx', 'OSK2026_SK_tab03a.xlsx', 'OSK2026_SK_tab03b.xlsx', 'OSK2026_SK_tab04a.xlsx', 'OSK2026_SK_tab04b.xlsx', 'OSK2026_SK_tab06a.xlsx', 'OSK2026_SK_tab06b.xlsx', 'OSK2026_SK_tab06c.xlsx', 'OSK2026_SK_tab06d.xlsx', 'OSK2026_SK_tab09b.xlsx', 'OSK2026_SK_tab09c.xlsx', 'OSK2026_SK_tab09d.xlsx', 'OSK2026_SK_tab0a.xlsx', 'OSK2026_SK_tab0b.xlsx', 'OSK2026_SK_tab0c.xlsx', 'OSK2026_SK_tab0db.xlsx', 'OSK2026_SK_tab0dc.xlsx', 'OSK2026_SK_tab0e1.xlsx', 'OSK2026_SK_tab0e2.xlsx', 'OSK2026_SK_tab12.xlsx', 'OSK2026_SK_tab15.xlsx', 'OSK2026_SK_tab_info.xlsx']
+oso/json/tab06e1/500011.json 200 [{"C01":"2","C02":"Miroslav","C03":"Gut","C04":"NEKA","C05":"1","C06":"611"},{"C01":"1","C02":"Erik","C03":"Ducho\u0148","C04":"NEKA","C05":"1","C06":"481"},{"C01":"26","C02":"J\u00e1n","C03":"Van\u01
+oso/json/tab07/500011.json 200 [{"C01":"NEKA","C02":"7","C03":"22,58"},{"C01":"Demokrati, SLOVENSKO, KDH, OKS, Progres\u00edvne Slovensko, SaS, T\u00edm Kraj Nitra","C02":"24","C03":"77,41"}]
+oso/json/tab07/582000.json 200 [{"C01":"NEKA","C02":"1","C03":"2,22"},{"C01":"KRAJINA","C02":"1","C03":"2,22"},{"C01":"SOM SLOVENSKO","C02":"6","C03":"13,33"},{"C01":"STAROSTOVIA A NEZ\u00c1VISL\u00cd KANDID\u00c1TI","C02":"1","C03
+oso/json/dateSK.json 200 ["25.10.2026 12:53 SE\u010c"]
+osk/json/dateSK.json 200 ["25.10.2026 12:07 SE\u010c"]
 HOTOVO
