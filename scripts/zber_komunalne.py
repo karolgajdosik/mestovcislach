@@ -39,8 +39,8 @@ VOLBY = [
      "osk": ["https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip"],
      "web": "https://volby.statistics.sk/oso/oso2022/sk/"},
     {"id": "2026", "datum": "2026-10-24", "nazov": "Komunálne a krajské voľby 2026",
-     "oso": ["https://volbysr.sk/oso/files/OSO2026_SK_csv.zip", "https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip"],
-     "osk": ["https://volbysr.sk/osk/files/OSK2026_SK_csv.zip", "https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip"],
+     "oso": ["https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip", "https://volbysr.sk/oso/files/OSO2026_SK_csv.zip"],
+     "osk": ["https://volbysr.sk/osk/files/OSK2026_SK_xlsx.zip", "https://volbysr.sk/osk/files/OSK2026_SK_csv.zip"],
      "web": "https://volbysr.sk/oso/sk/"},
 ]
 
