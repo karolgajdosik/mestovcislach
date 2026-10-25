@@ -1,18 +1,14 @@
-tab06 ['KRAJ', 'NKRAJ', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT', 'KANDIDAT']
-tab0a ['KRAJ', 'NKRAJ', 'PC_HL', 'MENO', 'PRIEZVISKO', 'TITUL', 'vek', 'zamestnanie', 'obec trvalého pobytu', 'PS_TEXT', 'POZNAMKA']
-tab0d ['KRAJ', 'NKRAJ', 'VOBVOD', 'NVOBVOD', 'OBEC', 'NOBEC', 'počet volebných okrskov']
-tab09 ['KRAJ', 'NKRAJ', 'VOBVOD', 'NVOBVOD', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT', 'KANDIDAT']
-tab0b ['KRAJ', 'NKRAJ', 'VOBVOD', 'NVOBVOD', 'PC_HL', 'MENO', 'PRIEZVISKO', 'TITUL', 'vek', 'zamestnanie', 'obec trvalého pobytu', 'PS_TEXT', 'POZNAMKA']
-  Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
-  Košice 2022: primátor v 22 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}
-  komunálne 2022: 8 miest
-  Bratislava 2026: primátor v 17 MČ, okrsky {'okrskov': 388, 'priradenych': 386, 'hlasy_nad_volicov': 0}
-  Košice 2026: primátor v 22 MČ, okrsky {'okrskov': 190, 'priradenych': 188, 'hlasy_nad_volicov': 0}
-  komunálne 2026: 8 miest 
-bratislava {'okrsky': 388, 'spolu': 388, 'pct': 100.0, 'priebezne': False} poslancov 45 [('Ing. arch. Matúš Vallo', 64.37, True), ('JUDr. Ing. Jozef Ráž', 32.32, False)] MČ 17 [{'strany': 'Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati', 'mandaty': 34}, {'strany': 'SOM SLOVENSKO - Strana obcí a miest', 'mandaty': 6}]
-nitra {'okrsky': 74, 'spolu': 74, 'pct': 100.0, 'priebezne': False} poslancov 31 [('Marek Hattas', 50.67, True), ('JUDr. Igor Kršiak', 39.07, False)] MČ 0 [{'strany': 'Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana', 'mandaty': 24}, {'strany': 'nezávislý kandidát', 'mandaty': 7}]
-kosice {'okrsky': 190, 'spolu': 190, 'pct': 100.0, 'priebezne': False} poslancov 51 [('Mgr. MPA Ladislav Lörinc', 39.89, True), ('Ing. Jaroslav Polaček', 21.53, False)] MČ 22 [{'strany': 'Progresívne Slovensko, Demokrati, ZA ĽUDÍ', 'mandaty': 14}, {'strany': 'nezávislý kandidát', 'mandaty': 13}]
-presov {'okrsky': 66, 'spolu': 66, 'pct': 100.0, 'priebezne': False} poslancov 31 [('Ing. František Oľha', 40.69, True), ('JUDr. PhD. Pavel Hagyari, MBA', 24.12, False)] MČ 0 [{'strany': 'Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska', 'mandaty': 12}, {'strany': 'KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA', 'mandaty': 9}]
-trnava {'okrsky': 47, 'spolu': 47, 'pct': 100.0, 'priebezne': False} poslancov 27 [('PhDr. PhD. Eva Nemčovská, MPH', 60.47, True), ('Ing. Branislav Baroš', 30.88, False)] MČ 0 [{'strany': 'nezávislý kandidát', 'mandaty': 24}, {'strany': 'Trnava pre každého, KDH - Kresťanskodemokratické hnutie', 'mandaty': 2}]
-KE MČ: [('Barca', 48.37, 'Mgr. MPA Ladislav Lörinc', 31.9), ('Dargovských hrdinov', 31.14, 'Mgr. MPA Ladislav Lörinc', 37.76), ('Džungľa', 47.99, 'Ing. Jaroslav Polaček', 30.99), ('Juh', 35.06, 'Mgr. MPA Ladislav Lörinc', 37.41), ('Kavečany', 48.68, 'Mgr. MPA Ladislav Lörinc', 34.24), ('Košická Nová Ves', 43.36, 'Mgr. MPA Ladislav Lörinc', 35.65), ('Krásna', 47.82, 'Mgr. MPA Ladislav Lörinc', 35.13), ('Lorinčík', 63.75, 'Mgr. MPA Ladislav Lörinc', 39.38), ('Luník IX', 14.16, 'Ing. Jaroslav Polaček', 94.77), ('Myslava', 56.29, 'Mgr. MPA Ladislav Lörinc', 45.75), ('Nad jazerom', 34.77, 'Mgr. MPA Ladislav Lörinc', 30.78), ('Pereš', 58.14, 'Mgr. MPA Ladislav Lörinc', 38.39), ('Poľov', 72.12, 'Mgr. MPA Ladislav Lörinc', 35.95), ('Sever', 39.14, 'Mgr. MPA Ladislav Lörinc', 35.41), ('Staré Mesto', 37.79, 'Mgr. MPA Ladislav Lörinc', 34.28), ('Sídlisko KVP', 40.53, 'Mgr. MPA Ladislav Lörinc', 64.07), ('Sídlisko Ťahanovce', 34.88, 'Mgr. MPA Ladislav Lörinc', 44.03), ('Vyšné Opátske', 51.99, 'Mgr. MPA Ladislav Lörinc', 36.87), ('Západ', 34.73, 'Mgr. MPA Ladislav Lörinc', 41.21), ('Šaca', 38.33, 'Mgr. MPA Ladislav Lörinc', 36.99), ('Šebastovce', 48.15, 'Mgr. MPA Ladislav Lörinc', 31.4), ('Ťahanovce', 43.84, 'Mgr. MPA Ladislav Lörinc', 42.03)]
+BA rc 0 Komunálne a krajské voľby 2022:
+  primátor: Ing. arch. Matúš Vallo 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
+  predseda BSK: Mgr. Juraj Droba, MBA, MA 63.61 %, poslanci za BA 35
+  stav: vysledky
+Komunálne a krajské voľby 2026:
+  primátor: Ing. arch. Matúš Vallo 64.37 %, účasť 47.37 %, MČ v rozdelení 15/17, okrsky 358/388, MsZ 45, starostovia 17
+  predseda BSK: Mgr. MBA Juraj Droba, MA 70.97 %, poslanci za BA 36
+  stav: vysledky
+Uložené.
+ 
+MČ: [('Devínska Nová Ves', 50.83), ('Dúbravka', 46.34), ('Jarovce', 66.06), ('Karlova Ves', 50.44)]
+BSK: [('Mgr. MBA Juraj Droba, MA', 70.97, True), ('Mgr. MBA Rastislav Gajarský', 11.54, False)] {'zapisani': 623410, 'volili': 290145, 'ucast_pct': 46.54} poslanci BA 36
+starostovia: 17 [('Devín', 7), ('Devínska Nová Ves', 12), ('Dúbravka', 25), ('Jarovce', 7)]
 HOTOVO
