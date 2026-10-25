@@ -1,28 +1,46 @@
-== ['scripts/zber_komunalne.py'] 1
-Komunálne a krajské voľby 2022:
-  primátor: Ing. arch. Matúš Vallo 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
-  predseda BSK: Mgr. Juraj Droba, MBA, MA 63.61 %, poslanci za BA 35
-  stav: vysledky
-Komunálne a krajské voľby 2026:
-Bez zmeny.
-::error title=Zber komunálnych volieb::RuntimeError: 2026: KeyError: 'OBEC'
-
-CHYBA: 2026: KeyError: 'OBEC'
-
-== ['scripts/zber_mesta.py', 'komunalne'] 0
-  Bratislava 2022: primátor v 17 MČ, okrsky {'okrskov': 394, 'priradenych': 392, 'hlasy_nad_volicov': 0}
-  Košice 2022: primátor v 22 MČ, okrsky {'okrskov': 198, 'priradenych': 196, 'hlasy_nad_volicov': 0}
-  komunálne 2022: 8 miest
-  komunálne 2026: 8 miest
-OK komunalne
-{'slug': 'bratislava', 'nazov': 'Bratislava', 'obyvatelia': 480902, 'rok': '2025', 'zmena10': 13.7, 'seniori': 19.0, 'deti': 15.5, 'vs': 36.6, 'vlastne_byty': 93.5, 'pdu': 2.74, 'ucast_komunalne': 47.37, 'byty_10r': 2486, 'ceny_kraj': 16.2}
-{'slug': 'trnava', 'nazov': 'Trnava', 'obyvatelia': 63184, 'rok': '2025', 'zmena10': -3.7, 'seniori': 18.9, 'deti': 15.0, 'vs': 24.5, 'vlastne_byty': None, 'pdu': 2.64, 'ucast_komunalne': 41.96, 'byty_10r': 883, 'ceny_kraj': 11.9}
-{'slug': 'nitra', 'nazov': 'Nitra', 'obyvatelia': 75301, 'rok': '2025', 'zmena10': -3.1, 'seniori': 19.9, 'deti': 14.1, 'vs': 29.2, 'vlastne_byty': None, 'pdu': 2.45, 'ucast_komunalne': 41.01, 'byty_10r': 806, 'ceny_kraj': 9.9}
-{'slug': 'trencin', 'nazov': 'Trenčín', 'obyvatelia': 54104, 'rok': '2025', 'zmena10': -2.9, 'seniori': 21.4, 'deti': 13.7, 'vs': 26.9, 'vlastne_byty': None, 'pdu': 2.45, 'ucast_komunalne': 39.66, 'byty_10r': 505, 'ceny_kraj': 11.6}
-{'slug': 'zilina', 'nazov': 'Žilina', 'obyvatelia': 79873, 'rok': '2025', 'zmena10': -1.5, 'seniori': 18.4, 'deti': 15.1, 'vs': 27.7, 'vlastne_byty': None, 'pdu': 2.94, 'ucast_komunalne': 42.98, 'byty_10r': 591, 'ceny_kraj': 11}
-{'slug': 'banska-bystrica', 'nazov': 'Banská Bystrica', 'obyvatelia': 73054, 'rok': '2025', 'zmena10': -7.2, 'seniori': 19.9, 'deti': 14.1, 'vs': 29.0, 'vlastne_byty': 93.6, 'pdu': 3.43, 'ucast_komunalne': 44.47, 'byty_10r': 307, 'ceny_kraj': 12.4}
-{'slug': 'presov', 'nazov': 'Prešov', 'obyvatelia': 81223, 'rok': '2025', 'zmena10': -9.7, 'seniori': 18.3, 'deti': 14.4, 'vs': 27.0, 'vlastne_byty': None, 'pdu': 3.18, 'ucast_komunalne': 44.19, 'byty_10r': 666, 'ceny_kraj': 8.9}
-{'slug': 'kosice', 'nazov': 'Košice', 'obyvatelia': 222286, 'rok': '2025', 'zmena10': -7.1, 'seniori': 18.7, 'deti': 14.8, 'vs': 26.7, 'vlastne_byty': 92.2, 'pdu': 3.02, 'ucast_komunalne': 37.11, 'byty_10r': 580, 'ceny_kraj': 7.9}
-
-
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 11, in <module>
+    zk.spracuj_oso(t, nm)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_komunalne.py", line 394, in spracuj_oso
+    okrsok_mc = okrsky_mesta_na_mc(ucast_okrsky, mc)
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_komunalne.py", line 276, in okrsky_mesta_na_mc
+    if kod(r["OBEC"]) in mc:
+           ~^^^^^^^^
+KeyError: 'OBEC'
+tabuľky: {'tab01': 1, 'tab02a': 8, 'tab02b': 49, 'tab02c': 79, 'tab02d': 2921, 'tab02e': 3357, 'tab02ex': 25, 'tab02f_agg': 0, 'tab02f': 6024, 'tab02fx_agg': 0, 'tab02fx': 578, 'tab02x': 2, 'tab03b1': 226, 'tab03b2': 334, 'tab03c1': 485, 'tab03c2': 860, 'tab03d1': 577, 'tab03d2': 1088, 'tab04d': 2912, 'tab04x': 2, 'tab05_agg': 14967, 'tab05': 22858, 'tab06': 20356, 'tab07d': 7390, 'tab07x': 13, 'tab08_agg': 40082, 'tab08': 114499, 'tab0a': 6561, 'tab0b': 40184, 'tab0c': 53, 'tab0d': 2926, 'tab12b': 8, 'tab12c': 49}
+tab01 ['počet obcí, v ktorých sa konali voľby', 'počet potvrdených miestnych zápisníc', 'podiel potvrdených miestnych zápisníc v %', 'počet obcí, v ktorých bolo zvolené zastupiteľstvo', 'počet obcí, v ktorých bol zvolený starosta', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
+tab02a ['KRAJ', 'NKRAJ', 'počet obcí, v ktorých sa konali voľby', 'počet obcí, v ktorých bolo zvolené zastupiteľstvo', 'počet obcí, v ktorých bol zvolený starosta', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
+tab02b ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'počet obcí, v ktorých sa konali voľby', 'počet obcí, v ktorých bolo zvolené zastupiteľstvo', 'počet obcí, v ktorých bol zvolený starosta', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %']
+tab02c ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'počet obcí, v ktorých sa konali voľby', 'počet obcí, v ktorých bolo zvolené zastupiteľstvo', 'počet obcí, v ktorých bol zvolený starosta', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %']
+tab02d ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'počet okrskov', 'zvolený starosta', 'politický subjekt zvoleného starostu', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP']
+tab02e ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'počet okrskov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO']
+tab02ex ['OBEC', 'NOBEC', 'VOOBEC', 'počet okrskov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
+tab02f ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO']
+tab02fx ['OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
+tab02x ['OBEC', 'NOBEC', 'počet okrskov', 'zvolený primátor', 'politický subjekt zvoleného primátora', 'počet volených poslancov', 'počet zvolených poslancov', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
+tab03b1 ['KRAJ', 'NKRAJ', 'PS_TEXT', 'počet starostov', 'podiel starostov v %']
+tab03b2 ['KRAJ', 'NKRAJ', 'PS_TEXT', 'počet poslancov', 'podiel poslancov v %']
+tab03c1 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'PS_TEXT', 'počet starostov', 'podiel starostov v %']
+tab03c2 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'PS_TEXT', 'počet poslancov', 'podiel poslancov v %']
+tab03d1 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'PS_TEXT', 'počet starostov', 'podiel starostov v %']
+tab03d2 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'PS_TEXT', 'počet poslancov', 'podiel poslancov v %']
+tab04d ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'MENO', 'PRIEZVISKO', 'PS_TEXT']
+tab04x ['OBEC', 'NOBEC', 'MENO', 'PRIEZVISKO', 'PS_TEXT']
+tab05 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT']
+tab05_agg ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT']
+tab06 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL']
+tab07d ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'PS_TEXT', 'počet poslancov', 'podiel poslancov v %']
+tab07x ['OBEC', 'NOBEC', 'PS_TEXT', 'počet poslancov', 'podiel poslancov v %']
+tab08 ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT']
+tab08_agg ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL']
+tab0a ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'TITUL', 'vek', 'zamestnanie']
+tab0b ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'TITUL', 'vek']
+tab0c ['PS', 'NPS', 'SNPS']
+tab0d ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'počet volebných obvodov', 'počet okrskov', 'počet volených poslancov', 'typ volieb']
+tab12b ['KRAJ', 'NKRAJ', 'počet starostov – muži', 'počet starostov – ženy', 'podiel starostov v % – muži', 'podiel starostov v % – ženy', 'počet poslancov – muži', 'počet poslancov – ženy', 'podiel poslancov v % – muži', 'podiel poslancov v % – ženy']
+tab12c ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'počet starostov – muži', 'počet starostov – ženy', 'podiel starostov v % – muži', 'podiel starostov v % – ženy', 'počet poslancov – muži', 'počet poslancov – ženy', 'podiel poslancov v % – muži', 'podiel poslancov v % – ženy']
+nitra 2026 v repe: {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'} 0
+nitra 2026 po zbere: {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'} 0 [('Marek Hattas', 50.66), ('Igor Kršiak', 39.07)]
+KE MČ: 0 {'okrsky': None, 'spolu': None, 'pct': 100.0, 'priebezne': False, 'zdroj': 'volbysr.sk (priebežne)'}
 HOTOVO
