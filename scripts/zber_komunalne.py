@@ -451,6 +451,14 @@ def spracuj_oso(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
             "kandidati": bez_klucov(v), "miestne_zastupitelstvo": {"poslancov": len(zvol), "mandaty": mandaty(zvol)},
         })
     starostovia.sort(key=lambda x: x["nazov"])
+    # ak párovanie okrskov podľa voličov nepokrylo všetky MČ (2026: 15/17), použiť metódu z primator_po_mc
+    # (párovanie cez platné hlasy pre voľbu starostu) – rovnaká štruktúra (kod, nazov, ucast, poradie)
+    if len(prim_mc) < len(mc):
+        alt, kontrola = primator_po_mc(t, MESTO, "Bratislava", strany)
+        if len(alt) > len(prim_mc) and not kontrola.get("hlasy_nad_volicov"):
+            prim_mc = [{"kod": x["kod"], "nazov": nazvy_mc.get(x["kod"], x["nazov"]), "ucast": x["ucast"],
+                        "poradie": [{"meno": p["meno"], "podiel": p["podiel"]} for p in x["poradie"]]} for x in alt]
+            print(f"  MČ podľa platných hlasov: {len(prim_mc)}, okrsky {kontrola}")
 
     return {
         "primator": {"ucast": ucast(ucast_okrsky, {MESTO}), "kandidati": bez_klucov(primator), "mestske_casti": prim_mc,
