@@ -1,10 +1,15 @@
-BA starostovia: True True
-trnava True False
-trencin True False
-nitra True False
-zilina True False
-banska-bystrica True False
-presov True False
-kosice True False
-og trnava 200 55069
+balík Sat, 24 Oct 2026 16:48:03 GMT ['OSO2026_SK_tab0c.xlsx', 'OSO2026_SK_tab0dd.xlsx', 'OSO2026_SK_tab0dx.xlsx', 'OSO2026_SK_tab_info.xlsx']
+/ 200 False True
+/porovnanie/ 200 False True
+/bratislava/volby/ 200 False True
+/bratislava/zastupitelstvo/ 200 True True
+/trnava/volby/ 200 False True
+/nitra/volby/ 200 False True
+/trencin/volby/ 200 False True
+/zilina/volby/ 200 False True
+/banska-bystrica/volby/ 200 False True
+/presov/volby/ 200 False True
+/kosice/volby/ 200 False True
+/kosice/zastupitelstvo/ 200 True True
+/nitra/zastupitelstvo/ 200 True True
 HOTOVO
