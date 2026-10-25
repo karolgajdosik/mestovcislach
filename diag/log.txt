@@ -1,13 +1,8 @@
-bratislava {'okrsky': None, 'spolu': None, 'pct': 30.92, 'priebezne': True, 'zdroj': 'volbysr.sk (priebežne)'} [('Matúš Vallo', 62.73, False), ('Jozef Ráž', 34.01, False)]
-trnava None None
-trencin None None
-nitra None None
-zilina None None
-banska-bystrica None None
-presov None None
-kosice {'okrsky': None, 'spolu': None, 'pct': 86.84, 'priebezne': True, 'zdroj': 'volbysr.sk (priebežne)'} [('Ladislav Lörinc', 39.91, False), ('Jaroslav Polaček', 21.38, False)]
- 
-BA 0 Komunálne a krajské voľby 2022:
+OSO2026_SK_xlsx.zip 200 Sat, 24 Oct 2026 16:48:03 GMT 173085
+   ['OSO2026_SK_tab0c.xlsx', 'OSO2026_SK_tab0dd.xlsx', 'OSO2026_SK_tab0dx.xlsx', 'OSO2026_SK_tab_info.xlsx']
+OSK2026_SK_xlsx.zip 200 Sat, 24 Oct 2026 19:17:04 GMT 134566
+   ['OSK2026_SK_tab0c.xlsx', 'OSK2026_SK_tab0db.xlsx', 'OSK2026_SK_tab0dc.xlsx', 'OSK2026_SK_tab_info.xlsx']
+BA rc 0 Komunálne a krajské voľby 2022:
   primátor: Ing. arch. Matúš Vallo 60.2 %, účasť 36.88 %, MČ v rozdelení 17/17, okrsky 388/394, MsZ 45, starostovia 17
   predseda BSK: Mgr. Juraj Droba, MBA, MA 63.61 %, poslanci za BA 35
   stav: vysledky
@@ -16,10 +11,6 @@ Komunálne a krajské voľby 2026:
   https://volbysr.sk/osk/files/OSK2026_SK_csv.zip: HTTP 404
   primátor: Matúš Vallo 62.73 %, účasť 46.29 %, MČ v rozdelení 0/17, okrsky 0, MsZ 0, starostovia 0
   stav: vysledky
-Uložené.
+Bez zmeny.
  
-MESTA 0   https://volbysr.sk/oso/files/OSO2026_SK_csv.zip: HTTP 404
-  komunálne 2026: balík ešte nemá výsledky (tab0c, tab0d)
-  Bratislava 2026: priebežne 30.92 %, Matúš Vallo 62.73 %
-  Košice 2026: priebežne 86.84 %, Ladislav Lörinc 39.91 % 
 HOTOVO
