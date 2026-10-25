@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T01:25:46",
+ "aktualizovane": "2026-10-25T02:05:44",
  "mesta": [
   {
    "slug": "bratislava",
@@ -12,7 +12,7 @@
    "vs": 36.6,
    "vlastne_byty": 93.5,
    "pdu": 2.74,
-   "ucast_komunalne": 47.3,
+   "ucast_komunalne": 47.37,
    "byty_10r": 2486,
    "ceny_kraj": 16.2
   },
@@ -102,7 +102,7 @@
    "vs": 27.0,
    "vlastne_byty": null,
    "pdu": 3.18,
-   "ucast_komunalne": 42.67,
+   "ucast_komunalne": 44.19,
    "byty_10r": 666,
    "ceny_kraj": 8.9
   },
@@ -117,7 +117,7 @@
    "vs": 26.7,
    "vlastne_byty": 92.2,
    "pdu": 3.02,
-   "ucast_komunalne": 37.09,
+   "ucast_komunalne": 37.1,
    "byty_10r": 580,
    "ceny_kraj": 7.9
   }

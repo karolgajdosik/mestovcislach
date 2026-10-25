@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-21T05:21:51",
+ "aktualizovane": "2026-10-25T02:05:44",
  "obyvatelia": {
   "roky": {
    "1993": 90963,
@@ -482,6 +482,69 @@
       "hlasy": 617
      }
     ]
+   }
+  },
+  "2026": {
+   "ucast": {
+    "zapisani": 68781,
+    "volili": 30396,
+    "ucast_pct": 44.19
+   },
+   "spracovanie": {
+    "okrsky": null,
+    "spolu": null,
+    "pct": 100.0,
+    "priebezne": false,
+    "zdroj": "volbysr.sk (priebežne)"
+   },
+   "primator": [
+    {
+     "meno": "František Oľha",
+     "strany": "Progresívne Slovensko, Demokrati, DS-ODS",
+     "hlasy": 12125,
+     "podiel": 40.69,
+     "zvoleny": true
+    },
+    {
+     "meno": "Pavel Hagyari",
+     "strany": "NEKA",
+     "hlasy": 7187,
+     "podiel": 24.12,
+     "zvoleny": false
+    },
+    {
+     "meno": "Rastislav Mochnacký",
+     "strany": "KDH, SLOVENSKO, SaS, Konzervatívci, ZA ĽUDÍ, NOVA",
+     "hlasy": 3964,
+     "podiel": 13.3,
+     "zvoleny": false
+    },
+    {
+     "meno": "Artúr Benes",
+     "strany": "NEKA",
+     "hlasy": 2545,
+     "podiel": 8.54,
+     "zvoleny": false
+    },
+    {
+     "meno": "Martin Eštočák",
+     "strany": "NEKA",
+     "hlasy": 2027,
+     "podiel": 6.8,
+     "zvoleny": false
+    },
+    {
+     "meno": "Svetlana Pavlovičová",
+     "strany": "SMER - SD, SNS, SME RODINA, Bratia Slovenska",
+     "hlasy": 1948,
+     "podiel": 6.53,
+     "zvoleny": false
+    }
+   ],
+   "zastupitelstvo": {
+    "poslancov": 0,
+    "mandaty": [],
+    "poslanci": []
    }
   }
  },
