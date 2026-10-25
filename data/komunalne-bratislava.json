@@ -2048,58 +2048,58 @@
    "spracovanie": {
     "okrsky": null,
     "spolu": null,
-    "pct": 30.92,
-    "priebezne": true,
+    "pct": 100.0,
+    "priebezne": false,
     "zdroj": "volbysr.sk (priebežne)"
    },
    "oso": {
     "primator": {
      "ucast": {
-      "zapisani": 119700,
-      "volili": 55411,
-      "ucast_pct": 46.29
+      "zapisani": 415017,
+      "volili": 196611,
+      "ucast_pct": 47.37
      },
      "kandidati": [
       {
        "meno": "Matúš Vallo",
        "strany": "Team Bratislava, Progresívne Slovensko, SaS, Demokrati",
-       "hlasy": 33327,
-       "podiel": 62.73,
-       "zvoleny": false
+       "hlasy": 121846,
+       "podiel": 64.36,
+       "zvoleny": true
       },
       {
        "meno": "Jozef Ráž",
        "strany": "NEKA",
-       "hlasy": 18070,
-       "podiel": 34.01,
+       "hlasy": 61183,
+       "podiel": 32.32,
        "zvoleny": false
       },
       {
        "meno": "Zuzana Šubová",
        "strany": "Piráti",
-       "hlasy": 961,
-       "podiel": 1.8,
+       "hlasy": 3451,
+       "podiel": 1.82,
        "zvoleny": false
       },
       {
        "meno": "Ľubomír Geci",
        "strany": "MySlovensko",
-       "hlasy": 426,
-       "podiel": 0.8,
+       "hlasy": 1502,
+       "podiel": 0.79,
        "zvoleny": false
       },
       {
        "meno": "Martin Winkler",
        "strany": "Dunaj",
-       "hlasy": 250,
-       "podiel": 0.47,
+       "hlasy": 1031,
+       "podiel": 0.54,
        "zvoleny": false
       },
       {
        "meno": "Miroslav Heredoš",
        "strany": "VLASTENCI SK",
-       "hlasy": 93,
-       "podiel": 0.17,
+       "hlasy": 281,
+       "podiel": 0.14,
        "zvoleny": false
       }
      ],
@@ -2116,5 +2116,5 @@
    "zdroj_oso": "https://volbysr.sk/oso/sk/vysledky_obce.html"
   }
  ],
- "aktualizovane": "2026-10-24T23:25:36+00:00"
+ "aktualizovane": "2026-10-25T05:13:54+00:00"
 }
