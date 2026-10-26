@@ -24,3 +24,11 @@ https://:version.:project.pages.dev/*
 /*/kalendar.ics
   Content-Type: text/calendar; charset=utf-8
   Cache-Control: public, max-age=3600
+
+# dátové súbory (JSON, GeoJSON) a kanály nie sú stránky – vyhľadávač ich môže čítať, ale nemá ich zaraďovať do výsledkov
+/data/*
+  X-Robots-Tag: noindex
+/*/novinky.xml
+  X-Robots-Tag: noindex
+/*/kalendar.ics
+  X-Robots-Tag: noindex
