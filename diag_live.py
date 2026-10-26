@@ -1,6 +1,10 @@
+import subprocess,sys; subprocess.run([sys.executable,"-m","pip","install","-q","-r","scripts/requirements.txt"])
 import sys,time,traceback
 sys.path.insert(0,"scripts")
-import zber_mesta as zm
+try:
+    import zber_mesta as zm
+except Exception as e:
+    print("IMPORT",e); print("HOTOVO"); raise SystemExit
 for tema,(k,st) in zm.SCITANIE.items():
     t=time.time()
     try:
