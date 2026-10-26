@@ -1,13 +1,10 @@
-vek om7803rr 200 6487377 b'PK' 2
-vzdelanie om7809rr 200 2119546 b'PK' 0
-narodnost om7806rr 200 2362985 b'PK' 0
-nabozenstvo om7805rr 200 1864652 b'PK' 0
-byty_vlastnictvo om7819rr 200 1969473 b'PK' 0
+dict_keys(['e_nuts14', 'e_nuts15', 'e_sex', 'e_age', 'e_wstatus', 'e_year', 'hodnota'])
+69 ['Bratislava', 'Bratislava - mestská časť Devín', 'Bratislava - mestská časť Devínska Nová Ves', 'Bratislava - mestská časť Dúbravka', 'Bratislava - mestská časť Jarovce', 'Bratislava - mestská časť Karlova Ves', 'Bratislava - mestská časť Lamač', 'Bratislava - mestská časť Nové Mesto', 'Bratislava - mestská časť Petržalka', 'Bratislava - mestská časť Podunajské Biskupice', 'Bratislava - mestská časť Rača', 'Bratislava - mestská časť Rusovce', 'Bratislava - mestská časť Ružinov', 'Bratislava - mestská časť Staré Mesto', 'Bratislava - mestská časť Vajnory', 'Bratislava - mestská časť Vrakuňa', 'Bratislava - mestská časť Záhorská Bystrica', 'Bratislava - mestská časť Čunovo', 'Bukovec, okres Košice - okolie', 'Haniska, okres Košice - okolie', 'Hosťovce, okres Košice - okolie', 'Háj, okres Košice - okolie', 'Košice', 'Košice - mestská časť Barca', 'Košice - mestská časť Dargovských hrdinov', 'Košice - mestská časť Džungľa', 'Košice - mestská časť Juh', 'Košice - mestská časť Kavečany', 'Košice - mestská časť Košická Nová Ves', 'Košice - mestská časť Krásna', 'Košice - mestská časť Lorinčík', 'Košice - mestská časť Luník IX', 'Košice - mestská časť Myslava', 'Košice - mestská časť Nad jazerom', 'Košice - mestská časť Pereš', 'Košice - mestská časť Poľov', 'Košice - mestská časť Sever', 'Košice - mestská časť Staré Mesto', 'Košice - mestská časť Sídlisko KVP', 'Košice - mestská časť Sídlisko Ťahanovce']
+['Košice', 'Okres Košice - okolie', 'Okres Košice I', 'Okres Košice II', 'Okres Košice III', 'Okres Košice IV']
   sčítanie vek: 8 miest
   sčítanie vzdelanie: 8 miest
   sčítanie narodnost: 8 miest
   sčítanie nabozenstvo: 8 miest
   sčítanie byty_vlastnictvo: 3 miest
-OK {'bratislava': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo', 'byty_vlastnictvo'], 'trnava': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo'], 'nitra': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo'], 'trencin': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo'], 'zilina': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo'], 'banska-bystrica': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo', 'byty_vlastnictvo'], 'presov': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo'], 'kosice': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo', 'byty_vlastnictvo']}
-KE casti 0 BA 0
+KE 22 ['Kavečany', 'Ťahanovce', 'Sever', 'Staré Mesto', 'Sídlisko Ťahanovce'] BA 17
 HOTOVO
