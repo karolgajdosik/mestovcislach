@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T19:22:11",
+ "aktualizovane": "2026-10-26T19:57:12",
  "obyvatelia": {
   "roky": {
    "1993": 90963,
@@ -481,7 +481,10 @@
       "strany": "HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
       "hlasy": 617
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 9
+    }
    }
   },
   "2026": {
@@ -716,7 +719,14 @@
       "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
       "hlasy": 607
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 10,
+     "vek_priemer": 48.8,
+     "vek_min": 27,
+     "vek_max": 73,
+     "do_35": 3
+    }
    }
   }
  },

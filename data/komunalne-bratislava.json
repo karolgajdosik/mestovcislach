@@ -717,7 +717,10 @@
        "strany": "Strana obcí a miest - SOM SLOVENSKO",
        "hlasy": 633
       }
-     ]
+     ],
+     "statistiky": {
+      "zeny": 11
+     }
     },
     "starostovia": [
      {
@@ -2728,7 +2731,14 @@
        "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
        "hlasy": 2033
       }
-     ]
+     ],
+     "statistiky": {
+      "zeny": 7,
+      "vek_priemer": 46.0,
+      "vek_min": 34,
+      "vek_max": 68,
+      "do_35": 1
+     }
     },
     "starostovia": [
      {
@@ -3860,5 +3870,5 @@
    }
   }
  ],
- "aktualizovane": "2026-10-25T18:33:22+00:00"
+ "aktualizovane": "2026-10-26T19:56:39+00:00"
 }

@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T19:22:11",
+ "aktualizovane": "2026-10-26T19:57:12",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -1794,7 +1794,10 @@
       "strany": "nezávislý kandidát",
       "hlasy": 453
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 8
+    }
    }
   },
   "2026": {
@@ -2729,7 +2732,14 @@
       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 476
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 8,
+     "vek_priemer": 45.8,
+     "vek_min": 32,
+     "vek_max": 59,
+     "do_35": 5
+    }
    }
   }
  },

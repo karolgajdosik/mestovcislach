@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T19:22:11",
+ "aktualizovane": "2026-10-26T19:57:12",
  "obyvatelia": {
   "roky": {
    "1993": 57748,
@@ -369,7 +369,10 @@
       "strany": "HLAS - sociálna demokracia",
       "hlasy": 993
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 6
+    }
    }
   },
   "2026": {
@@ -552,7 +555,14 @@
       "strany": "Progresívne Slovensko, Sloboda a Solidarita, KDH - Kresťanskodemokratické hnutie, Demokrati, Občianska konzervatívna strana, Hnutie SLOVENSKO",
       "hlasy": 1158
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 5,
+     "vek_priemer": 45.0,
+     "vek_min": 31,
+     "vek_max": 66,
+     "do_35": 5
+    }
    }
   }
  },

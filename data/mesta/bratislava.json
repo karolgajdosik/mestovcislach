@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T19:22:11",
+ "aktualizovane": "2026-10-26T19:57:12",
  "obyvatelia": {
   "roky": {
    "1993": 448785,
@@ -1577,7 +1577,10 @@
       "strany": "nezávislý kandidát",
       "hlasy": 401
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 11
+    }
    }
   },
   "2026": {
@@ -2334,7 +2337,14 @@
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 2033
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 7,
+     "vek_priemer": 46.0,
+     "vek_min": 34,
+     "vek_max": 68,
+     "do_35": 1
+    }
    }
   }
  },

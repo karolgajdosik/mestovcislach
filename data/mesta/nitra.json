@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T19:22:11",
+ "aktualizovane": "2026-10-26T19:57:12",
  "obyvatelia": {
   "roky": {
    "1993": 86679,
@@ -427,7 +427,10 @@
       "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
       "hlasy": 447
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 10
+    }
    }
   },
   "2026": {
@@ -640,7 +643,14 @@
       "strany": "nezávislý kandidát",
       "hlasy": 481
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 8,
+     "vek_priemer": 49.9,
+     "vek_min": 31,
+     "vek_max": 67,
+     "do_35": 2
+    }
    }
   }
  },
