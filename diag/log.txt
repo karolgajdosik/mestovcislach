@@ -1,3 +1,8 @@
-https://mestovcislach.sk/volby-2026/ 200 False True ['46,6'] [('3', '8')]
-https://mestovcislach.sk/ 200 True False [] []
-HOTOVO
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 3, in <module>
+    import zber_mesta as zm
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_mesta.py", line 28, in <module>
+    from spolocne import DATA, KOREN, s, spusti, zapis_ak_zmena
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 19, in <module>
+    from shapely.geometry import Point, shape
+ModuleNotFoundError: No module named 'shapely'
