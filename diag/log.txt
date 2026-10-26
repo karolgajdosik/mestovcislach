@@ -1,8 +1,13 @@
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 3, in <module>
-    import zber_mesta as zm
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_mesta.py", line 28, in <module>
-    from spolocne import DATA, KOREN, s, spusti, zapis_ak_zmena
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 19, in <module>
-    from shapely.geometry import Point, shape
-ModuleNotFoundError: No module named 'shapely'
+vek om7803rr 200 6487377 b'PK' 2
+vzdelanie om7809rr 200 2119546 b'PK' 0
+narodnost om7806rr 200 2362985 b'PK' 0
+nabozenstvo om7805rr 200 1864652 b'PK' 0
+byty_vlastnictvo om7819rr 200 1969473 b'PK' 0
+  sčítanie vek: 8 miest
+  sčítanie vzdelanie: 8 miest
+  sčítanie narodnost: 8 miest
+  sčítanie nabozenstvo: 8 miest
+  sčítanie byty_vlastnictvo: 3 miest
+OK {'bratislava': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo', 'byty_vlastnictvo'], 'trnava': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo'], 'nitra': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo'], 'trencin': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo'], 'zilina': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo'], 'banska-bystrica': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo', 'byty_vlastnictvo'], 'presov': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo'], 'kosice': ['vek', 'vzdelanie', 'narodnost', 'nabozenstvo', 'byty_vlastnictvo']}
+KE casti 0 BA 0
+HOTOVO
