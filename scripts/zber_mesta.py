@@ -177,10 +177,10 @@ def scitanie() -> dict:
                     pass
             if sucet:
                 vysl[m["slug"]][tema] = {k: round(v) for k, v in sorted(sucet.items(), key=lambda kv: -kv[1])}
-            if not presne:
+            if m["slug"] in ("bratislava", "kosice"):  # mestské časti – aj keď je v kocke aj celé mesto (Košice)
                 po_c: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
                 for x in riadky:
-                    if patri(x["e_nuts15"], m["nazov"]) and not any(ma_spolu[c] and x[c].strip() != "Spolu" for c in ostatne):
+                    if norm(x["e_nuts15"]) != m["nazov"] and patri(x["e_nuts15"], m["nazov"]) and not any(ma_spolu[c] and x[c].strip() != "Spolu" for c in ostatne):
                         po_c[nazov_casti(x["e_nuts15"])][x[stlpec].strip()] += cislo(x["hodnota"])
                 for c, v in po_c.items():
                     CASTI[m["slug"]].setdefault(c, {}).setdefault("scitanie", {})[tema] = {k: round(h) for k, h in sorted(v.items(), key=lambda kv: -kv[1])}
