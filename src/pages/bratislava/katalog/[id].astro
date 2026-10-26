@@ -18,12 +18,30 @@ const { id } = Astro.params;
 const t = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', 'data', 'tabulky', `${id}.json`), 'utf-8'));
 const fmt = (v: any) => (typeof v === 'number' ? v.toLocaleString('sk-SK', { maximumFractionDigits: 2 }) : v ?? '');
 const UKAZKA = 60;
+
+// Jedinečný popis a krátke zhrnutie z údajov (mnohé datasety majú rovnaký úvod popisu, napr. „Analytická časť
+// dokumentu Bratislava 2050…“ – vyhľadávač by stránky považoval za duplicitné)
+const bezUvodu = String(t.popis || '').replace(/^(Analytická|Ekonomická)?\s*(časť dokumentu)?[\s\u00a0]*Bratislava 2050 - Demografický potenciál, sociálna a ekonomická geografia, scenáre rozvoja hlavného mesta SR Bratislavy do roku 2050\.?\s*/i, '').trim();
+const stl: { k: string; n: string; t: string }[] = t.stlpce ?? [];
+const iRok = stl.findIndex((s) => /^(rok|roky|obdobie|year)$/i.test(s.n) || /^ROK$/i.test(s.k));
+const roky = iRok >= 0 ? [...new Set(t.riadky.map((r: any[]) => String(r[iRok] ?? '')).filter((x: string) => /\d{4}/.test(x)))].sort() as string[] : [];
+const iNum = stl.findIndex((s, i) => i !== iRok && t.riadky.length > 1 && t.riadky.slice(0, 50).every((r: any[]) => r[i] == null || typeof r[i] === 'number'));
+const iText = stl.findIndex((s, i) => i !== iRok && i !== iNum && t.riadky.slice(0, 20).some((r: any[]) => typeof r[i] === 'string' && r[i]));
+let extrem = '';
+if (iNum >= 0 && iText >= 0) {
+  const zor = t.riadky.filter((r: any[]) => typeof r[iNum] === 'number').slice().sort((a: any[], b: any[]) => b[iNum] - a[iNum]);
+  if (zor.length > 2) extrem = `Najvyššia hodnota „${stl[iNum].n}“: ${fmt(zor[0][iNum])} (${zor[0][iText]}${iRok >= 0 && zor[0][iRok] != null ? `, ${zor[0][iRok]}` : ''}), najnižšia: ${fmt(zor.at(-1)[iNum])} (${zor.at(-1)[iText]}${iRok >= 0 && zor.at(-1)[iRok] != null ? `, ${zor.at(-1)[iRok]}` : ''}).`;
+}
+const obdobie = roky.length > 1 ? `${roky[0]} – ${roky.at(-1)}` : roky[0] ?? '';
+const zhrnutie = `${t.riadky.length.toLocaleString('sk-SK')} ${t.riadky.length === 1 ? 'riadok' : t.riadky.length < 5 ? 'riadky' : 'riadkov'}${obdobie ? ` za obdobie ${obdobie}` : ''}, stĺpce: ${stl.slice(0, 6).map((s) => s.n).join(', ')}${stl.length > 6 ? ' a ďalšie' : ''}.`;
+const popisMeta = `${t.nazov}. ${zhrnutie} ${extrem || bezUvodu}`.replace(/\s+/g, ' ').slice(0, 300);
 ---
-<Base title={`${t.nazov} – Katalóg dát – mestovcislach.sk`} description={t.popis || `${t.nazov} – otvorené dáta hlavného mesta Bratislavy s grafom a stiahnutím v CSV.`}
+<Base title={`${t.nazov} – Katalóg dát – mestovcislach.sk`} description={popisMeta}
   jsonld={dataset(t, { url: `/bratislava/katalog/${id}/`, json: `/data/tabulky/${id}.json`, mesto: 'Bratislava', vydavatel: 'Hlavné mesto SR Bratislava' })}>
   <p class="spat"><a href="/bratislava/katalog">← Katalóg dát</a> · {t.kategoria}</p>
   <h1>{t.nazov}</h1>
   {t.popis && <p class="lead">{t.popis}</p>}
+  <p class="zhrnutie">V skratke: {zhrnutie} {extrem}</p>
   <p class="meta">
     {t.riadky.length.toLocaleString('sk-SK')} riadkov{t.mesacne ? ' (hodinové údaje sčítané po mesiacoch)' : ''} ·
     zdroj <a href={t.zdroj}>data.bratislava.sk</a> · licencia {t.licencia}
@@ -141,6 +159,7 @@ const UKAZKA = 60;
   h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.15; letter-spacing: -0.02em; margin: 8px 0 10px; }
   .lead { color: var(--muted); font-size: 1.02rem; max-width: 52em; margin: 0 0 8px; }
   .meta { color: var(--muted); font-size: 0.85rem; margin: 0 0 18px; }
+  .zhrnutie { margin: 0 0 12px; font-size: 0.95rem; }
   section.card { margin-top: 16px; }
   h2 { font-size: 1.05rem; margin: 0 0 10px; }
   .chart { height: 360px; }
