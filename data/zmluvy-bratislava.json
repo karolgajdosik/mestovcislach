@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11820,
+ "pocet_spolu": 11821,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2208,
+   "pocet": 2209,
    "suma": 345638738.64
   }
  },
  "posledny_rok": {
-  "od": "2025-10-25",
+  "od": "2025-10-26",
   "suma_bez_ico": 68800.73,
   "dodavatelia": [
    {
@@ -60,7 +60,7 @@
    {
     "ico": "17317282",
     "nazov": "STRABAG s.r.o.",
-    "pocet": 8,
+    "pocet": 9,
     "suma": 9422275.94
    },
    {
@@ -307,5 +307,5 @@
    }
   ]
  },
- "aktualizovane": "2026-10-25T02:58:38+00:00"
+ "aktualizovane": "2026-10-26T03:03:00+00:00"
 }
