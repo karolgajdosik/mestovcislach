@@ -10,9 +10,12 @@ export const webSite = () => ({
   description: 'Otvorené dáta o slovenských krajských mestách prehľadne a so zdrojmi.',
 });
 
+// skratky aj plné názvy („Creative Commons Attribution 4.0 International License“ z portálu Košíc)
 const LICENCIE: [RegExp, string][] = [
-  [/CC[\s-]?BY[\s-]?SA[\s-]?4/i, 'https://creativecommons.org/licenses/by-sa/4.0/'],
-  [/CC[\s-]?BY[\s-]?4/i, 'https://creativecommons.org/licenses/by/4.0/'],
+  [/CC[\s-]?BY[\s-]?NC[\s-]?SA[\s-]?4|Attribution[\s-]+NonCommercial[\s-]+ShareAlike[\s-]+4/i, 'https://creativecommons.org/licenses/by-nc-sa/4.0/'],
+  [/CC[\s-]?BY[\s-]?NC[\s-]?4|Attribution[\s-]+NonCommercial[\s-]+4/i, 'https://creativecommons.org/licenses/by-nc/4.0/'],
+  [/CC[\s-]?BY[\s-]?SA[\s-]?4|Attribution[\s-]+ShareAlike[\s-]+4/i, 'https://creativecommons.org/licenses/by-sa/4.0/'],
+  [/CC[\s-]?BY[\s-]?4|Creative Commons Attribution 4/i, 'https://creativecommons.org/licenses/by/4.0/'],
   [/CC[\s-]?0|public domain/i, 'https://creativecommons.org/publicdomain/zero/1.0/'],
   [/ODbL/i, 'https://opendatacommons.org/licenses/odbl/1-0/'],
 ];
