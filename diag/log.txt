@@ -1,8 +1,3 @@
-tab0b: ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'TITUL', 'vek', 'zamestnanie', 'PS_TEXT', 'POZNAMKA']
-tab0a: ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'TITUL', 'vek', 'zamestnanie', 'PS_TEXT', 'POZNAMKA']
-tab08_agg: ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'PC_HL', 'MENO', 'PRIEZVISKO', 'PS_TEXT', 'P_HL', 'P_HL_PCT', 'KANDIDAT']
-tab12c: ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'počet starostov – muži', 'počet starostov – ženy', 'podiel starostov v % – muži', 'podiel starostov v % – ženy', 'počet poslancov – muži', 'počet poslancov – ženy', 'podiel poslancov v % – muži', 'podiel poslancov v % – ženy']
-tab07x: [{'OBEC': '582000', 'NOBEC': 'Bratislava', 'PS_TEXT': 'NEKA', 'počet poslancov': '1', 'podiel poslancov v %': '2.22'}, {'OBEC': '582000', 'NOBEC': 'Bratislava', 'PS_TEXT': 'KRAJINA', 'počet poslancov': '1', 'podiel poslancov v %': '2.22'}, {'OBEC': '582000', 'NOBEC': 'Bratislava', 'PS_TEXT': 'SOM SLOVENSKO', 'počet poslancov': '6', 'podiel poslancov v %': '13.33'}]
-https://data.statistics.sk/api/v2/collection?lang=sk ERR ConnectTimeout
-https://statdata.statistics.sk/public/api/dc/opendata/cube/d 200 None 6487377
+https://mestovcislach.sk/volby-2026/ 200 False True ['46,6'] [('3', '8')]
+https://mestovcislach.sk/ 200 True False [] []
 HOTOVO
