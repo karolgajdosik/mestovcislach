@@ -177,10 +177,10 @@ def scitanie() -> dict:
                     pass
             if sucet:
                 vysl[m["slug"]][tema] = {k: round(v) for k, v in sorted(sucet.items(), key=lambda kv: -kv[1])}
-            if not presne:
+            if m["slug"] in ("bratislava", "kosice"):  # mestské časti – aj keď je v kocke aj celé mesto (Košice)
                 po_c: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
                 for x in riadky:
-                    if patri(x["e_nuts15"], m["nazov"]) and not any(ma_spolu[c] and x[c].strip() != "Spolu" for c in ostatne):
+                    if norm(x["e_nuts15"]) != m["nazov"] and patri(x["e_nuts15"], m["nazov"]) and not any(ma_spolu[c] and x[c].strip() != "Spolu" for c in ostatne):
                         po_c[nazov_casti(x["e_nuts15"])][x[stlpec].strip()] += cislo(x["hodnota"])
                 for c, v in po_c.items():
                     CASTI[m["slug"]].setdefault(c, {}).setdefault("scitanie", {})[tema] = {k: round(h) for k, h in sorted(v.items(), key=lambda kv: -kv[1])}
@@ -294,6 +294,7 @@ def komunalne(stare: dict | None = None) -> dict:
                     hl_msz[(zk.kod(r["VOOBEC"]), zk.kod(r["PC_HL"]))] += cislo(r["P_HL"])
             poslanci = [{"meno": zk.meno(kand_msz[k]), "strany": zk.strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
                         for k in sorted(zvol_pos, key=lambda k: (-hl_msz[k], k)) if k in kand_msz]
+            statistiky = zk.statistiky_poslancov([kand_msz[k] for k in zvol_pos if k in kand_msz])
             # primátor po mestských častiach (Bratislava, Košice) – pre mapu víťazov
             mc_vysl, kontrola = zk.primator_po_mc(t, obec, m["nazov"], strany)
             if mc_vysl:
@@ -303,7 +304,7 @@ def komunalne(stare: dict | None = None) -> dict:
                 "spracovanie": zk.spracovanie(t, obec),
                 **({"mestske_casti": mc_vysl} if mc_vysl else {}),
                 "primator": [{"meno": x["meno"], "strany": x["strany"], "hlasy": x["hlasy"], "podiel": x["podiel"], "zvoleny": x["zvoleny"]} for x in primator],
-                "zastupitelstvo": {"poslancov": len(poslanci), "mandaty": zk.mandaty(poslanci), "poslanci": poslanci},
+                "zastupitelstvo": {"poslancov": len(poslanci), "mandaty": zk.mandaty(poslanci), "poslanci": poslanci, **({"statistiky": statistiky} if statistiky else {})},
             }
         print(f"  komunálne {rok}: {sum(1 for v in vysl.values() if rok in v)} miest")
     return vysl
