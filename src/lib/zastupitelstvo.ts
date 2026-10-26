@@ -9,6 +9,8 @@ export type Obdobie = {
   rok: string; priebezne: boolean; ucast?: number | null;
   primator: { meno: string; strany: string; podiel?: number; hlasy?: number } | null;
   poslancov: number; mandaty: { strany: string; mandaty: number }[]; poslanci: Poslanec[];
+  /** súhrn za zvolených (len počty – vek z kandidátnych listín ŠÚ SR, ženy odhadom podľa priezviska) */
+  statistiky?: { zeny?: number; vek_priemer?: number; vek_min?: number; vek_max?: number; do_35?: number };
 };
 
 const citaj = (...p: string[]) => {
@@ -31,6 +33,7 @@ export function obdobia(slug: string): Obdobie[] {
         primator: p ? { meno: p.meno, strany: p.strany, podiel: p.podiel, hlasy: p.hlasy } : null,
         poslancov: z.poslancov ?? z.zvoleni?.length ?? 0, mandaty: z.mandaty ?? [],
         poslanci: (z.zvoleni ?? []).map((x: any) => ({ meno: x.meno, strany: x.strany, hlasy: x.hlasy, obvod: x.obvod })),
+        statistiky: z.statistiky,
       });
     }
   } else {
@@ -44,6 +47,7 @@ export function obdobia(slug: string): Obdobie[] {
         primator: p ? { meno: p.meno, strany: p.strany, podiel: p.podiel, hlasy: p.hlasy } : null,
         poslancov: v.zastupitelstvo.poslancov ?? 0, mandaty: v.zastupitelstvo.mandaty ?? [],
         poslanci: (v.zastupitelstvo.poslanci ?? []).map((x: any) => ({ meno: x.meno, strany: x.strany, hlasy: x.hlasy, obvod: x.obvod })),
+        statistiky: v.zastupitelstvo.statistiky,
       });
     }
   }
@@ -63,5 +67,9 @@ const SKR: [RegExp, string][] = [
   [/^SME RODINA$/, 'Sme rodina'], [/^ZA ĽUDÍ$/, 'Za ľudí'], [/^DOBRÁ VOĽBA a Umiernení$/, 'Dobrá voľba'],
   [/^SZÖVETSÉG/, 'Aliancia'], [/^Hnutie Slovensko$/, 'Hnutie Slovensko'], [/^Demokrati$/, 'Demokrati'], [/^REPUBLIKA$/, 'Republika'],
   [/^Slovensko$/, 'Slovensko'], [/^nezávislý kandidát$/, 'nezávislí'],
+  [/^KDH - Kresťanskodemokratické hnutie$/, 'KDH'], [/^Hnutie SLOVENSKO$/i, 'Hnutie Slovensko'], [/^SOM SLOVENSKO - Strana obcí a miest$/, 'SOM Slovensko'],
+  [/^Demokratická strana - Občianski demokrati Slovenska$|^Demokratická strana$/, 'Demokratická strana'], [/^Magyar Szövetség/, 'Aliancia'],
+  [/^Tím Kraj Nitra/, 'Tím Kraj Nitra'], [/^Konzervatívci - Kresťanská únia$/, 'Konzervatívci'], [/^Kresťanská únia \(KÚ\)$/, 'Kresťanská únia'],
+  [/^SPOLU - občianska demokracia$/, 'Spolu'], [/^ODS - Občianski demokrati Slovenska$/, 'ODS'], [/^STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI$/, 'Starostovia a nezávislí'],
 ];
 export const skrat = (strany: string) => strany.split(', ').map((s) => SKR.find(([r]) => r.test(s.trim()))?.[1] ?? s.trim()).join(' + ');

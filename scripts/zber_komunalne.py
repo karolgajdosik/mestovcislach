@@ -169,6 +169,23 @@ def meno(r: dict) -> str:
 SKRATKY: dict[str, str] = {}  # skratka strany → plný názov (z tab0c), naplní strany_mapa
 
 
+def je_zena(r: dict) -> bool:
+    """Odhad podľa priezviska (slovenské ženské priezviská končia na -ová/-á); len pre súhrnné počty, nikdy pri mene."""
+    p = str(r.get("PRIEZVISKO") or "").strip().split(" ")[-1].split("-")[-1].lower()
+    return p.endswith("ová") or (p.endswith("á") and len(p) > 3)
+
+
+def statistiky_poslancov(riadky: list[dict]) -> dict | None:
+    """Súhrn za zvolených poslancov: počet žien (odhad z priezviska), vek (priemer, rozpätie, do 35 rokov)."""
+    if not riadky:
+        return None
+    veky = [int(cislo(r.get("vek"))) for r in riadky if cislo(r.get("vek")) > 0]
+    return {
+        "zeny": sum(1 for r in riadky if je_zena(r)),
+        **({"vek_priemer": round(sum(veky) / len(veky), 1), "vek_min": min(veky), "vek_max": max(veky), "do_35": sum(1 for v in veky if v <= 35)} if veky else {}),
+    }
+
+
 def strany_kandidata(r: dict, strany: dict[str, str]) -> str:
     text = str(r.get("PS_TEXT") or "").strip()
     kody = [k.strip() for k in str(r.get("PS") or "").split(",") if k.strip()]
@@ -436,6 +453,7 @@ def spracuj_oso(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
             zvoleni_msz.add(k)
     msz = [{"obvod": nazov_obvodu(k[0]), "meno": meno(kand_msz[k]), "strany": strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
            for k in sorted(zvoleni_msz, key=lambda k: (nazov_obvodu(k[0]), -hl_msz[k], k)) if k in kand_msz]
+    stat_msz = statistiky_poslancov([kand_msz[x] for x in zvoleni_msz if x in kand_msz])
 
     # Starostovia a miestne zastupiteľstvá
     starostovia = []
@@ -463,7 +481,7 @@ def spracuj_oso(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
     return {
         "primator": {"ucast": ucast(ucast_okrsky, {MESTO}), "kandidati": bez_klucov(primator), "mestske_casti": prim_mc,
                      "okrsky_priradene": f"{len(okrsok_mc)}/{mesto_okrsky}"},
-        "mestske_zastupitelstvo": {"poslancov": len(msz), "obvodov": len(obvod_casti), "mandaty": mandaty(msz), "zvoleni": msz},
+        "mestske_zastupitelstvo": {"poslancov": len(msz), "obvodov": len(obvod_casti), "mandaty": mandaty(msz), "zvoleni": msz, **({"statistiky": stat_msz} if stat_msz else {})},
         "starostovia": starostovia,
     }
 

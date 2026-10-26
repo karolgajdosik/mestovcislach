@@ -97,10 +97,10 @@ def main() -> int:
             h["hlasy"][meno] = (kod(r.get("Hlasovanie")), (r.get("Poslanecký_klub") or "").strip())
 
     # Otvorené dáta končia júnom 2023 → novšie hlasovania z webu zastupiteľstva (mená sa párujú na otvorené dáta, odtiaľ aj klub)
-    posledne = max((h["datum"] for h in hlasovania.values() if h["obdobie"] == "9"), default="2022-11-01")
+    posledne = max((h["datum"] for h in hlasovania.values() if int(h["obdobie"]) >= 9), default="2022-11-01")
     znami: dict[str, tuple[str, str]] = {}
     for h in sorted(hlasovania.values(), key=lambda h: h["datum"]):
-        if h["obdobie"] == "9":
+        if int(h["obdobie"]) >= 9:  # mená aj z nového obdobia 2026–2030
             for m, (_, klub) in h["hlasy"].items():
                 znami[kluc_mena(m)] = (m, klub)
     web_zasadnutia, z_webu = [], 0

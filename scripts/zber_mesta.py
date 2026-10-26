@@ -294,6 +294,7 @@ def komunalne(stare: dict | None = None) -> dict:
                     hl_msz[(zk.kod(r["VOOBEC"]), zk.kod(r["PC_HL"]))] += cislo(r["P_HL"])
             poslanci = [{"meno": zk.meno(kand_msz[k]), "strany": zk.strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
                         for k in sorted(zvol_pos, key=lambda k: (-hl_msz[k], k)) if k in kand_msz]
+            statistiky = zk.statistiky_poslancov([kand_msz[k] for k in zvol_pos if k in kand_msz])
             # primátor po mestských častiach (Bratislava, Košice) – pre mapu víťazov
             mc_vysl, kontrola = zk.primator_po_mc(t, obec, m["nazov"], strany)
             if mc_vysl:
@@ -303,7 +304,7 @@ def komunalne(stare: dict | None = None) -> dict:
                 "spracovanie": zk.spracovanie(t, obec),
                 **({"mestske_casti": mc_vysl} if mc_vysl else {}),
                 "primator": [{"meno": x["meno"], "strany": x["strany"], "hlasy": x["hlasy"], "podiel": x["podiel"], "zvoleny": x["zvoleny"]} for x in primator],
-                "zastupitelstvo": {"poslancov": len(poslanci), "mandaty": zk.mandaty(poslanci), "poslanci": poslanci},
+                "zastupitelstvo": {"poslancov": len(poslanci), "mandaty": zk.mandaty(poslanci), "poslanci": poslanci, **({"statistiky": statistiky} if statistiky else {})},
             }
         print(f"  komunálne {rok}: {sum(1 for v in vysl.values() if rok in v)} miest")
     return vysl

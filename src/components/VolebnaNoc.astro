@@ -1,29 +1,30 @@
 ---
-// Upútavka na komunálne voľby 2026 na úvodnej stránke (zobrazí sa len okolo volieb).
+// Upútavka na komunálne voľby 2026 na úvodnej stránke (okolo volieb; po konečných výsledkoch „Nové vedenie miest“ do konca roka).
 // Počas volebnej noci sa web zostavuje s každým zberom (volby.yml každých 15 min), takže stav je priebežný.
 import { MESTA } from '../mesta';
 import { obdobia } from '../lib/zastupitelstvo';
 
 const DATUM = '2026-10-24';
 const teraz = new Date();
-const zobraz = teraz >= new Date('2026-10-17') && teraz < new Date('2026-11-21');
+const zobraz = teraz >= new Date('2026-10-17') && teraz < new Date('2027-01-01');
 const mesta = MESTA.filter((m) => m.aktivne).map((m) => {
   const o = obdobia(m.slug).find((x) => x.rok === '2026');
   return { m, o, odkaz: m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${m.slug}/volby` };
 });
 const vysledky = mesta.some((x) => x.o?.primator);
 const vsetkyKonecne = mesta.every((x) => x.o && !x.o.priebezne);
-const kratke = (meno: string) => meno.split(/[\s,]+/).filter((s) => s && !s.includes('.') && !/^(PhD|MBA|LL|MPH)$/i.test(s)).join(' ');
+const kratke = (meno: string) => meno.split(/[\s,]+/).filter((s) => s && !s.includes('.') && !/^(PhD|MBA|LL|MPH|MPA|DiS|CSc|ArtD)$/i.test(s)).join(' ');
 ---
 {zobraz && (
   <section class="vn" id="volby-2026-uvod" aria-labelledby="vn-nadpis" data-datum={DATUM}>
     <div class="vn-hlava">
-      <span class="vn-bod" aria-hidden="true"></span>
-      <h2 id="vn-nadpis">{vysledky ? (vsetkyKonecne ? 'Výsledky komunálnych volieb 2026' : 'Komunálne voľby 2026 – priebežné výsledky') : 'Komunálne voľby 2026'}</h2>
+      {!vsetkyKonecne && <span class="vn-bod" aria-hidden="true"></span>}
+      <h2 id="vn-nadpis">{vysledky ? (vsetkyKonecne ? 'Nové vedenie miest' : 'Komunálne voľby 2026 – priebežné výsledky') : 'Komunálne voľby 2026'}</h2>
     </div>
     {!vysledky && (
       <p class="vn-text" id="vn-text">Dnes, v sobotu 24. októbra, sa volí od 7:00 do 20:00. Po zatvorení miestností tu budú pribúdať výsledky – kto vedie v boji o primátora, mapa podľa mestských častí a nové zastupiteľstvo.</p>
     )}
+    {vsetkyKonecne && <p class="vn-text">Primátori a zastupiteľstvá krajských miest na obdobie 2026 – 2030 podľa konečných výsledkov komunálnych volieb.</p>}
     {vysledky && !vsetkyKonecne && <p class="vn-text">Hlasy sa ešte sčítavajú – údaje sa obnovujú každých 15 minút.</p>}
     <ul class="vn-mesta">
       {mesta.map(({ m, o, odkaz }) => (
@@ -35,7 +36,7 @@ const kratke = (meno: string) => meno.split(/[\s,]+/).filter((s) => s && !s.incl
         </a></li>
       ))}
     </ul>
-    {vsetkyKonecne && <p class="vn-dalej"><a href="/porovnanie#volby-2026">Porovnanie volieb 2022 a 2026 vo všetkých mestách →</a></p>}
+    {vsetkyKonecne && <p class="vn-dalej"><a href="/volby-2026">Voľby 2026 v číslach – obmena, strany, ženy a vek poslancov →</a></p>}
   </section>
 )}
 

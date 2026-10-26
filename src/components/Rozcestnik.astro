@@ -13,7 +13,7 @@ const p = path.join(process.cwd(), 'data', 'mesta', 'porovnanie.json');
 const por: any[] = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')).mesta : [];
 const mesta = MESTA.filter((m) => m.aktivne);
 const teraz = new Date();
-const volby = teraz >= new Date('2026-10-17') && teraz < new Date('2026-11-21');
+const volby = teraz >= new Date('2026-10-17') && teraz < new Date('2027-01-01');
 const IK = {
   porovnanie: '<path d="M4 4.5h7v7H4zM13 4.5h7v4.5h-7zM13 11h7v8.5h-7zM4 13.5h7v6H4z"/>',
   volby: '<path d="M4 11h16v9H4z"/><path d="M8 11V4h8v7"/><path d="m10 7.6 1.4 1.4L14.2 6"/>',
@@ -68,7 +68,7 @@ const fmt = (n: number) => n.toLocaleString('sk-SK');
 
   <p class="rz-nadpis" id={`rz-akt-${rezim}`}>Aktuálne</p>
   <ul class="rz-nastroje rz-aktualne" aria-labelledby={`rz-akt-${rezim}`}>
-    {volby && <li><a href="/#volby-2026-uvod" class="rz-zvyrazni"><svg viewBox="0 0 24 24" aria-hidden="true" set:html={IK.volby} /><span>Komunálne voľby 2026</span></a></li>}
+    <li><a href="/volby-2026" class={volby ? 'rz-zvyrazni' : undefined}><svg viewBox="0 0 24 24" aria-hidden="true" set:html={IK.volby} /><span>Voľby 2026 v číslach</span></a></li>
     <li><a href="/porovnanie"><svg viewBox="0 0 24 24" aria-hidden="true" set:html={IK.porovnanie} /><span>Porovnanie miest</span></a></li>
     <li><a href="/porovnaj"><svg viewBox="0 0 24 24" aria-hidden="true" set:html={IK.porovnanie} /><span>Porovnaj dve mestá</span></a></li>
     <li><a href="/suboj"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M15 5h4v4M9 19H5v-4M19 19 13.5 13.5M5 5l5.5 5.5"/></svg><span>Súboj miest – otázka dňa</span></a></li>

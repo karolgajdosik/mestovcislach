@@ -1,0 +1,203 @@
+---
+// Komunálne voľby 2026 v číslach – súhrn za všetky krajské mestá (primátori, obmena zastupiteľstiev, strany, ženy, vek).
+// Len verejné výsledky ŠÚ SR: mená zvolených primátorov, inak iba počty. Mená poslancov sú na stránkach Zastupiteľstvo.
+import Base from '../layouts/Base.astro';
+import { MESTA } from '../mesta';
+import { obdobia, bezTitulov, skrat, type Obdobie } from '../lib/zastupitelstvo';
+
+// odhad podľa priezviska (-ová, -á) – len pre súhrnné počty, pri mene sa nikde nezobrazuje
+const zena = (meno: string) => {
+  const p = (bezTitulov(meno).split(' ').pop() ?? '').split('-').pop() ?? '';
+  return p.endsWith('ová') || (p.endsWith('á') && p.length > 3);
+};
+const kratke = (m: string) => m.split(/[\s,]+/).filter((s) => s && !s.includes('.') && !/^(PhD|MBA|LL|MPH|MPA|DiS|CSc|ArtD)$/i.test(s)).join(' ');
+const nezavisly = (s: string) => /^nezávisl/i.test(s.trim());
+
+type Riadok = { m: (typeof MESTA)[number]; n: Obdobie; s: Obdobie; novyPrim: boolean; obhajili: number; novi: number; nez: number; nezS: number; zeny: number; zenyS: number };
+const riadky: Riadok[] = MESTA.filter((m) => m.aktivne).flatMap((m) => {
+  const o = obdobia(m.slug);
+  const n = o.find((x) => x.rok === '2026'), s = o.find((x) => x.rok === '2022');
+  if (!n || !s || n.priebezne || !n.poslancov || !n.primator) return [];
+  const pred = new Set(s.poslanci.map((p) => bezTitulov(p.meno)));
+  const obhajili = n.poslanci.filter((p) => pred.has(bezTitulov(p.meno))).length;
+  return [{
+    m, n, s, obhajili, novi: n.poslancov - obhajili,
+    novyPrim: !s.primator || bezTitulov(n.primator.meno) !== bezTitulov(s.primator.meno),
+    nez: n.poslanci.filter((p) => nezavisly(p.strany)).length, nezS: s.poslanci.filter((p) => nezavisly(p.strany)).length,
+    zeny: n.poslanci.filter((p) => zena(p.meno)).length, zenyS: s.poslanci.filter((p) => zena(p.meno)).length,
+  }];
+});
+const hotovo = riadky.length > 0;
+const sum = (f: (r: Riadok) => number) => riadky.reduce((a, r) => a + f(r), 0);
+const posl = sum((r) => r.n.poslancov), poslS = sum((r) => r.s.poslancov);
+const pct = (a: number, b: number) => (b ? (100 * a) / b : 0);
+const des = (x: number, d = 1) => x.toLocaleString('sk-SK', { minimumFractionDigits: d, maximumFractionDigits: d });
+const zn = (x: number) => `${x > 0 ? '+' : x < 0 ? '−' : '±'}${des(Math.abs(x))}`;
+const sUcastou = riadky.filter((r) => r.n.ucast != null && r.s.ucast != null);
+const ucast = sUcastou.length ? sUcastou.reduce((a, r) => a + r.n.ucast!, 0) / sUcastou.length : null;
+const ucastS = sUcastou.length ? sUcastou.reduce((a, r) => a + r.s.ucast!, 0) / sUcastou.length : null;
+const noviPrim = riadky.filter((r) => r.novyPrim);
+const primatorky = riadky.filter((r) => zena(r.n.primator!.meno)).length;
+const primatorkyS = riadky.filter((r) => r.s.primator && zena(r.s.primator.meno)).length;
+const sVekom = riadky.filter((r) => r.n.statistiky?.vek_priemer != null);
+const vek = sVekom.length ? sum((r) => (r.n.statistiky?.vek_priemer ?? 0) * (sVekom.includes(r) ? r.n.poslancov : 0)) / sum((r) => (sVekom.includes(r) ? r.n.poslancov : 0)) : null;
+const do35 = sVekom.reduce((a, r) => a + (r.n.statistiky?.do_35 ?? 0), 0);
+const poslSVekom = sVekom.reduce((a, r) => a + r.n.poslancov, 0);
+
+// strany – koľko zvolených poslancov kandidovalo s podporou strany (koaličný kandidát sa ráta každej strane)
+const strany = (o: (r: Riadok) => Obdobie) => {
+  const m = new Map<string, number>();
+  for (const r of riadky) for (const p of o(r).poslanci) for (const s of new Set(skrat(p.strany).split(' + '))) m.set(s, (m.get(s) ?? 0) + 1);
+  return m;
+};
+const st26 = strany((r) => r.n), st22 = strany((r) => r.s);
+const topStrany = [...st26.entries()].sort((a, b) => b[1] - a[1]).slice(0, 12).map(([s, v]) => ({ s, v, pred: st22.get(s) ?? 0 }));
+const maxS = Math.max(1, ...topStrany.map((x) => Math.max(x.v, x.pred)));
+const obmena = riadky.slice().sort((a, b) => b.novi / b.n.poslancov - a.novi / a.n.poslancov);
+
+const popis = hotovo
+  ? `Komunálne voľby 2026 v ôsmich krajských mestách v číslach: ${noviPrim.length} z ${riadky.length} miest má nového primátora, ${des(pct(sum((r) => r.novi), posl), 0)} % poslancov je nových, nezávislí majú ${des(pct(sum((r) => r.nez), posl), 0)} % mandátov.`
+  : 'Komunálne voľby 2026 v krajských mestách v číslach – primátori, obmena zastupiteľstiev, strany, ženy a vek poslancov.';
+---
+<Base title="Voľby 2026 v číslach – krajské mestá – mestovcislach.sk" description={popis}>
+  <section class="hero">
+    <p class="kicker">Komunálne voľby 24. októbra 2026</p>
+    <h1>Voľby 2026 v číslach</h1>
+    <p class="lead">Čo sa zmenilo v ôsmich krajských mestách: noví primátori, obmena zastupiteľstiev, sila strán a nezávislých, zastúpenie žien a vek poslancov. Porovnanie s voľbami 2022.</p>
+  </section>
+
+  {!hotovo && <section class="card"><p>Konečné výsledky ešte nie sú spracované. Priebežný stav nájdete pri jednotlivých mestách na stránke Voľby.</p></section>}
+
+  {hotovo && (
+    <>
+      <ul class="v26-cisla" aria-label="Hlavné čísla">
+        <li><b>{noviPrim.length} z {riadky.length}</b><span>miest má nového primátora alebo primátorku</span></li>
+        <li><b>{des(pct(sum((r) => r.novi), posl), 0)} %</b><span>poslancov je v zastupiteľstve nových ({sum((r) => r.novi)} z {posl})</span></li>
+        <li><b>{des(pct(sum((r) => r.nez), posl), 0)} %</b><span>mandátov získali nezávislí (2022: {des(pct(sum((r) => r.nezS), poslS), 0)} %)</span></li>
+        <li><b>{des(pct(sum((r) => r.zeny), posl), 0)} %</b><span>poslancov sú ženy – odhad (2022: {des(pct(sum((r) => r.zenyS), poslS), 0)} %)</span></li>
+        {ucast != null && <li><b>{des(ucast)} %</b><span>priemerná účasť v mestách ({zn(ucast - ucastS!)} p. b. oproti 2022)</span></li>}
+        {vek != null && <li><b>{des(vek)} roka</b><span>priemerný vek zvoleného poslanca{sVekom.length < riadky.length ? ` (${sVekom.length} miest)` : ''}</span></li>}
+      </ul>
+
+      <section class="card" id="primatori">
+        <h2>Primátori 2026 – 2030</h2>
+        <p class="pozn">{noviPrim.length === 0 ? 'Všetci primátori funkciu obhájili.' : `Nové tváre na radnici: ${noviPrim.map((r) => r.m.nazov).join(', ')}.`} Primátoriek je {primatorky} (v roku 2022 {primatorkyS}).</p>
+        <ul class="v26-prim">
+          {riadky.map((r) => (
+            <li class={r.novyPrim ? 'novy' : ''}>
+              <a href={r.m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${r.m.slug}/volby`}>
+                <span class="mesto" translate="no">{r.m.nazov}</span>
+                <strong translate="no">{kratke(r.n.primator!.meno)}</strong>
+                <span class="pod">{r.n.primator!.podiel != null ? `${des(r.n.primator!.podiel)} % hlasov · ` : ''}{r.novyPrim ? 'nový(-á)' : 'obhájil(a)'}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="card" id="obmena">
+        <h2>Obmena zastupiteľstiev</h2>
+        <p class="pozn">Koľko poslancov sedí v zastupiteľstve prvýkrát v tomto období (neboli zvolení v roku 2022). Zoradené od najväčšej obmeny.</p>
+        <ul class="v26-pruhy">
+          {obmena.map((r) => (
+            <li>
+              <a href={`/${r.m.slug}/zastupitelstvo`} translate="no">{r.m.nazov}</a>
+              <span class="pruh" role="img" aria-label={`${r.novi} nových a ${r.obhajili} obhájili z ${r.n.poslancov}`}>
+                <i class="nov" style={`width:${pct(r.novi, r.n.poslancov)}%`}></i><i class="obh" style={`width:${pct(r.obhajili, r.n.poslancov)}%`}></i>
+              </span>
+              <span class="hod">{r.novi} z {r.n.poslancov}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="legenda"><span><i class="nov"></i>noví poslanci</span><span><i class="obh"></i>obhájili mandát</span></p>
+      </section>
+
+      <section class="card" id="strany">
+        <h2>Strany a nezávislí</h2>
+        <p class="pozn">Počet zvolených poslancov vo všetkých ôsmich mestách, ktorých podporila daná strana (kandidát koalície sa započíta každej strane z koalície). Svetlejší pruh je rok 2022. Niektoré strany medzičasom vznikli, zanikli alebo sa premenovali, preto ich čísla nemusia byť priamo porovnateľné.</p>
+        <ul class="v26-strany">
+          {topStrany.map((x) => (
+            <li>
+              <span class="nazov" translate="no">{x.s}</span>
+              <span class="pruhy" role="img" aria-label={`2026: ${x.v}, 2022: ${x.pred}`}>
+                <i class="t" style={`width:${(100 * x.v) / maxS}%`}></i><i class="p" style={`width:${(100 * x.pred) / maxS}%`}></i>
+              </span>
+              <span class="hod">{x.v} <small>(2022: {x.pred})</small></span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="card" id="tabulka">
+        <h2>Mesto po meste</h2>
+        <div class="tabulka-obal">
+          <table class="v26-tab">
+            <caption class="sr-only">Súhrn komunálnych volieb 2026 podľa miest</caption>
+            <thead><tr><th>Mesto</th><th class="num">Účasť</th><th class="num">Poslancov</th><th class="num">Noví</th><th class="num">Nezávislí</th><th class="num">Ženy (odhad)</th><th class="num">Priemerný vek</th></tr></thead>
+            <tbody>
+              {riadky.map((r) => (
+                <tr>
+                  <th scope="row"><a href={`/${r.m.slug}/zastupitelstvo`} translate="no">{r.m.nazov}</a></th>
+                  <td class="num">{r.n.ucast != null ? `${des(r.n.ucast)} %` : '–'}{r.n.ucast != null && r.s.ucast != null && <small>{zn(r.n.ucast - r.s.ucast)} p. b.</small>}</td>
+                  <td class="num">{r.n.poslancov}</td>
+                  <td class="num">{r.novi}</td>
+                  <td class="num">{r.nez}<small>2022: {r.nezS}</small></td>
+                  <td class="num">{r.zeny}<small>2022: {r.zenyS}</small></td>
+                  <td class="num">{r.n.statistiky?.vek_priemer != null ? des(r.n.statistiky.vek_priemer) : '–'}{r.n.statistiky?.vek_min != null && <small>{r.n.statistiky.vek_min} – {r.n.statistiky.vek_max} r.</small>}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {poslSVekom > 0 && <p class="pozn">Do 35 rokov je {do35} z {poslSVekom} poslancov ({des(pct(do35, poslSVekom), 0)} %).</p>}
+      </section>
+
+      <section class="card pozn-blok">
+        <h2>Ako sme počítali</h2>
+        <ul>
+          <li>Zdroj: konečné výsledky Štatistického úradu SR (volbysr.sk), balík zverejnený 25. 10. 2026; porovnanie s komunálnymi voľbami 2022.</li>
+          <li>„Noví“ a „obhájili“ – porovnávame meno bez titulov; človek, ktorý v roku 2022 kandidoval pod iným priezviskom, sa ráta ako nový.</li>
+          <li>Počet žien je odhad podľa tvaru priezviska (-ová, -á), ŠÚ SR pohlavie kandidátov v tabuľkách po obciach neuvádza. Pri menách ho nikde nezobrazujeme.</li>
+          <li>Vek je vek kandidáta v deň volieb podľa kandidátnych listín, zverejňujeme len priemer a rozpätie za mesto.</li>
+          <li>Bratislava: mestské zastupiteľstvo (bez miestnych zastupiteľstiev mestských častí). Košice: mestské zastupiteľstvo.</li>
+        </ul>
+        <p>Podrobnosti – zoznam poslancov, hlasy a mapy podľa mestských častí – nájdete pri každom meste na stránkach <a href="/porovnanie#volby-2026">Porovnanie miest</a> a Zastupiteľstvo.</p>
+      </section>
+    </>
+  )}
+</Base>
+
+<style>
+  .v26-cisla { list-style: none; padding: 0; margin: 0 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .v26-cisla li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+  .v26-cisla b { font-size: 1.7rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .v26-cisla span { font-size: 0.86rem; color: var(--muted); }
+  .card { margin-bottom: 16px; }
+  .pozn, .legenda { font-size: 0.86rem; color: var(--muted); }
+  .v26-prim { list-style: none; padding: 0; margin: 12px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+  .v26-prim a { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: inherit; height: 100%; }
+  .v26-prim a:hover, .v26-prim a:focus-visible { border-color: var(--accent); }
+  .v26-prim .novy a { border-left: 4px solid var(--accent); }
+  .v26-prim .mesto { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .v26-prim .pod { font-size: 0.84rem; color: var(--muted); }
+  .v26-pruhy, .v26-strany { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }
+  .v26-pruhy li, .v26-strany li { display: grid; grid-template-columns: minmax(90px, 140px) 1fr auto; gap: 10px; align-items: center; font-size: 0.9rem; }
+  .pruh { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: var(--line); }
+  .pruh i, .legenda i { display: block; height: 100%; }
+  .nov { background: var(--accent); } .obh { background: color-mix(in srgb, var(--muted) 45%, transparent); }
+  .legenda { display: flex; gap: 16px; margin-top: 10px; }
+  .legenda span { display: inline-flex; align-items: center; gap: 6px; }
+  .legenda i { width: 12px; height: 12px; border-radius: 3px; }
+  .pruhy { display: flex; flex-direction: column; gap: 3px; }
+  .pruhy i { display: block; height: 9px; border-radius: 4px; min-width: 2px; }
+  .pruhy .t { background: var(--accent); } .pruhy .p { background: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+  .hod { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+  .hod small { font-weight: 400; color: var(--muted); }
+  .tabulka-obal { overflow-x: auto; }
+  .v26-tab { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .v26-tab th, .v26-tab td { padding: 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .v26-tab .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .v26-tab small { display: block; color: var(--muted); font-size: 0.76rem; }
+  .pozn-blok ul { padding-left: 20px; font-size: 0.88rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>

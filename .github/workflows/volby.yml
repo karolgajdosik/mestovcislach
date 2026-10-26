@@ -3,8 +3,6 @@ name: Komunálne voľby
 on:
   schedule:
     - cron: "10 3 * * *"          # bežne raz denne
-    - cron: "*/15 18-23 24 10 *"  # volebná noc 24. 10. (UTC, v Bratislave 20:00–02:00)
-    - cron: "*/20 * 25-26 10 *"   # 25. – 26. 10. každých 20 minút, kým ŠÚ SR zverejní výsledky
   workflow_dispatch:
   push:
     branches: [main]
