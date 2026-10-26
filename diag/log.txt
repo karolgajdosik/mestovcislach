@@ -1,10 +1,4 @@
-dict_keys(['e_nuts14', 'e_nuts15', 'e_sex', 'e_age', 'e_wstatus', 'e_year', 'hodnota'])
-69 ['Bratislava', 'Bratislava - mestská časť Devín', 'Bratislava - mestská časť Devínska Nová Ves', 'Bratislava - mestská časť Dúbravka', 'Bratislava - mestská časť Jarovce', 'Bratislava - mestská časť Karlova Ves', 'Bratislava - mestská časť Lamač', 'Bratislava - mestská časť Nové Mesto', 'Bratislava - mestská časť Petržalka', 'Bratislava - mestská časť Podunajské Biskupice', 'Bratislava - mestská časť Rača', 'Bratislava - mestská časť Rusovce', 'Bratislava - mestská časť Ružinov', 'Bratislava - mestská časť Staré Mesto', 'Bratislava - mestská časť Vajnory', 'Bratislava - mestská časť Vrakuňa', 'Bratislava - mestská časť Záhorská Bystrica', 'Bratislava - mestská časť Čunovo', 'Bukovec, okres Košice - okolie', 'Haniska, okres Košice - okolie', 'Hosťovce, okres Košice - okolie', 'Háj, okres Košice - okolie', 'Košice', 'Košice - mestská časť Barca', 'Košice - mestská časť Dargovských hrdinov', 'Košice - mestská časť Džungľa', 'Košice - mestská časť Juh', 'Košice - mestská časť Kavečany', 'Košice - mestská časť Košická Nová Ves', 'Košice - mestská časť Krásna', 'Košice - mestská časť Lorinčík', 'Košice - mestská časť Luník IX', 'Košice - mestská časť Myslava', 'Košice - mestská časť Nad jazerom', 'Košice - mestská časť Pereš', 'Košice - mestská časť Poľov', 'Košice - mestská časť Sever', 'Košice - mestská časť Staré Mesto', 'Košice - mestská časť Sídlisko KVP', 'Košice - mestská časť Sídlisko Ťahanovce']
-['Košice', 'Okres Košice - okolie', 'Okres Košice I', 'Okres Košice II', 'Okres Košice III', 'Okres Košice IV']
-  sčítanie vek: 8 miest
-  sčítanie vzdelanie: 8 miest
-  sčítanie narodnost: 8 miest
-  sčítanie nabozenstvo: 8 miest
-  sčítanie byty_vlastnictvo: 3 miest
-KE 22 ['Kavečany', 'Ťahanovce', 'Sever', 'Staré Mesto', 'Sídlisko Ťahanovce'] BA 17
+juh 200 False False
+sever 200 False False
+stare-mesto 200 False False
 HOTOVO
