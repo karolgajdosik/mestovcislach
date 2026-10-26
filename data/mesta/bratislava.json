@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-26T20:45:11",
+ "aktualizovane": "2026-10-26T21:58:13",
  "obyvatelia": {
   "roky": {
    "1993": 448785,
@@ -2677,6 +2677,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 1912,
+     "Od 15 do 64 rokov": 1232,
+     "14 rokov alebo menej": 389,
+     "65 rokov alebo viac": 291,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 1912,
+     "Vysokoškolské": 716,
+     "Stredné s maturitou": 451,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 389,
+     "Stredné bez maturity": 149,
+     "Základné": 121,
+     "Nezistené": 84,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 2
+    },
+    "narodnost": {
+     "Spolu": 1912,
+     "Slovenská": 1696,
+     "Nezistená": 109,
+     "Iná": 31,
+     "Maďarská": 27,
+     "Česká": 21,
+     "Ukrajinská": 12,
+     "Ruská": 9,
+     "Nemecká": 4,
+     "Rusínska": 2,
+     "Poľská": 1,
+     "Rómska": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 1912,
+     "bez náboženského vyznania": 966,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 649,
+     "nezistené": 129,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 67,
+     "ostatné": 60,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 20,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 17,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 4
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 1110,
+     "byt vo vlastnom rodinnom dome": 600,
+     "vlastný byt v bytovom dome": 325,
+     "iná forma užívania bytu": 157,
+     "nezistený": 13,
+     "služobný a domovnícky byt": 8,
+     "obecný byt": 7,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "byt v nájme": 0
+    }
    }
   },
   "Devínska Nová Ves": {
@@ -2738,6 +2793,61 @@
        "podiel": 5.23
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 17153,
+     "Od 15 do 64 rokov": 12421,
+     "14 rokov alebo menej": 2661,
+     "65 rokov alebo viac": 2071,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 17153,
+     "Vysokoškolské": 5225,
+     "Stredné s maturitou": 5177,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 2661,
+     "Stredné bez maturity": 2045,
+     "Základné": 1132,
+     "Nezistené": 892,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 21
+    },
+    "narodnost": {
+     "Spolu": 17153,
+     "Slovenská": 15232,
+     "Nezistená": 1121,
+     "Maďarská": 238,
+     "Iná": 213,
+     "Česká": 204,
+     "Ukrajinská": 40,
+     "Nemecká": 37,
+     "Ruská": 25,
+     "Poľská": 24,
+     "Rusínska": 15,
+     "Rómska": 4
+    },
+    "nabozenstvo": {
+     "Spolu": 17153,
+     "bez náboženského vyznania": 7396,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 6899,
+     "nezistené": 1395,
+     "ostatné": 601,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 542,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 189,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 96,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 35
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 7677,
+     "vlastný byt v bytovom dome": 5650,
+     "byt vo vlastnom rodinnom dome": 1417,
+     "iná forma užívania bytu": 481,
+     "služobný a domovnícky byt": 50,
+     "byt v nájme": 43,
+     "nezistený": 21,
+     "družstevný byt - len stavebné bytové družstvá": 11,
+     "obecný byt": 4
     }
    }
   },
@@ -2801,6 +2911,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 36206,
+     "Od 15 do 64 rokov": 22742,
+     "65 rokov alebo viac": 7952,
+     "14 rokov alebo menej": 5512,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 36206,
+     "Vysokoškolské": 12690,
+     "Stredné s maturitou": 10209,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 5512,
+     "Stredné bez maturity": 3721,
+     "Základné": 2370,
+     "Nezistené": 1666,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 38
+    },
+    "narodnost": {
+     "Spolu": 36206,
+     "Slovenská": 31910,
+     "Nezistená": 2604,
+     "Maďarská": 617,
+     "Česká": 372,
+     "Iná": 345,
+     "Ukrajinská": 112,
+     "Ruská": 95,
+     "Rusínska": 63,
+     "Nemecká": 51,
+     "Poľská": 31,
+     "Rómska": 6
+    },
+    "nabozenstvo": {
+     "Spolu": 36206,
+     "bez náboženského vyznania": 16004,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 13848,
+     "nezistené": 2982,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 1504,
+     "ostatné": 1108,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 454,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 197,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 109
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 18326,
+     "vlastný byt v bytovom dome": 17088,
+     "byt vo vlastnom rodinnom dome": 637,
+     "iná forma užívania bytu": 417,
+     "nezistený": 79,
+     "služobný a domovnícky byt": 51,
+     "byt v nájme": 40,
+     "obecný byt": 9,
+     "družstevný byt - len stavebné bytové družstvá": 5
+    }
    }
   },
   "Jarovce": {
@@ -2862,6 +3027,61 @@
        "podiel": 4.67
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 2706,
+     "Od 15 do 64 rokov": 1701,
+     "14 rokov alebo menej": 628,
+     "65 rokov alebo viac": 377,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 2706,
+     "Vysokoškolské": 851,
+     "Stredné s maturitou": 666,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 628,
+     "Stredné bez maturity": 296,
+     "Základné": 208,
+     "Nezistené": 51,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 6
+    },
+    "narodnost": {
+     "Spolu": 2706,
+     "Slovenská": 2288,
+     "Iná": 180,
+     "Maďarská": 129,
+     "Nezistená": 71,
+     "Česká": 16,
+     "Nemecká": 9,
+     "Rusínska": 4,
+     "Ruská": 4,
+     "Ukrajinská": 3,
+     "Rómska": 2,
+     "Poľská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 2706,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 1426,
+     "bez náboženského vyznania": 1047,
+     "nezistené": 83,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 76,
+     "ostatné": 45,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 15,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 8,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 6
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 1023,
+     "byt vo vlastnom rodinnom dome": 784,
+     "vlastný byt v bytovom dome": 155,
+     "iná forma užívania bytu": 64,
+     "nezistený": 11,
+     "byt v nájme": 6,
+     "služobný a domovnícky byt": 2,
+     "obecný byt": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0
     }
    }
   },
@@ -2925,6 +3145,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 35644,
+     "Od 15 do 64 rokov": 24780,
+     "65 rokov alebo viac": 5817,
+     "14 rokov alebo menej": 5047,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 35644,
+     "Vysokoškolské": 15587,
+     "Stredné s maturitou": 9073,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 5047,
+     "Stredné bez maturity": 2428,
+     "Základné": 1876,
+     "Nezistené": 1598,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 35
+    },
+    "narodnost": {
+     "Spolu": 35644,
+     "Slovenská": 30951,
+     "Nezistená": 2836,
+     "Maďarská": 596,
+     "Iná": 452,
+     "Česká": 422,
+     "Ukrajinská": 117,
+     "Ruská": 99,
+     "Rusínska": 63,
+     "Nemecká": 51,
+     "Poľská": 41,
+     "Rómska": 16
+    },
+    "nabozenstvo": {
+     "Spolu": 35644,
+     "bez náboženského vyznania": 15837,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 13241,
+     "nezistené": 2956,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 1621,
+     "ostatné": 1276,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 352,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 246,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 115
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 17565,
+     "vlastný byt v bytovom dome": 16035,
+     "byt vo vlastnom rodinnom dome": 858,
+     "obecný byt": 195,
+     "nezistený": 160,
+     "iná forma užívania bytu": 140,
+     "byt v nájme": 111,
+     "služobný a domovnícky byt": 40,
+     "družstevný byt - len stavebné bytové družstvá": 26
+    }
    }
   },
   "Lamač": {
@@ -2986,6 +3261,61 @@
        "podiel": 6.33
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 7789,
+     "Od 15 do 64 rokov": 4400,
+     "65 rokov alebo viac": 2092,
+     "14 rokov alebo menej": 1297,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 7789,
+     "Vysokoškolské": 3012,
+     "Stredné s maturitou": 2109,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 1297,
+     "Stredné bez maturity": 610,
+     "Základné": 421,
+     "Nezistené": 323,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 17
+    },
+    "narodnost": {
+     "Spolu": 7789,
+     "Slovenská": 6920,
+     "Nezistená": 528,
+     "Maďarská": 119,
+     "Česká": 83,
+     "Iná": 74,
+     "Ukrajinská": 21,
+     "Nemecká": 13,
+     "Ruská": 10,
+     "Rusínska": 10,
+     "Poľská": 10,
+     "Rómska": 1
+    },
+    "nabozenstvo": {
+     "Spolu": 7789,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 3441,
+     "bez náboženského vyznania": 2933,
+     "nezistené": 586,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 407,
+     "ostatné": 248,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 107,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 44,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 23
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 3911,
+     "vlastný byt v bytovom dome": 2924,
+     "byt vo vlastnom rodinnom dome": 768,
+     "iná forma užívania bytu": 116,
+     "byt v nájme": 53,
+     "nezistený": 23,
+     "obecný byt": 18,
+     "služobný a domovnícky byt": 8,
+     "družstevný byt - len stavebné bytové družstvá": 1
     }
    }
   },
@@ -3049,6 +3379,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 44458,
+     "Od 15 do 64 rokov": 28837,
+     "65 rokov alebo viac": 8243,
+     "14 rokov alebo menej": 7378,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 44458,
+     "Vysokoškolské": 18622,
+     "Stredné s maturitou": 10090,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 7378,
+     "Stredné bez maturity": 3110,
+     "Nezistené": 2826,
+     "Základné": 2380,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 52
+    },
+    "narodnost": {
+     "Spolu": 44458,
+     "Slovenská": 36970,
+     "Nezistená": 4661,
+     "Iná": 1086,
+     "Maďarská": 767,
+     "Česká": 451,
+     "Ukrajinská": 176,
+     "Ruská": 130,
+     "Nemecká": 77,
+     "Rusínska": 70,
+     "Poľská": 62,
+     "Rómska": 8
+    },
+    "nabozenstvo": {
+     "Spolu": 44458,
+     "bez náboženského vyznania": 19668,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 15529,
+     "nezistené": 4778,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 1995,
+     "ostatné": 1564,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 483,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 271,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 170
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 27325,
+     "vlastný byt v bytovom dome": 22736,
+     "byt vo vlastnom rodinnom dome": 2704,
+     "iná forma užívania bytu": 1019,
+     "nezistený": 335,
+     "obecný byt": 304,
+     "byt v nájme": 128,
+     "služobný a domovnícky byt": 90,
+     "družstevný byt - len stavebné bytové družstvá": 9
+    }
    }
   },
   "Petržalka": {
@@ -3110,6 +3495,61 @@
        "podiel": 5.49
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 114000,
+     "Od 15 do 64 rokov": 75161,
+     "65 rokov alebo viac": 22162,
+     "14 rokov alebo menej": 16677,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 114000,
+     "Vysokoškolské": 37212,
+     "Stredné s maturitou": 33261,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 16677,
+     "Stredné bez maturity": 13651,
+     "Základné": 7033,
+     "Nezistené": 6040,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 126
+    },
+    "narodnost": {
+     "Spolu": 114000,
+     "Slovenská": 98870,
+     "Nezistená": 9588,
+     "Maďarská": 2650,
+     "Česká": 1039,
+     "Iná": 973,
+     "Ukrajinská": 259,
+     "Rusínska": 182,
+     "Ruská": 170,
+     "Poľská": 116,
+     "Nemecká": 87,
+     "Rómska": 66
+    },
+    "nabozenstvo": {
+     "Spolu": 114000,
+     "bez náboženského vyznania": 51095,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 42893,
+     "nezistené": 10033,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 4279,
+     "ostatné": 3403,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1330,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 526,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 441
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 52379,
+     "vlastný byt v bytovom dome": 50307,
+     "nezistený": 546,
+     "iná forma užívania bytu": 507,
+     "obecný byt": 492,
+     "byt vo vlastnom rodinnom dome": 208,
+     "družstevný byt - len stavebné bytové družstvá": 135,
+     "služobný a domovnícky byt": 110,
+     "byt v nájme": 74
     }
    }
   },
@@ -3173,6 +3613,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 23464,
+     "Od 15 do 64 rokov": 15361,
+     "65 rokov alebo viac": 4576,
+     "14 rokov alebo menej": 3527,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 23464,
+     "Stredné s maturitou": 7347,
+     "Vysokoškolské": 5614,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 3527,
+     "Stredné bez maturity": 3424,
+     "Základné": 2099,
+     "Nezistené": 1390,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 63
+    },
+    "narodnost": {
+     "Spolu": 23464,
+     "Slovenská": 18739,
+     "Nezistená": 2232,
+     "Maďarská": 1927,
+     "Česká": 210,
+     "Iná": 194,
+     "Ukrajinská": 57,
+     "Rómska": 25,
+     "Rusínska": 23,
+     "Poľská": 20,
+     "Nemecká": 19,
+     "Ruská": 18
+    },
+    "nabozenstvo": {
+     "Spolu": 23464,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 9963,
+     "bez náboženského vyznania": 9194,
+     "nezistené": 2320,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 746,
+     "ostatné": 744,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 262,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 132,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 103
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 11459,
+     "vlastný byt v bytovom dome": 8455,
+     "byt vo vlastnom rodinnom dome": 2307,
+     "iná forma užívania bytu": 361,
+     "nezistený": 163,
+     "obecný byt": 135,
+     "služobný a domovnícky byt": 24,
+     "družstevný byt - len stavebné bytové družstvá": 10,
+     "byt v nájme": 4
+    }
    }
   },
   "Rača": {
@@ -3234,6 +3729,61 @@
        "podiel": 5.43
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 25733,
+     "Od 15 do 64 rokov": 16991,
+     "65 rokov alebo viac": 4601,
+     "14 rokov alebo menej": 4141,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 25733,
+     "Vysokoškolské": 8374,
+     "Stredné s maturitou": 7085,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 4141,
+     "Stredné bez maturity": 2825,
+     "Nezistené": 1664,
+     "Základné": 1618,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 26
+    },
+    "narodnost": {
+     "Spolu": 25733,
+     "Slovenská": 21869,
+     "Nezistená": 2554,
+     "Iná": 391,
+     "Maďarská": 378,
+     "Česká": 285,
+     "Ukrajinská": 102,
+     "Ruská": 61,
+     "Rusínska": 40,
+     "Nemecká": 27,
+     "Poľská": 18,
+     "Rómska": 8
+    },
+    "nabozenstvo": {
+     "Spolu": 25733,
+     "bez náboženského vyznania": 11017,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 9582,
+     "nezistené": 2635,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 1022,
+     "ostatné": 928,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 305,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 171,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 73
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 11543,
+     "vlastný byt v bytovom dome": 9080,
+     "byt vo vlastnom rodinnom dome": 1769,
+     "iná forma užívania bytu": 390,
+     "nezistený": 188,
+     "byt v nájme": 46,
+     "obecný byt": 38,
+     "služobný a domovnícky byt": 27,
+     "družstevný byt - len stavebné bytové družstvá": 5
     }
    }
   },
@@ -3297,6 +3847,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 4388,
+     "Od 15 do 64 rokov": 2888,
+     "14 rokov alebo menej": 875,
+     "65 rokov alebo viac": 625,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 4388,
+     "Vysokoškolské": 1535,
+     "Stredné s maturitou": 1020,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 875,
+     "Stredné bez maturity": 454,
+     "Základné": 381,
+     "Nezistené": 119,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 4
+    },
+    "narodnost": {
+     "Spolu": 4388,
+     "Slovenská": 3797,
+     "Maďarská": 238,
+     "Nezistená": 221,
+     "Iná": 56,
+     "Česká": 34,
+     "Nemecká": 18,
+     "Ukrajinská": 9,
+     "Ruská": 9,
+     "Rusínska": 3,
+     "Poľská": 3,
+     "Rómska": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 4388,
+     "bez náboženského vyznania": 1924,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 1860,
+     "nezistené": 221,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 177,
+     "ostatné": 100,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 67,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 21,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 18
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 1693,
+     "byt vo vlastnom rodinnom dome": 1196,
+     "vlastný byt v bytovom dome": 300,
+     "iná forma užívania bytu": 101,
+     "obecný byt": 66,
+     "nezistený": 22,
+     "služobný a domovnícky byt": 7,
+     "byt v nájme": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0
+    }
    }
   },
   "Ružinov": {
@@ -3358,6 +3963,61 @@
        "podiel": 5.36
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 81004,
+     "Od 15 do 64 rokov": 52283,
+     "65 rokov alebo viac": 16164,
+     "14 rokov alebo menej": 12557,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 81004,
+     "Vysokoškolské": 32074,
+     "Stredné s maturitou": 20518,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 12557,
+     "Stredné bez maturity": 6602,
+     "Základné": 4724,
+     "Nezistené": 4453,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 76
+    },
+    "narodnost": {
+     "Spolu": 81004,
+     "Slovenská": 68980,
+     "Nezistená": 7349,
+     "Maďarská": 1758,
+     "Iná": 1399,
+     "Česká": 753,
+     "Ukrajinská": 218,
+     "Ruská": 172,
+     "Rusínska": 137,
+     "Nemecká": 130,
+     "Poľská": 78,
+     "Rómska": 30
+    },
+    "nabozenstvo": {
+     "Spolu": 81004,
+     "bez náboženského vyznania": 35070,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 30220,
+     "nezistené": 7595,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 3570,
+     "ostatné": 2758,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1044,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 487,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 260
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 49881,
+     "vlastný byt v bytovom dome": 42777,
+     "byt vo vlastnom rodinnom dome": 3066,
+     "iná forma užívania bytu": 2168,
+     "nezistený": 940,
+     "obecný byt": 404,
+     "byt v nájme": 275,
+     "služobný a domovnícky byt": 216,
+     "družstevný byt - len stavebné bytové družstvá": 35
     }
    }
   },
@@ -3421,6 +4081,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 46080,
+     "Od 15 do 64 rokov": 29171,
+     "65 rokov alebo viac": 9911,
+     "14 rokov alebo menej": 6998,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 46080,
+     "Vysokoškolské": 22446,
+     "Stredné s maturitou": 8965,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 6998,
+     "Nezistené": 3526,
+     "Stredné bez maturity": 2070,
+     "Základné": 2044,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 31
+    },
+    "narodnost": {
+     "Spolu": 46080,
+     "Slovenská": 36830,
+     "Nezistená": 5825,
+     "Iná": 1244,
+     "Maďarská": 941,
+     "Česká": 538,
+     "Ukrajinská": 211,
+     "Ruská": 165,
+     "Nemecká": 164,
+     "Rusínska": 70,
+     "Poľská": 67,
+     "Rómska": 25
+    },
+    "nabozenstvo": {
+     "Spolu": 46080,
+     "bez náboženského vyznania": 19948,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 15008,
+     "nezistené": 5951,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 2341,
+     "ostatné": 1893,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 458,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 319,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 162
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 28248,
+     "vlastný byt v bytovom dome": 22709,
+     "byt vo vlastnom rodinnom dome": 2063,
+     "iná forma užívania bytu": 1965,
+     "nezistený": 670,
+     "byt v nájme": 591,
+     "služobný a domovnícky byt": 153,
+     "obecný byt": 90,
+     "družstevný byt - len stavebné bytové družstvá": 7
+    }
    }
   },
   "Vajnory": {
@@ -3482,6 +4197,61 @@
        "podiel": 5.73
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 6079,
+     "Od 15 do 64 rokov": 4020,
+     "14 rokov alebo menej": 1043,
+     "65 rokov alebo viac": 1016,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 6079,
+     "Stredné s maturitou": 1786,
+     "Vysokoškolské": 1694,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 1043,
+     "Stredné bez maturity": 789,
+     "Základné": 414,
+     "Nezistené": 347,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 6
+    },
+    "narodnost": {
+     "Spolu": 6079,
+     "Slovenská": 5368,
+     "Nezistená": 374,
+     "Iná": 190,
+     "Maďarská": 62,
+     "Česká": 52,
+     "Ukrajinská": 14,
+     "Poľská": 7,
+     "Ruská": 6,
+     "Nemecká": 4,
+     "Rómska": 1,
+     "Rusínska": 1
+    },
+    "nabozenstvo": {
+     "Spolu": 6079,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 2753,
+     "bez náboženského vyznania": 2514,
+     "nezistené": 400,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 165,
+     "ostatné": 160,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 53,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 24,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 10
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 2897,
+     "byt vo vlastnom rodinnom dome": 1868,
+     "vlastný byt v bytovom dome": 956,
+     "iná forma užívania bytu": 24,
+     "byt v nájme": 24,
+     "služobný a domovnícky byt": 12,
+     "nezistený": 12,
+     "obecný byt": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0
     }
    }
   },
@@ -3545,6 +4315,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 20711,
+     "Od 15 do 64 rokov": 14192,
+     "65 rokov alebo viac": 3393,
+     "14 rokov alebo menej": 3126,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 20711,
+     "Stredné s maturitou": 6417,
+     "Vysokoškolské": 5441,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 3126,
+     "Stredné bez maturity": 2756,
+     "Základné": 1728,
+     "Nezistené": 1208,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 35
+    },
+    "narodnost": {
+     "Spolu": 20711,
+     "Slovenská": 17380,
+     "Nezistená": 1973,
+     "Maďarská": 746,
+     "Iná": 233,
+     "Česká": 176,
+     "Ukrajinská": 61,
+     "Nemecká": 36,
+     "Rusínska": 34,
+     "Poľská": 29,
+     "Rómska": 22,
+     "Ruská": 21
+    },
+    "nabozenstvo": {
+     "Spolu": 20711,
+     "bez náboženského vyznania": 9059,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 7871,
+     "nezistené": 2064,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 684,
+     "ostatné": 632,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 204,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 127,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 70
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 9427,
+     "vlastný byt v bytovom dome": 7212,
+     "byt vo vlastnom rodinnom dome": 1711,
+     "iná forma užívania bytu": 346,
+     "nezistený": 68,
+     "obecný byt": 42,
+     "služobný a domovnícky byt": 33,
+     "družstevný byt - len stavebné bytové družstvá": 12,
+     "byt v nájme": 3
+    }
    }
   },
   "Záhorská Bystrica": {
@@ -3607,6 +4432,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 6541,
+     "Od 15 do 64 rokov": 4180,
+     "14 rokov alebo menej": 1552,
+     "65 rokov alebo viac": 809,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 6541,
+     "Vysokoškolské": 2528,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 1552,
+     "Stredné s maturitou": 1385,
+     "Stredné bez maturity": 489,
+     "Základné": 399,
+     "Nezistené": 183,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 5
+    },
+    "narodnost": {
+     "Spolu": 6541,
+     "Slovenská": 5862,
+     "Nezistená": 427,
+     "Česká": 70,
+     "Iná": 66,
+     "Maďarská": 45,
+     "Rusínska": 18,
+     "Nemecká": 17,
+     "Ruská": 15,
+     "Poľská": 11,
+     "Ukrajinská": 9,
+     "Rómska": 1
+    },
+    "nabozenstvo": {
+     "Spolu": 6541,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 2919,
+     "bez náboženského vyznania": 2717,
+     "nezistené": 438,
+     "ostatné": 180,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 164,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 68,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 39,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 16
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 3148,
+     "byt vo vlastnom rodinnom dome": 1760,
+     "vlastný byt v bytovom dome": 1003,
+     "iná forma užívania bytu": 330,
+     "nezistený": 32,
+     "služobný a domovnícky byt": 13,
+     "byt v nájme": 8,
+     "obecný byt": 2,
+     "družstevný byt - len stavebné bytové družstvá": 0
+    }
    }
   },
   "Čunovo": {
@@ -3668,6 +4548,61 @@
        "podiel": 4.8
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 1635,
+     "Od 15 do 64 rokov": 1044,
+     "14 rokov alebo menej": 361,
+     "65 rokov alebo viac": 230,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 1635,
+     "Vysokoškolské": 470,
+     "Stredné s maturitou": 455,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 361,
+     "Stredné bez maturity": 189,
+     "Základné": 122,
+     "Nezistené": 37,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 1
+    },
+    "narodnost": {
+     "Spolu": 1635,
+     "Slovenská": 1399,
+     "Iná": 121,
+     "Maďarská": 59,
+     "Nezistená": 25,
+     "Česká": 20,
+     "Nemecká": 4,
+     "Ukrajinská": 3,
+     "Poľská": 2,
+     "Ruská": 2,
+     "Rómska": 0,
+     "Rusínska": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 1635,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 951,
+     "bez náboženského vyznania": 556,
+     "ostatné": 41,
+     "nezistené": 33,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 32,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 8,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 7,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 7
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 587,
+     "byt vo vlastnom rodinnom dome": 497,
+     "iná forma užívania bytu": 61,
+     "vlastný byt v bytovom dome": 24,
+     "nezistený": 5,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "obecný byt": 0,
+     "byt v nájme": 0,
+     "služobný a domovnícky byt": 0
     }
    }
   }
