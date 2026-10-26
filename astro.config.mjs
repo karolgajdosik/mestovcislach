@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import { fileURLToPath } from 'node:url';
 import { sitemap } from './scripts/sitemap.mjs';
+import { lomky } from './scripts/lomky.mjs';
 
 export default defineConfig({
   site: 'https://mestovcislach.sk',
@@ -8,6 +9,9 @@ export default defineConfig({
   vite: { build: { assetsInlineLimit: 0 } },
   integrations: [{
     name: 'mapa-stranok',
-    hooks: { 'astro:build:done': ({ dir, logger }) => logger.info(`sitemap.xml: ${sitemap(fileURLToPath(dir))} stránok`) },
+    hooks: { 'astro:build:done': ({ dir, logger }) => {
+      logger.info(`interné odkazy s lomkou: ${lomky(fileURLToPath(dir))}`);
+      logger.info(`sitemap.xml: ${sitemap(fileURLToPath(dir))} stránok`);
+    } },
   }],
 });
