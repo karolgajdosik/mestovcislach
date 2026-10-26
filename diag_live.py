@@ -1,5 +1,12 @@
-import requests,re
-for u in ["https://mestovcislach.sk/volby-2026/","https://mestovcislach.sk/"]:
-    r=requests.get(u,timeout=60); t=r.text
-    print(u,r.status_code,"Nové vedenie miest" in t, "priemerný vek" in t, re.findall(r"(\d+,\d) roka",t)[:1], re.findall(r"(\d+) z (\d+)</b>",t)[:1])
+import sys,time,traceback
+sys.path.insert(0,"scripts")
+import zber_mesta as zm
+for tema,(k,st) in zm.SCITANIE.items():
+    t=time.time()
+    try:
+        r=zm.s.get(zm.STATDATA.format(k),timeout=600); print(tema,k,r.status_code,len(r.content),r.content[:2],round(time.time()-t))
+    except Exception as e: print(tema,k,"CHYBA",type(e).__name__,str(e)[:200],round(time.time()-t))
+try:
+    v=zm.scitanie(); print("OK",{s:list(x) for s,x in v.items()}); print("KE casti",len(zm.CASTI.get("kosice",{})),"BA",len(zm.CASTI.get("bratislava",{})))
+except Exception: print(traceback.format_exc()[-800:])
 print("HOTOVO")
