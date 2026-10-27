@@ -1,6 +1,6 @@
 {
  "zdroj": "https://data.bratislava.sk",
- "pocet": 673,
+ "pocet": 686,
  "datasety": [
   {
    "id": "cd6711958334494685f4e01f4ab3e482",
@@ -12179,7 +12179,7 @@
    "popis": "Dataset všetkých objednávok Magistrátu hlavného mesta SR Bratislava od roku 2011. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 51732480,
+   "velkost": 51748864,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -12197,7 +12197,7 @@
      "nazov": "Objednávky_Magistrátu_hlavného_mesta_SR_Bratislava_od_roku_2011",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 65411,
+     "pocet": 65432,
      "polia": [
       [
        "IDENTIFIKÁTOR_OBJEDNÁVKY",
@@ -17101,6 +17101,68 @@
        "DETI_MS",
        "String",
        "DETI_MS"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ed624c538e0b469a908b606075bec8c3",
+   "nazov": "Počet detí navštevujúcich materské školy v Bratislave s trvalým pobytom mimo Bratislavy a neznámym pobytom",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_detí_navštevujúcich_materské_školy_v_BA_s_trvalým_pobytom_mimo_BA_a_neznámym_pobytom/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793024284000,
+   "popis": "Počty detí, ktoré navštevujú materskú školu v jednotlivých mestských častiach Bratislavy a majú neznámy trvalý pobyt alebo trvalý pobyt mimo Bratislavy. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793024284000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_detí_navštevujúcich_materské_školy_v_BA_s_trvalým_pobytom_mimo_BA_a_neznámym_pobytom/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_detí_navštevujúcich_materské_školy_v_BA_s_trvalým_pobytom_mimo_BA_a_neznámym_pobytom",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "POBYT",
+       "String",
+       "POBYT"
       ],
       [
        "POCET",
@@ -23813,7 +23875,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 230473728,
+   "velkost": 230694912,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23833,7 +23895,7 @@
      "nazov": "chodci10_01",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 855118,
+     "pocet": 856155,
      "polia": [
       [
        "NAZOV",
@@ -23900,7 +23962,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 229900288,
+   "velkost": 230121472,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23920,7 +23982,7 @@
      "nazov": "cyklisti2_0",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 855118,
+     "pocet": 856155,
      "polia": [
       [
        "NAZOV",
@@ -23987,7 +24049,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 116473856,
+   "velkost": 116654080,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -24007,7 +24069,7 @@
      "nazov": "vozidla_00",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 490108,
+     "pocet": 490954,
      "polia": [
       [
        "NAZOV",
@@ -28198,6 +28260,68 @@
        "ZIACI_ZS",
        "String",
        "ZIACI_ZS"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "643e39b4ce804cab8ff01798e4f2fad6",
+   "nazov": "Počet žiakov navštevujúcich základné školy v Bratislave s trvalým pobytom mimo Bratislavy a neznámym pobytom",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_žiakov_navštevujúcich_základné_školy_v_BA_s_trvalým_pobytom_mimo_BA_a_neznámym_pobyt/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793024616000,
+   "popis": "Počty detí, ktoré navštevujú základnú školu v jednotlivých mestských častiach Bratislavy a majú neznámy trvalý pobyt alebo trvalý pobyt mimo Bratislavy v roku 2021. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793024616000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_žiakov_navštevujúcich_základné_školy_v_BA_s_trvalým_pobytom_mimo_BA_a_neznámym_pobyt/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_žiakov_navštevujúcich_základné_školy_v_BA_s_trvalým_pobytom_mimo_BA_a_neznámym_pobyt",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 30,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "POBYT",
+       "String",
+       "POBYT"
       ],
       [
        "POCET",
@@ -39759,7 +39883,7 @@
      "nazov": "orezy_a_vyruby_2022_OTMZ",
      "druh": "vrstva",
      "geometria": "esriGeometryPoint",
-     "pocet": 5780,
+     "pocet": 5790,
      "polia": [
       [
        "OBJECTID",
@@ -40539,6 +40663,694 @@
        "Vzdialenosť___kategória",
        "String",
        "Vzdialenosť - kategória"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "0a55eee81dd043cabf4275b325f0338c",
+   "nazov": "Teoretická kapacita materských škôl v Bratislave v rokoch 2022 – 2050 bez zohľadnenia dochádzajúcich",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_materských_škôl_v_BA_v_rokoch_2022_–_2050_bez_zohľadnenia_dochádzajúc/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Dochádzka"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793025501000,
+   "popis": "Projekcia teoretickej kapacity materských škôl, vypočítaná pre rôzne demografické scenáre do roku 2050, na základe kapacity materských škôl (2022) a prognózovaného vývoja počtu detí vo vekovej skupine 3 - 5 rokov, bez zohľadnenia dochádzajúcich - teda za predpokladu, že by do materských škôl v Bratislave boli umiestnené iba deti s trvalým pobytom v Bratislave. Dáta vychádzajú z Odvetvovej štúdie",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 32768,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793025501000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_materských_škôl_v_BA_v_rokoch_2022_–_2050_bez_zohľadnenia_dochádzajúc/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacita_materských_škôl_v_BA_v_rokoch_2022_–_2050_bez_zohľadnenia_dochádzajúc",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 145,
+     "polia": [
+      [
+       "SCENAR",
+       "String",
+       "SCENAR"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "20694a6943b3401ead7a9edf26f1d275",
+   "nazov": "Teoretická kapacita materských škôl v Bratislave v rokoch 2022 – 2050 po zohľadnení dochádzajúcich",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_materských_škôl_v_BA_v_rokoch_2022_–_2050_po_zohľadnení_dochádzajúcich/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Dochádzka"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793004191000,
+   "popis": "Projekcia teoretickej kapacity materských škôl, vypočítaná pre rôzne demografické scenáre do roku 2050, na základe kapacity materských škôl (2022), prognózovaného vývoja počtu detí vo vekovej skupine 3 - 5 rokov a so zohľadnením dochádzajúcich detí, resp. detí s trvalým pobytom mimo Bratislavy, čo pre materské školy predstavuje 14 %. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Met",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 32768,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793004191000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_materských_škôl_v_BA_v_rokoch_2022_–_2050_po_zohľadnení_dochádzajúcich/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacita_materských_škôl_v_BA_v_rokoch_2022_–_2050_po_zohľadnení_dochádzajúcich",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 145,
+     "polia": [
+      [
+       "SCENAR",
+       "String",
+       "SCENAR"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "740168a151ac4dc6ae20ebf4e2be67f3",
+   "nazov": "Teoretická kapacita MŠ, ZŠ a SŠ v Bratislave v rokoch 2022 – 2050 podľa stredného scenára so zahrnutím dochádzajúcich",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_MŠ_ZŠ_a_SŠ_v_BA_v_rokoch_2022_–_2050_podľa_stred_sce_so_zahrnu_dochá/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Dochádzka"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793026554000,
+   "popis": "Projekcia teoretickej kapacity materských, základných a stredných škôl v Bratislave do roku 2050. Dáta pochádzajú zo stredného scenára z demografickej prognózy, vypočítané na základe kapacity škôl (2022), prognózovaného vývoja počtu detí a s navýšením o špecifické percento dochádzajúcich do jednotlivých druhov škôl - MŠ 14 %, ZŠ 11 %, SŠ 46 %. Dáta vychádzajú z Odvetvovej štúdie školstva spracova",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793026554000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_MŠ_ZŠ_a_SŠ_v_BA_v_rokoch_2022_–_2050_podľa_stred_sce_so_zahrnu_dochá/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacita_MŠ_ZŠ_a_SŠ_v_BA_v_rokoch_2022_–_2050_podľa_stred_sce_so_zahrnu_dochá",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 87,
+     "polia": [
+      [
+       "DRUH_SKOLY",
+       "String",
+       "DRUH_SKOLY"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dd0fda85017f423890f55e0f609a04c7",
+   "nazov": "Teoretická kapacita stredných škôl v Bratislave v rokoch 2022 – 2050 bez zohľadnenia dochádzajúcich",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_stredných_škôl_v_BA_v_rokoch_2022_–_2050_bez_zohľadnenia_dochádzajúc/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793004476000,
+   "popis": "Projekcia teoretickej kapacity stredných škôl, vypočítaná pre rôzne demografické scenáre do roku 2050, na základe kapacity stredných škôl (2022) a prognózovaného vývoja počtu dospievajúcich vo vekovej skupine 15 - 19 rokov, bez zohľadnenia dochádzajúcich - teda za predpokladu, že by na stredné škôly v Bratislave boli umiestnení iba študenti s trvalým pobytom v Bratislave. Dáta vychádzajú z Odvetv",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 32768,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793004476000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_stredných_škôl_v_BA_v_rokoch_2022_–_2050_bez_zohľadnenia_dochádzajúc/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacita_stredných_škôl_v_BA_v_rokoch_2022_–_2050_bez_zohľadnenia_dochádzajúc",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 145,
+     "polia": [
+      [
+       "SCENAR",
+       "String",
+       "SCENAR"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "e640733f56df478f80f5c459e604c855",
+   "nazov": "Teoretická kapacita stredných škôl v Bratislave v rokoch 2022 – 2050 po zohľadnení dochádzajúcich",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_stredných_škôl_v_BA_v_rokoch_2022_–_2050_po_zohľadnení_dochádzajúcich/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Dochádzka"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793004778000,
+   "popis": "Projekcia teoretickej kapacity stredných škôl, vypočítaná pre rôzne demografické scenáre do roku 2050, na základe kapacity stredných škôl (2022), prognózovaného vývoja počtu dospievajúcich vo vekovej skupine 15 - 19 rokov a so zohľadnením dochádzajúcich študentov, resp. študentov s trvalým pobytom mimo Bratislavy,čo pre stredné školy predstavuje 46 %. Dáta vychádzajú z Odvetvovej štúdie školstva",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 32768,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793004778000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_stredných_škôl_v_BA_v_rokoch_2022_–_2050_po_zohľadnení_dochádzajúcich/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacita_stredných_škôl_v_BA_v_rokoch_2022_–_2050_po_zohľadnení_dochádzajúcich",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 145,
+     "polia": [
+      [
+       "SCENAR",
+       "String",
+       "SCENAR"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "47a77a77535a49b39d4a1aeecd6fc160",
+   "nazov": "Teoretická kapacita základných škôl v Bratislave v rokoch 2022 – 2050 bez zohľadnenia dochádzajúcich",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_základných_škôl_v_BA_v_rokoch_2022_–_2050_bez_zohľadnenia_dochádzaj/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Dochádzka"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793026130000,
+   "popis": "Projekcia teoretickej kapacity základných škôl, vypočítaná pre rôzne demografické scenáre do roku 2050, na základe kapacity základných škôl (2022) a prognózovaného vývoja počtu detí vo vekovej skupine 6 - 14 rokov, bez zohľadnenia dochádzajúcich - teda za predpokladu, že by do základných škôl v Bratislave boli umiestnené iba deti s trvalým pobytom v Bratislave. Dáta vychádzajú z Odvetvovej štúdie",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 32768,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793026130000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_základných_škôl_v_BA_v_rokoch_2022_–_2050_bez_zohľadnenia_dochádzaj/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacita_základných_škôl_v_BA_v_rokoch_2022_–_2050_bez_zohľadnenia_dochádzaj",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 145,
+     "polia": [
+      [
+       "SCENAR",
+       "String",
+       "SCENAR"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "7893c866c05940d6807446ee5db22680",
+   "nazov": "Teoretická kapacita základných škôl v Bratislave v rokoch 2022 – 2050 po zohľadnení dochádzajúcich",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_základných_škôl_v_BA_v_rokoch_2022_–_2050_po_zohľadnení_dochádzajúcich/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva",
+    "Dochádzka"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793005105000,
+   "popis": "Projekcia teoretickej kapacity základných škôl, vypočítaná pre rôzne demografické scenáre do roku 2050, na základe kapacity základných škôl (2022), prognózovaného vývoja počtu detí vo vekovej skupine 6 - 14 rokov a so zohľadnením dochádzajúcich detí, resp. detí s trvalým pobytom mimo Bratislavy, čo pre základné školy predstavuje 11 %. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Me",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 32768,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793005105000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacita_základných_škôl_v_BA_v_rokoch_2022_–_2050_po_zohľadnení_dochádzajúcich/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacita_základných_škôl_v_BA_v_rokoch_2022_–_2050_po_zohľadnení_dochádzajúcich",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 145,
+     "polia": [
+      [
+       "SCENAR",
+       "String",
+       "SCENAR"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "618567fcd40c4af0b91774eac5437b80",
+   "nazov": "Teoretická kapacitná (ne)dostatočnosť MŠ v mestských častiach Bratislavy pre rok 2035",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacitná_ne_dostatočnosť_MŠ_v_mestských_častiach_Bratislavy_pre_rok_2035/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793006899000,
+   "popis": "Výpočet prebytku (+), resp. nedostatku miest (-) MŠ v&nbsp;mestských častiach Bratislavy pre rok 2035. Výpočet dáva do súvisu súčasnú školskú infraštruktúru s výsledkami prognózy. Údaje z datasetu predstavujú teoretickú kapacitnú (ne)dostatočnosť materských škôl v jednotlivých mestských častiach Bratislavy, ak by sa nezmenila celková kapacita škôl (2022), ale zmenila by sa početnosť detí. Údaje s",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793006899000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacitná_ne_dostatočnosť_MŠ_v_mestských_častiach_Bratislavy_pre_rok_2035/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacitná_ne_dostatočnosť_MŠ_v_mestských_častiach_Bratislavy_pre_rok_2035",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "KAPACITA",
+       "String",
+       "KAPACITA"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "61ddb97c9ef245e995844f458a504d0e",
+   "nazov": "Teoretická kapacitná (ne)dostatočnosť MŠ, ZŠ a SŠ v Bratislave pre rok 2035",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacitná_ne_dostatočnosť_MŠ_ZŠ_a_SŠ_v_Bratislave_pre_rok_2035/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793026635000,
+   "popis": "Výpočet prebytku (+), resp. nedostatku miest (-) MŠ, ZŠ a SŠ v&nbsp;Bratislave pre rok 2035. Výpočet dáva do súvisu súčasnú školskú infraštruktúru s výsledkami prognózy. Údaje z datasetu predstavujú teoretickú kapacitnú (ne)dostatočnosť škôl všetkých zriadovateľov v prípade, ak by sa nezmenila celková kapacita škôl (2022), ale zmenila by sa početnosť detí/dospievajúcich. Údaje sú vypočítané bez a",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793026635000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacitná_ne_dostatočnosť_MŠ_ZŠ_a_SŠ_v_Bratislave_pre_rok_2035/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacitná_ne_dostatočnosť_MŠ_ZŠ_a_SŠ_v_Bratislave_pre_rok_2035",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 6,
+     "polia": [
+      [
+       "DRUH_SKOLY",
+       "String",
+       "DRUH_SKOLY"
+      ],
+      [
+       "KAPACITA",
+       "String",
+       "KAPACITA"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "37aeeae8762a4e3ba8bb02d634be0139",
+   "nazov": "Teoretická kapacitná (ne)dostatočnosť MŠ, ZŠ a SŠ v Bratislave pre rok 2050",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacitná_ne_dostatočnosť_MŠ_ZŠ_a_SŠ_v_Bratislave_pre_rok_2050/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793026991000,
+   "popis": "Výpočet prebytku (+), resp. nedostatku miest (-) MŠ, ZŠ a SŠ v Bratislave pre rok 2050. Výpočet dáva do súvisu súčasnú školskú infraštruktúru s výsledkami prognózy. Údaje z datasetu predstavujú teoretickú kapacitnú (ne)dostatočnosť škôl všetkých zriadovateľov v prípade, ak by sa nezmenila celková kapacita škôl (2022), ale zmenila by sa početnosť detí/dospievajúcich. Údaje sú vypočítané bez aj so",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793026991000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacitná_ne_dostatočnosť_MŠ_ZŠ_a_SŠ_v_Bratislave_pre_rok_2050/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacitná_ne_dostatočnosť_MŠ_ZŠ_a_SŠ_v_Bratislave_pre_rok_2050",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 6,
+     "polia": [
+      [
+       "DRUH_SKOLY",
+       "String",
+       "DRUH_SKOLY"
+      ],
+      [
+       "KAPACITA",
+       "String",
+       "KAPACITA"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "9d00edc4c14749339c95ae1ca767802f",
+   "nazov": "Teoretická kapacitná (ne)dostatočnosť ZŠ v mestských častiach Bratislavy pre rok 2035",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacitná_(ne)dostatočnosť_ZŠ_v_mestských_častiach_Bratislavy_pre_rok_2035/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1793026951000,
+   "popis": "Výpočet prebytku (+), resp. nedostatku miest (-) ZŠ v mestských častiach Bratislavy pre rok 2035. Výpočet dáva do súvisu súčasnú školskú infraštruktúru s výsledkami prognózy. Údaje z datasetu predstavujú teoretickú kapacitnú (ne)dostatočnosť materských škôl v jednotlivých mestských častiach Bratislavy, ak by sa nezmenila celková kapacita škôl (2022), ale zmenila by sa početnosť detí. Údaje sú vyp",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1793026951000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacitná_(ne)dostatočnosť_ZŠ_v_mestských_častiach_Bratislavy_pre_rok_2035/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Teoretická_kapacitná_(ne)dostatočnosť_ZŠ_v_mestských_častiach_Bratislavy_pre_rok_2035",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 34,
+     "polia": [
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "KAPACITA",
+       "String",
+       "KAPACITA"
+      ],
+      [
+       "POCET",
+       "Integer",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -47769,7 +48581,7 @@
      "nazov": "Zmluvy_Magistrátu_hlavného_mesta_SR_Bratislava_zverejnené_od_júla_2022",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 13162,
+     "pocet": 13164,
      "polia": [
       [
        "IČO_SAMOSPRÁVY",
@@ -53741,5 +54553,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-10-24T19:49:05+00:00"
+ "aktualizovane": "2026-10-27T04:54:20+00:00"
 }

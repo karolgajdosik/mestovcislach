@@ -345,7 +345,7 @@
    "organizacia": "Magistrát",
    "typ": "objednávky",
    "zdroj": "https://data.bratislava.sk/datasets/e3a9501c0fb64dbf9ff6de81847e3b9a",
-   "zaznamov": 65411,
+   "zaznamov": 65432,
    "vynechane_bez_ico": 644,
    "roky": {
     "2011": {
@@ -409,8 +409,8 @@
      "suma": 48507149
     },
     "2026": {
-     "pocet": 3916,
-     "suma": 50786018
+     "pocet": 3937,
+     "suma": 50868607
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -465,8 +465,8 @@
     {
      "ico": "51806576",
      "nazov": "RETAN, s. r. o.",
-     "pocet": 1728,
-     "suma": 3368713
+     "pocet": 1734,
+     "suma": 3401468
     },
     {
      "ico": "31606458",
@@ -1149,13 +1149,6 @@
      "popis": "Zberné nádoby v zmysle zmluvy - oprava obj.147"
     },
     {
-     "datum": "2025-10-26",
-     "dodavatel": "Komunálny podnik Bratislavy, skrátene KPB",
-     "ico": "54656885",
-     "suma": 38850.0,
-     "popis": "Výroba, montáž, servis, demontáž: drevené ohrádky na zber vianočných stromčekov 25/26"
-    },
-    {
      "datum": "2026-01-08",
      "dodavatel": "BRENNTAG SLOVAKIA s.r.o.",
      "ico": "31336884",
@@ -1182,6 +1175,13 @@
      "ico": "36712736",
      "suma": 35300.0,
      "popis": "Úprava vyklápača Terberg Olympus pre inštaláciu váhy"
+    },
+    {
+     "datum": "2026-08-10",
+     "dodavatel": "AL doors spol. s r.o.",
+     "ico": "45711194",
+     "suma": 35074.0,
+     "popis": "Výmena okien administratívna budova OLO - 2.N.P."
     }
    ],
    "median_dni_uhrady": null
@@ -2019,5 +2019,5 @@
  "chyby": [
   "Marianum zmluvy: Marianum zmluvy: žiadne použiteľné riadky"
  ],
- "aktualizovane": "2026-10-24T10:30:05+00:00"
+ "aktualizovane": "2026-10-27T04:55:26+00:00"
 }

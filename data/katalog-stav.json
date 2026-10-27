@@ -1,7 +1,7 @@
 {
  "zdroj": "https://data.bratislava.sk",
  "pocty": {
-  "katalog": 592,
+  "katalog": 605,
   "osobitne": 34,
   "vynechane": 19,
   "na_webe": 29
@@ -2607,7 +2607,7 @@
    "nazov": "Počet prechádzajúcich chodcov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492980000,
-   "riadkov": 855118,
+   "riadkov": 856155,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače chodcov"
@@ -2617,7 +2617,7 @@
    "nazov": "Počet prejazdov cyklistov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492966000,
-   "riadkov": 855118,
+   "riadkov": 856155,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače cyklistov"
@@ -2627,7 +2627,7 @@
    "nazov": "Počet prejazdov vozidiel podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492972000,
-   "riadkov": 490108,
+   "riadkov": 490954,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače áut"
@@ -4211,7 +4211,7 @@
    "nazov": "Objednávky Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151897000,
-   "riadkov": 65411,
+   "riadkov": 65432,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky magistrátu"
@@ -4838,7 +4838,7 @@
    "nazov": "Zmluvy Magistrátu hlavného mesta SR Bratislava zverejnené od júla 2022",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151852000,
-   "riadkov": 13162,
+   "riadkov": 13164,
    "stav": "na_webe",
    "kde": "/bratislava/financie",
    "pozn": "Zmluvy magistrátu"
@@ -5324,6 +5324,16 @@
    "stlpcov": 3
   },
   {
+   "id": "ed624c538e0b469a908b606075bec8c3",
+   "nazov": "Počet detí navštevujúcich materské školy v Bratislave s trvalým pobytom mimo Bratislavy a neznámym pobytom",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793024284000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/ed624c538e0b469a908b606075bec8c3",
+   "stlpcov": 3
+  },
+  {
    "id": "ac15d7e89d214fa4acb3b799538b7f24",
    "nazov": "Počet detí v materských školách v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5804,6 +5814,16 @@
    "stlpcov": 3
   },
   {
+   "id": "643e39b4ce804cab8ff01798e4f2fad6",
+   "nazov": "Počet žiakov navštevujúcich základné školy v Bratislave s trvalým pobytom mimo Bratislavy a neznámym pobytom",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793024616000,
+   "riadkov": 30,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/643e39b4ce804cab8ff01798e4f2fad6",
+   "stlpcov": 3
+  },
+  {
    "id": "d5fe56b5e4f844818fe7e9ca0fb5d8df",
    "nazov": "Počet žiakov v gymnáziách a stredných športových školách v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -5981,6 +6001,116 @@
    "stav": "katalog",
    "kde": "/bratislava/katalog/38063d52342c451f92643ae5e6e4a337",
    "stlpcov": 5
+  },
+  {
+   "id": "0a55eee81dd043cabf4275b325f0338c",
+   "nazov": "Teoretická kapacita materských škôl v Bratislave v rokoch 2022 – 2050 bez zohľadnenia dochádzajúcich",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793025501000,
+   "riadkov": 145,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/0a55eee81dd043cabf4275b325f0338c",
+   "stlpcov": 3
+  },
+  {
+   "id": "20694a6943b3401ead7a9edf26f1d275",
+   "nazov": "Teoretická kapacita materských škôl v Bratislave v rokoch 2022 – 2050 po zohľadnení dochádzajúcich",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793004191000,
+   "riadkov": 145,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/20694a6943b3401ead7a9edf26f1d275",
+   "stlpcov": 3
+  },
+  {
+   "id": "740168a151ac4dc6ae20ebf4e2be67f3",
+   "nazov": "Teoretická kapacita MŠ, ZŠ a SŠ v Bratislave v rokoch 2022 – 2050 podľa stredného scenára so zahrnutím dochádzajúcich",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793026554000,
+   "riadkov": 87,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/740168a151ac4dc6ae20ebf4e2be67f3",
+   "stlpcov": 3
+  },
+  {
+   "id": "dd0fda85017f423890f55e0f609a04c7",
+   "nazov": "Teoretická kapacita stredných škôl v Bratislave v rokoch 2022 – 2050 bez zohľadnenia dochádzajúcich",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793004476000,
+   "riadkov": 145,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/dd0fda85017f423890f55e0f609a04c7",
+   "stlpcov": 3
+  },
+  {
+   "id": "e640733f56df478f80f5c459e604c855",
+   "nazov": "Teoretická kapacita stredných škôl v Bratislave v rokoch 2022 – 2050 po zohľadnení dochádzajúcich",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793004778000,
+   "riadkov": 145,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/e640733f56df478f80f5c459e604c855",
+   "stlpcov": 3
+  },
+  {
+   "id": "47a77a77535a49b39d4a1aeecd6fc160",
+   "nazov": "Teoretická kapacita základných škôl v Bratislave v rokoch 2022 – 2050 bez zohľadnenia dochádzajúcich",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793026130000,
+   "riadkov": 145,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/47a77a77535a49b39d4a1aeecd6fc160",
+   "stlpcov": 3
+  },
+  {
+   "id": "7893c866c05940d6807446ee5db22680",
+   "nazov": "Teoretická kapacita základných škôl v Bratislave v rokoch 2022 – 2050 po zohľadnení dochádzajúcich",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793005105000,
+   "riadkov": 145,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/7893c866c05940d6807446ee5db22680",
+   "stlpcov": 3
+  },
+  {
+   "id": "618567fcd40c4af0b91774eac5437b80",
+   "nazov": "Teoretická kapacitná (ne)dostatočnosť MŠ v mestských častiach Bratislavy pre rok 2035",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793006899000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/618567fcd40c4af0b91774eac5437b80",
+   "stlpcov": 3
+  },
+  {
+   "id": "61ddb97c9ef245e995844f458a504d0e",
+   "nazov": "Teoretická kapacitná (ne)dostatočnosť MŠ, ZŠ a SŠ v Bratislave pre rok 2035",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793026635000,
+   "riadkov": 6,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/61ddb97c9ef245e995844f458a504d0e",
+   "stlpcov": 3
+  },
+  {
+   "id": "37aeeae8762a4e3ba8bb02d634be0139",
+   "nazov": "Teoretická kapacitná (ne)dostatočnosť MŠ, ZŠ a SŠ v Bratislave pre rok 2050",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793026991000,
+   "riadkov": 6,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/37aeeae8762a4e3ba8bb02d634be0139",
+   "stlpcov": 3
+  },
+  {
+   "id": "9d00edc4c14749339c95ae1ca767802f",
+   "nazov": "Teoretická kapacitná (ne)dostatočnosť ZŠ v mestských častiach Bratislavy pre rok 2035",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1793026951000,
+   "riadkov": 34,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/9d00edc4c14749339c95ae1ca767802f",
+   "stlpcov": 3
   },
   {
    "id": "2cb4b3fa5bad47028ed77fdfd4bd494e",
@@ -6642,7 +6772,7 @@
    "nazov": "Starostlivosť o dreviny v Bratislave",
    "kategoria": "Životné prostredie",
    "upravene": 1778750501000,
-   "riadkov": 5780,
+   "riadkov": 5790,
    "stav": "osobitne",
    "kde": "/bratislava/mapa",
    "pozn": "Starostlivosť o dreviny"
@@ -6727,5 +6857,5 @@
    "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-10-24T10:29:11+00:00"
+ "aktualizovane": "2026-10-27T04:54:33+00:00"
 }
