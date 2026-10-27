@@ -10,21 +10,21 @@ try:
         c=lambda r,k: int(zk.cislo(r[k]))
         mcrows=[r for r in rows if zk.kod(r["OBEC"]) in mc]
         city=[r for r in rows if zk.kod(r["OBEC"])==mesto]
-        # mapovanie: zhoda P_ZAP,P_ZUC + platné lístky pre zastupiteľstvo
-        L="počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva"
-        key=lambda r:(c(r,"P_ZAP"),c(r,"P_ZUC"),c(r,L))
-        idx=defaultdict(list)
-        for r in mcrows: idx[key(r)].append(zk.kod(r["OBEC"]))
-        res=defaultdict(Counter); amb=0; none=0
+        idx=defaultdict(set)
+        for r in mcrows: idx[c(r,"P_ZAP")].add(zk.kod(r["OBEC"]))
+        hl=defaultdict(Counter)
         for r in city:
-            k=idx.get(key(r),[])
-            if len(set(k))==1: res[zk.kod(r["VOOBEC"])][mc[k[0]]]+=1
-            elif k: amb+=1
-            else: none+=1
-        print(pred,"nejasné",amb,"nenájdené",none)
-        for o in sorted(res,key=int): print("  obvod",o,dict(res[o]))
+            k=idx.get(c(r,"P_ZAP"),set())
+            for m in k: hl[m][zk.kod(r["VOOBEC"])]+=1/len(k)
+        obv=defaultdict(list)
+        for m,cn in hl.items():
+            o,n=cn.most_common(1)[0]; tot=sum(cn.values())
+            obv[o].append(f"{mc[m]}({n:.0f}/{tot:.0f}, okrskov {sum(1 for r in mcrows if zk.kod(r['OBEC'])==m)})")
+        print(pred,"MČ bez zhody",[mc[m] for m in mc if m not in hl])
+        velk=Counter(zk.kod(r["VOOBEC"]) for r in city)
+        for o in sorted(obv,key=int): print("  obvod",o,"okrskov",velk[o],obv[o])
         # alternatíva: MČ okrsky majú VOOBEC? (obvod mesta v riadku MČ)
-        print("  MČ riadky VOOBEC príklady",Counter((mc[zk.kod(r["OBEC"])],zk.kod(r["VOOBEC"])) for r in mcrows).most_common(40))
+        pass #,Counter((mc[zk.kod(r["OBEC"])],zk.kod(r["VOOBEC"])) for r in mcrows).most_common(40))
 except Exception:
     import traceback; print(traceback.format_exc()[-1500:])
 print("HOTOVO")
