@@ -46,7 +46,15 @@ def cf(token: str, metoda: str, cesta: str, **kw) -> dict:
 def ucet(token: str) -> str:
     if os.environ.get("CF_ACCOUNT_ID"):
         return os.environ["CF_ACCOUNT_ID"].strip()
-    u = cf(token, "GET", "/accounts", params={"per_page": 5}).get("result") or []
+    try:
+        u = cf(token, "GET", "/accounts", params={"per_page": 5}).get("result") or []
+    except requests.HTTPError:
+        u = []
+    if not u:  # token len s Account Analytics nemusí smieť vypísať účty – skúsime GraphQL
+        d = cf(token, "POST", "/graphql", json={"query": "{ viewer { accounts(limit: 5) { accountTag } } }"})
+        u = [{"id": x["accountTag"]} for x in ((d.get("data") or {}).get("viewer") or {}).get("accounts") or []]
+        if d.get("errors"):
+            print("GraphQL účty:", "; ".join(e.get("message", "") for e in d["errors"])[:300])
     if not u:
         raise RuntimeError("Token nevidí žiadny Cloudflare účet – pridajte mu oprávnenie Account Analytics: Read.")
     return u[0]["id"]
