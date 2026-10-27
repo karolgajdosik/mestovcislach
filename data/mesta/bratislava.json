@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-26T21:58:13",
+ "aktualizovane": "2026-10-27T15:16:06",
  "obyvatelia": {
   "roky": {
    "1993": 448785,
@@ -1353,226 +1353,316 @@
     ],
     "poslanci": [
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Martin Chren",
       "strany": "TÍM RUŽINOV",
       "hlasy": 12669
      },
      {
+      "obvod": "obvod č. 16",
+      "obvod_c": 16,
       "meno": "Mgr. Michal Sabo",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 10567
      },
      {
+      "obvod": "obvod č. 16",
+      "obvod_c": 16,
       "meno": "Ing. Tatiana Kratochvílová",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 10244
      },
      {
+      "obvod": "obvod č. 16",
+      "obvod_c": 16,
       "meno": "Ing. Ján Hrčka",
       "strany": "nezávislý kandidát",
       "hlasy": 10034
      },
      {
+      "obvod": "obvod č. 16",
+      "obvod_c": 16,
       "meno": "Mgr. Oskar Dvořák",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 10027
      },
      {
+      "obvod": "obvod č. 16",
+      "obvod_c": 16,
       "meno": "Ing Ján Karman",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 9553
      },
      {
+      "obvod": "obvod č. 16",
+      "obvod_c": 16,
       "meno": "JUDr. Lucia Plaváková, PhD.",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 9256
      },
      {
+      "obvod": "obvod č. 16",
+      "obvod_c": 16,
       "meno": "Jakub Kuruc",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 9193
      },
      {
+      "obvod": "obvod č. 16",
+      "obvod_c": 16,
       "meno": "Mgr. Lenka Jakubčová",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 9069
      },
      {
+      "obvod": "obvod č. 16",
+      "obvod_c": 16,
       "meno": "doc. PhDr. Daniel Klimovský, PhD.",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 8191
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "MUDr. Jakub Vallo",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 8100
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Martin Patoprstý",
       "strany": "TÍM RUŽINOV",
       "hlasy": 8093
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Monika Ďurajková",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 8092
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Mgr. et Mgr. Marek Machata",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 8033
      },
      {
+      "obvod": "obvod č. 16",
+      "obvod_c": 16,
       "meno": "Adam Sarlós",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 7890
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Mgr. Matúš Čupka",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 7144
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. arch. Lucia Štasselová",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 7005
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Mgr. Kamil Bodnár",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 6966
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Ing. Matej Vagač",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 6962
      },
      {
+      "obvod": "obvod č. 11",
+      "obvod_c": 11,
       "meno": "MUDr. Dana Čahojová",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 6563
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Mgr. art. Dana Kleinert",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 6374
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Ing. Katarína Augustinič",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 6057
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Mgr. Zdenka Zaťovičová",
       "strany": "Strana obcí a miest - SOM SLOVENSKO",
       "hlasy": 6025
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Mgr. art. Adam Berka",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 5999
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Mgr. Martin Vlačiky, PhD.",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 5833
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Mgr. Martin Winkler",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 5774
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Ing. Jakub Mrva",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 5723
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Ing. Juraj Káčer",
       "strany": "Strana obcí a miest - SOM SLOVENSKO",
       "hlasy": 5248
      },
      {
+      "obvod": "obvod č. 11",
+      "obvod_c": 11,
       "meno": "JUDr. Petra Hudáková",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 3980
      },
      {
+      "obvod": "obvod č. 11",
+      "obvod_c": 11,
       "meno": "JUDr. PhDr. Branislav Záhradník",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 3904
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Mgr. Lenka Antalová Plavuchová",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 3460
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "JUDr. Ing. Martin Kuruc",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 3226
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Ing. Roman Lamoš",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 3035
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Bc. Dávid Dej",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 3002
      },
      {
+      "obvod": "obvod č. 9",
+      "obvod_c": 9,
       "meno": "Dárius Krajčír",
       "strany": "Strana obcí a miest - SOM SLOVENSKO",
       "hlasy": 2973
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Ing. Róbert Pajdlhauser",
       "strany": "SME RODINA, Kresťanskodemokratické hnutie, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
       "hlasy": 1928
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "PhDr. Alžbeta Ožvaldová",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 1749
      },
      {
+      "obvod": "obvod č. 13",
+      "obvod_c": 13,
       "meno": "Ing. Jozef Krúpa",
       "strany": "Strana obcí a miest - SOM SLOVENSKO",
       "hlasy": 1692
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Mgr. Miroslav Macko",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 1332
      },
      {
+      "obvod": "obvod č. 12",
+      "obvod_c": 12,
       "meno": "Igor Polakovič",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita",
       "hlasy": 1276
      },
      {
+      "obvod": "obvod č. 17",
+      "obvod_c": 17,
       "meno": "Radovan Jenčík",
       "strany": "nezávislý kandidát",
       "hlasy": 1101
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "Ing. Michal Vlček",
       "strany": "nezávislý kandidát",
       "hlasy": 1007
      },
      {
+      "obvod": "obvod č. 15",
+      "obvod_c": 15,
       "meno": "JUDr. Mgr. Jozef Uhler",
       "strany": "nezávislý kandidát",
       "hlasy": 933
      },
      {
+      "obvod": "obvod č. 14",
+      "obvod_c": 14,
       "meno": "Gabriela Ferenčáková",
       "strany": "Strana obcí a miest - SOM SLOVENSKO",
       "hlasy": 633
      },
      {
+      "obvod": "obvod č. 8",
+      "obvod_c": 8,
       "meno": "JUDr. Jana Jakubkovič",
       "strany": "nezávislý kandidát",
       "hlasy": 401
@@ -2113,226 +2203,316 @@
     ],
     "poslanci": [
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Martin Chren",
       "strany": "TÍM RUŽINOV",
       "hlasy": 17849
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "doc. PhDr. PhD. Daniel Klimovský",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 16609
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "MUDr. Jakub Vallo",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 15516
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Mgr. MA. Jakub Goda",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 15297
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Ján Bučan",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 15020
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Monika Ďurajková",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 14830
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Ing. Tatiana Kratochvílová",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 14271
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Ing. Ján Hrčka",
       "strany": "KRAJINA",
       "hlasy": 14222
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Mgr. Ing. PhD. Michal Páleník",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 14180
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Mgr. Martina Goffová",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 13794
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Matúš Krčmárik",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 13775
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. arch. Lucia Štasselová",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 13572
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Ing. Miroslav Žiak",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 13554
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Martin Patoprstý",
       "strany": "TÍM RUŽINOV",
       "hlasy": 13354
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Mgr. David Púchovský",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 12735
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Mgr. Pavol Škápik",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 12600
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Adam Sarlós",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 11754
      },
      {
+      "obvod": "obvod č. 10",
+      "obvod_c": 10,
       "meno": "Bc. Michal Rakús",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 11633
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Alojz Hlina",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 11172
      },
      {
+      "obvod": "obvod č. 8",
+      "obvod_c": 8,
       "meno": "Mgr. Zdenka Zaťovičová",
       "strany": "SOM SLOVENSKO - Strana obcí a miest",
       "hlasy": 9777
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Ing. Matej Vagač",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 9604
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Mgr. Matúš Čupka",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 9466
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Mgr. Michal Kiča",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 9433
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Ing. Katarína Augustinič",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 9354
      },
      {
+      "obvod": "obvod č. 8",
+      "obvod_c": 8,
       "meno": "Ing. Juraj Káčer",
       "strany": "SOM SLOVENSKO - Strana obcí a miest",
       "hlasy": 9260
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Ing. Jakub Mrva",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 9231
      },
      {
+      "obvod": "obvod č. 8",
+      "obvod_c": 8,
       "meno": "Igor Polakovič",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 8688
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Mgr. Erik Illéš",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 8656
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Ing. CSc. Martin Barto",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 8490
      },
      {
+      "obvod": "obvod č. 8",
+      "obvod_c": 8,
       "meno": "Ing. Jozef Krúpa",
       "strany": "SOM SLOVENSKO - Strana obcí a miest",
       "hlasy": 7999
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Ing. Pavol Troiak",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 7832
      },
      {
+      "obvod": "obvod č. 9",
+      "obvod_c": 9,
       "meno": "Ing. Martin Vician",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 7021
      },
      {
+      "obvod": "obvod č. 9",
+      "obvod_c": 9,
       "meno": "Ing. arch. Boris Schultz",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 6317
      },
      {
+      "obvod": "obvod č. 9",
+      "obvod_c": 9,
       "meno": "Mgr. Peter Král",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 6163
      },
      {
+      "obvod": "obvod č. 8",
+      "obvod_c": 8,
       "meno": "PhDr. PhD. Štefan Maceják",
       "strany": "SOM SLOVENSKO - Strana obcí a miest",
       "hlasy": 5907
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "Dárius Krajčír",
       "strany": "SOM SLOVENSKO - Strana obcí a miest",
       "hlasy": 5291
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Mgr. Lenka Antalová Plavuchová",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 5088
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Ing. Michal Feik",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 4577
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Ing. Michal Vlček",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 4310
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Ing. Roman Lamoš",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 4304
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "JUDr. Ing. Martin Kuruc",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 4247
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Peter Dilik",
       "strany": "Team Bratislava, Progresívne Slovensko, Sloboda a Solidarita, Demokrati",
       "hlasy": 2621
      },
      {
+      "obvod": "obvod č. 11",
+      "obvod_c": 11,
       "meno": "JUDr. Mgr. Jozef Uhler",
       "strany": "nezávislý kandidát",
       "hlasy": 2614
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "JUDr. Jana Jakubkovič",
       "strany": "SOM SLOVENSKO - Strana obcí a miest",
       "hlasy": 2494
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Ing. Zuzana Schwartzová",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 2033

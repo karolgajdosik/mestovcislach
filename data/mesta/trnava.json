@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-26T20:45:11",
+ "aktualizovane": "2026-10-27T15:16:06",
  "obyvatelia": {
   "roky": {
    "1993": 71624,
@@ -269,156 +269,218 @@
     ],
     "poslanci": [
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. Matej Lančarič",
       "strany": "nezávislý kandidát",
       "hlasy": 1870
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Vladimír Ekhardt",
       "strany": "nezávislý kandidát",
       "hlasy": 1563
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Mgr. Marek Neštický",
       "strany": "nezávislý kandidát",
       "hlasy": 1551
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "MUDr. Branislav Kramár",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SPOLU - občianska demokracia, ODS - Občianski demokrati Slovenska, ŠANCA, SME RODINA, ZA ĽUDÍ, Kresťanská únia, Občianska konzervatívna strana",
       "hlasy": 1529
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. Tibor Pekarčík",
       "strany": "nezávislý kandidát",
       "hlasy": 1318
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "RNDr. Gabriela Cabanová",
       "strany": "nezávislý kandidát",
       "hlasy": 1301
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "PhDr. Eva Nemčovská, PhD., MPH",
       "strany": "nezávislý kandidát",
       "hlasy": 1279
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Mgr. Ľubica Horváthová",
       "strany": "nezávislý kandidát",
       "hlasy": 1268
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Ing. Dušan Zaťko",
       "strany": "nezávislý kandidát",
       "hlasy": 1199
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Juraj Baďura",
       "strany": "nezávislý kandidát",
       "hlasy": 1172
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Ing. Andrej Farkaš",
       "strany": "nezávislý kandidát",
       "hlasy": 1169
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. Martin Uhlík",
       "strany": "nezávislý kandidát",
       "hlasy": 1157
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Juraj Fuzák",
       "strany": "nezávislý kandidát",
       "hlasy": 1102
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Šimon Štefunko",
       "strany": "nezávislý kandidát",
       "hlasy": 1078
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Ing. Branislav Baroš",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 1062
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. Ivan Kopčík",
       "strany": "nezávislý kandidát",
       "hlasy": 1042
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Mgr. Ing. Marián Galbavý",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SPOLU - občianska demokracia, ODS - Občianski demokrati Slovenska, ŠANCA, SME RODINA, ZA ĽUDÍ, Kresťanská únia, Občianska konzervatívna strana",
       "hlasy": 1032
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "PhDr. Katarína Ďurková, PhD.",
       "strany": "nezávislý kandidát",
       "hlasy": 1025
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Mgr. Tatiana Vavrová",
       "strany": "nezávislý kandidát",
       "hlasy": 1000
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Ing. Marián Schwarz",
       "strany": "nezávislý kandidát",
       "hlasy": 999
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Richard Sládek",
       "strany": "nezávislý kandidát",
       "hlasy": 996
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Mgr. Rastislav Mráz",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SPOLU - občianska demokracia, ODS - Občianski demokrati Slovenska, ŠANCA, SME RODINA, ZA ĽUDÍ, Kresťanská únia, Občianska konzervatívna strana",
       "hlasy": 929
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "MUDr. Milan Sokolovský",
       "strany": "nezávislý kandidát",
       "hlasy": 912
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Mgr. Stanislav Hric",
       "strany": "nezávislý kandidát",
       "hlasy": 896
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Bc. Marcel Krajčo",
       "strany": "nezávislý kandidát",
       "hlasy": 888
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Mgr. Ondrej Štefánik",
       "strany": "nezávislý kandidát",
       "hlasy": 853
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "PhDr. Miloš Krištofík",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 838
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Dr.h.c. Jaroslav Holeček, PhD.",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 833
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Ing. Jozef Šúst",
       "strany": "nezávislý kandidát",
       "hlasy": 808
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Ing. Juraj Novota",
       "strany": "nezávislý kandidát",
       "hlasy": 608
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Juraj Šarmír",
       "strany": "nezávislý kandidát",
       "hlasy": 322
@@ -503,136 +565,190 @@
     ],
     "poslanci": [
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "RNDr. Gabriela Cabanová",
       "strany": "nezávislý kandidát",
       "hlasy": 1669
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. Marek Neštický",
       "strany": "nezávislý kandidát",
       "hlasy": 1663
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Vladimír Ekhardt",
       "strany": "nezávislý kandidát",
       "hlasy": 1648
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "PhDr. PhD. Eva Nemčovská, MPH",
       "strany": "nezávislý kandidát",
       "hlasy": 1564
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "DiS. Juraj Baďura",
       "strany": "nezávislý kandidát",
       "hlasy": 1492
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "PhDr. PhD. Katarína Ďurková",
       "strany": "nezávislý kandidát",
       "hlasy": 1472
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "MUDr. Branislav Kramár",
       "strany": "Trnava pre každého, KDH - Kresťanskodemokratické hnutie",
       "hlasy": 1462
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. Tibor Pekarčík",
       "strany": "nezávislý kandidát",
       "hlasy": 1460
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. Matej Lančarič",
       "strany": "nezávislý kandidát",
       "hlasy": 1454
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Pavol Hluchý",
       "strany": "nezávislý kandidát",
       "hlasy": 1419
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. Ivan Kopčík",
       "strany": "nezávislý kandidát",
       "hlasy": 1394
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Mgr. Marcel Krajčo",
       "strany": "nezávislý kandidát",
       "hlasy": 1359
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. PhD. Martin Uhlík",
       "strany": "nezávislý kandidát",
       "hlasy": 1285
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Richard Sládek",
       "strany": "nezávislý kandidát",
       "hlasy": 1274
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "MUDr. Milan Sokolovský",
       "strany": "nezávislý kandidát",
       "hlasy": 1273
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "PhDr. Šimon Štefunko",
       "strany": "nezávislý kandidát",
       "hlasy": 1229
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Lukáš Bednár, MBA, MSc.",
       "strany": "nezávislý kandidát",
       "hlasy": 1178
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Mgr. Tatiana Vavrová",
       "strany": "nezávislý kandidát",
       "hlasy": 1115
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "doc. Mgr.  PhD. Andrej Brník",
       "strany": "nezávislý kandidát",
       "hlasy": 1110
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Mgr. PhD. Ina Mruškovičová",
       "strany": "nezávislý kandidát",
       "hlasy": 1092
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Ing. Jozef Šúst",
       "strany": "nezávislý kandidát",
       "hlasy": 1089
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Mgr. Ľubica Horváthová",
       "strany": "Progresívne Slovensko, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO",
       "hlasy": 1075
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "doc. Dr. Phil. Erik Hrnčiarik",
       "strany": "nezávislý kandidát",
       "hlasy": 1014
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Mgr. Rastislav Mráz",
       "strany": "Trnava pre každého, KDH - Kresťanskodemokratické hnutie",
       "hlasy": 1012
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Mgr. Matej Cagala",
       "strany": "nezávislý kandidát",
       "hlasy": 978
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Ing. Andrea Svatá",
       "strany": "nezávislý kandidát",
       "hlasy": 714
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Mgr. Peter Karol",
       "strany": "nezávislý kandidát",
       "hlasy": 351

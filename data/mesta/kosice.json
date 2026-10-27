@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-26T21:58:13",
+ "aktualizovane": "2026-10-27T15:16:06",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -1590,206 +1590,288 @@
     ],
     "poslanci": [
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 13,
       "meno": "Mgr. Ladislav Lörinc",
       "strany": "nezávislý kandidát",
       "hlasy": 4256
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 12,
       "meno": "Mgr. Jozef Andrejčák",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 3353
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 11,
       "meno": "Ing. Mgr. Lenka Kovačevičová",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 3271
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Mgr. Marcel Vrchota",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 2896
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 12,
       "meno": "PhDr. Dominik Babušík",
       "strany": "nezávislý kandidát",
       "hlasy": 2735
      },
      {
+      "obvod": "Sídlisko Ťahanovce, Ťahanovce",
+      "obvod_c": 2,
       "meno": "Mgr. Ing. Miloš Ihnát",
       "strany": "nezávislý kandidát",
       "hlasy": 2682
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 13,
       "meno": "Iveta Adamčíková",
       "strany": "nezávislý kandidát",
       "hlasy": 2404
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 11,
       "meno": "Mgr. Martin Seman",
       "strany": "nezávislý kandidát",
       "hlasy": 1974
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 10,
       "meno": "Ing. Igor Petrovčik",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 1931
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Mgr. Dominik Karaffa",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1927
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 13,
       "meno": "Ing. Roman Matoušek",
       "strany": "nezávislý kandidát",
       "hlasy": 1893
      },
      {
+      "obvod": "Sídlisko Ťahanovce, Ťahanovce",
+      "obvod_c": 2,
       "meno": "Mgr. Zuzana Slivenská",
       "strany": "nezávislý kandidát",
       "hlasy": 1866
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "JUDr. Beáta Zemková",
       "strany": "nezávislý kandidát",
       "hlasy": 1817
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 11,
       "meno": "PhDr. Róbert Schwarcz",
       "strany": "nezávislý kandidát",
       "hlasy": 1636
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Mgr. Peter Berinšter",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1631
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 8,
       "meno": "Ing. Anna Súkeníková",
       "strany": "nezávislý kandidát",
       "hlasy": 1605
      },
      {
+      "obvod": "Džungľa, Kavečany, Sever",
+      "obvod_c": 1,
       "meno": "Bc. Matej Kundrát",
       "strany": "nezávislý kandidát",
       "hlasy": 1526
      },
      {
+      "obvod": "Džungľa, Kavečany, Sever",
+      "obvod_c": 1,
       "meno": "Ing. František Ténai, MBA",
       "strany": "nezávislý kandidát",
       "hlasy": 1492
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Ing. Andrej Sitkár",
       "strany": "SMER - sociálna demokracia, Slovenská národná strana, ŽIVOT - národná strana, STRANA MODERNÉHO SLOVENSKA (SMS)",
       "hlasy": 1475
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 13,
       "meno": "Mgr. Marián Horenský, PhD.",
       "strany": "nezávislý kandidát",
       "hlasy": 1433
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 11,
       "meno": "Mgr. Bernard Berberich",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1374
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Ing. Tibor Bačinský",
       "strany": "Progresívne Slovensko",
       "hlasy": 1366
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 10,
       "meno": "Mgr. art. Ľubica Blaškovičová",
       "strany": "ZA ĽUDÍ",
       "hlasy": 1361
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Ing. Štefan Lasky",
       "strany": "nezávislý kandidát",
       "hlasy": 1329
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 12,
       "meno": "Ing. Marek Kandráč",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 1307
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 12,
       "meno": "Tomáš Vasok",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1275
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 8,
       "meno": "doc. PhDr. Viliam Knap, PhD., MHA, MPH",
       "strany": "nezávislý kandidát",
       "hlasy": 1233
      },
      {
+      "obvod": "Džungľa, Kavečany, Sever",
+      "obvod_c": 1,
       "meno": "Mgr. Marcel Gibóda",
       "strany": "nezávislý kandidát",
       "hlasy": 1210
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 10,
       "meno": "Michal Djordjevič, MBA",
       "strany": "nezávislý kandidát",
       "hlasy": 1197
      },
      {
+      "obvod": "Džungľa, Kavečany, Sever",
+      "obvod_c": 1,
       "meno": "doc. Ing. Erik Weiss, PhD.",
       "strany": "ZA ĽUDÍ",
       "hlasy": 1072
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 8,
       "meno": "Mgr. Patrik Géci",
       "strany": "HLAS - sociálna demokracia",
       "hlasy": 1011
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 8,
       "meno": "Mgr. Peter Múdry",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1003
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 12,
       "meno": "MUDr. Ján Sekáč",
       "strany": "SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska",
       "hlasy": 982
      },
      {
+      "obvod": "Sídlisko Ťahanovce, Ťahanovce",
+      "obvod_c": 2,
       "meno": "Miroslav Špak",
       "strany": "nezávislý kandidát",
       "hlasy": 948
      },
      {
+      "obvod": "Sídlisko Ťahanovce, Ťahanovce",
+      "obvod_c": 2,
       "meno": "Mgr. Marek Fedoročko",
       "strany": "nezávislý kandidát",
       "hlasy": 937
      },
      {
+      "obvod": "Barca, Poľov, Šebastovce",
+      "obvod_c": 5,
       "meno": "Mgr. Lucia Gurbáľová",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 724
      },
      {
+      "obvod": "Krásna",
+      "obvod_c": 9,
       "meno": "Ing. Vladimír Saxa",
       "strany": "nezávislý kandidát",
       "hlasy": 705
      },
      {
+      "obvod": "Luník IX",
+      "obvod_c": 4,
       "meno": "PhDr. Marcel Šaňa",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 650
      },
      {
+      "obvod": "Košická Nová Ves, Vyšné Opátske",
+      "obvod_c": 14,
       "meno": "Ing. Michal Krcho",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 643
      },
      {
+      "obvod": "Šaca",
+      "obvod_c": 3,
       "meno": "Ing. ING-PAED IGIP Lucia Iľaščíková, PhD.",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 544
      },
      {
+      "obvod": "Lorinčík, Myslava, Pereš",
+      "obvod_c": 6,
       "meno": "Ing. Jozef Karabin, MBA",
       "strany": "nezávislý kandidát",
       "hlasy": 453
@@ -2478,256 +2560,358 @@
     ],
     "poslanci": [
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
       "meno": "PhDr. Dominik Babušík",
       "strany": "nezávislý kandidát",
       "hlasy": 3535
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
       "meno": "Mgr. PhD. Jozef Andrejčák",
       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 3402
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 6,
       "meno": "Ing. Roman Matoušek",
       "strany": "Košická strana",
       "hlasy": 3380
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 4,
       "meno": "JUDr. Ing. MJur. Marián Porvažník",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 3082
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 6,
       "meno": "Iveta Adamčíková",
       "strany": "nezávislý kandidát",
       "hlasy": 2855
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 5,
       "meno": "Mgr. Marcel Vrchota",
       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
       "hlasy": 2815
      },
      {
+      "obvod": "Sídlisko Ťahanovce",
+      "obvod_c": 3,
       "meno": "JUDr. Ing. Miloš Ihnát",
       "strany": "nezávislý kandidát",
       "hlasy": 2772
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 4,
       "meno": "Bc. Mgr. Igor Holéczy",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 2704
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 5,
       "meno": "Ing. Tibor Bačinský",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 2582
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 5,
       "meno": "JUDr. Ing. PhD. Peter Huba",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 2497
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 5,
       "meno": "Mgr. Dominik Karaffa",
       "strany": "nezávislý kandidát",
       "hlasy": 2478
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 5,
       "meno": "MUDr. MPH Viliam Novotný",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 2418
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 12,
       "meno": "Ing. Mgr. Lenka Kovačevičová",
       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 2388
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 11,
       "meno": "Ing. Anna Súkeníková",
       "strany": "nezávislý kandidát",
       "hlasy": 2321
      },
      {
+      "obvod": "Sever",
+      "obvod_c": 1,
       "meno": "Mgr. Martin Mudrák",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 2226
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 5,
       "meno": "Mgr. Patrícia Helfenová",
       "strany": "nezávislý kandidát",
       "hlasy": 2054
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 12,
       "meno": "PhDr. Róbert Schwarcz",
       "strany": "nezávislý kandidát",
       "hlasy": 1953
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 5,
       "meno": "Adam Ogurčák",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 1938
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 12,
       "meno": "Ing. MBA Peter Čech",
       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
       "hlasy": 1918
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 5,
       "meno": "Peter Berinšter",
       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
       "hlasy": 1917
      },
      {
+      "obvod": "Sever",
+      "obvod_c": 1,
       "meno": "Mgr. Matej Kundrát",
       "strany": "Košická strana",
       "hlasy": 1895
      },
      {
+      "obvod": "Sídlisko Ťahanovce",
+      "obvod_c": 3,
       "meno": "Mgr. Marek Fedoročko",
       "strany": "Košická strana",
       "hlasy": 1809
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 6,
       "meno": "Mgr. PhD. Marián Horenský",
       "strany": "nezávislý kandidát",
       "hlasy": 1725
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 12,
       "meno": "Mgr. Bernard Berberich",
       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
       "hlasy": 1681
      },
      {
+      "obvod": "Sídlisko Ťahanovce",
+      "obvod_c": 3,
       "meno": "Mgr. Miroslav Špak",
       "strany": "nezávislý kandidát",
       "hlasy": 1672
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 11,
       "meno": "Ing. Karel Hirman",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 1670
      },
      {
+      "obvod": "Sídlisko Ťahanovce",
+      "obvod_c": 3,
       "meno": "Mgr. Zuzana Slivenská",
       "strany": "nezávislý kandidát",
       "hlasy": 1622
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 11,
       "meno": "Ing. Erich Blanár",
       "strany": "Košická strana",
       "hlasy": 1597
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 6,
       "meno": "Ing. Matej Kepič",
       "strany": "Košická strana",
       "hlasy": 1593
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 6,
       "meno": "Marián Koszoru",
       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
       "hlasy": 1556
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 4,
       "meno": "JUDr. Stanislava Majerová",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 1512
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 11,
       "meno": "doc. PhDr. PhD. Viliam Knap, MHA, MPH",
       "strany": "nezávislý kandidát",
       "hlasy": 1509
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 4,
       "meno": "Ing. Rastislav Amrich",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 1469
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 12,
       "meno": "Mgr. Martin Seman",
       "strany": "nezávislý kandidát",
       "hlasy": 1456
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 4,
       "meno": "Ing. Igor Petrovčik",
       "strany": "SME RODINA",
       "hlasy": 1379
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
       "meno": "Ing. Marek Kandrač",
       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 1325
      },
      {
+      "obvod": "Sever",
+      "obvod_c": 1,
       "meno": "Mgr. Igor Kupec",
       "strany": "Košická strana",
       "hlasy": 1324
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
       "meno": "Ing. PhD. Vladimír Jeleň",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 1324
      },
      {
+      "obvod": "Sever",
+      "obvod_c": 1,
       "meno": "Ing. MBA František Ténai",
       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
       "hlasy": 1320
      },
      {
+      "obvod": "Košická Nová Ves, Krásna, Vyšné Opátske",
+      "obvod_c": 13,
       "meno": "Ing. Vladimír Saxa",
       "strany": "Košická strana",
       "hlasy": 1314
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 11,
       "meno": "Mgr. Lenka Bikárová",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 1295
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
       "meno": "Peter Šafranko",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 1239
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
       "meno": "Bc. Dalibor Eštočák",
       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
       "hlasy": 1226
      },
      {
+      "obvod": "Košická Nová Ves, Krásna, Vyšné Opátske",
+      "obvod_c": 13,
       "meno": "Ing. František Klik",
       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 977
      },
      {
+      "obvod": "Košická Nová Ves, Krásna, Vyšné Opátske",
+      "obvod_c": 13,
       "meno": "Mgr. MBA Lukáš Kunca",
       "strany": "Občianska konzervatívna strana",
       "hlasy": 971
      },
      {
+      "obvod": "Barca, Šebastovce",
+      "obvod_c": 10,
       "meno": "Ing. Gabriel Krištof",
       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 858
      },
      {
+      "obvod": "Luník IX, Myslava",
+      "obvod_c": 7,
       "meno": "PhDr. Marcel Šaňa",
       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
       "hlasy": 720
      },
      {
+      "obvod": "Luník IX, Myslava",
+      "obvod_c": 7,
       "meno": "Mgr. Peter Kasterko",
       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
       "hlasy": 661
      },
      {
+      "obvod": "Lorinčík, Pereš, Poľov",
+      "obvod_c": 8,
       "meno": "Ing. PhD. Štefan Kender",
       "strany": "nezávislý kandidát",
       "hlasy": 641
      },
      {
+      "obvod": "Šaca",
+      "obvod_c": 9,
       "meno": "Ing. PhD. ING-PAED IGIP Lucia Iľaščíková",
       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 600
      },
      {
+      "obvod": "Džungľa, Kavečany, Ťahanovce",
+      "obvod_c": 2,
       "meno": "JUDr. Martin Balčík",
       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 476
