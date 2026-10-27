@@ -71,7 +71,7 @@ const vsetky = MESTA.filter((m) => m.aktivne).map((m) => [m.slug, m.nazov, (m as
         b += `<p class="ad-mala">Zvolení vo voľbách ${hx(d.zastupcovia.rok)}${d.zastupcovia.priebezne ? ' (priebežne)' : ''}:</p><ul class="ad-ludia">`;
         if (z.starosta) b += `<li><span>Starosta/-ka</span> <strong translate="no">${hx(z.starosta.meno)}</strong> <small>${hx(z.starosta.strany)}</small></li>`;
         b += z.poslanci.map((p: any) => `<li><span>Mestský poslanec/-kyňa</span> <strong translate="no">${hx(p.meno)}</strong> <small>${hx(p.strany)}</small></li>`).join('');
-        b += `</ul><p class="ad-mala"><a href="/bratislava/volby">Výsledky volieb</a> · <a href="/bratislava/mestske-casti">Profil mestskej časti</a></p>`;
+        b += `</ul><p class="ad-mala"><a href="/${slug}/zastupitelstvo#moj-poslanec">Všetci poslanci podľa obvodov</a> · <a href="/${slug}/mestske-casti">Profil mestskej časti</a></p>`;
       }
       bloky.push(b);
     }

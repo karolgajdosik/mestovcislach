@@ -292,7 +292,10 @@ def komunalne(stare: dict | None = None) -> dict:
             for r in t.get("tab08", []):
                 if zk.kod(r["OBEC"]) == obec:
                     hl_msz[(zk.kod(r["VOOBEC"]), zk.kod(r["PC_HL"]))] += cislo(r["P_HL"])
-            poslanci = [{"meno": zk.meno(kand_msz[k]), "strany": zk.strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
+            # volebné obvody: v Košiciach skupiny mestských častí, inak len číslo obvodu (ulice určuje VZN mesta)
+            obv_mc = zk.obvody_mc(t, obec, "Košice") if m["slug"] == "kosice" else {}
+            nazov_obv = lambda o: ", ".join(obv_mc[o]) if o in obv_mc else f"obvod č. {int(o or 0)}"  # noqa: E731
+            poslanci = [{"obvod": nazov_obv(k[0]), "obvod_c": int(k[0] or 0), "meno": zk.meno(kand_msz[k]), "strany": zk.strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
                         for k in sorted(zvol_pos, key=lambda k: (-hl_msz[k], k)) if k in kand_msz]
             statistiky = zk.statistiky_poslancov([kand_msz[k] for k in zvol_pos if k in kand_msz])
             # primátor po mestských častiach (Bratislava, Košice) – pre mapu víťazov

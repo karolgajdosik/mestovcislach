@@ -5,6 +5,7 @@ import type { APIRoute } from 'astro';
 import { MESTA } from '../../../../mesta';
 import { mapaMesta } from '../../../../lib/mapa';
 import { citaj, r5, zjednodus, kategorieBA, kategorieMesta } from '../../../../lib/adresa';
+import { obdobia } from '../../../../lib/zastupitelstvo';
 
 export function getStaticPaths() {
   return MESTA.filter((m) => m.aktivne).map((m) => ({ params: { mesto: m.slug } }));
@@ -24,6 +25,15 @@ function zastupcoviaBA() {
     for (const n of String(p.obvod).split(', ')) (mc[n] ??= { starosta: null, poslanci: [] }).poslanci.push({ meno: p.meno, strany: p.strany });
   }
   return { rok: v.id, priebezne: !!v.spracovanie?.priebezne, mc };
+}
+
+// Košice: mestskí poslanci podľa obvodu (obvod = skupina mestských častí), len meno a strana
+function zastupcoviaObvody(slug: string) {
+  const o = obdobia(slug).find((x) => !x.priebezne && x.poslancov > 0);
+  if (!o || !o.poslanci.some((p) => p.obvod && !/^obvod č\./.test(p.obvod))) return null;
+  const mc: Record<string, any> = {};
+  for (const p of o.poslanci) for (const n of String(p.obvod).split(', ')) (mc[n] ??= { starosta: null, poslanci: [] }).poslanci.push({ meno: p.meno, strany: p.strany });
+  return { rok: o.rok, priebezne: false, mc };
 }
 
 function eiaBA() {
@@ -52,6 +62,7 @@ export const GET: APIRoute = ({ params }) => {
     kategorie: ba ? kategorieBA() : kategorieMesta(m.slug),
     mestske_casti: mc.length > 1 ? mc : [],
     ...(ba ? { obvody_zs: '/data/obvody-zs-bratislava.geojson', zastupcovia: zastupcoviaBA(), eia_mc: eiaBA() } : {}),
+    ...(!ba && zastupcoviaObvody(m.slug) ? { zastupcovia: zastupcoviaObvody(m.slug) } : {}),
   };
   return new Response(JSON.stringify(telo), { headers: { 'Content-Type': 'application/json' } });
 };

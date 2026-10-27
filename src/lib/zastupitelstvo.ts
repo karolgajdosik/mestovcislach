@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export type Poslanec = { meno: string; strany: string; hlasy?: number; obvod?: string };
+export type Poslanec = { meno: string; strany: string; hlasy?: number; obvod?: string; obvod_c?: number };
 export type Obdobie = {
   rok: string; priebezne: boolean; ucast?: number | null;
   primator: { meno: string; strany: string; podiel?: number; hlasy?: number } | null;
@@ -32,7 +32,7 @@ export function obdobia(slug: string): Obdobie[] {
         rok: v.id, priebezne: !!v.spracovanie?.priebezne, ucast: o.primator?.ucast?.ucast_pct ?? null,
         primator: p ? { meno: p.meno, strany: p.strany, podiel: p.podiel, hlasy: p.hlasy } : null,
         poslancov: z.poslancov ?? z.zvoleni?.length ?? 0, mandaty: z.mandaty ?? [],
-        poslanci: (z.zvoleni ?? []).map((x: any) => ({ meno: x.meno, strany: x.strany, hlasy: x.hlasy, obvod: x.obvod })),
+        poslanci: (z.zvoleni ?? []).map((x: any) => ({ meno: x.meno, strany: x.strany, hlasy: x.hlasy, obvod: x.obvod, obvod_c: x.obvod_c })),
         statistiky: z.statistiky,
       });
     }
@@ -46,7 +46,7 @@ export function obdobia(slug: string): Obdobie[] {
         rok, priebezne: !!v.spracovanie?.priebezne, ucast: v.ucast?.ucast_pct ?? null,
         primator: p ? { meno: p.meno, strany: p.strany, podiel: p.podiel, hlasy: p.hlasy } : null,
         poslancov: v.zastupitelstvo.poslancov ?? 0, mandaty: v.zastupitelstvo.mandaty ?? [],
-        poslanci: (v.zastupitelstvo.poslanci ?? []).map((x: any) => ({ meno: x.meno, strany: x.strany, hlasy: x.hlasy, obvod: x.obvod })),
+        poslanci: (v.zastupitelstvo.poslanci ?? []).map((x: any) => ({ meno: x.meno, strany: x.strany, hlasy: x.hlasy, obvod: x.obvod, obvod_c: x.obvod_c })),
         statistiky: v.zastupitelstvo.statistiky,
       });
     }

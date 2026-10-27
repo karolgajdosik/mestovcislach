@@ -314,6 +314,29 @@ def okrsky_mesta_na_mc(ucast_okrsky: list[dict], mc: list[str]) -> dict[tuple, s
     return mapa
 
 
+def obvody_mc(t: dict[str, list[dict]], mesto: str, predpona: str) -> dict[str, list[str]]:
+    """Volebný obvod mesta → mestské časti, ktoré ho tvoria (Bratislava, Košice). Mestská časť sa nedelí medzi obvody;
+    okrsky mesta a MČ spárujeme podľa počtu zapísaných voličov (rovnaký zoznam voličov) a MČ priradíme obvodu,
+    kam padla väčšina jej okrskov (overené 2026: počty okrskov obvodov sedia presne)."""
+    mc = {kod(r["OBEC"]): r["NOBEC"].split(" - ", 1)[1].strip() for r in t.get("tab0d", [])
+          if kod(r["OBEC"]) != mesto and (r.get("NOBEC") or "").startswith(predpona + " - ")}
+    rows = t.get("tab02b", [])
+    idx: dict[int, set[str]] = defaultdict(set)
+    for r in rows:
+        if kod(r["OBEC"]) in mc:
+            idx[int(cislo(r["P_ZAP"]))].add(kod(r["OBEC"]))
+    hlas: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    for r in rows:
+        if kod(r["OBEC"]) == mesto:
+            k = idx.get(int(cislo(r["P_ZAP"])), set())
+            for m in k:
+                hlas[m][kod(r.get("VOOBEC", ""))] += 1 / len(k)
+    out: dict[str, list[str]] = defaultdict(list)
+    for m, v in hlas.items():
+        out[max(v, key=v.get)].append(mc[m])
+    return {o: sorted(x) for o, x in out.items()}
+
+
 def primator_po_mc(t: dict[str, list[dict]], mesto: str, predpona: str, strany: dict[str, str]) -> tuple[list[dict], dict]:
     """Voľba primátora podľa mestských častí (Bratislava, Košice). Tabuľky mesta majú okrsky len ako (obvod, okrsok);
     v Košiciach sa číslo okrsku v obvode opakuje (každá MČ čísluje od 1), preto okrsky rozlišujeme aj poradím výskytu.
@@ -435,9 +458,7 @@ def spracuj_oso(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
     prim_mc.sort(key=lambda x: x["nazov"])
 
     # Obvody mesta → názvy mestských častí, ktoré tvoria obvod
-    obvod_casti: dict[str, set[str]] = defaultdict(set)
-    for (obvod, _), kod_mc in okrsok_mc.items():
-        obvod_casti[obvod].add(nazvy_mc.get(kod_mc, kod_mc))
+    obvod_casti = obvody_mc(t, MESTO, "Bratislava")
     nazov_obvodu = lambda o: ", ".join(sorted(obvod_casti.get(o, []))) or f"obvod {o}"  # noqa: E731
 
     # Mestské zastupiteľstvo – len zvolení
@@ -451,7 +472,7 @@ def spracuj_oso(t: dict[str, list[dict]], nazvy_mc: dict[str, str]) -> dict:
         hl_msz[k] += cislo(r["P_HL"])
         if (MESTO, k[0], k[1]) in zvol_pos:
             zvoleni_msz.add(k)
-    msz = [{"obvod": nazov_obvodu(k[0]), "meno": meno(kand_msz[k]), "strany": strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
+    msz = [{"obvod": nazov_obvodu(k[0]), "obvod_c": int(k[0] or 0), "meno": meno(kand_msz[k]), "strany": strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
            for k in sorted(zvoleni_msz, key=lambda k: (nazov_obvodu(k[0]), -hl_msz[k], k)) if k in kand_msz]
     stat_msz = statistiky_poslancov([kand_msz[x] for x in zvoleni_msz if x in kand_msz])
 

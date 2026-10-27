@@ -35,6 +35,11 @@ const odisli = pred ? pred.mandaty.filter((y) => !teraz.mandaty.some((x) => x.st
 const fmt = (n: number) => n.toLocaleString('sk-SK');
 const des = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
 const maObvody = poslanci.some((p) => p.obvod);
+// Kto je môj poslanec: poslanci podľa volebných obvodov (BA a KE – obvod = skupina mestských častí)
+const obvody = [...poslanci.reduce((mp, p) => { if (p.obvod) { const k = p.obvod_c ?? 0; const o = mp.get(p.obvod) ?? { nazov: p.obvod, c: k, poslanci: [] as typeof poslanci }; o.poslanci.push(p); mp.set(p.obvod, o); } return mp; }, new Map<string, { nazov: string; c: number; poslanci: typeof poslanci }>()).values()]
+  .sort((a, b) => a.c - b.c || a.nazov.localeCompare(b.nazov, 'sk'));
+const podlaCasti = obvody.some((o) => !/^obvod č\./.test(o.nazov));
+const casti = podlaCasti ? [...new Set(obvody.flatMap((o) => o.nazov.split(', ')))].sort((a, b) => a.localeCompare(b, 'sk')) : [];
 const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${m.slug}/volby`;
 ---
 <Base title={`Mestské zastupiteľstvo ${obdobie} – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: kto sedí v mestskom zastupiteľstve ${obdobie}, zloženie podľa strán, kto mandát obhájil a kto je nový.`}>
@@ -91,6 +96,32 @@ const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/$
     <p class="pozn">„Nezávislí“ sú kandidáti bez strany – v zastupiteľstve nehlasujú ako jeden klub. Kluby poslancov vznikajú až po voľbách.</p>
   </section>
 
+  {obvody.length > 1 && (
+    <section class="card" id="moj-poslanec" aria-labelledby="mp-h">
+      <h2 id="mp-h">Kto je môj poslanec</h2>
+      {podlaCasti ? (
+        <>
+          <p>Mesto je rozdelené na {obvody.length} volebných obvodov, každý tvorí jedna alebo viac mestských častí. Vyberte svoju mestskú časť, alebo ju nájdite <a href={`/${m.slug}/adresa`}>podľa adresy</a>.</p>
+          <label class="mp-vyber">Moja mestská časť
+            <select id="mp-mc"><option value="">— vyberte —</option>{casti.map((c) => <option value={c} translate="no">{c}</option>)}</select>
+          </label>
+        </>
+      ) : (
+        <p>Mesto je rozdelené na {obvody.length} volebných obvodov. Ktoré ulice patria do ktorého obvodu, určuje mesto vo všeobecne záväznom nariadení – nájdete ho na webe mesta alebo na oznámení o voľbách, ktoré ste dostali domov.</p>
+      )}
+      <ul class="mp-obvody">
+        {obvody.map((o) => (
+          <li data-casti={o.nazov} id={`obvod-${o.c}`}>
+            <h3>{podlaCasti ? <>Obvod {o.c}: <span translate="no">{o.nazov}</span></> : `Volebný obvod č. ${o.c}`}</h3>
+            <p class="pozn">{o.poslanci.length} {o.poslanci.length === 1 ? 'poslanec' : o.poslanci.length < 5 ? 'poslanci' : 'poslancov'}</p>
+            <ul>{o.poslanci.map((p) => <li><strong translate="no">{p.meno}</strong> <small translate="no">{skrat(p.strany)}{p.hlasy != null ? ` · ${fmt(p.hlasy)} hlasov` : ''}</small></li>)}</ul>
+          </li>
+        ))}
+      </ul>
+      <p class="pozn">Uvádzame len meno, stranu a počet hlasov z výsledkov Štatistického úradu SR. Kontakty na poslancov zverejňuje mesto na svojom webe.</p>
+    </section>
+  )}
+
   <section class="card">
     <h2>Poslanci {obdobie}</h2>
     <div class="zs-filter" role="group" aria-label="Filter poslancov">
@@ -138,6 +169,24 @@ const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/$
 </Base>
 
 <script>
+  // Kto je môj poslanec – vybraná mestská časť zvýrazní a zobrazí svoj obvod (výber si pamätá prehliadač)
+  const mpMc = document.getElementById('mp-mc') as HTMLSelectElement | null;
+  if (mpMc) {
+    const kluc = `moj-obvod-${location.pathname.split('/')[1]}`;
+    const ukaz = () => {
+      const v = mpMc.value;
+      document.querySelectorAll<HTMLElement>('.mp-obvody > li').forEach((li) => {
+        const moj = !!v && li.dataset.casti!.split(', ').includes(v);
+        li.classList.toggle('mp-moj', moj);
+        li.hidden = !!v && !moj;
+      });
+      try { v ? localStorage.setItem(kluc, v) : localStorage.removeItem(kluc); } catch { /* bez úložiska */ }
+    };
+    try { const ul = localStorage.getItem(kluc); if (ul && [...mpMc.options].some((o) => o.value === ul)) mpMc.value = ul; } catch { /* */ }
+    mpMc.addEventListener('change', ukaz);
+    ukaz();
+  }
+
   const q = document.getElementById('zs-q') as HTMLInputElement | null;
   const stav = document.getElementById('zs-stav') as HTMLSelectElement | null;
   const pocet = document.getElementById('zs-pocet')!;
@@ -153,6 +202,16 @@ const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/$
 </script>
 
 <style>
+  .mp-vyber { display: inline-flex; flex-direction: column; gap: 4px; font-weight: 600; margin: 4px 0 12px; }
+  .mp-vyber select { min-height: 40px; padding: 0 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-weight: 400; }
+  .mp-obvody { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+  .mp-obvody > li { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  .mp-obvody > li.mp-moj { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  .mp-obvody h3 { margin: 0; font-size: 1rem; }
+  .mp-obvody .pozn { margin: 2px 0 6px; }
+  .mp-obvody ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; font-size: 0.9rem; }
+  .mp-obvody small { color: var(--muted); }
+
   .zs-kroky { padding-left: 20px; display: grid; gap: 10px; margin: 8px 0 0; }
   .zs-meno { font-size: 1.35rem !important; line-height: 1.2; }
   .zs-pas { display: flex; gap: 2px; height: 26px; border-radius: 8px; overflow: hidden; margin: 6px 0 14px; }
