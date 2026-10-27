@@ -86,7 +86,7 @@ const rieka: any = (mesto as any).rieka_id;
 const IKONA = Object.fromEntries(MENU_MESTA.map(([h, , i]) => [h, i]));
 const PIN = '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/>';
 const MENU: [string, string, string][] = spolocna
-  ? [...MESTA.filter((x) => x.aktivne).map((x) => [`/${x.slug}`, x.nazov, PIN] as [string, string, string]), ['/porovnanie', 'Porovnanie miest', IKONA['katalog']], ['/porovnaj', 'Porovnaj dve mestá', IKONA['mestske-casti']], ['/volby-2026', 'Voľby 2026 v číslach', IKONA['volby']], ['/suboj', 'Súboj miest', '<path d="M5 19 19 5M15 5h4v4M9 19H5v-4M19 19 13.5 13.5M5 5l5.5 5.5"/>'], ['/dodavatelia', 'Sledovať dodávateľa', '<path d="M4 20.5V9l8-5 8 5v11.5M9 20.5v-6h6v6"/>']]
+  ? [...MESTA.filter((x) => x.aktivne).map((x) => [`/${x.slug}`, x.nazov, PIN] as [string, string, string]), ['/porovnanie', 'Porovnanie miest', IKONA['katalog']], ['/porovnaj', 'Porovnaj dve mestá', IKONA['mestske-casti']], ['/volby-2026', 'Voľby 2026 v číslach', IKONA['volby']], ['/rozpocty-2027', 'Rozpočty miest 2027', IKONA['financie']], ['/suboj', 'Súboj miest', '<path d="M5 19 19 5M15 5h4v4M9 19H5v-4M19 19 13.5 13.5M5 5l5.5 5.5"/>'], ['/dodavatelia', 'Sledovať dodávateľa', '<path d="M4 20.5V9l8-5 8 5v11.5M9 20.5v-6h6v6"/>']]
   : mesto.plne
   ? [...MENU_MESTA.slice(0, -1).map(([h, n, i]) => [`/${mesto.slug}${h ? `/${h}` : ''}`, n, i] as [string, string, string]), ...NOVE_MENU, [`/${mesto.slug}/katalog`, 'Katalóg dát', MENU_MESTA.at(-1)![2]]]
   : [

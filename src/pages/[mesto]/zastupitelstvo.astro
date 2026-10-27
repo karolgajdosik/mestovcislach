@@ -120,12 +120,21 @@ const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/$
       {pred && <> „Obhájil(a)“ = rovnaké meno (bez titulov) bolo zvolené aj v roku {pred.rok}.</>}</p>
   </section>
 
-  <section class="card">
-    <h2>Ako budú hlasovať</h2>
-    <p>Ustanovujúce zasadnutie nového zastupiteľstva býva do konca roka. Hlasovania poslancov {pred ? `z obdobia ${pred.rok}–${teraz.rok}` : 'z doterajšieho obdobia'} nájdete
-      {maSamospravu(m.slug) || m.slug === 'bratislava' ? <> na stránke <a href={m.slug === 'bratislava' ? '/bratislava/volby#hlasovania' : `/${m.slug}/samosprava#hlasovania`}>{m.slug === 'bratislava' ? 'Voľby a hlasovania' : 'Samospráva'}</a></> : ' na webe mesta'};
-      hlasovania nového zastupiteľstva pribudnú, keď ich mesto zverejní.</p>
-  </section>
+  {teraz.rok === '2026' ? (
+    <section class="card" id="prve-kroky">
+      <h2>Prvé kroky nového zastupiteľstva</h2>
+      <ol class="zs-kroky">
+        <li><strong>Ustanovujúce zasadnutie – najneskôr 23. novembra 2026.</strong> Zastupiteľstvo sa musí zísť do 30 dní od volieb (§ 12 zákona o obecnom zriadení); primátor a poslanci zložia sľub a zvolia komisie a mestskú radu. Termín pribudne v <a href={`/${m.slug}/kalendar`}>kalendári mesta</a>.</li>
+        <li><strong>Rozpočet na rok 2027 – do 31. decembra.</strong> Prvé veľké rozhodnutie nového zastupiteľstva; návrh musí byť zverejnený aspoň 15 dní vopred. <a href={`/rozpocty-2027#${m.slug}`}>Stav návrhu rozpočtu</a></li>
+        <li><strong>Hlasovania.</strong> Ako hlasovali poslanci v predchádzajúcom období, nájdete {maSamospravu(m.slug) || m.slug === 'bratislava' ? <> na stránke <a href={m.slug === 'bratislava' ? '/bratislava/volby#hlasovania' : `/${m.slug}/samosprava#hlasovania`}>{m.slug === 'bratislava' ? 'Voľby a hlasovania' : 'Samospráva'}</a></> : ' na webe mesta'}; hlasovania nového zastupiteľstva pribudnú, keď ich mesto zverejní.</li>
+      </ol>
+    </section>
+  ) : (
+    <section class="card">
+      <h2>Ako budú hlasovať</h2>
+      <p>Hlasovania poslancov nájdete {maSamospravu(m.slug) || m.slug === 'bratislava' ? <> na stránke <a href={m.slug === 'bratislava' ? '/bratislava/volby#hlasovania' : `/${m.slug}/samosprava#hlasovania`}>{m.slug === 'bratislava' ? 'Voľby a hlasovania' : 'Samospráva'}</a></> : ' na webe mesta'}.</p>
+    </section>
+  )}
 </Base>
 
 <script>
@@ -144,6 +153,7 @@ const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/$
 </script>
 
 <style>
+  .zs-kroky { padding-left: 20px; display: grid; gap: 10px; margin: 8px 0 0; }
   .zs-meno { font-size: 1.35rem !important; line-height: 1.2; }
   .zs-pas { display: flex; gap: 2px; height: 26px; border-radius: 8px; overflow: hidden; margin: 6px 0 14px; }
   .zs-pas i { display: block; min-width: 4px; }

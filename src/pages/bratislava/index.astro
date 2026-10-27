@@ -3,6 +3,10 @@ import Base from '../../layouts/Base.astro';
 import FotoMesta from '../../components/FotoMesta.astro';
 import MapaCasti from '../../components/MapaCasti.astro';
 import DnesVBratislave from '../../components/DnesVBratislave.astro';
+import RychleOdpovede from '../../components/RychleOdpovede.astro';
+import { MESTA } from '../../mesta';
+import ZimaVMeste from '../../components/ZimaVMeste.astro';
+import { faqLd } from '../../lib/odpovede';
 import obyv from '../../../data/obyvatelstvo-bratislava.json';
 
 type Uzemie = { kod: string; nazov: string; nazov_kratky: string; roky: Record<string, number> };
@@ -36,7 +40,7 @@ const grafData = mesto
   ? JSON.stringify({ roky, mesto: roky.map((r) => mesto.roky[r]), casti: castiZoradene })
   : '';
 ---
-<Base title="Bratislava v číslach – mestovcislach.sk" description="Bratislava v otvorených dátach: obyvatelia mestských častí, doprava a MHD, rozpočet a zmluvy, výstavba, voľby, ovzdušie a živé údaje – prehľadne a so zdrojmi.">
+<Base jsonld={faqLd('bratislava') ?? undefined} title="Bratislava v číslach – mestovcislach.sk" description="Bratislava v otvorených dátach: obyvatelia mestských častí, doprava a MHD, rozpočet a zmluvy, výstavba, voľby, ovzdušie a živé údaje – prehľadne a so zdrojmi.">
   <FotoMesta slug="bratislava" nazov="Bratislava">
     <p class="kicker">Hlavné mesto SR</p>
     <h1>Bratislava v číslach</h1>
@@ -104,6 +108,8 @@ const grafData = mesto
       </section>
     </>
   )}
+  <ZimaVMeste m={MESTA.find((x) => x.slug === 'bratislava')!} />
+  <RychleOdpovede slug="bratislava" />
 </Base>
 
 <script>

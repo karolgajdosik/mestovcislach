@@ -12,6 +12,9 @@ import VolbyMapa from '../../components/VolbyMapa.astro';
 import FotoMesta from '../../components/FotoMesta.astro';
 import VolbyPorovnanie from '../../components/VolbyPorovnanie.astro';
 import { maZivot } from '../../lib/temy';
+import RychleOdpovede from '../../components/RychleOdpovede.astro';
+import ZimaVMeste from '../../components/ZimaVMeste.astro';
+import { faqLd } from '../../lib/odpovede';
 
 export function getStaticPaths() {
   return MESTA.filter((m) => m.aktivne && !m.plne).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
@@ -83,7 +86,7 @@ const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(m
 const profilyMc = !m.plne && !!castiMesta(m.slug);
 const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 ---
-<Base title={`${m.nazov} v číslach – mestovcislach.sk`} description={`${m.nazov}: obyvatelia, sčítanie 2021, voľby, nezamestnanosť, výstavba bytov, ceny bývania a stavebné zámery z otvorených dát.`}>
+<Base jsonld={faqLd(m.slug) ?? undefined} title={`${m.nazov} v číslach – mestovcislach.sk`} description={`${m.nazov}: obyvatelia, sčítanie 2021, voľby, nezamestnanosť, výstavba bytov, ceny bývania a stavebné zámery z otvorených dát.`}>
   <FotoMesta slug={m.slug} nazov={m.nazov}>
     <p class="kicker">{m.kraj}</p>
     <h1><span translate="no">{m.nazov}</span> v číslach</h1>
@@ -240,6 +243,8 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     <h2>Ako si <span translate="no">{m.nazov}</span> stojí medzi krajskými mestami</h2>
     <p><a class="tlacidlo" href={`/porovnanie#${m.slug}`}>Porovnať všetkých 8 krajských miest</a></p>
   </section>
+  <ZimaVMeste m={m} />
+  <RychleOdpovede slug={m.slug} />
 </Base>
 
 <script>

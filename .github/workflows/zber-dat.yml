@@ -71,6 +71,10 @@ jobs:
         if: success() || failure()
         run: python scripts/zber_hlasovania.py
 
+      - name: Návrhy rozpočtov miest na budúci rok
+        if: success() || failure()
+        run: python scripts/zber_rozpocty.py
+
       - name: Uložiť zmeny v dátach
         if: success() || failure()
         run: |

@@ -1,6 +1,8 @@
 // Kalendár mesta na odber (ICS): dôležité termíny pre obyvateľov (zápis do ZŠ, prihlášky do MŠ a na SŠ, daňové
 // priznanie k dani z nehnuteľností), zasadnutia zastupiteľstva (z hlasovaní, ktoré web zbiera) a voľby.
 // Zasadnutia pribudnú v kalendári samy, keď sa objavia v dátach mesta.
+import fs from 'node:fs';
+import path from 'node:path';
 import { novinky } from './novinky';
 
 export type Udalost = { id: string; od: string; do?: string; nazov: string; popis: string; odkaz: string; typ: 'termin' | 'zastupitelstvo' | 'volby'; pripomienka?: boolean };
@@ -27,6 +29,18 @@ export function kalendar(slug: string): Udalost[] {
     if (n.typ === 'volby') out.push({ id: `volby-${n.datum}`, od: n.datum, nazov: n.nazov, popis: n.text, odkaz: n.odkaz, typ: 'volby' });
   }
   if (!out.some((u) => u.id === 'volby-2026-10-24')) out.push({ id: 'volby-2026-10-24', od: '2026-10-24', nazov: 'Komunálne a regionálne voľby', popis: 'Voľby primátora, poslancov mestského zastupiteľstva a orgánov samosprávneho kraja (7:00 – 20:00).', odkaz: `/${slug}${slug === 'bratislava' ? '/volby' : '/volby'}`, typ: 'volby' });
+  // nové zastupiteľstvo 2026 – 2030: ustanovujúce zasadnutie do 30 dní od volieb (§ 12 ods. 1 zákona č. 369/1990 Zb.),
+  // kým mesto nezverejní skutočný termín (prvé zasadnutie po voľbách v dátach)
+  if (!out.some((u) => u.typ === 'zastupitelstvo' && u.od > '2026-10-24' && u.od <= '2026-11-23'))
+    out.push({ id: 'ustanovujuce-2026', od: '2026-11-23', nazov: 'Najneskorší termín ustanovujúceho zasadnutia zastupiteľstva', popis: 'Nové mestské zastupiteľstvo sa musí zísť do 30 dní od volieb; primátor a poslanci na ňom zložia sľub. Presný dátum určí doterajší primátor.', odkaz: `/${slug}/zastupitelstvo`, typ: 'zastupitelstvo' });
+  // rozpočet na budúci rok: zverejnený návrh (scripts/zber_rozpocty.py) a termín schválenia do konca roka
+  const rRok = rok + 1;
+  try {
+    const rz = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', `rozpocty-${rRok}.json`), 'utf-8'));
+    const navrh = (rz.mesta?.[slug]?.dokumenty ?? []).filter((d: any) => d.druh === 'návrh rozpočtu').map((d: any) => d.zverejnene || d.videne_od).sort()[0];
+    if (navrh && rRok === 2027) out.push({ id: `navrh-rozpoctu-${rRok}`, od: navrh, nazov: `Zverejnený návrh rozpočtu na rok ${rRok}`, popis: 'Mesto zverejnilo návrh rozpočtu – najmenej 15 dní sa k nemu môžu vyjadriť obyvatelia, potom ho schvaľuje zastupiteľstvo.', odkaz: `/rozpocty-${rRok}#${slug}`, typ: 'termin' });
+  } catch { /* zatiaľ bez údajov */ }
+  if (rRok === 2027) out.push({ id: `rozpocet-${rRok}`, od: `${rok}-12-31`, nazov: `Posledný deň na schválenie rozpočtu na rok ${rRok}`, popis: 'Ak zastupiteľstvo rozpočet neschváli do konca roka, mesto od januára hospodári v rozpočtovom provizóriu (mesačne najviac 1/12 vlaňajších výdavkov).', odkaz: `/rozpocty-${rRok}#${slug}`, typ: 'termin' });
   // termíny len od dnešného dňa o rok dozadu do ~14 mesiacov dopredu
   const min = plus(dnes, -400), max = plus(dnes, 430);
   return out.filter((u) => (u.do ?? u.od) >= min && u.od <= max).sort((a, b) => a.od.localeCompare(b.od));

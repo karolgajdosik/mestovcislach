@@ -1,0 +1,115 @@
+---
+// Rozpočty krajských miest na rok 2027 – stav zverejnenia návrhov (scripts/zber_rozpocty.py → data/rozpocty-2027.json)
+// a kontext z účtovných závierok (data/mesta/hospodarenie.json). Prvé rozpočty nových zastupiteľstiev 2026 – 2030.
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import PoslatZnamemu from '../components/PoslatZnamemu.astro';
+import { MESTA } from '../mesta';
+import { hospodarenie } from '../lib/mapa';
+
+const ROK = 2027;
+const subor = path.join(process.cwd(), 'data', `rozpocty-${ROK}.json`);
+const data: any = fs.existsSync(subor) ? JSON.parse(fs.readFileSync(subor, 'utf-8')) : { mesta: {} };
+const por: any[] = (() => { try { return JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'mesta', 'porovnanie.json'), 'utf-8')).mesta; } catch { return []; } })();
+const WEB: Record<string, string> = {
+  bratislava: 'https://bratislava.sk', trnava: 'https://www.trnava.sk/stranka/rozpocet-a-zaverecny-ucet', trencin: 'https://trencin.sk',
+  nitra: 'https://nitra.sk/rozpocet-zaverecny-ucet-a-rozpoctove-pravidla/', zilina: 'https://zilina.sk', 'banska-bystrica': 'https://www.banskabystrica.sk/samosprava/rozpocet-mesta/',
+  presov: 'https://www.presov.sk', kosice: 'https://www.kosice.sk/mesto/ekonomika',
+};
+const datum = (d: string) => (d ? new Date(d).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric', year: 'numeric' }) : '');
+const mil = (n: number) => `${(n / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} mil. €`;
+const eur = (n: number) => `${Math.round(n).toLocaleString('sk-SK')} €`;
+
+const mesta = MESTA.filter((m) => m.aktivne).map((m) => {
+  const dok: any[] = data.mesta?.[m.slug]?.dokumenty ?? [];
+  const stav = dok.some((d) => d.druh === 'schválený rozpočet') ? 'schvaleny' : dok.some((d) => d.druh === 'návrh rozpočtu' || d.druh === 'stanovisko hlavného kontrolóra') ? 'navrh' : dok.length ? 'dokumenty' : 'caka';
+  const prvy = dok.map((d) => d.zverejnene || d.videne_od).filter(Boolean).sort()[0];
+  const h = hospodarenie(m.slug);
+  const obyv = por.find((p) => p.slug === m.slug)?.obyvatelia;
+  return { m, dok, stav, prvy, h, obyv };
+});
+const STAV: Record<string, [string, string]> = {
+  schvaleny: ['Schválený', 'ok'], navrh: ['Návrh zverejnený', 'navrh'], dokumenty: ['Prvé dokumenty', 'navrh'], caka: ['Návrh zatiaľ nezverejnený', 'caka'],
+};
+const pocetNavrhov = mesta.filter((x) => x.stav !== 'caka').length;
+---
+<Base title={`Rozpočty miest na rok ${ROK} – kedy a koľko – mestovcislach.sk`} description={`Návrhy rozpočtov krajských miest na rok ${ROK}: ktoré mesto už návrh zverejnilo, odkazy na dokumenty, termíny schvaľovania a koľko mesto hospodárilo doteraz.`}>
+  <section class="hero">
+    <p class="kicker">Samospráva</p>
+    <h1>Rozpočty miest na rok {ROK}</h1>
+    <p class="lead">Prvé rozpočty nových zastupiteľstiev. Každý deň kontrolujeme weby ôsmich krajských miest a hneď, ako mesto zverejní návrh rozpočtu, objaví sa tu s odkazom na dokument.</p>
+    <p class="rz-poslat"><PoslatZnamemu text={`Rozpočty krajských miest na rok ${ROK}`} /></p>
+  </section>
+
+  <ul class="rz-cisla" aria-label="Stav">
+    <li><b>{pocetNavrhov} z {mesta.length}</b><span>miest už zverejnilo návrh alebo dokumenty k rozpočtu {ROK}</span></li>
+    <li><b>15 dní</b><span>minimálne musí byť návrh zverejnený pred schvaľovaním</span></li>
+    <li><b>31. 12.</b><span>ak dovtedy rozpočet neschvália, mesto hospodári v rozpočtovom provizóriu</span></li>
+  </ul>
+
+  <section class="rz-mesta">
+    {mesta.map(({ m, dok, stav, prvy, h, obyv }) => (
+      <article class="card rz-mesto" id={m.slug}>
+        <header>
+          <h2 translate="no">{m.nazov}</h2>
+          <span class={`rz-stav ${STAV[stav][1]}`}>{STAV[stav][0]}{prvy && stav !== 'caka' ? ` · ${datum(prvy)}` : ''}</span>
+        </header>
+        {dok.length > 0 ? (
+          <ul class="rz-dok">
+            {dok.slice(0, 6).map((d) => (
+              <li><a href={d.url} rel="noopener">{d.nazov}</a><small>{d.druh}{(d.zverejnene || d.videne_od) ? ` · ${datum(d.zverejnene || d.videne_od)}` : ''}</small></li>
+            ))}
+          </ul>
+        ) : (
+          <p class="pozn">Návrh zatiaľ nie je na webe mesta. <a href={WEB[m.slug]} rel="noopener">Web mesta →</a></p>
+        )}
+        {h && (
+          <dl class="rz-h">
+            <div><dt>Výnosy {h.rok}</dt><dd>{mil(h.posledny.vynosy)}</dd></div>
+            <div><dt>Náklady {h.rok}</dt><dd>{mil(h.posledny.naklady)}</dd></div>
+            {obyv && <div><dt>Dane na obyvateľa</dt><dd>{eur(h.posledny.danove_vynosy / obyv)}</dd></div>}
+            {h.dlhPosledny?.pomer != null && <div><dt>Dlh {h.rokDlh}</dt><dd>{h.dlhPosledny.pomer.toLocaleString('sk-SK', { maximumFractionDigits: 1 })} % príjmov</dd></div>}
+          </dl>
+        )}
+        <p class="rz-odkazy"><a href={m.slug === 'bratislava' ? '/bratislava/financie' : `/${m.slug}/dane`}>{m.slug === 'bratislava' ? 'Financie mesta' : 'Kam idú dane'} →</a> · <a href={`/${m.slug}/zastupitelstvo`}>Nové zastupiteľstvo →</a></p>
+      </article>
+    ))}
+  </section>
+
+  <section class="card pozn-blok">
+    <h2>Ako to funguje</h2>
+    <ul>
+      <li>Návrh rozpočtu mesto zverejní najmenej 15 dní pred schvaľovaním, aby sa k nemu mohli vyjadriť obyvatelia (§ 9 ods. 2 zákona č. 583/2004 Z. z. o rozpočtových pravidlách územnej samosprávy). Stanovisko k nemu pripravuje hlavný kontrolór.</li>
+      <li>Ak zastupiteľstvo rozpočet do 31. decembra neschváli, mesto hospodári v rozpočtovom provizóriu – každý mesiac môže minúť najviac 1/12 výdavkov z rozpočtu predchádzajúceho roka (§ 11 toho istého zákona).</li>
+      <li>Dokumenty hľadáme automaticky na webe a úradnej tabuli mesta (názov obsahuje rozpočet a rok {ROK}). Výnosy, náklady a dane na obyvateľa sú z účtovných závierok v registri účtovných závierok (bez mestských častí pri Bratislave a Košiciach), dlh z údajov Ministerstva financií SR.</li>
+    </ul>
+    {data.aktualizovane && <p class="pozn">Naposledy kontrolované {datum(data.aktualizovane)}.</p>}
+  </section>
+</Base>
+
+<style>
+  .rz-poslat { margin: 14px 0 0; }
+  .rz-cisla { list-style: none; padding: 0; margin: 0 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+  .rz-cisla li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+  .rz-cisla b { font-size: 1.6rem; letter-spacing: -0.02em; }
+  .rz-cisla span { font-size: 0.86rem; color: var(--muted); }
+  .rz-mesta { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-bottom: 16px; }
+  .rz-mesto { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .rz-mesto header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; }
+  .rz-mesto h2 { margin: 0; font-size: 1.15rem; }
+  .rz-stav { font-size: 0.8rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); }
+  .rz-stav.ok { background: color-mix(in srgb, #16a34a 14%, transparent); border-color: color-mix(in srgb, #16a34a 45%, transparent); }
+  .rz-stav.navrh { background: color-mix(in srgb, var(--accent) 12%, transparent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+  .rz-stav.caka { color: var(--muted); }
+  .rz-dok { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .rz-dok li { display: flex; flex-direction: column; gap: 2px; font-size: 0.9rem; }
+  .rz-dok a { overflow-wrap: anywhere; }
+  .rz-dok small { color: var(--muted); font-size: 0.78rem; }
+  .rz-h { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; padding-top: 10px; border-top: 1px solid var(--line); }
+  .rz-h dt { font-size: 0.76rem; color: var(--muted); }
+  .rz-h dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .rz-odkazy { margin: auto 0 0; font-size: 0.88rem; }
+  .pozn, .pozn-blok ul { font-size: 0.88rem; }
+  .pozn { color: var(--muted); }
+</style>

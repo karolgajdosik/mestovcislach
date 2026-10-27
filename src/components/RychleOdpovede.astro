@@ -1,0 +1,31 @@
+---
+// Rýchle odpovede na časté otázky o meste (to, čo ľudia píšu do vyhľadávača) – z rovnakých dát ako zvyšok webu.
+// Na stránke ako rozbaľovacie otázky; pre vyhľadávače aj ako FAQPage (JSON-LD v Base cez prop jsonld).
+import { otazkyMesta } from '../lib/odpovede';
+const { slug } = Astro.props as { slug: string };
+const otazky = otazkyMesta(slug);
+---
+{otazky.length > 0 && (
+  <section class="card ro" id="rychle-odpovede" aria-labelledby="ro-h">
+    <h2 id="ro-h">Rýchle odpovede</h2>
+    <div class="ro-zoznam">
+      {otazky.map((o, i) => (
+        <details open={i < 2}>
+          <summary>{o.otazka}</summary>
+          <p>{o.odpoved}{o.odkaz && <> <a href={o.odkaz}>Viac →</a></>}</p>
+          <p class="ro-zdroj">{o.zdroj}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .ro { margin-top: 16px; }
+  .ro-zoznam { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 8px 16px; }
+  .ro details { border-bottom: 1px solid var(--line); padding: 10px 0; }
+  .ro summary { cursor: pointer; font-weight: 600; list-style-position: outside; }
+  .ro summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .ro details p { margin: 8px 0 0; }
+  .ro .ro-zdroj { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+</style>

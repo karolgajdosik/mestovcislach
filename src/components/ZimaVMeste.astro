@@ -1,0 +1,78 @@
+---
+// Zima v meste (mid-október – mid-apríl): mráz a sneh na 7 dní (Open-Meteo), výstrahy SHMÚ a ovzdušie počas
+// vykurovacej sezóny (živé údaje ako v lište „Teraz“). Všetko sa načíta v prehliadači.
+import type { Mesto } from '../mesta';
+const { m } = Astro.props as { m: Mesto };
+const d = new Date();
+const md = (d.getMonth() + 1) * 100 + d.getDate();
+const sezona = md >= 1015 || md <= 415;
+---
+{sezona && (
+  <section class="card zima" id="zima" aria-labelledby="zima-h" data-stred={JSON.stringify(m.stred)} data-mesto={m.slug}>
+    <h2 id="zima-h">Zima <span translate="no">{m.v}</span></h2>
+    <p class="zima-suhrn" role="status" aria-live="polite">Načítavam predpoveď…</p>
+    <ol class="zima-dni" aria-label="Predpoveď na 7 dní"></ol>
+    <ul class="zima-info">
+      <li class="zima-vystrahy" hidden></li>
+      <li class="zima-ovzdusie" hidden></li>
+      <li>V zime sa ovzdušie v mestách zhoršuje kvôli vykurovaniu a bezvetriu – pri smogovej situácii obmedzte pobyt vonku a vetrajte krátko.</li>
+    </ul>
+    <p class="zdroj">Predpoveď: <a href="https://open-meteo.com/">Open-Meteo</a> (CC BY 4.0); výstrahy SHMÚ; ovzdušie: merania SHMÚ.</p>
+  </section>
+)}
+
+<script>
+  import { zima, vystrahy, ovzdusie, javVystrahy } from '../scripts/zive';
+  const sek = document.querySelector<HTMLElement>('.zima');
+  if (sek) {
+    const stred = JSON.parse(sek.dataset.stred!) as [number, number];
+    const mesto = sek.dataset.mesto!;
+    const suhrn = sek.querySelector('.zima-suhrn')!;
+    const DNI = ['ne', 'po', 'ut', 'st', 'št', 'pi', 'so'];
+    zima(stred).then((dni) => {
+      const ol = sek.querySelector('.zima-dni')!;
+      for (const x of dni) {
+        const dt = new Date(`${x.den}T12:00:00`);
+        const li = document.createElement('li');
+        if (x.min <= 0) li.classList.add('mraz');
+        if (x.sneh > 0) li.classList.add('sneh');
+        li.innerHTML = `<b>${DNI[dt.getDay()]} ${dt.getDate()}. ${dt.getMonth() + 1}.</b><span class="t">${x.max}° / <strong>${x.min}°</strong></span><span class="s">${x.sneh > 0 ? `sneh ${x.sneh.toLocaleString('sk-SK')} cm` : x.stav}</span>`;
+        li.setAttribute('aria-label', `${DNI[dt.getDay()]} ${dt.getDate()}. ${dt.getMonth() + 1}.: najvyššia ${x.max} °C, najnižšia ${x.min} °C${x.sneh > 0 ? `, sneh ${x.sneh} cm` : `, ${x.stav}`}`);
+        ol.append(li);
+      }
+      const mraz = dni.filter((x) => x.min <= 0), sneh = dni.filter((x) => x.sneh > 0);
+      const najnizsia = Math.min(...dni.map((x) => x.min));
+      const casti = [];
+      casti.push(mraz.length ? `${mraz.length} ${mraz.length === 1 ? 'noc' : mraz.length < 5 ? 'noci' : 'nocí'} s mrazom (najnižšie ${najnizsia} °C)` : `bez mrazu (najnižšie ${najnizsia} °C)`);
+      if (sneh.length) casti.push(`sneženie ${sneh.length === 1 ? 'v jeden deň' : `v ${sneh.length} dňoch`} (spolu ${sneh.reduce((a, x) => a + x.sneh, 0).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} cm)`);
+      if (dni.some((x) => [56, 57, 66, 67].includes(x.kod))) casti.push('pozor na mrznúci dážď a poľadovicu');
+      suhrn.textContent = `Najbližších 7 dní: ${casti.join(', ')}.`;
+    }).catch(() => { suhrn.textContent = 'Predpoveď sa teraz nepodarilo načítať.'; });
+    vystrahy(mesto).then((v: any) => {
+      const zoz = (v?.vystrahy ?? []) as any[];
+      if (!zoz.length) return;
+      const li = sek.querySelector<HTMLElement>('.zima-vystrahy')!;
+      li.textContent = `Výstraha SHMÚ: ${[...new Set(zoz.map((x) => javVystrahy(x.udalost)))].join(', ')}.`;
+      li.hidden = false;
+    }).catch(() => {});
+    ovzdusie(mesto).then((o: any) => {
+      if (!o?.mesto?.kategoria) return;
+      const li = sek.querySelector<HTMLElement>('.zima-ovzdusie')!;
+      li.textContent = `Ovzdušie teraz: ${o.mesto.kategoria.nazov.toLowerCase()}.`;
+      li.hidden = false;
+    }).catch(() => {});
+  }
+</script>
+
+<style>
+  .zima { margin-top: 16px; }
+  .zima-suhrn { font-weight: 600; }
+  .zima-dni { list-style: none; padding: 0; margin: 12px 0; display: grid; grid-template-columns: repeat(7, minmax(84px, 1fr)); gap: 6px; overflow-x: auto; }
+  .zima-dni li { display: flex; flex-direction: column; gap: 2px; padding: 8px; border: 1px solid var(--line); border-radius: 10px; font-size: 0.85rem; }
+  .zima-dni li.mraz { border-color: color-mix(in srgb, #2563eb 55%, var(--line)); background: color-mix(in srgb, #2563eb 8%, transparent); }
+  .zima-dni li.sneh { background: color-mix(in srgb, #2563eb 14%, transparent); }
+  .zima-dni .t { font-variant-numeric: tabular-nums; }
+  .zima-dni .s { color: var(--muted); font-size: 0.78rem; }
+  .zima-info { padding-left: 20px; font-size: 0.9rem; display: grid; gap: 4px; }
+  .zdroj { font-size: 0.8rem; color: var(--muted); }
+</style>

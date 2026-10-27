@@ -44,6 +44,15 @@ export const pocasie = (stred: [number, number] = [48.1486, 17.1077]) => zCache(
   };
 });
 
+// Zima: 7-dňová predpoveď mrazu a snehu (Open-Meteo)
+export const zima = (stred: [number, number] = [48.1486, 17.1077]) => zCache(`zima:${stred.join(',')}`, async () => {
+  const d = await json(`https://api.open-meteo.com/v1/forecast?latitude=${stred[0]}&longitude=${stred[1]}&daily=temperature_2m_max,temperature_2m_min,snowfall_sum,weather_code&forecast_days=7&timezone=Europe%2FBratislava`);
+  return (d.daily.time as string[]).map((den, i) => ({
+    den, min: Math.round(d.daily.temperature_2m_min[i]), max: Math.round(d.daily.temperature_2m_max[i]),
+    sneh: Math.round((d.daily.snowfall_sum[i] ?? 0) * 10) / 10, stav: POCASIE[d.daily.weather_code[i]] ?? '', kod: d.daily.weather_code[i] as number,
+  }));
+});
+
 export const vystrahy = (mesto = 'bratislava') => zCache(`vystrahy:${mesto}`, () => json(`/api/vystrahy${mesto === 'bratislava' ? '' : `?mesto=${mesto}`}`));
 export const dunaj = (rieka = 'dunaj') => zCache(`rieka:${rieka}`, async () => {
   const d = await json(`/api/dunaj${rieka === 'dunaj' ? '' : `?rieka=${rieka}`}`);
