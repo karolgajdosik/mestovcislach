@@ -41,7 +41,10 @@ def je_rozpocet(text: str) -> bool:
     t = re.sub(r"/20\d\d/\d\d/", "/", text.lower())  # priečinok nahratia vo WordPresse (…/2027/01/…) nie je rok rozpočtu
     # rok ako začiatok obdobia („na rok 2027“, „2027 – 2029“), nie koniec viacročného rozpočtu („2025 – 2027“)
     rok = re.search(rf"(?<!\d)(?<!\d\d\d\d[-–_ ])(?<!\d\d\d\d [-–] )(?<!\d\d\d\d_){ROK}(?!\d)", t)
-    return bool(re.search(r"rozpo[cč]|rozpocet|rozpoctu", t)) and bool(rok) and not re.search(r"participat|dotáci|dotaci|grant|monitorova|plneni|zmena|zmenu|opatren", t)
+    # rozpočet na predchádzajúci rok „s výhľadom na roky 2027 – 2028“ – v názve je aj rok ROK-1
+    predch = re.search(rf"(?<!\d){ROK - 1}(?!\d)", t)
+    return (bool(re.search(r"rozpo[cč]|rozpocet|rozpoctu", t)) and bool(rok) and not predch
+            and not re.search(r"participat|dotáci|dotaci|grant|monitorova|plneni|zmena|zmenu|opatren", t))
 
 
 def druh(text: str) -> str:
@@ -120,7 +123,10 @@ def main() -> int:
                 chyby.append(f"{typ}: {type(e).__name__}")
         # raz nájdený dokument si pamätáme (stránky sa menia), dátum prvého výskytu
         for u, d in predtym.items():
-            najdene.setdefault(u, d)
+            if je_rozpocet(f"{d['nazov']} {u}"):  # po spresnení pravidiel vypadnú staré omyly
+                najdene.setdefault(u, d)
+        # dokument nahratý pred polovicou predchádzajúceho roka nie je návrh na sledovaný rok
+        najdene = {u: d for u, d in najdene.items() if not d.get("datum") or d["datum"] >= f"{ROK - 1}-06-01"}
         dok = []
         for u, d in najdene.items():
             dok.append({"nazov": d["nazov"][:200], "url": u, "druh": druh(d["nazov"] + " " + u),
