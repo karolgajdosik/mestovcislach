@@ -1,8 +1,17 @@
-http://mestovcislach.sk/ 301 https://mestovcislach.sk/ None None
-https://www.mestovcislach.sk/ 301 https://mestovcislach.sk/ None None
-https://mestovcislach.sk/trnava/volby 308 /trnava/volby/ None None
-https://mestovcislach.pages.dev/ 200 None noindex gzip
-https://mestovcislach.sk/neexistuje/ 404 None None gzip
-https://mestovcislach.sk/sitemap.xml 200 None None gzip
-BA volby prenesené kB: 68 br
+bratislava WP False 403 []
+    [('https://www.bratislava.sk/api/official-board-feed', 'RSS Úradná tabuľa')]
+trnava WP False 404 []
+    [('/stranka/projekty', 'Projekty spolufinancovan&#233; z extern&'), ('/stranka/projekty#projekty-zrealizovane-s-financnou-podporou-na-narodnej-urovni', ''), ('/stranka/rozpocet-a-zaverecny-ucet', 'Rozpočet'), ('/stranka/uradna-tabula', '&#218;radn&#225; tabuľa'), ('/uradna-tabula', '&#218;radn&#233; oznamy'), ('/uradna-tabula', 'Všetky oznamy'), ('/uradna-tabula/14897/zamer-prevodu-majetkuformou-predaja-vodne-stavby', 'Z&#225;mer prevodu majetku&#160;formou p'), ('/uradna-tabula/14904/zamer-prenajat-majetok-mesta-trnava-pozemok-pod-garazou-na-ulici-bedricha-smetanu', 'Z&#225;mer prenajať majetok mesta Trnava')]
+trencin WP True 200 ['bod 22 Informácia o rozpočtových opatreniach vykonaných prim 2026-09-09', 'bod 21 Monitorovacia správa k plneniu Programového rozpočtu  2026-09-09', 'bod 21 Monitorovacia správa k plneniu Programového rozpočtu  2026-09-09', 'bod 4 Návrh na zmenu Programového rozpočtu 2026-09-09', 'bod 4 Návrh na zmenu Programového rozpočtu 2026-09-09']
+    [('https://trencin.sk/samosprava/transparentny-trencin/uradna-tabula/', 'Úradná tabuľa')]
+nitra WP True 200 ['Zmena rozpočtu po rozpočtovom opatrení č.6 (materiál č. 1377 2026-10-05', '– Vyhodnotenie plnenia rozpočtu mesta Nitry k 30.06.2026 2026-09-08', 'Vyhodnotenie plnenia rozpočtu mesta Nitry k 31.03.2026 2026-09-08', '– Vyhodnotenie plnenia rozpočtu mesta Nitry k 31.03.2026 2026-09-08', 'Voľné pracovné miesto na pracovnú pozíciu: Referent technik  2026-07-09']
+    [('https://nitra.sk/komisie-mestskeho-zastupitelstva/komisia-mestskeho-zastupitelstva-v-nitre-pre-financovanie-spravu-majetku-a-podnikatelsku-cinnost/', 'Komisia pre financovanie, správu majetku'), ('https://nitra.sk/rozpocet-zaverecny-ucet-a-rozpoctove-pravidla/', 'Rozpočet, záverečný účet a rozpočtové pr'), ('https://nitra.sk/statistici-zistuju-financnu-situaciu-a-spotrebu-domacnosti/', 'Štatistici zisťujú finančnú situáciu a\xa0s'), ('https://nitra.sk/uradna-tabula/', 'Úradná tabuľa')]
+zilina WP True 200 ['Rozpočet mesta Žilina na rok 2026 – zmena rozpočtu rozpočtov 2026-10-09', '10. Rozpočet mesta Žilina na rok 2026 – zmena rozpočtu rozpo 2026-09-14', '9. Rozpočet mesta Žilina na rok 2026 – zmena rozpočtu rozpoč 2026-09-14', 'ROZPOČET MESTA ŽILINA NA ROK 2026 – ZMENA ROZPOČTU ROZPOČTOV 2026-08-24', 'Rozpočet mesta Žilina na rok 2026 – zmena rozpočtu rozpočtov 2026-08-21']
+    [('https://zilina.sk/mesto-zilina/transparentne-mesto/uradna-tabula/', 'Úradná tabuľa'), ('https://zilina.sk/socialna-pomoc-a-byvanie/financna-podpora/', 'Finančná podpora'), ('https://zilina.sk/socialna-pomoc-a-byvanie/financna-podpora/jednorazova-davka-hmotnej-pomoci/', 'Jednorazová dávka v\xa0hmotnej núdzi'), ('https://zilina.sk/socialna-pomoc-a-byvanie/financna-podpora/poskytovanie-financneho-prispevku-na-prevadzku-socialnej-sluzby/', 'Poskytovanie finančného príspevku na pre')]
+banska-bystrica WP True 200 []
+    [('https://egov.banskabystrica.sk/default.aspx?NavigationState=610:0:', 'Úradná tabuľa'), ('https://egov.banskabystrica.sk/default.aspx?NavigationState=610:0:', 'Úradná tabuľa mesta'), ('https://spolupracovna.banskabystrica.sk', 'Participatívny rozpočet'), ('https://www.banskabystrica.sk/oznamy-mesta/2026/o-dotacie-z-rozpoctu-mesta-je-mozne-poziadat-do-31-oktobra-2026/', 'Dotácie z rozpočtu mesta je možné požiad'), ('https://www.banskabystrica.sk/oznamy-mesta/2026/o-dotacie-z-rozpoctu-mesta-je-mozne-poziadat-do-31-oktobra-2026/', 'Publikované\n      12.10.2026\n    \n    \n '), ('https://www.banskabystrica.sk/oznamy-mesta/2026/zistovanie-o-financiach-a-spotrebe-domacnosti-hfcs/', 'Publikované\n      13.10.2026\n    \n    \n '), ('https://www.banskabystrica.sk/samosprava/otvorena-samosprava-ogp-local/participativny-rozpocet/', ''), ('https://www.banskabystrica.sk/sekcie/oddelenia/ekonomicky-odbor/oddelenie-miestnych-dani-a-poplatkov/', 'Dane')]
+presov WP False 200 []
+    []
+kosice WP False 404 []
+    [('/clanky/skupina/uradna-tabula', 'Prejsť na úplnú Úradnú tabuľu'), ('/clanky/skupina/uradna-tabula', 'Úradné oznamy'), ('/mesto/ekonomika', 'Ekonomika')]
 HOTOVO
