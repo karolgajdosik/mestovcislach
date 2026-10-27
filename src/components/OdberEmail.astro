@@ -3,12 +3,12 @@
 // Zobrazí sa, až keď existuje public/data/odber-brevo.json (scripts/odber_email.py nastavenie).
 import fs from 'node:fs';
 import path from 'node:path';
-const { kanal, vyberId, popis } = Astro.props as { kanal?: string; vyberId?: string; popis: string };
+const { kanal, vyberId, popis, nadpis = 'Alebo e-mailom' } = Astro.props as { kanal?: string; vyberId?: string; popis: string; nadpis?: string };
 const zapnute = fs.existsSync(path.join(process.cwd(), 'public', 'data', 'odber-brevo.json'));
 ---
 {zapnute && (
   <section class="card odber" aria-labelledby="odber-h">
-    <h2 id="odber-h">Alebo e-mailom</h2>
+    <h2 id="odber-h">{nadpis}</h2>
     <p>{popis} Súhrn chodí ráno, len keď je niečo nové.</p>
     <form class="odber-form" data-kanal={kanal ?? ''} data-vyber={vyberId ?? ''} novalidate>
       <label for="odber-email">E-mailová adresa</label>

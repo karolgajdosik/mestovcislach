@@ -1,0 +1,40 @@
+---
+// Tlačidlo „Poslať známemu“ – na mobile systémová ponuka zdieľania (WhatsApp, Messenger…), inak skopíruje odkaz.
+// Väčšina návštev prichádza z odkazov poslaných v správach (Cloudflare: „priamo“), preto je zdieľanie výrazné.
+const { text = '', popis = 'Poslať známemu' } = Astro.props as { text?: string; popis?: string };
+---
+<span class="poslat">
+  <button type="button" class="poslat-btn" data-text={text}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+    <span>{popis}</span>
+  </button>
+  <span class="poslat-stav" role="status" aria-live="polite"></span>
+</span>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.poslat-btn').forEach((b) => {
+    if (b.dataset.pripojene) return;
+    b.dataset.pripojene = '1';
+    b.addEventListener('click', async () => {
+      const stav = b.parentElement!.querySelector('.poslat-stav')!;
+      const url = location.origin + location.pathname;
+      const text = b.dataset.text || document.title.replace(/ – mestovcislach\.sk$/, '');
+      try {
+        if (navigator.share) { await navigator.share({ title: document.title, text, url }); return; }
+        await navigator.clipboard.writeText(url);
+        stav.textContent = 'Odkaz je skopírovaný – vložte ho do správy.';
+      } catch (e) {
+        if ((e as Error).name !== 'AbortError') stav.textContent = `Skopírujte odkaz: ${url}`;
+      }
+    });
+  });
+</script>
+
+<style>
+  .poslat { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .poslat-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; border: 0; background: var(--accent); color: var(--na-akcente, #fff); font: inherit; font-weight: 600; cursor: pointer; min-height: 44px; }
+  .poslat-btn:hover { filter: brightness(1.08); }
+  .poslat-btn:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; }
+  .poslat-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+  .poslat-stav { font-size: 0.86rem; color: var(--muted); }
+</style>

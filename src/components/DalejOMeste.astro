@@ -1,0 +1,42 @@
+---
+// Pás na konci stránok volieb: poslať výsledky ďalej, kam ďalej v meste a odber noviniek e-mailom.
+// Stránky volieb sú najčastejší vstup na web (Cloudflare Web Analytics, týždeň volieb 2026).
+import type { Mesto } from '../mesta';
+import { maOdchody } from '../lib/odchody';
+import PoslatZnamemu from './PoslatZnamemu.astro';
+import OdberEmail from './OdberEmail.astro';
+
+const { m, zdielanie = 'Výsledky volieb' } = Astro.props as { m: Mesto; zdielanie?: string };
+const karty: [string, string, string][] = [
+  ['/volby-2026', 'Voľby 2026 v číslach', 'Noví primátori, obmena zastupiteľstiev, ženy a vek poslancov vo všetkých krajských mestách'],
+  [`/${m.slug}/kviz`, `Kvíz: poznáte mesto?`, `10 otázok o meste ${m.nazov} – obyvatelia, peniaze, doprava`],
+  [`/${m.slug}/pribeh`, '10 rokov v číslach', `Ako sa zmenilo mesto ${m.nazov}: ľudia, byty, autá, odpad`],
+  maOdchody(m.slug)
+    ? [`/${m.slug}/odchody`, 'Odchody MHD', 'Najbližšie spoje z vašej zastávky, aj podľa polohy']
+    : [`/porovnaj?a=${m.slug}`, 'Porovnať s iným mestom', 'Kde sa žije lepšie? Ukazovatele vedľa seba'],
+];
+---
+<section class="card dalej" aria-labelledby="dalej-h">
+  <div class="dalej-zdiel">
+    <p><strong>{zdielanie} {m.v}</strong> – pošlite ich ďalej.</p>
+    <PoslatZnamemu text={`${zdielanie} ${m.v}`} />
+  </div>
+  <h2 id="dalej-h">Ďalej o meste <span translate="no">{m.nazov}</span></h2>
+  <ul class="dalej-karty">
+    {karty.map(([href, nadpis, popis]) => (
+      <li><a href={href}><strong>{nadpis}</strong><span>{popis}</span></a></li>
+    ))}
+  </ul>
+</section>
+<OdberEmail kanal={m.slug} nadpis="Novinky e-mailom" popis={`Nové stavebné zámery a výstrahy SHMÚ ${m.v}.`} />
+
+<style>
+  .dalej { margin-top: 20px; }
+  .dalej-zdiel { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding-bottom: 16px; margin-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .dalej-zdiel p { margin: 0; }
+  .dalej-karty { list-style: none; padding: 0; margin: 12px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+  .dalej-karty a { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: inherit; }
+  .dalej-karty a:hover, .dalej-karty a:focus-visible { border-color: var(--accent); }
+  .dalej-karty strong { color: var(--accent); }
+  .dalej-karty span { font-size: 0.86rem; color: var(--muted); }
+</style>

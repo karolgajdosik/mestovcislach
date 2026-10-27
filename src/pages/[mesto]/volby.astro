@@ -8,6 +8,7 @@ import Base from '../../layouts/Base.astro';
 import '../../styles/stranka.css';
 import VolbyMapa from '../../components/VolbyMapa.astro';
 import VolbyPorovnanie from '../../components/VolbyPorovnanie.astro';
+import DalejOMeste from '../../components/DalejOMeste.astro';
 import { MESTA, type Mesto } from '../../mesta';
 import { mapaMesta } from '../../lib/mapa';
 import { skrat } from '../../lib/zastupitelstvo';
@@ -95,6 +96,7 @@ const kr = (s: string) => { const q = skrat(s).split(' + '); return q.length > 3
       </div>
     </section>
   )}
+  <DalejOMeste m={m} />
   <p class="pozn">Zdroj: Štatistický úrad SR – <a href="https://volbysr.sk/oso/sk/">volbysr.sk</a>. Pri kandidátoch uvádzame len meno, stranu a hlasy. Ďalšie mestá: {MESTA.filter((x) => x.aktivne && x.slug !== m.slug).map((x, i) => <>{i ? ' · ' : ''}<a href={x.plne ? `/${x.slug}/volby` : `/${x.slug}/volby`} translate="no">{x.nazov}</a></>)}</p>
 </Base>
 

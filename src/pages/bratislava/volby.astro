@@ -4,6 +4,8 @@ import path from 'node:path';
 import Base from '../../layouts/Base.astro';
 import KomunalneVolby from '../../components/KomunalneVolby.astro';
 import Hlasovania from '../../components/Hlasovania.astro';
+import DalejOMeste from '../../components/DalejOMeste.astro';
+import { MESTA } from '../../mesta';
 
 const nacitaj = (subor: string) => {
   const p = path.join(process.cwd(), 'data', subor);
@@ -126,6 +128,7 @@ const pripravene = volby.map((v) => {
       ))}
     </>
   )}
+  <DalejOMeste m={MESTA.find((x) => x.slug === 'bratislava')!} />
 </Base>
 
 <script>

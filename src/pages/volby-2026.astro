@@ -2,6 +2,7 @@
 // Komunálne voľby 2026 v číslach – súhrn za všetky krajské mestá (primátori, obmena zastupiteľstiev, strany, ženy, vek).
 // Len verejné výsledky ŠÚ SR: mená zvolených primátorov, inak iba počty. Mená poslancov sú na stránkach Zastupiteľstvo.
 import Base from '../layouts/Base.astro';
+import PoslatZnamemu from '../components/PoslatZnamemu.astro';
 import { MESTA } from '../mesta';
 import { obdobia, bezTitulov, skrat, type Obdobie } from '../lib/zastupitelstvo';
 
@@ -64,6 +65,7 @@ const popis = hotovo
     <p class="kicker">Komunálne voľby 24. októbra 2026</p>
     <h1>Voľby 2026 v číslach</h1>
     <p class="lead">Čo sa zmenilo v ôsmich krajských mestách: noví primátori, obmena zastupiteľstiev, sila strán a nezávislých, zastúpenie žien a vek poslancov. Porovnanie s voľbami 2022.</p>
+    {hotovo && <p class="v26-poslat"><PoslatZnamemu text="Komunálne voľby 2026 v krajských mestách v číslach" /></p>}
   </section>
 
   {!hotovo && <section class="card"><p>Konečné výsledky ešte nie sú spracované. Priebežný stav nájdete pri jednotlivých mestách na stránke Voľby.</p></section>}
@@ -168,6 +170,7 @@ const popis = hotovo
 </Base>
 
 <style>
+  .v26-poslat { margin: 14px 0 0; }
   .v26-cisla { list-style: none; padding: 0; margin: 0 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
   .v26-cisla li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
   .v26-cisla b { font-size: 1.7rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
