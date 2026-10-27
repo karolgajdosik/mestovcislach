@@ -172,7 +172,13 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
           <svg class="sipka" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
         </a>
 
-        <Hladanie />
+        <div class="hlava-stred">
+          <Hladanie />
+          <a class="hlava-kviz" href={`/${mesto.slug}/kviz`} data-spolocna={spolocna ? '1' : undefined} aria-current={Astro.url.pathname.startsWith(`/${mesto.slug}/kviz`) ? 'page' : undefined}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" set:html={NOVE.find((x) => x[0] === 'kviz')![2]} />
+            <span>Kvíz{spolocna ? '' : <span class="hk-mesto"> o meste</span>}</span>
+          </a>
+        </div>
         <div class="hlava-akcie">
           {!spolocna && <a class="zvoncek" href={`/${mesto.slug}/upozornenia`} title="Upozornenia pre vašu mestskú časť" aria-label="Upozornenia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></a>}
           <Jazyk />
@@ -314,6 +320,9 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => { if (!a.getAttribute('href')?.startsWith('#')) menu.close(); }));
     // naposledy otvorené mesto pre rozcestník (len v tomto prehliadači)
     const tm = document.body.dataset.mesto;
+    // tlačidlo Kvíz v hlavičke na spoločných stránkach vedie do naposledy otvoreného mesta
+    const hk = document.querySelector<HTMLAnchorElement>('.hlava-kviz[data-spolocna]');
+    if (hk) { try { const p = JSON.parse(localStorage.getItem('mesto-posledne') || 'null'); if (p?.slug) { hk.href = `/${p.slug}/kviz`; hk.title = `Kvíz o meste ${p.nazov ?? ''}`.trim(); } } catch { /* bez úložiska */ } }
     if (tm) { try { localStorage.setItem('mesto-posledne', JSON.stringify({ slug: tm, nazov: document.body.dataset.mestoNazov })); } catch { /* bez úložiska */ } }
     document.querySelector('.dl-asistent')?.addEventListener('click', () => (document.getElementById('ai-otvor') as HTMLButtonElement | null)?.click());
   }
@@ -491,6 +500,15 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
   .logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; letter-spacing: -0.02em; flex-shrink: 0; color: var(--text); }
   .logo span { color: var(--accent); }
   .hlava-akcie { display: flex; align-items: center; margin-left: auto; flex-shrink: 0; }
+  /* vyhľadávanie a hneď vedľa neho Kvíz (len počítač – na mobile je Kvíz v dolnej lište) */
+  .hlava-stred { display: flex; align-items: center; gap: 8px; flex: 1 1 auto; min-width: 0; max-width: 680px; margin: 0 auto; }
+  .hlava .hlava-stred .hl-tlacidlo { margin: 0; max-width: none; }
+  .hlava-kviz { display: none; align-items: center; gap: 6px; flex-shrink: 0; height: 38px; padding: 0 14px 0 11px; border-radius: 19px; background: var(--accent); color: var(--na-akcente, #fff); text-decoration: none; font-weight: 700; font-size: 0.92rem; white-space: nowrap; }
+  .hlava-kviz:hover { filter: brightness(1.08); }
+  .hlava-kviz[aria-current='page'] { background: var(--text); color: var(--card); }
+  .hlava-kviz svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  @media (min-width: 1100px) { .hlava-kviz { display: inline-flex; } }
+  @media (min-width: 1100px) and (max-width: 1240px) { .hk-mesto { display: none; } }
   .zvoncek { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 6px; border: 1px solid var(--line); border-radius: 18px; background: var(--bg); color: var(--muted); }
   .zvoncek:hover { border-color: var(--muted); color: var(--text); }
   .zvoncek svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
