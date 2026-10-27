@@ -1,15 +1,28 @@
-Bratislava nejasné 0 nenájdené 374
-  obvod 1 {'Staré Mesto': 1}
-  obvod 3 {'Ružinov': 5}
-  obvod 6 {'Rača': 1}
-  obvod 8 {'Dúbravka': 1}
-  obvod 10 {'Petržalka': 6}
-  MČ riadky VOOBEC príklady [(('Ružinov', '4'), 24), (('Ružinov', '1'), 23), (('Ružinov', '2'), 19), (('Petržalka', '1'), 18), (('Petržalka', '3'), 18), (('Petržalka', '6'), 17), (('Devínska Nová Ves', '1'), 15), (('Petržalka', '5'), 15), (('Petržalka', '2'), 14), (('Petržalka', '4'), 14), (('Rača', '1'), 12), (('Dúbravka', '2'), 9), (('Karlova Ves', '2'), 9), (('Ružinov', '3'), 8), (('Nové Mesto', '1'), 8), (('Nové Mesto', '2'), 8), (('Nové Mesto', '3'), 8), (('Nové Mesto', '4'), 8), (('Dúbravka', '3'), 8), (('Karlova Ves', '3'), 8), (('Podunajské Biskupice', '2'), 7), (('Dúbravka', '1'), 7), (('Dúbravka', '4'), 7), (('Karlova Ves', '4'), 7), (('Staré Mesto', '7'), 6), (('Karlova Ves', '1'), 6), (('Lamač', '1'), 6), (('Podunajské Biskupice', '1'), 5), (('Vajnory', '1'), 5), (('Záhorská Bystrica', '1'), 5), (('Staré Mesto', '1'), 4), (('Staré Mesto', '2'), 4), (('Staré Mesto', '3'), 4), (('Staré Mesto', '4'), 4), (('Staré Mesto', '5'), 4), (('Staré Mesto', '6'), 4), (('Staré Mesto', '8'), 4), (('Podunajské Biskupice', '3'), 4), (('Rača', '2'), 4), (('Rusovce', '1'), 4)]
-Košice nejasné 0 nenájdené 183
-  obvod 3 {'Sídlisko Ťahanovce': 1}
-  obvod 4 {'Staré Mesto': 1}
-  obvod 6 {'Sídlisko KVP': 1}
-  obvod 11 {'Juh': 1}
-  obvod 12 {'Nad jazerom': 3}
-  MČ riadky VOOBEC príklady [(('Sever', '1'), 18), (('Sídlisko Ťahanovce', '1'), 18), (('Západ', '3'), 12), (('Západ', '1'), 11), (('Nad jazerom', '2'), 11), (('Nad jazerom', '1'), 9), (('Západ', '2'), 8), (('Dargovských hrdinov', '2'), 8), (('Dargovských hrdinov', '3'), 8), (('Staré Mesto', '3'), 7), (('Staré Mesto', '1'), 6), (('Staré Mesto', '2'), 6), (('Juh', '1'), 6), (('Sídlisko KVP', '2'), 5), (('Sídlisko KVP', '3'), 5), (('Juh', '2'), 5), (('Sídlisko KVP', '1'), 4), (('Sídlisko KVP', '4'), 4), (('Dargovských hrdinov', '1'), 4), (('Juh', '3'), 4), (('Krásna', '1'), 4), (('Šaca', '1'), 3), (('Barca', '1'), 3), (('Juh', '4'), 3), (('Vyšné Opátske', '1'), 3), (('Ťahanovce', '1'), 2), (('Luník IX', '1'), 2), (('Myslava', '1'), 2), (('Pereš', '1'), 2), (('Košická Nová Ves', '1'), 2), (('Džungľa', '1'), 1), (('Kavečany', '1'), 1), (('Lorinčík', '1'), 1), (('Poľov', '1'), 1), (('Šebastovce', '1'), 1)]
+Bratislava MČ bez zhody []
+  obvod 1 okrskov 34 ['Staré Mesto(29/33, okrskov 34)']
+  obvod 2 okrskov 16 ['Podunajské Biskupice(14/16, okrskov 16)']
+  obvod 3 okrskov 74 ['Ružinov(56/73, okrskov 74)']
+  obvod 4 okrskov 14 ['Vrakuňa(12/14, okrskov 14)']
+  obvod 5 okrskov 32 ['Nové Mesto(28/31, okrskov 32)']
+  obvod 6 okrskov 24 ['Rača(16/19, okrskov 19)', 'Vajnory(4/6, okrskov 5)']
+  obvod 7 okrskov 17 ['Devínska Nová Ves(11/15, okrskov 15)', 'Devín(2/2, okrskov 2)']
+  obvod 8 okrskov 42 ['Dúbravka(23/32, okrskov 31)', 'Lamač(6/6, okrskov 6)', 'Záhorská Bystrica(4/5, okrskov 5)']
+  obvod 9 okrskov 30 ['Karlova Ves(26/32, okrskov 30)']
+  obvod 10 okrskov 96 ['Petržalka(76/93, okrskov 96)']
+  obvod 11 okrskov 9 ['Jarovce(2/3, okrskov 3)', 'Čunovo(2/2, okrskov 2)', 'Rusovce(3/4, okrskov 4)']
+Košice MČ bez zhody []
+  obvod 1 okrskov 18 ['Sever(16/18, okrskov 18)']
+  obvod 2 okrskov 4 ['Kavečany(1/1, okrskov 1)', 'Džungľa(1/1, okrskov 1)', 'Ťahanovce(2/2, okrskov 2)']
+  obvod 3 okrskov 18 ['Sídlisko Ťahanovce(16/18, okrskov 18)']
+  obvod 4 okrskov 19 ['Staré Mesto(16/18, okrskov 19)']
+  obvod 5 okrskov 31 ['Západ(29/31, okrskov 31)']
+  obvod 6 okrskov 18 ['Sídlisko KVP(15/18, okrskov 18)']
+  obvod 7 okrskov 4 ['Myslava(2/2, okrskov 2)', 'Luník IX(2/2, okrskov 2)']
+  obvod 8 okrskov 4 ['Poľov(1/1, okrskov 1)', 'Lorinčík(1/1, okrskov 1)', 'Pereš(2/2, okrskov 2)']
+  obvod 9 okrskov 3 ['Šaca(3/3, okrskov 3)']
+  obvod 10 okrskov 4 ['Barca(3/3, okrskov 3)', 'Šebastovce(1/1, okrskov 1)']
+  obvod 11 okrskov 18 ['Juh(16/18, okrskov 18)']
+  obvod 12 okrskov 20 ['Nad jazerom(18/20, okrskov 20)']
+  obvod 13 okrskov 9 ['Vyšné Opátske(2/3, okrskov 3)', 'Krásna(4/4, okrskov 4)', 'Košická Nová Ves(1/1, okrskov 2)']
+  obvod 14 okrskov 20 ['Dargovských hrdinov(19/21, okrskov 20)']
 HOTOVO
