@@ -80,6 +80,35 @@ def v(x: dict) -> int:
     return int((x.get("sum") or {}).get("visits") or 0)
 
 
+def nazvy_katalogu() -> dict[str, str]:
+    """id datasetu → názov (data/katalog-<mesto>.json v repozitári)."""
+    import json
+    from pathlib import Path
+    out = {}
+    for f in (Path(__file__).resolve().parent.parent / "data").glob("katalog-*.json"):
+        try:
+            for d in json.loads(f.read_text(encoding="utf-8")).get("datasety", []):
+                out[d["id"]] = d.get("nazov", "")
+        except (ValueError, KeyError, AttributeError):
+            pass
+    return out
+
+
+_KATALOG: dict[str, str] | None = None
+
+
+def citatelne(cesta: str) -> str:
+    """/kosice/katalog/<id>/ → „/kosice/katalog: Názov datasetu“."""
+    global _KATALOG
+    import re
+    m = re.match(r"^/([^/]+)/katalog/([0-9a-f]{32})/?$", cesta)
+    if not m:
+        return cesta
+    _KATALOG = _KATALOG if _KATALOG is not None else nazvy_katalogu()
+    n = _KATALOG.get(m.group(2))
+    return f"/{m.group(1)}/katalog: {n[:70]}" if n else cesta
+
+
 def tabulka(nadpis: str, riadky: list[tuple[str, int]], spolu: int) -> str:
     if not riadky:
         return ""
@@ -104,7 +133,7 @@ def main() -> int:
     zmena = f"{'+' if spolu >= pred else '−'}{abs(round(100 * (spolu - pred) / pred))} % oproti predchádzajúcemu týždňu" if pred else "prvý týždeň merania"
     dni = [(date.fromisoformat(x["dimensions"]["date"]).strftime("%a %d. %m.").replace("Mon", "po").replace("Tue", "ut").replace("Wed", "st").replace("Thu", "št").replace("Fri", "pi").replace("Sat", "so").replace("Sun", "ne"), v(x)) for x in s["dni"]]
     naj = max(dni, key=lambda x: x[1]) if dni else None
-    stranky = [(x["dimensions"]["requestPath"] or "/", v(x)) for x in s["stranky"]]
+    stranky = [(citatelne(x["dimensions"]["requestPath"] or "/"), v(x)) for x in s["stranky"]]
     zdroje = [((x["dimensions"]["refererHost"] or "priamo / správy").replace("www.", ""), v(x)) for x in s["zdroje"]]
     zariadenia = [({"desktop": "počítač", "mobile": "mobil", "tablet": "tablet"}.get(x["dimensions"]["deviceType"], x["dimensions"]["deviceType"] or "iné"), v(x)) for x in s["zariadenia"]]
     krajiny = [(x["dimensions"]["countryName"] or "neznáma", v(x)) for x in s["krajiny"]]
