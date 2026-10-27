@@ -1,6 +1,7 @@
-import requests
-for c in ["juh","sever","stare-mesto"]:
+import requests,re
+for u in ["https://mestovcislach.sk/","https://mestovcislach.sk/volby-2026/","https://mestovcislach.pages.dev/"]:
     try:
-        r=requests.get(f"https://mestovcislach.sk/kosice/mestske-casti/{c}/?v=2",timeout=60); print(c,r.status_code,r.headers.get("cf-cache-status"),r.headers.get("age"),r.headers.get("last-modified"),"Kto tu býva" in r.text,"Sčítanie" in r.text)
-    except Exception as e: print(c,e)
+        t=requests.get(u,timeout=60).text
+        print(u, "cloudflareinsights" in t, re.findall(r'data-cf-beacon=.{0,80}',t)[:1])
+    except Exception as e: print(u,e)
 print("HOTOVO")
