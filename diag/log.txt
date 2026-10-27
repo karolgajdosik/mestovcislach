@@ -1,7 +1,6 @@
-https://mestovcislach.sk/trnava/ True
-https://mestovcislach.sk/trnava/ True
-https://mestovcislach.sk/rozpocty-2027/ True
-https://mestovcislach.sk/kosice/zastupitelstvo/ True
-https://mestovcislach.sk/trnava/kalendar/ True
-open-meteo 200 [-0.4, 0.2, 8.7, 6.4, 5.6, 5.2, 4.8]
+Bratislava MČ 17 okrskov mesta 388 obvody ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+  tab0b obvody: [('10', 52), ('3', 48), ('1', 25), ('8', 25), ('5', 17), ('4', 13), ('2', 12), ('6', 12), ('9', 9), ('7', 5), ('11', 2)]
+  okrskov MČ spolu 388
+  tab0d stĺpce ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'počet volebných obvodov', 'počet okrskov', 'počet volených poslancov', 'typ volieb']
+  tab02b stĺpce ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'VOOBEC', 'OKRSOK', 'P_ZAP', 'P_ZUC', 'účasť voličov v %', 'P_OO', 'podiel odovzdaných obálok v %', 'počet platných hlasovacích lístkov odovzdaných pre voľby do zastupiteľstva', 'počet platných hlasovacích lístkov odovzdaných pre voľby starostu']
 HOTOVO
