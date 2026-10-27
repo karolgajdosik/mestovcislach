@@ -130,4 +130,12 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except Exception as e:  # noqa: BLE001
+        detail = ""
+        if isinstance(e, requests.HTTPError) and e.response is not None:
+            detail = f" ({e.response.request.method} {e.response.url.split('?')[0]}: {e.response.text[:300]})"
+        sprava = f"{type(e).__name__}: {e}{detail}".replace("%", "%25").replace("\r", "").replace("\n", "%0A")
+        print(f"::error title=Štatistiky::{sprava}")
+        sys.exit(1)
