@@ -1,4 +1,8 @@
-https://mestovcislach.sk/trnava/volby/ True True True
-https://mestovcislach.sk/bratislava/volby/ True True True
-https://mestovcislach.sk/volby-2026/ True False False
+http://mestovcislach.sk/ 301 https://mestovcislach.sk/ None None
+https://www.mestovcislach.sk/ 301 https://mestovcislach.sk/ None None
+https://mestovcislach.sk/trnava/volby 308 /trnava/volby/ None None
+https://mestovcislach.pages.dev/ 200 None noindex gzip
+https://mestovcislach.sk/neexistuje/ 404 None None gzip
+https://mestovcislach.sk/sitemap.xml 200 None None gzip
+BA volby prenesené kB: 68 br
 HOTOVO
