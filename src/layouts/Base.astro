@@ -16,11 +16,16 @@ interface Props {
   description?: string;
   /** štruktúrované údaje schema.org (JSON-LD) pre vyhľadávače */
   jsonld?: Record<string, any> | Record<string, any>[];
+  noindex?: boolean;
 }
-const { title: celyTitulok, description = 'Otvorené dáta o slovenských mestách a obciach – prehľadne a so zdrojmi.', jsonld } = Astro.props;
+const { title: celyTitulok, description: celyPopis = 'Otvorené dáta o slovenských mestách a obciach – prehľadne a so zdrojmi.', jsonld, noindex = false } = Astro.props;
+// popis vo výsledkoch vyhľadávania má ~155 znakov – dlhší skrátime na hranici slova
+const description = celyPopis.length <= 160 ? celyPopis : celyPopis.slice(0, 155).replace(/[\s,;:–-]+\S*$/, '') + '…';
 // vyhľadávače zobrazia ~60 znakov – dlhý prvý diel titulku (napr. názov datasetu) skrátime, prípona ostane
 // pri dlhom titulku vypadne „Katalóg dát“ a pod. (názov sa neskracuje, aby titulky ostali jedinečné)
-const title = celyTitulok.length <= 75 ? celyTitulok : celyTitulok.replace(/ – (Katalóg dát|Život v meste|Samospráva)(?= – [^–]+ – mestovcislach\.sk$| – mestovcislach\.sk$)/, '');
+const kratsi = celyTitulok.length <= 75 ? celyTitulok : celyTitulok.replace(/ – (Katalóg dát|Život v meste|Samospráva)(?= – [^–]+ – mestovcislach\.sk$| – mestovcislach\.sk$)/, '');
+// pri dlhom titulku vypadne prípona webu – Google názov webu ukazuje nad výsledkom samostatne
+const title = kratsi.length <= 65 ? kratsi : kratsi.replace(/ – mestovcislach\.sk$/, '');
 // Náhľadový obrázok pri zdieľaní (public/og/<sekcia>.png, generuje scripts/og_obrazky.py)
 // Hlavné menu: odkaz, názov, ikona (SVG cesty, ťah 1.8)
 const MENU_MESTA: [string, string, string][] = [
@@ -106,6 +111,22 @@ const sekcia = (casti[0] === mesto.slug ? casti[1] : casti[0]) ?? '';
 const ogMesta = !spolocna && sekcia && maSubor('public', 'og', `${sekcia}-${mesto.slug}.png`) ? `/og/${sekcia}-${mesto.slug}.png` : null;
 const ogObrazok = new URL(ogMesta ?? (OG.includes(sekcia) ? `/og/${sekcia}.png` : !spolocna ? `/og/mesto-${mesto.slug}.jpg` : '/og/index.png'), Astro.site ?? 'https://mestovcislach.sk');
 const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.sk');
+// Drobčeková navigácia pre vyhľadávače (BreadcrumbList): Domov › mesto › sekcia › stránka
+const WEB = 'https://mestovcislach.sk';
+const nazovStranky = title.replace(/ – mestovcislach\.sk$/, '').split(' – ')[0];
+const drobceky: [string, string][] = [['mestovčíslach.sk', `${WEB}/`]];
+if (spolocna) {
+  if (casti.length) drobceky.push([nazovStranky, adresa.href]);
+} else if (casti[0] === mesto.slug) {
+  drobceky.push([mesto.nazov, `${WEB}/${mesto.slug}/`]);
+  if (casti[1]) {
+    const sek = [...MENU_MESTA, ...NOVE].find((x) => x[0] === casti[1])?.[1] ?? (casti[1] === 'upozornenia' ? 'Čo je nové vo vašej štvrti' : null);
+    if (sek) drobceky.push([sek, `${WEB}/${mesto.slug}/${casti[1]}/`]);
+    if (casti.length > 2 || !sek) drobceky.push([nazovStranky, adresa.href]);
+  }
+}
+const drobcekyLd = drobceky.length > 1 ? { '@type': 'BreadcrumbList', itemListElement: drobceky.map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item })) } : null;
+const vsetkyLd = [...(Array.isArray(jsonld) ? jsonld : jsonld ? [jsonld] : []), ...(drobcekyLd ? [drobcekyLd] : [])];
 // na stránkach s mapou (vlastný ľavý panel) je bočné menu len pás ikon
 const fotoPas = fotoPreStranku(Astro.url.pathname);
 const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
@@ -119,6 +140,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -135,7 +157,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="sitemap" href="/sitemap.xml" />
-    {(Array.isArray(jsonld) ? jsonld : jsonld ? [jsonld] : []).map((j) => (
+    {vsetkyLd.map((j) => (
       <script is:inline type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', ...j }).replace(/</g, '\\u003c')} />
     ))}
   </head>
