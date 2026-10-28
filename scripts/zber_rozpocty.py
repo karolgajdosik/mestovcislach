@@ -26,20 +26,27 @@ UA = {"User-Agent": "Mozilla/5.0 (compatible; mestovcislach.sk; +https://mestovc
 
 # zdroje podľa mesta: ("wp", základ webu) | ("stranka", url) | ("rss", url)
 ZDROJE: dict[str, list[tuple[str, str]]] = {
-    "bratislava": [("rss", "https://www.bratislava.sk/api/official-board-feed"), ("stranka", "https://bratislava.sk/mesto-bratislava/transparentne-mesto/rozpocet")],
+    "bratislava": [("rss", "https://www.bratislava.sk/api/official-board-feed"), ("stranka", "https://zastupitelstvo.bratislava.sk/")],
     "trnava": [("stranka", "https://www.trnava.sk/stranka/rozpocet-a-zaverecny-ucet"), ("stranka", "https://www.trnava.sk/uradna-tabula")],
     "trencin": [("wp", "https://trencin.sk"), ("stranka", "https://trencin.sk/samosprava/transparentny-trencin/uradna-tabula/")],
     "nitra": [("wp", "https://nitra.sk"), ("stranka", "https://nitra.sk/rozpocet-zaverecny-ucet-a-rozpoctove-pravidla/")],
     "zilina": [("wp", "https://zilina.sk"), ("stranka", "https://zilina.sk/mesto-zilina/transparentne-mesto/uradna-tabula/")],
-    "banska-bystrica": [("wp", "https://www.banskabystrica.sk"), ("stranka", "https://www.banskabystrica.sk/samosprava/rozpocet-mesta/")],
-    "presov": [("stranka", "https://www.presov.sk/rozpocet-mesta.html"), ("stranka", "https://www.presov.sk/uradna-tabula.html")],
+    "banska-bystrica": [("wp", "https://www.banskabystrica.sk"), ("stranka", "https://www.banskabystrica.sk/samosprava/rozpocet-mesta/"),
+                        ("stranka", "https://egov.banskabystrica.sk/default.aspx?NavigationState=610:0:")],
+    # presov.sk je za overením hCaptcha (neobchádzame) – rozpočet a úradná tabuľa sú aj na egov.presov.sk
+    "presov": [("stranka", "https://egov.presov.sk/Default.aspx?NavigationState=440:0:"), ("stranka", "https://egov.presov.sk/Default.aspx?NavigationState=610:0:")],
     "kosice": [("stranka", "https://www.kosice.sk/mesto/ekonomika"), ("stranka", "https://www.kosice.sk/clanky/skupina/uradna-tabula")],
 }
 
 
 def je_rozpocet(text: str) -> bool:
-    t = text.lower()
-    return bool(re.search(r"rozpo[cč]|rozpocet|rozpoctu", t)) and str(ROK) in t and not re.search(r"participat|dotáci|dotaci|grant", t)
+    t = re.sub(r"/20\d\d/\d\d/", "/", text.lower())  # priečinok nahratia vo WordPresse (…/2027/01/…) nie je rok rozpočtu
+    # rok ako začiatok obdobia („na rok 2027“, „2027 – 2029“), nie koniec viacročného rozpočtu („2025 – 2027“)
+    rok = re.search(rf"(?<!\d)(?<!\d\d\d\d[-–_ ])(?<!\d\d\d\d [-–] )(?<!\d\d\d\d_){ROK}(?!\d)", t)
+    # rozpočet na predchádzajúci rok „s výhľadom na roky 2027 – 2028“ – v názve je aj rok ROK-1
+    predch = re.search(rf"(?<!\d){ROK - 1}(?!\d)", t)
+    return (bool(re.search(r"rozpo[cč]|rozpocet|rozpoctu", t)) and bool(rok) and not predch
+            and not re.search(r"participat|dotáci|dotaci|grant|monitorova|plneni|zmena|zmenu|opatren", t))
 
 
 def druh(text: str) -> str:
@@ -118,7 +125,10 @@ def main() -> int:
                 chyby.append(f"{typ}: {type(e).__name__}")
         # raz nájdený dokument si pamätáme (stránky sa menia), dátum prvého výskytu
         for u, d in predtym.items():
-            najdene.setdefault(u, d)
+            if je_rozpocet(f"{d['nazov']} {u}"):  # po spresnení pravidiel vypadnú staré omyly
+                najdene.setdefault(u, d)
+        # dokument nahratý pred polovicou predchádzajúceho roka nie je návrh na sledovaný rok
+        najdene = {u: d for u, d in najdene.items() if not d.get("datum") or d["datum"] >= f"{ROK - 1}-06-01"}
         dok = []
         for u, d in najdene.items():
             dok.append({"nazov": d["nazov"][:200], "url": u, "druh": druh(d["nazov"] + " " + u),
