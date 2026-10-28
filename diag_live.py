@@ -1,6 +1,7 @@
 import requests,time
-time.sleep(120)
-for u in ["https://mestovcislach.sk/kosice/zastupitelstvo/","https://mestovcislach.sk/bratislava/zastupitelstvo/","https://mestovcislach.sk/trnava/zastupitelstvo/"]:
-    t=requests.get(u+"?v=5",timeout=60).text; print(u,"Kto je môj poslanec" in t,"Devín, Devínska Nová Ves" in t or "Krásna" in t or "Volebný obvod č. 1" in t)
-d=requests.get("https://mestovcislach.sk/data/mesta/adresa/kosice.json",timeout=60).json(); print("KE adresa zastupcovia", bool(d.get("zastupcovia")), len((d.get("zastupcovia") or {}).get("mc",{})))
+time.sleep(150)
+m=requests.get("https://mestovcislach.sk/data/odber-brevo.json?v=6",timeout=30).json()
+print("zoznamy týždenník:",sorted(k for k in m["zoznamy"] if k.startswith("tyzdennik-")))
+d=requests.get("https://mestovcislach.sk/data/tyzdennik/kosice.json",timeout=30).json(); print("KE novinky",len(d["novinky"]),"termíny",[t["nazov"] for t in d["terminy"]])
+t=requests.get("https://mestovcislach.sk/trnava/?v=6",timeout=30).text; print("formulár na prehľade","Týždenník mesta e-mailom" in t)
 print("HOTOVO")
