@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { obdobia } from './zastupitelstvo';
 
+const bezTit = (m: string) => m.split(/[\s,]+/).filter((s) => s && !s.includes('.') && !/^(PhD|MBA|LL|MPH|MPA|DiS|CSc|ArtD|MSc)$/i.test(s)).join(' ');
+
 export type Novinka = { datum: string; typ: 'stavby' | 'zmluvy' | 'zastupitelstvo' | 'volby'; nazov: string; text: string; odkaz: string };
 export const TYPY_NOVINIEK: Record<Novinka['typ'], string> = { stavby: 'Čo sa stavia', zmluvy: 'Zmluvy mesta', zastupitelstvo: 'Zastupiteľstvo', volby: 'Voľby' };
 
@@ -75,7 +77,7 @@ export function novinky(slug: string, dni = 180): Novinka[] {
   if (o && Number(o.rok) >= 2026 && o.primator) {
     out.push({
       datum: '2026-10-24', typ: 'volby',
-      nazov: o.priebezne ? `Komunálne voľby ${o.rok}: priebežne vedie ${o.primator.meno}` : `Komunálne voľby ${o.rok}: primátorom(-kou) je ${o.primator.meno}`,
+      nazov: o.priebezne ? `Komunálne voľby ${o.rok}: priebežne vedie ${bezTit(o.primator.meno)}` : `Komunálne voľby ${o.rok}: ${/(ová|á)$/.test(bezTit(o.primator.meno)) ? 'primátorkou' : 'primátorom'} je ${bezTit(o.primator.meno)}`,
       text: o.priebezne ? 'Sčítavajú sa hlasy.' : `Zvolených ${o.poslancov} poslancov.`,
       odkaz: `/${slug}/zastupitelstvo`,
     });

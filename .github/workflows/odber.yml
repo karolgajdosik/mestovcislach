@@ -3,6 +3,7 @@ name: E-mailové upozornenia
 on:
   schedule:
     - cron: "15 4 * * *"  # ráno 5:15 / 6:15 SEČ/SELČ – po dennom zbere zmlúv a zámerov
+    - cron: "7 15 * * 5"  # piatok popoludní – týždenník mesta
   workflow_dispatch:
   push:
     branches: [main]
@@ -34,8 +35,11 @@ jobs:
       - name: Nastavenie (zoznamy a šablóna v Breve)
         run: python scripts/odber_email.py nastavenie
       - name: Ranný súhrn
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: (github.event_name == 'schedule' && github.event.schedule != '7 15 * * 5') || github.event_name == 'workflow_dispatch'
         run: python scripts/odber_email.py rozosli
+      - name: Týždenník mesta (piatok)
+        if: github.event_name == 'schedule' && github.event.schedule == '7 15 * * 5'
+        run: python scripts/odber_email.py tyzdennik
       - name: Uložiť stav
         if: success() || failure()
         run: |

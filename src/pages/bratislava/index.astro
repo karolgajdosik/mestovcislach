@@ -4,6 +4,7 @@ import FotoMesta from '../../components/FotoMesta.astro';
 import MapaCasti from '../../components/MapaCasti.astro';
 import DnesVBratislave from '../../components/DnesVBratislave.astro';
 import RychleOdpovede from '../../components/RychleOdpovede.astro';
+import OdberEmail from '../../components/OdberEmail.astro';
 import { MESTA } from '../../mesta';
 import ZimaVMeste from '../../components/ZimaVMeste.astro';
 import { faqLd } from '../../lib/odpovede';
@@ -110,6 +111,7 @@ const grafData = mesto
   )}
   <ZimaVMeste m={MESTA.find((x) => x.slug === 'bratislava')!} />
   <RychleOdpovede slug="bratislava" />
+  <OdberEmail kanal={'bratislava'} tyzdennik={'bratislava'} nadpis="Týždenník mesta e-mailom" popis="Raz týždenne zhrnieme, čo sa v meste udialo – bez reklamy a len z verejných údajov." />
 </Base>
 
 <script>

@@ -13,6 +13,7 @@ import FotoMesta from '../../components/FotoMesta.astro';
 import VolbyPorovnanie from '../../components/VolbyPorovnanie.astro';
 import { maZivot } from '../../lib/temy';
 import RychleOdpovede from '../../components/RychleOdpovede.astro';
+import OdberEmail from '../../components/OdberEmail.astro';
 import ZimaVMeste from '../../components/ZimaVMeste.astro';
 import { faqLd } from '../../lib/odpovede';
 
@@ -245,6 +246,7 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
   </section>
   <ZimaVMeste m={m} />
   <RychleOdpovede slug={m.slug} />
+  <OdberEmail kanal={m.slug} tyzdennik={m.slug} nadpis="Týždenník mesta e-mailom" popis="Raz týždenne zhrnieme, čo sa v meste udialo – bez reklamy a len z verejných údajov." />
 </Base>
 
 <script>

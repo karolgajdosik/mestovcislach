@@ -6,14 +6,18 @@ import Base from '../../layouts/Base.astro';
   <section class="hero">
     <p class="kicker">Upozornenia</p>
     <h1>Odber je potvrdený</h1>
-    <p class="lead">Ďakujeme. Ranný súhrn noviniek vám budeme posielať, len keď bude niečo nové. Odhlásiť sa môžete kedykoľvek odkazom v každom e-maile.</p>
+    <p class="lead" id="potvrdene-text">Ďakujeme. Ranný súhrn noviniek vám budeme posielať, len keď bude niečo nové. Odhlásiť sa môžete kedykoľvek odkazom v každom e-maile.</p>
     <p><a href="/" id="spat">Späť na mestovcislach.sk</a></p>
   </section>
 </Base>
 <script>
   const k = new URLSearchParams(location.search).get('k');
   const a = document.getElementById('spat') as HTMLAnchorElement;
-  if (k === 'dodavatel') a.href = '/dodavatelia';
+  if (k?.startsWith('tyzdennik-')) {
+    const s = k.slice(10);
+    if (/^[a-z-]+$/.test(s)) a.href = `/${s}`;
+    document.getElementById('potvrdene-text')!.textContent = 'Ďakujeme. Týždenník mesta vám príde každý piatok popoludní. Odhlásiť sa môžete kedykoľvek odkazom v každom e-maile.';
+  } else if (k === 'dodavatel') a.href = '/dodavatelia';
   else if (k && /^[a-z-]+$/.test(k)) a.href = ['trnava', 'nitra', 'trencin', 'zilina', 'banska-bystrica', 'presov', 'kosice'].includes(k) ? `/${k}/upozornenia` : '/bratislava/upozornenia';
 </script>
 <style>

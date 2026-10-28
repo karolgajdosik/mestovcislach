@@ -57,6 +57,8 @@ def kanaly() -> dict[str, str]:
     k.update({slug(c): f"Bratislava – {c}" for c in CASTI})
     k.update({m["slug"]: m["nazov"] for m in MESTA if m.get("aktivne") and not m.get("plne")})
     k["dodavatel"] = "Sledovanie dodávateľov"
+    # týždenník mesta (piatok): novinky týždňa, termíny, rozpočet, otázka z kvízu
+    k.update({f"tyzdennik-{m['slug']}": f"Týždenník: {m['nazov']}" for m in MESTA if m.get("aktivne")})
     return k
 
 
@@ -87,7 +89,7 @@ POTVRDENIE = """<!doctype html><html lang="sk"><body style="margin:0;background:
 <p style="font-size:20px;font-weight:800;margin:0 0 20px">mesto<span style="color:#c8102e">v</span>číslach.sk</p>
 <div style="background:#fff;border:1px solid #e2e2de;border-radius:12px;padding:22px">
 <h1 style="font-size:20px;margin:0 0 12px">Potvrďte odber upozornení</h1>
-<p style="line-height:1.55;margin:0 0 18px">Niekto (pravdepodobne vy) zadal túto adresu na webe mestovcislach.sk, aby dostával upozornenia – ranný súhrn noviniek (stavebné zámery, väčšie zmluvy, výstrahy SHMÚ) alebo nové zmluvy sledovanej firmy s mestami. Odber začne až po potvrdení.</p>
+<p style="line-height:1.55;margin:0 0 18px">Niekto (pravdepodobne vy) zadal túto adresu na webe mestovcislach.sk, aby dostával upozornenia – ranný súhrn noviniek (stavebné zámery, väčšie zmluvy, výstrahy SHMÚ), týždenný súhrn mesta alebo nové zmluvy sledovanej firmy s mestami. Odber začne až po potvrdení.</p>
 <p style="margin:0 0 18px"><a href="{{ doubleoptin }}" style="display:inline-block;background:#c8102e;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px">Potvrdiť odber</a></p>
 <p style="line-height:1.55;margin:0;color:#5f6368;font-size:13px">Ak ste o odber nežiadali, e-mail ignorujte – bez potvrdenia vám nič posielať nebudeme. Odhlásiť sa dá kedykoľvek jedným klikom v každom e-maile.</p>
 </div>
@@ -179,7 +181,7 @@ def rozosli(b: Brevo) -> int:
     pocty = {z["id"]: z.get("uniqueSubscribers", z.get("totalSubscribers", 0)) for z in b.vsetko("/contacts/lists", "lists")}
     poslane = 0
     for kluc, lid in mapa["zoznamy"].items():
-        if kluc == "dodavatel":
+        if kluc == "dodavatel" or kluc.startswith("tyzdennik-"):
             continue
         odberatelov = pocty.get(lid, 0)
         # prvý súhrn pre nový kanál: novinky za posledný deň
@@ -211,6 +213,82 @@ def rozosli(b: Brevo) -> int:
             print(f"::warning title=Odber dodávateľov::{type(e).__name__}: {e}")
     STAV.write_text(json.dumps(dict(sorted(stav.items())), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"Rozoslané e-mailov: {poslane}")
+    return 0
+
+
+# ---------- týždenník mesta ----------
+DNI = ["po", "ut", "st", "št", "pi", "so", "ne"]
+
+
+def datum_sk(d: str) -> str:
+    x = datetime.fromisoformat(d)
+    return f"{DNI[x.weekday()]} {x.day}. {x.month}."
+
+
+def email_tyzdennik(d: dict) -> str:
+    h = html.escape
+    url = lambda o: o if str(o).startswith("http") else f"{WEB}{o}"  # noqa: E731
+    sekcie = []
+    if d["novinky"]:
+        sekcie.append('<h2 style="font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:#5f6368;margin:22px 0 8px">Čo sa udialo</h2>' + "".join(
+            f'<div style="border-top:1px solid #e2e2de;padding:10px 0"><span style="font-size:12px;color:#5f6368">{h(n["typ"])} · {datum_sk(n["datum"])}</span><br>'
+            f'<a href="{h(url(n["odkaz"]))}" style="color:#1d1d1f;font-weight:700;text-decoration:none">{h(n["nazov"])}</a>'
+            + (f'<p style="margin:4px 0 0;color:#5f6368;font-size:14px;line-height:1.5">{h(n["text"][:200])}</p>' if n.get("text") else "") + "</div>"
+            for n in d["novinky"][:12]))
+    if d["terminy"]:
+        sekcie.append('<h2 style="font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:#5f6368;margin:22px 0 8px">Najbližšie termíny</h2>' + "".join(
+            f'<div style="border-top:1px solid #e2e2de;padding:8px 0"><strong>{datum_sk(u["od"])}{" – " + datum_sk(u["do"]) if u.get("do") else ""}</strong> · '
+            f'<a href="{h(url(u["odkaz"]))}" style="color:#1d1d1f">{h(u["nazov"])}</a></div>' for u in d["terminy"][:6]))
+    r = d.get("rozpocet")
+    if r:
+        sekcie.append(f'<h2 style="font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:#5f6368;margin:22px 0 8px">Rozpočet na rok {r["rok"]}</h2>'
+                      f'<p style="margin:0;line-height:1.5">{"Mesto zverejnilo návrh rozpočtu." if r["navrh"] else "Návrh rozpočtu mesto zatiaľ nezverejnilo."} '
+                      f'<a href="{h(url(r["odkaz"]))}" style="color:#c8102e">Stav a dokumenty</a></p>')
+    q = d.get("otazka")
+    if q:
+        sekcie.append('<h2 style="font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:#5f6368;margin:22px 0 8px">Otázka týždňa</h2>'
+                      f'<p style="margin:0 0 8px;font-weight:700;line-height:1.45">{h(q["otazka"])}</p>'
+                      + "".join(f'<p style="margin:0 0 4px;color:#5f6368">{chr(65 + i)}) {h(m)}</p>' for i, m in enumerate(q["moznosti"]))
+                      + f'<p style="margin:10px 0 0"><a href="{h(url(q["odkaz"]))}" style="display:inline-block;background:#c8102e;color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:10px">Odpovedať v kvíze</a></p>')
+    return f"""<!doctype html><html lang="sk"><body style="margin:0;background:#f6f6f4;font-family:Arial,Helvetica,sans-serif;color:#1d1d1f">
+<div style="max-width:620px;margin:0 auto;padding:24px 18px">
+<p style="font-size:20px;font-weight:800;margin:0 0 16px">mesto<span style="color:#c8102e">v</span>číslach.sk</p>
+<div style="background:#fff;border:1px solid #e2e2de;border-radius:12px;padding:20px">
+<h1 style="font-size:21px;margin:0 0 4px">Týždeň {h(d["v"])}</h1>
+<p style="color:#5f6368;margin:0">{datum_sk(d["datum"])} {datetime.fromisoformat(d["datum"]).year}</p>
+{"".join(sekcie)}
+<p style="margin:22px 0 0"><a href="{WEB}/{d['slug']}" style="color:#c8102e;font-weight:700">{h(d["mesto"])} v číslach</a></p>
+</div>
+<p style="color:#5f6368;font-size:12px;line-height:1.5;margin:16px 4px 0">Týždenník dostávate, lebo ste si ho objednali na mestovcislach.sk. Údaje pochádzajú z verejných zdrojov.<br>
+<a href="{{{{ unsubscribe }}}}" style="color:#5f6368">Odhlásiť sa</a> · <a href="{WEB}/sukromie" style="color:#5f6368">Ochrana súkromia</a></p>
+</div></body></html>"""
+
+
+def tyzdennik(b: Brevo) -> int:
+    """Piatok: každému zoznamu „tyzdennik-<mesto>“ s odberateľmi týždenný súhrn (podklady z /data/tyzdennik/<mesto>.json)."""
+    if not MAPA.exists():
+        print("Brevo ešte nie je nastavené – spustite najprv 'nastavenie'.")
+        return 0
+    mapa = json.loads(MAPA.read_text(encoding="utf-8"))
+    pocty = {z["id"]: z.get("uniqueSubscribers", z.get("totalSubscribers", 0)) for z in b.vsetko("/contacts/lists", "lists")}
+    poslane = 0
+    for kluc, lid in mapa["zoznamy"].items():
+        if not kluc.startswith("tyzdennik-") or not pocty.get(lid):
+            continue
+        s = kluc.removeprefix("tyzdennik-")
+        try:
+            d = requests.get(f"{WEB}/data/tyzdennik/{s}.json", timeout=60, headers={"User-Agent": "mestovcislach.sk odber"}).json()
+        except Exception as e:  # noqa: BLE001
+            print(f"::warning title=Týždenník {s}::{e}")
+            continue
+        kampan = b("POST", "/emailCampaigns", json={
+            "name": f"Týždenník {d['mesto']} {d['datum']}", "subject": f"Týždeň {d['v']}: {len(d['novinky'])} noviniek" if d["novinky"] else f"Týždeň {d['v']}",
+            "sender": ODOSIELATEL, "replyTo": ODPOVED, "htmlContent": email_tyzdennik(d), "recipients": {"listIds": [lid]},
+            "inlineImageActivation": False, "mirrorActive": False})
+        b("POST", f"/emailCampaigns/{kampan['id']}/sendNow")
+        poslane += pocty[lid]
+        print(f"  {d['mesto']}: {len(d['novinky'])} noviniek → {pocty[lid]} odberateľov")
+    print(f"Týždenník rozoslaný: {poslane} e-mailov")
     return 0
 
 
@@ -322,7 +400,12 @@ def main() -> int:
         print("BREVO_API_KEY nie je nastavený – e-mailové upozornenia sú vypnuté.")
         return 0
     b = Brevo(kluc)
-    return nastavenie(b) if sys.argv[1:2] == ["nastavenie"] else rozosli(b)
+    prikaz = sys.argv[1:2]
+    if prikaz == ["nastavenie"]:
+        return nastavenie(b)
+    if prikaz == ["tyzdennik"]:
+        return tyzdennik(b)
+    return rozosli(b)
 
 
 if __name__ == "__main__":

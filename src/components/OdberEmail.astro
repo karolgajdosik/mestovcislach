@@ -3,14 +3,22 @@
 // Zobrazí sa, až keď existuje public/data/odber-brevo.json (scripts/odber_email.py nastavenie).
 import fs from 'node:fs';
 import path from 'node:path';
-const { kanal, vyberId, popis, nadpis = 'Alebo e-mailom' } = Astro.props as { kanal?: string; vyberId?: string; popis: string; nadpis?: string };
+const { kanal, vyberId, popis, nadpis = 'Alebo e-mailom', tyzdennik } = Astro.props as { kanal?: string; vyberId?: string; popis: string; nadpis?: string; tyzdennik?: string };
+// tyzdennik = slug mesta → výber: týždenník (piatok) alebo ranné upozornenia
 const zapnute = fs.existsSync(path.join(process.cwd(), 'public', 'data', 'odber-brevo.json'));
 ---
 {zapnute && (
   <section class="card odber" aria-labelledby="odber-h">
     <h2 id="odber-h">{nadpis}</h2>
-    <p>{popis} Súhrn chodí ráno, len keď je niečo nové.</p>
+    <p>{popis}{tyzdennik ? '' : ' Súhrn chodí ráno, len keď je niečo nové.'}</p>
     <form class="odber-form" data-kanal={kanal ?? ''} data-vyber={vyberId ?? ''} novalidate>
+      {tyzdennik && (
+        <fieldset class="odber-druh">
+          <legend>Čo chcete dostávať</legend>
+          <label><input type="radio" name="druh" value={`tyzdennik-${tyzdennik}`} checked /> <span><strong>Týždenník</strong> – každý piatok: čo sa v meste udialo, najbližšie termíny, rozpočet a otázka z kvízu</span></label>
+          <label><input type="radio" name="druh" value={kanal} /> <span><strong>Ranné upozornenia</strong> – nové stavebné zámery, väčšie zmluvy a výstrahy SHMÚ, len keď je niečo nové</span></label>
+        </fieldset>
+      )}
       <label for="odber-email">E-mailová adresa</label>
       <div class="odber-riadok">
         <input id="odber-email" name="email" type="email" required autocomplete="email" inputmode="email" />
@@ -30,7 +38,8 @@ const zapnute = fs.existsSync(path.join(process.cwd(), 'public', 'data', 'odber-
       e.preventDefault();
       const stav = f.querySelector('.odber-stav')!;
       const vyber = f.dataset.vyber ? (document.getElementById(f.dataset.vyber) as HTMLSelectElement | null) : null;
-      const kanal = vyber?.value || f.dataset.kanal;
+      const druh = f.querySelector<HTMLInputElement>('input[name="druh"]:checked')?.value;
+      const kanal = druh || vyber?.value || f.dataset.kanal;
       const data = new FormData(f);
       const email = String(data.get('email') ?? '').trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { stav.textContent = 'Skontrolujte, prosím, e-mailovú adresu.'; return; }
@@ -56,6 +65,10 @@ const zapnute = fs.existsSync(path.join(process.cwd(), 'public', 'data', 'odber-
 <style>
   .odber { margin-top: 16px; }
   .odber h2 { margin-top: 0; }
+  .odber-druh { border: 0; padding: 0; margin: 4px 0 6px; display: grid; gap: 8px; }
+  .odber-druh legend { font-weight: 700; margin-bottom: 6px; padding: 0; }
+  .odber-druh label { display: flex; gap: 10px; align-items: flex-start; font-size: 0.92rem; cursor: pointer; }
+  .odber-druh input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); flex-shrink: 0; }
   .odber-form label[for] { display: block; font-weight: 700; margin: 10px 0 6px; }
   .odber-riadok { display: flex; gap: 8px; flex-wrap: wrap; }
   .odber-riadok input { flex: 1 1 240px; min-width: 0; height: 44px; padding: 0 12px; border: 1.5px solid var(--line); border-radius: 10px; font: inherit; background: var(--bg); color: var(--text); }
