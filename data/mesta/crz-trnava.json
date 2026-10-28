@@ -183,14 +183,6 @@
     "url": "https://www.crz.gov.sk/zmluva/12869013/"
    },
    {
-    "datum": "2025-10-27",
-    "dodavatel": "Metrostav Slovakia, a. s.",
-    "ico": "47144190",
-    "suma": 4943677.48,
-    "popis": "Dodatok č.4 - Revitalizácia a obnova národnej kultúrnej pamiatky - meštiansky dom Pracháreň",
-    "url": "https://www.crz.gov.sk/zmluva/11497864/"
-   },
-   {
     "datum": "2026-06-04",
     "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
     "ico": "50349287",
@@ -285,6 +277,14 @@
     "suma": 1723165.3,
     "popis": "Dodatok č. 2 k zmluve o poskytnutí prostriedkov mechanizmu na podporu obnovy a odolnosti č. 044/02I02-29-V01/2024",
     "url": "https://www.crz.gov.sk/zmluva/12121603/"
+   },
+   {
+    "datum": "2026-03-11",
+    "dodavatel": "Ministerstvo dopravy Slovenskej republiky",
+    "ico": "30416094",
+    "suma": 1723165.3,
+    "popis": "Dodatok č.2 k Zmluve o poskytnutí PM na podporu obnovy a odolnosti č.04402I02-29-V012024",
+    "url": "https://www.crz.gov.sk/zmluva/12127299/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-10-21T05:52:29+00:00"
+ "aktualizovane": "2026-10-28T06:02:00+00:00"
 }
