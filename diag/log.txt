@@ -1,4 +1,46 @@
-zoznamy týždenník: ['tyzdennik-banska-bystrica', 'tyzdennik-bratislava', 'tyzdennik-kosice', 'tyzdennik-nitra', 'tyzdennik-presov', 'tyzdennik-trencin', 'tyzdennik-trnava', 'tyzdennik-zilina']
-KE novinky 3 termíny ['Najneskorší termín ustanovujúceho zasadnutia zastupiteľstva']
-formulár na prehľade True
+10922
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bezpečnostné overenie - hCaptcha</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://js.hcaptcha.com/1/api.js?hl=sk" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            <button class="lang-btn active" 
+                    onclick="switchLanguage('sk')"
+                    title="Slovenčina">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                SK
+            </button>
+            <button class="lang-btn " 
+                    onclick="switchLanguage('en')"
+                    title="Switch to English">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                EN
+            </button>
+        </div>
+
+        <div class="verification-box">
+      
+scripts: ['https://js.hcaptcha.com/1/api.js?hl=sk']
+https://www.presov.sk/api 200 text/html; charset=UTF-8 10925 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
+https://www.presov.sk/sitemap.xml 200 text/html; charset=UTF-8 10933 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
+https://www.presov.sk/robots.txt 200 text/html; charset=UTF-8 10932 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
+https://www.presov.sk/wp-json/ 200 text/html; charset=UTF-8 10930 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
+https://www.presov.sk/uradna-tabula 200 text/html; charset=UTF-8 10935 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
+https://www.presov.sk/portal/ 200 text/html; charset=UTF-8 10929 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
+https://egov.presov.sk 200 text/html; charset=utf-8 27046  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head><meta http-equiv="X-UA-C
+https://www.presov.sk/rozpocet-mesta-presov.html 200 text/html; charset=UTF-8 10948 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
 HOTOVO
