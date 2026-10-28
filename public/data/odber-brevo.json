@@ -25,7 +25,15 @@
   "banska-bystrica": 26,
   "presov": 27,
   "kosice": 28,
-  "dodavatel": 29
+  "dodavatel": 29,
+  "tyzdennik-bratislava": 30,
+  "tyzdennik-trnava": 31,
+  "tyzdennik-nitra": 32,
+  "tyzdennik-trencin": 33,
+  "tyzdennik-zilina": 34,
+  "tyzdennik-banska-bystrica": 35,
+  "tyzdennik-presov": 36,
+  "tyzdennik-kosice": 37
  },
  "nazvy": {
   "bratislava": "Bratislava",
@@ -53,7 +61,15 @@
   "banska-bystrica": "Banská Bystrica",
   "presov": "Prešov",
   "kosice": "Košice",
-  "dodavatel": "Sledovanie dodávateľov"
+  "dodavatel": "Sledovanie dodávateľov",
+  "tyzdennik-bratislava": "Týždenník: Bratislava",
+  "tyzdennik-trnava": "Týždenník: Trnava",
+  "tyzdennik-nitra": "Týždenník: Nitra",
+  "tyzdennik-trencin": "Týždenník: Trenčín",
+  "tyzdennik-zilina": "Týždenník: Žilina",
+  "tyzdennik-banska-bystrica": "Týždenník: Banská Bystrica",
+  "tyzdennik-presov": "Týždenník: Prešov",
+  "tyzdennik-kosice": "Týždenník: Košice"
  },
  "sablona": 1
 }
