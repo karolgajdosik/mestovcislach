@@ -1,21 +1,6 @@
-/home/runner/work/mestovcislach/mestovcislach/diag_live.py:4: SyntaxWarning: "\d" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\d"? A raw string is also an option.
-  if re.search('rozpo|TU|20\d\d',m.group(0),re.I): print(html.unescape(m.group(1))[:150],"|",re.sub('<[^>]+>','',m.group(2)).strip()[:50])
-https://egov.presov.sk/Default.aspx?NavigationState=440:0: | Rozpočet
-https://egov.presov.sk/Default.aspx?NavigationState=801:0: | Programový rozpočet
-https://egov.presov.sk/Default.aspx?NavigationState=441:0: | Príjmy rozpočtu
-https://egov.presov.sk/Default.aspx?NavigationState=442:0: | Výdavky rozpočtu
-https://egov.presov.sk/Default.aspx?NavigationState=840:0: | Adresy v meste
-http://egov.presov.sk/default.aspx?NavigationState=801%3A0%3A | Programov&yacute; rozpočet
-http://www.presov.sk/rozpocet.html | TU
-javascript:__doPostBack('Portal1$part1989$0_chart','click_0_chart') | Tento port&aacute;l je s&uacute;časťou celoslovens
-2026 … yTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); CG eGOV - verzia 2026.4.2.261001 - prihlásení používatelia: 0 Vitajte! Prihlásenie Úvod Objednávk
-2026 … , s aktu&aacute;lnym čerpan&iacute;m a plnen&iacute;m. Položky rozpočtu na roky 2026, 2027 a 2028 sa moment&aacute;lne aktualizuj&uacute;.&nbsp; Položky pre rok
-2026 … lastn&yacute;ch informačn&yacute;ch syst&eacute;moch. Rok Všetky roky 2028 2027 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 
-2026 … 01 664,00 38 906 262,00 EUR 2027 127 699 378,00 88 793 116,00 38 906 262,00 EUR 2026 176 884 704,38 122 964 405,22 53 920 299,16 EUR 2025 142 061 932,13 88 318 
-2026 … ;, false, true));" style="visibility:hidden;"> Ďalej Aktualizácia údajov: 28.10.2026 05:05 &nbsp; Ďal&scaron;ie inform&aacute;cie o Rozpočte mesta Pre&scaron;ov
-2027 … tu&aacute;lnym čerpan&iacute;m a plnen&iacute;m. Položky rozpočtu na roky 2026, 2027 a 2028 sa moment&aacute;lne aktualizuj&uacute;.&nbsp; Položky pre roky 2027
-2027 … 26, 2027 a 2028 sa moment&aacute;lne aktualizuj&uacute;.&nbsp; Položky pre roky 2027 a 2028 s&uacute; tzv. schv&aacute;len&yacute;m v&yacute;hľadov&yacute;m roz
-2027 …  vo vlastn&yacute;ch informačn&yacute;ch syst&eacute;moch. Rok Všetky roky 2028 2027 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 
-2027 … 9;);">Rozdiel &#39;);">Mena 2028 117 107 926,00 78 201 664,00 38 906 262,00 EUR 2027 127 699 378,00 88 793 116,00 38 906 262,00 EUR 2026 176 884 704,38 122 964 
-selects: ['Portal1$part1988$PGF_Cbo_1', 'Portal1$part1989$CF_Cbo_144106000', 'Portal1$part1989$grid$CF_Cbo_144106010'] ['2028', '2027', '2026', '2025', '2024', '2023', '2022', '2021', '2020', '2019']
+API GET 200 {"ok":true,"tyzden":"2026-W44","tabulka":{},"minuly":{"tyzden":"2026-W43","tabulka":{}}}
+POST zlý týždeň 400
+https://mestovcislach.sk/sutaz/ 200
+https://mestovcislach.sk/kosice/poslanci/marek-fedorocko/ 200
+https://mestovcislach.sk/trnava/poslanci/eva-nemcovska/ 200
 HOTOVO
