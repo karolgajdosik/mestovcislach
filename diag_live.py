@@ -1,9 +1,7 @@
-import requests,re,html
-h=requests.get("https://egov.presov.sk/Default.aspx?NavigationState=440:0:",timeout=40).text
-for m in re.finditer(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>',h,re.S):
-    if re.search('rozpo|TU|20\d\d',m.group(0),re.I): print(html.unescape(m.group(1))[:150],"|",re.sub('<[^>]+>','',m.group(2)).strip()[:50])
-txt=re.sub(r'\s+',' ',re.sub('<[^>]+>',' ',h))
-for y in ("2026","2027"):
-    for mm in re.finditer(y,txt): print(y,"…",txt[max(0,mm.start()-80):mm.start()+80])
-print("selects:",re.findall(r'<select[^>]*name="([^"]+)"',h), re.findall(r'<option[^>]*>(20\d\d)</option>',h)[:10])
+import requests,time
+time.sleep(180)
+r=requests.get("https://mestovcislach.sk/api/sutaz",timeout=30); print("API GET",r.status_code,r.text[:200])
+r=requests.post("https://mestovcislach.sk/api/sutaz",json={"tyzden":"1999-W01","mesto":"trnava","body":3},timeout=30); print("POST zlý týždeň",r.status_code)
+for u in ["https://mestovcislach.sk/sutaz/","https://mestovcislach.sk/kosice/poslanci/marek-fedorocko/","https://mestovcislach.sk/trnava/poslanci/eva-nemcovska/"]:
+    t=requests.get(u,timeout=30); print(u,t.status_code)
 print("HOTOVO")
