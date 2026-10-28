@@ -286,29 +286,35 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
   const modra = document.documentElement.dataset.tema === 'tmava' ? '#7cc4ff' : '#1f6fd1';
   const fmt = (n: number) => n.toLocaleString('sk-SK');
   const osi = { x: { grid: { display: false }, ticks: { color: muted, maxRotation: 0, autoSkip: true } }, y: { ticks: { color: muted } } };
+  // grafy sa vykreslia až keď sú blízko obrazovky (rýchlejšie načítanie na mobile)
+  const kedViditelne = (el: Element, fn: () => void) => {
+    if (!('IntersectionObserver' in window)) return fn();
+    const io = new IntersectionObserver((e) => { if (e.some((x) => x.isIntersecting)) { io.disconnect(); fn(); } }, { rootMargin: '300px' });
+    io.observe(el);
+  };
   const obyv = document.getElementById('g-obyv') as HTMLCanvasElement | null;
-  if (obyv) {
+  if (obyv) kedViditelne(obyv, () => {
     const rad: [string, number][] = JSON.parse(obyv.dataset.rad!);
     new Chart(obyv, { type: 'line', data: { labels: rad.map((r) => r[0]), datasets: [{ label: 'Obyvatelia', data: rad.map((r) => r[1]), borderColor: akc, backgroundColor: akc, pointRadius: 0, borderWidth: 2.5, tension: 0.2 }] },
       options: { maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ` ${fmt(c.parsed.y)} obyvateľov` } } }, scales: osi } });
-  }
+  });
   const ceny = document.getElementById('g-ceny') as HTMLCanvasElement | null;
-  if (ceny) {
+  if (ceny) kedViditelne(ceny, () => {
     const rad: [string, number, number | null][] = JSON.parse(ceny.dataset.rad!);
     new Chart(ceny, { type: 'line', data: { labels: rad.map((r) => r[0]), datasets: [
       { label: 'Kraj', data: rad.map((r) => r[1]), borderColor: akc, backgroundColor: akc, pointRadius: 0, borderWidth: 2.5, tension: 0.25 },
       { label: 'Slovensko', data: rad.map((r) => r[2]), borderColor: muted, backgroundColor: muted, pointRadius: 0, borderWidth: 2, borderDash: [5, 4], tension: 0.25 },
     ] }, options: { maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${c.parsed.y > 0 ? '+' : ''}${c.parsed.y.toLocaleString('sk-SK')} %` } } },
       scales: { ...osi, y: { ticks: { color: muted, callback: (v) => `${v} %` } } } } });
-  }
+  });
   const byty = document.getElementById('g-byty') as HTMLCanvasElement | null;
-  if (byty) {
+  if (byty) kedViditelne(byty, () => {
     const rad: [string, number | null, number | null][] = JSON.parse(byty.dataset.rad!);
     new Chart(byty, { type: 'bar', data: { labels: rad.map((r) => r[0]), datasets: [
       { label: 'Dokončené byty', data: rad.map((r) => r[1]), backgroundColor: akc },
       { label: 'Začaté byty', data: rad.map((r) => r[2]), backgroundColor: modra },
     ] }, options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } }, scales: osi } });
-  }
+  });
 </script>
 
 <style>

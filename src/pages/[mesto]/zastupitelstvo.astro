@@ -6,6 +6,7 @@ import '../../styles/stranka.css';
 import { MESTA, type Mesto } from '../../mesta';
 import { obdobia, bezTitulov, skrat } from '../../lib/zastupitelstvo';
 import { maSamospravu } from '../../lib/mapa';
+import { profily } from '../../lib/poslanci';
 
 export function getStaticPaths() {
   return MESTA.filter((m) => m.aktivne && obdobia(m.slug).length).map((m) => ({ params: { mesto: m.slug }, props: { m } }));
@@ -40,6 +41,8 @@ const obvody = [...poslanci.reduce((mp, p) => { if (p.obvod) { const k = p.obvod
   .sort((a, b) => a.c - b.c || a.nazov.localeCompare(b.nazov, 'sk'));
 const podlaCasti = obvody.some((o) => !/^obvod č\./.test(o.nazov));
 const casti = podlaCasti ? [...new Set(obvody.flatMap((o) => o.nazov.split(', ')))].sort((a, b) => a.localeCompare(b, 'sk')) : [];
+const profilId = new Map(profily(m.slug).filter((x) => x.rok === teraz.rok).map((x) => [x.meno, x.id]));
+const profil = (meno: string) => (profilId.has(meno) ? `/${m.slug}/poslanci/${profilId.get(meno)}` : null);
 const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${m.slug}/volby`;
 ---
 <Base title={`Mestské zastupiteľstvo ${obdobie} – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: kto sedí v mestskom zastupiteľstve ${obdobie}, zloženie podľa strán, kto mandát obhájil a kto je nový.`}>
@@ -114,7 +117,7 @@ const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/$
           <li data-casti={o.nazov} id={`obvod-${o.c}`}>
             <h3>{podlaCasti ? <>Obvod {o.c}: <span translate="no">{o.nazov}</span></> : `Volebný obvod č. ${o.c}`}</h3>
             <p class="pozn">{o.poslanci.length} {o.poslanci.length === 1 ? 'poslanec' : o.poslanci.length < 5 ? 'poslanci' : 'poslancov'}</p>
-            <ul>{o.poslanci.map((p) => <li><strong translate="no">{p.meno}</strong> <small translate="no">{skrat(p.strany)}{p.hlasy != null ? ` · ${fmt(p.hlasy)} hlasov` : ''}</small></li>)}</ul>
+            <ul>{o.poslanci.map((p) => <li><strong translate="no">{profil(p.meno) ? <a href={profil(p.meno)}>{p.meno}</a> : p.meno}</strong> <small translate="no">{skrat(p.strany)}{p.hlasy != null ? ` · ${fmt(p.hlasy)} hlasov` : ''}</small></li>)}</ul>
           </li>
         ))}
       </ul>
@@ -138,7 +141,7 @@ const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/$
         <tbody>
           {poslanci.map((p) => (
             <tr data-hladaj={`${p.meno} ${skrat(p.strany)} ${p.strany} ${p.obvod ?? ''}`.toLowerCase()} data-stav={p.obhajil ? 'ano' : 'nie'}>
-              <td translate="no">{p.meno}</td><td translate="no" title={p.strany}>{skrat(p.strany)}</td>{maObvody && <td>{p.obvod}</td>}
+              <td translate="no">{profil(p.meno) ? <a href={profil(p.meno)}>{p.meno}</a> : p.meno}</td><td translate="no" title={p.strany}>{skrat(p.strany)}</td>{maObvody && <td>{p.obvod}</td>}
               <td class="num">{p.hlasy != null ? fmt(p.hlasy) : '–'}</td>
               {pred && <td>{p.obhajil ? <span class="zs-stitok">obhájil(a)</span> : <span class="zs-stitok zs-novy">nový(-á)</span>}</td>}
             </tr>

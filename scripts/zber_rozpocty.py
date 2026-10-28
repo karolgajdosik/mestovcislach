@@ -31,8 +31,10 @@ ZDROJE: dict[str, list[tuple[str, str]]] = {
     "trencin": [("wp", "https://trencin.sk"), ("stranka", "https://trencin.sk/samosprava/transparentny-trencin/uradna-tabula/")],
     "nitra": [("wp", "https://nitra.sk"), ("stranka", "https://nitra.sk/rozpocet-zaverecny-ucet-a-rozpoctove-pravidla/")],
     "zilina": [("wp", "https://zilina.sk"), ("stranka", "https://zilina.sk/mesto-zilina/transparentne-mesto/uradna-tabula/")],
-    "banska-bystrica": [("wp", "https://www.banskabystrica.sk"), ("stranka", "https://www.banskabystrica.sk/samosprava/rozpocet-mesta/")],
-    "presov": [("stranka", "https://www.presov.sk/rozpocet-mesta.html"), ("stranka", "https://www.presov.sk/uradna-tabula.html")],
+    "banska-bystrica": [("wp", "https://www.banskabystrica.sk"), ("stranka", "https://www.banskabystrica.sk/samosprava/rozpocet-mesta/"),
+                        ("stranka", "https://egov.banskabystrica.sk/default.aspx?NavigationState=610:0:")],
+    # presov.sk je za overením hCaptcha (neobchádzame) – rozpočet a úradná tabuľa sú aj na egov.presov.sk
+    "presov": [("stranka", "https://egov.presov.sk/Default.aspx?NavigationState=440:0:"), ("stranka", "https://egov.presov.sk/Default.aspx?NavigationState=610:0:")],
     "kosice": [("stranka", "https://www.kosice.sk/mesto/ekonomika"), ("stranka", "https://www.kosice.sk/clanky/skupina/uradna-tabula")],
 }
 

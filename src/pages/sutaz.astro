@@ -1,0 +1,194 @@
+---
+// Súťaž miest: každý týždeň 5 rovnakých otázok pre všetkých („Ktoré z týchto miest má najviac …?“). Hráč hrá za svoje
+// mesto, poradie miest podľa priemerného počtu bodov (functions/api/sutaz.ts – len počty hráčov a bodov za mesto).
+import Base from '../layouts/Base.astro';
+import '../styles/stranka.css';
+import PoslatZnamemu from '../components/PoslatZnamemu.astro';
+import { MESTA } from '../mesta';
+import { ukazovatele } from '../lib/ukazovatele';
+
+const mesta = Object.fromEntries(MESTA.filter((m) => m.aktivne).map((m) => [m.slug, m.nazov]));
+const u = ukazovatele().filter((x) => Object.keys(x.hodnoty).length >= 6)
+  .map(({ id, nazov, jednotka, des, hodnoty, rok, zdroj, otazka }) => ({ id, nazov, jednotka, des, hodnoty, rok, zdroj, otazka }));
+---
+<Base title="Súťaž miest – týždenný kvíz – mestovcislach.sk" description="Každý týždeň 5 otázok o krajských mestách, rovnakých pre všetkých. Hrajte za svoje mesto a pomôžte mu na čelo tabuľky. Odpovede z otvorených dát.">
+  <section class="hero">
+    <p class="kicker">Hra</p>
+    <h1>Súťaž miest</h1>
+    <p class="lead">Päť otázok týždenne, rovnakých pre všetkých. Hrajte za svoje mesto – vyhráva mesto s najvyšším priemerom bodov.</p>
+  </section>
+
+  <div class="sz" id="sutaz" data-u={JSON.stringify(u)} data-mesta={JSON.stringify(mesta)}>
+    <section class="card sz-karta" aria-live="polite">
+      <div id="sz-start">
+        <p class="sz-stitok" id="sz-tyzden">Tento týždeň</p>
+        <h2>Za ktoré mesto hráte?</h2>
+        <div class="sz-mesta" role="group" aria-label="Vyberte mesto">
+          {Object.entries(mesta).map(([s, n]) => <button type="button" class="sz-mesto" data-s={s} translate="no">{n}</button>)}
+        </div>
+      </div>
+      <div id="sz-hra" hidden>
+        <p class="sz-stitok"><span id="sz-poc">Otázka 1 z 5</span> · hráte za <strong id="sz-za" translate="no"></strong></p>
+        <h2 id="sz-otazka"></h2>
+        <div class="sz-volby" id="sz-volby"></div>
+        <p class="sz-vysv" id="sz-vysv" hidden></p>
+        <button type="button" class="sz-dalej" id="sz-dalej" hidden>Ďalej</button>
+      </div>
+      <div id="sz-koniec" hidden>
+        <p class="sz-stitok">Výsledok týždňa</p>
+        <p class="sz-body"><b id="sz-body">0</b> z 5 bodov</p>
+        <p id="sz-koniec-text"></p>
+        <p><PoslatZnamemu text="Súťaž miest – zahrajte za svoje mesto" popis="Vyzvať známych" /></p>
+        <p class="pozn">Ďalšie otázky budú v pondelok. Medzitým si môžete zahrať <a href="/suboj">Súboj miest</a> alebo kvíz o svojom meste.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Poradie miest</h2>
+      <ol class="sz-poradie" id="sz-poradie"><li class="pozn">Načítavam…</li></ol>
+      <p class="pozn" id="sz-minuly"></p>
+      <p class="pozn">Rátame len počet hráčov a súčet bodov za mesto – nie kto hral. Výsledok sa ukladá aj vo vašom prehliadači, aby ste tento týždeň hrali len raz.</p>
+    </section>
+  </div>
+  <p class="pozn">Otázky vychádzajú z otvorených dát Štatistického úradu SR (DATAcube, Sčítanie 2021, Urban Audit) a ÚPSVaR – pri každej je zdroj a rok.</p>
+</Base>
+
+<script>
+  type U = { id: string; nazov: string; jednotka: string; des: number; hodnoty: Record<string, number>; rok: string; zdroj: string; otazka: string };
+  const obal = document.getElementById('sutaz')!;
+  const UK: U[] = JSON.parse(obal.dataset.u!);
+  const MESTA: Record<string, string> = JSON.parse(obal.dataset.mesta!);
+  const $ = (id: string) => document.getElementById(id)!;
+  const hx = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const f = (u: U, v: number) => `${v.toLocaleString('sk-SK', { minimumFractionDigits: u.des, maximumFractionDigits: u.des })}${u.jednotka}`;
+
+  // ISO týždeň v čase Europe/Bratislava (rovnaký výpočet ako functions/api/sutaz.ts)
+  function tyzden(n = 0): string {
+    const den = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Bratislava' }).format(new Date());
+    const t = new Date(`${den}T12:00:00Z`);
+    t.setUTCDate(t.getUTCDate() + 7 * n);
+    const dw = (t.getUTCDay() + 6) % 7;
+    t.setUTCDate(t.getUTCDate() - dw + 3);
+    const prvy = new Date(Date.UTC(t.getUTCFullYear(), 0, 4));
+    const c = 1 + Math.round(((t.getTime() - prvy.getTime()) / 864e5 - 3 + ((prvy.getUTCDay() + 6) % 7)) / 7);
+    return `${t.getUTCFullYear()}-W${String(c).padStart(2, '0')}`;
+  }
+  const T = tyzden();
+  // deterministický generátor – všetci dostanú rovnaké otázky
+  const hash = (t: string) => { let h = 2166136261; for (const c of t) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+  function rng(seed: number) { let a = seed; return () => { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+  const r = rng(hash(`sutaz-${T}`));
+  const zamiesaj = <X,>(p: X[]) => { const a = p.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  type Q = { u: U; mesta: string[]; spravna: string };
+  const OTAZKY: Q[] = [];
+  for (const u of zamiesaj(UK)) {
+    if (OTAZKY.length >= 5) break;
+    const m = zamiesaj(Object.keys(u.hodnoty)).slice(0, 4);
+    const zor = m.slice().sort((a, b) => u.hodnoty[b] - u.hodnoty[a]);
+    // najvyššia hodnota musí byť zreteľne vyššia ako druhá (aspoň o 3 %)
+    if ((u.hodnoty[zor[0]] - u.hodnoty[zor[1]]) / Math.max(Math.abs(u.hodnoty[zor[0]]), 1e-9) < 0.03) continue;
+    OTAZKY.push({ u, mesta: m, spravna: zor[0] });
+  }
+
+  const KLUC = `sutaz-${T}`;
+  type Stav = { mesto: string; odpovede: string[]; odoslane?: boolean };
+  const citaj = (): Stav | null => { try { return JSON.parse(localStorage.getItem(KLUC) || 'null'); } catch { return null; } };
+  const zapis = (s: Stav) => { try { localStorage.setItem(KLUC, JSON.stringify(s)); } catch { /* */ } };
+  let stav: Stav | null = citaj();
+
+  $('sz-tyzden').textContent = `Týždeň ${T.split('-W')[1]}. · ${OTAZKY.length} otázok`;
+  // predvolene mesto, ktoré si človek naposledy prezeral
+  try { const p = JSON.parse(localStorage.getItem('mesto-posledne') || 'null')?.slug; document.querySelector<HTMLElement>(`.sz-mesto[data-s="${p}"]`)?.classList.add('navrh'); } catch { /* */ }
+  document.querySelectorAll<HTMLButtonElement>('.sz-mesto').forEach((b) => b.addEventListener('click', () => { stav = { mesto: b.dataset.s!, odpovede: [] }; zapis(stav); hraj(); }));
+
+  function hraj() {
+    if (!stav) return;
+    if (stav.odpovede.length >= OTAZKY.length) return koniec();
+    $('sz-start').hidden = true; $('sz-hra').hidden = false; $('sz-koniec').hidden = true;
+    $('sz-za').textContent = MESTA[stav.mesto];
+    const i = stav.odpovede.length, q = OTAZKY[i];
+    $('sz-poc').textContent = `Otázka ${i + 1} z ${OTAZKY.length}`;
+    $('sz-otazka').textContent = q.u.otazka;
+    $('sz-volby').innerHTML = q.mesta.map((s) => `<button type="button" class="sz-volba" data-s="${s}"><span>${hx(MESTA[s])}</span></button>`).join('');
+    $('sz-vysv').hidden = true; $('sz-dalej').hidden = true;
+    document.querySelectorAll<HTMLButtonElement>('.sz-volba').forEach((b) => b.addEventListener('click', () => odpovedz(b.dataset.s!)));
+    ($('sz-volby').querySelector('button') as HTMLButtonElement)?.focus();
+  }
+  function odpovedz(s: string) {
+    const q = OTAZKY[stav!.odpovede.length];
+    stav!.odpovede.push(s); zapis(stav!);
+    document.querySelectorAll<HTMLButtonElement>('.sz-volba').forEach((b) => {
+      b.disabled = true;
+      b.classList.toggle('spravna', b.dataset.s === q.spravna);
+      b.classList.toggle('zla', b.dataset.s === s && s !== q.spravna);
+      b.insertAdjacentHTML('beforeend', `<b>${f(q.u, q.u.hodnoty[b.dataset.s!])}</b>`);
+    });
+    $('sz-vysv').hidden = false;
+    $('sz-vysv').innerHTML = `${s === q.spravna ? '<strong class="ok">Správne!</strong>' : `<strong class="zle">Tentoraz nie</strong> – najviac má ${hx(MESTA[q.spravna])}.`} <small>${hx(q.u.nazov)}, zdroj: ${hx(q.u.zdroj)}${q.u.rok ? `, ${q.u.rok}` : ''}.</small>`;
+    const btn = $('sz-dalej') as HTMLButtonElement;
+    btn.hidden = false; btn.textContent = stav!.odpovede.length >= OTAZKY.length ? 'Výsledok' : 'Ďalšia otázka'; btn.focus();
+  }
+  $('sz-dalej').addEventListener('click', hraj);
+
+  async function koniec() {
+    $('sz-start').hidden = true; $('sz-hra').hidden = true; $('sz-koniec').hidden = false;
+    const body = stav!.odpovede.filter((s, i) => s === OTAZKY[i]?.spravna).length;
+    $('sz-body').textContent = String(body);
+    $('sz-koniec-text').textContent = `Body ste pripísali mestu ${MESTA[stav!.mesto]}.`;
+    if (!stav!.odoslane) {
+      try {
+        const r = await fetch('/api/sutaz', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tyzden: T, mesto: stav!.mesto, body }) });
+        if (r.ok) { stav!.odoslane = true; zapis(stav!); poradie(await r.json()); return; }
+      } catch { /* bez servera */ }
+    }
+    nacitajPoradie();
+  }
+
+  function poradie(d: any) {
+    const tab = (t: Record<string, [number, number]>) => Object.entries(t ?? {}).filter(([, [h]]) => h > 0).map(([s, [h, b]]) => ({ s, h, p: b / h })).sort((a, b) => b.p - a.p || b.h - a.h);
+    const akt = tab(d.tabulka);
+    const moje = stav?.mesto;
+    $('sz-poradie').innerHTML = akt.length
+      ? akt.map((x) => `<li class="${x.s === moje ? 'moje' : ''}"><span class="n" translate="no">${hx(MESTA[x.s])}</span><span class="pruh" aria-hidden="true"><i style="width:${(100 * x.p) / 5}%"></i></span><span class="h">${x.p.toLocaleString('sk-SK', { maximumFractionDigits: 1 })} b. <small>(${x.h} ${x.h === 1 ? 'hráč' : x.h < 5 ? 'hráči' : 'hráčov'})</small></span></li>`).join('')
+      : '<li class="pozn">Tento týždeň zatiaľ nikto nehral – buďte prvý.</li>';
+    const min = tab(d.minuly?.tabulka);
+    $('sz-minuly').textContent = min.length ? `Minulý týždeň vyhralo mesto ${MESTA[min[0].s]} (priemer ${min[0].p.toLocaleString('sk-SK', { maximumFractionDigits: 1 })} b.).` : '';
+  }
+  async function nacitajPoradie() {
+    try { const r = await fetch('/api/sutaz'); if (r.ok) return poradie(await r.json()); } catch { /* */ }
+    $('sz-poradie').innerHTML = '<li class="pozn">Poradie sa teraz nepodarilo načítať.</li>';
+  }
+
+  if (stav && stav.odpovede.length >= OTAZKY.length) koniec();
+  else { if (stav) hraj(); nacitajPoradie(); }
+</script>
+
+<style>
+  .sz { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px; align-items: start; }
+  @media (max-width: 860px) { .sz { grid-template-columns: 1fr; } }
+  .sz-stitok { color: var(--muted); font-size: 0.85rem; margin: 0 0 6px; }
+  .sz-mesta { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-top: 12px; }
+  .sz-mesto, .sz-volba { min-height: 48px; padding: 10px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font: inherit; font-weight: 700; cursor: pointer; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .sz-mesto:hover, .sz-volba:not(:disabled):hover { border-color: var(--accent); }
+  .sz-mesto.navrh { border-color: var(--accent); }
+  .sz-volby { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+  @media (max-width: 420px) { .sz-volby { grid-template-columns: 1fr; } }
+  .sz-volba:disabled { cursor: default; }
+  .sz-volba b { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .sz-volba.spravna { border-color: #16a34a; background: color-mix(in srgb, #16a34a 12%, var(--bg)); }
+  .sz-volba.zla { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--bg)); }
+  .sz-vysv { margin: 12px 0 0; }
+  .sz-vysv small { color: var(--muted); display: block; margin-top: 4px; }
+  .sz-vysv .ok { color: #15803d; } .sz-vysv .zle { color: var(--accent); }
+  .sz-dalej { margin-top: 12px; min-height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: var(--accent); color: var(--na-akcente, #fff); font: inherit; font-weight: 700; cursor: pointer; }
+  .sz-body { font-size: 1.2rem; margin: 0; } .sz-body b { font-size: 2.6rem; }
+  .sz-poradie { padding: 0; margin: 0; list-style: none; counter-reset: p; display: grid; gap: 8px; }
+  .sz-poradie li:not(.pozn) { counter-increment: p; display: grid; grid-template-columns: 1.6em minmax(90px, 1fr) 2fr auto; gap: 8px; align-items: center; font-size: 0.92rem; }
+  .sz-poradie li:not(.pozn)::before { content: counter(p) '.'; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .sz-poradie li.moje .n { font-weight: 800; color: var(--accent); }
+  .sz-poradie .pruh { height: 10px; border-radius: 5px; background: var(--line); overflow: hidden; }
+  .sz-poradie .pruh i { display: block; height: 100%; background: var(--accent); }
+  .sz-poradie .h { white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .sz-poradie small { color: var(--muted); font-weight: 400; }
+  .pozn { font-size: 0.85rem; color: var(--muted); }
+</style>

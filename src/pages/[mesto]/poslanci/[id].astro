@@ -1,0 +1,75 @@
+---
+// Profil poslanca mestského zastupiteľstva: výsledok vo voľbách, obvod, obhajoba mandátu a hlasovanie v minulom období.
+// Len verejné údaje o výkone funkcie (meno, strana, hlasy, hlasovania) – žiadne kontakty ani iné osobné údaje.
+import Base from '../../../layouts/Base.astro';
+import '../../../styles/stranka.css';
+import PoslatZnamemu from '../../../components/PoslatZnamemu.astro';
+import { MESTA, type Mesto } from '../../../mesta';
+import { profily, type Profil } from '../../../lib/poslanci';
+import { skrat } from '../../../lib/zastupitelstvo';
+
+export function getStaticPaths() {
+  return MESTA.filter((m) => m.aktivne).flatMap((m) => profily(m.slug).map((p) => ({ params: { mesto: m.slug, id: p.id }, props: { m, p } })));
+}
+const { m, p } = Astro.props as { m: Mesto; p: Profil };
+const ostatni = profily(m.slug).filter((x) => x.obvod === p.obvod && x.id !== p.id);
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const des = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
+const meno = p.meno;
+const kratke = meno.split(/[\s,]+/).filter((s) => s && !s.includes('.') && !/^(PhD|MBA|LL|MPH|MPA|DiS|CSc|ArtD|MSc)$/i.test(s)).join(' ');
+const posl = p.hlasovania[0];
+const nezav = /^nezávisl/i.test(p.strany);
+const popis = `${kratke} – poslanec(-kyňa) mestského zastupiteľstva mesta ${m.nazov} ${p.obdobie}${p.obvod ? `, obvod ${p.obvod}` : ''}: ${nezav ? 'nezávislý kandidát' : skrat(p.strany)}, ${p.hlasy != null ? `${fmt(p.hlasy)} hlasov` : ''}${p.obhajil ? ', mandát obhájil(a)' : ''}.`;
+---
+<Base title={`${kratke} – poslanec ${m.nazov} ${p.obdobie} – mestovcislach.sk`} description={popis}>
+  <section class="hero">
+    <p class="kicker"><a href={`/${m.slug}/zastupitelstvo`}>Mestské zastupiteľstvo <span translate="no">{m.v}</span></a></p>
+    <h1 translate="no">{meno}</h1>
+    <p class="lead">Poslanec(-kyňa) mestského zastupiteľstva {p.obdobie} · <span translate="no">{nezav ? 'nezávislý kandidát' : p.strany}</span></p>
+    <p><PoslatZnamemu text={`${kratke} – poslanec(-kyňa) ${m.v}`} /></p>
+  </section>
+
+  <section class="kpis">
+    {p.hlasy != null && <div class="card kpi"><p class="label">Hlasy vo voľbách {p.rok}</p><p class="value">{fmt(p.hlasy)}</p><p class="delta">{p.poradieVObvode ? `${p.poradieVObvode}. z ${p.vObvode} zvolených v obvode` : `jeden z ${p.poslancov} poslancov`}</p></div>}
+    {p.obvod && <div class="card kpi"><p class="label">Volebný obvod</p><p class="value pr-obvod" translate="no">{p.obvod}</p><p class="delta">{p.vObvode} {p.vObvode === 1 ? 'poslanec' : p.vObvode < 5 ? 'poslanci' : 'poslancov'} za obvod</p></div>}
+    {p.obhajil != null && <div class="card kpi"><p class="label">Mandát</p><p class="value">{p.obhajil ? 'obhájil(a)' : 'nový(-á)'}</p><p class="delta">{p.obhajil && p.predHlasy != null ? `v predchádzajúcich voľbách ${fmt(p.predHlasy)} hlasov` : 'v minulom období nebol(a) poslancom(-kyňou)'}</p></div>}
+  </section>
+
+  {posl && (
+    <section class="card">
+      <h2>Ako hlasoval(a) v období {posl.obdobie}</h2>
+      <ul class="pr-cisla">
+        <li><b>{des(posl.pritomnost)} %</b><span>prítomnosť na hlasovaniach ({fmt(posl.hlasovani)} hlasovaní)</span></li>
+        {posl.zhoda_s_vacsinou != null && <li><b>{des(posl.zhoda_s_vacsinou)} %</b><span>hlasoval(a) rovnako ako väčšina zastupiteľstva</span></li>}
+        {posl.zhoda_s_klubom != null && <li><b>{des(posl.zhoda_s_klubom)} %</b><span>hlasoval(a) rovnako ako poslanecký klub</span></li>}
+        <li><b>{fmt(posl.za)} / {fmt(posl.proti)} / {fmt(posl.zdrzal)}</b><span>za / proti / zdržal(a) sa</span></li>
+      </ul>
+      {posl.klub && <p class="pozn">Poslanecký klub: <span translate="no">{posl.klub}</span>.</p>}
+      <p class="pozn">Z otvorených dát mesta o hlasovaní poslancov. <a href={m.slug === 'bratislava' ? '/bratislava/volby#hlasovania' : `/${m.slug}/samosprava#hlasovania`}>Všetky hlasovania</a></p>
+    </section>
+  )}
+  {!posl && (m.slug === 'bratislava' || m.slug === 'kosice') && (
+    <section class="card"><h2>Hlasovania</h2><p>Hlasovania nového zastupiteľstva {p.obdobie} pribudnú, keď ich mesto zverejní v otvorených dátach.</p></section>
+  )}
+
+  {ostatni.length > 0 && (
+    <section class="card">
+      <h2>Ďalší poslanci z obvodu <span translate="no">{p.obvod}</span></h2>
+      <ul class="pr-ostatni">{ostatni.map((x) => <li><a href={`/${m.slug}/poslanci/${x.id}`} translate="no">{x.meno}</a> <small translate="no">{skrat(x.strany)}{x.hlasy != null ? ` · ${fmt(x.hlasy)} hlasov` : ''}</small></li>)}</ul>
+    </section>
+  )}
+
+  <p class="pozn">Zdroj: Štatistický úrad SR – výsledky komunálnych volieb {p.rok}{posl ? '; hlasovania z otvorených dát mesta' : ''}. Uvádzame len údaje o výkone verejnej funkcie (meno, strana, hlasy, hlasovania), kontakty zverejňuje mesto. <a href={`/${m.slug}/zastupitelstvo#moj-poslanec`}>Všetci poslanci podľa obvodov</a></p>
+</Base>
+
+<style>
+  .kicker a { color: inherit; text-decoration: none; }
+  .pr-obvod { font-size: 1.15rem !important; line-height: 1.3; }
+  .pr-cisla { list-style: none; padding: 0; margin: 8px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+  .pr-cisla li { display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+  .pr-cisla b { font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+  .pr-cisla span { font-size: 0.84rem; color: var(--muted); }
+  .pr-ostatni { list-style: none; padding: 0; display: grid; gap: 6px; }
+  .pr-ostatni small { color: var(--muted); }
+  .pozn { font-size: 0.85rem; color: var(--muted); }
+</style>

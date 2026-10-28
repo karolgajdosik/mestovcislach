@@ -15,7 +15,7 @@ const por: any[] = (() => { try { return JSON.parse(fs.readFileSync(path.join(pr
 const WEB: Record<string, string> = {
   bratislava: 'https://bratislava.sk', trnava: 'https://www.trnava.sk/stranka/rozpocet-a-zaverecny-ucet', trencin: 'https://trencin.sk',
   nitra: 'https://nitra.sk/rozpocet-zaverecny-ucet-a-rozpoctove-pravidla/', zilina: 'https://zilina.sk', 'banska-bystrica': 'https://www.banskabystrica.sk/samosprava/rozpocet-mesta/',
-  presov: 'https://www.presov.sk', kosice: 'https://www.kosice.sk/mesto/ekonomika',
+  presov: 'https://egov.presov.sk/Default.aspx?NavigationState=440:0:', kosice: 'https://www.kosice.sk/mesto/ekonomika',
 };
 const datum = (d: string) => (d ? new Date(d).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric', year: 'numeric' }) : '');
 const mil = (n: number) => `${(n / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} mil. €`;
