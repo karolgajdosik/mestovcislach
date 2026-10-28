@@ -1,10 +1,9 @@
-import subprocess,sys,json,requests,re
-subprocess.run([sys.executable,"-m","pip","install","-q","-r","scripts/requirements.txt"])
-for rok in ("2026","2027"):
-    p=subprocess.run([sys.executable,"scripts/zber_rozpocty.py",rok],capture_output=True,text=True,timeout=900); print(rok,p.stdout[-700:],p.stderr[-300:])
-    d=json.load(open(f"data/rozpocty-{rok}.json"))
-    for s in ("presov","banska-bystrica"):
-        for x in d["mesta"][s]["dokumenty"][:4]: print("  ",s,x["druh"],x["zverejnene"],x["nazov"][:80])
+import requests,re,html
 h=requests.get("https://egov.presov.sk/Default.aspx?NavigationState=440:0:",timeout=40).text
-print("rozpo odkazy:",[re.sub('<[^>]+>','',m.group(2)).strip()[:60] for m in re.finditer(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>',h,re.S) if re.search('rozpo',m.group(0),re.I)][:15])
+for m in re.finditer(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>',h,re.S):
+    if re.search('rozpo|TU|20\d\d',m.group(0),re.I): print(html.unescape(m.group(1))[:150],"|",re.sub('<[^>]+>','',m.group(2)).strip()[:50])
+txt=re.sub(r'\s+',' ',re.sub('<[^>]+>',' ',h))
+for y in ("2026","2027"):
+    for mm in re.finditer(y,txt): print(y,"…",txt[max(0,mm.start()-80):mm.start()+80])
+print("selects:",re.findall(r'<select[^>]*name="([^"]+)"',h), re.findall(r'<option[^>]*>(20\d\d)</option>',h)[:10])
 print("HOTOVO")
