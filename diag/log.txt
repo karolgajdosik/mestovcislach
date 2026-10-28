@@ -1,46 +1,8 @@
-10922
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bezpečnostné overenie - hCaptcha</title>
-    <link rel="stylesheet" href="/styles.css">
-    <script src="https://js.hcaptcha.com/1/api.js?hl=sk" async defer></script>
-</head>
-<body>
-    <div class="container">
-        <!-- Language Switcher -->
-        <div class="language-switcher">
-            <button class="lang-btn active" 
-                    onclick="switchLanguage('sk')"
-                    title="Slovenčina">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                </svg>
-                SK
-            </button>
-            <button class="lang-btn " 
-                    onclick="switchLanguage('en')"
-                    title="Switch to English">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                </svg>
-                EN
-            </button>
-        </div>
-
-        <div class="verification-box">
-      
-scripts: ['https://js.hcaptcha.com/1/api.js?hl=sk']
-https://www.presov.sk/api 200 text/html; charset=UTF-8 10925 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
-https://www.presov.sk/sitemap.xml 200 text/html; charset=UTF-8 10933 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
-https://www.presov.sk/robots.txt 200 text/html; charset=UTF-8 10932 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
-https://www.presov.sk/wp-json/ 200 text/html; charset=UTF-8 10930 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
-https://www.presov.sk/uradna-tabula 200 text/html; charset=UTF-8 10935 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
-https://www.presov.sk/portal/ 200 text/html; charset=UTF-8 10929 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
-https://egov.presov.sk 200 text/html; charset=utf-8 27046  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head><meta http-equiv="X-UA-C
-https://www.presov.sk/rozpocet-mesta-presov.html 200 text/html; charset=UTF-8 10948 <!DOCTYPE html> <html lang="sk"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Bezpečnostné overenie - hCaptcha</title>     <l
+[('IE_nastavenie/IE_nastavenie.htm', 'nastavenie MS IE'), ('http://egov.presov.sk/default.aspx?NavigationState=1100%3A0%3A', 'Katal&oacute;gu OPEN DATA'), ('http://egov.presov.sk/default.aspx?NavigationState=1200%3A0%3A', 'Katal&oacute;gu OPEN geo DATA'), ('http://webgis.presov.sk', 'mape'), ('http://windows.microsoft.com/sk-sk/internet-explorer/download-ie', 'MS Internet Explorer'), ('http://www.google.com/intl/sk/chrome', 'Chrome'), ('http://www.mozilla.com/en-US/firefox', 'Mozilla Firefox'), ('http://www.opera.com/download', 'Opera'), ('http://www.pomosam.sk/', 'Tento port&aacute;l je s&uacute;časťou c'), ('http://www.presov.sk', ''), ('https://egov.presov.sk/Default.aspx?NavigationState=100:0:', 'Nápoveď'), ('https://egov.presov.sk/Default.aspx?NavigationState=1050:0:', 'Petície'), ('https://egov.presov.sk/Default.aspx?NavigationState=1100:0:', 'Katalóg OPEN DATA'), ('https://egov.presov.sk/Default.aspx?NavigationState=1200:0:', 'Katalóg OPEN geo DATA'), ('https://egov.presov.sk/Default.aspx?NavigationState=160:0:', 'Ulice v meste'), ('https://egov.presov.sk/Default.aspx?NavigationState=161:0:', 'Demografia'), ('https://egov.presov.sk/Default.aspx?NavigationState=162:0:', 'Samospráva'), ('https://egov.presov.sk/Default.aspx?NavigationState=163:0:', 'Prevádzky v meste'), ('https://egov.presov.sk/Default.aspx?NavigationState=400:0:', 'Úvod'), ('https://egov.presov.sk/Default.aspx?NavigationState=440:0:', 'Rozpočet'), ('https://egov.presov.sk/Default.aspx?NavigationState=490:0:', 'Významné objekty'), ('https://egov.presov.sk/Default.aspx?NavigationState=610:0:', 'Úradná tabuľa'), ('https://egov.presov.sk/Default.aspx?NavigationState=700:0:', 'Bezpečnosť a poriadok'), ('https://egov.presov.sk/Default.aspx?NavigationState=778:0:', 'Zmluvy'), ('https://egov.presov.sk/Default.aspx?NavigationState=779:0:', 'Dodávateľské faktúry'), ('https://egov.presov.sk/Default.aspx?NavigationState=781:0:', 'Objednávky'), ('https://egov.presov.sk/Default.aspx?NavigationState=802:0:', 'Voľby - Volebné okrsky a miestnosti'), ('https://egov.presov.sk/Default.aspx?NavigationState=803:0:', 'Evidencia psov chovaných v meste'), ('https://egov.presov.sk/Default.aspx?NavigationState=806:0:', 'Zoznam daňových dlžníkov'), ('https://egov.presov.sk/Default.aspx?NavigationState=820:0:', 'Dotácie'), ('https://egov.presov.sk/Default.aspx?NavigationState=840:0:', 'Adresy v meste'), ('https://egov.presov.sk/Default.aspx?NavigationState=850:0:', 'Mapa mesta Prešov'), ('https://egov.presov.sk/Default.aspx?NavigationState=860:0:', 'Školstvo'), ('https://egov.presov.sk/Default.aspx?NavigationState=921:0:', 'Podnety a požiadavky občanov'), ('https://egov.presov.sk/Default.aspx?NavigationState=950:0:', 'Organizácie mesta'), ('https://egov.presov.sk/images/Cena_ITAPA_2017.jpg', ''), ('https://egov.presov.sk/images/Zlaty_erb_m.jpg', ''), ('https://egov.presov.sk/images/Zlaty_erb_v_2014.jpg', ''), ('https://www.facebook.com/transparency.presov', ''), ('javascript:__doPostBack(&#39;Portal1$ctl01&#39;,&#39;&#39;)', 'Prihlásenie')]
+https://cuet.slovensko.sk 200 text/html; charset=utf-8 31618
+   ['//fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600&amp;subset=latin,latin-ext', '/Content/Css/bundle?v=42S1Tu-l_fnfTzEcvZ1veFHNhelDM87spLowb68Y6vM1', '/sk/Shared/ChangeContrast?returnUrl=%2F', 'https://www.slovensko.sk/sk/titulna-stranka', 'https://www.slovensko.sk/sk/o-portali', 'https://www.slovensko.sk/sk/pomoc', 'https://www.slovensko.sk/sk/Kontakt', '/sk/Shared/ChangeCulture?lang=2&amp;returnUrl=%2F', '/sk/Rss', 'http://slovensko.sk', '/', '/sk/dokument/ec896718-f9ea-4293-b933-878937eba1ae', '/sk/dokument/eebcaefd-d9c1-489d-b51c-460122cdf5bc', '/sk/dokument/0a433c2d-22e6-4597-ad61-a8089abbb061', '/sk/dokument/64f3e996-99cd-4bd8-a5c5-c4df32a0573d', '/sk/dokument/c185c624-be16-400f-9faa-bf623108db30', '/sk/dokument/bcb069e8-26eb-41d8-aa35-88ddea44a3a1', '/sk/dokument/8e1c98f9-208a-4f59-8c93-ca073d1af786', '/sk/dokument/2c18c3ce-ee5c-4cda-b9b5-f743312bdf5c', '/sk/dokument/26ac6785-dfa1-42cf-975c-a94d40983b42', '/sk/dokument/58360417-2edd-4d12-8629-1ffa97d386db', '/?page=2', '/?page=3', '/?page=4', '/?page=5', '/?page=6', '/?page=7', '/?page=8', '/?page=9', '/?page=10', '/?page=96', '/?page=97', '/?page=2', 'https://www.nases.gov.sk/kontakt/index.html']
+https://cuet.slovensko.sk/sk/vyhladavanie?q=rozpo%C4%8Det 200 text/html; charset=utf-8 3921
+   ['//fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600&amp;subset=latin,latin-ext', '/Content/Css/bundle?v=42S1Tu-l_fnfTzEcvZ1veFHNhelDM87spLowb68Y6vM1', '/sk/Shared/ChangeContrast?returnUrl=%2Fsk%2Fchyba', 'https://www.slovensko.sk/sk/titulna-stranka', 'https://www.slovensko.sk/sk/o-portali', 'https://www.slovensko.sk/sk/pomoc', 'https://www.slovensko.sk/sk/Kontakt', '/sk/Shared/ChangeCulture?lang=2&amp;returnUrl=%2Fsk%2Fchyba', '/sk/Rss', 'http://slovensko.sk', '/', '/', 'https://www.nases.gov.sk/kontakt/index.html']
+https://cuet.slovensko.sk/api 200 text/html; charset=utf-8 3921
+   ['//fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600&amp;subset=latin,latin-ext', '/Content/Css/bundle?v=42S1Tu-l_fnfTzEcvZ1veFHNhelDM87spLowb68Y6vM1', '/sk/Shared/ChangeContrast?returnUrl=%2Fsk%2Fchyba', 'https://www.slovensko.sk/sk/titulna-stranka', 'https://www.slovensko.sk/sk/o-portali', 'https://www.slovensko.sk/sk/pomoc', 'https://www.slovensko.sk/sk/Kontakt', '/sk/Shared/ChangeCulture?lang=2&amp;returnUrl=%2Fsk%2Fchyba', '/sk/Rss', 'http://slovensko.sk', '/', '/', 'https://www.nases.gov.sk/kontakt/index.html']
 HOTOVO
