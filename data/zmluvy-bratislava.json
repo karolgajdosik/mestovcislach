@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11836,
+ "pocet_spolu": 11852,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,14 +25,20 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2224,
-   "suma": 345640457.08
+   "pocet": 2240,
+   "suma": 407140459.76
   }
  },
  "posledny_rok": {
-  "od": "2025-10-28",
+  "od": "2025-10-29",
   "suma_bez_ico": 68800.73,
   "dodavatelia": [
+   {
+    "ico": "36412678",
+    "nazov": "DOSA Slovakia, s.r.o.",
+    "pocet": 2,
+    "suma": 62047438.84
+   },
    {
     "ico": "35778806",
     "nazov": "zares, spol. s r.o.",
@@ -116,15 +122,18 @@
     "nazov": "METRO Bratislava  a.s.",
     "pocet": 8,
     "suma": 1204031.04
-   },
-   {
-    "ico": "47144190",
-    "nazov": "Metrostav Slovakia a. s.",
-    "pocet": 2,
-    "suma": 1055181.15
    }
   ],
   "najvacsie": [
+   {
+    "datum": "2026-10-28",
+    "dodavatel": "DOSA Slovakia, s.r.o.",
+    "ico": "36412678",
+    "predmet": "Rámcová dohoda na \"Bežné stavebné práce investičných projektov na rozšírení existujúcej a výstavbe novej dopravnej infraštruktúry na území hlavného mesta SR Bratislavy\".",
+    "suma": 61500000.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600231"
+   },
    {
     "datum": "2025-12-11",
     "dodavatel": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
@@ -295,17 +304,8 @@
     "suma": 969663.71,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600067"
-   },
-   {
-    "datum": "2026-09-22",
-    "dodavatel": "CITY STONE DESIGN s.r.o.",
-    "ico": "47978929",
-    "predmet": "RD MAGZBR2600207 - Výroba a dodávka bratislavskej dlažby",
-    "suma": 884985.0,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600207"
    }
   ]
  },
- "aktualizovane": "2026-10-28T03:09:25+00:00"
+ "aktualizovane": "2026-10-29T03:11:59+00:00"
 }
