@@ -5,7 +5,7 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-10-27",
+ "do": "2026-10-28",
  "mestske_casti": {
   "Devín": {
    "zmluv": 551,
@@ -620,8 +620,8 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14639,
-   "suma": 2631363199,
+   "zmluv": 14654,
+   "suma": 2631413129,
    "roky": {
     "2022": [
      2618,
@@ -640,13 +640,13 @@
      334776233
     ],
     "2026": [
-     2481,
-     542067883
+     2496,
+     542117814
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 6407,
-    "suma": 76531575
+    "zmluv": 6411,
+    "suma": 76559575
    },
    "najvacsi_partneri": [
     {
@@ -1028,8 +1028,8 @@
    ]
   },
   "Karlova Ves": {
-   "zmluv": 2473,
-   "suma": 72528720,
+   "zmluv": 2474,
+   "suma": 72530130,
    "roky": {
     "2022": [
      564,
@@ -1048,13 +1048,13 @@
      8212235
     ],
     "2026": [
-     362,
-     22580730
+     363,
+     22582140
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1013,
-    "suma": 3916104
+    "zmluv": 1014,
+    "suma": 3917514
    },
    "najvacsi_partneri": [
     {
@@ -1436,8 +1436,8 @@
    ]
   },
   "Nové Mesto": {
-   "zmluv": 1765,
-   "suma": 122808956,
+   "zmluv": 1768,
+   "suma": 122811869,
    "roky": {
     "2022": [
      277,
@@ -1456,8 +1456,8 @@
      10986412
     ],
     "2026": [
-     457,
-     21662930
+     460,
+     21665842
     ]
    },
    "fyzicke_osoby": {
@@ -1640,8 +1640,8 @@
    ]
   },
   "Petržalka": {
-   "zmluv": 5084,
-   "suma": 210482478,
+   "zmluv": 5089,
+   "suma": 210703967,
    "roky": {
     "2022": [
      753,
@@ -1660,13 +1660,13 @@
      66104103
     ],
     "2026": [
-     874,
-     54639557
+     879,
+     54861046
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 2467,
-    "suma": 7427246
+    "zmluv": 2468,
+    "suma": 7427427
    },
    "najvacsi_partneri": [
     {
@@ -1844,8 +1844,8 @@
    ]
   },
   "Podunajské Biskupice": {
-   "zmluv": 1822,
-   "suma": 48632215,
+   "zmluv": 1823,
+   "suma": 48632469,
    "roky": {
     "2022": [
      234,
@@ -1864,13 +1864,13 @@
      11397075
     ],
     "2026": [
-     297,
-     15554212
+     298,
+     15554466
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 970,
-    "suma": 1320011
+    "zmluv": 971,
+    "suma": 1320265
    },
    "najvacsi_partneri": [
     {
@@ -2048,8 +2048,8 @@
    ]
   },
   "Rača": {
-   "zmluv": 3236,
-   "suma": 54103481,
+   "zmluv": 3237,
+   "suma": 54103490,
    "roky": {
     "2022": [
      568,
@@ -2068,13 +2068,13 @@
      11753305
     ],
     "2026": [
-     680,
-     9583702
+     681,
+     9583711
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1425,
-    "suma": 2277915
+    "zmluv": 1426,
+    "suma": 2277924
    },
    "najvacsi_partneri": [
     {
@@ -2660,8 +2660,8 @@
    ]
   },
   "Staré Mesto": {
-   "zmluv": 2492,
-   "suma": 115365199,
+   "zmluv": 2495,
+   "suma": 115730851,
    "roky": {
     "2022": [
      459,
@@ -2680,8 +2680,8 @@
      20943521
     ],
     "2026": [
-     510,
-     35234216
+     513,
+     35599868
     ]
    },
    "fyzicke_osoby": {
@@ -4196,8 +4196,8 @@
   },
   "Nové Mesto": {
    "poskytnute": {
-    "zmluv": 38,
-    "suma": 57300,
+    "zmluv": 40,
+    "suma": 59600,
     "prijimatelia": [
      {
       "nazov": "Novomestský športový klub 1922 Bratislava",
@@ -4214,6 +4214,10 @@
      {
       "nazov": "Depaul Slovensko, nezisková organizácia",
       "suma": 4000
+     },
+     {
+      "nazov": "CirKusKus, o.z.",
+      "suma": 3200
      },
      {
       "nazov": "Centrum podagogicko - psychlogického poradenstva a prevencie",
@@ -4234,10 +4238,6 @@
      {
       "nazov": "Bunkre o. z.",
       "suma": 2000
-     },
-     {
-      "nazov": "Spolok PAMODAJ",
-      "suma": 1500
      }
     ]
    },
@@ -4996,5 +4996,5 @@
    }
   }
  },
- "aktualizovane": "2026-10-28T06:00:16+00:00"
+ "aktualizovane": "2026-10-29T06:01:45+00:00"
 }
