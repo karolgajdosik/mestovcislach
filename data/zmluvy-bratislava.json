@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11860,
+ "pocet_spolu": 11867,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2248,
-   "suma": 407140709.76
+   "pocet": 2255,
+   "suma": 407141088.76
   }
  },
  "posledny_rok": {
-  "od": "2025-10-30",
+  "od": "2025-10-31",
   "suma_bez_ico": 68800.73,
   "dodavatelia": [
    {
@@ -66,8 +66,8 @@
    {
     "ico": "17317282",
     "nazov": "STRABAG s.r.o.",
-    "pocet": 9,
-    "suma": 9422275.94
+    "pocet": 8,
+    "suma": 8451551.73
    },
    {
     "ico": "50614339",
@@ -288,15 +288,6 @@
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2600034"
    },
    {
-    "datum": "2025-10-31",
-    "dodavatel": "STRABAG s.r.o.",
-    "ico": "17317282",
-    "predmet": "Realizácia projektu Revitalizácia verejného priestoru Dom služieb Dúbravka",
-    "suma": 970724.21,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500320"
-   },
-   {
     "datum": "2026-05-04",
     "dodavatel": "Hydrograss-company, s.r.o.",
     "ico": "50968874",
@@ -304,8 +295,17 @@
     "suma": 969663.71,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600067"
+   },
+   {
+    "datum": "2026-09-22",
+    "dodavatel": "CITY STONE DESIGN s.r.o.",
+    "ico": "47978929",
+    "predmet": "RD MAGZBR2600207 - Výroba a dodávka bratislavskej dlažby",
+    "suma": 884985.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600207"
    }
   ]
  },
- "aktualizovane": "2026-10-30T03:12:25+00:00"
+ "aktualizovane": "2026-10-31T03:11:16+00:00"
 }
