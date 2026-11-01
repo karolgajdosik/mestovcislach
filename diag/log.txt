@@ -1,5 +1,5 @@
 == ['scripts/zber_obyvatelstvo.py'] 0
-OK: Bratislava + 18 mestských častí, rok 2025: 958 778 obyvateľov
+OK: Bratislava + 17 mestských častí, rok 2025: 479 389 obyvateľov
 
 
 == ['scripts/zber_byvanie.py'] 0
@@ -26,7 +26,7 @@ sv3701rr: 768 hodnôt
 Kriminalita: Banskobystrický kraj ('2025', 5482.0), Bratislavský kraj ('2025', 7467.0), Košický kraj ('2025', 8009.0), Nitriansky kraj ('2025', 4854.0), Prešovský kraj ('2025', 4959.0), Trenčiansky kraj ('2025', 3994.0), Trnavský kraj ('2025', 4385.0), Žilinský kraj ('2025', 5492.0)
 
 
-BA mesto 2024/2025 staré 479389 480902  nové 956080 958778 častí 18 kódy ['Bratislava I-V', 'SK0104529401', 'SK0104529371']
+BA mesto 2024/2025 staré 479389 480902  nové 478040 479389 častí 17 kódy ['SK0104529401', 'SK0104529371', 'SK0104529389']
 trnava obyv 2025 63184 63180 častí 0 | byty 2024 {'ZAC_BYT': 839, 'DOKONC_BYT': 918, 'ROZOST_BYT_KON': 4066} {'DOKONC_BYT': 918, 'ROZOST_BYT_KON': 4066, 'ZAC_BYT': 839} | ceny None
 kosice obyv 2025 222286 223678 častí 22 | byty 2024 {'ZAC_BYT': 323, 'DOKONC_BYT': 384, 'ROZOST_BYT_KON': 1493} {'DOKONC_BYT': 384, 'ROZOST_BYT_KON': 1493, 'ZAC_BYT': 323} | ceny None
 bratislava obyv 2025 480902 479389 častí 17 | byty 2024 {'ZAC_BYT': 1386, 'DOKONC_BYT': 2067, 'ROZOST_BYT_KON': 9840} {'DOKONC_BYT': 2067, 'ROZOST_BYT_KON': 9840, 'ZAC_BYT': 1386} | ceny None
@@ -36,8 +36,8 @@ ceny nové {'kraj': {'2022-Q2': 19.8, '2022-Q3': 21.3, '2022-Q4': 17.5, '2023-Q1
 HPI posledné staré {'obdobie': '2026-Q2', 'sr_total_rr': 113.6, 'sr_total_qq': 101.4, 'sr_dw_new_rr': 110.0, 'sr_dw_new_qq': 102.1, 'sr_dw_exst_rr': 114.3, 'sr_dw_exst_qq': 101.3, 'ba_total_rr': 116.2, 'ba_total_qq': 99.5, 'ba_dw_new_rr': 112.4, 'ba_dw_new_qq': 103.6, 'ba_dw_exst_rr': 116.6, 'ba_dw_exst_qq': 98.2, 'ba_total_idx': 136.89, 'sr_total_idx': 135.61, 'ba_dw_new_idx': 126.96, 'ba_dw_exst_idx': 139.21}
 HPI posledné nové {'obdobie': '2026-Q2', 'ba_dw_exst_rr': 116.6, 'ba_dw_exst_qq': 98.2, 'ba_dw_new_rr': 112.4, 'ba_dw_new_qq': 103.6, 'ba_total_rr': 116.2, 'ba_total_qq': 99.5, 'sr_dw_exst_rr': 114.3, 'sr_dw_exst_qq': 101.3, 'sr_dw_new_rr': 110.0, 'sr_dw_new_qq': 102.1, 'sr_total_rr': 113.6, 'sr_total_qq': 101.4, 'ba_total_idx': 136.89, 'sr_total_idx': 135.61, 'ba_dw_new_idx': 126.96, 'ba_dw_exst_idx': 139.21}
 výstavba 2024 staré {'ROZOST_BYT_ZAC': 10521, 'ZAC_BYT': 1386, 'DOKONC_BYT': 2067, 'ROZOST_BYT_KON': 9840, 'OBYT_PLOCH': 55.0} nové {'ROZOST_BYT_ZAC': 10521.0, 'ZAC_BYT': 1386.0, 'DOKONC_BYT': 2067.0, 'ROZOST_BYT_KON': 9840.0, 'OBYT_PLOCH': 55.3}
-skoly trnava zs 2024 {'skol': 13, 'ziakov': 6199, 'tried': 282, 'ucitelov': 476} {'ziakov': 6199, 'skol': 13} | ms {'skol': 34, 'ziakov': 2473, 'tried': 133, 'ucitelov': 267} {'ziakov': 2473, 'skol': 34} | gym {'skol': 5, 'ziakov': 1929, 'tried': 82, 'ucitelov': 170} {'ziakov': 1929, 'skol': 5}
-skoly kosice zs 2024 {'skol': 51, 'ziakov': 21271, 'tried': 1000, 'ucitelov': 1565} {'ziakov': 21271, 'skol': 51} posledný rok 2025
+skoly trnava zs 2024 {'skol': 13, 'ziakov': 6199, 'tried': 282, 'ucitelov': 476} {'skol': 13, 'ziakov': 6199, 'ucitelov': 476, 'tried': 282} | ms {'skol': 34, 'ziakov': 2473, 'tried': 133, 'ucitelov': 267} {'skol': 34, 'ziakov': 2473, 'ucitelov': 267, 'tried': 133} | gym {'skol': 5, 'ziakov': 1929, 'tried': 82, 'ucitelov': 170} {'skol': 5, 'ziakov': 1929, 'ucitelov': 170, 'tried': 82}
+skoly kosice zs 2024 {'skol': 51, 'ziakov': 21271, 'tried': 1000, 'ucitelov': 1565} {'skol': 51, 'ziakov': 21271, 'ucitelov': 1565, 'tried': 1000} posledný rok 2025
 UA nové kľúče set()
 st3701rr:Priemerná cena za kúpu bytu za m2 2554 2554.0 max rok 2025
 do3701rr:Dĺžka cyklistickej siete 29.32 29.32 max rok 2025
