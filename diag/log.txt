@@ -1,47 +1,6 @@
-== ['scripts/zber_obyvatelstvo.py'] 0
-OK: Bratislava + 17 mestských častí, rok 2025: 479 389 obyvateľov
-
-
-== ['scripts/zber_byvanie.py'] 0
-Ceny: 2026-Q2 BA 116.2 SR 113.6; byty 2025: {'ROZOST_BYT_ZAC': 9820.0, 'ZAC_BYT': 2037.0, 'DOKONC_BYT': 742.0, 'ROZOST_BYT_KON': 11115.0, 'OBYT_PLOCH': 65.6}
-
-
-== ['scripts/zber_mesta.py', 'obyvatelia', 'byty', 'ceny'] 0
-yvatelia': 80257, 'rok': '2025', 'zmena10': -1.1, 'seniori': 18.4, 'deti': 15.1, 'vs': 27.7, 'vlastne_byty': None, 'pdu': 2.94, 'ucast_komunalne': 42.98, 'byty_10r': 591, 'ceny_kraj': 11.0}
-{'slug': 'banska-bystrica', 'nazov': 'Banská Bystrica', 'obyvatelia': 73533, 'rok': '2025', 'zmena10': -7.0, 'seniori': 19.9, 'deti': 14.1, 'vs': 29.0, 'vlastne_byty': 93.6, 'pdu': 3.43, 'ucast_komunalne': 44.47, 'byty_10r': 307, 'ceny_kraj': 12.4}
-{'slug': 'presov', 'nazov': 'Prešov', 'obyvatelia': 81702, 'rok': '2025', 'zmena10': -9.4, 'seniori': 18.3, 'deti': 14.4, 'vs': 27.0, 'vlastne_byty': None, 'pdu': 3.18, 'ucast_komunalne': 44.19, 'byty_10r': 666, 'ceny_kraj': 8.9}
-{'slug': 'kosice', 'nazov': 'Košice', 'obyvatelia': 223678, 'rok': '2025', 'zmena10': -6.6, 'seniori': 18.7, 'deti': 14.8, 'vs': 26.7, 'vlastne_byty': 92.2, 'pdu': 3.02, 'ucast_komunalne': 37.11, 'byty_10r': 580, 'ceny_kraj': 7.9}
-
-
-== ['scripts/zber_mesta_temy.py'] 0
-Školy ms: bratislava 2025, trnava 2025, nitra 2025, trencin 2025, zilina 2025, banska-bystrica 2025, presov 2025, kosice 2025
-Školy zs: bratislava 2025, trnava 2025, nitra 2025, trencin 2025, zilina 2025, banska-bystrica 2025, presov 2025, kosice 2025
-Školy gym: bratislava 2025, trnava 2025, nitra 2025, trencin 2025, zilina 2025, banska-bystrica 2025, presov 2025, kosice 2025
-Mapa škôl: bratislava 627, trnava 99, nitra 110, trencin 80, zilina 127, banska-bystrica 106, presov 154, kosice 322
-do3701rr: 739 hodnôt
-zp3701rr: 804 hodnôt
-ku3701rr: 1525 hodnôt
-st3701rr: 400 hodnôt
-sv3701rr: 768 hodnôt
-Kriminalita: Banskobystrický kraj ('2025', 5482.0), Bratislavský kraj ('2025', 7467.0), Košický kraj ('2025', 8009.0), Nitriansky kraj ('2025', 4854.0), Prešovský kraj ('2025', 4959.0), Trenčiansky kraj ('2025', 3994.0), Trnavský kraj ('2025', 4385.0), Žilinský kraj ('2025', 5492.0)
-
-
-BA mesto 2024/2025 staré 479389 480902  nové 478040 479389 častí 17 kódy ['SK0104529401', 'SK0104529371', 'SK0104529389']
-trnava obyv 2025 63184 63180 častí 0 | byty 2024 {'ZAC_BYT': 839, 'DOKONC_BYT': 918, 'ROZOST_BYT_KON': 4066} {'DOKONC_BYT': 918, 'ROZOST_BYT_KON': 4066, 'ZAC_BYT': 839} | ceny None
-kosice obyv 2025 222286 223678 častí 22 | byty 2024 {'ZAC_BYT': 323, 'DOKONC_BYT': 384, 'ROZOST_BYT_KON': 1493} {'DOKONC_BYT': 384, 'ROZOST_BYT_KON': 1493, 'ZAC_BYT': 323} | ceny None
-bratislava obyv 2025 480902 479389 častí 17 | byty 2024 {'ZAC_BYT': 1386, 'DOKONC_BYT': 2067, 'ROZOST_BYT_KON': 9840} {'DOKONC_BYT': 2067, 'ROZOST_BYT_KON': 9840, 'ZAC_BYT': 1386} | ceny None
-presov obyv 2025 81223 81702 častí 0 | byty 2024 {'ZAC_BYT': 585, 'DOKONC_BYT': 580, 'ROZOST_BYT_KON': 3031} {'DOKONC_BYT': 580, 'ROZOST_BYT_KON': 3031, 'ZAC_BYT': 585} | ceny None
-ceny kľúče dict {'kraj': {'2022-Q2': 19.8, '2022-Q3': 21.3, '2022-Q4': 17.5, '2023-Q1': 15.9, '2023-Q2': 10.4, '2023-Q3': 1.6, '2023-Q4': 3.4, '2024-Q1': 1.2, '2024-Q2': 2.7, '2024-Q3': 5.2, '2024-Q4': 2.3, '2025-Q1'
-ceny nové {'kraj': {'2022-Q2': 19.8, '2022-Q3': 21.3, '2022-Q4': 17.5, '2023-Q1': 15.9, '2023-Q2': 10.4, '2023-Q3': 1.6, '2023-Q4': 3.4, '2024-Q1': 1.2, '2024-Q2': 2.7, '2024-Q3': 5.2, '2024-Q4': 2.3, '2025-Q1': 7.3, '2025-Q2': 6.8, '2025-Q3': 8.5, '2025-Q4': 11.9, '2026-Q1': 8.3, '2026-Q2': 11.9}, 'sr': {'20
-HPI posledné staré {'obdobie': '2026-Q2', 'sr_total_rr': 113.6, 'sr_total_qq': 101.4, 'sr_dw_new_rr': 110.0, 'sr_dw_new_qq': 102.1, 'sr_dw_exst_rr': 114.3, 'sr_dw_exst_qq': 101.3, 'ba_total_rr': 116.2, 'ba_total_qq': 99.5, 'ba_dw_new_rr': 112.4, 'ba_dw_new_qq': 103.6, 'ba_dw_exst_rr': 116.6, 'ba_dw_exst_qq': 98.2, 'ba_total_idx': 136.89, 'sr_total_idx': 135.61, 'ba_dw_new_idx': 126.96, 'ba_dw_exst_idx': 139.21}
-HPI posledné nové {'obdobie': '2026-Q2', 'ba_dw_exst_rr': 116.6, 'ba_dw_exst_qq': 98.2, 'ba_dw_new_rr': 112.4, 'ba_dw_new_qq': 103.6, 'ba_total_rr': 116.2, 'ba_total_qq': 99.5, 'sr_dw_exst_rr': 114.3, 'sr_dw_exst_qq': 101.3, 'sr_dw_new_rr': 110.0, 'sr_dw_new_qq': 102.1, 'sr_total_rr': 113.6, 'sr_total_qq': 101.4, 'ba_total_idx': 136.89, 'sr_total_idx': 135.61, 'ba_dw_new_idx': 126.96, 'ba_dw_exst_idx': 139.21}
-výstavba 2024 staré {'ROZOST_BYT_ZAC': 10521, 'ZAC_BYT': 1386, 'DOKONC_BYT': 2067, 'ROZOST_BYT_KON': 9840, 'OBYT_PLOCH': 55.0} nové {'ROZOST_BYT_ZAC': 10521.0, 'ZAC_BYT': 1386.0, 'DOKONC_BYT': 2067.0, 'ROZOST_BYT_KON': 9840.0, 'OBYT_PLOCH': 55.3}
-skoly trnava zs 2024 {'skol': 13, 'ziakov': 6199, 'tried': 282, 'ucitelov': 476} {'skol': 13, 'ziakov': 6199, 'ucitelov': 476, 'tried': 282} | ms {'skol': 34, 'ziakov': 2473, 'tried': 133, 'ucitelov': 267} {'skol': 34, 'ziakov': 2473, 'ucitelov': 267, 'tried': 133} | gym {'skol': 5, 'ziakov': 1929, 'tried': 82, 'ucitelov': 170} {'skol': 5, 'ziakov': 1929, 'ucitelov': 170, 'tried': 82}
-skoly kosice zs 2024 {'skol': 51, 'ziakov': 21271, 'tried': 1000, 'ucitelov': 1565} {'skol': 51, 'ziakov': 21271, 'ucitelov': 1565, 'tried': 1000} posledný rok 2025
-UA nové kľúče set()
-st3701rr:Priemerná cena za kúpu bytu za m2 2554 2554.0 max rok 2025
-do3701rr:Dĺžka cyklistickej siete 29.32 29.32 max rok 2025
-zp3701rr:Množstvo komunálneho odpadu | kg na osobu 568.6 568.6 max rok 2025
-ku3701rr:Návštevníci múzeí za rok 9604 9604.0 max rok 2025
-krim Trnavský TČ 2024 4532.0 2025 4385.0 obyv BA kraj 2024 staré 736385 nové 736385.0
+om7101rr ['1993', '1994'] ['2023', '2024', '2025']
+[('2023', 728370.0), ('2024', 732757.0), ('2025', 736385.0), ('2023', 476922.0), ('2024', 478040.0), ('2025', 479389.0)]
+om7002rr ['2000', '2001'] ['2023', '2024', '2025']
+[('2023', 732757.0), ('2024', 736385.0), ('2025', 739635.0)]
+200 {"nameSk":"Počet obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (ročne) ","nameEn":"Number of the Population by Sex - Municipalities (yearly)","publicId":"om7101rr","productCode":"om7101rr","dataSourceName":"00000002-0000-0000-0000-000000000032_zp004120","descriptionSk":"-","descriptionEn":"-","lastDataChange":"2026-03-31T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:24.944741+02:00","timePeriodFrom":"2025-01-01","timePeriodTo":"2025-12-31","frequencyCode":"ANNUAL","zonation":["Obce"],"zonationEn":["Municipalities"],"updated":false,"jpbdUploadType":"DATABASE","dimensions":[{"id":"53f152bc-36c0-4aa3-a384-6e86ce94acde","nameSk":"Pohlavie","nameEn":"Sex","acronym":"e_sex","code":"VD000007","type":"CODELIST","codeListLinked":false},{"id":"a80b0c38-aecb-4913-bc04-b051a36c5551","nameSk":"NUTS14","nameEn":"NUTS14","acronym":"e_nuts14","code":"VD000068","type":"GEO","codeListLinked":false},{"id":"999525c0-203e-4222-9474-dbad4291c6b5","nameSk":"Ukazovateľ","nameEn":"Indicator","acronym":"e_indic","code":"VD000015","type":"CODELIST","codeListLinked":false},{"id":"302208ae-547f-409b-966e-725771c582a8","nameSk":"Merná jednotka","nameEn":"Unit","acronym":"e_unit","code":"VD000003","type":"CODELIST","codeListLinked":false},{"id":"657fbf90-fe37-4c94-bfef-c89a42af6761","nameSk":"NUTS15","nameEn":"NUTS15","acronym":"e_nuts15","code":"VD000123","type":"GEO","codeListLinked":false},{"id":"517b615c-547f-42b0-a180-2e33a09a7351","nameSk":"Rok","nameEn":"Year","acronym":"e_yea
 HOTOVO
