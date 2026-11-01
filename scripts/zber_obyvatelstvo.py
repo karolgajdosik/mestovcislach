@@ -154,6 +154,8 @@ def main() -> int:
     uzemia: dict[str, dict] = {}
     for r in sd.riadky(TABULKA):
         n = r["e_nuts15"]
+        if n.strip() == "Bratislava I-V":  # súhrnný riadok celého mesta
+            n = "Bratislava"
         if not je_obec_bratislava(n):
             continue
         k = kratky(n) if n.strip() != "Bratislava" else "Bratislava"

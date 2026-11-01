@@ -67,6 +67,8 @@ def obyvatelia() -> dict:
     out: dict[str, dict] = {}
     for r in sd.riadky("om7101rr"):
         n = norm(r["e_nuts15"])
+        # súhrnný riadok mesta s mestskými časťami („Bratislava I-V“, „Košice I-IV“) = celé mesto
+        n = re.sub(r"^(\S.*?) I-[IV]+$", r"\1", n)
         for m in MESTA:
             if patri(n, m["nazov"]):
                 o = out.setdefault(m["slug"], {"mesto": {}, "casti": defaultdict(dict)})

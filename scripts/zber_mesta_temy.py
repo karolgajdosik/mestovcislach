@@ -52,11 +52,20 @@ def skoly() -> dict:
             oblasti = set(oblasti_mesta(nazvy, m["nazov"]))
             if not oblasti:
                 continue
-            roky: dict[str, dict] = defaultdict(lambda: defaultdict(float))
+            # súhrn za všetkých zriaďovateľov; kde súhrnný riadok chýba (učitelia, triedy), sčítame štátne, súkromné a cirkevné
+            spolu: dict[str, dict] = defaultdict(lambda: defaultdict(float))
+            casti: dict[str, dict] = defaultdict(lambda: defaultdict(float))
             for r in rows:
                 k = UKAZ_SKOLY.get(r["e_indic"])
-                if k and r["e_nuts15"] in oblasti and r[typ] == SKOLY_SPOLU[druh]:
-                    roky[r["e_year"]][k] += r["hodnota"]
+                if not k or r["e_nuts15"] not in oblasti or "1. - 4." in r[typ]:
+                    continue
+                (spolu if r[typ] == SKOLY_SPOLU[druh] else casti)[r["e_year"]][k] += r["hodnota"]
+            roky: dict[str, dict] = defaultdict(dict)
+            for rok in set(spolu) | set(casti):
+                for k in ("skol", "ziakov", "ucitelov", "tried"):
+                    v = spolu[rok].get(k) or casti[rok].get(k)
+                    if v:
+                        roky[rok][k] = v
             vysl[m["slug"]][druh] = {rok: {k: round(v) for k, v in x.items()} for rok, x in sorted(roky.items()) if x.get("skol") or x.get("ziakov")}
         print(f"Školy {druh}: " + ", ".join(f"{s} {max(v.get(druh) or {'-': 0})}" for s, v in vysl.items()))
     return vysl
