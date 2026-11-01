@@ -1,7 +1,10 @@
-pr3101rr Počet obyvateľov použitý vo VZPS (od roku 2021)  2025-12-31 ['Kraje', 'Slovenská republika', 'Oblasti']
-pr3108rr Miera evidovanej nezamestnanosti  2025-12-31 ['Kraje', 'Slovenská republika', 'Oblasti', 'Okresy']
-pr3113rr Zamestnanci podľa ekonomickej činnosti zistení pracoviskovou metódou  2025-12-31 ['Kraje', 'Slovenská republika', 'Oblasti', 'Okresy']
-pr3114rr Zamestnanci podľa zamestnania zistení pracoviskovou metódou  2025-12-31 ['Slovenská republika', 'Kraje', 'Oblasti', 'Okresy']
-https://gis.geocloud.gov.sk/geoserver/uvz/ows?service=WFS&ve 200 100978
-https://gis.geocloud.gov.sk/geoserver/mpsvrsr/ows?service=WF 200 92812
+pr3108rr 200 ["RDFXML4","JSONLD4","JSON","CSV","XML","ODS"]
+om7101rr 200 ["RDFXML4","JSONLD4","JSON","CSV","XML","ODS"]
+CSV SK 200 b'PK\x03\x04\x14\x00\x08\x08\x08\x00l\xba$]\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x13\x00\x00\x00pr3108rr_CSV_SK.csv\xb4\xbd\xcd\xce%9r\xa6\xb9\xd7U\xe4f\x80\x19\xc0q@\x1a\xff\xb7B\x0ff\x84\x19u\x0b(\xb5\x16'
+CSV EN 200 b'PK\x03\x04\x14\x00\x08\x08\x08\x00p\xba$]\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x13\x00\x00\x00pr3108rr_CSV_EN.csv\xb4\xbd\xcd\xeem9r\xe57\xd7S\xe4\xc4\x80\rl\x1cl~\x93SA\xfe\x10\xec\x12\x1a*\xd9=l'
+JSON SK 200 b'PK\x03\x04\x14\x00\x08\x08\x08\x00f\xba$]\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x15\x00\x00\x00pr3108rr_JSON_SK.json\xdc\xbd\xcb\xaefI\x92\x9d7\xe7S\x04\x1a\x10 \x01\x8d\r\xbf_4$(H\x1c\xf0\x02\x14\xa5'
+JSON EN 200 b'PK\x03\x04\x14\x00\x08\x08\x08\x00i\xba$]\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x15\x00\x00\x00pr3108rr_JSON_EN.json\xdc\xbd\xcb\xaefIr\xa57\xef\xa7\x08\x10\x10 \x01\xc4\x86\xdf/\x1a\x12\xd4\x85\x035\x1a$\xa5'
+XLSX SK 400 b'{"message":"Failed to convert value of type \'java.lang.String\' to required type '
+XLSX EN 400 b'{"message":"Failed to convert value of type \'java.lang.String\' to required type '
+dims 200 [{"id":"53f152bc-36c0-4aa3-a384-6e86ce94acde","nameSk":"Pohlavie","nameEn":"Sex","acronym":"e_sex","code":"VD000007","type":"CODELIST","codeListLinked":false},{"id":"a80b0c38-aecb-4913-bc04-b051a36c5551","nameSk":"NUTS14","nameEn":"NUTS14","acronym":"e_nuts14","code":"VD000068","type":"GEO","codeListLinked":false},{"id":"999525c0-203e-4222-9474-dbad4291c6b5","nameSk":"Ukazovateľ","nameEn":"Indicator","acronym":"e_indic","code":"VD000015","type":"CODELIST","codeListLinked":false},{"id":"302208ae-547f-409b-966e-725771c582a8","nameSk":"Merná jednotka","nameEn":"Unit","acronym":"e_unit","code":"VD
 HOTOVO
