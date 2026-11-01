@@ -84,7 +84,7 @@ const pocetNavrhov = mesta.filter((x) => x.stav !== 'caka').length;
       <li>Ak zastupiteľstvo rozpočet do 31. decembra neschváli, mesto hospodári v rozpočtovom provizóriu – každý mesiac môže minúť najviac 1/12 výdavkov z rozpočtu predchádzajúceho roka (§ 11 toho istého zákona).</li>
       <li>Dokumenty hľadáme automaticky na webe a úradnej tabuli mesta (názov obsahuje rozpočet a rok {ROK}). Výnosy, náklady a dane na obyvateľa sú z účtovných závierok v registri účtovných závierok (bez mestských častí pri Bratislave a Košiciach), dlh z údajov Ministerstva financií SR.</li>
     </ul>
-    {data.aktualizovane && <p class="pozn">Naposledy kontrolované {datum(data.aktualizovane)}.</p>}
+    <p class="pozn">Weby miest kontrolujeme každú noc{data.aktualizovane ? `; posledná zmena v zozname dokumentov ${datum(data.aktualizovane)}` : ""}.</p>
   </section>
 </Base>
 
