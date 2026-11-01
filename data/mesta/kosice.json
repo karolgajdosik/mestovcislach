@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-27T16:04:37",
+ "aktualizovane": "2026-11-01T10:20:19",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -2998,136 +2998,136 @@
  },
  "byty": {
   "2001": {
-   "ZAC_BYT": 116,
    "DOKONC_BYT": 189,
-   "ROZOST_BYT_KON": 835
+   "ROZOST_BYT_KON": 835,
+   "ZAC_BYT": 116
   },
   "2002": {
-   "ZAC_BYT": 309,
    "DOKONC_BYT": 277,
-   "ROZOST_BYT_KON": 867
+   "ROZOST_BYT_KON": 867,
+   "ZAC_BYT": 309
   },
   "2003": {
-   "ZAC_BYT": 484,
    "DOKONC_BYT": 204,
-   "ROZOST_BYT_KON": 1231
+   "ROZOST_BYT_KON": 1231,
+   "ZAC_BYT": 484
   },
   "2004": {
-   "ZAC_BYT": 241,
    "DOKONC_BYT": 185,
-   "ROZOST_BYT_KON": 1437
+   "ROZOST_BYT_KON": 1437,
+   "ZAC_BYT": 241
   },
   "2005": {
-   "ZAC_BYT": 397,
    "DOKONC_BYT": 204,
-   "ROZOST_BYT_KON": 1630
+   "ROZOST_BYT_KON": 1630,
+   "ZAC_BYT": 397
   },
   "2006": {
-   "ZAC_BYT": 231,
    "DOKONC_BYT": 257,
-   "ROZOST_BYT_KON": 1604
+   "ROZOST_BYT_KON": 1604,
+   "ZAC_BYT": 231
   },
   "2007": {
-   "ZAC_BYT": 309,
    "DOKONC_BYT": 287,
-   "ROZOST_BYT_KON": 1639
+   "ROZOST_BYT_KON": 1639,
+   "ZAC_BYT": 309
   },
   "2008": {
-   "ZAC_BYT": 813,
    "DOKONC_BYT": 469,
-   "ROZOST_BYT_KON": 1924
+   "ROZOST_BYT_KON": 1924,
+   "ZAC_BYT": 813
   },
   "2009": {
-   "ZAC_BYT": 244,
    "DOKONC_BYT": 250,
-   "ROZOST_BYT_KON": 1820
+   "ROZOST_BYT_KON": 1820,
+   "ZAC_BYT": 244
   },
   "2010": {
-   "ZAC_BYT": 524,
    "DOKONC_BYT": 202,
-   "ROZOST_BYT_KON": 2154
+   "ROZOST_BYT_KON": 2154,
+   "ZAC_BYT": 524
   },
   "2011": {
-   "ZAC_BYT": 459,
    "DOKONC_BYT": 490,
-   "ROZOST_BYT_KON": 2069
+   "ROZOST_BYT_KON": 2069,
+   "ZAC_BYT": 459
   },
   "2012": {
-   "ZAC_BYT": 407,
    "DOKONC_BYT": 351,
-   "ROZOST_BYT_KON": 2138
+   "ROZOST_BYT_KON": 2138,
+   "ZAC_BYT": 407
   },
   "2013": {
-   "ZAC_BYT": 345,
    "DOKONC_BYT": 626,
-   "ROZOST_BYT_KON": 1831
+   "ROZOST_BYT_KON": 1831,
+   "ZAC_BYT": 345
   },
   "2014": {
-   "ZAC_BYT": 616,
    "DOKONC_BYT": 410,
-   "ROZOST_BYT_KON": 2038
+   "ROZOST_BYT_KON": 2038,
+   "ZAC_BYT": 616
   },
   "2015": {
-   "ZAC_BYT": 667,
    "DOKONC_BYT": 550,
-   "ROZOST_BYT_KON": 2158
+   "ROZOST_BYT_KON": 2158,
+   "ZAC_BYT": 667
   },
   "2016": {
-   "ZAC_BYT": 771,
    "DOKONC_BYT": 346,
-   "ROZOST_BYT_KON": 2589
+   "ROZOST_BYT_KON": 2589,
+   "ZAC_BYT": 771
   },
   "2017": {
-   "ZAC_BYT": 683,
    "DOKONC_BYT": 687,
-   "ROZOST_BYT_KON": 2585
+   "ROZOST_BYT_KON": 2585,
+   "ZAC_BYT": 683
   },
   "2018": {
-   "ZAC_BYT": 620,
    "DOKONC_BYT": 478,
-   "ROZOST_BYT_KON": 2725
+   "ROZOST_BYT_KON": 2725,
+   "ZAC_BYT": 620
   },
   "2019": {
-   "ZAC_BYT": 568,
    "DOKONC_BYT": 659,
-   "ROZOST_BYT_KON": 2604
+   "ROZOST_BYT_KON": 2604,
+   "ZAC_BYT": 568
   },
   "2020": {
-   "ZAC_BYT": 579,
    "DOKONC_BYT": 889,
-   "ROZOST_BYT_KON": 2289
+   "ROZOST_BYT_KON": 2289,
+   "ZAC_BYT": 579
   },
   "2021": {
-   "ZAC_BYT": 298,
    "DOKONC_BYT": 581,
-   "ROZOST_BYT_KON": 2036
+   "ROZOST_BYT_KON": 2036,
+   "ZAC_BYT": 298
   },
   "2022": {
-   "ZAC_BYT": 394,
    "DOKONC_BYT": 612,
-   "ROZOST_BYT_KON": 1818
+   "ROZOST_BYT_KON": 1818,
+   "ZAC_BYT": 394
   },
   "2023": {
-   "ZAC_BYT": 344,
    "DOKONC_BYT": 611,
-   "ROZOST_BYT_KON": 1551
+   "ROZOST_BYT_KON": 1551,
+   "ZAC_BYT": 344
   },
   "2024": {
-   "ZAC_BYT": 323,
    "DOKONC_BYT": 384,
-   "ROZOST_BYT_KON": 1493
+   "ROZOST_BYT_KON": 1493,
+   "ZAC_BYT": 323
   },
   "2025": {
-   "ZAC_BYT": 317,
    "DOKONC_BYT": 132,
-   "ROZOST_BYT_KON": 1678
+   "ROZOST_BYT_KON": 1678,
+   "ZAC_BYT": 317
   }
  },
  "ceny": {
   "kraj": {
-   "2022-Q2": 23,
+   "2022-Q2": 23.0,
    "2022-Q3": 17.2,
-   "2022-Q4": 11,
+   "2022-Q4": 11.0,
    "2023-Q1": 3.5,
    "2023-Q2": -6.4,
    "2023-Q3": -6.7,
@@ -3140,7 +3140,7 @@
    "2025-Q2": 12.1,
    "2025-Q3": 12.3,
    "2025-Q4": 7.4,
-   "2026-Q1": 11,
+   "2026-Q1": 11.0,
    "2026-Q2": 7.9
   },
   "sr": {
@@ -3152,8 +3152,8 @@
    "2023-Q2": -2.2,
    "2023-Q3": -4.1,
    "2023-Q4": -1.4,
-   "2024-Q1": -3,
-   "2024-Q2": 4,
+   "2024-Q1": -3.0,
+   "2024-Q2": 4.0,
    "2024-Q3": 6.2,
    "2024-Q4": 7.9,
    "2025-Q1": 12.2,
@@ -3176,13 +3176,13 @@
   ]
  },
  "zdroje": {
-  "obyvatelia": "ŠÚ SR – DATAcube om7101rr",
+  "obyvatelia": "ŠÚ SR – STATdata om7101rr",
   "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)",
   "volby": "ŠÚ SR – volby.statistics.sk",
   "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk",
   "praca": "ÚPSVaR – mesačná štatistika",
-  "byty": "ŠÚ SR – DATAcube st3004rr",
-  "ceny": "ŠÚ SR – DATAcube sp3801qr"
+  "byty": "ŠÚ SR – STATdata st3004rr",
+  "ceny": "ŠÚ SR – STATdata sp3801qr"
  },
  "casti": {
   "Barca": {

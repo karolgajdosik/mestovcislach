@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-27T16:04:37",
+ "aktualizovane": "2026-11-01T10:20:19",
  "obyvatelia": {
   "roky": {
    "1993": 71624,
@@ -805,129 +805,129 @@
  },
  "byty": {
   "2001": {
-   "ZAC_BYT": 432,
    "DOKONC_BYT": 368,
-   "ROZOST_BYT_KON": 1395
+   "ROZOST_BYT_KON": 1395,
+   "ZAC_BYT": 432
   },
   "2002": {
-   "ZAC_BYT": 449,
    "DOKONC_BYT": 390,
-   "ROZOST_BYT_KON": 1454
+   "ROZOST_BYT_KON": 1454,
+   "ZAC_BYT": 449
   },
   "2003": {
-   "ZAC_BYT": 497,
    "DOKONC_BYT": 569,
-   "ROZOST_BYT_KON": 1380
+   "ROZOST_BYT_KON": 1380,
+   "ZAC_BYT": 497
   },
   "2004": {
-   "ZAC_BYT": 869,
    "DOKONC_BYT": 439,
-   "ROZOST_BYT_KON": 1743
+   "ROZOST_BYT_KON": 1743,
+   "ZAC_BYT": 869
   },
   "2005": {
-   "ZAC_BYT": 1681,
    "DOKONC_BYT": 458,
-   "ROZOST_BYT_KON": 2982
+   "ROZOST_BYT_KON": 2982,
+   "ZAC_BYT": 1681
   },
   "2006": {
-   "ZAC_BYT": 1245,
    "DOKONC_BYT": 1317,
-   "ROZOST_BYT_KON": 2928
+   "ROZOST_BYT_KON": 2928,
+   "ZAC_BYT": 1245
   },
   "2007": {
-   "ZAC_BYT": 791,
    "DOKONC_BYT": 885,
-   "ROZOST_BYT_KON": 2619
+   "ROZOST_BYT_KON": 2619,
+   "ZAC_BYT": 791
   },
   "2008": {
-   "ZAC_BYT": 1208,
    "DOKONC_BYT": 770,
-   "ROZOST_BYT_KON": 3005
+   "ROZOST_BYT_KON": 3005,
+   "ZAC_BYT": 1208
   },
   "2009": {
-   "ZAC_BYT": 816,
    "DOKONC_BYT": 680,
-   "ROZOST_BYT_KON": 3099
+   "ROZOST_BYT_KON": 3099,
+   "ZAC_BYT": 816
   },
   "2010": {
-   "ZAC_BYT": 788,
    "DOKONC_BYT": 708,
-   "ROZOST_BYT_KON": 3177
+   "ROZOST_BYT_KON": 3177,
+   "ZAC_BYT": 788
   },
   "2011": {
-   "ZAC_BYT": 464,
    "DOKONC_BYT": 838,
-   "ROZOST_BYT_KON": 2898
+   "ROZOST_BYT_KON": 2898,
+   "ZAC_BYT": 464
   },
   "2012": {
-   "ZAC_BYT": 450,
    "DOKONC_BYT": 656,
-   "ROZOST_BYT_KON": 2776
+   "ROZOST_BYT_KON": 2776,
+   "ZAC_BYT": 450
   },
   "2013": {
-   "ZAC_BYT": 587,
    "DOKONC_BYT": 436,
-   "ROZOST_BYT_KON": 2958
+   "ROZOST_BYT_KON": 2958,
+   "ZAC_BYT": 587
   },
   "2014": {
-   "ZAC_BYT": 424,
    "DOKONC_BYT": 554,
-   "ROZOST_BYT_KON": 2826
+   "ROZOST_BYT_KON": 2826,
+   "ZAC_BYT": 424
   },
   "2015": {
-   "ZAC_BYT": 835,
    "DOKONC_BYT": 663,
-   "ROZOST_BYT_KON": 3001
+   "ROZOST_BYT_KON": 3001,
+   "ZAC_BYT": 835
   },
   "2016": {
-   "ZAC_BYT": 1205,
    "DOKONC_BYT": 607,
-   "ROZOST_BYT_KON": 3570
+   "ROZOST_BYT_KON": 3570,
+   "ZAC_BYT": 1205
   },
   "2017": {
-   "ZAC_BYT": 1160,
    "DOKONC_BYT": 842,
-   "ROZOST_BYT_KON": 3889
+   "ROZOST_BYT_KON": 3889,
+   "ZAC_BYT": 1160
   },
   "2018": {
-   "ZAC_BYT": 913,
    "DOKONC_BYT": 925,
-   "ROZOST_BYT_KON": 3878
+   "ROZOST_BYT_KON": 3878,
+   "ZAC_BYT": 913
   },
   "2019": {
-   "ZAC_BYT": 635,
    "DOKONC_BYT": 1126,
-   "ROZOST_BYT_KON": 3387
+   "ROZOST_BYT_KON": 3387,
+   "ZAC_BYT": 635
   },
   "2020": {
-   "ZAC_BYT": 792,
    "DOKONC_BYT": 963,
-   "ROZOST_BYT_KON": 3215
+   "ROZOST_BYT_KON": 3215,
+   "ZAC_BYT": 792
   },
   "2021": {
-   "ZAC_BYT": 2172,
    "DOKONC_BYT": 1005,
-   "ROZOST_BYT_KON": 4380
+   "ROZOST_BYT_KON": 4380,
+   "ZAC_BYT": 2172
   },
   "2022": {
-   "ZAC_BYT": 827,
    "DOKONC_BYT": 841,
-   "ROZOST_BYT_KON": 4252
+   "ROZOST_BYT_KON": 4252,
+   "ZAC_BYT": 827
   },
   "2023": {
-   "ZAC_BYT": 837,
    "DOKONC_BYT": 943,
-   "ROZOST_BYT_KON": 4145
+   "ROZOST_BYT_KON": 4145,
+   "ZAC_BYT": 837
   },
   "2024": {
-   "ZAC_BYT": 839,
    "DOKONC_BYT": 918,
-   "ROZOST_BYT_KON": 4066
+   "ROZOST_BYT_KON": 4066,
+   "ZAC_BYT": 839
   },
   "2025": {
-   "ZAC_BYT": 363,
    "DOKONC_BYT": 605,
-   "ROZOST_BYT_KON": 3824
+   "ROZOST_BYT_KON": 3824,
+   "ZAC_BYT": 363
   }
  },
  "ceny": {
@@ -959,8 +959,8 @@
    "2023-Q2": -2.2,
    "2023-Q3": -4.1,
    "2023-Q4": -1.4,
-   "2024-Q1": -3,
-   "2024-Q2": 4,
+   "2024-Q1": -3.0,
+   "2024-Q2": 4.0,
    "2024-Q3": 6.2,
    "2024-Q4": 7.9,
    "2025-Q1": 12.2,
@@ -980,12 +980,12 @@
   ]
  },
  "zdroje": {
-  "obyvatelia": "ŠÚ SR – DATAcube om7101rr",
+  "obyvatelia": "ŠÚ SR – STATdata om7101rr",
   "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)",
   "volby": "ŠÚ SR – volby.statistics.sk",
   "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk",
   "praca": "ÚPSVaR – mesačná štatistika",
-  "byty": "ŠÚ SR – DATAcube st3004rr",
-  "ceny": "ŠÚ SR – DATAcube sp3801qr"
+  "byty": "ŠÚ SR – STATdata st3004rr",
+  "ceny": "ŠÚ SR – STATdata sp3801qr"
  }
 }
