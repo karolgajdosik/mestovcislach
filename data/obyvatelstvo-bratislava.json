@@ -1,14 +1,13 @@
 {
   "zdroj": {
-    "nazov": "Štatistický úrad SR – DATAcube",
+    "nazov": "Štatistický úrad SR – STATdata",
     "tabulka": "om7101rr",
-    "url": "https://data.statistics.sk/api/v2/dataset/om7101rr/SK0101528595,SK0102529311,SK0102529320,SK0102529338,SK0103529346,SK0103529354,SK0103529362,SK0104529371,SK0104529389,SK0104529397,SK0104529401,SK0104529419,SK0104529427,SK0105529435,SK0105529443,SK0105529460,SK0105529494/all/IN010115/SPOLU"
+    "url": "https://statdata.statistics.sk/public/api/dc/opendata/cube/dataset/om7101rr/download?type=CSV&lang=SK"
   },
-  "aktualizovane": "2026-10-14T20:57:38+00:00",
+  "aktualizovane": "2026-11-01T10:18:42+00:00",
   "mesto": {
     "kod": "SUCET",
     "nazov": "Bratislava",
-    "nazov_kratky": "Bratislava",
     "roky": {
       "1993": 448785,
       "1994": 450776,
@@ -44,7 +43,7 @@
       "2024": 479389,
       "2025": 480902
     },
-    "poznamka": "súčet mestských častí"
+    "nazov_kratky": "Bratislava"
   },
   "mestske_casti": [
     {
