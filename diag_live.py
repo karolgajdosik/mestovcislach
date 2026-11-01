@@ -1,7 +1,8 @@
 import requests,time
-time.sleep(180)
-r=requests.get("https://mestovcislach.sk/api/sutaz",timeout=30); print("API GET",r.status_code,r.text[:200])
-r=requests.post("https://mestovcislach.sk/api/sutaz",json={"tyzden":"1999-W01","mesto":"trnava","body":3},timeout=30); print("POST zlý týždeň",r.status_code)
-for u in ["https://mestovcislach.sk/sutaz/","https://mestovcislach.sk/kosice/poslanci/marek-fedorocko/","https://mestovcislach.sk/trnava/poslanci/eva-nemcovska/"]:
-    t=requests.get(u,timeout=30); print(u,t.status_code)
+r=requests.get("https://mestovcislach.sk/api/sutaz",timeout=30).json(); print("súťaž",r)
+for u in ["https://data.statistics.sk/api/v2/collection?lang=sk","https://data.statistics.sk/","https://datacube.statistics.sk/"]:
+    try: x=requests.get(u,timeout=25); print(u,x.status_code,len(x.content))
+    except Exception as e: print(u,type(e).__name__)
+for u in ["/","/trnava/","/bratislava/","/sutaz/","/rozpocty-2027/","/volby-2026/","/kosice/zastupitelstvo/","/api/vystrahy","/api/ovzdusie?mesto=trnava","/api/dunaj"]:
+    t=time.time(); x=requests.get("https://mestovcislach.sk"+u,timeout=30); print(u,x.status_code,round(time.time()-t,2))
 print("HOTOVO")
