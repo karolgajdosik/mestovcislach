@@ -1,18 +1,24 @@
-['DATAcube. – presmerovanie']
-['https://statdata.statistics.sk/public/ui/dc/', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1001rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1001rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1002rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1002rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1003rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1003rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1004rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1004rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1005rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1005rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1006rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1006rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1007rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1007rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1008rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1008rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1009rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1009rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1012rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1012rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1013rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1013rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1014rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1014rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1015rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1015rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1016rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1016rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1017rs?lang=en']
-https://datacube.statistics.sk/api/v2/collection?lang=sk 200 text/html; charset=UTF-8 <!doctype html>
-<html lang="sk">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <title>DATAcu
-https://datacube.statistics.sk/api/v2/dataset/sp3801qr/SK0,SK010/all/all/all/all?lang=sk 200 text/html; charset=UTF-8 <!doctype html>
-<html lang="sk">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <title>DATAcu
-https://data.statistics.sk/api/v2/collection?lang=sk ConnectTimeout
+/v3/api-docs 200 application/json 89286 b'{"openapi":"3.0.1","info":{"title":"OpenAPI definition","version":"v0"},"servers":[{"url":"https://statdata.statistics.sk/public/api/dc","description"'
+/opendata/cube/dataset/om7101rr 404 application/json 119 b'{"timestamp":"2026-11-01T09:29:49.633+01:00","status":404,"error":"Not Found","path":"/opendata/cube/dataset/om7101rr"}'
+/opendata/cube/dataset/om7101rr/metadata 404 application/json 128 b'{"timestamp":"2026-11-01T09:29:50.336+01:00","status":404,"error":"Not Found","path":"/opendata/cube/dataset/om7101rr/metadata"}'
+/opendata/cube 404 application/json 102 b'{"timestamp":"2026-11-01T09:29:51.000+01:00","status":404,"error":"Not Found","path":"/opendata/cube"}'
+/opendata/cube/list 404 application/json 107 b'{"timestamp":"2026-11-01T09:29:51.725+01:00","status":404,"error":"Not Found","path":"/opendata/cube/list"}'
+/opendata/collection 404 application/json 108 b'{"timestamp":"2026-11-01T09:29:52.437+01:00","status":404,"error":"Not Found","path":"/opendata/collection"}'
+/cube/om7101rr 404 application/json 102 b'{"timestamp":"2026-11-01T09:29:53.168+01:00","status":404,"error":"Not Found","path":"/cube/om7101rr"}'
+/dataset/om7101rr 404 application/json 105 b'{"timestamp":"2026-11-01T09:29:53.885+01:00","status":404,"error":"Not Found","path":"/dataset/om7101rr"}'
+/opendata/cube/dataset/om7101rr/download?type=JSON&lang=SK 200 application/octet-stream 783867 b"PK\x03\x04\x14\x00\x08\x08\x08\x004R+]\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x15\x00\x00\x00om7101rr_JSON_SK.json\xcc\xbdM\x8ff\xc7u\xad9\xf7\xaf(xt/`7\xce\xf7G\xcfZ\x16`Y\x12-BTs\xa0\x1e4\xb2Xy\xcdR%+\x89\xac\xac\x02\xe8F\x8f\xdb\x03\t\x9e\xf7H\x05\xdc;\xd0@\xb3\x1e\t\x10'\xc9\xfa_\xfdf\x91\x92\xe5\xab\xe7\xec\xbdN\xc4:\xa780l\x90I\xefx\xe3D\xec\xd8\x1fk\xad\xfd\x7f\xfc\xcd\x93'"
+/opendata/cube/dataset/om7101rr/download?type=JSONSTAT&lang=SK 400 application/json 532 b'{"message":"Failed to convert value of type \'java.lang.String\' to required type \'sk.icz.susr.jissu.dm.api.dc.enums.OpenDataFileType\'; nested exception'
+== om7101rr 200 667775 ['om7101rr_CSV_SK.csv'] 99550
+   ['e_nuts14', 'e_nuts15', 'e_year', 'hodnota']
+   {'e_nuts14': 'Okres Bratislava III', 'e_nuts15': 'Bratislava - mestská časť Nové Mesto', 'e_year': '2011', 'hodnota': '36108.0'}
+   {'e_nuts14': 'Košice I-IV', 'e_nuts15': 'Košice I-IV', 'e_year': '2000', 'hodnota': '241874.0'}
+== sp3801qr 200 7947 ['sp3801qr_CSV_SK.csv'] 1560
+   ['e_nuts13', 'e_repurch', 'e_unit', 'e_year', 'e_quarter', 'hodnota']
+   {'e_nuts13': 'Banskobystrický kraj', 'e_repurch': 'Nákup existujúcich nehnuteľností', 'e_unit': 'medziročný index / ROMR = 100', 'e_year': '2022', 'e_quarter': '1. Q.', 'hodnota': '.'}
+   {'e_nuts13': 'Žilinský kraj', 'e_repurch': 'Spolu', 'e_unit': 'medzištvrťročný index / predch. obd. = 100', 'e_year': '2026', 'e_quarter': '4. Q.', 'hodnota': '.'}
+== st3004rr 200 66471 ['st3004rr_CSV_SK.csv'] 11500
+   ['e_nuts14', 'e_indic', 'e_unit', 'e_year', 'hodnota']
+   {'e_nuts14': 'Bratislavský kraj', 'e_indic': 'Dokončené byty v danom roku', 'e_unit': 'Počet', 'e_year': '2006', 'hodnota': '4307.0'}
+   {'e_nuts14': 'Okres Trebišov', 'e_indic': 'Začaté byty v danom roku', 'e_unit': 'Počet', 'e_year': '2005', 'hodnota': '144.0'}
+om7102rr BadZipFile File is not a zip file
 HOTOVO
