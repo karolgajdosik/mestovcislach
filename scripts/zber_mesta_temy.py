@@ -1,12 +1,14 @@
-"""Školy, doprava, bezpečnosť, životné prostredie a kultúra krajských miest – Štatistický úrad SR (DATAcube).
+"""Školy, doprava, bezpečnosť, životné prostredie a kultúra krajských miest – Štatistický úrad SR (STATdata; do 10/2026 DATAcube).
 
 Kocky:
   sv5001rr–sv5003rr  materské, základné školy a gymnáziá podľa obcí (počet škôl, žiakov, učiteľov) – vývoj od 1996
   Digitálna mapa škôl MŠVVaM (mapaskol.iedu.sk) – aktuálny stav po školách: typ, žiaci, pedagógovia (aj stredné školy)
   do3701rr, zp3701rr, ku3701rr, st3701rr, sv3701rr  – „… – mestá“ (európsky Urban Audit): autá, obete nehôd,
                      cyklistická sieť, cena lístka MHD, voda, odpad, kultúra, ceny bytov, predškolské zariadenia
-  sk3002rr, sk3003rr kriminalita podľa krajov (polícia SR) – mesto samotné sa nesleduje
-  om7102rr           obyvatelia krajov (na prepočet kriminality na 1 000 obyvateľov)
+  sk3002rr, sk3003rr majetkové a všetky trestné činy podľa krajov (polícia SR) – mesto samotné sa nesleduje;
+                     STATdata už nemá členenie podľa druhu, staršie druhy z DATAcube ostávajú uložené
+  om7002rr           obyvatelia krajov (na prepočet kriminality na 1 000 obyvateľov; v DATAcube om7102rr)
+Staršie roky z DATAcube (napr. školy od 1996) sa zachovajú, STATdata ich dopĺňa a prepisuje.
 
 Výstup: data/mesta/temy.json  {skoly, mestske, kriminalita}
 """
@@ -19,7 +21,8 @@ from collections import defaultdict
 from datetime import datetime, timezone
 
 from spolocne import DATA, KOREN, spusti, zapis_ak_zmena
-from zber_mesta import DATACUBE, dimenzie, json_get, norm, patri, rozbal
+import statdata as sd
+from zber_mesta import norm, patri
 
 MESTA = json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8"))
 # kocka SOŠ (sv5004rr) má posunuté popisy hodnôt (napr. „učitelia“ = počet žiakov) – stredné školy berieme z mapy škôl
@@ -27,42 +30,35 @@ SKOLY = {"ms": "sv5001rr", "zs": "sv5002rr", "gym": "sv5003rr"}
 UA = ["do3701rr", "zp3701rr", "ku3701rr", "st3701rr", "sv3701rr"]
 
 
-def oblasti_mesta(kategorie: list[tuple[str, str]], mesto: str) -> list[str]:
-    """Kód celého mesta, ak je v kocke; inak kódy mestských častí (nikdy oboje)."""
-    presne = [k for k, n in kategorie if norm(n) == mesto]
-    if presne:
-        return presne[:1]
-    return [k for k, n in kategorie if patri(n, mesto) and norm(n) != mesto and not norm(n).startswith("Okres")]
+def oblasti_mesta(nazvy: list[str], mesto: str) -> list[str]:
+    """Celé mesto, ak je v kocke; inak mestské časti (nikdy oboje)."""
+    if mesto in {norm(n) for n in nazvy}:
+        return [n for n in nazvy if norm(n) == mesto][:1]
+    return [n for n in nazvy if patri(norm(n), mesto) and norm(n) != mesto and not norm(n).startswith("Okres")]
+
+
+# súhrnná kategória zriaďovateľov v kockách škôl
+SKOLY_SPOLU = {"ms": "Školy", "zs": "Školy (1. - 9. roč.)", "gym": "Gymnáziá"}
+UKAZ_SKOLY = {"Spolu": "skol", "Počet detí": "ziakov", "Počet žiakov": "ziakov", "Počet učiteľov": "ucitelov", "Počet tried": "tried"}
 
 
 def skoly() -> dict:
     vysl: dict = {m["slug"]: {} for m in MESTA}
     for druh, kocka in SKOLY.items():
-        dims = dimenzie(kocka)
-        uzemie = dims[0][1]
-        ukaz = dict(next(c for d, c in dims if d.endswith("_ukaz")))
+        rows = sd.riadky(kocka)
+        typ = next(c for c in rows[0] if c.startswith("e_educat"))
+        nazvy = list(dict.fromkeys(r["e_nuts15"] for r in rows))
         for m in MESTA:
-            kody = oblasti_mesta(uzemie, m["nazov"])
-            if not kody:
+            oblasti = set(oblasti_mesta(nazvy, m["nazov"]))
+            if not oblasti:
                 continue
-            riadky = []
-            for i in range(0, len(kody), 4):  # API odmieta príliš veľké výbery (mestské časti po štyroch)
-                riadky += rozbal(json_get(f"{DATACUBE}/dataset/{kocka}/{','.join(kody[i:i + 4])}/all/all", params={"lang": "sk"}))
             roky: dict[str, dict] = defaultdict(lambda: defaultdict(float))
-            for r in riadky:
-                lab = norm(ukaz.get(r[f"{kocka}_ukaz"], ""))
-                rok = str(r[f"{kocka}_rok"])
-                # súčty za všetkých zriaďovateľov: „… spolu“ (počet), „… spolu - deti/žiaci“; učitelia a triedy sčítame po zriaďovateľoch
-                if re.search(r"spolu$", lab) and not re.search(r"1\. - 4\.", lab):
-                    roky[rok]["skol"] += r["hodnota"]
-                elif re.search(r"spolu - (deti|žiaci)$", lab) and not re.search(r"1\. - 4\.", lab):
-                    roky[rok]["ziakov"] += r["hodnota"]
-                elif re.search(r"- učitel", lab) and not re.search(r"1\.\s?- 4\.", lab):
-                    roky[rok]["ucitelov"] += r["hodnota"]
-                elif re.search(r"- triedy$", lab) and not re.search(r"1\.\s?- 4\.", lab):
-                    roky[rok]["tried"] += r["hodnota"]
+            for r in rows:
+                k = UKAZ_SKOLY.get(r["e_indic"])
+                if k and r["e_nuts15"] in oblasti and r[typ] == SKOLY_SPOLU[druh]:
+                    roky[r["e_year"]][k] += r["hodnota"]
             vysl[m["slug"]][druh] = {rok: {k: round(v) for k, v in x.items()} for rok, x in sorted(roky.items()) if x.get("skol") or x.get("ziakov")}
-        print(f"Školy {druh}: " + ", ".join(f"{s} {max(v.get(druh, {'-': 0}))}" for s, v in vysl.items()))
+        print(f"Školy {druh}: " + ", ".join(f"{s} {max(v.get(druh) or {'-': 0})}" for s, v in vysl.items()))
     return vysl
 
 
@@ -96,71 +92,85 @@ def skoly_mapa() -> dict:
     return vysl
 
 
-def mestske() -> dict:
-    """Urban Audit – každý ukazovateľ ako {názov (jednotka): {rok: hodnota}} pre každé mesto."""
-    vysl: dict = {m["slug"]: {} for m in MESTA}
-    popisy: dict = {}
+# Urban Audit: (ukazovateľ, jednotka) → kľúč a popis zhodný s pôvodnými údajmi z DATAcube (web ich hľadá podľa popisu)
+JEDNOTKY_ZP = {"m3": "m3", "m3 / osoba": "m3 na osobu", "medziročný index / ROMR = 100": "romr = 100", "EUR": "Euro", "kg / osoba": "kg na osobu", "tony": "t"}
+PREMENUJ_KU = {"Počet subjektov profesionálneho scénického umenia": "Subjekty profesionálneho scénického umenia",
+               "Návštevnosť múzeí za rok": "Návštevníci múzeí za rok"}
+
+
+def ua_kluc(kocka: str, ukaz: str, jednotka: str) -> tuple[str, str] | None:
+    u = re.sub(r"\s+", " ", ukaz).strip()
+    if kocka == "zp3701rr":
+        j = JEDNOTKY_ZP.get(jednotka, jednotka)
+        return f"{u} | {j}", f"{u} – {j}"
+    if kocka == "ku3701rr":
+        u = PREMENUJ_KU.get(u, u)
+    elif kocka in ("st3701rr", "sv3701rr"):
+        if "index" in jednotka:
+            u = f"{u}, index romr = 100"
+        elif jednotka == "EUR":
+            u = f"{u} v eurách"
+        elif jednotka == "EUR / m2":
+            u = f"{u} za m2"
+    return u, u
+
+
+def mestske(stare: dict | None = None) -> dict:
+    """Urban Audit – každý ukazovateľ ako {popis: {rok: hodnota}} pre každé mesto (staršie roky z minulého behu ostávajú)."""
+    stare = stare or {}
+    popisy: dict = dict(stare.get("popisy") or {})
+    vysl: dict = {m["slug"]: {k: dict(v) for k, v in ((stare.get("mesta") or {}).get(m["slug"]) or {}).items()} for m in MESTA}
     for kocka in UA:
-        dims = dimenzie(kocka)
-        mena = {d: dict(c) for d, c in dims}
-        uzemie = dims[0][1]
-        ds = json_get(f"{DATACUBE}/dataset/{kocka}/" + "/".join("all" for _ in dims), params={"lang": "sk"})
-        ostatne = [d for d, _ in dims if not re.search(r"_(uzemieua|rok)$", d)]
-        for r in rozbal(ds):
-            uz = norm(mena[dims[0][0]].get(r[dims[0][0]], ""))
-            m = next((x for x in MESTA if x["nazov"] == uz), None)
-            if not m:
+        n = 0
+        for r in sd.riadky(kocka):
+            m = next((x for x in MESTA if x["nazov"] == norm(r["e_city"])), None)
+            if not m or r.get("e_sex", "Spolu") != "Spolu":
                 continue
-            casti = [norm(mena[d].get(r[d], "")) for d in ostatne]
-            casti = [c for c in casti if c and c != "None" and c != "Muži a ženy spolu"]
-            if any(c in ("Muži", "Ženy") for c in casti):
+            kj = ua_kluc(kocka, r["e_indic"], r.get("e_unit", ""))
+            if not kj:
                 continue
-            kluc = f"{kocka}:" + " | ".join(casti)
-            popisy[kluc] = " – ".join(casti)
-            vysl[m["slug"]].setdefault(kluc, {})[str(r[f"{kocka}_rok"])] = r["hodnota"]
-        print(f"{kocka}: {len(popisy)} ukazovateľov spolu")
+            kluc = f"{kocka}:{kj[0]}"
+            popisy[kluc] = kj[1]
+            vysl[m["slug"]].setdefault(kluc, {})[r["e_year"]] = r["hodnota"]
+            n += 1
+        print(f"{kocka}: {n} hodnôt")
     return {"popisy": popisy, "mesta": vysl}
 
 
-def kriminalita() -> dict:
+def kriminalita(stare: dict | None = None) -> dict:
+    """Trestné činy krajov (STATdata už len súhrny: sk3003rr všetky, sk3002rr majetkové) a obyvatelia krajov (om7002rr)."""
+    stare = stare or {}
     kraje = sorted({m["kraj"] for m in MESTA})
-    vysl: dict = {"kraje": {}, "obyvatelia": {}}
-    for kocka in ("sk3002rr", "sk3003rr"):
-        dims = dimenzie(kocka)
-        mena = {d: dict(c) for d, c in dims}
-        kody = [k for k, n in dims[0][1] if norm(n) in kraje]
-        ds = json_get(f"{DATACUBE}/dataset/{kocka}/{','.join(kody)}/all/all/all", params={"lang": "sk"})
-        for r in rozbal(ds):
-            kraj = norm(mena[dims[0][0]][r[dims[0][0]]])
-            druh = norm(mena[f"{kocka}_dim1"][r[f"{kocka}_dim1"]]).replace("(z toho:) ", "")
-            if kocka == "sk3003rr" and druh != "Spolu":
-                druh = f"{druh} trestné činy"
-            elif kocka == "sk3003rr":
-                druh = "Trestné činy spolu"
-            vysl["kraje"].setdefault(kraj, {}).setdefault(druh, {})[str(r[f"{kocka}_rok"])] = r["hodnota"]
-    # obyvatelia krajov (stav k 31. 12.) – rokový rozmer spoznáme podľa štvormiestnych rokov
-    dims = dimenzie("om7102rr")
-    mena = {d: dict(c) for d, c in dims}
-    d_rok = next(d for d, c in dims if c and all(re.fullmatch(r"\d{4}", str(k)) for k, _ in c))
-    kody = [k for k, n in dims[0][1] if norm(n) in kraje]
-    cesta = [",".join(kody)] + ["all" for _ in dims[1:]]
-    for r in rozbal(json_get(f"{DATACUBE}/dataset/om7102rr/" + "/".join(cesta), params={"lang": "sk"})):
-        popisy = [norm(mena[d].get(r[d], "")) for d, _ in dims[1:] if d != d_rok]
-        if any(re.fullmatch(r"muži|ženy", p_, re.I) for p_ in popisy) or any(re.search(r"stredn|prírastok|úbytok", p_, re.I) for p_ in popisy):
-            continue
-        kraj = norm(mena[dims[0][0]][r[dims[0][0]]])
-        rok = str(r[d_rok])
-        vysl["obyvatelia"].setdefault(kraj, {})[rok] = max(r["hodnota"], vysl["obyvatelia"].get(kraj, {}).get(rok, 0))
+    vysl: dict = {"kraje": {k: {d: dict(v) for d, v in (stare.get("kraje") or {}).get(k, {}).items()} for k in kraje},
+                  "obyvatelia": {k: dict((stare.get("obyvatelia") or {}).get(k, {})) for k in kraje}}
+    for kocka, druh in (("sk3003rr", "Trestné činy spolu"), ("sk3002rr", "Majetkové trestné činy spolu")):
+        for r in sd.riadky(kocka):
+            if r["e_nuts13"] in kraje:
+                vysl["kraje"][r["e_nuts13"]].setdefault(druh, {})[r["e_year"]] = r["hodnota"]
+    for r in sd.riadky("om7002rr"):
+        if r["e_nuts14"] in kraje:
+            vysl["obyvatelia"][r["e_nuts14"]][r["e_year"]] = r["hodnota"]
     print("Kriminalita: " + ", ".join(f"{k} {max(v.get('Trestné činy spolu', {'-': 0}).items())}" for k, v in vysl["kraje"].items()))
     return vysl
+
+
+def zluc_skoly(stare: dict | None, nove: dict) -> dict:
+    """Staršie roky (DATAcube od 1996) + nové zo STATdata (od 2013, prepisujú)."""
+    out = {s: {d: dict(r) for d, r in (v or {}).items()} for s, v in (stare or {}).items()}
+    for s, druhy in nove.items():
+        for d, roky in druhy.items():
+            out.setdefault(s, {}).setdefault(d, {}).update(roky)
+            out[s][d] = dict(sorted(out[s][d].items()))
+    return out
 
 
 def main() -> int:
     p = DATA / "mesta" / "temy.json"
     stare = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
-    vystup = {"zdroj": {"nazov": "Štatistický úrad SR – DATAcube", "url": "https://datacube.statistics.sk"}}
+    vystup = {"zdroj": {"nazov": "Štatistický úrad SR – STATdata", "url": sd.WEB}}
     chyby = 0
-    for kluc, f in (("skoly", skoly), ("skoly_mapa", skoly_mapa), ("mestske", mestske), ("kriminalita", kriminalita)):
+    for kluc, f in (("skoly", lambda: zluc_skoly(stare.get("skoly"), skoly())), ("skoly_mapa", skoly_mapa),
+                    ("mestske", lambda: mestske(stare.get("mestske"))), ("kriminalita", lambda: kriminalita(stare.get("kriminalita")))):
         try:
             vystup[kluc] = f()
         except Exception as e:  # noqa: BLE001
@@ -177,4 +187,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    spusti(main, "Témy miest (DATAcube)")
+    spusti(main, "Témy miest (STATdata)")

@@ -1,4 +1,4 @@
-"""Bývanie: ceny nehnuteľností a bytová výstavba v Bratislave (Štatistický úrad SR, DATAcube API).
+"""Bývanie: ceny nehnuteľností a bytová výstavba v Bratislave (Štatistický úrad SR, STATdata; do 10/2026 DATAcube).
 
 - sp3801qr – Indexy realizačných cien nehnuteľností na bývanie, regionálne, štvrťročne (HPI):
   Bratislavský kraj a SR, spolu / nové / existujúce, index k rovnakému obdobiu minulého roka
@@ -15,10 +15,10 @@ import re
 from datetime import datetime
 
 from spolocne import DATA, s, spusti, zapis_ak_zmena
-from zber_obyvatelstvo import rozbal_jsonstat
+import statdata as sd
+from zber_mesta import BYTY
 
-API = "https://data.statistics.sk/api/v2/dataset"
-OKRESY = {"SK0101": "Bratislava I", "SK0102": "Bratislava II", "SK0103": "Bratislava III", "SK0104": "Bratislava IV", "SK0105": "Bratislava V"}
+OKRESY = {f"Okres Bratislava {r}": f"Bratislava {r}" for r in ("I", "II", "III", "IV", "V")}
 CASTI_OKRESOV = {
     "Bratislava I": "Staré Mesto",
     "Bratislava II": "Ružinov, Vrakuňa, Podunajské Biskupice",
@@ -28,19 +28,18 @@ CASTI_OKRESOV = {
 }
 
 
-def kocka(cesta: str) -> list[dict]:
-    r = s.get(f"{API}/{cesta}", params={"lang": "sk"}, timeout=120)
-    r.raise_for_status()
-    return rozbal_jsonstat(r.json())
+NAKUP = {"Spolu": "total", "Nákup nových nehnuteľností": "dw_new", "Nákup existujúcich nehnuteľností": "dw_exst"}
 
 
 def ceny() -> dict:
-    riadky = kocka("sp3801qr/SK0,SK010/all/all/all/all")
     rad: dict[str, dict] = {}
-    for r in riadky:
-        obdobie = f"{r['sp3801qr_rok']}-Q{re.search(r'[1-4]', str(r['sp3801qr_stv'])).group(0)}"  # kód „1. Q.“
-        kluc = f"{'ba' if r['nuts13'] == 'SK010' else 'sr'}_{r['sp3801qr_nakneh'].lower()}_{'rr' if r['sp3801qr_mj'] == 'b_romr' else 'qq'}"
-        rad.setdefault(obdobie, {"obdobie": obdobie})[kluc] = round(float(r["hodnota"]), 2)
+    for r in sd.riadky("sp3801qr"):
+        uz = {"Bratislavský kraj": "ba", "Slovenská republika": "sr"}.get(r["e_nuts13"])
+        if not uz:
+            continue
+        obdobie = f"{r['e_year']}-Q{re.search(r'[1-4]', r['e_quarter']).group(0)}"
+        kluc = f"{uz}_{NAKUP[r['e_repurch']]}_{'rr' if 'medziročný' in r['e_unit'] else 'qq'}"
+        rad.setdefault(obdobie, {"obdobie": obdobie})[kluc] = round(r["hodnota"], 2)
     obdobia = sorted(rad)
     # reťazový index od prvého štvrťroka (= 100) z medzištvrťročných indexov
     for k in ("ba_total", "sr_total", "ba_dw_new", "ba_dw_exst"):
@@ -53,15 +52,16 @@ def ceny() -> dict:
     zoznam = [rad[o] for o in obdobia if "ba_total_rr" in rad[o]]
     if len(zoznam) < 8:
         raise RuntimeError(f"HPI: podozrivo málo štvrťrokov ({len(zoznam)})")
-    return {"zdroj": {"nazov": "ŠÚ SR – Indexy realizačných cien nehnuteľností na bývanie, regionálne (sp3801qr)", "url": "https://datacube.statistics.sk", "licencia": "CC BY 4.0"},
+    return {"zdroj": {"nazov": "ŠÚ SR – Indexy realizačných cien nehnuteľností na bývanie, regionálne (sp3801qr)", "url": sd.WEB, "licencia": "CC BY 4.0"},
             "rad": zoznam}
 
 
 def vystavba() -> dict:
-    riadky = kocka("st3004rr/SK0101,SK0102,SK0103,SK0104,SK0105/all/all")
     roky: dict[str, dict] = {}
-    for r in riadky:
-        roky.setdefault(str(r["st3004rr_rok"]), {}).setdefault(OKRESY[r["nuts14"]], {})[r["st3004rr_ukaz"]] = r["hodnota"]
+    for r in sd.riadky("st3004rr"):
+        k = BYTY.get(r["e_indic"])
+        if r["e_nuts14"] in OKRESY and k:
+            roky.setdefault(r["e_year"], {}).setdefault(OKRESY[r["e_nuts14"]], {})[k] = r["hodnota"]
     # Bratislava spolu = súčet okresov; priemerná plocha vážená počtom dokončených bytov
     for rok, okresy in roky.items():
         spolu: dict = {}
@@ -76,7 +76,7 @@ def vystavba() -> dict:
     zoradene = [r for r in sorted(roky) if "DOKONC_BYT" in roky[r]["Bratislava"]]
     if len(zoradene) < 10:
         raise RuntimeError(f"Výstavba bytov: podozrivo málo rokov ({len(zoradene)})")
-    return {"zdroj": {"nazov": "ŠÚ SR – Byty, vybrané ukazovatele (st3004rr)", "url": "https://datacube.statistics.sk", "licencia": "CC BY 4.0"},
+    return {"zdroj": {"nazov": "ŠÚ SR – Byty, vybrané ukazovatele (st3004rr)", "url": sd.WEB, "licencia": "CC BY 4.0"},
             "okresy_casti": CASTI_OKRESOV,
             "roky": {r: roky[r] for r in zoradene}}
 

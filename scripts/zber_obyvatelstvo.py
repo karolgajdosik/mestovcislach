@@ -145,32 +145,29 @@ def rozbal_jsonstat(ds: dict) -> list[dict]:
 
 
 def main() -> int:
-    dims = stiahni_dimenzie(TABULKA)
-    vyber, typ = vyber_kody(dims)
-    nazvy = dict(next(p for d, p in dims if d == typ["uzemie"]))
-
-    url = f"{API}/dataset/{TABULKA}/" + "/".join(",".join(k) for k in vyber)
-    data = ziskaj_json(url)
-    riadky = rozbal_jsonstat(data)
-    if not riadky:
-        raise RuntimeError("API vrátilo prázdne dáta.")
-
+    # STATdata om7101rr: stav k 31. 12. podľa obcí a mestských častí (popisy, nie kódy); kódy obcí ponecháme z minulého behu
+    import statdata as sd
+    stare = json.loads(VYSTUP.read_text(encoding="utf-8")) if VYSTUP.exists() else {}
+    kratky = lambda n: re.sub(r"^Bratislava\s*[-–]\s*(mestská časť\s*)?", "", n).strip()  # noqa: E731
+    kody = {kratky(c["nazov"]): c.get("kod") for c in stare.get("mestske_casti", [])}
+    url = sd.URL.format(TABULKA)
     uzemia: dict[str, dict] = {}
-    for r in riadky:
-        kod = r[typ["uzemie"]]
-        rok = r[typ["rok"]]
-        u = uzemia.setdefault(kod, {"kod": kod, "nazov": nazvy.get(kod, kod), "roky": {}})
-        u["roky"][rok] = int(round(float(r["hodnota"])))
-
+    for r in sd.riadky(TABULKA):
+        n = r["e_nuts15"]
+        if not je_obec_bratislava(n):
+            continue
+        k = kratky(n) if n.strip() != "Bratislava" else "Bratislava"
+        u = uzemia.setdefault(k, {"kod": kody.get(k) or k, "nazov": n if n.strip() == "Bratislava" else f"Bratislava - {k}", "roky": {}})
+        u["roky"][r["e_year"]] = int(round(r["hodnota"]))
+    if len(uzemia) < 17:
+        raise RuntimeError(f"Málo mestských častí ({len(uzemia)})")
     for u in uzemia.values():
         u["roky"] = dict(sorted(u["roky"].items()))
-        u["nazov_kratky"] = re.sub(r"^Bratislava\s*[-–]\s*(mestská časť\s*)?", "", u["nazov"]).strip()
+        u["nazov_kratky"] = kratky(u["nazov"])
 
-    # Mesto ako celok má názov presne "Bratislava"; ostatné sú mestské časti.
     mesto = next((u for u in uzemia.values() if u["nazov"].strip() == "Bratislava"), None)
     casti = sorted((u for u in uzemia.values() if u is not mesto), key=lambda u: u["nazov_kratky"])
     if mesto is None:
-        # Tabuľka neobsahuje mesto ako celok -> súčet mestských častí.
         roky: dict[str, int] = {}
         for u in casti:
             for rok, v in u["roky"].items():
@@ -180,7 +177,7 @@ def main() -> int:
 
     vystup = {
         "zdroj": {
-            "nazov": "Štatistický úrad SR – DATAcube",
+            "nazov": "Štatistický úrad SR – STATdata",
             "tabulka": TABULKA,
             "url": url,
         },

@@ -4,7 +4,7 @@ Konfigurácia miest: src/mesta.json (slug, názov, kraj NUTS3, okresy).
 Výstup: data/mesta/<slug>.json a data/mesta/porovnanie.json
 
 Moduly (každý samostatne – chyba jedného nezastaví ostatné):
-  obyvatelia  – ŠÚ SR DATAcube om7101rr, stav k 31. 12. (mesto alebo súčet mestských častí)
+  obyvatelia  – ŠÚ SR STATdata om7101rr, stav k 31. 12. (mesto alebo súčet mestských častí)
   scitanie    – ŠÚ SR STATdata, sčítanie 2021 (vek, vzdelanie, národnosť, náboženstvo, byty)
   volby       – volby.statistics.sk: NRSR 2023, EP 2024 (súčet obcí/mestských častí mesta)
   komunalne   – voľby primátora a mestského zastupiteľstva 2022 (a 2026 po zverejnení)
@@ -26,10 +26,10 @@ from datetime import datetime
 from pathlib import Path
 
 from spolocne import DATA, KOREN, s, spusti, zapis_ak_zmena
+import statdata as sd
 
 MESTA = json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8"))
 VYSTUP = DATA / "mesta"
-DATACUBE = "https://data.statistics.sk/api/v2"
 STATDATA = "https://statdata.statistics.sk/public/api/dc/opendata/cube/dataset/{}/download?type=CSV&lang=SK"
 VOLBY_URL = "https://volby.statistics.sk/opendata"
 UPSVR_JSON = "https://www.upsvr.gov.sk/statistiky/open-data/UoZ-01-zakladne-ukazovatele.json"
@@ -60,70 +60,20 @@ def kategorie(dim: dict) -> list[tuple[str, str]]:
     return [(k, str(labels.get(k, k))) for k in kody]
 
 
-def rozbal(ds: dict) -> list[dict]:
-    ids, size = ds["id"], ds["size"]
-    kody = [[k for k, _ in kategorie(ds["dimension"][d])] for d in ids]
-    hodnoty = ds["value"]
-    pocet = 1
-    for x in size:
-        pocet *= x
-    out = []
-    for i in range(pocet):
-        v = hodnoty.get(str(i)) if isinstance(hodnoty, dict) else hodnoty[i]
-        if v is None:
-            continue
-        zv, r = i, {}
-        for d, sz, k in reversed(list(zip(ids, size, kody))):
-            r[d] = k[zv % sz]
-            zv //= sz
-        r["hodnota"] = v
-        out.append(r)
-    return out
-
-
-def dimenzie(kocka: str) -> list[tuple[str, list[tuple[str, str]]]]:
-    kol = json_get(f"{DATACUBE}/collection", params={"lang": "sk"})
-    polozka = next(it for it in kol["link"]["item"] if f"/dataset/{kocka}/" in it.get("href", ""))
-    cesta = polozka["href"].split(f"/dataset/{kocka}/")[1].split("?")[0]
-    return [(d, kategorie(json_get(f"{DATACUBE}/dimension/{kocka}/{d}", params={"lang": "sk"}))) for d in cesta.split("/")]
-
-
 # ---------------- moduly ----------------
 
 def obyvatelia() -> dict:
-    dims = dimenzie("om7101rr")
-    vyber, uzemie_dim, rok_dim = [], None, None
-    for d, prvky in dims:
-        popisy = [p for _, p in prvky]
-        if len(prvky) > 2000:
-            uzemie_dim = d
-            vyber.append([k for k, p in prvky if any(patri(p, m["nazov"]) for m in MESTA)])
-        elif all(re.fullmatch(r"\d{4}", p.strip()) for p in popisy):
-            rok_dim = d
-            vyber.append(["all"])
-        elif len(prvky) == 1:
-            vyber.append([prvky[0][0]])
-        elif any("na konci obdobia" in p.lower() for p in popisy):
-            vyber.append([k for k, p in prvky if "na konci obdobia" in p.lower()][:1])
-        else:
-            spolu = [k for k, p in prvky if p.strip().lower() in ("spolu", "úhrn", "spolu muži a ženy")]
-            vyber.append(spolu[:1] or [prvky[0][0]])
-    nazvy = dict(next(p for d, p in dims if d == uzemie_dim))
+    """Počet obyvateľov k 31. 12. podľa obcí a mestských častí (STATdata om7101rr)."""
     out: dict[str, dict] = {}
-    # po dávkach (dlhá URL)
-    kody = vyber[[d for d, _ in dims].index(uzemie_dim)]
-    for i in range(0, len(kody), 40):
-        v = [x if d != uzemie_dim else kody[i:i + 40] for (d, _), x in zip(dims, vyber)]
-        ds = json_get(f"{DATACUBE}/dataset/om7101rr/" + "/".join(",".join(k) for k in v), params={"lang": "sk"})
-        for r in rozbal(ds):
-            n = norm(nazvy[r[uzemie_dim]])
-            for m in MESTA:
-                if patri(n, m["nazov"]):
-                    o = out.setdefault(m["slug"], {"mesto": {}, "casti": defaultdict(dict)})
-                    if n == m["nazov"]:
-                        o["mesto"][r[rok_dim]] = int(r["hodnota"])
-                    else:
-                        o["casti"][n][r[rok_dim]] = int(r["hodnota"])
+    for r in sd.riadky("om7101rr"):
+        n = norm(r["e_nuts15"])
+        for m in MESTA:
+            if patri(n, m["nazov"]):
+                o = out.setdefault(m["slug"], {"mesto": {}, "casti": defaultdict(dict)})
+                if n == m["nazov"]:
+                    o["mesto"][r["e_year"]] = int(r["hodnota"])
+                else:
+                    o["casti"][n][r["e_year"]] = int(r["hodnota"])
     vysl = {}
     for slug, o in out.items():
         roky = o["mesto"]
@@ -133,6 +83,8 @@ def obyvatelia() -> dict:
                     roky[rok] = roky.get(rok, 0) + v
         vysl[slug] = {"roky": dict(sorted(roky.items())),
                       "casti": {re.sub(r"^.*?-\s*(mestská časť\s*)?", "", c): dict(sorted(v.items())) for c, v in sorted(o["casti"].items())}}
+    if len(vysl) < len(MESTA) - 1:
+        raise RuntimeError(f"Obyvatelia: málo miest ({len(vysl)})")
     return vysl
 
 
@@ -292,7 +244,10 @@ def komunalne(stare: dict | None = None) -> dict:
             for r in t.get("tab08", []):
                 if zk.kod(r["OBEC"]) == obec:
                     hl_msz[(zk.kod(r["VOOBEC"]), zk.kod(r["PC_HL"]))] += cislo(r["P_HL"])
-            poslanci = [{"meno": zk.meno(kand_msz[k]), "strany": zk.strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
+            # volebné obvody: v Košiciach skupiny mestských častí, inak len číslo obvodu (ulice určuje VZN mesta)
+            obv_mc = zk.obvody_mc(t, obec, "Košice") if m["slug"] == "kosice" else {}
+            nazov_obv = lambda o: ", ".join(obv_mc[o]) if o in obv_mc else f"obvod č. {int(o or 0)}"  # noqa: E731
+            poslanci = [{"obvod": nazov_obv(k[0]), "obvod_c": int(k[0] or 0), "meno": zk.meno(kand_msz[k]), "strany": zk.strany_kandidata(kand_msz[k], strany), "hlasy": int(hl_msz[k])}
                         for k in sorted(zvol_pos, key=lambda k: (-hl_msz[k], k)) if k in kand_msz]
             statistiky = zk.statistiky_poslancov([kand_msz[k] for k in zvol_pos if k in kand_msz])
             # primátor po mestských častiach (Bratislava, Košice) – pre mapu víťazov
@@ -328,30 +283,34 @@ def praca(stare: dict) -> dict:
     return vysl
 
 
+BYTY = {"Začaté byty v danom roku": "ZAC_BYT", "Dokončené byty v danom roku": "DOKONC_BYT", "Rozostavané byty k 31.12.": "ROZOST_BYT_KON",
+        "Rozostavané byty k 1.1.": "ROZOST_BYT_ZAC", "Priemerná obytná plocha dokončeného bytu": "OBYT_PLOCH"}
+
+
 def byty() -> dict:
-    dims = dict(dimenzie("st3004rr"))
-    uz = {norm(p).replace("Okres ", ""): k for k, p in dims["nuts14"]}
+    """Začaté, dokončené a rozostavané byty v okresoch mesta (STATdata st3004rr)."""
     vysl = {}
     for m in MESTA:
-        kody = [uz[o] for o in m["okresy"] if o in uz]
-        if not kody:
-            continue
-        ds = json_get(f"{DATACUBE}/dataset/st3004rr/{','.join(kody)}/all/all", params={"lang": "sk"})
+        okresy = {f"Okres {o}" for o in m["okresy"]}
         roky: dict[str, dict] = defaultdict(lambda: defaultdict(float))
-        for r in rozbal(ds):
-            if r["st3004rr_ukaz"] in ("ZAC_BYT", "DOKONC_BYT", "ROZOST_BYT_KON"):
-                roky[str(r["st3004rr_rok"])][r["st3004rr_ukaz"]] += r["hodnota"]
-        vysl[m["slug"]] = {r: {k: int(v) for k, v in x.items()} for r, x in sorted(roky.items())}
+        for r in sd.riadky("st3004rr"):
+            k = BYTY.get(r["e_indic"])
+            if r["e_nuts14"] in okresy and k in ("ZAC_BYT", "DOKONC_BYT", "ROZOST_BYT_KON"):
+                roky[r["e_year"]][k] += r["hodnota"]
+        if roky:
+            vysl[m["slug"]] = {r: {k: int(v) for k, v in x.items()} for r, x in sorted(roky.items())}
     return vysl
 
 
 def ceny() -> dict:
-    kraje = ",".join(sorted({"SK0"} | {m["nuts3"] for m in MESTA}))
-    ds = json_get(f"{DATACUBE}/dataset/sp3801qr/{kraje}/all/TOTAL/all/b_romr", params={"lang": "sk"})
+    """Index cien nehnuteľností na bývanie v krajoch, medziročne (STATdata sp3801qr) – kľúče NUTS 3."""
     rad: dict[str, dict] = defaultdict(dict)
-    for r in rozbal(ds):
-        q = re.search(r"[1-4]", str(r["sp3801qr_stv"])).group(0)
-        rad[r["nuts13"]][f"{r['sp3801qr_rok']}-Q{q}"] = round(r["hodnota"] - 100, 1)
+    for r in sd.riadky("sp3801qr"):
+        kod = sd.NUTS3.get(r["e_nuts13"])
+        if not kod or r["e_repurch"] != "Spolu" or "medziročný" not in r["e_unit"]:
+            continue
+        q = re.search(r"[1-4]", r["e_quarter"]).group(0)
+        rad[kod][f"{r['e_year']}-Q{q}"] = round(r["hodnota"] - 100, 1)
     return {k: dict(sorted(v.items())) for k, v in rad.items()}
 
 
@@ -397,9 +356,9 @@ def main() -> int:
             d["casti"] = dict(sorted(casti.items()))
         d["mesto"] = {k: m[k] for k in ("slug", "nazov", "kraj", "okresy")}
         d["zdroje"] = {
-            "obyvatelia": "ŠÚ SR – DATAcube om7101rr", "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)", "volby": "ŠÚ SR – volby.statistics.sk",
-            "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk", "praca": "ÚPSVaR – mesačná štatistika", "byty": "ŠÚ SR – DATAcube st3004rr",
-            "ceny": "ŠÚ SR – DATAcube sp3801qr",
+            "obyvatelia": "ŠÚ SR – STATdata om7101rr", "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)", "volby": "ŠÚ SR – volby.statistics.sk",
+            "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk", "praca": "ÚPSVaR – mesačná štatistika", "byty": "ŠÚ SR – STATdata st3004rr",
+            "ceny": "ŠÚ SR – STATdata sp3801qr",
         }
         zapis_ak_zmena(VYSTUP / f"{m['slug']}.json", {"aktualizovane": datetime.now().isoformat(timespec="seconds"), **d})
         roky = d.get("obyvatelia", {}).get("roky", {})
