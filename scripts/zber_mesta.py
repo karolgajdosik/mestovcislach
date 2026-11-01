@@ -63,9 +63,18 @@ def kategorie(dim: dict) -> list[tuple[str, str]]:
 # ---------------- moduly ----------------
 
 def obyvatelia() -> dict:
-    """Počet obyvateľov k 31. 12. podľa obcí a mestských častí (STATdata om7101rr)."""
+    """Počet obyvateľov k 31. 12. podľa obcí a mestských častí (STATdata om7101rr).
+
+    om7101rr v STATdata uvádza stav k 1. 1. roka (hodnota „2025“ = stav k 31. 12. 2024 v DATAcube) – rok posúvame o −1,
+    aby rady nadväzovali; roky, ktoré STATdata ešte nemá (z DATAcube), ostávajú z minulého behu."""
     out: dict[str, dict] = {}
+    for m in MESTA:
+        p = VYSTUP / f"{m['slug']}.json"
+        st = (json.loads(p.read_text(encoding="utf-8")).get("obyvatelia") if p.exists() else None) or {}
+        if st.get("roky"):
+            out[m["slug"]] = {"mesto": dict(st["roky"]), "stare": True, "casti": defaultdict(dict, {c: dict(v) for c, v in (st.get("casti") or {}).items()})}
     for r in sd.riadky("om7101rr"):
+        r = {**r, "e_year": str(int(r["e_year"]) - 1)}
         n = norm(r["e_nuts15"])
         # súhrnný riadok mesta s mestskými časťami („Bratislava I-V“, „Košice I-IV“) = celé mesto
         n = re.sub(r"^(\S.*?) I-[IV]+$", r"\1", n)
@@ -75,16 +84,16 @@ def obyvatelia() -> dict:
                 if n == m["nazov"]:
                     o["mesto"][r["e_year"]] = int(r["hodnota"])
                 else:
-                    o["casti"][n][r["e_year"]] = int(r["hodnota"])
+                    o["casti"][re.sub(r"^.*?-\s*(mestská časť\s*)?", "", n)][r["e_year"]] = int(r["hodnota"])
     vysl = {}
     for slug, o in out.items():
         roky = o["mesto"]
-        if not roky and o["casti"]:  # mesto len ako súčet mestských častí
+        if not roky and o["casti"] and not o.get("stare"):  # mesto len ako súčet mestských častí
             for c in o["casti"].values():
                 for rok, v in c.items():
                     roky[rok] = roky.get(rok, 0) + v
         vysl[slug] = {"roky": dict(sorted(roky.items())),
-                      "casti": {re.sub(r"^.*?-\s*(mestská časť\s*)?", "", c): dict(sorted(v.items())) for c, v in sorted(o["casti"].items())}}
+                      "casti": {c: dict(sorted(v.items())) for c, v in sorted(o["casti"].items())}}
     if len(vysl) < len(MESTA) - 1:
         raise RuntimeError(f"Obyvatelia: málo miest ({len(vysl)})")
     return vysl

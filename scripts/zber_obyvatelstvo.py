@@ -151,8 +151,14 @@ def main() -> int:
     kratky = lambda n: re.sub(r"^Bratislava\s*[-–]\s*(mestská časť\s*)?", "", n).strip()  # noqa: E731
     kody = {kratky(c["nazov"]): c.get("kod") for c in stare.get("mestske_casti", [])}
     url = sd.URL.format(TABULKA)
+    # om7101rr v STATdata = stav k 1. 1. (rok −1 = stav k 31. 12.); roky, ktoré STATdata ešte nemá, ostávajú z minulého behu
     uzemia: dict[str, dict] = {}
+    for u in [stare.get("mesto")] + stare.get("mestske_casti", []):
+        if u and u.get("roky"):
+            k = "Bratislava" if u["nazov"].strip() == "Bratislava" else kratky(u["nazov"])
+            uzemia[k] = {"kod": u.get("kod") or k, "nazov": u["nazov"], "roky": dict(u["roky"])}
     for r in sd.riadky(TABULKA):
+        r = {**r, "e_year": str(int(r["e_year"]) - 1)}
         n = r["e_nuts15"]
         if n.strip() == "Bratislava I-V":  # súhrnný riadok celého mesta
             n = "Bratislava"
