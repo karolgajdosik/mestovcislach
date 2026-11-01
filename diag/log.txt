@@ -1,15 +1,18 @@
-súťaž {'ok': True, 'tyzden': '2026-W44', 'tabulka': {}, 'minuly': {'tyzden': '2026-W43', 'tabulka': {}}}
+['DATAcube. – presmerovanie']
+['https://statdata.statistics.sk/public/ui/dc/', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1001rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1001rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1002rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1002rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1003rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1003rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1004rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1004rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1005rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1005rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1006rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1006rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1007rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1007rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1008rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1008rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1009rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1009rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1012rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1012rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1013rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1013rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1014rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1014rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1015rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1015rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1016rs?lang=en', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1016rs?lang=sk', 'https://statdata.statistics.sk/public/ui/dc/domov/data-view/view/as1017rs?lang=en']
+https://datacube.statistics.sk/api/v2/collection?lang=sk 200 text/html; charset=UTF-8 <!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>DATAcu
+https://datacube.statistics.sk/api/v2/dataset/sp3801qr/SK0,SK010/all/all/all/all?lang=sk 200 text/html; charset=UTF-8 <!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>DATAcu
 https://data.statistics.sk/api/v2/collection?lang=sk ConnectTimeout
-https://data.statistics.sk/ ConnectTimeout
-https://datacube.statistics.sk/ 200 511624
-/ 200 0.1
-/trnava/ 200 0.17
-/bratislava/ 200 0.13
-/sutaz/ 200 0.16
-/rozpocty-2027/ 200 0.1
-/volby-2026/ 200 0.15
-/kosice/zastupitelstvo/ 200 0.15
-/api/vystrahy 200 1.53
-/api/ovzdusie?mesto=trnava 200 1.15
-/api/dunaj 200 1.0
 HOTOVO
