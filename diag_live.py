@@ -1,11 +1,9 @@
-import requests,zipfile,io,csv
+import requests
 B="https://statdata.statistics.sk/public/api/dc"
-for i in range(3101,3125):
-    k=f"pr{i}rr"
-    r=requests.get(f"{B}/public/{k}/info",timeout=40)
-    if r.status_code==200:
-        j=r.json(); print(k,j.get("nameSk"),j.get("timePeriodTo"),j.get("zonation"))
-for u in ["https://gis.geocloud.gov.sk/geoserver/uvz/ows?service=WFS&version=2.0.0&request=GetCapabilities","https://gis.geocloud.gov.sk/geoserver/mpsvrsr/ows?service=WFS&version=2.0.0&request=GetCapabilities"]:
-    try: r=requests.get(u,timeout=60); print(u[:60],r.status_code,len(r.content))
-    except Exception as e: print(u[:60],type(e).__name__,str(e)[:150])
+for k in ("pr3108rr","om7101rr"):
+    r=requests.get(f"{B}/opendata/cube/dataset/{k}/supported-file-types",timeout=40); print(k,r.status_code,r.text[:300])
+for t in ("CSV","JSON","XLSX"):
+    for l in ("SK","EN"):
+        r=requests.get(f"{B}/opendata/cube/dataset/pr3108rr/download?type={t}&lang={l}",timeout=120); print(t,l,r.status_code,r.content[:80])
+r=requests.get(f"{B}/public/pr3108rr/dimensions",timeout=40); print("dims",r.status_code,r.text[:600])
 print("HOTOVO")
