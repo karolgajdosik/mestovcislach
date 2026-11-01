@@ -45,9 +45,9 @@ zp3701rr:Množstvo komunálneho odpadu | kg na osobu 568.6 568.6 max rok 2025
 ku3701rr:Návštevníci múzeí za rok 9604 9604.0 max rok 2025
 krim Trnavský TČ 2024 4532.0 2025 4385.0 obyv BA kraj 2024 staré 736385 nové 736385.0
 hotovo1
-bratislava rozdielne roky ['1992', '2001', '2010', '2020'] časti True [('Devín', '1992'), ('Devín', '2001'), ('Devín', '2010'), ('Devín', '2020'), ('Devínska Nová Ves', '1992')]
-kosice rozdielne roky ['1992', '1993', '1994', '1995', '2001', '2010', '2020'] časti True [('Barca', '1995'), ('Barca', '2001'), ('Barca', '2010'), ('Barca', '2020'), ('Dargovských hrdinov', '1995')]
-trnava rozdielne roky ['1992', '1993', '2001', '2010', '2020'] časti True []
-BA súbor mesto rozdiely ['2001', '2010', '2020'] kod SUCET
-BA MČ rozdiely 51 ['Bratislava - Devín', 'Bratislava - Devínska Nová Ves', 'Bratislava - Dúbravka']
+bratislava rozdielne roky [] časti True []
+kosice rozdielne roky [] časti True []
+trnava rozdielne roky [] časti True []
+BA súbor mesto rozdiely [] kod SUCET
+BA MČ rozdiely 0 ['Bratislava - Devín', 'Bratislava - Devínska Nová Ves', 'Bratislava - Dúbravka']
 HOTOVO
