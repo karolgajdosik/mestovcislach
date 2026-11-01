@@ -166,7 +166,9 @@ def main() -> int:
             continue
         k = kratky(n) if n.strip() != "Bratislava" else "Bratislava"
         u = uzemia.setdefault(k, {"kod": kody.get(k) or k, "nazov": n if n.strip() == "Bratislava" else f"Bratislava - {k}", "roky": {}})
-        u["roky"][r["e_year"]] = int(round(r["hodnota"]))
+        # uložené roky majú prednosť (pri sčítaniach sa stav k 1. 1. líši od 31. 12.); STATdata dopĺňa len novšie roky
+        if not u["roky"] or r["e_year"] > max(u["roky"]):
+            u["roky"][r["e_year"]] = int(round(r["hodnota"]))
     if len(uzemia) < 17:
         raise RuntimeError(f"Málo mestských častí ({len(uzemia)})")
     for u in uzemia.values():

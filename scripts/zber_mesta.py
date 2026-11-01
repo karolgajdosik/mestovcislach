@@ -81,10 +81,10 @@ def obyvatelia() -> dict:
         for m in MESTA:
             if patri(n, m["nazov"]):
                 o = out.setdefault(m["slug"], {"mesto": {}, "casti": defaultdict(dict)})
-                if n == m["nazov"]:
-                    o["mesto"][r["e_year"]] = int(r["hodnota"])
-                else:
-                    o["casti"][re.sub(r"^.*?-\s*(mestská časť\s*)?", "", n)][r["e_year"]] = int(r["hodnota"])
+                # uložené roky majú prednosť (pri sčítaniach sa stav k 1. 1. líši od 31. 12.); STATdata dopĺňa len novšie roky
+                ciel = o["mesto"] if n == m["nazov"] else o["casti"][re.sub(r"^.*?-\s*(mestská časť\s*)?", "", n)]
+                if not o.get("stare") or not ciel or r["e_year"] > max(ciel):
+                    ciel[r["e_year"]] = int(r["hodnota"])
     vysl = {}
     for slug, o in out.items():
         roky = o["mesto"]
