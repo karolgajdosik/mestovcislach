@@ -1,22 +1,16 @@
 import requests,zipfile,io,csv,json
-from collections import OrderedDict
 B="https://statdata.statistics.sk/public/api/dc"
-for k in ["st3004rr","sp3801qr","sv5001rr","sv5002rr","sv5003rr","do3701rr","zp3701rr","ku3701rr","st3701rr","sv3701rr","sk3002rr","sk3003rr"]:
+def rows(k):
+    r=requests.get(f"{B}/opendata/cube/dataset/{k}/download?type=CSV&lang=SK",timeout=300)
+    if r.content[:2]!=b"PK": return None
+    z=zipfile.ZipFile(io.BytesIO(r.content)); return list(csv.DictReader(io.StringIO(z.read(z.namelist()[0]).decode("utf-8-sig","replace"))))
+for k in ("sk3002rr","sk3003rr"):
+    print(k,[(x["e_year"],x["hodnota"]) for x in rows(k) if x["e_nuts13"]=="Trnavský kraj" and x["e_year"] in ("2023","2024")])
+for k in ["om7103rr","om7104rr","om7105rr","om7106rr","om7001rr","om7002rr","om7009rr","om7011rr","om7012rr","om7013rr","om7014rr","om7015rr","om7016rr","om7017rr","om7018rr","om7019rr","om7020rr","om2001rr","om7107rr"]:
+    rr=rows(k)
+    if rr: print(k,len(rr),list(rr[0].keys()), rr[0])
+for body in ({"text":"obyvateľstvo kraj"},{"searchText":"obyvateľstvo"},{"query":"obyvateľstvo"},{"fulltext":"obyvateľstvo"}):
     try:
-        r=requests.get(f"{B}/opendata/cube/dataset/{k}/download?type=CSV&lang=SK",timeout=300)
-        z=zipfile.ZipFile(io.BytesIO(r.content)); rows=list(csv.DictReader(io.StringIO(z.read(z.namelist()[0]).decode("utf-8-sig","replace"))))
-        cols=[c for c in rows[0] if c!="hodnota"]
-        print("==",k,len(rows),cols)
-        for c in cols:
-            v=list(OrderedDict.fromkeys(x[c] for x in rows))
-            print("   ",c,len(v),v[:12] if c!="e_year" else (min(v),max(v)))
-    except Exception as e: print(k,type(e).__name__,str(e)[:150])
-try:
-    a=requests.get(f"{B}/opendata/cubes/all",timeout=120).json()
-    print("cubes all type",type(a).__name__, len(a))
-    s=json.dumps(a,ensure_ascii=False)
-    import re
-    print("om71 kódy:",sorted(set(re.findall(r'om71\d\d\w\w',s))))
-    print("príklad:",json.dumps(a[0] if isinstance(a,list) else list(a.items())[:1],ensure_ascii=False)[:400])
-except Exception as e: print("cubes all",type(e).__name__,e)
+        r=requests.post(f"{B}/search/dataCube/sk",json=body,timeout=60); print(body,r.status_code,r.text[:400])
+    except Exception as e: print(body,e)
 print("HOTOVO")
