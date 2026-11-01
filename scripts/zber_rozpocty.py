@@ -110,13 +110,27 @@ def rss(url: str, zhoda=None, **_) -> list[dict]:
     return out
 
 
-# ---------- ustanovujúce zasadnutia nových zastupiteľstiev (do 30 dní od volieb) ----------
+# ---------- zasadnutia mestských zastupiteľstiev po voľbách (ustanovujúce do 30 dní od volieb a ďalšie) ----------
 MESIACE = {"januára": 1, "februára": 2, "marca": 3, "apríla": 4, "mája": 5, "júna": 6, "júla": 7, "augusta": 8, "septembra": 9, "októbra": 10, "novembra": 11, "decembra": 12}
 VOLBY = date(2026, 10, 24)
 
 
 def je_ustanovujuce(text: str) -> bool:
-    return bool(re.search(r"ustanovuj", text, re.I)) and bool(re.search(r"zasadnut|zastupite", text, re.I))
+    """Pozvánka alebo oznámenie o zasadnutí mestského zastupiteľstva (ustanovujúcom aj ďalších) – termín sa vyberie z textu."""
+    return bool(re.search(r"zasadnut|rokovani", text, re.I)) and bool(re.search(r"zastupite|msz\b|mz\b", text, re.I)) \
+        and not re.search(r"miestn\w* zastupite|komisi|zápisnic|zapisnic|uznesen", text, re.I)
+
+
+# stránky so zasadnutiami zastupiteľstva (okrem zdrojov rozpočtov)
+ZASADNUTIA = {
+    "bratislava": [("stranka", "https://zastupitelstvo.bratislava.sk/")],
+    "trnava": [("stranka", "https://www.trnava.sk/zasadnutia/msz")],
+    "kosice": [("stranka", "https://www.kosice.sk/mesto/samosprava/mestske-zastupitelstvo")],
+    "banska-bystrica": [("stranka", "https://www.banskabystrica.sk/aktuality/")],
+    "nitra": [("stranka", "https://nitra.sk/aktuality/")],
+    "zilina": [("stranka", "https://zilina.sk/aktuality/")],
+    "trencin": [("stranka", "https://trencin.sk/aktuality/")],
+}
 
 
 def datum_zasadnutia(text: str) -> str | None:
@@ -143,6 +157,7 @@ def zasadnutia() -> None:
     dnes = date.today().isoformat()
     mesta = {}
     for slug, zdroje in ZDROJE.items():
+        zdroje = zdroje + ZASADNUTIA.get(slug, [])
         predtym = {d["url"]: d for d in stare.get("mesta", {}).get(slug, [])}
         najdene: dict[str, dict] = {}
         for typ, url in zdroje:
@@ -161,9 +176,16 @@ def zasadnutia() -> None:
         zoz = []
         for u, d in najdene.items():
             termin = d.get("termin") or datum_zasadnutia(f"{d['nazov']} {d.get('text', '')} {u}")
-            zoz.append({"nazov": d["nazov"][:200], "url": u, "termin": termin, "videne_od": predtym.get(u, {}).get("videne_od", dnes)})
-        mesta[slug] = sorted(zoz, key=lambda x: (x["termin"] is None, x["termin"] or ""))
-        print(f"{slug}: ustanovujúce zasadnutie {next((x['termin'] for x in mesta[slug] if x['termin']), '–')} ({len(zoz)} dokumentov)")
+            text = f"{d['nazov']} {d.get('text', '')} {u}"
+            zoz.append({"nazov": d["nazov"][:200], "url": u, "termin": termin, "ustanovujuce": bool(d.get("ustanovujuce") or re.search(r"ustanovuj", text, re.I)),
+                        "videne_od": predtym.get(u, {}).get("videne_od", dnes)})
+        # len oznámenia s termínom zasadnutia (po voľbách); jeden záznam na deň
+        podla_dna: dict[str, dict] = {}
+        for x in sorted(zoz, key=lambda x: (not x["ustanovujuce"], x["videne_od"])):
+            if x["termin"]:
+                podla_dna.setdefault(x["termin"], x)
+        mesta[slug] = sorted(podla_dna.values(), key=lambda x: x["termin"])
+        print(f"{slug}: zasadnutia {[(x['termin'], 'ustanovujúce' if x['ustanovujuce'] else '') for x in mesta[slug]]}")
     zapis_ak_zmena(cesta, {"mesta": mesta, "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="minutes")})
 
 
