@@ -1,14 +1,14 @@
-import requests,zipfile,io,csv
-B="https://statdata.statistics.sk/public/api/dc"
-for p in ["/v3/api-docs","/opendata/cube/dataset/om7101rr","/opendata/cube/dataset/om7101rr/metadata","/opendata/cube","/opendata/cube/list","/opendata/collection","/cube/om7101rr","/dataset/om7101rr","/opendata/cube/dataset/om7101rr/download?type=JSON&lang=SK","/opendata/cube/dataset/om7101rr/download?type=JSONSTAT&lang=SK"]:
-    try:
-        r=requests.get(B+p,timeout=60); print(p,r.status_code,r.headers.get("content-type"),len(r.content),r.content[:150])
-    except Exception as e: print(p,type(e).__name__)
-for k in ["om7101rr","sp3801qr","st3004rr","om7102rr"]:
-    try:
-        r=requests.get(f"{B}/opendata/cube/dataset/{k}/download?type=CSV&lang=SK",timeout=300)
-        z=zipfile.ZipFile(io.BytesIO(r.content)); n=z.namelist(); t=z.read(n[0]).decode("utf-8-sig","replace")
-        rows=list(csv.DictReader(io.StringIO(t)))
-        print("==",k,r.status_code,len(r.content),n,len(rows)); print("  ",list(rows[0].keys())); print("  ",rows[0]); print("  ",rows[-1])
-    except Exception as e: print(k,type(e).__name__,str(e)[:150])
+import requests,zipfile,io,json
+B="https://statdata.statistics.sk/public/api/dc/opendata/cube/dataset/{}/download?type={}&lang=SK"
+r=requests.get(B.format("om7101rr","JSON"),timeout=300); z=zipfile.ZipFile(io.BytesIO(r.content)); d=json.loads(z.read(z.namelist()[0]))
+def sh(x,dep=0):
+    if isinstance(x,dict):
+        for k,v in list(x.items())[:12]: print("  "*dep+str(k), type(v).__name__, (str(v)[:120] if not isinstance(v,(dict,list)) else len(v))); 
+        for k,v in list(x.items())[:6]:
+            if isinstance(v,(dict,list)) and dep<2: print("  "*dep+"--",k); sh(v,dep+1)
+    elif isinstance(x,list) and x: print("  "*dep+"[0]",str(x[0])[:300])
+sh(d)
+r=requests.get(B.format("om7102rr","CSV"),timeout=300); print("om7102rr",r.status_code,r.headers.get("content-type"),r.content[:300])
+for k in ["sv5001rr","do3701rr","sk3002rr","om7102rs","om7102qr"]:
+    r=requests.get(B.format(k,"CSV"),timeout=300); print(k,r.status_code,len(r.content),r.content[:2])
 print("HOTOVO")
