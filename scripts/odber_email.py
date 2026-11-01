@@ -244,6 +244,15 @@ def email_tyzdennik(d: dict) -> str:
         sekcie.append(f'<h2 style="font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:#5f6368;margin:22px 0 8px">Rozpočet na rok {r["rok"]}</h2>'
                       f'<p style="margin:0;line-height:1.5">{"Mesto zverejnilo návrh rozpočtu." if r["navrh"] else "Návrh rozpočtu mesto zatiaľ nezverejnilo."} '
                       f'<a href="{h(url(r["odkaz"]))}" style="color:#c8102e">Stav a dokumenty</a></p>')
+    sz = d.get("sutaz")
+    if sz is not None:
+        if sz.get("poradie"):
+            stav_ = f'{h(d["mesto"])} je tento týždeň na <strong>{sz["poradie"]}. mieste</strong> z {sz["miest"]} (priemer {str(sz["priemer"]).replace(".", ",")} b.).'
+        else:
+            stav_ = f'Za mesto {h(d["mesto"])} tento týždeň ešte nikto nehral – buďte prvý.'
+        sekcie.append('<h2 style="font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:#5f6368;margin:22px 0 8px">Súťaž miest</h2>'
+                      f'<p style="margin:0 0 10px;line-height:1.5">{stav_} Päť otázok, hrá sa za svoje mesto, víťaza vyhlasujeme v pondelok.</p>'
+                      f'<p style="margin:0"><a href="{WEB}/sutaz" style="display:inline-block;background:#d97706;color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:10px">Hrať za {h(d["mesto"])}</a></p>')
     q = d.get("otazka")
     if q:
         sekcie.append('<h2 style="font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:#5f6368;margin:22px 0 8px">Otázka týždňa</h2>'
@@ -272,6 +281,12 @@ def tyzdennik(b: Brevo) -> int:
     mapa = json.loads(MAPA.read_text(encoding="utf-8"))
     pocty = {z["id"]: z.get("uniqueSubscribers", z.get("totalSubscribers", 0)) for z in b.vsetko("/contacts/lists", "lists")}
     poslane = 0
+    # priebežné poradie Súťaže miest (len počty za mestá)
+    try:
+        tab = requests.get(f"{WEB}/api/sutaz", timeout=30).json().get("tabulka") or {}
+    except Exception:  # noqa: BLE001
+        tab = {}
+    rad = sorted(((s_, b_ / h_) for s_, (h_, b_) in tab.items() if h_), key=lambda x: -x[1])
     for kluc, lid in mapa["zoznamy"].items():
         if not kluc.startswith("tyzdennik-") or not pocty.get(lid):
             continue
@@ -281,6 +296,8 @@ def tyzdennik(b: Brevo) -> int:
         except Exception as e:  # noqa: BLE001
             print(f"::warning title=Týždenník {s}::{e}")
             continue
+        poz = next((i + 1 for i, (s_, _) in enumerate(rad) if s_ == s), None)
+        d["sutaz"] = {"poradie": poz, "miest": len(rad), "priemer": round(dict(rad).get(s, 0), 1)} if poz else {}
         kampan = b("POST", "/emailCampaigns", json={
             "name": f"Týždenník {d['mesto']} {d['datum']}", "subject": f"Týždeň {d['v']}: {len(d['novinky'])} noviniek" if d["novinky"] else f"Týždeň {d['v']}",
             "sender": ODOSIELATEL, "replyTo": ODPOVED, "htmlContent": email_tyzdennik(d), "recipients": {"listIds": [lid]},

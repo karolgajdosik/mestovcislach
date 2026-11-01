@@ -119,6 +119,51 @@ def tabulka(nadpis: str, riadky: list[tuple[str, int]], spolu: int) -> str:
     return f'<h3 style="margin:20px 0 6px">{nadpis}</h3><table style="border-collapse:collapse;width:100%;font-size:14px">{r}</table>'
 
 
+def stav_webu(od: date) -> str:
+    """Časť e-mailu „Stav webu“: úspešnosť automatických zberov za týždeň a otvorené problémy z kontroly (GitHub API)."""
+    tok, repo = os.environ.get("GH_TOKEN", ""), os.environ.get("GITHUB_REPOSITORY", "karolgajdosik/mestovcislach")
+    if not tok:
+        return ""
+    import re
+    import sys as _s
+    from pathlib import Path
+    _s.path.insert(0, str(Path(__file__).resolve().parent))
+    from kontrola import NAZVY
+    h = {"Authorization": f"Bearer {tok}", "Accept": "application/vnd.github+json"}
+    riadky = []
+    for subor, nazov in NAZVY.items():
+        try:
+            d = requests.get(f"https://api.github.com/repos/{repo}/actions/workflows/{subor}/runs", headers=h, timeout=30,
+                             params={"created": f">={od.isoformat()}", "per_page": 100, "status": "completed"}).json()
+        except Exception:  # noqa: BLE001
+            continue
+        behy = [b for b in d.get("workflow_runs", []) if b.get("conclusion") not in ("cancelled", "skipped")]
+        if not behy:
+            continue
+        zle = sum(1 for b in behy if b["conclusion"] != "success")
+        riadky.append((nazov, len(behy), zle, behy[0]["conclusion"] == "success"))
+    problemy = []
+    try:
+        iss = requests.get(f"https://api.github.com/repos/{repo}/issues", headers=h, timeout=30, params={"labels": "kontrola", "state": "open"}).json()
+        if iss:
+            kom = requests.get(iss[0]["comments_url"], headers=h, timeout=30, params={"per_page": 100}).json()
+            text = (kom[-1]["body"] if kom else iss[0]["body"]) or ""
+            problemy = [re.sub(r"\*\*|\s*\(https?://\S+\)", "", r[2:]) for r in text.splitlines() if r.startswith("- ")]
+    except Exception:  # noqa: BLE001
+        pass
+    if not riadky:
+        return ""
+    ok = all(z == 0 for _, _, z, _ in riadky) and not problemy
+    t_ = "".join(f'<tr><td style="padding:4px 8px;border-bottom:1px solid #eee">{html.escape(n)}</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right">{b}</td>'
+                 f'<td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;color:{"#c8102e" if z else "#15803d"}">{z or "–"}</td>'
+                 f'<td style="padding:4px 8px;border-bottom:1px solid #eee">{"✓" if posl else "✗ chyba"}</td></tr>' for n, b, z, posl in riadky)
+    return (f'<h3 style="margin:24px 0 6px">Stav webu {"– všetko v poriadku" if ok else "– pozor"}</h3>'
+            + ("<p style='margin:0 0 8px'>Otvorené problémy z kontroly: " + "; ".join(html.escape(p) for p in problemy) + "</p>" if problemy else "")
+            + '<table style="border-collapse:collapse;width:100%;font-size:14px"><tr><th style="text-align:left;padding:4px 8px">Automatický zber</th>'
+              '<th style="text-align:right;padding:4px 8px">behov</th><th style="text-align:right;padding:4px 8px">chýb</th><th style="text-align:left;padding:4px 8px">teraz</th></tr>'
+            + t_ + "</table>")
+
+
 def main() -> int:
     token = os.environ.get("CF_API_TOKEN", "").strip()
     brevo = os.environ.get("BREVO_API_KEY", "").strip()
@@ -152,6 +197,7 @@ def main() -> int:
 {tabulka('Odkiaľ prišli', zdroje, spolu)}
 {tabulka('Zariadenia', zariadenia, spolu)}
 {tabulka('Krajiny', krajiny, spolu)}
+{stav_webu(od)}
 <p style="margin-top:24px;font-size:12px;color:#888">Cloudflare Web Analytics (bez cookies, bez robotov). „Priamo / správy“ sú aj odkazy poslané cez WhatsApp, Messenger či e-mail.</p></div>"""
     print(f"{obdobie}: {spolu} návštev ({zmena}); stránky {len(stranky)}, zdroje {len(zdroje)}")
     if "--nahlad" in sys.argv or not brevo:

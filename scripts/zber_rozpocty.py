@@ -60,21 +60,25 @@ def druh(text: str) -> str:
     return "dokument k rozpočtu"
 
 
-def wp(zaklad: str) -> list[dict]:
+def wp(zaklad: str, zhoda=None, hladaj=None, typy=("media",)) -> list[dict]:
+    zhoda = zhoda or je_rozpocet
     out = []
-    for q in (f"rozpočet {ROK}", f"rozpočtu {ROK}", f"rozpoctu {ROK}", f"rozpocet {ROK}"):
-        r = s.get(f"{zaklad}/wp-json/wp/v2/media", params={"search": q, "per_page": 50, "orderby": "date"}, headers=UA, timeout=60)
+    for typ in typy:
+      for q in hladaj or (f"rozpočet {ROK}", f"rozpočtu {ROK}", f"rozpoctu {ROK}", f"rozpocet {ROK}"):
+        r = s.get(f"{zaklad}/wp-json/wp/v2/{typ}", params={"search": q, "per_page": 50, "orderby": "date"}, headers=UA, timeout=60)
         if r.status_code != 200 or not r.text.lstrip().startswith("["):
             continue
         for x in r.json():
             nazov = html.unescape(re.sub(r"<[^>]+>", "", x.get("title", {}).get("rendered", ""))).strip()
             url = x.get("source_url") or x.get("link") or ""
-            if je_rozpocet(f"{nazov} {url}"):
-                out.append({"nazov": nazov or url.rsplit("/", 1)[-1], "url": url, "datum": (x.get("date") or "")[:10]})
+            obsah = html.unescape(re.sub(r"<[^>]+>", " ", (x.get("content") or {}).get("rendered", "") if typ == "posts" else ""))[:3000]
+            if zhoda(f"{nazov} {url} {obsah}"):
+                out.append({"nazov": nazov or url.rsplit("/", 1)[-1], "url": url, "datum": (x.get("date") or "")[:10], "text": obsah})
     return out
 
 
-def stranka(url: str) -> list[dict]:
+def stranka(url: str, zhoda=None, **_) -> list[dict]:
+    zhoda = zhoda or je_rozpocet
     r = s.get(url, headers=UA, timeout=60)
     if r.status_code != 200:
         print(f"  {url}: HTTP {r.status_code}")
@@ -83,12 +87,13 @@ def stranka(url: str) -> list[dict]:
     for m in re.finditer(r'<a\b[^>]*href="([^"#]+)"[^>]*>(.*?)</a>', r.text, re.S | re.I):
         text = html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", m.group(2)))).strip()
         odkaz = urljoin(url, html.unescape(m.group(1)))
-        if je_rozpocet(f"{text} {odkaz}"):
+        if zhoda(f"{text} {odkaz}"):
             out.append({"nazov": text or odkaz.rsplit("/", 1)[-1], "url": odkaz, "datum": ""})
     return out
 
 
-def rss(url: str) -> list[dict]:
+def rss(url: str, zhoda=None, **_) -> list[dict]:
+    zhoda = zhoda or je_rozpocet
     r = s.get(url, headers=UA, timeout=60)
     if r.status_code != 200:
         print(f"  {url}: HTTP {r.status_code}")
@@ -96,13 +101,92 @@ def rss(url: str) -> list[dict]:
     out = []
     for it in re.findall(r"<item>(.*?)</item>", r.text, re.S):
         g = lambda tag: html.unescape(re.sub(r"<!\[CDATA\[|\]\]>", "", (re.search(rf"<{tag}>(.*?)</{tag}>", it, re.S) or [None, ""])[1])).strip()
-        if je_rozpocet(f"{g('title')} {g('description')}"):
+        if zhoda(f"{g('title')} {g('description')}"):
             try:
                 d = datetime.strptime(g("pubDate")[:16], "%a, %d %b %Y").date().isoformat()
             except ValueError:
                 d = ""
-            out.append({"nazov": g("title"), "url": g("link"), "datum": d})
+            out.append({"nazov": g("title"), "url": g("link"), "datum": d, "text": g("description")})
     return out
+
+
+# ---------- zasadnutia mestských zastupiteľstiev po voľbách (ustanovujúce do 30 dní od volieb a ďalšie) ----------
+MESIACE = {"januára": 1, "februára": 2, "marca": 3, "apríla": 4, "mája": 5, "júna": 6, "júla": 7, "augusta": 8, "septembra": 9, "októbra": 10, "novembra": 11, "decembra": 12}
+VOLBY = date(2026, 10, 24)
+
+
+def je_ustanovujuce(text: str) -> bool:
+    """Pozvánka alebo oznámenie o zasadnutí mestského zastupiteľstva (ustanovujúcom aj ďalších) – termín sa vyberie z textu."""
+    return bool(re.search(r"zasadnut|rokovani", text, re.I)) and bool(re.search(r"zastupite|msz\b|mz\b", text, re.I)) \
+        and not re.search(r"miestn\w* zastupite|komisi|zápisnic|zapisnic|uznesen", text, re.I)
+
+
+# stránky so zasadnutiami zastupiteľstva (okrem zdrojov rozpočtov)
+ZASADNUTIA = {
+    "bratislava": [("stranka", "https://zastupitelstvo.bratislava.sk/")],
+    "trnava": [("stranka", "https://www.trnava.sk/zasadnutia/msz")],
+    "kosice": [("stranka", "https://www.kosice.sk/mesto/samosprava/mestske-zastupitelstvo")],
+    "banska-bystrica": [("stranka", "https://www.banskabystrica.sk/aktuality/")],
+    "nitra": [("stranka", "https://nitra.sk/aktuality/")],
+    "zilina": [("stranka", "https://zilina.sk/aktuality/")],
+    "trencin": [("stranka", "https://trencin.sk/aktuality/")],
+}
+
+
+def datum_zasadnutia(text: str) -> str | None:
+    """Prvý dátum v texte medzi voľbami a koncom roka („17. 11. 2026“, „17. novembra 2026“)."""
+    kand = []
+    for m in re.finditer(r"(\d{1,2})\.\s*(\d{1,2})\.\s*(20\d\d)", text):
+        kand.append((int(m.group(3)), int(m.group(2)), int(m.group(1))))
+    for m in re.finditer(r"(\d{1,2})\.\s*(" + "|".join(MESIACE) + r")\s*(20\d\d)", text, re.I):
+        kand.append((int(m.group(3)), MESIACE[m.group(2).lower()], int(m.group(1))))
+    for r_, m_, d_ in kand:
+        try:
+            x = date(r_, m_, d_)
+        except ValueError:
+            continue
+        if VOLBY < x <= date(2026, 12, 31):
+            return x.isoformat()
+    return None
+
+
+def zasadnutia() -> None:
+    cesta = DATA / "zasadnutia-ustanovujuce-2026.json"
+    import json
+    stare = json.loads(cesta.read_text(encoding="utf-8")) if cesta.exists() else {}
+    dnes = date.today().isoformat()
+    mesta = {}
+    for slug, zdroje in ZDROJE.items():
+        zdroje = zdroje + ZASADNUTIA.get(slug, [])
+        predtym = {d["url"]: d for d in stare.get("mesta", {}).get(slug, [])}
+        najdene: dict[str, dict] = {}
+        for typ, url in zdroje:
+            try:
+                kw = {"zhoda": je_ustanovujuce}
+                if typ == "wp":
+                    kw.update(hladaj=("ustanovujúce zasadnutie", "ustanovujuce zasadnutie", "ustanovujúceho"), typy=("posts", "media"))
+                for d in {"wp": wp, "stranka": stranka, "rss": rss}[typ](url, **kw):
+                    # bez dátumu zverejnenia berieme len dokumenty s rokom 2026 (staré pozvánky z 2022 na stránkach ostávajú)
+                    if (d["datum"] >= VOLBY.isoformat()) if d.get("datum") else ("2026" in f"{d['nazov']} {d.get('text', '')} {d['url']}"):
+                        najdene.setdefault(d["url"], d)
+            except Exception as e:  # noqa: BLE001
+                print(f"  {slug} {typ}: {type(e).__name__}")
+        for u, d in predtym.items():
+            najdene.setdefault(u, d)
+        zoz = []
+        for u, d in najdene.items():
+            termin = d.get("termin") or datum_zasadnutia(f"{d['nazov']} {d.get('text', '')} {u}")
+            text = f"{d['nazov']} {d.get('text', '')} {u}"
+            zoz.append({"nazov": d["nazov"][:200], "url": u, "termin": termin, "ustanovujuce": bool(d.get("ustanovujuce") or re.search(r"ustanovuj", text, re.I)),
+                        "videne_od": predtym.get(u, {}).get("videne_od", dnes)})
+        # len oznámenia s termínom zasadnutia (po voľbách); jeden záznam na deň
+        podla_dna: dict[str, dict] = {}
+        for x in sorted(zoz, key=lambda x: (not x["ustanovujuce"], x["videne_od"])):
+            if x["termin"]:
+                podla_dna.setdefault(x["termin"], x)
+        mesta[slug] = sorted(podla_dna.values(), key=lambda x: x["termin"])
+        print(f"{slug}: zasadnutia {[(x['termin'], 'ustanovujúce' if x['ustanovujuce'] else '') for x in mesta[slug]]}")
+    zapis_ak_zmena(cesta, {"mesta": mesta, "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="minutes")})
 
 
 def main() -> int:
@@ -137,6 +221,8 @@ def main() -> int:
         mesta[slug] = {"dokumenty": dok, **({"chyby": chyby} if chyby else {})}
         print(f"{slug}: {len(dok)} dokumentov{' (chyby: ' + ', '.join(chyby) + ')' if chyby else ''}")
     zapis_ak_zmena(cesta, {"rok": ROK, "mesta": mesta, "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="minutes")})
+    if date.today() <= date(2026, 12, 31):
+        zasadnutia()
     return 0
 
 

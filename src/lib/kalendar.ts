@@ -31,7 +31,19 @@ export function kalendar(slug: string): Udalost[] {
   if (!out.some((u) => u.id === 'volby-2026-10-24')) out.push({ id: 'volby-2026-10-24', od: '2026-10-24', nazov: 'Komunálne a regionálne voľby', popis: 'Voľby primátora, poslancov mestského zastupiteľstva a orgánov samosprávneho kraja (7:00 – 20:00).', odkaz: `/${slug}${slug === 'bratislava' ? '/volby' : '/volby'}`, typ: 'volby' });
   // nové zastupiteľstvo 2026 – 2030: ustanovujúce zasadnutie do 30 dní od volieb (§ 12 ods. 1 zákona č. 369/1990 Zb.),
   // kým mesto nezverejní skutočný termín (prvé zasadnutie po voľbách v dátach)
-  if (!out.some((u) => u.typ === 'zastupitelstvo' && u.od > '2026-10-24' && u.od <= '2026-11-23'))
+  // ohlásené zasadnutia z webu mesta (scripts/zber_rozpocty.py → data/zasadnutia-ustanovujuce-2026.json)
+  let ustanovujuce = false;
+  try {
+    const z = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'zasadnutia-ustanovujuce-2026.json'), 'utf-8'));
+    for (const t of (z.mesta?.[slug] ?? []).filter((x: any) => x.termin)) {
+      if (t.ustanovujuce) ustanovujuce = true;
+      if (out.some((u) => u.typ === 'zastupitelstvo' && u.od === t.termin)) continue;
+      out.push({ id: `msz-${t.termin}`, od: t.termin, typ: 'zastupitelstvo', pripomienka: true, odkaz: `/${slug}/zastupitelstvo`,
+        nazov: t.ustanovujuce ? 'Ustanovujúce zasadnutie mestského zastupiteľstva' : 'Zasadnutie mestského zastupiteľstva',
+        popis: `${t.ustanovujuce ? 'Prvé zasadnutie nového zastupiteľstva 2026 – 2030: sľub primátora a poslancov, voľba komisií a mestskej rady. ' : ''}Oznámenie mesta: ${t.url}` });
+    }
+  } catch { /* zatiaľ bez údajov */ }
+  if (!ustanovujuce)
     out.push({ id: 'ustanovujuce-2026', od: '2026-11-23', nazov: 'Najneskorší termín ustanovujúceho zasadnutia zastupiteľstva', popis: 'Nové mestské zastupiteľstvo sa musí zísť do 30 dní od volieb; primátor a poslanci na ňom zložia sľub. Presný dátum určí doterajší primátor.', odkaz: `/${slug}/zastupitelstvo`, typ: 'zastupitelstvo' });
   // rozpočet na budúci rok: zverejnený návrh (scripts/zber_rozpocty.py) a termín schválenia do konca roka
   const rRok = rok + 1;

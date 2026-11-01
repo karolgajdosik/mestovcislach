@@ -5,6 +5,7 @@ import { webSite } from '../lib/seo';
 import { MESTA } from '../mesta';
 import { foto } from '../lib/fotky';
 import VolebnaNoc from '../components/VolebnaNoc.astro';
+import SutazPas from '../components/SutazPas.astro';
 import MojPrehlad from '../components/MojPrehlad.astro';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -26,6 +27,7 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
 
   <MojPrehlad />
   <VolebnaNoc />
+  <SutazPas />
 
   <ul class="mesta">
     {aktivne.map((m) => (

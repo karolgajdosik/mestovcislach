@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: read
+  actions: read
+  issues: read
 
 jobs:
   statistiky:
@@ -17,6 +19,7 @@ jobs:
       CF_ACCOUNT_ID: af74e260d1c6d4359651b361a8aa1fbc  # ID účtu Cloudflare (nie je tajné; token je v secrets)
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       STATISTIKY_EMAIL: ${{ secrets.STATISTIKY_EMAIL }}
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6

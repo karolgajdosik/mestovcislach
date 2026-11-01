@@ -50,23 +50,31 @@ def jcheck(fn):
     return t
 
 
+NAZVY = {"zber-dat.yml": "Zber dát", "crz.yml": "Zmluvy (CRZ)", "slovensko.yml": "Celoštátne zdroje (týždenne)", "katalog.yml": "Katalóg dát",
+         "mesta-temy.yml": "Život v mestách", "volby.yml": "Komunálne voľby", "vystavba.yml": "Výstavba, bývanie a krajské mestá"}
+
+
 def zbery(dni: dict[str, int]) -> None:
     """Posledný beh každého zberu dát musí byť úspešný a nie starší ako počet dní (gh CLI, token z workflowu)."""
     for subor, max_dni in dni.items():
-        out = subprocess.run(["gh", "run", "list", "--workflow", subor, "--limit", "5", "--json", "conclusion,createdAt,status,url"],
+        out = subprocess.run(["gh", "run", "list", "--workflow", subor, "--limit", "8", "--json", "conclusion,createdAt,status,url"],
                              capture_output=True, text=True)
         if out.returncode:
             problemy.append(f"**{subor}** – stav behov sa nedá zistiť ({out.stderr.strip()[:120]})")
             continue
-        behy = [b for b in json.loads(out.stdout) if b["status"] == "completed"]
+        # zrušené behy (ručne alebo prekrytím) nie sú chyba zdroja
+        behy = [b for b in json.loads(out.stdout) if b["status"] == "completed" and b["conclusion"] not in ("cancelled", "skipped")]
         if not behy:
             continue
         posledny = behy[0]
         vek = datetime.now(timezone.utc) - datetime.fromisoformat(posledny["createdAt"].replace("Z", "+00:00"))
-        if posledny["conclusion"] != "success":
-            problemy.append(f"**Zber {subor}** – posledný beh skončil „{posledny['conclusion']}“ ({posledny['url']})")
+        # denné zbery hlásime až pri dvoch zlyhaniach po sebe (ojedinelý výpadok zdroja sa zvyčajne napraví sám)
+        if posledny["conclusion"] != "success" and max_dni < 7 and len(behy) > 1 and behy[1]["conclusion"] == "success":
+            print(f"POZOR zber {subor}: jedno zlyhanie, čakáme na ďalší beh")
+        elif posledny["conclusion"] != "success":
+            problemy.append(f"**Zber {NAZVY.get(subor, subor)}** – posledný beh skončil chybou ({posledny['url']})")
         elif vek > timedelta(days=max_dni):
-            problemy.append(f"**Zber {subor}** – posledný beh pred {vek.days} dňami")
+            problemy.append(f"**Zber {NAZVY.get(subor, subor)}** – posledný beh pred {vek.days} dňami")
         print(f"{'OK  ' if posledny['conclusion'] == 'success' and vek <= timedelta(days=max_dni) else 'CHYBA'} zber {subor}: {posledny['conclusion']}, pred {vek.days} d")
 
 

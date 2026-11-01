@@ -1,7 +1,8 @@
 name: Kontrola webu
 
 # Každé 3 hodiny overí živé zdroje (SHMÚ, MeteoAlarm, uzávierky…) a úspešnosť zberov dát.
-# Pri probléme založí alebo aktualizuje issue „Kontrola webu“ (GitHub pošle e-mail), keď je všetko v poriadku, issue zavrie.
+# Pri probléme založí alebo aktualizuje issue „Kontrola webu“ a pri zmene pošle e-mail cez Brevo (scripts/kontrola_email.py);
+# keď je všetko v poriadku, issue zavrie a pošle „všetko opäť funguje“.
 on:
   schedule:
     - cron: "17 */3 * * *"
@@ -21,6 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
+      BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+      STATISTIKY_EMAIL: ${{ secrets.STATISTIKY_EMAIL }}
+      BEH_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
     steps:
       - uses: actions/checkout@v5
 
@@ -38,15 +42,22 @@ jobs:
         run: |
           cislo=$(gh issue list --state open --label kontrola --json number -q '.[0].number')
           if [ "${{ steps.kontrola.outputs.ok }}" = "1" ]; then
-            [ -n "$cislo" ] && gh issue close "$cislo" --comment "Všetko opäť funguje ($(date -u '+%Y-%m-%d %H:%M') UTC)." || echo "Bez problémov."
+            if [ -n "$cislo" ]; then
+              gh issue close "$cislo" --comment "Všetko opäť funguje ($(date -u '+%Y-%m-%d %H:%M') UTC)."
+              python scripts/kontrola_email.py --ok || true
+            else echo "Bez problémov."; fi
           else
             telo="$(printf 'Automatická kontrola našla problémy (%s UTC):\n\n%s\n\n[Beh kontroly](%s/%s/actions/runs/%s)' "$(date -u '+%Y-%m-%d %H:%M')" "$(cat problemy.md)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")"
             if [ -n "$cislo" ]; then
               # nový komentár len ak sa zoznam problémov zmenil
               posledny="$(gh issue view "$cislo" --json comments,body -q '(.comments | last | .body) // .body')"
-              if [ "$(echo "$posledny" | grep '^- ' )" != "$(cat problemy.md)" ]; then gh issue comment "$cislo" --body "$telo"; fi
+              if [ "$(echo "$posledny" | grep '^- ' )" != "$(cat problemy.md)" ]; then
+                gh issue comment "$cislo" --body "$telo"
+                python scripts/kontrola_email.py problemy.md || true
+              fi
             else
               gh label create kontrola --color c8102e --description "Automatická kontrola webu" 2>/dev/null || true
               gh issue create --title "Kontrola webu: nefunguje zdroj alebo zber dát" --label kontrola --body "$telo"
+              python scripts/kontrola_email.py problemy.md || true
             fi
           fi

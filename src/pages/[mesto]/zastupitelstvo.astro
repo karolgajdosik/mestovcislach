@@ -1,6 +1,8 @@
 ---
 // Mestské zastupiteľstvo podľa posledných komunálnych volieb: primátor, zloženie podľa strán, zoznam poslancov
 // (len meno, strana, hlasy a obvod) a porovnanie s predchádzajúcim obdobím. Po zbere volieb 2026 sa obnoví samo.
+import fs from 'node:fs';
+import path from 'node:path';
 import Base from '../../layouts/Base.astro';
 import '../../styles/stranka.css';
 import { MESTA, type Mesto } from '../../mesta';
@@ -43,6 +45,7 @@ const podlaCasti = obvody.some((o) => !/^obvod č\./.test(o.nazov));
 const casti = podlaCasti ? [...new Set(obvody.flatMap((o) => o.nazov.split(', ')))].sort((a, b) => a.localeCompare(b, 'sk')) : [];
 const profilId = new Map(profily(m.slug).filter((x) => x.rok === teraz.rok).map((x) => [x.meno, x.id]));
 const profil = (meno: string) => (profilId.has(meno) ? `/${m.slug}/poslanci/${profilId.get(meno)}` : null);
+const ustanovujuce = (() => { try { return (JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'zasadnutia-ustanovujuce-2026.json'), 'utf-8')).mesta?.[m.slug] ?? []).find((x: any) => x.termin && x.ustanovujuce) ?? null; } catch { return null; } })();
 const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/${m.slug}/volby`;
 ---
 <Base title={`Mestské zastupiteľstvo ${obdobie} – ${m.nazov} – mestovcislach.sk`} description={`${m.nazov}: kto sedí v mestskom zastupiteľstve ${obdobie}, zloženie podľa strán, kto mandát obhájil a kto je nový.`}>
@@ -158,7 +161,9 @@ const volbyOdkaz = m.slug === 'bratislava' ? '/bratislava/volby#komunalne' : `/$
     <section class="card" id="prve-kroky">
       <h2>Prvé kroky nového zastupiteľstva</h2>
       <ol class="zs-kroky">
-        <li><strong>Ustanovujúce zasadnutie – najneskôr 23. novembra 2026.</strong> Zastupiteľstvo sa musí zísť do 30 dní od volieb (§ 12 zákona o obecnom zriadení); primátor a poslanci zložia sľub a zvolia komisie a mestskú radu. Termín pribudne v <a href={`/${m.slug}/kalendar`}>kalendári mesta</a>.</li>
+        <li>{ustanovujuce
+          ? <><strong>Ustanovujúce zasadnutie – {new Date(ustanovujuce.termin).toLocaleDateString('sk-SK', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}.</strong> Primátor a poslanci zložia sľub a zvolia komisie a mestskú radu. <a href={ustanovujuce.url} rel="noopener">Oznámenie mesta</a> · <a href={`/${m.slug}/kalendar`}>v kalendári</a></>
+          : <><strong>Ustanovujúce zasadnutie – najneskôr 23. novembra 2026.</strong> Zastupiteľstvo sa musí zísť do 30 dní od volieb (§ 12 zákona o obecnom zriadení); primátor a poslanci zložia sľub a zvolia komisie a mestskú radu. Termín pribudne v <a href={`/${m.slug}/kalendar`}>kalendári mesta</a>, hneď ako ho mesto zverejní.</>}</li>
         <li><strong>Rozpočet na rok 2027 – do 31. decembra.</strong> Prvé veľké rozhodnutie nového zastupiteľstva; návrh musí byť zverejnený aspoň 15 dní vopred. <a href={`/rozpocty-2027#${m.slug}`}>Stav návrhu rozpočtu</a></li>
         <li><strong>Hlasovania.</strong> Ako hlasovali poslanci v predchádzajúcom období, nájdete {maSamospravu(m.slug) || m.slug === 'bratislava' ? <> na stránke <a href={m.slug === 'bratislava' ? '/bratislava/volby#hlasovania' : `/${m.slug}/samosprava#hlasovania`}>{m.slug === 'bratislava' ? 'Voľby a hlasovania' : 'Samospráva'}</a></> : ' na webe mesta'}; hlasovania nového zastupiteľstva pribudnú, keď ich mesto zverejní.</li>
       </ol>
