@@ -3,7 +3,7 @@
   "nazov": "OpenStreetMap",
   "licencia": "ODbL – © prispievatelia OpenStreetMap",
   "url": "https://www.openstreetmap.org/copyright",
-  "stav_osm": "2026-10-25T04:22:34Z"
+  "stav_osm": "2026-11-01T04:40:04Z"
  },
  "kategorie": {
   "lekarne": "Lekárne",
@@ -13,10 +13,10 @@
  },
  "mesto": {
   "lekarne": 233,
-  "ambulancie": 330,
+  "ambulancie": 331,
   "nemocnice": 92,
-  "nabijanie": 180,
-  "nabijacie_miesta": 500,
+  "nabijanie": 181,
+  "nabijacie_miesta": 507,
   "pamiatky": 101,
   "stromy": 30,
   "muzea": 98,
@@ -182,14 +182,14 @@
    "nazov": "Ružinov",
    "obyvatelia": 84233,
    "lekarne": 61,
-   "ambulancie": 104,
+   "ambulancie": 105,
    "nemocnice": 29,
    "nabijanie": 39,
    "nabijacie_miesta": 123,
    "pamiatky": 1,
    "stromy": 2,
    "lekarne_na_10000": 7.2,
-   "ambulancie_na_10000": 12.3
+   "ambulancie_na_10000": 12.5
   },
   {
    "kod_obce": "528595",
@@ -198,8 +198,8 @@
    "lekarne": 45,
    "ambulancie": 77,
    "nemocnice": 15,
-   "nabijanie": 17,
-   "nabijacie_miesta": 49,
+   "nabijanie": 18,
+   "nabijacie_miesta": 56,
    "pamiatky": 65,
    "stromy": 27,
    "lekarne_na_10000": 9.4,
@@ -262,5 +262,5 @@
    "ambulancie_na_10000": 0.0
   }
  ],
- "aktualizovane": "2026-10-25T04:24:23+00:00"
+ "aktualizovane": "2026-11-01T04:41:10+00:00"
 }
