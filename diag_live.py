@@ -1,9 +1,7 @@
-import requests
-B="https://statdata.statistics.sk/public/api/dc"
-for k in ("pr3108rr","om7101rr"):
-    r=requests.get(f"{B}/opendata/cube/dataset/{k}/supported-file-types",timeout=40); print(k,r.status_code,r.text[:300])
-for t in ("CSV","JSON","XLSX"):
-    for l in ("SK","EN"):
-        r=requests.get(f"{B}/opendata/cube/dataset/pr3108rr/download?type={t}&lang={l}",timeout=120); print(t,l,r.status_code,r.content[:80])
-r=requests.get(f"{B}/public/pr3108rr/dimensions",timeout=40); print("dims",r.status_code,r.text[:600])
+import subprocess,sys,json
+subprocess.run([sys.executable,"-m","pip","install","-q","-r","scripts/requirements.txt"])
+p=subprocess.run([sys.executable,"scripts/zber_rozpocty.py"],capture_output=True,text=True,timeout=1200); print(p.stdout[-2500:],p.stderr[-800:])
+d=json.load(open("data/zasadnutia-ustanovujuce-2026.json"))
+for s,v in d["mesta"].items():
+    for x in v[:4]: print("  ",s,x["termin"],x["nazov"][:90],x["url"][:90])
 print("HOTOVO")
