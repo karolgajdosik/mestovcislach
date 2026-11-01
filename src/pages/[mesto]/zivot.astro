@@ -1,6 +1,6 @@
 ---
 // Život v meste: školy, doprava, bezpečnosť, životné prostredie (ovzdušie, odpad, voda), kultúra a bývanie.
-// Zdroje: ŠÚ SR DATAcube (scripts/zber_mesta_temy.py), EEA merania ovzdušia (scripts/zber_ovzdusie_eea.py).
+// Zdroje: ŠÚ SR STATdata (scripts/zber_mesta_temy.py), EEA merania ovzdušia (scripts/zber_ovzdusie_eea.py).
 import Base from '../../layouts/Base.astro';
 import { MESTA, type Mesto } from '../../mesta';
 import { kriminalita, maZivot, ovzdusie, posledny, temy, ua, vlaky, mhd } from '../../lib/temy';
@@ -15,7 +15,7 @@ const fmt = (n: number | null | undefined, k = 0) => (n == null ? '–' : n.toLo
 const graf = (o: object) => JSON.stringify(o);
 const odRoku = (r: Record<string, number>, od = 2010) => Object.fromEntries(Object.entries(r).filter(([y]) => Number(y) >= od).sort());
 
-// --- Školy (DATAcube: MŠ, ZŠ, gymnáziá; mapa škôl: stredné odborné a zoznam stredných škôl)
+// --- Školy (STATdata: MŠ, ZŠ, gymnáziá; mapa škôl: stredné odborné a zoznam stredných škôl)
 const sk = t?.skoly?.[m.slug] ?? {};
 const skRok = (d: string) => Object.keys(sk[d] ?? {}).sort().pop();
 const ms = sk.ms?.[skRok('ms')!], zs = sk.zs?.[skRok('zs')!], gym = sk.gym?.[skRok('gym')!];
@@ -110,7 +110,7 @@ const grafCena = graf({ typ: 'line', labels: Object.keys(cenaM2), jednotka: '€
       <section class="card">
         <h3>Koľko detí chodí do škôl</h3>
         <div class="chart"><canvas class="g-auto" data-graf={grafSkoly} role="img" aria-label={`Počet detí v materských školách, žiakov základných škôl a študentov gymnázií ${m.v} podľa rokov`}></canvas></div>
-        <p class="zdroj">Školský rok začínajúci v danom roku, všetci zriaďovatelia (mesto, cirkev, súkromní). Zdroj: ŠÚ SR, DATAcube sv5001rr–sv5003rr.</p>
+        <p class="zdroj">Školský rok začínajúci v danom roku, všetci zriaďovatelia (mesto, cirkev, súkromní). Zdroj: ŠÚ SR, STATdata sv5001rr–sv5003rr.</p>
       </section>
       {stredne.length > 0 && (
         <section class="card">

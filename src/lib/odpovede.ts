@@ -37,7 +37,7 @@ export function otazkyMesta(slug: string): Odpoved[] {
     out.push({
       otazka: `Koľko obyvateľov má ${m.nazov}?`,
       odpoved: `V meste ${m.nazov} žilo k 31. 12. ${por.rok} ${cele(por.obyvatelia)} obyvateľov s trvalým pobytom.${z != null ? ` Za posledných 10 rokov sa počet ${z >= 0 ? 'zvýšil' : 'znížil'} o ${des(Math.abs(z))} %.` : ''}`,
-      zdroj: 'Štatistický úrad SR (DATAcube)', odkaz: ba ? '/bratislava/obyvatelia' : `/${slug}#obyvatelia`,
+      zdroj: 'Štatistický úrad SR (STATdata)', odkaz: ba ? '/bratislava/obyvatelia' : `/${slug}#obyvatelia`,
     });
   }
   const o = obdobia(slug);

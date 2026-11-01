@@ -36,7 +36,7 @@ if (mesto) {
 const aktualizovane = obyv.aktualizovane
   ? new Date(obyv.aktualizovane).toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric', year: 'numeric' })
   : null;
-const zdrojUrl = 'https://data.statistics.sk/';
+const zdrojUrl = 'https://statdata.statistics.sk/';
 const grafData = mesto
   ? JSON.stringify({ roky, mesto: roky.map((r) => mesto.roky[r]), casti: castiZoradene })
   : '';

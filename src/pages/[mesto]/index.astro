@@ -128,7 +128,7 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
         {profilyMc && <p><a href={`/${m.slug}/mestske-casti`}>Profily mestských častí – vek, vzdelanie, voľby, dostupnosť a mapa →</a></p>}
       </>
     )}
-    <p class="zdroj">Zdroj: ŠÚ SR – DATAcube (om7101rr).</p>
+    <p class="zdroj">Zdroj: ŠÚ SR – STATdata (om7101rr).</p>
   </section>
 
   {Object.keys(sc).length > 0 && (
@@ -210,7 +210,7 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
         <h3>Koľko bytov pribúda</h3>
         <p class="pozn">Dokončené a začaté byty v okres{m.okresy.length > 1 ? 'och' : 'e'} {m.okresy.join(', ')}. Priemer za 10 rokov: {fmt(ja.byty_10r)} dokončených bytov ročne. Rok 2025 je z nového registra a nemusí byť porovnateľný.</p>
         <div class="graf"><canvas id="g-byty" data-rad={JSON.stringify(bytyRoky.map((r) => [r, byty[r].DOKONC_BYT ?? null, byty[r].ZAC_BYT ?? null]))} role="img" aria-label="Dokončené a začaté byty podľa rokov"></canvas></div>
-        <p class="zdroj">Zdroj: ŠÚ SR – DATAcube (st3004rr).</p>
+        <p class="zdroj">Zdroj: ŠÚ SR – STATdata (st3004rr).</p>
       </div>
     )}
   </section>
