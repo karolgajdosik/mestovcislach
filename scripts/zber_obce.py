@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 
 import statdata as sd
 import zber_komunalne as zk
-from spolocne import DATA, spusti, zapis_ak_zmena
+from spolocne import DATA, KOREN, spusti, zapis_ak_zmena
 
 VYSTUP = DATA / "obce"
 OSO = ["https://volbysr.sk/oso/files/OSO2026_SK_xlsx.zip"]
@@ -59,6 +59,12 @@ def volby() -> tuple[dict[str, dict], dict[str, dict]]:
         okres = norm(r.get("názov okresu") or r.get("NOKRES")) or nazov  # Bratislava a Košice: viac okresov → mesto samo
         uzemie[kod] = {"kod": kod, "nazov": nazov, "kraj": norm(r.get("NKRAJ")), "okres": okres,
                        "poslancov_volenych": int(zk.cislo(r.get("počet volených poslancov") or 0)) or None}
+    # chýbajúci kraj (mestá s viacerými okresmi) – podľa iných obcí okresu alebo src/mesta.json; poloha krajských miest z mesta.json
+    okres_kraj = {u["okres"]: u["kraj"] for u in uzemie.values() if u["kraj"]}
+    mesta = {m["nazov"]: m for m in json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8"))}
+    for u in uzemie.values():
+        if not u["kraj"]:
+            u["kraj"] = okres_kraj.get(u["okres"]) or (mesta.get(u["nazov"]) or {}).get("kraj", "")
     po = lambda tab: _skup(t.get(tab, []))  # noqa: E731
     t0a, t05, t0b, t08, t02 = po("tab0a"), po("tab05"), po("tab0b"), po("tab08"), po("tab02b")
     zvol_sta = zk.zvoleni(t, "tab05", lambda r: (zk.kod(r["OBEC"]), zk.kod(r["PC_HL"])))
@@ -206,6 +212,9 @@ def mapa() -> dict:
 
 # ---------------- spojenie ----------------
 
+MESTA_POL = {m["nazov"]: m.get("stred") for m in json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8")) if m.get("stred")}
+
+
 def main() -> int:
     VYSTUP.mkdir(parents=True, exist_ok=True)
     uzemie, vysl = volby()
@@ -235,7 +244,9 @@ def main() -> int:
         pouzite.add(f"{ks}/{os_}/{s_}")
         rad = najdi(obyv, u["okres"], u["nazov"]) or {}
         sc = najdi(scit, u["okres"], u["nazov"]) or {}
-        o = {**u, "slug": s_, "kraj_slug": ks, "okres_slug": os_, "poloha": list(pol[kod]) if kod in pol else None,
+        m_ = MESTA_POL.get(u["nazov"])
+        poloha = list(pol[kod]) if kod in pol else (list(m_) if m_ else None)
+        o = {**u, "slug": s_, "kraj_slug": ks, "okres_slug": os_, "poloha": poloha,
              "obyvatelia": dict(sorted(rad.items())), "scitanie": {k: {kk: round(vv) for kk, vv in sorted(v.items(), key=lambda kv: -kv[1])} for k, v in sc.items()},
              "volby2026": vysl.get(kod)}
         po_krajoch[ks].append(o)
@@ -245,6 +256,8 @@ def main() -> int:
                        "poloha": o["poloha"], "starosta": st["meno"] if st else None})
     bez_obyv = sum(1 for z in zoznam if not z["obyvatelia"])
     print(f"Obce: {len(zoznam)}, bez počtu obyvateľov {bez_obyv}, bez polohy {sum(1 for z in zoznam if not z['poloha'])}")
+    if any(not z["kraj"] for z in zoznam):
+        raise RuntimeError(f"Obce bez kraja: {[z['nazov'] for z in zoznam if not z['kraj']][:10]}")
     if len(zoznam) < 2800 or bez_obyv > 100:
         raise RuntimeError(f"Podozrivý výsledok: {len(zoznam)} obcí, {bez_obyv} bez obyvateľov")
     for ks, obce in po_krajoch.items():
