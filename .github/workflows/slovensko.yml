@@ -8,6 +8,7 @@ on:
   push:
     branches: [main]
     paths:
+      - "scripts/zber_obce.py"
       - "scripts/spolocne.py"
       - "scripts/zber_pamiatky.py"
       - "scripts/zber_skoly_iedu.py"
@@ -67,6 +68,10 @@ jobs:
       - name: Nezamestnanosť v okresoch Bratislavy (ŠÚ SR)
         if: success() || failure()
         run: python scripts/zber_nezamestnanost.py
+
+      - name: Všetky obce SR (voľby 2026, obyvatelia, sčítanie – ŠÚ SR; poloha a mapa – OSM)
+        if: success() || failure()
+        run: python scripts/zber_obce.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()
