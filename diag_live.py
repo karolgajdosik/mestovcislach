@@ -5,7 +5,7 @@ for u in ["https://mestovcislach.sk/nitriansky-kraj/nitra/aleksince/", "https://
     except Exception as e:
         print(u, e); continue
     i = h.find('id="hospodarenie"')
-    print(u, "sekcia:", i >= 0)
+    print(u, "sekcia:", i >= 0, "zmluvy:", "id=\"zmluvy\"" in h, re.search(r"<title>(.*?)<", h).group(1) if "<title>" in h else "")
     if i >= 0:
         t = re.sub(r"<[^>]+>", " ", h[i:i+6000]); print(re.sub(r"\s+", " ", t)[:900])
 print("HOTOVO")
