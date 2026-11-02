@@ -207,8 +207,14 @@ def main() -> int:
     if len(zmluvy) < 10000:
         raise RuntimeError(f"Málo zmlúv obcí ({len(zmluvy)})")
 
+    # tú istú zmluvu často zverejní obec aj partner (napr. ministerstvo pri dotácii) – dve ID v CRZ
     po_obci: dict[str, list] = defaultdict(list)
-    for zid, z in zmluvy.items():
+    videne: set = set()
+    for zid, z in sorted(zmluvy.items()):
+        kluc = (z["k"], z["d"], round(z["s"]), z["i"]) if z["s"] > 0 and z.get("i") else zid
+        if kluc in videne:
+            continue
+        videne.add(kluc)
         po_obci[z["k"]].append((zid, z))
     zapis_ak_zmena(VYSTUP, {
         "od": OD.isoformat(), "do": stav["posledny_den"], "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
