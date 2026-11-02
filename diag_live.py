@@ -1,28 +1,20 @@
-import requests,re,json,io,zipfile,collections
-s=requests.Session(); s.headers["User-Agent"]="mestovcislach.sk"
-# EIA list
-r=s.get("https://www.enviroportal.sk/api/eia_projects",params={"page":1,"itemsPerPage":5},headers={"Accept":"application/json"},timeout=60).json()
-print("EIA meta",r.get("meta")); print(json.dumps(r["data"][0],ensure_ascii=False)[:1500])
-# RPO search variants
-for p in [{"legalForm":"801"},{"legalFormCode":"801"},{"fullName":"Obec Becherov"}]:
-    try:
-        x=s.get("https://api.statistics.sk/rpo/v1/search",params=p,timeout=60); print("RPO",p,x.status_code,x.text[:600])
-    except Exception as e: print("RPO",p,e)
-# CRZ: which zs1 look like obec, one week
-cnt=collections.Counter(); ica={}
-import datetime
-for k in range(7):
-    d=datetime.date(2026,10,19)+datetime.timedelta(days=k)
-    x=s.get(f"https://www.crz.gov.sk/export/{d}.zip",timeout=120)
-    if x.status_code!=200: print(d,x.status_code); continue
-    z=zipfile.ZipFile(io.BytesIO(x.content))
-    for m in z.namelist():
-        xml=z.read(m).decode("utf-8","replace")
-        for b in re.findall(r"<zmluva>(.*?)</zmluva>",xml,re.S):
-            p=dict(re.findall(r"<(\w+)>(.*?)</\1>",re.sub(r"<prilohy>.*?</prilohy>","",b,flags=re.S),re.S))
-            for a,i in (("zs1","ico1"),("zs2","ico")):
-                n=(p.get(a) or "").strip()
-                if re.match(r"(?i)obec\b|mesto\b",n): cnt["obec_"+a]+=1; ica[re.sub(r"\D","",p.get(i,""))]=n[:40]
-print(cnt, "distinct obce ico", len(ica)); print(list(ica.items())[:10])
-print("tags", sorted(p.keys()))
+import sys,json,time; sys.path.insert(0,"scripts")
+import zber_eia_obce as e
+try: e.main()
+except SystemExit: pass
+d=json.load(open("data/obce/eia.json"))["obce"]
+print("eia obci",len(d),"sum",sum(v["spolu"] for v in d.values()),"aktivne",sum(v["aktivne"] for v in d.values()))
+for k in list(d)[:2]: print(k,json.dumps(d[k],ensure_ascii=False)[:400])
+import os; print("eia size",os.path.getsize("data/obce/eia.json"))
+import zber_zmluvy_obce as z
+z.MAX_RPO=80
+zo=z.obce()[:40]
+t=time.time(); ica=z.doplni_ica(zo); print("ico",len(ica),"/",len(zo),round(time.time()-t),"s", [o["nazov"] for o in zo if o["kod"] not in ica])
+# CRZ sample 2 days with these
+from datetime import date
+zm={}; pi={i:k for k,i in ica.items()}
+for dd in (date(2026,10,27),date(2026,10,28)):
+    try: print(dd,z.spracuj_den(dd,pi,zm))
+    except Exception as ex: print(dd,ex)
+print(len(zm), list(zm.values())[:3])
 print("HOTOVO")

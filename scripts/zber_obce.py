@@ -154,15 +154,19 @@ def scitanie() -> dict[tuple, dict]:
 
 def _overpass(dotaz: str) -> dict:
     import requests
+    import time
     chyba = None
-    for u in OVERPASS:
-        try:
-            r = requests.post(u, data={"data": dotaz}, timeout=600, headers={"User-Agent": "mestovcislach.sk"})
-            if r.status_code == 200:
-                return r.json()
-            chyba = f"HTTP {r.status_code}"
-        except Exception as e:  # noqa: BLE001
-            chyba = str(e)
+    for kolo in range(3):  # servery Overpass bývajú preťažené – viac kôl s pauzou
+        for u in OVERPASS:
+            try:
+                r = requests.post(u, data={"data": dotaz}, timeout=600, headers={"User-Agent": "mestovcislach.sk"})
+                if r.status_code == 200:
+                    return r.json()
+                chyba = f"{u}: HTTP {r.status_code}"
+            except Exception as e:  # noqa: BLE001
+                chyba = f"{u}: {e}"
+            print(f"  Overpass: {chyba}")
+        time.sleep(30 * (kolo + 1))
     raise RuntimeError(f"Overpass: {chyba}")
 
 
