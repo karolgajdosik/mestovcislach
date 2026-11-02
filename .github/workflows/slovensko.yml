@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - "scripts/zber_obce.py"
+      - "scripts/zber_eia_obce.py"
       - "scripts/spolocne.py"
       - "scripts/zber_pamiatky.py"
       - "scripts/zber_skoly_iedu.py"
@@ -72,6 +73,10 @@ jobs:
       - name: Všetky obce SR (voľby 2026, obyvatelia, sčítanie – ŠÚ SR; poloha a mapa – OSM)
         if: success() || failure()
         run: python scripts/zber_obce.py
+
+      - name: Zámery EIA/SEA vo všetkých obciach
+        if: success() || failure()
+        run: python scripts/zber_eia_obce.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()

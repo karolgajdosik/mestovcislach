@@ -1,4 +1,4 @@
-name: Zmluvy mestských častí (CRZ)
+name: Zmluvy mestských častí, miest a obcí (CRZ)
 
 # Denné exporty Centrálneho registra zmlúv – prvý beh spracuje všetky dni od 2022 (dlho), ďalšie len nové dni.
 on:
@@ -11,6 +11,7 @@ on:
       - "scripts/zber_zmluvy_mc.py"
       - "scripts/zber_zmluvy_mesta.py"
       - "scripts/zber_rpo.py"
+      - "scripts/zber_zmluvy_obce.py"
       - ".github/workflows/crz.yml"
 
 permissions:
@@ -41,6 +42,10 @@ jobs:
       - name: Zmluvy krajských miest (CRZ)
         if: success() || failure()
         run: python scripts/zber_zmluvy_mesta.py
+
+      - name: Zmluvy všetkých obcí (CRZ)
+        if: success() || failure()
+        run: python scripts/zber_zmluvy_obce.py
 
       - name: Dodávatelia v registri právnických osôb (RPO)
         if: (success() || failure()) && hashFiles('scripts/zber_rpo.py') != ''

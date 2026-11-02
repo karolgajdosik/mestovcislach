@@ -41,3 +41,7 @@ section.card { margin-bottom: 16px; }
 @media (max-width: 520px) { .ob-bary li { grid-template-columns: 1fr auto; } .ob-bary .pruh { grid-column: 1 / -1; grid-row: 2; } }
 .ob-akcie { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .ob-kviz { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 22px; border: 1.5px solid var(--accent); color: var(--accent); font-weight: 700; text-decoration: none; }
+.ob-roky { list-style: none; padding: 0; margin: 4px 0 8px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.ob-zmluvy { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 10px; }
+.ob-zmluvy li { display: grid; gap: 2px; }
+.ob-zmluvy small { color: var(--muted); font-size: 0.85rem; }

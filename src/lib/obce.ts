@@ -172,3 +172,14 @@ export function kvizObce(o: Obec): OtazkaObce[] {
   }
   return out;
 }
+
+// Zmluvy z CRZ (scripts/zber_zmluvy_obce.py) a zámery EIA/SEA (scripts/zber_eia_obce.py) – podľa kódu obce.
+export type ZmluvyObce = { roky: Record<string, [number, number]>; fo: [number, number]; partneri: [string, number, number][]; najvacsie: [string, string, number, string, string][] };
+export type EiaObce = { spolu: number; aktivne: number; zamery: [string, string, string, string, string, string, boolean][] };
+let _zm: { od: string; do: string; obce: Record<string, ZmluvyObce> } | null | undefined;
+let _eia: { web: string; obce: Record<string, EiaObce> } | null | undefined;
+export const zmluvyInfo = () => (_zm === undefined ? (_zm = citaj('data', 'obce', 'zmluvy.json')) : _zm);
+export const zmluvyObce = (kod: string): ZmluvyObce | null => zmluvyInfo()?.obce?.[kod] ?? null;
+export const eiaWeb = () => (_eia === undefined ? (_eia = citaj('data', 'obce', 'eia.json')) : _eia)?.web ?? 'https://www.enviroportal.sk/eia/detail/';
+export const eiaObce = (kod: string): EiaObce | null => { eiaWeb(); return _eia?.obce?.[kod] ?? null; };
+export const KAT_EIA: Record<string, string> = { plan: 'plán / koncepcia', odpady: 'odpady', doprava: 'doprava', energia: 'energetika', priemysel: 'priemysel a sklady', byvanie: 'bývanie a ubytovanie', voda: 'voda', obcianska: 'občianska vybavenosť', ine: 'iné' };

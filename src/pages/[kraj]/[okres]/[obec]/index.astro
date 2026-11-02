@@ -5,7 +5,7 @@ import Base from '../../../../layouts/Base.astro';
 import '../../../../styles/stranka.css';
 import '../../../../styles/obce.css';
 import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
-import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, type Obec } from '../../../../lib/obce';
+import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, type Obec } from '../../../../lib/obce';
 import { skrat } from '../../../../lib/zastupitelstvo';
 
 export function getStaticPaths() {
@@ -58,6 +58,11 @@ const vacsia = jeVacsia(o);
 const maKviz = vacsia && kvizObce(o).length >= 5;
 const u = urlObce(o);
 const idsP = idsPoslancov(v?.poslanci ?? []);
+const zm = zmluvyObce(o.kod);
+const zmInfo = zmluvyInfo();
+const eia = eiaObce(o.kod);
+const eur = (n: number) => n >= 1e6 ? `${des(n / 1e6)} mil. €` : `${fmt(Math.round(n))} €`;
+const datum = (d: string) => d.split('-').reverse().map((x, i) => (i < 2 ? String(Number(x)) : x)).join('. ');
 const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` : ''}${z10 != null ? `, za 10 rokov ${z10 > 0 ? '+' : ''}${des(z10)} %` : ''}${st ? `. Starosta 2026: ${bezTit(st.meno)}` : ''}. Sčítanie 2021, voľby a poslanci.`;
 ---
 <Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis}
@@ -132,6 +137,53 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
         </>
       )}
       <p class="zdroj">Zdroj: Štatistický úrad SR – výsledky komunálnych volieb 24. 10. 2026. Uvádzame len meno, stranu a hlasy.</p>
+    </section>
+  )}
+
+  {zmInfo && (
+    <section class="card" id="zmluvy">
+      <h2>Zmluvy v registri zmlúv</h2>
+      {zm ? (
+        <>
+          <ul class="ob-roky">
+            {Object.entries(zm.roky).map(([r, [n, s]]) => <li><b>{r}</b> {fmt(n)} {n === 1 ? 'zmluva' : n < 5 ? 'zmluvy' : 'zmlúv'} · {eur(s)}</li>)}
+          </ul>
+          {zm.partneri.length > 0 && (
+            <>
+              <h3>Najväčší zmluvní partneri za posledné 2 roky</h3>
+              <div class="ob-obal">
+                <table class="ob-tab">
+                  <thead><tr><th>Partner</th><th class="num">Zmlúv</th><th class="num">Spolu</th></tr></thead>
+                  <tbody>{zm.partneri.map(([n, c, s]) => <tr><td translate="no">{n}</td><td class="num">{fmt(c)}</td><td class="num">{eur(s)}</td></tr>)}</tbody>
+                </table>
+              </div>
+            </>
+          )}
+          {zm.najvacsie.length > 0 && (
+            <>
+              <h3>Najväčšie zmluvy za posledných 12 mesiacov</h3>
+              <ul class="ob-zmluvy">
+                {zm.najvacsie.map(([d, p, s, pr, id]) => <li><a href={`https://www.crz.gov.sk/zmluva/${id}/`} rel="noopener"><b>{eur(s)}</b> <span translate="no">{p}</span></a><small>{datum(d)}{pr ? ` · ${pr}` : ''}</small></li>)}
+              </ul>
+            </>
+          )}
+          {zm.fo[0] > 0 && <p class="pozn">Ďalších {fmt(zm.fo[0])} zmlúv s fyzickými osobami ({eur(zm.fo[1])}) len započítavame, bez mien.</p>}
+        </>
+      ) : (
+        <p>Od roku {zmInfo.od.slice(0, 4)} sme v Centrálnom registri zmlúv nenašli žiadnu zmluvu obce. Obec ich pravdepodobne zverejňuje na vlastnom webe.</p>
+      )}
+      <p class="zdroj">Zdroj: <a href="https://www.crz.gov.sk" rel="noopener">Centrálny register zmlúv</a>, zmluvy od 1. 1. {zmInfo.od.slice(0, 4)} do {datum(zmInfo.do)}. Obce môžu zmluvy zverejňovať aj na vlastnom webe – tu sú len tie z CRZ, vrátane zmlúv zverejnených partnerom (napr. ministerstvom pri dotácii).</p>
+    </section>
+  )}
+
+  {eia && (
+    <section class="card" id="eia">
+      <h2>Čo sa tu stavia a plánuje</h2>
+      <p>V posudzovaní vplyvov na životné prostredie (EIA/SEA) je pri obci {o.nazov} {fmt(eia.spolu)} {eia.spolu === 1 ? 'zámer' : eia.spolu < 5 ? 'zámery' : 'zámerov'}{eia.aktivne ? `, z toho ${fmt(eia.aktivne)} ${eia.aktivne === 1 ? 'prebieha' : 'prebiehajú'}` : ''}.</p>
+      <ul class="ob-zmluvy">
+        {eia.zamery.slice(0, 8).map(([seo, n, stav, zmena, typ, kat, uk]) => <li><a href={`${eiaWeb()}${seo}`} rel="noopener">{n}</a><small>{KAT_EIA[kat] ?? kat} · {typ} · {stav}{zmena ? ` · ${datum(zmena)}` : ''}{uk ? '' : ' · prebieha'}</small></li>)}
+      </ul>
+      <p class="zdroj">Zdroj: Enviroportál MŽP SR / SAŽP – informačný systém EIA/SEA. Zámer sa posudzuje ešte pred stavebným povolením.</p>
     </section>
   )}
 
