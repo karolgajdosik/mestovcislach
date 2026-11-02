@@ -1,41 +1,25 @@
-('Bratislava I-V', 'Bratislava I-V')
-('Bratislavský kraj', 'Okres Bratislava I')
-('Bratislavský kraj', 'Okres Bratislava II')
-('Bratislavský kraj', 'Okres Bratislava III')
-('Bratislavský kraj', 'Okres Bratislava IV')
-('Bratislavský kraj', 'Okres Bratislava V')
-('Okres Bratislava I', 'Bratislava - mestská časť Staré Mesto')
-('Okres Bratislava II', 'Bratislava - mestská časť Podunajské Biskupice')
-('Okres Bratislava II', 'Bratislava - mestská časť Ružinov')
-('Okres Bratislava II', 'Bratislava - mestská časť Vrakuňa')
-('Okres Bratislava III', 'Bratislava - mestská časť Nové Mesto')
-('Okres Bratislava III', 'Bratislava - mestská časť Rača')
-('Okres Bratislava III', 'Bratislava - mestská časť Vajnory')
-('Okres Bratislava IV', 'Bratislava - mestská časť Devín')
-('Okres Bratislava IV', 'Bratislava - mestská časť Devínska Nová Ves')
-('Okres Bratislava IV', 'Bratislava - mestská časť Dúbravka')
-('Okres Bratislava IV', 'Bratislava - mestská časť Karlova Ves')
-('Okres Bratislava IV', 'Bratislava - mestská časť Lamač')
-('Okres Bratislava IV', 'Bratislava - mestská časť Záhorská Bystrica')
-('Okres Bratislava V', 'Bratislava - mestská časť Jarovce')
-('Okres Bratislava V', 'Bratislava - mestská časť Petržalka')
-('Okres Bratislava V', 'Bratislava - mestská časť Rusovce')
-('Okres Bratislava V', 'Bratislava - mestská časť Čunovo')
-('Okres Bytča', 'Jablonové, okres Bytča')
-('Okres Dolný Kubín', 'Sedliacka Dubová')
-('Okres Humenné', 'Rohožník, okres Humenné')
-('Okres Lučenec', 'Píla, okres Lučenec')
-('Okres Malacky', 'Jablonové, okres Malacky')
-('Okres Malacky', 'Rohožník, okres Malacky')
-('Okres Myjava', 'Chvojnica, okres Myjava')
-('Okres Partizánske', 'Hradište, okres Partizánske')
-('Okres Pezinok', 'Dubová, okres Pezinok')
-('Okres Pezinok', 'Píla, okres Pezinok')
-('Okres Poltár', 'Hradište, okres Poltár')
-('Okres Prievidza', 'Chvojnica, okres Prievidza')
-('Okres Ružomberok', 'Valaská Dubová')
-('Okres Senica', 'Hradište pod Vrátnom')
-('Okres Skalica', 'Radošovce, okres Skalica')
-('Okres Svidník', 'Dubová, okres Svidník')
-('Okres Trebišov', 'Zemplínske Hradište')
+0 178
+Voľby 2026: 2887 obcí, výsledky 2881
+OSM: poloha 2927 obcí
+OSM: kraje 8
+OSM: okresy 79
+Obce: 2887, bez počtu obyvateľov 0, bez polohy 2
+
+
+bez obyv: []
+bez polohy: [('Bratislava', 'Bratislava'), ('Košice', 'Košice')]
+príklad {'kod': '518816', 'nazov': 'Stará Huta', 'kraj': 'Banskobystrický kraj', 'okres': 'Detva', 'url': '/banskobystricky-kraj/detva/stara-huta', 'obyvatelia': 302, 'poloha': [48.4716, 19.3351], 'starosta': 'Ľubica Gáboríková'}
+{"kod": "507032", "nazov": "Hlohovec", "kraj": "Trnavský kraj", "okres": "Hlohovec", "poslancov_volenych": 17, "slug": "hlohovec", "kraj_slug": "trnavsky-kraj", "okres_slug": "hlohovec", "poloha": [48.4244, 17.7984], "scitanie": {"vek": {"Spolu": 20556, "Od 15 do 64 rokov": 13744, "65 rokov alebo viac": 4025, "14 rokov alebo menej": 2787, "Neznáme": 0}, "vzdelanie": {"Spolu": 20556, "Stredné s maturitou": 6604, "Stredné bez maturity": 4358, "Vysokoškolské": 3564, "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 2787, "Základné": 2211, "Nezistené": 996, "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 36}, "narodnost": {"Spolu": 20556, "Slovenská": 18954, "Nezistená": 1363, "Česká": 79, "Iná": 76, "Maďarská": 29, "Rómska": 25, "Poľská": 9, "Ukrajinská": 8, "Ruská": 5, "Nemecká": 4, "Rusínska": 4}, "nabozenstvo": {"Spolu": 20556, "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 12476, "bez náboženského vyznania": 5358, "nezistené": 1706, "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 449, "ostatné": 415, "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 89, "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 36, "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 27}}, "volby2026": {"ucast": {"zapisani": 16379, "volili": 6914, "ucast_pct": 42.21}, "starosta": [{"meno": "Mgr. MPH Ivan Baranovič", "strany": "nezávislý kandidát", "hlasy": 3396, "podiel": 50.53, "zvoleny": true}, {"meno": "PaedDr. LL.M. Denisa Králičová", "strany": "nezávislý kandidát", "hlasy": 1669, "podiel": 24.83, "zvoleny": false}, {"meno": "Mgr. Lucia Loskotová", "strany": "nezávislý kandidát"
+trenciansky-kraj.json 807255
+presovsky-kraj.json 1859563
+banskobystricky-kraj.json 1443951
+bratislavsky-kraj.json 225958
+kosicky-kraj.json 1267149
+zoznam.json 600738
+nitriansky-kraj.json 1043503
+.json 18968
+zilinsky-kraj.json 935891
+mapa.json 123928
+trnavsky-kraj.json 751602
+mapa 8 79 ['Bratislavský kraj', 'Trnavský kraj', 'Trenčiansky kraj', 'Nitriansky kraj', 'Žilinský kraj', 'Banskobystrický kraj', 'Prešovský kraj', 'Košický kraj']
 HOTOVO
