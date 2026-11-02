@@ -46,37 +46,47 @@ def obce() -> list[dict]:
     return zoz["obce"] if isinstance(zoz, dict) else zoz
 
 
-def doplni_ica(zoznam: list[dict]) -> dict[str, str]:
-    ica: dict[str, str] = json.loads(ICO_SUBOR.read_text(encoding="utf-8")) if ICO_SUBOR.exists() else {}
-    chyba = [o for o in zoznam if o["kod"] not in ica]
-    dotazov = 0
-    for o in chyba:
-        if dotazov >= MAX_RPO:
-            break
-        nazov = re.sub(r"\s*\(.*\)$", "", o["nazov"])
-        for predpona in ("Obec", "Mesto"):
-            dotazov += 1
-            try:
-                r = s.get(RPO, params={"fullName": f"{predpona} {nazov}"}, timeout=60)
-            except Exception as e:  # noqa: BLE001
-                print("RPO:", e)
-                time.sleep(5)
+def najdi_ico(o: dict) -> str | None:
+    nazov = re.sub(r"\s*\(.*\)$", "", o["nazov"])
+    varianty = [nazov] + ([re.sub(r"\s*-\s*", "-", nazov)] if " - " in nazov else [])
+    for predpona in ("Obec", "Mesto"):
+        for n in varianty:
+            meno = f"{predpona} {n}"
+            for pokus in range(3):
+                try:
+                    r = s.get(RPO, params={"fullName": meno}, timeout=60)
+                    break
+                except Exception:  # noqa: BLE001
+                    time.sleep(5 * (pokus + 1))
+            else:
                 continue
-            time.sleep(0.15)
             if r.status_code != 200:
                 continue
             for v in r.json().get("results") or []:
                 kody = {str((a.get("municipality") or {}).get("code") or "")[-6:] for a in v.get("addresses") or []}
-                mena = {(n.get("value") or "").strip().lower() for n in v.get("fullNames") or []}
-                if o["kod"] in kody and f"{predpona} {nazov}".lower() in mena and not v.get("termination"):
+                mena = {(x.get("value") or "").strip().lower() for x in v.get("fullNames") or []}
+                if o["kod"] in kody and meno.lower() in mena and not v.get("termination"):
                     i = ico((v.get("identifiers") or [{}])[-1].get("value", ""))
                     if i:
-                        ica[o["kod"]] = i
-                        break
-            if o["kod"] in ica:
-                break
+                        return i
+    return None
+
+
+def doplni_ica(zoznam: list[dict]) -> dict[str, str]:
+    """IČO obcí z RPO (4 súbežné dotazy – jeden trvá aj niekoľko sekúnd); priebežne ukladá."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    ica: dict[str, str] = json.loads(ICO_SUBOR.read_text(encoding="utf-8")) if ICO_SUBOR.exists() else {}
+    chyba = [o for o in zoznam if o["kod"] not in ica][:MAX_RPO]
+    with ThreadPoolExecutor(4) as ex:
+        for n, (o, i) in enumerate(zip(chyba, ex.map(najdi_ico, chyba)), 1):
+            if i:
+                ica[o["kod"]] = i
+            if n % 200 == 0:
+                ICO_SUBOR.write_text(json.dumps(dict(sorted(ica.items())), ensure_ascii=False, indent=0), encoding="utf-8")
+                print(f"  RPO {n}/{len(chyba)}")
     ICO_SUBOR.write_text(json.dumps(dict(sorted(ica.items())), ensure_ascii=False, indent=0), encoding="utf-8")
-    print(f"IČO obcí: {len(ica)} z {len(zoznam)} (dotazov RPO {dotazov})")
+    print(f"IČO obcí: {len(ica)} z {len(zoznam)}; bez IČO napr.: {[o['nazov'] for o in zoznam if o['kod'] not in ica][:10]}")
     return ica
 
 
@@ -146,12 +156,12 @@ def suhrn(zz: list[tuple[str, dict]]) -> dict:
     for _, z in zz:
         roky[z["d"][:4]][0] += 1
         roky[z["d"][:4]][1] += z["s"]
-        if "p" not in z:
+        if "p" not in z or not z.get("i"):  # fyzická osoba alebo partner bez IČO – len započítame
             fo[0] += 1
             fo[1] += z["s"]
             continue
         if z["d"] >= od_partneri:
-            k = z.get("i") or z["p"].lower()
+            k = z["i"]
             partneri[k]["nazov"] = z["p"]
             partneri[k]["pocet"] += 1
             partneri[k]["suma"] += z["s"]
@@ -160,7 +170,7 @@ def suhrn(zz: list[tuple[str, dict]]) -> dict:
         "fo": [fo[0], round(fo[1])],
         "partneri": [[v["nazov"], v["pocet"], round(v["suma"])] for v in sorted(partneri.values(), key=lambda v: -v["suma"])[:6]],
         "najvacsie": [[z["d"], z["p"], round(z["s"]), z.get("pr") or "", zid]
-                      for zid, z in sorted((x for x in zz if "p" in x[1] and x[1]["d"] >= hranica), key=lambda x: -x[1]["s"])[:5] if z["s"] > 0],
+                      for zid, z in sorted((x for x in zz if x[1].get("i") and "p" in x[1] and x[1]["d"] >= hranica), key=lambda x: -x[1]["s"])[:5] if z["s"] > 0],
     }
 
 
@@ -175,13 +185,31 @@ def main() -> int:
     stav, zmluvy = nacitaj()
     d = date.fromisoformat(stav["posledny_den"]) + timedelta(days=1) if stav["posledny_den"] else OD
     dnes, chyby, spracovane, dni = date.today(), 0, 0, 0
+    zakazane_dni = 0  # 403 na viacerých dňoch po sebe = CRZ nás dočasne blokuje
     while d < dnes and dni < MAX_DNI:
         try:
             spracovane += spracuj_den(d, podla_ico, zmluvy)
             stav["posledny_den"] = d.isoformat()
+            zakazane_dni = 0
         except Exception as e:  # noqa: BLE001
             chyby += 1
             print(f"::warning title=CRZ obce::{d}: {e}")
+            if "403" in str(e):
+                zakazane_dni += 1
+                if zakazane_dni >= 3:
+                    break
+                # niektoré dni CRZ trvalo vracia 403 (napr. 2026-05-08) – ak nasledujúci deň ide, deň preskočíme
+                try:
+                    spracovane += spracuj_den(d + timedelta(days=1), podla_ico, zmluvy)
+                except Exception:  # noqa: BLE001
+                    time.sleep(30)
+                    continue
+                stav.setdefault("preskocene", []).append(d.isoformat())
+                stav["posledny_den"] = (d + timedelta(days=1)).isoformat()
+                d += timedelta(days=2)
+                dni += 2
+                zakazane_dni = 0
+                continue
             if chyby > 30:
                 break
             time.sleep(10 * min(chyby, 6))
@@ -197,8 +225,14 @@ def main() -> int:
     if len(zmluvy) < 10000:
         raise RuntimeError(f"Málo zmlúv obcí ({len(zmluvy)})")
 
+    # tú istú zmluvu často zverejní obec aj partner (napr. ministerstvo pri dotácii) – dve ID v CRZ
     po_obci: dict[str, list] = defaultdict(list)
-    for zid, z in zmluvy.items():
+    videne: set = set()
+    for zid, z in sorted(zmluvy.items()):
+        kluc = (z["k"], z["d"], round(z["s"]), z["i"]) if z["s"] > 0 and z.get("i") else zid
+        if kluc in videne:
+            continue
+        videne.add(kluc)
         po_obci[z["k"]].append((zid, z))
     zapis_ak_zmena(VYSTUP, {
         "od": OD.isoformat(), "do": stav["posledny_den"], "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
