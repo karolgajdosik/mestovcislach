@@ -1,8 +1,11 @@
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 2, in <module>
-    import zber_eia_obce as e
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_eia_obce.py", line 18, in <module>
-    from spolocne import DATA, bez_diakritiky, s, spusti, zapis_ak_zmena
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 19, in <module>
-    from shapely.geometry import Point, shape
-ModuleNotFoundError: No module named 'shapely'
+EIA: 187 strán, 18662 zámerov, bez priradenej obce 642, obcí so zámermi 2304
+eia obci 2304 sum 18020 aktivne 991
+500011 {"spolu": 221, "aktivne": 14, "zamery": [["obytny-subor-dostupne-byvanie-nitra-1", "Obytný súbor Dostupné bývanie Nitra", "Oznámenie o zmene", "2026-11-02", "EIA", "byvanie", false], ["-uzemny-plan-zony-pod-sudolskou-nitra-", "„Územný plán zóny Pod Šúdolskou, Nitra“", "Rozhodnutie zo zisťovacieho konania", "2026-10-22", "SEA", "plan", true], ["rozsirenie-technologickej-infrastruktury-logistiky-bat
+500020 {"spolu": 12, "aktivne": 0, "zamery": [["uzemny-plan-obce-velke-zaluzie-zmeny-doplnky-1", "Územný plán obce Veľké Zálužie Zmeny a doplnky 1", "Akcia je ukončená v procese SEA", "2025-04-01", "SEA", "plan", true], ["uprava-odpadov-pre-zabezpecenie-cirkularneho-hospodarenia", "Úprava odpadov pre zabezpečenie cirkulárneho hospodárenia", "Akcia je ukončená v procese EIA", "2025-02-14", "EIA", "odpady"
+eia size 2102831
+IČO obcí: 39 z 40 (dotazov RPO 42)
+ico 39 / 40 213 s ['Sebedín - Bečov']
+2026-10-27 6
+2026-10-28 20
+26 [{'d': '2026-10-20', 'k': '508675', 's': 0.0, 'p': 'Z+M servis a.s.', 'i': '44195591'}, {'d': '2026-10-20', 'k': '508586', 's': 55.0, 'p': 'AGRO - PONIKY, s.r.o.', 'i': '36618802'}, {'d': '2026-10-27', 'k': '509019', 's': 36.0}]
+HOTOVO
