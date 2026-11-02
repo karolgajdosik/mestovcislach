@@ -179,7 +179,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
   {eia && (
     <section class="card" id="eia">
       <h2>Čo sa tu stavia a plánuje</h2>
-      <p>V posudzovaní vplyvov na životné prostredie (EIA/SEA) je pri obci {o.nazov} {fmt(eia.spolu)} {eia.spolu === 1 ? 'zámer' : eia.spolu < 5 ? 'zámery' : 'zámerov'}{eia.aktivne ? `, z toho ${fmt(eia.aktivne)} ${eia.aktivne === 1 ? 'prebieha' : 'prebiehajú'}` : ''}.</p>
+      <p><b>{fmt(eia.spolu)}</b> {eia.spolu === 1 ? 'zámer' : eia.spolu < 5 ? 'zámery' : 'zámerov'} v posudzovaní vplyvov na životné prostredie (EIA/SEA){eia.aktivne ? `, z toho ${fmt(eia.aktivne)} ešte ${eia.aktivne > 1 && eia.aktivne < 5 ? 'prebiehajú' : 'prebieha'}` : ''}.</p>
       <ul class="ob-zmluvy">
         {eia.zamery.slice(0, 8).map(([seo, n, stav, zmena, typ, kat, uk]) => <li><a href={`${eiaWeb()}${seo}`} rel="noopener">{n}</a><small>{KAT_EIA[kat] ?? kat} · {typ} · {stav}{zmena ? ` · ${datum(zmena)}` : ''}{uk ? '' : ' · prebieha'}</small></li>)}
       </ul>
