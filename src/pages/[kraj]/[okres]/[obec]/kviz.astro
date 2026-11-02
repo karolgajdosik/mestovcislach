@@ -1,0 +1,77 @@
+---
+// Kvíz o obci (obce od 5 000 obyvateľov) – otázky z údajov obce a okresu, odpovede sa zamiešajú v prehliadači.
+import Base from '../../../../layouts/Base.astro';
+import '../../../../styles/stranka.css';
+import '../../../../styles/obce.css';
+import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
+import { vacsieObce, kvizObce, urlObce, type Obec } from '../../../../lib/obce';
+
+export function getStaticPaths() {
+  return vacsieObce().map((o) => ({ params: { kraj: o.kraj_slug, okres: o.okres_slug, obec: o.slug }, props: { o } })).filter(({ props }) => kvizObce(props.o).length >= 5);
+}
+const { o } = Astro.props as { o: Obec };
+const otazky = kvizObce(o);
+const u = urlObce(o);
+---
+<Base title={`Kvíz: poznáte ${o.nazov}? – mestovcislach.sk`} description={`${otazky.length} otázok o meste ${o.nazov}: obyvatelia, sčítanie, voľby 2026 a okolie. Otestujte sa a pošlite výsledok známym.`}
+  drobceky={[[o.kraj, `/${o.kraj_slug}`], [`Okres ${o.okres}`, `/${o.kraj_slug}/${o.okres_slug}`], [o.nazov, u], ['Kvíz', `${u}/kviz`]]}>
+  <section class="hero">
+    <p class="ob-cesta"><a href={u}>{o.nazov}</a></p>
+    <h1>Poznáte <span translate="no">{o.nazov}</span>?</h1>
+    <p class="lead">{otazky.length} otázok z otvorených dát – koľko trafíte?</p>
+  </section>
+  <section class="card kv" id="kv" data-q={JSON.stringify(otazky)} aria-live="polite">
+    <p class="pozn" id="kv-poc"></p>
+    <h2 id="kv-q"></h2>
+    <div class="kv-m" id="kv-m"></div>
+    <p id="kv-v" hidden></p>
+    <button type="button" class="kv-d" id="kv-d" hidden>Ďalej</button>
+    <div id="kv-k" hidden>
+      <p class="kv-body"><b id="kv-b"></b> z {otazky.length}</p>
+      <p><PoslatZnamemu text={`Kvíz: poznáte ${o.nazov}?`} popis="Vyzvať známych" /></p>
+      <p class="pozn"><a href={u}>Späť na {o.nazov} v číslach</a> · <a href="/sutaz">Súťaž miest</a></p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  type Q = { q: string; moznosti: string[]; spravna: number; vysv: string };
+  const el = document.getElementById('kv')!;
+  const Q: Q[] = JSON.parse(el.dataset.q!);
+  const $ = (i: string) => document.getElementById(i)!;
+  const hx = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  let i = 0, body = 0;
+  function zobraz() {
+    const q = Q[i];
+    $('kv-poc').textContent = `Otázka ${i + 1} z ${Q.length}`;
+    $('kv-q').textContent = q.q;
+    const por = q.moznosti.map((m, j) => ({ m, j })).sort(() => Math.random() - 0.5);
+    $('kv-m').innerHTML = por.map((x) => `<button type="button" data-j="${x.j}">${hx(x.m)}</button>`).join('');
+    $('kv-v').hidden = true; $('kv-d').hidden = true;
+    $('kv-m').querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.addEventListener('click', () => {
+      const ok = Number(b.dataset.j) === q.spravna;
+      if (ok) body++;
+      $('kv-m').querySelectorAll<HTMLButtonElement>('button').forEach((x) => { x.disabled = true; x.classList.toggle('ok', Number(x.dataset.j) === q.spravna); x.classList.toggle('zle', x === b && !ok); });
+      $('kv-v').hidden = false; $('kv-v').innerHTML = `<strong>${ok ? 'Správne!' : 'Tentoraz nie.'}</strong> ${hx(q.vysv)}`;
+      const d = $('kv-d') as HTMLButtonElement; d.hidden = false; d.textContent = i + 1 < Q.length ? 'Ďalšia otázka' : 'Výsledok'; d.focus();
+    }));
+  }
+  $('kv-d').addEventListener('click', () => {
+    i++;
+    if (i < Q.length) return zobraz();
+    ['kv-poc', 'kv-q', 'kv-m', 'kv-v', 'kv-d'].forEach((x) => ($(x).hidden = true));
+    $('kv-k').hidden = false; $('kv-b').textContent = String(body);
+  });
+  zobraz();
+</script>
+
+<style>
+  .kv-m { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 12px 0; }
+  @media (max-width: 480px) { .kv-m { grid-template-columns: 1fr; } }
+  .kv-m :global(button) { min-height: 48px; padding: 10px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; text-align: left; }
+  .kv-m :global(button:not(:disabled):hover) { border-color: var(--accent); }
+  .kv-m :global(button.ok) { border-color: #16a34a; background: color-mix(in srgb, #16a34a 12%, var(--bg)); }
+  .kv-m :global(button.zle) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--bg)); }
+  .kv-d { min-height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: var(--accent); color: var(--na-akcente, #fff); font: inherit; font-weight: 700; cursor: pointer; }
+  .kv-body { font-size: 1.2rem; } .kv-body b { font-size: 2.6rem; }
+</style>

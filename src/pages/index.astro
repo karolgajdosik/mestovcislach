@@ -6,6 +6,7 @@ import { MESTA } from '../mesta';
 import { foto } from '../lib/fotky';
 import VolebnaNoc from '../components/VolebnaNoc.astro';
 import SutazPas from '../components/SutazPas.astro';
+import NajdiObec from '../components/NajdiObec.astro';
 import MojPrehlad from '../components/MojPrehlad.astro';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -22,13 +23,16 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
   <section class="hero">
     <p class="kicker">Otvorené dáta</p>
     <h1>Slovenské mestá v číslach</h1>
-    <p class="lead">Obyvatelia, voľby, rozpočet, zmluvy, doprava, výstavba aj živé údaje – prehľadne, so zdrojmi a bez registrácie. Vyberte si mesto.</p>
+    <p class="lead">Obyvatelia, voľby, rozpočet, zmluvy, doprava, výstavba aj živé údaje – prehľadne, so zdrojmi a bez registrácie. Všetky obce a mestá Slovenska, krajské mestá najpodrobnejšie.</p>
   </section>
 
+  <NajdiObec />
   <MojPrehlad />
   <VolebnaNoc />
   <SutazPas />
 
+  <h2 class="mesta-nadpis">Krajské mestá – najviac údajov</h2>
+  <p class="mesta-pozn">Doprava, rozpočet, zmluvy, mapy, mestské časti, živé údaje a ďalšie.</p>
   <ul class="mesta">
     {aktivne.map((m) => (
       <li>
@@ -64,6 +68,8 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
 </Base>
 
 <style>
+  .mesta-nadpis { font-size: 1.3rem; margin: 8px 0 2px; }
+  .mesta-pozn { color: var(--muted); font-size: 0.9rem; margin: 0 0 12px; }
   .hero { padding: 48px 0 24px; }
   .kicker { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
   h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); line-height: 1.05; letter-spacing: -0.035em; margin: 8px 0 12px; }

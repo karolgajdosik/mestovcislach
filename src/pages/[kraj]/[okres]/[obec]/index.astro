@@ -1,0 +1,166 @@
+---
+// Profil obce: obyvatelia a vývoj, sčítanie 2021 v porovnaní s okresom, komunálne voľby 2026 (starosta/primátor, poslanci),
+// počasie teraz a obce v okolí. Krajské mestá sa negenerujú – majú vlastné stránky (/trnava …).
+import Base from '../../../../layouts/Base.astro';
+import '../../../../styles/stranka.css';
+import '../../../../styles/obce.css';
+import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
+import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, type Obec } from '../../../../lib/obce';
+import { skrat } from '../../../../lib/zastupitelstvo';
+
+export function getStaticPaths() {
+  return kraje().flatMap((k) => obceKraja(k.slug).filter((o) => !webMesta(o.nazov))
+    .map((o) => ({ params: { kraj: o.kraj_slug, okres: o.okres_slug, obec: o.slug }, props: { o } })));
+}
+const { o } = Astro.props as { o: Obec };
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const des = (n: number, d = 1) => n.toLocaleString('sk-SK', { minimumFractionDigits: d, maximumFractionDigits: d });
+const bezTit = (m: string) => m.split(/[\s,]+/).filter((s) => s && !s.includes('.') && !/^(PhD|MBA|LL|MPH|MPA|DiS|CSc|ArtD|MSc)$/i.test(s)).join(' ');
+const p = posledne(o.obyvatelia);
+const z10 = zmena10(o.obyvatelia);
+const v = o.volby2026;
+const st = v?.starosta.find((k) => k.zvoleny);
+const titulStarostu = (p?.[1] ?? 0) >= 5000 ? 'Primátor/starosta' : 'Starosta';
+// okres – súčty pre porovnanie sčítania
+const okresObce = obceKraja(o.kraj_slug).filter((x) => x.okres_slug === o.okres_slug);
+const sucet = (tema: string) => {
+  const s: Record<string, number> = {};
+  for (const x of okresObce) for (const [k, val] of Object.entries(x.scitanie?.[tema] ?? {})) s[k] = (s[k] ?? 0) + val;
+  return s;
+};
+const pct = (t: Record<string, number> | undefined, f: (k: string) => boolean) => {
+  if (!t) return null;
+  const spolu = t.Spolu || 0;
+  if (!spolu) return null;
+  return (100 * Object.entries(t).filter(([k]) => k !== 'Spolu' && f(k)).reduce((a, [, x]) => a + x, 0)) / spolu;
+};
+const UK: [string, string, (k: string) => boolean][] = [
+  ['Deti do 14 rokov', 'vek', (k) => k === '14 rokov alebo menej'],
+  ['Ľudia nad 65 rokov', 'vek', (k) => k === '65 rokov alebo viac'],
+  ['Vysokoškolské vzdelanie', 'vzdelanie', (k) => /vysokoškolsk/i.test(k)],
+];
+const sklad = UK.map(([n, t, f]) => ({ n, obec: pct(o.scitanie?.[t], f), okres: pct(sucet(t), f) })).filter((x) => x.obec != null);
+const top = (tema: string, n = 3) => Object.entries(o.scitanie?.[tema] ?? {}).filter(([k]) => k !== 'Spolu' && !/^(nezisten|Nezisten|iná|Iná|ostatné)/.test(k)).slice(0, n);
+const spolu = o.scitanie?.vek?.Spolu ?? 0;
+const kratkeNab = (k: string) => k.split(' / ').pop()!.replace(/ v Slovenskej republike| na Slovensku/g, '');
+// graf obyvateľov (SVG)
+const rad = Object.entries(o.obyvatelia).sort(([a], [b]) => a.localeCompare(b));
+const W = 600, H = 160, P = 24;
+const minV = Math.min(...rad.map(([, x]) => x)), maxV = Math.max(...rad.map(([, x]) => x));
+const sx = (i: number) => P + (i * (W - 2 * P)) / Math.max(1, rad.length - 1);
+const sy = (x: number) => H - P - ((x - minV) / Math.max(1, maxV - minV)) * (H - 2 * P);
+const ciara = rad.map(([, x], i) => `${i ? 'L' : 'M'}${sx(i).toFixed(1)},${sy(x).toFixed(1)}`).join('');
+// obce v okolí
+const okolie = o.poloha ? obceKraja(o.kraj_slug)
+  .filter((x) => x.kod !== o.kod && x.poloha).map((x) => ({ x, d: km(o.poloha!, x.poloha!) })).sort((a, b) => a.d - b.d).slice(0, 8) : [];
+const obvody = v && v.obvodov > 1;
+const vacsia = jeVacsia(o);
+const maKviz = vacsia && kvizObce(o).length >= 5;
+const u = urlObce(o);
+const idsP = idsPoslancov(v?.poslanci ?? []);
+const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` : ''}${z10 != null ? `, za 10 rokov ${z10 > 0 ? '+' : ''}${des(z10)} %` : ''}${st ? `. Starosta 2026: ${bezTit(st.meno)}` : ''}. Sčítanie 2021, voľby a poslanci.`;
+---
+<Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis}
+  drobceky={[[o.kraj, `/${o.kraj_slug}`], [`Okres ${o.okres}`, `/${o.kraj_slug}/${o.okres_slug}`], [o.nazov, `/${o.kraj_slug}/${o.okres_slug}/${o.slug}`]]}>
+  <section class="hero">
+    <p class="ob-cesta"><a href="/">Slovensko</a> › <a href={`/${o.kraj_slug}`}>{o.kraj}</a> › <a href={`/${o.kraj_slug}/${o.okres_slug}`}>okres {o.okres}</a></p>
+    <h1 translate="no">{o.nazov}</h1>
+    <p class="lead">Obyvatelia, sčítanie 2021 a komunálne voľby 2026{st ? <> – {titulStarostu.toLowerCase()} <strong translate="no">{bezTit(st.meno)}</strong></> : ''}.</p>
+    <p class="ob-akcie"><PoslatZnamemu text={`${o.nazov} v číslach`} />{maKviz && <a class="ob-kviz" href={`${u}/kviz`}>Kvíz: poznáte {o.nazov}?</a>}</p>
+  </section>
+
+  <ul class="ob-cisla">
+    {p && <li><b>{fmt(p[1])}</b><span>obyvateľov k 31. 12. {p[0]}</span></li>}
+    {z10 != null && <li><b>{z10 > 0 ? '+' : z10 < 0 ? '−' : ''}{des(Math.abs(z10))} %</b><span>zmena počtu obyvateľov za 10 rokov</span></li>}
+    {v?.ucast && <li><b>{des(v.ucast.ucast_pct)} %</b><span>účasť v komunálnych voľbách 2026</span></li>}
+    {v && v.poslanci.length > 0 && <li><b>{v.poslanci.length}</b><span>poslancov obecného zastupiteľstva</span></li>}
+  </ul>
+
+  <div class="ob-dva">
+    {rad.length > 2 && (
+      <section class="card">
+        <h2>Počet obyvateľov {rad[0][0]} – {rad[rad.length - 1][0]}</h2>
+        <svg class="ob-graf" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Počet obyvateľov: ${rad[0][0]} ${fmt(rad[0][1])}, ${rad[rad.length - 1][0]} ${fmt(rad[rad.length - 1][1])}`}>
+          <path class="plocha" d={`${ciara}L${sx(rad.length - 1)},${H - P}L${sx(0)},${H - P}Z`} />
+          <path class="ciara" d={ciara} />
+          <text x={P} y={H - 6}>{rad[0][0]}</text><text x={W - P} y={H - 6} text-anchor="end">{rad[rad.length - 1][0]}</text>
+          <text x={P} y={14}>{fmt(maxV)}</text><text x={P} y={H - P - 4}>{fmt(minV)}</text>
+        </svg>
+        <p class="zdroj">Trvale bývajúci obyvatelia k 31. 12. Zdroj: ŠÚ SR – STATdata (om7101rr).</p>
+      </section>
+    )}
+
+    {sklad.length > 0 && (
+      <section class="card">
+        <h2>Kto tu býva</h2>
+        <p class="pozn">Sčítanie 2021 ({fmt(spolu)} obyvateľov); v zátvorke priemer okresu {o.okres}.</p>
+        <ul class="ob-bary">
+          {sklad.map((x) => <li><span>{x.n}</span><span class="pruh" aria-hidden="true"><i style={`width:${Math.min(100, x.obec! * 2)}%`}></i></span><span class="num"><strong>{des(x.obec!)} %</strong> <small>({x.okres != null ? `${des(x.okres)} %` : '–'})</small></span></li>)}
+        </ul>
+        {top('narodnost').length > 0 && <p class="pozn">Národnosť: {top('narodnost').map(([k, x]) => `${k} ${des((100 * x) / spolu)} %`).join(', ')}.</p>}
+        {top('nabozenstvo').length > 0 && <p class="pozn">Náboženstvo: {top('nabozenstvo').map(([k, x]) => `${kratkeNab(k)} ${des((100 * x) / spolu)} %`).join(', ')}.</p>}
+      </section>
+    )}
+  </div>
+
+  {v && (
+    <section class="card" id="volby">
+      <h2>Komunálne voľby 2026</h2>
+      {v.starosta.length > 0 && (
+        <>
+          <h3>Voľba {titulStarostu === 'Starosta' ? 'starostu' : 'primátora / starostu'}</h3>
+          <ul class="ob-bary">
+            {v.starosta.map((k) => (
+              <li><span class={k.zvoleny ? 'zv' : ''} translate="no">{k.meno}<small>{/^nezávisl/i.test(k.strany) ? 'nezávislý kandidát' : skrat(k.strany)}{k.zvoleny ? ' · zvolený(-á)' : ''}</small></span>
+                <span class="pruh" aria-hidden="true"><i style={`width:${k.podiel}%`}></i></span>
+                <span class="num">{des(k.podiel)} % <small>{fmt(k.hlasy)} hlasov</small></span></li>
+            ))}
+          </ul>
+          {v.kandidatov === 1 && <p class="pozn">Kandidoval jediný kandidát.</p>}
+        </>
+      )}
+      {v.poslanci.length > 0 && (
+        <>
+          <h3>Zvolení poslanci</h3>
+          <div class="ob-obal">
+            <table class="ob-tab">
+              <thead><tr><th>Meno</th><th>Strana</th>{obvody && <th class="num">Obvod</th>}<th class="num">Hlasy</th></tr></thead>
+              <tbody>{v.poslanci.map((x, i) => <tr><td translate="no">{vacsia ? <a href={`${u}/poslanci/${idsP[i]}`}>{x.meno}</a> : x.meno}</td><td translate="no">{/^nezávisl/i.test(x.strany) ? 'nezávislý' : skrat(x.strany)}</td>{obvody && <td class="num">{x.obvod_c}</td>}<td class="num">{fmt(x.hlasy)}</td></tr>)}</tbody>
+            </table>
+          </div>
+          {v.mandaty.length > 1 && <p class="pozn">Mandáty: {v.mandaty.map((m) => `${/^nezávisl/i.test(m.strany) ? 'nezávislí' : skrat(m.strany)} ${m.mandaty}`).join(', ')}.</p>}
+        </>
+      )}
+      <p class="zdroj">Zdroj: Štatistický úrad SR – výsledky komunálnych volieb 24. 10. 2026. Uvádzame len meno, stranu a hlasy.</p>
+    </section>
+  )}
+
+  {o.poloha && (
+    <section class="card" id="pocasie" data-poloha={JSON.stringify(o.poloha)}>
+      <h2>Počasie teraz</h2>
+      <p id="po-text" aria-live="polite">Načítavam…</p>
+      <p class="zdroj">Open-Meteo (CC BY 4.0).</p>
+    </section>
+  )}
+
+  {okolie.length > 0 && (
+    <section class="card">
+      <h2>Obce v okolí</h2>
+      <ul class="ob-zoznam">
+        {okolie.map(({ x, d }) => <li><a href={odkaz({ nazov: x.nazov, url: `/${x.kraj_slug}/${x.okres_slug}/${x.slug}` })}><span translate="no">{x.nazov}</span><small>{des(d)} km · {fmt(posledne(x.obyvatelia)?.[1] ?? 0)} ob.</small></a></li>)}
+      </ul>
+    </section>
+  )}
+  <p class="zdroj">Pozri aj <a href={`/${o.kraj_slug}/${o.okres_slug}`}>všetky obce okresu {o.okres}</a> a <a href={`/${o.kraj_slug}`}>{o.kraj}</a>.</p>
+</Base>
+
+<script>
+  import { pocasie } from '../../../../scripts/zive';
+  const sek = document.getElementById('pocasie');
+  if (sek) {
+    const [lat, lon] = JSON.parse(sek.dataset.poloha!) as [number, number];
+    pocasie([lat, lon]).then((p) => {
+      document.getElementById('po-text')!.innerHTML = `<strong>${p.teplota} °C</strong>, ${p.stav}. Dnes ${p.min} až ${p.max} °C, vietor ${p.vietor} km/h.`;
+    }).catch(() => { document.getElementById('po-text')!.textContent = 'Predpoveď sa nepodarilo načítať.'; });
+  }
+</script>

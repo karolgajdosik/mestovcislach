@@ -7,6 +7,7 @@ import { maMapu, maSamospravu } from '../../lib/mapa';
 import { maZivot } from '../../lib/temy';
 import { castiMesta } from '../../lib/casti-mesta';
 import { odchody } from '../../lib/odchody';
+import { kraje, odkaz } from '../../lib/obce';
 
 const nacitaj = (subor: string, verejne = false) => {
   const p = path.join(process.cwd(), verejne ? 'public/data' : 'data', subor);
@@ -107,6 +108,14 @@ export async function GET() {
   polozky.push(['Stránky', 'Sledovať dodávateľa miest', 'zmluvy firiem s mestami (CRZ) a e-mail pri novej zmluve', '/dodavatelia', 'dodávateľ firma ičo zmluvy crz sledovať upozornenie e-mail']);
   polozky.push(['Stránky', 'Rozpočty miest 2027', 'návrhy rozpočtov krajských miest, termíny schvaľovania', '/rozpocty-2027', 'rozpočet 2027 návrh rozpočtu mesto financie zastupiteľstvo provizórium']);
   polozky.push(['Stránky', 'Voľby 2026 v číslach', 'noví primátori, obmena zastupiteľstiev, strany, ženy a vek poslancov', '/volby-2026', 'komunálne voľby 2026 výsledky primátor poslanci zastupiteľstvo strany nezávislí ženy vek']);
+  // všetky obce, okresy a kraje SR (data/obce)
+  for (const k of kraje()) {
+    polozky.push(['Kraje a okresy', k.nazov, `${k.obci} obcí, ${k.obyvatelia.toLocaleString('sk-SK')} obyvateľov`, `/${k.slug}`, 'kraj obce']);
+    for (const o of k.okresy) {
+      polozky.push(['Kraje a okresy', `Okres ${o.nazov}`, `${k.nazov} · ${o.obci} obcí`, `/${k.slug}/${o.slug}`, 'okres obce']);
+      for (const x of o.obce) polozky.push(['Obce a mestá', x.nazov, `okres ${o.nazov}${x.obyvatelia ? ` · ${x.obyvatelia.toLocaleString('sk-SK')} obyvateľov` : ''}`, odkaz(x), 'obec mesto starosta']);
+    }
+  }
   polozky.push(['Stránky', 'Súťaž miest – kvíz týždňa', 'hrajte za svoje mesto, poradie miest', '/sutaz', 'súťaž kvíz týždňa hra mestá poradie']);
   polozky.push(['Stránky', 'Súboj miest – denná otázka', 'ktoré mesto má viac? hra so sériou', '/suboj', 'súboj hra otázka dňa tip kvíz mestá']);
   polozky.push(['Stránky', 'Porovnaj dve mestá – kde by som chcel bývať', 'dve mestá vedľa seba, skóre a obrázok na zdieľanie', '/porovnaj', 'porovnaj porovnanie dve mestá kde bývať súboj vs']);

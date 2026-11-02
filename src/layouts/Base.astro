@@ -17,8 +17,10 @@ interface Props {
   /** štruktúrované údaje schema.org (JSON-LD) pre vyhľadávače */
   jsonld?: Record<string, any> | Record<string, any>[];
   noindex?: boolean;
+  /** vlastná drobčeková navigácia [názov, cesta] bez úvodu (napr. kraj › okres › obec) */
+  drobceky?: [string, string][];
 }
-const { title: celyTitulok, description: celyPopis = 'Otvorené dáta o slovenských mestách a obciach – prehľadne a so zdrojmi.', jsonld, noindex = false } = Astro.props;
+const { title: celyTitulok, description: celyPopis = 'Otvorené dáta o slovenských mestách a obciach – prehľadne a so zdrojmi.', jsonld, noindex = false, drobceky: vlastneDrobceky } = Astro.props;
 // popis vo výsledkoch vyhľadávania má ~155 znakov – dlhší skrátime na hranici slova
 const description = celyPopis.length <= 160 ? celyPopis : celyPopis.slice(0, 155).replace(/[\s,;:–-]+\S*$/, '') + '…';
 // vyhľadávače zobrazia ~60 znakov – dlhý prvý diel titulku (napr. názov datasetu) skrátime, prípona ostane
@@ -115,7 +117,9 @@ const adresa = new URL(Astro.url.pathname, Astro.site ?? 'https://mestovcislach.
 const WEB = 'https://mestovcislach.sk';
 const nazovStranky = title.replace(/ – mestovcislach\.sk$/, '').split(' – ')[0];
 const drobceky: [string, string][] = [['mestovčíslach.sk', `${WEB}/`]];
-if (spolocna) {
+if (vlastneDrobceky) {
+  for (const [n, c] of vlastneDrobceky) drobceky.push([n, `${WEB}${c.endsWith('/') ? c : `${c}/`}`]);
+} else if (spolocna) {
   if (casti.length) drobceky.push([nazovStranky, adresa.href]);
 } else if (casti[0] === mesto.slug) {
   drobceky.push([mesto.nazov, `${WEB}/${mesto.slug}/`]);

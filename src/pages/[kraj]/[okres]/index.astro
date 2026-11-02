@@ -1,0 +1,102 @@
+---
+// Okres: všetky obce okresu v zoraditeľnej tabuľke (obyvatelia, zmena za 10 rokov, starosta 2026, účasť) a mapa obcí.
+import Base from '../../../layouts/Base.astro';
+import '../../../styles/stranka.css';
+import '../../../styles/obce.css';
+import { kraje, obceKraja, okresyMapy, odkaz, posledne, zmena10, bod, type Okres } from '../../../lib/obce';
+
+export function getStaticPaths() {
+  return kraje().flatMap((k) => k.okresy.map((o) => ({ params: { kraj: k.slug, okres: o.slug }, props: { o } })));
+}
+const { o } = Astro.props as { o: Okres };
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const des = (n: number) => n.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
+const profily = obceKraja(o.kraj_slug).filter((x) => x.okres_slug === o.slug);
+const riadky = profily.map((x) => {
+  const st = x.volby2026?.starosta.find((k) => k.zvoleny);
+  return { x, url: odkaz({ nazov: x.nazov, url: `/${x.kraj_slug}/${x.okres_slug}/${x.slug}` }), obyv: posledne(x.obyvatelia)?.[1] ?? null, zmena: zmena10(x.obyvatelia), st, ucast: x.volby2026?.ucast?.ucast_pct ?? null };
+}).sort((a, b) => (b.obyv ?? 0) - (a.obyv ?? 0));
+const rok = posledne(profily[0]?.obyvatelia ?? {})?.[0];
+const mapa = okresyMapy().find((m) => m.slug === o.slug && m.kraj_slug === o.kraj_slug);
+const body = mapa ? [...mapa.d.matchAll(/[ML]([\d.]+),([\d.]+)/g)].map((m) => [Number(m[1]), Number(m[2])]) : [];
+const vb = body.length ? (() => { const xs = body.map((b) => b[0]), ys = body.map((b) => b[1]); const p = 6; return `${Math.min(...xs) - p} ${Math.min(...ys) - p} ${Math.max(...xs) - Math.min(...xs) + 2 * p} ${Math.max(...ys) - Math.min(...ys) + 2 * p}`; })() : '';
+const sirkaVb = body.length ? Math.max(...body.map((b) => b[0])) - Math.min(...body.map((b) => b[0])) : 100;
+const mierka = sirkaVb / 110; // polomer bodov v jednotkách výrezu
+const ucasti = riadky.filter((r) => r.ucast != null);
+const ucastOkres = ucasti.length ? ucasti.reduce((a, r) => a + (r.x.volby2026!.ucast!.volili), 0) / ucasti.reduce((a, r) => a + r.x.volby2026!.ucast!.zapisani, 0) * 100 : null;
+---
+<Base title={`Okres ${o.nazov} – obce v číslach – mestovcislach.sk`} description={`Okres ${o.nazov} (${o.kraj}): ${o.obci} obcí, ${fmt(o.obyvatelia)} obyvateľov. Počet obyvateľov, vývoj za 10 rokov, starostovia zvolení v roku 2026 a účasť vo voľbách.`}
+  drobceky={[[o.kraj, `/${o.kraj_slug}`], [`Okres ${o.nazov}`, `/${o.kraj_slug}/${o.slug}`]]}>
+  <section class="hero">
+    <p class="ob-cesta"><a href="/">Slovensko</a> › <a href={`/${o.kraj_slug}`}>{o.kraj}</a></p>
+    <h1>Okres {o.nazov}</h1>
+    <p class="lead">{o.obci} {o.obci === 1 ? 'obec' : o.obci < 5 ? 'obce' : 'obcí'} – počet obyvateľov, vývoj za 10 rokov, starostovia a účasť v komunálnych voľbách 2026.</p>
+  </section>
+
+  <ul class="ob-cisla">
+    <li><b>{fmt(o.obyvatelia)}</b><span>obyvateľov{rok ? ` (${rok})` : ''}</span></li>
+    <li><b>{o.obci}</b><span>obcí a miest</span></li>
+    {ucastOkres != null && <li><b>{des(ucastOkres)} %</b><span>účasť v komunálnych voľbách 2026</span></li>}
+  </ul>
+
+  {mapa && (
+    <section class="card">
+      <h2>Obce na mape</h2>
+      <svg class="ob-mapa" viewBox={vb} role="group" aria-label={`Mapa obcí okresu ${o.nazov}`}>
+        <g class="tlmene" aria-hidden="true"><path d={mapa.d} /></g>
+        {riadky.filter((r) => r.x.poloha).map((r) => {
+          const [cx, cy] = bod(r.x.poloha![1], r.x.poloha![0]);
+          const rr = mierka * Math.max(2.2, Math.min(9, Math.sqrt((r.obyv ?? 100) / 500)));
+          return <a href={r.url} aria-label={r.x.nazov}><circle cx={cx} cy={cy} r={rr} style={`stroke-width:${mierka}px`}><title>{r.x.nazov}{r.obyv ? ` – ${fmt(r.obyv)} obyvateľov` : ''}</title></circle></a>;
+        })}
+      </svg>
+      <p class="zdroj">Veľkosť bodu podľa počtu obyvateľov. Hranice a polohy © prispievatelia OpenStreetMap (ODbL).</p>
+    </section>
+  )}
+
+  <section class="card">
+    <h2>Všetky obce okresu</h2>
+    <div class="ob-filter"><input type="search" id="ob-q" placeholder="Hľadať obec alebo starostu…" aria-label="Hľadať obec" /></div>
+    <div class="ob-obal">
+      <table class="ob-tab" id="ob-tab">
+        <thead><tr>
+          <th><button type="button" data-k="n">Obec</button></th>
+          <th class="num" aria-sort="descending"><button type="button" data-k="o">Obyvatelia</button></th>
+          <th class="num"><button type="button" data-k="z">Za 10 rokov</button></th>
+          <th>Starosta/primátor 2026</th>
+          <th class="num"><button type="button" data-k="u">Účasť</button></th>
+        </tr></thead>
+        <tbody>
+          {riadky.map((r) => (
+            <tr data-n={r.x.nazov} data-o={r.obyv ?? -1} data-z={r.zmena ?? -999} data-u={r.ucast ?? -1} data-h={`${r.x.nazov} ${r.st?.meno ?? ''}`.toLowerCase()}>
+              <td><a href={r.url} translate="no">{r.x.nazov}</a></td>
+              <td class="num">{r.obyv != null ? fmt(r.obyv) : '–'}</td>
+              <td class="num">{r.zmena != null ? `${r.zmena > 0 ? '+' : r.zmena < 0 ? '−' : ''}${des(Math.abs(r.zmena))} %` : '–'}</td>
+              <td translate="no">{r.st ? <>{r.st.meno} <small>{r.st.podiel != null ? `${des(r.st.podiel)} %` : ''}</small></> : '–'}</td>
+              <td class="num">{r.ucast != null ? `${des(r.ucast)} %` : '–'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <p class="zdroj">Zdroje: Štatistický úrad SR – STATdata (obyvatelia k 31. 12.), výsledky komunálnych volieb 2026 (volbysr.sk). Uvádzame len meno, stranu a hlasy zvolených.</p>
+</Base>
+
+<script>
+  const tab = document.getElementById('ob-tab') as HTMLTableElement | null;
+  if (tab) {
+    const tb = tab.tBodies[0];
+    const rows = [...tb.rows];
+    let kluc = 'o', zost = -1;
+    tab.querySelectorAll<HTMLButtonElement>('th button').forEach((b) => b.addEventListener('click', () => {
+      const k = b.dataset.k!;
+      zost = k === kluc ? -zost : k === 'n' ? 1 : -1; kluc = k;
+      tab.querySelectorAll('th').forEach((x) => x.removeAttribute('aria-sort'));
+      b.parentElement!.setAttribute('aria-sort', zost > 0 ? 'ascending' : 'descending');
+      rows.sort((a, c) => (k === 'n' ? a.dataset.n!.localeCompare(c.dataset.n!, 'sk') : Number(a.dataset[k]) - Number(c.dataset[k])) * zost).forEach((r) => tb.append(r));
+    }));
+    const q = document.getElementById('ob-q') as HTMLInputElement;
+    q.addEventListener('input', () => { const v = q.value.trim().toLowerCase(); rows.forEach((r) => (r.hidden = !!v && !r.dataset.h!.includes(v))); });
+  }
+</script>

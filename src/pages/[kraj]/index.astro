@@ -1,0 +1,69 @@
+---
+// Kraj: mapa okresov, okresy s počtom obyvateľov a obcí, najväčšie obce (data/obce/, scripts/zber_obce.py).
+import Base from '../../layouts/Base.astro';
+import '../../styles/stranka.css';
+import '../../styles/obce.css';
+import { kraje, okresyMapy, krajeMapy, odkaz, SIRKA, VYSKA, webMesta, type Kraj } from '../../lib/obce';
+
+export function getStaticPaths() {
+  return kraje().map((k) => ({ params: { kraj: k.slug }, props: { k } }));
+}
+const { k } = Astro.props as { k: Kraj };
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const okresy = okresyMapy().filter((o) => o.kraj_slug === k.slug);
+const ostatne = krajeMapy().filter((x) => x.slug !== k.slug);
+// výrez mapy na kraj
+const body = okresy.flatMap((o) => [...o.d.matchAll(/[ML]([\d.]+),([\d.]+)/g)].map((m) => [Number(m[1]), Number(m[2])]));
+const [x0, x1] = body.length ? [Math.min(...body.map((b) => b[0])), Math.max(...body.map((b) => b[0]))] : [0, SIRKA];
+const [y0, y1] = body.length ? [Math.min(...body.map((b) => b[1])), Math.max(...body.map((b) => b[1]))] : [0, VYSKA];
+const okraj = 12;
+const vb = `${x0 - okraj} ${y0 - okraj} ${x1 - x0 + 2 * okraj} ${y1 - y0 + 2 * okraj}`;
+const pismo = Math.max(5, (x1 - x0) / 32); // veľkosť textu v jednotkách výrezu
+const stredy = okresy.map((o) => {
+  const b = [...o.d.matchAll(/[ML]([\d.]+),([\d.]+)/g)].map((m) => [Number(m[1]), Number(m[2])]);
+  return { ...o, x: b.reduce((a, p) => a + p[0], 0) / b.length, y: b.reduce((a, p) => a + p[1], 0) / b.length };
+});
+const najvacsie = k.okresy.flatMap((o) => o.obce).filter((o) => o.obyvatelia).sort((a, b) => b.obyvatelia! - a.obyvatelia!).slice(0, 12);
+const krajske = najvacsie.find((o) => webMesta(o.nazov));
+---
+<Base title={`${k.nazov} – obce a mestá v číslach – mestovcislach.sk`} description={`${k.nazov}: ${k.okresy.length} okresov a ${k.obci} obcí s ${fmt(k.obyvatelia)} obyvateľmi. Obyvatelia, sčítanie 2021 a komunálne voľby 2026 v každej obci.`}
+  drobceky={[[k.nazov, `/${k.slug}`]]}>
+  <section class="hero">
+    <p class="ob-cesta"><a href="/">Slovensko</a></p>
+    <h1>{k.nazov}</h1>
+    <p class="lead">Všetky obce a mestá kraja – počet obyvateľov, sčítanie 2021 a komunálne voľby 2026.{krajske && <> Najviac údajov má krajské mesto <a href={webMesta(krajske.nazov)!} translate="no">{krajske.nazov}</a>.</>}</p>
+  </section>
+
+  <ul class="ob-cisla">
+    <li><b>{fmt(k.obyvatelia)}</b><span>obyvateľov</span></li>
+    <li><b>{k.obci}</b><span>obcí a miest</span></li>
+    <li><b>{k.okresy.length}</b><span>okresov</span></li>
+  </ul>
+
+  {okresy.length > 0 && (
+    <section class="card">
+      <h2>Okresy na mape</h2>
+      <svg class="ob-mapa" viewBox={vb} role="group" aria-label={`Mapa okresov – ${k.nazov}`}>
+        <g class="tlmene" aria-hidden="true">{ostatne.map((x) => <path d={x.d} />)}</g>
+        {okresy.map((o) => <a href={`/${k.slug}/${o.slug}`} aria-label={`Okres ${o.nazov}`}><path d={o.d}><title>Okres {o.nazov}</title></path></a>)}
+        {stredy.map((o) => <text x={o.x} y={o.y} text-anchor="middle" aria-hidden="true" style={`font-size:${pismo}px;stroke-width:${pismo / 5}px`}>{o.nazov}</text>)}
+      </svg>
+      <p class="zdroj">Hranice © prispievatelia OpenStreetMap (ODbL).</p>
+    </section>
+  )}
+
+  <section class="card">
+    <h2>Okresy</h2>
+    <ul class="ob-zoznam">
+      {k.okresy.map((o) => <li><a href={`/${k.slug}/${o.slug}`}><span>{o.nazov}</span><small>{fmt(o.obyvatelia)} ob. · {o.obci} obcí</small></a></li>)}
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Najväčšie obce a mestá</h2>
+    <ul class="ob-zoznam">
+      {najvacsie.map((o) => <li><a href={odkaz(o)}><span translate="no">{o.nazov}</span><small>{fmt(o.obyvatelia!)}</small></a></li>)}
+    </ul>
+  </section>
+  <p class="zdroj">Zdroje: Štatistický úrad SR – STATdata (obyvatelia k 31. 12., sčítanie 2021), výsledky komunálnych volieb 2026 (volbysr.sk).</p>
+</Base>

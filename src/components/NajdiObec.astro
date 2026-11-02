@@ -1,0 +1,122 @@
+---
+// Úvodný filter: vyhľadávanie obce (návrhy pri písaní), výber kraj → okres → obec a mapa krajov.
+// Zoznam obcí sa načíta až pri použití (/data/obce.json).
+import { kraje, krajeMapy, SIRKA, VYSKA } from '../lib/obce';
+const k = kraje();
+const mapa = krajeMapy();
+const stredy = mapa.map((x) => {
+  const b = [...x.d.matchAll(/[ML]([\d.]+),([\d.]+)/g)].map((m) => [Number(m[1]), Number(m[2])]);
+  return { ...x, cx: b.reduce((a, p) => a + p[0], 0) / b.length, cy: b.reduce((a, p) => a + p[1], 0) / b.length };
+});
+const kratko = (n: string) => n.replace(' kraj', '');
+---
+{k.length > 0 && (
+  <section class="no card" aria-labelledby="no-h">
+    <div class="no-hladaj">
+      <h2 id="no-h">Nájdite svoju obec alebo mesto</h2>
+      <p class="no-pozn">{k.reduce((a, x) => a + x.obci, 0).toLocaleString('sk-SK')} obcí a miest Slovenska – obyvatelia, sčítanie, voľby 2026 a starostovia.</p>
+      <div class="no-pole" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="no-navrhy">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="no-q" type="search" autocomplete="off" placeholder="Napíšte názov obce…" aria-label="Názov obce alebo mesta" aria-autocomplete="list" aria-controls="no-navrhy" />
+      </div>
+      <ul id="no-navrhy" class="no-navrhy" role="listbox" hidden></ul>
+      <div class="no-vyber">
+        <label>Kraj<select id="no-kraj"><option value="">— vyberte —</option>{k.map((x, i) => <option value={i}>{x.nazov}</option>)}</select></label>
+        <label>Okres<select id="no-okres" disabled><option value="">—</option></select></label>
+        <label>Obec<select id="no-obec" disabled><option value="">—</option></select></label>
+      </div>
+    </div>
+    {mapa.length === 8 && (
+      <div class="no-mapa">
+        <svg viewBox={`0 0 ${SIRKA} ${VYSKA}`} role="group" aria-label="Mapa krajov Slovenska">
+          {mapa.map((x) => <a href={`/${x.slug}`} aria-label={x.nazov}><path d={x.d}><title>{x.nazov}</title></path></a>)}
+          {stredy.map((x) => <text x={x.cx} y={x.cy} text-anchor="middle" aria-hidden="true">{kratko(x.nazov)}</text>)}
+        </svg>
+        <p class="no-pozn">Kliknite na kraj – okresy a všetky obce.</p>
+      </div>
+    )}
+  </section>
+)}
+
+<script>
+  type Data = { kraje: [string, string][]; okresy: [number, string, string][]; obce: [string, number, string, number][] };
+  let data: Promise<Data> | null = null;
+  const nacitaj = () => (data ??= fetch('/data/obce.json').then((r) => r.json()));
+  const q = document.getElementById('no-q') as HTMLInputElement | null;
+  const nav = document.getElementById('no-navrhy') as HTMLUListElement | null;
+  const hx = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const bez = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  if (q && nav) {
+    let aktivny = -1;
+    q.addEventListener('focus', () => { nacitaj(); }, { once: true });
+    q.addEventListener('input', async () => {
+      const d = await nacitaj();
+      const v = bez(q.value.trim());
+      aktivny = -1;
+      if (v.length < 2) { nav.hidden = true; q.parentElement!.setAttribute('aria-expanded', 'false'); return; }
+      const vys = d.obce.filter((o) => bez(o[0]).includes(v))
+        .sort((a, b) => Number(!bez(a[0]).startsWith(v)) - Number(!bez(b[0]).startsWith(v)) || b[3] - a[3]).slice(0, 8);
+      nav.innerHTML = vys.length ? vys.map((o, i) => `<li role="option" id="no-o${i}"><a href="${o[2]}"><strong>${hx(o[0])}</strong> <small>okres ${hx(d.okresy[o[1]][1])} · ${o[3].toLocaleString('sk-SK')} ob.</small></a></li>`).join('')
+        : '<li class="no-nic">Nenašli sme – skúste iný zápis.</li>';
+      nav.hidden = false; q.parentElement!.setAttribute('aria-expanded', 'true');
+    });
+    q.addEventListener('keydown', (e) => {
+      const li = [...nav.querySelectorAll<HTMLLIElement>('li[role=option]')];
+      if (!li.length) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        aktivny = (aktivny + (e.key === 'ArrowDown' ? 1 : -1) + li.length) % li.length;
+        li.forEach((x, i) => x.classList.toggle('akt', i === aktivny));
+        q.setAttribute('aria-activedescendant', li[aktivny].id);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        (li[Math.max(0, aktivny)].querySelector('a') as HTMLAnchorElement).click();
+      } else if (e.key === 'Escape') { nav.hidden = true; }
+    });
+    document.addEventListener('click', (e) => { if (!(e.target as Element).closest('.no-hladaj')) nav.hidden = true; });
+  }
+  const sk = document.getElementById('no-kraj') as HTMLSelectElement | null;
+  const so = document.getElementById('no-okres') as HTMLSelectElement | null;
+  const sb = document.getElementById('no-obec') as HTMLSelectElement | null;
+  if (sk && so && sb) {
+    sk.addEventListener('change', async () => {
+      const d = await nacitaj();
+      const ki = Number(sk.value);
+      so.innerHTML = '<option value="">— vyberte okres —</option>' + d.okresy.map((o, i) => [o, i] as const).filter(([o]) => sk.value !== '' && o[0] === ki).map(([o, i]) => `<option value="${i}">${hx(o[1])}</option>`).join('');
+      so.disabled = sk.value === ''; sb.disabled = true; sb.innerHTML = '<option value="">—</option>';
+    });
+    so.addEventListener('change', async () => {
+      const d = await nacitaj();
+      const oi = Number(so.value);
+      sb.innerHTML = `<option value="">— vyberte obec —</option><option value="${d.okresy[oi][2]}">Celý okres ${hx(d.okresy[oi][1])}</option>` + d.obce.filter((o) => so.value !== '' && o[1] === oi).sort((a, b) => a[0].localeCompare(b[0], 'sk')).map((o) => `<option value="${o[2]}">${hx(o[0])}</option>`).join('');
+      sb.disabled = so.value === '';
+    });
+    sb.addEventListener('change', () => { if (sb.value) location.href = sb.value; });
+  }
+</script>
+
+<style>
+  .no { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 20px 28px; align-items: center; margin: 0 0 24px; }
+  @media (max-width: 860px) { .no { grid-template-columns: 1fr; } }
+  .no h2 { margin: 0 0 4px; font-size: 1.35rem; }
+  .no-pozn { color: var(--muted); font-size: 0.86rem; margin: 0 0 10px; }
+  .no-hladaj { position: relative; }
+  .no-pole { display: flex; align-items: center; gap: 8px; padding: 0 14px; min-height: 50px; border: 2px solid var(--accent); border-radius: 14px; background: var(--bg); }
+  .no-pole svg { width: 20px; height: 20px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; flex-shrink: 0; }
+  .no-pole input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 1.05rem; padding: 12px 0; outline: none; }
+  .no-pole:focus-within { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+  .no-navrhy { position: absolute; z-index: 20; left: 0; right: 0; margin: 6px 0 0; padding: 6px; list-style: none; background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 10px 30px rgb(0 0 0 / 0.12); }
+  .no-navrhy a { display: block; padding: 8px 10px; border-radius: 8px; color: var(--text); text-decoration: none; }
+  .no-navrhy a:hover, .no-navrhy .akt a { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .no-navrhy small { color: var(--muted); }
+  .no-nic { padding: 8px 10px; color: var(--muted); }
+  .no-vyber { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+  @media (max-width: 520px) { .no-vyber { grid-template-columns: 1fr; } }
+  .no-vyber label { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+  .no-vyber select { min-height: 42px; padding: 0 8px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); font: inherit; font-weight: 400; }
+  .no-mapa svg { width: 100%; height: auto; display: block; }
+  .no-mapa path { fill: color-mix(in srgb, var(--accent) 12%, var(--card)); stroke: var(--card); stroke-width: 2; transition: fill 0.15s; }
+  .no-mapa a:hover path, .no-mapa a:focus path { fill: color-mix(in srgb, var(--accent) 50%, var(--card)); }
+  .no-mapa a:focus { outline: none; }
+  .no-mapa text { font-size: 19px; font-weight: 700; fill: var(--text); paint-order: stroke; stroke: var(--card); stroke-width: 4px; pointer-events: none; }
+</style>

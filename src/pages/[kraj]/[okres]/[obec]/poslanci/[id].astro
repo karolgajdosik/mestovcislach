@@ -1,0 +1,51 @@
+---
+// Poslanec obecného/mestského zastupiteľstva 2026 – 2030 (obce od 5 000 obyvateľov): hlasy, obvod, poradie.
+// Len verejné výsledky volieb (meno, strana, hlasy) – žiadne kontakty.
+import Base from '../../../../../layouts/Base.astro';
+import '../../../../../styles/stranka.css';
+import '../../../../../styles/obce.css';
+import { vacsieObce, idsPoslancov, urlObce, type Obec } from '../../../../../lib/obce';
+import { skrat } from '../../../../../lib/zastupitelstvo';
+
+export function getStaticPaths() {
+  return vacsieObce().flatMap((o) => {
+    const pos = o.volby2026?.poslanci ?? [];
+    const ids = idsPoslancov(pos);
+    return pos.map((p, i) => ({ params: { kraj: o.kraj_slug, okres: o.okres_slug, obec: o.slug, id: ids[i] }, props: { o, p } }));
+  });
+}
+const { o, p } = Astro.props as { o: Obec; p: NonNullable<Obec['volby2026']>['poslanci'][number] };
+const fmt = (n: number) => n.toLocaleString('sk-SK');
+const vsetci = o.volby2026!.poslanci;
+const obvody = o.volby2026!.obvodov > 1;
+const vObvode = vsetci.filter((x) => x.obvod_c === p.obvod_c).sort((a, b) => b.hlasy - a.hlasy);
+const poradie = (obvody ? vObvode : [...vsetci].sort((a, b) => b.hlasy - a.hlasy)).indexOf(p) + 1;
+const kratke = p.meno.split(/[\s,]+/).filter((s) => s && !s.includes('.') && !/^(PhD|MBA|LL|MPH|MPA|DiS|CSc|ArtD|MSc|et)$/i.test(s)).join(' ');
+const ids = idsPoslancov(vsetci);
+const idOf = (x: typeof p) => ids[vsetci.indexOf(x)];
+const obv = obvody ? ` (obvod č. ${p.obvod_c})` : '';
+// menovci v tom istom zastupiteľstve – rozlíšime počtom hlasov
+const menovec = vsetci.filter((x) => idsPoslancov([x])[0] === idsPoslancov([p])[0]).length > 1;
+const obvM = `${obv}${menovec ? ` – ${fmt(p.hlasy)} hlasov` : ''}`;
+const strana = /^nezávisl/i.test(p.strany) ? 'nezávislý kandidát' : p.strany;
+const u = urlObce(o);
+---
+<Base title={`${kratke} – poslanec ${o.nazov}${obvM} 2026–2030 – mestovcislach.sk`} description={`${kratke} – poslanec(-kyňa) zastupiteľstva ${o.nazov}${obvM}, okres ${o.okres}, 2026–2030: ${strana}, ${fmt(p.hlasy)} hlasov${obvody ? `, obvod č. ${p.obvod_c}` : ''}.`}
+  drobceky={[[o.kraj, `/${o.kraj_slug}`], [`Okres ${o.okres}`, `/${o.kraj_slug}/${o.okres_slug}`], [o.nazov, u], [kratke, `${u}/poslanci/${Astro.params.id}`]]}>
+  <section class="hero">
+    <p class="ob-cesta"><a href="/">Slovensko</a> › <a href={`/${o.kraj_slug}`}>{o.kraj}</a> › <a href={`/${o.kraj_slug}/${o.okres_slug}`}>okres {o.okres}</a> › <a href={u}>{o.nazov}</a></p>
+    <h1 translate="no">{p.meno}</h1>
+    <p class="lead">Poslanec(-kyňa) zastupiteľstva <span translate="no">{o.nazov}</span> 2026 – 2030 · <span translate="no">{strana}</span></p>
+  </section>
+  <ul class="ob-cisla">
+    <li><b>{fmt(p.hlasy)}</b><span>hlasov vo voľbách 2026</span></li>
+    <li><b>{poradie}.</b><span>{obvody ? `najviac hlasov v obvode č. ${p.obvod_c} (${vObvode.length} poslancov)` : `najviac hlasov z ${vsetci.length} poslancov`}</span></li>
+  </ul>
+  <section class="card">
+    <h2>{obvody ? `Ďalší poslanci z obvodu č. ${p.obvod_c}` : 'Ďalší poslanci'}</h2>
+    <ul class="ob-zoznam">
+      {(obvody ? vObvode : vsetci).filter((x) => x !== p).map((x) => <li><a href={`${u}/poslanci/${idOf(x)}`}><span translate="no">{x.meno}</span><small>{fmt(x.hlasy)}</small></a></li>)}
+    </ul>
+  </section>
+  <p class="zdroj">Zdroj: Štatistický úrad SR – výsledky komunálnych volieb 24. 10. 2026. Uvádzame len meno, stranu a hlasy; kontakty zverejňuje obec. <a href={`${u}#volby`}>Všetky výsledky volieb – {o.nazov}</a></p>
+</Base>
