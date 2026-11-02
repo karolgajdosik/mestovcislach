@@ -56,7 +56,8 @@ def volby() -> tuple[dict[str, dict], dict[str, dict]]:
         kod, nazov = zk.kod(r["OBEC"]), norm(r.get("NOBEC"))
         if not kod or je_mc(nazov):
             continue
-        uzemie[kod] = {"kod": kod, "nazov": nazov, "kraj": norm(r.get("NKRAJ")), "okres": norm(r.get("názov okresu") or r.get("NOKRES")),
+        okres = norm(r.get("názov okresu") or r.get("NOKRES")) or nazov  # Bratislava a Košice: viac okresov → mesto samo
+        uzemie[kod] = {"kod": kod, "nazov": nazov, "kraj": norm(r.get("NKRAJ")), "okres": okres,
                        "poslancov_volenych": int(zk.cislo(r.get("počet volených poslancov") or 0)) or None}
     po = lambda tab: _skup(t.get(tab, []))  # noqa: E731
     t0a, t05, t0b, t08, t02 = po("tab0a"), po("tab05"), po("tab0b"), po("tab08"), po("tab02b")
@@ -101,15 +102,30 @@ def _skup(riadky: list[dict]) -> dict[str, list[dict]]:
 # ---------------- obyvatelia a sčítanie (STATdata) ----------------
 
 def _okres_kluc(n14: str) -> str:
-    return norm(re.sub(r"^Okres\s+", "", n14))
+    return norm(re.sub(r"^Okres\s+", "", re.sub(r"\s+I-[IV]+$", "", n14)))
+
+
+def _nazov_kluc(n15: str) -> str:
+    """„Dubová, okres Pezinok“ → „dubová“; „Kočín - Lančár“ = „Kočín-Lančár“; „Bratislava I-V“ → „bratislava“."""
+    n = re.sub(r",\s*okres .*$", "", n15)
+    n = re.sub(r"^(\S.*?) I-[IV]+$", r"\1", n)
+    return re.sub(r"\s*-\s*", "-", norm(n)).lower()
+
+
+def najdi(data: dict, okres: str, nazov: str):
+    k = (okres, _nazov_kluc(nazov))
+    if k in data:
+        return data[k]
+    kand = [v for (o, n), v in data.items() if n == k[1]]
+    return kand[0] if len(kand) == 1 else None
 
 
 def obyvatelia() -> dict[tuple, dict]:
     out: dict[tuple, dict] = defaultdict(dict)
     for r in sd.riadky("om7101rr"):
-        n = norm(re.sub(r"^(\S.*?) I-[IV]+$", r"\1", r["e_nuts15"]))
-        okres = _okres_kluc(r["e_nuts14"])
-        out[(okres, n)][str(int(r["e_year"]) - 1)] = int(r["hodnota"])
+        if r["e_nuts15"].startswith("Okres ") or "kraj" in r["e_nuts15"]:
+            continue
+        out[(_okres_kluc(r["e_nuts14"]), _nazov_kluc(r["e_nuts15"]))][str(int(r["e_year"]) - 1)] = int(r["hodnota"])
     return out
 
 
@@ -122,7 +138,7 @@ def scitanie() -> dict[tuple, dict]:
         for x in rows:
             if any(ma_spolu[c] and x[c] != "Spolu" for c in ostatne):
                 continue
-            k = (_okres_kluc(x["e_nuts14"]), norm(x["e_nuts15"]))
+            k = (_okres_kluc(x["e_nuts14"]), _nazov_kluc(x["e_nuts15"]))
             d = out[k].setdefault(tema, defaultdict(float))
             d[x[stlpec]] += x["hodnota"]
     return out
@@ -217,8 +233,8 @@ def main() -> int:
         if f"{ks}/{os_}/{s_}" in pouzite:
             s_ = f"{s_}-{kod}"
         pouzite.add(f"{ks}/{os_}/{s_}")
-        rad = obyv.get((u["okres"], u["nazov"])) or {}
-        sc = scit.get((u["okres"], u["nazov"])) or {}
+        rad = najdi(obyv, u["okres"], u["nazov"]) or {}
+        sc = najdi(scit, u["okres"], u["nazov"]) or {}
         o = {**u, "slug": s_, "kraj_slug": ks, "okres_slug": os_, "poloha": list(pol[kod]) if kod in pol else None,
              "obyvatelia": dict(sorted(rad.items())), "scitanie": {k: {kk: round(vv) for kk, vv in sorted(v.items(), key=lambda kv: -kv[1])} for k, v in sc.items()},
              "volby2026": vysl.get(kod)}
