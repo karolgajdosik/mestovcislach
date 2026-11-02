@@ -1,3 +1,4 @@
+import subprocess,sys; subprocess.run([sys.executable,"-m","pip","install","-q","-r","scripts/requirements.txt"])
 import sys,json,time; sys.path.insert(0,"scripts")
 import zber_eia_obce as e
 try: e.main()
