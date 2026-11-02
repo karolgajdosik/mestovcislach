@@ -1,12 +1,45 @@
-1 184
-Voľby 2026: 2887 obcí, výsledky 2881
-OSM: poloha 2927 obcí
-OSM: kraje 8
-OSM: okresy 2888
-Obce: 2887, bez počtu obyvateľov 232, bez polohy 2
-::error title=Obce::RuntimeError: Podozrivý výsledok: 2887 obcí, 232 bez obyvateľov
-
-CHYBA: Podozrivý výsledok: 2887 obcí, 232 bez obyvateľov
-
-ERR [Errno 2] No such file or directory: 'data/obce/zoznam.json'
+tab0d stĺpce ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'počet volebných obvodov', 'počet okrskov', 'počet volených poslancov', 'typ volieb']
+chýba 232
+okresy len vo voľbách ['']
+okresy len v STATdata ['Banskobystrický kraj', 'Bratislava I', 'Bratislava I-V', 'Bratislava II', 'Bratislava III', 'Bratislava IV', 'Bratislava V', 'Bratislavský kraj', 'Bratislavský kraj (NUTS 2)', 'Košice I', 'Košice I-IV', 'Košice II', 'Košice III', 'Košice IV', 'Košický kraj', 'Nitriansky kraj', 'Prešovský kraj', 'Slovenská republika', 'Stredné Slovensko', 'Trenčiansky kraj']
+   Malacky | Jablonové → ['Jakubov']
+   Malacky | Rohožník → []
+   Pezinok | Doľany → []
+   Pezinok | Dubová → []
+   Pezinok | Píla → []
+   Senec | Zálesie → []
+   Dunajská Streda | Trnávka → []
+   Dunajská Streda | Vieska → []
+   Galanta | Jánovce → ['Váhovce']
+   Galanta | Vozokany → []
+   Piešťany | Kočín - Lančár → ['Kočín-Lančár']
+   Piešťany | Nižná → []
+   Piešťany | Ostrov → []
+   Senica | Šaštín - Stráže → ['Šaštín-Stráže']
+   Skalica | Oreské → ['Brodské']
+   Skalica | Radošovce → ['Radimov']
+   Trnava | Radošovce → []
+   Bánovce nad Bebravou | Čierna Lehota → []
+   Bánovce nad Bebravou | Podlužany → []
+   Bánovce nad Bebravou | Ruskovce → []
+   Bánovce nad Bebravou | Žitná - Radiša → ['Žitná-Radiša']
+   Myjava | Brestovec → []
+   Myjava | Bukovec → []
+   Myjava | Chvojnica → []
+   Myjava | Rudník → []
+   Nové Mesto nad Váhom | Višňové → []
+   Považská Bystrica | Plevník - Drienové → ['Plevník-Drienové']
+   Púchov | Horovce → []
+   Partizánske | Hradište → []
+   Prievidza | Horná Ves → ['Kostolná Ves', 'Horné Vestenice']
+   Prievidza | Chrenovec - Brusno → ['Chrenovec-Brusno']
+   Prievidza | Chvojnica → ['Bojnice']
+   Prievidza | Jalovec → []
+   Prievidza | Nedožery - Brezany → ['Nedožery-Brezany']
+   Prievidza | Nevidzany → ['Prievidza']
+   Prievidza | Podhradie → []
+   Ilava | Bohunice → ['Borčice']
+   Ilava | Mikušovce → []
+   Trenčín | Chocholná - Velčice → ['Chocholná-Velčice']
+   Trenčín | Kostolná - Záriečie → ['Kostolná-Záriečie']
 HOTOVO
