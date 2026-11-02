@@ -183,3 +183,24 @@ export const zmluvyObce = (kod: string): ZmluvyObce | null => zmluvyInfo()?.obce
 export const eiaWeb = () => (_eia === undefined ? (_eia = citaj('data', 'obce', 'eia.json')) : _eia)?.web ?? 'https://www.enviroportal.sk/eia/detail/';
 export const eiaObce = (kod: string): EiaObce | null => { eiaWeb(); return _eia?.obce?.[kod] ?? null; };
 export const KAT_EIA: Record<string, string> = { plan: 'plán / koncepcia', odpady: 'odpady', doprava: 'doprava', energia: 'energetika', priemysel: 'priemysel a sklady', byvanie: 'bývanie a ubytovanie', voda: 'voda', obcianska: 'občianska vybavenosť', ine: 'iné' };
+
+// Hospodárenie obcí z Registra účtovných závierok (scripts/zber_hospodarenie_obce.py).
+export type HospRok = Partial<Record<'naklady' | 'vynosy' | 'danove_vynosy' | 'transfery_prijate' | 'vysledok' | 'osobne_naklady' | 'majetok' | 'zavazky' | 'bankove_uvery' | 'financne_ucty', number>>;
+let _hosp: { obce: Record<string, { roky?: Record<string, HospRok> }> } | null | undefined;
+export const hospodarenieObce = (kod: string): Record<string, HospRok> | null => {
+  if (_hosp === undefined) _hosp = citaj('data', 'obce', 'hospodarenie.json');
+  const r = _hosp?.obce?.[kod]?.roky;
+  return r && Object.keys(r).length ? r : null;
+};
+/** Medián hodnoty na obyvateľa v obciach okresu (rovnaký rok). */
+export const medianOkresu = (obce: Obec[], rok: string, f: (h: HospRok) => number | undefined): number | null => {
+  const hodnoty = obce.map((o) => {
+    const h = hospodarenieObce(o.kod)?.[rok];
+    const ob = posledne(o.obyvatelia)?.[1];
+    const v = h ? f(h) : undefined;
+    return v != null && ob ? v / ob : null;
+  }).filter((x): x is number => x != null).sort((a, b) => a - b);
+  if (hodnoty.length < 3) return null;
+  const m = Math.floor(hodnoty.length / 2);
+  return hodnoty.length % 2 ? hodnoty[m] : (hodnoty[m - 1] + hodnoty[m]) / 2;
+};

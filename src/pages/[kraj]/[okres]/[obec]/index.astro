@@ -5,7 +5,7 @@ import Base from '../../../../layouts/Base.astro';
 import '../../../../styles/stranka.css';
 import '../../../../styles/obce.css';
 import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
-import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, type Obec } from '../../../../lib/obce';
+import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, type Obec } from '../../../../lib/obce';
 import { skrat } from '../../../../lib/zastupitelstvo';
 
 export function getStaticPaths() {
@@ -58,6 +58,20 @@ const vacsia = jeVacsia(o);
 const maKviz = vacsia && kvizObce(o).length >= 5;
 const u = urlObce(o);
 const idsP = idsPoslancov(v?.poslanci ?? []);
+const hosp = hospodarenieObce(o.kod);
+const hRoky = hosp ? Object.keys(hosp).sort() : [];
+const hRok = hRoky[hRoky.length - 1];
+const hP = hosp && hRok ? hosp[hRok] : null;
+const obyvH = p?.[1] ?? 0;
+const naOb = (v?: number) => (v != null && obyvH ? v / obyvH : null);
+const HUK: [string, (h: Record<string, number | undefined>) => number | undefined, string][] = [
+  ['Daňové výnosy', (h) => h.danove_vynosy, 'hlavne podiel na dani z príjmov a daň z nehnuteľností'],
+  ['Náklady spolu', (h) => h.naklady, ''],
+  ['Mzdy a odvody', (h) => h.osobne_naklady, 'zamestnanci obce a jej škôl'],
+  ['Bankové úvery', (h) => h.bankove_uvery, 'stav na konci roka'],
+  ['Záväzky spolu', (h) => h.zavazky, 'úvery, dodávatelia, ŠFRB a iné'],
+];
+const hTab = hP && hRok ? HUK.map(([n, f, pozn]) => ({ n, pozn, obec: naOb(f(hP)), okres: medianOkresu(okresObce, hRok, f) })).filter((x) => x.obec != null) : [];
 const zm = zmluvyObce(o.kod);
 const zmInfo = zmluvyInfo();
 const eia = eiaObce(o.kod);
@@ -137,6 +151,29 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
         </>
       )}
       <p class="zdroj">Zdroj: Štatistický úrad SR – výsledky komunálnych volieb 24. 10. 2026. Uvádzame len meno, stranu a hlasy.</p>
+    </section>
+  )}
+
+  {hP && (
+    <section class="card" id="hospodarenie">
+      <h2>Hospodárenie obce {hRok}</h2>
+      <ul class="ob-cisla">
+        {hP.vynosy != null && <li><b>{eur(hP.vynosy)}</b><span>výnosy</span></li>}
+        {hP.naklady != null && <li><b>{eur(hP.naklady)}</b><span>náklady</span></li>}
+        {hP.vysledok != null && <li><b class={hP.vysledok < 0 ? 'zaporne' : ''}>{hP.vysledok > 0 ? '+' : hP.vysledok < 0 ? '−' : ''}{eur(Math.abs(hP.vysledok))}</b><span>{hP.vysledok < 0 ? 'strata' : 'zisk'} (účtovný výsledok)</span></li>}
+      </ul>
+      {hTab.length > 0 && (
+        <div class="ob-obal">
+          <table class="ob-tab">
+            <thead><tr><th>Na obyvateľa</th><th class="num">{o.nazov}</th><th class="num">medián obcí okresu</th></tr></thead>
+            <tbody>{hTab.map((x) => <tr><td>{x.n}{x.pozn && <><br /><small>{x.pozn}</small></>}</td><td class="num">{fmt(Math.round(x.obec!))} €</td><td class="num">{x.okres != null ? `${fmt(Math.round(x.okres))} €` : '–'}</td></tr>)}</tbody>
+          </table>
+        </div>
+      )}
+      {hRoky.length > 1 && (
+        <p class="pozn">Výsledok hospodárenia po rokoch: {hRoky.map((r) => { const v = hosp![r].vysledok; return v != null ? `${r} ${v > 0 ? '+' : v < 0 ? '−' : ''}${eur(Math.abs(v))}` : null; }).filter(Boolean).join(' · ')}.</p>
+      )}
+      <p class="zdroj">Zdroj: <a href="https://www.registeruz.sk" rel="noopener">Register účtovných závierok</a> – individuálna účtovná závierka obce (bez obecných firiem). Účtovný výsledok nie je to isté ako prebytok rozpočtu: zahŕňa napr. odpisy majetku. Na obyvateľa podľa počtu obyvateľov {p?.[0]}.</p>
     </section>
   )}
 
