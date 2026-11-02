@@ -167,7 +167,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
               </ul>
             </>
           )}
-          {zm.fo[0] > 0 && <p class="pozn">Ďalších {fmt(zm.fo[0])} zmlúv s fyzickými osobami ({eur(zm.fo[1])}) len započítavame, bez mien.</p>}
+          {zm.fo[0] > 0 && <p class="pozn">Ďalších {fmt(zm.fo[0])} zmlúv s fyzickými osobami alebo partnermi bez IČO ({eur(zm.fo[1])}) len započítavame, bez mien.</p>}
         </>
       ) : (
         <p>Od roku {zmInfo.od.slice(0, 4)} sme v Centrálnom registri zmlúv nenašli žiadnu zmluvu obce. Obec ich pravdepodobne zverejňuje na vlastnom webe.</p>

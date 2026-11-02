@@ -156,12 +156,12 @@ def suhrn(zz: list[tuple[str, dict]]) -> dict:
     for _, z in zz:
         roky[z["d"][:4]][0] += 1
         roky[z["d"][:4]][1] += z["s"]
-        if "p" not in z:
+        if "p" not in z or not z.get("i"):  # fyzická osoba alebo partner bez IČO – len započítame
             fo[0] += 1
             fo[1] += z["s"]
             continue
         if z["d"] >= od_partneri:
-            k = z.get("i") or z["p"].lower()
+            k = z["i"]
             partneri[k]["nazov"] = z["p"]
             partneri[k]["pocet"] += 1
             partneri[k]["suma"] += z["s"]
@@ -170,7 +170,7 @@ def suhrn(zz: list[tuple[str, dict]]) -> dict:
         "fo": [fo[0], round(fo[1])],
         "partneri": [[v["nazov"], v["pocet"], round(v["suma"])] for v in sorted(partneri.values(), key=lambda v: -v["suma"])[:6]],
         "najvacsie": [[z["d"], z["p"], round(z["s"]), z.get("pr") or "", zid]
-                      for zid, z in sorted((x for x in zz if "p" in x[1] and x[1]["d"] >= hranica), key=lambda x: -x[1]["s"])[:5] if z["s"] > 0],
+                      for zid, z in sorted((x for x in zz if x[1].get("i") and "p" in x[1] and x[1]["d"] >= hranica), key=lambda x: -x[1]["s"])[:5] if z["s"] > 0],
     }
 
 
@@ -192,7 +192,7 @@ def main() -> int:
         except Exception as e:  # noqa: BLE001
             chyby += 1
             print(f"::warning title=CRZ obce::{d}: {e}")
-            if chyby > 30:
+            if chyby > 30 or (chyby >= 4 and "403" in str(e)):  # CRZ po stovkách stiahnutí dočasne blokuje – pokračujeme zajtra
                 break
             time.sleep(10 * min(chyby, 6))
             continue
