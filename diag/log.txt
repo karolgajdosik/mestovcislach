@@ -1,11 +1,11 @@
-čakanie 3
-/ 200 77823 0.17 True
-/bratislavsky-kraj/ 200 61196 0.35 
-/bratislavsky-kraj/pezinok/ 200 49010 0.29 
-/bratislavsky-kraj/pezinok/pezinok/ 200 49498 0.23 
-/bratislavsky-kraj/pezinok/pezinok/kviz/ 200 41820 0.22 
-/presovsky-kraj/bardejov/becherov/ 200 43541 0.23 
-/kosicky-kraj/ 200 67801 0.22 
-/data/obce.json 200 182666 0.3 
-/data/hladanie.json 200 1496837 0.61 
+EIA meta {'current_page': 1, 'from': 0, 'to': 5, 'per_page': '5', 'last_page': 3733, 'total': '18662'}
+{"id": "171338", "seoId": "rudnany-cov", "name": "Rudňany - ČOV", "zbierka": "24/2006 novela 269/2025 Z.z. časť EIA", "stav": "Zámer", "cinnosti": null, "proces": null, "cezhranicnaSpolupraca": null, "ucel": null, "navrhovatel": null, "prislusnyOrgan": null, "dotknutaObec": null, "povolujuciOrgan": null, "schvalujuciOrgan": null, "dokumenty": null, "blocks": null, "images": null, "breadcrumbs": null, "locality": "KE", "headerTitle": null, "pageTitle": "Rudňany - ČOV", "kraj": "Košický", "okres": "Spišská Nová Ves", "obec": "Rudňany", "datumPoslednejZmeny": "2026-11-02 11:44:00", "dotknuteStrany": [], "suvisiace": []}
+RPO {'legalForm': '801'} 400 {"message":"Request not understood","_links":{"self":{"href":"/rpo/v1/search?legalForm=801","templated":false}}}
+RPO {'legalFormCode': '801'} 400 {"message":"No parameters specified in search request","_links":{"self":{"href":"/rpo/v1/search?legalFormCode=801","templated":false}}}
+RPO {'fullName': 'Obec Becherov'} 200 {"results":[{"id":9372014,"dbModificationDate":"2025-07-07","identifiers":[{"value":"00321869","validFrom":"1973-07-01"}],"fullNames":[{"value":"Obec Becherov","validFrom":"1973-07-01"}],"addresses":[{"formatedAddress":"Becherov, Becherov 135","validFrom":"1973-07-01","street":"Becherov","regNumber":0,"buildingNumber":"135","postalCodes":["08635"],"municipality":{"value":"Becherov","code":"SK0411519057","codelistCode":"CL000025"},"country":{"value":"Slovenská republika","code":"703","codelistCode":"CL000086"}}],"establishment":"1973-07-01","sourceRegister":{"value":{"value":"Osobitný právny pr
+2026-10-21 403
+2026-10-22 403
+Counter({'obec_zs1': 2824, 'obec_zs2': 2138}) distinct obce ico 1358
+[('34075429', 'Obec Nemčice'), ('00309541', 'Mesto Holíč'), ('00317471', 'Obec Lysá pod Makytou'), ('00313424', 'Obec Heľpa'), ('00332861', 'Obec Soľ'), ('00306169', 'Mesto Sereď'), ('00330167', 'Mesto Stará Ľubovňa'), ('00305081', 'Mesto STUPAVA'), ('00318396', 'Obec Oslany'), ('648078', 'Obec Višňové')]
+tags ['ID', 'chan', 'changelog', 'crzid', 'datum', 'datum_platnost_do', 'datum_ucinnost', 'datum_zverejnene', 'druh', 'ico', 'ico1', 'id', 'internapozn', 'nazov', 'popis', 'popis_predmetu', 'potv_datum', 'potv_ziadost', 'potvrdenie', 'poznamka', 'poznamka_zmena', 'predmet', 'ref', 'rezort', 'sidlo', 'sidlo1', 'stav', 'suma_spolu', 'suma_zmluva', 'text_ucinnost', 'typ', 'uvo', 'zdroj', 'zs1', 'zs2']
 HOTOVO
