@@ -1,45 +1,41 @@
-tab0d stĺpce ['KRAJ', 'NKRAJ', 'OBVOD', 'názov územného obvodu', 'OKRES', 'názov okresu', 'OBEC', 'NOBEC', 'počet volebných obvodov', 'počet okrskov', 'počet volených poslancov', 'typ volieb']
-chýba 232
-okresy len vo voľbách ['']
-okresy len v STATdata ['Banskobystrický kraj', 'Bratislava I', 'Bratislava I-V', 'Bratislava II', 'Bratislava III', 'Bratislava IV', 'Bratislava V', 'Bratislavský kraj', 'Bratislavský kraj (NUTS 2)', 'Košice I', 'Košice I-IV', 'Košice II', 'Košice III', 'Košice IV', 'Košický kraj', 'Nitriansky kraj', 'Prešovský kraj', 'Slovenská republika', 'Stredné Slovensko', 'Trenčiansky kraj']
-   Malacky | Jablonové → ['Jakubov']
-   Malacky | Rohožník → []
-   Pezinok | Doľany → []
-   Pezinok | Dubová → []
-   Pezinok | Píla → []
-   Senec | Zálesie → []
-   Dunajská Streda | Trnávka → []
-   Dunajská Streda | Vieska → []
-   Galanta | Jánovce → ['Váhovce']
-   Galanta | Vozokany → []
-   Piešťany | Kočín - Lančár → ['Kočín-Lančár']
-   Piešťany | Nižná → []
-   Piešťany | Ostrov → []
-   Senica | Šaštín - Stráže → ['Šaštín-Stráže']
-   Skalica | Oreské → ['Brodské']
-   Skalica | Radošovce → ['Radimov']
-   Trnava | Radošovce → []
-   Bánovce nad Bebravou | Čierna Lehota → []
-   Bánovce nad Bebravou | Podlužany → []
-   Bánovce nad Bebravou | Ruskovce → []
-   Bánovce nad Bebravou | Žitná - Radiša → ['Žitná-Radiša']
-   Myjava | Brestovec → []
-   Myjava | Bukovec → []
-   Myjava | Chvojnica → []
-   Myjava | Rudník → []
-   Nové Mesto nad Váhom | Višňové → []
-   Považská Bystrica | Plevník - Drienové → ['Plevník-Drienové']
-   Púchov | Horovce → []
-   Partizánske | Hradište → []
-   Prievidza | Horná Ves → ['Kostolná Ves', 'Horné Vestenice']
-   Prievidza | Chrenovec - Brusno → ['Chrenovec-Brusno']
-   Prievidza | Chvojnica → ['Bojnice']
-   Prievidza | Jalovec → []
-   Prievidza | Nedožery - Brezany → ['Nedožery-Brezany']
-   Prievidza | Nevidzany → ['Prievidza']
-   Prievidza | Podhradie → []
-   Ilava | Bohunice → ['Borčice']
-   Ilava | Mikušovce → []
-   Trenčín | Chocholná - Velčice → ['Chocholná-Velčice']
-   Trenčín | Kostolná - Záriečie → ['Kostolná-Záriečie']
+('Bratislava I-V', 'Bratislava I-V')
+('Bratislavský kraj', 'Okres Bratislava I')
+('Bratislavský kraj', 'Okres Bratislava II')
+('Bratislavský kraj', 'Okres Bratislava III')
+('Bratislavský kraj', 'Okres Bratislava IV')
+('Bratislavský kraj', 'Okres Bratislava V')
+('Okres Bratislava I', 'Bratislava - mestská časť Staré Mesto')
+('Okres Bratislava II', 'Bratislava - mestská časť Podunajské Biskupice')
+('Okres Bratislava II', 'Bratislava - mestská časť Ružinov')
+('Okres Bratislava II', 'Bratislava - mestská časť Vrakuňa')
+('Okres Bratislava III', 'Bratislava - mestská časť Nové Mesto')
+('Okres Bratislava III', 'Bratislava - mestská časť Rača')
+('Okres Bratislava III', 'Bratislava - mestská časť Vajnory')
+('Okres Bratislava IV', 'Bratislava - mestská časť Devín')
+('Okres Bratislava IV', 'Bratislava - mestská časť Devínska Nová Ves')
+('Okres Bratislava IV', 'Bratislava - mestská časť Dúbravka')
+('Okres Bratislava IV', 'Bratislava - mestská časť Karlova Ves')
+('Okres Bratislava IV', 'Bratislava - mestská časť Lamač')
+('Okres Bratislava IV', 'Bratislava - mestská časť Záhorská Bystrica')
+('Okres Bratislava V', 'Bratislava - mestská časť Jarovce')
+('Okres Bratislava V', 'Bratislava - mestská časť Petržalka')
+('Okres Bratislava V', 'Bratislava - mestská časť Rusovce')
+('Okres Bratislava V', 'Bratislava - mestská časť Čunovo')
+('Okres Bytča', 'Jablonové, okres Bytča')
+('Okres Dolný Kubín', 'Sedliacka Dubová')
+('Okres Humenné', 'Rohožník, okres Humenné')
+('Okres Lučenec', 'Píla, okres Lučenec')
+('Okres Malacky', 'Jablonové, okres Malacky')
+('Okres Malacky', 'Rohožník, okres Malacky')
+('Okres Myjava', 'Chvojnica, okres Myjava')
+('Okres Partizánske', 'Hradište, okres Partizánske')
+('Okres Pezinok', 'Dubová, okres Pezinok')
+('Okres Pezinok', 'Píla, okres Pezinok')
+('Okres Poltár', 'Hradište, okres Poltár')
+('Okres Prievidza', 'Chvojnica, okres Prievidza')
+('Okres Ružomberok', 'Valaská Dubová')
+('Okres Senica', 'Hradište pod Vrátnom')
+('Okres Skalica', 'Radošovce, okres Skalica')
+('Okres Svidník', 'Dubová, okres Svidník')
+('Okres Trebišov', 'Zemplínske Hradište')
 HOTOVO
