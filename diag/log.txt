@@ -1,19 +1,12 @@
-bratislava: 0 dokumentov
-trnava: 0 dokumentov
-trencin: 0 dokumentov
-nitra: 0 dokumentov
-zilina: 0 dokumentov
-banska-bystrica: 0 dokumentov
-presov: 0 dokumentov
-kosice: 0 dokumentov
-bratislava: zasadnutia []
-trnava: zasadnutia []
-trencin: zasadnutia []
-nitra: zasadnutia []
-zilina: zasadnutia []
-banska-bystrica: zasadnutia [('2026-11-03', '')]
-presov: zasadnutia []
-kosice: zasadnutia []
- 
-   banska-bystrica 2026-11-03 Pozvánka na zasadnutie Mestského zastupiteľstva 3.11.2026 https://www.banskabystrica.sk/aktuality/2026/pozvanka-na-zasadnutie-mestskeho-zastupitelst
+1 184
+Voľby 2026: 2887 obcí, výsledky 2881
+OSM: poloha 2927 obcí
+OSM: kraje 8
+OSM: okresy 2888
+Obce: 2887, bez počtu obyvateľov 232, bez polohy 2
+::error title=Obce::RuntimeError: Podozrivý výsledok: 2887 obcí, 232 bez obyvateľov
+
+CHYBA: Podozrivý výsledok: 2887 obcí, 232 bez obyvateľov
+
+ERR [Errno 2] No such file or directory: 'data/obce/zoznam.json'
 HOTOVO
