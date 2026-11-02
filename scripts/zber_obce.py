@@ -163,7 +163,7 @@ def mapa() -> dict:
     from shapely.geometry import LineString, mapping
     from shapely.ops import polygonize, unary_union
     out = {}
-    for uroven, kluc in ((4, "kraje"), (8, "okresy")):
+    for uroven, kluc in ((4, "kraje"), (6, "okresy")):
         d = _overpass(f'[out:json][timeout:600];area["ISO3166-1"="SK"][admin_level=2]->.sk;'
                       f'rel(area.sk)["boundary"="administrative"]["admin_level"="{uroven}"];out geom;')
         prvky = []
@@ -174,7 +174,7 @@ def mapa() -> dict:
             g = unary_union(list(polygonize(unary_union(ciary))))
             if g.is_empty:
                 continue
-            g = g.simplify(0.004 if uroven == 8 else 0.006, preserve_topology=True)
+            g = g.simplify(0.004 if uroven == 6 else 0.006, preserve_topology=True)
             nazov = e["tags"].get("name", "")
             prvky.append({"nazov": nazov, "geom": json.loads(json.dumps(mapping(g)))})
         out[kluc] = prvky
@@ -203,7 +203,7 @@ def main() -> int:
         pol = stare_polohy
     try:
         mp = mapa()
-        if len(mp.get("kraje", [])) == 8 and len(mp.get("okresy", [])) >= 70:
+        if len(mp.get("kraje", [])) == 8 and 70 <= len(mp.get("okresy", [])) <= 90:
             zapis_ak_zmena(VYSTUP / "mapa.json", {"zdroj": "© prispievatelia OpenStreetMap (ODbL)", **mp}, kompaktne=True)
     except Exception as e:  # noqa: BLE001
         print(f"::warning title=Obce – mapa::{e}")
