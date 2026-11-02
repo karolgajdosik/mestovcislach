@@ -1,10 +1,9 @@
-import subprocess,sys,json,base64,zlib
-subprocess.run([sys.executable,"-m","pip","install","-q","-r","scripts/requirements.txt"])
-sys.path.insert(0,"scripts")
-import zber_obce as z
-try:
-    p=z.polohy(); print("polohy",len(p))
-    print("B64START"); print(base64.b64encode(zlib.compress(json.dumps(p).encode(),9)).decode()); print("B64END")
-except Exception:
-    import traceback; traceback.print_exc()
+import requests,time
+for pokus in range(12):
+    r=requests.get("https://mestovcislach.sk/bratislavsky-kraj/pezinok/pezinok/",timeout=30)
+    if r.status_code==200: break
+    time.sleep(60)
+print("čakanie",pokus)
+for u in ["/","/bratislavsky-kraj/","/bratislavsky-kraj/pezinok/","/bratislavsky-kraj/pezinok/pezinok/","/bratislavsky-kraj/pezinok/pezinok/kviz/","/presovsky-kraj/bardejov/becherov/","/kosicky-kraj/","/data/obce.json","/data/hladanie.json"]:
+    t=time.time(); x=requests.get("https://mestovcislach.sk"+u,timeout=30); print(u,x.status_code,len(x.content),round(time.time()-t,2), "Nájdite svoju obec" in x.text if u=="/" else "")
 print("HOTOVO")
