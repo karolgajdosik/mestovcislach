@@ -1,13 +1,11 @@
-import subprocess,sys,json,time; subprocess.run([sys.executable,"-m","pip","install","-q","-r","scripts/requirements.txt"])
-sys.path.insert(0,"scripts")
-ica=json.load(open("data/obce/ico.json")); sub=dict(list(ica.items())[::100][:30]); json.dump(sub,open("data/obce/ico.json","w"))
-import zber_hospodarenie_obce as h
-h.CAS_MIN=8
-t=time.time()
-try: h.main()
-except SystemExit: pass
-print("cas",round(time.time()-t))
-d=json.load(open("data/obce/hospodarenie.json"))["obce"]
-for k,v in list(d.items())[:3]: print(k, json.dumps({x:v.get(x) for x in ("roky","chyba")},ensure_ascii=False)[:400])
-print("roky", sorted({r for v in d.values() for r in v.get("roky",{})}), sum(1 for v in d.values() if v.get("roky")))
+import re, urllib.request
+for u in ["https://mestovcislach.sk/nitriansky-kraj/nitra/aleksince/", "https://mestovcislach.sk/trenciansky-kraj/nove-mesto-nad-vahom/horna-streda/"]:
+    try:
+        h = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"}), timeout=60).read().decode()
+    except Exception as e:
+        print(u, e); continue
+    i = h.find('id="hospodarenie"')
+    print(u, "sekcia:", i >= 0)
+    if i >= 0:
+        t = re.sub(r"<[^>]+>", " ", h[i:i+6000]); print(re.sub(r"\s+", " ", t)[:900])
 print("HOTOVO")
