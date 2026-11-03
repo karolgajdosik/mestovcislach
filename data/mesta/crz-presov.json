@@ -2,15 +2,15 @@
  "mesto": "presov",
  "ico": "00327646",
  "od": "2022-01-01",
- "do": "2026-10-20",
+ "do": "2026-11-02",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 6189,
-  "skryte_fyzicke_osoby": 1563,
+  "zaznamov": 6226,
+  "skryte_fyzicke_osoby": 1575,
   "roky": {
    "2022": {
     "pocet": 1140,
@@ -37,10 +37,10 @@
     "fo_suma": 8470220
    },
    "2026": {
-    "pocet": 1037,
-    "suma": 70432020,
-    "fo_pocet": 289,
-    "fo_suma": 1780665
+    "pocet": 1074,
+    "suma": 70992500,
+    "fo_pocet": 301,
+    "fo_suma": 1792857
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -113,7 +113,7 @@
    {
     "ico": "37870475",
     "nazov": "Prešovský samosprávny kraj",
-    "pocet": 31,
+    "pocet": 33,
     "suma": 4579418
    },
    {
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-10-21T05:52:29+00:00"
+ "aktualizovane": "2026-11-03T08:06:22+00:00"
 }
