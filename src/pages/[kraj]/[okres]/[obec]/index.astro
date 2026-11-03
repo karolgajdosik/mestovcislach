@@ -5,6 +5,7 @@ import Base from '../../../../layouts/Base.astro';
 import '../../../../styles/stranka.css';
 import '../../../../styles/obce.css';
 import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
+import Kalendar from '../../../../components/Kalendar.astro';
 import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, type Obec } from '../../../../lib/obce';
 import { skrat } from '../../../../lib/zastupitelstvo';
 
@@ -225,6 +226,8 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
   )}
 
   {o.poloha && (
+    <Kalendar kraj={o.kraj} />
+
     <section class="card" id="pocasie" data-poloha={JSON.stringify(o.poloha)}>
       <h2>Počasie teraz</h2>
       <p id="po-text" aria-live="polite">Načítavam…</p>

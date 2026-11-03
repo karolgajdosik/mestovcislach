@@ -15,6 +15,7 @@ import { maZivot } from '../../lib/temy';
 import RychleOdpovede from '../../components/RychleOdpovede.astro';
 import OdberEmail from '../../components/OdberEmail.astro';
 import ZimaVMeste from '../../components/ZimaVMeste.astro';
+import Kalendar from '../../components/Kalendar.astro';
 import { faqLd } from '../../lib/odpovede';
 
 export function getStaticPaths() {
@@ -111,6 +112,8 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
       {(m as any).rieka_id && <div class="blok"><h3>Rieka</h3><div id="t-rieka"><p class="pozn">Načítavam…</p></div></div>}
     </div>
   </section>
+
+  <Kalendar kraj={m.kraj} />
 
   <section class="card" id="obyvatelia">
     <h2>Obyvatelia</h2>

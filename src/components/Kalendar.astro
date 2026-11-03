@@ -1,0 +1,106 @@
+---
+// Kalendár pre mesto alebo obec: meniny, najbližší sviatok, zatvorené obchody, školské prázdniny podľa kraja.
+// Server vyplní texty k dátumu buildu (záloha bez JS), prehliadač ich prepočíta k dnešku návštevníka.
+import { dlazdice, iso, nasledujuce, prazdninyKraja, stavPrazdnin, datum, rozsah, PRAZDNINY_ZDROJ } from '../scripts/kalendar';
+
+interface Props { kraj: string }
+const { kraj } = Astro.props;
+const dnes = iso(new Date());
+const t = dlazdice(kraj, dnes);
+const rok = nasledujuce(dnes, 17);
+const { vsetky } = stavPrazdnin(kraj, dnes);
+const skolskyRok = vsetky.length ? vsetky[vsetky.length - 1].skolsky_rok : '';
+const DLAZDICE = [
+  ['meniny', 'Meniny dnes'],
+  ['sviatok', 'Najbližší sviatok'],
+  ['obchody', 'Zatvorené obchody'],
+  ['prazdniny', `Školské prázdniny · ${kraj}`],
+] as const;
+---
+<section class="card" id="kalendar" data-kraj={kraj}>
+  <h2>Sviatky, prázdniny a meniny</h2>
+  <div class="kal-karty">
+    {DLAZDICE.map(([k, nadpis]) => (
+      <div class="kal-karta" data-k={k} data-stav={t[k].stav ?? ''}>
+        <p class="label">{nadpis}</p>
+        <p class="value">{t[k].hodnota}</p>
+        <p class="pozn">{t[k].pozn}</p>
+      </div>
+    ))}
+  </div>
+
+  <details class="kal-detail">
+    <summary>Sviatky a dni pracovného pokoja na najbližší rok</summary>
+    <div class="tabulka-obal">
+      <table>
+        <thead><tr><th>Dátum</th><th>Sviatok</th><th>Voľno</th><th>Obchody zatvorené</th></tr></thead>
+        <tbody>
+          {rok.map((s, i) => (
+            <>
+              {(i === 0 || s.d.slice(0, 4) !== rok[i - 1].d.slice(0, 4)) && <tr class="kal-rok"><th colspan="4">{s.d.slice(0, 4)}</th></tr>}
+              <tr data-d={s.d}>
+                <td class="kal-d">{datum(s.d)}</td>
+                <td>{s.nazov}{s.statny && <span class="kal-stat"> · štátny sviatok</span>}</td>
+                <td>{s.pozn === 'nedeľa' ? '–' : s.volno ? 'áno' : 'nie'}{s.pozn && s.pozn !== 'nedeľa' && <span class="kal-stat"> ({s.pozn})</span>}</td>
+                <td>{s.obchody === 'zatvorené' ? 'áno' : s.obchody ? 'od 12:00' : '–'}</td>
+              </tr>
+            </>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="pozn">Voľno = deň pracovného pokoja. Zákaz predaja v obchodoch (Zákonník práce, § 94 ods. 5) platí od novembra 2025 už len 1. 1., na Veľký piatok, Veľkonočnú nedeľu, 24. 12. od 12:00, 25. a 26. 12.; v ostatné sviatky rozhoduje obchod sám. Výnimky: čerpacie stanice, lekárne, predajne na letiskách, staniciach a v nemocniciach. MHD v dni pracovného pokoja zvyčajne premáva podľa sviatočného cestovného poriadku – overte u dopravcu.</p>
+  </details>
+
+  {vsetky.length > 0 && (
+    <details class="kal-detail">
+      <summary>Školské prázdniny {skolskyRok} – {kraj}</summary>
+      <div class="tabulka-obal">
+        <table>
+          <thead><tr><th>Prázdniny</th><th>Termín</th><th>Do školy</th></tr></thead>
+          <tbody>
+            {vsetky.map((o) => (
+              <tr data-do={o.do}><td>{o.nazov}</td><td>{rozsah(o.od, o.do)}</td><td>{datum(o.navrat, true)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  )}
+  <p class="zdroj">Zdroje: zákon č. 241/1993 Z. z. o štátnych sviatkoch (v roku 2026 nie sú 8. 5. a 15. 9. dňami pracovného pokoja), Zákonník práce, <a href={PRAZDNINY_ZDROJ.url} rel="noopener">harmonogram školského roka MŠVVaM SR</a>, slovenský kalendár mien.</p>
+</section>
+
+<script>
+  import { dlazdice, iso } from '../scripts/kalendar';
+  const sek = document.getElementById('kalendar');
+  if (sek) {
+    const dnes = iso(new Date());
+    const t = dlazdice(sek.dataset.kraj ?? '', dnes) as Record<string, { hodnota: string; pozn: string; stav?: string }>;
+    sek.querySelectorAll<HTMLElement>('.kal-karta').forEach((el) => {
+      const x = t[el.dataset.k!];
+      if (!x) return;
+      el.querySelector('.value')!.textContent = x.hodnota;
+      el.querySelector('.pozn')!.textContent = x.pozn;
+      el.dataset.stav = x.stav ?? '';
+    });
+    // minulé riadky (stránka mohla byť vygenerovaná skôr) skryjeme
+    sek.querySelectorAll<HTMLElement>('tr[data-d]').forEach((tr) => { if (tr.dataset.d! < dnes) tr.hidden = true; });
+    sek.querySelectorAll<HTMLElement>('tr[data-do]').forEach((tr) => { if (tr.dataset.do! < dnes) tr.classList.add('kal-minule'); });
+  }
+</script>
+
+<style>
+  .kal-karty { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .75rem; margin: .75rem 0 1rem; }
+  .kal-karta { border: 1px solid var(--line, #ddd); border-radius: 10px; padding: .7rem .85rem; background: var(--card, transparent); }
+  .kal-karta[data-stav='ok'] { border-color: var(--accent, #2e7d32); }
+  .kal-karta[data-stav='yellow'] { border-color: #e0a800; }
+  .kal-karta .label { margin: 0; font-size: .82rem; color: var(--muted); }
+  .kal-karta .value { margin: .2rem 0; font-size: 1.15rem; font-weight: 650; line-height: 1.25; }
+  .kal-karta .pozn { margin: 0; font-size: .85rem; }
+  .kal-detail { margin: .5rem 0; }
+  .kal-detail summary { cursor: pointer; font-weight: 600; padding: .3rem 0; }
+  .kal-stat { opacity: .7; font-size: .85em; }
+  .kal-minule { opacity: .5; }
+  .kal-d { white-space: nowrap; }
+  .kal-rok th { text-align: left; padding-top: .6rem; color: var(--muted); }
+</style>

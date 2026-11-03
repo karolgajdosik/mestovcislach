@@ -7,6 +7,7 @@ import RychleOdpovede from '../../components/RychleOdpovede.astro';
 import OdberEmail from '../../components/OdberEmail.astro';
 import { MESTA } from '../../mesta';
 import ZimaVMeste from '../../components/ZimaVMeste.astro';
+import Kalendar from '../../components/Kalendar.astro';
 import { faqLd } from '../../lib/odpovede';
 import obyv from '../../../data/obyvatelstvo-bratislava.json';
 
@@ -75,6 +76,8 @@ const grafData = mesto
       </section>
 
       <DnesVBratislave />
+
+      <Kalendar kraj="Bratislavský kraj" />
 
       <nav class="temy" aria-label="Témy">
         <a class="card tema" href="/bratislava/mestske-casti"><strong>Mestské časti</strong><span>Profil každej zo 17 častí: ľudia, voľby, peniaze, školy, bezpečnosť, klíma</span></a>

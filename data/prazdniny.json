@@ -1,0 +1,23 @@
+{
+  "zdroj": {
+    "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže SR – harmonogram školského roka (Pedagogicko-organizačné pokyny)",
+    "url": "https://www.minedu.sk"
+  },
+  "poznamka": "Pri každom novom školskom roku doplniť termíny (kontrola.py upozorní 90 dní pred koncom posledného zapísaného obdobia). Kraje bez uvedenia = celé Slovensko. „navrat“ = prvý deň vyučovania.",
+  "roky": [
+    {
+      "skolsky_rok": "2026/2027",
+      "zaciatok": "2026-09-01",
+      "obdobia": [
+        {"nazov": "Jesenné prázdniny", "od": "2026-10-29", "do": "2026-10-30", "navrat": "2026-11-02"},
+        {"nazov": "Vianočné prázdniny", "od": "2026-12-23", "do": "2027-01-07", "navrat": "2027-01-08"},
+        {"nazov": "Polročné prázdniny", "od": "2027-02-01", "do": "2027-02-01", "navrat": "2027-02-02"},
+        {"nazov": "Jarné prázdniny", "od": "2027-02-15", "do": "2027-02-19", "navrat": "2027-02-22", "kraje": ["Banskobystrický kraj", "Žilinský kraj", "Trenčiansky kraj"]},
+        {"nazov": "Jarné prázdniny", "od": "2027-02-22", "do": "2027-02-26", "navrat": "2027-03-01", "kraje": ["Košický kraj", "Prešovský kraj"]},
+        {"nazov": "Jarné prázdniny", "od": "2027-03-01", "do": "2027-03-05", "navrat": "2027-03-08", "kraje": ["Bratislavský kraj", "Nitriansky kraj", "Trnavský kraj"]},
+        {"nazov": "Veľkonočné prázdniny", "od": "2027-03-25", "do": "2027-03-30", "navrat": "2027-03-31"},
+        {"nazov": "Letné prázdniny", "od": "2027-07-01", "do": "2027-08-31", "navrat": "2027-09-01"}
+      ]
+    }
+  ]
+}
