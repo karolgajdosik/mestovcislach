@@ -1400,13 +1400,6 @@
      "popis": "Zmluva o poskytnutí NFP, kód projektu: 401301G285 - Most č. M5850 na ceste II/547 a lávka, Hlinkova ul., Košice"
     },
     {
-     "datum": "2025-11-02",
-     "dodavatel": "Všeobecná úverová banka, a.s.",
-     "ico": "31320155",
-     "suma": 10000000,
-     "popis": "Dodatok č. 5 k zmluve o revolvingovom úvere č. 366/2020/UZ (2020000876)"
-    },
-    {
      "datum": "2025-12-09",
      "dodavatel": "Slovenská sporiteľňa, a.s.",
      "ico": "00151653",
@@ -1496,6 +1489,13 @@
      "ico": "31684343",
      "suma": 3020637.06,
      "popis": "Dodatok č.1 k Zmluve o dielo č. 2026000345 zo dňa 16.02.2026 - Rekonštrukcia Hlavnej ulice - prekrytie archeolog. výskumu dolnej brány"
+    },
+    {
+     "datum": "2026-02-15",
+     "dodavatel": "BETPRES s.r.o.",
+     "ico": "31684343",
+     "suma": 2738136.96,
+     "popis": "Zmluva o dielo - \"Rekonštrukcia Hlavnej ulice - prekrytie archeologického výskumu Dolnej brány\""
     }
    ]
   },
@@ -2093,13 +2093,6 @@
      "popis": "Na základe rámcovej dohody č.2026000548 si u Vás objednávame - Stavebnú údržbu a opravy pozemných komunikácií v meste Košice na mesiac marec - apríl 2026. Fakturácia na základe skutočne vykonaného roz"
     },
     {
-     "datum": "2025-10-28",
-     "dodavatel": "IVANSTAV GROUP s.r.o.",
-     "ico": "45873895",
-     "suma": 261432.8,
-     "popis": "V súlade s výsledkom verejného obstarávania na predmet zákazky vyhlásenej podľa §108 zákona č.343/2015 Z.Z s názvom \"Oprava únikových trás v havarijnom stave vo vybraných MŠ\" si u Vás objednávame usku"
-    },
-    {
      "datum": "2026-05-27",
      "dodavatel": "COLAS Slovakia, a.s.",
      "ico": "31651402",
@@ -2168,9 +2161,16 @@
      "ico": "51658330",
      "suma": 119873.5,
      "popis": "Objednávame si u Vás na základe cenovej ponuky :Dodanie SMART LED svietidiel verejného osvetlenia 2026 - Dodanie 222 ks SMART LED svietidiel v meste Košice.Cena je uvedená s DPH"
+    },
+    {
+     "datum": "2026-07-16",
+     "dodavatel": "SEAK, s.r.o.",
+     "ico": "46150749",
+     "suma": 116572.3,
+     "popis": "Objednávame si u Vás na základe cenovej ponuky :Dodanie a výmena s montážou pôvodných trubicových stropných svietidiel za LED svietidlá v pasáži na ulici Budapeštianska.Cena je uvedená s DPH"
     }
    ]
   }
  ],
- "aktualizovane": "2026-10-24T10:33:06+00:00"
+ "aktualizovane": "2026-11-03T05:23:59+00:00"
 }

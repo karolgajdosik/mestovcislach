@@ -1473,17 +1473,17 @@
    "kategorie": [
     "/Categories/Doprava a komunikácie"
    ],
-   "upravene": 1792641635000,
+   "upravene": 1793336424000,
    "popis": "Cestovné poriadky MHD vo formáte GTFS",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 6233121,
+   "velkost": 6381046,
    "typove_slova": [
     "CSV Collection",
     "Metadata",
     "zip"
    ],
-   "upravene_ms": 1792641635000
+   "upravene_ms": 1793336424000
   },
   {
    "id": "4a8eab30e596432486f494649840c694",
@@ -7030,7 +7030,7 @@
    "popis": "Faktúry Odvozu a likvidácie odpadu Bratislava (OLO)",
    "jazyk": "sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 10133504,
+   "velkost": 10141696,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -7050,7 +7050,7 @@
      "nazov": "olo_fakt2",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 27811,
+     "pocet": 27885,
      "polia": [
       [
        "Číslo_faktúry",
@@ -7107,7 +7107,7 @@
    "popis": "Faktúry Pohrebníctva mesta Bratislava - MARIANUM",
    "jazyk": "sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 8503296,
+   "velkost": 8519680,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -7127,7 +7127,7 @@
      "nazov": "Nove_faktury_marianum3",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 16855,
+     "pocet": 16881,
      "polia": [
       [
        "Interné_číslo_faktúry",
@@ -12179,7 +12179,7 @@
    "popis": "Dataset všetkých objednávok Magistrátu hlavného mesta SR Bratislava od roku 2011. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 51748864,
+   "velkost": 51830784,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -12197,7 +12197,7 @@
      "nazov": "Objednávky_Magistrátu_hlavného_mesta_SR_Bratislava_od_roku_2011",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 65432,
+     "pocet": 65549,
      "polia": [
       [
        "IDENTIFIKÁTOR_OBJEDNÁVKY",
@@ -12319,7 +12319,7 @@
    "popis": "Objednávky Odvozu a likvidácie odpadu Bratislava (OLO)",
    "jazyk": "sk-sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 6561792,
+   "velkost": 6569984,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -12339,7 +12339,7 @@
      "nazov": "Objednávky_Odvozu_a_likvidácie_odpadu_Bratislava_(OLO)",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 12390,
+     "pocet": 12413,
      "polia": [
       [
        "Číslo_objednávky",
@@ -12436,7 +12436,7 @@
      "nazov": "Nove_objednavky_marianum",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 5564,
+     "pocet": 5579,
      "polia": [
       [
        "Číslo_objednávky",
@@ -23875,7 +23875,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 230694912,
+   "velkost": 231505920,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23895,7 +23895,7 @@
      "nazov": "chodci10_01",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 856155,
+     "pocet": 859923,
      "polia": [
       [
        "NAZOV",
@@ -23962,7 +23962,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 230121472,
+   "velkost": 230924288,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23982,7 +23982,7 @@
      "nazov": "cyklisti2_0",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 856155,
+     "pocet": 859923,
      "polia": [
       [
        "NAZOV",
@@ -24049,7 +24049,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 116654080,
+   "velkost": 117301248,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -24069,7 +24069,7 @@
      "nazov": "vozidla_00",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 490954,
+     "pocet": 494051,
      "polia": [
       [
        "NAZOV",
@@ -39883,7 +39883,7 @@
      "nazov": "orezy_a_vyruby_2022_OTMZ",
      "druh": "vrstva",
      "geometria": "esriGeometryPoint",
-     "pocet": 5790,
+     "pocet": 5805,
      "polia": [
       [
        "OBJECTID",
@@ -48561,7 +48561,7 @@
    "popis": "Dataset všetkých zmlúv Magistrátu hlavného mesta SR Bratislava zverejnených od júla 2022. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 13189120,
+   "velkost": 13254656,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -48581,7 +48581,7 @@
      "nazov": "Zmluvy_Magistrátu_hlavného_mesta_SR_Bratislava_zverejnené_od_júla_2022",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 13164,
+     "pocet": 13234,
      "polia": [
       [
        "IČO_SAMOSPRÁVY",
@@ -48767,7 +48767,7 @@
      "nazov": "ccc",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 1914,
+     "pocet": 1921,
      "polia": [
       [
        "Číslo_zmluvy",
@@ -54553,5 +54553,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-10-27T04:54:20+00:00"
+ "aktualizovane": "2026-11-03T05:16:05+00:00"
 }
