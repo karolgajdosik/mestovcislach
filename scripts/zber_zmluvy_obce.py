@@ -24,7 +24,7 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 
 from spolocne import DATA, KOREN, s, spusti, zapis_ak_zmena
-from zber_zmluvy_mc import KONTAKT, PRAVNA_FORMA, cislo, text
+from zber_zmluvy_mc import KONTAKT, PRAVNA_FORMA, cislo, dalsi_dostupny_den, text
 
 OD = date(2025, 1, 1)
 ULOZISKO = DATA / "zmluvy-obce"
@@ -78,6 +78,9 @@ def doplni_ica(zoznam: list[dict]) -> dict[str, str]:
 
     ica: dict[str, str] = json.loads(ICO_SUBOR.read_text(encoding="utf-8")) if ICO_SUBOR.exists() else {}
     chyba = [o for o in zoznam if o["kod"] not in ica][:MAX_RPO]
+    # zvyšných pár obcí (iný tvar názvu v RPO) skúšame len v pondelok – RPO pri nich dlho neodpovedá
+    if len(chyba) < 30 and date.today().weekday() != 0:
+        chyba = []
     with ThreadPoolExecutor(4) as ex:
         for n, (o, i) in enumerate(zip(chyba, ex.map(najdi_ico, chyba)), 1):
             if i:
@@ -185,30 +188,22 @@ def main() -> int:
     stav, zmluvy = nacitaj()
     d = date.fromisoformat(stav["posledny_den"]) + timedelta(days=1) if stav["posledny_den"] else OD
     dnes, chyby, spracovane, dni = date.today(), 0, 0, 0
-    zakazane_dni = 0  # 403 na viacerých dňoch po sebe = CRZ nás dočasne blokuje
     while d < dnes and dni < MAX_DNI:
         try:
             spracovane += spracuj_den(d, podla_ico, zmluvy)
             stav["posledny_den"] = d.isoformat()
-            zakazane_dni = 0
         except Exception as e:  # noqa: BLE001
             chyby += 1
             print(f"::warning title=CRZ obce::{d}: {e}")
             if "403" in str(e):
-                zakazane_dni += 1
-                if zakazane_dni >= 3:
-                    break
-                # niektoré dni CRZ trvalo vracia 403 (napr. 2026-05-08) – ak nasledujúci deň ide, deň preskočíme
-                try:
-                    spracovane += spracuj_den(d + timedelta(days=1), podla_ico, zmluvy)
-                except Exception:  # noqa: BLE001
-                    time.sleep(30)
-                    continue
-                stav.setdefault("preskocene", []).append(d.isoformat())
-                stav["posledny_den"] = (d + timedelta(days=1)).isoformat()
-                d += timedelta(days=2)
-                dni += 2
-                zakazane_dni = 0
+                x = dalsi_dostupny_den(d, dnes)
+                if not x:
+                    break  # CRZ nás dočasne blokuje – pokračujeme pri ďalšom behu
+                stav.setdefault("preskocene", []).extend((d + timedelta(days=i)).isoformat() for i in range((x - d).days))
+                print(f"CRZ: preskočené dni {d} – {x - timedelta(days=1)} (export trvalo nedostupný)")
+                stav["posledny_den"] = (x - timedelta(days=1)).isoformat()
+                dni += (x - d).days
+                d = x
                 continue
             if chyby > 30:
                 break

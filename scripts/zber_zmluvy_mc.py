@@ -17,6 +17,7 @@ from __future__ import annotations
 import io
 import json
 import re
+import time
 import zipfile
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta, timezone
@@ -55,6 +56,26 @@ def cislo(x: str) -> float:
         return round(float((x or "0").replace(",", ".")), 2)
     except ValueError:
         return 0.0
+
+
+def dalsi_dostupny_den(d: date, do: date, max_dni: int = 10) -> date | None:
+    """CRZ niektoré denné exporty trvalo odmieta (403, napr. 2026-05-08, 2026-07-17 až 19, 2026-10-21 až 22).
+    Pri 403 vráti prvý ďalší deň, ktorého export ide (chybné dni sa preskočia), alebo None – vtedy nás CRZ
+    pravdepodobne dočasne blokuje po veľa stiahnutiach a treba pokračovať neskôr."""
+    for i in range(1, max_dni + 1):
+        x = d + timedelta(days=i)
+        if x >= do:
+            return None
+        try:
+            r = s.get(f"https://www.crz.gov.sk/export/{x.isoformat()}.zip", timeout=60, stream=True)
+            kod = r.status_code
+            r.close()
+        except Exception:  # noqa: BLE001
+            continue
+        if kod in (200, 404):
+            return x
+        time.sleep(1)
+    return None
 
 
 def spracuj_den(d: date, zmluvy: dict) -> int:

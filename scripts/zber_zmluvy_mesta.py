@@ -22,7 +22,7 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 
 from spolocne import DATA, KOREN, s, spusti, zapis_ak_zmena
-from zber_zmluvy_mc import KONTAKT, POSKYTOVATEL, PRAVNA_FORMA, cislo, text
+from zber_zmluvy_mc import KONTAKT, POSKYTOVATEL, PRAVNA_FORMA, cislo, dalsi_dostupny_den, text
 
 OD = date(2022, 1, 1)
 ULOZISKO = DATA / "zmluvy-mesta"
@@ -140,6 +140,16 @@ def main() -> int:
         except Exception as e:  # noqa: BLE001
             chyby += 1
             print(f"::warning title=CRZ mestá::{d}: {e}")
+            if "403" in str(e):
+                x = dalsi_dostupny_den(d, dnes)
+                if not x:
+                    break  # CRZ nás dočasne blokuje – pokračujeme pri ďalšom behu
+                stav.setdefault("preskocene", []).extend((d + timedelta(days=i)).isoformat() for i in range((x - d).days))
+                print(f"CRZ: preskočené dni {d} – {x - timedelta(days=1)} (export trvalo nedostupný)")
+                stav["posledny_den"] = (x - timedelta(days=1)).isoformat()
+                dni += (x - d).days
+                d = x
+                continue
             if chyby > 20:
                 break
             time.sleep(5)
