@@ -5,11 +5,11 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-11-01",
+ "do": "2026-11-02",
  "mestske_casti": {
   "Devín": {
-   "zmluv": 553,
-   "suma": 1750193,
+   "zmluv": 554,
+   "suma": 1750373,
    "roky": {
     "2022": [
      63,
@@ -28,13 +28,13 @@
      598785
     ],
     "2026": [
-     87,
-     128947
+     88,
+     129127
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 354,
-    "suma": 138695
+    "zmluv": 355,
+    "suma": 138875
    },
    "najvacsi_partneri": [
     {
@@ -620,8 +620,8 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14716,
-   "suma": 2693123575,
+   "zmluv": 14736,
+   "suma": 2693218480,
    "roky": {
     "2022": [
      2618,
@@ -640,13 +640,13 @@
      334776233
     ],
     "2026": [
-     2558,
-     603828259
+     2578,
+     603923164
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 6436,
-    "suma": 76618272
+    "zmluv": 6442,
+    "suma": 76620251
    },
    "najvacsi_partneri": [
     {
@@ -724,13 +724,13 @@
     {
      "nazov": "MBM-GROUP, a.s.",
      "ico": "36740519",
-     "zmluv": 6,
-     "suma": 56738684
+     "zmluv": 7,
+     "suma": 56771633
     },
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
      "ico": "50349287",
-     "zmluv": 50,
+     "zmluv": 51,
      "suma": 45268869
     },
     {
@@ -824,8 +824,8 @@
    ]
   },
   "Jarovce": {
-   "zmluv": 932,
-   "suma": 9790466,
+   "zmluv": 933,
+   "suma": 9790601,
    "roky": {
     "2022": [
      86,
@@ -844,13 +844,13 @@
      1756731
     ],
     "2026": [
-     88,
-     2784911
+     89,
+     2785046
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 704,
-    "suma": 500841
+    "zmluv": 705,
+    "suma": 500976
    },
    "najvacsi_partneri": [
     {
@@ -1028,8 +1028,8 @@
    ]
   },
   "Karlova Ves": {
-   "zmluv": 2474,
-   "suma": 72530130,
+   "zmluv": 2476,
+   "suma": 72533430,
    "roky": {
     "2022": [
      564,
@@ -1048,8 +1048,8 @@
      8212235
     ],
     "2026": [
-     363,
-     22582140
+     365,
+     22585440
     ]
    },
    "fyzicke_osoby": {
@@ -1232,8 +1232,8 @@
    ]
   },
   "Lamač": {
-   "zmluv": 1342,
-   "suma": 34405511,
+   "zmluv": 1343,
+   "suma": 35107390,
    "roky": {
     "2022": [
      493,
@@ -1252,8 +1252,8 @@
      4758500
     ],
     "2026": [
-     168,
-     5857385
+     169,
+     6559265
     ]
    },
    "fyzicke_osoby": {
@@ -1264,8 +1264,8 @@
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
      "ico": "50349287",
-     "zmluv": 12,
-     "suma": 15168526
+     "zmluv": 13,
+     "suma": 15870406
     },
     {
      "nazov": "Adifex, a.s.",
@@ -1640,8 +1640,8 @@
    ]
   },
   "Petržalka": {
-   "zmluv": 5093,
-   "suma": 210704446,
+   "zmluv": 5100,
+   "suma": 210711745,
    "roky": {
     "2022": [
      753,
@@ -1660,13 +1660,13 @@
      66104103
     ],
     "2026": [
-     883,
-     54861525
+     890,
+     54868823
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 2471,
-    "suma": 7427906
+    "zmluv": 2477,
+    "suma": 7429116
    },
    "najvacsi_partneri": [
     {
@@ -2048,8 +2048,8 @@
    ]
   },
   "Rača": {
-   "zmluv": 3238,
-   "suma": 54103550,
+   "zmluv": 3240,
+   "suma": 54136119,
    "roky": {
     "2022": [
      568,
@@ -2068,8 +2068,8 @@
      11753305
     ],
     "2026": [
-     682,
-     9583771
+     684,
+     9616340
     ]
    },
    "fyzicke_osoby": {
@@ -2660,7 +2660,7 @@
    ]
   },
   "Staré Mesto": {
-   "zmluv": 2495,
+   "zmluv": 2497,
    "suma": 115730851,
    "roky": {
     "2022": [
@@ -2680,7 +2680,7 @@
      20943521
     ],
     "2026": [
-     513,
+     515,
      35599868
     ]
    },
@@ -2692,7 +2692,7 @@
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.",
      "ico": "50349287",
-     "zmluv": 43,
+     "zmluv": 45,
      "suma": 31253192
     },
     {
@@ -3476,7 +3476,7 @@
    ]
   },
   "Čunovo": {
-   "zmluv": 289,
+   "zmluv": 290,
    "suma": 2743855,
    "roky": {
     "2022": [
@@ -3496,7 +3496,7 @@
      374844
     ],
     "2026": [
-     35,
+     36,
      1163725
     ]
    },
@@ -3520,7 +3520,7 @@
     {
      "nazov": "Hlavné mesto SR Bratislava",
      "ico": "00603481",
-     "zmluv": 13,
+     "zmluv": 14,
      "suma": 179729
     },
     {
@@ -4032,8 +4032,8 @@
   },
   "Karlova Ves": {
    "poskytnute": {
-    "zmluv": 156,
-    "suma": 233010,
+    "zmluv": 157,
+    "suma": 235010,
     "prijimatelia": [
      {
       "nazov": "Futbalový klub mládeže Karlova Ves Bratislava",
@@ -4060,12 +4060,12 @@
       "suma": 10629
      },
      {
-      "nazov": "Vodácky klub Tatran Karlova Ves - Bratislava, o.z.",
-      "suma": 8420
+      "nazov": "Rodinné centrum Klbko",
+      "suma": 10380
      },
      {
-      "nazov": "Rodinné centrum Klbko",
-      "suma": 8380
+      "nazov": "Vodácky klub Tatran Karlova Ves - Bratislava, o.z.",
+      "suma": 8420
      },
      {
       "nazov": "Klub vodných športov OCEÁN Bratislava",
@@ -4996,5 +4996,5 @@
    }
   }
  },
- "aktualizovane": "2026-11-02T06:21:40+00:00"
+ "aktualizovane": "2026-11-03T06:13:33+00:00"
 }
