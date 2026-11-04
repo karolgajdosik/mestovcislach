@@ -92,6 +92,16 @@ def main() -> int:
          params={"latitude": 48.1486, "longitude": 17.1077, "current": "temperature_2m"})
     # zbery dát (dni podľa frekvencie workflowu + rezerva); OpenStreetMap (cyklo.yml) nesledujeme – Overpass býva preťažený
     zbery({"zber-dat.yml": 3, "crz.yml": 3, "slovensko.yml": 10, "katalog.yml": 10, "mesta-temy.yml": 10, "volby.yml": 3, "vystavba.yml": 3, "hospodarenie-obce.yml": 3})
+    # školské prázdniny (data/prazdniny.json) treba každý rok doplniť z harmonogramu MŠVVaM SR
+    try:
+        pr = json.loads((Path(__file__).resolve().parent.parent / "data" / "prazdniny.json").read_text(encoding="utf-8"))
+        posledne = max(o["do"] for r in pr["roky"] for o in r["obdobia"])
+        if datetime.fromisoformat(posledne).date() - datetime.now(timezone.utc).date() < timedelta(days=90):
+            problemy.append(f"**Školské prázdniny** – data/prazdniny.json končí {posledne}, doplniť harmonogram ďalšieho školského roka (minedu.sk)")
+        else:
+            print(f"OK   prázdniny do {posledne}")
+    except Exception as e:  # noqa: BLE001
+        problemy.append(f"**Školské prázdniny** – data/prazdniny.json sa nedá prečítať ({e})")
     Path(sys.argv[1] if len(sys.argv) > 1 else "problemy.md").write_text("\n".join(f"- {p}" for p in problemy), encoding="utf-8")
     print(f"Problémov: {len(problemy)}")
     return 1 if problemy else 0
