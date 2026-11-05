@@ -1,16 +1,9 @@
-import subprocess, sys, json
-subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
-sys.path.insert(0, "scripts")
-import zber_obce_temy as t
-from spolocne import DATA
-for m in ("nezamestnanost", "odpad", "skoly"):
-    try:
-        getattr(t, m)()
-        d = json.loads((DATA / "obce" / f"{m}.json").read_text())
-        o = d["obce"]; k = "518921"
-        print(m, {kk: vv for kk, vv in d.items() if kk not in ("obce", "okresy")}, len(o))
-        print("  Vígľaš:", json.dumps(o.get(k), ensure_ascii=False)[:500])
-        if "okresy" in d: print("  okres Detva:", d["okresy"].get("Detva"))
-    except Exception as e:
-        import traceback; traceback.print_exc()
+import re, urllib.request, time
+time.sleep(420)
+for u in ["https://mestovcislach.sk/banskobystricky-kraj/rimavska-sobota/tisovec/", "https://mestovcislach.sk/kosicky-kraj/sobrance/sejkov/"]:
+    h = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"}), timeout=60).read().decode()
+    print(u, {i: f'id="{i}"' in h for i in ("nezamestnanost", "eurofondy", "skoly", "odpad", "kalendar", "pocasie")})
+    for i in ("nezamestnanost", "eurofondy"):
+        j = h.find(f'id="{i}"')
+        if j > 0: print("  ", re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", h[j:j+1500]))[:260])
 print("HOTOVO")
