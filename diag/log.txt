@@ -1,12 +1,51 @@
-Barca https://overpass-api.de/api/interpreter 200
-    9 Košice-Juh {'postal_code': '04001', 'ref': '599824'}
-Bytčica https://overpass-api.de/api/interpreter 200
-    8 Žilina {'ref': '517402'}
-Danielov Dom https://overpass-api.de/api/interpreter 200
-    8 Vysoké Tatry {'ref': '560103'}
-Devínska N.Ves https://overpass-api.de/api/interpreter 502
-Devínska N.Ves https://overpass-api.de/api/interpreter Expecting value: line 1 column 1 (char 0)
-Devínska N.Ves https://overpass.kumi.systems/api/interpreter HTTPSConnectionPool(host='overpass.kumi.systems', port=443): Read timed out. (read timeout=90)
-Andač https://overpass-api.de/api/interpreter 200
-    8 Lukáčovce {'ref': '500488'}
+GTFS: https://data.slovensko.sk/download?id=fa56545f-a4c2-4eb9-bd26-b1c350991293
+Staníc s vlakmi: 835, záznamov v stops.txt: 876
+  OSM: 2270 staníc a zastávok
+  podľa hraníc OSM priradených 98
+  nepriradené stanice (ukážka): Remäta
+Vlaky 2026-11-11: 518 obcí so stanicou, nepriradených staníc 1
+
+
+trvanie 386
+den 2026-11-11 obci 518
+Vysoké Tatry [['Starý Smokovec', 75], ['Popradské Pleso', 38], ['Vyšné Hágy', 38], ['Nová Polianka', 38], ['Danielov Dom', 38], ['Tatranská Polianka', 38], ['Tatranské Zruby', 38], ['Sibír', 38], ['Nový Smokovec', 38], ['Dolný Smokovec', 38], ['Pod lesom', 38], ['Tatranská Lomnica', 38], ['Tatranská Lesná', 38], ['Horný Smokovec', 38], ['Pekná Vyhliadka', 38]]
+Žilina [['Žilina', 243], ['Brodno', 58], ['Bytčica', 42], ['Žilina-Solinky', 42], ['Žilina-zariečie', 42]]
+Košice [['Košice', 243], ['Košice predmestie', 71], ['Ťahanovce', 69], ['Krásna n.Hornádom', 26], ['Barca', 23], ['Hutníky', 19]]
+Bratislava [['Bratislava hl.st.', 318], ['Bratislava-N.Mesto', 148], ['Bratislava-Vinohrady', 146], ['Bratislava-Rača', 77], ['Devínska N.Ves', 75], ['Bratislava-Petržalka', 74], ['Bratislava predm.', 70], ['Podunajské Biskupice', 66], ['Bratislava-Vrakuňa', 65], ['Bratislava-Vajnory', 38], ['Bratislava-Železná studienka', 37], ['Bratislava-Lamač', 37], ['Devínske Jazero', 37], ['Rusovce', 22]]
+Lukáčovce None
+Tisovec [['Tisovec', 24], ['Tisovec mesto', 22], ['Tisovec závody', 22], ['Rimavská Píla', 22], ['Tisovec-Bánovo', 2]]
+['B', 'H', 'annotations', 'csv', 'io', 'polozky', 'riadky_obce', 's', 'zipfile']
+om7103rr e_indic chyba 400 Client Error: Bad Request for url: https://statdata.statistics.sk/public/api/dc/public/e_indic/om7103rr/dimensionItemsInCube
+om7811rr e_canal chyba 400 Client Error: Bad Request for url: https://statdata.statistics.sk/public/api/dc/public/e_canal/om7811rr/dimensionItemsInCube
+om7815rr e_gas chyba 400 Client Error: Bad Request for url: https://statdata.statistics.sk/public/api/dc/public/e_gas/om7815rr/dimensionItemsInCube
+om7816rr e_watsup chyba 400 Client Error: Bad Request for url: https://statdata.statistics.sk/public/api/dc/public/e_watsup/om7816rr/dimensionItemsInCube
+om7821rr e_heat chyba 400 Client Error: Bad Request for url: https://statdata.statistics.sk/public/api/dc/public/e_heat/om7821rr/dimensionItemsInCube
+om7813rr e_periodconren chyba 400 Client Error: Bad Request for url: https://statdata.statistics.sk/public/api/dc/public/e_periodconren/om7813rr/dimensionItemsInCube
+272070
+[{'e_year': '2024', 'e_nuts15': 'Abovce', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Celkový prírastok obyvateľstva', 'hodnota': '-25.0', '_cas': '2024'}, {'e_year': '2024', 'e_nuts15': 'Abovce', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Dojčenská úmrtnosť', 'hodnota': '0.0', '_cas': '2024'}, {'e_year': '2024', 'e_nuts15': 'Abovce', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Dojčenská úmrtnosť s pôrodnou hmotnosťou 1 000 g a viac', 'hodnota': '0.0', '_cas': '2024'}]
+['Celkový prírastok obyvateľstva', 'Dojčenská úmrtnosť', 'Dojčenská úmrtnosť s pôrodnou hmotnosťou 1 000 g a viac', 'Hrubá miera celkového prírastku obyvateľstva', 'Hrubá miera migračného salda', 'Hrubá miera potratovosti', 'Hrubá miera prirodzeného prírastku obyvateľstva', 'Hrubá miera rozvodovosti', 'Hrubá miera sobášnosti', 'Hrubá miera ukončených tehotenstiev', 'Hrubá miera úmrtnosti (zomretí na 1 000 obyvateľov)', 'Hrubá miera živorodenosti', 'Index potratovosti', 'Index rozvodovosti', 'Index umelej potratovosti', 'Miera dojčenskej úmrtnosti', 'Miera mŕtvorodenosti', 'Miera novorodeneckej úmrtnosti', 'Miera perinatálnej úmrtnosti', 'Migračné saldo', 'Mŕtvonarodení', 'Narodení', 'Narodení na 1 000 obyvateľov (hrubá miera pôrodnosti)', 'Narodení s pôrodnou hmotnosťou do 2 500 g', 'Narodení v manželstve', 'Novorodenecká úmrtnosť', 'Novorodenecká úmrtnosť s pôrodnou hmotnosťou 1 000 g a viac', 'Perinatálna úmrtnosť', 'Potraty', 'Prirodzený prírastok obyvateľstva', 'Prisťahovaní na 1000 obyvateľov na trvalý pobyt', 'Prisťahovaní na trvalý pobyt', 'Rozvody', 'Sobáše', 'Stav trvale bývajúceho obyvateľstva na konci obdobia', 'Stredný (priemerný) stav trvale bývajúceho obyvateľstva', 'Ukončené tehotenstvá', 'Umelé potraty', 'Vysťahovaní na 1000 obyvateľov z trvalého pobytu', 'Vysťahovaní z trvalého pobytu']
+om7811rr {'e_year': '1980', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'bez odkanalizovania           ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '355.0', '_cas': '1980'}
+om7811rr {'e_year': '1980', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '0.0', '_cas': '1980'}
+om7811rr {'e_year': '1991', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'bez odkanalizovania           ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '258.0', '_cas': '1991'}
+om7811rr {'e_year': '1991', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '0.0', '_cas': '1991'}
+om7811rr {'e_year': '2001', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'bez odkanalizovania           ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '135.0', '_cas': '2001'}
+om7811rr {'e_year': '2001', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '0.0', '_cas': '2001'}
+om7811rr {'e_year': '2011', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'bez odkanalizovania           ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '17.0', '_cas': '2011'}
+om7811rr {'e_year': '2011', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '7.0', '_cas': '2011'}
+om7811rr {'e_year': '2021', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'bez odkanalizovania           ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '95.0', '_cas': '2021'}
+om7811rr {'e_year': '2021', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '4.0', '_cas': '2021'}
+om7811rr {'e_year': '1980', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '1216.0', '_cas': '1980'}
+om7811rr {'e_year': '1980', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_canal': 'nezistené                     ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '2.0', '_cas': '1980'}
+om7815rr {'e_year': '1980', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'Spolu', 'e_buildtype': 'Spolu', 'hodnota': '1216.0', '_cas': '1980'}
+om7815rr {'e_year': '1980', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'bez plynovej prípojky', 'e_buildtype': 'Spolu', 'hodnota': '1195.0', '_cas': '1980'}
+om7815rr {'e_year': '1980', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'nezistený      ', 'e_buildtype': 'Spolu', 'hodnota': '20.0', '_cas': '1980'}
+om7815rr {'e_year': '1980', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'plynová prípojka     ', 'e_buildtype': 'Spolu', 'hodnota': '1.0', '_cas': '1980'}
+om7815rr {'e_year': '1991', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'Spolu', 'e_buildtype': 'Spolu', 'hodnota': '1202.0', '_cas': '1991'}
+om7815rr {'e_year': '1991', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'bez plynovej prípojky', 'e_buildtype': 'Spolu', 'hodnota': '826.0', '_cas': '1991'}
+om7815rr {'e_year': '1991', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'nezistený      ', 'e_buildtype': 'Spolu', 'hodnota': '351.0', '_cas': '1991'}
+om7815rr {'e_year': '1991', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'plynová prípojka     ', 'e_buildtype': 'Spolu', 'hodnota': '25.0', '_cas': '1991'}
+om7815rr {'e_year': '2001', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'Spolu', 'e_buildtype': 'Spolu', 'hodnota': '1169.0', '_cas': '2001'}
+om7815rr {'e_year': '2001', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'bez plynovej prípojky', 'e_buildtype': 'Spolu', 'hodnota': '378.0', '_cas': '2001'}
+om7815rr {'e_year': '2001', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'nezistený      ', 'e_buildtype': 'Spolu', 'hodnota': '397.0', '_cas': '2001'}
+om7815rr {'e_year': '2001', 'e_nuts15': 'Tisovec', 'e_nuts14': 'Okres Rimavská Sobota', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'plynová prípojka     ', 'e_buildtype': 'Spolu', 'hodnota': '394.0', '_cas': '2001'}
 HOTOVO
