@@ -1,3 +1,468 @@
-https://mestovcislach.sk/banskobystricky-kraj/rimavska-sobota/tisovec/ {'pohyb': True, 'byvanie': True, 'volby-celostatne': True, 'firmy': True, 'sluzby': True} False False False
-https://mestovcislach.sk/presovsky-kraj/poprad/vysoke-tatry/ {'pohyb': True, 'byvanie': True, 'volby-celostatne': True, 'firmy': True, 'sluzby': True} False False False
+kociek 1411
+KOCKA cr1004rs [] 2025-12-31 | Návštevníci v ubytovacích zariadeniach podľa hustoty osídlenia- ročné údaje
+KOCKA cr1811rs [] 2025-12-31 | Cesty - podľa hlavného typu ubytovania - ročne 
+KOCKA cr2001rs [] 2025-12-31 | Kapacity a výkony ubytovacích zariadení v Slovenskej republike - ročné údaje 
+KOCKA do1012rs [] 2025-12-31 | Cestná doprava - infraštruktúra, motorové vozidlá, nehody 
+KOCKA do2001rs [] 2016-12-31 | Cestné dopravné nehody 
+KOCKA do2004rs [] 2025-12-31 | Priemerná nominálna mesačná mzda zamestnanca dopravy za podniky s 20 a viac zamestnancami 
+KOCKA do2006qs [] 2026-06-30 | Priemerná nominálna mesačná mzda zamestnanca v doprave a skladovaní - štvrťročné údaje 
+KOCKA do2007ms [] 2026-06-30 | Priemerná nominálna mesačná mzda zamestnanca v doprave a skladovaní - mesačné údaje 
+KOCKA do3806rr ['e_nuts13'] 2025-12-31 | Nehodovosť 
+KOCKA ik2002qs [] 2026-06-30 | Priemerná nominálna mesačná mzda zamestnanca v informáciách a komunikácii - štvrťročné údaje 
+KOCKA ik2003ms [] 2026-06-30 | Priemerná nominálna mesačná mzda zamestnanca v informáciách a komunikácii - mesačné údaje 
+KOCKA kz1017rs [] 2020-12-31 | Trestná činnosť, násilie a vandalizmus 
+KOCKA np1103rr [] 2025-12-31 | Hrubá mzda a medián s ďalšími popisnými štatistickými charakteristikami 
+KOCKA np1105rs [] 2026-06-30 | Priemerná mzda v podnikoch s 20 a viac zamestnancami podľa ekonomickej činnosti
+KOCKA np2001rs [] 2025-12-31 | Podiely zamestnancov v pásmach hrubej mzdy podľa pracovného času a pohlavia
+KOCKA np2002rs [] 2025-12-31 | Štruktúra mzdy zamestnanca podľa ekonomických činností (SK NACE Rev. 2) 
+KOCKA np2004rs [] 2025-12-31 | Štruktúra mzdy zamestnanca podľa klasifikácie zamestnaní (SK ISCO - 08) 
+KOCKA np2005rs [] 2025-12-31 | Štruktúra mzdy zamestnanca podľa vekových skupín 
+KOCKA np2006rs [] 2025-12-31 | Štruktúra mzdy zamestnanca podľa vzdelania 
+KOCKA np2016qs [] 2021-03-31 | Priemerná nominálna mesačná mzda zamestnanca podľa ekonomických činností (SK NACE Rev. 2) 
+KOCKA np2018qs [] 2021-03-31 | Priemerná nominálna mesačná mzda zamestnanca 
+KOCKA np3101rr ['e_nuts13'] 2025-12-31 | Hrubá mzda podľa veku
+KOCKA np3102rr ['e_nuts13'] 2025-12-31 | Hrubá mzda podľa vzdelania
+KOCKA np3103rr ['e_nuts13'] 2025-12-31 | Hrubá mzda a odpracovaný čas
+KOCKA np3104rr ['e_nuts13'] 2025-12-31 | Hrubá mzda podľa ekonomickej činnosti
+KOCKA np3105rr ['e_nuts13'] 2025-12-31 | Hrubá mzda podľa druhu vlastníctva
+KOCKA np3106rr ['e_nuts13'] 2025-12-31 | Hrubá mzda podľa zamestnania
+KOCKA np3107rr ['e_nuts13'] 2025-12-31 | Čistá mzda
+KOCKA np3110rr ['e_nuts14'] 2025-12-31 | Mzdy podľa ekonomickej činnosti zistené pracoviskovou metódou
+KOCKA np3112qr ['e_nuts13'] 2026-06-30 | Priemerná mzda v hospodárstve SR
+KOCKA np3114rr ['e_nuts14'] 2008-12-31 | Mzdy zamestnancov (2001 - 2008) 
+KOCKA nu1022rs [] 2025-12-31 | Odmeny, mzdy a platy zamestnancov podľa ekonomických činností A10 
+KOCKA nu1031rs [] 2025-12-31 | Disponibilný dôchodok - Úspory a čisté pôžičky poskytnuté a prijaté 
+KOCKA nu1037rs [] 2025-12-31 | HDP dôchodkovou metódou v bežných cenách 
+KOCKA nu1043rs [] 2025-12-31 | Hrubý národný dôchodok  
+KOCKA nu1055rs [] 2025-12-31 | Odmeny, mzdy a platy zamestnancov podľa ekonomických činností A88 
+KOCKA nu1060rs [] 2021-12-31 | Penzijné nároky v systéme sociálneho zabezpečenia v SR 
+KOCKA nu1404rs [] 2025-12-31 | 10.4.1 Podiel práce na HDP zahŕňajúci mzdy a transfery sociálnej ochrany 
+KOCKA nu2025qs [] 2026-06-30 | Tvorba a použitie dôchodkov v sektore domácností v bežných cenách 
+KOCKA nu2054qs [] 2026-06-30 | Disponibilný dôchodok v bežných cenách 
+KOCKA nu2063qs [] 2026-06-30 | Tvorba a použitie dôchodkov v sektore domácností v bežných cenách - štvrťročné údaje - sezónne očistené 
+KOCKA nu3005rr ['e_nuts13'] 2024-12-31 | Účet rozdelenia prvotných dôchodkov domácností 
+KOCKA nu3006rr ['e_nuts13'] 2024-12-31 | Účet rozdelenia druhotných dôchodkov domácností 
+KOCKA ob0005ms [] 2026-08-31 | Ubytovanie (Tržby za vlastné výkony a tovar)
+KOCKA ob0301ms [] 2023-12-31 | Ubytovanie (do roku 2023) (Tržby za vlastné výkony a tovar)
+KOCKA ob1001ms [] 2023-12-31 | Tržby za vlastné výkony a tovar za vnútorný obchod, ubytovacie a stravovacie služby podľa SK NACE Rev. 2 (do r
+KOCKA ob1002qs [] 2026-06-30 | Priemerná nominálna mesačná mzda zamestnanca v obchode, hoteloch a reštauráciách - štvrťročne
+KOCKA ob1005rs [] 2025-12-31 | Vybrané ukazovatele za ubytovacie a stravovacie služby (SK NACE Rev. 2) - ročne
+KOCKA ob1802ms [] 2026-08-31 | Tržby za vlastné výkony a tovar za vnútorný obchod, ubytovacie a stravovacie služby podľa SK NACE Rev. 2
+KOCKA ob1803ms [] 2026-08-31 | Priemerná nominálna mesačná mzda zamestnanca v obchode, hoteloch a reštauráciách - mesačne
+KOCKA ob2002qs [] 2023-12-31 | Priemerná nominálna mesačná mzda zamestnanca v obchode, hoteloch a reštauráciách - štvrťročné údaje (do roku 2
+KOCKA ob2003ms [] 2023-12-31 | Priemerná nominálna mesačná mzda zamestnanca v obchode, hoteloch a reštauráciách - mesačne (do roku 2023)
+KOCKA ob2801rs [] 2022-12-31 | Vybrané ukazovatele za ubytovacie a stravovacie služby (SK NACE Rev. 2) (do roku 2022)
+KOCKA ob3003rr ['e_nuts13'] 2022-12-31 | Tržby za vlastné výkony a tovar za ubytovacie a stravovacie služby SK NACE Rev. 2 - ročne (do roku 2022)
+KOCKA ob3007rr ['e_nuts13'] 2025-12-31 | Tržby za vlastné výkony a tovar za ubytovacie a stravovacie služby SK NACE Rev. 2 
+KOCKA od0008ms [] 2026-08-31 | Priemerná mesačná mzda vo vybraných odvetviach - mesačne
+KOCKA od0009ms [] 2026-08-31 | Indexy nominálnej mesačnej mzdy vo vybraných odvetviach - mesačne
+KOCKA od0010ms [] 2026-08-31 | Indexy reálnej mesačnej mzdy vo vybraných odvetviach - mesačne
+KOCKA om7813rr ['e_nuts14', 'e_nuts15'] 2021-01-01 | SODB - Domy podľa typu a obdobia výstavby alebo rekonštrukcie 
+KOCKA pl2010rs [] 2024-12-31 | Ťažba a dodávky dreva 
+KOCKA pl2021rs [] 2024-12-31 | Zamestnanci a mzdy podľa hlavných profesií v poľnohospodárstve 
+KOCKA pm0003ms [] 2023-12-31 | Podiel priemyselných odvetví podľa príspevkov v percentuálnych bodoch na celkovom indexe za priemysel (do roku
+KOCKA pm0009ms [] 2023-12-31 | Indexy za priemernú mesačnú mzdu (priemerný mesiac roku 2015=100) - mesačne (do roku 2023)
+KOCKA pm0046ms [] 2026-08-31 | Indexy za priemernú mesačnú mzdu v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne
+KOCKA pm1005qs [] 2026-06-30 | Priemerná nominálna mesačná mzda zamestnanca v priemysle podľa SK NACE Rev. 2 - štvrťročne
+KOCKA pm1011rs [] 2025-12-31 | Zamestnanci, mzda a produktivita práce za podniky s 20 a viac zamestnancami podľa SK NACE Rev. 2 - ročne 
+KOCKA pm1805ms [] 2026-08-31 | Priemerná nominálna mzda zamestnanca v priemysle podľa SK NACE Rev. 2 - mesačne
+KOCKA pm2002qs [] 2023-12-31 | Priemerná nominálna mesačná mzda zamestnanca podľa SK NACE Rev. 2 - štvrťročne (do roku 2023)
+KOCKA pm2003ms [] 2023-12-31 | Priemerná nominálna mesačná mzda zamestnanca podľa SK NACE Rev. 2 - mesačne (do roku 2023)
+KOCKA pr0203ms [] 2021-12-31 | Indexy reálnej mesačnej mzdy vo vybraných odvetviach podľa mesiacov (do roku 2021) - mesačne 
+KOCKA pr0204qs [] 2026-06-30 | Priemerná mesačná mzda v hospodárstve SR
+KOCKA pr0205qs [] 2026-06-30 | Priemerná mesačná mzda podľa odvetví
+KOCKA pr2001rs [] 2025-12-31 | Evidovaná nezamestnanosť na úradoch práce, sociálnych vecí a rodiny 
+KOCKA ps1002rs [] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa vekových skupín a pohlavia
+KOCKA ps1003rs [] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa ekonomickej aktivity (vo veku 18 rokov a viac)
+KOCKA ps1004rs [] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa príjmového kvintilu
+KOCKA ps1005rs [] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa najvyššieho dosiahnutého vzdelania (vo veku 18
+KOCKA ps1006rs ['e_citizen'] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia podľa občianstva (vo veku 18 rokov a viac)
+KOCKA ps1007rs ['e_birthcount'] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia podľa krajiny narodenia (vo veku 18 rokov a viac)
+KOCKA ps1013rs [] 2025-12-31 | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa vekových skupín a pohlavia
+KOCKA ps1014rs [] 2025-12-31 | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa ekonomickej aktivity (vo veku 18 rokov a via
+KOCKA ps1015rs [] 2025-12-31 | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa príjmového kvintilu
+KOCKA ps1016rs [] 2025-12-31 | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa najvyššieho dosiahnutého vzdelania (vo veku 
+KOCKA ps1017rs ['e_citizen'] 2025-12-31 | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa občianstva (vo veku 18 rokov a viac)
+KOCKA ps1018rs ['e_birthcount'] 2025-12-31 | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa krajiny narodenia (vo veku 18 rokov a viac)
+KOCKA ps1019rs [] 2025-12-31 | Miera materiálnej a sociálnej deprivácie v členení podľa vekových skupín a pohlavia
+KOCKA ps1020rs [] 2025-12-31 | Miera materiálnej a sociálnej deprivácie v členení podľa ekonomickej aktivity (vo veku 18 rokov a viac)
+KOCKA ps1025rs [] 2025-12-31 | Miera materiálnej a sociálnej deprivácie v členení podľa najvyššieho dosiahnutého vzdelania (vo veku 18 rokov 
+KOCKA ps1026rs ['e_citizen'] 2025-12-31 | Miera materiálnej a sociálnej deprivácie v členení podľa občianstva (vo veku 18 rokov a viac)
+KOCKA ps1027rs ['e_birthcount'] 2025-12-31 | Miera materiálnej a sociálnej deprivácie v členení podľa krajiny narodenia (vo veku 18 rokov a viac)
+KOCKA ps1028rs [] 2025-12-31 | Miera materiálnej a sociálnej deprivácie v členení podľa príjmového kvintilu
+KOCKA ps1835rs [] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa typu domácnosti 
+KOCKA ps1836rs [] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa vekových skupín a pohlavia 
+KOCKA ps1837rs [] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa najčastejšieho statusu ekonomickej aktivity a 
+KOCKA ps1855rs [] 2025-12-31 | Využitie webových stránok alebo aplikácií na zabezpečenie ubytovania v priebehu posledných 3 mesiacov podľa ve
+KOCKA ps1856rs [] 2025-12-31 | Využitie webových stránok alebo aplikácií na zabezpečenie ubytovania 
+KOCKA ps2035rs [] 2025-12-31 | Miera rizika chudoby pred sociálnymi transfermi okrem starobných a pozostalostných dávok podľa vekových skupín
+KOCKA ps2036rs [] 2025-12-31 | Miera rizika chudoby pred sociálnymi transfermi podľa pohlavia a vekových skupín (vrátane starobných a pozosta
+KOCKA ps3004rr ['e_nuts13'] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa krajov
+KOCKA ps3005rr ['e_nuts13'] 2025-12-31 | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa krajov
+KOCKA ps3008rr ['e_nuts13'] 2025-12-31 | Miera materiálnej a sociálnej deprivácie v členení podľa krajov
+KOCKA ps3811rr ['e_nuts13'] 2020-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa krajov (do roku 2020)
+KOCKA ps3814rr ['e_nuts13'] 2025-12-31 | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa krajov 
+KOCKA ra1004rs [] 2024-12-31 | Sociálna štatistika a zdravie 
+KOCKA ra1007rs [] 2024-12-31 | Kriminalita, násilie a súdnictvo 
+KOCKA ra1010rs [] 2024-12-31 | Obete trestných činov 
+KOCKA sk1001rs [] 2025-12-31 | Vývoj počtu trestných činov v základných skupinách a druhoch 
+KOCKA sk1002rs [] 2025-12-31 | Páchatelia trestných činov 
+KOCKA sk2001rs [] 2015-12-31 | Kriminalita 
+KOCKA sk2002rs [] 2015-12-31 | Páchatelia trestných činov a škody spôsobené kriminalitou 
+KOCKA sk2003rs [] 2015-12-31 | Trestné činy podľa skupín a druhov 
+KOCKA sk3002rr ['e_nuts13'] 2025-12-31 | Násilné a majetkové trestné činy 
+KOCKA sk3003rr ['e_nuts13'] 2025-12-31 | Kriminalita podľa základných skupín trestných činov 
+KOCKA so1002rs [] 2025-12-31 | Sadzby poistného na povinné sociálne poistenie v % z vymeriavacieho základu príslušného roka  
+KOCKA so1003qs [] 2025-12-31 | Povinné sociálne poistenie - príjmy a výdavky  - medziročné porovnanie 
+KOCKA so2001rs [] 2025-12-31 | Neinvestičné výdavky na sociálnu pomoc 
+KOCKA so2002rs [] 2024-12-31 | Poberatelia vybraných dávok sociálnej ochrany 
+KOCKA so2003rs [] 2025-12-31 | Počet vyplácaných dôchodkov, priemerná výška a dávky dôchodkového zabezpečenia 
+KOCKA so2004rs [] 2025-12-31 | Počet zmlúv, poistencov a poberateľov dávok v doplnkových dôchodkových poisťovniach 
+KOCKA so2005rs [] 2025-12-31 | Príjmy a výdavky doplnkových dôchodkových fondov 
+KOCKA so2006rs [] 2023-12-31 | Príjmy na sociálnu ochranu 
+KOCKA so2007rs [] 2025-12-31 | Systémové dávky nemocenského poistenia podľa druhu - ročné údaje 
+KOCKA so2008qs [] 2026-06-30 | Systémové dávky nemocenského poistenia podľa druhu - štvrťročné údaje 
+KOCKA so2009rs [] 2025-12-31 | Štátne sociálne dávky a štátom hradené dávky nem. poistenia a dôchodkového zabezpečenia 
+KOCKA so2010rs [] 2023-12-31 | Výdavky na sociálnu ochranu 
+KOCKA so2013rs [] 2025-12-31 | Príjmy a úhrady Sociálnej poisťovne - ročné údaje 
+KOCKA so2014qs [] 2026-06-30 | Príjmy a úhrady Sociálnej poisťovne - štvrťročné údaje 
+KOCKA so3002rr ['e_nuts13'] 2025-12-31 | Vyplatené dôchodky 
+KOCKA so3801rr ['e_nuts14'] 2025-12-31 | Výdavky na dôchodky 
+KOCKA so3804rr ['e_nuts13'] 2024-12-31 | Príjmy do fondov Sociálnej poisťovne 
+KOCKA so3805rr ['e_nuts13'] 2024-12-31 | Výdavky Sociálnej poisťovne 
+KOCKA sp1026ms [] 2026-09-30 | Indexy spotrebiteľských cien (domácnosti dôchodcov) k trom základom - mesačne
+KOCKA sp1804ms [] 2025-12-31 | Indexy spotrebiteľských cien (životných nákladov) - dôchodcovia - mesačne 
+KOCKA st0003qs [] 2026-06-30 | Výstavba a úbytok bytov 
+KOCKA st1002ms [] 2023-12-31 | Vybrané ukazovatele o práci a mzdách v stavebníctve (do roku 2023)
+KOCKA st1003ms [] 2023-12-31 | Stavebná produkcia v tuzemsku podľa vecnej štruktúry a smerov výstavby (SK NACE Rev. 2) (do roku 2023)
+KOCKA st1005ms [] 2026-08-31 | Vybrané ukazovatele o práci a mzdách v stavebníctve - mesačne
+KOCKA st1006ms [] 2026-08-31 | Stavebná produkcia v tuzemsku podľa vecnej štruktúry a smerov výstavby (SK NACE Rev. 2) - mesačne
+KOCKA st1007ms [] 2026-08-31 | Priemerná mesačná mzda zamestnanca v stavebníctve (medziročný index) - mesačne
+KOCKA st1013rs [] 2025-12-31 | Priemerná nominálna mesačná mzda zamestnanca v stavebníctve - ročné údaje
+KOCKA st1014rs [] 2025-12-31 | Stavebná produkcia vykonaná vlastnými zamestnancami, produktivita práce, zamestnanosť a priemerná mzda podľa v
+KOCKA st1807ms [] 2023-12-31 | Priemerná mesačná mzda zamestnanca v stavebníctve (do roku 2023)
+KOCKA st2001rs [] 2025-12-31 | Dokončené byty podľa počtu izieb a priemernej plochy - ročné údaje 
+KOCKA st2002qs [] 2026-06-30 | Dokončené byty podľa počtu izieb a priemernej plochy - štvrťročné údaje 
+KOCKA st2003rs [] 2022-12-31 | Priemerná nominálna mesačná mzda zamestnanca v stavebníctve - ročne (do roku 2022)
+KOCKA st2017rs [] 2022-12-31 | Stavebná produkcia vykonaná vlastnými zamestnancami, produktivita práce, zamestnanosť a priemerná mzda podľa v
+KOCKA st2021rs [] 2025-12-31 | Začaté, dokončené a rozostavané byty podľa druhu vlastníctva - ročné údaje 
+KOCKA st2022qs [] 2026-06-30 | Začaté, dokončené a rozostavané byty podľa druhu vlastníctva - štvrťročné údaje 
+KOCKA st3802rr ['e_nuts14'] 2025-12-31 | Byty - dokončené podľa počtu izieb 
+KOCKA ts1001ms [] 2026-08-31 | Priemerná nominálna mesačná mzda zamestnanca vo vybraných trhových službách (medziročný index) - mesačne
+KOCKA ts1003qs [] 2026-06-30 | Priemerná nominálna mesačná mzda zamestnanca vo vybraných trhových službách - štvrťročne
+KOCKA ts1801ms [] 2023-12-31 | Priemerná nominálna mesačná mzda zamestnanca vo vybraných trhových službách - mesačne (do roku 2023)
+KOCKA ts2002qs [] 2023-12-31 | Priemerná nominálna mesačná mzda zamestnanca vo vybraných trhových službách - štvrťročné údaje (do roku 2023)
+KOCKA ts2003ms [] 2021-12-31 | Priemerná nominálna mesačná mzda zamestnanca vo vybraných trhových službách - mesačné údaje 
+KOCKA vt1807rs [] 2025-12-31 | Výdavky na výskum a vývoj podľa sociálno-ekonomických cieľov 
+KOCKA zd1814rs [] 2019-12-31 | Zranenie spôsobené úrazom alebo nehodou 
+NKOD 81510a6e-1149-4208-a70b-9728ec2757a4 | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za územné obvody
+NKOD 49d34b91-0dfe-44a1-b4a5-ce3cdcc639f4 | Štatistika kriminality v Slovenskej republike za rok 2002
+NKOD 85e1fd2c-d0ec-4105-b0a6-f1edb368479b | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov za obce
+NKOD 1b5fcc8a-667a-4aba-bcfa-fa8f90b6e960 | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa samosprávnych krajov
+NKOD 4048cf7b-19d0-4353-9934-ec5ef23d3368 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za obce - horizontálny pohľad
+NKOD 600661b3-ef59-4e36-ac4e-d54dbf7355f0 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okrsky
+NKOD c5186c79-dd76-41a0-b507-0795fefbc107 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za SR
+NKOD 6975358e-24cd-4d48-bbc1-9a062fe7414e | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR podľa okresov
+NKOD f3d1d28f-6528-45d1-9d89-a9f3d0cbb821 | Počet a podiel platných hlasov odovzdaných pre politické strany za SR
+NKOD 7363cd51-8991-47e9-a49f-ea371c5ddae3 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa okresov
+NKOD 249688fd-d098-48b7-aab2-e722e6792038 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okrsky
+NKOD 224284ce-fce8-48ff-a163-8326cdbeec21 | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov za okrsky
+NKOD 8961d10f-d3ba-4301-a3d6-0901a00371d3 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za kraje
+NKOD ecf4e9fe-db11-451d-b615-c6da24257502 | 24_Zoznam pojednávaní na okresných a krajských súdoch v trestnej agende
+NKOD 4ddaa292-1825-46c6-9bd0-ae87e62bd35c | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa samosprávnych krajov
+NKOD 22e178a3-1a68-4a6a-90be-e6729c7efc69 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okrsky - horizontálny pohľad
+NKOD 371f420c-4d29-4123-8db1-cb9dab742186 | Kriminalita podľa základných skupín trestných činov
+NKOD 32a70347-ad88-4a34-9f38-deef50c4ce7a | Počet a podiel platných hlasov odovzdaných pre politické strany za SR
+NKOD cb8091af-486d-4889-b3a7-675fb958c9f9 | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta SR a za SR
+NKOD b07ce1d7-d36a-486d-abee-20cd447896ec | Počet a podiel platných hlasov odovzdaných pre politické subjekty za kraje - horizontálny pohľad
+NKOD 28eea696-6e4c-47df-a825-58540897bab5 | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa jednotlivých samosprávnych krajov
+NKOD 18d395d8-c2d5-4fbd-a035-f65dfb78e882 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za SR
+NKOD b72317d4-057e-4220-84a0-c1ea415812e3 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obvodov, krajov a SR
+NKOD b1e328d2-4b79-4765-878a-92c16d24214e | Povodňové škody
+NKOD 010af4cb-2d06-4e12-80df-8564cbafd209 | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR podľa obcí
+NKOD 50ab4d1e-84d4-4fed-8b75-d87c439ff190 | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa samosprávnych krajov
+NKOD 87384cb1-6484-4b40-b18b-e0a2422b8060 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za obce - horizontálny pohľad
+NKOD eff2c3f9-55ac-4177-bf15-aec0504b6763 | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za kraje
+NKOD c8ebf0c0-782c-45c0-9263-443ee274cf24 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za územné obvody - horizontálny pohľad
+NKOD 2f327f84-cd59-4337-9685-cab950e968dd | Počet a podiel platných hlasov odovzdaných pre politické subjekty za SR
+NKOD c6e40222-fc79-4d7f-bd08-d898ed3c7d1c | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR podľa obvodov
+NKOD 174741b5-6e5a-4e12-8679-362df18a5350 | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov za volebné obvody
+NKOD 5ebe5578-d0fb-409f-8f40-2d511d93e87c | Počet a podiel platných hlasov odovzdaných pre politické strany za SR
+NKOD 9276bbcd-6d85-4cd9-9655-eb118c1b938e | Súhrnné výsledky hlasovania vo voľbe prezidenta SR, počet a podiel platných hlasov odovzdaných pre kandidátov na prezide
+NKOD b1287ed6-f0e4-499c-a3e0-6fd7e82770ba | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR za SR
+NKOD 313c8d9f-5d41-4aae-8ab8-8076cfcc5639 | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov za kraje
+NKOD 89c6e23c-29ed-4b23-a636-b3bd579528b4 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa okresov, krajov a SR
+NKOD cc413d04-71b7-438e-93ac-2e419c15bd22 | Chránené územia (INSPIRE Linked Data)
+NKOD dc6845c9-740d-4469-9de7-e84ad4c04105 | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR podľa obvodov
+NKOD 10c1fc19-bfb6-44ac-8cf6-c221b12de987 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obvodov a obcí
+NKOD a5a94e6d-1438-4c3f-8b50-91e7dadfdc6f | Chránené územia v Slovenskej republike
+NKOD b584efa0-4315-4008-899c-2e1a08bfeee3 | Centrálny register poskytovateľov sociálnych služieb
+NKOD d68e142f-1da8-4bfe-b81e-e980a8446f92 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okresy
+NKOD 7570fa30-982f-49fd-b87e-4e1c95254aa7 | Tvrdošín Autobusové zastávky
+NKOD 46eeb8df-b31f-4191-9b69-26073de9e6f7 | Zoznam prijímateľov podielu zaplatenej dane pre rok príjmu 2023
+NKOD e1b08b42-5172-4a59-b712-4b00dbbbaff9 | INSPIRE - Chránené územia
+NKOD 14e30f3e-1b01-41e0-ab0f-f2f1d00ae913 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa krajov
+NKOD 44f307f2-7c86-416f-aed1-293f6d4ddccb | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za okrsky
+NKOD 3c57bcdc-5205-47ec-a795-74bc60acce45 | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR podľa obvodov a za SR
+NKOD 7c467338-3ae7-43c9-8ae5-a4b17cb5329c | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR a za
+NKOD 7d0054f9-4bd1-4e93-b845-da4faf220f47 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obcí
+NKOD 7b4f96356198932d39fad77ed85f6254 | Štatistika návštevnosti MFSR - Štatistika návštevnosti webu podľa internetového prehliadača (denne)
+NKOD 7b4f96356198932d39fad77ed85f6254 | Visitors Statistics MFSR - Website traffic statistics by internet browser (daily)
+NKOD 4021acf6-d1a2-4dae-8017-4359e268abfa | Počet a podiel platných hlasov odovzdaných pre kandidátov na poslancov za okrsky
+NKOD 8ef936b3-6cf7-46cb-8753-3a880f52313a | Štatistika kriminality v Slovenskej republike za rok 2014
+NKOD f3452f16-2c8e-4279-a980-2bfa93458862 | Chránené ložiskové územia
+NKOD ae3f2601-fe2e-4c5d-bb61-fc551e70db02 | Štatistika kriminality v Slovenskej republike za rok 2001
+NKOD d7ecc0f0-16e9-4a66-b604-fd7b353f31a2 | Počet a podiel platných hlasov odovzdaných pre politické strany
+NKOD 318f75b0-ca06-4a25-84e5-67547e463a5f | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obcí
+NKOD 93012fdf-d8f2-4916-bf13-2ecfdc56aafe | Počet a podiel platných hlasov odovzdaných pre politické subjekty za mestá, mestské časti a obce - horizontálny pohľad
+NKOD 92f97ff7-c7d4-4676-bba3-e575eb83342d | Počet a podiel platných hlasov odovzdaných pre politické subjekty podľa obcí a za Slovenskú republiku
+NKOD 6e4f06fc-dd60-45eb-aa5f-b509e304658c | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR a za SR
+NKOD 562f7bb6-b786-44dc-91c9-8e3c6a1fd47a | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa obcí
+NKOD 84e97246-8e82-4b0b-b6d9-d2523ed39d90 | Štatistika kriminality v Slovenskej republike za rok 2016
+NKOD d7ee0276-e62f-4428-87d4-0a20e6ed835d | Počet a podiel platných hlasov odovzdaných pre politické strany podľa okresov a obcí
+NKOD c7773d72-51a9-4c35-b779-d041a3ec4744 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa okresov
+NKOD ebdeab26-3db6-469f-9d4f-8d3faacebeaa | Štatistika kriminality v Slovenskej republike za rok 2005
+NKOD 3bee9ff8-e632-45c4-8435-c343d2c5a7fa | Počet a podiel platných hlasov odovzdaných pre kandidátov na poslancov podľa obcí
+NKOD 6049a8ac-fb7f-4efe-8080-4410094488b5 | Štatistika kriminality v Slovenskej republike za rok 1998
+NKOD 1746b129-5a10-4350-8375-6362873c4f4a | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obvodov, krajov a SR
+NKOD 85570ede-8765-4f3f-bf1f-5e0f266c4c0e | Poskytovatelia sociálnych služieb
+NKOD 0fe569dc-f085-4029-8597-64fd1c83f75b | Počet a podiel platných hlasov odovzdaných pre politické subjekty za obce
+NKOD 76fe6a91-719e-4409-810f-b0daa602565b | Počet a podiel platných hlasov odovzdaných pre politické subjekty za obce
+NKOD 301f2ec9-a6da-448e-aaea-d10c825aa00e | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za kraje
+NKOD e0f12881-7704-4c80-9710-44b67b5e68d3 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okresy
+NKOD 0e97dc51-8043-43fb-b1bc-56d69eabedb6 | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa samosprávnych krajov
+NKOD 94b0dc12-8039-4e37-ba58-e3f3db56df7b | Štatistika kriminality v Slovenskej republike za rok 2017
+NKOD acb681b8-86cf-4ec5-b783-ffc664207470 | Štatistika kriminality v Slovenskej republike za rok 2000
+NKOD c1d6eab6-012e-4b68-8a4d-242fb9d072fc | Počet a podiel platných hlasov odovzdaných pre politické subjekty podľa okresov a za Slovenskú republiku
+NKOD 3ee000c1-3a05-40d0-88ad-185c4d01efc3 | Štatistika kriminality v Slovenskej republike za rok 2008
+NKOD 07f61d86-a28c-4adf-824c-4ae738014257 | Cestovné poriadky
+NKOD bb2f82d4-395e-47ae-93d0-0603cf3477ee | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za územné obvody
+NKOD c168b775-1644-42c2-b09d-201ecbc67c66 | Počet a podiel platných hlasov odovzdaných pre kandidátov na poslancov podľa volebných obvodov
+NKOD 35cc7e20-34f0-4e0d-a7cc-b0e5782b7a08 | Počet a podiel platných hlasov odovzdaných pre politické subjekty podľa obvodov a za Slovenskú republiku
+NKOD 2ce4603f-e0d4-4546-9038-adad6503ad78 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za kraje
+NKOD 6474c13e-50e5-44f5-b084-8c04adefc429 | Počet a podiel platných hlasov odovzdaných pre kandidátov na poslancov podľa okrskov
+NKOD 7c310d4a-cba9-4481-b06c-b6c6ee2d9c0c | Územie mesta Prešov ohrozené povodňami - geo data
+NKOD 4ed472ba-8031-49aa-8142-cd8c1e776d4f | Počet a podiel platných hlasov odovzdaných pre kandidátov na poslancov za obce
+NKOD c637be3a-dc8c-4e61-8330-7074f127a4b7 | Štatistika kriminality v Slovenskej republike za rok 2006
+NKOD 5deca2c9-58da-4b87-9a6e-845212afd9a2 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za územné obvody - horizontálny pohľad
+NKOD b2b7595f-1b79-4fea-8a19-dc5251a5b05f | Počet a podiel platných hlasov odovzdaných pre kandidátov na poslancov za volebné obvody
+NKOD c56b5b09-5850-440f-bc4e-10c6fab664ff | Štátny zoznam osobitne chránených častí prírody SR
+NKOD f5bbcf3b-7104-49e1-9e8a-a5843afb65ba | Počet a podiel platných hlasov odovzdaných pre politické strany podľa okresov
+NKOD 5aeb428c-a08f-42fa-ad56-a40255525449 | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za okresy
+NKOD 8324ba2f-9dc5-4c08-ba7f-c31894adb7ad | Štatistika kriminality v Slovenskej republike za rok 2012
+NKOD e6361d66-2736-46e4-9041-a2b5ff6a3067 | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za obce
+NKOD 337e63dc-ba68-4b84-9474-068c92cdd9a4 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obvodov
+NKOD 5c404331-cb1d-4542-965d-4e2960f9b922 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okrsky - horizontálny pohľad
+NKOD 63f78a5e-72d2-443c-8df4-96436a1c568f | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa okrskov
+NKOD 1da71c4f-ca6d-4a4a-9ce9-f55bdb550d24 | Obete trestných činov
+NKOD 003bd3a8-e5ad-4f09-80ab-cff6ee95354a | Štatistika kriminality v Slovenskej republike za rok 2013
+NKOD 13a5d930-de97-44a2-a2aa-3ea68826344b | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obcí a okresov
+NKOD 36f903fe-f8ca-4834-82fe-817579b03d26 | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za okrsky
+NKOD 7b4b436d-edf9-40da-9d1d-f494184a8d3c | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okresy - horizontálny pohľad
+NKOD a1500cb9-bb95-4747-a220-232d0ad7d0f6 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okresy - horizontálny pohľad
+NKOD 3e307f90-8772-4d7f-baac-72304460fdf0 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa krajov
+NKOD 735e8b5b-53f3-4d58-b77a-21df5ff63762 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obvodov, krajov a SR
+NKOD f6db9414-7ebb-4a22-8fa2-85e5ad41ab2d | Počet a podiel platných hlasov odovzdaných pre politické strany podľa okresov a obcí
+NKOD c75e30f8-8526-47e8-8afa-c27aef251180 | Štatistika kriminality v Slovenskej republike za rok 2015
+NKOD 392b4689-d31e-49e3-8d03-6ff25c2fe128 | Vybrané ukazovatele rodovej rovnosti - Kriminalita, násilie a súdnictvo
+NKOD a157ab42-5b10-4ac9-b5c5-191bb8f3b113 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za kraje - horizontálny pohľad
+NKOD ff72ec01-352b-4e11-916b-819d14012adc | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za SR
+NKOD bc840a6e-7e82-47ad-882d-7b4603063ea1 | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR podľa okresov
+NKOD a2fecdac-eb5a-43c2-b740-23c03d5a68e5 | Počet a podiel platných hlasov a platných prednostných hlasov odovzdaných pre politické strany
+NKOD b4fea1a2-411f-4a47-8d31-759c93796952 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za obce
+NKOD fc97df26-6da9-4843-ac2c-92e3b35cc814 | Štatistika kriminality v Slovenskej republike za rok 2003
+NKOD e60b81cd-95a1-4a71-a620-d0fbcc4ed5af | Súhrnné výsledky hlasovania vo voľbe prezidenta SR, počet a podiel platných hlasov odovzdaných pre kandidátov na prezide
+NKOD aa067a96-743a-4ccf-9cf9-576600c0435c | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa samosprávnych krajov
+NKOD 4b8fc7b1-ba62-42d9-8ecf-40224beeb94a | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR podľa okresov a za SR
+NKOD ffa473ce-2828-4a9c-ae52-29fc79f07c50 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okresy
+NKOD 584cd8f6-8dfe-4f2b-bc86-80c05e88eeee | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za obce
+NKOD ea5b781a-3520-4b2c-a0e8-4571b8d81f8d | Štatistika kriminality v Slovenskej republike za rok 2011
+NKOD 70a35681-3e37-4047-8760-80b2c64cceab | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obcí a obvodov
+NKOD 89abbd6a-b9f0-4176-b48c-60e2ece99e60 | Štatistika kriminality v Slovenskej republike za rok 2004
+NKOD f6292fe4-f5b5-4870-a2f9-fc680b4d1fa2 | Štatistika kriminality v Slovenskej republike za rok 2007
+NKOD d68b4e5c-2c3e-4049-afb7-5c647cc0e7dd | Počet a podiel platných hlasov odovzdaných pre politické subjekty za kraje
+NKOD 71e8915f-bdb0-4bdc-bf35-c81fd4bf72eb | Zodpovední zástupcovia poskytovateľov sociálnych služieb
+NKOD 19076bff1d8d223545336799b6948faa | Štatistika návštevnosti Open Data MFSR - Štatistika návštevnosti webu podľa internetového prehliadača (denne)
+NKOD 19076bff1d8d223545336799b6948faa | Visitors Statistics Open Data MFSR - Website traffic statistics by internet browser (daily)
+NKOD a6fe8649-f6d1-4b7a-9634-3a4f7b8ab167 | Štatistika kriminality v Slovenskej republike za rok 2018
+NKOD 80fc9429-e166-4bd5-926a-b916e8bfc351 | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa samosprávnych krajov
+NKOD ca4cb74c-7192-4198-b074-34acd9d295e7 | Grafikon vlakovej dopravy vo formáte GTFS
+NKOD 0c62aae3-4fbc-48b8-8142-ff0f2721b156 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za SR
+NKOD b7fa0afe-c84d-41d2-a24e-24a1ed4e6884 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okrsky
+NKOD 03260f6e-634b-471d-a5ea-b8b0726978b2 | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa samosprávnych krajov
+NKOD 1f093e41-2c2b-4074-9e95-3af08b8743e2 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obcí a okresov
+NKOD 7d66efc5-507f-4f53-9eeb-69b4564a01a3 | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za SR
+NKOD 2402ecea-4baf-482a-aa91-1352f34dec85 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa okresov
+NKOD 329a04d7-ee46-4130-a8d8-bc66c6763885 | Súhrnné výsledky hlasovania vo voľbe prezidenta SR, počet a podiel platných hlasov odovzdaných pre jednotlivých kandidát
+NKOD 4daaa5a9-8ec0-486b-9b87-2e5e11041be4 | ŠTATISTIKY  KRIMINALITY
+NKOD 110a28f9-6af9-489e-88f5-47730a43c607 | Počet a podiel platných hlasov odovzdaných pre jednotlivých kandidátov na prezidenta SR podľa obcí
+NKOD c1ac7d95-0033-4c03-93b4-4985d8a62f71 | Štatistika kriminality v Slovenskej republike za rok 1997
+NKOD 783691c3-6ef3-4e25-8e92-dceabd503379 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa okresov, krajov a SR
+NKOD c360db5b-e739-4dad-aae6-7d521c710034 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za mestá, mestské časti a obce - horizontálny pohľad
+NKOD 8681b851-108c-4b76-b252-2c8c4dc9562b | Počet a podiel platných hlasov odovzdaných pre politické subjekty za územné obvody
+NKOD 9c57a895-eb22-44a7-b9f9-262703f25e50 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa obcí a obvodov
+NKOD 39239f16-6b7a-402f-8765-51b4a8e48fff | Súhrnné výsledky hlasovania vo voľbe prezidenta SR, počet a podiel platných hlasov odovzdaných pre kandidátov na prezide
+NKOD 64d60260-9b01-497b-afa5-0df154623c19 | Počet a podiel platných hlasov odovzdaných pre politické strany podľa okresov, krajov a SR
+NKOD 911fc280-82dd-4749-91a6-7a5f0294f4b0 | Štatistika kriminality v Slovenskej republike za rok 1999
+NKOD be53fa54-743b-487f-9109-4432e2dbe177 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za územné obvody
+NKOD 4dbb3806-6be0-4d2b-ab8e-8e0613b8cde9 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za územné obvody
+NKOD c6c1ce07-41bb-49d9-9696-b55d2b1843ef | Počet a podiel platných hlasov odovzdaných pre politické strany za SR
+NKOD c2c809ce-6f64-4b94-8377-d1f76366b1d1 | Štatistika kriminality v Slovenskej republike za rok 2009
+NKOD 5209f25f-e072-4880-b35e-b38c9a4b5d7d | Počet a podiel platných hlasov odovzdaných pre politické subjekty za Slovenskú republiku
+NKOD 69e185c3-22cf-4c7f-a1fd-597fdf3ccc11 | Štatistika kriminality v Slovenskej republike za rok 2010
+NKOD 33579c06-491c-41de-94d7-4aafb35c0f5f | Počet a podiel platných hlasov odovzdaných pre kandidátov na prezidenta Slovenskej republiky za okresy
+NKOD 56ccfd5e-2669-469f-81b2-2efb090f609e | Počet a podiel platných hlasov odovzdaných pre kandidátov na predsedov podľa volebných obvodov
+NKOD 212d82d4-92b9-4ee5-97a1-54c980134d28 | Autobusové zastávky
+NKOD b8ff38a9-9069-41f4-905a-a35bf4d4e436 | Základný číselník CL010122 - Druh chránenej nehnuteľnosti
+NKOD 273999051397861fa3864edecc2ad3e8 | Autobusové zastávky
+NKOD 34894ee71a9b003739d706cb27a34264 | Autobusové zastávky - zastrešujúci dataset
+NKOD 16f5724d7850fe6396a2738829e71de4 | Autobusové zastávky - Apríl 2024
+NKOD 6a8080e3b037ea937d70afa2cef8469e | Autobusové zastávky - Máj 2024
+NKOD f1fb6909-8b85-46e1-b3d5-808f6e340739 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za kraje
+NKOD 59d49a50-19ba-4c40-9ed1-c42d93848bd5 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za SR
+NKOD 5503e477-e45c-46f1-be14-dd9c7c84fc50 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okrsky
+NKOD 9f84dad7-cce2-4742-ac62-2186a6a908dc | Počet a podiel platných hlasov odovzdaných pre politické subjekty za mestá, mestské časti a obce
+NKOD 6b04b30f-c9e3-4705-ac6b-022976231f58 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za obce
+NKOD 02b19b04-b359-46b7-86d2-8ed1c944b042 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okrsky
+NKOD 6e20aa63-724b-456a-837f-1c69069d7a96 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okrsky
+NKOD 270d8a54-7339-4f3a-aa9b-b84cb46b2ac3 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za kraje
+NKOD f1961d83-9dfb-4cdf-bcca-c5ce432aede0 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za kraje
+NKOD a20d507a-78a2-4b42-9fa5-58286e41032a | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okresy
+NKOD c0239c61-707c-4489-998c-8343e5ae1a09 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okresy
+NKOD c6b3b408-40d0-4503-9234-d886e82ed183 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za územné obvody
+NKOD fd0a38e2-9abe-4873-9acb-73f845a107d3 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za územné obvody
+NKOD 9adb1b62-86b9-409a-a083-43782e94582a | Počet a podiel platných hlasov odovzdaných pre politické subjekty za SR
+NKOD c3a8502c-1310-47aa-9186-0466409855b4 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za obce
+NKOD 4b513a20-836d-4e63-a797-4fe80cd1a434 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za územné obvody
+NKOD 0e2d2f0a-4d3a-466b-b528-3afbf619f144 | Počet a podiel platných hlasov odovzdaných pre politické subjekty za okresy
+NKOD a030a14c-78c1-4eef-879c-e7b7e65ad98f | Počet a podiel platných hlasov odovzdaných pre politické subjekty za obce
+NKOD d3fd6434-0ebb-44c1-990f-4543f38d1f4d | Počet a podiel platných hlasov odovzdaných pre kandidátov za územné obvody
+NKOD 353a6f10-c2ba-4a19-881e-4b1d27e5a0bb | Počet a podiel platných hlasov odovzdaných pre kandidátov za obce
+NKOD 177ae9ec-262c-432f-954c-3c82f5a8cce2 | Počet a podiel platných hlasov odovzdaných pre kandidátov za okresy
+NKOD 24f83913-be4b-460e-8d4a-f6e390ef24c4 | Počet a podiel platných hlasov odovzdaných pre kandidátov za okrsky
+NKOD 5d0a2de2-5506-46ee-9fe3-542f8c33b34a | Počet a podiel platných hlasov odovzdaných pre kandidátov za okresy
+NKOD cbcab74f-2b36-454b-b93a-6b01a6d0ed80 | Počet a podiel platných hlasov odovzdaných pre kandidátov za kraje
+NKOD 4ad62666-9356-4857-a82c-a594b10d40fe | Počet a podiel platných hlasov odovzdaných pre kandidátov za územné obvody
+NKOD 70a17157-7d9f-432f-84f2-434b5700d4ba | Počet a podiel platných hlasov odovzdaných pre kandidátov za SR
+NKOD 1c5fb218-8cf0-4924-9cd0-fc2268de2fff | Počet a podiel platných hlasov odovzdaných pre kandidátov za obce
+NKOD 90f90a67-6fd3-422f-8384-f678270d036b | Počet a podiel platných hlasov odovzdaných pre kandidátov za SR
+NKOD 33cf8fe5-c080-44ab-a3d8-0de6de987e10 | Počet a podiel platných hlasov odovzdaných pre kandidátov za kraje
+NKOD fee004bf-6da2-4451-af14-8e73bc1331ed | Počet a podiel platných hlasov odovzdaných pre kandidátov za okrsky
+NKOD f897ef66da2e2114832d9f64c48c1212 | Autobusové zastávky - Jún 2024
+NKOD 2d9c2141-5870-4365-9e41-9edb1cbac639 | Chránené stromy v TTSK ŠOPSR
+NKOD 10b7b616-266e-46bb-8d72-cb4e163a3d3b | Neverejní poskytovatelia sociálnych služieb v TTSK
+NKOD e57f8fa6-ea74-4320-a294-320d7489ad96 | Zariadenia sociálnych služieb TTSK
+NKOD 115cdd805d934c59c50451920229301e | INSPIRE - Verejné a štátne služby - Centrálny register poskytovateľov sociálnych služieb
+NKOD 4728aea4-ab8a-40ab-98db-ad32afe40041 | Lokalizačný register ochranných zón pre výskyt povodní a ochranných zón pri výskyte čpavku
+NKOD 1a9c74d0040d5c9ae69b513f36928574 | Ochranné pásmo ropovodov
+NKOD 1395c5a8d28c93c7189a818e8e4cc48e | Povodia vodárenských tokov
+NKOD cd220677ed982cf4f7c0f809bacc9b57 | Centrálny register poskytovateľov sociálnych služieb
+NKOD 13b335f700dbcef502158c17a87377df | Veľkoplošné chránené územia
+NKOD 021ae87aaed238d342752cd6debc14cf | Chránené a významné druhy suchozemských bezstavovcov [Atlas krajiny Slovenskej republiky]
+NKOD a0b62d2ee5dddf0af2a4b6344d015099 | Chránené a významné druhy rýb a kruhoústnic [Atlas krajiny Slovenskej republiky]
+NKOD 814577dcffe3bcf5b212890ddfeffdbb | Povodia vodárenských tokov [Atlas krajiny Slovenskej republiky]
+NKOD 2197775248461d4ac264942217f2e65e | Povodia hlavných tokov s hydrologickou bilanciou [Atlas krajiny Slovenskej republiky]
+NKOD 338e528cc3addab5463bce642de940c1 | Chránené rybárske oblasti [Atlas krajiny Slovenskej republiky]
+NKOD c37603479bc46c43bb4fdc10e8144d82 | Druhová diverzita chránených stromov podľa okresov [Atlas krajiny Slovenskej republiky]
+NKOD 1d5a16caef882cb91ad66561569885e7 | Centrá dochádzky a počet dochádzajúcich [Atlas krajiny Slovenskej republiky]
+NKOD 0365eac84ac1ac631ee8a3bd0392f9a3 | Chránené územia podľa zákona NR SR č. 287/1994 Z. z. o ochrane prírody a krajiny [Atlas krajiny Slovenskej republiky]
+NKOD 206c8ba728cb6a967289a707e4257a8e | Chránené vodohospodárske oblasti [Atlas krajiny Slovenskej republiky]
+NKOD ec2b9e3fbeca06e5de4064b590b066c0 | Chránené a významné druhy plazov a obojživelníkov [Atlas krajiny Slovenskej republiky]
+NKOD e03964f23b2cddb97dde9bff074ca0c4 | Počet autobusových spojov v priebehu 1 dňa [Atlas krajiny Slovenskej republiky]
+NKOD 93e8c8206663905f0f4678dba8b1b199 | Chránené územia so 4.a 5. stupňom ochrany [Atlas krajiny Slovenskej republiky]
+NKOD 3646931ccac7c8f562445b2d064c488b | Podiel a plocha chránených území v okrese [Atlas krajiny Slovenskej republiky]
+NKOD 851e5a72e9d56861fc5c0572e1135a1b | Zóny centier dochádzky [Atlas krajiny Slovenskej republiky]
+NKOD 2f8eef5ed18fd0e873cd75bcbcd09dbb | Chránené a významné druhy cicavcov [Atlas krajiny Slovenskej republiky]
+NKOD 1a93016605950e7994883edba6479480 | Hranice chránených krajinných oblastí [Atlas krajiny Slovenskej republiky]
+NKOD 4be9a374618162d1a19e93d292fd55ae | Hranice hlavného povodia [Atlas krajiny Slovenskej republiky]
+NKOD a1d082a14949095943e609e8f16c69a5 | Zverofarmy a chránené poľovné oblasti [Atlas krajiny Slovenskej republiky]
+NKOD 3e204fdad6380feb24ed482d744eadd3 | Chránené a významné druhy cicavcov a vtákov [Atlas krajiny Slovenskej republiky]
+NKOD 6330c5051d4904cdbc15a4462ed2737d | Počet chránených stromov podľa okresov [Atlas krajiny Slovenskej republiky]
+NKOD 77000ff21737ab3c247cb2795f35e640 | Chránené a významné druhy suchozemských bezstavovcov [Atlas krajiny Slovenskej republiky]
+NKOD 92501004f14dac51a7b932d498e0733f | Chránené a významné druhy cicavcov a vtákov [Atlas krajiny Slovenskej republiky]
+NKOD acabdadc587d19df45e898ce87ec8220 | Chránené a významné druhy plazov [Atlas krajiny Slovenskej republiky]
+NKOD 3df6dc391c0a46a94fb70e1de33642be | Chránené územia podľa zákona NR SR č. 287/1994 Z. z. o ochrane prírody a krajiny [Atlas krajiny Slovenskej republiky]
+NKOD 44d137e88d5e2379d18e6889b988828b | Chránené a významné druhy vodných bezstavovcov [Atlas krajiny Slovenskej republiky]
+NKOD 9f08fda14eb61bc391ba93453cee12d3 | Počet lokalít chránených stromov podľa okresov [Atlas krajiny Slovenskej republiky]
+NKOD 7af538c2e54a73d214c0933f535bdeb7 | INSPIRE PD 45,01 CDDA Spoločná databáza chránených území
+NKOD 1722b0a7be72b705e1a22d83baecce81 | INSPIRE - Chránené územia
+NKOD 5968925b1c996586c49b5d32bc87d761 | Chránené územia - Európsky diplom Rady Európy
+NKOD 6f2013e6b2800b105bf86a5cbce75bd2 | Chránené územia - národné parky s ochranným pásmom
+NKOD 550e28bd5e1e8fc0a175c6fbac3ca16d | Chránené územia - maloplošné chránené územia (MCHÚ)
+NKOD 800b336412a333e0d2bcb7eedb992d79 | Chránené územia - veľkoplošné chránené územia (VCHÚ)
+NKOD c10f72217f8773929ba306c9b906b0f5 | Chránené územia - územia európskeho významu (ÚEV)
+NKOD 61696b7f67316a6201429f111b6f209d | Chránené územia - chránené vtáčie územia (CHVÚ)
+NKOD 3d6a1ac2bcaa7ee9ef4e7548af00064f | Chránené územia - územia svetového prírodného dedičstva (UNESCO)
+NKOD 44e12a9c15da4ffe8aace4aa932a465a | Chránené územia - stupne ochrany
+NKOD 946cbc5fd72f405e5edf18b1da08d4a5 | Chránené územia - biosférické rezervácie (UNESCO)
+NKOD c1c1bb0c8b167bcc5af9f3167e9939e9 | Chránené územia - ramsarské lokality
+NKOD afbc398a44c9c298146b94ebdd432e6b | Chránené stromy
+NKOD 4aa0dbcd6f41d8b463407b95a39059f1 | Hlavné povodia M 1 : 50 000
+NKOD c25aa09743bfa66f8758e031ce29b16c | Podrobné povodia M 1 : 50 000
+NKOD 9c97c5b7fda72392b9f08e5df185ade2 | Čiastkové povodia M 1 : 50 000
+NKOD 1244bbaadc7e8e9e279944107b17529a | Základné povodia M 1 : 50 000
+NKOD 39a3dd0c90238c8a7d94e1ba60d91f2d | INSPIRE PD 11,01 Chránené územia používané na odber vody určenej na ľudskú spotrebu
+NKOD ed4666cc21a5cb60f7869d8b7e66e069 | Povodia vodárenských tokov
+NKOD b19ed91a620de2168ebe6c8ee8da27fb | Chránené vodohospodárske oblasti
+NKOD 7b8cff4ccb5c77c59015e8229568485c | INSPIRE - Spravované/obmedzené/regulované zóny a jednotky podávajúce správy - Správne územia povodia
+NKOD d5952a9e6c2ba8aa01a9917a1b31958e | INSPIRE - Spravované/obmedzené/regulované zóny a jednotky podávajúce správy - Správne územia povodia - Subjednotky
+NKOD fa536925c73e6aaea1dd8d646fa006fe | INSPIRE PD 9,01 Správne územia povodí (Rámcová smernica o vode)
+NKOD a530d48b273def68c839b197cd7412b3 | INSPIRE PD 9,02 Územné jednotky povodia (Rámcová smernica o vode)
+NKOD b9e7575effe5c72469113a3ecacf15a5 | Povodne v povodí Moravy, stav k 15.09.2024 - Copernicus EMS
+NKOD 34ca1fbf0b86b3d17bc1592fc4d8ad4d | Povodne v povodí Dunaja - Komárno, stav k 18.09.2024 - Copernicus EMS
+NKOD 5da1f5a576fae0127c9b35f3e7e59d07 | Povodne v povodí Moravy, stav k 16.09.2024 - Copernicus EMS
+NKOD 8b6f0f3e4fd65f5e90ce17d345d2b8c4 | Povodne v povodí Moravy, stav k 18.09.2024 - Copernicus EMS
+NKOD a99621cb1b8b62cc093913002f7eb0fc | Povodne v povodí Myjavy, stav k 18.09.2024 - Copernicus EMS
+NKOD 207f77bf3a93a27e573ab659de3ac132 | Povodne v povodí Dunaja - Štúrovo, stav k 18.09.2024 - Copernicus EMS
+NKOD 037c08fb83a697d5ff9592b562298104 | Povodne v povodí Dunaja - Štúrovo, stav k 21.09.2024 - Copernicus EMS
+NKOD 88850bdb4b3b56aa27844566f838bdfa | Povodne v povodí Moravy, stav k 19.09.2024 - Copernicus EMS
+NKOD c555d3883765033d0c81700670b71948 | Povodne v povodí Dunaja - Komárno, stav k  21.09.2024 - Copernicus EMS
+NKOD 2b82e36d8b7092741ebae8130942606c | Zariadenia sociálnych služieb
+NKOD 34bd4c11ddb44c86e7a9637a99bbe0f9 | Chránené ložiskové územia CHLU TTSK
+NKOD 6272a74803558f78440c85fe1f2cc116 | Maloplošné chránené územia v TTSK
+NKOD 0735b87b757cb287fbad008e972b370f | Velkoplošné chránené územia v TTSK
+NKOD 888e30d2-1de5-4253-880d-394fa83d5e2d | Zoznam subjektov vykonávajúcich internetový výdaj
+NKOD dfe0f7ae0bd38d4a2a58097234d92cfc | Autobusové zastávky - August 2025
+NKOD 18ab6dfb8d446ab8572c004a62c2148c | Autobusové zastávky - Január 2025
+NKOD d57f4da87493f506c76fefd0ef6e4b44 | Autobusové zastávky - September 2024
+NKOD a1be68bd879440fe4140d39fe1436cae | Autobusové zastávky - December 2024
+NKOD aebcab7db9f7f68c70cb9d7cf577b9c5 | Autobusové zastávky - Marec 2025
+NKOD 52e87d86cd14d443a2fb6a96db0712ef | Autobusové zastávky - Jún 2025
+NKOD f4b3293608aea26988a58c95c687ee9c | Autobusové zastávky - Október 2024
+NKOD 3c8181d9e865cd35497909e2fc78e6f0 | Autobusové zastávky - November 2024
+NKOD 438b7f3c70b2304c3f357d33719f6c0e | Autobusové zastávky - August 2024
+NKOD a21b9f78b13ec3ded79ac9ae1fa3206d | Autobusové zastávky - Apríl 2025
+NKOD 685d09973f0bdf12c98d51d85978db2f | Autobusové zastávky - Júl 2025
+NKOD efa0e24e93fa33da8aa668daeb443667 | Autobusové zastávky - Február 2025
+NKOD 46a2096ad47b452d3f933ad0e44713d7 | Autobusové zastávky - Júl 2024
+NKOD a82397d098ea402cbf40db2d124c21f8 | Autobusové zastávky - Máj 2025
+NKOD 0a67c44167ad0b15f20b385072000516 | Autobusová zastávka
+NKOD 663b828ea9226414ae742817e98c673f | Chránené územia prírody v Košiciach
+NKOD c3cf30340b31dfc056a39963a57af94f | Zoznam poskytovateľov sociálnych služieb v meste Košice
+NKOD f351f2b7273e232825e021d8f8c311f8 | Hodnotenie zraniteľnosti mesta Košice - povrchové záplavy
+NKOD 7deaafb84052364e4c10895f106907dd | Hodnotenie zraniteľnosti mesta Košice - expozícia územia povrchovým záplavám
+NKOD 234d508e1789b54d1bed8b0006e6b632 | Chránené stromy na území Košíc
+NKOD 368a396ef87ef71a6399622d4e1364f4 | Neverejní poskytovatelia sociálnych služieb v TTSK, podporovaní z rozpočtu ÚTTSK
+NKOD 905ec296464efd00805573ba27be1a37 | Zoznam zastávok turistických autobusov v roku 2025
+NKOD 0eb4b44359bad41fee252f053fd8a99f | Adresy v obci Povoda
+NKOD 8dedd3be9e007497bc48e92396a8a4de | Budovy v obci Povoda
+NKOD 6aee922b2a1abeb7c214dc0367043d84 | Ulice v obci Povoda
+NKOD 022c3d26f8f52767b3730534219652bb | Dochádzka do zamestnania a škôl do Bratislavy z okresov SR v rokoch 2011, 2021 a 2035
+NKOD d4b1521019104436d19d533dcbc77c55 | Dochádzka do škôl medzi jednotlivými mestskými časťami Bratislavy v roku 2035
+NKOD c8ad9398d4478117bbe0f92de5d377d1 | Dochádzka do zamestnania medzi jednotlivými mestskými časťami Bratislavy v roku 2035
+NKOD bfd009f228c89599bc0dba602ebf0d35 | Štruktúra ambulantných sociálnych služieb v BSK (2021)
+NKOD 8aa67465ed90859fea96b9b4cb05be36 | Podiel odvetví hospodárstva a domácností na daniach z energie 
+NKOD cc69a5e08298aadd008c687fccebc228 | Zmluvy o prevode spoluvlastníckeho podielu na pozemku podaných do katastra nehnuteľností
+NKOD ebeeedf1-aca2-451a-bdc0-35d536714888 | Grafikon vlakovej dopravy vo formáte GTFS
+NKOD 87d32e84ea81551e76c463044ed5eab7 | Natural persons - entrepreneurs by legal forms in Municipalities as of December 31,
+URL https://www.minv.sk/?statistika-kriminality-v-slovenskej-republike-xml 200 105735 ['/?Statistika_kriminality_v_SR_za_rok_2017', '/?kriminalita_2014_xml', '/?mapy-trestnych-cinov-v-slovenskej-republike-za-rok-2025', '/?narodna-centrala-osobitnych-druhov-kriminality', '/?patranie_PO_hladani', '/?prevencia-kriminality-v-kosickom-kraji', '/?prevencia-kriminality-v-trencianskom-kraji', '/?prevencia-kriminality-v-trnavskom-kraji', '/?statistika-kriminality-v-slovenskej-republike-csv', '/?statistika-kriminality-v-slovenskej-republike-kopia-3', '/?statistika-kriminality-v-slovenskej-republike-xml', '/?statistika-kriminality-v-slovenskej-republike-za-rok-2009', '/?statistika-kriminality-v-slovenskej-republike-za-rok-2010', '/?statistika-kriminality-v-slovenskej-republike-za-rok-2011', '/?statistika-kriminality-v-slovenskej-republike-za-rok-2012', '/?statistika-kriminality-v-slovenskej-republike-za-rok-2015', '/?statistika-kriminality-v-slovenskej-republike-za-rok-2016', '/?statistika-kriminality-v-slovenskej-republike-za-rok-2025-1', '/?statistika-kriminality-v-slovenskej-republike-za-rok-2026-1', '/?statistika_kriminality_2018', '/?statistika_kriminality_v_SR_za_rok_2021_xml', '/?statistika_kriminality_v_SR_za_rok_2022_xml', '/?statistika_kriminality_v_slovenskej_republike_za_rok_2013', '/?statistika_kriminality_v_slovenskej_republike_za_rok_2019_xml', '/?statistika_kriminality_v_slovenskej_republike_za_rok_2020_xml', '/?statistika_kriminality_v_slovenskej_republike_za_rok_2023_xml', '/?statistika_kriminality_v_slovenskej_republike_za_rok_2024_xml', '/?tlacove-spravy-2&amp;sprava=cielom-zmien-v-zakone-o-policajnom-zbore-schvalenych-vladou-je-posilnit-boj-proti-terorizmu-zavaznej-kriminalite-aj-patranie-po-osobach', '/?urad-prevencie-kriminality']
+URL https://www.minv.sk/?kriminalita-1 404 83952 ['/?informacne-centrum-na-boj-proti-obchodovaniu-s-ludmi-a-prevenciu-kriminality-1', '/?informacne-kancelarie-pre-obete-trestnych-cinov', '/?prevencia-kriminality-5', '/?urad-prevencie-kriminality', '/?vyzva-na-predkladanie-cp']
+URL https://www.mfsr.sk/sk/financie/verejne-financie/financie-uzemnej-samospravy/ HTTPSConnectionPool(host='www.mfsr.sk', port=443): Max retries exceeded with url: /sk/financie/verejne-financie/financie-uzemnej-samospravy/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.mfsr.sk', port=443) at 0x7124fa9725d0>, 'Connection to www.mfsr.sk timed out. (connect timeout=60)'))
+URL https://www.finance.gov.sk/sk/financie/verejne-financie/financie-uzemnej-samospravy/ HTTPSConnectionPool(host='www.mfsr.sk', port=443): Max retries exceeded with url: /sk/financie/verejne-financie/financie-uzemnej-samospravy/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.mfsr.sk', port=443) at 0x7124fa972490>, 'Connection to www.mfsr.sk timed out. (connect timeout=60)'))
+URL https://www.minzp.sk/voda/ochrana-pred-povodnami/ 200 11455 ['/voda/ochrana-pred-povodnami/', '/voda/ochrana-pred-povodnami/informacie/', '/voda/ochrana-pred-povodnami/manazment-povodnovych-rizik/', '/voda/ochrana-pred-povodnami/vzory-tabuliek/', '/voda/sprava-vodnych-tokov-sprava-povodi-vodnych-tokov/']
+URL https://www.svp.sk/sk/menu/tematicke-oblasti/ochrana-pred-povodnami/ 404 121315 ['http://www.teledan.eu/sk', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext', 'https://www.danube-floodrisk.eu', 'https://www.svp.sk/sk/uvodna-stranka/galeria/protipovodnove-opatrenia-a-udrzba-tokov/', 'https://www.svp.sk/sk/uvodna-stranka/odstepne-zavody/oz-bratislava/povodnova-sluzba/', 'https://www.svp.sk/sk/uvodna-stranka/povodne/', 'https://www.svp.sk/sk/uvodna-stranka/povodne/charakteristika-povodni/', 'https://www.svp.sk/sk/uvodna-stranka/povodne/dolezite-linky/', 'https://www.svp.sk/sk/uvodna-stranka/povodne/historicke-povodne/', 'https://www.svp.sk/sk/uvodna-stranka/povodne/hydrologicke-spravodajstvo/', 'https://www.svp.sk/sk/uvodna-stranka/povodne/inundacne-uzemia/', 'https://www.svp.sk/sk/uvodna-stranka/povodne/mpo-a-mpr-sr/', 'https://www.svp.sk/sk/uvodna-stranka/svp/projekty-a-spolupraca/living-rivers-implementacia-vodneho-planu-slovenska-vo-vybranych-povodiach/']
+URL https://maps.sopsr.sk/ 200 216853 ['http://opentopomap.org/', 'https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/theme/default/style.css', 'https://openstreetmap.org/copyright', 'https://sk.wikipedia.org/wiki/Open_source', 'https://www.geoportal.sk/sk/sluzby/mapove-sluzby/wms/wms-eskn.html', 'https://www.openstreetmap.org/copyright']
+URL https://ssad.statistics.sk/SSaD/?dl_id=400 HTTPSConnectionPool(host='ssad.statistics.sk', port=443): Max retries exceeded with url: /SSaD/?dl_id=400 (Caused by ConnectTimeoutError(<HTTPSConnection(host='ssad.statistics.sk', port=443) at 0x7124fa971310>, 'Connection to ssad.statistics.sk timed out. (connect timeout=60)'))
+URL https://www.scitanie.sk/ 200 38610 []
+osm Expecting value: line 1 column 1 (char 0)
 HOTOVO
