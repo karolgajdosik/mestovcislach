@@ -1,14 +1,18 @@
-import re, json, requests
+import re, io, requests, openpyxl
 H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
-for u in ["https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci.html?page_id=1009850", "https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci/2020.html?page_id=1009851"]:
-    r = requests.get(u, headers=H, timeout=60)
-    i = r.text.find('id="content"'); i = i if i > 0 else r.text.find("<h1")
-    txt = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " | ", r.text[i:i+8000]))
-    print(u, "\n", txt[:1500])
-    print([x for x in re.findall(r'href="([^"]+)"', r.text) if "docs" in x and not x.endswith((".css", ".js"))][:30])
-r = requests.get("https://statdata.statistics.sk/public/api/dc/public/sections/expandAll", headers=H, timeout=120)
-t = r.text
-print(t[:800])
-for m in re.finditer(r"odpad|Odpad", t):
-    print("  ", t[max(0, m.start()-250):m.start()+150].replace("\n", " "))
+r = requests.get("https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci.html?page_id=1009850", headers=H, timeout=60)
+roky = sorted(set(re.findall(r'href="(https://www\.upsvr\.gov\.sk/statistiky/mesacne-statistiky-miest-a-obci/(\d{4})\.html\?page_id=\d+)"', r.text)), key=lambda x: x[1])
+print(roky)
+u = roky[-1][0]
+r = requests.get(u, headers=H, timeout=60)
+subory = re.findall(r'href="([^"]*mesta_a_o[^"]*\.xlsx?)"', r.text)
+print(subory)
+f = requests.get(subory[0] if subory[0].startswith("http") else "https://www.upsvr.gov.sk" + subory[0], headers=H, timeout=120)
+wb = openpyxl.load_workbook(io.BytesIO(f.content), read_only=True, data_only=True)
+print(wb.sheetnames)
+for ws in wb.worksheets[:4]:
+    print("== ", ws.title)
+    for i, row in enumerate(ws.iter_rows(values_only=True)):
+        if i > 12: break
+        print("  ", [c for c in row if c is not None][:16])
 print("HOTOVO")
