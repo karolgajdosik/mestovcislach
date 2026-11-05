@@ -138,7 +138,8 @@ def upsvr_mesiac(url: str) -> dict[str, dict]:
         out[kod] = {"uoz": int(uoz), "disp": int(disp or 0), "opv": int(opv or 0), "abs": int(absol or 0), "pdu": pdu, "pu": pu}
     if len(out) < 2500:
         raise RuntimeError(f"ÚPSVaR: priradených len {len(out)} obcí; napr. {nenajdene[:8]}")
-    if nenajdene:
+    if nenajdene and not getattr(upsvr_mesiac, "vypisane", False):
+        upsvr_mesiac.vypisane = True  # type: ignore[attr-defined]
         print(f"  nepriradené ({len(nenajdene)}): {', '.join(nenajdene[:12])}")
     return out
 
@@ -251,8 +252,28 @@ def odpad() -> None:
 
 # ---------------- 3. školy (MŠVVaM SR) ----------------
 
+# typ podľa názvu v mape škôl – súčasti „ZŠ s MŠ“ sú samostatné riadky („ZŠ s MŠ - MŠ - Obec“ = materská škola)
+TYP_SKOLY = [
+    (None, r"jed\.|jedáleň|jedalen|\bŠJ\b|výdaj|ŠKD|[Šš]kol\.\s*kl|klub|intern|poraden|CPP|Jazyková"),
+    ("cvc", r"CVČ|voľného času"),
+    ("ms", r"(^|\s-\s)(MŠ|SMŠ|CMŠ)\b|^Materská|^Mater\."),
+    ("zus", r"ZUŠ|umeleck\w* škola\b(?!.*priem)"),
+    ("spec", r"Špec|ŠZŠ|Diag|Liečeb|Reedukač|Odbor\.\s*učil|Prakt|mim\.\s*nad|\bOU\b"),
+    ("zs", r"\bZŠ|Základná|ZŠsMŠ"),
+    ("ss", r"[Gg]ym|SOŠ|SPŠ|\bOA\b|\bHA\b|SZŠ|[Kk]onz|lýceum|ŠUP|umeleckého priem|SŠ|SUŠ|Tanečn|Bilingv|CSOŠ|akadém|stredn|Spojená"),
+]
+
+
+def typ_skoly(nazov: str) -> str | None:
+    for t, r in TYP_SKOLY:
+        if re.search(r, nazov):
+            return t
+    return None
+
+
 def skoly() -> None:
-    from zber_skoly_iedu import TYPY, URL_MAPA, citaj, num, typ
+    from zber_skoly_iedu import TYPY, URL_MAPA, citaj, num
+    typ = typ_skoly
     riadky = citaj(URL_MAPA)
     if len(riadky) < 5000:
         raise RuntimeError(f"Mapa škôl: málo riadkov ({len(riadky)})")
@@ -261,7 +282,7 @@ def skoly() -> None:
     nenajdene = 0
     for x in riadky:
         t = typ(x.get("Názov") or "")
-        if not t or t == "ine":
+        if not t:
             continue
         nazov_obce = re.sub(r"^\d{3}\s?\d{2}\s+", "", (x.get("Obec") or "").strip())
         nazov_obce = re.sub(r"\s*-\s*.*$", "", nazov_obce) if not PODLA_NAZVU.get(kluc(nazov_obce)) else nazov_obce
