@@ -106,29 +106,44 @@ def obec_podla_nazvu(nazov: str, lat: float, lon: float) -> str | None:
     return None
 
 
-def obec_podla_osm(lat: float, lon: float) -> str | None:
-    """Obec, v ktorej hraniciach stanica leží (OSM, tag ref = kód obce); mestské časti -> mesto."""
-    q = f'[out:json][timeout:60];is_in({lat},{lon})->.a;area.a[boundary=administrative][admin_level~"^([4-9]|10)$"];out tags;'
-    for pokus in range(4):
+def _vyber_obec(oblasti: list[dict]) -> str:
+    for tg in sorted(oblasti, key=lambda tg: -int(tg.get("admin_level", 0) or 0)):
+        if tg.get("ref") in KODY:
+            return tg["ref"]
+    for tg in oblasti:
+        for nk, kod in NAZOV_KOD.items():
+            if kluc(tg.get("name", "")).startswith(nk):
+                return kod
+    return ""
+
+
+def osm_stanice() -> list[tuple[float, float, str]]:
+    """Všetky železničné stanice a zastávky v SR z OSM s obcou, v ktorej hraniciach ležia (jeden dotaz)."""
+    q = ('[out:json][timeout:900];area["ISO3166-1"="SK"][admin_level=2]->.sk;'
+         'node[railway~"^(station|halt|stop)$"](area.sk)->.st;'
+         'foreach.st->.n(.n out;.n is_in->.a;area.a[boundary=administrative][admin_level~"^([4-9]|10)$"];out tags;);')
+    for pokus in range(3):
         try:
-            r = s.post("https://overpass-api.de/api/interpreter", data={"data": q}, timeout=90)
+            r = s.post("https://overpass-api.de/api/interpreter", data={"data": q}, timeout=1000)
             if r.status_code in (429, 502, 503, 504):
-                time.sleep(10 * (pokus + 1))
+                time.sleep(30 * (pokus + 1))
                 continue
             r.raise_for_status()
-            oblasti = [e["tags"] for e in r.json().get("elements", [])]
-            for tg in sorted(oblasti, key=lambda tg: -int(tg.get("admin_level", 0))):
-                if tg.get("ref") in KODY:
-                    return tg["ref"]
-            for tg in oblasti:
-                for nk, kod in NAZOV_KOD.items():
-                    if kluc(tg.get("name", "")).startswith(nk):
-                        return kod
-            return ""
+            out: list[tuple[float, float, str]] = []
+            uzol, obl = None, []
+            for e in r.json().get("elements", []) + [{"type": "node"}]:
+                if e["type"] == "node":
+                    if uzol:
+                        out.append((uzol["lat"], uzol["lon"], _vyber_obec(obl)))
+                    uzol, obl = (e if "lat" in e else None), []
+                else:
+                    obl.append(e.get("tags", {}))
+            print(f"  OSM: {len(out)} staníc a zastávok")
+            return out
         except Exception as e:  # noqa: BLE001
-            print(f"  OSM {lat},{lon}: {e}")
-            time.sleep(5)
-    return None
+            print(f"  OSM: {e}")
+            time.sleep(20)
+    return []
 
 
 def main() -> int:
@@ -144,6 +159,7 @@ def main() -> int:
             vlaky[rodic.get(st["stop_id"], st["stop_id"])].add(st["trip_id"])
     obce: dict[str, list] = defaultdict(list)
     bez = osm = 0
+    osm_st: list | None = None
     cache: dict[str, str] = json.loads(CACHE.read_text(encoding="utf-8")) if CACHE.exists() else {}
     nepr: list[str] = []
     print(f"Staníc s vlakmi: {len(vlaky)}, záznamov v stops.txt: {len(stops)}")
@@ -160,10 +176,11 @@ def main() -> int:
         kod = obec_podla_nazvu(x["stop_name"], lat, lon)
         if not kod:
             if sid not in cache:
-                v = obec_podla_osm(lat, lon)
-                if v is not None:
-                    cache[sid] = v
-                time.sleep(1)
+                if osm_st is None:
+                    osm_st = osm_stanice()
+                bl = min(osm_st, key=lambda o: math.dist(o[:2], (lat, lon)), default=None)
+                if bl and math.dist(bl[:2], (lat, lon)) < 0.006:  # ~500 m
+                    cache[sid] = bl[2]
             kod = cache.get(sid) or None
             if kod:
                 osm += 1
