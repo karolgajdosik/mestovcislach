@@ -1,8 +1,14 @@
-200 54935246 text/csv;charset=UTF-8
-e_year,e_nuts15,e_ewc,hodnota | 2021,Abovce,150101 Papierové a lepenkové obaly,. | 2021,Abovce,150102 Plastové obaly,. | 2021,Abovce,150103 Drevené obaly,. | 2021,Abovce,150104 Kovové obaly,. | 2021,Abovce,150105 Kompozitné obaly,. | 2021,Abovce,150106 Zmiešané obaly,. | 2021,Abovce,150107 Sklenené obaly,. | 2021,Abovce,150109 Textilné obaly,. | 2021,Abovce,200101 Papier a lepenka,0.42 | 2021,Abovce,200102 Sklo,3.82 | 2021,Abovce,200103 Viacvrstvové kombinované materiály na báze lepenky (kompozity na báze lepenky),0.11 | 2021,Abovce,200104 Obaly z kovu,0.15 | 2021,Abovce,200105 Obaly obsahujúce zvyšky nebezpečných látok alebo kontaminované nebezpečnými látkami vrátane prázdnych tlakových nádob,. | 2021,Abovce,200108 Biologicky rozložiteľný kuchynský a reštauračný odpad,. | 2021,Abovce,200110 Šatstvo,. | 2021,Abovce,20011
-861275 ['e_year', 'e_nuts15', 'e_ewc', 'hodnota']
-e_year 5 ['2021', '2022', '2023', '2024', '2025']
-e_nuts15 3025 ['Abovce', 'Abrahám', 'Abrahámovce, okres Bardejov', 'Ábelová', 'Abrahámovce, okres Kežmarok', 'Abramová', 'Abranovce', 'Adamovské Kochanovce']
-e_ewc 58 ['150101 Papierové a lepenkové obaly', '150102 Plastové obaly', '150103 Drevené obaly', '150104 Kovové obaly', '150105 Kompozitné obaly', '150106 Zmiešané obaly', '150107 Sklenené obaly', '150109 Textilné obaly']
-hodnota 29595 ['.', '0.42', '3.82', '0.11', '0.15', '0.22', '0.58', '4.19']
+999525c0-203e-4222-9474-dbad4291c6b5 200 469974
+   {"id": "abe5c75a-8d5e-47e0-abbc-e61aee9ceb13", "nameSk": "Miera skládkovania komunálneho odpadu", "nameEn": "Landfill rate of municipal waste", "acronym": "U_ZP_0036", "code": "PC486840", "orderNumber": 1961}
+   {"id": "16f63c9a-1299-4764-8e8e-27e61a44946f", "nameSk": "Množstvo komunálneho odpadu na obyvateľa", "nameEn": "Amount of municipal waste per capita", "acronym": "U_ZP_0031", "code": "PC486835", "orderNumber": 1956}
+   {"id": "e915ec70-1ee2-4f7a-a56c-668ccaf973c4", "nameSk": "Komunálny odpad z iných zdrojov", "nameEn": "Municipal waste from other sources", "acronym": "U_ZP_0092", "code": "PC486953", "orderNumber": 2074}
+   {"id": "a78c6508-0d14-49a4-ad70-1482b39bcfbb", "nameSk": "Množstvo zneškodneného komunálneho odpadu na obyvateľa", "nameEn": "Amount of disposed municipal waste per capita", "acronym": "U_ZP_0033", "code": "PC486837", "orderNumber": 1958}
+   {"id": "61b91109-f95f-464b-9946-1e7f795c313a", "nameSk": "Množstvo komunálneho odpadu", "nameEn": "Quantity of municipal waste", "acronym": "U_ZP_0001", "code": "PC485179", "orderNumber": 300}
+   {"id": "d0fa0696-94b6-4aba-a788-2b90cc04439b", "nameSk": "Komunálny odpad z obcí", "nameEn": "Municipal waste from municipalities", "acronym": "U_ZP_0091", "code": "PC486952", "orderNumber": 2073}
+   {"id": "1a237003-2848-42cc-b51f-39c4e583f20a", "nameSk": "Miera recyklácie komunálneho odpadu", "nameEn": "Recycling rate of municipal waste", "acronym": "U_ZP_0035", "code": "PC486839", "orderNumber": 1960}
+   {"id": "cb4c246b-e250-4de1-96f3-afb70d48b495", "nameSk": "Množstvo zhodnoteného komunálneho odpadu na obyvateľa", "nameEn": "Amount of recovered municipal waste per capita", "acronym": "U_ZP_0032", "code": "PC486836", "orderNumber": 1957}
+   {"id": "9efeb54c-6022-4861-bf0e-289cf21544fc", "nameSk": "Podiel zhodnocovaného komunálneho odpadu z celkového komunálneho odpadu", "nameEn": "Share of recovered municipal waste in total municipal waste", "acronym": "U_ZP_0034", "code": "PC486838", "orderNumber": 1959}
+302208ae-547f-409b-966e-725771c582a8 200 57447
+nuts in cube 200 [{"id":"9e19e664-b0ff-47f5-bba7-adb66bedb52c","nameSk":"Slovenská republika","nameEn":"The Slovak Republic","acronym":"SK0","code":"PC471707","orderNumber":1},{"id":"bbdcc87d-defa-4172-ad24-abf0cfb71b00","nameSk":"Bratislavský kraj (NUTS 2)","nameEn":"Region of Bratislava (NUTS 2)","acronym":"SK01",
+indic in cube 200 [{"id":"d0fa0696-94b6-4aba-a788-2b90cc04439b","nameSk":"Komunálny odpad z obcí","nameEn":"Municipal waste from municipalities","acronym":"U_ZP_0091","code":"PC486952","orderNumber":2073},{"id":"e915ec70-1ee2-4f7a-a56c-668ccaf973c4","nameSk":"Komunálny odpad z iných zdrojov","nameEn":"Municipal waste from other sources","acronym":"U_ZP_0092","code":"PC486953","orderNumber":2074}]
 HOTOVO
