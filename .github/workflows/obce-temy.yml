@@ -12,6 +12,7 @@ on:
       - "scripts/zber_obce_statdata.py"
       - "scripts/statdata_obce.py"
       - "scripts/zber_obce_volby.py"
+      - "scripts/zber_obce_vlaky.py"
       - ".github/workflows/obce-temy.yml"
 
 permissions:
@@ -46,6 +47,10 @@ jobs:
       - name: Voľby NRSR 2023 a EP 2024 po obciach
         if: success() || failure()
         run: python scripts/zber_obce_volby.py
+
+      - name: Vlaky v obciach (GTFS ŽSR)
+        if: success() || failure()
+        run: python scripts/zber_obce_vlaky.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()
