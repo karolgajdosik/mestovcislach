@@ -1,76 +1,220 @@
-{"nameSk":"Množstvo komunálneho odpadu podľa druhov odpadu za obce (v tonách)","nameEn":"Quantity of municipal waste according to the waste code in municipalities (in Tonnes)","publicId":"zp3804rr","productCode":"zp3804rr","dataSourceName":"00000004-0000-0000-0000-000000000881_zp006275","descriptionSk":"-","descriptionEn":"-","lastDataChange":"2026-10-15T09:00:00+02:00","lastStructureChange":"2026-07-21T09:46:04.050819+02:00","timePeriodFrom":"2025-01-01","timePeriodTo":"2025-12-31","frequencyCode":"ANNUAL","zonation":["Obce","Kraje","Slovenská republika","Oblasti","Okresy"],"zonationEn":["Municipalities","Slovak Republic","Districts","Regions","Areas"],"updated":false,"jpbdUploadType":"FILE","dimensions":[{"id":"999525c0-203e-4222-9474-dbad4291c6b5","nameSk":"Ukazovateľ","nameEn":"Indicator","acronym":"e_indic","code":"VD000015","type":"CODELIST","codeListLinked":false},{"id":"302208ae-547f-409b-966e-725771c582a8","nameSk":"Merná jednotka","nameEn":"Unit","acronym":"e_unit","code":"VD000003","type":"CODELIST","codeListLinked":false},{"id":"657fbf90-fe37-4c94-bfef-c89a42af6761","nameSk":"NUTS15","nameEn":"NUTS15","acronym":"e_nuts15","code":"VD000123","type":"GEO","codeListLinked":false},{"id":"517b615c-547f-42b0-a180-2e33a09a7351","nameSk":"Rok","nameEn":"Year","acronym":"e_year","code":"VD000000","type":"TIME","codeListLinked":false},{"id":"e47ef23e-bdea-4ea6-aefc-b1e0e3a5e060","nameSk":"Európsky katalóg odpadov","nameEn":"European Waste Codes","acronym":"e_ewc","code":"VD0
-keys ['content', 'pageable', 'totalPages', 'totalElements', 'last', 'numberOfElements', 'size', 'number', 'sort', 'first', 'empty'] {"publicId": "ps1801rs", "productCode": "ps1801rs", "productCodeTitle": "ps1801rs", "nameSk": "Domácnosti a osoby v domácnostiach podľa typu domácnosti ", "nameEn": "Househols and persons in households by type of household", "sectionId": "b5d517c1-f42d-4bd6-8d3f-67e8fa3767b7", "lastDataChange": "2026-04-30T09:00:00+02:00", "lastStructureChange": "2026-05-14T10:10:26.532173+02:00"}
-kociek 1411
-OBCE cr3803mr | Návštevnosť UZ - obce (zahraniční/domáci) 
-OBCE cr3805qr | Návštevnosť, tržby a kapacity UZ - SR, kraje, okresy, obce (13 ukazovateľov) 
-OBCE ik5001rr | Počet pôšt v Slovenskej republike 
-OBCE ku5003rr | Kiná 
-OBCE ku5005rr | Múzeá a galérie 
-OBCE ku5006rr | Zariadenia na voľný čas a záujmovú činnosť pre deti a mládež 
-OBCE ku5008rr | Knižnice (údaje za obce)
-OBCE ku5009rr | Divadlá (do roku 2020)
-OBCE ku5011rr | Subjekty profesionálneho scénického umenia 
-OBCE og3805rr | Právnické osoby za obce SR k 31.12. 
-OBCE og3808rr | Fyzické osoby - podnikatelia podľa právnych foriem za obce SR k 31.12. 
-OBCE om3002rr | Počet obcí a miest 
-OBCE om7006rr | Vekové skupiny - SR-oblasť-kraj-okres-obec, m-v 
-OBCE om7008rr | Vekové zloženie - SR-oblasť-kraj-okres-obec, m-v 
-OBCE om7010rr | Prehľad stavu a pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v 
-OBCE om7012rr | Prehľad stavu a pohybu obyvateľstva podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v 
-OBCE om7014rr | Hustota obyvateľstva - SR-oblasť-kraj-okres-obec, m-v 
-OBCE om7022rr | Veľkostné skupiny obcí - SR-oblasť-kraj-okres-obec, m-v 
-OBCE om7052rr | Indexy vekového zloženia - SR-oblasť-kraj-okres-obec, m-v 
-OBCE om7101mr | Počet obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (mesačne) 
-OBCE om7101qr | Počet obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (štvrťročne)
-OBCE om7101rr | Počet obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (ročne) 
-OBCE om7103mr | Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (mesačne) 
-OBCE om7103qr | Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (štvrťročne) 
-OBCE om7103rr | Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (ročne) 
-OBCE om7105mr | Prírastok obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (mesačne)
-OBCE om7105qr | Prírastok obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (štvrťročne) 
-OBCE om7105rr | Prírastok obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (ročne)
-OBCE om7801rr | SODB - Obyvateľstvo podľa pohlavia a charakteristík veku
-OBCE om7802rr | SODB - Obyvateľstvo podľa pohlavia, veku a vekových skupín 
-OBCE om7803rr | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a ekonomickej aktivity
-OBCE om7804rr | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a materinského jazyka
-OBCE om7805rr | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a náboženského vyznania
-OBCE om7806rr | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a národnosti
-OBCE om7807rr | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a štátnej príslušnosti
-OBCE om7808rr | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a rodinného stavu
-OBCE om7809rr | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a vzdelania
-OBCE om7810rr | SODB - Obyvateľstvo podľa veľkostných skupín obcí
-OBCE om7811rr | SODB - Domy podľa typu a kanalizačného systému 
-OBCE om7812rr | SODB - Domy podľa typu a materiálu nosnej konštrukcie 
-OBCE om7813rr | SODB - Domy podľa typu a obdobia výstavby alebo rekonštrukcie 
-OBCE om7814rr | SODB - Domy podľa typu a formy vlastníctva 
-OBCE om7815rr | SODB - Domy podľa typu a plynovej prípojky 
-OBCE om7816rr | SODB - Domy podľa typu a vodovodnej prípojky 
-OBCE om7817rr | SODB - Byty podľa zdroja energie na vykurovanie a typu domu
-OBCE om7818rr | SODB - Byty podľa počtu obytných miestnosti a typu domu
-OBCE om7819rr | SODB - Byty podľa formy vlastníctva a typu domu 
-OBCE om7820rr | SODB - Byty podľa celkovej podlahovej plochy a typu domu   
-OBCE om7821rr | SODB - Byty podľa typu kúrenia a typu domu 
-OBCE om7822rr | SODB - Cenzové domácnosti podľa typu a počtu členov
-OBCE om7823rr | SODB - Cenzové domácnosti podľa typu a počtu detí
-OBCE om7824rr | SODB - Cenzové domácnosti podľa typu a počtu závislých detí 
-OBCE pl5001rr | Výmera územia, využitie pôdy 
-OBCE pr5001rr | Evidovaní uchádzači o zamestnanie 
-OBCE sv5001rr | Materské školy (údaje za obce)
-OBCE sv5002rr | Základné školy (údaje za obce)
-OBCE sv5003rr | Gymnáziá 
-OBCE sv5004rr | Stredné odborné školy, SOU, ZSŠ 
-OBCE sv5005rr | Konzervatóriá 
-OBCE sv5006rr | Špeciálne školy 
-OBCE sv5007rr | Základné umelecké školy 
-OBCE sv5008rr | Školské jedálne (okrem MŠ a VŠ) 
-OBCE sv5009rr | Domovy mládeže (internáty) 
-OBCE sv5010rr | Jazykové školy 
-OBCE sv5011rr | Vysokoškolské internáty 
-OBCE sv5012rr | Vysokoškolské jedálne 
-OBCE vh5001rr | Prietoky vodných tokov 
-OBCE vh5002rr | Vodné toky - stavy 
-OBCE vh5003rr | Spotreba pitnej vody 
-OBCE zd5001rr | Zdravotníctvo 
-OBCE zp3804rr | Množstvo komunálneho odpadu podľa druhov odpadu za obce (v tonách)
-OBCE zp5003rr | Klimatické podmienky
+== om7103rr Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (ročne)  | 2025-12-31 | riadkov 4434725 | stĺpce ['e_year', 'e_nuts15', 'e_nuts14', 'e_indic', 'hodnota'] | context e_unit
+    e_year 33 ['1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006']
+    e_nuts14 94 ['Okres Rimavská Sobota', 'Okres Galanta', 'Okres Bardejov', 'Okres Kežmarok', 'Okres Lučenec', 'Okres Turčianske Teplice', 'Okres Prešov', 'Okres Trenčín', 'Okres Humenné', 'Okres Nitra', 'Okres Nové Zámky', 'Okres Topoľčany', 'Okres Rožňava', 'Okres Spišská Nová Ves']
+    e_indic 46 ['Celkový prírastok obyvateľstva', 'Dojčenská úmrtnosť', 'Dojčenská úmrtnosť s pôrodnou hmotnosťou 1 000 g a viac', 'Hrubá miera celkového prírastku obyvateľstva', 'Hrubá miera migračného salda', 'Hrubá miera potratovosti', 'Hrubá miera prirodzeného prírastku obyvateľstva', 'Hrubá miera rozvodovosti', 'Hrubá miera sobášnosti', 'Hrubá miera ukončených tehotenstiev', 'Hrubá miera úmrtnosti (zomretí na 1 000 obyvateľov)', 'Hrubá miera živorodenosti', 'Index potratovosti', 'Index rozvodovosti']
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Celkový prírastok obyvateľstva', 'hodnota': '21.0'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Dojčenská úmrtnosť', 'hodnota': '0.0'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Dojčenská úmrtnosť s pôrodnou hmotnosťou 1 000 g a', 'hodnota': '0.0'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Hrubá miera celkového prírastku obyvateľstva', 'hodnota': '13.208'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Hrubá miera migračného salda', 'hodnota': '20.755'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Hrubá miera potratovosti', 'hodnota': '6.289'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Hrubá miera prirodzeného prírastku obyvateľstva', 'hodnota': '-7.547'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Hrubá miera rozvodovosti', 'hodnota': '2.516'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Hrubá miera sobášnosti', 'hodnota': '7.547'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Hrubá miera ukončených tehotenstiev', 'hodnota': '14.465'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Hrubá miera úmrtnosti (zomretí na 1 000 obyvateľov', 'hodnota': '15.723'}
+    V: {'e_year': '1993', 'e_nuts14': 'Okres Detva', 'e_indic': 'Hrubá miera živorodenosti', 'hodnota': '8.176'}
+== om7052rr Indexy vekového zloženia - SR-oblasť-kraj-okres-obec, m-v  | 2025-12-31 | riadkov 2446712 | stĺpce ['e_year', 'e_nuts15', 'e_sex', 'e_nuts14', 'e_indic', 'hodnota'] | context e_unit
+    e_year 30 ['1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009']
+    e_sex 3 ['Muži', 'Spolu', 'Ženy']
+    e_nuts14 94 ['Okres Rimavská Sobota', 'Okres Galanta', 'Okres Bardejov', 'Okres Kežmarok', 'Okres Turčianske Teplice', 'Okres Prešov', 'Okres Trenčín', 'Okres Lučenec', 'Okres Humenné', 'Okres Nitra', 'Okres Nové Zámky', 'Okres Topoľčany', 'Okres Rožňava', 'Okres Spišská Nová Ves']
+    e_indic 9 ['Index ekonomickej závislosti mladých ľudí', 'Index ekonomickej závislosti starých ľudí', 'Index ekonomického zaťaženia - počet osob v predproduktívnom', 'Index starnutia', 'Mediánový vek obyvateľa', 'Podiel obyvateľov v poproduktívnom veku', 'Podiel obyvateľov v predproduktívnom veku', 'Podiel obyvateľov v produktívnom veku', 'Priemerný vek obyvateľa']
+    V: {'e_year': '1996', 'e_sex': 'Muži', 'e_nuts14': 'Okres Detva', 'e_indic': 'Index ekonomickej závislosti mladých ľudí', 'hodnota': '23.15'}
+    V: {'e_year': '1996', 'e_sex': 'Muži', 'e_nuts14': 'Okres Detva', 'e_indic': 'Index ekonomickej závislosti starých ľudí', 'hodnota': '19.07'}
+    V: {'e_year': '1996', 'e_sex': 'Muži', 'e_nuts14': 'Okres Detva', 'e_indic': 'Index ekonomického zaťaženia - počet osob v predpr', 'hodnota': '42.22'}
+    V: {'e_year': '1996', 'e_sex': 'Muži', 'e_nuts14': 'Okres Detva', 'e_indic': 'Index starnutia', 'hodnota': '82.4'}
+    V: {'e_year': '1996', 'e_sex': 'Muži', 'e_nuts14': 'Okres Detva', 'e_indic': 'Mediánový vek obyvateľa', 'hodnota': '38.4'}
+    V: {'e_year': '1996', 'e_sex': 'Muži', 'e_nuts14': 'Okres Detva', 'e_indic': 'Podiel obyvateľov v poproduktívnom veku', 'hodnota': '13.41'}
+    V: {'e_year': '1996', 'e_sex': 'Muži', 'e_nuts14': 'Okres Detva', 'e_indic': 'Podiel obyvateľov v predproduktívnom veku', 'hodnota': '16.28'}
+    V: {'e_year': '1996', 'e_sex': 'Muži', 'e_nuts14': 'Okres Detva', 'e_indic': 'Podiel obyvateľov v produktívnom veku', 'hodnota': '70.31'}
+    V: {'e_year': '1996', 'e_sex': 'Muži', 'e_nuts14': 'Okres Detva', 'e_indic': 'Priemerný vek obyvateľa', 'hodnota': '38.25'}
+    V: {'e_year': '1996', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Index ekonomickej závislosti mladých ľudí', 'hodnota': '23.18'}
+    V: {'e_year': '1996', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Index ekonomickej závislosti starých ľudí', 'hodnota': '22.72'}
+    V: {'e_year': '1996', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Index ekonomického zaťaženia - počet osob v predpr', 'hodnota': '45.9'}
+== om7811rr SODB - Domy podľa typu a kanalizačného systému  | 2021-01-01 | riadkov 88926 | stĺpce ['e_year', 'e_nuts15', 'e_nuts14', 'e_canal', 'e_indic', 'e_unit', 'hodnota'] | context e_buildtype
+    e_year 5 ['1980', '1991', '2001', '2011', '2021']
+    e_nuts14 94 ['Okres Galanta', 'Okres Bardejov', 'Okres Kežmarok', 'Okres Turčianske Teplice', 'Okres Prešov', 'Okres Trenčín', 'Okres Humenné', 'Okres Nitra', 'Okres Nové Zámky', 'Okres Rožňava', 'Okres Spišská Nová Ves', 'Okres Vranov nad Topľou', 'Okres Rimavská Sobota', 'Okres Zvolen']
+    e_canal 6 ['Spolu', 'bez odkanalizovania           ', 'domáca čistička odpadových vôd', 'nezistené                     ', 'prípojka na kanalizačnú sieť  ', 'septik, žumpa                 ']
+    e_indic 1 ['Počet domov k rozhodujúcemu okamihu sčítania']
+    e_unit 1 ['Počet']
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '802.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'bez odkanalizovania           ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '122.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'nezistené                     ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '2.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'prípojka na kanalizačnú sieť  ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '206.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'septik, žumpa                 ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '472.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '456.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'bez odkanalizovania           ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '230.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'nezistené                     ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'prípojka na kanalizačnú sieť  ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_canal': 'septik, žumpa                 ', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'hodnota': '226.0'}
+== om7815rr SODB - Domy podľa typu a plynovej prípojky  | 2021-01-01 | riadkov 59284 | stĺpce ['e_year', 'e_nuts15', 'e_nuts14', 'e_indic', 'e_gas', 'e_unit', 'hodnota'] | context e_buildtype
+    e_year 5 ['1980', '1991', '2001', '2011', '2021']
+    e_nuts14 94 ['Okres Galanta', 'Okres Bardejov', 'Okres Kežmarok', 'Okres Turčianske Teplice', 'Okres Prešov', 'Okres Trenčín', 'Okres Humenné', 'Okres Nitra', 'Okres Nové Zámky', 'Okres Rožňava', 'Okres Spišská Nová Ves', 'Okres Vranov nad Topľou', 'Okres Rimavská Sobota', 'Okres Zvolen']
+    e_indic 1 ['Počet domov k rozhodujúcemu okamihu sčítania']
+    e_gas 4 ['Spolu', 'bez plynovej prípojky', 'nezistený      ', 'plynová prípojka     ']
+    e_unit 1 ['Počet']
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'Spolu', 'e_unit': 'Počet', 'hodnota': '802.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'bez plynovej prípojky', 'e_unit': 'Počet', 'hodnota': '798.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'nezistený      ', 'e_unit': 'Počet', 'hodnota': '2.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'plynová prípojka     ', 'e_unit': 'Počet', 'hodnota': '2.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'Spolu', 'e_unit': 'Počet', 'hodnota': '456.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'bez plynovej prípojky', 'e_unit': 'Počet', 'hodnota': '456.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'nezistený      ', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'plynová prípojka     ', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'Spolu', 'e_unit': 'Počet', 'hodnota': '948.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'bez plynovej prípojky', 'e_unit': 'Počet', 'hodnota': '816.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'nezistený      ', 'e_unit': 'Počet', 'hodnota': '124.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'plynová prípojka     ', 'e_unit': 'Počet', 'hodnota': '8.0'}
+== om7816rr SODB - Domy podľa typu a vodovodnej prípojky  | 2021-01-01 | riadkov 414988 | stĺpce ['e_year', 'e_nuts15', 'e_buildtype', 'e_watsup', 'e_nuts14', 'e_indic', 'hodnota'] | context e_unit
+    e_year 5 ['1980', '1991', '2001', '2011', '2021']
+    e_buildtype 4 ['Bytový dom', 'Ostatný a nezistený', 'Rodinný dom', 'Spolu']
+    e_watsup 7 ['Spolu', 'bez prípojky                ', 'mimo domu - vlastná         ', 'mimo domu - z verejnej siete', 'nezistený      ', 'v dome - vlastná            ', 'v dome - z verejnej siete   ']
+    e_nuts14 94 ['Okres Galanta', 'Okres Bardejov', 'Okres Kežmarok', 'Okres Turčianske Teplice', 'Okres Prešov', 'Okres Trenčín', 'Okres Lučenec', 'Okres Rimavská Sobota', 'Okres Humenné', 'Okres Nitra', 'Okres Nové Zámky', 'Okres Rožňava', 'Okres Topoľčany', 'Okres Spišská Nová Ves']
+    e_indic 1 ['Počet domov k rozhodujúcemu okamihu sčítania']
+    V: {'e_year': '1980', 'e_buildtype': 'Bytový dom', 'e_watsup': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '110.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Bytový dom', 'e_watsup': 'bez prípojky                ', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '9.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Bytový dom', 'e_watsup': 'mimo domu - vlastná         ', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '3.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Bytový dom', 'e_watsup': 'mimo domu - z verejnej siete', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '3.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Bytový dom', 'e_watsup': 'nezistený      ', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '0.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Bytový dom', 'e_watsup': 'v dome - vlastná            ', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '20.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Bytový dom', 'e_watsup': 'v dome - z verejnej siete   ', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '75.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '2.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'bez prípojky                ', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '1.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'mimo domu - vlastná         ', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '0.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'mimo domu - z verejnej siete', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '0.0'}
+    V: {'e_year': '1980', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'nezistený      ', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '1.0'}
+== om7813rr SODB - Domy podľa typu a obdobia výstavby alebo rekonštrukcie  | 2021-01-01 | riadkov 59284 | stĺpce ['e_year', 'e_nuts15', 'e_nuts14', 'e_indic', 'e_unit', 'e_buildtype', 'hodnota'] | context e_periodconren
+    e_year 5 ['1980', '1991', '2001', '2011', '2021']
+    e_nuts14 94 ['Okres Galanta', 'Okres Bardejov', 'Okres Kežmarok', 'Okres Turčianske Teplice', 'Okres Prešov', 'Okres Trenčín', 'Okres Humenné', 'Okres Nitra', 'Okres Nové Zámky', 'Okres Rožňava', 'Okres Spišská Nová Ves', 'Okres Vranov nad Topľou', 'Okres Rimavská Sobota', 'Okres Zvolen']
+    e_indic 1 ['Počet domov k rozhodujúcemu okamihu sčítania']
+    e_unit 1 ['Počet']
+    e_buildtype 4 ['Bytový dom', 'Ostatný a nezistený', 'Rodinný dom', 'Spolu']
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Bytový dom', 'hodnota': '220.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '4.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Rodinný dom', 'hodnota': '578.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Spolu', 'hodnota': '802.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Bytový dom', 'hodnota': '4.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '2.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Rodinný dom', 'hodnota': '450.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Spolu', 'hodnota': '456.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Bytový dom', 'hodnota': '160.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '0.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Rodinný dom', 'hodnota': '788.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Spolu', 'hodnota': '948.0'}
+== om7821rr SODB - Byty podľa typu kúrenia a typu domu  | 2021-01-01 | riadkov 59284 | stĺpce ['e_year', 'e_nuts15', 'e_nuts14', 'e_indic', 'e_unit', 'e_buildtype', 'hodnota'] | context e_heat
+    e_year 5 ['1980', '1991', '2001', '2011', '2021']
+    e_nuts14 94 ['Okres Galanta', 'Okres Bardejov', 'Okres Kežmarok', 'Okres Turčianske Teplice', 'Okres Prešov', 'Okres Trenčín', 'Okres Humenné', 'Okres Nitra', 'Okres Nové Zámky', 'Okres Rožňava', 'Okres Spišská Nová Ves', 'Okres Vranov nad Topľou', 'Okres Rimavská Sobota', 'Okres Zvolen']
+    e_indic 1 ['Počet bytov k rozhodujúcemu okamihu sčítania']
+    e_unit 1 ['Počet']
+    e_buildtype 4 ['Bytový dom', 'Ostatný a nezistený', 'Rodinný dom', 'Spolu']
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Bytový dom', 'hodnota': '488.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '14.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Rodinný dom', 'hodnota': '568.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Spolu', 'hodnota': '1070.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Bytový dom', 'hodnota': '4.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '2.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Rodinný dom', 'hodnota': '402.0'}
+    V: {'e_year': '1980', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Spolu', 'hodnota': '408.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Bytový dom', 'hodnota': '368.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '0.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Rodinný dom', 'hodnota': '718.0'}
+    V: {'e_year': '1991', 'e_nuts14': 'Okres Detva', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_unit': 'Počet', 'e_buildtype': 'Spolu', 'hodnota': '1086.0'}
+== og3805rr Právnické osoby za obce SR k 31.12.  | 2025-12-31 | riadkov 199320 | stĺpce ['e_year', 'e_nuts15', 'e_indic', 'e_legal_forms', 'hodnota'] | context e_unit
+    e_year 22 ['2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
+    e_indic 1 ['Právnické osoby']
+    e_legal_forms 3 ['Právnické osoby neziskové', 'Právnické osoby spolu', 'Právnické osoby ziskové']
+    V: {'e_year': '2004', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby neziskové', 'hodnota': '7.0'}
+    V: {'e_year': '2004', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby spolu', 'hodnota': '15.0'}
+    V: {'e_year': '2004', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby ziskové', 'hodnota': '8.0'}
+    V: {'e_year': '2004', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby neziskové', 'hodnota': '4.0'}
+    V: {'e_year': '2004', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby spolu', 'hodnota': '7.0'}
+    V: {'e_year': '2004', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby ziskové', 'hodnota': '3.0'}
+    V: {'e_year': '2005', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby neziskové', 'hodnota': '6.0'}
+    V: {'e_year': '2005', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby spolu', 'hodnota': '13.0'}
+    V: {'e_year': '2005', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby ziskové', 'hodnota': '7.0'}
+    V: {'e_year': '2005', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby neziskové', 'hodnota': '4.0'}
+    V: {'e_year': '2005', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby spolu', 'hodnota': '7.0'}
+    V: {'e_year': '2005', 'e_indic': 'Právnické osoby', 'e_legal_forms': 'Právnické osoby ziskové', 'hodnota': '3.0'}
+== og3808rr Fyzické osoby - podnikatelia podľa právnych foriem za obce SR k 31.12. | 2025-12-31 | riadkov 132880 | stĺpce ['e_year', 'e_nuts15', 'e_indic', 'e_legal_forms', 'hodnota'] | context e_unit
+    e_year 22 ['2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
+    e_indic 1 ['Fyzické osoby - podnikatelia']
+    e_legal_forms 2 ['Spolu', 'Živnostníci']
+    V: {'e_year': '2004', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Spolu', 'hodnota': '77.0'}
+    V: {'e_year': '2004', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Živnostníci', 'hodnota': '71.0'}
+    V: {'e_year': '2004', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Spolu', 'hodnota': '13.0'}
+    V: {'e_year': '2004', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Živnostníci', 'hodnota': '10.0'}
+    V: {'e_year': '2005', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Spolu', 'hodnota': '86.0'}
+    V: {'e_year': '2005', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Živnostníci', 'hodnota': '81.0'}
+    V: {'e_year': '2005', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Spolu', 'hodnota': '16.0'}
+    V: {'e_year': '2005', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Živnostníci', 'hodnota': '14.0'}
+    V: {'e_year': '2006', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Spolu', 'hodnota': '94.0'}
+    V: {'e_year': '2006', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Živnostníci', 'hodnota': '89.0'}
+    V: {'e_year': '2006', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Spolu', 'hodnota': '15.0'}
+    V: {'e_year': '2006', 'e_indic': 'Fyzické osoby - podnikatelia', 'e_legal_forms': 'Živnostníci', 'hodnota': '13.0'}
+== zd5001rr Zdravotníctvo  | 2024-12-31 | riadkov 87638 | stĺpce ['e_year', 'e_nuts15', 'e_indic', 'e_unit', 'hodnota'] | context e_icha_hp
+    e_year 29 ['1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009']
+    e_indic 1 ['Zdravotníctvo']
+    e_unit 1 ['Počet']
+    V: {'e_year': '1996', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1996', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1997', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1997', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1998', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '3.0'}
+    V: {'e_year': '1998', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '1999', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '4.0'}
+    V: {'e_year': '1999', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '2000', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '4.0'}
+    V: {'e_year': '2000', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '0.0'}
+    V: {'e_year': '2001', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '2.0'}
+    V: {'e_year': '2001', 'e_indic': 'Zdravotníctvo', 'e_unit': 'Počet', 'hodnota': '0.0'}
+== cr3805qr Návštevnosť, tržby a kapacity UZ - SR, kraje, okresy, obce (13 ukazova | 2026-06-30 | riadkov 79222 | stĺpce ['e_quarter', 'e_nuts15', 'e_nuts14', 'e_indic', 'e_unit', 'hodnota'] | context e_year
+    e_quarter 5 ['1. - 4. Q.', '1. Q.', '2. Q.', '3. Q.', '4. Q.']
+    e_nuts14 94 ['Okres Spišská Nová Ves', 'Okres Brezno', 'Okres Banská Bystrica', 'Okres Komárno', 'Okres Veľký Krtíš', 'Okres Piešťany', 'Okres Banská Štiavnica', 'Okres Vranov nad Topľou', 'Okres Nitra', 'Okres Bánovce nad Bebravou', 'Okres Dunajská Streda', 'Okres Lučenec', 'Okres Námestovo', 'Stredné Slovensko']
+    e_indic 13 ['Celkový počet izieb k dispozícii', 'Celkový počet lôžok (vrátane kempingových miest) k dispozíci', 'Celkový počet ubytovacích zariadení k dispozícii', 'Priemerná cena za ubytovanie v ubytovacích zariadeniach', 'Priemerná cena za ubytovanie v ubytovacích zariadeniach za d', 'Priemerná cena za ubytovanie v ubytovacích zariadeniach za z', 'Priemerný počet izieb k dispozícii v 1 dni', 'Priemerný počet stálych lôžok k dispozícii v 1 dni', 'Tržby domácich návštevníkov', 'Tržby za ubytovanie spolu', 'Tržby zahraničných návštevníkov', 'Čisté využitie izieb', 'Čisté využitie stálych lôžok v ubytovacích zariadeniach']
+    e_unit 3 ['Počet', 'EUR', '%']
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Celkový počet izieb k dispozícii', 'e_unit': 'Počet', 'hodnota': '781.0'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Celkový počet lôžok (vrátane kempingových miest) k', 'e_unit': 'Počet', 'hodnota': '1876.0'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Celkový počet ubytovacích zariadení k dispozícii', 'e_unit': 'Počet', 'hodnota': '24.0'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Priemerná cena za ubytovanie v ubytovacích zariade', 'e_unit': 'EUR', 'hodnota': '.'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Priemerná cena za ubytovanie v ubytovacích zariade', 'e_unit': 'EUR', 'hodnota': '.'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Priemerná cena za ubytovanie v ubytovacích zariade', 'e_unit': 'EUR', 'hodnota': '.'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Priemerný počet izieb k dispozícii v 1 dni', 'e_unit': 'Počet', 'hodnota': '679.0'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Priemerný počet stálych lôžok k dispozícii v 1 dni', 'e_unit': 'Počet', 'hodnota': '1434.0'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Tržby domácich návštevníkov', 'e_unit': 'EUR', 'hodnota': '.'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Tržby za ubytovanie spolu', 'e_unit': 'EUR', 'hodnota': '.'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Tržby zahraničných návštevníkov', 'e_unit': 'EUR', 'hodnota': '.'}
+    V: {'e_quarter': '1. - 4. Q.', 'e_nuts14': 'Okres Detva', 'e_indic': 'Čisté využitie izieb', 'e_unit': '%', 'hodnota': '330.5'}
+== ik5001rr Počet pôšt v Slovenskej republike  | 2025-12-31 | riadkov 90660 | stĺpce ['e_year', 'e_nuts15', 'e_indic', 'hodnota'] | context e_unit
+    e_year 30 ['1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009']
+    e_indic 1 ['Počet pôšt']
+    V: {'e_year': '1996', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '1996', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '1997', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '1997', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '1998', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '1998', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '1999', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '1999', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '2000', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '2000', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '2001', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+    V: {'e_year': '2001', 'e_indic': 'Počet pôšt', 'hodnota': '1.0'}
+== ku5008rr Knižnice (údaje za obce) | 2025-12-31 | riadkov 332420 | stĺpce ['e_year', 'e_nuts15', 'e_indic', 'e_libccat_libtype', 'hodnota'] | context e_unit
+    e_year 11 ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
+    e_indic 2 ['Počet knižničných jednotiek', 'Počet knižníc']
+    e_libccat_libtype 5 ['Akademické knižnice', 'Vedecké knižnice', 'Verejné knižnice', 'Školské knižnice', 'Špeciálne knižnice']
+    V: {'e_year': '2015', 'e_indic': 'Počet knižničných jednotiek', 'e_libccat_libtype': 'Akademické knižnice', 'hodnota': '0.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižničných jednotiek', 'e_libccat_libtype': 'Vedecké knižnice', 'hodnota': '0.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižničných jednotiek', 'e_libccat_libtype': 'Verejné knižnice', 'hodnota': '4574.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižničných jednotiek', 'e_libccat_libtype': 'Školské knižnice', 'hodnota': '3878.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižničných jednotiek', 'e_libccat_libtype': 'Špeciálne knižnice', 'hodnota': '0.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižníc', 'e_libccat_libtype': 'Akademické knižnice', 'hodnota': '0.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižníc', 'e_libccat_libtype': 'Vedecké knižnice', 'hodnota': '0.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižníc', 'e_libccat_libtype': 'Verejné knižnice', 'hodnota': '1.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižníc', 'e_libccat_libtype': 'Školské knižnice', 'hodnota': '1.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižníc', 'e_libccat_libtype': 'Špeciálne knižnice', 'hodnota': '0.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižničných jednotiek', 'e_libccat_libtype': 'Akademické knižnice', 'hodnota': '0.0'}
+    V: {'e_year': '2015', 'e_indic': 'Počet knižničných jednotiek', 'e_libccat_libtype': 'Vedecké knižnice', 'hodnota': '0.0'}
 HOTOVO
