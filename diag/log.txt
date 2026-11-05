@@ -1,177 +1,25 @@
-om7103rr ERR om7103rr: žiadna dimenzia s jednou položkou do kontextu
-om7052rr ERR om7052rr: žiadna dimenzia s jednou položkou do kontextu
-== om7811rr riadkov 355704 stĺpce ['e_year', 'e_nuts15', 'e_nuts14', 'e_canal', 'e_indic', 'e_buildtype', 'hodnota', '_cas']
-    e_year 5 ['1980', '1991', '2001', '2011', '2021']
-    e_canal 6 ['Spolu', 'bez odkanalizovania', 'domáca čistička odpadových vôd', 'nezistené', 'prípojka na kanalizačnú sieť', 'septik, žumpa']
-    e_indic 1 ['Počet domov k rozhodujúcemu okamihu sčítania']
-    e_buildtype 4 ['Bytový dom', 'Ostatný a nezistený', 'Rodinný dom', 'Spolu']
-    časy: ['1980', '1991', '2001', '2011', '2021']
-    V: {'e_year': '2021', 'e_canal': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'hodnota': '35.0'}
-    V: {'e_year': '2021', 'e_canal': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '28.0'}
-    V: {'e_year': '2021', 'e_canal': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'hodnota': '467.0'}
-    V: {'e_year': '2021', 'e_canal': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '530.0'}
-    V: {'e_year': '2021', 'e_canal': 'bez odkanalizovania', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'hodnota': '10.0'}
-    V: {'e_year': '2021', 'e_canal': 'bez odkanalizovania', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '4.0'}
-    V: {'e_year': '2021', 'e_canal': 'bez odkanalizovania', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'hodnota': '84.0'}
-    V: {'e_year': '2021', 'e_canal': 'bez odkanalizovania', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '98.0'}
-    V: {'e_year': '2021', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '1.0'}
-    V: {'e_year': '2021', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'hodnota': '14.0'}
-    V: {'e_year': '2021', 'e_canal': 'domáca čistička odpadových vôd', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '15.0'}
-    V: {'e_year': '2021', 'e_canal': 'nezistené', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_canal': 'nezistené', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_canal': 'nezistené', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_canal': 'nezistené', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_canal': 'prípojka na kanalizačnú sieť', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_canal': 'prípojka na kanalizačnú sieť', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '1.0'}
-    V: {'e_year': '2021', 'e_canal': 'prípojka na kanalizačnú sieť', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'hodnota': '17.0'}
-    V: {'e_year': '2021', 'e_canal': 'prípojka na kanalizačnú sieť', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '21.0'}
-    V: {'e_year': '2021', 'e_canal': 'septik, žumpa', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'hodnota': '22.0'}
-    V: {'e_year': '2021', 'e_canal': 'septik, žumpa', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '19.0'}
-    V: {'e_year': '2021', 'e_canal': 'septik, žumpa', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'hodnota': '352.0'}
-    V: {'e_year': '2021', 'e_canal': 'septik, žumpa', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'hodnota': '393.0'}
-== om7815rr riadkov 237136 stĺpce ['e_year', 'e_nuts15', 'e_nuts14', 'e_indic', 'e_gas', 'e_buildtype', 'hodnota', '_cas']
-    e_year 5 ['1980', '1991', '2001', '2011', '2021']
-    e_indic 1 ['Počet domov k rozhodujúcemu okamihu sčítania']
-    e_gas 4 ['Spolu', 'bez plynovej prípojky', 'nezistený', 'plynová prípojka']
-    e_buildtype 4 ['Bytový dom', 'Ostatný a nezistený', 'Rodinný dom', 'Spolu']
-    časy: ['1980', '1991', '2001', '2011', '2021']
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'Spolu', 'e_buildtype': 'Bytový dom', 'hodnota': '35.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'Spolu', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '28.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'Spolu', 'e_buildtype': 'Rodinný dom', 'hodnota': '467.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'Spolu', 'e_buildtype': 'Spolu', 'hodnota': '530.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'bez plynovej prípojky', 'e_buildtype': 'Bytový dom', 'hodnota': '18.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'bez plynovej prípojky', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '8.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'bez plynovej prípojky', 'e_buildtype': 'Rodinný dom', 'hodnota': '121.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'bez plynovej prípojky', 'e_buildtype': 'Spolu', 'hodnota': '147.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'nezistený', 'e_buildtype': 'Bytový dom', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'nezistený', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'nezistený', 'e_buildtype': 'Rodinný dom', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'nezistený', 'e_buildtype': 'Spolu', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'plynová prípojka', 'e_buildtype': 'Bytový dom', 'hodnota': '17.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'plynová prípojka', 'e_buildtype': 'Ostatný a nezistený', 'hodnota': '17.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'plynová prípojka', 'e_buildtype': 'Rodinný dom', 'hodnota': '346.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_gas': 'plynová prípojka', 'e_buildtype': 'Spolu', 'hodnota': '380.0'}
-== om7816rr riadkov 414988 stĺpce ['e_year', 'e_nuts15', 'e_buildtype', 'e_watsup', 'e_nuts14', 'e_indic', 'hodnota', '_cas']
-    e_year 5 ['1980', '1991', '2001', '2011', '2021']
-    e_buildtype 4 ['Bytový dom', 'Ostatný a nezistený', 'Rodinný dom', 'Spolu']
-    e_watsup 7 ['Spolu', 'bez prípojky', 'mimo domu - vlastná', 'mimo domu - z verejnej siete', 'nezistený', 'v dome - vlastná', 'v dome - z verejnej siete']
-    e_indic 1 ['Počet domov k rozhodujúcemu okamihu sčítania']
-    časy: ['1980', '1991', '2001', '2011', '2021']
-    V: {'e_year': '2021', 'e_buildtype': 'Bytový dom', 'e_watsup': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '35.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Bytový dom', 'e_watsup': 'bez prípojky', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Bytový dom', 'e_watsup': 'mimo domu - vlastná', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Bytový dom', 'e_watsup': 'mimo domu - z verejnej siete', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '7.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Bytový dom', 'e_watsup': 'nezistený', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '1.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Bytový dom', 'e_watsup': 'v dome - vlastná', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '2.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Bytový dom', 'e_watsup': 'v dome - z verejnej siete', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '25.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '28.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'bez prípojky', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'mimo domu - vlastná', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'mimo domu - z verejnej siete', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '5.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'nezistený', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'v dome - vlastná', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '1.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Ostatný a nezistený', 'e_watsup': 'v dome - z verejnej siete', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '19.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Rodinný dom', 'e_watsup': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '467.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Rodinný dom', 'e_watsup': 'bez prípojky', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Rodinný dom', 'e_watsup': 'mimo domu - vlastná', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Rodinný dom', 'e_watsup': 'mimo domu - z verejnej siete', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '56.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Rodinný dom', 'e_watsup': 'nezistený', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Rodinný dom', 'e_watsup': 'v dome - vlastná', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '11.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Rodinný dom', 'e_watsup': 'v dome - z verejnej siete', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '397.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Spolu', 'e_watsup': 'Spolu', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '530.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Spolu', 'e_watsup': 'bez prípojky', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Spolu', 'e_watsup': 'mimo domu - vlastná', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Spolu', 'e_watsup': 'mimo domu - z verejnej siete', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '68.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Spolu', 'e_watsup': 'nezistený', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '4.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Spolu', 'e_watsup': 'v dome - vlastná', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '14.0'}
-    V: {'e_year': '2021', 'e_buildtype': 'Spolu', 'e_watsup': 'v dome - z verejnej siete', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'hodnota': '441.0'}
-== om7813rr riadkov 333496 stĺpce ['e_year', 'e_nuts15', 'e_nuts14', 'e_indic', 'e_buildtype', 'e_periodconren', 'hodnota', '_cas']
-    e_year 5 ['1980', '1991', '2001', '2011', '2021']
-    e_indic 1 ['Počet domov k rozhodujúcemu okamihu sčítania']
-    e_buildtype 4 ['Bytový dom', 'Ostatný a nezistený', 'Rodinný dom', 'Spolu']
-    e_periodconren 7 ['1946 - 1980', 'Spolu', 'do roku 1945', 'nezistené', '1981 - 2000', '2001 - 2009', '2010 a neskôr']
-    časy: ['1980', '1991', '2001', '2011', '2021']
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_periodconren': '1946 - 1980', 'hodnota': '15.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_periodconren': '1981 - 2000', 'hodnota': '5.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_periodconren': '2001 - 2009', 'hodnota': '4.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_periodconren': '2010 a neskôr', 'hodnota': '7.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_periodconren': 'Spolu', 'hodnota': '35.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_periodconren': 'do roku 1945', 'hodnota': '4.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_periodconren': 'nezistené', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_periodconren': '1946 - 1980', 'hodnota': '5.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_periodconren': '1981 - 2000', 'hodnota': '5.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_periodconren': '2001 - 2009', 'hodnota': '1.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_periodconren': '2010 a neskôr', 'hodnota': '13.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_periodconren': 'Spolu', 'hodnota': '28.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_periodconren': 'do roku 1945', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_periodconren': 'nezistené', 'hodnota': '4.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_periodconren': '1946 - 1980', 'hodnota': '111.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_periodconren': '1981 - 2000', 'hodnota': '41.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_periodconren': '2001 - 2009', 'hodnota': '68.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_periodconren': '2010 a neskôr', 'hodnota': '218.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_periodconren': 'Spolu', 'hodnota': '467.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_periodconren': 'do roku 1945', 'hodnota': '29.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_periodconren': 'nezistené', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_periodconren': '1946 - 1980', 'hodnota': '131.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_periodconren': '1981 - 2000', 'hodnota': '51.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_periodconren': '2001 - 2009', 'hodnota': '73.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_periodconren': '2010 a neskôr', 'hodnota': '238.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_periodconren': 'Spolu', 'hodnota': '530.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_periodconren': 'do roku 1945', 'hodnota': '33.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet domov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_periodconren': 'nezistené', 'hodnota': '4.0'}
-== om7821rr riadkov 393008 stĺpce ['e_year', 'e_nuts15', 'e_nuts14', 'e_indic', 'e_buildtype', 'e_heat', 'hodnota', '_cas']
-    e_year 5 ['1980', '1991', '2001', '2011', '2021']
-    e_indic 1 ['Počet bytov k rozhodujúcemu okamihu sčítania']
-    e_buildtype 4 ['Bytový dom', 'Ostatný a nezistený', 'Rodinný dom', 'Spolu']
-    e_heat 8 ['Bez kúrenia', 'Nezistené', 'Spolu', 'Ústredné kúrenie diaľkové', 'Ústredné kúrenie lokálne', 'Etážové kúrenie', 'Iné', 'Samostatné vykurovacie teleso']
-    časy: ['1980', '1991', '2001', '2011', '2021']
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_heat': 'Bez kúrenia', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_heat': 'Etážové kúrenie', 'hodnota': '1.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_heat': 'Iné', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_heat': 'Nezistené', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_heat': 'Samostatné vykurovacie teleso', 'hodnota': '8.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_heat': 'Spolu', 'hodnota': '104.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_heat': 'Ústredné kúrenie diaľkové', 'hodnota': '5.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Bytový dom', 'e_heat': 'Ústredné kúrenie lokálne', 'hodnota': '90.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_heat': 'Bez kúrenia', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_heat': 'Etážové kúrenie', 'hodnota': '1.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_heat': 'Iné', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_heat': 'Nezistené', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_heat': 'Samostatné vykurovacie teleso', 'hodnota': '2.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_heat': 'Spolu', 'hodnota': '34.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_heat': 'Ústredné kúrenie diaľkové', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Ostatný a nezistený', 'e_heat': 'Ústredné kúrenie lokálne', 'hodnota': '25.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_heat': 'Bez kúrenia', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_heat': 'Etážové kúrenie', 'hodnota': '6.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_heat': 'Iné', 'hodnota': '8.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_heat': 'Nezistené', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_heat': 'Samostatné vykurovacie teleso', 'hodnota': '55.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_heat': 'Spolu', 'hodnota': '467.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_heat': 'Ústredné kúrenie diaľkové', 'hodnota': '2.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Rodinný dom', 'e_heat': 'Ústredné kúrenie lokálne', 'hodnota': '396.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_heat': 'Bez kúrenia', 'hodnota': '0.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_heat': 'Etážové kúrenie', 'hodnota': '8.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_heat': 'Iné', 'hodnota': '8.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_heat': 'Nezistené', 'hodnota': '3.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_heat': 'Samostatné vykurovacie teleso', 'hodnota': '65.0'}
-    V: {'e_year': '2021', 'e_indic': 'Počet bytov k rozhodujúcemu okamihu sčítania', 'e_buildtype': 'Spolu', 'e_heat': 'Spolu', 'hodnota': '605.0'}
-== zd5001rr riadkov 1051656 stĺpce ['e_year', 'e_nuts15', 'e_indic', 'e_icha_hp', 'hodnota', '_cas']
-    e_year 29 ['1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']
-    e_indic 1 ['Zdravotníctvo']
-    e_icha_hp 12 ['Lekárne a výdajne liekov', 'Liečebne, domy ošetrovateľskej starost., hospice, zaria', 'Nemocnice všeobecné a špecializované', 'Polikliniky samostatné (územné a podnikové)', 'Rýchla zdravotnícka pomoc', 'Samostatné ambulancie lekára špecialistu', 'Samostatné ambulancie praktického lekára gynekológa', 'Samostatné ambulancie praktického lekára pre deti', 'Samostatné ambulancie praktického lekára pre dospelých', 'Samostatné ambulancie praktického lekára stomatológa', 'Transfúziologické a hematologické oddelenia', 'Výdajne zdravotníckych pomôcok']
-    časy: ['2019', '2020', '2021', '2022', '2023', '2024']
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Lekárne a výdajne liekov', 'hodnota': '0.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Liečebne, domy ošetrovateľskej starost., hosp', 'hodnota': '0.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Nemocnice všeobecné a špecializované', 'hodnota': '0.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Polikliniky samostatné (územné a podnikové)', 'hodnota': '0.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Rýchla zdravotnícka pomoc', 'hodnota': '0.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Samostatné ambulancie lekára špecialistu', 'hodnota': '0.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Samostatné ambulancie praktického lekára gyne', 'hodnota': '0.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Samostatné ambulancie praktického lekára pre ', 'hodnota': '0.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Samostatné ambulancie praktického lekára pre ', 'hodnota': '0.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Samostatné ambulancie praktického lekára stom', 'hodnota': '1.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Transfúziologické a hematologické oddelenia', 'hodnota': '0.0'}
-    V: {'e_year': '2024', 'e_indic': 'Zdravotníctvo', 'e_icha_hp': 'Výdajne zdravotníckych pomôcok', 'hodnota': '0.0'}
-cr3805qr ERR cr3805qr: žiadna dimenzia s jednou položkou do kontextu
+== om7103rr Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (ročne)  2025-12-31
+   e_indic CODELIST 46 [{"id": "6aa32d2b-eb47-4eb1-a242-054a3b9fdc87", "nameSk": "Narodení", "nameEn": "Birth", "acronym": "U_OM_0006", "code": "PC485063", "orderNumber": 184}, {"id": "c960d4c4-3b93-423f-bbd4-dbd49adbc54e", "nameSk": "Hrubá miera živorodenosti", "nameEn": "Crude birth rate", "acronym": "U_OM_0007", "code"
+   e_unit CODELIST 4 [{"id": "fc3edee1-64b7-45c2-8f2c-114cd3463f2f", "nameSk": "Osoby", "nameEn": "Persons", "acronym": "UNIT_PERS", "code": "PC487313", "orderNumber": 2}, {"id": "43ff111b-1a3d-4c34-895e-74933058942e", "nameSk": "Počet", "nameEn": "Number", "acronym": "UNIT_NR", "code": "PC487318", "orderNumber": 7}]
+      ['Osoby', 'Počet', 'miera v promile', 'Podiel v %']
+   e_year TIME 33 [{"id": "5f8a8e4b-c442-463d-a2f5-2432aab449cd", "nameSk": "1993", "nameEn": "1993", "acronym": "1993", "code": "PC391758", "orderNumber": 94}, {"id": "f59219e0-5898-45fe-b4d9-a6d883f21ad6", "nameSk": "1994", "nameEn": "1994", "acronym": "1994", "code": "PC391759", "orderNumber": 95}]
+      ['1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
+== om7052rr Indexy vekového zloženia - SR-oblasť-kraj-okres-obec, m-v  2025-12-31
+   e_sex CODELIST 3 [{"id": "b9ecd8be-b816-43ea-bd1a-ce7ff5cd05cc", "nameSk": "Spolu", "nameEn": "Total", "acronym": "TOTAL", "code": "PC088602", "orderNumber": 1}, {"id": "59d78552-2fbc-4237-8037-8508f1a6581b", "nameSk": "Muži", "nameEn": "Males", "acronym": "SEX_M", "code": "PC088603", "orderNumber": 2}]
+      ['Spolu', 'Muži', 'Ženy']
+   e_indic CODELIST 9 [{"id": "c82c1697-657d-4954-b60e-72585128f644", "nameSk": "Index ekonomického zaťaženia - počet osob v predproduktívnom (0-14) a poproduktívnom veku (65+) na 100 osôb v produktívnom veku (15-64)", "nameEn": "Economic Dependency Ratio – the number of persons of pre-working age (0–14) and post-working
+      ['Index ekonomického zaťaženia - počet osob v predproduktívnom (0-14) a poproduktívnom veku (65+) na 100 osôb v produktívnom veku (15-64)', 'Index ekonomickej závislosti mladých ľudí', 'Index ekonomickej závislosti starých ľudí', 'Index starnutia', 'Mediánový vek obyvateľa', 'Priemerný vek obyvateľa', 'Podiel obyvateľov v predproduktívnom veku', 'Podiel obyvateľov v produktívnom veku', 'Podiel obyvateľov v poproduktívnom veku']
+   e_unit CODELIST 2 [{"id": "bbdd0748-b827-4856-963a-3bbca6762904", "nameSk": "Roky", "nameEn": "Years", "acronym": "UNIT_YRS", "code": "PC487374", "orderNumber": 63}, {"id": "12889070-3646-4c52-995f-3e36076d9b92", "nameSk": "Podiel v %", "nameEn": "Share in %", "acronym": "UNIT_VPC_SHARE", "code": "PC487595", "orderNu
+      ['Roky', 'Podiel v %']
+   e_year TIME 30 [{"id": "6b3cc07d-72f4-436f-8097-8b304cd3be0c", "nameSk": "1996", "nameEn": "1996", "acronym": "1996", "code": "PC391761", "orderNumber": 97}, {"id": "79d756d7-e176-4d17-a548-afd547a88311", "nameSk": "1997", "nameEn": "1997", "acronym": "1997", "code": "PC391762", "orderNumber": 98}]
+      ['1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
+== cr3805qr Návštevnosť, tržby a kapacity UZ - SR, kraje, okresy, obce (13 ukazovateľov)  2026-06-30
+   e_quarter TIME 5 [{"id": "882963f9-3880-42b7-948b-98724234a05c", "nameSk": "1. Q.", "nameEn": "1. Q.", "acronym": "1. Q.", "code": "PC391830", "orderNumber": 1}, {"id": "b4d5761b-f552-499b-85c3-20ef23ebb58d", "nameSk": "2. Q.", "nameEn": "2. Q.", "acronym": "2. Q.", "code": "PC391831", "orderNumber": 2}]
+      ['1. Q.', '2. Q.', '3. Q.', '4. Q.', '1. - 4. Q.']
+   e_indic CODELIST 13 [{"id": "bca1128e-18fe-4b40-93b2-6fc3a998aada", "nameSk": "Celkový počet ubytovacích zariadení k dispozícii", "nameEn": "Total number of available accommodation establishments", "acronym": "U_CR_0002", "code": "PC485185", "orderNumber": 306}, {"id": "b6b36d9c-33c0-405e-b898-2dca53e4df14", "nameSk": 
+      ['Celkový počet ubytovacích zariadení k dispozícii', 'Celkový počet izieb k dispozícii', 'Celkový počet lôžok (vrátane kempingových miest) k dispozícii', 'Tržby za ubytovanie spolu', 'Tržby zahraničných návštevníkov', 'Tržby domácich návštevníkov', 'Priemerná cena za ubytovanie v ubytovacích zariadeniach', 'Priemerná cena za ubytovanie v ubytovacích zariadeniach za zahraničného návštevníka', 'Priemerná cena za ubytovanie v ubytovacích zariadeniach za domáceho návštevníka', 'Čisté využitie stálych lôžok v ubytovacích zariadeniach', 'Čisté využitie izieb', 'Priemerný počet izieb k dispozícii v 1 dni', 'Priemerný počet stálych lôžok k dispozícii v 1 dni']
+   e_unit CODELIST 3 [{"id": "43ff111b-1a3d-4c34-895e-74933058942e", "nameSk": "Počet", "nameEn": "Number", "acronym": "UNIT_NR", "code": "PC487318", "orderNumber": 7}, {"id": "aa4ec7c7-9b4c-4dc9-9ad4-6b3d6c4b444a", "nameSk": "%", "nameEn": "%", "acronym": "UNIT_VPC", "code": "PC487324", "orderNumber": 13}]
+      ['Počet', '%', 'EUR']
+   e_year TIME 10 [{"id": "f4d8e542-4e59-42c0-a75d-0505e97c267a", "nameSk": "2017", "nameEn": "2017", "acronym": "2017", "code": "PC391792", "orderNumber": 128}, {"id": "454c0df6-e2b5-4c5d-a14b-d59e8d8e2077", "nameSk": "2018", "nameEn": "2018", "acronym": "2018", "code": "PC391793", "orderNumber": 129}]
+      ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026']
 HOTOVO
