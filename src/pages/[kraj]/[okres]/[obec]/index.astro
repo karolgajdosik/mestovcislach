@@ -96,7 +96,12 @@ const odOkr = odI?.okresy?.[o.okres] ?? null;
 // školy (MŠVVaM)
 const skI = skolyInfo();
 const sk = skI?.obce?.[o.kod] ?? null;
-const skolText = (n: number) => (n === 1 ? 'zariadenie' : n < 5 ? 'zariadenia' : 'zariadení');
+const SK_TVARY: Record<string, [string, string, string]> = {
+  ms: ['materská škola', 'materské školy', 'materských škôl'], zs: ['základná škola', 'základné školy', 'základných škôl'],
+  ss: ['stredná škola', 'stredné školy', 'stredných škôl'], spec: ['špeciálna škola', 'špeciálne školy', 'špeciálnych škôl'],
+  zus: ['umelecká škola (ZUŠ)', 'umelecké školy (ZUŠ)', 'umeleckých škôl (ZUŠ)'], cvc: ['centrum voľného času', 'centrá voľného času', 'centier voľného času'],
+};
+const skTvar = (t_: string, n: number) => { const f = SK_TVARY[t_]; return f ? f[n === 1 ? 0 : n < 5 ? 1 : 2] : t_; };
 // eurofondy a dotácie (zmluvy o NFP v CRZ)
 const nfp = zm?.nfp && zm.nfp[0] > 0 ? zm : null;
 const zmlText = (n: number) => (n === 1 ? 'zmluva' : n < 5 ? 'zmluvy' : 'zmlúv');
@@ -282,10 +287,10 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
     <section class="card" id="skoly">
       <h2>Školy a škôlky</h2>
       <ul class="ob-cisla">
-        {Object.entries(sk.typy).map(([t_, [n, z]]) => <li><b>{fmt(n)}</b><span>{(skI.typy[t_] ?? t_).toLowerCase()}{z ? ` · ${fmt(z)} ${t_ === 'cvc' ? 'členov' : t_ === 'ms' ? 'detí' : 'žiakov'}` : ''}</span></li>)}
+        {Object.entries(sk.typy).map(([t_, [n, z]]) => <li><b>{fmt(n)}</b><span>{skTvar(t_, n)}{z ? ` · ${fmt(z)} ${t_ === 'cvc' ? 'členov' : t_ === 'ms' ? 'detí' : 'žiakov'}` : ''}</span></li>)}
       </ul>
       <ul class="ob-zmluvy">
-        {sk.zoznam.map(([n, t_, z]) => <li><span>{n}</span><small>{skI.typy[t_] ?? t_}{z ? ` · ${fmt(z)} ${t_ === 'cvc' ? 'členov' : t_ === 'ms' ? 'detí' : 'žiakov'}` : ''}</small></li>)}
+        {sk.zoznam.map(([n, t_, z]) => <li><span>{n}</span><small>{skTvar(t_, 1).replace(/^./, (c) => c.toUpperCase())}{z ? ` · ${fmt(z)} ${t_ === 'cvc' ? 'členov' : t_ === 'ms' ? 'detí' : 'žiakov'}` : ''}</small></li>)}
       </ul>
       <p class="zdroj">Zdroj: <a href="https://mapaskol.iedu.sk" rel="noopener">MŠVVaM SR – Digitálna mapa škôl</a> (aktuálny školský rok). Súčasti spojených škôl (napr. ZŠ s MŠ) sú uvedené zvlášť, bez jedální a školských klubov.</p>
     </section>
@@ -303,14 +308,15 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
       <h2>Komunálny odpad {odRok}</h2>
       <div class="ob-obal">
         <table class="ob-tab">
-          <thead><tr><th></th><th class="num">{o.nazov}</th><th class="num">medián obcí okresu</th><th class="num">medián obcí SR</th></tr></thead>
+          <thead><tr><th></th><th class="num">{o.nazov}</th><th class="num">medián obcí okresu</th></tr></thead>
           <tbody>
-            <tr><td>Podiel triedeného odpadu<br /><small>odhad zo štatistiky, nie úradná úroveň vytriedenia</small></td><td class="num">{des(odP.triedene, 0)} %</td><td class="num">{odOkr?.triedene != null ? `${des(odOkr.triedene, 0)} %` : '–'}</td><td class="num">{des(odI.sr.triedene, 0)} %</td></tr>
-            {odP.kg_zmes != null && <tr><td>Zmesový odpad na obyvateľa<br /><small>čierna nádoba – čím menej, tým lepšie</small></td><td class="num">{fmt(odP.kg_zmes)} kg</td><td class="num">{odOkr?.kg_zmes != null ? `${fmt(odOkr.kg_zmes)} kg` : '–'}</td><td class="num">{fmt(odI.sr.kg_zmes)} kg</td></tr>}
-            {odP.kg != null && <tr><td>Všetok komunálny odpad na obyvateľa</td><td class="num">{fmt(odP.kg)} kg</td><td class="num">–</td><td class="num">–</td></tr>}
+            <tr><td>Podiel triedeného odpadu<br /><small>odhad zo štatistiky, nie úradná úroveň vytriedenia</small></td><td class="num">{des(odP.triedene, 0)} %</td><td class="num">{odOkr?.triedene != null ? `${des(odOkr.triedene, 0)} %` : '–'}</td></tr>
+            {odP.kg_zmes != null && <tr><td>Zmesový odpad na obyvateľa<br /><small>čierna nádoba – čím menej, tým lepšie</small></td><td class="num">{fmt(odP.kg_zmes)} kg</td><td class="num">{odOkr?.kg_zmes != null ? `${fmt(odOkr.kg_zmes)} kg` : '–'}</td></tr>}
+            {odP.kg != null && <tr><td>Všetok komunálny odpad na obyvateľa</td><td class="num">{fmt(odP.kg)} kg</td><td class="num">–</td></tr>}
           </tbody>
         </table>
       </div>
+      <p class="pozn">Medián všetkých obcí Slovenska: podiel triedeného {des(odI.sr.triedene, 0)} %, zmesový odpad {fmt(odI.sr.kg_zmes)} kg na obyvateľa.</p>
       {Object.keys(od!).length > 1 && <p class="pozn">Podiel triedeného po rokoch: {Object.entries(od!).sort(([a], [b]) => a.localeCompare(b)).map(([r, x]) => `${r} ${des(x.triedene, 0)} %`).join(' · ')}.</p>}
       <p class="zdroj">Zdroj: <a href="https://statdata.statistics.sk" rel="noopener">ŠÚ SR</a> – množstvo komunálneho odpadu podľa druhov za obce (ročný výkaz obce). Podiel triedeného = všetok komunálny odpad okrem zmesového, objemného a uličného smetia. Úradnú úroveň vytriedenia (od nej závisí poplatok za skládkovanie) počíta obec podľa vyhlášky trochu inak a môže sa líšiť.</p>
     </section>
