@@ -6,6 +6,9 @@
              om7813rr obdobie výstavby (domy), om7821rr typ kúrenia (byty)
   firmy    – og3805rr právnické osoby, og3808rr fyzické osoby – podnikatelia (len počty)
   sluzby   – zd5001rr zdravotnícke zariadenia (ambulancie, lekárne), ik5001rr pošty, ku5008rr verejné knižnice
+  obyvatelia – SODB 2021: om7809rr vzdelanie, om7806rr národnosť, om7804rr materinský jazyk, om7805rr náboženstvo
+             (len súhrnné podiely; skupiny pod 5 osôb sa zlúčia do „iné“)
+  uzemie   – pl5001rr výmera a využitie pôdy (orná pôda, lesy, zastavané plochy …)
   turizmus – cr3805qr ubytovacie zariadenia (kapacity, návštevníci; ŠÚ SR zverejňuje len obce, kde to dovolí
              ochrana dôverných údajov)
 
@@ -34,11 +37,11 @@ def obec(x: dict) -> str | None:
     return najdi_obec(n, okres)
 
 
-def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None) -> dict[str, dict[tuple, float]]:
+def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None, vyber: dict | None = None) -> dict[str, dict[tuple, float]]:
     """{kód obce: {(čas, dim1, dim2 …): hodnota}} – prázdne hodnoty („.“) a duplicity z kontextu sa vynechajú."""
     out: dict[str, dict[tuple, float]] = defaultdict(dict)
     nenajdene = set()
-    for x in riadky_obce(kocka, rokov):
+    for x in riadky_obce(kocka, rokov, vyber):
         if filtr and not filtr(x):
             continue
         v = cislo(x.get("hodnota"))
@@ -280,7 +283,115 @@ def turizmus() -> None:
     print(f"Turizmus: {len(obce)} obcí, roky {roky_vsetky[0]}–{roky_vsetky[-1]}")
 
 
-MODULY = {"pohyb": pohyb, "byvanie": byvanie, "firmy": firmy, "sluzby": sluzby, "turizmus": turizmus}
+# ---------------- obyvatelia podľa SODB 2021: vzdelanie, národnosť, jazyk, náboženstvo ----------------
+
+SPOLU = {"e_sex": ["Spolu"], "e_age": ["Spolu"]}
+MALE = 5  # skupiny s menej ako 5 osobami v obci sa zlúčia do „iné“ (súhrnné údaje, ochrana malých počtov)
+
+
+def _sodb(kocka: str, dim: str) -> dict[str, dict[str, float]]:
+    t = tabulka(kocka, dim, rokov=1, vyber=SPOLU)
+    return {kod: {k[1]: v for k, v in d.items() if k[0] == "2021"} for kod, d in t.items()}
+
+
+def _skupiny(d: dict[str, float], vynechaj: set[str], ine: str) -> tuple[list, float]:
+    """Podiely kategórií zo zistených údajov; malé skupiny do „iné“. Vráti ([[názov, %], …], počet zistených)."""
+    zn = d.get("Spolu", 0) - sum(v for k, v in d.items() if k.lower().startswith("nezisten"))
+    if zn <= 0:
+        return [], 0
+    pol, zvysok = [], 0.0
+    for k, v in sorted(d.items(), key=lambda x: -x[1]):
+        if k == "Spolu" or k in vynechaj or k.lower().startswith("nezisten") or v <= 0:
+            continue
+        if v < MALE or k == ine:
+            zvysok += v
+        else:
+            pol.append([k, round(100 * v / zn, 1)])
+    if zvysok:
+        pol.append([ine, round(100 * zvysok / zn, 1)])
+    return pol, zn
+
+
+def _okres_podiely(po_obciach: dict[str, dict[str, float]], vynechaj: set[str]) -> dict:
+    acc: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    for kod, d in po_obciach.items():
+        for k, v in d.items():
+            acc[OKRES[kod]][k] += v
+    out = {}
+    for o, d in acc.items():
+        zn = d.get("Spolu", 0) - sum(v for k, v in d.items() if k.lower().startswith("nezisten"))
+        if zn > 0:
+            out[o] = {k: round(100 * v / zn, 1) for k, v in d.items() if k != "Spolu" and k not in vynechaj and not k.lower().startswith("nezisten")}
+    return dict(sorted(out.items()))
+
+
+VZD = {"Základné vzdelanie": "zakl", "Stredné bez maturity": "sbm", "Stredné s maturitou": "sm", "Vysokoškolské": "vs",
+       "Bez školského vzdelania - osoby vo veku 15 rokov a viac": "bez"}
+
+
+def obyvatelia() -> None:
+    vzd = _sodb("om7809rr", "e_edu")
+    nar = _sodb("om7806rr", "e_national")
+    jaz = _sodb("om7804rr", "e_language")
+    nab = _sodb("om7805rr", "e_religion")
+    deti = {k for d in vzd.values() for k in d if k.startswith("Bez ukončeného")}
+    obce: dict[str, dict] = {}
+    for kod, d in vzd.items():
+        d = dict(d)
+        for k in deti:
+            d["Spolu"] = d.get("Spolu", 0) - d.pop(k, 0)  # deti do 14 rokov sa do vzdelania nerátajú
+        zn = d.get("Spolu", 0) - sum(v for k, v in d.items() if k.lower().startswith("nezisten"))
+        if zn >= 20:
+            obce.setdefault(kod, {})["vzd"] = {VZD.get(k, k): round(100 * v / zn, 1) for k, v in d.items() if k in VZD}
+            obce[kod]["vzd_n"] = int(zn)
+    for kluc, src, ine in (("nar", nar, "Iná"), ("jaz", jaz, "Iný jazyk"), ("nab", nab, "ostatné")):
+        for kod, d in src.items():
+            pol, zn = _skupiny(d, set(), ine)
+            if pol and zn >= 20:
+                obce.setdefault(kod, {})[kluc] = pol
+    vzd_ok = {kod: {VZD.get(k, k) if k in VZD else k: v for k, v in d.items() if k in VZD or k == "Spolu" or k.lower().startswith("nezisten")}
+              for kod, d in vzd.items()}
+    for kod, d in vzd_ok.items():
+        d["Spolu"] = vzd[kod].get("Spolu", 0) - sum(vzd[kod].get(k, 0) for k in deti)
+    zapis("obyvatelia", {"rok": 2021, "male": MALE,
+                         "okresy": {"vzd": _okres_podiely(vzd_ok, set()), "nar": _okres_podiely(nar, set()), "nab": _okres_podiely(nab, set())},
+                         "zdroj": {"nazov": "ŠÚ SR – Sčítanie obyvateľov, domov a bytov 2021 (om7809rr vzdelanie, om7806rr národnosť, om7804rr materinský jazyk, om7805rr náboženské vyznanie)",
+                                   "url": "https://statdata.statistics.sk"},
+                         "obce": dict(sorted(obce.items()))})
+    print(f"Obyvatelia SODB: {len(obce)} obcí, so vzdelaním {sum(1 for v in obce.values() if 'vzd' in v)}, národnosťou {sum(1 for v in obce.values() if 'nar' in v)}")
+
+
+# ---------------- využitie územia ----------------
+
+UZEMIE = {"Orná pôda": "orna", "Trvalé trávne porasty": "ttp", "Lesné pozemky": "les", "Vodné plochy": "voda",
+          "Zastavané plochy a nádvoria": "zast", "Domáce záhradky": "zahr", "Vinohrady": "vin", "Ovocné sady": "sad",
+          "Chmeľnice": "chmel", "Ostatné pôdne plochy": "ost"}
+
+
+def uzemie() -> None:
+    t = tabulka("pl5001rr", "e_landuse", "e_soiltype", rokov=1, vyber={"e_soiltype": ["Spolu"]})
+    obce = {}
+    rok = None
+    for kod, d in t.items():
+        rok = max(k[0] for k in d)
+        sp = d.get((rok, "Spolu", "Spolu"))
+        if not sp:
+            continue
+        p = {UZEMIE[k[1]]: round(100 * v / sp, 1) for k, v in d.items() if k[0] == rok and k[1] in UZEMIE and v}
+        obce[kod] = {"ha": round(sp / 10000), "p": p}
+    okr: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    for kod, v in obce.items():
+        for k, pct in v["p"].items():
+            okr[OKRES[kod]][k] += pct * v["ha"]
+        okr[OKRES[kod]]["_ha"] += v["ha"]
+    okresy = {o: {k: round(x / d["_ha"], 1) for k, x in d.items() if k != "_ha"} for o, d in sorted(okr.items()) if d["_ha"]}
+    zapis("uzemie", {"rok": rok, "okresy": okresy,
+                     "zdroj": {"nazov": "ŠÚ SR – Výmera územia, využitie pôdy (pl5001rr, podľa katastra nehnuteľností)", "url": "https://statdata.statistics.sk"},
+                     "obce": dict(sorted(obce.items()))})
+    print(f"Územie {rok}: {len(obce)} obcí")
+
+
+MODULY = {"pohyb": pohyb, "byvanie": byvanie, "firmy": firmy, "sluzby": sluzby, "turizmus": turizmus, "obyvatelia": obyvatelia, "uzemie": uzemie}
 
 
 def main() -> int:
