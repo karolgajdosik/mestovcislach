@@ -15,6 +15,7 @@ Výstupy: data/obce/<modul>.json. Moduly bežia samostatne: python scripts/zber_
 from __future__ import annotations
 
 import sys
+import re
 from collections import defaultdict
 from datetime import datetime, timezone
 
@@ -70,18 +71,31 @@ def okresne_mediany(obce: dict[str, dict], polia: list[str]) -> dict:
 
 # ---------------- pohyb obyvateľstva ----------------
 
-POHYB = {"Narodení": "nar", "Zomrelí": "zom", "Prisťahovaní": "pri", "Vysťahovaní": "vys"}
+POHYB_KL = {"živonarodení": "nar", "narodení": "nar", "živonarodené deti": "nar", "zomretí": "zom", "zomrelí": "zom",
+            "prisťahovaní": "pri", "vysťahovaní": "vys"}
+
+
+def pohyb_kluc(ind: str) -> str | None:
+    return POHYB_KL.get(re.sub(r"\s+", " ", ind).strip().lower())
 
 
 def pohyb() -> None:
-    t = tabulka("om7103rr", "e_indic", rokov=10, filtr=lambda x: x.get("e_indic", "").strip() in POHYB)
+    vsetky_ind: set[str] = set()
+
+    def f(x: dict) -> bool:
+        vsetky_ind.add(x.get("e_indic", "").strip())
+        return pohyb_kluc(x.get("e_indic", "")) is not None
+    t = tabulka("om7103rr", "e_indic", rokov=10, filtr=f)
+    najdene = {pohyb_kluc(i) for i in vsetky_ind} - {None}
+    if len(najdene) < 4:
+        print(f"::warning title=Pohyb obyvateľstva::nenájdené ukazovatele {set(POHYB_KL.values()) - najdene}; v kocke: {sorted(vsetky_ind)}")
     obce: dict[str, dict] = {}
     roky_vsetky = sorted({k[0] for v in t.values() for k in v})
     roky = roky_vsetky[-10:]
     for kod, d in t.items():
         rad = {}
         for r in roky:
-            z = {POHYB[i]: int(d[(r, i)]) for i in POHYB if (r, i) in d}
+            z = {pohyb_kluc(k[1]): int(v) for k, v in d.items() if k[0] == r}
             if len(z) == 4:
                 rad[r] = [z["nar"], z["zom"], z["pri"], z["vys"]]
         if rad:
@@ -110,15 +124,34 @@ def pohyb() -> None:
 # ---------------- bývanie (SODB 2021) ----------------
 
 def podiely(t: dict[str, dict[tuple, float]], dim_hodnoty: dict[str, str], spolu: str = "Spolu") -> dict[str, dict[str, float]]:
-    """Podiel kategórií na „Spolu“ (typ domu Spolu, rok 2021)."""
+    """Podiel kategórií na domoch so zisteným údajom (Spolu mínus „nezistené“; typ domu Spolu, rok 2021).
+
+    Pri sčítaní 2021 je pri časti domov údaj nezistený – podiel z celku by vybavenosť podhodnotil."""
     out = {}
     for kod, d in t.items():
         sp = d.get(("2021", "Spolu", spolu))
         if not sp:
             continue
-        out[kod] = {k: round(100 * sum(d.get(("2021", "Spolu", h), 0) for h in hodn.split("|")) / sp, 1) for k, hodn in dim_hodnoty.items()}
+        nez = sum(v for k, v in d.items() if k[0] == "2021" and k[1] == "Spolu" and k[2].lower().startswith("nezisten"))
+        zn = sp - nez
+        if zn < max(5, 0.5 * sp):  # pri väčšine domov nezistené – údaj nemá výpovednú hodnotu
+            continue
+        out[kod] = {k: round(100 * sum(d.get(("2021", "Spolu", h), 0) for h in hodn.split("|")) / zn, 1) for k, hodn in dim_hodnoty.items()}
         out[kod]["_n"] = int(sp)
+        out[kod]["_zn"] = zn
     return out
+
+
+def okresne_vazene(zdroje: dict[str, dict[str, dict]]) -> dict:
+    """Podiel za okres zo súčtu domov (nie medián obcí): {okres: {pole: %}}."""
+    acc: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(lambda: [0.0, 0.0]))
+    for pole, src in zdroje.items():
+        for kod, v in src.items():
+            if v.get(pole) is not None:
+                a = acc[OKRES[kod]][pole]
+                a[0] += v[pole] * v["_zn"]
+                a[1] += v["_zn"]
+    return {o: {p: round(a / b, 1) for p, (a, b) in d.items() if b} for o, d in sorted(acc.items())}
 
 
 def byvanie() -> None:
@@ -136,17 +169,17 @@ def byvanie() -> None:
     for kod in set(kan) | set(plyn) | set(voda):
         o: dict = {}
         if kod in kan:
-            o.update({k: v for k, v in kan[kod].items() if k != "_n"})
+            o.update({k: v for k, v in kan[kod].items() if not k.startswith("_")})
             o["domov"] = kan[kod]["_n"]
         for zdroj in (plyn, voda):
-            o.update({k: v for k, v in zdroj.get(kod, {}).items() if k != "_n"})
+            o.update({k: v for k, v in zdroj.get(kod, {}).items() if not k.startswith("_")})
         if kod in vek:
             o["vek_domov"] = [vek[kod][k] for k in ("do1945", "1946", "1981", "2001", "2010")]
         if kod in kur:
             o["kurenie"] = [kur[kod][k] for k in ("dialkove", "ustredne", "etazove", "teleso")]
             o["bytov"] = kur[kod]["_n"]
         obce[kod] = o
-    zapis("byvanie", {"rok": "2021", "okresy": okresne_mediany(obce, ["kanal", "plyn", "vodovod"]),
+    zapis("byvanie", {"rok": "2021", "okresy": okresne_vazene({"kanal": kan, "plyn": plyn, "vodovod": voda}),
                       "zdroj": {"nazov": "ŠÚ SR – Sčítanie obyvateľov, domov a bytov 2021 (om7811rr, om7813rr, om7815rr, om7816rr, om7821rr)", "url": "https://statdata.statistics.sk"},
                       "obce": dict(sorted(obce.items()))})
     print(f"Bývanie: {len(obce)} obcí")
