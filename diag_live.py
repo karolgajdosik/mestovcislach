@@ -2,20 +2,14 @@ import subprocess, sys, re, io, zipfile
 subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
 sys.path.insert(0, "scripts")
 from spolocne import s
-def g(u, **kw):
-    try: return s.get(u, timeout=60, **kw)
-    except Exception as e: print("ERR", u, str(e)[:100]); return None
-r = g("https://volby.statistics.sk/prez/prez2024/sk/subory_na_stiahnutie.html")
-if r is not None: print("prez", r.status_code, sorted(set(re.findall(r'href="([^"]+\.(?:zip|csv|xlsx?))"', r.text))))
-r = g("https://www.zsr.sk/sluzby-verejnosti/pre-cestujucich/fgtfs-info")
-if r is not None:
-    print("zsr", r.status_code, sorted(set(x for x in re.findall(r'href="([^"]+)"', r.text) if re.search(r"gtfs|zip", x, re.I))))
-    t = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<script.*?</script>", "", r.text, flags=re.S)))
-    i = t.find("GTFS"); print(t[i:i+1200])
-r = g("https://www.ssd.sk/planovane-odstavky?page_id=4958")
-if r is not None:
-    t = r.text
-    for m in re.finditer(r"<form.*?</form>", t, re.S): print("FORM", re.sub(r"\s+", " ", m.group(0))[:1500])
-    i = t.find("odstáv", t.find("<main") if "<main" in t else 0)
-    print(re.sub(r"\s+", " ", t[t.find('id="content"'):t.find('id="content"') + 6000])[:6000])
+r = s.get("https://www.zsr.sk/sluzby-verejnosti/pre-cestujucich/fgtfs-info", timeout=60)
+for m in re.finditer(r"gtfs", r.text, re.I):
+    print("…", re.sub(r"\s+", " ", r.text[max(0, m.start()-300):m.start()+300]))
+for kolo in ("kolo1", "kolo2"):
+    z = zipfile.ZipFile(io.BytesIO(s.get(f"https://volby.statistics.sk/prez/prez2024/files/{kolo}/PREZ2024_{kolo}_SK_csv.zip", timeout=120).content))
+    print(kolo, [(n, z.getinfo(n).file_size) for n in z.namelist()])
+    for n in z.namelist():
+        if re.search(r"tab0?2d|tab03e|tab01\.|tab03d|tab02b", n, re.I):
+            t = z.read(n).decode("utf-8-sig", "replace").splitlines()
+            print("  ", n, t[0][:400]); print("     ", t[1][:300])
 print("HOTOVO")
