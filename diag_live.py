@@ -1,12 +1,16 @@
-import subprocess,sys,json
+import subprocess,sys
 subprocess.run([sys.executable,"-m","pip","install","-q","-r","scripts/requirements.txt"])
-p=subprocess.run([sys.executable,"scripts/zber_obce_vlaky.py"],capture_output=True,text=True)
-print(p.stdout[-3000:]); print(p.stderr[-3000:])
-try:
-    d=json.load(open("data/obce/vlaky.json"))
-    o=d["obce"]; print("den",d["den"],"obci",len(o))
-    for k in ["509574","514292","511218","528595","599981"]:
-        print(k,o.get(k))
-    print("top",sorted(((sum(n for _,n in v),k,v[:2]) for k,v in o.items()),reverse=True)[:8])
-except Exception as e: print("chyba",e)
+sys.path.insert(0,"scripts")
+import zber_obce_vlaky as V, math
+u,z=V.stiahni_gtfs()
+st=V.citaj(z,"stops.txt")
+print(list(st[0].keys()))
+for x in st[:5]: print(x)
+NM={o["kod"]:o["nazov"] for o in V.OBCE}
+for x in st:
+    n=x["stop_name"]
+    if any(w in n for w in ["Chop","Břeclav","Kittsee","Hegyeshalom","Dolný Smokovec","Devínska N","Bytčica","Diviaky","Andač","Barca","Danielov","Hačava","Hutníky","Dubová"]):
+        lat,lon=float(x["stop_lat"]),float(x["stop_lon"])
+        d=sorted((math.dist(p,(lat,lon)),k) for k,p in V.POL.items() if p)[:2]
+        print(x["stop_id"],n,[(NM[k],round(dd*111,1)) for dd,k in d])
 print("HOTOVO")
