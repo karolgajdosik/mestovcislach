@@ -1,24 +1,15 @@
-import re, json, requests
-H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36", "Accept": "application/json"}
-B = "https://statdata.statistics.sk/public/api/dc"
-for u, kw in [(B + "/public/bulkDownload/search", {}), (B + "/public/bulkDownload/search?query=odpad", {}), (B + "/public/recentlyUpdated", {})]:
-    for m in ("get", "post"):
-        try:
-            r = getattr(requests, m)(u, headers=H, timeout=90, **({"json": {"query": "odpad", "page": 0, "size": 100}} if m == "post" else {}))
-        except Exception as e:
-            print(u, m, e); continue
-        print(u, m, r.status_code, len(r.text))
-        if r.ok:
-            t = r.text
-            print(t[:400])
-            for x in re.finditer(r"odpad", t, re.I):
-                print("   ...", t[max(0, x.start()-200):x.start()+120].replace("\n", " "))
-# sekcie – vypíš celý strom názvov sekcií a hľadaj "Životné"
-r = requests.get(B + "/public/sections/expandAll", headers=H, timeout=120)
-def walk(n, d=0):
-    for c in n:
-        nm = (c.get("nameSk") or "").strip()
-        if d < 2 or re.search(r"život|odpad|trh práce|škol|vzdel", nm, re.I): print("  " * d + nm, c.get("id"))
-        walk(c.get("children") or [], d + 1)
-walk(r.json())
+import requests, json
+H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
+q = """SELECT (COUNT(?p) AS ?n) WHERE { ?p <https://linkedopendata.eu/prop/direct/P35> <https://linkedopendata.eu/entity/Q9934> ; <https://linkedopendata.eu/prop/direct/P32> <https://linkedopendata.eu/entity/Q218> . }"""
+for u in ["https://query.linkedopendata.eu/bigdata/namespace/wdq/sparql", "https://query.linkedopendata.eu/sparql"]:
+    try:
+        r = requests.get(u, params={"query": q}, headers={**H, "Accept": "application/sparql-results+json"}, timeout=120)
+        print(u, r.status_code, r.text[:400])
+    except Exception as e:
+        print(u, e)
+for u in ["https://cohesiondata.ec.europa.eu/api/views/metadata/v1?limit=5", "https://data.europa.eu/api/hub/search/search?q=kohesio&limit=5", "https://www.itms2014.sk/", "https://opendata.itms2014.sk/swagger/", "https://www.eurofondy.gov.sk/"]:
+    try:
+        r = requests.get(u, headers=H, timeout=60); print(u, r.status_code, r.text[:300].replace("\n", " "))
+    except Exception as e:
+        print(u, str(e)[:150])
 print("HOTOVO")
