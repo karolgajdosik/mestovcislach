@@ -1,54 +1,6 @@
-cis ['Použité klasifikácie a číselníky v\xa0mesačnej štatistike']
-cis []
-cis ['Existujúce číselníky a klasifikácie použité pri spracovaní údajov sú v\xa0súlade s\xa0číselníkmi a klasifikáciami vydávanými Štatistickým úradom SR.']
-cis []
-cis ['SK ISCO-08']
-cis ['1', 'Zákonodarcovia, riadiaci pracovníci']
-cis ['2', 'Špecialisti']
-cis ['3', 'Technici a odborní pracovníci']
-cis ['4', 'Administratívni pracovníci']
-cis ['5', 'Pracovníci v službách a obchode']
-cis ['6', 'Kvalifikovaní pracovníci v poľnohospodárstve, lesníctve a rybárstve']
-cis ['7', 'Kvalifikovaní pracovníci a remeselníci']
-cis ['8', 'Operátori a montéri strojov a zariadení']
-cis ['9', 'Pomocní a nekvalifikovaní pracovníci']
-cis ['0', 'Príslušníci ozbrojených síl']
-cis []
-cis ['SK NACE - odvetvová klasifikácia ekonomických činností']
-cis ['A', 'poľnohosp., lesníctvo a rybolov ']
-cis ['B', 'ťažba a dobývanie']
-cis ['C', 'priemyselná výroba']
-cis ['D', 'dodávka elektriny, plynu, pary a\xa0studeného vzduchu']
-cis ['E', 'dodávka vody, čistenie a\xa0odvod odp.vôd,odpady a\xa0služ.']
-cis ['F', 'stavebníctvo']
-cis ['G', 'veľkoobchod a\xa0maloobchod, oprava motor. voz.a motoc. ']
-cis ['H', 'doprava a skladovanie']
-tab01 rows 2937
-[(None, 'Zemplínska Nová Ves', 43, 1, 0, 2, 20, 588, 23, 7.31, 3.91), (None, 'Zemplínska Teplica', 82, 1, 3, 4, 15, 1147, 67, 7.15, 5.84), (None, 'Zemplínske Hradište', 47, 4, 0, 4, 9, 724, 38, 6.49, 5.25), (None, 'Zemplínske Jastrabie', 30, 1, 0, 1, 12, 414, 18, 7.25, 4.35), (None, 'Zemplínsky Branč', 25, 2, 0, 1, 5, 352, 20, 7.1, 5.68), (None, None, None, None, None, None, None, None, None, None, None)]
-[(None, 'Zlaté Klasy', 129, 0, 6, 4, 44, 2512, 85, 5.14, 3.38), ('Zlaté Moravce', 'Beladice', 37, 0, 0, 2, 3, 1183, 34, 3.13, 2.87), (None, 'Zlaté Moravce', 227, 10, 2, 26, 30, 7392, 197, 3.07, 2.67)]
-zp3804rr 465 ['e_indic', 'e_ewc', 'e_year', 'hodnota']
-    {'e_indic': 'Komunálny odpad z iných zdrojov', 'e_ewc': '150101 Papierové a lepenkové obaly', 'e_year': '2021', 'hodnota': 113334.59}
-    {'e_indic': 'Komunálny odpad z iných zdrojov', 'e_ewc': '150101 Papierové a lepenkové obaly', 'e_year': '2022', 'hodnota': 121078.74}
-    {'e_indic': 'Komunálny odpad z iných zdrojov', 'e_ewc': '150101 Papierové a lepenkové obaly', 'e_year': '2023', 'hodnota': 125561.75}
-    e_indic 2 ['Komunálny odpad z iných zdrojov', 'Komunálny odpad z obcí']
-    e_ewc 58 ['150101 Papierové a lepenkové obaly', '150102 Plastové obaly', '150103 Drevené obaly', '150104 Kovové obaly', '150105 Kompozitné obaly', '150106 Zmiešané obaly', '150107 Sklenené obaly', '150109 Textilné obaly', '190102 Železné materiály odstránené zo spodného popola', '200101 Papier a lepenka', '200102 Sklo', '200103 Viacvrstvové kombinované materiály na báze lepenky (kompozity na báze lepenky)']
-    e_year 5 ['2021', '2022', '2023', '2024', '2025']
-sv5001rr 550004 ['e_nuts15', 'e_educat_kngchar', 'e_indic', 'e_unit', 'e_year', 'hodnota']
-    {'e_nuts15': 'Bratislava', 'e_educat_kngchar': 'Cirkevné školy', 'e_indic': 'Počet detí', 'e_unit': 'Osoby', 'e_year': '2013', 'hodnota': 576.0}
-    {'e_nuts15': 'Bratislava', 'e_educat_kngchar': 'Cirkevné školy', 'e_indic': 'Počet detí', 'e_unit': 'Osoby', 'e_year': '2014', 'hodnota': 613.0}
-    {'e_nuts15': 'Bratislava', 'e_educat_kngchar': 'Cirkevné školy', 'e_indic': 'Počet detí', 'e_unit': 'Osoby', 'e_year': '2015', 'hodnota': 610.0}
-    e_nuts15 3022 ['Bratislava', 'Bratislava - mestská časť Nové Mesto', 'Bratislava - mestská časť Podunajské Biskupice', 'Bratislava - mestská časť Rača', 'Bratislava - mestská časť Ružinov', 'Bratislava - mestská časť Staré Mesto', 'Bratislava - mestská časť Vajnory', 'Bratislava - mestská časť Vrakuňa', 'Bratislavský kraj', 'Bratislavský kraj (NUTS 2)', 'Okres Bratislava I', 'Okres Bratislava II']
-    e_educat_kngchar 4 ['Cirkevné školy', 'Súkromné školy', 'Školy', 'Štátne školy']
-    e_indic 4 ['Počet detí', 'Počet tried', 'Počet učiteľov', 'Spolu']
-    e_unit 2 ['Osoby', 'Počet']
-    e_year 13 ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024']
-sv5002rr 1100008 ['e_nuts15', 'e_educat_priscchar', 'e_indic', 'e_unit', 'e_year', 'hodnota']
-    {'e_nuts15': 'Bratislava', 'e_educat_priscchar': 'Cirkevné školy (1. - 4. roč.)', 'e_indic': 'Počet tried', 'e_unit': 'Počet', 'e_year': '2024', 'hodnota': 0.0}
-    {'e_nuts15': 'Bratislava', 'e_educat_priscchar': 'Cirkevné školy (1. - 4. roč.)', 'e_indic': 'Počet tried', 'e_unit': 'Počet', 'e_year': '2025', 'hodnota': 0.0}
-    {'e_nuts15': 'Bratislava', 'e_educat_priscchar': 'Cirkevné školy (1. - 4. roč.)', 'e_indic': 'Počet tried', 'e_unit': 'Počet', 'e_year': '2023', 'hodnota': 0.0}
-    e_nuts15 3022 ['Bratislava', 'Bratislavský kraj', 'Bratislavský kraj (NUTS 2)', 'Slovenská republika', 'Bratislava - mestská časť Podunajské Biskupice', 'Bratislava - mestská časť Staré Mesto', 'Okres Bratislava I', 'Okres Bratislava II', 'Bratislava - mestská časť Ružinov', 'Bratislava - mestská časť Vrakuňa', 'Okres Bratislava III', 'Bratislava - mestská časť Nové Mesto']
-    e_educat_priscchar 8 ['Cirkevné školy (1. - 4. roč.)', 'Cirkevné školy (1. - 9. roč.)', 'Súkromné školy (1. - 4. roč.)', 'Súkromné školy (1. - 9. roč.)', 'Školy (1. - 4. roč.)', 'Školy (1. - 9. roč.)', 'Štátne školy (1. - 4. roč.)', 'Štátne školy (1. - 9. roč.)']
-    e_indic 4 ['Počet tried', 'Počet učiteľov', 'Počet žiakov', 'Spolu']
-    e_unit 2 ['Počet', 'Osoby']
-    e_year 13 ['2024', '2025', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014']
+https://www.isoh.gov.sk/ 200 26237
+   window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(argume | https://www.isoh.gov.sk/.resources/outdated-browser/style.css
+   Registrácia výrobcov | https://www.isoh.gov.sk/uvod/zivotna-situacia-registracia.html
+   Usmernenie k praktickému uplatňovaniu definície výrobcu obalov | https://www.isoh.gov.sk/uvod/aktuality/aktualita.html?aktualitaId=Usmernenie-k-praktick-mu-uplat-ovaniu-defin-cie-v-robcu-obalov
+https://www.isoh.gov.sk/verejne-vystupy 404 14428
 HOTOVO
