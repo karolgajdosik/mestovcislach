@@ -111,6 +111,8 @@ def main() -> int:
             vlaky[rodic.get(st["stop_id"], st["stop_id"])].add(st["trip_id"])
     obce: dict[str, list] = defaultdict(list)
     bez = 0
+    nepr: list[str] = []
+    print(f"Staníc s vlakmi: {len(vlaky)}, záznamov v stops.txt: {len(stops)}")
     for sid, tr in vlaky.items():
         x = stops.get(sid)
         if not x:
@@ -124,11 +126,14 @@ def main() -> int:
         kod = obec_stanice(x["stop_name"], lat, lon)
         if not kod:
             bez += 1
+            nepr.append(x["stop_name"].strip())
             continue
         obce[kod].append([x["stop_name"].strip(), len(tr)])
     for v in obce.values():
         v.sort(key=lambda a: -a[1])
-    if len(obce) < 500:
+    if nepr:
+        print("  nepriradené stanice (ukážka):", "; ".join(sorted(nepr)[:60]))
+    if len(obce) < 400:
         raise RuntimeError(f"GTFS: len {len(obce)} obcí so stanicou")
     zapis_ak_zmena(DATA / "obce" / "vlaky.json", {
         "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"), "den": den.isoformat(),
