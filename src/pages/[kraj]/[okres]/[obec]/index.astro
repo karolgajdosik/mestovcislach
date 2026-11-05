@@ -113,7 +113,7 @@ const jePrez = (id: string) => id.startsWith('prez');
 const pohI = pohybInfo();
 const poh = pohI?.obce?.[o.kod] ?? null;
 const pohRad = poh?.rad ? Object.entries(poh.rad).sort(([a], [b]) => a.localeCompare(b)) : [];
-const pohSum = pohRad.reduce((a, [, r]) => [a[0] + r[0], a[1] + r[1], a[2] + r[2], a[3] + r[3]], [0, 0, 0, 0]);
+const pohSum = pohRad.reduce((a, [, r]) => [a[0] + r[0], a[1] + r[1], a[2] + r[2]], [0, 0, 0]);
 const vekOkr = pohI?.okresy?.[o.okres]?.vek ?? null;
 const pohMax = Math.max(1, ...pohRad.flatMap(([, r]) => [r[0], r[1], r[2], r[3]]));
 // bývanie (SODB 2021)
@@ -194,13 +194,13 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
       <ul class="ob-cisla">
         {poh.vek != null && <li><b>{des(poh.vek)} r.</b><span>priemerný vek ({poh.vek_rok}){vekOkr != null ? `, okres ${des(vekOkr)}` : ''}{poh.vek10 != null ? `; pred 10 rokmi ${des(poh.vek10)}` : ''}</span></li>}
         {pohRad.length > 0 && <li><b>{pohSum[0] - pohSum[1] > 0 ? '+' : pohSum[0] - pohSum[1] < 0 ? '−' : ''}{fmt(Math.abs(pohSum[0] - pohSum[1]))}</b><span>prirodzený prírastok za {pohRad.length} rokov ({fmt(pohSum[0])} narodených, {fmt(pohSum[1])} zomrelých)</span></li>}
-        {pohRad.length > 0 && <li><b>{pohSum[2] - pohSum[3] > 0 ? '+' : pohSum[2] - pohSum[3] < 0 ? '−' : ''}{fmt(Math.abs(pohSum[2] - pohSum[3]))}</b><span>saldo sťahovania za {pohRad.length} rokov ({fmt(pohSum[2])} prisťahovaných, {fmt(pohSum[3])} vysťahovaných)</span></li>}
+        {pohRad.length > 0 && <li><b>{pohSum[2] > 0 ? '+' : pohSum[2] < 0 ? '−' : ''}{fmt(Math.abs(pohSum[2]))}</b><span>saldo sťahovania za {pohRad.length} rokov ({pohSum[2] >= 0 ? 'viac ľudí sa prisťahovalo, ako odsťahovalo' : 'viac ľudí sa odsťahovalo, ako prisťahovalo'})</span></li>}
       </ul>
       {pohRad.length > 2 && (
         <div class="ob-obal">
           <table class="ob-tab ob-pohyb">
-            <thead><tr><th>Rok</th><th class="num">Narodení</th><th class="num">Zomrelí</th><th class="num">Prisťahovaní</th><th class="num">Vysťahovaní</th><th class="num">Spolu</th></tr></thead>
-            <tbody>{pohRad.slice().reverse().map(([r, [a, b, c, d]]) => { const z = a - b + c - d; return <tr><td>{r}</td><td class="num">{fmt(a)}</td><td class="num">{fmt(b)}</td><td class="num">{fmt(c)}</td><td class="num">{fmt(d)}</td><td class={`num ${z < 0 ? 'zaporne' : ''}`}>{z > 0 ? '+' : z < 0 ? '−' : ''}{fmt(Math.abs(z))}</td></tr>; })}</tbody>
+            <thead><tr><th>Rok</th><th class="num">Narodení</th><th class="num">Zomrelí</th><th class="num">Saldo sťahovania</th><th class="num">Zmena spolu</th></tr></thead>
+            <tbody>{pohRad.slice().reverse().map(([r, [a, b, c]]) => { const z = a - b + c; const zn = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${fmt(Math.abs(v))}`; return <tr><td>{r}</td><td class="num">{fmt(a)}</td><td class="num">{fmt(b)}</td><td class={`num ${c < 0 ? 'zaporne' : ''}`}>{zn(c)}</td><td class={`num ${z < 0 ? 'zaporne' : ''}`}>{zn(z)}</td></tr>; })}</tbody>
           </table>
         </div>
       )}
