@@ -26,7 +26,6 @@ def riadky_obce(kocka: str) -> list[dict]:
     info = s.get(f"{B}/public/{kocka}/info", headers=H, timeout=60).json()
     dims = info["dimensions"]
     cas = next(d["acronym"] for d in dims if d["type"] == "TIME")
-    ostatne = [d for d in dims if d["acronym"] not in (cas, "e_nuts15") and d["type"] != "GEO" or d["acronym"] == "e_nuts14"]
     ostatne = [d for d in dims if d["acronym"] != cas and d["acronym"] != "e_nuts15"]
     jedine = [d for d in ostatne if d["type"] != "GEO" and len(polozky(kocka, d["id"])) == 1]
     if not jedine:
