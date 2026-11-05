@@ -28,9 +28,12 @@ def riadky_obce(kocka: str) -> list[dict]:
     cas = next(d["acronym"] for d in dims if d["type"] == "TIME")
     ostatne = [d for d in dims if d["acronym"] != cas and d["acronym"] != "e_nuts15"]
     jedine = [d for d in ostatne if d["type"] != "GEO" and len(polozky(kocka, d["id"])) == 1]
-    if not jedine:
-        raise RuntimeError(f"{kocka}: žiadna dimenzia s jednou položkou do kontextu")
-    ctx = next((d for d in jedine if d["acronym"] == "e_unit"), jedine[0])
+    if jedine:
+        ctx = next((d for d in jedine if d["acronym"] == "e_unit"), jedine[0])
+    else:  # jednotka je daná ukazovateľom – v CSV budú prázdne („.“) kombinácie, volajúci ich vynechá
+        ctx = next((d for d in ostatne if d["acronym"] == "e_unit"), None)
+        if not ctx:
+            raise RuntimeError(f"{kocka}: žiadna dimenzia vhodná do kontextu")
     rows = ["e_nuts15"] + [d["acronym"] for d in ostatne if d is not ctx]
     url = (f"{B}/opendata/cube/dataset/{kocka}/rows/" + "~".join(f"{a},ASC,all" for a in rows)
            + f"/columns/{cas},ASC,all/context/{ctx['acronym']},ASC,all")
