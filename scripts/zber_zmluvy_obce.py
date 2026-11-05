@@ -149,7 +149,29 @@ def uloz(stav: dict, zmluvy: dict) -> None:
     (ULOZISKO / "stav.json").write_text(json.dumps(stav, ensure_ascii=False), encoding="utf-8")
 
 
-def suhrn(zz: list[tuple[str, dict]]) -> dict:
+# zmluvy o nenávratnom finančnom príspevku (eurofondy, plán obnovy, Program rozvoja vidieka …), bez dodatkov
+NFP = re.compile(r"\bNFP\b|nenávratn", re.I)
+DODATOK = re.compile(r"dodat(ok|ku|ky)", re.I)
+
+
+def limit_sumy() -> dict[str, float]:
+    """V CRZ sú občas chybné sumy (napr. 230 mld. € za dotáciu záhradkárom). Zmluvu nad 10-násobok ročných výnosov
+    obce (aspoň 10 mil. €) nezapočítame do súm – len ju spočítame ako podozrivú."""
+    try:
+        h = json.loads((DATA / "obce" / "hospodarenie.json").read_text(encoding="utf-8"))["obce"]
+    except Exception:  # noqa: BLE001
+        h = {}
+    out = {}
+    for k, v in h.items():
+        roky = v.get("roky") or {}
+        if roky:
+            out[k] = max(10e6, 10 * (roky[max(roky)].get("vynosy") or 0))
+    return out
+
+
+def suhrn(zz: list[tuple[str, dict]], limit: float = 10e6) -> dict:
+    podozrive = sum(1 for _, z in zz if z["s"] > limit)
+    zz = [(zid, {**z, "s": 0.0}) if z["s"] > limit else (zid, z) for zid, z in zz]
     dnes = date.today()
     hranica = (dnes - timedelta(days=365)).isoformat()
     od_partneri = (dnes - timedelta(days=730)).isoformat()
@@ -168,7 +190,16 @@ def suhrn(zz: list[tuple[str, dict]]) -> dict:
             partneri[k]["nazov"] = z["p"]
             partneri[k]["pocet"] += 1
             partneri[k]["suma"] += z["s"]
+    nfp, sumy = [], set()
+    for zid, z in zz:
+        # ten istý projekt niekedy zverejní MIRRI aj rezort (iné IČO) – rovnaká suma = jedna zmluva
+        if z.get("i") and z["s"] > 0 and NFP.search(z.get("pr") or "") and not DODATOK.search(z.get("pr") or "") and round(z["s"]) not in sumy:
+            sumy.add(round(z["s"]))
+            nfp.append((zid, z))
     return {
+        **({"podozrive": podozrive} if podozrive else {}),
+        "nfp": [len(nfp), round(sum(z["s"] for _, z in nfp))],
+        "nfp_zoz": [[z["d"], z["p"], round(z["s"]), z.get("pr") or "", zid] for zid, z in sorted(nfp, key=lambda x: -x[1]["s"])[:6]],
         "roky": {r: [v[0], round(v[1])] for r, v in sorted(roky.items())},
         "fo": [fo[0], round(fo[1])],
         "partneri": [[v["nazov"], v["pocet"], round(v["suma"])] for v in sorted(partneri.values(), key=lambda v: -v["suma"])[:6]],
@@ -229,10 +260,11 @@ def main() -> int:
             continue
         videne.add(kluc)
         po_obci[z["k"]].append((zid, z))
+    limity = limit_sumy()
     zapis_ak_zmena(VYSTUP, {
         "od": OD.isoformat(), "do": stav["posledny_den"], "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "zdroj": {"nazov": "Centrálny register zmlúv (CRZ)", "url": "https://www.crz.gov.sk"},
-        "obce": {k: suhrn(zz) for k, zz in sorted(po_obci.items())},
+        "obce": {k: suhrn(zz, limity.get(k, 10e6)) for k, zz in sorted(po_obci.items())},
     }, kompaktne=True)
     print(f"Obce so zmluvami v CRZ: {len(po_obci)} z {len(podla_ico)}")
     return 0

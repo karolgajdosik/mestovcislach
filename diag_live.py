@@ -1,13 +1,23 @@
-import requests, json, re
+import subprocess, sys, io, re, collections
+subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
+sys.path.insert(0, "scripts")
+import requests, openpyxl
+import statdata as sd
 H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
-for q in ["kohesio projects", "kohesio slovakia", "list of operations slovakia", "zoznam operácií"]:
-    r = requests.get("https://data.europa.eu/api/hub/search/search", params={"q": q, "limit": 15, "filter": "dataset"}, headers=H, timeout=60)
-    for d in r.json()["result"]["results"]:
-        t = d.get("title", {}); t = t.get("en") or t.get("sk") or next(iter(t.values()), "")
-        urls = [x.get("access_url", [None])[0] if isinstance(x.get("access_url"), list) else x.get("access_url") for x in d.get("distributions", [])][:4]
-        print(q, "|", t[:90], "|", d.get("id"), urls)
-r = requests.get("https://cohesiondata.ec.europa.eu/api/views/metadata/v1?limit=400", headers=H, timeout=60)
-for d in r.json():
-    if re.search(r"kohesio|operation|beneficiar|project", d.get("name", "") + d.get("description", ""), re.I):
-        print("cohesion", d["id"], d["name"][:100])
+f = requests.get("https://www.upsvr.gov.sk/buxus/docs/statistic/mesta_a_oibce_-_mesacne/2026/UoZobce_MS_2609.xlsx", headers=H, timeout=120)
+wb = openpyxl.load_workbook(io.BytesIO(f.content), read_only=True, data_only=True)
+ws = wb["Ciselniky_19"]
+for i, row in enumerate(ws.iter_rows(values_only=True)):
+    if i < 25 or i % 400 == 0: print("cis", [c for c in row if c is not None][:8])
+rows = [r for r in wb["Tab01_3"].iter_rows(values_only=True)]
+print("tab01 rows", len(rows)); print(rows[-6:])
+print([r for r in rows if r and any(isinstance(c, str) and "Zlaté" in c for c in r)][:3])
+for kocka in ["zp3804rr", "sv5001rr", "sv5002rr"]:
+    rr = sd.riadky(kocka)
+    print(kocka, len(rr), list(rr[0].keys()))
+    for x in rr[:3]: print("   ", x)
+    for k in rr[0]:
+        if k != "hodnota":
+            vals = collections.Counter(x[k] for x in rr)
+            print("   ", k, len(vals), list(vals)[:12])
 print("HOTOVO")

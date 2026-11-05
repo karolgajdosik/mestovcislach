@@ -32,14 +32,16 @@ _zamok = threading.Lock()
 
 def obec(kod: str, ico: str, stare: dict) -> dict:
     z = dict(stare)
-    if not z.get("uj"):
+    uj = ruz("uctovna-jednotka", id=z["uj"]) if z.get("uj") else {}
+    if not uj.get("idUctovnychZavierok"):
+        # pod jedným IČO býva viac účtovných jednotiek (prázdne duplicitné záznamy) – berieme tú so závierkami
         ids = ruz("uctovne-jednotky", **{"zmenene-od": "2000-01-01", "ico": ico}).get("id", [])
         if not ids:
             z["kontrola"] = date.today().isoformat()
             z["chyba"] = "nenájdená v RÚZ"
             return z
-        z["uj"] = ids[-1]
-    uj = ruz("uctovna-jednotka", id=z["uj"])
+        kandidati = [(i, ruz("uctovna-jednotka", id=i)) for i in ids]
+        z["uj"], uj = max(kandidati, key=lambda x: len(x[1].get("idUctovnychZavierok") or []))
     zav = dict(z.get("zav") or {})
     znamy = set(z.get("videne") or [])
     nove_id = [i for i in (uj.get("idUctovnychZavierok") or []) if i not in znamy]
