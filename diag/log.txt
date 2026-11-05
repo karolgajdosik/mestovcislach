@@ -1,18 +1,3 @@
-  om7103rr: 2885 obcí, nepriradených území 138
-::warning title=Pohyb obyvateľstva::nenájdené ukazovatele {'pri', 'vys'}; v kocke: ['Celkový prírastok obyvateľstva', 'Dojčenská úmrtnosť', 'Dojčenská úmrtnosť s pôrodnou hmotnosťou 1 000 g a viac', 'Hrubá miera celkového prírastku obyvateľstva', 'Hrubá miera migračného salda', 'Hrubá miera potratovosti', 'Hrubá miera prirodzeného prírastku obyvateľstva', 'Hrubá miera rozvodovosti', 'Hrubá miera sobášnosti', 'Hrubá miera ukončených tehotenstiev', 'Hrubá miera úmrtnosti (zomretí na 1 000 obyvateľov)', 'Hrubá miera živorodenosti', 'Index potratovosti', 'Index rozvodovosti', 'Index umelej potratovosti', 'Miera dojčenskej úmrtnosti', 'Miera mŕtvorodenosti', 'Miera novorodeneckej úmrtnosti', 'Miera perinatálnej úmrtnosti', 'Migračné saldo', 'Mŕtvonarodení', 'Narodení', 'Narodení na 1 000 obyvateľov (hrubá miera pôrodnosti)', 'Narodení s pôrodnou hmotnosťou do 2 500 g', 'Narodení v manželstve', 'Novorodenecká úmrtnosť', 'Novorodenecká úmrtnosť s pôrodnou hmotnosťou 1 000 g a viac', 'Perinatálna úmrtnosť', 'Potraty', 'Prirodzený prírastok obyvateľstva', 'Prisťahovaní na 1000 obyvateľov na trvalý pobyt', 'Prisťahovaní na trvalý pobyt', 'Rozvody', 'Sobáše', 'Stav trvale bývajúceho obyvateľstva na konci obdobia', 'Stredný (priemerný) stav trvale bývajúceho obyvateľstva', 'Ukončené tehotenstvá', 'Umelé potraty', 'Vysťahovaní na 1000 obyvateľov z trvalého pobytu', 'Vysťahovaní z trvalého pobytu', 'Zomretí', 'Štandardná dojčenská úmrtnosť', 'Štandardná novorodenecká úmrtnosť', 'Živonarodení', 'Živonarodení s pôrodnou hmotnosťou 1 000 g a viac']
-  om7052rr: 2885 obcí, nepriradených území 138
-Pohyb: 2885 obcí, roky 2016–2025
-  om7811rr: 2885 obcí, nepriradených území 136
-  om7815rr: 2885 obcí, nepriradených území 136
-  om7816rr: 2885 obcí, nepriradených území 136
-  om7813rr: 2885 obcí, nepriradených území 136
-  om7821rr: 2885 obcí, nepriradených území 136
-Bývanie: 2885 obcí
-515680 {'vek': 44.4, 'vek_rok': '2025', 'vek10': 41.5, 'starnutie': 169}
-515680 {'kanal': 51.6, 'zumpa': 38.8, 'cov': 0.4, 'bez': 9.3, 'domov': 1029, 'plyn': 67.7, 'vodovod': 87.7, 'studna': 6.7, 'vek_domov': [16.3, 15.0, 7.8, 21.4, 39.5], 'kurenie': [34.8, 27.4, 1.7, 34.1], 'bytov': 1723}
-518921 {'vek': 45.0, 'vek_rok': '2025', 'vek10': 42.1, 'starnutie': 169}
-518921 {'kanal': 4.0, 'zumpa': 74.6, 'cov': 2.8, 'bez': 18.6, 'domov': 530, 'plyn': 72.1, 'vodovod': 96.8, 'studna': 2.7, 'vek_domov': [6.3, 24.9, 9.7, 13.9, 45.2], 'kurenie': [1.7, 84.9, 1.3, 10.8], 'bytov': 605}
-508438 {'vek': 45.4, 'vek_rok': '2025', 'vek10': 42.2, 'starnutie': 172}
-508438 {'kanal': 82.7, 'zumpa': 15.7, 'cov': 0.8, 'bez': 0.8, 'domov': 7708, 'plyn': 76.9, 'vodovod': 97.6, 'studna': 1.9, 'vek_domov': [2.3, 10.8, 9.8, 26.6, 50.5], 'kurenie': [58.5, 31.1, 3.6, 6.2], 'bytov': 35654}
-{'Banská Bystrica': {'kanal': 58.4, 'plyn': 50.0, 'vodovod': 95.6}, 'Bratislava': {'kanal': 88.7, 'plyn': 87.9, 'vodovod': 98.2}, 'Detva': {'kanal': 28.7, 'plyn': 32.6, 'vodovod': 50.4}, 'Rimavská Sobota': {'kanal': 27.5, 'plyn': 44.1, 'vodovod': 57.2}}
+https://mestovcislach.sk/banskobystricky-kraj/rimavska-sobota/tisovec/ {'pohyb': True, 'byvanie': True, 'volby-celostatne': True, 'firmy': True, 'sluzby': True} False False False
+https://mestovcislach.sk/presovsky-kraj/poprad/vysoke-tatry/ {'pohyb': True, 'byvanie': True, 'volby-celostatne': True, 'firmy': True, 'sluzby': True} False False False
 HOTOVO
