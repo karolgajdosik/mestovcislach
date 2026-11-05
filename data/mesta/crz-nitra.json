@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-11-03",
+ "do": "2026-11-04",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 15062,
-  "skryte_fyzicke_osoby": 9808,
+  "zaznamov": 15081,
+  "skryte_fyzicke_osoby": 9812,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,10 +37,10 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3334,
-    "suma": 52152993,
-    "fo_pocet": 2401,
-    "fo_suma": 3427216
+    "pocet": 3353,
+    "suma": 52627109,
+    "fo_pocet": 2405,
+    "fo_suma": 3432716
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -53,8 +53,8 @@
    {
     "ico": "47240768",
     "nazov": "BAUMANN Nitra s. r. o.",
-    "pocet": 28,
-    "suma": 8396264
+    "pocet": 29,
+    "suma": 8467776
    },
    {
     "ico": "00681156",
@@ -294,7 +294,7 @@
    },
    {
     "nazov": "Telovýchovná jednota AC Nitra",
-    "suma": 463738
+    "suma": 470738
    },
    {
     "nazov": "Futbalový klub Nitra",
@@ -342,7 +342,7 @@
    },
    {
     "nazov": "Zápasnícky klub Corgoň Nitra",
-    "suma": 63423
+    "suma": 68423
    },
    {
     "nazov": "Slovenská poľnohospodárska univerzita v Nitre",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-04T06:18:16+00:00"
+ "aktualizovane": "2026-11-05T06:20:06+00:00"
 }
