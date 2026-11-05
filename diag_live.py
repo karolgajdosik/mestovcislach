@@ -1,15 +1,13 @@
-import requests, json
+import requests, json, re
 H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
-q = """SELECT (COUNT(?p) AS ?n) WHERE { ?p <https://linkedopendata.eu/prop/direct/P35> <https://linkedopendata.eu/entity/Q9934> ; <https://linkedopendata.eu/prop/direct/P32> <https://linkedopendata.eu/entity/Q218> . }"""
-for u in ["https://query.linkedopendata.eu/bigdata/namespace/wdq/sparql", "https://query.linkedopendata.eu/sparql"]:
-    try:
-        r = requests.get(u, params={"query": q}, headers={**H, "Accept": "application/sparql-results+json"}, timeout=120)
-        print(u, r.status_code, r.text[:400])
-    except Exception as e:
-        print(u, e)
-for u in ["https://cohesiondata.ec.europa.eu/api/views/metadata/v1?limit=5", "https://data.europa.eu/api/hub/search/search?q=kohesio&limit=5", "https://www.itms2014.sk/", "https://opendata.itms2014.sk/swagger/", "https://www.eurofondy.gov.sk/"]:
-    try:
-        r = requests.get(u, headers=H, timeout=60); print(u, r.status_code, r.text[:300].replace("\n", " "))
-    except Exception as e:
-        print(u, str(e)[:150])
+for q in ["kohesio projects", "kohesio slovakia", "list of operations slovakia", "zoznam operácií"]:
+    r = requests.get("https://data.europa.eu/api/hub/search/search", params={"q": q, "limit": 15, "filter": "dataset"}, headers=H, timeout=60)
+    for d in r.json()["result"]["results"]:
+        t = d.get("title", {}); t = t.get("en") or t.get("sk") or next(iter(t.values()), "")
+        urls = [x.get("access_url", [None])[0] if isinstance(x.get("access_url"), list) else x.get("access_url") for x in d.get("distributions", [])][:4]
+        print(q, "|", t[:90], "|", d.get("id"), urls)
+r = requests.get("https://cohesiondata.ec.europa.eu/api/views/metadata/v1?limit=400", headers=H, timeout=60)
+for d in r.json():
+    if re.search(r"kohesio|operation|beneficiar|project", d.get("name", "") + d.get("description", ""), re.I):
+        print("cohesion", d["id"], d["name"][:100])
 print("HOTOVO")
