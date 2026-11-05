@@ -1,6 +1,1416 @@
-https://mestovcislach.sk/banskobystricky-kraj/rimavska-sobota/tisovec/ {'nezamestnanost': True, 'eurofondy': True, 'skoly': True, 'odpad': True, 'kalendar': True, 'pocasie': True}
-   id="nezamestnanost"> Nezamestnanosť 7,0 % miera nezamestnanosti (september 2026) 10,4 % okres Rimavská Sobota 4,2 % Slovensko 204 uchádzačov o zamestnanie, z toho 11 absolventov 9/25 10 11 12 1/26 2 3 4 5 6 <span style="height:66.98748
-   id="eurofondy"> Eurofondy a dotácie 4 zmluvy o nenávratnom finančnom príspevku v hodnote 946 097 € od roku 2025. 304 885 € Ministerstvo životného prostredia SR 27. 6. 2025 · Zmluva o poskytnutí nenávratného finančného príspevku č. MZP-PSK-401202B214 301 463 € 
-https://mestovcislach.sk/kosicky-kraj/sobrance/sejkov/ {'nezamestnanost': True, 'eurofondy': False, 'skoly': True, 'odpad': True, 'kalendar': True, 'pocasie': True}
-   id="nezamestnanost"> Nezamestnanosť 6,3 % miera nezamestnanosti (september 2026) 6,0 % okres Sobrance 4,2 % Slovensko 14 uchádzačov o zamestnanie, z toho 1 absolvent 9/25 10 11 12 1/26 2 3 4 5 6 <smal
+1411
+as1001rs  | Obyvateľstvo a charakteristiky veku  | narodení obce
+as1003rs  | Čisté peňažné príjmy a výdavky domácností podľa veku prednostu  | narodení obce
+as1004rs  | Výdavky na jedného člena domácnosti za rok na vybrané tovary a služby podľa veku prednostu  | narodení obce
+as1005rs  | Miera rizika chudoby podľa vybraných vekových skupín a pohlavia  | narodení obce
+as1007rs  | Najčastejšie príčiny úmrtia obyvateľov SR  | narodení obce
+as1008rs  | Stredná dĺžka života v zdraví podľa vybraného veku  | narodení obce
+as1009rs  | Zhodnotenie zdravia vo vybraných vekových skupinách a faktory ovplyvňujúce zdravotný stav  | narodení obce
+as1012rs  | Používanie počítačov a internetu jednotlivcami podľa vybraných vekových skupín  | narodení obce
+as1013rs  | Účasť na ďalšom vzdelávaní a odbornej príprave  | narodení obce
+as1014rs  | Seniori vo voľbách do Národnej rady SR  | narodení obce
+as1015rs  | Seniori vo voľbách do orgánov samosprávnych krajov, poslanci  | narodení obce
+as1016rs  | Starostovia obcí a primátori miest  | narodení obce
+as1017rs  | Účasť seniorov na trhu práce (od roku 2021) | narodení obce
+cr1004rs  | Návštevníci v ubytovacích zariadeniach podľa hustoty osídlenia- ročné údaje | narodení obce
+cr1801rs  | Účasť na cestovnom ruchu s prenocovaním - ročne  | narodení obce
+cr1802rs  | Neúčasť na cestovnom ruchu a dôvody neúčasti - ročne  | narodení obce
+cr1803rs  | Počet ciest - ročne  | narodení obce
+cr1804rs  | Počet prenocovaní - ročne  | narodení obce
+cr1805rs  | Priemerný počet prenocovaní - ročne  | narodení obce
+cr1806rs  | Priemerné výdavky na cestu - ročne  | narodení obce
+cr1807rs  | Cesty - podľa dĺžky pobytu - ročne  | narodení obce
+cr1808rs  | Cesty - podľa veku - ročne  | narodení obce
+cr1809rs  | Cesty - podľa účelu - ročne  | narodení obce
+cr1810rs  | Cesty - podľa cieľového miesta - ročne  | narodení obce
+cr1811rs  | Cesty - podľa hlavného typu ubytovania - ročne  | narodení obce
+cr1812rs  | Cesty  - podľa hlavného typu dopravy - ročne  | narodení obce
+cr1813rs  | Cesty v zahraničí - vybrané krajiny - ročne  | narodení obce
+cr2001rs  | Kapacity a výkony ubytovacích zariadení v Slovenskej republike - ročné údaje  | narodení obce
+cr2002rs  | Aktívny a pasívny cestovný ruch v Slovenskej republike - ročné údaje  | narodení obce
+cr2003rs  | Domáci cestovný ruch v Slovenskej republike - ročné údaje  | narodení obce
+cr2004rs  | Tržby cestovného ruchu v Slovenskej republike - ročné údaje  | narodení obce
+cr3006rr  | Organizovaný cestovný ruch podľa krajov - ročné údaje  | narodení obce
+cr3007rr  | Tržby cestovného ruchu podľa krajov - ročné údaje  | narodení obce
+cr3801mr  | Návštevnosť UZ - SR, kraje (6 kategórií UZ)  | narodení obce
+cr3802mr  | Návštevnosť UZ - okresy (3 kategórie UZ)  | narodení obce
+cr3803mr OBCE | Návštevnosť UZ - obce (zahraniční/domáci)  | narodení obce
+cr3804mr  | Návštevnosť UZ - okresy (krajiny)  | narodení obce
+cr3805qr OBCE | Návštevnosť, tržby a kapacity UZ - SR, kraje, okresy, obce (13 ukazovateľov)  | narodení obce
+cr3805rs  | Cesty v SR - vybrané okresy - ročne  | narodení obce
+cr3806qr  | Návštevnosť, tržby a kapacity UZ - SR, kraje (6 kategórií UZ, 9 ukazovateľov)  | narodení obce
+cr3807qr  | Návštevnosť, tržby a kapacity UZ - okresy (3 kategórie UZ, 9 ukazovateľov)  | narodení obce
+do0001ms  | Doprava a skladovanie - Tržby za vlastné výkony a tovar (do roku 2023) | narodení obce
+do0002ms  | Doprava a skladovanie - Tržby za vlastné výkony a tovar (medziročný index) - mesačne | narodení obce
+do1001rs  | Ekonomické ukazovatele za dopravu a skladovanie podľa SK NACE Rev. 2  (do roku 2022) | narodení obce
+do1002rs  | Ekonomické ukazovatele za dopravu (2002 - 2008)   | narodení obce
+do1003rs  | Súhrnné ukazovatele za dopravu  | narodení obce
+do1004rs  | Železničná doprava - infraštruktúra a dopravné prostriedky  | narodení obce
+do1005rs  | Železničná doprava - nákladná a osobná   | narodení obce
+do1006rs  | Železničná doprava - prevádzkové ukazovatele  | narodení obce
+do1007rs  | Cestná doprava - nákladná a osobná  | narodení obce
+do1008rs  | Vnútrozemská vodná doprava - nákladná a osobná  | narodení obce
+do1009rs  | Letecká doprava - nákladná a osobná   | narodení obce
+do1010rs  | Letecká doprava - letecký park, výkony letísk, výkony všeobecného letectva  | narodení obce
+do1011rs  | Vnútrozemská vodná doprava - infraštruktúra, plavidlá   | narodení obce
+do1012rs  | Cestná doprava - infraštruktúra, motorové vozidlá, nehody  | narodení obce
+do1013rs  | Priemerný počet zamestnaných osôb v doprave podľa veľkostnej kategórie počtu zamestnancov - ročne | narodení obce
+do1014rs  | Ekonomické ukazovatele za dopravu a skladovanie podľa SK NACE Rev. 2 - ročne | narodení obce
+do1801ms  | Nákladná doprava - objem prepravovaného tovaru a výkony - mesačne | narodení obce
+do1802ms  | Osobná doprava - prepravené osoby a výkony - mesačne | narodení obce
+do1803qs  | Nákladná doprava - objem prepravovaného tovaru a výkony - štvrťročné údaje | narodení obce
+do1804qs  | Osobná doprava - prepravené osoby a výkony - štvrťročné údaje | narodení obce
+do2001rs  | Cestné dopravné nehody  | narodení obce
+do2002rs  | Preprava osôb osobnou dopravou  | narodení obce
+do2003rs  | Preprava tovaru nákladnou dopravou  | narodení obce
+do2004rs  | Priemerná nominálna mesačná mzda zamestnanca dopravy za podniky s 20 a viac zamestnancami  | narodení obce
+do2006qs  | Priemerná nominálna mesačná mzda zamestnanca v doprave a skladovaní - štvrťročné údaje  | narodení obce
+do2007ms  | Priemerná nominálna mesačná mzda zamestnanca v doprave a skladovaní - mesačné údaje  | narodení obce
+do2009qs  | Priemerný počet zamestnaných osôb v doprave a skladovaní - štvrťročné údaje  | narodení obce
+do2010ms  | Priemerný počet zamestnaných osôb v doprave a skladovaní - mesačné údaje  | narodení obce
+do2011rs  | Priemerný počet zamestnaných osôb v doprave podľa veľkostnej kategórie počtu zamestnancov (do roku 2022) | narodení obce
+do2013qs  | Tržby za vlastné výkony a tovar v doprave a skladovaní - štvrťročné údaje  | narodení obce
+do2014ms  | Tržby za vlastné výkony a tovar v doprave a skladovaní - mesačné údaje  | narodení obce
+do2015rs  | Výkony nákladnej dopravy  | narodení obce
+do2016rs  | Výkony osobnej dopravy  | narodení obce
+do2017rs  | Základné údaje o dopravnej infraštruktúre a motorových vozidlách  | narodení obce
+do3701rr OBCE | Doprava - mestá  | narodení obce
+do3702rr  | Doprava - funkčné mestské oblasti  | narodení obce
+do3801rr  | Vybrané ukazovatele cestnej verejnej dopravy  | narodení obce
+do3802rr  | Dĺžka ciest  | narodení obce
+do3803rr  | Počet motorových vozidiel  | narodení obce
+do3804rr  | Prehľad objektov na cestách I., II., III. triedy  | narodení obce
+do3805rr  | Miestne komunikácie, objekty na miestnych komunikáciách  | narodení obce
+do3806rr  | Nehodovosť  | narodení obce
+do3807rr  | Tržby za vlastné výkony a tovar v doprave (bez cestovných kancelárií) | narodení obce
+en1001ms  | Zdroje elektriny v GWh   | narodení obce
+en1002ms  | Zdroje vybraných druhov tuhých palív v tis. ton  | narodení obce
+en2001rs  | Bilancia elektriny  | narodení obce
+en2002rs  | Bilancia obnovitelných zdrojov palív a odpadov  | narodení obce
+en2003rs  | Bilancia palív, elektriny a tepla  | narodení obce
+en2004rs  | Bilancia plynných palív  | narodení obce
+en2005rs  | Bilancia ropy a ropných produktov  | narodení obce
+en2006rs  | Bilancia tepla  | narodení obce
+en2007rs  | Bilancia tuhých palív  | narodení obce
+en2008rs  | Spotreba vybraných druhov palív, elektriny a tepla v doprave  | narodení obce
+en2009rs  | Spotreba vybraných druhov palív, elektriny a tepla v pôdohospodárstve  | narodení obce
+en2010rs  | Spotreba vybraných druhov palív, elektriny a tepla v priemysle  | narodení obce
+en2011rs  | Spotreba vybraných druhov palív, elektriny a tepla v stavebníctve  | narodení obce
+en3001rr  | Spotreba palív, elektriny, tepla  | narodení obce
+fp1801qs  | Vybrané finančné ukazovatele nefinančných korporácií s 20 a viac zamestnancami - štvrťročné údaje  | narodení obce
+fp2001rs  | Vybrané finančné ukazovatele finančných korporácií - ročné údaje  | narodení obce
+fp2002qs  | Vybrané finančné ukazovatele finančných korporácií - štvrťročné údaje  | narodení obce
+fp2003rs  | Vybrané finančné ukazovatele nefinančných korporácií podľa ekonomických činností (SK NACE Rev. 2) - ročné údaj | narodení obce
+ik0001ms  | Informácie a komunikácia (Tržby za vlastné výkony a tovar) (do roku 2023) | narodení obce
+ik0002ms  | Informácie a komunikácia (Tržby za vlastné výkony a tovar) (medziročný index) - mesačne | narodení obce
+ik1001rs  | Vybrané ukazovatele za telekomunikácie  | narodení obce
+ik1002rs  | Ekonomické ukazovatele podľa SK NACE Rev. 2 (do roku 2022) | narodení obce
+ik1003rs  | Ekonomické ukazovatele (2003 - 2008)  | narodení obce
+ik1004rs  | Ekonomické ukazovatele podľa SK NACE Rev. 2 - ročne | narodení obce
+ik2002qs  | Priemerná nominálna mesačná mzda zamestnanca v informáciách a komunikácii - štvrťročné údaje  | narodení obce
+ik2003ms  | Priemerná nominálna mesačná mzda zamestnanca v informáciách a komunikácii - mesačné údaje  | narodení obce
+ik2005qs  | Priemerný počet zamestnaných osôb v informáciách a komunikácii - štvrťročné údaje  | narodení obce
+ik2006ms  | Priemerný počet zamestnaných osôb v informáciách a komunikácii - mesačné údaje  | narodení obce
+ik2008qs  | Tržby za vlastné výkony a tovar v informáciách a komunikácii - štvrťročné údaje  | narodení obce
+ik2009ms  | Tržby za vlastné výkony a tovar v informáciách a komunikácii - mesačné údaje  | narodení obce
+ik3801rr  | Vybrané ukazovatele za telekomunikácie - regióny | narodení obce
+ik5001rr OBCE | Počet pôšt v Slovenskej republike  | narodení obce
+is1003rs  | IKT v podnikoch   | narodení obce
+is1401rs  | 17.8.1 Podiel jednotlivcov používajúcich internet  | narodení obce
+kp0001ms  | Indikátor ekonomického sentimentu (do roku 2023) | narodení obce
+kp0002ms  | Konjunkturálny prieskum v priemysle (mesačný)  | narodení obce
+kp0003qs  | Konjunkturálny prieskum v priemysle (štvrťročný)  | narodení obce
+kp0004ms  | Konjunkturálny prieskum v obchode (báza 2015) | narodení obce
+kp0005ms  | Konjunkturálny prieskum v službách | narodení obce
+kp0006ms  | Konjunkturálny prieskum v stavebníctve  | narodení obce
+kp0010ms  | Saldá mesačných otázok a zložený indikátor dôvery v službách   | narodení obce
+kp0011ms  | Saldá mesačných otázok a zložený indikátor dôvery v stavebníctve   | narodení obce
+kp0012ms  | Spotrebiteľský barometer  | narodení obce
+kp0013ms  | Saldá otázok za vybrané odvetvia v priemysle a podľa NACE Rev. 2  - mesačne  | narodení obce
+kp0014ms  | Saldá otázok za vybrané odvetvia v priemysle podľa veľkosti podnikov - mesačne  | narodení obce
+kp0015ms  | Saldá otázok za vybrané odvetvia v stavebníctve podľa NACE Rev. 2  - mesačne  | narodení obce
+kp0016ms  | Saldá otázok za vybrané odvetvia v stavebníctve podľa veľkosti podnikov  - mesačne  | narodení obce
+kp0017ms  | Saldá otázok za vybrané odvetvia v obchode podľa NACE Rev. 2  - mesačne  | narodení obce
+kp0018ms  | Saldá otázok za vybrané odvetvia v obchode podľa veľkosti podnikov  - mesačne  | narodení obce
+kp0019ms  | Saldá otázok za vybrané odvetvia v službách a podľa sektorov služieb - mesačne  | narodení obce
+kp0020qs  | Saldá otázok a zložený indikátor dôvery v službách - štvrťročne   | narodení obce
+kp0021ms  | Saldá otázok a zložený indikátor dôvery v stavebníctve - mesačne   | narodení obce
+kp0022ms  | Indikátor ekonomického sentimentu | narodení obce
+ku1001rr  | Botanické záhrady a arboréta | narodení obce
+ku3701rr OBCE | Kultúra a cestovný ruch - mestá  | narodení obce
+ku3702rr  | Kultúra a cestovný ruch - funkčné mestské oblasti  | narodení obce
+ku3801rr  | Subjekty profesionálneho scénického umenia (od roku 2021) | narodení obce
+ku3802rr  | Repertoár a návštevníci subjektov profesionálneho scénického umenia (od roku 2021) | narodení obce
+ku3803rr  | Galérie  | narodení obce
+ku3804rr  | Múzeá  | narodení obce
+ku3805rr  | Knižnice  | narodení obce
+ku3806rr  | Knižnice - knižničné jednotky a výpožičky  | narodení obce
+ku5003rr OBCE | Kiná  | narodení obce
+ku5005rr OBCE | Múzeá a galérie  | narodení obce
+ku5006rr OBCE | Zariadenia na voľný čas a záujmovú činnosť pre deti a mládež  | narodení obce
+ku5008rr OBCE | Knižnice (údaje za obce) | narodení obce
+ku5009rr OBCE | Divadlá (do roku 2020) | narodení obce
+ku5011rr OBCE | Subjekty profesionálneho scénického umenia  | narodení obce
+kz1001rs  | Medián ekvivalentného čistého príjmu  | narodení obce
+kz1002rs  | Nerovnomernosť príjmového rozdelenia  | narodení obce
+kz1003rs  | Miera rizika chudoby zakotvená v čase (2008)  | narodení obce
+kz1004rs  | Miera rizika chudoby podľa typu domácnosti - počet závislých detí | narodení obce
+kz1005rs  | Miera pretrvávajúceho rizika chudoby  | narodení obce
+kz1006rs  | Miera závažnej materiálnej deprivácie  | narodení obce
+kz1007rs  | Kvalita bývania - Zatekajúca strecha, vlhké steny a ostatné  | narodení obce
+kz1008rs  | Schopnosť výjsť s peniazmi  | narodení obce
+kz1009rs  | Sebavnímanie zdravia podľa pohlavia a vybraných vekových skupín  | narodení obce
+kz1010rs  | Osoby s dlhodobým ochorením alebo zdravotným problémom podľa pohlavia a vybraných vekových skupín  | narodení obce
+kz1011rs  | Index telesnej hmotnosti (BMI) podľa pohlavia a vybraných vekových skupín  | narodení obce
+kz1012rs  | Každodenní fajčiari cigariet podľa pohlavia a vybraných vekových skupín  | narodení obce
+kz1013rs  | Neschopnosť čeliť neočakávaným finančným výdavkom  | narodení obce
+kz1014rs  | Finančná záťaž domácnosti  | narodení obce
+kz1015rs  | Znečistenie, špina alebo iné environmentálne problémy podľa typu domácnosti a príjmovej chudoby  | narodení obce
+kz1016rs  | Zdravé roky života a Stredná dĺžka života  | narodení obce
+kz1017rs  | Trestná činnosť, násilie a vandalizmus  | narodení obce
+kz1018rs  | Miera ekonomickej aktivity  | narodení obce
+kz1019rs  | Miera zamestnanosti  | narodení obce
+kz1020rs  | Miera nezamestnanosti  | narodení obce
+kz1022rs  | Priemerné hodnotenie spokojnosti s využitím voľného času  | narodení obce
+kz1023rs  | Priemerné hodnotenie spokojnosti so svojimi osobnými vzťahmi  | narodení obce
+kz1024rs  | Frekvencia stretnutí s príbuznými a priateľmi  | narodení obce
+kz1025rs  | Účasť na aktivitách politických strán alebo odborov  | narodení obce
+kz1026rs  | Účasť na aktivitách profesionálnych združení  | narodení obce
+kz1027rs  | Neupravený rozdiel v odmeňovaní žien a mužov  | narodení obce
+kz1028rs  | Celková spokojnosť so životom  | narodení obce
+kz1029rs  | Posúdenie či život má zmysel  | narodení obce
+kz1030rs  | Stupeň dosiahnutého vzdelania (ISCED 2011)  | narodení obce
+kz1031rs  | Predčasne ukončené vzdelávanie a odborná príprava  | narodení obce
+kz1032rs  | Miera účasti mladých ľudí na formálnom a neformálnom vzdelávaní a odbornej príprave  | narodení obce
+kz1033rs  | Frekvencia kontaktov s príbuznými a priateľmi   | narodení obce
+kz1034rs  | Účasť na neformálnych dobrovoľníckych aktivitách v priebehu posledného roka  | narodení obce
+kz1035rs  | Účasť na aktivitách rekreačných skupín alebo organizácií v priebehu posledného roka  | narodení obce
+kz1036rs  | Pomoc od ostatných (mať niekoho, na koho sa môžem spoľahnúť v prípade potreby)  | narodení obce
+kz1037rs  | Dôvera k ostatným  | narodení obce
+kz1038rs  | Dôvera v inštitúcie - právny systém, politický systém, polícia  | narodení obce
+kz1039rs  | Byť šťastný - frekvencia za posledné štyri týždne  | narodení obce
+np1101rr  | Dynamika nákladov práce  | narodení obce
+np1102rs  | Náklady práce podľa ekonomickej činnosti  | narodení obce
+np1103rr  | Hrubá mzda a medián s ďalšími popisnými štatistickými charakteristikami  | narodení obce
+np1105rs  | Priemerná mzda v podnikoch s 20 a viac zamestnancami podľa ekonomickej činnosti | narodení obce
+np2001rs  | Podiely zamestnancov v pásmach hrubej mzdy podľa pracovného času a pohlavia | narodení obce
+np2002rs  | Štruktúra mzdy zamestnanca podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+np2004rs  | Štruktúra mzdy zamestnanca podľa klasifikácie zamestnaní (SK ISCO - 08)  | narodení obce
+np2005rs  | Štruktúra mzdy zamestnanca podľa vekových skupín  | narodení obce
+np2006rs  | Štruktúra mzdy zamestnanca podľa vzdelania  | narodení obce
+np2007rs  | Úplné náklady práce (mesačné, hodinové) podľa druhu vlastníctva  | narodení obce
+np2008rs  | Úplné náklady práce (mesačné, hodinové) podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+np2009rs  | Úplné náklady práce (mesačné, hodinové) podľa veľkostnej štruktúry organizácií  | narodení obce
+np2010rs  | Úplné náklady práce (mesačné, hodinové) podľa vybraných právnych foriem  | narodení obce
+np2011rs  | Úplné náklady práce - štruktúra (mesačné, hodinové) | narodení obce
+np2012rs  | Úplné náklady práce - štruktúra (ročné) | narodení obce
+np2014qs  | Indexy reálnych miezd podľa ekonomických činností (SK NACE Rev. 2) | narodení obce
+np2016qs  | Priemerná nominálna mesačná mzda zamestnanca podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+np2018qs  | Priemerná nominálna mesačná mzda zamestnanca  | narodení obce
+np3101rr  | Hrubá mzda podľa veku | narodení obce
+np3102rr  | Hrubá mzda podľa vzdelania | narodení obce
+np3103rr  | Hrubá mzda a odpracovaný čas | narodení obce
+np3104rr  | Hrubá mzda podľa ekonomickej činnosti | narodení obce
+np3105rr  | Hrubá mzda podľa druhu vlastníctva | narodení obce
+np3106rr  | Hrubá mzda podľa zamestnania | narodení obce
+np3107rr  | Čistá mzda | narodení obce
+np3108rr  | Úplné náklady práce | narodení obce
+np3110rr  | Mzdy podľa ekonomickej činnosti zistené pracoviskovou metódou | narodení obce
+np3112qr  | Priemerná mzda v hospodárstve SR | narodení obce
+np3114rr  | Mzdy zamestnancov (2001 - 2008)  | narodení obce
+nu0001qs  | Rýchly odhad HDP a zamestnanosti podľa ESA 2010  | narodení obce
+nu0002qs  | Štvrťročné údaje HDP v bežných cenách  | narodení obce
+nu0003qs  | Štvrťročné údaje HDP v stálych cenách predchádzajúceho roka  | narodení obce
+nu0004qs  | Štvrťročné údaje HDP v stálych cenách vypočítaných reťazením objemov | narodení obce
+nu0005qs  | Štvrťročné údaje HDP podľa odvetví v bežných cenách  | narodení obce
+nu0006qs  | Štvrťročné údaje HDP podľa odvetví v stálych cenách vypočítaných reťazením objemov | narodení obce
+nu0007rs  | Revidované a predbežné ročné údaje HDP v bežných cenách  | narodení obce
+nu0008rs  | Revidované a predbežné ročné údaje HDP v stálych cenách predchádzajúceho roka  | narodení obce
+nu0009rs  | Revidované a predbežné ročné údaje HDP  v stálych cenách vypočítaných reťazením objemov | narodení obce
+nu0182qs  | Štvrťročné údaje HDP v bežných cenách - archív jeseň 2025 | narodení obce
+nu0183qs  | Štvrťročné údaje HDP v stálych cenách predchádzajúceho roka - archív jeseň 2025 | narodení obce
+nu0184qs  | Štvrťročné údaje HDP v stálych cenách vypočítaných reťazením objemov k referenčnému roku 2020 - archív jeseň 2 | narodení obce
+nu0185qs  | Štvrťročné údaje HDP podľa odvetví v bežných cenách - archív jeseň 2025 | narodení obce
+nu0186qs  | Štvrťročné údaje HDP podľa odvetví v stálych cenách vypočítaných reťazením objemov k referenčnému roku 2020 -  | narodení obce
+nu0187rs  | Revidované a predbežné ročné údaje HDP v bežných cenách - archív jeseň 2025 | narodení obce
+nu0188rs  | Revidované a predbežné ročné údaje HDP v stálych cenách predchádzajúceho roka - archív jeseň 2025 | narodení obce
+nu0189rs  | Revidované a predbežné ročné údaje HDP  v stálych cenách vypočítaných reťazením objemov k referenčnému roku 20 | narodení obce
+nu1001qs  | Transakcie aktíva - S13N  | narodení obce
+nu1002qs  | Transakcie pasíva - S13N  | narodení obce
+nu1003qs  | Stavy aktíva - S13N  | narodení obce
+nu1004qs  | Stavy pasíva - S13N  | narodení obce
+nu1005qs  | Transakcie aktíva - S13K  | narodení obce
+nu1006qs  | Transakcie pasíva - S13K  | narodení obce
+nu1007qs  | Stavy aktíva - S13K  | narodení obce
+nu1008qs  | Stavy pasíva - S13K  | narodení obce
+nu1009qs  | Transakcie aktíva  - S1311K  | narodení obce
+nu1010qs  | Transakcie pasíva  - S1311K  | narodení obce
+nu1011qs  | Stavy aktíva - S1311K  | narodení obce
+nu1012qs  | Stavy pasíva  - S1311K  | narodení obce
+nu1013qs  | Transakcie aktíva - S1313K  | narodení obce
+nu1014qs  | Transakcie pasíva - S1313K  | narodení obce
+nu1015qs  | Stavy aktíva - S1313K  | narodení obce
+nu1016qs  | Stavy pasíva - S1313K  | narodení obce
+nu1017qs  | Transakcie aktíva - S1314K  | narodení obce
+nu1018qs  | Transakcie pasíva - S1314K  | narodení obce
+nu1019qs  | Stavy aktíva - S1314K  | narodení obce
+nu1020qs  | Stavy pasíva - S1314K  | narodení obce
+nu1021rs  | HDP výrobnou metódou v bežných cenách  | narodení obce
+nu1022rs  | Odmeny, mzdy a platy zamestnancov podľa ekonomických činností A10  | narodení obce
+nu1024rs  | Obyvateľstvo, zamestnanosť - národný koncept  | narodení obce
+nu1025rs  | Zamestnanosť podľa ekonomických činností A10 - domáci koncept  | narodení obce
+nu1028rs  | Účty za jednotlivé inštitucionálne sektory  | narodení obce
+nu1029rs  | Vývoz výrobkov (fob) a služieb  | narodení obce
+nu1030rs  | Dovoz výrobkov (fob) a služieb  | narodení obce
+nu1031rs  | Disponibilný dôchodok - Úspory a čisté pôžičky poskytnuté a prijaté  | narodení obce
+nu1032rs  | Tvorba kapitálu podľa NACE Rev. 2 - údaje v bežných cenách  | narodení obce
+nu1034rs  | Tvorba kapitálu podľa SK NACE Rev. 2 - údaje v stálych cenách  | narodení obce
+nu1035rs  | Konečná spotreba v bežných cenách  | narodení obce
+nu1036rs  | HDP výdavkovou metódou v bežných cenách  | narodení obce
+nu1037rs  | HDP dôchodkovou metódou v bežných cenách  | narodení obce
+nu1038rs  | Finančné účty - stavy konsolidované  | narodení obce
+nu1039rs  | Finančné účty - stavy nekonsolidované  | narodení obce
+nu1040rs  | Finančné účty - transakcie konsolidované  | narodení obce
+nu1041rs  | Finančné účty - transakcie nekonsolidované  | narodení obce
+nu1043rs  | Hrubý národný dôchodok   | narodení obce
+nu1044rs  | Vývoz výrobkov (fob) a služieb  v stálych cenách  | narodení obce
+nu1045rs  | Dovoz výrobkov (fob) a služieb v stálych cenách  | narodení obce
+nu1046rs  | HDP výdavkovou metódou v stálych cenách  | narodení obce
+nu1047rs  | Konečná spotreba v stálych cenách  | narodení obce
+nu1048rs  | HDP výrobnou metódou v stálych cenách  | narodení obce
+nu1049rs  | Správa o deficite, prebytku a úrovni dlhu v sektore VS  | narodení obce
+nu1054rs  | Hrubá pridaná hodnota podľa ekonomických činností A88 v bežných cenách  | narodení obce
+nu1055rs  | Odmeny, mzdy a platy zamestnancov podľa ekonomických činností A88  | narodení obce
+nu1056rs  | Hrubá pridaná hodnota podľa ekonomických činností A88 v stálych cenách  | narodení obce
+nu1057rs  | Zamestnanosť podľa ekonomických činností A88 - domáci koncept  | narodení obce
+nu1058rs  | Účet ostatných zmien objemu aktív nekonsolidovaný  | narodení obce
+nu1059rs  | Účet precenenia nekonsolidovaný  | narodení obce
+nu1060rs  | Penzijné nároky v systéme sociálneho zabezpečenia v SR  | narodení obce
+nu1061qs  | Maastrichtský dlh verejnej správy - Stavy pasíva - S13K  | narodení obce
+nu1062rs  | Klasifikácia výdavkov verejnej správy podľa funkcie (COFOG)  | narodení obce
+nu1063qs  | Konečná spotreba domácností podľa Klasifikácie individuálnej spotreby COICOP 2018 v bežných cenách - štvrťročn | narodení obce
+nu1064qs  | Konečná spotreba domácností podľa Klasifikácie individuálnej spotreby COICOP 2018 v stálych cenách - štvrťročn | narodení obce
+nu1401rs  | 8.1.1 Ročná miera rastu reálneho HDP na obyvateľa  | narodení obce
+nu1402rs  | 8.2.1 Ročná miera rastu reálneho HDP na zamestnanca  | narodení obce
+nu1403rs  | 9.2.1 Pridaná hodnota priemyselnej výroby ako podiel na HDP a na obyvateľa  | narodení obce
+nu1404rs  | 10.4.1 Podiel práce na HDP zahŕňajúci mzdy a transfery sociálnej ochrany  | narodení obce
+nu1405rs  | 8.9.1 Priamy HDP cestovného ruchu ako podiel na celkovom HDP a jeho miera rastu  | narodení obce
+nu1801rs  | Produktivita práce podľa SK NACE Rev.2 (rovnaké obdobie minulého roku=100) - ročne  | narodení obce
+nu1802qs  | Produktivita práce a jednotkové náklady práce - štvrťročne  | narodení obce
+nu1803qs  | Tvorba hrubého fixného kapitálu podľa typu aktív v stálych cenách vypočítaných reťazením objemov k referenčném | narodení obce
+nu1804qs  | Disponibilný príjem domácností na osobu | narodení obce
+nu1806qs  | HDP podľa zložiek výdavkov sezónne očistený v bežných cenách - štvrťročné údaje  | narodení obce
+nu1807qs  | HDP podľa zložiek výdavkov sezónne očistený v stálych cenách vypočítaných reťazením objemov - štvrťročne | narodení obce
+nu1808qs  | Pridaná hodnota podľa ekonomických činností (SK NACE Rev. 2) v bežných cenách - sezónne očistené údaje | narodení obce
+nu1809qs  | Pridaná hodnota podľa ekonomických činností (SK NACE Rev. 2) v stálych cenách  - sezónne očistené údaje | narodení obce
+nu1810qs  | Tvorba hrubého fixného kapitálu podľa typu aktív v bežných cenách - sezónne očistené údaje | narodení obce
+nu1811qs  | Tvorba hrubého fixného kapitálu podľa typu aktív v stálych cenách - sezónne očistené údaje | narodení obce
+nu1812qs  | Odmeny zamestnancov (ESA 2010) podľa ekonomických činností (SK NACE Rev. 2) v bežných cenách - sezónne očisten | narodení obce
+nu1813qs  | Celková zamestnanosť (ESA 2010) podľa ekonomických činností (SK NACE Rev. 2) - sezónne očistené údaje | narodení obce
+nu1814qs  | Odpracované hodiny zamestnaných osôb (ESA 2010) podľa ekonomických činností (SK NACE Rev. 2) - sezónne očisten | narodení obce
+nu1815qs  | Odpracované hodiny zamestnancov (ESA 2010) podľa ekonomických činností (SK NACE Rev. 2) | narodení obce
+nu1816rs  | Odpracované hodiny zamestnaných osôb podľa ekonomických činností A88 - domáci koncept | narodení obce
+nu1817rs  | Odpracované hodiny zamestnaných osôb podľa ekonomických činností A10 - domáci koncept | narodení obce
+nu2002qs  | Hrubá produkcia podľa ekonomických činností (SK NACE Rev. 2) v bežných cenách  | narodení obce
+nu2008qs  | Medzispotreba podľa ekonomických činností (SK NACE Rev. 2) v bežných cenách  | narodení obce
+nu2010qs  | Pridaná hodnota podľa ekonomických činností (SK NACE Rev. 2) v bežných cenách  | narodení obce
+nu2012qs  | Tvorba hrubého fixného kapitálu podľa ekonomických činností (SK NACE Rev. 2) v bežných cenách  | narodení obce
+nu2014qs  | Tvorba hrubého fixného kapitálu podľa Klasifikácie produkcie v bežných cenách  | narodení obce
+nu2016qs  | Tvorba hrubého fixného kapitálu podľa sektorov v bežných cenách  | narodení obce
+nu2020qs  | Konečná spotreba domácností podľa Klasifikácie individuálnej spotreby (COICOP) v bežných cenách  | narodení obce
+nu2022qs  | Konečná spotreba domácností podľa Klasifikácie individuálnej spotreby (COICOP) v stálych cenách  | narodení obce
+nu2025qs  | Tvorba a použitie dôchodkov v sektore domácností v bežných cenách  | narodení obce
+nu2028qs  | Hrubý domáci produkt na obyvateľa  | narodení obce
+nu2034qs  | Hrubý domáci produkt prepočítaný na jeden pracovný a kalendárny deň  | narodení obce
+nu2039qs  | Príjmy verejnej správy v bežných cenách - štvrťročné údaje  | narodení obce
+nu2040qs  | Výdavky verejnej správy v bežných cenách - štvrťročné údaje  | narodení obce
+nu2042qs  | Celková zamestnanosť (ESA 2010) podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+nu2046qs  | Odmeny zamestnancov (ESA 2010) podľa ekonomických činností (SK NACE Rev. 2) v bežných cenách  | narodení obce
+nu2047qs  | Odpracované hodiny zamestnaných osôb (ESA 2010) podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+nu2050qs  | Zamestnanci (ESA 2010) podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+nu2051qs  | Zdroje HDP sezónne očistené v bežných cenách - štvrťročné údaje  | narodení obce
+nu2052qs  | Zdroje HDP sezónne očistené v stálych cenách vypočítaných reťazením objemov - štvrťročne | narodení obce
+nu2054qs  | Disponibilný dôchodok v bežných cenách  | narodení obce
+nu2058qs  | Vývoz a dovoz výrobkov a služieb v bežných cenách  | narodení obce
+nu2060rs  | Spotreba fixného kapitálu podľa ekonomických činností (SK NACE Rev. 2) v reprodukčných cenách  | narodení obce
+nu2061rs  | Čistý stav dlhodobého majetku podľa ekonomických činností (SK NACE Rev. 2) v reprodukčných cenách  | narodení obce
+nu2062rs  | Hrubý stav dlhodobého majetku podľa ekonomických činností (SK NACE Rev. 2) v reprodukčných cenách  | narodení obce
+nu2063qs  | Tvorba a použitie dôchodkov v sektore domácností v bežných cenách - štvrťročné údaje - sezónne očistené  | narodení obce
+nu3001rr  | Regionálny hrubý domáci produkt (v bežných cenách)  | narodení obce
+nu3002rr  | Regionálny hrubý domáci produkt na obyvateľa (v bežných cenách)  | narodení obce
+nu3003rr  | Regionálna zamestnanosť a zamestnanci | narodení obce
+nu3005rr  | Účet rozdelenia prvotných dôchodkov domácností  | narodení obce
+nu3006rr  | Účet rozdelenia druhotných dôchodkov domácností  | narodení obce
+nu3007rr  | Hrubá pridaná hodnota  | narodení obce
+nu3008rr  | Tvorba hrubého fixného kapitálu  | narodení obce
+nu3801rr  | Regionálna produktivita práce v bežných cenách podľa SK NACE Rev.2 - ročne  | narodení obce
+nu3802rr  | Regionálna produktivita práce v stálych cenách (rovnaké obdobie minulého roku=100) - ročne  | narodení obce
+nu3803rr  | Regionálny hrubý domáci produkt v stálych cenách vypočítaných reťazením objemov – ročne | narodení obce
+nu3804rr  | Regionálna zamestnanosť, odpracované hodiny a odmeny zamestnancov | narodení obce
+ob0001ms  | Predaj a oprava motorových vozidiel (do roku 2023) (Tržby za vlastné výkony a tovar) | narodení obce
+ob0002ms  | Predaj a oprava motorových vozidiel (Tržby za vlastné výkony a tovar) | narodení obce
+ob0003ms  | Veľkoobchod okrem motorových vozidiel (Tržby za vlastné výkony a tovar)  | narodení obce
+ob0004ms  | Maloobchod okrem motorových vozidiel (Tržby za vlastné výkony a tovar) | narodení obce
+ob0005ms  | Ubytovanie (Tržby za vlastné výkony a tovar) | narodení obce
+ob0006ms  | Činnosti reštaurácií a pohostinstiev (Tržby za vlastné výkony a tovar) | narodení obce
+ob0101ms  | Veľkoobchod okrem motorových vozidiel (do roku 2023) (Tržby za vlastné výkony a tovar)  | narodení obce
+ob0201ms  | Maloobchod okrem motorových vozidiel (do roku 2023) (Tržby za vlastné výkony a tovar) | narodení obce
+ob0301ms  | Ubytovanie (do roku 2023) (Tržby za vlastné výkony a tovar) | narodení obce
+ob0401ms  | Činnosti reštaurácií a pohostinstiev (do roku 2023) (Tržby za vlastné výkony a tovar) | narodení obce
+ob1001ms  | Tržby za vlastné výkony a tovar za vnútorný obchod, ubytovacie a stravovacie služby podľa SK NACE Rev. 2 (do r | narodení obce
+ob1002qs  | Priemerná nominálna mesačná mzda zamestnanca v obchode, hoteloch a reštauráciách - štvrťročne | narodení obce
+ob1003qs  | Priemerný počet zamestnaných osôb v obchode, hoteloch a reštauráciách - štvrťročne | narodení obce
+ob1004qs  | Tržby za vlastné výkony a tovar v obchode, hoteloch a reštauráciách - štvrťročne | narodení obce
+ob1005rs  | Vybrané ukazovatele za ubytovacie a stravovacie služby (SK NACE Rev. 2) - ročne | narodení obce
+ob1006rs  | Vybrané ukazovatele za vnútorný obchod - ročne | narodení obce
+ob1801ms  | Špecifické štruktúry maloobchodu - mesačne | narodení obce
+ob1802ms  | Tržby za vlastné výkony a tovar za vnútorný obchod, ubytovacie a stravovacie služby podľa SK NACE Rev. 2 | narodení obce
+ob1803ms  | Priemerná nominálna mesačná mzda zamestnanca v obchode, hoteloch a reštauráciách - mesačne | narodení obce
+ob1804ms  | Priemerný počet zamestnaných osôb v obchode, hoteloch a reštauráciách - mesačne | narodení obce
+ob2002qs  | Priemerná nominálna mesačná mzda zamestnanca v obchode, hoteloch a reštauráciách - štvrťročné údaje (do roku 2 | narodení obce
+ob2003ms  | Priemerná nominálna mesačná mzda zamestnanca v obchode, hoteloch a reštauráciách - mesačne (do roku 2023) | narodení obce
+ob2005qs  | Priemerný počet zamestnaných osôb v obchode, hoteloch a reštauráciách - štvrťročné údaje (do roku 2023) | narodení obce
+ob2006ms  | Priemerný počet zamestnaných osôb v obchode, hoteloch a reštauráciách - mesačne (do roku 2023) | narodení obce
+ob2008qs  | Tržby za vlastné výkony a tovar v obchode, hoteloch a reštauráciách - štvrťročné údaje (do roku 2023) | narodení obce
+ob2801rs  | Vybrané ukazovatele za ubytovacie a stravovacie služby (SK NACE Rev. 2) (do roku 2022) | narodení obce
+ob2802rs  | Vybrané ukazovatele za vnútorný obchod (do roku 2022) | narodení obce
+ob3002rr  | Tržby za vlastné výkony a tovar v maloobchode na 1 obyvateľa podľa SK NACE Rev.2 - ročne (do roku 2022) | narodení obce
+ob3003rr  | Tržby za vlastné výkony a tovar za ubytovacie a stravovacie služby SK NACE Rev. 2 - ročne (do roku 2022) | narodení obce
+ob3006rr  | Tržby za vlastné výkony a tovar v maloobchode na 1 obyvateľa podľa SK NACE Rev.2 - ročne  | narodení obce
+ob3007rr  | Tržby za vlastné výkony a tovar za ubytovacie a stravovacie služby SK NACE Rev. 2  | narodení obce
+ob3008rr  | Produkcia trhových tovarov a služieb podľa SK NACE Rev. 2  | narodení obce
+ob3801rr  | Produkcia trhových tovarov a služieb podľa SK NACE Rev. 2 - ročne (do roku 2022) | narodení obce
+ob3802rr  | Sieť maloobchodu veľkých podnikov s 20 a viac zamestnancami v SR  | narodení obce
+ob3803rr  | Sieť pohostinstva veľkých podnikov za 20 a viac zamestnancov  | narodení obce
+od0007ms  | Indexy zamestnanosti vo vybraných odvetviach - mesačne | narodení obce
+od0008ms  | Priemerná mesačná mzda vo vybraných odvetviach - mesačne | narodení obce
+od0009ms  | Indexy nominálnej mesačnej mzdy vo vybraných odvetviach - mesačne | narodení obce
+od0010ms  | Indexy reálnej mesačnej mzdy vo vybraných odvetviach - mesačne | narodení obce
+od0011ms  | Indexy tržieb za vlastné výkony a tovar vo vybraných odvetviach - mesačne | narodení obce
+od0012ms  | Index celkovej trhovej produkcie - TMPI (sezónne a kalendárne očistené) - mesačne | narodení obce
+od0013ms  | Kumulovaný index celkovej trhovej produkcie - TMPI (sezónne a kalendárne očistené) - mesačne | narodení obce
+od0014ms  | Index celkovej trhovej produkcie TMPI - vývoj z hľadiska podielu jednotlivých odvetví - mesačne | narodení obce
+od0015ms  | Kumulovaný index celkovej trhovej produkcie TMPI - vývoj z hľadiska podielu jednotlivých odvetví - mesačne | narodení obce
+og1005rs  | Inštitucionálne jednotky podľa ESNÚ 2010 a Štatistickej klasifikácie ekonomických činností k 31. 12.   | narodení obce
+og1006rs  | Ekonomické subjekty v RO podľa vybraných právnych foriem a Štatistickej klasifikácie ekonomických činností k 3 | narodení obce
+og1007rs  | Ekonomické subjekty v RO podľa vybraných právnych foriem a kategórie počtu zamestnancov k 31. 12.  | narodení obce
+og1008rs  | Inštitucionálne jednotky v RO podľa ESA2010 a veľkostnej kategórie počtu zamestnancov k 31. 12.  | narodení obce
+og1009qs  | Ekonomické subjekty podľa právnych foriem a ekonomických činností (NACE Rev. 2.1) | narodení obce
+og1010qs  | Ekonomické subjekty v RO podľa ekonomických činností (NACE Rev. 2.1) a inštitucionálnych sektorov ESA 2010 | narodení obce
+og1011qs  | Ekonomické subjekty podľa právnych foriem, ekonomických činností (NACE Rev. 2.1) a veľkostnej kategórie počtu  | narodení obce
+og1801rs  | Percento zánikov podnikov k aktívnym podnikom v SR podľa SK NACE Rev. 2 a veľkostnej kategórie počtu zamestnan | narodení obce
+og1802rs  | Percento vznikov podnikov k aktívnym podnikom v SR podľa SK NACE Rev. 2 a veľkostnej kategórie počtu zamestnan | narodení obce
+og1803rs  | Zániky podnikov v SR podľa SK NACE Rev. 2 a veľkostnej kategórie počtu zamestnancov  | narodení obce
+og1804rs  | Vzniky podnikov v SR podľa SK NACE Rev. 2 a veľkostnej kategórie počtu zamestnancov  | narodení obce
+og2015rs  | Ekonomické subjekty SR v RO podľa právnych foriem  | narodení obce
+og2019qs  | Ekonomické subjekty podľa právnych foriem  | narodení obce
+og2020qs  | Ekonomické subjekty v RO podľa inštitucionálnych sektorov ESA 2010 a veľkostnej kategórie počtu zamestnancov  | narodení obce
+og2021qs  | Ekonomické subjekty podľa právnych foriem a ekonomických činností (SK NACE Rev. 2)  | narodení obce
+og2022qs  | Ekonomické subjekty v RO podľa ekonomických činností (SK NACE Rev. 2) a inštitucionálnych sektorov ESA 2010  | narodení obce
+og2023qs  | Ekonomické subjekty podľa právnych foriem, ekonomických činností (SK NACE Rev. 2) a veľkostnej kategórie počtu | narodení obce
+og2024rs  | Zahraničné multinárodné skupiny podnikov podľa najčasteších krajín kontroly skupiny  | narodení obce
+og2025rs  | Počty a podiel skupín podnikov podľa typu skupiny a veľkostnej kategórie podľa počtu právnych jednotiek v skup | narodení obce
+og3701rr OBCE | Počet ekonomických lokálnych jednotiek - mestá  | narodení obce
+og3801rr  | Živnostníci podľa vybraných ekonomických činností (SK NACE Rev. 2) k 31. 12.  | narodení obce
+og3802rr  | Podniky podľa vybraných druhov vlastníctva k 31. 12.  | narodení obce
+og3803rr  | Podniky podľa ekonomických činností (SK NACE Rev. 2) k 31. 12.  | narodení obce
+og3804rr  | Právnické osoby podľa vybraných právnych foriem k 31.12.  | narodení obce
+og3805rr OBCE | Právnické osoby za obce SR k 31.12.  | narodení obce
+og3806rr  | Podniky podľa veľkostnej kategórie počtu zamestnancov k 31.12.  | narodení obce
+og3808rr OBCE | Fyzické osoby - podnikatelia podľa právnych foriem za obce SR k 31.12.  | narodení obce
+om1401rs  | 3.4.2 Miera úmrtnosti v dôsledku samovraždy  | narodení obce
+om2003rs  | Prisťahovaní na trvalý pobyt na územie SR podľa krajiny predchádzajúceho pobytu veku a pohlavia  | narodení obce
+om2004rs  | Strata štátneho občianstva SR podľa nového štátneho občianstva a pohlavia  | narodení obce
+om2006rs  | Udelenie štátneho občianstva SR podľa predchádzajúceho štátneho občianstva, veku a pohlavia  | narodení obce
+om2009rs  | Charakteristiky vývoja obyvateľstva  | narodení obce
+om2017rs  | Rodinný stav obyvateľstva podľa pohlavia a 5-ročných vekových skupín  | narodení obce
+om2018rs  | Rodinný stav obyvateľstva podľa pohlavia  | narodení obce
+om2019rs  | Stav obyvateľstva  | narodení obce
+om2020rs  | Stredná dĺžka života podľa pohlavia pre 5-ročné vekové skupiny  | narodení obce
+om2021rs  | Stredná dĺžka života podľa pohlavia pre jednotky veku  | narodení obce
+om2023rs  | Vekové zloženie obyvateľstva SR podľa pohlavia a 5-ročných vekových skupín  | narodení obce
+om2024rs  | Vekové zloženie obyvateľstva SR podľa pohlavia a veku  | narodení obce
+om2801ms  | Vybrané ukazovatele pohybu obyvateľstva v SR  | narodení obce
+om3002rr OBCE | Počet obcí a miest  | narodení obce
+om3003tr  | Zomrelí podľa vekových skupín a pohlavia - SR-oblasť-kraj (týždenne)  | narodení obce
+om3401rr  | 3.2.1 Miera úmrtnosti detí mladších ako 5 rokov  | narodení obce
+om3402rr  | 3.2.2 Miera novorodeneckej úmrtnosti  | narodení obce
+om3403rr  | 3.6.1 Miera úmrtnosti na cestách v dôsledku dopravných nehôd  | narodení obce
+om3404rr  | 16.9.1 Podiel detí mladších ako 5 rokov, ktorých narodenie bolo zaregistrované štátnym orgánom  | narodení obce
+om3405rr  | 3.1.1 Miera materskej úmrtnosti  | narodení obce
+om3406rr  | 3.7.2 Miera pôrodnosti adolescentov (vo veku 10 -14 rokov, vo veku 15 – 19 rokov) na 1 000 žien v tejto vekove | narodení obce
+om3701rr OBCE | Populácia k 1. januáru - mestá  | narodení obce
+om3702rr  | Populácia k 1. januáru - funkčné mestské oblasti  | narodení obce
+om3703rr OBCE | Vybrané ukazovatele veku k 1. januáru - mestá  | narodení obce
+om3704rr  | Vybrané ukazovatele veku k 1. januáru - funkčné mestské oblasti  | narodení obce
+om3705rr OBCE | Obyvateľstvo podľa občianstva a krajiny narodenia - mestá  | narodení obce
+om3706rr  | Obyvateľstvo podľa občianstva a krajiny narodenia - funkčné mestské oblasti  | narodení obce
+om3707rr OBCE | Vybrané ukazovatele pohybu obyvateľstva – mestá  | narodení obce
+om3708rr  | Vybrané ukazovatele pohybu obyvateľstva – funkčné mestské oblasti  | narodení obce
+om3801mr  | Zomretí podľa mesiaca úmrtia, veku, pohlavia a príčiny smrti - SR-oblasť-kraj (mesačne)  | narodení obce
+om3802rr  | Stredná dĺžka života pri narodení  | narodení obce
+om3803rr  | Miera plodnosti podľa veku matky, NUTS 2  | narodení obce
+om3804rr  | Stredná dĺžka života podľa pohlavia a veku, NUTS 2  | narodení obce
+om7001rr  | Bilancia podľa krajiny narodenia a pohlavia - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7002rr  | Bilancia podľa národnosti a pohlavia - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7003rr  | Bilancia podľa štátneho občianstva a pohlavia - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7004rr  | Bilancia podľa rodinného stavu, pohlavia a veku - SR, oblasti, kraje  | narodení obce
+om7006rr OBCE | Vekové skupiny - SR-oblasť-kraj-okres-obec, m-v  | narodení obce
+om7008rr OBCE | Vekové zloženie - SR-oblasť-kraj-okres-obec, m-v  | narodení obce
+om7010rr OBCE | Prehľad stavu a pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v  | narodení obce
+om7012rr OBCE | Prehľad stavu a pohybu obyvateľstva podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v  | narodení obce
+om7014rr OBCE | Hustota obyvateľstva - SR-oblasť-kraj-okres-obec, m-v  | narodení obce
+om7017rr  | Narodení podľa pohlavia, hmotnosti, legitimity a vitality - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7019rr  | Potraty  podľa druhu - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7021rr  | Prisťahovaní a vysťahovaní - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7022rr OBCE | Veľkostné skupiny obcí - SR-oblasť-kraj-okres-obec, m-v  | narodení obce
+om7024rr  | Sobáše podľa rodinného stavu snúbencov a trvalého pobytu ženícha - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7025rr  | Sobáše podľa veku snúbencov a trvalého pobytu muža a ženy - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7026rr  | Priemerný vek snúbencov pri sobáši - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7027rr  | Podiel snúbencov-mužov podľa rodinného stavu - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7028rr  | Podiel snúbencov-žien podľa rodinného stavu - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7029rr  | Živonarodení podľa poradia - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7030rr  | Živorodičky podľa veku - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7031rr  | Priemerné veky matky pri pôrode - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7032rr  | Potraty podľa veku a trvalého pobytu ženy - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7033rr  | Priemerné veky ženy pri potrate - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7034rr  | Zomrelí podľa veku a pohlavia - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7035rr  | Zomrelí podľa príčiny smrti, pohlavia a trvalého pobytu - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7036rr  | Zomrelí podľa príčin smrti veku a pohlavia - SR-kraj-okres  | narodení obce
+om7037rr  | Pitvaní a podiel pitvaných podľa príčin smrti  | narodení obce
+om7038rr  | Priemerný vek osoby pri úmrtí podľa pohlavia - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7039rr  | Rozvody podľa dĺžky trvania manželstva a trvalého pobytu manželov - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7040rr  | Rozvody manželstiev s maloletými deťmi podľa trvalého pobytu manželov - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7041rr  | Rozvody podľa príčin rozvratu, pohlavia a trvalého pobytu manželov - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7042rr  | Rozvody podľa veku manželov - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7043rr  | Priemerná dĺžka trvania rozvedeného manželstva - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7044rr  | Priemerný vek manželov pri rozvode - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7045rr  | Priemerný počet maloletých detí v rozvedenom manželstve - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7046rr  | Sťahovanie podľa druhu, pohlavia a trvalého pobytu - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7047rr  | Migračné saldo medzi krajmi SR - SR, kraje  | narodení obce
+om7048rr  | Objem vnútorného sťahovanie medzi krajmi SR - SR, kraje  | narodení obce
+om7049rr  | Vnútorné sťahovanie medzi krajmi SR - SR, kraje  | narodení obce
+om7050rr  | Vnútorné sťahovanie medzi okresmi v krajoch SR - SR, kraje, okresy  | narodení obce
+om7051rr  | Zahraničné sťahovanie podľa pohlavia a krajiny sťahovania - SR  | narodení obce
+om7052rr OBCE | Indexy vekového zloženia - SR-oblasť-kraj-okres-obec, m-v  | narodení obce
+om7053rr  | Sobáše podľa rodinného stavu snúbencov a trvalého pobytu nevesty - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7054rr  | Bilancia podľa vzdelania, pohlavia a vekových skupín - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7055rr  | Bilancia podľa vzdelania, pohlavia a veku - SR-oblasť-kraj-okres, m-v  | narodení obce
+om7056rs  | Obyvateľstvo podľa pohlavia, veku, krajiny narodenia a indexu ľudského rozvoja | narodení obce
+om7057rs  | Obyvateľstvo podľa pohlavia, veku, štátneho občianstva a indexu ľudského rozvoja | narodení obce
+om7101mr OBCE | Počet obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (mesačne)  | narodení obce
+om7101qr OBCE | Počet obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (štvrťročne) | narodení obce
+om7101rr OBCE | Počet obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (ročne)  | narodení obce
+om7103mr OBCE | Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (mesačne)  | narodení obce
+om7103qr OBCE | Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (štvrťročne)  | narodení obce
+om7103rr OBCE | Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (ročne)  | narodení obce
+om7105mr OBCE | Prírastok obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (mesačne) | narodení obce
+om7105qr OBCE | Prírastok obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (štvrťročne)  | narodení obce
+om7105rr OBCE | Prírastok obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (ročne) | narodení obce
+om7801rr OBCE | SODB - Obyvateľstvo podľa pohlavia a charakteristík veku | narodení obce
+om7802rr OBCE | SODB - Obyvateľstvo podľa pohlavia, veku a vekových skupín  | narodení obce
+om7803rr OBCE | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a ekonomickej aktivity | narodení obce
+om7804rr OBCE | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a materinského jazyka | narodení obce
+om7805rr OBCE | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a náboženského vyznania | narodení obce
+om7806rr OBCE | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a národnosti | narodení obce
+om7807rr OBCE | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a štátnej príslušnosti | narodení obce
+om7808rr OBCE | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a rodinného stavu | narodení obce
+om7809rr OBCE | SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a vzdelania | narodení obce
+om7810rr OBCE | SODB - Obyvateľstvo podľa veľkostných skupín obcí | narodení obce
+om7811rr OBCE | SODB - Domy podľa typu a kanalizačného systému  | narodení obce
+om7812rr OBCE | SODB - Domy podľa typu a materiálu nosnej konštrukcie  | narodení obce
+om7813rr OBCE | SODB - Domy podľa typu a obdobia výstavby alebo rekonštrukcie  | narodení obce
+om7814rr OBCE | SODB - Domy podľa typu a formy vlastníctva  | narodení obce
+om7815rr OBCE | SODB - Domy podľa typu a plynovej prípojky  | narodení obce
+om7816rr OBCE | SODB - Domy podľa typu a vodovodnej prípojky  | narodení obce
+om7817rr OBCE | SODB - Byty podľa zdroja energie na vykurovanie a typu domu | narodení obce
+om7818rr OBCE | SODB - Byty podľa počtu obytných miestnosti a typu domu | narodení obce
+om7819rr OBCE | SODB - Byty podľa formy vlastníctva a typu domu  | narodení obce
+om7820rr OBCE | SODB - Byty podľa celkovej podlahovej plochy a typu domu    | narodení obce
+om7821rr OBCE | SODB - Byty podľa typu kúrenia a typu domu  | narodení obce
+om7822rr OBCE | SODB - Cenzové domácnosti podľa typu a počtu členov | narodení obce
+om7823rr OBCE | SODB - Cenzové domácnosti podľa typu a počtu detí | narodení obce
+om7824rr OBCE | SODB - Cenzové domácnosti podľa typu a počtu závislých detí  | narodení obce
+om7901rs  | Sobáše podľa pohlavia rod. stavu a doby od zániku predch. manželstva | narodení obce
+om7902rs  | B5 Sobáše podľa rodinného stavu a veku nevesty | narodení obce
+om7903rs  | B5 Sobáše podľa veku ženícha | narodení obce
+om7904rs  | B5 Sobáše podľa veku nevesty | narodení obce
+om7905rs  | B5 Sobáše podľa rodinného stavu a veku ženícha | narodení obce
+om7907rs  | B10 Sobáše podľa vzájomného vzdelania snúbencov | narodení obce
+om7908rs  | B11 Sobáše podľa pohlavia vek. skup.  a vzdelania snúbencov | narodení obce
+om7909rs  | B12 Sobáše podľa vzájomných národnosti snúbencov | narodení obce
+om7910rs  | B15 Sobáše podľa pohlavia rod. stavu vek. skup. a poradia manželstva | narodení obce
+om7911rs  | Vekove zlozenie obyvateľstva podľa pohlavia | narodení obce
+om7921rs  | Živonarodení podľa veku matky | narodení obce
+om7922rs  | Narodení podľa legitimity, poradia a veku matky | narodení obce
+om7924rs  | Narodení podľa doby uplynulej od sobáša | narodení obce
+om7925rs  | Narodení podľa doby od predch.  pôrodu | narodení obce
+om7931rs  | Zomreli do 1 roka podľa pohlavia a veku | narodení obce
+om7933rs  | Zomreli podľa pohlavia, veku a vekových skupín | narodení obce
+om7935rs  | Zomreli podľa pohlavia, veku a vzdelania | narodení obce
+om7936rs  | Zomreli podľa pohlavia, veku a príčinny úmrtia | narodení obce
+om7941rs  | Rozvody podľa dĺžky trvania manželstva | narodení obce
+om7942rs  | Rozvody podľa pohlavia a veku | narodení obce
+om7943rs  | Rozvody podľa dĺžky manželstva, pohlavia a vek. skup. muža a ženy | narodení obce
+om7944rs  | Rozvody podľa vzdelania manželov | narodení obce
+om7945rs  | Rozvody podľa národnosti manželov | narodení obce
+om7951rs  | Potraty podľa druhu a veku ženy | narodení obce
+om7952rs  | Umele potraty podľa rodinného stavu a veku ženy | narodení obce
+om7953rs  | Umele potraty podľa poradia rod. stav a veku ženy | narodení obce
+om7954rs  | Umele potraty podľa rodinného stavu a veku ženy a poctu deti | narodení obce
+om7955rs  | Potraty podľa druhu a veku plodu v týždňoch | narodení obce
+om7961rs  | Zahraničné sťahovanie podľa pohlavia a veku | narodení obce
+om7962rs  | Vnútorné sťahovanie podľa vel. skup. obci | narodení obce
+om7963rs  | Vnútorné sťahovanie podľa druhu | narodení obce
+om7971rs  | Vekove zlozenie obyv. podľa pohlavia a rod. stavu ku dnu sčítania | narodení obce
+om7972rs  | Vekove zlozenie žien podľa poctu deti ku dnu sčítania | narodení obce
+pl1003rs  | Hrubá rastlinná produkcia podľa komodít - ročne | narodení obce
+pl1004rs  | Hrubá živočíšna produkcia podľa komodít - ročne | narodení obce
+pl2001rs  | Výmera pôdy, prírastky a úbytky pôdy  | narodení obce
+pl2003rs  | Úroda poľnohospodárskych plodín  | narodení obce
+pl2004rs  | Využitie pôdy  | narodení obce
+pl2005rs  | Druhové zloženie lesov k 31. 12.  | narodení obce
+pl2006rs  | Jarný kmeňový stav a lov zveri  | narodení obce
+pl2007rs  | Lesný pôdny fond a porastová pôda  | narodení obce
+pl2008rs  | Priemerné náklady vybraných výkonov hlavných lesníckych činností  | narodení obce
+pl2010rs  | Ťažba a dodávky dreva  | narodení obce
+pl2011rs  | Údaje o poľovných revíroch k 31. 12.  | narodení obce
+pl2012rs  | Vybrané finančné a ekonomické ukazovatele v lesnom hospodárstve SR  | narodení obce
+pl2013rs  | Zalesňovanie a pestovanie lesa  | narodení obce
+pl2014rs  | Mechanizačné prostriedky k 31. 12.  | narodení obce
+pl2015rs  | Reprodukcia, výroba a úžitkovosť v chove hovädzieho dobytka, ošípaných a hydiny  | narodení obce
+pl2016rs  | Stavy hospodárskych zvierat k 31.12.  | narodení obce
+pl2017rs  | Ekonomický poľnohospodársky účet v bežných cenách  | narodení obce
+pl2018rs  | Hrubá rastlinná produkcia podľa komodít (do roku 2022) | narodení obce
+pl2019rs  | Hrubá živočíšna produkcia podľa komodít (do roku 2022) | narodení obce
+pl2020rs  | Výlov rýb vo vnútrozemských vodách  | narodení obce
+pl2021rs  | Zamestnanci a mzdy podľa hlavných profesií v poľnohospodárstve  | narodení obce
+pl2022rs  | Spotreba prípravkov na ochranu rastlín  | narodení obce
+pl3001rr  | Hektárové úrody vybraných poľnohospodárskych plodín  | narodení obce
+pl3003rr  | Stavy hospodárskych zvierat (od roku 2012)  | narodení obce
+pl3004rr  | Intenzita chovu hospodárskych zvierat  | narodení obce
+pl3007rr  | Úroda poľnohospodárskych plodín - detailné dáta - ročne | narodení obce
+pl3008rr  | Osiata plocha ozimín - ročne | narodení obce
+pl3009rr  | Štruktúra a vek vinohradov - ročne | narodení obce
+pl3010rr  | Úroda konzumnej zeleniny - ročne | narodení obce
+pl3011rr  | Viacročné kultúry - ročne | narodení obce
+pl3012rr  | Zavlažovanie - ročne | narodení obce
+pl3013rr  | Bilancia plodín - polročne | narodení obce
+pl3014rr  | Bilancia plodín - prírastky - polročne | narodení obce
+pl3015rr  | Bilancia plodín - úbytky - polročne | narodení obce
+pl3801rr  | Hrubá poľnohospodárska produkcia z hrubého obratu  | narodení obce
+pl3802rr  | Tržby za predaj poľnohospodárskych výrobkov z prvovýroby  | narodení obce
+pl3803rr  | Počet fariem podľa typu a triedy ekonomickej veľkosti  | narodení obce
+pl3804rr  | Počet fariem podľa veľkosti obhospodarovanej pôdy  | narodení obce
+pl3805rr  | Triedenie fariem podľa počtu zvierat k 31.10.  | narodení obce
+pl5001rr OBCE | Výmera územia, využitie pôdy  | narodení obce
+pm0001ms  | Tržby za vlastné výkony a tovar podľa SK NACE Rev. 2 (do roku 2023) - mesačne | narodení obce
+pm0002ms  | Nové objednávky podľa SK NACE Rev. 2 - mesačne (do roku 2023) | narodení obce
+pm0003ms  | Podiel priemyselných odvetví podľa príspevkov v percentuálnych bodoch na celkovom indexe za priemysel (do roku | narodení obce
+pm0004ms  | Priemyselná produkcia (priemerný mesiac roku 2015=100) - očistená - (do roku 2023) - mesačne  | narodení obce
+pm0005ms  | Priemyselná produkcia (priemerný mesiac roku 2015=100) - neočistená - (do roku 2023) - mesačne  | narodení obce
+pm0006ms  | Priemyselná produkcia (rovnaké obdobie minulého roku=100) - očistená - (do roku 2023) - mesačne  | narodení obce
+pm0007ms  | Priemyselná produkcia (rovnaké obdobie minulého roku=100) - neočistená - (do roku 2023) - mesačne  | narodení obce
+pm0008ms  | Indexy za zamestnanosť (priemerný mesiac roku 2015=100) - mesačne (do roku 2023) | narodení obce
+pm0009ms  | Indexy za priemernú mesačnú mzdu (priemerný mesiac roku 2015=100) - mesačne (do roku 2023) | narodení obce
+pm0010ms  | Indexy za počet odpracovaných hodín zamestnancami (priemerný mesiac roku 2015=100) - mesačne (do roku 2023) | narodení obce
+pm0038ms  | Tržby za vlastné výkony a tovar v priemysle podľa SK NACE Rev. 2 (medziročný index) - mesačne | narodení obce
+pm0039ms  | Priemyselná produkcia - vývoj z hľadiska podielu jednotlivých odvetví - mesačne | narodení obce
+pm0040ms  | Priemyselná produkcia (bázický index, očistené) - mesačne | narodení obce
+pm0041ms  | Priemyselná produkcia (bázický index, neočistené) - mesačne | narodení obce
+pm0042ms  | Priemyselná produkcia (medziročný index, očistené) - mesačne | narodení obce
+pm0043ms  | Priemyselná produkcia (medziročný index, neočistené) - mesačne | narodení obce
+pm0045ms  | Indexy za zamestnanosť v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne | narodení obce
+pm0046ms  | Indexy za priemernú mesačnú mzdu v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne | narodení obce
+pm0047ms  | Indexy za počet odpracovaných hodín zamestnancami v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne  | narodení obce
+pm0048ms  | Cenové indexy priemyselných výrobcov tuzemsko podľa SK NACE Rev. 2 (bázický index) - mesačne  | narodení obce
+pm0049ms  | Indexy tržieb za vlastné výkony a tovar v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne | narodení obce
+pm0050ms  | Indexy tržieb za vlastné výkony a tovar v tuzemsku v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne | narodení obce
+pm0051ms  | Indexy tržieb z predaja do zahraničia v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne | narodení obce
+pm0052ms  | Indexy tržieb z predaja do zahraničia do krajín Eurozóny v priemysle podľa SK NACE Rev. 2 (bázický index) - me | narodení obce
+pm0053ms  | Indexy tržieb z predaja do zahraničia do krajín mimo Eurozóny v priemysle podľa SK NACE Rev. 2 (bázický index) | narodení obce
+pm0054ms  | Indexy za nové objednávky v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne  | narodení obce
+pm0055ms  | Indexy za nové objednávky v tuzemsku v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne  | narodení obce
+pm0056ms  | Indexy za nové objednávky zo zahraničia v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne | narodení obce
+pm0057ms  | Indexy za nové objednávky z krajín Eurozóny v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne  | narodení obce
+pm0058ms  | Indexy za nové objednávky z krajín mimo Eurozóny v priemysle podľa SK NACE Rev. 2 (bázický index) - mesačne  | narodení obce
+pm0059ms  | Nové objednávky v priemysle podľa SK NACE Rev. 2 - mesačne | narodení obce
+pm0060ms  | Nové objednávky v priemysle - vývoj z hľadiska podielu jednotlivých odvetví - mesačne | narodení obce
+pm1005qs  | Priemerná nominálna mesačná mzda zamestnanca v priemysle podľa SK NACE Rev. 2 - štvrťročne | narodení obce
+pm1006qs  | Priemerný počet zamestnaných osôb v priemysle podľa SK NACE Rev. 2 - štvrťročne | narodení obce
+pm1007qs  | Produktivita práce z tržieb v priemysle podľa SK NACE Rev. 2 - štvrťročne | narodení obce
+pm1008qs  | Tržby za vlastné výkony a tovar v priemysle podľa SK NACE Rev. 2 - štvrťročne | narodení obce
+pm1009qs  | Priemyselná produkcia podľa SK NACE Rev. 2 - štvrťročne  | narodení obce
+pm1010rs  | Vybrané ukazovatele priemyselných podnikov podľa SK NACE Rev. 2 - ročne | narodení obce
+pm1011rs  | Zamestnanci, mzda a produktivita práce za podniky s 20 a viac zamestnancami podľa SK NACE Rev. 2 - ročne  | narodení obce
+pm1012rs  | Vybrané finančné ukazovatele za podniky s 20 a viac zamestnancami podľa SK NACE Rev. 2 - ročne  | narodení obce
+pm1013rs  | Vybrané ukazovatele priemyselných závodov za podniky s 20 a viac zamestnancami podľa SK NACE Rev. 2 - ročne  | narodení obce
+pm1014rs  | Priemyselná produkcia podľa MIG - ročne | narodení obce
+pm1801ms  | Priemyselná produkcia podľa MIG (priemerný mesiac roku 2015=100) - očistená - mesačne (do roku 2023) | narodení obce
+pm1802ms  | Priemyselná produkcia podľa MIG (priemerný mesiac roku 2015=100) - neočistená - mesačne (do roku 2023) | narodení obce
+pm1803ms  | Priemyselná produkcia podľa MIG (rovnaké obdobie minulého roku=100) - očistená - mesačne (do roku 2023) | narodení obce
+pm1804ms  | Priemyselná produkcia podľa MIG (rovnaké obdobie minulého roku=100) - neočistená - mesačne (do roku 2023) | narodení obce
+pm1805ms  | Priemerná nominálna mzda zamestnanca v priemysle podľa SK NACE Rev. 2 - mesačne | narodení obce
+pm1806ms  | Priemerný počet zamestnaných osôb v priemysle podľa SK NACE Rev. 2 - mesačne | narodení obce
+pm1807ms  | Produktivita práce z tržieb v priemysle podľa SK NACE Rev. 2 - mesačne | narodení obce
+pm1808ms  | Priemyselná produkcia podľa MIG (priemerný mesiac roku 2021=100) - očistená - mesačne | narodení obce
+pm1809ms  | Priemyselná produkcia podľa MIG (priemerný mesiac roku 2021=100) - neočistená - mesačne  | narodení obce
+pm1810ms  | Priemyselná produkcia podľa MIG (rovnaké obdobie minulého roku=100) - očistená - mesačne  | narodení obce
+pm1811ms  | Priemyselná produkcia podľa MIG (rovnaké obdobie minulého roku=100) - neočistená - mesačne  | narodení obce
+pm2002qs  | Priemerná nominálna mesačná mzda zamestnanca podľa SK NACE Rev. 2 - štvrťročne (do roku 2023) | narodení obce
+pm2003ms  | Priemerná nominálna mesačná mzda zamestnanca podľa SK NACE Rev. 2 - mesačne (do roku 2023) | narodení obce
+pm2005qs  | Priemerný počet zamestnaných osôb podľa SK NACE Rev. 2 - štvrťročne (do roku 2023) | narodení obce
+pm2006ms  | Priemerný počet zamestnaných osôb podľa SK NACE Rev. 2 - mesačne (do roku 2023) | narodení obce
+pm2008qs  | Produktivita práce z tržieb za vlastné výkony a tovar podľa SK NACE Rev. 2 - štvrťročne (do roku 2023) | narodení obce
+pm2012qs  | Tržby za vlastné výkony a tovar v priemysle podľa SK NACE Rev. 2 - štvrťročne (do roku 2023) | narodení obce
+pm2014qs  | Priemyselná produkcia podľa SK NACE Rev. 2 - štvrťročne (do roku 2023) | narodení obce
+pm2016rs  | Priemyselná produkcia podľa MIG - ročne (do roku 2023) | narodení obce
+pm2901rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2005  | narodení obce
+pm2902rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2006  | narodení obce
+pm2903rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2007  | narodení obce
+pm2904rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2008  | narodení obce
+pm2905rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2009  | narodení obce
+pm2906rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2010  | narodení obce
+pm2907rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2011  | narodení obce
+pm2908rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2012  | narodení obce
+pm2909rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2013  | narodení obce
+pm2910rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2014  | narodení obce
+pm2911rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2015  | narodení obce
+pm2912rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2016  | narodení obce
+pm2913rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2017  | narodení obce
+pm2914rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2018  | narodení obce
+pm2915rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2019  | narodení obce
+pm2916rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2020  | narodení obce
+pm2917rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2021  | narodení obce
+pm2918rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2022  | narodení obce
+pm2919rs  | Výroba v rámci subdodávateľských operácií podľa zoznamu Prodslov v roku 2021  | narodení obce
+pm2920rs  | Výroba v rámci subdodávateľských operácií podľa zoznamu Prodslov v roku 2022  | narodení obce
+pm2921rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2023 | narodení obce
+pm2922rs  | Výroba v rámci subdodávateľských operácií podľa zoznamu Prodslov v roku 2023  | narodení obce
+pm2923rs  | Výroba a predaj vybraných priemyselných výrobkov podľa zoznamu Prodslov v roku 2024 | narodení obce
+pm2924rs  | Výroba v rámci subdodávateľských operácií podľa zoznamu Prodslov v roku 2024 | narodení obce
+pm3001rr  | Základné ukazovatele štatistiky priemyslu - ročne  | narodení obce
+pm3002rr  | Vybrané ukazovatele priemyselných závodov podľa SK NACE Rev. 2 - ročne  | narodení obce
+po3801rr  | Vybrané ukazovatele za pošty  | narodení obce
+pr0002qs  | Zamestnanosť podľa Výberového zisťovania pracovných síl (od roku 2021)  | narodení obce
+pr0101qs  | Nezamestnanosť podľa Výberového zisťovania pracovných síl (od roku 2021)  | narodení obce
+pr0203ms  | Indexy reálnej mesačnej mzdy vo vybraných odvetviach podľa mesiacov (do roku 2021) - mesačne  | narodení obce
+pr0204qs  | Priemerná mesačná mzda v hospodárstve SR | narodení obce
+pr0205qs  | Priemerná mesačná mzda podľa odvetví | narodení obce
+pr0901qs  | Nezamestnanosť podľa Výberového zisťovania pracovných síl (do roku 2020)  | narodení obce
+pr0902qs  | Zamestnanosť podľa Výberového zisťovania pracovných síl (do roku 2020)  | narodení obce
+pr1101rs  | Zamestnanci v podnikoch s 20 a viac zamestnancami podľa ekonomickej činnosti | narodení obce
+pr1401rs  | 8.6.1 Podiel mladých (vo veku 15 - 24 rokov) ktorí nepracujú ani sa nevzdelávajú  | narodení obce
+pr1402rs  | 8.5.2 Miera nezamestnanosti podľa pohlavia a zdravotného postihnutia  | narodení obce
+pr1801qs  | Miera zamestnanosti podľa veku, vzdelania a pohlavia – štvrťročne (od roku 2021) | narodení obce
+pr1802qs  | Miera nezamestnanosti a dlhodobej nezamestnanosti podľa veku, vzdelania a pohlavia - štvrťročne (od roku 2021) | narodení obce
+pr1803rs  | Potenciálna pracovná sila podľa veku a pohlavia - ročne (od roku 2021) | narodení obce
+pr2001rs  | Evidovaná nezamestnanosť na úradoch práce, sociálnych vecí a rodiny  | narodení obce
+pr2003qs  | Voľné pracovné miesta podľa ekonomických činností (SK NACE Rev.2), indexy a miera voľných pracovných miest - š | narodení obce
+pr2006rs  | Ekonomická aktivita obyvateľstva podľa pohlavia - ročne (od roku 2021) | narodení obce
+pr2007qs  | Ekonomická aktivita obyvateľstva podľa pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2008rs  | Ekonomicky aktívne obyvateľstvo podľa vekových skupín a pohlavia - ročne (od roku 2021) | narodení obce
+pr2009qs  | Ekonomicky aktívne obyvateľstvo podľa vekových skupín a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2010rs  | Ekonomicky aktívne obyvateľstvo podľa vzdelania a pohlavia - ročne (od roku 2021) | narodení obce
+pr2011qs  | Ekonomicky aktívne obyvateľstvo podľa vzdelania a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2012rs  | Ekonomicky neaktívne obyvateľstvo od 15 rokov podľa pohlavia - ročne (od roku 2021) | narodení obce
+pr2013qs  | Ekonomicky neaktívne obyvateľstvo od 15 rokov podľa pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2014rs  | Miera nezamestnanosti podľa vekových skupín a pohlavia - ročne (od roku 2021) | narodení obce
+pr2015qs  | Miera nezamestnanosti podľa vekových skupín a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2016rs  | Miera nezamestnanosti podľa vzdelania a pohlavia - ročne (od roku 2021) | narodení obce
+pr2017qs  | Miera nezamestnanosti podľa vzdelania a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2018rs  | Miera zamestnanosti podľa vekových skupín a pohlavia - ročne (od roku 2021) | narodení obce
+pr2019qs  | Miera zamestnanosti podľa vekových skupín a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2020rs  | Miera zamestnanosti vo veku 15-64 podľa vzdelania a pohlavia - ročne (od roku 2021) | narodení obce
+pr2021qs  | Miera zamestnanosti vo veku 15-64 podľa vzdelania a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2022rs  | Nezamestnaní podľa dĺžky trvania nezamestnanosti a pohlavia  - ročne (od roku 2021) | narodení obce
+pr2023qs  | Nezamestnaní podľa dĺžky trvania nezamestnanosti a pohlavia  - štvrťročne (od roku 2021)  | narodení obce
+pr2024rs  | Nezamestnaní podľa ekonomickej činnosti (SK NACE Rev. 2) posledného zamestnania a pohlavia - ročne (od roku 20 | narodení obce
+pr2025qs  | Nezamestnaní podľa ekonomickej činnosti (SK NACE Rev. 2) posledného zamestnania a pohlavia - štvrťročne (od ro | narodení obce
+pr2028rs  | Nezamestnaní podľa klasifikácie zamestnaní (SK ISCO-08) posledného zamestnania a pohlavia - ročne (od roku 202 | narodení obce
+pr2029qs  | Nezamestnaní podľa klasifikácie zamestnaní (SK ISCO-08) posledného zamestnania a pohlavia - štvrťročne (od rok | narodení obce
+pr2030rs  | Nezamestnaní podľa vekových skupín a pohlavia - ročne (od roku 2021) | narodení obce
+pr2031qs  | Nezamestnaní podľa vekových skupín a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2032rs  | Nezamestnaní podľa vzdelania a pohlavia - ročne (od roku 2021) | narodení obce
+pr2033qs  | Nezamestnaní podľa vzdelania a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2034rs  | Pracujúci podľa ekonomických činností (SK NACE Rev. 2) a pohlavia - ročne (od roku 2021) | narodení obce
+pr2035qs  | Pracujúci podľa ekonomických činností (SK NACE Rev. 2) a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2038rs  | Pracujúci podľa klasifikácie zamestnaní (SK ISCO-08) a pohlavia - ročne (od roku 2021) | narodení obce
+pr2039qs  | Pracujúci podľa klasifikácie zamestnaní (SK ISCO-08) a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2040rs  | Pracujúci podľa postavenia v zamestnaní a pohlavia - ročne (od roku 2021) | narodení obce
+pr2041qs  | Pracujúci podľa postavenia v zamestnaní a pohlavia - štvrťočne (od roku 2021)  | narodení obce
+pr2042rs  | Pracujúci podľa vekových skupín a pohlavia - ročne (od roku 2021) | narodení obce
+pr2043qs  | Pracujúci podľa vekových skupín a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2044rs  | Pracujúci podľa vzdelania a pohlavia - ročne (od roku 2021) | narodení obce
+pr2045qs  | Pracujúci podľa vzdelania a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2046rs  | Zamestnanci podľa ekonomických činností (SK NACE Rev. 2) a pohlavia - ročne (od roku 2021) | narodení obce
+pr2047qs  | Zamestnanci podľa ekonomických činností (SK NACE Rev. 2) a pohlavia  - štvrťročne (od roku 2021)  | narodení obce
+pr2048rs  | Zamestnanci podľa typu pracovného času a pohlavia - ročne (od roku 2021) | narodení obce
+pr2049qs  | Zamestnanci podľa typu pracovného času a pohlavia - štvrťročne (od roku 2021)  | narodení obce
+pr2051qs  | Priemerný počet zamestnaných osôb podľa ekonomických činností (SK NACE Rev. 2) | narodení obce
+pr2053qs  | Priemerný počet zamestnaných osôb podľa veľkostnej štruktúry podnikov | narodení obce
+pr2801qs  | Miera zamestnanosti podľa vekových skupín a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2802qs  | Miera zamestnanosti vo veku 15-64 podľa vzdelania a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2803qs  | Pracujúci podľa ekonomických činností (SK NACE Rev. 2) a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2804qs  | Pracujúci podľa klasifikácie zamestnaní (SK ISCO-08 ) a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2805qs  | Pracujúci podľa postavenia v zamestnaní a pohlavia - štvrťočne (do roku 2020)  | narodení obce
+pr2806qs  | Pracujúci podľa vekových skupín a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2807qs  | Pracujúci podľa vzdelania a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2808qs  | Zamestnanci podľa ekonomických činností (SK NACE Rev. 2) a pohlavia  - štvrťročne (do roku 2020)  | narodení obce
+pr2809qs  | Zamestnanci podľa typu pracovného času a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2810qs  | Miera nezamestnanosti podľa vekových skupín a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2811qs  | Miera nezamestnanosti podľa vzdelania a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2812qs  | Nezamestnaní podľa dĺžky trvania nezamestnanosti a pohlavia  - štvrťročne (do roku 2020)  | narodení obce
+pr2813qs  | Nezamestnaní podľa ekonomickej činnosti (SK NACE Rev. 2) posledného zamestnania a pohlavia - štvrťročne (do ro | narodení obce
+pr2814qs  | Nezamestnaní podľa klasifikácie zamestnaní (SK ISCO-08) posledného zamestnania a pohlavia - štvrťročne (do rok | narodení obce
+pr2815qs  | Nezamestnaní podľa vekových skupín a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2816qs  | Nezamestnaní podľa vzdelania a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2817qs  | Ekonomická aktivita obyvateľstva podľa pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2818qs  | Ekonomicky aktívne obyvateľstvo podľa vekových skupín a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2819qs  | Ekonomicky aktívne obyvateľstvo podľa vzdelania a pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2820qs  | Ekonomicky neaktívne obyvateľstvo od 15 rokov podľa pohlavia - štvrťročne (do roku 2020)  | narodení obce
+pr2821rs  | Ekonomická aktivita obyvateľstva podľa pohlavia - ročne (do roku 2020)  | narodení obce
+pr2822rs  | Ekonomicky aktívne obyvateľstvo podľa vekových skupín a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2823rs  | Ekonomicky aktívne obyvateľstvo podľa vzdelania a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2824rs  | Ekonomicky neaktívne obyvateľstvo od 15 rokov podľa pohlavia - ročne (do roku 2020)  | narodení obce
+pr2825rs  | Miera nezamestnanosti podľa vekových skupín a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2826rs  | Miera nezamestnanosti podľa vzdelania a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2827rs  | Miera zamestnanosti podľa vekových skupín a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2828rs  | Miera zamestnanosti vo veku 15-64 podľa vzdelania a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2829rs  | Nezamestnaní podľa dĺžky trvania nezamestnanosti a pohlavia  - ročne (do roku 2020)  | narodení obce
+pr2830rs  | Nezamestnaní podľa ekonomickej činnosti (SK NACE Rev. 2) posledného zamestnania a pohlavia - ročne (do roku 20 | narodení obce
+pr2831rs  | Nezamestnaní podľa klasifikácie zamestnaní (SK ISCO-08) posledného zamestnania a pohlavia - ročne (do roku 202 | narodení obce
+pr2832rs  | Nezamestnaní podľa vekových skupín a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2833rs  | Nezamestnaní podľa vzdelania a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2834rs  | Pracujúci podľa ekonomických činností (SK NACE Rev. 2) a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2835rs  | Pracujúci podľa klasifikácie zamestnaní (SK ISCO-08) a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2836rs  | Pracujúci podľa postavenia v zamestnaní a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2837rs  | Pracujúci podľa vekových skupín a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2838rs  | Pracujúci podľa vzdelania a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2839rs  | Zamestnanci podľa ekonomických činností (SK NACE Rev. 2) a pohlavia - ročne (do roku 2020)  | narodení obce
+pr2840rs  | Zamestnanci podľa typu pracovného času a pohlavia - ročne (do roku 2020)  | narodení obce
+pr3101rr  | Počet obyvateľov použitý vo VZPS (od roku 2021)  | narodení obce
+pr3102qr  | Bilancia ekonomickej aktivity obyvateľstva (od roku 2021)  | narodení obce
+pr3103qr  | Ekonomicky aktívne obyvateľstvo podľa vzdelania (od roku 2021)  | narodení obce
+pr3104qr  | Ekonomicky aktívne obyvateľstvo podľa veku (od roku 2021)  | narodení obce
+pr3105qr  | Krátkodobá migrácia za prácou do zahraničia (od roku 2021)  | narodení obce
+pr3108rr  | Miera evidovanej nezamestnanosti  | narodení obce
+pr3109qr  | Voľné pracovné miesta  | narodení obce
+pr3112qr  | Zamestnané osoby v hospodárstve SR | narodení obce
+pr3113rr  | Zamestnanci podľa ekonomickej činnosti zistení pracoviskovou metódou  | narodení obce
+pr3114rr  | Zamestnanci podľa zamestnania zistení pracoviskovou metódou  | narodení obce
+pr3115qr  | Pracujúci podľa veku (od roku 2021)  | narodení obce
+pr3116qr  | Pracujúci podľa vzdelania (od roku 2021)  | narodení obce
+pr3117qr  | Nezamestnaní podľa veku (od roku 2021)  | narodení obce
+pr3118qr  | Nezamestnaní podľa vzdelania (od roku 2021)  | narodení obce
+pr3701rr OBCE | Pracovný trh - mestá  | narodení obce
+pr3702rr  | Pracovný trh - funkčné mestské oblasti  | narodení obce
+pr3801rr  | Počet obyvateľov použitý vo VZPS (do roku 2020)  | narodení obce
+pr3802qr  | Bilancia ekonomickej aktivity obyvateľstva (do roku 2020)  | narodení obce
+pr3803qr  | Ekonomicky aktívne obyvateľstvo podľa vzdelania (do roku 2020)  | narodení obce
+pr3804qr  | Ekonomicky aktívne obyvateľstvo podľa veku (do roku 2020)  | narodení obce
+pr3805qr  | Krátkodobá migrácia za prácou do zahraničia (do roku 2020)  | narodení obce
+pr3806rr  | Uchádzači o zamestnanie znevýhodnení  | narodení obce
+pr3807rr  | Uchádzači o zamestnanie podľa pohlavia a veku  | narodení obce
+pr3815qr  | Pracujúci podľa veku (do roku 2020)  | narodení obce
+pr3816qr  | Pracujúci podľa vzdelania (do roku 2020)  | narodení obce
+pr3817qr  | Nezamestnaní podľa veku (do roku 2020)  | narodení obce
+pr3818qr  | Nezamestnaní podľa vzdelania (do roku 2020)  | narodení obce
+pr3819rr  | Miera zamestnanosti a podiel pracujúcich na kratší pracovný čas podľa veku, vzdelania a pohlavia– ročne (od ro | narodení obce
+pr3820rr  | Miera nezamestnanosti a dlhodobej nezamestnanosti podľa veku, vzdelania a pohlavia - ročne (od roku 2021) | narodení obce
+pr5001rr OBCE | Evidovaní uchádzači o zamestnanie  | narodení obce
+ps1002rs  | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa vekových skupín a pohlavia | narodení obce
+ps1003rs  | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa ekonomickej aktivity (vo veku 18 rokov a viac) | narodení obce
+ps1004rs  | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa príjmového kvintilu | narodení obce
+ps1005rs  | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa najvyššieho dosiahnutého vzdelania (vo veku 18 | narodení obce
+ps1006rs  | Miera rizika chudoby alebo sociálneho vylúčenia podľa občianstva (vo veku 18 rokov a viac) | narodení obce
+ps1007rs  | Miera rizika chudoby alebo sociálneho vylúčenia podľa krajiny narodenia (vo veku 18 rokov a viac) | narodení obce
+ps1008rs  | Miera rizika chudoby v členení podľa vekových skupín a pohlavia | narodení obce
+ps1009rs  | Miera rizika chudoby v členení podľa najčastejšieho statusu ekonomickej aktivity a pohlavia (osoby vo veku 18  | narodení obce
+ps1010rs  | Miera rizika chudoby v členení podľa najvyššieho dosiahnutého vzdelania (vo veku 18 rokov a viac) | narodení obce
+ps1011rs  | Miera rizika chudoby v členení podľa občianstva (vo veku 18 rokov a viac) | narodení obce
+ps1012rs  | Miera rizika chudoby podľa krajiny narodenia (vo veku 18 rokov a viac) | narodení obce
+ps1013rs  | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa vekových skupín a pohlavia | narodení obce
+ps1014rs  | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa ekonomickej aktivity (vo veku 18 rokov a via | narodení obce
+ps1015rs  | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa príjmového kvintilu | narodení obce
+ps1016rs  | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa najvyššieho dosiahnutého vzdelania (vo veku  | narodení obce
+ps1017rs  | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa občianstva (vo veku 18 rokov a viac) | narodení obce
+ps1018rs  | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa krajiny narodenia (vo veku 18 rokov a viac) | narodení obce
+ps1019rs  | Miera materiálnej a sociálnej deprivácie v členení podľa vekových skupín a pohlavia | narodení obce
+ps1020rs  | Miera materiálnej a sociálnej deprivácie v členení podľa ekonomickej aktivity (vo veku 18 rokov a viac) | narodení obce
+ps1021rs  | Obyvatelia žijúci v domácnostiach s veľmi nízkou intenzitou práce v členení podľa vekových skupín a pohlavia ( | narodení obce
+ps1022rs  | Obyvatelia žijúci v domácnostiach s veľmi nízkou intenzitou práce v členení podľa najvyššieho dosiahnutého vzd | narodení obce
+ps1023rs  | Obyvatelia žijúci v domácnostiach s veľmi nízkou intenzitou práce v členení podľa občianstva (vo veku 18 až 64 | narodení obce
+ps1024rs  | Obyvatelia žijúci v domácnostiach s veľmi nízkou intenzitou práce v členení podľa krajiny narodenia (vo veku 1 | narodení obce
+ps1025rs  | Miera materiálnej a sociálnej deprivácie v členení podľa najvyššieho dosiahnutého vzdelania (vo veku 18 rokov  | narodení obce
+ps1026rs  | Miera materiálnej a sociálnej deprivácie v členení podľa občianstva (vo veku 18 rokov a viac) | narodení obce
+ps1027rs  | Miera materiálnej a sociálnej deprivácie v členení podľa krajiny narodenia (vo veku 18 rokov a viac) | narodení obce
+ps1028rs  | Miera materiálnej a sociálnej deprivácie v členení podľa príjmového kvintilu | narodení obce
+ps1029rs  | Nerovnomernosť príjmového rozloženia: S80/S20 pomer príjmov horného a dolného kvintilu  v členení podľa vekový | narodení obce
+ps1030rs  | Základná štruktúra spotrebných výdavkov súkromných domácností podľa účelu použitia v členení podľa počtu závis | narodení obce
+ps1031rs  | Základná štruktúra spotrebných výdavkov súkromných domácností podľa účelu použitia v členení podľa ekonomickéh | narodení obce
+ps1032rs  | Výdavky súkromných domácností podľa účelu použitia v členení podľa ekonomického postavenia osoby na čele domác | narodení obce
+ps1033rs  | Výdavky súkromných domácností podľa účelu použitia v členení podľa počtu závislých detí - ročne | narodení obce
+ps1034rs  | Základná štruktúra spotrebných výdavkov súkromných domácností podľa účelu použitia v členení podľa typu domácn | narodení obce
+ps1035rs  | Zloženie domácností v členení podľa typu domácnosti - ročne | narodení obce
+ps1801rs  | Domácnosti a osoby v domácnostiach podľa typu domácnosti  | narodení obce
+ps1802rs  | Domácnosti a osoby v domácnostiach podľa počtu členov domácnosti  | narodení obce
+ps1803rs  | Domácnosti a osoby v domácnostiach podľa počtu závislých detí  | narodení obce
+ps1804rs  | Celkový príjem domácnosti - percentuálne zastúpenie jednotlivých zložiek príjmu podľa typu domácnosti  | narodení obce
+ps1805rs  | Celkový príjem domácnosti - priemerné príjmy podľa typu domácnosti  | narodení obce
+ps1806rs  | Celkový príjem domácnosti - percentuálne zastúpenie jednotlivých zložiek príjmu podľa počtu členov domácnosti  | narodení obce
+ps1807rs  | Celkový príjem domácnosti - priemerné príjmy podľa počtu členov domácnosti  | narodení obce
+ps1808rs  | Celkový príjem domácnosti - percentuálne zastúpenie jednotlivých zložiek príjmu podľa počtu závislých detí  | narodení obce
+ps1809rs  | Celkový príjem domácnosti - priemerné príjmy podľa počtu závislých detí  | narodení obce
+ps1810rs  | Ekvivalentný príjem domácnosti - percentuálne zastúpenie jednotlivých zložiek príjmu podľa typu domácnosti  | narodení obce
+ps1811rs  | Ekvivalentný príjem domácnosti - priemerné príjmy podľa typu domácnosti  | narodení obce
+ps1812rs  | Ekvivalentný príjem domácnosti - percentuálne zastúpenie jednotlivých zložiek príjmu podľa počtu členov domácn | narodení obce
+ps1813rs  | Ekvivalentný príjem domácnosti - priemerné príjmy podľa počtu členov domácnosti  | narodení obce
+ps1814rs  | Ekvivalentný príjem domácnosti - percentuálne zastúpenie jednotlivých zložiek príjmu podľa počtu závislých det | narodení obce
+ps1815rs  | Ekvivalentný príjem domácnosti - priemerné príjmy podľa počtu závislých detí  | narodení obce
+ps1816rs  | Príjem na osobu - percentuálne zastúpenie jednotlivých zložiek príjmu podľa typu domácnosti  | narodení obce
+ps1817rs  | Príjem na osobu - priemerné príjmy podľa typu domácnosti  | narodení obce
+ps1818rs  | Príjem na osobu - percentuálne zastúpenie jednotlivých zložiek príjmu podľa počtu členov domácnosti  | narodení obce
+ps1819rs  | Príjem na osobu - priemerné príjmy podľa počtu členov domácnosti  | narodení obce
+ps1820rs  | Príjem na osobu - percentuálne zastúpenie jednotlivých zložiek príjmu podľa počtu závislých detí  | narodení obce
+ps1821rs  | Príjem na osobu - priemerné príjmy podľa počtu závislých detí  | narodení obce
+ps1822rs  | Počty a podiely domácností podľa intervalov mesačného ekvivalentného disponibilného príjmu podľa typu domácnos | narodení obce
+ps1823rs  | Počty a podiely osôb podľa intervalov mesačného ekvivalentného disponibilného príjmu podľa typu domácnosti  | narodení obce
+ps1824rs  | Počty a podiely domácností podľa intervalov mesačného ekvivalentného disponibilného príjmu podľa počtu členov  | narodení obce
+ps1825rs  | Počty a podiely osôb podľa intervalov mesačného ekvivalentného disponibilného príjmu podľa počtu členov domácn | narodení obce
+ps1826rs  | Počty a podiely domácností podľa intervalov mesačného ekvivalentného disponibilného príjmu podľa počtu závislý | narodení obce
+ps1827rs  | Počty a podiely osôb podľa intervalov mesačného ekvivalentného disponibilného príjmu podľa počtu závislých det | narodení obce
+ps1828rs  | Disponibilný mesačný príjem na osobu - decilové rozdelenie  | narodení obce
+ps1829rs  | Ekvivalentný disponibilný mesačný príjem - decilové rozdelenie  | narodení obce
+ps1830rs  | Počty a podiely osôb pod hranicami chudoby (40 %, 50 %, 60 %, 70 % mediánu) podľa typu domácnosti  | narodení obce
+ps1831rs  | Počty a podiely osôb pod hranicami chudoby (40 %, 50 %, 60 %, 70 % mediánu) podľa počtu členov domácnosti  | narodení obce
+ps1832rs  | Počty a podiely osôb pod hranicami chudoby (40 %, 50 %, 60 %, 70 % mediánu) podľa počtu závislých detí  | narodení obce
+ps1835rs  | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa typu domácnosti  | narodení obce
+ps1836rs  | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa vekových skupín a pohlavia  | narodení obce
+ps1837rs  | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa najčastejšieho statusu ekonomickej aktivity a  | narodení obce
+ps1838rs  | Spotreba jednotlivých druhov ovocia na obyvateľa do roku 2023 | narodení obce
+ps1839rs  | Spotreba jednotlivých druhov zeleniny na obyvateľa do roku 2023 | narodení obce
+ps1840rs  | Celková spotreba potravín v SR do roku 2023 | narodení obce
+ps1841rs  | Spotreba potravín v SR na obyvateľa do roku 2023 | narodení obce
+ps1842rs  | Počet domácností v Slovenskej republike a ich zloženie  | narodení obce
+ps1843rs  | Prístup na internet z domu podľa zloženia domácnosti  | narodení obce
+ps1844rr  | Domácností s prístupom na internet z domu podľa krajov  | narodení obce
+ps1845rs  | Využívanie internetu podľa vekovej štruktúry a pohlavia  | narodení obce
+ps1846rs  | Frekvencia využívania internetu s rôznou intenzitou v priebehu posledných 3 mesiacov podľa vekovej štruktúry a | narodení obce
+ps1847rs  | Vzdelávacie aktivity cez internet na profesijné a súkromné účely v priebehu posledných 3 mesiacov podľa vekove | narodení obce
+ps1848rs  | Nakupovanie alebo objednávanie tovarov alebo služieb cez internet na súkromné účely podľa vekovej štruktúry a  | narodení obce
+ps1849rs  | Nákupy tovarov prostredníctvom webových stránok alebo aplikácií podľa krajiny predajcov v priebehu posledných  | narodení obce
+ps1850rs  | Využívanie webových stránok alebo aplikácií na zabezpečenie prepravnej služby v priebehu posledných 3 mesiacov | narodení obce
+ps1851rs  | Vzdelávacie aktivity cez internet na profesijné a súkromné účely v priebehu posledných 3 mesiacov podľa ekonom | narodení obce
+ps1852rs  | Nakupovanie alebo objednávanie tovarov alebo služieb cez internet na súkromné účely podľa ekonomickej aktivity | narodení obce
+ps1853rs  | Nákupy tovarov prostredníctvom webových stránok alebo aplikácií podľa krajiny predajcov v priebehu posledných  | narodení obce
+ps1854rs  | Využívanie webových stránok alebo aplikácií na zabezpečenie prepravnej služby v priebehu posledných 3 mesiacov | narodení obce
+ps1855rs  | Využitie webových stránok alebo aplikácií na zabezpečenie ubytovania v priebehu posledných 3 mesiacov podľa ve | narodení obce
+ps1856rs  | Využitie webových stránok alebo aplikácií na zabezpečenie ubytovania  | narodení obce
+ps1857rs  | Osoby podľa vekovej štruktúry a pohlavia  | narodení obce
+ps1858rs  | Využívanie internetu podľa ekonomickej aktivity  | narodení obce
+ps1859rs  | Frekvencia využívania internetu s rôznou intenzitou v priebehu posledných 3 mesiacov podľa ekonomickej aktivit | narodení obce
+ps1860rs  | Počet osôb podľa ekonomickej aktivity | narodení obce
+ps1861rs  | Využívanie internetu na vybrané aktivity na súkromné účely v priebehu posledných 3 mesiacov podľa vekovej štru | narodení obce
+ps1862rs  | Využívanie internetu na vybrané aktivity na súkromné účely v priebehu posledných 3 mesiacov podľa ekonomickej  | narodení obce
+ps1863rs  | Osoby kontaktujúce sa cez internet s verejnými inštitúciami na súkromné účely v priebehu posledných 12 mesiaco | narodení obce
+ps1864rs  | Osoby kontaktujúce sa cez internet s verejnými inštitúciami na súkromné účely v priebehu posledných 12 mesiaco | narodení obce
+ps1865rs  | Vybrané druhy tovarov a služieb zakúpených alebo objednaných cez internet na súkromné účely v priebehu posledn | narodení obce
+ps1866rs  | Vybrané druhy tovarov a služieb zakúpených alebo objednaných cez internet na súkromné účely v priebehu posledn | narodení obce
+ps1867rs  | Spotreba potravín v SR na obyvateľa | narodení obce
+ps1868rs  | Spotreba jednotlivých druhov ovocia na obyvateľa | narodení obce
+ps1869rs  | Spotreba jednotlivých druhov zeleniny na obyvateľa | narodení obce
+ps1870rs  | Celková spotreba potravín v SR | narodení obce
+ps2005rs  | Peňažné výdavky súkromných domácností podľa účelu použitia v členení podľa ekonomického postavenia prednostu d | narodení obce
+ps2007rs  | Peňažné výdavky súkromných domácností podľa účelu použitia v členení podľa počtu nezaopatrených detí - ročné ú | narodení obce
+ps2009rs  | Spotrebné výdavky súkromných domácností v členení na tovary alebo služby podľa ekonomického postavenia prednos | narodení obce
+ps2011rs  | Spotrebné výdavky súkromných domácností v členení na tovary alebo služby podľa počtu nezaopatrených detí - roč | narodení obce
+ps2013rs  | Základná štruktúra čistých peňažných výdavkov súkromných domácností podľa účelu použitia v členení podľa ekono | narodení obce
+ps2015rs  | Základná štruktúra čistých peňažných výdavkov súkromných domácností podľa účelu použitia v členení podľa počtu | narodení obce
+ps2021rs  | Základná štruktúra spotrebných výdavkov súkromných domácností podľa účelu použitia v členení podľa ekonomickéh | narodení obce
+ps2023rs  | Základná štruktúra spotrebných výdavkov súkromných domácností podľa účelu použitia v členení podľa počtu nezao | narodení obce
+ps2025rs  | Zloženie domácností v členení podľa ekonomického postavenia prednostu domácnosti v zamestnaní - ročné údaje  | narodení obce
+ps2027rs  | Zloženie domácností v členení podľa počtu závislých detí - ročné údaje  | narodení obce
+ps2030rs  | Miera rizika chudoby v členení podľa vlastníckeho vzťahu k obydliu a podľa vekových skupín a pohlavia  | narodení obce
+ps2031rs  | Miera rizika chudoby v členení podľa najčastejšieho statusu ekonomickej aktivity a pohlavia (osoby vo veku 18  | narodení obce
+ps2032rs  | Miera rizika chudoby v členení podľa vekových skupín a pohlavia  | narodení obce
+ps2034rs  | Miera rizika chudoby podľa typu domácnosti  | narodení obce
+ps2035rs  | Miera rizika chudoby pred sociálnymi transfermi okrem starobných a pozostalostných dávok podľa vekových skupín | narodení obce
+ps2036rs  | Miera rizika chudoby pred sociálnymi transfermi podľa pohlavia a vekových skupín (vrátane starobných a pozosta | narodení obce
+ps2038rs  | Relatívny prepad mediánu príjmov v riziku chudoby podľa veku a pohlavia  | narodení obce
+ps2043rs  | Miera rizika chudoby zakotvená v čase (rok 2008) podľa vybraných vekových skupín a pohlavia  | narodení obce
+ps3002rr  | Výdavky domácností  | narodení obce
+ps3004rr  | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa krajov | narodení obce
+ps3005rr  | Miera závažnej materiálnej a sociálnej deprivácie v členení podľa krajov | narodení obce
+ps3006rr  | Obyvatelia žijúci v domácnostiach s veľmi nízkou intenzitou práce v členení podľa krajov(vo veku 18 až 64 roko | narodení obce
+ps3007rr  | Nerovnomernosť príjmového rozdelenia: Gini koeficient v členení podľa krajov | narodení obce
+ps3008rr  | Miera materiálnej a sociálnej deprivácie v členení podľa krajov | narodení obce
+ps3009rr  | Nerovnomernosť príjmového rozloženia: S80/S20 pomer príjmov horného a dolného kvintilu v členení podľa krajov | narodení obce
+ps3010rr  | Spotrebné výdavky súkromných domácností podľa územného členenia - ročne | narodení obce
+ps3801rr  | Domácnosti a osoby v domácnostiach podľa krajov  | narodení obce
+ps3802rr  | Celkový príjem domácnosti - percentuálne zastúpenie jednotlivých zložiek príjmu podľa krajov  | narodení obce
+ps3803rr  | Celkový príjem domácnosti - priemerné príjmy podľa krajov  | narodení obce
+ps3804rr  | Ekvivalentný príjem domácnosti - percentuálne zastúpenie jednotlivých zložiek príjmu podľa krajov  | narodení obce
+ps3805rr  | Ekvivalentný príjem domácnosti - priemerné príjmy podľa krajov  | narodení obce
+ps3806rr  | Príjem na osobu - percentuálne zastúpenie jednotlivých zložiek príjmu podľa krajov  | narodení obce
+ps3807rr  | Príjem na osobu - priemerné príjmy podľa krajov  | narodení obce
+ps3808rr  | Počty a podiely domácností podľa intervalov mesačného ekvivalentného disponibilného príjmu podľa krajov  | narodení obce
+ps3809rr  | Počty a podiely osôb podľa intervalov mesačného ekvivalentného disponibilného príjmu podľa krajov  | narodení obce
+ps3810rr  | Počty a podiely osôb pod hranicami chudoby (40 %, 50 %, 60 %, 70 % mediánu) podľa krajov  | narodení obce
+ps3811rr  | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa krajov (do roku 2020) | narodení obce
+ps3813rr  | Príjmová chudoba podľa krajov SR - ročne  | narodení obce
+ps3814rr  | Miera rizika chudoby alebo sociálneho vylúčenia v členení podľa krajov  | narodení obce
+pz1801ms  | Produkcia v službách (bázický index, očistené o kalendárne vplyvy) - mesačne | narodení obce
+pz1802ms  | Produkcia v službách (bázický index, očistené o kalendárne a sezónne vplyvy) - mesačne | narodení obce
+pz2001ms  | Produkcia v službách oproti priemernému mesiacu roku 2015 - očistená o kalendárne vplyvy (do roku 2023) | narodení obce
+pz2002ms  | Produkcia v službách oproti priemernému mesiacu roku 2015 - očistená o kalendárne a sezónne vplyvy (do roku202 | narodení obce
+ra1002rs  | Obyvateľstvo, rodiny a domácnosti  | narodení obce
+ra1003rs  | Trh práce  | narodení obce
+ra1004rs  | Sociálna štatistika a zdravie  | narodení obce
+ra1005rs  | Vzdelávanie  | narodení obce
+ra1006rs  | Veda a technika  | narodení obce
+ra1007rs  | Kriminalita, násilie a súdnictvo  | narodení obce
+ra1008rs  | Verejný život a rozhodovanie  | narodení obce
+ra1010rs  | Obete trestných činov  | narodení obce
+ra1401rs  | 5.5.1 Politická participácia žien na národnej (národný parlament) a regionálnej úrovni (krajské zastupiteľstvá | narodení obce
+ra1402rs  | 5.5.2 Podiel žien v riadiacich funkciách  | narodení obce
+sk1001rs  | Vývoj počtu trestných činov v základných skupinách a druhoch  | narodení obce
+sk1002rs  | Páchatelia trestných činov  | narodení obce
+sk1004rs  | Počet požiarov v jednotlivých odvetviach hospodárstva  | narodení obce
+sk1005rs  | Odsúdení v ústavoch na výkon trestu odňatia slobody  | narodení obce
+sk2001rs  | Kriminalita  | narodení obce
+sk2002rs  | Páchatelia trestných činov a škody spôsobené kriminalitou  | narodení obce
+sk2003rs  | Trestné činy podľa skupín a druhov  | narodení obce
+sk2004rs  | Požiare podľa odvetví hospodárstva  | narodení obce
+sk3002rr  | Násilné a majetkové trestné činy  | narodení obce
+sk3003rr  | Kriminalita podľa základných skupín trestných činov  | narodení obce
+sk3701rr OBCE | Vraždy a násilné úmrtia - mestá  | narodení obce
+sk3702rr  | Vraždy a násilné úmrtia - funkčné mestské oblasti  | narodení obce
+sk3801rr  | Požiare podľa územných celkov | narodení obce
+so1002rs  | Sadzby poistného na povinné sociálne poistenie v % z vymeriavacieho základu príslušného roka   | narodení obce
+so1003qs  | Povinné sociálne poistenie - príjmy a výdavky  - medziročné porovnanie  | narodení obce
+so2001rs  | Neinvestičné výdavky na sociálnu pomoc  | narodení obce
+so2002rs  | Poberatelia vybraných dávok sociálnej ochrany  | narodení obce
+so2003rs  | Počet vyplácaných dôchodkov, priemerná výška a dávky dôchodkového zabezpečenia  | narodení obce
+so2004rs  | Počet zmlúv, poistencov a poberateľov dávok v doplnkových dôchodkových poisťovniach  | narodení obce
+so2005rs  | Príjmy a výdavky doplnkových dôchodkových fondov  | narodení obce
+so2006rs  | Príjmy na sociálnu ochranu  | narodení obce
+so2007rs  | Systémové dávky nemocenského poistenia podľa druhu - ročné údaje  | narodení obce
+so2008qs  | Systémové dávky nemocenského poistenia podľa druhu - štvrťročné údaje  | narodení obce
+so2009rs  | Štátne sociálne dávky a štátom hradené dávky nem. poistenia a dôchodkového zabezpečenia  | narodení obce
+so2010rs  | Výdavky na sociálnu ochranu  | narodení obce
+so2011qs  | Poistenci v zdravotných poisťovniach  | narodení obce
+so2012rs  | Poistenci v zdravotných poisťovniach k 31.12.  | narodení obce
+so2013rs  | Príjmy a úhrady Sociálnej poisťovne - ročné údaje  | narodení obce
+so2014qs  | Príjmy a úhrady Sociálnej poisťovne - štvrťročné údaje  | narodení obce
+so2015rs  | Príjmy a úhrady zo zdravotného poistenia - ročné údaje  | narodení obce
+so2016qs  | Príjmy a úhrady zo zdravotného poistenia - štvrťročné údaje  | narodení obce
+so3002rr  | Vyplatené dôchodky  | narodení obce
+so3801rr  | Výdavky na dôchodky  | narodení obce
+so3802rr  | Príjmy zdravotných poisťovní z poistného  | narodení obce
+so3803rr  | Úhrady zdravotných poisťovní za zdravotnú starostlivosť  | narodení obce
+so3804rr  | Príjmy do fondov Sociálnej poisťovne  | narodení obce
+so3805rr  | Výdavky Sociálnej poisťovne  | narodení obce
+sp0002ms  | Harmonizované indexy spotrebiteľských cien (predchádzajúce obdobie=100) - mesačne  | narodení obce
+sp0003ms  | Harmonizované indexy spotrebiteľských cien (rovnaké obdobie minulého roka=100) - mesačne  | narodení obce
+sp0004ms  | Indexy spotrebiteľských cien oproti predchádzajúcemu mesiacu - mesačne  | narodení obce
+sp0005ms  | Indexy spotrebiteľských cien oproti rovnakému obdobiu minulého roku - mesačne  | narodení obce
+sp0006ms  | Indexy spotrebiteľských cien (december 2000=100) - mesačne  | narodení obce
+sp0007ms  | Jadrová a čistá inflácia - zmena oproti predchádzajúcemu obdobiu v % - mesačne  | narodení obce
+sp0008ms  | Jadrová a čistá inflácia - oproti rovnakému obdobiu minulého roku v % - mesačne  | narodení obce
+sp0009ms  | Jadrová a čistá inflácia oproti decembru minulého roku v % - mesačne  | narodení obce
+sp0011rs  | Spotrebný kôš 2013  | narodení obce
+sp0012rs  | Spotrebný kôš 2014  | narodení obce
+sp0013rs  | Spotrebný kôš 2015  | narodení obce
+sp0014rs  | Spotrebný kôš 2015 - reprezentanty  | narodení obce
+sp0015rs  | Spotrebný kôš 2014 - reprezentanty  | narodení obce
+sp0016rs  | Spotrebný kôš 2016  | narodení obce
+sp0018rs  | Spotrebný kôš 2016 - reprezentanty  | narodení obce
+sp0019rs  | Spotrebný kôš 2017  | narodení obce
+sp0020rs  | Spotrebný kôš 2017 - reprezentanty  | narodení obce
+sp0021rs  | Spotrebný kôš 2018  | narodení obce
+sp0029ms  | Indexy spotrebiteľských cien - podrobné údaje - mesačne  | narodení obce
+sp0101ms  | Indexy cien vo výrobnej sfére oproti rovnakému obdobiu minulého roka - mesačne  | narodení obce
+sp0103ms  | Indexy cien vo výrobnej sfére oproti predchádzajúcemu mesiacu - mesačne  | narodení obce
+sp0104qs  | Indexy cien trhových služieb (do roku 2023) - štvrťročne | narodení obce
+sp0107ms  | Indexy cien vo výrobnej sfére oproti bázickému obdobiu - mesačne | narodení obce
+sp0108qs  | Indexy cien trhových služieb podľa CPA - štvrťročne | narodení obce
+sp0109ms  | Harmonizované indexy spotrebiteľských cien (odbory) k štyrom základom - mesačne | narodení obce
+sp0110ms  | Indexy spotrebiteľských cien (odbory) k trom základom – mesačne | narodení obce
+sp0111ms  | Indexy spotrebiteľských cien (podrobné údaje) k dvom základom - mesačne | narodení obce
+sp0112qs  | Indexy spotrebiteľských cien medziročne (odbory) - štvrťročne | narodení obce
+sp0202ms  | Priemerné ceny pohonných látok v SR - mesačne  | narodení obce
+sp0207ts  | Priemerné ceny pohonných látok v SR - týždenne  | narodení obce
+sp0301ms  | Indexy cien pre určenie súm stravného a súm základnej náhrady - mesačne | narodení obce
+sp1001ms  | Jadrová a čistá inflácia (indexy k decembru 2006=100) - mesačne  | narodení obce
+sp1002qs  | Indexy realizačných cien nehnuteľností - štvrťročne  | narodení obce
+sp1006qs  | Indexy cien priemyselných výrobcov podľa SK NACE Rev. 2 bez spotrebnej dane - export - štvrťročne | narodení obce
+sp1007qs  | Indexy cien priemyselných výrobcov podľa SK NACE Rev. 2 bez spotrebnej dane - tuzemsko - štvrťročne | narodení obce
+sp1008qs  | Indexy cien priemyselných výrobcov podľa SK NACE Rev. 2 bez spotrebnej dane - úhrn - štvrťročne | narodení obce
+sp1009qs  | Indexy cien priemyselných výrobcov podľa SK NACE Rev. 2 so spotrebnou daňou - tuzemsko - štvrťročne | narodení obce
+sp1010qs  | Indexy cien stavebných prác, materiálov a výrobkov spotrebovaných v stavebníctve - štvrťročne | narodení obce
+sp1011qs  | Priemerné ceny vybraných dodávok výrobkov a služieb do poľnohospodárstva - štvrťročne | narodení obce
+sp1012qs  | Indexy cien stavebných prác podľa Klasifikácie stavieb - štvrťročne | narodení obce
+sp1013qs  | Indexy cien stavebných prác podľa klasifikácie CPA 2015 - štvrťročne | narodení obce
+sp1014qs  | Indexy nákupných cien vybraných stavebných materiálov podľa klasifikácie CPA 2015 - štvrťročne | narodení obce
+sp1015rs  | Harmonizované indexy spotrebiteľských cien - podrobné členenie (priemer roka 2015=100) - ročne | narodení obce
+sp1016rs  | Priemerná ročná miera inflácie (priemerná ročná miera zmeny) meraná HICP - podrobné členenie - ročne  | narodení obce
+sp1017ms  | Harmonizované indexy spotrebiteľských cien - podrobné členenie (priemer roka 2015=100) - mesačne | narodení obce
+sp1018ms  | Medziročná inflácia (medziročná miera zmeny) meraná HICP - podrobné členenie - mesačne  | narodení obce
+sp1019rs  | Vývoj cenových indexov (ročné priemery) – tuzemsko - ročne  | narodení obce
+sp1021rs  | Harmonizované indexy spotrebiteľských cien (odbory) k trom základom - ročne | narodení obce
+sp1022rs  | Harmonizované indexy spotrebiteľských cien k priemeru 2025 (detailné členenie) - ročne | narodení obce
+sp1023rs  | Harmonizovaná priemerná ročná inflácia - miera zmeny (detailné členenie) - ročne | narodení obce
+sp1024ms  | Harmonizované indexy spotrebiteľských cien k priemeru 2025 (detailné členenie) - mesačne | narodení obce
+sp1025ms  | Harmonizovaná medziročná inflácia - miera zmeny (detailné členenie) - mesačne | narodení obce
+sp1026ms  | Indexy spotrebiteľských cien (domácnosti dôchodcov) k trom základom - mesačne | narodení obce
+sp1027ms  | Indexy spotrebiteľských cien (nízkopríjmové domácnosti) k trom základom - mesačne | narodení obce
+sp1028ms  | Indexy spotrebiteľských cien (domácnosti spolu) k trom základom - mesačne | narodení obce
+sp1803ms  | Indexy spotrebiteľských cien (životných nákladov) - zamestnanci - mesačne  | narodení obce
+sp1804ms  | Indexy spotrebiteľských cien (životných nákladov) - dôchodcovia - mesačne  | narodení obce
+sp1805ms  | Indexy spotrebiteľských cien (životných nákladov) - nízkopríjmové domácnosti -mesačne  | narodení obce
+sp1812ms  | Priemerné ceny poľnohospodárskych výrobkov - mesačne (do roku 2023) | narodení obce
+sp1813ms  | Priemerné hodnoty predaja poľnohospodárskych výrobkov v EUR - mesačne (do roku 2023) | narodení obce
+sp1814ms  | Indexy spotrebiteľských cien (životných nákladov) - domácnosti spolu - mesačne  | narodení obce
+sp1823ms  | Výrobné ceny vybraných materiálov používaných v stavebníctve podľa členenia CPA: index december 2005=100  | narodení obce
+sp1824ms  | Indexy cien poľnohospodárskych výrobkov - mesačne | narodení obce
+sp1825ms  | Indexy priemerných hodnôt predaja poľnohospodárskych výrobkov - mesačne | narodení obce
+sp1826ms  | Priemerné ceny poľnohospodárskych výrobkov - mesačne  | narodení obce
+sp1827ms  | Priemerné hodnoty predaja poľnohospodárskych výrobkov v EUR  - mesačne  | narodení obce
+sp1828ms  | Priemerné spotrebiteľské ceny vybraných výrobkov - mesačne (od roku 2023) | narodení obce
+sp1829ms  | Indexy cien pre uplatnenie metódy FIDIC - mesačne | narodení obce
+sp1830ms  | Indexy cien priemyselných výrobcov podľa hlavných priemyselných zoskupení - tuzemsko - mesačne | narodení obce
+sp1831ms  | Indexy cien priemyselných výrobcov podľa hlavných priemyselných zoskupení - vývoz - mesačne | narodení obce
+sp1832ms  | Indexy cien priemyselných výrobcov podľa hlavných priemyselných zoskupení - spolu - mesačne | narodení obce
+sp1833ms  | Indexy cien priemyselných výrobcov podľa SK NACE Rev. 2 bez spotrebnej dane - tuzemsko - mesačne | narodení obce
+sp1834ms  | Indexy cien priemyselných výrobcov podľa SK NACE Rev. 2 - vývoz - mesačne | narodení obce
+sp1835ms  | Indexy cien priemyselných výrobcov podľa sekcií a subsekcií SK NACE Rev. 2 - spolu - mesačne | narodení obce
+sp1836ms  | Indexy cien priemyselných výrobcov podľa SK NACE Rev. 2 so spotrebnou daňou - tuzemsko - mesačne | narodení obce
+sp1837ms  | Indexy dovozných cien podľa divízií CPA - mesačne | narodení obce
+sp1838ms  | Indexy vývozných cien podľa divízií CPA - mesačne | narodení obce
+sp2033rs  | Priemerné ceny poľnohospodárskych výrobkov - ročne  | narodení obce
+sp2034ms  | Priemerné ceny poľnohospodárskych výrobkov - mesačne  (do konca roka 2021) | narodení obce
+sp2036qs  | Priemerné ceny vybraných dodávok výrobkov a služieb do poľnohospodárstva - štvrťročne (do roku 2023) | narodení obce
+sp2037rs  | Indexy spotrebiteľských cien podľa Klasifikácie individuálnej spotreby podľa účelu (COICOP) - ročne  | narodení obce
+sp2038ms  | Indexy spotrebiteľských cien podľa Klasifikácie individuálnej spotreby podľa účelu (COICOP) - mesačne  | narodení obce
+sp2039rs  | Priemerné ceny pohonných látok v SR - ročne  | narodení obce
+sp2041rs  | Priemerné spotrebiteľské ceny vybraných výrobkov - ročne  | narodení obce
+sp2042ms  | Priemerné spotrebiteľské ceny vybraných výrobkov - mesačne (do roku 2023) | narodení obce
+sp2045rs  | Harmonizované indexy spotrebiteľských cien - k 3 základom - ročne | narodení obce
+sp2046ms  | Harmonizované indexy spotrebiteľských cien - k 4 základom - mesačne | narodení obce
+sp2047rs  | Inflácia meraná HICP (harmonizovaná metodika EÚ) - ročne  | narodení obce
+sp2055ms  | Indexy cien priemyselných výrobcov podľa činností bez spotrebnej dane tuzemsko 2015 - mesačne | narodení obce
+sp3801qr  | Indexy realizačných cien nehnuteľností - regionálne, štvrťročne  | narodení obce
+st0001ms  | Stavebná produkcia - Stavebná produkcia (podniková metóda) (do roku 2023)  | narodení obce
+st0002ms  | Tržby za vlastné výkony a tovar - 41-43 Stavebníctvo (baza 2015) | narodení obce
+st0003qs  | Výstavba a úbytok bytov  | narodení obce
+st0004ms  | Tržby za vlastné výkony a tovar - 41-43 Stavebníctvo (do roku 2023) | narodení obce
+st0005ms  | Stavebná produkcia (podniková metóda) - mesačne | narodení obce
+st0006ms  | Tržby za vlastné výkony a tovar - 41-43 Stavebníctvo - mesačne | narodení obce
+st1001ms  | Vybrané ukazovatele stavebných podnikov SR podľa SK NACE Rev. 2 (do roku 2023) | narodení obce
+st1002ms  | Vybrané ukazovatele o práci a mzdách v stavebníctve (do roku 2023) | narodení obce
+st1003ms  | Stavebná produkcia v tuzemsku podľa vecnej štruktúry a smerov výstavby (SK NACE Rev. 2) (do roku 2023) | narodení obce
+st1004ms  | Vybrané ukazovatele stavebných podnikov SR podľa SK NACE Rev. 2 - mesačne | narodení obce
+st1005ms  | Vybrané ukazovatele o práci a mzdách v stavebníctve - mesačne | narodení obce
+st1006ms  | Stavebná produkcia v tuzemsku podľa vecnej štruktúry a smerov výstavby (SK NACE Rev. 2) - mesačne | narodení obce
+st1007ms  | Priemerná mesačná mzda zamestnanca v stavebníctve (medziročný index) - mesačne | narodení obce
+st1008ms  | Vybrané ukazovatele stavebných podnikov podľa veľkostnej štruktúry - mesačne | narodení obce
+st1009qs  | Prírastky zákaziek stavebnej produkcie podľa dodávateľských zmlúv v tuzemsku | narodení obce
+st1010rs  | Stavebná produkcia vykonaná vlastnými zamestnancami - ročné údaje | narodení obce
+st1011rs  | Stavebná produkcia podľa dodávateľských zmlúv | narodení obce
+st1012rs  | Stavebná produkcia vykonaná vlastnými zamestnancami podľa vlastníckych sektorov | narodení obce
+st1013rs  | Priemerná nominálna mesačná mzda zamestnanca v stavebníctve - ročné údaje | narodení obce
+st1014rs  | Stavebná produkcia vykonaná vlastnými zamestnancami, produktivita práce, zamestnanosť a priemerná mzda podľa v | narodení obce
+st1015rs  | Tržby za vlastné výkony a tovar v stavebníctve - ročné údaje | narodení obce
+st1807ms  | Priemerná mesačná mzda zamestnanca v stavebníctve (do roku 2023) | narodení obce
+st1808ms  | Vybrané ukazovatele stavebných podnikov podľa veľkostnej štruktúry (do roku 2023) | narodení obce
+st2001rs  | Dokončené byty podľa počtu izieb a priemernej plochy - ročné údaje  | narodení obce
+st2002qs  | Dokončené byty podľa počtu izieb a priemernej plochy - štvrťročné údaje  | narodení obce
+st2003rs  | Priemerná nominálna mesačná mzda zamestnanca v stavebníctve - ročne (do roku 2022) | narodení obce
+st2010qs  | Prírastky zákaziek stavebnej produkcie podľa dodávateľských zmlúv v tuzemsku (do roku 2023) | narodení obce
+st2011rs  | Stavebná produkcia podľa dodávateľských zmlúv (do roku 2022) | narodení obce
+st2012rs  | Stavebná produkcia vykonaná vlastnými zamestnancami podľa vlastníckych sektorov (do roku 2022) | narodení obce
+st2013rs  | Stavebná produkcia vykonaná vlastnými zamestnancami - ročne (do roku 2022) | narodení obce
+st2017rs  | Stavebná produkcia vykonaná vlastnými zamestnancami, produktivita práce, zamestnanosť a priemerná mzda podľa v | narodení obce
+st2018rs  | Tržby za vlastné výkony a tovar v stavebníctve - ročne (do roku 2022) | narodení obce
+st2021rs  | Začaté, dokončené a rozostavané byty podľa druhu vlastníctva - ročné údaje  | narodení obce
+st2022qs  | Začaté, dokončené a rozostavané byty podľa druhu vlastníctva - štvrťročné údaje  | narodení obce
+st2024qs  | Stavebné povolenia - štvrťročné údaje  | narodení obce
+st3001rr  | Stavebníctvo - celé odvetvie (SK NACE Rev. 2) (do roku 2022) | narodení obce
+st3002rr  | Stavebníctvo - podniky s 20 a viac zamestnancami (SK NACE Rev. 2) | narodení obce
+st3003rr  | Tržby za vlastné výkony a tovar v stavebníctve (SK NACE Rev.2) (do roku 2022) | narodení obce
+st3004rr  | Byty - vybrané ukazovatele  | narodení obce
+st3007rr  | Stavebníctvo - celé odvetvie (SK NACE Rev. 2)  | narodení obce
+st3008rr  | Tržby za vlastné výkony a tovar v stavebníctve (SK NACE Rev.2) | narodení obce
+st3701rr OBCE | Životné podmienky - mestá  | narodení obce
+st3702rr  | Životné podmienky - funkčné mestské oblasti  | narodení obce
+st3801rr  | Byty v RD - vybrané ukazovatele  | narodení obce
+st3802rr  | Byty - dokončené podľa počtu izieb  | narodení obce
+sv1801rs  | Organizácie s ďalšou odbornou prípravou  podľa skupiny odvetví - ročne  | narodení obce
+sv1802rs  | Organizácie s ďalšou odbornou prípravou podľa veľkosti organizácie - ročne  | narodení obce
+sv1803rs  | Preferované zameranie kurzov ďalšej odbornej prípravy podľa skupiny odvetví (podiel z celkového počtu organizá | narodení obce
+sv1804rs  | Preferované zameranie kurzov ďalšej odbornej prípravy podľa veľkosti organizácie (podiel z celkového počtu org | narodení obce
+sv1805rs  | Iné formy ďalšej odbornej prípravy v organizáciách podľa skupiny odvetví (podiel z celkového počtu organizácií | narodení obce
+sv1806rs  | Iné formy ďalšej odbornej prípravy v organizáciách podľa veľkosti organizácie (podiel z celkového počtu organi | narodení obce
+sv1807rs  | Miera účasti pracujúcich na formálnom a neformálnom vzdelávaní podľa sektora ekonomickej činnosti a veku  | narodení obce
+sv1808rs  | Miera účasti pracujúcich na neformálnom vzdelávaní podľa sektora ekonomickej činnosti a veku  | narodení obce
+sv1809rs  | Miera účasti na neformálnom vzdelávaní súvisiacim so zamestnaním podľa veku  | narodení obce
+sv1810rs  | Miera účasti na neformálnom vzdelávaní súvisiacim so zamestnaním plateným zamestnávateľom podľa veku  | narodení obce
+sv1811rs  | Štruktúra neformálnych vzdelávacích aktivít podľa veku účastníka  | narodení obce
+sv1812rs  | Miera ovládania iného ako materinského jazyka podľa veku a pohlavia  | narodení obce
+sv1813rs  | Miera hľadania informácií o možnostiach vzdelávania podľa veku  | narodení obce
+sv1814rs  | Miera účasti pracujúcich na neformálnom vzdelávaní podľa zamestnania a veku  | narodení obce
+sv1815rs  | Miera účasti pracujúcich na formálnom a neformálnom vzdelávaní podľa zamestnania a veku  | narodení obce
+sv1816rs  | Miera účasti na formálnom a neformálnom vzdelávaní podľa vzdelania a veku  | narodení obce
+sv1817rs  | Miera účasti na formálnom vzdelávaní podľa vzdelania a veku  | narodení obce
+sv1818rs  | Miera účasti na neformálnom vzdelávaní podľa vzdelania a veku  | narodení obce
+sv1819rs  | Miera účasti na neinštitucionálnom vzdelávaní podľa vzdelania a veku  | narodení obce
+sv1820rs  | Osoby vo formálnom vzdelávaní podľa úrovne posledného vzdelávania a veku  | narodení obce
+sv1821rs  | Osoby vo formálnom vzdelávaní podľa hlavného dôvodu účasti na poslednom vzdelávaní a veku  | narodení obce
+sv1822rs  | Osoby vo formálnom vzdelávaní podľa hlavného prínosu posledného vzdelávania a veku  | narodení obce
+sv1823rs  | Osoby vo formálnom vzdelávaní podľa odboru posledného vzdelávania a veku  | narodení obce
+sv1824rs  | Miera účasti na formálnom a neformálnom vzdelávaní podľa ekonomickej aktivity a veku | narodení obce
+sv1825rs  | Miera účasti na formálnom vzdelávaní podľa ekonomickej aktivity a veku | narodení obce
+sv1826rs  | Miera účasti na neformálnom vzdelávaní podľa ekonomickej aktivity a veku | narodení obce
+sv1827rs  | Miera účasti na neformálnom vzdelávaní súvisiacim so zamestnaním podľa ekonomickej aktivity a veku | narodení obce
+sv1828rs  | Miera účasti na neinštitucionálnom vzdelávaní podľa ekonomickej aktivity a veku | narodení obce
+sv1829rs  | Štruktúra neformálnych vzdelávacích aktivít podľa odboru a veku účastníka  | narodení obce
+sv1830rs  | Miera účasti na neformálnom vzdelávaní podľa druhu neformálneho vzdelávania a veku  | narodení obce
+sv1831rs  | Osoby v neformálnom vzdelávaní podľa druhu vzdelávacej aktivity, pohlavia a veku  | narodení obce
+sv1832rs  | Štruktúra neformálnych vzdelávacích aktivít podľa druhu a veku účastníka  | narodení obce
+sv1833rs  | Osoby v neformálnom vzdelávaní podľa počtu vzdelávacích aktivít, pohlavia a veku  | narodení obce
+sv1834rs  | Štruktúra neformálnych vzdelávacích aktivít podľa hlavných získaných zručností a veku účastníka  | narodení obce
+sv1835rs  | Štruktúra neformálnych vzdelávacích aktivít podľa hlavného dôvodu účasti a veku účastníka  | narodení obce
+sv1836rs  | Štruktúra neformálnych vzdelávacích aktivít podľa hlavného prínosu pre účastníka a veku  | narodení obce
+sv1837rs  | Osoby v neinštituciálnom vzdelávaní podľa druhu, pohlavia a veku  | narodení obce
+sv1838rs  | Osoby podľa počtu ovládaných jazykov a veku  | narodení obce
+sv1839rs  | Osoby ovládajúce iný ako materinský jazyk podľa vybraného jazyka, pohlavia a veku  | narodení obce
+sv1840rs  | Osoby ovládajúce iný ako materinský jazyk podľa najlepšie ovládaného jazyka, pohlavia a veku  | narodení obce
+sv1842rs  | Osoby, ktoré sa chceli alebo potrebovali vzdelávať (viac) podľa hlavného dôvodu neúčasti na vzdelávaní, veku a | narodení obce
+sv1843rs  | Osoby ovládajúce iný ako materinský jazyk podľa úrovne najlepšie ovládaného jazyka, pohlavia a veku  | narodení obce
+sv1844rs  | Osoby podľa druhu poskytnutej pomoci alebo poradenstva v oblasti vzdelávania od inštitúcií, organizácií, veku  | narodení obce
+sv1845rs  | Osoby s poskytnutou pomocou alebo poradenstvom v oblasti vzdelávania podľa poskytujúcej organizácie, veku a po | narodení obce
+sv1846rs  | Osoby podľa ich záujmu o vzdelávanie a veku  | narodení obce
+sv2001rs  | Materské školy  | narodení obce
+sv2002rs  | Základné školy  | narodení obce
+sv2003rs  | Stredné školy  | narodení obce
+sv2005rs  | Vysoké školy  | narodení obce
+sv2006rs  | Vysoké školy podľa skupín študijných odborov  | narodení obce
+sv3701rr OBCE | Vzdelanie - mestá  | narodení obce
+sv3702rr  | Vzdelanie - funkčné mestské oblasti  | narodení obce
+sv3801rr  | Organizácie s ďalšou odbornou prípravou podľa krajov - ročne  | narodení obce
+sv3802rr  | Preferované zameranie kurzov ďalšej odbornej prípravy podľa krajov (podiel z celkového počtu organizácií posky | narodení obce
+sv3803rr  | Iné formy ďalšej odbornej prípravy v organizáciách podľa krajov (podiel z celkového počtu organizácií poskytuj | narodení obce
+sv3804rr  | Materské školy  - počet škôl | narodení obce
+sv3805rr  | Deti v materských školách  | narodení obce
+sv3806rr  | Základné školy  - počet škôl | narodení obce
+sv3807rr  | Základné školy - žiaci  | narodení obce
+sv3808rr  | Gymnáziá - počet škôl  | narodení obce
+sv3809rr  | Gymnáziá - počet žiakov a absolventov  | narodení obce
+sv3810rr  | Stredné odborné školy - počet žiakov a absolventov  | narodení obce
+sv3811rr  | Počet vysokých škôl a fakult  | narodení obce
+sv3812rr  | Počet študentov a absolventov VŠ  | narodení obce
+sv3813rr  | Miera účasti na formálnom a neformálnom vzdelávaní podľa veku a pohlavia  | narodení obce
+sv3814rr  | Miera účasti na formálnom vzdelávaní podľa veku a pohlavia  | narodení obce
+sv3815rr  | Miera účasti na neformálnom vzdelávaní podľa veku a pohlavia  | narodení obce
+sv3816rr  | Miera účasti na neinštitucionálnom vzdelávaní podľa veku a pohlavia  | narodení obce
+sv5001rr OBCE | Materské školy (údaje za obce) | narodení obce
+sv5002rr OBCE | Základné školy (údaje za obce) | narodení obce
+sv5003rr OBCE | Gymnáziá  | narodení obce
+sv5004rr OBCE | Stredné odborné školy, SOU, ZSŠ  | narodení obce
+sv5005rr OBCE | Konzervatóriá  | narodení obce
+sv5006rr OBCE | Špeciálne školy  | narodení obce
+sv5007rr OBCE | Základné umelecké školy  | narodení obce
+sv5008rr OBCE | Školské jedálne (okrem MŠ a VŠ)  | narodení obce
+sv5009rr OBCE | Domovy mládeže (internáty)  | narodení obce
+sv5010rr OBCE | Jazykové školy  | narodení obce
+sv5011rr OBCE | Vysokoškolské internáty  | narodení obce
+sv5012rr OBCE | Vysokoškolské jedálne  | narodení obce
+sv5013rr  | Vysoké školy, fakulty, študujúci  | narodení obce
+ts0001ms  | Vybrané trhové služby - tržby za vlastné výkony a tovar (do roku 2021) - mesačne (báza 2015) | narodení obce
+ts0002ms  | Vybrané trhové služby - tržby za vlastné výkony a tovar (do roku 2023) - mesačne | narodení obce
+ts0003ms  | Vybrané trhové služby - tržby za vlastné výkony a tovar (medziročný index) - mesačne  | narodení obce
+ts1001ms  | Priemerná nominálna mesačná mzda zamestnanca vo vybraných trhových službách (medziročný index) - mesačne | narodení obce
+ts1002ms  | Priemerný počet zamestnaných osôb vo vybraných trhových službách (medziročný index) - mesačne | narodení obce
+ts1003qs  | Priemerná nominálna mesačná mzda zamestnanca vo vybraných trhových službách - štvrťročne | narodení obce
+ts1004qs  | Priemerný počet zamestnaných osôb vo vybraných trhových službách-štvrťročne | narodení obce
+ts1005qs  | Tržby za vlastné výkony a tovar vo vybraných trhových službách - štvrťročne | narodení obce
+ts1006rs  | Základné ukazovatele za vybrané trhové služby  | narodení obce
+ts1801ms  | Priemerná nominálna mesačná mzda zamestnanca vo vybraných trhových službách - mesačne (do roku 2023) | narodení obce
+ts1802ms  | Priemerný počet zamestnaných osôb vo vybraných trhových službách - mesačne (do roku 2023) | narodení obce
+ts2002qs  | Priemerná nominálna mesačná mzda zamestnanca vo vybraných trhových službách - štvrťročné údaje (do roku 2023) | narodení obce
+ts2003ms  | Priemerná nominálna mesačná mzda zamestnanca vo vybraných trhových službách - mesačné údaje  | narodení obce
+ts2005qs  | Priemerný počet zamestnaných osôb vo vybraných trhových službách - štvrťročné údaje (do roku 2023) | narodení obce
+ts2006ms  | Priemerný počet zamestnaných osôb vo vybraných trhových službách - mesačné údaje  | narodení obce
+ts2008qs  | Tržby za vlastné výkony a tovar vo vybraných trhových službách - štvrťročné údaje (do roku 2023) | narodení obce
+ts2009ms  | Tržby za vlastné výkony a tovar vo vybraných trhových službách - mesačné údaje (báza 2015) | narodení obce
+ts2801rs  | Základné ukazovatele za vybrané trhové služby - ročne (do roku 2022) | narodení obce
+vh1001rs  | Biochemická spotreba kyslíka vo vybraných tokoch   | narodení obce
+vh2001rs  | Odber vody  | narodení obce
+vh2002rs  | Odpadová voda vypúšťaná do vodných tokov podľa zdrojov  | narodení obce
+vh2003rs  | Produkované znečistenie odpadových vôd podľa zdroja  | narodení obce
+vh2004rs  | Verejné vodovody a kanalizácie k 31.12.  | narodení obce
+vh2005rs  | Vodné toky a vodohospodárske diela v správe vodohospodárskych organizácií k 31.12.  | narodení obce
+vh2006rs  | Vybrané ukazovatele za vodu  | narodení obce
+vh3001rr  | Verejné vodovody a kanalizácie  | narodení obce
+vh3004rr  | Verejné vodovody a kanalizácie 1996 - 2014  | narodení obce
+vh3801rr  | Rozvod a čistenie vody  | narodení obce
+vh3802rr  | Dĺžka siete a odpadová voda  | narodení obce
+vh5001rr OBCE | Prietoky vodných tokov  | narodení obce
+vh5002rr OBCE | Vodné toky - stavy  | narodení obce
+vh5003rr OBCE | Spotreba pitnej vody  | narodení obce
+vt0001rs  | Zamestnané osoby vo výskume a vývoji (VV) - kľúčové ukazovatele  | narodení obce
+vt0002rs  | Výdavky na výskum a vývoj (VV) - kľúčové ukazovatele  | narodení obce
+vt0003rs  | Inovácie  | narodení obce
+vt1001rs  | Podiel podnikov s inovačnou aktivitou podľa technologických sektorov v %  | narodení obce
+vt1002rs  | Podiel výdavkov na inovácie v priemysle v %   | narodení obce
+vt1003rs  | Intenzita inovácie podľa technologických sektorov v %   | narodení obce
+vt1004rs  | Podniky  s inovačnou aktivitou s verejnou finančnou podporou v %  | narodení obce
+vt1005rs  | Podiel inovujúcich podnikov spolupracujúcich pri inováciách s uvedeným typom partnera v %  | narodení obce
+vt1008rs  | Štruktúra výdavkov na výskum a vývoj (v %)  | narodení obce
+vt1009rs  | Štruktúra zamestnancov výskumu a vývoja (v %)  | narodení obce
+vt1010rs  | Štruktúra zamestnancov výskumu a vývoja podľa pohlavia (v %)  | narodení obce
+vt1011rs  | Počet podnikov s inovačnou aktivitou v priemysle a vybraných službách  | narodení obce
+vt1012rs  | Podiel počtu podnikov s inovačnou aktivitou z celkového počtu podnikov v %   | narodení obce
+vt1013rs  | Podiel tržieb v podnikoch s inovačnou aktivitou z celkových tržieb všetkých podnikov v %   | narodení obce
+vt1015rs  | Intenzita inovácie v % (podiel výdavkov na inovácie z tržieb v inovujúcich podnikoch)  | narodení obce
+vt1016rs  | Podiel inovujúcich a neinovujúcich podnikov, ktoré uviedli vysoký stupeň dôležitosti faktorov obmedzujúcich in | narodení obce
+vt1801rs  | Výdavky na výskum a vývoj vo vybraných oblastiach výskumu a vývoja  | narodení obce
+vt1802rs  | Podiel inovujúcich a neinovujúcich podnikov, ktoré uviedli vysoký stupeň dôležitosti pri vybraných stratégiách | narodení obce
+vt1803rs  | Podniky s inováciou produktu s novinkou na trhu a v rámci podniku podľa veľkostných skupín podnikov a ekonomic | narodení obce
+vt1804rs  | Tržby z predaja inovovaných produktov, ktoré sú novinkou na trhu alebo v rámci podniku podľa veľkostných skupí | narodení obce
+vt1805rs  | Podiel inovujúcich podnikov, ktoré zaviedli inováciu s prínosom pre životné prostredie  v %  | narodení obce
+vt1806rs  | Podiel inovujúcich podnikov, ktoré uviedli vysoký stupeň dôležitosti faktorov ovplyvňujúcich zavedenie inováci | narodení obce
+vt1807rs  | Výdavky na výskum a vývoj podľa sociálno-ekonomických cieľov  | narodení obce
+vt2003rs  | Podniky s inovačnou činnosťou podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+vt2004rs  | Podniky s inovačnou činnosťou podľa veľkostných skupín podnikov a ekonomických činností (SK NACE Rev. 2)  | narodení obce
+vt2005rs  | Tržby v podnikoch s inovačnou činnosťou podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+vt2006rs  | Tržby v podnikoch s inovačnou činnosťou podľa veľkostných skupín podnikov a ekonomických činností (SK NACE Rev | narodení obce
+vt2007rs  | Výdavky na inovácie podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+vt2008rs  | Výdavky na inovácie podľa veľkostných skupín a ekonomických činností (SK NACE Rev. 2)  | narodení obce
+vt2009rs  | Organizácie a pracoviská výskumu a vývoja  | narodení obce
+vt2012rs  | Výdavky na výskum a vývoj   | narodení obce
+vt2013rs  | Výdavky na výskum a vývoj podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+vt2014rs  | Výdavky na výskum a vývoj podľa rezortov  | narodení obce
+vt2015rs  | Výdavky na výskum a vývoj podľa sektorov a vedných oblastí  | narodení obce
+vt2016rs  | Výdavky na výskum a vývoj podľa sektorov  | narodení obce
+vt2017rs  | Výdavky na výskum a vývoj podľa vedných oblastí   | narodení obce
+vt2018rs  | Výdavky na výskum a vývoj podľa zdrojov financovania  | narodení obce
+vt2019rs  | Zamestnanci výskumu a vývoja podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+vt2021rs  | Zamestnanci výskumu a vývoja podľa rezortov pracovného zaradenia a kvalifikácie  | narodení obce
+vt2023rs  | Zamestnanci výskumu a vývoja podľa sektorov  | narodení obce
+vt2024rs  | Zamestnanci výskumu a vývoja podľa sektorov a vedných oblastí  | narodení obce
+vt2025rs  | Zamestnanci výskumu a vývoja podľa vedných oblastí  | narodení obce
+vt2026rs  | Zamestnanci výskumu a vývoja podľa pohlavia, pracovného zaradenia a kvalifikácie  | narodení obce
+vt2028rs  | Zamestnané osoby vo výskume a vývoji podľa sektorov, pracovného zaradenia a pohlavia  | narodení obce
+vt2029rs  | Zamestnané osoby vo výskume a vývoji podľa vedných oblastí, pracovného zaradenia a pohlavia  | narodení obce
+vt2030rs  | Výdavky na výskum a vývoj podľa sektorov a veľkostných skupín podnikov  | narodení obce
+vt2031rs  | Zamestnané osoby vo výskume a vývoji podľa sektorov a veľkostných skupín podnikov  | narodení obce
+vt3001rr  | Výdavky na výskum a vývoj podľa krajov a činnosti výskumu a vývoja  | narodení obce
+vt3005rr  | Zamestnanci  výskumu a vývoja - ženy podľa krajov  | narodení obce
+vt3006rr  | Zamestnanci výskumu a vývoja podľa krajov a vednej oblasti  | narodení obce
+vt3008rr  | Zamestnané osoby vo výskume a vývoji podľa krajov, pracovného zaradenia a pohlavia  | narodení obce
+vt3009rr  | Zamestnanci  výskumu a vývoja podľa krajov a pracovného zaradenia  | narodení obce
+vt3801rr  | Výdavky na výskum a vývoj – štátne zdroje podľa krajov  | narodení obce
+vt3802rr  | Výdavky na výskum a vývoj podľa krajov  | narodení obce
+vt3803rr  | Výdavky na výskum a vývoj podľa krajov a vednej oblasti  | narodení obce
+zd1001rs  | Vývoj vybraných ukazovateľov o pracovnej neschopnosti pre chorobu a úraz v Slovenskej republike  | narodení obce
+zd1002rs  | Spotreba liekov  | narodení obce
+zd1004rs  | Pracovné miesta, postele v zdravotníckych zariadeniach, lekárne  | narodení obce
+zd1006rs  | Pracovná neschopnosť - novonahlásené prípady, kalendárne dni, priemerný denný stav, doba a percento  | narodení obce
+zd1007rs  | Priemerný počet nemocensky poistených  | narodení obce
+zd1008rs  | Bežné výdavky na zdravotnú starostlivosť podľa systémov financovania a funkcií starostlivosti  | narodení obce
+zd1009rs  | Bežné výdavky na zdravotnú starostlivosť podľa poskytovateľov zdravotnej starostlivosti a funkcií starostlivos | narodení obce
+zd1010rs  | Bežné výdavky na zdravotnú starostlivosť podľa systémov financovania a poskytovateľov zdravotnej starostlivost | narodení obce
+zd1401rs  | 3.3.3 Výskyt malárie na 100 000 obyvateľov  | narodení obce
+zd1402rr  | 3.3.2 Výskyt tuberkulózy na 100 000 obyvateľov  | narodení obce
+zd1801rs  | Sebavnímanie zdravia - celkový stav  | narodení obce
+zd1802rs  | Dlhodobé zdravotné ochorenie alebo zdravotný problém  | narodení obce
+zd1803rs  | Obmedzenie v činnostiach, kvôli dlhodobým zdravotným problémom  | narodení obce
+zd1804rs  | Fyzické a funkčné obmedzenia  | narodení obce
+zd1805rs  | Problémy s vybranými činnosťami osobnej starostlivosti  | narodení obce
+zd1806rs  | Potreba pomoci s činnosťami osobnej starostlivosti  | narodení obce
+zd1807rs  | Problémy s vybranými činnosťami v domácnosti  | narodení obce
+zd1808rs  | Potreba pomoci s činnosťami v domácnosti  | narodení obce
+zd1809rs  | Ochorenia alebo zdravotné problémy - alergie a respiračné ochorenia  | narodení obce
+zd1810rs  | Ochorenia alebo zdravotné problémy - srdcovocievne ochorenia  | narodení obce
+zd1811rs  | Ochorenia alebo zdravotné problémy - pohybová sústava  | narodení obce
+zd1812rs  | Ochorenia alebo zdravotné problémy - vybrané ochorenia  | narodení obce
+zd1813rs  | Ochorenia alebo zdravotné problémy - zuby a ďasná  | narodení obce
+zd1814rs  | Zranenie spôsobené úrazom alebo nehodou  | narodení obce
+zd1815rs  | Index telesnej hmotnosti (BMI)  | narodení obce
+zd1816rs  | Fyzická aktivita  | narodení obce
+zd1817rs  | Konzumácia ovocia a zeleniny  | narodení obce
+zd1818rs  | Fajčenie  | narodení obce
+zd1819rs  | Pitie alkoholu  | narodení obce
+zd1820rs  | Návšteva lekára  | narodení obce
+zd1821rs  | Lekárske vyšetrenie  | narodení obce
+zd1822rs  | Nenaplnená zdravotná starostlivosť  | narodení obce
+zd1823rs  | Užívanie liekov  | narodení obce
+zd1824rs  | Vybrané prenosné choroby povinne hlásené  | narodení obce
+zd2001rs  | Výdavky na zdravotnú starostlivosť podľa funkcie zdravotnej starostlivosti (ICHA-HC) a zdroja financovania (IC | narodení obce
+zd2002rs  | Kalendárne dni pracovnej neschopnosti pre chorobu a úraz podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+zd2003rs  | Lekári v zdravotníckych zariadeniach a posteľový fond v zariadeniach ústavnej zdravotnej starostlivosti podľa  | narodení obce
+zd2004rs  | Lekárne, spotreba liekov  | narodení obce
+zd2005rs  | Pracovná neschopnosť pre chorobu a úraz  | narodení obce
+zd2006rs  | Pracovná neschopnosť pre chorobu a úraz podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+zd2007rs  | Pracovné miesta a postele v zdravotníckych zariadeniach  | narodení obce
+zd2009rs  | Pracovníci pracujúci v zdravotníctve k 31. 12.  | narodení obce
+zd3001rr  | Nemocensky poistení a zamestnanci na rizikových pracoviskách  | narodení obce
+zd3002rr  | Pracovná neschopnosť - prípady  | narodení obce
+zd3004rr  | Zdravotnícke zariadenia  | narodení obce
+zd3005rr  | Miera antikoncepcie u žien v reprodukčnom veku  | narodení obce
+zd5001rr OBCE | Zdravotníctvo  | narodení obce
+zo0001ms  | Zahraničný obchod podľa mesiacov  | narodení obce
+zo0003rs  | Zahraničný obchod podľa tried Harmonizovaného systému po rokoch | narodení obce
+zo0004rs  | Zahraničný obchod podľa krajín, kontinentov a ekonomických zoskupení po rokoch | narodení obce
+zo0005ms  | Sezónne očistené údaje zahraničného obchodu po mesiacoch | narodení obce
+zo0006ms  | Zahraničný obchod podľa tried SITC Rev. 4 po mesiacoch | narodení obce
+zo0009ms  | Zahraničný obchod podľa štatistickej klasifikácie produktov podľa činností (CPA 2.1) po mesiacoch | narodení obce
+zo0010ms  | Zahraničný obchod podľa kapitol Harmonizovaného systému po mesiacoch | narodení obce
+zo0011ms  | Zahraničný obchod podľa krajín, kontinentov a ekonomických zoskupení po mesiacoch | narodení obce
+zo0012ms  | Zahraničný obchod podľa tried Harmonizovaného systému po mesiacoch | narodení obce
+zo0014rs  | Zahraničný obchod s vybranými krajinami podľa tried nomenklatúry SITC Rev. 4 po rokoch | narodení obce
+zo0015rs  | Zahraničný obchod podľa kapitol Harmonizovaného systému po rokoch | narodení obce
+zo0016rs  | Zahraničný obchod podľa tried SITC Rev. 4 po rokoch | narodení obce
+zo0017rs  | Zahraničný obchod podľa štatistickej klasifikácie produktov podľa činností (CPA 2.1) po rokoch | narodení obce
+zo0018ms  | Zahraničný obchod s vybranými krajinami podľa tried nomenklatúry SITC Rev. 4 po mesiacoch | narodení obce
+zo0019rs  | Zahraničný obchod podľa oddielov SITC, Rev. 4 po rokoch | narodení obce
+zo0020ms  | Zahraničný obchod podľa hlavných ekonomických kategórií (BEC Rev. 4) - mesačne | narodení obce
+zo0021rs  | Zahraničný obchod podľa hlavných ekonomických kategórií (BEC Rev. 4) - ročne | narodení obce
+zo1826ms  | Zahraničný obchod podľa krajín a podpoložiek kombinovanej nomenklatúry (KN8) po mesiacoch  | narodení obce
+zp1001rs  | Uvádzanie prípravkov na ochranu rastlín na trh   | narodení obce
+zp1002rs  | Účet emisií do ovzdušia    | narodení obce
+zp1003rs  | Účet materiálových tokov - domáca ťažba  | narodení obce
+zp1004rs  | Účet materiálových tokov - dovoz a vývoz  | narodení obce
+zp1005rs  | Množstvo komunálneho odpadu podľa spôsobu nakladania (v tonách)  | narodení obce
+zp1006rs OBCE | Náklady a výnosy v ochrane životného prostredia  | narodení obce
+zp1007rs  | Dane súvisiace so životným prostredím  | narodení obce
+zp1008rs  | Domáca materiálová spotreba podľa materiálov  | narodení obce
+zp1009rs  | Podiel odvetví hospodárstva a domácností na daniach z energie  | narodení obce
+zp1010rs  | Národné parky a chránené krajinné oblasti  | narodení obce
+zp1012rs  | Množstvo odpadu podľa SK NACE Rev. 2, kategórie odpadu a spôsobu nakladania s odpadom - ročne  | narodení obce
+zp1801rs  | Množstvo vzniknutého odpadu | narodení obce
+zp1802rs  | Množstvo zhodnoteného a zneškodneného odpadu | narodení obce
+zp2001rs  | Chránené územia v Slovenskej republike  | narodení obce
+zp2003rs  | Stupeň poškodenia lesov podľa drevín k 31. 12.  | narodení obce
+zp2004rs  | Emisie ťažkých kovov  | narodení obce
+zp2005rs  | Emisie základných znečisťujúcich látok podľa druhu ekonomickej činnosti  | narodení obce
+zp2006rs  | Hodnoty prízemného ozónu  | narodení obce
+zp2007rs  | Imisie základných znečisťujúcich látok vo vybraných lokalitách - ročné priemery  | narodení obce
+zp2009rs  | Náklady na ochranu životného prostredia podľa ekonomických činností (SK NACE Rev. 2)  | narodení obce
+zp2010rs  | Náklady na ochranu životného prostredia  | narodení obce
+zp3001rr  | Množstvo komunálneho odpadu podľa podskupín odpadu (v tonách)  | narodení obce
+zp3002rr  | Relatívne ukazovatele z oblasti nakladania s komunálnym odpadom  | narodení obce
+zp3003rr  | Emisie základných znečisťujúcich látok z veľkých a stredných zdrojov znečistenia ovzdušia (2001-2018) | narodení obce
+zp3006rr  | Množstvo odpadu podľa územia, kategórie odpadu a spôsobu nakladania s odpadom - ročne | narodení obce
+zp3701rr OBCE | Životné prostredie - mestá  | narodení obce
+zp3801rr  | Množstvo komunálneho odpadu podľa druhov odpadu za okres (v tonách)  | narodení obce
+zp3802rr  | Množstvo komunálneho odpadu podľa spôsobu nakladania za okres (v tonách)  | narodení obce
+zp3803rs  | Emisie základných znečisťujúcich látok  | narodení obce
+zp3804rr OBCE | Množstvo komunálneho odpadu podľa druhov odpadu za obce (v tonách) | narodení obce
+zp5003rr OBCE | Klimatické podmienky | narodení obce
+https://volby.statistics.sk/opendata/ 403 []
+https://volby.statistics.sk/prez/prez2024/sk/data02.html 404 []
+https://volby.statistics.sk/prez/prez2024/sk/download.html 404 []
 HOTOVO
