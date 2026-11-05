@@ -72,7 +72,7 @@ def okresne_mediany(obce: dict[str, dict], polia: list[str]) -> dict:
 # ---------------- pohyb obyvateľstva ----------------
 
 POHYB_KL = {"živonarodení": "nar", "narodení": "nar", "živonarodené deti": "nar", "zomretí": "zom", "zomrelí": "zom",
-            "prisťahovaní": "pri", "vysťahovaní": "vys"}
+            "celkový prírastok obyvateľstva": "cel"}
 
 
 def pohyb_kluc(ind: str) -> str | None:
@@ -87,7 +87,7 @@ def pohyb() -> None:
         return pohyb_kluc(x.get("e_indic", "")) is not None
     t = tabulka("om7103rr", "e_indic", rokov=10, filtr=f)
     najdene = {pohyb_kluc(i) for i in vsetky_ind} - {None}
-    if len(najdene) < 4:
+    if not {"nar", "zom", "cel"} <= najdene:
         print(f"::warning title=Pohyb obyvateľstva::nenájdené ukazovatele {set(POHYB_KL.values()) - najdene}; v kocke: {sorted(vsetky_ind)}")
     obce: dict[str, dict] = {}
     roky_vsetky = sorted({k[0] for v in t.values() for k in v})
@@ -96,8 +96,8 @@ def pohyb() -> None:
         rad = {}
         for r in roky:
             z = {pohyb_kluc(k[1]): int(v) for k, v in d.items() if k[0] == r}
-            if len(z) == 4:
-                rad[r] = [z["nar"], z["zom"], z["pri"], z["vys"]]
+            if {"nar", "zom", "cel"} <= set(z):  # saldo sťahovania = celkový prírastok − prirodzený prírastok
+                rad[r] = [z["nar"], z["zom"], z["cel"] - (z["nar"] - z["zom"])]
         if rad:
             obce[kod] = {"rad": rad}
     vek = tabulka("om7052rr", "e_indic", "e_sex", rokov=11, filtr=lambda x: x.get("e_sex", "").strip() == "Spolu")
