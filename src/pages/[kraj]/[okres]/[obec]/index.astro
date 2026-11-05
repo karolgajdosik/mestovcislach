@@ -199,7 +199,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
       {pohRad.length > 2 && (
         <div class="ob-obal">
           <table class="ob-tab ob-pohyb">
-            <thead><tr><th>Rok</th><th class="num">Narodení</th><th class="num">Zomrelí</th><th class="num">Saldo sťahovania</th><th class="num">Zmena spolu</th></tr></thead>
+            <thead><tr><th>Rok</th><th class="num">Narodení</th><th class="num">Zomrelí</th><th class="num">Sťahovanie</th><th class="num">Spolu</th></tr></thead>
             <tbody>{pohRad.slice().reverse().map(([r, [a, b, c]]) => { const z = a - b + c; const zn = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${fmt(Math.abs(v))}`; return <tr><td>{r}</td><td class="num">{fmt(a)}</td><td class="num">{fmt(b)}</td><td class={`num ${c < 0 ? 'zaporne' : ''}`}>{zn(c)}</td><td class={`num ${z < 0 ? 'zaporne' : ''}`}>{zn(z)}</td></tr>; })}</tbody>
           </table>
         </div>
@@ -396,7 +396,9 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
         {slu?.zdravie ? ZDR.filter(([k]) => slu.zdravie![k]).map(([k, f]) => <li><b>{fmt(slu.zdravie![k])}</b> {tvar(f, slu.zdravie![k])}</li>) : <li>Žiadna ambulancia ani lekáreň (podľa štatistiky {sluI?.roky?.zdravie}).</li>}
         <li>{slu?.posta ? <><b>{slu.posta === 1 ? 'Pošta' : `${slu.posta} pošty`}</b> v obci</> : 'Pošta v obci nie je.'}</li>
         {slu?.kniznica && <li><b>Obecná knižnica</b>{slu.kniznica[1] ? ` · ${fmt(slu.kniznica[1])} kníh a iných jednotiek` : ''}</li>}
-        {vl ? vl.map(([n, c]) => <li><b>Vlak:</b> <span translate="no">{n}</span> · {fmt(c)} {c === 1 ? 'vlak' : c < 5 ? 'vlaky' : 'vlakov'} v pracovný deň</li>) : vlI && <li>Železničná stanica ani zastávka v obci nie je.</li>}
+        {vl ? (vl.length > 4
+          ? <li><b>Vlak:</b> {vl.length} staníc a zastávok, najviac <span translate="no">{vl[0][0]}</span> ({fmt(vl[0][1])} vlakov v pracovný deň){vl.slice(1, 3).map(([n, c]) => <>, <span translate="no">{n}</span> ({fmt(c)})</>)}</li>
+          : vl.map(([n, c]) => <li><b>Vlak:</b> <span translate="no">{n}</span> · {fmt(c)} {c === 1 ? 'vlak' : c < 5 ? 'vlaky' : 'vlakov'} v pracovný deň</li>)) : vlI && <li>Železničná stanica ani zastávka v obci nie je.</li>}
       </ul>
       {turP && turP.zariadeni ? <p class="pozn">Ubytovanie ({turRok}): {fmt(turP.zariadeni)} {turP.zariadeni === 1 ? 'ubytovacie zariadenie' : turP.zariadeni < 5 ? 'ubytovacie zariadenia' : 'ubytovacích zariadení'}{turP.lozok ? ` s ${fmt(turP.lozok)} lôžkami` : ''}{turP.vyuzitie ? `, využitie lôžok ${des(turP.vyuzitie)} %` : ''}.</p> : null}
       <p class="zdroj">Zdroj: ŠÚ SR – zdravotníctvo za obce ({sluI?.roky?.zdravie}), pošty a knižnice ({sluI?.roky?.posta}); ŽSR – grafikon vlakovej dopravy (GTFS){vlI?.den ? `, počet vlakov ${datum(vlI.den)}` : ''}{turP ? '; ŠÚ SR – kapacity ubytovacích zariadení' : ''}. Ambulancie sú počítané podľa sídla – mená lekárov neuvádzame.</p>

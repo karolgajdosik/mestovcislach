@@ -62,3 +62,4 @@ section.card { margin-bottom: 16px; }
 .ob-zoznam li { padding-left: 1.1rem; position: relative; }
 .ob-zoznam li::before { content: '•'; position: absolute; left: .2rem; color: var(--accent); }
 .ob-pohyb td.zaporne { color: var(--danger, #b42318); }
+@media (max-width: 480px) { .ob-pohyb th, .ob-pohyb td { padding-left: .3rem; padding-right: .3rem; font-size: .88rem; } }
