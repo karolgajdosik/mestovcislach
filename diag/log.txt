@@ -1,25 +1,55 @@
-== om7103rr Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (ročne)  2025-12-31
-   e_indic CODELIST 46 [{"id": "6aa32d2b-eb47-4eb1-a242-054a3b9fdc87", "nameSk": "Narodení", "nameEn": "Birth", "acronym": "U_OM_0006", "code": "PC485063", "orderNumber": 184}, {"id": "c960d4c4-3b93-423f-bbd4-dbd49adbc54e", "nameSk": "Hrubá miera živorodenosti", "nameEn": "Crude birth rate", "acronym": "U_OM_0007", "code"
-   e_unit CODELIST 4 [{"id": "fc3edee1-64b7-45c2-8f2c-114cd3463f2f", "nameSk": "Osoby", "nameEn": "Persons", "acronym": "UNIT_PERS", "code": "PC487313", "orderNumber": 2}, {"id": "43ff111b-1a3d-4c34-895e-74933058942e", "nameSk": "Počet", "nameEn": "Number", "acronym": "UNIT_NR", "code": "PC487318", "orderNumber": 7}]
-      ['Osoby', 'Počet', 'miera v promile', 'Podiel v %']
-   e_year TIME 33 [{"id": "5f8a8e4b-c442-463d-a2f5-2432aab449cd", "nameSk": "1993", "nameEn": "1993", "acronym": "1993", "code": "PC391758", "orderNumber": 94}, {"id": "f59219e0-5898-45fe-b4d9-a6d883f21ad6", "nameSk": "1994", "nameEn": "1994", "acronym": "1994", "code": "PC391759", "orderNumber": 95}]
-      ['1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
-== om7052rr Indexy vekového zloženia - SR-oblasť-kraj-okres-obec, m-v  2025-12-31
-   e_sex CODELIST 3 [{"id": "b9ecd8be-b816-43ea-bd1a-ce7ff5cd05cc", "nameSk": "Spolu", "nameEn": "Total", "acronym": "TOTAL", "code": "PC088602", "orderNumber": 1}, {"id": "59d78552-2fbc-4237-8037-8508f1a6581b", "nameSk": "Muži", "nameEn": "Males", "acronym": "SEX_M", "code": "PC088603", "orderNumber": 2}]
-      ['Spolu', 'Muži', 'Ženy']
-   e_indic CODELIST 9 [{"id": "c82c1697-657d-4954-b60e-72585128f644", "nameSk": "Index ekonomického zaťaženia - počet osob v predproduktívnom (0-14) a poproduktívnom veku (65+) na 100 osôb v produktívnom veku (15-64)", "nameEn": "Economic Dependency Ratio – the number of persons of pre-working age (0–14) and post-working
-      ['Index ekonomického zaťaženia - počet osob v predproduktívnom (0-14) a poproduktívnom veku (65+) na 100 osôb v produktívnom veku (15-64)', 'Index ekonomickej závislosti mladých ľudí', 'Index ekonomickej závislosti starých ľudí', 'Index starnutia', 'Mediánový vek obyvateľa', 'Priemerný vek obyvateľa', 'Podiel obyvateľov v predproduktívnom veku', 'Podiel obyvateľov v produktívnom veku', 'Podiel obyvateľov v poproduktívnom veku']
-   e_unit CODELIST 2 [{"id": "bbdd0748-b827-4856-963a-3bbca6762904", "nameSk": "Roky", "nameEn": "Years", "acronym": "UNIT_YRS", "code": "PC487374", "orderNumber": 63}, {"id": "12889070-3646-4c52-995f-3e36076d9b92", "nameSk": "Podiel v %", "nameEn": "Share in %", "acronym": "UNIT_VPC_SHARE", "code": "PC487595", "orderNu
-      ['Roky', 'Podiel v %']
-   e_year TIME 30 [{"id": "6b3cc07d-72f4-436f-8097-8b304cd3be0c", "nameSk": "1996", "nameEn": "1996", "acronym": "1996", "code": "PC391761", "orderNumber": 97}, {"id": "79d756d7-e176-4d17-a548-afd547a88311", "nameSk": "1997", "nameEn": "1997", "acronym": "1997", "code": "PC391762", "orderNumber": 98}]
-      ['1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']
-== cr3805qr Návštevnosť, tržby a kapacity UZ - SR, kraje, okresy, obce (13 ukazovateľov)  2026-06-30
-   e_quarter TIME 5 [{"id": "882963f9-3880-42b7-948b-98724234a05c", "nameSk": "1. Q.", "nameEn": "1. Q.", "acronym": "1. Q.", "code": "PC391830", "orderNumber": 1}, {"id": "b4d5761b-f552-499b-85c3-20ef23ebb58d", "nameSk": "2. Q.", "nameEn": "2. Q.", "acronym": "2. Q.", "code": "PC391831", "orderNumber": 2}]
-      ['1. Q.', '2. Q.', '3. Q.', '4. Q.', '1. - 4. Q.']
-   e_indic CODELIST 13 [{"id": "bca1128e-18fe-4b40-93b2-6fc3a998aada", "nameSk": "Celkový počet ubytovacích zariadení k dispozícii", "nameEn": "Total number of available accommodation establishments", "acronym": "U_CR_0002", "code": "PC485185", "orderNumber": 306}, {"id": "b6b36d9c-33c0-405e-b898-2dca53e4df14", "nameSk": 
-      ['Celkový počet ubytovacích zariadení k dispozícii', 'Celkový počet izieb k dispozícii', 'Celkový počet lôžok (vrátane kempingových miest) k dispozícii', 'Tržby za ubytovanie spolu', 'Tržby zahraničných návštevníkov', 'Tržby domácich návštevníkov', 'Priemerná cena za ubytovanie v ubytovacích zariadeniach', 'Priemerná cena za ubytovanie v ubytovacích zariadeniach za zahraničného návštevníka', 'Priemerná cena za ubytovanie v ubytovacích zariadeniach za domáceho návštevníka', 'Čisté využitie stálych lôžok v ubytovacích zariadeniach', 'Čisté využitie izieb', 'Priemerný počet izieb k dispozícii v 1 dni', 'Priemerný počet stálych lôžok k dispozícii v 1 dni']
-   e_unit CODELIST 3 [{"id": "43ff111b-1a3d-4c34-895e-74933058942e", "nameSk": "Počet", "nameEn": "Number", "acronym": "UNIT_NR", "code": "PC487318", "orderNumber": 7}, {"id": "aa4ec7c7-9b4c-4dc9-9ad4-6b3d6c4b444a", "nameSk": "%", "nameEn": "%", "acronym": "UNIT_VPC", "code": "PC487324", "orderNumber": 13}]
-      ['Počet', '%', 'EUR']
-   e_year TIME 10 [{"id": "f4d8e542-4e59-42c0-a75d-0505e97c267a", "nameSk": "2017", "nameEn": "2017", "acronym": "2017", "code": "PC391792", "orderNumber": 128}, {"id": "454c0df6-e2b5-4c5d-a14b-d59e8d8e2077", "nameSk": "2018", "nameEn": "2018", "acronym": "2018", "code": "PC391793", "orderNumber": 129}]
-      ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026']
+https://volby.statistics.sk/prez/prez2024/sk/ 200 26244 []
+https://volby.statistics.sk/prez/prez2024/sk/index.html 200 26244 []
+https://volby.statistics.sk/prez/prez2024/ 200 600 []
+https://volby.statistics.sk/tree-sk.html 404 210 []
+https://volby.statistics.sk/opendata/prez/2024/PREZ2024_1K_SK_tab02d.csv 404 242 []
+https://volby.statistics.sk/opendata/prez/2024/PREZ2024_SK_tab02d.csv 404 239 []
+e_year,ASC,2024,2025 200 163236 ['2024', '2025'] 
+    {'e_year': '2024', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomickej závislosti mladých ľudí', 'e_sex': 'Spolu', 'hodnota': '22.34'}
+    {'e_year': '2024', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomickej závislosti starých ľudí', 'e_sex': 'Spolu', 'hodnota': '33.3'}
+    {'e_year': '2024', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomického zaťaženia - počet osob v predproduktívnom (0-14) a poproduktívnom veku (65+) na 100 osôb v produktívnom veku (15-64)', 'e_sex': 'Spolu', 'hodnota': '55.64'}
+    {'e_year': '2024', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index starnutia', 'e_sex': 'Spolu', 'hodnota': '149.06'}
+    {'e_year': '2024', 'e_nuts15': 'Vígľaš', 'e_indic': 'Mediánový vek obyvateľa', 'e_sex': 'Spolu', 'hodnota': '45.4'}
+    {'e_year': '2024', 'e_nuts15': 'Vígľaš', 'e_indic': 'Podiel obyvateľov v poproduktívnom veku', 'e_sex': 'Spolu', 'hodnota': '21.39'}
+    {'e_year': '2024', 'e_nuts15': 'Vígľaš', 'e_indic': 'Podiel obyvateľov v predproduktívnom veku', 'e_sex': 'Spolu', 'hodnota': '14.35'}
+    {'e_year': '2024', 'e_nuts15': 'Vígľaš', 'e_indic': 'Podiel obyvateľov v produktívnom veku', 'e_sex': 'Spolu', 'hodnota': '64.25'}
+    {'e_year': '2024', 'e_nuts15': 'Vígľaš', 'e_indic': 'Priemerný vek obyvateľa', 'e_sex': 'Spolu', 'hodnota': '44.31'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomickej závislosti mladých ľudí', 'e_sex': 'Spolu', 'hodnota': '21.01'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomickej závislosti starých ľudí', 'e_sex': 'Spolu', 'hodnota': '35.45'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomického zaťaženia - počet osob v predproduktívnom (0-14) a poproduktívnom veku (65+) na 100 osôb v produktívnom veku (15-64)', 'e_sex': 'Spolu', 'hodnota': '56.47'}
+e_year,ASC,2025 200 81618 ['2025'] 
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomickej závislosti mladých ľudí', 'e_sex': 'Spolu', 'hodnota': '21.01'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomickej závislosti starých ľudí', 'e_sex': 'Spolu', 'hodnota': '35.45'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomického zaťaženia - počet osob v predproduktívnom (0-14) a poproduktívnom veku (65+) na 100 osôb v produktívnom veku (15-64)', 'e_sex': 'Spolu', 'hodnota': '56.47'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index starnutia', 'e_sex': 'Spolu', 'hodnota': '168.72'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Mediánový vek obyvateľa', 'e_sex': 'Spolu', 'hodnota': '46.3'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Podiel obyvateľov v poproduktívnom veku', 'e_sex': 'Spolu', 'hodnota': '22.66'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Podiel obyvateľov v predproduktívnom veku', 'e_sex': 'Spolu', 'hodnota': '13.43'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Podiel obyvateľov v produktívnom veku', 'e_sex': 'Spolu', 'hodnota': '63.91'}
+    {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_indic': 'Priemerný vek obyvateľa', 'e_sex': 'Spolu', 'hodnota': '45.01'}
+e_year,ASC,2024|2025 400 0 [] {"message":"The selected dimension items are not present in this cube"}
+e_year,DESC,all 200 2446712 ['1996', '1997', '1998', '1999', '2000', '2001'] 
+    {'e_year': '2019', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomickej závislosti mladých ľudí', 'e_sex': 'Spolu', 'hodnota': '22.35'}
+    {'e_year': '2019', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomickej závislosti starých ľudí', 'e_sex': 'Spolu', 'hodnota': '29.32'}
+    {'e_year': '2019', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomického zaťaženia - počet osob v predproduktívnom (0-14) a poproduktívnom veku (65+) na 100 osôb v produktívnom veku (15-64)', 'e_sex': 'Spolu', 'hodnota': '51.67'}
+    {'e_year': '2019', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index starnutia', 'e_sex': 'Spolu', 'hodnota': '131.2'}
+    {'e_year': '2019', 'e_nuts15': 'Vígľaš', 'e_indic': 'Mediánový vek obyvateľa', 'e_sex': 'Spolu', 'hodnota': '43.7'}
+    {'e_year': '2019', 'e_nuts15': 'Vígľaš', 'e_indic': 'Podiel obyvateľov v poproduktívnom veku', 'e_sex': 'Spolu', 'hodnota': '19.33'}
+    {'e_year': '2019', 'e_nuts15': 'Vígľaš', 'e_indic': 'Podiel obyvateľov v predproduktívnom veku', 'e_sex': 'Spolu', 'hodnota': '14.74'}
+    {'e_year': '2019', 'e_nuts15': 'Vígľaš', 'e_indic': 'Podiel obyvateľov v produktívnom veku', 'e_sex': 'Spolu', 'hodnota': '65.93'}
+    {'e_year': '2019', 'e_nuts15': 'Vígľaš', 'e_indic': 'Priemerný vek obyvateľa', 'e_sex': 'Spolu', 'hodnota': '43.26'}
+    {'e_year': '2020', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomickej závislosti mladých ľudí', 'e_sex': 'Spolu', 'hodnota': '21.37'}
+    {'e_year': '2020', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomickej závislosti starých ľudí', 'e_sex': 'Spolu', 'hodnota': '31.32'}
+    {'e_year': '2020', 'e_nuts15': 'Vígľaš', 'e_indic': 'Index ekonomického zaťaženia - počet osob v predproduktívnom (0-14) a poproduktívnom veku (65+) na 100 osôb v produktívnom veku (15-64)', 'e_sex': 'Spolu', 'hodnota': '52.68'}
+https://www.zsdis.sk/Uvod/Odstavky 404 https://www.zsdis.sk/Uvod/Odstavky 5315  Západoslovenská distribučná window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-37198911-1', {cookie_flags: 'secure;samesite=none'}); MENU Error 404 - stránka nenájdená Stránka, ktorú ste zadali sa na serveri nenachádz
+    []
+https://www.zsdis.sk/odstavky 200 https://www.zsdis.sk/Uvod/Odstavky-a-poruchy 51735  Odstávky a poruchy - Západoslovenská distribučná, a. s. window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-37198911-1', {cookie_flags: 'secure;samesite=none'}); --> Preskočiť na obsah Domácnosti Podnikatelia Výrobcovia D
+    ['/Uvod/Dodavatelia/API-sluzby', '/Uvod/Odstavky-a-poruchy/Naklady-za-vyjazd-a-opravu-po-nahlaseni-poruchy', '/Uvod/Online-sluzby/Odstavky-a-poruchy', '/Uvod/Online-sluzby/Planovane-odstavky', '/Uvod/Spolocnost/Kontakty#Napiste-nam']
+https://www.ssd.sk/odstavky 404 https://www.ssd.sk/odstavky 43961  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-7R0NQ9N3ZE'); // create dataLayer window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } // set „denied" as default for both ad and ana
+    ['/manifest.json?v=dLmr3JgkNe', '/planovane-odstavky?page_id=4958', '/rss?page_id=6315', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js']
+https://www.ssd.sk/planovane-odstavky 200 https://www.ssd.sk/planovane-odstavky?page_id=4958 47265  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-7R0NQ9N3ZE'); // create dataLayer window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } // set „denied" as default for both ad and ana
+    ['/manifest.json?v=dLmr3JgkNe', '/planovane-odstavky/notifikacie-o-planovanych-odstavkach?page_id=5240', '/planovane-odstavky?page_id=4958', '/rss?page_id=6315', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js']
+ERR https://www.vsds.sk/odstavky HTTPSConnectionPool(host='www.vsds.sk', port=443): Max retries exceeded with url: /odstavky (Caused by ConnectTimeoutErr
+ERR https://www.vsds.sk/planovane-odstavky HTTPSConnectionPool(host='www.vsds.sk', port=443): Max retries exceeded with url: /planovane-odstavky (Caused by Connect
+gtfs 200 220452 b'<!'
 HOTOVO
