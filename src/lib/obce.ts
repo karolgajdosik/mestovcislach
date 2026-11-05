@@ -174,7 +174,7 @@ export function kvizObce(o: Obec): OtazkaObce[] {
 }
 
 // Zmluvy z CRZ (scripts/zber_zmluvy_obce.py) a zámery EIA/SEA (scripts/zber_eia_obce.py) – podľa kódu obce.
-export type ZmluvyObce = { roky: Record<string, [number, number]>; fo: [number, number]; partneri: [string, number, number][]; najvacsie: [string, string, number, string, string][] };
+export type ZmluvyObce = { roky: Record<string, [number, number]>; fo: [number, number]; partneri: [string, number, number][]; najvacsie: [string, string, number, string, string][]; nfp?: [number, number]; nfp_zoz?: [string, string, number, string, string][]; podozrive?: number };
 export type EiaObce = { spolu: number; aktivne: number; zamery: [string, string, string, string, string, string, boolean][] };
 let _zm: { od: string; do: string; obce: Record<string, ZmluvyObce> } | null | undefined;
 let _eia: { web: string; obce: Record<string, EiaObce> } | null | undefined;
@@ -204,3 +204,14 @@ export const medianOkresu = (obce: Obec[], rok: string, f: (h: HospRok) => numbe
   const m = Math.floor(hodnoty.length / 2);
   return hodnoty.length % 2 ? hodnoty[m] : (hodnoty[m - 1] + hodnoty[m]) / 2;
 };
+
+// Nezamestnanosť (ÚPSVaR), komunálny odpad (ŠÚ SR), školy (MŠVVaM) – scripts/zber_obce_temy.py.
+export type NezamObce = { uoz: number; disp: number; opv: number; abs: number; pdu: number | null; rad: Record<string, number> };
+export type OdpadRok = { t: number; triedene: number; bio: number; kg?: number; kg_zmes?: number };
+export type SkolyObce = { typy: Record<string, [number, number]>; zoznam: [string, string, number | null][] };
+let _nez: { mesiac: string; sr: number; okresy: Record<string, number>; obce: Record<string, NezamObce> } | null | undefined;
+let _odp: { rok: string; sr: { triedene: number; kg_zmes: number }; okresy: Record<string, { triedene: number | null; kg_zmes: number | null }>; obce: Record<string, Record<string, OdpadRok>> } | null | undefined;
+let _sk: { typy: Record<string, string>; obce: Record<string, SkolyObce> } | null | undefined;
+export const nezamInfo = () => (_nez === undefined ? (_nez = citaj('data', 'obce', 'nezamestnanost.json')) : _nez);
+export const odpadInfo = () => (_odp === undefined ? (_odp = citaj('data', 'obce', 'odpad.json')) : _odp);
+export const skolyInfo = () => (_sk === undefined ? (_sk = citaj('data', 'obce', 'skoly.json')) : _sk);

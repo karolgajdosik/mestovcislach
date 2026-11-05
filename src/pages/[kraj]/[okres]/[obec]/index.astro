@@ -6,7 +6,7 @@ import '../../../../styles/stranka.css';
 import '../../../../styles/obce.css';
 import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
 import Kalendar from '../../../../components/Kalendar.astro';
-import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, type Obec } from '../../../../lib/obce';
+import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, type Obec } from '../../../../lib/obce';
 import { skrat } from '../../../../lib/zastupitelstvo';
 
 export function getStaticPaths() {
@@ -78,6 +78,28 @@ const zmInfo = zmluvyInfo();
 const eia = eiaObce(o.kod);
 const eur = (n: number) => n >= 1e6 ? `${des(n / 1e6)} mil. €` : `${fmt(Math.round(n))} €`;
 const datum = (d: string) => d.split('-').reverse().map((x, i) => (i < 2 ? String(Number(x)) : x)).join('. ');
+// nezamestnanosť (ÚPSVaR)
+const nezI = nezamInfo();
+const nez = nezI?.obce?.[o.kod] ?? null;
+const nezOkres = nezI?.okresy?.[o.okres] ?? null;
+const MES = ['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december'];
+const mesiacText = (m: string) => `${MES[Number(m.slice(5, 7)) - 1]} ${m.slice(0, 4)}`;
+const nezRad = nez ? Object.entries(nez.rad).sort(([a], [b]) => a.localeCompare(b)) : [];
+const nezMax = Math.max(1, ...nezRad.map(([, x]) => x), nezOkres ?? 0);
+const nezRok = nez && nezRad.length >= 13 ? nezRad[nezRad.length - 1][1] - nezRad[0][1] : null;
+// odpad (ŠÚ SR)
+const odI = odpadInfo();
+const od = odI?.obce?.[o.kod] ?? null;
+const odRok = od ? Object.keys(od).sort().pop()! : null;
+const odP = od && odRok ? od[odRok] : null;
+const odOkr = odI?.okresy?.[o.okres] ?? null;
+// školy (MŠVVaM)
+const skI = skolyInfo();
+const sk = skI?.obce?.[o.kod] ?? null;
+const skolText = (n: number) => (n === 1 ? 'zariadenie' : n < 5 ? 'zariadenia' : 'zariadení');
+// eurofondy a dotácie (zmluvy o NFP v CRZ)
+const nfp = zm?.nfp && zm.nfp[0] > 0 ? zm : null;
+const zmlText = (n: number) => (n === 1 ? 'zmluva' : n < 5 ? 'zmluvy' : 'zmlúv');
 const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` : ''}${z10 != null ? `, za 10 rokov ${z10 > 0 ? '+' : ''}${des(z10)} %` : ''}${st ? `. Starosta 2026: ${bezTit(st.meno)}` : ''}. Sčítanie 2021, voľby a poslanci.`;
 ---
 <Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis}
@@ -178,6 +200,36 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
     </section>
   )}
 
+  {nez && nezI && (
+    <section class="card" id="nezamestnanost">
+      <h2>Nezamestnanosť</h2>
+      <ul class="ob-cisla">
+        {nez.pdu != null && <li><b>{des(nez.pdu, 1)} %</b><span>miera nezamestnanosti ({mesiacText(nezI.mesiac)})</span></li>}
+        {nezOkres != null && <li><b>{des(nezOkres, 1)} %</b><span>okres {o.okres}</span></li>}
+        {nezI.sr != null && <li><b>{des(nezI.sr, 1)} %</b><span>Slovensko</span></li>}
+        <li><b>{fmt(nez.uoz)}</b><span>{nez.uoz === 1 ? 'uchádzač' : nez.uoz > 1 && nez.uoz < 5 ? 'uchádzači' : 'uchádzačov'} o zamestnanie{nez.abs ? `, z toho ${fmt(nez.abs)} ${nez.abs === 1 ? 'absolvent' : nez.abs < 5 ? 'absolventi' : 'absolventov'}` : ''}</span></li>
+      </ul>
+      {nezRad.length > 2 && (
+        <div class="ob-stlpce" role="img" aria-label={`Miera nezamestnanosti za posledných ${nezRad.length} mesiacov`}>
+          {nezRad.map(([m, x]) => <div title={`${mesiacText(m)}: ${des(x, 2)} %`}><span style={`height:${Math.max(2, (x / nezMax) * 100)}%`}></span><small>{m.slice(5, 7) === '01' || m === nezRad[0][0] ? `${Number(m.slice(5, 7))}/${m.slice(2, 4)}` : Number(m.slice(5, 7))}</small></div>)}
+        </div>
+      )}
+      {nezRok != null && <p class="pozn">Za posledný rok {Math.abs(nezRok) < 0.05 ? 'bez výraznej zmeny' : `${nezRok < 0 ? 'pokles' : 'nárast'} o ${des(Math.abs(nezRok), 1)} percentuálneho bodu`}.</p>}
+      <p class="zdroj">Zdroj: <a href={nezI.zdroj?.url ?? 'https://www.upsvr.gov.sk'} rel="noopener">ÚPSVaR – mesačná štatistika uchádzačov o zamestnanie podľa obcí</a>. Miera = podiel disponibilných uchádzačov o zamestnanie na obyvateľoch v produktívnom veku (PDU, takto ju ÚPSVaR počíta pre obce a okresy). V malých obciach ju výrazne posunie aj pár ľudí.</p>
+    </section>
+  )}
+
+  {nfp && (
+    <section class="card" id="eurofondy">
+      <h2>Eurofondy a dotácie</h2>
+      <p><b>{fmt(nfp.nfp![0])}</b> {zmlText(nfp.nfp![0])} o nenávratnom finančnom príspevku v hodnote <b>{eur(nfp.nfp![1])}</b> od roku {zmInfo!.od.slice(0, 4)}.</p>
+      <ul class="ob-zmluvy">
+        {nfp.nfp_zoz!.map(([d, p_, s, pr, id]) => <li><a href={`https://www.crz.gov.sk/zmluva/${id}/`} rel="noopener"><b>{eur(s)}</b> <span translate="no">{p_}</span></a><small>{datum(d)}{pr ? ` · ${pr}` : ''}</small></li>)}
+      </ul>
+      <p class="zdroj">Zdroj: <a href="https://www.crz.gov.sk" rel="noopener">Centrálny register zmlúv</a> – zmluvy o poskytnutí nenávratného finančného príspevku (NFP) uzavreté od 1. 1. {zmInfo!.od.slice(0, 4)}, bez dodatkov: eurofondy (Program Slovensko, Program rozvoja vidieka), plán obnovy a ďalšie. Suma je maximálna výška príspevku podľa zmluvy, nie to, čo už obec dostala. Staršie projekty nájdete na <a href="https://www.itms2014.sk" rel="noopener">itms2014.sk</a>.</p>
+    </section>
+  )}
+
   {zmInfo && (
     <section class="card" id="zmluvy">
       <h2>Zmluvy v registri zmlúv</h2>
@@ -205,6 +257,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
               </ul>
             </>
           )}
+          {zm.podozrive ? <p class="pozn">{zm.podozrive === 1 ? 'Jednu zmluvu' : `${zm.podozrive} zmluvy`} s nepravdepodobne vysokou sumou (zjavná chyba v registri) do súm nezapočítavame.</p> : null}
           {zm.fo[0] > 0 && <p class="pozn">Ďalších {fmt(zm.fo[0])} zmlúv s fyzickými osobami alebo partnermi bez IČO ({eur(zm.fo[1])}) len započítavame, bez mien.</p>}
         </>
       ) : (
@@ -225,9 +278,47 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
     </section>
   )}
 
-  {o.poloha && (
-    <Kalendar kraj={o.kraj} />
+  {sk && skI && (
+    <section class="card" id="skoly">
+      <h2>Školy a škôlky</h2>
+      <ul class="ob-cisla">
+        {Object.entries(sk.typy).map(([t_, [n, z]]) => <li><b>{fmt(n)}</b><span>{(skI.typy[t_] ?? t_).toLowerCase()}{z ? ` · ${fmt(z)} ${t_ === 'cvc' ? 'členov' : t_ === 'ms' ? 'detí' : 'žiakov'}` : ''}</span></li>)}
+      </ul>
+      <ul class="ob-zmluvy">
+        {sk.zoznam.map(([n, t_, z]) => <li><span>{n}</span><small>{skI.typy[t_] ?? t_}{z ? ` · ${fmt(z)} ${t_ === 'cvc' ? 'členov' : t_ === 'ms' ? 'detí' : 'žiakov'}` : ''}</small></li>)}
+      </ul>
+      <p class="zdroj">Zdroj: <a href="https://mapaskol.iedu.sk" rel="noopener">MŠVVaM SR – Digitálna mapa škôl</a> (aktuálny školský rok). Súčasti spojených škôl (napr. ZŠ s MŠ) sú uvedené zvlášť, bez jedální a školských klubov.</p>
+    </section>
+  )}
+  {!sk && skI && (
+    <section class="card" id="skoly">
+      <h2>Školy a škôlky</h2>
+      <p>V obci nie je podľa Digitálnej mapy škôl žiadna škola ani škôlka – deti dochádzajú do okolitých obcí.</p>
+      <p class="zdroj">Zdroj: <a href="https://mapaskol.iedu.sk" rel="noopener">MŠVVaM SR – Digitálna mapa škôl</a>.</p>
+    </section>
+  )}
 
+  {odP && odI && odRok && (
+    <section class="card" id="odpad">
+      <h2>Komunálny odpad {odRok}</h2>
+      <div class="ob-obal">
+        <table class="ob-tab">
+          <thead><tr><th></th><th class="num">{o.nazov}</th><th class="num">medián obcí okresu</th><th class="num">medián obcí SR</th></tr></thead>
+          <tbody>
+            <tr><td>Podiel triedeného odpadu<br /><small>odhad zo štatistiky, nie úradná úroveň vytriedenia</small></td><td class="num">{des(odP.triedene, 0)} %</td><td class="num">{odOkr?.triedene != null ? `${des(odOkr.triedene, 0)} %` : '–'}</td><td class="num">{des(odI.sr.triedene, 0)} %</td></tr>
+            {odP.kg_zmes != null && <tr><td>Zmesový odpad na obyvateľa<br /><small>čierna nádoba – čím menej, tým lepšie</small></td><td class="num">{fmt(odP.kg_zmes)} kg</td><td class="num">{odOkr?.kg_zmes != null ? `${fmt(odOkr.kg_zmes)} kg` : '–'}</td><td class="num">{fmt(odI.sr.kg_zmes)} kg</td></tr>}
+            {odP.kg != null && <tr><td>Všetok komunálny odpad na obyvateľa</td><td class="num">{fmt(odP.kg)} kg</td><td class="num">–</td><td class="num">–</td></tr>}
+          </tbody>
+        </table>
+      </div>
+      {Object.keys(od!).length > 1 && <p class="pozn">Podiel triedeného po rokoch: {Object.entries(od!).sort(([a], [b]) => a.localeCompare(b)).map(([r, x]) => `${r} ${des(x.triedene, 0)} %`).join(' · ')}.</p>}
+      <p class="zdroj">Zdroj: <a href="https://statdata.statistics.sk" rel="noopener">ŠÚ SR</a> – množstvo komunálneho odpadu podľa druhov za obce (ročný výkaz obce). Podiel triedeného = všetok komunálny odpad okrem zmesového, objemného a uličného smetia. Úradnú úroveň vytriedenia (od nej závisí poplatok za skládkovanie) počíta obec podľa vyhlášky trochu inak a môže sa líšiť.</p>
+    </section>
+  )}
+
+  <Kalendar kraj={o.kraj} />
+
+  {o.poloha && (
     <section class="card" id="pocasie" data-poloha={JSON.stringify(o.poloha)}>
       <h2>Počasie teraz</h2>
       <p id="po-text" aria-live="polite">Načítavam…</p>

@@ -46,3 +46,10 @@ section.card { margin-bottom: 16px; }
 .ob-zmluvy li { display: grid; gap: 2px; }
 .ob-zmluvy small { color: var(--muted); font-size: 0.85rem; }
 .ob-cisla b.zaporne { color: var(--zle, #b3261e); }
+
+/* nezamestnanosť – stĺpce po mesiacoch */
+.ob-stlpce { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; align-items: end; height: 110px; margin: .75rem 0 .25rem; }
+.ob-stlpce > div { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; min-width: 0; }
+.ob-stlpce span { display: block; width: 100%; max-width: 28px; background: var(--accent, #2563eb); border-radius: 3px 3px 0 0; opacity: .8; }
+.ob-stlpce > div:last-child span { opacity: 1; }
+.ob-stlpce small { font-size: .7rem; color: var(--muted); margin-top: 2px; white-space: nowrap; }
