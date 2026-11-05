@@ -1,18 +1,26 @@
-import re, io, json, requests
+import re, io, json, requests, openpyxl
 H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
-r = requests.get("https://www.upsvr.gov.sk/statistiky/nezamestnanost-mesacne-statistiky/2026.html?page_id=1254", headers=H, timeout=60)
-i = r.text.find("Mesačné štatistiky miest a obcí")
-print(r.text[i-1500:i+300])
-r = requests.get("https://statdata.statistics.sk/public/api/dc/opendata/cubes/all", headers=H, timeout=120)
-print("cubes", r.status_code, len(r.text))
-try:
-    j = r.json()
-    items = j if isinstance(j, list) else j.get("data") or j.get("items") or list(j.values())[0]
-    print(type(items), len(items)); print(json.dumps(items[0], ensure_ascii=False)[:600])
-    for c in items:
-        t = json.dumps(c, ensure_ascii=False)
-        if re.search(r"odpad|nezamest|uchádza|škol|žiak|materské", t, re.I) and re.search(r"obc|obce|LAU|mest", t, re.I):
-            print("  ", t[:300])
-except Exception as e:
-    print("ERR", e, r.text[:500])
+r = requests.get("https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci.html?page_id=1009850", headers=H, timeout=60)
+odk = re.findall(r'href="([^"]+)"[^>]*>([^<]*)<', r.text)
+cand = [(u, t.strip()) for u, t in odk if re.search(r"\.(xlsx?|csv|zip|json)", u, re.I) or "page_id=10098" in u]
+for x in cand[:40]: print(x)
+x = next((u for u, t in cand if re.search(r"\.(xlsx?|csv|zip)", u, re.I)), None)
+if x:
+    if x.startswith("/"): x = "https://www.upsvr.gov.sk" + x
+    f = requests.get(x, headers=H, timeout=120); print("file", x, f.status_code, len(f.content), f.content[:4])
+    if f.content[:2] == b"PK" and x.lower().endswith(("xlsx", "xls")):
+        wb = openpyxl.load_workbook(io.BytesIO(f.content), read_only=True, data_only=True)
+        print(wb.sheetnames)
+        for ws in wb.worksheets[:3]:
+            for i, row in enumerate(ws.iter_rows(values_only=True)):
+                if i > 14: break
+                print("  ", [c for c in row][:14])
+# STATdata sections search for odpad
+r = requests.get("https://statdata.statistics.sk/public/api/dc/public/sections/expandAll", headers=H, timeout=120)
+print("sections", r.status_code, len(r.text))
+if r.ok:
+    t = r.text
+    for m in re.finditer(r'"(?:code|publicId|dataCubeId|kod)"\s*:\s*"([a-z]{2}\d{4}[a-z]{2})"[^{}]{0,400}', t):
+        s = m.group(0)
+        if re.search(r"odpad|uchádz|nezamest|škôl|žiak|materskej", s, re.I): print("  ", s[:250])
 print("HOTOVO")
