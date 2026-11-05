@@ -1,17 +1,16 @@
-import requests, io, zipfile, csv, collections
-H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
-B = "https://statdata.statistics.sk/public/api/dc/opendata/cube/dataset/zp3804rr"
-path = "/rows/e_nuts15,ASC,all~e_ewc,ASC,all/columns/e_year,ASC,all/context/e_indic,ASC,all~e_unit,ASC,all"
-r = requests.get(B + path, params={"type": "CSV", "lang": "SK"}, headers=H, timeout=600)
-print(r.status_code, len(r.content), r.headers.get("content-type"))
-c = r.content
-if c[:2] == b"PK":
-    z = zipfile.ZipFile(io.BytesIO(c)); c = z.read(z.namelist()[0])
-t = c.decode("utf-8-sig", "replace")
-print(t[:800].replace("\n", " | "))
-rows = list(csv.DictReader(io.StringIO(t)))
-print(len(rows), list(rows[0].keys()) if rows else None)
-if rows:
-    for k in rows[0]:
-        v = collections.Counter(x[k] for x in rows); print(k, len(v), list(v)[:8])
+import requests, json
+H = {"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
+B = "https://statdata.statistics.sk/public/api/dc"
+for dim in ["999525c0-203e-4222-9474-dbad4291c6b5", "302208ae-547f-409b-966e-725771c582a8"]:
+    r = requests.get(f"{B}/public/{dim}/dimensionCodeItems", headers=H, timeout=120)
+    print(dim, r.status_code, len(r.text))
+    try:
+        for x in r.json():
+            s = json.dumps(x, ensure_ascii=False)
+            if "omunáln" in s or "Tony" in s or "tonách" in s.lower() or '"t"' in s: print("  ", s[:300])
+    except Exception as e: print(e, r.text[:300])
+r = requests.get(f"{B}/public/657fbf90-fe37-4c94-bfef-c89a42af6761/zp3804rr/dimensionItemsInCube", headers=H, timeout=120)
+print("nuts in cube", r.status_code, r.text[:300])
+r = requests.get(f"{B}/public/999525c0-203e-4222-9474-dbad4291c6b5/zp3804rr/dimensionItemsInCube", headers=H, timeout=120)
+print("indic in cube", r.status_code, r.text[:1200])
 print("HOTOVO")
