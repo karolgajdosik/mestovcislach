@@ -1,60 +1,115 @@
-[('https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci/2020.html?page_id=1009851', '2020'), ('https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci/2021.html?page_id=1060199', '2021'), ('https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci/2022.html?page_id=1157401', '2022'), ('https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci/2023.html?page_id=1247163', '2023'), ('https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci/2024.html?page_id=1335244', '2024'), ('https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci/2025.html?page_id=1419220', '2025'), ('https://www.upsvr.gov.sk/statistiky/mesacne-statistiky-miest-a-obci/2026.html?page_id=1500350', '2026')]
-['https://www.upsvr.gov.sk/buxus/docs/statistic/mesta_a_oibce_-_mesacne/2026/UoZobce_MS_2609.xlsx', 'https://www.upsvr.gov.sk/buxus/docs/statistic/mesta_a_oibce_-_mesacne/2026/UoZobce_MS_2608.xlsx', 'https://www.upsvr.gov.sk/buxus/docs/statistic/mesta_a_oibce_-_mesacne/2026/UoZobce_MS_2607.xlsx', 'https://www.upsvr.gov.sk/buxus/docs/statistic/mesta_a_oibce_-_mesacne/2026/UoZobce_MS_2606.xlsx', 'https://www.upsvr.gov.sk/buxus/docs/statistic/mesta_a_oibce_-_mesacne/2026/UoZobce_MS_2605.xlsx', 'https://www.upsvr.gov.sk/buxus/docs/statistic/mesta_a_oibce_-_mesacne/2026/UoZobce_MS_2604.xlsx', 'https://www.upsvr.gov.sk/buxus/docs/statistic/mesta_a_oibce_-_mesacne/2026/UoZobce_MS_2603.xlsx', 'https://www.upsvr.gov.sk/buxus/docs/statistic/mesta_a_oibce_-_mesacne/2026/UoZobce_MS_2602.xlsx', 'https://www.upsvr.gov.sk/buxus/docs/statistic/mesta_a_oibce_-_mesacne/2026/UoZobce_MS_2601.xlsx']
-['Uvod_1', 'Obsah_2', 'Tab01_3', 'Tab02_zeny_4', 'Tab03_5', 'Tab04_zeny_6', 'Tab05_7', 'Tab06_zeny_8', 'Tab07_9', 'Tab08_zeny_10', 'Tab09_11', 'Tab10_zeny_12', 'Tab011_13', 'Tab012_zeny_14', 'Tab013_15', 'Tab014_zeny_16', 'Tab015_17', 'Tab016_zeny_18', 'Ciselniky_19', 'PojmySkratky_20']
-==  Uvod_1
-   []
-   ['Ústredie práce, sociálnych vecí a rodiny']
-   []
-   []
-   []
-   []
-   []
-   []
-   []
-   []
-   []
-   []
-   []
-==  Obsah_2
-   []
-   ['Prehľad tabuliek:']
-   ['Tabuľka 1', 'Základné ukazovatele o nezamestnanosti']
-   ['Tabuľka 2', 'Základné ukazovatele o nezamestnanosti - ženy']
-   ['Tabuľka 3', 'Štruktúra UoZ podľa profesie (SK ISCO-08) vykonávanej bezprostredne pred zaradením do evidencie']
-   ['Tabuľka 4', 'Štruktúra UoZ podľa profesie (SK ISCO-08) vykonávanej bezprostredne pred zaradením do evidencie - ženy']
-   ['Tabuľka 5', 'Štruktúra UoZ podľa odvetvia posledného zamestnávateľa (SK NACE) - zamestnanie bezprostredne pred zaradením do evidencie']
-   ['Tabuľka 6', 'Štruktúra UoZ podľa odvetvia posledného zamestnávateľa (SK NACE) - zamestnanie bezprostredne pred zaradením do evidencie - ženy']
-   ['Tabuľka 7', 'Štruktúra UoZ podľa najvyššie dosiahnutého vzdelania (ISCED) ']
-   ['Tabuľka 8', 'Štruktúra UoZ podľa najvyššie dosiahnutého vzdelania (ISCED) - ženy']
-   ['Tabuľka 9', 'Štruktúra UoZ podľa veku ']
-   ['Tabuľka 10', 'Štruktúra UoZ podľa veku - ženy']
-   ['Tabuľka 11', 'Štruktúra UoZ podľa doby evidencie (v mesiacoch)']
-==  Tab01_3
-   ['Ústredie práce, sociálnych vecí a rodiny']
-   []
-   ['Mesačná štatistika o počte a štruktúre uchádzačov o zamestnanie podľa obcí']
-   ['Základné ukazovatele o nezamestnanosti']
-   []
-   ['Obdobie: 2026/09']
-   ['Tabuľka č. 1']
-   ['Okres                               Obec', 'Stav UoZ ku koncu mesiaca', 'z toho ', 'Počet nedisponibilných UoZ', 'OPV', 'Počet disponibilných UoZ v PV', 'PU (v %)', 'PDU (v %)']
-   ['občania so ZP', 'mladiství', 'absolventi']
-   ['Bratislava I', 'Bratislava-Staré Mesto', 845, 11, 1, 60, 36, 33992, 809, 2.49, 2.38]
-   ['Bratislava II', 'Bratislava-Pod.Biskup.', 464, 10, 3, 36, 21, 15619, 443, 2.97, 2.84]
-   ['Bratislava-Ružinov', 1742, 38, 2, 116, 76, 58841, 1664, 2.96, 2.83]
-   ['Bratislava-Vrakuňa', 387, 7, 5, 25, 23, 14089, 364, 2.75, 2.58]
-==  Tab02_zeny_4
-   ['Ústredie práce, sociálnych vecí a rodiny']
-   []
-   ['Mesačná štatistika o počte a štruktúre uchádzačov o zamestnanie podľa obcí']
-   ['Základné ukazovatele o nezamestnanosti - ženy']
-   []
-   ['Obdobie: 2026/09']
-   ['Tabuľka č. 2 ']
-   ['Okres                               Obec', 'Stav UoZ ku koncu mesiaca', 'z toho ', 'Počet nedisponibilných UoZ', 'OPV', 'Počet disponibilných UoZ v PV', 'PU (v %)', 'PDU (v %)']
-   ['občania so ZP', 'mladiství', 'absolventi']
-   ['Bratislava I', 'Bratislava-Staré Mesto', 491, 4, 0, 34, 15, 16494, 476, 2.98, 2.89]
-   ['Bratislava II', 'Bratislava-Pod.Biskup.', 270, 8, 1, 16, 10, 7862, 260, 3.43, 3.31]
-   ['Bratislava-Ružinov', 998, 21, 1, 68, 41, 29521, 956, 3.38, 3.24]
-   ['Bratislava-Vrakuňa', 199, 2, 2, 14, 12, 7140, 187, 2.79, 2.62]
+https://statdata.statistics.sk/public/api/dc/public/bulkDownload/search get 400 48
+https://statdata.statistics.sk/public/api/dc/public/bulkDownload/search post 200 545123
+{"content":[{"publicId":"ps1801rs","productCode":"ps1801rs","productCodeTitle":"ps1801rs","nameSk":"Domácnosti a osoby v domácnostiach podľa typu domácnosti ","nameEn":"Househols and persons in households by type of household","sectionId":"b5d517c1-f42d-4bd6-8d3f-67e8fa3767b7","lastDataChange":"2026-04-30T09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:26.532173+02:00"},{"publicId":"sv5012
+   ... nge":"2026-10-21T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:24.662929+02:00"},{"publicId":"zp3801rr","productCode":"zp3801rr","productCodeTitle":"zp3801rr","nameSk":"Množstvo komunálneho odpadu podľa druhov odpadu za okres (v tonách) ","nameEn":"Quantity of municipal waste according to the waste code per d
+   ... 00:00+02:00","lastStructureChange":"2026-06-15T12:11:24.662929+02:00"},{"publicId":"zp3801rr","productCode":"zp3801rr","productCodeTitle":"zp3801rr","nameSk":"Množstvo komunálneho odpadu podľa druhov odpadu za okres (v tonách) ","nameEn":"Quantity of municipal waste according to the waste code per district (in Tonnes) 
+   ... nge":"2026-10-15T09:00:00+02:00","lastStructureChange":"2026-07-20T15:06:14.568014+02:00"},{"publicId":"zp3001rr","productCode":"zp3001rr","productCodeTitle":"zp3001rr","nameSk":"Množstvo komunálneho odpadu podľa podskupín odpadu (v tonách) ","nameEn":"Quantity of municipal waste according to the waste subgroup (in Ton
+   ... 00+02:00","lastStructureChange":"2026-07-20T15:06:14.568014+02:00"},{"publicId":"zp3001rr","productCode":"zp3001rr","productCodeTitle":"zp3001rr","nameSk":"Množstvo komunálneho odpadu podľa podskupín odpadu (v tonách) ","nameEn":"Quantity of municipal waste according to the waste subgroup (in Tonnes)","sectionId":"7d93
+   ... "lastDataChange":"2026-09-30T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:27.843424+02:00"},{"publicId":"zp1012rs","productCode":"zp1012rs","productCodeTitle":"zp1012rs","nameSk":"Množstvo odpadu podľa SK NACE Rev. 2, kategórie odpadu a spôsobu nakladania s odpadom - ročne ","nameEn":"The amount of waste by 
+   ... 2:00","lastStructureChange":"2026-06-15T12:11:27.843424+02:00"},{"publicId":"zp1012rs","productCode":"zp1012rs","productCodeTitle":"zp1012rs","nameSk":"Množstvo odpadu podľa SK NACE Rev. 2, kategórie odpadu a spôsobu nakladania s odpadom - ročne ","nameEn":"The amount of waste by NACE Rev. 2, categories of waste and wa
+   ... 026-06-15T12:11:27.843424+02:00"},{"publicId":"zp1012rs","productCode":"zp1012rs","productCodeTitle":"zp1012rs","nameSk":"Množstvo odpadu podľa SK NACE Rev. 2, kategórie odpadu a spôsobu nakladania s odpadom - ročne ","nameEn":"The amount of waste by NACE Rev. 2, categories of waste and waste treatment - yearly","secti
+   ... fe45ea32","lastDataChange":"2026-04-30T09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:32.18395+02:00"},{"publicId":"vh2002rs","productCode":"vh2002rs","productCodeTitle":"vh2002rs","nameSk":"Odpadová voda vypúšťaná do vodných tokov podľa zdrojov ","nameEn":"Waste water drained off into water courses by sources
+   ... nge":"2026-04-30T09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:26.532173+02:00"},{"publicId":"zp1801rs","productCode":"zp1801rs","productCodeTitle":"zp1801rs","nameSk":"Množstvo vzniknutého odpadu","nameEn":"Quantity of generated waste","sectionId":"7d93adaf-c7f2-4a7c-b7af-f6f6f70836d1","lastDataChange":"2026
+   ... astStructureChange":"2026-06-15T12:11:24.611082+02:00"},{"publicId":"zp3002rr","productCode":"zp3002rr","productCodeTitle":"zp3002rr","nameSk":"Relatívne ukazovatele z oblasti nakladania s komunálnym odpadom ","nameEn":"Relative indicators from the area of treatment with municipal waste","sectionId":"7d93adaf-c7f2-4a7c
+   ... nge":"2025-09-30T09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:30.323851+02:00"},{"publicId":"zp3804rr","productCode":"zp3804rr","productCodeTitle":"zp3804rr","nameSk":"Množstvo komunálneho odpadu podľa druhov odpadu za obce (v tonách)","nameEn":"Quantity of municipal waste according to the waste code in muni
+   ... 00:00+02:00","lastStructureChange":"2026-05-14T10:10:30.323851+02:00"},{"publicId":"zp3804rr","productCode":"zp3804rr","productCodeTitle":"zp3804rr","nameSk":"Množstvo komunálneho odpadu podľa druhov odpadu za obce (v tonách)","nameEn":"Quantity of municipal waste according to the waste code in municipalities (in Tonne
+   ... "lastDataChange":"2026-09-30T09:00:00+02:00","lastStructureChange":"2026-07-29T13:19:52.017589+02:00"},{"publicId":"zp3006rr","productCode":"zp3006rr","productCodeTitle":"zp3006rr","nameSk":"Množstvo odpadu podľa územia, kategórie odpadu a spôsobu nakladania s odpadom - ročne","nameEn":"The amount of waste by the regio
+   ... :00:00+02:00","lastStructureChange":"2026-07-29T13:19:52.017589+02:00"},{"publicId":"zp3006rr","productCode":"zp3006rr","productCodeTitle":"zp3006rr","nameSk":"Množstvo odpadu podľa územia, kategórie odpadu a spôsobu nakladania s odpadom - ročne","nameEn":"The amount of waste by the region, categories of waste and wast
+   ... ange":"2026-07-29T13:19:52.017589+02:00"},{"publicId":"zp3006rr","productCode":"zp3006rr","productCodeTitle":"zp3006rr","nameSk":"Množstvo odpadu podľa územia, kategórie odpadu a spôsobu nakladania s odpadom - ročne","nameEn":"The amount of waste by the region, categories of waste and waste treatment - yealy","sectionI
+   ... nge":"2026-08-31T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:27.123619+02:00"},{"publicId":"zp3802rr","productCode":"zp3802rr","productCodeTitle":"zp3802rr","nameSk":"Množstvo komunálneho odpadu podľa spôsobu nakladania za okres (v tonách) ","nameEn":"Quantity of municipal waste according to the waste treat
+   ... nge":"2026-07-31T09:00:00+02:00","lastStructureChange":"2026-07-29T13:19:52.017589+02:00"},{"publicId":"zp1005rs","productCode":"zp1005rs","productCodeTitle":"zp1005rs","nameSk":"Množstvo komunálneho odpadu podľa spôsobu nakladania (v tonách) ","nameEn":"Municipal waste and small construction waste from municipalities 
+   ... 09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:32.18395+02:00"},{"publicId":"en2002rs","productCode":"en2002rs","productCodeTitle":"en2002rs","nameSk":"Bilancia obnovitelných zdrojov palív a odpadov ","nameEn":"Balance of Renewables and Wastes","sectionId":"4b2f3da5-c3b3-4a45-acb6-4839fc1d95c7","lastDataChange
+   ... DataChange":"2026-09-14T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:24.611082+02:00"},{"publicId":"vh3802rr","productCode":"vh3802rr","productCodeTitle":"vh3802rr","nameSk":"Dĺžka siete a odpadová voda ","nameEn":"Length of systems and sewage water","sectionId":"3fc02e0a-1491-409a-9eaf-bfa66e2b026b","lastDa
+   ... ":"2026-10-20T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:24.611082+02:00"},{"publicId":"vh2003rs","productCode":"vh2003rs","productCodeTitle":"vh2003rs","nameSk":"Produkované znečistenie odpadových vôd podľa zdroja ","nameEn":"Generation of waste water by source","sectionId":"3fc02e0a-1491-409a-9eaf-bfa66e
+   ... 09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:26.532173+02:00"},{"publicId":"zp1802rs","productCode":"zp1802rs","productCodeTitle":"zp1802rs","nameSk":"Množstvo zhodnoteného a zneškodneného odpadu","nameEn":"Quantity of recovered and disposed waste","sectionId":"7d93adaf-c7f2-4a7c-b7af-f6f6f70836d1","lastData
+https://statdata.statistics.sk/public/api/dc/public/bulkDownload/search?query=odpad get 400 48
+https://statdata.statistics.sk/public/api/dc/public/bulkDownload/search?query=odpad post 200 545123
+{"content":[{"publicId":"ps1801rs","productCode":"ps1801rs","productCodeTitle":"ps1801rs","nameSk":"Domácnosti a osoby v domácnostiach podľa typu domácnosti ","nameEn":"Househols and persons in households by type of household","sectionId":"b5d517c1-f42d-4bd6-8d3f-67e8fa3767b7","lastDataChange":"2026-04-30T09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:26.532173+02:00"},{"publicId":"sv5012
+   ... nge":"2026-10-21T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:24.662929+02:00"},{"publicId":"zp3801rr","productCode":"zp3801rr","productCodeTitle":"zp3801rr","nameSk":"Množstvo komunálneho odpadu podľa druhov odpadu za okres (v tonách) ","nameEn":"Quantity of municipal waste according to the waste code per d
+   ... 00:00+02:00","lastStructureChange":"2026-06-15T12:11:24.662929+02:00"},{"publicId":"zp3801rr","productCode":"zp3801rr","productCodeTitle":"zp3801rr","nameSk":"Množstvo komunálneho odpadu podľa druhov odpadu za okres (v tonách) ","nameEn":"Quantity of municipal waste according to the waste code per district (in Tonnes) 
+   ... nge":"2026-10-15T09:00:00+02:00","lastStructureChange":"2026-07-20T15:06:14.568014+02:00"},{"publicId":"zp3001rr","productCode":"zp3001rr","productCodeTitle":"zp3001rr","nameSk":"Množstvo komunálneho odpadu podľa podskupín odpadu (v tonách) ","nameEn":"Quantity of municipal waste according to the waste subgroup (in Ton
+   ... 00+02:00","lastStructureChange":"2026-07-20T15:06:14.568014+02:00"},{"publicId":"zp3001rr","productCode":"zp3001rr","productCodeTitle":"zp3001rr","nameSk":"Množstvo komunálneho odpadu podľa podskupín odpadu (v tonách) ","nameEn":"Quantity of municipal waste according to the waste subgroup (in Tonnes)","sectionId":"7d93
+   ... "lastDataChange":"2026-09-30T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:27.843424+02:00"},{"publicId":"zp1012rs","productCode":"zp1012rs","productCodeTitle":"zp1012rs","nameSk":"Množstvo odpadu podľa SK NACE Rev. 2, kategórie odpadu a spôsobu nakladania s odpadom - ročne ","nameEn":"The amount of waste by 
+   ... 2:00","lastStructureChange":"2026-06-15T12:11:27.843424+02:00"},{"publicId":"zp1012rs","productCode":"zp1012rs","productCodeTitle":"zp1012rs","nameSk":"Množstvo odpadu podľa SK NACE Rev. 2, kategórie odpadu a spôsobu nakladania s odpadom - ročne ","nameEn":"The amount of waste by NACE Rev. 2, categories of waste and wa
+   ... 026-06-15T12:11:27.843424+02:00"},{"publicId":"zp1012rs","productCode":"zp1012rs","productCodeTitle":"zp1012rs","nameSk":"Množstvo odpadu podľa SK NACE Rev. 2, kategórie odpadu a spôsobu nakladania s odpadom - ročne ","nameEn":"The amount of waste by NACE Rev. 2, categories of waste and waste treatment - yearly","secti
+   ... fe45ea32","lastDataChange":"2026-04-30T09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:32.18395+02:00"},{"publicId":"vh2002rs","productCode":"vh2002rs","productCodeTitle":"vh2002rs","nameSk":"Odpadová voda vypúšťaná do vodných tokov podľa zdrojov ","nameEn":"Waste water drained off into water courses by sources
+   ... nge":"2026-04-30T09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:26.532173+02:00"},{"publicId":"zp1801rs","productCode":"zp1801rs","productCodeTitle":"zp1801rs","nameSk":"Množstvo vzniknutého odpadu","nameEn":"Quantity of generated waste","sectionId":"7d93adaf-c7f2-4a7c-b7af-f6f6f70836d1","lastDataChange":"2026
+   ... astStructureChange":"2026-06-15T12:11:24.611082+02:00"},{"publicId":"zp3002rr","productCode":"zp3002rr","productCodeTitle":"zp3002rr","nameSk":"Relatívne ukazovatele z oblasti nakladania s komunálnym odpadom ","nameEn":"Relative indicators from the area of treatment with municipal waste","sectionId":"7d93adaf-c7f2-4a7c
+   ... nge":"2025-09-30T09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:30.323851+02:00"},{"publicId":"zp3804rr","productCode":"zp3804rr","productCodeTitle":"zp3804rr","nameSk":"Množstvo komunálneho odpadu podľa druhov odpadu za obce (v tonách)","nameEn":"Quantity of municipal waste according to the waste code in muni
+   ... 00:00+02:00","lastStructureChange":"2026-05-14T10:10:30.323851+02:00"},{"publicId":"zp3804rr","productCode":"zp3804rr","productCodeTitle":"zp3804rr","nameSk":"Množstvo komunálneho odpadu podľa druhov odpadu za obce (v tonách)","nameEn":"Quantity of municipal waste according to the waste code in municipalities (in Tonne
+   ... "lastDataChange":"2026-09-30T09:00:00+02:00","lastStructureChange":"2026-07-29T13:19:52.017589+02:00"},{"publicId":"zp3006rr","productCode":"zp3006rr","productCodeTitle":"zp3006rr","nameSk":"Množstvo odpadu podľa územia, kategórie odpadu a spôsobu nakladania s odpadom - ročne","nameEn":"The amount of waste by the regio
+   ... :00:00+02:00","lastStructureChange":"2026-07-29T13:19:52.017589+02:00"},{"publicId":"zp3006rr","productCode":"zp3006rr","productCodeTitle":"zp3006rr","nameSk":"Množstvo odpadu podľa územia, kategórie odpadu a spôsobu nakladania s odpadom - ročne","nameEn":"The amount of waste by the region, categories of waste and wast
+   ... ange":"2026-07-29T13:19:52.017589+02:00"},{"publicId":"zp3006rr","productCode":"zp3006rr","productCodeTitle":"zp3006rr","nameSk":"Množstvo odpadu podľa územia, kategórie odpadu a spôsobu nakladania s odpadom - ročne","nameEn":"The amount of waste by the region, categories of waste and waste treatment - yealy","sectionI
+   ... nge":"2026-08-31T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:27.123619+02:00"},{"publicId":"zp3802rr","productCode":"zp3802rr","productCodeTitle":"zp3802rr","nameSk":"Množstvo komunálneho odpadu podľa spôsobu nakladania za okres (v tonách) ","nameEn":"Quantity of municipal waste according to the waste treat
+   ... nge":"2026-07-31T09:00:00+02:00","lastStructureChange":"2026-07-29T13:19:52.017589+02:00"},{"publicId":"zp1005rs","productCode":"zp1005rs","productCodeTitle":"zp1005rs","nameSk":"Množstvo komunálneho odpadu podľa spôsobu nakladania (v tonách) ","nameEn":"Municipal waste and small construction waste from municipalities 
+   ... 09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:32.18395+02:00"},{"publicId":"en2002rs","productCode":"en2002rs","productCodeTitle":"en2002rs","nameSk":"Bilancia obnovitelných zdrojov palív a odpadov ","nameEn":"Balance of Renewables and Wastes","sectionId":"4b2f3da5-c3b3-4a45-acb6-4839fc1d95c7","lastDataChange
+   ... DataChange":"2026-09-14T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:24.611082+02:00"},{"publicId":"vh3802rr","productCode":"vh3802rr","productCodeTitle":"vh3802rr","nameSk":"Dĺžka siete a odpadová voda ","nameEn":"Length of systems and sewage water","sectionId":"3fc02e0a-1491-409a-9eaf-bfa66e2b026b","lastDa
+   ... ":"2026-10-20T09:00:00+02:00","lastStructureChange":"2026-06-15T12:11:24.611082+02:00"},{"publicId":"vh2003rs","productCode":"vh2003rs","productCodeTitle":"vh2003rs","nameSk":"Produkované znečistenie odpadových vôd podľa zdroja ","nameEn":"Generation of waste water by source","sectionId":"3fc02e0a-1491-409a-9eaf-bfa66e
+   ... 09:00:00+02:00","lastStructureChange":"2026-05-14T10:10:26.532173+02:00"},{"publicId":"zp1802rs","productCode":"zp1802rs","productCodeTitle":"zp1802rs","nameSk":"Množstvo zhodnoteného a zneškodneného odpadu","nameEn":"Quantity of recovered and disposed waste","sectionId":"7d93adaf-c7f2-4a7c-b7af-f6f6f70836d1","lastData
+https://statdata.statistics.sk/public/api/dc/public/recentlyUpdated get 400 48
+https://statdata.statistics.sk/public/api/dc/public/recentlyUpdated post 200 11506
+{"content":[{"nameSk":"Rozvod a čistenie vody ","nameEn":"Distribution and purification of water","publicId":"vh3801rr","frequencyCode":"ANNUAL","lastDataChange":"2026-10-30T09:00:00+01:00","lastStructureChange":"2026-07-29T13:19:52.017589+02:00","timePeriodFrom":"2025-01-01","timePeriodTo":"2025-12-31","sectionId":"3fc02e0a-1491-409a-9eaf-bfa66e2b026b","updatedTimePeriod":"PAST_WEEK","productCode
+   ... 12-31","sectionId":"3fc02e0a-1491-409a-9eaf-bfa66e2b026b","updatedTimePeriod":"PAST_WEEK","productCodeTitle":"vh2005rs","zonation":["Slovenská republika"],"zonationEn":["Slovak Republic"]},{"nameSk":"Odpadová voda vypúšťaná do vodných tokov podľa zdrojov ","nameEn":"Waste water drained off into water courses by sources
+Obyvateľstvo 753eba74-7637-40f7-ac89-b7717973f2f0
+  Obyvateľstvo 601ffce3-6487-4c0b-9734-e9b2d9699766
+      Bilancie podľa vzdelania 26fd291c-43e4-4de7-a07b-833c18edc5f6
+    Stredná dĺžka života 7ff1d2bf-c4ca-4736-ad06-67213633a56c
+  Sčítanie obyvateľov, domov a bytov c2868864-a90d-47d4-b292-25491e4eacab
+  Bývanie 3828e65b-8e8c-4c71-b342-01c3bfe7a3e4
+Ekonomika a financie 3311ab33-d66f-4992-922f-a949868eebb5
+  Národné účty c0f7c8ff-503f-48c5-bd41-f270e6b1fe3f
+  Zahraničný obchod f38f1179-aa02-4f18-ac76-477432d188ca
+  Spotrebiteľské ceny a ceny produkčných štatistík 9a68a974-e2c4-44a3-86cd-3a5db560c088
+  Konjunkturálne prieskumy a spotrebiteľské názory 0d9f3265-ed06-467a-bb7d-d6bad001b627
+  Priemysel a98546a8-1944-4177-bb85-1c715666cb4c
+  Stavebníctvo 60f8827d-3916-492d-82ab-cfb7ff5bd5cf
+  Cestovný ruch a6be3ef8-ee18-4a13-8912-5c3c0c902eb5
+  Obchod a stravovacie služby fa5e91b2-fa66-4f32-9b8b-96917e359844
+  Finančné a poisťovacie služby e037ec84-c536-4fb5-99ed-6c25e43fb45d
+  Vybrané trhové služby b6e5b9c3-e8a7-4061-b467-b83eff35f08f
+  Netrhové služby 9081a45a-2f8c-4996-bfac-bf544080e05b
+  Prierezové štatistiky 51f564d9-1c31-49ff-ac78-515ee9123aa6
+  Štatistika z Registra organizácií 995be6b6-8cf6-464d-b663-ed90e6483df8
+Trh práce 5026518b-d441-46fc-b54e-d420b33413f9
+  Trh práce 560359e7-6be5-4c62-895f-49053620367f
+  Mzdy a náklady práce 783d34c1-13f0-442a-94d5-022be052ac02
+Vzdelanie eb2bd56c-d7ae-42cf-99c5-997276b2ea0c
+  Vzdelávanie 9f87691e-2e07-4674-97dd-18a4ad0007ff
+    Zisťovanie o vzdelávaní dospelých (AES) 70f817a0-3216-4906-9a96-65e90997ca96
+    Štatistika školstva 3f75983d-9fed-443a-95ee-f883167ddba2
+Kvalita života fcb15607-997e-42d3-8752-edd3699bd5c2
+  Zdravie 114d08bf-f3ff-4186-871e-dc99d9cacc7f
+  Príjmy, výdavky a životné podmienky 3b54d348-758f-41cf-8320-1e5572085100
+    Príjmy a životné podmienky (EU SILC) e23701f1-51df-4ab4-a5d6-5f4a2f0546e2
+  Sociálna ochrana d934ac40-3126-47c2-a3b9-4080668d6431
+  Spravodlivosť a kriminalita 65fbd341-1c9c-447a-9759-cf48a9437486
+  Kultúra 4e0b7358-cc53-47b1-b91e-ae96d5ec11d8
+  Spotreba potravín 7ddc3172-ec7d-47e4-af1c-0109884ab0de
+Energetika a doprava 5a17812b-d995-4d2c-a0fa-904aa9e88dc3
+  Energetika 4b2f3da5-c3b3-4a45-acb6-4839fc1d95c7
+  Doprava a poštové služby bebcdd27-dbf5-49ab-adf9-10e291c8b270
+Životné prostredie 78695873-85c7-4ed5-9063-0569252efdf7
+  Životné prostredie 7d93adaf-c7f2-4a7c-b7af-f6f6f70836d1
+  Vodné hospodárstvo 3fc02e0a-1491-409a-9eaf-bfa66e2b026b
+  Lesníctvo cce5bb2f-a7c3-4d59-902e-292bf7f10aca
+Poľnohospodárstvo a rybárstvo ecc23e51-efe0-4da6-aa38-cb99d1befbb2
+  Poľnohospodárstvo a rybárstvo 12cd91b7-7d78-4b87-989d-9b2eb3d1e45e
+Veda, technika a inovácie 60c839b3-9151-4b5a-809b-b2046ac16b34
+  Veda, technika a inovácie 422906a9-2477-4edc-91b0-74d36264b1a5
+  Informácie a komunikácia cb2d55fd-31a6-468c-97bb-9f53b5b92a99
+  Informačná spoločnosť 897f1ab1-2c4b-4010-b729-560606f73f5b
+Indikátory 9cdf80b3-7b2b-44b9-a1e3-4fa26120d476
+  Indikátory rovnosti medzi ženami a mužmi 795084c7-c0c2-4700-ade9-50ce83a7daef
+  Indikátor pre zdravotne postihnuté osoby 37b449f6-d482-4ca2-a765-e940c56ab187
+  Indikátor kvality života e31ca3e5-d142-409a-a511-9f0220d1f70d
+    Materiálne životné podmienky 2b223bcb-1dec-48b6-b3c7-d143e6f4695f
+    Vzdelávanie 734656b8-6de7-4b24-8a3e-2572fff4f31d
+    Prírodné a životné prostredie 2fa94a84-0edf-42fc-90ca-4021ae4cd78c
+    Celková životná skúsenosť 4070044c-dff4-44a3-8d01-64d2effca3e0
+  Indikátory aktívneho starnutia populácie 5ab564a1-e703-4299-ba03-8ecd7d988ea2
+  Globálne indikátory Agendy 2030 c860a49a-2aa6-4e99-918f-8f5d4fc7caaf
+    Cieľ 3 - Zdravie a kvalitný život 2fecdce3-e8ba-4e1d-82c4-94a80e2c4609
+Mestská štatistika SR 29d088a2-352b-4fb5-8320-03dfc10555ad
+  Mestská štatistika SR 48ce521a-2cf8-4d3d-adb2-4135138bb936
+  Demografická štatistika SR b063a324-a86c-4359-a74f-cac80c811186
 HOTOVO
