@@ -1,7 +1,14 @@
 GTFS: https://data.slovensko.sk/download?id=fa56545f-a4c2-4eb9-bd26-b1c350991293
-::error title=Vlaky v obciach (GTFS ŽSR)::RuntimeError: GTFS: len 482 obcí so stanicou
+Staníc s vlakmi: 835, záznamov v stops.txt: 876
+  nepriradené stanice (ukážka): Andač; Barca; Belá n.Cirochou; Bezenye; Blatnice p.Sv.Antonínkem; Bocanovice (Boconowice); Bujakovo zast.; Bystřice (Bystrzyca); Bytčica; Bánovce n.Ondavou; Břeclav; Chop; Chrenovec; Chvatimech; Danielov Dom; Devínska N.Ves; Devínske Jazero; Diviaky; Dlhá n.Oravou; Dlhé n.Cirochou; Dobšinská Ľadová Jas.; Dolné Hámre; Dolné Krškany; Dolný Smokovec; Dubnica n.Váhom; Dubová; Dvory n.Žitavou; Dyčka; Forro-Encs; Gattendorf; Gašparovo; Halmaj; Hanušovce n.Topľou; Hanušovce n.Topľou mesto; Hatvan; Hačava; Hačava skálie; Hegyeshalom; Hidasnemeti; Hliník n.Hronom; Hodonín; Horná Zlatná; Horné Ozorovce; Horní Lideč; Horný Smokovec; Hrabovec n.Laborcom; Hranice na Moravě; Hrboltová; Hrádek (Gródek); Hulín; Hutníky; Inancs; Javorník n.Veličkou zast.; Kalná n.Hronom; Kamenica n.Cirochou; Kamenica n.Cirochou dv.; Kittsee; Klčovany; Kokava n.Rim.-Liešnica; Kokava n.Rimavicou
+Vlaky 2026-11-11: 482 obcí so stanicou, nepriradených staníc 176
 
-CHYBA: GTFS: len 482 obcí so stanicou
 
-chyba [Errno 2] No such file or directory: 'data/obce/vlaky.json'
+den 2026-11-11 obci 482
+509574 None
+514292 [['Oslany', 22]]
+511218 [['Lučenec', 100], ['Opatová pri Lučenci', 26]]
+528595 None
+599981 [['Košice', 243], ['Košice predmestie', 71]]
+top [(1010, '582000', [['Bratislava hl.st.', 318], ['Bratislava-N.Mesto', 148]]), (327, '517402', [['Žilina', 243], ['Žilina-Solinky', 42]]), (314, '599981', [['Košice', 243], ['Košice predmestie', 71]]), (273, '506745', [['Trnava', 241], ['Trnava predm.', 32]]), (264, '505820', [['Trenčín', 152], ['Trenčín-Zlatovce', 66]]), (220, '518158', [['Zvolen osob.st.', 129], ['Zvolen mesto', 61]]), (214, '509132', [['Čadca', 126], ['Čadca mesto', 58]]), (185, '557358', [['Vrútky', 147], ['Vrútky nákl.st.', 38]])]
 HOTOVO
