@@ -1,27 +1,30 @@
-import re, json, requests
-from concurrent.futures import ThreadPoolExecutor
-H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36", "Accept": "application/json"}
+import re, io, csv, json, zipfile, collections, requests
+H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
 B = "https://statdata.statistics.sk/public/api/dc"
-print(requests.get(f"{B}/public/zp3804rr/info", headers=H, timeout=60).text[:1500])
-kody = {}
-for page in range(0, 40):
-    r = requests.post(B + "/public/bulkDownload/search", json={"query": "", "page": page, "size": 100}, headers=H, timeout=90)
-    j = r.json()
-    items = j.get("content") if isinstance(j, dict) else j
-    if page == 0: print("keys", list(j.keys()) if isinstance(j, dict) else type(j), json.dumps(items[0], ensure_ascii=False)[:400])
-    if not items: break
-    for it in items:
-        s = json.dumps(it, ensure_ascii=False)
-        k = re.search(r'"([a-z]{2}\d{4}[a-z]{2})"', s)
-        if k: kody[k.group(1)] = it
-    if isinstance(j, dict) and j.get("last"): break
-print("kociek", len(kody))
-def info(k):
-    try: return k, requests.get(f"{B}/public/{k}/info", headers=H, timeout=60).text
-    except Exception: return k, ""
-with ThreadPoolExecutor(8) as ex:
-    for k, t in ex.map(info, sorted(kody)):
-        if re.search(r'"(?:nameSk|name)"\s*:\s*"Obce"', t) or "e_nuts15" in t:
-            nm = re.search(r'"(?:nameSk|title)"\s*:\s*"([^"]+)"', json.dumps(kody[k], ensure_ascii=False))
-            print("OBCE", k, "|", nm.group(1) if nm else "")
+def stiahni(kod):
+    info = requests.get(f"{B}/public/{kod}/info", headers={**H, "Accept": "application/json"}, timeout=60).json()
+    dims = [d["acronym"] for d in info["dimensions"]]
+    geo = next(d["acronym"] for d in info["dimensions"] if d["type"] == "GEO" and d["acronym"] == "e_nuts15")
+    cas = next(d["acronym"] for d in info["dimensions"] if d["type"] == "TIME")
+    ine = [d for d in dims if d not in (geo, cas)]
+    rows = "~".join(f"{d},ASC,all" for d in [geo] + ine[:-1])
+    ctx = f"{ine[-1]},ASC,all"
+    u = f"{B}/opendata/cube/dataset/{kod}/rows/{rows}/columns/{cas},ASC,all/context/{ctx}"
+    r = requests.get(u, params={"type": "CSV", "lang": "SK"}, headers=H, timeout=900)
+    c = r.content
+    if c[:2] == b"PK":
+        z = zipfile.ZipFile(io.BytesIO(c)); c = z.read(z.namelist()[0])
+    return info, ine, list(csv.DictReader(io.StringIO(c.decode("utf-8-sig", "replace"))))
+for kod in ["om7103rr", "om7052rr", "om7811rr", "om7815rr", "om7816rr", "om7813rr", "om7821rr", "og3805rr", "og3808rr", "zd5001rr", "cr3805qr", "ik5001rr", "ku5008rr"]:
+    try:
+        info, ine, rr = stiahni(kod)
+    except Exception as e:
+        print(kod, "ERR", str(e)[:200]); continue
+    print(f"== {kod} {info['nameSk'][:70]} | {info.get('timePeriodTo')} | riadkov {len(rr)} | stĺpce {list(rr[0].keys()) if rr else None} | context {ine[-1]}")
+    if not rr: continue
+    for k in rr[0]:
+        if k in ("hodnota", "e_nuts15"): continue
+        v = collections.Counter(x[k] for x in rr); print("   ", k, len(v), [x[:60] for x in list(v)[:14]])
+    vz = [x for x in rr if x["e_nuts15"].startswith("Vígľaš")][:12]
+    for x in vz: print("    V:", {k: v[:50] for k, v in x.items() if k != "e_nuts15"})
 print("HOTOVO")
