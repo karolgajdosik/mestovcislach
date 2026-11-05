@@ -34,11 +34,11 @@ def obec(x: dict) -> str | None:
     return najdi_obec(n, okres)
 
 
-def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None) -> dict[str, dict[tuple, float]]:
+def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None, vyber: dict | None = None) -> dict[str, dict[tuple, float]]:
     """{kód obce: {(čas, dim1, dim2 …): hodnota}} – prázdne hodnoty („.“) a duplicity z kontextu sa vynechajú."""
     out: dict[str, dict[tuple, float]] = defaultdict(dict)
     nenajdene = set()
-    for x in riadky_obce(kocka, rokov):
+    for x in riadky_obce(kocka, rokov, vyber):
         if filtr and not filtr(x):
             continue
         v = cislo(x.get("hodnota"))
