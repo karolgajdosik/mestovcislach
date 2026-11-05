@@ -107,7 +107,7 @@ const nfp = zm?.nfp && zm.nfp[0] > 0 ? zm : null;
 const zmlText = (n: number) => (n === 1 ? 'zmluva' : n < 5 ? 'zmluvy' : 'zmlúv');
 // celoštátne voľby
 const VOLI = volbyInfo()?.volby ?? {};
-const celostatne = ['nrsr2023', 'prez2024_2', 'prez2024_1', 'ep2024'].map((id) => ({ id, v: VOLI[id], x: VOLI[id]?.obce?.[o.kod] })).filter((a) => a.v && a.x);
+const celostatne = ['nrsr2023', 'prez2024_1', 'prez2024_2', 'ep2024'].map((id) => ({ id, v: VOLI[id], x: VOLI[id]?.obce?.[o.kod] })).filter((a) => a.v && a.x);
 const jePrez = (id: string) => id.startsWith('prez');
 // pohyb obyvateľstva a vek
 const pohI = pohybInfo();
