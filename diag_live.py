@@ -3,3 +3,4 @@ for u in ["https://mestovcislach.sk/banskobystricky-kraj/rimavska-sobota/tisovec
     t=requests.get(u,timeout=60,headers={"User-Agent":"mestovcislach-diag"}).text
     print(u,{i:(f'id="{i}"' in t) for i in ["pohyb","byvanie","volby-celostatne","firmy","sluzby"]}, "Sťahovanie" in t, "staníc a zastávok" in t, "OĽANO A PRIATELIA</" in t)
 print("HOTOVO")
+# 1793896713
