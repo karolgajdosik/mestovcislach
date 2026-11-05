@@ -2,7 +2,8 @@
 
 Zdroj: ŽSR – Grafikon vlakovej dopravy vo formáte GTFS (Národný katalóg otvorených dát, data.slovensko.sk,
 dataset ebeeedf1-aca2-451a-bdc0-35d536714888). Stanica sa priradí k obci podľa názvu (začiatok názvu stanice
-= názov obce) a pri viacerých obciach rovnakého mena podľa polohy; bez zhody názvu len k obci do 1,5 km.
+= názov obce, skratky n./p. rozpísané) a pri viacerých obciach rovnakého mena podľa polohy; bez zhody názvu
+podľa hraníc obcí v OpenStreetMap (tag ref = kód obce; výsledok sa ukladá do vlaky_stanice.json).
 
 Výstup data/obce/vlaky.json: {"den": dátum, "obce": {kód: [[stanica, vlakov za deň], …]}}
 """
@@ -14,6 +15,7 @@ import io
 import json
 import math
 import re
+import time
 import zipfile
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
@@ -82,20 +84,51 @@ def den_prevadzky(z: zipfile.ZipFile) -> tuple[date, set[str]]:
     raise RuntimeError("GTFS: nenašiel sa deň, v ktorý cestovný poriadok platí")
 
 
-def obec_stanice(nazov: str, lat: float, lon: float) -> str | None:
-    k = kluc(re.sub(r"\b(os\.\s*st\.|osobná stanica|zastávka|zast\.|žst\.|hl\.\s*st\.|stanica)\b", "", nazov, flags=re.I))
+SKRATKY = [(r"\bn\.\s*", "nad "), (r"\bp\.\s*", "pod "), (r"\bN\.\s*", "Nová "), (r"\bSt\.\s*", "Stará "), (r"\bSv\.\s*", "Svätý "),
+           (r"\bRim\.\s*", "Rimavicou ")]
+KODY = set(POL)
+NAZOV_KOD = {kluc(o["nazov"]): o["kod"] for o in OBCE if o["nazov"] in ("Bratislava", "Košice")}
+CACHE = DATA / "obce" / "vlaky_stanice.json"  # stop_id -> kód obce z hraníc OSM (verejná infraštruktúra, bez osobných údajov)
+
+
+def obec_podla_nazvu(nazov: str, lat: float, lon: float) -> str | None:
+    n = nazov
+    for vz, nah in SKRATKY:
+        n = re.sub(vz, nah, n)
+    k = kluc(re.sub(r"\b(os\.\s*st\.|osobná stanica|zastávka|zast\.|žst\.|hl\.\s*st\.|stanica)", "", n, flags=re.I))
     slova = k.replace("-", " ").split()
-    kand: list[str] = []
-    for n in range(len(slova), 0, -1):  # najdlhší začiatok názvu, ktorý je obcou
-        kand = PODLA_NAZVU.get(" ".join(slova[:n]), []) or PODLA_NAZVU.get("-".join(slova[:n]), [])
+    for dl in range(len(slova), 0, -1):  # najdlhší začiatok názvu, ktorý je obcou
+        kand = PODLA_NAZVU.get(" ".join(slova[:dl]), []) or PODLA_NAZVU.get("-".join(slova[:dl]), [])
+        kand = [k_ for k_ in kand if POL.get(k_)]
         if kand:
-            break
-    kand = [k_ for k_ in kand if POL.get(k_)]
-    if kand:
-        best = min(kand, key=lambda k_: math.dist(POL[k_], (lat, lon)))
-        return best if math.dist(POL[best], (lat, lon)) < 0.25 else None  # ~20 km
-    blizke = sorted((math.dist(p, (lat, lon)), k_) for k_, p in POL.items() if p)
-    return blizke[0][1] if blizke and blizke[0][0] < 0.015 else None  # ~1,5 km
+            best = min(kand, key=lambda k_: math.dist(POL[k_], (lat, lon)))
+            return best if math.dist(POL[best], (lat, lon)) < 0.12 else None  # ~10 km
+    return None
+
+
+def obec_podla_osm(lat: float, lon: float) -> str | None:
+    """Obec, v ktorej hraniciach stanica leží (OSM, tag ref = kód obce); mestské časti -> mesto."""
+    q = f'[out:json][timeout:60];is_in({lat},{lon})->.a;area.a[boundary=administrative][admin_level~"^([4-9]|10)$"];out tags;'
+    for pokus in range(4):
+        try:
+            r = s.post("https://overpass-api.de/api/interpreter", data={"data": q}, timeout=90)
+            if r.status_code in (429, 502, 503, 504):
+                time.sleep(10 * (pokus + 1))
+                continue
+            r.raise_for_status()
+            oblasti = [e["tags"] for e in r.json().get("elements", [])]
+            for tg in sorted(oblasti, key=lambda tg: -int(tg.get("admin_level", 0))):
+                if tg.get("ref") in KODY:
+                    return tg["ref"]
+            for tg in oblasti:
+                for nk, kod in NAZOV_KOD.items():
+                    if kluc(tg.get("name", "")).startswith(nk):
+                        return kod
+            return ""
+        except Exception as e:  # noqa: BLE001
+            print(f"  OSM {lat},{lon}: {e}")
+            time.sleep(5)
+    return None
 
 
 def main() -> int:
@@ -110,7 +143,8 @@ def main() -> int:
         if st["trip_id"] in trips:
             vlaky[rodic.get(st["stop_id"], st["stop_id"])].add(st["trip_id"])
     obce: dict[str, list] = defaultdict(list)
-    bez = 0
+    bez = osm = 0
+    cache: dict[str, str] = json.loads(CACHE.read_text(encoding="utf-8")) if CACHE.exists() else {}
     nepr: list[str] = []
     print(f"Staníc s vlakmi: {len(vlaky)}, záznamov v stops.txt: {len(stops)}")
     for sid, tr in vlaky.items():
@@ -121,9 +155,18 @@ def main() -> int:
             lat, lon = float(x["stop_lat"]), float(x["stop_lon"])
         except (KeyError, ValueError):
             continue
-        if not (47.6 < lat < 49.7 and 16.8 < lon < 22.6):
-            continue  # stanice v zahraničí
-        kod = obec_stanice(x["stop_name"], lat, lon)
+        if not sid.startswith("56") or not (47.6 < lat < 49.7 and 16.8 < lon < 22.6):
+            continue  # stanice v zahraničí (UIC kód krajiny SK = 56)
+        kod = obec_podla_nazvu(x["stop_name"], lat, lon)
+        if not kod:
+            if sid not in cache:
+                v = obec_podla_osm(lat, lon)
+                if v is not None:
+                    cache[sid] = v
+                time.sleep(1)
+            kod = cache.get(sid) or None
+            if kod:
+                osm += 1
         if not kod:
             bez += 1
             nepr.append(x["stop_name"].strip())
@@ -131,9 +174,11 @@ def main() -> int:
         obce[kod].append([x["stop_name"].strip(), len(tr)])
     for v in obce.values():
         v.sort(key=lambda a: -a[1])
+    zapis_ak_zmena(CACHE, dict(sorted(cache.items())), kompaktne=True)
+    print(f"  podľa hraníc OSM priradených {osm}")
     if nepr:
         print("  nepriradené stanice (ukážka):", "; ".join(sorted(nepr)[:60]))
-    if len(obce) < 400:
+    if len(obce) < 450:
         raise RuntimeError(f"GTFS: len {len(obce)} obcí so stanicou")
     zapis_ak_zmena(DATA / "obce" / "vlaky.json", {
         "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"), "den": den.isoformat(),
