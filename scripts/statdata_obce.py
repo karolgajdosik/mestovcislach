@@ -22,7 +22,8 @@ def polozky(kocka: str, dim_id: str) -> list:
     return j if isinstance(j, list) else j.get("items") or j.get("content") or []
 
 
-def riadky_obce(kocka: str) -> list[dict]:
+def riadky_obce(kocka: str, rokov: int | None = None) -> list[dict]:
+    """rokov = len posledných N rokov (filter na serveri, menší súbor); časová dimenzia musí byť e_year."""
     info = s.get(f"{B}/public/{kocka}/info", headers=H, timeout=60).json()
     dims = info["dimensions"]
     cas = next(d["acronym"] for d in dims if d["type"] == "TIME")
@@ -34,9 +35,13 @@ def riadky_obce(kocka: str) -> list[dict]:
         ctx = next((d for d in ostatne if d["acronym"] == "e_unit"), None)
         if not ctx:
             raise RuntimeError(f"{kocka}: žiadna dimenzia vhodná do kontextu")
+    casy = "all"
+    if rokov and cas == "e_year":
+        do = int(str(info.get("timePeriodTo") or "")[:4] or 0)
+        casy = ",".join(str(r) for r in range(do - rokov + 1, do + 1)) if do else "all"
     rows = ["e_nuts15"] + [d["acronym"] for d in ostatne if d is not ctx]
     url = (f"{B}/opendata/cube/dataset/{kocka}/rows/" + "~".join(f"{a},ASC,all" for a in rows)
-           + f"/columns/{cas},ASC,all/context/{ctx['acronym']},ASC,all")
+           + f"/columns/{cas},ASC,{casy}/context/{ctx['acronym']},ASC,all")
     r = s.get(url, params={"type": "CSV", "lang": "SK"}, timeout=900)
     r.raise_for_status()
     c = r.content

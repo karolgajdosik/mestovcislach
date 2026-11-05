@@ -33,11 +33,11 @@ def obec(x: dict) -> str | None:
     return najdi_obec(n, okres)
 
 
-def tabulka(kocka: str, *dims: str, filtr=None) -> dict[str, dict[tuple, float]]:
+def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None) -> dict[str, dict[tuple, float]]:
     """{kód obce: {(čas, dim1, dim2 …): hodnota}} – prázdne hodnoty („.“) a duplicity z kontextu sa vynechajú."""
     out: dict[str, dict[tuple, float]] = defaultdict(dict)
     nenajdene = set()
-    for x in riadky_obce(kocka):
+    for x in riadky_obce(kocka, rokov):
         if filtr and not filtr(x):
             continue
         v = cislo(x.get("hodnota"))
@@ -74,7 +74,7 @@ POHYB = {"Narodení": "nar", "Zomrelí": "zom", "Prisťahovaní": "pri", "Vysťa
 
 
 def pohyb() -> None:
-    t = tabulka("om7103rr", "e_indic", filtr=lambda x: x.get("e_indic", "").strip() in POHYB)
+    t = tabulka("om7103rr", "e_indic", rokov=10, filtr=lambda x: x.get("e_indic", "").strip() in POHYB)
     obce: dict[str, dict] = {}
     roky_vsetky = sorted({k[0] for v in t.values() for k in v})
     roky = roky_vsetky[-10:]
@@ -86,7 +86,7 @@ def pohyb() -> None:
                 rad[r] = [z["nar"], z["zom"], z["pri"], z["vys"]]
         if rad:
             obce[kod] = {"rad": rad}
-    vek = tabulka("om7052rr", "e_indic", "e_sex", filtr=lambda x: x.get("e_sex", "").strip() == "Spolu")
+    vek = tabulka("om7052rr", "e_indic", "e_sex", rokov=11, filtr=lambda x: x.get("e_sex", "").strip() == "Spolu")
     for kod, d in vek.items():
         rok = max(k[0] for k in d)
         pv = d.get((rok, "Priemerný vek obyvateľa", "Spolu"))
@@ -155,8 +155,8 @@ def byvanie() -> None:
 # ---------------- firmy ----------------
 
 def firmy() -> None:
-    po = tabulka("og3805rr", "e_legal_forms")
-    fo = tabulka("og3808rr", "e_legal_forms")
+    po = tabulka("og3805rr", "e_legal_forms", rokov=11)
+    fo = tabulka("og3808rr", "e_legal_forms", rokov=11)
     roky = sorted({k[0] for v in po.values() for k in v})[-11:]
     obce = {}
     for kod in set(po) | set(fo):
@@ -186,7 +186,7 @@ ZDRAVIE = {
 
 
 def sluzby() -> None:
-    zd = tabulka("zd5001rr", "e_icha_hp")
+    zd = tabulka("zd5001rr", "e_icha_hp", rokov=1)
     rok_zd = max(k[0] for v in zd.values() for k in v)
     obce: dict[str, dict] = defaultdict(dict)
     for kod, d in zd.items():
@@ -194,7 +194,7 @@ def sluzby() -> None:
         if z:
             obce[kod]["zdravie"] = z
     try:
-        po = tabulka("ik5001rr")
+        po = tabulka("ik5001rr", rokov=1)
         rok_po = max(k[0] for v in po.values() for k in v)
         for kod, d in po.items():
             if d.get((rok_po,), 0) > 0:
@@ -203,7 +203,7 @@ def sluzby() -> None:
         rok_po = None
         print(f"::warning title=Pošty::{e}")
     try:
-        kn = tabulka("ku5008rr", "e_indic", "e_libccat_libtype", filtr=lambda x: x.get("e_libccat_libtype", "").strip() == "Verejné knižnice")
+        kn = tabulka("ku5008rr", "e_indic", "e_libccat_libtype", rokov=1, filtr=lambda x: x.get("e_libccat_libtype", "").strip() == "Verejné knižnice")
         rok_kn = max(k[0] for v in kn.values() for k in v)
         for kod, d in kn.items():
             n = d.get((rok_kn, "Počet knižníc", "Verejné knižnice"), 0)
