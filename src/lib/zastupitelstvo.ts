@@ -73,3 +73,5 @@ const SKR: [RegExp, string][] = [
   [/^SPOLU - občianska demokracia$/, 'Spolu'], [/^ODS - Občianski demokrati Slovenska$/, 'ODS'], [/^STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI$/, 'Starostovia a nezávislí'],
 ];
 export const skrat = (strany: string) => strany.split(', ').map((s) => SKR.find(([r]) => r.test(s.trim()))?.[1] ?? s.trim()).join(' + ');
+/** Skratka jednej strany (celý názov naraz – aj s čiarkami, napr. OĽaNO v NRSR 2023). */
+export const skratStrany = (n: string) => { const s = n.trim(); const m = SKR.find(([r]) => r.test(s))?.[1]; return m ?? (s.length > 42 ? s.split(/\s[-–]\s|,\s/)[0] : s); };

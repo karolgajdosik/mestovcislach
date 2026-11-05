@@ -215,3 +215,20 @@ let _sk: { typy: Record<string, string>; obce: Record<string, SkolyObce> } | nul
 export const nezamInfo = () => (_nez === undefined ? (_nez = citaj('data', 'obce', 'nezamestnanost.json')) : _nez);
 export const odpadInfo = () => (_odp === undefined ? (_odp = citaj('data', 'obce', 'odpad.json')) : _odp);
 export const skolyInfo = () => (_sk === undefined ? (_sk = citaj('data', 'obce', 'skoly.json')) : _sk);
+
+// Voľby, pohyb obyvateľstva, bývanie, firmy, služby, turizmus, vlaky (zber_obce_volby.py, zber_obce_statdata.py, zber_obce_vlaky.py).
+type Volba = { nazov: string; strany: string[]; sr: { ucast: number; s: [number, number][] }; okresy: Record<string, number>; obce: Record<string, [number, [number, number][]]> };
+let _vol: { volby: Record<string, Volba> } | null | undefined;
+let _poh: { roky: string[]; okresy: Record<string, { vek?: number }>; obce: Record<string, { rad?: Record<string, [number, number, number, number]>; vek?: number; vek_rok?: string; vek10?: number; starnutie?: number }> } | null | undefined;
+let _byv: { okresy: Record<string, Record<string, number | null>>; obce: Record<string, Record<string, any>> } | null | undefined;
+let _fir: { roky: string[]; obce: Record<string, Record<string, [number, number, number, number]>> } | null | undefined;
+let _slu: { roky: Record<string, string | null>; obce: Record<string, { zdravie?: Record<string, number>; posta?: number; kniznica?: [number, number] }> } | null | undefined;
+let _tur: { obce: Record<string, Record<string, { zariadeni?: number; lozok?: number; vyuzitie?: number; trzby?: number }>> } | null | undefined;
+let _vla: { den: string; obce: Record<string, [string, number][]> } | null | undefined;
+export const volbyInfo = () => (_vol === undefined ? (_vol = citaj('data', 'obce', 'volby.json')) : _vol);
+export const pohybInfo = () => (_poh === undefined ? (_poh = citaj('data', 'obce', 'pohyb.json')) : _poh);
+export const byvanieInfo = () => (_byv === undefined ? (_byv = citaj('data', 'obce', 'byvanie.json')) : _byv);
+export const firmyInfo = () => (_fir === undefined ? (_fir = citaj('data', 'obce', 'firmy.json')) : _fir);
+export const sluzbyInfo = () => (_slu === undefined ? (_slu = citaj('data', 'obce', 'sluzby.json')) : _slu);
+export const turizmusInfo = () => (_tur === undefined ? (_tur = citaj('data', 'obce', 'turizmus.json')) : _tur);
+export const vlakyInfo = () => (_vla === undefined ? (_vla = citaj('data', 'obce', 'vlaky.json')) : _vla);

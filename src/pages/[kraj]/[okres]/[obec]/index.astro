@@ -6,8 +6,8 @@ import '../../../../styles/stranka.css';
 import '../../../../styles/obce.css';
 import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
 import Kalendar from '../../../../components/Kalendar.astro';
-import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, type Obec } from '../../../../lib/obce';
-import { skrat } from '../../../../lib/zastupitelstvo';
+import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, volbyInfo, pohybInfo, byvanieInfo, firmyInfo, sluzbyInfo, turizmusInfo, vlakyInfo, type Obec } from '../../../../lib/obce';
+import { skrat, skratStrany } from '../../../../lib/zastupitelstvo';
 
 export function getStaticPaths() {
   return kraje().flatMap((k) => obceKraja(k.slug).filter((o) => !webMesta(o.nazov))
@@ -105,6 +105,44 @@ const skTvar = (t_: string, n: number) => { const f = SK_TVARY[t_]; return f ? f
 // eurofondy a dotácie (zmluvy o NFP v CRZ)
 const nfp = zm?.nfp && zm.nfp[0] > 0 ? zm : null;
 const zmlText = (n: number) => (n === 1 ? 'zmluva' : n < 5 ? 'zmluvy' : 'zmlúv');
+// celoštátne voľby
+const VOLI = volbyInfo()?.volby ?? {};
+const celostatne = ['nrsr2023', 'prez2024_2', 'prez2024_1', 'ep2024'].map((id) => ({ id, v: VOLI[id], x: VOLI[id]?.obce?.[o.kod] })).filter((a) => a.v && a.x);
+const jePrez = (id: string) => id.startsWith('prez');
+// pohyb obyvateľstva a vek
+const pohI = pohybInfo();
+const poh = pohI?.obce?.[o.kod] ?? null;
+const pohRad = poh?.rad ? Object.entries(poh.rad).sort(([a], [b]) => a.localeCompare(b)) : [];
+const pohSum = pohRad.reduce((a, [, r]) => [a[0] + r[0], a[1] + r[1], a[2] + r[2], a[3] + r[3]], [0, 0, 0, 0]);
+const vekOkr = pohI?.okresy?.[o.okres]?.vek ?? null;
+const pohMax = Math.max(1, ...pohRad.flatMap(([, r]) => [r[0], r[1], r[2], r[3]]));
+// bývanie (SODB 2021)
+const byvI = byvanieInfo();
+const byv = byvI?.obce?.[o.kod] ?? null;
+const byvOkr = byvI?.okresy?.[o.okres] ?? {};
+// firmy
+const firI = firmyInfo();
+const fir = firI?.obce?.[o.kod] ?? null;
+const firRoky = fir ? Object.keys(fir).sort() : [];
+const firP = fir && firRoky.length ? fir[firRoky[firRoky.length - 1]] : null;
+const firS = fir && firRoky.length > 5 ? fir[firRoky[firRoky.length - 6]] : null;
+// služby, vlaky, turizmus
+const sluI = sluzbyInfo();
+const slu = sluI?.obce?.[o.kod] ?? null;
+const vlI = vlakyInfo();
+const vl = vlI?.obce?.[o.kod] ?? null;
+const ZDR: [string, [string, string, string]][] = [
+  ['vseob', ['ambulancia všeobecného lekára', 'ambulancie všeobecného lekára', 'ambulancií všeobecného lekára']], ['deti', ['ambulancia detského lekára', 'ambulancie detského lekára', 'ambulancií detského lekára']],
+  ['zubar', ['zubná ambulancia', 'zubné ambulancie', 'zubných ambulancií']], ['gyn', ['gynekologická ambulancia', 'gynekologické ambulancie', 'gynekologických ambulancií']],
+  ['spec', ['ambulancia špecialistu', 'ambulancie špecialistov', 'ambulancií špecialistov']], ['lekarne', ['lekáreň', 'lekárne', 'lekární']],
+  ['polikliniky', ['poliklinika', 'polikliniky', 'polikliník']], ['nemocnice', ['nemocnica', 'nemocnice', 'nemocníc']], ['rzp', ['stanica záchrannej služby', 'stanice záchrannej služby', 'staníc záchrannej služby']],
+];
+const tvar = (f: [string, string, string], n: number) => f[n === 1 ? 0 : n < 5 ? 1 : 2];
+const turI = turizmusInfo();
+const tur = turI?.obce?.[o.kod] ?? null;
+const turRoky = tur ? Object.keys(tur).sort() : [];
+const turRok = turRoky.filter((r) => Number(r) < new Date().getFullYear()).pop() ?? turRoky[turRoky.length - 1];
+const turP = tur && turRok ? tur[turRok] : null;
 const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` : ''}${z10 != null ? `, za 10 rokov ${z10 > 0 ? '+' : ''}${des(z10)} %` : ''}${st ? `. Starosta 2026: ${bezTit(st.meno)}` : ''}. Sčítanie 2021, voľby a poslanci.`;
 ---
 <Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis}
@@ -150,6 +188,41 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
     )}
   </div>
 
+  {(poh?.rad || poh?.vek != null) && (
+    <section class="card" id="pohyb">
+      <h2>Narodení, zomrelí, sťahovanie</h2>
+      <ul class="ob-cisla">
+        {poh.vek != null && <li><b>{des(poh.vek)} r.</b><span>priemerný vek ({poh.vek_rok}){vekOkr != null ? `, okres ${des(vekOkr)}` : ''}{poh.vek10 != null ? `; pred 10 rokmi ${des(poh.vek10)}` : ''}</span></li>}
+        {pohRad.length > 0 && <li><b>{pohSum[0] - pohSum[1] > 0 ? '+' : pohSum[0] - pohSum[1] < 0 ? '−' : ''}{fmt(Math.abs(pohSum[0] - pohSum[1]))}</b><span>prirodzený prírastok za {pohRad.length} rokov ({fmt(pohSum[0])} narodených, {fmt(pohSum[1])} zomrelých)</span></li>}
+        {pohRad.length > 0 && <li><b>{pohSum[2] - pohSum[3] > 0 ? '+' : pohSum[2] - pohSum[3] < 0 ? '−' : ''}{fmt(Math.abs(pohSum[2] - pohSum[3]))}</b><span>saldo sťahovania za {pohRad.length} rokov ({fmt(pohSum[2])} prisťahovaných, {fmt(pohSum[3])} vysťahovaných)</span></li>}
+      </ul>
+      {pohRad.length > 2 && (
+        <div class="ob-obal">
+          <table class="ob-tab ob-pohyb">
+            <thead><tr><th>Rok</th><th class="num">Narodení</th><th class="num">Zomrelí</th><th class="num">Prisťahovaní</th><th class="num">Vysťahovaní</th><th class="num">Spolu</th></tr></thead>
+            <tbody>{pohRad.slice().reverse().map(([r, [a, b, c, d]]) => { const z = a - b + c - d; return <tr><td>{r}</td><td class="num">{fmt(a)}</td><td class="num">{fmt(b)}</td><td class="num">{fmt(c)}</td><td class="num">{fmt(d)}</td><td class={`num ${z < 0 ? 'zaporne' : ''}`}>{z > 0 ? '+' : z < 0 ? '−' : ''}{fmt(Math.abs(z))}</td></tr>; })}</tbody>
+          </table>
+        </div>
+      )}
+      <p class="zdroj">Zdroj: ŠÚ SR – pohyb obyvateľstva a indexy vekového zloženia (STATdata om7103rr, om7052rr).</p>
+    </section>
+  )}
+
+  {byv && (
+    <section class="card" id="byvanie">
+      <h2>Domy, kanalizácia, plyn, voda</h2>
+      <ul class="ob-bary">
+        {([['Kanalizácia', 'kanal', 'domy pripojené na verejnú kanalizáciu'], ['Plyn', 'plyn', 'domy s plynovou prípojkou'], ['Verejný vodovod', 'vodovod', 'domy s vodou z verejnej siete']] as const).filter(([, k]) => byv[k] != null).map(([n, k, pozn]) => (
+          <li><span>{n}<small>{pozn}</small></span><span class="pruh" aria-hidden="true"><i style={`width:${byv[k]}%`}></i></span><span class="num"><strong>{des(byv[k], 0)} %</strong> <small>({byvOkr[k] != null ? `okres ${des(byvOkr[k]!, 0)} %` : '–'})</small></span></li>
+        ))}
+      </ul>
+      {byv.kanal != null && byv.kanal < 50 && byv.zumpa != null && <p class="pozn">{des(byv.zumpa, 0)} % domov má septik alebo žumpu{byv.cov ? `, ${des(byv.cov, 0)} % domácu čističku` : ''}.</p>}
+      {byv.vek_domov && <p class="pozn">Domy postavené alebo zrekonštruované: do 1945 {des(byv.vek_domov[0], 0)} % · 1946–1980 {des(byv.vek_domov[1], 0)} % · 1981–2000 {des(byv.vek_domov[2], 0)} % · 2001–2009 {des(byv.vek_domov[3], 0)} % · od 2010 {des(byv.vek_domov[4], 0)} %.</p>}
+      {byv.kurenie && <p class="pozn">Kúrenie v bytoch: ústredné vlastné {des(byv.kurenie[1], 0)} %, diaľkové (teplárne) {des(byv.kurenie[0], 0)} %, etážové {des(byv.kurenie[2], 0)} %, kachle a iné samostatné telesá {des(byv.kurenie[3], 0)} %.</p>}
+      <p class="zdroj">Zdroj: ŠÚ SR – Sčítanie obyvateľov, domov a bytov 2021 ({byv.domov ? `${fmt(byv.domov)} domov` : ''}). Odvtedy mohla obec kanalizáciu alebo plynovod rozšíriť.</p>
+    </section>
+  )}
+
   {v && (
     <section class="card" id="volby">
       <h2>Komunálne voľby 2026</h2>
@@ -179,6 +252,26 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
         </>
       )}
       <p class="zdroj">Zdroj: Štatistický úrad SR – výsledky komunálnych volieb 24. 10. 2026. Uvádzame len meno, stranu a hlasy.</p>
+    </section>
+  )}
+
+  {celostatne.length > 0 && (
+    <section class="card" id="volby-celostatne">
+      <h2>Ako sa tu volilo</h2>
+      <div class="ob-volby">
+        {celostatne.map(({ id, v: vv, x }) => (
+          <div>
+            <h3>{vv!.nazov}</h3>
+            <p class="pozn">Účasť <strong>{des(x![0])} %</strong> (okres {vv!.okresy[o.okres] != null ? `${des(vv!.okresy[o.okres])} %` : '–'}, Slovensko {des(vv!.sr.ucast)} %)</p>
+            <ul class="ob-bary">
+              {x![1].slice(0, jePrez(id) ? 4 : 5).map(([i, pct]) => { const sr = vv!.sr.s.find(([j]) => j === i)?.[1]; return (
+                <li><span translate="no">{jePrez(id) ? vv!.strany[i] : skratStrany(vv!.strany[i])}</span><span class="pruh" aria-hidden="true"><i style={`width:${pct}%`}></i></span><span class="num"><strong>{des(pct)} %</strong>{sr != null && <small> (SR {des(sr)} %)</small>}</span></li>
+              ); })}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <p class="zdroj">Zdroj: ŠÚ SR – výsledky volieb do NR SR 2023, voľby prezidenta 2024 a voľby do Európskeho parlamentu 2024 (otvorené dáta, volby.statistics.sk). Podiel z platných hlasov v obci.</p>
     </section>
   )}
 
@@ -221,6 +314,19 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
       )}
       {nezRok != null && <p class="pozn">Za posledný rok {Math.abs(nezRok) < 0.05 ? 'bez výraznej zmeny' : `${nezRok < 0 ? 'pokles' : 'nárast'} o ${des(Math.abs(nezRok), 1)} percentuálneho bodu`}.</p>}
       <p class="zdroj">Zdroj: <a href={nezI.zdroj?.url ?? 'https://www.upsvr.gov.sk'} rel="noopener">ÚPSVaR – mesačná štatistika uchádzačov o zamestnanie podľa obcí</a>. Miera = podiel disponibilných uchádzačov o zamestnanie na obyvateľoch v produktívnom veku (PDU, takto ju ÚPSVaR počíta pre obce a okresy). V malých obciach ju výrazne posunie aj pár ľudí.</p>
+    </section>
+  )}
+
+  {firP && (
+    <section class="card" id="firmy">
+      <h2>Firmy a živnostníci</h2>
+      <ul class="ob-cisla">
+        <li><b>{fmt(firP[0])}</b><span>firiem (obchodné spoločnosti, družstvá a iné ziskové právnické osoby)</span></li>
+        <li><b>{fmt(firP[2])}</b><span>živnostníkov{firP[3] > 0 ? ` a ${fmt(firP[3])} ďalších podnikateľov (napr. SHR, slobodné povolania)` : ''}</span></li>
+        <li><b>{fmt(firP[1])}</b><span>neziskových organizácií (občianske združenia, nadácie, cirkevné a iné)</span></li>
+      </ul>
+      {firS && <p class="pozn">Za 5 rokov ({firRoky[firRoky.length - 6]} → {firRoky[firRoky.length - 1]}): firmy {fmt(firS[0])} → {fmt(firP[0])}, živnostníci {fmt(firS[2])} → {fmt(firP[2])}.</p>}
+      <p class="zdroj">Zdroj: ŠÚ SR – Register organizácií, stav k 31. 12. {firRoky[firRoky.length - 1]} (STATdata og3805rr, og3808rr). Podľa sídla, resp. bydliska podnikateľa – len počty, bez mien.</p>
     </section>
   )}
 
@@ -280,6 +386,20 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
         {eia.zamery.slice(0, 8).map(([seo, n, stav, zmena, typ, kat, uk]) => <li><a href={`${eiaWeb()}${seo}`} rel="noopener">{n}</a><small>{KAT_EIA[kat] ?? kat} · {typ} · {stav}{zmena ? ` · ${datum(zmena)}` : ''}{uk ? '' : ' · prebieha'}</small></li>)}
       </ul>
       <p class="zdroj">Zdroj: Enviroportál MŽP SR / SAŽP – informačný systém EIA/SEA. Zámer sa posudzuje ešte pred stavebným povolením.</p>
+    </section>
+  )}
+
+  {(slu || vl || sluI) && (
+    <section class="card" id="sluzby">
+      <h2>Lekár, lekáreň, pošta, vlak</h2>
+      <ul class="ob-zoznam">
+        {slu?.zdravie ? ZDR.filter(([k]) => slu.zdravie![k]).map(([k, f]) => <li><b>{fmt(slu.zdravie![k])}</b> {tvar(f, slu.zdravie![k])}</li>) : <li>Žiadna ambulancia ani lekáreň (podľa štatistiky {sluI?.roky?.zdravie}).</li>}
+        <li>{slu?.posta ? <><b>{slu.posta === 1 ? 'Pošta' : `${slu.posta} pošty`}</b> v obci</> : 'Pošta v obci nie je.'}</li>
+        {slu?.kniznica && <li><b>Obecná knižnica</b>{slu.kniznica[1] ? ` · ${fmt(slu.kniznica[1])} kníh a iných jednotiek` : ''}</li>}
+        {vl ? vl.map(([n, c]) => <li><b>Vlak:</b> <span translate="no">{n}</span> · {fmt(c)} {c === 1 ? 'vlak' : c < 5 ? 'vlaky' : 'vlakov'} v pracovný deň</li>) : vlI && <li>Železničná stanica ani zastávka v obci nie je.</li>}
+      </ul>
+      {turP && turP.zariadeni ? <p class="pozn">Ubytovanie ({turRok}): {fmt(turP.zariadeni)} {turP.zariadeni === 1 ? 'ubytovacie zariadenie' : turP.zariadeni < 5 ? 'ubytovacie zariadenia' : 'ubytovacích zariadení'}{turP.lozok ? ` s ${fmt(turP.lozok)} lôžkami` : ''}{turP.vyuzitie ? `, využitie lôžok ${des(turP.vyuzitie)} %` : ''}.</p> : null}
+      <p class="zdroj">Zdroj: ŠÚ SR – zdravotníctvo za obce ({sluI?.roky?.zdravie}), pošty a knižnice ({sluI?.roky?.posta}); ŽSR – grafikon vlakovej dopravy (GTFS){vlI?.den ? `, počet vlakov ${datum(vlI.den)}` : ''}{turP ? '; ŠÚ SR – kapacity ubytovacích zariadení' : ''}. Ambulancie sú počítané podľa sídla – mená lekárov neuvádzame.</p>
     </section>
   )}
 

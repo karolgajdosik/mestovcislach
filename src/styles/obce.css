@@ -53,3 +53,11 @@ section.card { margin-bottom: 16px; }
 .ob-stlpce span { display: block; width: 100%; max-width: 28px; background: var(--accent, #2563eb); border-radius: 3px 3px 0 0; opacity: .8; }
 .ob-stlpce > div:last-child span { opacity: 1; }
 .ob-stlpce small { font-size: .7rem; color: var(--muted); margin-top: 2px; white-space: nowrap; }
+
+/* celoštátne voľby vedľa seba, zoznam služieb */
+.ob-volby { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: .5rem 1.5rem; }
+.ob-volby h3 { margin-bottom: .2rem; }
+.ob-zoznam { list-style: none; padding: 0; margin: .5rem 0; display: grid; gap: .35rem; }
+.ob-zoznam li { padding-left: 1.1rem; position: relative; }
+.ob-zoznam li::before { content: '•'; position: absolute; left: .2rem; color: var(--accent); }
+.ob-pohyb td.zaporne { color: var(--danger, #b42318); }
