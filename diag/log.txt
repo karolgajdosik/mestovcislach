@@ -1,11 +1,87 @@
-https://data.slovensko.sk/api/3/action/package_show?id=ebeeedf1-aca2-451a-bdc0-35d536714888 200 text/html; charset=utf-8 519
-  ... <!doctype html><html lang="sk"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Národný katalóg otvorených dát</title><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/><script defer="defer" src="/static/js/main.526b3c75.js"></script><link href="/static/css/main.250017cb.css" rel="stylesheet"></head><body><script>var externalToken=null</script><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
-https://data.slovensko.sk/api/action/package_show?id=ebeeedf1-aca2-451a-bdc0-35d536714888 200 text/html; charset=utf-8 519
-  ... <!doctype html><html lang="sk"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Národný katalóg otvorených dát</title><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/><script defer="defer" src="/static/js/main.526b3c75.js"></script><link href="/static/css/main.250017cb.css" rel="stylesheet"></head><body><script>var externalToken=null</script><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
-https://data.slovensko.sk/datasety/ebeeedf1-aca2-451a-bdc0-35d536714888 200 text/html; charset=utf-8 519
-  ... <!doctype html><html lang="sk"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Národný katalóg otvorených dát</title><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/><script defer="defer" src="/static/js/main.526b3c75.js"></script><link href="/static/css/main.250017cb.css" rel="stylesheet"></head><body><script>var externalToken=null</script><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
-https://data.slovensko.sk/api/sparql 400 text/plain;charset=UTF-8 24
-  ... Missing parameter: query
-https://data.slovensko.sk/datasety/ebeeedf1-aca2-451a-bdc0-35d536714888.jsonld 200 text/html; charset=utf-8 519
-  ... <!doctype html><html lang="sk"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Národný katalóg otvorených dát</title><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/><script defer="defer" src="/static/js/main.526b3c75.js"></script><link href="/static/css/main.250017cb.css" rel="stylesheet"></head><body><script>var externalToken=null</script><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+get 200
+{
+  "head" : {
+    "vars" : [
+      "ds",
+      "d",
+      "u",
+      "f"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "ds" : {
+          "type" : "uri",
+          "value" : "https://data.gov.sk/set/ebeeedf1-aca2-451a-bdc0-35d536714888"
+        },
+        "d" : {
+          "type" : "uri",
+          "value" : "https://data.gov.sk/set/ebeeedf1-aca2-451a-bdc0-35d536714888/resource/14dd62d5-ea7c-487f-b392-6158b103eb60"
+        },
+        "u" : {
+          "type" : "uri",
+          "value" : "https://data.slovensko.sk/download?id=fa56545f-a4c2-4eb9-bd26-b1c350991293"
+        },
+        "f" : {
+          "type" : "uri",
+          "value" : "http://publications.europa.eu/resource/authority/file-type/ZIP"
+        }
+      }
+    ]
+  }
+}
+get 200
+{
+  "head" : {
+    "vars" : [
+      "ds",
+      "t",
+      "u"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "ds" : {
+          "type" : "uri",
+          "value" : "https://data.gov.sk/set/ca4cb74c-7192-4198-b074-34acd9d295e7"
+        },
+        "t" : {
+          "xml:lang" : "sk",
+          "type" : "literal",
+          "value" : "Grafikon vlakovej dopravy vo formáte GTFS"
+        },
+        "u" : {
+          "type" : "uri",
+          "value" : "https://www.zsr.sk/files/pre-cestujucich/cestovny-poriadok/gtfs/gtfs.zip"
+        }
+      },
+      {
+        "ds" : {
+          "type" : "uri",
+          "value" : "https://data.gov.sk/set/ebeeedf1-aca2-451a-bdc0-35d536714888"
+        },
+        "t" : {
+          "xml:lang" : "sk",
+          "type" : "literal",
+          "value" : "Grafikon vlakovej dopravy vo formáte GTFS"
+        },
+        "u" : {
+          "type" : "uri",
+          "value" : "https://data.slovensko.sk/download?id=fa56545f-a4c2-4eb9-bd26-b1c350991293"
+        }
+      }
+    ]
+  }
+}
+get 504
+<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>nginx/1.31.3</center>
+</body>
+</html>
+
 HOTOVO
