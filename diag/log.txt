@@ -1,23 +1,12 @@
-['stop_id', 'stop_code', 'stop_name', 'stop_desc', 'stop_lat', 'stop_lon', 'zone_id', 'stop_url', 'location_type', 'parent_station', 'stop_timezone', 'wheelchair_boarding', 'level_id', 'platform_code']
-{'stop_id': '5433014', 'stop_code': '', 'stop_name': 'Albrechtice u Č.Těš.', 'stop_desc': '', 'stop_lat': '49.79375851150874', 'stop_lon': '18.524588579144645', 'zone_id': '', 'stop_url': '', 'location_type': '0', 'parent_station': '', 'stop_timezone': '', 'wheelchair_boarding': '0', 'level_id': '', 'platform_code': ''}
-{'stop_id': '5615946', 'stop_code': '', 'stop_name': 'Alekšince', 'stop_desc': '', 'stop_lat': '48.364559297145895', 'stop_lon': '17.943017798488643', 'zone_id': '', 'stop_url': '', 'location_type': '0', 'parent_station': '', 'stop_timezone': '', 'wheelchair_boarding': '0', 'level_id': '', 'platform_code': ''}
-{'stop_id': '5615956', 'stop_code': '', 'stop_name': 'Andač', 'stop_desc': '', 'stop_lat': '48.382001139109256', 'stop_lon': '17.967422957239574', 'zone_id': '', 'stop_url': '', 'location_type': '0', 'parent_station': '', 'stop_timezone': '', 'wheelchair_boarding': '0', 'level_id': '', 'platform_code': ''}
-{'stop_id': '5614423', 'stop_code': '', 'stop_name': 'Bacúch', 'stop_desc': '', 'stop_lat': '48.84508072226443', 'stop_lon': '19.81849387720194', 'zone_id': '', 'stop_url': '', 'location_type': '0', 'parent_station': '', 'stop_timezone': '', 'wheelchair_boarding': '0', 'level_id': '', 'platform_code': ''}
-{'stop_id': '8010022', 'stop_code': '', 'stop_name': 'Bad Schandau', 'stop_desc': '', 'stop_lat': '50.91947809086641', 'stop_lon': '14.13965782749615', 'zone_id': '', 'stop_url': '', 'location_type': '0', 'parent_station': '', 'stop_timezone': '', 'wheelchair_boarding': '0', 'level_id': '', 'platform_code': ''}
-5615956 Andač [('Alekšince', 3.3), ('Čab', 3.4)]
-5615290 Barca [('Košice', 4.4), ('Valaliky', 5.0)]
-5433425 Břeclav [('Brodské', 15.7), ('Kúty', 16.8)]
-5617535 Bytčica [('Lietavská Lúčka', 2.1), ('Žilina', 4.0)]
-5614070 Danielov Dom [('Štôla', 4.2), ('Batizovce', 4.4)]
-5613136 Devínska N.Ves [('Stupava', 8.8), ('Marianka', 10.1)]
-5613053 Diviaky [('Turčianske Teplice', 2.9), ('Malý Čepčín', 3.6)]
-5614130 Dolný Smokovec [('Nová Lesná', 2.9), ('Veľký Slavkov', 4.5)]
-5614253 Dubová [('Nemecká', 1.6), ('Predajná', 4.3)]
-5615233 Hačava [('Hnúšťa', 3.4), ('Krokava', 6.5)]
-5615243 Hačava skálie [('Hnúšťa', 2.3), ('Krokava', 6.2)]
-5500017 Hegyeshalom [('Hamuliakovo', 18.2), ('Kalinkovo', 18.5)]
-5615260 Hutníky [('Sokoľany', 2.9), ('Bočiar', 3.8)]
-2200010 Chop [('Ptrukša', 9.3), ('Čierna', 9.9)]
-8100373 Kittsee [('Bratislava', 8.3), ('Marianka', 18.0)]
-5617615 Sedliacka Dubová [('Sedliacka Dubová', 1.8), ('Horná Lehota', 2.4)]
+Barca https://overpass-api.de/api/interpreter 200
+    9 Košice-Juh {'postal_code': '04001', 'ref': '599824'}
+Bytčica https://overpass-api.de/api/interpreter 200
+    8 Žilina {'ref': '517402'}
+Danielov Dom https://overpass-api.de/api/interpreter 200
+    8 Vysoké Tatry {'ref': '560103'}
+Devínska N.Ves https://overpass-api.de/api/interpreter 502
+Devínska N.Ves https://overpass-api.de/api/interpreter Expecting value: line 1 column 1 (char 0)
+Devínska N.Ves https://overpass.kumi.systems/api/interpreter HTTPSConnectionPool(host='overpass.kumi.systems', port=443): Read timed out. (read timeout=90)
+Andač https://overpass-api.de/api/interpreter 200
+    8 Lukáčovce {'ref': '500488'}
 HOTOVO
