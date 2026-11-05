@@ -219,7 +219,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
       {byv.kanal != null && byv.kanal < 50 && byv.zumpa != null && <p class="pozn">{des(byv.zumpa, 0)} % domov má septik alebo žumpu{byv.cov ? `, ${des(byv.cov, 0)} % domácu čističku` : ''}.</p>}
       {byv.vek_domov && <p class="pozn">Domy postavené alebo zrekonštruované: do 1945 {des(byv.vek_domov[0], 0)} % · 1946–1980 {des(byv.vek_domov[1], 0)} % · 1981–2000 {des(byv.vek_domov[2], 0)} % · 2001–2009 {des(byv.vek_domov[3], 0)} % · od 2010 {des(byv.vek_domov[4], 0)} %.</p>}
       {byv.kurenie && <p class="pozn">Kúrenie v bytoch: ústredné vlastné {des(byv.kurenie[1], 0)} %, diaľkové (teplárne) {des(byv.kurenie[0], 0)} %, etážové {des(byv.kurenie[2], 0)} %, kachle a iné samostatné telesá {des(byv.kurenie[3], 0)} %.</p>}
-      <p class="zdroj">Zdroj: ŠÚ SR – Sčítanie obyvateľov, domov a bytov 2021 ({byv.domov ? `${fmt(byv.domov)} domov` : ''}). Odvtedy mohla obec kanalizáciu alebo plynovod rozšíriť.</p>
+      <p class="zdroj">Zdroj: ŠÚ SR – Sčítanie obyvateľov, domov a bytov 2021 ({byv.domov ? `${fmt(byv.domov)} domov` : ''}). Podiely sú z domov, pri ktorých bol údaj zistený; okres = všetky domy okresu spolu. Odvtedy mohla obec kanalizáciu alebo plynovod rozšíriť.</p>
     </section>
   )}
 
