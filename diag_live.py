@@ -1,31 +1,27 @@
 import re, json, requests
+from concurrent.futures import ThreadPoolExecutor
 H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36", "Accept": "application/json"}
 B = "https://statdata.statistics.sk/public/api/dc"
-naj = {}
-for q in ["narodení obce", "zomrelí obce", "sťahovanie obce", "prirodzený prírastok", "priemerný vek", "vekové zloženie obce", "byty sčítanie 2021", "domy sčítanie 2021", "kanalizácia", "vodovod", "kúrenie", "zemný plyn", "ubytovacie zariadenia", "prenocovania", "právnické osoby", "podnikatelia fyzické osoby", "organizácie podľa právnej formy", "register organizácií"]:
-    try:
-        r = requests.post(B + "/public/bulkDownload/search", json={"query": q, "page": 0, "size": 60}, headers=H, timeout=90)
-        j = r.json()
-    except Exception as e:
-        print("ERR", q, e); continue
+print(requests.get(f"{B}/public/zp3804rr/info", headers=H, timeout=60).text[:1500])
+kody = {}
+for page in range(0, 40):
+    r = requests.post(B + "/public/bulkDownload/search", json={"query": "", "page": page, "size": 100}, headers=H, timeout=90)
+    j = r.json()
     items = j.get("content") if isinstance(j, dict) else j
-    for it in items or []:
+    if page == 0: print("keys", list(j.keys()) if isinstance(j, dict) else type(j), json.dumps(items[0], ensure_ascii=False)[:400])
+    if not items: break
+    for it in items:
         s = json.dumps(it, ensure_ascii=False)
-        kod = re.search(r'"([a-z]{2}\d{4}[a-z]{2})"', s)
-        nm = it.get("nameSk") or it.get("name") or re.search(r'"(?:nameSk|title|name)":\s*"([^"]+)"', s)
-        if kod and kod.group(1) not in naj:
-            naj[kod.group(1)] = (nm if isinstance(nm, str) else (nm.group(1) if nm else s[:120]), q)
-print(len(naj))
-for k, (n, q) in sorted(naj.items()):
-    try:
-        info = requests.get(f"{B}/public/{k}/info", headers=H, timeout=60).text
-    except Exception:
-        info = ""
-    zon = "OBCE" if re.search(r"Obce|obce|LAU|e_nuts15", info) else ""
-    print(k, zon, "|", str(n)[:110], "|", q)
-# prezidentské voľby – súbory
-for u in ["https://volby.statistics.sk/opendata/", "https://volby.statistics.sk/prez/prez2024/sk/data02.html", "https://volby.statistics.sk/prez/prez2024/sk/download.html"]:
-    try:
-        r = requests.get(u, headers=H, timeout=60); print(u, r.status_code, sorted(set(re.findall(r'href="([^"]+\.(?:csv|zip|xlsx))"', r.text)))[:40])
-    except Exception as e: print(u, e)
+        k = re.search(r'"([a-z]{2}\d{4}[a-z]{2})"', s)
+        if k: kody[k.group(1)] = it
+    if isinstance(j, dict) and j.get("last"): break
+print("kociek", len(kody))
+def info(k):
+    try: return k, requests.get(f"{B}/public/{k}/info", headers=H, timeout=60).text
+    except Exception: return k, ""
+with ThreadPoolExecutor(8) as ex:
+    for k, t in ex.map(info, sorted(kody)):
+        if re.search(r'"(?:nameSk|name)"\s*:\s*"Obce"', t) or "e_nuts15" in t:
+            nm = re.search(r'"(?:nameSk|title)"\s*:\s*"([^"]+)"', json.dumps(kody[k], ensure_ascii=False))
+            print("OBCE", k, "|", nm.group(1) if nm else "")
 print("HOTOVO")
