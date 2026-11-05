@@ -63,7 +63,7 @@ def jedny(vid: str, nazov: str, cesta: str) -> dict:
     k_kod, k_zap, k_zuc = stlpec(ucast[0], "kód obce"), stlpec(ucast[0], "zapísaných"), stlpec(ucast[0], "zúčastnených")
     h_kod, h_hl = stlpec(hlasy[0], "kód obce"), stlpec(hlasy[0], "počet platných hlasov")
     if any("politického subjektu" in k for k in hlasy[0]):
-        h_str = stlpec(hlasy[0], "politického subjektu")
+        h_str = stlpec(hlasy[0], "názov", "politického subjektu")
         meno = lambda h: h[h_str].strip()  # noqa: E731
     else:  # prezidentské voľby – kandidát (verejná funkcia: meno a hlasy)
         meno = lambda h: f"{h['Meno'].strip()} {h['Priezvisko'].strip()}"  # noqa: E731
