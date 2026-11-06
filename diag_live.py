@@ -3,37 +3,41 @@ import re, requests, io, zipfile, json
 sys.path.insert(0, "scripts")
 s = requests.Session(); s.headers["User-Agent"] = "Mozilla/5.0 (compatible; mestovcislach.sk)"
 def g(u, **k):
-    try:
-        r = s.get(u, timeout=60, **k); return r
-    except Exception as e:
-        print("ERR", u, str(e)[:150]); return None
-def links(u, pat, n=40):
+    try: return s.get(u, timeout=90, **k)
+    except Exception as e: print("ERR", u, str(e)[:150]); return None
+r = g("https://sdi.eea.europa.eu/webdav/datastore/public/")
+if r is not None:
+    print("EEA", r.status_code, [m for m in re.findall(r'href="([^"]+)"', r.text) if "ied" in m.lower() or "eprtr" in m.lower()][:20])
+for v in ["eea_t_ied-eprtr_p_2007-2022_v11_r00", "eea_t_ied-eprtr_p_2007-2023_v12_r00", "eea_t_ied-eprtr_p_2007-2023_v13_r00"]:
+    r = g(f"https://sdi.eea.europa.eu/webdav/datastore/public/{v}/")
+    if r is not None: print("EEADIR", v, r.status_code, re.findall(r'href="([^"]+)"', r.text)[:30])
+# geology services
+def walk(folder):
+    r = g(f"https://ags.geology.sk/arcgis/rest/services/{folder}?f=json")
+    try: return r.json().get("services", [])
+    except Exception: return []
+for f in ["Atlasy", "GeologickeMapy", "MapovyPortal", "TematickeAplikacie", "WebServices", "wgs_atlasy", "wgs_geologickeMapy", "Geofond", "wgs_geofond", "Zranitelnost", "Monitoring"]:
+    sv = walk(f)
+    hit = [x["name"] for x in sv if re.search(r"svah|zosuv|deform|geohaz|rizik|radon", x["name"], re.I)]
+    print("GEO", f, len(sv), hit[:10])
+# cdb
+for u in ["https://www.cdb.sk/sk/statisticke-udaje/Celostatne-scitanie-dopravy.alej", "https://www.cdb.sk/sk/Celostatne-scitanie-dopravy.alej", "https://www.cdb.sk/sk/Mapa-stranky.alej"]:
     r = g(u)
-    if r is None: return
-    print("==", u, r.status_code, len(r.text))
-    for m in sorted(set(re.findall(r'href="([^"]+)"', r.text))):
-        if re.search(pat, m, re.I): print("  ", m[:220]); n -= 1
-        if n <= 0: break
-links("https://www.apa.sk/", r"prijim|zverej|opendata|otvoren")
-links("https://www.uvo.gov.sk/", r"otvoren|opendata|api|data")
-r = g("https://datahub.ekosystem.slovensko.digital/api/data/vvo/notices/sync"); print("DH", r.status_code if r is not None else None, (r.text[:300] if r is not None else ""))
-links("https://www.ssc.sk/sk/cestna-databanka/celostatne-scitanie-dopravy.ssc", r"scitan|xls|zip|csv|2022|mapa")
-for u in ["https://ags.geology.sk/arcgis/rest/services?f=json", "https://apl.geology.sk/arcgis/rest/services?f=json", "https://gis.geology.sk/arcgis/rest/services?f=json"]:
-    r = g(u); print("GEO", u, r.status_code if r is not None else None, (r.text[:500] if r is not None else ""))
-# STATdata population long series
-from statdata_obce import B, H
-for k in ["om7102rr", "om7002rr", "om7001rr", "om7101rr", "om7103rr"]:
-    try:
-        i = s.get(f"{B}/public/{k}/info", headers=H, timeout=60).json()
-        print("STAT", k, i.get("nameSk", "")[:120], [(d["acronym"], d.get("type")) for d in i["dimensions"]], i.get("timeRange") or i.get("periodFrom"), i.get("periodTo"))
-    except Exception as e: print("STAT ERR", k, e)
-# OSO2022 zip
+    if r is not None:
+        print("CDB", u, r.status_code, [m for m in re.findall(r'href="([^"]+)"', r.text) if re.search(r"scitan|xls|zip|2022", m, re.I)][:20])
+# RPO
+r = g("https://api.statistics.sk/rpo/v1/search", params={"fullName": "Technické služby Detva"})
+print("RPO", r.status_code if r is not None else None, (r.text[:1500] if r is not None else ""))
+# om7101rr
+from statdata_obce import B, H, polozky
+i = s.get(f"{B}/public/om7101rr/info", headers=H, timeout=60).json()
+for d in i["dimensions"]:
+    if d["acronym"] in ("e_indic", "e_year", "e_unit"):
+        it = [x.get("nameSk") for x in polozky("om7101rr", d["id"])]
+        print("OM7101", d["acronym"], len(it), it[:6], it[-3:])
+# OSO candidates
 r = g("https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip")
-if r is not None and r.content[:2] == b"PK":
-    z = zipfile.ZipFile(io.BytesIO(r.content)); print("OSO", z.namelist())
-    for n in z.namelist():
-        if re.search(r"tab0[3-9]", n): print("  HEAD", n, z.read(n)[:400].decode("utf-8", "replace").replace("\n", " | "))
-# Open-Meteo
-r = g("https://archive-api.open-meteo.com/v1/archive", params={"latitude": 48.55, "longitude": 19.33, "start_date": "2016-01-01", "end_date": "2025-12-31", "daily": "temperature_2m_mean,temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum", "models": "era5", "timezone": "Europe/Bratislava"})
-print("OM", r.status_code if r is not None else None, (r.text[:300] if r is not None else ""))
+z = zipfile.ZipFile(io.BytesIO(r.content))
+for n in ["OSO2022_SK_tab0ad.csv", "OSO2022_SK_tab0bd.csv", "OSO2022_SK_tab0c.csv", "OSO2022_SK_tab0dd.csv", "OSO2022_SK_tab02ad.csv", "OSO2022_SK_tab_info.csv"]:
+    print("  HEAD", n, z.read(n)[:350].decode("utf-8", "replace").replace("\n", " | ").replace("\r", ""))
 print("HOTOVO")

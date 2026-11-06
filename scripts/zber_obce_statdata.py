@@ -37,9 +37,22 @@ def obec(x: dict) -> str | None:
     return najdi_obec(n, okres)
 
 
-def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None, vyber: dict | None = None) -> dict[str, dict[tuple, float]]:
-    """{kód obce: {(čas, dim1, dim2 …): hodnota}} – prázdne hodnoty („.“) a duplicity z kontextu sa vynechajú."""
+MESTA_MC = {o["nazov"]: o["kod"] for o in OBCE if o["nazov"] in ("Bratislava", "Košice")}
+
+
+def mesto_mc(x: dict) -> str | None:
+    """Mestská časť Bratislavy/Košíc -> kód mesta (pre kocky, ktoré mesto ako celok neuvádzajú)."""
+    n = (x.get("e_nuts15") or "").strip()
+    o = (x.get("e_nuts14") or "").strip()
+    m = re.match(r"^(Bratislava|Košice)\s*[-–]", n) or re.match(r"^(?:Okres\s+)?(Bratislava|Košice) [IV]+$", o)
+    return MESTA_MC.get(m.group(1)) if m else None
+
+
+def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None, vyber: dict | None = None, mc: bool = False) -> dict[str, dict[tuple, float]]:
+    """{kód obce: {(čas, dim1, dim2 …): hodnota}} – prázdne hodnoty („.“) a duplicity z kontextu sa vynechajú.
+    mc=True: ak kocka nemá Bratislavu/Košice ako celok, sčítajú sa ich mestské časti (len pre sčítateľné hodnoty)."""
     out: dict[str, dict[tuple, float]] = defaultdict(dict)
+    mcs: dict[str, dict[tuple, float]] = defaultdict(lambda: defaultdict(float))
     nenajdene = set()
     for x in riadky_obce(kocka, rokov, vyber):
         if filtr and not filtr(x):
@@ -48,11 +61,19 @@ def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None, vyber:
         if v is None:
             continue
         kod = obec(x)
-        if not kod:
-            nenajdene.add(x.get("e_nuts15", "").strip())
-            continue
         k = (x["_cas"].strip(),) + tuple((x.get(d) or "").strip() for d in dims)
+        if not kod:
+            mesto = mesto_mc(x) if mc else None
+            if mesto:
+                mcs[mesto][k] += v
+            else:
+                nenajdene.add(x.get("e_nuts15", "").strip())
+            continue
         out[kod].setdefault(k, v)
+    for mesto, d in mcs.items():
+        if mesto not in out:
+            out[mesto] = dict(d)
+            print(f"  {kocka}: {mesto} = súčet mestských častí")
     print(f"  {kocka}: {len(out)} obcí, nepriradených území {len(nenajdene)}")
     if len(out) < 2000:
         raise RuntimeError(f"{kocka}: priradených len {len(out)} obcí (napr. {sorted(nenajdene)[:6]})")
@@ -191,8 +212,8 @@ def byvanie() -> None:
 # ---------------- firmy ----------------
 
 def firmy() -> None:
-    po = tabulka("og3805rr", "e_legal_forms", rokov=11)
-    fo = tabulka("og3808rr", "e_legal_forms", rokov=11)
+    po = tabulka("og3805rr", "e_legal_forms", rokov=11, mc=True)
+    fo = tabulka("og3808rr", "e_legal_forms", rokov=11, mc=True)
     roky = sorted({k[0] for v in po.values() for k in v})[-11:]
     obce = {}
     for kod in set(po) | set(fo):
@@ -377,7 +398,7 @@ UZEMIE = {"Orná pôda": "orna", "Trvalé trávne porasty": "ttp", "Lesné pozem
 
 
 def uzemie() -> None:
-    t = tabulka("pl5001rr", "e_landuse", "e_soiltype", rokov=11)
+    t = tabulka("pl5001rr", "e_landuse", "e_soiltype", rokov=11, mc=True)
     obce = {}
     rok = None
     for kod, d in t.items():
