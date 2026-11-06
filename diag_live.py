@@ -1,3 +1,4 @@
+import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
 import sys, re, time
 sys.path.insert(0, "scripts")
 import zber_obce_t9 as t9
