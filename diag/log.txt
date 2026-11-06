@@ -1,7 +1,8 @@
-ucast 2926 ['Kód kraja', 'Názov kraja', 'Kód územného obvodu', 'Názov územného obvodu', 'Kód okresu', 'Názov okresu', 'Kód obce', 'Názov obce']
-hlasy 43890 ['Kód kraja', 'Názov kraja', 'Kód územného obvodu', 'Názov územného obvodu', 'Kód okresu', 'Názov okresu', 'Kód obce', 'Názov obce']
-sr [('Počet volebných okrskov', '5940'), ('Počet odovzdaných zápisníc okrskových volebných komisií', '5940'), ('Podiel odovzdaných zápisníc okrskových volebných komisií v %', '100'), ('Počet voličov zapísaných v zoznamoch voličov', '4429033'), ('Počet voličov, ktorí sa zúčastnili na hlasovaní', '2158859'), ('Účasť voličov v %', '48.74')]
-Vek 2025: 2885 obcí
-2025 2885 {'m': [28, 31, 35, 31, 39, 36, 35, 54, 54, 61, 52, 47, 56, 46, 36, 32, 18, 8], 'z': [21, 35, 45, 51, 35, 35, 28, 43, 59, 55, 59, 42, 56, 52, 51, 34, 26, 26]}
-cas 1283
+Veková pyramída True
+Domácnosti, byty a práca True
+Staršie voľby True
+Účasť v ďalších hlasovaniach True
+Podľa OpenStreetMap True
+prvá písomná zmienka True
+nadmorská výška True
 HOTOVO
