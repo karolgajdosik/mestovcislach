@@ -1,26 +1,62 @@
-  P /SAM/3
-  P /SAM/3/-1/3
-  P rozpocet/OSVS/subjekty/0
-  P rozpocet/SAM/sam/0
-  P rozpocet/VS/kapitoly/0
-  P rozpocet/aktualizacie
-  P rozpocet/home
-  P rozpocet/poslednaAktualizacia/KNS/VS/SCH
-  P rozpocet/poslednaAktualizacia/PLNENIE/VS/SKU
-  P rozpocet/poslednaAktualizacia/SAM/SAM/SCH
-  P rozpocet/poslednaAktualizacia/SR/VS/SCH
-  P rozpocet/poslednaNeuskutocnenaAktualizaciaVlaOrParVerzie
-  P rozpocet/priebezne-plnenie
-  P rozpocet/rozpoctove-opatrenia
-  P rozpocet/sumareZaRoky
-  P rozpocet/zobrazitInfoODU
-!function(e){e.module("app.rozpocet").service("configService",[function(){var e={APP_URL:"/web/",API_URL:"/rest/api/",FULLTEXT_URL:"/"};return{get:function(a){return e[a]}}}])}(angular||null),function(e){e.module("app.rozpocet").service("dataService",["$q","$sce","$http","configService","utils","langService",function(e,a,t,n,r,o){var i=this;i.baseUrl=n.get("API_URL");var l=function(n,r){var o=i.baseUrl+n,l=a.trustAsResourceUrl(o);return t.get(l,{params:r}).catch(function(a){return e.reject(a)})};return
-SELECT j_idt10:predmet_input [('51', 'Slovenský jazyk a literatúra'), ('53', 'Maďarský jazyk a literatúra'), ('54', 'Ukrajinský jazyk a literatúra'), ('52', 'Slovenský jazyk a slovenská literatúra'), ('55', 'Matematika')]
-SELECT j_idt10:kraj_input [('6', 'Banskobystrický kraj '), ('1', 'Bratislavský kraj'), ('8', 'Košický kraj'), ('4', 'Nitriansky kraj'), ('7', 'Prešovský kraj'), ('3', 'Trenčiansky kraj'), ('2', 'Trnavský kraj'), ('5', 'Žilinský kraj')]
-SELECT j_idt10:okres_input []
-SELECT j_idt10:typz_input [('1', 'Štátne školy'), ('2', 'Súkromné školy'), ('3', 'Cirkevné školy'), ('4', 'Zahraničný subjekt')]
-SELECT j_idt10:zriadovatel_input []
-SELECT j_idt10:language_input [('1', 'Slovenský jazyk'), ('2', 'Maďarský jazyk'), ('3', 'Slovenský a maďarský jazyk'), ('4', 'Ukrajinský  jazyk'), ('5', 'Iný')]
-['j_idt10', 'j_idt10:predmet_input', 'j_idt10:predmet_focus', 'j_idt10:kraj_input', 'j_idt10:kraj_focus', 'j_idt10:okres_input', 'j_idt10:okres_focus', 'j_idt10:typz_input', 'j_idt10:typz_focus', 'j_idt10:zriadovatel_input', 'j_idt10:zriadovatel_focus', 'j_idt10:language_input', 'j_idt10:language_focus', 'Vybrať', '3978787060115838059:-7700875577912217112', 'link-vysvetlivky', '3978787060115838059:-7700875577912217112', 'j_idt35', '3978787060115838059:-7700875577912217112']
- školy. Rozdiel od národného priemeru – počítame tak, že od hodnoty priemernej úspešnosti školy odčítame hodnotu národného priemeru. Kladná hodnota znamená, že priemerná úspešnosť školy je vyššia ako národný priemer. Záporná hodnota znamená, že priemerná úspešnosť školy je nižšia ako národný priemer. Vecná signifikancia je štatistický ukazovateľ – koeficient, ktorý vyjadruje mieru významnosti rozdielu oproti národnému priemeru. Hodnoty Sig. &lt;0,00 – 0,10&gt; &lt;0,11 – 0,20&gt; &lt;0,21 – 0,30&gt; &lt;0,31 – 0,50&gt; &lt;0,51 – 1,00&gt; Miera signifikancie (významnosti) žiadna veľmi mierna mierna stredná silná, veľmi silná až úplná Percentil školy – – vyjadruje umiestnenie školy medzi všetkými školami, na ktorých sa administroval vybraný test. Percentil školy vyjadruje, aké percento škôl dosiahlo výsledok horší ako porovnávaná škola. Napríklad, 90. percentil školy interpretujeme tak, že 90 % zo zúčastnených škôl dosiahlo horší výsledok v danom teste ako uvedená škola (percentil školy sa počíta len zo škôl, ktorých sa testovania zúčastnilo 16 a viac žiakov). Poznámka: Školy, v ktorých sa zúčastnilo testovania 15 a menej žiakov, nemajú uvedené hodnoty parametrov: Rozdiel od národného priemeru (RNP) , Vecná signifikancia (Sig.) Percentil školy . (v týchto prípadoch je metodologicky správnejšie tieto parametre neuvádzať). Súbory na stiahnutie Matematika Maďarský jazyk a literatúra Slovenský jazyk a slovenská literatúra Slovenský jazyk a literatúra Ukrajinský jazyk a literatúra 
+A ('/Dataportal-web/resources/others/2025t9.pdf', 'Tu nájdete vysvetlivky k prezentovaným tabuľkám.')
+A ('#', 'Tu nájdete databázy výsledkov Testovania 9-2025 v .xls formátoch.')
+A ('#', 'Matematika')
+  L organizacia/info/
+  L organizacie/osvs/
+  L organizacie/podurovne/
+  L organizacie/info/
+  L organizacie/ro/
+  L organizacie/po/
+  L organizacie/zz/
+  L organizacie/nadurovne/
+  L organizacie/nadurovne/
+  L rozpocet/konsolidovanyRozpocet/
+  L rozpocet/konsolidovanyNavrh/
+  L rozpocet/konsolidovanyRozpocetInterval/
+  L rozpocet/dlhyAZavazkyObce/
+  L rozpocet/dlhyAZavazkyPodorganizaciiObce/
+  L rozpocet/dlhyAZavazky/
+  L rozpocet/dlhyAZavazkyPodorganizacii/
+  L organizacia/pocetobyvatelov/
+  L service-info
+  L organizacie/podurovne/
+  L rozpocet/financneOperaciePodurovni/
+  L rozpocet/polozkySumarPodurovni/SAM/210/2014/DESC/2?uroven=CELKOVY&EKV=SpoluV&ORG=11&ORG=23&ORG=22
+  L rozpocet/stavUzavrierky/
+  L rozpocet/poslednaAktualizacia/PLNENIE/VS/SKU
+  L rozpocet/poslednaAktualizacia/SR/VS/SCH
+  L rozpocet/poslednaAktualizacia/KNS/VS/SCH
+  L rozpocet/uzavierkaRozpoctu/
+  L rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  L rozpocet/poslednaAktualizacia/OSVS/VS/
+  L rozpocet/poslednaAktualizacia/
+  L rozpocet/sumareZaRoky
+  L rozpocet/aktualizacie
+  L rozpocet/zavazneUkazovateleOrg/
+  L rozpocet/rozpoctySamKrajov/
+  L rozpocet/rozpoctyVuc/
+  L rozpocet/rozpoctyPodorganizaciiSamOrg/
+  L rozpocet/rozpoctyPodorganizaciiVSOrg/
+  L rozpocet/rozpoctyPodorganizaciiVSOrg/
+  L rozpocet/rozpoctyPodorganizaciiOSVSOrg/
+  L rozpocet/rozpoctyOSVSOrganizacii/
+  L rozpocet/rozpoctyUradu/
+  L rozpocet/rozpocetSamOrg/
+  L rozpocet/rozpoctySamOrg/
+  L rozpocet/rozpocetVSOrg/
+  L rozpocet/rozpoctyVSOrg/
+  L rozpocet/rozpocetOSVSOrg/
+  L rozpocet/rozpoctyOSVSOrg/
+  L rozpocet/zobrazitInfoODU
+  L rozpocet/poslednaNeuskutocnenaAktualizaciaVlaOrParVerzie
+  L rozpocet/programyOrganizacie/
+  L rozpocet/programOrganizacie/
+  L rozpocet/lvvOrganizacie/
+  L rozpocet/lvvRozpad/
+  L organizacie/lvv/check/
+  L SK
+  L SK
+API rozpocet/SAM/sam/0 404 application/json;charset=UTF-8 {"timestamp":1793982010564,"status":404,"error":"Not Found","path":"/rest/api/rozpocet/SAM/sam/0"}
+API rozpocet/sumareZaRoky 200 application/json;charset=UTF-8 {"payload":[{"organizaciaId":1217,"nazov":"Agentúra pre núdzové zásoby ropy a ropných výrobkov","kod":"1217","udaje":[{"rok":2006,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2007,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2008,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2009,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2010,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2011,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2012,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2013,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2014},{"rok":2015},{"rok":2016},{"rok":2017},{"rok":2018},{"rok":2019},{"rok":2020},{"rok":2021},{"rok":2022},{"rok":2023},{"rok":2024},{"r
+API rozpocet/poslednaAktualizacia/SAM/SAM/SCH 200 application/json;charset=UTF-8 {"payload":{"subjekt":"SAM","typRozpoctu":"SCH","zobrazujemeLVV":false,"rok":2026,"mesiac":6,"aktualizacia":1788127200000,"modul":"SAM","rokPlanovany":0,"mesiacPlanovany":0,"aktualizaciaPlanovana":null,"ukoncena":true},"success":true,"length":1,"params":{}}
 HOTOVO
