@@ -1,29 +1,8 @@
-ZIP https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip ['OSK2022_SK_tab02ab.csv', 'OSK2022_SK_tab02bd.csv', 'OSK2022_SK_tab06d.csv', 'OSK2022_SK_tab09d.csv', 'OSK2022_SK_tab0a.csv', 'OSK2022_SK_tab0b.csv', 'OSK2022_SK_tab0c.csv', 'OSK2022_SK_tab0dc.csv', 'OSK2022_SK_tab_info.csv']
-    OSK2022_SK_tab02ab.csv 98 | VOBVOD|P_POS_VOL|P_POS_ZVOL | 101|3|3
-    OSK2022_SK_tab02bd.csv 6012 | OBEC|OKRSOK|P_ZAP|P_ZUC|UCAST|P_OO|P_OO_PCT|P_HL_PRE|P_HL_POS | 500011|1|805|364|45,21|363|99,72|346|340
-    OSK2022_SK_tab06d.csv 57891 | OBEC|OKRSOK|PC_HL|P_HL|P_HL_PCT|KANDIDAT | 500011|1|1|96|27,74|1
-    OSK2022_SK_tab09d.csv 274270 | OBEC|OKRSOK|PC_HL|P_HL|P_HL_PCT|KANDIDAT | 500011|1|1|40|1,88|1
-    OSK2022_SK_tab0a.csv 78 | KRAJ|PC_HL|MENO|PRIEZVISKO|TITUL|VEK|ZAMESTNANIE|TP_NOBEC|PS|POZNAMKA | 1|1|Ivan|Bošňák|Ing.|53|finančný manažér|Bratislava - Záhorská Bystrica|103,120,139,146|
-    OSK2022_SK_tab0b.csv 3066 | VOBVOD|PC_HL|MENO|PRIEZVISKO|TITUL|VEK|ZAMESTNANIE|TP_NOBEC|PS|POZNAMKA | 101|1|Zuzana|Aufrichtová|Ing. arch.|47|starostka, urbanistka|Bratislava - Staré Mesto|117,118,153,119|
-    OSK2022_SK_tab0c.csv 57 | PS|NPS|SNPS | 100|7 STATOČNÝCH je CESTA|7 STATOČNÝCH je CESTA
-    OSK2022_SK_tab0dc.csv 2928 | KRAJ|NKRAJ|VOBVOD|NVOBVOD|OBEC|NOBEC|P_ALL_OKRSOK | 1|Bratislavský kraj|101|Volebný obvod č. 1|528595|Bratislava - Staré Mesto|34
-    OSK2022_SK_tab_info.csv 87 | Popis csv súborov obsahujúcich definitívne výsledky volieb do OSK 2022 | ----------------
-ZIP https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip ['OSO2022_SK_tab02ad.csv', 'OSO2022_SK_tab02bf.csv', 'OSO2022_SK_tab05f.csv', 'OSO2022_SK_tab08f.csv', 'OSO2022_SK_tab0ad.csv', 'OSO2022_SK_tab0bd.csv', 'OSO2022_SK_tab0c.csv', 'OSO2022_SK_tab0dd.csv', 'OSO2022_SK_tab_info.csv']
-    OSO2022_SK_tab02ad.csv 3502 | OBEC|VOOBEC|P_POS_VOL|P_POS_ZVOL | 500011|1|1|1
-    OSO2022_SK_tab02bf.csv 6596 | OBEC|VOOBEC|OKRSOK|P_ZAP|P_ZUC|UCAST|P_OO|P_OO_PCT|P_HL_ZAS|P_HL_STA | 500011|1|1|805|363|45,09|363|100,00|356|360
-    OSO2022_SK_tab05f.csv 25594 | OBEC|VOOBEC|OKRSOK|PC_HL|P_HL|P_HL_PCT|KANDIDAT | 500011|1|1|1|4|1,11|
-    OSO2022_SK_tab08f.csv 121662 | OBEC|VOOBEC|OKRSOK|PC_HL|P_HL|P_HL_PCT|KANDIDAT | 500011|1|1|1|73|20,50|0
-    OSO2022_SK_tab0ad.csv 6769 | OBEC|PC_HL|MENO|PRIEZVISKO|TITUL|VEK|ZAMESTNANIE|PS|POZNAMKA | 500011|1|Erik|Blaško||49|šofér|116|
-    OSO2022_SK_tab0bd.csv 42222 | OBEC|VOOBEC|PC_HL|MENO|PRIEZVISKO|TITUL|VEK|ZAMESTNANIE|PS|POZNAMKA | 500011|1|1|Juraj|Dunčič||30|podnikateľ|106,135,104,102|
-    OSO2022_SK_tab0c.csv 57 | PS|NPS|SNPS | 100|7 STATOČNÝCH je CESTA|7 STATOČNÝCH je CESTA
-    OSO2022_SK_tab0dd.csv 2928 | KRAJ|NKRAJ|OBVOD|NOBVOD|OKRES|NOKRES|OBEC|NOBEC|P_ALL_VOOBEC|P_ALL_OKRSOK|P_POS_VOL|VOLBY_TYP | 1|Bratislavský kraj|100|Bratislava mesto|100|Bratislava|582000|Bratislava|17|394|45|1
-    OSO2022_SK_tab_info.csv 99 | Popis csv súborov obsahujúcich definitívne výsledky volieb do OSO 2022 | ----------------
-REF https://volby.statistics.sk/ref/ref2023/sk/index.html 200 text/html; charset=UTF-8 ['../css/buttons.dataTables.min.css', '../css/component.css', '../css/data.css', '../css/idsk-frontend-2.9.0.min.css', '../css/jquery-ui.min.css', '../css/jquery.dataTables.min.css', '../css/responsive.dataTables.min.css', '../css/styles.css', '../en/index.html', '../files/R23_MetodickýPokyn.pdf', '../files/ZZ_2014_180_20220531.pdf', '../files/ZZ_2022_362_20221104.pdf', '../sk/index.html', 'cookies.html', 'https://idsk.gov.sk/', 'https://slovak.statistics.sk/wps/portal/ext/home/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziA809LZycDB0NLPyCXA08QxwD3IO8TAwNTEz1wwkpiAJKG-AAjgZA_VFgJc7ujh4m5j4GBhY-7qYGno4eoUGWgcbGBo7GUAV4zCjIjTDIdFRUBADse0bP/dz/d5/L2dBISEvZ0FBIS9nQSEh/', 'index.html', 'kontakty.html', 'referendova_otazka.html', 'specialne_volebne_okrsky.html', 'subory_na_stiahnutie.html', 'suhrnne_vysledky.html', 'uzemne_clenenie.html', 'vyhlasenie_o_pristupnosti.html', 'vysledky_hlasovania_v_referende.html']
-REF https://volby.statistics.sk/ref/ref2023/sk/subory_na_stiahnutie.html 200 text/html; charset=UTF-8 ['../css/buttons.dataTables.min.css', '../css/component.css', '../css/data.css', '../css/idsk-frontend-2.9.0.min.css', '../css/jquery-ui.min.css', '../css/jquery.dataTables.min.css', '../css/responsive.dataTables.min.css', '../css/styles.css', '../en/subory_na_stiahnutie.html', '../files/REF2023_SK_csv.zip', '../files/REF2023_SK_ods.zip', '../files/REF2023_SK_xlsx.zip', '../sk/subory_na_stiahnutie.html', 'cookies.html', 'https://idsk.gov.sk/', 'https://slovak.statistics.sk/wps/portal/ext/home/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziA809LZycDB0NLPyCXA08QxwD3IO8TAwNTEz1wwkpiAJKG-AAjgZA_VFgJc7ujh4m5j4GBhY-7qYGno4eoUGWgcbGBo7GUAV4zCjIjTDIdFRUBADse0bP/dz/d5/L2dBISEvZ0FBIS9nQSEh/', 'index.html', 'kontakty.html', 'referendova_otazka.html', 'specialne_volebne_okrsky.html', 'subory_na_stiahnutie.html', 'suhrnne_vysledky.html', 'uzemne_clenenie.html', 'vyhlasenie_o_pristupnosti.html', 'vysledky_hlasovania_v_referende.html']
-REF https://volby.statistics.sk/ref/ref2023/files/REF2023_SK_csv.zip 200 application/zip 164805
-REF https://volby.statistics.sk/ref/ref2023/files/REF_2023_SK_csv.zip 404 text/html; charset=iso-8859-1 []
-REF https://volby.statistics.sk/ref/ref2023/sk/download.html 404 text/html; charset=iso-8859-1 []
-RA n 1
-RAD set/eab8d2e5-33d9-446a-84c2-6317a6320bfa http://portal.minv.sk/wps/wcm/connect/sk/site/main/zivotne-situacie/register+adries/poskytovanie_referencnych_udajov/datasety-adresnych-bodov-obce-alebo-casti-obce/sluzba-poskytnutie-datasetov-adresnych-bodov-obce-alebo-casti-obce http://portal.minv.sk/wps/wcm/connect/sk/site/main/zivotne-situacie/register+adries/poskytovanie_referencnych_udajov/datasety-adresnych-bodov-obce-ale ile-type/XML
-RAH http://portal.minv.sk/wps/wcm/connect/sk/site/main/zivotne-situacie/register+adries/poskytovanie_referencnych_udajov/datasety-adresnych-bodov-obce-alebo-casti-obce/sluzba-poskytnutie-datasetov-adresnych-bodov-obce-alebo-casti-obce HTTPSConnectionPool(host='pes.minv.sk', port=443): Max retries exceeded with url: /wps/wcm/connect/sk/site/top/uvod (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)')))
-HOTOVO
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 4, in <module>
+    import zber_obce_wiki_osm as z
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_obce_wiki_osm.py", line 18, in <module>
+    from spolocne import DATA, s, spusti, zapis_ak_zmena
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 19, in <module>
+    from shapely.geometry import Point, shape
+ModuleNotFoundError: No module named 'shapely'
