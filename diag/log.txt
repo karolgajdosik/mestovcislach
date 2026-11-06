@@ -1,62 +1,20 @@
-A ('/Dataportal-web/resources/others/2025t9.pdf', 'Tu nájdete vysvetlivky k prezentovaným tabuľkám.')
-A ('#', 'Tu nájdete databázy výsledkov Testovania 9-2025 v .xls formátoch.')
-A ('#', 'Matematika')
-  L organizacia/info/
-  L organizacie/osvs/
-  L organizacie/podurovne/
-  L organizacie/info/
-  L organizacie/ro/
-  L organizacie/po/
-  L organizacie/zz/
-  L organizacie/nadurovne/
-  L organizacie/nadurovne/
-  L rozpocet/konsolidovanyRozpocet/
-  L rozpocet/konsolidovanyNavrh/
-  L rozpocet/konsolidovanyRozpocetInterval/
-  L rozpocet/dlhyAZavazkyObce/
-  L rozpocet/dlhyAZavazkyPodorganizaciiObce/
-  L rozpocet/dlhyAZavazky/
-  L rozpocet/dlhyAZavazkyPodorganizacii/
-  L organizacia/pocetobyvatelov/
-  L service-info
-  L organizacie/podurovne/
-  L rozpocet/financneOperaciePodurovni/
-  L rozpocet/polozkySumarPodurovni/SAM/210/2014/DESC/2?uroven=CELKOVY&EKV=SpoluV&ORG=11&ORG=23&ORG=22
-  L rozpocet/stavUzavrierky/
-  L rozpocet/poslednaAktualizacia/PLNENIE/VS/SKU
-  L rozpocet/poslednaAktualizacia/SR/VS/SCH
-  L rozpocet/poslednaAktualizacia/KNS/VS/SCH
-  L rozpocet/uzavierkaRozpoctu/
-  L rozpocet/poslednaAktualizacia/SAM/SAM/SCH
-  L rozpocet/poslednaAktualizacia/OSVS/VS/
-  L rozpocet/poslednaAktualizacia/
-  L rozpocet/sumareZaRoky
-  L rozpocet/aktualizacie
-  L rozpocet/zavazneUkazovateleOrg/
-  L rozpocet/rozpoctySamKrajov/
-  L rozpocet/rozpoctyVuc/
-  L rozpocet/rozpoctyPodorganizaciiSamOrg/
-  L rozpocet/rozpoctyPodorganizaciiVSOrg/
-  L rozpocet/rozpoctyPodorganizaciiVSOrg/
-  L rozpocet/rozpoctyPodorganizaciiOSVSOrg/
-  L rozpocet/rozpoctyOSVSOrganizacii/
-  L rozpocet/rozpoctyUradu/
-  L rozpocet/rozpocetSamOrg/
-  L rozpocet/rozpoctySamOrg/
-  L rozpocet/rozpocetVSOrg/
-  L rozpocet/rozpoctyVSOrg/
-  L rozpocet/rozpocetOSVSOrg/
-  L rozpocet/rozpoctyOSVSOrg/
-  L rozpocet/zobrazitInfoODU
-  L rozpocet/poslednaNeuskutocnenaAktualizaciaVlaOrParVerzie
-  L rozpocet/programyOrganizacie/
-  L rozpocet/programOrganizacie/
-  L rozpocet/lvvOrganizacie/
-  L rozpocet/lvvRozpad/
-  L organizacie/lvv/check/
-  L SK
-  L SK
-API rozpocet/SAM/sam/0 404 application/json;charset=UTF-8 {"timestamp":1793982010564,"status":404,"error":"Not Found","path":"/rest/api/rozpocet/SAM/sam/0"}
-API rozpocet/sumareZaRoky 200 application/json;charset=UTF-8 {"payload":[{"organizaciaId":1217,"nazov":"Agentúra pre núdzové zásoby ropy a ropných výrobkov","kod":"1217","udaje":[{"rok":2006,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2007,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2008,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2009,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2010,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2011,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2012,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2013,"schvaleny":false,"upraveny":false,"skutocnost":false},{"rok":2014},{"rok":2015},{"rok":2016},{"rok":2017},{"rok":2018},{"rok":2019},{"rok":2020},{"rok":2021},{"rok":2022},{"rok":2023},{"rok":2024},{"r
-API rozpocet/poslednaAktualizacia/SAM/SAM/SCH 200 application/json;charset=UTF-8 {"payload":{"subjekt":"SAM","typRozpoctu":"SCH","zobrazujemeLVV":false,"rok":2026,"mesiac":6,"aktualizacia":1788127200000,"modul":"SAM","rokPlanovany":0,"mesiacPlanovany":0,"aktualizaciaPlanovana":null,"ukoncena":true},"success":true,"length":1,"params":{}}
+LINK <a id="link-vysvetlivky:j_idt32" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({source:'link-vysvetlivky:j_idt32',oncomplete:function(xhr,status,args){PF('dlg3').show();;}});return false;">
+LINK <a href="#" class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all">
+LINK <a href="#" class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all">
+LINK <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt36':'j_idt35:j_idt36'},'');return false">
+LINK <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt38':'j_idt35:j_idt38'},'');return false">
+LINK <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt40':'j_idt35:j_idt40'},'');return false">
+LINK <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt42':'j_idt35:j_idt42'},'');return false">
+LINK <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt44':'j_idt35:j_idt44'},'');return false">
+FORM <form id="j_idt10" name="j_idt10" method="post" action="/Dataportal-web/web/vysledky/2025/testovanie/index.xhtml" enctype="application/x-www-form-urlencoded">
+FORM <form id="link-vysvetlivky" name="link-vysvetlivky" method="post" action="/Dataportal-web/web/vysledky/2025/testovanie/index.xhtml" enctype="application/x-www-form-urlencoded" style="margin-left: 480px">
+FORM <form id="j_idt35" name="j_idt35" method="post" action="/Dataportal-web/web/vysledky/2025/testovanie/index.xhtml" enctype="application/x-www-form-urlencoded">
+VS ['-2720535427977880294:-2038395219417998952', '-2720535427977880294:-2038395219417998952']
+== rozpocetSamOrg/ return l("rozpocet/rozpoctyPodorganizaciiOSVSOrg/"+e+"/"+a+"/"+t)},getRozpoctyOSVSOrganizacii:function(e,a){return l("rozpocet/rozpoctyOSVSOrganizacii/"+e+"/"+a)},getRozpoctyUradu:function(e,a,t){return l("rozpocet/rozpoctyUradu/"+e+"/"+a+"/"+t)},getRozpocetSamOrg:function(e,a,t){return l("rozpocet/rozpocetSamOrg/"+e+"/"+a+"/"+t)},getRozpoctySamOrg:function(e,a,t,n,r){return l("rozpocet/rozpoctySamOrg/"+e+"/"+a+"/"+t+"/"+n+"/"+r)},getRozpocetSumarSamOrg:function(e,a,t,n){var r="rozpocet/rozpocetSumarSamOrg/"+e+"/"+a+"/"+t+"?",o="";if(!_.isEmpty(n)&&_.isObject(n))for(var i in n){if(Array.isArra
+== rozpoctySamOrg/ cii:function(e,a){return l("rozpocet/rozpoctyOSVSOrganizacii/"+e+"/"+a)},getRozpoctyUradu:function(e,a,t){return l("rozpocet/rozpoctyUradu/"+e+"/"+a+"/"+t)},getRozpocetSamOrg:function(e,a,t){return l("rozpocet/rozpocetSamOrg/"+e+"/"+a+"/"+t)},getRozpoctySamOrg:function(e,a,t,n,r){return l("rozpocet/rozpoctySamOrg/"+e+"/"+a+"/"+t+"/"+n+"/"+r)},getRozpocetSumarSamOrg:function(e,a,t,n){var r="rozpocet/rozpocetSumarSamOrg/"+e+"/"+a+"/"+t+"?",o="";if(!_.isEmpty(n)&&_.isObject(n))for(var i in n){if(Array.isArray(n[i]))for(var u=0;u<n[i].length;u++){o+=(_.isEmpty(o)?"":"&")+i+"="+n[i][u]}else o+=(_.i
+== organizacie/podurovne/ u+="&"+c+"="+r[c];return l(u)},getOrganizacia:function(e,a,t){return e=e||"VS",t=t||o.getLang(),l("organizacia/info/"+t+"/"+e+"/"+a)},getOSVSOrganizacie:function(e,a){return e=e||o.getLang(),l("organizacie/osvs/"+e+"/"+a)},getPodurovneOrganizacie:function(e,a,t){return e=e||"VS",t=t||o.getLang(),l("organizacie/podurovne/"+t+"/"+e+"/"+a)},getPodurovneOrganizacieSAM:function(e,a,t){type="SAM";var n="organizacie/podurovne/"+(t=t||o.getLang())+"/"+type+"/"+e;if(!_.isEmpty(a)&&_.isObject(a))for(var r in a)n+="&"+r+"="+a[r];return l(n)},getPodurovnovePolozky:function(e,a,t,n,r,o,i,u,c){var s="rozpoc
+== organizacie/info/ ";if(!_.isEmpty(n)&&_.isObject(n))for(var u in n)i+="&"+u+"="+n[u];return l(i)},getPodurovneByStringInOrganizaciaSAM:function(e,a,t){var n="organizacie/hladaj/SAM/"+e+"/"+encodeURIComponent(a)+"/"+t;return l(n)},getPodurovneOrganizacieDoHlbky:function(e,a,t,n,r){return e=e||"VS",r=r||o.getLang(),l("organizacie/info/"+r+"/"+e+"/"+a+"/"+t+"/"+n)},getROOrganizacieDoHlbky:function(e,a,t,n,r){return l("organizacie/ro/"+(r=r||"SK")+"/"+(e=e||"VS")+"/"+a+"/"+t+"/"+n)},getPOOrganizacieDoHlbky:function(e,a,t,n,r){return l("organizacie/po/"+(r=r||"SK")+"/"+(e=e||"VS")+"/"+a+"/"+t+"/"+n)},getZZOrganizaci
+== polozkySumarPodurovni e||o.getLang())+"/SAM/3/-1/3";return l(a)},getPodurovneByStringSAM:function(e,a){var t="organizacie/hladajObec/"+encodeURIComponent(e)+"/"+a;return l(t)},getFinOperacieSAM:function(e,a){return l("rozpocet/financneOperaciePodurovni/"+e+"/"+a)},get2ObceSNajviacVydajmiSAM:function(){return l("rozpocet/polozkySumarPodurovni/SAM/210/2014/DESC/2?uroven=CELKOVY&EKV=SpoluV&ORG=11&ORG=23&ORG=22")},getStavUzavierky:function(e,a,t){return l("rozpocet/stavUzavrierky/"+e+"/"+a+"/"+t)},getPriebeznePlnenieAktualizacia:function(){return l("rozpocet/poslednaAktualizacia/PLNENIE/VS/SKU")},getRozpocetSRAktualiza
+== organizacie/po/ ovneOrganizacieDoHlbky:function(e,a,t,n,r){return e=e||"VS",r=r||o.getLang(),l("organizacie/info/"+r+"/"+e+"/"+a+"/"+t+"/"+n)},getROOrganizacieDoHlbky:function(e,a,t,n,r){return l("organizacie/ro/"+(r=r||"SK")+"/"+(e=e||"VS")+"/"+a+"/"+t+"/"+n)},getPOOrganizacieDoHlbky:function(e,a,t,n,r){return l("organizacie/po/"+(r=r||"SK")+"/"+(e=e||"VS")+"/"+a+"/"+t+"/"+n)},getZZOrganizacie:function(e,a,t,n){return l("organizacie/zz/"+(n=n||"SK")+"/"+(e=e||"VS")+"/"+a+"/"+t)},getNadradeneOrganizacie:function(e,a,t){return e=e||"VS",t=t||o.getLang(),l("organizacie/nadurovne/"+t+"/"+e+"/"+a)},getNadurovneOr
+ROUTES ['/:layout/:section?', '/:layout/:section/:id', '/:layout/:section/:id/:jazyk/:slug', '/:layout/:sectionType/:section/:id', '/:layout/:sectionType/:section/:id/f/:year', '/:layout/:sectionType/:parentSection/:parentId/:section/:id/:view', '/:layout/:sectionType/:parentSection/:parentId/:section/:id/:view/f/:year/:balanceType?/:classification?', '/:layout/:sectionType/:rootSection/:rootId/:parentSection/:parentId/:parentView/:section/:id/:view', '/:layout/:sectionType/:rootSection/:rootId/:parentSection/:parentId/:parentView/:section/:id/:view/f/:year/:balanceType?/:classification?', '/:layout/:sectionType/:rootParentSection/:rootParentId/:rootSection/:rootId/:rootView/:parentSection/:parentId/:parentView/:section/:id/:view', '/:layout/:sectionType/:rootParentSection/:rootParentId/:rootSection/:rootId/:rootView/:parentSection/:parentId/:parentView/:section/:id/:view/f/:year/:balanceType?/:classification?']
 HOTOVO
