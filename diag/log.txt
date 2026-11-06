@@ -1,8 +1,12 @@
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 4, in <module>
-    import zber_obce_wiki_osm as z
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_obce_wiki_osm.py", line 18, in <module>
-    from spolocne import DATA, s, spusti, zapis_ak_zmena
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 19, in <module>
-    from shapely.geometry import Point, shape
-ModuleNotFoundError: No module named 'shapely'
+OSM: hranice 2887 obcí
+  Overpass: HTTP 502
+OSM: 27339 prvkov, mimo obcí 0; 2887 obcí; spolu {'potraviny': 6719, 'jedlo': 13877, 'ihriska': 5758, 'nabijacky': 1147}
+510483 None
+511994 [0, 0, 0, 0]
+528595 None
+582000 [602, 2342, 850, 181]
+598186 None
+Bratislava [602, 2342, 850, 181]
+Košice [266, 799, 495, 94]
+cas 215
+HOTOVO
