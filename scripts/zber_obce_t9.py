@@ -95,7 +95,7 @@ def main() -> int:
     for p, riadky in data.items():
         sr[p] = round(sum(x["pus"] * x["n"] for x in riadky) / max(1, sum(x["n"] for x in riadky)), 1)
         for x in riadky:
-            kandid = PODLA_NAZVU.get(kluc(x["obec"]), [])
+            kandid = PODLA_NAZVU.get(kluc(x["obec"]), []) or PODLA_NAZVU.get(kluc(re.split(r"\s*-\s*", x["obec"])[0]), [])
             if len(kandid) != 1:
                 nepr.add(x["obec"])
                 continue
