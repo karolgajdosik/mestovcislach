@@ -1,151 +1,50 @@
-== om7006rr Vekové skupiny - SR-oblasť-kraj-okres-obec, m-v  2025-12-31
-   e_sex CODELIST 3 ['Spolu', 'Muži', 'Ženy']
-   e_indic CODELIST 2 ['Stav trvale bývajúceho obyvateľstva k 30', 'Stav trvale bývajúceho obyvateľstva k 31']
-   e_unit CODELIST 1 ['Osoby']
-   e_year TIME 30 ['2020', '2021', '2022', '2023', '2024', '2025']
-   e_age CODELIST 39 ['Spolu', '0 rokov', 'Od 0 do 17 rokov', 'Od 1 do 4 rokov', '2 rokov alebo menej', 'Od 3 do 5 rokov', '4 roky alebo menej', 'Od 5 do 9 rokov', 'Od 6 do 14 rokov', 'Od 10 do 14 rokov', '14 rokov alebo menej', 'Od 15 do 18 rokov', 'Od 15 do 19 rokov', 'Od 15 do 49 rokov', 'Od 15 do 64 rokov', '18 rokov alebo viac', 'Od 20 do 24 rokov', 'Od 25 do 29 rokov', 'Od 30 do 34 rokov', 'Od 35 do 39 rokov', 'Od 40 do 44 rokov', 'Od 45 do 49 rokov', '50 rokov alebo viac', 'Od 50 do 54 rokov', 'Od 55 do 59 rokov', 'Od 60 do 64 rokov', '65 rokov alebo viac', 'Od 65 do 69 rokov', 'Od 70 do 74 rokov', 'Od 75 do 79 rokov']
-== om7008rr Vekové zloženie - SR-oblasť-kraj-okres-obec, m-v  2025-12-31
-   e_sex CODELIST 3 ['Spolu', 'Muži', 'Ženy']
-   e_indic CODELIST 2 ['Stav trvale bývajúceho obyvateľstva k 30', 'Stav trvale bývajúceho obyvateľstva k 31']
-   e_unit CODELIST 1 ['Osoby']
-   e_year TIME 30 ['2020', '2021', '2022', '2023', '2024', '2025']
-   e_age CODELIST 113 ['Spolu', '0 rokov', '1 rok', '2 roky', '3 roky', '4 roky', '5 rokov', '6 rokov', '7 rokov', '8 rokov', '9 rokov', '10 rokov', '11 rokov', '12 rokov', '13 rokov', '14 rokov', '15 rokov', '16 rokov', '17 rokov', '18 rokov', '19 rokov', '20 rokov', '21 rokov', '22 rokov', '23 rokov', '24 rokov', '25 rokov', '26 rokov', '27 rokov', '28 rokov']
-== om7101mr Počet obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (mesačne)  2026-08-31
-   e_sex CODELIST 3 ['Spolu', 'Muži', 'Ženy']
-   e_indic CODELIST 3 ['Stav trvale bývajúceho obyvateľstva na z', 'Stredný (priemerný) stav trvale bývajúce', 'Stav trvale bývajúceho obyvateľstva na k']
-   e_month TIME 12 ['7.', '8.', '9.', '10.', '11.', '12.']
-   e_unit CODELIST 1 ['Osoby']
-   e_year TIME 33 ['2021', '2022', '2023', '2024', '2025', '2026']
-== om7822rr SODB - Cenzové domácnosti podľa typu a počtu členov 2021-01-01
-   e_indic CODELIST 1 ['Počet cenzových domácností  k rozhodujúc']
-   e_unit CODELIST 1 ['Počet']
-   e_poc_clen_cd CODELIST 6 ['Spolu', '1-členná domácnosť', '2-členná domácnosť', '3-členná domácnosť', '4-členná domácnosť', '5 a viac členná domácnosť']
-   e_year TIME 5 ['1980', '1991', '2001', '2011', '2021']
-   e_typcd CODELIST 5 ['Spolu', 'Úplná rodinná domácnosť       ', 'Neúplná rodinná domácnosť     ', 'Viacčlenná nerodinná domácnosť', 'Domácnosť jednotlivcov        ']
-== om7823rr SODB - Cenzové domácnosti podľa typu a počtu detí 2021-01-01
-   e_indic CODELIST 1 ['Počet cenzových domácností  k rozhodujúc']
-   e_poc_deti CODELIST 5 ['Spolu', '0 detí', '1 dieťa', '2 deti', '3 deti alebo viac']
-   e_unit CODELIST 1 ['Počet']
-   e_year TIME 5 ['1980', '1991', '2001', '2011', '2021']
-   e_typcd CODELIST 5 ['Spolu', 'Úplná rodinná domácnosť       ', 'Neúplná rodinná domácnosť     ', 'Viacčlenná nerodinná domácnosť', 'Domácnosť jednotlivcov        ']
-== om7818rr SODB - Byty podľa počtu obytných miestnosti a typu domu 2021-01-01
-   e_nrooms CODELIST 11 ['Spolu', 'Nezistené', '1 obytná miestnosť          ', '2 obytné miestnosti         ', '3 obytné miestnosti         ', '4 obytné miestnosti         ', '5 obytných miestností       ', '6 obytných miestností       ', '7 obytných miestností       ', '8 obytných miestností       ', '9 obytných miestností a viac']
-   e_indic CODELIST 1 ['Počet bytov k rozhodujúcemu okamihu sčít']
-   e_unit CODELIST 1 ['Počet']
-   e_buildtype CODELIST 4 ['Spolu', 'Rodinný dom', 'Bytový dom', 'Ostatný a nezistený']
-   e_year TIME 5 ['1980', '1991', '2001', '2011', '2021']
-== om7820rr SODB - Byty podľa celkovej podlahovej plochy a typu domu    2021-01-01
-   e_indic CODELIST 1 ['Počet bytov k rozhodujúcemu okamihu sčít']
-   e_unit CODELIST 1 ['Počet']
-   e_buildtype CODELIST 4 ['Spolu', 'Rodinný dom', 'Bytový dom', 'Ostatný a nezistený']
-   e_sqmetrs CODELIST 11 ['Spolu', 'menej ako 30 m2) ', '<30 m2 - 40 m2)  ', '<40 m2 - 50 m2)  ', '<50 m2 - 60 m2)  ', '<60 m2 - 80 m2)  ', '<80 m2 - 100 m2) ', '<100 m2 - 120 m2)', '120 m2 - 150 m2) ', '<150 m2 a viac   ', 'nezistená        ']
-   e_year TIME 5 ['1980', '1991', '2001', '2011', '2021']
-== om7819rr SODB - Byty podľa formy vlastníctva a typu domu  2021-01-01
-   e_indic CODELIST 1 ['Počet bytov k rozhodujúcemu okamihu sčít']
-   e_unit CODELIST 1 ['Počet']
-   e_buildtype CODELIST 4 ['Spolu', 'Rodinný dom', 'Bytový dom', 'Ostatný a nezistený']
-   e_ownerb CODELIST 10 ['Spolu', 'vlastný byt v bytovom dome              ', 'byt vo vlastnom rodinnom dome           ', 'byt v bezplatnom užívaní                ', 'byt v nájme                   ', 'družstevný byt - len stavebné bytové dru', 'služobný a domovnícky byt               ', 'obecný byt                              ', 'iná forma užívania bytu                 ', 'nezistený                               ']
-   e_year TIME 5 ['1980', '1991', '2001', '2011', '2021']
-== om7817rr SODB - Byty podľa zdroja energie na vykurovanie a typu domu 2021-01-01
-   e_indic CODELIST 1 ['Počet bytov k rozhodujúcemu okamihu sčít']
-   e_unit CODELIST 1 ['Počet']
-   e_buildtype CODELIST 4 ['Spolu', 'Rodinný dom', 'Bytový dom', 'Ostatný a nezistený']
-   e_year TIME 5 ['1980', '1991', '2001', '2011', '2021']
-   e_energy CODELIST 9 ['Spolu', 'plyn           ', 'elektrina      ', 'kvapalné palivo', 'pevné palivo   ', 'solárna enregia', 'iný            ', 'žiadny         ', 'nezistený      ']
-== om7807rr SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a štátnej príslušnosti 2021-01-01
-   e_sex CODELIST 3 ['Spolu', 'Muži', 'Ženy']
-   e_indic CODELIST 1 ['Stav obyvateľstva k rozhodujúcemu okamih']
-   e_unit CODELIST 1 ['Osoby']
-   e_country GEO 6 ['Spolu', 'Česká republika', 'Slovenská republika', 'Ostatné', 'Nezistené', 'Bez štátnej príslušnosti']
-   e_year TIME 5 ['1980', '1991', '2001', '2011', '2021']
-   e_age CODELIST 5 ['Spolu', '14 rokov alebo menej', 'Od 15 do 64 rokov', '65 rokov alebo viac', 'Neznáme']
-== om7808rr SODB - Obyvateľstvo podľa pohlavia, vekových skupín (0 – 14, 15 – 64, 65+) a rodinného stavu 2021-01-01
-   e_sex CODELIST 3 ['Spolu', 'Muži', 'Ženy']
-   e_indic CODELIST 1 ['Stav obyvateľstva k rozhodujúcemu okamih']
-   e_unit CODELIST 1 ['Osoby']
-   e_famstat CODELIST 6 ['Spolu', 'Slobodný - slobodná', 'Rozvedený - rozvedená', 'Vdovec - vdova', 'Nezistený', 'Ženatý - vydatá']
-   e_year TIME 5 ['1980', '1991', '2001', '2011', '2021']
-   e_age CODELIST 5 ['Spolu', '14 rokov alebo menej', 'Od 15 do 64 rokov', '65 rokov alebo viac', 'Neznáme']
-== ku5003rr Kiná  2025-12-31
-   e_indic CODELIST 3 ['Počet stálych kín', 'Počet sedadiel v stálych kinách', 'Počet premietacích sál']
-   e_unit CODELIST 1 ['Počet']
-   e_year TIME 30 ['2020', '2021', '2022', '2023', '2024', '2025']
-== ku5005rr Múzeá a galérie  2025-12-31
-   e_indic CODELIST 2 ['Počet galérií', 'Počet múzeí']
-   e_unit CODELIST 1 ['Počet']
-   e_year TIME 30 ['2020', '2021', '2022', '2023', '2024', '2025']
-== ku5006rr Zariadenia na voľný čas a záujmovú činnosť pre deti a mládež  2025-12-31
-   e_indic CODELIST 1 ['Počet zariadení']
-   e_unit CODELIST 1 ['Počet']
-   e_year TIME 30 ['2020', '2021', '2022', '2023', '2024', '2025']
-== ku5011rr Subjekty profesionálneho scénického umenia  2025-12-31
-   e_indic CODELIST 2 ['Počet subjektov profesionálneho scénické', 'Počet stálych scén a priestorov']
-   e_unit CODELIST 1 ['Počet']
-   e_year TIME 5 ['2021', '2022', '2023', '2024', '2025']
-== vh5003rr Spotreba pitnej vody  2025-12-31
-   e_indic CODELIST 2 ['Spotreba pitnej vody - spolu', 'Spotreba pitnej vody - pre domácnosti']
-   e_unit CODELIST 1 ['tisíc m3']
-   e_year TIME 30 ['2020', '2021', '2022', '2023', '2024', '2025']
-VOL https://volby.statistics.sk/opendata/ 403 218 []
-VOL https://volby.statistics.sk/ 200 16147 []
-VOL https://volby.statistics.sk/ref/ref2023/sk/download.html 404 226 []
-VOL https://volby.statistics.sk/nrsr/nrsr2020/sk/download.html 200 9949 ['../files/NRSR_2020_SK_csv.zip', '../files/NRSR_2020_SK_ods.zip', '../files/NRSR_2020_SK_xlsx.zip']
-VOL https://volby.statistics.sk/prez/prez2019/sk/download.html 200 11380 ['../files/PRE_2019_KOLO1_ods.zip', '../files/PRE_2019_KOLO1_xlsx.zip', '../files/PRE_2019_KOLO2_ods.zip', '../files/PRE_2019_KOLO2_xlsx.zip']
-VOL https://volby.statistics.sk/osk/osk2022/sk/download.html 404 226 []
-VOL https://volby.statistics.sk/oso/oso2022/sk/download.html 404 226 []
-VOL https://volby.statistics.sk/kom/kom2022/sk/download.html 404 226 []
-VOL https://volby.statistics.sk/prez/prez2024/sk/download.html 404 228 []
-WD 200 6525 zmienka 6404 vyska 6514 erb 6000
-[{'kod': {'type': 'literal', 'value': '576280'}, 'zm': {'datatype': 'http://www.w3.org/2001/XMLSchema#dateTime', 'type': 'literal', 'value': '1361-01-01T00:00:00Z'}, 'vys': {'datatype': 'http://www.w3.org/2001/XMLSchema#decimal', 'type': 'literal', 'value': '630'}, 'erb': {'type': 'uri', 'value': 'http://commons.wikimedia.org/wiki/Special:FilePath/Dobrany%20v%20orlickych%20horach%20coat%20of%20arms.JPG'}}, {'kod': {'type': 'literal', 'value': '563170'}, 'zm': {'datatype': 'http://www.w3.org/2001/XMLSchema#dateTime', 'type': 'literal', 'value': '1318-01-01T00:00:00Z'}, 'vys': {'datatype': 'http://www.w3.org/2001/XMLSchema#decimal', 'type': 'literal', 'value': '479'}}, {'kod': {'type': 'literal', 'value': '571105'}, 'zm': {'datatype': 'http://www.w3.org/2001/XMLSchema#dateTime', 'type': 'literal', 'value': '1406-01-01T00:00:00Z'}, 'vys': {'datatype': 'http://www.w3.org/2001/XMLSchema#decimal', 'type': 'literal', 'value': '250'}, 'erb': {'type': 'uri', 'value': 'http://commons.wikimedia.org/wiki/Special:FilePath/V%C3%BDrava%20CoA%20CZ.svg'}}]
-WDprop P7606 [{'n': {'datatype': 'http://www.w3.org/2001/XMLSchema#integer', 'type': 'literal', 'value': '0'}}]
-WDprop P3832 [{'n': {'datatype': 'http://www.w3.org/2001/XMLSchema#integer', 'type': 'literal', 'value': '0'}}]
-WDprop P782 [{'n': {'datatype': 'http://www.w3.org/2001/XMLSchema#integer', 'type': 'literal', 'value': '3008'}}]
-OSM 406 <html>
-<head><title>406 Not Acceptable</title></head>
-<body>
-<center><h1>406 Not Acceptable</h1></center>
-<hr><center>nginx</center>
-</body>
-</html>
-
-RA f69693b5-2a91- Register adries a stavieb v meste Prešov (k aktuálnemu dátumu) https://egov.presov.sk/Default.aspx?NavigationState=840:0::plac2127:_144119_5_1
-RA f69693b5-2a91- Register adries a stavieb v meste Prešov (k aktuálnemu dátumu) https://egov.presov.sk/Default.aspx?NavigationState=840:0::plac2127:_144119_5_32
-RA f69693b5-2a91- Register adries a stavieb v meste Prešov (k aktuálnemu dátumu) https://egov.presov.sk/Default.aspx?NavigationState=840:0::plac2127:_144119_5_8
-RA f69693b5-2a91- Register adries a stavieb v meste Prešov (k aktuálnemu dátumu) https://egov.presov.sk/Default.aspx?NavigationState=840:0::plac2127:_144119_5_65537
-RA 37a6fad8-0c47- Register adries v meste Vranov nad Topľou https://data.slovensko.sk/download?id=8a0fb673-0160-4244-9a8f-6b6a60d3207e
-RA 37a6fad8-0c47- Register adries v meste Vranov nad Topľou https://data.slovensko.sk/download?id=f4f7e022-12bf-4a85-915e-3142c924657c
-RA eab8d2e5-33d9- REGISTER ADRIES http://portal.minv.sk/wps/wcm/connect/sk/site/main/zivotne-situacie/register+adries/poskytovanie_referencnych_udajov/datasety-adresnych-bodov-obce-ale
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=7fb1aad8-12c8-4f18-ba73-a3590f1bc87b
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=61c2d061-6e1b-442b-8d99-a8bd09486db7
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=91ec9e75-6dde-400e-ab0c-238025305f0e
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=c8e69306-84c8-4918-a95c-7b6efdb08582
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=f7f8c606-12dc-4fc2-a09e-3a776507fe3d
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=ce30eefa-562d-4b5e-83ba-53bf71fc8487
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=8b53c4dd-0820-4d42-a212-375a96cad8d7
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=d09c6719-371b-444d-8c5a-fe8c70eebace
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=6711cbd5-1d7a-45a5-960d-be9fba54c414
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=82b0bf21-c5c6-4b59-b6fe-0ad7ce70e0ce
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=da26067b-6b9c-4d1c-b6cd-c16f395e259e
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=f6316e6b-ae06-4e79-bfa2-7b9c3f5390c0
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=6c7d977a-6261-4d0e-ad14-ba1cc04e7bb2
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=a8bd76eb-0510-4ac6-9b32-ba6c0b965635
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=6b56e20c-142a-40d1-8132-87838bc1cd57
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=c4b0e88b-eb32-434c-ab04-d7a6083b00f1
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=4b9dc2eb-3764-45d2-84d2-0a7f134a99e6
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=22b15062-db2f-4556-b263-95eec631c1b9
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=fac746a2-2085-470d-bcb2-ef66f32638f7
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=e5f194a6-a997-4ac7-8a3b-66139acb9215
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=8834bc13-75c4-4ebf-9f9e-64a985d3cffb
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=8c857d92-91cd-43e4-8330-c1c1c4d5c3ef
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=0544b140-bc06-44e3-be70-578196487db8
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=bdc4dfe4-3b2b-438d-8352-1b8bfa61e03c
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=fb7f2362-4e2d-485d-9dcd-09543c7d9387
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=e88949e2-19da-4c1b-8da9-af3e222b6fff
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=525ecc94-d6e4-41bc-8670-cd2e9c0a8e9b
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=f0e072cb-f131-44c6-a75f-60dacaf35ee6
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=cee9034a-b769-4318-b2fb-77070c64957e
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=797af9f6-32ee-40c3-9e67-ba52d08b60e2
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=ab535d88-bc03-45be-b810-8f79bb632cc9
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=0e22ea89-c236-4749-97bf-9331cd246846
-RA de3dd18f-9124- Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025 https://data.slovensko.sk/download?id=9d3999aa-5053-4477-ad34-ea1c6c536a94
+WD 3036 zm 2882 vys 2958 erb 570
+   {'o': 'http://www.wikidata.org/entity/Q1018849', 'lau': 'SK0215504513', 'zm': '1392-01-01T00:00:00Z', 'vys': '156'}
+   {'o': 'http://www.wikidata.org/entity/Q1020068', 'lau': 'SK0321508659', 'zm': '1296-01-01T00:00:00Z', 'vys': '636', 'erb': 'http://commons.wikimedia.org/wiki/Special:FilePath/Erb%20small.jpg'}
+   {'o': 'http://www.wikidata.org/entity/Q1020250', 'lau': 'SK0217506877', 'zm': '1291-01-01T00:00:00Z', 'vys': '139', 'erb': 'http://commons.wikimedia.org/wiki/Special:FilePath/SVK%20Cifer%20COA.jpg'}
+   {'o': 'http://www.wikidata.org/entity/Q1020253', 'lau': 'SK0217507555', 'zm': '1256-01-01T00:00:00Z', 'vys': '224', 'erb': 'http://commons.wikimedia.org/wiki/Special:FilePath/Smolenice%201071%202616.jpg'}
+   {'o': 'http://www.wikidata.org/entity/Q1020367', 'lau': 'SK0215504297', 'zm': '1696-01-01T00:00:00Z', 'vys': '303'}
+   {'o': 'http://www.wikidata.org/entity/Q1020461', 'lau': 'SK0321508918', 'zm': '1284-01-01T00:00:00Z', 'vys': '499'}
+  lau formy [('SK9999999999', 2392), ('SK999B999999', 207), ('SK999A999999', 167), ('SK999D999999', 103), ('SK999C999999', 86)]
+HOME ['css/ie/v8.css', 'css/skel.css', 'css/style-wide.css', 'css/style.css', 'http://volby.statistics.sk/ep/ep2004/', 'http://volby.statistics.sk/ep/ep2009/', 'http://volby.statistics.sk/ep/ep2014/', 'http://volby.statistics.sk/ep/ep2019/sk/', 'http://volby.statistics.sk/ep/ep2024/sk/index.html', 'http://volby.statistics.sk/nrsr/nrsr1994/slov/', 'http://volby.statistics.sk/nrsr/nrsr1998/', 'http://volby.statistics.sk/nrsr/nrsr2002/', 'http://volby.statistics.sk/nrsr/nrsr2006/', 'http://volby.statistics.sk/nrsr/nrsr2010/', 'http://volby.statistics.sk/nrsr/nrsr2012/', 'http://volby.statistics.sk/nrsr/nrsr2016/', 'http://volby.statistics.sk/nrsr/nrsr2020/', 'http://volby.statistics.sk/nrsr/nrsr2023/sk/index.html', 'http://volby.statistics.sk/nrsr/snr1990/volby90_s/uvod90.htm', 'http://volby.statistics.sk/nrsr/snr1992/volby92s/uvod92.htm', 'http://volby.statistics.sk/osk/osk2001/', 'http://volby.statistics.sk/osk/osk2005/', 'http://volby.statistics.sk/osk/osk2009/', 'http://volby.statistics.sk/osk/osk2013/', 'http://volby.statistics.sk/osk/osk2017/', 'http://volby.statistics.sk/osk/osk2022/sk', 'http://volby.statistics.sk/osk/osk2026/sk', 'http://volby.statistics.sk/oso/doplnkove2014/sk/', 'http://volby.statistics.sk/oso/doplnkove2018/sk/', 'http://volby.statistics.sk/oso/doplnkove2022/sk/', 'http://volby.statistics.sk/oso/oso2002/', 'http://volby.statistics.sk/oso/oso2006/', 'http://volby.statistics.sk/oso/oso2010/', 'http://volby.statistics.sk/oso/oso2014/oso2014/sk/', 'http://volby.statistics.sk/oso/oso2018/sk', 'http://volby.statistics.sk/oso/oso2022/sk', 'http://volby.statistics.sk/oso/oso2026/sk', 'http://volby.statistics.sk/prez/prez1999/', 'http://volby.statistics.sk/prez/prez2004/', 'http://volby.statistics.sk/prez/prez2009/', 'http://volby.statistics.sk/prez/prez2014/', 'http://volby.statistics.sk/prez/prez2019/sk/', 'http://volby.statistics.sk/prez/prez2024/sk/index.html', 'http://volby.statistics.sk/ref/ref2000/', 'http://volby.statistics.sk/ref/ref2003/', 'http://volby.statistics.sk/ref/ref2004/', 'http://volby.statistics.sk/ref/ref2010/', 'http://volby.statistics.sk/ref/ref2015/', 'http://volby.statistics.sk/ref/ref2023/', 'http://volby.statistics.sk/ref/ref2026/sk/index.html', 'http://www.statistics.sk', 'https://jissu.statistics.sk/ui/sv/base/sv/sv-vseobecna/KS_350846_T?lang=sk', 'https://results.elections.europa.eu/sk/n%C3%A1stroje/miniaplikacia-krajina/2024-2029/', 'https://volbysr.sk/sk/index.html', 'images/favicon.png', 'index-en.html', 'index.html', 'mailto:info@statistics.sk', 'tree.html']
+VOL https://volby.statistics.sk/ref/ref2023/sk/download.html 404 []
+VOL https://volby.statistics.sk/referendum/ref2023/sk/download.html 404 []
+VOL https://volby.statistics.sk/ref/2023/sk/download.html 404 []
+VOL https://volby.statistics.sk/osk/vuc2022/sk/download.html 404 []
+VOL https://volby.statistics.sk/kom/kom2022/sk/data02.html 404 []
+VOL https://volby.statistics.sk/oso/oso2022/sk/download.html 404 []
+VOL https://volby.statistics.sk/osk/osk2022/sk/data01.html 404 []
+VOL https://volby.statistics.sk/vuc/vuc2022/sk/download.html 404 []
+VOL https://volby.statistics.sk/oso2022/sk/download.html 404 []
+NRSR2020 ['NRSR_2020_SK_tab02e.csv', 'NRSR_2020_SK_tab03f.csv', 'NRSR_2020_SK_tab04.csv', 'NRSR_2020_SK_tab05.csv', 'NRSR_2020_SK_tab07f.csv', 'NRSR_2020_SK_tab0a.csv', 'NRSR_2020_SK_tab0b.csv', 'NRSR_2020_SK_tab0c.csv', 'NRSR_2020_SK_tab_info.pdf']
+PREZ2019 ['PRE_2019_KOLO1_tab03a.xlsx', 'PRE_2019_KOLO1_tab03ax.xlsx', 'PRE_2019_KOLO1_tab03b.xlsx', 'PRE_2019_KOLO1_tab03c.xlsx', 'PRE_2019_KOLO1_tab03d.xlsx', 'PRE_2019_KOLO1_tab03e.xlsx', 'PRE_2019_KOLO1_tab03f.xlsx', 'PRE_2019_tab0c.xlsx', 'PRE_2019_KOLO1_tab_info.xlsx', 'PRE_2019_KOLO1_tab0a.xlsx', 'PRE_2019_KOLO1_tab01.xlsx', 'PRE_2019_KOLO1_tab02a.xlsx', 'PRE_2019_KOLO1_tab02b.xlsx', 'PRE_2019_KOLO1_tab02c.xlsx', 'PRE_2019_KOLO1_tab02d.xlsx', 'PRE_2019_KOLO1_tab02e.xlsx', 'PRE_2019_KOLO1_tab02x.xlsx']
+OSM 200 {
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-06T06:28:20Z",
+    "timestamp_areas_base": "2026-11-06T01:49:19Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available unde
+RA 6a81933d-2871-46b9-a26e-8ca980f83e99 Register adries - geografická reprezentácia ulíc - cestné úseky
+RA f69693b5-2a91-4e94-b864-d9c5d46dfe4a Register adries a stavieb v meste Prešov (k aktuálnemu dátumu)
+RA a32bb38f-cb4d-4408-a3ee-c8efdef3de0d Register adries a stavieb v meste Prešov (k aktuálnemu dátumu) 
+RA 655cf689-cdf9-4422-a602-ba1a96cd0cd6 Register adries a stavieb v meste Prešov (k aktuálnemu dátumu) 
+RA fc773106-841e-4d06-b8f8-77a13a2e602e Register adries a stavieb v meste Prešov (k aktuálnemu dátumu)
+RA 984cee53-db32-422c-9393-a787b099349c Register adries a stavieb v meste Prešov (k aktuálnemu dátumu)
+RA 37a6fad8-0c47-4008-8a2e-5ae17dfe69eb Register adries v meste Vranov nad Topľou
+RA dde68094-8187-4a8a-88f3-e79a6565d6d5 Register Adries - Register častí obcí
+RA e3b16084-a8e5-4c68-90d3-c96d71511bcc Register Adries - Register okresov
+RA eab8d2e5-33d9-446a-84c2-6317a6320bfa REGISTER ADRIES
+RA 1277119c-0c20-40c5-9416-30afcc31e7b3 Register Adries - Register obcí
+RA de3dd18f-9124-4acb-ae00-705555332256 Register adries - Zmenové dávky od 27.5.2024 do 31.01.2025
+RA 7c196993-fcd2-407c-ac6c-f4a4ca68cef5 Register adries - Zmenové dávky registra adries
+RA 14fae22e-96ff-4d26-82af-435f8d7a4fb6 Register Adries - Register budov (súpisných čísiel)
+RA db1e7bd7-a7d4-4eac-8e5e-0c843b9dc7d5 Register Adries - Register vchodov (orientačných čísiel)
+RA 0114b6e3-27a6-4549-9a58-3a9033a77675 Register Adries - Register bytov
+RA f2b3af7a-b4d4-45d7-9605-29fa5d7ad115 Register Adries - Register ulíc
+RA fdf7a94c-6ce6-490a-a9a7-b979823735b8 Register adries - Register krajov
+RA a08562a8-e237-4e7f-a40a-9d0622445c6d Register adries
+RA 94e3a4e5-e708-46a7-bebe-4afdb685e99c Register adries v meste (vrátane zoznamu predchádzajúcich adries)
+RA b703dfde-cfe6-46a3-a324-1adc791fcab6 Register adries v meste
+RA 8b4d0fd4-26a6-4857-9f14-87fe30462c91 Register adries v meste
 HOTOVO
