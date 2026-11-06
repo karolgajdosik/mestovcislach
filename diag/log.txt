@@ -1,11 +1,8 @@
-oid 804045
-EKP []
-EKV {'mzdy': 341615.83999999997, 'tovary': 353545.44, 'transfery': 17631.26, 'uroky': 2162.75, 'investicie': 279448.51}
-SUM [{'rozpocetId': 25, 'rok': 2025, 'mesiac': 12, 'kodOrganizacie': '00320382', 'nazovOrganizacie': 'Obec Vígľaš', 'nazovOrganizacieEn': 'Obec Vígľaš', 'hodnoty': {'SCHVALENY': 2594596.7, 'SKUTOCNOST': 2971112.38, 'UPRAVENY': 3552096.13}}, {'rozpocetId': 25, 'rok': 2025, 'mesiac': 12, 'kodOrganizacie': '00320382', 'nazovOrganizacie': 'Obec Vígľaš', 'nazovOrganizacieEn': 'Obec Vígľaš', 'hodnoty': {'SCHVALENY': 1364072, 'SKUTOCNOST': 1055159.8, 'UPRAVENY': 1517664.79}}]
-Rozpočty 2025: tento beh 5 obcí, chýb 0; spolu 5 obcí, z toho za 2025: 5; bez ID v portáli 0
-[('500011', {'rok': 2025, 'p': 128417669, 'v': 79336191, 'pr': {}, 'vy': {'mzdy': 22857595, 'tovary': 25070671, 'transfery': 21473388, 'uroky': 290259, 'investicie': 5296761}}), ('500020', {'rok': 2025, 'p': 2293918, 'v': 891639, 'pr': {}, 'vy': {'mzdy': 259462, 'tovary': 410777, 'transfery': 39403, 'uroky': 15781, 'investicie': 90566}}), ('500046', {'rok': 2025, 'p': 1609672, 'v': 905193, 'pr': {}, 'vy': {'mzdy': 399720, 'tovary': 257045, 'transfery': 53349, 'uroky': 7996, 'investicie': 119075}})]
-T9 rok 2025
-0 []
-mjl KE 0 []
-cas 2
-HOTOVO
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 3, in <module>
+    import zber_obce_t9 as t9
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_obce_t9.py", line 21, in <module>
+    from spolocne import DATA, spusti, zapis_ak_zmena
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 19, in <module>
+    from shapely.geometry import Point, shape
+ModuleNotFoundError: No module named 'shapely'
