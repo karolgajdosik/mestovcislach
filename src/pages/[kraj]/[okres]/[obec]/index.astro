@@ -559,9 +559,9 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
           {chr.op && <li>Obec leží v <b>ochrannom pásme národného parku</b> {chr.op.join(', ')}.</li>}
           {chr.chko && <li>Obec leží v <b>chránenej krajinnej oblasti</b> {chr.chko.map((n) => n.replace(/^CHKO\s+/, '')).join(', ')}.</li>}
           {chr.chvu && <li>Obec leží v <b>chránenom vtáčom území</b> {chr.chvu.join(', ')} (Natura 2000).</li>}
-          {chr.uev && <li>Do územia obce {chr.uev.length === 1 ? 'zasahuje' : 'zasahujú'} <b>{chr.uev.length === 1 ? 'územie európskeho významu' : `${chr.uev.length} územia európskeho významu`}</b> (Natura 2000): {chr.uev.slice(0, 6).join(', ')}{chr.uev.length > 6 ? ' a ďalšie' : ''}.</li>}
-          {chr.mchu && <li><b>{chr.mchu.length === 1 ? 'Maloplošné chránené územie' : `${chr.mchu.length} maloplošné chránené územia`}</b> (prírodné rezervácie, pamiatky a pod.): {chr.mchu.slice(0, 6).join(', ')}{chr.mchu.length > 6 ? ' a ďalšie' : ''}.</li>}
-          {chr.stromy && <li><b>{chr.stromy === 1 ? 'Chránený strom' : `${chr.stromy} chránené stromy`}</b>{chr.stromy >= 5 ? ' (počet jedincov podľa evidencie ŠOP)' : ''}.</li>}
+          {chr.uev && <li>Do územia obce {chr.uev.length === 1 ? 'zasahuje' : 'zasahujú'} <b>{chr.uev.length === 1 ? 'územie európskeho významu' : `${chr.uev.length} ${chr.uev.length < 5 ? 'územia' : 'území'} európskeho významu`}</b> (Natura 2000): {chr.uev.slice(0, 6).join(', ')}{chr.uev.length > 6 ? ' a ďalšie' : ''}.</li>}
+          {chr.mchu && <li><b>{chr.mchu.length === 1 ? 'Maloplošné chránené územie' : `${chr.mchu.length} ${chr.mchu.length < 5 ? 'maloplošné chránené územia' : 'maloplošných chránených území'}`}</b> (prírodné rezervácie, pamiatky a pod.): {chr.mchu.slice(0, 6).join(', ')}{chr.mchu.length > 6 ? ' a ďalšie' : ''}.</li>}
+          {chr.stromy && <li><b>{chr.stromy === 1 ? 'Chránený strom' : `${chr.stromy} ${chr.stromy < 5 ? 'chránené stromy' : 'chránených stromov'}`}</b>{chr.stromy >= 5 ? ' (počet jedincov podľa evidencie ŠOP)' : ''}.</li>}
         </ul>
       ) : chraneneInfo() && <p class="pozn">Obec neleží v národnom parku, chránenej krajinnej oblasti ani chránenom vtáčom území.</p>}
       {tra && (tra[0] >= 1 || tra[1] >= 1) && <p class="pozn">Územím obce vedie {[tra[1] >= 1 ? `${fmt(Math.round(tra[1]))} km značených turistických trás` : null, tra[0] >= 1 ? `${fmt(Math.round(tra[0]))} km cyklotrás` : null].filter(Boolean).join(' a ')} (podľa OpenStreetMap).</p>}
@@ -636,7 +636,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
           <h3>Testovanie 9 ({t9I.rok})</h3>
           <div class="ob-obal">
             <table class="ob-tab">
-              <thead><tr><th>Škola</th><th class="num">Žiakov</th><th class="num">Matematika</th>{t9Jaz.map((j) => <th class="num">{j === 'mjl' ? 'Maďarský jazyk' : 'Slovenský jazyk'}</th>)}</tr></thead>
+              <thead><tr><th>Škola</th><th class="num">Žiakov</th><th class="num">Mat.</th>{t9Jaz.map((j) => <th class="num" title={j === 'mjl' ? 'Maďarský jazyk a literatúra' : 'Slovenský jazyk a literatúra'}>{j === 'mjl' ? 'Maď. j.' : 'Slov. j.'}</th>)}</tr></thead>
               <tbody>{t9.map((x) => <tr><td><span translate="no">{x.nazov}</span><br /><small translate="no">{x.ulica}</small></td><td class="num">{x.mat ? fmt(x.mat[0]) : x.sjl ? fmt(x.sjl[0]) : '–'}</td><td class="num">{x.mat ? `${des(x.mat[1])} %` : '–'}</td>{t9Jaz.map((j) => <td class="num">{(x as any)[j] ? `${des((x as any)[j][1])} %` : '–'}</td>)}</tr>)}</tbody>
             </table>
           </div>
