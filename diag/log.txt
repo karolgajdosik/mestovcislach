@@ -1,8 +1,6 @@
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 3, in <module>
-    import zber_obce_t9 as t9
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_obce_t9.py", line 21, in <module>
-    from spolocne import DATA, spusti, zapis_ak_zmena
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 19, in <module>
-    from shapely.geometry import Point, shape
-ModuleNotFoundError: No module named 'shapely'
+SUBMIT ['<input type="submit" name="j_idt10:j_idt29" value="Vybrať" />'] []
+('', '') 20 [{'nazov': 'ZŠ s MŠ', 'obec': 'Badín', 'ulica': 'Tajovského 2', 'n': 33, 'pus': 54.6, 'rnp': -2.754}]
+('1', '') 20 [{'nazov': 'ZŠ s MŠ', 'obec': 'Badín', 'ulica': 'Tajovského 2', 'n': 33, 'pus': 54.6, 'rnp': -2.754}]
+('', '1') 20 [{'nazov': 'ZŠ s MŠ', 'obec': 'Badín', 'ulica': 'Tajovského 2', 'n': 33, 'pus': 54.6, 'rnp': -2.754}]
+('1', '1') 20 [{'nazov': 'ZŠ s MŠ', 'obec': 'Badín', 'ulica': 'Tajovského 2', 'n': 33, 'pus': 54.6, 'rnp': -2.754}]
+HOTOVO
