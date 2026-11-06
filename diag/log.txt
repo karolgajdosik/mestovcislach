@@ -1,118 +1,91 @@
-pl5001rr riadkov 39286 ['e_year', 'e_nuts15', 'e_landuse', 'e_indic', 'e_soiltype', 'hodnota', '_cas']
-uzemi 3022 [('Abovce', 13), ('Abrahám', 13), ('Abrahámovce, okres Bardejov', 13), ('Abrahámovce, okres Kežmarok', 13), ('Abramová', 13), ('Abranovce', 13), ('Adamovské Kochanovce', 13), ('Adidovce', 13), ('Alekšince', 13), ('Andovce', 13), ('Andrejová', 13), ('Ardanovce', 13), ('Ardovo', 13), ('Arnutovce', 13), ('Báb', 13)]
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Chmeľnica', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Domáce záhradky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '86135.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Lesné pozemky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '635210.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Orná pôda', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1585134.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Ostatné pôdne plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '79559.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Ovocné sady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '935652.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '2720086.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Spolu', 'hodnota': '3655738.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Trvalé trávne porasty', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1048817.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Vinohrady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Vodné plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '12287.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Zastavané plochy a nádvoria', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '208596.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Chmeľnica', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Domáce záhradky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '301129.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Lesné pozemky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '1.0771168E7', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Orná pôda', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1.0966289E7', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Ostatné pôdne plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '924778.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Ovocné sady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '1.3921592E7', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1.805534E7', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Spolu', 'hodnota': '3.1976932E7', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Trvalé trávne porasty', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '6787922.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Vinohrady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Vodné plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '406211.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Zastavané plochy a nádvoria', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '1819435.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Chmeľnica', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Domáce záhradky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '251136.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Lesné pozemky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '5261682.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Orná pôda', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1198398.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Ostatné pôdne plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '154390.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Ovocné sady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '5909014.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1.0286656E7', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Spolu', 'hodnota': '1.619567E7', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Trvalé trávne porasty', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '8837122.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Vinohrady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Vodné plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '31366.0', '_cas': '2025'}
-   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Zastavané plochy a nádvoria', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '461576.0', '_cas': '2025'}
-MV2026 200 ['/swift_data/source/mvsr/skis_mv_sr/data_protection_ochrana_osobnych_udajov/gdpr-cookies.pdf']
-MV2024 dec ['/swift_data/source/policia/statistiky_2024/12_december/1statistika_podla_druhu_kriminality_1_31.12.2024.xml', '/swift_data/source/policia/statistiky_2024/12_december/2statistika_podla_nazvov_TC_2_31.12.2024.xml', '/swift_data/source/policia/statistiky_2024/12_december/3statistika_podla_paragrafov_3_31.12.2024.xml', '/swift_data/source/policia/statistiky_2024/12_december/4tc_spachane_na_mladezi_4_31.12.2024.xml', '/swift_data/source/policia/statistiky_2024/12_december/5tc_spachana_na_mladezi_podla_par_5_31.12.2024.xml', '/swift_data/source/policia/statistiky_2024/12_december/6kriminalita_spachana_cudzincami_6_31.12.2024.xml']
-811516
-<?xml version="1.0"?>
-<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
- xmlns:o="urn:schemas-microsoft-com:office:office"
- xmlns:x="urn:schemas-microsoft-com:office:excel"
- xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
- xmlns:html="http://www.w3.org/TR/REC-html40">
- <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
-  <Author>MV SR</Author>
-  <LastAuthor>MV SR</LastAuthor>
-  <Created>2025-01-10T22:55:02Z</Created>
-  <LastSaved>2025-01-10T22:55:06Z</LastSaved>
-  <Company>MV SR</Company>
-  <Version>10.2625</Version>
- </DocumentProperties>
- <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
-  <DownloadComponents/>
-  <LocationOfComponents HRef="file:///R:\"/>
- </OfficeDocumentSettings>
- <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9855</WindowHeight>
-  <WindowWidth>15180</WindowWidth>
-  <WindowTopX>120</WindowTopX>
-  <WindowTopY>60</WindowTopY>
-  <ProtectStructure>False</ProtectStructure>
-  <ProtectWindows>False</ProtectWindows>
- </ExcelWorkbook>
- <Styles>
-  <Style ss:ID="Default" ss:Name="Normal">
-   <Alignment ss:Vertical="Bottom"/>
-   <Borders/>
-   <Font x:CharSet="238"/>
-   <Interior/>
-   <NumberFormat/>
-   <Protection/>
-  </Style>
-  <Style ss:ID="s21" ss:Name="Bold">
-   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom" ss:WrapText="1"/>
-   <Borders/>
-   <Font x:CharSet="238" ss:Bold="1"/>
-   <Interior/>
-   <NumberFormat/>
-   <Protection/>
-  </Style>
-  <Style ss:ID="s23" ss:Parent="s21">
-   <Alignment ss:Horizontal="CenterAcrossSelection" ss:Vertical="Bottom"
-    ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s24">
-   <Alignment ss:Horizontal="CenterAcrossSelection" ss:Vertical="Bottom"/>
-  </Style>
-  <Style ss:ID="s25">
-   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
-  </Style>
-  <Style ss:ID="s27">
-   <Borders>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
-     ss:Color="#000000"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="s29">
-   <Alignment ss:Horizontal="CenterAcrossSelection" ss:Vertical="Bottom"/>
-   <Borders>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
-     ss:Color="#000000"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="s30" ss:Parent="s21">
-   <Alignment ss:Horizontal="CenterAcrossSelection" ss:Vertical="Bottom"
-    ss:WrapText="1"/>
-   <Borders>
-   
-okresy? 0 []
-HOTOVO
+Chránené územia: vrstvy {'np': 9, 'op': 15, 'chko': 23, 'chvu': 41}; obcí v NP 68, v OP NP 95, v CHKO 339, v CHVÚ 547
+Sociálne služby: 7555 záznamov, vymazaných 1896, nepriradených 2294, obcí 745, posledný zápis 2022-01-01
+::warning title=Obce vrstvy – socialne::CRPSS: len 745 obcí
+  pl5001rr: 2871 obcí, nepriradených území 151
+Územie 2025: 1184 obcí
+  om7809rr: 2885 obcí, nepriradených území 135
+  om7806rr: 2885 obcí, nepriradených území 135
+  om7804rr: 2885 obcí, nepriradených území 135
+  om7805rr: 2885 obcí, nepriradených území 135
+Obyvatelia SODB: 2880 obcí, so vzdelaním 2878, národnosťou 2880
+SHEET SR 63
+SHEET BL 63
+SHEET TT 63
+SHEET TN 63
+SHEET NR 63
+SHEET ZA 63
+SHEET BB 63
+SHEET PO 63
+SHEET KE 63
+SHEET VP 63
+SHEET ZV 63
+SHEET CR 63
+   ['Zdroj Ministerstvo vnútra SR']
+   ['ŠTATISTIKA  KRIMINALITY ZA OBD', '', '', '', '', '', '', '', '', '', '', '', '', '']
+   ['Údaje za  Slovenskú republiku', '', '', '', '', '', '', '', '', '', '', '', '', '']
+   ['', 'Údaje o trestných činoch   ( š', '', '', '', '', '', '', '', '', 'Údaje o stíhaných,vyšetrovanýc', '', '', '']
+   ['Druh kriminality', 'Zistené', 'Objasnené', ' t.j. %', 'Spôsob. škoda', 'Dodatoč. objasnené', 'Vplyv alkoholu', 'Vplyv drog', 'Maloletý páchateľ', 'Mladistvý páchateľ', 'Celkom osôb', 'Počet malolet.', 'Počet mladist.', 'Vplyv alkoholu']
+   ['NÁSILNÁ  KRIMINALITA          ', '4080', '2781', '68', '2058', '308', '583', '24', '38', '238', '3300', '42', '283', '584']
+   ['vraždy                        ', '59', '42', '71', '0', '14', '13', '1', '0', '4', '50', '0', '4', '13']
+   ['lúpeže                        ', '310', '229', '74', '246', '15', '21', '4', '5', '74', '343', '5', '101', '21']
+   ['násilie na verej.činit.       ', '151', '137', '91', '6', '8', '36', '3', '0', '3', '130', '0', '2', '34']
+   ['      - z toho na policajtovi ', '114', '111', '97', '6', '6', '30', '1', '0', '3', '103', '0', '2', '29']
+   ['úmyslené ublíženie na zdraví  ', '1167', '707', '61', '6', '161', '131', '2', '10', '92', '996', '10', '111', '140']
+   ['                              ', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+   ['s rasovým mot.,extrémizmus    ', '57', '23', '40', '0', '22', '1', '0', '3', '6', '30', '3', '4', '1']
+   ['organizovaný zločin           ', '27', '12', '44', '8453', '21', '0', '1', '1', '3', '81', '0', '4', '0']
+   ['                              ', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+   ['MRAVNOSTNÁ  KRIMINALITA       ', '885', '496', '56', '0', '141', '28', '2', '57', '224', '588', '64', '219', '25']
+   ['znásilnenie                   ', '132', '60', '45', '0', '13', '9', '0', '1', '12', '70', '1', '13', '10']
+   ['pohlavné zneužívanie          ', '359', '232', '65', '0', '44', '4', '0', '30', '154', '271', '33', '156', '3']
+   ['obchodovanie s ľuďmi          ', '14', '5', '36', '0', '5', '1', '2', '0', '3', '11', '0', '1', '1']
+   ['                              ', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+   ['MAJETKOVÁ  KRIMINALITA        ', '14044', '5672', '40', '36820', '632', '272', '19', '158', '662', '6622', '216', '667', '263']
+   ['krádeže vlámaním              ', '3328', '1012', '30', '9972', '191', '36', '4', '27', '178', '1442', '43', '212', '36']
+   ['   - škoda značná a vyššia    ', '56', '5', '9', '4162', '8', '0', '0', '0', '1', '29', '0', '1', '0']
+   ['   - do obchodov a výkl.skríň ', '341', '116', '34', '1123', '18', '5', '0', '1', '18', '143', '2', '20', '3']
+   ['       - škoda značná a vyššia', '7', '2', '29', '524', '1', '0', '0', '0', '0', '6', '0', '0', '0']
+   ['   - do reštaurácií a stánkov ', '186', '65', '35', '240', '9', '4', '0', '0', '12', '76', '0', '13', '4']
+   ['       - škoda značná a vyššia', '0', '0', '0', '0', '1', '0', '0', '0', '0', '1', '0', '0', '0']
+   ['   - do bytov                 ', '669', '250', '37', '3089', '36', '15', '0', '5', '52', '359', '8', '56', '16']
+   ['       - škoda značná a vyššia', '26', '2', '8', '1757', '3', '0', '0', '0', '0', '7', '0', '0', '0']
+   ['   - do rekreačných chát      ', '167', '47', '28', '211', '21', '0', '0', '5', '12', '85', '8', '15', '0']
+   ['Zdroj Ministerstvo vnútra SR']
+   ['ŠTATISTIKA  KRIMINALITY ZA OBD', '', '', '', '', '', '', '', '', '', '', '', '', '']
+   ['Údaje za  Bratislavský  kraj', '', '', '', '', '', '', '', '', '', '', '', '', '']
+   ['', 'Údaje o trestných činoch   ( š', '', '', '', '', '', '', '', '', 'Údaje o stíhaných,vyšetrovanýc', '', '', '']
+   ['Druh kriminality', 'Zistené', 'Objasnené', ' t.j. %', 'Spôsob. škoda', 'Dodatoč. objasnené', 'Vplyv alkoholu', 'Vplyv drog', 'Maloletý páchateľ', 'Mladistvý páchateľ', 'Celkom osôb', 'Počet malolet.', 'Počet mladist.', 'Vplyv alkoholu']
+   ['NÁSILNÁ  KRIMINALITA          ', '477', '301', '63', '164', '28', '17', '0', '2', '14', '339', '2', '25', '16']
+   ['vraždy                        ', '10', '6', '60', '0', '3', '1', '0', '0', '0', '7', '0', '0', '1']
+   ['lúpeže                        ', '34', '26', '76', '9', '2', '1', '0', '0', '5', '45', '0', '14', '1']
+   ['násilie na verej.činit.       ', '22', '21', '95', '0', '1', '2', '0', '0', '0', '16', '0', '0', '1']
+   ['      - z toho na policajtovi ', '18', '18', '100', '0', '1', '1', '0', '0', '0', '14', '0', '0', '1']
+   ['úmyslené ublíženie na zdraví  ', '121', '64', '53', '0', '11', '4', '0', '0', '5', '84', '0', '9', '4']
+   ['                              ', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+   ['s rasovým mot.,extrémizmus    ', '11', '4', '36', '0', '10', '1', '0', '0', '2', '7', '0', '0', '1']
+   ['organizovaný zločin           ', '10', '4', '40', '6500', '8', '0', '1', '0', '0', '49', '0', '0', '0']
+   ['                              ', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+   ['MRAVNOSTNÁ  KRIMINALITA       ', '99', '51', '52', '0', '15', '4', '0', '1', '12', '61', '2', '9', '4']
+   ['znásilnenie                   ', '19', '9', '47', '0', '4', '1', '0', '0', '1', '13', '0', '1', '1']
+   ['pohlavné zneužívanie          ', '21', '9', '43', '0', '4', '0', '0', '0', '7', '12', '0', '6', '0']
+   ['obchodovanie s ľuďmi          ', '2', '1', '50', '0', '2', '0', '0', '0', '2', '4', '0', '1', '0']
+   ['                              ', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+   ['MAJETKOVÁ  KRIMINALITA        ', '2957', '905', '31', '10398', '131', '20', '1', '1', '17', '1035', '1', '16', '19']
+   ['krádeže vlámaním              ', '698', '145', '21', '3341', '46', '0', '0', '0', '2', '183', '0', '2', '0']
+   ['   - škoda značná a vyššia    ', '23', '3', '13', '1881', '3', '0', '0', '0', '0', '14', '0', '0', '0']
+   ['   - do obchodov a výkl.skríň ', '65', '22', '34', '374', '2', '0', '0', '0', '1', '25', '0', '1', '0']
+   ['       - škoda značná a vyššia', '4', '2', '50', '227', '0', '0', '0', '0', '0', '5', '0', '0', '0']
+   ['   - do reštaurácií a stánkov ', '57', '17', '30', '85', '4', '0', '0', '0', '0', '15', '0', '0', '0']
+   ['       - škoda značná a vyššia', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+   ['   - do bytov                 ', '109', '18', '17', '1170', '10', '0', '0', '0', '1', '32', '0', '1', '0']
+   ['       - škoda značná a vyššia', '11', '1', '9', '860', '2', '0', '0', '0', '0', '5', '0', '0', '0']
+   ['   - do rekreačných chát      ', '22', '1', '5', '22', '6', '0', '0', '0', '0', '6', '0', '0', '0']
+MV2025 ['/swift_data/source/policia/statistiky_2025/11_november/5tc_spachana_na_mladezi_podla_par_5_30.11.2025.xml', '/swift_data/source/policia/statistiky_2025/11_november/6kriminalita_spachana_cudzincami_6_30.11.2025.xml', '/swift_data/source/policia/statistiky_2025/12_december/1statistika_podla_druhu_kriminality_1_31.12.2025.xml', '/swift_data/source/policia/statistiky_2025/12_december/2statistika_podla_nazvov_TC_2_31.12.2025.xml', '/swift_data/source/policia/statistiky_2025/12_december/3statistika_podla_paragrafov_3_31.12.2025.xml', '/swift_data/source/policia/statistiky_2025/12_december/4tc_spachane_na_mladezi_4_31.12.2025.xml', '/swift_data/source/policia/statistiky_2025/12_december/5tc_spachana_na_mladezi_podla_par_5_31.12.2025.xml', '/swift_data/source/policia/statistiky_2025/12_december/6kriminalita_spachana_cudzincami_6_31.12.2025.xml']
+uzemie 1184 None
+obyv {'vzd': {'bez': 0.3, 'sbm': 29.9, 'sm': 38.4, 'vs': 15.9, 'zakl': 15.5}, 'vzd_n': 1279, 'nar': [['Slovenská', 97.2], ['Rómska', 1.6], ['Česká', 0.5], ['Iná', 0.7]], 'jaz': [['Slovenský', 98.5], ['Český', 0.5], ['Iný jazyk', 0.9]], 'nab': [['rímskokatolícke', 65.9], ['bez náboženského vyznania', 24.6], ['evanjelické', 6.4], ['gréckokatolícke', 0.5], ['pravoslávne', 0.5], ['ostatné', 2.1]]}
+chranene 742 [('560103', {'np': ['TANAP'], 'chvu': ['Tatry']})]
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 23, in <module>
+    o = json.load(open("data/obce/socialne.json")); print("soc", len(o["obce"]), o.get("stav"), o["obce"].get("518921"), o["obce"].get("508438"))
+                  ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'data/obce/socialne.json'
