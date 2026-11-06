@@ -373,11 +373,11 @@ def obyvatelia() -> None:
 
 UZEMIE = {"Orná pôda": "orna", "Trvalé trávne porasty": "ttp", "Lesné pozemky": "les", "Vodné plochy": "voda",
           "Zastavané plochy a nádvoria": "zast", "Domáce záhradky": "zahr", "Vinohrady": "vin", "Ovocné sady": "sad",
-          "Chmeľnice": "chmel", "Ostatné pôdne plochy": "ost"}
+          "Chmeľnice": "chmel", "Chmeľnica": "chmel", "Ostatné pôdne plochy": "ost"}
 
 
 def uzemie() -> None:
-    t = tabulka("pl5001rr", "e_landuse", "e_soiltype", rokov=1, vyber={"e_soiltype": ["Spolu"]})
+    t = tabulka("pl5001rr", "e_landuse", "e_soiltype", rokov=1)
     obce = {}
     rok = None
     for kod, d in t.items():

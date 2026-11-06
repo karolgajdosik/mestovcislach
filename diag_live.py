@@ -1,20 +1,24 @@
-import subprocess, sys, json, re, collections, requests
+import subprocess, sys, json, re, requests
 subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
-sys.path.insert(0, "scripts")
-from statdata_obce import riadky_obce
-rr = riadky_obce("pl5001rr", rokov=1)
-print("pl5001rr riadkov", len(rr), list(rr[0].keys()))
-c = collections.Counter(x["e_nuts15"].strip() for x in rr)
-print("uzemi", len(c), list(c.items())[:15])
-for x in [x for x in rr if x["e_nuts15"].strip().startswith(("Vígľaš", "Brezany"))][:40]: print("  ", {a: b.strip()[:35] for a, b in x.items()})
+import xml.etree.ElementTree as ET
 HB = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"}
-r = requests.get("https://www.minv.sk/?statistika-kriminality-v-slovenskej-republike-za-rok-2026-1", headers=HB, timeout=60)
-print("MV2026", r.status_code, sorted(set(re.findall(r'href="([^"]+swift_data[^"]+)"', r.text)))[:20])
-r = requests.get("https://www.minv.sk/?statistika_kriminality_v_slovenskej_republike_za_rok_2024_xml", headers=HB, timeout=60)
-odk = sorted(set(re.findall(r'href="([^"]+swift_data[^"]+)"', r.text)))
-dec = [o for o in odk if "12_december" in o and "1xml" in o] or odk[-6:]
-print("MV2024 dec", dec)
-x = requests.get("https://www.minv.sk" + dec[0], headers=HB, timeout=60).text
-print(len(x)); print(x[:2500])
-print("okresy?", len(set(re.findall(r"(?:OR PZ|Okres|okres)[^<]{0,40}", x))), list(set(re.findall(r"(?:OR PZ|Okres|okres)[^<]{0,40}", x)))[:10])
+x = requests.get("https://www.minv.sk/swift_data/source/policia/statistiky_2024/12_december/1statistika_podla_druhu_kriminality_1_31.12.2024.xml", headers=HB, timeout=90).content
+ns = {"ss": "urn:schemas-microsoft-com:office:spreadsheet"}
+root = ET.fromstring(x)
+for ws in root.findall("ss:Worksheet", ns)[:40]:
+    rows = ws.findall(".//ss:Row", ns)
+    vals = [[(c.find("ss:Data", ns).text if c.find("ss:Data", ns) is not None else "") for c in r.findall("ss:Cell", ns)] for r in rows]
+    print("SHEET", ws.get("{urn:schemas-microsoft-com:office:spreadsheet}Name"), len(rows))
+for ws in root.findall("ss:Worksheet", ns)[:2]:
+    rows = ws.findall(".//ss:Row", ns)
+    for r in rows[:30]:
+        print("  ", [ (c.find("ss:Data", ns).text or "")[:30] if c.find("ss:Data", ns) is not None else "" for c in r.findall("ss:Cell", ns)][:14])
+r = requests.get("https://www.minv.sk/?statistika-kriminality-v-slovenskej-republike-za-rok-2025-1", headers=HB, timeout=60)
+print("MV2025", sorted(set(re.findall(r'href="([^"]+swift_data[^"]+)"', r.text)))[-8:])
+subprocess.run([sys.executable, "scripts/zber_obce_vrstvy.py"])
+subprocess.run([sys.executable, "scripts/zber_obce_statdata.py", "uzemie", "obyvatelia"])
+o = json.load(open("data/obce/uzemie.json")); print("uzemie", len(o["obce"]), o["obce"].get("518921"))
+o = json.load(open("data/obce/obyvatelia.json")); print("obyv", o["obce"].get("518921"))
+o = json.load(open("data/obce/chranene.json")); print("chranene", len(o["obce"]), [(k, v) for k, v in o["obce"].items() if k in ("560103", "518921", "511218")][:3])
+o = json.load(open("data/obce/socialne.json")); print("soc", len(o["obce"]), o.get("stav"), o["obce"].get("518921"), o["obce"].get("508438"))
 print("HOTOVO")
