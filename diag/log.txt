@@ -1,6 +1,6 @@
-withform 200 189 <partial-response id="j_id1"><error><error-name>class java.lang.IndexOutOfBoundsException</error-name><error-message><![CDATA[Index: 0, Size: 0]]></error-message></error></partial-response> TR 0
-execall 200 189 <partial-response id="j_id1"><error><error-name>class java.lang.IndexOutOfBoundsException</error-name><error-message><![CDATA[Index: 0, Size: 0]]></error-message></error></partial-response> TR 0
-formonly 200 189 <partial-response id="j_id1"><error><error-name>class java.lang.IndexOutOfBoundsException</error-name><error-message><![CDATA[Index: 0, Size: 0]]></error-message></error></partial-response> TR 0
-selection 200 189 <partial-response id="j_id1"><error><error-name>class java.lang.IndexOutOfBoundsException</error-name><error-message><![CDATA[Index: 0, Size: 0]]></error-message></error></partial-response> TR 0
-["PrimeFaces.cw('DataTable','widget_skolat9_table_form_j_idt32',{id:'skolat9-table-form:j_idt32',paginator:{id:['skolat9-table-form:j_idt32_paginator_bottom'],rows:20,rowCount:194,page:0,currentPageTemplate:'({currentPage} of {totalPages})',alwaysVisible:false},selectionMode:'single',behaviors:{rowSelect:function(event,ext){PrimeFaces.bc(this,event,ext,['PrimeFaces.ab({source:\\'skolat9-table-form:j_idt32\\',event:\\'rowSelect\\',process:\\'skolat9-table-form:j_idt32\\',update:\\'school-dialog\\',oncomplete:function(xhr,status,args){PF(\\'dlg1\\').show()"]
-HOTOVO
+LINKS [('j_idt36', 'Matematika'), ('j_idt38', 'Maďarský jazyk a literatúra'), ('j_idt40', 'Slovenský jazyk a slovenská literatúra'), ('j_idt42', 'Slovenský jazyk a literatúra'), ('j_idt44', 'Ukrajinský jazyk a literatúra')]
+Matematika 200 None attachment;filename=MA25T9portal_final_D.xls 383488 b'\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1'
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 15, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
