@@ -1,8 +1,69 @@
-Na čo obec minula peniaze True
-Pamiatky True
-územia európskeho významu True
-turistických trás True
-Testovanie 9 True
-autobusových zastávok True
-obyvateľov na km² True
+== https://www.apa.sk/ 200 1655488
+   /projektove-podpory/metodika-ziadatel-prijimatel
+== https://www.uvo.gov.sk/ 200 86690
+   /otvorena-komunikacia
+   /otvorena-komunikacia/archiv
+   /otvorena-komunikacia/casto-kladene-otazky
+   /otvorena-komunikacia/elektronicke-podania-uvo-egovernment
+   /otvorena-komunikacia/elektronicke-podania-uvo-egovernment/elektronicke-sluzby-uradu-pre-verejne-obstaravanie
+   /otvorena-komunikacia/elektronicke-verejne-obstaravanie
+   /otvorena-komunikacia/elektronicke-verejne-obstaravanie/certifikovane-aukcne-systemy
+   /otvorena-komunikacia/elektronicke-verejne-obstaravanie/prevadzkovy-poriadok-is-uvo
+   /otvorena-komunikacia/elektronicke-verejne-obstaravanie/zoznam-elektronickych-prostriedkov
+   /otvorena-komunikacia/financie
+   /otvorena-komunikacia/financie/majetok-pohladavky
+   /otvorena-komunikacia/financie/plan-verejneho-obstaravania
+   /otvorena-komunikacia/financie/priorizovane-investicne-plany
+   /otvorena-komunikacia/financie/rozpocet-uradu-pre-verejne-obstaravanie
+   /otvorena-komunikacia/financie/zaverecny-ucet-uradu-pre-verejne-obstaravanie
+   /otvorena-komunikacia/financie/zmluvy-objednavky-faktury
+   /otvorena-komunikacia/kyberneticka-bezpecnost
+   /otvorena-komunikacia/medialne-vystupy
+   /otvorena-komunikacia/medialne-vystupy/tlacove-konferencie
+   /otvorena-komunikacia/medialne-vystupy/tlacove-spravy
+   /otvorena-komunikacia/ochrana-osobnych-udajov
+   /otvorena-komunikacia/ochrana-osobnych-udajov/informacna-povinnost
+   /otvorena-komunikacia/ochrana-utajovanych-skutocnosti
+   /otvorena-komunikacia/prehlad-rozhodnuti-sudov-sr-v-spravnom-sudnictve
+   /otvorena-komunikacia/prilezitosti-pre-hospodarske-subjekty
+   /otvorena-komunikacia/rozhodnutia-uvo
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2010
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2011
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2012
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2013
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2014
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2015
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2016
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2017
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2018
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2019
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2020
+   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2021
+DH 404 Stránka sa nenašla
+== https://www.ssc.sk/sk/cestna-databanka/celostatne-scitanie-dopravy.ssc 200 43612
+   https://www.cdb.sk/sk/Mapa-stranky.alej
+GEO https://ags.geology.sk/arcgis/rest/services?f=json 200 {"currentVersion":10.9,"folders":["3D","Atlasy","clip","DTM","eGeoSk","Geofond","GeofyzikalneMapy","GeologickeMapy","Hosted","LC_viglas","MapovyPortal","MEZ","Monitoring","NaucnaGeologia","ONEGeology","Podklady","Projekty","StareMapy","TematickeAplikacie","Test","Utilities","WebServices","wgs_atlasy","wgs_geofond","wgs_geofyzikalneMapy","wgs_geologickeMapy","YMS","Zranitelnost"],"services":[{"name":"Map11","type":"MapServer"},{"name":"Map9a","type":"MapServer"},{"name":"nddb","type":"MapServer"}
+ERR https://apl.geology.sk/arcgis/rest/services?f=json HTTPSConnectionPool(host='apl.geology.sk', port=443): Max retries exceeded with url: /arcgis/rest/services?f=json (Caused by ConnectTimeoutError(<HTTP
+GEO https://apl.geology.sk/arcgis/rest/services?f=json None 
+GEO https://gis.geology.sk/arcgis/rest/services?f=json 404 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<title>404 - File or directory not found.</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, sans-serif;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+STAT ERR om7102rr 'dimensions'
+STAT om7002rr Bilancia podľa národnosti a pohlavia - SR-oblasť-kraj-okres, m-v  [('e_sex', 'CODELIST'), ('e_nuts14', 'GEO'), ('e_indic', 'CODELIST'), ('e_unit', 'CODELIST'), ('e_national', 'CODELIST'), ('e_year', 'TIME')] None None
+STAT om7001rr Bilancia podľa krajiny narodenia a pohlavia - SR-oblasť-kraj-okres, m-v  [('e_sex', 'CODELIST'), ('e_nuts14', 'GEO'), ('e_indic', 'CODELIST'), ('e_unit', 'CODELIST'), ('e_continent', 'GEO'), ('e_country', 'GEO'), ('e_year', 'TIME')] None None
+STAT om7101rr Počet obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (ročne)  [('e_sex', 'CODELIST'), ('e_nuts14', 'GEO'), ('e_indic', 'CODELIST'), ('e_unit', 'CODELIST'), ('e_nuts15', 'GEO'), ('e_year', 'TIME')] None None
+STAT om7103rr Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (ročne)  [('e_nuts14', 'GEO'), ('e_indic', 'CODELIST'), ('e_unit', 'CODELIST'), ('e_nuts15', 'GEO'), ('e_year', 'TIME')] None None
+OSO ['OSO2022_SK_tab02ad.csv', 'OSO2022_SK_tab02bf.csv', 'OSO2022_SK_tab05f.csv', 'OSO2022_SK_tab08f.csv', 'OSO2022_SK_tab0ad.csv', 'OSO2022_SK_tab0bd.csv', 'OSO2022_SK_tab0c.csv', 'OSO2022_SK_tab0dd.csv', 'OSO2022_SK_tab_info.csv']
+  HEAD OSO2022_SK_tab05f.csv OBEC|VOOBEC|OKRSOK|PC_HL|P_HL|P_HL_PCT|KANDIDAT | 500011|1|1|1|4|1,11| | 500011|1|1|2|86|23,88|1 | 500011|1|1|3|110|30,55| | 500011|1|1|4|35|9,72| | 500011|1|1|5|4|1,11| | 500011|1|1|6|121|33,61| | 500011|1|2|1|11|2,94| | 500011|1|2|2|63|16,84|1 | 500011|1|2|3|82|21,92| | 500011|1|2|4|26|6,95| | 500011|1|2|5|9|2,40| | 500011|1|2|6|183|48,93| | 500011|1|3|1|0|0,00| | 500011|1|3|2|84|24,56|1 | 500011|1|3|3|86|25,14| | 500011|1|3|4
+  HEAD OSO2022_SK_tab08f.csv OBEC|VOOBEC|OKRSOK|PC_HL|P_HL|P_HL_PCT|KANDIDAT | 500011|1|1|1|73|20,50|0 | 500011|1|1|2|232|65,16|1 | 500011|1|1|3|9|2,52|0 | 500011|1|1|4|42|11,79|0 | 500011|1|2|1|81|22,37|0 | 500011|1|2|2|243|67,12|1 | 500011|1|2|3|8|2,20|0 | 500011|1|2|4|30|8,28|0 | 500011|1|3|1|86|28,66|0 | 500011|1|3|2|151|50,33|1 | 500011|1|3|3|7|2,33|0 | 500011|1|3|4|56|18,66|0 | 500011|2|4|1|68|5,51|1 | 500011|2|4|2|25|2,02|0 | 500011|2|4|3|72|5,84|1
+OM 200 {"latitude":48.5,"longitude":19.25,"generationtime_ms":28.3888578414917,"utc_offset_seconds":3600,"timezone":"Europe/Bratislava","timezone_abbreviation":"GMT+1","elevation":359.0,"daily_units":{"time":"iso8601","temperature_2m_mean":"°C","temperature_2m_max":"°C","temperature_2m_min":"°C","precipita
 HOTOVO
