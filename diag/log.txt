@@ -1,54 +1,26 @@
-appjs ['init.js']
-JS init.js 299 []
-== https://vysledky.nucem.sk/ 200
-   http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2016/index.xhtml
-   http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2017/index.xhtml
-   http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2018/index.xhtml
-   http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2019/index.xhtml
-   http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2022/index.xhtml
-   http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2023/index.xhtml
-   http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2024/index.xhtml
-   http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2025/index.xhtml
-   http://dataportal.nucem.sk/Dataportal-web/web/vysledky/index.xhtml
-   vysledky2014
-== https://vysledky.nucem.sk/t9/ 404
-== https://www2.nucem.sk/sk/merania/narodne-merania/testovanie-9 200
-   /sk/merania/narodne-merania/testovanie-9/kontakty
-   /sk/merania/narodne-merania/testovanie-9/legislativa
-   /sk/merania/narodne-merania/testovanie-9/o-testovani-9
-   /sk/merania/narodne-merania/testovanie-9/publikácie
-   /sk/merania/narodne-merania/testovanie-9/roky
-   /sk/merania/narodne-merania/testovanie-9/roky/2004-2005
-   /sk/merania/narodne-merania/testovanie-9/roky/2005-2006
-   /sk/merania/narodne-merania/testovanie-9/roky/2006-2007
-   /sk/merania/narodne-merania/testovanie-9/roky/2007-2008
-   /sk/merania/narodne-merania/testovanie-9/roky/2008-2009
-   /sk/merania/narodne-merania/testovanie-9/roky/2009-2010
-   /sk/merania/narodne-merania/testovanie-9/roky/2010-2011
-   /sk/merania/narodne-merania/testovanie-9/roky/2011-2012
-   /sk/merania/narodne-merania/testovanie-9/roky/2012-2013
-   /sk/merania/narodne-merania/testovanie-9/roky/2013-2014
-   /sk/merania/narodne-merania/testovanie-9/roky/2014-2015
-   /sk/merania/narodne-merania/testovanie-9/roky/2015-2016
-   /sk/merania/narodne-merania/testovanie-9/roky/2016-2017
-   /sk/merania/narodne-merania/testovanie-9/roky/2017-2018
-   /sk/merania/narodne-merania/testovanie-9/roky/2018-2019
-   /sk/merania/narodne-merania/testovanie-9/roky/2019-2020
-   /sk/merania/narodne-merania/testovanie-9/roky/2020-2021
-   /sk/merania/narodne-merania/testovanie-9/roky/2021-2022
-   /sk/merania/narodne-merania/testovanie-9/roky/2022-2023
-   /sk/merania/narodne-merania/testovanie-9/roky/2023-2024
-   /sk/merania/narodne-merania/testovanie-9/roky/2024-2025
-   /sk/merania/narodne-merania/testovanie-9/roky/2025-2026
-   /sk/merania/narodne-merania/testovanie-9/roky/2026-2027
-   http://www2.nucem.sk/dl/6358/Kalkulacka%20na%20Testovanie%209.pdf
-   http://www2.nucem.sk/dl/6540/T9_2027_specifikacia%20testov_VUJ.pdf
-   http://www2.nucem.sk/dl/6541/T9_2027_specifikacia%20testu_SJSL.pdf
-   http://www2.nucem.sk/dl/6542/T9_2027_specifikacia%20testu_MAT.pdf
-   http://www2.nucem.sk/dl/6569/T9%202027_Usmernenie%20k%20prihlasovaniu%20%C5%BEiakov%20na%20T9%202027.pdf
-   http://www2.nucem.sk/dl/6570/T9%202027_Zakladne%20informacie.pdf
-   http://www2.nucem.sk/dl/6571/T9%202027_1_zasielka_List_riaditelom.pdf
-   mailto:%20eskola@sevt.sk
-   mailto:%20testovanie9@nivam.sk
-   mailto:%20testovanie@asc.sk
+var ua = window.navigator.userAgent;
+if(ua.match(/MSIE\s([0-8]{1})\.0\;/)) {
+    parent.location.href='browser-not-supported.html';
+}
+
+var sankeySide = null;
+function changeSankeySide(brightSide) {
+	sankeySide = brightSide;
+}
+
+function get_eu_accept_cookies(lang) {
+	eu_accept_cookies.panel(lang);
+}
+['assets/css/bootstrap.min.css', 'assets/css/font-awesome.min.css', 'assets/css/roboto.min.css', 'assets/css/style.min.css', 'assets/img/favicon.png', 'init.js', 'common/app.js?v=2016-03-17-001', 'common/services.js?v=2016-03-17-001', 'app/rozpocet.js?v=2016-03-17-001', 'app/views-layouts.js?v=2016-03-17-001', 'app/views-parts.js?v=2016-03-17-001', 'app/filters.js?v=2016-03-17-001', 'app/services.js?v=2016-03-17-001', 'app/controllers.js?v=2016-03-17-001', 'app/directives.js?v=2016-03-17-001', 'app/app.js?v=2016-03-17-001', 'https://www.googletagmanager.com/gtag/js?id=G-GCNF6RS30G']
+== http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2025/index.xhtml 200 2286
+ Výsledky | 2025 Dataportál NÚCEM Projekty ESF Výsledky 2025 Prehľad výsledkov škôl v národných testovaniach v školskom roku 2024/2025 Testovanie 9 Maturita Vyberte si testovanie, o ktorého výsledky máte záujem. NIVAM © 2025 
+   ../../css/aktivita12.css
+   ../../css/dataportal.css
+   ../../css/vysledky.css
+   /Dataportal-web/web/javax.faces.resource/theme.css?ln=primefaces-bluesky
+   dataportla.nucem.sk/Dataportal-web/web/index.xhtml
+   http://www.nucem.sk/sk/
+   http://www.nucem.sk/sk/projekt_esf/project/13
+   maturita/index.xhtml
+   testovanie/index.xhtml
 HOTOVO
