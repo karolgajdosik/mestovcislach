@@ -5,7 +5,12 @@
          staníc v hraniciach obce (admin_level 8 s tagom ref = kód obce; Bratislava a Košice cez svoje okresy).
          Úplnosť OSM sa medzi obcami líši – na webe s poznámkou.
 
-Výstupy data/obce/wiki.json, data/obce/osm.json.
+  pamiatky – Wikidata: pamiatkové objekty a národné kultúrne pamiatky (P1435 = Q112086057 / Q960335), UNESCO (Q9259);
+             obec cez P131 (miesto alebo jeho nadradená časť obce). Počet + najznámejšie podľa počtu jazykových verzií.
+  trasy – OpenStreetMap: dĺžka cyklotrás (route=bicycle/mtb) a turistických trás (route=hiking) v katastri obce, km.
+
+Výstupy data/obce/wiki.json, data/obce/osm.json, data/obce/pamiatky.json, data/obce/trasy.json.
+Hranice obcí z OSM sa v rámci behu cachujú (/tmp) – používa ich aj zber_obce_vrstvy.py.
 """
 
 from __future__ import annotations
@@ -65,6 +70,12 @@ OSM_KAT = [  # (kľúč, test na tagy)
     ("jedlo", lambda t: t.get("amenity") in ("restaurant", "pub", "cafe", "fast_food", "bar")),
     ("ihriska", lambda t: t.get("leisure") == "playground"),
     ("nabijacky", lambda t: t.get("amenity") == "charging_station"),
+    ("zastavky", lambda t: t.get("highway") == "bus_stop"),  # počíta sa podľa názvu (dve nástupištia = 1 zastávka)
+    ("bankomaty", lambda t: t.get("amenity") == "atm"),
+    ("sport", lambda t: t.get("leisure") in ("pitch", "sports_centre", "stadium", "sports_hall")),
+    ("kostoly", lambda t: t.get("amenity") == "place_of_worship"),
+    ("cintoriny", lambda t: t.get("landuse") == "cemetery"),
+    ("hasici", lambda t: t.get("amenity") == "fire_station"),
 ]
 SK = 'area["ISO3166-1"="SK"][admin_level=2]->.sk;'
 
@@ -82,6 +93,20 @@ def _overpass(q: str) -> list[dict]:
         print(f"  Overpass: {chyba}")
         time.sleep(60 * (pokus + 1))
     raise RuntimeError(f"Overpass: {chyba}")
+
+
+def hranice() -> dict[str, object]:
+    """Hranice obcí s cache v /tmp (platná 12 h) – spoločné pre OSM, trasy a chránené územia."""
+    import pickle
+    import tempfile
+    from pathlib import Path
+    c = Path(tempfile.gettempdir()) / "obce_hranice.pkl"
+    if c.exists() and time.time() - c.stat().st_mtime < 12 * 3600:
+        return pickle.loads(c.read_bytes())
+    hr = _hranice()
+    if len(hr) > 2500:
+        c.write_bytes(pickle.dumps(hr))
+    return hr
 
 
 def _hranice() -> dict[str, object]:
@@ -112,15 +137,18 @@ def _hranice() -> dict[str, object]:
 def osm() -> None:
     from shapely import STRtree
     from shapely.geometry import Point
-    hr = _hranice()
+    hr = hranice()
     print(f"OSM: hranice {len(hr)} obcí")
     filtre = ('nwr(area.sk)[shop~"^(supermarket|convenience|greengrocer|butcher|bakery)$"];'
-              'nwr(area.sk)[amenity~"^(restaurant|pub|cafe|fast_food|bar|charging_station)$"];'
-              'nwr(area.sk)[leisure=playground];')
+              'nwr(area.sk)[amenity~"^(restaurant|pub|cafe|fast_food|bar|charging_station|atm|place_of_worship|fire_station)$"];'
+              'nwr(area.sk)[leisure~"^(playground|pitch|sports_centre|stadium|sports_hall)$"];'
+              'node(area.sk)[highway=bus_stop];way(area.sk)[landuse=cemetery];')
     body = _overpass(f"[out:json][timeout:900];{SK}({filtre});out tags center;")
     kody = list(hr)
     strom = STRtree([hr[k] for k in kody])
     obce = {k: [0] * len(OSM_KAT) for k in kody}
+    zast: dict[str, set] = {k: set() for k in kody}
+    iz = [k for k, _ in OSM_KAT].index("zastavky")
     nepr = 0
     for e in body:
         c = e.get("center") or ({"lat": e["lat"], "lon": e["lon"]} if "lat" in e else None)
@@ -132,9 +160,15 @@ def osm() -> None:
             nepr += 1
             continue
         t = e.get("tags", {})
+        kod = kody[idx[0]]
         for j, (_, f) in enumerate(OSM_KAT):
             if f(t):
-                obce[kody[idx[0]]][j] += 1
+                if j == iz:
+                    zast[kod].add(t.get("name") or f"#{e.get('id')}")
+                else:
+                    obce[kod][j] += 1
+    for kod, z in zast.items():
+        obce[kod][iz] = len(z)
     print(f"OSM: {len(body)} prvkov, mimo obcí {nepr}; {len(obce)} obcí; spolu "
           f"{dict(zip([k for k, _ in OSM_KAT], [sum(v[i] for v in obce.values()) for i in range(len(OSM_KAT))]))}")
     if len(obce) < 2500:
@@ -144,7 +178,95 @@ def osm() -> None:
                   "obce": dict(sorted(obce.items()))})
 
 
-MODULY = {"wiki": wiki, "osm": osm}
+def pamiatky() -> None:
+    q = """SELECT DISTINCT ?x ?lau ?d ?sl ?nazov WHERE {
+      VALUES ?d { wd:Q112086057 wd:Q960335 wd:Q9259 }
+      ?x wdt:P1435 ?d ; wdt:P131/wdt:P131? ?o . ?o wdt:P17 wd:Q214 ; wdt:P782 ?lau .
+      OPTIONAL { ?x wikibase:sitelinks ?sl }
+      OPTIONAL { ?x rdfs:label ?nazov FILTER(lang(?nazov) = "sk") } }"""
+    r = s.post("https://query.wikidata.org/sparql", data={"query": q, "format": "json"}, headers=UA, timeout=600)
+    r.raise_for_status()
+    obj: dict[str, dict] = {}
+    for b in r.json()["results"]["bindings"]:
+        kod = b["lau"]["value"][-6:]
+        if kod not in KODY:
+            continue
+        x = b["x"]["value"].rsplit("/", 1)[-1]
+        o = obj.setdefault(x, {"kod": kod, "unesco": False, "pam": False, "sl": 0, "nazov": None})
+        if o["kod"] != kod and o["kod"] not in KODY:
+            o["kod"] = kod
+        d = b["d"]["value"].rsplit("/", 1)[-1]
+        if d == "Q9259":
+            o["unesco"] = True
+        else:
+            o["pam"] = True
+        o["sl"] = max(o["sl"], int(b.get("sl", {}).get("value", 0)))
+        if "nazov" in b:
+            o["nazov"] = b["nazov"]["value"]
+    obce: dict[str, dict] = {}
+    for x, o in obj.items():
+        v = obce.setdefault(o["kod"], {"n": 0, "unesco": 0, "top": []})
+        if o["pam"]:
+            v["n"] += 1
+            if o["nazov"] and o["sl"] >= 2:
+                v["top"].append((o["sl"], o["nazov"]))
+        if o["unesco"]:
+            v["unesco"] = 1
+    for v in obce.values():
+        top = []
+        for _, n in sorted(v["top"], key=lambda t: -t[0]):
+            if n not in top:
+                top.append(n)
+        v["top"] = top[:4]
+        if not v["unesco"]:
+            del v["unesco"]
+    print(f"Pamiatky: {len(obj)} objektov, {len(obce)} obcí, UNESCO {sum(1 for v in obce.values() if v.get('unesco'))}, spolu {sum(v['n'] for v in obce.values())}")
+    if len(obce) < 1000:
+        raise RuntimeError(f"Pamiatky: len {len(obce)} obcí")
+    zapis("pamiatky", {"zdroj": {"nazov": "Wikidata – pamiatkové objekty a národné kultúrne pamiatky (podľa ÚZPF Pamiatkového úradu SR)", "url": "https://www.wikidata.org"},
+                       "obce": dict(sorted(obce.items()))})
+
+
+def trasy() -> None:
+    import math
+    import shapely
+    from shapely import STRtree
+    from shapely.geometry import LineString
+    from shapely.ops import unary_union
+    hr = hranice()
+    el = _overpass(f'[out:json][timeout:900];{SK}rel(area.sk)[type=route][route~"^(bicycle|mtb|hiking)$"];out geom;')
+    ciary: dict[str, list] = {"cyklo": [], "turist": []}
+    for e in el:
+        typ = "turist" if e.get("tags", {}).get("route") == "hiking" else "cyklo"
+        for m in e.get("members", []):
+            if m.get("type") == "way" and m.get("geometry") and len(m["geometry"]) > 1:
+                ciary[typ].append(LineString([(p["lon"], p["lat"]) for p in m["geometry"]]))
+    kx, ky = 111.32 * math.cos(math.radians(48.7)), 110.574  # km na stupeň (SR leží medzi 47,7° a 49,6° s. š.)
+    kody = list(hr)
+    out = {k: [0.0, 0.0] for k in kody}
+    for i, typ in enumerate(("cyklo", "turist")):
+        if not ciary[typ]:
+            continue
+        siet = unary_union(ciary[typ])  # spoločné úseky viacerých trás len raz
+        kusy = list(getattr(siet, "geoms", [siet]))
+        strom = STRtree(kusy)
+        for kod in kody:
+            pol = hr[kod]
+            idx = strom.query(pol)
+            if len(idx) == 0:
+                continue
+            g = shapely.intersection(shapely.union_all([kusy[j] for j in idx]), pol)
+            out[kod][i] = round(shapely.transform(g, lambda c: c * [kx, ky]).length, 1)
+    out = {k: v for k, v in out.items() if v[0] or v[1]}
+    print(f"Trasy: {len(el)} relácií, obcí {len(out)}, cyklo {round(sum(v[0] for v in out.values()))} km, turistické {round(sum(v[1] for v in out.values()))} km")
+    if len(out) < 1500:
+        raise RuntimeError(f"Trasy: len {len(out)} obcí")
+    zapis("trasy", {"polia": ["cyklotrasy km", "turistické trasy km"], "datum": datetime.now(timezone.utc).date().isoformat(),
+                    "zdroj": {"nazov": "© prispievatelia OpenStreetMap (ODbL) – cyklotrasy a turistické trasy", "url": "https://www.openstreetmap.org/copyright"},
+                    "obce": dict(sorted(out.items()))})
+
+
+MODULY = {"wiki": wiki, "pamiatky": pamiatky, "osm": osm, "trasy": trasy}
 
 
 def main() -> int:

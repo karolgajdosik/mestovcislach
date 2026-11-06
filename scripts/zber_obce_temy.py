@@ -306,10 +306,19 @@ def skoly() -> None:
         poradie = list(TYPY)
         obce[kod] = {"typy": {t: typy[t] for t in poradie if t in typy},
                      "zoznam": sorted(zz, key=lambda x: (poradie.index(x[1]) if x[1] in poradie else 9, -(x[2] or 0)))[:15]}
-    zapis_ak_zmena(DATA / "obce" / "skoly.json", {
+    # Mapa škôl má len aktuálny stav – počty detí v MŠ a žiakov v ZŠ sa archivujú po školských rokoch (vývoj sa buduje postupne)
+    from datetime import date
+    dnes = date.today()
+    sr_rok = f"{dnes.year}/{dnes.year + 1 - 2000:02d}" if dnes.month >= 9 else f"{dnes.year - 1}/{dnes.year - 2000:02d}"
+    subor = DATA / "obce" / "skoly.json"
+    historia = json.loads(subor.read_text(encoding="utf-8")).get("historia", {}) if subor.exists() else {}
+    for kod, v in obce.items():
+        h = historia.setdefault(kod, {})
+        h[sr_rok] = [v["typy"].get("ms", [0, 0])[1], v["typy"].get("zs", [0, 0])[1]]
+    zapis_ak_zmena(subor, {
         "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"), "typy": TYPY,
         "zdroj": {"nazov": "MŠVVaM SR – Digitálna mapa škôl", "url": "https://mapaskol.iedu.sk"},
-        "obce": obce}, kompaktne=True)
+        "obce": obce, "historia_polia": ["deti v MŠ", "žiaci v ZŠ"], "historia": dict(sorted(historia.items()))}, kompaktne=True)
     print(f"Školy: {len(obce)} obcí so školou, nepriradených škôl {nenajdene}")
 
 

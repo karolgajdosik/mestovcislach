@@ -28,7 +28,7 @@ concurrency:
 jobs:
   temy:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v5
 
@@ -55,7 +55,7 @@ jobs:
         if: success() || failure()
         run: python scripts/zber_obce_vlaky.py
 
-      - name: Chránené územia (ŠOP SR)
+      - name: Chránené územia (ŠOP SR) vrátane Natura 2000 a chránených stromov
         if: success() || failure()
         run: python scripts/zber_obce_vrstvy.py
 
@@ -63,9 +63,9 @@ jobs:
         if: success() || failure()
         run: python scripts/zber_okresy_statdata.py
 
-      - name: Wikidata a OpenStreetMap
+      - name: Wikidata a OpenStreetMap (pamiatky, obchody, zastávky, trasy)
         if: success() || failure()
-        timeout-minutes: 45
+        timeout-minutes: 60
         run: python scripts/zber_obce_wiki_osm.py
 
       - name: Uložiť zmeny v dátach

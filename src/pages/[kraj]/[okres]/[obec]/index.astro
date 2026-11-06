@@ -6,7 +6,7 @@ import '../../../../styles/stranka.css';
 import '../../../../styles/obce.css';
 import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
 import Kalendar from '../../../../components/Kalendar.astro';
-import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, volbyInfo, pohybInfo, byvanieInfo, firmyInfo, sluzbyInfo, turizmusInfo, vlakyInfo, obyvateliaInfo, uzemieInfo, chraneneInfo, socialneInfo, okresyInfo, vekInfo, mesacneInfo, sodb2Info, kulturaInfo, wikiInfo, osmInfo, type Obec } from '../../../../lib/obce';
+import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, volbyInfo, pohybInfo, byvanieInfo, firmyInfo, sluzbyInfo, turizmusInfo, vlakyInfo, obyvateliaInfo, uzemieInfo, chraneneInfo, socialneInfo, okresyInfo, vekInfo, mesacneInfo, sodb2Info, kulturaInfo, wikiInfo, osmInfo, rozpocetInfo, t9Info, pamiatkyInfo, trasyInfo, type Obec } from '../../../../lib/obce';
 import { skrat, skratStrany } from '../../../../lib/zastupitelstvo';
 
 export function getStaticPaths() {
@@ -193,10 +193,26 @@ const vodaL = voda != null && p?.[1] ? Math.round((voda * 1e6) / 365 / p[1]) : n
 const wk = wikiInfo()?.obce?.[o.kod] ?? null;
 const osI = osmInfo();
 const os_ = osI?.obce?.[o.kod] ?? null;
-const OSMT: Record<string, [string, string, string]> = { potraviny: ['obchod s potravinami', 'obchody s potravinami', 'obchodov s potravinami'], jedlo: ['reštaurácia, kaviareň či pohostinstvo', 'reštaurácie, kaviarne a pohostinstvá', 'reštaurácií, kaviarní a pohostinstiev'], ihriska: ['detské ihrisko', 'detské ihriská', 'detských ihrísk'], nabijacky: ['nabíjacia stanica pre elektromobily', 'nabíjacie stanice pre elektromobily', 'nabíjacích staníc pre elektromobily'] };
+const OSMT: Record<string, [string, string, string]> = { potraviny: ['obchod s potravinami', 'obchody s potravinami', 'obchodov s potravinami'], jedlo: ['reštaurácia, kaviareň či pohostinstvo', 'reštaurácie, kaviarne a pohostinstvá', 'reštaurácií, kaviarní a pohostinstiev'], ihriska: ['detské ihrisko', 'detské ihriská', 'detských ihrísk'], nabijacky: ['nabíjacia stanica pre elektromobily', 'nabíjacie stanice pre elektromobily', 'nabíjacích staníc pre elektromobily'],
+  zastavky: ['autobusová zastávka', 'autobusové zastávky', 'autobusových zastávok'], bankomaty: ['bankomat', 'bankomaty', 'bankomatov'], sport: ['športovisko (ihrisko, hala, štadión)', 'športoviská (ihriská, haly, štadióny)', 'športovísk (ihrísk, hál, štadiónov)'],
+  kostoly: ['kostol či modlitebňa', 'kostoly a modlitebne', 'kostolov a modlitební'], cintoriny: ['cintorín', 'cintoríny', 'cintorínov'], hasici: ['hasičská zbrojnica či stanica', 'hasičské zbrojnice a stanice', 'hasičských zbrojníc a staníc'] };
 const UCI = volbyInfo()?.ucast ?? {};
 const ucRad = (['oso2022', 'osk2022', 'ref2023'] as const).map((id) => ({ id, u: UCI[id], x: UCI[id]?.obce?.[o.kod] })).filter((a_) => a_.u && a_.x != null);
 const starsie = ['nrsr2020', 'prez2019_1', 'prez2019_2'].map((id) => ({ id, v: VOLI[id], x: VOLI[id]?.obce?.[o.kod] })).filter((a_) => a_.v && a_.x);
+// rozpočet – výdavky podľa ekonomickej klasifikácie
+const rozI = rozpocetInfo();
+const roz = rozI?.obce?.[o.kod]?.vy ? rozI.obce[o.kod] : null;
+const ROZT: [string, string][] = [['mzdy', 'Mzdy a odvody'], ['tovary', 'Tovary a služby (energie, údržba, odvoz odpadu…)'], ['transfery', 'Príspevky a transfery (školy, spolky, dávky)'], ['investicie', 'Investície (stavby, cesty, budovy)'], ['uroky', 'Úroky z úverov']];
+const rozSpolu = roz?.vy ? Object.values(roz.vy).reduce((s_, x) => s_ + x, 0) : 0;
+// Testovanie 9
+const t9I = t9Info();
+const t9 = t9I?.obce?.[o.kod] ?? null;
+const t9Jaz = t9?.some((x) => x.mjl) ? ['sjl', 'mjl'] : ['sjl'];
+const skHist = skI?.historia?.[o.kod] ? Object.entries(skI.historia[o.kod]).sort(([a_], [b_]) => a_.localeCompare(b_)) : [];
+// pamiatky, trasy, hustota
+const pam = pamiatkyInfo()?.obce?.[o.kod] ?? null;
+const tra = trasyInfo()?.obce?.[o.kod] ?? null;
+const hustota = uz && p?.[1] ? p[1] / (uz.ha / 100) : null;
 const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` : ''}${z10 != null ? `, za 10 rokov ${z10 > 0 ? '+' : ''}${des(z10)} %` : ''}${st ? `. Starosta 2026: ${bezTit(st.meno)}` : ''}. Sčítanie 2021, voľby a poslanci.`;
 ---
 <Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis}
@@ -403,14 +419,14 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
     </section>
   )}
 
-  {hP && (
+  {(hP || roz) && (
     <section class="card" id="hospodarenie">
-      <h2>Hospodárenie obce {hRok}</h2>
-      <ul class="ob-cisla">
+      <h2>Hospodárenie obce {hRok ?? roz?.rok}</h2>
+      {hP && <ul class="ob-cisla">
         {hP.vynosy != null && <li><b>{eur(hP.vynosy)}</b><span>výnosy</span></li>}
         {hP.naklady != null && <li><b>{eur(hP.naklady)}</b><span>náklady</span></li>}
         {hP.vysledok != null && <li><b class={hP.vysledok < 0 ? 'zaporne' : ''}>{hP.vysledok > 0 ? '+' : hP.vysledok < 0 ? '−' : ''}{eur(Math.abs(hP.vysledok))}</b><span>{hP.vysledok < 0 ? 'strata' : 'zisk'} (účtovný výsledok)</span></li>}
-      </ul>
+      </ul>}
       {hTab.length > 0 && (
         <div class="ob-obal">
           <table class="ob-tab">
@@ -422,7 +438,16 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
       {hRoky.length > 1 && (
         <p class="pozn">Výsledok hospodárenia po rokoch: {hRoky.map((r) => { const v = hosp![r].vysledok; return v != null ? `${r} ${v > 0 ? '+' : v < 0 ? '−' : ''}${eur(Math.abs(v))}` : null; }).filter(Boolean).join(' · ')}.</p>
       )}
-      <p class="zdroj">Zdroj: <a href="https://www.registeruz.sk" rel="noopener">Register účtovných závierok</a> – individuálna účtovná závierka obce (bez obecných firiem). Účtovný výsledok nie je to isté ako prebytok rozpočtu: zahŕňa napr. odpisy majetku. Na obyvateľa podľa počtu obyvateľov {p?.[0]}.</p>
+      {roz && rozSpolu > 0 && (
+        <>
+          <h3>Na čo obec minula peniaze v roku {roz.rok}</h3>
+          <ul class="ob-bary">
+            {ROZT.filter(([k]) => (roz.vy![k] ?? 0) > 0).map(([k, n]) => <li><span>{n}</span><span class="pruh" aria-hidden="true"><i style={`width:${(100 * roz.vy![k]) / rozSpolu}%`}></i></span><span class="num"><strong>{des((100 * roz.vy![k]) / rozSpolu, 0)} %</strong> <small>{eur(roz.vy![k])}</small></span></li>)}
+          </ul>
+          <p class="pozn">Výdavky spolu {eur(rozSpolu)}{obyvH ? `, t. j. ${fmt(Math.round(rozSpolu / obyvH))} € na obyvateľa` : ''} (bez splácania úverov). Rozpočet obcí sa nečlení podľa oblastí (školstvo, cesty…) – len podľa druhu výdavku.</p>
+        </>
+      )}
+      <p class="zdroj">Zdroj: <a href="https://www.registeruz.sk" rel="noopener">Register účtovných závierok</a> – individuálna účtovná závierka obce (bez obecných firiem){roz ? <>; <a href="https://rozpocet.sk" rel="noopener">Rozpočtový portál MF SR</a> – plnenie rozpočtu obce (skutočnosť)</> : ''}. Účtovný výsledok nie je to isté ako prebytok rozpočtu: zahŕňa napr. odpisy majetku. Na obyvateľa podľa počtu obyvateľov {p?.[0]}.</p>
     </section>
   )}
 
@@ -517,12 +542,12 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
     </section>
   )}
 
-  {(uz || chr) && (
+  {(uz || chr || tra) && (
     <section class="card" id="kataster">
       <h2>Kataster a príroda</h2>
       {uz && (
         <>
-          <p class="pozn">Rozloha katastra <strong>{des(uz.ha / 100, uz.ha < 1000 ? 2 : 1)} km²</strong> ({fmt(uz.ha)} ha), stav {uzI!.rok}.</p>
+          <p class="pozn">Rozloha katastra <strong>{des(uz.ha / 100, uz.ha < 1000 ? 2 : 1)} km²</strong> ({fmt(uz.ha)} ha), stav {uzI!.rok}{hustota != null ? <>; hustota <strong>{fmt(Math.round(hustota))} obyvateľov na km²</strong> (Slovensko 111)</> : ''}.{uz.zast && uz.zast[2] !== uz.zast[1] ? ` Zastavané plochy a nádvoria: ${des(uz.zast[1])} ha v roku ${uz.zast[0]} → ${des(uz.zast[2])} ha v roku ${uzI!.rok} (${uz.zast[2] > uz.zast[1] ? '+' : '−'}${des(Math.abs(uz.zast[2] - uz.zast[1]))} ha).` : ''}</p>
           <ul class="ob-bary">
             {UZT.filter(([k]) => (uz.p[k] ?? 0) >= 0.5).sort(([x], [y]) => (uz.p[y] ?? 0) - (uz.p[x] ?? 0)).map(([k, n]) => <li><span>{n}</span><span class="pruh" aria-hidden="true"><i style={`width:${uz.p[k]}%`}></i></span><span class="num"><strong>{des(uz.p[k], 0)} %</strong> <small>({uzOkr[k] != null ? `okres ${des(uzOkr[k], 0)} %` : '–'})</small></span></li>)}
           </ul>
@@ -534,9 +559,22 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
           {chr.op && <li>Obec leží v <b>ochrannom pásme národného parku</b> {chr.op.join(', ')}.</li>}
           {chr.chko && <li>Obec leží v <b>chránenej krajinnej oblasti</b> {chr.chko.map((n) => n.replace(/^CHKO\s+/, '')).join(', ')}.</li>}
           {chr.chvu && <li>Obec leží v <b>chránenom vtáčom území</b> {chr.chvu.join(', ')} (Natura 2000).</li>}
+          {chr.uev && <li>Do územia obce {chr.uev.length === 1 ? 'zasahuje' : 'zasahujú'} <b>{chr.uev.length === 1 ? 'územie európskeho významu' : `${chr.uev.length} územia európskeho významu`}</b> (Natura 2000): {chr.uev.slice(0, 6).join(', ')}{chr.uev.length > 6 ? ' a ďalšie' : ''}.</li>}
+          {chr.mchu && <li><b>{chr.mchu.length === 1 ? 'Maloplošné chránené územie' : `${chr.mchu.length} maloplošné chránené územia`}</b> (prírodné rezervácie, pamiatky a pod.): {chr.mchu.slice(0, 6).join(', ')}{chr.mchu.length > 6 ? ' a ďalšie' : ''}.</li>}
+          {chr.stromy && <li><b>{chr.stromy === 1 ? 'Chránený strom' : `${chr.stromy} chránené stromy`}</b>{chr.stromy >= 5 ? ' (počet jedincov podľa evidencie ŠOP)' : ''}.</li>}
         </ul>
       ) : chraneneInfo() && <p class="pozn">Obec neleží v národnom parku, chránenej krajinnej oblasti ani chránenom vtáčom území.</p>}
-      <p class="zdroj">Zdroj: ŠÚ SR – výmera územia a využitie pôdy podľa katastra nehnuteľností (STATdata pl5001rr); ŠOP SR – chránené územia. Chránené územie posudzujeme podľa polohy stredu obce – časť katastra môže ležať aj inde.</p>
+      {tra && (tra[0] >= 1 || tra[1] >= 1) && <p class="pozn">Územím obce vedie {[tra[1] >= 1 ? `${fmt(Math.round(tra[1]))} km značených turistických trás` : null, tra[0] >= 1 ? `${fmt(Math.round(tra[0]))} km cyklotrás` : null].filter(Boolean).join(' a ')} (podľa OpenStreetMap).</p>}
+      <p class="zdroj">Zdroj: ŠÚ SR – výmera územia a využitie pôdy podľa katastra nehnuteľností (STATdata pl5001rr); ŠOP SR – chránené územia a chránené stromy{tra ? '; © prispievatelia OpenStreetMap – trasy' : ''}. Národný park, CHKO a vtáčie územie posudzujeme podľa polohy stredu obce, územia európskeho významu a maloplošné územia podľa hraníc obce (OpenStreetMap).</p>
+    </section>
+  )}
+
+  {pam && pam.n > 0 && (
+    <section class="card" id="pamiatky">
+      <h2>Pamiatky</h2>
+      <p><b>{fmt(pam.n)}</b> {pam.n === 1 ? 'pamiatkový objekt' : pam.n < 5 ? 'pamiatkové objekty' : 'pamiatkových objektov'} zapísaných v Ústrednom zozname pamiatkového fondu{pam.unesco ? <>; obec je súčasťou <b>svetového dedičstva UNESCO</b></> : ''}.</p>
+      {pam.top.length > 0 && <p class="pozn">Najznámejšie: {pam.top.join(', ')}.</p>}
+      <p class="zdroj">Zdroj: <a href="https://www.wikidata.org" rel="noopener">Wikidata</a> (údaje prevzaté z registra Pamiatkového úradu SR). Jedna národná kultúrna pamiatka môže mať viac objektov (napr. kostol, ohradný múr, socha); „najznámejšie“ podľa počtu jazykových verzií Wikipédie. Údaje dopĺňajú dobrovoľníci a nemusia byť úplné.</p>
     </section>
   )}
 
@@ -592,7 +630,20 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
       <ul class="ob-zmluvy">
         {sk.zoznam.map(([n, t_, z]) => <li><span>{n}</span><small>{skTvar(t_, 1).replace(/^./, (c) => c.toUpperCase())}{z ? ` · ${fmt(z)} ${t_ === 'cvc' ? 'členov' : t_ === 'ms' ? 'detí' : 'žiakov'}` : ''}</small></li>)}
       </ul>
-      <p class="zdroj">Zdroj: <a href="https://mapaskol.iedu.sk" rel="noopener">MŠVVaM SR – Digitálna mapa škôl</a> (aktuálny školský rok). Súčasti spojených škôl (napr. ZŠ s MŠ) sú uvedené zvlášť, bez jedální a školských klubov.</p>
+      {skHist.length > 1 && <p class="pozn">Vývoj: {skHist.map(([r, [ms, zs]]) => `${r} – ${fmt(ms)} detí v MŠ, ${fmt(zs)} žiakov v ZŠ`).join(' · ')}.</p>}
+      {t9 && t9I && (
+        <>
+          <h3>Testovanie 9 ({t9I.rok})</h3>
+          <div class="ob-obal">
+            <table class="ob-tab">
+              <thead><tr><th>Škola</th><th class="num">Žiakov</th><th class="num">Matematika</th>{t9Jaz.map((j) => <th class="num">{j === 'mjl' ? 'Maďarský jazyk' : 'Slovenský jazyk'}</th>)}</tr></thead>
+              <tbody>{t9.map((x) => <tr><td><span translate="no">{x.nazov}</span><br /><small translate="no">{x.ulica}</small></td><td class="num">{x.mat ? fmt(x.mat[0]) : x.sjl ? fmt(x.sjl[0]) : '–'}</td><td class="num">{x.mat ? `${des(x.mat[1])} %` : '–'}</td>{t9Jaz.map((j) => <td class="num">{(x as any)[j] ? `${des((x as any)[j][1])} %` : '–'}</td>)}</tr>)}</tbody>
+            </table>
+          </div>
+          <p class="pozn">Priemerná úspešnosť žiakov 9. ročníka; priemer Slovenska: matematika {des(t9I.sr.mat)} %, slovenský jazyk {des(t9I.sr.sjl)} %{t9I.sr.mjl ? `, maďarský jazyk ${des(t9I.sr.mjl)} %` : ''}. Pri malom počte žiakov výsledok veľa nevypovedá.</p>
+        </>
+      )}
+      <p class="zdroj">Zdroj: <a href="https://mapaskol.iedu.sk" rel="noopener">MŠVVaM SR – Digitálna mapa škôl</a> (aktuálny školský rok){t9 ? <>; <a href="https://dataportal.nucem.sk/Dataportal-web/web/vysledky/index.xhtml" rel="noopener">NIVAM – výsledky Testovania 9</a></> : ''}. Súčasti spojených škôl (napr. ZŠ s MŠ) sú uvedené zvlášť, bez jedální a školských klubov.</p>
     </section>
   )}
   {!sk && skI && (

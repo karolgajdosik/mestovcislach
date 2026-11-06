@@ -53,6 +53,65 @@ def nazov_op(n: str) -> str:
     return re.sub(r"^OP\d*\s+", "", n).strip()
 
 
+POLE_NAZOV = ("SITETITLE_SK", "Nazov_uzemia", "NAZOV", "nazov", "NAZOV_UZEM", "name")
+KATASTER = [  # (kľúč, WFS, typ) – priradenie podľa zásahu do územia obce (hranice OSM), nie podľa stredu
+    ("uev", f"{SOP}/chranene_objekty/ows", "chranene_objekty:chranene_uzemia_uev"),
+    ("mchu", f"{SOP}/chranene_objekty/ows", "chranene_objekty:chranene_uzemia_mchu"),
+]
+
+
+def _nazov(p: dict) -> str:
+    for k in POLE_NAZOV:
+        if p.get(k):
+            return str(p[k]).strip()
+    return ""
+
+
+def kataster(obce: dict) -> dict:
+    """Územia európskeho významu a maloplošné chránené územia, ktoré zasahujú do obce (aspoň 1 % plochy územia
+    alebo 5 ha v obci), a počet chránených stromov v obci."""
+    import shapely
+    from shapely import STRtree
+    from shapely.geometry import shape
+    from zber_obce_wiki_osm import hranice
+    hr = hranice()
+    kody = list(hr)
+    strom_obci = STRtree([hr[k] for k in kody])
+    pocty = {}
+    for kl, base, typ in KATASTER:
+        feats = [x for x in wfs(base, typ) if x.get("geometry")]
+        pocty[kl] = len(feats)
+        for x in feats:
+            n = _nazov(x.get("properties") or {})
+            g = shape(x["geometry"])
+            if not n or g.is_empty:
+                continue
+            if not g.is_valid:
+                g = g.buffer(0)
+            for i in strom_obci.query(g):
+                cast = shapely.intersection(hr[kody[i]], g).area
+                if cast > 0.01 * g.area or cast > 5 * 1.3e-6:  # 5 ha ≈ 6,5e-6 °² na 48,7° s. š.; dolná hranica proti šumu hraníc
+                    zoz = obce[kody[i]].setdefault(kl, [])
+                    if n not in zoz:
+                        zoz.append(n)
+    stromy = [x for x in wfs(f"{SOP}/chranene_objekty/ows", "chranene_objekty:chranene_stromy") if x.get("geometry")]
+    pocty["stromy"] = len(stromy)
+    for x in stromy:
+        g = shape(x["geometry"])
+        bod = g if g.geom_type == "Point" else g.representative_point()
+        for i in strom_obci.query(bod):
+            if hr[kody[i]].covers(bod):
+                obce[kody[i]]["stromy"] = obce[kody[i]].get("stromy", 0) + 1
+                break
+    for v in obce.values():
+        for kl in ("uev", "mchu"):
+            if kl in v:
+                v[kl] = sorted(v[kl])
+    print(f"  ÚEV/MCHÚ/stromy: {pocty}; obcí s ÚEV {sum('uev' in v for v in obce.values())}, s MCHÚ {sum('mchu' in v for v in obce.values())}, "
+          f"so stromami {sum('stromy' in v for v in obce.values())}")
+    return pocty
+
+
 def chranene() -> None:
     from shapely.geometry import Point, shape
     from shapely.prepared import prep
@@ -72,12 +131,16 @@ def chranene() -> None:
             v["op"] = [n for n in v["op"] if n not in v["np"]] or None
             if not v["op"]:
                 del v["op"]
+    try:
+        pocty.update(kataster(obce))
+    except Exception as e:  # noqa: BLE001 – veľkoplošné územia zverejníme aj bez ÚEV/MCHÚ
+        print(f"::warning title=Obce vrstvy – ÚEV/MCHÚ::{e}")
     print(f"Chránené územia: vrstvy {pocty}; obcí v NP {sum('np' in v for v in obce.values())}, v OP NP {sum('op' in v for v in obce.values())}, "
           f"v CHKO {sum('chko' in v for v in obce.values())}, v CHVÚ {sum('chvu' in v for v in obce.values())}")
     if pocty.get("chko", 0) < 10 or pocty.get("np", 0) < 5:
         raise RuntimeError(f"ŠOP: podozrivo málo území {pocty}")
-    zapis("chranene", {"zdroj": {"nazov": "ŠOP SR – chránené územia (WFS): národné parky s ochrannými pásmami, veľkoplošné chránené územia, chránené vtáčie územia",
-                                 "url": "https://www.sopsr.sk"}, "pravidlo": "podľa polohy stredu obce",
+    zapis("chranene", {"zdroj": {"nazov": "ŠOP SR – chránené územia (WFS): národné parky s ochrannými pásmami, veľkoplošné chránené územia, chránené vtáčie územia, územia európskeho významu, maloplošné chránené územia, chránené stromy",
+                                 "url": "https://www.sopsr.sk"}, "pravidlo": "NP, OP, CHKO, CHVÚ podľa polohy stredu obce; ÚEV a MCHÚ podľa zásahu do územia obce (hranice OSM)",
                        "obce": dict(sorted(obce.items()))})
 
 
