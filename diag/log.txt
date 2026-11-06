@@ -1,6 +1,11 @@
-LINKS [('j_idt36', 'Matematika'), ('j_idt38', 'Maďarský jazyk a literatúra'), ('j_idt40', 'Slovenský jazyk a slovenská literatúra'), ('j_idt42', 'Slovenský jazyk a literatúra'), ('j_idt44', 'Ukrajinský jazyk a literatúra')]
-Matematika 200 None attachment;filename=MA25T9portal_final_D.xls 383488 b'\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1'
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 15, in <module>
-    import pandas as pd
-ModuleNotFoundError: No module named 'pandas'
+SHEET MA25T9portal_final_D 1652 10
+   ['skola', 'nazov', 'ulica_cislo', 'obec', 'N', 'N_ZZ', 'N_SZP', 'N_C', 'znamka_skoly', 'uspes']
+   [510101.0, 'ZŠ s MŠ M. R. Štefánika', 'Grösslingová 48', 'Bratislava', 35.0, '  6', '  0', '  5', '  1.9', ' 76.6']
+   [510102.0, 'ZŠ', 'Mudroňova 83', 'Bratislava', 55.0, ' 11', '  0', '  7', '  2.1', ' 78.5']
+   [510105.0, 'ZŠ', 'Hlboká cesta 4', 'Bratislava', 26.0, '  5', '  0', '  0', '  1.9', ' 76.0']
+   [510106.0, 'ZŠ Dr. Ivana Dérera', 'Jelenia 16', 'Bratislava', 28.0, ' 16', '  0', '  0', '  1.9', ' 68.6']
+   [510108.0, 'ZŠ Matky Alexie', 'Palackého 1', 'Bratislava', 43.0, '  6', '  0', '  5', '  2.0', ' 67.4']
+   [510109.0, 'ZŠ s MŠ Milana Hodžu', 'Škarniclova 1', 'Bratislava', 38.0, '  7', '  0', '  5', '  2.2', ' 74.9']
+   [510110.0, 'ZŠ', 'Vazovova 4', 'Bratislava', 73.0, ' 14', '  0', ' 20', '  1.9', ' 60.0']
+  LAST [686120.0, 'Obchodná akadémia', 'Akademika Hronca 8/97', 'Rožňava', 9.0, '  0', '  0', '  0', '  2.7', ' 37.0']
+HOTOVO
