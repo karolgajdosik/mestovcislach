@@ -105,7 +105,7 @@ def upsvr_subory() -> list[tuple[str, str]]:
 
 
 def cislo(x) -> float | None:
-    if x is None or isinstance(x, str) and not re.match(r"^-?[\d\s.,]+$", x.strip()):
+    if x is None or isinstance(x, str) and not re.match(r"^-?[\d\s.,]+(?:[eE][-+]?\d+)?$", x.strip()):  # aj 1.0966289E7 (STATdata)
         return None
     try:
         return float(str(x).replace("\xa0", "").replace(" ", "").replace(",", "."))
