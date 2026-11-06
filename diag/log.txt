@@ -1,64 +1,118 @@
-== om7809rr 24160 s 72 ['e_year', 'e_nuts15', 'e_sex', 'e_nuts14', 'e_indic', 'e_edu', 'e_age', 'hodnota', '_cas']
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Bez ukončeného vzdelania - osoby vo veku', 'e_age': 'Spolu', 'hodnota': '225.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Bez školského vzdelania - osoby vo veku ', 'e_age': 'Spolu', 'hodnota': '4.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Nezistené', 'e_age': 'Spolu', 'hodnota': '42.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Spolu', 'e_age': 'Spolu', 'hodnota': '1546.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Stredné bez maturity', 'e_age': 'Spolu', 'hodnota': '383.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Stredné s maturitou', 'e_age': 'Spolu', 'hodnota': '491.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Vysokoškolské', 'e_age': 'Spolu', 'hodnota': '203.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Základné', 'e_age': 'Spolu', 'hodnota': '198.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Bez ukončeného vzdelania - osoby vo veku', 'e_age': 'Spolu', 'hodnota': '28.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Bez školského vzdelania - osoby vo veku ', 'e_age': 'Spolu', 'hodnota': '0.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Nezistené', 'e_age': 'Spolu', 'hodnota': '6.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Spolu', 'e_age': 'Spolu', 'hodnota': '320.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Stredné bez maturity', 'e_age': 'Spolu', 'hodnota': '88.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_edu': 'Stredné s maturitou', 'e_age': 'Spolu', 'hodnota': '115.0', '_cas': '2021'}
-== om7806rr 36240 s 102 ['e_year', 'e_nuts15', 'e_sex', 'e_nuts14', 'e_indic', 'e_national', 'e_age', 'hodnota', '_cas']
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Iná', 'e_age': 'Spolu', 'hodnota': '2.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Maďarská', 'e_age': 'Spolu', 'hodnota': '1.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Nemecká', 'e_age': 'Spolu', 'hodnota': '0.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Nezistená', 'e_age': 'Spolu', 'hodnota': '44.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Poľská', 'e_age': 'Spolu', 'hodnota': '0.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Ruská', 'e_age': 'Spolu', 'hodnota': '4.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Rusínska', 'e_age': 'Spolu', 'hodnota': '0.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Rómska', 'e_age': 'Spolu', 'hodnota': '24.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Slovenská', 'e_age': 'Spolu', 'hodnota': '1460.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Spolu', 'e_age': 'Spolu', 'hodnota': '1546.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Ukrajinská', 'e_age': 'Spolu', 'hodnota': '4.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Česká', 'e_age': 'Spolu', 'hodnota': '7.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Iná', 'e_age': 'Spolu', 'hodnota': '0.0', '_cas': '2021'}
-   V {'e_year': '2021', 'e_sex': 'Spolu', 'e_nuts14': 'Okres Detva', 'e_indic': 'Stav obyvateľstva k rozhodujúcemu okamih', 'e_national': 'Maďarská', 'e_age': 'Spolu', 'hodnota': '0.0', '_cas': '2021'}
-== pl5001rr 3022 s 9 ['e_year', 'e_nuts15', 'e_landuse', 'e_indic', 'e_soiltype', 'hodnota', '_cas']
-   V {'e_year': '2025', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Spolu', 'hodnota': '3.1976932E7', '_cas': '2025'}
-   V {'e_year': '2025', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Spolu', 'hodnota': '1.619567E7', '_cas': '2025'}
-NP typy ['sz:chranene_uzemia_np_s_op']
-NP 200 24 [{'Nazov_uzemia': 'OP NP Malá Fatra', 'Legislativna_vymera_uzemia_ha': '23262', 'Popis_ochranneho_pasma': 'Ochranné pásmo vyhlásené (§17 ods. 3 Zák', 'Spravca_uzemia': 'Správa NP Malá Fatra', 'Rok_vyhlasenia': 'None', 'Vyhlasovaci_predpis': 'None', 'category_id': '9'}, {'Nazov_uzemia': 'NP Muránska planina', 'Legislativna_vymera_uzemia_ha': '18516.05', 'Popis_ochranneho_pasma': 'None', 'Spravca_uzemia': 'Správa NP Muránska planina', 'Rok_vyhlasenia': '1997', 'Vyhlasovaci_predpis': 'Nar. SR č. 259/1997 Zb. z 23.9.1997, kt.', 'category_id': '8'}, {'Nazov_uzemia': 'OP4 TANAP', 'Legislativna_vymera_uzemia_ha': '310.33', 'Popis_ochranneho_pasma': 'Ochranné pásmo vyhlásené (§17 ods. 3 Zák', 'Spravca_uzemia': 'Správa TANAP', 'Rok_vyhlasenia': 'None', 'Vyhlasovaci_predpis': 'None', 'category_id': '9'}] MultiPolygon [[[[19.2164, 49.3253], [19.217, 49.3251], [19.217, 49.3251], [19.2171, 49.3248],
-VCHU typy ['chranene_objekty:chranene_uzemia_vchu']
-VCHU 200 32 [{'STATUS': 'active', 'NATIONALSITECODE': 'P/45', 'SITETITLE_SK': 'NP Muránska planina', 'CATEGORY': '8', 'AREA_HA': '18516.04821', 'categoryName': 'VCHU', 'identificationName': 'NP Muránska planina (VCHU)', 'ID': '667334'}, {'STATUS': 'active', 'NATIONALSITECODE': 'P/41', 'SITETITLE_SK': 'NP Nízke Tatry', 'CATEGORY': '8', 'AREA_HA': '76014.34256212', 'categoryName': 'VCHU', 'identificationName': 'NP Nízke Tatry (VCHU)', 'ID': '1355'}, {'STATUS': 'active', 'NATIONALSITECODE': 'P/35', 'SITETITLE_SK': 'TANAP', 'CATEGORY': '8', 'AREA_HA': '74291.394', 'categoryName': 'VCHU', 'identificationName': 'TANAP (VCHU)', 'ID': '1356'}] MultiPolygon [[[[20.0361, 48.8411], [20.0377, 48.8411], [20.0381, 48.8411], [20.0387, 48.8416
-CHVU typy ['chranene_objekty:chranene_uzemia_chvu']
-CHVU 200 41 [{'NATIONALSITECODE': 'SKCHVU033', 'SITETITLE_SK': 'Veľká Fatra', 'CATEGORY': '20', 'AREA_HA': '51858.9026', 'categoryName': 'CHVU', 'identificationName': 'Veľká Fatra (CHVU)', 'ID': '1431'}, {'NATIONALSITECODE': 'SKCHVU035', 'SITETITLE_SK': 'Vihorlatské vrchy', 'CATEGORY': '20', 'AREA_HA': '47893.3636', 'categoryName': 'CHVU', 'identificationName': 'Vihorlatské vrchy (CHVU)', 'ID': '1432'}, {'NATIONALSITECODE': 'SKCHVU036', 'SITETITLE_SK': 'Volovské vrchy', 'CATEGORY': '20', 'AREA_HA': '121854.3917', 'categoryName': 'CHVU', 'identificationName': 'Volovské vrchy (CHVU)', 'ID': '1433'}] Polygon [[[18.9351, 48.9314], [18.9348, 48.9313], [18.9343, 48.9312], [18.9341, 48.9312]
-CRPSS 200 7555 kluce ['obchodne_meno', 'druh_ss', 'cielova_skupina', 'adresa_poskytovania', 'wkt', 'kraj', 'poskytovatel', 'rozsah', 'forma', 'kapacita', 'telefon', 'email', 'web', 'statutar', 'zodp_zastupca', 'datum_zapis', 'datum_vymazu', 'dovod_vymazu', 'beginLifespanVersion']
-    obchodne_meno 2888 rôznych
-    druh_ss 41 [('opatrovateľská služba', 1670), ('domov sociálnych služieb', 708), ('zariadenie pre seniorov', 665), ('komunitné centrum', 488), ('denný stacionár', 464), ('špecializované zariadenie', 347), ('sociálne poradenstvo - základné', 322), ('sociálne poradenstvo - špecializované', 291), ('denné centrum', 286), ('prepravná služba', 255), ('zariadenie starostlivosti o deti do troch rokov ve', 247), ('jedáleň', 228), ('zariadenie opatrovateľskej služby', 195), ('útulok', 135), ('požičiavanie pomôcok', 128), ('zariadenie podporovaného bývania', 124), ('služba včasnej intervencie', 104), ('terénna sociálna služba krízovej intervencie', 93), ('nízkoprahová sociálna služba pre deti a rodinu', 81), ('zariadenie núdzového bývania', 73), ('nocľaháreň', 70), ('rehabilitačné stredisko', 64), ('odľahčovacia služba', 41), ('tlmočnícka služba', 40), ('krízová pomoc poskytovaná telekomunikačnými techno', 40)]
-    cielova_skupina 993 rôznych
-    adresa_poskytovania 4153 rôznych
-    wkt 2801 rôznych
-    kraj 8 [('Prešovský kraj', 1427), ('Bratislavský kraj', 1146), ('Banskobystrický kraj', 1053), ('Žilinský kraj', 933), ('Nitriansky kraj', 913), ('Košický kraj', 823), ('Trenčiansky kraj', 739), ('Trnavský kraj', 521)]
-    poskytovatel 4 [('neverejný poskytovateľ', 3866), ('obec/mesto', 2314), ('zriadený alebo založený vyšším územným celkom', 860), ('zriadený alebo založený obcou/mestom', 515)]
-    rozsah 2 [('neurčitý čas', 6344), ('určitý čas', 1211)]
-    forma 5 [('terénna', 2914), ('ambulantná', 2413), ('pobytová - ročná', 2045), ('pobytová - týždenná', 99), ('iná forma (telefonicky, pomocou telekomunikačných ', 84)]
-    kapacita 152 rôznych
-    telefon 2824 rôznych
-    email 2930 rôznych
-    web 1178 rôznych
-    statutar 2839 rôznych
-    zodp_zastupca 3182 rôznych
-    datum_zapis 2163 rôznych
-    datum_vymazu 846 rôznych
-    dovod_vymazu 107 rôznych
-    beginLifespanVersion 1 [('2022-12-19T22:54:29.906Z', 7555)]
-   geom 7527
-MV https://www.minv.sk/?statistika-kriminality-v-slovenskej-republike-csv 0 []
-MV https://www.minv.sk/?statistika-kriminality-v-slovenskej-republike-za-rok-2026-1 0 []
-MV https://www.minv.sk/?statistika_kriminality_v_slovenskej_republike_za_rok_2024_xml 72 ['/swift_data/source/policia/statistiky_2023/01_januar/5xml_tc_spachana_na_mladezi_podla_par_5_31.01.2023.xml', '/swift_data/source/policia/statistiky_2023/01_januar/6xml_kriminalita_spachana_cudzincami_6_31.01.2023.xml', '/swift_data/source/policia/statistiky_2024/01_januar/1xml_statistika_podla_druhu_kriminality_1_31.01.2024.xml', '/swift_data/source/policia/statistiky_2024/01_januar/2xml_statistika_podla_nazvov_tc_2_31.01.2024.xml', '/swift_data/source/policia/statistiky_2024/01_januar/3xml_statistika_podla_paragrafov_3_31.01.2024.xml', '/swift_data/source/policia/statistiky_2024/01_januar/4xml_tc_spachane_na_mladezi_4_31.01.2024.xml', '/swift_data/source/policia/statistiky_2024/02_februar/1xml_statistika_podla_druhu_kriminality_1_29.02.2024.xml', '/swift_data/source/policia/statistiky_2024/02_februar/2xml_statistika_podla_nazvov_tc_2_29.02.2024.xml', '/swift_data/source/policia/statistiky_2024/02_februar/3xml_statistika_podla_paragrafov_3_29.02.2024.xml', '/swift_data/source/policia/statistiky_2024/02_februar/4xml_tc_spachane_na_mladezi_4_29.02.2024.xml', '/swift_data/source/policia/statistiky_2024/02_februar/5xml_tc_spachana_na_mladezi_podla_par_5_29.02.2024.xml', '/swift_data/source/policia/statistiky_2024/02_februar/6xml_kriminalita_spachana_cudzincami_6_29.02.2024.xml', '/swift_data/source/policia/statistiky_2024/03_marec/1xml_statistika_podla_druhu_kriminality_1_31.03.2024.xml', '/swift_data/source/policia/statistiky_2024/03_marec/2xml_statistika_podla_nazvov_tc_2_31.03.2024.xml', '/swift_data/source/policia/statistiky_2024/03_marec/3xml_statistika_podla_paragrafov_3_31.03.2024.xml', '/swift_data/source/policia/statistiky_2024/03_marec/4xml_tc_spachane_na_mladezi_4_31.03.2024.xml', '/swift_data/source/policia/statistiky_2024/03_marec/5xml_tc_spachana_na_mladezi_podla_par_5_31.03.2024.xml', '/swift_data/source/policia/statistiky_2024/03_marec/6xml_kriminalita_spachana_cudzincami_6_31.03.2024.xml', '/swift_data/source/policia/statistiky_2024/04_april/1xml_statistika_podla_druhu_kriminality_1_30.04.2024.xml', '/swift_data/source/policia/statistiky_2024/04_april/2xml_statistika_podla_nazvov_tc_2_30.04.2024.xml', '/swift_data/source/policia/statistiky_2024/04_april/3xml_statistika_podla_paragrafov_3_30.04.2024.xml', '/swift_data/source/policia/statistiky_2024/04_april/4xml_tc_spachane_na_mladezi_4_30.04.2024.xml', '/swift_data/source/policia/statistiky_2024/04_april/5xml_tc_spachana_na_mladezi_podla_par_5_30.04.2024.xml', '/swift_data/source/policia/statistiky_2024/04_april/6xml_kriminalita_spachana_cudzincami_6_30.04.2024.xml', '/swift_data/source/policia/statistiky_2024/05_maj/1xml_statistika_podla_druhu_kriminality_1_31.05.2024.xml', '/swift_data/source/policia/statistiky_2024/05_maj/2xml_statistika_podla_nazvov_tc_2_31.05.2024.xml', '/swift_data/source/policia/statistiky_2024/05_maj/3xml_statistika_podla_paragrafov_3_31.05.2024.xml', '/swift_data/source/policia/statistiky_2024/05_maj/4xml_tc_spachane_na_mladezi_4_31.05.2024.xml', '/swift_data/source/policia/statistiky_2024/05_maj/5xml_tc_spachana_na_mladezi_podla_par_5_31.05.2024.xml', '/swift_data/source/policia/statistiky_2024/05_maj/6xml_kriminalita_spachana_cudzincami_6_31.05.2024.xml']
+pl5001rr riadkov 39286 ['e_year', 'e_nuts15', 'e_landuse', 'e_indic', 'e_soiltype', 'hodnota', '_cas']
+uzemi 3022 [('Abovce', 13), ('Abrahám', 13), ('Abrahámovce, okres Bardejov', 13), ('Abrahámovce, okres Kežmarok', 13), ('Abramová', 13), ('Abranovce', 13), ('Adamovské Kochanovce', 13), ('Adidovce', 13), ('Alekšince', 13), ('Andovce', 13), ('Andrejová', 13), ('Ardanovce', 13), ('Ardovo', 13), ('Arnutovce', 13), ('Báb', 13)]
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Chmeľnica', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Domáce záhradky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '86135.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Lesné pozemky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '635210.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Orná pôda', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1585134.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Ostatné pôdne plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '79559.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Ovocné sady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '935652.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '2720086.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Spolu', 'hodnota': '3655738.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Trvalé trávne porasty', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1048817.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Vinohrady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Vodné plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '12287.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Brezany', 'e_landuse': 'Zastavané plochy a nádvoria', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '208596.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Chmeľnica', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Domáce záhradky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '301129.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Lesné pozemky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '1.0771168E7', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Orná pôda', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1.0966289E7', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Ostatné pôdne plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '924778.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Ovocné sady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '1.3921592E7', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1.805534E7', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Spolu', 'hodnota': '3.1976932E7', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Trvalé trávne porasty', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '6787922.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Vinohrady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Vodné plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '406211.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľaš', 'e_landuse': 'Zastavané plochy a nádvoria', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '1819435.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Chmeľnica', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Domáce záhradky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '251136.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Lesné pozemky', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '5261682.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Orná pôda', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1198398.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Ostatné pôdne plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '154390.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Ovocné sady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '5909014.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '1.0286656E7', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Spolu', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Spolu', 'hodnota': '1.619567E7', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Trvalé trávne porasty', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '8837122.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Vinohrady', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Poľnohospodárska pôda', 'hodnota': '0.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Vodné plochy', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '31366.0', '_cas': '2025'}
+   {'e_year': '2025', 'e_nuts15': 'Vígľašská Huta-Kalinka', 'e_landuse': 'Zastavané plochy a nádvoria', 'e_indic': 'Využitie pôdy', 'e_soiltype': 'Nepoľnohospodárska pôda', 'hodnota': '461576.0', '_cas': '2025'}
+MV2026 200 ['/swift_data/source/mvsr/skis_mv_sr/data_protection_ochrana_osobnych_udajov/gdpr-cookies.pdf']
+MV2024 dec ['/swift_data/source/policia/statistiky_2024/12_december/1statistika_podla_druhu_kriminality_1_31.12.2024.xml', '/swift_data/source/policia/statistiky_2024/12_december/2statistika_podla_nazvov_TC_2_31.12.2024.xml', '/swift_data/source/policia/statistiky_2024/12_december/3statistika_podla_paragrafov_3_31.12.2024.xml', '/swift_data/source/policia/statistiky_2024/12_december/4tc_spachane_na_mladezi_4_31.12.2024.xml', '/swift_data/source/policia/statistiky_2024/12_december/5tc_spachana_na_mladezi_podla_par_5_31.12.2024.xml', '/swift_data/source/policia/statistiky_2024/12_december/6kriminalita_spachana_cudzincami_6_31.12.2024.xml']
+811516
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>MV SR</Author>
+  <LastAuthor>MV SR</LastAuthor>
+  <Created>2025-01-10T22:55:02Z</Created>
+  <LastSaved>2025-01-10T22:55:06Z</LastSaved>
+  <Company>MV SR</Company>
+  <Version>10.2625</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <DownloadComponents/>
+  <LocationOfComponents HRef="file:///R:\"/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>9855</WindowHeight>
+  <WindowWidth>15180</WindowWidth>
+  <WindowTopX>120</WindowTopX>
+  <WindowTopY>60</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font x:CharSet="238"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s21" ss:Name="Bold">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders/>
+   <Font x:CharSet="238" ss:Bold="1"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s23" ss:Parent="s21">
+   <Alignment ss:Horizontal="CenterAcrossSelection" ss:Vertical="Bottom"
+    ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s24">
+   <Alignment ss:Horizontal="CenterAcrossSelection" ss:Vertical="Bottom"/>
+  </Style>
+  <Style ss:ID="s25">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+  </Style>
+  <Style ss:ID="s27">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s29">
+   <Alignment ss:Horizontal="CenterAcrossSelection" ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s30" ss:Parent="s21">
+   <Alignment ss:Horizontal="CenterAcrossSelection" ss:Vertical="Bottom"
+    ss:WrapText="1"/>
+   <Borders>
+   
+okresy? 0 []
 HOTOVO
