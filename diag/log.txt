@@ -1,14 +1,96 @@
-HREF controllers.js []
-== directives.js Rozpoctu?l.all([p.getKonsolidovanyRozpocet(n,v.getLang()),p.getKonsolidovanyNavrh(o,v.getLang())]).then(function(e){for(var t=e[0].data.payload,l=e[1].data.payload,i={},s=0;s<t.length;s++)null==i[t[s].rok]&&(i[t[s].rok]={}),null==i[t[s].rok][t[s].typKlasifikacie]&&(i[t[s].rok][t[s].typKlasifikacie]=t[s].hodnota);var d=[],c=[],p=[],u=null!=i[n]&&null!=i[n].EKP?i[n].EKP:0,v=null!=i[n]&&null!=i[n].EKV?i[n].EKV:0,h=1e9*((u/1e9).toFixed(3)-(v/1e9).toFixed(3)).toFixed(3);d.push([n,u]),c.push([n,v]),p.
-== directives.js zpocet(n,v.getLang()),p.getKonsolidovanyNavrh(o,v.getLang())]).then(function(e){for(var t=e[0].data.payload,l=e[1].data.payload,i={},s=0;s<t.length;s++)null==i[t[s].rok]&&(i[t[s].rok]={}),null==i[t[s].rok][t[s].typKlasifikacie]&&(i[t[s].rok][t[s].typKlasifikacie]=t[s].hodnota);var d=[],c=[],p=[],u=null!=i[n]&&null!=i[n].EKP?i[n].EKP:0,v=null!=i[n]&&null!=i[n].EKV?i[n].EKV:0,h=1e9*((u/1e9).toFixed(3)-(v/1e9).toFixed(3)).toFixed(3);d.push([n,u]),c.push([n,v]),p.push([n,h]);var g=l[0].hodnota,y=l[1
-== directives.js .isOrganizacia="organizacie"==r.parentView,e.graphDesciption=e.isOrganizacia?"org":"cap",e.showGlobalYear=!1,e.showExport=!0,e.data={},e.selClasifCodeForCsv={CRED:"",DEBT:""},e.activeTab="DEBT"==r.balanceType?1:0;var y=t("translate")("rozpocet.names.klasifikacia.ekonomicka"),m=t("translate")("rozpocet.names.klasifikacia.zdrojova"),z=t("translate")("rozpocet.names.klasifikacia.funkcna"),k=t("translate")("rozpocet.names.klasifikacia.programova"),S=t("translate")("rozpocet.names.klasifikacia.jednor
-== directives.js n=e.isOrganizacia?"org":"cap",e.showGlobalYear=!1,e.showExport=!0,e.data={},e.selClasifCodeForCsv={CRED:"",DEBT:""},e.activeTab="DEBT"==r.balanceType?1:0;var y=t("translate")("rozpocet.names.klasifikacia.ekonomicka"),m=t("translate")("rozpocet.names.klasifikacia.zdrojova"),z=t("translate")("rozpocet.names.klasifikacia.funkcna"),k=t("translate")("rozpocet.names.klasifikacia.programova"),S=t("translate")("rozpocet.names.klasifikacia.jednorazovetituly"),f=function(a){switch(a){case"ZDR":return m;ca
-HREF directives.js ['#/\'+a.urlPath+\'celok/{{row.entity.id}}/prehlad/f/{{grid.appScope.selYear}}"', '#/\'+a.urlPath+\'obec/{{row.entity.id}}/prehlad/f/{{grid.appScope.selYear}}"', '#/\'+e.urlPath+\'subjekt/{{row.entity.id}}/prehlad"', '#/cms/clanok/"+a._source.clanokId+"/SK/"+a._source.slug.replace', '#/cms/kategoria/"+a._source.id+"/SK/"+a._source.slug.replace', '#/navrh/"', '#/prehlad"}', '#/rozpocet/"', '#/rozpocet/"+t.sectionType+"/kapitoly"', '#/rozpocet/OSVS/subjekty"', '#/rozpocet/SAM/celky"', '#/rozpocet/SAM/celky/3/celok/\'+n+\'/prehlad"', '#/rozpocet/SAM/kraj/"+e.data.organizaciaId+"/obec/"+t+"/prehlad"', '#/rozpocet/SAM/kraj/\'+o+\'"', '#/rozpocet/SAM/kraje/210"']
-== views-parts.js t\t\t<uib-tab heading="{{\'rozpocet.kapitola.tbl.prijmy.title\' | translate}}" active="data.selTabPrijmy" >\n\t\t\t\t<export-as-menu ng-if="showExport && gridOptionsPrijmy.data.length"\n\t\t\t\t\t\t\t\turl="\'/vs/navrh/\' + data.org.kod + \'/prehlad-klasifikacii/prijmy/\' + selClasifCodeForCsv.CRED + \'/\' + rokNavrhu"\n\t\t\t\t\t\t\t\tstyles="{position:\'absolute\',right:\'0px\'}"\n\t\t\t\t\t\t\t\telementas="[\'#tblTitle\',\'#grid1\']">\n\t\t\t\t</export-as-menu>\n\t\t\t\t<select ng-model="data
-== views-parts.js ="c as c for c in data.classificationsCred" class="form-control prvok">\n\t\t\t\t</select>\n\t\t\t\t<div ng-if="showPrijmy">\n\t\t\t\t\t<h3 style=font-size:20px;" id="tblTitle">{{data.selClassifCredit}} {{\'rozpocet.template.rozpocet.kapitola.detail.klasifikacia.title\' | translate}}</h3>\n\t\t\t\t\t</br>\n\t\t\t\t\t<div ng-if="ziadnePrijmy" style="text-align: center; vertical-align: middle;">\n\t\t\t\t\t\t<h3 style="padding-top: 5%; padding-bottom: 5%;">\n\t\t\t\t\t\t\t{{\'rozpocet.template.roz
-== views-parts.js a.classificationsDebt" class="form-control prvok">\n\t\t\t\t</select>\n\t\t\t\t<div ng-if="showVydaje">\n\t\t\t\t\t<export-as-menu ng-if="showExport && gridOptionsVydaje.data.length"\n\t\t\t\t\t\t\t\t\turl="\'/vs/navrh/\' + data.org.kod + \'/prehlad-klasifikacii/vydavky/\' + selClasifCodeForCsv.DEBT + \'/\' + rokNavrhu"\n\t\t\t\t\t\t\t\t\tstyles="{position:\'absolute\',right:\'0px\'}"\n\t\t\t\t\t\t\t\t\telementas="[\'#tblTitle2\',\'#grid2\']">\n\t\t\t\t\t</export-as-menu>\n\t\t\t\t\t<h3 style="f
-== views-parts.js sition:\'absolute\',right:\'0px\'}"\n\t\t\t\t\t\t\t\t\telementas="[\'#tblTitle2\',\'#grid2\']">\n\t\t\t\t\t</export-as-menu>\n\t\t\t\t\t<h3 style="font-size:20px;" id="tblTitle2">{{data.selClassifDebt}} {{\'rozpocet.template.rozpocet.kapitola.detail.klasifikacia.title\' | translate}}</h3>\n\t\t\t\t\t</br>\n\t\t\t\t\t<div class="tableWrapper" style="position: relative">\n\t\t\t\t\t\t<div id="grid2" ng-show="gridOptionsVydaje.data.length" ui-grid="gridOptionsVydaje" ui-grid-tree-view ui-grid-resiz
-HREF views-parts.js ['#/cms/clanok/61/SK/rozpocet-sk-dokumentacia-open-api"', '#/navrh"', '#/navrh/OSVS/subjekty/0"', '#/navrh/OSVS/subjekty/0/subjekt/3101/prehlad"', '#/navrh/OSVS/subjekty/0/subjekt/810/prehlad"', '#/navrh/VS/kapitoly/0"', '#/navrh/lvv"', '#/rozpocet/OSVS/subjekty/0"', '#/rozpocet/OSVS/subjekty/0/subjekt/{{s.id}}/prehlad"', '#/rozpocet/SAM/celky/3"', '#/rozpocet/SAM/celky/3/celok/{{s.id}}/prehlad"', '#/rozpocet/SAM/kraj/0/obec/{{s', '#/rozpocet/SAM/kraj/0/obec/{{s.id}}/prehlad"', '#/rozpocet/SAM/kraj/{{data.idKraja2}}', '#/rozpocet/SAM/kraj/{{data.organizaciaId}}/obec/{{ob.id}}/prehlad"', '#/rozpocet/SAM/kraj/{{data.organizaciaId}}/obec/{{prvaObecId}}/prehlad"', '#/rozpocet/SAM/kraj/{{organizaciaId}}/obec/{{idJedinejObce}}/detailObce"', '#/rozpocet/SAM/kraje/210"', '#/rozpocet/SAM/sam/0"', '#/rozpocet/VS/kapitoly/0"', '#/rozpocet/VS/kapitoly/0/kapitola/{{s.id}}/prehlad"', '#/rozpocet/priebezne-plnenie"', '#/rozpocet/rozpoctove-opatrenia"', '#/{{data.org.child.link}}"', '#/{{data.org.path', '#/{{n.url}}"', '#/{{s.url}}"', '#/{{urlPath}}{{n.url}}"']
-HREF views-layouts.js []
-HREF rozpocet.js []
+DOC ROZPOČET.SK Čo je to rozpočet? Rozpočty v číslach FAQ Kontakty Čo je nové? Popis poskytovania otvorených dát prostredníctvom Open Data API Úvod » Popis poskytovania otvorených dát prostredníctvom Open Data API Popis poskytovania otvorených dát prostredníctvom Open Data API Verzia 1.6 (1.4.2023) Obsah: Úvod Všeobecné informácie Formát dopytov Formát odpovede Formát JSON Formát CSV Chybové kódy Služby pre číselníky Číselník organizácií Číselník typov klasifikácií Číselník klasifikácií Export detailu programu Služby pre rozpočty Rozpočtové opatrenia Priebežné plnenie rozpočtu Prehľad príjmov a výdavkov kapitoly (bilancia) Prehľad rozpočtu kapitoly / organizácie Bilancia podľa klasifikácie kapitoly / organizácie Dlhy a záväzky organizácie ( platné iba pre subjekty samosprávy ) Finančné operácie ( platné iba pre subjekty samosprávy a VÚC ) Služby pre vládne návrhy a schválený rozpočet Vládou schváleny návrh rozpočtu verejnej správy na roky R až R+2 Schválený rozpočet verejnej správy na roky R až R+2 Vládou schválené rozpočtové provizórium verejnej správy na rok R Zmeny v API Úvod Verejné Open Data API portálu rozpočet.sk umožňuje získať verejne dostupné údaje (t.j. všetko čo je poskytované portálom) v strojovo spracovateľnej forme otvorených údajov. Konceptuálny dátový model API vyzerá takto: Portál (a teda aj API) poskytuje informácie o rozpočte: štátnej správy (podľa zákona č. 211/2000): Pre štátnu správu sú dostupné informácie o rozpočtoch kapitol, ich podriadených organizácií a o rozpočtoch ostatných subjektoch verejnej správy (s podriadenými organizáciami). samosprávy (dáta z finančných výkazov): Pre samosprávu sú dostupné informácie za jednotlivé VÚC a ich podriadené organizácie (školy a pod.), pre obce sú k dispozícii informácie za celú obec a aj jednotlivo za jej podriadené organizácie. Údaje sú zverejňované pod licenciou CC0. Údaje sú k dispozícii pre subjekty štátneho rozpočtu, ostatných subjektov verejenej správy od roku 2006 v granularite ročných sumárov. Pre roky R až R - 2 sú k dispozícii aj podrobnejšie mesačné sumáre, pričom z kapacitných dôvodov tieto podrobné údaje prestávajú byť po dvoch rokoch dostupné. R je rok ostatnej (najčerstvejšej) uzávierky. Typicky teda napr. medzi januárom a marcom 2016 je najčerstvejšou uzávierkou tá za rok 2014 a teda podrobné údaje sú k dispozícii pre roku 2013 a 2014. V marci zvykne byť hotová uzávierka za predchádzajúci rok a teda po marci 2016 sú podrobné údaje k dispozícii pre roky 2014 a 2015. Údaje v zásade iba pribúdajú, a to vždy po uzávierkach. API teda neposkytuje zmenové informácie. Pre nové údaje stačí robiť dopyt, t.j. napr. ak už je marec, môžeme si pýtať údaje za predchádzajúci rok. V prípade chyby (404 Not Found) - zrejme nastalo zdržanie v spracovaní rozpočtu - treba počkať a opakovať dopyt znova. Služby API možno rozdeliť do dvoch skupín: údaje o rozpočte číselníky použité v rozpočtoch Všeobecné informácie API je realizované štýlom RESTfull a teda všetky príklady v tejto dokumentácii možno "volať" či už priamo kliknutím na linku alebo napr. pomocou rôznych nástrojov (napr. curl), napr.: curl https://rozpocet.sk/api/vs/ciselnik/organizacie/0 Ďalšie informácie: bodka oddeľuje desatinné miesta v číslach všetky sumy sú v Euro dátumy sú formátované podľa ISO 8601, t.j. vo forme RRRR-MM-DD Formát dopytov Všetky dopyty API sú popísané schémou URL, napr.: /api/{segmentVS}/ciselnik/organizacie/{?kodOrganizacie} Povinné parametre sú bez otáznika (napr. '{mandatory}'), nepovinné parametre s otáznikom (napr. '{?optional}'). Bežne používané parametre vo väčšine dopytov sú: segmentVS - štátny rozpočet a ostatné subjekty verejnej správy ('vs'), subjekty samosprávy ('sam') kodOrganizacie - kód organizácie, typicky IČO, sú však aj "špeciálne hodnoty": 0 - štátny rozpočet 1 - štátne fondy 2 - Verejné zdravotné poistenie 120 - Ostatné subjekty verejnej správy 830 - Dopravné podniky rok - rok, pre ktorý žiadame údaje mesiac - mesiac, pre ktorý žiadame údaje Formát odpovede API poskytuje odpovede v dvoch formátoch: JSON (by default alebo na požiadanie) CSV (na požiadanie) Formát JSON API poskytuje odpovede vo formáte JSON "by default", alebo si tento formát možno vyžiadať explicitne použitím parametra '?format=json' v dopyte. Štruktúra odpovede vo formáte JSON vyzerá vo všeobecnosti takto: {"payload":[ {nazov_stlpca1:hodnota_stlpca1,nazov_stlpca2:hodnota_stlpca2, ...}, ... ],“length“:...,“success“:true} Príklad použitia: curl https://rozpocet.sk/api/vs/ciselnik/organizacie/0?format=json Formát CSV API poskytuje odpovede tiež vo formáte CSV a tento formát možno vyžiadať explicitne použitím parametra '?format=csv' v dopyte. Štruktúra odpovede vo formáte CSV vyzerá vo všeobecnosti takto: nazov_stlpca1,nazov_stlpca 2,... hodnota_stlpca1,hodnota_stlpca 2,... ... Príklad použitia: curl https://rozpocet.sk/api/vs/ciselnik/organizacie/0?format=csv Formát CSV sa riadi upresneniami podľa aktuálneho znenia prílohy č. 5 Výnosu o štandardoch ISVS 55/2014, viď http://www.informati
+LINKS ['https://rozpocet.sk/web/#/rozpocet/VS/kapitoly/0', 'https://rozpocet.sk/web/#/rozpocet/VS/kapitoly/0', 'https://rozpocet.sk/web/#/rozpocet/VS/kapitoly/0', 'https://rozpocet.sk/web/#/rozpocet/VS/kapitoly/0/kapitola/48/prehlad', 'https://rozpocet.sk/web/#/rozpocet/VS/kapitoly/0/kapitola/20/prehlad', 'https://rozpocet.sk/web/#/rozpocet/VS/kapitoly/0/kapitola/22/prehlad', 'https://rozpocet.sk/web/#/rozpocet/VS/kapitoly/0/kapitola/11/prehlad', 'https://rozpocet.sk/web/#/rozpocet/VS/kapitoly/0', 'https://rozpocet.sk/web/#/rozpocet/VS/kapitoly/0', 'http://rozpocet.sk/api/vs/ciselnik/organizacie/0', 'http://rozpocet.sk/api/vs/ciselnik/organizacie/FO%2001', 'https://rozpocet.sk/web/#/cms/clanok/61/SK/rozpocet-sk-dokumentacia-open-api', 'https://rozpocet.sk/web/#/rozpocet/VS/kapitoly/0']
+PAGE https://rozpocet.sk/web/#/rozpocet/SAM/kraj/0/obec/804045/prehlad
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaNeuskutocnenaAktualizaciaVlaOrParVerzie
+  XHR https://rozpocet.sk/rest/api/service-info
+  XHR https://rozpocet.sk/rest/api/rozpocet/zobrazitInfoODU
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaNeuskutocnenaAktualizaciaVlaOrParVerzie
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaNeuskutocnenaAktualizaciaVlaOrParVerzie
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SR/VS/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/OSVS/VS/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaNeuskutocnenaAktualizaciaVlaOrParVerzie
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/organizacia/info/SK/SAM/804045
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/zobrazitInfoODU
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaNeuskutocnenaAktualizaciaVlaOrParVerzie
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaNeuskutocnenaAktualizaciaVlaOrParVerzie
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaNeuskutocnenaAktualizaciaVlaOrParVerzie
+  XHR https://rozpocet.sk/rest/api/organizacie/osvs/SK/2026
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpoctyOSVSOrganizacii/2026/10
+  XHR https://rozpocet.sk/rest/api/organizacie/info/SK/VS/0/2026/2
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpoctyPodorganizaciiVSOrg/0/2026/10
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarVSOrg/0/2026/10?EKV=SpoluV&DRH=21
+  XHR https://rozpocet.sk/rest/api/organizacie/podurovne/SK/SAM/3
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/101/2026/6?EKV=SpoluV&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/102/2026/6?EKV=SpoluV&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/103/2026/6?EKV=SpoluV&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/104/2026/6?EKV=SpoluV&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/105/2026/6?EKV=SpoluV&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/106/2026/6?EKV=SpoluV&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/107/2026/6?EKV=SpoluV&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/108/2026/6?EKV=SpoluV&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/582000/2026/6?EKV=VYD&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/599981/2026/6?EKV=VYD&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/organizacia/pocetobyvatelov/804045/2025
+  XHR https://rozpocet.sk/rest/api/organizacie/nadurovne/SK/SAM/804045
+  XHR https://rozpocet.sk/web/vendor/sankey/index.html?side=spending&lang=SK&cb=changeSankeySide&endpoint=/rest/api/sankey/data/SK/SAM/804045/2026
+  XHR https://rozpocet.sk/rest/api/organizacia/pocetobyvatelov/804045/2025
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/stavUzavrierky/SAM/2026/SCHVALENY
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/polozkyRozpocetuFilterSamOrg/SK/804045/2026/SAM/false/EKV?EKV=610,620,630,640,650,690,710,720,810
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/zobrazitInfoODU
+  XHR https://rozpocet.sk/rest/api/organizacia/pocetobyvatelov/804045/2025
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/stavUzavrierky/SAM/2026/SCHVALENY
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/polozkyRozpocetuFilterSamOrg/SK/804045/2026/SAM/false/EKV?EKV=610,620,630,640,650,690,710,720,810
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/zobrazitInfoODU
+  XHR https://rozpocet.sk/rest/api/sankey/data/SK/SAM/804045/2026
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpoctySamOrg/804045/2015/2026/2/false
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/dlhyAZavazkyObce/SK/804045/2026
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKV=650&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKV=820&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2025/12?EKP=100&EKP=210&EKP=220&EKP=240&EKP=250&EKP=290&EKP=310&EKP=330&EKP=340&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2025/12?EKP=100&EKP=210&EKP=220&EKP=240&EKP=250&EKP=290&EKP=311&EKP=312&EKP=314&EKP=315&EKP=340&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2025/12?EKP=311&EKP=312&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpoctySamOrg/804045/2015/2026/2/false
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/dlhyAZavazkyObce/SK/804045/2026
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKV=650&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKV=820&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/poslednaAktualizacia/SAM/SAM/SCH
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2025/12?EKP=100&EKP=210&EKP=220&EKP=240&EKP=250&EKP=290&EKP=310&EKP=330&EKP=340&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2025/12?EKP=100&EKP=210&EKP=220&EKP=240&EKP=250&EKP=290&EKP=311&EKP=312&EKP=314&EKP=315&EKP=340&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2025/12?EKP=311&EKP=312&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101
+  TABS ['#/rozpocet/SAM/kraj/0/obec/804045/prehlad', '#/rozpocet/SAM/kraj/0/obec/804045/detail', '#/rozpocet/SAM/kraj/0/obec/804045/organizacie', '#/rozpocet/SAM/kraj/0/obec/804045/porovnanie']
+PAGE https://rozpocet.sk/web/#/rozpocet/SAM/kraj/0/obec/804045/vydavky/f/2025/DEBT/FK
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKP=100&EKP=210&EKP=220&EKP=240&EKP=250&EKP=290&EKP=310&EKP=331&EKP=340&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKV=600&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKP=230&EKP=320&EKP=332&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKV=700&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKP=400&EKP=500&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKV=800&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKP=100&EKP=210&EKP=220&EKP=240&EKP=250&EKP=290&EKP=310&EKP=331&EKP=340&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKV=600&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKP=230&EKP=320&EKP=332&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKV=700&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKP=400&EKP=500&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  XHR https://rozpocet.sk/rest/api/rozpocet/rozpocetSumarSamOrg/804045/2026/6?EKV=800&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81
+  TABS ['#/rozpocet/SAM/kraj/0/obec/804045/prehlad', '#/rozpocet/SAM/kraj/0/obec/804045/detail', '#/rozpocet/SAM/kraj/0/obec/804045/organizacie', '#/rozpocet/SAM/kraj/0/obec/804045/porovnanie']
 HOTOVO
