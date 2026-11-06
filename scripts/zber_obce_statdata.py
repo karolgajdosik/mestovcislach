@@ -405,7 +405,189 @@ def uzemie() -> None:
     print(f"Územie {rok}: {len(obce)} obcí")
 
 
-MODULY = {"pohyb": pohyb, "byvanie": byvanie, "firmy": firmy, "sluzby": sluzby, "turizmus": turizmus, "obyvatelia": obyvatelia, "uzemie": uzemie}
+# ---------------- veková pyramída (aktuálny rok) ----------------
+
+def _vek_skupina(n: str) -> int | None:
+    """Index 5-ročnej skupiny 0–4 … 80–84, 85+ (17 = 85+); iné skupiny None."""
+    n = n.strip()
+    if n == "4 roky alebo menej":
+        return 0
+    m = re.fullmatch(r"Od (\d+) do (\d+) rokov", n)
+    if m and int(m.group(2)) - int(m.group(1)) == 4 and int(m.group(1)) % 5 == 0:
+        return int(m.group(1)) // 5
+    m = re.fullmatch(r"(\d+) rokov alebo viac", n)
+    if m and int(m.group(1)) == 85:
+        return 17
+    return None
+
+
+def vek() -> None:
+    out: dict[str, dict[str, list]] = {}
+    rok = None
+    for x in riadky_obce("om7006rr", rokov=1, vyber={"e_sex": ["Muži", "Ženy"]}):
+        if "31" not in (x.get("e_indic") or ""):  # stav k 31. 12. (nie k 30. 6.)
+            continue
+        i = _vek_skupina(x.get("e_age") or "")
+        v = cislo(x.get("hodnota"))
+        kod = obec(x) if i is not None and v is not None else None
+        if not kod:
+            continue
+        rok = x["_cas"].strip()
+        d = out.setdefault(kod, {"m": [0] * 18, "z": [0] * 18})
+        d["m" if x["e_sex"].strip() == "Muži" else "z"][i] = int(v)
+    out = {k: v for k, v in out.items() if sum(v["m"]) + sum(v["z"]) > 0}
+    if len(out) < 2500:
+        raise RuntimeError(f"vek: len {len(out)} obcí")
+    zapis("vek", {"rok": rok, "skupiny": [f"{5 * i}–{5 * i + 4}" for i in range(17)] + ["85+"],
+                  "zdroj": {"nazov": "ŠÚ SR – vekové skupiny obyvateľstva podľa pohlavia (STATdata om7006rr)", "url": "https://statdata.statistics.sk"},
+                  "obce": dict(sorted(out.items()))})
+    print(f"Vek {rok}: {len(out)} obcí")
+
+
+# ---------------- počet obyvateľov mesačne ----------------
+
+def mesacne() -> None:
+    from datetime import date
+    rok = date.today().year
+    out: dict[str, dict[str, int]] = defaultdict(dict)
+    for r in (rok, rok - 1):
+        try:
+            rr = riadky_obce("om7101mr", vyber={"e_sex": ["Spolu"], "e_year": [str(r)]})
+        except Exception as e:  # noqa: BLE001 – rok ešte nemusí byť v kocke
+            print(f"  om7101mr {r}: {e}")
+            continue
+        for x in rr:
+            if "konci" not in (x.get("e_indic") or "").lower():  # stav na konci mesiaca
+                continue
+            v = cislo(x.get("hodnota"))
+            kod = obec(x) if v is not None else None
+            mes = re.sub(r"\D", "", x.get("e_month") or x.get("_cas") or "")
+            if kod and mes:
+                out[kod][f"{r}-{int(mes):02d}"] = int(v)
+        if out:
+            break
+    obce = {k: sorted(d.items())[-1] for k, d in out.items() if d}
+    if len(obce) < 2500:
+        raise RuntimeError(f"mesačne: len {len(obce)} obcí")
+    mes = max(m for m, _ in obce.values())
+    zapis("mesacne", {"mesiac": mes, "zdroj": {"nazov": "ŠÚ SR – počet obyvateľov mesačne (STATdata om7101mr), stav na konci mesiaca", "url": "https://statdata.statistics.sk"},
+                      "obce": {k: v[1] for k, v in sorted(obce.items()) if v[0] == mes}})
+    print(f"Mesačne {mes}: {len(obce)} obcí")
+
+
+# ---------------- domácnosti, byty, ekonomická aktivita, cudzinci (SODB 2021) ----------------
+
+def _p(d: dict, k: str, zn: float) -> float | None:
+    return round(100 * d.get(k, 0) / zn, 1) if zn else None
+
+
+def sodb2() -> None:
+    obce: dict[str, dict] = defaultdict(dict)
+    dom = tabulka("om7822rr", "e_poc_clen_cd", "e_typcd", rokov=1)
+    for kod, d in dom.items():
+        c = {k[1]: v for k, v in d.items() if k[0] == "2021" and k[2] == "Spolu"}
+        sp = c.get("Spolu")
+        if sp:
+            osob = sum(v * n for n, v in ((1, c.get("1-členná domácnosť", 0)), (2, c.get("2-členná domácnosť", 0)), (3, c.get("3-členná domácnosť", 0)),
+                                          (4, c.get("4-členná domácnosť", 0)), (5.6, c.get("5 a viac členná domácnosť", 0))))
+            obce[kod]["dom"] = {"n": int(sp), "jedn": _p(c, "1-členná domácnosť", sp), "velke": _p(c, "5 a viac členná domácnosť", sp), "priem": round(osob / sp, 2)}
+    det = tabulka("om7823rr", "e_poc_deti", "e_typcd", rokov=1)
+    for kod, d in det.items():
+        c = {k[1]: v for k, v in d.items() if k[0] == "2021" and k[2] == "Spolu"}
+        sp = c.get("Spolu")
+        if sp and "dom" in obce.get(kod, {}):
+            obce[kod]["dom"]["deti"] = round(100 * (sp - c.get("0 detí", 0)) / sp, 1)
+    izby = tabulka("om7818rr", "e_nrooms", "e_buildtype", rokov=1)
+    for kod, d in izby.items():
+        c = {k[1]: v for k, v in d.items() if k[0] == "2021" and k[2] == "Spolu"}
+        zn = c.get("Spolu", 0) - c.get("Nezistené", 0)
+        if zn > 0:
+            s_ = sum(v * int(re.match(r"\d+", k).group()) for k, v in c.items() if re.match(r"\d+", k))
+            obce[kod].setdefault("byty", {})["izby"] = round(s_ / zn, 1)
+    plocha = tabulka("om7820rr", "e_sqmetrs", "e_buildtype", rokov=1)
+    STRED = [(r"menej ako 30", 25), (r"<30 m2 - 40", 35), (r"<40 m2 - 50", 45), (r"<50 m2 - 60", 55), (r"<60 m2 - 80", 70), (r"<80 m2 - 100", 90),
+             (r"<100 m2 - 120", 110), (r"120 m2 - 150", 135), (r"<150 m2 a viac", 175)]
+    for kod, d in plocha.items():
+        c = {k[1]: v for k, v in d.items() if k[0] == "2021" and k[2] == "Spolu"}
+        zn = c.get("Spolu", 0) - c.get("nezistená", 0)
+        if zn > 0:
+            s_ = sum(v * m for k, v in c.items() for vz, m in STRED if k.startswith(vz))
+            obce[kod].setdefault("byty", {})["m2"] = round(s_ / zn)
+    vl = tabulka("om7819rr", "e_ownerb", "e_buildtype", rokov=1)
+    for kod, d in vl.items():
+        c = {k[1]: v for k, v in d.items() if k[0] == "2021" and k[2] == "Spolu"}
+        zn = c.get("Spolu", 0) - c.get("nezistený", 0)
+        if zn > 0:
+            vlastne = c.get("vlastný byt v bytovom dome", 0) + c.get("byt vo vlastnom rodinnom dome", 0)
+            najom = c.get("byt v nájme", 0) + c.get("obecný byt", 0) + c.get("služobný a domovnícky byt", 0)
+            obce[kod].setdefault("byty", {}).update({"vlastne": round(100 * vlastne / zn, 1), "najom": round(100 * najom / zn, 1),
+                                                     "druzstvo": _p(c, "družstevný byt - len stavebné bytové družstvo", zn)})
+    en = tabulka("om7817rr", "e_energy", "e_buildtype", rokov=1)
+    for kod, d in en.items():
+        c = {k[1]: v for k, v in d.items() if k[0] == "2021" and k[2] == "Spolu"}
+        zn = c.get("Spolu", 0) - c.get("nezistený", 0)
+        if zn > 0:
+            obce[kod].setdefault("byty", {})["energia"] = {k: _p(c, n, zn) for k, n in (("plyn", "plyn"), ("elektrina", "elektrina"), ("pevne", "pevné palivo"),
+                                                                                        ("kvapalne", "kvapalné palivo"), ("slnko", "solárna enregia"), ("iny", "iný"), ("ziadny", "žiadny"))}
+    ek = tabulka("om7803rr", "e_wstatus", "e_sex", "e_age", rokov=1, vyber={"e_sex": ["Spolu"], "e_age": ["Spolu"]})
+    for kod, d in ek.items():
+        c = {k[1]: v for k, v in d.items() if k[0] == "2021"}
+        sp = c.get("Spolu")
+        if sp:
+            obce[kod]["ekon"] = {"aktivni": _p(c, "Ekonomicky aktívny", sp), "nezam": _p(c, "Nezamestnaní", sp), "dochodcovia": _p(c, "Dôchodcovia", sp),
+                                 "deti_studenti": _p(c, "Dieťa/študent", sp)}
+    ci = tabulka("om7807rr", "e_country", "e_sex", "e_age", rokov=1, vyber={"e_sex": ["Spolu"], "e_age": ["Spolu"]})
+    for kod, d in ci.items():
+        c = {k[1]: v for k, v in d.items() if k[0] == "2021"}
+        zn = c.get("Spolu", 0) - c.get("Nezistené", 0)
+        if zn > 0:
+            cud = c.get("Česká republika", 0) + c.get("Ostatné", 0) + c.get("Bez štátnej príslušnosti", 0)
+            obce[kod]["cudzinci"] = [int(cud), round(100 * cud / zn, 1), int(c.get("Česká republika", 0))]
+    zapis("sodb2", {"rok": 2021, "zdroj": {"nazov": "ŠÚ SR – Sčítanie 2021: domácnosti (om7822rr, om7823rr), byty (om7817–7820rr), ekonomická aktivita (om7803rr), štátna príslušnosť (om7807rr)",
+                                         "url": "https://statdata.statistics.sk"},
+                    "obce": dict(sorted(obce.items()))})
+    print(f"SODB2: {len(obce)} obcí, domácnosti {sum('dom' in v for v in obce.values())}, byty {sum('byty' in v for v in obce.values())}, ekon {sum('ekon' in v for v in obce.values())}")
+
+
+# ---------------- kultúra a voda ----------------
+
+def kultura() -> None:
+    obce: dict[str, dict] = defaultdict(dict)
+    rok_k = None
+    for kocka, mapa in (("ku5003rr", {"Počet stálych kín": "kino"}), ("ku5005rr", {"Počet galérií": "galeria", "Počet múzeí": "muzeum"}),
+                        ("ku5006rr", {"Počet zariadení": "cvc"}), ("ku5011rr", {"Počet stálych scén a priestorov": "divadlo"})):
+        rr = riadky_obce(kocka, rokov=2)
+        roky = sorted({x["_cas"].strip() for x in rr if cislo(x.get("hodnota")) is not None})
+        if not roky:
+            continue
+        rok = roky[-1]
+        rok_k = max(rok_k or rok, rok)
+        for x in rr:
+            if x["_cas"].strip() != rok:
+                continue
+            k = mapa.get((x.get("e_indic") or "").strip())
+            v = cislo(x.get("hodnota"))
+            kod = obec(x) if k and v else None
+            if kod and v > 0:
+                obce[kod][k] = int(v)
+    voda: dict[str, list] = {}
+    rr = riadky_obce("vh5003rr", rokov=2)
+    roky = sorted({x["_cas"].strip() for x in rr if cislo(x.get("hodnota")) is not None})
+    rok_v = roky[-1] if roky else None
+    for x in rr:
+        if x["_cas"].strip() == rok_v and "domácnosti" in (x.get("e_indic") or ""):
+            v = cislo(x.get("hodnota"))
+            kod = obec(x) if v is not None else None
+            if kod:
+                voda[kod] = v
+    zapis("kultura", {"rok": rok_k, "rok_voda": rok_v,
+                      "zdroj": {"nazov": "ŠÚ SR – kiná (ku5003rr), múzeá a galérie (ku5005rr), centrá voľného času (ku5006rr), scénické umenie (ku5011rr), spotreba pitnej vody (vh5003rr)",
+                                "url": "https://statdata.statistics.sk"},
+                      "obce": dict(sorted(obce.items())), "voda": dict(sorted(voda.items()))})
+    print(f"Kultúra {rok_k}: {len(obce)} obcí; voda {rok_v}: {len(voda)} obcí")
+
+
+MODULY = {"pohyb": pohyb, "byvanie": byvanie, "firmy": firmy, "sluzby": sluzby, "turizmus": turizmus, "obyvatelia": obyvatelia, "uzemie": uzemie, "vek": vek, "mesacne": mesacne, "sodb2": sodb2, "kultura": kultura}
 
 
 def main() -> int:
