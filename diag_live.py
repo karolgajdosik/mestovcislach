@@ -1,13 +1,15 @@
-import re, requests
+import re, requests, json
 s = requests.Session(); s.headers["User-Agent"] = "mestovcislach.sk (info@mestovcislach.sk)"
-t = s.get("https://rozpocet.sk/web/app/services.js", timeout=60).text
-for m in sorted(set(re.findall(r"""['"]([a-zA-Z0-9_\-/]+(?:/[a-zA-Z0-9_\-{}]+){1,})['"]""", t)))[:120]: print("  P", m)
-i = t.find("rest/api"); print(t[max(0,i-600):i+400])
 u = "http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2025/testovanie/index.xhtml"
-r = s.get(u, timeout=60)
-h = re.sub(r"<script.*?</script>", " ", r.text, flags=re.S)
-for m in re.findall(r'<select id="([^"]+)"[^>]*>(.*?)</select>', h, flags=re.S):
-    print("SELECT", m[0], re.findall(r'value="([^"]*)">([^<]*)', m[1])[:12])
-print(re.findall(r'(?:button|input)[^>]*(?:id|name|value)="([^"]+)"', h)[:40])
-print(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", h))[-1500:])
+h = s.get(u, timeout=60).text
+for m in re.findall(r'<a[^>]*href="([^"]+)"[^>]*>([^<]*)', h):
+    if re.search(r"xls|csv|zip|pdf|stiah|dl/|Matematika", m[0] + m[1], re.I): print("A", m)
+# rozpocet API
+t = s.get("https://rozpocet.sk/web/app/services.js", timeout=60).text
+for fn in re.findall(r'l\("([^"]+)"', t)[:80]: print("  L", fn)
+for p in ["rozpocet/SAM/sam/0", "rozpocet/sumareZaRoky", "rozpocet/poslednaAktualizacia/SAM/SAM/SCH"]:
+    try:
+        r = s.get("https://rozpocet.sk/rest/api/" + p, timeout=60)
+        print("API", p, r.status_code, r.headers.get("content-type"), r.text[:800].replace("\n", " "))
+    except Exception as e: print("ERR", p, e)
 print("HOTOVO")
