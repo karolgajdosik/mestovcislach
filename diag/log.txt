@@ -1,12 +1,7 @@
-OSM: hranice 2887 obcí
-  Overpass: HTTP 502
-OSM: 27339 prvkov, mimo obcí 0; 2887 obcí; spolu {'potraviny': 6719, 'jedlo': 13877, 'ihriska': 5758, 'nabijacky': 1147}
-510483 None
-511994 [0, 0, 0, 0]
-528595 None
-582000 [602, 2342, 850, 181]
-598186 None
-Bratislava [602, 2342, 850, 181]
-Košice [266, 799, 495, 94]
-cas 215
+ucast 2926 ['Kód kraja', 'Názov kraja', 'Kód územného obvodu', 'Názov územného obvodu', 'Kód okresu', 'Názov okresu', 'Kód obce', 'Názov obce']
+hlasy 43890 ['Kód kraja', 'Názov kraja', 'Kód územného obvodu', 'Názov územného obvodu', 'Kód okresu', 'Názov okresu', 'Kód obce', 'Názov obce']
+sr [('Počet volebných okrskov', '5940'), ('Počet odovzdaných zápisníc okrskových volebných komisií', '5940'), ('Podiel odovzdaných zápisníc okrskových volebných komisií v %', '100'), ('Počet voličov zapísaných v zoznamoch voličov', '4429033'), ('Počet voličov, ktorí sa zúčastnili na hlasovaní', '2158859'), ('Účasť voličov v %', '48.74')]
+Vek 2025: 2885 obcí
+2025 2885 {'m': [28, 31, 35, 31, 39, 36, 35, 54, 54, 61, 52, 47, 56, 46, 36, 32, 18, 8], 'z': [21, 35, 45, 51, 35, 35, 28, 43, 59, 55, 59, 42, 56, 52, 51, 34, 26, 26]}
+cas 1283
 HOTOVO
