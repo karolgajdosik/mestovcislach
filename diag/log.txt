@@ -1,20 +1,83 @@
-LINK <a id="link-vysvetlivky:j_idt32" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({source:'link-vysvetlivky:j_idt32',oncomplete:function(xhr,status,args){PF('dlg3').show();;}});return false;">
-LINK <a href="#" class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all">
-LINK <a href="#" class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all">
-LINK <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt36':'j_idt35:j_idt36'},'');return false">
-LINK <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt38':'j_idt35:j_idt38'},'');return false">
-LINK <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt40':'j_idt35:j_idt40'},'');return false">
-LINK <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt42':'j_idt35:j_idt42'},'');return false">
-LINK <a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt44':'j_idt35:j_idt44'},'');return false">
-FORM <form id="j_idt10" name="j_idt10" method="post" action="/Dataportal-web/web/vysledky/2025/testovanie/index.xhtml" enctype="application/x-www-form-urlencoded">
-FORM <form id="link-vysvetlivky" name="link-vysvetlivky" method="post" action="/Dataportal-web/web/vysledky/2025/testovanie/index.xhtml" enctype="application/x-www-form-urlencoded" style="margin-left: 480px">
-FORM <form id="j_idt35" name="j_idt35" method="post" action="/Dataportal-web/web/vysledky/2025/testovanie/index.xhtml" enctype="application/x-www-form-urlencoded">
-VS ['-2720535427977880294:-2038395219417998952', '-2720535427977880294:-2038395219417998952']
-== rozpocetSamOrg/ return l("rozpocet/rozpoctyPodorganizaciiOSVSOrg/"+e+"/"+a+"/"+t)},getRozpoctyOSVSOrganizacii:function(e,a){return l("rozpocet/rozpoctyOSVSOrganizacii/"+e+"/"+a)},getRozpoctyUradu:function(e,a,t){return l("rozpocet/rozpoctyUradu/"+e+"/"+a+"/"+t)},getRozpocetSamOrg:function(e,a,t){return l("rozpocet/rozpocetSamOrg/"+e+"/"+a+"/"+t)},getRozpoctySamOrg:function(e,a,t,n,r){return l("rozpocet/rozpoctySamOrg/"+e+"/"+a+"/"+t+"/"+n+"/"+r)},getRozpocetSumarSamOrg:function(e,a,t,n){var r="rozpocet/rozpocetSumarSamOrg/"+e+"/"+a+"/"+t+"?",o="";if(!_.isEmpty(n)&&_.isObject(n))for(var i in n){if(Array.isArra
-== rozpoctySamOrg/ cii:function(e,a){return l("rozpocet/rozpoctyOSVSOrganizacii/"+e+"/"+a)},getRozpoctyUradu:function(e,a,t){return l("rozpocet/rozpoctyUradu/"+e+"/"+a+"/"+t)},getRozpocetSamOrg:function(e,a,t){return l("rozpocet/rozpocetSamOrg/"+e+"/"+a+"/"+t)},getRozpoctySamOrg:function(e,a,t,n,r){return l("rozpocet/rozpoctySamOrg/"+e+"/"+a+"/"+t+"/"+n+"/"+r)},getRozpocetSumarSamOrg:function(e,a,t,n){var r="rozpocet/rozpocetSumarSamOrg/"+e+"/"+a+"/"+t+"?",o="";if(!_.isEmpty(n)&&_.isObject(n))for(var i in n){if(Array.isArray(n[i]))for(var u=0;u<n[i].length;u++){o+=(_.isEmpty(o)?"":"&")+i+"="+n[i][u]}else o+=(_.i
-== organizacie/podurovne/ u+="&"+c+"="+r[c];return l(u)},getOrganizacia:function(e,a,t){return e=e||"VS",t=t||o.getLang(),l("organizacia/info/"+t+"/"+e+"/"+a)},getOSVSOrganizacie:function(e,a){return e=e||o.getLang(),l("organizacie/osvs/"+e+"/"+a)},getPodurovneOrganizacie:function(e,a,t){return e=e||"VS",t=t||o.getLang(),l("organizacie/podurovne/"+t+"/"+e+"/"+a)},getPodurovneOrganizacieSAM:function(e,a,t){type="SAM";var n="organizacie/podurovne/"+(t=t||o.getLang())+"/"+type+"/"+e;if(!_.isEmpty(a)&&_.isObject(a))for(var r in a)n+="&"+r+"="+a[r];return l(n)},getPodurovnovePolozky:function(e,a,t,n,r,o,i,u,c){var s="rozpoc
-== organizacie/info/ ";if(!_.isEmpty(n)&&_.isObject(n))for(var u in n)i+="&"+u+"="+n[u];return l(i)},getPodurovneByStringInOrganizaciaSAM:function(e,a,t){var n="organizacie/hladaj/SAM/"+e+"/"+encodeURIComponent(a)+"/"+t;return l(n)},getPodurovneOrganizacieDoHlbky:function(e,a,t,n,r){return e=e||"VS",r=r||o.getLang(),l("organizacie/info/"+r+"/"+e+"/"+a+"/"+t+"/"+n)},getROOrganizacieDoHlbky:function(e,a,t,n,r){return l("organizacie/ro/"+(r=r||"SK")+"/"+(e=e||"VS")+"/"+a+"/"+t+"/"+n)},getPOOrganizacieDoHlbky:function(e,a,t,n,r){return l("organizacie/po/"+(r=r||"SK")+"/"+(e=e||"VS")+"/"+a+"/"+t+"/"+n)},getZZOrganizaci
-== polozkySumarPodurovni e||o.getLang())+"/SAM/3/-1/3";return l(a)},getPodurovneByStringSAM:function(e,a){var t="organizacie/hladajObec/"+encodeURIComponent(e)+"/"+a;return l(t)},getFinOperacieSAM:function(e,a){return l("rozpocet/financneOperaciePodurovni/"+e+"/"+a)},get2ObceSNajviacVydajmiSAM:function(){return l("rozpocet/polozkySumarPodurovni/SAM/210/2014/DESC/2?uroven=CELKOVY&EKV=SpoluV&ORG=11&ORG=23&ORG=22")},getStavUzavierky:function(e,a,t){return l("rozpocet/stavUzavrierky/"+e+"/"+a+"/"+t)},getPriebeznePlnenieAktualizacia:function(){return l("rozpocet/poslednaAktualizacia/PLNENIE/VS/SKU")},getRozpocetSRAktualiza
-== organizacie/po/ ovneOrganizacieDoHlbky:function(e,a,t,n,r){return e=e||"VS",r=r||o.getLang(),l("organizacie/info/"+r+"/"+e+"/"+a+"/"+t+"/"+n)},getROOrganizacieDoHlbky:function(e,a,t,n,r){return l("organizacie/ro/"+(r=r||"SK")+"/"+(e=e||"VS")+"/"+a+"/"+t+"/"+n)},getPOOrganizacieDoHlbky:function(e,a,t,n,r){return l("organizacie/po/"+(r=r||"SK")+"/"+(e=e||"VS")+"/"+a+"/"+t+"/"+n)},getZZOrganizacie:function(e,a,t,n){return l("organizacie/zz/"+(n=n||"SK")+"/"+(e=e||"VS")+"/"+a+"/"+t)},getNadradeneOrganizacie:function(e,a,t){return e=e||"VS",t=t||o.getLang(),l("organizacie/nadurovne/"+t+"/"+e+"/"+a)},getNadurovneOr
-ROUTES ['/:layout/:section?', '/:layout/:section/:id', '/:layout/:section/:id/:jazyk/:slug', '/:layout/:sectionType/:section/:id', '/:layout/:sectionType/:section/:id/f/:year', '/:layout/:sectionType/:parentSection/:parentId/:section/:id/:view', '/:layout/:sectionType/:parentSection/:parentId/:section/:id/:view/f/:year/:balanceType?/:classification?', '/:layout/:sectionType/:rootSection/:rootId/:parentSection/:parentId/:parentView/:section/:id/:view', '/:layout/:sectionType/:rootSection/:rootId/:parentSection/:parentId/:parentView/:section/:id/:view/f/:year/:balanceType?/:classification?', '/:layout/:sectionType/:rootParentSection/:rootParentId/:rootSection/:rootId/:rootView/:parentSection/:parentId/:parentView/:section/:id/:view', '/:layout/:sectionType/:rootParentSection/:rootParentId/:rootSection/:rootId/:rootView/:parentSection/:parentId/:parentView/:section/:id/:view/f/:year/:balanceType?/:classification?']
-HOTOVO
+[('j_idt36', 'Matematika'), ('j_idt38', 'Maďarský jazyk a literatúra'), ('j_idt40', 'Slovenský jazyk a slovenská literatúra'), ('j_idt42', 'Slovenský jazyk a literatúra'), ('j_idt44', 'Ukrajinský jazyk a literatúra')]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 8, in <module>
+    r = s.post(u, data={"j_idt35": "j_idt35", "j_idt35:j_idt36": "j_idt35:j_idt36", "javax.faces.ViewState": vs}, timeout=120)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 659, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
