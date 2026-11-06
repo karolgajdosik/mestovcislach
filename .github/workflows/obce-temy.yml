@@ -13,6 +13,8 @@ on:
       - "scripts/statdata_obce.py"
       - "scripts/zber_obce_volby.py"
       - "scripts/zber_obce_vlaky.py"
+      - "scripts/zber_obce_vrstvy.py"
+      - "scripts/zber_okresy_statdata.py"
       - ".github/workflows/obce-temy.yml"
 
 permissions:
@@ -25,7 +27,7 @@ concurrency:
 jobs:
   temy:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v5
 
@@ -51,6 +53,14 @@ jobs:
       - name: Vlaky v obciach (GTFS ŽSR)
         if: success() || failure()
         run: python scripts/zber_obce_vlaky.py
+
+      - name: Chránené územia (ŠOP SR)
+        if: success() || failure()
+        run: python scripts/zber_obce_vrstvy.py
+
+      - name: Okresy – mzdy a dokončené byty (ŠÚ SR)
+        if: success() || failure()
+        run: python scripts/zber_okresy_statdata.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()
