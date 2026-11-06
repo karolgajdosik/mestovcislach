@@ -1,6 +1,10 @@
-SUBMIT ['<input type="submit" name="j_idt10:j_idt29" value="Vybrať" />'] []
-('', '') 20 [{'nazov': 'ZŠ s MŠ', 'obec': 'Badín', 'ulica': 'Tajovského 2', 'n': 33, 'pus': 54.6, 'rnp': -2.754}]
-('1', '') 20 [{'nazov': 'ZŠ s MŠ', 'obec': 'Badín', 'ulica': 'Tajovského 2', 'n': 33, 'pus': 54.6, 'rnp': -2.754}]
-('', '1') 20 [{'nazov': 'ZŠ s MŠ', 'obec': 'Badín', 'ulica': 'Tajovského 2', 'n': 33, 'pus': 54.6, 'rnp': -2.754}]
-('1', '1') 20 [{'nazov': 'ZŠ s MŠ', 'obec': 'Badín', 'ulica': 'Tajovského 2', 'n': 33, 'pus': 54.6, 'rnp': -2.754}]
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 9, in <module>
+    t9.main(); d = json.load(open("data/obce/t9.json")); print(d["rok"], d["sr"], len(d["obce"]), d["obce"].get("518921"), d["obce"].get("515833"))
+    ~~~~~~~^^
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_obce_t9.py", line 111, in main
+    raise RuntimeError(f"T9 {rok}: {kraj} matematika len {len(riadky)} škôl")
+RuntimeError: T9 2025: Bratislavský kraj matematika len 20 škôl
+BB mat 20 [{'nazov': 'ZŠ - Škola u Filipa', 'obec': 'Banská Bystrica', 'ulica': 'Ružová 14', 'n': 18, 'pus': 69.1, 'rnp': 11.674}, {'nazov': 'Súkromná ZŠ', 'obec': 'Banská Bystrica', 'ulica': 'Mládežnícka 51', 'n': 15, 'pus': 57.6, 'rnp': None}]
+cas 2
 HOTOVO
