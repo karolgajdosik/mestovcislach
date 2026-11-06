@@ -377,11 +377,12 @@ UZEMIE = {"Orná pôda": "orna", "Trvalé trávne porasty": "ttp", "Lesné pozem
 
 
 def uzemie() -> None:
-    t = tabulka("pl5001rr", "e_landuse", "e_soiltype", rokov=1)
+    t = tabulka("pl5001rr", "e_landuse", "e_soiltype", rokov=11)
     obce = {}
     rok = None
     for kod, d in t.items():
         rok = max(k[0] for k in d)
+        rok0 = min(k[0] for k in d)
         # riadok Spolu/Spolu v kocke často chýba – rozloha = poľnohospodárska + nepoľnohospodárska pôda, inak súčet druhov
         sp = d.get((rok, "Spolu", "Spolu")) or (d.get((rok, "Spolu", "Poľnohospodárska pôda"), 0) + d.get((rok, "Spolu", "Nepoľnohospodárska pôda"), 0)) \
             or sum(v for k, v in d.items() if k[0] == rok and k[1] in UZEMIE)
@@ -393,6 +394,10 @@ def uzemie() -> None:
                 p[UZEMIE[k[1]]] += 100 * v / sp
         p = {k: round(v, 1) for k, v in p.items()}
         obce[kod] = {"ha": round(sp / 10000), "p": p}
+        z1 = d.get((rok, "Zastavané plochy a nádvoria", "Nepoľnohospodárska pôda")) or d.get((rok, "Zastavané plochy a nádvoria", "Spolu"))
+        z0 = d.get((rok0, "Zastavané plochy a nádvoria", "Nepoľnohospodárska pôda")) or d.get((rok0, "Zastavané plochy a nádvoria", "Spolu"))
+        if z1 and z0 and rok0 != rok:  # zastavaná plocha v m² pred ~10 rokmi a teraz
+            obce[kod]["zast"] = [rok0, round(z0 / 10000, 1), round(z1 / 10000, 1)]
     okr: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
     for kod, v in obce.items():
         for k, pct in v["p"].items():

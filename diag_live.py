@@ -1,12 +1,23 @@
-import requests, time, json
-s = requests.Session(); s.headers["User-Agent"] = "Mozilla/5.0 mestovcislach.sk"
-A = "https://rozpocet.sk/rest/api/rozpocet/"
-for p in ["polozkyRozpocetuFilterSamOrg/SK/804045/2025/SAM/false/FK?FK=01,02,03,04,05,06,07,08,09,10",
-          "polozkyRozpocetuFilterSamOrg/SK/804045/2025/SAM/false/EKV?EKV=610,620,630,640,650,690,710,720,810",
-          "rozpocetSumarSamOrg/804045/2025/12?EKV=VYD&FK=09&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101",
-          "rozpocetSumarSamOrg/804045/2025/12?EKV=VYD&ORG=02&ORG=11&ORG=23&ORG=22&DRH=81&DRH=101"]:
-    try:
-        r = s.get(A + p, timeout=90); print("API", p, r.status_code, r.text[:1800].replace("\n"," "))
-    except Exception as e: print("ERR", p, e)
-    time.sleep(1)
+import subprocess, sys, json, time
+subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
+sys.path.insert(0, "scripts")
+sys.argv = ["x", "5"]
+import zber_obce_rozpocet as r
+try:
+    oid = r.org_id({"nazov": "Vígľaš", "kod": "518921"}, 2025); print("oid", oid)
+    print("EKP", r.get(f"rozpocet/polozkyRozpocetuFilterSamOrg/SK/{oid}/2025/SAM/false/EKP?EKP=111,121,133,200,300").get("payload", [])[:6])
+    print("EKV", r.polozky(oid, 2025, "EKV", r.VYDAVKY))
+    print("SUM", r.get(f"rozpocet/rozpocetSamOrg/{oid}/2025/4")["payload"]["KVARTAL4"])
+    r.main(); d = json.load(open("data/obce/rozpocet.json")); print(list(d["obce"].items())[:3])
+except Exception as e:
+    import traceback; traceback.print_exc()
+t = time.time()
+import zber_obce_t9 as t9
+try:
+    s = t9.relacia(); rok = t9.najnovsi_rok(s); print("T9 rok", rok)
+    x = t9.tabulka(s, rok, "55", "6"); print(len(x), x[:3])
+    x = t9.tabulka(s, rok, "53", "8"); print("mjl KE", len(x), x[:2])
+except Exception as e:
+    import traceback; traceback.print_exc()
+print("cas", round(time.time() - t))
 print("HOTOVO")
