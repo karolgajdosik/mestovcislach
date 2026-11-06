@@ -6,7 +6,7 @@ import '../../../../styles/stranka.css';
 import '../../../../styles/obce.css';
 import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
 import Kalendar from '../../../../components/Kalendar.astro';
-import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, volbyInfo, pohybInfo, byvanieInfo, firmyInfo, sluzbyInfo, turizmusInfo, vlakyInfo, type Obec } from '../../../../lib/obce';
+import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, volbyInfo, pohybInfo, byvanieInfo, firmyInfo, sluzbyInfo, turizmusInfo, vlakyInfo, obyvateliaInfo, uzemieInfo, chraneneInfo, socialneInfo, okresyInfo, type Obec } from '../../../../lib/obce';
 import { skrat, skratStrany } from '../../../../lib/zastupitelstvo';
 
 export function getStaticPaths() {
@@ -143,6 +143,38 @@ const tur = turI?.obce?.[o.kod] ?? null;
 const turRoky = tur ? Object.keys(tur).sort() : [];
 const turRok = turRoky.filter((r) => Number(r) < new Date().getFullYear()).pop() ?? turRoky[turRoky.length - 1];
 const turP = tur && turRok ? tur[turRok] : null;
+// vzdelanie a materinský jazyk (SODB 2021)
+const obyI = obyvateliaInfo();
+const oby = obyI?.obce?.[o.kod] ?? null;
+const vzdOkr = obyI?.okresy?.vzd?.[o.okres] ?? {};
+const VZDT: [string, string][] = [['zakl', 'Základné'], ['sbm', 'Stredné bez maturity'], ['sm', 'Stredné s maturitou'], ['vs', 'Vysokoškolské']];
+const jazIne = (oby?.jaz ?? []).filter(([n, x]) => n !== 'Slovenský' && x >= 1);
+// kataster a príroda
+const uzI = uzemieInfo();
+const uz = uzI?.obce?.[o.kod] ?? null;
+const uzOkr = uzI?.okresy?.[o.okres] ?? {};
+const UZT: [string, string][] = [['les', 'Lesy'], ['orna', 'Orná pôda'], ['ttp', 'Lúky a pasienky'], ['zast', 'Zastavané plochy'], ['zahr', 'Záhrady'], ['vin', 'Vinice'], ['sad', 'Ovocné sady'], ['voda', 'Vodné plochy']];
+const chr = chraneneInfo()?.obce?.[o.kod] ?? null;
+// sociálne služby
+const socI = socialneInfo();
+const soc = socI?.obce?.[o.kod] ?? null;
+const SOCT: [string, [string, string, string], boolean][] = [
+  ['seniori', ['zariadenie pre seniorov', 'zariadenia pre seniorov', 'zariadení pre seniorov'], true], ['dss', ['domov sociálnych služieb alebo špecializované zariadenie', 'domovy sociálnych služieb a špecializované zariadenia', 'domovov sociálnych služieb a špecializovaných zariadení'], true],
+  ['stacionar', ['denný stacionár', 'denné stacionáre', 'denných stacionárov'], false], ['opatrovatelska', ['opatrovateľská služba', 'opatrovateľské služby', 'opatrovateľských služieb'], false],
+  ['centrum', ['denné centrum (klub seniorov)', 'denné centrá', 'denných centier'], false], ['komunitne', ['komunitné centrum', 'komunitné centrá', 'komunitných centier'], false],
+  ['jedalen', ['jedáleň', 'jedálne', 'jedální'], false], ['preprava', ['prepravná služba', 'prepravné služby', 'prepravných služieb'], false], ['jasle', ['jasle (deti do 3 rokov)', 'jasle (deti do 3 rokov)', 'jaslí (deti do 3 rokov)'], false],
+  ['ine', ['iná sociálna služba', 'iné sociálne služby', 'iných sociálnych služieb'], false],
+];
+// údaje za okres
+const okrI = okresyInfo();
+const mzR = okrI?.mzda?.[o.okres] ? Object.entries(okrI.mzda[o.okres]).sort(([x], [y]) => x.localeCompare(y)) : [];
+const mzP = mzR.length ? mzR[mzR.length - 1] : null;
+const mzSR = mzP ? okrI?.mzda?.SR?.[mzP[0]] ?? null : null;
+const byR = okrI?.byty?.[o.okres] ? Object.entries(okrI.byty[o.okres]).sort(([x], [y]) => x.localeCompare(y)) : [];
+const byP = byR.length ? byR[byR.length - 1] : null;
+const by5 = byR.slice(-5).reduce((s_, [, v_]) => s_ + v_[0], 0);
+const obyvOkr = okresObce.reduce((s_, x) => { const ob = x.obyvatelia ? Object.entries(x.obyvatelia).sort(([a_], [b_]) => a_.localeCompare(b_)).pop() : null; return s_ + (ob ? ob[1] : 0); }, 0);
+const krimP = okrI?.krim?.[o.okres] ?? null;
 const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` : ''}${z10 != null ? `, za 10 rokov ${z10 > 0 ? '+' : ''}${des(z10)} %` : ''}${st ? `. Starosta 2026: ${bezTit(st.meno)}` : ''}. Sčítanie 2021, voľby a poslanci.`;
 ---
 <Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis}
@@ -205,6 +237,17 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
         </div>
       )}
       <p class="zdroj">Zdroj: ŠÚ SR – pohyb obyvateľstva a indexy vekového zloženia (STATdata om7103rr, om7052rr).</p>
+    </section>
+  )}
+
+  {oby?.vzd && (
+    <section class="card" id="vzdelanie">
+      <h2>Vzdelanie a materinský jazyk</h2>
+      <ul class="ob-bary">
+        {VZDT.filter(([k]) => oby.vzd![k] != null).map(([k, n]) => <li><span>{n}</span><span class="pruh" aria-hidden="true"><i style={`width:${oby.vzd![k]}%`}></i></span><span class="num"><strong>{des(oby.vzd![k], 0)} %</strong> <small>({vzdOkr[k] != null ? `okres ${des(vzdOkr[k], 0)} %` : '–'})</small></span></li>)}
+      </ul>
+      {oby.jaz && <p class="pozn">Materinský jazyk: {(jazIne.length ? oby.jaz.filter(([, x]) => x >= 1) : oby.jaz.slice(0, 1)).map(([n, x]) => `${n.toLowerCase()} ${des(x, x < 10 ? 1 : 0)} %`).join(', ')}{!jazIne.length ? ' – iný jazyk má menej ako 1 % obyvateľov' : ''}.</p>}
+      <p class="zdroj">Zdroj: ŠÚ SR – Sčítanie obyvateľov, domov a bytov 2021 (STATdata om7809rr, om7804rr). Vzdelanie ľudí od 15 rokov so zisteným údajom ({fmt(oby.vzd_n ?? 0)}); okres = všetci obyvatelia okresu spolu. Skupiny menšie ako 5 ľudí sú zlúčené.</p>
     </section>
   )}
 
@@ -389,9 +432,44 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
     </section>
   )}
 
+  {(uz || chr) && (
+    <section class="card" id="kataster">
+      <h2>Kataster a príroda</h2>
+      {uz && (
+        <>
+          <p class="pozn">Rozloha katastra <strong>{des(uz.ha / 100, uz.ha < 1000 ? 2 : 1)} km²</strong> ({fmt(uz.ha)} ha), stav {uzI!.rok}.</p>
+          <ul class="ob-bary">
+            {UZT.filter(([k]) => (uz.p[k] ?? 0) >= 0.5).sort(([x], [y]) => (uz.p[y] ?? 0) - (uz.p[x] ?? 0)).map(([k, n]) => <li><span>{n}</span><span class="pruh" aria-hidden="true"><i style={`width:${uz.p[k]}%`}></i></span><span class="num"><strong>{des(uz.p[k], 0)} %</strong> <small>({uzOkr[k] != null ? `okres ${des(uzOkr[k], 0)} %` : '–'})</small></span></li>)}
+          </ul>
+        </>
+      )}
+      {chr ? (
+        <ul class="ob-zoznam">
+          {chr.np && <li>Obec leží v <b>národnom parku</b> {chr.np.join(', ')}.</li>}
+          {chr.op && <li>Obec leží v <b>ochrannom pásme národného parku</b> {chr.op.join(', ')}.</li>}
+          {chr.chko && <li>Obec leží v <b>chránenej krajinnej oblasti</b> {chr.chko.map((n) => n.replace(/^CHKO\s+/, '')).join(', ')}.</li>}
+          {chr.chvu && <li>Obec leží v <b>chránenom vtáčom území</b> {chr.chvu.join(', ')} (Natura 2000).</li>}
+        </ul>
+      ) : chraneneInfo() && <p class="pozn">Obec neleží v národnom parku, chránenej krajinnej oblasti ani chránenom vtáčom území.</p>}
+      <p class="zdroj">Zdroj: ŠÚ SR – výmera územia a využitie pôdy podľa katastra nehnuteľností (STATdata pl5001rr); ŠOP SR – chránené územia. Chránené územie posudzujeme podľa polohy stredu obce – časť katastra môže ležať aj inde.</p>
+    </section>
+  )}
+
+  {(mzP || byP) && (
+    <section class="card" id="okres-cisla">
+      <h2>Okres {o.okres}: mzdy a nové byty</h2>
+      <ul class="ob-cisla">
+        {mzP && <li><b>{fmt(mzP[1])} €</b><span>priemerná hrubá mesačná mzda v okrese ({mzP[0]}){mzSR ? `; Slovensko ${fmt(mzSR)} €` : ''}</span></li>}
+        {byP && <li><b>{fmt(byP[1][0])}</b><span>dokončených bytov v okrese ({byP[0]}), z toho {fmt(byP[1][1])} v rodinných domoch</span></li>}
+        {byR.length >= 5 && obyvOkr > 0 && <li><b>{des((1000 * by5) / obyvOkr / 5, 1)}</b><span>nových bytov ročne na 1 000 obyvateľov okresu (priemer {byR[byR.length - 5][0]}–{byP![0]})</span></li>}
+      </ul>
+      <p class="zdroj">Zdroj: ŠÚ SR – mzdy zistené pracoviskovou metódou, t. j. podľa miesta práce (STATdata np3110rr); dokončené byty (st3802rr). Tieto údaje ŠÚ SR za jednotlivé obce nezverejňuje{o.okres === 'Bratislava' || o.okres === 'Košice' ? '; okresy mesta sú zlúčené' : ''}.</p>
+    </section>
+  )}
+
   {(slu || vl || sluI) && (
     <section class="card" id="sluzby">
-      <h2>Lekár, lekáreň, pošta, vlak</h2>
+      <h2>Lekár, pošta, vlak, sociálne služby</h2>
       <ul class="ob-zoznam">
         {slu?.zdravie ? ZDR.filter(([k]) => slu.zdravie![k]).map(([k, f]) => <li><b>{fmt(slu.zdravie![k])}</b> {tvar(f, slu.zdravie![k])}</li>) : <li>Žiadna ambulancia ani lekáreň (podľa štatistiky {sluI?.roky?.zdravie}).</li>}
         <li>{slu?.posta ? <><b>{slu.posta === 1 ? 'Pošta' : `${slu.posta} pošty`}</b> v obci</> : 'Pošta v obci nie je.'}</li>
@@ -400,8 +478,16 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
           ? <li><b>Vlak:</b> {vl.length} staníc a zastávok, najviac <span translate="no">{vl[0][0]}</span> ({fmt(vl[0][1])} vlakov v pracovný deň){vl.slice(1, 3).map(([n, c]) => <>, <span translate="no">{n}</span> ({fmt(c)})</>)}</li>
           : vl.map(([n, c]) => <li><b>Vlak:</b> <span translate="no">{n}</span> · {fmt(c)} {c === 1 ? 'vlak' : c < 5 ? 'vlaky' : 'vlakov'} v pracovný deň</li>)) : vlI && <li>Železničná stanica ani zastávka v obci nie je.</li>}
       </ul>
+      {soc && (
+        <>
+          <h3>Sociálne služby</h3>
+          <ul class="ob-zoznam">
+            {SOCT.filter(([k]) => soc[k]).map(([k, f, kap]) => <li><b>{fmt(soc[k][0])}</b> {tvar(f, soc[k][0])}{kap && soc[k][1] ? ` · ${fmt(soc[k][1])} miest` : ''}</li>)}
+          </ul>
+        </>
+      )}
       {turP && turP.zariadeni ? <p class="pozn">Ubytovanie ({turRok}): {fmt(turP.zariadeni)} {turP.zariadeni === 1 ? 'ubytovacie zariadenie' : turP.zariadeni < 5 ? 'ubytovacie zariadenia' : 'ubytovacích zariadení'}{turP.lozok ? ` s ${fmt(turP.lozok)} lôžkami` : ''}{turP.vyuzitie ? `, využitie lôžok ${des(turP.vyuzitie)} %` : ''}.</p> : null}
-      <p class="zdroj">Zdroj: ŠÚ SR – zdravotníctvo za obce ({sluI?.roky?.zdravie}), pošty a knižnice ({sluI?.roky?.posta}); ŽSR – grafikon vlakovej dopravy (GTFS){vlI?.den ? `, počet vlakov ${datum(vlI.den)}` : ''}{turP ? '; ŠÚ SR – kapacity ubytovacích zariadení' : ''}. Ambulancie sú počítané podľa sídla – mená lekárov neuvádzame.</p>
+      <p class="zdroj">Zdroj: ŠÚ SR – zdravotníctvo za obce ({sluI?.roky?.zdravie}), pošty a knižnice ({sluI?.roky?.posta}); ŽSR – grafikon vlakovej dopravy (GTFS){vlI?.den ? `, počet vlakov ${datum(vlI.den)}` : ''}{turP ? '; ŠÚ SR – kapacity ubytovacích zariadení' : ''}. Ambulancie sú počítané podľa sídla – mená lekárov neuvádzame.{soc ? ` Sociálne služby: MPSVR SR – Centrálny register poskytovateľov sociálnych služieb${socI?.stav ? ` (zápisy do ${datum(socI.stav)})` : ''}, podľa miesta poskytovania; terénne služby (napr. opatrovateľská) môžu pôsobiť aj v okolitých obciach.` : ''}</p>
     </section>
   )}
 

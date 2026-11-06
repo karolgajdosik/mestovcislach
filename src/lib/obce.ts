@@ -225,6 +225,16 @@ let _fir: { roky: string[]; obce: Record<string, Record<string, [number, number,
 let _slu: { roky: Record<string, string | null>; obce: Record<string, { zdravie?: Record<string, number>; posta?: number; kniznica?: [number, number] }> } | null | undefined;
 let _tur: { obce: Record<string, Record<string, { zariadeni?: number; lozok?: number; vyuzitie?: number; trzby?: number }>> } | null | undefined;
 let _vla: { den: string; obce: Record<string, [string, number][]> } | null | undefined;
+let _oby: { okresy: { vzd: Record<string, Record<string, number>> }; obce: Record<string, { vzd?: Record<string, number>; vzd_n?: number; jaz?: [string, number][] }> } | null | undefined;
+let _uze: { rok: string; okresy: Record<string, Record<string, number>>; obce: Record<string, { ha: number; p: Record<string, number> }> } | null | undefined;
+let _chr: { obce: Record<string, { np?: string[]; op?: string[]; chko?: string[]; chvu?: string[] }> } | null | undefined;
+let _soc: { stav: string; obce: Record<string, Record<string, [number, number]>> } | null | undefined;
+let _okr: { mzda: Record<string, Record<string, number>>; byty: Record<string, Record<string, [number, number]>>; krim?: Record<string, Record<string, number>>; krim_rok?: string } | null | undefined;
+export const obyvateliaInfo = () => (_oby === undefined ? (_oby = citaj('data', 'obce', 'obyvatelia.json')) : _oby);
+export const uzemieInfo = () => (_uze === undefined ? (_uze = citaj('data', 'obce', 'uzemie.json')) : _uze);
+export const chraneneInfo = () => (_chr === undefined ? (_chr = citaj('data', 'obce', 'chranene.json')) : _chr);
+export const socialneInfo = () => (_soc === undefined ? (_soc = citaj('data', 'obce', 'socialne.json')) : _soc);
+export const okresyInfo = () => (_okr === undefined ? (_okr = citaj('data', 'obce', 'okresy.json')) : _okr);
 export const volbyInfo = () => (_vol === undefined ? (_vol = citaj('data', 'obce', 'volby.json')) : _vol);
 export const pohybInfo = () => (_poh === undefined ? (_poh = citaj('data', 'obce', 'pohyb.json')) : _poh);
 export const byvanieInfo = () => (_byv === undefined ? (_byv = citaj('data', 'obce', 'byvanie.json')) : _byv);
