@@ -1,3 +1,4 @@
+import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
 import sys, time, json
 sys.path.insert(0, "scripts")
 t0 = time.time()

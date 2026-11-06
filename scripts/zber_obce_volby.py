@@ -70,7 +70,8 @@ def _xlsx(z, koniec: str) -> list[dict]:
     import openpyxl
     wb = openpyxl.load_workbook(io.BytesIO(z.read(next(n for n in z.namelist() if n.endswith(koniec)))), read_only=True)
     riadky = list(wb.worksheets[0].iter_rows(values_only=True))
-    hi = next(i for i, r in enumerate(riadky) if r and any(isinstance(c, str) and ("Kód" in c or "Počet" in c) for c in r))
+    hi = next(i for i, r in enumerate(riadky)  # hlavička = prvý riadok s aspoň 3 textovými bunkami (nadpis má jednu)
+              if r and sum(isinstance(c, str) and c.strip() != "" for c in r) >= 3)
     hl = [re.sub(r"\s+", " ", str(c or "")).strip() for c in riadky[hi]]
     return [{h: ("" if c is None else str(c)) for h, c in zip(hl, r)} for r in riadky[hi + 1:] if r and any(c is not None for c in r)]
 
