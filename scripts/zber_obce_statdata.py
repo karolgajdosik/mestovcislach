@@ -325,7 +325,12 @@ def _okres_podiely(po_obciach: dict[str, dict[str, float]], vynechaj: set[str]) 
     return dict(sorted(out.items()))
 
 
-VZD = {"Základné vzdelanie": "zakl", "Stredné bez maturity": "sbm", "Stredné s maturitou": "sm", "Vysokoškolské": "vs",
+def _cirkev(n: str) -> str:
+    m = re.search(r"\(([^)]+)\)", n)
+    return m.group(1) if m and n not in ("Spolu",) else n
+
+
+VZD = {"Základné vzdelanie": "zakl", "Základné": "zakl", "Stredné bez maturity": "sbm", "Stredné s maturitou": "sm", "Vysokoškolské": "vs",
        "Bez školského vzdelania - osoby vo veku 15 rokov a viac": "bez"}
 
 
@@ -344,6 +349,9 @@ def obyvatelia() -> None:
         if zn >= 20:
             obce.setdefault(kod, {})["vzd"] = {VZD.get(k, k): round(100 * v / zn, 1) for k, v in d.items() if k in VZD}
             obce[kod]["vzd_n"] = int(zn)
+    for src in (nab,):  # skrátené názvy cirkví („Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / …“ -> „rímskokatolícke“)
+        for kod, d in src.items():
+            src[kod] = {_cirkev(k): v for k, v in d.items()}
     for kluc, src, ine in (("nar", nar, "Iná"), ("jaz", jaz, "Iný jazyk"), ("nab", nab, "ostatné")):
         for kod, d in src.items():
             pol, zn = _skupiny(d, set(), ine)
