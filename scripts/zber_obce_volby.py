@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import csv
 import io
+import re
 from collections import defaultdict
 from datetime import datetime, timezone
 
@@ -20,7 +21,10 @@ from spolocne import DATA, s, spusti, zapis_ak_zmena
 from zber_obce_temy import OBCE, cislo
 
 URL = "https://volby.statistics.sk/opendata"
-VOLBY = [("nrsr2023", "Parlamentné voľby 2023", "nrsr/2023/NRSR2023_SK"), ("ep2024", "Eurovoľby 2024", "eup/2024/EP2024_SK"),
+VOLBY = [("nrsr2020", "Parlamentné voľby 2020", "nrsr2020:https://volby.statistics.sk/nrsr/nrsr2020/files/NRSR_2020_SK_csv.zip"),
+         ("prez2019_1", "Prezidentské voľby 2019 – 1. kolo", "xlsx:https://volby.statistics.sk/prez/prez2019/files/PRE_2019_KOLO1_xlsx.zip"),
+         ("prez2019_2", "Prezidentské voľby 2019 – 2. kolo", "xlsx:https://volby.statistics.sk/prez/prez2019/files/PRE_2019_KOLO2_xlsx.zip"),
+         ("nrsr2023", "Parlamentné voľby 2023", "nrsr/2023/NRSR2023_SK"), ("ep2024", "Eurovoľby 2024", "eup/2024/EP2024_SK"),
          ("prez2024_1", "Prezidentské voľby 2024 – 1. kolo", "zip:https://volby.statistics.sk/prez/prez2024/files/kolo1/PREZ2024_kolo1_SK_csv.zip"),
          ("prez2024_2", "Prezidentské voľby 2024 – 2. kolo", "zip:https://volby.statistics.sk/prez/prez2024/files/kolo2/PREZ2024_kolo2_SK_csv.zip")]
 KODY = {o["kod"] for o in OBCE}
@@ -47,7 +51,44 @@ def citaj_csv(t: str) -> list[dict]:
     return list(csv.DictReader(io.StringIO(t), delimiter=";" if hl.count(";") > hl.count(",") else ","))
 
 
+def _zip(url: str):
+    import zipfile
+    r = s.get(url, timeout=300)
+    r.raise_for_status()
+    return zipfile.ZipFile(io.BytesIO(r.content))
+
+
+def _dekoduj(b: bytes) -> str:
+    try:
+        return b.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        return b.decode("cp1250")
+
+
+def _xlsx(z, koniec: str) -> list[dict]:
+    """Tabuľka ŠÚ v xlsx: nadpis, prázdny riadok, hlavička, prázdny riadok, dáta."""
+    import openpyxl
+    wb = openpyxl.load_workbook(io.BytesIO(z.read(next(n for n in z.namelist() if n.endswith(koniec)))), read_only=True)
+    riadky = list(wb.worksheets[0].iter_rows(values_only=True))
+    hi = next(i for i, r in enumerate(riadky) if r and any(isinstance(c, str) and ("Kód" in c or "Počet" in c) for c in r))
+    hl = [re.sub(r"\s+", " ", str(c or "")).strip() for c in riadky[hi]]
+    return [{h: ("" if c is None else str(c)) for h, c in zip(hl, r)} for r in riadky[hi + 1:] if r and any(c is not None for c in r)]
+
+
 def tabulky(cesta: str) -> tuple[list[dict], list[dict], dict]:
+    if cesta.startswith("nrsr2020:"):  # kódované CSV s „|“, po okrskoch; strany v tab0a
+        z = _zip(cesta[9:])
+        nac = lambda kon: list(csv.DictReader(io.StringIO(_dekoduj(z.read(next(n for n in z.namelist() if n.endswith(kon))))), delimiter="|"))  # noqa: E731
+        strany = {r["PS"]: r["NPS"].strip() for r in nac("_tab0a.csv")}
+        ucast = [{"Kód obce": r["OBEC"], "Počet zapísaných voličov": r["P_ZAP"], "Počet zúčastnených voličov": r["P_ZUC"]} for r in nac("_tab02e.csv")]
+        hlasy = [{"Kód obce": r["OBEC"], "Názov politického subjektu": strany.get(r["PS"], r["PS"]), "Počet platných hlasov": r["P_HL_PS"]} for r in nac("_tab03f.csv")]
+        zap = sum(cislo(u["Počet zapísaných voličov"]) or 0 for u in ucast)
+        zuc = sum(cislo(u["Počet zúčastnených voličov"]) or 0 for u in ucast)
+        return ucast, hlasy, {"Účasť voličov v %": str(round(100 * zuc / zap, 2))}
+    if cesta.startswith("xlsx:"):  # prezidentské voľby 2019 – len xlsx
+        z = _zip(cesta[5:])
+        ucast = [{**r, "Počet zúčastnených voličov": r.get("Počet vydaných obálok", "")} for r in _xlsx(z, "_tab02d.xlsx")]
+        return ucast, _xlsx(z, "_tab03e.xlsx"), _xlsx(z, "_tab01.xlsx")[0]
     if cesta.startswith("zip:"):
         import zipfile
         r = s.get(cesta[4:], timeout=300)
@@ -102,6 +143,35 @@ def jedny(vid: str, nazov: str, cesta: str) -> dict:
             "obce": dict(sorted(obce.items()))}
 
 
+UCAST = [("oso2022", "Komunálne voľby 2022", "https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip"),
+         ("osk2022", "Krajské voľby 2022", "https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip"),
+         ("ref2023", "Referendum 2023", "https://volby.statistics.sk/ref/ref2023/files/REF2023_SK_csv.zip")]
+
+
+def len_ucast(url: str) -> dict:
+    """Účasť po obciach zo súboru po okrskoch (OBEC|…|P_ZAP|P_ZUC) – voľby, kde ukazujeme len účasť."""
+    z = _zip(url)
+    for n in z.namelist():
+        if not n.endswith(".csv"):
+            continue
+        txt = _dekoduj(z.read(n))
+        hl = txt.split("\n", 1)[0].strip().split("|")
+        if hl[:1] == ["OBEC"] and "P_ZAP" in hl and "P_ZUC" in hl:
+            zap: dict[str, float] = defaultdict(float)
+            zuc: dict[str, float] = defaultdict(float)
+            for r in csv.DictReader(io.StringIO(txt), delimiter="|"):
+                zap[r["OBEC"].strip()] += cislo(r["P_ZAP"]) or 0
+                zuc[r["OBEC"].strip()] += cislo(r["P_ZUC"]) or 0
+            obce = {k: round(100 * zuc[k] / v, 1) for k, v in zap.items() if v and k in KODY}
+            okr: dict[str, list] = defaultdict(lambda: [0.0, 0.0])
+            for k in obce:
+                okr[OKRES[k]][0] += zuc[k]
+                okr[OKRES[k]][1] += zap[k]
+            return {"sr": round(100 * sum(zuc.values()) / sum(zap.values()), 1), "okresy": {o: round(100 * a / b, 1) for o, (a, b) in sorted(okr.items()) if b},
+                    "obce": dict(sorted(obce.items()))}
+    raise RuntimeError(f"{url}: nenašla sa tabuľka účasti po okrskoch")
+
+
 def main() -> int:
     stare_f = DATA / "obce" / "volby.json"
     import json
@@ -116,9 +186,19 @@ def main() -> int:
                 out[vid] = stare[vid]
     if not out:
         raise RuntimeError("žiadne voľby")
+    stare_u = json.loads(stare_f.read_text(encoding="utf-8")).get("ucast", {}) if stare_f.exists() else {}
+    ucast = {}
+    for vid, nazov, url in UCAST:
+        try:
+            ucast[vid] = {"nazov": nazov, **len_ucast(url)}
+            print(f"{nazov}: účasť SR {ucast[vid]['sr']} %, {len(ucast[vid]['obce'])} obcí")
+        except Exception as e:  # noqa: BLE001
+            print(f"::warning title=Účasť {vid}::{e}")
+            if vid in stare_u:
+                ucast[vid] = stare_u[vid]
     zapis_ak_zmena(stare_f, {"aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                              "zdroj": {"nazov": "ŠÚ SR – výsledky volieb, otvorené dáta", "url": "https://volby.statistics.sk"},
-                             "volby": out}, kompaktne=True)
+                             "volby": out, "ucast": ucast}, kompaktne=True)
     return 0
 
 
