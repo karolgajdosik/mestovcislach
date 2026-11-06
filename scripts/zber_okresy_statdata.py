@@ -25,6 +25,9 @@ from zber_obce_temy import OBCE, cislo
 OKRESY = {o["okres"] for o in OBCE}
 
 
+CASTI = {"Bratislava": 5, "Košice": 4}  # okresy mesta, ktoré sa zlučujú – rok len ak sú všetky
+
+
 def okres(n: str) -> str | None:
     n = re.sub(r"^Okres\s+", "", (n or "").strip())
     n = re.sub(r"^(Bratislava|Košice) [IV]+$", r"\1", n)
@@ -63,7 +66,7 @@ def riadky(kocka: str, vyber: dict[str, str]) -> list[dict]:
 
 
 def mzdy() -> dict:
-    pm: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(lambda: [0.0, 0.0]))  # okres -> rok -> [mzdové prostriedky tis. €, zamestnanci]
+    pm: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(lambda: [0.0, 0.0, 0]))  # okres -> rok -> [mzdové prostriedky tis. €, zamestnanci, častí]
     priamo: dict[str, dict[str, float]] = defaultdict(dict)
     rr = riadky("np3110rr", {"e_sex": "Spolu", "e_nace2": "Spolu"})
     hodn: dict[tuple, dict[str, float]] = defaultdict(dict)
@@ -82,17 +85,19 @@ def mzdy() -> dict:
             a = pm[o][rok]
             a[0] += fond
             a[1] += fond * 1000 / 12 / mz
+            a[2] += 1
         else:
             priamo[o][rok] = round(mz)
     for o, d in pm.items():
-        for rok, (fond, zam) in d.items():
-            if zam:
+        for rok, (fond, zam, n) in d.items():
+            if zam and n == CASTI.get(o, n):
                 priamo[o][rok] = round(fond * 1000 / 12 / zam)
     return {o: dict(sorted(v.items())) for o, v in sorted(priamo.items())}
 
 
 def byty() -> dict:
     out: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(lambda: [0, 0]))
+    casti: dict[tuple, set] = defaultdict(set)
     for x in riadky("st3802rr", {"e_apartments": "Spolu"}):
         v = cislo(x.get("hodnota"))
         o = okres(x.get("e_nuts14", ""))
@@ -100,6 +105,10 @@ def byty() -> dict:
             continue
         i = 1 if "rodinných domoch" in (x.get("e_indic") or "") else 0
         out[o][x["_cas"]][i] += int(v)
+        casti[(o, x["_cas"], i)].add(x["e_nuts14"].strip())
+    for (o, rok, i), c in casti.items():  # Bratislava/Košice: rok bez údajov za všetky okresy mesta vynecháme
+        if o in CASTI and len(c) < CASTI[o]:
+            out[o].pop(rok, None)
     return {o: dict(sorted(v.items())) for o, v in sorted(out.items())}
 
 

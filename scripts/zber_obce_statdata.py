@@ -382,10 +382,16 @@ def uzemie() -> None:
     rok = None
     for kod, d in t.items():
         rok = max(k[0] for k in d)
-        sp = d.get((rok, "Spolu", "Spolu"))
+        # riadok Spolu/Spolu v kocke často chýba – rozloha = poľnohospodárska + nepoľnohospodárska pôda, inak súčet druhov
+        sp = d.get((rok, "Spolu", "Spolu")) or (d.get((rok, "Spolu", "Poľnohospodárska pôda"), 0) + d.get((rok, "Spolu", "Nepoľnohospodárska pôda"), 0)) \
+            or sum(v for k, v in d.items() if k[0] == rok and k[1] in UZEMIE)
         if not sp:
             continue
-        p = {UZEMIE[k[1]]: round(100 * v / sp, 1) for k, v in d.items() if k[0] == rok and k[1] in UZEMIE and v}
+        p: dict[str, float] = defaultdict(float)
+        for k, v in d.items():
+            if k[0] == rok and k[1] in UZEMIE and v:
+                p[UZEMIE[k[1]]] += 100 * v / sp
+        p = {k: round(v, 1) for k, v in p.items()}
         obce[kod] = {"ha": round(sp / 10000), "p": p}
     okr: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
     for kod, v in obce.items():
