@@ -1,0 +1,120 @@
+"""Údaje za okresy, ktoré ŠÚ SR nezverejňuje po obciach (na stránke obce sa ukážu ako „okres X“).
+
+  mzda  – np3110rr priemerná mesačná mzda zistená pracoviskovou metódou (podľa miesta práce), všetky odvetvia
+  byty  – st3802rr dokončené byty spolu a v rodinných domoch
+
+Bratislava I–V a Košice I–IV sa zlúčia do okresov „Bratislava“ a „Košice“ (ako v zozname obcí):
+byty sa sčítajú, mzda je vážená mzdovými prostriedkami (Mzdy a náhrady mzdy / priemerná mzda = počet zamestnancov).
+
+Výstup data/obce/okresy.json: {"mzda": {okres: {rok: €}}, "byty": {okres: {rok: [spolu, v RD]}}, "sr": {...}}
+"""
+
+from __future__ import annotations
+
+import csv
+import io
+import re
+import zipfile
+from collections import defaultdict
+from datetime import datetime, timezone
+
+from spolocne import DATA, s, spusti, zapis_ak_zmena
+from statdata_obce import B, H, polozky
+from zber_obce_temy import OBCE, cislo
+
+OKRESY = {o["okres"] for o in OBCE}
+
+
+def okres(n: str) -> str | None:
+    n = re.sub(r"^Okres\s+", "", (n or "").strip())
+    n = re.sub(r"^(Bratislava|Košice) [IV]+$", r"\1", n)
+    if n == "Slovenská republika":
+        return "SR"
+    return n if n in OKRESY else None
+
+
+def riadky(kocka: str, vyber: dict[str, str]) -> list[dict]:
+    """Všetky okresy a roky; vyber = {dimenzia: názov položky} – položky sa vyberú na serveri."""
+    info = s.get(f"{B}/public/{kocka}/info", headers=H, timeout=60).json()
+    dims = info["dimensions"]
+    cas = next(d["acronym"] for d in dims if d["type"] == "TIME")
+    ost = [d for d in dims if d["acronym"] != cas]
+    spec = []
+    for d in ost:
+        sel = "all"
+        if d["acronym"] in vyber:
+            pol = {(x.get("nameSk") or "").strip(): x.get("acronym") for x in polozky(kocka, d["id"])}
+            sel = pol[vyber[d["acronym"]]]
+        spec.append((d["acronym"], sel))
+    ctx = next((a for a, sel in spec if sel != "all" and a != "e_nuts14"), None) or next(a for a, _ in spec if a == "e_unit")
+    rows = [f"{a},ASC,{sel}" for a, sel in spec if a != ctx]
+    ctx_sel = dict(spec)[ctx]
+    url = f"{B}/opendata/cube/dataset/{kocka}/rows/" + "~".join(rows) + f"/columns/{cas},ASC,all/context/{ctx},ASC,{ctx_sel}"
+    r = s.get(url, params={"type": "CSV", "lang": "SK"}, timeout=600)
+    r.raise_for_status()
+    c = r.content
+    if c[:2] == b"PK":
+        z = zipfile.ZipFile(io.BytesIO(c))
+        c = z.read(z.namelist()[0])
+    out = list(csv.DictReader(io.StringIO(c.decode("utf-8-sig", "replace"))))
+    for x in out:
+        x["_cas"] = (x.get(cas) or "").strip()
+    return out
+
+
+def mzdy() -> dict:
+    pm: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(lambda: [0.0, 0.0]))  # okres -> rok -> [mzdové prostriedky tis. €, zamestnanci]
+    priamo: dict[str, dict[str, float]] = defaultdict(dict)
+    rr = riadky("np3110rr", {"e_sex": "Spolu", "e_nace2": "Spolu"})
+    hodn: dict[tuple, dict[str, float]] = defaultdict(dict)
+    for x in rr:
+        v = cislo(x.get("hodnota"))
+        o = okres(x.get("e_nuts14", ""))
+        if v is None or not o:
+            continue
+        hodn[(x["e_nuts14"].strip(), x["_cas"])][(x.get("e_indic") or "").strip()] = v
+    for (n, rok), d in hodn.items():
+        o = okres(n)
+        mz, fond = d.get("Priemerná mesačná mzda"), d.get("Mzdy a náhrady mzdy")
+        if mz is None:
+            continue
+        if re.search(r"(Bratislava|Košice) [IV]+$", n) and fond:
+            a = pm[o][rok]
+            a[0] += fond
+            a[1] += fond * 1000 / 12 / mz
+        else:
+            priamo[o][rok] = round(mz)
+    for o, d in pm.items():
+        for rok, (fond, zam) in d.items():
+            if zam:
+                priamo[o][rok] = round(fond * 1000 / 12 / zam)
+    return {o: dict(sorted(v.items())) for o, v in sorted(priamo.items())}
+
+
+def byty() -> dict:
+    out: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(lambda: [0, 0]))
+    for x in riadky("st3802rr", {"e_apartments": "Spolu"}):
+        v = cislo(x.get("hodnota"))
+        o = okres(x.get("e_nuts14", ""))
+        if v is None or not o:
+            continue
+        i = 1 if "rodinných domoch" in (x.get("e_indic") or "") else 0
+        out[o][x["_cas"]][i] += int(v)
+    return {o: dict(sorted(v.items())) for o, v in sorted(out.items())}
+
+
+def main() -> int:
+    mz = mzdy()
+    by = byty()
+    print(f"Okresy: mzda {len(mz)} (napr. Detva {list(mz.get('Detva', {}).items())[-2:]}), byty {len(by)} (Detva {list(by.get('Detva', {}).items())[-2:]})")
+    if len(mz) < 70 or len(by) < 70:
+        raise RuntimeError(f"málo okresov: mzda {len(mz)}, byty {len(by)}")
+    zapis_ak_zmena(DATA / "obce" / "okresy.json", {
+        "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "zdroj": {"nazov": "ŠÚ SR – mzdy pracoviskovou metódou (np3110rr), dokončené byty (st3802rr)", "url": "https://statdata.statistics.sk"},
+        "mzda": mz, "byty": by}, kompaktne=True)
+    return 0
+
+
+if __name__ == "__main__":
+    spusti(main, "Okresy – mzdy a dokončené byty (ŠÚ SR)")

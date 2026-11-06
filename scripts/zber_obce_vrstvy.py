@@ -143,7 +143,8 @@ def socialne() -> None:
                        "obce": {k: {sk: v for sk, v in d.items()} for k, d in sorted(obce.items())}})
 
 
-MODULY = {"chranene": chranene, "socialne": socialne}
+# socialne: vrstva CRPSS vo WFS je zastaraná (posledný zápis 1. 1. 2022, ~30 % záznamov bez obce) – nezverejňujeme.
+MODULY = {"chranene": chranene}
 
 
 def main() -> int:
