@@ -57,13 +57,15 @@ def _cislo(t: str) -> float | None:
         return None
 
 
-def tabulka(s: requests.Session, rok: int, predmet: str, kraj: str) -> list[dict]:
+def tabulka(s: requests.Session, rok: int, predmet: str, kraj: str, typz: str = "", jazyk: str = "") -> list[dict]:
     u = ZAKLAD.format(rok=rok)
     h = s.get(u, timeout=60).text
     vs = re.search(r'name="javax.faces.ViewState"[^>]*value="([^"]+)"', h).group(1)
-    r = s.post(u, data={"j_idt10": "j_idt10", "j_idt10:predmet_input": predmet, "j_idt10:kraj_input": kraj,
-                        "j_idt10:okres_input": "", "j_idt10:typz_input": "", "j_idt10:zriadovatel_input": "",
-                        "j_idt10:language_input": "", "javax.faces.ViewState": vs},
+    tl = re.search(r'<(?:button|input)[^>]*name="(j_idt10:[^"]+)"[^>]*(?:type="submit"|Vybra)', h) or re.search(r'name="(j_idt10:j_idt\d+)"[^>]*type="submit"', h)
+    data = {"j_idt10": "j_idt10", "j_idt10:predmet_input": predmet, "j_idt10:kraj_input": kraj, "j_idt10:okres_input": "",
+            "j_idt10:typz_input": typz, "j_idt10:zriadovatel_input": "", "j_idt10:language_input": jazyk, "javax.faces.ViewState": vs}
+    data[tl.group(1) if tl else "j_idt10:j_idt29"] = "Vybrať"
+    r = s.post(u, data=data,
                headers={"Referer": u, "Origin": "https://dataportal.nucem.sk"}, timeout=120)
     r.raise_for_status()
     out = []
