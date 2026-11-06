@@ -1,26 +1,7 @@
-var ua = window.navigator.userAgent;
-if(ua.match(/MSIE\s([0-8]{1})\.0\;/)) {
-    parent.location.href='browser-not-supported.html';
-}
-
-var sankeySide = null;
-function changeSankeySide(brightSide) {
-	sankeySide = brightSide;
-}
-
-function get_eu_accept_cookies(lang) {
-	eu_accept_cookies.panel(lang);
-}
-['assets/css/bootstrap.min.css', 'assets/css/font-awesome.min.css', 'assets/css/roboto.min.css', 'assets/css/style.min.css', 'assets/img/favicon.png', 'init.js', 'common/app.js?v=2016-03-17-001', 'common/services.js?v=2016-03-17-001', 'app/rozpocet.js?v=2016-03-17-001', 'app/views-layouts.js?v=2016-03-17-001', 'app/views-parts.js?v=2016-03-17-001', 'app/filters.js?v=2016-03-17-001', 'app/services.js?v=2016-03-17-001', 'app/controllers.js?v=2016-03-17-001', 'app/directives.js?v=2016-03-17-001', 'app/app.js?v=2016-03-17-001', 'https://www.googletagmanager.com/gtag/js?id=G-GCNF6RS30G']
-== http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2025/index.xhtml 200 2286
- Výsledky | 2025 Dataportál NÚCEM Projekty ESF Výsledky 2025 Prehľad výsledkov škôl v národných testovaniach v školskom roku 2024/2025 Testovanie 9 Maturita Vyberte si testovanie, o ktorého výsledky máte záujem. NIVAM © 2025 
-   ../../css/aktivita12.css
-   ../../css/dataportal.css
-   ../../css/vysledky.css
-   /Dataportal-web/web/javax.faces.resource/theme.css?ln=primefaces-bluesky
-   dataportla.nucem.sk/Dataportal-web/web/index.xhtml
-   http://www.nucem.sk/sk/
-   http://www.nucem.sk/sk/projekt_esf/project/13
-   maturita/index.xhtml
-   testovanie/index.xhtml
+JS common/services.js 1562
+JS app/services.js 41466
+    /rest/api/
+    app/views/parts/shared/ui.grid.headerCellTemplate.tpl.html
+== http://dataportal.nucem.sk/Dataportal-web/web/vysledky/2025/testovanie/index.xhtml 200 29836
+<?xml version='1.0' encoding='UTF-8' ?> <!DOCTYPE html> <html xmlns="http://www.w3.org/1999/xhtml"><head><link type="text/css" rel="stylesheet" href="/Dataportal-web/web/javax.faces.resource/theme.css?ln=primefaces-bluesky" /><link type="text/css" rel="stylesheet" href="/Dataportal-web/web/javax.faces.resource/primefaces.css?ln=primefaces&amp;v=4.0" /> <title>Výsledky | Testovanie </title> <link rel="stylesheet" href="../../../css/dataportal.css" type="text/css" media="screen, projection" /> <link rel="stylesheet" href="../../../css/aktivita12.css" type="text/css" media="screen, projection" /> <link rel="stylesheet" href="../../../css/vysledky.css" type="text/css" media="screen, projection" /> <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" /></head><body> <div id="container"> <div id="logo"><img src="/Dataportal-web/images/NUCEM-logo.png" /> <div id="upmenu"> <a href="dataportla.nucem.sk/Dataportal-web/web/index.xhtml" class="button1">Dataportál</a> <a href="http://www.nucem.sk/sk/" class="button1">NÚCEM</a> <a href="http://www.nucem.sk/sk/projekt_esf/project/13" class="button1">Projekty ESF</a> </div> </div> <div id="header"> Výsledky 2025 </div> <div id="content"> <div style="text-align: center"> <b style="font-family:arial; color:#ef184a;font-size: 25px;"> Testovanie 9-2025 </b><br /> </div> <br /> <div class="data-filter"> <form id="j_idt10" name="j_idt10" method="post" action="/Dataportal-web/web/vysledky/2025/testovanie/index.xhtml" enctype="application/x-www-form-urlencoded"> <input type="hidden" name="j_idt10" value="j_idt10" /> <table cellpadding="5" style="margin-bottom:10px"> <tbody> <tr> <td><label id="j_idt10:j_idt12" class="ui-outputlabel ui-widget" for="j_idt10:predmet_input">Predmet:</label></td> <td><div id="j_idt10:predmet" class="ui-selectonemenu ui-widget ui-state-default ui-corner-all ui-helper-clearfix" style="width: 221px"><div class="ui-helper-hidden-accessible"><select id="j_idt10:predmet_input" name="j_idt10:predmet_input"><option value="51">Slovenský jazyk a literatúra</option><option value="53">Maďarský jazyk a literatúra</option><option value="54">Ukrajinský jazyk a literatúra</option><option value="52">Slovenský jazyk a slovenská literatúra</option><option value="55">Matematika</option></select></div><div class="ui-helper-hidden-accessible"><input id="j_idt10:predmet_focus" name="j_idt10:predmet_focus" type="text" /></div><label id="j_idt10:predmet_label" class="ui-selectonemenu-label ui-inputfield ui-corner-all">&nbsp;</label><div class="ui-selectonemenu-trigger ui-state-default ui-corner-right"><span class="ui-icon ui-icon-triangle-1-s"></span></div><div id="j_idt10:predmet_panel" class="ui-selectonemenu-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"><div class="ui-selectonemenu-items-wrapper" style="height:auto"><ul class="ui-selectonemenu-items ui-selectonemenu-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"><li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Slovenský jazyk a literatúra">Slovenský jazyk a literatúra</li><li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Maďarský jazyk a literatúra">Maďarský jazyk a literatúra</li><li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Ukrajinský jazyk a literatúra">Ukrajinský jazyk a literatúra</li><li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Slovenský jazyk a slovenská literatúra">Slovenský jazyk a slovenská literatúra</li><li class="ui-selectonemenu-item ui-selectonemenu-list-item ui-corner-all" data-label="Matematika">Matematika</li></ul></div></div></div> </td> </tr> <tr> <td><label id="j_idt10:j_idt14" class="ui-outputlabel ui-widget" for="j_idt10:kraj_input">Kraj:</label></td> <td><div id="j_idt10:kraj" class="ui-selectonemenu ui-widget ui-state-default ui-corner-all ui-helper-clearfix" style="width: 221px"><div class="ui-helper-hidden-access
 HOTOVO
