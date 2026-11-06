@@ -626,7 +626,25 @@ def kultura() -> None:
     print(f"Kultúra {rok_k}: {len(obce)} obcí; voda {rok_v}: {len(voda)} obcí")
 
 
-MODULY = {"pohyb": pohyb, "byvanie": byvanie, "firmy": firmy, "sluzby": sluzby, "turizmus": turizmus, "obyvatelia": obyvatelia, "uzemie": uzemie, "vek": vek, "mesacne": mesacne, "sodb2": sodb2, "kultura": kultura}
+def historia() -> None:
+    """Počet obyvateľov k 31. 12. od roku 1993 (om7101rr) – dlhodobý vývoj."""
+    t = tabulka("om7101rr", vyber={"e_sex": ["Spolu"], "e_indic": ["Stav trvale bývajúceho obyvateľstva na konci obdobia"]}, mc=True)
+    roky = sorted({k[0] for d in t.values() for k in d})
+    od = roky[0]
+    obce = {}
+    for kod, d in t.items():
+        h = {k[0]: int(v) for k, v in d.items()}
+        rad = [h.get(r) for r in roky]
+        if sum(1 for x in rad if x) >= 10:
+            obce[kod] = rad
+    if len(obce) < 2500:
+        raise RuntimeError(f"historia: len {len(obce)} obcí")
+    zapis("historia", {"od": od, "roky": roky, "zdroj": {"nazov": "ŠÚ SR – počet obyvateľov k 31. 12. (STATdata om7101rr)", "url": "https://statdata.statistics.sk"},
+                       "obce": dict(sorted(obce.items()))})
+    print(f"Historia {od}–{roky[-1]}: {len(obce)} obcí")
+
+
+MODULY = {"historia": historia, "pohyb": pohyb, "byvanie": byvanie, "firmy": firmy, "sluzby": sluzby, "turizmus": turizmus, "obyvatelia": obyvatelia, "uzemie": uzemie, "vek": vek, "mesacne": mesacne, "sodb2": sodb2, "kultura": kultura}
 
 
 def main() -> int:
