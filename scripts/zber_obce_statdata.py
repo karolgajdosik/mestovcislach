@@ -407,35 +407,48 @@ def uzemie() -> None:
 
 # ---------------- veková pyramída (aktuálny rok) ----------------
 
-def _vek_skupina(n: str) -> int | None:
-    """Index 5-ročnej skupiny 0–4 … 80–84, 85+ (17 = 85+); iné skupiny None."""
+def _vek_skupina(n: str) -> tuple[int, bool] | None:
+    """(index 5-ročnej skupiny 0–4 … 80–84, 85+ = 17; True ak je to otvorená skupina „N a viac“); iné skupiny None."""
     n = n.strip()
     if n == "4 roky alebo menej":
-        return 0
+        return 0, False
     m = re.fullmatch(r"Od (\d+) do (\d+) rokov", n)
     if m and int(m.group(2)) - int(m.group(1)) == 4 and int(m.group(1)) % 5 == 0:
-        return int(m.group(1)) // 5
+        return min(int(m.group(1)) // 5, 17), False
     m = re.fullmatch(r"(\d+) rokov alebo viac", n)
     if m and int(m.group(1)) == 85:
-        return 17
+        return 17, True
     return None
 
 
 def vek() -> None:
-    out: dict[str, dict[str, list]] = {}
+    surove: dict[str, dict[str, dict]] = {}  # obec -> pohlavie -> {(i, otvorena): hodnota}
     rok = None
     for x in riadky_obce("om7006rr", rokov=1, vyber={"e_sex": ["Muži", "Ženy"]}):
         if "31" not in (x.get("e_indic") or ""):  # stav k 31. 12. (nie k 30. 6.)
             continue
-        i = _vek_skupina(x.get("e_age") or "")
+        sk = _vek_skupina(x.get("e_age") or "")
         v = cislo(x.get("hodnota"))
-        kod = obec(x) if i is not None and v is not None else None
+        kod = obec(x) if sk is not None and v is not None else None
         if not kod:
             continue
         rok = x["_cas"].strip()
-        d = out.setdefault(kod, {"m": [0] * 18, "z": [0] * 18})
-        d["m" if x["e_sex"].strip() == "Muži" else "z"][i] = int(v)
-    out = {k: v for k, v in out.items() if sum(v["m"]) + sum(v["z"]) > 0}
+        p = "m" if x["e_sex"].strip() == "Muži" else "z"
+        d = surove.setdefault(kod, {"m": {}, "z": {}})[p]
+        d[sk] = d.get(sk, 0) + int(v)
+    out: dict[str, dict[str, list]] = {}
+    for kod, d in surove.items():
+        o = {}
+        for p, h in d.items():
+            a = [0] * 18
+            for (i, otv), v in h.items():
+                if i < 17:
+                    a[i] += v
+            # 85+: otvorená skupina, ak ju kocka má; inak súčet 85–89, 90–94, …
+            a[17] = h.get((17, True), h.get((17, False), 0))
+            o[p] = a
+        if sum(o["m"]) + sum(o["z"]) > 0:
+            out[kod] = o
     if len(out) < 2500:
         raise RuntimeError(f"vek: len {len(out)} obcí")
     zapis("vek", {"rok": rok, "skupiny": [f"{5 * i}–{5 * i + 4}" for i in range(17)] + ["85+"],

@@ -60,54 +60,83 @@ def wiki() -> None:
                    "obce": dict(sorted(obce.items()))})
 
 
-OSM_KAT = [  # (kľúč, filter)
-    ("potraviny", 'nwr[shop~"^(supermarket|convenience|greengrocer|butcher|bakery)$"]'),
-    ("jedlo", 'nwr[amenity~"^(restaurant|pub|cafe|fast_food|bar)$"]'),
-    ("ihriska", "nwr[leisure=playground]"),
-    ("nabijacky", "nwr[amenity=charging_station]"),
+OSM_KAT = [  # (kľúč, test na tagy)
+    ("potraviny", lambda t: t.get("shop") in ("supermarket", "convenience", "greengrocer", "butcher", "bakery")),
+    ("jedlo", lambda t: t.get("amenity") in ("restaurant", "pub", "cafe", "fast_food", "bar")),
+    ("ihriska", lambda t: t.get("leisure") == "playground"),
+    ("nabijacky", lambda t: t.get("amenity") == "charging_station"),
 ]
+SK = 'area["ISO3166-1"="SK"][admin_level=2]->.sk;'
 
 
 def _overpass(q: str) -> list[dict]:
+    chyba = None
     for pokus in range(4):
-        r = s.post("https://overpass-api.de/api/interpreter", data={"data": q}, headers=UA, timeout=1900)
-        if r.status_code in (429, 502, 503, 504):
-            time.sleep(60 * (pokus + 1))
-            continue
-        r.raise_for_status()
-        return r.json().get("elements", [])
-    raise RuntimeError("Overpass neodpovedá")
+        try:
+            r = s.post("https://overpass-api.de/api/interpreter", data={"data": q}, headers=UA, timeout=1000)
+            if r.status_code == 200:
+                return r.json().get("elements", [])
+            chyba = f"HTTP {r.status_code}"
+        except Exception as e:  # noqa: BLE001
+            chyba = str(e)
+        print(f"  Overpass: {chyba}")
+        time.sleep(60 * (pokus + 1))
+    raise RuntimeError(f"Overpass: {chyba}")
 
 
-def _pocty(oblasti: str) -> list[tuple[dict, list[int]]]:
-    """Pre každú oblasť (tags) počty OSM_KAT – výstup foreach: area tags, potom 1 count na kategóriu."""
-    telo = "".join(f"{f}(area.a);out count;" for _, f in OSM_KAT)
-    q = (f'[out:json][timeout:1800];area["ISO3166-1"="SK"][admin_level=2]->.sk;{oblasti}->.obl;'
-         f"foreach.obl->.a(.a out tags;{telo});")
-    el = _overpass(q)
-    out, akt = [], None
+def _hranice() -> dict[str, object]:
+    """kód obce -> polygón (shapely). Obce = admin_level 8 s ref; Bratislava a Košice = zjednotenie ich okresov."""
+    from shapely.geometry import LineString
+    from shapely.ops import polygonize, unary_union
+    el = _overpass(f'[out:json][timeout:900];{SK}(rel(area.sk)[boundary=administrative][admin_level=8][ref];'
+                   'rel(area.sk)[boundary=administrative][admin_level=6][name~"^[Oo]kres (Bratislava|Košice) [IV]+$"];);out geom;')
+    out: dict[str, list] = {}
     for e in el:
-        if e.get("type") == "area":
-            akt = (e.get("tags", {}), [])
-            out.append(akt)
-        elif e.get("type") == "count" and akt is not None:
-            akt[1].append(int(e.get("tags", {}).get("total", 0)))
-    return out
+        t = e.get("tags", {})
+        kod = t.get("ref") if t.get("admin_level") == "8" else None
+        if t.get("admin_level") == "6":
+            m = re.search(r"(Bratislava|Košice)", t.get("name", ""))
+            kod = MESTA.get(m.group(1)) if m else None
+        if kod not in KODY:
+            continue
+        ciary = [LineString([(p["lon"], p["lat"]) for p in m["geometry"]]) for m in e.get("members", [])
+                 if m.get("type") == "way" and m.get("geometry") and len(m["geometry"]) > 1]
+        if not ciary:
+            continue
+        g = unary_union(list(polygonize(unary_union(ciary))))
+        if not g.is_empty:
+            out.setdefault(kod, []).append(g)
+    return {k: unary_union(v) if len(v) > 1 else v[0] for k, v in out.items()}
 
 
 def osm() -> None:
-    obce: dict[str, list[int]] = {}
-    for tags, c in _pocty('area(area.sk)[boundary=administrative][admin_level=8][ref]'):
-        if tags.get("ref") in KODY and len(c) == len(OSM_KAT):
-            obce[tags["ref"]] = c
-    mesta: dict[str, list[int]] = {}
-    for tags, c in _pocty('area(area.sk)[boundary=administrative][name~"^[Oo]kres (Bratislava|Košice) [IV]+$"]'):
-        m = re.search(r"(Bratislava|Košice)", tags.get("name", ""))
-        kod = MESTA.get(m.group(1)) if m else None
-        if kod and len(c) == len(OSM_KAT):
-            mesta[kod] = [a + b for a, b in zip(mesta.get(kod, [0] * len(OSM_KAT)), c)]
-    obce.update(mesta)  # mesto = súčet jeho okresov (mestské časti majú vlastné kódy)
-    print(f"OSM: {len(obce)} obcí; spolu {dict(zip([k for k, _ in OSM_KAT], [sum(v[i] for v in obce.values()) for i in range(len(OSM_KAT))]))}")
+    from shapely import STRtree
+    from shapely.geometry import Point
+    hr = _hranice()
+    print(f"OSM: hranice {len(hr)} obcí")
+    filtre = ('nwr(area.sk)[shop~"^(supermarket|convenience|greengrocer|butcher|bakery)$"];'
+              'nwr(area.sk)[amenity~"^(restaurant|pub|cafe|fast_food|bar|charging_station)$"];'
+              'nwr(area.sk)[leisure=playground];')
+    body = _overpass(f"[out:json][timeout:900];{SK}({filtre});out tags center;")
+    kody = list(hr)
+    strom = STRtree([hr[k] for k in kody])
+    obce = {k: [0] * len(OSM_KAT) for k in kody}
+    nepr = 0
+    for e in body:
+        c = e.get("center") or ({"lat": e["lat"], "lon": e["lon"]} if "lat" in e else None)
+        if not c:
+            continue
+        bod = Point(c["lon"], c["lat"])
+        idx = [i for i in strom.query(bod) if hr[kody[i]].covers(bod)]
+        if not idx:
+            nepr += 1
+            continue
+        t = e.get("tags", {})
+        for j, (_, f) in enumerate(OSM_KAT):
+            if f(t):
+                obce[kody[idx[0]]][j] += 1
+    print(f"OSM: {len(body)} prvkov, mimo obcí {nepr}; {len(obce)} obcí; spolu "
+          f"{dict(zip([k for k, _ in OSM_KAT], [sum(v[i] for v in obce.values()) for i in range(len(OSM_KAT))]))}")
     if len(obce) < 2500:
         raise RuntimeError(f"OSM: len {len(obce)} obcí")
     zapis("osm", {"kategorie": [k for k, _ in OSM_KAT], "datum": datetime.now(timezone.utc).date().isoformat(),

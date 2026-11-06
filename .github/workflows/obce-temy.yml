@@ -65,6 +65,7 @@ jobs:
 
       - name: Wikidata a OpenStreetMap
         if: success() || failure()
+        timeout-minutes: 45
         run: python scripts/zber_obce_wiki_osm.py
 
       - name: Uložiť zmeny v dátach
