@@ -76,3 +76,5 @@ section.card { margin-bottom: 16px; }
 .ob-pyramida small { color: var(--muted, #666); font-size: .7rem; font-variant-numeric: tabular-nums; }
 .ob-starsie { margin: 1rem 0; }
 .ob-starsie summary { cursor: pointer; font-weight: 600; }
+.ob-his { gap: 2px; height: 90px; }
+.ob-his small { font-size: .65rem; white-space: nowrap; }

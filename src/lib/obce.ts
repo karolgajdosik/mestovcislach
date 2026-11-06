@@ -252,6 +252,14 @@ export type T9Skola = { nazov: string; ulica: string; mat?: [number, number]; sj
 let _t9: { rok: number; sr: Record<string, number>; obce: Record<string, T9Skola[]> } | null | undefined;
 let _pam: { obce: Record<string, { n: number; unesco?: number; top: string[] }> } | null | undefined;
 let _tra: { obce: Record<string, [number, number]> } | null | undefined;
+let _his: { od: string; roky: string[]; obce: Record<string, (number | null)[]> } | null | undefined;
+let _st22: { obce: Record<string, [string, string, number, number, number][]> } | null | undefined;
+let _kli: { obdobie: string; hotovo: boolean; sr: number[] | null; obce: Record<string, number[]> } | null | undefined;
+let _geo: { obce: Record<string, { n?: number; ha?: number; akt?: number; radon?: string }> } | null | undefined;
+export const historiaInfo = () => (_his === undefined ? (_his = citaj('data', 'obce', 'historia.json')) : _his);
+export const starosta22Info = () => (_st22 === undefined ? (_st22 = citaj('data', 'obce', 'starosta2022.json')) : _st22);
+export const klimaInfo = () => (_kli === undefined ? (_kli = citaj('data', 'obce', 'klima.json')) : _kli);
+export const geologiaInfo = () => (_geo === undefined ? (_geo = citaj('data', 'obce', 'geologia.json')) : _geo);
 export const rozpocetInfo = () => (_roz === undefined ? (_roz = citaj('data', 'obce', 'rozpocet.json')) : _roz);
 export const t9Info = () => (_t9 === undefined ? (_t9 = citaj('data', 'obce', 't9.json')) : _t9);
 export const pamiatkyInfo = () => (_pam === undefined ? (_pam = citaj('data', 'obce', 'pamiatky.json')) : _pam);

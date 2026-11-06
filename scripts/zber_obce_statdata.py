@@ -37,9 +37,22 @@ def obec(x: dict) -> str | None:
     return najdi_obec(n, okres)
 
 
-def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None, vyber: dict | None = None) -> dict[str, dict[tuple, float]]:
-    """{kód obce: {(čas, dim1, dim2 …): hodnota}} – prázdne hodnoty („.“) a duplicity z kontextu sa vynechajú."""
+MESTA_MC = {o["nazov"]: o["kod"] for o in OBCE if o["nazov"] in ("Bratislava", "Košice")}
+
+
+def mesto_mc(x: dict) -> str | None:
+    """Mestská časť Bratislavy/Košíc -> kód mesta (pre kocky, ktoré mesto ako celok neuvádzajú)."""
+    n = (x.get("e_nuts15") or "").strip()
+    o = (x.get("e_nuts14") or "").strip()
+    m = re.match(r"^(Bratislava|Košice)\s*[-–]", n) or re.match(r"^(?:Okres\s+)?(Bratislava|Košice) [IV]+$", o)
+    return MESTA_MC.get(m.group(1)) if m else None
+
+
+def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None, vyber: dict | None = None, mc: bool = False) -> dict[str, dict[tuple, float]]:
+    """{kód obce: {(čas, dim1, dim2 …): hodnota}} – prázdne hodnoty („.“) a duplicity z kontextu sa vynechajú.
+    mc=True: ak kocka nemá Bratislavu/Košice ako celok, sčítajú sa ich mestské časti (len pre sčítateľné hodnoty)."""
     out: dict[str, dict[tuple, float]] = defaultdict(dict)
+    mcs: dict[str, dict[tuple, float]] = defaultdict(lambda: defaultdict(float))
     nenajdene = set()
     for x in riadky_obce(kocka, rokov, vyber):
         if filtr and not filtr(x):
@@ -48,11 +61,19 @@ def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None, vyber:
         if v is None:
             continue
         kod = obec(x)
-        if not kod:
-            nenajdene.add(x.get("e_nuts15", "").strip())
-            continue
         k = (x["_cas"].strip(),) + tuple((x.get(d) or "").strip() for d in dims)
+        if not kod:
+            mesto = mesto_mc(x) if mc else None
+            if mesto:
+                mcs[mesto][k] += v
+            else:
+                nenajdene.add(x.get("e_nuts15", "").strip())
+            continue
         out[kod].setdefault(k, v)
+    for mesto, d in mcs.items():
+        if mesto not in out:
+            out[mesto] = dict(d)
+            print(f"  {kocka}: {mesto} = súčet mestských častí")
     print(f"  {kocka}: {len(out)} obcí, nepriradených území {len(nenajdene)}")
     if len(out) < 2000:
         raise RuntimeError(f"{kocka}: priradených len {len(out)} obcí (napr. {sorted(nenajdene)[:6]})")
@@ -191,8 +212,8 @@ def byvanie() -> None:
 # ---------------- firmy ----------------
 
 def firmy() -> None:
-    po = tabulka("og3805rr", "e_legal_forms", rokov=11)
-    fo = tabulka("og3808rr", "e_legal_forms", rokov=11)
+    po = tabulka("og3805rr", "e_legal_forms", rokov=11, mc=True)
+    fo = tabulka("og3808rr", "e_legal_forms", rokov=11, mc=True)
     roky = sorted({k[0] for v in po.values() for k in v})[-11:]
     obce = {}
     for kod in set(po) | set(fo):
@@ -377,7 +398,7 @@ UZEMIE = {"Orná pôda": "orna", "Trvalé trávne porasty": "ttp", "Lesné pozem
 
 
 def uzemie() -> None:
-    t = tabulka("pl5001rr", "e_landuse", "e_soiltype", rokov=11)
+    t = tabulka("pl5001rr", "e_landuse", "e_soiltype", rokov=11, mc=True)
     obce = {}
     rok = None
     for kod, d in t.items():
@@ -605,7 +626,25 @@ def kultura() -> None:
     print(f"Kultúra {rok_k}: {len(obce)} obcí; voda {rok_v}: {len(voda)} obcí")
 
 
-MODULY = {"pohyb": pohyb, "byvanie": byvanie, "firmy": firmy, "sluzby": sluzby, "turizmus": turizmus, "obyvatelia": obyvatelia, "uzemie": uzemie, "vek": vek, "mesacne": mesacne, "sodb2": sodb2, "kultura": kultura}
+def historia() -> None:
+    """Počet obyvateľov k 31. 12. od roku 1993 (om7101rr) – dlhodobý vývoj."""
+    t = tabulka("om7101rr", vyber={"e_sex": ["Spolu"], "e_indic": ["Stav trvale bývajúceho obyvateľstva na konci obdobia"]}, mc=True)
+    roky = sorted({k[0] for d in t.values() for k in d})
+    od = roky[0]
+    obce = {}
+    for kod, d in t.items():
+        h = {k[0]: int(v) for k, v in d.items()}
+        rad = [h.get(r) for r in roky]
+        if sum(1 for x in rad if x) >= 10:
+            obce[kod] = rad
+    if len(obce) < 2500:
+        raise RuntimeError(f"historia: len {len(obce)} obcí")
+    zapis("historia", {"od": od, "roky": roky, "zdroj": {"nazov": "ŠÚ SR – počet obyvateľov k 31. 12. (STATdata om7101rr)", "url": "https://statdata.statistics.sk"},
+                       "obce": dict(sorted(obce.items()))})
+    print(f"Historia {od}–{roky[-1]}: {len(obce)} obcí")
+
+
+MODULY = {"historia": historia, "pohyb": pohyb, "byvanie": byvanie, "firmy": firmy, "sluzby": sluzby, "turizmus": turizmus, "obyvatelia": obyvatelia, "uzemie": uzemie, "vek": vek, "mesacne": mesacne, "sodb2": sodb2, "kultura": kultura}
 
 
 def main() -> int:

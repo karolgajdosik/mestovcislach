@@ -173,7 +173,51 @@ def len_ucast(url: str) -> dict:
     raise RuntimeError(f"{url}: nenašla sa tabuľka účasti po okrskoch")
 
 
+def starosta2022() -> None:
+    """Voľby starostu/primátora 2022 – kandidáti (len meno, titul, strana) a hlasy po obciach → starosta2022.json.
+    Vek a zamestnanie kandidátov sa neukladajú."""
+    import csv
+    import io
+    z = _zip("https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip")
+    def tab(kon: str) -> list[dict]:
+        n = next(x for x in z.namelist() if x.endswith(kon))
+        return list(csv.DictReader(io.StringIO(_dekoduj(z.read(n))), delimiter="|"))
+    strany = {x["PS"].strip(): (x.get("SNPS") or x.get("NPS") or "").strip() for x in tab("_tab0c.csv")}
+    kand: dict[tuple[str, str], dict] = {}
+    for x in tab("_tab0ad.csv"):
+        ps = [c.strip() for c in (x.get("PS") or "").split(",") if c.strip()]
+        sn = [strany.get(c) for c in ps if strany.get(c)]
+        meno = " ".join(v for v in (x.get("TITUL", "").strip(), x["MENO"].strip(), x["PRIEZVISKO"].strip()) if v)
+        kand[(x["OBEC"].strip(), x["PC_HL"].strip())] = {"m": meno, "s": ", ".join(sn) if sn else "nezávislý kandidát", "h": 0, "z": 0}
+    for x in tab("_tab05f.csv"):
+        k = (x["OBEC"].strip(), x["PC_HL"].strip())
+        if k in kand:
+            kand[k]["h"] += int(x.get("P_HL") or 0)
+            if (x.get("KANDIDAT") or "").strip() == "1":
+                kand[k]["z"] = 1
+    obce: dict[str, list] = defaultdict(list)
+    kody = {o["kod"] for o in OBCE}
+    for (obec, _), v in kand.items():
+        if obec in kody:
+            obce[obec].append(v)
+    out = {}
+    for obec, zoz in obce.items():
+        spolu = sum(v["h"] for v in zoz) or 1
+        zoz.sort(key=lambda v: -v["h"])
+        out[obec] = [[v["m"], v["s"], v["h"], round(100 * v["h"] / spolu, 1), v["z"]] for v in zoz[:6]]
+    print(f"Starosta 2022: {len(out)} obcí, {len(kand)} kandidátov")
+    if len(out) < 2500:
+        raise RuntimeError(f"starosta 2022: len {len(out)} obcí")
+    zapis_ak_zmena(DATA / "obce" / "starosta2022.json", {"aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                                                       "zdroj": {"nazov": "ŠÚ SR – voľby do orgánov samosprávy obcí 2022", "url": "https://volby.statistics.sk/oso/oso2022/"},
+                                                       "polia": ["kandidát", "strana", "hlasy", "%", "zvolený"], "obce": dict(sorted(out.items()))}, kompaktne=True)
+
+
 def main() -> int:
+    try:
+        starosta2022()
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=Starosta 2022::{e}")
     stare_f = DATA / "obce" / "volby.json"
     import json
     stare = json.loads(stare_f.read_text(encoding="utf-8")).get("volby", {}) if stare_f.exists() else {}

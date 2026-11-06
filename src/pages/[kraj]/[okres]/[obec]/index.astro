@@ -6,7 +6,7 @@ import '../../../../styles/stranka.css';
 import '../../../../styles/obce.css';
 import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
 import Kalendar from '../../../../components/Kalendar.astro';
-import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, volbyInfo, pohybInfo, byvanieInfo, firmyInfo, sluzbyInfo, turizmusInfo, vlakyInfo, obyvateliaInfo, uzemieInfo, chraneneInfo, socialneInfo, okresyInfo, vekInfo, mesacneInfo, sodb2Info, kulturaInfo, wikiInfo, osmInfo, rozpocetInfo, t9Info, pamiatkyInfo, trasyInfo, type Obec } from '../../../../lib/obce';
+import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, volbyInfo, pohybInfo, byvanieInfo, firmyInfo, sluzbyInfo, turizmusInfo, vlakyInfo, obyvateliaInfo, uzemieInfo, chraneneInfo, socialneInfo, okresyInfo, vekInfo, mesacneInfo, sodb2Info, kulturaInfo, wikiInfo, osmInfo, rozpocetInfo, t9Info, pamiatkyInfo, trasyInfo, historiaInfo, starosta22Info, klimaInfo, geologiaInfo, type Obec } from '../../../../lib/obce';
 import { skrat, skratStrany } from '../../../../lib/zastupitelstvo';
 
 export function getStaticPaths() {
@@ -213,6 +213,17 @@ const skHist = skI?.historia?.[o.kod] ? Object.entries(skI.historia[o.kod]).sort
 const pam = pamiatkyInfo()?.obce?.[o.kod] ?? null;
 const tra = trasyInfo()?.obce?.[o.kod] ?? null;
 const hustota = uz && p?.[1] ? p[1] / (uz.ha / 100) : null;
+// dlhodobý vývoj, starosta 2022, klíma, geológia
+const hisI = historiaInfo();
+const his = hisI?.obce?.[o.kod] ? hisI.roky.map((r, i) => [r, hisI.obce[o.kod][i]] as const).filter(([, x]) => x != null) as [string, number][] : [];
+const hisMax = his.length ? Math.max(...his.map(([, x]) => x)) : 0;
+const hisMin = his.length ? Math.min(...his.map(([, x]) => x)) : 0;
+const st22 = starosta22Info()?.obce?.[o.kod] ?? null;
+const kliI = klimaInfo();
+const kli = kliI?.obce?.[o.kod] ?? null;
+const geo = geologiaInfo()?.obce?.[o.kod] ?? null;
+const RADON: Record<string, string> = { nizke: 'nízke', 'nízke': 'nízke', stredne: 'stredné', 'stredné': 'stredné', vysoke: 'vysoké', 'vysoké': 'vysoké' };
+const radonText = (x?: string) => { if (!x) return null; const k = x.toLowerCase(); const f = Object.keys(RADON).find((r) => k.includes(r)); return f ? RADON[f] : x; };
 const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` : ''}${z10 != null ? `, za 10 rokov ${z10 > 0 ? '+' : ''}${des(z10)} %` : ''}${st ? `. Starosta 2026: ${bezTit(st.meno)}` : ''}. Sčítanie 2021, voľby a poslanci.`;
 ---
 <Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis}
@@ -263,6 +274,14 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
   {(poh?.rad || poh?.vek != null) && (
     <section class="card" id="pohyb">
       <h2>Narodení, zomrelí, sťahovanie</h2>
+      {his.length > 10 && (
+        <>
+          <div class="ob-stlpce ob-his" role="img" aria-label={`Počet obyvateľov ${his[0][0]}–${his[his.length - 1][0]}`}>
+            {his.map(([r, x]) => <div title={`${r}: ${fmt(x)} obyvateľov`}><span style={`height:${Math.max(3, 100 * (x - hisMin * 0.9) / (hisMax - hisMin * 0.9 || 1))}%`}></span><small>{Number(r) % 5 === 0 ? `’${r.slice(2)}` : ''}</small></div>)}
+          </div>
+          <p class="pozn">Počet obyvateľov: {fmt(his[0][1])} v roku {his[0][0]} → {fmt(his[his.length - 1][1])} v roku {his[his.length - 1][0]} ({his[his.length - 1][1] >= his[0][1] ? '+' : '−'}{des(Math.abs(100 * (his[his.length - 1][1] - his[0][1]) / his[0][1]), 0)} %); najviac {fmt(hisMax)} ({his.find(([, x]) => x === hisMax)![0]}), najmenej {fmt(hisMin)} ({his.find(([, x]) => x === hisMin)![0]}).</p>
+        </>
+      )}
       <ul class="ob-cisla">
         {poh.vek != null && <li><b>{des(poh.vek)} r.</b><span>priemerný vek ({poh.vek_rok}){vekOkr != null ? `, okres ${des(vekOkr)}` : ''}{poh.vek10 != null ? `; pred 10 rokmi ${des(poh.vek10)}` : ''}</span></li>}
         {pohRad.length > 0 && <li><b>{pohSum[0] - pohSum[1] > 0 ? '+' : pohSum[0] - pohSum[1] < 0 ? '−' : ''}{fmt(Math.abs(pohSum[0] - pohSum[1]))}</b><span>prirodzený prírastok za {pohRad.length} rokov ({fmt(pohSum[0])} narodených, {fmt(pohSum[1])} zomrelých)</span></li>}
@@ -276,7 +295,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
           </table>
         </div>
       )}
-      <p class="zdroj">Zdroj: ŠÚ SR – pohyb obyvateľstva a indexy vekového zloženia (STATdata om7103rr, om7052rr).</p>
+      <p class="zdroj">Zdroj: ŠÚ SR – pohyb obyvateľstva a indexy vekového zloženia (STATdata om7103rr, om7052rr){his.length ? '; počet obyvateľov k 31. 12. (om7101rr), stĺpce začínajú od 90 % minima' : ''}.</p>
     </section>
   )}
 
@@ -363,7 +382,20 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
           {v.mandaty.length > 1 && <p class="pozn">Mandáty: {v.mandaty.map((m) => `${/^nezávisl/i.test(m.strany) ? 'nezávislí' : skrat(m.strany)} ${m.mandaty}`).join(', ')}.</p>}
         </>
       )}
-      <p class="zdroj">Zdroj: Štatistický úrad SR – výsledky komunálnych volieb 24. 10. 2026. Uvádzame len meno, stranu a hlasy.</p>
+      {st22 && (
+        <details class="ob-starsie">
+          <summary>Voľba {titulStarostu === 'Starosta' ? 'starostu' : 'primátora / starostu'} v roku 2022</summary>
+          <ul class="ob-bary">
+            {st22.map(([m, s_, h, pc, z]) => (
+              <li><span class={z ? 'zv' : ''} translate="no">{m}<small>{/^nezávisl/i.test(s_) ? 'nezávislý kandidát' : skrat(s_)}{z ? ' · zvolený(-á)' : ''}</small></span>
+                <span class="pruh" aria-hidden="true"><i style={`width:${pc}%`}></i></span>
+                <span class="num">{des(pc)} % <small>{fmt(h)} hlasov</small></span></li>
+            ))}
+          </ul>
+          {st22.length === 1 && <p class="pozn">Kandidoval jediný kandidát.</p>}
+        </details>
+      )}
+      <p class="zdroj">Zdroj: Štatistický úrad SR – výsledky komunálnych volieb 24. 10. 2026{st22 ? ' a 29. 10. 2022' : ''}. Uvádzame len meno, stranu a hlasy.</p>
     </section>
   )}
 
@@ -542,7 +574,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
     </section>
   )}
 
-  {(uz || chr || tra) && (
+  {(uz || chr || tra || geo) && (
     <section class="card" id="kataster">
       <h2>Kataster a príroda</h2>
       {uz && (
@@ -564,8 +596,14 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
           {chr.stromy && <li><b>{chr.stromy === 1 ? 'Chránený strom' : `${chr.stromy} ${chr.stromy < 5 ? 'chránené stromy' : 'chránených stromov'}`}</b>{chr.stromy >= 5 ? ' (počet jedincov podľa evidencie ŠOP)' : ''}.</li>}
         </ul>
       ) : chraneneInfo() && <p class="pozn">Obec neleží v národnom parku, chránenej krajinnej oblasti ani chránenom vtáčom území.</p>}
+      {geo && (geo.n || geo.radon) && (
+        <ul class="ob-zoznam">
+          {geo.n && <li><b>{geo.n === 1 ? 'Zosuv' : `${geo.n} ${geo.n < 5 ? 'zosuvy' : 'zosuvov'}`}</b> (svahové deformácie) na ploche {des(geo.ha!, geo.ha! < 10 ? 1 : 0)} ha{geo.akt ? `, z toho ${geo.akt} ${geo.akt === 1 ? 'aktívny' : 'aktívnych'}` : ''}.</li>}
+          {radonText(geo.radon) && <li><b>Radónové riziko</b> v strede obce: {radonText(geo.radon)}.</li>}
+        </ul>
+      )}
       {tra && (tra[0] >= 1 || tra[1] >= 1) && <p class="pozn">Územím obce vedie {[tra[1] >= 1 ? `${fmt(Math.round(tra[1]))} km značených turistických trás` : null, tra[0] >= 1 ? `${fmt(Math.round(tra[0]))} km cyklotrás` : null].filter(Boolean).join(' a ')} (podľa OpenStreetMap).</p>}
-      <p class="zdroj">Zdroj: ŠÚ SR – výmera územia a využitie pôdy podľa katastra nehnuteľností (STATdata pl5001rr); ŠOP SR – chránené územia a chránené stromy{tra ? '; © prispievatelia OpenStreetMap – trasy' : ''}. Národný park, CHKO a vtáčie územie posudzujeme podľa polohy stredu obce, územia európskeho významu a maloplošné územia podľa hraníc obce (OpenStreetMap).</p>
+      <p class="zdroj">Zdroj: ŠÚ SR – výmera územia a využitie pôdy podľa katastra nehnuteľností (STATdata pl5001rr); ŠOP SR – chránené územia a chránené stromy{geo ? '; ŠGÚDŠ – Atlas máp stability svahov 1 : 50 000 a mapa radónového rizika' : ''}{tra ? '; © prispievatelia OpenStreetMap – trasy' : ''}. Národný park, CHKO a vtáčie územie posudzujeme podľa polohy stredu obce, územia európskeho významu a maloplošné územia podľa hraníc obce (OpenStreetMap).</p>
     </section>
   )}
 
@@ -674,6 +712,20 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
   )}
 
   <Kalendar kraj={o.kraj} />
+
+  {kli && kliI && (
+    <section class="card" id="podnebie">
+      <h2>Podnebie {kliI.obdobie}</h2>
+      <ul class="ob-cisla">
+        <li><b>{des(kli[0], 1)} °C</b><span>priemerná ročná teplota{kliI.sr ? ` (medián obcí SR ${des(kliI.sr[0], 1)} °C)` : ''}</span></li>
+        <li><b>{fmt(kli[1])} mm</b><span>zrážok za rok{kliI.sr ? ` (SR ${fmt(Math.round(kliI.sr[1]))} mm)` : ''}</span></li>
+        <li><b>{fmt(kli[2])}</b><span>mrazových dní ročne (minimum pod 0 °C)</span></li>
+        <li><b>{fmt(kli[3])}</b><span>letných dní (aspoň 25 °C), z toho {des(kli[4], kli[4] < 10 ? 1 : 0)} tropických (aspoň 30 °C)</span></li>
+        <li><b>{fmt(kli[5])}</b><span>dní ročne so snežením aspoň 1 cm</span></li>
+      </ul>
+      <p class="zdroj">Zdroj: <a href="https://open-meteo.com" rel="noopener">Open-Meteo</a> – historické počasie z reanalýzy ERA5 (Copernicus/ECMWF), priemer za roky {kliI.obdobie}. Model má mriežku asi 25 × 18 km; teploty sú prepočítané na nadmorskú výšku obce, zrážky a sneženie platia pre širšie okolie. Nejde o merania meteorologickej stanice v obci.</p>
+    </section>
+  )}
 
   {o.poloha && (
     <section class="card" id="pocasie" data-poloha={JSON.stringify(o.poloha)}>

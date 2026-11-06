@@ -1,0 +1,64 @@
+name: Obce – klíma (Open-Meteo)
+
+# Open-Meteo má denný limit, preto sa klíma sťahuje po častiach každé 3 hodiny, kým nie sú hotové všetky bunky mriežky.
+# Keď je hotovo a obdobie (posledných 10 ukončených rokov) sedí, beh skončí hneď.
+on:
+  schedule:
+    - cron: "23 */3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/zber_obce_klima.py"
+      - ".github/workflows/obce-klima.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: obce-klima
+  cancel-in-progress: false
+
+jobs:
+  klima:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Treba sťahovať?
+        id: treba
+        run: |
+          OBD="$(( $(date -u +%Y) - 10 ))–$(( $(date -u +%Y) - 1 ))"
+          if [ -f data/obce/klima.json ] && [ "$(jq -r '.hotovo' data/obce/klima.json)" = "true" ] && [ "$(jq -r '.obdobie' data/obce/klima.json)" = "$OBD" ]; then
+            echo "Klíma $OBD je hotová."; echo "ano=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "ano=1" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v6
+        if: steps.treba.outputs.ano == '1'
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - if: steps.treba.outputs.ano == '1'
+        run: pip install -r scripts/requirements.txt
+
+      - name: Klíma obcí
+        if: steps.treba.outputs.ano == '1'
+        run: python scripts/zber_obce_klima.py
+
+      - name: Uložiť zmeny v dátach
+        if: steps.treba.outputs.ano == '1' && (success() || failure())
+        run: |
+          git config user.name "mestovcislach-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "Žiadne nové dáta."
+          else
+            git commit -m "Dáta: obce – klíma $(date -u +%Y-%m-%d)"
+            for i in 1 2 3 4 5; do git pull --rebase -X theirs -q && git push && break; sleep $((i * 5)); done
+          fi

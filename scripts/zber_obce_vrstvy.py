@@ -206,8 +206,77 @@ def socialne() -> None:
                        "obce": {k: {sk: v for sk, v in d.items()} for k, d in sorted(obce.items())}})
 
 
+# ---------------- geologické riziká (ŠGÚDŠ) ----------------
+
+AGS = "https://ags.geology.sk/arcgis/rest/services/"
+
+
+def ags(sluzba: str, vrstva: int, polia: str) -> list[dict]:
+    """Všetky prvky vrstvy ArcGIS MapServer ako GeoJSON v WGS84 (po 1000)."""
+    out, od = [], 0
+    while True:
+        r = s.get(f"{AGS}{sluzba}/MapServer/{vrstva}/query", headers=UA, timeout=300, params={
+            "where": "1=1", "outFields": polia, "outSR": 4326, "f": "geojson", "resultOffset": od, "resultRecordCount": 1000})
+        r.raise_for_status()
+        f = r.json().get("features", [])
+        out += f
+        if len(f) < 1000:
+            return out
+        od += 1000
+
+
+def geologia() -> None:
+    """Zosuvy (svahové deformácie, Atlas máp stability svahov 1 : 50 000) zasahujúce do obce a radónové riziko v strede obce."""
+    import shapely
+    from shapely import STRtree
+    from shapely.geometry import Point, shape
+    from zber_obce_wiki_osm import hranice
+    hr = hranice()
+    kody = list(hr)
+    strom = STRtree([hr[k] for k in kody])
+    obce: dict[str, dict] = defaultdict(dict)
+    zos = ags("wgs_atlasy/zosuvy_SR_50_wgs", 1, "stupen_akt")
+    akt = defaultdict(int)
+    for x in zos:
+        if not x.get("geometry"):
+            continue
+        g = shape(x["geometry"])
+        if not g.is_valid:
+            g = g.buffer(0)
+        stupen = str((x.get("properties") or {}).get("stupen_akt") or "").strip().lower()
+        akt[stupen] += 1
+        for i in strom.query(g):
+            cast = shapely.intersection(hr[kody[i]], g).area
+            if cast > 0.3 * g.area:  # zosuv sa priradí obci, v ktorej leží (väčšinou)
+                o = obce[kody[i]]
+                o["n"] = o.get("n", 0) + 1
+                o["ha"] = o.get("ha", 0) + cast * 8130 * 100  # °² -> ha (1 °² ≈ 8 130 km² na 48,7° s. š.)
+                if stupen.startswith("akt"):
+                    o["akt"] = o.get("akt", 0) + 1
+                break
+    for v in obce.values():
+        v["ha"] = round(v["ha"], 1)
+    print(f"Zosuvy: {len(zos)} plôch, aktivita {dict(akt)}; obcí {len(obce)}")
+    rad = ags("WebServices/RADON", 0, "layer")
+    rgeo = [(str((x.get("properties") or {}).get("layer") or "").strip(), shape(x["geometry"])) for x in rad if x.get("geometry")]
+    rstrom = STRtree([g for _, g in rgeo])
+    kat = defaultdict(int)
+    for kod, (lat, lon) in POL.items():
+        b = Point(lon, lat)
+        for i in rstrom.query(b):
+            if rgeo[i][1].covers(b):
+                obce[kod]["radon"] = rgeo[i][0]
+                kat[rgeo[i][0]] += 1
+                break
+    print(f"Radón: {len(rad)} plôch, kategórie v obciach {dict(kat)}")
+    if len(zos) < 10000 or len(kat) == 0:
+        raise RuntimeError(f"ŠGÚDŠ: podozrivo málo dát ({len(zos)} zosuvov, radón {dict(kat)})")
+    zapis("geologia", {"zdroj": {"nazov": "ŠGÚDŠ – Atlas máp stability svahov SR 1 : 50 000 (zosuvy), mapa radónového rizika", "url": "https://apl.geology.sk/mapportal/"},
+                       "obce": dict(sorted(obce.items()))})
+
+
 # socialne: vrstva CRPSS vo WFS je zastaraná (posledný zápis 1. 1. 2022, ~30 % záznamov bez obce) – nezverejňujeme.
-MODULY = {"chranene": chranene}
+MODULY = {"chranene": chranene, "geologia": geologia}
 
 
 def main() -> int:

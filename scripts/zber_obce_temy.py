@@ -120,6 +120,7 @@ def upsvr_mesiac(url: str) -> dict[str, dict]:
     wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
     ws = wb[next(n for n in wb.sheetnames if n.lower().startswith("tab01"))]
     out, okres, nenajdene = {}, None, []
+    mestske: dict[str, dict] = {}
     for row in ws.iter_rows(values_only=True):
         row = list(row)
         if len(row) < 11 or not isinstance(row[1], str):
@@ -131,11 +132,20 @@ def upsvr_mesiac(url: str) -> dict[str, dict]:
             continue
         nazov = row[1].strip()
         kod = najdi_obec(nazov, okres)
-        if not kod:
-            nenajdene.append(f"{nazov} ({okres})")
-            continue
         uoz, _zp, _ml, absol, _ned, opv, disp, pu, pdu = vals
+        if not kod:
+            m = re.match(r"^(?:Okres\s+)?(Bratislava|Košice) [IV]+$", okres or "")
+            if m:  # mestská časť – sčíta sa do mesta
+                mc = mestske.setdefault(m.group(1), {"uoz": 0, "disp": 0, "opv": 0, "abs": 0})
+                mc["uoz"] += int(uoz); mc["disp"] += int(disp or 0); mc["opv"] += int(opv or 0); mc["abs"] += int(absol or 0)  # noqa: E702
+            else:
+                nenajdene.append(f"{nazov} ({okres})")
+            continue
         out[kod] = {"uoz": int(uoz), "disp": int(disp or 0), "opv": int(opv or 0), "abs": int(absol or 0), "pdu": pdu, "pu": pu}
+    for mesto, v in mestske.items():
+        kod = next((o["kod"] for o in OBCE if o["nazov"] == mesto), None)
+        if kod and kod not in out and v["opv"]:
+            out[kod] = {**v, "pdu": round(100 * v["disp"] / v["opv"], 2), "pu": None}
     if len(out) < 2500:
         raise RuntimeError(f"ÚPSVaR: priradených len {len(out)} obcí; napr. {nenajdene[:8]}")
     if nenajdene and not getattr(upsvr_mesiac, "vypisane", False):
