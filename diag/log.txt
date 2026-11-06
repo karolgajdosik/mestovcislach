@@ -1,69 +1,29 @@
-== https://www.apa.sk/ 200 1655488
-   /projektove-podpory/metodika-ziadatel-prijimatel
-== https://www.uvo.gov.sk/ 200 86690
-   /otvorena-komunikacia
-   /otvorena-komunikacia/archiv
-   /otvorena-komunikacia/casto-kladene-otazky
-   /otvorena-komunikacia/elektronicke-podania-uvo-egovernment
-   /otvorena-komunikacia/elektronicke-podania-uvo-egovernment/elektronicke-sluzby-uradu-pre-verejne-obstaravanie
-   /otvorena-komunikacia/elektronicke-verejne-obstaravanie
-   /otvorena-komunikacia/elektronicke-verejne-obstaravanie/certifikovane-aukcne-systemy
-   /otvorena-komunikacia/elektronicke-verejne-obstaravanie/prevadzkovy-poriadok-is-uvo
-   /otvorena-komunikacia/elektronicke-verejne-obstaravanie/zoznam-elektronickych-prostriedkov
-   /otvorena-komunikacia/financie
-   /otvorena-komunikacia/financie/majetok-pohladavky
-   /otvorena-komunikacia/financie/plan-verejneho-obstaravania
-   /otvorena-komunikacia/financie/priorizovane-investicne-plany
-   /otvorena-komunikacia/financie/rozpocet-uradu-pre-verejne-obstaravanie
-   /otvorena-komunikacia/financie/zaverecny-ucet-uradu-pre-verejne-obstaravanie
-   /otvorena-komunikacia/financie/zmluvy-objednavky-faktury
-   /otvorena-komunikacia/kyberneticka-bezpecnost
-   /otvorena-komunikacia/medialne-vystupy
-   /otvorena-komunikacia/medialne-vystupy/tlacove-konferencie
-   /otvorena-komunikacia/medialne-vystupy/tlacove-spravy
-   /otvorena-komunikacia/ochrana-osobnych-udajov
-   /otvorena-komunikacia/ochrana-osobnych-udajov/informacna-povinnost
-   /otvorena-komunikacia/ochrana-utajovanych-skutocnosti
-   /otvorena-komunikacia/prehlad-rozhodnuti-sudov-sr-v-spravnom-sudnictve
-   /otvorena-komunikacia/prilezitosti-pre-hospodarske-subjekty
-   /otvorena-komunikacia/rozhodnutia-uvo
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2010
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2011
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2012
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2013
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2014
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2015
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2016
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2017
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2018
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2019
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2020
-   /otvorena-komunikacia/spravy-o-cinnosti-uradu/statistika-procesu-verejneho-obstaravania/rok-2021
-DH 404 Stránka sa nenašla
-== https://www.ssc.sk/sk/cestna-databanka/celostatne-scitanie-dopravy.ssc 200 43612
-   https://www.cdb.sk/sk/Mapa-stranky.alej
-GEO https://ags.geology.sk/arcgis/rest/services?f=json 200 {"currentVersion":10.9,"folders":["3D","Atlasy","clip","DTM","eGeoSk","Geofond","GeofyzikalneMapy","GeologickeMapy","Hosted","LC_viglas","MapovyPortal","MEZ","Monitoring","NaucnaGeologia","ONEGeology","Podklady","Projekty","StareMapy","TematickeAplikacie","Test","Utilities","WebServices","wgs_atlasy","wgs_geofond","wgs_geofyzikalneMapy","wgs_geologickeMapy","YMS","Zranitelnost"],"services":[{"name":"Map11","type":"MapServer"},{"name":"Map9a","type":"MapServer"},{"name":"nddb","type":"MapServer"}
-ERR https://apl.geology.sk/arcgis/rest/services?f=json HTTPSConnectionPool(host='apl.geology.sk', port=443): Max retries exceeded with url: /arcgis/rest/services?f=json (Caused by ConnectTimeoutError(<HTTP
-GEO https://apl.geology.sk/arcgis/rest/services?f=json None 
-GEO https://gis.geology.sk/arcgis/rest/services?f=json 404 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
-<title>404 - File or directory not found.</title>
-<style type="text/css">
-<!--
-body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, sans-serif;background:#EEEEEE;}
-fieldset{padding:0 15px 10px 15px;} 
-h1{font-size:2.4em;margin:0;color:#FFF;}
-STAT ERR om7102rr 'dimensions'
-STAT om7002rr Bilancia podľa národnosti a pohlavia - SR-oblasť-kraj-okres, m-v  [('e_sex', 'CODELIST'), ('e_nuts14', 'GEO'), ('e_indic', 'CODELIST'), ('e_unit', 'CODELIST'), ('e_national', 'CODELIST'), ('e_year', 'TIME')] None None
-STAT om7001rr Bilancia podľa krajiny narodenia a pohlavia - SR-oblasť-kraj-okres, m-v  [('e_sex', 'CODELIST'), ('e_nuts14', 'GEO'), ('e_indic', 'CODELIST'), ('e_unit', 'CODELIST'), ('e_continent', 'GEO'), ('e_country', 'GEO'), ('e_year', 'TIME')] None None
-STAT om7101rr Počet obyvateľov podľa pohlavia - SR-oblasť-kraj-okres-obec, m-v (ročne)  [('e_sex', 'CODELIST'), ('e_nuts14', 'GEO'), ('e_indic', 'CODELIST'), ('e_unit', 'CODELIST'), ('e_nuts15', 'GEO'), ('e_year', 'TIME')] None None
-STAT om7103rr Prehľad pohybu obyvateľstva - SR-oblasť-kraj-okres-obec, m-v (ročne)  [('e_nuts14', 'GEO'), ('e_indic', 'CODELIST'), ('e_unit', 'CODELIST'), ('e_nuts15', 'GEO'), ('e_year', 'TIME')] None None
-OSO ['OSO2022_SK_tab02ad.csv', 'OSO2022_SK_tab02bf.csv', 'OSO2022_SK_tab05f.csv', 'OSO2022_SK_tab08f.csv', 'OSO2022_SK_tab0ad.csv', 'OSO2022_SK_tab0bd.csv', 'OSO2022_SK_tab0c.csv', 'OSO2022_SK_tab0dd.csv', 'OSO2022_SK_tab_info.csv']
-  HEAD OSO2022_SK_tab05f.csv OBEC|VOOBEC|OKRSOK|PC_HL|P_HL|P_HL_PCT|KANDIDAT | 500011|1|1|1|4|1,11| | 500011|1|1|2|86|23,88|1 | 500011|1|1|3|110|30,55| | 500011|1|1|4|35|9,72| | 500011|1|1|5|4|1,11| | 500011|1|1|6|121|33,61| | 500011|1|2|1|11|2,94| | 500011|1|2|2|63|16,84|1 | 500011|1|2|3|82|21,92| | 500011|1|2|4|26|6,95| | 500011|1|2|5|9|2,40| | 500011|1|2|6|183|48,93| | 500011|1|3|1|0|0,00| | 500011|1|3|2|84|24,56|1 | 500011|1|3|3|86|25,14| | 500011|1|3|4
-  HEAD OSO2022_SK_tab08f.csv OBEC|VOOBEC|OKRSOK|PC_HL|P_HL|P_HL_PCT|KANDIDAT | 500011|1|1|1|73|20,50|0 | 500011|1|1|2|232|65,16|1 | 500011|1|1|3|9|2,52|0 | 500011|1|1|4|42|11,79|0 | 500011|1|2|1|81|22,37|0 | 500011|1|2|2|243|67,12|1 | 500011|1|2|3|8|2,20|0 | 500011|1|2|4|30|8,28|0 | 500011|1|3|1|86|28,66|0 | 500011|1|3|2|151|50,33|1 | 500011|1|3|3|7|2,33|0 | 500011|1|3|4|56|18,66|0 | 500011|2|4|1|68|5,51|1 | 500011|2|4|2|25|2,02|0 | 500011|2|4|3|72|5,84|1
-OM 200 {"latitude":48.5,"longitude":19.25,"generationtime_ms":28.3888578414917,"utc_offset_seconds":3600,"timezone":"Europe/Bratislava","timezone_abbreviation":"GMT+1","elevation":359.0,"daily_units":{"time":"iso8601","temperature_2m_mean":"°C","temperature_2m_max":"°C","temperature_2m_min":"°C","precipita
+EEA 200 []
+EEADIR eea_t_ied-eprtr_p_2007-2022_v11_r00 200 ['/datashare/apps/theming/favicon?v=0501da12', '/datashare/apps/theming/icon?v=0501da12', '/datashare/apps/theming/icon?v=0501da12', '/datashare/core/img/favicon-mask.svg', '/datashare/apps/theming/manifest?v=0501da12', '/datashare/core/css/server.css?v=cfcd2084-7', '/datashare/apps/files_sharing/css/publicView.css?v=7d43f212-7', '/datashare/apps/files/css/merged.css?v=ff775fdf-7', '/datashare/apps/text/css/text-viewer.css?v=76d1690a-7', '/datashare/apps/viewer/css/viewer-init.css?v=34ca1054-7', '/datashare/apps/viewer/css/viewer-main.css?v=34ca1054-7', '/datashare/apps/text/css/text-public.css?v=76d1690a-7', '/datashare/apps/theming/css/default.css?v=c6df2763-7', '/datashare/apps/theming/theme/default.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/light.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/dark.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/light-highcontrast.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/dark-highcontrast.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/light.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/dark.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/light-highcontrast.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/dark-highcontrast.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/opendyslexic.css?plain=0&amp;v=0501da12', '/datashare/apps/theming_customcss/styles?v=1785324775222', 'https://www.enable-javascript.com/', '#content', 'https://sdi.eea.europa.eu/datashare/s/sptXqwkQr5g7Bp5/download', 'https://sdi.eea.europa.eu/datashare/s/sptXqwkQr5g7Bp5/download', '#', '#']
+EEADIR eea_t_ied-eprtr_p_2007-2023_v12_r00 404 ['/datashare/apps/theming/favicon?v=0501da12', '/datashare/apps/theming/icon?v=0501da12', '/datashare/core/img/favicon-mask.svg', '/datashare/apps/theming/manifest?v=0501da12', '/datashare/core/css/server.css?v=cfcd2084-7', '/datashare/apps/theming/css/default.css?v=c6df2763-7', '/datashare/core/css/guest.css?v=cfcd2084-7', '/datashare/apps/theming/theme/default.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/light.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/dark.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/light-highcontrast.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/dark-highcontrast.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/light.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/dark.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/light-highcontrast.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/dark-highcontrast.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/opendyslexic.css?plain=0&amp;v=0501da12', '/datashare/apps/theming_customcss/styles?v=1785324775222', 'https://www.enable-javascript.com/', '/datashare/', 'https://sdi.eea.europa.eu/datashare']
+EEADIR eea_t_ied-eprtr_p_2007-2023_v13_r00 404 ['/datashare/apps/theming/favicon?v=0501da12', '/datashare/apps/theming/icon?v=0501da12', '/datashare/core/img/favicon-mask.svg', '/datashare/apps/theming/manifest?v=0501da12', '/datashare/core/css/server.css?v=cfcd2084-7', '/datashare/apps/theming/css/default.css?v=c6df2763-7', '/datashare/core/css/guest.css?v=cfcd2084-7', '/datashare/apps/theming/theme/default.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/light.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/dark.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/light-highcontrast.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/dark-highcontrast.css?plain=1&amp;v=0501da12', '/datashare/apps/theming/theme/light.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/dark.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/light-highcontrast.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/dark-highcontrast.css?plain=0&amp;v=0501da12', '/datashare/apps/theming/theme/opendyslexic.css?plain=0&amp;v=0501da12', '/datashare/apps/theming_customcss/styles?v=1785324775222', 'https://www.enable-javascript.com/', '/datashare/', 'https://sdi.eea.europa.eu/datashare']
+GEO Atlasy 12 []
+GEO GeologickeMapy 15 []
+GEO MapovyPortal 36 ['MapovyPortal/svahoveDeformacieSR_sjtsk']
+GEO TematickeAplikacie 3 ['TematickeAplikacie/MonitoringRadonu']
+GEO WebServices 46 ['WebServices/RADON']
+GEO wgs_atlasy 10 ['wgs_atlasy/nachylnostUzemiaNaSvahovePohyby_SR_50_wgs', 'wgs_atlasy/zosuvy_SR_50_wgs']
+GEO wgs_geologickeMapy 24 []
+GEO Geofond 21 ['Geofond/zosuvy_vect']
+GEO wgs_geofond 0 []
+GEO Zranitelnost 3 ['Zranitelnost/riziko']
+GEO Monitoring 2 []
+CDB https://www.cdb.sk/sk/statisticke-udaje/Celostatne-scitanie-dopravy.alej 404 []
+CDB https://www.cdb.sk/sk/Celostatne-scitanie-dopravy.alej 404 []
+CDB https://www.cdb.sk/sk/Mapa-stranky.alej 200 []
+RPO 200 {"results":[{"id":563808,"dbModificationDate":"2025-07-07","identifiers":[{"value":"36057029","validFrom":"2002-11-14"}],"fullNames":[{"value":"Technické služby Detva s.r.o.","validFrom":"2002-11-14"}],"addresses":[{"validFrom":"2013-10-03","street":"Bottova","regNumber":0,"buildingNumber":"1272","postalCodes":["96212"],"municipality":{"value":"Detva","code":"SK0324518263","codelistCode":"CL000025"},"country":{"value":"Slovenská republika","code":"703","codelistCode":"CL000086"}},{"validFrom":"2002-11-14","validTo":"2013-10-02","street":"Bottova","regNumber":0,"buildingNumber":"1272","postalCodes":["96211"],"municipality":{"value":"Detva","code":"SK0324518263","codelistCode":"CL000025"},"country":{"value":"Slovenská republika","code":"703","codelistCode":"CL000086"}}],"establishment":"2002-11-14","sourceRegister":{"value":{"value":"Obchodný register","code":"1","codelistCode":"CL010112"},"registrationOffices":[{"value":"Okresný súd Banská Bystrica","validFrom":"2002-11-14"}],"registrationNumbers":[{"value":"Sro/8015/S","validFrom":"2002-11-14"}]}}],"license":"1. ŠÚ SR ako správca informačného systému RPO uplatňuje na použitie sprístupnených údajov z RPO uvedených v § 7 ods. 2 a § 7a ods. 4 zákona č. 272/2015 Z. z. o registri právnických osôb, podnikateľov a orgánov verejnej moci a o zmene a doplnení niektorých zákonov (ďalej len „zákon o registri právnických osôb“) medzinárodnú verejnú licenciu Creative Commons Attribution License (cc-by) 4.0 (ďalej len „verejná licencia“).\n
+OM7101 e_indic 3 ['Stav trvale bývajúceho obyvateľstva na začiatku obdobia', 'Stredný (priemerný) stav trvale bývajúceho obyvateľstva', 'Stav trvale bývajúceho obyvateľstva na konci obdobia'] ['Stav trvale bývajúceho obyvateľstva na začiatku obdobia', 'Stredný (priemerný) stav trvale bývajúceho obyvateľstva', 'Stav trvale bývajúceho obyvateľstva na konci obdobia']
+OM7101 e_unit 1 ['Osoby'] ['Osoby']
+OM7101 e_year 33 ['1993', '1994', '1995', '1996', '1997', '1998'] ['2023', '2024', '2025']
+  HEAD OSO2022_SK_tab0ad.csv OBEC|PC_HL|MENO|PRIEZVISKO|TITUL|VEK|ZAMESTNANIE|PS|POZNAMKA | 500011|1|Erik|Blaško||49|šofér|116| | 500011|2|Marek|Hattas||35|primátor|148| | 500011|3|Igor|Kršiak|JUDr.|46|právnik|106,135,104,102| | 500011|4|Pavol|Obertáš||47|správca budov|001| | 500011|5|Dalimír|Solčanský|JUDr., PhD.|54|advokát|125| | 500011|6|Štefan|Štefek|Ing.|55|investičn�
+  HEAD OSO2022_SK_tab0bd.csv OBEC|VOOBEC|PC_HL|MENO|PRIEZVISKO|TITUL|VEK|ZAMESTNANIE|PS|POZNAMKA | 500011|1|1|Juraj|Dunčič||30|podnikateľ|106,135,104,102| | 500011|1|2|Miroslav|Gut|Ing.|55|technik|001| | 500011|1|3|Oľga|Paučová|Ing.|66|dôchodkyňa|116| | 500011|1|4|Matúš|Starovič|Ing.|34|strojný inžinier|148| | 500011|2|1|Roman|Ágh|Ing., MBA|37|obchodný manažér|148| | 5000
+  HEAD OSO2022_SK_tab0c.csv PS|NPS|SNPS | 100|7 STATOČNÝCH je CESTA|7 STATOČNÝCH je CESTA | 101|99 % - občiansky hlas|99 % - občiansky hlas | 102|Demokrati Slovenska|Demokrati Slovenska | 103|Demokratická strana|DS | 104|DOBRÁ VOĽBA a Umiernení|DOBRÁ VOĽBA a Umiernení | 105|DOMOV národná strana|DOMOV-NS | 106|HLAS - sociálna demokracia|Hlas - sociálna demokracia | 107|Hnutie
+  HEAD OSO2022_SK_tab0dd.csv KRAJ|NKRAJ|OBVOD|NOBVOD|OKRES|NOKRES|OBEC|NOBEC|P_ALL_VOOBEC|P_ALL_OKRSOK|P_POS_VOL|VOLBY_TYP | 1|Bratislavský kraj|100|Bratislava mesto|100|Bratislava|582000|Bratislava|17|394|45|1 | 1|Bratislavský kraj|101|Bratislava|101|Bratislava I|528595|Bratislava - Staré Mesto|8|34|25|1 | 1|Bratislavský kraj|101|Bratislava|102|Bratislava II|529311|Bratislava -
+  HEAD OSO2022_SK_tab02ad.csv OBEC|VOOBEC|P_POS_VOL|P_POS_ZVOL | 500011|1|1|1 | 500011|2|6|6 | 500011|3|2|2 | 500011|4|7|7 | 500011|5|4|4 | 500011|6|4|4 | 500011|7|7|7 | 500020|1|7|7 | 500046|1|7|7 | 500062|1|9|9 | 500071|1|9|9 | 500101|1|9|9 | 500127|1|7|7 | 500135|1|7|7 | 500151|1|9|9 | 500160|1|5|5 | 500194|1|7|7 | 500232|1|9|9 | 500241|1|9|9 | 500283|1|9|9 | 500305|1|5|5 | 500313|1|5|5 | 500321|1|5|5 | 500348|1|7|7 | 50035
+  HEAD OSO2022_SK_tab_info.csv Popis csv súborov obsahujúcich definitívne výsledky volieb do OSO 2022 | ---------------- | Metaúdaj;Hodnota | Typ súboru;csv | Kódovanie;UTF-8 | Hlavička;áno | Oddeľovač;| | Oddeľovač desatín;, | Oddeľovač tisícov;žiadny | ---------------- | Id tabuľky;Názov tabuľky;Názov súboru | 1;Zoznam kandidátov na starostu obce;OSO2022_SK_tab0ad
 HOTOVO
