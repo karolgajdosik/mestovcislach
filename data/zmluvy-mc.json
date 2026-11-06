@@ -5,11 +5,11 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-11-04",
+ "do": "2026-11-05",
  "mestske_casti": {
   "Devín": {
-   "zmluv": 554,
-   "suma": 1750373,
+   "zmluv": 555,
+   "suma": 1750433,
    "roky": {
     "2022": [
      63,
@@ -28,13 +28,13 @@
      598785
     ],
     "2026": [
-     88,
-     129127
+     89,
+     129187
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 355,
-    "suma": 138875
+    "zmluv": 356,
+    "suma": 138935
    },
    "najvacsi_partneri": [
     {
@@ -212,8 +212,8 @@
    ]
   },
   "Devínska Nová Ves": {
-   "zmluv": 1407,
-   "suma": 64631674,
+   "zmluv": 1409,
+   "suma": 64648507,
    "roky": {
     "2022": [
      250,
@@ -232,13 +232,13 @@
      19516095
     ],
     "2026": [
-     211,
-     6530887
+     213,
+     6547720
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 501,
-    "suma": 979530
+    "zmluv": 502,
+    "suma": 996363
    },
    "najvacsi_partneri": [
     {
@@ -620,8 +620,8 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14773,
-   "suma": 2697747196,
+   "zmluv": 14782,
+   "suma": 2697760372,
    "roky": {
     "2022": [
      2618,
@@ -640,13 +640,13 @@
      334776233
     ],
     "2026": [
-     2615,
-     608451880
+     2624,
+     608465057
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 6460,
-    "suma": 76621879
+    "zmluv": 6463,
+    "suma": 76622130
    },
    "najvacsi_partneri": [
     {
@@ -1028,8 +1028,8 @@
    ]
   },
   "Karlova Ves": {
-   "zmluv": 2480,
-   "suma": 72540069,
+   "zmluv": 2486,
+   "suma": 72541754,
    "roky": {
     "2022": [
      564,
@@ -1048,13 +1048,13 @@
      8212235
     ],
     "2026": [
-     369,
-     22592080
+     375,
+     22593765
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1015,
-    "suma": 3921928
+    "zmluv": 1017,
+    "suma": 3922708
    },
    "najvacsi_partneri": [
     {
@@ -1232,8 +1232,8 @@
    ]
   },
   "Lamač": {
-   "zmluv": 1343,
-   "suma": 35107390,
+   "zmluv": 1347,
+   "suma": 35114383,
    "roky": {
     "2022": [
      493,
@@ -1252,13 +1252,13 @@
      4758500
     ],
     "2026": [
-     169,
-     6559265
+     173,
+     6566257
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 684,
-    "suma": 373250
+    "zmluv": 687,
+    "suma": 380242
    },
    "najvacsi_partneri": [
     {
@@ -1286,9 +1286,9 @@
      "suma": 2329362
     },
     {
-     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+     "nazov": "Hl.mesto SR Bratislava, Primaciálne nám.č.1, Bratislava",
      "ico": "00603481",
-     "zmluv": 19,
+     "zmluv": 20,
      "suma": 584306
     },
     {
@@ -1640,7 +1640,7 @@
    ]
   },
   "Petržalka": {
-   "zmluv": 5108,
+   "zmluv": 5109,
    "suma": 210712762,
    "roky": {
     "2022": [
@@ -1660,7 +1660,7 @@
      66104103
     ],
     "2026": [
-     897,
+     898,
      54869840
     ]
    },
@@ -1844,8 +1844,8 @@
    ]
   },
   "Podunajské Biskupice": {
-   "zmluv": 1830,
-   "suma": 48632954,
+   "zmluv": 1833,
+   "suma": 49502209,
    "roky": {
     "2022": [
      234,
@@ -1864,20 +1864,20 @@
      11397075
     ],
     "2026": [
-     305,
-     15554951
+     308,
+     16424206
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 978,
-    "suma": 1320750
+    "zmluv": 980,
+    "suma": 1320915
    },
    "najvacsi_partneri": [
     {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie",
      "ico": "50349287",
-     "zmluv": 23,
-     "suma": 15257230
+     "zmluv": 24,
+     "suma": 16126321
     },
     {
      "nazov": "Pittel + Brausewetter s.r.o.",
@@ -2456,8 +2456,8 @@
    ]
   },
   "Ružinov": {
-   "zmluv": 2681,
-   "suma": 173458621,
+   "zmluv": 2686,
+   "suma": 173493820,
    "roky": {
     "2022": [
      334,
@@ -2476,13 +2476,13 @@
      27813497
     ],
     "2026": [
-     475,
-     66927084
+     480,
+     66962283
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1497,
-    "suma": 2902690
+    "zmluv": 1499,
+    "suma": 2903539
    },
    "najvacsi_partneri": [
     {
@@ -2660,8 +2660,8 @@
    ]
   },
   "Staré Mesto": {
-   "zmluv": 2500,
-   "suma": 115731511,
+   "zmluv": 2502,
+   "suma": 115731771,
    "roky": {
     "2022": [
      459,
@@ -2680,8 +2680,8 @@
      20943521
     ],
     "2026": [
-     518,
-     35600528
+     520,
+     35600788
     ]
    },
    "fyzicke_osoby": {
@@ -3068,8 +3068,8 @@
    ]
   },
   "Vrakuňa": {
-   "zmluv": 1122,
-   "suma": 26942110,
+   "zmluv": 1123,
+   "suma": 26976936,
    "roky": {
     "2022": [
      153,
@@ -3088,8 +3088,8 @@
      6223199
     ],
     "2026": [
-     165,
-     5555171
+     166,
+     5589997
     ]
    },
    "fyzicke_osoby": {
@@ -3146,16 +3146,16 @@
      "suma": 943973
     },
     {
+     "nazov": "Environmentálny fond",
+     "ico": "30796491",
+     "zmluv": 10,
+     "suma": 842748
+    },
+    {
      "nazov": "TESAR - DACH s.r.o.",
      "ico": "45595151",
      "zmluv": 3,
      "suma": 837097
-    },
-    {
-     "nazov": "Environmentálny fond",
-     "ico": "30796491",
-     "zmluv": 9,
-     "suma": 807922
     },
     {
      "nazov": "Hlavné mesto SR Bratislava",
@@ -4598,8 +4598,8 @@
   },
   "Ružinov": {
    "poskytnute": {
-    "zmluv": 135,
-    "suma": 2630890,
+    "zmluv": 136,
+    "suma": 2635890,
     "prijimatelia": [
      {
       "nazov": "TVR a RE, s.r.o.",
@@ -4996,5 +4996,5 @@
    }
   }
  },
- "aktualizovane": "2026-11-05T06:20:04+00:00"
+ "aktualizovane": "2026-11-06T06:19:28+00:00"
 }

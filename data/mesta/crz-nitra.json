@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-11-04",
+ "do": "2026-11-05",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 15081,
-  "skryte_fyzicke_osoby": 9812,
+  "zaznamov": 15105,
+  "skryte_fyzicke_osoby": 9831,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,10 +37,10 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3353,
-    "suma": 52627109,
-    "fo_pocet": 2405,
-    "fo_suma": 3432716
+    "pocet": 3377,
+    "suma": 52641914,
+    "fo_pocet": 2424,
+    "fo_suma": 3432891
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -143,7 +143,7 @@
    {
     "ico": "57012610",
     "nazov": "Spojená materská škola, Piaristická 12, Nitra",
-    "pocet": 11,
+    "pocet": 13,
     "suma": 1361900
    },
    {
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-05T06:20:06+00:00"
+ "aktualizovane": "2026-11-06T06:19:30+00:00"
 }

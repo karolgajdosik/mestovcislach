@@ -2,15 +2,15 @@
  "mesto": "banska-bystrica",
  "ico": "00313271",
  "od": "2022-01-01",
- "do": "2026-11-04",
+ "do": "2026-11-05",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8122,
-  "skryte_fyzicke_osoby": 4092,
+  "zaznamov": 8132,
+  "skryte_fyzicke_osoby": 4094,
   "roky": {
    "2022": {
     "pocet": 1257,
@@ -37,10 +37,10 @@
     "fo_suma": 4197336
    },
    "2026": {
-    "pocet": 1812,
-    "suma": 89363209,
-    "fo_pocet": 1017,
-    "fo_suma": 4396584
+    "pocet": 1822,
+    "suma": 89676320,
+    "fo_pocet": 1019,
+    "fo_suma": 4400733
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -329,12 +329,12 @@
     "suma": 29410
    },
    {
-    "nazov": "Centrum dobrovoľníctva, n.o.",
-    "suma": 16500
+    "nazov": "Športový klub RAJA",
+    "suma": 20680
    },
    {
-    "nazov": "Športový klub RAJA",
-    "suma": 16090
+    "nazov": "Centrum dobrovoľníctva, n.o.",
+    "suma": 16500
    },
    {
     "nazov": "Školský volejbalový klub TATRAN Banská Bystrica, o. z.",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-05T06:20:06+00:00"
+ "aktualizovane": "2026-11-06T06:19:30+00:00"
 }
