@@ -1,24 +1,19 @@
-import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
-import re
+import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt", "xlrd"])
+import re, io
 sys.path.insert(0, "scripts")
 import zber_obce_t9 as t9
 u = t9.ZAKLAD.format(rok=2025)
-F = {"j_idt10": "j_idt10", "j_idt10:predmet_input": "55", "j_idt10:kraj_input": "6", "j_idt10:okres_input": "", "j_idt10:typz_input": "",
-     "j_idt10:zriadovatel_input": "", "j_idt10:language_input": ""}
-tid = "skolat9-table-form:j_idt32"; form = "skolat9-table-form"
-def start():
-    s = t9.relacia()
-    h = s.get(u, timeout=60).text
-    vs = re.search(r'name="javax.faces.ViewState"[^>]*value="([^"]+)"', h).group(1)
-    r = s.post(u, data={**F, "j_idt10:j_idt29": "Vybrať", "javax.faces.ViewState": vs}, timeout=120)
-    return s, re.search(r'name="javax.faces.ViewState"[^>]*value="([^"]+)"', r.text).group(1), r.text
-H = {"Faces-Request": "partial/ajax", "X-Requested-With": "XMLHttpRequest", "Referer": u}
-for name, extra, execu in [("withform", F, tid), ("execall", F, "@all"), ("formonly", {}, f"{tid} j_idt10"), ("selection", {tid + "_selection": "null"}, tid)]:
-    s, vs, x = start()
-    d = {"javax.faces.partial.ajax": "true", "javax.faces.source": tid, "javax.faces.partial.execute": execu, "javax.faces.partial.render": tid,
-         tid + "_pagination": "true", tid + "_first": "20", tid + "_rows": "1000", tid + "_encodeFeature": "true", form: form, "javax.faces.ViewState": vs, **extra}
-    r2 = s.post(u, data=d, headers=H, timeout=120)
-    print(name, r2.status_code, len(r2.text), r2.text[:300].replace("\n", " "), "TR", len(re.findall("<tr", r2.text)))
-# script config of datatable
-print(re.findall(r"PrimeFaces.cw\('DataTable','widget_skolat9[^;]*", x)[:1])
+s = t9.relacia()
+h = s.get(u, timeout=60).text
+vs = re.search(r'name="javax.faces.ViewState"[^>]*value="([^"]+)"', h).group(1)
+links = re.findall(r"'j_idt35:(j_idt\d+)':'j_idt35:j_idt\d+'\},''\);return false\">([^<]*)<", h)
+print("LINKS", links)
+for lid, nazov in links[:5]:
+    r = s.post(u, data={"j_idt35": "j_idt35", f"j_idt35:{lid}": f"j_idt35:{lid}", "javax.faces.ViewState": vs}, headers={"Referer": u}, timeout=180)
+    print(nazov, r.status_code, r.headers.get("content-type"), r.headers.get("content-disposition"), len(r.content), r.content[:8])
+    if r.content[:4] in (b"\xd0\xcf\x11\xe0", b"PK\x03\x04"):
+        import pandas as pd
+        x = pd.read_excel(io.BytesIO(r.content), header=None)
+        print(x.shape); print(x.head(6).to_string()[:2500])
+        break
 print("HOTOVO")
