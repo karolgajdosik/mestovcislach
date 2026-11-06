@@ -218,7 +218,7 @@ export const skolyInfo = () => (_sk === undefined ? (_sk = citaj('data', 'obce',
 
 // Voľby, pohyb obyvateľstva, bývanie, firmy, služby, turizmus, vlaky (zber_obce_volby.py, zber_obce_statdata.py, zber_obce_vlaky.py).
 type Volba = { nazov: string; strany: string[]; sr: { ucast: number; s: [number, number][] }; okresy: Record<string, number>; obce: Record<string, [number, [number, number][]]> };
-let _vol: { volby: Record<string, Volba> } | null | undefined;
+let _vol: { volby: Record<string, Volba>; ucast?: Record<string, { nazov: string; sr: number; okresy: Record<string, number>; obce: Record<string, number> }> } | null | undefined;
 let _poh: { roky: string[]; okresy: Record<string, { vek?: number }>; obce: Record<string, { rad?: Record<string, [number, number, number, number]>; vek?: number; vek_rok?: string; vek10?: number; starnutie?: number }> } | null | undefined;
 let _byv: { okresy: Record<string, Record<string, number | null>>; obce: Record<string, Record<string, any>> } | null | undefined;
 let _fir: { roky: string[]; obce: Record<string, Record<string, [number, number, number, number]>> } | null | undefined;
@@ -235,6 +235,18 @@ export const uzemieInfo = () => (_uze === undefined ? (_uze = citaj('data', 'obc
 export const chraneneInfo = () => (_chr === undefined ? (_chr = citaj('data', 'obce', 'chranene.json')) : _chr);
 export const socialneInfo = () => (_soc === undefined ? (_soc = citaj('data', 'obce', 'socialne.json')) : _soc);
 export const okresyInfo = () => (_okr === undefined ? (_okr = citaj('data', 'obce', 'okresy.json')) : _okr);
+let _vek: { rok: string; skupiny: string[]; obce: Record<string, { m: number[]; z: number[] }> } | null | undefined;
+let _mes: { mesiac: string; obce: Record<string, number> } | null | undefined;
+let _so2: { obce: Record<string, { dom?: { n: number; jedn: number; velke: number; priem: number; deti?: number }; byty?: { izby?: number; m2?: number; vlastne?: number; najom?: number; druzstvo?: number; energia?: Record<string, number | null> }; ekon?: Record<string, number>; cudzinci?: [number, number, number] }> } | null | undefined;
+let _kul: { rok: string; rok_voda: string; obce: Record<string, Record<string, number>>; voda: Record<string, number> } | null | undefined;
+let _wik: { obce: Record<string, [number | null, number | null]> } | null | undefined;
+let _osm: { kategorie: string[]; datum: string; obce: Record<string, number[]> } | null | undefined;
+export const vekInfo = () => (_vek === undefined ? (_vek = citaj('data', 'obce', 'vek.json')) : _vek);
+export const mesacneInfo = () => (_mes === undefined ? (_mes = citaj('data', 'obce', 'mesacne.json')) : _mes);
+export const sodb2Info = () => (_so2 === undefined ? (_so2 = citaj('data', 'obce', 'sodb2.json')) : _so2);
+export const kulturaInfo = () => (_kul === undefined ? (_kul = citaj('data', 'obce', 'kultura.json')) : _kul);
+export const wikiInfo = () => (_wik === undefined ? (_wik = citaj('data', 'obce', 'wiki.json')) : _wik);
+export const osmInfo = () => (_osm === undefined ? (_osm = citaj('data', 'obce', 'osm.json')) : _osm);
 export const volbyInfo = () => (_vol === undefined ? (_vol = citaj('data', 'obce', 'volby.json')) : _vol);
 export const pohybInfo = () => (_poh === undefined ? (_poh = citaj('data', 'obce', 'pohyb.json')) : _poh);
 export const byvanieInfo = () => (_byv === undefined ? (_byv = citaj('data', 'obce', 'byvanie.json')) : _byv);

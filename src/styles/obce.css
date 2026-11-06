@@ -63,3 +63,16 @@ section.card { margin-bottom: 16px; }
 .ob-zoznam li::before { content: '•'; position: absolute; left: .2rem; color: var(--accent); }
 .ob-pohyb td.zaporne { color: var(--danger, #b42318); }
 @media (max-width: 480px) { .ob-pohyb th, .ob-pohyb td { padding-left: .3rem; padding-right: .3rem; font-size: .88rem; } }
+/* veková pyramída */
+.ob-pyramida { display: grid; gap: 2px; font-size: .78rem; max-width: 640px; margin: .5rem auto; }
+.ob-pyramida > div { display: grid; grid-template-columns: 1fr 3.4rem 1fr; align-items: center; gap: .4rem; }
+.ob-pyramida .hl { font-weight: 600; color: var(--muted, #666); margin-bottom: .2rem; }
+.ob-pyramida .hl span:first-child { text-align: right; }
+.ob-pyramida .v { text-align: center; color: var(--muted, #666); font-variant-numeric: tabular-nums; }
+.ob-pyramida .m, .ob-pyramida .z { display: flex; align-items: center; gap: .3rem; height: 14px; }
+.ob-pyramida .m { flex-direction: row-reverse; }
+.ob-pyramida i { display: block; height: 100%; border-radius: 2px; background: var(--accent, #c8102e); min-width: 1px; }
+.ob-pyramida .z i { background: color-mix(in srgb, var(--accent, #c8102e) 55%, #fff); }
+.ob-pyramida small { color: var(--muted, #666); font-size: .7rem; font-variant-numeric: tabular-nums; }
+.ob-starsie { margin: 1rem 0; }
+.ob-starsie summary { cursor: pointer; font-weight: 600; }

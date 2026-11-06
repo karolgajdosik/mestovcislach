@@ -15,6 +15,7 @@ on:
       - "scripts/zber_obce_vlaky.py"
       - "scripts/zber_obce_vrstvy.py"
       - "scripts/zber_okresy_statdata.py"
+      - "scripts/zber_obce_wiki_osm.py"
       - ".github/workflows/obce-temy.yml"
 
 permissions:
@@ -61,6 +62,10 @@ jobs:
       - name: Okresy – mzdy a dokončené byty (ŠÚ SR)
         if: success() || failure()
         run: python scripts/zber_okresy_statdata.py
+
+      - name: Wikidata a OpenStreetMap
+        if: success() || failure()
+        run: python scripts/zber_obce_wiki_osm.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()

@@ -143,6 +143,35 @@ def jedny(vid: str, nazov: str, cesta: str) -> dict:
             "obce": dict(sorted(obce.items()))}
 
 
+UCAST = [("oso2022", "Komunálne voľby 2022", "https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip"),
+         ("osk2022", "Krajské voľby 2022", "https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip"),
+         ("ref2023", "Referendum 2023", "https://volby.statistics.sk/ref/ref2023/files/REF2023_SK_csv.zip")]
+
+
+def len_ucast(url: str) -> dict:
+    """Účasť po obciach zo súboru po okrskoch (OBEC|…|P_ZAP|P_ZUC) – voľby, kde ukazujeme len účasť."""
+    z = _zip(url)
+    for n in z.namelist():
+        if not n.endswith(".csv"):
+            continue
+        txt = _dekoduj(z.read(n))
+        hl = txt.split("\n", 1)[0].strip().split("|")
+        if hl[:1] == ["OBEC"] and "P_ZAP" in hl and "P_ZUC" in hl:
+            zap: dict[str, float] = defaultdict(float)
+            zuc: dict[str, float] = defaultdict(float)
+            for r in csv.DictReader(io.StringIO(txt), delimiter="|"):
+                zap[r["OBEC"].strip()] += cislo(r["P_ZAP"]) or 0
+                zuc[r["OBEC"].strip()] += cislo(r["P_ZUC"]) or 0
+            obce = {k: round(100 * zuc[k] / v, 1) for k, v in zap.items() if v and k in KODY}
+            okr: dict[str, list] = defaultdict(lambda: [0.0, 0.0])
+            for k in obce:
+                okr[OKRES[k]][0] += zuc[k]
+                okr[OKRES[k]][1] += zap[k]
+            return {"sr": round(100 * sum(zuc.values()) / sum(zap.values()), 1), "okresy": {o: round(100 * a / b, 1) for o, (a, b) in sorted(okr.items()) if b},
+                    "obce": dict(sorted(obce.items()))}
+    raise RuntimeError(f"{url}: nenašla sa tabuľka účasti po okrskoch")
+
+
 def main() -> int:
     stare_f = DATA / "obce" / "volby.json"
     import json
@@ -157,9 +186,19 @@ def main() -> int:
                 out[vid] = stare[vid]
     if not out:
         raise RuntimeError("žiadne voľby")
+    stare_u = json.loads(stare_f.read_text(encoding="utf-8")).get("ucast", {}) if stare_f.exists() else {}
+    ucast = {}
+    for vid, nazov, url in UCAST:
+        try:
+            ucast[vid] = {"nazov": nazov, **len_ucast(url)}
+            print(f"{nazov}: účasť SR {ucast[vid]['sr']} %, {len(ucast[vid]['obce'])} obcí")
+        except Exception as e:  # noqa: BLE001
+            print(f"::warning title=Účasť {vid}::{e}")
+            if vid in stare_u:
+                ucast[vid] = stare_u[vid]
     zapis_ak_zmena(stare_f, {"aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                              "zdroj": {"nazov": "ŠÚ SR – výsledky volieb, otvorené dáta", "url": "https://volby.statistics.sk"},
-                             "volby": out}, kompaktne=True)
+                             "volby": out, "ucast": ucast}, kompaktne=True)
     return 0
 
 
