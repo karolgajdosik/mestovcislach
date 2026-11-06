@@ -187,7 +187,11 @@ def starosta2022() -> None:
     for x in tab("_tab0ad.csv"):
         ps = [c.strip() for c in (x.get("PS") or "").split(",") if c.strip()]
         sn = [strany.get(c) for c in ps if strany.get(c)]
-        meno = " ".join(v for v in (x.get("TITUL", "").strip(), x["MENO"].strip(), x["PRIEZVISKO"].strip()) if v)
+        tituly = [c.strip() for c in (x.get("TITUL") or "").split(",") if c.strip()]
+        za = [c for c in tituly if re.match(r"^(PhD|CSc|DrSc|ArtD|MBA|MPH|LL\.?M|MSc|MA|BSBA|DBA|MPA)\.?$", c)]
+        pred = [c for c in tituly if c not in za]
+        meno = " ".join(v for v in (" ".join(pred), x["MENO"].strip(), x["PRIEZVISKO"].strip()) if v) + (", " + ", ".join(za) if za else "")
+        sn = [n for n in sn if not re.search(r"NEKA|^NK\b", n)]
         kand[(x["OBEC"].strip(), x["PC_HL"].strip())] = {"m": meno, "s": ", ".join(sn) if sn else "nezávislý kandidát", "h": 0, "z": 0}
     for x in tab("_tab05f.csv"):
         k = (x["OBEC"].strip(), x["PC_HL"].strip())
