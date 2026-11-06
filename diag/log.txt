@@ -1,17 +1,75 @@
-TOK ['sptXqwkQr5g7Bp5', 'sptXqwkQr5g7Bp5', 'sptXqwkQr5g7Bp5']
-PROPFIND 500 [] []
-SV wgs_atlasy/zosuvy_SR_50_wgs [(0, 'Body - Zosuvy_SR_50_wgs'), (1, 'Plochy - Zosuvy_SR_50_wgs')] {'wkid': 102100, 'latestWkid': 3857} 1000
-   L 0 Body - Zosuvy_SR_50_wgs esriGeometryPoint ['objectid', 'cislo_ml50', 'nazov_ml50', 'autor_list', 'sklon_svah', 'rozl_celk', 'rozl_les', 'stupen_akt', 'okres_txt', 'shape'] {'count': 4793}
-   L 1 Plochy - Zosuvy_SR_50_wgs esriGeometryPolygon ['objectid', 'id1', 'tsvahdef', 'stupen_akt', 'cislo_ml50', 'nazov_ml50', 'autor_list', 'sklon_svah', 'rozl_celk', 'rozl_pol', 'rozl_les', 'rozl_ine', 'okres_txt', 'g_utvar_tx'] {'count': 16235}
-SV Geofond/zosuvy_vect [(0, 'SD M:10 000 (IG) - smery'), (1, 'SD M:10 000 (IG) - šrafy'), (2, 'SD M:10 000 (IG)'), (3, 'SD M 1:50 000 (Geofond)'), (4, 'Mapa zosuvného hazardu (GEO Slovakia, s.r.o., 2011)')] {'wkid': 102067, 'latestWkid': 5514} 1000
-   L 0 SD M:10 000 (IG) - smery esriGeometryPolyline ['objectid', 'gid'] {'count': 121742}
-   L 1 SD M:10 000 (IG) - šrafy esriGeometryPolygon ['objectid', 'gid'] {'count': 82982}
-   L 2 SD M:10 000 (IG) esriGeometryPolygon ['OBJECTID', 'reg_cis', 'atlas_cis', 'ku_nazov', 'okres', 'kraj', 'lokalita', 'ml_zm10', 'ml_zbgis10', 'mierka', 'mierka_txt', 'datum_map', 'autor', 'zdroj'] {'count': 4507}
-   L 3 SD M 1:50 000 (Geofond) esriGeometryPolygon ['OBJECTID', 'registracnecislo', 'legenda50', 'geologickyutvar', 'geologickastavba', 'igrajon', 'iggeologickaoblast', 'geomorfologickejednotky', 'hydropomerysvahu', 'vztahktokomnadrziam', 'pramene', 'priemernysklonsvahu', 'sklonsvahuurcenie', 'rozdielvysok'] {'count': 18368}
-SV WebServices/RADON [(0, 'Izoplochy radónového rizika')] {'wkid': 102067, 'latestWkid': 5514} 1000
-   L 0 Izoplochy radónového rizika esriGeometryPolygon ['objectid', 'layer', 'shape'] {'count': 22296}
-SV Zranitelnost/riziko [(0, 'Stupeň environmentálneho rizika')] {'wkid': 102100, 'latestWkid': 3857} 1000
-SVERR Zranitelnost/riziko 'NoneType' object is not iterable
-SV wgs_atlasy/nachylnostUzemiaNaSvahovePohyby_SR_50_wgs [(0, 'Plochy - Náachylnosť územia na svahové pohyby_SR_50_wgs')] {'wkid': 102100, 'latestWkid': 3857} 1000
-   L 0 Plochy - Náachylnosť územia na svahové pohyby_SR_50_wgs esriGeometryPolygon ['objectid', 'rajon', 'podrajon', 'stupen', 'charakteristika', 'shape', 'st_area(shape)', 'st_length(shape)'] {'count': 21542}
-HOTOVO
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.14/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='sdi.eea.europa.eu', port=443): Read timed out. (read timeout=60)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 4, in <module>
+    r = requests.head("https://sdi.eea.europa.eu/datashare/s/sptXqwkQr5g7Bp5/download", allow_redirects=True, timeout=60)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 100, in head
+    return request("head", url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='sdi.eea.europa.eu', port=443): Read timed out. (read timeout=60)
