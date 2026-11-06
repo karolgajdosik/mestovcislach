@@ -68,17 +68,33 @@ def tabulka(s: requests.Session, rok: int, predmet: str, kraj: str, typz: str = 
     r = s.post(u, data=data,
                headers={"Referer": u, "Origin": "https://dataportal.nucem.sk"}, timeout=120)
     r.raise_for_status()
+    texty = [r.text]
+    # tabuľka je stránkovaná po 20 riadkoch (PrimeFaces DataTable) – zvyšok cez AJAX stránkovanie s veľkým počtom riadkov
+    tab = re.search(r'<div id="([^"]+)" class="ui-datatable', r.text)
+    vs2 = re.search(r'name="javax.faces.ViewState"[^>]*value="([^"]+)"', r.text)
+    if tab and vs2:
+        tid = tab.group(1)
+        form = tid.split(":")[0]
+        data2 = {"javax.faces.partial.ajax": "true", "javax.faces.source": tid, "javax.faces.partial.execute": tid,
+                 "javax.faces.partial.render": tid, tid + "_pagination": "true", tid + "_first": "20", tid + "_rows": "5000",
+                 tid + "_encodeFeature": "true", form: form, "javax.faces.ViewState": vs2.group(1)}
+        r2 = s.post(u, data=data2, headers={"Referer": u, "Faces-Request": "partial/ajax", "X-Requested-With": "XMLHttpRequest"}, timeout=180)
+        if r2.ok:
+            texty.append(r2.text)
     out = []
-    for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", r.text, flags=re.S):
-        bunky = [H.unescape(re.sub(r"<[^>]+>", " ", c)).strip() for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, flags=re.S)]
-        bunky = [re.sub(r"\s+", " ", c) for c in bunky]
-        if len(bunky) < 12:
-            continue
-        # Názov | Obec | Ulica | Zriaďovateľ | Jazyk | N | N/ZZ | N/SZP | N/C | PZŠ | PÚŠ | RNP | Sig. | PŠ
-        n, pus, rnp = _cislo(bunky[5]), _cislo(bunky[10]), _cislo(bunky[11])
-        if n is None or pus is None:
-            continue
-        out.append({"nazov": bunky[0], "obec": bunky[1], "ulica": bunky[2], "n": int(n), "pus": pus, "rnp": rnp})
+    videne = set()
+    for txt in texty:
+        for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", txt, flags=re.S):
+            bunky = [H.unescape(re.sub(r"<[^>]+>", " ", c)).strip() for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, flags=re.S)]
+            bunky = [re.sub(r"\s+", " ", c) for c in bunky]
+            if len(bunky) < 12:
+                continue
+            # Názov | Obec | Ulica | Zriaďovateľ | Jazyk | N | N/ZZ | N/SZP | N/C | PZŠ | PÚŠ | RNP | Sig. | PŠ
+            n, pus, rnp = _cislo(bunky[5]), _cislo(bunky[10]), _cislo(bunky[11])
+            if n is None or pus is None or (bunky[0], bunky[1], bunky[2], bunky[4]) in videne:
+                continue
+            videne.add((bunky[0], bunky[1], bunky[2], bunky[4]))
+            out.append({"nazov": bunky[0], "obec": bunky[1], "ulica": bunky[2], "n": int(n), "pus": pus, "rnp": rnp})
     return out
 
 
