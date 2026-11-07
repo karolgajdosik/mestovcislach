@@ -2,15 +2,15 @@
  "mesto": "presov",
  "ico": "00327646",
  "od": "2022-01-01",
- "do": "2026-11-05",
+ "do": "2026-11-06",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 6238,
-  "skryte_fyzicke_osoby": 1578,
+  "zaznamov": 6239,
+  "skryte_fyzicke_osoby": 1579,
   "roky": {
    "2022": {
     "pocet": 1140,
@@ -37,10 +37,10 @@
     "fo_suma": 8470220
    },
    "2026": {
-    "pocet": 1086,
-    "suma": 71073218,
-    "fo_pocet": 304,
-    "fo_suma": 1809257
+    "pocet": 1087,
+    "suma": 71077289,
+    "fo_pocet": 305,
+    "fo_suma": 1813329
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -215,22 +215,6 @@
     "url": "https://www.crz.gov.sk/zmluva/11961459/"
    },
    {
-    "datum": "2025-11-06",
-    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "ico": "50349287",
-    "suma": 2810811.44,
-    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR /F457",
-    "url": "https://www.crz.gov.sk/zmluva/11594727/"
-   },
-   {
-    "datum": "2025-11-06",
-    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "ico": "50349287",
-    "suma": 2810811.44,
-    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku reg. č. PSK-SIEA-007-2024-ITI-EFRR/F457",
-    "url": "https://www.crz.gov.sk/zmluva/11613515/"
-   },
-   {
     "datum": "2026-08-19",
     "dodavatel": "Ministerstvo dopravy SR",
     "ico": "30416094",
@@ -285,6 +269,22 @@
     "suma": 1911751.92,
     "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR/F453",
     "url": "https://www.crz.gov.sk/zmluva/11690058/"
+   },
+   {
+    "datum": "2025-12-03",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1911751.92,
+    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku reg. č. PSK-SIEA-007-2024-ITI-EFRR/F453",
+    "url": "https://www.crz.gov.sk/zmluva/11707669/"
+   },
+   {
+    "datum": "2025-11-26",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1695472.73,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU",
+    "url": "https://www.crz.gov.sk/zmluva/11653530/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-06T06:19:30+00:00"
+ "aktualizovane": "2026-11-07T06:04:40+00:00"
 }

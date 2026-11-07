@@ -2,14 +2,14 @@
  "mesto": "banska-bystrica",
  "ico": "00313271",
  "od": "2022-01-01",
- "do": "2026-11-05",
+ "do": "2026-11-06",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8132,
+  "zaznamov": 8136,
   "skryte_fyzicke_osoby": 4094,
   "roky": {
    "2022": {
@@ -37,8 +37,8 @@
     "fo_suma": 4197336
    },
    "2026": {
-    "pocet": 1822,
-    "suma": 89676320,
+    "pocet": 1826,
+    "suma": 90868523,
     "fo_pocet": 1019,
     "fo_suma": 4400733
    }
@@ -47,8 +47,8 @@
    {
     "ico": "50349287",
     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "pocet": 41,
-    "suma": 45742353
+    "pocet": 42,
+    "suma": 46900485
    },
    {
     "ico": "36854140",
@@ -175,14 +175,6 @@
     "url": "https://www.crz.gov.sk/zmluva/11786242/"
    },
    {
-    "datum": "2025-11-06",
-    "dodavatel": "Slovenská inovačná a energetická agentúra",
-    "ico": "00002801",
-    "suma": 3296029.09,
-    "popis": "Dodatok č. 1 k Zmluve o poskytnutí nenávratného finančného príspevku č. PSK-SIEA-002-2023-DV-EFRR/FDX7",
-    "url": "https://www.crz.gov.sk/zmluva/11593054/"
-   },
-   {
     "datum": "2026-10-09",
     "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
     "ico": "50349287",
@@ -285,6 +277,14 @@
     "suma": 1988627.5,
     "popis": "Dodatok č. 2 k Rámcovej zmluve o poskytovaní stravovacích služieb č. 1438/2024/OSV-SDS",
     "url": "https://www.crz.gov.sk/zmluva/11917608/"
+   },
+   {
+    "datum": "2026-10-07",
+    "dodavatel": "Ústredie práce, sociálnych vecí a rodiny, Úrad práce, sociálnych vecí a rodiny Banská Bystrica",
+    "ico": "30794536",
+    "suma": 1894017.06,
+    "popis": "Dodatok č.6 k Dohode č. 2024/BB/064 o poskytnutí finančného príspevku",
+    "url": "https://www.crz.gov.sk/zmluva/12976638/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-06T06:19:30+00:00"
+ "aktualizovane": "2026-11-07T06:04:40+00:00"
 }

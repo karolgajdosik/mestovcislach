@@ -2,14 +2,14 @@
  "mesto": "zilina",
  "ico": "00321796",
  "od": "2022-01-01",
- "do": "2026-11-05",
+ "do": "2026-11-06",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8492,
+  "zaznamov": 8493,
   "skryte_fyzicke_osoby": 3809,
   "roky": {
    "2022": {
@@ -37,8 +37,8 @@
     "fo_suma": 5442968
    },
    "2026": {
-    "pocet": 1798,
-    "suma": 142491227,
+    "pocet": 1799,
+    "suma": 143176788,
     "fo_pocet": 909,
     "fo_suma": 4720366
    }
@@ -81,16 +81,16 @@
     "suma": 9209198
    },
    {
+    "ico": "00681156",
+    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "pocet": 13,
+    "suma": 5080970
+   },
+   {
     "ico": "46282041",
     "nazov": "PAMARCH, s.r.o.",
     "pocet": 2,
     "suma": 5040514
-   },
-   {
-    "ico": "00681156",
-    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
-    "pocet": 12,
-    "suma": 4395409
    },
    {
     "ico": "31588506",
@@ -223,14 +223,6 @@
     "url": "https://www.crz.gov.sk/zmluva/12461101/"
    },
    {
-    "datum": "2025-11-06",
-    "dodavatel": "Technické služby mesta Žilina, s.r.o.",
-    "ico": "53946600",
-    "suma": 2893048.93,
-    "popis": "Rámcová zmluva o poskytovaní služieb č. 1120/2025 - služby v oblasti údržby a čistoty verejných priestranstiev v meste",
-    "url": "https://www.crz.gov.sk/zmluva/11652826/"
-   },
-   {
     "datum": "2026-06-30",
     "dodavatel": "CORA GEO, s. r. o.",
     "ico": "31612989",
@@ -285,6 +277,14 @@
     "suma": 1437931.5,
     "popis": "Rámcová zmluva o poskytovaní služieb č. 373/2026 - zimná údržba miestnych ciest a ich príslušenstva",
     "url": "https://www.crz.gov.sk/zmluva/12294038/"
+   },
+   {
+    "datum": "2026-09-14",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1333681.4,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU kód projektu: 401202G541",
+    "url": "https://www.crz.gov.sk/zmluva/12811631/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-06T06:19:30+00:00"
+ "aktualizovane": "2026-11-07T06:04:40+00:00"
 }
