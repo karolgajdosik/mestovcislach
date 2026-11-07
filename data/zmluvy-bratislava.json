@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11921,
+ "pocet_spolu": 11936,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2309,
-   "suma": 407265032.62
+   "pocet": 2324,
+   "suma": 407317946.47
   }
  },
  "posledny_rok": {
-  "od": "2025-11-06",
+  "od": "2025-11-07",
   "suma_bez_ico": 68800.73,
   "dodavatelia": [
    {
@@ -54,7 +54,7 @@
    {
     "ico": "36302031",
     "nazov": "ROKO gips, s.r.o.",
-    "pocet": 2,
+    "pocet": 3,
     "suma": 14019413.62
    },
    {
@@ -307,5 +307,5 @@
    }
   ]
  },
- "aktualizovane": "2026-11-06T03:15:40+00:00"
+ "aktualizovane": "2026-11-07T03:14:13+00:00"
 }
