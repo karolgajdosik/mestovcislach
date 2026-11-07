@@ -276,6 +276,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
       <h2>Narodení, zomrelí, sťahovanie</h2>
       {his.length > 10 && (
         <>
+          <h3>Počet obyvateľov {his[0][0]}–{his[his.length - 1][0]}</h3>
           <div class="ob-stlpce ob-his" role="img" aria-label={`Počet obyvateľov ${his[0][0]}–${his[his.length - 1][0]}`}>
             {his.map(([r, x]) => <div title={`${r}: ${fmt(x)} obyvateľov`}><span style={`height:${Math.max(3, 100 * (x - hisMin * 0.9) / (hisMax - hisMin * 0.9 || 1))}%`}></span><small>{Number(r) % 5 === 0 ? `’${r.slice(2)}` : ''}</small></div>)}
           </div>
