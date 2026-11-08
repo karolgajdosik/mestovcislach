@@ -3,7 +3,7 @@
   "nazov": "OpenStreetMap",
   "licencia": "ODbL – © prispievatelia OpenStreetMap",
   "url": "https://www.openstreetmap.org/copyright",
-  "stav_osm": "2026-05-31T22:37:44Z"
+  "stav_osm": "2026-11-08T04:36:32Z"
  },
  "kategorie": {
   "cyklocesticka": "Cyklocestičky",
@@ -12,34 +12,34 @@
  },
  "mesto": {
   "km": {
-   "cyklocesticka": 148.5,
-   "spolocna": 27.3,
-   "cyklopruh": 34.1
+   "cyklocesticka": 151.3,
+   "spolocna": 32.4,
+   "cyklopruh": 36.5
   },
-  "km_spolu": 209.9
+  "km_spolu": 220.2
  },
  "mestske_casti": [
   {
    "kod_obce": "529460",
    "nazov": "Petržalka",
    "km": {
-    "cyklocesticka": 36.9,
-    "spolocna": 10.2,
-    "cyklopruh": 2.1
+    "cyklocesticka": 36.8,
+    "spolocna": 10.9,
+    "cyklopruh": 2.3
    },
-   "km_spolu": 49.3,
-   "km_na_km2": 1.72,
-   "m_na_obyvatela": 0.44
+   "km_spolu": 50.0,
+   "km_na_km2": 1.75,
+   "m_na_obyvatela": 0.45
   },
   {
    "kod_obce": "529320",
    "nazov": "Ružinov",
    "km": {
-    "cyklocesticka": 20.5,
-    "spolocna": 7.6,
-    "cyklopruh": 3.6
+    "cyklocesticka": 21.7,
+    "spolocna": 6.1,
+    "cyklopruh": 3.9
    },
-   "km_spolu": 31.6,
+   "km_spolu": 31.7,
    "km_na_km2": 0.8,
    "m_na_obyvatela": 0.38
   },
@@ -47,37 +47,49 @@
    "kod_obce": "529346",
    "nazov": "Nové Mesto",
    "km": {
-    "cyklocesticka": 13.8,
-    "spolocna": 2.4,
-    "cyklopruh": 5.1
+    "cyklocesticka": 13.9,
+    "spolocna": 2.3,
+    "cyklopruh": 5.2
    },
    "km_spolu": 21.3,
    "km_na_km2": 0.57,
    "m_na_obyvatela": 0.46
   },
   {
+   "kod_obce": "529494",
+   "nazov": "Rusovce",
+   "km": {
+    "cyklocesticka": 12.0,
+    "spolocna": 5.1,
+    "cyklopruh": 0
+   },
+   "km_spolu": 17.1,
+   "km_na_km2": 0.67,
+   "m_na_obyvatela": 3.8
+  },
+  {
    "kod_obce": "528595",
    "nazov": "Staré Mesto",
    "km": {
-    "cyklocesticka": 8.0,
-    "spolocna": 1.7,
-    "cyklopruh": 6.6
+    "cyklocesticka": 7.9,
+    "spolocna": 1.2,
+    "cyklopruh": 7.6
    },
-   "km_spolu": 16.2,
-   "km_na_km2": 1.69,
-   "m_na_obyvatela": 0.34
+   "km_spolu": 16.7,
+   "km_na_km2": 1.74,
+   "m_na_obyvatela": 0.35
   },
   {
    "kod_obce": "529371",
    "nazov": "Devínska Nová Ves",
    "km": {
-    "cyklocesticka": 12.6,
+    "cyklocesticka": 12.8,
     "spolocna": 0.6,
     "cyklopruh": 0
    },
-   "km_spolu": 13.1,
-   "km_na_km2": 0.54,
-   "m_na_obyvatela": 0.77
+   "km_spolu": 13.4,
+   "km_na_km2": 0.55,
+   "m_na_obyvatela": 0.78
   },
   {
    "kod_obce": "529311",
@@ -87,57 +99,57 @@
     "spolocna": 0,
     "cyklopruh": 1.9
    },
-   "km_spolu": 12.9,
-   "km_na_km2": 0.3,
+   "km_spolu": 13.0,
+   "km_na_km2": 0.31,
    "m_na_obyvatela": 0.56
-  },
-  {
-   "kod_obce": "529494",
-   "nazov": "Rusovce",
-   "km": {
-    "cyklocesticka": 11.7,
-    "spolocna": 0.5,
-    "cyklopruh": 0
-   },
-   "km_spolu": 12.2,
-   "km_na_km2": 0.48,
-   "m_na_obyvatela": 2.71
   },
   {
    "kod_obce": "529435",
    "nazov": "Čunovo",
    "km": {
     "cyklocesticka": 8.5,
-    "spolocna": 0,
+    "spolocna": 1.9,
     "cyklopruh": 0.3
    },
-   "km_spolu": 8.8,
-   "km_na_km2": 0.47,
-   "m_na_obyvatela": 4.79
-  },
-  {
-   "kod_obce": "529397",
-   "nazov": "Karlova Ves",
-   "km": {
-    "cyklocesticka": 4.8,
-    "spolocna": 0.6,
-    "cyklopruh": 1.9
-   },
-   "km_spolu": 7.3,
-   "km_na_km2": 0.66,
-   "m_na_obyvatela": 0.21
+   "km_spolu": 10.7,
+   "km_na_km2": 0.57,
+   "m_na_obyvatela": 5.83
   },
   {
    "kod_obce": "529401",
    "nazov": "Devín",
    "km": {
-    "cyklocesticka": 3.3,
+    "cyklocesticka": 4.0,
     "spolocna": 0,
-    "cyklopruh": 3.7
+    "cyklopruh": 4.0
    },
-   "km_spolu": 7.0,
-   "km_na_km2": 0.5,
-   "m_na_obyvatela": 3.24
+   "km_spolu": 8.1,
+   "km_na_km2": 0.58,
+   "m_na_obyvatela": 3.72
+  },
+  {
+   "kod_obce": "529397",
+   "nazov": "Karlova Ves",
+   "km": {
+    "cyklocesticka": 5.0,
+    "spolocna": 0.6,
+    "cyklopruh": 2.0
+   },
+   "km_spolu": 7.7,
+   "km_na_km2": 0.7,
+   "m_na_obyvatela": 0.22
+  },
+  {
+   "kod_obce": "529338",
+   "nazov": "Vrakuňa",
+   "km": {
+    "cyklocesticka": 6.4,
+    "spolocna": 0,
+    "cyklopruh": 0.9
+   },
+   "km_spolu": 7.2,
+   "km_na_km2": 0.7,
+   "m_na_obyvatela": 0.36
   },
   {
    "kod_obce": "529443",
@@ -152,46 +164,34 @@
    "m_na_obyvatela": 2.12
   },
   {
-   "kod_obce": "529338",
-   "nazov": "Vrakuňa",
-   "km": {
-    "cyklocesticka": 6.5,
-    "spolocna": 0,
-    "cyklopruh": 0.2
-   },
-   "km_spolu": 6.7,
-   "km_na_km2": 0.65,
-   "m_na_obyvatela": 0.33
-  },
-  {
    "kod_obce": "529354",
    "nazov": "Rača",
    "km": {
-    "cyklocesticka": 1.9,
+    "cyklocesticka": 2.2,
     "spolocna": 1.8,
     "cyklopruh": 2.1
    },
-   "km_spolu": 5.7,
-   "km_na_km2": 0.24,
-   "m_na_obyvatela": 0.22
+   "km_spolu": 6.1,
+   "km_na_km2": 0.26,
+   "m_na_obyvatela": 0.23
   },
   {
    "kod_obce": "529362",
    "nazov": "Vajnory",
    "km": {
     "cyklocesticka": 1.1,
-    "spolocna": 0,
-    "cyklopruh": 3.1
+    "spolocna": 0.0,
+    "cyklopruh": 2.7
    },
-   "km_spolu": 4.2,
-   "km_na_km2": 0.31,
-   "m_na_obyvatela": 0.7
+   "km_spolu": 3.8,
+   "km_na_km2": 0.28,
+   "m_na_obyvatela": 0.63
   },
   {
    "kod_obce": "529389",
    "nazov": "Dúbravka",
    "km": {
-    "cyklocesticka": 0.2,
+    "cyklocesticka": 0.3,
     "spolocna": 0.9,
     "cyklopruh": 1.8
    },
@@ -205,7 +205,7 @@
    "km": {
     "cyklocesticka": 0.5,
     "spolocna": 0.2,
-    "cyklopruh": 1.7
+    "cyklopruh": 1.8
    },
    "km_spolu": 2.4,
    "km_na_km2": 0.37,
@@ -224,5 +224,5 @@
    "m_na_obyvatela": 0.13
   }
  ],
- "aktualizovane": "2026-11-01T04:33:03+00:00"
+ "aktualizovane": "2026-11-08T04:37:43+00:00"
 }

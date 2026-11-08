@@ -3,7 +3,7 @@
   "nazov": "OpenStreetMap",
   "licencia": "ODbL – © prispievatelia OpenStreetMap",
   "url": "https://www.openstreetmap.org/copyright",
-  "stav_osm": "2026-11-01T04:40:04Z"
+  "stav_osm": "2026-11-08T04:44:46Z"
  },
  "kategorie": {
   "lekarne": "Lekárne",
@@ -19,7 +19,7 @@
   "nabijacie_miesta": 507,
   "pamiatky": 101,
   "stromy": 30,
-  "muzea": 98,
+  "muzea": 97,
   "kultura": 192
  },
  "mestske_casti": [
@@ -262,5 +262,5 @@
    "ambulancie_na_10000": 0.0
   }
  ],
- "aktualizovane": "2026-11-01T04:41:10+00:00"
+ "aktualizovane": "2026-11-08T04:46:18+00:00"
 }
