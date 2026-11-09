@@ -1,14 +1,10 @@
-Zosuvy: 16235 plôch, aktivita {'potenciálna': 10383, 'stabilizovaná': 4585, 'aktívna': 1178, 'so stabilizovanými a potenciálnymi formami': 49, 's potenciálnymi a aktívnymi formami': 40}; obcí 1449
-Radón: 22296 plôch, kategórie v obciach {'nízke': 1073, 'stredné': 1808, 'vysoké': 4}
-geologia OK 109 {'518921': {'radon': 'nízke'}, '516643': {'n': 11, 'ha': 176.0, 'radon': 'nízke'}, '582000': {'n': 5, 'ha': 22.1, 'akt': 5, 'radon': 'nízke'}, '599981': {'n': 80, 'ha': 1060.1, 'akt': 1, 'radon': 'stredné'}}
-Starosta 2022: 2875 obcí, 6767 kandidátov
-starosta2022 OK 4 {'518921': [['Ing. Róbert Záchenský', 'nezávislý kandidát', 455, 100.0, 1]], '516643': [['Mgr. Nadežda Babiaková', 'SMER - SD, Hlas - sociálna demokracia, SNS, STRANA MODERNÉHO SLOVENSKA (SMS), SME RODINA, REPUBLIKA', 2092, 56.1, 1], ['Mgr. Mikuláš Pál', 'nezávislý kandidát', 1245, 33.4, 0], ['Štefan Mičura', 'nezávislý kandidát', 391, 10.5, 0]], '582000': [['Ing. arch. Matúš Vallo', 'Team Bratislava, Progresívne Slovensko, SaS', 86981, 60.2, 1], ['Mgr. Rudolf Kusý', 'SME RODINA, KDH, ZA ĽUDÍ, DOBRÁ VOĽBA a Umiernení, ALIANCIA - Maďari. Národnosti. Regióny', 40063, 27.7, 0], ['Miroslav Heredoš', 'NK/NEKA', 6239, 4.3, 0], ['RNDr. Andrej Trnovec', 'Slovenská ľudová strana (SĽS)', 3446, 2.4, 0], ['Ing. Martin Mlýnek', 'NOVA, OKS, Zmena zdola, DÚ, OĽANO-NOVA-KÚ-ZMENA ZDOLA', 3005, 2.1, 0], ['PhDr., PhD. Martin Jakubec', 'ĽS Naše Slovensko', 2017, 1.4, 0]], '599981': [['Ing. Jaroslav Polaček', 'KDH, SaS, SME RODINA, NOVA, ALIANCIA - Maďari. Národnosti. Regióny, SRK, DOBRÁ VOĽBA a Umiernení, OĽANO-NOVA-KÚ-ZMENA ZDOLA', 20561, 36.8, 1], ['Ing. Milan Lesňák', 'ZA ĽUDÍ', 11849, 21.2, 0], ['Ing. Miloslav Klíma', 'nezávislý kandidát', 10655, 19.1, 0], ['JUDr. Monika Kováčová', 'nezávislý kandidát', 4322, 7.7, 0], ['Ing. Štefan Lasky', 'nezávislý kandidát', 4178, 7.5, 0], ['MUDr., MPH Viliam Novotný', 'SPOLU, DS, ŠANCA, ODS - Občianski demokrati Slovenska', 2453, 4.4, 0]]}
-  om7101rr: 582000 = súčet mestských častí
-  om7101rr: 599981 = súčet mestských častí
-  om7101rr: 2885 obcí, nepriradených území 102
-Historia 1993–2025: 2885 obcí
-historia OK 13 {'518921': [1615, 1607, 1586, 1567, 1565, 1599, 1597, 1611, 1633, 1647, 1641, 1663, 1680, 1659, 1680, 1696, 1675, 1692, 1697, 1670, 1663, 1667, 1652, 1639, 1620, 1599, 1588, 1565, 1530, 1523, 1501, 1477, 1452], '516643': [10527, 10582, 10596, 10529, 10648, 10716, 10760, 10790, 10784, 10879, 10873, 10814, 10674, 10662, 10640, 10547, 10477, 10468, 10387, 10330, 10259, 10191, 10210, 10193, 10097, 10035, 10004, 9922, 9478, 9426, 9339, 9293, 9208], '582000': [448785, 450776, 452053, 452288, 451395, 449547, 448292, 447345, 446543, 427049, 425533, 425155, 425459, 426091, 426927, 428791, 431061, 432801, 413192, 415589, 417389, 419678, 422932, 425923, 429564, 432864, 437726, 440948, 475577, 476922, 478040, 479389, 480902], '599981': [238886, 239927, 240915, 241606, 242170, 241941, 241874, 242080, 241991, 235509, 235281, 235006, 234871, 234596, 234237, 233659, 233880, 233886, 240688, 240164, 239797, 239464, 239200, 239141, 239095, 238757, 238593, 238138, 227458, 226212, 225044, 223678, 222286]}
-Klíma 2016–2025: buniek 125, hotových 0, zostáva 125
-Klíma: tento beh 2 buniek, spolu 2/125, obcí 16
-klima 16 [('501042', [12.6, 651, 57, 95, 36.0, 6]), ('501093', [12.6, 651, 57, 95, 36.0, 6]), ('501191', [12.6, 651, 57, 95, 36.0, 6])]
+308 https://mestovcislach.sk/presov/zastupitelstvo -> /presov/zastupitelstvo/
+200 https://mestovcislach.sk/presov/zastupitelstvo/ -> None
+308 https://mestovcislach.sk/dodavatelia -> /dodavatelia/
+301 https://mestovcislach.sk/katalog/ed15579d1a65471187497a534b8de8f4 -> /bratislava/katalog/ed15579d1a65471187497a534b8de8f4/
+200 https://mestovcislach.sk/porovnaj/?a=kosice -> None
+308 https://mestovcislach.sk/porovnaj?a=kosice -> /porovnaj/?a=kosice
+308 https://mestovcislach.sk/kosice/mestske-casti/dzungla -> /kosice/mestske-casti/dzungla/
+200 https://mestovcislach.sk/kosice/mestske-casti/dzungla/ -> None
+canonical ['<link rel="canonical" href="https://mestovcislach.sk/porovnaj/">'] []
 HOTOVO
