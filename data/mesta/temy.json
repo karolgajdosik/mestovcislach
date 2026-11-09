@@ -4269,37 +4269,37 @@
     "spec": {
      "pocet": 15,
      "ziaci": 846,
-     "ped": 665
+     "ped": 663
     },
     "gym": {
      "pocet": 40,
      "ziaci": 14033,
-     "ped": 1722
+     "ped": 1784
     },
     "sos": {
      "pocet": 68,
      "ziaci": 20547,
-     "ped": 2311
+     "ped": 2296
     },
     "zs": {
      "pocet": 111,
      "ziaci": 37859,
-     "ped": 4102
+     "ped": 4137
     },
     "ms": {
      "pocet": 273,
      "ziaci": 25712,
-     "ped": 15132
+     "ped": 14014
     },
     "zus": {
      "pocet": 99,
      "ziaci": 19452,
-     "ped": 3430
+     "ped": 3371
     },
     "cvc": {
      "pocet": 21,
      "ziaci": 3664,
-     "ped": 153
+     "ped": 150
     }
    },
    "stredne": [
@@ -4307,28 +4307,28 @@
      "nazov": "Gym. - Bratislava, Bilíkova",
      "typ": "gym",
      "ziaci": 1183,
-     "ped": 78.1,
+     "ped": 73.4,
      "web": "gymbilba.edupage.org"
     },
     {
      "nazov": "Gym. - Bratislava, Metodova",
      "typ": "gym",
      "ziaci": 1033,
-     "ped": 75.4,
+     "ped": 75.6,
      "web": "gmet.edupage.org"
     },
     {
      "nazov": "Súkr. gym. - Bratislava, Kremnická",
      "typ": "gym",
      "ziaci": 956,
-     "ped": 8.0,
+     "ped": 9.0,
      "web": "kremnickasg.edupage.org"
     },
     {
      "nazov": "SZŠ - Bratislava, Strečnianska",
      "typ": "sos",
      "ziaci": 796,
-     "ped": 60.6,
+     "ped": 62.1,
      "web": "szsba.edupage.org"
     },
     {
@@ -4342,112 +4342,112 @@
      "nazov": "Gym. - Bratislava, Vazovova",
      "typ": "gym",
      "ziaci": 724,
-     "ped": 55.5,
+     "ped": 55.8,
      "web": "vazka.edupage.org"
     },
     {
      "nazov": "Gym. - Bratislava, Grösslingová",
      "typ": "gym",
      "ziaci": 713,
-     "ped": 58.4,
+     "ped": 58.0,
      "web": "gamca.edupage.org"
     },
     {
      "nazov": "SZŠ - Bratislava, Záhradnícka",
      "typ": "sos",
      "ziaci": 642,
-     "ped": 42.8,
+     "ped": 45.3,
      "web": "szsbaza.edupage.org"
     },
     {
      "nazov": "SOŠ - Bratislava, Farského",
      "typ": "sos",
      "ziaci": 640,
-     "ped": 43.4,
+     "ped": 44.2,
      "web": "farskehozssp.edupage.org"
     },
     {
      "nazov": "HA - Bratislava, Mikovíniho",
      "typ": "sos",
      "ziaci": 620,
-     "ped": 56.3,
+     "ped": 55.8,
      "web": "hamikoviniho.edupage.org"
     },
     {
      "nazov": "Gym. F. G. Lorcu - Bratislava, Hronská",
      "typ": "gym",
      "ziaci": 619,
-     "ped": 47.2,
+     "ped": 47.0,
      "web": "gymhron.edupage.org"
     },
     {
      "nazov": "SOŠ technológií a remes - Bratislava, Ivanská c.",
      "typ": "sos",
      "ziaci": 616,
-     "ped": 42.2,
+     "ped": 46.4,
      "web": "sousk.edupage.org"
     },
     {
      "nazov": "Gym. L.Novomeského - Bratislava, Tomášikova",
      "typ": "gym",
      "ziaci": 614,
-     "ped": 42.3,
+     "ped": 42.0,
      "web": "glnt.edupage.org"
     },
     {
      "nazov": "OA - Bratislava, Dudova",
      "typ": "sos",
      "ziaci": 602,
-     "ped": 46.5,
+     "ped": 46.8,
      "web": "oadudova.edupage.org"
     },
     {
      "nazov": "SPŠ elektrotechnická - Bratislava, Karola Adlera",
      "typ": "sos",
      "ziaci": 566,
-     "ped": 45.4,
+     "ped": 44.8,
      "web": "spseadlerka.edupage.org"
     },
     {
      "nazov": "SOŠ kaderníctva a vizáž - Bratislava, Svätoplukova",
      "typ": "sos",
      "ziaci": 555,
-     "ped": 45.5,
+     "ped": 46.1,
      "web": "beautycare.edupage.org"
     },
     {
      "nazov": "SOŠ obch.a služieb - Bratislava, Sklenárova",
      "typ": "sos",
      "ziaci": 554,
-     "ped": 42.3,
+     "ped": 41.1,
      "web": "sossklenarova.edupage.org"
     },
     {
      "nazov": "SOŠ pedagogická - Bratislava, Bullova",
      "typ": "sos",
      "ziaci": 551,
-     "ped": 35.5,
+     "ped": 36.1,
      "web": "psabuba.sk"
     },
     {
      "nazov": "SPŠ elektrotechnická - Bratislava, Hálova",
      "typ": "sos",
      "ziaci": 547,
-     "ped": 39.0,
+     "ped": 39.3,
      "web": "spsehalova.edupage.org"
     },
     {
      "nazov": "SPŠ elektrotechnická - Bratislava, Zochova",
      "typ": "sos",
      "ziaci": 533,
-     "ped": 40.8,
+     "ped": 40.2,
      "web": "spsezoska.edupage.org"
     },
     {
      "nazov": "SŠ-Gym. - Bratislava, Pankúchova",
      "typ": "gym",
      "ziaci": 530,
-     "ped": 66.2,
+     "ped": 66.1,
      "web": "gympaba.edupage.org"
     },
     {
@@ -4461,28 +4461,28 @@
      "nazov": "OA - Bratislava, Hrobákova",
      "typ": "sos",
      "ziaci": 523,
-     "ped": 39.9,
+     "ped": 38.9,
      "web": "oaikba.edupage.org"
     },
     {
      "nazov": "Bilingválne gym. - Bratislava, Haanova",
      "typ": "gym",
      "ziaci": 504,
-     "ped": 56.3,
+     "ped": 57.2,
      "web": "cslewis.edupage.org"
     },
     {
      "nazov": "SOŠ dopravná - Bratislava, Kvačalova",
      "typ": "sos",
      "ziaci": 498,
-     "ped": 36.6,
+     "ped": 36.4,
      "web": "sosdba.edupage.org"
     },
     {
      "nazov": "Gym. A. Einsteina - Bratislava, Einsteinova",
      "typ": "gym",
      "ziaci": 496,
-     "ped": 37.4,
+     "ped": 34.6,
      "web": "einsteinova.edupage.org"
     },
     {
@@ -4496,21 +4496,21 @@
      "nazov": "Gym. - Bratislava, Ivana Horvátha",
      "typ": "gym",
      "ziaci": 493,
-     "ped": 37.1,
+     "ped": 37.0,
      "web": "horvatha.edupage.org"
     },
     {
      "nazov": "Konz. - Bratislava, Tolstého",
      "typ": "sos",
      "ziaci": 483,
-     "ped": 146.4,
+     "ped": 145.4,
      "web": "konzervatoriumba.edupage.org"
     },
     {
      "nazov": "Súkr. gym. - Bratislava, Česká",
      "typ": "gym",
      "ziaci": 477,
-     "ped": 33.0,
+     "ped": 33.3,
      "web": "gymnaziumceska.edupage.org"
     },
     {
@@ -4524,98 +4524,98 @@
      "nazov": "Súkr. SOŠ Duálna akadém - Bratislava, J.Jonáša",
      "typ": "sos",
      "ziaci": 475,
-     "ped": 34.0,
+     "ped": 31.0,
      "web": "sosaba.edupage.org"
     },
     {
      "nazov": "Gym. - Bratislava, Hubeného",
      "typ": "gym",
      "ziaci": 467,
-     "ped": 33.2,
+     "ped": 30.2,
      "web": "ghubeneho.edupage.org"
     },
     {
      "nazov": "Gym. Matky Alexie - Bratislava, Jesenského 4/A",
      "typ": "gym",
      "ziaci": 459,
-     "ped": 33.4,
+     "ped": 33.2,
      "web": "gma.edupage.org"
     },
     {
      "nazov": "Ev. lýceum - Bratislava, Vranovská",
      "typ": "sos",
      "ziaci": 449,
-     "ped": 38.4,
+     "ped": 37.1,
      "web": "evlyceum.edupage.org"
     },
     {
      "nazov": "Gymn. pre nadané deti - Bratislava, Skalická",
      "typ": "gym",
      "ziaci": 448,
-     "ped": 64.6,
+     "ped": 66.1,
      "web": "smnd.edupage.org"
     },
     {
      "nazov": "SPŠSaG - Bratislava, Drieňová",
      "typ": "sos",
      "ziaci": 430,
-     "ped": 31.9,
+     "ped": 32.2,
      "web": "stav-geo.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ - Bratislava, Exnárova",
      "typ": "sos",
      "ziaci": 424,
-     "ped": 32.0,
+     "ped": 32.4,
      "web": "ssosexnarova.edupage.org"
     },
     {
      "nazov": "SOŠ chemická - Bratislava, Vlčie hrdlo",
      "typ": "sos",
      "ziaci": 423,
-     "ped": 38.9,
+     "ped": 39.3,
      "web": "chemiraba.edupage.org"
     },
     {
      "nazov": "SOŠ polygrafická - Bratislava, Račianska",
      "typ": "sos",
      "ziaci": 420,
-     "ped": 40.1,
+     "ped": 40.0,
      "web": "polygraficka.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠOOaM - Bratislava, Vranovská",
      "typ": "sos",
      "ziaci": 405,
-     "ped": 31.8,
+     "ped": 31.9,
      "web": "ssosoom.edupage.org"
     },
     {
      "nazov": "Škola umeleckého priemy - Bratislava, Sklenárova",
      "typ": "sos",
      "ziaci": 403,
-     "ped": 54.6,
+     "ped": 61.4,
      "web": "scenickevytvarnictvo.edupage.org"
     },
     {
      "nazov": "SOŠ beauty služieb - Bratislava, Račianska",
      "typ": "sos",
      "ziaci": 388,
-     "ped": 33.7,
+     "ped": 34.4,
      "web": "sosracianska105.edupage.org"
     },
     {
      "nazov": "Škola umeleckého priemy - Bratislava, Dúbravská c.",
      "typ": "sos",
      "ziaci": 388,
-     "ped": 57.6,
+     "ped": 58.7,
      "web": "suvba.edupage.org"
     },
     {
      "nazov": "SPŠ strojnícka - Bratislava, Fajnorovo nábrežie",
      "typ": "sos",
      "ziaci": 383,
-     "ped": 34.0,
+     "ped": 35.2,
      "web": "fajnorka.edupage.org"
     },
     {
@@ -4629,35 +4629,35 @@
      "nazov": "Súkr. ŠUP - Bratislava, Ivanská c.",
      "typ": "sos",
      "ziaci": 373,
-     "ped": 53.5,
+     "ped": 51.6,
      "web": "skoladesignu.edupage.org"
     },
     {
      "nazov": "OA - Bratislava, Nevädzová",
      "typ": "sos",
      "ziaci": 366,
-     "ped": 31.6,
+     "ped": 29.5,
      "web": "oanba.edupage.org"
     },
     {
      "nazov": "SPŠ dopravná - Bratislava, Kvačalova",
      "typ": "sos",
      "ziaci": 352,
-     "ped": 23.6,
+     "ped": 24.1,
      "web": "spsdkvacalova.edupage.org"
     },
     {
      "nazov": "SŠ-Stredná športová ško - Bratislava, Ostredková",
      "typ": "sos",
      "ziaci": 352,
-     "ped": 43.4,
+     "ped": 43.8,
      "web": "sportschool.edupage.org"
     },
     {
      "nazov": "SOŠ masmed.a inf. št. - Bratislava, Kadnárova",
      "typ": "sos",
      "ziaci": 349,
-     "ped": 23.3,
+     "ped": 23.7,
      "web": "sosmis.edupage.org"
     },
     {
@@ -4671,21 +4671,21 @@
      "nazov": "SŠ-Gym. Svätej Rodiny - Bratislava, Gercenova",
      "typ": "gym",
      "ziaci": 330,
-     "ped": 25.0,
+     "ped": 70.5,
      "web": "skolasvr.edupage.org"
     },
     {
      "nazov": "1. Súkr. gym. - Bratislava, Bajkalská",
      "typ": "gym",
      "ziaci": 327,
-     "ped": 27.0,
+     "ped": 26.6,
      "web": "1sg.edupage.org"
     },
     {
      "nazov": "Súkr. ŠUP - Bratislava, Vlast.nám.",
      "typ": "sos",
      "ziaci": 310,
-     "ped": 29.4,
+     "ped": 29.7,
      "web": "ssuat.edupage.org"
     },
     {
@@ -4699,119 +4699,119 @@
      "nazov": "SŠ - gym. sv. Uršu - Bratislava, Nedbalova",
      "typ": "gym",
      "ziaci": 301,
-     "ped": 47.8,
+     "ped": 49.9,
      "web": "gsurba.edupage.org"
     },
     {
      "nazov": "ŠUP - Bratislava, Tokajícka",
      "typ": "sos",
      "ziaci": 288,
-     "ped": 32.0,
+     "ped": 21.3,
      "web": "tokajicka.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ ped. a soc. - Bratislava, Karloveská",
      "typ": "sos",
      "ziaci": 263,
-     "ped": 6.3,
+     "ped": 7.2,
      "web": "paneuropasa.sk"
     },
     {
      "nazov": "SSŠ BIS - gym. - Bratislava, Pekníkova",
      "typ": "gym",
      "ziaci": 241,
-     "ped": 76.3,
+     "ped": 91.9,
      "web": "www.bis.sk"
     },
     {
      "nazov": "CSOŠE P.G. Frassatiho - Bratislava, Vazovova",
      "typ": "sos",
      "ziaci": 239,
-     "ped": 19.5,
+     "ped": 18.4,
      "web": "soufrasba.edupage.org"
     },
     {
      "nazov": "SOŠ technická - Bratislava, Vranovská",
      "typ": "sos",
      "ziaci": 236,
-     "ped": 18.3,
+     "ped": 17.5,
      "web": "www.sosvranovska.sk"
     },
     {
      "nazov": "S-Gymn. nem-slov - Bratislava, Bárdošova",
      "typ": "gym",
      "ziaci": 230,
-     "ped": 30.1,
+     "ped": 31.1,
      "web": "dsbbratislava.edupage.org"
     },
     {
      "nazov": "S SŠŠ - Bratislava, M.C.Sklodowskej",
      "typ": "sos",
      "ziaci": 223,
-     "ped": 16.0,
+     "ped": 15.7,
      "web": "ssportovasos.edupage.org"
     },
     {
      "nazov": "Gym. s VJM - Bratislava, Dunajská",
      "typ": "gym",
      "ziaci": 219,
-     "ped": 37.7,
+     "ped": 36.3,
      "web": "mtag.edupage.org"
     },
     {
      "nazov": "Súkr. gym. Mercury - Bratislava, Zadunajská c.",
      "typ": "gym",
      "ziaci": 214,
-     "ped": 22.0,
+     "ped": 21.2,
      "web": "sgm.edupage.org"
     },
     {
      "nazov": "SOŠ lýceum C. S. Lewisa - Bratislava, Haanova",
      "typ": "sos",
      "ziaci": 204,
-     "ped": 22.2,
+     "ped": 22.0,
      "web": "lyceum.edupage.org"
     },
     {
      "nazov": "Súkr. gym. - Bratislava, Dudvážska",
      "typ": "gym",
      "ziaci": 194,
-     "ped": 68.9,
+     "ped": 69.6,
      "web": "galileoschool.edupage.org"
     },
     {
      "nazov": "SŠ - gym.šk.bratov - Bratislava, Čachtická",
      "typ": "gym",
      "ziaci": 191,
-     "ped": 41.4,
+     "ped": 44.2,
      "web": "gsbba.edupage.org"
     },
     {
      "nazov": "Súkr. gym. CENADA - Bratislava, Majerníkova",
      "typ": "gym",
      "ziaci": 183,
-     "ped": 25.0,
+     "ped": 15.7,
      "web": "sgcenada.edupage.org"
     },
     {
      "nazov": "Súkr. gym. - Bratislava, Vážska",
      "typ": "gym",
      "ziaci": 179,
-     "ped": 12.1,
+     "ped": 11.5,
      "web": "ssg-bratislava.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ HOST - Bratislava, Pionierska",
      "typ": "sos",
      "ziaci": 176,
-     "ped": 19.2,
+     "ped": 19.7,
      "web": "skolahost.edupage.org"
     },
     {
      "nazov": "Cirk. konz. - Bratislava, Beňadická",
      "typ": "sos",
      "ziaci": 172,
-     "ped": 46.9,
+     "ped": 46.4,
      "web": "ckba.edupage.org"
     },
     {
@@ -4825,70 +4825,70 @@
      "nazov": "Súkr. SOŠ - Bratislava, Bieloruská",
      "typ": "sos",
      "ziaci": 164,
-     "ped": 10.9,
+     "ped": 10.6,
      "web": "gastroskola.edupage.org"
     },
     {
      "nazov": "Tanečné konz. - Bratislava, Gorazdova",
      "typ": "sos",
      "ziaci": 160,
-     "ped": 32.2,
+     "ped": 28.5,
      "web": "tankonba.edupage.org"
     },
     {
      "nazov": "Súkr. stredná športo - Bratislava, Dudvážska",
      "typ": "sos",
      "ziaci": 153,
-     "ped": 17.2,
+     "ped": 17.8,
      "web": "www.dudva.sk"
     },
     {
      "nazov": "SŠ-Gym. Cambridge - Bratislava, Úprkova",
      "typ": "gym",
      "ziaci": 151,
-     "ped": 90.0,
+     "ped": 91.8,
      "web": "cis.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ veterinárna - Bratislava, Pod brehmi 6/A",
      "typ": "sos",
      "ziaci": 106,
-     "ped": 10.3,
+     "ped": 9.8,
      "web": "veterinarnaskola.edupage.org"
     },
     {
      "nazov": "SPŠ - ITaUI - Bratislava, Biskupická",
      "typ": "sos",
      "ziaci": 106,
-     "ped": 16.9,
+     "ped": 21.1,
      "web": "skyro.ai"
     },
     {
      "nazov": "SŠ-Gym. - Bratislava, Bachova",
      "typ": "gym",
      "ziaci": 96,
-     "ped": 51.0,
+     "ped": 50.0,
      "web": "vdp.edupage.org"
     },
     {
      "nazov": "SŠ - GYM sv.Františka - Bratislava, Karloveská",
      "typ": "gym",
      "ziaci": 92,
-     "ped": 58.0,
+     "ped": 56.2,
      "web": "svfrantisek.edupage.org"
     },
     {
      "nazov": "Súkr. OA - Bratislava, Dudvážska",
      "typ": "sos",
      "ziaci": 80,
-     "ped": 6.8,
+     "ped": 7.5,
      "web": "www.dudva.sk"
     },
     {
      "nazov": "Súkr. stredná športo - Bratislava, Radničné nám.",
      "typ": "sos",
      "ziaci": 78,
-     "ped": 10.0,
+     "ped": 6.3,
      "web": "eisbratislava.edupage.org"
     },
     {
@@ -4902,21 +4902,21 @@
      "nazov": "Súkr. gym. FELI - Bratislava, Karloveská",
      "typ": "gym",
      "ziaci": 56,
-     "ped": 4.0,
+     "ped": 3.0,
      "web": "gymnaziumfelix.edupage.org"
     },
     {
      "nazov": "SŠ-PrŠ - Bratislava, Dúbravská c.",
      "typ": "sos",
      "ziaci": 50,
-     "ped": 45.3,
+     "ped": 43.3,
      "web": "www.dubravska.sk"
     },
     {
      "nazov": "Súkr. gym. - Bratislava, Palisády",
      "typ": "gym",
      "ziaci": 49,
-     "ped": 0,
+     "ped": 10.0,
      "web": "cobra.edupage.org"
     },
     {
@@ -4930,49 +4930,49 @@
      "nazov": "SŠ - ŠMŠ sluch.post.i. - Bratislava, Hrdličkova",
      "typ": "sos",
      "ziaci": 40,
-     "ped": 24.4,
+     "ped": 23.6,
      "web": "ssihrdlickova.edupage.org"
     },
     {
      "nazov": "Bulharské gym. - Bratislava, Záporožská",
      "typ": "gym",
      "ziaci": 36,
-     "ped": 2.0,
+     "ped": 1.0,
      "web": "bsu-bratislava.com"
     },
     {
      "nazov": "Súkr. gym. - Bratislava, Trnavská c.",
      "typ": "gym",
      "ziaci": 26,
-     "ped": 13.3,
+     "ped": 14.7,
      "web": "szskings.edupage.org"
     },
     {
      "nazov": "Súkr. gym. - Bratislava, Majerníkova",
      "typ": "gym",
      "ziaci": 24,
-     "ped": 2.6,
+     "ped": 2.7,
      "web": "www.sgesprit.sk"
     },
     {
      "nazov": "Súkr. konz. AL - Bratislava, Batkova",
      "typ": "sos",
      "ziaci": 21,
-     "ped": 5.4,
+     "ped": 5.5,
      "web": "www.alkana.sk"
     },
     {
      "nazov": "SŠ - PrŠ - Bratislava, J.Valašťana Dolinského",
      "typ": "sos",
      "ziaci": 8,
-     "ped": 59.1,
+     "ped": 56.6,
      "web": "www.szsdolba.szm.sk"
     },
     {
      "nazov": "SŠ - ŠMŠI zrak.postih. - Bratislava, Svrčia",
      "typ": "sos",
      "ziaci": 7,
-     "ped": 11.2,
+     "ped": 10.0,
      "web": "svrcia.edupage.org"
     }
    ]
@@ -4982,7 +4982,7 @@
     "gym": {
      "pocet": 7,
      "ziaci": 1323,
-     "ped": 204
+     "ped": 205
     },
     "sos": {
      "pocet": 18,
@@ -4992,27 +4992,27 @@
     "cvc": {
      "pocet": 4,
      "ziaci": 424,
-     "ped": 32
+     "ped": 31
     },
     "ms": {
      "pocet": 49,
      "ziaci": 8274,
-     "ped": 1398
+     "ped": 1351
     },
     "zus": {
      "pocet": 12,
      "ziaci": 1678,
-     "ped": 224
+     "ped": 219
     },
     "zs": {
      "pocet": 6,
      "ziaci": 826,
-     "ped": 189
+     "ped": 196
     },
     "spec": {
      "pocet": 3,
      "ziaci": 176,
-     "ped": 155
+     "ped": 151
     }
    },
    "stredne": [
@@ -5020,105 +5020,105 @@
      "nazov": "SOŠ OaSl - Trnava, Lomonosovova",
      "typ": "sos",
      "ziaci": 973,
-     "ped": 78.6,
+     "ped": 78.0,
      "web": "sosostrnava.edupage.org"
     },
     {
      "nazov": "SZŠ - Trnava, Daxnerova",
      "typ": "sos",
      "ziaci": 704,
-     "ped": 56.5,
+     "ped": 57.3,
      "web": "szstt.edupage.org"
     },
     {
      "nazov": "SPŠ dopravná - Trnava, Študentská",
      "typ": "sos",
      "ziaci": 688,
-     "ped": 48.4,
+     "ped": 48.8,
      "web": "spsdtt.edupage.org"
     },
     {
      "nazov": "Gym. J.Hollého - Trnava, Na hlinách",
      "typ": "gym",
      "ziaci": 673,
-     "ped": 49.2,
+     "ped": 49.7,
      "web": "gymholl.edupage.org"
     },
     {
      "nazov": "SOŠ elektrotechnická - Trnava, Sibírska",
      "typ": "sos",
      "ziaci": 609,
-     "ped": 52.7,
+     "ped": 52.9,
      "web": "sose-trnava.edupage.org"
     },
     {
      "nazov": "SPŠ technická - Trnava, Komenského",
      "typ": "sos",
      "ziaci": 570,
-     "ped": 47.6,
+     "ped": 47.9,
      "web": "spstt.edupage.org"
     },
     {
      "nazov": "OA - Trnava, Kukučínova",
      "typ": "sos",
      "ziaci": 511,
-     "ped": 42.7,
+     "ped": 41.2,
      "web": "oakuktt.edupage.org"
     },
     {
      "nazov": "Gym. Angely Merici - Trnava, Hviezdoslavova",
      "typ": "gym",
      "ziaci": 443,
-     "ped": 34.1,
+     "ped": 34.9,
      "web": "gamtt.edupage.org"
     },
     {
      "nazov": "SOŠ automobilová - Trnava, Coburgova",
      "typ": "sos",
      "ziaci": 412,
-     "ped": 37.6,
+     "ped": 36.8,
      "web": "sosatt.edupage.org"
     },
     {
      "nazov": "SPŠ stavebná - Trnava, Lomonosovova",
      "typ": "sos",
      "ziaci": 378,
-     "ped": 31.0,
+     "ped": 30.8,
      "web": "spsstt.edupage.org"
     },
     {
      "nazov": "SOŠ poľn. a služ. na v. - Trnava, Zavarská",
      "typ": "sos",
      "ziaci": 273,
-     "ped": 21.6,
+     "ped": 22.0,
      "web": "spostt.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ DSA - Trnava, Koniarekova",
      "typ": "sos",
      "ziaci": 266,
-     "ped": 25.4,
+     "ped": 27.3,
      "web": "sospolytechnicka-tt.edupage.org"
     },
     {
      "nazov": "Súkr.Gym. BESST - Trnava, Limbová",
      "typ": "gym",
      "ziaci": 177,
-     "ped": 22.4,
+     "ped": 21.3,
      "web": "sbgbesst.edupage.org"
     },
     {
      "nazov": "ŠI ako súčasť SOŠ el. - Trnava, Sibírska",
      "typ": "sos",
      "ziaci": 151,
-     "ped": 4.2,
+     "ped": 3.9,
      "web": ""
     },
     {
      "nazov": "ŠI ako súčasť SPŠ stav. - Trnava, Lomonosovova",
      "typ": "sos",
      "ziaci": 147,
-     "ped": 5.0,
+     "ped": 5.3,
      "web": "www.spsstt.sk"
     },
     {
@@ -5132,7 +5132,7 @@
      "nazov": "Tanečné konz. - Trnava, Kalinčiakova",
      "typ": "sos",
      "ziaci": 52,
-     "ped": 11.5,
+     "ped": 10.8,
      "web": "stkdn.edupage.org"
     },
     {
@@ -5163,17 +5163,17 @@
     "gym": {
      "pocet": 5,
      "ziaci": 2066,
-     "ped": 341
+     "ped": 340
     },
     "sos": {
      "pocet": 19,
      "ziaci": 4820,
-     "ped": 823
+     "ped": 812
     },
     "spec": {
      "pocet": 6,
      "ziaci": 200,
-     "ped": 154
+     "ped": 152
     },
     "ms": {
      "pocet": 41,
@@ -5183,17 +5183,17 @@
     "zs": {
      "pocet": 22,
      "ziaci": 7992,
-     "ped": 812
+     "ped": 813
     },
     "zus": {
      "pocet": 11,
      "ziaci": 3668,
-     "ped": 257
+     "ped": 254
     },
     "cvc": {
      "pocet": 6,
      "ziaci": 1915,
-     "ped": 89
+     "ped": 96
     }
    },
    "stredne": [
@@ -5201,112 +5201,112 @@
      "nazov": "Gym. - Nitra, Párovská",
      "typ": "gym",
      "ziaci": 862,
-     "ped": 62.8,
+     "ped": 64.0,
      "web": "gymparnr.edupage.org"
     },
     {
      "nazov": "Gym. - Nitra, Golianova",
      "typ": "gym",
      "ziaci": 809,
-     "ped": 52.7,
+     "ped": 51.4,
      "web": "gymgol.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ polytechnická - Nitra, Novozámocká",
      "typ": "sos",
      "ziaci": 551,
-     "ped": 46.3,
+     "ped": 48.9,
      "web": "sospnitra.edupage.org"
     },
     {
      "nazov": "SPŠ stavebná - Nitra, Cabajská",
      "typ": "sos",
      "ziaci": 545,
-     "ped": 44.0,
+     "ped": 43.8,
      "web": "spssnr.edupage.org"
     },
     {
      "nazov": "SOŠ techniky a služieb - Nitra, Cintorínska",
      "typ": "sos",
      "ziaci": 541,
-     "ped": 51.2,
+     "ped": 50.2,
      "web": "sosnr.edupage.org"
     },
     {
      "nazov": "SOŠ veterinárna - Nitra, Drážovská",
      "typ": "sos",
      "ziaci": 524,
-     "ped": 42.3,
+     "ped": 41.6,
      "web": "sosvetnr.edupage.org"
     },
     {
      "nazov": "SZŠ - Nitra, Farská",
      "typ": "sos",
      "ziaci": 496,
-     "ped": 44.5,
+     "ped": 43.0,
      "web": "ezkszsnr.edupage.org"
     },
     {
      "nazov": "OA - Nitra, Bolečkova",
      "typ": "sos",
      "ziaci": 454,
-     "ped": 34.2,
+     "ped": 34.7,
      "web": "oanitra.edupage.org"
     },
     {
      "nazov": "Stredná priem. škola SE - Nitra, Fraňa Kráľa",
      "typ": "sos",
      "ziaci": 406,
-     "ped": 37.5,
+     "ped": 37.3,
      "web": "spsnitra.edupage.org"
     },
     {
      "nazov": "Piar. gymn. - PSŠ - Nitra, Piaristická",
      "typ": "gym",
      "ziaci": 395,
-     "ped": 51.3,
+     "ped": 53.8,
      "web": "piarko.sk"
     },
     {
      "nazov": "SOŠ potravinárska - Nitra, Cabajská",
      "typ": "sos",
      "ziaci": 359,
-     "ped": 34.5,
+     "ped": 35.3,
      "web": "sospotravinarska.edupage.org"
     },
     {
      "nazov": "SOŠ gastr. a cest. ruch - Nitra, Levická",
      "typ": "sos",
      "ziaci": 323,
-     "ped": 27.4,
+     "ped": 27.6,
      "web": "sosnrlev.edupage.org"
     },
     {
      "nazov": "SOŠ stavebná - Nitra, Nábr.mládeže",
      "typ": "sos",
      "ziaci": 263,
-     "ped": 26.5,
+     "ped": 25.9,
      "web": "sosnabrmladezenr.edupage.org"
     },
     {
      "nazov": "Súkr. konz. - Nitra, Krčméryho",
      "typ": "sos",
      "ziaci": 181,
-     "ped": 52.5,
+     "ped": 51.1,
      "web": "konzervatoriumnitra.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ ANIMUS - Nitra, Akademická",
      "typ": "sos",
      "ziaci": 155,
-     "ped": 9.1,
+     "ped": 8.7,
      "web": "animus.sk"
     },
     {
      "nazov": "ŠMŠ - SŠ - Nitra, Červeňova",
      "typ": "sos",
      "ziaci": 22,
-     "ped": 26.9,
+     "ped": 23.4,
      "web": "ssicervenovanr.edupage.org"
     }
    ]
@@ -5316,22 +5316,22 @@
     "gym": {
      "pocet": 3,
      "ziaci": 1462,
-     "ped": 112
+     "ped": 113
     },
     "sos": {
      "pocet": 12,
      "ziaci": 4813,
-     "ped": 437
+     "ped": 440
     },
     "zs": {
      "pocet": 13,
      "ziaci": 5178,
-     "ped": 510
+     "ped": 484
     },
     "zus": {
      "pocet": 19,
      "ziaci": 2637,
-     "ped": 287
+     "ped": 268
     },
     "cvc": {
      "pocet": 3,
@@ -5341,7 +5341,7 @@
     "ms": {
      "pocet": 30,
      "ziaci": 2301,
-     "ped": 2395
+     "ped": 2353
     }
    },
    "stredne": [
@@ -5349,84 +5349,84 @@
      "nazov": "Gym. ĽudovítaŠtúra - Trenčín, 1.mája",
      "typ": "gym",
      "ziaci": 816,
-     "ped": 61.0,
+     "ped": 61.6,
      "web": "glstn.edupage.org"
     },
     {
      "nazov": "SOŠ OaSl - Trenčín, Jilemnického",
      "typ": "sos",
      "ziaci": 712,
-     "ped": 70.8,
+     "ped": 70.5,
      "web": "jilemak.edupage.org"
     },
     {
      "nazov": "SZŠ - Trenčín, Veľkomoravská",
      "typ": "sos",
      "ziaci": 586,
-     "ped": 50.3,
+     "ped": 50.2,
      "web": "szstn.edupage.org"
     },
     {
      "nazov": "OA Milana Hodžu - Trenčín, M.Rázusa",
      "typ": "sos",
      "ziaci": 539,
-     "ped": 44.7,
+     "ped": 44.8,
      "web": "oa-tn.edupage.org"
     },
     {
      "nazov": "SPŠ stavebná E.B. - Trenčín, Staničná",
      "typ": "sos",
      "ziaci": 502,
-     "ped": 39.5,
+     "ped": 40.1,
      "web": "sstn.edupage.org"
     },
     {
      "nazov": "Škola umeleckého priemy - Trenčín, Staničná",
      "typ": "sos",
      "ziaci": 458,
-     "ped": 63.0,
+     "ped": 63.3,
      "web": "suptn.edupage.org"
     },
     {
      "nazov": "Piar.gymn. J.Braneckého - Trenčín, Palackého",
      "typ": "gym",
      "ziaci": 436,
-     "ped": 33.7,
+     "ped": 34.0,
      "web": "pgjbtn.edupage.org"
     },
     {
      "nazov": "SOŠ - Trenčín, Pod Sokolicami",
      "typ": "sos",
      "ziaci": 370,
-     "ped": 32.0,
+     "ped": 32.5,
      "web": "souspstn.edupage.org"
     },
     {
      "nazov": "SOŠ letecko-technická - Trenčín, Legionárska",
      "typ": "sos",
      "ziaci": 338,
-     "ped": 30.0,
+     "ped": 31.0,
      "web": "soslt.edupage.org"
     },
     {
      "nazov": "SOŠ dopravná - Trenčín, Školská",
      "typ": "sos",
      "ziaci": 322,
-     "ped": 32.1,
+     "ped": 33.6,
      "web": "dopravna.edupage.org"
     },
     {
      "nazov": "SOŠP sv.A-S a B - Trenčín, 1.mája",
      "typ": "sos",
      "ziaci": 301,
-     "ped": 21.8,
+     "ped": 21.4,
      "web": "pasatn.edupage.org"
     },
     {
      "nazov": "Stredná športová škola - Trenčín, Kožušnícka",
      "typ": "sos",
      "ziaci": 277,
-     "ped": 30.7,
+     "ped": 30.9,
      "web": "sportgymtn.edupage.org"
     },
     {
@@ -5440,14 +5440,14 @@
      "nazov": "Súkr. gym. FUTURUM - Trenčín, Školská",
      "typ": "gym",
      "ziaci": 210,
-     "ped": 17.4,
+     "ped": 17.6,
      "web": "sgfuturum.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ - Trenčín, Zlatovská c.",
      "typ": "sos",
      "ziaci": 191,
-     "ped": 15.1,
+     "ped": 14.6,
      "web": "ssostn.edupage.org"
     }
    ]
@@ -5462,32 +5462,32 @@
     "gym": {
      "pocet": 7,
      "ziaci": 2573,
-     "ped": 218
+     "ped": 215
     },
     "zs": {
      "pocet": 17,
      "ziaci": 6104,
-     "ped": 589
+     "ped": 580
     },
     "ms": {
      "pocet": 51,
      "ziaci": 5152,
-     "ped": 851
+     "ped": 830
     },
     "cvc": {
      "pocet": 9,
      "ziaci": 6553,
-     "ped": 36
+     "ped": 34
     },
     "zus": {
      "pocet": 22,
      "ziaci": 5210,
-     "ped": 779
+     "ped": 750
     },
     "spec": {
      "pocet": 3,
      "ziaci": 111,
-     "ped": 78
+     "ped": 77
     }
    },
    "stredne": [
@@ -5495,42 +5495,42 @@
      "nazov": "SZŠ - Žilina, Hlboká c.",
      "typ": "sos",
      "ziaci": 627,
-     "ped": 69.7,
+     "ped": 69.3,
      "web": "szszilina.sk"
     },
     {
      "nazov": "SPŠ stavebná - Žilina, Veľká okružná",
      "typ": "sos",
      "ziaci": 610,
-     "ped": 54.0,
+     "ped": 54.5,
      "web": "spssza.edupage.org"
     },
     {
      "nazov": "SOŠ stavebná - Žilina, Tulipánová",
      "typ": "sos",
      "ziaci": 518,
-     "ped": 49.3,
+     "ped": 49.9,
      "web": "sosstavebna.edupage.org"
     },
     {
      "nazov": "SOŠ podnik. a sl. - Žilina, Hlavná",
      "typ": "sos",
      "ziaci": 511,
-     "ped": 46.1,
+     "ped": 47.1,
      "web": "sospas.edupage.org"
     },
     {
      "nazov": "HA - Žilina, Hlinská",
      "typ": "sos",
      "ziaci": 504,
-     "ped": 47.2,
+     "ped": 46.5,
      "web": "sszilina.edupage.org"
     },
     {
      "nazov": "Gym. - Žilina, Veľká okružná",
      "typ": "gym",
      "ziaci": 486,
-     "ped": 36.3,
+     "ped": 36.6,
      "web": "gvoza.edupage.org"
     },
     {
@@ -5544,56 +5544,56 @@
      "nazov": "SOŠ dopravná - Žilina, Rosinská",
      "typ": "sos",
      "ziaci": 459,
-     "ped": 43.1,
+     "ped": 42.3,
      "web": "www.sosdza.sk"
     },
     {
      "nazov": "SOŠ poľ. a sl. na vid. - Žilina, Predmestská",
      "typ": "sos",
      "ziaci": 457,
-     "ped": 47.0,
+     "ped": 49.1,
      "web": "sosp.edupage.org"
     },
     {
      "nazov": "Gym. bilingválne - Žilina, Tomáša Ružičku",
      "typ": "gym",
      "ziaci": 433,
-     "ped": 36.3,
+     "ped": 36.1,
      "web": "gbza.edupage.org"
     },
     {
      "nazov": "SOŠ elektrotechnická - Žilina, Komenského",
      "typ": "sos",
      "ziaci": 411,
-     "ped": 42.3,
+     "ped": 42.4,
      "web": "soseza.edupage.org"
     },
     {
      "nazov": "OA - Žilina, Veľká okružná",
      "typ": "sos",
      "ziaci": 406,
-     "ped": 31.3,
+     "ped": 32.2,
      "web": "oavoza.edupage.org"
     },
     {
      "nazov": "Gym. sv. Františka - Žilina, J.M.Hurbana",
      "typ": "gym",
      "ziaci": 396,
-     "ped": 29.9,
+     "ped": 30.3,
      "web": "gsf.edupage.org"
     },
     {
      "nazov": "Gym. - Žilina, Hlinská",
      "typ": "gym",
      "ziaci": 381,
-     "ped": 26.0,
+     "ped": 26.4,
      "web": "gymza.edupage.org"
     },
     {
      "nazov": "SOŠ sv. J. Robotníka - Žilina, Saleziánska",
      "typ": "sos",
      "ziaci": 351,
-     "ped": 34.2,
+     "ped": 35.3,
      "web": "robotnik.edupage.org"
     },
     {
@@ -5607,49 +5607,49 @@
      "nazov": "Súkr. SOŠ Pro scholaris - Žilina, Hlavná",
      "typ": "sos",
      "ziaci": 248,
-     "ped": 20.2,
+     "ped": 21.0,
      "web": "www.proscholaris.sk"
     },
     {
      "nazov": "Súkr. gym. - Žilina, Oravská",
      "typ": "gym",
      "ziaci": 246,
-     "ped": 23.4,
+     "ped": 20.1,
      "web": "sgza.edupage.org"
     },
     {
      "nazov": "Súkr. ŠUP - Žilina, Hálkova",
      "typ": "sos",
      "ziaci": 241,
-     "ped": 29.1,
+     "ped": 27.8,
      "web": "skolaumenia.edupage.org"
     },
     {
      "nazov": "OA sv.T.Akv. - Žilina, Vysokoškolákov",
      "typ": "sos",
      "ziaci": 184,
-     "ped": 15.9,
+     "ped": 15.4,
      "web": "www.oata.sk"
     },
     {
      "nazov": "Konz. - Žilina, J.M.Hurbana",
      "typ": "sos",
      "ziaci": 170,
-     "ped": 46.0,
+     "ped": 42.8,
      "web": "konza.edupage.org"
     },
     {
      "nazov": "Gym. pri SŠ KP - Žilina, Na Závaží",
      "typ": "gym",
      "ziaci": 164,
-     "ped": 31.9,
+     "ped": 31.3,
      "web": "sskp.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ - Žilina, Saleziánska",
      "typ": "sos",
      "ziaci": 131,
-     "ped": 12.3,
+     "ped": 11.5,
      "web": "ssosza.edupage.org"
     }
    ]
@@ -5664,32 +5664,32 @@
     "gym": {
      "pocet": 6,
      "ziaci": 2613,
-     "ped": 189
+     "ped": 190
     },
     "sos": {
      "pocet": 15,
      "ziaci": 3721,
-     "ped": 744
+     "ped": 748
     },
     "spec": {
      "pocet": 3,
      "ziaci": 202,
-     "ped": 78
+     "ped": 57
     },
     "ms": {
      "pocet": 50,
      "ziaci": 4118,
-     "ped": 6325
+     "ped": 6215
     },
     "zs": {
      "pocet": 15,
      "ziaci": 6156,
-     "ped": 514
+     "ped": 494
     },
     "zus": {
      "pocet": 10,
      "ziaci": 0,
-     "ped": 172
+     "ped": 160
     }
    },
    "stredne": [
@@ -5697,14 +5697,14 @@
      "nazov": "SOŠ - B.Bystrica, Pod Banošom",
      "typ": "sos",
      "ziaci": 783,
-     "ped": 68.5,
+     "ped": 68.3,
      "web": "sosbanbb.edupage.org"
     },
     {
      "nazov": "Gym. J.G.T. - B.Bystrica, J.G.Tajovského",
      "typ": "gym",
      "ziaci": 732,
-     "ped": 56.7,
+     "ped": 55.0,
      "web": "gjgt.edupage.org"
     },
     {
@@ -5718,14 +5718,14 @@
      "nazov": "SZŠ - B.Bystrica, J.G.Tajovského",
      "typ": "sos",
      "ziaci": 591,
-     "ped": 53.3,
+     "ped": 49.7,
      "web": "szsbb.eu"
     },
     {
      "nazov": "SOŠ infor. technológií - B.Bystrica, Tajovského",
      "typ": "sos",
      "ziaci": 575,
-     "ped": 50.6,
+     "ped": 52.9,
      "web": "sos-it.edupage.org"
     },
     {
@@ -5739,7 +5739,7 @@
      "nazov": "Stredná športová škola - B.Bystrica, Trieda SNP",
      "typ": "sos",
      "ziaci": 472,
-     "ped": 44.9,
+     "ped": 44.6,
      "web": "sgbb.edupage.org"
     },
     {
@@ -5753,35 +5753,35 @@
      "nazov": "OA M.F. - B.Bystrica, Tajovského",
      "typ": "sos",
      "ziaci": 355,
-     "ped": 23.0,
+     "ped": 23.6,
      "web": "oatabb.edupage.org"
     },
     {
      "nazov": "Gym. M.K. - B.Bystrica, Mládežnícka",
      "typ": "gym",
      "ziaci": 351,
-     "ped": 26.5,
+     "ped": 27.2,
      "web": "gmkbb.sk"
     },
     {
      "nazov": "Katolícke gym. Š.M - B.Bystrica, Hurbanova",
      "typ": "gym",
      "ziaci": 339,
-     "ped": 27.3,
+     "ped": 28.2,
      "web": "kgsm.edupage.org"
     },
     {
      "nazov": "Ev. gym. - B.Bystrica, Skuteckého",
      "typ": "gym",
      "ziaci": 329,
-     "ped": 24.2,
+     "ped": 25.4,
      "web": "www.egymbb.sk"
     },
     {
      "nazov": "Konz. J.L.B. - B.Bystrica, Skuteckého",
      "typ": "sos",
      "ziaci": 241,
-     "ped": 70.4,
+     "ped": 70.1,
      "web": "konzervatoriumbb.edupage.org"
     }
    ]
@@ -5791,37 +5791,37 @@
     "gym": {
      "pocet": 8,
      "ziaci": 2892,
-     "ped": 348
+     "ped": 343
     },
     "sos": {
      "pocet": 30,
      "ziaci": 6832,
-     "ped": 1083
+     "ped": 1063
     },
     "cvc": {
      "pocet": 13,
      "ziaci": 3990,
-     "ped": 65
+     "ped": 64
     },
     "spec": {
      "pocet": 5,
      "ziaci": 336,
-     "ped": 228
+     "ped": 207
     },
     "zs": {
      "pocet": 25,
      "ziaci": 9251,
-     "ped": 1092
+     "ped": 1080
     },
     "zus": {
      "pocet": 27,
      "ziaci": 5219,
-     "ped": 704
+     "ped": 688
     },
     "ms": {
      "pocet": 46,
      "ziaci": 4811,
-     "ped": 774
+     "ped": 776
     }
    },
    "stredne": [
@@ -5829,70 +5829,70 @@
      "nazov": "Gym. - Prešov, Konštantínova",
      "typ": "gym",
      "ziaci": 892,
-     "ped": 67.9,
+     "ped": 66.4,
      "web": "gk2-po.edupage.org"
     },
     {
      "nazov": "SZŠ - Prešov, Sládkovičova",
      "typ": "sos",
      "ziaci": 768,
-     "ped": 61.5,
+     "ped": 59.9,
      "web": "szspo.edupage.org"
     },
     {
      "nazov": "SPŠ elektrotechnická - Prešov, Plzenská",
      "typ": "sos",
      "ziaci": 682,
-     "ped": 51.0,
+     "ped": 53.8,
      "web": "spse-po.edupage.org"
     },
     {
      "nazov": "Gym. J. A. Raymana - Prešov, Mudroňova",
      "typ": "gym",
      "ziaci": 610,
-     "ped": 44.9,
+     "ped": 42.1,
      "web": "www.gjar-po.sk"
     },
     {
      "nazov": "SOŠ technická - Prešov, Volgogradská",
      "typ": "sos",
      "ziaci": 548,
-     "ped": 53.7,
+     "ped": 52.7,
      "web": "sost-po.edupage.org"
     },
     {
      "nazov": "Gym. sv. Moniky - Prešov, Tarasa Ševčenka",
      "typ": "gym",
      "ziaci": 512,
-     "ped": 40.7,
+     "ped": 42.2,
      "web": "gymonika.sk"
     },
     {
      "nazov": "SOŠ p - Prešov, Kmeťovo stromoradie",
      "typ": "sos",
      "ziaci": 494,
-     "ped": 35.2,
+     "ped": 34.8,
      "web": "sospg.edupage.org"
     },
     {
      "nazov": "SPŠ strojnícka - Prešov, Duklianska",
      "typ": "sos",
      "ziaci": 443,
-     "ped": 37.2,
+     "ped": 37.9,
      "web": "spspo.edupage.org"
     },
     {
      "nazov": "SOŠ gastronómie a služi - Prešov, Sídl.duklianskych hrd",
      "typ": "sos",
      "ziaci": 399,
-     "ped": 46.9,
+     "ped": 46.3,
      "web": "gastrosos.edupage.org"
     },
     {
      "nazov": "SPŠ stavebná - Prešov, Plzenská",
      "typ": "sos",
      "ziaci": 377,
-     "ped": 24.4,
+     "ped": 23.8,
      "web": "spsstavpo.edupage.org"
     },
     {
@@ -5906,7 +5906,7 @@
      "nazov": "SOŠ lesnícka - Prešov, Kollárova",
      "typ": "sos",
      "ziaci": 365,
-     "ped": 34.1,
+     "ped": 34.0,
      "web": "slspo.edupage.org"
     },
     {
@@ -5920,49 +5920,49 @@
      "nazov": "HA - Prešov, Baštová",
      "typ": "sos",
      "ziaci": 331,
-     "ped": 30.0,
+     "ped": 30.3,
      "web": "hapo.edupage.org"
     },
     {
      "nazov": "SOŠ s - Prešov, Košická",
      "typ": "sos",
      "ziaci": 327,
-     "ped": 39.7,
+     "ped": 39.6,
      "web": "zsssluz.edupage.org"
     },
     {
      "nazov": "SOŠ dopravná - Prešov, Volgogradská",
      "typ": "sos",
      "ziaci": 323,
-     "ped": 23.0,
+     "ped": 23.3,
      "web": "sosdpo.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ ELBA - Prešov, Smetanova",
      "typ": "sos",
      "ziaci": 304,
-     "ped": 28.3,
+     "ped": 26.1,
      "web": "ssoselba.edupage.org"
     },
     {
      "nazov": "Škola umeleckého priemy - Prešov, Vodárenská",
      "typ": "sos",
      "ziaci": 257,
-     "ped": 38.1,
+     "ped": 39.4,
      "web": "sup-po.edupage.org"
     },
     {
      "nazov": "Ev.spoj.šk.-Ev.kol.gym. - Prešov, Nám.legionárov",
      "typ": "gym",
      "ziaci": 243,
-     "ped": 42.5,
+     "ped": 43.1,
      "web": "esspo.edupage.org"
     },
     {
      "nazov": "Gym. - Katolícka spoj. - Prešov, Duklianska",
      "typ": "gym",
      "ziaci": 221,
-     "ped": 57.8,
+     "ped": 58.2,
      "web": "gzsmikpresov.edupage.org"
     },
     {
@@ -5976,14 +5976,14 @@
      "nazov": "Súkr. SŠ - Gym - Prešov, Solivarská",
      "typ": "gym",
      "ziaci": 161,
-     "ped": 35.4,
+     "ped": 35.3,
      "web": "sg-presov.edupage.org"
     },
     {
      "nazov": "SŠ-Gym. - Prešov, Sládkovičova",
      "typ": "gym",
      "ziaci": 151,
-     "ped": 22.7,
+     "ped": 22.4,
      "web": "gymtspo.edupage.org"
     },
     {
@@ -5997,49 +5997,49 @@
      "nazov": "Gym. bl. biskupa Gojdič - Prešov, Bernolákova",
      "typ": "gym",
      "ziaci": 102,
-     "ped": 36.0,
+     "ped": 33.6,
      "web": "gppgpo.edupage.org"
     },
     {
      "nazov": "Súkr. OA - Prešov, Pod Kalváriou",
      "typ": "sos",
      "ziaci": 80,
-     "ped": 6.6,
+     "ped": 6.2,
      "web": "soapo.edupage.org"
     },
     {
      "nazov": "SŠ - ŠMŠ - Prešov, Matice slovenskej",
      "typ": "sos",
      "ziaci": 40,
-     "ped": 20.0,
+     "ped": 20.3,
      "web": "szspomatica11.edupage.org"
     },
     {
      "nazov": "SŠ -ŠMŠnks.i. - Prešov, Duklianska",
      "typ": "sos",
      "ziaci": 39,
-     "ped": 24.6,
+     "ped": 26.1,
      "web": "spojenaskolaps.edupage.org"
     },
     {
      "nazov": "SŠ int.- PŠi - Prešov, Masarykova 11175/20C",
      "typ": "sos",
      "ziaci": 17,
-     "ped": 59.3,
+     "ped": 58.3,
      "web": "szsimasarykova.edupage.org"
     },
     {
      "nazov": "SŠ - PŠ - Prešov, Matice slovenskej",
      "typ": "sos",
      "ziaci": 13,
-     "ped": 27.0,
+     "ped": 28.3,
      "web": "szspomatica11.edupage.org"
     },
     {
      "nazov": "SŠ -ŠMŠsl.p.i. - Prešov, Duklianska",
      "typ": "sos",
      "ziaci": 10,
-     "ped": 24.6,
+     "ped": 26.1,
      "web": "spojenaskolaps.edupage.org"
     }
    ]
@@ -6049,37 +6049,37 @@
     "sos": {
      "pocet": 50,
      "ziaci": 10959,
-     "ped": 1833
+     "ped": 1829
     },
     "gym": {
      "pocet": 16,
      "ziaci": 6180,
-     "ped": 515
+     "ped": 518
     },
     "zs": {
      "pocet": 58,
      "ziaci": 20815,
-     "ped": 1934
+     "ped": 1916
     },
     "spec": {
      "pocet": 10,
      "ziaci": 445,
-     "ped": 313
+     "ped": 310
     },
     "zus": {
      "pocet": 25,
      "ziaci": 6036,
-     "ped": 944
+     "ped": 924
     },
     "ms": {
      "pocet": 121,
      "ziaci": 9935,
-     "ped": 16246
+     "ped": 15909
     },
     "cvc": {
      "pocet": 42,
      "ziaci": 12969,
-     "ped": 445
+     "ped": 438
     }
    },
    "stredne": [
@@ -6087,112 +6087,112 @@
      "nazov": "SPŠ elektrotechnická - Košice, Komenského",
      "typ": "sos",
      "ziaci": 851,
-     "ped": 61.0,
+     "ped": 60.3,
      "web": "www.spseke.sk"
     },
     {
      "nazov": "SOŠ informačných techno - Košice, Ostrovského",
      "typ": "sos",
      "ziaci": 763,
-     "ped": 63.2,
+     "ped": 62.8,
      "web": "ostrov.edupage.org"
     },
     {
      "nazov": "SOŠ technická - Košice, Kukučínova",
      "typ": "sos",
      "ziaci": 748,
-     "ped": 83.1,
+     "ped": 81.9,
      "web": "soskuke.edupage.org"
     },
     {
      "nazov": "Gym. - Košice, Park mládeže",
      "typ": "gym",
      "ziaci": 691,
-     "ped": 49.4,
+     "ped": 49.6,
      "web": "gpm.edupage.org"
     },
     {
      "nazov": "Gym. - Košice, Šrobárova",
      "typ": "gym",
      "ziaci": 655,
-     "ped": 51.8,
+     "ped": 51.4,
      "web": "srobarka.edupage.org"
     },
     {
      "nazov": "Gym. - Košice, Trebišovská",
      "typ": "gym",
      "ziaci": 589,
-     "ped": 48.5,
+     "ped": 47.7,
      "web": "gt12.edupage.org"
     },
     {
      "nazov": "OA - Košice, Watsonova",
      "typ": "sos",
      "ziaci": 578,
-     "ped": 49.6,
+     "ped": 49.3,
      "web": "oake.edupage.org"
     },
     {
      "nazov": "SZŠ - Košice, Kukučínova",
      "typ": "sos",
      "ziaci": 549,
-     "ped": 44.8,
+     "ped": 44.9,
      "web": "kukucinka.edupage.org"
     },
     {
      "nazov": "Gym. - Košice, Poštová",
      "typ": "gym",
      "ziaci": 502,
-     "ped": 37.1,
+     "ped": 37.9,
      "web": "www.gympos.sk"
     },
     {
      "nazov": "Ev. gym. - Košice, Škultétyho",
      "typ": "gym",
      "ziaci": 495,
-     "ped": 41.5,
+     "ped": 40.7,
      "web": "egjak.com"
     },
     {
      "nazov": "Gym. - Košice, Alejová",
      "typ": "gym",
      "ziaci": 484,
-     "ped": 38.5,
+     "ped": 38.1,
      "web": "gymalke.edupage.org"
     },
     {
      "nazov": "Gym. M.R.Štefánika - Košice, Nám.L.Novomeského",
      "typ": "gym",
      "ziaci": 482,
-     "ped": 40.6,
+     "ped": 40.5,
      "web": "gmrske.edupage.org"
     },
     {
      "nazov": "SOŠ priemyselných techn - Košice, Učňovská",
      "typ": "sos",
      "ziaci": 473,
-     "ped": 47.6,
+     "ped": 47.1,
      "web": "www.sossaca.sk"
     },
     {
      "nazov": "Gymn. sv. E. Steinovej - Košice, Charkovská",
      "typ": "gym",
      "ziaci": 467,
-     "ped": 41.0,
+     "ped": 41.5,
      "web": "gymes.edupage.org"
     },
     {
      "nazov": "Gym. - Košice, Opatovská c.",
      "typ": "gym",
      "ziaci": 454,
-     "ped": 34.8,
+     "ped": 34.7,
      "web": "gymopatke.edupage.org"
     },
     {
      "nazov": "SZŠ - Košice, Moyzesova",
      "typ": "sos",
      "ziaci": 445,
-     "ped": 37.1,
+     "ped": 37.6,
      "web": "www.moyzeska.sk"
     },
     {
@@ -6206,119 +6206,119 @@
      "nazov": "SOŠ OaSl - Košice, Bocatiova",
      "typ": "sos",
      "ziaci": 401,
-     "ped": 39.5,
+     "ped": 38.6,
      "web": "sosbocatiuske.edupage.org"
     },
     {
      "nazov": "Gymn. sv. T. Akvinského - Košice, Zbrojničná",
      "typ": "gym",
      "ziaci": 398,
-     "ped": 32.0,
+     "ped": 34.1,
      "web": "gta.edupage.org"
     },
     {
      "nazov": "HA - Košice, Južná trieda",
      "typ": "sos",
      "ziaci": 398,
-     "ped": 41.7,
+     "ped": 42.1,
      "web": "hotelovake.edupage.org"
     },
     {
      "nazov": "SZŠ sv. Alžbety - Košice, Mäsiarska",
      "typ": "sos",
      "ziaci": 393,
-     "ped": 30.8,
+     "ped": 31.5,
      "web": "szssvalzbetyke.edupage.org"
     },
     {
      "nazov": "SPŠ stavebná a geodet. - Košice, Lermontovova",
      "typ": "sos",
      "ziaci": 375,
-     "ped": 27.1,
+     "ped": 29.0,
      "web": "www.stavke.sk"
     },
     {
      "nazov": "SOŠ poľnoh. a SnV - Košice, Kukučínova",
      "typ": "sos",
      "ziaci": 369,
-     "ped": 34.2,
+     "ped": 34.8,
      "web": "sospasnavkosice.edupage.org"
     },
     {
      "nazov": "Súkr.SOŠ pedagogická a - Košice, Požiarnická",
      "typ": "sos",
      "ziaci": 359,
-     "ped": 16.7,
+     "ped": 17.0,
      "web": "spark.edupage.org"
     },
     {
      "nazov": "SPŠ dopravná - Košice, Hlavná",
      "typ": "sos",
      "ziaci": 354,
-     "ped": 35.8,
+     "ped": 35.3,
      "web": "spsdke.edupage.org"
     },
     {
      "nazov": "SOŠ železničná - Košice, Palackého",
      "typ": "sos",
      "ziaci": 354,
-     "ped": 36.6,
+     "ped": 36.3,
      "web": "soszke.edupage.org"
     },
     {
      "nazov": "SPŠ strojnícka - Košice, Komenského",
      "typ": "sos",
      "ziaci": 343,
-     "ped": 31.3,
+     "ped": 30.6,
      "web": "priemyslovka.edupage.org"
     },
     {
      "nazov": "ŠUP - Košice, Jakobyho",
      "typ": "sos",
      "ziaci": 338,
-     "ped": 51.5,
+     "ped": 51.4,
      "web": "supke.edupage.org"
     },
     {
      "nazov": "SOŠ veterinárna - Košice, Nám.mladých poľnohos",
      "typ": "sos",
      "ziaci": 313,
-     "ped": 28.8,
+     "ped": 28.0,
      "web": "sosvet.edupage.org"
     },
     {
      "nazov": "SOŠ beauty služieb - Košice, Gemerská",
      "typ": "sos",
      "ziaci": 279,
-     "ped": 29.5,
+     "ped": 30.5,
      "web": "gemke.edupage.org"
     },
     {
      "nazov": "Súkr.SOŠ ekonomicko-tec - Košice, Postupimská",
      "typ": "sos",
      "ziaci": 262,
-     "ped": 20.8,
+     "ped": 21.3,
      "web": "ssoset.edupage.org"
     },
     {
      "nazov": "SOŠ pedagogická sv.CaM - Košice, Južná trieda",
      "typ": "sos",
      "ziaci": 236,
-     "ped": 19.0,
+     "ped": 19.2,
      "web": "kspgs.edupage.org"
     },
     {
      "nazov": "Súkr. gym. FUTURUM - Košice, Moyzesova",
      "typ": "gym",
      "ziaci": 224,
-     "ped": 13.7,
+     "ped": 14.3,
      "web": "sgfuturumke.edupage.org"
     },
     {
      "nazov": "Súkr.ŠUP filmová - Košice, Petzvalova",
      "typ": "sos",
      "ziaci": 209,
-     "ped": 20.8,
+     "ped": 20.4,
      "web": "filmovaskola.edupage.org"
     },
     {
@@ -6332,49 +6332,49 @@
      "nazov": "Súkr. gym. - Košice, Katkin park",
      "typ": "gym",
      "ziaci": 191,
-     "ped": 14.5,
+     "ped": 15.0,
      "web": "sgcr.edupage.org"
     },
     {
      "nazov": "Premonštrátske gymnáziu - Košice, Kováčska",
      "typ": "gym",
      "ziaci": 188,
-     "ped": 16.0,
+     "ped": 16.4,
      "web": "kovacska.edupage.org"
     },
     {
      "nazov": "Súkr. gym. - Košice, Dneperská",
      "typ": "gym",
      "ziaci": 167,
-     "ped": 15.8,
+     "ped": 15.9,
      "web": "gymbosak.edupage.org"
     },
     {
      "nazov": "Súkr.HaD konzerv - Košice, Požiarnická",
      "typ": "sos",
      "ziaci": 154,
-     "ped": 28.5,
+     "ped": 29.4,
      "web": "shdkke.edupage.org"
     },
     {
      "nazov": "Súkr. stredná šport. šk - Košice, Užhorodská",
      "typ": "sos",
      "ziaci": 146,
-     "ped": 18.7,
+     "ped": 19.0,
      "web": "sssske.edupage.org"
     },
     {
      "nazov": "SOŠ technická a ekonomi - Košice, Grešákova",
      "typ": "sos",
      "ziaci": 141,
-     "ped": 16.1,
+     "ped": 16.6,
      "web": "ipari.edupage.org"
     },
     {
      "nazov": "Súkr. SOŠ ekonomická KA - Košice, Tajovského",
      "typ": "sos",
      "ziaci": 118,
-     "ped": 12.4,
+     "ped": 11.6,
      "web": "kadavinci.edupage.org"
     },
     {
@@ -6395,56 +6395,56 @@
      "nazov": "SŠ-Gymn. sv.KM - Košice, Čordákova",
      "typ": "gym",
      "ziaci": 90,
-     "ped": 40.0,
+     "ped": 40.2,
      "web": "gkmke.sk"
     },
     {
      "nazov": "Súkr.SŠ - Súkr. - Košice, Poľná",
      "typ": "sos",
      "ziaci": 78,
-     "ped": 23.0,
+     "ped": 20.0,
      "web": "www.keis.sk"
     },
     {
      "nazov": "Súkr. SOŠ - Košice, Dneperská",
      "typ": "sos",
      "ziaci": 72,
-     "ped": 4.3,
+     "ped": 4.5,
      "web": "ssoske.edupage.org"
     },
     {
      "nazov": "Súkr. konz. - Košice, Zádielska",
      "typ": "sos",
      "ziaci": 71,
-     "ped": 17.0,
+     "ped": 18.0,
      "web": "skke.edupage.org"
     },
     {
      "nazov": "SŠ - ŠMŠ NKS - Košice, Opatovská c.",
      "typ": "sos",
      "ziaci": 23,
-     "ped": 18.5,
+     "ped": 17.6,
      "web": "www.stpke.sk"
     },
     {
      "nazov": "EP - SŠ - PŠ - Košice, Inžinierska",
      "typ": "sos",
      "ziaci": 19,
-     "ped": 65.6,
+     "ped": 66.7,
      "web": "spojvoj.edupage.org"
     },
     {
      "nazov": "Súkr.SŠ - Súkr. - Košice, Poľná",
      "typ": "sos",
      "ziaci": 15,
-     "ped": 2.0,
+     "ped": 3.0,
      "web": "www.keis.sk"
     },
     {
      "nazov": "Súkr.SŠ - Súkr. - Košice, Poľná",
      "typ": "sos",
      "ziaci": 11,
-     "ped": 23.0,
+     "ped": 20.0,
      "web": "www.keis.sk"
     }
    ]
@@ -14010,5 +14010,5 @@
    }
   }
  },
- "aktualizovane": "2026-11-01T10:19:01+00:00"
+ "aktualizovane": "2026-11-09T04:41:56+00:00"
 }
