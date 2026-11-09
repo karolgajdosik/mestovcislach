@@ -5,6 +5,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { novinky } from './novinky';
 
+const lomka = (u: string) => String(u ?? '').replace(/^(\/[^?#]*?[^/?#.]+)(?=[?#]|$)/, '$1/');
+
 export type Udalost = { id: string; od: string; do?: string; nazov: string; popis: string; odkaz: string; typ: 'termin' | 'zastupitelstvo' | 'volby'; pripomienka?: boolean };
 
 const plus = (d: string, n: number) => new Date(Date.parse(d) + n * 864e5).toISOString().slice(0, 10);
@@ -38,13 +40,13 @@ export function kalendar(slug: string): Udalost[] {
     for (const t of (z.mesta?.[slug] ?? []).filter((x: any) => x.termin)) {
       if (t.ustanovujuce) ustanovujuce = true;
       if (out.some((u) => u.typ === 'zastupitelstvo' && u.od === t.termin)) continue;
-      out.push({ id: `msz-${t.termin}`, od: t.termin, typ: 'zastupitelstvo', pripomienka: true, odkaz: `/${slug}/zastupitelstvo`,
+      out.push({ id: `msz-${t.termin}`, od: t.termin, typ: 'zastupitelstvo', pripomienka: true, odkaz: `/${slug}/zastupitelstvo/`,
         nazov: t.ustanovujuce ? 'Ustanovujúce zasadnutie mestského zastupiteľstva' : 'Zasadnutie mestského zastupiteľstva',
         popis: `${t.ustanovujuce ? 'Prvé zasadnutie nového zastupiteľstva 2026 – 2030: sľub primátora a poslancov, voľba komisií a mestskej rady. ' : ''}Oznámenie mesta: ${t.url}` });
     }
   } catch { /* zatiaľ bez údajov */ }
   if (!ustanovujuce)
-    out.push({ id: 'ustanovujuce-2026', od: '2026-11-23', nazov: 'Najneskorší termín ustanovujúceho zasadnutia zastupiteľstva', popis: 'Nové mestské zastupiteľstvo sa musí zísť do 30 dní od volieb; primátor a poslanci na ňom zložia sľub. Presný dátum určí doterajší primátor.', odkaz: `/${slug}/zastupitelstvo`, typ: 'zastupitelstvo' });
+    out.push({ id: 'ustanovujuce-2026', od: '2026-11-23', nazov: 'Najneskorší termín ustanovujúceho zasadnutia zastupiteľstva', popis: 'Nové mestské zastupiteľstvo sa musí zísť do 30 dní od volieb; primátor a poslanci na ňom zložia sľub. Presný dátum určí doterajší primátor.', odkaz: `/${slug}/zastupitelstvo/`, typ: 'zastupitelstvo' });
   // rozpočet na budúci rok: zverejnený návrh (scripts/zber_rozpocty.py) a termín schválenia do konca roka
   const rRok = rok + 1;
   try {
@@ -80,7 +82,7 @@ export function ics(slug: string, nazovMesta: string, udalosti: Udalost[], web =
     `X-WR-CALNAME:${esc(`${nazovMesta} – termíny a zastupiteľstvo`)}`, 'X-WR-TIMEZONE:Europe/Bratislava', 'REFRESH-INTERVAL;VALUE=DURATION:P1D', 'X-PUBLISHED-TTL:P1D'];
   for (const u of udalosti) {
     r.push('BEGIN:VEVENT', `UID:${u.id}-${slug}@mestovcislach.sk`, `DTSTAMP:${teraz}`, `DTSTART;VALUE=DATE:${d8(u.od)}`, `DTEND;VALUE=DATE:${d8(plus(u.do ?? u.od, 1))}`,
-      `SUMMARY:${esc(u.nazov)}`, `DESCRIPTION:${esc(`${u.popis}\n\n${web}${u.odkaz}`)}`, `URL:${web}${u.odkaz}`, 'TRANSP:TRANSPARENT');
+      `SUMMARY:${esc(u.nazov)}`, `DESCRIPTION:${esc(`${u.popis}\n\n${web}${lomka(u.odkaz)}`)}`, `URL:${web}${lomka(u.odkaz)}`, 'TRANSP:TRANSPARENT');
     if (u.pripomienka) r.push('BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${esc(u.nazov)}`, 'TRIGGER:-P1D', 'END:VALARM');
     r.push('END:VEVENT');
   }

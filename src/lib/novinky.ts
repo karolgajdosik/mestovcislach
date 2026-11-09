@@ -47,7 +47,7 @@ export function novinky(slug: string, dni = 180): Novinka[] {
       datum: String(z.datum).slice(0, 10), typ: 'zmluvy',
       nazov: `Zmluva na ${eur(z.suma)}: ${z.dodavatel}`,
       text: String(z.popis ?? '').slice(0, 220),
-      odkaz: z.url ?? `/${slug}/samosprava`,
+      odkaz: z.url ?? `/${slug}/samosprava/`,
     });
   }
 
@@ -79,7 +79,7 @@ export function novinky(slug: string, dni = 180): Novinka[] {
       datum: '2026-10-24', typ: 'volby',
       nazov: o.priebezne ? `Komunálne voľby ${o.rok}: priebežne vedie ${bezTit(o.primator.meno)}` : `Komunálne voľby ${o.rok}: ${/(ová|á)$/.test(bezTit(o.primator.meno)) ? 'primátorkou' : 'primátorom'} je ${bezTit(o.primator.meno)}`,
       text: o.priebezne ? 'Sčítavajú sa hlasy.' : `Zvolených ${o.poslancov} poslancov.`,
-      odkaz: `/${slug}/zastupitelstvo`,
+      odkaz: `/${slug}/zastupitelstvo/`,
     });
   }
   return out.sort((a, b) => b.datum.localeCompare(a.datum));

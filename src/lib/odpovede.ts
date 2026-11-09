@@ -91,7 +91,7 @@ export function otazkyMesta(slug: string): Odpoved[] {
     out.push({
       otazka: `Koľko stojí byt v meste ${m.nazov}?`,
       odpoved: `Priemerná cena za kúpu bytu bola v roku ${cena[0]} asi ${cele(cena[1])} € za m². Byt s rozlohou 60 m² teda vychádzal približne na ${cele(cena[1] * 60)} €.`,
-      zdroj: 'Štatistický úrad SR (Urban Audit)', odkaz: '/porovnaj?a=' + slug,
+      zdroj: 'Štatistický úrad SR (Urban Audit)', odkaz: '/porovnaj/?a=' + slug,
     });
   }
   if (por?.vs != null) {

@@ -13,7 +13,7 @@ const karty: [string, string, string][] = [
   [`/${m.slug}/pribeh`, '10 rokov v číslach', `Ako sa zmenilo mesto ${m.nazov}: ľudia, byty, autá, odpad`],
   maOdchody(m.slug)
     ? [`/${m.slug}/odchody`, 'Odchody MHD', 'Najbližšie spoje z vašej zastávky, aj podľa polohy']
-    : [`/porovnaj?a=${m.slug}`, 'Porovnať s iným mestom', 'Kde sa žije lepšie? Ukazovatele vedľa seba'],
+    : [`/porovnaj/?a=${m.slug}`, 'Porovnať s iným mestom', 'Kde sa žije lepšie? Ukazovatele vedľa seba'],
 ];
 ---
 <section class="card dalej" aria-labelledby="dalej-h">

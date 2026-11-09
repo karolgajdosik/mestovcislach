@@ -33,6 +33,7 @@ const mesta = MESTA.filter((m) => m.aktivne).map((m) => ({
 </section>
 
 <script>
+  const lomka = (u: string) => String(u ?? '').replace(/^(\/[^?#]*?[^/?#.]+)(?=[?#]|$)/, '$1/');
   import { pocasie, vystrahy, dunaj, ovzdusie, javVystrahy, stupenDunaja, farbaOvzdusia } from '../scripts/zive';
   import { nacitajIndex, nacitajZastavku, dalsie, zoznam, hx } from '../scripts/odchody';
   import '../styles/odchody.css';
@@ -82,9 +83,9 @@ const mesta = MESTA.filter((m) => m.aktivne).map((m) => ({
       fetch(`/data/novinky/${m.slug}.json`).then((x) => x.json()).then((d) => {
         const t = document.getElementById('mp-terminy')!, n = document.getElementById('mp-novinky')!;
         t.hidden = !d.terminy.length;
-        t.innerHTML = `<h3>Najbližšie termíny</h3><ul>${d.terminy.map((x: any) => `<li><b>${datum(x.od)}${x.do ? ` – ${datum(x.do)}` : ''}</b> <a href="${hx(x.odkaz)}">${hx(x.nazov)}</a></li>`).join('')}</ul><p class="mp-mala"><a href="/${m.slug}/kalendar">Kalendár do telefónu</a></p>`;
+        t.innerHTML = `<h3>Najbližšie termíny</h3><ul>${d.terminy.map((x: any) => `<li><b>${datum(x.od)}${x.do ? ` – ${datum(x.do)}` : ''}</b> <a href="${hx(lomka(x.odkaz))}">${hx(x.nazov)}</a></li>`).join('')}</ul><p class="mp-mala"><a href="/${m.slug}/kalendar/">Kalendár do telefónu</a></p>`;
         n.hidden = !d.novinky.length;
-        n.innerHTML = `<h3>Čo je nové</h3><ul>${d.novinky.map((x: any) => `<li><small>${datum(x.datum)} · ${hx(x.typ)}</small> <a href="${hx(x.odkaz)}">${hx(x.nazov)}</a></li>`).join('')}</ul><p class="mp-mala"><a href="/${m.slug}/novinky">Všetky novinky</a></p>`;
+        n.innerHTML = `<h3>Čo je nové</h3><ul>${d.novinky.map((x: any) => `<li><small>${datum(x.datum)} · ${hx(x.typ)}</small> <a href="${hx(lomka(x.odkaz))}">${hx(x.nazov)}</a></li>`).join('')}</ul><p class="mp-mala"><a href="/${m.slug}/novinky/">Všetky novinky</a></p>`;
       }).catch(() => {});
       document.getElementById('mp-odkazy')!.innerHTML = [[`/${m.slug}`, `Prehľad ${hx(m.nazov)}`], [`/${m.slug}/adresa`, 'Pri mne'], ...(m.odchody ? [[`/${m.slug}/odchody`, 'Odchody MHD'], [`/${m.slug}/dosah`, 'Kam sa dostanem']] : []), [`/${m.slug}/kviz`, 'Kvíz']]
         .map(([u, t]) => `<a href="${u}">${t}</a>`).join('');
