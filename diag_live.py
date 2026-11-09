@@ -1,16 +1,11 @@
-import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
-import json, time, traceback, requests
-sys.path.insert(0, "scripts")
-import zber_obce_vrstvy as v, zber_obce_volby as vo, zber_obce_statdata as st, zber_obce_klima as kl
-for name, f in [("geologia", v.geologia), ("starosta2022", vo.starosta2022), ("historia", st.historia)]:
-    t = time.time()
-    try:
-        f(); d = json.load(open(f"data/obce/{name}.json"))
-        print(name, "OK", round(time.time() - t), {k: d["obce"].get(k) for k in ["518921", "516643", "582000", "599981"]})
-    except Exception:
-        traceback.print_exc()
-kl.BUNIEK_NA_BEH = 2
-try:
-    kl.main(); d = json.load(open("data/obce/klima.json")); print("klima", len(d["obce"]), list(d["obce"].items())[:3])
-except Exception: traceback.print_exc()
+import requests
+s = requests.Session(); s.headers["User-Agent"] = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+for u in ["https://mestovcislach.sk/presov/zastupitelstvo", "https://mestovcislach.sk/presov/zastupitelstvo/", "https://mestovcislach.sk/dodavatelia",
+          "https://mestovcislach.sk/katalog/ed15579d1a65471187497a534b8de8f4", "https://mestovcislach.sk/porovnaj/?a=kosice", "https://mestovcislach.sk/porovnaj?a=kosice",
+          "https://mestovcislach.sk/kosice/mestske-casti/dzungla", "https://mestovcislach.sk/kosice/mestske-casti/dzungla/"]:
+    r = s.get(u, allow_redirects=False, timeout=30)
+    print(r.status_code, u, "->", r.headers.get("location"))
+h = s.get("https://mestovcislach.sk/porovnaj/?a=kosice", timeout=30).text
+import re
+print("canonical", re.findall(r'<link rel="canonical"[^>]*>', h)[:2], re.findall(r'http-equiv="refresh"[^>]*>', h)[:1])
 print("HOTOVO")
