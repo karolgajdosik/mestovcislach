@@ -2,15 +2,15 @@
  "mesto": "zilina",
  "ico": "00321796",
  "od": "2022-01-01",
- "do": "2026-11-08",
+ "do": "2026-11-09",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8493,
-  "skryte_fyzicke_osoby": 3809,
+  "zaznamov": 8500,
+  "skryte_fyzicke_osoby": 3813,
   "roky": {
    "2022": {
     "pocet": 1084,
@@ -37,10 +37,10 @@
     "fo_suma": 5442968
    },
    "2026": {
-    "pocet": 1799,
-    "suma": 143176788,
-    "fo_pocet": 909,
-    "fo_suma": 4720366
+    "pocet": 1806,
+    "suma": 143178048,
+    "fo_pocet": 913,
+    "fo_suma": 4720826
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -65,7 +65,7 @@
    {
     "ico": "53946600",
     "nazov": "Technické služby mesta Žilina, s.r.o.",
-    "pocet": 27,
+    "pocet": 28,
     "suma": 14580232
    },
    {
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-09T06:27:09+00:00"
+ "aktualizovane": "2026-11-10T06:14:28+00:00"
 }
