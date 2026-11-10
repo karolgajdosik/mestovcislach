@@ -1072,7 +1072,7 @@
    "popis": "Dataset obsahuje namerané údaje z cyklosčítačov v oblasti Košíc.",
    "jazyk": "sk-sk",
    "licencia": "Creative Commons Attribution 4.0 International License",
-   "velkost": 34775040,
+   "velkost": 34922496,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -1091,7 +1091,7 @@
      "nazov": "KE_pocitadla",
      "druh": "vrstva",
      "geometria": "esriGeometryPoint",
-     "pocet": 181298,
+     "pocet": 181970,
      "polia": [
       [
        "OBJECTID",
@@ -1199,7 +1199,7 @@
    "popis": "Dataset obsahuje namerané hodnoty prašnosti PM2,5 v µg/m³.",
    "jazyk": "en-gb",
    "licencia": "Creative Commons Attribution 4.0 International License",
-   "velkost": 63397888,
+   "velkost": 63586304,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -1219,7 +1219,7 @@
      "nazov": "KE_pocitadla_dustiness",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 384945,
+     "pocet": 385904,
      "polia": [
       [
        "OBJECTID",
@@ -1380,7 +1380,7 @@
    "kategorie": [
     "/Categories/Samospráva/Zmluvy, faktúry, objednávky"
    ],
-   "upravene": 1793671331000,
+   "upravene": 1794276183000,
    "popis": "Dataset obsahuje denne aktualizovaný zoznam dodávateľských faktúr.",
    "jazyk": "",
    "licencia": "Creative Commons Attribution 4.0 International License",
@@ -1397,7 +1397,7 @@
     "Hosted Service",
     "View Service"
    ],
-   "upravene_ms": 1793671331000,
+   "upravene_ms": 1794276183000,
    "sluzba": "https://services-eu1.arcgis.com/qrtO0RIRViAdEN4F/arcgis/rest/services/Dodávateľské_faktúry_Mesta_Košice/FeatureServer",
    "vrstvy": [
     {
@@ -5660,7 +5660,7 @@
      "nazov": "meteostanice_ce_climate",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 705893,
+     "pocet": 718929,
      "polia": [
       [
        "OBJECTID",
@@ -5752,7 +5752,7 @@
    "kategorie": [
     "/Categories/Samospráva/Zmluvy, faktúry, objednávky"
    ],
-   "upravene": 1793671340000,
+   "upravene": 1794276192000,
    "popis": "Dataset obsahuje denne aktualizovaný zoznam objednávok.",
    "jazyk": "",
    "licencia": "Creative Commons Attribution 4.0 International License",
@@ -5769,7 +5769,7 @@
     "Hosted Service",
     "View Service"
    ],
-   "upravene_ms": 1793671340000,
+   "upravene_ms": 1794276192000,
    "sluzba": "https://services-eu1.arcgis.com/qrtO0RIRViAdEN4F/arcgis/rest/services/objednavky_zobrazenie/FeatureServer",
    "vrstvy": [
     {
@@ -10117,7 +10117,7 @@
    "kategorie": [
     "/Categories/Samospráva/Zmluvy, faktúry, objednávky"
    ],
-   "upravene": 1793671349000,
+   "upravene": 1794276201000,
    "popis": "Dataset obsahuje denne aktualizovaný zoznam zmlúv.",
    "jazyk": "",
    "licencia": "Creative Commons Attribution 4.0 International License",
@@ -10134,7 +10134,7 @@
     "Hosted Service",
     "View Service"
    ],
-   "upravene_ms": 1793671349000,
+   "upravene_ms": 1794276201000,
    "sluzba": "https://services-eu1.arcgis.com/qrtO0RIRViAdEN4F/arcgis/rest/services/zmluvy_zobrazenie/FeatureServer",
    "vrstvy": [
     {
@@ -11318,5 +11318,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-11-03T05:20:43+00:00"
+ "aktualizovane": "2026-11-10T05:19:44+00:00"
 }
