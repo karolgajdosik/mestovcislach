@@ -2,15 +2,15 @@
  "mesto": "presov",
  "ico": "00327646",
  "od": "2022-01-01",
- "do": "2026-11-09",
+ "do": "2026-11-10",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 6244,
-  "skryte_fyzicke_osoby": 1579,
+  "zaznamov": 6251,
+  "skryte_fyzicke_osoby": 1583,
   "roky": {
    "2022": {
     "pocet": 1140,
@@ -37,10 +37,10 @@
     "fo_suma": 8470220
    },
    "2026": {
-    "pocet": 1092,
-    "suma": 71102799,
-    "fo_pocet": 305,
-    "fo_suma": 1813329
+    "pocet": 1099,
+    "suma": 71114849,
+    "fo_pocet": 309,
+    "fo_suma": 1820539
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -59,8 +59,8 @@
    {
     "ico": "31718914",
     "nazov": "Technické služby mesta Prešov, a.s.",
-    "pocet": 75,
-    "suma": 26529874
+    "pocet": 76,
+    "suma": 26529968
    },
    {
     "ico": "50494970",
@@ -113,8 +113,8 @@
    {
     "ico": "37870475",
     "nazov": "Prešovský samosprávny kraj",
-    "pocet": 33,
-    "suma": 4579418
+    "pocet": 34,
+    "suma": 4584163
    },
    {
     "ico": "57517801",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-10T06:14:28+00:00"
+ "aktualizovane": "2026-11-11T06:18:22+00:00"
 }

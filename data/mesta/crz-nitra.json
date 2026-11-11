@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-11-09",
+ "do": "2026-11-10",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 15113,
-  "skryte_fyzicke_osoby": 9833,
+  "zaznamov": 15132,
+  "skryte_fyzicke_osoby": 9846,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,10 +37,10 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3385,
-    "suma": 52647484,
-    "fo_pocet": 2426,
-    "fo_suma": 3434161
+    "pocet": 3404,
+    "suma": 52782212,
+    "fo_pocet": 2439,
+    "fo_suma": 3448111
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -119,7 +119,7 @@
    {
     "ico": "57012644",
     "nazov": "Spojená materská škola, Alexyho 26, Nitra",
-    "pocet": 11,
+    "pocet": 12,
     "suma": 1823997
    },
    {
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-10T06:14:28+00:00"
+ "aktualizovane": "2026-11-11T06:18:22+00:00"
 }
