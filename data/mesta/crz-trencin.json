@@ -2,15 +2,15 @@
  "mesto": "trencin",
  "ico": "00312037",
  "od": "2022-01-01",
- "do": "2026-11-10",
+ "do": "2026-11-11",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 12500,
-  "skryte_fyzicke_osoby": 6865,
+  "zaznamov": 12502,
+  "skryte_fyzicke_osoby": 6866,
   "roky": {
    "2022": {
     "pocet": 1819,
@@ -37,10 +37,10 @@
     "fo_suma": 9669829
    },
    "2026": {
-    "pocet": 2241,
-    "suma": 99069637,
-    "fo_pocet": 1107,
-    "fo_suma": 2393922
+    "pocet": 2243,
+    "suma": 99156067,
+    "fo_pocet": 1108,
+    "fo_suma": 2478138
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-11T06:18:22+00:00"
+ "aktualizovane": "2026-11-12T06:21:55+00:00"
 }

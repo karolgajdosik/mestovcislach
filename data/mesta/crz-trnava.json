@@ -2,14 +2,14 @@
  "mesto": "trnava",
  "ico": "00313114",
  "od": "2022-01-01",
- "do": "2026-11-10",
+ "do": "2026-11-11",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 4563,
+  "zaznamov": 4566,
   "skryte_fyzicke_osoby": 1378,
   "roky": {
    "2022": {
@@ -37,8 +37,8 @@
     "fo_suma": 3426023
    },
    "2026": {
-    "pocet": 797,
-    "suma": 55976084,
+    "pocet": 800,
+    "suma": 55977062,
     "fo_pocet": 241,
     "fo_suma": 1085188
    }
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-11T06:18:22+00:00"
+ "aktualizovane": "2026-11-12T06:21:55+00:00"
 }

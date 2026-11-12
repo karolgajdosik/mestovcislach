@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-11-10",
+ "do": "2026-11-11",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 15132,
-  "skryte_fyzicke_osoby": 9846,
+  "zaznamov": 15155,
+  "skryte_fyzicke_osoby": 9865,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,10 +37,10 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3404,
-    "suma": 52782212,
-    "fo_pocet": 2439,
-    "fo_suma": 3448111
+    "pocet": 3427,
+    "suma": 52908428,
+    "fo_pocet": 2458,
+    "fo_suma": 3492017
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -71,7 +71,7 @@
    {
     "ico": "57013420",
     "nazov": "Spojená materská škola, Dobšinského 2885/8, Nitra",
-    "pocet": 5,
+    "pocet": 6,
     "suma": 3783897
    },
    {
@@ -113,7 +113,7 @@
    {
     "ico": "37966456",
     "nazov": "Správa zariadení sociálnych služieb",
-    "pocet": 40,
+    "pocet": 41,
     "suma": 1976945
    },
    {
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-11T06:18:22+00:00"
+ "aktualizovane": "2026-11-12T06:21:55+00:00"
 }

@@ -2,15 +2,15 @@
  "mesto": "banska-bystrica",
  "ico": "00313271",
  "od": "2022-01-01",
- "do": "2026-11-10",
+ "do": "2026-11-11",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8143,
-  "skryte_fyzicke_osoby": 4098,
+  "zaznamov": 8147,
+  "skryte_fyzicke_osoby": 4100,
   "roky": {
    "2022": {
     "pocet": 1257,
@@ -37,10 +37,10 @@
     "fo_suma": 4197336
    },
    "2026": {
-    "pocet": 1833,
-    "suma": 90889822,
-    "fo_pocet": 1023,
-    "fo_suma": 4402933
+    "pocet": 1837,
+    "suma": 90909238,
+    "fo_pocet": 1025,
+    "fo_suma": 4405103
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -325,6 +325,10 @@
     "suma": 31200
    },
    {
+    "nazov": "Školský volejbalový klub TATRAN Banská Bystrica, o. z.",
+    "suma": 29940
+   },
+   {
     "nazov": "Športový klub Univerzita Mateja Bela",
     "suma": 29410
    },
@@ -337,10 +341,6 @@
     "suma": 16500
    },
    {
-    "nazov": "Školský volejbalový klub TATRAN Banská Bystrica, o. z.",
-    "suma": 15690
-   },
-   {
     "nazov": "Telovýchovná jednota ŠK Sokol Jakub",
     "suma": 14250
    },
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-11T06:18:22+00:00"
+ "aktualizovane": "2026-11-12T06:21:55+00:00"
 }

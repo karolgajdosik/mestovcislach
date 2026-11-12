@@ -2,15 +2,15 @@
  "mesto": "presov",
  "ico": "00327646",
  "od": "2022-01-01",
- "do": "2026-11-10",
+ "do": "2026-11-11",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 6251,
-  "skryte_fyzicke_osoby": 1583,
+  "zaznamov": 6254,
+  "skryte_fyzicke_osoby": 1584,
   "roky": {
    "2022": {
     "pocet": 1140,
@@ -37,9 +37,9 @@
     "fo_suma": 8470220
    },
    "2026": {
-    "pocet": 1099,
-    "suma": 71114849,
-    "fo_pocet": 309,
+    "pocet": 1102,
+    "suma": 75644272,
+    "fo_pocet": 310,
     "fo_suma": 1820539
    }
   },
@@ -93,16 +93,16 @@
     "suma": 10521260
    },
    {
+    "ico": "00155764",
+    "nazov": "PEhAES, a.s.",
+    "pocet": 6,
+    "suma": 10302882
+   },
+   {
     "ico": "31651518",
     "nazov": "EUROVIA SK, a.s.",
     "pocet": 11,
     "suma": 6669203
-   },
-   {
-    "ico": "00155764",
-    "nazov": "PEhAES, a.s.",
-    "pocet": 5,
-    "suma": 5773460
    },
    {
     "ico": "30416094",
@@ -173,6 +173,14 @@
     "suma": 8000000.0,
     "popis": "Zmluva o termínovanom úvere č. 891/2025/UZ",
     "url": "https://www.crz.gov.sk/zmluva/11667050/"
+   },
+   {
+    "datum": "2026-11-10",
+    "dodavatel": "PEhAES, a.s.",
+    "ico": "00155764",
+    "suma": 4529422.28,
+    "popis": "Dodatok č. 2 k Zmluve o dielo",
+    "url": "https://www.crz.gov.sk/zmluva/13062593/"
    },
    {
     "datum": "2026-01-21",
@@ -277,14 +285,6 @@
     "suma": 1911751.92,
     "popis": "Zmluva o poskytnutí nenávratného finančného príspevku reg. č. PSK-SIEA-007-2024-ITI-EFRR/F453",
     "url": "https://www.crz.gov.sk/zmluva/11707669/"
-   },
-   {
-    "datum": "2025-11-26",
-    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "ico": "50349287",
-    "suma": 1695472.73,
-    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU",
-    "url": "https://www.crz.gov.sk/zmluva/11653530/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-11T06:18:22+00:00"
+ "aktualizovane": "2026-11-12T06:21:55+00:00"
 }
