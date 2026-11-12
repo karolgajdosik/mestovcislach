@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11949,
+ "pocet_spolu": 11952,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2337,
-   "suma": 407467788.99
+   "pocet": 2340,
+   "suma": 413177902.71
   }
  },
  "posledny_rok": {
-  "od": "2025-11-11",
+  "od": "2025-11-12",
   "suma_bez_ico": 68800.73,
   "dodavatelia": [
    {
@@ -48,8 +48,8 @@
    {
     "ico": "00681300",
     "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
-    "pocet": 2,
-    "suma": 35161431.27
+    "pocet": 1,
+    "suma": 35101431.27
    },
    {
     "ico": "36302031",
@@ -74,6 +74,12 @@
     "nazov": "ALDESA CONSTRUCCIONES POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, organizačná zložka",
     "pocet": 9,
     "suma": 6518383.96
+   },
+   {
+    "ico": "45917833",
+    "nazov": "A.I.I. Technické služby s. r. o.",
+    "pocet": 3,
+    "suma": 4113428.72
    },
    {
     "ico": "36416291",
@@ -116,12 +122,6 @@
     "nazov": "CSFIT s.r.o.",
     "pocet": 2,
     "suma": 1367809.2
-   },
-   {
-    "ico": "35732881",
-    "nazov": "METRO Bratislava  a.s.",
-    "pocet": 8,
-    "suma": 1204031.04
    }
   ],
   "najvacsie": [
@@ -178,6 +178,15 @@
     "suma": 7006758.38,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600017"
+   },
+   {
+    "datum": "2026-11-12",
+    "dodavatel": "A.I.I. Technické služby s. r. o.",
+    "ico": "45917833",
+    "predmet": "Komplexné ošetrenie drevín na území Bratislavy",
+    "suma": 4113428.72,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600222"
    },
    {
     "datum": "2026-09-17",
@@ -295,17 +304,8 @@
     "suma": 969663.71,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600067"
-   },
-   {
-    "datum": "2026-09-22",
-    "dodavatel": "CITY STONE DESIGN s.r.o.",
-    "ico": "47978929",
-    "predmet": "RD MAGZBR2600207 - Výroba a dodávka bratislavskej dlažby",
-    "suma": 884985.0,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600207"
    }
   ]
  },
- "aktualizovane": "2026-11-11T03:16:45+00:00"
+ "aktualizovane": "2026-11-12T03:16:32+00:00"
 }
