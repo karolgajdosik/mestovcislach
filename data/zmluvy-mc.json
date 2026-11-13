@@ -5,7 +5,7 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-11-11",
+ "do": "2026-11-12",
  "mestske_casti": {
   "Devín": {
    "zmluv": 556,
@@ -416,8 +416,8 @@
    ]
   },
   "Dúbravka": {
-   "zmluv": 2476,
-   "suma": 44709179,
+   "zmluv": 2479,
+   "suma": 44709754,
    "roky": {
     "2022": [
      443,
@@ -436,8 +436,8 @@
      9938981
     ],
     "2026": [
-     377,
-     15181776
+     380,
+     15182351
     ]
    },
    "fyzicke_osoby": {
@@ -620,8 +620,8 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14817,
-   "suma": 2699672341,
+   "zmluv": 14825,
+   "suma": 2703828915,
    "roky": {
     "2022": [
      2618,
@@ -640,20 +640,20 @@
      334776233
     ],
     "2026": [
-     2659,
-     610377025
+     2667,
+     614533600
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 6481,
-    "suma": 77639665
+    "zmluv": 6482,
+    "suma": 77643170
    },
    "najvacsi_partneri": [
     {
-     "nazov": "Ministerstvo dopravy SR",
+     "nazov": "Ministerstvo dopravy Slovenskej republiky",
      "ico": "30416094",
-     "zmluv": 101,
-     "suma": 473991146
+     "zmluv": 102,
+     "suma": 473991183
     },
     {
      "nazov": "Dopravný podnik Bratislava, akciová spoločnosť",
@@ -724,8 +724,8 @@
     {
      "nazov": "MBM-GROUP, a.s.",
      "ico": "36740519",
-     "zmluv": 7,
-     "suma": 56771633
+     "zmluv": 8,
+     "suma": 56799236
     },
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
@@ -1028,8 +1028,8 @@
    ]
   },
   "Karlova Ves": {
-   "zmluv": 2493,
-   "suma": 73129603,
+   "zmluv": 2496,
+   "suma": 73181952,
    "roky": {
     "2022": [
      564,
@@ -1048,12 +1048,12 @@
      8212235
     ],
     "2026": [
-     382,
-     23181613
+     385,
+     23233963
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1019,
+    "zmluv": 1020,
     "suma": 3924713
    },
    "najvacsi_partneri": [
@@ -1436,7 +1436,7 @@
    ]
   },
   "Nové Mesto": {
-   "zmluv": 1775,
+   "zmluv": 1776,
    "suma": 122819130,
    "roky": {
     "2022": [
@@ -1456,7 +1456,7 @@
      10986412
     ],
     "2026": [
-     467,
+     468,
      21673104
     ]
    },
@@ -2456,8 +2456,8 @@
    ]
   },
   "Ružinov": {
-   "zmluv": 2694,
-   "suma": 173507845,
+   "zmluv": 2697,
+   "suma": 173508229,
    "roky": {
     "2022": [
      334,
@@ -2476,13 +2476,13 @@
      27813497
     ],
     "2026": [
-     488,
-     66976308
+     491,
+     66976692
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1504,
-    "suma": 2905563
+    "zmluv": 1506,
+    "suma": 2905947
    },
    "najvacsi_partneri": [
     {
@@ -2660,8 +2660,8 @@
    ]
   },
   "Staré Mesto": {
-   "zmluv": 2509,
-   "suma": 116272229,
+   "zmluv": 2512,
+   "suma": 116272629,
    "roky": {
     "2022": [
      459,
@@ -2680,13 +2680,13 @@
      20943521
     ],
     "2026": [
-     527,
-     36141246
+     530,
+     36141646
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1102,
-    "suma": 10380504
+    "zmluv": 1104,
+    "suma": 10380904
    },
    "najvacsi_partneri": [
     {
@@ -3476,8 +3476,8 @@
    ]
   },
   "Čunovo": {
-   "zmluv": 291,
-   "suma": 2743855,
+   "zmluv": 292,
+   "suma": 2744205,
    "roky": {
     "2022": [
      52,
@@ -3496,13 +3496,13 @@
      374844
     ],
     "2026": [
-     37,
-     1163725
+     38,
+     1164075
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 134,
-    "suma": 212997
+    "zmluv": 135,
+    "suma": 213347
    },
    "najvacsi_partneri": [
     {
@@ -4598,7 +4598,7 @@
   },
   "Ružinov": {
    "poskytnute": {
-    "zmluv": 136,
+    "zmluv": 137,
     "suma": 2635890,
     "prijimatelia": [
      {
@@ -4996,5 +4996,5 @@
    }
   }
  },
- "aktualizovane": "2026-11-12T06:21:53+00:00"
+ "aktualizovane": "2026-11-13T06:20:25+00:00"
 }

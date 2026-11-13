@@ -2,15 +2,15 @@
  "mesto": "banska-bystrica",
  "ico": "00313271",
  "od": "2022-01-01",
- "do": "2026-11-11",
+ "do": "2026-11-12",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8147,
-  "skryte_fyzicke_osoby": 4100,
+  "zaznamov": 8149,
+  "skryte_fyzicke_osoby": 4102,
   "roky": {
    "2022": {
     "pocet": 1257,
@@ -37,10 +37,10 @@
     "fo_suma": 4197336
    },
    "2026": {
-    "pocet": 1837,
-    "suma": 90909238,
-    "fo_pocet": 1025,
-    "fo_suma": 4405103
+    "pocet": 1839,
+    "suma": 90910700,
+    "fo_pocet": 1027,
+    "fo_suma": 4406555
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -326,7 +326,7 @@
    },
    {
     "nazov": "Školský volejbalový klub TATRAN Banská Bystrica, o. z.",
-    "suma": 29940
+    "suma": 29950
    },
    {
     "nazov": "Športový klub Univerzita Mateja Bela",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-12T06:21:55+00:00"
+ "aktualizovane": "2026-11-13T06:20:27+00:00"
 }

@@ -2,15 +2,15 @@
  "mesto": "trencin",
  "ico": "00312037",
  "od": "2022-01-01",
- "do": "2026-11-11",
+ "do": "2026-11-12",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 12502,
-  "skryte_fyzicke_osoby": 6866,
+  "zaznamov": 12531,
+  "skryte_fyzicke_osoby": 6871,
   "roky": {
    "2022": {
     "pocet": 1819,
@@ -37,10 +37,10 @@
     "fo_suma": 9669829
    },
    "2026": {
-    "pocet": 2243,
-    "suma": 99156067,
-    "fo_pocet": 1108,
-    "fo_suma": 2478138
+    "pocet": 2272,
+    "suma": 99769878,
+    "fo_pocet": 1113,
+    "fo_suma": 2519238
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -77,8 +77,8 @@
    {
     "ico": "54345987",
     "nazov": "Kreatívny inštitút Trenčín,n.o. Anglická verzia názvu je: Creative Institute Trenčín, n.o.",
-    "pocet": 267,
-    "suma": 7518646
+    "pocet": 273,
+    "suma": 7519526
    },
    {
     "ico": "00681156",
@@ -161,8 +161,8 @@
    {
     "ico": "34131710",
     "nazov": "HEES - GASTROSLUŽBY, spol. s r.o.",
-    "pocet": 8,
-    "suma": 1208717
+    "pocet": 9,
+    "suma": 1394383
    }
   ],
   "najvacsie_12_mesiacov": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-12T06:21:55+00:00"
+ "aktualizovane": "2026-11-13T06:20:27+00:00"
 }
