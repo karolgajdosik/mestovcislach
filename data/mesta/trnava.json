@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-11-01T10:22:20",
+ "aktualizovane": "2026-11-13T05:36:22",
  "obyvatelia": {
   "roky": {
    "1993": 71624,
@@ -80,6 +80,17 @@
    "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 389,
    "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 148,
    "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 76
+  },
+  "byty_vlastnictvo": {
+   "Spolu": 29289,
+   "vlastný byt v bytovom dome": 21563,
+   "byt vo vlastnom rodinnom dome": 5873,
+   "obecný byt": 712,
+   "iná forma užívania bytu": 595,
+   "služobný a domovnícky byt": 236,
+   "byt v nájme": 116,
+   "nezistený": 113,
+   "družstevný byt - len stavebné bytové družstvá": 81
   }
  },
  "volby": {
