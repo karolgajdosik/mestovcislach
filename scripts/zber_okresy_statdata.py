@@ -127,9 +127,73 @@ def nro() -> list[str]:
     return out
 
 
+NEHODY_ZALOHA = "https://www.minv.sk/lnisdn/statistika/20260218_011722.691_2025-12-MS/statistika/"
+
+
+def nehody_zdroj() -> str:
+    """Najnovšia decembrová mesačná štatistika (…_RRRR-12-MS) zo stránok MV SR; inak známa záloha."""
+    najdene = []
+    for u in ("https://www.minv.sk/?statistika-dopravnej-nehodovosti", "https://www.minv.sk/?statisticke-ukazovatele-sluzby-dopravnej-policie",
+              "https://www.minv.sk/?statistiky-dopravnej-nehodovosti"):
+        try:
+            r = s.get(u, timeout=60, headers={"User-Agent": "Mozilla/5.0 (compatible; mestovcislach.sk)"})
+            najdene += re.findall(r"(https?://www\.minv\.sk/lnisdn/statistika/\d{8}_[\d.]+_(\d{4})-12-MS/statistika/)", r.text)
+        except Exception:  # noqa: BLE001
+            pass
+    return max(najdene, key=lambda x: (x[1], x[0]))[0] if najdene else NEHODY_ZALOHA
+
+
+def nehody() -> dict:
+    """Dopravné nehody za kalendárny rok podľa územných okresov polície (MV SR, ISDN): nehody, usmrtení, ťažko a ľahko zranení.
+    Bratislava 1–5 a Košice 1–4 sa sčítajú do okresov Bratislava a Košice."""
+    B_ = nehody_zdroj()
+    h = {"User-Agent": "Mozilla/5.0 (compatible; mestovcislach.sk)"}
+    r = s.get(B_ + "index-public.html", timeout=60, headers=h)
+    r.encoding = "utf-8"
+    sub = re.findall(r"href='(mesacna/dnvr/dnvr-\d{4}\.html)' title='([^']+)'", r.text)
+    rok = re.search(r"_(\d{4})-12-MS", B_).group(1)
+    out: dict[str, list[int]] = defaultdict(lambda: [0, 0, 0, 0])
+    casti: dict[str, int] = defaultdict(int)
+    for href, title in sub:
+        m = re.search(r"Územie:\s*([^\n/]+)", title)
+        if not m:
+            continue
+        n = m.group(1).strip()
+        n = re.sub(r"^(Bratislava|Košice)\s*-\s*\d$", r"\1", n)
+        if n not in OKRESY:
+            continue
+        x = s.get(B_ + href, timeout=60, headers=h)
+        x.encoding = "utf-8"
+        bunky = [c.strip() for c in re.sub(r"<[^>]+>", "|", x.text).split("|") if c.strip()]
+        try:
+            i = bunky.index("Počet nehôd celkom")
+            v = [int(bunky[i + k]) for k in (1, 3, 5, 7)]
+        except (ValueError, IndexError):
+            continue
+        o = out[n]
+        for k in range(4):
+            o[k] += v[k]
+        casti[n] += 1
+    for n, c in casti.items():
+        if n in CASTI and c != CASTI[n]:
+            out.pop(n, None)
+    print(f"Nehody {rok}: {len(out)} okresov (napr. Detva {out.get('Detva')})")
+    if len(out) < 70:
+        raise RuntimeError(f"nehody: len {len(out)} okresov")
+    return {"rok": rok, "polia": ["nehody", "usmrtení", "ťažko zranení", "ľahko zranení"], "okresy": dict(sorted(out.items())),
+            "zdroj": {"nazov": "MV SR – štatistika dopravnej nehodovosti (ISDN), územné okresy", "url": B_ + "index-public.html"}}
+
+
 def main() -> int:
     mz = mzdy()
     by = byty()
+    f0 = DATA / "obce" / "okresy.json"
+    stare0 = json.loads(f0.read_text(encoding="utf-8")) if f0.exists() else {}
+    try:
+        neh = nehody()
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=Nehody::{e}")
+        neh = stare0.get("nehody")
     try:
         zoz_nro = nro()
         print(f"Najmenej rozvinuté okresy: {len(zoz_nro)} – {', '.join(zoz_nro)}")
@@ -143,7 +207,7 @@ def main() -> int:
     zapis_ak_zmena(DATA / "obce" / "okresy.json", {
         "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "zdroj": {"nazov": "ŠÚ SR – mzdy pracoviskovou metódou (np3110rr), dokončené byty (st3802rr)", "url": "https://statdata.statistics.sk"},
-        "mzda": mz, "byty": by, "nro": zoz_nro,
+        "mzda": mz, "byty": by, "nro": zoz_nro, "nehody": neh,
         "nro_zdroj": {"nazov": "MIRRI SR – najmenej rozvinuté okresy", "url": "https://mirri.gov.sk/sekcie/regionalny-rozvoj-2/najmenej-rozvinute-okresy/okresy/"}}, kompaktne=True)
     return 0
 

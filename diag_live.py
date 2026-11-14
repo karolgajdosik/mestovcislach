@@ -1,12 +1,23 @@
-import re, requests
-s = requests.Session(); s.headers["User-Agent"] = "Mozilla/5.0 (compatible; mestovcislach.sk)"
-B = "https://www.minv.sk/lnisdn/statistika/20260218_011722.691_2025-12-MS/statistika/"
-r = s.get(B + "index-public.html", timeout=60); r.encoding = "utf-8"
-al = re.findall(r"href='([^']+\.html)' title='([^']+)'", r.text)
-c4 = [(h, t.replace("\n", " / ")) for h, t in al if re.search(r"-p?\d{4}\.html$", h)]
-print("C4", len(c4)); print(c4[:4]); print(sorted({h.split('/')[1] for h, _ in c4}))
-x = next(((h, t) for h, t in c4 if "dkvr" in h or ("od začiatku roka" in t and "všetky DN" in t)), None); print("PICK", x)
-if x:
-    y = s.get(B + x[0], timeout=60); y.encoding = "utf-8"
-    print(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " | ", y.text))[:1600])
+import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
+import json, time, traceback, os
+sys.path.insert(0, "scripts")
+def run(n, f):
+    t = time.time()
+    try: f(); print(n, "OK", round(time.time() - t), "s")
+    except Exception: traceback.print_exc()
+import zber_obce_wiki_osm as w, zber_obce_t9 as t9, zber_obce_ovzdusie as ov, zber_okresy_statdata as ok, zber_obce_statdata as st, zber_obce_temy as zt
+print("MC kódy", len(st.MC))
+run("obrazky", w.obrazky)
+d = json.load(open("data/obce/obrazky.json")); print({k: d["obce"].get(k) for k in ["518921", "516643"]})
+run("maturita", lambda: t9.maturita(t9.relacia()))
+d = json.load(open("data/obce/maturita.json")); print(d["sr"], d["obce"].get("516643"))
+run("ovzdusie", ov.main)
+d = json.load(open("data/obce/ovzdusie.json")); print(d["rok"], len(d["obce"]), list(d["obce"].items())[:2])
+run("nehody", lambda: print(ok.nehody()["okresy"].get("Bratislava")))
+run("nro", lambda: print(ok.nro()))
+run("historia", st.historia)
+m = json.load(open("data/obce/mc.json")); print("MC", {k: len(v["casti"]) for k, v in m.items()}, list(m.get("historia", {}).get("casti", {}).items())[:1])
+run("nezamestnanost", zt.nezamestnanost)
+m = json.load(open("data/obce/mc.json")); print("MCNEZ", len(m.get("nezamestnanost", {}).get("casti", {})), list(m.get("nezamestnanost", {}).get("casti", {}).items())[:1])
+d = json.load(open("data/obce/nezamestnanost.json")); print("ROKY", d["obce"]["518921"].get("roky"))
 print("HOTOVO")
