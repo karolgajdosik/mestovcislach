@@ -1,6 +1,16 @@
-C4 836
-[('mesacna/dnvm/dnvm-5101.html', 'Názov: Prehľad DN / Obdobie: za bežný mesiac / Územie: Bratislava - 1 / Podmienka: všetky DN'), ('mesacna/dnvr/dnvr-5101.html', 'Názov: Prehľad DN / Obdobie: od začiatku roka / Územie: Bratislava - 1 / Podmienka: všetky DN'), ('mesacna/dnzr/dnzr-5101.html', 'Názov: Prehľad DN / Obdobie: od začiatku roka / Územie: Bratislava - 1 / Podmienka: s následkom na živote alebo zdraví'), ('mesacna/dnur/dnur-5101.html', 'Názov: Prehľad DN / Obdobie: od začiatku roka / Územie: Bratislava - 1 / Podmienka: s usmrtením')]
-['dn1m', 'dn1r', 'dnur', 'dnvm', 'dnvr', 'dnzr', 'nlkup', 'nlkur', 'nluup', 'nluur', 'topor']
-PICK ('mesacna/dnvr/dnvr-5101.html', 'Názov: Prehľad DN / Obdobie: od začiatku roka / Územie: Bratislava - 1 / Podmienka: všetky DN')
- | | | | | Štatistika ISDN - mesacna/dnvr/dnvr-5101.html | | | | | | | | | Prehľad nehôd v cestnej doprave. | Za obdobie od 01.01. do 31.12.2025 a porovnanie s rovnakým obdobím minulého roka. Územný okres: Bratislava - 1 | | Nehody podľa následkov (škoda v 10€) | | | Bratislava - 1 | | počet nehôd | | usmrtení účast. | | ťažko zran. účast. | | ľahko zran. účast. | | hmotná škoda | | alkohol | | obec | | | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | Počet nehôd celkom | | 174 | | 34 | | 1 | | -1 | | 4 | | -6 | | 64 | | 6 | | 68105 | | 10239 | | 11 | | 2 | | 174 | | 34 | | | | šk. do 3990€, bez usmrt., zran. | | 83 | | 20 | | 0 | | 0 | | 0 | | 0 | | 0 | | 0 | | 10736 | | 2507 | | 1 | | 0 | | 83 | | 20 | | | | neh. s násl. na živote alebo zdraví | | 63 | | 8 | | 1 | | -1 | | 4 | | -6 | | 64 | | 6 | | 34499 | | 2247 | | 8 | | 3 | | 63 | | 8 | | | | požiar vozidiel | | 0 | | -1 | | 0 | | -1 | | 0 | | -1 | | 0 | | -1 | | 0 | | -2500 | | 0 | | 0 | | 0 | | -1 | | | Nehody podľa zavinenia (ŠEDN) | | | Bratislava - 1 | | počet nehôd | | usmrtení účast. | | ťažko zran. účast. | | ľahko zran. účast. | | hmotná škoda | | alkohol | | obec | | | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | vodičom motorového vozidla | | 149 | | 23 | | 0 | | -2 | | 2 | | -7 | | 47 | | -1 | | 59131 | | 2339 | | 2 | | -4 | | 149 | | 23 | | | | vodičom nemotorového vozidla | | 6 | | 0 | | 0 | | 0 | | 1 | | 1 | | 4 | | 0 | | 410 | | 161 | | 5 | | 2 | | 6 | | 0 | | | | | | deťmi | | 0 | | 0 | | 0 | | 0 | | 0 | | 0 | | 0 |
-HOTOVO
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 6, in run
+    try: f(); print(n, "OK", round(time.time() - t), "s")
+         ~^^
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_obce_wiki_osm.py", line 331, in obrazky
+    raise RuntimeError("Commons: málo erbov")
+RuntimeError: Commons: málo erbov
+::warning title=Mestské časti::bratislava: 'mestske_casti'
+::warning title=Mestské časti::kosice: 'mestske_casti'
+MC kódy 0
+Obrázky: 2516 obcí, erb 522, foto 2485, partneri 154
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 11, in <module>
+    d = json.load(open("data/obce/obrazky.json")); print({k: d["obce"].get(k) for k in ["518921", "516643"]})
+                  ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'data/obce/obrazky.json'
