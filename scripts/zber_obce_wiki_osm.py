@@ -327,8 +327,8 @@ def obrazky() -> None:
         if v:
             out[kod] = v
     print(f"Obrázky: {len(out)} obcí, erb {sum('erb' in v for v in out.values())}, foto {sum('foto' in v for v in out.values())}, partneri {sum('partneri' in v for v in out.values())}")
-    if sum("erb" in v for v in out.values()) < 1000:
-        raise RuntimeError("Commons: málo erbov")
+    if sum("foto" in v for v in out.values()) < 1500:
+        raise RuntimeError("Commons: málo fotografií")
     zapis("obrazky", {"zdroj": {"nazov": "Wikidata a Wikimedia Commons – erb, fotografia, partnerské mestá", "url": "https://commons.wikimedia.org"},
                       "obce": dict(sorted(out.items()))})
 

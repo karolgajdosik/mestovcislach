@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T02:47:37",
+ "aktualizovane": "2026-11-01T10:22:20",
  "obyvatelia": {
   "roky": {
    "1996": 241606,
@@ -1590,211 +1590,296 @@
     ],
     "poslanci": [
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 13,
       "meno": "Mgr. Ladislav Lörinc",
       "strany": "nezávislý kandidát",
       "hlasy": 4256
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 12,
       "meno": "Mgr. Jozef Andrejčák",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 3353
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 11,
       "meno": "Ing. Mgr. Lenka Kovačevičová",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 3271
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Mgr. Marcel Vrchota",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 2896
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 12,
       "meno": "PhDr. Dominik Babušík",
       "strany": "nezávislý kandidát",
       "hlasy": 2735
      },
      {
+      "obvod": "Sídlisko Ťahanovce, Ťahanovce",
+      "obvod_c": 2,
       "meno": "Mgr. Ing. Miloš Ihnát",
       "strany": "nezávislý kandidát",
       "hlasy": 2682
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 13,
       "meno": "Iveta Adamčíková",
       "strany": "nezávislý kandidát",
       "hlasy": 2404
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 11,
       "meno": "Mgr. Martin Seman",
       "strany": "nezávislý kandidát",
       "hlasy": 1974
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 10,
       "meno": "Ing. Igor Petrovčik",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 1931
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Mgr. Dominik Karaffa",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1927
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 13,
       "meno": "Ing. Roman Matoušek",
       "strany": "nezávislý kandidát",
       "hlasy": 1893
      },
      {
+      "obvod": "Sídlisko Ťahanovce, Ťahanovce",
+      "obvod_c": 2,
       "meno": "Mgr. Zuzana Slivenská",
       "strany": "nezávislý kandidát",
       "hlasy": 1866
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "JUDr. Beáta Zemková",
       "strany": "nezávislý kandidát",
       "hlasy": 1817
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 11,
       "meno": "PhDr. Róbert Schwarcz",
       "strany": "nezávislý kandidát",
       "hlasy": 1636
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Mgr. Peter Berinšter",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1631
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 8,
       "meno": "Ing. Anna Súkeníková",
       "strany": "nezávislý kandidát",
       "hlasy": 1605
      },
      {
+      "obvod": "Džungľa, Kavečany, Sever",
+      "obvod_c": 1,
       "meno": "Bc. Matej Kundrát",
       "strany": "nezávislý kandidát",
       "hlasy": 1526
      },
      {
+      "obvod": "Džungľa, Kavečany, Sever",
+      "obvod_c": 1,
       "meno": "Ing. František Ténai, MBA",
       "strany": "nezávislý kandidát",
       "hlasy": 1492
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Ing. Andrej Sitkár",
       "strany": "SMER - sociálna demokracia, Slovenská národná strana, ŽIVOT - národná strana, STRANA MODERNÉHO SLOVENSKA (SMS)",
       "hlasy": 1475
      },
      {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 13,
       "meno": "Mgr. Marián Horenský, PhD.",
       "strany": "nezávislý kandidát",
       "hlasy": 1433
      },
      {
+      "obvod": "Nad jazerom",
+      "obvod_c": 11,
       "meno": "Mgr. Bernard Berberich",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1374
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Ing. Tibor Bačinský",
       "strany": "Progresívne Slovensko",
       "hlasy": 1366
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 10,
       "meno": "Mgr. art. Ľubica Blaškovičová",
       "strany": "ZA ĽUDÍ",
       "hlasy": 1361
      },
      {
+      "obvod": "Západ",
+      "obvod_c": 7,
       "meno": "Ing. Štefan Lasky",
       "strany": "nezávislý kandidát",
       "hlasy": 1329
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 12,
       "meno": "Ing. Marek Kandráč",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 1307
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 12,
       "meno": "Tomáš Vasok",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1275
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 8,
       "meno": "doc. PhDr. Viliam Knap, PhD., MHA, MPH",
       "strany": "nezávislý kandidát",
       "hlasy": 1233
      },
      {
+      "obvod": "Džungľa, Kavečany, Sever",
+      "obvod_c": 1,
       "meno": "Mgr. Marcel Gibóda",
       "strany": "nezávislý kandidát",
       "hlasy": 1210
      },
      {
+      "obvod": "Staré Mesto",
+      "obvod_c": 10,
       "meno": "Michal Djordjevič, MBA",
       "strany": "nezávislý kandidát",
       "hlasy": 1197
      },
      {
+      "obvod": "Džungľa, Kavečany, Sever",
+      "obvod_c": 1,
       "meno": "doc. Ing. Erik Weiss, PhD.",
       "strany": "ZA ĽUDÍ",
       "hlasy": 1072
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 8,
       "meno": "Mgr. Patrik Géci",
       "strany": "HLAS - sociálna demokracia",
       "hlasy": 1011
      },
      {
+      "obvod": "Juh",
+      "obvod_c": 8,
       "meno": "Mgr. Peter Múdry",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1003
      },
      {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 12,
       "meno": "MUDr. Ján Sekáč",
       "strany": "SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska",
       "hlasy": 982
      },
      {
+      "obvod": "Sídlisko Ťahanovce, Ťahanovce",
+      "obvod_c": 2,
       "meno": "Miroslav Špak",
       "strany": "nezávislý kandidát",
       "hlasy": 948
      },
      {
+      "obvod": "Sídlisko Ťahanovce, Ťahanovce",
+      "obvod_c": 2,
       "meno": "Mgr. Marek Fedoročko",
       "strany": "nezávislý kandidát",
       "hlasy": 937
      },
      {
+      "obvod": "Barca, Poľov, Šebastovce",
+      "obvod_c": 5,
       "meno": "Mgr. Lucia Gurbáľová",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 724
      },
      {
+      "obvod": "Krásna",
+      "obvod_c": 9,
       "meno": "Ing. Vladimír Saxa",
       "strany": "nezávislý kandidát",
       "hlasy": 705
      },
      {
+      "obvod": "Luník IX",
+      "obvod_c": 4,
       "meno": "PhDr. Marcel Šaňa",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, SME RODINA, NOVA, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók., Strana rómskej koalície - SRK, DOBRÁ VOĽBA a Umiernení, OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 650
      },
      {
+      "obvod": "Košická Nová Ves, Vyšné Opátske",
+      "obvod_c": 14,
       "meno": "Ing. Michal Krcho",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 643
      },
      {
+      "obvod": "Šaca",
+      "obvod_c": 3,
       "meno": "Ing. ING-PAED IGIP Lucia Iľaščíková, PhD.",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 544
      },
      {
+      "obvod": "Lorinčík, Myslava, Pereš",
+      "obvod_c": 6,
       "meno": "Ing. Jozef Karabin, MBA",
       "strany": "nezávislý kandidát",
       "hlasy": 453
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 8
+    }
    }
   },
   "2026": {
@@ -1804,44 +1889,617 @@
     "ucast_pct": 37.11
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 190,
+    "spolu": 190,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
+   "mestske_casti": [
+    {
+     "kod": "599093",
+     "nazov": "Barca",
+     "ucast": 48.37,
+     "volili": 1494,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 460,
+       "podiel": 31.9
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 357,
+       "podiel": 24.76
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 285,
+       "podiel": 19.76
+      }
+     ]
+    },
+    {
+     "kod": "598682",
+     "nazov": "Dargovských hrdinov",
+     "ucast": 31.14,
+     "volili": 6874,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 2489,
+       "podiel": 37.76
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1432,
+       "podiel": 21.73
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1292,
+       "podiel": 19.6
+      }
+     ]
+    },
+    {
+     "kod": "599891",
+     "nazov": "Džungľa",
+     "ucast": 47.99,
+     "volili": 275,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 66,
+       "podiel": 30.99
+      },
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 56,
+       "podiel": 26.29
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 48,
+       "podiel": 22.54
+      }
+     ]
+    },
+    {
+     "kod": "599824",
+     "nazov": "Juh",
+     "ucast": 35.06,
+     "volili": 6156,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 2203,
+       "podiel": 37.41
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1382,
+       "podiel": 23.47
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1197,
+       "podiel": 20.33
+      }
+     ]
+    },
+    {
+     "kod": "598119",
+     "nazov": "Kavečany",
+     "ucast": 48.68,
+     "volili": 553,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 176,
+       "podiel": 34.24
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 127,
+       "podiel": 24.71
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 102,
+       "podiel": 19.84
+      }
+     ]
+    },
+    {
+     "kod": "599018",
+     "nazov": "Košická Nová Ves",
+     "ucast": 43.36,
+     "volili": 597,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 205,
+       "podiel": 35.65
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 139,
+       "podiel": 24.17
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 128,
+       "podiel": 22.26
+      }
+     ]
+    },
+    {
+     "kod": "599794",
+     "nazov": "Krásna",
+     "ucast": 47.82,
+     "volili": 2394,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 813,
+       "podiel": 35.13
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 486,
+       "podiel": 21.0
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 485,
+       "podiel": 20.96
+      }
+     ]
+    },
+    {
+     "kod": "598194",
+     "nazov": "Lorinčík",
+     "ucast": 63.75,
+     "volili": 633,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 243,
+       "podiel": 39.38
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 160,
+       "podiel": 25.93
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 124,
+       "podiel": 20.1
+      }
+     ]
+    },
+    {
+     "kod": "599972",
+     "nazov": "Luník IX",
+     "ucast": 14.16,
+     "volili": 717,
+     "poradie": [
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 526,
+       "podiel": 94.77
+      },
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 12,
+       "podiel": 2.16
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 6,
+       "podiel": 1.08
+      }
+     ]
+    },
+    {
+     "kod": "598216",
+     "nazov": "Myslava",
+     "ucast": 56.29,
+     "volili": 1257,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 543,
+       "podiel": 45.75
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 272,
+       "podiel": 22.91
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 170,
+       "podiel": 14.32
+      }
+     ]
+    },
+    {
+     "kod": "599816",
+     "nazov": "Nad jazerom",
+     "ucast": 34.77,
+     "volili": 6613,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 1955,
+       "podiel": 30.78
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 1925,
+       "podiel": 30.31
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1022,
+       "podiel": 16.09
+      }
+     ]
+    },
+    {
+     "kod": "598208",
+     "nazov": "Pereš",
+     "ucast": 58.14,
+     "volili": 1079,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 390,
+       "podiel": 38.39
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 249,
+       "podiel": 24.51
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 197,
+       "podiel": 19.39
+      }
+     ]
+    },
+    {
+     "kod": "599859",
+     "nazov": "Poľov",
+     "ucast": 72.12,
+     "volili": 701,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 238,
+       "podiel": 35.95
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 198,
+       "podiel": 29.91
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 99,
+       "podiel": 14.95
+      }
+     ]
+    },
+    {
+     "kod": "598151",
+     "nazov": "Sever",
+     "ucast": 39.14,
+     "volili": 6349,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 2174,
+       "podiel": 35.41
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1614,
+       "podiel": 26.29
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1464,
+       "podiel": 23.85
+      }
+     ]
+    },
+    {
+     "kod": "598186",
+     "nazov": "Staré Mesto",
+     "ucast": 37.79,
+     "volili": 6584,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 2186,
+       "podiel": 34.28
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1729,
+       "podiel": 27.11
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1458,
+       "podiel": 22.86
+      }
+     ]
+    },
+    {
+     "kod": "599883",
+     "nazov": "Sídlisko KVP",
+     "ucast": 40.53,
+     "volili": 7484,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 4663,
+       "podiel": 64.07
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1006,
+       "podiel": 13.82
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 754,
+       "podiel": 10.36
+      }
+     ]
+    },
+    {
+     "kod": "599875",
+     "nazov": "Sídlisko Ťahanovce",
+     "ucast": 34.88,
+     "volili": 5915,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 2503,
+       "podiel": 44.03
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 1042,
+       "podiel": 18.33
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 1024,
+       "podiel": 18.01
+      }
+     ]
+    },
+    {
+     "kod": "599913",
+     "nazov": "Vyšné Opátske",
+     "ucast": 51.99,
+     "volili": 1213,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 438,
+       "podiel": 36.87
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 296,
+       "podiel": 24.92
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 232,
+       "podiel": 19.53
+      }
+     ]
+    },
+    {
+     "kod": "598224",
+     "nazov": "Západ",
+     "ucast": 34.73,
+     "volili": 10895,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 4338,
+       "podiel": 41.21
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 2169,
+       "podiel": 20.61
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 2091,
+       "podiel": 19.87
+      }
+     ]
+    },
+    {
+     "kod": "599841",
+     "nazov": "Šaca",
+     "ucast": 38.33,
+     "volili": 1810,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 594,
+       "podiel": 36.99
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 377,
+       "podiel": 23.47
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 341,
+       "podiel": 21.23
+      }
+     ]
+    },
+    {
+     "kod": "599786",
+     "nazov": "Šebastovce",
+     "ucast": 48.15,
+     "volili": 312,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 92,
+       "podiel": 31.4
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 80,
+       "podiel": 27.3
+      },
+      {
+       "meno": "Ing. Mgr. Lenka Kovačevičová",
+       "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
+       "hlasy": 64,
+       "podiel": 21.84
+      }
+     ]
+    },
+    {
+     "kod": "598127",
+     "nazov": "Ťahanovce",
+     "ucast": 43.84,
+     "volili": 794,
+     "poradie": [
+      {
+       "meno": "Mgr. MPA Ladislav Lörinc",
+       "strany": "Košická strana",
+       "hlasy": 298,
+       "podiel": 42.03
+      },
+      {
+       "meno": "Ing. Jaroslav Polaček",
+       "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+       "hlasy": 205,
+       "podiel": 28.91
+      },
+      {
+       "meno": "Mgr. Martin Mudrák",
+       "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+       "hlasy": 111,
+       "podiel": 15.66
+      }
+     ]
+    }
+   ],
    "primator": [
     {
-     "meno": "Ladislav Lörinc",
+     "meno": "Mgr. MPA Ladislav Lörinc",
      "strany": "Košická strana",
      "hlasy": 27364,
      "podiel": 39.89,
      "zvoleny": true
     },
     {
-     "meno": "Jaroslav Polaček",
-     "strany": "KDH, SaS, Magyar Szövetség - Maďarská aliancia, SRK, NOVA, DS-ODS",
+     "meno": "Ing. Jaroslav Polaček",
+     "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
      "hlasy": 14766,
-     "podiel": 21.52,
+     "podiel": 21.53,
      "zvoleny": false
     },
     {
-     "meno": "Martin Mudrák",
+     "meno": "Mgr. Martin Mudrák",
      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
      "hlasy": 12816,
      "podiel": 18.68,
      "zvoleny": false
     },
     {
-     "meno": "Lenka Kovačevičová",
-     "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, PRAVDA",
+     "meno": "Ing. Mgr. Lenka Kovačevičová",
+     "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI, Právo na pravdu",
      "hlasy": 8513,
      "podiel": 12.41,
      "zvoleny": false
     },
     {
-     "meno": "Alexander Riabov",
-     "strany": "NEKA",
+     "meno": "Mgr. Ing. Alexander Riabov",
+     "strany": "nezávislý kandidát",
      "hlasy": 3177,
      "podiel": 4.63,
      "zvoleny": false
@@ -1850,12 +2508,12 @@
      "meno": "Ladislav Lörincz",
      "strany": "Jednota Slovanov",
      "hlasy": 1397,
-     "podiel": 2.03,
+     "podiel": 2.04,
      "zvoleny": false
     },
     {
      "meno": "Miroslav Sabol",
-     "strany": "NEKA",
+     "strany": "nezávislý kandidát",
      "hlasy": 378,
      "podiel": 0.55,
      "zvoleny": false
@@ -1869,9 +2527,403 @@
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 51,
+    "mandaty": [
+     {
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "mandaty": 14
+     },
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 13
+     },
+     {
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "mandaty": 8
+     },
+     {
+      "strany": "Košická strana",
+      "mandaty": 7
+     },
+     {
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "mandaty": 7
+     },
+     {
+      "strany": "Občianska konzervatívna strana",
+      "mandaty": 1
+     },
+     {
+      "strany": "SME RODINA",
+      "mandaty": 1
+     }
+    ],
+    "poslanci": [
+     {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
+      "meno": "PhDr. Dominik Babušík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 3535
+     },
+     {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
+      "meno": "Mgr. PhD. Jozef Andrejčák",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 3402
+     },
+     {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 6,
+      "meno": "Ing. Roman Matoušek",
+      "strany": "Košická strana",
+      "hlasy": 3380
+     },
+     {
+      "obvod": "Staré Mesto",
+      "obvod_c": 4,
+      "meno": "JUDr. Ing. MJur. Marián Porvažník",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 3082
+     },
+     {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 6,
+      "meno": "Iveta Adamčíková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2855
+     },
+     {
+      "obvod": "Západ",
+      "obvod_c": 5,
+      "meno": "Mgr. Marcel Vrchota",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 2815
+     },
+     {
+      "obvod": "Sídlisko Ťahanovce",
+      "obvod_c": 3,
+      "meno": "JUDr. Ing. Miloš Ihnát",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2772
+     },
+     {
+      "obvod": "Staré Mesto",
+      "obvod_c": 4,
+      "meno": "Bc. Mgr. Igor Holéczy",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 2704
+     },
+     {
+      "obvod": "Západ",
+      "obvod_c": 5,
+      "meno": "Ing. Tibor Bačinský",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 2582
+     },
+     {
+      "obvod": "Západ",
+      "obvod_c": 5,
+      "meno": "JUDr. Ing. PhD. Peter Huba",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 2497
+     },
+     {
+      "obvod": "Západ",
+      "obvod_c": 5,
+      "meno": "Mgr. Dominik Karaffa",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2478
+     },
+     {
+      "obvod": "Západ",
+      "obvod_c": 5,
+      "meno": "MUDr. MPH Viliam Novotný",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 2418
+     },
+     {
+      "obvod": "Nad jazerom",
+      "obvod_c": 12,
+      "meno": "Ing. Mgr. Lenka Kovačevičová",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 2388
+     },
+     {
+      "obvod": "Juh",
+      "obvod_c": 11,
+      "meno": "Ing. Anna Súkeníková",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2321
+     },
+     {
+      "obvod": "Sever",
+      "obvod_c": 1,
+      "meno": "Mgr. Martin Mudrák",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 2226
+     },
+     {
+      "obvod": "Západ",
+      "obvod_c": 5,
+      "meno": "Mgr. Patrícia Helfenová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2054
+     },
+     {
+      "obvod": "Nad jazerom",
+      "obvod_c": 12,
+      "meno": "PhDr. Róbert Schwarcz",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1953
+     },
+     {
+      "obvod": "Západ",
+      "obvod_c": 5,
+      "meno": "Adam Ogurčák",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1938
+     },
+     {
+      "obvod": "Nad jazerom",
+      "obvod_c": 12,
+      "meno": "Ing. MBA Peter Čech",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1918
+     },
+     {
+      "obvod": "Západ",
+      "obvod_c": 5,
+      "meno": "Peter Berinšter",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1917
+     },
+     {
+      "obvod": "Sever",
+      "obvod_c": 1,
+      "meno": "Mgr. Matej Kundrát",
+      "strany": "Košická strana",
+      "hlasy": 1895
+     },
+     {
+      "obvod": "Sídlisko Ťahanovce",
+      "obvod_c": 3,
+      "meno": "Mgr. Marek Fedoročko",
+      "strany": "Košická strana",
+      "hlasy": 1809
+     },
+     {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 6,
+      "meno": "Mgr. PhD. Marián Horenský",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1725
+     },
+     {
+      "obvod": "Nad jazerom",
+      "obvod_c": 12,
+      "meno": "Mgr. Bernard Berberich",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1681
+     },
+     {
+      "obvod": "Sídlisko Ťahanovce",
+      "obvod_c": 3,
+      "meno": "Mgr. Miroslav Špak",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1672
+     },
+     {
+      "obvod": "Juh",
+      "obvod_c": 11,
+      "meno": "Ing. Karel Hirman",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1670
+     },
+     {
+      "obvod": "Sídlisko Ťahanovce",
+      "obvod_c": 3,
+      "meno": "Mgr. Zuzana Slivenská",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1622
+     },
+     {
+      "obvod": "Juh",
+      "obvod_c": 11,
+      "meno": "Ing. Erich Blanár",
+      "strany": "Košická strana",
+      "hlasy": 1597
+     },
+     {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 6,
+      "meno": "Ing. Matej Kepič",
+      "strany": "Košická strana",
+      "hlasy": 1593
+     },
+     {
+      "obvod": "Sídlisko KVP",
+      "obvod_c": 6,
+      "meno": "Marián Koszoru",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1556
+     },
+     {
+      "obvod": "Staré Mesto",
+      "obvod_c": 4,
+      "meno": "JUDr. Stanislava Majerová",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1512
+     },
+     {
+      "obvod": "Juh",
+      "obvod_c": 11,
+      "meno": "doc. PhDr. PhD. Viliam Knap, MHA, MPH",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1509
+     },
+     {
+      "obvod": "Staré Mesto",
+      "obvod_c": 4,
+      "meno": "Ing. Rastislav Amrich",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1469
+     },
+     {
+      "obvod": "Nad jazerom",
+      "obvod_c": 12,
+      "meno": "Mgr. Martin Seman",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1456
+     },
+     {
+      "obvod": "Staré Mesto",
+      "obvod_c": 4,
+      "meno": "Ing. Igor Petrovčik",
+      "strany": "SME RODINA",
+      "hlasy": 1379
+     },
+     {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
+      "meno": "Ing. Marek Kandrač",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 1325
+     },
+     {
+      "obvod": "Sever",
+      "obvod_c": 1,
+      "meno": "Mgr. Igor Kupec",
+      "strany": "Košická strana",
+      "hlasy": 1324
+     },
+     {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
+      "meno": "Ing. PhD. Vladimír Jeleň",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1324
+     },
+     {
+      "obvod": "Sever",
+      "obvod_c": 1,
+      "meno": "Ing. MBA František Ténai",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1320
+     },
+     {
+      "obvod": "Košická Nová Ves, Krásna, Vyšné Opátske",
+      "obvod_c": 13,
+      "meno": "Ing. Vladimír Saxa",
+      "strany": "Košická strana",
+      "hlasy": 1314
+     },
+     {
+      "obvod": "Juh",
+      "obvod_c": 11,
+      "meno": "Mgr. Lenka Bikárová",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1295
+     },
+     {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
+      "meno": "Peter Šafranko",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1239
+     },
+     {
+      "obvod": "Dargovských hrdinov",
+      "obvod_c": 14,
+      "meno": "Bc. Dalibor Eštočák",
+      "strany": "Progresívne Slovensko, Demokrati, ZA ĽUDÍ",
+      "hlasy": 1226
+     },
+     {
+      "obvod": "Košická Nová Ves, Krásna, Vyšné Opátske",
+      "obvod_c": 13,
+      "meno": "Ing. František Klik",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 977
+     },
+     {
+      "obvod": "Košická Nová Ves, Krásna, Vyšné Opátske",
+      "obvod_c": 13,
+      "meno": "Mgr. MBA Lukáš Kunca",
+      "strany": "Občianska konzervatívna strana",
+      "hlasy": 971
+     },
+     {
+      "obvod": "Barca, Šebastovce",
+      "obvod_c": 10,
+      "meno": "Ing. Gabriel Krištof",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 858
+     },
+     {
+      "obvod": "Luník IX, Myslava",
+      "obvod_c": 7,
+      "meno": "PhDr. Marcel Šaňa",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 720
+     },
+     {
+      "obvod": "Luník IX, Myslava",
+      "obvod_c": 7,
+      "meno": "Mgr. Peter Kasterko",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Magyar Szövetség - Maďarská aliancia, Strana rómskej koalície - SRK, NOVA, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 661
+     },
+     {
+      "obvod": "Lorinčík, Pereš, Poľov",
+      "obvod_c": 8,
+      "meno": "Ing. PhD. Štefan Kender",
+      "strany": "nezávislý kandidát",
+      "hlasy": 641
+     },
+     {
+      "obvod": "Šaca",
+      "obvod_c": 9,
+      "meno": "Ing. PhD. ING-PAED IGIP Lucia Iľaščíková",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 600
+     },
+     {
+      "obvod": "Džungľa, Kavečany, Ťahanovce",
+      "obvod_c": 2,
+      "meno": "JUDr. Martin Balčík",
+      "strany": "TÍM KOŠICE, STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
+      "hlasy": 476
+     }
+    ],
+    "statistiky": {
+     "zeny": 8,
+     "vek_priemer": 45.8,
+     "vek_min": 32,
+     "vek_max": 59,
+     "do_35": 5
+    }
    }
   }
  },
@@ -1946,136 +2998,136 @@
  },
  "byty": {
   "2001": {
-   "ZAC_BYT": 116,
    "DOKONC_BYT": 189,
-   "ROZOST_BYT_KON": 835
+   "ROZOST_BYT_KON": 835,
+   "ZAC_BYT": 116
   },
   "2002": {
-   "ZAC_BYT": 309,
    "DOKONC_BYT": 277,
-   "ROZOST_BYT_KON": 867
+   "ROZOST_BYT_KON": 867,
+   "ZAC_BYT": 309
   },
   "2003": {
-   "ZAC_BYT": 484,
    "DOKONC_BYT": 204,
-   "ROZOST_BYT_KON": 1231
+   "ROZOST_BYT_KON": 1231,
+   "ZAC_BYT": 484
   },
   "2004": {
-   "ZAC_BYT": 241,
    "DOKONC_BYT": 185,
-   "ROZOST_BYT_KON": 1437
+   "ROZOST_BYT_KON": 1437,
+   "ZAC_BYT": 241
   },
   "2005": {
-   "ZAC_BYT": 397,
    "DOKONC_BYT": 204,
-   "ROZOST_BYT_KON": 1630
+   "ROZOST_BYT_KON": 1630,
+   "ZAC_BYT": 397
   },
   "2006": {
-   "ZAC_BYT": 231,
    "DOKONC_BYT": 257,
-   "ROZOST_BYT_KON": 1604
+   "ROZOST_BYT_KON": 1604,
+   "ZAC_BYT": 231
   },
   "2007": {
-   "ZAC_BYT": 309,
    "DOKONC_BYT": 287,
-   "ROZOST_BYT_KON": 1639
+   "ROZOST_BYT_KON": 1639,
+   "ZAC_BYT": 309
   },
   "2008": {
-   "ZAC_BYT": 813,
    "DOKONC_BYT": 469,
-   "ROZOST_BYT_KON": 1924
+   "ROZOST_BYT_KON": 1924,
+   "ZAC_BYT": 813
   },
   "2009": {
-   "ZAC_BYT": 244,
    "DOKONC_BYT": 250,
-   "ROZOST_BYT_KON": 1820
+   "ROZOST_BYT_KON": 1820,
+   "ZAC_BYT": 244
   },
   "2010": {
-   "ZAC_BYT": 524,
    "DOKONC_BYT": 202,
-   "ROZOST_BYT_KON": 2154
+   "ROZOST_BYT_KON": 2154,
+   "ZAC_BYT": 524
   },
   "2011": {
-   "ZAC_BYT": 459,
    "DOKONC_BYT": 490,
-   "ROZOST_BYT_KON": 2069
+   "ROZOST_BYT_KON": 2069,
+   "ZAC_BYT": 459
   },
   "2012": {
-   "ZAC_BYT": 407,
    "DOKONC_BYT": 351,
-   "ROZOST_BYT_KON": 2138
+   "ROZOST_BYT_KON": 2138,
+   "ZAC_BYT": 407
   },
   "2013": {
-   "ZAC_BYT": 345,
    "DOKONC_BYT": 626,
-   "ROZOST_BYT_KON": 1831
+   "ROZOST_BYT_KON": 1831,
+   "ZAC_BYT": 345
   },
   "2014": {
-   "ZAC_BYT": 616,
    "DOKONC_BYT": 410,
-   "ROZOST_BYT_KON": 2038
+   "ROZOST_BYT_KON": 2038,
+   "ZAC_BYT": 616
   },
   "2015": {
-   "ZAC_BYT": 667,
    "DOKONC_BYT": 550,
-   "ROZOST_BYT_KON": 2158
+   "ROZOST_BYT_KON": 2158,
+   "ZAC_BYT": 667
   },
   "2016": {
-   "ZAC_BYT": 771,
    "DOKONC_BYT": 346,
-   "ROZOST_BYT_KON": 2589
+   "ROZOST_BYT_KON": 2589,
+   "ZAC_BYT": 771
   },
   "2017": {
-   "ZAC_BYT": 683,
    "DOKONC_BYT": 687,
-   "ROZOST_BYT_KON": 2585
+   "ROZOST_BYT_KON": 2585,
+   "ZAC_BYT": 683
   },
   "2018": {
-   "ZAC_BYT": 620,
    "DOKONC_BYT": 478,
-   "ROZOST_BYT_KON": 2725
+   "ROZOST_BYT_KON": 2725,
+   "ZAC_BYT": 620
   },
   "2019": {
-   "ZAC_BYT": 568,
    "DOKONC_BYT": 659,
-   "ROZOST_BYT_KON": 2604
+   "ROZOST_BYT_KON": 2604,
+   "ZAC_BYT": 568
   },
   "2020": {
-   "ZAC_BYT": 579,
    "DOKONC_BYT": 889,
-   "ROZOST_BYT_KON": 2289
+   "ROZOST_BYT_KON": 2289,
+   "ZAC_BYT": 579
   },
   "2021": {
-   "ZAC_BYT": 298,
    "DOKONC_BYT": 581,
-   "ROZOST_BYT_KON": 2036
+   "ROZOST_BYT_KON": 2036,
+   "ZAC_BYT": 298
   },
   "2022": {
-   "ZAC_BYT": 394,
    "DOKONC_BYT": 612,
-   "ROZOST_BYT_KON": 1818
+   "ROZOST_BYT_KON": 1818,
+   "ZAC_BYT": 394
   },
   "2023": {
-   "ZAC_BYT": 344,
    "DOKONC_BYT": 611,
-   "ROZOST_BYT_KON": 1551
+   "ROZOST_BYT_KON": 1551,
+   "ZAC_BYT": 344
   },
   "2024": {
-   "ZAC_BYT": 323,
    "DOKONC_BYT": 384,
-   "ROZOST_BYT_KON": 1493
+   "ROZOST_BYT_KON": 1493,
+   "ZAC_BYT": 323
   },
   "2025": {
-   "ZAC_BYT": 317,
    "DOKONC_BYT": 132,
-   "ROZOST_BYT_KON": 1678
+   "ROZOST_BYT_KON": 1678,
+   "ZAC_BYT": 317
   }
  },
  "ceny": {
   "kraj": {
-   "2022-Q2": 23,
+   "2022-Q2": 23.0,
    "2022-Q3": 17.2,
-   "2022-Q4": 11,
+   "2022-Q4": 11.0,
    "2023-Q1": 3.5,
    "2023-Q2": -6.4,
    "2023-Q3": -6.7,
@@ -2088,7 +3140,7 @@
    "2025-Q2": 12.1,
    "2025-Q3": 12.3,
    "2025-Q4": 7.4,
-   "2026-Q1": 11,
+   "2026-Q1": 11.0,
    "2026-Q2": 7.9
   },
   "sr": {
@@ -2100,8 +3152,8 @@
    "2023-Q2": -2.2,
    "2023-Q3": -4.1,
    "2023-Q4": -1.4,
-   "2024-Q1": -3,
-   "2024-Q2": 4,
+   "2024-Q1": -3.0,
+   "2024-Q2": 4.0,
    "2024-Q3": 6.2,
    "2024-Q4": 7.9,
    "2025-Q1": 12.2,
@@ -2124,13 +3176,13 @@
   ]
  },
  "zdroje": {
-  "obyvatelia": "ŠÚ SR – DATAcube om7101rr",
+  "obyvatelia": "ŠÚ SR – STATdata om7101rr",
   "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)",
   "volby": "ŠÚ SR – volby.statistics.sk",
   "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk",
   "praca": "ÚPSVaR – mesačná štatistika",
-  "byty": "ŠÚ SR – DATAcube st3004rr",
-  "ceny": "ŠÚ SR – DATAcube sp3801qr"
+  "byty": "ŠÚ SR – STATdata st3004rr",
+  "ceny": "ŠÚ SR – STATdata sp3801qr"
  },
  "casti": {
   "Barca": {
@@ -2192,6 +3244,61 @@
        "podiel": 7.85
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 3692,
+     "Od 15 do 64 rokov": 2441,
+     "65 rokov alebo viac": 697,
+     "14 rokov alebo menej": 554,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 3692,
+     "Stredné s maturitou": 1232,
+     "Vysokoškolské": 950,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 554,
+     "Stredné bez maturity": 505,
+     "Základné": 346,
+     "Nezistené": 91,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 14
+    },
+    "narodnost": {
+     "Spolu": 3692,
+     "Slovenská": 3439,
+     "Nezistená": 135,
+     "Maďarská": 50,
+     "Iná": 43,
+     "Česká": 14,
+     "Rusínska": 6,
+     "Ukrajinská": 1,
+     "Nemecká": 1,
+     "Rómska": 1,
+     "Poľská": 1,
+     "Ruská": 1
+    },
+    "nabozenstvo": {
+     "Spolu": 3692,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 2301,
+     "bez náboženského vyznania": 796,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 165,
+     "nezistené": 150,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 116,
+     "ostatné": 92,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 60,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 12
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 1187,
+     "byt vo vlastnom rodinnom dome": 1103,
+     "obecný byt": 36,
+     "iná forma užívania bytu": 29,
+     "vlastný byt v bytovom dome": 8,
+     "služobný a domovnícky byt": 5,
+     "nezistený": 5,
+     "byt v nájme": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0
     }
    }
   },
@@ -2255,6 +3362,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 25234,
+     "Od 15 do 64 rokov": 16441,
+     "65 rokov alebo viac": 5059,
+     "14 rokov alebo menej": 3734,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 25234,
+     "Stredné s maturitou": 8527,
+     "Vysokoškolské": 5709,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 3734,
+     "Stredné bez maturity": 3594,
+     "Nezistené": 1838,
+     "Základné": 1801,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 31
+    },
+    "narodnost": {
+     "Spolu": 25234,
+     "Slovenská": 21675,
+     "Nezistená": 2425,
+     "Maďarská": 548,
+     "Rusínska": 144,
+     "Česká": 120,
+     "Rómska": 99,
+     "Iná": 89,
+     "Ukrajinská": 82,
+     "Ruská": 21,
+     "Nemecká": 16,
+     "Poľská": 15
+    },
+    "nabozenstvo": {
+     "Spolu": 25234,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 11196,
+     "bez náboženského vyznania": 7136,
+     "nezistené": 2733,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1947,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 824,
+     "ostatné": 594,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 493,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 311
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 9970,
+     "vlastný byt v bytovom dome": 9630,
+     "byt vo vlastnom rodinnom dome": 119,
+     "družstevný byt - len stavebné bytové družstvá": 82,
+     "iná forma užívania bytu": 55,
+     "obecný byt": 47,
+     "byt v nájme": 20,
+     "nezistený": 9,
+     "služobný a domovnícky byt": 8
+    }
    }
   },
   "Džungľa": {
@@ -2316,6 +3478,61 @@
        "podiel": 4.76
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 750,
+     "Od 15 do 64 rokov": 495,
+     "14 rokov alebo menej": 186,
+     "65 rokov alebo viac": 69,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 750,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 186,
+     "Základné": 170,
+     "Stredné s maturitou": 146,
+     "Stredné bez maturity": 108,
+     "Vysokoškolské": 87,
+     "Nezistené": 53,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 0
+    },
+    "narodnost": {
+     "Spolu": 750,
+     "Slovenská": 681,
+     "Nezistená": 48,
+     "Iná": 11,
+     "Česká": 3,
+     "Rusínska": 2,
+     "Rómska": 2,
+     "Maďarská": 2,
+     "Ukrajinská": 1,
+     "Nemecká": 0,
+     "Poľská": 0,
+     "Ruská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 750,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 340,
+     "bez náboženského vyznania": 170,
+     "nezistené": 108,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 75,
+     "ostatné": 29,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 13,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 11,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 4
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 163,
+     "byt vo vlastnom rodinnom dome": 132,
+     "vlastný byt v bytovom dome": 17,
+     "iná forma užívania bytu": 9,
+     "nezistený": 3,
+     "služobný a domovnícky byt": 1,
+     "byt v nájme": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "obecný byt": 0
     }
    }
   },
@@ -2379,6 +3596,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 21339,
+     "Od 15 do 64 rokov": 12716,
+     "65 rokov alebo viac": 5949,
+     "14 rokov alebo menej": 2674,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 21339,
+     "Stredné s maturitou": 6880,
+     "Vysokoškolské": 6323,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 2674,
+     "Stredné bez maturity": 2436,
+     "Nezistené": 1517,
+     "Základné": 1484,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 25
+    },
+    "narodnost": {
+     "Spolu": 21339,
+     "Slovenská": 17839,
+     "Nezistená": 2038,
+     "Maďarská": 794,
+     "Česká": 145,
+     "Rómska": 139,
+     "Rusínska": 123,
+     "Iná": 120,
+     "Ukrajinská": 81,
+     "Ruská": 28,
+     "Nemecká": 21,
+     "Poľská": 11
+    },
+    "nabozenstvo": {
+     "Spolu": 21339,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 9269,
+     "bez náboženského vyznania": 6249,
+     "nezistené": 2290,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1463,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 737,
+     "ostatné": 563,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 539,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 229
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 11293,
+     "vlastný byt v bytovom dome": 9141,
+     "byt v nájme": 858,
+     "byt vo vlastnom rodinnom dome": 796,
+     "nezistený": 233,
+     "iná forma užívania bytu": 218,
+     "služobný a domovnícky byt": 24,
+     "obecný byt": 20,
+     "družstevný byt - len stavebné bytové družstvá": 3
+    }
    }
   },
   "Kavečany": {
@@ -2440,6 +3712,61 @@
        "podiel": 6.13
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 1346,
+     "Od 15 do 64 rokov": 924,
+     "65 rokov alebo viac": 214,
+     "14 rokov alebo menej": 208,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 1346,
+     "Stredné s maturitou": 397,
+     "Vysokoškolské": 283,
+     "Stredné bez maturity": 274,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 208,
+     "Základné": 171,
+     "Nezistené": 13,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 0
+    },
+    "narodnost": {
+     "Spolu": 1346,
+     "Slovenská": 1317,
+     "Rómska": 8,
+     "Nezistená": 8,
+     "Maďarská": 4,
+     "Rusínska": 4,
+     "Iná": 4,
+     "Ukrajinská": 1,
+     "Česká": 0,
+     "Nemecká": 0,
+     "Poľská": 0,
+     "Ruská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 1346,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 1003,
+     "bez náboženského vyznania": 233,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 34,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 23,
+     "ostatné": 22,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 13,
+     "nezistené": 11,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 7
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 420,
+     "byt vo vlastnom rodinnom dome": 401,
+     "vlastný byt v bytovom dome": 8,
+     "nezistený": 6,
+     "iná forma užívania bytu": 3,
+     "služobný a domovnícky byt": 1,
+     "byt v nájme": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "obecný byt": 0
     }
    }
   },
@@ -2503,6 +3830,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 2901,
+     "Od 15 do 64 rokov": 1908,
+     "65 rokov alebo viac": 521,
+     "14 rokov alebo menej": 472,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 2901,
+     "Vysokoškolské": 843,
+     "Stredné s maturitou": 776,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 472,
+     "Stredné bez maturity": 350,
+     "Základné": 313,
+     "Nezistené": 142,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 5
+    },
+    "narodnost": {
+     "Spolu": 2901,
+     "Slovenská": 2524,
+     "Nezistená": 231,
+     "Rómska": 72,
+     "Maďarská": 34,
+     "Rusínska": 16,
+     "Iná": 10,
+     "Česká": 7,
+     "Ukrajinská": 5,
+     "Nemecká": 1,
+     "Poľská": 1,
+     "Ruská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 2901,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 1605,
+     "bez náboženského vyznania": 681,
+     "nezistené": 239,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 148,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 97,
+     "ostatné": 73,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 30,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 28
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 974,
+     "byt vo vlastnom rodinnom dome": 718,
+     "vlastný byt v bytovom dome": 203,
+     "obecný byt": 30,
+     "iná forma užívania bytu": 19,
+     "nezistený": 3,
+     "služobný a domovnícky byt": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "byt v nájme": 0
+    }
    }
   },
   "Krásna": {
@@ -2564,6 +3946,61 @@
        "podiel": 7.35
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 5895,
+     "Od 15 do 64 rokov": 3908,
+     "14 rokov alebo menej": 1269,
+     "65 rokov alebo viac": 718,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 5895,
+     "Stredné s maturitou": 1481,
+     "Vysokoškolské": 1384,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 1269,
+     "Stredné bez maturity": 711,
+     "Základné": 602,
+     "Nezistené": 429,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 19
+    },
+    "narodnost": {
+     "Spolu": 5895,
+     "Slovenská": 4784,
+     "Nezistená": 739,
+     "Rómska": 177,
+     "Maďarská": 83,
+     "Iná": 51,
+     "Ukrajinská": 23,
+     "Česká": 17,
+     "Rusínska": 7,
+     "Poľská": 6,
+     "Ruská": 5,
+     "Nemecká": 3
+    },
+    "nabozenstvo": {
+     "Spolu": 5895,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 3151,
+     "bez náboženského vyznania": 1237,
+     "nezistené": 769,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 310,
+     "ostatné": 166,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 121,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 108,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 33
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 1700,
+     "byt vo vlastnom rodinnom dome": 1555,
+     "vlastný byt v bytovom dome": 92,
+     "iná forma užívania bytu": 32,
+     "nezistený": 14,
+     "obecný byt": 5,
+     "byt v nájme": 1,
+     "služobný a domovnícky byt": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0
     }
    }
   },
@@ -2627,6 +4064,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 883,
+     "Od 15 do 64 rokov": 582,
+     "14 rokov alebo menej": 200,
+     "65 rokov alebo viac": 101,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 883,
+     "Vysokoškolské": 307,
+     "Stredné s maturitou": 222,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 200,
+     "Stredné bez maturity": 89,
+     "Základné": 61,
+     "Nezistené": 2,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 2
+    },
+    "narodnost": {
+     "Spolu": 883,
+     "Slovenská": 835,
+     "Nezistená": 20,
+     "Maďarská": 17,
+     "Iná": 4,
+     "Česká": 3,
+     "Poľská": 1,
+     "Nemecká": 1,
+     "Rusínska": 1,
+     "Ukrajinská": 1,
+     "Rómska": 0,
+     "Ruská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 883,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 548,
+     "bez náboženského vyznania": 183,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 69,
+     "ostatné": 32,
+     "nezistené": 22,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 15,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 8,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 6
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 325,
+     "byt vo vlastnom rodinnom dome": 260,
+     "vlastný byt v bytovom dome": 56,
+     "iná forma užívania bytu": 6,
+     "nezistený": 2,
+     "byt v nájme": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "obecný byt": 0,
+     "služobný a domovnícky byt": 0
+    }
    }
   },
   "Luník IX": {
@@ -2688,6 +4180,61 @@
        "podiel": 3.92
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 7037,
+     "Od 15 do 64 rokov": 4678,
+     "14 rokov alebo menej": 2195,
+     "65 rokov alebo viac": 164,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 7037,
+     "Nezistené": 2848,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 2195,
+     "Základné": 1551,
+     "Stredné bez maturity": 279,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 86,
+     "Stredné s maturitou": 74,
+     "Vysokoškolské": 4
+    },
+    "narodnost": {
+     "Spolu": 7037,
+     "Rómska": 3073,
+     "Nezistená": 2769,
+     "Slovenská": 1187,
+     "Iná": 3,
+     "Rusínska": 2,
+     "Česká": 2,
+     "Ukrajinská": 1,
+     "Nemecká": 0,
+     "Maďarská": 0,
+     "Poľská": 0,
+     "Ruská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 7037,
+     "nezistené": 4120,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 1667,
+     "bez náboženského vyznania": 1002,
+     "ostatné": 111,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 70,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 55,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 9,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 3
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 458,
+     "obecný byt": 395,
+     "iná forma užívania bytu": 45,
+     "byt v nájme": 12,
+     "služobný a domovnícky byt": 3,
+     "nezistený": 3,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "byt vo vlastnom rodinnom dome": 0,
+     "vlastný byt v bytovom dome": 0
     }
    }
   },
@@ -2751,6 +4298,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 2545,
+     "Od 15 do 64 rokov": 1688,
+     "65 rokov alebo viac": 451,
+     "14 rokov alebo menej": 406,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 2545,
+     "Stredné s maturitou": 785,
+     "Vysokoškolské": 725,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 406,
+     "Stredné bez maturity": 370,
+     "Základné": 188,
+     "Nezistené": 70,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 1
+    },
+    "narodnost": {
+     "Spolu": 2545,
+     "Slovenská": 2355,
+     "Nezistená": 124,
+     "Maďarská": 23,
+     "Česká": 12,
+     "Rusínska": 9,
+     "Iná": 8,
+     "Ruská": 4,
+     "Rómska": 3,
+     "Ukrajinská": 3,
+     "Nemecká": 2,
+     "Poľská": 2
+    },
+    "nabozenstvo": {
+     "Spolu": 2545,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 1554,
+     "bez náboženského vyznania": 569,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 132,
+     "nezistené": 130,
+     "ostatné": 58,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 54,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 27,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 21
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 1036,
+     "byt vo vlastnom rodinnom dome": 727,
+     "vlastný byt v bytovom dome": 237,
+     "nezistený": 44,
+     "iná forma užívania bytu": 26,
+     "služobný a domovnícky byt": 2,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "obecný byt": 0,
+     "byt v nájme": 0
+    }
    }
   },
   "Nad jazerom": {
@@ -2812,6 +4414,61 @@
        "podiel": 5.98
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 22686,
+     "Od 15 do 64 rokov": 14473,
+     "65 rokov alebo viac": 5101,
+     "14 rokov alebo menej": 3112,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 22686,
+     "Stredné s maturitou": 8007,
+     "Vysokoškolské": 4341,
+     "Stredné bez maturity": 3684,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 3112,
+     "Základné": 1943,
+     "Nezistené": 1553,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 46
+    },
+    "narodnost": {
+     "Spolu": 22686,
+     "Slovenská": 19665,
+     "Nezistená": 2010,
+     "Maďarská": 546,
+     "Česká": 112,
+     "Rusínska": 106,
+     "Iná": 78,
+     "Ukrajinská": 73,
+     "Rómska": 59,
+     "Poľská": 18,
+     "Nemecká": 10,
+     "Ruská": 9
+    },
+    "nabozenstvo": {
+     "Spolu": 22686,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 10257,
+     "bez náboženského vyznania": 6313,
+     "nezistené": 2304,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1703,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 736,
+     "ostatné": 580,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 470,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 323
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 9068,
+     "vlastný byt v bytovom dome": 8791,
+     "družstevný byt - len stavebné bytové družstvá": 100,
+     "obecný byt": 52,
+     "byt vo vlastnom rodinnom dome": 50,
+     "byt v nájme": 39,
+     "iná forma užívania bytu": 19,
+     "služobný a domovnícky byt": 12,
+     "nezistený": 5
     }
    }
   },
@@ -2875,6 +4532,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 2079,
+     "Od 15 do 64 rokov": 1413,
+     "14 rokov alebo menej": 335,
+     "65 rokov alebo viac": 331,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 2079,
+     "Vysokoškolské": 724,
+     "Stredné s maturitou": 599,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 335,
+     "Stredné bez maturity": 192,
+     "Základné": 171,
+     "Nezistené": 54,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 4
+    },
+    "narodnost": {
+     "Spolu": 2079,
+     "Slovenská": 1883,
+     "Nezistená": 75,
+     "Maďarská": 63,
+     "Iná": 18,
+     "Česká": 12,
+     "Rusínska": 10,
+     "Ukrajinská": 8,
+     "Nemecká": 5,
+     "Poľská": 4,
+     "Ruská": 1,
+     "Rómska": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 2079,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 936,
+     "bez náboženského vyznania": 594,
+     "ostatné": 179,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 140,
+     "nezistené": 86,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 70,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 56,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 18
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 758,
+     "byt vo vlastnom rodinnom dome": 711,
+     "iná forma užívania bytu": 37,
+     "vlastný byt v bytovom dome": 7,
+     "nezistený": 2,
+     "služobný a domovnícky byt": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "obecný byt": 0,
+     "byt v nájme": 0
+    }
    }
   },
   "Poľov": {
@@ -2936,6 +4648,61 @@
        "podiel": 4.39
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 1192,
+     "Od 15 do 64 rokov": 804,
+     "14 rokov alebo menej": 204,
+     "65 rokov alebo viac": 184,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 1192,
+     "Stredné s maturitou": 408,
+     "Vysokoškolské": 222,
+     "Stredné bez maturity": 207,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 204,
+     "Základné": 123,
+     "Nezistené": 26,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 2
+    },
+    "narodnost": {
+     "Spolu": 1192,
+     "Slovenská": 1153,
+     "Nezistená": 32,
+     "Maďarská": 2,
+     "Rusínska": 2,
+     "Česká": 2,
+     "Ukrajinská": 1,
+     "Nemecká": 0,
+     "Iná": 0,
+     "Poľská": 0,
+     "Rómska": 0,
+     "Ruská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 1192,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 958,
+     "bez náboženského vyznania": 109,
+     "nezistené": 43,
+     "ostatné": 26,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 24,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 15,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 11,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 6
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 357,
+     "byt vo vlastnom rodinnom dome": 341,
+     "vlastný byt v bytovom dome": 13,
+     "nezistený": 1,
+     "iná forma užívania bytu": 1,
+     "služobný a domovnícky byt": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "obecný byt": 0,
+     "byt v nájme": 0
     }
    }
   },
@@ -2999,6 +4766,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 19123,
+     "Od 15 do 64 rokov": 12187,
+     "65 rokov alebo viac": 4280,
+     "14 rokov alebo menej": 2656,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 19123,
+     "Vysokoškolské": 6622,
+     "Stredné s maturitou": 5463,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 2656,
+     "Stredné bez maturity": 1809,
+     "Základné": 1315,
+     "Nezistené": 1242,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 16
+    },
+    "narodnost": {
+     "Spolu": 19123,
+     "Slovenská": 16425,
+     "Nezistená": 1594,
+     "Maďarská": 563,
+     "Iná": 141,
+     "Česká": 131,
+     "Rusínska": 94,
+     "Rómska": 68,
+     "Ukrajinská": 60,
+     "Nemecká": 27,
+     "Ruská": 11,
+     "Poľská": 9
+    },
+    "nabozenstvo": {
+     "Spolu": 19123,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 7880,
+     "bez náboženského vyznania": 6224,
+     "nezistené": 2012,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1159,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 757,
+     "ostatné": 482,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 388,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 221
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 9457,
+     "vlastný byt v bytovom dome": 7117,
+     "byt vo vlastnom rodinnom dome": 1966,
+     "iná forma užívania bytu": 147,
+     "obecný byt": 107,
+     "byt v nájme": 62,
+     "služobný a domovnícky byt": 28,
+     "nezistený": 20,
+     "družstevný byt - len stavebné bytové družstvá": 10
+    }
    }
   },
   "Staré Mesto": {
@@ -3060,6 +4882,61 @@
        "podiel": 6.03
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 20133,
+     "Od 15 do 64 rokov": 12454,
+     "65 rokov alebo viac": 5030,
+     "14 rokov alebo menej": 2649,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 20133,
+     "Vysokoškolské": 7466,
+     "Stredné s maturitou": 5624,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 2649,
+     "Nezistené": 1687,
+     "Stredné bez maturity": 1452,
+     "Základné": 1241,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 14
+    },
+    "narodnost": {
+     "Spolu": 20133,
+     "Slovenská": 16049,
+     "Nezistená": 2528,
+     "Maďarská": 776,
+     "Iná": 196,
+     "Česká": 164,
+     "Rusínska": 139,
+     "Rómska": 108,
+     "Ukrajinská": 103,
+     "Ruská": 28,
+     "Nemecká": 28,
+     "Poľská": 14
+    },
+    "nabozenstvo": {
+     "Spolu": 20133,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 7587,
+     "bez náboženského vyznania": 6478,
+     "nezistené": 2598,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1236,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 874,
+     "ostatné": 626,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 422,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 312
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 11890,
+     "vlastný byt v bytovom dome": 10666,
+     "iná forma užívania bytu": 584,
+     "nezistený": 223,
+     "byt vo vlastnom rodinnom dome": 221,
+     "byt v nájme": 89,
+     "družstevný byt - len stavebné bytové družstvá": 46,
+     "služobný a domovnícky byt": 33,
+     "obecný byt": 28
     }
    }
   },
@@ -3123,6 +5000,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 22241,
+     "Od 15 do 64 rokov": 16656,
+     "14 rokov alebo menej": 3155,
+     "65 rokov alebo viac": 2430,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 22241,
+     "Stredné s maturitou": 7404,
+     "Vysokoškolské": 6353,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 3155,
+     "Stredné bez maturity": 2910,
+     "Základné": 1286,
+     "Nezistené": 1099,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 34
+    },
+    "narodnost": {
+     "Spolu": 22241,
+     "Slovenská": 19527,
+     "Nezistená": 1470,
+     "Maďarská": 574,
+     "Iná": 275,
+     "Rusínska": 140,
+     "Česká": 107,
+     "Ukrajinská": 74,
+     "Rómska": 27,
+     "Ruská": 17,
+     "Poľská": 16,
+     "Nemecká": 14
+    },
+    "nabozenstvo": {
+     "Spolu": 22241,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 9997,
+     "bez náboženského vyznania": 6842,
+     "nezistené": 1752,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1501,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 742,
+     "ostatné": 624,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 460,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 323
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 8167,
+     "vlastný byt v bytovom dome": 7656,
+     "družstevný byt - len stavebné bytové družstvá": 468,
+     "byt v nájme": 22,
+     "iná forma užívania bytu": 9,
+     "nezistený": 5,
+     "obecný byt": 4,
+     "služobný a domovnícky byt": 2,
+     "byt vo vlastnom rodinnom dome": 1
+    }
    }
   },
   "Sídlisko Ťahanovce": {
@@ -3184,6 +5116,61 @@
        "podiel": 5.37
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 20863,
+     "Od 15 do 64 rokov": 16486,
+     "14 rokov alebo menej": 2812,
+     "65 rokov alebo viac": 1565,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 20863,
+     "Stredné s maturitou": 7219,
+     "Vysokoškolské": 5791,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 2812,
+     "Stredné bez maturity": 2510,
+     "Základné": 1482,
+     "Nezistené": 1024,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 25
+    },
+    "narodnost": {
+     "Spolu": 20863,
+     "Slovenská": 18302,
+     "Nezistená": 1525,
+     "Maďarská": 406,
+     "Ukrajinská": 178,
+     "Rusínska": 132,
+     "Česká": 119,
+     "Rómska": 89,
+     "Iná": 81,
+     "Poľská": 11,
+     "Nemecká": 11,
+     "Ruská": 9
+    },
+    "nabozenstvo": {
+     "Spolu": 20863,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 9455,
+     "bez náboženského vyznania": 6238,
+     "nezistené": 1745,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 1453,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 691,
+     "ostatné": 478,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 412,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 391
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 7459,
+     "vlastný byt v bytovom dome": 5434,
+     "družstevný byt - len stavebné bytové družstvá": 1956,
+     "byt v nájme": 41,
+     "iná forma užívania bytu": 13,
+     "byt vo vlastnom rodinnom dome": 8,
+     "služobný a domovnícky byt": 4,
+     "nezistený": 2,
+     "obecný byt": 1
     }
    }
   },
@@ -3247,6 +5234,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 2633,
+     "Od 15 do 64 rokov": 1726,
+     "14 rokov alebo menej": 513,
+     "65 rokov alebo viac": 394,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 2633,
+     "Vysokoškolské": 934,
+     "Stredné s maturitou": 667,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 513,
+     "Stredné bez maturity": 236,
+     "Základné": 175,
+     "Nezistené": 92,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 16
+    },
+    "narodnost": {
+     "Spolu": 2633,
+     "Slovenská": 2378,
+     "Nezistená": 140,
+     "Maďarská": 49,
+     "Iná": 16,
+     "Rusínska": 16,
+     "Ukrajinská": 16,
+     "Česká": 11,
+     "Rómska": 5,
+     "Nemecká": 1,
+     "Poľská": 1,
+     "Ruská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 2633,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 1263,
+     "bez náboženského vyznania": 801,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 214,
+     "nezistené": 173,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 71,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 45,
+     "ostatné": 35,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 31
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 1196,
+     "byt vo vlastnom rodinnom dome": 819,
+     "vlastný byt v bytovom dome": 226,
+     "iná forma užívania bytu": 75,
+     "nezistený": 68,
+     "služobný a domovnícky byt": 7,
+     "byt v nájme": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "obecný byt": 0
+    }
    }
   },
   "Západ": {
@@ -3308,6 +5350,61 @@
        "podiel": 6.25
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 37738,
+     "Od 15 do 64 rokov": 24036,
+     "65 rokov alebo viac": 8576,
+     "14 rokov alebo menej": 5126,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 37738,
+     "Stredné s maturitou": 12230,
+     "Vysokoškolské": 10711,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 5126,
+     "Stredné bez maturity": 4497,
+     "Základné": 2829,
+     "Nezistené": 2300,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 45
+    },
+    "narodnost": {
+     "Spolu": 37738,
+     "Slovenská": 32407,
+     "Nezistená": 3117,
+     "Maďarská": 1013,
+     "Česká": 362,
+     "Iná": 272,
+     "Rusínska": 223,
+     "Ukrajinská": 142,
+     "Rómska": 108,
+     "Ruská": 38,
+     "Poľská": 28,
+     "Nemecká": 28
+    },
+    "nabozenstvo": {
+     "Spolu": 37738,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 15837,
+     "bez náboženského vyznania": 11560,
+     "nezistené": 3718,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 2966,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 1330,
+     "ostatné": 987,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 767,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 573
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 18133,
+     "vlastný byt v bytovom dome": 16614,
+     "byt vo vlastnom rodinnom dome": 928,
+     "iná forma užívania bytu": 209,
+     "obecný byt": 135,
+     "byt v nájme": 101,
+     "nezistený": 76,
+     "družstevný byt - len stavebné bytové družstvá": 48,
+     "služobný a domovnícky byt": 22
     }
    }
   },
@@ -3371,6 +5468,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 5722,
+     "Od 15 do 64 rokov": 4062,
+     "14 rokov alebo menej": 975,
+     "65 rokov alebo viac": 685,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 5722,
+     "Stredné s maturitou": 1571,
+     "Stredné bez maturity": 1025,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 975,
+     "Základné": 908,
+     "Vysokoškolské": 700,
+     "Nezistené": 520,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 23
+    },
+    "narodnost": {
+     "Spolu": 5722,
+     "Slovenská": 4711,
+     "Nezistená": 781,
+     "Rómska": 97,
+     "Maďarská": 65,
+     "Rusínska": 26,
+     "Ukrajinská": 19,
+     "Iná": 11,
+     "Česká": 10,
+     "Ruská": 1,
+     "Nemecká": 1,
+     "Poľská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 5722,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 3320,
+     "bez náboženského vyznania": 907,
+     "nezistené": 795,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 276,
+     "ostatné": 123,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 121,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 112,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 68
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 1940,
+     "vlastný byt v bytovom dome": 1159,
+     "byt vo vlastnom rodinnom dome": 548,
+     "byt v nájme": 96,
+     "obecný byt": 84,
+     "služobný a domovnícky byt": 26,
+     "iná forma užívania bytu": 22,
+     "nezistený": 5,
+     "družstevný byt - len stavebné bytové družstvá": 0
+    }
    }
   },
   "Šebastovce": {
@@ -3433,6 +5585,61 @@
       }
      ]
     }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 770,
+     "Od 15 do 64 rokov": 519,
+     "14 rokov alebo menej": 134,
+     "65 rokov alebo viac": 117,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 770,
+     "Stredné s maturitou": 232,
+     "Vysokoškolské": 205,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 134,
+     "Stredné bez maturity": 101,
+     "Základné": 70,
+     "Nezistené": 28,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 0
+    },
+    "narodnost": {
+     "Spolu": 770,
+     "Slovenská": 711,
+     "Nezistená": 41,
+     "Rusínska": 5,
+     "Iná": 5,
+     "Česká": 4,
+     "Maďarská": 3,
+     "Poľská": 1,
+     "Nemecká": 0,
+     "Rómska": 0,
+     "Ruská": 0,
+     "Ukrajinská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 770,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 504,
+     "bez náboženského vyznania": 104,
+     "nezistené": 46,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 46,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 39,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 22,
+     "ostatné": 8,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 1
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 250,
+     "byt vo vlastnom rodinnom dome": 228,
+     "iná forma užívania bytu": 15,
+     "vlastný byt v bytovom dome": 6,
+     "nezistený": 1,
+     "družstevný byt - len stavebné bytové družstvá": 0,
+     "obecný byt": 0,
+     "byt v nájme": 0,
+     "služobný a domovnícky byt": 0
+    }
    }
   },
   "Ťahanovce": {
@@ -3494,6 +5701,61 @@
        "podiel": 4.56
       }
      ]
+    }
+   },
+   "scitanie": {
+    "vek": {
+     "Spolu": 2238,
+     "Od 15 do 64 rokov": 1597,
+     "14 rokov alebo menej": 367,
+     "65 rokov alebo viac": 274,
+     "Neznáme": 0
+    },
+    "vzdelanie": {
+     "Spolu": 2238,
+     "Stredné s maturitou": 593,
+     "Vysokoškolské": 387,
+     "Bez ukončeného vzdelania - osoby vo veku 0-14 rokov": 367,
+     "Základné": 365,
+     "Stredné bez maturity": 347,
+     "Nezistené": 169,
+     "Bez školského vzdelania - osoby vo veku 15 rokov a viac": 10
+    },
+    "narodnost": {
+     "Spolu": 2238,
+     "Slovenská": 1928,
+     "Nezistená": 247,
+     "Maďarská": 21,
+     "Rómska": 17,
+     "Ukrajinská": 9,
+     "Česká": 7,
+     "Rusínska": 4,
+     "Ruská": 3,
+     "Iná": 2,
+     "Nemecká": 0,
+     "Poľská": 0
+    },
+    "nabozenstvo": {
+     "Spolu": 2238,
+     "Rímskokatolícka cirkev v Slovenskej republike (rímskokatolícke) / Rímskokatolícka cirkev": 1242,
+     "bez náboženského vyznania": 509,
+     "nezistené": 266,
+     "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 77,
+     "ostatné": 58,
+     "Evanjelická cirkev augsburského vyznania na Slovensku (evanjelické) / Evanjelická cirkev augsburského vyznania": 37,
+     "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 29,
+     "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 20
+    },
+    "byty_vlastnictvo": {
+     "Spolu": 725,
+     "byt vo vlastnom rodinnom dome": 522,
+     "vlastný byt v bytovom dome": 114,
+     "družstevný byt - len stavebné bytové družstvá": 53,
+     "iná forma užívania bytu": 31,
+     "nezistený": 3,
+     "služobný a domovnícky byt": 2,
+     "obecný byt": 0,
+     "byt v nájme": 0
     }
    }
   }
