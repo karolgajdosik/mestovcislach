@@ -1,19 +1,12 @@
-import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "pyarrow"])
-import re, requests, io
+import re, requests
 s = requests.Session(); s.headers["User-Agent"] = "Mozilla/5.0 (compatible; mestovcislach.sk)"
 B = "https://www.minv.sk/lnisdn/statistika/20260218_011722.691_2025-12-MS/statistika/"
 r = s.get(B + "index-public.html", timeout=60); r.encoding = "utf-8"
 al = re.findall(r"href='([^']+\.html)' title='([^']+)'", r.text)
-okr = [(h, t.replace("\n", " / ")) for h, t in al if re.search(r"Územie: (Okres|okres)", t)]
-print("ALL", len(al), "OKRES", len(okr)); print(okr[:6])
-pref = sorted({h.split("/")[1] for h, _ in okr}); print("PREF", pref)
-if okr:
-    h = next((h for h, t in okr if "od začiatku roka" in t and "všetky DN" in t), okr[0][0])
-    x = s.get(B + h, timeout=60); x.encoding = "utf-8"
-    print("OKRPAGE", h, re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " | ", x.text))[:1500])
-import pyarrow.parquet as pq
-x = s.get("https://eeadmz1batchservice02.blob.core.windows.net/airquality-p-e1a/SK/SPO-SK0004A_00005_100.parquet", timeout=120)
-t = pq.read_table(io.BytesIO(x.content)); print("PQ", t.num_rows, t.schema)
-d = t.to_pydict(); print({k: d[k][:3] for k in d})
-print("min/max", min(d["Start"]), max(d["Start"]))
+c4 = [(h, t.replace("\n", " / ")) for h, t in al if re.search(r"-p?\d{4}\.html$", h)]
+print("C4", len(c4)); print(c4[:4]); print(sorted({h.split('/')[1] for h, _ in c4}))
+x = next(((h, t) for h, t in c4 if "dkvr" in h or ("od začiatku roka" in t and "všetky DN" in t)), None); print("PICK", x)
+if x:
+    y = s.get(B + x[0], timeout=60); y.encoding = "utf-8"
+    print(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " | ", y.text))[:1600])
 print("HOTOVO")
