@@ -2,15 +2,15 @@
  "mesto": "zilina",
  "ico": "00321796",
  "od": "2022-01-01",
- "do": "2026-11-12",
+ "do": "2026-11-13",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8529,
-  "skryte_fyzicke_osoby": 3831,
+  "zaznamov": 8539,
+  "skryte_fyzicke_osoby": 3836,
   "roky": {
    "2022": {
     "pocet": 1084,
@@ -37,10 +37,10 @@
     "fo_suma": 5442968
    },
    "2026": {
-    "pocet": 1835,
-    "suma": 143185306,
-    "fo_pocet": 931,
-    "fo_suma": 4725478
+    "pocet": 1845,
+    "suma": 143291851,
+    "fo_pocet": 936,
+    "fo_suma": 4748821
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-13T06:20:27+00:00"
+ "aktualizovane": "2026-11-14T06:07:55+00:00"
 }

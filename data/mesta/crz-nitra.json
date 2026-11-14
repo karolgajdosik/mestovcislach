@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-11-12",
+ "do": "2026-11-13",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 15168,
-  "skryte_fyzicke_osoby": 9877,
+  "zaznamov": 15195,
+  "skryte_fyzicke_osoby": 9895,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,10 +37,10 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3440,
-    "suma": 53030198,
-    "fo_pocet": 2470,
-    "fo_suma": 3492017
+    "pocet": 3467,
+    "suma": 53868586,
+    "fo_pocet": 2488,
+    "fo_suma": 3537387
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -117,6 +117,12 @@
     "suma": 1976945
    },
    {
+    "ico": "34104402",
+    "nazov": "Novosedlík, spol. s.r.o.",
+    "pocet": 2,
+    "suma": 1863068
+   },
+   {
     "ico": "57012644",
     "nazov": "Spojená materská škola, Alexyho 26, Nitra",
     "pocet": 12,
@@ -157,12 +163,6 @@
     "nazov": "Spojená materská škola, Párovská 36, Nitra",
     "pocet": 6,
     "suma": 1309939
-   },
-   {
-    "ico": "37865609",
-    "nazov": "Základná škola Tulipánová",
-    "pocet": 7,
-    "suma": 1228966
    }
   ],
   "najvacsie_12_mesiacov": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-13T06:20:27+00:00"
+ "aktualizovane": "2026-11-14T06:07:55+00:00"
 }

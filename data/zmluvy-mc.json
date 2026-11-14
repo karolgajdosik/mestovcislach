@@ -5,7 +5,7 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-11-12",
+ "do": "2026-11-13",
  "mestske_casti": {
   "Devín": {
    "zmluv": 556,
@@ -416,8 +416,8 @@
    ]
   },
   "Dúbravka": {
-   "zmluv": 2479,
-   "suma": 44709754,
+   "zmluv": 2485,
+   "suma": 44711623,
    "roky": {
     "2022": [
      443,
@@ -436,13 +436,13 @@
      9938981
     ],
     "2026": [
-     380,
-     15182351
+     386,
+     15184220
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1044,
-    "suma": 3348059
+    "zmluv": 1045,
+    "suma": 3348089
    },
    "najvacsi_partneri": [
     {
@@ -620,8 +620,8 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14825,
-   "suma": 2703828915,
+   "zmluv": 14846,
+   "suma": 2703876452,
    "roky": {
     "2022": [
      2618,
@@ -640,13 +640,13 @@
      334776233
     ],
     "2026": [
-     2667,
-     614533600
+     2688,
+     614581137
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 6482,
-    "suma": 77643170
+    "zmluv": 6491,
+    "suma": 77679143
    },
    "najvacsi_partneri": [
     {
@@ -1028,8 +1028,8 @@
    ]
   },
   "Karlova Ves": {
-   "zmluv": 2496,
-   "suma": 73181952,
+   "zmluv": 2502,
+   "suma": 73183052,
    "roky": {
     "2022": [
      564,
@@ -1048,13 +1048,13 @@
      8212235
     ],
     "2026": [
-     385,
-     23233963
+     391,
+     23235063
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1020,
-    "suma": 3924713
+    "zmluv": 1023,
+    "suma": 3925313
    },
    "najvacsi_partneri": [
     {
@@ -1436,8 +1436,8 @@
    ]
   },
   "Nové Mesto": {
-   "zmluv": 1776,
-   "suma": 122819130,
+   "zmluv": 1778,
+   "suma": 122819250,
    "roky": {
     "2022": [
      277,
@@ -1456,13 +1456,13 @@
      10986412
     ],
     "2026": [
-     468,
-     21673104
+     470,
+     21673224
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 617,
-    "suma": 4888466
+    "zmluv": 618,
+    "suma": 4888586
    },
    "najvacsi_partneri": [
     {
@@ -2252,8 +2252,8 @@
    ]
   },
   "Rusovce": {
-   "zmluv": 874,
-   "suma": 35654016,
+   "zmluv": 876,
+   "suma": 35777631,
    "roky": {
     "2022": [
      177,
@@ -2272,8 +2272,8 @@
      4654019
     ],
     "2026": [
-     145,
-     2322556
+     147,
+     2446171
     ]
    },
    "fyzicke_osoby": {
@@ -2348,6 +2348,12 @@
      "suma": 147521
     },
     {
+     "nazov": "JELA, s.r.o.",
+     "ico": "36761737",
+     "zmluv": 2,
+     "suma": 123615
+    },
+    {
      "nazov": "Ardsystém, s.r.o.",
      "ico": "36397563",
      "zmluv": 1,
@@ -2364,12 +2370,6 @@
      "ico": "45925739",
      "zmluv": 1,
      "suma": 110429
-    },
-    {
-     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
-     "ico": "00681156",
-     "zmluv": 2,
-     "suma": 100000
     }
    ],
    "najvacsie_zmluvy": [
@@ -2456,8 +2456,8 @@
    ]
   },
   "Ružinov": {
-   "zmluv": 2697,
-   "suma": 173508229,
+   "zmluv": 2698,
+   "suma": 173838529,
    "roky": {
     "2022": [
      334,
@@ -2476,8 +2476,8 @@
      27813497
     ],
     "2026": [
-     491,
-     66976692
+     492,
+     67306992
     ]
    },
    "fyzicke_osoby": {
@@ -2660,8 +2660,8 @@
    ]
   },
   "Staré Mesto": {
-   "zmluv": 2512,
-   "suma": 116272629,
+   "zmluv": 2515,
+   "suma": 116520363,
    "roky": {
     "2022": [
      459,
@@ -2680,8 +2680,8 @@
      20943521
     ],
     "2026": [
-     530,
-     36141646
+     533,
+     36389380
     ]
    },
    "fyzicke_osoby": {
@@ -2756,6 +2756,12 @@
      "suma": 1401675
     },
     {
+     "nazov": "ZARES s.r.o.",
+     "ico": "35778806",
+     "zmluv": 11,
+     "suma": 1196649
+    },
+    {
      "nazov": "PROMA ENERGY, s.r.o.",
      "ico": "50326350",
      "zmluv": 2,
@@ -2766,12 +2772,6 @@
      "ico": "44018649",
      "zmluv": 3,
      "suma": 951765
-    },
-    {
-     "nazov": "ZARES s.r.o.",
-     "ico": "35778806",
-     "zmluv": 10,
-     "suma": 951136
     },
     {
      "nazov": "EURO-ŠTUKONZ a.s.",
@@ -3272,8 +3272,8 @@
    ]
   },
   "Záhorská Bystrica": {
-   "zmluv": 876,
-   "suma": 17944231,
+   "zmluv": 880,
+   "suma": 17947033,
    "roky": {
     "2022": [
      143,
@@ -3292,13 +3292,13 @@
      5900080
     ],
     "2026": [
-     166,
-     6421163
+     170,
+     6423965
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 472,
-    "suma": 3857717
+    "zmluv": 474,
+    "suma": 3857769
    },
    "najvacsi_partneri": [
     {
@@ -4927,8 +4927,8 @@
     ]
    },
    "prijate": {
-    "zmluv": 12,
-    "suma": 309358,
+    "zmluv": 13,
+    "suma": 310358,
     "poskytovatelia": [
      {
       "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
@@ -4945,6 +4945,10 @@
      {
       "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
       "suma": 1200
+     },
+     {
+      "nazov": "Fond na podporu umenia",
+      "suma": 1000
      },
      {
       "nazov": "Hlavné mesto SR BA odd. pultu centrál. ochrany a informatik",
@@ -4996,5 +5000,5 @@
    }
   }
  },
- "aktualizovane": "2026-11-13T06:20:25+00:00"
+ "aktualizovane": "2026-11-14T06:07:53+00:00"
 }
