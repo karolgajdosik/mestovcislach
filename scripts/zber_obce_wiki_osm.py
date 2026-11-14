@@ -266,7 +266,79 @@ def trasy() -> None:
                     "obce": dict(sorted(out.items()))})
 
 
-MODULY = {"wiki": wiki, "pamiatky": pamiatky, "osm": osm, "trasy": trasy}
+def obrazky() -> None:
+    """Erb (P94) a fotka obce (P18) z Wikimedia Commons s autorom a licenciou, partnerské mestá (P190) z Wikidata."""
+    q = """SELECT ?lau ?erb ?foto ?pl WHERE { ?o wdt:P17 wd:Q214 ; wdt:P782 ?lau .
+      OPTIONAL { ?o wdt:P94 ?erb } OPTIONAL { ?o wdt:P18 ?foto }
+      OPTIONAL { ?o wdt:P190 ?p . ?p rdfs:label ?pl FILTER(lang(?pl) = "sk") } }"""
+    r = s.post("https://query.wikidata.org/sparql", data={"query": q, "format": "json"}, headers=UA, timeout=600)
+    r.raise_for_status()
+    obce: dict[str, dict] = {}
+    nazov = lambda u: requests_unquote(u.rsplit("/", 1)[-1])  # noqa: E731
+    for b in r.json()["results"]["bindings"]:
+        kod = b["lau"]["value"][-6:]
+        if kod not in KODY:
+            continue
+        o = obce.setdefault(kod, {})
+        if "erb" in b and "erb" not in o:
+            o["erb"] = nazov(b["erb"]["value"])
+        if "foto" in b and "foto" not in o:
+            o["foto"] = nazov(b["foto"]["value"])
+        if "pl" in b:
+            pl = o.setdefault("partneri", [])
+            if b["pl"]["value"] not in pl:
+                pl.append(b["pl"]["value"])
+    # autor a licencia z Commons (po 50 súboroch)
+    subory = sorted({o[k] for o in obce.values() for k in ("erb", "foto") if k in o})
+    meta: dict[str, dict] = {}
+    for i in range(0, len(subory), 50):
+        dav = subory[i:i + 50]
+        for pokus in range(3):
+            try:
+                rr = s.get("https://commons.wikimedia.org/w/api.php", headers=UA, timeout=120, params={
+                    "action": "query", "format": "json", "prop": "imageinfo", "iiprop": "extmetadata|url", "iiurlwidth": 480,
+                    "iiextmetadatafilter": "Artist|LicenseShortName|LicenseUrl", "titles": "|".join("File:" + x for x in dav)})
+                rr.raise_for_status()
+                break
+            except Exception:  # noqa: BLE001
+                time.sleep(10)
+        else:
+            continue
+        j = rr.json().get("query", {})
+        norm = {n["to"]: n["from"] for n in j.get("normalized", [])}
+        for pg in j.get("pages", {}).values():
+            ii = (pg.get("imageinfo") or [{}])[0]
+            em = ii.get("extmetadata") or {}
+            autor = re.sub(r"<[^>]+>", "", (em.get("Artist") or {}).get("value", "")).strip()
+            autor = re.sub(r"\s+", " ", autor)[:80]
+            meno = norm.get(pg.get("title", ""), pg.get("title", "")).removeprefix("File:")
+            if ii.get("thumburl"):
+                meta[meno] = {"u": ii["thumburl"], "a": autor, "l": (em.get("LicenseShortName") or {}).get("value", ""), "lu": (em.get("LicenseUrl") or {}).get("value", "")}
+        time.sleep(1)
+    out = {}
+    for kod, o in obce.items():
+        v = {}
+        for k in ("erb", "foto"):
+            m = meta.get(o.get(k, "").replace("_", " ")) or meta.get(o.get(k, ""))
+            if m:
+                v[k] = {**m, "s": o[k]}
+        if o.get("partneri"):
+            v["partneri"] = sorted(o["partneri"])[:12]
+        if v:
+            out[kod] = v
+    print(f"Obrázky: {len(out)} obcí, erb {sum('erb' in v for v in out.values())}, foto {sum('foto' in v for v in out.values())}, partneri {sum('partneri' in v for v in out.values())}")
+    if sum("erb" in v for v in out.values()) < 1000:
+        raise RuntimeError("Commons: málo erbov")
+    zapis("obrazky", {"zdroj": {"nazov": "Wikidata a Wikimedia Commons – erb, fotografia, partnerské mestá", "url": "https://commons.wikimedia.org"},
+                      "obce": dict(sorted(out.items()))})
+
+
+def requests_unquote(x: str) -> str:
+    from urllib.parse import unquote
+    return unquote(x)
+
+
+MODULY = {"wiki": wiki, "obrazky": obrazky, "pamiatky": pamiatky, "osm": osm, "trasy": trasy}
 
 
 def main() -> int:

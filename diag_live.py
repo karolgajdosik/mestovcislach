@@ -1,49 +1,43 @@
-import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
-import re, requests, json
+import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt", "xlrd"])
+import re, requests, json, io
 sys.path.insert(0, "scripts")
 s = requests.Session(); s.headers["User-Agent"] = "Mozilla/5.0 (compatible; mestovcislach.sk)"
-def g(u, **k):
-    try: return s.get(u, timeout=60, **k)
-    except Exception as e: print("ERR", u, str(e)[:120]); return None
-def links(u, pat, n=30):
-    r = g(u)
-    if r is None: return None
-    print("==", u, r.status_code, len(r.text))
-    for m in sorted(set(re.findall(r'href="([^"]+)"', r.text))):
-        if re.search(pat, m, re.I): print("  ", m[:200]); n -= 1
-        if n <= 0: break
-    return r
-# a) UPSVR years
-import zber_obce_temy as zt
-r = g(zt.UPSVR_OBCE)
-roky = sorted(set(re.findall(r'href="(https://www\.upsvr\.gov\.sk/statistiky/mesacne-statistiky-miest-a-obci/(\d{4})\.html\?page_id=\d+)"', r.text)), key=lambda x: x[1])
-print("ROKY", [x[1] for x in roky])
-for url, rok in roky[:1] + roky[len(roky)//2:len(roky)//2+1]:
-    t = g(url).text
-    print("  ", rok, [u for u in re.findall(r'href="([^"]+\.xlsx?)"', t)][:14])
-# b) STATdata MČ names
-from statdata_obce import riadky_obce
-rr = riadky_obce("om7101rr", rokov=1, vyber={"e_sex": ["Spolu"]})
-nm = sorted({x.get("e_nuts15", "").strip() for x in rr if re.search("Bratislava|Košice", x.get("e_nuts15", "") + x.get("e_nuts14", ""))})
-print("MC", len(nm), nm[:50])
-# c) NIVAM maturita
-for u in ["https://dataportal.nucem.sk/Dataportal-web/web/vysledky/index.xhtml", "https://dataportal.nucem.sk/Dataportal-web/web/vysledky/2025/maturita/index.xhtml"]:
-    r = links(u, r"matur|vysledky/20")
-    if r is not None and "maturita" in u: print("  links35", re.findall(r"'j_idt\d+:(j_idt\d+)':'j_idt\d+:j_idt\d+'\},''\);return false\">([^<]*)<", r.text)[:20])
-# e) STATdata search byty
 from statdata_obce import B, H
-try:
-    r = s.post(f"{B}/public/api/dc/public/bulkDownload/search", json={"searchText": "dokončené byty"}, headers=H, timeout=60)
-    print("SEARCH", r.status_code, r.text[:1500])
-except Exception as e: print("SEARCH ERR", e)
-# h) nehody
-links("https://www.minv.sk/lnisdn/statistika/20260218_011722.691_2025-12-MS/statistika/index-public.html", r"okres|rocn|dn", 60)
-# i) NRO
-links("https://www.upsvr.gov.sk/", r"najmenej|nro|rozvinut")
-# f) SP
-links("https://www.socpoist.sk/", r"statist|dochod")
-# j) Wikidata counts
-q = """SELECT (COUNT(DISTINCT ?o) AS ?n) (COUNT(DISTINCT ?e) AS ?erb) (COUNT(DISTINCT ?f) AS ?foto) (COUNT(DISTINCT ?p) AS ?part) WHERE { ?o wdt:P17 wd:Q214; wdt:P782 ?lau . OPTIONAL{?o wdt:P94 ?e} OPTIONAL{?o wdt:P18 ?f} OPTIONAL{?o wdt:P190 ?p} }"""
-r = s.get("https://query.wikidata.org/sparql", params={"query": q, "format": "json"}, timeout=120)
-print("WD", r.json()["results"]["bindings"])
+for k in ["st3801rr", "st3802rr", "st3803rr", "st3804rr", "st3805rr", "st3806rr", "st3807rr", "st3808rr", "st3809rr", "st3810rr", "st2001rr", "st2003rr"]:
+    try:
+        i = s.get(f"{B}/public/{k}/info", headers=H, timeout=60)
+        if i.status_code != 200: print("ST", k, i.status_code); continue
+        i = i.json(); print("ST", k, (i.get("nameSk") or i.get("name") or "")[:110], [d["acronym"] for d in i["dimensions"]])
+    except Exception as e: print("ST ERR", k, e)
+# minv nehody tables
+r = s.get("https://www.minv.sk/lnisdn/statistika/20260218_011722.691_2025-12-MS/statistika/index-public.html", timeout=60)
+t = r.text
+txt = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " | ", t))
+for m in re.finditer(r"okres", txt, re.I):
+    print("NEH", txt[max(0, m.start()-150):m.start()+120]); break
+hrefs = re.findall(r'href="([^"]+)"', t)
+print("NEHREF", len(hrefs), sorted({re.sub(r"-[^/]*\.html$", "", h) for h in hrefs})[:60])
+# SP statistiky
+r = s.get("https://www.socpoist.sk/socialne-poistenie/statistiky?ref=2434", timeout=60)
+print("SP", r.status_code, [h for h in re.findall(r'href="([^"]+)"', r.text) if re.search(r"statist|xls|okres|dochod", h, re.I)][:40])
+# NRO
+for u in ["https://www.upsvr.gov.sk/sluzby-zamestnanosti/nastroje-aktivnej-politiky-trhu-prace/zoznam-najmenej-rozvinutych-okresov.html?page_id=13310",
+          "https://www.upsvr.gov.sk/najmenej-rozvinute-okresy.html", "https://www.mirri.gov.sk/sekcie/regionalny-rozvoj/najmenej-rozvinute-okresy/"]:
+    try:
+        r = s.get(u, timeout=60); print("NRO", u, r.status_code, len(r.text), [h for h in re.findall(r'href="([^"]+)"', r.text) if re.search(r"najmenej|nro|rozvinut", h, re.I)][:15])
+    except Exception as e: print("NRO ERR", u, e)
+# maturita xls columns
+import zber_obce_t9 as t9
+u = "https://dataportal.nucem.sk/Dataportal-web/web/vysledky/2025/maturita/index.xhtml"
+ss = t9.relacia(); h = ss.get(u, timeout=60).text
+vs = re.search(r'name="javax.faces.ViewState"[^>]*value="([^"]+)"', h).group(1)
+links = re.findall(r"'(j_idt\d+):(j_idt\d+)':'j_idt\d+:j_idt\d+'\},''\);return false\">([^<]*)<", h)
+for f, lid, n in links:
+    if n.strip() in ("Matematika", "Slovenský jazyk a literatúra", "Anglický jazyk úroveň B2"):
+        r = ss.post(u, data={f: f, f"{f}:{lid}": f"{f}:{lid}", "javax.faces.ViewState": vs}, headers={"Referer": u}, timeout=300)
+        import xlrd
+        try:
+            sh = xlrd.open_workbook(file_contents=r.content).sheet_by_index(0)
+            print("MAT", n, sh.nrows, sh.row_values(0)[:30]); print("   ", sh.row_values(1)[:30])
+        except Exception as e: print("MAT ERR", n, r.status_code, r.content[:100], e)
 print("HOTOVO")
