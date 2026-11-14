@@ -1,16 +1,47 @@
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 6, in run
-    try: f(); print(n, "OK", round(time.time() - t), "s")
-         ~^^
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_obce_wiki_osm.py", line 331, in obrazky
-    raise RuntimeError("Commons: málo erbov")
-RuntimeError: Commons: málo erbov
-::warning title=Mestské časti::bratislava: 'mestske_casti'
-::warning title=Mestské časti::kosice: 'mestske_casti'
-MC kódy 0
+MC kódy 39
 Obrázky: 2516 obcí, erb 522, foto 2485, partneri 154
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 11, in <module>
-    d = json.load(open("data/obce/obrazky.json")); print({k: d["obce"].get(k) for k in ["518921", "516643"]})
-                  ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'data/obce/obrazky.json'
+obrazky OK 91 s
+{'518921': {'erb': {'u': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Coat_of_Arms_of_Viglas.svg/500px-Coat_of_Arms_of_Viglas.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail', 'a': 'Szenasi', 'l': 'CC BY-SA 4.0', 'lu': 'https://creativecommons.org/licenses/by-sa/4.0', 's': 'Coat of Arms of Viglas.svg'}, 'foto': {'u': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/GrandViglas_set1_PhotoMartini_212_%E2%80%93_k%C3%B3pia.jpg/500px-GrandViglas_set1_PhotoMartini_212_%E2%80%93_k%C3%B3pia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail', 'a': 'Hotel The Grand Vígľaš', 'l': 'CC BY-SA 4.0', 'lu': 'https://creativecommons.org/licenses/by-sa/4.0', 's': 'GrandViglas set1 PhotoMartini 212 – kópia.jpg'}}, '516643': {'erb': {'u': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Coat_of_Arms_of_Bansk%C3%A1_%C5%A0tiavnica.svg/500px-Coat_of_Arms_of_Bansk%C3%A1_%C5%A0tiavnica.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail', 'a': '', 'l': 'Public domain', 'lu': '', 's': 'Coat of Arms of Banská Štiavnica.svg'}, 'foto': {'u': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Bansk%C3%A1_%C5%A0tiavnica_from_Nov%C3%BD_z%C3%A1mok_2007.jpg/500px-Bansk%C3%A1_%C5%A0tiavnica_from_Nov%C3%BD_z%C3%A1mok_2007.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail', 'a': 'Adrian Tync', 'l': 'CC BY-SA 4.0', 'lu': 'https://creativecommons.org/licenses/by-sa/4.0', 's': 'Banská Štiavnica from Nový zámok 2007.jpg'}, 'partneri': ['Stoličný Belehrad']}}
+Maturita 2025: 685 škôl v 133 obciach, priemer SR {'anj': 75.6, 'mat': 51.9, 'mjl': 60.0, 'sjl': 61.4}
+maturita OK 4 s
+{'anj': 75.6, 'mat': 51.9, 'mjl': 60.0, 'sjl': 61.4} [{'typ': 'Gymnázium A. Kmeťa', 'ulica': 'Kolpašská 1738/9', 'anj': [20, 72.0], 'mat': [25, 76.9], 'sjl': [83, 73.8]}, {'typ': 'SŠ Samuela Mikovíniho - Škola umeleckého priemyslu', 'ulica': 'Akademická 13', 'anj': [16, 74.1], 'sjl': [39, 59.1]}, {'typ': 'SOŠ sv. Františka Assiského', 'ulica': 'Gwerkovej Gollnerovej 9', 'anj': [13, 71.2], 'mat': [6, 17.8], 'sjl': [17, 55.0]}, {'typ': 'SOŠ služieb a lesníctva', 'ulica': 'Kolpašská 1586/9', 'sjl': [34, 39.8]}, {'typ': 'SŠ Samuela Mikovíniho - SPŠ Samuela Mikovíniho', 'ulica': 'Akademická 13', 'anj': [4, 72.9], 'sjl': [30, 57.3]}, {'typ': 'SOŠ lesnícka', 'ulica': 'Akademická 16', 'anj': [3, 81.1], 'sjl': [44, 46.2]}, {'typ': 'Súkromná hotelová akadémia', 'ulica': 'Drieňová 12', 'anj': [5, 74.3], 'sjl': [15, 55.8]}]
+Ovzdušie 2025: stanice 324 miest, priemerov 133 ({'pm10': 47, 'pm25': 47, 'no2': 39}), obcí do 15 km: 1438
+ovzdusie OK 66 s
+2025 1438 [('500011', {'pm10': [19.1, 0.9, '99135', 'traffic'], 'pm25': [11.8, 0.9, '99135', 'traffic'], 'no2': [21.3, 0.9, '99135', 'traffic']}), ('500020', {'pm10': [19.1, 10.3, '99135', 'traffic'], 'pm25': [11.8, 10.3, '99135', 'traffic'], 'no2': [21.3, 10.3, '99135', 'traffic']})]
+Nehody 2025: 71 okresov (napr. Detva [45, 4, 3, 23])
+[1045, 10, 25, 366]
+nehody OK 16 s
+['Bardejov', 'Gelnica', 'Kežmarok', 'Košice - okolie', 'Levoča', 'Lučenec', 'Medzilaborce', 'Michalovce', 'Poltár', 'Revúca', 'Rimavská Sobota', 'Rožňava', 'Sabinov', 'Sobrance', 'Stará Ľubovňa', 'Stropkov', 'Svidník', 'Trebišov', 'Vranov nad Topľou']
+nro OK 2 s
+  om7101rr: 582000 = súčet mestských častí
+  om7101rr: 599981 = súčet mestských častí
+  om7101rr: 2924 obcí, nepriradených území 102
+  historia: 39 mestských častí do mc.json
+Historia 1993–2025: 2924 obcí
+historia OK 14 s
+MC {'historia': 39} [('528595', [48358, 48036, 47896, 47661, 47165, 46560, 46080, 45687, 45184, 43977, 43367, 42858, 42241, 41581, 41255, 41032, 40828, 41086, 38788, 38867, 38823, 38988, 39470, 39953, 40610, 41095, 41893, 42546, 46432, 46929, 47375, 47635, 47896])]
+  nepriradené (3): Záhorie (vojen.obvod) (Malacky), Lešť (vojenský obvod) (Zvolen), Valaškovce (voj.obvod) (Humenné)
+Nezamestnanosť 2026-09: 2887 obcí
+Nezamestnanosť 2026-08: 2887 obcí
+Nezamestnanosť 2026-07: 2887 obcí
+Nezamestnanosť 2026-06: 2887 obcí
+Nezamestnanosť 2026-05: 2887 obcí
+Nezamestnanosť 2026-04: 2887 obcí
+Nezamestnanosť 2026-03: 2887 obcí
+Nezamestnanosť 2026-02: 2887 obcí
+Nezamestnanosť 2026-01: 2887 obcí
+Nezamestnanosť 2025-12: 2887 obcí
+Nezamestnanosť 2025-11: 2887 obcí
+Nezamestnanosť 2025-10: 2887 obcí
+Nezamestnanosť 2025-09: 2887 obcí
+Nezamestnanosť: 2026-09, 2887 obcí, SR PDU 4.02 %
+  december 2023: ÚPSVaR: priradených len 0 obcí; napr. []
+  december 2022: ÚPSVaR: priradených len 0 obcí; napr. []
+  december 2021: ÚPSVaR: priradených len 0 obcí; napr. []
+  december 2020: ÚPSVaR: priradených len 0 obcí; napr. []
+Nezamestnanosť – decembre: ['2024', '2025'], 2887 obcí
+Nezamestnanosť – mestské časti: 33
+nezamestnanost OK 86 s
+MCNEZ 33 [('528595', {'rad': {'2025-09': 2.15, '2025-10': 2.1, '2025-11': 2.12, '2025-12': 2.21, '2026-01': 2.32, '2026-02': 2.23, '2026-03': 2.19, '2026-04': 2.11, '2026-05': 2.05, '2026-06': 2.22, '2026-07': 2.38, '2026-08': 2.49, '2026-09': 2.38}, 'uoz': 845, 'disp': 809, 'opv': 33992, 'abs': 60, 'pdu': 2.38})]
+ROKY {'2024': 2.51, '2025': 3.32}
+HOTOVO
