@@ -1,18 +1,6 @@
-ALL 1421 OKRES 0
-[]
-PREF []
-PQ 105867 Samplingpoint: string
-Pollutant: int32
-Start: timestamp[ns] not null
-End: timestamp[ns] not null
-Value: decimal128(38, 18)
-Unit: string
-AggType: string
-Validity: int32 not null
-Verification: int32 not null
-ResultTime: timestamp[ns] not null
-DataCapture: decimal128(38, 18)
-FkObservationLog: string
-{'Samplingpoint': ['SK/SPO-SK0004A_00005_100', 'SK/SPO-SK0004A_00005_100', 'SK/SPO-SK0004A_00005_100'], 'Pollutant': [5, 5, 5], 'Start': [datetime.datetime(2013, 1, 1, 0, 0), datetime.datetime(2013, 1, 1, 1, 0), datetime.datetime(2013, 1, 1, 2, 0)], 'End': [datetime.datetime(2013, 1, 1, 1, 0), datetime.datetime(2013, 1, 1, 2, 0), datetime.datetime(2013, 1, 1, 3, 0)], 'Value': [Decimal('101.700000000000000000'), Decimal('71.600000000000000000'), Decimal('55.700000000000000000')], 'Unit': ['ug.m-3', 'ug.m-3', 'ug.m-3'], 'AggType': ['hour', 'hour', 'hour'], 'Validity': [1, 1, 1], 'Verification': [1, 1, 1], 'ResultTime': [datetime.datetime(2015, 2, 20, 18, 19, 19), datetime.datetime(2015, 2, 20, 18, 19, 19), datetime.datetime(2015, 2, 20, 18, 19, 19)], 'DataCapture': [None, None, None], 'FkObservationLog': ['a6c3b40f-ba3a-4918-8944-7d33a87bc1b7', 'a6c3b40f-ba3a-4918-8944-7d33a87bc1b7', 'a6c3b40f-ba3a-4918-8944-7d33a87bc1b7']}
-min/max 2013-01-01 00:00:00 2026-01-01 00:00:00
+C4 836
+[('mesacna/dnvm/dnvm-5101.html', 'Názov: Prehľad DN / Obdobie: za bežný mesiac / Územie: Bratislava - 1 / Podmienka: všetky DN'), ('mesacna/dnvr/dnvr-5101.html', 'Názov: Prehľad DN / Obdobie: od začiatku roka / Územie: Bratislava - 1 / Podmienka: všetky DN'), ('mesacna/dnzr/dnzr-5101.html', 'Názov: Prehľad DN / Obdobie: od začiatku roka / Územie: Bratislava - 1 / Podmienka: s následkom na živote alebo zdraví'), ('mesacna/dnur/dnur-5101.html', 'Názov: Prehľad DN / Obdobie: od začiatku roka / Územie: Bratislava - 1 / Podmienka: s usmrtením')]
+['dn1m', 'dn1r', 'dnur', 'dnvm', 'dnvr', 'dnzr', 'nlkup', 'nlkur', 'nluup', 'nluur', 'topor']
+PICK ('mesacna/dnvr/dnvr-5101.html', 'Názov: Prehľad DN / Obdobie: od začiatku roka / Územie: Bratislava - 1 / Podmienka: všetky DN')
+ | | | | | Štatistika ISDN - mesacna/dnvr/dnvr-5101.html | | | | | | | | | Prehľad nehôd v cestnej doprave. | Za obdobie od 01.01. do 31.12.2025 a porovnanie s rovnakým obdobím minulého roka. Územný okres: Bratislava - 1 | | Nehody podľa následkov (škoda v 10€) | | | Bratislava - 1 | | počet nehôd | | usmrtení účast. | | ťažko zran. účast. | | ľahko zran. účast. | | hmotná škoda | | alkohol | | obec | | | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | Počet nehôd celkom | | 174 | | 34 | | 1 | | -1 | | 4 | | -6 | | 64 | | 6 | | 68105 | | 10239 | | 11 | | 2 | | 174 | | 34 | | | | šk. do 3990€, bez usmrt., zran. | | 83 | | 20 | | 0 | | 0 | | 0 | | 0 | | 0 | | 0 | | 10736 | | 2507 | | 1 | | 0 | | 83 | | 20 | | | | neh. s násl. na živote alebo zdraví | | 63 | | 8 | | 1 | | -1 | | 4 | | -6 | | 64 | | 6 | | 34499 | | 2247 | | 8 | | 3 | | 63 | | 8 | | | | požiar vozidiel | | 0 | | -1 | | 0 | | -1 | | 0 | | -1 | | 0 | | -1 | | 0 | | -2500 | | 0 | | 0 | | 0 | | -1 | | | Nehody podľa zavinenia (ŠEDN) | | | Bratislava - 1 | | počet nehôd | | usmrtení účast. | | ťažko zran. účast. | | ľahko zran. účast. | | hmotná škoda | | alkohol | | obec | | | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | +/- | | | | vodičom motorového vozidla | | 149 | | 23 | | 0 | | -2 | | 2 | | -7 | | 47 | | -1 | | 59131 | | 2339 | | 2 | | -4 | | 149 | | 23 | | | | vodičom nemotorového vozidla | | 6 | | 0 | | 0 | | 0 | | 1 | | 1 | | 4 | | 0 | | 410 | | 161 | | 5 | | 2 | | 6 | | 0 | | | | | | deťmi | | 0 | | 0 | | 0 | | 0 | | 0 | | 0 | | 0 |
 HOTOVO
