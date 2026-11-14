@@ -12,6 +12,7 @@ Výstup data/obce/okresy.json: {"mzda": {okres: {rok: €}}, "byty": {okres: {ro
 from __future__ import annotations
 
 import csv
+import json
 import io
 import re
 import zipfile
@@ -112,16 +113,38 @@ def byty() -> dict:
     return {o: dict(sorted(v.items())) for o, v in sorted(out.items())}
 
 
+def nro() -> list[str]:
+    """Najmenej rozvinuté okresy – zoznam na stránke MIRRI SR (podstránka pre každý okres)."""
+    import unicodedata
+    r = s.get("https://mirri.gov.sk/sekcie/regionalny-rozvoj-2/najmenej-rozvinute-okresy/okresy/", timeout=60,
+              headers={"User-Agent": "Mozilla/5.0 (compatible; mestovcislach.sk)"})
+    r.raise_for_status()
+    slugy = set(re.findall(r"/najmenej-rozvinute-okresy/okresy/([a-z-]+)/", r.text)) - {"archiv-nro"}
+    slug = lambda n: re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", n).encode("ascii", "ignore").decode().lower()).strip("-")  # noqa: E731
+    out = sorted(o for o in OKRESY if slug(o) in slugy)
+    if len(out) < 10 or len(out) < len(slugy) - 1:
+        raise RuntimeError(f"NRO: {len(out)} z {len(slugy)} ({sorted(slugy)})")
+    return out
+
+
 def main() -> int:
     mz = mzdy()
     by = byty()
+    try:
+        zoz_nro = nro()
+        print(f"Najmenej rozvinuté okresy: {len(zoz_nro)} – {', '.join(zoz_nro)}")
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=NRO::{e}")
+        f = DATA / "obce" / "okresy.json"
+        zoz_nro = json.loads(f.read_text(encoding="utf-8")).get("nro", []) if f.exists() else []
     print(f"Okresy: mzda {len(mz)} (napr. Detva {list(mz.get('Detva', {}).items())[-2:]}), byty {len(by)} (Detva {list(by.get('Detva', {}).items())[-2:]})")
     if len(mz) < 70 or len(by) < 70:
         raise RuntimeError(f"málo okresov: mzda {len(mz)}, byty {len(by)}")
     zapis_ak_zmena(DATA / "obce" / "okresy.json", {
         "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "zdroj": {"nazov": "ŠÚ SR – mzdy pracoviskovou metódou (np3110rr), dokončené byty (st3802rr)", "url": "https://statdata.statistics.sk"},
-        "mzda": mz, "byty": by}, kompaktne=True)
+        "mzda": mz, "byty": by, "nro": zoz_nro,
+        "nro_zdroj": {"nazov": "MIRRI SR – najmenej rozvinuté okresy", "url": "https://mirri.gov.sk/sekcie/regionalny-rozvoj-2/najmenej-rozvinute-okresy/okresy/"}}, kompaktne=True)
     return 0
 
 
