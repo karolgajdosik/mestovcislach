@@ -1,23 +1,8 @@
 import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
-import json, time, traceback, os
+import json, traceback
 sys.path.insert(0, "scripts")
-def run(n, f):
-    t = time.time()
-    try: f(); print(n, "OK", round(time.time() - t), "s")
-    except Exception: traceback.print_exc()
-import zber_obce_wiki_osm as w, zber_obce_t9 as t9, zber_obce_ovzdusie as ov, zber_okresy_statdata as ok, zber_obce_statdata as st, zber_obce_temy as zt
-print("MC kódy", len(st.MC))
-run("obrazky", w.obrazky)
-d = json.load(open("data/obce/obrazky.json")); print({k: d["obce"].get(k) for k in ["518921", "516643"]})
-run("maturita", lambda: t9.maturita(t9.relacia()))
-d = json.load(open("data/obce/maturita.json")); print(d["sr"], d["obce"].get("516643"))
-run("ovzdusie", ov.main)
-d = json.load(open("data/obce/ovzdusie.json")); print(d["rok"], len(d["obce"]), list(d["obce"].items())[:2])
-run("nehody", lambda: print(ok.nehody()["okresy"].get("Bratislava")))
-run("nro", lambda: print(ok.nro()))
-run("historia", st.historia)
-m = json.load(open("data/obce/mc.json")); print("MC", {k: len(v["casti"]) for k, v in m.items()}, list(m.get("historia", {}).get("casti", {}).items())[:1])
-run("nezamestnanost", zt.nezamestnanost)
-m = json.load(open("data/obce/mc.json")); print("MCNEZ", len(m.get("nezamestnanost", {}).get("casti", {})), list(m.get("nezamestnanost", {}).get("casti", {}).items())[:1])
-d = json.load(open("data/obce/nezamestnanost.json")); print("ROKY", d["obce"]["518921"].get("roky"))
+import zber_obce_t9 as t9
+try:
+    t9.maturita(t9.relacia()); d = json.load(open("data/obce/maturita.json")); print(d["rok"], d["sr"], len(d["obce"]), d["obce"].get("516643"))
+except Exception: traceback.print_exc()
 print("HOTOVO")
