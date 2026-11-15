@@ -65,6 +65,8 @@ const MIESTA: [string, string, string][] = [
 ];
 const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpočet a zmluvy, školy, bezpečnosť, klíma a prognóza – všetko o mestskej časti na jednom mieste.`;
 import McStatdata from '../../../components/McStatdata.astro';
+import ObsahCipy from '../../../components/ObsahCipy.astro';
+import Por from '../../../components/Por.astro';
 ---
 <Base title={`${p.mc} – mestská časť Bratislavy – mestovcislach.sk`} description={popis}>
   <nav class="drobky" aria-label="Kde sa nachádzate"><a href="/bratislava/mestske-casti">Mestské časti</a> <span aria-hidden="true">/</span> <span translate="no">{p.mc}</span></nav>
@@ -88,40 +90,25 @@ import McStatdata from '../../../components/McStatdata.astro';
     </label>
   </section>
 
+  <ObsahCipy popis={`Obsah stránky – ${p.mc}`} skupiny={[
+    [['sluzby', 'Školy a služby', true], ['volby', 'Voľby', true], ['stavby', 'Čo sa stavia', true], ['bezpecnost', 'Bezpečnosť', true]],
+    [['ludia', 'Kto tu žije', true], ['buducnost', 'Budúcnosť', true], ['klima', 'Klíma', true], ['dalsie-cisla', 'Ďalšie čísla', true]],
+    [['peniaze', 'Peniaze', true]],
+  ]} />
+  <div class="ob-blok" id="prakticky"><h2>Prakticky</h2><p>Školy, služby, voľby, výstavba a bezpečnosť.</p></div>
   <div class="mriezka">
-    <section class="card" id="ludia">
-      <h2>Kto tu žije</h2>
-      {graf && (
-        <figure class="graf">
-          <svg viewBox={`0 -6 ${graf.W} ${graf.H + 12}`} role="img" aria-label={`Počet obyvateľov ${graf.od}–${graf.do}: od ${fmt(graf.min)} do ${fmt(graf.max)}`} preserveAspectRatio="none">
-            <polygon points={graf.plocha} class="g-plocha" />
-            <polyline points={graf.ciara} class="g-ciara" />
-          </svg>
-          <figcaption><span>{graf.od}</span><span>počet obyvateľov (ŠÚ SR)</span><span>{graf.do}</span></figcaption>
-        </figure>
+    <section class="card" id="sluzby">
+      <h2>Školy a služby</h2>
+      {p.skoly && (
+        <dl class="male">{TYPY_SKOL.filter(([k]) => p.skoly?.[k]?.skol).map(([k, n]) => <div><dt>{n}</dt><dd>{p.skoly![k].skol}</dd><dd class="pozn">{p.skoly![k].ziakov ? `${fmt(p.skoly![k].ziakov)} žiakov` : ''}</dd></div>)}</dl>
       )}
-      <div class="porovnanie">
-        {Object.entries<Porovnanie>(p.sklad as any).map(([k, v]) => (
-          <div class="por">
-            <span class="por-n">{({ seniori: 'Seniori 65+', deti: 'Deti do 14 rokov', vs: 'Vysokoškolské vzdelanie', pracujuci: 'Ekonomicky aktívni', vlastne_byty: 'Vlastné byty a domy' } as Record<string, string>)[k]}</span>
-            <span class="por-h">{des(v.hodnota)} %</span>
-            <span class="por-p" aria-hidden="true"><i style={`width:${sirka(v.hodnota, 100)}`}></i><b style={`left:${sirka(v.mesto, 100)}`}></b></span>
-          </div>
-        ))}
-        <p class="legenda"><span class="l-mc"></span><span translate="no">{p.mc}</span> <span class="l-ba"></span>priemer Bratislavy · sčítanie 2021</p>
-      </div>
-      <a class="viac" href={`/bratislava/obyvatelia?mc=${encodeURIComponent(p.mc)}#obyv`}>Podrobne zo sčítania</a>
-    </section>
-
-    <section class="card" id="buducnost">
-      <h2>Budúcnosť a rozvoj</h2>
-      <dl class="cisla">
-        <div><dt>Obyvatelia 2035 (prognóza)</dt><dd>{fmt(p.prognoza.r2035)}</dd><dd class="pozn">{znam(p.prognoza.zmena)} oproti 2022 · {z17(p.prognoza.poradie, 'najrýchlejší rast', 'najväčší pokles')}</dd></div>
-        <div><dt>Priemerný vek 2035</dt><dd>{des(p.prognoza.vek2035)}</dd><dd class="pozn">index starnutia {des(p.prognoza.starnutie2035)} (seniorov na 100 detí)</dd></div>
-        <div><dt>Index regionálneho rozvoja</dt><dd>{des(p.rozvoj.hodnota, 2)}</dd><dd class="pozn">{z17(p.rozvoj.poradie, 'najvyšší', 'najnižší')} · priemer kraja {des(p.rozvoj.kraj, 2)}</dd></div>
-        {p.nezamestnanost && <div><dt>Nezamestnanosť v okrese</dt><dd>{des(p.nezamestnanost.pdu, 2)} %</dd><dd class="pozn">okres {p.nezamestnanost.okres}, {p.nezamestnanost.mesiac?.split('-').reverse().join('/')} · Slovensko {des(p.nezamestnanost.slovensko, 2)} %</dd></div>}
-      </dl>
-      <a class="viac" href="/bratislava/obyvatelia#prognoza">Prognóza a nezamestnanosť</a>
+      {p.socialne && Object.keys(p.socialne).length > 0 && (
+        <p class="pozn-text">Sociálne služby: {Object.entries(p.socialne).map(([k, n]) => `${n} ${SOCIALNE[k] ?? k}`).join(', ')}.</p>
+      )}
+      <ul class="miesta">
+        {MIESTA.filter(([k]) => p.miesta[k]).map(([k, n, tema]) => <li><a href={`/bratislava/mapa#tema=${tema}`}><strong>{p.miesta[k]}</strong> {n}</a></li>)}
+      </ul>
+      <a class="viac" href="/bratislava/vybavenost#spadova-skola">Spádová škola podľa adresy</a>
     </section>
 
     <section class="card" id="volby">
@@ -144,38 +131,6 @@ import McStatdata from '../../../components/McStatdata.astro';
       <a class="viac" href="/bratislava/volby#komunalne">Komunálne voľby 2026</a>
     </section>
 
-    <section class="card" id="peniaze">
-      <h2>Peniaze mestskej časti</h2>
-      <dl class="cisla">
-        <div><dt>Dlh ({p.financie.rok})</dt><dd>{p.financie.dlh === 0 ? 'bez dlhu' : mil(p.financie.dlh)}</dd><dd class="pozn">{des(p.financie.pomer)} % bežných príjmov · limit 60 %</dd></div>
-        <div><dt>Bežné príjmy ({p.financie.rok})</dt><dd>{mil(p.financie.prijmy)}</dd><dd class="pozn">{p.obyvatelia.pocet && p.financie.prijmy ? `${fmt(p.financie.prijmy / p.obyvatelia.pocet)} € na obyvateľa` : ''}</dd></div>
-        <div><dt>Zmluvy od 2022</dt><dd>{fmt(p.financie.zmluv)}</dd><dd class="pozn">v hodnote {mil(p.financie.suma_zmluv)} (Centrálny register zmlúv)</dd></div>
-      </dl>
-      {p.financie.partneri.length > 0 && (
-        <div class="blok"><h3>Najväčší zmluvní partneri</h3>
-          <ol class="zoznam" translate="no">{p.financie.partneri.map((x) => <li><span>{x.nazov}</span><span class="num">{mil(x.suma)}</span></li>)}</ol></div>
-      )}
-      {p.financie.dotacie.length > 0 && (
-        <div class="blok"><h3>Komu dala dotácie</h3>
-          <ol class="zoznam" translate="no">{p.financie.dotacie.map((x) => <li><span>{x.nazov}</span><span class="num">{mil(x.suma)}</span></li>)}</ol></div>
-      )}
-      <a class="viac" href="/bratislava/financie#zmluvy-mc">Hľadať v zmluvách mestskej časti</a>
-    </section>
-
-    <section class="card" id="sluzby">
-      <h2>Školy a služby</h2>
-      {p.skoly && (
-        <dl class="male">{TYPY_SKOL.filter(([k]) => p.skoly?.[k]?.skol).map(([k, n]) => <div><dt>{n}</dt><dd>{p.skoly![k].skol}</dd><dd class="pozn">{p.skoly![k].ziakov ? `${fmt(p.skoly![k].ziakov)} žiakov` : ''}</dd></div>)}</dl>
-      )}
-      {p.socialne && Object.keys(p.socialne).length > 0 && (
-        <p class="pozn-text">Sociálne služby: {Object.entries(p.socialne).map(([k, n]) => `${n} ${SOCIALNE[k] ?? k}`).join(', ')}.</p>
-      )}
-      <ul class="miesta">
-        {MIESTA.filter(([k]) => p.miesta[k]).map(([k, n, tema]) => <li><a href={`/bratislava/mapa#tema=${tema}`}><strong>{p.miesta[k]}</strong> {n}</a></li>)}
-      </ul>
-      <a class="viac" href="/bratislava/vybavenost#spadova-skola">Spádová škola podľa adresy</a>
-    </section>
-
     <section class="card" id="stavby">
       <h2>Čo sa tu stavia</h2>
       <dl class="cisla">
@@ -194,12 +149,50 @@ import McStatdata from '../../../components/McStatdata.astro';
     <section class="card" id="bezpecnost">
       <h2>Bezpečnosť a poriadok</h2>
       <dl class="cisla">
-        <div><dt>Priestupky na 1 000 obyvateľov za rok</dt><dd>{des(p.bezpecnost.na1000.hodnota)}</dd><dd class="pozn">mesto {des(p.bezpecnost.na1000.mesto)} · {z17(p.bezpecnost.na1000.poradie, 'najviac', 'najmenej')} · {p.bezpecnost.obdobie}</dd></div>
+        <div><dt>Priestupky na 1 000 obyvateľov za rok</dt><dd>{des(p.bezpecnost.na1000.hodnota)} <Por x={p.bezpecnost.na1000.hodnota} r={p.bezpecnost.na1000.mesto} kto="priemer mesta" /></dd><dd class="pozn">mesto {des(p.bezpecnost.na1000.mesto)} · {z17(p.bezpecnost.na1000.poradie, 'najviac', 'najmenej')} · {p.bezpecnost.obdobie}</dd></div>
         <div><dt>Podozrenia z trestného činu</dt><dd>{fmt(p.bezpecnost.trestne)}</dd><dd class="pozn">zistené mestskou políciou {p.bezpecnost.obdobie}</dd></div>
         {p.bezpecnost.podnety != null && <div><dt>Podnety obyvateľov magistrátu</dt><dd>{fmt(p.bezpecnost.podnety)}</dd><dd class="pozn">od roku 2017</dd></div>}
       </dl>
       {p.bezpecnost.najcastejsie.length > 0 && <div class="blok"><h3>Najčastejšie priestupky</h3><ol class="zoznam">{p.bezpecnost.najcastejsie.map((x) => <li><span>{x.replace(/^\d+\s*-\s*/, '').replace(/^(§[^ ]*\)\s*|[A-Z]\d+[a-z]?\s*-\s*)/, '').replace(/\s*\(§.*$/, '').replace(/^./, (c) => c.toUpperCase())}</span></li>)}</ol></div>}
       <a class="viac" href="/bratislava/bezpecnost">Bezpečnosť v celom meste</a>
+    </section>
+  </div>
+
+  <div class="ob-blok" id="zivot"><h2>Ako sa tu žije</h2><p>Obyvatelia, budúcnosť, klíma a ďalšie čísla zo Štatistického úradu. ▲ ▼ ≈ = viac, menej alebo podobne ako porovnávaná hodnota.</p></div>
+  <div class="mriezka">
+    <section class="card" id="ludia">
+      <h2>Kto tu žije</h2>
+      {graf && (
+        <figure class="graf">
+          <svg viewBox={`0 -6 ${graf.W} ${graf.H + 12}`} role="img" aria-label={`Počet obyvateľov ${graf.od}–${graf.do}: od ${fmt(graf.min)} do ${fmt(graf.max)}`} preserveAspectRatio="none">
+            <polygon points={graf.plocha} class="g-plocha" />
+            <polyline points={graf.ciara} class="g-ciara" />
+          </svg>
+          <figcaption><span>{graf.od}</span><span>počet obyvateľov (ŠÚ SR)</span><span>{graf.do}</span></figcaption>
+        </figure>
+      )}
+      <div class="porovnanie">
+        {Object.entries<Porovnanie>(p.sklad as any).map(([k, v]) => (
+          <div class="por">
+            <span class="por-n">{({ seniori: 'Seniori 65+', deti: 'Deti do 14 rokov', vs: 'Vysokoškolské vzdelanie', pracujuci: 'Ekonomicky aktívni', vlastne_byty: 'Vlastné byty a domy' } as Record<string, string>)[k]}</span>
+            <span class="por-h">{des(v.hodnota)} % <Por x={v.hodnota} r={v.mesto} kto="priemer Bratislavy" /></span>
+            <span class="por-p" aria-hidden="true"><i style={`width:${sirka(v.hodnota, 100)}`}></i><b style={`left:${sirka(v.mesto, 100)}`}></b></span>
+          </div>
+        ))}
+        <p class="legenda"><span class="l-mc"></span><span translate="no">{p.mc}</span> <span class="l-ba"></span>priemer Bratislavy · sčítanie 2021</p>
+      </div>
+      <a class="viac" href={`/bratislava/obyvatelia?mc=${encodeURIComponent(p.mc)}#obyv`}>Podrobne zo sčítania</a>
+    </section>
+
+    <section class="card" id="buducnost">
+      <h2>Budúcnosť a rozvoj</h2>
+      <dl class="cisla">
+        <div><dt>Obyvatelia 2035 (prognóza)</dt><dd>{fmt(p.prognoza.r2035)}</dd><dd class="pozn">{znam(p.prognoza.zmena)} oproti 2022 · {z17(p.prognoza.poradie, 'najrýchlejší rast', 'najväčší pokles')}</dd></div>
+        <div><dt>Priemerný vek 2035</dt><dd>{des(p.prognoza.vek2035)}</dd><dd class="pozn">index starnutia {des(p.prognoza.starnutie2035)} (seniorov na 100 detí)</dd></div>
+        <div><dt>Index regionálneho rozvoja</dt><dd>{des(p.rozvoj.hodnota, 2)} <Por x={p.rozvoj.hodnota} r={p.rozvoj.kraj} kto="priemer kraja" /></dd><dd class="pozn">{z17(p.rozvoj.poradie, 'najvyšší', 'najnižší')} · priemer kraja {des(p.rozvoj.kraj, 2)}</dd></div>
+        {p.nezamestnanost && <div><dt>Nezamestnanosť v okrese</dt><dd>{des(p.nezamestnanost.pdu, 2)} % <Por x={p.nezamestnanost.pdu} r={p.nezamestnanost.slovensko} kto="Slovensko" /></dd><dd class="pozn">okres {p.nezamestnanost.okres}, {p.nezamestnanost.mesiac?.split('-').reverse().join('/')} · Slovensko {des(p.nezamestnanost.slovensko, 2)} %</dd></div>}
+      </dl>
+      <a class="viac" href="/bratislava/obyvatelia#prognoza">Prognóza a nezamestnanosť</a>
     </section>
 
     <section class="card" id="klima">
@@ -219,6 +212,27 @@ import McStatdata from '../../../components/McStatdata.astro';
   </div>
 
   <McStatdata mesto="bratislava" nazov={p.mc} />
+
+  <div class="ob-blok" id="peniaze-blok"><h2>Peniaze</h2><p>Dlh, príjmy, zmluvy a dotácie mestskej časti.</p></div>
+  <div class="mriezka">
+    <section class="card" id="peniaze">
+      <h2>Peniaze mestskej časti</h2>
+      <dl class="cisla">
+        <div><dt>Dlh ({p.financie.rok})</dt><dd>{p.financie.dlh === 0 ? 'bez dlhu' : mil(p.financie.dlh)}</dd><dd class="pozn">{des(p.financie.pomer)} % bežných príjmov · limit 60 %</dd></div>
+        <div><dt>Bežné príjmy ({p.financie.rok})</dt><dd>{mil(p.financie.prijmy)}</dd><dd class="pozn">{p.obyvatelia.pocet && p.financie.prijmy ? `${fmt(p.financie.prijmy / p.obyvatelia.pocet)} € na obyvateľa` : ''}</dd></div>
+        <div><dt>Zmluvy od 2022</dt><dd>{fmt(p.financie.zmluv)}</dd><dd class="pozn">v hodnote {mil(p.financie.suma_zmluv)} (Centrálny register zmlúv)</dd></div>
+      </dl>
+      {p.financie.partneri.length > 0 && (
+        <div class="blok"><h3>Najväčší zmluvní partneri</h3>
+          <ol class="zoznam" translate="no" data-zbal={p.financie.partneri.length > 4 ? '3' : undefined}>{p.financie.partneri.map((x) => <li><span>{x.nazov}</span><span class="num">{mil(x.suma)}</span></li>)}</ol></div>
+      )}
+      {p.financie.dotacie.length > 0 && (
+        <div class="blok"><h3>Komu dala dotácie</h3>
+          <ol class="zoznam" translate="no" data-zbal={p.financie.dotacie.length > 4 ? '3' : undefined}>{p.financie.dotacie.map((x) => <li><span>{x.nazov}</span><span class="num">{mil(x.suma)}</span></li>)}</ol></div>
+      )}
+      <a class="viac" href="/bratislava/financie#zmluvy-mc">Hľadať v zmluvách mestskej časti</a>
+    </section>
+  </div>
 
   <nav class="dalsie" aria-label="Ďalšie mestské časti">
     <a href={`/bratislava/mestske-casti/${pred.slug}`} rel="prev"><span>Predchádzajúca</span><strong translate="no">{pred.mc}</strong></a>
@@ -268,7 +282,7 @@ import McStatdata from '../../../components/McStatdata.astro';
   .legenda span.l-mc, .legenda span.l-ba { display: inline-block; width: 12px; height: 8px; border-radius: 3px; background: var(--accent); margin-left: 8px; }
   .legenda span.l-mc { margin-left: 0; }
   .legenda span.l-ba { width: 3px; height: 12px; background: var(--text); }
-  .cisla, .male { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px 18px; margin: 0; }
+  .cisla, .male { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px 18px; margin: 0; }
   .cisla dt, .male dt { font-size: 0.84rem; color: var(--muted); }
   .cisla dd, .male dd { margin: 2px 0 0; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
   .male dd { font-size: 1.3rem; }

@@ -1,0 +1,24 @@
+---
+// Prilepený pás čipov s obsahom stránky (skupiny oddelené čiarou) – rovnaký ako na stránke obce.
+// Položky bez cieľa na stránke sa vynechajú už pri zostavení (ok = false).
+import '../styles/obce.css';
+interface Props { skupiny: [string, string, unknown][][]; popis: string }
+const { skupiny, popis } = Astro.props;
+const g = skupiny.map((s) => s.filter(([, , ok]) => ok)).filter((s) => s.length);
+---
+{g.flat().length > 1 && (
+  <nav class="ob-obsah" aria-label={popis}>
+    <ul>
+      {g.map((s, i) => (<>
+        {i > 0 && <li class="sep" aria-hidden="true"></li>}
+        {s.map(([id, t]) => <li><a href={`#${id}`}>{t}</a></li>)}
+      </>))}
+    </ul>
+  </nav>
+)}
+
+<script>
+  import { obsahStranky, zbalovanie } from '../scripts/stranka-obce';
+  obsahStranky();
+  zbalovanie();
+</script>

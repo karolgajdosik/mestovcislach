@@ -3,7 +3,9 @@
 import Base from '../../../layouts/Base.astro';
 import '../../../styles/stranka.css';
 import '../../../styles/obce.css';
-import { kraje, obceKraja, okresyMapy, odkaz, posledne, zmena10, bod, type Okres } from '../../../lib/obce';
+import { kraje, obceKraja, okresyMapy, odkaz, posledne, zmena10, bod, okresyInfo, nezamInfo, pohybInfo, type Okres } from '../../../lib/obce';
+import ObsahCipy from '../../../components/ObsahCipy.astro';
+import Por from '../../../components/Por.astro';
 
 export function getStaticPaths() {
   return kraje().flatMap((k) => k.okresy.map((o) => ({ params: { kraj: k.slug, okres: o.slug }, props: { o } })));
@@ -24,6 +26,40 @@ const sirkaVb = body.length ? Math.max(...body.map((b) => b[0])) - Math.min(...b
 const mierka = sirkaVb / 110; // polomer bodov v jednotkách výrezu
 const ucasti = riadky.filter((r) => r.ucast != null);
 const ucastOkres = ucasti.length ? ucasti.reduce((a, r) => a + (r.x.volby2026!.ucast!.volili), 0) / ucasti.reduce((a, r) => a + r.x.volby2026!.ucast!.zapisani, 0) * 100 : null;
+// údaje za okres (ŠÚ SR, ÚPSVaR, MV SR, MIRRI) a porovnanie so Slovenskom
+const okrI: any = okresyInfo();
+const mzR = okrI?.mzda?.[o.nazov] ? Object.entries(okrI.mzda[o.nazov] as Record<string, number>).sort(([a], [b]) => a.localeCompare(b)) : [];
+const mzP = mzR.at(-1) ?? null;
+const mzSR = mzP ? okrI?.mzda?.SR?.[mzP[0]] ?? null : null;
+const mz10 = mzR.length > 10 ? mzR[mzR.length - 11] : null;
+const byR = okrI?.byty?.[o.nazov] ? Object.entries(okrI.byty[o.nazov] as Record<string, number[]>).sort(([a], [b]) => a.localeCompare(b)) : [];
+const by5 = byR.slice(-5).reduce((s, [, v]) => s + v[0], 0);
+const vsetkyOkresy = kraje().flatMap((k) => k.okresy);
+const bytySR = (() => { let b = 0, ob = 0; for (const x of vsetkyOkresy) { const r = okrI?.byty?.[x.nazov]; if (!r) continue; const k = Object.keys(r).sort().slice(-5); b += k.reduce((s: number, y: string) => s + r[y][0], 0); ob += x.obyvatelia; } return ob ? (1000 * b) / ob / 5 : null; })();
+const nehI = okrI?.nehody;
+const neh: number[] | undefined = nehI?.okresy?.[o.nazov];
+const nehSR = (() => { let z = 0, ob = 0; for (const x of vsetkyOkresy) { const n = nehI?.okresy?.[x.nazov]; if (!n) continue; z += n[1] + n[2] + n[3]; ob += x.obyvatelia; } return ob ? (10000 * z) / ob : null; })();
+const nro = okrI?.nro?.includes(o.nazov) ?? false;
+const nezI: any = nezamInfo();
+const nez = nezI?.okresy?.[o.nazov] ?? null;
+const vek = (pohybInfo() as any)?.okresy?.[o.nazov]?.vek ?? null;
+const veky = vsetkyOkresy.map((x) => (pohybInfo() as any)?.okresy?.[x.nazov]?.vek).filter((x: any) => x != null).sort((a: number, b: number) => a - b);
+const vekMed = veky.length ? veky[Math.floor(veky.length / 2)] : null;
+const MES = ['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december'];
+const maCisla = mzP || nez != null || neh || byR.length >= 5 || vek != null || nro;
+// V skratke
+const zm = riadky.filter((r) => r.zmena != null && (r.obyv ?? 0) >= 300);
+const rast = zm.slice().sort((a, b) => b.zmena! - a.zmena!)[0];
+const pokles = zm.slice().sort((a, b) => a.zmena! - b.zmena!)[0];
+const ucMax = ucasti.slice().sort((a, b) => b.ucast! - a.ucast!)[0];
+const z10okres = (() => { let a = 0, b = 0; for (const r of riadky) { const ob = r.x.obyvatelia; const k = Object.keys(ob).sort(); if (k.length < 11) continue; a += ob[k[k.length - 11]]; b += ob[k[k.length - 1]]; } return a ? (100 * (b - a)) / a : null; })();
+const skratka: string[] = [];
+if (riadky[0]?.obyv) skratka.push(`Najväčšia obec: ${riadky[0].x.nazov} (${fmt(riadky[0].obyv)} obyvateľov, ${des((100 * riadky[0].obyv) / o.obyvatelia)} % okresu)`);
+if (z10okres != null) skratka.push(`Za 10 rokov ${z10okres >= 0 ? 'pribudlo' : 'ubudlo'} ${des(Math.abs(z10okres))} % obyvateľov okresu`);
+if (rast && rast.zmena! > 0) skratka.push(`Najrýchlejšie rastie ${rast.x.nazov} (+${des(rast.zmena!)} % za 10 rokov, obce nad 300 obyvateľov)`);
+if (pokles && pokles.zmena! < 0 && pokles !== rast) skratka.push(`Najviac ľudí ubudlo v obci ${pokles.x.nazov} (−${des(-pokles.zmena!)} %)`);
+if (ucMax && ucasti.length >= 3) skratka.push(`Najvyššia účasť v komunálnych voľbách 2026: ${ucMax.x.nazov} (${des(ucMax.ucast!)} %)`);
+if (nro) skratka.push('Patrí medzi najmenej rozvinuté okresy Slovenska');
 ---
 <Base title={`Okres ${o.nazov} – obce v číslach – mestovcislach.sk`} description={`Okres ${o.nazov} (${o.kraj}): ${o.obci} obcí, ${fmt(o.obyvatelia)} obyvateľov. Počet obyvateľov, vývoj za 10 rokov, starostovia zvolení v roku 2026 a účasť vo voľbách.`}
   drobceky={[[o.kraj, `/${o.kraj_slug}`], [`Okres ${o.nazov}`, `/${o.kraj_slug}/${o.slug}`]]}>
@@ -39,8 +75,33 @@ const ucastOkres = ucasti.length ? ucasti.reduce((a, r) => a + (r.x.volby2026!.u
     {ucastOkres != null && <li><b>{des(ucastOkres)} %</b><span>účasť v komunálnych voľbách 2026</span></li>}
   </ul>
 
+  {skratka.length >= 2 && (
+    <section class="card ob-skratka" aria-labelledby="okr-skratka">
+      <h2 id="okr-skratka">V skratke</h2>
+      <ul>{skratka.slice(0, 5).map((s) => <li>{s}</li>)}</ul>
+    </section>
+  )}
+
+  <ObsahCipy popis={`Obsah stránky – okres ${o.nazov}`} skupiny={[[['cisla', 'Okres v číslach', maCisla], ['mapa', 'Mapa obcí', mapa], ['obce', 'Všetky obce', true]]]} />
+
+  {maCisla && (
+    <section class="card" id="cisla">
+      <h2>Okres v číslach</h2>
+      <ul class="ob-cisla">
+        {mzP && <li><b>{fmt(mzP[1])} € <Por x={mzP[1]} r={mzSR} kto="Slovensko" /></b><span>priemerná hrubá mesačná mzda ({mzP[0]}){mzSR ? `; Slovensko ${fmt(mzSR)} €` : ''}{mz10 ? `; v roku ${mz10[0]} ${fmt(mz10[1])} €` : ''}</span></li>}
+        {nez != null && <li><b>{des(nez)} % <Por x={nez} r={nezI.sr} kto="Slovensko" /></b><span>miera nezamestnanosti ({MES[Number(nezI.mesiac.slice(5, 7)) - 1]} {nezI.mesiac.slice(0, 4)}); Slovensko {des(nezI.sr)} %</span></li>}
+        {vek != null && <li><b>{des(vek)} r. <Por x={vek} r={vekMed} kto="medián okresov" /></b><span>priemerný vek obyvateľov{vekMed != null ? `; medián okresov ${des(vekMed)}` : ''}</span></li>}
+        {byR.length >= 5 && o.obyvatelia > 0 && <li><b>{des((1000 * by5) / o.obyvatelia / 5)} <Por x={(1000 * by5) / o.obyvatelia / 5} r={bytySR} kto="Slovensko" /></b><span>nových bytov ročne na 1 000 obyvateľov ({byR[byR.length - 5][0]}–{byR.at(-1)![0]}){bytySR != null ? `; Slovensko ${des(bytySR)}` : ''}</span></li>}
+        {neh && o.obyvatelia > 0 && <li><b>{des((10000 * (neh[1] + neh[2] + neh[3])) / o.obyvatelia)} <Por x={(10000 * (neh[1] + neh[2] + neh[3])) / o.obyvatelia} r={nehSR} kto="Slovensko" /></b><span>usmrtených a zranených pri nehodách na 10 000 obyvateľov ({nehI.rok}: {fmt(neh[0])} nehôd, {fmt(neh[1])} usmrtených){nehSR != null ? `; Slovensko ${des(nehSR)}` : ''}</span></li>}
+        {nro && <li><b>NRO</b><span>patrí medzi <a href="https://mirri.gov.sk/sekcie/regionalny-rozvoj-2/najmenej-rozvinute-okresy/okresy/" rel="noopener">najmenej rozvinuté okresy</a> – môže čerpať regionálny príspevok</span></li>}
+      </ul>
+      <p class="pozn">▲ ▼ ≈ = viac, menej alebo podobne ako Slovensko (pri veku medián okresov).</p>
+      <details class="zdroj"><summary>Zdroj a poznámky</summary><p>ŠÚ SR – mzdy podľa miesta práce (STATdata np3110rr), dokončené byty (st3802rr), priemerný vek (om7052rr); ÚPSVaR – miera nezamestnanosti (podiel disponibilných uchádzačov na obyvateľoch v produktívnom veku); MV SR – štatistika dopravnej nehodovosti podľa územných okresov polície; MIRRI SR – zoznam najmenej rozvinutých okresov. Slovensko pri bytoch a nehodách = súčet okresov s údajmi.</p></details>
+    </section>
+  )}
+
   {mapa && (
-    <section class="card">
+    <section class="card" id="mapa">
       <h2>Obce na mape</h2>
       <svg class="ob-mapa" viewBox={vb} role="group" aria-label={`Mapa obcí okresu ${o.nazov}`}>
         <g class="tlmene" aria-hidden="true"><path d={mapa.d} /></g>
@@ -54,7 +115,7 @@ const ucastOkres = ucasti.length ? ucasti.reduce((a, r) => a + (r.x.volby2026!.u
     </section>
   )}
 
-  <section class="card">
+  <section class="card" id="obce">
     <h2>Všetky obce okresu</h2>
     <div class="ob-filter"><input type="search" id="ob-q" placeholder="Hľadať obec alebo starostu…" aria-label="Hľadať obec" /></div>
     <div class="ob-obal">
@@ -66,7 +127,7 @@ const ucastOkres = ucasti.length ? ucasti.reduce((a, r) => a + (r.x.volby2026!.u
           <th>Starosta/primátor 2026</th>
           <th class="num"><button type="button" data-k="u">Účasť</button></th>
         </tr></thead>
-        <tbody>
+        <tbody data-zbal={riadky.length > 17 ? '15' : undefined}>
           {riadky.map((r) => (
             <tr data-n={r.x.nazov} data-o={r.obyv ?? -1} data-z={r.zmena ?? -999} data-u={r.ucast ?? -1} data-h={`${r.x.nazov} ${r.st?.meno ?? ''}`.toLowerCase()}>
               <td><a href={r.url} translate="no">{r.x.nazov}</a></td>
@@ -97,6 +158,6 @@ const ucastOkres = ucasti.length ? ucasti.reduce((a, r) => a + (r.x.volby2026!.u
       rows.sort((a, c) => (k === 'n' ? a.dataset.n!.localeCompare(c.dataset.n!, 'sk') : Number(a.dataset[k]) - Number(c.dataset[k])) * zost).forEach((r) => tb.append(r));
     }));
     const q = document.getElementById('ob-q') as HTMLInputElement;
-    q.addEventListener('input', () => { const v = q.value.trim().toLowerCase(); rows.forEach((r) => (r.hidden = !!v && !r.dataset.h!.includes(v))); });
+    q.addEventListener('input', () => { const v = q.value.trim().toLowerCase(); if (v) { tb.classList.add('rozbalene'); tab.closest('section')?.querySelector('.ob-viac')?.setAttribute('hidden', ''); } rows.forEach((r) => (r.hidden = !!v && !r.dataset.h!.includes(v))); });
   }
 </script>

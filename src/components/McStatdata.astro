@@ -59,6 +59,6 @@ const nic = !vk && !pohP && !firP && !uz && !nez && !so2;
         <p class="pozn">Rozloha {des(uz.ha / 100, 2)} km²: {UZ.filter(([k]) => (uz.p?.[k] ?? 0) >= 0.5).sort(([a], [b]) => (uz.p[b] ?? 0) - (uz.p[a] ?? 0)).map(([k, n]) => `${n} ${des(uz.p[k], 0)} %`).join(', ')}.{uz.zast ? ` Zastavané plochy: ${des(uz.zast[1])} ha v roku ${uz.zast[0]} → ${des(uz.zast[2])} ha v roku ${meta('uzemie').rok}.` : ''}</p>
       </>
     )}
-    <p class="zdroj">Zdroj: ŠÚ SR (STATdata – vekové skupiny om7006rr, pohyb om7103rr, register organizácií og3805rr a og3808rr, pôdny fond pl5001rr, sčítanie 2021); ÚPSVaR – mesačná štatistika podľa obcí. Štatistický úrad vedie mestské časti ako samostatné obce.</p>
+    <details class="zdroj"><summary>Zdroj a poznámky</summary><p>Zdroj: ŠÚ SR (STATdata – vekové skupiny om7006rr, pohyb om7103rr, register organizácií og3805rr a og3808rr, pôdny fond pl5001rr, sčítanie 2021); ÚPSVaR – mesačná štatistika podľa obcí. Štatistický úrad vedie mestské časti ako samostatné obce.</p></details>
   </section>
 )}

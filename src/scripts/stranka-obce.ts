@@ -30,6 +30,9 @@ export function zbalovanie(): void {
 export function obsahStranky(): void {
   const nav = document.querySelector<HTMLElement>('.ob-obsah');
   if (!nav) return;
+  // čip bez cieľa na stránke (sekcia bez údajov) sa odstráni
+  nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((a) => { if (!document.getElementById(a.hash.slice(1))) a.parentElement?.remove(); });
+  nav.querySelectorAll('li.sep').forEach((s) => { if (!s.previousElementSibling || s.previousElementSibling.classList.contains('sep') || !s.nextElementSibling) s.remove(); });
   const odkazy = [...nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')];
   const ciele = odkazy.map((a) => document.getElementById(a.hash.slice(1))).filter((x): x is HTMLElement => !!x);
   const hlavicka = document.querySelector<HTMLElement>('.top');

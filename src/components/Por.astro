@@ -10,4 +10,4 @@ if (x != null && r != null && Number.isFinite(x) && Number.isFinite(r)) {
 }
 const t = s === 'rovnako' ? `približne ako ${kto}` : s === 'viac' ? `viac ako ${kto}` : `menej ako ${kto}`;
 ---
-{s && <span class={`por por-${s}`} title={t}><span aria-hidden="true">{s === 'viac' ? '▲' : s === 'menej' ? '▼' : '≈'}</span><span class="sr">{t}</span></span>}
+{s && <span class={`ob-por ob-por-${s}`} title={t}><span aria-hidden="true">{s === 'viac' ? '▲' : s === 'menej' ? '▼' : '≈'}</span><span class="sr">{t}</span></span>}

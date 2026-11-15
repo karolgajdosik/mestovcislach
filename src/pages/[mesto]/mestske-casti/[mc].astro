@@ -6,6 +6,9 @@ import { MESTA, type Mesto } from '../../../mesta';
 import { castiMesta, type ProfilCasti, type Ukazovatel } from '../../../lib/casti-mesta';
 import { skrat } from '../../../lib/zastupitelstvo';
 import McStatdata from '../../../components/McStatdata.astro';
+import ObsahCipy from '../../../components/ObsahCipy.astro';
+import Por from '../../../components/Por.astro';
+import '../../../styles/obce.css';
 
 export function getStaticPaths() {
   return MESTA.filter((m) => m.aktivne && !m.plne).flatMap((m) => {
@@ -70,45 +73,32 @@ const popisStr = `${p.n} (${m.nazov}): ${fmt(p.pocet)} obyvateľov, vývoj, vek 
       <li><strong>{fmt(p.pocet)}</strong> obyvateľov ({p.rok})</li>
       {p.km2 != null && <li><strong>{des(p.km2)}</strong> km²</li>}
       {p.hustota.hodnota != null && <li><strong>{fmt(p.hustota.hodnota)}</strong> obyvateľov na km²</li>}
-      {p.zmena10.hodnota != null && <li><strong>{znam(p.zmena10.hodnota)}</strong> obyvateľov za 10 rokov <span class="pozn">(mesto {znam(p.zmena10.mesto)})</span></li>}
+      {p.zmena10.hodnota != null && <li><strong>{znam(p.zmena10.hodnota)} <Por x={p.zmena10.hodnota} r={p.zmena10.mesto} kto="mesto" /></strong> obyvateľov za 10 rokov <span class="pozn">(mesto {znam(p.zmena10.mesto)})</span></li>}
     </ul>
     {skratka.length > 0 && (
       <div class="skratka"><h2>Čím sa odlišuje</h2><ul>{skratka.map((s) => <li>{s}</li>)}</ul></div>
     )}
   </section>
 
-  {graf && (
-    <section class="card">
-      <h2>Počet obyvateľov {graf.od} – {graf.do}</h2>
-      <svg class="graf" viewBox={`0 0 ${graf.W} ${graf.H}`} preserveAspectRatio="none" role="img" aria-label={`Počet obyvateľov od ${graf.od} do ${graf.do}: najmenej ${fmt(graf.min)}, najviac ${fmt(graf.max)}, naposledy ${fmt(p.pocet)}.`}>
-        <polygon points={graf.plocha} class="plocha" /><polyline points={graf.ciara} class="ciara" vector-effect="non-scaling-stroke" />
-      </svg>
-      <p class="graf-os"><span>{graf.od}: {fmt(p.rady[0][1])}</span><span>{graf.do}: {fmt(p.pocet)}</span></p>
-      <p class="pozn">Rok 2021 je ovplyvnený sčítaním obyvateľov (spresnenie trvalých pobytov).</p>
-    </section>
-  )}
+  <ObsahCipy popis={`Obsah stránky – ${p.n}`} skupiny={[
+    [['blizko', 'Čo je blízko', p.dostupnost.some((d) => d.m != null)], ['volby', 'Voľby', kom || nr || ep]],
+    [['vyvoj', 'Vývoj', graf], ['ludia', 'Kto tu býva', maSklad], ['dalsie-cisla', 'Ďalšie čísla', m.slug === 'kosice' || m.slug === 'bratislava']],
+  ]} />
 
-  {maSklad && (
-    <section class="card">
-      <h2>Kto tu býva</h2>
-      <ul class="sklad">{SKLAD.filter(([k]) => p.sklad[k].hodnota != null).map(([k, popis]) => {
-        const u = p.sklad[k];
-        const max = Math.max(u.hodnota ?? 0, u.mesto ?? 0, 1);
-        return (
-          <li>
-            <span class="sk-n">{popis.charAt(0).toUpperCase() + popis.slice(1)}<small>{por(u, `najviac z ${n} častí`, `najmenej z ${n} častí`)}</small></span>
-            <span class="sk-h"><b>{des(u.hodnota)} %</b><small>mesto {des(u.mesto)} %</small></span>
-            <span class="sk-p" aria-hidden="true"><i style={`width:${(100 * (u.hodnota ?? 0)) / max}%`}></i><em style={`left:${(100 * (u.mesto ?? 0)) / max}%`}></em></span>
-          </li>
-        );
-      })}</ul>
-      {p.narodnost.length > 1 && <p class="pozn">Národnosť (sčítanie 2021): {p.narodnost.map((x) => `${x.nazov.toLowerCase()} ${des(x.podiel)} %`).join(' · ')}</p>}
-      <p class="pozn">Zdroj: Sčítanie obyvateľov, domov a bytov 2021 (ŠÚ SR). Čiarka v páse ukazuje hodnotu celého mesta.</p>
+  {(p.dostupnost.some((d) => d.m != null) || kom || nr || ep) && <div class="ob-blok" id="prakticky"><h2>Prakticky</h2><p>Čo je blízko pešo a ako sa tu volí.</p></div>}
+
+  {p.dostupnost.some((d) => d.m != null) && (
+    <section class="card" id="blizko">
+      <h2>Čo je tu blízko</h2>
+      <ul class="dost">{p.dostupnost.filter((d) => d.m != null).map((d) => (
+        <li><span>{d.nazov}</span><b>{minut(d.m)} min</b><small>{d.pocet > 0 ? `${d.pocet} v časti` : 'žiadne v časti'} · {d.poradie}. z {n}</small></li>
+      ))}</ul>
+      <p class="pozn">Priemerný čas chôdze k najbližšiemu miestu z obývaných miest časti (mriežka 250 m, vzdušná vzdialenosť × 1,3). Porovnajte časti podľa toho, čo potrebujete, v <a href={`/${m.slug}/stvrte`}>Ktorá štvrť je pre mňa</a> alebo si overte <a href={`/${m.slug}/adresa`}>konkrétnu adresu</a>.</p>
     </section>
   )}
 
   {(kom || nr || ep) && (
-    <section class="card">
+    <section class="card" id="volby">
       <h2>Ako sa tu volí</h2>
       <div class="dva">
         {kom && (
@@ -131,13 +121,35 @@ const popisStr = `${p.n} (${m.nazov}): ${fmt(p.pocet)} obyvateľov, vývoj, vek 
     </section>
   )}
 
-  {p.dostupnost.some((d) => d.m != null) && (
-    <section class="card">
-      <h2>Čo je tu blízko</h2>
-      <ul class="dost">{p.dostupnost.filter((d) => d.m != null).map((d) => (
-        <li><span>{d.nazov}</span><b>{minut(d.m)} min</b><small>{d.pocet > 0 ? `${d.pocet} v časti` : 'žiadne v časti'} · {d.poradie}. z {n}</small></li>
-      ))}</ul>
-      <p class="pozn">Priemerný čas chôdze k najbližšiemu miestu z obývaných miest časti (mriežka 250 m, vzdušná vzdialenosť × 1,3). Porovnajte časti podľa toho, čo potrebujete, v <a href={`/${m.slug}/stvrte`}>Ktorá štvrť je pre mňa</a> alebo si overte <a href={`/${m.slug}/adresa`}>konkrétnu adresu</a>.</p>
+  <div class="ob-blok" id="zivot"><h2>Ako sa tu žije</h2><p>Obyvatelia, ich vývoj a zloženie. ▲ ▼ ≈ = viac, menej alebo podobne ako celé mesto.</p></div>
+
+  {graf && (
+    <section class="card" id="vyvoj">
+      <h2>Počet obyvateľov {graf.od} – {graf.do}</h2>
+      <svg class="graf" viewBox={`0 0 ${graf.W} ${graf.H}`} preserveAspectRatio="none" role="img" aria-label={`Počet obyvateľov od ${graf.od} do ${graf.do}: najmenej ${fmt(graf.min)}, najviac ${fmt(graf.max)}, naposledy ${fmt(p.pocet)}.`}>
+        <polygon points={graf.plocha} class="plocha" /><polyline points={graf.ciara} class="ciara" vector-effect="non-scaling-stroke" />
+      </svg>
+      <p class="graf-os"><span>{graf.od}: {fmt(p.rady[0][1])}</span><span>{graf.do}: {fmt(p.pocet)}</span></p>
+      <p class="pozn">Rok 2021 je ovplyvnený sčítaním obyvateľov (spresnenie trvalých pobytov).</p>
+    </section>
+  )}
+
+  {maSklad && (
+    <section class="card" id="ludia">
+      <h2>Kto tu býva</h2>
+      <ul class="sklad">{SKLAD.filter(([k]) => p.sklad[k].hodnota != null).map(([k, popis]) => {
+        const u = p.sklad[k];
+        const max = Math.max(u.hodnota ?? 0, u.mesto ?? 0, 1);
+        return (
+          <li>
+            <span class="sk-n">{popis.charAt(0).toUpperCase() + popis.slice(1)}<small>{por(u, `najviac z ${n} častí`, `najmenej z ${n} častí`)}</small></span>
+            <span class="sk-h"><b>{des(u.hodnota)} % <Por x={u.hodnota} r={u.mesto} kto="mesto" /></b><small>mesto {des(u.mesto)} %</small></span>
+            <span class="sk-p" aria-hidden="true"><i style={`width:${(100 * (u.hodnota ?? 0)) / max}%`}></i><em style={`left:${(100 * (u.mesto ?? 0)) / max}%`}></em></span>
+          </li>
+        );
+      })}</ul>
+      {p.narodnost.length > 1 && <p class="pozn">Národnosť (sčítanie 2021): {p.narodnost.map((x) => `${x.nazov.toLowerCase()} ${des(x.podiel)} %`).join(' · ')}</p>}
+      <p class="pozn">Zdroj: Sčítanie obyvateľov, domov a bytov 2021 (ŠÚ SR). Čiarka v páse ukazuje hodnotu celého mesta.</p>
     </section>
   )}
 
@@ -177,7 +189,7 @@ const popisStr = `${p.n} (${m.nazov}): ${fmt(p.pocet)} obyvateľov, vývoj, vek 
   .vol b { font-variant-numeric: tabular-nums; }
   .vol i { grid-column: 1 / -1; display: block; height: 6px; border-radius: 3px; background: color-mix(in srgb, var(--muted) 50%, transparent); }
   .vol li.prvy i { background: var(--accent); }
-  .dost { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+  .dost { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
   .dost li { padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; }
   .dost span { font-size: 0.88rem; color: var(--muted); }
   .dost b { font-size: 1.4rem; font-variant-numeric: tabular-nums; }
