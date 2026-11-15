@@ -285,7 +285,7 @@ const blok = (id: string) => obsah.find((x) => x.id === id);
 ---
 <Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis}
   drobceky={[[o.kraj, `/${o.kraj_slug}`], [`Okres ${o.okres}`, `/${o.kraj_slug}/${o.okres_slug}`], [o.nazov, `/${o.kraj_slug}/${o.okres_slug}/${o.slug}`]]}>
-  <section class={`hero ob-hero${obr?.foto ? ' s-fotkou' : ''}`} data-nazov={o.nazov} data-url={`/${o.kraj_slug}/${o.okres_slug}/${o.slug}`} data-okres={`okres ${o.okres}`}>
+  <section class={`hero ob-hero${obr?.foto ? ' s-fotkou' : ''}`} data-nazov={o.nazov} data-url={`/${o.kraj_slug}/${o.okres_slug}/${o.slug}`} data-okres={`okres ${o.okres}`} data-kraj={o.kraj} data-poloha={o.poloha ? JSON.stringify(o.poloha) : undefined}>
     <div class="ob-hero-text">
       <p class="ob-cesta"><a href="/">Slovensko</a> › <a href={`/${o.kraj_slug}`}>{o.kraj}</a> › <a href={`/${o.kraj_slug}/${o.okres_slug}`}>okres {o.okres}</a></p>
       <h1 translate="no" class={obr?.erb ? 'ob-s-erbom' : ''}>{obr?.erb && <img class="ob-erb" src={obr.erb.u} alt={`Erb obce ${o.nazov}`} width="56" height="64" loading="eager" decoding="async" />}{o.nazov}</h1>
@@ -296,7 +296,7 @@ const blok = (id: string) => obsah.find((x) => x.id === id);
         {wk?.[1] ? <li><b>{fmt(wk[1])} m</b><span>nadmorská výška</span></li> : uz && <li><b>{des(uz.ha / 100, 1)} km²</b><span>rozloha katastra</span></li>}
       </ul>
       {(wk?.[0] || uz || obr?.partneri) && <p class="pozn ob-hero-info">{[wk?.[0] ? `Prvá písomná zmienka ${wk[0]}` : null, uz && wk?.[1] ? `rozloha ${des(uz.ha / 100, uz.ha < 1000 ? 2 : 1)} km²` : null, hustota != null ? `${fmt(Math.round(hustota))} obyvateľov na km²` : null].filter(Boolean).join(' · ')}{obr?.partneri ? <><br />Partnerské obce a mestá: <span translate="no">{obr.partneri.join(', ')}</span></> : ''}</p>}
-      <p class="ob-akcie"><PoslatZnamemu text={`${o.nazov} v číslach`} />{maKviz && <a class="ob-kviz" href={`${u}/kviz`}>Kvíz: poznáte {o.nazov}?</a>}</p>
+      <p class="ob-akcie"><button type="button" class="ob-akcia ob-moja" aria-pressed="false">☆ Moja obec</button><a class="ob-akcia" href={`/porovnaj-obce/?a=${o.kod}`}>Porovnať s inou obcou</a><button type="button" class="ob-akcia ob-tlac">Vytlačiť / PDF</button><PoslatZnamemu text={`${o.nazov} v číslach`} />{maKviz && <a class="ob-kviz" href={`${u}/kviz`}>Kvíz: poznáte {o.nazov}?</a>}</p>
     </div>
     {obr?.foto && (
       <figure class="ob-hero-foto">
@@ -859,9 +859,12 @@ const blok = (id: string) => obsah.find((x) => x.id === id);
 
 <script>
   import { pocasie } from '../../../../scripts/zive';
-  import { zbalovanie, obsahStranky, ulozPoslednu } from '../../../../scripts/stranka-obce';
+  import { zbalovanie, obsahStranky, ulozPoslednu, mojaObec, tlac, odkazySekcii } from '../../../../scripts/stranka-obce';
   zbalovanie();
   obsahStranky();
+  mojaObec();
+  tlac();
+  odkazySekcii();
   { const h = document.querySelector<HTMLElement>('.ob-hero'); if (h?.dataset.url) ulozPoslednu(h.dataset.nazov!, h.dataset.url, h.dataset.okres ?? ''); }
   const sek = document.getElementById('pocasie');
   if (sek) {

@@ -22,7 +22,10 @@ const citaj = async (kv: any, t: string) => ((await kv.get(`sutaz:${t}`, 'json')
 export const onRequestGet = async ({ env }: any) => {
   if (!env.SUBOJ) return json(503, { ok: false });
   const [t, p] = [tyzden(), tyzden(-1)];
-  return json(200, { ok: true, tyzden: t, tabulka: await citaj(env.SUBOJ, t), minuly: { tyzden: p, tabulka: await citaj(env.SUBOJ, p) } });
+  // poradie stačí obnoviť raz za minútu – menej čítaní z KV pri každom zobrazení úvodnej stránky
+  const r = json(200, { ok: true, tyzden: t, tabulka: await citaj(env.SUBOJ, t), minuly: { tyzden: p, tabulka: await citaj(env.SUBOJ, p) } });
+  r.headers.set('Cache-Control', 'public, max-age=60');
+  return r;
 };
 
 export const onRequestPost = async ({ request, env }: any) => {

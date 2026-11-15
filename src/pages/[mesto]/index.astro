@@ -253,7 +253,7 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 </Base>
 
 <script>
-  import Chart from 'chart.js/auto';
+  import { nacitajChart } from '../../scripts/ked-viditelne';
   import { vystrahy, ovzdusie, dunaj, stupenDunaja, farbaOvzdusia } from '../../scripts/zive';
 
   // Teraz v meste – výstrahy, ovzdušie, rieka (živo zo SHMÚ)
@@ -296,13 +296,15 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     io.observe(el);
   };
   const obyv = document.getElementById('g-obyv') as HTMLCanvasElement | null;
-  if (obyv) kedViditelne(obyv, () => {
+  if (obyv) kedViditelne(obyv, async () => {
+    const Chart = await nacitajChart();
     const rad: [string, number][] = JSON.parse(obyv.dataset.rad!);
     new Chart(obyv, { type: 'line', data: { labels: rad.map((r) => r[0]), datasets: [{ label: 'Obyvatelia', data: rad.map((r) => r[1]), borderColor: akc, backgroundColor: akc, pointRadius: 0, borderWidth: 2.5, tension: 0.2 }] },
       options: { maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ` ${fmt(c.parsed.y)} obyvateľov` } } }, scales: osi } });
   });
   const ceny = document.getElementById('g-ceny') as HTMLCanvasElement | null;
-  if (ceny) kedViditelne(ceny, () => {
+  if (ceny) kedViditelne(ceny, async () => {
+    const Chart = await nacitajChart();
     const rad: [string, number, number | null][] = JSON.parse(ceny.dataset.rad!);
     new Chart(ceny, { type: 'line', data: { labels: rad.map((r) => r[0]), datasets: [
       { label: 'Kraj', data: rad.map((r) => r[1]), borderColor: akc, backgroundColor: akc, pointRadius: 0, borderWidth: 2.5, tension: 0.25 },
@@ -311,7 +313,8 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
       scales: { ...osi, y: { ticks: { color: muted, callback: (v) => `${v} %` } } } } });
   });
   const byty = document.getElementById('g-byty') as HTMLCanvasElement | null;
-  if (byty) kedViditelne(byty, () => {
+  if (byty) kedViditelne(byty, async () => {
+    const Chart = await nacitajChart();
     const rad: [string, number | null, number | null][] = JSON.parse(byty.dataset.rad!);
     new Chart(byty, { type: 'bar', data: { labels: rad.map((r) => r[0]), datasets: [
       { label: 'Dokončené byty', data: rad.map((r) => r[1]), backgroundColor: akc },

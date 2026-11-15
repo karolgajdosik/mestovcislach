@@ -23,9 +23,10 @@
 
 <script>
   import type MiniSearchT from 'minisearch';
-  import { SLOVNIK } from '../i18n/slovnik';
-  import { tr } from '../scripts/preklad';
+  import { tr } from '../scripts/tr';
   // preklady názvov sekcií a kategórií ako ďalšie kľúčové slová – hľadať sa dá aj po anglicky, nemecky, poľsky, maďarsky
+  // slovník sa načíta až s indexom (pri otvorení hľadania), nie s každou stránkou
+  let SLOVNIK: Record<string, string[]> = {};
   const vsetkyJazyky = (t: string) => (SLOVNIK[t] ?? []).join(' ');
 
   type Polozka = { id: number; g: string; t: string; s: string; u: string; w: string; x: string; lat?: number; lon?: number };
@@ -44,7 +45,8 @@
   const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
   let index: Promise<{ ms: MiniSearchT<Polozka>; polozky: Polozka[] }> | null = null;
-  const nacitaj = () => (index ??= Promise.all([import('minisearch'), fetch('/data/hladanie.json').then((r) => r.json())]).then(([{ default: MiniSearch }, d]) => {
+  const nacitaj = () => (index ??= Promise.all([import('minisearch'), fetch('/data/hladanie.json').then((r) => r.json()), import('../i18n/slovnik')]).then(([{ default: MiniSearch }, d, sl]) => {
+    SLOVNIK = sl.SLOVNIK;
     const polozky: Polozka[] = d.polozky.map((p: any[], id: number) => ({ id, g: p[0], t: p[1], s: p[2] ?? '', u: p[3] ?? '', w: p[4] ?? '', x: p[0] === 'Stránky' ? vsetkyJazyky(p[1]) : p[0] === 'Miesta' ? vsetkyJazyky(p[4]) : '', lat: p[5], lon: p[6] }));
     const ms = new MiniSearch<Polozka>({
       fields: ['t', 's', 'w', 'x'],
@@ -83,6 +85,20 @@
     return out + (v ? '</mark>' : '');
   }
 
+  // „Prievidza školy“ → rovno sekcia na stránke obce (kľúčové slová bez diakritiky, stačí začiatok slova)
+  const SEKCIE: [string[], string, string][] = [
+    [['skol', 'skolk', 'skoly', 'maturit', 'testovan', 'ziak'], 'skoly', 'školy'], [['odpad', 'smeti', 'triedeni', 'kontajner'], 'odpad', 'odpad'],
+    [['volb', 'starost', 'primator', 'poslan', 'zastupitel'], 'volby', 'voľby a starosta'], [['pocasi', 'predpoved'], 'pocasie', 'počasie'],
+    [['menin', 'sviatk', 'prazdnin', 'kalendar'], 'kalendar', 'meniny a sviatky'], [['rozpoc', 'penia', 'hospodar', 'dlh', 'dane'], 'hospodarenie', 'rozpočet'],
+    [['nezames', 'praca', 'prace'], 'nezamestnanost', 'nezamestnanosť'], [['zmluv', 'dodavat'], 'zmluvy', 'zmluvy'], [['eurofond', 'dotaci'], 'eurofondy', 'eurofondy'],
+    [['pamiat', 'hrad', 'kostol'], 'pamiatky', 'pamiatky'], [['podneb', 'klima', 'ovzdusi', 'smog', 'teplot', 'zrazk'], 'podnebie', 'podnebie a ovzdušie'],
+    [['vek', 'pyramid', 'senior', 'deti'], 'vek', 'vek obyvateľov'], [['obyvat', 'pocet', 'scitan'], 'obyvatelia', 'obyvatelia'],
+    [['sluzb', 'lekar', 'posta', 'lekarn', 'vlak', 'autobus', 'kniznic'], 'sluzby', 'služby'], [['vystavb', 'stavb', 'eia'], 'eia', 'výstavba'],
+    [['firm', 'podnik', 'zivnost'], 'firmy', 'firmy'], [['vzdelan', 'vysokosk'], 'vzdelanie', 'vzdelanie'], [['mzd', 'plat', 'nehod'], 'okres-cisla', 'okres v číslach'],
+    [['prirod', 'les', 'zosuv', 'radon', 'park'], 'kataster', 'príroda'], [['byvan', 'byt', 'dom', 'kanaliz', 'plyn'], 'byvanie', 'domy a siete'],
+  ];
+  const sekcia = (slovo: string) => (slovo.length < 3 ? null : SEKCIE.find(([k]) => k.some((x) => slovo.startsWith(x) || (slovo.length >= 4 && x.startsWith(slovo)))) ?? null);
+
   let vybrany = 0;
   let riadky: HTMLAnchorElement[] = [];
   const oznac = (i: number) => {
@@ -103,6 +119,18 @@
       html = `<p class="hl-skupina">Často hľadané</p>` + RYCHLE.map((u) => polozky.find((p) => p.g === 'Stránky' && p.u === u)).filter(Boolean)
         .map((p) => riadok(p!.u, esc(p!.t), esc(p!.s), p!.g, i++)).join('');
     } else {
+      // posledné (alebo prvé) slovo je téma → hľadá sa obec zo zvyšku a ponúkne sa priamo sekcia
+      const slovaQ = norm(q).split(/\s+/).filter(Boolean);
+      if (slovaQ.length >= 2) {
+        let tema = sekcia(slovaQ[slovaQ.length - 1]);
+        let zvysok = slovaQ.slice(0, -1).join(' ');
+        if (!tema) { tema = sekcia(slovaQ[0]); zvysok = slovaQ.slice(1).join(' '); }
+        if (tema) {
+          const obce = ms.search(zvysok, { combineWith: 'AND', fields: ['t'], filter: (r) => polozky[r.id as number].g === 'Obce a mestá' })
+            .map((r) => polozky[r.id as number]).filter((p) => p.u.split('/').filter(Boolean).length === 3).slice(0, 3);
+          if (obce.length) html += `<p class="hl-skupina">Priamo na sekciu</p>` + obce.map((p) => riadok(`${p.u}#${tema![1]}`, `<span translate="no">${esc(p.t)}</span> – ${esc(tema![2])}`, esc(p.s), 'Obce a mestá', i++)).join('');
+        }
+      }
       let najdene = ms.search(q, { combineWith: 'AND' });
       if (!najdene.length) najdene = ms.search(q, { combineWith: 'OR' });
       const slova = norm(q).split(/[^a-z0-9]+/).filter(Boolean);
@@ -119,7 +147,7 @@
       for (const [g, sk] of [...skupiny].sort((a, b) => b[1].skore - a[1].skore)) {
         html += `<p class="hl-skupina">${esc(g)}</p>` + sk.p.map((p) => riadok(odkaz(p), BEZ_PREKLADU.has(g) ? `<span translate="no">${zvyrazni(p.t, slova)}</span>` : zvyrazni(p.t, slova), popis(p), g, i++)).join('');
       }
-      if (!najdene.length) html += `<p class="hl-prazdne">Nič sme nenašli. Skúste iné slovo alebo sa opýtajte asistenta.</p>`;
+      if (!najdene.length && !html) html += `<p class="hl-prazdne">Nič sme nenašli. Skúste iné slovo alebo sa opýtajte asistenta.</p>`;
       html += `<p class="hl-skupina">Asistent</p><a class="hl-riadok hl-ai" role="option" id="hladanie-r${i++}" href="#" data-ai="1"><span class="hl-ikona" aria-hidden="true"></span><span class="hl-obsah"><span class="hl-nazov" translate="no">${esc(tr('AI asistent'))}: „${esc(q)}“</span><span class="hl-popis">odpovie z údajov webu a pridá odkazy</span></span></a>`;
     }
     vysl.innerHTML = html;

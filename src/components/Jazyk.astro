@@ -16,7 +16,7 @@ import { JAZYKY } from '../i18n/slovnik';
 </div>
 
 <script>
-  import { spustiPreklad, jazyk, tr } from '../scripts/preklad';
+  import { jazyk } from '../scripts/tr';
   const btn = document.getElementById('jz-otvor')!;
   const zoznam = document.getElementById('jz-zoznam')!;
   const polozky = [...zoznam.querySelectorAll<HTMLElement>('li')];
@@ -48,13 +48,18 @@ import { JAZYKY } from '../i18n/slovnik';
   document.addEventListener('click', (e) => { if (!zoznam.hidden && !(e.target as HTMLElement).closest('.jz-obal')) otvor(false); });
 
   // pruh s upozornením na strojový preklad
-  const pruh = document.getElementById('preklad-pruh');
-  if (pruh && akt !== 'sk') {
-    pruh.hidden = false;
-    pruh.querySelector('.pp-text')!.textContent = tr('Strojový preklad zo slovenčiny – názvy ulíc, miest a údaje ostávajú v origináli.');
-    pruh.querySelector('button')!.addEventListener('click', () => vyber('sk'));
+  // prekladač a slovník sa sťahujú len pri inom jazyku ako slovenčina
+  if (akt !== 'sk') {
+    import('../scripts/preklad').then(({ spustiPreklad, tr }) => {
+      const pruh = document.getElementById('preklad-pruh');
+      if (pruh) {
+        pruh.hidden = false;
+        pruh.querySelector('.pp-text')!.textContent = tr('Strojový preklad zo slovenčiny – názvy ulíc, miest a údaje ostávajú v origináli.');
+        pruh.querySelector('button')!.addEventListener('click', () => vyber('sk'));
+      }
+      spustiPreklad();
+    });
   }
-  spustiPreklad();
 </script>
 
 <style>

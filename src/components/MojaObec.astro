@@ -1,0 +1,71 @@
+---
+// „Moja obec“ na úvodnej stránke: obec uložená tlačidlom na stránke obce (localStorage „moja-obec“ – len v tomto prehliadači).
+// Počasie (Open-Meteo), meniny, najbližší sviatok, prázdniny v kraji a rýchle odkazy na sekcie obce. Bez uloženej obce sa nezobrazí.
+---
+<section class="card mo" id="moja-obec" hidden aria-labelledby="mo-nazov">
+  <div class="mo-hlava">
+    <p class="mo-stitok">Moja obec</p>
+    <h2 id="mo-nazov"><a href="#" translate="no"></a></h2>
+    <p class="mo-okres"></p>
+    <button type="button" class="mo-zrus" title="Odstrániť moju obec">Zmeniť</button>
+  </div>
+  <ul class="mo-dlazdice">
+    <li data-k="pocasie"><span>Počasie</span><b>…</b><small></small></li>
+    <li data-k="meniny"><span>Meniny</span><b>…</b><small></small></li>
+    <li data-k="sviatok"><span>Najbližší sviatok</span><b>…</b><small></small></li>
+    <li data-k="prazdniny"><span>Prázdniny v kraji</span><b>…</b><small></small></li>
+  </ul>
+  <p class="mo-odkazy"></p>
+</section>
+
+<script>
+  type Moja = { n: string; u: string; okres?: string; kraj?: string; poloha?: [number, number] };
+  const sek = document.getElementById('moja-obec');
+  let m: Moja | null = null;
+  try { m = JSON.parse(localStorage.getItem('moja-obec') || 'null'); } catch { m = null; }
+  if (sek && m && typeof m.u === 'string' && m.u.startsWith('/')) {
+    sek.hidden = false;
+    const a = sek.querySelector<HTMLAnchorElement>('h2 a')!;
+    a.href = m.u;
+    a.textContent = m.n;
+    sek.querySelector('.mo-okres')!.textContent = [m.okres, m.kraj].filter(Boolean).join(' · ');
+    const SEK: [string, string][] = [['volby', 'Voľby a starosta'], ['skoly', 'Školy'], ['sluzby', 'Služby'], ['odpad', 'Odpad'], ['hospodarenie', 'Rozpočet'], ['zmluvy', 'Zmluvy']];
+    const odk = sek.querySelector('.mo-odkazy')!;
+    SEK.forEach(([id, t]) => { const x = document.createElement('a'); x.href = `${m!.u}#${id}`; x.textContent = t; odk.append(x); });
+    const dl = (k: string, b: string, s = '') => { const li = sek.querySelector(`[data-k="${k}"]`)!; li.querySelector('b')!.textContent = b; li.querySelector('small')!.textContent = s; };
+    if (m.poloha) {
+      import('../scripts/zive').then(({ pocasie }) => pocasie(m!.poloha!)).then((p) => dl('pocasie', `${p.teplota} °C`, `${p.stav} · ${p.min}/${p.max} °C`)).catch(() => dl('pocasie', '–'));
+    } else sek.querySelector('[data-k="pocasie"]')?.remove();
+    import('../scripts/kalendar').then(({ dlazdice, iso }) => {
+      const d = dlazdice(m!.kraj ?? '', iso(new Date()));
+      dl('meniny', d.meniny.hodnota, d.meniny.pozn);
+      dl('sviatok', d.sviatok.hodnota, d.sviatok.pozn);
+      if (m!.kraj) dl('prazdniny', d.prazdniny.hodnota, d.prazdniny.pozn); else sek.querySelector('[data-k="prazdniny"]')?.remove();
+    }).catch(() => {});
+    sek.querySelector('.mo-zrus')!.addEventListener('click', () => {
+      try { localStorage.removeItem('moja-obec'); } catch { /* */ }
+      sek.hidden = true;
+      document.getElementById('no-q')?.focus();
+    });
+  }
+</script>
+
+<style>
+  .mo { margin: 0 0 24px; border-left: 4px solid var(--accent); }
+  .mo[hidden] { display: none; }
+  .mo-hlava { display: grid; grid-template-columns: 1fr auto; align-items: start; column-gap: 12px; }
+  .mo-stitok { grid-column: 1; margin: 0; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+  .mo h2 { grid-column: 1; margin: 2px 0 0; font-size: 1.5rem; letter-spacing: -0.02em; }
+  .mo h2 a { color: var(--text); text-decoration: none; }
+  .mo h2 a:hover { text-decoration: underline; }
+  .mo-okres { grid-column: 1; margin: 0; color: var(--muted); font-size: 0.88rem; }
+  .mo-zrus { grid-column: 2; grid-row: 1 / span 3; border: 1px solid var(--line); background: var(--card); color: var(--muted); border-radius: 16px; padding: 6px 12px; font: inherit; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+  .mo-dlazdice { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .mo-dlazdice li { flex: 1 1 150px; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); display: flex; flex-direction: column; gap: 2px; }
+  .mo-dlazdice span { font-size: 0.74rem; color: var(--muted); font-weight: 600; }
+  .mo-dlazdice b { font-size: 1.05rem; }
+  .mo-dlazdice small { color: var(--muted); font-size: 0.78rem; }
+  .mo-odkazy { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; }
+  .mo-odkazy :global(a) { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+  .mo-odkazy :global(a:hover) { border-color: var(--accent); }
+</style>

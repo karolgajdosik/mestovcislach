@@ -1,0 +1,88 @@
+---
+// Porovnanie dvoch ľubovoľných obcí vedľa seba (adresa ?a=kód&b=kód). Údaje z /data/obce-porovnanie.json načíta prehliadač –
+// rovnaké ukazovatele a zdroje ako profil obce. Bez hodnotenia „lepšia/horšia“, len rozdiel.
+import Base from '../layouts/Base.astro';
+import '../styles/stranka.css';
+---
+<Base title="Porovnaj dve obce – mestovcislach.sk" description="Vyberte ľubovoľné dve obce alebo mestá Slovenska a porovnajte ich vedľa seba: obyvatelia, vek, vzdelanie, nezamestnanosť, voľby, klíma, rozpočet a odpad.">
+  <section class="hero">
+    <p class="kicker">Porovnanie</p>
+    <h1>Porovnaj dve obce</h1>
+    <p class="lead">Všetkých 2 900 obcí a miest Slovenska vedľa seba – obyvatelia, vek, vzdelanie, práca, voľby, podnebie, rozpočet a odpad.</p>
+  </section>
+
+  <section class="card po-vyber">
+    <label>Prvá obec<input id="po-a" type="search" list="po-zoznam" autocomplete="off" placeholder="napr. Prievidza" /></label>
+    <button type="button" id="po-vymen" class="po-vymen" aria-label="Vymeniť obce">⇄</button>
+    <label>Druhá obec<input id="po-b" type="search" list="po-zoznam" autocomplete="off" placeholder="napr. Bojnice" /></label>
+    <datalist id="po-zoznam"></datalist>
+  </section>
+
+  <section class="card" id="po-vysledok" aria-live="polite">
+    <p class="pozn">Načítavam údaje…</p>
+  </section>
+  <p class="zdroj">Zdroj: ŠÚ SR (obyvatelia, sčítanie 2021, priemerný vek, odpad, pôdny fond), ÚPSVaR (nezamestnanosť), ŠÚ SR – voľby 2026, Open-Meteo/ERA5 (klíma), MF SR – rozpocet.sk (výdavky), SHMÚ cez EEA (ovzdušie), Wikidata (nadmorská výška). Podrobnosti a metodika sú na profile každej obce.</p>
+</Base>
+
+<script>
+  type D = { polia: [string, string, string][]; roky: Record<string, string | number | null>; obce: (string | number | null)[][] };
+  const vys = document.getElementById('po-vysledok')!;
+  const ia = document.getElementById('po-a') as HTMLInputElement;
+  const ib = document.getElementById('po-b') as HTMLInputElement;
+  const fmt = (x: number) => x.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
+  const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  fetch('/data/obce-porovnanie.json').then((r) => r.json()).then((d: D) => {
+    const meno = (o: D['obce'][number]) => `${o[1]} (okres ${o[2]})`;
+    const podlaMena = new Map(d.obce.map((o) => [meno(o), o]));
+    const podlaKodu = new Map(d.obce.map((o) => [String(o[0]), o]));
+    document.getElementById('po-zoznam')!.innerHTML = d.obce.map((o) => `<option value="${esc(meno(o))}"></option>`).join('');
+    const najdi = (t: string) => podlaMena.get(t) ?? d.obce.find((o) => String(o[1]).toLowerCase() === t.trim().toLowerCase());
+    const q = new URLSearchParams(location.search);
+    const a0 = podlaKodu.get(q.get('a') ?? ''), b0 = podlaKodu.get(q.get('b') ?? '');
+    if (a0) ia.value = meno(a0);
+    if (b0) ib.value = meno(b0);
+    const kresli = () => {
+      const a = najdi(ia.value), b = najdi(ib.value);
+      if (!a || !b) { vys.innerHTML = '<p class="pozn">Vyberte dve obce zo zoznamu (začnite písať názov).</p>'; return; }
+      const u = new URL(location.href);
+      u.searchParams.set('a', String(a[0])); u.searchParams.set('b', String(b[0]));
+      history.replaceState(null, '', u);
+      const riadky = d.polia.map(([, n, j], i) => {
+        const x = a[4 + i] as number | null, y = b[4 + i] as number | null;
+        if (x == null && y == null) return '';
+        const m = Math.max(Math.abs(x ?? 0), Math.abs(y ?? 0)) || 1;
+        const bar = (v: number | null) => (v == null ? '' : `<i style="width:${Math.max(2, (100 * Math.abs(v)) / m)}%"></i>`);
+        const h = (v: number | null) => (v == null ? '–' : `${v > 0 && j === '%' && n.startsWith('Zmena') ? '+' : ''}${fmt(v)}${j ? ` ${j}` : ''}`);
+        const roz = x != null && y != null && y !== 0 && !n.startsWith('Zmena') && j !== '%' && j !== '°C' ? ` <small>(${x >= y ? '+' : '−'}${fmt(Math.abs((100 * (x - y)) / y))} %)</small>` : x != null && y != null && (j === '%' || j === '°C') ? ` <small>(${x >= y ? '+' : '−'}${fmt(Math.abs(x - y))}${j === '%' ? ' p. b.' : ' °C'})</small>` : '';
+        return `<tr><th scope="row">${esc(n)}</th><td><span class="po-h">${h(x)}${roz}</span><span class="po-bar a">${bar(x)}</span></td><td><span class="po-h">${h(y)}</span><span class="po-bar b">${bar(y)}</span></td></tr>`;
+      }).join('');
+      vys.innerHTML = `<div class="ob-obal"><table class="po-tab"><thead><tr><th></th><th><a href="${esc(String(a[3]))}" translate="no">${esc(String(a[1]))}</a></th><th><a href="${esc(String(b[3]))}" translate="no">${esc(String(b[1]))}</a></th></tr></thead><tbody>${riadky}</tbody></table></div>
+        <p class="pozn">V zátvorke rozdiel prvej obce oproti druhej. Rozpočet ${d.roky.rozpocet ?? ''}, klíma ${d.roky.klima ?? ''}, ovzdušie ${d.roky.ovzdusie ?? ''}, nezamestnanosť ${String(d.roky.nez ?? '').split('-').reverse().join('/')}.</p>`;
+    };
+    ia.addEventListener('change', kresli); ib.addEventListener('change', kresli);
+    ia.addEventListener('input', () => { if (podlaMena.has(ia.value)) kresli(); });
+    ib.addEventListener('input', () => { if (podlaMena.has(ib.value)) kresli(); });
+    document.getElementById('po-vymen')!.addEventListener('click', () => { [ia.value, ib.value] = [ib.value, ia.value]; kresli(); });
+    kresli();
+  }).catch(() => { vys.innerHTML = '<p class="pozn">Údaje sa nepodarilo načítať.</p>'; });
+</script>
+
+<style>
+  .po-vyber { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: end; }
+  .po-vyber label { display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9rem; }
+  .po-vyber input { font: inherit; font-weight: 400; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); min-width: 0; }
+  .po-vymen { height: 44px; width: 44px; border-radius: 22px; border: 1px solid var(--line); background: var(--card); color: var(--text); font-size: 1.2rem; cursor: pointer; }
+  @media (max-width: 600px) { .po-vyber { grid-template-columns: 1fr; } .po-vymen { justify-self: center; } }
+  #po-vysledok { margin-top: 16px; }
+  .po-tab { width: 100%; border-collapse: collapse; }
+  .po-tab :global(th), .po-tab :global(td) { padding: 9px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .po-tab :global(thead th) { font-size: 1.05rem; text-align: left; }
+  .po-tab :global(tbody th) { text-align: left; }
+  .po-tab :global(tbody th) { font-weight: 600; font-size: 0.88rem; width: 34%; }
+  .po-tab :global(.po-h) { display: block; font-variant-numeric: tabular-nums; font-weight: 700; }
+  .po-tab :global(.po-h small) { font-weight: 400; color: var(--muted); }
+  .po-tab :global(.po-bar) { display: block; height: 6px; margin-top: 5px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  .po-tab :global(.po-bar i) { display: block; height: 100%; border-radius: 3px; }
+  .po-tab :global(.po-bar.a i) { background: var(--accent); }
+  .po-tab :global(.po-bar.b i) { background: #1d64b0; }
+</style>

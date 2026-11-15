@@ -1,6 +1,8 @@
 name: Obce – nezamestnanosť, odpad, školy
 
 # ÚPSVaR (mesačne, vychádza okolo 20. dňa), ŠÚ SR odpad (ročne), mapa škôl MŠVVaM – stačí raz týždenne.
+# Pomaly sa meniace zdroje (STATdata ~100 min, voľby, vlaky, chránené územia) bežia len v prvý utorok v mesiaci,
+# pri ručnom spustení a pri zmene skriptov – týždenný beh tak trvá ~15 min namiesto ~2,5 h.
 on:
   schedule:
     - cron: "23 5 * * 2"
@@ -41,23 +43,28 @@ jobs:
 
       - run: pip install -r scripts/requirements.txt
 
+      - name: Plán behu (týždenný alebo plný mesačný)
+        id: plan
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "$(date -u +%-d)" -le 7 ]; then echo "plne=1" >> "$GITHUB_OUTPUT"; echo "Plný beh"; else echo "plne=0" >> "$GITHUB_OUTPUT"; echo "Týždenný beh – STATdata, voľby, vlaky a chránené územia sa preskočia"; fi
+
       - name: Nezamestnanosť (ÚPSVaR), komunálny odpad (ŠÚ SR), školy (MŠVVaM)
         run: python scripts/zber_obce_temy.py
 
       - name: Pohyb obyvateľstva, bývanie (SODB 2021), firmy, služby, turizmus (ŠÚ SR)
-        if: success() || failure()
+        if: (success() || failure()) && steps.plan.outputs.plne == '1'
         run: python scripts/zber_obce_statdata.py
 
       - name: Voľby NRSR 2023 a EP 2024 po obciach
-        if: success() || failure()
+        if: (success() || failure()) && steps.plan.outputs.plne == '1'
         run: python scripts/zber_obce_volby.py
 
       - name: Vlaky v obciach (GTFS ŽSR)
-        if: success() || failure()
+        if: (success() || failure()) && steps.plan.outputs.plne == '1'
         run: python scripts/zber_obce_vlaky.py
 
       - name: Chránené územia (ŠOP SR) vrátane Natura 2000 a chránených stromov
-        if: success() || failure()
+        if: (success() || failure()) && steps.plan.outputs.plne == '1'
         run: python scripts/zber_obce_vrstvy.py
 
       - name: Okresy – mzdy a dokončené byty (ŠÚ SR)

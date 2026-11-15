@@ -4,6 +4,9 @@
 // Neprekladá sa: [translate="no"] / .notranslate (mená, ulice, názvy miest), skripty, grafy (canvas) a bunky dátových tabuliek.
 import { SLOVNIK, PORADIE } from '../i18n/slovnik';
 
+// pre ľahký modul scripts/tr.ts (ostatné skripty prekladajú ovládanie bez vlastnej kópie slovníka)
+(window as any).__slovnik = { SLOVNIK, PORADIE };
+
 export const jazyk = (): string => document.documentElement.lang || 'sk';
 const idx = () => (PORADIE as readonly string[]).indexOf(jazyk());
 

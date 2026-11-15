@@ -118,11 +118,12 @@ const grafData = mesto
 </Base>
 
 <script>
-  import Chart from 'chart.js/auto';
+  import { kedViditelne, nacitajChart } from '../../scripts/ked-viditelne';
 
   const el = document.getElementById('grafy');
   const raw = el?.dataset.graf;
-  if (raw) {
+  if (el && raw) kedViditelne(el, async () => {
+    const Chart = await nacitajChart();
     const d = JSON.parse(raw);
     const css = getComputedStyle(document.documentElement);
     const accent = css.getPropertyValue('--accent').trim();
@@ -160,7 +161,7 @@ const grafData = mesto
         scales: { x: { ticks: { callback: (v) => fmt(Number(v)) } }, y: { grid: { display: false } } },
       },
     });
-  }
+  });
 </script>
 
 <style>

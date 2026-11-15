@@ -57,12 +57,12 @@ if (hranice && casti.length && rok) {
 )}
 
 <script>
-  import L from 'leaflet';
-  import { osmPodklad } from '../scripts/podklad';
-  import 'leaflet/dist/leaflet.css';
+  import { kedViditelne } from '../scripts/ked-viditelne';
 
+  // mapa (Leaflet ~150 kB) sa načíta až keď je blízko obrazovky
   const el = document.getElementById('mapa-casti');
-  if (el?.dataset.mapa) {
+  if (el?.dataset.mapa) kedViditelne(el, async () => {
+    const [{ default: L }, { osmPodklad }] = await Promise.all([import('leaflet'), import('../scripts/podklad'), import('leaflet/dist/leaflet.css')]);
     const data = JSON.parse(el.dataset.mapa);
     const tmava = document.documentElement.dataset.tema === 'tmava';
     const fmt = (n: number) => n.toLocaleString('sk-SK');
@@ -91,7 +91,7 @@ if (hranice && casti.length && rok) {
 
     const vrstva = L.geoJSON(data, {
       style: () => ({ weight: 1, color: tmava ? '#121417' : '#ffffff', fillOpacity: 0.8 }),
-      onEachFeature: (f: any, layer) => {
+      onEachFeature: (f: any, layer: any) => {
         const p = f.properties;
         const zmena = p.zmena === null ? '' :
           `<br>Zmena oproti ${data.predch}: <b>${p.zmena >= 0 ? '+' : '−'}${fmt(Math.abs(p.zmena))}</b>`;
@@ -101,8 +101,8 @@ if (hranice && casti.length && rok) {
           `<br><a href="/bratislava/mestske-casti/${String(p.nazov).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, '-')}">Profil mestskej časti ›</a>`,
         );
         layer.bindTooltip(p.nazov, { sticky: true, direction: 'top' });
-        layer.on('mouseover', () => (layer as L.Path).setStyle({ weight: 3 }));
-        layer.on('mouseout', () => (layer as L.Path).setStyle({ weight: 1 }));
+        layer.on('mouseover', () => (layer as any).setStyle({ weight: 3 }));
+        layer.on('mouseout', () => (layer as any).setStyle({ weight: 1 }));
       },
     }).addTo(mapa);
     mapa.fitBounds(vrstva.getBounds(), { padding: [8, 8] });
@@ -126,7 +126,7 @@ if (hranice && casti.length && rok) {
         prekresli();
       }),
     );
-  }
+  });
 </script>
 
 <style>

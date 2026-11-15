@@ -118,6 +118,7 @@ export async function GET() {
   }
   polozky.push(['Stránky', 'Súťaž miest – kvíz týždňa', 'hrajte za svoje mesto, poradie miest', '/sutaz', 'súťaž kvíz týždňa hra mestá poradie']);
   polozky.push(['Stránky', 'Súboj miest – denná otázka', 'ktoré mesto má viac? hra so sériou', '/suboj', 'súboj hra otázka dňa tip kvíz mestá']);
+  polozky.push(['Stránky', 'Porovnaj dve obce', 'ľubovoľné dve obce Slovenska vedľa seba', '/porovnaj-obce/', 'porovnaj porovnanie dve obce dediny vs']);
   polozky.push(['Stránky', 'Porovnaj dve mestá – kde by som chcel bývať', 'dve mestá vedľa seba, skóre a obrázok na zdieľanie', '/porovnaj', 'porovnaj porovnanie dve mestá kde bývať súboj vs']);
   polozky.push(['Stránky', 'Porovnanie krajských miest', 'obyvatelia, vek, vzdelanie, nezamestnanosť, voľby, byty, ceny', '/porovnanie', 'porovnanie mestá krajské rebríček']);
   for (const [u, t, s, w] of SEKCIE) polozky.push(['Stránky', t, s, u, w]);

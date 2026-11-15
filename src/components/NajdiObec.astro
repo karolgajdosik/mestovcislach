@@ -24,6 +24,7 @@ const velke = vacsieObce().map((o) => ({ o, n: posledne(o.obyvatelia)?.[1] ?? 0 
       <ul id="no-navrhy" class="no-navrhy" role="listbox" hidden></ul>
       <p class="no-rychle" id="no-posledne" hidden><span>Naposledy pozreté:</span></p>
       {velke.length > 0 && <p class="no-rychle"><span>Väčšie mestá:</span>{velke.map(({ o }) => <a href={urlObce(o)} translate="no">{o.nazov}</a>)}</p>}
+      <p class="no-rychle"><span>Nástroje:</span><a href="/porovnaj-obce/">Porovnať dve obce</a></p>
       <div class="no-vyber">
         <label>Kraj<select id="no-kraj"><option value="">— vyberte —</option>{k.map((x, i) => <option value={i}>{x.nazov}</option>)}</select></label>
         <label>Okres<select id="no-okres" disabled><option value="">—</option></select></label>

@@ -167,3 +167,28 @@ details.zdroj p { margin: 0; }
 /* skok na sekciu: nadpis nesmie skončiť pod prilepeným pásom obsahu */
 .ob-obsah ~ section[id], .ob-obsah ~ .ob-dva[id], .ob-obsah ~ .ob-blok { scroll-margin-top: 64px; }
 main section[id], main .ob-blok, main .ob-dva[id] { scroll-margin-top: 64px; }
+/* akcie v úvode obce */
+.ob-akcie { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.ob-akcia { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); color: var(--text); font: inherit; font-size: .86rem; font-weight: 600; text-decoration: none; cursor: pointer; }
+.ob-akcia:hover { border-color: var(--accent); }
+.ob-moja[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+/* odkaz na sekciu */
+.ob-zdielaj { margin-left: 8px; width: 28px; height: 28px; display: inline-grid; place-items: center; vertical-align: middle; border: 0; border-radius: 14px; background: none; color: var(--muted); cursor: pointer; opacity: .55; }
+.ob-zdielaj:hover, .ob-zdielaj:focus-visible { opacity: 1; background: color-mix(in srgb, var(--accent) 9%, transparent); color: var(--accent); }
+.ob-zdielaj.ok { opacity: 1; color: #1a7f4b; }
+.ob-zdielaj svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+/* sekcie mimo obrazovky prehliadač nevykresľuje, kým k nim človek nedoroluje (rýchlejšie rolovanie na slabších telefónoch) */
+.ob-obsah ~ section.card { content-visibility: auto; contain-intrinsic-size: auto 700px; }
+/* tlač / PDF */
+@media print {
+  #pocasie, #kalendar, .top, .zive, .preklad-pruh, .bocne, .foot, .dolna-lista, .ai-tlacidlo, .ai-okno, .ob-obsah, .ob-akcie, .ob-viac, .ob-zdielaj, .preskocit, nav.dalsie, .vlozit-tl { display: none !important; }
+  html.js [data-zbal] > * { display: revert !important; }
+  .ob-kart tr { display: table-row !important; }
+  .ob-obsah ~ section.card { content-visibility: visible; }
+  body { background: #fff !important; color: #000 !important; font-size: 10.5pt; }
+  .card { box-shadow: none !important; border: 1px solid #ccc !important; break-inside: avoid-page; }
+  .ob-blok { break-after: avoid; }
+  .ob-hero-foto img { max-height: 200px; }
+  a { color: #000 !important; text-decoration: none !important; }
+  details.zdroj summary { display: none; }
+}

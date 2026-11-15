@@ -8,6 +8,7 @@ import VolebnaNoc from '../components/VolebnaNoc.astro';
 import SutazPas from '../components/SutazPas.astro';
 import NajdiObec from '../components/NajdiObec.astro';
 import MojPrehlad from '../components/MojPrehlad.astro';
+import MojaObec from '../components/MojaObec.astro';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -26,6 +27,7 @@ const pripravujeme = MESTA.filter((m) => !m.aktivne);
     <p class="lead">Obyvatelia, voľby, rozpočet, zmluvy, doprava, výstavba aj živé údaje – prehľadne, so zdrojmi a bez registrácie. Všetky obce a mestá Slovenska, krajské mestá najpodrobnejšie.</p>
   </section>
 
+  <MojaObec />
   <NajdiObec />
   <MojPrehlad />
   <VolebnaNoc />
