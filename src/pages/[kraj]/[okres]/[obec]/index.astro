@@ -702,7 +702,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
               <tbody>{mat.map((x: any) => <tr><td>{x.typ}<br /><small translate="no">{x.ulica}</small></td>{matJaz.map((j) => <td class="num">{x[j] ? `${des(x[j][1])} %` : '–'}</td>)}<td class="num">{x.anj ? `${des(x.anj[1])} %` : '–'}</td><td class="num">{x.mat ? `${des(x.mat[1])} %` : '–'}</td></tr>)}</tbody>
             </table>
           </div>
-          <p class="pozn">Priemerná úspešnosť v externej časti maturity; priemer Slovenska: slovenský jazyk {des(matI.sr.sjl)} %{matI.sr.anj ? `, angličtina B2 ${des(matI.sr.anj)} %` : ''}{matI.sr.mat ? `, matematika ${des(matI.sr.mat)} %` : ''}. Matematiku si volí len časť študentov. Dataportál uvádza len typ školy a ulicu.</p>
+          <p class="pozn">Priemerná úspešnosť v externej časti maturity; priemer Slovenska: slovenský jazyk {des(matI.sr.sjl)} %{matI.sr.anj ? `, angličtina B2 ${des(matI.sr.anj)} %` : ''}{matI.sr.mat ? `, matematika ${des(matI.sr.mat)} %` : ''}. Matematiku si volí len časť študentov.</p>
         </>
       )}
       {t9 && t9I && (
