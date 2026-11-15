@@ -16,6 +16,7 @@ on:
       - "scripts/zber_obce_vrstvy.py"
       - "scripts/zber_okresy_statdata.py"
       - "scripts/zber_obce_wiki_osm.py"
+      - "scripts/zber_obce_ovzdusie.py"
       - ".github/workflows/obce-temy.yml"
 
 permissions:
@@ -67,6 +68,11 @@ jobs:
         if: success() || failure()
         timeout-minutes: 60
         run: python scripts/zber_obce_wiki_osm.py
+
+      - name: Kvalita ovzdušia (SHMÚ cez EEA)
+        if: success() || failure()
+        timeout-minutes: 30
+        run: python scripts/zber_obce_ovzdusie.py
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()

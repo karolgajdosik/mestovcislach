@@ -1,0 +1,64 @@
+---
+// Doplnkové údaje mestskej časti Bratislavy/Košíc zo ŠÚ SR a ÚPSVaR (data/obce/mc.json – ŠÚ vedie mestské časti ako obce):
+// veková pyramída, narodení/zomrelí, firmy, nezamestnanosť, využitie územia, domácnosti a byty.
+import fs from 'node:fs';
+import path from 'node:path';
+import { mcInfo } from '../lib/obce';
+import '../styles/obce.css';
+
+interface Props { mesto: 'bratislava' | 'kosice'; nazov: string }
+const { mesto, nazov } = Astro.props;
+const kluc = (n: string) => n.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+let kod: string | null = null;
+try {
+  const d = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'mesta', `${mesto}.json`), 'utf-8'));
+  const zoz = d?.komunalne?.['2026']?.mestske_casti ?? [];
+  kod = (Array.isArray(zoz) ? zoz : Object.values(zoz)).find((c: any) => kluc(String(c?.nazov ?? '')) === kluc(nazov))?.kod ?? null;
+} catch { kod = null; }
+const mc = mcInfo();
+const g = (modul: string) => (kod && mc?.[modul]?.casti?.[kod]) ?? null;
+const meta = (modul: string) => mc?.[modul]?.meta ?? {};
+const vk = g('vek'), poh = g('pohyb'), fir = g('firmy'), uz = g('uzemie'), nez = g('nezamestnanost'), so2 = g('sodb2');
+const fmt = (x: number | null | undefined) => (x == null ? '–' : Math.round(x).toLocaleString('sk-SK'));
+const des = (x: number | null | undefined, d = 1) => (x == null ? '–' : x.toLocaleString('sk-SK', { minimumFractionDigits: d, maximumFractionDigits: d }));
+const vkMax = vk ? Math.max(...vk.m, ...vk.z, 1) : 1;
+const skupiny: string[] = meta('vek').skupiny ?? [];
+const pohR = poh?.rad ? Object.entries(poh.rad as Record<string, number[]>).sort(([a], [b]) => a.localeCompare(b)) : [];
+const pohP = pohR.at(-1);
+const firR = fir ? Object.entries(fir as Record<string, number[]>).sort(([a], [b]) => a.localeCompare(b)) : [];
+const firP = firR.at(-1);
+const UZ: [string, string][] = [['zast', 'zastavané plochy'], ['les', 'lesy'], ['orna', 'orná pôda'], ['zahr', 'záhrady'], ['ttp', 'lúky a pasienky'], ['voda', 'vodné plochy'], ['ost', 'ostatné']];
+const mesiac = (m?: string) => (m ? `${['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december'][Number(m.slice(5, 7)) - 1]} ${m.slice(0, 4)}` : '');
+const nic = !vk && !pohP && !firP && !uz && !nez && !so2;
+---
+{!nic && (
+  <section class="card" id="dalsie-cisla">
+    <h2>Ďalšie čísla mestskej časti</h2>
+    <ul class="ob-cisla">
+      {pohP && <li><b>{fmt(pohP[1][0])} / {fmt(pohP[1][1])}</b><span>narodení / zomrelí v roku {pohP[0]}{pohP[1][2] != null ? `; sťahovanie ${pohP[1][2] > 0 ? '+' : pohP[1][2] < 0 ? '−' : ''}${fmt(Math.abs(pohP[1][2]))}` : ''}</span></li>}
+      {poh?.vek && <li><b>{des(poh.vek)} rokov</b><span>priemerný vek{poh.vek10 ? ` (pred 10 rokmi ${des(poh.vek10)})` : ''}</span></li>}
+      {firP && <li><b>{fmt(firP[1][0])}</b><span>firiem a {fmt(firP[1][2])} živnostníkov ({firP[0]}); {fmt(firP[1][1])} neziskových organizácií</span></li>}
+      {nez?.pdu != null && <li><b>{des(nez.pdu)} %</b><span>miera nezamestnanosti ({mesiac(meta('nezamestnanost').mesiac)}); {fmt(nez.uoz)} uchádzačov o zamestnanie</span></li>}
+      {so2?.dom && <li><b>{des(so2.dom.priem)}</b><span>ľudí v priemernej domácnosti; {des(so2.dom.jedn, 0)} % domácností tvorí jeden človek</span></li>}
+      {so2?.byty?.m2 && <li><b>{fmt(so2.byty.m2)} m²</b><span>priemerná plocha bytu; {des(so2.byty.vlastne, 0)} % bytov vo vlastníctve, {des(so2.byty.najom, 0)} % v nájme</span></li>}
+    </ul>
+    {vk && skupiny.length === 18 && (
+      <>
+        <h3>Veková pyramída {meta('vek').rok}</h3>
+        <div class="ob-pyramida" role="img" aria-label={`Veková pyramída – ${nazov}`}>
+          <div class="hl"><span>Muži</span><span></span><span>Ženy</span></div>
+          {skupiny.map((_, i) => i).reverse().map((i) => (
+            <div><span class="m"><i style={`width:${(100 * vk.m[i]) / vkMax}%`}></i><small>{vk.m[i] || ''}</small></span><span class="v">{skupiny[i]}</span><span class="z"><i style={`width:${(100 * vk.z[i]) / vkMax}%`}></i><small>{vk.z[i] || ''}</small></span></div>
+          ))}
+        </div>
+      </>
+    )}
+    {uz && (
+      <>
+        <h3>Využitie územia</h3>
+        <p class="pozn">Rozloha {des(uz.ha / 100, 2)} km²: {UZ.filter(([k]) => (uz.p?.[k] ?? 0) >= 0.5).sort(([a], [b]) => (uz.p[b] ?? 0) - (uz.p[a] ?? 0)).map(([k, n]) => `${n} ${des(uz.p[k], 0)} %`).join(', ')}.{uz.zast ? ` Zastavané plochy: ${des(uz.zast[1])} ha v roku ${uz.zast[0]} → ${des(uz.zast[2])} ha v roku ${meta('uzemie').rok}.` : ''}</p>
+      </>
+    )}
+    <p class="zdroj">Zdroj: ŠÚ SR (STATdata – vekové skupiny om7006rr, pohyb om7103rr, register organizácií og3805rr a og3808rr, pôdny fond pl5001rr, sčítanie 2021); ÚPSVaR – mesačná štatistika podľa obcí. Štatistický úrad vedie mestské časti ako samostatné obce.</p>
+  </section>
+)}

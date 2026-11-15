@@ -256,6 +256,15 @@ let _his: { od: string; roky: string[]; obce: Record<string, (number | null)[]> 
 let _st22: { obce: Record<string, [string, string, number, number, number][]> } | null | undefined;
 let _kli: { obdobie: string; hotovo: boolean; sr: number[] | null; obce: Record<string, number[]> } | null | undefined;
 let _geo: { obce: Record<string, { n?: number; ha?: number; akt?: number; radon?: string }> } | null | undefined;
+export type ObrCommons = { u: string; a: string; l: string; lu: string; s: string };
+let _obr: { obce: Record<string, { erb?: ObrCommons; foto?: ObrCommons; partneri?: string[] }> } | null | undefined;
+let _mat: { rok: number; sr: Record<string, number>; obce: Record<string, ({ typ: string; ulica: string } & Partial<Record<'sjl' | 'mjl' | 'anj' | 'mat', [number, number]>>)[]> } | null | undefined;
+let _mc: Record<string, { meta: any; casti: Record<string, any> }> | null | undefined;
+let _ovz: { rok: number; max_km: number; obce: Record<string, Record<'pm10' | 'pm25' | 'no2', [number, number, string, string]>> } | null | undefined;
+export const ovzdusieInfo = () => (_ovz === undefined ? (_ovz = citaj('data', 'obce', 'ovzdusie.json')) : _ovz);
+export const obrazkyInfo = () => (_obr === undefined ? (_obr = citaj('data', 'obce', 'obrazky.json')) : _obr);
+export const maturitaInfo = () => (_mat === undefined ? (_mat = citaj('data', 'obce', 'maturita.json')) : _mat);
+export const mcInfo = () => (_mc === undefined ? (_mc = citaj('data', 'obce', 'mc.json')) : _mc);
 export const historiaInfo = () => (_his === undefined ? (_his = citaj('data', 'obce', 'historia.json')) : _his);
 export const starosta22Info = () => (_st22 === undefined ? (_st22 = citaj('data', 'obce', 'starosta2022.json')) : _st22);
 export const klimaInfo = () => (_kli === undefined ? (_kli = citaj('data', 'obce', 'klima.json')) : _kli);

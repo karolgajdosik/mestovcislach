@@ -64,6 +64,7 @@ const MIESTA: [string, string, string][] = [
   ['Nabíjacie stanice', 'Nabíjacie stanice', 'doprava'], ['Bezbariérové miesta', 'Bezbariérové miesta', 'pomoc'],
 ];
 const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpočet a zmluvy, školy, bezpečnosť, klíma a prognóza – všetko o mestskej časti na jednom mieste.`;
+import McStatdata from '../../../components/McStatdata.astro';
 ---
 <Base title={`${p.mc} – mestská časť Bratislavy – mestovcislach.sk`} description={popis}>
   <nav class="drobky" aria-label="Kde sa nachádzate"><a href="/bratislava/mestske-casti">Mestské časti</a> <span aria-hidden="true">/</span> <span translate="no">{p.mc}</span></nav>
@@ -216,6 +217,8 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
       <a class="viac" href="/bratislava/mapa#horucavy">Mapa horúčav</a>
     </section>
   </div>
+
+  <McStatdata mesto="bratislava" nazov={p.mc} />
 
   <nav class="dalsie" aria-label="Ďalšie mestské časti">
     <a href={`/bratislava/mestske-casti/${pred.slug}`} rel="prev"><span>Predchádzajúca</span><strong translate="no">{pred.mc}</strong></a>

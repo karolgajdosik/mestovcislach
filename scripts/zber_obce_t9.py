@@ -115,5 +115,74 @@ def main() -> int:
     return 0
 
 
+MAT_PREDMETY = {"Slovenský jazyk a literatúra": "sjl", "Maďarský jazyk a literatúra": "mjl", "Anglický jazyk úroveň B2": "anj", "Matematika": "mat"}
+
+
+def maturita(s: requests.Session) -> None:
+    """Externá časť maturity podľa stredných škôl (xls databázy dataportálu, rovnaký postup ako T9) → maturita.json.
+    Dataportál uvádza len typ školy (Gymnázium, SOŠ…), mesto a ulicu – nie celý názov."""
+    import xlrd
+    rok = None
+    for r in range(date.today().year, date.today().year - 3, -1):
+        x = s.get(ZAKLAD.format(rok=r).replace("/testovanie/", "/maturita/"), timeout=60)
+        if x.status_code == 200 and "ViewState" in x.text:
+            rok, h = r, x.text
+            break
+    if not rok:
+        raise RuntimeError("maturita: žiadny rok")
+    u = ZAKLAD.format(rok=rok).replace("/testovanie/", "/maturita/")
+    vs = re.search(r'name="javax.faces.ViewState"[^>]*value="([^"]+)"', h).group(1)
+    skoly: dict[tuple, dict] = {}
+    sr: dict[str, float] = {}
+    for form, lid, nazov in re.findall(r"'(j_idt\d+):(j_idt\d+)':'j_idt\d+:j_idt\d+'\},''\);return false\">([^<]*)<", h):
+        p = MAT_PREDMETY.get(nazov.strip())
+        if not p:
+            continue
+        r = s.post(u, data={form: form, f"{form}:{lid}": f"{form}:{lid}", "javax.faces.ViewState": vs}, headers={"Referer": u}, timeout=300)
+        r.raise_for_status()
+        sh = xlrd.open_workbook(file_contents=r.content).sheet_by_index(0)
+        hl = [str(c).strip() for c in sh.row_values(0)]
+        sum_n = sum_u = 0.0
+        for i in range(1, sh.nrows):
+            d = dict(zip(hl, sh.row_values(i)))
+            n, us = _cislo(d.get("N")), _cislo(d.get("uspes"))
+            if not n or us is None:
+                continue
+            sum_n += n
+            sum_u += n * us
+            mesto = str(d.get("Mesto", "")).strip()
+            kand = PODLA_NAZVU.get(kluc(mesto), []) or PODLA_NAZVU.get(kluc(re.split(r"\s*-\s*", mesto)[0]), [])
+            if len(kand) != 1:
+                continue
+            k = (kand[0], str(d.get("skola", "")).split(".")[0])
+            sk = skoly.setdefault(k, {"typ": str(d.get("Nazov", "")).strip(), "ulica": str(d.get("Ulica", "")).strip()})
+            sk[p] = [int(n), round(us, 1)]
+        if sum_n:
+            sr[p] = round(sum_u / sum_n, 1)
+    obce: dict[str, list] = defaultdict(list)
+    for (kod, _), v in sorted(skoly.items()):
+        obce[kod].append(v)
+    print(f"Maturita {rok}: {len(skoly)} škôl v {len(obce)} obciach, priemer SR {sr}")
+    if len(obce) < 100:
+        raise RuntimeError(f"maturita: len {len(obce)} obcí")
+    zapis_ak_zmena(DATA / "obce" / "maturita.json", {
+        "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"), "rok": rok, "sr": sr,
+        "zdroj": {"nazov": "NIVAM – externá časť maturitnej skúšky, výsledky škôl (dataportal.nucem.sk)", "url": "https://dataportal.nucem.sk/Dataportal-web/web/vysledky/index.xhtml"},
+        "obce": dict(sorted(obce.items()))}, kompaktne=True)
+
+
+def oboje() -> int:
+    chyby = 0
+    for f in (main, lambda: maturita(relacia())):
+        try:
+            f()
+        except Exception as e:  # noqa: BLE001
+            chyby += 1
+            print(f"::warning title=NIVAM::{e}")
+    if chyby == 2:
+        raise RuntimeError("T9 ani maturita neprebehli")
+    return 0
+
+
 if __name__ == "__main__":
-    spusti(main, "Obce – Testovanie 9 (NIVAM)")
+    spusti(oboje, "Obce – Testovanie 9 a maturita (NIVAM)")

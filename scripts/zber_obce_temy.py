@@ -81,14 +81,14 @@ UPSVR_OBCE = UPSVR + "/statistiky/mesacne-statistiky-miest-a-obci.html?page_id=1
 MESIACOV = 13
 
 
-def upsvr_subory() -> list[tuple[str, str]]:
-    """[(„2026-09“, url), …] od najnovšieho."""
+def upsvr_subory(vsetky: bool = False) -> list[tuple[str, str]]:
+    """[(„2026-09“, url), …] od najnovšieho; vsetky=True – všetky mesiace zo všetkých rokov na stránke (od 2020)."""
     r = s.get(UPSVR_OBCE, timeout=60)
     r.raise_for_status()
     roky = sorted(set(re.findall(r'href="(https://www\.upsvr\.gov\.sk/statistiky/mesacne-statistiky-miest-a-obci/(\d{4})\.html\?page_id=\d+)"', r.text)),
                   key=lambda x: x[1], reverse=True)
     out: dict[str, str] = {}
-    for url, rok in roky[:3]:
+    for url, rok in (roky if vsetky else roky[:3]):
         t = s.get(url, timeout=60).text
         for u in re.findall(r'href="([^"]*mesta_a_o[^"]*\.xlsx)"', t):
             u = u if u.startswith("http") else UPSVR + u
@@ -99,9 +99,9 @@ def upsvr_subory() -> list[tuple[str, str]]:
             mesiac = f"20{a}-{b}" if len(b) == 2 and len(a) == 2 and not b.startswith("20") else f"{b}-{a}"
             if mesiac.startswith(rok):
                 out.setdefault(mesiac, u)
-        if len(out) >= MESIACOV:
+        if len(out) >= MESIACOV and not vsetky:
             break
-    return sorted(out.items(), reverse=True)[:MESIACOV]
+    return sorted(out.items(), reverse=True)[: (None if vsetky else MESIACOV)]
 
 
 def cislo(x) -> float | None:
@@ -121,6 +121,7 @@ def upsvr_mesiac(url: str) -> dict[str, dict]:
     ws = wb[next(n for n in wb.sheetnames if n.lower().startswith("tab01"))]
     out, okres, nenajdene = {}, None, []
     mestske: dict[str, dict] = {}
+    upsvr_mesiac.mc = {}  # type: ignore[attr-defined]
     for row in ws.iter_rows(values_only=True):
         row = list(row)
         if len(row) < 11 or not isinstance(row[1], str):
@@ -135,7 +136,8 @@ def upsvr_mesiac(url: str) -> dict[str, dict]:
         uoz, _zp, _ml, absol, _ned, opv, disp, pu, pdu = vals
         if not kod:
             m = re.match(r"^(?:Okres\s+)?(Bratislava|Košice) [IV]+$", okres or "")
-            if m:  # mestská časť – sčíta sa do mesta
+            if m:  # mestská časť – sčíta sa do mesta, a uloží sa aj samostatne (stránky mestských častí)
+                upsvr_mesiac.mc[(m.group(1), nazov)] = {"uoz": int(uoz), "disp": int(disp or 0), "opv": int(opv or 0), "abs": int(absol or 0), "pdu": pdu}
                 mc = mestske.setdefault(m.group(1), {"uoz": 0, "disp": 0, "opv": 0, "abs": 0})
                 mc["uoz"] += int(uoz); mc["disp"] += int(disp or 0); mc["opv"] += int(opv or 0); mc["abs"] += int(absol or 0)  # noqa: E702
             else:
@@ -159,9 +161,11 @@ def nezamestnanost() -> None:
     if not subory:
         raise RuntimeError("ÚPSVaR: nenašiel sa žiadny mesačný súbor obcí")
     mesiace: dict[str, dict] = {}
+    mc_mesiace: dict[str, dict] = {}
     for mesiac, url in subory:
         try:
             mesiace[mesiac] = upsvr_mesiac(url)
+            mc_mesiace[mesiac] = dict(upsvr_mesiac.mc)  # type: ignore[attr-defined]
             print(f"Nezamestnanosť {mesiac}: {len(mesiace[mesiac])} obcí")
         except Exception as e:  # noqa: BLE001
             print(f"::warning title=Nezamestnanosť obcí::{mesiac}: {e}")
@@ -187,6 +191,51 @@ def nezamestnanost() -> None:
         "zdroj": {"nazov": "ÚPSVaR – Mesačná štatistika o počte a štruktúre uchádzačov o zamestnanie podľa obcí", "url": UPSVR_OBCE},
         "obce": obce}, kompaktne=True)
     print(f"Nezamestnanosť: {posledny}, {len(obce)} obcí, SR PDU {round(100 * sr[0] / sr[1], 2)} %")
+    # dlhodobý vývoj – december každého ukončeného roka (súbory obcí ÚPSVaR sú od roku 2020)
+    roky: dict[str, dict[str, float]] = defaultdict(dict)
+    try:
+        for mesiac, url in upsvr_subory(vsetky=True):
+            if not mesiac.endswith("-12"):
+                continue
+            try:
+                d = mesiace.get(mesiac) or upsvr_mesiac(url)
+            except Exception as e:  # noqa: BLE001
+                print(f"  december {mesiac[:4]}: {e}")
+                continue
+            for kod, v in d.items():
+                if v.get("pdu") is not None:
+                    roky[kod][mesiac[:4]] = v["pdu"]
+        f = DATA / "obce" / "nezamestnanost.json"
+        j = json.loads(f.read_text(encoding="utf-8"))
+        for kod, r in roky.items():
+            if kod in j["obce"]:
+                j["obce"][kod]["roky"] = dict(sorted(r.items()))
+        zapis_ak_zmena(f, j, kompaktne=True)
+        print(f"Nezamestnanosť – decembre: {sorted({r for v in roky.values() for r in v})}, {len(roky)} obcí")
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=Nezamestnanosť – dlhodobo::{e}")
+    # mestské časti Bratislavy a Košíc
+    try:
+        from zber_obce_statdata import MC
+        mcz: dict[str, dict] = {}
+        for mesiac in sorted(mc_mesiace):
+            for (mesto, nazov), v in mc_mesiace[mesiac].items():
+                n = re.sub(r"^(Bratislava|Košice)\s*[-–]?\s*(mestská časť\s*)?", "", nazov).strip()
+                kod = MC.get((mesto, kluc(n)))
+                if not kod:
+                    continue
+                o = mcz.setdefault(kod, {"rad": {}})
+                if v.get("pdu") is not None:
+                    o["rad"][mesiac] = v["pdu"]
+                if mesiac == posledny:
+                    o.update({k: v[k] for k in ("uoz", "disp", "opv", "abs", "pdu")})
+        f = DATA / "obce" / "mc.json"
+        st = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+        st["nezamestnanost"] = {"meta": {"mesiac": posledny, "zdroj": {"nazov": "ÚPSVaR – Mesačná štatistika podľa obcí", "url": UPSVR_OBCE}}, "casti": dict(sorted(mcz.items()))}
+        zapis_ak_zmena(f, st, kompaktne=True)
+        print(f"Nezamestnanosť – mestské časti: {len(mcz)}")
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=Nezamestnanosť – mestské časti::{e}")
 
 
 # ---------------- 2. komunálny odpad (ŠÚ SR) ----------------

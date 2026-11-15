@@ -78,3 +78,9 @@ section.card { margin-bottom: 16px; }
 .ob-starsie summary { cursor: pointer; font-weight: 600; }
 .ob-his { gap: 2px; height: 90px; }
 .ob-his small { font-size: .65rem; white-space: nowrap; }
+.ob-s-erbom { display: flex; align-items: center; gap: .6rem; }
+.ob-erb { width: 48px; height: auto; max-height: 60px; object-fit: contain; flex: none; }
+.ob-foto { margin: 1rem 0; }
+.ob-foto img { width: 100%; max-width: 640px; height: auto; max-height: 360px; object-fit: cover; border-radius: 8px; display: block; }
+.ob-foto figcaption { font-size: .78rem; color: var(--muted, #667); margin-top: .3rem; }
+.ob-partneri { margin-top: .4rem; }

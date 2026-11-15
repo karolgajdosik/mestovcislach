@@ -18,19 +18,38 @@ Výstupy: data/obce/<modul>.json. Moduly bežia samostatne: python scripts/zber_
 from __future__ import annotations
 
 import sys
+import json
 import re
 from collections import defaultdict
 from datetime import datetime, timezone
 
 from spolocne import DATA, spusti, zapis_ak_zmena
 from statdata_obce import riadky_obce
-from zber_obce_temy import OBCE, cislo, median, najdi_obec
+from zber_obce_temy import OBCE, cislo, kluc, median, najdi_obec
 
-OKRES = {o["kod"]: o["okres"] for o in OBCE}
+OKRES: dict[str, str] = defaultdict(lambda: "_mc", {o["kod"]: o["okres"] for o in OBCE})  # mestské časti -> „_mc“ (nezapočítajú sa do okresov)
+
+# Mestské časti Bratislavy a Košíc (ŠÚ SR ich vedie ako obce „Bratislava - mestská časť Petržalka“) – zbierajú sa tiež,
+# ale ukladajú sa zvlášť do data/obce/mc.json (pre stránky mestských častí), nie medzi obce.
+MC: dict[tuple[str, str], str] = {}
+MC_MESTO: dict[str, str] = {}
+for _m in ("bratislava", "kosice"):
+    try:
+        _d = json.loads((DATA / "mesta" / f"{_m}.json").read_text(encoding="utf-8"))
+        _zoz = _d["komunalne"]["2026"]["mestske_casti"]
+        for _c in (_zoz.values() if isinstance(_zoz, dict) else _zoz):
+            if isinstance(_c, dict) and _c.get("kod") and _c.get("nazov"):
+                MC[("Bratislava" if _m == "bratislava" else "Košice", kluc(_c["nazov"]))] = str(_c["kod"])
+                MC_MESTO[str(_c["kod"])] = "Bratislava" if _m == "bratislava" else "Košice"
+    except Exception as _e:  # noqa: BLE001
+        print(f"::warning title=Mestské časti::{_m}: {_e}")
 
 
 def obec(x: dict) -> str | None:
     n = (x.get("e_nuts15") or "").strip()
+    m = re.match(r"^(Bratislava|Košice)\s*-\s*mestská časť\s+(.+)$", n)
+    if m:
+        return MC.get((m.group(1), kluc(m.group(2))))
     okres = (x.get("e_nuts14") or "").strip().removeprefix("Okres ").strip() or None
     if "," in n and "okres" in n:
         n, okres = [t.strip() for t in n.split(", okres", 1)]
@@ -70,6 +89,8 @@ def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None, vyber:
                 nenajdene.add(x.get("e_nuts15", "").strip())
             continue
         out[kod].setdefault(k, v)
+        if mc and kod in MC_MESTO:
+            mcs[MESTA_MC[MC_MESTO[kod]]][k] += v
     for mesto, d in mcs.items():
         if mesto not in out:
             out[mesto] = dict(d)
@@ -81,7 +102,23 @@ def tabulka(kocka: str, *dims: str, filtr=None, rokov: int | None = None, vyber:
 
 
 def zapis(nazov: str, obsah: dict) -> None:
+    """Uloží modul; mestské časti (kódy z MC) vyberie z „obce“ do data/obce/mc.json a vynechá pseudo-okres „_mc“."""
+    obsah = dict(obsah)
+    mcd = {}
+    if isinstance(obsah.get("obce"), dict):
+        mcd = {k: v for k, v in obsah["obce"].items() if k in MC_MESTO}
+        obsah["obce"] = {k: v for k, v in obsah["obce"].items() if k not in MC_MESTO}
+    for k, v in list(obsah.items()):
+        if isinstance(v, dict) and "_mc" in v:
+            obsah[k] = {a: b for a, b in v.items() if a != "_mc"}
     zapis_ak_zmena(DATA / "obce" / f"{nazov}.json", {"aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"), **obsah}, kompaktne=True)
+    if mcd:
+        f = DATA / "obce" / "mc.json"
+        stare = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+        meta = {k: v for k, v in obsah.items() if k not in ("obce", "okresy", "aktualizovane")}
+        stare[nazov] = {"meta": meta, "casti": dict(sorted(mcd.items()))}
+        zapis_ak_zmena(f, stare, kompaktne=True)
+        print(f"  {nazov}: {len(mcd)} mestských častí do mc.json")
 
 
 def okresne_mediany(obce: dict[str, dict], polia: list[str]) -> dict:
