@@ -1,8 +1,8 @@
-import subprocess, sys; subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "scripts/requirements.txt"])
-import json, traceback
-sys.path.insert(0, "scripts")
-import zber_obce_t9 as t9
-try:
-    t9.maturita(t9.relacia()); d = json.load(open("data/obce/maturita.json")); print(d["rok"], d["sr"], len(d["obce"]), d["obce"].get("516643"))
-except Exception: traceback.print_exc()
+import requests
+for u in ["https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Coat_of_Arms_of_Prievidza.svg/500px-Coat_of_Arms_of_Prievidza.svg.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Coat_of_Arms_of_Prievidza.svg/500px-Coat_of_Arms_of_Prievidza.svg.png"]:
+    try:
+        r=requests.get(u,timeout=30,headers={"User-Agent":"Mozilla/5.0 (compatible; mestovcislach.sk; info@mestovcislach.sk)","Referer":"https://mestovcislach.sk/"})
+        print(r.status_code,r.headers.get("content-type"),len(r.content),u[:40])
+    except Exception as e: print("ERR",e)
 print("HOTOVO")
