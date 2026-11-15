@@ -233,7 +233,7 @@ const nezRoky = nezamInfo()?.obce?.[o.kod]?.roky ? Object.entries((nezamInfo() a
 const ovzI = ovzdusieInfo();
 const ovz = ovzI?.obce?.[o.kod] ?? null;
 const OVZ: [string, string, number, number][] = [['pm10', 'prachové častice PM10', 40, 15], ['pm25', 'jemné prachové častice PM2,5', 25, 5], ['no2', 'oxid dusičitý NO₂', 40, 10]];
-const TYP_ST: Record<string, string> = { traffic: 'dopravná', background: 'pozaďová', industrial: 'priemyselná' };
+const TYP_ST: Record<string, string> = { traffic: 'dopravnej', background: 'pozaďovej', industrial: 'priemyselnej' };
 const nehI = (okresyInfo() as any)?.nehody;
 const neh = nehI?.okresy?.[o.okres] as number[] | undefined;
 const commons = (x: { s: string }) => `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(x.s.replace(/ /g, '_'))}`;
@@ -648,7 +648,7 @@ const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` :
         {nro && <li><b>NRO</b><span>okres patrí medzi <a href="https://mirri.gov.sk/sekcie/regionalny-rozvoj-2/najmenej-rozvinute-okresy/okresy/" rel="noopener">najmenej rozvinuté okresy</a> – môže čerpať regionálny príspevok a cielenú podporu štátu</span></li>}
         {byR.length >= 5 && obyvOkr > 0 && <li><b>{des((1000 * by5) / obyvOkr / 5, 1)}</b><span>nových bytov ročne na 1 000 obyvateľov okresu (priemer {byR[byR.length - 5][0]}–{byP![0]})</span></li>}
       </ul>
-      <p class="zdroj">Zdroj: ŠÚ SR – mzdy zistené pracoviskovou metódou, t. j. podľa miesta práce (STATdata np3110rr); dokončené byty (st3802rr). {neh ? '; dopravné nehody – MV SR, štatistika ISDN podľa územných okresov polície' : ''}. Tieto údaje sa za jednotlivé obce nezverejňujú{o.okres === 'Bratislava' || o.okres === 'Košice' ? '; okresy mesta sú zlúčené' : ''}.</p>
+      <p class="zdroj">Zdroj: ŠÚ SR – mzdy zistené pracoviskovou metódou, t. j. podľa miesta práce (STATdata np3110rr); dokončené byty (st3802rr){neh ? '; dopravné nehody – MV SR, štatistika ISDN podľa územných okresov polície' : ''}. Tieto údaje sa za jednotlivé obce nezverejňujú{o.okres === 'Bratislava' || o.okres === 'Košice' ? '; okresy mesta sú zlúčené' : ''}.</p>
     </section>
   )}
 
