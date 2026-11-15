@@ -1,0 +1,13 @@
+---
+// Jednotný ukazovateľ porovnania: ▲ viac, ▼ menej, ≈ podobne (do ±3 %) ako porovnávaná hodnota (okres, Slovensko).
+// Neutrálne farby – „viac“ nemusí byť lepšie (napr. nezamestnanosť).
+interface Props { x?: number | null; r?: number | null; kto?: string }
+const { x, r, kto = 'priemer' } = Astro.props;
+let s: 'viac' | 'menej' | 'rovnako' | null = null;
+if (x != null && r != null && Number.isFinite(x) && Number.isFinite(r)) {
+  const d = x - r;
+  s = Math.abs(d) <= Math.max(Math.abs(r) * 0.03, 0.05) ? 'rovnako' : d > 0 ? 'viac' : 'menej';
+}
+const t = s === 'rovnako' ? `približne ako ${kto}` : s === 'viac' ? `viac ako ${kto}` : `menej ako ${kto}`;
+---
+{s && <span class={`por por-${s}`} title={t}><span aria-hidden="true">{s === 'viac' ? '▲' : s === 'menej' ? '▼' : '≈'}</span><span class="sr">{t}</span></span>}

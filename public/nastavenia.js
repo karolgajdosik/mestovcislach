@@ -9,6 +9,7 @@
   else { try { l = localStorage.getItem('jazyk'); } catch (e) {} }
   if (!l || J.indexOf(l) < 0) l = 'sk';
   d.lang = l;
+  d.className += ' js';
   if (l !== 'sk') d.className += ' prekladam';
   // graf vložený na iný web (/vlozit/…, functions/vlozit) – bez hlavičky, menu a pätičky
   if (d.getAttribute('data-vlozit')) d.className += ' vlozene';

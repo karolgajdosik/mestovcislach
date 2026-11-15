@@ -389,6 +389,27 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
   document.addEventListener('click', a11yNeskor);
   new MutationObserver(a11yNeskor).observe(document.body, { childList: true, subtree: true });
 
+  // mobil a tablet: hlavička sa pri rolovaní nadol skryje (viac miesta na obsah), pri rolovaní nahor sa ukáže.
+  // --top-vidno = práve viditeľná výška hlavičky – pre prilepené pásy na stránkach (napr. obsah obce)
+  {
+    const top = document.querySelector<HTMLElement>('.top');
+    const root = document.documentElement;
+    const mobil = matchMedia('(max-width: 1099px)');
+    let posl = scrollY;
+    let skryta = false;
+    const nastav = () => root.style.setProperty('--top-vidno', `${skryta || !top ? 0 : top.offsetHeight}px`);
+    addEventListener('scroll', () => {
+      const y = scrollY;
+      const d = y - posl;
+      if (Math.abs(d) < 6) return;
+      posl = y;
+      const ma = mobil.matches && y > 220 && d > 0 && !document.querySelector('dialog[open]');
+      if (ma !== skryta) { skryta = ma; root.classList.toggle('hlavicka-skryta', skryta); nastav(); }
+    }, { passive: true });
+    addEventListener('resize', nastav);
+    nastav();
+  }
+
   import { pocasie, vystrahy, dunaj, cesty, stupenDunaja, javVystrahy, ovzdusie, farbaOvzdusia } from '../scripts/zive';
   const chip = (id: string, html: string, stav = '') => {
     const el = document.getElementById(id);
@@ -565,13 +586,15 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     .hlava { gap: 6px; }
     .logo { font-size: 0.95rem; }
   }
-  @media (prefers-reduced-motion: reduce) { .menu a { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .menu a, .top { transition: none; } }
   /* ---------- Mobil a tablet: dolná lišta a celoobrazovkové menu ---------- */
   .dolna-lista, .menu-plne:not([open]) { display: none; }
   @media (max-width: 1099px) {
     :root { --vyska-hlavicky: 200px; } /* hlavička 60 px + mestá 76 px + dolná lišta 64 px – pre výšku máp */
     html { scroll-padding-top: 146px; --skok-okraj: 0px; } /* hlavička 135 px; sekcie s vlastným scroll-margin by inak skočili príliš nízko */
     .top .menu { display: none; }
+    .top { transition: transform .25s ease; }
+    html.hlavicka-skryta .top { transform: translateY(-100%); box-shadow: none; }
     /* všetkých 8 miest stále na očiach: mriežka 4 × 2 pod logom */
     .top .mesta-pas { display: block; border-top: 1px solid var(--line); background: var(--card); }
     .mp-obsah { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 6px 12px 8px; max-width: 760px; margin: 0 auto; }

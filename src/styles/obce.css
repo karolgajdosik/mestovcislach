@@ -1,7 +1,9 @@
 /* Stránky krajov, okresov a obcí */
 .ob-cesta { font-size: 0.85rem; color: var(--muted); margin: 0 0 6px; }
 .ob-cesta a { color: inherit; }
-.ob-cisla { list-style: none; padding: 0; margin: 0 0 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+/* kartičky čísel: posledný riadok sa roztiahne – žiadna osamotená kartička, v riadku rovnaká výška */
+.ob-cisla { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-wrap: wrap; gap: 12px; }
+.ob-cisla > li { flex: 1 1 170px; min-width: 0; }
 .ob-cisla li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 3px; }
 .ob-cisla b { font-size: 1.5rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .ob-cisla span { font-size: 0.84rem; color: var(--muted); }
@@ -84,3 +86,81 @@ section.card { margin-bottom: 16px; }
 .ob-foto img { width: 100%; max-width: 640px; height: auto; max-height: 360px; object-fit: cover; border-radius: 8px; display: block; }
 .ob-foto figcaption { font-size: .78rem; color: var(--muted, #667); margin-top: .3rem; }
 .ob-partneri { margin-top: .4rem; }
+
+/* ---------- úvod obce: text + fotka ---------- */
+.ob-hero { display: grid; gap: 14px 28px; align-items: start; }
+@media (min-width: 900px) { .ob-hero.s-fotkou { grid-template-columns: minmax(0, 1fr) minmax(280px, 400px); } }
+.ob-hero .ob-cisla { margin: 14px 0 8px; }
+.ob-hlavne > li { flex-basis: 140px; }
+.ob-hero-info { margin: 0 0 12px; }
+.ob-hero-foto { margin: 0; }
+.ob-hero-foto img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 14px; background: var(--line); }
+.ob-hero-foto figcaption { font-size: .74rem; color: var(--muted); margin-top: .35rem; }
+.ob-hero-foto figcaption a { color: inherit; }
+@media (max-width: 899px) {
+  /* na mobile fotka hore ako pás, pod ňou erb a názov */
+  .ob-hero-foto { order: -1; margin: 0 -16px; }
+  .ob-hero-foto img { aspect-ratio: 16 / 9; max-height: 260px; border-radius: 0; }
+  .ob-hero-foto figcaption { padding: 0 16px; }
+}
+/* V skratke */
+.ob-skratka { border-left: 4px solid var(--accent); }
+.ob-skratka h2 { font-size: 1.05rem; margin: 0 0 6px; }
+.ob-skratka ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 4px; }
+/* obsah stránky – prilepený pás čipov */
+.ob-obsah { position: sticky; top: var(--top-vidno, 0px); z-index: 60; margin: 0 -16px 10px; padding: 8px 0; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); transition: top .25s; }
+.ob-obsah ul { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0 16px; overflow-x: auto; scrollbar-width: none; }
+.ob-obsah ul::-webkit-scrollbar { display: none; }
+.ob-obsah a { display: inline-flex; align-items: center; height: 34px; padding: 0 13px; border-radius: 17px; border: 1px solid var(--line); background: var(--card); color: var(--text); text-decoration: none; font-size: .86rem; font-weight: 600; white-space: nowrap; }
+.ob-obsah a:hover { border-color: var(--accent); }
+.ob-obsah a[aria-current] { background: var(--text); color: var(--card); border-color: var(--text); }
+.ob-obsah .sep { flex: none; width: 1px; margin: 6px 3px; background: var(--line); }
+@media (prefers-reduced-motion: reduce) { .ob-obsah { transition: none; } }
+/* nadpisy blokov */
+.ob-blok { margin: 30px 0 12px; scroll-margin-top: 120px; }
+.ob-blok h2 { font-size: 1.45rem; letter-spacing: -.02em; margin: 0; display: flex; align-items: center; gap: 10px; }
+.ob-blok h2::before { content: ''; width: 6px; height: 1.1em; border-radius: 3px; background: var(--accent); }
+.ob-blok p { margin: 2px 0 0; color: var(--muted); font-size: .9rem; }
+/* porovnanie ▲ ▼ ≈ (neutrálne farby) */
+.por { display: inline-block; margin: 0 2px; font-size: .72em; font-weight: 700; line-height: 1; vertical-align: .12em; }
+.por-viac { color: #1d64b0; }
+.por-menej { color: #b05a12; }
+.por-rovnako { color: var(--muted); }
+:root[data-tema="tmava"] .por-viac { color: #7db6ff; }
+:root[data-tema="tmava"] .por-menej { color: #f2a65a; }
+.por .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* zbaľovanie dlhých zoznamov (bez JavaScriptu je všetko rozbalené) */
+html.js [data-zbal="3"]:not(.rozbalene) > :nth-child(n+4),
+html.js [data-zbal="4"]:not(.rozbalene) > :nth-child(n+5),
+html.js [data-zbal="8"]:not(.rozbalene) > :nth-child(n+9),
+html.js [data-zbal="5"]:not(.rozbalene) > :nth-child(n+6),
+html.js [data-zbal="6"]:not(.rozbalene) > :nth-child(n+7),
+html.js [data-zbal="10"]:not(.rozbalene) > :nth-child(n+11) { display: none; }
+.ob-viac { display: inline-flex; align-items: center; min-height: 38px; margin: 8px 0 4px; padding: 0 16px; border: 1.5px solid var(--line); border-radius: 19px; background: var(--card); color: var(--text); font: inherit; font-size: .88rem; font-weight: 700; cursor: pointer; }
+.ob-viac:hover { border-color: var(--accent); }
+/* zdroje a metodika pod rozbaľovačom */
+details.zdroj { margin: 10px 0 0; }
+details.zdroj summary { cursor: pointer; display: inline-flex; align-items: center; gap: 6px; list-style: none; font-weight: 600; }
+details.zdroj summary::-webkit-details-marker { display: none; }
+details.zdroj summary::before { content: 'i'; display: inline-grid; place-items: center; width: 17px; height: 17px; border-radius: 50%; border: 1.5px solid currentColor; font: italic 700 .7rem/1 Georgia, serif; }
+details.zdroj[open] summary { margin-bottom: 4px; }
+details.zdroj p { margin: 0; }
+/* tabuľky škôl na mobile ako kartičky */
+@media (max-width: 600px) {
+  .ob-kart thead { display: none; }
+  .ob-kart tr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px 8px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .ob-kart td { border: 0; padding: 0; text-align: left !important; white-space: normal; }
+  .ob-kart td:first-child { grid-column: 1 / -1; font-weight: 600; }
+  .ob-kart td[data-l]::before { content: attr(data-l); display: block; font-size: .72rem; font-weight: 400; color: var(--muted); }
+}
+/* mobil: kartičky čísel po dvoch, v úvode tri v riadku */
+@media (max-width: 600px) {
+  .ob-cisla { gap: 8px; }
+  .ob-cisla > li { flex-basis: 130px; padding: 11px 12px; }
+  .ob-cisla b { font-size: 1.25rem; }
+  .ob-hlavne > li { flex-basis: 90px; }
+  .ob-hlavne b { font-size: 1.15rem; }
+  .ob-hlavne span { font-size: .76rem; }
+}
+/* skok na sekciu: nadpis nesmie skončiť pod prilepeným pásom obsahu */
+.ob-obsah ~ section[id], .ob-obsah ~ .ob-dva[id], .ob-obsah ~ .ob-blok { scroll-margin-top: 64px; }

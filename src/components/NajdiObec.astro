@@ -1,7 +1,7 @@
 ---
 // Úvodný filter: vyhľadávanie obce (návrhy pri písaní), výber kraj → okres → obec a mapa krajov.
 // Zoznam obcí sa načíta až pri použití (/data/obce.json).
-import { kraje, krajeMapy, SIRKA, VYSKA } from '../lib/obce';
+import { kraje, krajeMapy, SIRKA, VYSKA, vacsieObce, posledne, urlObce } from '../lib/obce';
 const k = kraje();
 const mapa = krajeMapy();
 const stredy = mapa.map((x) => {
@@ -9,6 +9,8 @@ const stredy = mapa.map((x) => {
   return { ...x, cx: b.reduce((a, p) => a + p[0], 0) / b.length, cy: b.reduce((a, p) => a + p[1], 0) / b.length };
 });
 const kratko = (n: string) => n.replace(' kraj', '');
+// rýchle odkazy: najväčšie mestá mimo krajských (tie sú nižšie samostatne)
+const velke = vacsieObce().map((o) => ({ o, n: posledne(o.obyvatelia)?.[1] ?? 0 })).sort((a, b) => b.n - a.n).slice(0, 8);
 ---
 {k.length > 0 && (
   <section class="no card" aria-labelledby="no-h">
@@ -20,6 +22,8 @@ const kratko = (n: string) => n.replace(' kraj', '');
         <input id="no-q" type="search" autocomplete="off" placeholder="Napíšte názov obce…" aria-label="Názov obce alebo mesta" aria-autocomplete="list" aria-controls="no-navrhy" />
       </div>
       <ul id="no-navrhy" class="no-navrhy" role="listbox" hidden></ul>
+      <p class="no-rychle" id="no-posledne" hidden><span>Naposledy pozreté:</span></p>
+      {velke.length > 0 && <p class="no-rychle"><span>Väčšie mestá:</span>{velke.map(({ o }) => <a href={urlObce(o)} translate="no">{o.nazov}</a>)}</p>}
       <div class="no-vyber">
         <label>Kraj<select id="no-kraj"><option value="">— vyberte —</option>{k.map((x, i) => <option value={i}>{x.nazov}</option>)}</select></label>
         <label>Okres<select id="no-okres" disabled><option value="">—</option></select></label>
@@ -75,6 +79,17 @@ const kratko = (n: string) => n.replace(' kraj', '');
     });
     document.addEventListener('click', (e) => { if (!(e.target as Element).closest('.no-hladaj')) nav.hidden = true; });
   }
+  // naposledy pozreté obce (ukladá stránka obce, len v tomto prehliadači)
+  {
+    const box = document.getElementById('no-posledne');
+    try {
+      const zoz: { n: string; u: string; p?: string }[] = JSON.parse(localStorage.getItem('obce-posledne') || '[]');
+      if (box && zoz.length) {
+        zoz.filter((x) => typeof x.u === 'string' && x.u.startsWith('/')).forEach((x) => { const a = document.createElement('a'); a.href = x.u; a.textContent = x.n; a.title = x.p ?? ''; a.translate = false; box.append(a); });
+        box.hidden = box.querySelectorAll('a').length === 0;
+      }
+    } catch { /* bez úložiska */ }
+  }
   const sk = document.getElementById('no-kraj') as HTMLSelectElement | null;
   const so = document.getElementById('no-okres') as HTMLSelectElement | null;
   const sb = document.getElementById('no-obec') as HTMLSelectElement | null;
@@ -110,6 +125,11 @@ const kratko = (n: string) => n.replace(' kraj', '');
   .no-navrhy a:hover, .no-navrhy .akt a { background: color-mix(in srgb, var(--accent) 10%, transparent); }
   .no-navrhy small { color: var(--muted); }
   .no-nic { padding: 8px 10px; color: var(--muted); }
+  .no-rychle { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 10px 0 0; font-size: 0.85rem; }
+  .no-rychle[hidden] { display: none; }
+  .no-rychle span { color: var(--muted); font-weight: 700; margin-right: 2px; }
+  .no-rychle :global(a) { display: inline-flex; align-items: center; min-height: 32px; padding: 0 11px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); color: var(--text); text-decoration: none; font-weight: 600; }
+  .no-rychle :global(a):hover { border-color: var(--accent); }
   .no-vyber { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
   @media (max-width: 520px) { .no-vyber { grid-template-columns: 1fr; } }
   .no-vyber label { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
