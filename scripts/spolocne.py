@@ -11,6 +11,7 @@ import json
 import os
 import re
 import sys
+import time
 import unicodedata
 from pathlib import Path
 from typing import Callable
@@ -94,7 +95,18 @@ def adresy_mv() -> list[dict]:
     """Všetky adresné body Bratislavy z registra adries: {mc, ulica, sup, ori, lon, lat}."""
     vysledok = []
     for mc, lau in LAU_ADRESY.items():
-        r = s.get(URL_ADRESY.format(lau), timeout=300)
+        # rageo.minv.sk občas vráti 502/503 – skúsiť znova (30 s, 60 s, 120 s), až potom zlyhať
+        # (radšej zlyhať než pokračovať bez celej mestskej časti; predchádzajúce dáta ostanú)
+        for pokus in range(4):
+            try:
+                r = s.get(URL_ADRESY.format(lau), timeout=300)
+                if r.status_code < 500:
+                    break
+            except requests.RequestException:
+                if pokus == 3:
+                    raise
+            if pokus < 3:
+                time.sleep(30 * 2 ** pokus)
         r.raise_for_status()
         for f in r.json()["features"]:
             p, g = f["properties"], f.get("geometry")
