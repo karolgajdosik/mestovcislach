@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11980,
+ "pocet_spolu": 11982,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2368,
-   "suma": 413545172.75
+   "pocet": 2370,
+   "suma": 413556734.75
   }
  },
  "posledny_rok": {
-  "od": "2025-11-15",
+  "od": "2025-11-16",
   "suma_bez_ico": 67800.73,
   "dodavatelia": [
    {
@@ -307,5 +307,5 @@
    }
   ]
  },
- "aktualizovane": "2026-11-15T09:41:22+00:00"
+ "aktualizovane": "2026-11-16T06:43:51+00:00"
 }
