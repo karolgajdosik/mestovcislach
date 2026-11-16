@@ -12,6 +12,8 @@ function kartyGrafov(): [HTMLElement, string][] {
     const k = c.closest<HTMLElement>('section, .card');
     if (k && !k.closest('.mapa-app, .leaflet-container')) karty.add(k);
   });
+  // karty pripravené len na vloženie (napr. „Obec v číslach“) – na stránke skryté, otvára ich tlačidlo data-vlozit-otvor
+  document.querySelectorAll<HTMLElement>('main [data-vlozit-karta]').forEach((k) => karty.add(k));
   const pouzite = new Map<string, number>();
   return [...karty].map((k) => {
     const nadpis = k.querySelector('h2, h3')?.textContent?.trim() ?? 'graf';
@@ -37,6 +39,7 @@ function vlozenyRezim(id: string) {
     [...rodic.children].forEach((s) => { if (s !== el && s instanceof HTMLElement && s.tagName !== 'SCRIPT') s.style.display = 'none'; });
     el = rodic;
   }
+  ciel.hidden = false;
   ciel.querySelectorAll('.vlozit-tl').forEach((b) => b.remove());
   const povodna = location.pathname.replace(/^\/vlozit/, '') || '/';
   const zdroj = document.createElement('p');
@@ -51,13 +54,13 @@ function tlacidla() {
   let dialog: HTMLDialogElement | null = null;
   const otvor = (karta: HTMLElement, id: string) => {
     const nadpis = karta.querySelector('h2, h3')?.textContent?.trim() ?? 'Graf';
-    const vyska = Math.min(900, Math.max(320, Math.round(karta.getBoundingClientRect().height) + 70));
+    const vyska = karta.dataset.vyska ? Number(karta.dataset.vyska) : Math.min(900, Math.max(320, Math.round(karta.getBoundingClientRect().height) + 70));
     const cesta = location.pathname.replace(/\/$/, '');
     const kod = `<iframe src="${WEB}/vlozit${cesta}?g=${id}" title="${nadpis.replace(/"/g, '&quot;')} – mestovcislach.sk" width="100%" height="${vyska}" style="border:0;max-width:820px" loading="lazy"></iframe>`;
     if (!dialog) {
       dialog = document.createElement('dialog');
       dialog.className = 'vlozit-dialog';
-      dialog.innerHTML = `<h2>Vložiť graf na web</h2><p class="vd-nadpis"></p><label for="vd-kod">Skopírujte kód a vložte ho do svojej stránky:</label>
+      dialog.innerHTML = `<h2>Vložiť na web</h2><p class="vd-nadpis"></p><label for="vd-kod">Skopírujte kód a vložte ho do svojej stránky:</label>
         <textarea id="vd-kod" readonly rows="4"></textarea>
         <p class="vd-pozn">Graf sa bude sám aktualizovať. Uveďte, prosím, zdroj – odkaz je priamo pod grafom. Údaje sú otvorené (zdroj je uvedený pri grafe).</p>
         <div class="vd-akcie"><button type="button" class="vd-kopiruj">Kopírovať kód</button><button type="button" class="vd-zavriet">Zavrieť</button></div>`;
@@ -76,7 +79,12 @@ function tlacidla() {
     dialog.showModal();
     dialog.querySelector('textarea')!.select();
   };
+  document.querySelectorAll<HTMLElement>('[data-vlozit-otvor]').forEach((b) => {
+    const k = karty.find(([, i]) => i === b.dataset.vlozitOtvor);
+    if (k) b.addEventListener('click', () => otvor(k[0], k[1]));
+  });
   for (const [karta, id] of karty) {
+    if (karta.hidden) continue;
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'vlozit-tl';

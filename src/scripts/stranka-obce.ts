@@ -142,3 +142,37 @@ export function odkazySekcii(): void {
     h2.append(b);
   });
 }
+
+/** Stiahnutie dát obce (CSV/JSON) z objektu vloženého do stránky – bez ďalšej požiadavky na server. */
+export function stiahnutieDat(): void {
+  const el = document.getElementById('ob-data');
+  if (!el) return;
+  const d = JSON.parse(el.textContent || '{}');
+  const meno = String(d.obec?.nazov ?? 'obec').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const uloz = (obsah: string, typ: string, pripona: string) => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([obsah], { type: typ }));
+    a.download = `${meno}-v-cislach.${pripona}`;
+    document.body.append(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  };
+  const csv = () => {
+    const r: (string | number | null)[][] = [['oblasť', 'položka', 'hodnota']];
+    for (const [k, v] of Object.entries(d.obec ?? {})) r.push(['obec', k, Array.isArray(v) ? v.join(' ') : (v as any)]);
+    for (const [k, v] of Object.entries(d.ukazovatele ?? {})) r.push(['ukazovatele', k, v as number]);
+    for (const [k, v] of Object.entries(d.obyvatelia_k_31_12 ?? {})) r.push(['obyvatelia k 31. 12.', k, v as number]);
+    for (const [t, tab] of Object.entries(d.scitanie_2021 ?? {})) for (const [k, v] of Object.entries(tab as Record<string, number>)) r.push([`sčítanie 2021 – ${t}`, k, v]);
+    const kv = d.komunalne_volby_2026;
+    if (kv?.ucast) for (const [k, v] of Object.entries(kv.ucast)) r.push(['komunálne voľby 2026 – účasť', k, v as number]);
+    for (const m of kv?.mandaty_podla_stran ?? []) r.push(['komunálne voľby 2026 – mandáty', m.strany, m.mandaty]);
+    r.push(['zdroj', 'zdroj', d.zdroj], ['zdroj', 'stiahnuté', d.stiahnute]);
+    const pole = (x: unknown) => { const s = x == null ? '' : String(x); return /[;"\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+    // bodkočiarka a BOM – Excel so slovenským nastavením otvorí súbor správne
+    return '﻿' + r.map((x) => x.map(pole).join(';')).join('\r\n');
+  };
+  document.querySelectorAll<HTMLButtonElement>('[data-stiahni]').forEach((b) => b.addEventListener('click', () => {
+    if (b.dataset.stiahni === 'json') uloz(JSON.stringify(d, null, 2), 'application/json', 'json');
+    else uloz(csv(), 'text/csv;charset=utf-8', 'csv');
+  }));
+}

@@ -2,6 +2,7 @@
 // Položka: [skupina, názov, popis, odkaz, kľúčové slová?]; pri miestach [skupina, názov, popis, '', kategória, lat, lon]
 // a pri uliciach [skupina, ulica, mestská časť] – odkazy na mapu a spádovú školu skladá prehliadač (menší súbor).
 import fs from 'node:fs';
+import { REBRICKY } from '../../lib/rebricky';
 import path from 'node:path';
 import { maMapu, maSamospravu } from '../../lib/mapa';
 import { maZivot } from '../../lib/temy';
@@ -118,6 +119,10 @@ export async function GET() {
   }
   polozky.push(['Stránky', 'Súťaž miest – kvíz týždňa', 'hrajte za svoje mesto, poradie miest', '/sutaz', 'súťaž kvíz týždňa hra mestá poradie']);
   polozky.push(['Stránky', 'Súboj miest – denná otázka', 'ktoré mesto má viac? hra so sériou', '/suboj', 'súboj hra otázka dňa tip kvíz mestá']);
+  polozky.push(['Stránky', 'Rebríčky obcí', 'najmladšie, najstaršie, najrýchlejšie rastúce, najteplejšie obce', '/rebricky/', 'rebríček rebricky poradie najmladšie najstaršie najväčšie obce top']);
+  polozky.push(['Stránky', 'Mapa obcí podľa ukazovateľa', 'všetky obce na mape – vek, nezamestnanosť, účasť, klíma', '/mapa-obci/', 'mapa obcí obce farby ukazovateľ']);
+  polozky.push(['Stránky', 'Stav dát', 'kedy sa ktorý zdroj aktualizoval', '/stav-dat/', 'stav dát aktualizácia zdroje zber']);
+  for (const r of REBRICKY) polozky.push(['Stránky', r.nadpis, 'rebríček obcí Slovenska', `/rebricky/${r.slug}/`, `rebríček ${r.hore} ${r.dole}`]);
   polozky.push(['Stránky', 'Porovnaj dve obce', 'ľubovoľné dve obce Slovenska vedľa seba', '/porovnaj-obce/', 'porovnaj porovnanie dve obce dediny vs']);
   polozky.push(['Stránky', 'Porovnaj dve mestá – kde by som chcel bývať', 'dve mestá vedľa seba, skóre a obrázok na zdieľanie', '/porovnaj', 'porovnaj porovnanie dve mestá kde bývať súboj vs']);
   polozky.push(['Stránky', 'Porovnanie krajských miest', 'obyvatelia, vek, vzdelanie, nezamestnanosť, voľby, byty, ceny', '/porovnanie', 'porovnanie mestá krajské rebríček']);

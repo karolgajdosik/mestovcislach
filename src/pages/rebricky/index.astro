@@ -1,0 +1,38 @@
+---
+// Prehľad rebríčkov obcí – pri každom prvé tri obce zhora.
+import Base from '../../layouts/Base.astro';
+import { REBRICKY, poradie, jednotka } from '../../lib/rebricky';
+import '../../styles/stranka.css';
+const karty = REBRICKY.map((r) => {
+  const p = poradie(r);
+  const j = jednotka(r.k);
+  const h = (x: number) => `${r.k === 'z10' && x > 0 ? '+' : ''}${x.toLocaleString('sk-SK', { minimumFractionDigits: r.desatiny, maximumFractionDigits: r.desatiny })}${j ? ` ${j}` : ''}`;
+  return { r, top: p.slice(0, 3).map((x) => ({ n: x.o.nazov, v: h(x.h[r.k]!) })), n: p.length };
+});
+---
+<Base title="Rebríčky obcí Slovenska – mestovcislach.sk" description="Najmladšie a najstaršie obce, najrýchlejšie rastúce, najvyššia účasť vo voľbách, najteplejšie, najviac vysokoškolákov a ďalšie rebríčky všetkých obcí Slovenska." drobceky={[['Rebríčky obcí', '/rebricky']]}>
+  <section class="hero">
+    <p class="kicker">Rebríčky</p>
+    <h1>Rebríčky obcí Slovenska</h1>
+    <p class="lead">{REBRICKY.length} rebríčkov zo všetkých obcí – kde žijú najmladší ľudia, ktoré obce rastú, kde chodia najviac voliť, kde je najteplejšie. Pri percentách a hodnotách na obyvateľa sa porovnávajú obce s aspoň 300 obyvateľmi.</p>
+  </section>
+  <div class="rb-karty">
+    {karty.map(({ r, top, n }) => (
+      <a class="card rb-karta" href={`/rebricky/${r.slug}/`}>
+        <h2>{r.nadpis}</h2>
+        <ol>{top.map((x) => <li><span translate="no">{x.n}</span> <b>{x.v}</b></li>)}</ol>
+        <span class="rb-viac">{n.toLocaleString('sk-SK')} obcí →</span>
+      </a>
+    ))}
+  </div>
+  <p class="pozn"><a href="/mapa-obci/">Mapa obcí podľa ukazovateľa</a> · <a href="/porovnaj-obce/">Porovnaj dve obce</a></p>
+</Base>
+<style>
+  .rb-karty { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .rb-karta { display: flex; flex-direction: column; color: var(--text); text-decoration: none; }
+  .rb-karta:hover { border-color: var(--accent); }
+  .rb-karta h2 { font-size: 1.05rem; margin: 0 0 8px; }
+  .rb-karta ol { margin: 0 0 10px; padding-left: 1.2rem; display: grid; gap: 3px; font-size: 0.9rem; }
+  .rb-karta b { font-variant-numeric: tabular-nums; }
+  .rb-viac { margin-top: auto; color: var(--accent); font-weight: 700; font-size: 0.85rem; }
+</style>

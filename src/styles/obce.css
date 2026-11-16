@@ -192,3 +192,13 @@ main section[id], main .ob-blok, main .ob-dva[id] { scroll-margin-top: 64px; }
   a { color: #000 !important; text-decoration: none !important; }
   details.zdroj summary { display: none; }
 }
+/* karta na vloženie na web obce (na stránke skrytá, zobrazí sa len vo vloženom režime) */
+.ob-vlozit-karta[hidden] { display: none !important; }
+.ob-vlozit-karta .ob-vk-kicker { margin: 0; font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.ob-vlozit-karta h2 { margin: 2px 0 0; font-size: 1.6rem; }
+.ob-vlozit-karta .ob-cisla { margin: 12px 0 0; }
+/* najnovšie v dátach */
+.ob-nove h2 { font-size: 1.05rem; margin: 0 0 6px; }
+.ob-nove ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 4px; }
+.ob-nove time { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 4px; }
+.ob-rebr { margin: 8px 0 0; font-size: .88rem; }

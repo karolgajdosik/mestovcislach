@@ -16,6 +16,7 @@ export const onRequestPost = async ({ request, env }: any) => {
   const mapa = await (await env.ASSETS.fetch(new URL('/data/odber-brevo.json', request.url))).json().catch(() => null);
   const kanal = String(d.kanal ?? '');
   const zoznam = mapa?.zoznamy?.[kanal];
+  // Moja obec: kód obce (6 číslic) sa pridá k už sledovaným (atribút OBCE, najviac 10)
   if (!zoznam || !mapa.sablona) return odpoved(400, 'Neznámy kanál upozornení.');
   // sledovanie dodávateľa: IČO musí byť medzi dodávateľmi miest; k už sledovaným IČO sa pridá (uloží sa až po potvrdení)
   const atributy: Record<string, string> = { KANAL: kanal };
@@ -33,6 +34,18 @@ export const onRequestPost = async ({ request, env }: any) => {
     // rovnaká odpoveď ako pri novom odbere – nech sa nedá zistiť, čo kto sleduje
     if (doteraz.includes(ico)) return odpoved(200, 'Poslali sme vám e-mail – odber začne po kliknutí na „Potvrdiť odber“.');
     atributy.ICO = [...doteraz, ico].slice(-25).join(',');
+  }
+  if (kanal === 'obec') {
+    const kod = String(d.obec ?? '');
+    if (!/^\d{6}$/.test(kod)) return odpoved(400, 'Neznáma obec.');
+    let doteraz: string[] = [];
+    const k = await fetch(`https://api.brevo.com/v3/contacts/${encodeURIComponent(email)}`, { headers: { 'api-key': env.BREVO_API_KEY, accept: 'application/json' } });
+    if (k.ok) {
+      const c: any = await k.json().catch(() => ({}));
+      if ((c.listIds ?? []).includes(zoznam)) doteraz = String(c.attributes?.OBCE ?? '').split(',').filter((x: string) => /^\d{6}$/.test(x));
+    }
+    if (doteraz.includes(kod)) return odpoved(200, 'Poslali sme vám e-mail – odber začne po kliknutí na „Potvrdiť odber“.');
+    atributy.OBCE = [...doteraz, kod].slice(-10).join(',');
   }
   const r = await fetch('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', {
     method: 'POST',

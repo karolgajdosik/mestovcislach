@@ -1,0 +1,77 @@
+---
+// Rebríček obcí podľa jedného ukazovateľa: 25 najvyšších a 25 najnižších hodnôt na Slovensku, najvyššia a najnižšia v každom kraji.
+import Base from '../../layouts/Base.astro';
+import { REBRICKY, poradie, jednotka, type Rebricek } from '../../lib/rebricky';
+import '../../styles/stranka.css';
+import '../../styles/obce.css';
+
+export function getStaticPaths() {
+  return REBRICKY.map((r) => ({ params: { slug: r.slug }, props: { r } }));
+}
+const { r } = Astro.props as { r: Rebricek };
+const p = poradie(r);
+const j = jednotka(r.k);
+const h = (x: number) => `${r.k === 'z10' && x > 0 ? '+' : ''}${x.toLocaleString('sk-SK', { minimumFractionDigits: r.desatiny, maximumFractionDigits: r.desatiny })}${j ? ` ${j}` : ''}`;
+const hore = p.slice(0, 25);
+const dole = p.slice(-25).reverse();
+const kraje = [...new Set(p.map((x) => x.kraj))].sort((a, b) => a.localeCompare(b, 'sk')).map((k) => { const v = p.filter((x) => x.kraj === k); return { k, hore: v[0], dole: v[v.length - 1] }; });
+const median = p.length ? p[Math.floor(p.length / 2)].h[r.k]! : null;
+const jsonld = { '@context': 'https://schema.org', '@type': 'ItemList', name: `${r.hore} – obce Slovenska`, itemListOrder: 'https://schema.org/ItemListOrderDescending', numberOfItems: hore.length,
+  itemListElement: hore.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.o.nazov, url: `https://mestovcislach.sk${x.url}/` })) };
+const ostatne = REBRICKY.filter((x) => x.slug !== r.slug);
+---
+<Base title={`${r.nadpis} na Slovensku – rebríček obcí – mestovcislach.sk`} description={`${r.hore}: ${hore.slice(0, 3).map((x) => `${x.o.nazov} (${h(x.h[r.k]!)})`).join(', ')}. Rebríček ${p.length.toLocaleString('sk-SK')} obcí Slovenska so zdrojmi.`} jsonld={jsonld}
+  drobceky={[['Rebríčky obcí', '/rebricky'], [r.nadpis, `/rebricky/${r.slug}`]]}>
+  <section class="hero">
+    <p class="kicker"><a href="/rebricky/">Rebríčky obcí</a></p>
+    <h1>{r.nadpis}</h1>
+    <p class="lead">{r.popis} Porovnaných {p.length.toLocaleString('sk-SK')} obcí{r.min ? ` s aspoň ${r.min.toLocaleString('sk-SK')} obyvateľmi` : ''}; medián {median != null ? h(median) : '–'}{h(0).endsWith('.') ? '' : '.'}</p>
+  </section>
+
+  <div class="rb-dva">
+    {[[r.hore, hore, 1], [r.dole, dole, -1]].map(([nadpis, zoz, smer]) => (
+      <section class="card">
+        <h2>{nadpis as string}</h2>
+        <ol class="rb-zoznam">
+          {(zoz as typeof p).map((x, i) => (
+            <li><span class="rb-p">{smer === 1 ? i + 1 : p.length - i}.</span><a href={x.url} translate="no">{x.o.nazov}</a><small>okres {x.o.okres}</small><b>{h(x.h[r.k]!)}</b></li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+
+  <section class="card">
+    <h2>Podľa krajov</h2>
+    <div class="ob-obal" tabindex="0" role="region" aria-label="Rebríček podľa krajov">
+      <table class="ob-tab">
+        <thead><tr><th>Kraj</th><th>{r.hore}</th><th>{r.dole}</th></tr></thead>
+        <tbody>{kraje.map((x) => (
+          <tr><td>{x.k}</td><td><a href={x.hore.url} translate="no">{x.hore.o.nazov}</a> <small>{h(x.hore.h[r.k]!)}</small></td><td><a href={x.dole.url} translate="no">{x.dole.o.nazov}</a> <small>{h(x.dole.h[r.k]!)}</small></td></tr>
+        ))}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Ďalšie rebríčky</h2>
+    <p class="rb-dalsie">{ostatne.map((x) => <a href={`/rebricky/${x.slug}/`}>{x.nadpis}</a>)}</p>
+    <p class="pozn">Celé poradie a ďalšie ukazovatele si môžete pozrieť na <a href="/mapa-obci/">mape obcí</a> alebo porovnať dve obce na stránke <a href="/porovnaj-obce/">Porovnaj dve obce</a>.</p>
+  </section>
+  <p class="zdroj">{r.popis} Údaje sú rovnaké ako na profiloch obcí; pri každej obci je uvedený zdroj a metodika.</p>
+</Base>
+
+<style>
+  .rb-dva { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .rb-dva h2 { font-size: 1.1rem; margin-top: 0; }
+  .rb-zoznam { list-style: none; margin: 0; padding: 0; }
+  .rb-zoznam li { display: grid; grid-template-columns: 2.4em 1fr auto; grid-template-rows: auto auto; column-gap: 6px; padding: 7px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .rb-zoznam li:last-child { border-bottom: 0; }
+  .rb-p { grid-row: 1 / span 2; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .rb-zoznam a { font-weight: 600; }
+  .rb-zoznam small { grid-column: 2; color: var(--muted); font-size: 0.8rem; }
+  .rb-zoznam b { grid-column: 3; grid-row: 1 / span 2; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rb-dalsie { display: flex; flex-wrap: wrap; gap: 6px; }
+  .rb-dalsie a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+  .rb-dalsie a:hover { border-color: var(--accent); }
+</style>

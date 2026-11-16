@@ -3,15 +3,17 @@
 // Zobrazí sa, až keď existuje public/data/odber-brevo.json (scripts/odber_email.py nastavenie).
 import fs from 'node:fs';
 import path from 'node:path';
-const { kanal, vyberId, popis, nadpis = 'Alebo e-mailom', tyzdennik } = Astro.props as { kanal?: string; vyberId?: string; popis: string; nadpis?: string; tyzdennik?: string };
+const { kanal, vyberId, popis, nadpis = 'Alebo e-mailom', tyzdennik, obec } = Astro.props as { kanal?: string; vyberId?: string; popis: string; nadpis?: string; tyzdennik?: string; obec?: string };
 // tyzdennik = slug mesta → výber: týždenník (piatok) alebo ranné upozornenia
-const zapnute = fs.existsSync(path.join(process.cwd(), 'public', 'data', 'odber-brevo.json'));
+const subor = path.join(process.cwd(), 'public', 'data', 'odber-brevo.json');
+// kanál musí mať v Breve zoznam (nový kanál sa objaví až po behu „odber_email.py nastavenie“)
+const zapnute = fs.existsSync(subor) && (!kanal || vyberId || tyzdennik || kanal in (JSON.parse(fs.readFileSync(subor, 'utf-8')).zoznamy ?? {}));
 ---
 {zapnute && (
   <section class="card odber" aria-labelledby="odber-h">
     <h2 id="odber-h">{nadpis}</h2>
-    <p>{popis}{tyzdennik ? '' : ' Súhrn chodí ráno, len keď je niečo nové.'}</p>
-    <form class="odber-form" data-kanal={kanal ?? ''} data-vyber={vyberId ?? ''} novalidate>
+    <p>{popis}{tyzdennik ? '' : obec ? ' E-mail chodí ráno, len keď je niečo nové.' : ' Súhrn chodí ráno, len keď je niečo nové.'}</p>
+    <form class="odber-form" data-kanal={kanal ?? ''} data-vyber={vyberId ?? ''} data-obec={obec ?? ''} novalidate>
       {tyzdennik && (
         <fieldset class="odber-druh">
           <legend>Čo chcete dostávať</legend>
@@ -49,7 +51,7 @@ const zapnute = fs.existsSync(path.join(process.cwd(), 'public', 'data', 'odber-
       stav.textContent = 'Odosielam…';
       try {
         const r = await fetch('/api/odber', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, kanal, suhlas: true, web: data.get('web') || '' }) });
+          body: JSON.stringify({ email, kanal, suhlas: true, web: data.get('web') || '', ...(f.dataset.obec ? { obec: f.dataset.obec } : {}) }) });
         const o = await r.json();
         stav.textContent = o.sprava;
         if (r.ok) f.reset();

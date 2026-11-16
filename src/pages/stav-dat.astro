@@ -1,0 +1,88 @@
+---
+// Stav dát: kedy sa ktorý dátový súbor naposledy aktualizoval (pole „aktualizovane“, pri zostavení webu)
+// a posledné behy automatických zberov (GitHub Actions – verejné API, načíta prehliadač).
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import '../styles/stranka.css';
+import '../styles/obce.css';
+
+const KOREN = process.cwd();
+type Riadok = { subor: string; nazov: string; datum: string; dni: number };
+const teraz = Date.now();
+const skupiny: [string, string][] = [['data/obce', 'Obce a okresy'], ['data/mesta', 'Krajské mestá'], ['data', 'Ostatné (Bratislava, Slovensko, spoločné)']];
+const tabulky = skupiny.map(([dir, nazov]) => {
+  const riadky: Riadok[] = [];
+  for (const f of fs.readdirSync(path.join(KOREN, dir)).filter((x) => x.endsWith('.json')).sort()) {
+    try {
+      const d = JSON.parse(fs.readFileSync(path.join(KOREN, dir, f), 'utf-8'));
+      const a = d?.aktualizovane;
+      if (!a || typeof a !== 'string') continue;
+      const z = typeof d.zdroj === 'object' && d.zdroj?.nazov ? String(d.zdroj.nazov) : Array.isArray(d.zdroj) && d.zdroj[0]?.nazov ? String(d.zdroj[0].nazov) : '';
+      riadky.push({ subor: `${dir}/${f}`, nazov: z || f.replace('.json', ''), datum: a.slice(0, 10), dni: Math.floor((teraz - Date.parse(a)) / 864e5) });
+    } catch { /* nečitateľný súbor preskočiť */ }
+  }
+  return { nazov, riadky: riadky.sort((a, b) => b.dni - a.dni) };
+}).filter((t) => t.riadky.length);
+const d = (s: string) => `${Number(s.slice(8, 10))}. ${Number(s.slice(5, 7))}. ${s.slice(0, 4)}`;
+const zostavene = new Date().toISOString();
+---
+<Base title="Stav dát – kedy sa čo aktualizovalo – mestovcislach.sk" description="Prehľad aktualizácie všetkých dátových zdrojov mestovcislach.sk a posledných automatických zberov dát.">
+  <section class="hero">
+    <p class="kicker">Transparentnosť</p>
+    <h1>Stav dát</h1>
+    <p class="lead">Kedy sa ktorý zdroj naposledy aktualizoval a ako dopadli automatické zbery. Ročné štatistiky sa prirodzene menia raz za rok, denné zdroje (zmluvy, stavby, výstrahy) každý deň. Web zostavený {d(zostavene.slice(0, 10))}.</p>
+  </section>
+
+  <section class="card" id="zbery">
+    <h2>Posledné automatické zbery</h2>
+    <p class="pozn" id="sd-stav">Načítavam z GitHubu…</p>
+    <div class="ob-obal" tabindex="0" role="region" aria-label="Posledné zbery dát"><table class="ob-tab" id="sd-behy" hidden><thead><tr><th>Zber</th><th>Výsledok</th><th>Kedy</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  {tabulky.map((t) => (
+    <section class="card">
+      <h2>{t.nazov}</h2>
+      <div class="ob-obal" tabindex="0" role="region" aria-label={t.nazov}>
+        <table class="ob-tab sd-tab">
+          <thead><tr><th>Zdroj</th><th>Aktualizované</th><th class="num">Pred dňami</th></tr></thead>
+          <tbody>{t.riadky.map((r) => (
+            <tr><td>{r.nazov}<small>{r.subor}</small></td><td>{d(r.datum)}</td><td class={`num ${r.dni > 400 ? 'sd-stare' : r.dni > 45 ? 'sd-mesiac' : 'sd-ok'}`}>{r.dni}</td></tr>
+          ))}</tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+  <p class="zdroj">Dátum je čas posledného zberu, pri ktorom sa súbor zmenil (ak zdroj nepriniesol nič nové, dátum ostáva). Kód zberov je verejný na GitHube.</p>
+</Base>
+
+<script>
+  const stav = document.getElementById('sd-stav')!;
+  const tab = document.getElementById('sd-behy') as HTMLTableElement;
+  const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  fetch('https://api.github.com/repos/karolgajdosik/mestovcislach/actions/runs?per_page=100&branch=main', { headers: { Accept: 'application/vnd.github+json' } })
+    .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+    .then((d: { workflow_runs: any[] }) => {
+      const posl = new Map<string, any>();
+      for (const b of d.workflow_runs) if (!posl.has(b.name) && b.event !== 'push') posl.set(b.name, b);
+      for (const b of d.workflow_runs) if (!posl.has(b.name)) posl.set(b.name, b);
+      const VYSL: Record<string, string> = { success: '✓ v poriadku', failure: '✗ zlyhal', cancelled: '– zrušený', skipped: '– preskočený', timed_out: '✗ vypršal čas' };
+      const riadky = [...posl.values()].sort((a, b) => a.name.localeCompare(b.name, 'sk')).map((b) => {
+        const v = b.status !== 'completed' ? '… beží' : VYSL[b.conclusion] ?? b.conclusion;
+        const cls = b.status !== 'completed' ? '' : b.conclusion === 'success' ? 'sd-ok' : b.conclusion === 'failure' || b.conclusion === 'timed_out' ? 'sd-stare' : 'sd-mesiac';
+        const kedy = new Date(b.run_started_at || b.created_at).toLocaleString('sk-SK', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' });
+        return `<tr><td><a href="${esc(b.html_url)}" rel="noopener">${esc(b.name)}</a></td><td class="${cls}">${v}</td><td>${kedy}</td></tr>`;
+      });
+      tab.tBodies[0].innerHTML = riadky.join('');
+      tab.hidden = false;
+      stav.textContent = `Posledný beh každého zberu (zo 100 najnovších behov).`;
+    })
+    .catch(() => { stav.textContent = 'Stav zberov sa nepodarilo načítať z GitHubu (limit verejného API je 60 dopytov za hodinu).'; });
+</script>
+
+<style>
+  .sd-tab small { display: block; color: var(--muted); font-size: 0.74rem; }
+  :global(.sd-ok) { color: #1a7f4b; font-weight: 600; }
+  :global(.sd-mesiac) { color: #9a6700; font-weight: 600; }
+  :global(.sd-stare) { color: #b42318; font-weight: 700; }
+</style>

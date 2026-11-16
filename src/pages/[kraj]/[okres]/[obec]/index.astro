@@ -9,6 +9,9 @@ import Kalendar from '../../../../components/Kalendar.astro';
 import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, volbyInfo, pohybInfo, byvanieInfo, firmyInfo, sluzbyInfo, turizmusInfo, vlakyInfo, obyvateliaInfo, uzemieInfo, chraneneInfo, socialneInfo, okresyInfo, vekInfo, mesacneInfo, sodb2Info, kulturaInfo, wikiInfo, osmInfo, rozpocetInfo, t9Info, pamiatkyInfo, trasyInfo, historiaInfo, starosta22Info, klimaInfo, geologiaInfo, obrazkyInfo, maturitaInfo, ovzdusieInfo, type Obec } from '../../../../lib/obce';
 import { skrat, skratStrany } from '../../../../lib/zastupitelstvo';
 import Por from '../../../../components/Por.astro';
+import OdberEmail from '../../../../components/OdberEmail.astro';
+import { POLIA, ukazovatele } from '../../../../lib/ukazovatele-obci';
+import { umiestnenia } from '../../../../lib/rebricky';
 
 export function getStaticPaths() {
   return kraje().flatMap((k) => obceKraja(k.slug).filter((o) => !webMesta(o.nazov))
@@ -238,7 +241,7 @@ const TYP_ST: Record<string, string> = { traffic: 'dopravnej', background: 'poza
 const nehI = (okresyInfo() as any)?.nehody;
 const neh = nehI?.okresy?.[o.okres] as number[] | undefined;
 const commons = (x: { s: string }) => `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(x.s.replace(/ /g, '_'))}`;
-const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` : ''}${z10 != null ? `, za 10 rokov ${z10 > 0 ? '+' : ''}${des(z10)} %` : ''}${st ? `. Starosta 2026: ${bezTit(st.meno)}` : ''}. Sčítanie 2021, voľby a poslanci.`;
+const popis = `${o.nazov} (okres ${o.okres}): ${p ? `${fmt(p[1])} obyvateľov` : ''}${z10 != null ? `, za 10 rokov ${z10 > 0 ? '+' : ''}${des(z10)} %` : ''}${st ? `. ${titulStarostu} 2026: ${bezTit(st.meno)}` : ''}. Sčítanie 2021, voľby a poslanci.`;
 // ---- rozloženie stránky: účasť v okrese, „V skratke“, obsah sekcií ----
 const ucasti = okresObce.map((x) => x.volby2026?.ucast?.ucast_pct).filter((x): x is number => x != null).sort((a_, b_) => a_ - b_);
 const ucOkr = ucasti.length >= 3 ? ucasti[Math.floor(ucasti.length / 2)] : null;
@@ -273,6 +276,39 @@ const fakty: [number, string][] = [];
 }
 const volbyHlavne = celostatne.filter((c) => c.id === 'nrsr2023' || c.id === 'prez2024_2');
 const volbyDalsie = [...celostatne.filter((c) => !volbyHlavne.includes(c)), ...starsie];
+// najnovšie v dátach (posledných ~4 mesiace): stavebné zámery, väčšie zmluvy, eurofondy, mesačné čísla
+const dnesIso = new Date().toISOString().slice(0, 10);
+const pred120 = new Date(Date.now() - 120 * 864e5).toISOString().slice(0, 10);
+const nove: [string, string, string][] = []; // [dátum, text, kotva]
+for (const z of (eia?.zamery ?? []).slice(0, 3)) if (z[3] >= pred120 && z[3] <= dnesIso) nove.push([z[3], `Plánovaná stavba: ${z[1]} (${String(z[2]).toLowerCase()})`, 'eia']);
+for (const z of (zm?.najvacsie ?? []) as any[]) if (z[0] >= pred120 && z[0] <= dnesIso) nove.push([z[0], `Zmluva ${fmt(z[2])} € s firmou ${z[1]}`, 'zmluvy']);
+for (const z of (zm?.nfp_zoz ?? []) as any[]) if (z[0] >= pred120 && z[0] <= dnesIso) nove.push([z[0], `Eurofondy / dotácia ${fmt(z[2])} € (${z[1]})`, 'eurofondy']);
+const noveZoz = nove.sort((a_, b_) => b_[0].localeCompare(a_[0])).filter((x, i, a_) => a_.findIndex((y) => y[1] === x[1]) === i).slice(0, 4);
+const noveMes: string[] = [];
+if (mes != null && mesI) noveMes.push(`Počet obyvateľov ku ${mesText}: ${fmt(mes)}`);
+if (nez?.pdu != null && nezI?.mesiac) noveMes.push(`Nezamestnanosť – ${['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december'][Number(nezI.mesiac.slice(5, 7)) - 1]} ${nezI.mesiac.slice(0, 4)}: ${des(nez.pdu, 1)} %`);
+// štruktúrované údaje o mieste pre vyhľadávače (schema.org)
+const jsonld = {
+  '@context': 'https://schema.org', '@type': ['Place', 'AdministrativeArea'], name: o.nazov,
+  url: `https://mestovcislach.sk/${o.kraj_slug}/${o.okres_slug}/${o.slug}/`,
+  description: `Obec ${o.nazov} v okrese ${o.okres} (${o.kraj}) v číslach – obyvatelia, voľby, školy, rozpočet a ďalšie otvorené dáta.`,
+  ...(o.poloha ? { geo: { '@type': 'GeoCoordinates', latitude: o.poloha[0], longitude: o.poloha[1], ...(wk?.[1] ? { elevation: wk[1] } : {}) } } : {}),
+  ...(obr?.foto ? { image: obr.foto.u } : {}),
+  containedInPlace: { '@type': 'AdministrativeArea', name: `okres ${o.okres}`, containedInPlace: { '@type': 'AdministrativeArea', name: o.kraj, containedInPlace: { '@type': 'Country', name: 'Slovensko' } } },
+  ...(p ? { additionalProperty: [{ '@type': 'PropertyValue', name: 'Počet obyvateľov', value: mes ?? p[1] }] } : {}),
+};
+// dáta obce na stiahnutie (CSV/JSON vytvorí prehliadač z tohto objektu) – bez osobných údajov
+const ukz = ukazovatele().find((x) => x.o.kod === o.kod)?.h ?? {};
+const dataObce = {
+  obec: { kod: o.kod, nazov: o.nazov, okres: o.okres, kraj: o.kraj, poloha: o.poloha ?? null, url: `https://mestovcislach.sk/${o.kraj_slug}/${o.okres_slug}/${o.slug}/` },
+  ukazovatele: Object.fromEntries(POLIA.filter(([k]) => ukz[k] != null).map(([k, n, j]) => [n + (j ? ` (${j})` : ''), ukz[k]])),
+  obyvatelia_k_31_12: o.obyvatelia,
+  scitanie_2021: o.scitanie ?? null,
+  komunalne_volby_2026: v ? { ucast: v.ucast ?? null, mandaty_podla_stran: v.mandaty ?? [] } : null,
+  zdroj: 'mestovcislach.sk – ŠÚ SR, ÚPSVaR, MF SR, SHMÚ/EEA, Open-Meteo a ďalšie (zdroje pri jednotlivých sekciách na stránke obce)',
+  stiahnute: new Date().toISOString().slice(0, 10),
+};
+const umiest = umiestnenia(o.kod, 20).sort((a_, b_) => a_.miesto - b_.miesto).slice(0, 4);
 const skratka = fakty.sort((a_, b_) => b_[0] - a_[0]).slice(0, 4).map(([, t_]) => t_);
 // obsah sekcií (čipy) – rovnaké podmienky ako pri sekciách nižšie
 const BLOKY: [string, string, [string, string, unknown][]][] = [
@@ -283,7 +319,7 @@ const BLOKY: [string, string, [string, string, unknown][]][] = [
 const obsah = BLOKY.map(([id, n, s_]) => ({ id, n, s: s_.filter(([, , ok]) => ok).map(([i, t_]) => ({ i, t: t_ })) })).filter((x) => x.s.length);
 const blok = (id: string) => obsah.find((x) => x.id === id);
 ---
-<Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis}
+<Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis} og={`/og/obec/${o.kod}.png`} jsonld={jsonld}
   drobceky={[[o.kraj, `/${o.kraj_slug}`], [`Okres ${o.okres}`, `/${o.kraj_slug}/${o.okres_slug}`], [o.nazov, `/${o.kraj_slug}/${o.okres_slug}/${o.slug}`]]}>
   <section class={`hero ob-hero${obr?.foto ? ' s-fotkou' : ''}`} data-nazov={o.nazov} data-url={`/${o.kraj_slug}/${o.okres_slug}/${o.slug}`} data-okres={`okres ${o.okres}`} data-kraj={o.kraj} data-poloha={o.poloha ? JSON.stringify(o.poloha) : undefined}>
     <div class="ob-hero-text">
@@ -306,10 +342,21 @@ const blok = (id: string) => obsah.find((x) => x.id === id);
     )}
   </section>
 
-  {skratka.length >= 2 && (
+  {(skratka.length >= 2 || umiest.length > 0) && (
     <section class="card ob-skratka" aria-labelledby="ob-skratka-h">
       <h2 id="ob-skratka-h">V skratke</h2>
       <ul>{skratka.map((t_) => <li>{t_}</li>)}</ul>
+      {umiest.length > 0 && <p class="ob-rebr">V rebríčkoch Slovenska: {umiest.map((x, i) => <>{i > 0 ? ' · ' : ''}<a href={`/rebricky/${x.r.slug}/`}>{x.miesto}. miesto – {(x.hore ? x.r.hore : x.r.dole).toLowerCase()}</a></>)}</p>}
+    </section>
+  )}
+
+  {(noveZoz.length > 0 || noveMes.length > 0) && (
+    <section class="card ob-nove" aria-labelledby="ob-nove-h">
+      <h2 id="ob-nove-h">Najnovšie v dátach</h2>
+      <ul>
+        {noveZoz.map(([d, t_, k]) => <li><time datetime={d}>{datum(d)}</time> <a href={`#${k}`}>{t_}</a></li>)}
+        {noveMes.map((t_) => <li>{t_}</li>)}
+      </ul>
     </section>
   )}
 
@@ -846,7 +893,28 @@ const blok = (id: string) => obsah.find((x) => x.id === id);
   )}
 
   {okolie.length > 0 && (
-    <section class="card" id="okolie">
+    <section class="card ob-data" id="data-obce">
+    <h2>Dáta obce</h2>
+    <p class="pozn">Hlavné čísla obce na stiahnutie – ukazovatele, vývoj počtu obyvateľov, sčítanie 2021 a komunálne voľby 2026. Otvorené dáta, uveďte prosím zdroj.</p>
+    <p class="ob-akcie"><button type="button" class="ob-akcia" data-stiahni="csv">Stiahnuť CSV</button><button type="button" class="ob-akcia" data-stiahni="json">Stiahnuť JSON</button><button type="button" class="ob-akcia" data-vlozit-otvor="obec-v-cislach">Vložiť na web obce</button></p>
+    <script is:inline type="application/json" id="ob-data" set:html={JSON.stringify(dataObce).replace(/</g, '\\u003c')}></script>
+  </section>
+
+  <OdberEmail kanal="obec" obec={o.kod} nadpis={`Upozornenia e-mailom – ${o.nazov}`} popis={`Nové stavebné zámery, väčšie zmluvy obce, eurofondy a mesačná nezamestnanosť v obci ${o.nazov}.`} />
+
+  <section class="card ob-vlozit-karta" id="obec-v-cislach" data-vlozit-karta data-vyska="300" hidden>
+    <p class="ob-vk-kicker">Obec v číslach</p>
+    <h2 translate="no">{o.nazov}</h2>
+    <p class="pozn">okres {o.okres} · {o.kraj}</p>
+    <ul class="ob-cisla">
+      {(mes ?? p?.[1]) != null && <li><b>{fmt((mes ?? p![1])!)}</b><span>obyvateľov</span></li>}
+      {z10 != null && <li><b>{z10 > 0 ? '+' : z10 < 0 ? '−' : ''}{des(Math.abs(z10))} %</b><span>za 10 rokov</span></li>}
+      {ukz.vek != null && <li><b>{des(ukz.vek!)} r.</b><span>priemerný vek</span></li>}
+      {ukz.nez != null && <li><b>{des(ukz.nez!)} %</b><span>nezamestnanosť</span></li>}
+    </ul>
+  </section>
+
+  <section class="card" id="okolie">
       <h2>Obce v okolí</h2>
       <ul class="ob-zoznam">
         {okolie.map(({ x, d }) => <li><a href={odkaz({ nazov: x.nazov, url: `/${x.kraj_slug}/${x.okres_slug}/${x.slug}` })}><span translate="no">{x.nazov}</span><small>{des(d)} km · {fmt(posledne(x.obyvatelia)?.[1] ?? 0)} ob.</small></a></li>)}
@@ -859,12 +927,13 @@ const blok = (id: string) => obsah.find((x) => x.id === id);
 
 <script>
   import { pocasie } from '../../../../scripts/zive';
-  import { zbalovanie, obsahStranky, ulozPoslednu, mojaObec, tlac, odkazySekcii } from '../../../../scripts/stranka-obce';
+  import { zbalovanie, obsahStranky, ulozPoslednu, mojaObec, tlac, odkazySekcii, stiahnutieDat } from '../../../../scripts/stranka-obce';
   zbalovanie();
   obsahStranky();
   mojaObec();
   tlac();
   odkazySekcii();
+  stiahnutieDat();
   { const h = document.querySelector<HTMLElement>('.ob-hero'); if (h?.dataset.url) ulozPoslednu(h.dataset.nazov!, h.dataset.url, h.dataset.okres ?? ''); }
   const sek = document.getElementById('pocasie');
   if (sek) {

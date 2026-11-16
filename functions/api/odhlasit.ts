@@ -23,7 +23,8 @@ export const onRequestGet = async ({ request, env }: any) => {
   for (let i = 0; i < Math.min(ocak.length, t.length); i++) rozdiel |= ocak.charCodeAt(i) ^ t.charCodeAt(i);
   if (rozdiel) return stranka(400, 'Neplatný odkaz', 'Odkaz na odhlásenie nie je platný. Skúste ho otvoriť priamo z e-mailu.');
   const mapa = await (await env.ASSETS.fetch(new URL('/data/odber-brevo.json', request.url))).json().catch(() => null);
-  const lid = mapa?.zoznamy?.dodavatel;
+  // k=obec → zoznam „Moja obec“, inak sledovanie dodávateľov
+  const lid = u.searchParams.get('k') === 'obec' ? mapa?.zoznamy?.obec : mapa?.zoznamy?.dodavatel;
   if (!lid) return stranka(503, 'Skúste neskôr', 'Odhlásenie sa teraz nepodarilo.');
   const r = await fetch(`https://api.brevo.com/v3/contacts/lists/${lid}/contacts/remove`, {
     method: 'POST', headers: { 'api-key': env.BREVO_API_KEY, 'content-type': 'application/json', accept: 'application/json' },

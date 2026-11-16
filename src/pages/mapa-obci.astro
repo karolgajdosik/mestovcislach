@@ -1,0 +1,105 @@
+---
+// Mapa všetkých obcí Slovenska zafarbená podľa zvoleného ukazovateľa (kvantily – 7 rovnako početných skupín).
+// Body obcí a hranice krajov sa vykreslia pri zostavení; hodnoty načíta prehliadač z /data/obce-porovnanie.json.
+import Base from '../layouts/Base.astro';
+import { krajeMapy, bod, SIRKA, VYSKA } from '../lib/obce';
+import { ukazovatele, POLIA } from '../lib/ukazovatele-obci';
+import '../styles/stranka.css';
+const kraje = krajeMapy();
+const body = ukazovatele().map((x, i) => {
+  if (!x.o.poloha) return null;
+  const [cx, cy] = bod(x.o.poloha[1], x.o.poloha[0]);
+  const r = Math.min(9, 2.4 + Math.sqrt(x.h.obyv ?? 0) / 45);
+  return { i, cx, cy, r: Math.round(r * 10) / 10, n: x.o.nazov, u: x.url };
+}).filter((x): x is NonNullable<typeof x> => !!x).sort((a, b) => b.r - a.r);
+const VOLBY = POLIA.filter(([k]) => k !== 'pm10');
+---
+<Base title="Mapa obcí Slovenska podľa ukazovateľa – mestovcislach.sk" description="Všetky obce Slovenska na jednej mape – vek, rast obyvateľov, vzdelanie, nezamestnanosť, účasť vo voľbách, klíma, rozpočet a odpad. Vyberte ukazovateľ a kliknite na obec.">
+  <section class="hero">
+    <p class="kicker">Mapa</p>
+    <h1>Mapa obcí Slovenska</h1>
+    <p class="lead">Každý bod je obec (väčšie bodky = viac obyvateľov). Farba ukazuje zvolený ukazovateľ – od najnižších hodnôt (svetlá) po najvyššie (tmavá), v siedmich rovnako početných skupinách.</p>
+  </section>
+  <section class="card mo-mapa">
+    <label class="mo-vyber">Ukazovateľ
+      <select id="mo-ukaz">{VOLBY.map(([k, n, j]) => <option value={k} selected={k === 'vek'}>{n}{j ? ` (${j})` : ''}</option>)}</select>
+    </label>
+    <div class="mo-platno">
+      <svg viewBox={`0 0 ${SIRKA} ${VYSKA}`} role="img" aria-label="Mapa obcí Slovenska podľa zvoleného ukazovateľa" id="mo-svg">
+        {kraje.map((k) => <path d={k.d} class="mo-kraj"><title>{k.nazov}</title></path>)}
+        {body.map((b) => <circle cx={b.cx} cy={b.cy} r={b.r} data-i={b.i} data-n={b.n} data-u={b.u}></circle>)}
+      </svg>
+      <div class="mo-tip" id="mo-tip" hidden></div>
+    </div>
+    <ol class="mo-legenda" id="mo-legenda" aria-label="Legenda"></ol>
+    <p class="pozn" id="mo-stav">Načítavam údaje…</p>
+  </section>
+  <p class="pozn"><a href="/rebricky/">Rebríčky obcí</a> · <a href="/porovnaj-obce/">Porovnaj dve obce</a></p>
+  <p class="zdroj">Zdroj: ŠÚ SR, ÚPSVaR, ŠÚ SR – voľby 2026, Open-Meteo/ERA5, MF SR – rozpocet.sk, Wikidata; hranice krajov © prispievatelia OpenStreetMap. Metodika pri jednotlivých ukazovateľoch na profiloch obcí.</p>
+</Base>
+
+<script>
+  type D = { polia: [string, string, string][]; obce: (string | number | null)[][] };
+  const FARBY = ['#fdeedd', '#fbd3b0', '#f8b07f', '#f08a57', '#dc6340', '#b9412f', '#8c2422'];
+  const svg = document.getElementById('mo-svg')!;
+  const sel = document.getElementById('mo-ukaz') as HTMLSelectElement;
+  const leg = document.getElementById('mo-legenda')!;
+  const tip = document.getElementById('mo-tip')!;
+  const stav = document.getElementById('mo-stav')!;
+  const kruhy = [...svg.querySelectorAll<SVGCircleElement>('circle')];
+  const fmt = (x: number) => x.toLocaleString('sk-SK', { maximumFractionDigits: 1 });
+  fetch('/data/obce-porovnanie.json').then((r) => r.json()).then((d: D) => {
+    const kresli = () => {
+      const pi = d.polia.findIndex(([k]) => k === sel.value);
+      const [, nazov, j] = d.polia[pi];
+      const hod = (i: number) => d.obce[i]?.[4 + pi] as number | null;
+      const vsetky = d.obce.map((_, i) => hod(i)).filter((x): x is number => x != null).sort((a, b) => a - b);
+      const hranice = FARBY.slice(1).map((_, k) => vsetky[Math.floor(((k + 1) * vsetky.length) / FARBY.length)]);
+      const skup = (x: number) => { let k = 0; while (k < hranice.length && x >= hranice[k]) k++; return k; };
+      for (const c of kruhy) {
+        const v = hod(Number(c.dataset.i));
+        c.style.fill = v == null ? 'var(--line)' : FARBY[skup(v)];
+        c.dataset.v = v == null ? '' : `${fmt(v)}${j ? ` ${j}` : ''}`;
+      }
+      const od = [vsetky[0], ...hranice], po = [...hranice, vsetky[vsetky.length - 1]];
+      leg.innerHTML = FARBY.map((f, k) => `<li><i style="background:${f}"></i>${fmt(od[k])} – ${fmt(po[k])}${j ? ` ${j}` : ''}</li>`).join('');
+      stav.textContent = `${nazov}: ${vsetky.length.toLocaleString('sk-SK')} obcí s údajmi, medián ${fmt(vsetky[Math.floor(vsetky.length / 2)])}${j ? ` ${j}` : ''}. Sivé = bez údajov.`;
+      try { history.replaceState(null, '', `?u=${sel.value}`); } catch { /* */ }
+    };
+    const q = new URLSearchParams(location.search).get('u');
+    if (q && [...sel.options].some((o) => o.value === q)) sel.value = q;
+    sel.addEventListener('change', kresli);
+    kresli();
+  }).catch(() => { stav.textContent = 'Údaje sa nepodarilo načítať.'; });
+  const ukaz = (c: SVGCircleElement, e: { clientX: number; clientY: number }) => {
+    const box = svg.parentElement!.getBoundingClientRect();
+    tip.hidden = false;
+    tip.textContent = `${c.dataset.n}: ${c.dataset.v || 'bez údajov'}`;
+    tip.style.left = `${Math.min(box.width - 160, Math.max(0, e.clientX - box.left + 10))}px`;
+    tip.style.top = `${Math.max(0, e.clientY - box.top - 34)}px`;
+  };
+  svg.addEventListener('pointermove', (e) => { const c = (e.target as Element).closest('circle') as SVGCircleElement | null; if (c) ukaz(c, e); else tip.hidden = true; });
+  svg.addEventListener('pointerleave', () => { tip.hidden = true; });
+  // klik: na dotykovej obrazovke prvý dotyk ukáže hodnotu, druhý otvorí obec
+  let posledna: SVGCircleElement | null = null;
+  svg.addEventListener('click', (e) => {
+    const c = (e.target as Element).closest('circle') as SVGCircleElement | null;
+    if (!c) return;
+    if (matchMedia('(pointer: coarse)').matches && posledna !== c) { posledna = c; ukaz(c, e); return; }
+    location.href = c.dataset.u!;
+  });
+</script>
+
+<style>
+  .mo-vyber { display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 0.9rem; max-width: 420px; }
+  .mo-vyber select { font: inherit; font-weight: 400; padding: 9px 10px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); }
+  .mo-platno { position: relative; margin-top: 14px; }
+  .mo-platno svg { width: 100%; height: auto; display: block; }
+  .mo-kraj { fill: var(--bg); stroke: var(--muted); stroke-width: 1.2; }
+  .mo-platno circle { stroke: rgba(0, 0, 0, 0.25); stroke-width: 0.4; cursor: pointer; }
+  .mo-platno circle:hover { stroke: var(--text); stroke-width: 1.6; }
+  .mo-tip { position: absolute; pointer-events: none; background: var(--text); color: var(--card); padding: 5px 9px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
+  .mo-legenda { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 0; margin: 12px 0 0; font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+  .mo-legenda :global(li) { display: flex; align-items: center; gap: 5px; }
+  .mo-legenda :global(i) { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.2); }
+</style>

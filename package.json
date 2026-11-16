@@ -12,9 +12,12 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.1.1",
+    "@resvg/resvg-js": "^2.6.2",
     "astro": "^7.3.8",
     "chart.js": "^4.5.1",
     "leaflet": "^1.9.4",
-    "minisearch": "^7.2.0"
+    "minisearch": "^7.2.0",
+    "satori": "^0.12.2"
   }
 }
