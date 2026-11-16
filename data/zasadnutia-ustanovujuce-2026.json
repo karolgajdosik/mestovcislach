@@ -1,10 +1,26 @@
 {
  "mesta": {
-  "bratislava": [],
+  "bratislava": [
+   {
+    "nazov": "PozvÃ¡nka na ustanovujÃºce zasadnutie MestskÃ©ho zastupiteÄ¾stva hlavnÃ©ho mesta Slovenskej republiky Bratislavy23.11.2026",
+    "url": "https://www.bratislava.sk/uradna-tabula/TUFHMDEwMENMR0RUIzA=",
+    "termin": "2026-11-23",
+    "ustanovujuce": true,
+    "videne_od": "2026-11-16"
+   }
+  ],
   "trnava": [],
   "trencin": [],
   "nitra": [],
-  "zilina": [],
+  "zilina": [
+   {
+    "nazov": "Ustanovujúce zasadnutie Mestského zastupiteľstva v Žiline, konané dňa 16.11.2026 – živé vysielanie",
+    "url": "https://zilina.sk/ustanovujuce-zasadnutie-mestskeho-zastupitelstva-v-ziline-konane-dna-16-11-2026-zive-vysielanie/",
+    "termin": "2026-11-16",
+    "ustanovujuce": true,
+    "videne_od": "2026-11-16"
+   }
+  ],
   "banska-bystrica": [
    {
     "nazov": "Pozvánka na zasadnutie Mestského zastupiteľstva 3.11.2026",
@@ -24,5 +40,5 @@
   "presov": [],
   "kosice": []
  },
- "aktualizovane": "2026-11-11T03:23+00:00"
+ "aktualizovane": "2026-11-16T10:14+00:00"
 }
