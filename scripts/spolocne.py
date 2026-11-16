@@ -13,6 +13,7 @@ import re
 import sys
 import time
 import unicodedata
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
 
@@ -91,8 +92,30 @@ def mc_podla_polohy() -> Callable[[float, float], str | None]:
     return najdi
 
 
+CACHE_ADRESY = Path(__file__).resolve().parent.parent / ".cache" / "adresy"  # medzi behmi drží actions/cache, do repa nejde
+
+
 def adresy_mv() -> list[dict]:
-    """Všetky adresné body Bratislavy z registra adries: {mc, ulica, sup, ori, lon, lat}."""
+    """Všetky adresné body Bratislavy z registra adries: {mc, ulica, sup, ori, lon, lat}.
+    Pri výpadku servera MV SR sa použije posledná úspešne stiahnutá kópia z cache (s upozornením)."""
+    try:
+        vysledok = _adresy_mv_stiahni()
+    except Exception as e:  # noqa: BLE001
+        subor = CACHE_ADRESY / "adresy.json"
+        if not subor.exists():
+            raise
+        vysledok = json.loads(subor.read_text(encoding="utf-8"))
+        print(f"::warning title=Register adries MV SR::server nedostupný ({type(e).__name__}) – použitá kópia z {datetime.fromtimestamp(subor.stat().st_mtime, timezone.utc):%d. %m. %Y}")
+        return vysledok
+    try:
+        CACHE_ADRESY.mkdir(parents=True, exist_ok=True)
+        (CACHE_ADRESY / "adresy.json").write_text(json.dumps(vysledok, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    except OSError:
+        pass
+    return vysledok
+
+
+def _adresy_mv_stiahni() -> list[dict]:
     vysledok = []
     for mc, lau in LAU_ADRESY.items():
         # rageo.minv.sk občas vráti 502/503 – skúsiť znova (30 s, 60 s, 120 s), až potom zlyhať
