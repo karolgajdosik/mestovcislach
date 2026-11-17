@@ -262,6 +262,27 @@ let _mat: { rok: number; sr: Record<string, number>; obce: Record<string, ({ typ
 let _mc: Record<string, { meta: any; casti: Record<string, any> }> | null | undefined;
 let _ovz: { rok: number; max_km: number; obce: Record<string, Record<'pm10' | 'pm25' | 'no2', [number, number, string, string]>> } | null | undefined;
 export const ovzdusieInfo = () => (_ovz === undefined ? (_ovz = citaj('data', 'obce', 'ovzdusie.json')) : _ovz);
+let _pb: any;
+export const pamiatkyBodyInfo = () => (_pb === undefined ? (_pb = citaj('data', 'obce', 'pamiatky-body.json')) : _pb);
+export type PamiatkaPreletu = { n: string; p: [number, number]; t: string; q: string; f?: { u: string; a: string; l: string; s: string }; w?: string };
+/** Významné pamiatky pre 3D prelet: z obce (kódu ŠÚ SR), prípadne zlúčené z viacerých kódov (mesto z mestských častí) – najviac 6. */
+export function pamiatkyPreletu(...kody: string[]): PamiatkaPreletu[] {
+  const zoz = kody.map((k) => (pamiatkyBodyInfo()?.obce?.[k] ?? []) as PamiatkaPreletu[]);
+  const out: PamiatkaPreletu[] = [];
+  for (let i = 0; out.length < 6 && zoz.some((z) => z[i]); i++) for (const z of zoz) if (z[i] && out.length < 6 && !out.some((x) => x.q === z[i].q)) out.push(z[i]);
+  return out;
+}
+/** Kódy mestských častí mesta (ŠÚ SR) z data/mesta/{slug}.json. */
+const _kc = new Map<string, Record<string, string>>();
+export function kodyCasti(slug: string): Record<string, string> {
+  if (_kc.has(slug)) return _kc.get(slug)!;
+  const d = citaj('data', 'mesta', `${slug}.json`) as any;
+  const zoz = d?.komunalne?.['2026']?.mestske_casti ?? [];
+  const out: Record<string, string> = {};
+  for (const c of (Array.isArray(zoz) ? zoz : Object.values(zoz)) as any[]) if (c?.kod && c?.nazov) out[String(c.nazov)] = String(c.kod);
+  _kc.set(slug, out);
+  return out;
+}
 export const obrazkyInfo = () => (_obr === undefined ? (_obr = citaj('data', 'obce', 'obrazky.json')) : _obr);
 export const maturitaInfo = () => (_mat === undefined ? (_mat = citaj('data', 'obce', 'maturita.json')) : _mat);
 export const mcInfo = () => (_mc === undefined ? (_mc = citaj('data', 'obce', 'mc.json')) : _mc);

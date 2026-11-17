@@ -9,7 +9,7 @@ interface Props {
   /** „nad obcou“, „nad mestskou časťou“, „nad mestom“ */
   nad: string;
   video: VideoData;
-  prelet?: { stred: [number, number]; bbox?: [number, number, number, number] | null; km2?: number | null; titulky: [string, string][] } | null;
+  prelet?: { stred: [number, number]; bbox?: [number, number, number, number] | null; km2?: number | null; titulky: [string, string][]; pamiatky?: { n: string; p: [number, number]; t: string; q: string; f?: { u: string; a: string; l: string; s: string }; w?: string }[] } | null;
 }
 const { nazov, nad, video, prelet } = Astro.props;
 ---
@@ -30,14 +30,15 @@ const { nazov, nad, video, prelet } = Astro.props;
     {prelet && (
       <div class="pr" data-prelet={JSON.stringify({ nazov, ...prelet })}>
         <div class="pr-uvod">
-          <p><b>3D prelet {nad}</b> – kamera obletí územie s reliéfom terénu a zastaví sa pri významných miestach. Mapou môžete kedykoľvek pohnúť sami.</p>
+          <p><b>3D prelet {nad}</b> – kamera obletí územie s reliéfom terénu a zastaví sa pri významných pamiatkach a miestach – s titulkami a hovoreným slovom (slovenský hlas prehliadača). Mapou môžete kedykoľvek pohnúť sami.</p>
           <button type="button" class="ob-akcia pr-start">▶ Spustiť prelet</button>
         </div>
         <div class="pr-okno" hidden>
           <div class="pr-mapa"></div>
-          <div class="pr-titulok"><b></b><span></span></div>
+          <div class="pr-titulok"><img class="pr-foto" alt="" hidden decoding="async" referrerpolicy="no-referrer" /><div class="pr-text"><b></b><span></span><small class="pr-kredit" hidden></small></div></div>
           <div class="pr-ovl">
             <button type="button" data-pr="pauza">⏸ Pauza</button>
+            <button type="button" data-pr="hlas" hidden>🔊 Hlas</button>
             <button type="button" data-pr="podklad">🛰 Letecká snímka</button>
             <button type="button" data-pr="cela" aria-label="Na celú obrazovku">⛶</button>
             <button type="button" data-pr="zavriet" aria-label="Zavrieť prelet">✕</button>
@@ -106,6 +107,8 @@ const { nazov, nad, video, prelet } = Astro.props;
 
   document.querySelectorAll<HTMLElement>('.pr').forEach((el) => {
     el.querySelector('.pr-start')?.addEventListener('click', () => {
+      // iPhone/Safari: reč sa musí „odomknúť“ priamo v kliknutí, inak neskôr nezaznie
+      try { if ('speechSynthesis' in window) { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; window.speechSynthesis.speak(u); } } catch { /* bez hlasu */ }
       import('../scripts/prelet').then(({ spustiPrelet }) => spustiPrelet(el)).catch(() => {
         const t = el.querySelector('.pr-titulok b');
         if (t) t.textContent = 'Mapu sa nepodarilo načítať.';
@@ -143,6 +146,12 @@ const { nazov, nad, video, prelet } = Astro.props;
   /* sekcia má content-visibility (obce.css) – pri maximalizácii ju vypnúť, inak by pevné okno ostalo orezané v sekcii */
   .pv:has(.pr-okno.pr-max), .pv:has(.pr-okno:fullscreen) { content-visibility: visible; contain: none; }
   .pr-titulok { position: absolute; left: 12px; bottom: 30px; max-width: calc(100% - 24px); padding: 10px 14px; border-radius: 12px; background: rgba(15, 18, 26, 0.78); color: #fff; display: flex; flex-direction: column; gap: 2px; pointer-events: none; transition: opacity 0.4s; }
+  .pr-titulok { flex-direction: row; align-items: center; gap: 12px; }
+  .pr-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .pr-foto { width: 104px; height: 78px; object-fit: cover; border-radius: 8px; flex: none; background: #333; }
+  .pr-foto[hidden], .pr-kredit[hidden] { display: none; }
+  .pr-kredit { font-size: 0.68rem; opacity: 0.7; }
+  @media (max-width: 600px) { .pr-foto { width: 64px; height: 52px; } .pr-titulok span { font-size: 0.78rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } }
   .pr-titulok b { font-size: 1.1rem; }
   .pr-titulok span { font-size: 0.85rem; opacity: 0.88; }
   .pr-titulok.pr-skryty { opacity: 0; }

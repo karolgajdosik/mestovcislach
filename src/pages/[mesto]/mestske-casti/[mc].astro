@@ -4,6 +4,7 @@ import Base from '../../../layouts/Base.astro';
 import PozriObec from '../../../components/PozriObec.astro';
 import { videoCasti } from '../../../lib/video-data';
 import { polohaCasti } from '../../../lib/stvrte';
+import { pamiatkyPreletu, kodyCasti } from '../../../lib/obce';
 import '../../../styles/stranka.css';
 import { MESTA, type Mesto } from '../../../mesta';
 import { castiMesta, type ProfilCasti, type Ukazovatel } from '../../../lib/casti-mesta';
@@ -71,7 +72,7 @@ const videoMc = videoCasti({ nazov: p.n, mesto: m.nazov, slug: `${m.slug}-${p.sl
   deti: p.sklad.deti.hodnota, sen: p.sklad.seniori.hodnota, vs: p.sklad.vs.hodnota, druhe: p.sklad.vlastne.hodnota != null ? [`${p.sklad.vlastne.hodnota.toLocaleString('sk-SK')} %`, 'bytov vo vlastníctve'] : null,
   ucast: p.komunalne[0]?.ucast ?? null });
 const polMc = polohaCasti(m.slug, p.n);
-const preletMc = polMc ? { stred: polMc.stred, bbox: polMc.bbox, km2: p.km2, titulky: [[p.n, `mestská časť – ${m.nazov}`], [p.pocet != null ? `${p.pocet.toLocaleString('sk-SK')} obyvateľov` : p.n, p.zmena10.hodnota != null ? `${p.zmena10.hodnota > 0 ? '+' : ''}${p.zmena10.hodnota.toLocaleString('sk-SK')} % za 10 rokov` : ''], [p.n, 'Ďalšie čísla nájdete nižšie na stránke']] as [string, string][] } : null;
+const preletMc = polMc ? { stred: polMc.stred, bbox: polMc.bbox, km2: p.km2, titulky: [[p.n, `mestská časť – ${m.nazov}`], [p.pocet != null ? `${p.pocet.toLocaleString('sk-SK')} obyvateľov` : p.n, p.zmena10.hodnota != null ? `${p.zmena10.hodnota > 0 ? '+' : ''}${p.zmena10.hodnota.toLocaleString('sk-SK')} % za 10 rokov` : ''], [p.n, 'Ďalšie čísla nájdete nižšie na stránke']] as [string, string][], pamiatky: pamiatkyPreletu(...[kodyCasti(m.slug)[p.n]].filter(Boolean)) } : null;
 ---
 <Base title={`${p.n} (${m.nazov}) – mestská časť v číslach – mestovcislach.sk`} description={popisStr}>
   <nav class="drobky" aria-label="Kde sa nachádzate"><a href={`/${m.slug}/mestske-casti`}>Mestské časti</a> <span aria-hidden="true">/</span> <span translate="no">{p.n}</span></nav>

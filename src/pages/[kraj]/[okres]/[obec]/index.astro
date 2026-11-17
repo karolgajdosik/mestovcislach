@@ -13,6 +13,7 @@ import OdberEmail from '../../../../components/OdberEmail.astro';
 import PozriObec from '../../../../components/PozriObec.astro';
 import type { Snimka } from '../../../../scripts/video-obce';
 import { POLIA, ukazovatele } from '../../../../lib/ukazovatele-obci';
+import { pamiatkyPreletu } from '../../../../lib/obce';
 import { umiestnenia } from '../../../../lib/rebricky';
 
 export function getStaticPaths() {
@@ -328,7 +329,7 @@ if (wk?.[1]) titulky.push([`${fmt(wk[1])} m n. m.`, wk[0] ? `prvá písomná zmi
 if (pam && pam.n > 0) titulky.push([`${fmt(pam.n)} pamiatok`, (pam.top ?? []).slice(0, 2).join(', ')]);
 if (ukz.vek != null) titulky.push([`Priemerný vek ${des(ukz.vek!)} r.`, ukz.nez != null ? `nezamestnanosť ${des(ukz.nez!)} %` : '']);
 titulky.push([o.nazov, 'Ďalšie čísla nájdete nižšie na stránke']);
-const preletData = o.poloha ? { stred: o.poloha as [number, number], bbox: null, km2: uz ? uz.ha / 100 : null, titulky } : null;
+const preletData = o.poloha ? { stred: o.poloha as [number, number], bbox: null, km2: uz ? uz.ha / 100 : null, titulky, pamiatky: pamiatkyPreletu(o.kod) } : null;
 const skratka = fakty.sort((a_, b_) => b_[0] - a_[0]).slice(0, 4).map(([, t_]) => t_);
 // obsah sekcií (čipy) – rovnaké podmienky ako pri sekciách nižšie
 const BLOKY: [string, string, [string, string, unknown][]][] = [

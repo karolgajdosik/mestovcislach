@@ -3,7 +3,18 @@
 // (GKÚ Bratislava, CC BY 4.0), vložená pod cesty a názvy, ak služba odpovie a povolí CORS.
 // Terén: Terrain Tiles (Terrarium, AWS Open Data). Zastávky kamery: pomenované body záujmu z dlaždíc OpenMapTiles v okolí.
 
-type Data = { nazov: string; stred: [number, number]; bbox?: [number, number, number, number] | null; km2?: number | null; titulky: [string, string][] };
+type Pamiatka = { n: string; p: [number, number]; t: string; q: string; f?: { u: string; a: string; l: string; s: string }; w?: string };
+type Data = { nazov: string; stred: [number, number]; bbox?: [number, number, number, number] | null; km2?: number | null; titulky: [string, string][]; pamiatky?: Pamiatka[] };
+
+// ---------- hovorené slovo: slovenský hlas zabudovaný v prehliadači / systéme (Web Speech API, zadarmo, nič sa nesťahuje) ----------
+const reč = typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null;
+function slovenskyHlas(): Promise<SpeechSynthesisVoice | null> {
+  if (!reč) return Promise.resolve(null);
+  const vyber = () => { const v = reč.getVoices(); return v.find((x) => /^sk([-_]|$)/i.test(x.lang) && /enhanced|premium|natural|neural/i.test(x.name)) ?? v.find((x) => /^sk([-_]|$)/i.test(x.lang)) ?? null; };
+  const hned = vyber();
+  if (hned || reč.getVoices().length) return Promise.resolve(hned);
+  return new Promise((ok) => { const t = setTimeout(() => ok(vyber()), 1500); reč.addEventListener('voiceschanged', () => { clearTimeout(t); ok(vyber()); }, { once: true }); });
+}
 
 const OFM = 'https://tiles.openfreemap.org';
 const WMS = 'https://zbgisws.skgeodesy.sk/zbgis_ortofoto_wms/service.svc/get';
@@ -77,7 +88,14 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   okno.hidden = false;
   el.querySelector<HTMLElement>('.pr-uvod')!.hidden = true;
   el.classList.add('pr-otvoreny');
-  const titulok = (b: string, s = '') => { tit.querySelector('b')!.textContent = b; tit.querySelector('span')!.textContent = s; tit.classList.toggle('pr-skryty', !b); };
+  const fotoEl = tit.querySelector<HTMLImageElement>('.pr-foto');
+  const kreditEl = tit.querySelector<HTMLElement>('.pr-kredit');
+  const titulok = (b: string, s = '', f?: Pamiatka['f']) => {
+    tit.querySelector('b')!.textContent = b; tit.querySelector('span')!.textContent = s; tit.classList.toggle('pr-skryty', !b);
+    if (fotoEl) { fotoEl.hidden = !f; if (f) { fotoEl.src = f.u; fotoEl.alt = b; } else fotoEl.removeAttribute('src'); }
+    if (kreditEl) { kreditEl.hidden = !f; kreditEl.textContent = f ? `Foto: ${f.a || 'Wikimedia Commons'}${f.l ? ` (${f.l})` : ''}` : ''; }
+    tit.classList.toggle('pr-s-fotkou', !!f);
+  };
   titulok('Načítavam mapu…');
 
   const [lat, lon] = d.stred;
@@ -190,6 +208,31 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
 
   if (!pohyb) { titulok(d.nazov, d.titulky[0]?.[1] ?? ''); tlPauza.hidden = true; return; }
 
+  const hlas = await slovenskyHlas();
+  const tlHlas = el.querySelector<HTMLButtonElement>('[data-pr="hlas"]');
+  let hovor = !!hlas;
+  if (tlHlas) {
+    tlHlas.hidden = !hlas;
+    const stavHlasu = () => { tlHlas.textContent = hovor ? '🔊 Hlas' : '🔇 Bez hlasu'; tlHlas.setAttribute('aria-pressed', String(hovor)); };
+    tlHlas.addEventListener('click', () => { hovor = !hovor; if (!hovor) reč?.cancel(); stavHlasu(); });
+    stavHlasu();
+  }
+  if (!hlas) zdroj.textContent += ' Prehliadač nemá slovenský hlas – prelet je s titulkami bez zvuku.';
+  /** Prečíta text a počká na koniec (pri vypnutom hlase približný čas čítania titulku). */
+  const povedz = (text: string, minMs = 0) => new Promise<void>((ok) => {
+    const odhad = Math.max(minMs, Math.min(16000, 2500 + text.length * 55));
+    if (!hovor || !hlas || !reč || !text) { setTimeout(ok, odhad); return; }
+    reč.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.voice = hlas; u.lang = hlas.lang; u.rate = 1; u.pitch = 1;
+    let hotovo = false;
+    const koniec = () => { if (!hotovo) { hotovo = true; ok(); } };
+    u.onend = koniec; u.onerror = koniec;
+    setTimeout(koniec, 3000 + text.length * 110); // poistka, ak prehliadač „zabudne“ ohlásiť koniec
+    reč.speak(u);
+  });
+  const reci = (b: string, s: string) => `${b}. ${s}`.replace(/\s+/g, ' ').replace(/−/g, 'mínus ').replace(/\+(\d)/g, 'plus $1').replace(/ m n\. m\./g, ' metrov nad morom');
+
   // scenár preletu: kroky sa dajú pozastaviť (pauza zastaví kameru a krok sa potom zopakuje)
   let pauza = false;
   let i = 0;
@@ -197,9 +240,23 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   const pohni = (f: () => void) => new Promise<void>((ok) => { map.once('moveend', () => ok()); f(); });
   const tit_ = (k: number) => d.titulky[k] ?? d.titulky[d.titulky.length - 1] ?? [d.nazov, ''];
   const kroky: (() => Promise<void>)[] = [
-    async () => { titulok(...tit_(0)); await pohni(() => map.flyTo({ center: [lon, lat], zoom, pitch: 58, bearing: -20, duration: 6000, essential: true })); },
-    async () => { titulok(...tit_(1)); await pohni(() => map.rotateTo(map.getBearing() + 70, { duration: 7000, easing: (x: number) => x })); },
+    async () => { titulok(...tit_(0)); await Promise.all([pohni(() => map.flyTo({ center: [lon, lat], zoom, pitch: 58, bearing: -20, duration: 6000, essential: true })), povedz(reci(...tit_(0)))]); },
+    async () => { titulok(...tit_(1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 70, { duration: 7000, easing: (x: number) => x })), povedz(reci(...tit_(1)))]); },
+    ...(d.pamiatky ?? []).map((pm) => async () => {
+      // významná pamiatka: prílet, titulok s fotkou a pomalé obletenie počas čítania
+      titulok(pm.n, pm.t, pm.f);
+      await pohni(() => map.flyTo({ center: [pm.p[1], pm.p[0]], zoom: 17, pitch: 62, bearing: map.getBearing() + 40, duration: 5000, essential: true }));
+      if (pauza) return;
+      const citanie = povedz(reci(pm.n, pm.t), 6000);
+      let obieha = true;
+      const krut = async () => { while (obieha && !pauza) await pohni(() => map.rotateTo(map.getBearing() + 25, { duration: 4000, easing: (x: number) => x })); };
+      const k = krut();
+      await citanie;
+      obieha = false;
+      await k;
+    }),
     async () => {
+      if ((d.pamiatky ?? []).length) return; // pamiatky z Wikidata nahrádzajú body z mapy
       // zastávky pri významných miestach (pri pauze sa krok zopakuje od začiatku)
       let body = najdiBody();
       if (!body.length && map.getZoom() < 14.6) {
@@ -213,12 +270,12 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
         if (pauza) return;
         const [ta, tb] = 2 + k < d.titulky.length - 1 ? tit_(2 + k) : ['', ''];
         titulok(b.n, `${b.t[0].toUpperCase()}${b.t.slice(1)}${ta ? ` · ${ta}${tb ? ` – ${tb}` : ''}` : ''}`);
-        await pohni(() => map.flyTo({ center: b.p, zoom: Math.min(17, zoom + 2.2), pitch: 66, bearing: map.getBearing() + 35, duration: 5500, essential: true }));
-        await sOkamih(1500);
+        await Promise.all([pohni(() => map.flyTo({ center: b.p, zoom: Math.min(17, zoom + 2.2), pitch: 66, bearing: map.getBearing() + 35, duration: 5500, essential: true })), povedz(ta ? reci(b.n, `${ta}, ${tb}`) : b.n)]);
+        await sOkamih(800);
       }
     },
-    async () => { titulok(...(2 + pocetBodov < d.titulky.length - 1 ? tit_(2 + pocetBodov) : tit_(0))); await pohni(() => map.flyTo({ center: [lon, lat], zoom: zoom - 0.8, pitch: 50, bearing: map.getBearing() + 40, duration: 6000, essential: true })); },
-    async () => { titulok(...tit_(d.titulky.length - 1)); await pohni(() => map.rotateTo(map.getBearing() + 90, { duration: 9000, easing: (x: number) => x })); },
+    async () => { const tt = 2 + pocetBodov < d.titulky.length - 1 ? tit_(2 + pocetBodov) : tit_(0); titulok(...tt); await Promise.all([pohni(() => map.flyTo({ center: [lon, lat], zoom: zoom - 0.8, pitch: 50, bearing: map.getBearing() + 40, duration: 6000, essential: true })), povedz(reci(...tt))]); },
+    async () => { titulok(...tit_(d.titulky.length - 1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 90, { duration: 9000, easing: (x: number) => x })), povedz(`${d.nazov}. Ďalšie čísla nájdete na stránke mesto v číslach.`)]); },
   ];
   const hraj = async () => {
     while (i < kroky.length && !pauza) {
@@ -228,7 +285,7 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     }
     if (i >= kroky.length) { titulok(d.nazov, 'Koniec preletu – mapou môžete pohybovať sami.'); tlPauza.textContent = '↺ Znova'; tlPauza.dataset.stav = 'znova'; }
   };
-  const zastav = () => { if (pauza) return; pauza = true; map.stop(); tlPauza.textContent = '▶ Pokračovať'; tlPauza.dataset.stav = 'pauza'; };
+  const zastav = () => { if (pauza) return; pauza = true; map.stop(); reč?.cancel(); tlPauza.textContent = '▶ Pokračovať'; tlPauza.dataset.stav = 'pauza'; };
   tlPauza.addEventListener('click', () => {
     if (tlPauza.dataset.stav === 'znova') { i = 0; }
     else if (!pauza) { zastav(); return; }

@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import PozriObec from '../../../components/PozriObec.astro';
 import { videoCasti } from '../../../lib/video-data';
 import { polohaCasti } from '../../../lib/stvrte';
+import { pamiatkyPreletu, kodyCasti } from '../../../lib/obce';
 import path from 'node:path';
 import Base from '../../../layouts/Base.astro';
 import { profily, type Profil, type Porovnanie } from '../../../lib/profil-mc';
@@ -76,7 +77,7 @@ const videoMc = videoCasti({ nazov: p.mc, mesto: 'Bratislava', slug: `bratislava
   deti: p.sklad.deti?.hodnota ?? null, sen: p.sklad.seniori?.hodnota ?? null, vs: p.sklad.vs?.hodnota ?? null, druhe: p.sklad.vlastne_byty?.hodnota != null ? [`${des(p.sklad.vlastne_byty.hodnota)} %`, 'bytov vo vlastníctve'] : null,
   ucast: p.volby.starosta?.ucast ?? null, nez: p.nezamestnanost?.pdu ?? null });
 const polMc = polohaCasti('bratislava', p.mc);
-const preletMc = polMc ? { stred: polMc.stred, bbox: polMc.bbox, km2: p.obyvatelia.rozloha, titulky: [[p.mc, 'mestská časť Bratislavy'], [`${fmt(p.obyvatelia.pocet)} obyvateľov`, p.obyvatelia.zmena10 != null ? `${znam(p.obyvatelia.zmena10)} za 10 rokov` : ''], [`${des(p.obyvatelia.rozloha)} km²`, p.obyvatelia.hustota != null ? `${fmt(p.obyvatelia.hustota)} obyvateľov na km²` : ''], [p.mc, 'Ďalšie čísla nájdete nižšie na stránke']] as [string, string][] } : null;
+const preletMc = polMc ? { stred: polMc.stred, bbox: polMc.bbox, km2: p.obyvatelia.rozloha, titulky: [[p.mc, 'mestská časť Bratislavy'], [`${fmt(p.obyvatelia.pocet)} obyvateľov`, p.obyvatelia.zmena10 != null ? `${znam(p.obyvatelia.zmena10)} za 10 rokov` : ''], [`${des(p.obyvatelia.rozloha)} km²`, p.obyvatelia.hustota != null ? `${fmt(p.obyvatelia.hustota)} obyvateľov na km²` : ''], [p.mc, 'Ďalšie čísla nájdete nižšie na stránke']] as [string, string][], pamiatky: pamiatkyPreletu(...[kodyCasti('bratislava')[p.mc]].filter(Boolean)) } : null;
 ---
 <Base title={`${p.mc} – mestská časť Bratislavy – mestovcislach.sk`} description={popis}>
   <nav class="drobky" aria-label="Kde sa nachádzate"><a href="/bratislava/mestske-casti">Mestské časti</a> <span aria-hidden="true">/</span> <span translate="no">{p.mc}</span></nav>

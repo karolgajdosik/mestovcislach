@@ -1,12 +1,12 @@
 // Údaje pre komponent PozriObec (video „… v číslach“ a 3D prelet) z obecných dát – pre stránky krajských miest a mestských častí.
 import type { Snimka, VideoData } from '../scripts/video-obce';
 import { ukazovatele } from './ukazovatele-obci';
-import { klimaInfo, obrazkyInfo, wikiInfo, pamiatkyInfo } from './obce';
+import { klimaInfo, obrazkyInfo, wikiInfo, pamiatkyInfo, pamiatkyPreletu, kodyCasti, type PamiatkaPreletu } from './obce';
 
 const des = (x: number, d = 1) => x.toLocaleString('sk-SK', { minimumFractionDigits: d, maximumFractionDigits: d });
 const fmt = (x: number) => Math.round(x).toLocaleString('sk-SK');
 const zn = (x: number) => (x > 0 ? '+' : x < 0 ? '−' : '');
-export type Prelet = { stred: [number, number]; bbox?: [number, number, number, number] | null; km2?: number | null; titulky: [string, string][] };
+export type Prelet = { stred: [number, number]; bbox?: [number, number, number, number] | null; km2?: number | null; titulky: [string, string][]; pamiatky?: PamiatkaPreletu[] };
 
 /** Video a prelet pre obec/mesto podľa kódu obce ŠÚ SR. */
 export function videoObce(kod: string, url: string, kicker = 'v číslach'): { video: VideoData; prelet: Prelet | null } | null {
@@ -34,8 +34,16 @@ export function videoObce(kod: string, url: string, kicker = 'v číslach'): { v
   const km2 = h.hus && h.obyv ? h.obyv / h.hus : null;
   return {
     video: { nazov: o.nazov, slug: o.slug, foto: obr?.foto?.u ?? null, snimky: sn },
-    prelet: o.poloha ? { stred: o.poloha as [number, number], bbox: null, km2, titulky } : null,
+    prelet: o.poloha ? { stred: o.poloha as [number, number], bbox: null, km2, titulky, pamiatky: pamiatkyMesta(kod, url) } : null,
   };
+}
+
+/** Pamiatky mesta: z kódu mesta, a ak ich je málo, doplnené z mestských častí (Bratislava, Košice). */
+function pamiatkyMesta(kod: string, url: string): PamiatkaPreletu[] {
+  const vlastne = pamiatkyPreletu(kod);
+  if (vlastne.length >= 4) return vlastne;
+  const slug = url.replace(/^\//, '').split('/')[0];
+  return pamiatkyPreletu(kod, ...Object.values(kodyCasti(slug)));
 }
 
 /** Video pre mestskú časť zo zadaných čísel (stránky mestských častí majú vlastné profily). */
