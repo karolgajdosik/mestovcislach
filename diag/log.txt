@@ -1,16 +1,8 @@
-nasadené po 0 s
-stav 0 [13.82336531655368, 58.00000000000001, -11.754999999999995]
-stav 1 [14.491627253391309, 66, 107.67302181831873]
-stav 2 [13.02336531655368, 50, -86.73700000000008]
-stav 3 [13.02336531655368, 50, -40]
-T+0s Načítavam mapu…
-T+2s Prievidzaokres Prievidza · Trenčiansky kraj | zoom 12.2 pitch 0 bearing 0
-T+8s 41 695 obyvateľov−10,8 % za 10 rokov | zoom 13.8 pitch 58 bearing -20
-T+20s Kostol sv. Cyrila a MetodaKostol · 280 m n. m. prvá písomná  | zoom 13.8 pitch 58 bearing 50
-T+27s Kostol Nanebovzatia Panny Márie (Prievidza)Kostol · 32 pamia | zoom 16.0 pitch 66 bearing 85
-T+35s Evanjelický a. v. kostolKostol · Priemerný vek 46,7 r. nezam | zoom 16.0 pitch 66 bearing 120
-T+46s Kostol sv. Terézie z LisieuxKostol · Prievidza Ďalšie čísla  | zoom 16.0 pitch 66 bearing 155
-T+58s PrievidzaĎalšie čísla nájdete nižšie na stránke | zoom 16.0 pitch 66 bearing -170
-T+65s PrievidzaĎalšie čísla nájdete nižšie na stránke | zoom 13.0 pitch 50 bearing -130
-T+74s PrievidzaKoniec preletu – mapou môžete pohybovať sami. | zoom 13.0 pitch 50 bearing -40
+nasadené po 360 s
+chromium desktop pred: {'fs': False, 'max': False, 'okno': [958, 539], 'canvas': [958, 539], 'vp': [1280, 900]}
+chromium desktop po kliknutí: {'fs': True, 'max': False, 'okno': [1280, 900], 'canvas': [1280, 900], 'vp': [1280, 900]}
+chromium desktop späť: {'fs': False, 'max': False, 'okno': [958, 539], 'canvas': [958, 539], 'vp': [1280, 900]} chyby: []
+webkit iPhone pred: {'fs': False, 'max': False, 'okno': [344, 193], 'canvas': [344, 193], 'vp': [390, 664]}
+webkit iPhone po kliknutí: {'fs': False, 'max': True, 'okno': [390, 664], 'canvas': [390, 664], 'vp': [390, 664]}
+webkit iPhone späť: {'fs': False, 'max': False, 'okno': [344, 193], 'canvas': [344, 193], 'vp': [390, 664]} chyby: []
 HOTOVO
