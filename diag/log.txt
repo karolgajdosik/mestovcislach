@@ -1,8 +1,5 @@
-nasadené po 360 s
-chromium desktop pred: {'fs': False, 'max': False, 'okno': [958, 539], 'canvas': [958, 539], 'vp': [1280, 900]}
-chromium desktop po kliknutí: {'fs': True, 'max': False, 'okno': [1280, 900], 'canvas': [1280, 900], 'vp': [1280, 900]}
-chromium desktop späť: {'fs': False, 'max': False, 'okno': [958, 539], 'canvas': [958, 539], 'vp': [1280, 900]} chyby: []
-webkit iPhone pred: {'fs': False, 'max': False, 'okno': [344, 193], 'canvas': [344, 193], 'vp': [390, 664]}
-webkit iPhone po kliknutí: {'fs': False, 'max': True, 'okno': [390, 664], 'canvas': [390, 664], 'vp': [390, 664]}
-webkit iPhone späť: {'fs': False, 'max': False, 'okno': [344, 193], 'canvas': [344, 193], 'vp': [390, 664]} chyby: []
-HOTOVO
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 4, in <module>
+    if f["name"].endswith(".geojson"):
+       ~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
