@@ -1,7 +1,7 @@
-n_desk bežný {'mapa': [508, 176, 788, 443], 'kap': [298, 176, 209, 443], 'tit': [520, 500, 413, 89], 'foto': [534, 514, 88, 62], 'znacka': True, 'nazov': 'Nový zámok'}
-n_desk zväčšený {'mapa': [508, 176, 788, 443], 'kap': [298, 176, 209, 443], 'tit': [520, 479, 764, 110], 'foto': [534, 503, 88, 62], 'znacka': True, 'nazov': 'Starý zámok'}
+n_desk bežný {'mapa': [508, 176, 788, 443], 'kap': [298, 176, 209, 443], 'tit': [520, 479, 764, 110], 'foto': [534, 503, 88, 62], 'znacka': [889, 465, 26, 34], 'nazov': 'Starý zámok'}
+n_desk zväčšený {'mapa': [240, 0, 1126, 768], 'kap': [0, 0, 239, 768], 'tit': [252, 609, 560, 131], 'foto': [266, 629, 128, 90], 'znacka': [635, 330, 26, 34], 'nazov': 'Kostol svätej Kataríny'}
 n_desk chyby []
-n_mob bežný {'mapa': [37, 181, 316, 316], 'kap': [37, 498, 316, 279], 'tit': [45, 369, 300, 103], 'foto': [55, 395, 64, 52], 'znacka': True, 'nazov': 'Nový zámok'}
-n_mob zväčšený {'mapa': [0, 0, 390, 523], 'kap': [0, 524, 390, 320], 'tit': [8, 371, 366, 124], 'foto': [18, 409, 64, 48], 'znacka': True, 'nazov': 'Kostol svätej Kataríny'}
+n_mob bežný {'mapa': [37, 181, 316, 316], 'kap': [37, 498, 316, 279], 'tit': [45, 348, 300, 124], 'foto': [55, 384, 64, 52], 'znacka': [170, 341, 26, 34], 'nazov': 'Starý zámok'}
+n_mob zväčšený {'mapa': [0, 0, 390, 523], 'kap': [0, 524, 390, 320], 'tit': [8, 371, 366, 124], 'foto': [18, 409, 64, 48], 'znacka': [-144, 252, 26, 34], 'nazov': 'Kostol svätej Kataríny'}
 n_mob chyby []
 HOTOVO
