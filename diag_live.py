@@ -3,21 +3,22 @@ U="https://mestovcislach.sk/trenciansky-kraj/prievidza/prievidza/"
 for i in range(45):
     h=requests.get(U,timeout=30,headers={"Cache-Control":"no-cache"}).text
     css=re.findall(r'/_astro/[^"]+\.css',h)
-    if any('pr-otvoreny' in requests.get("https://mestovcislach.sk"+c,timeout=30).text for c in css): print("nasadené po",i*20,"s"); break
+    if any('pr-max' in requests.get("https://mestovcislach.sk"+c,timeout=30).text for c in css): print("nasadené po",i*20,"s"); break
     time.sleep(20)
 subprocess.run([sys.executable,"-m","pip","install","-q","playwright"],check=True)
-subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromium"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromium","webkit"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 from playwright.sync_api import sync_playwright
+JS="(()=>{const o=document.querySelector('.pr-okno');const r=o.getBoundingClientRect();const c=o.querySelector('canvas');return {fs:!!document.fullscreenElement,max:o.classList.contains('pr-max'),okno:[Math.round(r.width),Math.round(r.height)],canvas:c?[c.clientWidth,c.clientHeight]:null,vp:[innerWidth,innerHeight]}})()"
 with sync_playwright() as p:
-    b=p.chromium.launch(args=["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"])
-    pg=b.new_page(viewport={"width":1280,"height":900}); log=[]
-    pg.on("console",lambda m: log.append(m.text[:160]))
-    pg.goto(U); pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
-    pg.evaluate("""()=>{const t0=performance.now();const b=document.querySelector('.pr-titulok');new MutationObserver(()=>{const m=document.querySelector('.pr').__mapa;console.log('T+'+Math.round((performance.now()-t0)/1000)+'s '+b.textContent.slice(0,60)+(m?' | zoom '+m.getZoom().toFixed(1)+' pitch '+m.getPitch().toFixed(0)+' bearing '+m.getBearing().toFixed(0):''))}).observe(b,{subtree:true,childList:true,characterData:true});}""")
-    pg.click(".pr-start")
-    for k,w in enumerate([9000,9000,9000,9000]):
-        pg.wait_for_timeout(w); m=pg.evaluate("(()=>{const m=document.querySelector('.pr').__mapa;return m?[m.getZoom(),m.getPitch(),m.getBearing()]:null})()")
-        print("stav",k,m); pg.locator(".pr-okno").screenshot(path=f"diag/q{k}.jpg",type="jpeg",quality=65)
-    print("\n".join(l for l in log if l.startswith('T+'))); b.close()
+    for nazov,typ,opts in [("chromium desktop",p.chromium,{"viewport":{"width":1280,"height":900}}),("webkit iPhone",p.webkit,dict(p.devices["iPhone 13"]))]:
+        b=typ.launch(**({"args":["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"]} if typ==p.chromium else {}))
+        pg=b.new_context(**opts).new_page(); chyby=[]; pg.on("pageerror",lambda e: chyby.append(str(e)[:150]))
+        pg.goto(U); pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
+        pg.click(".pr-start"); pg.wait_for_selector('.pr-okno canvas',timeout=60000); pg.wait_for_timeout(4000)
+        print(nazov,"pred:",pg.evaluate(JS))
+        pg.click('[data-pr="cela"]'); pg.wait_for_timeout(2500)
+        print(nazov,"po kliknutí:",pg.evaluate(JS))
+        pg.screenshot(path=f"diag/cela_{typ.name}.jpg",type="jpeg",quality=60)
+        pg.click('[data-pr="cela"]'); pg.wait_for_timeout(1500)
+        print(nazov,"späť:",pg.evaluate(JS),"chyby:",chyby[:3]); b.close()
 print("HOTOVO")
-# 1794921452
