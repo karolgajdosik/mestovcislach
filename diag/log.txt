@@ -1,52 +1,11 @@
-/_astro/PozriObec.astro_astro_type_script_index_0_lang.Crw10q-i.js essential: 0 fotkou False
-0 ['13.8', '-2', True]
-0 shot fail
-1 ['17.0', '115', True]
-1 shot fail
-2 ['17.0', '180', True]
-2 shot fail
-3 ['17.0', '-91', True]
-3 shot fail
-4 ['17.0', '-40', True]
-4 shot fail
-5 ['17.0', '0', True]
-5 shot fail
-6 ['17.0', '50', True]
-6 shot fail
-Error with Permissions-Policy header: Unrecognized feature: 'interest-cohort'.
-JS stovcislach.sk/_astro/prelet.4sPjS8RP.js
-T+0s Načítavam mapu… | foto false
-Expected value to be of type number, but found null instead.
-T+4s Banská Štiavnica | foto false | z 12.2
-STALL 1542ms at T+7
-T+10s 9 139 obyvateľov | foto false | z 13.8
-STALL 2939ms at T+15
-T+18s Nový zámok | foto true | z 13.8
-STALL 2996ms at T+18
-Image "gate" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleimagemis
-Image "swimming_pool" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styl
-Image "lift_gate" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleima
-Image "motocross" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleima
-STALL 4818ms at T+24
-Image "atm" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleimagemiss
-Image "office" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleimagem
-Image "bollard" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleimage
-Image "recycling" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleima
-Image "athletics" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleima
-Image "sports_centre" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styl
-Image "basin" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleimagemi
-Image "cycle_barrier" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styl
-STALL 4838ms at T+29
-STALL 2942ms at T+37
-T+38s Starý zámok | foto true | z 17.0
-STALL 19996ms at T+72
-T+84s Kostol svätej Kataríny | foto true | z 17.0
-T+116s Počúvadlianske jazero | foto true | z 17.0
-STALL 6920ms at T+116
-Image "reservoir" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleima
-Image "climbing" could not be loaded. Please make sure you have added the image with map.addImage() or a "sprite" property in your style. You can provide missing images by listening for the "styleimag
-STALL 14326ms at T+136
-STALL 4416ms at T+148
-T+159s Klopačka | foto true | z 17.0
-STALL 5230ms at T+159
+nasadené po 360 s
+kapitoly: ['1. Banská Štiavnica', '2. 9\xa0139 obyvateľov', '3. Nový zámok [foto]', '4. Starý zámok [foto]', '5. Kostol svätej Kataríny [foto]', '6. Počúvadlianske jazero [foto]', '7. Klopačka [foto]', '8. Kostol Nanebovzatia Panny Márie [foto]', '9. Odlet', '10. Záver']
+štart ['Banská Štiavnica', '1. Banská Štiavnica', '13.7', True, '⏸ Pauza']
+po ⏭ ['9\xa0139 obyvateľov', '2. 9\xa0139 obyvateľov', '13.7', False, '⏸ Pauza']
+po klik 6. ['Počúvadlianske jazero', '6. Počúvadlianske jazero', '17.0', False, '⏸ Pauza']
+po ⏮ ['Kostol svätej Kataríny', '5. Kostol svätej Kataríny', '17.0', False, '⏸ Pauza']
+pauza ['Kostol svätej Kataríny', '5. Kostol svätej Kataríny', '17.0', False, '▶ Pokračovať']
+⏭ z pauzy ['Počúvadlianske jazero', '6. Počúvadlianske jazero', '15.5', False, '⏸ Pauza']
+shot fail
+chyby: []
 HOTOVO
