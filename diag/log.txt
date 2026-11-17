@@ -7,12 +7,12 @@ desk 22 {'scrollY': 1152, 'okno': [687, 998, 561], 'canvas': [998, 561, '998px',
 shot ok
 desk chyby [] 
  konzola ["Error with Permissions-Policy header: Unrecognized feature: 'interest-cohort'.", 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.']
-mob 1 {'scrollY': 2380, 'okno': [250, 316, 178], 'canvas': [316, 178, '316px', '178px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Načítavam mapu…'}
-mob 3 {'scrollY': 2380, 'okno': [250, 316, 178], 'canvas': [316, 178, '316px', '178px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Banská Štiavnica'}
-mob 6 {'scrollY': 2380, 'okno': [250, 316, 178], 'canvas': [316, 178, '316px', '178px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Banská Štiavnica'}
-mob 10 {'scrollY': 2380, 'okno': [250, 316, 178], 'canvas': [316, 178, '316px', '178px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': '9\xa0139 obyvateľov'}
-mob 16 {'scrollY': 2380, 'okno': [250, 316, 178], 'canvas': [316, 178, '316px', '178px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Nový zámok'}
-mob 22 {'scrollY': 2380, 'okno': [250, 316, 178], 'canvas': [316, 178, '316px', '178px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Kostol svätej Kataríny'}
+mob 1 {'scrollY': 2380, 'okno': [250, 316, 395], 'canvas': [316, 395, '316px', '395px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Načítavam mapu…'}
+mob 3 {'scrollY': 2380, 'okno': [250, 316, 395], 'canvas': [316, 395, '316px', '395px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Banská Štiavnica'}
+mob 6 {'scrollY': 2380, 'okno': [250, 316, 395], 'canvas': [316, 395, '316px', '395px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Banská Štiavnica'}
+mob 10 {'scrollY': 2380, 'okno': [250, 316, 395], 'canvas': [316, 395, '316px', '395px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': '9\xa0139 obyvateľov'}
+mob 16 {'scrollY': 2380, 'okno': [250, 316, 395], 'canvas': [316, 395, '316px', '395px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': '9\xa0139 obyvateľov'}
+mob 22 {'scrollY': 2380, 'okno': [250, 316, 395], 'canvas': [316, 395, '316px', '395px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Kostol svätej Kataríny'}
 shot ok
 mob chyby [] 
  konzola ["Error with Permissions-Policy header: Unrecognized feature: 'interest-cohort'.", 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.']
