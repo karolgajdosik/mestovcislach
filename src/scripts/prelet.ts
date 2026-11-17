@@ -278,10 +278,14 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       const e = map.queryTerrainElevation(ll);
       await pohni(() => map.flyTo({ center: ll, zoom: 17, pitch: 62, bearing: map.getBearing() + 40, duration: 5000, essential: true, padding: odsadenie(), ...(e != null ? { elevation: e } : {}) }));
       if (pauza) return;
-      const e2 = map.queryTerrainElevation(ll);
       znacka.setLngLat(ll).addTo(map); // značka až po prílete
-      const bod = map.project(ll), stred = map.project(map.getCenter());
-      if (Math.hypot(bod.x - stred.x, bod.y - stred.y) > 30) await pohni(() => map.easeTo({ center: ll, duration: 900, essential: true, padding: odsadenie(), ...(e2 != null ? { elevation: e2 } : {}) }));
+      // dorovnanie: pamiatka (značka) presne do stredu nad titulkom – výška terénu sa pri prílete ešte dopočítava
+      for (let pokus = 0; pokus < 2 && !pauza; pokus++) {
+        const bod = map.project(ll), od = odsadenie();
+        const cx = mapaEl.clientWidth / 2, cy = (mapaEl.clientHeight - od.bottom) / 2;
+        if (Math.hypot(bod.x - cx, bod.y - cy) < 16) break;
+        await pohni(() => map.panBy([bod.x - cx, bod.y - cy], { duration: 700, essential: true }));
+      }
       if (pauza) return;
       const citanie = povedz(reci(meno, pm.t), 6000);
       let obieha = true;
