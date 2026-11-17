@@ -1,7 +1,7 @@
-n_desk bežný {'mapa': [528, 176, 768, 432], 'kap': [298, 176, 230, 432], 'tit': [540, 489, 413, 89], 'foto': [554, 502, 88, 62], 'znacka': True, 'nazov': 'Nový zámok'}
-n_desk zväčšený {'mapa': [270, 0, 1096, 768], 'kap': [0, 0, 270, 768], 'tit': [284, 609, 560, 131], 'foto': [298, 629, 128, 90], 'znacka': True, 'nazov': 'Kostol svätej Kataríny'}
+n_desk bežný {'mapa': [508, 176, 788, 443], 'kap': [298, 176, 209, 443], 'tit': [520, 500, 413, 89], 'foto': [534, 514, 88, 62], 'znacka': True, 'nazov': 'Nový zámok'}
+n_desk zväčšený {'mapa': [508, 176, 788, 443], 'kap': [298, 176, 209, 443], 'tit': [520, 479, 764, 110], 'foto': [534, 503, 88, 62], 'znacka': True, 'nazov': 'Starý zámok'}
 n_desk chyby []
-n_mob zoznam otvorený {'mapa': [37, 181, 316, 395], 'kap': [37, 181, 246, 395], 'tit': [45, 467, 300, 84], 'foto': [0, 0, 0, 0], 'znacka': False, 'nazov': 'Banská Štiavnica'}
-n_mob bežný {'mapa': [37, 181, 316, 395], 'kap': [-214, 181, 246, 395], 'tit': [45, 448, 300, 103], 'foto': [55, 474, 64, 52], 'znacka': True, 'nazov': 'Nový zámok'}
+n_mob bežný {'mapa': [37, 181, 316, 316], 'kap': [37, 498, 316, 279], 'tit': [45, 369, 300, 103], 'foto': [55, 395, 64, 52], 'znacka': True, 'nazov': 'Nový zámok'}
+n_mob zväčšený {'mapa': [0, 0, 390, 523], 'kap': [0, 524, 390, 320], 'tit': [8, 371, 366, 124], 'foto': [18, 409, 64, 48], 'znacka': True, 'nazov': 'Kostol svätej Kataríny'}
 n_mob chyby []
 HOTOVO
