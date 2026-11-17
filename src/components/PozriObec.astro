@@ -202,6 +202,10 @@ const { nazov, nad, video, prelet } = Astro.props;
     .pr-okno.pr-velke .pr-bok { flex: 1; min-height: 0; }
     .pr-okno.pr-velke .pr-kapitoly { position: absolute; inset: 0; }
     .pr-okno.pr-velke .pr-foto { width: 64px; height: 48px; }
+    /* titulok pod mapou (nie cez ňu), aby nezakrýval pamiatku */
+    .pr-titulok, .pr-okno.pr-velke .pr-titulok { position: static; max-width: none; border-radius: 0; background: #262e40; padding: 8px 10px; }
+    .pr-titulok.pr-skryty { display: none; }
+    .pr-titulok span { -webkit-line-clamp: 2; }
   }
   /* mobil: vyššia mapa, aby sa ovládanie a titulok neprekrývali */
   @media (max-width: 600px) {

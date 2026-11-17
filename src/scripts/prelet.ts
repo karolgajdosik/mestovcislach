@@ -261,7 +261,7 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   let pauza = false;
   let i = 0;
   let pocetBodov = 0;
-  const odsadenie = () => ({ top: 0, left: 0, right: 0, bottom: Math.min(mapaEl.clientHeight * 0.4, tit.offsetHeight + 20) });
+  const odsadenie = () => ({ top: 0, left: 0, right: 0, bottom: getComputedStyle(tit).position === 'static' ? 0 : Math.min(mapaEl.clientHeight * 0.4, tit.offsetHeight + 20) });
   const bezOdsadenia = { top: 0, left: 0, right: 0, bottom: 0 };
   const pohni = (f: () => void) => new Promise<void>((ok) => { map.once('moveend', () => ok()); f(); });
   const tit_ = (k: number) => d.titulky[k] ?? d.titulky[d.titulky.length - 1] ?? [d.nazov, ''];
