@@ -241,7 +241,7 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   const tit_ = (k: number) => d.titulky[k] ?? d.titulky[d.titulky.length - 1] ?? [d.nazov, ''];
   const kroky: (() => Promise<void>)[] = [
     async () => { titulok(...tit_(0)); await Promise.all([pohni(() => map.flyTo({ center: [lon, lat], zoom, pitch: 58, bearing: -20, duration: 6000, essential: true })), povedz(reci(...tit_(0)))]); },
-    async () => { titulok(...tit_(1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 70, { duration: 7000, easing: (x: number) => x })), povedz(reci(...tit_(1)))]); },
+    async () => { titulok(...tit_(1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 70, { duration: 7000, easing: (x: number) => x, essential: true })), povedz(reci(...tit_(1)))]); },
     ...(d.pamiatky ?? []).map((pm) => async () => {
       // významná pamiatka: prílet, titulok s fotkou a pomalé obletenie počas čítania
       const meno = pm.n.replace(/\s*\([^()]*\)$/, ''); // „Kostol … (Košice)“ → bez rozlišovacej zátvorky
@@ -250,7 +250,8 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       if (pauza) return;
       const citanie = povedz(reci(meno, pm.t), 6000);
       let obieha = true;
-      const krut = async () => { while (obieha && !pauza) await pohni(() => map.rotateTo(map.getBearing() + 25, { duration: 4000, easing: (x: number) => x })); };
+      // každé kolo trvá aspoň chvíľu (aj keď prehliadač pohyb preskočí – napr. obmedzené animácie), inak by slučka zablokovala stránku
+      const krut = async () => { while (obieha && !pauza) await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 25, { duration: 4000, easing: (x: number) => x, essential: true })), sOkamih(500)]); };
       const k = krut();
       await citanie;
       obieha = false;
@@ -276,7 +277,7 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       }
     },
     async () => { const tt = 2 + pocetBodov < d.titulky.length - 1 ? tit_(2 + pocetBodov) : tit_(0); titulok(...tt); await Promise.all([pohni(() => map.flyTo({ center: [lon, lat], zoom: zoom - 0.8, pitch: 50, bearing: map.getBearing() + 40, duration: 6000, essential: true })), povedz(reci(...tt))]); },
-    async () => { titulok(...tit_(d.titulky.length - 1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 90, { duration: 9000, easing: (x: number) => x })), povedz(`${d.nazov}. Ďalšie čísla nájdete na stránke mesto v číslach.`)]); },
+    async () => { titulok(...tit_(d.titulky.length - 1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 90, { duration: 9000, easing: (x: number) => x, essential: true })), povedz(`${d.nazov}. Ďalšie čísla nájdete na stránke mesto v číslach.`)]); },
   ];
   const hraj = async () => {
     while (i < kroky.length && !pauza) {
