@@ -5,7 +5,7 @@ subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromi
 from playwright.sync_api import sync_playwright
 U="https://mestovcislach.sk/banskobystricky-kraj/banska-stiavnica/banska-stiavnica/"
 J="""(()=>{const m=document.querySelector('.pr').__mapa;const z=document.querySelector('.pr-znacka');const r=document.querySelector('.pr-mapa').getBoundingClientRect();const t=document.querySelector('.pr-titulok').getBoundingClientRect();
-const zb=z?z.getBoundingClientRect():null;return {pohyb:m.isMoving(),znacka:zb?[Math.round(zb.left+zb.width/2-r.left),Math.round(zb.bottom-r.top)]:null,mapa:[Math.round(r.width),Math.round(r.height)],titulokHore:Math.round(t.top-r.top),nazov:document.querySelector('.pr-titulok b').textContent}})()"""
+const zb=z?z.getBoundingClientRect():null;return {el:[m.transform.elevation!=null?Math.round(m.transform.elevation):null,Math.round(m.queryTerrainElevation(m.getCenter())||0)],pohyb:m.isMoving(),znacka:zb?[Math.round(zb.left+zb.width/2-r.left),Math.round(zb.bottom-r.top)]:null,mapa:[Math.round(r.width),Math.round(r.height)],titulokHore:Math.round(t.top-r.top),nazov:document.querySelector('.pr-titulok b').textContent}})()"""
 with sync_playwright() as p:
     b=p.chromium.launch(args=["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"])
     for vw,vh,name in [(1366,768,'desk'),(390,844,'mob')]:
@@ -19,4 +19,4 @@ with sync_playwright() as p:
         pg.close()
     b.close()
 print("HOTOVO")
-# 3
+# 4
