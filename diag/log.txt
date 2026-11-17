@@ -1,7 +1,8 @@
-pamiatky s ochranou a súradnicami: 13086 administratívnych celkov: 1787
-z toho so slovenským článkom na Wikipédii: 591
-s fotkou: 9057
-Q25409 ['Národné divadlo Košice', 'Kaplnka svätej Rozálie', 'Kostol Najsvätejšej Trojice (Košice)', 'Kostol svätého Michala', 'Dóm svätej Alžbety', 'Urbanova veža']
-Q1780 ['Stará radnica', 'Most SNP', 'Katedrála svätého Martina', 'Primaciálny palác', 'Grasalkovičov palác', 'Kostol svätej Alžbety']
-Q194225 []
-HOTOVO
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 3, in <module>
+    import zber_pamiatky_body as z
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_pamiatky_body.py", line 24, in <module>
+    from spolocne import DATA, spusti, zapis_ak_zmena
+  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 21, in <module>
+    from shapely.geometry import Point, shape
+ModuleNotFoundError: No module named 'shapely'
