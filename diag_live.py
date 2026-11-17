@@ -1,8 +1,6 @@
 import subprocess, sys, time
 import requests
-for i in range(60):
-    if ".pv-mriezka>*" in "".join(requests.get("https://mestovcislach.sk"+c,timeout=30).text for c in set(__import__("re").findall(r'/_astro/[^"]+\.css',requests.get("https://mestovcislach.sk/banskobystricky-kraj/banska-stiavnica/banska-stiavnica/",timeout=30).text))): print("nasadené po",i*20,"s"); break
-    time.sleep(20)
+time.sleep(540)
 subprocess.run([sys.executable,"-m","pip","install","-q","playwright"],check=True)
 subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromium"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 from playwright.sync_api import sync_playwright
@@ -27,4 +25,4 @@ with sync_playwright() as p:
         print(name,"chyby",err,"\n konzola",[c for c in con if 'could not be loaded' not in c][:8]); pg.close()
     b.close()
 print("HOTOVO")
-# 1794940202
+# r2
