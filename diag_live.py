@@ -20,3 +20,4 @@ with sync_playwright() as p:
         print("stav",k,m); pg.locator(".pr-okno").screenshot(path=f"diag/q{k}.jpg",type="jpeg",quality=65)
     print("\n".join(l for l in log if l.startswith('T+'))); b.close()
 print("HOTOVO")
+# 1794921452
