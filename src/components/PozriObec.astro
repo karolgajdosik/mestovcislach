@@ -121,8 +121,10 @@ const { nazov, nad, video, prelet } = Astro.props;
 </script>
 
 <style>
-  .pv-mriezka { display: grid; gap: 18px; }
-  @media (min-width: 960px) { .pv-mriezka:has(.pr) { grid-template-columns: 1fr 1fr; } }
+  .pv-mriezka { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); }
+  /* položky mriežky nesmú rásť podľa obsahu (dlhý pás zastávok by roztiahol mapu na tisíce px) */
+  .pv-mriezka > * { min-width: 0; }
+  @media (min-width: 960px) { .pv-mriezka:has(.pr) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
   .pv-platno { position: relative; border-radius: 14px; overflow: hidden; background: #1d2433; }
   .pv-platno canvas { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
   .pv-vysoke .pv-platno { max-width: 360px; margin: 0 auto; }
@@ -163,7 +165,7 @@ const { nazov, nad, video, prelet } = Astro.props;
   .pr-ovl button { min-height: 34px; padding: 0 12px; border: 0; border-radius: 17px; background: rgba(15, 18, 26, 0.78); color: #fff; font: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
   .pr-ovl button[hidden] { display: none; }
   /* zastávky preletu – klik preskočí na pamiatku */
-  .pr-kapitoly { list-style: none; margin: 10px 0 0; padding: 2px 2px 6px; display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; }
+  .pr-kapitoly { max-width: 100%; list-style: none; margin: 10px 0 0; padding: 2px 2px 6px; display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; }
   .pr-kapitoly[hidden] { display: none; }
   .pr-kapitoly li { flex: none; scroll-snap-align: start; }
   .pr-kapitoly button { display: flex; align-items: center; gap: 8px; max-width: 240px; min-height: 40px; padding: 4px 12px 4px 4px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--text); font: inherit; font-size: 0.82rem; font-weight: 600; text-align: left; cursor: pointer; }

@@ -298,7 +298,9 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   const oznac = () => {
     const a = kapitolaKroku(Math.min(i, kroky.length - 1));
     zoznam?.querySelectorAll('button').forEach((b, j) => { b.classList.toggle('pr-akt', j === a); if (j === a) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
-    zoznam?.querySelector<HTMLElement>('.pr-akt')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    // posunúť len samotný pás zastávok (scrollIntoView by posúval aj celú stránku)
+    const akt = zoznam?.querySelector<HTMLElement>('.pr-akt');
+    if (zoznam && akt) { const l = akt.getBoundingClientRect().left - zoznam.getBoundingClientRect().left + zoznam.scrollLeft; if (l < zoznam.scrollLeft || l + akt.offsetWidth > zoznam.scrollLeft + zoznam.clientWidth) zoznam.scrollTo({ left: Math.max(0, l - 8), behavior: 'smooth' }); }
     if (tlSpat) tlSpat.disabled = a === 0;
     if (tlDalej) tlDalej.disabled = a >= kapitoly.length - 1;
   };
