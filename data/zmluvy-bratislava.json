@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11982,
+ "pocet_spolu": 11990,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2370,
-   "suma": 413556734.75
+   "pocet": 2378,
+   "suma": 413556882.75
   }
  },
  "posledny_rok": {
-  "od": "2025-11-16",
+  "od": "2025-11-17",
   "suma_bez_ico": 67800.73,
   "dodavatelia": [
    {
@@ -118,10 +118,10 @@
     "suma": 1500000.0
    },
    {
-    "ico": "50700308",
-    "nazov": "CSFIT s.r.o.",
-    "pocet": 2,
-    "suma": 1367809.2
+    "ico": "35732881",
+    "nazov": "METRO Bratislava  a.s.",
+    "pocet": 8,
+    "suma": 1204031.04
    }
   ],
   "najvacsie": [
@@ -261,15 +261,6 @@
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2500182"
    },
    {
-    "datum": "2025-11-17",
-    "dodavatel": "CSFIT s.r.o.",
-    "ico": "50700308",
-    "predmet": "Rámocvá dohoda o dodávke komponentov serverovej infraštruktúry a príslušných licencií",
-    "suma": 1180615.5,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500367"
-   },
-   {
     "datum": "2026-02-16",
     "dodavatel": "EUROVIA SK, a.s.",
     "ico": "31651518",
@@ -304,8 +295,17 @@
     "suma": 969663.71,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600067"
+   },
+   {
+    "datum": "2026-09-22",
+    "dodavatel": "CITY STONE DESIGN s.r.o.",
+    "ico": "47978929",
+    "predmet": "RD MAGZBR2600207 - Výroba a dodávka bratislavskej dlažby",
+    "suma": 884985.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600207"
    }
   ]
  },
- "aktualizovane": "2026-11-16T06:43:51+00:00"
+ "aktualizovane": "2026-11-17T10:56:08+00:00"
 }
