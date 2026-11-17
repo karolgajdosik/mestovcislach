@@ -7,6 +7,8 @@ type Data = { nazov: string; stred: [number, number]; bbox?: [number, number, nu
 
 const OFM = 'https://tiles.openfreemap.org';
 const WMS = 'https://zbgisws.skgeodesy.sk/zbgis_ortofoto_wms/service.svc/get';
+const EOX = 'https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/g/{z}/{y}/{x}.jpg';
+const AGS = 'https://zbgis.skgeodesy.sk/zbgis/rest/services/Ortofoto/MapServer';
 const DEM = 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png';
 const TRIEDY: Record<string, string> = {
   castle: 'hrad / kaštieľ', monument: 'pamätník', place_of_worship: 'kostol', town_hall: 'obecný úrad', museum: 'múzeum', attraction: 'zaujímavosť',
@@ -19,23 +21,50 @@ async function sTimeoutom<T>(p: Promise<T>, ms: number): Promise<T> {
   return Promise.race([p, new Promise<T>((_, z) => setTimeout(() => z(new Error('čas')), ms))]);
 }
 
-/** Ortofoto: názov vrstvy z GetCapabilities a skúšobná dlaždica (CORS). Vráti šablónu dlaždíc alebo null. */
-async function ortofoto(lat: number, lon: number): Promise<string | null> {
+/** Je obrázok skutočná snímka? Prázdna dlaždica („bez dát“) je jednofarebná – posudzuje sa rozptyl jasu. */
+async function nieJePrazdny(blob: Blob): Promise<boolean> {
   try {
-    const cap = await sTimeoutom(fetch(`${WMS}?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0`, { mode: 'cors' }).then((r) => (r.ok ? r.text() : Promise.reject())), 5000);
-    const doc = new DOMParser().parseFromString(cap, 'text/xml');
-    const mena = [...doc.querySelectorAll('Layer > Name')].map((n) => n.textContent?.trim()).filter(Boolean) as string[];
-    if (!mena.length || !/3857/.test(cap)) return null;
-    const vrstva = mena[mena.length > 1 ? 1 : 0];
-    const sablona = `${WMS}?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=${encodeURIComponent(vrstva)}&STYLES=&CRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=512&HEIGHT=512&FORMAT=image/jpeg`;
-    // skúšobná dlaždica okolo stredu obce
-    const x = (lon * 20037508.34) / 180, y = (Math.log(Math.tan(((90 + lat) * Math.PI) / 360)) / (Math.PI / 180)) * (20037508.34 / 180);
-    const t = await sTimeoutom(fetch(sablona.replace('{bbox-epsg-3857}', `${x - 300},${y - 300},${x + 300},${y + 300}`), { mode: 'cors' }), 6000);
-    if (!t.ok || !(t.headers.get('content-type') ?? '').startsWith('image/')) return null;
-    return sablona;
+    const bmp = await createImageBitmap(blob);
+    const c = document.createElement('canvas');
+    c.width = 32; c.height = 32;
+    const g = c.getContext('2d')!;
+    g.drawImage(bmp, 0, 0, 32, 32);
+    const d = g.getImageData(0, 0, 32, 32).data;
+    let s = 0, s2 = 0, n = 0;
+    for (let k = 0; k < d.length; k += 4) { if (d[k + 3] < 10) continue; const j = 0.3 * d[k] + 0.59 * d[k + 1] + 0.11 * d[k + 2]; s += j; s2 += j * j; n++; }
+    if (n < 100) return false;
+    const pr = s / n;
+    return Math.sqrt(Math.max(0, s2 / n - pr * pr)) > 6 && pr < 245;
   } catch {
-    return null;
+    return false;
   }
+}
+
+/** Ortofoto ZBGIS: skúsi viac spôsobov (ArcGIS REST export, WMS po jednotlivých vrstvách) a vráti šablónu dlaždíc,
+ *  pri ktorej skúšobná dlaždica okolo obce prejde cez CORS a nie je prázdna. Služby GKÚ sú dostupné len zo Slovenska. */
+async function ortofoto(lat: number, lon: number): Promise<{ sablona: string; popis: string } | null> {
+  const x = (lon * 20037508.34) / 180, y = (Math.log(Math.tan(((90 + lat) * Math.PI) / 360)) / (Math.PI / 180)) * (20037508.34 / 180);
+  const skus = async (sablona: string): Promise<boolean> => {
+    try {
+      const r = await sTimeoutom(fetch(sablona.replace('{bbox-epsg-3857}', `${x - 400},${y - 400},${x + 400},${y + 400}`), { mode: 'cors' }), 7000);
+      if (!r.ok || !(r.headers.get('content-type') ?? '').startsWith('image/')) return false;
+      return nieJePrazdny(await r.blob());
+    } catch {
+      return false;
+    }
+  };
+  const kandidati: { sablona: string; popis: string }[] = [
+    { sablona: `${AGS}/export?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=512,512&format=jpg&transparent=false&f=image`, popis: 'ArcGIS REST' },
+  ];
+  try {
+    const cap = await sTimeoutom(fetch(`${WMS}?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0`, { mode: 'cors' }).then((r) => (r.ok ? r.text() : Promise.reject())), 6000);
+    const doc = new DOMParser().parseFromString(cap, 'text/xml');
+    const mena = [...new Set([...doc.getElementsByTagName('Name')].filter((n) => n.parentElement?.tagName === 'Layer').map((n) => n.textContent?.trim()).filter(Boolean) as string[])];
+    for (const v of mena.slice(0, 8)) kandidati.push({ sablona: `${WMS}?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=${encodeURIComponent(v)}&STYLES=&CRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=512&HEIGHT=512&FORMAT=image/jpeg`, popis: `WMS ${v}` });
+    if (mena.length) kandidati.push({ sablona: `${WMS}?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=${encodeURIComponent(mena.join(','))}&STYLES=&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=512&HEIGHT=512&FORMAT=image/jpeg`, popis: 'WMS 1.1.1' });
+  } catch { /* WMS nedostupné – ostáva ArcGIS REST */ }
+  for (const k of kandidati) if (await skus(k.sablona)) return k;
+  return null;
 }
 
 export async function spustiPrelet(el: HTMLElement): Promise<void> {
@@ -110,27 +139,34 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   let letecka = false;
   let plosne: string[] = [];
   let chybaOrto = false;
+  let zdrojOrto = '';
   tlPodklad?.addEventListener('click', async () => {
     if (!map.getLayer('orto')) {
       tlPodklad.disabled = true;
       tlPodklad.textContent = 'Načítavam snímky…';
-      const sablona = await ortofoto(lat, lon);
+      const najdene = await ortofoto(lat, lon);
       tlPodklad.disabled = false;
-      if (!sablona) { tlPodklad.textContent = 'Letecké snímky nedostupné'; tlPodklad.disabled = true; return; }
-      map.addSource('orto', { type: 'raster', tiles: [sablona], tileSize: 512, maxzoom: 19, attribution: 'Ortofotomozaika SR © GKÚ Bratislava, ÚGKK SR (CC BY 4.0)' });
+      if (najdene) {
+        zdrojOrto = `Letecká snímka: ortofotomozaika SR © GKÚ Bratislava, ÚGKK SR (CC BY 4.0; ${najdene.popis})`;
+        map.addSource('orto', { type: 'raster', tiles: [najdene.sablona], tileSize: 512, maxzoom: 19, attribution: 'Ortofotomozaika SR © GKÚ Bratislava, ÚGKK SR (CC BY 4.0)' });
+      } else {
+        // náhrada mimo dosahu služieb GKÚ: satelitná mozaika Sentinel-2 (10 m, CC BY 4.0) – farebná, ale menej podrobná
+        zdrojOrto = 'Satelitná snímka: Sentinel-2 cloudless 2016 © EOX IT Services GmbH, obsahuje upravené dáta Copernicus Sentinel (CC BY 4.0) – letecké snímky GKÚ sa nepodarilo načítať';
+        map.addSource('orto', { type: 'raster', tiles: [EOX], tileSize: 256, maxzoom: 15, attribution: 'Sentinel-2 cloudless 2016 © EOX (CC BY 4.0)' });
+      }
       // snímka hneď nad pozadie; plošné vrstvy mapy (zástavba, lesy, voda, parky) sa pri leteckej snímke skryjú,
       // inak by ju prekryli – ostanú cesty, 3D budovy a názvy
       const vrstvy = map.getStyle().layers as any[];
       const nad = vrstvy.find((l) => l.type !== 'background')?.id;
       map.addLayer({ id: 'orto', type: 'raster', source: 'orto', layout: { visibility: 'none' } }, nad);
-      plosne = vrstvy.filter((l) => l.type === 'fill' || l.type === 'hillshade' || (l.type === 'raster' && l.id !== 'orto')).map((l) => l.id);
-      map.on('error', (e: any) => { if (e.sourceId === 'orto' && !chybaOrto) { chybaOrto = true; zdroj.textContent = 'Letecké snímky ZBGIS sa nepodarilo načítať (server neodpovedá). ' + ZDROJ_MAPA; } });
+      plosne = vrstvy.filter((l) => l.type === 'fill' || l.type === 'hillshade' || (l.type === 'raster' && l.id !== 'orto') || (l.type === 'line' && /park|landuse|landcover|wood|grass|farm|natural|aeroway|pitch|area/i.test(`${l.id} ${l['source-layer'] ?? ''}`))).map((l) => l.id);
+      map.on('error', (e: any) => { if (e.sourceId === 'orto' && !chybaOrto) { chybaOrto = true; zdroj.textContent = 'Časť leteckých snímok sa nepodarilo načítať (server neodpovedá). ' + ZDROJ_MAPA; } });
     }
     letecka = !letecka;
     map.setLayoutProperty('orto', 'visibility', letecka ? 'visible' : 'none');
     for (const id of plosne) map.setLayoutProperty(id, 'visibility', letecka ? 'none' : 'visible');
     tlPodklad.textContent = letecka ? '🗺 Mapa' : '🛰 Letecká snímka';
-    zdroj.textContent = letecka ? `Letecká snímka: ortofotomozaika SR © GKÚ Bratislava, ÚGKK SR (CC BY 4.0). ${ZDROJ_MAPA}` : ZDROJ_MAPA;
+    zdroj.textContent = letecka ? `${zdrojOrto}. ${ZDROJ_MAPA}` : ZDROJ_MAPA;
   });
   await sTimeoutom(new Promise<void>((ok) => map.once('idle', () => ok())), 8000).catch(() => {});
 
