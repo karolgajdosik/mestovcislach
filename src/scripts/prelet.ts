@@ -121,7 +121,8 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       const kand = f.map((x) => ({ n: x.properties['name:sk'] || x.properties.name, c: x.properties.class, p: x.geometry?.coordinates as [number, number] }))
         .filter((x) => x.n && TRIEDY[x.c] && Array.isArray(x.p) && typeof x.p[0] === 'number' && kmOd(x.p, [lon, lat]) <= polomer)
         .sort((a, b) => PORADIE.indexOf(a.c) - PORADIE.indexOf(b.c));
-      for (const k of kand) if (!body.some((b) => b.n === k.n || kmOd(b.p, k.p) < 0.25) && body.length < 4) body.push({ n: k.n, t: TRIEDY[k.c], p: k.p });
+      // najviac 2 miesta jedného druhu, aby prelet nebol len o kostoloch
+      for (const k of kand) if (!body.some((b) => b.n === k.n || kmOd(b.p, k.p) < 0.25) && body.filter((b) => b.t === TRIEDY[k.c]).length < 2 && body.length < 4) body.push({ n: k.n, t: TRIEDY[k.c], p: k.p });
     } catch { /* bez bodov záujmu */ }
     return body;
   };
@@ -150,12 +151,13 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       pocetBodov = body.length;
       for (const [k, b] of body.entries()) {
         if (pauza) return;
-        titulok(b.n, `${b.t[0].toUpperCase()}${b.t.slice(1)}${tit_(2 + k)[0] ? ` · ${tit_(2 + k)[0]} ${tit_(2 + k)[1]}` : ''}`);
+        const [ta, tb] = 2 + k < d.titulky.length - 1 ? tit_(2 + k) : ['', ''];
+        titulok(b.n, `${b.t[0].toUpperCase()}${b.t.slice(1)}${ta ? ` · ${ta}${tb ? ` – ${tb}` : ''}` : ''}`);
         await pohni(() => map.flyTo({ center: b.p, zoom: Math.min(17, zoom + 2.2), pitch: 66, bearing: map.getBearing() + 35, duration: 5500, essential: true }));
         await sOkamih(1500);
       }
     },
-    async () => { titulok(...tit_(Math.max(2, 2 + pocetBodov))); await pohni(() => map.flyTo({ center: [lon, lat], zoom: zoom - 0.8, pitch: 50, bearing: map.getBearing() + 40, duration: 6000, essential: true })); },
+    async () => { titulok(...(2 + pocetBodov < d.titulky.length - 1 ? tit_(2 + pocetBodov) : tit_(0))); await pohni(() => map.flyTo({ center: [lon, lat], zoom: zoom - 0.8, pitch: 50, bearing: map.getBearing() + 40, duration: 6000, essential: true })); },
     async () => { titulok(...tit_(d.titulky.length - 1)); await pohni(() => map.rotateTo(map.getBearing() + 90, { duration: 9000, easing: (x: number) => x })); },
   ];
   const hraj = async () => {
