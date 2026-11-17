@@ -129,6 +129,8 @@ const { nazov, nad, video, prelet } = Astro.props;
   .pr-uvod { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; height: 100%; justify-content: center; padding: 18px; border: 1px dashed var(--line); border-radius: 14px; background: var(--bg); }
   .pr-uvod p { margin: 0; }
   .pr-uvod[hidden] { display: none; }
+  /* otvorený prelet na celú šírku sekcie */
+  .pr.pr-otvoreny { grid-column: 1 / -1; }
   .pr-okno { position: relative; border-radius: 14px; overflow: hidden; background: #1d2433; }
   .pr-okno[hidden] { display: none; }
   .pr-mapa { width: 100%; aspect-ratio: 16 / 9; }

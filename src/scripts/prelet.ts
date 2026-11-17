@@ -47,6 +47,7 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   const zdroj = el.querySelector<HTMLElement>('.pr-zdroj')!;
   okno.hidden = false;
   el.querySelector<HTMLElement>('.pr-uvod')!.hidden = true;
+  el.classList.add('pr-otvoreny');
   const titulok = (b: string, s = '') => { tit.querySelector('b')!.textContent = b; tit.querySelector('span')!.textContent = s; tit.classList.toggle('pr-skryty', !b); };
   titulok('Načítavam mapu…');
 
@@ -76,11 +77,14 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   const pohyb = !matchMedia('(prefers-reduced-motion: reduce)').matches;
   const map = new maplibregl.Map({
     container: mapaEl, style, center: [lon, lat], zoom: zoom - 1.6, pitch: pohyb ? 0 : 55, bearing: 0, maxPitch: 78,
-    attributionControl: { compact: true }, cooperativeGestures: false,
+    attributionControl: false, cooperativeGestures: false,
   });
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
+  map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
   await new Promise<void>((ok) => map.once('load', () => ok()));
   map.setTerrain({ source: 'dem', exaggeration: 1.5 });
+  // zbalené autorstvo (ikona „i“) – celé zdroje sú pod mapou
+  mapaEl.querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show');
   try { map.setSky?.({ 'sky-color': '#9cc3e8', 'horizon-color': '#dfe9f2', 'fog-color': '#e8eef4', 'sky-horizon-blend': 0.6, 'horizon-fog-blend': 0.5, 'fog-ground-blend': 0.3 }); } catch { /* staršie verzie */ }
   zdroj.hidden = false;
   const ZDROJ_MAPA = 'Mapa: OpenFreeMap, © OpenMapTiles, údaje © prispievatelia OpenStreetMap; terén: Terrain Tiles (Mapzen, AWS Open Data). Mapou môžete kedykoľvek pohnúť sami.';
@@ -106,34 +110,46 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   });
   await sTimeoutom(new Promise<void>((ok) => map.once('idle', () => ok())), 8000).catch(() => {});
 
-  // body záujmu v okolí stredu (pomenované, podľa dôležitosti, aspoň 250 m od seba)
+  // body záujmu v okolí stredu (pomenované, podľa dôležitosti, aspoň 250 m od seba) – hľadajú sa až po nálete,
+  // pri malom priblížení dlaždice OpenMapTiles body záujmu ešte neobsahujú
   const polomer = Math.max(0.8, Math.min(4, Math.sqrt(km2 / Math.PI) * 0.9));
   const kmOd = (a: [number, number], b: [number, number]) => Math.hypot((a[0] - b[0]) * 111.2, (a[1] - b[1]) * 111.2 * Math.cos((a[1] * Math.PI) / 180));
-  const body: { n: string; t: string; p: [number, number] }[] = [];
-  try {
-    const f = map.querySourceFeatures('openmaptiles', { sourceLayer: 'poi' }) as any[];
-    const kand = f.map((x) => ({ n: x.properties['name:sk'] || x.properties.name, c: x.properties.class, p: x.geometry?.coordinates as [number, number] }))
-      .filter((x) => x.n && TRIEDY[x.c] && Array.isArray(x.p) && typeof x.p[0] === 'number' && kmOd(x.p, [lon, lat]) <= polomer)
-      .sort((a, b) => PORADIE.indexOf(a.c) - PORADIE.indexOf(b.c));
-    for (const k of kand) if (!body.some((b) => b.n === k.n || kmOd(b.p, k.p) < 0.25) && body.length < 4) body.push({ n: k.n, t: TRIEDY[k.c], p: k.p });
-  } catch { /* bez bodov záujmu */ }
+  const najdiBody = () => {
+    const body: { n: string; t: string; p: [number, number] }[] = [];
+    try {
+      const f = map.querySourceFeatures('openmaptiles', { sourceLayer: 'poi' }) as any[];
+      const kand = f.map((x) => ({ n: x.properties['name:sk'] || x.properties.name, c: x.properties.class, p: x.geometry?.coordinates as [number, number] }))
+        .filter((x) => x.n && TRIEDY[x.c] && Array.isArray(x.p) && typeof x.p[0] === 'number' && kmOd(x.p, [lon, lat]) <= polomer)
+        .sort((a, b) => PORADIE.indexOf(a.c) - PORADIE.indexOf(b.c));
+      for (const k of kand) if (!body.some((b) => b.n === k.n || kmOd(b.p, k.p) < 0.25) && body.length < 4) body.push({ n: k.n, t: TRIEDY[k.c], p: k.p });
+    } catch { /* bez bodov záujmu */ }
+    return body;
+  };
+  (el as any).__mapa = map;
 
   if (!pohyb) { titulok(d.nazov, d.titulky[0]?.[1] ?? ''); tlPauza.hidden = true; return; }
 
   // scenár preletu: kroky sa dajú pozastaviť (pauza zastaví kameru a krok sa potom zopakuje)
   let pauza = false;
   let i = 0;
+  let pocetBodov = 0;
   const pohni = (f: () => void) => new Promise<void>((ok) => { map.once('moveend', () => ok()); f(); });
   const tit_ = (k: number) => d.titulky[k] ?? d.titulky[d.titulky.length - 1] ?? [d.nazov, ''];
   const kroky: (() => Promise<void>)[] = [
     async () => { titulok(...tit_(0)); await pohni(() => map.flyTo({ center: [lon, lat], zoom, pitch: 58, bearing: -20, duration: 6000, essential: true })); },
     async () => { titulok(...tit_(1)); await pohni(() => map.rotateTo(map.getBearing() + 70, { duration: 7000, easing: (x: number) => x })); },
-    ...body.map((b, k) => async () => {
-      titulok(b.n, `${b.t[0].toUpperCase()}${b.t.slice(1)}${tit_(2 + k)[0] ? ` · ${tit_(2 + k)[0]} ${tit_(2 + k)[1]}` : ''}`);
-      await pohni(() => map.flyTo({ center: b.p, zoom: Math.min(17, zoom + 2.2), pitch: 66, bearing: map.getBearing() + 35, duration: 5500, essential: true }));
-      await sOkamih(1500);
-    }),
-    async () => { titulok(...tit_(Math.max(2, 2 + body.length))); await pohni(() => map.flyTo({ center: [lon, lat], zoom: zoom - 0.8, pitch: 50, bearing: map.getBearing() + 40, duration: 6000, essential: true })); },
+    async () => {
+      // zastávky pri významných miestach (pri pauze sa krok zopakuje od začiatku)
+      const body = najdiBody();
+      pocetBodov = body.length;
+      for (const [k, b] of body.entries()) {
+        if (pauza) return;
+        titulok(b.n, `${b.t[0].toUpperCase()}${b.t.slice(1)}${tit_(2 + k)[0] ? ` · ${tit_(2 + k)[0]} ${tit_(2 + k)[1]}` : ''}`);
+        await pohni(() => map.flyTo({ center: b.p, zoom: Math.min(17, zoom + 2.2), pitch: 66, bearing: map.getBearing() + 35, duration: 5500, essential: true }));
+        await sOkamih(1500);
+      }
+    },
+    async () => { titulok(...tit_(Math.max(2, 2 + pocetBodov))); await pohni(() => map.flyTo({ center: [lon, lat], zoom: zoom - 0.8, pitch: 50, bearing: map.getBearing() + 40, duration: 6000, essential: true })); },
     async () => { titulok(...tit_(d.titulky.length - 1)); await pohni(() => map.rotateTo(map.getBearing() + 90, { duration: 9000, easing: (x: number) => x })); },
   ];
   const hraj = async () => {
@@ -159,8 +175,9 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     const uvod = el.querySelector<HTMLElement>('.pr-uvod')!;
     const s = el.querySelector<HTMLButtonElement>('.pr-start')!;
     uvod.hidden = false;
+    el.classList.remove('pr-otvoreny');
     s.textContent = '▶ Prelet znova';
-    s.onclick = () => { okno.hidden = false; uvod.hidden = true; map.resize(); i = 0; pauza = false; tlPauza.textContent = '⏸ Pauza'; tlPauza.dataset.stav = ''; hraj(); };
+    s.onclick = () => { okno.hidden = false; uvod.hidden = true; el.classList.add('pr-otvoreny'); map.resize(); i = 0; pauza = false; tlPauza.textContent = '⏸ Pauza'; tlPauza.dataset.stav = ''; hraj(); };
   });
   hraj();
 }
