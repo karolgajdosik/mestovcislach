@@ -1,5 +1,5 @@
 import subprocess, sys, time
-time.sleep(470)
+time.sleep(1)
 subprocess.run([sys.executable,"-m","pip","install","-q","playwright"],check=True)
 subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromium"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 from playwright.sync_api import sync_playwright
@@ -10,7 +10,7 @@ with sync_playwright() as p:
     b=p.chromium.launch(args=["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"])
     for vw,vh,name in [(1366,768,'desk'),(390,844,'mob')]:
         pg=b.new_page(viewport={"width":vw,"height":vh})
-        pg.goto(U); pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
+        pg.goto(U,timeout=90000,wait_until="domcontentloaded"); pg.wait_for_timeout(4000); pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
         pg.evaluate("document.querySelector('.pr-start').click()"); time.sleep(6)
         pg.evaluate("document.querySelectorAll('.pr-kapitoly button')[3].click()")
         for k in range(12):
@@ -19,3 +19,4 @@ with sync_playwright() as p:
         pg.close()
     b.close()
 print("HOTOVO")
+# 2
