@@ -1,5 +1,5 @@
 import subprocess, sys, time
-time.sleep(1)
+time.sleep(480)
 subprocess.run([sys.executable,"-m","pip","install","-q","playwright"],check=True)
 subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromium"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 from playwright.sync_api import sync_playwright
@@ -19,4 +19,4 @@ with sync_playwright() as p:
         pg.close()
     b.close()
 print("HOTOVO")
-# 2
+# 3
