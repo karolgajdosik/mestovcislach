@@ -1,14 +1,9 @@
-12 ['sources/europe/sk/DSM1-shading.geojson', 'sources/europe/sk/DTM-shading-hires.geojson', 'sources/europe/sk/DTM5-shading-light.geojson', 'sources/europe/sk/DTM5-shading.geojson', 'sources/europe/sk/FreemapskCar.geojson', 'sources/europe/sk/FreemapskCyclo.geojson', 'sources/europe/sk/FreemapskHiking.geojson', 'sources/europe/sk/FreemapskSki.geojson', 'sources/europe/sk/OrtofotomozaikaSR-2017-2019.geojson', 'sources/europe/sk/OrtofotomozaikaSR-2020-2022.geojson', 'sources/europe/sk/OrtofotomozaikaSR.geojson', 'sources/europe/sk/SlovakiaHistoricMaps.geojson']
-DSM1-shading.geojson | DSM 1.0 shading | tms | https://dmp1-shading.tiles.freemap.sk/{zoom}/{x}/{y}.jpg | https://wiki.openstreetmap.org/wiki/WikiProject_Slovakia/Sources#%C3%9AGKK_SR_DMR_5.0 | ÚGKK SR
-DTM-shading-hires.geojson | DTM high-resolution shading | tms | https://sk-hires-shading.tiles.freemap.sk/{zoom}/{x}/{y}.jpg | https://wiki.openstreetmap.org/wiki/WikiProject_Slovakia/Sources#%C3%9AGKK_SR_DMR_5.0 | LLS: ÚGKK SR
-DTM5-shading-light.geojson | DTM 5.0 light shading | tms | https://dmr5-light-shading.tiles.freemap.sk/{zoom}/{x}/{y}.jpg | https://wiki.openstreetmap.org/wiki/WikiProject_Slovakia/Sources#%C3%9AGKK_SR_DMR_5.0 | ÚGKK SR
-DTM5-shading.geojson | DTM 5.0 shading | tms | https://dmr5-shading.tiles.freemap.sk/{zoom}/{x}/{y}.jpg | https://wiki.openstreetmap.org/wiki/WikiProject_Slovakia/Sources#%C3%9AGKK_SR_DMR_5.0 | ÚGKK SR
-FreemapskCar.geojson | Freemap.sk Car | tms | https://tile.freemap.sk/A/{zoom}/{x}/{y}.jpeg | None | Map © Freemap Slovakia, data © OpenStreetMap contributors
-FreemapskCyclo.geojson | Freemap.sk Bicycle | tms | https://tile.freemap.sk/C/{zoom}/{x}/{y}.jpeg | None | Map © Freemap Slovakia, data © OpenStreetMap contributors and SRTM
-FreemapskHiking.geojson | Freemap.sk Hiking | tms | https://tile.freemap.sk/T/{zoom}/{x}/{y}.jpeg | None | Map © Freemap Slovakia, data © OpenStreetMap contributors and SRTM
-FreemapskSki.geojson | Freemap.sk Ski | tms | https://tile.freemap.sk/K/{zoom}/{x}/{y}.jpeg | None | Map © Freemap Slovakia, data © OpenStreetMap contributors and SRTM
-OrtofotomozaikaSR-2017-2019.geojson | Ortofotomozaika SR | tms | https://ofmozaika1c.tiles.freemap.sk/{zoom}/{x}/{y}.jpg | https://wiki.openstreetmap.org/wiki/WikiProject_Slovakia/Sources#Ortofotomozaika_SR_.28orthophoto_by_GK.C3.9A_and_NLC.29 | © GKÚ, NLC 2017-2019
-OrtofotomozaikaSR-2020-2022.geojson | Ortofotomozaika SR | tms | https://ofmozaika2c.tiles.freemap.sk/{zoom}/{x}/{y}.jpg | https://wiki.openstreetmap.org/wiki/WikiProject_Slovakia/Sources#Ortofotomozaika_SR_.28orthophoto_by_GK.C3.9A_and_NLC.29 | © GKÚ, NLC 2020-2022
-OrtofotomozaikaSR.geojson | Ortofotomozaika SR | tms | https://ofmozaika.tiles.freemap.sk/{zoom}/{x}/{y}.jpg | https://wiki.openstreetmap.org/wiki/WikiProject_Slovakia/Sources#Ortofotomozaika_SR_.28orthophoto_by_GK.C3.9A_and_NLC.29 | © GKÚ, NLC 2021-2023
-SlovakiaHistoricMaps.geojson | Slovakia Historic Maps | tms | https://tms.freemap.sk/historicke/{zoom}/{x}/{y}.png | None | None
+ofmozaika 13 200 image/jpeg 50345 ACAO= None cache= max-age=2592000, public, no-transform
+ofmozaika2c 13 200 image/jpeg 32455 ACAO= None cache= max-age=2592000, public, no-transform
+ofmozaika 16 200 image/jpeg 54458 ACAO= None cache= max-age=2592000, public, no-transform
+ofmozaika2c 16 200 image/jpeg 33088 ACAO= None cache= max-age=2592000, public, no-transform
+ofmozaika 18 200 image/jpeg 42036 ACAO= None cache= max-age=2592000, public, no-transform
+ofmozaika2c 18 200 image/jpeg 26419 ACAO= None cache= max-age=2592000, public, no-transform
+ofmozaika 19 200 image/jpeg 35147 ACAO= None cache= max-age=2592000, public, no-transform
+ofmozaika2c 19 200 image/jpeg 25391 ACAO= None cache= max-age=2592000, public, no-transform
 HOTOVO
