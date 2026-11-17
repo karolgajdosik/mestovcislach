@@ -8,3 +8,4 @@ for lau in ["SK0101528595","SK0102529320","SK0105529460"]:
 r=requests.get("https://rageo.minv.sk/opendata/dataset/",timeout=60);print("index",r.status_code,len(r.content))
 print("HOTOVO")
 # beh 2026-11-16T16:19:16
+# beh 2026-11-17T06:01:08
