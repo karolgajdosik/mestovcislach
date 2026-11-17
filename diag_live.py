@@ -1,7 +1,7 @@
 import subprocess, sys, time
 import requests
 import re
-time.sleep(500)
+time.sleep(480)
 h=requests.get('https://mestovcislach.sk/banskobystricky-kraj/banska-stiavnica/banska-stiavnica/').text
 for c in set(re.findall(r'/_astro/[^"]+\.js',h)):
     j=requests.get('https://mestovcislach.sk'+c).text
@@ -17,7 +17,7 @@ ovl:(()=>{const b=document.querySelector('[data-pr=dalej]').getBoundingClientRec
 tit:document.querySelector('.pr-titulok b').textContent}})()"""
 with sync_playwright() as p:
     b=p.chromium.launch(args=["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"])
-    for vw,vh,name in [(1366,768,'desk'),(390,844,'mob')]:
+    for vw,vh,name in [(1366,768,'desk'),(1280,720,'lap'),(390,844,'mob')]:
         pg=b.new_page(viewport={"width":vw,"height":vh}); err=[]; con=[]
         pg.on("pageerror",lambda e: err.append(str(e)[:200])); pg.on("console",lambda m: m.type in('error','warning') and con.append(m.text[:150]))
         pg.goto(U); pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
@@ -30,4 +30,4 @@ with sync_playwright() as p:
         print(name,"chyby",err,"\n konzola",[c for c in con if 'could not be loaded' not in c][:8]); pg.close()
     b.close()
 print("HOTOVO")
-# r4
+# r5
