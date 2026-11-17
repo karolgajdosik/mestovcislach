@@ -75,3 +75,14 @@ export function stvrte(slug: string): StvrteMesta | null {
   const geo = Object.fromEntries(c.casti.filter((x) => out.some((o) => o.n === x.n)).map((x) => [x.n, x.g]));
   return { druh: c.druh, zdroj: c.zdroj, priblizne: c.priblizne, kat: kat.map((k) => ({ id: k.id, nazov: k.nazov })), casti: out.sort((a, b) => a.n.localeCompare(b.n, 'sk')), geo };
 }
+
+/** Stred a ohraničenie mestskej časti / štvrte (pre prelet nad časťou): [lat, lon] a [západ, juh, východ, sever]. */
+export function polohaCasti(slug: string, nazov: string): { stred: [number, number]; bbox: [number, number, number, number] } | null {
+  const kl = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  const c = casti(slug)?.casti.find((x) => kl(String(x.n)) === kl(nazov));
+  if (!c?.g) return null;
+  let z = Infinity, j = Infinity, v = -Infinity, s = -Infinity;
+  for (const p of polygony(c.g)) for (const [x, y] of p[0]) { z = Math.min(z, x); v = Math.max(v, x); j = Math.min(j, y); s = Math.max(s, y); }
+  if (!Number.isFinite(z)) return null;
+  return { stred: [(j + s) / 2, (z + v) / 2], bbox: [z, j, v, s] };
+}

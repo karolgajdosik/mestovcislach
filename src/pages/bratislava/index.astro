@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PozriObec from '../../components/PozriObec.astro';
+import { videoObce } from '../../lib/video-data';
 import FotoMesta from '../../components/FotoMesta.astro';
 import MapaCasti from '../../components/MapaCasti.astro';
 import DnesVBratislave from '../../components/DnesVBratislave.astro';
@@ -41,6 +43,7 @@ const zdrojUrl = 'https://statdata.statistics.sk/';
 const grafData = mesto
   ? JSON.stringify({ roky, mesto: roky.map((r) => mesto.roky[r]), casti: castiZoradene })
   : '';
+const vid = videoObce('582000', '/bratislava', 'hlavné mesto v číslach');
 ---
 <Base jsonld={faqLd('bratislava') ?? undefined} title="Bratislava v číslach – mestovcislach.sk" description="Bratislava v otvorených dátach: obyvatelia mestských častí, doprava a MHD, rozpočet a zmluvy, výstavba, voľby, ovzdušie a živé údaje – prehľadne a so zdrojmi.">
   <FotoMesta slug="bratislava" nazov="Bratislava">
@@ -112,6 +115,7 @@ const grafData = mesto
       </section>
     </>
   )}
+  {vid && <PozriObec nazov="Bratislava" nad="nad mestom" video={vid.video} prelet={vid.prelet} />}
   <ZimaVMeste m={MESTA.find((x) => x.slug === 'bratislava')!} />
   <RychleOdpovede slug="bratislava" />
   <OdberEmail kanal={'bratislava'} tyzdennik={'bratislava'} nadpis="Týždenník mesta e-mailom" popis="Raz týždenne zhrnieme, čo sa v meste udialo – bez reklamy a len z verejných údajov." />

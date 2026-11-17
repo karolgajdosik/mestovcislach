@@ -2,6 +2,9 @@
 // Prehľad krajského mesta z celoštátnych zdrojov (data/mesta/<slug>.json, scripts/zber_mesta.py).
 // Bratislava má vlastné, podrobnejšie stránky v src/pages/bratislava/.
 import fs from 'node:fs';
+import PozriObec from '../../components/PozriObec.astro';
+import { videoObce } from '../../lib/video-data';
+import { ukazovatele as ukazObci } from '../../lib/ukazovatele-obci';
 import path from 'node:path';
 import { castiMesta } from '../../lib/casti-mesta';
 import Base from '../../layouts/Base.astro';
@@ -87,6 +90,8 @@ const zobrazit = [...aktivne, ...zamery.filter((z) => z.ukoncene)].slice(0, 12);
 const mesiac = (k: string) => { const [r, mm] = k.split('-'); return `${Number(mm)}/${r}`; };
 const profilyMc = !m.plne && !!castiMesta(m.slug);
 const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const kodMesta = ukazObci().find((x) => x.o.nazov === m.nazov)?.o.kod;
+const vid = kodMesta ? videoObce(kodMesta, `/${m.slug}`, 'mesto v číslach') : null;
 ---
 <Base jsonld={faqLd(m.slug) ?? undefined} title={`${m.nazov} v číslach – mestovcislach.sk`} description={`${m.nazov}: obyvatelia, sčítanie 2021, voľby, nezamestnanosť, výstavba bytov, ceny bývania a stavebné zámery z otvorených dát.`}>
   <FotoMesta slug={m.slug} nazov={m.nazov}>
@@ -114,6 +119,8 @@ const mcSlug = (n: string) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
   </section>
 
   <Kalendar kraj={m.kraj} />
+
+  {vid && <PozriObec nazov={m.nazov} nad="nad mestom" video={vid.video} prelet={vid.prelet} />}
 
   <section class="card" id="obyvatelia">
     <h2>Obyvatelia</h2>

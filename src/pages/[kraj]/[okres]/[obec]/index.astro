@@ -10,6 +10,8 @@ import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, ids
 import { skrat, skratStrany } from '../../../../lib/zastupitelstvo';
 import Por from '../../../../components/Por.astro';
 import OdberEmail from '../../../../components/OdberEmail.astro';
+import PozriObec from '../../../../components/PozriObec.astro';
+import type { Snimka } from '../../../../scripts/video-obce';
 import { POLIA, ukazovatele } from '../../../../lib/ukazovatele-obci';
 import { umiestnenia } from '../../../../lib/rebricky';
 
@@ -309,10 +311,28 @@ const dataObce = {
   stiahnute: new Date().toISOString().slice(0, 10),
 };
 const umiest = umiestnenia(o.kod, 20).sort((a_, b_) => a_.miesto - b_.miesto).slice(0, 4);
+// video „… v číslach“ (snímky) a titulky preletu – len z údajov, ktoré sú na stránke
+const obyvVid = mes ?? p?.[1] ?? null;
+const znamienko = (x: number) => (x > 0 ? '+' : x < 0 ? '−' : '');
+const snimky: Snimka[] = [{ typ: 'titul', kicker: 'v číslach', nadpis: o.nazov, pod: `okres ${o.okres} · ${o.kraj}` }];
+if (obyvVid != null) snimky.push({ typ: 'cislo', hodnota: obyvVid, popis: 'Obyvatelia', pozn: z10 != null ? `${znamienko(z10)}${des(Math.abs(z10))} % za posledných 10 rokov` : undefined, rad: rad.map(([, x]) => x).slice(-25) });
+if (ukz.deti != null && ukz.sen != null) snimky.push({ typ: 'stlpce', nadpis: 'Vek obyvateľov (sčítanie 2021)', polozky: [['Deti do 14 rokov', ukz.deti!, `${des(ukz.deti!)} %`], ['15 – 64 rokov', 100 - ukz.deti! - ukz.sen!, `${des(100 - ukz.deti! - ukz.sen!)} %`], ['65 a viac rokov', ukz.sen!, `${des(ukz.sen!)} %`]] });
+if (ukz.vek != null && ukz.vs != null) snimky.push({ typ: 'dve', a: [`${des(ukz.vek!)} r.`, 'priemerný vek'], b: [`${des(ukz.vs!)} %`, 'ľudí s vysokou školou'] });
+if (kli) snimky.push({ typ: 'dve', nadpis: `Podnebie ${kliI?.obdobie ?? ''}`, a: [`${des(kli[0])} °C`, 'priemerná ročná teplota'], b: [`${fmt(kli[1])} mm`, 'zrážok za rok'] });
+if (v?.ucast || ukz.nez != null) snimky.push({ typ: 'dve', a: v?.ucast ? [`${des(v.ucast.ucast_pct)} %`, 'účasť v komunálnych voľbách 2026'] : ['–', 'účasť vo voľbách'], b: ukz.nez != null ? [`${des(ukz.nez!)} %`, 'miera nezamestnanosti'] : [`${fmt(okolie.length)}`, 'obcí v okolí'] });
+snimky.push({ typ: 'outro', nadpis: `${o.nazov} – všetky čísla`, url: `mestovcislach.sk/${o.kraj_slug}/${o.okres_slug}/${o.slug}` });
+const videoData = { nazov: o.nazov, slug: o.slug, foto: obr?.foto?.u ?? null, snimky };
+const titulky: [string, string][] = [[o.nazov, `okres ${o.okres} · ${o.kraj}`]];
+if (obyvVid != null) titulky.push([`${fmt(obyvVid)} obyvateľov`, z10 != null ? `${znamienko(z10)}${des(Math.abs(z10))} % za 10 rokov` : '']);
+if (wk?.[1]) titulky.push([`${fmt(wk[1])} m n. m.`, wk[0] ? `prvá písomná zmienka ${wk[0]}` : 'nadmorská výška']);
+if (pam && pam.n > 0) titulky.push([`${fmt(pam.n)} pamiatok`, (pam.top ?? []).slice(0, 2).join(', ')]);
+if (ukz.vek != null) titulky.push([`Priemerný vek ${des(ukz.vek!)} r.`, ukz.nez != null ? `nezamestnanosť ${des(ukz.nez!)} %` : '']);
+titulky.push([o.nazov, 'Ďalšie čísla nájdete nižšie na stránke']);
+const preletData = o.poloha ? { stred: o.poloha as [number, number], bbox: null, km2: uz ? uz.ha / 100 : null, titulky } : null;
 const skratka = fakty.sort((a_, b_) => b_[0] - a_[0]).slice(0, 4).map(([, t_]) => t_);
 // obsah sekcií (čipy) – rovnaké podmienky ako pri sekciách nižšie
 const BLOKY: [string, string, [string, string, unknown][]][] = [
-  ['prakticky', 'Prakticky', [['pocasie', 'Počasie', o.poloha], ['kalendar', 'Meniny a sviatky', true], ['volby', 'Voľby 2026', v], ['skoly', 'Školy', skI], ['sluzby', 'Služby', slu || vl || sluI || kul || os_], ['odpad', 'Odpad', odP && odI && odRok], ['pamiatky', 'Pamiatky', pam && pam.n > 0]]],
+  ['prakticky', 'Prakticky', [['video', 'Video a prelet', true], ['pocasie', 'Počasie', o.poloha], ['kalendar', 'Meniny a sviatky', true], ['volby', 'Voľby 2026', v], ['skoly', 'Školy', skI], ['sluzby', 'Služby', slu || vl || sluI || kul || os_], ['odpad', 'Odpad', odP && odI && odRok], ['pamiatky', 'Pamiatky', pam && pam.n > 0]]],
   ['zivot', 'Ako sa tu žije', [['obyvatelia', 'Obyvatelia', rad.length > 2 || sklad.length > 0], ['pohyb', 'Pohyb', poh?.rad || poh?.vek != null], ['vek', 'Vek', vk && vkSpolu > 0], ['vzdelanie', 'Vzdelanie', oby?.vzd], ['domacnosti', 'Domácnosti', so2 && (so2.dom || so2.byty || so2.ekon)], ['byvanie', 'Domy a siete', byv], ['nezamestnanost', 'Práca', nez && nezI], ['firmy', 'Firmy', firP], ['okres-cisla', 'Okres', mzP || byP || neh || nro], ['podnebie', 'Podnebie', kli && kliI], ['kataster', 'Príroda', uz || chr || tra || geo], ['volby-celostatne', 'Ako sa volilo', celostatne.length > 0 || starsie.length > 0]]],
   ['peniaze', 'Obec a peniaze', [['hospodarenie', 'Rozpočet', hP || roz], ['eurofondy', 'Eurofondy', nfp], ['zmluvy', 'Zmluvy', zmInfo], ['eia', 'Výstavba', eia]]],
 ];
@@ -371,6 +391,8 @@ const blok = (id: string) => obsah.find((x) => x.id === id);
   </nav>
 
   {blok('prakticky') && <div class="ob-blok" id="prakticky"><h2>Prakticky</h2><p>Počasie, meniny, voľby, školy, služby a odpad.</p></div>}
+
+  <PozriObec nazov={o.nazov} nad="nad obcou" video={videoData} prelet={preletData} />
 
   {o.poloha && (
     <section class="card" id="pocasie" data-poloha={JSON.stringify(o.poloha)}>

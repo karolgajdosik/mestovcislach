@@ -1,6 +1,9 @@
 ---
 // Profil mestskej časti: všetky údaje webu o jednej časti na jednom mieste, s porovnaním s celým mestom.
 import fs from 'node:fs';
+import PozriObec from '../../../components/PozriObec.astro';
+import { videoCasti } from '../../../lib/video-data';
+import { polohaCasti } from '../../../lib/stvrte';
 import path from 'node:path';
 import Base from '../../../layouts/Base.astro';
 import { profily, type Profil, type Porovnanie } from '../../../lib/profil-mc';
@@ -67,6 +70,13 @@ const popis = `${p.mc}: ${fmt(p.obyvatelia.pocet)} obyvateľov, voľby, rozpoče
 import McStatdata from '../../../components/McStatdata.astro';
 import ObsahCipy from '../../../components/ObsahCipy.astro';
 import Por from '../../../components/Por.astro';
+// video a prelet mestskej časti
+const slugMc = p.mc.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const videoMc = videoCasti({ nazov: p.mc, mesto: 'Bratislava', slug: `bratislava-${slugMc}`, url: Astro.url.pathname.replace(/\/$/, ''), obyv: p.obyvatelia.pocet, rad: p.obyvatelia.roky.map(([, x]) => x), z10: p.obyvatelia.zmena10,
+  deti: p.sklad.deti?.hodnota ?? null, sen: p.sklad.seniori?.hodnota ?? null, vs: p.sklad.vs?.hodnota ?? null, druhe: p.sklad.vlastne_byty?.hodnota != null ? [`${des(p.sklad.vlastne_byty.hodnota)} %`, 'bytov vo vlastníctve'] : null,
+  ucast: p.volby.starosta?.ucast ?? null, nez: p.nezamestnanost?.pdu ?? null });
+const polMc = polohaCasti('bratislava', p.mc);
+const preletMc = polMc ? { stred: polMc.stred, bbox: polMc.bbox, km2: p.obyvatelia.rozloha, titulky: [[p.mc, 'mestská časť Bratislavy'], [`${fmt(p.obyvatelia.pocet)} obyvateľov`, p.obyvatelia.zmena10 != null ? `${znam(p.obyvatelia.zmena10)} za 10 rokov` : ''], [`${des(p.obyvatelia.rozloha)} km²`, p.obyvatelia.hustota != null ? `${fmt(p.obyvatelia.hustota)} obyvateľov na km²` : ''], [p.mc, 'Ďalšie čísla nájdete nižšie na stránke']] as [string, string][] } : null;
 ---
 <Base title={`${p.mc} – mestská časť Bratislavy – mestovcislach.sk`} description={popis}>
   <nav class="drobky" aria-label="Kde sa nachádzate"><a href="/bratislava/mestske-casti">Mestské časti</a> <span aria-hidden="true">/</span> <span translate="no">{p.mc}</span></nav>
@@ -91,10 +101,12 @@ import Por from '../../../components/Por.astro';
   </section>
 
   <ObsahCipy popis={`Obsah stránky – ${p.mc}`} skupiny={[
-    [['sluzby', 'Školy a služby', true], ['volby', 'Voľby', true], ['stavby', 'Čo sa stavia', true], ['bezpecnost', 'Bezpečnosť', true]],
+    [['video', 'Video a prelet', true], ['sluzby', 'Školy a služby', true], ['volby', 'Voľby', true], ['stavby', 'Čo sa stavia', true], ['bezpecnost', 'Bezpečnosť', true]],
     [['ludia', 'Kto tu žije', true], ['buducnost', 'Budúcnosť', true], ['klima', 'Klíma', true], ['dalsie-cisla', 'Ďalšie čísla', true]],
     [['peniaze', 'Peniaze', true]],
   ]} />
+
+  <PozriObec nazov={p.mc} nad="nad mestskou časťou" video={videoMc} prelet={preletMc} />
   <div class="ob-blok" id="prakticky"><h2>Prakticky</h2><p>Školy, služby, voľby, výstavba a bezpečnosť.</p></div>
   <div class="mriezka">
     <section class="card" id="sluzby">

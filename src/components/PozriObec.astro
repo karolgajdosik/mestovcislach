@@ -1,0 +1,142 @@
+---
+// „Video a prelet“: krátke video „… v číslach“ (canvas, dá sa stiahnuť ako MP4/WebM) a 3D prelet nad územím (MapLibre, po kliknutí).
+// Údaje pripraví stránka (obec, mestská časť, mesto) – komponent nič nesťahuje pri načítaní stránky okrem fotky do videa.
+import type { VideoData } from '../scripts/video-obce';
+import '../styles/obce.css';
+
+interface Props {
+  nazov: string;
+  /** „nad obcou“, „nad mestskou časťou“, „nad mestom“ */
+  nad: string;
+  video: VideoData;
+  prelet?: { stred: [number, number]; bbox?: [number, number, number, number] | null; km2?: number | null; titulky: [string, string][] } | null;
+}
+const { nazov, nad, video, prelet } = Astro.props;
+---
+<section class="card pv" id="video" aria-labelledby="pv-h">
+  <h2 id="pv-h">Video a prelet {nad}</h2>
+  <div class="pv-mriezka">
+    <div class="pv-video" data-video={JSON.stringify(video)}>
+      <div class="pv-platno"><canvas width="1280" height="720" aria-label={`Video ${nazov} v číslach`} role="img"></canvas>
+        <button type="button" class="pv-hraj" aria-label="Prehrať video"><span aria-hidden="true">▶</span></button>
+      </div>
+      <div class="pv-ovl">
+        <button type="button" class="ob-akcia" data-v="hraj">▶ Prehrať</button>
+        <label class="pv-format">Formát <select data-v="format"><option value="16x9">na šírku 16 : 9</option><option value="9x16">na výšku 9 : 16 (sociálne siete)</option></select></label>
+        <button type="button" class="ob-akcia" data-v="stiahni">Stiahnuť video</button>
+      </div>
+      <p class="pozn pv-stav" aria-live="polite">Video sa skladá v prehliadači z údajov tejto stránky ({Math.round(video.snimky.length * 4)} s). Môžete ho stiahnuť a zdieľať – uveďte zdroj mestovcislach.sk.</p>
+    </div>
+    {prelet && (
+      <div class="pr" data-prelet={JSON.stringify({ nazov, ...prelet })}>
+        <div class="pr-uvod">
+          <p><b>3D prelet {nad}</b> – kamera obletí územie s reliéfom terénu a zastaví sa pri významných miestach. Mapou môžete kedykoľvek pohnúť sami.</p>
+          <button type="button" class="ob-akcia pr-start">▶ Spustiť prelet</button>
+        </div>
+        <div class="pr-okno" hidden>
+          <div class="pr-mapa"></div>
+          <div class="pr-titulok"><b></b><span></span></div>
+          <div class="pr-ovl">
+            <button type="button" data-pr="pauza">⏸ Pauza</button>
+            <button type="button" data-pr="cela" aria-label="Na celú obrazovku">⛶</button>
+            <button type="button" data-pr="zavriet" aria-label="Zavrieť prelet">✕</button>
+          </div>
+        </div>
+        <p class="zdroj pr-zdroj" hidden></p>
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  import { VideoObce, type VideoData } from '../scripts/video-obce';
+  import { kedViditelne } from '../scripts/ked-viditelne';
+
+  document.querySelectorAll<HTMLElement>('.pv-video').forEach((box) => {
+    const canvas = box.querySelector('canvas')!;
+    const d = JSON.parse(box.dataset.video!) as VideoData;
+    const v = new VideoObce(canvas, d);
+    const stav = box.querySelector<HTMLElement>('.pv-stav')!;
+    const tlHraj = box.querySelector<HTMLButtonElement>('[data-v="hraj"]')!;
+    const velke = box.querySelector<HTMLButtonElement>('.pv-hraj')!;
+    const format = box.querySelector<HTMLSelectElement>('[data-v="format"]')!;
+    const tlStiahni = box.querySelector<HTMLButtonElement>('[data-v="stiahni"]')!;
+    let pripravene: Promise<void> | null = null;
+    const priprav = () => (pripravene ??= v.priprav().then(() => v.nastavRozmer(canvas.width, canvas.height)));
+    // fotka a prvý obrázok až keď je video blízko obrazovky
+    kedViditelne(box, () => { priprav(); }, '300px');
+    const tlacidla = () => { const h = v.jeHra(); tlHraj.textContent = h ? '⏸ Pauza' : '▶ Prehrať'; velke.hidden = h; };
+    v.onCas = () => tlacidla();
+    const hraj = async () => {
+      await priprav();
+      if (v.jeHra()) { v.pauza(); tlacidla(); return; }
+      const od = v.aktualny() >= v.trvanie - 0.05 ? 0 : v.aktualny() > 0.7 ? v.aktualny() : 0;
+      const p = v.hraj(od); tlacidla(); await p; tlacidla();
+    };
+    tlHraj.addEventListener('click', hraj);
+    velke.addEventListener('click', hraj);
+    format.addEventListener('change', () => {
+      v.pauza();
+      const vysoke = format.value === '9x16';
+      box.classList.toggle('pv-vysoke', vysoke);
+      v.nastavRozmer(vysoke ? 1080 : 1280, vysoke ? 1920 : 720);
+      tlacidla();
+    });
+    tlStiahni.addEventListener('click', async () => {
+      await priprav();
+      tlStiahni.disabled = true; tlHraj.disabled = true; format.disabled = true;
+      const povodny = stav.textContent;
+      try {
+        const { blob, pripona } = await v.nahraj((p) => { stav.textContent = `Nahrávam video… ${Math.round(p * 100)} %`; });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${d.slug}-v-cislach${format.value === '9x16' ? '-na-vysku' : ''}.${pripona}`;
+        document.body.append(a); a.click();
+        setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+        stav.textContent = `Hotovo – video sa stiahlo (${pripona.toUpperCase()}, ${(blob.size / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} MB).`;
+      } catch (e) {
+        stav.textContent = `Video sa nepodarilo nahrať: ${(e as Error).message} Skúste iný prehliadač (Chrome, Edge, Safari).`;
+        setTimeout(() => { stav.textContent = povodny; }, 8000);
+      } finally {
+        tlStiahni.disabled = false; tlHraj.disabled = false; format.disabled = false; tlacidla();
+      }
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>('.pr').forEach((el) => {
+    el.querySelector('.pr-start')?.addEventListener('click', () => {
+      import('../scripts/prelet').then(({ spustiPrelet }) => spustiPrelet(el)).catch(() => {
+        const t = el.querySelector('.pr-titulok b');
+        if (t) t.textContent = 'Mapu sa nepodarilo načítať.';
+      });
+    }, { once: true });
+  });
+</script>
+
+<style>
+  .pv-mriezka { display: grid; gap: 18px; }
+  @media (min-width: 960px) { .pv-mriezka:has(.pr) { grid-template-columns: 1fr 1fr; } }
+  .pv-platno { position: relative; border-radius: 14px; overflow: hidden; background: #1d2433; }
+  .pv-platno canvas { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .pv-vysoke .pv-platno { max-width: 360px; margin: 0 auto; }
+  .pv-vysoke .pv-platno canvas { aspect-ratio: 9 / 16; }
+  .pv-hraj { position: absolute; inset: 0; margin: auto; width: 76px; height: 76px; border-radius: 50%; border: 0; background: rgba(224, 40, 63, 0.92); color: #fff; font-size: 30px; cursor: pointer; box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35); }
+  .pv-hraj[hidden] { display: none; }
+  .pv-ovl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+  .pv-format { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; }
+  .pv-format select { font: inherit; padding: 6px 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--text); }
+  .pr-uvod { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; height: 100%; justify-content: center; padding: 18px; border: 1px dashed var(--line); border-radius: 14px; background: var(--bg); }
+  .pr-uvod p { margin: 0; }
+  .pr-uvod[hidden] { display: none; }
+  .pr-okno { position: relative; border-radius: 14px; overflow: hidden; background: #1d2433; }
+  .pr-okno[hidden] { display: none; }
+  .pr-mapa { width: 100%; aspect-ratio: 16 / 9; }
+  .pr-okno:fullscreen .pr-mapa { aspect-ratio: auto; height: 100vh; }
+  .pr-titulok { position: absolute; left: 12px; bottom: 30px; max-width: calc(100% - 24px); padding: 10px 14px; border-radius: 12px; background: rgba(15, 18, 26, 0.78); color: #fff; display: flex; flex-direction: column; gap: 2px; pointer-events: none; transition: opacity 0.4s; }
+  .pr-titulok b { font-size: 1.1rem; }
+  .pr-titulok span { font-size: 0.85rem; opacity: 0.88; }
+  .pr-titulok.pr-skryty { opacity: 0; }
+  .pr-ovl { position: absolute; left: 12px; top: 12px; display: flex; gap: 6px; }
+  .pr-ovl button { min-height: 34px; padding: 0 12px; border: 0; border-radius: 17px; background: rgba(15, 18, 26, 0.78); color: #fff; font: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
+  .pr-ovl button[hidden] { display: none; }
+</style>

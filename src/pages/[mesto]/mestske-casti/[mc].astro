@@ -1,6 +1,9 @@
 ---
 // Profil mestskej časti (Košice): obyvatelia a ich vývoj, kto tu býva (sčítanie 2021), voľby, dostupnosť služieb – s porovnaním s mestom.
 import Base from '../../../layouts/Base.astro';
+import PozriObec from '../../../components/PozriObec.astro';
+import { videoCasti } from '../../../lib/video-data';
+import { polohaCasti } from '../../../lib/stvrte';
 import '../../../styles/stranka.css';
 import { MESTA, type Mesto } from '../../../mesta';
 import { castiMesta, type ProfilCasti, type Ukazovatel } from '../../../lib/casti-mesta';
@@ -63,6 +66,12 @@ const graf = (() => {
 const maSklad = SKLAD.some(([k]) => p.sklad[k].hodnota != null);
 const nr = p.volby.nrsr2023, ep = p.volby.ep2024;
 const popisStr = `${p.n} (${m.nazov}): ${fmt(p.pocet)} obyvateľov, vývoj, vek a vzdelanie, voľby a dostupnosť služieb – porovnanie s celým mestom.`;
+// video a prelet mestskej časti
+const videoMc = videoCasti({ nazov: p.n, mesto: m.nazov, slug: `${m.slug}-${p.slug}`, url: `/${m.slug}/mestske-casti/${p.slug}`, obyv: p.pocet, rad: p.rady.map(([, x]) => x), z10: p.zmena10.hodnota,
+  deti: p.sklad.deti.hodnota, sen: p.sklad.seniori.hodnota, vs: p.sklad.vs.hodnota, druhe: p.sklad.vlastne.hodnota != null ? [`${p.sklad.vlastne.hodnota.toLocaleString('sk-SK')} %`, 'bytov vo vlastníctve'] : null,
+  ucast: p.komunalne[0]?.ucast ?? null });
+const polMc = polohaCasti(m.slug, p.n);
+const preletMc = polMc ? { stred: polMc.stred, bbox: polMc.bbox, km2: p.km2, titulky: [[p.n, `mestská časť – ${m.nazov}`], [p.pocet != null ? `${p.pocet.toLocaleString('sk-SK')} obyvateľov` : p.n, p.zmena10.hodnota != null ? `${p.zmena10.hodnota > 0 ? '+' : ''}${p.zmena10.hodnota.toLocaleString('sk-SK')} % za 10 rokov` : ''], [p.n, 'Ďalšie čísla nájdete nižšie na stránke']] as [string, string][] } : null;
 ---
 <Base title={`${p.n} (${m.nazov}) – mestská časť v číslach – mestovcislach.sk`} description={popisStr}>
   <nav class="drobky" aria-label="Kde sa nachádzate"><a href={`/${m.slug}/mestske-casti`}>Mestské časti</a> <span aria-hidden="true">/</span> <span translate="no">{p.n}</span></nav>
@@ -81,9 +90,11 @@ const popisStr = `${p.n} (${m.nazov}): ${fmt(p.pocet)} obyvateľov, vývoj, vek 
   </section>
 
   <ObsahCipy popis={`Obsah stránky – ${p.n}`} skupiny={[
-    [['blizko', 'Čo je blízko', p.dostupnost.some((d) => d.m != null)], ['volby', 'Voľby', kom || nr || ep]],
+    [['video', 'Video a prelet', true], ['blizko', 'Čo je blízko', p.dostupnost.some((d) => d.m != null)], ['volby', 'Voľby', kom || nr || ep]],
     [['vyvoj', 'Vývoj', graf], ['ludia', 'Kto tu býva', maSklad], ['dalsie-cisla', 'Ďalšie čísla', m.slug === 'kosice' || m.slug === 'bratislava']],
   ]} />
+
+  <PozriObec nazov={p.n} nad="nad mestskou časťou" video={videoMc} prelet={preletMc} />
 
   {(p.dostupnost.some((d) => d.m != null) || kom || nr || ep) && <div class="ob-blok" id="prakticky"><h2>Prakticky</h2><p>Čo je blízko pešo a ako sa tu volí.</p></div>}
 
