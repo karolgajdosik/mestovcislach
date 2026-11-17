@@ -1,5 +1,6 @@
 // 3D prelet nad obcou / mestskou časťou (MapLibre GL, načíta sa až po kliknutí).
-// Podklad: ortofotomozaika SR (GKÚ Bratislava, CC BY 4.0), ak služba odpovie a povolí CORS; inak vektorová mapa OpenFreeMap.
+// Podklad: vektorová mapa OpenFreeMap (ulice, názvy, 3D budovy); tlačidlom sa dá prepnúť na leteckú snímku – ortofotomozaika SR
+// (GKÚ Bratislava, CC BY 4.0), vložená pod cesty a názvy, ak služba odpovie a povolí CORS.
 // Terén: Terrain Tiles (Terrarium, AWS Open Data). Zastávky kamery: pomenované body záujmu z dlaždíc OpenMapTiles v okolí.
 
 type Data = { nazov: string; stred: [number, number]; bbox?: [number, number, number, number] | null; km2?: number | null; titulky: [string, string][] };
@@ -50,10 +51,9 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   titulok('Načítavam mapu…');
 
   const [lat, lon] = d.stred;
-  const [mod, worker, orto] = await Promise.all([
+  const [mod, worker] = await Promise.all([
     import('maplibre-gl/dist/maplibre-gl-csp.js' as string),
     import('maplibre-gl/dist/maplibre-gl-csp-worker.js?url' as string).then((m) => m.default as string),
-    ortofoto(lat, lon),
     // štýly MapLibre ako samostatný súbor až pri spustení (inak by Astro pridalo 70 kB CSS do hlavičky každej obce)
     import('maplibre-gl/dist/maplibre-gl.css?url' as string).then((m) => new Promise<void>((ok) => {
       const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = m.default; l.onload = () => ok(); l.onerror = () => ok(); document.head.append(l);
@@ -62,29 +62,13 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   const maplibregl: any = mod.default ?? mod;
   maplibregl.setWorkerUrl(worker);
 
-  // štýl: ortofoto + názvy z OpenMapTiles, alebo celá vektorová mapa OpenFreeMap
-  let style: any;
-  if (orto) {
-    style = {
-      version: 8, glyphs: `${OFM}/fonts/{fontstack}/{range}.pbf`,
-      sources: {
-        orto: { type: 'raster', tiles: [orto], tileSize: 512, maxzoom: 19, attribution: 'Ortofotomozaika SR © GKÚ Bratislava, ÚGKK SR (CC BY 4.0)' },
-        openmaptiles: { type: 'vector', url: `${OFM}/planet`, attribution: '© OpenMapTiles, údaje © prispievatelia OpenStreetMap' },
-      },
-      layers: [
-        { id: 'orto', type: 'raster', source: 'orto' },
-        { id: 'miesta', type: 'symbol', source: 'openmaptiles', 'source-layer': 'place', filter: ['in', ['get', 'class'], ['literal', ['city', 'town', 'village', 'suburb', 'hamlet']]],
-          layout: { 'text-field': ['coalesce', ['get', 'name:sk'], ['get', 'name']], 'text-font': ['Noto Sans Bold'], 'text-size': 15 }, paint: { 'text-color': '#fff', 'text-halo-color': 'rgba(0,0,0,0.75)', 'text-halo-width': 1.6 } },
-      ],
-    };
-  } else {
-    style = await fetch(`${OFM}/styles/liberty`).then((r) => r.json());
-  }
+  // štýl: vždy plná mapa (ulice, názvy, 3D budovy – OpenFreeMap); letecká snímka sa pridá tlačidlom pod cesty a názvy
+  const style: any = await fetch(`${OFM}/styles/liberty`).then((r) => r.json());
   style.sources.dem = { type: 'raster-dem', tiles: [DEM], tileSize: 256, encoding: 'terrarium', maxzoom: 14, attribution: 'Terén: Terrain Tiles (Mapzen, AWS Open Data)' };
   // tieňovaný reliéf (samostatný zdroj – MapLibre odporúča nezdieľať zdroj terénu a tieňovania)
   style.sources.demhs = { type: 'raster-dem', tiles: [DEM], tileSize: 256, encoding: 'terrarium', maxzoom: 14 };
   const prvaCiara = style.layers.findIndex((l: any) => l.type === 'line' || l.type === 'symbol' || l.type === 'fill-extrusion');
-  style.layers.splice(orto ? 1 : Math.max(1, prvaCiara), 0, { id: 'relief', type: 'hillshade', source: 'demhs', paint: { 'hillshade-exaggeration': orto ? 0.15 : 0.4, 'hillshade-shadow-color': '#5b4f44', 'hillshade-highlight-color': '#ffffff' } });
+  style.layers.splice(Math.max(1, prvaCiara), 0, { id: 'relief', type: 'hillshade', source: 'demhs', paint: { 'hillshade-exaggeration': 0.4, 'hillshade-shadow-color': '#5b4f44', 'hillshade-highlight-color': '#ffffff' } });
 
   // priblíženie podľa veľkosti územia
   const km2 = d.km2 && d.km2 > 0 ? d.km2 : 12;
@@ -99,7 +83,27 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   map.setTerrain({ source: 'dem', exaggeration: 1.5 });
   try { map.setSky?.({ 'sky-color': '#9cc3e8', 'horizon-color': '#dfe9f2', 'fog-color': '#e8eef4', 'sky-horizon-blend': 0.6, 'horizon-fog-blend': 0.5, 'fog-ground-blend': 0.3 }); } catch { /* staršie verzie */ }
   zdroj.hidden = false;
-  zdroj.textContent = `${orto ? 'Podklad: ortofotomozaika SR © GKÚ Bratislava, ÚGKK SR (CC BY 4.0)' : 'Podklad: OpenFreeMap, © OpenMapTiles, údaje © prispievatelia OpenStreetMap'}; terén: Terrain Tiles (Mapzen, AWS Open Data). Body záujmu: OpenStreetMap. Mapou môžete kedykoľvek pohnúť sami.`;
+  const ZDROJ_MAPA = 'Mapa: OpenFreeMap, © OpenMapTiles, údaje © prispievatelia OpenStreetMap; terén: Terrain Tiles (Mapzen, AWS Open Data). Mapou môžete kedykoľvek pohnúť sami.';
+  zdroj.textContent = ZDROJ_MAPA;
+  // prepínač Mapa / Letecká snímka: ortofoto ZBGIS sa vloží pod cesty, budovy a názvy (hybridná mapa)
+  const tlPodklad = el.querySelector<HTMLButtonElement>('[data-pr="podklad"]');
+  let letecka = false;
+  tlPodklad?.addEventListener('click', async () => {
+    if (!map.getLayer('orto')) {
+      tlPodklad.disabled = true;
+      tlPodklad.textContent = 'Načítavam snímky…';
+      const sablona = await ortofoto(lat, lon);
+      tlPodklad.disabled = false;
+      if (!sablona) { tlPodklad.textContent = 'Letecké snímky nedostupné'; tlPodklad.disabled = true; return; }
+      map.addSource('orto', { type: 'raster', tiles: [sablona], tileSize: 512, maxzoom: 19, attribution: 'Ortofotomozaika SR © GKÚ Bratislava, ÚGKK SR (CC BY 4.0)' });
+      const pod = map.getStyle().layers.find((l: any) => l.type === 'line' || l.type === 'fill-extrusion' || l.type === 'symbol')?.id;
+      map.addLayer({ id: 'orto', type: 'raster', source: 'orto', layout: { visibility: 'none' } }, pod);
+    }
+    letecka = !letecka;
+    map.setLayoutProperty('orto', 'visibility', letecka ? 'visible' : 'none');
+    tlPodklad.textContent = letecka ? '🗺 Mapa' : '🛰 Letecká snímka';
+    zdroj.textContent = letecka ? `Letecká snímka: ortofotomozaika SR © GKÚ Bratislava, ÚGKK SR (CC BY 4.0). ${ZDROJ_MAPA}` : ZDROJ_MAPA;
+  });
   await sTimeoutom(new Promise<void>((ok) => map.once('idle', () => ok())), 8000).catch(() => {});
 
   // body záujmu v okolí stredu (pomenované, podľa dôležitosti, aspoň 250 m od seba)
