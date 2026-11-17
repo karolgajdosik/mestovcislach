@@ -1,14 +1,16 @@
-nasadené po 160 s
+nasadené po 0 s
+0 [False, 538.875, True]
+1 [False, 538.875, True]
 Traceback (most recent call last):
   File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 20, in <module>
-    pg.wait_for_timeout(12000); pg.locator(".pr-okno").screenshot(path=f"diag/r{k}.jpg",type="jpeg",quality=65)
-                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/sync_api/_generated.py", line 13083, in screenshot
+    pg.wait_for_timeout(12000); print(k, pg.evaluate("(()=>{const o=document.querySelector('.pr-okno');return [o.hidden,o.getBoundingClientRect().height,!!document.querySelector('.pr').__mapa]})()")); pg.screenshot(path=f"diag/r{k}.jpg",type="jpeg",quality=65,animations="disabled")
+                                                                                                                                                                                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.14/site-packages/playwright/sync_api/_generated.py", line 20272, in screenshot
     self._sync(
     ~~~~~~~~~~^
         self._impl_obj.screenshot(
         ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<11 lines>...
+    ...<13 lines>...
         )
         ^
     )
@@ -16,6 +18,15 @@ Traceback (most recent call last):
   File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/_sync_base.py", line 124, in _sync
     return task.result()
            ~~~~~~~~~~~^^
+  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/page.py", line 1056, in screenshot
+    result = await self._channel.screenshot(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<12 lines>...
+    )
+    ^
+  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/channel_owner.py", line 398, in _mapped
+    return mapper(await awaitable)
+                  ^^^^^^^^^^^^^^^
   File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/channel_owner.py", line 387, in finish
     raise e from None
   File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/channel_owner.py", line 352, in finish
@@ -24,29 +35,10 @@ Traceback (most recent call last):
   File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/utils/zones.py", line 58, in run_async
     return await func()
            ^^^^^^^^^^^^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/locator.py", line 726, in screenshot
-    return await self._with_element(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<14 lines>...
-    )
-    ^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/locator.py", line 173, in _with_element
-    return await task(handle, deadline - monotonic_time() if deadline else 0)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/element_handle.py", line 454, in screenshot
-    result = await self._element_channel.screenshot(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<10 lines>...
-    )
-    ^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/channel_owner.py", line 398, in _mapped
-    return mapper(await awaitable)
-                  ^^^^^^^^^^^^^^^
-playwright._impl._errors.TimeoutError: Locator.screenshot: Timeout 26742.43199999997ms exceeded.
+playwright._impl._errors.TimeoutError: Page.screenshot: Timeout 30000ms exceeded.
 Call log:
-  - taking element screenshot
+  - taking page screenshot
+    - disabled all CSS animations
   - waiting for fonts to load...
   - fonts loaded
-  - attempting scroll into view action
-    - waiting for element to be stable
 
