@@ -266,28 +266,24 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   const pohni = (f: () => void) => new Promise<void>((ok) => { map.once('moveend', () => ok()); f(); });
   const tit_ = (k: number) => d.titulky[k] ?? d.titulky[d.titulky.length - 1] ?? [d.nazov, ''];
   const kroky: (() => Promise<void>)[] = [
-    async () => { titulok(...tit_(0)); await Promise.all([pohni(() => map.flyTo({ center: [lon, lat], zoom, pitch: 58, bearing: -20, duration: 6000, essential: true, padding: bezOdsadenia })), povedz(reci(...tit_(0)))]); },
-    async () => { titulok(...tit_(1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 70, { duration: 7000, easing: (x: number) => x, essential: true })), povedz(reci(...tit_(1)))]); },
+    async () => { titulok(...tit_(0)); await Promise.all([pohni(() => map.flyTo({ center: [lon, lat], zoom, pitch: 58, bearing: -20, duration: 6000, essential: true, freezeElevation: true, padding: bezOdsadenia })), povedz(reci(...tit_(0)))]); },
+    async () => { titulok(...tit_(1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 70, { duration: 7000, easing: (x: number) => x, essential: true, freezeElevation: true })), povedz(reci(...tit_(1)))]); },
     ...(d.pamiatky ?? []).map((pm) => async () => {
       // významná pamiatka: prílet, titulok s fotkou a pomalé obletenie počas čítania
       const meno = pm.n.replace(/\s*\([^()]*\)$/, ''); // „Kostol … (Košice)“ → bez rozlišovacej zátvorky
       titulok(meno, pm.t, pm.f);
       znacka.remove();
       const ll: [number, number] = [pm.p[1], pm.p[0]];
-      // pamiatka nad titulkom: spodný okraj kamery sa posunie o výšku titulku; výška terénu, aby značka bola v strede
-      const e = map.queryTerrainElevation(ll);
-      await pohni(() => map.flyTo({ center: ll, zoom: 17, pitch: 62, bearing: map.getBearing() + 40, duration: 5000, essential: true, padding: odsadenie(), ...(e != null ? { elevation: e } : {}) }));
+      // pamiatka nad titulkom: spodný okraj kamery sa posunie o výšku titulku.
+      // freezeElevation: po pohybe MapLibre znova prichytí stred kamery k terénu (inak ostane výška z náletu a pamiatka „uteká“ pod stred)
+      await pohni(() => map.flyTo({ center: ll, zoom: 17, pitch: 62, bearing: map.getBearing() + 40, duration: 5000, essential: true, freezeElevation: true, padding: odsadenie() }));
       if (pauza) return;
       znacka.setLngLat(ll).addTo(map); // značka až po prílete
-      // dorovnanie výšky stredu kamery podľa podrobného terénu (po načítaní dlaždíc), inak by pamiatka „ušla“ pod stred
-      await sTimeoutom(new Promise<void>((ok) => map.once('idle', () => ok())), 2500).catch(() => {});
-      const e2 = map.queryTerrainElevation(ll);
-      if (!pauza && e2 != null) await pohni(() => map.easeTo({ center: ll, elevation: e2, padding: odsadenie(), duration: 600, essential: true }));
       if (pauza) return;
       const citanie = povedz(reci(meno, pm.t), 6000);
       let obieha = true;
       // každé kolo trvá aspoň chvíľu (aj keď prehliadač pohyb preskočí – napr. obmedzené animácie), inak by slučka zablokovala stránku
-      const krut = async () => { while (obieha && !pauza) await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 25, { duration: 4000, easing: (x: number) => x, essential: true })), sOkamih(500)]); };
+      const krut = async () => { while (obieha && !pauza) await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 25, { duration: 4000, easing: (x: number) => x, essential: true, freezeElevation: true })), sOkamih(500)]); };
       const k = krut();
       await citanie;
       obieha = false;
@@ -299,7 +295,7 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       let body = najdiBody();
       if (!body.length && map.getZoom() < 14.6) {
         // body záujmu sú v dlaždiciach až pri väčšom priblížení – priblížiť a skúsiť znova
-        await pohni(() => map.easeTo({ zoom: 14.8, pitch: 62, duration: 3000, essential: true }));
+        await pohni(() => map.easeTo({ zoom: 14.8, pitch: 62, duration: 3000, essential: true, freezeElevation: true }));
         await sTimeoutom(new Promise<void>((ok) => map.once('idle', () => ok())), 6000).catch(() => {});
         body = najdiBody();
       }
@@ -308,12 +304,12 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
         if (pauza) return;
         const [ta, tb] = 2 + k < d.titulky.length - 1 ? tit_(2 + k) : ['', ''];
         titulok(b.n, `${b.t[0].toUpperCase()}${b.t.slice(1)}${ta ? ` · ${ta}${tb ? ` – ${tb}` : ''}` : ''}`);
-        await Promise.all([pohni(() => map.flyTo({ center: b.p, zoom: Math.min(17, zoom + 2.2), pitch: 66, bearing: map.getBearing() + 35, duration: 5500, essential: true, padding: odsadenie() })), povedz(ta ? reci(b.n, `${ta}, ${tb}`) : b.n)]);
+        await Promise.all([pohni(() => map.flyTo({ center: b.p, zoom: Math.min(17, zoom + 2.2), pitch: 66, bearing: map.getBearing() + 35, duration: 5500, essential: true, freezeElevation: true, padding: odsadenie() })), povedz(ta ? reci(b.n, `${ta}, ${tb}`) : b.n)]);
         await sOkamih(800);
       }
     },
-    async () => { const tt = 2 + pocetBodov < d.titulky.length - 1 ? tit_(2 + pocetBodov) : tit_(0); titulok(...tt); await Promise.all([pohni(() => map.flyTo({ padding: bezOdsadenia, center: [lon, lat], zoom: zoom - 0.8, pitch: 50, bearing: map.getBearing() + 40, duration: 6000, essential: true })), povedz(reci(...tt))]); },
-    async () => { titulok(...tit_(d.titulky.length - 1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 90, { duration: 9000, easing: (x: number) => x, essential: true })), povedz(`${d.nazov}. Ďalšie čísla nájdete na stránke mesto v číslach.`)]); },
+    async () => { const tt = 2 + pocetBodov < d.titulky.length - 1 ? tit_(2 + pocetBodov) : tit_(0); titulok(...tt); await Promise.all([pohni(() => map.flyTo({ padding: bezOdsadenia, center: [lon, lat], zoom: zoom - 0.8, pitch: 50, bearing: map.getBearing() + 40, duration: 6000, essential: true, freezeElevation: true })), povedz(reci(...tt))]); },
+    async () => { titulok(...tit_(d.titulky.length - 1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 90, { duration: 9000, easing: (x: number) => x, essential: true, freezeElevation: true })), povedz(`${d.nazov}. Ďalšie čísla nájdete na stránke mesto v číslach.`)]); },
   ];
   // kapitoly: zoznam zastávok pod mapou a tlačidlá ⏮ ⏭ – dá sa preskočiť dopredu aj vrátiť
   const pam = d.pamiatky ?? [];
