@@ -1,7 +1,4 @@
-12 200 image/jpeg 20367 ACAO= https://mestovcislach.sk
-14 200 image/jpeg 11490 ACAO= https://mestovcislach.sk
-15 200 image/jpeg 7639 ACAO= https://mestovcislach.sk
-16 200 image/jpeg 5916 ACAO= https://mestovcislach.sk
-17 200 image/jpeg 3020 ACAO= https://mestovcislach.sk
-xSet></TileMatrixSetLink><ResourceURL format="image/jpeg" resourceType="tile" template="http://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2024/default/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg"></ResourceURL></Layer><Layer><ows:Title>Sentinel-2 cloudless layer for 2016 by EOX - 3857</ows:Title><ows:Abstract>EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016) released under &lt;a rel="license" href="https://creativecommons.org/licenses/by/4.0/"&gt;Creative Commons Attribution 4.0 International License&lt;/a&gt;.</ows:Abstract><ows:Identifier>s2cloudless_3857</ows:Identifier><Style isDefault="true"><ows:Identifier>default</ow
+tlačidlo: 🗺 Mapa
+zdroj: Satelitná snímka: Sentinel-2 cloudless 2016 © EOX IT Services GmbH, obsahuje upravené dáta Copernicus Sentinel (CC BY 4.0) – letecké snímky GKÚ sa nepodarilo načítať. Mapa: OpenFreeMap, © OpenMapTiles
+chyby []
 HOTOVO
