@@ -17,9 +17,9 @@ with sync_playwright() as p:
     pg.evaluate("""()=>{const t0=performance.now();const b=document.querySelector('.pr-titulok');new MutationObserver(()=>{const f=b.querySelector('.pr-foto');console.log('T+'+Math.round((performance.now()-t0)/1000)+'s '+b.querySelector('b').textContent.slice(0,50)+' | foto '+(!f.hidden)+' | '+(b.querySelector('.pr-kredit').hidden?'':'kredit'))}).observe(b,{subtree:true,childList:true,characterData:true,attributes:true});}""")
     pg.click(".pr-start")
     for k in range(6):
-        pg.wait_for_timeout(12000); pg.locator(".pr-okno").screenshot(path=f"diag/r{k}.jpg",type="jpeg",quality=65)
+        pg.wait_for_timeout(12000); print(k, pg.evaluate("(()=>{const o=document.querySelector('.pr-okno');return [o.hidden,o.getBoundingClientRect().height,!!document.querySelector('.pr').__mapa]})()")); pg.screenshot(path=f"diag/r{k}.jpg",type="jpeg",quality=65,animations="disabled")
     print("hlas tlačidlo hidden:", pg.evaluate("document.querySelector('[data-pr=hlas]').hidden"), "| zdroj:", pg.evaluate("document.querySelector('.pr-zdroj').textContent")[-90:])
     seen=[]; [seen.append(l) for l in log if l not in seen]
     print("\n".join(seen[:40])); b.close()
 print("HOTOVO")
-# 1
+# 2
