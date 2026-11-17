@@ -89,7 +89,10 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   el.querySelector<HTMLElement>('.pr-uvod')!.hidden = true;
   el.classList.add('pr-otvoreny');
   // otvorená mapa sa presunie do zobrazenia (na počítači je pod videom) – raz, pri otvorení
-  const ukazOkno = () => requestAnimationFrame(() => { const r = okno.getBoundingClientRect(); const hore = Math.min(140, Math.max(60, (innerHeight - r.height) / 2)); if (r.top < hore - 4 || r.bottom > innerHeight) scrollTo({ top: scrollY + r.top - hore, behavior: 'smooth' }); });
+  const ukazOkno = () => requestAnimationFrame(() => { const r = okno.getBoundingClientRect(); // pod lepkavú hlavičku a pás sekcií, aby ovládanie nad mapou nebolo zakryté
+    let lep = 0;
+    for (const x of document.querySelectorAll<HTMLElement>('body *')) { const cs = getComputedStyle(x); if (cs.position !== 'sticky' && cs.position !== 'fixed') continue; const b = x.getBoundingClientRect(); if (b.top <= 2 && b.bottom < innerHeight / 2 && b.width > innerWidth / 3) lep = Math.max(lep, b.bottom); }
+    const hore = lep + 12; if (r.top < hore - 4 || r.bottom > innerHeight) scrollTo({ top: scrollY + r.top - hore, behavior: 'smooth' }); });
   ukazOkno();
   const fotoEl = tit.querySelector<HTMLImageElement>('.pr-foto');
   const kreditEl = tit.querySelector<HTMLElement>('.pr-kredit');
