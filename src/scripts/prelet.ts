@@ -312,7 +312,6 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     ...pam.map((pm, k) => ({ krok: 2 + k, nazov: pm.n.replace(/\s*\([^()]*\)$/, ''), foto: pm.f?.u })),
     ...(pam.length ? [] : [{ krok: 2, nazov: 'Zaujímavé miesta' }]),
     { krok: kroky.length - 2, nazov: 'Odlet' },
-    { krok: kroky.length - 1, nazov: 'Záver' },
   ];
   const zoznam = el.querySelector<HTMLOListElement>('.pr-kapitoly');
   const tlSpat = el.querySelector<HTMLButtonElement>('[data-pr="spat"]');
@@ -341,14 +340,12 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       if (kp.foto) { const im = document.createElement('img'); im.src = kp.foto; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; b.append(im); }
       const s = document.createElement('span'); s.textContent = `${j + 1}. ${kp.nazov}`; b.append(s);
       b.title = kp.nazov;
-      b.addEventListener('click', () => { okno.classList.remove('pr-zoznam-otvoreny'); skoc(kp.krok); });
+      b.addEventListener('click', () => skoc(kp.krok));
       li.append(b); return li;
     }));
     zoznam.hidden = false;
   }
 
-  const tlZoznam = el.querySelector<HTMLButtonElement>('[data-pr="zoznam"]');
-  tlZoznam?.addEventListener('click', () => { const o = okno.classList.toggle('pr-zoznam-otvoreny'); tlZoznam.setAttribute('aria-expanded', String(o)); if (o) oznac?.(); });
   let beh: Promise<void> | null = null;
   const hraj = async () => {
     while (i < kroky.length && !pauza) {
