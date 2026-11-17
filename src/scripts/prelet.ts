@@ -91,7 +91,17 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   // otvorená mapa sa presunie do zobrazenia (na počítači je pod videom) – raz, pri otvorení
   const ukazOkno = () => requestAnimationFrame(() => { const r = okno.getBoundingClientRect(); // pod lepkavú hlavičku a pás sekcií, aby ovládanie nad mapou nebolo zakryté
     let lep = 0;
-    for (const x of document.querySelectorAll<HTMLElement>('body *')) { const cs = getComputedStyle(x); if (cs.position !== 'sticky' && cs.position !== 'fixed') continue; const b = x.getBoundingClientRect(); if (b.top < innerHeight / 4 && b.bottom > 0 && b.bottom < innerHeight / 2 && b.width > innerWidth / 3) lep = Math.max(lep, b.bottom); }
+    for (const x of document.querySelectorAll<HTMLElement>('body *')) {
+      const cs = getComputedStyle(x);
+      if (cs.position !== 'sticky' && cs.position !== 'fixed') continue;
+      const b = x.getBoundingClientRect();
+      if (b.width < innerWidth / 3 || b.height > innerHeight / 3 || !b.height) continue;
+      // lepkavý prvok ešte nemusí byť prilepený – rozhoduje jeho „top“ (kde bude po posune)
+      const spodok = cs.position === 'sticky' ? (parseFloat(cs.top) || 0) + b.height : b.bottom;
+      if (cs.position === 'fixed' && b.top > innerHeight / 4) continue;
+      if (cs.position === 'sticky' && cs.top === 'auto') continue;
+      lep = Math.max(lep, spodok);
+    }
     const hore = lep + 12; if (r.top < hore - 4 || r.bottom > innerHeight) scrollTo({ top: scrollY + r.top - hore, behavior: 'smooth' }); });
   ukazOkno();
   const fotoEl = tit.querySelector<HTMLImageElement>('.pr-foto');
