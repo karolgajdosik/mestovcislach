@@ -37,13 +37,16 @@ const { nazov, nad, video, prelet } = Astro.props;
           <div class="pr-mapa"></div>
           <div class="pr-titulok"><img class="pr-foto" alt="" hidden decoding="async" referrerpolicy="no-referrer" /><div class="pr-text"><b></b><span></span><small class="pr-kredit" hidden></small></div></div>
           <div class="pr-ovl">
+            <button type="button" data-pr="spat" aria-label="Predchádzajúca zastávka" title="Predchádzajúca zastávka">⏮</button>
             <button type="button" data-pr="pauza">⏸ Pauza</button>
+            <button type="button" data-pr="dalej" aria-label="Ďalšia zastávka" title="Ďalšia zastávka">⏭</button>
             <button type="button" data-pr="hlas" hidden>🔊 Hlas</button>
             <button type="button" data-pr="podklad">🛰 Letecká snímka</button>
             <button type="button" data-pr="cela" aria-label="Na celú obrazovku">⛶</button>
             <button type="button" data-pr="zavriet" aria-label="Zavrieť prelet">✕</button>
           </div>
         </div>
+        <ol class="pr-kapitoly" aria-label="Zastávky preletu" hidden></ol>
         <p class="zdroj pr-zdroj" hidden></p>
       </div>
     )}
@@ -159,4 +162,14 @@ const { nazov, nad, video, prelet } = Astro.props;
   .pr-ovl button:disabled { opacity: 0.7; cursor: default; }
   .pr-ovl button { min-height: 34px; padding: 0 12px; border: 0; border-radius: 17px; background: rgba(15, 18, 26, 0.78); color: #fff; font: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
   .pr-ovl button[hidden] { display: none; }
+  /* zastávky preletu – klik preskočí na pamiatku */
+  .pr-kapitoly { list-style: none; margin: 10px 0 0; padding: 2px 2px 6px; display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; }
+  .pr-kapitoly[hidden] { display: none; }
+  .pr-kapitoly li { flex: none; scroll-snap-align: start; }
+  .pr-kapitoly button { display: flex; align-items: center; gap: 8px; max-width: 240px; min-height: 40px; padding: 4px 12px 4px 4px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--text); font: inherit; font-size: 0.82rem; font-weight: 600; text-align: left; cursor: pointer; }
+  .pr-kapitoly button:not(:has(img)) { padding-left: 12px; }
+  .pr-kapitoly button:hover { border-color: var(--accent, #e0283f); }
+  .pr-kapitoly button.pr-akt { background: #1d2433; color: #fff; border-color: #1d2433; }
+  .pr-kapitoly img { width: 44px; height: 32px; object-fit: cover; border-radius: 6px; }
+  .pr-kapitoly span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 </style>

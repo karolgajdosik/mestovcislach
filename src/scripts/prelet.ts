@@ -219,14 +219,16 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   }
   if (!hlas) zdroj.textContent += ' Prehliadač nemá slovenský hlas – prelet je s titulkami bez zvuku.';
   /** Prečíta text a počká na koniec (pri vypnutom hlase približný čas čítania titulku). */
+  let prerusReč: (() => void) | null = null;
   const povedz = (text: string, minMs = 0) => new Promise<void>((ok) => {
     const odhad = Math.max(minMs, Math.min(16000, 2500 + text.length * 55));
-    if (!hovor || !hlas || !reč || !text) { setTimeout(ok, odhad); return; }
+    if (!hovor || !hlas || !reč || !text) { const t = setTimeout(ok, odhad); prerusReč = () => { clearTimeout(t); ok(); }; return; }
     reč.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.voice = hlas; u.lang = hlas.lang; u.rate = 1; u.pitch = 1;
     let hotovo = false;
     const koniec = () => { if (!hotovo) { hotovo = true; ok(); } };
+    prerusReč = koniec;
     u.onend = koniec; u.onerror = koniec;
     setTimeout(koniec, 3000 + text.length * 110); // poistka, ak prehliadač „zabudne“ ohlásiť koniec
     reč.speak(u);
@@ -279,19 +281,66 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     async () => { const tt = 2 + pocetBodov < d.titulky.length - 1 ? tit_(2 + pocetBodov) : tit_(0); titulok(...tt); await Promise.all([pohni(() => map.flyTo({ center: [lon, lat], zoom: zoom - 0.8, pitch: 50, bearing: map.getBearing() + 40, duration: 6000, essential: true })), povedz(reci(...tt))]); },
     async () => { titulok(...tit_(d.titulky.length - 1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 90, { duration: 9000, easing: (x: number) => x, essential: true })), povedz(`${d.nazov}. Ďalšie čísla nájdete na stránke mesto v číslach.`)]); },
   ];
+  // kapitoly: zoznam zastávok pod mapou a tlačidlá ⏮ ⏭ – dá sa preskočiť dopredu aj vrátiť
+  const pam = d.pamiatky ?? [];
+  const kapitoly: { krok: number; nazov: string; foto?: string }[] = [
+    { krok: 0, nazov: d.nazov },
+    { krok: 1, nazov: tit_(1)[0] },
+    ...pam.map((pm, k) => ({ krok: 2 + k, nazov: pm.n.replace(/\s*\([^()]*\)$/, ''), foto: pm.f?.u })),
+    ...(pam.length ? [] : [{ krok: 2, nazov: 'Zaujímavé miesta' }]),
+    { krok: kroky.length - 2, nazov: 'Odlet' },
+    { krok: kroky.length - 1, nazov: 'Záver' },
+  ];
+  const zoznam = el.querySelector<HTMLOListElement>('.pr-kapitoly');
+  const tlSpat = el.querySelector<HTMLButtonElement>('[data-pr="spat"]');
+  const tlDalej = el.querySelector<HTMLButtonElement>('[data-pr="dalej"]');
+  const kapitolaKroku = (k: number) => { let x = 0; kapitoly.forEach((kp, j) => { if (kp.krok <= k) x = j; }); return x; };
+  const oznac = () => {
+    const a = kapitolaKroku(Math.min(i, kroky.length - 1));
+    zoznam?.querySelectorAll('button').forEach((b, j) => { b.classList.toggle('pr-akt', j === a); if (j === a) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+    zoznam?.querySelector<HTMLElement>('.pr-akt')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    if (tlSpat) tlSpat.disabled = a === 0;
+    if (tlDalej) tlDalej.disabled = a >= kapitoly.length - 1;
+  };
+  if (zoznam) {
+    zoznam.replaceChildren(...kapitoly.map((kp, j) => {
+      const li = document.createElement('li');
+      const b = document.createElement('button');
+      b.type = 'button';
+      if (kp.foto) { const im = document.createElement('img'); im.src = kp.foto; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; b.append(im); }
+      const s = document.createElement('span'); s.textContent = `${j + 1}. ${kp.nazov}`; b.append(s);
+      b.addEventListener('click', () => skoc(kp.krok));
+      li.append(b); return li;
+    }));
+    zoznam.hidden = false;
+  }
+
+  let beh: Promise<void> | null = null;
   const hraj = async () => {
     while (i < kroky.length && !pauza) {
+      oznac();
       await kroky[i]();
       if (pauza) return;
       i++;
     }
-    if (i >= kroky.length) { titulok(d.nazov, 'Koniec preletu – mapou môžete pohybovať sami.'); tlPauza.textContent = '↺ Znova'; tlPauza.dataset.stav = 'znova'; }
+    if (i >= kroky.length) { titulok(d.nazov, 'Koniec preletu – mapou môžete pohybovať sami.'); tlPauza.textContent = '↺ Znova'; tlPauza.dataset.stav = 'znova'; oznac(); }
   };
-  const zastav = () => { if (pauza) return; pauza = true; map.stop(); reč?.cancel(); tlPauza.textContent = '▶ Pokračovať'; tlPauza.dataset.stav = 'pauza'; };
+  const spusti = () => { pauza = false; tlPauza.textContent = '⏸ Pauza'; tlPauza.dataset.stav = ''; beh = hraj(); };
+  const zastav = () => { if (pauza) return; pauza = true; map.stop(); reč?.cancel(); prerusReč?.(); tlPauza.textContent = '▶ Pokračovať'; tlPauza.dataset.stav = 'pauza'; };
+  /** Preskočí na krok (zastávku) – bežiaci krok sa preruší a prelet pokračuje odtiaľ. */
+  const skoc = async (k: number) => {
+    zastav();
+    await beh?.catch(() => {});
+    i = Math.max(0, Math.min(kroky.length - 1, k));
+    if (i > 2 && !pam.length) pocetBodov = 0;
+    spusti();
+  };
+  tlSpat?.addEventListener('click', () => { const a = kapitolaKroku(Math.min(i, kroky.length - 1)); skoc(kapitoly[Math.max(0, a - 1)].krok); });
+  tlDalej?.addEventListener('click', () => { const a = kapitolaKroku(Math.min(i, kroky.length - 1)); skoc(kapitoly[Math.min(kapitoly.length - 1, a + 1)].krok); });
   tlPauza.addEventListener('click', () => {
     if (tlPauza.dataset.stav === 'znova') { i = 0; }
     else if (!pauza) { zastav(); return; }
-    pauza = false; tlPauza.textContent = '⏸ Pauza'; tlPauza.dataset.stav = ''; hraj();
+    spusti();
   });
   // keď človek sám pohne mapou, prelet sa zastaví
   for (const ev of ['dragstart', 'wheel', 'touchstart', 'rotatestart', 'pitchstart']) map.on(ev, (e: any) => { if (e.originalEvent) zastav(); });
@@ -300,12 +349,13 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     if (okno.classList.contains('pr-max')) maxOkno(false);
     if (document.fullscreenElement) document.exitFullscreen?.();
     okno.hidden = true;
+    if (zoznam) zoznam.hidden = true;
     const uvod = el.querySelector<HTMLElement>('.pr-uvod')!;
     const s = el.querySelector<HTMLButtonElement>('.pr-start')!;
     uvod.hidden = false;
     el.classList.remove('pr-otvoreny');
     s.textContent = '▶ Prelet znova';
-    s.onclick = () => { okno.hidden = false; uvod.hidden = true; el.classList.add('pr-otvoreny'); map.resize(); i = 0; pauza = false; tlPauza.textContent = '⏸ Pauza'; tlPauza.dataset.stav = ''; hraj(); };
+    s.onclick = () => { okno.hidden = false; uvod.hidden = true; el.classList.add('pr-otvoreny'); if (zoznam) zoznam.hidden = false; map.resize(); i = 0; spusti(); };
   });
-  hraj();
+  spusti();
 }
