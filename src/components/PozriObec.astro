@@ -134,7 +134,14 @@ const { nazov, nad, video, prelet } = Astro.props;
   .pr-okno { position: relative; border-radius: 14px; overflow: hidden; background: #1d2433; }
   .pr-okno[hidden] { display: none; }
   .pr-mapa { width: 100%; aspect-ratio: 16 / 9; }
-  .pr-okno:fullscreen .pr-mapa { aspect-ratio: auto; height: 100vh; }
+  .pr-okno:fullscreen, .pr-okno:-webkit-full-screen { border-radius: 0; }
+  .pr-okno:fullscreen .pr-mapa, .pr-okno:-webkit-full-screen .pr-mapa { aspect-ratio: auto; height: 100vh; height: 100dvh; }
+  /* náhradná „celá obrazovka“ (iPhone): pevné okno cez celý prehliadač */
+  .pr-okno.pr-max { position: fixed; inset: 0; z-index: 2000; border-radius: 0; }
+  .pr-okno.pr-max .pr-mapa { aspect-ratio: auto; height: 100vh; height: 100dvh; }
+  :global(html.pr-max-otvorene) { overflow: hidden; }
+  /* sekcia má content-visibility (obce.css) – pri maximalizácii ju vypnúť, inak by pevné okno ostalo orezané v sekcii */
+  .pv:has(.pr-okno.pr-max), .pv:has(.pr-okno:fullscreen) { content-visibility: visible; contain: none; }
   .pr-titulok { position: absolute; left: 12px; bottom: 30px; max-width: calc(100% - 24px); padding: 10px 14px; border-radius: 12px; background: rgba(15, 18, 26, 0.78); color: #fff; display: flex; flex-direction: column; gap: 2px; pointer-events: none; transition: opacity 0.4s; }
   .pr-titulok b { font-size: 1.1rem; }
   .pr-titulok span { font-size: 0.85rem; opacity: 0.88; }

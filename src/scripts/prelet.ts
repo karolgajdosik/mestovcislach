@@ -79,6 +79,22 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     container: mapaEl, style, center: [lon, lat], zoom: zoom - 1.6, pitch: pohyb ? 0 : 55, bearing: 0, maxPitch: 78,
     attributionControl: false, cooperativeGestures: false,
   });
+  // celá obrazovka: Fullscreen API (aj s predponou webkit); kde nie je (iPhone) alebo zlyhá, okno sa roztiahne cez celé okno prehliadača
+  const tlCela = el.querySelector<HTMLButtonElement>('[data-pr="cela"]');
+  const o: any = okno;
+  const jeCela = () => !!(document.fullscreenElement || (document as any).webkitFullscreenElement) || okno.classList.contains('pr-max');
+  const stavCela = () => { if (tlCela) { tlCela.textContent = jeCela() ? '✕⛶' : '⛶'; tlCela.setAttribute('aria-label', jeCela() ? 'Zmenšiť' : 'Na celú obrazovku'); } setTimeout(() => map.resize(), 60); };
+  const maxOkno = (zap: boolean) => { okno.classList.toggle('pr-max', zap); document.documentElement.classList.toggle('pr-max-otvorene', zap); stavCela(); };
+  tlCela?.addEventListener('click', async () => {
+    if (okno.classList.contains('pr-max')) { maxOkno(false); return; }
+    if (document.fullscreenElement || (document as any).webkitFullscreenElement) { (document.exitFullscreen?.() ?? (document as any).webkitExitFullscreen?.()); return; }
+    const poziadaj = o.requestFullscreen ?? o.webkitRequestFullscreen;
+    if (!poziadaj) { maxOkno(true); return; }
+    try { await poziadaj.call(o); } catch { maxOkno(true); }
+  });
+  document.addEventListener('fullscreenchange', stavCela);
+  document.addEventListener('webkitfullscreenchange', stavCela);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && okno.classList.contains('pr-max')) maxOkno(false); });
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
   map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
   await new Promise<void>((ok) => map.once('load', () => ok()));
@@ -176,9 +192,10 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   });
   // keď človek sám pohne mapou, prelet sa zastaví
   for (const ev of ['dragstart', 'wheel', 'touchstart', 'rotatestart', 'pitchstart']) map.on(ev, (e: any) => { if (e.originalEvent) zastav(); });
-  el.querySelector('[data-pr="cela"]')?.addEventListener('click', () => { const o = okno as any; (document.fullscreenElement ? document.exitFullscreen() : o.requestFullscreen?.())?.catch?.(() => {}); });
   el.querySelector('[data-pr="zavriet"]')?.addEventListener('click', () => {
     zastav();
+    if (okno.classList.contains('pr-max')) maxOkno(false);
+    if (document.fullscreenElement) document.exitFullscreen?.();
     okno.hidden = true;
     const uvod = el.querySelector<HTMLElement>('.pr-uvod')!;
     const s = el.querySelector<HTMLButtonElement>('.pr-start')!;
