@@ -1,7 +1,7 @@
 {
  "zdroj": "https://data.bratislava.sk",
  "pocty": {
-  "katalog": 603,
+  "katalog": 606,
   "osobitne": 34,
   "vynechane": 19,
   "na_webe": 29
@@ -780,7 +780,7 @@
    "id": "f140143421034873bf9054d4f305252e",
    "nazov": "Počet obyvateľov podľa dôvodu prisťahovania do súčasného miesta pobytu v ZSJ",
    "kategoria": "Demografia",
-   "upravene": 1771495007000,
+   "upravene": 1794489726000,
    "riadkov": 213,
    "stav": "katalog",
    "kde": "/bratislava/katalog/f140143421034873bf9054d4f305252e",
@@ -810,7 +810,7 @@
    "id": "b18553d437144c50b93189bcae777f59",
    "nazov": "Počet obyvateľov podľa najvyššieho dosiahnutého vzdelania v ZSJ",
    "kategoria": "Demografia",
-   "upravene": 1771495013000,
+   "upravene": 1794489655000,
    "riadkov": 213,
    "stav": "katalog",
    "kde": "/bratislava/katalog/b18553d437144c50b93189bcae777f59",
@@ -820,7 +820,7 @@
    "id": "f7f2aa0077444096a3a15080aa611e86",
    "nazov": "Počet obyvateľov podľa najčastejšie používaného jazyka  na verejnosti v ZSJ",
    "kategoria": "Demografia",
-   "upravene": 1771494989000,
+   "upravene": 1794489946000,
    "riadkov": 213,
    "stav": "katalog",
    "kde": "/bratislava/katalog/f7f2aa0077444096a3a15080aa611e86",
@@ -830,7 +830,7 @@
    "id": "82eaa4774a54409fb783d612c01e126e",
    "nazov": "Počet obyvateľov podľa najčastejšie používaného jazyka  v domácnosti v ZSJ",
    "kategoria": "Demografia",
-   "upravene": 1771494995000,
+   "upravene": 1794489857000,
    "riadkov": 213,
    "stav": "katalog",
    "kde": "/bratislava/katalog/82eaa4774a54409fb783d612c01e126e",
@@ -840,7 +840,7 @@
    "id": "631822c9c3104a3c8c66932755849a7c",
    "nazov": "Počet obyvateľov podľa náboženského vyznania v základných sídelných jednotkách ",
    "kategoria": "Demografia",
-   "upravene": 1771495001000,
+   "upravene": 1794486976000,
    "riadkov": 212,
    "stav": "katalog",
    "kde": "/bratislava/katalog/631822c9c3104a3c8c66932755849a7c",
@@ -940,7 +940,7 @@
    "id": "271dd13fa74a4e4088c37fb4c55d7c5b",
    "nazov": "Počet obyvateľov podľa štátnej príslušnosti v základných sídelných jednotkách",
    "kategoria": "Demografia",
-   "upravene": 1771495020000,
+   "upravene": 1794489567000,
    "riadkov": 213,
    "stav": "katalog",
    "kde": "/bratislava/katalog/271dd13fa74a4e4088c37fb4c55d7c5b",
@@ -2400,7 +2400,7 @@
    "id": "aba12fd2cbac4843bc7406151bc66106",
    "nazov": "Cestovné poriadky MHD vo formáte GTFS",
    "kategoria": "Doprava a komunikácie",
-   "upravene": 1793336424000,
+   "upravene": 1794632426000,
    "riadkov": null,
    "stav": "na_webe",
    "kde": "/bratislava/doprava",
@@ -2607,7 +2607,7 @@
    "nazov": "Počet prechádzajúcich chodcov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492980000,
-   "riadkov": 863787,
+   "riadkov": 867651,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače chodcov"
@@ -2617,7 +2617,7 @@
    "nazov": "Počet prejazdov cyklistov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492966000,
-   "riadkov": 863787,
+   "riadkov": 867651,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače cyklistov"
@@ -2627,7 +2627,7 @@
    "nazov": "Počet prejazdov vozidiel podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492972000,
-   "riadkov": 497243,
+   "riadkov": 500435,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače áut"
@@ -3713,6 +3713,16 @@
    "stlpcov": 4
   },
   {
+   "id": "1d9420d66ebd43588d7a16be0c8d43a8",
+   "nazov": "Umelecké diela v majetku Hlavného mesta SR Bratislavy",
+   "kategoria": "História a kultúra",
+   "upravene": 1794477661000,
+   "riadkov": 294,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/1d9420d66ebd43588d7a16be0c8d43a8",
+   "stlpcov": 21
+  },
+  {
    "id": "379cd8d8241a4f748eee9faeee08d5ba",
    "nazov": "Výpožičky v Mestskej knižnici v Bratislave",
    "kategoria": "História a kultúra",
@@ -4032,7 +4042,7 @@
    "nazov": "Faktúry Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151953000,
-   "riadkov": 142031,
+   "riadkov": 150911,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry magistrátu"
@@ -4052,7 +4062,7 @@
    "nazov": "Faktúry Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778137107000,
-   "riadkov": 27956,
+   "riadkov": 28058,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry OLO"
@@ -4062,7 +4072,7 @@
    "nazov": "Faktúry Pohrebníctva mesta Bratislava - MARIANUM",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778142878000,
-   "riadkov": 17170,
+   "riadkov": 17196,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry Marianum"
@@ -4211,7 +4221,7 @@
    "nazov": "Objednávky Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151897000,
-   "riadkov": 65691,
+   "riadkov": 65791,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky magistrátu"
@@ -4221,7 +4231,7 @@
    "nazov": "Objednávky Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778136568000,
-   "riadkov": 12454,
+   "riadkov": 12487,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky OLO"
@@ -4231,7 +4241,7 @@
    "nazov": "Objednávky Pohrebníctva mesta Bratislava - MARIANUM",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778142871000,
-   "riadkov": 5672,
+   "riadkov": 5687,
    "stav": "katalog",
    "kde": "/bratislava/katalog/81abdb9566e84d00aaad5ffd953d791a",
    "stlpcov": 9
@@ -4838,7 +4848,7 @@
    "nazov": "Zmluvy Magistrátu hlavného mesta SR Bratislava zverejnené od júla 2022",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151852000,
-   "riadkov": 13299,
+   "riadkov": 13346,
    "stav": "na_webe",
    "kde": "/bratislava/financie",
    "pozn": "Zmluvy magistrátu"
@@ -4858,7 +4868,7 @@
    "nazov": "Zmluvy Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778136780000,
-   "riadkov": 1929,
+   "riadkov": 1934,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Zmluvy OLO"
@@ -5232,6 +5242,16 @@
    "stav": "katalog",
    "kde": "/bratislava/katalog/85ed256187bb4f5d9a173b4688f390ea",
    "stlpcov": 2
+  },
+  {
+   "id": "ae48e64666474f38af0266ecf0f192ac",
+   "nazov": "Podiel materských škôl podľa zriaďovateľa v Bratislave za obdobie 2010 – 2022",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1794231235000,
+   "riadkov": 39,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/ae48e64666474f38af0266ecf0f192ac",
+   "stlpcov": 3
   },
   {
    "id": "d34be50f64524c62be9d257f2b8d5e19",
@@ -5774,6 +5794,16 @@
    "stlpcov": 5
   },
   {
+   "id": "e7ec053a663c4db7819f8e6a715cc784",
+   "nazov": "Počet študentov na stredných školách v Bratislave podľa druhu strednej školy v roku 2021",
+   "kategoria": "Vzdelávanie a šport",
+   "upravene": 1794237082000,
+   "riadkov": 3,
+   "stav": "katalog",
+   "kde": "/bratislava/katalog/e7ec053a663c4db7819f8e6a715cc784",
+   "stlpcov": 2
+  },
+  {
    "id": "58e49bfe0b664097b05ef91f52a7f74f",
    "nazov": "Počet študentov na vysokých školách v Bratislave",
    "kategoria": "Vzdelávanie a šport",
@@ -6086,7 +6116,7 @@
    "id": "9d00edc4c14749339c95ae1ca767802f",
    "nazov": "Teoretická kapacitná (ne)dostatočnosť ZŠ v mestských častiach Bratislavy pre rok 2035",
    "kategoria": "Vzdelávanie a šport",
-   "upravene": 1793026951000,
+   "upravene": 1794486079000,
    "riadkov": 34,
    "stav": "katalog",
    "kde": "/bratislava/katalog/9d00edc4c14749339c95ae1ca767802f",
@@ -6135,7 +6165,7 @@
    "id": "3cca7b5834cd479597db95ac562ba1dd",
    "nazov": "Zoznam materských škôl v roku 2026",
    "kategoria": "Vzdelávanie a šport",
-   "upravene": 1778143408000,
+   "upravene": 1781769315000,
    "riadkov": 159,
    "stav": "na_webe",
    "kde": "/bratislava/vybavenost",
@@ -6837,5 +6867,5 @@
    "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-11-10T05:15:56+00:00"
+ "aktualizovane": "2026-11-17T05:19:31+00:00"
 }

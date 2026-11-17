@@ -1,6 +1,6 @@
 {
  "zdroj": "https://data.bratislava.sk",
- "pocet": 684,
+ "pocet": 687,
  "datasety": [
   {
    "id": "cd6711958334494685f4e01f4ab3e482",
@@ -1473,17 +1473,17 @@
    "kategorie": [
     "/Categories/Doprava a komunikácie"
    ],
-   "upravene": 1793336424000,
+   "upravene": 1794632426000,
    "popis": "Cestovné poriadky MHD vo formáte GTFS",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 6381046,
+   "velkost": 6327419,
    "typove_slova": [
     "CSV Collection",
     "Metadata",
     "zip"
    ],
-   "upravene_ms": 1793336424000
+   "upravene_ms": 1794632426000
   },
   {
    "id": "4a8eab30e596432486f494649840c694",
@@ -6799,7 +6799,7 @@
    "popis": "Dataset všetkých faktúr Magistrátu hlavného mesta SR Bratislava od roku 2011. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 109977600,
+   "velkost": 115965952,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -6819,7 +6819,7 @@
      "nazov": "Faktúry_Magistrátu_hlavného_mesta_SR_Bratislava_od_roku_2011",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 142031,
+     "pocet": 150911,
      "polia": [
       [
        "IDENTIFIKÁTOR_FAKTÚRY",
@@ -7030,7 +7030,7 @@
    "popis": "Faktúry Odvozu a likvidácie odpadu Bratislava (OLO)",
    "jazyk": "sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 10158080,
+   "velkost": 10182656,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -7050,7 +7050,7 @@
      "nazov": "olo_fakt2",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 27956,
+     "pocet": 28058,
      "polia": [
       [
        "Číslo_faktúry",
@@ -7107,7 +7107,7 @@
    "popis": "Faktúry Pohrebníctva mesta Bratislava - MARIANUM",
    "jazyk": "sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 8617984,
+   "velkost": 8634368,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -7127,7 +7127,7 @@
      "nazov": "Nove_faktury_marianum3",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 17170,
+     "pocet": 17196,
      "polia": [
       [
        "Interné_číslo_faktúry",
@@ -12179,7 +12179,7 @@
    "popis": "Dataset všetkých objednávok Magistrátu hlavného mesta SR Bratislava od roku 2011. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 51929088,
+   "velkost": 51994624,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -12197,7 +12197,7 @@
      "nazov": "Objednávky_Magistrátu_hlavného_mesta_SR_Bratislava_od_roku_2011",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 65691,
+     "pocet": 65791,
      "polia": [
       [
        "IDENTIFIKÁTOR_OBJEDNÁVKY",
@@ -12319,7 +12319,7 @@
    "popis": "Objednávky Odvozu a likvidácie odpadu Bratislava (OLO)",
    "jazyk": "sk-sk",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 6586368,
+   "velkost": 6594560,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -12339,7 +12339,7 @@
      "nazov": "Objednávky_Odvozu_a_likvidácie_odpadu_Bratislava_(OLO)",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 12454,
+     "pocet": 12487,
      "polia": [
       [
        "Číslo_objednávky",
@@ -12436,7 +12436,7 @@
      "nazov": "Nove_objednavky_marianum",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 5672,
+     "pocet": 5687,
      "polia": [
       [
        "Číslo_objednávky",
@@ -14148,6 +14148,68 @@
        "TRZBA_V_MIL_EUR",
        "String",
        "TRZBA_V_MIL_EUR"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ae48e64666474f38af0266ecf0f192ac",
+   "nazov": "Podiel materských škôl podľa zriaďovateľa v Bratislave za obdobie 2010 – 2022",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_materských_škôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1794231235000,
+   "popis": "Vývoj percentuálneho podielu materských skôl v Bratislave podľa ich zriaďovateľa (štátne, súkromné, cirkevné) za 13-ročné obdobie (2010 – 2022).   Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1794231235000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Podiel_materských_škôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Podiel_materských_škôl_podľa_zriaďovateľa_v_Bratislave_za_obdobie_2010_–_2022",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 39,
+     "polia": [
+      [
+       "ZRIADOVATEL",
+       "String",
+       "ZRIADOVATEL"
+      ],
+      [
+       "ROK",
+       "Integer",
+       "ROK"
+      ],
+      [
+       "PERCENT_",
+       "Double",
+       "PERCENT"
       ],
       [
        "ObjectId",
@@ -19620,12 +19682,15 @@
    "nazov": "Počet obyvateľov podľa dôvodu prisťahovania do súčasného miesta pobytu v ZSJ",
    "typ": "Feature Service",
    "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa dôvodu prisťahovania do súčasného miesta pobytu v základných s/FeatureServer",
-   "tagy": [],
+   "tagy": [
+    "Obyvatelia",
+    "SODB"
+   ],
    "kategorie": [
     "/Categories/Demografia"
    ],
-   "upravene": 1771495007000,
-   "popis": "Počet obyvateľov podľa dôvodu prisťahovania do súčasného miesta pobytu v základných sídelných jednotkách v Bratislave",
+   "upravene": 1794489726000,
+   "popis": "Počet obyvateľov podľa dôvodu prisťahovania do súčasného miesta pobytu v základných sídelných jednotkách v Bratislave   vychádzajúce zo Sčítania obyvateľov domov a bytov 2021.",
    "jazyk": "english (united states)",
    "licencia": "CC BY 4.0",
    "velkost": 81920,
@@ -19640,7 +19705,7 @@
     "Table",
     "Hosted Service"
    ],
-   "upravene_ms": 1771495007000,
+   "upravene_ms": 1794489726000,
    "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa dôvodu prisťahovania do súčasného miesta pobytu v základných s/FeatureServer",
    "vrstvy": [
     {
@@ -20006,8 +20071,8 @@
    "kategorie": [
     "/Categories/Demografia"
    ],
-   "upravene": 1771495013000,
-   "popis": "Počet obyvateľov podľa najvyššieho dosiahnutého vzdelania v základných sídelných jednotkách v Bratislave",
+   "upravene": 1794489655000,
+   "popis": "Počet obyvateľov podľa najvyššieho dosiahnutého vzdelania v základných sídelných jednotkách v Bratislave   vychádzajúce zo Sčítania obyvateľov domov a bytov 2021.",
    "jazyk": "english (united states)",
    "licencia": "CC BY 4.0",
    "velkost": 73728,
@@ -20022,7 +20087,7 @@
     "Table",
     "Hosted Service"
    ],
-   "upravene_ms": 1771495013000,
+   "upravene_ms": 1794489655000,
    "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa najvyššieho dosiahnutého vzdelania v základných sídelných/FeatureServer",
    "vrstvy": [
     {
@@ -20106,12 +20171,15 @@
    "nazov": "Počet obyvateľov podľa najčastejšie používaného jazyka  na verejnosti v ZSJ",
    "typ": "Feature Service",
    "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa najčastejšie používaného jazyka  na verejnosti v základných sí/FeatureServer",
-   "tagy": [],
+   "tagy": [
+    "Obyvatelia",
+    "SODB"
+   ],
    "kategorie": [
     "/Categories/Demografia"
    ],
-   "upravene": 1771494989000,
-   "popis": "Počet obyvateľov podľa najčastejšie používaného jazyka  na verejnosti v základných sídelných jednotkách v Bratislave",
+   "upravene": 1794489946000,
+   "popis": "Počet obyvateľov podľa najčastejšie používaného jazyka na verejnosti v základných sídelných jednotkách v Bratislave   vychádzajúce zo Sčítania obyvateľov domov a bytov 2021.",
    "jazyk": "english (united states)",
    "licencia": "CC BY 4.0",
    "velkost": 90112,
@@ -20126,7 +20194,7 @@
     "Table",
     "Hosted Service"
    ],
-   "upravene_ms": 1771494989000,
+   "upravene_ms": 1794489946000,
    "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa najčastejšie používaného jazyka  na verejnosti v základných sí/FeatureServer",
    "vrstvy": [
     {
@@ -20265,12 +20333,15 @@
    "nazov": "Počet obyvateľov podľa najčastejšie používaného jazyka  v domácnosti v ZSJ",
    "typ": "Feature Service",
    "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa najčastejšie používaného jazyka  v domácnosti v základných síd/FeatureServer",
-   "tagy": [],
+   "tagy": [
+    "Obyvatelia",
+    "SODB"
+   ],
    "kategorie": [
     "/Categories/Demografia"
    ],
-   "upravene": 1771494995000,
-   "popis": "Počet obyvateľov podľa najčastejšie používaného jazyka  v domácnosti v základných sídelných jednotkách v Bratislave",
+   "upravene": 1794489857000,
+   "popis": "Počet obyvateľov podľa najčastejšie používaného jazyka v domácnosti v základných sídelných jednotkách v Bratislave   vychádzajúce zo Sčítania obyvateľov domov a bytov 2021.",
    "jazyk": "english (united states)",
    "licencia": "CC BY 4.0",
    "velkost": 90112,
@@ -20285,7 +20356,7 @@
     "Table",
     "Hosted Service"
    ],
-   "upravene_ms": 1771494995000,
+   "upravene_ms": 1794489857000,
    "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa najčastejšie používaného jazyka  v domácnosti v základných síd/FeatureServer",
    "vrstvy": [
     {
@@ -20424,12 +20495,15 @@
    "nazov": "Počet obyvateľov podľa náboženského vyznania v základných sídelných jednotkách ",
    "typ": "Feature Service",
    "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa náboženského vyznania v základných sídelných jednotkách - anon/FeatureServer",
-   "tagy": [],
+   "tagy": [
+    "Obyvatelia",
+    "SODB"
+   ],
    "kategorie": [
     "/Categories/Demografia"
    ],
-   "upravene": 1771495001000,
-   "popis": "Počet obyvateľov podľa náboženského vyznania v základných sídelných jednotkách v Bratislave",
+   "upravene": 1794486976000,
+   "popis": "Počet obyvateľov podľa náboženského vyznania v základných sídelných jednotkách v Bratislave vychádzajúce zo Sčítania obyvateľov domov a bytov 2021.",
    "jazyk": "english (united states)",
    "licencia": "CC BY 4.0",
    "velkost": 106496,
@@ -20444,7 +20518,7 @@
     "Table",
     "Hosted Service"
    ],
-   "upravene_ms": 1771495001000,
+   "upravene_ms": 1794486976000,
    "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa náboženského vyznania v základných sídelných jednotkách - anon/FeatureServer",
    "vrstvy": [
     {
@@ -22164,12 +22238,15 @@
    "nazov": "Počet obyvateľov podľa štátnej príslušnosti v základných sídelných jednotkách",
    "typ": "Feature Service",
    "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa štátnej príslušnosti v základných sídelných jednotkách - anony/FeatureServer",
-   "tagy": [],
+   "tagy": [
+    "Obyvatelia",
+    "SODB"
+   ],
    "kategorie": [
     "/Categories/Demografia"
    ],
-   "upravene": 1771495020000,
-   "popis": "Počet obyvateľov podľa štátnej príslušnosti v základných sídelných jednotkách v Bratislave",
+   "upravene": 1794489567000,
+   "popis": "Počet obyvateľov podľa štátnej príslušnosti v základných sídelných jednotkách v Bratislave   vychádzajúce zo Sčítania obyvateľov domov a bytov 2021.",
    "jazyk": "english (united states)",
    "licencia": "CC BY 4.0",
    "velkost": 163840,
@@ -22184,7 +22261,7 @@
     "Table",
     "Hosted Service"
    ],
-   "upravene_ms": 1771495020000,
+   "upravene_ms": 1794489567000,
    "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet obyvateľov podľa štátnej príslušnosti v základných sídelných jednotkách - anony/FeatureServer",
    "vrstvy": [
     {
@@ -23800,7 +23877,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 232325120,
+   "velkost": 233144320,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23820,7 +23897,7 @@
      "nazov": "chodci10_01",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 863787,
+     "pocet": 867651,
      "polia": [
       [
        "NAZOV",
@@ -23887,7 +23964,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 231751680,
+   "velkost": 232570880,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23907,7 +23984,7 @@
      "nazov": "cyklisti2_0",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 863787,
+     "pocet": 867651,
      "polia": [
       [
        "NAZOV",
@@ -23974,7 +24051,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 117964800,
+   "velkost": 118636544,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23994,7 +24071,7 @@
      "nazov": "vozidla_00",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 497243,
+     "pocet": 500435,
      "polia": [
       [
        "NAZOV",
@@ -27934,6 +28011,63 @@
        "SPOLU",
        "String",
        "SPOLU"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "e7ec053a663c4db7819f8e6a715cc784",
+   "nazov": "Počet študentov na stredných školách v Bratislave podľa druhu strednej školy v roku 2021",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_študentov_na_stredných_školách_v_Bratislave_podľa_druhu_strednej_školy_v_roku_2021/FeatureServer",
+   "tagy": [
+    "Školstvo",
+    "Odvetvová štúdia školstva"
+   ],
+   "kategorie": [
+    "/Categories/Vzdelávanie a šport"
+   ],
+   "upravene": 1794237082000,
+   "popis": "Absolútne počty študentov na stredných školách v Bratislave podľa druhu strednej školy - gymnázium, konzervatórium, stredná odborná škola. Dáta vychádzajú z Odvetvovej štúdie školstva spracovanej na Metropolitnom inštitúte Bratislavy.",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 16384,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Metadata",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1794237082000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Počet_študentov_na_stredných_školách_v_Bratislave_podľa_druhu_strednej_školy_v_roku_2021/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Počet_študentov_na_stredných_školách_v_Bratislave_podľa_druhu_strednej_školy_v_roku_2021",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 3,
+     "polia": [
+      [
+       "DRUH_SS",
+       "String",
+       "DRUH_SS"
+      ],
+      [
+       "POCET",
+       "Double",
+       "POCET"
       ],
       [
        "ObjectId",
@@ -41171,7 +41305,7 @@
    "kategorie": [
     "/Categories/Vzdelávanie a šport"
    ],
-   "upravene": 1793026951000,
+   "upravene": 1794486079000,
    "popis": "Výpočet prebytku (+), resp. nedostatku miest (-) ZŠ v mestských častiach Bratislavy pre rok 2035. Výpočet dáva do súvisu súčasnú školskú infraštruktúru s výsledkami prognózy. Údaje z datasetu predstavujú teoretickú kapacitnú (ne)dostatočnosť materských škôl v jednotlivých mestských častiach Bratislavy, ak by sa nezmenila celková kapacita škôl (2022), ale zmenila by sa početnosť detí. Údaje sú vyp",
    "jazyk": "sk-sk",
    "licencia": "CC BY 4.0",
@@ -41187,7 +41321,7 @@
     "Table",
     "Hosted Service"
    ],
-   "upravene_ms": 1793026951000,
+   "upravene_ms": 1794486079000,
    "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Teoretická_kapacitná_(ne)dostatočnosť_ZŠ_v_mestských_častiach_Bratislavy_pre_rok_2035/FeatureServer",
    "vrstvy": [
     {
@@ -42115,6 +42249,157 @@
        "POCET_PRIESTUPKOV",
        "Integer",
        "POCET_PRIESTUPKOV"
+      ],
+      [
+       "ObjectId",
+       "OID",
+       "ObjectId"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1d9420d66ebd43588d7a16be0c8d43a8",
+   "nazov": "Umelecké diela v majetku Hlavného mesta SR Bratislavy",
+   "typ": "Feature Service",
+   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Umelecké_diela_v_majetku_hlavného_mesta2/FeatureServer",
+   "tagy": [
+    "Kultúra"
+   ],
+   "kategorie": [
+    "/Categories/História a kultúra"
+   ],
+   "upravene": 1794477661000,
+   "popis": "Dataset uvádza umelecké diela, pamätné tabule, fontány, pomníky a pamätníky, ktoré sú majetkom Hlavného mesta SR Bratislavy. Zároveň uvádza údaje o správe jednotlivých diel.   Vaše pripomienky, podnety na údržbu alebo informácie o poškodení umeleckých diel, ktoré sú zverené do správy príspevkovej organizácie MARIANUM, zasielajte na  umeleckediela@marianum.sk .   V prípade umeleckých diel v správe",
+   "jazyk": "sk-sk",
+   "licencia": "CC BY 4.0",
+   "velkost": 417792,
+   "typove_slova": [
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Metadata",
+    "Service",
+    "Singlelayer",
+    "Table",
+    "Hosted Service"
+   ],
+   "upravene_ms": 1794477661000,
+   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Umelecké_diela_v_majetku_hlavného_mesta2/FeatureServer",
+   "vrstvy": [
+    {
+     "id": 0,
+     "nazov": "Umelecké_diela_v_majetku_hlavného_mesta2",
+     "druh": "tabulka",
+     "geometria": null,
+     "pocet": 294,
+     "polia": [
+      [
+       "DIELO",
+       "String",
+       "DIELO"
+      ],
+      [
+       "ALTERNATIVNY_NAZOV",
+       "String",
+       "ALTERNATIVNY_NAZOV"
+      ],
+      [
+       "TYP",
+       "String",
+       "TYP"
+      ],
+      [
+       "SPRAVCA",
+       "String",
+       "SPRAVCA"
+      ],
+      [
+       "MESTSKA_CAST",
+       "String",
+       "MESTSKA_CAST"
+      ],
+      [
+       "ADRESA",
+       "String",
+       "ADRESA"
+      ],
+      [
+       "UMIESTNENIE",
+       "String",
+       "UMIESTNENIE"
+      ],
+      [
+       "KATASTRALNE_UZEMIE",
+       "String",
+       "KATASTRALNE_UZEMIE"
+      ],
+      [
+       "PARCELA_C",
+       "String",
+       "PARCELA C"
+      ],
+      [
+       "VLASTNIK_PARCELA_C",
+       "String",
+       "VLASTNIK_PARCELA_C"
+      ],
+      [
+       "SPRAVA_PARCELA_C",
+       "String",
+       "SPRAVA_PARCELA_C"
+      ],
+      [
+       "PARCELA_E",
+       "String",
+       "PARCELA_E"
+      ],
+      [
+       "VLASTNIK_PARCELA_E",
+       "String",
+       "VLASTNIK_PARCELA_E"
+      ],
+      [
+       "SPRAVA_PARCELA_E",
+       "String",
+       "SPRAVA_PARCELA_E"
+      ],
+      [
+       "NARODNA_KULTURNA_PAMIATKA",
+       "String",
+       "NARODNA_KULTURNA_PAMIATKA"
+      ],
+      [
+       "SUVISIACA_NKP",
+       "String",
+       "SUVISIACA_NKP"
+      ],
+      [
+       "PAMIATKOVE_UZEMIE",
+       "String",
+       "PAMIATKOVE_UZEMIE"
+      ],
+      [
+       "VOJNOVY_HROB",
+       "String",
+       "VOJNOVY_HROB"
+      ],
+      [
+       "UMENIEMESTA_SK",
+       "String",
+       "UMENIEMESTA.SK"
+      ],
+      [
+       "PAMATIHODNOST",
+       "String",
+       "PAMATIHODNOST"
+      ],
+      [
+       "FOTOGRAFIA",
+       "String",
+       "FOTOGRAFIA"
       ],
       [
        "ObjectId",
@@ -48421,7 +48706,7 @@
    "popis": "Dataset všetkých zmlúv Magistrátu hlavného mesta SR Bratislava zverejnených od júla 2022. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 13312000,
+   "velkost": 13352960,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -48441,7 +48726,7 @@
      "nazov": "Zmluvy_Magistrátu_hlavného_mesta_SR_Bratislava_zverejnené_od_júla_2022",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 13299,
+     "pocet": 13346,
      "polia": [
       [
        "IČO_SAMOSPRÁVY",
@@ -48627,7 +48912,7 @@
      "nazov": "ccc",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 1929,
+     "pocet": 1934,
      "polia": [
       [
        "Číslo_zmluvy",
@@ -49299,7 +49584,7 @@
    "kategorie": [
     "/Categories/Vzdelávanie a šport"
    ],
-   "upravene": 1778143408000,
+   "upravene": 1781769315000,
    "popis": "Dátový set zobrazuje zoznam verejných materských škôl v školskom roku 2026/2027.",
    "jazyk": "sk-sk",
    "licencia": "CC BY 4.0",
@@ -54413,5 +54698,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-11-10T05:15:35+00:00"
+ "aktualizovane": "2026-11-17T05:19:19+00:00"
 }
