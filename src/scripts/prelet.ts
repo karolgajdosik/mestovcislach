@@ -73,7 +73,7 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
 
   // priblíženie podľa veľkosti územia
   const km2 = d.km2 && d.km2 > 0 ? d.km2 : 12;
-  const zoom = Math.max(11.2, Math.min(15.2, 14.6 - Math.log2(Math.sqrt(km2) / 2.2)));
+  const zoom = Math.max(12, Math.min(15.4, 15.4 - Math.log2(Math.sqrt(km2) / 2.2)));
   const pohyb = !matchMedia('(prefers-reduced-motion: reduce)').matches;
   const map = new maplibregl.Map({
     container: mapaEl, style, center: [lon, lat], zoom: zoom - 1.6, pitch: pohyb ? 0 : 55, bearing: 0, maxPitch: 78,
@@ -140,7 +140,13 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     async () => { titulok(...tit_(1)); await pohni(() => map.rotateTo(map.getBearing() + 70, { duration: 7000, easing: (x: number) => x })); },
     async () => {
       // zastávky pri významných miestach (pri pauze sa krok zopakuje od začiatku)
-      const body = najdiBody();
+      let body = najdiBody();
+      if (!body.length && map.getZoom() < 14.6) {
+        // body záujmu sú v dlaždiciach až pri väčšom priblížení – priblížiť a skúsiť znova
+        await pohni(() => map.easeTo({ zoom: 14.8, pitch: 62, duration: 3000, essential: true }));
+        await sTimeoutom(new Promise<void>((ok) => map.once('idle', () => ok())), 6000).catch(() => {});
+        body = najdiBody();
+      }
       pocetBodov = body.length;
       for (const [k, b] of body.entries()) {
         if (pauza) return;
