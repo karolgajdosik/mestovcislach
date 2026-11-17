@@ -37,6 +37,7 @@ const { nazov, nad, video, prelet } = Astro.props;
           <div class="pr-mapa"></div>
           <div class="pr-titulok"><img class="pr-foto" alt="" hidden decoding="async" referrerpolicy="no-referrer" /><div class="pr-text"><b></b><span></span><small class="pr-kredit" hidden></small></div></div>
           <div class="pr-ovl">
+            <button type="button" data-pr="zoznam" aria-expanded="false" title="Zoznam zastávok">☰ Zastávky</button>
             <button type="button" data-pr="spat" aria-label="Predchádzajúca zastávka" title="Predchádzajúca zastávka">⏮</button>
             <button type="button" data-pr="pauza">⏸ Pauza</button>
             <button type="button" data-pr="dalej" aria-label="Ďalšia zastávka" title="Ďalšia zastávka">⏭</button>
@@ -153,56 +154,54 @@ const { nazov, nad, video, prelet } = Astro.props;
   .pr-titulok { position: absolute; left: 12px; bottom: 30px; max-width: calc(100% - 24px); padding: 10px 14px; border-radius: 12px; background: rgba(15, 18, 26, 0.78); color: #fff; display: flex; flex-direction: column; gap: 2px; pointer-events: none; transition: opacity 0.4s; }
   .pr-titulok { flex-direction: row; align-items: center; gap: 12px; }
   .pr-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-  .pr-foto { width: 104px; height: 78px; object-fit: cover; border-radius: 8px; flex: none; background: #333; }
+  .pr-foto { width: 88px; height: 62px; object-fit: cover; border-radius: 8px; flex: none; background: #333; }
   .pr-foto[hidden], .pr-kredit[hidden] { display: none; }
   .pr-kredit { font-size: 0.68rem; opacity: 0.7; }
   @media (max-width: 600px) { .pr-foto { width: 64px; height: 52px; } .pr-titulok span { font-size: 0.78rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } }
   .pr-titulok b { font-size: 1.1rem; }
-  .pr-titulok span { font-size: 0.85rem; opacity: 0.88; }
+  .pr-titulok span { font-size: 0.85rem; opacity: 0.88; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .pr-titulok.pr-skryty { opacity: 0; }
   .pr-ovl { position: absolute; left: 12px; top: 12px; right: 52px; display: flex; flex-wrap: wrap; gap: 6px; }
   .pr-ovl button:disabled { opacity: 0.7; cursor: default; }
   .pr-ovl button { min-height: 34px; padding: 0 12px; border: 0; border-radius: 17px; background: rgba(15, 18, 26, 0.78); color: #fff; font: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
   .pr-ovl button[hidden] { display: none; }
-  /* zastávky preletu – pás pod mapou (v tmavom okne), klik preskočí na zastávku */
-  .pr-kapitoly { max-width: 100%; list-style: none; margin: 0; padding: 8px; display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; background: #1d2433; scrollbar-color: rgba(255, 255, 255, 0.3) transparent; }
+  /* zastávky preletu – zoznam vľavo od mapy s malými fotkami; klik preskočí na zastávku */
+  .pr-kapitoly { position: absolute; top: 0; left: 0; bottom: 0; width: 230px; margin: 0; padding: 10px 8px; list-style: none; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; background: #1d2433; border-right: 1px solid rgba(255, 255, 255, 0.1); scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.3) transparent; z-index: 3; }
   .pr-kapitoly[hidden] { display: none; }
+  .pr-kapitoly::before { content: 'Zastávky'; padding: 0 6px 4px; color: rgba(255, 255, 255, 0.6); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
   /* položky vytvára skript – bez atribútu Astro, preto :global */
-  .pr-kapitoly :global(li) { flex: none; scroll-snap-align: start; }
-  .pr-kapitoly :global(button) { display: flex; align-items: center; gap: 8px; width: 100%; max-width: 220px; min-height: 40px; padding: 4px 12px 4px 4px; border: 1px solid transparent; border-radius: 10px; background: rgba(255, 255, 255, 0.08); color: #fff; font: inherit; font-size: 0.82rem; font-weight: 600; text-align: left; cursor: pointer; }
-  .pr-kapitoly :global(button:not(:has(img))) { padding-left: 12px; }
-  .pr-kapitoly :global(button:hover) { background: rgba(255, 255, 255, 0.16); }
+  .pr-kapitoly :global(li) { flex: none; }
+  .pr-kapitoly :global(button) { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 36px; padding: 3px 8px 3px 3px; border: 0; border-radius: 8px; background: transparent; color: #fff; font: inherit; font-size: 0.8rem; font-weight: 600; line-height: 1.25; text-align: left; cursor: pointer; }
+  .pr-kapitoly :global(button:not(:has(img))) { padding-left: 8px; }
+  .pr-kapitoly :global(button:hover) { background: rgba(255, 255, 255, 0.1); }
   .pr-kapitoly :global(button.pr-akt) { background: #e0283f; }
-  .pr-kapitoly :global(img) { width: 44px; height: 32px; flex: none; object-fit: cover; border-radius: 6px; background: #333; }
-  .pr-kapitoly :global(span) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-  /* zväčšený režim (celá obrazovka / maximalizované okno): zoznam všetkých zastávok vpravo, väčšie fotky */
-  .pr-okno.pr-velke .pr-mapa { width: calc(100% - 340px); }
-  .pr-okno.pr-velke .pr-kapitoly { position: absolute; top: 0; right: 0; bottom: 0; width: 340px; flex-direction: column; gap: 6px; padding: 14px 12px; overflow-x: hidden; overflow-y: auto; scroll-snap-type: y proximity; border-left: 1px solid rgba(255, 255, 255, 0.1); }
-  .pr-okno.pr-velke .pr-kapitoly::before { content: 'Zastávky preletu'; display: block; padding: 2px 4px 6px; color: rgba(255, 255, 255, 0.7); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-  .pr-okno.pr-velke .pr-kapitoly :global(button) { max-width: none; min-height: 52px; gap: 12px; padding: 6px 12px 6px 6px; font-size: 0.92rem; }
-  .pr-okno.pr-velke .pr-kapitoly :global(button:not(:has(img))) { padding-left: 14px; }
-  .pr-okno.pr-velke .pr-kapitoly :global(img) { width: 112px; height: 76px; border-radius: 8px; }
-  .pr-okno.pr-velke .pr-kapitoly :global(span) { white-space: normal; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; line-height: 1.3; }
-  .pr-okno.pr-velke .pr-ovl { right: 392px; }
-  .pr-okno.pr-velke .pr-titulok { left: 20px; bottom: 36px; max-width: min(760px, calc(100% - 380px)); padding: 14px 18px; gap: 18px; }
-  .pr-okno.pr-velke .pr-foto { width: 280px; height: 190px; border-radius: 10px; }
-  .pr-okno.pr-velke .pr-titulok b { font-size: 1.5rem; }
-  .pr-okno.pr-velke .pr-titulok span { font-size: 1.02rem; line-height: 1.45; }
-  .pr-okno.pr-velke .pr-kredit { font-size: 0.75rem; }
-  /* zväčšený režim na úzkej obrazovke (mobil): zastávky ako pás dole, mapa nad ním */
+  .pr-kapitoly :global(img) { width: 46px; height: 34px; flex: none; object-fit: cover; border-radius: 5px; background: #333; }
+  .pr-kapitoly :global(span) { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .pr-okno:has(.pr-kapitoly:not([hidden])) .pr-mapa { margin-left: 230px; width: calc(100% - 230px); }
+  .pr-okno:has(.pr-kapitoly:not([hidden])) .pr-ovl { left: 242px; }
+  .pr-okno:has(.pr-kapitoly:not([hidden])) .pr-titulok { left: 242px; max-width: min(520px, calc(100% - 254px)); }
+  .pr-ovl [data-pr="zoznam"] { display: none; }
+  /* značka pri aktuálnej pamiatke (vytvára skript) */
+  :global(.pr-znacka) { width: 26px; height: 34px; pointer-events: none; }
+  :global(.pr-znacka span) { display: block; width: 26px; height: 26px; border-radius: 50% 50% 50% 0; background: #e0283f; border: 3px solid #fff; transform: rotate(-45deg); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); animation: pr-pulz 1.6s ease-in-out infinite; }
+  @keyframes -global-pr-pulz { 50% { transform: rotate(-45deg) scale(1.15); } }
+  /* zväčšený režim: o niečo širší zoznam a väčšie (stále malé) fotky */
+  .pr-okno.pr-velke .pr-kapitoly { width: 270px; padding: 14px 10px; }
+  .pr-okno.pr-velke .pr-kapitoly :global(button) { min-height: 44px; font-size: 0.86rem; }
+  .pr-okno.pr-velke .pr-kapitoly :global(img) { width: 60px; height: 42px; }
+  .pr-okno.pr-velke:has(.pr-kapitoly:not([hidden])) .pr-mapa { margin-left: 270px; width: calc(100% - 270px); }
+  .pr-okno.pr-velke:has(.pr-kapitoly:not([hidden])) .pr-ovl { left: 284px; }
+  .pr-okno.pr-velke:has(.pr-kapitoly:not([hidden])) .pr-titulok { left: 284px; bottom: 28px; max-width: min(560px, calc(100% - 300px)); }
+  .pr-okno.pr-velke .pr-foto { width: 128px; height: 90px; }
+  /* úzke okno (mobil): zoznam sa otvára tlačidlom „☰ Zastávky“ ako panel cez mapu */
   @media (max-width: 760px) {
-    .pr-okno.pr-velke .pr-mapa { width: 100%; height: calc(100dvh - 76px); }
-    .pr-okno.pr-velke .pr-kapitoly { top: auto; left: 0; width: auto; height: 76px; flex-direction: row; padding: 8px; overflow-x: auto; overflow-y: hidden; border-left: 0; }
-    .pr-okno.pr-velke .pr-kapitoly::before { display: none; }
-    .pr-okno.pr-velke .pr-kapitoly :global(button) { max-width: 230px; min-height: 58px; font-size: 0.82rem; }
-    .pr-okno.pr-velke .pr-kapitoly :global(img) { width: 70px; height: 48px; }
-    .pr-okno.pr-velke .pr-kapitoly :global(span) { -webkit-line-clamp: 2; }
-    .pr-okno.pr-velke .pr-ovl { right: 46px; }
-    .pr-okno.pr-velke .pr-titulok { left: 8px; bottom: 96px; max-width: calc(100% - 16px); flex-direction: column; align-items: flex-start; gap: 8px; }
-    .pr-okno.pr-velke .pr-foto { width: 100%; height: 26dvh; max-height: 200px; }
-    .pr-okno.pr-velke .pr-titulok b { font-size: 1.15rem; }
-    .pr-okno.pr-velke .pr-titulok span { font-size: 0.88rem; }
+    .pr-ovl [data-pr="zoznam"] { display: inline-block; }
+    .pr-kapitoly { width: min(260px, 78%); transform: translateX(-102%); transition: transform 0.25s; box-shadow: 4px 0 18px rgba(0, 0, 0, 0.35); padding-top: 56px; }
+    .pr-okno.pr-zoznam-otvoreny .pr-kapitoly { transform: none; }
+    .pr-okno:has(.pr-kapitoly:not([hidden])) .pr-mapa, .pr-okno.pr-velke:has(.pr-kapitoly:not([hidden])) .pr-mapa { margin-left: 0; width: 100%; }
+    .pr-okno:has(.pr-kapitoly:not([hidden])) .pr-ovl, .pr-okno.pr-velke:has(.pr-kapitoly:not([hidden])) .pr-ovl { left: 8px; z-index: 4; }
+    .pr-okno:has(.pr-kapitoly:not([hidden])) .pr-titulok, .pr-okno.pr-velke:has(.pr-kapitoly:not([hidden])) .pr-titulok { left: 8px; max-width: calc(100% - 16px); }
+    .pr-okno.pr-velke .pr-foto { width: 80px; height: 60px; }
   }
   /* mobil: vyššia mapa, aby sa ovládanie a titulok neprekrývali */
   @media (max-width: 600px) {

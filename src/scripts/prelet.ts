@@ -143,6 +143,11 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     attributionControl: false, cooperativeGestures: false,
   });
   let oznac: (() => void) | null = null;
+  // značka pri aktuálnej pamiatke, aby bolo vidno, o ktorú stavbu ide
+  const znackaEl = document.createElement('div');
+  znackaEl.className = 'pr-znacka';
+  znackaEl.innerHTML = '<span></span>';
+  const znacka = new maplibregl.Marker({ element: znackaEl, anchor: 'bottom' });
   // celá obrazovka: Fullscreen API (aj s predponou webkit); kde nie je (iPhone) alebo zlyhá, okno sa roztiahne cez celé okno prehliadača
   const tlCela = el.querySelector<HTMLButtonElement>('[data-pr="cela"]');
   const o: any = okno;
@@ -265,6 +270,7 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       // významná pamiatka: prílet, titulok s fotkou a pomalé obletenie počas čítania
       const meno = pm.n.replace(/\s*\([^()]*\)$/, ''); // „Kostol … (Košice)“ → bez rozlišovacej zátvorky
       titulok(meno, pm.t, pm.f);
+      znacka.setLngLat([pm.p[1], pm.p[0]]).addTo(map);
       await pohni(() => map.flyTo({ center: [pm.p[1], pm.p[0]], zoom: 17, pitch: 62, bearing: map.getBearing() + 40, duration: 5000, essential: true }));
       if (pauza) return;
       const citanie = povedz(reci(meno, pm.t), 6000);
@@ -335,16 +341,19 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       if (kp.foto) { const im = document.createElement('img'); im.src = kp.foto; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; b.append(im); }
       const s = document.createElement('span'); s.textContent = `${j + 1}. ${kp.nazov}`; b.append(s);
       b.title = kp.nazov;
-      b.addEventListener('click', () => skoc(kp.krok));
+      b.addEventListener('click', () => { okno.classList.remove('pr-zoznam-otvoreny'); skoc(kp.krok); });
       li.append(b); return li;
     }));
     zoznam.hidden = false;
   }
 
+  const tlZoznam = el.querySelector<HTMLButtonElement>('[data-pr="zoznam"]');
+  tlZoznam?.addEventListener('click', () => { const o = okno.classList.toggle('pr-zoznam-otvoreny'); tlZoznam.setAttribute('aria-expanded', String(o)); if (o) oznac?.(); });
   let beh: Promise<void> | null = null;
   const hraj = async () => {
     while (i < kroky.length && !pauza) {
       oznac?.();
+      if (i < 2 || i >= 2 + pam.length) znacka.remove();
       await kroky[i]();
       if (pauza) return;
       i++;
