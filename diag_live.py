@@ -19,4 +19,4 @@ with sync_playwright() as p:
         pg.close()
     b.close()
 print("HOTOVO")
-# 5
+# 6
