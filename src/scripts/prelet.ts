@@ -142,11 +142,12 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     container: mapaEl, style, center: [lon, lat], zoom: zoom - 1.6, pitch: pohyb ? 0 : 55, bearing: 0, maxPitch: 78,
     attributionControl: false, cooperativeGestures: false,
   });
+  let oznac: (() => void) | null = null;
   // celá obrazovka: Fullscreen API (aj s predponou webkit); kde nie je (iPhone) alebo zlyhá, okno sa roztiahne cez celé okno prehliadača
   const tlCela = el.querySelector<HTMLButtonElement>('[data-pr="cela"]');
   const o: any = okno;
   const jeCela = () => !!(document.fullscreenElement || (document as any).webkitFullscreenElement) || okno.classList.contains('pr-max');
-  const stavCela = () => { if (tlCela) { tlCela.textContent = jeCela() ? '✕⛶' : '⛶'; tlCela.setAttribute('aria-label', jeCela() ? 'Zmenšiť' : 'Na celú obrazovku'); } setTimeout(() => map.resize(), 60); };
+  const stavCela = () => { okno.classList.toggle('pr-velke', jeCela()); requestAnimationFrame(() => oznac?.()); if (tlCela) { tlCela.textContent = jeCela() ? '✕⛶' : '⛶'; tlCela.setAttribute('aria-label', jeCela() ? 'Zmenšiť' : 'Na celú obrazovku'); } setTimeout(() => map.resize(), 60); };
   const maxOkno = (zap: boolean) => { okno.classList.toggle('pr-max', zap); document.documentElement.classList.toggle('pr-max-otvorene', zap); stavCela(); };
   tlCela?.addEventListener('click', async () => {
     if (okno.classList.contains('pr-max')) { maxOkno(false); return; }
@@ -311,12 +312,18 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   const tlSpat = el.querySelector<HTMLButtonElement>('[data-pr="spat"]');
   const tlDalej = el.querySelector<HTMLButtonElement>('[data-pr="dalej"]');
   const kapitolaKroku = (k: number) => { let x = 0; kapitoly.forEach((kp, j) => { if (kp.krok <= k) x = j; }); return x; };
-  const oznac = () => {
+  oznac = () => {
     const a = kapitolaKroku(Math.min(i, kroky.length - 1));
     zoznam?.querySelectorAll('button').forEach((b, j) => { b.classList.toggle('pr-akt', j === a); if (j === a) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
     // posunúť len samotný pás zastávok (scrollIntoView by posúval aj celú stránku)
     const akt = zoznam?.querySelector<HTMLElement>('.pr-akt');
-    if (zoznam && akt) { const l = akt.getBoundingClientRect().left - zoznam.getBoundingClientRect().left + zoznam.scrollLeft; if (l < zoznam.scrollLeft || l + akt.offsetWidth > zoznam.scrollLeft + zoznam.clientWidth) zoznam.scrollTo({ left: Math.max(0, l - 8), behavior: 'smooth' }); }
+    if (zoznam && akt && zoznam.offsetParent) {
+      const ra = akt.getBoundingClientRect(), rz = zoznam.getBoundingClientRect();
+      const l = ra.left - rz.left + zoznam.scrollLeft, h = ra.top - rz.top + zoznam.scrollTop;
+      const x = l < zoznam.scrollLeft || l + ra.width > zoznam.scrollLeft + zoznam.clientWidth ? Math.max(0, l - 8) : zoznam.scrollLeft;
+      const y = h < zoznam.scrollTop || h + ra.height > zoznam.scrollTop + zoznam.clientHeight ? Math.max(0, h - 8) : zoznam.scrollTop;
+      if (x !== zoznam.scrollLeft || y !== zoznam.scrollTop) zoznam.scrollTo({ left: x, top: y, behavior: 'smooth' });
+    }
     if (tlSpat) tlSpat.disabled = a === 0;
     if (tlDalej) tlDalej.disabled = a >= kapitoly.length - 1;
   };
@@ -327,6 +334,7 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       b.type = 'button';
       if (kp.foto) { const im = document.createElement('img'); im.src = kp.foto; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; b.append(im); }
       const s = document.createElement('span'); s.textContent = `${j + 1}. ${kp.nazov}`; b.append(s);
+      b.title = kp.nazov;
       b.addEventListener('click', () => skoc(kp.krok));
       li.append(b); return li;
     }));
@@ -336,12 +344,12 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   let beh: Promise<void> | null = null;
   const hraj = async () => {
     while (i < kroky.length && !pauza) {
-      oznac();
+      oznac?.();
       await kroky[i]();
       if (pauza) return;
       i++;
     }
-    if (i >= kroky.length) { titulok(d.nazov, 'Koniec preletu – mapou môžete pohybovať sami.'); tlPauza.textContent = '↺ Znova'; tlPauza.dataset.stav = 'znova'; oznac(); }
+    if (i >= kroky.length) { titulok(d.nazov, 'Koniec preletu – mapou môžete pohybovať sami.'); tlPauza.textContent = '↺ Znova'; tlPauza.dataset.stav = 'znova'; oznac?.(); }
   };
   const spusti = () => { pauza = false; tlPauza.textContent = '⏸ Pauza'; tlPauza.dataset.stav = ''; beh = hraj(); };
   const zastav = () => { if (pauza) return; pauza = true; map.stop(); reč?.cancel(); prerusReč?.(); tlPauza.textContent = '▶ Pokračovať'; tlPauza.dataset.stav = 'pauza'; };
