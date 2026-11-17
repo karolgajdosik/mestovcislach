@@ -88,6 +88,9 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   okno.hidden = false;
   el.querySelector<HTMLElement>('.pr-uvod')!.hidden = true;
   el.classList.add('pr-otvoreny');
+  // otvorená mapa sa presunie do zobrazenia (na počítači je pod videom) – raz, pri otvorení
+  const ukazOkno = () => requestAnimationFrame(() => { const r = okno.getBoundingClientRect(); const hore = Math.min(140, Math.max(60, (innerHeight - r.height) / 2)); if (r.top < hore - 4 || r.bottom > innerHeight) scrollTo({ top: scrollY + r.top - hore, behavior: 'smooth' }); });
+  ukazOkno();
   const fotoEl = tit.querySelector<HTMLImageElement>('.pr-foto');
   const kreditEl = tit.querySelector<HTMLElement>('.pr-kredit');
   const titulok = (b: string, s = '', f?: Pamiatka['f']) => {
@@ -357,7 +360,7 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     uvod.hidden = false;
     el.classList.remove('pr-otvoreny');
     s.textContent = '▶ Prelet znova';
-    s.onclick = () => { okno.hidden = false; uvod.hidden = true; el.classList.add('pr-otvoreny'); if (zoznam) zoznam.hidden = false; map.resize(); i = 0; spusti(); };
+    s.onclick = () => { okno.hidden = false; uvod.hidden = true; el.classList.add('pr-otvoreny'); if (zoznam) zoznam.hidden = false; map.resize(); ukazOkno(); i = 0; spusti(); };
   });
   spusti();
 }
