@@ -1,5 +1,5 @@
 import subprocess, sys, time
-time.sleep(470)
+time.sleep(480)
 subprocess.run([sys.executable,"-m","pip","install","-q","playwright"],check=True)
 subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromium"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 from playwright.sync_api import sync_playwright
@@ -14,14 +14,14 @@ with sync_playwright() as p:
         pg.on("pageerror",lambda e: err.append(str(e)[:200]))
         pg.goto(U); pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
         klik(pg,'.pr-start'); time.sleep(6)
-        if name=='n_mob': klik(pg,'[data-pr=zoznam]'); time.sleep(1); print(name,'zoznam otvorený',pg.evaluate(J)); pg.screenshot(path=f"diag/{name}_zoznam.jpg",type="jpeg",quality=60,timeout=90000)
         pg.evaluate("document.querySelectorAll('.pr-kapitoly button')[2].click()"); time.sleep(14); print(name,'bežný',pg.evaluate(J))
         try: pg.screenshot(path=f"diag/{name}.jpg",type="jpeg",quality=60,timeout=90000)
         except Exception: print('shot fail')
-        if name=='n_desk':
+        if True:
             klik(pg,'[data-pr=cela]'); time.sleep(10); print(name,'zväčšený',pg.evaluate(J))
             try: pg.screenshot(path=f"diag/{name}_velke.jpg",type="jpeg",quality=60,timeout=90000)
             except Exception: print('shot fail')
         print(name,'chyby',err); pg.close()
     b.close()
 print("HOTOVO")
+# v2
