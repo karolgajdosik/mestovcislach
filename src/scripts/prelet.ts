@@ -279,6 +279,13 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       await pohni(() => map.flyTo({ center: ll, zoom: 17, pitch: 62, bearing: map.getBearing() + 40, duration: 5000, essential: true, freezeElevation: true, padding: odsadenie() }));
       if (pauza) return;
       znacka.setLngLat(ll).addTo(map); // značka až po prílete
+      // po prílete sa výška stredu prichytí k podrobnému terénu – potom pamiatku ešte raz presne vycentrovať (max. 2×)
+      for (let pokus = 0; pokus < 2 && !pauza; pokus++) {
+        await sTimeoutom(new Promise<void>((ok) => map.once('idle', () => ok())), 2500).catch(() => {});
+        const bod = map.project(ll), od = odsadenie();
+        if (Math.hypot(bod.x - mapaEl.clientWidth / 2, bod.y - (mapaEl.clientHeight - od.bottom) / 2) < 14) break;
+        await pohni(() => map.easeTo({ center: ll, padding: od, duration: 900, essential: true, freezeElevation: true }));
+      }
       if (pauza) return;
       const citanie = povedz(reci(meno, pm.t), 6000);
       let obieha = true;
