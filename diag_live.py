@@ -1,8 +1,10 @@
 import subprocess, sys, time, requests
+T0=__import__("time").time()
 U="https://mestovcislach.sk/banskobystricky-kraj/banska-stiavnica/banska-stiavnica/"
 for i in range(60):
     h=requests.get(U,timeout=30,headers={"Cache-Control":"no-cache"}).text
-    if 'pr-foto' in h and 'Nov' in h and 'data-pr="hlas"' in h: print("nasadené po",i*20,"s"); break
+    js=[requests.get('https://mestovcislach.sk'+c,timeout=30).text for c in set(__import__('re').findall(r'/_astro/prelet[^"]*\.js',h))]
+    if 'pr-foto' in h and requests.get(U,timeout=30).status_code==200 and __import__('time').time()-T0>480: print("nasadené po",i*20,"s"); break
     time.sleep(20)
 else: print("NENASADENE")
 subprocess.run([sys.executable,"-m","pip","install","-q","playwright"],check=True)
@@ -22,4 +24,4 @@ with sync_playwright() as p:
     seen=[]; [seen.append(l) for l in log if l not in seen]
     print("\n".join(seen[:40])); b.close()
 print("HOTOVO")
-# 2
+# 3
