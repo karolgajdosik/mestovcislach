@@ -1,6 +1,7 @@
-fs_mob po ⛶ {'velke': True, 'max': False, 'fs': True, 'mapa': [390, 768], 'kap': [0, 390, 76], 'foto': [0, 0], 'tit': 'Banská Štiavnica'}
-fs_mob po klik 5. {'velke': True, 'max': False, 'fs': True, 'mapa': [390, 768], 'kap': [0, 390, 76], 'foto': [338, 200], 'tit': 'Kostol svätej Kataríny'}
-shot ok
-fs_mob späť {'velke': False, 'max': False, 'fs': False, 'mapa': [316, 395], 'kap': [37, 316, 58], 'foto': [64, 52], 'tit': 'Klopačka'}
-fs_mob chyby []
+n_desk bežný {'mapa': [528, 176, 768, 432], 'kap': [298, 176, 230, 432], 'tit': [540, 489, 413, 89], 'foto': [554, 502, 88, 62], 'znacka': True, 'nazov': 'Nový zámok'}
+n_desk zväčšený {'mapa': [270, 0, 1096, 768], 'kap': [0, 0, 270, 768], 'tit': [284, 609, 560, 131], 'foto': [298, 629, 128, 90], 'znacka': True, 'nazov': 'Kostol svätej Kataríny'}
+n_desk chyby []
+n_mob zoznam otvorený {'mapa': [37, 181, 316, 395], 'kap': [37, 181, 246, 395], 'tit': [45, 467, 300, 84], 'foto': [0, 0, 0, 0], 'znacka': False, 'nazov': 'Banská Štiavnica'}
+n_mob bežný {'mapa': [37, 181, 316, 395], 'kap': [-214, 181, 246, 395], 'tit': [45, 448, 300, 103], 'foto': [55, 474, 64, 52], 'znacka': True, 'nazov': 'Nový zámok'}
+n_mob chyby []
 HOTOVO
