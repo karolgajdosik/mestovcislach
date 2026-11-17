@@ -1,12 +1,28 @@
-import requests, math
-def tile(lat,lon,z):
-    n=2**z; x=int((lon+180)/360*n); y=int((1-math.asinh(math.tan(math.radians(lat)))/math.pi)/2*n); return x,y
-H={"Origin":"https://mestovcislach.sk","User-Agent":"Mozilla/5.0 (compatible; mestovcislach.sk; info@mestovcislach.sk)"}
-for z in (12,14,15,16,17):
-    x,y=tile(48.1435,17.1077,z)
-    u=f"https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/g/{z}/{y}/{x}.jpg"
-    r=requests.get(u,headers=H,timeout=30); print(z,r.status_code,r.headers.get("content-type"),len(r.content),"ACAO=",r.headers.get("access-control-allow-origin"))
-r=requests.get("https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml",timeout=60).text
-import re
-i=r.find("<ows:Identifier>s2cloudless_3857</ows:Identifier>"); print(r[max(0,i-600):i+100].replace("\n"," ")[:800])
+import subprocess, sys, time, requests, re
+U="https://mestovcislach.sk/bratislava/"
+time.sleep(30)
+for i in range(40):
+    h=requests.get(U,timeout=30,headers={"Cache-Control":"no-cache"}).text
+    js=set(re.findall(r'/_astro/[^"\']+\.js',h))
+    ok=False
+    for j in js:
+        t=requests.get("https://mestovcislach.sk"+j,timeout=30).text
+        if "s2cloudless_3857" in t: ok=True;break
+        for k in re.findall(r'["\']\.?/?([A-Za-z0-9_.-]+\.js)["\']',t):
+            if 'prelet' in k and "s2cloudless_3857" in requests.get("https://mestovcislach.sk/_astro/"+k.split('/')[-1],timeout=30).text: ok=True;break
+        if ok: break
+    if ok: print("nasadené po",30+i*20,"s"); break
+    time.sleep(20)
+subprocess.run([sys.executable,"-m","pip","install","-q","playwright"],check=True)
+subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromium"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+from playwright.sync_api import sync_playwright
+with sync_playwright() as p:
+    b=p.chromium.launch(args=["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"])
+    pg=b.new_page(viewport={"width":1280,"height":900}); ch=[]
+    pg.on("pageerror",lambda e: ch.append(str(e)[:150]))
+    pg.goto(U); pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
+    pg.click(".pr-start"); pg.wait_for_selector('.pr-okno canvas',timeout=60000); pg.wait_for_timeout(9000)
+    pg.click('[data-pr="pauza"]'); pg.click('[data-pr="podklad"]'); pg.wait_for_timeout(25000)
+    print("tlačidlo:",pg.text_content('[data-pr="podklad"]')); print("zdroj:",pg.text_content('.pr-zdroj')[:200])
+    pg.locator(".pr-okno").screenshot(path="diag/sat.jpg",type="jpeg",quality=70); print("chyby",ch[:3]); b.close()
 print("HOTOVO")
