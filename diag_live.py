@@ -1,3 +1,4 @@
+import subprocess, sys as _s; subprocess.run([_s.executable,"-m","pip","install","-q","shapely","pyproj"],check=False)
 import sys, json, runpy, pathlib
 sys.path.insert(0, "scripts")
 import zber_pamiatky_body as z
