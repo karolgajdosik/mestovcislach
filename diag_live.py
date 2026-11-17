@@ -1,27 +1,21 @@
 import subprocess, sys, time
-time.sleep(480)
+time.sleep(470)
 subprocess.run([sys.executable,"-m","pip","install","-q","playwright"],check=True)
 subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromium"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 from playwright.sync_api import sync_playwright
 U="https://mestovcislach.sk/banskobystricky-kraj/banska-stiavnica/banska-stiavnica/"
-J="""(()=>{const q=s=>{const r=document.querySelector(s).getBoundingClientRect();return [Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)]};
-return {mapa:q('.pr-mapa'),kap:q('.pr-kapitoly'),tit:q('.pr-titulok'),foto:q('.pr-foto'),znacka:document.querySelector('.pr-znacka')?q('.pr-znacka'):null,nazov:document.querySelector('.pr-titulok b').textContent}})()"""
-def klik(pg,s): pg.evaluate(f"document.querySelector('{s}').click()")
+J="""(()=>{const m=document.querySelector('.pr').__mapa;const z=document.querySelector('.pr-znacka');const r=document.querySelector('.pr-mapa').getBoundingClientRect();const t=document.querySelector('.pr-titulok').getBoundingClientRect();
+const zb=z?z.getBoundingClientRect():null;return {pohyb:m.isMoving(),znacka:zb?[Math.round(zb.left+zb.width/2-r.left),Math.round(zb.bottom-r.top)]:null,mapa:[Math.round(r.width),Math.round(r.height)],titulokHore:Math.round(t.top-r.top),nazov:document.querySelector('.pr-titulok b').textContent}})()"""
 with sync_playwright() as p:
     b=p.chromium.launch(args=["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"])
-    for vw,vh,name in [(390,844,'n_mob')]:
-        pg=b.new_page(viewport={"width":vw,"height":vh}); err=[]
-        pg.on("pageerror",lambda e: err.append(str(e)[:200]))
+    for vw,vh,name in [(1366,768,'desk'),(390,844,'mob')]:
+        pg=b.new_page(viewport={"width":vw,"height":vh})
         pg.goto(U); pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
-        klik(pg,'.pr-start'); time.sleep(6)
-        pg.evaluate("document.querySelectorAll('.pr-kapitoly button')[2].click()"); time.sleep(30); print(name,'bežný',pg.evaluate(J))
-        try: pg.screenshot(path=f"diag/{name}.jpg",type="jpeg",quality=60,timeout=90000)
-        except Exception: print('shot fail')
-        if True:
-            klik(pg,'[data-pr=cela]'); time.sleep(10); print(name,'zväčšený',pg.evaluate(J))
-            try: pg.screenshot(path=f"diag/{name}_velke.jpg",type="jpeg",quality=60,timeout=90000)
-            except Exception: print('shot fail')
-        print(name,'chyby',err); pg.close()
+        pg.evaluate("document.querySelector('.pr-start').click()"); time.sleep(6)
+        pg.evaluate("document.querySelectorAll('.pr-kapitoly button')[3].click()")
+        for k in range(12):
+            time.sleep(3); s=pg.evaluate(J)
+            if s['znacka']: print(name,k,s)
+        pg.close()
     b.close()
 print("HOTOVO")
-# v4
