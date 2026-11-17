@@ -272,13 +272,14 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       // významná pamiatka: prílet, titulok s fotkou a pomalé obletenie počas čítania
       const meno = pm.n.replace(/\s*\([^()]*\)$/, ''); // „Kostol … (Košice)“ → bez rozlišovacej zátvorky
       titulok(meno, pm.t, pm.f);
-      znacka.setLngLat([pm.p[1], pm.p[0]]).addTo(map);
+      znacka.remove();
       const ll: [number, number] = [pm.p[1], pm.p[0]];
       // pamiatka nad titulkom: spodný okraj kamery sa posunie o výšku titulku; výška terénu, aby značka bola v strede
       const e = map.queryTerrainElevation(ll);
       await pohni(() => map.flyTo({ center: ll, zoom: 17, pitch: 62, bearing: map.getBearing() + 40, duration: 5000, essential: true, padding: odsadenie(), ...(e != null ? { elevation: e } : {}) }));
       if (pauza) return;
       const e2 = map.queryTerrainElevation(ll);
+      znacka.setLngLat(ll).addTo(map); // značka až po prílete
       const bod = map.project(ll), stred = map.project(map.getCenter());
       if (Math.hypot(bod.x - stred.x, bod.y - stred.y) > 30) await pohni(() => map.easeTo({ center: ll, duration: 900, essential: true, padding: odsadenie(), ...(e2 != null ? { elevation: e2 } : {}) }));
       if (pauza) return;
