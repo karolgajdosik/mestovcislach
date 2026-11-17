@@ -1,17 +1,20 @@
-desk 1 {'scrollY': 1152, 'okno': [687, 998, 561], 'canvas': None, 'mapPos': None, 'css': False, 'ovl': 'dalej', 'tit': 'Načítavam mapu…'}
+nasadené po 0 s
+desk 1 {'scrollY': 1152, 'okno': [687, 998, 561], 'canvas': [998, 561, '998px', '561px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Načítavam mapu…'}
 desk 3 {'scrollY': 1152, 'okno': [687, 998, 561], 'canvas': [998, 561, '998px', '561px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Načítavam mapu…'}
 desk 6 {'scrollY': 1680, 'okno': [159, 998, 561], 'canvas': [998, 561, '998px', '561px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Banská Štiavnica'}
 desk 10 {'scrollY': 1680, 'okno': [159, 998, 561], 'canvas': [998, 561, '998px', '561px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': '9\xa0139 obyvateľov'}
 desk 16 {'scrollY': 1680, 'okno': [159, 998, 561], 'canvas': [998, 561, '998px', '561px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': '9\xa0139 obyvateľov'}
+desk 22 {'scrollY': 2304, 'okno': [-465, 998, 561], 'canvas': [998, 561, '998px', '561px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': None, 'tit': 'Kostol svätej Kataríny'}
 shot ok
 desk chyby [] 
- konzola ["Error with Permissions-Policy header: Unrecognized feature: 'interest-cohort'.", 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.', '[.WebGL-0x2c6401382600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repea']
+ konzola ["Error with Permissions-Policy header: Unrecognized feature: 'interest-cohort'.", 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.', '[.WebGL-0x2f4c01223400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repea']
 mob 1 {'scrollY': 2367, 'okno': [275, 338, 190], 'canvas': [338, 190, '338px', '190px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Načítavam mapu…'}
 mob 3 {'scrollY': 3302, 'okno': [234, 2150, 1210], 'canvas': [2150, 1210, '2150px', '1210px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Banská Štiavnica'}
 mob 6 {'scrollY': 3302, 'okno': [234, 2150, 1210], 'canvas': [2150, 1210, '2150px', '1210px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Banská Štiavnica'}
-mob 10 {'scrollY': 3949, 'okno': [-413, 2150, 1210], 'canvas': [2150, 1210, '2150px', '1210px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': None, 'tit': '9\xa0139 obyvateľov'}
-mob 16 {'scrollY': 4270, 'okno': [-734, 2150, 1210], 'canvas': [2150, 1210, '2150px', '1210px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': None, 'tit': 'Nový zámok'}
+mob 10 {'scrollY': 3302, 'okno': [234, 2150, 1210], 'canvas': [2150, 1210, '2150px', '1210px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': 'dalej', 'tit': 'Banská Štiavnica'}
+mob 16 {'scrollY': 3949, 'okno': [-413, 2150, 1210], 'canvas': [2150, 1210, '2150px', '1210px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': None, 'tit': '9\xa0139 obyvateľov'}
+mob 22 {'scrollY': 4611, 'okno': [-1075, 2150, 1210], 'canvas': [2150, 1210, '2150px', '1210px'], 'mapPos': 'relative/hidden', 'css': True, 'ovl': None, 'tit': 'Kostol svätej Kataríny'}
 shot ok
 mob chyby [] 
- konzola ["Error with Permissions-Policy header: Unrecognized feature: 'interest-cohort'.", 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.', 'Failed to load resource: net::ERR_TIMED_OUT']
+ konzola ["Error with Permissions-Policy header: Unrecognized feature: 'interest-cohort'.", 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.', 'Expected value to be of type number, but found null instead.']
 HOTOVO
