@@ -244,10 +244,11 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
     async () => { titulok(...tit_(1)); await Promise.all([pohni(() => map.rotateTo(map.getBearing() + 70, { duration: 7000, easing: (x: number) => x })), povedz(reci(...tit_(1)))]); },
     ...(d.pamiatky ?? []).map((pm) => async () => {
       // významná pamiatka: prílet, titulok s fotkou a pomalé obletenie počas čítania
-      titulok(pm.n, pm.t, pm.f);
+      const meno = pm.n.replace(/\s*\([^()]*\)$/, ''); // „Kostol … (Košice)“ → bez rozlišovacej zátvorky
+      titulok(meno, pm.t, pm.f);
       await pohni(() => map.flyTo({ center: [pm.p[1], pm.p[0]], zoom: 17, pitch: 62, bearing: map.getBearing() + 40, duration: 5000, essential: true }));
       if (pauza) return;
-      const citanie = povedz(reci(pm.n, pm.t), 6000);
+      const citanie = povedz(reci(meno, pm.t), 6000);
       let obieha = true;
       const krut = async () => { while (obieha && !pauza) await pohni(() => map.rotateTo(map.getBearing() + 25, { duration: 4000, easing: (x: number) => x })); };
       const k = krut();
