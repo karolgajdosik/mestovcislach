@@ -1,9 +1,4 @@
-ofmozaika 13 200 image/jpeg 50345 ACAO= None cache= max-age=2592000, public, no-transform
-ofmozaika2c 13 200 image/jpeg 32455 ACAO= None cache= max-age=2592000, public, no-transform
-ofmozaika 16 200 image/jpeg 54458 ACAO= None cache= max-age=2592000, public, no-transform
-ofmozaika2c 16 200 image/jpeg 33088 ACAO= None cache= max-age=2592000, public, no-transform
-ofmozaika 18 200 image/jpeg 42036 ACAO= None cache= max-age=2592000, public, no-transform
-ofmozaika2c 18 200 image/jpeg 26419 ACAO= None cache= max-age=2592000, public, no-transform
-ofmozaika 19 200 image/jpeg 35147 ACAO= None cache= max-age=2592000, public, no-transform
-ofmozaika2c 19 200 image/jpeg 25391 ACAO= None cache= max-age=2592000, public, no-transform
+ERR HTTPSConnectionPool(host='zbgis.skgeodesy.sk', port=443): Max retries exceeded with url: /zbgis/rest/services/Ortofoto/MapServer?f=json (Caused by ConnectTimeoutError(<HTTPSConnection(host='zbgis.skgeodesy.sk', port=443) at 0x784a9489f4d0>, 'Connection to zbgis.skgeodesy.sk timed out. (connect timeout=40)'))
+ERR s/Ortofoto/MapServer/tile/16/22662/35576 HTTPSConnectionPool(host='zbgis.skgeodesy.sk', port=443): Max retries exceeded with url: /zbgis/rest/services/Ortofoto/MapServer/tile/16/22662/35576 (Caused by ConnectTimeoutError(<HTTPSConnection(host='zbgis.skgeodesy.sk', port=443) at 0x784a948db9d0>, 'Connection to zbgis.skgeodesy.sk timed out. (connect timeout=40)'))
+ERR eSR=3857&size=512,512&format=jpg&f=image HTTPSConnectionPool(host='zbgis.skgeodesy.sk', port=443): Max retries exceeded with url: /zbgis/rest/services/Ortofoto/MapServer/export?bbox=1904000,6131000,1906000,6133000&bboxSR=3857&imageSR=3857&size=512,512&format=jpg&f=image (Caused by ConnectTimeoutError(<HTTPSConnection(host='zbgis.skgeodesy.sk', port=443) at 0x784a947c42d0>, 'Connection to zbgis.skgeodesy.sk timed out. (connect timeout=40)'))
 HOTOVO
