@@ -108,6 +108,8 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
   // prepínač Mapa / Letecká snímka: ortofoto ZBGIS sa vloží pod cesty, budovy a názvy (hybridná mapa)
   const tlPodklad = el.querySelector<HTMLButtonElement>('[data-pr="podklad"]');
   let letecka = false;
+  let plosne: string[] = [];
+  let chybaOrto = false;
   tlPodklad?.addEventListener('click', async () => {
     if (!map.getLayer('orto')) {
       tlPodklad.disabled = true;
@@ -116,11 +118,17 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
       tlPodklad.disabled = false;
       if (!sablona) { tlPodklad.textContent = 'Letecké snímky nedostupné'; tlPodklad.disabled = true; return; }
       map.addSource('orto', { type: 'raster', tiles: [sablona], tileSize: 512, maxzoom: 19, attribution: 'Ortofotomozaika SR © GKÚ Bratislava, ÚGKK SR (CC BY 4.0)' });
-      const pod = map.getStyle().layers.find((l: any) => l.type === 'line' || l.type === 'fill-extrusion' || l.type === 'symbol')?.id;
-      map.addLayer({ id: 'orto', type: 'raster', source: 'orto', layout: { visibility: 'none' } }, pod);
+      // snímka hneď nad pozadie; plošné vrstvy mapy (zástavba, lesy, voda, parky) sa pri leteckej snímke skryjú,
+      // inak by ju prekryli – ostanú cesty, 3D budovy a názvy
+      const vrstvy = map.getStyle().layers as any[];
+      const nad = vrstvy.find((l) => l.type !== 'background')?.id;
+      map.addLayer({ id: 'orto', type: 'raster', source: 'orto', layout: { visibility: 'none' } }, nad);
+      plosne = vrstvy.filter((l) => l.type === 'fill' || l.type === 'hillshade' || (l.type === 'raster' && l.id !== 'orto')).map((l) => l.id);
+      map.on('error', (e: any) => { if (e.sourceId === 'orto' && !chybaOrto) { chybaOrto = true; zdroj.textContent = 'Letecké snímky ZBGIS sa nepodarilo načítať (server neodpovedá). ' + ZDROJ_MAPA; } });
     }
     letecka = !letecka;
     map.setLayoutProperty('orto', 'visibility', letecka ? 'visible' : 'none');
+    for (const id of plosne) map.setLayoutProperty(id, 'visibility', letecka ? 'none' : 'visible');
     tlPodklad.textContent = letecka ? '🗺 Mapa' : '🛰 Letecká snímka';
     zdroj.textContent = letecka ? `Letecká snímka: ortofotomozaika SR © GKÚ Bratislava, ÚGKK SR (CC BY 4.0). ${ZDROJ_MAPA}` : ZDROJ_MAPA;
   });
