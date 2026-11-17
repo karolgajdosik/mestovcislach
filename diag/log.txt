@@ -1,8 +1,8 @@
-nasadené po 0 s
+nasadené po 480 s
 0 [False, 538.875, True]
 1 [False, 538.875, True]
 Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 20, in <module>
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 22, in <module>
     pg.wait_for_timeout(12000); print(k, pg.evaluate("(()=>{const o=document.querySelector('.pr-okno');return [o.hidden,o.getBoundingClientRect().height,!!document.querySelector('.pr').__mapa]})()")); pg.screenshot(path=f"diag/r{k}.jpg",type="jpeg",quality=65,animations="disabled")
                                                                                                                                                                                                          ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/runner/.local/lib/python3.14/site-packages/playwright/sync_api/_generated.py", line 20272, in screenshot
