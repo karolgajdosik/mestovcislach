@@ -1,7 +1,5 @@
-obce s videom (P10): 0
-Prievidza videí v kategórii: 0 vrátane podkategórií: 0 []
-Bojnice videí v kategórii: 0 vrátane podkategórií: 0 []
-Banská Štiavnica videí v kategórii: 0 vrátane podkategórií: 0 []
-Petržalka videí v kategórii: 0 vrátane podkategórií: 7 ['How to scan device using ESET Mobile Security for Andro', 'ESET MSP Administrator Portal overview.ogv', 'How to update Endpoints remotely using the ESET Securit']
-Trenčín videí v kategórii: 0 vrátane podkategórií: 3 ['Bruins Stanley Cup Parade 2011 Tim Thomas Zdeno Chara.w', 'Андрей Месарош - Andrej Meszaros (USA - Slovakia 2-3).w', 'Čičmany Słowacja.webm']
+ortofoto WMS 3857 ERR HTTPSConnectionPool(host='zbgisws.skgeodesy.sk', port=443): Max retries exceeded with url: /zbgis_ortofoto_wms/service.svc/get?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=1&STYLES=&CRS=EPSG:3857&BBOX=2073000,6224000,2075000,6226000&WIDTH=256&HEIGHT=256&FORMAT=image/jpeg (Caused by ConnectTimeoutError(<HTTPSConnection(host='zbgisws.skgeodesy.sk', port=443) at 0x710760ea34d0>, 'Connection to zbgisws.skgeodesy.sk timed out. (connect timeout=60)'))
+ortofoto WMS caps ERR HTTPSConnectionPool(host='zbgisws.skgeodesy.sk', port=443): Max retries exceeded with url: /zbgis_ortofoto_wms/service.svc/get?SERVICE=WMS&REQUEST=GetCapabilities (Caused by ConnectTimeoutError(<HTTPSConnection(host='zbgisws.skgeodesy.sk', port=443) at 0x710760edf890>, 'Connection to zbgisws.skgeodesy.sk timed out. (connect timeout=60)'))
+terrarium 200 image/png 120928 ACAO= *
+openfreemap style 200 application/json 43311 ACAO= *
 HOTOVO
