@@ -9,7 +9,7 @@ return {mapa:q('.pr-mapa'),kap:q('.pr-kapitoly'),tit:q('.pr-titulok'),foto:q('.p
 def klik(pg,s): pg.evaluate(f"document.querySelector('{s}').click()")
 with sync_playwright() as p:
     b=p.chromium.launch(args=["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"])
-    for vw,vh,name in [(1366,768,'n_desk'),(390,844,'n_mob')]:
+    for vw,vh,name in [(390,844,'n_mob')]:
         pg=b.new_page(viewport={"width":vw,"height":vh}); err=[]
         pg.on("pageerror",lambda e: err.append(str(e)[:200]))
         pg.goto(U); pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
@@ -24,4 +24,4 @@ with sync_playwright() as p:
         print(name,'chyby',err); pg.close()
     b.close()
 print("HOTOVO")
-# v3
+# v4
