@@ -1,17 +1,21 @@
-desk 1 {'el': [954, 954], 'pohyb': True, 'znacka': [394, 38], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
-desk 2 {'el': [954, 954], 'pohyb': True, 'znacka': [394, 38], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
-desk 3 {'el': [954, 954], 'pohyb': True, 'znacka': [299, 44], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
-desk 7 {'el': [911, 911], 'pohyb': True, 'znacka': [394, 233], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Kostol svätej Kataríny'}
-desk 8 {'el': [911, 911], 'pohyb': True, 'znacka': [453, 228], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Kostol svätej Kataríny'}
-desk 9 {'el': [911, 911], 'pohyb': True, 'znacka': [516, 206], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Kostol svätej Kataríny'}
-desk 10 {'el': [911, 911], 'pohyb': True, 'znacka': [548, 175], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Kostol svätej Kataríny'}
-mob 1 {'el': [948, 948], 'pohyb': True, 'znacka': [158, -50], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
-mob 2 {'el': [948, 948], 'pohyb': True, 'znacka': [46, -48], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
-mob 3 {'el': [948, 948], 'pohyb': True, 'znacka': [-9, -46], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
-mob 4 {'el': [948, 948], 'pohyb': True, 'znacka': [-146, -40], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
-mob 7 {'el': [910, 910], 'pohyb': True, 'znacka': [158, 222], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Kostol svätej Kataríny'}
-mob 8 {'el': [910, 910], 'pohyb': True, 'znacka': [208, 217], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Kostol svätej Kataríny'}
-mob 9 {'el': [910, 910], 'pohyb': True, 'znacka': [226, 213], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Kostol svätej Kataríny'}
-mob 10 {'el': [910, 910], 'pohyb': True, 'znacka': [272, 191], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Kostol svätej Kataríny'}
-mob 11 {'el': [910, 910], 'pohyb': True, 'znacka': [287, 172], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Kostol svätej Kataríny'}
+desk 1 {'el': [1022, 1022], 'pohyb': False, 'znacka': [394, 545], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
+desk 2 {'el': [1022, 1022], 'pohyb': True, 'znacka': [394, 545], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
+desk 3 {'el': [954, 954], 'pohyb': False, 'znacka': [394, 208], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
+desk 4 {'el': [954, 954], 'pohyb': True, 'znacka': [394, 208], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
+desk 5 {'el': [960, 960], 'pohyb': True, 'znacka': [392, 152], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
+desk 6 {'el': [960, 960], 'pohyb': True, 'znacka': [388, 153], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
+desk 7 {'el': [960, 960], 'pohyb': True, 'znacka': [386, 153], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
+desk 8 {'el': [960, 960], 'pohyb': True, 'znacka': [385, 155], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Starý zámok'}
+desk 10 {'el': [913, 913], 'pohyb': False, 'znacka': [394, 246], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Kostol svätej Kataríny'}
+desk 11 {'el': [913, 913], 'pohyb': True, 'znacka': [394, 237], 'mapa': [788, 443], 'titulokHore': 303, 'nazov': 'Kostol svätej Kataríny'}
+mob 1 {'el': [948, 948], 'pohyb': False, 'znacka': [158, -50], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
+mob 2 {'el': [948, 948], 'pohyb': True, 'znacka': [158, -50], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
+mob 3 {'el': [959, 959], 'pohyb': False, 'znacka': [158, 47], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
+mob 4 {'el': [959, 959], 'pohyb': True, 'znacka': [158, 48], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
+mob 5 {'el': [961, 961], 'pohyb': True, 'znacka': [148, 137], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
+mob 6 {'el': [961, 961], 'pohyb': True, 'znacka': [139, 138], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
+mob 7 {'el': [961, 961], 'pohyb': True, 'znacka': [127, 142], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Starý zámok'}
+mob 9 {'el': [910, 910], 'pohyb': False, 'znacka': [158, 245], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Kostol svätej Kataríny'}
+mob 10 {'el': [910, 913], 'pohyb': True, 'znacka': [158, 167], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Kostol svätej Kataríny'}
+mob 11 {'el': [922, 922], 'pohyb': False, 'znacka': [158, 147], 'mapa': [316, 316], 'titulokHore': 316, 'nazov': 'Kostol svätej Kataríny'}
 HOTOVO
