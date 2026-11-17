@@ -1,8 +1,11 @@
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 3, in <module>
-    import zber_pamiatky_body as z
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/zber_pamiatky_body.py", line 24, in <module>
-    from spolocne import DATA, spusti, zapis_ak_zmena
-  File "/home/runner/work/mestovcislach/mestovcislach/scripts/spolocne.py", line 21, in <module>
-    from shapely.geometry import Point, shape
-ModuleNotFoundError: No module named 'shapely'
+Celky s kódom LAU: 2929, celkov s pamiatkami a nadradeným celkom: 1878
+Pamiatky so súradnicami: 13069
+Obcí s pamiatkami: 1744, vybraných pamiatok: 3525
+Texty z Wikipédie: 200
+Fotky s licenciou: 0
+obcí 1744 pamiatok 3533 s textom 3533 s fotkou 0
+528595 [('Kostol a kláštor klarisiek (Bratislava)', 'Kostol Povýšenia svätého Kríža a kláštor klarisiek je súbor goticko-renesančných sakrálnyc', False), ('Erdődyho palác (Godrova)', 'Erdődyho palác je štvorpodlažný neogotický dom na Godrovej ulici č. 2 v Bratislave v Staro', False), ('Hlavná budova Slovenského národného múzea', 'Hlavná budova Slovenského národného múzea je budova na Dunajskom nábreží v Bratislave, v k', False)]
+599981 [('Dóm svätej Alžbety', 'Dóm svätej Alžbety alebo Metropolitná katedrála svätej Alžbety je najväčší kostol na Slove', False), ('Národné divadlo Košice', 'Národné divadlo Košice je klasické divadlo, ktoré má tri súbory – činoherný, operný a bale', False), ('Katedrálny chrám Narodenia Presvätej Bohorodičky', 'Chrám Narodenia presvätej Bohorodičky v Košiciach je katedrálou gréckokatolíckej Košickej ', False)]
+513881 [('Kostol Najsvätejšej Trojice a Nanebovzatia Panny Márie', 'Piaristický kostol Najsvätejšej Trojice a nanebovzatia Panny Márie je jeden z troch histor', False), ('Kostol sv. Bartolomeja (Prievidza)', 'Farský kostol sv. Bartolomeja apoštola je gotický kostol v Prievidzi z druhej polovice 14.', False), ('Kostol Nanebovzatia Panny Márie (Prievidza)', 'Kostol Nanebovzatia Panny Márie v Prievidzi je národnou kultúrnou pamiatkou. Bol postavený', False)]
+516643 [('Nový zámok', 'Nový zámok je zámok v Banskej Štiavnici.', False), ('Starý zámok', 'Mestský hrad alebo častejšie používané označenie Starý zámok je zachovalý hradný komplex v', False), ('Kostol svätej Kataríny', 'Kostol svätej Kataríny v Banskej Štiavnici je neskorogotický rímskokatolícky chrám, nazýva', False)]
+HOTOVO
