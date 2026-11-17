@@ -167,11 +167,21 @@ const { nazov, nad, video, prelet } = Astro.props;
   /* zastávky preletu – klik preskočí na pamiatku */
   .pr-kapitoly { max-width: 100%; list-style: none; margin: 10px 0 0; padding: 2px 2px 6px; display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; }
   .pr-kapitoly[hidden] { display: none; }
-  .pr-kapitoly li { flex: none; scroll-snap-align: start; }
-  .pr-kapitoly button { display: flex; align-items: center; gap: 8px; max-width: 240px; min-height: 40px; padding: 4px 12px 4px 4px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--text); font: inherit; font-size: 0.82rem; font-weight: 600; text-align: left; cursor: pointer; }
-  .pr-kapitoly button:not(:has(img)) { padding-left: 12px; }
-  .pr-kapitoly button:hover { border-color: var(--accent, #e0283f); }
-  .pr-kapitoly button.pr-akt { background: #1d2433; color: #fff; border-color: #1d2433; }
-  .pr-kapitoly img { width: 44px; height: 32px; object-fit: cover; border-radius: 6px; }
-  .pr-kapitoly span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* položky pása vytvára skript – bez atribútu Astro, preto :global */
+  .pr-kapitoly :global(li) { flex: none; scroll-snap-align: start; }
+  .pr-kapitoly :global(button) { display: flex; align-items: center; gap: 8px; max-width: 220px; min-height: 40px; padding: 4px 12px 4px 4px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--text); font: inherit; font-size: 0.82rem; font-weight: 600; text-align: left; cursor: pointer; }
+  .pr-kapitoly :global(button:not(:has(img))) { padding-left: 12px; }
+  .pr-kapitoly :global(button:hover) { border-color: var(--accent, #e0283f); }
+  .pr-kapitoly :global(button.pr-akt) { background: #1d2433; color: #fff; border-color: #1d2433; }
+  .pr-kapitoly :global(img) { width: 44px; height: 32px; flex: none; object-fit: cover; border-radius: 6px; }
+  .pr-kapitoly :global(span) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* mobil: vyššia mapa, aby sa ovládanie a titulok neprekrývali */
+  @media (max-width: 600px) {
+    .pr-mapa { aspect-ratio: 4 / 5; max-height: 70vh; }
+    .pr-okno.pr-max .pr-mapa, .pr-okno:fullscreen .pr-mapa { max-height: none; }
+    .pr-ovl { right: 46px; gap: 4px; }
+    .pr-ovl button { min-height: 32px; padding: 0 10px; font-size: 0.8rem; }
+    .pr-titulok { left: 8px; bottom: 24px; max-width: calc(100% - 16px); padding: 8px 10px; }
+    .pr-titulok b { font-size: 0.98rem; }
+  }
 </style>
