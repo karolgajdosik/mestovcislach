@@ -1,10 +1,13 @@
 import subprocess, sys as _s; subprocess.run([_s.executable,"-m","pip","install","-q","shapely","pyproj"],check=False)
-import requests
-s=requests.Session(); s.headers.update({"User-Agent":"mestovcislach.sk (info@mestovcislach.sk) zber pamiatok"})
-subory=["Dóm svätej Alžbety, Košice.jpg","Bratislava Old Town Hall.jpg"]
-r=s.post("https://commons.wikimedia.org/w/api.php",data={"action":"query","format":"json","prop":"imageinfo","iiprop":"url|extmetadata","iiurlwidth":480,"titles":"|".join("File:"+f for f in subory)},timeout=60)
-print(r.status_code, r.text[:300])
-import re
-r=requests.get("https://query.wikidata.org/sparql",params={"query":'SELECT ?img WHERE { wd:Q853472 wdt:P18 ?img }'},headers={"User-Agent":"mestovcislach.sk (info@mestovcislach.sk)","Accept":"application/sparql-results+json"},timeout=60).json()
-print(r["results"]["bindings"])
+import sys, json, runpy, pathlib
+sys.path.insert(0, "scripts")
+import zber_pamiatky_body as z
+try:
+    z.main()
+except SystemExit: pass
+d=json.load(open("data/obce/pamiatky-body.json"))
+o=d["obce"]; print("obcí",len(o),"pamiatok",sum(len(v) for v in o.values()), "s textom", sum(1 for v in o.values() for x in v if x["t"]), "s fotkou", sum(1 for v in o.values() for x in v if x.get("f")))
+for k in ["528595","599981","513881","599972","516643"]:
+    if k in o: print(k, [(x["n"], x["t"][:90], bool(x.get("f"))) for x in o[k][:3]])
 print("HOTOVO")
+# 1794935575

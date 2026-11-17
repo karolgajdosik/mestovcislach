@@ -170,10 +170,11 @@ def main() -> int:
     for i in range(0, len(subory), 50):
         davka = subory[i:i + 50]
         try:
-            r = s.get("https://commons.wikimedia.org/w/api.php", params={
+            r = s.post("https://commons.wikimedia.org/w/api.php", data={
                 "action": "query", "format": "json", "prop": "imageinfo", "iiprop": "url|extmetadata", "iiurlwidth": 480,
                 "titles": "|".join("File:" + requests.utils.unquote(f) for f in davka)}, timeout=120).json()
-        except (requests.RequestException, ValueError):
+        except (requests.RequestException, ValueError) as e:
+            print(f"  Commons: {type(e).__name__}")
             continue
         for st in (r.get("query", {}).get("pages") or {}).values():
             ii = (st.get("imageinfo") or [{}])[0]
