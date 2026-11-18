@@ -10,7 +10,15 @@
    }
   ],
   "trnava": [],
-  "trencin": [],
+  "trencin": [
+   {
+    "nazov": "Sledujte naživo ustanovujúce zasadnutie Mestského zastupiteľstva v Trenčíne",
+    "url": "https://trencin.sk/aktuality/sledujte-nazivo-ustanovujuce-zasadnutie-mestskeho-zastupitelstva-v-trencine/",
+    "termin": "2026-11-18",
+    "ustanovujuce": true,
+    "videne_od": "2026-11-18"
+   }
+  ],
   "nitra": [],
   "zilina": [
    {
@@ -47,5 +55,5 @@
   "presov": [],
   "kosice": []
  },
- "aktualizovane": "2026-11-17T11:09+00:00"
+ "aktualizovane": "2026-11-18T10:41+00:00"
 }
