@@ -40,8 +40,8 @@ export class Hudba {
     const m = this.master.gain;
     m.cancelScheduledValues(ac.currentTime);
     m.setValueAtTime(0, ac.currentTime);
-    m.linearRampToValueAtTime(0.55, ac.currentTime + (od > 0.1 ? 0.25 : 0.8));
-    m.setValueAtTime(0.55, t0 + trvanie - 1.6);
+    m.linearRampToValueAtTime(0.8, ac.currentTime + (od > 0.1 ? 0.25 : 0.8));
+    m.setValueAtTime(0.8, t0 + trvanie - 1.6);
     m.linearRampToValueAtTime(0, t0 + trvanie);
     const pred = (t: number) => t >= od - 0.01; // plánuje sa len to, čo ešte nezaznelo
     for (let s = 0; s < snimok; s++) {
