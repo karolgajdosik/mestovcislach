@@ -7,6 +7,7 @@ export type Snimka =
   | { typ: 'cislo'; hodnota: number; desatiny?: number; predpona?: string; jednotka?: string; popis: string; pozn?: string; rad?: number[] }
   | { typ: 'dve'; a: [string, string]; b: [string, string]; nadpis?: string }
   | { typ: 'stlpce'; nadpis: string; polozky: [string, number, string][] }
+  | { typ: 'pamiatky'; nadpis: string; polozky: { n: string; u: string; a?: string }[] }
   | { typ: 'outro'; nadpis: string; url: string };
 export interface VideoData { nazov: string; slug: string; foto?: string | null; snimky: Snimka[] }
 
@@ -14,6 +15,31 @@ const DLZKA = 4; // s na snímku
 const PRECHOD = 0.45;
 const CERVENA = '#e0283f';
 const PISMO = 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+
+export type Zvuk = 'hlas' | 'hudba' | 'nie';
+
+/** Krátky text, ktorý k snímke prečíta slovenský hlas (snímka trvá 4 s, preto stručne). */
+function naCitanie(s: Snimka): string {
+  const vyslov = (x: string) => x.replace(/(\d) r\./g, '$1 rokov').replace(/ ?%/g, ' percent').replace(/ ?°C/g, ' stupňa').replace(/(\d) mm/g, '$1 milimetrov').replace(/−/g, 'mínus ').replace(/·/g, ',');
+  if (s.typ === 'titul') return vyslov(`${s.nadpis}. ${s.pod}`);
+  if (s.typ === 'cislo') return vyslov(`${s.popis}: ${s.predpona ?? ''}${fmt(s.hodnota, s.desatiny ?? 0)}${s.jednotka ? ` ${s.jednotka}` : ''}`);
+  if (s.typ === 'stlpce') return vyslov(`${s.nadpis.replace(/\s*\(.*\)/, '')}. ${s.polozky[2]?.[0] ?? ''} ${s.polozky[2]?.[2] ?? ''}`);
+  if (s.typ === 'dve') return vyslov(`${s.a[1]} ${s.a[0]}${s.b[1] ? `, ${s.b[1]} ${s.b[0]}` : ''}`);
+  if (s.typ === 'pamiatky') return `${s.nadpis}: ${s.polozky.map((x) => x.n).join(', ')}`;
+  return 'Všetky čísla nájdete na mesto v číslach bodka es ká.';
+}
+
+let _hlas: Promise<SpeechSynthesisVoice | null> | null = null;
+/** Slovenský hlas prehliadača / systému (ak nie je, hlasový komentár sa neponúkne). */
+export function slovenskyHlas(): Promise<SpeechSynthesisVoice | null> {
+  if (typeof speechSynthesis === 'undefined') return Promise.resolve(null);
+  return (_hlas ??= new Promise((ok) => {
+    const vyber = () => { const v = speechSynthesis.getVoices(); return v.find((x) => /^sk([-_]|$)/i.test(x.lang) && /enhanced|premium|natural|neural/i.test(x.name)) ?? v.find((x) => /^sk([-_]|$)/i.test(x.lang)) ?? null; };
+    if (speechSynthesis.getVoices().length) { ok(vyber()); return; }
+    const t = setTimeout(() => ok(vyber()), 1500);
+    speechSynthesis.addEventListener('voiceschanged', () => { clearTimeout(t); ok(vyber()); }, { once: true });
+  }));
+}
 
 const ease = (x: number) => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
 const fmt = (x: number, d = 0) => x.toLocaleString('sk-SK', { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -28,6 +54,14 @@ export class VideoObce {
   private koniec: (() => void) | null = null;
   readonly trvanie: number;
   onCas: ((t: number) => void) | null = null;
+  /** Zvuk pri prehrávaní: hudba + hlasový komentár, len hudba, alebo ticho. */
+  zvuk: Zvuk = 'hudba';
+  private ac: AudioContext | null = null;
+  private hudba: import('./hudba').Hudba | null = null;
+  private hlas: SpeechSynthesisVoice | null = null;
+  private poslednaSnimka = -1;
+  private nahrava = false;
+  private fotky: (HTMLImageElement | null)[] = [];
 
   constructor(private canvas: HTMLCanvasElement, private d: VideoData) {
     this.ctx = canvas.getContext('2d')!;
@@ -36,6 +70,13 @@ export class VideoObce {
 
   /** Načíta fotku (ak je) – s CORS, aby sa video dalo nahrať; pri chybe ostane farebné pozadie. */
   async priprav(): Promise<void> {
+    this.hlas = await slovenskyHlas();
+    const pam = this.d.snimky.find((s) => s.typ === 'pamiatky') as Extract<Snimka, { typ: 'pamiatky' }> | undefined;
+    if (pam) this.fotky = await Promise.all(pam.polozky.map((x) => new Promise<HTMLImageElement | null>((ok) => {
+      const i = new Image(); i.crossOrigin = 'anonymous'; i.decoding = 'async';
+      i.onload = () => { try { const c = document.createElement('canvas').getContext('2d')!; c.drawImage(i, 0, 0, 1, 1); c.getImageData(0, 0, 1, 1); ok(i); } catch { ok(null); } };
+      i.onerror = () => ok(null); i.src = x.u;
+    })));
     if (!this.d.foto) return;
     const nacitaj = (src: string) => new Promise<HTMLImageElement>((ok, chyba) => {
       const i = new Image();
@@ -58,8 +99,50 @@ export class VideoObce {
   private cas() { return this.hra ? (performance.now() - this.start) / 1000 : this.zastavene; }
   private zastavene = 0.6;
 
+  /** Je k dispozícii slovenský hlas na komentár? (po priprav) */
+  maHlas() { return !!this.hlas; }
+
+  /** Volať priamo v kliknutí (pred akýmkoľvek await) – iPhone/Safari inak zvuk nepustí. */
+  odomkniZvuk() {
+    try {
+      if (!this.ac) { const AC = window.AudioContext ?? (window as any).webkitAudioContext; if (AC) this.ac = new AC(); }
+      if (this.ac?.state === 'suspended') this.ac.resume();
+      if (typeof speechSynthesis !== 'undefined' && !this.hlasOdomknuty) { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; speechSynthesis.speak(u); this.hlasOdomknuty = true; }
+    } catch { /* bez zvuku */ }
+  }
+  private hlasOdomknuty = false;
+
+  /** Hudba cez Web Audio – AudioContext sa vytvorí až pri prvom prehraní (v kliknutí, kvôli pravidlám prehliadačov). */
+  private async spustiZvuk(od: number) {
+    if (this.zvuk === 'nie') return;
+    try {
+      this.odomkniZvuk();
+      if (!this.ac) return;
+      if (!this.hudba) {
+        const { Hudba } = await import('./hudba');
+        this.hudba = new Hudba(this.ac);
+        this.hudba.vystup.connect(this.ac.destination);
+      }
+      if (this.ac.state === 'suspended') await this.ac.resume();
+      if (!this.hra && !this.nahrava) return; // medzitým pauza
+      // čas videa v tejto chvíli (prvé spustenie čaká na načítanie modulu hudby)
+      this.hudba!.hraj(this.hra ? Math.min(this.cas(), this.trvanie) : od, this.trvanie, this.d.snimky.length, DLZKA);
+    } catch { /* bez zvuku */ }
+  }
+  private zastavZvuk() { this.hudba?.zastav(); if (typeof speechSynthesis !== 'undefined') speechSynthesis.cancel(); }
+  private povedz(i: number) {
+    if (this.zvuk !== 'hlas' || !this.hlas || this.nahrava) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(naCitanie(this.d.snimky[i]));
+    u.voice = this.hlas; u.lang = this.hlas.lang; u.rate = 1.12;
+    speechSynthesis.speak(u);
+  }
+
   hraj(od = 0): Promise<void> {
     cancelAnimationFrame(this.raf);
+    this.spustiZvuk(od);
+    // komentár: snímka, do ktorej sa vstupuje od začiatku, sa prečíta; pri pokračovaní uprostred snímky až nasledujúca
+    this.poslednaSnimka = od % DLZKA < 0.4 ? Math.floor(od / DLZKA) - 1 : Math.floor(od / DLZKA);
     this.start = performance.now() - od * 1000;
     this.hra = true;
     return new Promise((ok) => {
@@ -68,6 +151,8 @@ export class VideoObce {
         const t = this.cas();
         if (t >= this.trvanie) { this.kresli(this.trvanie - 0.001); this.hra = false; this.zastavene = this.trvanie - 0.001; this.onCas?.(this.trvanie); this.koniec?.(); return; }
         this.kresli(t);
+        const i = Math.floor(t / DLZKA);
+        if (i !== this.poslednaSnimka) { this.poslednaSnimka = i; this.povedz(i); }
         this.onCas?.(t);
         this.raf = requestAnimationFrame(krok);
       };
@@ -75,17 +160,25 @@ export class VideoObce {
     });
   }
 
-  pauza() { if (!this.hra) return; this.zastavene = this.cas(); this.hra = false; cancelAnimationFrame(this.raf); }
+  pauza() { if (!this.hra) return; this.zastavene = this.cas(); this.hra = false; cancelAnimationFrame(this.raf); this.zastavZvuk(); }
   jeHra() { return this.hra; }
   aktualny() { return this.cas(); }
 
   /** Nahrá celé video v reálnom čase a vráti súbor (MP4 alebo WebM). */
   async nahraj(postup?: (p: number) => void): Promise<{ blob: Blob; pripona: string }> {
-    const typy = ['video/mp4;codecs=avc1.42E01E', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
+    const sHudbou = this.zvuk !== 'nie';
+    const typy = [...(sHudbou ? ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus'] : []), 'video/mp4;codecs=avc1.42E01E', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
     const mime = typy.find((m) => typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported(m));
     if (!mime || !this.canvas.captureStream) throw new Error('Prehliadač nevie nahrávať video.');
     const fotoBolo = this.fotoOk;
+    this.nahrava = true;
     const stream = this.canvas.captureStream(30);
+    // hudba do súboru: výstup Web Audio → stopa MediaStream (hlasový komentár prehliadača sa nahrať nedá)
+    let audio: MediaStreamAudioDestinationNode | null = null;
+    if (sHudbou) {
+      await this.spustiZvuk(0); this.hudba?.zastav();
+      if (this.ac && this.hudba) { audio = this.ac.createMediaStreamDestination(); this.hudba.vystup.connect(audio); audio.stream.getAudioTracks().forEach((tr) => stream.addTrack(tr)); }
+    }
     const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8_000_000 });
     const casti: Blob[] = [];
     rec.ondataavailable = (e) => { if (e.data.size) casti.push(e.data); };
@@ -93,10 +186,15 @@ export class VideoObce {
     const povodne = this.onCas;
     this.onCas = (t) => { povodne?.(t); postup?.(t / this.trvanie); };
     rec.start(250);
-    await this.hraj(0);
-    await new Promise((r) => setTimeout(r, 300));
-    rec.stop();
+    try {
+      await this.hraj(0);
+      await new Promise((r) => setTimeout(r, 300));
+    } finally {
+      rec.stop();
+      this.nahrava = false;
+    }
     await hotovo;
+    if (audio && this.hudba) { try { this.hudba.vystup.disconnect(audio); } catch { /* nič */ } }
     this.onCas = povodne;
     this.fotoOk = fotoBolo;
     stream.getTracks().forEach((x) => x.stop());
@@ -221,6 +319,27 @@ export class VideoObce {
         this.text(h, L + sirka, y, 30 * S, 800, '#fff');
         ctx.textAlign = 'left';
       });
+    } else if (s.typ === 'pamiatky') {
+      this.text(s.nadpis, L, (vysoke ? stred - 330 * S : stred - 190 * S), 36 * S, 700, '#fff', sirka);
+      const n = s.polozky.length, medzera = 24 * S;
+      const kw = vysoke ? sirka : (sirka - medzera * (n - 1)) / n;
+      const kh = vysoke ? Math.min(250 * S, (H * 0.62 - medzera * (n - 1)) / n) : kw * 0.68;
+      s.polozky.forEach((x, k) => {
+        const p = ease((u - 0.2 - k * 0.3) / 0.7);
+        const kx = vysoke ? L : L + k * (kw + medzera), ky = (vysoke ? stred - 300 * S + k * (kh + medzera) : stred - 150 * S) + (1 - p) * 40 * S;
+        ctx.save(); ctx.globalAlpha *= p;
+        const f = this.fotky[k];
+        ctx.beginPath(); (ctx as any).roundRect ? (ctx as any).roundRect(kx, ky, kw, kh, 14 * S) : ctx.rect(kx, ky, kw, kh); ctx.save(); ctx.clip();
+        ctx.fillStyle = '#2a3142'; ctx.fillRect(kx, ky, kw, kh);
+        if (f) { const z = 1.04 + 0.06 * (u / DLZKA), r = Math.max(kw / f.width, kh / f.height) * z, fw = f.width * r, fh = f.height * r; ctx.drawImage(f, kx + (kw - fw) / 2, ky + (kh - fh) / 2, fw, fh); }
+        const g = ctx.createLinearGradient(0, ky + kh * 0.45, 0, ky + kh); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,0.8)');
+        ctx.fillStyle = g; ctx.fillRect(kx, ky, kw, kh);
+        ctx.restore();
+        this.text(x.n, kx + 16 * S, ky + kh - 18 * S, 26 * S, 700, '#fff', kw - 32 * S);
+        ctx.restore();
+      });
+      const autori = [...new Set(s.polozky.map((x) => x.a).filter(Boolean))].join(', ');
+      if (autori) this.text(`Foto: ${autori} (Wikimedia Commons)`, L, H - 80 * S, 18 * S, 500, 'rgba(255,255,255,0.7)', sirka);
     } else if (s.typ === 'outro') {
       this.text(s.nadpis, L, stred - 40 * S, 64 * S, 800, '#fff', sirka);
       this.text(s.url, L, stred + 30 * S, 32 * S, 600, 'rgba(255,255,255,0.88)', sirka);

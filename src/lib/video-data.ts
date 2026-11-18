@@ -24,6 +24,8 @@ export function videoObce(kod: string, url: string, kicker = 'v číslach'): { v
   if (h.vek != null && h.vs != null) sn.push({ typ: 'dve', a: [`${des(h.vek)} r.`, 'priemerný vek'], b: [`${des(h.vs)} %`, 'ľudí s vysokou školou'] });
   if (kli) sn.push({ typ: 'dve', nadpis: `Podnebie ${(klimaInfo() as any)?.obdobie ?? ''}`, a: [`${des(kli[0])} °C`, 'priemerná ročná teplota'], b: [`${fmt(kli[1])} mm`, 'zrážok za rok'] });
   if (h.uc != null || h.nez != null) sn.push({ typ: 'dve', a: [h.uc != null ? `${des(h.uc)} %` : '–', 'účasť v komunálnych voľbách 2026'], b: [h.nez != null ? `${des(h.nez)} %` : '–', 'miera nezamestnanosti'] });
+  const pmV = pamiatkyVidea(pamiatkyMesta(kod, url));
+  if (pmV) sn.push(pmV);
   sn.push({ typ: 'outro', nadpis: `${o.nazov} – všetky čísla`, url: `mestovcislach.sk${url}` });
   const titulky: [string, string][] = [[o.nazov, `okres ${o.okres} · ${u.kraj}`]];
   if (h.obyv != null) titulky.push([`${fmt(h.obyv)} obyvateľov`, h.z10 != null ? `${zn(h.z10)}${des(Math.abs(h.z10))} % za 10 rokov` : '']);
@@ -36,6 +38,12 @@ export function videoObce(kod: string, url: string, kicker = 'v číslach'): { v
     video: { nazov: o.nazov, slug: o.slug, foto: obr?.foto?.u ?? null, snimky: sn },
     prelet: o.poloha ? { stred: o.poloha as [number, number], bbox: null, km2, titulky, pamiatky: pamiatkyMesta(kod, url) } : null,
   };
+}
+
+/** Snímka s fotkami (najviac 3) významných pamiatok – len tie, čo majú fotku z Commons. */
+export function pamiatkyVidea(p: PamiatkaPreletu[]): Snimka | null {
+  const s = p.filter((x) => x.f?.u).slice(0, 3);
+  return s.length >= 2 ? { typ: 'pamiatky', nadpis: 'Významné pamiatky', polozky: s.map((x) => ({ n: x.n.replace(/\s*\([^()]*\)$/, ''), u: x.f!.u, a: x.f!.a || undefined })) } : null;
 }
 
 /** Pamiatky mesta: z kódu mesta, a ak ich je málo, doplnené z mestských častí (Bratislava, Košice). */

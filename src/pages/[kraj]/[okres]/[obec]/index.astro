@@ -14,6 +14,7 @@ import PozriObec from '../../../../components/PozriObec.astro';
 import type { Snimka } from '../../../../scripts/video-obce';
 import { POLIA, ukazovatele } from '../../../../lib/ukazovatele-obci';
 import { pamiatkyPreletu } from '../../../../lib/obce';
+import { pamiatkyVidea } from '../../../../lib/video-data';
 import { umiestnenia } from '../../../../lib/rebricky';
 
 export function getStaticPaths() {
@@ -321,6 +322,8 @@ if (ukz.deti != null && ukz.sen != null) snimky.push({ typ: 'stlpce', nadpis: 'V
 if (ukz.vek != null && ukz.vs != null) snimky.push({ typ: 'dve', a: [`${des(ukz.vek!)} r.`, 'priemerný vek'], b: [`${des(ukz.vs!)} %`, 'ľudí s vysokou školou'] });
 if (kli) snimky.push({ typ: 'dve', nadpis: `Podnebie ${kliI?.obdobie ?? ''}`, a: [`${des(kli[0])} °C`, 'priemerná ročná teplota'], b: [`${fmt(kli[1])} mm`, 'zrážok za rok'] });
 if (v?.ucast || ukz.nez != null) snimky.push({ typ: 'dve', a: v?.ucast ? [`${des(v.ucast.ucast_pct)} %`, 'účasť v komunálnych voľbách 2026'] : ['–', 'účasť vo voľbách'], b: ukz.nez != null ? [`${des(ukz.nez!)} %`, 'miera nezamestnanosti'] : [`${fmt(okolie.length)}`, 'obcí v okolí'] });
+const pmVideo = pamiatkyVidea(pamiatkyPreletu(o.kod));
+if (pmVideo) snimky.push(pmVideo);
 snimky.push({ typ: 'outro', nadpis: `${o.nazov} – všetky čísla`, url: `mestovcislach.sk/${o.kraj_slug}/${o.okres_slug}/${o.slug}` });
 const videoData = { nazov: o.nazov, slug: o.slug, foto: obr?.foto?.u ?? null, snimky };
 const titulky: [string, string][] = [[o.nazov, `okres ${o.okres} · ${o.kraj}`]];

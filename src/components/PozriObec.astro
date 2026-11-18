@@ -22,10 +22,11 @@ const { nazov, nad, video, prelet } = Astro.props;
       </div>
       <div class="pv-ovl">
         <button type="button" class="ob-akcia" data-v="hraj">▶ Prehrať</button>
+        <label class="pv-format">Zvuk <select data-v="zvuk"><option value="hlas">hudba a hlas</option><option value="hudba" selected>len hudba</option><option value="nie">bez zvuku</option></select></label>
         <label class="pv-format">Formát <select data-v="format"><option value="16x9">na šírku 16 : 9</option><option value="9x16">na výšku 9 : 16 (sociálne siete)</option></select></label>
         <button type="button" class="ob-akcia" data-v="stiahni">Stiahnuť video</button>
       </div>
-      <p class="pozn pv-stav" aria-live="polite">Video sa skladá v prehliadači z údajov tejto stránky ({Math.round(video.snimky.length * 4)} s). Môžete ho stiahnuť a zdieľať – uveďte zdroj mestovcislach.sk.</p>
+      <p class="pozn pv-stav" aria-live="polite">Video sa skladá v prehliadači z údajov tejto stránky ({Math.round(video.snimky.length * 4)} s), s hudbou vytvorenou tiež v prehliadači. Môžete ho stiahnuť a zdieľať – uveďte zdroj mestovcislach.sk. Stiahnuté video obsahuje hudbu, hlasový komentár sa doň nenahrá.</p>
     </div>
     {prelet && (
       <div class="pr" data-prelet={JSON.stringify({ nazov, ...prelet })}>
@@ -68,13 +69,23 @@ const { nazov, nad, video, prelet } = Astro.props;
     const velke = box.querySelector<HTMLButtonElement>('.pv-hraj')!;
     const format = box.querySelector<HTMLSelectElement>('[data-v="format"]')!;
     const tlStiahni = box.querySelector<HTMLButtonElement>('[data-v="stiahni"]')!;
+    const zvuk = box.querySelector<HTMLSelectElement>('[data-v="zvuk"]')!;
+    const ulozenyZvuk = (() => { try { return localStorage.getItem('video-zvuk'); } catch { return null; } })();
     let pripravene: Promise<void> | null = null;
-    const priprav = () => (pripravene ??= v.priprav().then(() => v.nastavRozmer(canvas.width, canvas.height)));
+    const priprav = () => (pripravene ??= v.priprav().then(() => {
+      v.nastavRozmer(canvas.width, canvas.height);
+      // hlasový komentár len ak má prehliadač slovenský hlas; predvolene hudba a hlas
+      if (!v.maHlas()) zvuk.querySelector('option[value="hlas"]')?.remove();
+      const chcem = ulozenyZvuk ?? (v.maHlas() ? 'hlas' : 'hudba');
+      zvuk.value = [...zvuk.options].some((o) => o.value === chcem) ? chcem : 'hudba';
+      v.zvuk = zvuk.value as any;
+    }));
     // fotka a prvý obrázok až keď je video blízko obrazovky
     kedViditelne(box, () => { priprav(); }, '300px');
     const tlacidla = () => { const h = v.jeHra(); tlHraj.textContent = h ? '⏸ Pauza' : '▶ Prehrať'; velke.hidden = h; };
     v.onCas = () => tlacidla();
     const hraj = async () => {
+      if (!v.jeHra()) v.odomkniZvuk();
       await priprav();
       if (v.jeHra()) { v.pauza(); tlacidla(); return; }
       const od = v.aktualny() >= v.trvanie - 0.05 ? 0 : v.aktualny() > 0.7 ? v.aktualny() : 0;
@@ -82,6 +93,11 @@ const { nazov, nad, video, prelet } = Astro.props;
     };
     tlHraj.addEventListener('click', hraj);
     velke.addEventListener('click', hraj);
+    zvuk.addEventListener('change', () => {
+      v.zvuk = zvuk.value as any;
+      try { localStorage.setItem('video-zvuk', zvuk.value); } catch { /* nič */ }
+      if (v.jeHra()) { const t = v.aktualny(); v.pauza(); v.hraj(t).then(tlacidla); tlacidla(); }
+    });
     format.addEventListener('change', () => {
       v.pauza();
       const vysoke = format.value === '9x16';
@@ -90,8 +106,9 @@ const { nazov, nad, video, prelet } = Astro.props;
       tlacidla();
     });
     tlStiahni.addEventListener('click', async () => {
+      v.odomkniZvuk();
       await priprav();
-      tlStiahni.disabled = true; tlHraj.disabled = true; format.disabled = true;
+      tlStiahni.disabled = true; tlHraj.disabled = true; format.disabled = true; zvuk.disabled = true;
       const povodny = stav.textContent;
       try {
         const { blob, pripona } = await v.nahraj((p) => { stav.textContent = `Nahrávam video… ${Math.round(p * 100)} %`; });
@@ -105,7 +122,7 @@ const { nazov, nad, video, prelet } = Astro.props;
         stav.textContent = `Video sa nepodarilo nahrať: ${(e as Error).message} Skúste iný prehliadač (Chrome, Edge, Safari).`;
         setTimeout(() => { stav.textContent = povodny; }, 8000);
       } finally {
-        tlStiahni.disabled = false; tlHraj.disabled = false; format.disabled = false; tlacidla();
+        tlStiahni.disabled = false; tlHraj.disabled = false; format.disabled = false; zvuk.disabled = false; tlacidla();
       }
     });
   });
