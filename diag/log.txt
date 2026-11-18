@@ -1,5 +1,18 @@
-na začiatku: ['🔊', 'Vypnúť zvuk', False]
-po kliknutí: ['🔇', 'Zapnúť zvuk', False] ⏸ Pauza
-znova: ['🔊', 'Vypnúť zvuk', False]
-chyby []
+desk tipy: ['Bratislava', 'Košice', 'Prešov', 'Žilina', 'Nitra', 'Banská Bystrica', 'Trnava', 'Trenčín', 'Martin', 'Poprad', 'Prievidza', 'Zvolen']
+desk návrhy: ['Kremnicaobec · okres Žiar nad Hronom🏛 6 pamiatok', 'Kremnické Baneobec · okres Žiar nad Hronom🏛 3 pamiatky', 'Kremnáobec · okres Stará Ľubovňa🏛 2 pamiatky', 'Stará Kremničkaobec · okres Žiar nad Hronom']
+desk po výbere: {'skryta': False, 'nadpis': 'Kremnica všetky čísla →', 'video': True, 'prelet': True, 'url': '?m=%2Fbanskobystricky-kraj%2Fziar-nad-hronom%2Fkremnica%2F', 'stav': ''}
+desk video hrá: ⏸ Pauza
+desk prelet: [False, 0, 'Načítavam mapu…']
+desk druhé: {'skryta': False, 'nadpis': 'Košice všetky čísla →', 'video': True, 'prelet': True, 'url': '?m=%2Fkosice%2F', 'stav': ''} 0
+desk náhoda: {'skryta': False, 'nadpis': 'Šivetice všetky čísla →', 'video': True, 'prelet': True, 'url': '?m=%2Fbanskobystricky-kraj%2Frevuca%2Fsivetice%2F', 'stav': ''}
+desk chyby []
+mob tipy: ['Bratislava', 'Košice', 'Prešov', 'Žilina', 'Nitra', 'Banská Bystrica', 'Trnava', 'Trenčín', 'Martin', 'Poprad', 'Prievidza', 'Zvolen']
+mob návrhy: ['Kremnicaobec · okres Žiar nad Hronom🏛 6 pamiatok', 'Kremnické Baneobec · okres Žiar nad Hronom🏛 3 pamiatky', 'Kremnáobec · okres Stará Ľubovňa🏛 2 pamiatky', 'Stará Kremničkaobec · okres Žiar nad Hronom']
+mob po výbere: {'skryta': False, 'nadpis': 'Kremnica všetky čísla →', 'video': True, 'prelet': True, 'url': '?m=%2Fbanskobystricky-kraj%2Fziar-nad-hronom%2Fkremnica%2F', 'stav': ''}
+mob video hrá: ⏸ Pauza
+mob prelet: [False, 9, 'Kremnica']
+mob druhé: {'skryta': False, 'nadpis': 'Košice všetky čísla →', 'video': True, 'prelet': True, 'url': '?m=%2Fkosice%2F', 'stav': ''} 0
+mob náhoda: {'skryta': False, 'nadpis': 'Sučany všetky čísla →', 'video': True, 'prelet': True, 'url': '?m=%2Fzilinsky-kraj%2Fmartin%2Fsucany%2F', 'stav': ''}
+mob chyby []
+priamy odkaz: {'skryta': False, 'nadpis': 'Košice všetky čísla →', 'video': True, 'prelet': True, 'url': '?m=%2Fkosice%2F', 'stav': ''}
 HOTOVO
