@@ -1,25 +1,5 @@
-snímky: ['titul', 'cislo', 'stlpce', 'dve', 'dve', 'dve', 'pamiatky', 'outro']
-zvuk možnosti: ['hudba*', 'nie']
-stav po prehratí: ⏸ Pauza
-súbor: banska-stiavnica-v-cislach.webm
-stav: Hotovo – video sa stiahlo (WEBM, 24,5 MB).
+na začiatku: ['🔊', 'Vypnúť zvuk', False]
+po kliknutí: ['🔇', 'Zapnúť zvuk', False] ⏸ Pauza
+znova: ['🔊', 'Vypnúť zvuk', False]
 chyby []
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 26, in <module>
-    r=subprocess.run(["ffprobe","-v","error","-show_entries","stream=codec_type,codec_name","-show_entries","format=duration","-of","compact","diag/video.bin"],capture_output=True,text=True); print(r.stdout, r.stderr[:300])
-  File "/usr/lib/python3.14/subprocess.py", line 555, in run
-    with Popen(*popenargs, **kwargs) as process:
-         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.14/subprocess.py", line 1039, in __init__
-    self._execute_child(args, executable, preexec_fn, close_fds,
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-                        pass_fds, cwd, env,
-                        ^^^^^^^^^^^^^^^^^^^
-    ...<5 lines>...
-                        gid, gids, uid, umask,
-                        ^^^^^^^^^^^^^^^^^^^^^^
-                        start_new_session, process_group)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.14/subprocess.py", line 1990, in _execute_child
-    raise child_exception_type(errno_num, err_msg, err_filename)
-FileNotFoundError: [Errno 2] No such file or directory: 'ffprobe'
+HOTOVO
