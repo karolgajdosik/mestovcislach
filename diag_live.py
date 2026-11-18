@@ -1,9 +1,9 @@
 import subprocess, sys, time
-time.sleep(480)
+time.sleep(1)
 subprocess.run([sys.executable,"-m","pip","install","-q","playwright"],check=True)
 subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromium"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 from playwright.sync_api import sync_playwright
-U="https://mestovcislach.sk/trenciansky-kraj/trencin/trencin/"
+U="https://mestovcislach.sk/banskobystricky-kraj/banska-stiavnica/banska-stiavnica/"
 J="(()=>{const m=document.querySelector('.pr').__mapa;return m.getStyle().layers.filter(l=>l.type==='fill-extrusion'||l.id==='orto').map(l=>l.id+':'+(m.getLayoutProperty(l.id,'visibility')||'visible'))})()"
 with sync_playwright() as p:
     b=p.chromium.launch(args=["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"])
