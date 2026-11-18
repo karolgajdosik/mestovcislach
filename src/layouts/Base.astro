@@ -184,7 +184,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
             <svg viewBox="0 0 24 24" aria-hidden="true" set:html={NOVE.find((x) => x[0] === 'kviz')![2]} />
             <span>Kvíz{spolocna ? '' : <span class="hk-mesto"> o meste</span>}</span>
           </a>
-          <a class="hlava-video" href="/videozona/" aria-current={Astro.url.pathname.startsWith('/videozona') ? 'page' : undefined}>
+          <a class="hlava-video" href="/videozona/" title="Videozóna – videá a 3D prelety obcí" aria-label="Videozóna" aria-current={Astro.url.pathname.startsWith('/videozona') ? 'page' : undefined}>
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="13.5" height="13" rx="2.5"/><path d="m16.5 10 4.5-2.5v9L16.5 14"/></svg>
             <span>Videozóna</span>
           </a>
@@ -559,6 +559,8 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
   .hlava-video[aria-current='page'] { background: var(--text); color: var(--card); border-color: var(--text); }
   .hlava-video svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   @media (min-width: 1100px) { .hlava-video { display: inline-flex; } }
+  /* mobil a tablet: len ikona kamery v kruhu – medzi vyhľadávaním a jazykom */
+  @media (max-width: 1099px) { .hlava-video { display: inline-flex; flex: 0 0 40px; width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: 50%; } .hlava-video span { display: none; } }
   @media (min-width: 1100px) and (max-width: 1240px) { .hk-mesto { display: none; } }
   .zvoncek { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 6px; border: 1px solid var(--line); border-radius: 18px; background: var(--bg); color: var(--muted); }
   .zvoncek:hover { border-color: var(--muted); color: var(--text); }
