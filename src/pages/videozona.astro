@@ -9,7 +9,7 @@ import { pamiatkyMesta } from '../lib/video-data';
 import { MESTA } from '../mesta';
 import '../styles/stranka.css';
 
-// Odporúčané: obce a mestá s najviac pamiatkami s fotkou (najviac 2 z kraja, aby bol výber pestrý)
+// Odporúčané: obce s najviac pamiatkami s fotkou (najviac 2 z kraja, aby bol výber pestrý)
 const mestaUrl = new Map(MESTA.filter((m) => m.aktivne).map((m) => [`/${m.slug}`, m]));
 type Tip = { n: string; u: string; k: string; pocet: number; foto: string; pam: string[] };
 const kandidati: (Tip & { kraj: string; obyv: number })[] = [];
@@ -21,7 +21,7 @@ for (const kr of kraje()) for (const ok of kr.okresy) for (const o of ok.obce) {
   const p = m ? pamiatkyMesta(o.kod, u) : pamiatkyPreletu(o.kod);
   if (p.length) sPamiatkami++;
   const sFotkou = p.filter((x) => x.f?.u);
-  if (sFotkou.length < 3) continue;
+  if (sFotkou.length < 3 || m) continue; // mestá sú v riadku „Mestá“ – tipy sú menšie obce a mestečká
   kandidati.push({ n: m ? m.nazov : o.nazov, u: `${u}/`, k: m ? m.kraj : `okres ${ok.nazov}`, pocet: p.length, foto: sFotkou[0].f!.u, pam: sFotkou.slice(0, 3).map((x) => x.n.replace(/\s*\([^()]*\)$/, '')), kraj: kr.nazov, obyv: o.obyvatelia ?? 0 });
 }
 kandidati.sort((a, b) => b.pocet - a.pocet || b.obyv - a.obyv);
