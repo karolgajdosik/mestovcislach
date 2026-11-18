@@ -8,15 +8,18 @@ interface Props {
   nazov: string;
   /** „nad obcou“, „nad mestskou časťou“, „nad mestom“ */
   nad: string;
-  video: VideoData;
+  video?: VideoData;
+  /** Videozóna: prázdna sekcia, obsah sa vloží až po výbere obce (rovnaké štýly) */
+  prazdny?: boolean;
   prelet?: { stred: [number, number]; bbox?: [number, number, number, number] | null; km2?: number | null; titulky: [string, string][]; pamiatky?: { n: string; p: [number, number]; t: string; q: string; f?: { u: string; a: string; l: string; s: string }; w?: string }[] } | null;
 }
-const { nazov, nad, video, prelet } = Astro.props;
+const { nazov, nad, video, prelet, prazdny = false } = Astro.props;
 ---
-<section class="card pv" id="video" aria-labelledby="pv-h">
-  <h2 id="pv-h">Video a prelet {nad}</h2>
+<section class="card pv" id="video" aria-labelledby="pv-h" hidden={prazdny}>
+  <h2 id="pv-h">{prazdny ? nazov : `Video a prelet ${nad}`}</h2>
+  {!prazdny && <p class="pv-vz"><a href={`/videozona/`}>Videozóna – videá a prelety všetkých obcí a miest →</a></p>}
   <div class="pv-mriezka">
-    <div class="pv-video" data-video={JSON.stringify(video)}>
+    {video && <div class="pv-video" data-video={JSON.stringify(video)}>
       <div class="pv-platno"><canvas width="1280" height="720" aria-label={`Video ${nazov} v číslach`} role="img"></canvas>
         <button type="button" class="pv-hraj" aria-label="Prehrať video"><span aria-hidden="true">▶</span></button>
         <button type="button" class="pv-zvuk" data-v="zvuk" aria-pressed="true" aria-label="Vypnúť zvuk" title="Vypnúť zvuk">🔊</button>
@@ -27,7 +30,7 @@ const { nazov, nad, video, prelet } = Astro.props;
         <button type="button" class="ob-akcia" data-v="stiahni">Stiahnuť video</button>
       </div>
       <p class="pozn pv-stav" aria-live="polite">Video sa skladá v prehliadači z údajov tejto stránky ({Math.round(video.snimky.length * 4)} s), s hudbou vytvorenou tiež v prehliadači. Môžete ho stiahnuť a zdieľať – uveďte zdroj mestovcislach.sk. Zvuk vypnete ikonou reproduktora. Stiahnuté video obsahuje hudbu (ak je zvuk zapnutý), hlasový komentár sa doň nenahrá.</p>
-    </div>
+    </div>}
     {prelet && (
       <div class="pr" data-prelet={JSON.stringify({ nazov, ...prelet })}>
         <div class="pr-uvod">
@@ -57,96 +60,14 @@ const { nazov, nad, video, prelet } = Astro.props;
 </section>
 
 <script>
-  import { VideoObce, type VideoData } from '../scripts/video-obce';
-  import { kedViditelne } from '../scripts/ked-viditelne';
-
-  document.querySelectorAll<HTMLElement>('.pv-video').forEach((box) => {
-    const canvas = box.querySelector('canvas')!;
-    const d = JSON.parse(box.dataset.video!) as VideoData;
-    const v = new VideoObce(canvas, d);
-    const stav = box.querySelector<HTMLElement>('.pv-stav')!;
-    const tlHraj = box.querySelector<HTMLButtonElement>('[data-v="hraj"]')!;
-    const velke = box.querySelector<HTMLButtonElement>('.pv-hraj')!;
-    const format = box.querySelector<HTMLSelectElement>('[data-v="format"]')!;
-    const tlStiahni = box.querySelector<HTMLButtonElement>('[data-v="stiahni"]')!;
-    // reproduktor: zapnutý = hudba (+ slovenský hlas, ak ho prehliadač má); prečiarknutý = ticho
-    const zvuk = box.querySelector<HTMLButtonElement>('[data-v="zvuk"]')!;
-    let zapnuty = (() => { try { return localStorage.getItem('video-zvuk') !== 'nie'; } catch { return true; } })();
-    const nastavZvuk = () => {
-      v.zvuk = zapnuty ? (v.maHlas() ? 'hlas' : 'hudba') : 'nie';
-      zvuk.textContent = zapnuty ? '🔊' : '🔇';
-      const popis = zapnuty ? 'Vypnúť zvuk' : 'Zapnúť zvuk';
-      zvuk.setAttribute('aria-pressed', String(zapnuty)); zvuk.setAttribute('aria-label', popis); zvuk.title = popis;
-    };
-    nastavZvuk();
-    let pripravene: Promise<void> | null = null;
-    const priprav = () => (pripravene ??= v.priprav().then(() => {
-      v.nastavRozmer(canvas.width, canvas.height);
-      // hlasový komentár len ak má prehliadač slovenský hlas; predvolene hudba a hlas
-      nastavZvuk(); // až teraz vieme, či je slovenský hlas
-    }));
-    // fotka a prvý obrázok až keď je video blízko obrazovky
-    kedViditelne(box, () => { priprav(); }, '300px');
-    const tlacidla = () => { const h = v.jeHra(); tlHraj.textContent = h ? '⏸ Pauza' : '▶ Prehrať'; velke.hidden = h; };
-    v.onCas = () => tlacidla();
-    const hraj = async () => {
-      if (!v.jeHra()) v.odomkniZvuk();
-      await priprav();
-      if (v.jeHra()) { v.pauza(); tlacidla(); return; }
-      const od = v.aktualny() >= v.trvanie - 0.05 ? 0 : v.aktualny() > 0.7 ? v.aktualny() : 0;
-      const p = v.hraj(od); tlacidla(); await p; tlacidla();
-    };
-    tlHraj.addEventListener('click', hraj);
-    velke.addEventListener('click', hraj);
-    zvuk.addEventListener('click', () => {
-      zapnuty = !zapnuty;
-      if (zapnuty) v.odomkniZvuk();
-      nastavZvuk();
-      try { localStorage.setItem('video-zvuk', zapnuty ? 'ano' : 'nie'); } catch { /* nič */ }
-      if (v.jeHra()) { const t = v.aktualny(); v.pauza(); v.hraj(t).then(tlacidla); tlacidla(); }
-    });
-    format.addEventListener('change', () => {
-      v.pauza();
-      const vysoke = format.value === '9x16';
-      box.classList.toggle('pv-vysoke', vysoke);
-      v.nastavRozmer(vysoke ? 1080 : 1280, vysoke ? 1920 : 720);
-      tlacidla();
-    });
-    tlStiahni.addEventListener('click', async () => {
-      v.odomkniZvuk();
-      await priprav();
-      tlStiahni.disabled = true; tlHraj.disabled = true; format.disabled = true; zvuk.disabled = true;
-      const povodny = stav.textContent;
-      try {
-        const { blob, pripona } = await v.nahraj((p) => { stav.textContent = `Nahrávam video… ${Math.round(p * 100)} %`; });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = `${d.slug}-v-cislach${format.value === '9x16' ? '-na-vysku' : ''}.${pripona}`;
-        document.body.append(a); a.click();
-        setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
-        stav.textContent = `Hotovo – video sa stiahlo (${pripona.toUpperCase()}, ${(blob.size / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 1 })} MB).`;
-      } catch (e) {
-        stav.textContent = `Video sa nepodarilo nahrať: ${(e as Error).message} Skúste iný prehliadač (Chrome, Edge, Safari).`;
-        setTimeout(() => { stav.textContent = povodny; }, 8000);
-      } finally {
-        tlStiahni.disabled = false; tlHraj.disabled = false; format.disabled = false; zvuk.disabled = false; tlacidla();
-      }
-    });
-  });
-
-  document.querySelectorAll<HTMLElement>('.pr').forEach((el) => {
-    el.querySelector('.pr-start')?.addEventListener('click', () => {
-      // iPhone/Safari: reč sa musí „odomknúť“ priamo v kliknutí, inak neskôr nezaznie
-      try { if ('speechSynthesis' in window) { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; window.speechSynthesis.speak(u); } } catch { /* bez hlasu */ }
-      import('../scripts/prelet').then(({ spustiPrelet }) => spustiPrelet(el)).catch(() => {
-        const t = el.querySelector('.pr-titulok b');
-        if (t) t.textContent = 'Mapu sa nepodarilo načítať.';
-      });
-    }, { once: true });
-  });
+  import { oziv } from '../scripts/pozri-obec';
+  oziv(document);
 </script>
 
 <style>
+  .pv-vz { margin: -4px 0 12px; font-size: 0.88rem; font-weight: 600; }
+  .pv-vz a { color: var(--accent); text-decoration: none; }
+  .pv-vz a:hover { text-decoration: underline; }
   .pv-mriezka { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); }
   /* položky mriežky nesmú rásť podľa obsahu (dlhý pás zastávok by roztiahol mapu na tisíce px) */
   .pv-mriezka > * { min-width: 0; }

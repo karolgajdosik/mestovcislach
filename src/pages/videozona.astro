@@ -1,0 +1,239 @@
+---
+// Videozóna: videá „… v číslach“ a 3D prelety všetkých obcí, miest a mestských častí na jednom mieste.
+// Žiadne stránky navyše (limit súborov): po výbere sa sekcia „Video a prelet“ načíta zo stránky obce a oživí sa tu.
+// Index na vyhľadávanie: /data/videozona.json (načíta sa až pri písaní).
+import Base from '../layouts/Base.astro';
+import PozriObec from '../components/PozriObec.astro';
+import { kraje, odkaz, pamiatkyPreletu } from '../lib/obce';
+import { pamiatkyMesta } from '../lib/video-data';
+import { MESTA } from '../mesta';
+import '../styles/stranka.css';
+
+// Odporúčané: obce a mestá s najviac pamiatkami s fotkou (najviac 2 z kraja, aby bol výber pestrý)
+const mestaUrl = new Map(MESTA.filter((m) => m.aktivne).map((m) => [`/${m.slug}`, m]));
+type Tip = { n: string; u: string; k: string; pocet: number; foto: string; pam: string[] };
+const kandidati: (Tip & { kraj: string; obyv: number })[] = [];
+let spolu = 0, sPamiatkami = 0;
+for (const kr of kraje()) for (const ok of kr.okresy) for (const o of ok.obce) {
+  spolu++;
+  const u = odkaz(o).replace(/\/$/, '');
+  const m = mestaUrl.get(u);
+  const p = m ? pamiatkyMesta(o.kod, u) : pamiatkyPreletu(o.kod);
+  if (p.length) sPamiatkami++;
+  const sFotkou = p.filter((x) => x.f?.u);
+  if (sFotkou.length < 3) continue;
+  kandidati.push({ n: m ? m.nazov : o.nazov, u: `${u}/`, k: m ? m.kraj : `okres ${ok.nazov}`, pocet: p.length, foto: sFotkou[0].f!.u, pam: sFotkou.slice(0, 3).map((x) => x.n.replace(/\s*\([^()]*\)$/, '')), kraj: kr.nazov, obyv: o.obyvatelia ?? 0 });
+}
+kandidati.sort((a, b) => b.pocet - a.pocet || b.obyv - a.obyv);
+const naKraj = new Map<string, number>();
+const tipy: Tip[] = [];
+for (const x of kandidati) {
+  if ((naKraj.get(x.kraj) ?? 0) >= 2) continue;
+  naKraj.set(x.kraj, (naKraj.get(x.kraj) ?? 0) + 1);
+  tipy.push(x);
+  if (tipy.length >= 12) break;
+}
+const mesta = MESTA.filter((m) => m.aktivne).sort((a, b) => a.nazov.localeCompare(b.nazov, 'sk'));
+---
+<Base title="Videozóna – videá a 3D prelety obcí a miest – mestovcislach.sk" description={`Krátke videá „v číslach“ a 3D prelety nad ${spolu.toLocaleString('sk-SK')} obcami a mestami Slovenska – s pamiatkami, titulkami a hovoreným slovom. Nájdite obec a pustite si ju.`}>
+  <section class="hero">
+    <p class="kicker">Videozóna</p>
+    <h1>Videá a 3D prelety obcí a miest</h1>
+    <p class="lead">Ku každej z {spolu.toLocaleString('sk-SK')} obcí, k mestám aj mestským častiam: krátke video „v číslach“ s hudbou na stiahnutie a 3D prelet nad územím. V {sPamiatkami.toLocaleString('sk-SK')} obciach sa kamera zastaví pri významných pamiatkach.</p>
+  </section>
+
+  <section class="card vz-hladaj" aria-labelledby="vz-h">
+    <h2 id="vz-h" class="vz-skryty">Vyhľadať obec</h2>
+    <div class="vz-pole" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="vz-navrhy">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input id="vz-q" type="search" autocomplete="off" placeholder="Napíšte obec, mesto alebo mestskú časť…" aria-label="Obec, mesto alebo mestská časť" aria-autocomplete="list" aria-controls="vz-navrhy" />
+    </div>
+    <ul id="vz-navrhy" class="vz-navrhy" role="listbox" hidden></ul>
+    <div class="vz-filtre" role="group" aria-label="Filter">
+      <button type="button" class="vz-cip" data-typ="" aria-pressed="true">Všetko</button>
+      <button type="button" class="vz-cip" data-typ="0" aria-pressed="false">Obce</button>
+      <button type="button" class="vz-cip" data-typ="1" aria-pressed="false">Mestá</button>
+      <button type="button" class="vz-cip" data-typ="2" aria-pressed="false">Mestské časti</button>
+      <label class="vz-pam"><input type="checkbox" id="vz-pam" /> len s pamiatkami</label>
+      <button type="button" class="vz-nahoda" id="vz-nahoda">🎲 Náhodná obec s pamiatkami</button>
+    </div>
+    <p class="vz-mesta"><span>Mestá:</span>{mesta.map((m) => <a href={`/videozona/?m=${encodeURIComponent(`/${m.slug}/`)}`} data-u={`/${m.slug}/`} data-n={m.nazov}>{m.nazov}</a>)}</p>
+  </section>
+
+  <p class="vz-stav" id="vz-stav" aria-live="polite" hidden></p>
+  <div id="vz-prehravac" class="vz-prehravac">
+    <PozriObec prazdny nazov="Video a prelet" nad="" />
+  </div>
+
+  {tipy.length > 0 && (
+    <section class="vz-tipy" aria-labelledby="vz-tipy-h">
+      <h2 id="vz-tipy-h">Prelety cez pamiatky – tipy</h2>
+      <ul class="vz-mriezka">
+        {tipy.map((t) => (
+          <li>
+            <a class="vz-karta" href={`/videozona/?m=${encodeURIComponent(t.u)}`} data-u={t.u} data-n={t.n}>
+              <img src={t.foto} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="320" height="200" />
+              <span class="vz-k-text"><b>{t.n}</b><small>{t.k} · {t.pocet} {t.pocet >= 5 ? 'pamiatok' : 'pamiatky'}</small><small class="vz-k-pam">{t.pam.join(' · ')}</small></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="zdroj">Pamiatky a fotky: Wikidata, Wikipédia, Wikimedia Commons (autori fotiek sú uvedení vo videu a v prelete).</p>
+    </section>
+  )}
+</Base>
+
+<script>
+  import { oziv } from '../scripts/pozri-obec';
+
+  type Riadok = [string, number, string, string, number];
+  const TYP = ['obec', 'mesto', 'mestská časť'];
+  let index: Promise<Riadok[]> | null = null;
+  const nacitajIndex = () => (index ??= fetch('/data/videozona.json').then((r) => r.json()));
+  const bez = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const hx = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+  const q = document.getElementById('vz-q') as HTMLInputElement;
+  const nav = document.getElementById('vz-navrhy') as HTMLUListElement;
+  const pole = q.closest('.vz-pole')!;
+  const stav = document.getElementById('vz-stav')!;
+  const prehravac = document.getElementById('vz-prehravac')!;
+  const sekcia = prehravac.querySelector<HTMLElement>('#video')!;
+  const nadpis = sekcia.querySelector('h2')!;
+  const mriezka = sekcia.querySelector<HTMLElement>('.pv-mriezka')!;
+  const chkPam = document.getElementById('vz-pam') as HTMLInputElement;
+  let typ = '';
+  let aktivny = -1;
+  let vysledky: Riadok[] = [];
+
+  const hladaj = async () => {
+    const d = await nacitajIndex();
+    const v = bez(q.value.trim());
+    aktivny = -1;
+    const filt = (r: Riadok) => (typ === '' || String(r[1]) === typ) && (!chkPam.checked || r[4] > 0);
+    if (!v) { vysledky = []; nav.hidden = true; pole.setAttribute('aria-expanded', 'false'); return; }
+    const zac: Riadok[] = [], obs: Riadok[] = [];
+    for (const r of d) {
+      if (!filt(r)) continue;
+      const n = bez(r[0]);
+      if (n.startsWith(v) || n.split(/[\s-]+/).some((s) => s.startsWith(v))) zac.push(r);
+      else if (n.includes(v)) obs.push(r);
+    }
+    const pod = (a: Riadok, b: Riadok) => a[1] === 1 && b[1] !== 1 ? -1 : b[1] === 1 && a[1] !== 1 ? 1 : b[4] - a[4] || a[0].localeCompare(b[0], 'sk');
+    vysledky = [...zac.sort(pod), ...obs.sort(pod)].slice(0, 12);
+    nav.innerHTML = vysledky.length
+      ? vysledky.map((r, i) => `<li role="option" id="vz-n${i}" data-i="${i}"><b>${hx(r[0])}</b><span>${TYP[r[1]]} · ${hx(r[3])}</span>${r[4] ? `<em>🏛 ${r[4]} ${r[4] >= 5 ? 'pamiatok' : r[4] > 1 ? 'pamiatky' : 'pamiatka'}</em>` : ''}</li>`).join('')
+      : '<li class="vz-nic">Nič sa nenašlo – skúste iný názov alebo zrušte filter.</li>';
+    nav.hidden = false; pole.setAttribute('aria-expanded', 'true');
+  };
+  const oznac = () => { nav.querySelectorAll('li[data-i]').forEach((li, i) => li.classList.toggle('vz-akt', i === aktivny)); q.setAttribute('aria-activedescendant', aktivny >= 0 ? `vz-n${aktivny}` : ''); };
+  const vyber = (r: Riadok) => { nav.hidden = true; pole.setAttribute('aria-expanded', 'false'); q.value = r[0]; nacitajMiesto(r[2], r[0]); };
+
+  q.addEventListener('focus', () => { nacitajIndex(); }, { once: true });
+  q.addEventListener('input', hladaj);
+  q.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' && vysledky.length) { aktivny = Math.min(vysledky.length - 1, aktivny + 1); oznac(); e.preventDefault(); }
+    else if (e.key === 'ArrowUp' && vysledky.length) { aktivny = Math.max(0, aktivny - 1); oznac(); e.preventDefault(); }
+    else if (e.key === 'Enter' && vysledky.length) { vyber(vysledky[Math.max(0, aktivny)]); e.preventDefault(); }
+    else if (e.key === 'Escape') { nav.hidden = true; }
+  });
+  nav.addEventListener('click', (e) => { const li = (e.target as HTMLElement).closest<HTMLElement>('li[data-i]'); if (li) vyber(vysledky[Number(li.dataset.i)]); });
+  document.addEventListener('click', (e) => { if (!(e.target as HTMLElement).closest('.vz-hladaj')) nav.hidden = true; });
+  document.querySelectorAll<HTMLButtonElement>('.vz-cip').forEach((b) => b.addEventListener('click', () => {
+    typ = b.dataset.typ ?? '';
+    document.querySelectorAll('.vz-cip').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    hladaj(); q.focus();
+  }));
+  chkPam.addEventListener('change', hladaj);
+  document.getElementById('vz-nahoda')!.addEventListener('click', async () => {
+    const d = (await nacitajIndex()).filter((r) => r[1] === 0 && r[4] >= 2);
+    const r = d[Math.floor(Math.random() * d.length)];
+    if (r) { q.value = r[0]; nacitajMiesto(r[2], r[0]); }
+  });
+  // karty tipov a mestá: načítať tu, bez prechodu na inú stránku
+  document.querySelectorAll<HTMLAnchorElement>('a[data-u]').forEach((a) => a.addEventListener('click', (e) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault(); nacitajMiesto(a.dataset.u!, a.dataset.n!);
+  }));
+
+  /** Zastaví video a prelet, ktoré práve bežia (pred výmenou obsahu). */
+  const zastavStare = () => {
+    mriezka.querySelectorAll<HTMLElement>('.pv-video').forEach((b) => (b as any).__zastav?.());
+    mriezka.querySelectorAll<HTMLElement>('.pr').forEach((el) => {
+      el.querySelector<HTMLButtonElement>('.pr-okno:not([hidden]) [data-pr="zavriet"]')?.click();
+      try { (el as any).__mapa?.remove(); } catch { /* nič */ }
+    });
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
+  };
+
+  let poradie = 0;
+  async function nacitajMiesto(u: string, n: string) {
+    if (!/^\/[a-z0-9/-]*$/i.test(u)) return; // len vlastné stránky webu
+    const moje = ++poradie;
+    stav.hidden = false; stav.textContent = `Načítavam ${n}…`;
+    try {
+      const r = await fetch(u);
+      if (!r.ok) throw new Error(String(r.status));
+      const doc = new DOMParser().parseFromString(await r.text(), 'text/html');
+      if (moje !== poradie) return;
+      const zdroj = doc.querySelector('#video .pv-mriezka');
+      if (!zdroj || !zdroj.children.length) { stav.textContent = `Pre ${n} video ani prelet zatiaľ nie sú.`; return; }
+      zastavStare();
+      mriezka.innerHTML = zdroj.innerHTML;
+      nadpis.innerHTML = `${hx(n)} <a class="vz-odkaz" href="${hx(u)}">všetky čísla →</a>`;
+      sekcia.hidden = false;
+      stav.hidden = true;
+      oziv(sekcia);
+      history.replaceState(null, '', `/videozona/?m=${encodeURIComponent(u)}`);
+      document.title = `${n} – video a 3D prelet – Videozóna – mestovcislach.sk`;
+      sekcia.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch {
+      if (moje === poradie) stav.textContent = `${n} sa nepodarilo načítať. Skúste to znova.`;
+    }
+  }
+
+  // odkaz na konkrétne miesto: /videozona/?m=/kosice/
+  const m = new URLSearchParams(location.search).get('m');
+  if (m) {
+    const a = document.querySelector<HTMLAnchorElement>(`a[data-u="${CSS.escape(m)}"]`);
+    if (a) nacitajMiesto(m, a.dataset.n!);
+    else nacitajIndex().then((d) => { const r = d.find((x) => x[2] === m); nacitajMiesto(m, r?.[0] ?? 'Obec'); });
+  }
+</script>
+
+<style>
+  .vz-skryty { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .vz-hladaj { position: relative; }
+  .vz-pole { display: flex; align-items: center; gap: 10px; padding: 0 16px; height: 56px; border: 2px solid var(--line); border-radius: 16px; background: var(--card); }
+  .vz-pole:focus-within { border-color: var(--accent); }
+  .vz-pole svg { width: 22px; height: 22px; flex: none; fill: none; stroke: var(--muted, #667); stroke-width: 2; stroke-linecap: round; }
+  .vz-pole input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 1.08rem; outline: none; }
+  .vz-navrhy { position: absolute; left: 20px; right: 20px; z-index: 30; margin: 6px 0 0; padding: 6px; list-style: none; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16); max-height: 420px; overflow-y: auto; }
+  .vz-navrhy[hidden] { display: none; }
+  .vz-navrhy :global(li) { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 9px 12px; border-radius: 10px; cursor: pointer; }
+  .vz-navrhy :global(li span) { color: var(--muted, #667); font-size: 0.85rem; }
+  .vz-navrhy :global(li em) { margin-left: auto; font-style: normal; font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+  .vz-navrhy :global(li:hover), .vz-navrhy :global(li.vz-akt) { background: var(--bg); }
+  .vz-navrhy :global(li.vz-nic) { cursor: default; color: var(--muted, #667); }
+  .vz-filtre { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+  .vz-cip { min-height: 34px; padding: 0 14px; border: 1px solid var(--line); border-radius: 17px; background: var(--card); color: var(--text); font: inherit; font-size: 0.86rem; font-weight: 600; cursor: pointer; }
+  .vz-cip[aria-pressed='true'] { background: var(--text); color: var(--card); border-color: var(--text); }
+  .vz-pam { display: inline-flex; align-items: center; gap: 6px; font-size: 0.86rem; font-weight: 600; margin-left: 4px; }
+  .vz-nahoda { margin-left: auto; min-height: 34px; padding: 0 14px; border: 0; border-radius: 17px; background: var(--accent); color: var(--na-akcente, #fff); font: inherit; font-size: 0.86rem; font-weight: 700; cursor: pointer; }
+  .vz-mesta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin: 14px 0 0; font-size: 0.88rem; }
+  .vz-mesta span { color: var(--muted, #667); font-weight: 600; }
+  .vz-mesta a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .vz-mesta a:hover { text-decoration: underline; }
+  .vz-stav { margin: 12px 0; font-weight: 600; }
+  .vz-prehravac :global(#video) { scroll-margin-top: 150px; }
+  .vz-prehravac :global(.vz-odkaz) { margin-left: 10px; font-size: 0.9rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+  .vz-tipy { margin-top: 28px; }
+  .vz-mriezka { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+  .vz-karta { display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); color: var(--text); text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; }
+  .vz-karta:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12); }
+  .vz-karta img { width: 100%; height: 150px; object-fit: cover; background: #2a3142; }
+  .vz-k-text { display: flex; flex-direction: column; gap: 3px; padding: 10px 12px 12px; }
+  .vz-k-text small { color: var(--muted, #667); font-size: 0.8rem; }
+  .vz-k-pam { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  @media (max-width: 600px) { .vz-nahoda { margin-left: 0; } .vz-navrhy { left: 12px; right: 12px; } }
+</style>

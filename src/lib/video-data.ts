@@ -47,7 +47,7 @@ export function pamiatkyVidea(p: PamiatkaPreletu[]): Snimka | null {
 }
 
 /** Pamiatky mesta: z kódu mesta, a ak ich je málo, doplnené z mestských častí (Bratislava, Košice). */
-function pamiatkyMesta(kod: string, url: string): PamiatkaPreletu[] {
+export function pamiatkyMesta(kod: string, url: string): PamiatkaPreletu[] {
   const vlastne = pamiatkyPreletu(kod);
   if (vlastne.length >= 4) return vlastne;
   const slug = url.replace(/^\//, '').split('/')[0];

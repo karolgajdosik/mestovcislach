@@ -184,6 +184,10 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
             <svg viewBox="0 0 24 24" aria-hidden="true" set:html={NOVE.find((x) => x[0] === 'kviz')![2]} />
             <span>Kvíz{spolocna ? '' : <span class="hk-mesto"> o meste</span>}</span>
           </a>
+          <a class="hlava-video" href="/videozona/" aria-current={Astro.url.pathname.startsWith('/videozona') ? 'page' : undefined}>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="13.5" height="13" rx="2.5"/><path d="m16.5 10 4.5-2.5v9L16.5 14"/></svg>
+            <span>Videozóna</span>
+          </a>
         </div>
         <div class="hlava-akcie">
           {!spolocna && <a class="zvoncek" href={`/${mesto.slug}/upozornenia`} title="Upozornenia pre vašu mestskú časť" aria-label="Upozornenia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></a>}
@@ -263,7 +267,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
         Kód je otvorený na <a href="https://github.com/karolgajdosik/mestovcislach">GitHube</a>. Všetky datasety mesta a čo s nimi robíme: <a href="/bratislava/katalog">Katalóg dát</a>.
         Živá lišta: počasie <a href="https://open-meteo.com">Open-Meteo</a> (CC BY 4.0), výstrahy, ovzdušie a Dunaj <a href="https://www.shmu.sk">SHMÚ</a>, cesty hlavné mesto SR Bratislava.
       </p>
-      <p class="foot-odkazy">{!spolocna && <><a href={`/${mesto.slug}/upozornenia`}>Upozornenia</a> · </>}<a href="/porovnanie">Porovnanie miest</a> · <a href="/rebricky/">Rebríčky obcí</a> · <a href="/mapa-obci/">Mapa obcí</a> · <a href="/stav-dat/">Stav dát</a> · <a href="/sukromie">Ochrana súkromia</a> · <a href="/pristupnost">Prístupnosť</a> · Bez cookies a sledovania · <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a></p>
+      <p class="foot-odkazy">{!spolocna && <><a href={`/${mesto.slug}/upozornenia`}>Upozornenia</a> · </>}<a href="/porovnanie">Porovnanie miest</a> · <a href="/videozona/">Videozóna</a> · <a href="/rebricky/">Rebríčky obcí</a> · <a href="/mapa-obci/">Mapa obcí</a> · <a href="/stav-dat/">Stav dát</a> · <a href="/sukromie">Ochrana súkromia</a> · <a href="/pristupnost">Prístupnosť</a> · Bez cookies a sledovania · <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a></p>
     </footer>
     <Asistent mesto={spolocna ? undefined : mesto} />
     {/* Mobil a tablet (do 1099 px): dolná lišta + celoobrazovkové menu namiesto posúvacieho pásu */}
@@ -550,6 +554,11 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
   .hlava-kviz[aria-current='page'] { background: var(--text); color: var(--card); }
   .hlava-kviz svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   @media (min-width: 1100px) { .hlava-kviz { display: inline-flex; } }
+  .hlava-video { display: none; align-items: center; gap: 6px; flex-shrink: 0; height: 38px; padding: 0 14px 0 11px; border-radius: 19px; border: 1.5px solid var(--line); color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.92rem; white-space: nowrap; }
+  .hlava-video:hover { border-color: var(--accent); color: var(--accent); }
+  .hlava-video[aria-current='page'] { background: var(--text); color: var(--card); border-color: var(--text); }
+  .hlava-video svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  @media (min-width: 1100px) { .hlava-video { display: inline-flex; } }
   @media (min-width: 1100px) and (max-width: 1240px) { .hk-mesto { display: none; } }
   .zvoncek { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 6px; border: 1px solid var(--line); border-radius: 18px; background: var(--bg); color: var(--muted); }
   .zvoncek:hover { border-color: var(--muted); color: var(--text); }
