@@ -3,20 +3,18 @@ time.sleep(480)
 subprocess.run([sys.executable,"-m","pip","install","-q","playwright"],check=True)
 subprocess.run([sys.executable,"-m","playwright","install","--with-deps","chromium"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 from playwright.sync_api import sync_playwright
-U="https://mestovcislach.sk/banskobystricky-kraj/banska-stiavnica/banska-stiavnica/"
-J="""(()=>{const m=document.querySelector('.pr').__mapa;const z=document.querySelector('.pr-znacka');const r=document.querySelector('.pr-mapa').getBoundingClientRect();const t=document.querySelector('.pr-titulok').getBoundingClientRect();
-const zb=z?z.getBoundingClientRect():null;return {el:[m.transform.elevation!=null?Math.round(m.transform.elevation):null,Math.round(m.queryTerrainElevation(m.getCenter())||0)],pohyb:m.isMoving(),znacka:zb?[Math.round(zb.left+zb.width/2-r.left),Math.round(zb.bottom-r.top)]:null,mapa:[Math.round(r.width),Math.round(r.height)],titulokHore:Math.round(t.top-r.top),nazov:document.querySelector('.pr-titulok b').textContent}})()"""
+U="https://mestovcislach.sk/trenciansky-kraj/trencin/trencin/"
+J="(()=>{const m=document.querySelector('.pr').__mapa;return m.getStyle().layers.filter(l=>l.type==='fill-extrusion'||l.id==='orto').map(l=>l.id+':'+(m.getLayoutProperty(l.id,'visibility')||'visible'))})()"
 with sync_playwright() as p:
     b=p.chromium.launch(args=["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader"])
-    for vw,vh,name in [(1366,768,'desk'),(390,844,'mob')]:
-        pg=b.new_page(viewport={"width":vw,"height":vh})
-        pg.goto(U,timeout=90000,wait_until="domcontentloaded"); pg.wait_for_timeout(4000); pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
-        pg.evaluate("document.querySelector('.pr-start').click()"); time.sleep(6)
-        pg.evaluate("document.querySelectorAll('.pr-kapitoly button')[3].click()")
-        for k in range(12):
-            time.sleep(3); s=pg.evaluate(J)
-            if s['znacka']: print(name,k,s)
-        pg.close()
-    b.close()
+    pg=b.new_page(viewport={"width":1366,"height":768}); err=[]
+    pg.on("pageerror",lambda e: err.append(str(e)[:200]))
+    pg.goto(U,timeout=90000,wait_until="domcontentloaded"); pg.wait_for_timeout(4000)
+    pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
+    pg.evaluate("document.querySelector('.pr-start').click()"); time.sleep(8)
+    print("mapa:",pg.evaluate(J))
+    pg.evaluate("document.querySelector('[data-pr=podklad]').click()"); time.sleep(15)
+    print("letecká:",pg.evaluate(J), pg.evaluate("document.querySelector('[data-pr=podklad]').textContent"))
+    pg.evaluate("document.querySelector('[data-pr=podklad]').click()"); time.sleep(3)
+    print("späť:",pg.evaluate(J)); print("chyby",err); b.close()
 print("HOTOVO")
-# 6
