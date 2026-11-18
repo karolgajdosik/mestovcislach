@@ -69,6 +69,7 @@ const fmt = (n: number) => n.toLocaleString('sk-SK');
   <p class="rz-nadpis" id={`rz-akt-${rezim}`}>Aktuálne</p>
   <ul class="rz-nastroje rz-aktualne" aria-labelledby={`rz-akt-${rezim}`}>
     <li><a href="/volby-2026" class={volby ? 'rz-zvyrazni' : undefined}><svg viewBox="0 0 24 24" aria-hidden="true" set:html={IK.volby} /><span>Voľby 2026 v číslach</span></a></li>
+    <li><a href="/videozona/"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="13.5" height="13" rx="2.5"/><path d="m16.5 10 4.5-2.5v9L16.5 14"/></svg><span>Videozóna – videá a prelety</span></a></li>
     <li><a href="/rozpocty-2027"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 12v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/></svg><span>Rozpočty miest 2027</span></a></li>
     <li><a href="/porovnanie"><svg viewBox="0 0 24 24" aria-hidden="true" set:html={IK.porovnanie} /><span>Porovnanie miest</span></a></li>
     <li><a href="/porovnaj"><svg viewBox="0 0 24 24" aria-hidden="true" set:html={IK.porovnanie} /><span>Porovnaj dve mestá</span></a></li>
