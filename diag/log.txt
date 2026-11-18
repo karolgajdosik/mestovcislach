@@ -1,39 +1,5 @@
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 13, in <module>
-    pg.evaluate("document.getElementById('video').scrollIntoView()"); pg.wait_for_timeout(1500)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/sync_api/_generated.py", line 16876, in evaluate
-    self._sync(
-    ~~~~~~~~~~^
-        self._impl_obj.evaluate(expression=expression, arg=mapping.to_impl(arg))
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/_sync_base.py", line 124, in _sync
-    return task.result()
-           ~~~~~~~~~~~^^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/page.py", line 894, in evaluate
-    return await self._main_frame.evaluate(expression=expression, arg=arg)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/frame.py", line 380, in evaluate
-    result = await self._channel.evaluateExpression(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<5 lines>...
-    )
-    ^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/channel_owner.py", line 398, in _mapped
-    return mapper(await awaitable)
-                  ^^^^^^^^^^^^^^^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/channel_owner.py", line 387, in finish
-    raise e from None
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/channel_owner.py", line 352, in finish
-    result = await zone.run_async(lambda: awaitable)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/.local/lib/python3.14/site-packages/playwright/_impl/utils/zones.py", line 58, in run_async
-    return await func()
-           ^^^^^^^^^^^^
-playwright._impl._errors.Error: Page.evaluate: TypeError: Cannot read properties of null (reading 'scrollIntoView')
-    at eval (eval at evaluate (:370:30), <anonymous>:1:33)
-    at eval (<anonymous>)
-    at UtilityScript.evaluate (<anonymous>:370:30)
-    at UtilityScript.<anonymous> (<anonymous>:1:44)
+mapa: ['building-3d:visible']
+letecká: ['building-3d:visible'] Načítavam snímky…
+späť: ['orto:visible', 'building-3d:none']
+chyby []
+HOTOVO
