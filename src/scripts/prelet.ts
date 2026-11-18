@@ -195,11 +195,11 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
         map.addSource('orto', { type: 'raster', tiles: [EOX], tileSize: 256, maxzoom: 15, attribution: 'Sentinel-2 cloudless 2016 © EOX (CC BY 4.0)' });
       }
       // snímka hneď nad pozadie; plošné vrstvy mapy (zástavba, lesy, voda, parky) sa pri leteckej snímke skryjú,
-      // inak by ju prekryli – ostanú cesty, 3D budovy a názvy
+      // inak by ju prekryli; skryjú sa aj sivé 3D kvádre budov, aby boli vidno skutočné strechy zo snímky – ostanú cesty a názvy
       const vrstvy = map.getStyle().layers as any[];
       const nad = vrstvy.find((l) => l.type !== 'background')?.id;
       map.addLayer({ id: 'orto', type: 'raster', source: 'orto', layout: { visibility: 'none' } }, nad);
-      plosne = vrstvy.filter((l) => l.type === 'fill' || l.type === 'hillshade' || (l.type === 'raster' && l.id !== 'orto') || (l.type === 'line' && /park|landuse|landcover|wood|grass|farm|natural|aeroway|pitch|area/i.test(`${l.id} ${l['source-layer'] ?? ''}`))).map((l) => l.id);
+      plosne = vrstvy.filter((l) => l.type === 'fill' || l.type === 'fill-extrusion' || l.type === 'hillshade' || (l.type === 'raster' && l.id !== 'orto') || (l.type === 'line' && /park|landuse|landcover|wood|grass|farm|natural|aeroway|pitch|area/i.test(`${l.id} ${l['source-layer'] ?? ''}`))).map((l) => l.id);
       map.on('error', (e: any) => { if (e.sourceId === 'orto' && !chybaOrto) { chybaOrto = true; zdroj.textContent = 'Časť leteckých snímok sa nepodarilo načítať (server neodpovedá). ' + ZDROJ_MAPA; } });
     }
     letecka = !letecka;
