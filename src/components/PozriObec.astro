@@ -19,14 +19,14 @@ const { nazov, nad, video, prelet } = Astro.props;
     <div class="pv-video" data-video={JSON.stringify(video)}>
       <div class="pv-platno"><canvas width="1280" height="720" aria-label={`Video ${nazov} v číslach`} role="img"></canvas>
         <button type="button" class="pv-hraj" aria-label="Prehrať video"><span aria-hidden="true">▶</span></button>
+        <button type="button" class="pv-zvuk" data-v="zvuk" aria-pressed="true" aria-label="Vypnúť zvuk" title="Vypnúť zvuk">🔊</button>
       </div>
       <div class="pv-ovl">
         <button type="button" class="ob-akcia" data-v="hraj">▶ Prehrať</button>
-        <label class="pv-format">Zvuk <select data-v="zvuk"><option value="hlas">hudba a hlas</option><option value="hudba" selected>len hudba</option><option value="nie">bez zvuku</option></select></label>
         <label class="pv-format">Formát <select data-v="format"><option value="16x9">na šírku 16 : 9</option><option value="9x16">na výšku 9 : 16 (sociálne siete)</option></select></label>
         <button type="button" class="ob-akcia" data-v="stiahni">Stiahnuť video</button>
       </div>
-      <p class="pozn pv-stav" aria-live="polite">Video sa skladá v prehliadači z údajov tejto stránky ({Math.round(video.snimky.length * 4)} s), s hudbou vytvorenou tiež v prehliadači. Môžete ho stiahnuť a zdieľať – uveďte zdroj mestovcislach.sk. Stiahnuté video obsahuje hudbu, hlasový komentár sa doň nenahrá.</p>
+      <p class="pozn pv-stav" aria-live="polite">Video sa skladá v prehliadači z údajov tejto stránky ({Math.round(video.snimky.length * 4)} s), s hudbou vytvorenou tiež v prehliadači. Môžete ho stiahnuť a zdieľať – uveďte zdroj mestovcislach.sk. Zvuk vypnete ikonou reproduktora. Stiahnuté video obsahuje hudbu (ak je zvuk zapnutý), hlasový komentár sa doň nenahrá.</p>
     </div>
     {prelet && (
       <div class="pr" data-prelet={JSON.stringify({ nazov, ...prelet })}>
@@ -69,16 +69,21 @@ const { nazov, nad, video, prelet } = Astro.props;
     const velke = box.querySelector<HTMLButtonElement>('.pv-hraj')!;
     const format = box.querySelector<HTMLSelectElement>('[data-v="format"]')!;
     const tlStiahni = box.querySelector<HTMLButtonElement>('[data-v="stiahni"]')!;
-    const zvuk = box.querySelector<HTMLSelectElement>('[data-v="zvuk"]')!;
-    const ulozenyZvuk = (() => { try { return localStorage.getItem('video-zvuk'); } catch { return null; } })();
+    // reproduktor: zapnutý = hudba (+ slovenský hlas, ak ho prehliadač má); prečiarknutý = ticho
+    const zvuk = box.querySelector<HTMLButtonElement>('[data-v="zvuk"]')!;
+    let zapnuty = (() => { try { return localStorage.getItem('video-zvuk') !== 'nie'; } catch { return true; } })();
+    const nastavZvuk = () => {
+      v.zvuk = zapnuty ? (v.maHlas() ? 'hlas' : 'hudba') : 'nie';
+      zvuk.textContent = zapnuty ? '🔊' : '🔇';
+      const popis = zapnuty ? 'Vypnúť zvuk' : 'Zapnúť zvuk';
+      zvuk.setAttribute('aria-pressed', String(zapnuty)); zvuk.setAttribute('aria-label', popis); zvuk.title = popis;
+    };
+    nastavZvuk();
     let pripravene: Promise<void> | null = null;
     const priprav = () => (pripravene ??= v.priprav().then(() => {
       v.nastavRozmer(canvas.width, canvas.height);
       // hlasový komentár len ak má prehliadač slovenský hlas; predvolene hudba a hlas
-      if (!v.maHlas()) zvuk.querySelector('option[value="hlas"]')?.remove();
-      const chcem = ulozenyZvuk ?? (v.maHlas() ? 'hlas' : 'hudba');
-      zvuk.value = [...zvuk.options].some((o) => o.value === chcem) ? chcem : 'hudba';
-      v.zvuk = zvuk.value as any;
+      nastavZvuk(); // až teraz vieme, či je slovenský hlas
     }));
     // fotka a prvý obrázok až keď je video blízko obrazovky
     kedViditelne(box, () => { priprav(); }, '300px');
@@ -93,9 +98,11 @@ const { nazov, nad, video, prelet } = Astro.props;
     };
     tlHraj.addEventListener('click', hraj);
     velke.addEventListener('click', hraj);
-    zvuk.addEventListener('change', () => {
-      v.zvuk = zvuk.value as any;
-      try { localStorage.setItem('video-zvuk', zvuk.value); } catch { /* nič */ }
+    zvuk.addEventListener('click', () => {
+      zapnuty = !zapnuty;
+      if (zapnuty) v.odomkniZvuk();
+      nastavZvuk();
+      try { localStorage.setItem('video-zvuk', zapnuty ? 'ano' : 'nie'); } catch { /* nič */ }
       if (v.jeHra()) { const t = v.aktualny(); v.pauza(); v.hraj(t).then(tlacidla); tlacidla(); }
     });
     format.addEventListener('change', () => {
@@ -150,6 +157,9 @@ const { nazov, nad, video, prelet } = Astro.props;
   .pv-vysoke .pv-platno canvas { aspect-ratio: 9 / 16; }
   .pv-hraj { position: absolute; inset: 0; margin: auto; width: 76px; height: 76px; border-radius: 50%; border: 0; background: rgba(224, 40, 63, 0.92); color: #fff; font-size: 30px; cursor: pointer; box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35); }
   .pv-hraj[hidden] { display: none; }
+  .pv-zvuk { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: rgba(15, 18, 26, 0.65); color: #fff; font-size: 19px; line-height: 1; cursor: pointer; }
+  .pv-zvuk:hover { background: rgba(15, 18, 26, 0.85); }
+  .pv-zvuk:disabled { opacity: 0.6; cursor: default; }
   .pv-ovl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
   .pv-format { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; }
   .pv-format select { font: inherit; padding: 6px 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--text); }
