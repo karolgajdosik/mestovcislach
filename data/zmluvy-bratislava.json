@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11990,
+ "pocet_spolu": 11995,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2378,
-   "suma": 413556882.75
+   "pocet": 2383,
+   "suma": 413582339.04
   }
  },
  "posledny_rok": {
-  "od": "2025-11-18",
+  "od": "2025-11-19",
   "suma_bez_ico": 67800.73,
   "dodavatelia": [
    {
@@ -78,7 +78,7 @@
    {
     "ico": "45917833",
     "nazov": "A.I.I. Technické služby s. r. o.",
-    "pocet": 3,
+    "pocet": 1,
     "suma": 4113428.72
    },
    {
@@ -307,5 +307,5 @@
    }
   ]
  },
- "aktualizovane": "2026-11-18T10:26:50+00:00"
+ "aktualizovane": "2026-11-19T10:34:17+00:00"
 }
