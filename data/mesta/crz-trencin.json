@@ -2,15 +2,15 @@
  "mesto": "trencin",
  "ico": "00312037",
  "od": "2022-01-01",
- "do": "2026-11-17",
+ "do": "2026-11-18",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 12573,
-  "skryte_fyzicke_osoby": 6906,
+  "zaznamov": 12578,
+  "skryte_fyzicke_osoby": 6909,
   "roky": {
    "2022": {
     "pocet": 1819,
@@ -37,10 +37,10 @@
     "fo_suma": 9669829
    },
    "2026": {
-    "pocet": 2314,
-    "suma": 100229303,
-    "fo_pocet": 1148,
-    "fo_suma": 2537712
+    "pocet": 2319,
+    "suma": 100252877,
+    "fo_pocet": 1151,
+    "fo_suma": 2538323
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -65,7 +65,7 @@
    {
     "ico": "37920413",
     "nazov": "Mestské hospodárstvo a správa lesov, m.r.o., Trenčín",
-    "pocet": 67,
+    "pocet": 68,
     "suma": 12083738
    },
    {
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-18T14:17:11+00:00"
+ "aktualizovane": "2026-11-19T14:31:14+00:00"
 }
