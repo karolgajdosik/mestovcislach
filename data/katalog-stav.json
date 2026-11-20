@@ -1,7 +1,7 @@
 {
  "zdroj": "https://data.bratislava.sk",
  "pocty": {
-  "katalog": 606,
+  "katalog": 604,
   "osobitne": 34,
   "vynechane": 19,
   "na_webe": 29
@@ -176,16 +176,6 @@
    "stav": "katalog",
    "kde": "/bratislava/katalog/d870c8303165442eb1be3157cc91b0e3",
    "stlpcov": 3
-  },
-  {
-   "id": "80379c888397485d80a82c1620daf19f",
-   "nazov": "Počet trestných činov a počet stíhaných a vyšetrovaných mladistvých a maloletých osôb",
-   "kategoria": "Bezpečnosť",
-   "upravene": 1771495075000,
-   "riadkov": 15,
-   "stav": "katalog",
-   "kde": "/bratislava/katalog/80379c888397485d80a82c1620daf19f",
-   "stlpcov": 6
   },
   {
    "id": "83683bcb885d4a178c46eae5c53c8e1a",
@@ -810,7 +800,7 @@
    "id": "b18553d437144c50b93189bcae777f59",
    "nazov": "Počet obyvateľov podľa najvyššieho dosiahnutého vzdelania v ZSJ",
    "kategoria": "Demografia",
-   "upravene": 1794489655000,
+   "upravene": 1794986858000,
    "riadkov": 213,
    "stav": "katalog",
    "kde": "/bratislava/katalog/b18553d437144c50b93189bcae777f59",
@@ -1590,7 +1580,7 @@
    "id": "97998bf1dd064b4aafccaa664a4e4319",
    "nazov": "SODB 2011 - Byty podľa druhu budovy",
    "kategoria": "Demografia",
-   "upravene": 1771495044000,
+   "upravene": 1794995763000,
    "riadkov": 17,
    "stav": "katalog",
    "kde": "/bratislava/katalog/97998bf1dd064b4aafccaa664a4e4319",
@@ -1680,7 +1670,7 @@
    "id": "409bc64821fd4f139a6b242aa576a8c6",
    "nazov": "SODB 2011 - Obyvateľstvo podľa zamestnania",
    "kategoria": "Demografia",
-   "upravene": 1771495063000,
+   "upravene": 1794988157000,
    "riadkov": 5,
    "stav": "katalog",
    "kde": "/bratislava/katalog/409bc64821fd4f139a6b242aa576a8c6",
@@ -1780,7 +1770,7 @@
    "id": "f90b2171065e4c6f9600d4d04645837b",
    "nazov": "SODB 2011 - Rodiny podľa typu",
    "kategoria": "Demografia",
-   "upravene": 1771495057000,
+   "upravene": 1794990622000,
    "riadkov": 22,
    "stav": "katalog",
    "kde": "/bratislava/katalog/f90b2171065e4c6f9600d4d04645837b",
@@ -2607,7 +2597,7 @@
    "nazov": "Počet prechádzajúcich chodcov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492980000,
-   "riadkov": 867651,
+   "riadkov": 869307,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače chodcov"
@@ -2617,7 +2607,7 @@
    "nazov": "Počet prejazdov cyklistov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492966000,
-   "riadkov": 867651,
+   "riadkov": 869307,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače cyklistov"
@@ -2627,7 +2617,7 @@
    "nazov": "Počet prejazdov vozidiel podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492972000,
-   "riadkov": 500435,
+   "riadkov": 501803,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače áut"
@@ -3246,8 +3236,8 @@
    "id": "2a4e7de5488c4781b9e646931f09ce4e",
    "nazov": "Výkony cestovného ruchu v Bratislave - počet návštevníkov",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771495093000,
-   "riadkov": 15,
+   "upravene": 1794992910000,
+   "riadkov": 18,
    "stav": "katalog",
    "kde": "/bratislava/katalog/2a4e7de5488c4781b9e646931f09ce4e",
    "stlpcov": 7
@@ -3256,8 +3246,8 @@
    "id": "abc9a9309f864a0b812cf281d77b8467",
    "nazov": "Výkony cestovného ruchu v Bratislave - počet prenocovaní",
    "kategoria": "Ekonomika a práca",
-   "upravene": 1771495051000,
-   "riadkov": 15,
+   "upravene": 1794993511000,
+   "riadkov": 18,
    "stav": "katalog",
    "kde": "/bratislava/katalog/abc9a9309f864a0b812cf281d77b8467",
    "stlpcov": 7
@@ -3910,16 +3900,6 @@
    "stlpcov": 10
   },
   {
-   "id": "11b7cdd27d9f446ca97c1c2913cc169a",
-   "nazov": "Čerpanie rozpočtu oddelenia sociálnych vecí k 30.06.2019",
-   "kategoria": "Sociálne služby",
-   "upravene": 1771494941000,
-   "riadkov": 34,
-   "stav": "katalog",
-   "kde": "/bratislava/katalog/11b7cdd27d9f446ca97c1c2913cc169a",
-   "stlpcov": 10
-  },
-  {
    "id": "ea64d58ebbe745328a7e4ec0d9f2464b",
    "nazov": "Štruktúra ambulantných sociálnych služieb v BSK (2021)",
    "kategoria": "Sociálne služby",
@@ -4042,7 +4022,7 @@
    "nazov": "Faktúry Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151953000,
-   "riadkov": 150911,
+   "riadkov": 151049,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry magistrátu"
@@ -4062,7 +4042,7 @@
    "nazov": "Faktúry Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778137107000,
-   "riadkov": 28058,
+   "riadkov": 28145,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry OLO"
@@ -4072,7 +4052,7 @@
    "nazov": "Faktúry Pohrebníctva mesta Bratislava - MARIANUM",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778142878000,
-   "riadkov": 17196,
+   "riadkov": 17222,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry Marianum"
@@ -4221,7 +4201,7 @@
    "nazov": "Objednávky Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151897000,
-   "riadkov": 65791,
+   "riadkov": 65834,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky magistrátu"
@@ -4231,7 +4211,7 @@
    "nazov": "Objednávky Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778136568000,
-   "riadkov": 12487,
+   "riadkov": 12508,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky OLO"
@@ -4241,7 +4221,7 @@
    "nazov": "Objednávky Pohrebníctva mesta Bratislava - MARIANUM",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778142871000,
-   "riadkov": 5687,
+   "riadkov": 5702,
    "stav": "katalog",
    "kde": "/bratislava/katalog/81abdb9566e84d00aaad5ffd953d791a",
    "stlpcov": 9
@@ -4458,8 +4438,8 @@
    "id": "a47a1cfe30894a90b61c945e2a0ddf93",
    "nazov": "Počet prijatých žiadostí o vydanie občianskeho preukazu",
    "kategoria": "Správa mesta a výstavba",
-   "upravene": 1771495560000,
-   "riadkov": 55,
+   "upravene": 1795092869000,
+   "riadkov": 70,
    "stav": "katalog",
    "kde": "/bratislava/katalog/a47a1cfe30894a90b61c945e2a0ddf93",
    "stlpcov": 5
@@ -4498,8 +4478,8 @@
    "id": "2eba89a0477d4f3cb4481aa716ba9173",
    "nazov": "Počet vydaných, stratených a odcudzených občianskych preukazov",
    "kategoria": "Správa mesta a výstavba",
-   "upravene": 1771495535000,
-   "riadkov": 55,
+   "upravene": 1795076385000,
+   "riadkov": 70,
    "stav": "katalog",
    "kde": "/bratislava/katalog/2eba89a0477d4f3cb4481aa716ba9173",
    "stlpcov": 7
@@ -4848,7 +4828,7 @@
    "nazov": "Zmluvy Magistrátu hlavného mesta SR Bratislava zverejnené od júla 2022",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151852000,
-   "riadkov": 13346,
+   "riadkov": 13365,
    "stav": "na_webe",
    "kde": "/bratislava/financie",
    "pozn": "Zmluvy magistrátu"
@@ -4868,7 +4848,7 @@
    "nazov": "Zmluvy Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778136780000,
-   "riadkov": 1934,
+   "riadkov": 1944,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Zmluvy OLO"
@@ -6867,5 +6847,5 @@
    "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-11-17T05:19:31+00:00"
+ "aktualizovane": "2026-11-20T06:17:16+00:00"
 }
