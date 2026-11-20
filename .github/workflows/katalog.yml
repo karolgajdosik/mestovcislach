@@ -43,6 +43,13 @@ jobs:
 
       - run: pip install -r scripts/requirements.txt
 
+      - name: Cache registra adries MV SR (záloha pri výpadku rageo.minv.sk)
+        uses: actions/cache@v4
+        with:
+          path: .cache/adresy
+          key: adresy-mv-${{ github.run_id }}
+          restore-keys: adresy-mv-
+
       - name: Inventár datasetov (data.bratislava.sk)
         run: python scripts/zber_katalog.py
 
