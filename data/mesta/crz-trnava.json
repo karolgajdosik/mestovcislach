@@ -2,15 +2,15 @@
  "mesto": "trnava",
  "ico": "00313114",
  "od": "2022-01-01",
- "do": "2026-11-18",
+ "do": "2026-11-19",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 4620,
-  "skryte_fyzicke_osoby": 1390,
+  "zaznamov": 4635,
+  "skryte_fyzicke_osoby": 1395,
   "roky": {
    "2022": {
     "pocet": 720,
@@ -37,18 +37,18 @@
     "fo_suma": 3426023
    },
    "2026": {
-    "pocet": 854,
-    "suma": 56213914,
-    "fo_pocet": 253,
-    "fo_suma": 1158454
+    "pocet": 869,
+    "suma": 60345243,
+    "fo_pocet": 258,
+    "fo_suma": 3847713
    }
   },
   "dodavatelia_posledne_3_roky": [
    {
     "ico": "50349287",
-    "nazov": "Ministerstvo investícií regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "pocet": 50,
-    "suma": 46143265
+    "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "pocet": 51,
+    "suma": 47560517
    },
    {
     "ico": "30416094",
@@ -263,14 +263,6 @@
     "url": "https://www.crz.gov.sk/zmluva/12845750/"
    },
    {
-    "datum": "2025-11-19",
-    "dodavatel": "CED inžinierske staviteľstvo a.s.",
-    "ico": "55207499",
-    "suma": 2027696.88,
-    "popis": "ZŠ s MŠ A. Kubinu - rekonštrukcia areálu, Trnava",
-    "url": "https://www.crz.gov.sk/zmluva/11623930/"
-   },
-   {
     "datum": "2026-03-11",
     "dodavatel": "Ministerstvo dopravy SR",
     "ico": "30416094",
@@ -285,6 +277,14 @@
     "suma": 1723165.3,
     "popis": "Dodatok č.2 k Zmluve o poskytnutí PM na podporu obnovy a odolnosti č.04402I02-29-V012024",
     "url": "https://www.crz.gov.sk/zmluva/12127299/"
+   },
+   {
+    "datum": "2026-07-20",
+    "dodavatel": "Ministerstvo dopravy SR",
+    "ico": "30416094",
+    "suma": 1715984.21,
+    "popis": "Dodatok č. 3 k zmluve o poskytnutí prostriedkov mechanizmu na podporu obnovy a odolnosti č. 044/02I02-29-V01/2024",
+    "url": "https://www.crz.gov.sk/zmluva/12613491/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-19T14:31:14+00:00"
+ "aktualizovane": "2026-11-20T14:09:45+00:00"
 }

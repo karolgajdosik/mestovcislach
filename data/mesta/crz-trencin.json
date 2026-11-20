@@ -2,15 +2,15 @@
  "mesto": "trencin",
  "ico": "00312037",
  "od": "2022-01-01",
- "do": "2026-11-18",
+ "do": "2026-11-19",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 12578,
-  "skryte_fyzicke_osoby": 6909,
+  "zaznamov": 12595,
+  "skryte_fyzicke_osoby": 6920,
   "roky": {
    "2022": {
     "pocet": 1819,
@@ -37,10 +37,10 @@
     "fo_suma": 9669829
    },
    "2026": {
-    "pocet": 2319,
-    "suma": 100252877,
-    "fo_pocet": 1151,
-    "fo_suma": 2538323
+    "pocet": 2336,
+    "suma": 100433713,
+    "fo_pocet": 1162,
+    "fo_suma": 2538573
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -59,8 +59,8 @@
    {
     "ico": "46715894",
     "nazov": "Adifex a.s.",
-    "pocet": 18,
-    "suma": 30389161
+    "pocet": 19,
+    "suma": 30567510
    },
    {
     "ico": "37920413",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-19T14:31:14+00:00"
+ "aktualizovane": "2026-11-20T14:09:45+00:00"
 }
