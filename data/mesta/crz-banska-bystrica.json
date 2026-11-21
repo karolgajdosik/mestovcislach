@@ -2,15 +2,15 @@
  "mesto": "banska-bystrica",
  "ico": "00313271",
  "od": "2022-01-01",
- "do": "2026-11-19",
+ "do": "2026-11-20",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8195,
-  "skryte_fyzicke_osoby": 4115,
+  "zaznamov": 8240,
+  "skryte_fyzicke_osoby": 4135,
   "roky": {
    "2022": {
     "pocet": 1257,
@@ -37,18 +37,18 @@
     "fo_suma": 4197336
    },
    "2026": {
-    "pocet": 1885,
-    "suma": 93111435,
-    "fo_pocet": 1040,
-    "fo_suma": 5651601
+    "pocet": 1930,
+    "suma": 97750307,
+    "fo_pocet": 1060,
+    "fo_suma": 5664406
    }
   },
   "dodavatelia_posledne_3_roky": [
    {
     "ico": "50349287",
     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "pocet": 43,
-    "suma": 46900485
+    "pocet": 44,
+    "suma": 48038234
    },
    {
     "ico": "36854140",
@@ -57,16 +57,16 @@
     "suma": 19008372
    },
    {
+    "ico": "00002801",
+    "nazov": "Slovenská inovačná a energetická agentúra",
+    "pocet": 8,
+    "suma": 17549950
+   },
+   {
     "ico": "30416094",
     "nazov": "Ministerstvo dopravy, výstavby a regionálneho rozvoja SR",
     "pocet": 17,
     "suma": 14583776
-   },
-   {
-    "ico": "00002801",
-    "nazov": "Slovenská inovačná a energetická agentúra",
-    "pocet": 7,
-    "suma": 14273774
    },
    {
     "ico": "35815256",
@@ -131,8 +131,8 @@
    {
     "ico": "31602363",
     "nazov": "Špeciálne cestné práce SLOVKOREKT, spol. s r.o.",
-    "pocet": 9,
-    "suma": 4923836
+    "pocet": 10,
+    "suma": 5034196
    },
    {
     "ico": "42181810",
@@ -173,6 +173,14 @@
     "suma": 10000000.0,
     "popis": "Zmluva o účelovom úvere č. 1089/25/08720",
     "url": "https://www.crz.gov.sk/zmluva/11786242/"
+   },
+   {
+    "datum": "2026-11-16",
+    "dodavatel": "Slovenská inovačná a energetická agentúra",
+    "ico": "00002801",
+    "suma": 3276175.87,
+    "popis": "Dodatok č. 5 k Zmluve o poskytnutí nenávratného finančného príspevku č. PSK-SIEA-002-2023-DV-EFRR/FDX7",
+    "url": "https://www.crz.gov.sk/zmluva/13107696/"
    },
    {
     "datum": "2026-10-09",
@@ -277,14 +285,6 @@
     "suma": 1988627.5,
     "popis": "Dodatok č. 2 k Rámcovej zmluve o poskytovaní stravovacích služieb č. 1438/2024/OSV-SDS",
     "url": "https://www.crz.gov.sk/zmluva/11917608/"
-   },
-   {
-    "datum": "2026-10-07",
-    "dodavatel": "Ústredie práce, sociálnych vecí a rodiny, Úrad práce, sociálnych vecí a rodiny Banská Bystrica",
-    "ico": "30794536",
-    "suma": 1894017.06,
-    "popis": "Dodatok č.6 k Dohode č. 2024/BB/064 o poskytnutí finančného príspevku",
-    "url": "https://www.crz.gov.sk/zmluva/12976638/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-20T14:09:45+00:00"
+ "aktualizovane": "2026-11-21T13:34:51+00:00"
 }

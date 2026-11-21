@@ -2,15 +2,15 @@
  "mesto": "presov",
  "ico": "00327646",
  "od": "2022-01-01",
- "do": "2026-11-19",
+ "do": "2026-11-20",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 6276,
-  "skryte_fyzicke_osoby": 1590,
+  "zaznamov": 6281,
+  "skryte_fyzicke_osoby": 1592,
   "roky": {
    "2022": {
     "pocet": 1140,
@@ -37,9 +37,9 @@
     "fo_suma": 8470220
    },
    "2026": {
-    "pocet": 1124,
-    "suma": 75829255,
-    "fo_pocet": 316,
+    "pocet": 1129,
+    "suma": 76352215,
+    "fo_pocet": 318,
     "fo_suma": 1826440
    }
   },
@@ -101,8 +101,8 @@
    {
     "ico": "31651518",
     "nazov": "EUROVIA SK, a.s.",
-    "pocet": 11,
-    "suma": 6669203
+    "pocet": 12,
+    "suma": 7191986
    },
    {
     "ico": "30416094",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-20T14:09:45+00:00"
+ "aktualizovane": "2026-11-21T13:34:51+00:00"
 }
