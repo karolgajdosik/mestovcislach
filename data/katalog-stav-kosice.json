@@ -10,9 +10,9 @@
    "nazov": "Cyklosčítače Košice - prašnosť",
    "kategoria": "Bezpečnosť, zdravie",
    "upravene": 1764683916000,
-   "riadkov": 387274,
+   "riadkov": 387411,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (387274 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (387411 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "6323640be4234b479f760435a2654c78",
@@ -136,7 +136,7 @@
    "nazov": "Cyklosčítače Košice - pohyb",
    "kategoria": "Doprava, parkovanie",
    "upravene": 1764684099000,
-   "riadkov": 182930,
+   "riadkov": 183026,
    "stav": "vynechane",
    "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
   },
@@ -466,7 +466,7 @@
    "nazov": "Úradná tabuľa Mesta Košice",
    "kategoria": "Politika, voľby, orgány",
    "upravene": 1764750909000,
-   "riadkov": 85,
+   "riadkov": 86,
    "stav": "vynechane",
    "dovod": "Názvy dokumentov na úradnej tabuli môžu obsahovať mená fyzických osôb (napr. doručovanie písomností) – nezverejňujeme."
   },
@@ -672,28 +672,28 @@
    "id": "f3fae948601148c9a458e375a572c84c",
    "nazov": "Dodávateľské faktúry mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1795140209000,
-   "riadkov": 89779,
+   "upravene": 1795226735000,
+   "riadkov": 90220,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (89779 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (90220 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "06d4cb2866c54b43bb1997f7edf86f4d",
    "nazov": "Objednávky mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1795140218000,
-   "riadkov": 24392,
+   "upravene": 1795226797000,
+   "riadkov": 24473,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (24392 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (24473 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "6b66219049674794b462b90512081220",
    "nazov": "Zmluvy mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1795140227000,
-   "riadkov": 46875,
+   "upravene": 1795226894000,
+   "riadkov": 47122,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (46875 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (47122 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "9961c8a9cd8e461d8bee1414833746b9",
@@ -792,9 +792,9 @@
    "nazov": "Meteostanice na vybraných ZŠ mesta Košice",
    "kategoria": "Životné prostredie a klíma",
    "upravene": 1769602512000,
-   "riadkov": 738664,
+   "riadkov": 740672,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (738664 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (740672 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "975951e6113543768e960c96bbc75f3b",
@@ -845,5 +845,5 @@
    "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
   }
  ],
- "aktualizovane": "2026-11-20T06:27:26+00:00"
+ "aktualizovane": "2026-11-21T10:12:32+00:00"
 }

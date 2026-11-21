@@ -2597,7 +2597,7 @@
    "nazov": "Počet prechádzajúcich chodcov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492980000,
-   "riadkov": 869307,
+   "riadkov": 869859,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače chodcov"
@@ -2607,7 +2607,7 @@
    "nazov": "Počet prejazdov cyklistov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492966000,
-   "riadkov": 869307,
+   "riadkov": 869859,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače cyklistov"
@@ -2617,7 +2617,7 @@
    "nazov": "Počet prejazdov vozidiel podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492972000,
-   "riadkov": 501803,
+   "riadkov": 502259,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače áut"
@@ -4022,7 +4022,7 @@
    "nazov": "Faktúry Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151953000,
-   "riadkov": 151049,
+   "riadkov": 151087,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry magistrátu"
@@ -4201,7 +4201,7 @@
    "nazov": "Objednávky Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151897000,
-   "riadkov": 65834,
+   "riadkov": 65851,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky magistrátu"
@@ -4828,7 +4828,7 @@
    "nazov": "Zmluvy Magistrátu hlavného mesta SR Bratislava zverejnené od júla 2022",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151852000,
-   "riadkov": 13365,
+   "riadkov": 13388,
    "stav": "na_webe",
    "kde": "/bratislava/financie",
    "pozn": "Zmluvy magistrátu"
@@ -6847,5 +6847,5 @@
    "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-11-20T06:17:16+00:00"
+ "aktualizovane": "2026-11-21T10:09:25+00:00"
 }

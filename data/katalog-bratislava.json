@@ -6799,7 +6799,7 @@
    "popis": "Dataset všetkých faktúr Magistrátu hlavného mesta SR Bratislava od roku 2011. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 116047872,
+   "velkost": 116080640,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -6819,7 +6819,7 @@
      "nazov": "Faktúry_Magistrátu_hlavného_mesta_SR_Bratislava_od_roku_2011",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 151049,
+     "pocet": 151087,
      "polia": [
       [
        "IDENTIFIKÁTOR_FAKTÚRY",
@@ -12179,7 +12179,7 @@
    "popis": "Dataset všetkých objednávok Magistrátu hlavného mesta SR Bratislava od roku 2011. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 52019200,
+   "velkost": 52035584,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -12197,7 +12197,7 @@
      "nazov": "Objednávky_Magistrátu_hlavného_mesta_SR_Bratislava_od_roku_2011",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 65834,
+     "pocet": 65851,
      "polia": [
       [
        "IDENTIFIKÁTOR_OBJEDNÁVKY",
@@ -23880,7 +23880,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 233496576,
+   "velkost": 233611264,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23900,7 +23900,7 @@
      "nazov": "chodci10_01",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 869307,
+     "pocet": 869859,
      "polia": [
       [
        "NAZOV",
@@ -23967,7 +23967,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 232923136,
+   "velkost": 233037824,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23987,7 +23987,7 @@
      "nazov": "cyklisti2_0",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 869307,
+     "pocet": 869859,
      "polia": [
       [
        "NAZOV",
@@ -24054,7 +24054,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 118923264,
+   "velkost": 119021568,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -24074,7 +24074,7 @@
      "nazov": "vozidla_00",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 501803,
+     "pocet": 502259,
      "polia": [
       [
        "NAZOV",
@@ -48656,7 +48656,7 @@
    "popis": "Dataset všetkých zmlúv Magistrátu hlavného mesta SR Bratislava zverejnených od júla 2022. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 13369344,
+   "velkost": 13393920,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -48676,7 +48676,7 @@
      "nazov": "Zmluvy_Magistrátu_hlavného_mesta_SR_Bratislava_zverejnené_od_júla_2022",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 13365,
+     "pocet": 13388,
      "polia": [
       [
        "IČO_SAMOSPRÁVY",
@@ -54554,5 +54554,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-11-20T06:17:02+00:00"
+ "aktualizovane": "2026-11-21T10:09:10+00:00"
 }

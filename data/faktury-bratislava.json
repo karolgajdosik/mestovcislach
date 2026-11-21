@@ -4,7 +4,7 @@
    "organizacia": "Magistrát",
    "typ": "faktúry",
    "zdroj": "https://data.bratislava.sk/datasets/7f719a610a7b401fac526b15d0682534",
-   "zaznamov": 151049,
+   "zaznamov": 151087,
    "vynechane_bez_ico": 497,
    "roky": {
     "2005": {
@@ -88,16 +88,16 @@
      "suma": 152797993
     },
     "2026": {
-     "pocet": 9280,
-     "suma": 125854010
+     "pocet": 9318,
+     "suma": 126112503
     }
    },
    "dodavatelia_posledne_3_roky": [
     {
      "ico": "00681300",
      "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
-     "pocet": 123,
-     "suma": 97257247
+     "pocet": 124,
+     "suma": 97257313
     },
     {
      "ico": "50614339",
@@ -144,14 +144,14 @@
     {
      "ico": "35738880",
      "nazov": "PAAS s.r.o.",
-     "pocet": 239,
-     "suma": 13125177
+     "pocet": 240,
+     "suma": 13132711
     },
     {
      "ico": "35850370",
      "nazov": "Bratislavská vodárenská spoločnosť, a.s.",
-     "pocet": 2612,
-     "suma": 9085406
+     "pocet": 2620,
+     "suma": 9088044
     },
     {
      "ico": "35943301",
@@ -174,8 +174,8 @@
     {
      "ico": "35732881",
      "nazov": "METRO Bratislava a.s.",
-     "pocet": 394,
-     "suma": 5092619
+     "pocet": 395,
+     "suma": 5264868
     },
     {
      "ico": "47758970",
@@ -204,8 +204,8 @@
     {
      "ico": "51806576",
      "nazov": "RETAN, s. r. o.",
-     "pocet": 1677,
-     "suma": 2766531
+     "pocet": 1685,
+     "suma": 2784110
     },
     {
      "ico": "31651518",
@@ -345,7 +345,7 @@
    "organizacia": "Magistrát",
    "typ": "objednávky",
    "zdroj": "https://data.bratislava.sk/datasets/e3a9501c0fb64dbf9ff6de81847e3b9a",
-   "zaznamov": 65834,
+   "zaznamov": 65851,
    "vynechane_bez_ico": 648,
    "roky": {
     "2011": {
@@ -409,8 +409,8 @@
      "suma": 48507149
     },
     "2026": {
-     "pocet": 4335,
-     "suma": 55145639
+     "pocet": 4352,
+     "suma": 55585693
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -453,8 +453,8 @@
     {
      "ico": "53684141",
      "nazov": "Yunex, s. r. o.",
-     "pocet": 280,
-     "suma": 4761469
+     "pocet": 288,
+     "suma": 5082839
     },
     {
      "ico": "44723024",
@@ -465,8 +465,8 @@
     {
      "ico": "51806576",
      "nazov": "RETAN, s. r. o.",
-     "pocet": 1791,
-     "suma": 3729846
+     "pocet": 1792,
+     "suma": 3731630
     },
     {
      "ico": "31606458",
@@ -2019,5 +2019,5 @@
  "chyby": [
   "Marianum zmluvy: Marianum zmluvy: žiadne použiteľné riadky"
  ],
- "aktualizovane": "2026-11-20T06:26:08+00:00"
+ "aktualizovane": "2026-11-21T10:10:43+00:00"
 }

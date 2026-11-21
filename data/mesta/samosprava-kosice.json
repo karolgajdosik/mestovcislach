@@ -1163,8 +1163,8 @@
   {
    "typ": "zmluvy",
    "zdroj": "https://opendata.kosice.sk/datasets/6b66219049674794b462b90512081220",
-   "zaznamov": 46875,
-   "skryte_fyzicke_osoby": 7185,
+   "zaznamov": 47122,
+   "skryte_fyzicke_osoby": 7218,
    "roky": {
     "2010": {
      "pocet": 2,
@@ -1239,8 +1239,8 @@
      "fo_suma": 7647962
     },
     "2022": {
-     "pocet": 1031,
-     "suma": 64532217,
+     "pocet": 1032,
+     "suma": 64534173,
      "fo_pocet": 431,
      "fo_suma": 17076116
     },
@@ -1263,10 +1263,10 @@
      "fo_suma": 80771190
     },
     "2026": {
-     "pocet": 1088,
-     "suma": 237671724,
-     "fo_pocet": 497,
-     "fo_suma": 96640472
+     "pocet": 1159,
+     "suma": 242817304,
+     "fo_pocet": 530,
+     "fo_suma": 96685025
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -1308,14 +1308,14 @@
     },
     {
      "ico": "31651402",
-     "pocet": 12,
-     "suma": 15162826,
+     "pocet": 13,
+     "suma": 15242400,
      "nazov": "COLAS Slovakia, a.s."
     },
     {
      "ico": "44886021",
-     "pocet": 3,
-     "suma": 12020144,
+     "pocet": 4,
+     "suma": 15176276,
      "nazov": "DAG SLOVAKIA, a.s."
     },
     {
@@ -1338,8 +1338,8 @@
     },
     {
      "ico": "44518684",
-     "pocet": 28,
-     "suma": 7354853,
+     "pocet": 29,
+     "suma": 7600953,
      "nazov": "Bytový podnik mesta Košice, s.r.o."
     },
     {
@@ -1367,9 +1367,15 @@
      "nazov": "Národná diaľničná spoločnosť, a.s."
     },
     {
+     "ico": "47575832",
+     "pocet": 3,
+     "suma": 2431283,
+     "nazov": "USD Lučenec s.r.o."
+    },
+    {
      "ico": "46320610",
-     "pocet": 8,
-     "suma": 2106853,
+     "pocet": 9,
+     "suma": 2173953,
      "nazov": "STAV RD s.r.o."
     },
     {
@@ -1383,12 +1389,6 @@
      "pocet": 10,
      "suma": 1746283,
      "nazov": "Psychosociálne centrum"
-    },
-    {
-     "ico": "42181810",
-     "pocet": 6,
-     "suma": 1729043,
-     "nazov": "Ministerstvo životného prostredia Slovenskej republiky"
     }
    ],
    "najvacsie_12_mesiacov": [
@@ -1502,8 +1502,8 @@
   {
    "typ": "faktúry",
    "zdroj": "https://opendata.kosice.sk/datasets/f3fae948601148c9a458e375a572c84c",
-   "zaznamov": 89779,
-   "skryte_fyzicke_osoby": 15135,
+   "zaznamov": 90220,
+   "skryte_fyzicke_osoby": 15164,
    "roky": {
     "2010": {
      "pocet": 2,
@@ -1602,71 +1602,71 @@
      "fo_suma": 3347717
     },
     "2026": {
-     "pocet": 5110,
-     "suma": 96489963,
-     "fo_pocet": 636,
-     "fo_suma": 2713658
+     "pocet": 5551,
+     "suma": 103411357,
+     "fo_pocet": 665,
+     "fo_suma": 2857216
     }
    },
    "dodavatelia_posledne_3_roky": [
     {
      "ico": "36205214",
-     "pocet": 515,
-     "suma": 67249871,
+     "pocet": 519,
+     "suma": 67253133,
      "nazov": "KOSIT a.s."
     },
     {
      "ico": "31651518",
-     "pocet": 26,
-     "suma": 56602504,
+     "pocet": 28,
+     "suma": 59689488,
      "nazov": "EUROVIA SK, a.s."
     },
     {
      "ico": "44518684",
-     "pocet": 2308,
-     "suma": 15045644,
+     "pocet": 2382,
+     "suma": 15562488,
      "nazov": "Bytový podnik mesta Košice, s.r.o."
     },
     {
-     "ico": "31701914",
-     "pocet": 162,
-     "suma": 9387255,
-     "nazov": "Dopravný podnik mesta Košice, akciová spoločnosť"
-    },
-    {
      "ico": "31651402",
-     "pocet": 72,
-     "suma": 9030140,
+     "pocet": 82,
+     "suma": 9839461,
      "nazov": "COLAS Slovakia, a.s."
     },
     {
+     "ico": "31701914",
+     "pocet": 164,
+     "suma": 9513002,
+     "nazov": "Dopravný podnik mesta Košice, akciová spoločnosť"
+    },
+    {
      "ico": "36570460",
-     "pocet": 348,
-     "suma": 7578740,
+     "pocet": 355,
+     "suma": 7857153,
      "nazov": "Východoslovenská vodárenská spoločnosť, a.s."
     },
     {
      "ico": "46897992",
-     "pocet": 5,
-     "suma": 5079099,
+     "pocet": 6,
+     "suma": 5111649,
      "nazov": "CESTY KOŠICE s.r.o."
     },
     {
      "ico": "46057196",
-     "pocet": 35,
-     "suma": 3151386,
+     "pocet": 37,
+     "suma": 3221910,
      "nazov": "LED SOLAR Service, a. s."
     },
     {
      "ico": "31684343",
-     "pocet": 13,
-     "suma": 2075457,
+     "pocet": 15,
+     "suma": 2487029,
      "nazov": "BETPRES s.r.o."
     },
     {
      "ico": "36631124",
-     "pocet": 247,
-     "suma": 1792608,
+     "pocet": 251,
+     "suma": 1807106,
      "nazov": "Slovenská pošta, a.s."
     },
     {
@@ -1677,26 +1677,26 @@
     },
     {
      "ico": "50673289",
-     "pocet": 31,
-     "suma": 1423240,
+     "pocet": 33,
+     "suma": 1504947,
      "nazov": "Box Park, s.r.o."
     },
     {
      "ico": "53684141",
-     "pocet": 83,
-     "suma": 1372772,
+     "pocet": 84,
+     "suma": 1407459,
      "nazov": "Yunex, s.r.o."
     },
     {
      "ico": "44483767",
-     "pocet": 1611,
-     "suma": 1365293,
+     "pocet": 1627,
+     "suma": 1390942,
      "nazov": "Energetika Slovensko, a. s."
     },
     {
      "ico": "35871113",
-     "pocet": 188,
-     "suma": 1222254,
+     "pocet": 193,
+     "suma": 1269449,
      "nazov": "EEI s. r. o."
     },
     {
@@ -1707,27 +1707,27 @@
     },
     {
      "ico": "17078202",
-     "pocet": 612,
-     "suma": 1189937,
+     "pocet": 625,
+     "suma": 1199930,
      "nazov": "Správa mestskej zelene v Košiciach"
     },
     {
      "ico": "35697270",
-     "pocet": 403,
-     "suma": 1009001,
+     "pocet": 411,
+     "suma": 1039453,
      "nazov": "Orange Slovensko, a.s."
+    },
+    {
+     "ico": "45965838",
+     "pocet": 33,
+     "suma": 950376,
+     "nazov": "MP KANAL service s.r.o."
     },
     {
      "ico": "36693481",
      "pocet": 3,
      "suma": 904455,
      "nazov": "PROENERGS s.r.o."
-    },
-    {
-     "ico": "45965838",
-     "pocet": 31,
-     "suma": 886427,
-     "nazov": "MP KANAL service s.r.o."
     }
    ],
    "najvacsie_12_mesiacov": [
@@ -1771,6 +1771,13 @@
      "dodavatel": "EUROVIA SK, a.s.",
      "ico": "31651518",
      "suma": 3106664.21,
+     "popis": "Modernizácia električkových tratí MET, 2.etapa"
+    },
+    {
+     "datum": "2026-09-13",
+     "dodavatel": "EUROVIA SK, a.s.",
+     "ico": "31651518",
+     "suma": 3068591.18,
      "popis": "Modernizácia električkových tratí MET, 2.etapa"
     },
     {
@@ -1828,21 +1835,14 @@
      "ico": "36205214",
      "suma": 860485.39,
      "popis": "Zimná údržba 12/2025"
-    },
-    {
-     "datum": "2026-09-13",
-     "dodavatel": "Dopravný podnik mesta Košice, akciová spoločnosť",
-     "ico": "31701914",
-     "suma": 644955.94,
-     "popis": "Zámena nehnuteľností"
     }
    ]
   },
   {
    "typ": "objednávky",
    "zdroj": "https://opendata.kosice.sk/datasets/06d4cb2866c54b43bb1997f7edf86f4d",
-   "zaznamov": 24392,
-   "skryte_fyzicke_osoby": 5230,
+   "zaznamov": 24473,
+   "skryte_fyzicke_osoby": 5237,
    "roky": {
     "2011": {
      "pocet": 991,
@@ -1935,10 +1935,10 @@
      "fo_suma": 532883
     },
     "2026": {
-     "pocet": 1754,
-     "suma": 11958521,
-     "fo_pocet": 230,
-     "fo_suma": 442674
+     "pocet": 1835,
+     "suma": 12246303,
+     "fo_pocet": 237,
+     "fo_suma": 457898
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -1950,14 +1950,14 @@
     },
     {
      "ico": "44518684",
-     "pocet": 459,
-     "suma": 7110581,
+     "pocet": 470,
+     "suma": 7190669,
      "nazov": "Bytový podnik mesta Košice, s.r.o."
     },
     {
      "ico": "17078202",
-     "pocet": 590,
-     "suma": 1471818,
+     "pocet": 599,
+     "suma": 1499566,
      "nazov": "Správa mestskej zelene v Košiciach"
     },
     {
@@ -1973,6 +1973,12 @@
      "nazov": "MP KANAL service s.r.o."
     },
     {
+     "ico": "36396222",
+     "pocet": 47,
+     "suma": 396090,
+     "nazov": "AUTOCONT s.r.o."
+    },
+    {
      "ico": "45331324",
      "pocet": 11,
      "suma": 390457,
@@ -1983,12 +1989,6 @@
      "pocet": 6,
      "suma": 389575,
      "nazov": "Unique People, s.r.o."
-    },
-    {
-     "ico": "36396222",
-     "pocet": 45,
-     "suma": 381526,
-     "nazov": "AUTOCONT s.r.o."
     },
     {
      "ico": "36202771",
@@ -2033,16 +2033,22 @@
      "nazov": "CAMEO, s.r.o."
     },
     {
+     "ico": "50736396",
+     "pocet": 17,
+     "suma": 247796,
+     "nazov": "Grey s.r.o."
+    },
+    {
+     "ico": "50673289",
+     "pocet": 5,
+     "suma": 240884,
+     "nazov": "Box Park, s.r.o."
+    },
+    {
      "ico": "31672981",
      "pocet": 19,
      "suma": 237962,
      "nazov": "Mestské lesy Košice a.s."
-    },
-    {
-     "ico": "50736396",
-     "pocet": 14,
-     "suma": 230748,
-     "nazov": "Grey s.r.o."
     },
     {
      "ico": "50725483",
@@ -2055,12 +2061,6 @@
      "pocet": 18,
      "suma": 201292,
      "nazov": "Ledvák spol. s r.o."
-    },
-    {
-     "ico": "35883022",
-     "pocet": 5,
-     "suma": 190287,
-     "nazov": "COLAS, s.r.o."
     }
    ],
    "najvacsie_12_mesiacov": [
@@ -2172,5 +2172,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-11-17T05:32:01+00:00"
+ "aktualizovane": "2026-11-21T10:14:51+00:00"
 }
