@@ -3,7 +3,7 @@
   "nazov": "OpenStreetMap",
   "licencia": "ODbL – © prispievatelia OpenStreetMap",
   "url": "https://www.openstreetmap.org/copyright",
-  "stav_osm": "2026-11-22T12:05:36Z"
+  "stav_osm": null
  },
  "kategorie": {
   "cyklocesticka": "Cyklocestičky",
@@ -12,11 +12,11 @@
  },
  "mesto": {
   "km": {
-   "cyklocesticka": 149.9,
+   "cyklocesticka": 149.8,
    "spolocna": 31.7,
    "cyklopruh": 36.5
   },
-  "km_spolu": 218.1
+  "km_spolu": 218.0
  },
  "mestske_casti": [
   {
@@ -47,11 +47,11 @@
    "kod_obce": "529346",
    "nazov": "Nové Mesto",
    "km": {
-    "cyklocesticka": 12.5,
+    "cyklocesticka": 12.4,
     "spolocna": 1.6,
     "cyklopruh": 5.2
    },
-   "km_spolu": 19.3,
+   "km_spolu": 19.2,
    "km_na_km2": 0.51,
    "m_na_obyvatela": 0.42
   },
@@ -224,5 +224,5 @@
    "m_na_obyvatela": 0.13
   }
  ],
- "aktualizovane": "2026-11-22T12:07:39+00:00"
+ "aktualizovane": "2026-11-22T19:04:59+00:00"
 }
