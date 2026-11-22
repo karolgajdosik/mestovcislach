@@ -5881,7 +5881,7 @@
       ],
       [
        "datum_zverejnenia",
-       "String",
+       "Date",
        "datum_zverejnenia"
       ],
       [
@@ -5896,7 +5896,7 @@
       ],
       [
        "datum_aktualizacie",
-       "String",
+       "Date",
        "datum_aktualizacie"
       ],
       [
@@ -11318,5 +11318,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-11-22T08:41:46+00:00"
+ "aktualizovane": "2026-11-22T19:08:21+00:00"
 }
