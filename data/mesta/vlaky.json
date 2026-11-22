@@ -3,12 +3,12 @@
   "nazov": "Železnice SR – grafikon vlakovej dopravy (GTFS), Národný katalóg otvorených dát",
   "url": "https://data.slovensko.sk/datasety/ebeeedf1-aca2-451a-bdc0-35d536714888"
  },
- "den": "2026-11-18",
+ "den": "2026-11-25",
  "platnost": [
   "2025-12-14",
   "2026-12-12"
  ],
- "vlakov_v_den": 2003,
+ "vlakov_v_den": 2002,
  "mesta": {
   "bratislava": {
    "stanice": [
@@ -24,10 +24,10 @@
     "Bratislava-Železná studienka"
    ],
    "hlavna": "Bratislava hl.st.",
-   "odchodov": 791,
-   "odchodov_hlavna": 171,
+   "odchodov": 790,
+   "odchodov_hlavna": 177,
    "dopravcovia": {
-    "Železničná spoločnosť Slovensko": 618,
+    "Železničná spoločnosť Slovensko": 617,
     "Leo Express Slovensko s.r.o.": 163,
     "RegioJet": 6,
     "Leo Express s.r.o.": 4
@@ -323,5 +323,5 @@
    }
   }
  },
- "aktualizovane": "2026-11-01T10:19:37+00:00"
+ "aktualizovane": "2026-11-22T19:05:04+00:00"
 }
