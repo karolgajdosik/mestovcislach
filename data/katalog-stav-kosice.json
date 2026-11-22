@@ -10,9 +10,9 @@
    "nazov": "Cyklosčítače Košice - prašnosť",
    "kategoria": "Bezpečnosť, zdravie",
    "upravene": 1764683916000,
-   "riadkov": 387411,
+   "riadkov": 387548,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (387411 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (387548 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "6323640be4234b479f760435a2654c78",
@@ -136,7 +136,7 @@
    "nazov": "Cyklosčítače Košice - pohyb",
    "kategoria": "Doprava, parkovanie",
    "upravene": 1764684099000,
-   "riadkov": 183026,
+   "riadkov": 183122,
    "stav": "vynechane",
    "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
   },
@@ -672,7 +672,7 @@
    "id": "f3fae948601148c9a458e375a572c84c",
    "nazov": "Dodávateľské faktúry mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1795226735000,
+   "upravene": 1795313469000,
    "riadkov": 90220,
    "stav": "vynechane",
    "dovod": "Príliš veľký na všeobecný import (90220 riadkov) – vyžaduje osobitné spracovanie."
@@ -681,7 +681,7 @@
    "id": "06d4cb2866c54b43bb1997f7edf86f4d",
    "nazov": "Objednávky mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1795226797000,
+   "upravene": 1795313540000,
    "riadkov": 24473,
    "stav": "vynechane",
    "dovod": "Príliš veľký na všeobecný import (24473 riadkov) – vyžaduje osobitné spracovanie."
@@ -690,7 +690,7 @@
    "id": "6b66219049674794b462b90512081220",
    "nazov": "Zmluvy mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1795226894000,
+   "upravene": 1795313657000,
    "riadkov": 47122,
    "stav": "vynechane",
    "dovod": "Príliš veľký na všeobecný import (47122 riadkov) – vyžaduje osobitné spracovanie."
@@ -792,9 +792,9 @@
    "nazov": "Meteostanice na vybraných ZŠ mesta Košice",
    "kategoria": "Životné prostredie a klíma",
    "upravene": 1769602512000,
-   "riadkov": 740672,
+   "riadkov": 742681,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (740672 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (742681 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "975951e6113543768e960c96bbc75f3b",
@@ -845,5 +845,5 @@
    "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
   }
  ],
- "aktualizovane": "2026-11-21T10:12:32+00:00"
+ "aktualizovane": "2026-11-22T08:41:54+00:00"
 }

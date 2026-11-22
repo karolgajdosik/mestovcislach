@@ -23880,7 +23880,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 233611264,
+   "velkost": 233734144,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23900,7 +23900,7 @@
      "nazov": "chodci10_01",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 869859,
+     "pocet": 870411,
      "polia": [
       [
        "NAZOV",
@@ -23967,7 +23967,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 233037824,
+   "velkost": 233152512,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23987,7 +23987,7 @@
      "nazov": "cyklisti2_0",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 869859,
+     "pocet": 870411,
      "polia": [
       [
        "NAZOV",
@@ -24054,7 +24054,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 119021568,
+   "velkost": 119111680,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -24074,7 +24074,7 @@
      "nazov": "vozidla_00",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 502259,
+     "pocet": 502715,
      "polia": [
       [
        "NAZOV",
@@ -54554,5 +54554,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-11-21T10:09:10+00:00"
+ "aktualizovane": "2026-11-22T08:36:47+00:00"
 }
