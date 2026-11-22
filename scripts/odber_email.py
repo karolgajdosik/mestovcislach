@@ -71,7 +71,9 @@ class Brevo:
     def __call__(self, metoda: str, cesta: str, **kw):
         r = self.s.request(metoda, API + cesta, timeout=60, **kw)
         if r.status_code >= 400:
-            raise RuntimeError(f"Brevo {metoda} {cesta}: HTTP {r.status_code} {r.text[:300]}")
+            # odpoveď Brevo môže obsahovať e-mail odberateľa → do (verejného) logu ide len maskovaná
+            text = re.sub(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+", "<e-mail>", r.text[:300])
+            raise RuntimeError(f"Brevo {metoda} {cesta.split('?')[0]}: HTTP {r.status_code} {text}")
         return r.json() if r.content else {}
 
     def vsetko(self, cesta: str, kluc: str) -> list[dict]:
