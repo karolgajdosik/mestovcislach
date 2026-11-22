@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T03:55:13",
+ "aktualizovane": "2026-11-13T05:36:22",
  "obyvatelia": {
   "roky": {
    "1993": 86679,
@@ -80,6 +80,17 @@
    "Gréckokatolícka cirkev na Slovensku (gréckokatolícke) / Gréckokatolícka cirkev": 566,
    "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 195,
    "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 161
+  },
+  "byty_vlastnictvo": {
+   "Spolu": 35973,
+   "vlastný byt v bytovom dome": 24190,
+   "byt vo vlastnom rodinnom dome": 9674,
+   "obecný byt": 852,
+   "družstevný byt - len stavebné bytové družstvá": 459,
+   "iná forma užívania bytu": 402,
+   "byt v nájme": 144,
+   "nezistený": 131,
+   "služobný a domovnícky byt": 121
   }
  },
  "volby": {
@@ -273,210 +284,508 @@
     ],
     "poslanci": [
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Pavol Obertáš",
       "strany": "nezávislý kandidát",
       "hlasy": 2844
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "Ing. Peter Košťál, PhD.",
       "strany": "nezávislý kandidát",
       "hlasy": 2362
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "Ing. Štefan Štefek",
       "strany": "nezávislý kandidát",
       "hlasy": 2205
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "JUDr. Igor Kršiak",
       "strany": "HLAS - sociálna demokracia, SME RODINA, DOBRÁ VOĽBA a Umiernení, Demokrati Slovenska",
       "hlasy": 1916
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Mgr. Petra Ajdariová",
       "strany": "nezávislý kandidát",
       "hlasy": 1867
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "Ing. Peter Oremus, PhD.",
       "strany": "nezávislý kandidát",
       "hlasy": 1728
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Ing. Miloš Dovičovič",
       "strany": "HLAS - sociálna demokracia, SME RODINA, DOBRÁ VOĽBA a Umiernení, Demokrati Slovenska",
       "hlasy": 1252
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "František Hollý",
       "strany": "nezávislý kandidát",
       "hlasy": 1217
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "RNDr. Marta Rácová",
       "strany": "nezávislý kandidát",
       "hlasy": 1182
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "Mgr. Miloslav Špoták",
       "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
       "hlasy": 1058
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Ing. arch. et Ing. Peter Mezei",
       "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
       "hlasy": 1053
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Ing. Erik Král",
       "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
       "hlasy": 1052
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "Ing. Andrej Sitkey",
       "strany": "nezávislý kandidát",
       "hlasy": 1051
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "Ing. Martin Horváth",
       "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
       "hlasy": 1049
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Ing. Miloslav Hatala",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, ŠANCA, SPOLU - občianska demokracia, ODS - Občianski demokrati Slovenska, Demokratická strana, Občianska konzervatívna strana, ZA ĽUDÍ",
       "hlasy": 1041
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Ing. Roman Ágh, MBA",
       "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
       "hlasy": 1007
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. Ján Greššo",
       "strany": "HLAS - sociálna demokracia, SME RODINA, DOBRÁ VOĽBA a Umiernení, Demokrati Slovenska",
       "hlasy": 974
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Ladislav Turba",
       "strany": "nezávislý kandidát",
       "hlasy": 972
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Denisa Branikovičová",
       "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
       "hlasy": 944
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "PhDr. Ján Vančo, PhD.",
       "strany": "Kresťanskodemokratické hnutie, Sloboda a Solidarita, ŠANCA, SPOLU - občianska demokracia, ODS - Občianski demokrati Slovenska, Demokratická strana, Občianska konzervatívna strana, ZA ĽUDÍ",
       "hlasy": 918
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Mgr. Igor Mesároš",
       "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
       "hlasy": 917
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Bc. Martina Dubaiová",
       "strany": "nezávislý kandidát",
       "hlasy": 891
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "prof. PhDr. Martina Mojtová, PhD.",
       "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
       "hlasy": 888
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Ing. Ľubomír Moravčík",
       "strany": "HLAS - sociálna demokracia, SME RODINA, DOBRÁ VOĽBA a Umiernení, Demokrati Slovenska",
       "hlasy": 853
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Ing. Jarmila Králová, PhD.",
       "strany": "nezávislý kandidát",
       "hlasy": 775
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "MUDr. Adriana Filipová",
       "strany": "nezávislý kandidát",
       "hlasy": 753
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Ing. Edita Vnučková",
       "strany": "nezávislý kandidát",
       "hlasy": 695
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "doc. PhDr. Katarína Welnitzová, PhD.",
       "strany": "nezávislý kandidát",
       "hlasy": 659
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Ing. Miroslav Gut",
       "strany": "nezávislý kandidát",
       "hlasy": 626
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "MVDr. Róbert Rathouský",
       "strany": "nezávislý kandidát",
       "hlasy": 610
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Regina Víteková",
       "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja",
       "hlasy": 447
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 10
+    }
    }
   },
   "2026": {
    "ucast": {
     "zapisani": 66075,
     "volili": 27101,
-    "ucast_pct": 41.01
+    "ucast_pct": 41.02
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 74,
+    "spolu": 74,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
    "primator": [
     {
      "meno": "Marek Hattas",
-     "strany": "Tím Kraj Nitra, Progresívne Slovensko, KDH, SaS, Demokrati, SLOVENSKO, OKS",
+     "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
      "hlasy": 13459,
-     "podiel": 50.66,
+     "podiel": 50.67,
      "zvoleny": true
     },
     {
-     "meno": "Igor Kršiak",
-     "strany": "NEKA",
+     "meno": "JUDr. Igor Kršiak",
+     "strany": "nezávislý kandidát",
      "hlasy": 10379,
      "podiel": 39.07,
      "zvoleny": false
     },
     {
-     "meno": "Marek Illéš",
-     "strany": "SMER - SD, HLAS - sociálna demokracia, SME RODINA",
+     "meno": "Ing. PhD. Marek Illéš",
+     "strany": "SMER - sociálna demokracia, HLAS - sociálna demokracia, SME RODINA",
      "hlasy": 1685,
      "podiel": 6.34,
      "zvoleny": false
     },
     {
-     "meno": "Zuzana Uhríková",
-     "strany": "REPUBLIKA, SNS",
+     "meno": "Ing. Zuzana Uhríková",
+     "strany": "REPUBLIKA, Slovenská národná strana",
      "hlasy": 1041,
-     "podiel": 3.91,
+     "podiel": 3.92,
      "zvoleny": false
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 31,
+    "mandaty": [
+     {
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "mandaty": 24
+     },
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 7
+     }
+    ],
+    "poslanci": [
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "Pavol Obertáš",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2585
+     },
+     {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
+      "meno": "Ing. PhD. Peter Košťál",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2433
+     },
+     {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
+      "meno": "MUDr. PhD. Jana Ďurková",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2403
+     },
+     {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
+      "meno": "PhDr. PhD. Anna Laurinec Šmehilová",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2324
+     },
+     {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
+      "meno": "JUDr. Igor Kršiak",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2280
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "Mgr. Henrich Varga",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2196
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "Mgr. Petra Ajdariová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2171
+     },
+     {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
+      "meno": "Mgr. Daniel Balko",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2165
+     },
+     {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
+      "meno": "Mgr. Lukáš Čelinák",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 2139
+     },
+     {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
+      "meno": "Ing. Martin Horváth",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1942
+     },
+     {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
+      "meno": "PhDr. PhD. Ján Vančo",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1898
+     },
+     {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
+      "meno": "Ing. Ing. arch. Peter Mezei",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1826
+     },
+     {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
+      "meno": "Ing. MBA Roman Ágh",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1767
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "Mgr. Dušan Káčer",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1715
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "Mgr. Pavol Zámečník",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1708
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "Mgr. art. Veronika Gabčíková",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1708
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "Ing. Peter Bakay",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1671
+     },
+     {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
+      "meno": "Denisa Branikovičová",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1641
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "Ing. Miloslav Hatala",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1618
+     },
+     {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
+      "meno": "Ing. Marek Fúska",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1593
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "prof. PhDr. PhD. Martina Mojtová",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1553
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "PhDr. PhD. Katarína Kompasová",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1420
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "Mgr. PhD. Kristián Čechmánek",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1291
+     },
+     {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
+      "meno": "Ing. Ľubomír Moravčík",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1087
+     },
+     {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
+      "meno": "JUDr. LL.M. Ladislav Mášik, MBA",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1079
+     },
+     {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
+      "meno": "Mgr. Ferdinand Vítek",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 1040
+     },
+     {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
+      "meno": "Ing. PhD. Jakub Neupauer",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 928
+     },
+     {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
+      "meno": "Ing. PhD. Róbert Ambra",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 913
+     },
+     {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
+      "meno": "Ing. Regina Víteková",
+      "strany": "Tím Kraj Nitra - Združenie kandidátov Nitrianskeho kraja, Progresívne Slovensko, KDH - Kresťanskodemokratické hnutie, Sloboda a Solidarita, Demokrati, Hnutie SLOVENSKO, Občianska konzervatívna strana",
+      "hlasy": 853
+     },
+     {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
+      "meno": "Ing. Miroslav Gut",
+      "strany": "nezávislý kandidát",
+      "hlasy": 611
+     },
+     {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
+      "meno": "Mgr. Erik Duchoň",
+      "strany": "nezávislý kandidát",
+      "hlasy": 481
+     }
+    ],
+    "statistiky": {
+     "zeny": 8,
+     "vek_priemer": 49.9,
+     "vek_min": 31,
+     "vek_max": 67,
+     "do_35": 2
+    }
    }
   }
  },
@@ -521,134 +830,134 @@
  },
  "byty": {
   "2001": {
-   "ZAC_BYT": 392,
    "DOKONC_BYT": 277,
-   "ROZOST_BYT_KON": 1158
+   "ROZOST_BYT_KON": 1158,
+   "ZAC_BYT": 392
   },
   "2002": {
-   "ZAC_BYT": 293,
    "DOKONC_BYT": 286,
-   "ROZOST_BYT_KON": 1165
+   "ROZOST_BYT_KON": 1165,
+   "ZAC_BYT": 293
   },
   "2003": {
-   "ZAC_BYT": 546,
    "DOKONC_BYT": 564,
-   "ROZOST_BYT_KON": 1110
+   "ROZOST_BYT_KON": 1110,
+   "ZAC_BYT": 546
   },
   "2004": {
-   "ZAC_BYT": 609,
    "DOKONC_BYT": 481,
-   "ROZOST_BYT_KON": 1196
+   "ROZOST_BYT_KON": 1196,
+   "ZAC_BYT": 609
   },
   "2005": {
-   "ZAC_BYT": 388,
    "DOKONC_BYT": 352,
-   "ROZOST_BYT_KON": 1295
+   "ROZOST_BYT_KON": 1295,
+   "ZAC_BYT": 388
   },
   "2006": {
-   "ZAC_BYT": 551,
    "DOKONC_BYT": 440,
-   "ROZOST_BYT_KON": 1414
+   "ROZOST_BYT_KON": 1414,
+   "ZAC_BYT": 551
   },
   "2007": {
-   "ZAC_BYT": 603,
    "DOKONC_BYT": 412,
-   "ROZOST_BYT_KON": 1588
+   "ROZOST_BYT_KON": 1588,
+   "ZAC_BYT": 603
   },
   "2008": {
-   "ZAC_BYT": 1281,
    "DOKONC_BYT": 667,
-   "ROZOST_BYT_KON": 2178
+   "ROZOST_BYT_KON": 2178,
+   "ZAC_BYT": 1281
   },
   "2009": {
-   "ZAC_BYT": 640,
    "DOKONC_BYT": 663,
-   "ROZOST_BYT_KON": 2079
+   "ROZOST_BYT_KON": 2079,
+   "ZAC_BYT": 640
   },
   "2010": {
-   "ZAC_BYT": 501,
    "DOKONC_BYT": 585,
-   "ROZOST_BYT_KON": 1982
+   "ROZOST_BYT_KON": 1982,
+   "ZAC_BYT": 501
   },
   "2011": {
-   "ZAC_BYT": 466,
    "DOKONC_BYT": 476,
-   "ROZOST_BYT_KON": 1980
+   "ROZOST_BYT_KON": 1980,
+   "ZAC_BYT": 466
   },
   "2012": {
-   "ZAC_BYT": 563,
    "DOKONC_BYT": 514,
-   "ROZOST_BYT_KON": 2020
+   "ROZOST_BYT_KON": 2020,
+   "ZAC_BYT": 563
   },
   "2013": {
-   "ZAC_BYT": 491,
    "DOKONC_BYT": 526,
-   "ROZOST_BYT_KON": 1966
+   "ROZOST_BYT_KON": 1966,
+   "ZAC_BYT": 491
   },
   "2014": {
-   "ZAC_BYT": 466,
    "DOKONC_BYT": 644,
-   "ROZOST_BYT_KON": 1768
+   "ROZOST_BYT_KON": 1768,
+   "ZAC_BYT": 466
   },
   "2015": {
-   "ZAC_BYT": 658,
    "DOKONC_BYT": 546,
-   "ROZOST_BYT_KON": 1889
+   "ROZOST_BYT_KON": 1889,
+   "ZAC_BYT": 658
   },
   "2016": {
-   "ZAC_BYT": 643,
    "DOKONC_BYT": 493,
-   "ROZOST_BYT_KON": 1569
+   "ROZOST_BYT_KON": 1569,
+   "ZAC_BYT": 643
   },
   "2017": {
-   "ZAC_BYT": 771,
    "DOKONC_BYT": 657,
-   "ROZOST_BYT_KON": 1683
+   "ROZOST_BYT_KON": 1683,
+   "ZAC_BYT": 771
   },
   "2018": {
-   "ZAC_BYT": 1713,
    "DOKONC_BYT": 920,
-   "ROZOST_BYT_KON": 2481
+   "ROZOST_BYT_KON": 2481,
+   "ZAC_BYT": 1713
   },
   "2019": {
-   "ZAC_BYT": 1079,
    "DOKONC_BYT": 860,
-   "ROZOST_BYT_KON": 2668
+   "ROZOST_BYT_KON": 2668,
+   "ZAC_BYT": 1079
   },
   "2020": {
-   "ZAC_BYT": 830,
    "DOKONC_BYT": 929,
-   "ROZOST_BYT_KON": 2535
+   "ROZOST_BYT_KON": 2535,
+   "ZAC_BYT": 830
   },
   "2021": {
-   "ZAC_BYT": 836,
    "DOKONC_BYT": 1223,
-   "ROZOST_BYT_KON": 2142
+   "ROZOST_BYT_KON": 2142,
+   "ZAC_BYT": 836
   },
   "2022": {
-   "ZAC_BYT": 1190,
    "DOKONC_BYT": 1132,
-   "ROZOST_BYT_KON": 2214
+   "ROZOST_BYT_KON": 2214,
+   "ZAC_BYT": 1190
   },
   "2023": {
-   "ZAC_BYT": 1087,
    "DOKONC_BYT": 794,
-   "ROZOST_BYT_KON": 2507
+   "ROZOST_BYT_KON": 2507,
+   "ZAC_BYT": 1087
   },
   "2024": {
-   "ZAC_BYT": 339,
    "DOKONC_BYT": 504,
-   "ROZOST_BYT_KON": 2320
+   "ROZOST_BYT_KON": 2320,
+   "ZAC_BYT": 339
   },
   "2025": {
-   "ZAC_BYT": 500,
    "DOKONC_BYT": 663,
-   "ROZOST_BYT_KON": 2157
+   "ROZOST_BYT_KON": 2157,
+   "ZAC_BYT": 500
   }
  },
  "ceny": {
   "kraj": {
-   "2022-Q2": 4,
+   "2022-Q2": 4.0,
    "2022-Q3": 11.6,
    "2022-Q4": 2.9,
    "2023-Q1": 6.7,
@@ -675,8 +984,8 @@
    "2023-Q2": -2.2,
    "2023-Q3": -4.1,
    "2023-Q4": -1.4,
-   "2024-Q1": -3,
-   "2024-Q2": 4,
+   "2024-Q1": -3.0,
+   "2024-Q2": 4.0,
    "2024-Q3": 6.2,
    "2024-Q4": 7.9,
    "2025-Q1": 12.2,
@@ -696,12 +1005,12 @@
   ]
  },
  "zdroje": {
-  "obyvatelia": "ŠÚ SR – DATAcube om7101rr",
+  "obyvatelia": "ŠÚ SR – STATdata om7101rr",
   "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)",
   "volby": "ŠÚ SR – volby.statistics.sk",
   "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk",
   "praca": "ÚPSVaR – mesačná štatistika",
-  "byty": "ŠÚ SR – DATAcube st3004rr",
-  "ceny": "ŠÚ SR – DATAcube sp3801qr"
+  "byty": "ŠÚ SR – STATdata st3004rr",
+  "ceny": "ŠÚ SR – STATdata sp3801qr"
  }
 }

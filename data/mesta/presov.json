@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-10-25T02:05:44",
+ "aktualizovane": "2026-11-13T05:36:22",
  "obyvatelia": {
   "roky": {
    "1993": 90963,
@@ -80,6 +80,17 @@
    "ostatné": 1931,
    "Pravoslávna cirkev na Slovensku (pravoslávne) / Pravoslávna cirkev": 1305,
    "Reformovaná kresťanská cirkev na Slovensku (kalvínske) / Reformovaná kresťanská cirkev": 123
+  },
+  "byty_vlastnictvo": {
+   "Spolu": 33396,
+   "vlastný byt v bytovom dome": 24853,
+   "byt vo vlastnom rodinnom dome": 6473,
+   "družstevný byt - len stavebné bytové družstvá": 656,
+   "iná forma užívania bytu": 524,
+   "obecný byt": 488,
+   "nezistený": 220,
+   "služobný a domovnícky byt": 134,
+   "byt v nájme": 48
   }
  },
  "volby": {
@@ -327,161 +338,226 @@
     ],
     "poslanci": [
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. František Oľha",
       "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
       "hlasy": 1839
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Mgr. Peter Krajňák",
       "strany": "HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
       "hlasy": 1577
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "JUDr. Martin Eštočák",
       "strany": "nezávislý kandidát",
       "hlasy": 1433
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "PaedDr. Slávka Čorejová",
       "strany": "nezávislý kandidát",
       "hlasy": 1394
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Mgr. Ing. Svetlana Pavlovičová, MBA",
       "strany": "SMER - sociálna demokracia",
       "hlasy": 1367
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Ing. Juraj Hudáč",
       "strany": "SMER - sociálna demokracia",
       "hlasy": 1240
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "MUDr. Ján Ahlers, MPH, MBA",
       "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
       "hlasy": 1187
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "JUDr. Vladimír Feľbaba",
       "strany": "OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1179
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "PhDr. Janette Langová, MBA",
       "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
       "hlasy": 1111
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "Mgr. Ľuboš Micheľ",
       "strany": "HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
       "hlasy": 1091
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "Lukáš Anderko",
       "strany": "OBYČAJNÍ ĽUDIA a nezávislé osobnosti (OĽANO), NOVA, Kresťanská únia (KÚ), ZMENA ZDOLA",
       "hlasy": 1089
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "doc. PhDr. Štefánia Andraščíková, PhD., MPH",
       "strany": "nezávislý kandidát",
       "hlasy": 1081
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Stanislav Šesták",
       "strany": "HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
       "hlasy": 1042
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "Peter Šulík",
       "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
       "hlasy": 994
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "MUDr. Lukáš Záhradník",
       "strany": "nezávislý kandidát",
       "hlasy": 988
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "PhDr. Rudolf Dupkala, PhD.",
       "strany": "nezávislý kandidát",
       "hlasy": 988
      },
      {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
       "meno": "PhDr. Marián Damankoš, PhD.",
       "strany": "Kresťanskodemokratické hnutie",
       "hlasy": 973
      },
      {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
       "meno": "Rudolf Voit",
       "strany": "nezávislý kandidát",
       "hlasy": 942
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Ing. Richard Drutarovský",
       "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
       "hlasy": 895
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Ing. Rastislav Mochnacký",
       "strany": "Kresťanskodemokratické hnutie",
       "hlasy": 875
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Mgr. Pavol Neupauer",
       "strany": "Kresťanskodemokratické hnutie",
       "hlasy": 855
      },
      {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
       "meno": "Mgr. Eva Lipková",
       "strany": "nezávislý kandidát",
       "hlasy": 831
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "JUDr. Pavel Hagyari, PhD., MBA",
       "strany": "STAROSTOVIA A NEZÁVISLÍ KANDIDÁTI",
       "hlasy": 823
      },
      {
+      "obvod": "obvod č. 7",
+      "obvod_c": 7,
       "meno": "PhDr. Martin Ďurišin, PhD.",
       "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
       "hlasy": 810
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "MUDr. Daniela Mrouahová",
       "strany": "nezávislý kandidát",
       "hlasy": 792
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Ing. Renáta Fedorčíková",
       "strany": "Kresťanskodemokratické hnutie",
       "hlasy": 739
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Richard Dubovický, MBA",
       "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
       "hlasy": 697
      },
      {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
       "meno": "Zuzana Tkáčová",
       "strany": "Kresťanskodemokratické hnutie",
       "hlasy": 689
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "Mgr. Jaroslava Kutajová",
       "strany": "Sloboda a Solidarita, Progresívne Slovensko, SPOLU - občianska demokracia, Demokratická strana, ŠANCA, ODS - Občianski demokrati Slovenska, DOBRÁ VOĽBA a Umiernení",
       "hlasy": 671
      },
      {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
       "meno": "MUDr. Peter Bandura, PhD.",
       "strany": "SMER - sociálna demokracia",
       "hlasy": 655
      },
      {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
       "meno": "Mgr. Emil Chlapeček",
       "strany": "HLAS - sociálna demokracia, SZÖVETSÉG - Magyarok. Nemzetiségek. Regiók.",
       "hlasy": 617
      }
-    ]
+    ],
+    "statistiky": {
+     "zeny": 9
+    }
    }
   },
   "2026": {
@@ -491,60 +567,301 @@
     "ucast_pct": 44.19
    },
    "spracovanie": {
-    "okrsky": null,
-    "spolu": null,
+    "okrsky": 66,
+    "spolu": 66,
     "pct": 100.0,
-    "priebezne": false,
-    "zdroj": "volbysr.sk (priebežne)"
+    "priebezne": false
    },
    "primator": [
     {
-     "meno": "František Oľha",
-     "strany": "Progresívne Slovensko, Demokrati, DS-ODS",
+     "meno": "Ing. František Oľha",
+     "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
      "hlasy": 12125,
      "podiel": 40.69,
      "zvoleny": true
     },
     {
-     "meno": "Pavel Hagyari",
-     "strany": "NEKA",
+     "meno": "JUDr. PhD. Pavel Hagyari, MBA",
+     "strany": "nezávislý kandidát",
      "hlasy": 7187,
      "podiel": 24.12,
      "zvoleny": false
     },
     {
-     "meno": "Rastislav Mochnacký",
-     "strany": "KDH, SLOVENSKO, SaS, Konzervatívci, ZA ĽUDÍ, NOVA",
+     "meno": "Ing. Rastislav Mochnacký",
+     "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
      "hlasy": 3964,
      "podiel": 13.3,
      "zvoleny": false
     },
     {
-     "meno": "Artúr Benes",
-     "strany": "NEKA",
+     "meno": "Ing. Artúr Benes",
+     "strany": "nezávislý kandidát",
      "hlasy": 2545,
      "podiel": 8.54,
      "zvoleny": false
     },
     {
-     "meno": "Martin Eštočák",
-     "strany": "NEKA",
+     "meno": "JUDr. Martin Eštočák",
+     "strany": "nezávislý kandidát",
      "hlasy": 2027,
      "podiel": 6.8,
      "zvoleny": false
     },
     {
-     "meno": "Svetlana Pavlovičová",
-     "strany": "SMER - SD, SNS, SME RODINA, Bratia Slovenska",
+     "meno": "PhDr. Ing. MBA Svetlana Pavlovičová",
+     "strany": "SMER - sociálna demokracia, Slovenská národná strana, SME RODINA, Bratia Slovenska",
      "hlasy": 1948,
-     "podiel": 6.53,
+     "podiel": 6.54,
      "zvoleny": false
     }
    ],
    "zastupitelstvo": {
-    "poslancov": 0,
-    "mandaty": [],
-    "poslanci": []
+    "poslancov": 31,
+    "mandaty": [
+     {
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "mandaty": 12
+     },
+     {
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "mandaty": 9
+     },
+     {
+      "strany": "nezávislý kandidát",
+      "mandaty": 9
+     },
+     {
+      "strany": "Občianska konzervatívna strana",
+      "mandaty": 1
+     }
+    ],
+    "poslanci": [
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "JUDr. Martin Eštočák",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2647
+     },
+     {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
+      "meno": "PaedDr. Slávka Čorejová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 2116
+     },
+     {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
+      "meno": "Peter Šulík",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 2081
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "Lukáš Anderko",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1872
+     },
+     {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
+      "meno": "Ing. Michal Michňák",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1789
+     },
+     {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
+      "meno": "Mgr. Peter Krajňák",
+      "strany": "Občianska konzervatívna strana",
+      "hlasy": 1746
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "Bc. MBA Richard Dubovický",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1715
+     },
+     {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
+      "meno": "MUDr. MPH Ján Ahlers, MBA",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1706
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "Zuzana Tkáčová",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1629
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "Ing. Marián Ličák",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1553
+     },
+     {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
+      "meno": "Ing. Rastislav Mochnacký",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1509
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "doc. PhDr. PhD. Štefánia Andraščíková, MPH",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1491
+     },
+     {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
+      "meno": "Mgr. Lukáš Belej",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1480
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "PhDr. PhD. Martin Ďurišin",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1478
+     },
+     {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
+      "meno": "Ing. František Oľha",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1412
+     },
+     {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
+      "meno": "Mgr. Jana Lukošíková",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1411
+     },
+     {
+      "obvod": "obvod č. 1",
+      "obvod_c": 1,
+      "meno": "MDDr. Peter Uličný",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1384
+     },
+     {
+      "obvod": "obvod č. 6",
+      "obvod_c": 6,
+      "meno": "MUDr. Daniela Mrouahová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1359
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "PhDr. MBA Janette Langová",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 1336
+     },
+     {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
+      "meno": "JUDr. Mgr. Vladimír Feľbaba",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1227
+     },
+     {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
+      "meno": "Ing. PhD. Denis Tirpák, MSc., MBA",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1095
+     },
+     {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
+      "meno": "Mgr. Stanislav Lukáč",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1073
+     },
+     {
+      "obvod": "obvod č. 3",
+      "obvod_c": 3,
+      "meno": "Mgr. Pavol Neupauer",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 1053
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "JUDr. PhD. Pavel Hagyari, MBA",
+      "strany": "nezávislý kandidát",
+      "hlasy": 1015
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "Mgr. PhD. Katarína Burgrová",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 948
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "Ing. PhD. Renáta Fedorčíková",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 936
+     },
+     {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
+      "meno": "Mgr. Jaroslava Kutajová",
+      "strany": "nezávislý kandidát",
+      "hlasy": 894
+     },
+     {
+      "obvod": "obvod č. 5",
+      "obvod_c": 5,
+      "meno": "Rudolf Voit",
+      "strany": "nezávislý kandidát",
+      "hlasy": 867
+     },
+     {
+      "obvod": "obvod č. 4",
+      "obvod_c": 4,
+      "meno": "Ing. Artúr Benes",
+      "strany": "nezávislý kandidát",
+      "hlasy": 852
+     },
+     {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
+      "meno": "Ing. Róbert Staško",
+      "strany": "Progresívne Slovensko, Demokrati, Demokratická strana - Občianski demokrati Slovenska",
+      "hlasy": 658
+     },
+     {
+      "obvod": "obvod č. 2",
+      "obvod_c": 2,
+      "meno": "Ing. Lenka Kohániová",
+      "strany": "KDH - Kresťanskodemokratické hnutie, Hnutie SLOVENSKO, Sloboda a Solidarita, Konzervatívci - Kresťanská únia, ZA ĽUDÍ, NOVA",
+      "hlasy": 607
+     }
+    ],
+    "statistiky": {
+     "zeny": 10,
+     "vek_priemer": 48.8,
+     "vek_min": 27,
+     "vek_max": 73,
+     "do_35": 3
+    }
    }
   }
  },
@@ -589,129 +906,129 @@
  },
  "byty": {
   "2001": {
-   "ZAC_BYT": 332,
    "DOKONC_BYT": 410,
-   "ROZOST_BYT_KON": 1388
+   "ROZOST_BYT_KON": 1388,
+   "ZAC_BYT": 332
   },
   "2002": {
-   "ZAC_BYT": 288,
    "DOKONC_BYT": 230,
-   "ROZOST_BYT_KON": 1446
+   "ROZOST_BYT_KON": 1446,
+   "ZAC_BYT": 288
   },
   "2003": {
-   "ZAC_BYT": 401,
    "DOKONC_BYT": 431,
-   "ROZOST_BYT_KON": 1490
+   "ROZOST_BYT_KON": 1490,
+   "ZAC_BYT": 401
   },
   "2004": {
-   "ZAC_BYT": 408,
    "DOKONC_BYT": 344,
-   "ROZOST_BYT_KON": 1471
+   "ROZOST_BYT_KON": 1471,
+   "ZAC_BYT": 408
   },
   "2005": {
-   "ZAC_BYT": 300,
    "DOKONC_BYT": 399,
-   "ROZOST_BYT_KON": 1363
+   "ROZOST_BYT_KON": 1363,
+   "ZAC_BYT": 300
   },
   "2006": {
-   "ZAC_BYT": 305,
    "DOKONC_BYT": 301,
-   "ROZOST_BYT_KON": 1368
+   "ROZOST_BYT_KON": 1368,
+   "ZAC_BYT": 305
   },
   "2007": {
-   "ZAC_BYT": 379,
    "DOKONC_BYT": 487,
-   "ROZOST_BYT_KON": 1239
+   "ROZOST_BYT_KON": 1239,
+   "ZAC_BYT": 379
   },
   "2008": {
-   "ZAC_BYT": 829,
    "DOKONC_BYT": 244,
-   "ROZOST_BYT_KON": 1816
+   "ROZOST_BYT_KON": 1816,
+   "ZAC_BYT": 829
   },
   "2009": {
-   "ZAC_BYT": 527,
    "DOKONC_BYT": 289,
-   "ROZOST_BYT_KON": 2047
+   "ROZOST_BYT_KON": 2047,
+   "ZAC_BYT": 527
   },
   "2010": {
-   "ZAC_BYT": 383,
    "DOKONC_BYT": 412,
-   "ROZOST_BYT_KON": 2018
+   "ROZOST_BYT_KON": 2018,
+   "ZAC_BYT": 383
   },
   "2011": {
-   "ZAC_BYT": 370,
    "DOKONC_BYT": 466,
-   "ROZOST_BYT_KON": 1922
+   "ROZOST_BYT_KON": 1922,
+   "ZAC_BYT": 370
   },
   "2012": {
-   "ZAC_BYT": 383,
    "DOKONC_BYT": 383,
-   "ROZOST_BYT_KON": 1911
+   "ROZOST_BYT_KON": 1911,
+   "ZAC_BYT": 383
   },
   "2013": {
-   "ZAC_BYT": 382,
    "DOKONC_BYT": 503,
-   "ROZOST_BYT_KON": 1783
+   "ROZOST_BYT_KON": 1783,
+   "ZAC_BYT": 382
   },
   "2014": {
-   "ZAC_BYT": 435,
    "DOKONC_BYT": 473,
-   "ROZOST_BYT_KON": 1745
+   "ROZOST_BYT_KON": 1745,
+   "ZAC_BYT": 435
   },
   "2015": {
-   "ZAC_BYT": 620,
    "DOKONC_BYT": 541,
-   "ROZOST_BYT_KON": 1825
+   "ROZOST_BYT_KON": 1825,
+   "ZAC_BYT": 620
   },
   "2016": {
-   "ZAC_BYT": 640,
    "DOKONC_BYT": 565,
-   "ROZOST_BYT_KON": 1886
+   "ROZOST_BYT_KON": 1886,
+   "ZAC_BYT": 640
   },
   "2017": {
-   "ZAC_BYT": 770,
    "DOKONC_BYT": 567,
-   "ROZOST_BYT_KON": 2087
+   "ROZOST_BYT_KON": 2087,
+   "ZAC_BYT": 770
   },
   "2018": {
-   "ZAC_BYT": 728,
    "DOKONC_BYT": 675,
-   "ROZOST_BYT_KON": 2157
+   "ROZOST_BYT_KON": 2157,
+   "ZAC_BYT": 728
   },
   "2019": {
-   "ZAC_BYT": 782,
    "DOKONC_BYT": 607,
-   "ROZOST_BYT_KON": 2336
+   "ROZOST_BYT_KON": 2336,
+   "ZAC_BYT": 782
   },
   "2020": {
-   "ZAC_BYT": 900,
    "DOKONC_BYT": 784,
-   "ROZOST_BYT_KON": 2514
+   "ROZOST_BYT_KON": 2514,
+   "ZAC_BYT": 900
   },
   "2021": {
-   "ZAC_BYT": 787,
    "DOKONC_BYT": 866,
-   "ROZOST_BYT_KON": 2439
+   "ROZOST_BYT_KON": 2439,
+   "ZAC_BYT": 787
   },
   "2022": {
-   "ZAC_BYT": 808,
    "DOKONC_BYT": 916,
-   "ROZOST_BYT_KON": 2348
+   "ROZOST_BYT_KON": 2348,
+   "ZAC_BYT": 808
   },
   "2023": {
-   "ZAC_BYT": 1247,
    "DOKONC_BYT": 557,
-   "ROZOST_BYT_KON": 3031
+   "ROZOST_BYT_KON": 3031,
+   "ZAC_BYT": 1247
   },
   "2024": {
-   "ZAC_BYT": 585,
    "DOKONC_BYT": 580,
-   "ROZOST_BYT_KON": 3031
+   "ROZOST_BYT_KON": 3031,
+   "ZAC_BYT": 585
   },
   "2025": {
-   "ZAC_BYT": 504,
    "DOKONC_BYT": 464,
-   "ROZOST_BYT_KON": 3061
+   "ROZOST_BYT_KON": 3061,
+   "ZAC_BYT": 504
   }
  },
  "ceny": {
@@ -721,14 +1038,14 @@
    "2022-Q4": 15.5,
    "2023-Q1": 6.7,
    "2023-Q2": 6.4,
-   "2023-Q3": -2,
-   "2023-Q4": -2,
-   "2024-Q1": -5,
+   "2023-Q3": -2.0,
+   "2023-Q4": -2.0,
+   "2024-Q1": -5.0,
    "2024-Q2": -4.7,
    "2024-Q3": 2.1,
    "2024-Q4": 6.4,
    "2025-Q1": 13.1,
-   "2025-Q2": 16,
+   "2025-Q2": 16.0,
    "2025-Q3": 14.8,
    "2025-Q4": 12.2,
    "2026-Q1": 12.9,
@@ -743,8 +1060,8 @@
    "2023-Q2": -2.2,
    "2023-Q3": -4.1,
    "2023-Q4": -1.4,
-   "2024-Q1": -3,
-   "2024-Q2": 4,
+   "2024-Q1": -3.0,
+   "2024-Q2": 4.0,
    "2024-Q3": 6.2,
    "2024-Q4": 7.9,
    "2025-Q1": 12.2,
@@ -764,12 +1081,12 @@
   ]
  },
  "zdroje": {
-  "obyvatelia": "ŠÚ SR – DATAcube om7101rr",
+  "obyvatelia": "ŠÚ SR – STATdata om7101rr",
   "scitanie": "ŠÚ SR – Sčítanie 2021 (STATdata)",
   "volby": "ŠÚ SR – volby.statistics.sk",
   "komunalne": "ŠÚ SR – volby.statistics.sk / volbysr.sk",
   "praca": "ÚPSVaR – mesačná štatistika",
-  "byty": "ŠÚ SR – DATAcube st3004rr",
-  "ceny": "ŠÚ SR – DATAcube sp3801qr"
+  "byty": "ŠÚ SR – STATdata st3004rr",
+  "ceny": "ŠÚ SR – STATdata sp3801qr"
  }
 }

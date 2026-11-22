@@ -10,14 +10,25 @@ Licencia údajov: © prispievatelia OpenStreetMap, ODbL. Lekárov (ambulancie s 
 from __future__ import annotations
 
 import json
+import os
 import re
+import sys
 import time
 from datetime import datetime
 
 from spolocne import KOREN, VEREJNE, s, spusti, zapis_ak_zmena
+from osm_lokalne import skus, zapnute
 
 SERVERY = ["https://overpass-api.de/api/interpreter", "https://overpass.private.coffee/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]
 MESTA = json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8"))
+# Celkový časový rozpočet behu (krok v katalog.yml má timeout 50 min). Pri preťaženom Overpass radšej skončiť
+# s upozornením a ponechať posledné dáta zvyšných miest, než nechať krok zabiť timeoutom bez výpisu.
+ROZPOCET_S = int(os.environ.get("OSM_ROZPOCET_MIN", "44")) * 60
+KONIEC = time.monotonic() + ROZPOCET_S
+
+
+def zostava() -> float:
+    return KONIEC - time.monotonic()
 
 # id vrstvy: (názov, skupina, Overpass filter, predvolený názov bodu, je aj v portáli mesta)
 VRSTVY = {
@@ -46,18 +57,26 @@ OSOBA = re.compile(r"\b(MUDr|MDDr|PharmDr|PhDr|RNDr|Mgr|Bc|Ing|JUDr|PaedDr|doc|p
 
 
 def overpass(q: str) -> dict:
+    lok = skus(q)  # výrez OSM z Geofabriku (osm_lokalne.py) – bez verejného Overpass
+    if lok is not None:
+        return lok
     posledna = None
     for kolo in range(3):
         if kolo:
+            if zostava() < 60 * kolo + 120:
+                break
             time.sleep(60 * kolo)  # verejné servery pri preťažení vracajú 429/504
         for u in SERVERY:
+            if zostava() < 120:
+                raise RuntimeError(f"vyčerpaný časový rozpočet behu ({posledna or 'bez odpovede'})")
             try:
-                r = s.post(u, data={"data": q}, timeout=300)
+                r = s.post(u, data={"data": q}, timeout=min(300, zostava() - 60))
                 if r.status_code == 200 and r.text.lstrip().startswith("{"):
                     return r.json()
                 posledna = f"{u}: HTTP {r.status_code}"
             except Exception as e:  # noqa: BLE001
-                posledna = f"{u}: {e}"
+                posledna = f"{u}: {type(e).__name__}"
+            print(f"  Overpass: {posledna}")
             time.sleep(5)
     raise RuntimeError(f"Overpass nedostupný ({posledna})")
 
@@ -80,9 +99,14 @@ def detail(t: dict, vid: str) -> dict:
 
 
 def main() -> int:
+    sys.stdout.reconfigure(line_buffering=True)  # v GitHub Actions inak výpis pri timeoute kroku zmizne
     chyby = 0
     for m in MESTA:
         if not m.get("osm_rel") or m.get("plne"):
+            continue
+        if zostava() < 300:
+            print(f"::warning title=Mapa OSM {m['nazov']}::preskočené – vyčerpaný časový rozpočet behu, ostávajú posledné dáta")
+            chyby += 1
             continue
         ma_portal = (VEREJNE / "mesta" / f"mapa-{m['slug']}.json").exists()
         vybrane = {k: v for k, v in VRSTVY.items() if not (ma_portal and v[4])}
@@ -143,7 +167,8 @@ def main() -> int:
         zapis_ak_zmena(VEREJNE / "mesta" / f"mapa-osm-{m['slug']}.json", {"aktualizovane": datetime.now().isoformat(timespec="seconds"),
                        "zdroj": "OpenStreetMap", "licencia": "© prispievatelia OpenStreetMap (ODbL)", "hranice": hranice, "vrstvy": vystup}, kompaktne=True)
         print(f"{m['nazov']}: " + ", ".join(f"{v['nazov']} {len(v['body'])}" for v in vystup))
-        time.sleep(20)
+        if not zapnute():
+            time.sleep(20)  # odstup pre verejný Overpass
     if chyby >= 4:
         raise RuntimeError(f"Mapa OSM: {chyby} miest bez údajov")
     return 0

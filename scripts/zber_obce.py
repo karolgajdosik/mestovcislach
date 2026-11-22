@@ -153,6 +153,10 @@ def scitanie() -> dict[tuple, dict]:
 # ---------------- poloha a mapa (OSM) ----------------
 
 def _overpass(dotaz: str) -> dict:
+    from osm_lokalne import skus
+    lok = skus(dotaz)  # výrez OSM z Geofabriku (osm_lokalne.py) – bez verejného Overpass
+    if lok is not None:
+        return lok
     import requests
     import time
     chyba = None

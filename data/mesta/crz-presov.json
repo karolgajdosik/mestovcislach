@@ -2,15 +2,15 @@
  "mesto": "presov",
  "ico": "00327646",
  "od": "2022-01-01",
- "do": "2026-10-20",
+ "do": "2026-11-21",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 6189,
-  "skryte_fyzicke_osoby": 1563,
+  "zaznamov": 6281,
+  "skryte_fyzicke_osoby": 1592,
   "roky": {
    "2022": {
     "pocet": 1140,
@@ -37,10 +37,10 @@
     "fo_suma": 8470220
    },
    "2026": {
-    "pocet": 1037,
-    "suma": 70432020,
-    "fo_pocet": 289,
-    "fo_suma": 1780665
+    "pocet": 1129,
+    "suma": 76352215,
+    "fo_pocet": 318,
+    "fo_suma": 1826440
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -59,8 +59,8 @@
    {
     "ico": "31718914",
     "nazov": "Technické služby mesta Prešov, a.s.",
-    "pocet": 75,
-    "suma": 26529874
+    "pocet": 78,
+    "suma": 26530062
    },
    {
     "ico": "50494970",
@@ -89,20 +89,20 @@
    {
     "ico": "55472672",
     "nazov": "Mestský podnik služieb Prešov, s. r. o.",
-    "pocet": 48,
-    "suma": 10509740
-   },
-   {
-    "ico": "31651518",
-    "nazov": "EUROVIA SK, a.s.",
-    "pocet": 11,
-    "suma": 6669203
+    "pocet": 49,
+    "suma": 10521260
    },
    {
     "ico": "00155764",
     "nazov": "PEhAES, a.s.",
-    "pocet": 5,
-    "suma": 5773460
+    "pocet": 6,
+    "suma": 10302882
+   },
+   {
+    "ico": "31651518",
+    "nazov": "EUROVIA SK, a.s.",
+    "pocet": 12,
+    "suma": 7191986
    },
    {
     "ico": "30416094",
@@ -113,8 +113,8 @@
    {
     "ico": "37870475",
     "nazov": "Prešovský samosprávny kraj",
-    "pocet": 31,
-    "suma": 4579418
+    "pocet": 34,
+    "suma": 4584163
    },
    {
     "ico": "57517801",
@@ -175,6 +175,14 @@
     "url": "https://www.crz.gov.sk/zmluva/11667050/"
    },
    {
+    "datum": "2026-11-10",
+    "dodavatel": "PEhAES, a.s.",
+    "ico": "00155764",
+    "suma": 4529422.28,
+    "popis": "Dodatok č. 2 k Zmluve o dielo",
+    "url": "https://www.crz.gov.sk/zmluva/13062593/"
+   },
+   {
     "datum": "2026-01-21",
     "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
     "ico": "50349287",
@@ -213,22 +221,6 @@
     "suma": 2975628.0,
     "popis": "Zmluva o poskytnutí finančného príspevku na poskytovanie sociálnej služby v zariadeniach pre fyzické osoby, ktoré sú odkázané na pomoc inej fyzickej osoby a pre fyzické osoby, ktoré dovŕšili dôchodkov",
     "url": "https://www.crz.gov.sk/zmluva/11961459/"
-   },
-   {
-    "datum": "2025-11-06",
-    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "ico": "50349287",
-    "suma": 2810811.44,
-    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR /F457",
-    "url": "https://www.crz.gov.sk/zmluva/11594727/"
-   },
-   {
-    "datum": "2025-11-06",
-    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "ico": "50349287",
-    "suma": 2810811.44,
-    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku reg. č. PSK-SIEA-007-2024-ITI-EFRR/F457",
-    "url": "https://www.crz.gov.sk/zmluva/11613515/"
    },
    {
     "datum": "2026-08-19",
@@ -285,6 +277,14 @@
     "suma": 1911751.92,
     "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU reg. č. PSK-SIEA-007-2024-ITI-EFRR/F453",
     "url": "https://www.crz.gov.sk/zmluva/11690058/"
+   },
+   {
+    "datum": "2025-12-03",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1911751.92,
+    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku reg. č. PSK-SIEA-007-2024-ITI-EFRR/F453",
+    "url": "https://www.crz.gov.sk/zmluva/11707669/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-10-21T05:52:29+00:00"
+ "aktualizovane": "2026-11-22T13:27:12+00:00"
 }

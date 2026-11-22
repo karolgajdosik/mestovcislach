@@ -2,15 +2,15 @@
  "mesto": "zilina",
  "ico": "00321796",
  "od": "2022-01-01",
- "do": "2026-10-20",
+ "do": "2026-11-21",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8362,
-  "skryte_fyzicke_osoby": 3751,
+  "zaznamov": 8555,
+  "skryte_fyzicke_osoby": 3842,
   "roky": {
    "2022": {
     "pocet": 1084,
@@ -31,16 +31,16 @@
     "fo_suma": 3220591
    },
    "2025": {
-    "pocet": 2496,
-    "suma": 73423437,
+    "pocet": 2498,
+    "suma": 73423937,
     "fo_pocet": 1322,
     "fo_suma": 5442968
    },
    "2026": {
-    "pocet": 1670,
-    "suma": 137591444,
-    "fo_pocet": 851,
-    "fo_suma": 4406659
+    "pocet": 1861,
+    "suma": 143380284,
+    "fo_pocet": 942,
+    "fo_suma": 4748922
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -53,8 +53,8 @@
    {
     "ico": "50349287",
     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "pocet": 52,
-    "suma": 53418886
+    "pocet": 55,
+    "suma": 54285984
    },
    {
     "ico": "00682420",
@@ -65,7 +65,7 @@
    {
     "ico": "53946600",
     "nazov": "Technické služby mesta Žilina, s.r.o.",
-    "pocet": 27,
+    "pocet": 29,
     "suma": 14580232
    },
    {
@@ -81,22 +81,28 @@
     "suma": 9209198
    },
    {
+    "ico": "00681156",
+    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "pocet": 13,
+    "suma": 5080970
+   },
+   {
     "ico": "46282041",
     "nazov": "PAMARCH, s.r.o.",
     "pocet": 2,
     "suma": 5040514
    },
    {
-    "ico": "00681156",
-    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
-    "pocet": 12,
-    "suma": 4395409
-   },
-   {
     "ico": "31588506",
     "nazov": "ERPOS, spol. s r.o.",
-    "pocet": 26,
-    "suma": 4075489
+    "pocet": 27,
+    "suma": 4187633
+   },
+   {
+    "ico": "30794536",
+    "nazov": "Úrad práce, sociálnych vecí a rodiny Žilina",
+    "pocet": 8,
+    "suma": 3614518
    },
    {
     "ico": "30796491",
@@ -113,7 +119,7 @@
    {
     "ico": null,
     "nazov": "Úrad práce, sociálnych vecí a rodiny Žilina",
-    "pocet": 7,
+    "pocet": 8,
     "suma": 2642847
    },
    {
@@ -121,12 +127,6 @@
     "nazov": "Občianske združenie BRIOSO",
     "pocet": 4,
     "suma": 2482465
-   },
-   {
-    "ico": "30794536",
-    "nazov": "Úrad práce, sociálnych vecí a rodiny Žilina",
-    "pocet": 7,
-    "suma": 2433844
    },
    {
     "ico": "42181810",
@@ -149,8 +149,8 @@
    {
     "ico": "48282235",
     "nazov": "FEROSTA a spol., s.r.o.",
-    "pocet": 3,
-    "suma": 1725808
+    "pocet": 4,
+    "suma": 1747109
    },
    {
     "ico": "55695523",
@@ -161,8 +161,8 @@
    {
     "ico": "46931317",
     "nazov": "Správa športových zariadení mesta Žilina, s.r.o.",
-    "pocet": 16,
-    "suma": 1325086
+    "pocet": 17,
+    "suma": 1330086
    }
   ],
   "najvacsie_12_mesiacov": [
@@ -223,14 +223,6 @@
     "url": "https://www.crz.gov.sk/zmluva/12461101/"
    },
    {
-    "datum": "2025-11-06",
-    "dodavatel": "Technické služby mesta Žilina, s.r.o.",
-    "ico": "53946600",
-    "suma": 2893048.93,
-    "popis": "Rámcová zmluva o poskytovaní služieb č. 1120/2025 - služby v oblasti údržby a čistoty verejných priestranstiev v meste",
-    "url": "https://www.crz.gov.sk/zmluva/11652826/"
-   },
-   {
     "datum": "2026-06-30",
     "dodavatel": "CORA GEO, s. r. o.",
     "ico": "31612989",
@@ -285,6 +277,14 @@
     "suma": 1437931.5,
     "popis": "Rámcová zmluva o poskytovaní služieb č. 373/2026 - zimná údržba miestnych ciest a ich príslušenstva",
     "url": "https://www.crz.gov.sk/zmluva/12294038/"
+   },
+   {
+    "datum": "2026-09-14",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1333681.4,
+    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU kód projektu: 401202G541",
+    "url": "https://www.crz.gov.sk/zmluva/12811631/"
    }
   ],
   "dotacie_poskytnute": [
@@ -313,12 +313,12 @@
     "suma": 113000
    },
    {
-    "nazov": "Akadémia MŠK Žilina",
-    "suma": 100000
+    "nazov": "VA UNIZA ŽILINA, o. z.",
+    "suma": 108241
    },
    {
-    "nazov": "VA UNIZA ŽILINA, o. z.",
-    "suma": 90241
+    "nazov": "Akadémia MŠK Žilina",
+    "suma": 100000
    },
    {
     "nazov": "Klub plaveckých športov Nereus Žilina, o.z.",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-10-21T05:52:29+00:00"
+ "aktualizovane": "2026-11-22T13:27:12+00:00"
 }

@@ -66,10 +66,10 @@
      "Neznáme": 0
     },
     "Nové Mesto": {
-     "14 rokov alebo menej": 7378,
-     "Spolu": 44458,
      "65 rokov alebo viac": 8243,
+     "14 rokov alebo menej": 7378,
      "Od 15 do 64 rokov": 28837,
+     "Spolu": 44458,
      "Neznáme": 0
     },
     "Petržalka": {
@@ -546,17 +546,17 @@
     },
     "Devínska Nová Ves": {
      "Spolu": 17153,
+     "Nemecká": 37,
      "Maďarská": 238,
      "Slovenská": 15232,
-     "Rusínska": 15,
-     "Rómska": 4,
-     "Ukrajinská": 40,
-     "Nemecká": 37,
      "Ruská": 25,
+     "Rusínska": 15,
      "Poľská": 24,
      "Iná": 213,
+     "Rómska": 4,
      "Česká": 204,
-     "Nezistená": 1121
+     "Nezistená": 1121,
+     "Ukrajinská": 40
     },
     "Dúbravka": {
      "Spolu": 36206,
@@ -988,411 +988,144 @@
   },
   "jazyk": {
    "kocka": "om7804rr",
-   "stlpec": "e_language",
+   "stlpec": "e_nuts14_code",
    "kategorie": [
-    "Slovenský",
-    "Nezistený",
-    "Maďarský",
-    "Iný jazyk",
-    "Český",
-    "Ukrajinský",
-    "Nemecký",
-    "Rusínsky",
-    "Poľský",
-    "Rómsky"
+    "SK0102",
+    "SK0105",
+    "SK0104",
+    "SK0103",
+    "SK0101"
    ],
    "mesto": {
-    "Spolu": 475503,
-    "Slovenský": 403043,
-    "Nezistený": 42570,
-    "Maďarský": 11958,
-    "Iný jazyk": 8917,
-    "Český": 5488,
-    "Ukrajinský": 1076,
-    "Nemecký": 906,
-    "Rusínsky": 898,
-    "Poľský": 508,
-    "Rómsky": 139
+    "SK0102": 125179,
+    "SK0105": 122729,
+    "SK0104": 105245,
+    "SK0103": 76270,
+    "SK0101": 46080
    },
    "mestske_casti": {
     "Devín": {
-     "Slovenský": 1677,
-     "Rómsky": 0,
-     "Rusínsky": 0,
-     "Český": 27,
-     "Maďarský": 32,
-     "Nezistený": 109,
-     "Spolu": 1912,
-     "Iný jazyk": 51,
-     "Poľský": 1,
-     "Nemecký": 10,
-     "Ukrajinský": 5
+     "SK0104": 1912
     },
     "Devínska Nová Ves": {
-     "Ukrajinský": 22,
-     "Nezistený": 1116,
-     "Maďarský": 244,
-     "Poľský": 23,
-     "Spolu": 17153,
-     "Iný jazyk": 284,
-     "Rusínsky": 24,
-     "Slovenský": 15164,
-     "Rómsky": 2,
-     "Český": 225,
-     "Nemecký": 49
+     "SK0104": 17153
     },
     "Dúbravka": {
-     "Slovenský": 31487,
-     "Maďarský": 695,
-     "Rusínsky": 85,
-     "Iný jazyk": 494,
-     "Rómsky": 5,
-     "Český": 456,
-     "Nemecký": 44,
-     "Ukrajinský": 71,
-     "Poľský": 34,
-     "Spolu": 36206,
-     "Nezistený": 2835
+     "SK0104": 36206
     },
     "Jarovce": {
-     "Iný jazyk": 146,
-     "Rómsky": 4,
-     "Maďarský": 121,
-     "Rusínsky": 3,
-     "Český": 20,
-     "Poľský": 0,
-     "Slovenský": 2325,
-     "Nemecký": 22,
-     "Spolu": 2706,
-     "Ukrajinský": 3,
-     "Nezistený": 62
+     "SK0105": 2706
     },
     "Karlova Ves": {
-     "Ukrajinský": 75,
-     "Slovenský": 30741,
-     "Poľský": 41,
-     "Spolu": 35644,
-     "Rómsky": 8,
-     "Iný jazyk": 656,
-     "Český": 497,
-     "Nemecký": 58,
-     "Nezistený": 2836,
-     "Maďarský": 652,
-     "Rusínsky": 80
+     "SK0104": 35644
     },
     "Lamač": {
-     "Rómsky": 1,
-     "Ukrajinský": 18,
-     "Slovenský": 6919,
-     "Český": 96,
-     "Maďarský": 115,
-     "Nemecký": 10,
-     "Nezistený": 521,
-     "Poľský": 8,
-     "Rusínsky": 21,
-     "Spolu": 7789,
-     "Iný jazyk": 80
+     "SK0104": 7789
     },
     "Nové Mesto": {
-     "Iný jazyk": 1316,
-     "Slovenský": 36730,
-     "Poľský": 64,
-     "Maďarský": 874,
-     "Rusínsky": 78,
-     "Český": 532,
-     "Rómsky": 6,
-     "Nemecký": 76,
-     "Spolu": 44458,
-     "Nezistený": 4650,
-     "Ukrajinský": 132
+     "SK0103": 44458
     },
     "Petržalka": {
-     "Iný jazyk": 1292,
-     "Maďarský": 2770,
-     "Rómsky": 49,
-     "Poľský": 116,
-     "Slovenský": 98513,
-     "Nezistený": 9541,
-     "Ukrajinský": 194,
-     "Rusínsky": 225,
-     "Český": 1179,
-     "Spolu": 114000,
-     "Nemecký": 121
+     "SK0105": 114000
     },
     "Podunajské Biskupice": {
-     "Nemecký": 29,
-     "Rusínsky": 37,
-     "Rómsky": 17,
-     "Iný jazyk": 246,
-     "Poľský": 22,
-     "Nezistený": 2224,
-     "Maďarský": 1890,
-     "Český": 225,
-     "Spolu": 23464,
-     "Ukrajinský": 55,
-     "Slovenský": 18719
+     "SK0102": 23464
     },
     "Rača": {
-     "Iný jazyk": 499,
-     "Český": 323,
-     "Ukrajinský": 92,
-     "Maďarský": 409,
-     "Rusínsky": 44,
-     "Nezistený": 2552,
-     "Rómsky": 8,
-     "Nemecký": 31,
-     "Poľský": 20,
-     "Slovenský": 21755,
-     "Spolu": 25733
+     "SK0103": 25733
     },
     "Rusovce": {
-     "Iný jazyk": 73,
-     "Český": 29,
-     "Poľský": 1,
-     "Rómsky": 0,
-     "Nemecký": 32,
-     "Ukrajinský": 7,
-     "Spolu": 4388,
-     "Slovenský": 3806,
-     "Rusínsky": 7,
-     "Maďarský": 216,
-     "Nezistený": 217
+     "SK0105": 4388
     },
     "Ružinov": {
-     "Slovenský": 68591,
-     "Český": 917,
-     "Nezistený": 7318,
-     "Maďarský": 1939,
-     "Rómsky": 14,
-     "Rusínsky": 161,
-     "Iný jazyk": 1664,
-     "Spolu": 81004,
-     "Ukrajinský": 171,
-     "Nemecký": 154,
-     "Poľský": 75
+     "SK0102": 81004
     },
     "Staré Mesto": {
-     "Rómsky": 11,
-     "Ukrajinský": 152,
-     "Maďarský": 1080,
-     "Český": 622,
-     "Nezistený": 5794,
-     "Rusínsky": 76,
-     "Nemecký": 208,
-     "Slovenský": 36627,
-     "Spolu": 46080,
-     "Poľský": 60,
-     "Iný jazyk": 1450
+     "SK0101": 46080
     },
     "Vajnory": {
-     "Ukrajinský": 17,
-     "Rusínsky": 3,
-     "Poľský": 7,
-     "Slovenský": 5351,
-     "Nezistený": 373,
-     "Maďarský": 61,
-     "Český": 58,
-     "Rómsky": 2,
-     "Spolu": 6079,
-     "Nemecký": 5,
-     "Iný jazyk": 202
+     "SK0103": 6079
     },
     "Vrakuňa": {
-     "Slovenský": 17374,
-     "Spolu": 20711,
-     "Nezistený": 1973,
-     "Rusínsky": 40,
-     "Český": 193,
-     "Rómsky": 11,
-     "Nemecký": 20,
-     "Poľský": 25,
-     "Maďarský": 740,
-     "Ukrajinský": 57,
-     "Iný jazyk": 278
+     "SK0102": 20711
     },
     "Záhorská Bystrica": {
-     "Slovenský": 5852,
-     "Český": 71,
-     "Nezistený": 424,
-     "Nemecký": 17,
-     "Rusínsky": 13,
-     "Spolu": 6541,
-     "Iný jazyk": 97,
-     "Rómsky": 1,
-     "Maďarský": 55,
-     "Ukrajinský": 2,
-     "Poľský": 9
+     "SK0104": 6541
     },
     "Čunovo": {
-     "Poľský": 2,
-     "Rusínsky": 1,
-     "Slovenský": 1412,
-     "Český": 18,
-     "Rómsky": 0,
-     "Nezistený": 25,
-     "Ukrajinský": 3,
-     "Iný jazyk": 89,
-     "Nemecký": 20,
-     "Spolu": 1635,
-     "Maďarský": 65
+     "SK0105": 1635
     }
    },
    "nazov": "Materinský jazyk"
   },
   "rodinny_stav": {
    "kocka": "om7808rr",
-   "stlpec": "e_famstat",
+   "stlpec": "e_nuts14_code",
    "kategorie": [
-    "Slobodný - slobodná",
-    "Ženatý - vydatá",
-    "Rozvedený - rozvedená",
-    "Vdovec - vdova",
-    "Nezistený"
+    "SK0102",
+    "SK0105",
+    "SK0104",
+    "SK0103",
+    "SK0101"
    ],
    "mesto": {
-    "Spolu": 475503,
-    "Slobodný - slobodná": 210036,
-    "Ženatý - vydatá": 181349,
-    "Rozvedený - rozvedená": 49471,
-    "Vdovec - vdova": 28240,
-    "Nezistený": 6407
+    "SK0102": 125179,
+    "SK0105": 122729,
+    "SK0104": 105245,
+    "SK0103": 76270,
+    "SK0101": 46080
    },
    "mestske_casti": {
     "Devín": {
-     "Nezistený": 35,
-     "Rozvedený - rozvedená": 142,
-     "Slobodný - slobodná": 844,
-     "Vdovec - vdova": 109,
-     "Ženatý - vydatá": 782,
-     "Spolu": 1912
+     "SK0104": 1912
     },
     "Devínska Nová Ves": {
-     "Slobodný - slobodná": 7609,
-     "Ženatý - vydatá": 6889,
-     "Nezistený": 198,
-     "Vdovec - vdova": 767,
-     "Rozvedený - rozvedená": 1690,
-     "Spolu": 17153
+     "SK0104": 17153
     },
     "Dúbravka": {
-     "Rozvedený - rozvedená": 4050,
-     "Slobodný - slobodná": 15798,
-     "Vdovec - vdova": 2461,
-     "Nezistený": 224,
-     "Ženatý - vydatá": 13673,
-     "Spolu": 36206
+     "SK0104": 36206
     },
     "Jarovce": {
-     "Slobodný - slobodná": 1215,
-     "Spolu": 2706,
-     "Ženatý - vydatá": 1172,
-     "Rozvedený - rozvedená": 161,
-     "Vdovec - vdova": 144,
-     "Nezistený": 14
+     "SK0105": 2706
     },
     "Karlova Ves": {
-     "Vdovec - vdova": 1888,
-     "Rozvedený - rozvedená": 3568,
-     "Slobodný - slobodná": 15620,
-     "Nezistený": 368,
-     "Ženatý - vydatá": 14200,
-     "Spolu": 35644
+     "SK0104": 35644
     },
     "Lamač": {
-     "Ženatý - vydatá": 3121,
-     "Vdovec - vdova": 545,
-     "Nezistený": 72,
-     "Rozvedený - rozvedená": 744,
-     "Slobodný - slobodná": 3307,
-     "Spolu": 7789
+     "SK0104": 7789
     },
     "Nové Mesto": {
-     "Nezistený": 1012,
-     "Slobodný - slobodná": 19887,
-     "Ženatý - vydatá": 16464,
-     "Rozvedený - rozvedená": 4313,
-     "Spolu": 44458,
-     "Vdovec - vdova": 2782
+     "SK0103": 44458
     },
     "Petržalka": {
-     "Spolu": 114000,
-     "Ženatý - vydatá": 44395,
-     "Slobodný - slobodná": 50444,
-     "Nezistený": 729,
-     "Rozvedený - rozvedená": 12436,
-     "Vdovec - vdova": 5996
+     "SK0105": 114000
     },
     "Podunajské Biskupice": {
-     "Spolu": 23464,
-     "Nezistený": 222,
-     "Slobodný - slobodná": 10422,
-     "Ženatý - vydatá": 8726,
-     "Rozvedený - rozvedená": 2584,
-     "Vdovec - vdova": 1510
+     "SK0102": 23464
     },
     "Rača": {
-     "Slobodný - slobodná": 11326,
-     "Nezistený": 547,
-     "Vdovec - vdova": 1481,
-     "Ženatý - vydatá": 9646,
-     "Rozvedený - rozvedená": 2733,
-     "Spolu": 25733
+     "SK0103": 25733
     },
     "Rusovce": {
-     "Vdovec - vdova": 237,
-     "Ženatý - vydatá": 1874,
-     "Nezistený": 25,
-     "Rozvedený - rozvedená": 311,
-     "Spolu": 4388,
-     "Slobodný - slobodná": 1941
+     "SK0105": 4388
     },
     "Ružinov": {
-     "Rozvedený - rozvedená": 8610,
-     "Nezistený": 1283,
-     "Ženatý - vydatá": 29610,
-     "Vdovec - vdova": 5737,
-     "Spolu": 81004,
-     "Slobodný - slobodná": 35764
+     "SK0102": 81004
     },
     "Staré Mesto": {
-     "Nezistený": 1337,
-     "Slobodný - slobodná": 20135,
-     "Vdovec - vdova": 2771,
-     "Ženatý - vydatá": 17254,
-     "Rozvedený - rozvedená": 4583,
-     "Spolu": 46080
+     "SK0101": 46080
     },
     "Vajnory": {
-     "Slobodný - slobodná": 2619,
-     "Vdovec - vdova": 356,
-     "Nezistený": 145,
-     "Ženatý - vydatá": 2442,
-     "Rozvedený - rozvedená": 517,
-     "Spolu": 6079
+     "SK0103": 6079
     },
     "Vrakuňa": {
-     "Ženatý - vydatá": 7472,
-     "Rozvedený - rozvedená": 2552,
-     "Vdovec - vdova": 1125,
-     "Nezistený": 136,
-     "Slobodný - slobodná": 9426,
-     "Spolu": 20711
+     "SK0102": 20711
     },
     "Záhorská Bystrica": {
-     "Ženatý - vydatá": 2885,
-     "Vdovec - vdova": 249,
-     "Nezistený": 41,
-     "Spolu": 6541,
-     "Rozvedený - rozvedená": 408,
-     "Slobodný - slobodná": 2958
+     "SK0104": 6541
     },
     "Čunovo": {
-     "Spolu": 1635,
-     "Vdovec - vdova": 82,
-     "Ženatý - vydatá": 744,
-     "Nezistený": 19,
-     "Rozvedený - rozvedená": 69,
-     "Slobodný - slobodná": 721
+     "SK0105": 1635
     }
    },
    "nazov": "Rodinný stav"
@@ -1772,510 +1505,148 @@
   },
   "byty_izby": {
    "kocka": "om7818rr",
-   "stlpec": "e_nrooms",
+   "stlpec": "e_nuts14_code",
    "kategorie": [
-    "3 obytné miestnosti",
-    "2 obytné miestnosti",
-    "1 obytná miestnosť",
-    "4 obytné miestnosti",
-    "Nezistené",
-    "5 obytných miestností",
-    "6 obytných miestností",
-    "7 obytných miestností",
-    "9 obytných miestností a viac",
-    "8 obytných miestností"
+    "SK0102",
+    "SK0105",
+    "SK0104",
+    "SK0103",
+    "SK0101"
    ],
    "mesto": {
-    "Spolu": 248199,
-    "3 obytné miestnosti": 91389,
-    "2 obytné miestnosti": 56022,
-    "1 obytná miestnosť": 40560,
-    "4 obytné miestnosti": 34760,
-    "Nezistené": 12340,
-    "5 obytných miestností": 8426,
-    "6 obytných miestností": 2955,
-    "7 obytných miestností": 902,
-    "9 obytných miestností a viac": 485,
-    "8 obytných miestností": 360
+    "SK0102": 70767,
+    "SK0105": 55682,
+    "SK0104": 51737,
+    "SK0103": 41765,
+    "SK0101": 28248
    },
    "mestske_casti": {
     "Devín": {
-     "Spolu": 1110,
-     "1 obytná miestnosť": 66,
-     "2 obytné miestnosti": 276,
-     "5 obytných miestností": 107,
-     "6 obytných miestností": 46,
-     "4 obytné miestnosti": 234,
-     "Nezistené": 8,
-     "7 obytných miestností": 16,
-     "3 obytné miestnosti": 327,
-     "8 obytných miestností": 11,
-     "9 obytných miestností a viac": 19
+     "SK0104": 1110
     },
     "Devínska Nová Ves": {
-     "Spolu": 7677,
-     "9 obytných miestností a viac": 32,
-     "4 obytné miestnosti": 1222,
-     "1 obytná miestnosť": 1144,
-     "8 obytných miestností": 15,
-     "5 obytných miestností": 473,
-     "Nezistené": 199,
-     "2 obytné miestnosti": 1168,
-     "7 obytných miestností": 31,
-     "3 obytné miestnosti": 3238,
-     "6 obytných miestností": 155
+     "SK0104": 7677
     },
     "Dúbravka": {
-     "Spolu": 18326,
-     "1 obytná miestnosť": 3426,
-     "2 obytné miestnosti": 3759,
-     "8 obytných miestností": 4,
-     "6 obytných miestností": 111,
-     "3 obytné miestnosti": 6196,
-     "9 obytných miestností a viac": 34,
-     "5 obytných miestností": 407,
-     "Nezistené": 1208,
-     "4 obytné miestnosti": 3156,
-     "7 obytných miestností": 25
+     "SK0104": 18326
     },
     "Jarovce": {
-     "Spolu": 1023,
-     "6 obytných miestností": 168,
-     "2 obytné miestnosti": 15,
-     "7 obytných miestností": 84,
-     "5 obytných miestností": 247,
-     "1 obytná miestnosť": 8,
-     "4 obytné miestnosti": 253,
-     "3 obytné miestnosti": 187,
-     "9 obytných miestností a viac": 23,
-     "8 obytných miestností": 27,
-     "Nezistené": 11
+     "SK0105": 1023
     },
     "Karlova Ves": {
-     "Spolu": 17565,
-     "8 obytných miestností": 27,
-     "4 obytné miestnosti": 2722,
-     "6 obytných miestností": 199,
-     "1 obytná miestnosť": 2281,
-     "Nezistené": 171,
-     "2 obytné miestnosti": 3191,
-     "9 obytných miestností a viac": 29,
-     "3 obytné miestnosti": 7977,
-     "7 obytných miestností": 59,
-     "5 obytných miestností": 909
+     "SK0104": 17565
     },
     "Lamač": {
-     "Spolu": 3911,
-     "Nezistené": 342,
-     "6 obytných miestností": 86,
-     "5 obytných miestností": 173,
-     "4 obytné miestnosti": 342,
-     "1 obytná miestnosť": 783,
-     "2 obytné miestnosti": 802,
-     "9 obytných miestností a viac": 14,
-     "3 obytné miestnosti": 1320,
-     "7 obytných miestností": 37,
-     "8 obytných miestností": 12
+     "SK0104": 3911
     },
     "Nové Mesto": {
-     "Spolu": 27325,
-     "4 obytné miestnosti": 2560,
-     "6 obytných miestností": 350,
-     "7 obytných miestností": 143,
-     "1 obytná miestnosť": 4946,
-     "9 obytných miestností a viac": 44,
-     "2 obytné miestnosti": 7313,
-     "Nezistené": 3289,
-     "3 obytné miestnosti": 7528,
-     "8 obytných miestností": 54,
-     "5 obytných miestností": 1098
+     "SK0103": 27325
     },
     "Petržalka": {
-     "Spolu": 52379,
-     "5 obytných miestností": 167,
-     "9 obytných miestností a viac": 19,
-     "3 obytné miestnosti": 25537,
-     "4 obytné miestnosti": 8748,
-     "Nezistené": 674,
-     "8 obytných miestností": 6,
-     "7 obytných miestností": 5,
-     "1 obytná miestnosť": 8077,
-     "6 obytných miestností": 47,
-     "2 obytné miestnosti": 9099
+     "SK0105": 52379
     },
     "Podunajské Biskupice": {
-     "Spolu": 11459,
-     "6 obytných miestností": 228,
-     "8 obytných miestností": 16,
-     "2 obytné miestnosti": 2340,
-     "1 obytná miestnosť": 1999,
-     "5 obytných miestností": 667,
-     "Nezistené": 87,
-     "7 obytných miestností": 57,
-     "3 obytné miestnosti": 4087,
-     "4 obytné miestnosti": 1954,
-     "9 obytných miestností a viac": 24
+     "SK0102": 11459
     },
     "Rača": {
-     "Spolu": 11543,
-     "3 obytné miestnosti": 3565,
-     "9 obytných miestností a viac": 49,
-     "2 obytné miestnosti": 3073,
-     "1 obytná miestnosť": 2062,
-     "4 obytné miestnosti": 1546,
-     "6 obytných miestností": 317,
-     "8 obytných miestností": 33,
-     "5 obytných miestností": 616,
-     "Nezistené": 200,
-     "7 obytných miestností": 82
+     "SK0103": 11543
     },
     "Rusovce": {
-     "Spolu": 1693,
-     "4 obytné miestnosti": 395,
-     "5 obytných miestností": 363,
-     "9 obytných miestností a viac": 14,
-     "7 obytných miestností": 26,
-     "8 obytných miestností": 20,
-     "2 obytné miestnosti": 138,
-     "1 obytná miestnosť": 63,
-     "6 obytných miestností": 159,
-     "3 obytné miestnosti": 421,
-     "Nezistené": 94
+     "SK0105": 1693
     },
     "Ružinov": {
-     "Spolu": 49881,
-     "2 obytné miestnosti": 15451,
-     "1 obytná miestnosť": 9069,
-     "6 obytných miestností": 222,
-     "3 obytné miestnosti": 17331,
-     "Nezistené": 2542,
-     "4 obytné miestnosti": 4310,
-     "5 obytných miestností": 778,
-     "7 obytných miestností": 71,
-     "8 obytných miestností": 24,
-     "9 obytných miestností a viac": 83
+     "SK0102": 49881
     },
     "Staré Mesto": {
-     "Spolu": 28248,
-     "9 obytných miestností a viac": 65,
-     "5 obytných miestností": 1085,
-     "8 obytných miestností": 60,
-     "3 obytné miestnosti": 8330,
-     "2 obytné miestnosti": 7174,
-     "7 obytných miestností": 144,
-     "6 obytných miestností": 412,
-     "Nezistené": 3125,
-     "4 obytné miestnosti": 3831,
-     "1 obytná miestnosť": 4022
+     "SK0101": 28248
     },
     "Vajnory": {
-     "Spolu": 2897,
-     "4 obytné miestnosti": 635,
-     "Nezistené": 24,
-     "3 obytné miestnosti": 934,
-     "6 obytných miestností": 76,
-     "8 obytných miestností": 3,
-     "9 obytných miestností a viac": 1,
-     "7 obytných miestností": 11,
-     "5 obytných miestností": 286,
-     "2 obytné miestnosti": 371,
-     "1 obytná miestnosť": 556
+     "SK0103": 2897
     },
     "Vrakuňa": {
-     "Spolu": 9427,
-     "4 obytné miestnosti": 1909,
-     "1 obytná miestnosť": 1893,
-     "5 obytných miestností": 394,
-     "7 obytných miestností": 42,
-     "3 obytné miestnosti": 3432,
-     "6 obytných miestností": 124,
-     "Nezistené": 255,
-     "8 obytných miestností": 10,
-     "9 obytných miestností a viac": 10,
-     "2 obytné miestnosti": 1358
+     "SK0102": 9427
     },
     "Záhorská Bystrica": {
-     "Spolu": 3148,
-     "5 obytných miestností": 483,
-     "9 obytných miestností a viac": 23,
-     "1 obytná miestnosť": 164,
-     "7 obytných miestností": 51,
-     "2 obytné miestnosti": 480,
-     "4 obytné miestnosti": 759,
-     "3 obytné miestnosti": 891,
-     "6 obytných miestností": 191,
-     "Nezistené": 76,
-     "8 obytných miestností": 30
+     "SK0104": 3148
     },
     "Čunovo": {
-     "Spolu": 587,
-     "4 obytné miestnosti": 184,
-     "6 obytných miestností": 64,
-     "Nezistené": 35,
-     "9 obytných miestností a viac": 2,
-     "5 obytných miestností": 173,
-     "8 obytných miestností": 8,
-     "1 obytná miestnosť": 1,
-     "3 obytné miestnosti": 88,
-     "7 obytných miestností": 18,
-     "2 obytné miestnosti": 14
+     "SK0105": 587
     }
    },
    "nazov": "Byty podľa počtu obytných miestností"
   },
   "byty_plocha": {
    "kocka": "om7820rr",
-   "stlpec": "e_sqmetrs",
+   "stlpec": "e_nuts14_code",
    "kategorie": [
-    "<60 m2 - 80 m2)",
-    "<80 m2 - 100 m2)",
-    "<50 m2 - 60 m2)",
-    "<40 m2 - 50 m2)",
-    "<30 m2 - 40 m2)",
-    "<150 m2 a viac",
-    "menej ako 30 m2)",
-    "<100 m2 - 120 m2)",
-    "nezistená",
-    "120 m2 - 150 m2)"
+    "SK0102",
+    "SK0105",
+    "SK0104",
+    "SK0103",
+    "SK0101"
    ],
    "mesto": {
-    "Spolu": 248199,
-    "<60 m2 - 80 m2)": 91777,
-    "<80 m2 - 100 m2)": 33343,
-    "<50 m2 - 60 m2)": 29147,
-    "<40 m2 - 50 m2)": 22658,
-    "<30 m2 - 40 m2)": 21248,
-    "<150 m2 a viac": 12119,
-    "menej ako 30 m2)": 10262,
-    "<100 m2 - 120 m2)": 9886,
-    "nezistená": 9682,
-    "120 m2 - 150 m2)": 8077
+    "SK0102": 70767,
+    "SK0105": 55682,
+    "SK0104": 51737,
+    "SK0103": 41765,
+    "SK0101": 28248
    },
    "mestske_casti": {
     "Devín": {
-     "Spolu": 1110,
-     "<50 m2 - 60 m2)": 65,
-     "<30 m2 - 40 m2)": 52,
-     "<40 m2 - 50 m2)": 60,
-     "<100 m2 - 120 m2)": 142,
-     "<150 m2 a viac": 272,
-     "120 m2 - 150 m2)": 92,
-     "<80 m2 - 100 m2)": 199,
-     "menej ako 30 m2)": 91,
-     "nezistená": 17,
-     "<60 m2 - 80 m2)": 120
+     "SK0104": 1110
     },
     "Devínska Nová Ves": {
-     "Spolu": 7677,
-     "<40 m2 - 50 m2)": 680,
-     "<30 m2 - 40 m2)": 642,
-     "<80 m2 - 100 m2)": 1040,
-     "<100 m2 - 120 m2)": 249,
-     "nezistená": 102,
-     "<50 m2 - 60 m2)": 361,
-     "<150 m2 a viac": 631,
-     "menej ako 30 m2)": 293,
-     "<60 m2 - 80 m2)": 3418,
-     "120 m2 - 150 m2)": 261
+     "SK0104": 7677
     },
     "Dúbravka": {
-     "Spolu": 18326,
-     "<150 m2 a viac": 344,
-     "<40 m2 - 50 m2)": 1320,
-     "<50 m2 - 60 m2)": 2736,
-     "menej ako 30 m2)": 789,
-     "<100 m2 - 120 m2)": 366,
-     "<60 m2 - 80 m2)": 8125,
-     "<80 m2 - 100 m2)": 1258,
-     "120 m2 - 150 m2)": 285,
-     "nezistená": 407,
-     "<30 m2 - 40 m2)": 2696
+     "SK0104": 18326
     },
     "Jarovce": {
-     "Spolu": 1023,
-     "<80 m2 - 100 m2)": 146,
-     "<60 m2 - 80 m2)": 82,
-     "<30 m2 - 40 m2)": 18,
-     "<150 m2 a viac": 499,
-     "120 m2 - 150 m2)": 129,
-     "<50 m2 - 60 m2)": 25,
-     "<40 m2 - 50 m2)": 3,
-     "nezistená": 12,
-     "menej ako 30 m2)": 0,
-     "<100 m2 - 120 m2)": 109
+     "SK0105": 1023
     },
     "Karlova Ves": {
-     "Spolu": 17565,
-     "<150 m2 a viac": 679,
-     "menej ako 30 m2)": 254,
-     "<50 m2 - 60 m2)": 1378,
-     "120 m2 - 150 m2)": 611,
-     "<40 m2 - 50 m2)": 1444,
-     "<30 m2 - 40 m2)": 1557,
-     "<80 m2 - 100 m2)": 2926,
-     "<60 m2 - 80 m2)": 7902,
-     "nezistená": 187,
-     "<100 m2 - 120 m2)": 627
+     "SK0104": 17565
     },
     "Lamač": {
-     "Spolu": 3911,
-     "<80 m2 - 100 m2)": 375,
-     "<60 m2 - 80 m2)": 1487,
-     "<50 m2 - 60 m2)": 388,
-     "120 m2 - 150 m2)": 173,
-     "menej ako 30 m2)": 5,
-     "<150 m2 a viac": 315,
-     "<30 m2 - 40 m2)": 205,
-     "<40 m2 - 50 m2)": 727,
-     "nezistená": 89,
-     "<100 m2 - 120 m2)": 147
+     "SK0104": 3911
     },
     "Nové Mesto": {
-     "Spolu": 27325,
-     "<100 m2 - 120 m2)": 1208,
-     "<80 m2 - 100 m2)": 3110,
-     "120 m2 - 150 m2)": 988,
-     "<60 m2 - 80 m2)": 7164,
-     "<150 m2 a viac": 1565,
-     "<50 m2 - 60 m2)": 4200,
-     "<40 m2 - 50 m2)": 2880,
-     "nezistená": 3343,
-     "menej ako 30 m2)": 1264,
-     "<30 m2 - 40 m2)": 1603
+     "SK0103": 27325
     },
     "Petržalka": {
-     "Spolu": 52379,
-     "menej ako 30 m2)": 3431,
-     "<30 m2 - 40 m2)": 5356,
-     "<40 m2 - 50 m2)": 3869,
-     "<50 m2 - 60 m2)": 4036,
-     "<60 m2 - 80 m2)": 26661,
-     "<150 m2 a viac": 185,
-     "nezistená": 719,
-     "<80 m2 - 100 m2)": 7561,
-     "<100 m2 - 120 m2)": 383,
-     "120 m2 - 150 m2)": 178
+     "SK0105": 52379
     },
     "Podunajské Biskupice": {
-     "Spolu": 11459,
-     "nezistená": 244,
-     "120 m2 - 150 m2)": 500,
-     "<80 m2 - 100 m2)": 1308,
-     "<60 m2 - 80 m2)": 4300,
-     "<50 m2 - 60 m2)": 1044,
-     "<150 m2 a viac": 625,
-     "<40 m2 - 50 m2)": 1037,
-     "<30 m2 - 40 m2)": 1651,
-     "menej ako 30 m2)": 274,
-     "<100 m2 - 120 m2)": 476
+     "SK0102": 11459
     },
     "Rača": {
-     "Spolu": 11543,
-     "nezistená": 234,
-     "120 m2 - 150 m2)": 405,
-     "<150 m2 a viac": 1023,
-     "<50 m2 - 60 m2)": 1832,
-     "<30 m2 - 40 m2)": 916,
-     "menej ako 30 m2)": 450,
-     "<60 m2 - 80 m2)": 3746,
-     "<80 m2 - 100 m2)": 1372,
-     "<40 m2 - 50 m2)": 1083,
-     "<100 m2 - 120 m2)": 482
+     "SK0103": 11543
     },
     "Rusovce": {
-     "Spolu": 1693,
-     "<80 m2 - 100 m2)": 349,
-     "<150 m2 a viac": 548,
-     "<40 m2 - 50 m2)": 40,
-     "<100 m2 - 120 m2)": 170,
-     "<30 m2 - 40 m2)": 17,
-     "<50 m2 - 60 m2)": 79,
-     "120 m2 - 150 m2)": 239,
-     "nezistená": 75,
-     "<60 m2 - 80 m2)": 167,
-     "menej ako 30 m2)": 9
+     "SK0105": 1693
     },
     "Ružinov": {
-     "Spolu": 49881,
-     "<80 m2 - 100 m2)": 6209,
-     "<60 m2 - 80 m2)": 17825,
-     "<50 m2 - 60 m2)": 8257,
-     "<30 m2 - 40 m2)": 3880,
-     "<100 m2 - 120 m2)": 1573,
-     "menej ako 30 m2)": 1844,
-     "<40 m2 - 50 m2)": 6171,
-     "nezistená": 1980,
-     "<150 m2 a viac": 1040,
-     "120 m2 - 150 m2)": 1102
+     "SK0102": 49881
     },
     "Staré Mesto": {
-     "Spolu": 28248,
-     "<40 m2 - 50 m2)": 2162,
-     "nezistená": 1664,
-     "<30 m2 - 40 m2)": 1428,
-     "<80 m2 - 100 m2)": 5406,
-     "<60 m2 - 80 m2)": 6070,
-     "menej ako 30 m2)": 998,
-     "<150 m2 a viac": 2269,
-     "120 m2 - 150 m2)": 2021,
-     "<100 m2 - 120 m2)": 2944,
-     "<50 m2 - 60 m2)": 3286
+     "SK0101": 28248
     },
     "Vajnory": {
-     "Spolu": 2897,
-     "<50 m2 - 60 m2)": 161,
-     "<60 m2 - 80 m2)": 418,
-     "menej ako 30 m2)": 459,
-     "<100 m2 - 120 m2)": 331,
-     "<40 m2 - 50 m2)": 115,
-     "120 m2 - 150 m2)": 359,
-     "nezistená": 26,
-     "<80 m2 - 100 m2)": 390,
-     "<150 m2 a viac": 514,
-     "<30 m2 - 40 m2)": 124
+     "SK0103": 2897
     },
     "Vrakuňa": {
-     "Spolu": 9427,
-     "nezistená": 333,
-     "<40 m2 - 50 m2)": 952,
-     "<30 m2 - 40 m2)": 1040,
-     "<50 m2 - 60 m2)": 1017,
-     "120 m2 - 150 m2)": 265,
-     "<60 m2 - 80 m2)": 3842,
-     "<80 m2 - 100 m2)": 1096,
-     "<100 m2 - 120 m2)": 297,
-     "menej ako 30 m2)": 62,
-     "<150 m2 a viac": 523
+     "SK0102": 9427
     },
     "Záhorská Bystrica": {
-     "Spolu": 3148,
-     "<40 m2 - 50 m2)": 111,
-     "<60 m2 - 80 m2)": 423,
-     "<150 m2 a viac": 863,
-     "<100 m2 - 120 m2)": 289,
-     "nezistená": 216,
-     "<30 m2 - 40 m2)": 63,
-     "120 m2 - 150 m2)": 350,
-     "<80 m2 - 100 m2)": 519,
-     "menej ako 30 m2)": 37,
-     "<50 m2 - 60 m2)": 277
+     "SK0104": 3148
     },
     "Čunovo": {
-     "Spolu": 587,
-     "<60 m2 - 80 m2)": 27,
-     "menej ako 30 m2)": 2,
-     "nezistená": 34,
-     "120 m2 - 150 m2)": 119,
-     "<100 m2 - 120 m2)": 93,
-     "<30 m2 - 40 m2)": 0,
-     "<80 m2 - 100 m2)": 79,
-     "<150 m2 a viac": 224,
-     "<40 m2 - 50 m2)": 4,
-     "<50 m2 - 60 m2)": 5
+     "SK0105": 587
     }
    },
    "nazov": "Byty podľa podlahovej plochy"
   }
  },
- "aktualizovane": "2026-10-15T14:35:05+00:00"
+ "aktualizovane": "2026-11-15T04:50:12+00:00"
 }

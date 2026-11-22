@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-10-20",
+ "do": "2026-11-21",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 14749,
-  "skryte_fyzicke_osoby": 9544,
+  "zaznamov": 15239,
+  "skryte_fyzicke_osoby": 9928,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,10 +37,10 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3021,
-    "suma": 50276698,
-    "fo_pocet": 2137,
-    "fo_suma": 3388571
+    "pocet": 3511,
+    "suma": 54078562,
+    "fo_pocet": 2521,
+    "fo_suma": 3692863
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -51,39 +51,39 @@
     "suma": 29911014
    },
    {
+    "ico": "47240768",
+    "nazov": "BAUMANN Nitra s. r. o.",
+    "pocet": 29,
+    "suma": 8467776
+   },
+   {
     "ico": "00681156",
     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
     "pocet": 24,
     "suma": 7952163
    },
    {
-    "ico": "47240768",
-    "nazov": "BAUMANN Nitra s. r. o.",
-    "pocet": 27,
-    "suma": 6931638
-   },
-   {
     "ico": "57013454",
     "nazov": "Spojená materská škola, Benkova 17, Nitra",
-    "pocet": 6,
+    "pocet": 7,
     "suma": 4799260
    },
    {
     "ico": "57013420",
     "nazov": "Spojená materská škola, Dobšinského 2885/8, Nitra",
-    "pocet": 5,
+    "pocet": 6,
     "suma": 3783897
    },
    {
     "ico": "57013471",
     "nazov": "Spojená materská škola, Nábrežie mládeže 7, Nitra",
-    "pocet": 7,
+    "pocet": 8,
     "suma": 3147718
    },
    {
     "ico": "57013501",
     "nazov": "Spojená materská škola, Štiavnická 1, Nitra",
-    "pocet": 4,
+    "pocet": 5,
     "suma": 2560731
    },
    {
@@ -95,7 +95,7 @@
    {
     "ico": "57013527",
     "nazov": "Spojená materská škola, Dolnočermánska 57, Nitra",
-    "pocet": 3,
+    "pocet": 4,
     "suma": 2360081
    },
    {
@@ -113,13 +113,19 @@
    {
     "ico": "37966456",
     "nazov": "Správa zariadení sociálnych služieb",
-    "pocet": 39,
-    "suma": 1976945
+    "pocet": 42,
+    "suma": 1976947
+   },
+   {
+    "ico": "34104402",
+    "nazov": "Novosedlík, spol. s.r.o.",
+    "pocet": 2,
+    "suma": 1863068
    },
    {
     "ico": "57012644",
     "nazov": "Spojená materská škola, Alexyho 26, Nitra",
-    "pocet": 10,
+    "pocet": 12,
     "suma": 1823997
    },
    {
@@ -143,7 +149,7 @@
    {
     "ico": "57012610",
     "nazov": "Spojená materská škola, Piaristická 12, Nitra",
-    "pocet": 10,
+    "pocet": 13,
     "suma": 1361900
    },
    {
@@ -155,14 +161,8 @@
    {
     "ico": "57012547",
     "nazov": "Spojená materská škola, Párovská 36, Nitra",
-    "pocet": 5,
+    "pocet": 6,
     "suma": 1309939
-   },
-   {
-    "ico": "37865609",
-    "nazov": "Základná škola Tulipánová",
-    "pocet": 7,
-    "suma": 1228966
    }
   ],
   "najvacsie_12_mesiacov": [
@@ -231,6 +231,14 @@
     "url": "https://www.crz.gov.sk/zmluva/12686408/"
    },
    {
+    "datum": "2026-11-02",
+    "dodavatel": "BAUMANN Nitra s. r. o.",
+    "ico": "47240768",
+    "suma": 1464625.26,
+    "popis": "Dodatok č. 1 k ZoD č.j. 1861/2025/OVaR - Rekonštrukcia kuchyne a jedálne ZŠ Nábrežie mládeže",
+    "url": "https://www.crz.gov.sk/zmluva/13018277/"
+   },
+   {
     "datum": "2025-11-27",
     "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
     "ico": "50349287",
@@ -277,14 +285,6 @@
     "suma": 1114037.6,
     "popis": "ZMLUVA O SPOLUPRÁCI",
     "url": "https://www.crz.gov.sk/zmluva/12784592/"
-   },
-   {
-    "datum": "2026-09-09",
-    "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny SR",
-    "ico": "00681156",
-    "suma": 1114037.6,
-    "popis": "Zmluva o spolupráci - NFP 401405J046 NP Podpora dlhodobej integrácie štátnych príslušníkov tretích krajín na území SR NP Podpora dlhodobej integrácie štátnych príslušníkov tretích krajín na území SR",
-    "url": "https://www.crz.gov.sk/zmluva/12800030/"
    }
   ],
   "dotacie_poskytnute": [
@@ -294,7 +294,7 @@
    },
    {
     "nazov": "Telovýchovná jednota AC Nitra",
-    "suma": 463738
+    "suma": 470738
    },
    {
     "nazov": "Futbalový klub Nitra",
@@ -342,7 +342,7 @@
    },
    {
     "nazov": "Zápasnícky klub Corgoň Nitra",
-    "suma": 63423
+    "suma": 68423
    },
    {
     "nazov": "Slovenská poľnohospodárska univerzita v Nitre",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-10-21T05:52:29+00:00"
+ "aktualizovane": "2026-11-22T13:27:12+00:00"
 }

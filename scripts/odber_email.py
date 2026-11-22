@@ -57,6 +57,7 @@ def kanaly() -> dict[str, str]:
     k.update({slug(c): f"Bratislava – {c}" for c in CASTI})
     k.update({m["slug"]: m["nazov"] for m in MESTA if m.get("aktivne") and not m.get("plne")})
     k["dodavatel"] = "Sledovanie dodávateľov"
+    k["obec"] = "Moja obec"  # atribút OBCE = kódy obcí; každému odberateľovi zvlášť (transakčný e-mail)
     # týždenník mesta (piatok): novinky týždňa, termíny, rozpočet, otázka z kvízu
     k.update({f"tyzdennik-{m['slug']}": f"Týždenník: {m['nazov']}" for m in MESTA if m.get("aktivne")})
     return k
@@ -111,7 +112,7 @@ def nastavenie(b: Brevo) -> int:
         mapa["zoznamy"][k] = zoznamy[meno]
         mapa["nazvy"][k] = nazov
     atributy = {a["name"] for a in (b("GET", "/contacts/attributes").get("attributes") or [])}
-    for atr in ("KANAL", "ICO"):
+    for atr in ("KANAL", "ICO", "OBCE"):
         if atr not in atributy:
             b("POST", f"/contacts/attributes/normal/{atr}", json={"type": "text"})
             print(f"  nový atribút: {atr}")
@@ -181,7 +182,7 @@ def rozosli(b: Brevo) -> int:
     pocty = {z["id"]: z.get("uniqueSubscribers", z.get("totalSubscribers", 0)) for z in b.vsetko("/contacts/lists", "lists")}
     poslane = 0
     for kluc, lid in mapa["zoznamy"].items():
-        if kluc == "dodavatel" or kluc.startswith("tyzdennik-"):
+        if kluc in ("dodavatel", "obec") or kluc.startswith("tyzdennik-"):
             continue
         odberatelov = pocty.get(lid, 0)
         # prvý súhrn pre nový kanál: novinky za posledný deň
@@ -211,6 +212,11 @@ def rozosli(b: Brevo) -> int:
             poslane += dodavatelia(b, mapa["zoznamy"]["dodavatel"], pocty.get(mapa["zoznamy"]["dodavatel"], 0), stav)
         except Exception as e:  # noqa: BLE001
             print(f"::warning title=Odber dodávateľov::{type(e).__name__}: {e}")
+    if "obec" in mapa["zoznamy"]:
+        try:
+            poslane += obce_upozornenia(b, mapa["zoznamy"]["obec"], pocty.get(mapa["zoznamy"]["obec"], 0), stav)
+        except Exception as e:  # noqa: BLE001
+            print(f"::warning title=Odber obcí::{type(e).__name__}: {e}")
     STAV.write_text(json.dumps(dict(sorted(stav.items())), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"Rozoslané e-mailov: {poslane}")
     return 0
@@ -408,6 +414,94 @@ def dodavatelia(b: Brevo, lid: int, odberatelov: int, stav: dict) -> int:
         offset += 500
     stav["dodavatel_posledne_id"] = str(naj)
     print(f"  Sledovanie dodávateľov: {len(zmluvy)} nových zmlúv, odoslaných e-mailov: {poslane}")
+    return poslane
+
+
+# ---------- Moja obec: nové stavebné zámery, väčšie zmluvy, eurofondy a mesačné čísla ----------
+def _json(cesta):
+    return json.loads(cesta.read_text(encoding="utf-8")) if cesta.exists() else {}
+
+
+def novinky_obci(od: str, stav: dict) -> dict[str, list[tuple[str, str, str]]]:
+    """kód obce -> [(dátum, text, kotva)] s dátumom po od (YYYY-MM-DD); len inštitúcie a firmy (bez osobných údajov)."""
+    out: dict[str, list[tuple[str, str, str]]] = {}
+    eia = _json(DATA / "obce" / "eia.json").get("obce", {})
+    for kod, e in eia.items():
+        for z in e.get("zamery", []):
+            if z[3] > od:
+                out.setdefault(kod, []).append((z[3], f"Plánovaná stavba: {z[1]} – {z[2]}", "eia"))
+    zm = _json(DATA / "obce" / "zmluvy.json").get("obce", {})
+    eur = lambda n: f"{round(n or 0):,} €".replace(",", " ")  # noqa: E731
+    for kod, z in zm.items():
+        for x in z.get("najvacsie", []):
+            if x[0] > od:
+                out.setdefault(kod, []).append((x[0], f"Zmluva {eur(x[2])}: {x[1]} ({x[3]})", "zmluvy"))
+        for x in z.get("nfp_zoz", []):
+            if x[0] > od:
+                out.setdefault(kod, []).append((x[0], f"Eurofondy / dotácia {eur(x[2])}: {x[1]}", "eurofondy"))
+    nez = _json(DATA / "obce" / "nezamestnanost.json")
+    if nez.get("mesiac") and nez["mesiac"] != stav.get("obec_nez_mesiac"):
+        m = ["január", "február", "marec", "apríl", "máj", "jún", "júl", "august", "september", "október", "november", "december"][int(nez["mesiac"][5:7]) - 1]
+        for kod, x in nez.get("obce", {}).items():
+            if x.get("pdu") is not None:
+                out.setdefault(kod, []).append((nez["mesiac"] + "-28", f"Nezamestnanosť – {m} {nez['mesiac'][:4]}: {str(round(x['pdu'], 1)).replace('.', ',')} %", "nezamestnanost"))
+    return out
+
+
+def email_obec(nazov: str, url: str, polozky: list[tuple[str, str, str]], odhlasit: str) -> str:
+    h = html.escape
+    riadky = "".join(f'<div style="border-top:1px solid #e2e2de;padding:10px 0"><a href="{h(url)}#{k}" style="color:#1d1d1f;font-weight:700;text-decoration:none">{h(t)}</a>'
+                     f'<p style="margin:4px 0 0;color:#5f6368;font-size:14px">{h(datum_sk(d)) if not d.endswith("-28") else "nové mesačné údaje"}</p></div>' for d, t, k in polozky[:25])
+    return f"""<!doctype html><html lang="sk"><body style="margin:0;background:#f6f6f4;font-family:Arial,Helvetica,sans-serif;color:#1d1d1f">
+<div style="max-width:620px;margin:0 auto;padding:24px 18px">
+<p style="font-size:20px;font-weight:800;margin:0 0 16px">mesto<span style="color:#c8102e">v</span>číslach.sk</p>
+<div style="background:#fff;border:1px solid #e2e2de;border-radius:12px;padding:20px">
+<h1 style="font-size:21px;margin:0 0 4px">Čo je nové: {h(nazov)}</h1>
+<p style="color:#5f6368;margin:0 0 8px">Nové stavebné zámery, väčšie zmluvy, eurofondy a mesačné čísla obce</p>
+{riadky}
+<p style="margin:22px 0 0"><a href="{h(url)}" style="color:#c8102e;font-weight:700">Celý profil obce</a></p>
+</div>
+<p style="color:#5f6368;font-size:12px;line-height:1.5;margin:16px 4px 0">Tento e-mail dostávate, lebo ste si na mestovcislach.sk zapli upozornenia pre obec.<br>
+<a href="{h(odhlasit)}" style="color:#5f6368">Odhlásiť sa</a> · <a href="{WEB}/sukromie" style="color:#5f6368">Ochrana súkromia</a></p>
+</div></body></html>"""
+
+
+def obce_upozornenia(b: Brevo, lid: int, odberatelov: int, stav: dict) -> int:
+    dnes = datetime.now(timezone.utc).date().isoformat()
+    od = stav.get("obec_posledny_den")
+    if not od:  # prvý beh: len zapamätať deň
+        stav["obec_posledny_den"] = dnes
+        stav["obec_nez_mesiac"] = _json(DATA / "obce" / "nezamestnanost.json").get("mesiac", "")
+        return 0
+    nove = novinky_obci(od, stav) if odberatelov else {}
+    zoznam = {o["kod"]: o for o in _json(DATA / "obce" / "zoznam.json").get("obce", [])}
+    kluc = os.environ["BREVO_API_KEY"].strip()
+    poslane, offset = 0, 0
+    while nove:
+        d = b("GET", f"/contacts/lists/{lid}/contacts", params={"limit": 500, "offset": offset})
+        kontakty = d.get("contacts") or []
+        for k in kontakty:
+            if k.get("emailBlacklisted"):
+                continue
+            kody = [x for x in str((k.get("attributes") or {}).get("OBCE", "")).split(",") if re.fullmatch(r"\d{6}", x)]
+            adresa = k["email"]  # nikdy nevypisovať
+            odkaz = f"{WEB}/api/odhlasit?k=obec&e={requests.utils.quote(adresa)}&t={token(adresa, kluc)}"
+            for kod in kody:
+                moje = sorted(nove.get(kod, []), reverse=True)
+                o = zoznam.get(kod)
+                if not moje or not o:
+                    continue
+                url = o["url"] if o["url"].startswith("http") else f"{WEB}{o['url']}"
+                b("POST", "/smtp/email", json={
+                    "sender": ODOSIELATEL, "replyTo": {"email": ODPOVED}, "to": [{"email": adresa}],
+                    "subject": f"Čo je nové: {o['nazov']} ({len(moje)})", "htmlContent": email_obec(o["nazov"], url, moje, odkaz), "tags": ["obec"]})
+                poslane += 1
+        if len(kontakty) < 500:
+            break
+        offset += 500
+    stav["obec_posledny_den"] = dnes
+    stav["obec_nez_mesiac"] = _json(DATA / "obce" / "nezamestnanost.json").get("mesiac", stav.get("obec_nez_mesiac", ""))
+    print(f"  Moja obec: obcí s novinkami {len(nove)}, odoslaných e-mailov: {poslane}")
     return poslane
 
 

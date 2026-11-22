@@ -54,8 +54,6 @@ def pbf() -> Path:
     if tmp.stat().st_size < 50_000_000:
         raise RuntimeError(f"výrez OSM je podozrivo malý ({tmp.stat().st_size} B)")
     tmp.replace(p)
-    for stary in CACHE.glob("filter-*.osm.pbf"):  # filtre zo starého výrezu
-        stary.unlink()
     print(f"  OSM výrez stiahnutý: {p.stat().st_size / 1e6:.0f} MB za {time.time() - t0:.0f} s")
     return p
 
@@ -67,9 +65,6 @@ _BLOK = r'(?:\[(?:"(?:[^"\\]|\\.)*"|[^\]"])*\])'  # [ ... ] aj s ] vnútri úvod
 def _filtre(text: str) -> list[tuple]:
     """Rozbor [k=v][k~"re"][k][!k][k!=v] – hodnoty v úvodzovkách môžu obsahovať aj ] a medzery."""
     out = []
-    for blok in re.findall(_BLOK, text):
-        if not blok:
-            continue
     zvysok = re.sub(_BLOK, "", text).strip()
     if zvysok:
         raise NepodporovanyDotaz(f"filter: {text!r}")
@@ -158,7 +153,8 @@ def _vyrez(vyrazy: list[str]) -> Path:
     """`osmium tags-filter` – menší súbor len s potrebnými kľúčmi (aj s odkazovanými uzlami a cestami); medzi volaniami sa ukladá."""
     zdroj = pbf()
     kluc = hashlib.sha1(("|".join(sorted(set(vyrazy))) + str(zdroj.stat().st_mtime)).encode()).hexdigest()[:16]
-    cesta = CACHE / f"filter-{kluc}.osm.pbf"
+    import tempfile
+    cesta = Path(os.environ.get("OSM_TMP", tempfile.gettempdir())) / f"osm-filter-{kluc}.osm.pbf"  # mimo cache výrezu
     if not cesta.exists():
         t0 = time.time()
         subprocess.run(["osmium", "tags-filter", "--overwrite", "-o", str(cesta), str(zdroj), *sorted(set(vyrazy))], check=True, capture_output=True)
@@ -230,7 +226,9 @@ def _oblast(definicia: tuple):
     if not poly:
         raise NepodporovanyDotaz(f"oblasť {definicia} sa vo výreze nenašla")
     g = unary_union(poly)
-    _cache_oblasti[kl] = (prep(g), g)
+    # cesty a relácie: musia zasahovať dovnútra oblasti, nestačí, že sa jej dotýkajú (napr. susedné obce za hranicou
+    # majú s oblasťou spoločnú hraničnú čiaru) – rovnako ako Overpass; preto test voči oblasti zúženej o ~1 m
+    _cache_oblasti[kl] = (prep(g), prep(g.buffer(-0.00001)))
     return _cache_oblasti[kl]
 
 
@@ -282,7 +280,7 @@ def dopyt(q: str) -> dict:
                 raise NepodporovanyDotaz(f"relácia {v['id']} nie je administratívna hranica")
             vyb[("rh", v["id"])] = None
             continue
-        pripr, _ = _oblast(v["oblast"])
+        pripr, vnutro = _oblast(v["oblast"])
         if "n" in v["typy"]:
             for i, (lat, lon, t) in uzly.items():
                 if t and _zhoda(t, v["filtre"]) and pripr.contains(Point(lon, lat)):
@@ -290,7 +288,7 @@ def dopyt(q: str) -> dict:
         if "w" in v["typy"]:
             for i, (g, t, _) in cesty.items():
                 if g and _zhoda(t, v["filtre"]):
-                    if pripr.intersects(Point(g[0][1], g[0][0]) if len(g) == 1 else LineString([(lo, la) for la, lo in g])):
+                    if vnutro.intersects(Point(g[0][1], g[0][0]) if len(g) == 1 else LineString([(lo, la) for la, lo in g])):
                         vyb[("w", i)] = None
         if "r" in v["typy"]:
             for i, (cl, t) in relacie.items():
@@ -302,7 +300,7 @@ def dopyt(q: str) -> dict:
                         break
                     if typ == "w" and ref in cesty and cesty[ref][0]:
                         g = cesty[ref][0]
-                        if pripr.intersects(Point(g[0][1], g[0][0]) if len(g) == 1 else LineString([(lo, la) for la, lo in g])):
+                        if vnutro.intersects(Point(g[0][1], g[0][0]) if len(g) == 1 else LineString([(lo, la) for la, lo in g])):
                             vyb[("r", i)] = None
                             break
 

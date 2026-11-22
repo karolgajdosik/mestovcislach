@@ -2,15 +2,15 @@
  "mesto": "trencin",
  "ico": "00312037",
  "od": "2022-01-01",
- "do": "2026-10-20",
+ "do": "2026-11-21",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 12354,
-  "skryte_fyzicke_osoby": 6776,
+  "zaznamov": 12606,
+  "skryte_fyzicke_osoby": 6923,
   "roky": {
    "2022": {
     "pocet": 1819,
@@ -37,18 +37,18 @@
     "fo_suma": 9669829
    },
    "2026": {
-    "pocet": 2095,
-    "suma": 96909315,
-    "fo_pocet": 1018,
-    "fo_suma": 1074245
+    "pocet": 2347,
+    "suma": 102276917,
+    "fo_pocet": 1165,
+    "fo_suma": 2538573
    }
   },
   "dodavatelia_posledne_3_roky": [
    {
     "ico": "50349287",
     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "pocet": 56,
-    "suma": 122001819
+    "pocet": 59,
+    "suma": 124120924
    },
    {
     "ico": "30416094",
@@ -59,13 +59,13 @@
    {
     "ico": "46715894",
     "nazov": "Adifex a.s.",
-    "pocet": 18,
-    "suma": 30389161
+    "pocet": 20,
+    "suma": 30690433
    },
    {
     "ico": "37920413",
     "nazov": "Mestské hospodárstvo a správa lesov, m.r.o., Trenčín",
-    "pocet": 66,
+    "pocet": 68,
     "suma": 12083738
    },
    {
@@ -77,13 +77,13 @@
    {
     "ico": "54345987",
     "nazov": "Kreatívny inštitút Trenčín,n.o. Anglická verzia názvu je: Creative Institute Trenčín, n.o.",
-    "pocet": 256,
-    "suma": 7341376
+    "pocet": 273,
+    "suma": 7519526
    },
    {
     "ico": "00681156",
-    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
-    "pocet": 12,
+    "nazov": "Ministerstvo práce,sociálnych vecí a rodiny SR",
+    "pocet": 13,
     "suma": 7144028
    },
    {
@@ -161,8 +161,8 @@
    {
     "ico": "34131710",
     "nazov": "HEES - GASTROSLUŽBY, spol. s r.o.",
-    "pocet": 8,
-    "suma": 1208717
+    "pocet": 9,
+    "suma": 1394383
    }
   ],
   "najvacsie_12_mesiacov": [
@@ -279,12 +279,12 @@
     "url": "https://www.crz.gov.sk/zmluva/11985941/"
    },
    {
-    "datum": "2026-04-02",
+    "datum": "2026-11-16",
     "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
     "ico": "50349287",
-    "suma": 1568784.13,
-    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU č. projektu 401402H100",
-    "url": "https://www.crz.gov.sk/zmluva/12201779/"
+    "suma": 1719105.0,
+    "popis": "Dodatok č. 1 k Zmluve o poskytnutí nenávratného finančného príspevku CEZ MIRRI SR: 516/2025 kód projektu: 401501C338",
+    "url": "https://www.crz.gov.sk/zmluva/13104491/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-10-21T05:52:29+00:00"
+ "aktualizovane": "2026-11-22T13:27:12+00:00"
 }

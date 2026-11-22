@@ -10,9 +10,9 @@
    "nazov": "Cyklosčítače Košice - prašnosť",
    "kategoria": "Bezpečnosť, zdravie",
    "upravene": 1764683916000,
-   "riadkov": 383027,
+   "riadkov": 387548,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (383027 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (387548 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "6323640be4234b479f760435a2654c78",
@@ -136,7 +136,7 @@
    "nazov": "Cyklosčítače Košice - pohyb",
    "kategoria": "Doprava, parkovanie",
    "upravene": 1764684099000,
-   "riadkov": 179962,
+   "riadkov": 183122,
    "stav": "vynechane",
    "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
   },
@@ -378,9 +378,9 @@
    "nazov": "Hlasovanie poslancov mestského zastupiteľstva - volebné obdobie 2022 - 2026",
    "kategoria": "Politika, voľby, orgány",
    "upravene": 1762417768000,
-   "riadkov": 85485,
+   "riadkov": 85854,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (85485 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (85854 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "33fc61f8fd924ff6b5795f091ff6a551",
@@ -466,7 +466,7 @@
    "nazov": "Úradná tabuľa Mesta Košice",
    "kategoria": "Politika, voľby, orgány",
    "upravene": 1764750909000,
-   "riadkov": 94,
+   "riadkov": 86,
    "stav": "vynechane",
    "dovod": "Názvy dokumentov na úradnej tabuli môžu obsahovať mená fyzických osôb (napr. doručovanie písomností) – nezverejňujeme."
   },
@@ -550,8 +550,8 @@
    "id": "53b6c55f625f463bbfc467760132c4f2",
    "nazov": "Zoznam verejne dostupných GIS aplikacií mesta Košice",
    "kategoria": "Priestorové údaje",
-   "upravene": 1764593206000,
-   "riadkov": 33,
+   "upravene": 1795001521000,
+   "riadkov": 41,
    "stav": "katalog",
    "kde": "/kosice/katalog/53b6c55f625f463bbfc467760132c4f2",
    "stlpcov": 4
@@ -672,28 +672,28 @@
    "id": "f3fae948601148c9a458e375a572c84c",
    "nazov": "Dodávateľské faktúry mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1792461741000,
-   "riadkov": 89363,
+   "upravene": 1795313469000,
+   "riadkov": 90220,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (89363 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (90220 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "06d4cb2866c54b43bb1997f7edf86f4d",
    "nazov": "Objednávky mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1792461750000,
-   "riadkov": 24157,
+   "upravene": 1795313540000,
+   "riadkov": 24473,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (24157 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (24473 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "6b66219049674794b462b90512081220",
    "nazov": "Zmluvy mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1792461759000,
-   "riadkov": 46062,
+   "upravene": 1795313657000,
+   "riadkov": 47122,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (46062 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (47122 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "9961c8a9cd8e461d8bee1414833746b9",
@@ -792,9 +792,9 @@
    "nazov": "Meteostanice na vybraných ZŠ mesta Košice",
    "kategoria": "Životné prostredie a klíma",
    "upravene": 1769602512000,
-   "riadkov": 679067,
+   "riadkov": 742681,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (679067 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (742681 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "975951e6113543768e960c96bbc75f3b",
@@ -845,5 +845,5 @@
    "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
   }
  ],
- "aktualizovane": "2026-10-20T04:59:09+00:00"
+ "aktualizovane": "2026-11-22T08:41:54+00:00"
 }

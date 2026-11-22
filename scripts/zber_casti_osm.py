@@ -19,6 +19,7 @@ from shapely.ops import polygonize, unary_union
 
 from spolocne import DATA, KOREN, spusti, zapis_ak_zmena
 from zber_mapa_osm import overpass
+from osm_lokalne import zapnute
 
 MESTA = json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8"))
 # mesto → (dotaz na relácie v oblasti mesta, popis)
@@ -97,7 +98,8 @@ def main() -> int:
                 out[m["slug"]] = {"zdroj": "https://www.openstreetmap.org/copyright", "licencia": "© prispievatelia OpenStreetMap (ODbL)",
                                   "druh": "štvrte", "priblizne": True, "casti": sorted(casti, key=lambda c: c["n"])}
             print(f"{m['nazov']}: {len(casti)} štvrtí (približné hranice z bodov OSM)")
-            time.sleep(10)
+            if not zapnute():
+                time.sleep(10)
             continue
         if m["slug"] not in VYBER or not m.get("osm_rel"):
             continue
@@ -133,7 +135,8 @@ def main() -> int:
         if len(casti) >= 4:
             out[m["slug"]] = {"zdroj": "https://www.openstreetmap.org/copyright", "licencia": "© prispievatelia OpenStreetMap (ODbL)", "druh": druh, "casti": casti}
         print(f"{m['nazov']}: {len(casti)} častí ({druh})")
-        time.sleep(10)
+        if not zapnute():
+            time.sleep(10)
     if not out:
         raise RuntimeError("Časti miest z OSM: žiadne údaje")
     zapis_ak_zmena(DATA / "mesta" / "casti-osm.json", {"mesta": out, "aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds")})

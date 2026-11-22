@@ -5,11 +5,11 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-10-23",
+ "do": "2026-11-21",
  "mestske_casti": {
   "Devín": {
-   "zmluv": 551,
-   "suma": 1750183,
+   "zmluv": 557,
+   "suma": 1750433,
    "roky": {
     "2022": [
      63,
@@ -28,13 +28,13 @@
      598785
     ],
     "2026": [
-     85,
-     128937
+     91,
+     129187
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 354,
-    "suma": 138695
+    "zmluv": 356,
+    "suma": 138935
    },
    "najvacsi_partneri": [
     {
@@ -212,8 +212,8 @@
    ]
   },
   "Devínska Nová Ves": {
-   "zmluv": 1406,
-   "suma": 64478981,
+   "zmluv": 1416,
+   "suma": 64652061,
    "roky": {
     "2022": [
      250,
@@ -232,13 +232,13 @@
      19516095
     ],
     "2026": [
-     210,
-     6378194
+     220,
+     6551274
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 501,
-    "suma": 979530
+    "zmluv": 506,
+    "suma": 998237
    },
    "najvacsi_partneri": [
     {
@@ -256,8 +256,8 @@
     {
      "nazov": "Úsporné Drevodomy s.r.o.",
      "ico": "47883995",
-     "zmluv": 6,
-     "suma": 7247847
+     "zmluv": 7,
+     "suma": 7400540
     },
     {
      "nazov": "MBM-GROUP a.s.",
@@ -416,8 +416,8 @@
    ]
   },
   "Dúbravka": {
-   "zmluv": 2466,
-   "suma": 44705784,
+   "zmluv": 2493,
+   "suma": 44735003,
    "roky": {
     "2022": [
      443,
@@ -436,19 +436,19 @@
      9938981
     ],
     "2026": [
-     367,
-     15178381
+     394,
+     15207600
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1040,
-    "suma": 3346750
+    "zmluv": 1048,
+    "suma": 3362989
    },
    "najvacsi_partneri": [
     {
      "nazov": "Pittel a Brausewetter, s.r.o.",
      "ico": "35943653",
-     "zmluv": 6,
+     "zmluv": 7,
      "suma": 10297750
     },
     {
@@ -620,8 +620,8 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14632,
-   "suma": 2631232205,
+   "zmluv": 14907,
+   "suma": 2706618058,
    "roky": {
     "2022": [
      2618,
@@ -640,20 +640,20 @@
      334776233
     ],
     "2026": [
-     2474,
-     541936890
+     2749,
+     617322743
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 6407,
-    "suma": 76531575
+    "zmluv": 6525,
+    "suma": 77708041
    },
    "najvacsi_partneri": [
     {
-     "nazov": "Ministerstvo dopravy SR",
+     "nazov": "Ministerstvo dopravy Slovenskej republiky",
      "ico": "30416094",
-     "zmluv": 101,
-     "suma": 473991146
+     "zmluv": 102,
+     "suma": 473991183
     },
     {
      "nazov": "Dopravný podnik Bratislava, akciová spoločnosť",
@@ -664,19 +664,19 @@
     {
      "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
      "ico": "00681300",
-     "zmluv": 38,
-     "suma": 140908551
+     "zmluv": 39,
+     "suma": 140999929
     },
     {
      "nazov": "Československá obchodná banka, a.s.",
      "ico": "36854140",
-     "zmluv": 32,
+     "zmluv": 33,
      "suma": 135000050
     },
     {
      "nazov": "STRABAG s.r.o.",
      "ico": "17317282",
-     "zmluv": 14,
+     "zmluv": 15,
      "suma": 132448629
     },
     {
@@ -710,34 +710,34 @@
      "suma": 65014000
     },
     {
+     "nazov": "DOSA Slovakia, s.r.o.",
+     "ico": "36412678",
+     "zmluv": 2,
+     "suma": 62047439
+    },
+    {
      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
      "ico": "00681156",
-     "zmluv": 30,
-     "suma": 57644771
+     "zmluv": 31,
+     "suma": 60986884
     },
     {
      "nazov": "MBM-GROUP, a.s.",
      "ico": "36740519",
-     "zmluv": 6,
-     "suma": 56738684
+     "zmluv": 8,
+     "suma": 56799236
     },
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
      "ico": "50349287",
-     "zmluv": 50,
+     "zmluv": 51,
      "suma": 45268869
     },
     {
      "nazov": "Pittel + Brausewetter s.r.o.",
      "ico": "35943653",
-     "zmluv": 14,
-     "suma": 40900454
-    },
-    {
-     "nazov": "zares, spol. s r.o.",
-     "ico": "35778806",
-     "zmluv": 5,
-     "suma": 38500000
+     "zmluv": 15,
+     "suma": 41021258
     }
    ],
    "najvacsie_zmluvy": [
@@ -824,8 +824,8 @@
    ]
   },
   "Jarovce": {
-   "zmluv": 930,
-   "suma": 9790246,
+   "zmluv": 935,
+   "suma": 9791051,
    "roky": {
     "2022": [
      86,
@@ -844,13 +844,13 @@
      1756731
     ],
     "2026": [
-     86,
-     2784691
+     91,
+     2785496
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 702,
-    "suma": 500621
+    "zmluv": 705,
+    "suma": 500976
    },
    "najvacsi_partneri": [
     {
@@ -1028,8 +1028,8 @@
    ]
   },
   "Karlova Ves": {
-   "zmluv": 2467,
-   "suma": 72515595,
+   "zmluv": 2506,
+   "suma": 73189922,
    "roky": {
     "2022": [
      564,
@@ -1048,13 +1048,13 @@
      8212235
     ],
     "2026": [
-     356,
-     22567605
+     395,
+     23241933
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1013,
-    "suma": 3916104
+    "zmluv": 1023,
+    "suma": 3925313
    },
    "najvacsi_partneri": [
     {
@@ -1232,8 +1232,8 @@
    ]
   },
   "Lamač": {
-   "zmluv": 1339,
-   "suma": 34398090,
+   "zmluv": 1357,
+   "suma": 35147450,
    "roky": {
     "2022": [
      493,
@@ -1252,20 +1252,20 @@
      4758500
     ],
     "2026": [
-     165,
-     5849965
+     183,
+     6599325
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 683,
-    "suma": 365851
+    "zmluv": 692,
+    "suma": 397509
    },
    "najvacsi_partneri": [
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
      "ico": "50349287",
-     "zmluv": 12,
-     "suma": 15168526
+     "zmluv": 13,
+     "suma": 15870406
     },
     {
      "nazov": "Adifex, a.s.",
@@ -1286,9 +1286,9 @@
      "suma": 2329362
     },
     {
-     "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+     "nazov": "Hl.mesto SR Bratislava, Primaciálne nám.č.1, Bratislava",
      "ico": "00603481",
-     "zmluv": 19,
+     "zmluv": 20,
      "suma": 584306
     },
     {
@@ -1328,9 +1328,9 @@
      "suma": 236983
     },
     {
-     "nazov": "METRO Cash&Carry SR s. r. o.",
+     "nazov": "METRO Cash & Carry SR s. r. o.",
      "ico": "45952671",
-     "zmluv": 3,
+     "zmluv": 5,
      "suma": 196500
     },
     {
@@ -1436,8 +1436,8 @@
    ]
   },
   "Nové Mesto": {
-   "zmluv": 1761,
-   "suma": 122807587,
+   "zmluv": 1783,
+   "suma": 123283300,
    "roky": {
     "2022": [
      277,
@@ -1456,13 +1456,13 @@
      10986412
     ],
     "2026": [
-     453,
-     21661561
+     475,
+     22137274
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 613,
-    "suma": 4888227
+    "zmluv": 619,
+    "suma": 5313111
    },
    "najvacsi_partneri": [
     {
@@ -1640,8 +1640,8 @@
    ]
   },
   "Petržalka": {
-   "zmluv": 5075,
-   "suma": 210038570,
+   "zmluv": 5149,
+   "suma": 214266874,
    "roky": {
     "2022": [
      753,
@@ -1656,17 +1656,17 @@
      41460841
     ],
     "2025": [
-     1322,
+     1323,
      66104103
     ],
     "2026": [
-     865,
-     54195648
+     938,
+     58423952
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 2462,
-    "suma": 7426204
+    "zmluv": 2504,
+    "suma": 7470321
    },
    "najvacsi_partneri": [
     {
@@ -1684,14 +1684,14 @@
     {
      "nazov": "GENESIS POZEMNÉ STAVBY, s.r.o.",
      "ico": "46059105",
-     "zmluv": 31,
-     "suma": 12801944
+     "zmluv": 32,
+     "suma": 13019264
     },
     {
      "nazov": "THERMKLIMA, s.r.o.",
      "ico": "50958615",
-     "zmluv": 16,
-     "suma": 9938838
+     "zmluv": 18,
+     "suma": 11373607
     },
     {
      "nazov": "EURO-ŠTUKONZ a.s.",
@@ -1744,20 +1744,20 @@
     {
      "nazov": "Swietelsky-Slovakia spol. s r.o.",
      "ico": "00896225",
-     "zmluv": 15,
-     "suma": 4350684
+     "zmluv": 16,
+     "suma": 4576230
+    },
+    {
+     "nazov": "MIPE Invest, s.r.o.",
+     "ico": "36837075",
+     "zmluv": 2,
+     "suma": 3617205
     },
     {
      "nazov": "BeMiCon s.r.o.",
      "ico": "50522272",
      "zmluv": 6,
      "suma": 3453240
-    },
-    {
-     "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
-     "ico": "00164381",
-     "zmluv": 14,
-     "suma": 3247009
     }
    ],
    "najvacsie_zmluvy": [
@@ -1844,8 +1844,8 @@
    ]
   },
   "Podunajské Biskupice": {
-   "zmluv": 1822,
-   "suma": 48632215,
+   "zmluv": 1841,
+   "suma": 50367971,
    "roky": {
     "2022": [
      234,
@@ -1864,20 +1864,20 @@
      11397075
     ],
     "2026": [
-     297,
-     15554212
+     316,
+     17289968
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 970,
-    "suma": 1320011
+    "zmluv": 984,
+    "suma": 1320915
    },
    "najvacsi_partneri": [
     {
-     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+     "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie",
      "ico": "50349287",
-     "zmluv": 23,
-     "suma": 15257230
+     "zmluv": 24,
+     "suma": 16126321
     },
     {
      "nazov": "Pittel + Brausewetter s.r.o.",
@@ -1900,8 +1900,14 @@
     {
      "nazov": "Skymat s. r. o.",
      "ico": "54972116",
-     "zmluv": 4,
+     "zmluv": 6,
      "suma": 3360016
+    },
+    {
+     "nazov": "Alsa-vision, s.r.o.",
+     "ico": "52626431",
+     "zmluv": 2,
+     "suma": 1847013
     },
     {
      "nazov": "Ground SK, s.r.o.",
@@ -1914,12 +1920,6 @@
      "ico": "31631134",
      "zmluv": 2,
      "suma": 987250
-    },
-    {
-     "nazov": "Alsa-vision, s.r.o.",
-     "ico": "52626431",
-     "zmluv": 1,
-     "suma": 981551
     },
     {
      "nazov": "Hviezdna 1 s.r.o.",
@@ -2048,8 +2048,8 @@
    ]
   },
   "Rača": {
-   "zmluv": 3232,
-   "suma": 54101651,
+   "zmluv": 3264,
+   "suma": 54189853,
    "roky": {
     "2022": [
      568,
@@ -2068,13 +2068,13 @@
      11753305
     ],
     "2026": [
-     676,
-     9581872
+     708,
+     9670073
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1425,
-    "suma": 2277915
+    "zmluv": 1436,
+    "suma": 2289953
    },
    "najvacsi_partneri": [
     {
@@ -2114,15 +2114,15 @@
      "suma": 1515628
     },
     {
-     "nazov": "Swietelsky-Slovakia spol. s r.o.",
+     "nazov": "Swietelsky–Slovakia spol. s r.o.",
      "ico": "00896225",
-     "zmluv": 13,
-     "suma": 1474877
+     "zmluv": 14,
+     "suma": 1487177
     },
     {
      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
      "ico": "00603481",
-     "zmluv": 41,
+     "zmluv": 43,
      "suma": 964991
     },
     {
@@ -2252,8 +2252,8 @@
    ]
   },
   "Rusovce": {
-   "zmluv": 865,
-   "suma": 35444878,
+   "zmluv": 885,
+   "suma": 35781628,
    "roky": {
     "2022": [
      177,
@@ -2272,13 +2272,13 @@
      4654019
     ],
     "2026": [
-     136,
-     2113418
+     156,
+     2450168
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 424,
-    "suma": 1311290
+    "zmluv": 430,
+    "suma": 1518949
    },
    "najvacsi_partneri": [
     {
@@ -2338,14 +2338,20 @@
     {
      "nazov": "Hlavné mesto SR Bratislava",
      "ico": "00603481",
-     "zmluv": 14,
-     "suma": 172801
+     "zmluv": 15,
+     "suma": 172802
     },
     {
      "nazov": "Eduplant s.r.o.",
      "ico": "47548240",
      "zmluv": 1,
      "suma": 147521
+    },
+    {
+     "nazov": "JELA, s.r.o.",
+     "ico": "36761737",
+     "zmluv": 2,
+     "suma": 123615
     },
     {
      "nazov": "Ardsystém, s.r.o.",
@@ -2364,12 +2370,6 @@
      "ico": "45925739",
      "zmluv": 1,
      "suma": 110429
-    },
-    {
-     "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
-     "ico": "00681156",
-     "zmluv": 2,
-     "suma": 100000
     }
    ],
    "najvacsie_zmluvy": [
@@ -2456,8 +2456,8 @@
    ]
   },
   "Ružinov": {
-   "zmluv": 2671,
-   "suma": 172849311,
+   "zmluv": 2702,
+   "suma": 175414718,
    "roky": {
     "2022": [
      334,
@@ -2476,20 +2476,20 @@
      27813497
     ],
     "2026": [
-     465,
-     66317774
+     496,
+     68883181
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1492,
-    "suma": 2901043
+    "zmluv": 1509,
+    "suma": 2906938
    },
    "najvacsi_partneri": [
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
      "ico": "50349287",
-     "zmluv": 35,
-     "suma": 43445644
+     "zmluv": 36,
+     "suma": 45020843
     },
     {
      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
@@ -2660,8 +2660,8 @@
    ]
   },
   "Staré Mesto": {
-   "zmluv": 2482,
-   "suma": 115102591,
+   "zmluv": 2534,
+   "suma": 117036863,
    "roky": {
     "2022": [
      459,
@@ -2680,19 +2680,19 @@
      20943521
     ],
     "2026": [
-     500,
-     34971608
+     552,
+     36905880
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1095,
-    "suma": 10357399
+    "zmluv": 1104,
+    "suma": 10380904
    },
    "najvacsi_partneri": [
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.",
      "ico": "50349287",
-     "zmluv": 43,
+     "zmluv": 45,
      "suma": 31253192
     },
     {
@@ -2708,9 +2708,9 @@
      "suma": 7320000
     },
     {
-     "nazov": "Všeobecná úverová banka, a.s.",
+     "nazov": "VÚB,a.s.",
      "ico": "31320155",
-     "zmluv": 25,
+     "zmluv": 44,
      "suma": 6600010
     },
     {
@@ -2722,7 +2722,7 @@
     {
      "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
      "ico": "00603481",
-     "zmluv": 70,
+     "zmluv": 71,
      "suma": 4648556
     },
     {
@@ -2734,8 +2734,8 @@
     {
      "nazov": "PARA INVEST s.r.o.",
      "ico": "44424418",
-     "zmluv": 10,
-     "suma": 2702844
+     "zmluv": 11,
+     "suma": 2941710
     },
     {
      "nazov": "GENESIS POZEMNÉ STAVBY,s.r.o.",
@@ -2756,28 +2756,28 @@
      "suma": 1401675
     },
     {
+     "nazov": "ZARES s.r.o.",
+     "ico": "35778806",
+     "zmluv": 11,
+     "suma": 1196649
+    },
+    {
      "nazov": "PROMA ENERGY, s.r.o.",
      "ico": "50326350",
      "zmluv": 2,
      "suma": 1104172
     },
     {
+     "nazov": "Špeciálna základná škola s materskou školou, Bratislava, Karpatská 1",
+     "ico": "31780890",
+     "zmluv": 2,
+     "suma": 1032600
+    },
+    {
      "nazov": "CBRE Global Workplace Solutions s.r.o.",
      "ico": "44018649",
      "zmluv": 3,
      "suma": 951765
-    },
-    {
-     "nazov": "ZARES s.r.o.",
-     "ico": "35778806",
-     "zmluv": 10,
-     "suma": 951136
-    },
-    {
-     "nazov": "EURO-ŠTUKONZ a.s.",
-     "ico": "35972297",
-     "zmluv": 1,
-     "suma": 877679
     }
    ],
    "najvacsie_zmluvy": [
@@ -2864,8 +2864,8 @@
    ]
   },
   "Vajnory": {
-   "zmluv": 685,
-   "suma": 23587035,
+   "zmluv": 688,
+   "suma": 24255785,
    "roky": {
     "2022": [
      115,
@@ -2884,8 +2884,8 @@
      2552282
     ],
     "2026": [
-     169,
-     3515981
+     172,
+     4184731
     ]
    },
    "fyzicke_osoby": {
@@ -2896,8 +2896,8 @@
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
      "ico": "50349287",
-     "zmluv": 16,
-     "suma": 13059431
+     "zmluv": 17,
+     "suma": 13728181
     },
     {
      "nazov": "Slovenská sporiteľňa, a.s.",
@@ -3068,8 +3068,8 @@
    ]
   },
   "Vrakuňa": {
-   "zmluv": 1118,
-   "suma": 26926659,
+   "zmluv": 1125,
+   "suma": 26987363,
    "roky": {
     "2022": [
      153,
@@ -3088,13 +3088,13 @@
      6223199
     ],
     "2026": [
-     161,
-     5539720
+     168,
+     5600424
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 459,
-    "suma": 613948
+    "zmluv": 461,
+    "suma": 613968
    },
    "najvacsi_partneri": [
     {
@@ -3146,16 +3146,16 @@
      "suma": 943973
     },
     {
+     "nazov": "Environmentálny fond",
+     "ico": "30796491",
+     "zmluv": 10,
+     "suma": 842748
+    },
+    {
      "nazov": "TESAR - DACH s.r.o.",
      "ico": "45595151",
      "zmluv": 3,
      "suma": 837097
-    },
-    {
-     "nazov": "Environmentálny fond",
-     "ico": "30796491",
-     "zmluv": 9,
-     "suma": 807922
     },
     {
      "nazov": "Hlavné mesto SR Bratislava",
@@ -3272,8 +3272,8 @@
    ]
   },
   "Záhorská Bystrica": {
-   "zmluv": 874,
-   "suma": 17922259,
+   "zmluv": 882,
+   "suma": 17947683,
    "roky": {
     "2022": [
      143,
@@ -3292,13 +3292,13 @@
      5900080
     ],
     "2026": [
-     164,
-     6399191
+     172,
+     6424615
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 470,
-    "suma": 3835745
+    "zmluv": 476,
+    "suma": 3858419
    },
    "najvacsi_partneri": [
     {
@@ -3476,8 +3476,8 @@
    ]
   },
   "Čunovo": {
-   "zmluv": 289,
-   "suma": 2743855,
+   "zmluv": 292,
+   "suma": 2744205,
    "roky": {
     "2022": [
      52,
@@ -3496,13 +3496,13 @@
      374844
     ],
     "2026": [
-     35,
-     1163725
+     38,
+     1164075
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 134,
-    "suma": 212997
+    "zmluv": 135,
+    "suma": 213347
    },
    "najvacsi_partneri": [
     {
@@ -3520,7 +3520,7 @@
     {
      "nazov": "Hlavné mesto SR Bratislava",
      "ico": "00603481",
-     "zmluv": 13,
+     "zmluv": 14,
      "suma": 179729
     },
     {
@@ -4032,8 +4032,8 @@
   },
   "Karlova Ves": {
    "poskytnute": {
-    "zmluv": 156,
-    "suma": 233010,
+    "zmluv": 158,
+    "suma": 236635,
     "prijimatelia": [
      {
       "nazov": "Futbalový klub mládeže Karlova Ves Bratislava",
@@ -4060,12 +4060,12 @@
       "suma": 10629
      },
      {
-      "nazov": "Vodácky klub Tatran Karlova Ves - Bratislava, o.z.",
-      "suma": 8420
+      "nazov": "Rodinné centrum Klbko",
+      "suma": 10380
      },
      {
-      "nazov": "Rodinné centrum Klbko",
-      "suma": 8380
+      "nazov": "Vodácky klub Tatran Karlova Ves - Bratislava, o.z.",
+      "suma": 8420
      },
      {
       "nazov": "Klub vodných športov OCEÁN Bratislava",
@@ -4196,8 +4196,8 @@
   },
   "Nové Mesto": {
    "poskytnute": {
-    "zmluv": 37,
-    "suma": 56100,
+    "zmluv": 40,
+    "suma": 59600,
     "prijimatelia": [
      {
       "nazov": "Novomestský športový klub 1922 Bratislava",
@@ -4214,6 +4214,10 @@
      {
       "nazov": "Depaul Slovensko, nezisková organizácia",
       "suma": 4000
+     },
+     {
+      "nazov": "CirKusKus, o.z.",
+      "suma": 3200
      },
      {
       "nazov": "Centrum podagogicko - psychlogického poradenstva a prevencie",
@@ -4234,10 +4238,6 @@
      {
       "nazov": "Bunkre o. z.",
       "suma": 2000
-     },
-     {
-      "nazov": "Spolok PAMODAJ",
-      "suma": 1500
      }
     ]
    },
@@ -4598,8 +4598,8 @@
   },
   "Ružinov": {
    "poskytnute": {
-    "zmluv": 135,
-    "suma": 2630890,
+    "zmluv": 137,
+    "suma": 2635890,
     "prijimatelia": [
      {
       "nazov": "TVR a RE, s.r.o.",
@@ -4927,8 +4927,8 @@
     ]
    },
    "prijate": {
-    "zmluv": 12,
-    "suma": 309358,
+    "zmluv": 13,
+    "suma": 310358,
     "poskytovatelia": [
      {
       "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
@@ -4945,6 +4945,10 @@
      {
       "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
       "suma": 1200
+     },
+     {
+      "nazov": "Fond na podporu umenia",
+      "suma": 1000
      },
      {
       "nazov": "Hlavné mesto SR BA odd. pultu centrál. ochrany a informatik",
@@ -4996,5 +5000,5 @@
    }
   }
  },
- "aktualizovane": "2026-10-24T05:51:53+00:00"
+ "aktualizovane": "2026-11-22T13:27:10+00:00"
 }

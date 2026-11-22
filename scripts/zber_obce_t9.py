@@ -120,7 +120,7 @@ MAT_PREDMETY = {"Slovenský jazyk a literatúra": "sjl", "Maďarský jazyk a lit
 
 def maturita(s: requests.Session) -> None:
     """Externá časť maturity podľa stredných škôl (xls databázy dataportálu, rovnaký postup ako T9) → maturita.json.
-    Dataportál uvádza len typ školy (Gymnázium, SOŠ…), mesto a ulicu – nie celý názov."""
+    Dataportál uvádza skrátený názov školy, mesto a ulicu."""
     import xlrd
     rok = None
     for r in range(date.today().year, date.today().year - 3, -1):

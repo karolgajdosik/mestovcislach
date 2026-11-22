@@ -2077,6 +2077,7 @@
     "ico": "36016411",
     "nazov": "Dopravný podnik mesta Banská Bystrica, a.s.",
     "vlastnictvo": "podiel",
+    "podiel_pct": 49,
     "overenie": "výročná správa DPMBB za rok 2020 a SAD Zvolen za rok 2023 (mesto 49 %, SAD Zvolen 51 %)",
     "roky": {
      "2015": {
@@ -2226,8 +2227,7 @@
      6032951,
      6534413,
      7014888
-    ],
-    "podiel_pct": 49
+    ]
    },
    {
     "ico": "31642365",
@@ -4445,7 +4445,17 @@
    "vl": null,
    "nazov": "Kreativ gang Žilina s. r. o.",
    "datum": "2026-10-19"
+  },
+  "zilina:55676511": {
+   "vl": null,
+   "nazov": "KK Žilina, s. r. o.",
+   "datum": "2026-11-09"
+  },
+  "presov:46514945": {
+   "vl": null,
+   "nazov": "wave prešov s.r.o.",
+   "datum": "2026-11-09"
   }
  },
- "aktualizovane": "2026-10-19T04:16:09+00:00"
+ "aktualizovane": "2026-11-09T05:00:49+00:00"
 }

@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 11820,
+ "pocet_spolu": 12031,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -21,18 +21,24 @@
    "suma": 434675143.43
   },
   "2025": {
-   "pocet": 2845,
+   "pocet": 2846,
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2208,
-   "suma": 345638738.64
+   "pocet": 2418,
+   "suma": 413914969.73
   }
  },
  "posledny_rok": {
-  "od": "2025-10-24",
-  "suma_bez_ico": 68800.73,
+  "od": "2025-11-22",
+  "suma_bez_ico": 68400.73,
   "dodavatelia": [
+   {
+    "ico": "36412678",
+    "nazov": "DOSA Slovakia, s.r.o.",
+    "pocet": 2,
+    "suma": 62047438.84
+   },
    {
     "ico": "35778806",
     "nazov": "zares, spol. s r.o.",
@@ -42,13 +48,13 @@
    {
     "ico": "00681300",
     "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
-    "pocet": 2,
-    "suma": 35161431.27
+    "pocet": 1,
+    "suma": 35101431.27
    },
    {
     "ico": "36302031",
     "nazov": "ROKO gips, s.r.o.",
-    "pocet": 2,
+    "pocet": 3,
     "suma": 14019413.62
    },
    {
@@ -61,13 +67,19 @@
     "ico": "17317282",
     "nazov": "STRABAG s.r.o.",
     "pocet": 8,
-    "suma": 9422275.94
+    "suma": 8451551.73
    },
    {
     "ico": "50614339",
     "nazov": "ALDESA CONSTRUCCIONES POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, organizačná zložka",
-    "pocet": 9,
-    "suma": 6518383.96
+    "pocet": 8,
+    "suma": 5172620.84
+   },
+   {
+    "ico": "45917833",
+    "nazov": "A.I.I. Technické služby s. r. o.",
+    "pocet": 1,
+    "suma": 4113428.72
    },
    {
     "ico": "36416291",
@@ -96,7 +108,7 @@
    {
     "ico": "36063606",
     "nazov": "Bratislavský samosprávny kraj",
-    "pocet": 6,
+    "pocet": 7,
     "suma": 1778922.09
    },
    {
@@ -106,25 +118,22 @@
     "suma": 1500000.0
    },
    {
-    "ico": "50700308",
-    "nazov": "CSFIT s.r.o.",
-    "pocet": 2,
-    "suma": 1367809.2
-   },
-   {
     "ico": "35732881",
     "nazov": "METRO Bratislava  a.s.",
     "pocet": 8,
     "suma": 1204031.04
-   },
-   {
-    "ico": "47144190",
-    "nazov": "Metrostav Slovakia a. s.",
-    "pocet": 2,
-    "suma": 1055181.15
    }
   ],
   "najvacsie": [
+   {
+    "datum": "2026-10-28",
+    "dodavatel": "DOSA Slovakia, s.r.o.",
+    "ico": "36412678",
+    "predmet": "Rámcová dohoda na \"Bežné stavebné práce investičných projektov na rozšírení existujúcej a výstavbe novej dopravnej infraštruktúry na území hlavného mesta SR Bratislavy\".",
+    "suma": 61500000.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600231"
+   },
    {
     "datum": "2025-12-11",
     "dodavatel": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
@@ -169,6 +178,15 @@
     "suma": 7006758.38,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600017"
+   },
+   {
+    "datum": "2026-11-12",
+    "dodavatel": "A.I.I. Technické služby s. r. o.",
+    "ico": "45917833",
+    "predmet": "Komplexné ošetrenie drevín na území Bratislavy",
+    "suma": 4113428.72,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600222"
    },
    {
     "datum": "2026-09-17",
@@ -234,24 +252,6 @@
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2500201"
    },
    {
-    "datum": "2025-11-21",
-    "dodavatel": "ALDESA CONSTRUCCIONES POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, organizačná zložka",
-    "ico": "50614339",
-    "predmet": "Dodatok č.33 k ZoD NSMHD2- Predĺženie lehoty výstavby",
-    "suma": 1345763.12,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2500182"
-   },
-   {
-    "datum": "2025-11-17",
-    "dodavatel": "CSFIT s.r.o.",
-    "ico": "50700308",
-    "predmet": "Rámocvá dohoda o dodávke komponentov serverovej infraštruktúry a príslušných licencií",
-    "suma": 1180615.5,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500367"
-   },
-   {
     "datum": "2026-02-16",
     "dodavatel": "EUROVIA SK, a.s.",
     "ico": "31651518",
@@ -279,15 +279,6 @@
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2600034"
    },
    {
-    "datum": "2025-10-31",
-    "dodavatel": "STRABAG s.r.o.",
-    "ico": "17317282",
-    "predmet": "Realizácia projektu Revitalizácia verejného priestoru Dom služieb Dúbravka",
-    "suma": 970724.21,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500320"
-   },
-   {
     "datum": "2026-05-04",
     "dodavatel": "Hydrograss-company, s.r.o.",
     "ico": "50968874",
@@ -304,8 +295,17 @@
     "suma": 884985.0,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600207"
+   },
+   {
+    "datum": "2026-06-12",
+    "dodavatel": "ENERGA s.r.o.",
+    "ico": "50778501",
+    "predmet": "Dodatok č.3 TT Patronka Riviera naviac práce",
+    "suma": 858767.6,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2600066"
    }
   ]
  },
- "aktualizovane": "2026-10-24T02:58:05+00:00"
+ "aktualizovane": "2026-11-22T10:00:40+00:00"
 }

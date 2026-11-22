@@ -3,7 +3,7 @@
   "nazov": "OpenStreetMap",
   "licencia": "ODbL – © prispievatelia OpenStreetMap",
   "url": "https://www.openstreetmap.org/copyright",
-  "stav_osm": "2026-10-18T04:08:22Z"
+  "stav_osm": "2026-11-22T12:05:36Z"
  },
  "kategorie": {
   "cyklocesticka": "Cyklocestičky",
@@ -12,11 +12,11 @@
  },
  "mesto": {
   "km": {
-   "cyklocesticka": 149.7,
-   "spolocna": 33.9,
+   "cyklocesticka": 149.9,
+   "spolocna": 31.7,
    "cyklopruh": 36.5
   },
-  "km_spolu": 220.1
+  "km_spolu": 218.1
  },
  "mestske_casti": [
   {
@@ -35,25 +35,25 @@
    "kod_obce": "529320",
    "nazov": "Ružinov",
    "km": {
-    "cyklocesticka": 20.5,
-    "spolocna": 7.5,
-    "cyklopruh": 4.1
+    "cyklocesticka": 21.7,
+    "spolocna": 6.1,
+    "cyklopruh": 3.9
    },
-   "km_spolu": 32.2,
-   "km_na_km2": 0.81,
+   "km_spolu": 31.7,
+   "km_na_km2": 0.8,
    "m_na_obyvatela": 0.38
   },
   {
    "kod_obce": "529346",
    "nazov": "Nové Mesto",
    "km": {
-    "cyklocesticka": 13.9,
-    "spolocna": 2.4,
-    "cyklopruh": 5.1
+    "cyklocesticka": 12.5,
+    "spolocna": 1.6,
+    "cyklopruh": 5.2
    },
-   "km_spolu": 21.5,
-   "km_na_km2": 0.57,
-   "m_na_obyvatela": 0.47
+   "km_spolu": 19.3,
+   "km_na_km2": 0.51,
+   "m_na_obyvatela": 0.42
   },
   {
    "kod_obce": "529494",
@@ -167,13 +167,13 @@
    "kod_obce": "529354",
    "nazov": "Rača",
    "km": {
-    "cyklocesticka": 1.9,
+    "cyklocesticka": 2.2,
     "spolocna": 1.8,
     "cyklopruh": 2.1
    },
-   "km_spolu": 5.7,
-   "km_na_km2": 0.24,
-   "m_na_obyvatela": 0.22
+   "km_spolu": 6.1,
+   "km_na_km2": 0.26,
+   "m_na_obyvatela": 0.23
   },
   {
    "kod_obce": "529362",
@@ -191,7 +191,7 @@
    "kod_obce": "529389",
    "nazov": "Dúbravka",
    "km": {
-    "cyklocesticka": 0.2,
+    "cyklocesticka": 0.3,
     "spolocna": 0.9,
     "cyklopruh": 1.8
    },
@@ -205,7 +205,7 @@
    "km": {
     "cyklocesticka": 0.5,
     "spolocna": 0.2,
-    "cyklopruh": 1.7
+    "cyklopruh": 1.8
    },
    "km_spolu": 2.4,
    "km_na_km2": 0.37,
@@ -224,5 +224,5 @@
    "m_na_obyvatela": 0.13
   }
  ],
- "aktualizovane": "2026-10-18T04:09:56+00:00"
+ "aktualizovane": "2026-11-22T12:07:39+00:00"
 }
