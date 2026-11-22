@@ -23900,7 +23900,7 @@
      "nazov": "chodci10_01",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 870411,
+     "pocet": 870963,
      "polia": [
       [
        "NAZOV",
@@ -23987,7 +23987,7 @@
      "nazov": "cyklisti2_0",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 870411,
+     "pocet": 870963,
      "polia": [
       [
        "NAZOV",
@@ -24074,7 +24074,7 @@
      "nazov": "vozidla_00",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 502715,
+     "pocet": 503171,
      "polia": [
       [
        "NAZOV",
@@ -54554,5 +54554,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-11-22T08:36:47+00:00"
+ "aktualizovane": "2026-11-22T10:57:53+00:00"
 }
