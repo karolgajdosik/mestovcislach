@@ -90,6 +90,9 @@ jobs:
 
       - name: Mapy krajských miest (OpenStreetMap)
         if: success() || failure()
+        # verejné Overpass servery bývajú dlhšie preťažené (502/504) – mapy miest ostanú z posledného úspešného behu,
+        # upozornenia ostanú v logu, ale beh katalógu sa nepovažuje za chybu (podobne ako krok Školy v slovensko.yml)
+        continue-on-error: true
         timeout-minutes: 50
         run: python scripts/zber_mapa_osm.py
 
