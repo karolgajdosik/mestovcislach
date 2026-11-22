@@ -36,6 +36,8 @@ jobs:
     timeout-minutes: 240
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 50
 
       - uses: actions/setup-python@v6
         with:
@@ -50,8 +52,21 @@ jobs:
 
       - name: Plán behu (týždenný alebo plný mesačný)
         id: plan
+        env:
+          PRED: ${{ github.event.before }}
         run: |
-          if [ "${{ github.event_name }}" != "schedule" ] || [ "$(date -u +%-d)" -le 7 ]; then echo "plne=1" >> "$GITHUB_OUTPUT"; echo "Plný beh"; else echo "plne=0" >> "$GITHUB_OUTPUT"; echo "Týždenný beh – STATdata, voľby, vlaky a chránené územia sa preskočia"; fi
+          # plný beh: prvý týždeň v mesiaci, ručné spustenie, alebo push so zmenou niektorého mesačného skriptu
+          # (pri bežnom pushi netreba znova sťahovať STATdata – trvá to až 100 minút)
+          plne=0
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then plne=1
+          elif [ "${{ github.event_name }}" = "schedule" ]; then [ "$(date -u +%-d)" -le 7 ] && plne=1
+          else
+            git fetch -q --depth=50 origin main 2>/dev/null || true
+            zmeny=$(git diff --name-only "$PRED" HEAD 2>/dev/null || echo "?")
+            grep -qE 'zber_obce_(statdata|volby|vlaky|vrstvy)\.py|^\?$' <<<"$zmeny" && plne=1
+          fi
+          echo "plne=$plne" >> "$GITHUB_OUTPUT"
+          [ $plne = 1 ] && echo "Plný beh" || echo "Týždenný beh – STATdata, voľby, vlaky a chránené územia sa preskočia"
 
       - name: Nezamestnanosť (ÚPSVaR), komunálny odpad (ŠÚ SR), školy (MŠVVaM)
         run: python scripts/zber_obce_temy.py
