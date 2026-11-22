@@ -1,5 +1,5 @@
 name: OSM výrez Slovenska
-description: osmium-tool a výrez Slovenska z Geofabriku v cache (na deň) – pre scripts/osm_lokalne.py namiesto verejného Overpass API.
+description: osmium-tool a výrez Slovenska (Geofabrik, náhradne openstreetmap.fr) v cache na deň – pre scripts/osm_lokalne.py namiesto verejného Overpass API.
 runs:
   using: composite
   steps:
@@ -15,3 +15,15 @@ runs:
       run: |
         command -v osmium >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool >/dev/null; }
         osmium --version | head -1
+        D=~/.cache/osm-sk; F=$D/slovakia-latest.osm.pbf; mkdir -p $D
+        # výrez starší ako 30 h (alebo chýba) – stiahnuť; pri výpadku ostane starší a skripty prípadne použijú Overpass
+        if [ ! -s "$F" ] || [ -n "$(find "$F" -mmin +1800)" ]; then
+          for U in https://download.geofabrik.de/europe/slovakia-latest.osm.pbf https://download.openstreetmap.fr/extracts/europe/slovakia-latest.osm.pbf; do
+            if curl -fsSL --retry 4 --retry-all-errors --retry-delay 15 -A "mestovcislach.sk (info@mestovcislach.sk)" -o "$F.part" "$U" && [ "$(stat -c %s "$F.part")" -gt 50000000 ]; then
+              mv "$F.part" "$F"; echo "Výrez OSM: $U ($(du -h "$F" | cut -f1))"; break
+            fi
+            echo "::warning::Výrez OSM sa nepodarilo stiahnuť z $U"
+          done
+        else
+          echo "Výrez OSM z cache ($(du -h "$F" | cut -f1), $(date -r "$F" -u +%Y-%m-%dT%H:%MZ))"
+        fi

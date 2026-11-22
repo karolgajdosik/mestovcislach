@@ -23,10 +23,13 @@ import subprocess
 import time
 from pathlib import Path
 
-PBF_URL = os.environ.get("OSM_PBF_URL", "https://download.geofabrik.de/europe/slovakia-latest.osm.pbf")
+PBF_URLS = [os.environ["OSM_PBF_URL"]] if os.environ.get("OSM_PBF_URL") else [
+    "https://download.geofabrik.de/europe/slovakia-latest.osm.pbf",
+    "https://download.openstreetmap.fr/extracts/europe/slovakia-latest.osm.pbf"]
 CACHE = Path(os.environ.get("OSM_CACHE", Path.home() / ".cache" / "osm-sk"))
 MAX_VEK_H = float(os.environ.get("OSM_MAX_VEK_H", "30"))
 AREA_OFFSET = 3600000000
+_stiahnutie_zlyhalo = ""
 
 
 class NepodporovanyDotaz(Exception):
@@ -43,16 +46,38 @@ def pbf() -> Path:
     p = CACHE / "slovakia-latest.osm.pbf"
     if p.exists() and p.stat().st_size > 50_000_000 and time.time() - p.stat().st_mtime < MAX_VEK_H * 3600:
         return p
+    global _stiahnutie_zlyhalo
+    if _stiahnutie_zlyhalo:  # v tomto behu sa už nepodarilo – neskúšať pri každom dopyte znova
+        if p.exists() and p.stat().st_size > 50_000_000:
+            return p  # radšej starší výrez než nič
+        raise RuntimeError(_stiahnutie_zlyhalo)
     import requests
     tmp = p.with_suffix(".part")
     t0 = time.time()
-    with requests.get(PBF_URL, stream=True, timeout=120, headers={"User-Agent": "mestovcislach.sk (info@mestovcislach.sk)"}) as r:
-        r.raise_for_status()
-        with open(tmp, "wb") as f:
-            for kus in r.iter_content(1 << 20):
-                f.write(kus)
-    if tmp.stat().st_size < 50_000_000:
-        raise RuntimeError(f"výrez OSM je podozrivo malý ({tmp.stat().st_size} B)")
+    chyba = ""
+    for url in PBF_URLS:
+        for pokus in range(3):
+            try:
+                with requests.get(url, stream=True, timeout=120, headers={"User-Agent": "mestovcislach.sk (info@mestovcislach.sk)"}) as r:
+                    r.raise_for_status()
+                    with open(tmp, "wb") as f:
+                        for kus in r.iter_content(1 << 20):
+                            f.write(kus)
+                if tmp.stat().st_size > 50_000_000:
+                    break
+                chyba = f"{url}: podozrivo malý súbor"
+            except Exception as e:  # noqa: BLE001
+                chyba = f"{url}: {type(e).__name__}"
+            time.sleep(10 * (pokus + 1))
+        else:
+            continue
+        break
+    else:
+        _stiahnutie_zlyhalo = f"výrez OSM sa nepodarilo stiahnuť ({chyba})"
+        if p.exists() and p.stat().st_size > 50_000_000:
+            print(f"  {_stiahnutie_zlyhalo} – použijem starší výrez")
+            return p
+        raise RuntimeError(_stiahnutie_zlyhalo)
     tmp.replace(p)
     print(f"  OSM výrez stiahnutý: {p.stat().st_size / 1e6:.0f} MB za {time.time() - t0:.0f} s")
     return p
