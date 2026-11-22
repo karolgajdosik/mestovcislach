@@ -1,4 +1,38 @@
-mob {'hladaj': [154, 8, 40, 40], 'video': [202, 8, 40, 40], 'jazyk': [260, 10, 114, 36]}
-tab {'hladaj': [176, 9, 434, 42], 'video': [618, 10, 40, 40], 'jazyk': [670, 12, 114, 36]}
-desk {'hladaj': [303, 9, 441, 42], 'video': [845, 11, 138, 38], 'jazyk': [1223, 12, 114, 36]}
+  OSM výrez stiahnutý: 349 MB za 91 s
+pbf 91 s
+  osmium tags-filter 4 výrazov: 1.1 MB za 14 s
+  osmium tags-filter 1 výrazov: 5.3 MB za 13 s
+  OSM lokálne: 790 prvkov za 31 s
+  overpass https://overpass-api.de/api/interpreter 502
+  overpass https://overpass.private.coffee/api/interpreter ReadTimeout
+mapa Košice: lokálne 790 (32s) | Overpass 780 (579s) | spoločné 756, len lokálne 34, len Overpass 24, rozdiel tagov 84, max posun stredu 0.00050°
+   príklady len Overpass: [('node', 278307424), ('node', 670510872), ('node', 684785932), ('node', 864150858), ('node', 864151052)]
+   príklady len lokálne: [('node', 13923100665), ('node', 14055144787), ('node', 14210213800), ('node', 14255928155), ('node', 14352070399)]
+  OSM lokálne: 1 prvkov za 0 s
+hranica Košice: lokálne 1 (0s) | Overpass 1 (39s) | spoločné 1, len lokálne 0, len Overpass 0, rozdiel tagov 0, max posun stredu 0.00000°, body geometrie 2827 vs 2827
+  osmium tags-filter 1 výrazov: 0.3 MB za 3 s
+  OSM lokálne: 24 prvkov za 3 s
+  overpass https://overpass-api.de/api/interpreter 502
+  overpass https://overpass.private.coffee/api/interpreter ReadTimeout
+  overpass https://overpass.kumi.systems/api/interpreter ReadTimeout
+časti body Košice: lokálne 24 (3s), Overpass nedostupný
+  osmium tags-filter 6 výrazov: 1.0 MB za 8 s
+  OSM lokálne: 1460 prvkov za 9 s
+cyklo BA: lokálne 1460 (9s) | Overpass 1460 (47s) | spoločné 1459, len lokálne 1, len Overpass 1, rozdiel tagov 0, max posun stredu 0.00000°, body geometrie 10175 vs 10124
+   príklady len Overpass: [('way', 1582932793)]
+   príklady len lokálne: [('way', 5072833)]
+  osmium tags-filter 8 výrazov: 1.8 MB za 12 s
+  OSM lokálne: 1285 prvkov za 14 s
+  overpass https://overpass-api.de/api/interpreter 502
+  overpass https://overpass.private.coffee/api/interpreter 504
+  overpass https://overpass.kumi.systems/api/interpreter 504
+vybavenost BA: lokálne 1285 (14s), Overpass nedostupný
+  OSM lokálne: 17 prvkov za 4 s
+  overpass https://overpass-api.de/api/interpreter 502
+  overpass https://overpass.private.coffee/api/interpreter ReadTimeout
+  overpass https://overpass.kumi.systems/api/interpreter 502
+hranice MČ BA: lokálne 17 (4s), Overpass nedostupný
+  OSM lokálne: 2970 prvkov za 4 s
+obce SK center: lokálne 2970 (4s) | Overpass 2927 (46s) | spoločné 2927, len lokálne 43, len Overpass 0, rozdiel tagov 0, max posun stredu 0.00000°
+   príklady len lokálne: [('relation', 435554), ('relation', 435559), ('relation', 436863), ('relation', 436881), ('relation', 436909)]
 HOTOVO
