@@ -8,6 +8,8 @@ on:
     paths:
       - "scripts/zber_hranice.py"
       - ".github/workflows/hranice.yml"
+      - "scripts/osm_lokalne.py"
+      - ".github/actions/osm/action.yml"
 
 permissions:
   contents: write
@@ -29,6 +31,9 @@ jobs:
           cache-dependency-path: scripts/requirements.txt
 
       - run: pip install -r scripts/requirements.txt
+
+      - name: OSM výrez Slovenska (osmium, Geofabrik – namiesto verejného Overpass)
+        uses: ./.github/actions/osm
 
       - name: Hranice mestských častí (OpenStreetMap)
         run: python scripts/zber_hranice.py

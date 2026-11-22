@@ -19,6 +19,8 @@ on:
       - "scripts/zber_ukazovatele.py"
       - "scripts/zber_nezamestnanost.py"
       - ".github/workflows/slovensko.yml"
+      - "scripts/osm_lokalne.py"
+      - ".github/actions/osm/action.yml"
 
 permissions:
   contents: write
@@ -40,6 +42,9 @@ jobs:
           cache-dependency-path: scripts/requirements.txt
 
       - run: pip install -r scripts/requirements.txt
+
+      - name: OSM výrez Slovenska (osmium, Geofabrik – namiesto verejného Overpass)
+        uses: ./.github/actions/osm
       - name: Cache registra adries MV SR (záloha pri výpadku rageo.minv.sk)
         uses: actions/cache@v4
         with:

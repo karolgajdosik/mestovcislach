@@ -21,6 +21,7 @@ import time
 from datetime import datetime, timezone
 
 from spolocne import DATA, s, spusti, zapis_ak_zmena
+from osm_lokalne import skus
 from zber_obce_temy import OBCE
 
 KODY = {o["kod"] for o in OBCE}
@@ -81,6 +82,9 @@ SK = 'area["ISO3166-1"="SK"][admin_level=2]->.sk;'
 
 
 def _overpass(q: str) -> list[dict]:
+    lok = skus(q)  # výrez OSM z Geofabriku (osm_lokalne.py) – bez verejného Overpass
+    if lok is not None:
+        return lok.get("elements", [])
     chyba = None
     for pokus in range(4):
         try:

@@ -68,14 +68,44 @@ def sablona(sid: int) -> dict:
     return _sablony[sid]
 
 
+# Cache závierok (inkrementálny zber): závierka sa v RÚZ nemení – opravená má nové id. Netreba preto každý týždeň
+# sťahovať stovky závierok a výkazov znova; stiahnu sa len nové. RUZ_PLNE=1 vynúti úplné stiahnutie.
+CACHE_SUBOR = DATA / "mesta" / "hospodarenie-ruz-cache.json"
+_cache: dict = {"jednotky": {}, "zavierky": {}}
+_stats = {"zavierky_nove": 0, "zavierky_z_cache": 0, "vykazy_nove": 0}
+
+
+def nacitaj_cache() -> None:
+    global _cache
+    import os
+    if CACHE_SUBOR.exists() and os.environ.get("RUZ_PLNE") != "1":
+        try:
+            _cache = json.loads(CACHE_SUBOR.read_text(encoding="utf-8"))
+            _cache.setdefault("jednotky", {}), _cache.setdefault("zavierky", {})
+        except ValueError:
+            pass
+
+
 def zavierky(ico: str) -> dict:
-    ids = ruz("uctovne-jednotky", **{"zmenene-od": "2000-01-01", "ico": ico}).get("id", [])
-    if not ids:
-        raise RuntimeError(f"RÚZ: účtovná jednotka {ico} nenájdená")
-    uj = ruz("uctovna-jednotka", id=ids[0])
+    uj_id = _cache["jednotky"].get(ico)
+    if not uj_id:
+        ids = ruz("uctovne-jednotky", **{"zmenene-od": "2000-01-01", "ico": ico}).get("id", [])
+        if not ids:
+            raise RuntimeError(f"RÚZ: účtovná jednotka {ico} nenájdená")
+        uj_id = _cache["jednotky"][ico] = ids[0]
+    uj = ruz("uctovna-jednotka", id=uj_id)
     vysl: dict[str, dict] = {}
     for zid in uj.get("idUctovnychZavierok", []):
-        z = ruz("uctovna-zavierka", id=zid)
+        kz = _cache["zavierky"].get(str(zid))
+        if kz:
+            _stats["zavierky_z_cache"] += 1
+            z = {"id": zid, **kz}
+        else:
+            z = ruz("uctovna-zavierka", id=zid)
+            _stats["zavierky_nove"] += 1
+            # do cache len metaúdaje potrebné na výber (ukazovatele sa doplnia nižšie)
+            _cache["zavierky"][str(zid)] = {k: z.get(k) for k in ("obdobieDo", "konsolidovana", "datumPoslednejUpravy", "idUctovnychVykazov")}
+            z["id"] = zid
         rok = (z.get("obdobieDo") or "")[:4]
         if z.get("konsolidovana") or not (z.get("obdobieDo") or "").endswith("-12") or not rok.isdigit() or int(rok) < OD_ROKU:
             continue
@@ -153,7 +183,14 @@ def dlh() -> dict[str, dict]:
 def roky_jednotky(ico: str) -> dict:
     roky = {}
     for rok, z in sorted(zavierky(ico).items()):
-        u = ukazovatele(z)
+        kz = _cache["zavierky"].setdefault(str(z["id"]), {})
+        if "ukazovatele" in kz:
+            u = kz["ukazovatele"]
+        else:
+            u = ukazovatele(z)
+            _stats["vykazy_nove"] += 1
+            if u.get("naklady") and u.get("vynosy"):
+                kz["ukazovatele"] = u  # prázdne výsledky sa necachujú – skúsi sa nabudúce znova
         if u.get("naklady") and u.get("vynosy"):
             roky[rok] = u
     if not roky:
@@ -162,6 +199,7 @@ def roky_jednotky(ico: str) -> dict:
 
 
 def main() -> int:
+    nacitaj_cache()
     stare_subor = DATA / "mesta" / "hospodarenie.json"
     stare = json.loads(stare_subor.read_text(encoding="utf-8")) if stare_subor.exists() else {}
     vystup = {"zdroje": {
@@ -198,6 +236,8 @@ def main() -> int:
         vystup["dlh"] = stare.get("dlh", {})
     if chyby > 4 or not vystup["mesta"]:
         raise RuntimeError(f"Hospodárenie: {chyby} chýb")
+    print(f"RÚZ: závierky nové {_stats['zavierky_nove']}, z cache {_stats['zavierky_z_cache']}, výkazy stiahnuté pre {_stats['vykazy_nove']} závierok")
+    zapis_ak_zmena(CACHE_SUBOR, _cache, kompaktne=True)
     vystup["aktualizovane"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     zapis_ak_zmena(DATA / "mesta" / "hospodarenie.json", vystup)
     return 0

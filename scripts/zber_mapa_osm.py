@@ -17,6 +17,7 @@ import time
 from datetime import datetime
 
 from spolocne import KOREN, VEREJNE, s, spusti, zapis_ak_zmena
+from osm_lokalne import skus, zapnute
 
 SERVERY = ["https://overpass-api.de/api/interpreter", "https://overpass.private.coffee/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]
 MESTA = json.loads((KOREN / "src" / "mesta.json").read_text(encoding="utf-8"))
@@ -56,6 +57,9 @@ OSOBA = re.compile(r"\b(MUDr|MDDr|PharmDr|PhDr|RNDr|Mgr|Bc|Ing|JUDr|PaedDr|doc|p
 
 
 def overpass(q: str) -> dict:
+    lok = skus(q)  # výrez OSM z Geofabriku (osm_lokalne.py) – bez verejného Overpass
+    if lok is not None:
+        return lok
     posledna = None
     for kolo in range(3):
         if kolo:
@@ -163,7 +167,8 @@ def main() -> int:
         zapis_ak_zmena(VEREJNE / "mesta" / f"mapa-osm-{m['slug']}.json", {"aktualizovane": datetime.now().isoformat(timespec="seconds"),
                        "zdroj": "OpenStreetMap", "licencia": "© prispievatelia OpenStreetMap (ODbL)", "hranice": hranice, "vrstvy": vystup}, kompaktne=True)
         print(f"{m['nazov']}: " + ", ".join(f"{v['nazov']} {len(v['body'])}" for v in vystup))
-        time.sleep(20)
+        if not zapnute():
+            time.sleep(20)  # odstup pre verejný Overpass
     if chyby >= 4:
         raise RuntimeError(f"Mapa OSM: {chyby} miest bez údajov")
     return 0

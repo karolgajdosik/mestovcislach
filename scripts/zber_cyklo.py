@@ -25,6 +25,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+from osm_lokalne import skus
 from pyproj import Transformer
 from shapely.geometry import LineString, shape
 from shapely.ops import transform
@@ -60,6 +61,9 @@ NAZVY = {
 
 
 def stiahni() -> dict:
+    lok = skus(DOTAZ)  # výrez OSM z Geofabriku (osm_lokalne.py) – bez verejného Overpass
+    if lok is not None and lok.get("elements"):
+        return lok
     chyby = []
     for server in SERVERY:
         for _ in range(2):

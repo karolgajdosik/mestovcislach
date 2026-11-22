@@ -20,6 +20,8 @@ on:
       - "scripts/zber_obce_wiki_osm.py"
       - "scripts/zber_obce_ovzdusie.py"
       - ".github/workflows/obce-temy.yml"
+      - "scripts/osm_lokalne.py"
+      - ".github/actions/osm/action.yml"
 
 permissions:
   contents: write
@@ -42,6 +44,9 @@ jobs:
           cache-dependency-path: scripts/requirements.txt
 
       - run: pip install -r scripts/requirements.txt
+
+      - name: OSM výrez Slovenska (osmium, Geofabrik – namiesto verejného Overpass)
+        uses: ./.github/actions/osm
 
       - name: Plán behu (týždenný alebo plný mesačný)
         id: plan

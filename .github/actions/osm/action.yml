@@ -1,0 +1,17 @@
+name: OSM výrez Slovenska
+description: osmium-tool a výrez Slovenska z Geofabriku v cache (na deň) – pre scripts/osm_lokalne.py namiesto verejného Overpass API.
+runs:
+  using: composite
+  steps:
+    - id: den
+      shell: bash
+      run: echo "d=$(date -u +%Y%m%d)" >> "$GITHUB_OUTPUT"
+    - uses: actions/cache@v4
+      with:
+        path: ~/.cache/osm-sk
+        key: osm-sk-${{ steps.den.outputs.d }}
+        restore-keys: osm-sk-
+    - shell: bash
+      run: |
+        command -v osmium >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool >/dev/null; }
+        osmium --version | head -1

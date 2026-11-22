@@ -24,6 +24,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+from osm_lokalne import skus, zapnute
 from shapely.geometry import Point, shape
 from shapely.prepared import prep
 
@@ -157,6 +158,9 @@ def fotky_z_wikidata(ids: list[str]) -> dict[str, dict]:
 
 
 def stiahni() -> dict:
+    lok = skus(DOTAZ)  # výrez OSM z Geofabriku (osm_lokalne.py) – bez verejného Overpass
+    if lok is not None and lok.get("elements"):
+        return lok
     chyby = []
     for server in SERVERY:
         for _ in range(2):
@@ -175,7 +179,8 @@ def stiahni() -> dict:
 
 
 def main() -> int:
-    time.sleep(20)  # odstup od predchádzajúceho dotazu (cyklotrasy) – Overpass obmedzuje frekvenciu
+    if not zapnute():
+        time.sleep(20)  # odstup od predchádzajúceho dotazu (cyklotrasy) – Overpass obmedzuje frekvenciu
     data = stiahni()
     hranice = json.loads((DATA / "hranice-bratislava.geojson").read_text(encoding="utf-8"))
     obyv = json.loads((DATA / "obyvatelstvo-bratislava.json").read_text(encoding="utf-8"))

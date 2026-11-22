@@ -14,6 +14,8 @@ on:
       - "scripts/zber_mhd_presov.py"
       - "scripts/zber_firmy_miest.py"
       - ".github/workflows/mesta-temy.yml"
+      - "scripts/osm_lokalne.py"
+      - ".github/actions/osm/action.yml"
 
 permissions:
   contents: write
@@ -36,6 +38,9 @@ jobs:
           cache-dependency-path: scripts/requirements.txt
 
       - run: pip install -r scripts/requirements.txt
+
+      - name: OSM výrez Slovenska (osmium, Geofabrik – namiesto verejného Overpass)
+        uses: ./.github/actions/osm
 
       - name: Školy, doprava, bezpečnosť, prostredie, kultúra (ŠÚ SR)
         run: python scripts/zber_mesta_temy.py
