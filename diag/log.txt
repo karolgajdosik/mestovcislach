@@ -1,69 +1,43 @@
-== python scripts/zber_mapa_osm.py: 122 s, kód 0
-      OSM lokálne: 1 prvkov za 0 s
-    Žilina: Lekárne 33, Nemocnice a polikliniky 5, Materské školy 26, Základné a stredné školy 49, Vysoké školy 2, Zastávky MHD 127, Nabíjacie stanice 28, Múzeá a galérie 4, Divadlá, kiná a knižnice 15, H
-      OSM lokálne: 641 prvkov za 3 s
-      OSM lokálne: 1 prvkov za 0 s
-    Banská Bystrica: Lekárne 22, Nemocnice a polikliniky 12, Materské školy 25, Základné a stredné školy 42, Vysoké školy 10, Zastávky MHD 176, Nabíjacie stanice 20, Múzeá a galérie 7, Divadlá, kiná a kni
-      OSM lokálne: 1450 prvkov za 3 s
-      OSM lokálne: 1 prvkov za 0 s
-    Prešov: Lekárne 67, Nemocnice a polikliniky 73, Materské školy 44, Základné a stredné školy 73, Vysoké školy 23, Zastávky MHD 186, Nabíjacie stanice 32, Múzeá a galérie 23, Divadlá, kiná a knižnice 49
-      osmium tags-filter 8 výrazov: 2.0 MB za 12 s
-      OSM lokálne: 524 prvkov za 13 s
-      OSM lokálne: 1 prvkov za 0 s
-    Košice: Lekárne 128, Nemocnice a polikliniky 58, Vysoké školy 33, Nabíjacie stanice 94, Hrady, kostoly a pamätníky 108, Športoviská a kúpaliská 43, Parky 30, Úrady 29
-== python scripts/zber_casti_osm.py: 35 s, kód 0
-      OSM lokálne: 9 prvkov za 4 s
-      OSM lokálne: 1 prvkov za 0 s
-    Trenčín: 9 častí (časti mesta)
-      OSM lokálne: 23 prvkov za 4 s
-      OSM lokálne: 1 prvkov za 0 s
-    Žilina: 23 častí (časti mesta)
-      OSM lokálne: 19 prvkov za 4 s
-      OSM lokálne: 1 prvkov za 0 s
-    Banská Bystrica: 19 častí (časti mesta)
-      OSM lokálne: 1 prvkov za 0 s
-      OSM lokálne: 54 prvkov za 0 s
-    Prešov: 45 štvrtí (približné hranice z bodov OSM)
-== python scripts/zber_cyklo.py: 13 s, kód 0
-    osmium tags-filter 6 výrazov: 1.0 MB za 8 s
-      OSM lokálne: 1459 prvkov za 12 s
-    OK cyklo: {'km': {'cyklocesticka': 149.8, 'spolocna': 31.7, 'cyklopruh': 36.5}, 'km_spolu': 218.0}, 1459 úsekov, geojson 229 kB
-    /home/runner/work/mestovcislach/mestovcislach/scripts/zber_cyklo.py:109: DeprecationWarning: The 'shapely.ops.transform()' function is deprecated. Use 'shapely.transform()' or 'shapely.transform_coord
-      casti.append((f["properties"]["kod_obce"], f["properties"]["rozloha_km2"], g, transform(do_utm, g)))
-    /home/runner/work/mestovcislach/mestovcislach/scripts/zber_cyklo.py:120: DeprecationWarning: The 'shapely.ops.transform()' function is deprecated. Use 'shapely.transform()' or 'shapely.transform_coord
-      ciara_utm = transform(do_utm, ciara)
-== python scripts/zber_vybavenost.py: 23 s, kód 0
-    osmium tags-filter 8 výrazov: 1.8 MB za 12 s
-      OSM lokálne: 1284 prvkov za 18 s
-    Wikidata: 102 položiek, fotka/Wikipédia pre 90; fotky spolu 81, hodiny 621, web 559
-    OK vybavenosť: {'lekarne': 234, 'ambulancie': 330, 'nemocnice': 93, 'nabijanie': 183, 'nabijacie_miesta': 510, 'pamiatky': 101, 'stromy': 30, 'muzea': 97, 'kultura': 193}
-== python scripts/zber_hranice.py: 8 s, kód 0
-    OSM lokálne: 17 prvkov za 7 s
-    OK: 17 mestských častí, spolu 367.6 km², 77 kB
-== python scripts/zber_obce_wiki_osm.py osm trasy: 63 s, kód 0
-    OSM lokálne: 2897 prvkov za 8 s
-    OSM: hranice 2887 obcí
-      osmium tags-filter 5 výrazov: 5.1 MB za 12 s
-      OSM lokálne: 78533 prvkov za 15 s
-    OSM: 78533 prvkov, mimo obcí 33; 2887 obcí; spolu {'potraviny': 6725, 'jedlo': 13879, 'ihriska': 5777, 'nabijacky': 1156, 'zastavky': 14117, 'bankomaty': 2131, 'sport': 13770, 'kostoly': 7517, 'cintor
-      osmium tags-filter 1 výrazov: 15.8 MB za 12 s
-      OSM lokálne: 4971 prvkov za 22 s
-    Trasy: 4971 relácií, obcí 2288, cyklo 19301 km, turistické 18861 km
-
-== Porovnanie (staré → nové)
-cyklo-bratislava.json mesto: {"km": {"cyklocesticka": 149.9, "spolocna": 31.7, "cyklopruh": 36.5}, "km_spolu": 218.1} 
-    → {"km": {"cyklocesticka": 149.8, "spolocna": 31.7, "cyklopruh": 36.5}, "km_spolu": 218.0}
-hranice-bratislava.geojson prvkov 17 → 17
-casti-osm {'trnava': (11, 11), 'nitra': (11, 11), 'trencin': (9, 9), 'zilina': (23, 23), 'banska-bystrica': (19, 19), 'presov': (45, 45)}
-obce/osm.json obcí 2887 → 2887 | súčet 71747 → 71778 | najväčšie rozdiely [(7, '509931'), (4, '510203'), (4, '509884'), (3, '582000'), (3, '524379')]
-obce/trasy.json obcí 2288 → 2288 | km spolu 38160 → 38162
-vybavenost-bratislava.json mesto: {"lekarne": 234, "ambulancie": 330, "nemocnice": 93, "nabijanie": 183, "nabijacie_miesta": 510, "pamiatky": 101, "stromy": 30, "muzea": 97, "kultura": 193} 
-    → {"lekarne": 234, "ambulancie": 330, "nemocnice": 93, "nabijanie": 183, "nabijacie_miesta": 510, "pamiatky": 101, "stromy": 30, "muzea": 97, "kultura": 193}
-mapa-osm-banska-bystrica.json fontany:10→10 ihriska:91→91 kultura:12→12 lekarne:22→22 muzea:7→7 nabijanie:20→20 nemocnice:12→12 pamiatky:38→38 parky:8→8 policia:3→3 posty:5→5 skolky:25→25 skoly:42→42 sport:16→16 urady:5→5 vysoke:10→10 zastavky:176→176 | hranica body 51400 → 51400
-mapa-osm-kosice.json lekarne:128→128 nabijanie:94→94 nemocnice:58→58 pamiatky:108→108 parky:30→30 sport:43→43 urady:29→29 vysoke:33→33 | hranica body 67608 → 67608
-mapa-osm-nitra.json fontany:8→8 ihriska:104→104 kultura:20→20 lekarne:46→46 muzea:6→6 nabijanie:18→18 nemocnice:29→29 pamiatky:58→58 parky:3→3 policia:7→7 posty:6→6 skolky:35→35 skoly:41→41 sport:17→17 urady:3→3 vysoke:22→22 zastavky:179→179 | hranica body 23694 → 23694
-mapa-osm-presov.json fontany:22→22 ihriska:350→350 kultura:49→49 lekarne:67→67 muzea:23→23 nabijanie:32→32 nemocnice:73→73 pamiatky:204→204 parky:44→44 policia:13→13 posty:10→10 skolky:44→44 skoly:73→73 sport:59→59 urady:4→4 vysoke:23→23 zastavky:186→186 | hranica body 33162 → 33162
-mapa-osm-trencin.json fontany:4→4 ihriska:103→103 kultura:7→7 lekarne:30→30 muzea:8→8 nabijanie:22→22 nemocnice:8→8 pamiatky:56→56 parky:5→5 policia:7→7 posty:5→5 skolky:22→22 skoly:36→36 sport:10→10 urady:4→4 vysoke:2→2 zastavky:116→116 | hranica body 57245 → 57245
-mapa-osm-trnava.json fontany:14→14 ihriska:68→68 kultura:12→12 lekarne:21→21 muzea:6→6 nabijanie:17→17 nemocnice:5→5 pamiatky:81→81 parky:10→10 policia:6→6 posty:4→4 skolky:24→24 skoly:38→38 sport:24→24 urady:5→5 vysoke:8→8 zastavky:105→105 | hranica body 12351 → 12351
-mapa-osm-zilina.json fontany:10→10 ihriska:70→74 kultura:15→15 lekarne:32→33 muzea:4→4 nabijanie:28→28 nemocnice:5→5 pamiatky:68→68 parky:15→15 policia:6→9 posty:8→8 skolky:26→26 skoly:49→49 sport:13→13 urady:8→7 vysoke:2→2 zastavky:127→127 | hranica body 64085 → 64085
+/home/runner/work/mestovcislach/mestovcislach/diag_live.py:13: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  out={"cas":datetime.datetime.utcnow().isoformat()+"Z","stranky":[],"videozona":{},"odkazy":{},"rychlost":{}}
+mc bez odkazov /zilina/mestske-casti/
+obcí v obce.json: 2887 | vzorka: 25
+/ 200 7.5s js=1 csp=0 obr=0 zlyh=0
+     js TypeError: o.href.indexOf is not a function at c (https://mestovcislach.sk/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js:1:576) at i (https://mestovcislach.sk/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js:1:974) at https://mestovcislach.sk/cdn-cgi/scripts/5c5dd728/c
+/bratislava/ 200 8.6s js=0 csp=0 obr=0 zlyh=0
+/kosice/ 200 8.4s js=0 csp=0 obr=0 zlyh=0
+/presov/ 200 7.9s js=0 csp=0 obr=0 zlyh=0
+/zilina/ 200 8.0s js=0 csp=0 obr=0 zlyh=0
+/banska-bystrica/ 200 7.9s js=0 csp=0 obr=0 zlyh=0
+/nitra/ 200 8.2s js=0 csp=0 obr=0 zlyh=0
+/trnava/ 200 8.2s js=0 csp=0 obr=0 zlyh=0
+/trencin/ 200 8.0s js=0 csp=0 obr=0 zlyh=0
+/kosicky-kraj/trebisov/dvorianky/ 200 7.9s js=0 csp=0 obr=0 zlyh=0
+/trenciansky-kraj/ilava/dulov/ 200 7.3s js=0 csp=0 obr=0 zlyh=0
+/trnavsky-kraj/trnava/sucha-nad-parnou/ 200 7.5s js=0 csp=0 obr=0 zlyh=0
+/presovsky-kraj/levoca/bijacovce/ 200 7.5s js=0 csp=0 obr=0 zlyh=0
+/presovsky-kraj/snina/ruska-volova/ 200 7.4s js=0 csp=0 obr=0 zlyh=0
+/presovsky-kraj/sabinov/milpos/ 200 7.6s js=0 csp=0 obr=0 zlyh=0
+/nitriansky-kraj/komarno/bodza/ 200 7.3s js=0 csp=0 obr=0 zlyh=0
+/nitriansky-kraj/nitra/pohranice/ 200 7.5s js=0 csp=0 obr=0 zlyh=0
+/kosicky-kraj/trebisov/leles/ 200 7.3s js=0 csp=0 obr=0 zlyh=0
+/zilinsky-kraj/ruzomberok/lubochna/ 200 7.5s js=0 csp=0 obr=0 zlyh=0
+/bratislava/mestske-casti/devin/ 200 7.3s js=0 csp=0 obr=0 zlyh=0
+/kosice/mestske-casti/lunik-ix/ 200 7.4s js=0 csp=0 obr=0 zlyh=0
+/videozona/ 200 7.3s js=0 csp=0 obr=0 zlyh=0
+/mapa-obci/ 200 7.6s js=0 csp=0 obr=0 zlyh=0
+/rebricky/ 200 7.3s js=0 csp=0 obr=0 zlyh=0
+/stav-dat/ 200 7.4s js=0 csp=0 obr=0 zlyh=0
+VIDEOZÓNA {
+ "kroky": [
+  "vyhľadanie OK: Kremnica obec · okres Žiar nad Hronom 🏛 6 pamiatok",
+  "načítanie OK: Kremnica – video a 3D prelet – Videozóna – mestovcislach.sk",
+  "video spustené (tlačidlo ▶ skryté: True)",
+  "prelet spustený: canvas=True titulok='Kremnica'"
+ ],
+ "chyby": []
+}
+RÝCHLOSŤ (ms, medián 3) / {'ttfb': 70, 'fcp': 224, 'lcp': 224, 'dcl': 262, 'load': 266, 'kb': 554, 'poziadavky': 28}
+RÝCHLOSŤ (ms, medián 3) /kosicky-kraj/trebisov/dvorianky/ {'ttfb': 70, 'fcp': 208, 'lcp': 208, 'dcl': 316, 'load': 331, 'kb': 142, 'poziadavky': 34}
+ODKAZY overených 358 nefunkčných 0
 HOTOVO

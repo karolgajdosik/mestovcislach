@@ -1,0 +1,266 @@
+{
+ "cas": "2026-11-23T06:44:30.086320Z",
+ "stranky": [
+  {
+   "url": "/",
+   "stav": 200,
+   "s": 7.5,
+   "js": [
+    "TypeError: o.href.indexOf is not a function at c (https://mestovcislach.sk/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js:1:576) at i (https://mestovcislach.sk/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js:1:974) at https://mestovcislach.sk/cdn-cgi/scripts/5c5dd728/c"
+   ],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/bratislava/",
+   "stav": 200,
+   "s": 8.6,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/kosice/",
+   "stav": 200,
+   "s": 8.4,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/presov/",
+   "stav": 200,
+   "s": 7.9,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/zilina/",
+   "stav": 200,
+   "s": 8.0,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/banska-bystrica/",
+   "stav": 200,
+   "s": 7.9,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/nitra/",
+   "stav": 200,
+   "s": 8.2,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/trnava/",
+   "stav": 200,
+   "s": 8.2,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/trencin/",
+   "stav": 200,
+   "s": 8.0,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/kosicky-kraj/trebisov/dvorianky/",
+   "stav": 200,
+   "s": 7.9,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/trenciansky-kraj/ilava/dulov/",
+   "stav": 200,
+   "s": 7.3,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/trnavsky-kraj/trnava/sucha-nad-parnou/",
+   "stav": 200,
+   "s": 7.5,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/presovsky-kraj/levoca/bijacovce/",
+   "stav": 200,
+   "s": 7.5,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/presovsky-kraj/snina/ruska-volova/",
+   "stav": 200,
+   "s": 7.4,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/presovsky-kraj/sabinov/milpos/",
+   "stav": 200,
+   "s": 7.6,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/nitriansky-kraj/komarno/bodza/",
+   "stav": 200,
+   "s": 7.3,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/nitriansky-kraj/nitra/pohranice/",
+   "stav": 200,
+   "s": 7.5,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/kosicky-kraj/trebisov/leles/",
+   "stav": 200,
+   "s": 7.3,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/zilinsky-kraj/ruzomberok/lubochna/",
+   "stav": 200,
+   "s": 7.5,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/bratislava/mestske-casti/devin/",
+   "stav": 200,
+   "s": 7.3,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/kosice/mestske-casti/lunik-ix/",
+   "stav": 200,
+   "s": 7.4,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/videozona/",
+   "stav": 200,
+   "s": 7.3,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/mapa-obci/",
+   "stav": 200,
+   "s": 7.6,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/rebricky/",
+   "stav": 200,
+   "s": 7.3,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  },
+  {
+   "url": "/stav-dat/",
+   "stav": 200,
+   "s": 7.4,
+   "js": [],
+   "csp": [],
+   "obrazky": [],
+   "zlyhane": []
+  }
+ ],
+ "videozona": {
+  "kroky": [
+   "vyhľadanie OK: Kremnica obec · okres Žiar nad Hronom 🏛 6 pamiatok",
+   "načítanie OK: Kremnica – video a 3D prelet – Videozóna – mestovcislach.sk",
+   "video spustené (tlačidlo ▶ skryté: True)",
+   "prelet spustený: canvas=True titulok='Kremnica'"
+  ],
+  "chyby": []
+ },
+ "odkazy": {
+  "overenych": 358,
+  "nefunkcnych": 0,
+  "zoznam": []
+ },
+ "rychlost": {
+  "/": {
+   "ttfb": 70,
+   "fcp": 224,
+   "lcp": 224,
+   "dcl": 262,
+   "load": 266,
+   "kb": 554,
+   "poziadavky": 28
+  },
+  "/kosicky-kraj/trebisov/dvorianky/": {
+   "ttfb": 70,
+   "fcp": 208,
+   "lcp": 208,
+   "dcl": 316,
+   "load": 331,
+   "kb": 142,
+   "poziadavky": 34
+  }
+ }
+}
