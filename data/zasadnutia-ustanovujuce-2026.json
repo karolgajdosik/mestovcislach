@@ -53,7 +53,15 @@
    }
   ],
   "presov": [],
-  "kosice": []
+  "kosice": [
+   {
+    "nazov": "ON-LINE prenos z Ustanovujúceho zasadnutia MZ dňa 23.11.2026 od 10.00 hod.",
+    "url": "http://live.videostream.sk/kosice/",
+    "termin": "2026-11-23",
+    "ustanovujuce": true,
+    "videne_od": "2026-11-23"
+   }
+  ]
  },
- "aktualizovane": "2026-11-18T10:41+00:00"
+ "aktualizovane": "2026-11-23T11:04+00:00"
 }
