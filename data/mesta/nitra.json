@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-11-13T05:36:22",
+ "aktualizovane": "2026-11-23T15:18:09",
  "obyvatelia": {
   "roky": {
    "1993": 86679,
@@ -790,7 +790,7 @@
   }
  },
  "praca": {
-  "obdobie": "2026-09",
+  "obdobie": "2026-10",
   "mesacne": {
    "2026-08": {
     "Nitra": {
@@ -824,6 +824,23 @@
      "uoz": 170008.0,
      "disp": 144789.0,
      "pdu": 4.02
+    }
+   },
+   "2026-10": {
+    "Nitra": {
+     "uoz": 1301.0,
+     "disp": 1197.0,
+     "pdu": 2.39
+    },
+    "Nitriansky kraj": {
+     "uoz": 15788.0,
+     "disp": 14010.0,
+     "pdu": 3.18
+    },
+    "Slovenská republika": {
+     "uoz": 168736.0,
+     "disp": 143564.0,
+     "pdu": 3.99
     }
    }
   }

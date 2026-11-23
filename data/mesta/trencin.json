@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-11-13T05:36:22",
+ "aktualizovane": "2026-11-23T15:18:09",
  "obyvatelia": {
   "roky": {
    "1993": 57748,
@@ -678,7 +678,7 @@
   }
  },
  "praca": {
-  "obdobie": "2026-09",
+  "obdobie": "2026-10",
   "mesacne": {
    "2026-08": {
     "Trenčín": {
@@ -712,6 +712,23 @@
      "uoz": 170008.0,
      "disp": 144789.0,
      "pdu": 4.02
+    }
+   },
+   "2026-10": {
+    "Trenčín": {
+     "uoz": 910.0,
+     "disp": 846.0,
+     "pdu": 2.42
+    },
+    "Trenčiansky kraj": {
+     "uoz": 12157.0,
+     "disp": 11099.0,
+     "pdu": 3.01
+    },
+    "Slovenská republika": {
+     "uoz": 168736.0,
+     "disp": 143564.0,
+     "pdu": 3.99
     }
    }
   }

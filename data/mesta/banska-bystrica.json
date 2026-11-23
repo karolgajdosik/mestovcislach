@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-11-01T10:22:20",
+ "aktualizovane": "2026-11-23T15:18:09",
  "obyvatelia": {
   "roky": {
    "1993": 84575,
@@ -816,7 +816,7 @@
   }
  },
  "praca": {
-  "obdobie": "2026-09",
+  "obdobie": "2026-10",
   "mesacne": {
    "2026-08": {
     "Banská Bystrica": {
@@ -850,6 +850,23 @@
      "uoz": 170008.0,
      "disp": 144789.0,
      "pdu": 4.02
+    }
+   },
+   "2026-10": {
+    "Banská Bystrica": {
+     "uoz": 1639.0,
+     "disp": 1544.0,
+     "pdu": 3.3
+    },
+    "Banskobystrický kraj": {
+     "uoz": 27247.0,
+     "disp": 21675.0,
+     "pdu": 5.45
+    },
+    "Slovenská republika": {
+     "uoz": 168736.0,
+     "disp": 143564.0,
+     "pdu": 3.99
     }
    }
   }

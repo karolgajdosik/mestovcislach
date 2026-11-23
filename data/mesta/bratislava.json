@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-11-01T10:22:20",
+ "aktualizovane": "2026-11-23T15:18:09",
  "obyvatelia": {
   "roky": {
    "1993": 448785,
@@ -2529,7 +2529,7 @@
   }
  },
  "praca": {
-  "obdobie": "2026-09",
+  "obdobie": "2026-10",
   "mesacne": {
    "2026-08": {
     "Bratislava I": {
@@ -2603,6 +2603,43 @@
      "uoz": 170008.0,
      "disp": 144789.0,
      "pdu": 4.02
+    }
+   },
+   "2026-10": {
+    "Bratislava I": {
+     "uoz": 808.0,
+     "disp": 773.0,
+     "pdu": 2.27
+    },
+    "Bratislava II": {
+     "uoz": 2558.0,
+     "disp": 2434.0,
+     "pdu": 2.74
+    },
+    "Bratislava III": {
+     "uoz": 1459.0,
+     "disp": 1391.0,
+     "pdu": 2.55
+    },
+    "Bratislava IV": {
+     "uoz": 2134.0,
+     "disp": 2067.0,
+     "pdu": 2.85
+    },
+    "Bratislava V": {
+     "uoz": 2035.0,
+     "disp": 1942.0,
+     "pdu": 2.53
+    },
+    "Bratislavský kraj": {
+     "uoz": 14085.0,
+     "disp": 13461.0,
+     "pdu": 2.68
+    },
+    "Slovenská republika": {
+     "uoz": 168736.0,
+     "disp": 143564.0,
+     "pdu": 3.99
     }
    }
   }

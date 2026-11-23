@@ -1,5 +1,5 @@
 {
- "aktualizovane": "2026-11-13T05:36:22",
+ "aktualizovane": "2026-11-23T15:18:09",
  "obyvatelia": {
   "roky": {
    "1993": 71624,
@@ -776,7 +776,7 @@
   }
  },
  "praca": {
-  "obdobie": "2026-09",
+  "obdobie": "2026-10",
   "mesacne": {
    "2026-08": {
     "Trnava": {
@@ -810,6 +810,23 @@
      "uoz": 170008.0,
      "disp": 144789.0,
      "pdu": 4.02
+    }
+   },
+   "2026-10": {
+    "Trnava": {
+     "uoz": 1108.0,
+     "disp": 1039.0,
+     "pdu": 2.47
+    },
+    "Trnavský kraj": {
+     "uoz": 11727.0,
+     "disp": 10917.0,
+     "pdu": 2.85
+    },
+    "Slovenská republika": {
+     "uoz": 168736.0,
+     "disp": 143564.0,
+     "pdu": 3.99
     }
    }
   }
