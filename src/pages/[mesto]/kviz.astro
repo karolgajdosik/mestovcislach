@@ -86,6 +86,8 @@ const KOLO = Math.min(10, o.length); // otázok v jednej hre
 </Base>
 
 <script>
+  import { zapocitaj } from '../../scripts/kviz-pocitadlo';
+  let kolo = 0;
   type Graf =
     | { typ: 'stlpce'; nadpis: string; jednotka?: string; des?: number; polozky: { n: string; v: number; ja?: boolean }[] }
     | { typ: 'ciara'; nadpis: string; roky: string[]; hodnoty: number[]; pozn?: string };
@@ -186,6 +188,7 @@ const KOLO = Math.min(10, o.length); // otázok v jednej hre
     if (i) $('kv-hra').scrollIntoView({ behavior: pokoj ? 'auto' : 'smooth', block: 'start' });
   }
   function odpovedz(k: number) {
+    if (i === 0) zapocitaj('start', kolo);
     if (!cakam) return;
     cakam = false;
     const o = O[i];
@@ -227,6 +230,7 @@ const KOLO = Math.min(10, o.length); // otázok v jednej hre
   // ---------- výsledok ----------
   const titul = (p: number) => p >= 0.9 ? ['🏆', 'Mestský expert'] : p >= 0.7 ? ['🥈', 'Znalec mesta'] : p >= 0.5 ? ['🧭', 'Dobrý sused'] : p >= 0.3 ? ['🗺️', 'Objaviteľ'] : ['🌱', 'Nováčik'];
   function koniec() {
+    zapocitaj('koniec', kolo);
     const body = odpovede.filter((k, j) => k === O[j].spravna).length;
     const p = body / O.length;
     $('kv-hra').hidden = true; $('kv-koniec').hidden = false;
@@ -266,6 +270,7 @@ const KOLO = Math.min(10, o.length); // otázok v jednej hre
     setTimeout(() => (k.innerHTML = ''), 3800);
   }
   $('kv-znova').addEventListener('click', () => {
+    kolo++;
     $('kv-koniec').hidden = true; $('kv-hra').hidden = false;
     noveKolo(); i = 0; odpovede = []; seria = 0; $('kv-seria').hidden = true; ukaz(); $('kv-otazka').focus({ preventScroll: true });
     $('kv-hra').scrollIntoView({ behavior: pokoj ? 'auto' : 'smooth', block: 'start' });

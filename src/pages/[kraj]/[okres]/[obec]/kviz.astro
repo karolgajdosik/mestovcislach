@@ -35,6 +35,7 @@ const u = urlObce(o);
 </Base>
 
 <script>
+  import { zapocitaj } from '../../../../scripts/kviz-pocitadlo';
   type Q = { q: string; moznosti: string[]; spravna: number; vysv: string };
   const el = document.getElementById('kv')!;
   const Q: Q[] = JSON.parse(el.dataset.q!);
@@ -49,6 +50,7 @@ const u = urlObce(o);
     $('kv-m').innerHTML = por.map((x) => `<button type="button" data-j="${x.j}">${hx(x.m)}</button>`).join('');
     $('kv-v').hidden = true; $('kv-d').hidden = true;
     $('kv-m').querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.addEventListener('click', () => {
+      if (i === 0) zapocitaj('start');
       const ok = Number(b.dataset.j) === q.spravna;
       if (ok) body++;
       $('kv-m').querySelectorAll<HTMLButtonElement>('button').forEach((x) => { x.disabled = true; x.classList.toggle('ok', Number(x.dataset.j) === q.spravna); x.classList.toggle('zle', x === b && !ok); });
@@ -61,6 +63,7 @@ const u = urlObce(o);
     if (i < Q.length) return zobraz();
     ['kv-poc', 'kv-q', 'kv-m', 'kv-v', 'kv-d'].forEach((x) => ($(x).hidden = true));
     $('kv-k').hidden = false; $('kv-b').textContent = String(body);
+    zapocitaj('koniec');
   });
   zobraz();
 </script>

@@ -53,10 +53,38 @@ const zostavene = new Date().toISOString();
       </div>
     </section>
   ))}
+  <section class="card" id="kvizy">
+    <h2>Kvízy – koľko sa hrá</h2>
+    <p class="pozn" id="kz-stav">Načítavam…</p>
+    <div class="ob-obal" tabindex="0" role="region" aria-label="Kvízy podľa mesiacov"><table class="ob-tab" id="kz-mes" hidden><thead><tr><th>Mesiac</th><th class="num">Spustené</th><th class="num">Dohrané</th><th class="num">Rôznych kvízov</th></tr></thead><tbody></tbody></table></div>
+    <h3 id="kz-top-h" hidden>Najhrávanejšie kvízy tento mesiac</h3>
+    <div class="ob-obal" tabindex="0" role="region" aria-label="Najhrávanejšie kvízy"><table class="ob-tab" id="kz-top" hidden><thead><tr><th>Kvíz</th><th class="num">Spustené</th><th class="num">Dohrané</th></tr></thead><tbody></tbody></table></div>
+    <p class="zdroj">Anonymné počítadlo od 24. 11. 2026: kvíz sa započíta pri prvej odpovedi a pri výsledku. Ukladajú sa len počty za kvíz a mesiac – žiadne IP adresy, identifikátory ani odpovede; roboty sa nepočítajú.</p>
+  </section>
   <p class="zdroj">Dátum je čas posledného zberu, pri ktorom sa súbor zmenil (ak zdroj nepriniesol nič nové, dátum ostáva). Kód zberov je verejný na GitHube.</p>
 </Base>
 
 <script>
+  // počítadlo kvízov (functions/api/kviz.ts)
+  {
+    const kz = document.getElementById('kz-stav')!;
+    const mes = document.getElementById('kz-mes') as HTMLTableElement, top = document.getElementById('kz-top') as HTMLTableElement;
+    const e = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+    const nazov = (k: string) => k === '/sutaz' ? 'Súťaž miest' : k.replace(/\/kviz$/, '').split('/').pop()!.replace(/-/g, ' ').replace(/^./, (c) => c.toUpperCase());
+    const M = ['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december'];
+    fetch('/api/kviz?mesiace=6').then((r) => (r.ok ? r.json() : Promise.reject(r.status))).then((d) => {
+      const m = Object.entries(d.mesiace as Record<string, any>).filter(([, v]) => v.spustene || v.dohrane);
+      if (!m.length) { kz.textContent = 'Zatiaľ žiadne odohrané kvízy (počítadlo beží od 24. 11. 2026).'; return; }
+      kz.hidden = true;
+      mes.tBodies[0].innerHTML = m.map(([k, v]) => `<tr><td>${M[Number(k.slice(5)) - 1]} ${k.slice(0, 4)}</td><td class="num">${v.spustene.toLocaleString('sk-SK')}</td><td class="num">${v.dohrane.toLocaleString('sk-SK')}</td><td class="num">${v.kvizov}</td></tr>`).join('');
+      mes.hidden = false;
+      const t = (m[0][1].top as [string, number, number][]);
+      if (t.length) {
+        top.tBodies[0].innerHTML = t.map(([k, a, b]) => `<tr><td><a href="${e(k)}/">${e(nazov(k))}</a></td><td class="num">${a}</td><td class="num">${b}</td></tr>`).join('');
+        top.hidden = false; document.getElementById('kz-top-h')!.hidden = false;
+      }
+    }).catch(() => { kz.textContent = 'Počty kvízov sa nepodarilo načítať.'; });
+  }
   const stav = document.getElementById('sd-stav')!;
   const tab = document.getElementById('sd-behy') as HTMLTableElement;
   const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
