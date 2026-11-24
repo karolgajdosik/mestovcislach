@@ -1,7 +1,3 @@
-studio 200 65392
-csv 200 551780 ﻿kod_obce;obec;okres;kraj;url;Obyvatelia;Zmena obyvateľov za 10 rokov (%);Priemerný vek (r.);Deti do 14 rokov (%);Ľudia nad 65 rokov (%);Vysokoškolské vzdelanie (%);Miera nezamestnanosti (%);Účasť v k 2888
-embed 200 65442 True
-Traceback (most recent call last):
-  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 15, in <module>
-    from playwright.sync_api import sync_playwright
-ModuleNotFoundError: No module named 'playwright'
+https://mestovcislach.sk/datove-studio/ 200 103958 False True DYNAMIC None
+https://mestovcislach.sk/data/studio/obce.json 200 300567 False False DYNAMIC None
+HOTOVO
