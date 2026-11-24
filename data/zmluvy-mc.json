@@ -5,7 +5,7 @@
   "licencia": "verejné údaje podľa zákona č. 211/2000 Z. z."
  },
  "od": "2022-01-01",
- "do": "2026-11-22",
+ "do": "2026-11-23",
  "mestske_casti": {
   "Devín": {
    "zmluv": 557,
@@ -212,8 +212,8 @@
    ]
   },
   "Devínska Nová Ves": {
-   "zmluv": 1416,
-   "suma": 64652061,
+   "zmluv": 1426,
+   "suma": 64656061,
    "roky": {
     "2022": [
      250,
@@ -232,13 +232,13 @@
      19516095
     ],
     "2026": [
-     220,
-     6551274
+     230,
+     6555274
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 506,
-    "suma": 998237
+    "zmluv": 510,
+    "suma": 999557
    },
    "najvacsi_partneri": [
     {
@@ -620,8 +620,8 @@
    ]
   },
   "Hlavné mesto": {
-   "zmluv": 14907,
-   "suma": 2706618058,
+   "zmluv": 14919,
+   "suma": 2711189889,
    "roky": {
     "2022": [
      2618,
@@ -640,13 +640,13 @@
      334776233
     ],
     "2026": [
-     2749,
-     617322743
+     2761,
+     621894573
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 6525,
-    "suma": 77708041
+    "zmluv": 6530,
+    "suma": 77721011
    },
    "najvacsi_partneri": [
     {
@@ -716,16 +716,16 @@
      "suma": 62047439
     },
     {
+     "nazov": "MBM-GROUP, a.s.",
+     "ico": "36740519",
+     "zmluv": 9,
+     "suma": 61352242
+    },
+    {
      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
      "ico": "00681156",
      "zmluv": 31,
      "suma": 60986884
-    },
-    {
-     "nazov": "MBM-GROUP, a.s.",
-     "ico": "36740519",
-     "zmluv": 8,
-     "suma": 56799236
     },
     {
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
@@ -1028,8 +1028,8 @@
    ]
   },
   "Karlova Ves": {
-   "zmluv": 2506,
-   "suma": 73189922,
+   "zmluv": 2509,
+   "suma": 73198766,
    "roky": {
     "2022": [
      564,
@@ -1048,13 +1048,13 @@
      8212235
     ],
     "2026": [
-     395,
-     23241933
+     398,
+     23250777
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1023,
-    "suma": 3925313
+    "zmluv": 1024,
+    "suma": 3925463
    },
    "najvacsi_partneri": [
     {
@@ -1138,8 +1138,8 @@
     {
      "nazov": "Mládežnícky basketbalový klub KARLOVKA",
      "ico": "30847435",
-     "zmluv": 12,
-     "suma": 1246420
+     "zmluv": 13,
+     "suma": 1254855
     },
     {
      "nazov": "ESCO Integra, s.r.o.",
@@ -1436,8 +1436,8 @@
    ]
   },
   "Nové Mesto": {
-   "zmluv": 1783,
-   "suma": 123283300,
+   "zmluv": 1784,
+   "suma": 123285570,
    "roky": {
     "2022": [
      277,
@@ -1456,8 +1456,8 @@
      10986412
     ],
     "2026": [
-     475,
-     22137274
+     476,
+     22139544
     ]
    },
    "fyzicke_osoby": {
@@ -1640,8 +1640,8 @@
    ]
   },
   "Petržalka": {
-   "zmluv": 5149,
-   "suma": 214266874,
+   "zmluv": 5151,
+   "suma": 214273572,
    "roky": {
     "2022": [
      753,
@@ -1660,8 +1660,8 @@
      66104103
     ],
     "2026": [
-     938,
-     58423952
+     940,
+     58430650
     ]
    },
    "fyzicke_osoby": {
@@ -2252,8 +2252,8 @@
    ]
   },
   "Rusovce": {
-   "zmluv": 885,
-   "suma": 35781628,
+   "zmluv": 886,
+   "suma": 35781891,
    "roky": {
     "2022": [
      177,
@@ -2272,13 +2272,13 @@
      4654019
     ],
     "2026": [
-     156,
-     2450168
+     157,
+     2450431
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 430,
-    "suma": 1518949
+    "zmluv": 431,
+    "suma": 1519212
    },
    "najvacsi_partneri": [
     {
@@ -2456,8 +2456,8 @@
    ]
   },
   "Ružinov": {
-   "zmluv": 2702,
-   "suma": 175414718,
+   "zmluv": 2704,
+   "suma": 175596820,
    "roky": {
     "2022": [
      334,
@@ -2476,8 +2476,8 @@
      27813497
     ],
     "2026": [
-     496,
-     68883181
+     498,
+     69065283
     ]
    },
    "fyzicke_osoby": {
@@ -2660,8 +2660,8 @@
    ]
   },
   "Staré Mesto": {
-   "zmluv": 2534,
-   "suma": 117036863,
+   "zmluv": 2536,
+   "suma": 117037863,
    "roky": {
     "2022": [
      459,
@@ -2680,13 +2680,13 @@
      20943521
     ],
     "2026": [
-     552,
-     36905880
+     554,
+     36906880
     ]
    },
    "fyzicke_osoby": {
-    "zmluv": 1104,
-    "suma": 10380904
+    "zmluv": 1106,
+    "suma": 10381904
    },
    "najvacsi_partneri": [
     {
@@ -5000,5 +5000,5 @@
    }
   }
  },
- "aktualizovane": "2026-11-23T16:11:10+00:00"
+ "aktualizovane": "2026-11-24T15:59:35+00:00"
 }

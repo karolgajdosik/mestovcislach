@@ -2,15 +2,15 @@
  "mesto": "trencin",
  "ico": "00312037",
  "od": "2022-01-01",
- "do": "2026-11-22",
+ "do": "2026-11-23",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 12606,
-  "skryte_fyzicke_osoby": 6923,
+  "zaznamov": 12612,
+  "skryte_fyzicke_osoby": 6927,
   "roky": {
    "2022": {
     "pocet": 1819,
@@ -37,10 +37,10 @@
     "fo_suma": 9669829
    },
    "2026": {
-    "pocet": 2347,
-    "suma": 102276917,
-    "fo_pocet": 1165,
-    "fo_suma": 2538573
+    "pocet": 2353,
+    "suma": 102876884,
+    "fo_pocet": 1169,
+    "fo_suma": 2538673
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -75,16 +75,16 @@
     "suma": 9500000
    },
    {
+    "ico": "00681156",
+    "nazov": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "pocet": 14,
+    "suma": 7743894
+   },
+   {
     "ico": "54345987",
     "nazov": "Kreatívny inštitút Trenčín,n.o. Anglická verzia názvu je: Creative Institute Trenčín, n.o.",
     "pocet": 273,
     "suma": 7519526
-   },
-   {
-    "ico": "00681156",
-    "nazov": "Ministerstvo práce,sociálnych vecí a rodiny SR",
-    "pocet": 13,
-    "suma": 7144028
    },
    {
     "ico": "30796491",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-23T16:11:11+00:00"
+ "aktualizovane": "2026-11-24T15:59:37+00:00"
 }

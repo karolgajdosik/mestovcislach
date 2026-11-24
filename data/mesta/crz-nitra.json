@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-11-22",
+ "do": "2026-11-23",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 15239,
-  "skryte_fyzicke_osoby": 9928,
+  "zaznamov": 15292,
+  "skryte_fyzicke_osoby": 9975,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,9 +37,9 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3511,
-    "suma": 54078562,
-    "fo_pocet": 2521,
+    "pocet": 3564,
+    "suma": 54083062,
+    "fo_pocet": 2568,
     "fo_suma": 3692863
    }
   },
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-23T16:11:11+00:00"
+ "aktualizovane": "2026-11-24T15:59:37+00:00"
 }
