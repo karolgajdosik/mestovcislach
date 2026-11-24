@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 12031,
+ "pocet_spolu": 12043,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2418,
-   "suma": 413914969.73
+   "pocet": 2430,
+   "suma": 418473500.15
   }
  },
  "posledny_rok": {
-  "od": "2025-11-23",
+  "od": "2025-11-24",
   "suma_bez_ico": 68400.73,
   "dodavatelia": [
    {
@@ -68,6 +68,12 @@
     "nazov": "STRABAG s.r.o.",
     "pocet": 8,
     "suma": 8451551.73
+   },
+   {
+    "ico": "36740519",
+    "nazov": "MBM-GROUP, a.s.",
+    "pocet": 5,
+    "suma": 5338751.38
    },
    {
     "ico": "50614339",
@@ -116,12 +122,6 @@
     "nazov": "Mediatex s.r.o.",
     "pocet": 1,
     "suma": 1500000.0
-   },
-   {
-    "ico": "35732881",
-    "nazov": "METRO Bratislava  a.s.",
-    "pocet": 8,
-    "suma": 1204031.04
    }
   ],
   "najvacsie": [
@@ -178,6 +178,15 @@
     "suma": 7006758.38,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600017"
+   },
+   {
+    "datum": "2026-11-23",
+    "dodavatel": "MBM-GROUP, a.s.",
+    "ico": "36740519",
+    "predmet": "Dodatok č.2 k zmluve MAGSP2200071 na zvýšenie maximálnej hodnoty dohody o 3 701 630,96 EUR bez DPH (8,0 % pôvodnej hodnoty dohody), čo pri sadzbe DPH 23 % predstavuje 4 553 006,081 EUR s DPH.",
+    "suma": 4553006.08,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2600187"
    },
    {
     "datum": "2026-11-12",
@@ -295,17 +304,8 @@
     "suma": 884985.0,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600207"
-   },
-   {
-    "datum": "2026-06-12",
-    "dodavatel": "ENERGA s.r.o.",
-    "ico": "50778501",
-    "predmet": "Dodatok č.3 TT Patronka Riviera naviac práce",
-    "suma": 858767.6,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZD2600066"
    }
   ]
  },
- "aktualizovane": "2026-11-23T10:58:56+00:00"
+ "aktualizovane": "2026-11-24T12:45:12+00:00"
 }
