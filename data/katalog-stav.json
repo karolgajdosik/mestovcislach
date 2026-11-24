@@ -1,7 +1,7 @@
 {
  "zdroj": "https://data.bratislava.sk",
  "pocty": {
-  "katalog": 604,
+  "katalog": 603,
   "osobitne": 34,
   "vynechane": 19,
   "na_webe": 29
@@ -296,16 +296,6 @@
    "stav": "katalog",
    "kde": "/bratislava/katalog/bd9b2f662f394f19abe0547e8ab82b40",
    "stlpcov": 16
-  },
-  {
-   "id": "cfeb3a7ae9a64afaa4c44b3ab1b8c1c5",
-   "nazov": "Štatistický prehľad priestupkov na úseku občianskych preukazov",
-   "kategoria": "Bezpečnosť",
-   "upravene": 1771494861000,
-   "riadkov": 25,
-   "stav": "katalog",
-   "kde": "/bratislava/katalog/cfeb3a7ae9a64afaa4c44b3ab1b8c1c5",
-   "stlpcov": 7
   },
   {
    "id": "513a1371d88c4c39ae1b47b1031231a0",
@@ -2390,7 +2380,7 @@
    "id": "aba12fd2cbac4843bc7406151bc66106",
    "nazov": "Cestovné poriadky MHD vo formáte GTFS",
    "kategoria": "Doprava a komunikácie",
-   "upravene": 1794632426000,
+   "upravene": 1795496435000,
    "riadkov": null,
    "stav": "na_webe",
    "kde": "/bratislava/doprava",
@@ -2597,7 +2587,7 @@
    "nazov": "Počet prechádzajúcich chodcov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492980000,
-   "riadkov": 870963,
+   "riadkov": 872047,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače chodcov"
@@ -2607,7 +2597,7 @@
    "nazov": "Počet prejazdov cyklistov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492966000,
-   "riadkov": 870963,
+   "riadkov": 872047,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače cyklistov"
@@ -2617,7 +2607,7 @@
    "nazov": "Počet prejazdov vozidiel podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492972000,
-   "riadkov": 503171,
+   "riadkov": 504082,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače áut"
@@ -4022,7 +4012,7 @@
    "nazov": "Faktúry Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151953000,
-   "riadkov": 151087,
+   "riadkov": 151090,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry magistrátu"
@@ -4201,7 +4191,7 @@
    "nazov": "Objednávky Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151897000,
-   "riadkov": 65851,
+   "riadkov": 65860,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky magistrátu"
@@ -4828,7 +4818,7 @@
    "nazov": "Zmluvy Magistrátu hlavného mesta SR Bratislava zverejnené od júla 2022",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151852000,
-   "riadkov": 13388,
+   "riadkov": 13401,
    "stav": "na_webe",
    "kde": "/bratislava/financie",
    "pozn": "Zmluvy magistrátu"
@@ -6395,7 +6385,7 @@
    "id": "7a59ddfffd764833a097bfa87ea2b75e",
    "nazov": "Prehľad počtu zaočkovaných ľudí podľa okresu proti vírusu Covid-19 v Bratislave",
    "kategoria": "Zdravie",
-   "upravene": 1771494873000,
+   "upravene": 1795437521000,
    "riadkov": 60,
    "stav": "katalog",
    "kde": "/bratislava/katalog/7a59ddfffd764833a097bfa87ea2b75e",
@@ -6405,7 +6395,7 @@
    "id": "59df85c642774664b966f158cf759433",
    "nazov": "Prehľad počtu zaočkovaných ľudí podľa veku proti vírusu Covid-19 v Bratislave",
    "kategoria": "Zdravie",
-   "upravene": 1771494867000,
+   "upravene": 1795437048000,
    "riadkov": 126,
    "stav": "katalog",
    "kde": "/bratislava/katalog/59df85c642774664b966f158cf759433",
@@ -6415,7 +6405,7 @@
    "id": "eb8d444842ff44028d29d2b03053c0a5",
    "nazov": "Prehľad počtu zaočkovaných ľudí proti vírusu Covid-19 v Bratislave",
    "kategoria": "Zdravie",
-   "upravene": 1771495196000,
+   "upravene": 1795437390000,
    "riadkov": 24,
    "stav": "katalog",
    "kde": "/bratislava/katalog/eb8d444842ff44028d29d2b03053c0a5",
@@ -6762,7 +6752,7 @@
    "nazov": "Starostlivosť o dreviny v Bratislave",
    "kategoria": "Životné prostredie",
    "upravene": 1778750501000,
-   "riadkov": 5827,
+   "riadkov": 5837,
    "stav": "osobitne",
    "kde": "/bratislava/mapa",
    "pozn": "Starostlivosť o dreviny"
@@ -6847,5 +6837,5 @@
    "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-11-22T10:58:07+00:00"
+ "aktualizovane": "2026-11-24T14:59:57+00:00"
 }

@@ -1,6 +1,6 @@
 {
  "zdroj": "https://data.bratislava.sk",
- "pocet": 685,
+ "pocet": 684,
  "datasety": [
   {
    "id": "cd6711958334494685f4e01f4ab3e482",
@@ -1473,17 +1473,17 @@
    "kategorie": [
     "/Categories/Doprava a komunikácie"
    ],
-   "upravene": 1794632426000,
+   "upravene": 1795496435000,
    "popis": "Cestovné poriadky MHD vo formáte GTFS",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 6327419,
+   "velkost": 6323184,
    "typove_slova": [
     "CSV Collection",
     "Metadata",
     "zip"
    ],
-   "upravene_ms": 1794632426000
+   "upravene_ms": 1795496435000
   },
   {
    "id": "4a8eab30e596432486f494649840c694",
@@ -6819,7 +6819,7 @@
      "nazov": "Faktúry_Magistrátu_hlavného_mesta_SR_Bratislava_od_roku_2011",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 151087,
+     "pocet": 151090,
      "polia": [
       [
        "IDENTIFIKÁTOR_FAKTÚRY",
@@ -12197,7 +12197,7 @@
      "nazov": "Objednávky_Magistrátu_hlavného_mesta_SR_Bratislava_od_roku_2011",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 65851,
+     "pocet": 65860,
      "polia": [
       [
        "IDENTIFIKÁTOR_OBJEDNÁVKY",
@@ -23880,7 +23880,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 233857024,
+   "velkost": 234086400,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23900,7 +23900,7 @@
      "nazov": "chodci10_01",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 870963,
+     "pocet": 872047,
      "polia": [
       [
        "NAZOV",
@@ -23967,7 +23967,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 233275392,
+   "velkost": 233512960,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -23987,7 +23987,7 @@
      "nazov": "cyklisti2_0",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 870963,
+     "pocet": 872047,
      "polia": [
       [
        "NAZOV",
@@ -24054,7 +24054,7 @@
    "popis": "Dáta môžu byť spätne upravované (maximálne do dvoch mesiacov spätne), kvôli výpadkom sčítačov, ku ktorým môže prísť z dôvodu vplyvov počasia, prípadne z iných dôvodov. V prípade chybnej kalibrácie prístroja nie je možné dáta spätne dopočítať.&nbsp;",
    "jazyk": "sk",
    "licencia": "CC BY 4.0",
-   "velkost": 119209984,
+   "velkost": 119398400,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -24074,7 +24074,7 @@
      "nazov": "vozidla_00",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 503171,
+     "pocet": 504082,
      "polia": [
       [
        "NAZOV",
@@ -29392,12 +29392,15 @@
    "nazov": "Prehľad počtu zaočkovaných ľudí podľa okresu proti vírusu Covid-19 v Bratislave",
    "typ": "Feature Service",
    "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prehľad počtu zaočkovaných ľudí podľa okresu proti vírusu Covid-/FeatureServer",
-   "tagy": [],
+   "tagy": [
+    "Zdravotníctvo",
+    "Regióny a mestá"
+   ],
    "kategorie": [
     "/Categories/Zdravie"
    ],
-   "upravene": 1771494873000,
-   "popis": "Prehľad počtu zaočkovaných ľudí podľa okresu proti vírusu Covid-19 v Bratislave",
+   "upravene": 1795437521000,
+   "popis": "Prehľad počtu zaočkovaných ľudí podľa okresu proti vírusu Covid-19 v Bratislave v júni, júli a auguste v roku 2021.",
    "jazyk": "english (united states)",
    "licencia": "CC BY 4.0",
    "velkost": 16384,
@@ -29412,7 +29415,7 @@
     "Table",
     "Hosted Service"
    ],
-   "upravene_ms": 1771494873000,
+   "upravene_ms": 1795437521000,
    "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prehľad počtu zaočkovaných ľudí podľa okresu proti vírusu Covid-/FeatureServer",
    "vrstvy": [
     {
@@ -29425,22 +29428,22 @@
       [
        "Dátum",
        "String",
-       "Dátum"
+       "DATUM"
       ],
       [
        "Okres",
        "String",
-       "Okres"
+       "OKRES"
       ],
       [
        "Dávka_1___v_čakárni",
        "String",
-       "Dávka 1 - v čakárni"
+       "DAVKA_1__V_CAKARNI"
       ],
       [
        "Dávka_2___v_čakárni",
        "String",
-       "Dávka 2 - v čakárni"
+       "DAVKA_2__V_CAKARNI"
       ],
       [
        "ObjectId",
@@ -29456,12 +29459,15 @@
    "nazov": "Prehľad počtu zaočkovaných ľudí podľa veku proti vírusu Covid-19 v Bratislave",
    "typ": "Feature Service",
    "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prehľad počtu zaočkovaných ľudí podľa veku proti vírusu Covid-19/FeatureServer",
-   "tagy": [],
+   "tagy": [
+    "Zdravotníctvo",
+    "Regióny a mestá"
+   ],
    "kategorie": [
     "/Categories/Zdravie"
    ],
-   "upravene": 1771494867000,
-   "popis": "Prehľad počtu zaočkovaných ľudí podľa veku proti vírusu Covid-19 v Bratislave",
+   "upravene": 1795437048000,
+   "popis": "Prehľad počtu zaočkovaných ľudí podľa veku proti vírusu Covid-19 v Bratislave v júni, júli a auguste v roku 2021.",
    "jazyk": "english (united states)",
    "licencia": "CC BY 4.0",
    "velkost": 32768,
@@ -29476,7 +29482,7 @@
     "Table",
     "Hosted Service"
    ],
-   "upravene_ms": 1771494867000,
+   "upravene_ms": 1795437048000,
    "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prehľad počtu zaočkovaných ľudí podľa veku proti vírusu Covid-19/FeatureServer",
    "vrstvy": [
     {
@@ -29489,37 +29495,37 @@
       [
        "Dátum",
        "String",
-       "Dátum"
+       "DATUM"
       ],
       [
        "Veková_skupina",
        "String",
-       "Veková skupina"
+       "VEKOVA_SKUPINA"
       ],
       [
        "Počet",
        "String",
-       "Počet"
+       "POCET"
       ],
       [
        "Dávka_1___počet_zaočkovaných",
        "String",
-       "Dávka 1 - počet zaočkovaných"
+       "DAVKA_1__POCET_ZAOCKOVANYCH"
       ],
       [
        "Dávka_2___počet_zaočkovaných",
        "String",
-       "Dávka 2 - počet zaočkovaných"
+       "DAVKA_2__POCET_ZAOCKOVANYCH"
       ],
       [
        "Dávka_1___podiel_zaočkovaných",
        "String",
-       "Dávka 1 - podiel zaočkovaných"
+       "DAVKA_1__PODIEL_ZAOCKOVANYCH"
       ],
       [
        "Dávka_2___podiel_zaočkovaných",
        "String",
-       "Dávka 2 - podiel zaočkovaných"
+       "DAVKA_2__PODIEL_ZAOCKOVANYCH"
       ],
       [
        "ObjectId",
@@ -29535,12 +29541,15 @@
    "nazov": "Prehľad počtu zaočkovaných ľudí proti vírusu Covid-19 v Bratislave",
    "typ": "Feature Service",
    "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prehľad počtu zaočkovaných ľudí proti vírusu Covid-19 v Bratisla/FeatureServer",
-   "tagy": [],
+   "tagy": [
+    "Zdravotníctvo",
+    "Regióny a mestá"
+   ],
    "kategorie": [
     "/Categories/Zdravie"
    ],
-   "upravene": 1771495196000,
-   "popis": "Prehľad počtu zaočkovaných ľudí proti vírusu Covid-19 v Bratislave",
+   "upravene": 1795437390000,
+   "popis": "Prehľad počtu zaočkovaných ľudí proti vírusu Covid-19 v Bratislave v júni, júli a auguste v roku 2021.",
    "jazyk": "english (united states)",
    "licencia": "CC BY 4.0",
    "velkost": 16384,
@@ -29555,7 +29564,7 @@
     "Table",
     "Hosted Service"
    ],
-   "upravene_ms": 1771495196000,
+   "upravene_ms": 1795437390000,
    "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Prehľad počtu zaočkovaných ľudí proti vírusu Covid-19 v Bratisla/FeatureServer",
    "vrstvy": [
     {
@@ -29568,42 +29577,42 @@
       [
        "Dátum",
        "String",
-       "Dátum"
+       "DATUM"
       ],
       [
        "Dávka",
        "String",
-       "Dávka"
+       "DAVKA"
       ],
       [
        "Počet_zaočkovaných___spolu",
        "String",
-       "Počet zaočkovaných - spolu"
+       "POCET_ZAOCKOVANYCH_SPOLU"
       ],
       [
        "Počet_zaočkovaných___muži",
        "String",
-       "Počet zaočkovaných - muži"
+       "POCET_ZAOCKOVANYCH_MUZI"
       ],
       [
        "Počet_zaočkovaných___ženy",
        "String",
-       "Počet zaočkovaných - ženy"
+       "POCET_ZAOCKOVANYCH_ZENY"
       ],
       [
        "Podiel_zaočkovaných___muži",
        "String",
-       "Podiel zaočkovaných - muži"
+       "PODIEL_ZAOCKOVANYCH_MUZI"
       ],
       [
        "Podiel_zaočkovaných___ženy",
        "String",
-       "Podiel zaočkovaných - ženy"
+       "PODIEL_ZAOCKOVANYCH_ZENY"
       ],
       [
        "Podiel_zaočkovaných___spolu",
        "String",
-       "Podiel zaočkovaných - spolu"
+       "PODIEL_ZAOCKOVANYCH_SPOLU"
       ],
       [
        "ObjectId",
@@ -39821,7 +39830,7 @@
      "nazov": "orezy_a_vyruby_2022_OTMZ",
      "druh": "vrstva",
      "geometria": "esriGeometryPoint",
-     "pocet": 5827,
+     "pocet": 5837,
      "polia": [
       [
        "OBJECTID",
@@ -48656,7 +48665,7 @@
    "popis": "Dataset všetkých zmlúv Magistrátu hlavného mesta SR Bratislava zverejnených od júla 2022. Dataset je aktualizovaný v nočných hodinách. V prípade výpadku, čí chýbajúcej aktualizácii nás prosím kontaktujte na data@bratislava.sk.",
    "jazyk": "en-gb",
    "licencia": "CC BY-NC 4.0",
-   "velkost": 13393920,
+   "velkost": 13402112,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -48676,7 +48685,7 @@
      "nazov": "Zmluvy_Magistrátu_hlavného_mesta_SR_Bratislava_zverejnené_od_júla_2022",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 13388,
+     "pocet": 13401,
      "polia": [
       [
        "IČO_SAMOSPRÁVY",
@@ -52518,85 +52527,6 @@
    ]
   },
   {
-   "id": "cfeb3a7ae9a64afaa4c44b3ab1b8c1c5",
-   "nazov": "Štatistický prehľad priestupkov na úseku občianskych preukazov",
-   "typ": "Feature Service",
-   "url": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Štatistický prehľad priestupkov na úseku občianskych preukazov/FeatureServer",
-   "tagy": [],
-   "kategorie": [
-    "/Categories/Bezpečnosť"
-   ],
-   "upravene": 1771494861000,
-   "popis": "Štatistický prehľad priestupkov na úseku občianskych preukazov podľa bratislavských okresov",
-   "jazyk": "english (united states)",
-   "licencia": "CC BY 4.0",
-   "velkost": 16384,
-   "typove_slova": [
-    "ArcGIS Server",
-    "Data",
-    "Feature Access",
-    "Feature Service",
-    "Metadata",
-    "Service",
-    "Singlelayer",
-    "Table",
-    "Hosted Service"
-   ],
-   "upravene_ms": 1771494861000,
-   "sluzba": "https://services8.arcgis.com/pRlN1m0su5BYaFAS/arcgis/rest/services/Štatistický prehľad priestupkov na úseku občianskych preukazov/FeatureServer",
-   "vrstvy": [
-    {
-     "id": 0,
-     "nazov": "Štatistický prehľad priestupkov na úseku občianskych preukazov",
-     "druh": "tabulka",
-     "geometria": null,
-     "pocet": 25,
-     "polia": [
-      [
-       "Rok",
-       "String",
-       "Rok"
-      ],
-      [
-       "Okres",
-       "String",
-       "Okres"
-      ],
-      [
-       "Počet_všetkých_priestupkov",
-       "String",
-       "Počet všetkých priestupkov"
-      ],
-      [
-       "Počet_priestupkov_riešených_blo",
-       "String",
-       "Počet priestupkov riešených blokovou pokutou"
-      ],
-      [
-       "Počet_priestupkov_riešených_roz",
-       "String",
-       "Počet priestupkov riešených rozkazným konaním"
-      ],
-      [
-       "Počet_priestupkov_riešených_r_1",
-       "String",
-       "Počet priestupkov riešených rozhodnutím"
-      ],
-      [
-       "Počet_priestupkov_riešených_pok",
-       "String",
-       "Počet priestupkov riešených pokarhaním"
-      ],
-      [
-       "ObjectId",
-       "OID",
-       "ObjectId"
-      ]
-     ]
-    }
-   ]
-  },
-  {
    "id": "a02cc5667c4f43e6936ce8616d66500b",
    "nazov": "Štruktúra alokácie priamych zahraničných investícií podľa odvetví na Slovensku",
    "typ": "Feature Service",
@@ -54554,5 +54484,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-11-22T19:05:08+00:00"
+ "aktualizovane": "2026-11-24T14:59:38+00:00"
 }

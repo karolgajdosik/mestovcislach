@@ -4,7 +4,7 @@
    "organizacia": "Magistrát",
    "typ": "faktúry",
    "zdroj": "https://data.bratislava.sk/datasets/7f719a610a7b401fac526b15d0682534",
-   "zaznamov": 151087,
+   "zaznamov": 151090,
    "vynechane_bez_ico": 497,
    "roky": {
     "2005": {
@@ -88,8 +88,8 @@
      "suma": 152797993
     },
     "2026": {
-     "pocet": 9318,
-     "suma": 126112503
+     "pocet": 9321,
+     "suma": 126132991
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -338,14 +338,14 @@
     "2023": 19,
     "2024": 20.0,
     "2025": 21.0,
-    "2026": 21
+    "2026": 21.0
    }
   },
   {
    "organizacia": "Magistrát",
    "typ": "objednávky",
    "zdroj": "https://data.bratislava.sk/datasets/e3a9501c0fb64dbf9ff6de81847e3b9a",
-   "zaznamov": 65851,
+   "zaznamov": 65860,
    "vynechane_bez_ico": 648,
    "roky": {
     "2011": {
@@ -409,8 +409,8 @@
      "suma": 48507149
     },
     "2026": {
-     "pocet": 4352,
-     "suma": 55585693
+     "pocet": 4361,
+     "suma": 55621343
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -423,8 +423,8 @@
     {
      "ico": "35943653",
      "nazov": "Pittel + Brausewetter s.r.o.",
-     "pocet": 330,
-     "suma": 19837172
+     "pocet": 332,
+     "suma": 19840270
     },
     {
      "ico": "35778806",
@@ -477,8 +477,8 @@
     {
      "ico": "44547234",
      "nazov": "Interiér 48 s. r. o.",
-     "pocet": 257,
-     "suma": 2821479
+     "pocet": 258,
+     "suma": 2828707
     },
     {
      "ico": "45917833",
@@ -2019,5 +2019,5 @@
  "chyby": [
   "Marianum zmluvy: Marianum zmluvy: žiadne použiteľné riadky"
  ],
- "aktualizovane": "2026-11-21T10:10:43+00:00"
+ "aktualizovane": "2026-11-24T15:01:30+00:00"
 }

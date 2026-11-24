@@ -1163,8 +1163,8 @@
   {
    "typ": "zmluvy",
    "zdroj": "https://opendata.kosice.sk/datasets/6b66219049674794b462b90512081220",
-   "zaznamov": 47122,
-   "skryte_fyzicke_osoby": 7218,
+   "zaznamov": 47130,
+   "skryte_fyzicke_osoby": 7220,
    "roky": {
     "2010": {
      "pocet": 2,
@@ -1263,10 +1263,10 @@
      "fo_suma": 80771190
     },
     "2026": {
-     "pocet": 1159,
-     "suma": 242817304,
-     "fo_pocet": 530,
-     "fo_suma": 96685025
+     "pocet": 1165,
+     "suma": 242982107,
+     "fo_pocet": 532,
+     "fo_suma": 96689775
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -1407,13 +1407,6 @@
      "popis": "Zmluva o poskytnutí NFP, kód projektu: 401301G285 - Most č. M5850 na ceste II/547 a lávka, Hlinkova ul., Košice"
     },
     {
-     "datum": "2025-12-09",
-     "dodavatel": "Slovenská sporiteľňa, a.s.",
-     "ico": "00151653",
-     "suma": 10000000,
-     "popis": "Zmluva o úvere č. 1488/CC/25"
-    },
-    {
      "datum": "2025-12-18",
      "dodavatel": "Všeobecná úverová banka, a.s.",
      "ico": "31320155",
@@ -1421,11 +1414,11 @@
      "popis": "Zmluva o termínovanom úvere č. 892/2025/UZ"
     },
     {
-     "datum": "2025-11-23",
-     "dodavatel": "CESTY KOŠICE s.r.o.",
-     "ico": "46897992",
-     "suma": 5984894.95,
-     "popis": "Dodatok č. 1 k Zmluve o dielo číslo 2025002178 - Rekonštrukcia komunikácií v meste Košice 2025/1"
+     "datum": "2025-12-09",
+     "dodavatel": "Slovenská sporiteľňa, a.s.",
+     "ico": "00151653",
+     "suma": 10000000,
+     "popis": "Zmluva o úvere č. 1488/CC/25"
     },
     {
      "datum": "2026-05-24",
@@ -1496,6 +1489,13 @@
      "ico": "44886021",
      "suma": 3887730.21,
      "popis": "Zmluva o dielo - Rekonštrukcia budovy detských jaslí na zariadenie pre seniorov, Gerlachovská 10, Košice"
+    },
+    {
+     "datum": "2026-11-17",
+     "dodavatel": "DAG SLOVAKIA, a.s.",
+     "ico": "44886021",
+     "suma": 3156132.35,
+     "popis": "Zmluva o dielo - \"Zníženie energetickej náročnosti CVČ Domino, Košice\""
     }
    ]
   },
@@ -2172,5 +2172,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-11-21T10:14:51+00:00"
+ "aktualizovane": "2026-11-24T15:06:14+00:00"
 }
