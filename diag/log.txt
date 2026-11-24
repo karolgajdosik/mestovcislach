@@ -1,8 +1,7 @@
-GET pred: {"ok":true,"mesiace":{"2026-11":{"spustene":2,"dohrane":1,"kvizov":1,"top":[["/presovsky-kraj/sabinov/sabinov/kviz",2,1]]}}}
-neplatný: 400
-robot: 204
-start 204
-koniec 204
-cudzí pôvod: 204
-GET po: {"ok":true,"mesiace":{"2026-11":{"spustene":2,"dohrane":1,"kvizov":1,"top":[["/presovsky-kraj/sabinov/sabinov/kviz",2,1]]}}}
-HOTOVO
+studio 200 65392
+csv 200 551780 ﻿kod_obce;obec;okres;kraj;url;Obyvatelia;Zmena obyvateľov za 10 rokov (%);Priemerný vek (r.);Deti do 14 rokov (%);Ľudia nad 65 rokov (%);Vysokoškolské vzdelanie (%);Miera nezamestnanosti (%);Účasť v k 2888
+embed 200 65442 True
+Traceback (most recent call last):
+  File "/home/runner/work/mestovcislach/mestovcislach/diag_live.py", line 15, in <module>
+    from playwright.sync_api import sync_playwright
+ModuleNotFoundError: No module named 'playwright'
