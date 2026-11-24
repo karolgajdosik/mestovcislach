@@ -56,7 +56,11 @@ function tlacidla() {
     const nadpis = karta.querySelector('h2, h3')?.textContent?.trim() ?? 'Graf';
     const vyska = karta.dataset.vyska ? Number(karta.dataset.vyska) : Math.min(900, Math.max(320, Math.round(karta.getBoundingClientRect().height) + 70));
     const cesta = location.pathname.replace(/\/$/, '');
-    const kod = `<iframe src="${WEB}/vlozit${cesta}?g=${id}" title="${nadpis.replace(/"/g, '&quot;')} – mestovcislach.sk" width="100%" height="${vyska}" style="border:0;max-width:820px" loading="lazy"></iframe>`;
+    // aktuálny stav stránky v adrese (napr. Dátové štúdio: ukazovateľ, výber obcí) ide do vloženého grafu tiež
+    const q = new URLSearchParams(location.search);
+    q.delete('g');
+    q.set('g', id);
+    const kod = `<iframe src="${WEB}/vlozit${cesta}?${q.toString().replace(/&/g, '&amp;')}" title="${nadpis.replace(/"/g, '&quot;')} – mestovcislach.sk" width="100%" height="${vyska}" style="border:0;max-width:820px" loading="lazy"></iframe>`;
     if (!dialog) {
       dialog = document.createElement('dialog');
       dialog.className = 'vlozit-dialog';
@@ -84,7 +88,7 @@ function tlacidla() {
     if (k) b.addEventListener('click', () => otvor(k[0], k[1]));
   });
   for (const [karta, id] of karty) {
-    if (karta.hidden) continue;
+    if (karta.hidden || karta.hasAttribute('data-vlozit-vlastne')) continue; // stránka má vlastné tlačidlo (data-vlozit-otvor)
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'vlozit-tl';

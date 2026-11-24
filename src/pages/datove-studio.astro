@@ -1,0 +1,399 @@
+---
+// Dátové štúdio: vlastný pohľad na ukazovatele všetkých obcí – graf, bodový graf, mapa, tabuľka; filter kraj / okres /
+// veľkosť; stiahnutie CSV, odkaz na pohľad (stav v adrese), vloženie na iný web (/vlozit/datove-studio?g=studio-vysledok&…).
+// Jedna stránka, všetko v prehliadači nad /data/obce-porovnanie.json a /data/obce.json (žiadne súbory na obec).
+import Base from '../layouts/Base.astro';
+import { krajeMapy, SIRKA, VYSKA } from '../lib/obce';
+import { POLIA } from '../lib/ukazovatele-obci';
+import '../styles/stranka.css';
+import '../styles/obce.css';
+const kraje = krajeMapy();
+---
+<Base title="Dátové štúdio – ukazovatele obcí Slovenska po svojom – mestovcislach.sk" description="Vyberte ukazovatele (nezamestnanosť, vek, vzdelanie, rozpočet, odpad, klíma…) a obce podľa kraja, okresu a veľkosti. Graf, bodový graf, mapa aj tabuľka – na stiahnutie, zdieľanie a vloženie na web.">
+  <section class="hero">
+    <p class="kicker">Dátové štúdio</p>
+    <h1>Čísla obcí po svojom</h1>
+    <p class="lead">{POLIA.length} ukazovateľov pre všetky obce a mestá Slovenska. Vyberte, čo chcete vidieť a pre ktoré obce – a pozrite sa na to ako na graf, mapu alebo tabuľku. Pohľad sa dá stiahnuť, poslať odkazom alebo vložiť na vlastný web.</p>
+  </section>
+
+  <div class="ds" id="ds">
+    <aside class="ds-panel" aria-label="Nastavenie pohľadu">
+      <section class="card ds-krok">
+        <h2><span>1</span>Ukazovatele</h2>
+        <label class="ds-pole">Hlavný ukazovateľ
+          <select id="ds-u">{POLIA.map(([k, n, j]) => <option value={k}>{n}{j ? ` (${j})` : ''}</option>)}</select>
+        </label>
+        <label class="ds-pole">Porovnať s (bodový graf a tabuľka)
+          <select id="ds-u2">{POLIA.map(([k, n, j]) => <option value={k}>{n}{j ? ` (${j})` : ''}</option>)}</select>
+        </label>
+      </section>
+
+      <section class="card ds-krok">
+        <h2><span>2</span>Ktoré obce</h2>
+        <label class="ds-pole">Kraj
+          <select id="ds-kraj"><option value="">Celé Slovensko</option></select>
+        </label>
+        <label class="ds-pole">Okres
+          <select id="ds-okres"><option value="">Všetky okresy</option></select>
+        </label>
+        <label class="ds-pole">Veľkosť obce
+          <select id="ds-min">
+            <option value="0">všetky obce</option>
+            <option value="500">od 500 obyvateľov</option>
+            <option value="1000">od 1 000 obyvateľov</option>
+            <option value="2000">od 2 000 obyvateľov</option>
+            <option value="5000">od 5 000 obyvateľov</option>
+            <option value="10000">od 10 000 obyvateľov</option>
+            <option value="20000">od 20 000 obyvateľov</option>
+          </select>
+        </label>
+        <p class="ds-pocet" id="ds-pocet" aria-live="polite">Načítavam údaje…</p>
+      </section>
+
+      <section class="card ds-krok">
+        <h2><span>3</span>Uložiť a zdieľať</h2>
+        <div class="ds-akcie">
+          <button type="button" class="ds-hlavne" id="ds-csv">Stiahnuť tento výber (CSV)</button>
+          <button type="button" id="ds-odkaz">Kopírovať odkaz na tento pohľad</button>
+          <button type="button" data-vlozit-otvor="studio-vysledok">Vložiť na vlastný web</button>
+          <a class="ds-tl" href="/data/obce-ukazovatele.csv" download>Všetky obce a ukazovatele (CSV)</a>
+        </div>
+        <details class="ds-pbi">
+          <summary>Power BI, Excel, Google Tabuľky</summary>
+          <p>Celý súbor má stálu adresu a obnovuje sa so zberom dát:</p>
+          <code>https://mestovcislach.sk/data/obce-ukazovatele.csv</code>
+          <p><b>Power BI:</b> Získať údaje → Web → vložte adresu. <b>Excel:</b> Údaje → Z webu. <b>Google Tabuľky:</b> <code>=IMPORTDATA("…")</code>. Oddeľovač je bodkočiarka, desatinná čiarka, kódovanie UTF-8.</p>
+        </details>
+      </section>
+    </aside>
+
+    <section class="ds-vysledok" aria-label="Výsledok">
+      <div class="ds-zalozky" role="tablist" aria-label="Zobrazenie">
+        <button type="button" role="tab" data-v="graf" aria-selected="true">Graf</button>
+        <button type="button" role="tab" data-v="body" aria-selected="false">Bodový graf</button>
+        <button type="button" role="tab" data-v="mapa" aria-selected="false">Mapa</button>
+        <button type="button" role="tab" data-v="tabulka" aria-selected="false">Tabuľka</button>
+      </div>
+
+      <section class="card ds-karta" id="studio-vysledok" data-vlozit-karta data-vlozit-vlastne data-vyska="760">
+        <div class="ds-hlava">
+          <h2 id="ds-nadpis">Dátové štúdio</h2>
+          <p class="ds-podnadpis" id="ds-podnadpis"></p>
+        </div>
+        <div class="ds-suhrn" id="ds-suhrn"></div>
+
+        <div class="ds-pohlad" data-pohlad="graf">
+          <div class="ds-volby">
+            <label>Zobraziť <select id="ds-n"><option value="15">15</option><option value="25" selected>25</option><option value="50">50</option><option value="100">100</option></select></label>
+            <label>Poradie <select id="ds-por"><option value="desc">od najvyššej hodnoty</option><option value="asc">od najnižšej hodnoty</option></select></label>
+          </div>
+          <div class="ds-stlpce" id="ds-stlpce"></div>
+        </div>
+
+        <div class="ds-pohlad" data-pohlad="body" hidden>
+          <div class="ds-body-obal"><svg id="ds-svg" viewBox="0 0 800 520" role="img" aria-label="Bodový graf vybraných obcí"></svg></div>
+          <p class="pozn">Každý bod je obec (väčší bod = viac obyvateľov). Čiarkované čiary sú mediány Slovenska. Kliknutím na bod otvoríte obec.</p>
+        </div>
+
+        <div class="ds-pohlad" data-pohlad="mapa" hidden>
+          <svg class="ds-mapa" id="ds-mapa" viewBox={`0 0 ${SIRKA} ${VYSKA}`} role="img" aria-label="Mapa vybraných obcí podľa hlavného ukazovateľa">
+            <g class="ds-kraje">{kraje.map((k) => <path d={k.d}><title>{k.nazov}</title></path>)}</g>
+            <g id="ds-mapa-body"></g>
+          </svg>
+          <div class="ds-legenda" id="ds-legenda"></div>
+        </div>
+
+        <div class="ds-pohlad" data-pohlad="tabulka" hidden>
+          <div class="tabulka-obal"><table class="ob-tab ds-tab" id="ds-tab"><thead></thead><tbody></tbody></table></div>
+          <button type="button" class="ds-viac" id="ds-viac" hidden>Zobraziť všetky</button>
+        </div>
+        <p class="zdroj" id="ds-zdroj"></p>
+      </section>
+    </section>
+  </div>
+</Base>
+
+<script>
+  type D = { polia: [string, string, string][]; roky: Record<string, string | number>; obce: (string | number | null)[][] };
+  type Obec = { kod: string; n: string; okres: string; u: string; kraj: number; h: Record<string, number | null>; lat: number; lon: number };
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+  const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const slug = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const vlozene = document.documentElement.hasAttribute('data-vlozit');
+  // projekcia rovnaká ako src/lib/obce.ts (bod)
+  const LON0 = 16.8, LON1 = 22.6, LAT0 = 47.7, LAT1 = 49.65, KX = Math.cos((48.7 * Math.PI) / 180);
+  const SIRKA = 1000, VYSKA = Math.round((SIRKA * (LAT1 - LAT0)) / ((LON1 - LON0) * KX));
+  const bod = (lon: number, lat: number) => [((lon - LON0) / (LON1 - LON0)) * SIRKA, ((LAT1 - lat) / (LAT1 - LAT0)) * VYSKA];
+  const FARBY = ['#fde4e7', '#f9bcc4', '#f2909e', '#e6607a', '#d63a5a', '#b81e42', '#8c0f2f'];
+  const ROKY_POLA: Record<string, string> = { nez: 'nez', vyd: 'rozpocet', inv: 'rozpocet', tep: 'klima', zr: 'klima', pm10: 'ovzdusie' };
+
+  let POLIA: [string, string, string][] = [], ROKY: Record<string, string | number> = {}, OBCE: Obec[] = [], KRAJE: string[] = [], OKRESY: [number, string][] = [];
+  const S = { u: 'nez', u2: 'vek', kraj: '', okres: '', min: '0', v: 'graf', n: '25', por: 'desc' };
+  let vsetkyRiadky = false, triedenie: { k: string; smer: number } = { k: '', smer: -1 };
+
+  const pole = (k: string) => POLIA.find((p) => p[0] === k) ?? [k, k, ''];
+  const des = (k: string) => (k === 'obyv' || k === 'hus' || k === 'vys' || k === 'vyd' || k === 'inv' || k === 'zr' ? 0 : 1);
+  const f = (k: string, v: number | null | undefined, sJednotkou = true) => {
+    if (v == null || !Number.isFinite(v)) return '–';
+    const j = pole(k)[2];
+    return v.toLocaleString('sk-SK', { maximumFractionDigits: des(k), minimumFractionDigits: des(k) }) + (sJednotkou && j ? (j === '%' ? ' %' : ` ${j}`) : '');
+  };
+  const median = (a: number[]) => { if (!a.length) return NaN; const s = [...a].sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  const rok = (k: string) => { const r = ROKY[ROKY_POLA[k]]; if (!r) return ''; const t = String(r); return /^\d{4}-\d{2}$/.test(t) ? ` (${['január','február','marec','apríl','máj','jún','júl','august','september','október','november','december'][Number(t.slice(5)) - 1]} ${t.slice(0, 4)})` : ` (${t})`; };
+
+  // ---------- stav v adrese ----------
+  function zAdresy() {
+    const q = new URLSearchParams(location.search);
+    for (const k of Object.keys(S) as (keyof typeof S)[]) { const v = q.get(k); if (v != null) S[k] = v; }
+  }
+  const PRED: typeof S = { ...S };
+  function dotaz() {
+    const q = new URLSearchParams();
+    for (const k of Object.keys(S) as (keyof typeof S)[]) if (S[k] !== PRED[k]) q.set(k, S[k]);
+    return q.toString() ? `?${q}` : '';
+  }
+  function doAdresy() {
+    if (!vlozene) history.replaceState(null, '', `${location.pathname}${dotaz()}`);
+  }
+
+  // ---------- výber ----------
+  function vyber(): Obec[] {
+    const min = Number(S.min) || 0;
+    return OBCE.filter((o) => (S.kraj === '' || String(o.kraj) === S.kraj) && (S.okres === '' || slug(o.okres) === S.okres) && (o.h.obyv ?? 0) >= min);
+  }
+  function popisVyberu(n: number) {
+    const kde = S.okres ? `okres ${OKRESY.find(([, x]) => slug(x) === S.okres)?.[1] ?? ''}` : S.kraj !== '' ? KRAJE[Number(S.kraj)] : 'Slovensko';
+    const vel = Number(S.min) ? ` · obce od ${Number(S.min).toLocaleString('sk-SK')} obyvateľov` : '';
+    return `${kde}${vel} · ${n.toLocaleString('sk-SK')} ${n === 1 ? 'obec' : n < 5 ? 'obce' : 'obcí'}`;
+  }
+
+  // ---------- kreslenie ----------
+  function kresli() {
+    const vyb = vyber();
+    const [, nU, jU] = pole(S.u);
+    $('ds-nadpis').textContent = `${nU}${rok(S.u)}`;
+    $('ds-podnadpis').textContent = popisVyberu(vyb.length);
+    $('ds-pocet').textContent = `Vybraných: ${popisVyberu(vyb.length).split(' · ').pop()}`;
+    const hodn = vyb.map((o) => o.h[S.u]).filter((v): v is number => v != null && Number.isFinite(v));
+    const mSK = median(OBCE.map((o) => o.h[S.u]).filter((v): v is number => v != null && Number.isFinite(v)));
+    const mV = median(hodn);
+    const naj = vyb.filter((o) => o.h[S.u] != null).sort((a, b) => (b.h[S.u]! - a.h[S.u]!));
+    $('ds-suhrn').innerHTML = hodn.length ? [
+      ['Medián výberu', f(S.u, mV)],
+      ['Medián Slovenska', f(S.u, mSK)],
+      ['Najviac', `${f(S.u, naj[0]?.h[S.u])} <small>${esc(naj[0]?.n ?? '')}</small>`],
+      ['Najmenej', `${f(S.u, naj.at(-1)?.h[S.u])} <small>${esc(naj.at(-1)?.n ?? '')}</small>`],
+    ].map(([a, b]) => `<div><span>${a}</span><b>${b}</b></div>`).join('') : '<p class="pozn">Pre tento výber nie sú údaje.</p>';
+    document.querySelectorAll<HTMLElement>('.ds-pohlad').forEach((p) => (p.hidden = p.dataset.pohlad !== S.v));
+    document.querySelectorAll<HTMLButtonElement>('.ds-zalozky button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.v === S.v)));
+    if (S.v === 'graf') kresliStlpce(vyb, mSK);
+    else if (S.v === 'body') kresliBody(vyb);
+    else if (S.v === 'mapa') kresliMapu(vyb);
+    else kresliTabulku(vyb);
+    const zdroje = 'Zdroje: ŠÚ SR (obyvatelia, sčítanie 2021), ÚPSVaR (nezamestnanosť), MF SR / RIS (rozpočty), ŠÚ SR (odpad), SHMÚ a Open-Meteo (klíma), SHMÚ (ovzdušie), MV SR (voľby).';
+    $('ds-zdroj').innerHTML = `${zdroje}${vlozene ? ` <a href="https://mestovcislach.sk/datove-studio/${dotaz()}" target="_blank" rel="noopener">Otvoriť v Dátovom štúdiu</a>` : ''}`;
+    doAdresy();
+  }
+
+  function kresliStlpce(vyb: Obec[], mSK: number) {
+    const s = vyb.filter((o) => o.h[S.u] != null).sort((a, b) => (S.por === 'asc' ? a.h[S.u]! - b.h[S.u]! : b.h[S.u]! - a.h[S.u]!)).slice(0, Number(S.n));
+    if (!s.length) { $('ds-stlpce').innerHTML = '<p class="pozn">Žiadne údaje.</p>'; return; }
+    const vals = s.map((o) => o.h[S.u]!);
+    const lo = Math.min(0, ...vals, Number.isFinite(mSK) ? mSK : 0), hi = Math.max(...vals, Number.isFinite(mSK) ? mSK : 0);
+    const roz = hi - lo || 1;
+    const x = (v: number) => ((v - lo) / roz) * 100;
+    const nula = x(0), ciara = Number.isFinite(mSK) ? x(mSK) : -1;
+    $('ds-stlpce').innerHTML = s.map((o) => {
+      const v = o.h[S.u]!, a = Math.min(x(v), nula), w = Math.abs(x(v) - nula);
+      return `<a class="ds-riadok" href="${esc(o.u)}"><span class="ds-meno">${esc(o.n)}<small>${esc(o.okres)}</small></span><span class="ds-pas"><span class="ds-hodnota" style="left:${a.toFixed(2)}%;width:${Math.max(0.4, w).toFixed(2)}%"></span>${ciara >= 0 ? `<span class="ds-median" style="left:${ciara.toFixed(2)}%"></span>` : ''}</span><b>${f(S.u, v)}</b></a>`;
+    }).join('') + (ciara >= 0 ? `<p class="ds-legenda-ciara"><span></span>Medián Slovenska ${f(S.u, mSK)}</p>` : '');
+  }
+
+  function kresliBody(vyb: Obec[]) {
+    const svg = $('ds-svg') as unknown as SVGSVGElement;
+    const W = 800, H = 520, L = 64, R = 20, T = 20, B = 52;
+    const b = vyb.filter((o) => o.h[S.u2] != null && o.h[S.u] != null);
+    if (!b.length) { svg.innerHTML = `<text x="${W / 2}" y="${H / 2}" text-anchor="middle" class="ds-osi">Žiadne údaje</text>`; return; }
+    const xs = b.map((o) => o.h[S.u2]!), ys = b.map((o) => o.h[S.u]!);
+    const rozsah = (a: number[]) => { let lo = Math.min(...a), hi = Math.max(...a); if (lo === hi) { lo -= 1; hi += 1; } const p = (hi - lo) * 0.06; return [lo - p, hi + p]; };
+    const [x0, x1] = rozsah(xs), [y0, y1] = rozsah(ys);
+    const X = (v: number) => L + ((v - x0) / (x1 - x0)) * (W - L - R), Y = (v: number) => H - B - ((v - y0) / (y1 - y0)) * (H - T - B);
+    const tik = (a: number, z: number) => { const k = (z - a) / 5; const p = 10 ** Math.floor(Math.log10(k)); const kr = [1, 2, 2.5, 5, 10].map((m) => m * p).find((m) => m >= k) ?? k; const out = []; for (let v = Math.ceil(a / kr) * kr; v <= z; v += kr) out.push(+v.toFixed(6)); return out; };
+    const mx = median(OBCE.map((o) => o.h[S.u2]).filter((v): v is number => v != null)), my = median(OBCE.map((o) => o.h[S.u]).filter((v): v is number => v != null));
+    const veľ = (o: Obec) => Math.max(3, Math.min(16, Math.sqrt(o.h.obyv ?? 0) / 14));
+    let h = '';
+    for (const v of tik(y0, y1)) h += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" class="ds-mriezka"/><text x="${L - 8}" y="${Y(v) + 4}" text-anchor="end" class="ds-osi">${f(S.u, v, false)}</text>`;
+    for (const v of tik(x0, x1)) h += `<text x="${X(v)}" y="${H - B + 18}" text-anchor="middle" class="ds-osi">${f(S.u2, v, false)}</text>`;
+    if (mx >= x0 && mx <= x1) h += `<line x1="${X(mx)}" x2="${X(mx)}" y1="${T}" y2="${H - B}" class="ds-med"/>`;
+    if (my >= y0 && my <= y1) h += `<line x1="${L}" x2="${W - R}" y1="${Y(my)}" y2="${Y(my)}" class="ds-med"/>`;
+    h += `<text x="${(L + W - R) / 2}" y="${H - 10}" text-anchor="middle" class="ds-os-nazov">${esc(pole(S.u2)[1])}${pole(S.u2)[2] ? ` (${esc(pole(S.u2)[2])})` : ''}</text>`;
+    h += `<text transform="translate(16 ${(T + H - B) / 2}) rotate(-90)" text-anchor="middle" class="ds-os-nazov">${esc(pole(S.u)[1])}${pole(S.u)[2] ? ` (${esc(pole(S.u)[2])})` : ''}</text>`;
+    const zor = [...b].sort((a, c) => (c.h.obyv ?? 0) - (a.h.obyv ?? 0));
+    h += zor.map((o) => `<a href="${esc(o.u)}"><circle cx="${X(o.h[S.u2]!).toFixed(1)}" cy="${Y(o.h[S.u]!).toFixed(1)}" r="${veľ(o).toFixed(1)}" class="ds-bod"><title>${esc(o.n)} (${esc(o.okres)}): ${esc(pole(S.u)[1])} ${f(S.u, o.h[S.u])}, ${esc(pole(S.u2)[1])} ${f(S.u2, o.h[S.u2])}</title></circle></a>`).join('');
+    // menovky najväčších obcí (najviac 12)
+    if (zor.length <= 60) h += zor.slice(0, 12).map((o) => { const x = X(o.h[S.u2]!), vl = x > W - 160; return `<text x="${(vl ? x - veľ(o) - 3 : x + veľ(o) + 3).toFixed(1)}" y="${(Y(o.h[S.u]!) + 4).toFixed(1)}" class="ds-menovka"${vl ? ' text-anchor="end"' : ''}>${esc(o.n)}</text>`; }).join('');
+    svg.innerHTML = h;
+  }
+
+  function kresliMapu(vyb: Obec[]) {
+    const s = vyb.filter((o) => o.h[S.u] != null && o.lat);
+    const hod = s.map((o) => o.h[S.u]!).sort((a, b) => a - b);
+    const hranice = FARBY.slice(1).map((_, i) => hod[Math.floor(((i + 1) * hod.length) / FARBY.length)] ?? Infinity);
+    const trieda = (v: number) => { let i = 0; while (i < hranice.length && v >= hranice[i]) i++; return i; };
+    const ostatne = OBCE.filter((o) => o.lat && !vyb.includes(o));
+    const r = (o: Obec) => Math.min(9, 2.4 + Math.sqrt(o.h.obyv ?? 0) / 45);
+    const kruh = (o: Obec, cls: string, fill?: string) => { const [x, y] = bod(o.lon, o.lat); return `<a href="${esc(o.u)}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r(o).toFixed(1)}" class="${cls}"${fill ? ` style="fill:${fill}"` : ''}><title>${esc(o.n)}: ${f(S.u, o.h[S.u])}</title></circle></a>`; };
+    $('ds-mapa-body').innerHTML = (S.kraj !== '' || S.okres || Number(S.min) ? ostatne.map((o) => kruh(o, 'ds-mimo')).join('') : '') + [...s].sort((a, b) => r(b) - r(a)).map((o) => kruh(o, 'ds-vnutri', FARBY[trieda(o.h[S.u]!)])).join('');
+    if (S.okres || S.kraj !== '') {
+      const xy = s.map((o) => bod(o.lon, o.lat));
+      if (xy.length) {
+        const xa = xy.map((p) => p[0]), ya = xy.map((p) => p[1]);
+        const pad = 30, x0 = Math.max(0, Math.min(...xa) - pad), y0 = Math.max(0, Math.min(...ya) - pad);
+        const w = Math.min(SIRKA, Math.max(...xa) + pad) - x0, h = Math.min(VYSKA, Math.max(...ya) + pad) - y0;
+        const k = Math.max(w / SIRKA, h / VYSKA, 0.18);
+        ($('ds-mapa') as unknown as SVGSVGElement).setAttribute('viewBox', `${x0 + w / 2 - (SIRKA * k) / 2} ${y0 + h / 2 - (VYSKA * k) / 2} ${SIRKA * k} ${VYSKA * k}`);
+        $('ds-mapa').style.setProperty('--k', String(k));
+      }
+    } else { ($('ds-mapa') as unknown as SVGSVGElement).setAttribute('viewBox', `0 0 ${SIRKA} ${VYSKA}`); $('ds-mapa').style.setProperty('--k', '1'); }
+    const od = [hod[0], ...hranice];
+    $('ds-legenda').innerHTML = hod.length ? FARBY.map((c, i) => (od[i] !== undefined && od[i] !== Infinity ? `<span><i style="background:${c}"></i>${f(S.u, od[i], false)}${i === FARBY.length - 1 || hranice[i] === Infinity ? '+' : ''}</span>` : '')).join('') + `<span class="pozn">${esc(pole(S.u)[2])} · 7 rovnako početných skupín vybraných obcí</span>` : '';
+  }
+
+  function kresliTabulku(vyb: Obec[]) {
+    const tab = $('ds-tab') as HTMLTableElement;
+    const st: [string, string][] = [['n', 'Obec'], ['okres', 'Okres'], ['obyv', 'Obyvatelia'], [S.u, pole(S.u)[1]], ...(S.u2 !== S.u && S.u2 !== 'obyv' ? [[S.u2, pole(S.u2)[1]] as [string, string]] : [])].filter((x, i, a) => a.findIndex((y) => y[0] === x[0]) === i);
+    if (!triedenie.k || !st.some(([k]) => k === triedenie.k)) triedenie = { k: S.u, smer: -1 };
+    const hod = (o: Obec, k: string) => (k === 'n' ? o.n : k === 'okres' ? o.okres : o.h[k]);
+    const r = [...vyb].sort((a, b) => {
+      const x = hod(a, triedenie.k), y = hod(b, triedenie.k);
+      if (x == null) return 1; if (y == null) return -1;
+      return (typeof x === 'string' ? x.localeCompare(String(y), 'sk') : (x as number) - (y as number)) * triedenie.smer;
+    });
+    tab.tHead!.innerHTML = `<tr>${st.map(([k, n]) => `<th scope="col"${k !== 'n' && k !== 'okres' ? ' class="num"' : ''} aria-sort="${triedenie.k === k ? (triedenie.smer > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-k="${k}">${esc(n)}${triedenie.k === k ? (triedenie.smer > 0 ? ' ▲' : ' ▼') : ''}</button></th>`).join('')}</tr>`;
+    const limit = vsetkyRiadky ? r.length : 200;
+    tab.tBodies[0].innerHTML = r.slice(0, limit).map((o) => `<tr>${st.map(([k]) => k === 'n' ? `<td><a href="${esc(o.u)}">${esc(o.n)}</a></td>` : k === 'okres' ? `<td>${esc(o.okres)}</td>` : `<td class="num">${f(k, o.h[k], false)}</td>`).join('')}</tr>`).join('');
+    $('ds-viac').hidden = r.length <= limit;
+    $('ds-viac').textContent = `Zobraziť všetkých ${r.length.toLocaleString('sk-SK')}`;
+    tab.tHead!.querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.addEventListener('click', () => {
+      triedenie = triedenie.k === b.dataset.k ? { k: b.dataset.k!, smer: -triedenie.smer } : { k: b.dataset.k!, smer: b.dataset.k === 'n' || b.dataset.k === 'okres' ? 1 : -1 };
+      kresliTabulku(vyb);
+    }));
+  }
+
+  // ---------- ovládanie ----------
+  function naplnOkresy() {
+    const sel = $<HTMLSelectElement>('ds-okres');
+    const ok = OKRESY.filter(([k]) => S.kraj === '' || String(k) === S.kraj).map(([, n]) => n).sort((a, b) => a.localeCompare(b, 'sk'));
+    sel.innerHTML = `<option value="">Všetky okresy</option>` + [...new Set(ok)].map((n) => `<option value="${slug(n)}">${esc(n)}</option>`).join('');
+    if (S.okres && !ok.some((n) => slug(n) === S.okres)) S.okres = '';
+    sel.value = S.okres;
+  }
+  function nastavOvladanie() {
+    $<HTMLSelectElement>('ds-u').value = S.u; $<HTMLSelectElement>('ds-u2').value = S.u2;
+    $<HTMLSelectElement>('ds-kraj').value = S.kraj; naplnOkresy();
+    $<HTMLSelectElement>('ds-min').value = S.min; $<HTMLSelectElement>('ds-n').value = S.n; $<HTMLSelectElement>('ds-por').value = S.por;
+  }
+  const zmena = (id: string, k: keyof typeof S, potom?: () => void) => $<HTMLSelectElement>(id).addEventListener('change', (e) => { S[k] = (e.target as HTMLSelectElement).value; potom?.(); vsetkyRiadky = false; kresli(); });
+  zmena('ds-u', 'u'); zmena('ds-u2', 'u2'); zmena('ds-kraj', 'kraj', () => { S.okres = ''; naplnOkresy(); }); zmena('ds-okres', 'okres'); zmena('ds-min', 'min'); zmena('ds-n', 'n'); zmena('ds-por', 'por');
+  document.querySelectorAll<HTMLButtonElement>('.ds-zalozky button').forEach((b) => b.addEventListener('click', () => { S.v = b.dataset.v!; kresli(); }));
+  $('ds-viac').addEventListener('click', () => { vsetkyRiadky = true; kresli(); });
+
+  $('ds-csv').addEventListener('click', () => {
+    const vyb = vyber();
+    const kl = ['obyv', ...POLIA.map((p) => p[0]).filter((k) => k !== 'obyv')];
+    const cis = (k: string, v: number | null) => (v == null ? '' : v.toLocaleString('sk-SK', { useGrouping: false, maximumFractionDigits: 2 }));
+    const riadky = [['kod_obce', 'obec', 'okres', 'kraj', ...kl.map((k) => `${pole(k)[1]}${pole(k)[2] ? ` (${pole(k)[2]})` : ''}`)].join(';'),
+      ...vyb.map((o) => [o.kod, o.n, o.okres, KRAJE[o.kraj] ?? '', ...kl.map((k) => cis(k, o.h[k]))].map((x) => (/[;"\n]/.test(x) ? `"${x.replace(/"/g, '""')}"` : x)).join(';'))];
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(['﻿' + riadky.join('\r\n')], { type: 'text/csv;charset=utf-8' }));
+    a.download = `mestovcislach-${slug(popisVyberu(vyb.length).split(' · ')[0]) || 'obce'}.csv`;
+    document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  });
+  $('ds-odkaz').addEventListener('click', async (e) => {
+    const b = e.currentTarget as HTMLButtonElement;
+    try { await navigator.clipboard.writeText(location.href); b.textContent = 'Odkaz skopírovaný ✓'; } catch { prompt('Odkaz na tento pohľad:', location.href); }
+    setTimeout(() => (b.textContent = 'Kopírovať odkaz na tento pohľad'), 2500);
+  });
+
+  // ---------- načítanie ----------
+  zAdresy();
+  Promise.all([fetch('/data/obce-porovnanie.json').then((r) => r.json()), fetch('/data/obce.json').then((r) => r.json())]).then(([d, z]: [D, any]) => {
+    POLIA = d.polia; ROKY = d.roky;
+    KRAJE = (z.kraje as [string, string][]).map((k) => k[0]);
+    OKRESY = (z.okresy as [number, string, string][]).map((o) => [o[0], o[1]]);
+    const krajOkresu = new Map(OKRESY.map(([k, n]) => [n, k]));
+    OBCE = d.obce.map((r) => {
+      const h: Record<string, number | null> = {};
+      POLIA.forEach(([k], i) => { const v = r[4 + i]; h[k] = typeof v === 'number' ? v : null; });
+      return { kod: String(r[0]), n: String(r[1]), okres: String(r[2]), u: String(r[3]), kraj: krajOkresu.get(String(r[2])) ?? -1, h, lat: Number(r[4 + POLIA.length]) || 0, lon: Number(r[5 + POLIA.length]) || 0 };
+    });
+    $<HTMLSelectElement>('ds-kraj').innerHTML = `<option value="">Celé Slovensko</option>` + KRAJE.map((k, i) => `<option value="${i}">${esc(k)}</option>`).join('');
+    if (!POLIA.some((p) => p[0] === S.u)) S.u = 'nez';
+    if (!POLIA.some((p) => p[0] === S.u2)) S.u2 = 'vek';
+    nastavOvladanie();
+    kresli();
+  }).catch(() => { $('ds-pocet').textContent = 'Údaje sa nepodarilo načítať. Skúste obnoviť stránku.'; });
+</script>
+
+<style>
+  .ds { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 8px; }
+  .ds-panel { flex: 1 1 280px; max-width: 340px; display: flex; flex-direction: column; gap: 14px; }
+  .ds-panel .card { margin-top: 0 !important; }
+  .ds-vysledok { flex: 999 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+  .ds-krok h2 { display: flex; align-items: center; gap: 8px; font-size: 1rem !important; margin: 0 0 12px !important; }
+  .ds-krok h2 span { display: inline-flex; width: 22px; height: 22px; border-radius: 11px; background: var(--text); color: var(--card); font-size: 0.75rem; align-items: center; justify-content: center; }
+  .ds-pole { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; }
+  .ds-pole select, .ds-volby select { min-height: 42px; border: 1px solid var(--line); border-radius: 10px; padding: 0 10px; font: inherit; font-weight: 500; background: var(--bg); color: var(--text); }
+  .ds-pocet { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted); }
+  .ds-akcie { display: flex; flex-direction: column; gap: 8px; }
+  .ds-akcie button, .ds-tl { min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--text); font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; }
+  .ds-akcie button:hover, .ds-tl:hover { border-color: var(--accent); }
+  .ds-akcie .ds-hlavne { background: var(--accent); color: var(--na-akcente, #fff); border-color: var(--accent); }
+  .ds-pbi { margin-top: 12px; font-size: 0.85rem; }
+  .ds-pbi summary { cursor: pointer; font-weight: 600; }
+  .ds-pbi code { display: block; margin: 6px 0; padding: 8px; border-radius: 8px; background: var(--bg); word-break: break-all; font-size: 0.78rem; }
+  .ds-pbi p code { display: inline; padding: 1px 4px; }
+  .ds-zalozky { display: flex; flex-wrap: wrap; gap: 4px; padding: 5px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); align-self: flex-start; }
+  .ds-zalozky button { min-height: 40px; padding: 0 16px; border: 0; border-radius: 10px; background: transparent; color: var(--text); font: inherit; font-size: 0.92rem; font-weight: 600; cursor: pointer; }
+  .ds-zalozky button[aria-selected='true'] { background: var(--accent); color: var(--na-akcente, #fff); }
+  .ds-karta { margin-top: 0 !important; }
+  .ds-hlava h2 { margin: 0 !important; }
+  .ds-podnadpis { margin: 2px 0 0; color: var(--muted); font-size: 0.9rem; }
+  .ds-suhrn { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 14px 0; }
+  .ds-suhrn :global(div) { padding: 10px 12px; border-radius: 12px; background: var(--bg); display: flex; flex-direction: column; gap: 2px; }
+  .ds-suhrn :global(span) { font-size: 0.78rem; color: var(--muted); }
+  .ds-suhrn :global(b) { font-size: 1.15rem; }
+  .ds-suhrn :global(small) { display: block; font-size: 0.75rem; font-weight: 500; color: var(--muted); }
+  .ds-volby { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; font-size: 0.85rem; font-weight: 600; }
+  .ds-volby label { display: flex; align-items: center; gap: 6px; }
+  .ds-stlpce :global(.ds-riadok) { display: grid; grid-template-columns: minmax(110px, 200px) minmax(0, 1fr) 76px; gap: 10px; align-items: center; padding: 3px 0; color: var(--text); text-decoration: none; font-size: 0.9rem; }
+  .ds-stlpce :global(.ds-riadok:hover .ds-meno) { color: var(--accent); }
+  .ds-stlpce :global(.ds-meno) { text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
+  .ds-stlpce :global(.ds-meno small) { display: block; font-size: 0.72rem; color: var(--muted); font-weight: 400; }
+  .ds-stlpce :global(.ds-pas) { position: relative; height: 20px; background: color-mix(in srgb, var(--line) 50%, transparent); border-radius: 5px; }
+  .ds-stlpce :global(.ds-hodnota) { position: absolute; top: 0; bottom: 0; background: var(--accent); border-radius: 5px; }
+  .ds-stlpce :global(.ds-median) { position: absolute; top: -4px; bottom: -4px; border-left: 2px dashed var(--text); }
+  .ds-stlpce :global(b) { font-variant-numeric: tabular-nums; font-size: 0.88rem; }
+  .ds-stlpce :global(.ds-legenda-ciara) { display: flex; align-items: center; gap: 6px; margin: 10px 0 0; font-size: 0.8rem; color: var(--muted); }
+  .ds-stlpce :global(.ds-legenda-ciara span) { width: 16px; border-top: 2px dashed var(--text); }
+  @media (max-width: 560px) { .ds-stlpce :global(.ds-riadok) { grid-template-columns: minmax(90px, 120px) minmax(0, 1fr) 62px; font-size: 0.82rem; } }
+  .ds-body-obal svg { width: 100%; height: auto; display: block; }
+  .ds-body-obal :global(.ds-mriezka) { stroke: var(--line); }
+  .ds-body-obal :global(.ds-osi) { fill: var(--muted); font-size: 12px; }
+  .ds-body-obal :global(.ds-os-nazov) { fill: var(--text); font-size: 13px; font-weight: 600; }
+  .ds-body-obal :global(.ds-med) { stroke: var(--text); stroke-dasharray: 5 4; opacity: 0.6; }
+  .ds-body-obal :global(.ds-bod) { fill: color-mix(in srgb, var(--accent) 65%, transparent); stroke: var(--card); stroke-width: 1.2; }
+  .ds-body-obal :global(a:hover .ds-bod) { fill: var(--accent); stroke: var(--text); }
+  .ds-body-obal :global(.ds-menovka) { fill: var(--text); font-size: 11px; font-weight: 600; paint-order: stroke; stroke: var(--card); stroke-width: 3px; }
+  .ds-mapa { width: 100%; height: auto; display: block; --k: 1; }
+  .ds-mapa .ds-kraje path { fill: var(--bg); stroke: var(--line); stroke-width: calc(1.2px * var(--k)); }
+  .ds-mapa :global(.ds-vnutri) { stroke: var(--card); stroke-width: calc(0.6px * var(--k)); }
+  .ds-mapa :global(.ds-mimo) { fill: var(--line); opacity: 0.5; }
+  .ds-mapa :global(a:hover circle) { stroke: var(--text); stroke-width: calc(1.5px * var(--k)); }
+  .ds-legenda { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; margin-top: 8px; font-size: 0.8rem; }
+  .ds-legenda :global(span) { display: inline-flex; align-items: center; gap: 4px; }
+  .ds-legenda :global(i) { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+  .ds-tab :global(th.num), .ds-tab :global(td.num) { text-align: right; font-variant-numeric: tabular-nums; }
+  .ds-viac { margin-top: 10px; min-height: 40px; padding: 0 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; }
+  @media (max-width: 760px) { .ds-panel { max-width: none; } }
+</style>
