@@ -301,3 +301,6 @@ export const firmyInfo = () => (_fir === undefined ? (_fir = citaj('data', 'obce
 export const sluzbyInfo = () => (_slu === undefined ? (_slu = citaj('data', 'obce', 'sluzby.json')) : _slu);
 export const turizmusInfo = () => (_tur === undefined ? (_tur = citaj('data', 'obce', 'turizmus.json')) : _tur);
 export const vlakyInfo = () => (_vla === undefined ? (_vla = citaj('data', 'obce', 'vlaky.json')) : _vla);
+/** adresy obcí, ktoré majú vlastný kvíz (rovnaké pravidlo ako [obec]/kviz.astro) */
+let _sKv: Set<string> | null = null;
+export const obceSKvizom = () => (_sKv ??= new Set(vacsieObce().filter((o) => kvizObce(o).length >= 5).map(urlObce)));

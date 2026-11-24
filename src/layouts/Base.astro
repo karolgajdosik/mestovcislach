@@ -11,6 +11,7 @@ import { maZivot } from '../lib/temy';
 import FotoPas from '../components/FotoPas.astro';
 import Rozcestnik from '../components/Rozcestnik.astro';
 import { fotoPreStranku } from '../lib/fotky';
+import { obceSKvizom } from '../lib/obce';
 interface Props {
   title: string;
   description?: string;
@@ -88,6 +89,7 @@ const kotva = (h: string) => (ba ? h : `/${mesto.slug}#teraz`);
 const rieka: any = (mesto as any).rieka_id;
 // Mestá bez vlastných podstránok: menu so skokmi na sekcie prehľadu
 const IKONA = Object.fromEntries(MENU_MESTA.map(([h, , i]) => [h, i]));
+const obecKviz = (() => { const m = Astro.url.pathname.match(/^\/([a-z-]+-kraj)\/([a-z0-9-]+)\/([a-z0-9-]+)/); return m && obceSKvizom().has(`/${m[1]}/${m[2]}/${m[3]}`) ? `/${m[1]}/${m[2]}/${m[3]}/kviz` : null; })();
 const PIN = '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/>';
 const MENU: [string, string, string][] = spolocna
   ? [...MESTA.filter((x) => x.aktivne).map((x) => [`/${x.slug}`, x.nazov, PIN] as [string, string, string]), ['/porovnanie', 'Porovnanie miest', IKONA['katalog']], ['/porovnaj', 'Porovnaj dve mestá', IKONA['mestske-casti']], ['/volby-2026', 'Voľby 2026 v číslach', IKONA['volby']], ['/rozpocty-2027', 'Rozpočty miest 2027', IKONA['financie']], ['/sutaz', 'Súťaž miest', '<path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3"/>'], ['/suboj', 'Súboj miest', '<path d="M5 19 19 5M15 5h4v4M9 19H5v-4M19 19 13.5 13.5M5 5l5.5 5.5"/>'], ['/dodavatelia', 'Sledovať dodávateľa', '<path d="M4 20.5V9l8-5 8 5v11.5M9 20.5v-6h6v6"/>']]
@@ -271,15 +273,16 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     </footer>
     <Asistent mesto={spolocna ? undefined : mesto} />
     {/* Mobil a tablet (do 1099 px): dolná lišta + celoobrazovkové menu namiesto posúvacieho pásu */}
+    {/* Dolná lišta je rovnaká na všetkých stránkach; Kvíz vedie na stránke obce do kvízu obce, inde do kvízu (naposledy otvoreného) mesta */}
     <nav class="dolna-lista" aria-label="Rýchla navigácia">
-      {(spolocna
-        ? [['/', 'Mestá', PIN], ['/porovnanie', 'Porovnanie', IKONA['mestske-casti']]]
-        : [[`/${mesto.slug}/kviz`, 'Kvíz', NOVE.find((x) => x[0] === 'kviz')![2]], ...(maMapu(mesto.slug) || mesto.plne ? [[`/${mesto.slug}/mapa`, 'Mapa', IKONA['mapa']]] : []), [`/${mesto.slug}/adresa`, 'Pri mne', IKONA['adresa']]]
-      ).map(([href, text, ikona]) => {
-        const akt = href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.replace(/\/$/, '') === href;
-        return <a href={href} aria-current={akt ? 'page' : undefined}><svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} /><span>{text}</span></a>;
-      })}
-      <button type="button" class="dl-asistent" aria-label="AI asistent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v10H9l-5 4v-14Z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg><span>Asistent</span></button>
+      {([
+        ['/', 'Mestá', PIN, Astro.url.pathname === '/', false],
+        [obecKviz ?? `/${mesto.slug}/kviz`, 'Kvíz', NOVE.find((x) => x[0] === 'kviz')![2], /\/kviz\/?$/.test(Astro.url.pathname), spolocna && !obecKviz],
+        ['/datove-studio/', 'Štúdio', '<path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/>', Astro.url.pathname.startsWith('/datove-studio'), false],
+        ['/videozona/', 'Videozóna', '<rect x="3" y="5.5" width="13.5" height="13" rx="2.5"/><path d="m16.5 10 4.5-2.5v9L16.5 14"/>', Astro.url.pathname.startsWith('/videozona'), false],
+      ] as [string, string, string, boolean, boolean][]).map(([href, text, ikona, akt, posl]) => (
+        <a href={href} aria-current={akt ? 'page' : undefined} aria-label={text === 'Štúdio' ? 'Dátové štúdio' : undefined} data-spolocna-kviz={posl ? '1' : undefined}><svg viewBox="0 0 24 24" aria-hidden="true" set:html={ikona} /><span>{text}</span></a>
+      ))}
       <button type="button" class="dl-menu" aria-haspopup="dialog" aria-controls="menu-plne"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
     </nav>
     <dialog class="menu-plne" id="menu-plne" aria-label="Menu">
@@ -287,6 +290,7 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
         <strong translate="no">{spolocna ? 'mestovčíslach.sk' : mesto.nazov}</strong>
         <button type="button" class="mp-zavriet" aria-label="Zavrieť menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
       </div>
+      <button type="button" class="mp-asistent dl-asistent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v10H9l-5 4v-14Z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg><span>Opýtať sa AI asistenta</span></button>
       {!spolocna && (
         skupinyMenu(MENU.filter(([href]) => href !== '/porovnanie')).map((s) => (<>
           {s.n && <p class="mp-nadpis">{s.n}</p>}
@@ -331,10 +335,11 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     // naposledy otvorené mesto pre rozcestník (len v tomto prehliadači)
     const tm = document.body.dataset.mesto;
     // tlačidlo Kvíz v hlavičke na spoločných stránkach vedie do naposledy otvoreného mesta
-    const hk = document.querySelector<HTMLAnchorElement>('.hlava-kviz[data-spolocna]');
-    if (hk) { try { const p = JSON.parse(localStorage.getItem('mesto-posledne') || 'null'); if (p?.slug) { hk.href = `/${p.slug}/kviz`; hk.title = `Kvíz o meste ${p.nazov ?? ''}`.trim(); } } catch { /* bez úložiska */ } }
+    document.querySelectorAll<HTMLAnchorElement>('.hlava-kviz[data-spolocna], .dolna-lista [data-spolocna-kviz]').forEach((hk) => {
+      try { const p = JSON.parse(localStorage.getItem('mesto-posledne') || 'null'); if (p?.slug) { hk.href = `/${p.slug}/kviz`; hk.title = `Kvíz o meste ${p.nazov ?? ''}`.trim(); } } catch { /* bez úložiska */ }
+    });
     if (tm) { try { localStorage.setItem('mesto-posledne', JSON.stringify({ slug: tm, nazov: document.body.dataset.mestoNazov })); } catch { /* bez úložiska */ } }
-    document.querySelector('.dl-asistent')?.addEventListener('click', () => (document.getElementById('ai-otvor') as HTMLButtonElement | null)?.click());
+    document.querySelector('.dl-asistent')?.addEventListener('click', () => { menu?.close(); (document.getElementById('ai-otvor') as HTMLButtonElement | null)?.click(); });
   }
 
   // bočné menu (široké obrazovky): pri skokoch na sekcie prehľadu (#teraz, #volby…) zvýrazní sekciu, ktorá je práve na obrazovke
@@ -650,7 +655,9 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
     .dolna-lista span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
     .dolna-lista [aria-current] { color: var(--accent); }
     .dolna-lista [aria-current] svg { stroke-width: 2.2; }
-    /* asistent je v dolnej lište – plávajúce tlačidlo netreba */
+    .mp-asistent { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 48px; margin: 4px 0 14px; border: 0; border-radius: 14px; background: var(--accent); color: var(--na-akcente, #fff); font: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer; flex: none; }
+    .mp-asistent svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    /* asistent je v menu dolnej lišty – plávajúce tlačidlo na mobile netreba */
     .ai-tlacidlo { display: none !important; }
     /* živé údaje: zalomené do riadkov namiesto posúvania */
     .zive-obsah { flex-wrap: wrap; height: auto; padding-top: 6px; padding-bottom: 6px; row-gap: 6px; overflow: visible; }
