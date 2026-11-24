@@ -16,7 +16,7 @@ export const onRequestPost = async ({ request, env }: any) => {
   const povod = request.headers.get('origin') ?? request.headers.get('referer') ?? '';
   let host = '';
   try { host = new URL(povod).hostname; } catch { /* bez pôvodu */ }
-  if (ROBOT.test(ua) || !(host === 'mestovcislach.sk' || host.endsWith('.mestovcislach.sk') || host.endsWith('.pages.dev'))) return json(204, null);
+  if (ROBOT.test(ua) || !(host === 'mestovcislach.sk' || host.endsWith('.mestovcislach.sk') || host.endsWith('.pages.dev'))) return new Response(null, { status: 204 });
   let d: any;
   try { d = JSON.parse(await request.text()); } catch { return json(400, { ok: false }); }
   const udalost = d?.u === 'start' ? 0 : d?.u === 'koniec' ? 1 : -1;
@@ -24,12 +24,12 @@ export const onRequestPost = async ({ request, env }: any) => {
   if (udalost < 0 || !PLATNY.test(kviz) || kviz.length > 120) return json(400, { ok: false });
   const kluc = `kviz:${mesiac()}`;
   const tab = ((await env.SUBOJ.get(kluc, 'json')) ?? {}) as Tab;
-  if (!tab[kviz] && Object.keys(tab).length >= MAX_KVIZOV) return json(204, null);
+  if (!tab[kviz] && Object.keys(tab).length >= MAX_KVIZOV) return new Response(null, { status: 204 });
   const r = tab[kviz] ?? [0, 0];
   r[udalost]++;
   tab[kviz] = r; // pri súčasných zápisoch sa môže pár udalostí stratiť – na orientačné počty stačí
   await env.SUBOJ.put(kluc, JSON.stringify(tab), { expirationTtl: 800 * 864e2 });
-  return json(204, null);
+  return new Response(null, { status: 204 });
 };
 
 /** Súhrn za posledné mesiace: spolu a najhrávanejšie kvízy (verejné – len počty). ?mesiace=1..12 */
