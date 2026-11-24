@@ -1,8 +1,8 @@
-GET pred: {"ok":true,"mesiace":{"2026-11":{"spustene":1,"dohrane":0,"kvizov":1,"top":[["/presovsky-kraj/sabinov/sabinov/kviz",1,0]]}}}
+GET pred: {"ok":true,"mesiace":{"2026-11":{"spustene":2,"dohrane":1,"kvizov":1,"top":[["/presovsky-kraj/sabinov/sabinov/kviz",2,1]]}}}
 neplatný: 400
-robot: 500
-start 500
-koniec 500
-cudzí pôvod: 500
-GET po: {"ok":true,"mesiace":{"2026-11":{"spustene":1,"dohrane":0,"kvizov":1,"top":[["/presovsky-kraj/sabinov/sabinov/kviz",1,0]]}}}
+robot: 204
+start 204
+koniec 204
+cudzí pôvod: 204
+GET po: {"ok":true,"mesiace":{"2026-11":{"spustene":2,"dohrane":1,"kvizov":1,"top":[["/presovsky-kraj/sabinov/sabinov/kviz",2,1]]}}}
 HOTOVO
