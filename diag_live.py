@@ -9,4 +9,4 @@ for u in ["start","koniec"]:
     print(u, requests.post(B+"/api/kviz",data=json.dumps({"u":u,"k":"/test/kviz/"}),headers=H,timeout=30).status_code)
 print("cudzí pôvod:", requests.post(B+"/api/kviz",data=json.dumps({"u":"start","k":"/test/kviz"}),headers={**H,"Origin":"https://example.com"},timeout=30).status_code)
 print("GET po:", requests.get(B+"/api/kviz?mesiace=1&x=1",timeout=30).text[:300])
-print("HOTOVO")
+print("HOTOVO") # 2
