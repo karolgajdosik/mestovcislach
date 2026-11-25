@@ -34,41 +34,33 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   </section>
 
   <div class="ds" id="ds">
-    <section class="card ds-ovl" aria-label="Nastavenie pohľadu">
-      <div class="ds-ovl-hore">
-        <button type="button" class="ds-vyber" id="ds-u" aria-haspopup="dialog"><small>Práca a podnikanie</small><b>Miera nezamestnanosti</b><span class="ds-zmenit">Zmeniť</span></button>
-        <div class="ds-rychle" aria-label="Oblasti ukazovateľov">
-          {OBLASTI.map((o) => <button type="button" data-o={o.id}>{o.n}</button>)}
+    <section class="ds-bar" id="ds-bar" aria-label="Nastavenie pohľadu">
+      <button type="button" class="ds-sg ds-sg-co" id="ds-u" aria-haspopup="dialog">
+        <span class="ds-sg-ik"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg></span>
+        <span class="ds-sg-t"><small>Čo skúmam</small><b id="ds-u-v">Miera nezamestnanosti</b><i id="ds-u-o">Práca a podnikanie</i></span>
+      </button>
+      <div class="ds-sg-w">
+        <button type="button" class="ds-sg" id="ds-kde-b" aria-haspopup="true" aria-expanded="false" aria-controls="ds-kde-pop">
+          <span class="ds-sg-ik"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
+          <span class="ds-sg-t"><small>Kde</small><b id="ds-kde-v">Celé Slovensko</b></span>
+        </button>
+        <div class="ds-pop ds-pop-kde" id="ds-kde-pop" hidden>
+          <div class="ds-pop-hl"><input id="ds-kde-q" type="search" placeholder="Hľadať kraj alebo okres…" autocomplete="off" aria-label="Hľadať kraj alebo okres" /></div>
+          <ul class="ds-pop-zoz" id="ds-kde-zoz" role="listbox" aria-label="Kde"></ul>
         </div>
       </div>
-      <div class="ds-filtre">
-        <div class="ds-f">
-          <span class="ds-f-n" id="ds-kraj-n">Kraj</span>
-          <div class="ds-cipy" id="ds-kraj" role="radiogroup" aria-labelledby="ds-kraj-n"></div>
-        </div>
-        <div class="ds-f-riadok">
-          <div class="ds-f ds-f-okres">
-            <label class="ds-f-n" for="ds-okres-q">Okres</label>
-            <div class="ds-combo" id="ds-combo">
-              <span class="ds-combo-ik"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></span>
-              <input id="ds-okres-q" type="text" role="combobox" aria-expanded="false" aria-controls="ds-okres-zoz" autocomplete="off" placeholder="Všetky okresy – začnite písať…" />
-              <button type="button" class="ds-combo-x" id="ds-okres-x" aria-label="Zrušiť okres" hidden>✕</button>
-              <ul class="ds-combo-zoz" id="ds-okres-zoz" role="listbox" hidden></ul>
-            </div>
-          </div>
-          <div class="ds-f">
-            <span class="ds-f-n" id="ds-min-n">Veľkosť obce</span>
-            <div class="ds-seg" id="ds-min" role="radiogroup" aria-labelledby="ds-min-n">
-              {[['0', 'Všetky'], ['500', '500+'], ['1000', '1 000+'], ['2000', '2 000+'], ['5000', '5 000+'], ['10000', '10 000+'], ['20000', '20 000+']].map(([v, n]) => <button type="button" role="radio" data-v={v} aria-checked={v === '0' ? 'true' : 'false'}>{n}</button>)}
-            </div>
-          </div>
-        </div>
-        <div class="ds-aktivne" aria-live="polite">
-          <b id="ds-pocet">Načítavam údaje…</b>
-          <span id="ds-stitky"></span>
+      <div class="ds-sg-w">
+        <button type="button" class="ds-sg" id="ds-vel-b" aria-haspopup="true" aria-expanded="false" aria-controls="ds-vel-pop">
+          <span class="ds-sg-ik"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c.6-3 2.8-4.8 5.5-4.8s4.9 1.8 5.5 4.8"/><circle cx="16.8" cy="9.5" r="2.4"/><path d="M15.8 14.4c2.3-.3 4.2 1.2 4.7 4.1"/></svg></span>
+          <span class="ds-sg-t"><small>Veľkosť obce</small><b id="ds-vel-v">Všetky obce</b></span>
+        </button>
+        <div class="ds-pop ds-pop-vel" id="ds-vel-pop" hidden>
+          <ul class="ds-pop-zoz" id="ds-vel-zoz" role="listbox" aria-label="Veľkosť obce"></ul>
         </div>
       </div>
+      <div class="ds-bar-pocet" aria-live="polite"><b id="ds-pocet">…</b><span id="ds-pocet-s">obcí</span></div>
     </section>
+    <div class="ds-stitky" id="ds-stitky" aria-label="Aktívne filtre"></div>
 
     <section class="ds-vysledok" aria-label="Výsledok">
       <div class="ds-lista">
@@ -235,7 +227,6 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     $('ds-nadpis').textContent = pU.n;
     $('ds-podnadpis').textContent = popisVyberu(vyb.length);
     $('ds-opis').textContent = pU.opis ?? '';
-    $('ds-pocet').textContent = `${vyb.length.toLocaleString('sk-SK')} ${vyb.length === 1 ? 'obec' : vyb.length < 5 && vyb.length > 0 ? 'obce' : 'obcí'}`;
     stitky();
     const hodn = vyb.map((o) => o.h[S.u]).filter((v): v is number => v != null && Number.isFinite(v));
     const mSK = median(OBCE.map((o) => o.h[S.u]).filter((v): v is number => v != null && Number.isFinite(v)));
@@ -319,75 +310,113 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   }
 
   // ---------- ovládanie ----------
-  function popisVyberaca(id: string, k: string) {
-    const p = pole(k);
-    $(id).innerHTML = `<small>${esc(p.o.n)}</small><b>${esc(p.n)}</b><span class="ds-zmenit">Zmeniť</span>`;
-    document.querySelectorAll<HTMLButtonElement>('.ds-rychle button').forEach((b) => b.setAttribute('aria-current', String(b.dataset.o === p.o.id)));
-  }
+  const VEL: [string, string, string][] = [['0', 'Všetky obce', 'Všetky'], ['500', 'od 500 obyvateľov', '500+'], ['1000', 'od 1 000 obyvateľov', '1 000+'], ['2000', 'od 2 000 obyvateľov', '2 000+'], ['5000', 'od 5 000 obyvateľov', '5 000+'], ['10000', 'od 10 000 obyvateľov', '10 000+'], ['20000', 'od 20 000 obyvateľov', '20 000+']];
   const kratko = (k: string) => k.replace(/ kraj$/, '');
-  const okresyKraja = () => [...new Set(OKRESY.filter(([k]) => S.kraj === '' || String(k) === S.kraj).map(([, n]) => n))].sort((a, b) => a.localeCompare(b, 'sk'));
+  const okresyKraja = (k: string) => [...new Set(OKRESY.filter(([kk]) => String(kk) === k).map(([, n]) => n))].sort((a, b) => a.localeCompare(b, 'sk'));
   const menoOkresu = () => OKRESY.find(([, x]) => slug(x) === S.okres)?.[1] ?? '';
+  const krajOkresu = (n: string) => String(OKRESY.find(([, x]) => x === n)?.[0] ?? '');
+  const tvar = (n: number) => (n === 1 ? 'obec' : n > 1 && n < 5 ? 'obce' : 'obcí');
+  function popisVyberaca(_id: string, k: string) {
+    const p = pole(k);
+    $('ds-u-v').textContent = p.n; $('ds-u-o').textContent = p.o.n;
+  }
   function nastavFiltre() {
-    $('ds-kraj').querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.v === S.kraj)));
-    $('ds-min').querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.v === S.min)));
-    if (S.okres && !okresyKraja().some((n) => slug(n) === S.okres)) S.okres = '';
-    const qi = $<HTMLInputElement>('ds-okres-q');
-    if (document.activeElement !== qi) qi.value = menoOkresu();
-    $('ds-combo').classList.toggle('ds-combo-plne', !!S.okres);
-    $('ds-okres-x').hidden = !S.okres;
-    document.querySelectorAll<HTMLElement>('#ds-kraj [aria-checked="true"], #ds-min [aria-checked="true"], .ds-rychle [aria-current="true"]').forEach((b) => {
-      const r = b.parentElement!; if (r.scrollWidth > r.clientWidth) r.scrollLeft = b.offsetLeft - r.offsetLeft - 14;
-    });
+    if (S.okres && krajOkresu(menoOkresu()) !== S.kraj) S.okres = '';
+    $('ds-kde-v').textContent = S.okres ? `okres ${menoOkresu()}` : S.kraj !== '' ? (KRAJE[Number(S.kraj)] ?? '') : 'Celé Slovensko';
+    $('ds-vel-v').textContent = VEL.find((v) => v[0] === S.min)?.[1] ?? 'Všetky obce';
+    $('ds-kde-b').classList.toggle('ds-sg-akt', S.kraj !== '');
+    $('ds-vel-b').classList.toggle('ds-sg-akt', S.min !== '0');
   }
   function stitky() {
     const t: [string, () => void][] = [];
-    if (S.kraj !== '') t.push([KRAJE[Number(S.kraj)] ?? '', () => { S.kraj = ''; S.okres = ''; }]);
+    if (S.kraj !== '' && !S.okres) t.push([KRAJE[Number(S.kraj)] ?? '', () => { S.kraj = ''; }]);
     if (S.okres) t.push([`okres ${menoOkresu()}`, () => { S.okres = ''; }]);
-    if (Number(S.min)) t.push([`od ${Number(S.min).toLocaleString('sk-SK')} obyvateľov`, () => { S.min = '0'; }]);
+    if (Number(S.min)) t.push([VEL.find((v) => v[0] === S.min)?.[1] ?? '', () => { S.min = '0'; }]);
     const el = $('ds-stitky');
-    el.innerHTML = t.length ? t.map(([n], i) => `<button type="button" data-i="${i}" aria-label="Zrušiť filter ${esc(n)}">${esc(n)}<i aria-hidden="true">✕</i></button>`).join('') + (t.length > 1 ? `<button type="button" class="ds-zrus" data-i="vsetko">Zrušiť všetko</button>` : '') : '<span class="ds-celé">celé Slovensko, všetky obce</span>';
+    el.hidden = !t.length;
+    el.innerHTML = t.map(([n], i) => `<button type="button" data-i="${i}" aria-label="Zrušiť filter ${esc(n)}">${esc(n)}<i aria-hidden="true">✕</i></button>`).join('') + (t.length > 1 ? `<button type="button" class="ds-zrus" data-i="vsetko">Zrušiť všetko</button>` : '');
     el.querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.addEventListener('click', () => {
       if (b.dataset.i === 'vsetko') { S.kraj = ''; S.okres = ''; S.min = '0'; } else t[Number(b.dataset.i)][1]();
       zmenFilter();
     }));
+    const n = vyber().length;
+    $('ds-pocet').textContent = n.toLocaleString('sk-SK'); $('ds-pocet-s').textContent = tvar(n);
   }
   function zmenFilter() { vsetkyRiadky = false; nastavFiltre(); obnov(); }
-  function nastavOvladanie() {
-    popisVyberaca('ds-u', S.u);
-    $('ds-kraj').innerHTML = [['', 'Celé Slovensko'], ...KRAJE.map((k, i) => [String(i), kratko(k)])].map(([v, n]) => `<button type="button" role="radio" data-v="${v}" aria-checked="false">${esc(n)}</button>`).join('');
-    $('ds-kraj').querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.addEventListener('click', () => { S.kraj = b.dataset.v!; S.okres = ''; zmenFilter(); }));
-    $<HTMLSelectElement>('ds-n').value = S.n; $<HTMLSelectElement>('ds-por').value = S.por;
-    nastavFiltre();
+  function nastavOvladanie() { popisVyberaca('ds-u', S.u); $<HTMLSelectElement>('ds-n').value = S.n; $<HTMLSelectElement>('ds-por').value = S.por; nastavFiltre(); }
+
+  // ---------- rozbaľovacie ponuky (Kde, Veľkosť) ----------
+  let otvorena: string | null = null;
+  function zavriPonuky() {
+    if (!otvorena) return;
+    $(`${otvorena}-pop`).hidden = true; $(`${otvorena}-b`).setAttribute('aria-expanded', 'false'); $(`${otvorena}-b`).classList.remove('ds-sg-otv');
+    document.body.classList.remove('ds-pop-otv'); otvorena = null;
   }
-  $('ds-min').querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.addEventListener('click', () => { S.min = b.dataset.v!; zmenFilter(); }));
-  // okres – vyhľadávacie pole s ponukou
-  {
-    const qi = $<HTMLInputElement>('ds-okres-q'), zoz = $('ds-okres-zoz');
-    let akt = -1, moz: string[] = [];
-    const zatvor = () => { zoz.hidden = true; qi.setAttribute('aria-expanded', 'false'); akt = -1; };
-    const kresliZoz = () => {
-      const t = slug(qi.value);
-      moz = qi.value === menoOkresu() ? okresyKraja() : okresyKraja().filter((n) => slug(n).includes(t));
-      if (!moz.length && t) moz = [...new Set(OKRESY.map(([, n]) => n))].filter((n) => slug(n).includes(t)).sort((a, b) => a.localeCompare(b, 'sk'));
-      zoz.innerHTML = [`<li role="option" data-v="" aria-selected="${akt === 0}">Všetky okresy</li>`, ...moz.map((n, i) => `<li role="option" data-v="${slug(n)}" aria-selected="${akt === i + 1}">${esc(n)}${S.kraj === '' || String(OKRESY.find(([, x]) => x === n)?.[0]) !== S.kraj ? `<small>${esc(kratko(KRAJE[OKRESY.find(([, x]) => x === n)?.[0] ?? 0] ?? ''))}</small>` : ''}</li>`)].join('');
-      zoz.hidden = false; qi.setAttribute('aria-expanded', 'true');
-      zoz.querySelectorAll<HTMLLIElement>('li').forEach((li) => li.addEventListener('mousedown', (e) => { e.preventDefault(); vyberOkres(li.dataset.v!); }));
-      zoz.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' });
-    };
-    const vyberOkres = (v: string) => {
-      S.okres = v;
-      if (v) { const k = OKRESY.find(([, x]) => slug(x) === v)?.[0]; if (k != null) S.kraj = String(k); }
-      zatvor(); qi.blur(); zmenFilter();
-    };
-    qi.addEventListener('focus', () => { qi.select(); akt = -1; kresliZoz(); });
-    qi.addEventListener('input', () => { akt = 1; kresliZoz(); });
-    qi.addEventListener('blur', () => { zatvor(); qi.value = menoOkresu(); });
-    qi.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); akt = Math.max(0, Math.min(moz.length, akt + (e.key === 'ArrowDown' ? 1 : -1))); kresliZoz(); }
-      else if (e.key === 'Enter') { e.preventDefault(); const li = zoz.querySelectorAll<HTMLLIElement>('li')[akt < 0 ? 1 : akt]; if (li) vyberOkres(li.dataset.v!); }
-      else if (e.key === 'Escape') { zatvor(); qi.blur(); }
+  function otvorPonuku(id: string) {
+    if (otvorena === id) { zavriPonuky(); return; }
+    zavriPonuky();
+    otvorena = id;
+    $(`${id}-pop`).hidden = false; $(`${id}-b`).setAttribute('aria-expanded', 'true'); $(`${id}-b`).classList.add('ds-sg-otv');
+    document.body.classList.add('ds-pop-otv');
+    if (id === 'ds-kde') { const q = $<HTMLInputElement>('ds-kde-q'); q.value = ''; kresliKde(); if (matchMedia('(pointer: fine)').matches) q.focus(); }
+    else kresliVel();
+  }
+  document.addEventListener('click', (e) => { if (otvorena && !(e.target as HTMLElement).closest('.ds-sg-w')) zavriPonuky(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && otvorena) { const id = otvorena; zavriPonuky(); $(`${id}-b`).focus(); } });
+  $('ds-kde-b').addEventListener('click', () => otvorPonuku('ds-kde'));
+  $('ds-vel-b').addEventListener('click', () => otvorPonuku('ds-vel'));
+  const pocetV = (f: (o: Obec) => boolean) => OBCE.filter((o) => f(o) && (o.h.obyv ?? 0) >= (Number(S.min) || 0)).length;
+  function kresliKde() {
+    const t = slug($<HTMLInputElement>('ds-kde-q').value.trim());
+    const pol = (v: string, n: string, pod: string, akt: boolean, trieda = '') => `<li role="option" class="${trieda}" data-v="${v}" aria-selected="${akt}" tabindex="-1"><span>${n}</span><small>${pod}</small></li>`;
+    let html = '';
+    if (t) {
+      const kr = KRAJE.map((k, i) => [k, i] as const).filter(([k]) => slug(k).includes(t));
+      const ok = [...new Set(OKRESY.map(([, n]) => n))].filter((n) => slug(n).includes(t)).sort((a, b) => a.localeCompare(b, 'sk'));
+      html = kr.map(([k, i]) => pol(`k:${i}`, esc(k), `${pocetV((o) => o.kraj === i).toLocaleString('sk-SK')} obcí`, S.kraj === String(i) && !S.okres)).join('')
+        + ok.map((n) => pol(`o:${slug(n)}`, `okres ${esc(n)}`, esc(kratko(KRAJE[Number(krajOkresu(n))] ?? '')), S.okres === slug(n))).join('');
+      if (!html) html = '<li class="ds-pop-nic">Nič sa nenašlo</li>';
+    } else {
+      html = pol('sk', 'Celé Slovensko', `${pocetV(() => true).toLocaleString('sk-SK')} obcí`, S.kraj === '', 'ds-pop-sk');
+      KRAJE.forEach((k, i) => {
+        const akt = S.kraj === String(i);
+        html += pol(`k:${i}`, esc(k), akt ? 'vybraný' : `${pocetV((o) => o.kraj === i).toLocaleString('sk-SK')} obcí`, akt && !S.okres, akt ? 'ds-pop-kraj ds-pop-rozb' : 'ds-pop-kraj');
+        if (akt) html += `<li class="ds-pop-okresy"><div>${okresyKraja(String(i)).map((n) => `<button type="button" data-v="o:${slug(n)}" aria-pressed="${S.okres === slug(n)}">${esc(n)}</button>`).join('')}</div></li>`;
+      });
+    }
+    const zoz = $('ds-kde-zoz');
+    zoz.innerHTML = html;
+    zoz.querySelectorAll<HTMLElement>('[data-v]').forEach((el) => el.addEventListener('click', (e) => { e.stopPropagation(); vyberKde(el.dataset.v!); }));
+  }
+  function vyberKde(v: string) {
+    if (v === 'sk') { S.kraj = ''; S.okres = ''; zavriPonuky(); }
+    else if (v.startsWith('k:')) { const k = v.slice(2); const zatvor = S.kraj === k && !S.okres; S.kraj = k; S.okres = ''; if (zatvor || $<HTMLInputElement>('ds-kde-q').value) zavriPonuky(); else { $<HTMLInputElement>('ds-kde-q').value = ''; } }
+    else { S.okres = v.slice(2); S.kraj = krajOkresu(menoOkresu()); zavriPonuky(); }
+    zmenFilter();
+    if (otvorena === 'ds-kde') kresliKde();
+  }
+  $('ds-kde-q').addEventListener('input', kresliKde);
+  $('ds-kde-q').addEventListener('keydown', (e) => {
+    const pol = [...$('ds-kde-zoz').querySelectorAll<HTMLElement>('li[data-v], .ds-pop-okresy button')];
+    if (e.key === 'Enter') { e.preventDefault(); const prvy = $<HTMLInputElement>('ds-kde-q').value ? pol[0] : null; if (prvy) vyberKde(prvy.dataset.v!); }
+    if (e.key === 'ArrowDown') { e.preventDefault(); pol[0]?.focus(); }
+  });
+  $('ds-kde-zoz').addEventListener('keydown', (e) => {
+    const pol = [...$('ds-kde-zoz').querySelectorAll<HTMLElement>('li[data-v], .ds-pop-okresy button')];
+    const i = pol.indexOf(document.activeElement as HTMLElement);
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (e.key === 'ArrowUp' && i <= 0) $('ds-kde-q').focus(); else pol[Math.min(pol.length - 1, i + (e.key === 'ArrowDown' ? 1 : -1))]?.focus(); }
+    if (e.key === 'Enter' && i >= 0 && pol[i].tagName === 'LI') { e.preventDefault(); vyberKde(pol[i].dataset.v!); }
+  });
+  function kresliVel() {
+    const f = (o: Obec) => (S.kraj === '' || String(o.kraj) === S.kraj) && (S.okres === '' || slug(o.okres) === S.okres);
+    const zoz = $('ds-vel-zoz');
+    zoz.innerHTML = VEL.map(([v, n]) => { const c = OBCE.filter((o) => f(o) && (o.h.obyv ?? 0) >= Number(v)).length; return `<li role="option" data-v="${v}" aria-selected="${S.min === v}" tabindex="0"><span>${n}</span><small>${c.toLocaleString('sk-SK')} ${tvar(c)}</small></li>`; }).join('');
+    zoz.querySelectorAll<HTMLElement>('li').forEach((li) => {
+      const ok = () => { S.min = li.dataset.v!; zavriPonuky(); zmenFilter(); };
+      li.addEventListener('click', (e) => { e.stopPropagation(); ok(); });
+      li.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ok(); } });
     });
-    $('ds-okres-x').addEventListener('click', () => { S.okres = ''; zmenFilter(); });
+    (zoz.querySelector('[aria-selected="true"]') as HTMLElement | null)?.focus();
   }
   const zmena = (id: string, k: keyof typeof S) => $<HTMLSelectElement>(id).addEventListener('change', (e) => { S[k] = (e.target as HTMLSelectElement).value; vsetkyRiadky = false; obnov(); });
   zmena('ds-n', 'n'); zmena('ds-por', 'por');
@@ -433,7 +462,6 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     await obnov();
   }
   $('ds-u').addEventListener('click', () => otvor('u'));
-  document.querySelectorAll<HTMLButtonElement>('.ds-rychle button').forEach((b) => b.addEventListener('click', () => otvor('u', b.dataset.o)));
   $('dsp-zavri').addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
   dlg.querySelectorAll<HTMLButtonElement>('.dsp-oblasti button').forEach((b) => b.addEventListener('click', () => ukazOblast(b.dataset.o!)));
@@ -492,55 +520,69 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
 </script>
 
 <style>
+  .ds-bar { position: sticky; top: calc(var(--vyska-hlavicky, 64px) + 8px); z-index: 40; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) auto; align-items: stretch; padding: 6px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06); }
+  .ds-sg-w { position: relative; min-width: 0; display: flex; }
+  .ds-sg-w::before { content: ''; position: absolute; left: 0; top: 14px; bottom: 14px; width: 1px; background: var(--line); }
+  .ds-sg { display: flex; align-items: center; gap: 12px; width: 100%; min-width: 0; min-height: 62px; padding: 8px 16px; border: 0; border-radius: 16px; background: transparent; color: var(--text); font: inherit; text-align: left; cursor: pointer; transition: background .15s; }
+  .ds-sg:hover, .ds-sg.ds-sg-otv { background: var(--bg); }
+  .ds-sg:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .ds-sg-ik { display: flex; align-items: center; justify-content: center; flex: none; width: 38px; height: 38px; border-radius: 12px; background: var(--bg); color: var(--muted); transition: background .15s, color .15s; }
+  .ds-sg:hover .ds-sg-ik, .ds-sg-otv .ds-sg-ik { background: var(--card); }
+  .ds-sg-co .ds-sg-ik, .ds-sg-akt .ds-sg-ik { background: var(--accent); color: var(--na-akcente, #fff); }
+  .ds-sg-ik svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ds-sg-t { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+  .ds-sg-t small { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .ds-sg-t b { font-size: 0.98rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ds-sg-t i { font-style: normal; font-size: 0.76rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ds-bar-pocet { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 92px; margin-left: 4px; padding: 0 16px; border-radius: 16px; background: var(--accent); color: var(--na-akcente, #fff); line-height: 1.1; }
+  .ds-bar-pocet b { font-size: 1.15rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .ds-bar-pocet span { font-size: 0.75rem; font-weight: 600; opacity: 0.9; }
+  .ds-pop { position: absolute; z-index: 50; top: calc(100% + 12px); left: 0; width: max(100%, 340px); max-height: min(520px, 70vh); display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2); overflow: hidden; animation: ds-pop .16s ease-out; }
+  .ds-pop[hidden] { display: none; }
+  .ds-pop-vel { width: max(100%, 280px); }
+  @keyframes ds-pop { from { opacity: 0; transform: translateY(-6px); } }
+  .ds-pop-hl { padding: 12px 12px 6px; }
+  .ds-pop-hl input { width: 100%; box-sizing: border-box; min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font: inherit; font-size: 0.95rem; }
+  .ds-pop-hl input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .ds-pop-zoz { list-style: none; margin: 0; padding: 6px; overflow-y: auto; }
+  .ds-pop-zoz :global(li[data-v]) { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 10px; cursor: pointer; font-size: 0.93rem; font-weight: 600; }
+  .ds-pop-zoz :global(li[data-v] small) { font-size: 0.78rem; font-weight: 500; color: var(--muted); white-space: nowrap; }
+  .ds-pop-zoz :global(li[data-v]:hover), .ds-pop-zoz :global(li[data-v]:focus) { background: var(--bg); outline: none; }
+  .ds-pop-zoz :global(li[aria-selected='true']) { background: color-mix(in srgb, var(--accent) 12%, var(--card)); color: var(--accent); }
+  .ds-pop-zoz :global(li[aria-selected='true'] small) { color: inherit; }
+  .ds-pop-zoz :global(.ds-pop-sk) { border-bottom: 1px solid var(--line); border-radius: 10px 10px 0 0; margin-bottom: 4px; }
+  .ds-pop-zoz :global(.ds-pop-rozb) { color: var(--accent); }
+  .ds-pop-zoz :global(.ds-pop-okresy) { padding: 2px 8px 10px 20px; }
+  .ds-pop-zoz :global(.ds-pop-okresy div) { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 10px; border-left: 2px solid var(--accent); }
+  .ds-pop-zoz :global(.ds-pop-okresy button) { min-height: 32px; padding: 0 11px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); color: var(--text); font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+  .ds-pop-zoz :global(.ds-pop-okresy button:hover), .ds-pop-zoz :global(.ds-pop-okresy button:focus-visible) { border-color: var(--accent); color: var(--accent); outline: none; }
+  .ds-pop-zoz :global(.ds-pop-okresy button[aria-pressed='true']) { background: var(--accent); border-color: var(--accent); color: var(--na-akcente, #fff); }
+  .ds-pop-zoz :global(.ds-pop-nic) { padding: 12px; color: var(--muted); }
+  .ds-stitky { display: flex; flex-wrap: wrap; gap: 8px; margin-top: -4px; }
+  .ds-stitky[hidden] { display: none; }
+  .ds-stitky :global(button) { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 6px 0 12px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); color: var(--text); font: inherit; font-size: 0.83rem; font-weight: 600; cursor: pointer; }
+  .ds-stitky :global(button i) { display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; border-radius: 10px; font-style: normal; font-size: 0.62rem; background: var(--bg); }
+  .ds-stitky :global(button:hover i) { background: var(--accent); color: var(--na-akcente, #fff); }
+  .ds-stitky :global(.ds-zrus) { border-color: transparent; background: none; padding: 0 8px; color: var(--muted); text-decoration: underline; }
+  @media (max-width: 900px) {
+    .ds-bar { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4px; border-radius: 20px; position: relative; top: auto; z-index: auto; backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--card); }
+    .ds-sg-co { grid-column: 1 / -1; }
+    .ds-sg-w::before { display: none; }
+    .ds-sg-w { border-top: 1px solid var(--line); }
+    .ds-bar-pocet { grid-column: 1 / -1; flex-direction: row; gap: 6px; min-height: 40px; margin: 2px 0 0; }
+    .ds-bar-pocet b { font-size: 1rem; }
+    .ds-sg { min-height: 56px; padding: 8px 10px; gap: 10px; }
+    .ds-sg-ik { width: 34px; height: 34px; }
+    .ds-pop { position: fixed; left: 0; right: 0; bottom: 0; top: auto; width: auto; max-height: 78dvh; border-radius: 20px 20px 0 0; padding-bottom: env(safe-area-inset-bottom); animation: ds-list .2s ease-out; z-index: 1250; }
+    :global(body.ds-pop-otv)::after { content: ''; position: fixed; inset: 0; background: rgba(15, 17, 20, 0.45); z-index: 1240; }
+    @keyframes ds-list { from { transform: translateY(40px); opacity: 0; } }
+  }
   .ds { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
-  .ds-ovl { margin-top: 0 !important; padding: 0 !important; overflow: visible; }
-  .ds-ovl-hore { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 16px 18px; border-bottom: 1px solid var(--line); }
-  .ds-vyber { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 14px; flex: 1 1 320px; max-width: 460px; min-height: 60px; padding: 8px 10px 8px 16px; border: 1.5px solid var(--text); border-radius: 14px; background: var(--card); color: var(--text); font: inherit; text-align: left; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
-  .ds-vyber:hover, .ds-vyber:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent); }
-  .ds-vyber :global(small) { grid-column: 1; font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
-  .ds-vyber :global(b) { grid-column: 1; font-size: 1.08rem; font-weight: 700; line-height: 1.25; }
-  .ds-vyber :global(.ds-zmenit) { grid-column: 2; grid-row: 1 / span 2; padding: 8px 14px; border-radius: 10px; background: var(--accent); color: var(--na-akcente, #fff); font-size: 0.85rem; font-weight: 700; }
-  .ds-rychle { display: flex; flex-wrap: wrap; gap: 6px; flex: 1 1 360px; }
-  .ds-rychle button { min-height: 32px; padding: 0 11px; border: 1px solid var(--line); border-radius: 16px; background: var(--bg); color: var(--text); font: inherit; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: border-color .15s, color .15s; }
-  .ds-rychle button:hover { border-color: var(--accent); color: var(--accent); }
-  .ds-rychle button[aria-current='true'] { border-color: var(--text); background: var(--text); color: var(--card); }
-  .ds-filtre { display: flex; flex-direction: column; gap: 14px; padding: 16px 18px; }
-  .ds-f { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-  .ds-f-n { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
-  .ds-f-riadok { display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: flex-start; }
-  .ds-f-okres { flex: 1 1 260px; max-width: 360px; }
-  .ds-cipy { display: flex; flex-wrap: wrap; gap: 6px; }
-  .ds-cipy :global(button) { min-height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); color: var(--text); font: inherit; font-size: 0.86rem; font-weight: 600; cursor: pointer; transition: background .15s, border-color .15s; }
-  .ds-cipy :global(button:hover) { border-color: var(--accent); }
-  .ds-cipy :global(button[aria-checked='true']) { background: var(--accent); border-color: var(--accent); color: var(--na-akcente, #fff); }
-  .ds-seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); }
-  .ds-seg button { min-height: 34px; padding: 0 12px; border: 0; border-radius: 9px; background: transparent; color: var(--text); font: inherit; font-size: 0.84rem; font-weight: 600; cursor: pointer; font-variant-numeric: tabular-nums; }
-  .ds-seg button:hover { color: var(--accent); }
-  .ds-seg button[aria-checked='true'] { background: var(--card); color: var(--text); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14); }
-  .ds-combo { position: relative; display: flex; align-items: center; border: 1px solid var(--line); border-radius: 12px; background: var(--card); transition: border-color .15s, box-shadow .15s; }
-  .ds-combo:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent); }
-  .ds-combo.ds-combo-plne { border-color: var(--accent); }
-  .ds-combo-ik { display: flex; padding-left: 12px; color: var(--muted); }
-  .ds-combo svg, .ds-akcie svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .ds-combo input { flex: 1; min-width: 0; min-height: 40px; padding: 0 10px; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 0.92rem; font-weight: 600; outline: none; }
-  .ds-combo input::placeholder { font-weight: 400; color: var(--muted); }
-  .ds-combo-x { width: 32px; height: 32px; margin-right: 4px; border: 0; border-radius: 16px; background: var(--bg); color: var(--text); cursor: pointer; font-size: 0.8rem; }
-  .ds-combo-zoz { position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; right: 0; max-height: 300px; overflow-y: auto; margin: 0; padding: 6px; list-style: none; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16); }
-  .ds-combo-zoz :global(li) { display: flex; justify-content: space-between; gap: 8px; padding: 9px 10px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; }
-  .ds-combo-zoz :global(li small) { color: var(--muted); font-size: 0.78rem; }
-  .ds-combo-zoz :global(li:hover), .ds-combo-zoz :global(li[aria-selected='true']) { background: var(--bg); color: var(--accent); }
-  .ds-aktivne { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 0.86rem; }
-  .ds-aktivne > b { font-size: 0.95rem; }
-  .ds-aktivne #ds-stitky { display: contents; }
-  .ds-aktivne :global(#ds-stitky button) { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 6px 0 12px; border: 0; border-radius: 15px; background: color-mix(in srgb, var(--accent) 12%, var(--card)); color: var(--text); font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
-  .ds-aktivne :global(#ds-stitky button i) { display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; border-radius: 10px; font-style: normal; font-size: 0.65rem; background: var(--card); }
-  .ds-aktivne :global(#ds-stitky button:hover i) { background: var(--accent); color: var(--na-akcente, #fff); }
-  .ds-aktivne :global(#ds-stitky .ds-zrus) { background: none; padding: 0 8px; color: var(--muted); text-decoration: underline; }
-  .ds-aktivne :global(.ds-celé) { color: var(--muted); }
   .ds-vysledok { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
   .ds-lista { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
   .ds-zalozky { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
   .ds-akcie { display: flex; gap: 6px; }
+  .ds-akcie svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .ds-akcie button { display: inline-flex; align-items: center; gap: 6px; min-height: 42px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
   .ds-akcie button:hover { border-color: var(--accent); color: var(--accent); }
   .ds-volby select { min-height: 36px; border: 1px solid var(--line); border-radius: 10px; padding: 0 8px; font: inherit; font-weight: 600; background: var(--bg); color: var(--text); }
@@ -553,12 +595,6 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   .dsp-zoznam li button em { font-style: normal; font-size: 0.78rem; line-height: 1.4; color: var(--text); opacity: 0.8; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .ds-pbi { padding: 12px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
   @media (max-width: 640px) {
-    .ds-ovl-hore, .ds-filtre { padding: 14px; }
-    .ds-vyber { max-width: none; }
-    .ds-rychle, .ds-cipy, .ds-seg { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -14px; padding-left: 14px; padding-right: 14px; }
-    .ds-seg { margin: 0; padding: 3px; max-width: 100%; }
-    .ds-rychle button, .ds-cipy :global(button), .ds-seg button { flex: none; }
-    .ds-f-okres { max-width: none; }
     .ds-akcie button span { display: none; }
     .ds-akcie button { padding: 0 11px; }
     .ds-lista { flex-wrap: nowrap; }
