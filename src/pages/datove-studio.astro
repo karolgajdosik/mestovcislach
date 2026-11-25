@@ -36,8 +36,18 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   <div class="ds" id="ds">
     <section class="card ds-filter" aria-label="Filter">
       <div class="ds-krok">
-        <span class="ds-lbl" id="ds-u-l">1. Čo chcete vidieť</span>
-        <button type="button" class="ds-dd ds-dd-velky ds-dd-on" id="ds-u" aria-haspopup="dialog" aria-labelledby="ds-u-l ds-u-v"><span class="ds-dd-t"><small id="ds-u-o">Práca a podnikanie</small><b id="ds-u-v">Miera nezamestnanosti</b></span></button>
+        <div class="ds-krok-hl">
+          <span class="ds-lbl" id="ds-u-l">1. Čo chcete vidieť – vyberte oblasť a ukazovateľ</span>
+          <button type="button" class="ds-hladaj" id="ds-u" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>Hľadať ukazovateľ</button>
+        </div>
+        <div class="ds-obl" role="tablist" aria-labelledby="ds-u-l">
+          {OBLASTI.map((o, i) => <button type="button" role="tab" id={`ds-obl-${o.id}`} data-o={o.id} aria-controls={`ds-ukp-${o.id}`} aria-selected={i === 2 ? 'true' : 'false'}><b>{o.n}</b><span>{o.polia.length}</span></button>)}
+        </div>
+        {OBLASTI.map((o, i) => (
+          <div class="ds-ukp" role="tabpanel" id={`ds-ukp-${o.id}`} aria-labelledby={`ds-obl-${o.id}`} data-o={o.id} hidden={i !== 2}>
+            {o.polia.map((p) => <button type="button" data-k={p.k} aria-pressed="false" title={OPISY[p.k]}>{p.n}</button>)}
+          </div>
+        ))}
       </div>
       <div class="ds-rad">
         <div class="ds-krok">
@@ -312,10 +322,26 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   const menoOkresu = () => OKRESY.find(([, x]) => slug(x) === S.okres)?.[1] ?? '';
   const krajOkresu = (n: string) => String(OKRESY.find(([, x]) => x === n)?.[0] ?? '');
   const tvar = (n: number) => (n === 1 ? 'obec' : n > 1 && n < 5 ? 'obce' : 'obcí');
+  function ukazOblastPanel(id: string) {
+    document.querySelectorAll<HTMLButtonElement>('.ds-obl button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.o === id)));
+    document.querySelectorAll<HTMLElement>('.ds-ukp').forEach((d) => (d.hidden = d.dataset.o !== id));
+    const akt = document.querySelector<HTMLElement>('.ds-obl [aria-selected="true"]'), r = akt?.parentElement;
+    if (akt && r && r.scrollWidth > r.clientWidth) r.scrollLeft = akt.offsetLeft - r.offsetLeft - 16;
+  }
   function popisVyberaca(_id: string, k: string) {
     const p = pole(k);
-    $('ds-u-v').textContent = p.n; $('ds-u-o').textContent = p.o.n;
+    document.querySelectorAll<HTMLButtonElement>('.ds-ukp button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.k === k)));
+    document.querySelectorAll<HTMLButtonElement>('.ds-obl button').forEach((b) => b.classList.toggle('ds-obl-ma', b.dataset.o === p.o.id));
+    ukazOblastPanel(p.o.id);
   }
+  document.querySelectorAll<HTMLButtonElement>('.ds-obl button').forEach((b) => b.addEventListener('click', () => ukazOblastPanel(b.dataset.o!)));
+  document.querySelectorAll<HTMLButtonElement>('.ds-ukp button').forEach((b) => b.addEventListener('click', async () => {
+    if (S.u === b.dataset.k) return;
+    S.u = b.dataset.k!; vsetkyRiadky = false; triedenie = { k: '', smer: -1 };
+    popisVyberaca('ds-u', S.u);
+    $('ds-nadpis').textContent = 'Načítavam…';
+    await obnov();
+  }));
   function nastavFiltre() {
     if (S.okres && S.kraj !== '' && krajOkresu(menoOkresu()) !== S.kraj) S.okres = '';
     const kr = $<HTMLSelectElement>('ds-kraj'), ok = $<HTMLSelectElement>('ds-okres'), mn = $<HTMLSelectElement>('ds-min');
@@ -454,6 +480,28 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
 </script>
 
 <style>
+  .ds-krok-hl { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+  .ds-hladaj { display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 12px; border: 1px solid var(--line); border-radius: 17px; background: var(--card); color: var(--text); font: inherit; font-size: 0.84rem; font-weight: 600; cursor: pointer; }
+  .ds-hladaj:hover { border-color: var(--accent); color: var(--accent); }
+  .ds-hladaj svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+  .ds-obl { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); }
+  .ds-obl button { display: inline-flex; align-items: center; gap: 7px; min-height: 38px; padding: 0 12px; border: 0; border-radius: 10px; background: transparent; color: var(--text); font: inherit; font-size: 0.88rem; cursor: pointer; position: relative; }
+  .ds-obl button b { font-weight: 600; }
+  .ds-obl button span { font-size: 0.72rem; font-weight: 700; color: var(--muted); }
+  .ds-obl button:hover { background: var(--card); }
+  .ds-obl button.ds-obl-ma::after { content: ''; position: absolute; top: 6px; right: 5px; width: 6px; height: 6px; border-radius: 3px; background: var(--accent); }
+  .ds-obl button[aria-selected='true'] { background: var(--card); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14); }
+  .ds-obl button[aria-selected='true'] b { color: var(--accent); }
+  .ds-ukp { display: flex; flex-wrap: wrap; gap: 8px; padding: 6px 2px 2px; }
+  .ds-ukp[hidden] { display: none; }
+  .ds-ukp button { min-height: 40px; padding: 0 15px; border: 1.5px solid var(--line); border-radius: 20px; background: var(--card); color: var(--text); font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: border-color .15s, background .15s; }
+  .ds-ukp button:hover { border-color: var(--accent); color: var(--accent); }
+  .ds-ukp button[aria-pressed='true'] { background: var(--accent); border-color: var(--accent); color: var(--na-akcente, #fff); }
+  @media (max-width: 860px) {
+    .ds-obl { gap: 4px; }
+    .ds-obl button { min-height: 34px; padding: 0 9px; font-size: 0.82rem; gap: 5px; }
+    .ds-ukp button { min-height: 38px; padding: 0 13px; font-size: 0.86rem; }
+  }
   .ds-filter { margin-top: 0 !important; padding: 20px !important; display: flex; flex-direction: column; gap: 16px; }
   .ds-krok { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
   .ds-lbl { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
