@@ -760,6 +760,18 @@ const uzkeBocne = /\/mapa\/?$/.test(Astro.url.pathname);
   .vlozit-zdroj a { font-weight: 700; color: var(--text); text-decoration: none; }
   .vlozit-zdroj b { color: var(--accent); }
 
+  /* ---------- Veľké monitory: širší obsah (doteraz max. 1 340 px) ---------- */
+  @media (min-width: 1600px) {
+    .top .hlava, .zive .wrap, .mp-obsah { max-width: 1640px !important; }
+    .telo { max-width: 1640px !important; grid-template-columns: 232px minmax(0, 1fr) !important; gap: 40px !important; }
+    .telo > main.wrap, .telo.bez-bocneho > main.wrap { max-width: 1360px !important; }
+  }
+  @media (min-width: 2000px) {
+    html { font-size: 106.25%; }
+    .top .hlava, .zive .wrap, .mp-obsah { max-width: 1960px !important; }
+    .telo { max-width: 1960px !important; grid-template-columns: 250px minmax(0, 1fr) !important; gap: 48px !important; }
+    .telo > main.wrap, .telo.bez-bocneho > main.wrap { max-width: 1640px !important; }
+  }
   /* ---------- Široké obrazovky: mestá v hornom páse, sekcie mesta v bočnom menu vľavo ---------- */
   .mesta-pas, .bocne { display: none; }
   @media (min-width: 1100px) {
