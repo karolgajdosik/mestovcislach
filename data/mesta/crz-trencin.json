@@ -2,15 +2,15 @@
  "mesto": "trencin",
  "ico": "00312037",
  "od": "2022-01-01",
- "do": "2026-11-23",
+ "do": "2026-11-24",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 12612,
-  "skryte_fyzicke_osoby": 6927,
+  "zaznamov": 12621,
+  "skryte_fyzicke_osoby": 6932,
   "roky": {
    "2022": {
     "pocet": 1819,
@@ -37,10 +37,10 @@
     "fo_suma": 9669829
    },
    "2026": {
-    "pocet": 2353,
-    "suma": 102876884,
-    "fo_pocet": 1169,
-    "fo_suma": 2538673
+    "pocet": 2362,
+    "suma": 104528491,
+    "fo_pocet": 1174,
+    "fo_suma": 2538753
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -83,7 +83,7 @@
    {
     "ico": "54345987",
     "nazov": "Kreatívny inštitút Trenčín,n.o. Anglická verzia názvu je: Creative Institute Trenčín, n.o.",
-    "pocet": 273,
+    "pocet": 274,
     "suma": 7519526
    },
    {
@@ -105,6 +105,12 @@
     "suma": 4936399
    },
    {
+    "ico": "31651402",
+    "nazov": "COLAS Slovakia, a.s.",
+    "pocet": 39,
+    "suma": 4862411
+   },
+   {
     "ico": "34115901",
     "nazov": "Marius Pedersen, a.s.",
     "pocet": 7,
@@ -115,12 +121,6 @@
     "nazov": "Trenčianske vodárne a kanalizácie, a.s.",
     "pocet": 48,
     "suma": 4650313
-   },
-   {
-    "ico": "31651402",
-    "nazov": "COLAS Slovakia, a.s.",
-    "pocet": 38,
-    "suma": 4226408
    },
    {
     "ico": "31322000",
@@ -141,6 +141,12 @@
     "suma": 2776367
    },
    {
+    "ico": "36726885",
+    "nazov": "green project, s.r.o.",
+    "pocet": 9,
+    "suma": 2218785
+   },
+   {
     "ico": null,
     "nazov": "Marius Pedersen, a.s.",
     "pocet": 1,
@@ -157,12 +163,6 @@
     "nazov": "Fond na podporu športu",
     "pocet": 2,
     "suma": 1415260
-   },
-   {
-    "ico": "34131710",
-    "nazov": "HEES - GASTROSLUŽBY, spol. s r.o.",
-    "pocet": 9,
-    "suma": 1394383
    }
   ],
   "najvacsie_12_mesiacov": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-24T15:59:37+00:00"
+ "aktualizovane": "2026-11-25T15:47:23+00:00"
 }
