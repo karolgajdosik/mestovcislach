@@ -29,11 +29,14 @@ const fmt = (n: number) => n.toLocaleString('sk-SK');
     </button>
   )}
 
-  <a class="rz-pokracuj" data-rz-pokracuj href="/" hidden>
-    <span class="rz-p-popis">Pokračovať</span>
-    <strong data-rz-pokracuj-nazov></strong>
-    <span aria-hidden="true" class="rz-sipka">→</span>
-  </a>
+  <div class="rz-pok-obal" data-rz-pok-obal hidden>
+    <a class="rz-pokracuj" data-rz-pokracuj href="/">
+      <span class="rz-p-popis">Pokračovať</span>
+      <strong data-rz-pokracuj-nazov></strong>
+      <span aria-hidden="true" class="rz-sipka">→</span>
+    </a>
+    <button type="button" class="rz-zabudni" data-rz-zabudni title="Zabudnúť naposledy otvorené mesto" aria-label="Zabudnúť naposledy otvorené mesto">✕</button>
+  </div>
 
   {rezim === 'menu' && (
     <>
@@ -88,12 +91,17 @@ const fmt = (n: number) => n.toLocaleString('sk-SK');
   // naposledy otvorené mesto (zapisuje Base.astro na stránkach mesta) – len v tomto prehliadači
   let posledne: { slug: string; nazov: string } | null = null;
   try { posledne = JSON.parse(localStorage.getItem('mesto-posledne') || 'null'); } catch { /* bez úložiska */ }
+  // ✕ pri „Pokračovať“: zabudne mesto (kvíz, prehľad a skratky sa vrátia na predvolené)
+  document.querySelectorAll<HTMLButtonElement>('[data-rz-zabudni]').forEach((b) => b.addEventListener('click', () => {
+    try { localStorage.removeItem('mesto-posledne'); } catch { /* */ }
+    location.reload();
+  }));
   document.querySelectorAll<HTMLElement>('[data-rz]').forEach((rz) => {
     const pok = rz.querySelector<HTMLAnchorElement>('[data-rz-pokracuj]')!;
     if (posledne?.slug) {
       pok.href = `/${posledne.slug}`;
       pok.querySelector('[data-rz-pokracuj-nazov]')!.textContent = posledne.nazov;
-      pok.hidden = false;
+      rz.querySelector<HTMLElement>('[data-rz-pok-obal]')!.hidden = false;
       const u = rz.querySelector<HTMLAnchorElement>('[data-rz-upozornenia]'); if (u) u.href = `/${posledne.slug}/upozornenia`;
     }
     const vyber = rz.querySelector<HTMLElement>('[data-rz-vyber]')!;
@@ -123,7 +131,11 @@ const fmt = (n: number) => n.toLocaleString('sk-SK');
   .rz-hladaj { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--muted); font: inherit; font-size: 0.95rem; text-align: left; cursor: pointer; margin-bottom: 12px; }
   .rz-hladaj svg { stroke: var(--muted); }
   .rz-pokracuj { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-radius: 12px; background: var(--text); color: var(--card); text-decoration: none; margin-bottom: 4px; }
-  .rz-pokracuj[hidden] { display: none; }
+  .rz-pok-obal { display: flex; gap: 6px; align-items: stretch; margin-bottom: 4px; }
+  .rz-pok-obal[hidden] { display: none; }
+  .rz-pok-obal .rz-pokracuj { flex: 1; min-width: 0; margin-bottom: 0; }
+  .rz-zabudni { flex: none; width: 40px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--muted); font: inherit; font-size: 0.85rem; cursor: pointer; }
+  .rz-zabudni:hover { color: var(--accent); border-color: var(--accent); }
   .rz-p-popis { font-size: 0.85rem; opacity: 0.75; }
   .rz-pokracuj strong { flex: 1; font-size: 1.05rem; }
   .rz-sipka { font-size: 1.2rem; }
@@ -160,5 +172,4 @@ const fmt = (n: number) => n.toLocaleString('sk-SK');
   .rz-bocne .rz-odkazy a, .rz-bocne .rz-vyber a { display: inline; min-height: 0; padding: 0; border-radius: 0; font-weight: 400; background: none; }
   .rz-bocne .rz-vyber a { display: inline-flex; min-height: 34px; padding: 0 10px; border-radius: 17px; font-weight: 600; background: var(--bg); }
   .rz-bocne .rz-pokracuj { display: flex; padding: 10px 12px; color: var(--card); background: var(--text); }
-  .rz-bocne .rz-pokracuj[hidden] { display: none; }
 </style>

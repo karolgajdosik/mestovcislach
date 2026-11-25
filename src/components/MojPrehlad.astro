@@ -13,9 +13,12 @@ const mesta = MESTA.filter((m) => m.aktivne).map((m) => ({
 <section class="mp card" id="moj-prehlad" data-mesta={JSON.stringify(mesta)} hidden aria-labelledby="mp-nadpis">
   <div class="mp-hlava">
     <h2 id="mp-nadpis">Môj prehľad</h2>
-    <label class="mp-vyber"><span class="sr">Moje mesto</span>
-      <select id="mp-mesto">{mesta.map((m) => <option value={m.slug}>{m.nazov}</option>)}</select>
-    </label>
+    <div class="mp-ovl">
+      <label class="mp-vyber"><span class="sr">Moje mesto</span>
+        <select id="mp-mesto">{mesta.map((m) => <option value={m.slug}>{m.nazov}</option>)}</select>
+      </label>
+      <button type="button" class="mp-zabudni" id="mp-zabudni" title="Zabudnúť mesto a skryť prehľad">Zabudnúť ✕</button>
+    </div>
   </div>
   <ul class="mp-teraz" aria-label="Teraz v meste">
     <li id="mp-pocasie">Počasie: …</li>
@@ -29,7 +32,7 @@ const mesta = MESTA.filter((m) => m.aktivne).map((m) => ({
     <div class="mp-blok" id="mp-novinky" hidden></div>
   </div>
   <p class="mp-odkazy" id="mp-odkazy"></p>
-  <p class="mp-pozn">Prehľad si pamätá len váš prehliadač (naposledy otvorené mesto a obľúbené zastávky).</p>
+  <p class="mp-pozn">Ukazuje sa naposledy otvorené mesto – zmeníte ho výberom vpravo hore alebo otvorením iného mesta. Pamätá si to len váš prehliadač.</p>
 </section>
 
 <script>
@@ -96,6 +99,10 @@ const mesta = MESTA.filter((m) => m.aktivne).map((m) => ({
       try { localStorage.setItem('mesto-posledne', JSON.stringify({ slug: m.slug, nazov: m.nazov })); } catch { /* */ }
       zobraz(m.slug);
     });
+    document.getElementById('mp-zabudni')?.addEventListener('click', () => {
+      try { localStorage.removeItem('mesto-posledne'); } catch { /* */ }
+      location.reload();
+    });
     const s = ulozene();
     if (s) zobraz(s);
   }
@@ -106,6 +113,9 @@ const mesta = MESTA.filter((m) => m.aktivne).map((m) => ({
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .mp-hlava { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
   .mp-hlava h2 { margin: 0; font-size: 1.3rem; }
+  .mp-ovl { display: flex; gap: 8px; align-items: center; }
+  .mp-zabudni { height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--muted); font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+  .mp-zabudni:hover { color: var(--accent); border-color: var(--accent); }
   .mp-vyber select { height: 40px; padding: 0 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); font: inherit; font-weight: 600; }
   .mp-teraz { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
   .mp-teraz li { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); font-size: 0.88rem; }
