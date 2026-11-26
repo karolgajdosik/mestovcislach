@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-11-24",
+ "do": "2026-11-25",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 15331,
-  "skryte_fyzicke_osoby": 10010,
+  "zaznamov": 15366,
+  "skryte_fyzicke_osoby": 10042,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,10 +37,10 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3603,
-    "suma": 54142190,
-    "fo_pocet": 2603,
-    "fo_suma": 3692863
+    "pocet": 3638,
+    "suma": 54387718,
+    "fo_pocet": 2635,
+    "fo_suma": 3693067
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -53,8 +53,8 @@
    {
     "ico": "47240768",
     "nazov": "BAUMANN Nitra s. r. o.",
-    "pocet": 29,
-    "suma": 8467776
+    "pocet": 30,
+    "suma": 8669066
    },
    {
     "ico": "00681156",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-25T15:47:23+00:00"
+ "aktualizovane": "2026-11-26T15:28:09+00:00"
 }

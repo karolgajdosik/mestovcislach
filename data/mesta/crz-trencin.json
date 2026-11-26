@@ -2,15 +2,15 @@
  "mesto": "trencin",
  "ico": "00312037",
  "od": "2022-01-01",
- "do": "2026-11-24",
+ "do": "2026-11-25",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 12621,
-  "skryte_fyzicke_osoby": 6932,
+  "zaznamov": 12627,
+  "skryte_fyzicke_osoby": 6933,
   "roky": {
    "2022": {
     "pocet": 1819,
@@ -37,10 +37,10 @@
     "fo_suma": 9669829
    },
    "2026": {
-    "pocet": 2362,
-    "suma": 104528491,
-    "fo_pocet": 1174,
-    "fo_suma": 2538753
+    "pocet": 2368,
+    "suma": 104551780,
+    "fo_pocet": 1175,
+    "fo_suma": 2538838
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -83,7 +83,7 @@
    {
     "ico": "54345987",
     "nazov": "Kreatívny inštitút Trenčín,n.o. Anglická verzia názvu je: Creative Institute Trenčín, n.o.",
-    "pocet": 274,
+    "pocet": 276,
     "suma": 7519526
    },
    {
@@ -137,8 +137,8 @@
    {
     "ico": "17317282",
     "nazov": "STRABAG s.r.o.",
-    "pocet": 35,
-    "suma": 2776367
+    "pocet": 36,
+    "suma": 2797501
    },
    {
     "ico": "36726885",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-25T15:47:23+00:00"
+ "aktualizovane": "2026-11-26T15:28:09+00:00"
 }
