@@ -6,7 +6,7 @@
   "url": "https://data.bratislava.sk/datasets/dec22cd06721435d81161b9067556c3a",
   "upravene": "2026-05-07"
  },
- "pocet_spolu": 12063,
+ "pocet_spolu": 12072,
  "po_rokoch": {
   "2022": {
    "pocet": 1395,
@@ -25,12 +25,12 @@
    "suma": 272587537.89
   },
   "2026": {
-   "pocet": 2450,
-   "suma": 418752580.45
+   "pocet": 2459,
+   "suma": 420752580.45
   }
  },
  "posledny_rok": {
-  "od": "2025-11-26",
+  "od": "2025-11-27",
   "suma_bez_ico": 69100.73,
   "dodavatelia": [
    {
@@ -112,16 +112,16 @@
     "suma": 2077217.31
    },
    {
+    "ico": "45860637",
+    "nazov": "MET Slovakia, a. s.",
+    "pocet": 1,
+    "suma": 2000000.0
+   },
+   {
     "ico": "36063606",
     "nazov": "Bratislavský samosprávny kraj",
     "pocet": 7,
     "suma": 1778922.09
-   },
-   {
-    "ico": "35763418",
-    "nazov": "Mediatex s.r.o.",
-    "pocet": 1,
-    "suma": 1500000.0
    }
   ],
   "najvacsie": [
@@ -225,6 +225,15 @@
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2500394"
    },
    {
+    "datum": "2026-11-26",
+    "dodavatel": "MET Slovakia, a. s.",
+    "ico": "45860637",
+    "predmet": "Zmluva o združenej dodávke zemného plynu podľa ZVO na obdobie 2027 - 2030, schválené PPP 16.6.2026",
+    "suma": 2000000.0,
+    "dodatok": false,
+    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600278"
+   },
+   {
     "datum": "2026-02-19",
     "dodavatel": "Bratislavský samosprávny kraj",
     "ico": "36063606",
@@ -295,17 +304,8 @@
     "suma": 969663.71,
     "dodatok": false,
     "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600067"
-   },
-   {
-    "datum": "2026-09-22",
-    "dodavatel": "CITY STONE DESIGN s.r.o.",
-    "ico": "47978929",
-    "predmet": "RD MAGZBR2600207 - Výroba a dodávka bratislavskej dlažby",
-    "suma": 884985.0,
-    "dodatok": false,
-    "odkaz": "https://zverejnovanie.bratislava.sk/bratislava/zmluvy/MAGZBR2600207"
    }
   ]
  },
- "aktualizovane": "2026-11-26T11:14:10+00:00"
+ "aktualizovane": "2026-11-27T11:06:19+00:00"
 }
