@@ -1,11 +1,5 @@
-security.txt 200 # Nahlásenie bezpečnostnej chyby webu mestovcislach.sk (RFC 9116) | Contact: mailt
-kosice emaily 0 telefon polí 0
-odber pokus 1 400
-odber pokus 2 400
-odber pokus 3 400
-odber pokus 4 400
-odber pokus 5 400
-odber pokus 6 400
-odber pokus 7 429
-odber pokus 8 429
+-tls1 ODMIETNUTÉ ['Protocol: TLSv1', 'Protocol  : TLSv1']
+-tls1_1 ODMIETNUTÉ ['Protocol: TLSv1.1', 'Protocol  : TLSv1.1']
+-tls1_2 OK ['Protocol: TLSv1.2', 'Protocol  : TLSv1.2']
+-tls1_3 OK ['Protocol: TLSv1.3']
 HOTOVO
