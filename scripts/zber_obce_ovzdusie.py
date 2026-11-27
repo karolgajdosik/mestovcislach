@@ -13,6 +13,7 @@ from __future__ import annotations
 import csv
 import io
 import math
+import time
 from collections import defaultdict
 from datetime import date, datetime, timezone
 
@@ -33,8 +34,17 @@ def km(a: tuple[float, float], b: tuple[float, float]) -> float:
 
 def stanice() -> dict[str, dict]:
     """vzorkovacie miesto (SK/SPO-…) -> {lat, lon, nazov, typ}"""
-    r = s.get(META, timeout=300)
-    r.raise_for_status()
+    # server EEA občas vráti 502/503 – skúsiť znova (3 pokusy, 1 a 3 minúty pauza)
+    for pokus in range(3):
+        try:
+            r = s.get(META, timeout=300)
+            r.raise_for_status()
+            break
+        except Exception as e:  # noqa: BLE001
+            if pokus == 2:
+                raise
+            print(f"EEA metadáta: {e} – skúšam znova")
+            time.sleep(60 if pokus == 0 else 180)
     out = {}
     for x in csv.DictReader(io.StringIO(r.content.decode("utf-8", "replace")), delimiter="\t"):
         if x.get("Countrycode") != "SK":

@@ -97,9 +97,17 @@ jobs:
         run: python scripts/zber_obce_wiki_osm.py
 
       - name: Kvalita ovzdušia (SHMÚ cez EEA)
+        id: ovzdusie
         if: success() || failure()
+        # výpadok servera EEA nemá zhodiť celý zber – ovzdušie ostane na posledných platných dátach
+        # (zastarané dáta stráži Strážca dát / Kontrola webu podľa dátumu v súbore)
+        continue-on-error: true
         timeout-minutes: 30
         run: python scripts/zber_obce_ovzdusie.py
+
+      - name: Upozornenie na výpadok ovzdušia
+        if: steps.ovzdusie.outcome == 'failure'
+        run: echo "::warning::Ovzdušie (EEA) sa nepodarilo stiahnuť – ponechané posledné dáta"
 
       - name: Uložiť zmeny v dátach
         if: success() || failure()
