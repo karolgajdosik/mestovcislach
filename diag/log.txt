@@ -1,5 +1,4 @@
-v6 canvas 1 mapa ok titulok Zvolenský hrad
-v6 chyby ["C Access to XMLHttpRequest at 'https://cloudflareinsights.com/cdn-cgi/rum' from origin 'https://maplibre-6.mestovcislach.pages.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' he", 'C Failed to load resource: net::ERR_FAILED', 'C Failed to load resource: net::ERR_TIMED_OUT']
-zive canvas 1 mapa ok titulok 38 588 obyvateľov
-zive chyby []
+prelet chunks set()
+https://mestovcislach.sk/data/studio/vyvoj/obyv.json 200 417521 
+https://mestovcislach.sk/datove-studio/?v=vyvoj 200 156833 True
 HOTOVO
