@@ -2,14 +2,14 @@
  "mesto": "banska-bystrica",
  "ico": "00313271",
  "od": "2022-01-01",
- "do": "2026-11-25",
+ "do": "2026-11-26",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8268,
+  "zaznamov": 8279,
   "skryte_fyzicke_osoby": 4153,
   "roky": {
    "2022": {
@@ -37,8 +37,8 @@
     "fo_suma": 4197336
    },
    "2026": {
-    "pocet": 1958,
-    "suma": 97797418,
+    "pocet": 1969,
+    "suma": 97798218,
     "fo_pocet": 1078,
     "fo_suma": 5687057
    }
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-26T15:28:09+00:00"
+ "aktualizovane": "2026-11-27T15:18:39+00:00"
 }

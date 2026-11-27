@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-11-25",
+ "do": "2026-11-26",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 15366,
-  "skryte_fyzicke_osoby": 10042,
+  "zaznamov": 15414,
+  "skryte_fyzicke_osoby": 10082,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,10 +37,10 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3638,
-    "suma": 54387718,
-    "fo_pocet": 2635,
-    "fo_suma": 3693067
+    "pocet": 3686,
+    "suma": 54525898,
+    "fo_pocet": 2675,
+    "fo_suma": 3693307
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -290,7 +290,7 @@
   "dotacie_poskytnute": [
    {
     "nazov": "HK Nitra, s.r.o.",
-    "suma": 1238066
+    "suma": 1373066
    },
    {
     "nazov": "Telovýchovná jednota AC Nitra",
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-26T15:28:09+00:00"
+ "aktualizovane": "2026-11-27T15:18:39+00:00"
 }

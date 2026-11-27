@@ -2,15 +2,15 @@
  "mesto": "presov",
  "ico": "00327646",
  "od": "2022-01-01",
- "do": "2026-11-25",
+ "do": "2026-11-26",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 6304,
-  "skryte_fyzicke_osoby": 1594,
+  "zaznamov": 6312,
+  "skryte_fyzicke_osoby": 1595,
   "roky": {
    "2022": {
     "pocet": 1140,
@@ -37,10 +37,10 @@
     "fo_suma": 8470220
    },
    "2026": {
-    "pocet": 1152,
-    "suma": 76453178,
-    "fo_pocet": 320,
-    "fo_suma": 1827190
+    "pocet": 1160,
+    "suma": 76472869,
+    "fo_pocet": 321,
+    "fo_suma": 1828209
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -88,8 +88,8 @@
    },
    {
     "ico": "55472672",
-    "nazov": "Mestský podnik služieb Prešov, s. r. o.",
-    "pocet": 51,
+    "nazov": "Mestský podnik služieb Prešov, s.r.o.",
+    "pocet": 52,
     "suma": 10521260
    },
    {
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-26T15:28:09+00:00"
+ "aktualizovane": "2026-11-27T15:18:39+00:00"
 }
