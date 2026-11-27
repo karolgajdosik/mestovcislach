@@ -12,7 +12,7 @@ Otvorené dáta o slovenských mestách a obciach. Odpovedaj a píš po slovensk
 
 ## Záväzné pravidlá
 - **GDPR**: nikdy nezverejňovať osobné ani kontaktné údaje fyzických osôb. Dodávatelia bez IČO alebo fyzické osoby sa skryjú alebo sa len spočítajú. Pri poslancoch a kandidátoch len meno, strana/klub a hlasy. Texty podnetov občanov sa nezverejňujú.
-- Stránka o ochrane súkromia: prevádzkovateľ je len „mestovcislach.sk“ a info@mestovcislach.sk – meno majiteľa sa nezverejňuje.
+- Stránka o ochrane súkromia: prevádzkovateľ je spoločnosť IT Future s.r.o., kontakt info@mestovcislach.sk – meno majiteľa (fyzickej osoby) sa nezverejňuje.
 - Vetva `diag` je verejná: diagnostické výstupy nikdy nesmú obsahovať osobné údaje (mená, adresy fyzických osôb) – len počty, typy a názvy firiem či inštitúcií.
 - E-mailové adresy odberateľov nikdy nesmú byť v repozitári ani v logoch (sú len v Brevo). Kľúč `BREVO_API_KEY` je len v secrets.
 - Neobchádzať captcha ani iné ochrany zdrojov.
