@@ -23,7 +23,9 @@ const PRESKOC = 'script,style,noscript,code,pre,textarea,svg,canvas,select,optio
 const ATRIBUTY = ['placeholder', 'title', 'aria-label'] as const;
 
 let cache: Record<string, string> = {};
-const KLUC = () => `preklad:${jazyk()}`;
+// v2: staré uložené preklady obsahovali aj nepreložené „ozveny“ – zahodia sa
+const KLUC = () => `preklad2:${jazyk()}`;
+try { for (const j of ['en', 'de', 'pl', 'hu']) localStorage.removeItem(`preklad:${j}`); } catch { /* bez úložiska */ }
 function nacitajCache() { try { cache = JSON.parse(localStorage.getItem(KLUC()) ?? '{}'); } catch { cache = {}; } }
 let ukladanie = 0;
 function ulozCache() {
@@ -140,7 +142,7 @@ async function odosli() {
       davka.forEach(([k, z], i) => {
         const p = preklady[i];
         if (!p) return;
-        cache[k] = p;
+        if (p.trim().toLocaleLowerCase() !== k.toLocaleLowerCase()) cache[k] = p; // nepreložené (ozvenu) neukladať
         z.uzly.forEach((u) => { if (u.isConnected && (u.nodeValue ?? '').trim() === k) nahrad(u, u.nodeValue!, p); });
         z.atr.forEach(([el, a]) => { if (el.getAttribute(a)?.trim() === k) { el.setAttribute(a, p); ((el as any).__prelozene ??= {})[a] = p; } });
       });

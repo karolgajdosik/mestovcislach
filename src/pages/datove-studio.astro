@@ -291,7 +291,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     const nula = x(0), ciara = Number.isFinite(mSK) ? x(mSK) : -1;
     $('ds-stlpce').innerHTML = s.map((o) => {
       const v = o.h[S.u]!, a = Math.min(x(v), nula), w = Math.abs(x(v) - nula);
-      return `<a class="ds-riadok" href="${esc(o.u)}"><span class="ds-meno">${esc(o.n)}<small>${esc(o.okres)}</small></span><span class="ds-pas"><span class="ds-hodnota" style="left:${a.toFixed(2)}%;width:${Math.max(0.4, w).toFixed(2)}%"></span>${ciara >= 0 ? `<span class="ds-median" style="left:${ciara.toFixed(2)}%"></span>` : ''}</span><b>${f(S.u, v)}</b></a>`;
+      return `<a class="ds-riadok" href="${esc(o.u)}"><span class="ds-meno" translate="no">${esc(o.n)}<small>${esc(o.okres)}</small></span><span class="ds-pas"><span class="ds-hodnota" style="left:${a.toFixed(2)}%;width:${Math.max(0.4, w).toFixed(2)}%"></span>${ciara >= 0 ? `<span class="ds-median" style="left:${ciara.toFixed(2)}%"></span>` : ''}</span><b>${f(S.u, v)}</b></a>`;
     }).join('') + (ciara >= 0 ? `<p class="ds-legenda-ciara"><span></span>Medián Slovenska ${f(S.u, mSK)}</p>` : '');
   }
 
@@ -301,7 +301,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   const vybraneObce = () => S.o.split('.').filter(Boolean).map((k) => OBCE.findIndex((o) => o.kod === k)).filter((i) => i >= 0);
   function kresliObceCipy() {
     const el = $('ds-obce-cipy');
-    el.innerHTML = vybraneObce().map((i, j) => `<button type="button" data-kod="${OBCE[i].kod}" style="--f:${FARBY_OBCI[j]}" aria-label="Odobrať ${esc(OBCE[i].n)}"><i aria-hidden="true"></i>${esc(OBCE[i].n)}<small>${esc(OBCE[i].okres)}</small><b aria-hidden="true">✕</b></button>`).join('');
+    el.innerHTML = vybraneObce().map((i, j) => `<button type="button" data-kod="${OBCE[i].kod}" style="--f:${FARBY_OBCI[j]}" aria-label="Odobrať ${esc(OBCE[i].n)}"><i aria-hidden="true"></i><span translate="no">${esc(OBCE[i].n)}</span><small translate="no">${esc(OBCE[i].okres)}</small><b aria-hidden="true">✕</b></button>`).join('');
     el.querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.addEventListener('click', () => { S.o = S.o.split('.').filter((k) => k && k !== b.dataset.kod).join('.'); obnov(); }));
     $<HTMLInputElement>('ds-obec-q').disabled = vybraneObce().length >= 5;
     $<HTMLInputElement>('ds-obec-q').placeholder = vybraneObce().length >= 5 ? 'najviac 5 obcí' : vybraneObce().length ? '+ pridať ďalšiu obec' : '+ pridať obec, napr. Badín';
@@ -322,7 +322,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
       if (t.length < 2) { zatvor(); return; }
       moz = OBCE.map((o, i) => [slug(o.n), i] as const).filter(([n]) => n.includes(t)).sort((a, b) => (a[0].startsWith(t) ? 0 : 1) - (b[0].startsWith(t) ? 0 : 1) || (OBCE[b[1]].h.obyv ?? 0) - (OBCE[a[1]].h.obyv ?? 0)).slice(0, 8).map(([, i]) => i);
       akt = Math.min(akt, Math.max(0, moz.length - 1));
-      zoz.innerHTML = moz.length ? moz.map((i, j) => `<li role="option" data-i="${i}" aria-selected="${j === akt}"><span>${esc(OBCE[i].n)}</span><small>okres ${esc(OBCE[i].okres)} · ${(OBCE[i].h.obyv ?? 0).toLocaleString('sk-SK')} obyv.</small></li>`).join('') : '<li class="ds-pop-nic">Obec sa nenašla</li>';
+      zoz.innerHTML = moz.length ? moz.map((i, j) => `<li role="option" data-i="${i}" aria-selected="${j === akt}" translate="no"><span>${esc(OBCE[i].n)}</span><small>okres ${esc(OBCE[i].okres)} · ${(OBCE[i].h.obyv ?? 0).toLocaleString('sk-SK')} obyv.</small></li>`).join('') : '<li class="ds-pop-nic">Obec sa nenašla</li>';
       zoz.hidden = false; qi.setAttribute('aria-expanded', 'true');
       zoz.querySelectorAll<HTMLLIElement>('li[data-i]').forEach((li) => li.addEventListener('mousedown', (e) => { e.preventDefault(); pridaj(Number(li.dataset.i)); }));
     };
@@ -402,7 +402,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     await Promise.all(OBLASTI.map((o) => nacitajOblast(o.id)));
     if (S.v !== 'porovnanie') return;
     const mSK = (k: string) => median(OBCE.map((o) => o.h[k]).filter((v): v is number => v != null && Number.isFinite(v)));
-    const hlava = `<tr><th scope="col">Ukazovateľ</th>${ix.map((i, j) => `<th scope="col" class="ds-porov-obec"><i style="background:${FARBY_OBCI[j]}"></i><a href="${OBCE[i].u}">${esc(OBCE[i].n)}</a><small>${esc(OBCE[i].okres)}</small></th>`).join('')}<th scope="col" class="ds-porov-sk">Medián SK</th></tr>`;
+    const hlava = `<tr><th scope="col">Ukazovateľ</th>${ix.map((i, j) => `<th scope="col" class="ds-porov-obec"><i style="background:${FARBY_OBCI[j]}"></i><a href="${OBCE[i].u}" translate="no">${esc(OBCE[i].n)}</a><small translate="no">${esc(OBCE[i].okres)}</small></th>`).join('')}<th scope="col" class="ds-porov-sk">Medián SK</th></tr>`;
     const telo = OBLASTI.map((o) => `<tr class="ds-porov-obl"><th colspan="${ix.length + 2}" scope="colgroup">${esc(o.n)}</th></tr>` + o.polia.map((p) => {
       const v = ix.map((i) => OBCE[i].h[p.k]); const cisla = v.filter((x): x is number => x != null);
       const mx = cisla.length > 1 ? Math.max(...cisla) : null, mn = cisla.length > 1 ? Math.min(...cisla) : null;

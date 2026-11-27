@@ -57,7 +57,7 @@ const mesta = MESTA.filter((m) => m.aktivne).sort((a, b) => a.nazov.localeCompar
       <label class="vz-pam"><input type="checkbox" id="vz-pam" /> len s pamiatkami</label>
       <button type="button" class="vz-nahoda" id="vz-nahoda">🎲 Náhodná obec s pamiatkami</button>
     </div>
-    <p class="vz-mesta"><span>Mestá:</span>{mesta.map((m) => <a href={`/videozona/?m=${encodeURIComponent(`/${m.slug}/`)}`} data-u={`/${m.slug}/`} data-n={m.nazov}>{m.nazov}</a>)}</p>
+    <p class="vz-mesta"><span>Mestá:</span>{mesta.map((m) => <a href={`/videozona/?m=${encodeURIComponent(`/${m.slug}/`)}`} data-u={`/${m.slug}/`} data-n={m.nazov} translate="no">{m.nazov}</a>)}</p>
   </section>
 
   <p class="vz-stav" id="vz-stav" aria-live="polite" hidden></p>
@@ -73,7 +73,7 @@ const mesta = MESTA.filter((m) => m.aktivne).sort((a, b) => a.nazov.localeCompar
           <li>
             <a class="vz-karta" href={`/videozona/?m=${encodeURIComponent(t.u)}`} data-u={t.u} data-n={t.n}>
               <img src={t.foto} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="320" height="200" />
-              <span class="vz-k-text"><b>{t.n}</b><small>{t.k} · {t.pocet} {t.pocet >= 5 ? 'pamiatok' : 'pamiatky'}</small><small class="vz-k-pam">{t.pam.join(' · ')}</small></span>
+              <span class="vz-k-text"><b translate="no">{t.n}</b><small><span translate="no">{t.k}</span> · {t.pocet} {t.pocet >= 5 ? 'pamiatok' : 'pamiatky'}</small><small class="vz-k-pam" translate="no">{t.pam.join(' · ')}</small></span>
             </a>
           </li>
         ))}
@@ -122,7 +122,7 @@ const mesta = MESTA.filter((m) => m.aktivne).sort((a, b) => a.nazov.localeCompar
     const pod = (a: Riadok, b: Riadok) => a[1] === 1 && b[1] !== 1 ? -1 : b[1] === 1 && a[1] !== 1 ? 1 : b[4] - a[4] || a[0].localeCompare(b[0], 'sk');
     vysledky = [...zac.sort(pod), ...obs.sort(pod)].slice(0, 12);
     nav.innerHTML = vysledky.length
-      ? vysledky.map((r, i) => `<li role="option" id="vz-n${i}" data-i="${i}"><b>${hx(r[0])}</b><span>${TYP[r[1]]} · ${hx(r[3])}</span>${r[4] ? `<em>🏛 ${r[4]} ${r[4] >= 5 ? 'pamiatok' : r[4] > 1 ? 'pamiatky' : 'pamiatka'}</em>` : ''}</li>`).join('')
+      ? vysledky.map((r, i) => `<li role="option" id="vz-n${i}" data-i="${i}"><b translate="no">${hx(r[0])}</b><span>${TYP[r[1]]} · <span translate="no">${hx(r[3])}</span></span>${r[4] ? `<em>🏛 ${r[4]} ${r[4] >= 5 ? 'pamiatok' : r[4] > 1 ? 'pamiatky' : 'pamiatka'}</em>` : ''}</li>`).join('')
       : '<li class="vz-nic">Nič sa nenašlo – skúste iný názov alebo zrušte filter.</li>';
     nav.hidden = false; pole.setAttribute('aria-expanded', 'true');
   };

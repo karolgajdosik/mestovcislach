@@ -22,7 +22,9 @@ export async function prelozJeden(env: any, text: string, ciel: string, zdroj = 
   if (ulozene) return ulozene.text();
   const r: any = await env.AI.run(MODEL, { text, source_lang: zdroj, target_lang: ciel });
   const preklad = String(r?.translated_text ?? '').trim() || text;
-  await cache.put(kluc, new Response(preklad, { headers: { 'Cache-Control': 'public, max-age=2592000' } }));
+  // model krátke texty občas vráti nepreložené – takú „ozvenu“ ukladáme len na deň, aby sa skúsila znova
+  const ozvena = preklad.toLocaleLowerCase() === text.trim().toLocaleLowerCase();
+  await cache.put(kluc, new Response(preklad, { headers: { 'Cache-Control': `public, max-age=${ozvena ? 86400 : 2592000}` } }));
   return preklad;
 }
 
