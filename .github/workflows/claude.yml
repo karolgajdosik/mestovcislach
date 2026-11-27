@@ -35,8 +35,10 @@ jobs:
         id: token
         env:
           T: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          K: ${{ secrets.ANTHROPIC_API_KEY }}
+        # stačí jeden z nich: CLAUDE_CODE_OAUTH_TOKEN (predplatné, `claude setup-token`) alebo ANTHROPIC_API_KEY (Claude Console, platí sa podľa použitia)
         run: |
-          if [ -z "$T" ]; then echo "::notice::Chýba secret CLAUDE_CODE_OAUTH_TOKEN – @claude zatiaľ nie je zapnutý."; echo "ok=0" >> "$GITHUB_OUTPUT"; else echo "ok=1" >> "$GITHUB_OUTPUT"; fi
+          if [ -z "$T" ] && [ -z "$K" ]; then echo "::notice::Chýba secret CLAUDE_CODE_OAUTH_TOKEN alebo ANTHROPIC_API_KEY – @claude zatiaľ nie je zapnutý."; echo "ok=0" >> "$GITHUB_OUTPUT"; else echo "ok=1" >> "$GITHUB_OUTPUT"; fi
       - uses: actions/checkout@v5
         if: steps.token.outputs.ok == '1'
         with:
@@ -45,4 +47,5 @@ jobs:
         if: steps.token.outputs.ok == '1'
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           claude_args: "--max-turns 40"
