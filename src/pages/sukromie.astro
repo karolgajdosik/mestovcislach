@@ -1,7 +1,7 @@
 ---
 // Ochrana súkromia – informácie o spracúvaní osobných údajov (čl. 13 a 14 GDPR).
 import Base from '../layouts/Base.astro';
-const AKTUALIZOVANE = '16. októbra 2026';
+const AKTUALIZOVANE = '27. novembra 2026';
 ---
 <Base title="Ochrana súkromia – mestovcislach.sk" description="Ako web mestovcislach.sk zaobchádza s údajmi návštevníkov a s osobnými údajmi v zverejnených otvorených dátach.">
   <section class="hero">
@@ -37,6 +37,8 @@ const AKTUALIZOVANE = '16. októbra 2026';
       <li><strong>Esri</strong> (USA) – letecká snímka na mape, ak ju zapnete, a evidencia uzávierok a porúch hlavného mesta, ktorú mesto prevádzkuje na platforme ArcGIS.</li>
       <li><strong>Open-Meteo</strong> (Švajčiarsko) – aktuálne počasie v živej lište.</li>
       <li><strong>Wikimedia Foundation</strong> (USA) – fotky pamiatok a miest v oknách na mape.</li>
+      <li><strong>Prelety a 3D mapa</strong> – podkladová mapa OpenFreeMap, letecké snímky Geodetického a kartografického ústavu (ÚGKK SR, Slovensko), náhradná satelitná snímka EOX IT Services (Rakúsko) a výškový model z Amazon Web Services (USA, AWS Open Data). Načítajú sa, len keď si prelet alebo 3D mapu spustíte.</li>
+      <li><strong>GitHub</strong> (USA) – stránka Stav dát načíta zoznam posledných zberov dát priamo z GitHubu.</li>
     </ul>
     <p>Prenos do tretích krajín sa opiera o rozhodnutia Európskej komisie o primeranosti (Švajčiarsko, Spojené kráľovstvo, Data Privacy Framework pre USA) alebo o štandardné zmluvné doložky týchto poskytovateľov.</p>
 
@@ -53,7 +55,7 @@ const AKTUALIZOVANE = '16. októbra 2026';
       <li><strong>Účel a právny základ:</strong> zasielanie súhrnu upozornení na základe vášho súhlasu (čl. 6 ods. 1 písm. a) GDPR). Odber začne až po potvrdení odkazom v e-maile (dvojité potvrdenie).</li>
       <li><strong>Kto adresu spracúva:</strong> služba Brevo (Sendinblue SAS, Paríž, Francúzsko) ako sprostredkovateľ; údaje sú uložené v EÚ. Na webe mestovcislach.sk ani v jeho kóde sa adresy neukladajú.</li>
       <li><strong>Ako dlho:</strong> kým sa neodhlásite. Odhlásiť sa dá jedným klikom v každom e-maile; súhlas môžete odvolať aj e-mailom na info@mestovcislach.sk.</li>
-      <li><strong>Kalendár, súboj miest:</strong> odber kalendára (súbor .ics) ani hra Súboj miest nevyžadujú žiadne údaje; pri súboji ukladáme len počty tipov na mestá, nie kto tipoval.</li>
+      <li><strong>Kalendár, súboj miest, kvízy:</strong> odber kalendára (súbor .ics), hra Súboj miest, Súťaž miest ani kvízy nevyžadujú žiadne údaje; ukladáme len súhrnné počty (tipy na mestá, body za mesto, počet spustených kvízov za mesiac), nie kto hral.</li>
       <li><strong>Čo v e-mailoch nesledujeme:</strong> súhrny posielame len ako verejné informácie o meste; nepoužívame ich na reklamu ani ich neposkytujeme ďalej.</li>
     </ul>
 
@@ -70,8 +72,8 @@ const AKTUALIZOVANE = '16. októbra 2026';
     <h2>Vaše práva</h2>
     <p>Máte právo požadovať prístup k osobným údajom, ich opravu, vymazanie alebo obmedzenie spracúvania a namietať proti spracúvaniu. Napíšte na <a href="mailto:info@mestovcislach.sk">info@mestovcislach.sk</a>. Ak sa domnievate, že s údajmi zaobchádzame nesprávne, môžete podať návrh na <a href="https://dataprotection.gov.sk">Úrad na ochranu osobných údajov SR</a>, Hraničná 12, 820 07 Bratislava.</p>
 
-    <h2>Zabezpečenie</h2>
-    <p>Web sa načítava len cez šifrované spojenie (HTTPS) a má nastavené pravidlá, ktoré prehliadaču zakazujú spúšťať kód z cudzích zdrojov a vkladať web do iných stránok. Zdrojový kód je verejne na <a href="https://github.com/karolgajdosik/mestovcislach">GitHube</a>.</p>
+    <h2 id="zabezpecenie">Zabezpečenie</h2>
+    <p>Web sa načítava len cez šifrované spojenie (HTTPS) a má nastavené pravidlá, ktoré prehliadaču zakazujú spúšťať kód z cudzích zdrojov a vkladať web do iných stránok (okrem grafov, ktoré si niekto sám vloží na svoj web). Formuláre a asistent majú limit počtu požiadaviek z jednej IP adresy. Zdrojový kód je verejne na <a href="https://github.com/karolgajdosik/mestovcislach">GitHube</a>. Bezpečnostnú chybu, prosím, nahláste na info@mestovcislach.sk (<a href="/.well-known/security.txt">security.txt</a>).</p>
 
     <p class="zdroj">Aktualizované {AKTUALIZOVANE}.</p>
   </article>

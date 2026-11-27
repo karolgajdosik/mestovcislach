@@ -5,8 +5,18 @@ const EMAIL = /^[^\s@<>()[\]\\,;:"]{1,64}@[^\s@<>()[\]\\,;:"]{1,190}\.[a-z]{2,24
 const odpoved = (stav: number, sprava: string) =>
   new Response(JSON.stringify({ ok: stav < 300, sprava }), { status: stav, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
 
-export const onRequestPost = async ({ request, env }: any) => {
+// Ochrana pred zneužitím (posielanie potvrdzovacích e-mailov na cudzie adresy): najviac 6 pokusov z jednej IP za hodinu.
+// Počítadlo je len v cache Cloudflare, zanikne po hodine a nespája sa s adresou.
+const LIMIT_ZA_HODINU = 6;
+
+export const onRequestPost = async ({ request, env, waitUntil }: any) => {
   if (!env.BREVO_API_KEY) return odpoved(503, 'E-mailové upozornenia sa ešte pripravujú.');
+  const ip = request.headers.get('CF-Connecting-IP') ?? 'x';
+  const cache = (caches as any).default as Cache;
+  const limitKluc = new Request(`https://limit-odber.mestovcislach.sk/${encodeURIComponent(ip)}/${Math.floor(Date.now() / 3600e3)}`);
+  const pocet = Number((await (await cache.match(limitKluc))?.text()) ?? 0);
+  if (pocet >= LIMIT_ZA_HODINU) return odpoved(429, 'Príliš veľa pokusov – skúste to, prosím, o hodinu.');
+  waitUntil(cache.put(limitKluc, new Response(String(pocet + 1), { headers: { 'Cache-Control': 'max-age=3600' } })));
   let d: any;
   try { d = await request.json(); } catch { return odpoved(400, 'Neplatná požiadavka.'); }
   if (d.web) return odpoved(200, 'Skontrolujte si e-mail.'); // vyplnené skryté pole = robot

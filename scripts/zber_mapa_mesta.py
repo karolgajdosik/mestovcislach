@@ -42,6 +42,8 @@ MC = re.compile(r"mestska_cast|mestska_ca|_m_1$|_m_c$|adresa_m_1", re.I)
 ZAHODIT = re.compile(r"psc|(^|_)mesto$|(^|_)mes$|adresa_mes|obec$|^okres$|krajina|(^|_)kra$|zriadovatel_typ|volby_datum|^okres", re.I)
 VYNECHAT_POLE = re.compile(r"(^|_)(fid|objectid|object_id|globalid|ico|dic|ic_dph|x|y|lat|lon|latitude|longitude|shape|eduid|zverejnil|datum_aktualizacie|krajina|"
                            r"samosprava|ogc_fid|id_|pasport|foto)", re.I)
+# GDPR: e-maily, telefóny a kontaktné osoby sa nezverejňujú (v otvorených dátach miest bývajú aj osobné adresy zamestnancov)
+KONTAKT_POLE = re.compile(r"mail|telef|(^|_)tel(_|$|\d)|mobil|kontakt|osoba|fax", re.I)
 
 
 def skupina(nazov: str) -> str | None:
@@ -142,6 +144,7 @@ def main() -> int:
                     detail["Adresa"] = adresa
                 for k in polia:
                     if (k == klucNazov or k.lower() in NAZVY or VYNECHAT_POLE.search(k) or VYNECHAT_POLE.search(alias.get(k) or "")
+                            or KONTAKT_POLE.search(k) or KONTAKT_POLE.search(alias.get(k) or "")
                             or any(je(r, k) for r in (ULICA, CISLO_O, CISLO_S, MC, ZAHODIT)) or re.search(r"^url_|foto", k, re.I)):
                         continue
                     t = hod(k)

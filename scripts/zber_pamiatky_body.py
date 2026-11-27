@@ -181,7 +181,7 @@ def main() -> int:
             em = ii.get("extmetadata") or {}
             cist = lambda k: re.sub(r"<[^>]+>", "", H.unescape((em.get(k) or {}).get("value", ""))).strip()  # noqa: E731
             if ii.get("thumburl"):
-                fotky[st["title"][5:].replace(" ", "_")] = {"u": ii["thumburl"], "a": cist("Artist")[:80], "l": cist("LicenseShortName")[:40], "s": ii.get("descriptionurl", "")}
+                fotky[st["title"][5:].replace(" ", "_")] = {"u": ii["thumburl"], "a": re.sub(r"\s*[,;]?\s*[\w.+-]+@[\w-]+(\.[\w-]+)+", "", cist("Artist")).strip(" ,;")[:80], "l": cist("LicenseShortName")[:40], "s": ii.get("descriptionurl", "")}
         time.sleep(0.3)
     print(f"Fotky s licenciou: {len(fotky)}")
 
