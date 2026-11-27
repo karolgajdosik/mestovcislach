@@ -5,7 +5,7 @@
 // z /data/studio/<oblast>.json až keď ich treba – žiadne súbory na obec.
 import Base from '../layouts/Base.astro';
 import { krajeMapy, SIRKA, VYSKA } from '../lib/obce';
-import { OBLASTI, VSETKY_POLIA, OPISY } from '../lib/studio-ukazovatele';
+import { OBLASTI, VSETKY_POLIA, OPISY, RAD_PRE } from '../lib/studio-ukazovatele';
 import '../styles/stranka.css';
 import '../styles/obce.css';
 const kraje = krajeMapy();
@@ -33,7 +33,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     <p class="lead">{VSETKY_POLIA.length} ukazovateľov v {OBLASTI.length} oblastiach pre všetky obce a mestá Slovenska. Vyberte, čo chcete vidieť a pre ktoré obce – a pozrite sa na to ako na graf, mapu alebo tabuľku. Pohľad sa dá stiahnuť, poslať odkazom alebo vložiť na vlastný web.</p>
   </section>
 
-  <div class="ds" id="ds">
+  <div class="ds" id="ds" data-rady={JSON.stringify(RAD_PRE)}>
     <section class="card ds-filter" aria-label="Filter">
       <div class="ds-krok">
         <div class="ds-krok-hl">
@@ -66,6 +66,16 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
         </div>
         <button type="button" class="ds-zobraz" id="ds-zobraz">Zobraziť <b id="ds-pocet">…</b> <span id="ds-pocet-s">obcí</span></button>
       </div>
+      <div class="ds-krok ds-krok-obce">
+        <label class="ds-lbl" for="ds-obec-q">5. Porovnať konkrétne obce <span class="ds-volit">(voliteľné, najviac 5 – pre Vývoj v čase a Porovnanie obcí)</span></label>
+        <div class="ds-obce">
+          <span class="ds-obce-cipy" id="ds-obce-cipy"></span>
+          <span class="ds-obce-hl">
+            <input id="ds-obec-q" type="text" role="combobox" aria-expanded="false" aria-controls="ds-obec-zoz" autocomplete="off" placeholder="+ pridať obec, napr. Badín" />
+            <ul class="ds-obec-zoz" id="ds-obec-zoz" role="listbox" hidden></ul>
+          </span>
+        </div>
+      </div>
       <div class="ds-aktivne" id="ds-akt" hidden><span>Aktívne:</span><span class="ds-stitky" id="ds-stitky"></span></div>
     </section>
 
@@ -75,6 +85,8 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
           <button type="button" role="tab" data-v="graf" aria-selected="true">Graf</button>
           <button type="button" role="tab" data-v="mapa" aria-selected="false">Mapa</button>
           <button type="button" role="tab" data-v="tabulka" aria-selected="false">Tabuľka</button>
+          <button type="button" role="tab" data-v="vyvoj" aria-selected="false">Vývoj v čase</button>
+          <button type="button" role="tab" data-v="porovnanie" aria-selected="false">Porovnanie obcí</button>
         </div>
         <div class="ds-akcie">
           <button type="button" id="ds-csv" title="Stiahnuť vybrané obce so všetkými ukazovateľmi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14"/></svg><span>CSV</span></button>
@@ -110,6 +122,13 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
         <div class="ds-pohlad" data-pohlad="tabulka" hidden>
           <div class="tabulka-obal"><table class="ob-tab ds-tab" id="ds-tab"><thead></thead><tbody></tbody></table></div>
           <button type="button" class="ds-viac" id="ds-viac" hidden>Zobraziť všetky</button>
+        </div>
+        <div class="ds-pohlad" data-pohlad="vyvoj" hidden>
+          <div id="ds-vyvoj"></div>
+        </div>
+
+        <div class="ds-pohlad" data-pohlad="porovnanie" hidden>
+          <div id="ds-porov"></div>
         </div>
         <p class="zdroj" id="ds-zdroj"></p>
       </section>
@@ -177,7 +196,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   const FARBY = ['#fde4e7', '#f9bcc4', '#f2909e', '#e6607a', '#d63a5a', '#b81e42', '#8c0f2f'];
   let OBLASTI: Oblast[] = [], POLE = new Map<string, Pole & { o: Oblast }>(), OBCE: Obec[] = [], KRAJE: string[] = [], OKRESY: [number, string][] = [];
   const nacitane = new Map<string, Promise<void>>();
-  const S = { u: 'nez', kraj: '', okres: '', min: '0', v: 'graf', n: '25', por: 'desc' };
+  const S = { u: 'nez', kraj: '', okres: '', min: '0', v: 'graf', n: '25', por: 'desc', o: '', vi: '' };
   let vsetkyRiadky = false, triedenie: { k: string; smer: number } = { k: '', smer: -1 };
 
   const pole = (k: string) => POLE.get(k) ?? ({ k, n: k, j: '', d: 1, z: '', opis: '', pocet: 0, o: { id: '', n: '', popis: '', polia: [] } } as Pole & { o: Oblast });
@@ -203,7 +222,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   function zAdresy() {
     const q = new URLSearchParams(location.search);
     for (const k of Object.keys(S) as (keyof typeof S)[]) { const v = q.get(k); if (v != null) S[k] = v; }
-    if (!['graf', 'mapa', 'tabulka'].includes(S.v)) S.v = 'graf';
+    if (!['graf', 'mapa', 'tabulka', 'vyvoj', 'porovnanie'].includes(S.v)) S.v = 'graf';
     if (!['0', '500', '1000', '2000', '5000', '10000', '20000'].includes(S.min)) S.min = '0';
   }
   const PRED: typeof S = { ...S };
@@ -247,11 +266,16 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     ].map(([a, b]) => `<div><span>${a}</span><b>${b}</b></div>`).join('') : '<p class="pozn">Pre tento výber nie sú údaje.</p>';
     document.querySelectorAll<HTMLElement>('.ds-pohlad').forEach((p) => (p.hidden = p.dataset.pohlad !== S.v));
     document.querySelectorAll<HTMLButtonElement>('.ds-zalozky button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.v === S.v)));
+    $('ds-suhrn').hidden = S.v === 'porovnanie';
+    kresliObceCipy();
     if (S.v === 'graf') kresliStlpce(vyb, mSK);
     else if (S.v === 'mapa') kresliMapu(vyb);
+    else if (S.v === 'vyvoj') kresliVyvoj(vyb);
+    else if (S.v === 'porovnanie') kresliPorovnanie();
     else kresliTabulku(vyb);
     const bez = vyb.length - hodn.length;
     const kl = [S.u];
+    if (S.v === 'porovnanie') { $('ds-zdroj').innerHTML = 'Zdroje sú uvedené pri každom ukazovateli vo výbere (Hľadať ukazovateľ) a v súbore CSV.'; doAdresy(); return; }
     const zdroje = 'Zdroj: ' + kl.map((k) => { const p = pole(k); return `${esc(p.n)} – ${esc(p.z)}${p.p ? ` (${esc(p.p)})` : ''}`; }).join('; ') + '.' + (bez > 0 ? ` Bez údaja: ${bez.toLocaleString('sk-SK')} z ${vyb.length.toLocaleString('sk-SK')} vybraných obcí.` : '');
     $('ds-zdroj').innerHTML = `${zdroje}${vlozene ? ` <a href="https://mestovcislach.sk/datove-studio/${dotaz()}" target="_blank" rel="noopener">Otvoriť v Dátovom štúdiu</a>` : ''}`;
     doAdresy();
@@ -269,6 +293,123 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
       const v = o.h[S.u]!, a = Math.min(x(v), nula), w = Math.abs(x(v) - nula);
       return `<a class="ds-riadok" href="${esc(o.u)}"><span class="ds-meno">${esc(o.n)}<small>${esc(o.okres)}</small></span><span class="ds-pas"><span class="ds-hodnota" style="left:${a.toFixed(2)}%;width:${Math.max(0.4, w).toFixed(2)}%"></span>${ciara >= 0 ? `<span class="ds-median" style="left:${ciara.toFixed(2)}%"></span>` : ''}</span><b>${f(S.u, v)}</b></a>`;
     }).join('') + (ciara >= 0 ? `<p class="ds-legenda-ciara"><span></span>Medián Slovenska ${f(S.u, mSK)}</p>` : '');
+  }
+
+
+  // ---------- vybrané obce na porovnanie (S.o = kódy oddelené bodkou) ----------
+  const FARBY_OBCI = ['#2563eb', '#0d9488', '#d97706', '#7c3aed', '#16a34a'];
+  const vybraneObce = () => S.o.split('.').filter(Boolean).map((k) => OBCE.findIndex((o) => o.kod === k)).filter((i) => i >= 0);
+  function kresliObceCipy() {
+    const el = $('ds-obce-cipy');
+    el.innerHTML = vybraneObce().map((i, j) => `<button type="button" data-kod="${OBCE[i].kod}" style="--f:${FARBY_OBCI[j]}" aria-label="Odobrať ${esc(OBCE[i].n)}"><i aria-hidden="true"></i>${esc(OBCE[i].n)}<small>${esc(OBCE[i].okres)}</small><b aria-hidden="true">✕</b></button>`).join('');
+    el.querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.addEventListener('click', () => { S.o = S.o.split('.').filter((k) => k && k !== b.dataset.kod).join('.'); obnov(); }));
+    $<HTMLInputElement>('ds-obec-q').disabled = vybraneObce().length >= 5;
+    $<HTMLInputElement>('ds-obec-q').placeholder = vybraneObce().length >= 5 ? 'najviac 5 obcí' : vybraneObce().length ? '+ pridať ďalšiu obec' : '+ pridať obec, napr. Badín';
+  }
+  {
+    const qi = $<HTMLInputElement>('ds-obec-q'), zoz = $('ds-obec-zoz');
+    let moz: number[] = [], akt = 0;
+    const zatvor = () => { zoz.hidden = true; qi.setAttribute('aria-expanded', 'false'); };
+    const pridaj = (i: number) => {
+      const k = OBCE[i].kod; const kk = S.o.split('.').filter(Boolean);
+      if (!kk.includes(k) && kk.length < 5) S.o = [...kk, k].join('.');
+      qi.value = ''; zatvor();
+      if (S.v !== 'vyvoj' && S.v !== 'porovnanie') S.v = 'porovnanie';
+      obnov();
+    };
+    const kresliZoz = () => {
+      const t = slug(qi.value.trim());
+      if (t.length < 2) { zatvor(); return; }
+      moz = OBCE.map((o, i) => [slug(o.n), i] as const).filter(([n]) => n.includes(t)).sort((a, b) => (a[0].startsWith(t) ? 0 : 1) - (b[0].startsWith(t) ? 0 : 1) || (OBCE[b[1]].h.obyv ?? 0) - (OBCE[a[1]].h.obyv ?? 0)).slice(0, 8).map(([, i]) => i);
+      akt = Math.min(akt, Math.max(0, moz.length - 1));
+      zoz.innerHTML = moz.length ? moz.map((i, j) => `<li role="option" data-i="${i}" aria-selected="${j === akt}"><span>${esc(OBCE[i].n)}</span><small>okres ${esc(OBCE[i].okres)} · ${(OBCE[i].h.obyv ?? 0).toLocaleString('sk-SK')} obyv.</small></li>`).join('') : '<li class="ds-pop-nic">Obec sa nenašla</li>';
+      zoz.hidden = false; qi.setAttribute('aria-expanded', 'true');
+      zoz.querySelectorAll<HTMLLIElement>('li[data-i]').forEach((li) => li.addEventListener('mousedown', (e) => { e.preventDefault(); pridaj(Number(li.dataset.i)); }));
+    };
+    qi.addEventListener('input', () => { akt = 0; kresliZoz(); });
+    qi.addEventListener('blur', zatvor);
+    qi.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); akt = Math.max(0, Math.min(moz.length - 1, akt + (e.key === 'ArrowDown' ? 1 : -1))); kresliZoz(); }
+      else if (e.key === 'Enter') { e.preventDefault(); if (moz[akt] != null && !zoz.hidden) pridaj(moz[akt]); }
+      else if (e.key === 'Escape') zatvor();
+    });
+  }
+
+  // ---------- Vývoj v čase ----------
+  type Rad = { id: string; n: string; j: string; d: number; z: string; roky: string[]; h: (number | null)[][] };
+  const RAD_PRE: Record<string, string> = JSON.parse(document.getElementById('ds')!.dataset.rady || '{}');
+  const rady = new Map<string, Promise<Rad>>();
+  const nacitajRad = (id: string) => { if (!rady.has(id)) rady.set(id, fetch(`/data/studio/vyvoj/${id}.json`).then((r) => r.json())); return rady.get(id)!; };
+  async function kresliVyvoj(vyb: Obec[]) {
+    const el = $('ds-vyvoj');
+    const id = RAD_PRE[S.u];
+    if (!id) {
+      const tipy = Object.keys(RAD_PRE).filter((k) => POLE.has(k)).filter((k, i, a) => a.findIndex((x) => RAD_PRE[x] === RAD_PRE[k]) === i).slice(0, 14);
+      el.innerHTML = `<p class="ds-vyvoj-nic">Pre ukazovateľ „${esc(pole(S.u).n)}“ máme len jeden rok (napr. zo sčítania 2021), takže vývoj sa nedá ukázať. Vývoj v čase je pri týchto ukazovateľoch:</p><div class="ds-ukp">${tipy.map((k) => `<button type="button" data-k="${k}">${esc(pole(k).n)}</button>`).join('')}</div>`;
+      el.querySelectorAll<HTMLButtonElement>('button[data-k]').forEach((b) => b.addEventListener('click', async () => { S.u = b.dataset.k!; popisVyberaca('ds-u', S.u); await obnov(); }));
+      return;
+    }
+    el.innerHTML = '<p class="pozn">Načítavam vývoj…</p>';
+    const rad = await nacitajRad(id);
+    if (S.v !== 'vyvoj' || RAD_PRE[S.u] !== id) return;
+    const idxVyb = new Set(vyb.map((o) => OBCE.indexOf(o)));
+    const filtrovane = idxVyb.size < OBCE.length;
+    const medianRok = (ix: Iterable<number>) => rad.roky.map((_, j) => { const a: number[] = []; for (const i of ix) { const v = rad.h[i]?.[j]; if (v != null) a.push(v); } return a.length ? median(a) : null; });
+    const vsetky = OBCE.map((_, i) => i);
+    const ciary: { n: string; f: string; h: (number | null)[]; hrubka: number; ciarka?: boolean }[] = [{ n: 'Medián Slovenska', f: 'var(--muted)', h: medianRok(vsetky), hrubka: 2, ciarka: true }];
+    if (filtrovane) ciary.push({ n: `Medián výberu (${popisVyberu(vyb.length).split(' · ')[0]})`, f: 'var(--accent)', h: medianRok(idxVyb), hrubka: 3 });
+    vybraneObce().forEach((i, j) => ciary.push({ n: OBCE[i].n, f: FARBY_OBCI[j], h: rad.h[i] ?? [], hrubka: 2.5 }));
+    // index: každá čiara prepočítaná na 100 v prvom roku s údajom – porovná rast veľkých aj malých obcí
+    const mozIdx = !['prir', 'mig', 'vysl'].includes(id); // pri záporných hodnotách index nedáva zmysel
+    const idx = S.vi === 'idx' && mozIdx;
+    if (idx) for (const c of ciary) { const z = c.h.find((v) => v != null && v !== 0); c.h = c.h.map((v) => (v == null || !z ? null : Math.round((v / z) * 1000) / 10)); }
+    const jed = idx ? '' : rad.j, des = idx ? 1 : rad.d;
+    const W = 820, H = 360, L = 64, R = 16, T = 16, B = 40;
+    const vals = ciary.flatMap((c) => c.h.filter((v): v is number => v != null));
+    if (!vals.length) { el.innerHTML = '<p class="pozn">Pre tento výber nie sú údaje o vývoji.</p>'; return; }
+    let y0 = Math.min(...vals), y1 = Math.max(...vals);
+    if (y0 === y1) { y0 -= 1; y1 += 1; }
+    const pad = (y1 - y0) * 0.08; y0 = y0 >= 0 && y0 - pad < 0 ? 0 : y0 - pad; y1 += pad;
+    const n = rad.roky.length;
+    const X = (j: number) => L + (n === 1 ? (W - L - R) / 2 : (j / (n - 1)) * (W - L - R));
+    const Y = (v: number) => T + (1 - (v - y0) / (y1 - y0)) * (H - T - B);
+    const fr = (v: number) => v.toLocaleString('sk-SK', { maximumFractionDigits: des, minimumFractionDigits: des });
+    const tick = Array.from({ length: 5 }, (_, i) => y0 + ((y1 - y0) * i) / 4);
+    const krokX = Math.max(1, Math.ceil(n / 12));
+    const cesta = (h: (number | null)[]) => { let d = '', pero = false; h.forEach((v, j) => { if (v == null) { pero = false; return; } d += `${pero ? 'L' : 'M'}${X(j).toFixed(1)},${Y(v).toFixed(1)}`; pero = true; }); return d; };
+    const svg = `<svg class="ds-vyvoj-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Vývoj ukazovateľa ${esc(rad.n)}">
+      ${tick.map((t) => `<line x1="${L}" x2="${W - R}" y1="${Y(t).toFixed(1)}" y2="${Y(t).toFixed(1)}" class="ds-mriezka"/><text x="${L - 8}" y="${(Y(t) + 4).toFixed(1)}" class="ds-os" text-anchor="end">${fr(t)}</text>`).join('')}
+      ${rad.roky.map((r, j) => (j % krokX === 0 || j === n - 1 ? `<text x="${X(j).toFixed(1)}" y="${H - 14}" class="ds-os" text-anchor="middle">${esc(r)}</text>` : '')).join('')}
+      ${ciary.map((c) => `<path d="${cesta(c.h)}" fill="none" stroke="${c.f}" stroke-width="${c.hrubka}" ${c.ciarka ? 'stroke-dasharray="6 5"' : ''} stroke-linejoin="round" stroke-linecap="round"/>
+        ${c.h.map((v, j) => (v == null ? '' : `<circle cx="${X(j).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="${n > 20 ? 2.2 : 3.5}" fill="${c.f}"><title>${esc(c.n)}, ${esc(rad.roky[j])}: ${fr(v)}${jed ? ` ${esc(jed)}` : ''}</title></circle>`)).join('')}`).join('')}
+    </svg>`;
+    const posl = (h: (number | null)[]) => { for (let j = h.length - 1; j >= 0; j--) if (h[j] != null) return [h[j]!, j] as const; return null; };
+    const prvy = (h: (number | null)[]) => { for (let j = 0; j < h.length; j++) if (h[j] != null) return [h[j]!, j] as const; return null; };
+    const leg = ciary.map((c) => { const a = prvy(c.h), b = posl(c.h); const zm = a && b && a[1] !== b[1] ? b[0] - a[0] : null;
+      return `<li><i style="background:${c.f}${c.ciarka ? ';opacity:.7' : ''}"></i><span>${esc(c.n)}</span><b>${b ? fr(b[0]) + (jed ? ` ${esc(jed)}` : '') : '–'}</b>${zm != null ? `<small class="${zm > 0 ? 'hore' : zm < 0 ? 'dole' : ''}">${zm > 0 ? '+' : ''}${fr(zm)} od ${esc(rad.roky[a![1]])}</small>` : ''}</li>`; }).join('');
+    el.innerHTML = `<div class="ds-vyvoj-hl"><p class="ds-vyvoj-n">${esc(rad.n)}${idx ? ' – index (prvý rok = 100)' : rad.j ? ` (${esc(rad.j)})` : ''} · ${esc(rad.roky[0])} – ${esc(rad.roky[n - 1])}</p><div class="ds-seg2" role="radiogroup" aria-label="Zobrazenie hodnôt"${mozIdx ? '' : ' hidden'}><button type="button" role="radio" data-vi="" aria-checked="${!idx}">Hodnoty</button><button type="button" role="radio" data-vi="idx" aria-checked="${idx}" title="Každá čiara začína na 100 – vidno, kto rástol rýchlejšie, aj keď sa obce veľkosťou líšia">Zmena (index)</button></div></div><div class="ds-vyvoj-obal">${svg}</div><ul class="ds-vyvoj-leg">${leg}</ul>`
+      + (vybraneObce().length ? '' : '<p class="pozn">Tip: v kroku 5 pridajte konkrétne obce – ich vývoj sa ukáže ako ďalšie čiary.</p>');
+    el.querySelectorAll<HTMLButtonElement>('[data-vi]').forEach((b) => b.addEventListener('click', () => { S.vi = b.dataset.vi!; kresliVyvoj(vyber()); doAdresy(); }));
+    $('ds-zdroj').textContent = `Zdroj: ${rad.z}. Prepočty na obyvateľov podľa počtu obyvateľov v danom roku.${idx ? ' Index: hodnota v prvom roku s údajom = 100.' : ''}`;
+  }
+
+  // ---------- Porovnanie obcí ----------
+  async function kresliPorovnanie() {
+    const el = $('ds-porov');
+    const ix = vybraneObce();
+    if (!ix.length) { el.innerHTML = '<p class="ds-vyvoj-nic">Pridajte 2 – 5 obcí v kroku <b>5. Porovnať konkrétne obce</b> nad grafom. Uvidíte ich vedľa seba vo všetkých 120 ukazovateľoch.</p>'; return; }
+    el.innerHTML = '<p class="pozn">Načítavam všetky ukazovatele…</p>';
+    await Promise.all(OBLASTI.map((o) => nacitajOblast(o.id)));
+    if (S.v !== 'porovnanie') return;
+    const mSK = (k: string) => median(OBCE.map((o) => o.h[k]).filter((v): v is number => v != null && Number.isFinite(v)));
+    const hlava = `<tr><th scope="col">Ukazovateľ</th>${ix.map((i, j) => `<th scope="col" class="ds-porov-obec"><i style="background:${FARBY_OBCI[j]}"></i><a href="${OBCE[i].u}">${esc(OBCE[i].n)}</a><small>${esc(OBCE[i].okres)}</small></th>`).join('')}<th scope="col" class="ds-porov-sk">Medián SK</th></tr>`;
+    const telo = OBLASTI.map((o) => `<tr class="ds-porov-obl"><th colspan="${ix.length + 2}" scope="colgroup">${esc(o.n)}</th></tr>` + o.polia.map((p) => {
+      const v = ix.map((i) => OBCE[i].h[p.k]); const cisla = v.filter((x): x is number => x != null);
+      const mx = cisla.length > 1 ? Math.max(...cisla) : null, mn = cisla.length > 1 ? Math.min(...cisla) : null;
+      return `<tr class="${p.k === S.u ? 'ds-porov-akt' : ''}"><th scope="row"><button type="button" data-k="${p.k}" title="${esc(p.opis ?? '')}">${esc(p.n)}</button>${p.j && p.j !== 'rok' ? ` <small>${esc(p.j)}</small>` : ''}</th>${v.map((x) => `<td class="${x != null && mx !== mn && x === mx ? 'ds-max' : x != null && mx !== mn && x === mn ? 'ds-min' : ''}">${f(p.k, x, false)}</td>`).join('')}<td class="ds-porov-sk">${f(p.k, mSK(p.k), false)}</td></tr>`;
+    }).join('')).join('');
+    el.innerHTML = `<p class="pozn">Tučne najvyššia hodnota spomedzi vybraných obcí, kurzívou najnižšia. Kliknutím na ukazovateľ ho zobrazíte v grafe.</p><div class="tabulka-obal"><table class="ob-tab ds-porov-tab"><thead>${hlava}</thead><tbody>${telo}</tbody></table></div>`;
+    el.querySelectorAll<HTMLButtonElement>('button[data-k]').forEach((b) => b.addEventListener('click', async () => { S.u = b.dataset.k!; S.v = 'graf'; popisVyberaca('ds-u', S.u); await obnov(); $('studio-vysledok').scrollIntoView({ block: 'start' }); }));
   }
 
   function kresliMapu(vyb: Obec[]) {
@@ -502,6 +643,51 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     .ds-obl button { min-height: 34px; padding: 0 9px; font-size: 0.82rem; gap: 5px; }
     .ds-ukp button { min-height: 38px; padding: 0 13px; font-size: 0.86rem; }
   }
+  .ds-volit { text-transform: none; letter-spacing: 0; font-weight: 500; }
+  .ds-obce { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 6px; min-height: 52px; border: 1.5px dashed var(--line); border-radius: 12px; }
+  .ds-obce-cipy { display: contents; }
+  .ds-obce-cipy :global(button) { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 0 6px 0 10px; border: 1.5px solid var(--f); border-radius: 18px; background: var(--card); color: var(--text); font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
+  .ds-obce-cipy :global(button i) { width: 10px; height: 10px; border-radius: 5px; background: var(--f); }
+  .ds-obce-cipy :global(button small) { color: var(--muted); font-weight: 500; font-size: 0.75rem; }
+  .ds-obce-cipy :global(button b) { display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; border-radius: 10px; background: var(--bg); font-size: 0.62rem; }
+  .ds-obce-hl { position: relative; flex: 1 1 200px; }
+  .ds-obce-hl input { width: 100%; min-height: 38px; padding: 0 10px; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 0.95rem; outline: none; box-sizing: border-box; }
+  .ds-obec-zoz { position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; min-width: 280px; max-width: 100%; margin: 0; padding: 6px; list-style: none; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18); }
+  .ds-obec-zoz[hidden] { display: none; }
+  .ds-obec-zoz :global(li[data-i]) { display: flex; flex-direction: column; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+  .ds-obec-zoz :global(li span) { font-weight: 600; }
+  .ds-obec-zoz :global(li small) { color: var(--muted); font-size: 0.78rem; }
+  .ds-obec-zoz :global(li[aria-selected='true']), .ds-obec-zoz :global(li[data-i]:hover) { background: var(--bg); color: var(--accent); }
+  .ds-obec-zoz :global(.ds-pop-nic) { padding: 8px 10px; color: var(--muted); }
+  #ds-vyvoj :global(.ds-vyvoj-hl) { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; margin: 4px 0 8px; }
+  #ds-vyvoj :global(.ds-vyvoj-n) { margin: 0; font-weight: 700; }
+  #ds-vyvoj :global(.ds-seg2) { display: inline-flex; gap: 2px; padding: 3px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); }
+  #ds-vyvoj :global(.ds-seg2 button) { min-height: 32px; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; color: var(--text); font: inherit; font-size: 0.84rem; font-weight: 600; cursor: pointer; }
+  #ds-vyvoj :global(.ds-seg2 button[aria-checked='true']) { background: var(--card); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14); }
+  #ds-vyvoj :global(.ds-vyvoj-nic), #ds-porov :global(.ds-vyvoj-nic) { margin: 8px 0 12px; line-height: 1.5; }
+  #ds-vyvoj :global(.ds-vyvoj-obal) { overflow-x: auto; }
+  #ds-vyvoj :global(.ds-vyvoj-svg) { width: 100%; min-width: 520px; height: auto; display: block; }
+  #ds-vyvoj :global(.ds-mriezka) { stroke: var(--line); stroke-width: 1; }
+  #ds-vyvoj :global(.ds-os) { fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  #ds-vyvoj :global(.ds-vyvoj-leg) { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px 16px; }
+  #ds-vyvoj :global(.ds-vyvoj-leg li) { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; column-gap: 8px; align-items: baseline; font-size: 0.9rem; }
+  #ds-vyvoj :global(.ds-vyvoj-leg i) { width: 14px; height: 4px; border-radius: 2px; align-self: center; }
+  #ds-vyvoj :global(.ds-vyvoj-leg b) { font-variant-numeric: tabular-nums; }
+  #ds-vyvoj :global(.ds-vyvoj-leg small) { grid-column: 2 / -1; color: var(--muted); font-size: 0.78rem; }
+  #ds-porov :global(.ds-porov-tab) { min-width: 560px; }
+  #ds-porov :global(.ds-porov-tab th[scope='row']) { text-align: left; font-weight: 500; }
+  #ds-porov :global(.ds-porov-tab th[scope='row'] button) { border: 0; padding: 0; background: none; color: var(--text); font: inherit; text-align: left; cursor: pointer; }
+  #ds-porov :global(.ds-porov-tab th[scope='row'] button:hover) { color: var(--accent); text-decoration: underline; }
+  #ds-porov :global(.ds-porov-tab th[scope='row'] small) { color: var(--muted); font-size: 0.75rem; }
+  #ds-porov :global(.ds-porov-tab td) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  #ds-porov :global(.ds-porov-obec) { text-align: right; }
+  #ds-porov :global(.ds-porov-obec i) { display: inline-block; width: 10px; height: 10px; border-radius: 5px; margin-right: 6px; }
+  #ds-porov :global(.ds-porov-obec small) { display: block; color: var(--muted); font-weight: 500; font-size: 0.75rem; }
+  #ds-porov :global(.ds-porov-sk) { color: var(--muted); text-align: right; }
+  #ds-porov :global(.ds-porov-obl th) { padding-top: 16px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+  #ds-porov :global(.ds-porov-akt) { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  #ds-porov :global(.ds-max) { font-weight: 800; }
+  #ds-porov :global(.ds-min) { font-style: italic; color: var(--muted); }
   .ds-filter { margin-top: 0 !important; padding: 20px !important; display: flex; flex-direction: column; gap: 16px; }
   .ds-krok { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
   .ds-lbl { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
@@ -531,7 +717,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   .ds { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
   .ds-vysledok { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
   .ds-lista { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
-  .ds-zalozky { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+  .ds-zalozky { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; max-width: 100%; padding: 4px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
   .ds-akcie { display: flex; gap: 6px; }
   .ds-akcie svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .ds-akcie button { display: inline-flex; align-items: center; gap: 6px; min-height: 42px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
@@ -548,7 +734,8 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   @media (max-width: 640px) {
     .ds-akcie button span { display: none; }
     .ds-akcie button { padding: 0 11px; }
-    .ds-lista { flex-wrap: nowrap; }
+    .ds-lista { flex-wrap: wrap; }
+    .ds-lista .ds-zalozky button { flex: none; }
     .ds-lista .ds-zalozky button { padding: 0 11px; }
     .ds-lista { gap: 6px; }
     .ds-lista .ds-akcie { gap: 4px; }

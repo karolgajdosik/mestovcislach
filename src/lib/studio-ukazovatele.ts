@@ -400,3 +400,70 @@ export const OPISY: Record<string, string> = {
   ubyt: 'Počet hotelov, penziónov a iných ubytovacích zariadení.',
   vyuz: 'Aká časť lôžok bola v priemere počas roka obsadená.',
 };
+
+// ---------- Vývoj v čase: časové rady pre vybrané ukazovatele ----------
+// Každý rad má roky (alebo mesiace) a hodnoty pre každú obec v poradí riadkyStudia(). Prepočty „na obyvateľa“
+// používajú počet obyvateľov v danom roku (historia.json), aby sa dali porovnať roky aj obce.
+export type Rad = { id: string; n: string; j: string; d: number; z: string; roky: string[]; h: (number | null)[][] };
+export const RAD_PRE: Record<string, string> = {
+  obyv: 'obyv', z10: 'obyv', z93: 'obyv', hus: 'obyv', nez: 'nez', nezr: 'nez',
+  tri: 'tri', triz: 'tri', kg: 'kg', kgz: 'kgz', bio: 'bio',
+  firmy: 'firmy', firmyz: 'firmy', zivn: 'zivn', nezisk: 'nezisk',
+  nar: 'nar', zom: 'zom', prir: 'prir', mig: 'mig',
+  dan: 'dan', trans: 'trans', vysl: 'vysl', maj: 'maj', zav: 'zav', uver: 'uver', hot: 'hot',
+  lozka: 'lozka', lozkap: 'lozkap', ubyt: 'ubyt', vyuz: 'vyuz',
+};
+const MES = ['jan', 'feb', 'mar', 'apr', 'máj', 'jún', 'júl', 'aug', 'sep', 'okt', 'nov', 'dec'];
+let _rady: Rad[] | null = null;
+export function casoveRady(): Rad[] {
+  if (_rady) return _rady;
+  const rr = riadkyStudia();
+  const his = historiaInfo(), hr: string[] = (his?.roky ?? []).map(String), hobce = his?.obce ?? {};
+  const obyvRok = (kod: string, rok: string) => { const a = hobce[kod] as number[] | undefined; if (!a) return null; const i = hr.indexOf(rok); return a[i >= 0 ? i : a.length - 1] ?? null; };
+  const naObyvR = (kod: string, rok: string, v: unknown, k = 1) => { const o = obyvRok(kod, rok); return typeof v === 'number' && o ? r((v / o) * k, k === 1 ? 0 : 1) : null; };
+  const rokyZ = (src: Record<string, any>, f: (o: any) => Record<string, unknown> | undefined) => { const s = new Set<string>(); for (const o of Object.values(src)) for (const y of Object.keys(f(o) ?? {})) s.add(y); return [...s].sort(); };
+  const out: Rad[] = [];
+  const pridaj = (id: string, n: string, j: string, d: number, z: string, roky: string[], f: (kod: string, rok: string) => number | null) =>
+    out.push({ id, n, j, d, z, roky, h: rr.map((x) => roky.map((y) => { const v = f(x.kod, y); return v == null || !Number.isFinite(v) ? null : v; })) });
+  // obyvatelia
+  pridaj('obyv', 'Obyvatelia', '', 0, 'ŠÚ SR, 1993 – 2025', hr, (k, y) => obyvRok(k, y));
+  // nezamestnanosť (mesačne)
+  const nz = nezamInfo()?.obce ?? {}; const mesiace = rokyZ(nz, (o) => o.rad);
+  out.push({ id: 'nez', n: 'Miera nezamestnanosti', j: '%', d: 1, z: 'ÚPSVaR, mesačne', roky: mesiace.map((m) => `${MES[Number(m.slice(5)) - 1]} ${m.slice(2, 4)}`), h: rr.map((x) => mesiace.map((m) => num(nz[x.kod]?.rad?.[m]))) });
+  // odpad
+  const od = odpadInfo()?.obce ?? {}; const ro = rokyZ(od, (o) => o);
+  pridaj('tri', 'Vytriedený komunálny odpad', '%', 0, 'ŠÚ SR', ro, (k, y) => num(od[k]?.[y]?.triedene));
+  pridaj('kg', 'Komunálny odpad na obyvateľa', 'kg', 0, 'ŠÚ SR', ro, (k, y) => num(od[k]?.[y]?.kg));
+  pridaj('kgz', 'Zmesový odpad na obyvateľa', 'kg', 0, 'ŠÚ SR', ro, (k, y) => num(od[k]?.[y]?.kg_zmes));
+  pridaj('bio', 'Bioodpad v komunálnom odpade', '%', 1, 'ŠÚ SR', ro, (k, y) => { const o = od[k]?.[y]; return o?.t ? r((100 * o.bio) / o.t) : null; });
+  // firmy
+  const fi = firmyInfo()?.obce ?? {}; const rf = rokyZ(fi, (o) => o);
+  pridaj('firmy', 'Firmy na 1 000 obyvateľov', '', 1, 'ŠÚ SR', rf, (k, y) => naObyvR(k, y, fi[k]?.[y]?.[0], 1000));
+  pridaj('nezisk', 'Neziskové organizácie na 1 000 obyvateľov', '', 1, 'ŠÚ SR', rf, (k, y) => naObyvR(k, y, fi[k]?.[y]?.[1], 1000));
+  pridaj('zivn', 'Živnostníci na 1 000 obyvateľov', '', 1, 'ŠÚ SR', rf, (k, y) => naObyvR(k, y, fi[k]?.[y]?.[2], 1000));
+  // pohyb obyvateľstva
+  const po = pohybInfo()?.obce ?? {}; const rp = rokyZ(po, (o) => o.rad);
+  pridaj('nar', 'Narodení na 1 000 obyvateľov', '', 1, 'ŠÚ SR', rp, (k, y) => naObyvR(k, y, po[k]?.rad?.[y]?.[0], 1000));
+  pridaj('zom', 'Zomrelí na 1 000 obyvateľov', '', 1, 'ŠÚ SR', rp, (k, y) => naObyvR(k, y, po[k]?.rad?.[y]?.[1], 1000));
+  pridaj('prir', 'Prirodzený prírastok na 1 000 obyvateľov', '', 1, 'ŠÚ SR', rp, (k, y) => { const a = po[k]?.rad?.[y]; return a ? naObyvR(k, y, a[0] - a[1], 1000) : null; });
+  pridaj('mig', 'Saldo sťahovania na 1 000 obyvateľov', '', 1, 'ŠÚ SR', rp, (k, y) => naObyvR(k, y, po[k]?.rad?.[y]?.[2], 1000));
+  // hospodárenie (RÚZ)
+  const hosp = new Map(rr.map((x) => [x.kod, hospodarenieObce(x.kod)]));
+  const rh = [...new Set([...hosp.values()].flatMap((h) => Object.keys(h ?? {})))].sort();
+  const H = (pole: string) => (k: string, y: string) => naObyvR(k, y, (hosp.get(k)?.[y] as Record<string, number> | undefined)?.[pole]);
+  pridaj('dan', 'Daňové príjmy na obyvateľa', '€', 0, 'Register účtovných závierok', rh, H('danove_vynosy'));
+  pridaj('trans', 'Prijaté dotácie a transfery na obyvateľa', '€', 0, 'Register účtovných závierok', rh, H('transfery_prijate'));
+  pridaj('vysl', 'Hospodársky výsledok na obyvateľa', '€', 0, 'Register účtovných závierok', rh, H('vysledok'));
+  pridaj('maj', 'Majetok obce na obyvateľa', '€', 0, 'Register účtovných závierok', rh, H('majetok'));
+  pridaj('zav', 'Záväzky obce na obyvateľa', '€', 0, 'Register účtovných závierok', rh, H('zavazky'));
+  pridaj('uver', 'Bankové úvery na obyvateľa', '€', 0, 'Register účtovných závierok', rh, H('bankove_uvery'));
+  pridaj('hot', 'Peniaze na účtoch na obyvateľa', '€', 0, 'Register účtovných závierok', rh, H('financne_ucty'));
+  // cestovný ruch
+  const tu = turizmusInfo()?.obce ?? {}; const rt = rokyZ(tu, (o) => o);
+  pridaj('lozka', 'Lôžka v ubytovacích zariadeniach', '', 0, 'ŠÚ SR', rt, (k, y) => num(tu[k]?.[y]?.lozok));
+  pridaj('lozkap', 'Lôžka na 1 000 obyvateľov', '', 0, 'ŠÚ SR', rt, (k, y) => naObyvR(k, y, tu[k]?.[y]?.lozok, 1000));
+  pridaj('ubyt', 'Ubytovacie zariadenia', '', 0, 'ŠÚ SR', rt, (k, y) => num(tu[k]?.[y]?.zariadeni));
+  pridaj('vyuz', 'Využitie lôžok', '%', 1, 'ŠÚ SR', rt, (k, y) => num(tu[k]?.[y]?.vyuzitie));
+  _rady = out;
+  return out;
+}
