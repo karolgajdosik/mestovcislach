@@ -1,8 +1,8 @@
 {
  "zdroj": "https://opendata.kosice.sk",
  "pocty": {
-  "vynechane": 51,
-  "katalog": 38
+  "vynechane": 52,
+  "katalog": 37
  },
  "datasety": [
   {
@@ -10,9 +10,9 @@
    "nazov": "Cyklosčítače Košice - prašnosť",
    "kategoria": "Bezpečnosť, zdravie",
    "upravene": 1764683916000,
-   "riadkov": 387822,
+   "riadkov": 388233,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (387822 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (388233 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "6323640be4234b479f760435a2654c78",
@@ -136,7 +136,7 @@
    "nazov": "Cyklosčítače Košice - pohyb",
    "kategoria": "Doprava, parkovanie",
    "upravene": 1764684099000,
-   "riadkov": 183314,
+   "riadkov": 183602,
    "stav": "vynechane",
    "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
   },
@@ -466,7 +466,7 @@
    "nazov": "Úradná tabuľa Mesta Košice",
    "kategoria": "Politika, voľby, orgány",
    "upravene": 1764750909000,
-   "riadkov": 84,
+   "riadkov": 78,
    "stav": "vynechane",
    "dovod": "Názvy dokumentov na úradnej tabuli môžu obsahovať mená fyzických osôb (napr. doručovanie písomností) – nezverejňujeme."
   },
@@ -663,16 +663,15 @@
    "nazov": "Školské obvody",
    "kategoria": "Vzdelávanie, veda, výskum",
    "upravene": 1764597708000,
-   "riadkov": 778,
-   "stav": "katalog",
-   "kde": "/kosice/katalog/25267dab3e8a46d6b1fc24d365a28b95",
-   "stlpcov": 7
+   "riadkov": null,
+   "stav": "vynechane",
+   "dovod": "Typ „Feature Service“ bez tabuľkovej služby – nedá sa načítať automaticky. (služba: Expecting value: line 1 column 1 (char 0))"
   },
   {
    "id": "f3fae948601148c9a458e375a572c84c",
    "nazov": "Dodávateľské faktúry mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1795485974000,
+   "upravene": 1795745191000,
    "riadkov": 90220,
    "stav": "vynechane",
    "dovod": "Príliš veľký na všeobecný import (90220 riadkov) – vyžaduje osobitné spracovanie."
@@ -681,19 +680,19 @@
    "id": "06d4cb2866c54b43bb1997f7edf86f4d",
    "nazov": "Objednávky mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1795486060000,
-   "riadkov": 24473,
+   "upravene": 1795745262000,
+   "riadkov": 24504,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (24473 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (24504 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "6b66219049674794b462b90512081220",
    "nazov": "Zmluvy mesta Košice",
    "kategoria": "Zmluvy, faktúry, objednávky",
-   "upravene": 1795486160000,
-   "riadkov": 47130,
+   "upravene": 1795745362000,
+   "riadkov": 47186,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (47130 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (47186 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "9961c8a9cd8e461d8bee1414833746b9",
@@ -791,10 +790,10 @@
    "id": "d3d9f8860c6d4155b620c7ee9d431652",
    "nazov": "Meteostanice na vybraných ZŠ mesta Košice",
    "kategoria": "Životné prostredie a klíma",
-   "upravene": 1769602512000,
-   "riadkov": 746691,
+   "upravene": 1795680496000,
+   "riadkov": 752613,
    "stav": "vynechane",
-   "dovod": "Príliš veľký na všeobecný import (746691 riadkov) – vyžaduje osobitné spracovanie."
+   "dovod": "Príliš veľký na všeobecný import (752613 riadkov) – vyžaduje osobitné spracovanie."
   },
   {
    "id": "975951e6113543768e960c96bbc75f3b",
@@ -845,5 +844,5 @@
    "dovod": "Mapová vrstva bez pravidla na spracovanie – doplniť do osobitného zberu."
   }
  ],
- "aktualizovane": "2026-11-24T15:03:23+00:00"
+ "aktualizovane": "2026-11-27T09:26:57+00:00"
 }

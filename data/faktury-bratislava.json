@@ -4,8 +4,8 @@
    "organizacia": "Magistrát",
    "typ": "faktúry",
    "zdroj": "https://data.bratislava.sk/datasets/7f719a610a7b401fac526b15d0682534",
-   "zaznamov": 151090,
-   "vynechane_bez_ico": 497,
+   "zaznamov": 151682,
+   "vynechane_bez_ico": 498,
    "roky": {
     "2005": {
      "pocet": 11,
@@ -88,52 +88,52 @@
      "suma": 152797993
     },
     "2026": {
-     "pocet": 9321,
-     "suma": 126132991
+     "pocet": 9912,
+     "suma": 131718905
     }
    },
    "dodavatelia_posledne_3_roky": [
     {
      "ico": "00681300",
      "nazov": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
-     "pocet": 124,
-     "suma": 97257313
+     "pocet": 125,
+     "suma": 97257492
     },
     {
      "ico": "50614339",
      "nazov": "ALDESA CONSTRUCCIONES POLSKA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, organizačná zložka",
-     "pocet": 56,
-     "suma": 74170101
+     "pocet": 57,
+     "suma": 74384537
     },
     {
      "ico": "54302102",
      "nazov": "Technické siete Bratislava, a.s.",
-     "pocet": 111,
-     "suma": 23558842
+     "pocet": 115,
+     "suma": 24448338
     },
     {
      "ico": "35943653",
      "nazov": "Pittel + Brausewetter s.r.o.",
-     "pocet": 322,
-     "suma": 21588824
+     "pocet": 338,
+     "suma": 21935113
     },
     {
      "ico": "44298170",
      "nazov": "HOCHTIEF SK s.r.o.",
-     "pocet": 310,
-     "suma": 15852698
+     "pocet": 334,
+     "suma": 16274209
     },
     {
      "ico": "17317282",
      "nazov": "STRABAG s.r.o.",
-     "pocet": 103,
-     "suma": 14223966
+     "pocet": 107,
+     "suma": 15268829
     },
     {
      "ico": "45917833",
      "nazov": "A.I.I. Technické služby s. r. o.",
-     "pocet": 489,
-     "suma": 13512079
+     "pocet": 500,
+     "suma": 13787025
     },
     {
      "ico": "50778501",
@@ -144,38 +144,38 @@
     {
      "ico": "35738880",
      "nazov": "PAAS s.r.o.",
-     "pocet": 240,
-     "suma": 13132711
+     "pocet": 241,
+     "suma": 13155855
     },
     {
      "ico": "35850370",
      "nazov": "Bratislavská vodárenská spoločnosť, a.s.",
-     "pocet": 2620,
-     "suma": 9088044
+     "pocet": 2667,
+     "suma": 9372164
     },
     {
      "ico": "35943301",
      "nazov": "KAMI PROFIT, s.r.o.",
-     "pocet": 30,
-     "suma": 9002983
+     "pocet": 32,
+     "suma": 9005433
     },
     {
      "ico": "35778806",
      "nazov": "zares, spol. s r.o.",
-     "pocet": 1272,
-     "suma": 7229691
+     "pocet": 1282,
+     "suma": 7273657
     },
     {
      "ico": "00688967",
      "nazov": "Športový klub IAMES Bratislava",
-     "pocet": 259,
-     "suma": 6197197
+     "pocet": 268,
+     "suma": 6404697
     },
     {
      "ico": "35732881",
      "nazov": "METRO Bratislava a.s.",
-     "pocet": 395,
-     "suma": 5264868
+     "pocet": 397,
+     "suma": 5272244
     },
     {
      "ico": "47758970",
@@ -192,20 +192,20 @@
     {
      "ico": "53684141",
      "nazov": "Yunex, s. r. o.",
-     "pocet": 250,
-     "suma": 3775871
+     "pocet": 266,
+     "suma": 3953516
     },
     {
      "ico": "44723024",
      "nazov": "Martiny, s. r. o.",
-     "pocet": 194,
-     "suma": 3222246
+     "pocet": 197,
+     "suma": 3305831
     },
     {
      "ico": "51806576",
      "nazov": "RETAN, s. r. o.",
-     "pocet": 1685,
-     "suma": 2784110
+     "pocet": 1726,
+     "suma": 2879504
     },
     {
      "ico": "31651518",
@@ -338,15 +338,15 @@
     "2023": 19,
     "2024": 20.0,
     "2025": 21.0,
-    "2026": 21.0
+    "2026": 21
    }
   },
   {
    "organizacia": "Magistrát",
    "typ": "objednávky",
    "zdroj": "https://data.bratislava.sk/datasets/e3a9501c0fb64dbf9ff6de81847e3b9a",
-   "zaznamov": 65860,
-   "vynechane_bez_ico": 648,
+   "zaznamov": 65962,
+   "vynechane_bez_ico": 650,
    "roky": {
     "2011": {
      "pocet": 3665,
@@ -409,28 +409,28 @@
      "suma": 48507149
     },
     "2026": {
-     "pocet": 4361,
-     "suma": 55621343
+     "pocet": 4461,
+     "suma": 56587533
     }
    },
    "dodavatelia_posledne_3_roky": [
     {
      "ico": "44298170",
      "nazov": "HOCHTIEF SK s.r.o.",
-     "pocet": 308,
-     "suma": 20978988
+     "pocet": 310,
+     "suma": 20987211
     },
     {
      "ico": "35943653",
      "nazov": "Pittel + Brausewetter s.r.o.",
-     "pocet": 332,
-     "suma": 19840270
+     "pocet": 333,
+     "suma": 19843616
     },
     {
      "ico": "35778806",
      "nazov": "zares, spol. s r.o.",
-     "pocet": 821,
-     "suma": 11123003
+     "pocet": 825,
+     "suma": 11194027
     },
     {
      "ico": "17317282",
@@ -441,32 +441,32 @@
     {
      "ico": "00688967",
      "nazov": "Športový klub IAMES Bratislava",
-     "pocet": 273,
-     "suma": 8179648
+     "pocet": 278,
+     "suma": 8342116
     },
     {
      "ico": "35738880",
      "nazov": "PAAS s.r.o.",
-     "pocet": 18,
-     "suma": 7819478
+     "pocet": 19,
+     "suma": 7855025
     },
     {
      "ico": "53684141",
      "nazov": "Yunex, s. r. o.",
-     "pocet": 288,
-     "suma": 5082839
+     "pocet": 292,
+     "suma": 5140255
     },
     {
      "ico": "44723024",
      "nazov": "Martiny, s. r. o.",
-     "pocet": 138,
-     "suma": 3994434
+     "pocet": 145,
+     "suma": 4111568
     },
     {
      "ico": "51806576",
      "nazov": "RETAN, s. r. o.",
-     "pocet": 1792,
-     "suma": 3731630
+     "pocet": 1803,
+     "suma": 3739013
     },
     {
      "ico": "31606458",
@@ -483,8 +483,8 @@
     {
      "ico": "45917833",
      "nazov": "A.I.I. Technické služby s. r. o.",
-     "pocet": 127,
-     "suma": 1833286
+     "pocet": 129,
+     "suma": 1851145
     },
     {
      "ico": "44101937",
@@ -495,8 +495,8 @@
     {
      "ico": "50700308",
      "nazov": "CSFIT s.r.o.",
-     "pocet": 25,
-     "suma": 1611066
+     "pocet": 26,
+     "suma": 1616683
     },
     {
      "ico": "36740519",
@@ -511,16 +511,16 @@
      "suma": 1353729
     },
     {
+     "ico": "54302102",
+     "nazov": "Technické siete Bratislava, a.s.",
+     "pocet": 46,
+     "suma": 1147796
+    },
+    {
      "ico": "36667102",
      "nazov": "PORR s.r.o.",
      "pocet": 6,
      "suma": 1113096
-    },
-    {
-     "ico": "54302102",
-     "nazov": "Technické siete Bratislava, a.s.",
-     "pocet": 45,
-     "suma": 1110915
     },
     {
      "ico": "31328296",
@@ -614,13 +614,6 @@
      "popis": ""
     },
     {
-     "datum": "2025-11-25",
-     "dodavatel": "HOCHTIEF SK s.r.o.",
-     "ico": "44298170",
-     "suma": 454558.6,
-     "popis": ""
-    },
-    {
      "datum": "2026-08-03",
      "dodavatel": "Športový klub IAMES Bratislava",
      "ico": "00688967",
@@ -640,6 +633,13 @@
      "ico": "17317282",
      "suma": 408482.48,
      "popis": ""
+    },
+    {
+     "datum": "2026-03-04",
+     "dodavatel": "PAAS s.r.o.",
+     "ico": "35738880",
+     "suma": 369000.0,
+     "popis": ""
     }
    ],
    "median_dni_uhrady": null
@@ -648,7 +648,7 @@
    "organizacia": "OLO",
    "typ": "faktúry",
    "zdroj": "https://data.bratislava.sk/datasets/6b2c70340b634aa4b08bb784b9e6bbf8",
-   "zaznamov": 28145,
+   "zaznamov": 28214,
    "vynechane_bez_ico": 409,
    "roky": {
     "2019": {
@@ -680,8 +680,8 @@
      "suma": 19684952
     },
     "2026": {
-     "pocet": 3382,
-     "suma": 19936074
+     "pocet": 3451,
+     "suma": 20094489
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -736,8 +736,8 @@
     {
      "ico": "36249297",
      "nazov": "HANES SLOVAKIA, S.R.O.",
-     "pocet": 126,
-     "suma": 1236370
+     "pocet": 127,
+     "suma": 1243340
     },
     {
      "ico": "36696439",
@@ -766,8 +766,8 @@
     {
      "ico": "45510393",
      "nazov": "BINS S.R.O.",
-     "pocet": 42,
-     "suma": 847230
+     "pocet": 43,
+     "suma": 860371
     },
     {
      "ico": "45966265",
@@ -790,8 +790,8 @@
     {
      "ico": "52008398",
      "nazov": "MARI CARS S.R.O.",
-     "pocet": 292,
-     "suma": 676328
+     "pocet": 293,
+     "suma": 678898
     },
     {
      "ico": "53115775",
@@ -919,8 +919,8 @@
    "organizacia": "OLO",
    "typ": "objednávky",
    "zdroj": "https://data.bratislava.sk/datasets/cb90eb5328e0418eaa7db5103a494ee9",
-   "zaznamov": 12508,
-   "vynechane_bez_ico": 73,
+   "zaznamov": 12525,
+   "vynechane_bez_ico": 74,
    "roky": {
     "2019": {
      "pocet": 2047,
@@ -951,8 +951,8 @@
      "suma": 5127717
     },
     "2026": {
-     "pocet": 1083,
-     "suma": 4172616
+     "pocet": 1099,
+     "suma": 4196791
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -1019,8 +1019,8 @@
     {
      "ico": "00069889",
      "nazov": "MARTIN GmbH fur Umwelt-und Energietechnik",
-     "pocet": 5,
-     "suma": 221725
+     "pocet": 6,
+     "suma": 223280
     },
     {
      "ico": "35748401",
@@ -1190,8 +1190,8 @@
    "organizacia": "OLO",
    "typ": "zmluvy",
    "zdroj": "https://data.bratislava.sk/datasets/a5068dd4455b4df292f2c22e614c2484",
-   "zaznamov": 1944,
-   "vynechane_bez_ico": 346,
+   "zaznamov": 1949,
+   "vynechane_bez_ico": 347,
    "roky": {
     "2015": {
      "pocet": 1,
@@ -1234,12 +1234,12 @@
      "suma": 21368243
     },
     "2025": {
-     "pocet": 151,
-     "suma": 271947060
+     "pocet": 152,
+     "suma": 271948480
     },
     "2026": {
-     "pocet": 152,
-     "suma": 38271696
+     "pocet": 153,
+     "suma": 38540296
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -1477,7 +1477,7 @@
    "organizacia": "Marianum",
    "typ": "faktúry",
    "zdroj": "https://data.bratislava.sk/datasets/bd9ee647db7445ad9b33bf525c41908c",
-   "zaznamov": 17222,
+   "zaznamov": 17248,
    "vynechane_bez_ico": 903,
    "roky": {
     "2021": {
@@ -1497,26 +1497,26 @@
      "suma": 4133159
     },
     "2025": {
-     "pocet": 3742,
-     "suma": 6322060
+     "pocet": 3765,
+     "suma": 6353062
     },
     "2026": {
-     "pocet": 2481,
-     "suma": 4579351
+     "pocet": 2484,
+     "suma": 4583598
     }
    },
    "dodavatelia_posledne_3_roky": [
     {
      "ico": "50635310",
      "nazov": "K-T-S SLOVAKIA PLUS, s.r.o.",
-     "pocet": 200,
-     "suma": 2706261
+     "pocet": 201,
+     "suma": 2717555
     },
     {
      "ico": "53992288",
      "nazov": "Storge Sk s.r.o.",
-     "pocet": 696,
-     "suma": 1541331
+     "pocet": 699,
+     "suma": 1543848
     },
     {
      "ico": "31450911",
@@ -1529,6 +1529,12 @@
      "nazov": "Vladimír Novák",
      "pocet": 29,
      "suma": 519580
+    },
+    {
+     "ico": "36836842",
+     "nazov": "Čopák & partners s.r.o.",
+     "pocet": 35,
+     "suma": 451933
     },
     {
      "ico": "37028707",
@@ -1547,12 +1553,6 @@
      "nazov": "Slovenský plynárenský priemysel, a.s.",
      "pocet": 232,
      "suma": 439688
-    },
-    {
-     "ico": "36836842",
-     "nazov": "Čopák & partners s.r.o.",
-     "pocet": 34,
-     "suma": 438870
     },
     {
      "ico": "50531212",
@@ -1587,8 +1587,8 @@
     {
      "ico": "44483767",
      "nazov": "Energetika Slovensko, a.s.",
-     "pocet": 130,
-     "suma": 244512
+     "pocet": 131,
+     "suma": 244340
     },
     {
      "ico": "00604381",
@@ -1605,8 +1605,8 @@
     {
      "ico": "35850370",
      "nazov": "Bratislavská vodárenská spoločnosť, a.s.",
-     "pocet": 1648,
-     "suma": 162654
+     "pocet": 1650,
+     "suma": 162762
     },
     {
      "ico": "34718761",
@@ -1740,7 +1740,7 @@
    "organizacia": "Marianum",
    "typ": "objednávky",
    "zdroj": "https://data.bratislava.sk/datasets/81abdb9566e84d00aaad5ffd953d791a",
-   "zaznamov": 5702,
+   "zaznamov": 5717,
    "vynechane_bez_ico": 2378,
    "roky": {
     "2022": {
@@ -1756,20 +1756,20 @@
      "suma": 6032399
     },
     "2025": {
-     "pocet": 1060,
-     "suma": 10654078
+     "pocet": 1069,
+     "suma": 10830452
     },
     "2026": {
-     "pocet": 728,
-     "suma": 6563265
+     "pocet": 734,
+     "suma": 6569922
     }
    },
    "dodavatelia_posledne_3_roky": [
     {
      "ico": "40231551",
      "nazov": "Vladimír Novák",
-     "pocet": 42,
-     "suma": 5864217
+     "pocet": 43,
+     "suma": 6031767
     },
     {
      "ico": "50635310",
@@ -1804,8 +1804,8 @@
     {
      "ico": "35778806",
      "nazov": "zares, spol. s r.o.",
-     "pocet": 57,
-     "suma": 656370
+     "pocet": 58,
+     "suma": 656911
     },
     {
      "ico": "37028707",
@@ -1874,16 +1874,16 @@
      "suma": 149051
     },
     {
+     "ico": "44921730",
+     "nazov": "Humania spol. s r.o.",
+     "pocet": 45,
+     "suma": 148989
+    },
+    {
      "ico": "55793282",
      "nazov": "Mgr. Art. Denis Dvorský",
      "pocet": 19,
      "suma": 145916
-    },
-    {
-     "ico": "44921730",
-     "nazov": "Humania spol. s r.o.",
-     "pocet": 44,
-     "suma": 145299
     }
    ],
    "najvacsie_12_mesiacov": [
@@ -2019,5 +2019,5 @@
  "chyby": [
   "Marianum zmluvy: Marianum zmluvy: žiadne použiteľné riadky"
  ],
- "aktualizovane": "2026-11-24T15:01:30+00:00"
+ "aktualizovane": "2026-11-27T09:24:31+00:00"
 }

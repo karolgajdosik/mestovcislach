@@ -1163,8 +1163,8 @@
   {
    "typ": "zmluvy",
    "zdroj": "https://opendata.kosice.sk/datasets/6b66219049674794b462b90512081220",
-   "zaznamov": 47130,
-   "skryte_fyzicke_osoby": 7220,
+   "zaznamov": 47186,
+   "skryte_fyzicke_osoby": 7233,
    "roky": {
     "2010": {
      "pocet": 2,
@@ -1263,10 +1263,10 @@
      "fo_suma": 80771190
     },
     "2026": {
-     "pocet": 1165,
-     "suma": 242982107,
-     "fo_pocet": 532,
-     "fo_suma": 96689775
+     "pocet": 1189,
+     "suma": 248000168,
+     "fo_pocet": 545,
+     "fo_suma": 97634635
     }
    },
    "dodavatelia_posledne_3_roky": [
@@ -1278,8 +1278,8 @@
     },
     {
      "ico": "50349287",
-     "pocet": 33,
-     "suma": 41811399,
+     "pocet": 36,
+     "suma": 44680668,
      "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky"
     },
     {
@@ -1325,16 +1325,16 @@
      "nazov": "Ministerstvo práce, sociálnych vecí a rodiny Slovenskej republiky"
     },
     {
+     "ico": "31684343",
+     "pocet": 4,
+     "suma": 9056813,
+     "nazov": "BETPRES s.r.o."
+    },
+    {
      "ico": "50673289",
      "pocet": 11,
      "suma": 8547426,
      "nazov": "Box Park, s.r.o."
-    },
-    {
-     "ico": "31684343",
-     "pocet": 4,
-     "suma": 8472984,
-     "nazov": "BETPRES s.r.o."
     },
     {
      "ico": "44518684",
@@ -1841,8 +1841,8 @@
   {
    "typ": "objednávky",
    "zdroj": "https://opendata.kosice.sk/datasets/06d4cb2866c54b43bb1997f7edf86f4d",
-   "zaznamov": 24473,
-   "skryte_fyzicke_osoby": 5237,
+   "zaznamov": 24504,
+   "skryte_fyzicke_osoby": 5240,
    "roky": {
     "2011": {
      "pocet": 991,
@@ -1935,29 +1935,29 @@
      "fo_suma": 532883
     },
     "2026": {
-     "pocet": 1835,
-     "suma": 12246303,
-     "fo_pocet": 237,
-     "fo_suma": 457898
+     "pocet": 1866,
+     "suma": 12413294,
+     "fo_pocet": 240,
+     "fo_suma": 462097
     }
    },
    "dodavatelia_posledne_3_roky": [
     {
      "ico": "31651402",
-     "pocet": 42,
-     "suma": 10582915,
+     "pocet": 43,
+     "suma": 10621350,
      "nazov": "COLAS Slovakia, a.s."
     },
     {
      "ico": "44518684",
-     "pocet": 470,
-     "suma": 7190669,
+     "pocet": 471,
+     "suma": 7191629,
      "nazov": "Bytový podnik mesta Košice, s.r.o."
     },
     {
      "ico": "17078202",
-     "pocet": 599,
-     "suma": 1499566,
+     "pocet": 602,
+     "suma": 1502345,
      "nazov": "Správa mestskej zelene v Košiciach"
     },
     {
@@ -2004,8 +2004,8 @@
     },
     {
      "ico": "35732431",
-     "pocet": 29,
-     "suma": 309407,
+     "pocet": 30,
+     "suma": 320303,
      "nazov": "DOLIS GOEN, s.r.o."
     },
     {
@@ -2172,5 +2172,5 @@
    ]
   }
  ],
- "aktualizovane": "2026-11-24T15:06:14+00:00"
+ "aktualizovane": "2026-11-27T09:29:55+00:00"
 }

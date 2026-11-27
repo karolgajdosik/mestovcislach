@@ -1072,7 +1072,7 @@
    "popis": "Dataset obsahuje namerané údaje z cyklosčítačov v oblasti Košíc.",
    "jazyk": "sk-sk",
    "licencia": "Creative Commons Attribution 4.0 International License",
-   "velkost": 35184640,
+   "velkost": 35241984,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -1091,7 +1091,7 @@
      "nazov": "KE_pocitadla",
      "druh": "vrstva",
      "geometria": "esriGeometryPoint",
-     "pocet": 183314,
+     "pocet": 183602,
      "polia": [
       [
        "OBJECTID",
@@ -1199,7 +1199,7 @@
    "popis": "Dataset obsahuje namerané hodnoty prašnosti PM2,5 v µg/m³.",
    "jazyk": "en-gb",
    "licencia": "Creative Commons Attribution 4.0 International License",
-   "velkost": 63905792,
+   "velkost": 63971328,
    "typove_slova": [
     "ArcGIS Server",
     "Data",
@@ -1219,7 +1219,7 @@
      "nazov": "KE_pocitadla_dustiness",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 387822,
+     "pocet": 388233,
      "polia": [
       [
        "OBJECTID",
@@ -1380,7 +1380,7 @@
    "kategorie": [
     "/Categories/Samospráva/Zmluvy, faktúry, objednávky"
    ],
-   "upravene": 1795485974000,
+   "upravene": 1795745191000,
    "popis": "Dataset obsahuje denne aktualizovaný zoznam dodávateľských faktúr.",
    "jazyk": "",
    "licencia": "Creative Commons Attribution 4.0 International License",
@@ -1397,7 +1397,7 @@
     "Hosted Service",
     "View Service"
    ],
-   "upravene_ms": 1795485974000,
+   "upravene_ms": 1795745191000,
    "sluzba": "https://services-eu1.arcgis.com/qrtO0RIRViAdEN4F/arcgis/rest/services/Dodávateľské_faktúry_Mesta_Košice/FeatureServer",
    "vrstvy": [
     {
@@ -5635,7 +5635,7 @@
    "kategorie": [
     "/Categories/Životné prostredie a klíma/Životné prostredie a klíma"
    ],
-   "upravene": 1769602512000,
+   "upravene": 1795680496000,
    "popis": "Dataset obsahuje namerané dáta z meteostaníc na niektorých ZŠ mesta Košice.",
    "jazyk": "",
    "licencia": "Creative Commons Attribution 4.0 International License",
@@ -5652,7 +5652,7 @@
     "Hosted Service",
     "View Service"
    ],
-   "upravene_ms": 1769602512000,
+   "upravene_ms": 1795680496000,
    "sluzba": "https://services-eu1.arcgis.com/qrtO0RIRViAdEN4F/arcgis/rest/services/meteostanice_ce_climate_zobrazenie/FeatureServer",
    "vrstvy": [
     {
@@ -5660,7 +5660,7 @@
      "nazov": "meteostanice_ce_climate",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 746691,
+     "pocet": 752613,
      "polia": [
       [
        "OBJECTID",
@@ -5752,7 +5752,7 @@
    "kategorie": [
     "/Categories/Samospráva/Zmluvy, faktúry, objednávky"
    ],
-   "upravene": 1795486060000,
+   "upravene": 1795745262000,
    "popis": "Dataset obsahuje denne aktualizovaný zoznam objednávok.",
    "jazyk": "",
    "licencia": "Creative Commons Attribution 4.0 International License",
@@ -5769,7 +5769,7 @@
     "Hosted Service",
     "View Service"
    ],
-   "upravene_ms": 1795486060000,
+   "upravene_ms": 1795745262000,
    "sluzba": "https://services-eu1.arcgis.com/qrtO0RIRViAdEN4F/arcgis/rest/services/objednavky_zobrazenie/FeatureServer",
    "vrstvy": [
     {
@@ -5777,7 +5777,7 @@
      "nazov": "objednavky",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 24473,
+     "pocet": 24504,
      "polia": [
       [
        "organizacia_ICO",
@@ -10117,7 +10117,7 @@
    "kategorie": [
     "/Categories/Samospráva/Zmluvy, faktúry, objednávky"
    ],
-   "upravene": 1795486160000,
+   "upravene": 1795745362000,
    "popis": "Dataset obsahuje denne aktualizovaný zoznam zmlúv.",
    "jazyk": "",
    "licencia": "Creative Commons Attribution 4.0 International License",
@@ -10134,7 +10134,7 @@
     "Hosted Service",
     "View Service"
    ],
-   "upravene_ms": 1795486160000,
+   "upravene_ms": 1795745362000,
    "sluzba": "https://services-eu1.arcgis.com/qrtO0RIRViAdEN4F/arcgis/rest/services/zmluvy_zobrazenie/FeatureServer",
    "vrstvy": [
     {
@@ -10142,7 +10142,7 @@
      "nazov": "zmluvy",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 47130,
+     "pocet": 47186,
      "polia": [
       [
        "organizacia_ICO",
@@ -11124,7 +11124,7 @@
      "nazov": "uradna_tabula",
      "druh": "tabulka",
      "geometria": null,
-     "pocet": 84,
+     "pocet": 78,
      "polia": [
       [
        "OBJECTID",
@@ -11264,59 +11264,8 @@
     "Hosted Service"
    ],
    "upravene_ms": 1764597708000,
-   "sluzba": "https://services-eu1.arcgis.com/qrtO0RIRViAdEN4F/arcgis/rest/services/Školské_obvody_v_Košiciach/FeatureServer",
-   "vrstvy": [
-    {
-     "id": 0,
-     "nazov": "Školské_obvody_v_Košiciach",
-     "druh": "tabulka",
-     "geometria": null,
-     "pocet": 778,
-     "polia": [
-      [
-       "zverejnil",
-       "String",
-       "zverejnil"
-      ],
-      [
-       "vznik_na_zaklade",
-       "String",
-       "vznik_na_zaklade"
-      ],
-      [
-       "cislo_skolskeho_obvodu",
-       "String",
-       "cislo_skolskeho_obvodu"
-      ],
-      [
-       "nazov_skolskeho_obvodu",
-       "String",
-       "nazov_skolskeho_obvodu"
-      ],
-      [
-       "skola_ICO",
-       "String",
-       "skola_ICO"
-      ],
-      [
-       "ulice_tvoriace_skolsky_obvod",
-       "String",
-       "ulice_tvoriace_skolsky_obvod"
-      ],
-      [
-       "mestska_cast",
-       "String",
-       "mestska_cast"
-      ],
-      [
-       "ObjectId",
-       "OID",
-       "ObjectId"
-      ]
-     ]
-    }
-   ]
+   "chyba": "služba: Expecting value: line 1 column 1 (char 0)"
   }
  ],
- "aktualizovane": "2026-11-24T15:03:18+00:00"
+ "aktualizovane": "2026-11-27T09:26:49+00:00"
 }

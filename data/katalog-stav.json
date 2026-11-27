@@ -2587,7 +2587,7 @@
    "nazov": "Počet prechádzajúcich chodcov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492980000,
-   "riadkov": 872047,
+   "riadkov": 873151,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače chodcov"
@@ -2597,7 +2597,7 @@
    "nazov": "Počet prejazdov cyklistov podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492966000,
-   "riadkov": 872047,
+   "riadkov": 873151,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače cyklistov"
@@ -2607,7 +2607,7 @@
    "nazov": "Počet prejazdov vozidiel podľa sčítačov za hodinu",
    "kategoria": "Doprava a komunikácie",
    "upravene": 1771492972000,
-   "riadkov": 504082,
+   "riadkov": 504994,
    "stav": "na_webe",
    "kde": "/bratislava/doprava#premavka",
    "pozn": "Sčítače áut"
@@ -4012,7 +4012,7 @@
    "nazov": "Faktúry Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151953000,
-   "riadkov": 151090,
+   "riadkov": 151682,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry magistrátu"
@@ -4032,7 +4032,7 @@
    "nazov": "Faktúry Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778137107000,
-   "riadkov": 28145,
+   "riadkov": 28214,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry OLO"
@@ -4042,7 +4042,7 @@
    "nazov": "Faktúry Pohrebníctva mesta Bratislava - MARIANUM",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778142878000,
-   "riadkov": 17222,
+   "riadkov": 17248,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Faktúry Marianum"
@@ -4191,7 +4191,7 @@
    "nazov": "Objednávky Magistrátu hlavného mesta SR Bratislava od roku 2011",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151897000,
-   "riadkov": 65860,
+   "riadkov": 65962,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky magistrátu"
@@ -4201,7 +4201,7 @@
    "nazov": "Objednávky Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778136568000,
-   "riadkov": 12508,
+   "riadkov": 12525,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Objednávky OLO"
@@ -4211,7 +4211,7 @@
    "nazov": "Objednávky Pohrebníctva mesta Bratislava - MARIANUM",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778142871000,
-   "riadkov": 5702,
+   "riadkov": 5717,
    "stav": "katalog",
    "kde": "/bratislava/katalog/81abdb9566e84d00aaad5ffd953d791a",
    "stlpcov": 9
@@ -4818,7 +4818,7 @@
    "nazov": "Zmluvy Magistrátu hlavného mesta SR Bratislava zverejnené od júla 2022",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778151852000,
-   "riadkov": 13401,
+   "riadkov": 13432,
    "stav": "na_webe",
    "kde": "/bratislava/financie",
    "pozn": "Zmluvy magistrátu"
@@ -4838,7 +4838,7 @@
    "nazov": "Zmluvy Odvozu a likvidácie odpadu Bratislava (OLO)",
    "kategoria": "Správa mesta a výstavba",
    "upravene": 1778136780000,
-   "riadkov": 1944,
+   "riadkov": 1949,
    "stav": "osobitne",
    "kde": "/bratislava/financie#faktury",
    "pozn": "Zmluvy OLO"
@@ -6837,5 +6837,5 @@
    "stlpcov": 7
   }
  ],
- "aktualizovane": "2026-11-24T14:59:57+00:00"
+ "aktualizovane": "2026-11-27T09:22:33+00:00"
 }
