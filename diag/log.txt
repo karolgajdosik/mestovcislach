@@ -1,5 +1,5 @@
--tls1 ODMIETNUTÉ ['Protocol: TLSv1', 'Protocol  : TLSv1']
--tls1_1 ODMIETNUTÉ ['Protocol: TLSv1.1', 'Protocol  : TLSv1.1']
--tls1_2 OK ['Protocol: TLSv1.2', 'Protocol  : TLSv1.2']
--tls1_3 OK ['Protocol: TLSv1.3']
+v6 canvas 1 mapa ok titulok Zvolenský hrad
+v6 chyby ["C Access to XMLHttpRequest at 'https://cloudflareinsights.com/cdn-cgi/rum' from origin 'https://maplibre-6.mestovcislach.pages.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' he", 'C Failed to load resource: net::ERR_FAILED', 'C Failed to load resource: net::ERR_TIMED_OUT']
+zive canvas 1 mapa ok titulok 38 588 obyvateľov
+zive chyby []
 HOTOVO
