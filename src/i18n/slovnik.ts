@@ -345,6 +345,7 @@ export const SLOVNIK: Record<string, [string, string, string, string]> = {
   '+ pridať obec, napr. Badín': ['+ add a municipality, e.g. Badín', '+ Gemeinde hinzufügen, z. B. Badín', '+ dodaj gminę, np. Badín', '+ település hozzáadása, pl. Badín'],
   '+ pridať ďalšiu obec': ['+ add another municipality', '+ weitere Gemeinde hinzufügen', '+ dodaj kolejną gminę', '+ újabb település hozzáadása'],
   'najviac 5 obcí': ['up to 5 municipalities', 'höchstens 5 Gemeinden', 'najwyżej 5 gmin', 'legfeljebb 5 település'],
+  '(voliteľné, najviac 5 – pre Vývoj v čase a Porovnanie obcí)': ['(optional, up to 5 – for Trend over time and Compare municipalities)', '(optional, höchstens 5 – für Entwicklung und Gemeindevergleich)', '(opcjonalnie, najwyżej 5 – dla Zmian w czasie i Porównania gmin)', '(nem kötelező, legfeljebb 5 – az Időbeli alakuláshoz és a Települések összehasonlításához)'],
 };
 
 // Ďalšie kľúčové slová pre vyhľadávanie v jednotlivých jazykoch (k slovenským kategóriám)
