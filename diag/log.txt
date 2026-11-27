@@ -1,4 +1,10 @@
-prelet chunks set()
-https://mestovcislach.sk/data/studio/vyvoj/obyv.json 200 417521 
-https://mestovcislach.sk/datove-studio/?v=vyvoj 200 156833 True
+SIDE ['Pokračovať→', 'Pokračovať', '→', 'Pre každé mesto', 'Kvíz', 'Kvíz', 'Ktorá štvrť je pre mňa', 'Ktorá štvrť je pre mňa', 'Kam idú moje dane', 'Kam idú moje dane', 'Školy', 'Školy', 'Zastupiteľstvo', 'Zastupiteľstvo', 'Čo je nové', 'Čo je nové', 'Bratislava', 'Trnava', 'Nitra', 'Trenčín', 'Žilina', 'Banská Bystrica', 'Prešov', 'Košice', 'Aktuálne', 'Voľby 2026 v číslach', 'Voľby 2026 v číslach', 'Dátové štúdio', 'Dátové štúdio', 'Videozóna – videá a prelety', 'Videozóna – videá a prelety', 'Rozpočty miest 2027', 'Rozpočty miest 2027', 'Porovnanie miest', 'Porovnanie miest', 'Porovnaj dve mestá', 'Porovnaj dve mestá', 'Súťaž miest – kvíz týždňa', 'Súťaž miest – kvíz týždňa', 'Súboj miest – otázka dňa']
+lang hu
+API 4
+  (200, 1142, '{"preklady":["Válasszon másik várost","Keresés (/)","Keresés","Zárja be a keresést","Esc","eredmények","Kvíz","Videózóna – videók és 3D-s települések","Videózóna","Adatstúdió – települések száma grafikonban, térképen és táblázatban","Dátové štúdio","Zobrazenie: režim, veľkosť písma, pre slabozrakých')
+  (200, 1851, '{"preklady":["Csak emléktábla","Véletlenszerű város emlékekkel","A városok:","Utazás az emlékhelyeken – tippek","Márton","MARTIN - 6 találat","Nemzeti temető Martinában · Evangélikus templom Martinában · Záturci kastély","Előadás","Székesfehérvár · 6 emlékhely","Szent György templom · Szent Egídia t')
+  (200, 699, '{"preklady":["54 104 fő.","79 873 lakóhely.","73 054 lakóhely.","81 223 fő.","222 286 fő.","Emlékek és képek: Wikidata, Wikipedia, Wikimedia Commons (a képek szerzői szerepelnek a videóban és az áthaladásban).","A weboldal nyilvánosan hozzáférhető nyílt adatokat gyűjt. Minden adathoz egy forrást kel')
+  (200, 100, '{"preklady":["54 104 fő.","79 873 lakóhely.","73 054 lakóhely.","81 223 fő.","222 286 fő."]}')
+chyby []
+{'top': 0, 'tr': None, 'hid': True, 'nt': False}
 HOTOVO
