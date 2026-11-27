@@ -116,14 +116,15 @@ export async function spustiPrelet(el: HTMLElement): Promise<void> {
 
   const [lat, lon] = d.stred;
   const [mod, worker] = await Promise.all([
-    import('maplibre-gl/dist/maplibre-gl-csp.js' as string),
-    import('maplibre-gl/dist/maplibre-gl-csp-worker.js?url' as string).then((m) => m.default as string),
+    // MapLibre 6: ES modul + samostatný worker (modulový Worker z vlastnej domény – CSP worker-src 'self')
+    import('maplibre-gl'),
+    import('maplibre-gl/dist/maplibre-gl-worker.mjs?url' as string).then((m) => m.default as string),
     // štýly MapLibre ako samostatný súbor až pri spustení (inak by Astro pridalo 70 kB CSS do hlavičky každej obce)
     import('maplibre-gl/dist/maplibre-gl.css?url' as string).then((m) => new Promise<void>((ok) => {
       const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = m.default; l.onload = () => ok(); l.onerror = () => ok(); document.head.append(l);
     })),
   ]);
-  const maplibregl: any = mod.default ?? mod;
+  const maplibregl: any = (mod as any).default ?? mod;
   maplibregl.setWorkerUrl(worker);
 
   // štýl: vždy plná mapa (ulice, názvy, 3D budovy – OpenFreeMap); letecká snímka sa pridá tlačidlom pod cesty a názvy
