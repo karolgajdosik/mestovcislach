@@ -1,12 +1,18 @@
-import json, urllib.request
-UA={'User-Agent':'mestovcislach.sk (info@mestovcislach.sk)','Accept':'application/json'}
-def get(u):
-    return json.load(urllib.request.urlopen(urllib.request.Request(u,headers=UA),timeout=30))
-d=get('https://api.statistics.sk/rpo/v1/search?identifier=52966593')
-for e in d.get('results',[]):
-    nm=[x.get('value') for x in e.get('fullNames',[]) if not x.get('validTo')]
-    ad=[x for x in e.get('addresses',[]) if not x.get('validTo')]
-    a=ad[0] if ad else {}
-    adresa=f"{a.get('street','')} {a.get('buildingNumber') or a.get('regNumber') or ''}, {a.get('postalCodes',[''])[0] if a.get('postalCodes') else ''} {a.get('municipality',{}).get('value','')}".strip()
-    print('NAZOV',nm,'| ICO',[x.get('value') for x in e.get('identifiers',[])],'| SIDLO',adresa,'| VZNIK',e.get('establishment'),'| ZANIK',e.get('termination'),'| FORMA',[x.get('value') for x in e.get('legalForms',[]) if not x.get('validTo')])
+import json, urllib.request, urllib.parse, re
+UA={'User-Agent':'mestovcislach.sk (info@mestovcislach.sk)'}
+def get(u): return json.load(urllib.request.urlopen(urllib.request.Request(u,headers=UA),timeout=60))
+# slovenská Wikipédia – Zoznam miest na Slovensku (wikitext)
+for title in ['Zoznam_miest_na_Slovensku']:
+    d=get(f'https://sk.wikipedia.org/w/api.php?action=parse&page={title}&prop=wikitext&format=json&formatversion=2')
+    wt=d['parse']['wikitext']
+    print(title,len(wt)); print(wt[:1500])
+    open('diag/mesta_wikitext.txt','w').write(wt)
+# Wikidata: obce SR s vlastnosťou "inštancia: mesto na Slovensku"
+q='''SELECT ?kod ?itemLabel WHERE { ?item wdt:P31 wd:Q15649510 . OPTIONAL { ?item wdt:P782 ?kod } SERVICE wikibase:label { bd:serviceParam wikibase:language "sk". } }'''
+try:
+    r=get('https://query.wikidata.org/sparql?format=json&query='+urllib.parse.quote(q))
+    rows=[(b.get('kod',{}).get('value'),b['itemLabel']['value']) for b in r['results']['bindings']]
+    print('wikidata',len(rows),rows[:5])
+    json.dump(rows,open('diag/mesta_wd.json','w'),ensure_ascii=False)
+except Exception as e: print('wd chyba',e)
 print('HOTOVO')
