@@ -35,3 +35,11 @@ https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex
 /*/kalendar.ics
   X-Robots-Tag: noindex
+
+# Power BI / Power Query súbory k Dátovému štúdiu (na stiahnutie)
+/data/mestovcislach-obce.pbids
+  Content-Type: application/json; charset=utf-8
+  Content-Disposition: attachment; filename="mestovcislach-obce.pbids"
+/data/mestovcislach-obce.pq
+  Content-Type: text/plain; charset=utf-8
+  Content-Disposition: attachment; filename="mestovcislach-obce.pq"

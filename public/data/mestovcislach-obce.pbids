@@ -1,0 +1,13 @@
+{
+  "version": "0.1",
+  "connections": [
+    {
+      "details": {
+        "protocol": "http",
+        "address": { "url": "https://mestovcislach.sk/data/obce-ukazovatele.csv" }
+      },
+      "options": {},
+      "mode": "Import"
+    }
+  ]
+}
