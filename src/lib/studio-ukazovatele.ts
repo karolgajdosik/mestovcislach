@@ -141,7 +141,7 @@ export const OBLASTI: Oblast[] = [
     { k: 'bio', n: 'Bioodpad v komunálnom odpade', j: '%', d: 1, z: 'ŠÚ SR, 2025' },
     { k: 'triz', n: 'Zmena triedenia od 2021', j: 'p. b.', d: 1, z: 'ŠÚ SR, 2021 – 2025' },
   ] },
-  { id: 'volby', n: 'Voľby', popis: 'účasť v jednotlivých voľbách', polia: [
+  { id: 'volby', n: 'Voľby', popis: 'účasť a výsledky strán', polia: [
     { k: 'uc', n: 'Účasť v komunálnych voľbách 2026', j: '%', d: 1, z: 'ŠÚ SR, 2026' },
     { k: 'uc22', n: 'Účasť v komunálnych voľbách 2022', j: '%', d: 1, z: 'ŠÚ SR, 2022' },
     { k: 'ucn23', n: 'Účasť v parlamentných voľbách 2023', j: '%', d: 1, z: 'ŠÚ SR, 2023' },
@@ -158,6 +158,29 @@ export const OBLASTI: Oblast[] = [
     { k: 'vyuz', n: 'Využitie lôžok', j: '%', d: 1, z: 'ŠÚ SR, posledný rok', p: 'len obce, za ktoré ŠÚ SR údaje zverejňuje' },
   ] },
 ];
+
+// ---------- výsledky strán a kandidátov (data/obce/volby-strany.json – všetky strany za každú obec) ----------
+import fs_ from 'node:fs';
+import path_ from 'node:path';
+type VolbyStrany = { volby: Record<string, { nazov: string; strany: string[]; obce: Record<string, number[]> }> };
+const VS_F = path_.join(process.cwd(), 'data', 'obce', 'volby-strany.json');
+const VS: VolbyStrany | null = fs_.existsSync(VS_F) ? JSON.parse(fs_.readFileSync(VS_F, 'utf-8')) : null;
+const SKRATKY: [RegExp, string][] = [
+  [/^SMER/, 'SMER-SD'], [/^Progresívne Slovensko/, 'PS'], [/^HLAS/, 'HLAS-SD'], [/^OĽANO/, 'OĽaNO a priatelia'], [/^Kresťanskodemokratické/, 'KDH'],
+  [/^Sloboda a Solidarita/, 'SaS'], [/^Slovenská národná strana/, 'SNS'], [/^REPUBLIKA/, 'Republika'], [/^SZÖVETSÉG|^Magyar Szövetség/, 'Maďarská aliancia'],
+  [/^Demokrati/, 'Demokrati'], [/^SME RODINA/, 'Sme rodina'], [/^SLOVENSKO, ZA ĽUDÍ/, 'Slovensko, Za ľudí'], [/^Kotlebovci/, 'ĽSNS'],
+];
+const skratka = (n: string) => SKRATKY.find(([r]) => r.test(n))?.[1] ?? n.split(/ - |:/)[0].trim();
+const slugK = (t: string) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+// [id volieb, predpona kľúča, popis, koľko prvých strán/kandidátov (podľa celoštátneho výsledku)]
+const VYBER_VOLIEB: [string, string, string, number][] = [['nrsr2023', 'n23', 'parlamentné voľby 2023', 9], ['ep2024', 'ep24', 'eurovoľby 2024', 7], ['prez2024_2', 'p24', 'prezidentské voľby 2024, 2. kolo', 2]];
+export const POLIA_VOLIEB: (Pole & { vid: string; i: number })[] = VS ? VYBER_VOLIEB.flatMap(([vid, pre, popis, n]) => (VS.volby[vid]?.strany ?? []).slice(0, n).map((st, i) => ({
+  k: `${pre}${slugK(skratka(st))}`, n: `${skratka(st)} – ${popis}`, j: '%', d: 1, z: `ŠÚ SR, ${popis}`, vid, i, p: vid.startsWith('prez') ? undefined : st,
+}))) : [];
+{
+  const v = OBLASTI.find((o) => o.id === 'volby');
+  if (v) v.polia.push(...POLIA_VOLIEB.map(({ vid: _v, i: _i, ...p }) => p));
+}
 
 export const VSETKY_POLIA: Pole[] = OBLASTI.flatMap((o) => o.polia);
 
@@ -269,6 +292,7 @@ export function riadkyStudia(): RiadokStudia[] {
     h.uc22 = num(uc.oso2022?.obce?.[k]); h.ucr23 = num(uc.ref2023?.obce?.[k]);
     h.ucn23 = num(vo.nrsr2023?.obce?.[k]?.[0]); h.ucn20 = num(vo.nrsr2020?.obce?.[k]?.[0]); h.ucp24 = num(vo.prez2024_2?.obce?.[k]?.[0]); h.ucep24 = num(vo.ep2024?.obce?.[k]?.[0]);
     h.kand = o.volby2026 ? num(o.volby2026.kandidatov) : null;
+    for (const pv of POLIA_VOLIEB) { const a = VS?.volby[pv.vid]?.obce?.[k]; h[pv.k] = a ? num(a[pv.i]) : null; }
     // cestovný ruch
     const t = posl(tur[k]) as { lozok?: number; zariadeni?: number; vyuzitie?: number } | null;
     h.lozka = num(t?.lozok); h.lozkap = r(naObyv(t?.lozok, ob, 1000), 0); h.ubyt = num(t?.zariadeni); h.vyuz = num(t?.vyuzitie);
@@ -395,6 +419,7 @@ export const OPISY: Record<string, string> = {
   ucep24: 'Aká časť voličov prišla voliť vo voľbách do Európskeho parlamentu 2024.',
   ucr23: 'Aká časť voličov prišla hlasovať v referende 2023.',
   kand: 'Koľko kandidátov sa uchádzalo o post starostu alebo primátora v roku 2026.',
+  ...Object.fromEntries(POLIA_VOLIEB.map((p) => [p.k, `Podiel platných hlasov, ktoré v obci získal${p.vid.startsWith('prez') ? ' kandidát' : 'a strana'} ${p.vid.startsWith('prez') ? p.n.split(' – ')[0] : (p.p ?? p.n.split(' – ')[0])} (${p.z.replace('ŠÚ SR, ', '')}).`])),
   lozka: 'Počet lôžok v hoteloch, penziónoch a iných ubytovacích zariadeniach.',
   lozkap: 'Počet lôžok v ubytovacích zariadeniach na 1 000 obyvateľov – ukazuje, nakoľko je obec turistická.',
   ubyt: 'Počet hotelov, penziónov a iných ubytovacích zariadení.',

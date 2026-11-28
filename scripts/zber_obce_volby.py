@@ -126,11 +126,13 @@ def jedny(vid: str, nazov: str, cesta: str) -> dict:
     idx = {n: i for i, n in enumerate(strany)}
     spolu_sr = sum(sr_strany.values()) or 1
     obce = {}
+    vsetky = {}
     for kod, st in po.items():
         if kod not in KODY or not zap.get(kod):
             continue
         sp = sum(st.values()) or 1
         obce[kod] = [round(100 * zuc[kod] / zap[kod], 1), [[idx[n], round(100 * v / sp, 1)] for n, v in sorted(st.items(), key=lambda x: -x[1])[:6] if v > 0]]
+        vsetky[kod] = [round(100 * st.get(n, 0) / sp, 1) for n in strany]  # podiel každej strany (v poradí „strany“)
     okr: dict[str, list] = defaultdict(lambda: [0.0, 0.0])
     for kod in obce:
         okr[OKRES[kod]][0] += zuc[kod]
@@ -141,8 +143,10 @@ def jedny(vid: str, nazov: str, cesta: str) -> dict:
     return {"nazov": nazov, "strany": strany,
             "sr": {"ucast": cislo(sr.get(stlpec(sr, "účasť"))), "s": [[idx[n], round(100 * v / spolu_sr, 1)] for n, v in sorted(sr_strany.items(), key=lambda x: -x[1])[:8]]},
             "okresy": {o: round(100 * a / b, 1) for o, (a, b) in sorted(okr.items()) if b},
-            "obce": dict(sorted(obce.items()))}
+            "obce": dict(sorted(obce.items())), "_vsetky": dict(sorted(vsetky.items()))}
 
+
+VSETKY_STRANY = ["nrsr2023", "ep2024", "prez2024_1", "prez2024_2"]
 
 UCAST = [("oso2022", "Komunálne voľby 2022", "https://volby.statistics.sk/oso/oso2022/files/OSO2022_SK_csv.zip"),
          ("osk2022", "Krajské voľby 2022", "https://volby.statistics.sk/osk/osk2022/files/OSK2022_SK_csv.zip"),
@@ -235,6 +239,22 @@ def main() -> int:
                 out[vid] = stare[vid]
     if not out:
         raise RuntimeError("žiadne voľby")
+    # všetky strany / kandidáti pre vybrané voľby – samostatný súbor (Dátové štúdio); pri chybe ostanú staré
+    vs_f = DATA / "obce" / "volby-strany.json"
+    stare_vs = json.loads(vs_f.read_text(encoding="utf-8")).get("volby", {}) if vs_f.exists() else {}
+    vs = {}
+    for vid in VSETKY_STRANY:
+        if vid in out and "_vsetky" in out[vid]:
+            vs[vid] = {"nazov": out[vid]["nazov"], "strany": out[vid]["strany"], "obce": out[vid]["_vsetky"]}
+        elif vid in stare_vs:
+            vs[vid] = stare_vs[vid]
+    for v in out.values():
+        v.pop("_vsetky", None)
+    if vs:
+        zapis_ak_zmena(vs_f, {"aktualizovane": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                              "zdroj": {"nazov": "ŠÚ SR – výsledky volieb, otvorené dáta", "url": "https://volby.statistics.sk"},
+                              "popis": "obce: {kód: [% platných hlasov pre každú stranu/kandidáta v poradí 'strany']}",
+                              "volby": vs}, kompaktne=True)
     stare_u = json.loads(stare_f.read_text(encoding="utf-8")).get("ucast", {}) if stare_f.exists() else {}
     ucast = {}
     for vid, nazov, url in UCAST:
