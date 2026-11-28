@@ -304,3 +304,13 @@ export const vlakyInfo = () => (_vla === undefined ? (_vla = citaj('data', 'obce
 /** adresy obcí, ktoré majú vlastný kvíz (rovnaké pravidlo ako [obec]/kviz.astro) */
 let _sKv: Set<string> | null = null;
 export const obceSKvizom = () => (_sKv ??= new Set(vacsieObce().filter((o) => kvizObce(o).length >= 5).map(urlObce)));
+
+/** obce so štatútom mesta (141 miest SR) – data/obce/mesta-statut.json */
+let _mesta: Set<string> | null = null;
+export function jeMesto(kod: string): boolean {
+  if (!_mesta) {
+    const f = path.join(process.cwd(), 'data', 'obce', 'mesta-statut.json');
+    _mesta = new Set(fs.existsSync(f) ? (JSON.parse(fs.readFileSync(f, 'utf-8')).kody as string[]) : []);
+  }
+  return _mesta.has(kod);
+}

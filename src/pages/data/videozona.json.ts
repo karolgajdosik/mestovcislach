@@ -1,7 +1,7 @@
 // Index Videozóny: všetky obce, mestá a mestské časti, ktoré majú video a prelet (stránka s PozriObec).
-// [názov, typ (0 obec, 1 mesto, 2 mestská časť), adresa stránky, kontext (okres / mesto), počet pamiatok v prelete]
+// [názov, typ (0 obec, 1 mesto – 141 miest so štatútom, 2 mestská časť), adresa stránky, kontext (okres / mesto), počet pamiatok v prelete]
 import type { APIRoute } from 'astro';
-import { kraje, odkaz, pamiatkyPreletu, kodyCasti } from '../../lib/obce';
+import { kraje, odkaz, pamiatkyPreletu, kodyCasti, jeMesto } from '../../lib/obce';
 import { pamiatkyMesta } from '../../lib/video-data';
 import { castiMesta } from '../../lib/casti-mesta';
 import { profily } from '../../lib/profil-mc';
@@ -20,7 +20,7 @@ export const GET: APIRoute = async () => {
   }
   for (const kr of kraje()) for (const ok of kr.okresy) for (const o of ok.obce) {
     const u = odkaz(o).replace(/\/$/, '');
-    if (!mestaUrl.has(u)) pridaj([o.nazov, 0, `${u}/`, `okres ${ok.nazov}`, pamiatkyPreletu(o.kod).length]);
+    if (!mestaUrl.has(u)) pridaj([o.nazov, jeMesto(o.kod) ? 1 : 0, `${u}/`, `okres ${ok.nazov}`, pamiatkyPreletu(o.kod).length]);
   }
   // mestské časti Bratislavy
   const { profily: p } = await profily();

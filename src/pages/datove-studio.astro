@@ -61,7 +61,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
         <div class="ds-krok">
           <label class="ds-lbl" for="ds-min">4. Veľkosť obce</label>
           <select class="ds-dd" id="ds-min">
-            {[['0', 'Všetky obce'], ['500', 'od 500 obyvateľov'], ['1000', 'od 1 000 obyvateľov'], ['2000', 'od 2 000 obyvateľov'], ['5000', 'od 5 000 obyvateľov'], ['10000', 'od 10 000 obyvateľov'], ['20000', 'od 20 000 obyvateľov']].map(([v, n]) => <option value={v}>{n}</option>)}
+            {[['0', 'Všetky obce'], ['m', 'Len mestá (141)'], ['o', 'Len obce (bez miest)'], ['500', 'od 500 obyvateľov'], ['1000', 'od 1 000 obyvateľov'], ['2000', 'od 2 000 obyvateľov'], ['5000', 'od 5 000 obyvateľov'], ['10000', 'od 10 000 obyvateľov'], ['20000', 'od 20 000 obyvateľov']].map(([v, n]) => <option value={v}>{n}</option>)}
           </select>
         </div>
         <button type="button" class="ds-zobraz" id="ds-zobraz">Zobraziť <b id="ds-pocet">…</b> <span id="ds-pocet-s">obcí</span></button>
@@ -184,7 +184,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   type Pole = { k: string; n: string; j: string; d: number; z: string; p?: string; opis: string; pocet: number };
   type Oblast = { id: string; n: string; popis: string; polia: Pole[] };
   type D = { kraje: string[]; oblasti: Oblast[]; obce: (string | number | null)[][] };
-  type Obec = { kod: string; n: string; okres: string; u: string; kraj: number; h: Record<string, number | null>; lat: number; lon: number };
+  type Obec = { kod: string; n: string; okres: string; u: string; kraj: number; h: Record<string, number | null>; lat: number; lon: number; m: boolean };
   const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
   const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
   const slug = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -223,7 +223,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     const q = new URLSearchParams(location.search);
     for (const k of Object.keys(S) as (keyof typeof S)[]) { const v = q.get(k); if (v != null) S[k] = v; }
     if (!['graf', 'mapa', 'tabulka', 'vyvoj', 'porovnanie'].includes(S.v)) S.v = 'graf';
-    if (!['0', '500', '1000', '2000', '5000', '10000', '20000'].includes(S.min)) S.min = '0';
+    if (!['0', 'm', 'o', '500', '1000', '2000', '5000', '10000', '20000'].includes(S.min)) S.min = '0';
   }
   const PRED: typeof S = { ...S };
   function dotaz() {
@@ -237,12 +237,12 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
 
   // ---------- výber ----------
   function vyber(): Obec[] {
-    const min = Number(S.min) || 0;
-    return OBCE.filter((o) => (S.kraj === '' || String(o.kraj) === S.kraj) && (S.okres === '' || slug(o.okres) === S.okres) && (o.h.obyv ?? 0) >= min);
+    const min = Number(S.min) || 0, len = S.min === 'm' ? 1 : S.min === 'o' ? 0 : -1;
+    return OBCE.filter((o) => (S.kraj === '' || String(o.kraj) === S.kraj) && (S.okres === '' || slug(o.okres) === S.okres) && (o.h.obyv ?? 0) >= min && (len < 0 || o.m === (len === 1)));
   }
   function popisVyberu(n: number) {
     const kde = S.okres ? `okres ${OKRESY.find(([, x]) => slug(x) === S.okres)?.[1] ?? ''}` : S.kraj !== '' ? KRAJE[Number(S.kraj)] : 'Slovensko';
-    const vel = Number(S.min) ? ` · obce od ${Number(S.min).toLocaleString('sk-SK')} obyvateľov` : '';
+    const vel = S.min === 'm' ? ' · len mestá' : S.min === 'o' ? ' · len obce (bez miest)' : Number(S.min) ? ` · obce od ${Number(S.min).toLocaleString('sk-SK')} obyvateľov` : '';
     return `${kde}${vel} · ${n.toLocaleString('sk-SK')} ${n === 1 ? 'obec' : n < 5 ? 'obce' : 'obcí'}`;
   }
 
@@ -282,17 +282,23 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   }
 
   function kresliStlpce(vyb: Obec[], mSK: number) {
-    const s = vyb.filter((o) => o.h[S.u] != null).sort((a, b) => (S.por === 'asc' ? a.h[S.u]! - b.h[S.u]! : b.h[S.u]! - a.h[S.u]!)).slice(0, Number(S.n));
+    const vsetky = vyb.filter((o) => o.h[S.u] != null).sort((a, b) => (S.por === 'asc' ? a.h[S.u]! - b.h[S.u]! : b.h[S.u]! - a.h[S.u]!));
+    const s = vsetky.slice(0, Number(S.n));
+    // vybrané obce (krok 5): farebne zvýraznené; ak nie sú v zozname, pridajú sa pod čiaru aj s poradím
+    const vyb5 = new Map(vybraneObce().map((i, j) => [OBCE[i], FARBY_OBCI[j]] as const));
+    const navyse = [...vyb5.keys()].filter((o) => !s.includes(o) && o.h[S.u] != null);
     if (!s.length) { $('ds-stlpce').innerHTML = '<p class="pozn">Žiadne údaje.</p>'; return; }
-    const vals = s.map((o) => o.h[S.u]!);
+    const vals = [...s, ...navyse].map((o) => o.h[S.u]!);
     const lo = Math.min(0, ...vals, Number.isFinite(mSK) ? mSK : 0), hi = Math.max(...vals, Number.isFinite(mSK) ? mSK : 0);
     const roz = hi - lo || 1;
     const x = (v: number) => ((v - lo) / roz) * 100;
     const nula = x(0), ciara = Number.isFinite(mSK) ? x(mSK) : -1;
-    $('ds-stlpce').innerHTML = s.map((o) => {
-      const v = o.h[S.u]!, a = Math.min(x(v), nula), w = Math.abs(x(v) - nula);
-      return `<a class="ds-riadok" href="${esc(o.u)}"><span class="ds-meno" translate="no">${esc(o.n)}<small>${esc(o.okres)}</small></span><span class="ds-pas"><span class="ds-hodnota" style="left:${a.toFixed(2)}%;width:${Math.max(0.4, w).toFixed(2)}%"></span>${ciara >= 0 ? `<span class="ds-median" style="left:${ciara.toFixed(2)}%"></span>` : ''}</span><b>${f(S.u, v)}</b></a>`;
-    }).join('') + (ciara >= 0 ? `<p class="ds-legenda-ciara"><span></span>Medián Slovenska ${f(S.u, mSK)}</p>` : '');
+    const riadok = (o: Obec) => {
+      const v = o.h[S.u]!, a = Math.min(x(v), nula), w = Math.abs(x(v) - nula), fv = vyb5.get(o);
+      const ix = vsetky.indexOf(o), poradie = fv ? `<em>${ix >= 0 ? `${(ix + 1).toLocaleString('sk-SK')}. miesto z ${vsetky.length.toLocaleString('sk-SK')}` : 'mimo výberu (iný kraj, okres alebo veľkosť)'}</em>` : '';
+      return `<a class="ds-riadok${fv ? ' ds-riadok-vyb' : ''}" href="${esc(o.u)}"${fv ? ` style="--f:${fv}"` : ''}><span class="ds-meno" translate="no">${esc(o.n)}<small>${esc(o.okres)}${poradie}</small></span><span class="ds-pas"><span class="ds-hodnota" style="left:${a.toFixed(2)}%;width:${Math.max(0.4, w).toFixed(2)}%"></span>${ciara >= 0 ? `<span class="ds-median" style="left:${ciara.toFixed(2)}%"></span>` : ''}</span><b>${f(S.u, v)}</b></a>`;
+    };
+    $('ds-stlpce').innerHTML = s.map(riadok).join('') + (navyse.length ? `<p class="ds-stlpce-sep">Vybrané obce mimo zobrazeného poradia</p>${navyse.map(riadok).join('')}` : '') + (ciara >= 0 ? `<p class="ds-legenda-ciara"><span></span>Medián Slovenska ${f(S.u, mSK)}</p>` : '');
   }
 
 
@@ -420,7 +426,9 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     const ostatne = OBCE.filter((o) => o.lat && !vyb.includes(o));
     const r = (o: Obec) => Math.min(9, 2.4 + Math.sqrt(o.h.obyv ?? 0) / 45);
     const kruh = (o: Obec, cls: string, fill?: string) => { const [x, y] = bod(o.lon, o.lat); return `<a href="${esc(o.u)}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r(o).toFixed(1)}" class="${cls}"${fill ? ` style="fill:${fill}"` : ''}><title>${esc(o.n)}: ${f(S.u, o.h[S.u])}</title></circle></a>`; };
-    $('ds-mapa-body').innerHTML = (S.kraj !== '' || S.okres || Number(S.min) ? ostatne.map((o) => kruh(o, 'ds-mimo')).join('') : '') + [...s].sort((a, b) => r(b) - r(a)).map((o) => kruh(o, 'ds-vnutri', FARBY[trieda(o.h[S.u]!)])).join('');
+    const vyb5 = vybraneObce().map((i, j) => [OBCE[i], FARBY_OBCI[j]] as const).filter(([o]) => o.lat);
+    const znacky = vyb5.map(([o, fv]) => { const [x, y] = bod(o.lon, o.lat); const rr = r(o) + 4; return `<a href="${esc(o.u)}" class="ds-mapa-vyb"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rr.toFixed(1)}" style="stroke:${fv}"><title>${esc(o.n)}: ${f(S.u, o.h[S.u])}</title></circle><text x="${(x + rr + 3).toFixed(1)}" y="${(y + 4).toFixed(1)}" style="fill:${fv}" translate="no">${esc(o.n)}</text></a>`; }).join('');
+    $('ds-mapa-body').innerHTML = (S.kraj !== '' || S.okres || S.min !== '0' ? ostatne.map((o) => kruh(o, 'ds-mimo')).join('') : '') + [...s].sort((a, b) => r(b) - r(a)).map((o) => kruh(o, 'ds-vnutri', FARBY[trieda(o.h[S.u]!)])).join('') + znacky;
     if (S.okres || S.kraj !== '') {
       const xy = s.map((o) => bod(o.lon, o.lat));
       if (xy.length) {
@@ -458,7 +466,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   }
 
   // ---------- ovládanie ----------
-  const VEL: [string, string][] = [['0', 'Všetky obce'], ['500', 'od 500 obyvateľov'], ['1000', 'od 1 000 obyvateľov'], ['2000', 'od 2 000 obyvateľov'], ['5000', 'od 5 000 obyvateľov'], ['10000', 'od 10 000 obyvateľov'], ['20000', 'od 20 000 obyvateľov']];
+  const VEL: [string, string][] = [['0', 'Všetky obce'], ['m', 'len mestá'], ['o', 'len obce (bez miest)'], ['500', 'od 500 obyvateľov'], ['1000', 'od 1 000 obyvateľov'], ['2000', 'od 2 000 obyvateľov'], ['5000', 'od 5 000 obyvateľov'], ['10000', 'od 10 000 obyvateľov'], ['20000', 'od 20 000 obyvateľov']];
   const okresyKraja = (k: string) => [...new Set(OKRESY.filter(([kk]) => k === '' || String(kk) === k).map(([, n]) => n))].sort((a, b) => a.localeCompare(b, 'sk'));
   const menoOkresu = () => OKRESY.find(([, x]) => slug(x) === S.okres)?.[1] ?? '';
   const krajOkresu = (n: string) => String(OKRESY.find(([, x]) => x === n)?.[0] ?? '');
@@ -497,7 +505,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     const t: [string, () => void][] = [];
     if (S.kraj !== '') t.push([KRAJE[Number(S.kraj)] ?? '', () => { S.kraj = ''; S.okres = ''; }]);
     if (S.okres) t.push([`okres ${menoOkresu()}`, () => { S.okres = ''; }]);
-    if (Number(S.min)) t.push([VEL.find((v) => v[0] === S.min)?.[1] ?? '', () => { S.min = '0'; }]);
+    if (S.min !== '0') t.push([VEL.find((v) => v[0] === S.min)?.[1] ?? '', () => { S.min = '0'; }]);
     $('ds-akt').hidden = !t.length;
     const el = $('ds-stitky');
     el.innerHTML = t.map(([n], i) => `<button type="button" data-i="${i}" aria-label="Zrušiť filter ${esc(n)}">${esc(n)}<i aria-hidden="true">✕</i></button>`).join('') + `<button type="button" class="ds-zrus" data-i="vsetko">Zrušiť všetko</button>`;
@@ -611,7 +619,7 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
     const okr = new Map<string, number>();
     OBCE = d.obce.map((r) => {
       okr.set(String(r[2]), Number(r[3]));
-      return { kod: String(r[0]), n: String(r[1]), okres: String(r[2]), kraj: Number(r[3]), u: String(r[4]), h: { obyv: typeof r[5] === 'number' ? r[5] : null }, lat: Number(r[6]) || 0, lon: Number(r[7]) || 0 };
+      return { kod: String(r[0]), n: String(r[1]), okres: String(r[2]), kraj: Number(r[3]), u: String(r[4]), h: { obyv: typeof r[5] === 'number' ? r[5] : null }, lat: Number(r[6]) || 0, lon: Number(r[7]) || 0, m: r[8] === 1 };
     });
     OKRESY = [...okr].map(([n, k]) => [k, n]);
     if (!POLE.has(S.u)) S.u = 'nez';
@@ -688,6 +696,13 @@ const hladajText = (p: { k: string; n: string; j: string }, o: { n: string }) =>
   #ds-porov :global(.ds-porov-akt) { background: color-mix(in srgb, var(--accent) 8%, transparent); }
   #ds-porov :global(.ds-max) { font-weight: 800; }
   #ds-porov :global(.ds-min) { font-style: italic; color: var(--muted); }
+  #ds-stlpce :global(.ds-riadok-vyb) { box-shadow: inset 4px 0 0 var(--f); background: color-mix(in srgb, var(--f) 9%, transparent); border-radius: 6px; }
+  #ds-stlpce :global(.ds-riadok-vyb .ds-meno) { color: var(--f); font-weight: 700; }
+  #ds-stlpce :global(.ds-riadok-vyb .ds-hodnota) { background: var(--f) !important; }
+  #ds-stlpce :global(.ds-meno em) { display: block; font-style: normal; font-size: 0.72rem; color: var(--muted); font-weight: 600; }
+  #ds-stlpce :global(.ds-stlpce-sep) { margin: 12px 0 4px; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+  #ds-mapa :global(.ds-mapa-vyb circle) { fill: none; stroke-width: calc(2.5px * var(--k, 1)); }
+  #ds-mapa :global(.ds-mapa-vyb text) { font-size: calc(13px * var(--k, 1)); font-weight: 800; paint-order: stroke; stroke: var(--card); stroke-width: calc(3px * var(--k, 1)); }
   .ds-filter { margin-top: 0 !important; padding: 20px !important; display: flex; flex-direction: column; gap: 16px; }
   .ds-krok { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
   .ds-lbl { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }

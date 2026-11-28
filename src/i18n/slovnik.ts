@@ -346,6 +346,8 @@ export const SLOVNIK: Record<string, [string, string, string, string]> = {
   '+ pridať ďalšiu obec': ['+ add another municipality', '+ weitere Gemeinde hinzufügen', '+ dodaj kolejną gminę', '+ újabb település hozzáadása'],
   'najviac 5 obcí': ['up to 5 municipalities', 'höchstens 5 Gemeinden', 'najwyżej 5 gmin', 'legfeljebb 5 település'],
   '(voliteľné, najviac 5 – pre Vývoj v čase a Porovnanie obcí)': ['(optional, up to 5 – for Trend over time and Compare municipalities)', '(optional, höchstens 5 – für Entwicklung und Gemeindevergleich)', '(opcjonalnie, najwyżej 5 – dla Zmian w czasie i Porównania gmin)', '(nem kötelező, legfeljebb 5 – az Időbeli alakuláshoz és a Települések összehasonlításához)'],
+  'Len mestá (141)': ['Towns only (141)', 'Nur Städte (141)', 'Tylko miasta (141)', 'Csak városok (141)'],
+  'Len obce (bez miest)': ['Villages only (no towns)', 'Nur Gemeinden (ohne Städte)', 'Tylko gminy wiejskie (bez miast)', 'Csak községek (városok nélkül)'],
 };
 
 // Ďalšie kľúčové slová pre vyhľadávanie v jednotlivých jazykoch (k slovenským kategóriám)

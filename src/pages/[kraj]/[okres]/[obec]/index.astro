@@ -6,7 +6,7 @@ import '../../../../styles/stranka.css';
 import '../../../../styles/obce.css';
 import PoslatZnamemu from '../../../../components/PoslatZnamemu.astro';
 import Kalendar from '../../../../components/Kalendar.astro';
-import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, volbyInfo, pohybInfo, byvanieInfo, firmyInfo, sluzbyInfo, turizmusInfo, vlakyInfo, obyvateliaInfo, uzemieInfo, chraneneInfo, socialneInfo, okresyInfo, vekInfo, mesacneInfo, sodb2Info, kulturaInfo, wikiInfo, osmInfo, rozpocetInfo, t9Info, pamiatkyInfo, trasyInfo, historiaInfo, starosta22Info, klimaInfo, geologiaInfo, obrazkyInfo, maturitaInfo, ovzdusieInfo, type Obec } from '../../../../lib/obce';
+import { kraje, obceKraja, odkaz, posledne, zmena10, km, webMesta, jeVacsia, idsPoslancov, kvizObce, urlObce, zmluvyObce, zmluvyInfo, eiaObce, eiaWeb, KAT_EIA, hospodarenieObce, medianOkresu, nezamInfo, odpadInfo, skolyInfo, volbyInfo, pohybInfo, byvanieInfo, firmyInfo, sluzbyInfo, turizmusInfo, vlakyInfo, obyvateliaInfo, uzemieInfo, chraneneInfo, socialneInfo, okresyInfo, vekInfo, mesacneInfo, sodb2Info, kulturaInfo, wikiInfo, osmInfo, rozpocetInfo, t9Info, pamiatkyInfo, trasyInfo, historiaInfo, starosta22Info, klimaInfo, geologiaInfo, obrazkyInfo, maturitaInfo, ovzdusieInfo, jeMesto, type Obec } from '../../../../lib/obce';
 import { skrat, skratStrany } from '../../../../lib/zastupitelstvo';
 import Por from '../../../../components/Por.astro';
 import OdberEmail from '../../../../components/OdberEmail.astro';
@@ -29,7 +29,8 @@ const p = posledne(o.obyvatelia);
 const z10 = zmena10(o.obyvatelia);
 const v = o.volby2026;
 const st = v?.starosta.find((k) => k.zvoleny);
-const titulStarostu = (p?.[1] ?? 0) >= 5000 ? 'Primátor/starosta' : 'Starosta';
+const mesto = jeMesto(o.kod);
+const titulStarostu = mesto ? 'Primátor' : 'Starosta';
 // okres – súčty pre porovnanie sčítania
 const okresObce = obceKraja(o.kraj_slug).filter((x) => x.okres_slug === o.okres_slug);
 const sucet = (tema: string) => {
@@ -295,7 +296,7 @@ if (nez?.pdu != null && nezI?.mesiac) noveMes.push(`Nezamestnanosť – ${['janu
 const jsonld = {
   '@context': 'https://schema.org', '@type': ['Place', 'AdministrativeArea'], name: o.nazov,
   url: `https://mestovcislach.sk/${o.kraj_slug}/${o.okres_slug}/${o.slug}/`,
-  description: `Obec ${o.nazov} v okrese ${o.okres} (${o.kraj}) v číslach – obyvatelia, voľby, školy, rozpočet a ďalšie otvorené dáta.`,
+  description: `${mesto ? 'Mesto' : 'Obec'} ${o.nazov} v okrese ${o.okres} (${o.kraj}) v číslach – obyvatelia, voľby, školy, rozpočet a ďalšie otvorené dáta.`,
   ...(o.poloha ? { geo: { '@type': 'GeoCoordinates', latitude: o.poloha[0], longitude: o.poloha[1], ...(wk?.[1] ? { elevation: wk[1] } : {}) } } : {}),
   ...(obr?.foto ? { image: obr.foto.u } : {}),
   containedInPlace: { '@type': 'AdministrativeArea', name: `okres ${o.okres}`, containedInPlace: { '@type': 'AdministrativeArea', name: o.kraj, containedInPlace: { '@type': 'Country', name: 'Slovensko' } } },
@@ -338,17 +339,17 @@ const skratka = fakty.sort((a_, b_) => b_[0] - a_[0]).slice(0, 4).map(([, t_]) =
 const BLOKY: [string, string, [string, string, unknown][]][] = [
   ['prakticky', 'Prakticky', [['video', 'Video a prelet', true], ['pocasie', 'Počasie', o.poloha], ['kalendar', 'Meniny a sviatky', true], ['volby', 'Voľby 2026', v], ['skoly', 'Školy', skI], ['sluzby', 'Služby', slu || vl || sluI || kul || os_], ['odpad', 'Odpad', odP && odI && odRok], ['pamiatky', 'Pamiatky', pam && pam.n > 0]]],
   ['zivot', 'Ako sa tu žije', [['obyvatelia', 'Obyvatelia', rad.length > 2 || sklad.length > 0], ['pohyb', 'Pohyb', poh?.rad || poh?.vek != null], ['vek', 'Vek', vk && vkSpolu > 0], ['vzdelanie', 'Vzdelanie', oby?.vzd], ['domacnosti', 'Domácnosti', so2 && (so2.dom || so2.byty || so2.ekon)], ['byvanie', 'Domy a siete', byv], ['nezamestnanost', 'Práca', nez && nezI], ['firmy', 'Firmy', firP], ['okres-cisla', 'Okres', mzP || byP || neh || nro], ['podnebie', 'Podnebie', kli && kliI], ['kataster', 'Príroda', uz || chr || tra || geo], ['volby-celostatne', 'Ako sa volilo', celostatne.length > 0 || starsie.length > 0]]],
-  ['peniaze', 'Obec a peniaze', [['hospodarenie', 'Rozpočet', hP || roz], ['eurofondy', 'Eurofondy', nfp], ['zmluvy', 'Zmluvy', zmInfo], ['eia', 'Výstavba', eia]]],
+  ['peniaze', mesto ? 'Mesto a peniaze' : 'Obec a peniaze', [['hospodarenie', 'Rozpočet', hP || roz], ['eurofondy', 'Eurofondy', nfp], ['zmluvy', 'Zmluvy', zmInfo], ['eia', 'Výstavba', eia]]],
 ];
 const obsah = BLOKY.map(([id, n, s_]) => ({ id, n, s: s_.filter(([, , ok]) => ok).map(([i, t_]) => ({ i, t: t_ })) })).filter((x) => x.s.length);
 const blok = (id: string) => obsah.find((x) => x.id === id);
 ---
-<Base title={`${o.nazov} – obec v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis} og={`/og/obec/${o.kod}.png`} jsonld={jsonld}
+<Base title={`${o.nazov} – ${mesto ? 'mesto' : 'obec'} v číslach (okres ${o.okres}) – mestovcislach.sk`} description={popis} og={`/og/obec/${o.kod}.png`} jsonld={jsonld}
   drobceky={[[o.kraj, `/${o.kraj_slug}`], [`Okres ${o.okres}`, `/${o.kraj_slug}/${o.okres_slug}`], [o.nazov, `/${o.kraj_slug}/${o.okres_slug}/${o.slug}`]]}>
   <section class={`hero ob-hero${obr?.foto ? ' s-fotkou' : ''}`} data-nazov={o.nazov} data-url={`/${o.kraj_slug}/${o.okres_slug}/${o.slug}`} data-okres={`okres ${o.okres}`} data-kraj={o.kraj} data-poloha={o.poloha ? JSON.stringify(o.poloha) : undefined}>
     <div class="ob-hero-text">
       <p class="ob-cesta"><a href="/">Slovensko</a> › <a href={`/${o.kraj_slug}`}>{o.kraj}</a> › <a href={`/${o.kraj_slug}/${o.okres_slug}`}>okres {o.okres}</a></p>
-      <h1 translate="no" class={obr?.erb ? 'ob-s-erbom' : ''}>{obr?.erb && <img class="ob-erb" src={obr.erb.u} alt={`Erb obce ${o.nazov}`} width="56" height="64" loading="eager" decoding="async" />}{o.nazov}</h1>
+      <h1 translate="no" class={obr?.erb ? 'ob-s-erbom' : ''}>{obr?.erb && <img class="ob-erb" src={obr.erb.u} alt={`Erb ${mesto ? 'mesta' : 'obce'} ${o.nazov}`} width="56" height="64" loading="eager" decoding="async" />}{o.nazov}</h1>
       <p class="lead">Obyvatelia, sčítanie 2021 a komunálne voľby 2026{st ? <> – {titulStarostu.toLowerCase()} <strong translate="no">{bezTit(st.meno)}</strong></> : ''}.</p>
       <ul class="ob-cisla ob-hlavne">
         {mes != null ? <li><b>{fmt(mes)}</b><span>obyvateľov ku {mesText}</span></li> : p && <li><b>{fmt(p[1])}</b><span>obyvateľov k 31. 12. {p[0]}</span></li>}
@@ -396,7 +397,7 @@ const blok = (id: string) => obsah.find((x) => x.id === id);
 
   {blok('prakticky') && <div class="ob-blok" id="prakticky"><h2>Prakticky</h2><p>Počasie, meniny, voľby, školy, služby a odpad.</p></div>}
 
-  <PozriObec nazov={o.nazov} nad="nad obcou" video={videoData} prelet={preletData} />
+  <PozriObec nazov={o.nazov} nad={mesto ? 'nad mestom' : 'nad obcou'} video={videoData} prelet={preletData} />
 
   {o.poloha && (
     <section class="card" id="pocasie" data-poloha={JSON.stringify(o.poloha)}>
@@ -414,7 +415,7 @@ const blok = (id: string) => obsah.find((x) => x.id === id);
       {(v.ucast || v.poslanci.length > 0) && <p class="pozn">{v.ucast ? <>Účasť <strong>{des(v.ucast.ucast_pct)} %</strong> <Por x={v.ucast.ucast_pct} r={ucOkr} kto="medián obcí okresu" /></> : ''}{v.ucast && v.poslanci.length ? ' · ' : ''}{v.poslanci.length ? `${v.poslanci.length} ${v.poslanci.length === 1 ? 'poslanec' : v.poslanci.length < 5 ? 'poslanci' : 'poslancov'} zastupiteľstva` : ''}</p>}
       {v.starosta.length > 0 && (
         <>
-          <h3>Voľba {titulStarostu === 'Starosta' ? 'starostu' : 'primátora / starostu'}</h3>
+          <h3>Voľba {mesto ? 'primátora' : 'starostu'}</h3>
           <ul class="ob-bary">
             {v.starosta.map((k) => (
               <li><span class={k.zvoleny ? 'zv' : ''} translate="no">{k.meno}<small>{/^nezávisl/i.test(k.strany) ? 'nezávislý kandidát' : skrat(k.strany)}{k.zvoleny ? ' · zvolený(-á)' : ''}</small></span>
@@ -439,7 +440,7 @@ const blok = (id: string) => obsah.find((x) => x.id === id);
       )}
       {st22 && (
         <details class="ob-starsie">
-          <summary>Voľba {titulStarostu === 'Starosta' ? 'starostu' : 'primátora / starostu'} v roku 2022</summary>
+          <summary>Voľba {mesto ? 'primátora' : 'starostu'} v roku 2022</summary>
           <ul class="ob-bary">
             {st22.map(([m, s_, h, pc, z]) => (
               <li><span class={z ? 'zv' : ''} translate="no">{m}<small>{/^nezávisl/i.test(s_) ? 'nezávislý kandidát' : skrat(s_)}{z ? ' · zvolený(-á)' : ''}</small></span>
