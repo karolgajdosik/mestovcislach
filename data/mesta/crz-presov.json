@@ -2,15 +2,15 @@
  "mesto": "presov",
  "ico": "00327646",
  "od": "2022-01-01",
- "do": "2026-11-26",
+ "do": "2026-11-27",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 6312,
-  "skryte_fyzicke_osoby": 1595,
+  "zaznamov": 6313,
+  "skryte_fyzicke_osoby": 1596,
   "roky": {
    "2022": {
     "pocet": 1140,
@@ -37,10 +37,10 @@
     "fo_suma": 8470220
    },
    "2026": {
-    "pocet": 1160,
-    "suma": 76472869,
-    "fo_pocet": 321,
-    "fo_suma": 1828209
+    "pocet": 1161,
+    "suma": 76477849,
+    "fo_pocet": 322,
+    "fo_suma": 1833189
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -263,14 +263,6 @@
     "url": "https://www.crz.gov.sk/zmluva/11793602/"
    },
    {
-    "datum": "2025-11-27",
-    "dodavatel": "Všeobecná úverová banka",
-    "ico": "31320155",
-    "suma": 2000000.0,
-    "popis": "Dodatok č. 1 k zmluve o kontokorentnom úvere č. 84/2025/UZ",
-    "url": "https://www.crz.gov.sk/zmluva/11662608/"
-   },
-   {
     "datum": "2025-12-03",
     "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
     "ico": "50349287",
@@ -285,6 +277,14 @@
     "suma": 1911751.92,
     "popis": "Zmluva o poskytnutí nenávratného finančného príspevku reg. č. PSK-SIEA-007-2024-ITI-EFRR/F453",
     "url": "https://www.crz.gov.sk/zmluva/11707669/"
+   },
+   {
+    "datum": "2026-06-17",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1688414.05,
+    "popis": "Dodatok č. 1 k Zmluve o poskytnutí nenávratného finančného príspevku č. Z401101C148 zo dňa 24.11.2025",
+    "url": "https://www.crz.gov.sk/zmluva/12490899/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-27T15:18:39+00:00"
+ "aktualizovane": "2026-11-28T14:21:03+00:00"
 }

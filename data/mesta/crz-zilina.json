@@ -2,15 +2,15 @@
  "mesto": "zilina",
  "ico": "00321796",
  "od": "2022-01-01",
- "do": "2026-11-26",
+ "do": "2026-11-27",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 8585,
-  "skryte_fyzicke_osoby": 3860,
+  "zaznamov": 8591,
+  "skryte_fyzicke_osoby": 3864,
   "roky": {
    "2022": {
     "pocet": 1084,
@@ -37,10 +37,10 @@
     "fo_suma": 5442968
    },
    "2026": {
-    "pocet": 1891,
-    "suma": 143440013,
-    "fo_pocet": 960,
-    "fo_suma": 4749726
+    "pocet": 1897,
+    "suma": 143441033,
+    "fo_pocet": 964,
+    "fo_suma": 4749746
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -199,14 +199,6 @@
     "url": "https://www.crz.gov.sk/zmluva/12325307/"
    },
    {
-    "datum": "2025-11-27",
-    "dodavatel": "T + T, a.s.",
-    "ico": "36400491",
-    "suma": 5607768.65,
-    "popis": "Dielčia zmluva o poskytovaní služieb v odpadovom hospodárstve č. 1128/2025 - poskytovanie služieb v rámci Zabezpečenia zberu a odvozu zmesového komunálneho odpadu",
-    "url": "https://www.crz.gov.sk/zmluva/11669050/"
-   },
-   {
     "datum": "2026-06-10",
     "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
     "ico": "50349287",
@@ -285,6 +277,14 @@
     "suma": 1333681.4,
     "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU kód projektu: 401202G541",
     "url": "https://www.crz.gov.sk/zmluva/12811631/"
+   },
+   {
+    "datum": "2026-09-14",
+    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+    "ico": "50349287",
+    "suma": 1333681.4,
+    "popis": "Zmluva o poskytnutí NFP č. 1016/2026 - kód projektu: 401202G541",
+    "url": "https://www.crz.gov.sk/zmluva/12935745/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-27T15:18:39+00:00"
+ "aktualizovane": "2026-11-28T14:21:03+00:00"
 }

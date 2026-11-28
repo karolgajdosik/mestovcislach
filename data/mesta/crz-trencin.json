@@ -2,15 +2,15 @@
  "mesto": "trencin",
  "ico": "00312037",
  "od": "2022-01-01",
- "do": "2026-11-26",
+ "do": "2026-11-27",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 12631,
-  "skryte_fyzicke_osoby": 6936,
+  "zaznamov": 12648,
+  "skryte_fyzicke_osoby": 6942,
   "roky": {
    "2022": {
     "pocet": 1819,
@@ -37,10 +37,10 @@
     "fo_suma": 9669829
    },
    "2026": {
-    "pocet": 2372,
-    "suma": 104552780,
-    "fo_pocet": 1178,
-    "fo_suma": 2538838
+    "pocet": 2389,
+    "suma": 104558250,
+    "fo_pocet": 1184,
+    "fo_suma": 2541403
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -83,7 +83,7 @@
    {
     "ico": "54345987",
     "nazov": "Kreatívny inštitút Trenčín,n.o. Anglická verzia názvu je: Creative Institute Trenčín, n.o.",
-    "pocet": 276,
+    "pocet": 277,
     "suma": 7519526
    },
    {
@@ -107,7 +107,7 @@
    {
     "ico": "31651402",
     "nazov": "COLAS Slovakia, a.s.",
-    "pocet": 39,
+    "pocet": 40,
     "suma": 4862411
    },
    {
@@ -143,7 +143,7 @@
    {
     "ico": "36726885",
     "nazov": "green project, s.r.o.",
-    "pocet": 9,
+    "pocet": 11,
     "suma": 2218785
    },
    {
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-27T15:18:39+00:00"
+ "aktualizovane": "2026-11-28T14:21:03+00:00"
 }

@@ -2,15 +2,15 @@
  "mesto": "nitra",
  "ico": "00308307",
  "od": "2022-01-01",
- "do": "2026-11-26",
+ "do": "2026-11-27",
  "zdroj": {
   "nazov": "Centrálny register zmlúv (CRZ)",
   "url": "https://www.crz.gov.sk"
  },
  "zmluvy": {
   "typ": "zmluvy",
-  "zaznamov": 15414,
-  "skryte_fyzicke_osoby": 10082,
+  "zaznamov": 15438,
+  "skryte_fyzicke_osoby": 10101,
   "roky": {
    "2022": {
     "pocet": 2416,
@@ -37,10 +37,10 @@
     "fo_suma": 4260935
    },
    "2026": {
-    "pocet": 3686,
-    "suma": 54525898,
-    "fo_pocet": 2675,
-    "fo_suma": 3693307
+    "pocet": 3710,
+    "suma": 54526389,
+    "fo_pocet": 2694,
+    "fo_suma": 3693547
    }
   },
   "dodavatelia_posledne_3_roky": [
@@ -239,22 +239,6 @@
     "url": "https://www.crz.gov.sk/zmluva/13018277/"
    },
    {
-    "datum": "2025-11-27",
-    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
-    "ico": "50349287",
-    "suma": 1438173.43,
-    "popis": "ZMLUVA O POSKYTNUTÍ NENÁVRATNÉHO FINANČNÉHO PRÍSPEVKU kód projektu: 401202B701",
-    "url": "https://www.crz.gov.sk/zmluva/11665849/"
-   },
-   {
-    "datum": "2025-11-27",
-    "dodavatel": "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
-    "ico": "50349287",
-    "suma": 1438173.43,
-    "popis": "Zmluva o poskytnutí nenávratného finančného príspevku - Revitalizácia lokálnych území s prvkami modrej a zelenej infraštruktúry",
-    "url": "https://www.crz.gov.sk/zmluva/11742768/"
-   },
-   {
     "datum": "2026-09-01",
     "dodavatel": "BAUMANN Nitra s. r. o.",
     "ico": "47240768",
@@ -285,6 +269,22 @@
     "suma": 1114037.6,
     "popis": "ZMLUVA O SPOLUPRÁCI",
     "url": "https://www.crz.gov.sk/zmluva/12784592/"
+   },
+   {
+    "datum": "2026-09-09",
+    "dodavatel": "Ministerstvo práce, sociálnych vecí a rodiny SR",
+    "ico": "00681156",
+    "suma": 1114037.6,
+    "popis": "Zmluva o spolupráci - NFP 401405J046 NP Podpora dlhodobej integrácie štátnych príslušníkov tretích krajín na území SR NP Podpora dlhodobej integrácie štátnych príslušníkov tretích krajín na území SR",
+    "url": "https://www.crz.gov.sk/zmluva/12800030/"
+   },
+   {
+    "datum": "2026-06-29",
+    "dodavatel": "Slovenská humanitná rada",
+    "ico": "17316014",
+    "suma": 1112995.8,
+    "popis": "Zmluva o konzorciu - Memorandum o partnerskej spolupráci v rámci národného projektu",
+    "url": "https://www.crz.gov.sk/zmluva/12525086/"
    }
   ],
   "dotacie_poskytnute": [
@@ -351,5 +351,5 @@
   ],
   "zdroj": "https://www.crz.gov.sk"
  },
- "aktualizovane": "2026-11-27T15:18:39+00:00"
+ "aktualizovane": "2026-11-28T14:21:03+00:00"
 }
