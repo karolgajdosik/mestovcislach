@@ -79,7 +79,29 @@
    ]
   },
   "zilina": {
-   "dokumenty": []
+   "dokumenty": [
+    {
+     "nazov": "Návrh programového rozpočtu na r.2027-2029",
+     "url": "https://zilina.sk/wp-content/uploads/2026/11/Navrh-programoveho-rozpoctu-na-r.2027-2029-2.pdf",
+     "druh": "návrh rozpočtu",
+     "zverejnene": "2026-11-27",
+     "videne_od": "2026-11-28"
+    },
+    {
+     "nazov": "Návrh programového rozpočtu mesta Žilina na rok 2027 – 2029",
+     "url": "https://zilina.sk/wp-content/uploads/2026/11/Navrh-programoveho-rozpoctu-na-r.2027-2029-1.pdf",
+     "druh": "návrh rozpočtu",
+     "zverejnene": "2026-11-27",
+     "videne_od": "2026-11-28"
+    },
+    {
+     "nazov": "Návrh programového rozpočtu mesta Žilina na rok 2027 – 2029",
+     "url": "https://zilina.sk/wp-content/uploads/2026/11/Navrh-programoveho-rozpoctu-na-r.2027-2029.pdf",
+     "druh": "návrh rozpočtu",
+     "zverejnene": "2026-11-27",
+     "videne_od": "2026-11-28"
+    }
+   ]
   },
   "banska-bystrica": {
    "dokumenty": []
@@ -91,5 +113,5 @@
    "dokumenty": []
   }
  },
- "aktualizovane": "2026-11-26T11:20+00:00"
+ "aktualizovane": "2026-11-28T10:47+00:00"
 }
